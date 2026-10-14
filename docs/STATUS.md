@@ -45,7 +45,7 @@ Podunk 室外由 `world/podunk/podunk.encmap`、`world/podunk/podunk.encroom` �
 ## 未完成项
 
 - 后续内容继续遵守严格程序 / 数据分离；已迁移的开局范围、版本和验收边界见 [内容与绑定迁移](CONTENT_MIGRATION.md)。这不代表未移植地图与机制已经完成。
-- Introduction 的 3DS 实际显示与可听性验收；Podunk 其余 NPC、野外敌人与战斗、建筑内部、后续地图和剧情。房屋 Present1–3 仍不可开启。Mick 的心灵感应 woof_food / woof_key、KeyBasement 领取与 mick_telepathy 保存已接入；其它思绪、读心 focus 效果、爱心表情及地下室门钥匙使用仍未完成。Mick 的 ButtonPrompt 使用房屋里同一张静态 A 图标，不含原版浮动动画。
+- Introduction 的 3DS 实际显示与可听性验收；Podunk 其余 NPC、野外敌人与战斗、建筑内部、后续地图和剧情。房屋 Present1–3 仍不可开启。Mick 的心灵感应 woof_food / woof_key、KeyBasement 领取与 mick_telepathy 保存已接入；地下室门支持自动查找钥匙、原版开锁对白与 SE、保留钥匙和保存开锁状态，并接入地下室往返通路（见 [地下室钥匙](BASEMENT_KEY_DOOR.md)）；其它思绪、读心 focus 效果及爱心表情仍未完成。Mick 的 ButtonPrompt 使用房屋里同一张静态 A 图标，不含原版浮动动画。
 - 完整战斗、物品使用、队伍与菜单机制。
 - 开场过场读取：剧情播放及淡入淡出期间保留剧情画面；最后一句结束、最终 HouseReady 边界准备房屋时，持续超过 250 毫秒的加载允许显示左下角动画，已显示时至少保留 200 毫秒，提交后继续原版房屋淡入。短加载保留当前画面，嵌套加载共用计时；详见 [标题与加载](LOADING_PERFORMANCE.md)。加载回调仍校验资源并补给音频，不推进剧情或随机流；设备显示验收未完成，同步读取耗时仍待优化。
 - 音频实际播放、演出覆盖、全游戏性能和内存验收。

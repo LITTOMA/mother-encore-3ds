@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.house-source-bindings",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "sources": {
@@ -208,6 +208,14 @@
     {
       "id": 8,
       "source_path": "Doors/Mom_Upstair"
+    },
+    {
+      "id": 9,
+      "source_path": "Doors/Living_Basement"
+    },
+    {
+      "id": 10,
+      "source_path": "Doors/Living_Basement2"
     }
   ],
   "npcs": [
@@ -634,5 +642,11 @@
     "dialogue": "Data/Dialogue/{dialogue}.yaml",
     "voice": "Audio/Sound effects/text/{sound}.mp3",
     "door_sound": "Audio/Sound effects/{sound}"
-  }
+  },
+  "boundaries": [
+    {
+      "id": 3,
+      "source_path": "Doors/Podunk"
+    }
+  ]
 }

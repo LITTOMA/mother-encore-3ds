@@ -21,7 +21,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient
-from tools.semantic_probe import MAGIC, WIRE, decode, projection
+from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection
 
 
 def sha(path):
@@ -39,7 +39,7 @@ def validate_scenario(scenario):
         raise ValueError('Scenario step budget exceeded')
     if not scenario['reference'].get('commit') or not scenario['reference'].get('scope'):
         raise ValueError('Scenario lacks source scope')
-    known = set(decode(WIRE.pack(MAGIC, 2, WIRE.size, *([0]*37), *([0.0]*4), *(b'' for _ in range(4)))))
+    known = set(decode(WIRE.pack(MAGIC, 3, WIRE.size, *([0]*(len(FIELDS)-2)), *([0.0]*4), *(b'' for _ in range(4)))))
     projection({k: 0 for k in known}, scenario['projection'])
     for step in scenario['steps']:
         if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress', 'expected_music', 'wait_audio', 'hold_until'}:

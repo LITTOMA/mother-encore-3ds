@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "kind": "encore.house-key-door-bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
+    "Data/Dialogue/Reusable/locklocked.yaml": "7f5e8898ab912ad126367e1dda1c3f58a19872a5a6f969f4570d73d52cb5f462",
+    "Data/Dialogue/Reusable/lockopened.yaml": "ed10dc7cda371e34202cd8fddbe84365b3f494e14f6e6b9d303c4c5d6d697930",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e"
+  },
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "door_scene": "Nodes/Overworld/Objects/Openable Door.tscn",
+  "door_script": "Scripts/Main/Openable Door.gd",
+  "inventory_script": "Scripts/global/Inventory.gd",
+  "text_script": "Scripts/global/text_tools.gd",
+  "dialogue_table": "Translations/TranslatedText/dialogue_Reusable - sheet.csv",
+  "item_table": "Translations/TranslatedText/items - sheet.csv",
+  "prefix_text_id": 72,
+  "doors": [
+    {
+      "id": 3,
+      "source_path": "Below/Openable Door3",
+      "key": "KeyBasement",
+      "flag": "ninten_basement_door",
+      "locked_text_id": 73,
+      "opened_text_id": 74
+    }
+  ]
+}

@@ -2414,6 +2414,7 @@
     "mimmie_door_opened",
     "minnie_door",
     "minnie_leave",
+    "ninten_basement_door",
     "phone_ring",
     "pillow_attack",
     "poltergeist",
@@ -2425,7 +2426,8 @@
     2,
     3,
     4,
-    5
+    5,
+    6
   ],
   "uid_policy": "Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.",
   "sources": {
@@ -2446,7 +2448,7 @@
   },
   "dependencies": {
     "content/native-opening.json": "49f937d162cab8a84ab63e71358389aa48299812ffe7657bbad47f06aaa2572d",
-    "content/native-house.json": "32db926e58c0c4268137cb4def8b1842bc14ec073434807eacaf68c8cfc99f56",
+    "content/native-house.json": "171691aee148d56c2ad5c42ddf6c50c5262098c612283653320cc8f193822aef",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
     "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
     "content/native-round.json": "698d993a0c89d3b3bd7260a5261b6886e577e2e8e4a0c63829cc9cafa84abbcc",

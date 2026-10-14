@@ -28,8 +28,8 @@ def clip_reference(text,path,name):
 
 def load(root=ROOT,recipe=None):
  root=Path(root);b=copy.deepcopy(read(IR)if recipe is None else recipe)
- fields(b,'schema kind commit sources source_refs nodes same_scene_doors npcs presentation door openable npc text triggers phone pillow source_facts asset_roles patterns'.split(),'binding root')
- require(type(b['schema'])is int and b['schema']==1 and b['kind']=='encore.house-source-bindings'and b['commit']==PIN,'Unsupported House binding schema/pin')
+ fields(b,('schema kind commit sources source_refs nodes same_scene_doors npcs presentation door openable npc text triggers phone pillow source_facts asset_roles patterns'+(' boundaries' if b.get('schema')==2 else '')).split(),'binding root')
+ require(type(b['schema'])is int and b['schema']in(1,2) and b['kind']=='encore.house-source-bindings'and b['commit']==PIN,'Unsupported House binding schema/pin')
  inventory=read(root/'compatibility/upstream-inventory.json');lock=read(root/'upstream.lock')
  require(inventory['commit']==lock['commit']==PIN and type(b['sources'])is dict and 32<=len(b['sources'])<=512,'House binding source coverage')
  for path,digest in b['sources'].items():require(safe(path)and path in inventory['files']and inventory['files'][path]['sha256']==digest and sha(root/'upstream/MOTHER-Encore'/path)==digest,'Changed House binding source '+str(path))
@@ -60,7 +60,11 @@ def load(root=ROOT,recipe=None):
   for row in value:
    fields(row,keys,label);require(uint(row['id'])and row['id']not in ids and safe(row['source_path'])and row['source_path']not in paths,'Duplicate/invalid House '+label+' identity');ids.add(row['id']);paths.add(row['source_path']);sn(scene,row['source_path'])
  rows(b['same_scene_doors'],['id','source_path'],'warp bindings',32)
- require(len(b['same_scene_doors'])==8,'House reviewed warp coverage')
+ require(len(b['same_scene_doors'])==(10 if b['schema']==2 else 8),'House reviewed warp coverage')
+ if b['schema']==2:
+  rows(b['boundaries'],['id','source_path'],'boundary bindings',32)
+  authored={b['nodes']['doors']+'/'+m[1]for m in re.finditer(r'^\[node name="([^"]+)" parent="'+re.escape(b['nodes']['doors'])+r'" instance=',scene,re.M)}
+  require({r['source_path']for r in b['same_scene_doors']}|{r['source_path']for r in b['boundaries']}==authored and not ({r['source_path']for r in b['same_scene_doors']}&{r['source_path']for r in b['boundaries']}),'House warp/boundary source coverage')
  for row in b['same_scene_doors']:
   door=sn(scene,row['source_path']);require(row['source_path'].startswith(b['nodes']['doors']+'/')and not door.get('targetScene')and not door.get('flag_set'),'Unsupported House warp source binding')
   sn(scene,row['source_path']+'/'+b['nodes']['door_target'])

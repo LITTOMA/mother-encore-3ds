@@ -16,7 +16,7 @@
 
 `tools/run_field_menu_reference.py` 提取原版 Pause/PSI 方法，在真实 Godot 3.6.2 中运行。原版技能 YAML、技能筛选、空选择、关闭/返回及零 PP 心灵感应调度均有明确来源；AnimationPlayer 使用受检时长。字符/世界/音频服务及没有比较的布局采用列明的适配器。这不是原版完整游戏自动通关。
 
-`tools/run_emulator_semantics.py` 通过回环 TCP JSON-RPC 控制 CDB，检查只读 `EncoreSemanticProbe` ABI v2。记录有界且没有指针，不消费 RNG、没有存档 IO 或行为入口。奇数提交序号、截断、旧/未知版本、文本溢出和非有限位置明确拒绝。当前字段覆盖菜单、开场场景、玩家、HP/PP、库存计数以及实际 NDSP 音乐播放、采样位置和缓冲序号。没有宣称已经观察全部旗标、物品 UID、敌人和剧情事件。
+`tools/run_emulator_semantics.py` 通过回环 TCP JSON-RPC 控制 CDB，检查只读 `EncoreSemanticProbe` ABI v3（716 字节）。记录有界且没有指针，不消费 RNG、没有存档 IO 或行为入口。奇数提交序号、截断、旧/未知版本、文本溢出和非有限位置明确拒绝。当前字段覆盖菜单、开场场景、玩家、HP/PP、库存计数、战斗阶段 / 敌人 HP、门开锁位图以及实际 NDSP 音乐播放、采样位置和缓冲序号。没有宣称已经观察全部旗标、物品 UID、敌人和剧情事件。
 
 测试场景 `tests/emulator/opening-menu.json` 从正常标题入口完成命名、两段原版开场跳过和房屋菜单操作，包含 START/B 开关、摇杆选择 PSI、1 级空列表确认和 SELECT 保护。命名取消保留原版 0.5 秒保护，不把早于该边界的输入当成失败。最终结果对照独立 Godot 参考；测试计时和 DSP 游标不参与跨次幂等比较。音频模式另检查标题 Mother Earth，以及沿正常移动触发 Lamp 第 2 段和进入战斗后的 Poltergeist 身份、实际 DSP 播放及采样/缓冲持续变化，不能用已排队声音代替实际消费。
 

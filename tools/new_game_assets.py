@@ -278,8 +278,9 @@ def verify(r):
 def rebound_session_dependency(recipe,previous,current,current_sha):
  require(set(previous)==set(current),'Changed naming session field set')
  for key in previous:
-  if key not in ('key_acquisitions','mutable_flags','dependencies'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
+  if key not in ('key_acquisitions','mutable_flags','camera_area_ids','dependencies'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
  require(set(previous['mutable_flags'])<=set(current['mutable_flags']) and all(k in current['key_acquisitions'] for k in previous['key_acquisitions']),'Removed session acquisition/flag scope')
+ require(set(previous['camera_area_ids'])<=set(current['camera_area_ids']),'Removed session camera scope')
  result=dict(recipe,dependencies=dict(recipe['dependencies']))
  c,_,_=load_presentation(ROOT);require(c['session_ir'] in result['dependencies'],'Missing source naming session binding')
  require(re.fullmatch('[0-9a-f]{64}',current_sha),'Invalid naming session fingerprint')

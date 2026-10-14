@@ -219,7 +219,7 @@ def extract():
     for b in room['sections']['Battle']:
         if b['win_flag_index']!=0xffffffff:mutable.add(flags[b['win_flag_index']]['id'])
     for door in house['openable_doors']:
-        if door.get('flag') and door['policy']&1:mutable.add(door['flag'])
+        if door.get('flag') and (door['policy']&1 or door['key']):mutable.add(door['flag'])
         if door.get('activates_flag'):mutable.add(door['activates_flag'])
         if door.get('deactivates_flag'):mutable.add(door['deactivates_flag'])
     require(mutable<={f['id']for f in flags},'Unregistered mutable flag: '+repr(mutable-{f['id']for f in flags}))

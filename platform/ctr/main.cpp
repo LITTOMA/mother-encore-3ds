@@ -602,7 +602,20 @@ void process_present_audio(){
   else if(!play_source_audio(std::string(r.sound),ctr::AudioLane::AuxiliaryEffect0,0,1)&&house_error.empty())house_error="Present sound rejected";
  }
 }
+class HouseKeys final:public upstream::HouseKeyInventory {
+public:
+ bool validate_key(std::string_view name,std::string&e)override{
+  for(const auto&policy:native_session_data.key_acquisitions())if(policy.item_id==name&&policy.consumed_flag_id.empty()){e.clear();return true;}
+  e="House door key has no retained-key session policy";return false;
+ }
+ bool has_key(std::string_view name,bool&held,std::string&e)override{
+  if(!validate_key(name,e))return false;held=false;
+  for(const auto&item:session_state.key_items)if(item.item_id==name)held=true;
+  e.clear();return true;
+ }
+} house_keys;
 bool bind_house_presents(GameplayScene& scene,std::string& error){
+ if(!scene.house.bind_key_inventory(house_keys)){error=scene.house.error();return false;}
  if(!present_data.view().valid()&&!present_data.load_file(resource_path(ResourceRole::HousePresents).c_str(),error))return false;
  if(!scene.house.bind_presents(scene.presents,present_data.view(),present_effects)){error=scene.house.error();return false;}
  return true;
@@ -1668,6 +1681,10 @@ void publish_semantic_probe(){
     const auto music=audio_player.observe_music();p.audio_available=audio_player.available();p.music_playing=music.playing;p.music_asset=music.asset_id;
     p.dsp_music_playing=audio_player.available()&&ndspChnIsPlaying(0);p.dsp_music_sample_pos=audio_player.available()?ndspChnGetSamplePos(0):0;p.dsp_music_wave_seq=audio_player.available()?ndspChnGetWaveBufSeq(0):0;
     p.psi_learned=field_equipment_menu.active()&&field_equipment_menu.psi_learned();p.intro_scene=introduction.scene_index();p.intro_door=introduction.door_index();
+    p.battle_entry_phase=uint32_t(battle_entry.phase());p.battle_round_phase=round_ready?uint32_t(battle_round.phase()):UINT32_MAX;
+    p.battle_outcome_phase=uint32_t(battle_outcome.phase());p.enemy_hp=round_ready?uint32_t(std::max(0,battle_round.battler(round_data.view().binding().enemy_participant).target_hp)):0;
+    p.world_phrase=world?world->phrase():UINT32_MAX;p.door_unlocked_mask=0;
+    if(gameplay_scene)for(uint32_t i=0;i<house_data.view().count(upstream::HouseSection::OpenableDoors);++i)if(gameplay_scene->house.openable_state(i).unlocked)p.door_unlocked_mask|=uint32_t(1)<<i;
     semantic_probe_text(p.house_error,house_error,p.overflow);semantic_probe_text(p.field_error,field_status,p.overflow);
     semantic_probe_text(p.menu_error,field_equipment_status,p.overflow);semantic_probe_text(p.audio_error,audio_status,p.overflow);
     std::atomic_signal_fence(std::memory_order_seq_cst);++p.sequence;

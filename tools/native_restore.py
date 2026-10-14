@@ -156,7 +156,7 @@ def stage_files(source_root):
  r=read(IR);verify_recipe(r);root=Path(source_root).resolve();relative=Path('session/opening.encrestore');target=(root/relative).resolve();require(target.is_relative_to(root),'Restore stage path escapes root');raw=target.read_bytes();require(raw==encode(r),'Stale staged restore pack');return {relative:raw}
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('action',choices=['extract','compile','verify'],nargs='?',default='compile');a=ap.parse_args()
- if a.action=='extract':r=extract();IR.write_text(json.dumps(r,indent=2)+'\n')
+ if a.action=='extract':r=extract();IR.write_bytes((json.dumps(r,indent=2)+'\n').encode('utf8'))
  else:r=read(IR);verify_recipe(r)
  raw=encode(r)
  if a.action=='verify':require(PACK.read_bytes()==raw,'Stale restore pack')

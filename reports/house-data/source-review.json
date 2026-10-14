@@ -66,6 +66,7 @@
     "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
     "Data/Items/DogTreats.yaml": "0512818388242890d704214728e4603f90fa976571240f86361c2917c641d641",
     "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+    "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
     "Data/Items/MapPodunk.yaml": "a0a9b41e46eef76044809dc698abc1afc1dab534b4dcb7e37563ea01e54afe43",
     "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
     "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
@@ -154,7 +155,7 @@
   "dependencies": {
     "content/native-opening.json": "49f937d162cab8a84ab63e71358389aa48299812ffe7657bbad47f06aaa2572d"
   },
-  "ir_sha256": "32db926e58c0c4268137cb4def8b1842bc14ec073434807eacaf68c8cfc99f56",
+  "ir_sha256": "171691aee148d56c2ad5c42ddf6c50c5262098c612283653320cc8f193822aef",
   "mechanisms": [
     "ancestor-scaled door shape and target minus (0,7)",
     "same scene preserves rewards and flags",

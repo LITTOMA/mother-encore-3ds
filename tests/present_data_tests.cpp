@@ -19,7 +19,7 @@ int main(int argc,char**argv){
  CHECK(programmes==1);
  std::vector<uint8_t>bytes;CHECK(encore::read_file(path,bytes,64*1024,error));
  for(size_t n=0;n<bytes.size();++n)CHECK(!data.load(bytes.data(),n,error));
- CHECK(data.valid());
+ CHECK(data.view().valid());
  for(size_t i=0;i<bytes.size();++i){auto mutation=bytes;mutation[i]^=1;CHECK(!data.load(mutation.data(),mutation.size(),error));}
  CHECK(data.load(bytes.data(),bytes.size(),error));
  for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,2},{20,2},{24,2},{28,1},{8,0}}){

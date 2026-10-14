@@ -12,7 +12,9 @@
       "Scripts/UI/NamingScreen/Naming screen.gd": "8e094a7d8db69cc90f70f11238a4c5b0231678ad7041dc537ce671e4284b570d",
       "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401",
       "Audio/Music/Mother Earth.mp3": "89d44b28e944108bf285f1656950cba4cf5473764097a3b5138340fcf595fc5f",
-      "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc"
+      "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+      "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+      "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e"
     }
   },
   "projection": [
@@ -342,9 +344,7 @@
         "house_error": "",
         "menu_error": ""
       },
-      "capture": true,
-      "audio_progress": true,
-      "expected_music": 21
+      "capture": true
     },
     {
       "name": "pause",
@@ -447,6 +447,42 @@
         "paused": 0
       },
       "same_as": "house"
+    },
+    {
+      "name": "lamp_trigger",
+      "buttons": [
+        "LEFT"
+      ],
+      "hold_until": {
+        "world_stage": 1
+      },
+      "wait": {
+        "world_stage": 1
+      },
+      "capture": false
+    },
+    {
+      "name": "lamp_music",
+      "wait_audio": {
+        "music_playing": 1,
+        "music_asset": 21
+      },
+      "audio_progress": true,
+      "expected_music": 21,
+      "capture": true
+    },
+    {
+      "name": "lamp_battle",
+      "wait": {
+        "battle_active": 1
+      },
+      "wait_audio": {
+        "music_playing": 1,
+        "music_asset": 21
+      },
+      "audio_progress": true,
+      "expected_music": 21,
+      "capture": true
     }
   ]
 }

@@ -33,7 +33,7 @@ def sha(path):
 
 
 def validate_scenario(scenario):
-    if set(scenario) != {'schema', 'name', 'reference', 'projection', 'steps'} or scenario['schema'] != 1:
+    if set(scenario) != {'schema', 'name', 'reference', 'projection', 'steps'} or type(scenario['schema']) is not int or scenario['schema'] != 1:
         raise ValueError('Unknown scenario schema/fields')
     if not isinstance(scenario['steps'], list) or not 1 <= len(scenario['steps']) <= 256:
         raise ValueError('Scenario step budget exceeded')
@@ -42,11 +42,11 @@ def validate_scenario(scenario):
     known = set(decode(WIRE.pack(MAGIC, 2, WIRE.size, *([0]*37), *([0.0]*4), *(b'' for _ in range(4)))))
     projection({k: 0 for k in known}, scenario['projection'])
     for step in scenario['steps']:
-        if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress', 'expected_music'}:
+        if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress', 'expected_music', 'wait_audio', 'hold_until'}:
             raise ValueError('Unknown scenario step field')
         if not isinstance(step.get('name'), str) or not step['name'].replace('_', '').isalnum():
             raise ValueError('Unsafe scenario checkpoint name')
-        if not isinstance(step.get('wait', {}), dict) or any(k not in known for k in step.get('wait', {})):
+        if any(not isinstance(step.get(key, {}), dict) or any(k not in known for k in step.get(key, {})) for key in ('wait', 'wait_audio', 'hold_until')):
             raise ValueError('Unknown wait observation')
         if type(step.get('frames', 4)) is not int or not 1 <= step.get('frames', 4) <= 600:
             raise ValueError('Input frame budget exceeded')
@@ -211,6 +211,7 @@ def run_once(args, scenario, index):
     startup.wShowWindow = 0
     client = process = None
     checkpoints, captures = {}, 0
+    state = step = None
     result = {'status': 'failed', 'checkpoints': checkpoints}
     try:
         with (folder / 'emulator-stdout.log').open('wb') as log:
@@ -224,7 +225,9 @@ def run_once(args, scenario, index):
                 except (OSError, TimeoutError):
                     time.sleep(.1)
             capabilities = client.call('cdb.capabilities')
-            if capabilities.get('memoryWriteEnabled') or not capabilities.get('inputEnabled'):
+            if capabilities.get('protocolVersion') != 1 or capabilities.get('transport') != 'tcp-line-json-rpc':
+                raise RuntimeError('Unsupported CDB protocol/transport')
+            if capabilities.get('memoryWriteEnabled') is not False or capabilities.get('inputEnabled') is not True:
                 raise RuntimeError('Unexpected CDB write/input configuration')
             session = Session(client)
             for step in scenario['steps']:
@@ -233,10 +236,15 @@ def run_once(args, scenario, index):
                 if 'buttons' in step or 'circle' in step:
                     params = {'buttons': step.get('buttons', []), 'circle': step.get('circle', {'x': 0, 'y': 0, 'override': True})}
                     client.call('input.set', params)
-                    session.advance(step.get('frames', 4))
+                    if 'hold_until' in step:
+                        session.wait(step['hold_until'])
+                    else:
+                        session.advance(step.get('frames', 4))
                     client.call('input.clear')
                     session.advance(4)  # sample release before the next fresh press
                 state = session.wait(step.get('wait', {}))
+                if args.require_audio and 'wait_audio' in step:
+                    state = session.wait(step['wait_audio'])
                 if args.require_audio and step.get('audio_progress'):
                     before = (state['dsp_music_sample_pos'], state['dsp_music_wave_seq'])
                     state = session.advance(32)
@@ -257,6 +265,8 @@ def run_once(args, scenario, index):
             result['status'] = 'passed'
     except Exception as error:
         result['error'] = str(error)
+        if state is not None:
+            result['failed_observation'] = {'checkpoint': step['name'], 'observed': state}
         raise
     finally:
         if client:

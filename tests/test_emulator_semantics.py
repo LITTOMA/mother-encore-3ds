@@ -48,8 +48,10 @@ class WireBoundary(unittest.TestCase):
     def test_real_scenario_and_unknown_paths(self):
         scenario = json.loads((ROOT/'tests/emulator/opening-menu.json').read_text())
         validate_scenario(scenario)
-        for change in (lambda s: s.update(schema=2), lambda s: s.update(unknown=True),
+        for change in (lambda s: s.update(schema=2), lambda s: s.update(schema=True), lambda s: s.update(unknown=True),
                        lambda s: s['steps'][0].update(wait={'invented': 1}),
+                       lambda s: s['steps'][0].update(wait_audio={'invented': 1}),
+                       lambda s: s['steps'][0].update(hold_until={'invented': 1}),
                        lambda s: s['steps'][0].update(frames=601),
                        lambda s: s['steps'][0].update(name='../escape'),
                        lambda s: s['projection'].append(s['projection'][0])):

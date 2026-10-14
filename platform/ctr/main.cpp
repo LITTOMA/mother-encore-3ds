@@ -1,4 +1,6 @@
 #include <atomic>
+#include "semantic_probe.hpp"
+extern "C" { EncoreSemanticProbe encore_semantic_probe; }
 #include <cmath>
 #include <malloc.h>
 #include "encore/encounter_residency.hpp"
@@ -1646,6 +1648,28 @@ void field_dialogue_overlay(){
     const auto left=std::string(field_scene->mick().choice_text(0)),right=std::string(field_scene->mick().choice_text(1));
     if(!choice_renderer.draw_pair(left,right,field_choice_x,field_choice_y,frame,battle_renderer,box_x,box_y))field_status="Dialogue choice renderer rejected pose";
 }
+void publish_semantic_probe(){
+    auto& p=encore_semantic_probe;
+    ++p.sequence;std::atomic_signal_fence(std::memory_order_seq_cst);
+    ++p.frame;p.width=view_width;p.height=view_height;p.overflow=0;
+    p.title_phase=uint32_t(continue_menu.phase());p.title_option=continue_menu.title_selection();
+    p.naming_phase=uint32_t(new_game_setup.phase());p.naming_field=new_game_setup.field_index();p.naming_selected=new_game_setup.selected();
+    p.intro_phase=uint32_t(introduction.phase());p.menu_phase=uint32_t(field_equipment_menu.phase());
+    p.menu_command=field_equipment_menu.command_selection();p.menu_slot=field_equipment_menu.slot_selection();p.menu_candidate=field_equipment_menu.candidate_selection();
+    p.field_scene=in_field()?field_scene->scene_id():0;p.field_phase=in_field()?uint32_t(field_scene->phase()):UINT32_MAX;
+    p.house_phase=gameplay_scene?uint32_t(gameplay_scene->house.phase()):UINT32_MAX;
+    const auto* world=in_field()?&field_scene->world:(gameplay_scene?&gameplay_scene->world:nullptr);
+    p.world_stage=world?uint32_t(world->stage()):UINT32_MAX;
+    p.paused=world&&world->house_paused();p.crouch=world&&world->player().crouch;
+    if(world){const auto& player=world->player();p.player_x=player.position.x;p.player_y=player.position.y;p.direction_x=player.direction.x;p.direction_y=player.direction.y;}
+    p.session_ready=session_state_ready;p.battle_active=in_battle();
+    p.level=session_rewards_valid?session_rewards.level:0;p.hp=session_rewards_valid?uint32_t(session_rewards.hp):0;p.pp=session_rewards_valid?uint32_t(session_rewards.pp):0;
+    p.inventory_count=session_inventory.size();p.key_count=uint32_t(session_state.key_items.size());
+    const auto music=audio_player.observe_music();p.audio_available=audio_player.available();p.music_playing=music.playing;p.music_asset=music.asset_id;
+    semantic_probe_text(p.house_error,house_error,p.overflow);semantic_probe_text(p.field_error,field_status,p.overflow);
+    semantic_probe_text(p.menu_error,field_equipment_status,p.overflow);semantic_probe_text(p.audio_error,audio_status,p.overflow);
+    std::atomic_signal_fence(std::memory_order_seq_cst);++p.sequence;
+}
 void error_console(const std::string& error){
     u16 width=0,height=0;
     auto* framebuffer=gfxGetFramebuffer(GFX_TOP,GFX_LEFT,&width,&height);
@@ -2166,7 +2190,7 @@ int main(int argc,char** argv){
         }
         reference_borders();PROFILE_MARK(3);
         C2D_SceneBegin(bottom);if(in_field())field_bottom();else house_bottom();ctr::draw_native_input(native_controls.gesture,native_input_data.tuning());PROFILE_MARK(4);
-        C3D_FrameEnd(0);record_entry_submitted();locale_font.end_frame();storage_counter_font.end_frame();field_counter_font.end_frame();if(draw_introduction)introduction_renderer.end_frame();PROFILE_MARK(5);qa_record(down);PROFILE_MARK(6);PROFILE_FINISH();
+        C3D_FrameEnd(0);publish_semantic_probe();record_entry_submitted();locale_font.end_frame();storage_counter_font.end_frame();field_counter_font.end_frame();if(draw_introduction)introduction_renderer.end_frame();PROFILE_MARK(5);qa_record(down);PROFILE_MARK(6);PROFILE_FINISH();
     }
 #ifdef ENCORE_TEXT_QA
     if(qa_log){std::fclose(qa_log);qa_log=nullptr;}

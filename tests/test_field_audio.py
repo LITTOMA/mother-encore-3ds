@@ -13,7 +13,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from tools import field_audio, present_audio, gameplay_audio
+from tools import field_audio, present_audio, gameplay_audio, extension_audio
 
 
 class FieldAudioBinding(unittest.TestCase):
@@ -21,7 +21,7 @@ class FieldAudioBinding(unittest.TestCase):
     def setUpClass(cls):
         cls.ir = json.loads((ROOT / 'content/native-field-equipment.json').read_text(encoding='utf-8'))
         cls.config = json.loads((ROOT / 'content/field-audio-binding.json').read_text(encoding='utf-8'))
-        cls.present = present_audio.bindings(ROOT)
+        cls.extension = extension_audio.bindings(ROOT)
 
     def validate_detached(self, config=None, ir=None):
         config = copy.deepcopy(self.config if config is None else config)
@@ -34,7 +34,9 @@ class FieldAudioBinding(unittest.TestCase):
             return result
 
     def combined(self, pause=None):
-        return (self.config['assets'] if pause is None else pause) + self.present
+        # Since audio completion (#40), the checked chain also includes the
+        # 26 gameplay/region additions. Keep the full ordered identity contract.
+        return (self.config['assets'] if pause is None else pause) + self.extension
 
     def reject(self, change, ir_change=None):
         config, ir = copy.deepcopy(self.config), copy.deepcopy(self.ir)

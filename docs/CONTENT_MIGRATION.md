@@ -77,6 +77,6 @@ Continue、Save 和按钮提示分别使用 `continue-presentation-bindings.json
 
 ## 自由行走装备菜单
 
-`native-field-equipment.json` / `field-equipment-assets.json` 从固定上游 Pause / Equip 场景、脚本、动画、翻译、库存与角色属性提取完整局部来源。`field_equipment.py` 普通编译重新对照来源与 IR，编译独立 `ui/opening.encfield`（ENCFIE01，格式 / 能力 1），纹理归入 `graphics/ui/equipment`。`field-audio-binding.json` 补入两个原版 Pause 音效，其他菜单音效复用受检音频 bank 的稳定身份；PCM 位于 `sound/effects`。JSON、转换配方及收据均不进入 RomFS。
+`native-field-equipment.json` / `field-equipment-assets.json` 从固定上游 Pause / Equip 场景、脚本、动画、翻译、库存与角色属性提取完整局部来源。`field_equipment.py` 普通编译重新对照来源与 IR，编译独立 `ui/opening.encfield`（ENCFIE01，格式 v2 / 能力 3，包含开局野外 PSI），纹理归入 `graphics/ui/equipment`。`field-audio-binding.json` 补入两个原版 Pause 音效，其他菜单音效复用受检音频 bank 的稳定身份；PCM 位于 `sound/effects`。JSON、转换配方及收据均不进入 RomFS。
 
 共享消费者执行六项 Pause 命令的导航、已开放 Equip 的四槽、适用库存与 None、来源七项属性预览及确认。3DS 平台以独立候选库存与既有 Session 派生机制校验后提交，UID、剂量、物品数量、存档编码与随机流保持原有身份。其他命令、队员、装备、物品使用仍受限；具体范围见 [FIELD_EQUIPMENT](FIELD_EQUIPMENT.md)。

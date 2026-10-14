@@ -47,6 +47,12 @@
       "doses": 1,
       "flag_id": "got_dog_treats",
       "consumed_flag_id": "gave_treats"
+    },
+    {
+      "item_id": "KeyBasement",
+      "doses": 1,
+      "flag_id": "mick_telepathy",
+      "consumed_flag_id": ""
     }
   ],
   "settings_choices": {
@@ -2403,6 +2409,7 @@
     "got_asthma_spray",
     "got_dog_treats",
     "mick_scratch",
+    "mick_telepathy",
     "mimmie_ask_key",
     "mimmie_door_opened",
     "minnie_door",
@@ -2446,7 +2453,7 @@
     "content/doll-round.json": "fe77fc2fec72ec31044ab0c38e67f3b72956383e1e59b7f054bcb6a7789a1bac",
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
     "content/house-presents.json": "44b5bd75a4c5594d4b99052de23bcf54b67771153356bbefa3d26c63d0187792",
-    "content/mick-treats.json": "be999c034bf85e9f14e879926dcbad1fe1c7550346bba4350c1eb36be9065913",
+    "content/mick-treats.json": "32c782ea770e07904e57b3ae07e80485005f63b6a14cdcbc817aa52b12dcbcb2",
     "content/native-storage.json": "c4cb1436789597fe592bb50f6e807913e3747aa363adb24b5e7a2771a9f480e2"
   }
 }

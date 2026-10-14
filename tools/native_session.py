@@ -157,6 +157,16 @@ def extract():
             require(not policy['consumed_flag_id'], 'Duplicate Mick key consume binding')
             policy['consumed_flag_id']=consume;matched=True
     require(matched, 'Mick consume item absent from session key acquisitions')
+    # Thought grants have their persistent completion flag on the final phrase,
+    # rather than immediately after the grant. Dialogue cannot be saved midway.
+    for programme in mick['programmes']:
+        commands=mick['commands'][programme['first']:programme['first']+programme['count']]
+        grants=[i for i,c in enumerate(commands) if c['op']=='GrantKeyItem']
+        if not grants:continue
+        require(programme['kind']=='Thought' and len(grants)==1,'Unreviewed session thought acquisition')
+        grant=commands[grants[0]];effects=[c for c in commands[grants[0]+1:] if c['op']=='SetFlag']
+        require(len(effects)==1 and effects[0]['b']==1 and not any(k['item_id']==grant['a'] for k in key_acquisitions),'Unreviewed/duplicate thought completion policy')
+        key_acquisitions.append(dict(item_id=grant['a'],doses=grant['b'],flag_id=effects[0]['a'],consumed_flag_id=''))
     from tools.storage_assets import load as load_storage, IR as storage_ir
     storage=load_storage(ROOT);required.append(storage_ir)
     storage_policies=[]

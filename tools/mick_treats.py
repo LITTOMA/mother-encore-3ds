@@ -2,8 +2,8 @@
 """Compile Podunk Mick into ENCMIK01.
 
 Build-time adapter only. Spoken trees, the south-fence bark, 4dir clips and the
-field-enter RNG ledger are data. Telepathy, the heart emote and other NPC
-movement stay out. Phrase text is printed by the existing world DialogueBox;
+field-enter RNG ledger and scoped Telepathy thoughts are data. Other NPC
+movement/thoughts, emotes and the focus shader stay out. Phrase text is printed by the existing world DialogueBox;
 [PartyLead] is substituted at runtime.
 Outputs: world/podunk/podunk.encmick and graphics/world/mick/mick.t3x.
 """
@@ -38,13 +38,13 @@ LIMIT = 64 * 1024
 SECTIONS = ('Bytes', 'Strings', 'Texture', 'Actor', 'Programmes', 'Commands', 'Texts', 'Clips', 'Rng')
 STRIDES = (1, 8, 12, 200, 16, 20, 8, 8, 32)
 OPCODES = {'ShowText': 1, 'AwaitText': 2, 'RemoveKeyItem': 3, 'SetFlag': 4, 'End': 5,
-           'Choice': 6, 'PlaySound': 7, 'JumpActor': 8, 'TurnActor': 9, 'MovePlayer': 10, 'Wait': 11}
-PROGRAMME_KINDS = {'Talk': 1, 'Bark': 2}
+           'Choice': 6, 'PlaySound': 7, 'JumpActor': 8, 'TurnActor': 9, 'MovePlayer': 10, 'Wait': 11, 'GrantKeyItem': 12}
+PROGRAMME_KINDS = {'Talk': 1, 'Bark': 2, 'Thought': 3, 'NoProblem': 4}
 RNG_KINDS = {'Randi': 1, 'Randf': 2, 'RandRange': 3, 'ArmWander': 4}
 SPOKEN = (('', 'Podunk/woof'), ('mick_scratch', 'Podunk/woof_secret'), ('mick_telepathy', 'Podunk/woof_deal'),
           ('got_dog_treats', 'Podunk/woof_treats'), ('gave_treats', 'Podunk/woof_animals'))
-PHRASE_KEYS = {'name', 'text', 'goto', 'options', 'soundeffect', 'setflags', 'removeitem', 'talkeremote',
-               'actors', 'talker', 'actorsjump', 'actorsturn', 'actorsmove', 'wait', 'autoadvance', 'caninput', 'showbox'}
+PHRASE_KEYS = {'playeremote', 'name', 'text', 'goto', 'options', 'soundeffect', 'setflags', 'removeitem', 'talkeremote',
+               'actors', 'talker', 'actorsjump', 'actorsturn', 'actorsmove', 'wait', 'autoadvance', 'caninput', 'showbox', 'item'}
 READY_SCRIPTS = {'Scripts/misc/grass spawner.gd', 'Scripts/misc/birds.gd', 'Scripts/misc/butterfly.gd', 'Scripts/misc/sparkles.gd'}
 CANVAS = {'Node2D', 'Sprite', 'Position2D', 'YSort', 'TileMap', 'Area2D', 'StaticBody2D', 'KinematicBody2D',
           'CollisionShape2D', 'CollisionPolygon2D', 'VisibilityNotifier2D', 'VisibilityEnabler2D', 'AnimatedSprite',
@@ -263,12 +263,20 @@ def build(root=ROOT):
     bark_pos, bark_scale = world(nodes, bark_shape.path)
     bark_center = [f32(bark_pos.x), f32(bark_pos.y)]
     bark_extents = [f32(abs(bark_rect['extents'].x * bark_scale.x)), f32(abs(bark_rect['extents'].y * bark_scale.y))]
+    player=ex.text('Scripts/Main/party/Player.gd');ex.text('Scripts/UI/DialogueBox.gd');ex.text('Scripts/global/Inventory.gd')
+    require('var collide = eventRayCaster.get_collider()' in player and 'target.telepathy()' in player,'Telepathy target dispatch changed')
+    thoughts=[['',mick.props.get('_thoughts')]]+list(mick.props.get('_all_thoughts'))
+    require(thoughts==[['','Podunk/woof_food'],['mick_scratch','Podunk/woof_key'],['mick_telepathy','Podunk/woof_food']],'Mick thought selection changed')
+    require(not mick.props.get('turn_to_player_on_telepathy',False),'Unreviewed telepathy NPC facing')
+    basement=ex.yaml('Data/Items/KeyBasement.yaml')
+    require(basement['keyitem'] is True and basement.get('doses',1)==1 and not basement.get('transform'),'Unreviewed Mick key grant')
     sheets = {DIALOGUE_TABLE: table(ex, DIALOGUE_TABLE),
               'Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv': table(ex, 'Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv')}
+    sheets['Translations/TranslatedText/dialogue_Reusable - sheet.csv']=table(ex,'Translations/TranslatedText/dialogue_Reusable - sheet.csv')
     texts, commands, programmes = [], [], []
 
     def compile_tree(source_path):
-        csv_rows = sheets['Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv' if '/cutscenes/' in source_path else DIALOGUE_TABLE]
+        csv_rows = sheets['Translations/TranslatedText/dialogue_Reusable - sheet.csv' if '/Reusable/' in source_path else 'Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv' if '/cutscenes/' in source_path else DIALOGUE_TABLE]
         doc = {str(key): value for key, value in ex.yaml(source_path).items()}
         require(doc and '0' in doc, 'Dialogue lacks phrase 0: ' + source_path)
         local_texts, local_commands, started = [], [], {}
@@ -303,6 +311,11 @@ def build(root=ROOT):
                 require(body['showbox'] is False and 'text' not in body, 'DialogueBox showbox is not ported')
             if 'caninput' in body:
                 require(body['caninput'] is False, 'Unreviewed caninput')
+            if 'playeremote' in body:
+                require(source_path=='Data/Dialogue/Reusable/noproblem.yaml' and body['playeremote']=='dotFast','Unreviewed telepathy fallback emote')
+            if 'item' in body:
+                require(source_path=='Data/Dialogue/Podunk/woof_key.yaml' and body['item']=='KeyBasement','Unreviewed Mick item grant')
+                emit('GrantKeyItem',a=body['item'],b=basement.get('doses',1))
             if 'soundeffect' in body:
                 require(isinstance(body['soundeffect'], str) and body['soundeffect'], 'Bad sound effect')
                 emit('PlaySound', a='res://Audio/Sound effects/' + body['soundeffect'])
@@ -400,6 +413,8 @@ def build(root=ROOT):
         adopt('Data/Dialogue/' + relative + '.yaml', flag, 'Talk')
     adopt(BARK_DIALOGUE, '', 'Bark')
     bark_programme = len(programmes) - 1
+    for flag,relative in thoughts:adopt('Data/Dialogue/'+relative+'.yaml',flag,'Thought')
+    adopt('Data/Dialogue/Reusable/noproblem.yaml','','NoProblem')
     order = instantiate(load, SCENE)
     nodes = {n.path: n for n in order}
     children = {n.path: [] for n in order}
@@ -493,7 +508,7 @@ def build(root=ROOT):
                        'and speaks woof, woof_secret, woof_deal, woof_treats and woof_animals. '
                        'Cutscene Area11 runs mick_bark and steps the player 16px north until gave_treats. '
                        'Field-enter RNG replays reviewed _ready draws and screen-entered draws without spawning enemies. '
-                       'Telepathy, the heart emote, other NPC dialogue and movement, music and field battles stay deferred.'),
+                       'Telepathy uses last matching thought row, woof_food/woof_key, source key grant before text and mick_telepathy on its final phrase. Other NPC thoughts, heart/dot emotes, focus shader, music and field battles stay deferred.'),
                 sources=dict(sorted(ex.sources.items())), texture=texture, actor=actor, texts=texts,
                 commands=commands, programmes=programmes, clips=clips, rng=events)
 
@@ -614,7 +629,7 @@ def lower(ir):
     for off, length in strings:
         secs['Strings'] += struct.pack('<2I', off, length)
     secs['Bytes'] = pool
-    return pack_container(MAGIC, 1, [secs[n] for n in SECTIONS], STRIDES, LIMIT)
+    return pack_container(MAGIC, 1, [secs[n] for n in SECTIONS], STRIDES, LIMIT, capability=2)
 
 
 def encode(ir):
@@ -625,13 +640,31 @@ def encode(ir):
 
 def parse(blob):
     from tools.podunk_field import unpack_container
-    scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT)
+    scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT, capability=2)
     require(scene == 1, 'Mick pack scene identity')
     rows = {n: secs[i] for i, n in enumerate(SECTIONS)}
     count = {n: len(rows[n]) // STRIDES[i] for i, n in enumerate(SECTIONS)}
     require(count['Texture'] == 1 and count['Actor'] == 1 and len(rows['Actor']) == 200
             and 0 < count['Programmes'] <= 16 and 0 < count['Commands'] <= 128 and 0 < count['Texts'] <= 64
             and 0 < count['Clips'] <= 64 and 0 < count['Rng'] <= 512, 'Mick pack table counts')
+    strings=[struct.unpack_from('<2I',rows['Strings'],i*8) for i in range(count['Strings'])]
+    def text(i):
+        require(type(i) is int and 0<=i<len(strings),'Mick string index')
+        start,length=strings[i];require(start+length<=len(rows['Bytes']) and length>0,'Mick string span')
+        return rows['Bytes'][start:start+length].decode('utf8')
+    commands=[struct.unpack_from('<5I',rows['Commands'],i*20) for i in range(count['Commands'])]
+    kinds=set()
+    for i in range(count['Programmes']):
+        flag,first,n,kind=struct.unpack_from('<4I',rows['Programmes'],i*16)
+        require(kind in PROGRAMME_KINDS.values() and n>0 and first+n<=len(commands),'Mick programme kind/span')
+        if flag:text(flag)
+        kinds.add(kind)
+        require(commands[first+n-1][0]==OPCODES['End'],'Mick programme terminator')
+        for op,a,b,c,d in commands[first:first+n]:
+            require(op in OPCODES.values(),'Mick unknown opcode')
+            if op==OPCODES['GrantKeyItem']:
+                name=text(a);require(kind==PROGRAMME_KINDS['Thought'] and re.fullmatch('[A-Za-z0-9_]+',name) and 1<=b<=65535 and c==d==0,'Mick key grant operands/context')
+    require(set(PROGRAMME_KINDS.values())<=kinds,'Mick missing programme capability')
     return rows
 
 
@@ -640,12 +673,13 @@ def review(ir):
                 semantics={
                     'spawn': 'npc21 starts at Vector2(-88, 8) facing south and wanders inside the radius-44 circle',
                     'idle': '4dir Idle/Walk/Talk use the yaml frame minus one, matching character_sprite.gd; south Idle rests on sheet index 1',
+                    'telepathy': 'Source Thought rows use last true flag wins; mick_scratch selects woof_key, later mick_telepathy selects woof_food. KeyBasement is granted before the item-received line; final phrase sets mick_telepathy, persisted with the same key UID. No-target uses source noproblem.',
                     'interact': 'The last matching spoken row wins: woof, woof_secret, woof_deal, woof_treats, woof_animals',
                     'collision': 'The foot rectangle moves with Mick and blocks the player; the sprite y-sorts on his live position',
                     'bark': 'Cutscene Area11 starts mick_bark and steps the player 16px north while gave_treats is clear',
                     'rng': 'Initial PCG state is after reviewed _ready draws; screen overlap then consumes butterfly, enemy and wander draws',
                     'display': 'Spoken lines use the world DialogueBox: name tag, open/close, typewriter and continue cursor. Two options use the source option grid and arrow. A phrase without name closes the tag. showbox false closes the box before the shove'},
-                unsupported=['Telepathy thoughts woof_food and woof_key', 'talkeremote heart is recognized and not drawn',
+                unsupported=['Other NPC thoughts and telepathy focus shader', 'playeremote dotFast is recognized and not drawn', 'talkeremote heart is recognized and not drawn',
                              'ButtonPrompt over Mick', 'Other Podunk NPC dialogue and walking',
                              'Birds reroll when they leave the screen', 'Enemy bodies and field music',
                              'Mick RayCast2D; the foot box is the wander probe'],

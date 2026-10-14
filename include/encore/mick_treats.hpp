@@ -9,12 +9,12 @@
 
 namespace encore::upstream {
 // ENCMIK01: Podunk Mick. Geometry, 4dir clips, dialogue programmes and the
-// field-enter RNG ledger are data. Telepathy and the heart emote are not.
+// field-enter RNG ledger and thought programmes are data. Emotes are deferred.
 constexpr uint32_t kMickNone=0xffffffffu;
 enum class MickSection:uint32_t {Bytes=1,Strings,Texture,Actor,Programmes,Commands,Texts,Clips,Rng};
 constexpr uint32_t kMickSectionCount=9;
-enum class MickOpcode:uint32_t {ShowText=1,AwaitText,RemoveKeyItem,SetFlag,End,Choice,PlaySound,JumpActor,TurnActor,MovePlayer,Wait};
-enum class MickProgramKind:uint32_t {Talk=1,Bark=2};
+enum class MickOpcode:uint32_t {ShowText=1,AwaitText,RemoveKeyItem,SetFlag,End,Choice,PlaySound,JumpActor,TurnActor,MovePlayer,Wait,GrantKeyItem};
+enum class MickProgramKind:uint32_t {Talk=1,Bark=2,Thought=3,NoProblem=4};
 enum class MickRngKind:uint32_t {Randi=1,Randf,RandRange,ArmWander};
 struct MickTexture {uint32_t path=0;uint16_t width=0,height=0,columns=0,rows=0;};
 struct MickActor {
@@ -71,6 +71,7 @@ public:
     virtual bool validate_item(std::string_view,std::string&)=0;
     virtual bool flag(std::string_view,bool&,std::string&)=0;
     virtual bool set_flag(std::string_view,bool,std::string&)=0;
+    virtual bool grant_key_item(std::string_view,uint32_t,std::string& error){error="Mick key grant host is unsupported";return false;}
     virtual bool remove_key_item(std::string_view,std::string&)=0;
     virtual bool show_text(std::string_view speaker,std::string_view body,std::string&)=0;
     virtual bool play_sound(std::string_view,std::string&)=0;
@@ -96,6 +97,7 @@ public:
     bool ready()const{return ready_;}
     void set_locale(std::string_view code){locale_=std::string(code);}
     bool start_talk(std::string&);
+    bool start_thought(bool target,std::string&);
     void face_toward(Vec2 target);
     bool start_bark(std::string&);
     bool advance_text(std::string&);

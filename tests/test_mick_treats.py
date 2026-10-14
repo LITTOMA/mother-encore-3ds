@@ -39,6 +39,23 @@ class MickTreatsTests(unittest.TestCase):
         named = next(c for c in shown if c['b'] != 0xFFFFFFFF)
         self.assertIn('SPEAKER', self.ir['texts'][named['b']]['translation_key'])
 
+    def test_thoughts_and_key_order(self):
+        thoughts=[p for p in self.ir['programmes'] if p['kind']=='Thought']
+        self.assertEqual([p['flag'] for p in thoughts],['','mick_scratch','mick_telepathy'])
+        p=thoughts[1];commands=self.ir['commands'][p['first']:p['first']+p['count']]
+        grant=next(i for i,c in enumerate(commands) if c['op']=='GrantKeyItem')
+        self.assertEqual(commands[grant],{'op':'GrantKeyItem','a':'KeyBasement','b':1})
+        self.assertEqual(commands[grant+1]['op'],'PlaySound')
+        self.assertEqual(commands[-4],{'op':'SetFlag','a':'mick_telepathy','b':1})
+    def test_new_opcode_and_programme_negative_cases(self):
+        for operand,value in [('a','../unreviewed'),('b',0),('b',65536),('c',1)]:
+            ir=copy.deepcopy(self.ir);grant=next(c for c in ir['commands'] if c['op']=='GrantKeyItem');grant[operand]=value
+            with self.assertRaises(ValueError):mick.encode(ir)
+        ir=copy.deepcopy(self.ir);ir['programmes'][-1]['kind']='Unknown'
+        with self.assertRaises((ValueError,KeyError)):mick.encode(ir)
+        for cap in (0,1,3):
+            blob=bytearray(self.blob);struct.pack_into('<I',blob,20,cap)
+            with self.assertRaises(ValueError):mick.parse(blob)
     def test_pack_round_trip(self):
         rows = mick.parse(self.blob)
         self.assertEqual(len(rows['Actor']) // 200, 1)

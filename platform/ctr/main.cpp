@@ -943,6 +943,16 @@ bool prepare_field_equipment(uint32_t slot,bool none,uint32_t uid,PreparedFieldE
     SessionSnapshot checked;if(!build_native_session_snapshot(native_session_data,opening_data.view(),house_data.view(),round_data.view(),items_data.view(),input,checked,error))return false;
     result.inventory=std::move(inventory);result.stats=std::move(stats);result.projected=derived;error.clear();return true;
 }
+bool use_field_psi(std::string&error){
+    using namespace upstream;const auto view=field_equipment_data.view();
+    if(!in_field()||!session_rewards_valid||view.parameter(FieldParameter::PsiAction)!=1){error="Field PSI execution scope rejected";return false;}
+    const auto skill=view.binding(FieldBinding::PsiSkillId);const auto&skills=session_rewards.learned_skills;
+    if(std::find(skills.begin(),skills.end(),skill)==skills.end()||session_rewards.level<uint32_t(view.parameter(FieldParameter::PsiLearnLevel))){error="Field PSI has not been learned";return false;}
+    const int32_t cost=int32_t(view.parameter(FieldParameter::PsiCost));
+    if(session_rewards.pp<cost){error=std::string(view.binding(FieldBinding::PsiFailure,locale_selection.code()=="zh_Hans_CN"));return false;}
+    if(!field_scene->try_telepathy({view.parameter(FieldParameter::PsiRayX),view.parameter(FieldParameter::PsiRayY)},view.parameter(FieldParameter::PsiRayLength),error))return false;
+    session_rewards.pp-=cost;field_equipment_status.clear();return true;
+}
 bool open_field_equipment(std::string&error){
     using namespace upstream;
     if(!session_state_ready||!session_rewards_valid){error="Field menu needs a prepared session";return false;}
@@ -960,7 +970,7 @@ bool open_field_equipment(std::string&error){
         SessionSnapshot snapshot;if(!collect_session_snapshot(snapshot,e,&active_overworld()))return false;
         uint32_t character_index=0;if(!field_equipment_character(view,snapshot,character_index,e))return false;
         const auto& character=snapshot.characters[character_index];
-        FieldEquipmentSnapshot next;next.owner=character.character_id;next.nickname=character.nickname;next.level=session_rewards.level;next.cash=session_rewards.cash;next.inventory=session_inventory;
+        FieldEquipmentSnapshot next;next.owner=character.character_id;next.nickname=character.nickname;next.level=session_rewards.level;next.cash=session_rewards.cash;next.inventory=session_inventory;next.pp=character.pp;next.learned_skills=character.learned_skills;
         next.stats={{session_rewards.maxhp,session_rewards.maxpp,session_rewards.offense,session_rewards.defense,session_rewards.speed,session_rewards.iq,session_rewards.guts}};
         out=std::move(next);e.clear();return true;
     };
@@ -1536,7 +1546,7 @@ void house_bottom(){
     if(save_menu.is_open())scope=save_status.empty()?"Record: choose a slot; B closes":save_status.c_str();
     if(!house_error.empty())scope=house_error.c_str();
     if(!round_error.empty())scope=round_error.c_str();
-    if(field_equipment_menu.visible())scope="Original Pause / Equip; START menu, A choose, B back";
+    if(field_equipment_menu.visible())scope="Original Pause / PSI / Equip; START menu, A choose, B back";
     if(!field_equipment_status.empty())scope=field_equipment_status.c_str();
     if(items_menu.active())scope=items_status.empty()?"Inventory: A select, B back, L info":items_status.c_str();
     if(!gameplay_scene->world.healthy())scope=gameplay_scene->world.error();
@@ -1775,6 +1785,7 @@ int main(int argc,char** argv){
         const bool intro_active_at_frame_start=introduction.active();
         const bool world_visible=!new_game_setup.active()&&(!introduction.active()||introduction_house_committed)&&(!continue_menu.is_open()||continue_menu.pose().world_visible);
         const bool world_input=world_visible&&!field_equipment_menu.visible()&&!restore_input_pending&&(!introduction.active()||introduction.house_unpaused());
+        bool field_action_sampled=false;
         while(accumulator>=1000){
             if(!world_visible){accumulator-=1000;continue;}
             upstream::WalkInput input;
@@ -1788,9 +1799,12 @@ int main(int argc,char** argv){
                     ok=ok&&field_scene->after_physics();
                     if(ok)update_field_music();
                     if(ok&&field_scene->phase()==upstream::FieldPhase::Walking){
-                        std::string why;ok=field_scene->try_mick(world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse),why);
-                        if(!ok)field_status=field_scene->error();
-                        else if(!why.empty())field_status=why;
+                        const bool confirm=world_input&&input_context()==sampled_context&&((down&KEY_A)!=0||native_controls.confirm_pulse);
+                        if(confirm&&!field_action_sampled){
+                            field_action_sampled=true;std::string why;
+                            if(held&KEY_B){if(!use_field_psi(why))field_equipment_status=why;}
+                            else{ok=field_scene->try_mick(true,why);if(!ok)field_status=field_scene->error();else if(!why.empty())field_status=why;}
+                        }
                     }
                     if(ok&&field_scene->phase()==upstream::FieldPhase::MickTalk&&!gameplay_scene->presentation.advance_dialogue(double(float(time_scale/60.0))))field_status=gameplay_scene->presentation.error();
                     if(!ok)field_status=field_scene->error();
@@ -1997,7 +2011,14 @@ int main(int argc,char** argv){
                 const auto binding=upstream::FieldBinding(uint32_t(upstream::FieldBinding::PauseOpenSound)+uint32_t(event)-1);
                 if(!play_source_audio(std::string(field_view.binding(binding))))field_equipment_status=audio_status.empty()?house_error:audio_status;
             }
-            if(!field_equipment_menu.visible()&&!active_overworld().unpause_from_house())field_equipment_status="Field menu resume rejected";
+            if(!field_equipment_menu.visible()){
+                const bool psi=field_equipment_menu.take_psi_request();
+                if(!active_overworld().unpause_from_house())field_equipment_status="Field menu resume rejected";
+                else if(psi){
+                    if(!in_field())field_equipment_status="Telepathy in this room is not yet ported";
+                    else if(!use_field_psi(error))field_equipment_status=error;
+                }
+            }
         }
         const bool storage_was_open=storage_menu.active();
         if(gameplay_scene->world.take_storage_request()){

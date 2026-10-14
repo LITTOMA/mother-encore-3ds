@@ -2,7 +2,7 @@
 """Pinned Pause -> Equip frontend, original texture recipe and ENCFIE01.
 
 JSON is offline source IR. This slice grants only singleton Ninten equipment;
-known Pause commands other than Equip are represented but explicitly disabled.
+Equip and scoped field PSI execute; other known Pause commands remain disabled.
 """
 from __future__ import annotations
 import argparse,ast,csv,hashlib,io,json,math,re,struct,subprocess,sys,zlib
@@ -21,10 +21,10 @@ NAMES=('Strings','Parameters','Bindings','Commands','Slots','Equipment','Resourc
 FORMATS=(None,'<If','<III','<IIII','<IIII','<III7i','<7I32s2I','<7I10f4I','<IIIf','<3f')
 STRIDES=(1,8,12,16,16,40,68,84,16,12)
 HEADER=224
-PARAMETERS=('ReferenceWidth','ReferenceHeight','PlatformWidth','PlatformHeight','PauseColumns','SlotPitch','ListPitch','StatPitch','CursorMoveSeconds','CursorFps','CursorFrame0','CursorFrame1','CursorFrame2','CursorFrame3','MainLineHeight','NumberLineHeight','NumberSpacing','LoopAround','PauseColumnPitch','PauseRowPitch','ListRows','BoostWeight0','BoostWeight1','BoostWeight2','BoostWeight3','BoostWeight4','BoostWeight5','BoostWeight6','OpenMask','ConfirmMask','CancelMask','ScopeMask','OwnerId')
-BINDINGS=('PauseTitle','EquipTitle','None','Empty','StatMaxHP','StatMaxPP','StatOffense','StatDefense','StatSpeed','StatIQ','StatGuts','Owner','MainFont','NumberFont','PauseOpenSound','PauseCloseSound','EquipOpenSound','EquipCloseSound','MoveSound','ConfirmSound','RestrictedSound','ClearSound','EquipSound','BackSound','Level','CashPattern','CashRight')
-ROLES=('PausePanel','PauseInside','PauseTitle','PauseCommand','PauseCash','EquipmentPanel','StatsPanel','Owner','EquipTitle','Portrait','SlotPanel','SlotLabel','SlotItem','ListPanel','ListItem','StatLabel','StatValue','StatProjected','StatIcon','DescriptionPanel','DescriptionText','Cursor','BoostEmpty','BoostBetter','BoostLower','PauseCursor','SlotCursor','CandidateCursor','CashLabel','CashValue','LevelLabel','LevelValue','PortraitEquipped','PortraitSuitable','PortraitBetter','PortraitLower','CashCents','PauseTitleBackdrop')
-CLIPS=('PauseOpen','PauseClose','EquipOpen','EquipClose','DescriptionOpen','DescriptionClose')
+PARAMETERS=('ReferenceWidth','ReferenceHeight','PlatformWidth','PlatformHeight','PauseColumns','SlotPitch','ListPitch','StatPitch','CursorMoveSeconds','CursorFps','CursorFrame0','CursorFrame1','CursorFrame2','CursorFrame3','MainLineHeight','NumberLineHeight','NumberSpacing','LoopAround','PauseColumnPitch','PauseRowPitch','ListRows','BoostWeight0','BoostWeight1','BoostWeight2','BoostWeight3','BoostWeight4','BoostWeight5','BoostWeight6','OpenMask','ConfirmMask','CancelMask','ScopeMask','OwnerId','PsiCost','PsiLearnLevel','PsiAction','PsiRayX','PsiRayY','PsiRayLength')
+BINDINGS=('PauseTitle','EquipTitle','None','Empty','StatMaxHP','StatMaxPP','StatOffense','StatDefense','StatSpeed','StatIQ','StatGuts','Owner','MainFont','NumberFont','PauseOpenSound','PauseCloseSound','EquipOpenSound','EquipCloseSound','MoveSound','ConfirmSound','RestrictedSound','ClearSound','EquipSound','BackSound','Level','CashPattern','CashRight','PsiTitle','PsiSkillId','PsiName','PsiDescription','PsiFailure','PsiBaseSkill0','PsiBaseSkill1')
+ROLES=('PausePanel','PauseInside','PauseTitle','PauseCommand','PauseCash','EquipmentPanel','StatsPanel','Owner','EquipTitle','Portrait','SlotPanel','SlotLabel','SlotItem','ListPanel','ListItem','StatLabel','StatValue','StatProjected','StatIcon','DescriptionPanel','DescriptionText','Cursor','BoostEmpty','BoostBetter','BoostLower','PauseCursor','SlotCursor','CandidateCursor','CashLabel','CashValue','LevelLabel','LevelValue','PortraitEquipped','PortraitSuitable','PortraitBetter','PortraitLower','CashCents','PauseTitleBackdrop','PsiPanel','PsiTitlePanel','PsiTitle','PsiPortrait','PsiName','PsiDescription','PsiDivider','PsiCursor')
+CLIPS=('PauseOpen','PauseClose','EquipOpen','EquipClose','DescriptionOpen','DescriptionClose','PsiOpen','PsiClose')
 STATS=('maxhp','maxpp','offense','defense','speed','iq','guts')
 ASSETS=(('panel','Graphics/UI/Overworld/flavours/defaultempty.png',None,[1,1]),('inside','Graphics/UI/Overworld/flavours/defaultbox_inside.png',None,[1,1]),('description','Graphics/UI/Overworld/flavours/defaultbox.png',None,[1,1]),('ninten','Graphics/UI/Inventory/characters/ninten.png',None,[1,1]),('cursor','Graphics/UI/Inventory/cursor.png',None,[3,1]),('boost-empty','Graphics/UI/EquipMenu/empty.png',None,[1,1]),('boost-better','Graphics/UI/EquipMenu/red_arrow.png',None,[1,1]),('boost-lower','Graphics/UI/EquipMenu/blue_arrow.png',None,[1,1]),('portrait-equipped','Graphics/UI/Inventory/modifiers.png',[15,10,9,7],[1,1]),('portrait-suitable','Graphics/UI/Inventory/modifiers.png',[0,10,13,7],[1,1]),('portrait-better','Graphics/UI/Inventory/modifiers2.png',[0,0,11,7],[1,1]),('portrait-lower','Graphics/UI/Inventory/modifiers2.png',[0,7,11,7],[1,1]),('cents','Graphics/UI/Overworld/cents.png',None,[1,1]))
 KINDS=('Container','Sprite','Rectangle','NinePatch','Text')
@@ -110,7 +110,7 @@ def build(root=ROOT):
     commands=[]
     for i,(name,key) in enumerate(zip(('Goods','PSI','Equip','Status','Map','Options'),('MENU_GOODS','MENU_PSI','MENU_EQUIP','MENU_STATUS','MENU_MAP','MENU_OPTIONS'))):
         require(node(pause,'menu/Commands/Items/'+name)['text']==key,'Field command translation binding')
-        commands.append(dict(id=i+1,labels=text(key),enabled=i==2))
+        commands.append(dict(id=i+1,labels=text(key),enabled=i in (1,2)))
     slots=[dict(id=i+1,source=source,labels=text('EQUIP_'+source.upper())) for i,source in enumerate(('weapon','body','arms','other'))]
     for part in ('SlotArrow','ItemListPanel/ItemArrow'):
         require(node(equip,'EquipMenu/Box/Panels/Slots/'+part)['loop_around'],'Field slot/list wrapping changed')
@@ -144,18 +144,51 @@ def build(root=ROOT):
     title=next(row for row in layouts if row['role']=='PauseTitle')['rect']
     ml,mt,mr,mb=(backdrop['margin_'+side] for side in ('left','top','right','bottom'))
     layout('PauseTitleBackdrop','Rectangle',[title[0]+ml,title[1]+mt,mr-ml,mb-mt],color=backdrop['color'])
+    # The admitted session has levels 1 and 2: only Telepathy is a learned field PSI.
+    psi_path='Nodes/Ui/PSIMenu/PSIMenuUI.tscn';psi=ex.text(psi_path)
+    psi_select=ex.text('Nodes/Ui/PSISelect.tscn');ex.text('Nodes/Ui/PSISkillLine.tscn')
+    psi_code=ex.text('Scripts/UI/PSIMenuUI.gd');selector=ex.text('Scripts/UI/PSISelect.gd')
+    ex.text('Scripts/UI/PSISkillLine.gd')
+    for snippet in ('set_PP_visible(false, false)','_close(true)','global.get_player().use_telepathy()'):
+        require(snippet in psi_code,'PSI source dispatch changed')
+    require('skill.use_cases <= 0' in selector,'PSI field filter changed')
+    skill=ex.yaml('Data/BattleSkills/telepathy.yaml');field=ex.yaml('Data/FieldSkills/telepathy.yaml')
+    fields(skill,('name','description','article','skill_type','use_cases','psi_category','target_type','pp_cost','use_sound','hit_sound'),'field PSI definition');fields(field,('name','description','battle_skill','usable'),'field skill binding')
+    require(skill['skill_type']=='psi' and skill['use_cases']==-1 and skill['target_type']==5 and skill['pp_cost']==0 and not skill['use_sound'] and not skill['hit_sound'],'Unreviewed field PSI semantics')
+    require(field['battle_skill']=='telepathy' and field['usable'][identity['party']] is True,'PSI user binding changed')
+    require('2: ["telepathy"]' in party,'PSI learning source changed')
+    session=read_json(root/'content/native-session.json');levels=session['levels']
+    require(len(levels)==2 and levels[0]['level']==1 and levels[1]['level']==2 and levels[1]['skills']==levels[0]['skills']+['telepathy'] and len(levels[0]['skills'])==2,'Unreviewed learned field skill scope')
+    skills_table=table(ex,'Translations/TranslatedText/battleskills - sheet.csv')
+    bindings['PsiTitle']=text('MENU_TITLE_PSI');bindings['PsiFailure']=text('PSI_PP_NOTENOUGH')
+    for name,key in (('PsiName',skill['name']),('PsiDescription',skill['description'])):
+        bindings[name]={lang:skills_table[key][col] for lang,col in (('en','en'),('zh_Hans_CN','zh_CN'))}
+    for name,value in [('PsiSkillId',field['battle_skill']),('PsiBaseSkill0',levels[0]['skills'][0]),('PsiBaseSkill1',levels[0]['skills'][1])]:bindings[name]={'en':value,'zh_Hans_CN':value}
+    detector=node(ex.text('Nodes/Reusables/Player.tscn'),'EventDetector')
+    require(detector['position']==[0,6] and detector['cast_to']==[0,16] and detector['collide_with_areas'] is True,'PSI ray source changed')
+    params.update(PsiRayX=detector['position'][0],PsiRayY=detector['position'][1],PsiRayLength=detector['cast_to'][1])
+    params.update(PsiCost=skill['pp_cost'],PsiLearnLevel=levels[1]['level'],PsiAction=1)
+    require(node(psi,'PSIMenu/PSISelect')['margin_left']==31 and node(psi,'PSIMenu/PSISelect')['margin_top']==23 and node(psi,'PSIMenu/PSISelect')['margin_right']==-34 and node(psi,'PSIMenu/PSISelect')['margin_bottom']==-57,'PSI panel source geometry changed')
+    require(node(psi_select,'.')['texture']=={'ExtResource':3},'PSI panel texture')
+    layout('PsiPanel','NinePatch',[31,23,255,100],2,[8]*4)
+    tab=ex.text('Nodes/Ui/InventorySelect.tscn');title_panel,title_patch=panel_geometry(tab,'CenterContainer',[218,3,61,23],6)
+    layout('PsiTitlePanel','NinePatch',title_panel,1,title_patch);layout('PsiTitle','Text',[223,8,50,12])
+    layout('PsiPortrait','Sprite',[37,0,22,21],3)
+    layout('PsiName','Text',[47,33,221,12]);layout('PsiCursor','Sprite',[40.666667,35,8,8],4)
+    layout('PsiDivider','Rectangle',[42,96,235,1],color=node(psi,'PSIMenu/Description/Desc/Divider')['color'])
+    layout('PsiDescription','Text',[47,101,224,12])
     clips=[]
-    for role,scene,path,rid,target,base in [('PauseOpen',pause,pause_path,1,'menu:rect_position',0),('PauseClose',pause,pause_path,3,'menu:rect_position',0),('EquipOpen',equip,equip_path,3,'EquipMenu/Box:rect_position:y',0),('EquipClose',equip,equip_path,2,'EquipMenu/Box:rect_position:y',0),('DescriptionOpen',equip,equip_path,7,'../EquipMenu/Description:rect_position:y',132),('DescriptionClose',equip,equip_path,6,'../EquipMenu/Description:rect_position:y',132)]:
+    for role,scene,path,rid,target,base in [('PauseOpen',pause,pause_path,1,'menu:rect_position',0),('PauseClose',pause,pause_path,3,'menu:rect_position',0),('EquipOpen',equip,equip_path,3,'EquipMenu/Box:rect_position:y',0),('EquipClose',equip,equip_path,2,'EquipMenu/Box:rect_position:y',0),('DescriptionOpen',equip,equip_path,7,'../EquipMenu/Description:rect_position:y',132),('DescriptionClose',equip,equip_path,6,'../EquipMenu/Description:rect_position:y',132),('PsiOpen',psi,psi_path,8,'PSIMenu:rect_position',0),('PsiClose',psi,psi_path,7,'PSIMenu:rect_position',0)]:
         a=animation(scene,rid,path,role);tracks=[track for track in a['tracks'] if track['path']==target]
         require(len(tracks)==1 and tracks[0]['type']=='value' and tracks[0]['interp']==1 and tracks[0]['keys']['update']==0,'Field animation source mapping')
         keys=tracks[0]['keys'];values=[v[1] if isinstance(v,list) else v for v in keys['values']]
         clips.append(dict(role=role,duration=a['length'],source=path,source_resource_id=rid,source_base=base,source_values=values,keys=[dict(time=t,value=v-base,ease=e) for t,v,e in zip(keys['times'],values,keys['transitions'])]))
-    return dict(schema=1,kind='encore.field-equipment.source-ir',commit=PIN,scope='Original Pause -> Equip for singleton Ninten and admitted BaseballCap; other known commands disabled; current UID and seven derived stats committed transactionally; no battle item-use or broader party capability',sources=dict(sorted(ex.sources.items())),dependencies={p:digest(root/p) for p in ('content/native-items.json','content/items-presentation-bindings.json')},parameters=params,bindings=bindings,commands=commands,slots=slots,equipment=[dict(definition=0,source='BaseballCap',slot=3,boosts=boosts)],resources=resources,layouts=layouts,clips=clips)
+    return dict(schema=1,kind='encore.field-equipment.source-ir',commit=PIN,scope='Original Pause -> Equip for singleton Ninten and admitted BaseballCap; PSI Telepathy for admitted levels 1/2 and singleton Ninten; other known commands disabled; current UID and seven derived stats committed transactionally; no battle item-use or broader party capability',sources=dict(sorted(ex.sources.items())),dependencies={p:digest(root/p) for p in ('content/native-items.json','content/items-presentation-bindings.json')},parameters=params,bindings=bindings,commands=commands,slots=slots,equipment=[dict(definition=0,source='BaseballCap',slot=3,boosts=boosts)],resources=resources,layouts=layouts,clips=clips)
 
 def recipe(ir):return dict(schema=1,kind='encore.field-equipment.asset-recipe',commit=PIN,sources=ir['sources'],resources=ir['resources'],licence_review='Pinned upstream LICENSE permits game-related modifications; art/font/audio retain upstream notices, not MIT.')
 def extract(root=ROOT):
     root=Path(root);ir=build(root);write_json(root/IR,ir);write_json(root/RECIPE,recipe(ir))
-    write_json(root/REVIEW,dict(schema=1,commit=PIN,ir_sha256=digest(root/IR),sources=ir['sources'],scope=ir['scope'],semantics=['Stable numeric OwnerId and source party name come from the checked Items identity adapter; they are separate from string-pool offsets','Pause six commands in original row-major order; only Equip admitted; source cancel/select closes Pause; Equip cancel returns Pause','Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty','Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost','Original EBMain/BottleRocket faces, source numeric spacing, original PNG textures, 5fps 0/1/2/1 cursor and0.1sec quart-out movement; Pause cash uses EBMain right alignment and source black text','PanelContainer StyleBox draw bounds use original expand margins separately from child content; source Pause title ColorRect is drawn behind text and grows by the admitted localized glyph width; Equip outer texture remains original defaultempty','Source Y animation keys/easing retained; description absolute132px normalized to relative offsets, source timeline remains in IR','Source320x180 rectangles at1:1 centered for400x240; bounded singleton auto-size adaptation recorded explicitly; no claim of exact Godot container pixel parity','Native START/A/B/L masks map source select/accept/cancel/scope; no keycode copied into C++','English source U+200B right-currency placeholder is explicitly rendered empty; no new glyph invented'],unsupported=['Other Pause commands','Other characters/equipment/items','Battle item action and asthma statuses','Character tabs, remaining backing ornaments and Pause info plates/audio muffle remain outside this slice'],unverified=['Tests retained but not run','Emulator and physical3DS visual/input/audio/save acceptance pending']))
+    write_json(root/REVIEW,dict(schema=1,commit=PIN,ir_sha256=digest(root/IR),sources=ir['sources'],scope=ir['scope'],semantics=['Stable numeric OwnerId and source party name come from the checked Items identity adapter; they are separate from string-pool offsets','Pause six commands in original row-major order; Equip and field PSI admitted; source cancel/select closes Pause; Equip cancel returns Pause','Field PSI uses source Telepathy name/description, learned skill identity and level-2 condition, Self field-only use case, zero PP cost, menu-open/close/confirm sounds and original Y animation; the silent close emits one field action after animation completion; level-1 PSI list stays empty','Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty','Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost','Original EBMain/BottleRocket faces, source numeric spacing, original PNG textures, 5fps 0/1/2/1 cursor and0.1sec quart-out movement; Pause cash uses EBMain right alignment and source black text','PanelContainer StyleBox draw bounds use original expand margins separately from child content; source Pause title ColorRect is drawn behind text and grows by the admitted localized glyph width; Equip outer texture remains original defaultempty','Source Y animation keys/easing retained; description absolute132px normalized to relative offsets, source timeline remains in IR','Source320x180 rectangles at1:1 centered for400x240; bounded singleton auto-size adaptation recorded explicitly; no claim of exact Godot container pixel parity','Native START/A/B/L masks map source select/accept/cancel/scope; no keycode copied into C++','English source U+200B right-currency placeholder is explicitly rendered empty; no new glyph invented'],unsupported=['Goods, Status, Map and Options','Other characters/equipment/items','Battle item action and asthma statuses','Other character tabs, PSI character-bar backing, remaining backing ornaments and Pause info plates/audio muffle remain outside this slice'],unverified=['Tests retained but not run','Emulator and physical3DS visual/input/audio/save acceptance pending']))
     return ir
 
 def load(root=ROOT):
@@ -186,7 +219,7 @@ def verify_receipt(ir,root=ROOT,source=None):
     return r
 
 def reuse_asset_receipt(previous_ir_bytes,previous_producer_bytes,previous_receipt,ir):
-    """Rebind unchanged converted art after a reviewed layout-only producer edit."""
+    """Rebind unchanged converted art after a reviewed layout/logic edit; all prior sources stay identical."""
     fields(previous_receipt,('schema','commit','ir_sha256','producer_sha256','tex3ds_sha256','outputs'),'Field reused receipt')
     require(previous_receipt['schema']==1,'Field reused receipt schema')
     sha=lambda value:hashlib.sha256(value).hexdigest()
@@ -194,7 +227,7 @@ def reuse_asset_receipt(previous_ir_bytes,previous_producer_bytes,previous_recei
     require(previous_receipt['commit']==previous['commit']==ir['commit']==PIN and
             previous_receipt['ir_sha256']==sha(previous_ir_bytes) and
             previous_receipt['producer_sha256']==sha(previous_producer_bytes),'Field reused asset baseline identity')
-    require(previous['sources']==ir['sources'] and previous['resources']==ir['resources'],'Field reused asset source/recipe changed')
+    require(all(ir['sources'].get(p)==sha for p,sha in previous['sources'].items()) and previous['resources']==ir['resources'],'Field reused asset source/recipe changed')
     def conversion(code):
         nodes=[n for n in ast.parse(code).body if isinstance(n,ast.FunctionDef) and n.name=='compile_assets']
         require(len(nodes)==1,'Field asset producer missing/ambiguous')
@@ -239,7 +272,7 @@ def lower(ir,receipt):
     out['Strings']=bytes(pool);validate(out);return out
 
 def encode(t):
-    validate(t);blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCFIE01',2,0,0,2,1,len(NAMES),bytes.fromhex(PIN))
+    validate(t);blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCFIE01',2,0,0,3,1,len(NAMES),bytes.fromhex(PIN))
     for i,name in enumerate(NAMES):
         while len(blob)%4:blob.append(0)
         data=t[name] if i==0 else b''.join(struct.pack(FORMATS[i],*r) for r in t[name]);struct.pack_into('<4I',blob,64+i*16,i+1,len(blob),len(t[name]),STRIDES[i]);blob.extend(data)
@@ -248,7 +281,7 @@ def encode(t):
 def parse_pack(blob):
     require(isinstance(blob,(bytes,bytearray)) and HEADER<=len(blob)<=1024*1024,'Field pack size')
     magic,schema,size,crc,caps,rules,count,pin=struct.unpack_from('<8s6I20s',blob)
-    require(magic==b'ENCFIE01' and schema==2 and caps==2 and rules==1 and size==len(blob) and count==len(NAMES) and pin.hex()==PIN and not any(blob[52:64]),'Field version/capabilities/pin')
+    require(magic==b'ENCFIE01' and schema==2 and caps==3 and rules==1 and size==len(blob) and count==len(NAMES) and pin.hex()==PIN and not any(blob[52:64]),'Field version/capabilities/pin')
     c=bytearray(blob);c[16:20]=b'\0'*4;require(zlib.crc32(c)&NIL==crc,'Field pack CRC');out={};end=HEADER
     for i,name in enumerate(NAMES):
         kind,start,num,stride=struct.unpack_from('<4I',blob,64+i*16)
@@ -262,7 +295,7 @@ def validate(t):
     def string(offset):require(type(offset) is int and offset in starts,'Field string reference');return pool[offset:pool.index(0,offset)].decode('utf-8')
     def integer(v,lo=0,hi=NIL):return type(v) is int and lo<=v<=hi
     def finite(v):return type(v) in (int,float) and math.isfinite(v) and abs(v)<=2000000
-    require(len(t['Parameters'])==len(PARAMETERS) and len(t['Bindings'])==len(BINDINGS) and len(t['Commands'])==6 and len(t['Slots'])==4 and len(t['Equipment'])==1 and 1<=len(t['Resources'])<=32 and 1<=len(t['Layouts'])<=64 and len(t['Clips'])==6 and 1<=len(t['Keys'])<=32,'Field section count')
+    require(len(t['Parameters'])==len(PARAMETERS) and len(t['Bindings'])==len(BINDINGS) and len(t['Commands'])==6 and len(t['Slots'])==4 and len(t['Equipment'])==1 and 1<=len(t['Resources'])<=32 and 1<=len(t['Layouts'])<=64 and len(t['Clips'])==8 and 1<=len(t['Keys'])<=32,'Field section count')
     params={}
     for i,p in enumerate(t['Parameters']):require(len(p)==2 and p[0]==i+1 and finite(p[1]),'Field parameter identity/value');params[PARAMETERS[i]]=p[1]
     require(1<=params['OwnerId']<=8192 and params['OwnerId']==int(params['OwnerId']),'Field owner ID')
@@ -272,6 +305,8 @@ def validate(t):
     require(0<params['CursorMoveSeconds']<=2 and 0<params['CursorFps']<=60 and -16<=params['NumberSpacing']<=16,'Field cursor/font tuning')
     for i in range(4):require(integer(int(params['CursorFrame'+str(i)]),0,2) and params['CursorFrame'+str(i)]==int(params['CursorFrame'+str(i)]),'Field cursor frame')
     for i in range(7):require(0<params['BoostWeight'+str(i)]<=100,'Field stat score')
+    require(-64<=params['PsiRayX']<=64 and -64<=params['PsiRayY']<=64 and 0<params['PsiRayLength']<=64,'Field PSI ray geometry')
+    require(params['PsiCost']==int(params['PsiCost']) and 0<=params['PsiCost']<=65535 and params['PsiLearnLevel']==int(params['PsiLearnLevel']) and 1<=params['PsiLearnLevel']<=100 and params['PsiAction']==1,'Field PSI policy/action')
     masks=[params[name] for name in ('OpenMask','ConfirmMask','CancelMask','ScopeMask')]
     require(all(v==int(v) and 0<v<=65535 and int(v)&(int(v)-1)==0 for v in masks) and len(set(masks))==4,'Field input mapping')
     for i,b in enumerate(t['Bindings']):
@@ -280,7 +315,9 @@ def validate(t):
         require(all(len(v)<=4096 for v in values),'Field binding text size')
         if 12<=i+1<=24:require(values[0]==values[1] and safe_path(values[0]),'Field path binding')
         else:require(all(not any(c in v for c in '\n\r[]{}') for v in values),'Field text controls')
-    for i,c in enumerate(t['Commands']):require(len(c)==4 and c[0]==i+1 and string(c[1]) and string(c[2]) and c[3]==int(i==2),'Field command grants')
+    identities=[string(t['Bindings'][BINDINGS.index(name)][1]) for name in ('PsiSkillId','PsiBaseSkill0','PsiBaseSkill1')]
+    require(len(set(identities))==3 and all(safe_path(s) for s in identities) and all(t['Bindings'][BINDINGS.index(name)][1]==t['Bindings'][BINDINGS.index(name)][2] for name in ('PsiSkillId','PsiBaseSkill0','PsiBaseSkill1')),'Field PSI skill identities')
+    for i,c in enumerate(t['Commands']):require(len(c)==4 and c[0]==i+1 and string(c[1]) and string(c[2]) and c[3]==int(i in (1,2)),'Field command grants')
     slot_names=set()
     for i,s in enumerate(t['Slots']):require(len(s)==4 and s[0]==i+1 and safe_path(string(s[1])) and string(s[1]) not in slot_names and string(s[2]) and string(s[3]),'Field slot identity');slot_names.add(string(s[1]))
     for e in t['Equipment']:require(len(e)==10 and integer(e[0],0,15) and safe_path(string(e[1])) and integer(e[2],0,3) and all(integer(v,-65535,65535) for v in e[3:]),'Field equipment policy')
@@ -290,6 +327,9 @@ def validate(t):
     roles=set()
     for i,l in enumerate(t['Layouts']):
         require(len(l)==21 and l[0]==i+1 and integer(l[1],1,len(ROLES)) and l[1] not in roles and l[2]==NIL and integer(l[3],1,len(KINDS)) and (l[4]==NIL or integer(l[4],0,len(t['Resources'])-1)) and integer(l[5],0,1023) and l[6]==1 and all(finite(v) for v in l[7:17]) and l[11]>=0 and l[12]>=0 and all(0<=v<=1 for v in l[13:17]) and all(integer(v,0,64) for v in l[17:]),'Field layout');roles.add(l[1])
+        psi_kinds={'PsiPanel':'NinePatch','PsiTitlePanel':'NinePatch','PsiTitle':'Text','PsiPortrait':'Sprite','PsiName':'Text','PsiDescription':'Text','PsiDivider':'Rectangle','PsiCursor':'Sprite'}
+        for role,kind in psi_kinds.items():
+            if l[1]==ROLES.index(role)+1:require(l[3]==KINDS.index(kind)+1 and l[11]>0 and l[12]>0,'Field PSI role draw kind/bounds')
         if l[1]==ROLES.index('PauseTitleBackdrop')+1:require(l[3]==KINDS.index('Rectangle')+1 and l[11]>0 and l[12]>0,'Field title backdrop draw kind/bounds')
         if l[3] in (2,4):require(l[4]!=NIL and l[5]<t['Resources'][l[4]][5]*t['Resources'][l[4]][6],'Field texture layout')
         else:require(l[4]==NIL,'Field nontexture resource')
@@ -302,7 +342,7 @@ def validate(t):
     require(end==len(t['Keys']),'Field orphan animation keys')
 
 def compile_pack(root=ROOT):
-    root=Path(root);ir=load(root);receipt=verify_receipt(ir,root);blob=encode(lower(ir,receipt));parse_pack(blob);target=root/PACK;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(blob);print('Field equipment compile: %d checked bytes; six known commands / Equip only'%len(blob))
+    root=Path(root);ir=load(root);receipt=verify_receipt(ir,root);blob=encode(lower(ir,receipt));parse_pack(blob);target=root/PACK;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(blob);print('Field equipment compile: %d checked bytes; six known commands / Equip and field PSI'%len(blob))
 def stage_files(source):
     source=Path(source);ir=load();receipt=verify_receipt(ir,ROOT,source);blob=(source/'ui/opening.encfield').read_bytes();require(blob==encode(lower(ir,receipt)),'Field staged pack differs from source');parse_pack(blob);return {Path('ui/opening.encfield'):blob,**{Path(r['output']):(source/r['output']).read_bytes() for r in ir['resources']}}
 def main():

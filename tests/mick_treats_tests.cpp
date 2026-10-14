@@ -30,11 +30,12 @@ int main(int argc,char** argv){
         if(c.b==kMickNone)blank=true;else{CHECK(c.b<view.count(MickSection::Texts));const auto speaker=view.text(c.b);CHECK(!view.string(speaker.en).empty()&&!view.string(speaker.zh).empty());named=true;}}
     CHECK(named&&blank);
     struct Host:MickHost{
-        std::string speaker,body;
+        std::string speaker,body;bool scratch=false,thought_done=false,reject_grant=false,reject_item=false;unsigned grants=0;
         bool validate_flag(std::string_view,std::string& e)override{e.clear();return true;}
-        bool validate_item(std::string_view,std::string& e)override{e.clear();return true;}
-        bool flag(std::string_view,bool& on,std::string& e)override{on=false;e.clear();return true;}
-        bool set_flag(std::string_view,bool,std::string& e)override{e.clear();return true;}
+        bool validate_item(std::string_view name,std::string& e)override{if(reject_item&&name=="KeyBasement"){e="rejected key source";return false;}e.clear();return true;}
+        bool flag(std::string_view name,bool& on,std::string& e)override{on=name=="mick_scratch"?scratch:name=="mick_telepathy"?thought_done:false;e.clear();return true;}
+        bool set_flag(std::string_view name,bool value,std::string& e)override{if(name=="mick_telepathy")thought_done=value;e.clear();return true;}
+        bool grant_key_item(std::string_view name,uint32_t doses,std::string& e)override{if(reject_grant||name!="KeyBasement"||doses!=1){e="key grant rejected";return false;}++grants;e.clear();return true;}
         bool remove_key_item(std::string_view,std::string& e)override{e.clear();return true;}
         bool show_text(std::string_view s,std::string_view b,std::string& e)override{speaker=std::string(s);body=std::string(b);e.clear();return true;}
         bool play_sound(std::string_view,std::string& e)override{e.clear();return true;}
@@ -50,6 +51,11 @@ int main(int argc,char** argv){
     std::string select_line="按[ui_select]并让[Ninten]选择";
     CHECK(resolve_dialogue_tags(select_line,"宁宁","A","B","+",error)&&select_line=="按+并让宁宁选择");
     std::string unknown="[ui_cancel]";CHECK(!resolve_dialogue_tags(unknown,"宁宁","A","B","+",error));
+    MickRuntime thoughts;CHECK(thoughts.initialize(view,host,error));CHECK(thoughts.start_thought(true,error));const auto food=host.body;CHECK(thoughts.advance_text(error)&&thoughts.state()==MickProgramState::Complete&&host.grants==0);
+    host.scratch=true;CHECK(thoughts.start_thought(true,error));CHECK(host.body!=food&&host.grants==0);CHECK(thoughts.advance_text(error));CHECK(host.grants==1&&!host.thought_done&&host.speaker.empty());CHECK(thoughts.advance_text(error));CHECK(thoughts.advance_text(error)&&host.thought_done);CHECK(thoughts.advance_text(error)&&thoughts.state()==MickProgramState::Complete);CHECK(thoughts.start_thought(true,error)&&host.body==food);CHECK(thoughts.advance_text(error)&&host.grants==1);
+    CHECK(thoughts.start_thought(false,error)&&host.speaker.empty());CHECK(!thoughts.start_thought(true,error)); // Active dialogue cannot be restarted.
+    host.thought_done=false;host.reject_grant=true;MickRuntime failed;CHECK(failed.initialize(view,host,error)&&failed.start_thought(true,error));CHECK(!failed.advance_text(error)&&failed.state()==MickProgramState::Failed&&!host.thought_done&&host.grants==1);
+    host.reject_item=true;MickRuntime unknown_key;CHECK(!unknown_key.initialize(view,host,error));host.reject_item=host.reject_grant=false;
     MickData bad;
     auto speaker=bytes;uint32_t commands=0;bool patched=false;
     for(uint32_t i=0;i<9;++i){const uint8_t* d=speaker.data()+64+i*16;const uint32_t kind=uint32_t(d[0])|uint32_t(d[1])<<8|uint32_t(d[2])<<16|uint32_t(d[3])<<24;
@@ -62,5 +68,10 @@ int main(int argc,char** argv){
     auto truncated=bytes;truncated.pop_back();CHECK(!bad.load(truncated.data(),truncated.size(),error));
     auto magic=bytes;magic[7]='0';CHECK(!bad.load(magic.data(),magic.size(),error));
     auto stride=bytes;stride[64+3*16+12]=0;CHECK(!bad.load(stride.data(),stride.size(),error));
+    auto get=[](const std::vector<uint8_t>&b,size_t n){return uint32_t(b[n])|uint32_t(b[n+1])<<8|uint32_t(b[n+2])<<16|uint32_t(b[n+3])<<24;};
+    auto mutate=[&](size_t n,uint32_t value){auto b=bytes;for(unsigned k=0;k<4;++k)b[n+k]=uint8_t(value>>(k*8));const auto hash=encore::crc32(b.data()+32,b.size()-32);for(unsigned k=0;k<4;++k)b[16+k]=uint8_t(hash>>(k*8));CHECK(!data.load(b.data(),b.size(),error));CHECK(data.view().count(MickSection::Commands)==view.count(MickSection::Commands));};
+    mutate(20,1);mutate(20,3);const auto command_rows=get(bytes,64+5*16+4),programme_rows=get(bytes,64+4*16+4);
+    for(uint32_t i=0;i<view.count(MickSection::Commands);++i)if(view.command(i).opcode==uint32_t(MickOpcode::GrantKeyItem)){mutate(command_rows+i*20,99);mutate(command_rows+i*20+4,UINT32_MAX);mutate(command_rows+i*20+8,0);mutate(command_rows+i*20+12,1);}
+    mutate(programme_rows+12,5);
     return fails?1:0;
 }

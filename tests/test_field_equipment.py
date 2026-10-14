@@ -1,5 +1,5 @@
 """Manual Pause/Equip source and ENCFIE01 parser cases; not automatic CI."""
-import copy,struct,sys,unittest,zlib
+import copy,hashlib,json,struct,sys,unittest,zlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
@@ -35,7 +35,7 @@ class FieldEquipmentFormat(unittest.TestCase):
         self.assertEqual(self.ir['equipment'][0]['boosts'],[0,0,0,5,0,0,0])
         self.rejects('Equipment',0,2,4)
     def test_unknown_versions_and_capabilities(self):
-        for offset,value in ((8,1),(8,3),(20,2),(24,2)):
+        for offset,value in ((8,1),(8,3),(20,1),(20,3),(24,2)):
             with self.subTest(offset=offset,value=value),self.assertRaises(ValueError):pack.parse_pack(self.changed(offset,struct.pack('<I',value)))
     def test_corrupt_pin_reserved_crc_and_truncation(self):
         for blob in (self.changed(32,b'\x01'),self.changed(52,b'\x01'),self.blob[:-1],self.blob+b'\0'):
@@ -56,6 +56,43 @@ class FieldEquipmentFormat(unittest.TestCase):
         self.rejects('Parameters',pack.PARAMETERS.index('ConfirmMask'),1,3)
         self.rejects('Clips',0,0,99);self.rejects('Clips',0,1,1)
         self.rejects('Keys',0,2,0)
+    def test_expanded_backgrounds_and_title(self):
+        layouts={r['role']:r for r in self.ir['layouts']}
+        self.assertEqual(layouts['PausePanel']['rect'],[4,4,159,72])
+        self.assertEqual(layouts['PauseInside']['rect'],[4,4,159,63])
+        self.assertEqual(layouts['PauseCommand']['rect'],[15,15,61,12])
+        self.assertEqual(layouts['StatsPanel']['rect'],[28,23,162,110])
+        self.assertEqual(layouts['EquipmentPanel']['resource'],0)
+        self.assertEqual(layouts['PauseTitleBackdrop']['rect'],[14,5,13,10])
+        self.assertEqual(layouts['PauseTitleBackdrop']['kind'],'Rectangle')
+        self.assertLess(layouts['PauseInside']['rect'][0],layouts['PauseCommand']['rect'][0])
+    def test_unknown_style_operations_rejected(self):
+        scene=(ROOT/'upstream/MOTHER-Encore/Nodes/Ui/Pause menu.tscn').read_text(encoding='utf-8')
+        for replacement in ('expand_margin_left = -1.0','expand_margin_left = NaN',
+                            'expand_margin_left = 11.0\nexpand_margin_left = 12.0',
+                            'expand_margin_left = 11.0\ndraw_center = false'):
+            with self.subTest(replacement=replacement),self.assertRaises(ValueError):
+                pack.panel_geometry(scene.replace('expand_margin_left = 11.0',replacement),
+                                    'menu/Commands/InsideBG',[15,15,140,50],4)
+    def test_title_backdrop_required_and_typed(self):
+        row=next(i for i,r in enumerate(self.ir['layouts']) if r['role']=='PauseTitleBackdrop')
+        self.rejects('Layouts',row,3,pack.KINDS.index('Text')+1)
+        self.rejects('Layouts',row,11,0)
+        tables=copy.deepcopy(self.tables);tables['Layouts'].pop(row)
+        with self.assertRaises(ValueError):pack.encode(tables)
+    def test_unchanged_asset_reuse_guards(self):
+        previous=(ROOT/pack.IR).read_bytes();producer=(ROOT/'tools/field_equipment.py').read_bytes()
+        self.assertEqual(pack.reuse_asset_receipt(previous,producer,self.receipt,self.ir),self.receipt)
+        changed=copy.deepcopy(self.ir);changed['resources'][0]['source']='unreviewed.png'
+        with self.assertRaises(ValueError):pack.reuse_asset_receipt(previous,producer,self.receipt,changed)
+        changed=copy.deepcopy(self.ir);changed['sources']['unreviewed']='0'*64
+        with self.assertRaises(ValueError):pack.reuse_asset_receipt(previous,producer,self.receipt,changed)
+        receipt=copy.deepcopy(self.receipt);receipt['producer_sha256']='0'*64
+        with self.assertRaises(ValueError):pack.reuse_asset_receipt(previous,producer,receipt,self.ir)
+        altered=producer.replace(b"'-f','rgba8'",b"'-f','rgb565'")
+        self.assertNotEqual(altered,producer)
+        receipt=copy.deepcopy(self.receipt);receipt['producer_sha256']=hashlib.sha256(altered).hexdigest()
+        with self.assertRaises(ValueError):pack.reuse_asset_receipt(previous,altered,receipt,self.ir)
     def test_actual_staged_resources(self):
         files=pack.stage_files(ROOT/'romfs')
         self.assertEqual(files[Path('ui/opening.encfield')],self.blob)

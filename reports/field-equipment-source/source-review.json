@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "71c5833c1fbd5069648b7f46b8b65f6b4277dc51fd2887ddd0ab61e4f2c4b586",
+  "ir_sha256": "983007cb2a9cf25ccae1e19e0be425c5852a08a9d08be88da0bdd937ce7cdd7e",
   "sources": {
     "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
     "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
@@ -89,6 +89,7 @@
     "Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty",
     "Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost",
     "Original EBMain/BottleRocket faces, source numeric spacing, original PNG textures, 5fps 0/1/2/1 cursor and0.1sec quart-out movement; Pause cash uses EBMain right alignment and source black text",
+    "PanelContainer StyleBox draw bounds use original expand margins separately from child content; source Pause title ColorRect is drawn behind text and grows by the admitted localized glyph width; Equip outer texture remains original defaultempty",
     "Source Y animation keys/easing retained; description absolute132px normalized to relative offsets, source timeline remains in IR",
     "Source320x180 rectangles at1:1 centered for400x240; bounded singleton auto-size adaptation recorded explicitly; no claim of exact Godot container pixel parity",
     "Native START/A/B/L masks map source select/accept/cancel/scope; no keycode copied into C++",
@@ -98,7 +99,7 @@
     "Other Pause commands",
     "Other characters/equipment/items",
     "Battle item action and asthma statuses",
-    "Character tabs/backing ornaments and Pause info plates/audio muffle remain outside this slice"
+    "Character tabs, remaining backing ornaments and Pause info plates/audio muffle remain outside this slice"
   ],
   "unverified": [
     "Tests retained but not run",

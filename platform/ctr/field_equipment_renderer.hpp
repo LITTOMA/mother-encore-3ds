@@ -137,7 +137,7 @@ public:
         candidate.assets_.resize(data.count(encore::upstream::FieldSection::Resources));
         for(uint32_t i=0;i<candidate.assets_.size();++i){const auto r=data.resource(i);if(!acquire(candidate.assets_[i],r.image,data.string(r.image.path),root,error))return false;}
         for(uint32_t i=0;i<data.count(encore::upstream::FieldSection::Layouts);++i){const auto l=data.layout(i);
-            if(l.parent!=none||l.role<uint32_t(Role::PausePanel)||l.role>uint32_t(Role::CashCents)||l.kind<uint32_t(Kind::Container)||l.kind>uint32_t(Kind::Text)||(l.flags&~(uint32_t(encore::upstream::ItemLayoutFlag::Centered)|uint32_t(encore::upstream::ItemLayoutFlag::Visible)))){error="Unsupported field equipment layout operation";return false;}
+            if(l.parent!=none||l.role<uint32_t(Role::PausePanel)||l.role>uint32_t(Role::PauseTitleBackdrop)||l.kind<uint32_t(Kind::Container)||l.kind>uint32_t(Kind::Text)||(l.flags&~(uint32_t(encore::upstream::ItemLayoutFlag::Centered)|uint32_t(encore::upstream::ItemLayoutFlag::Visible)))){error="Unsupported field equipment layout operation";return false;}
             candidate.layouts_.push_back(l);
         }
         C3D_FrameSync();std::swap(data_,candidate.data_);std::swap(items_,candidate.items_);assets_.swap(candidate.assets_);layouts_.swap(candidate.layouts_);error_.clear();return true;
@@ -185,13 +185,20 @@ inline bool FieldEquipmentRenderer::draw(const Menu& menu,const BattleRenderer& 
     };
     for(const auto& source:layouts_){
         const auto role=Role(source.role);auto l=source;
-        const bool pause=role==Role::PausePanel||role==Role::PauseInside||role==Role::PauseTitle||role==Role::PauseCommand||role==Role::PauseCash||role==Role::PauseCursor||role==Role::CashLabel||role==Role::CashValue||role==Role::CashCents;
+        const bool pause=role==Role::PausePanel||role==Role::PauseInside||role==Role::PauseTitleBackdrop||role==Role::PauseTitle||role==Role::PauseCommand||role==Role::PauseCash||role==Role::PauseCursor||role==Role::CashLabel||role==Role::CashValue||role==Role::CashCents;
         if(!pause&&!menu.equipment_visible())continue;
         if(role==Role::BoostEmpty||role==Role::BoostBetter||role==Role::BoostLower||role==Role::Cursor)continue;
         const float y=pause?pause_y:equip_y;
         switch(role){
-            case Role::PauseTitle:case Role::EquipTitle:
-                if(!text(main_font,l,data_.binding(role==Role::PauseTitle?Binding::PauseTitle:Binding::EquipTitle,chinese),dx,y))return false;break;
+            case Role::PauseTitleBackdrop:break; // Drawn behind the title, regardless of record order.
+            case Role::PauseTitle:{
+                const auto* backdrop=layout(Role::PauseTitleBackdrop);if(!backdrop)return fail("Field equipment title backdrop missing");
+                auto box=*backdrop;const std::string title(data_.binding(Binding::PauseTitle,chinese));
+                box.rect.z+=main_font.text_width(title.c_str());
+                if(!art(box,dx,y)||!text(main_font,l,title,dx,y))return false;break;
+            }
+            case Role::EquipTitle:
+                if(!text(main_font,l,data_.binding(Binding::EquipTitle,chinese),dx,y))return false;break;
             case Role::PauseCommand:
                 for(uint32_t i=0;i<data_.count(encore::upstream::FieldSection::Commands);++i){
                     l=source;l.rect.x+=(i%columns)*data_.parameter(Parameter::PauseColumnPitch);l.rect.y+=(i/columns)*data_.parameter(Parameter::PauseRowPitch);

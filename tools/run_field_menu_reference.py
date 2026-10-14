@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Bounded original Pause/PSI methods in official Godot 3.6.2, with named adapters."""
-import argparse, hashlib, json, re, subprocess, sys
+import argparse, hashlib, json, re, shutil, subprocess, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
@@ -15,7 +15,7 @@ var skills={}
 var events=[]
 var telepathy_calls=0
 var SKILL_TELEPATHY="telepathy"
-var SKILL_TELEPORT_A="teleport_a"
+var SKILL_TELEPORT_A="teleportA"
 func get_battle_skill(id):return skills.get(id,{})
 func get_player():return self
 func use_telepathy():
@@ -216,7 +216,14 @@ def main():
     select=SELECT+extract('Scripts/UI/PSISelect.gd',['update_skills','_condense_skills','is_empty','set_active','refresh_selectable','_cursor_selected','_does_it_do_anything'])
     # Only the SELF arm is in this bounded fixture. The real numeric identity is
     # checked in the source skill; no other target behavior is admitted here.
-    select=select.replace('BattleSystem.TargetType.SELF','5')
+    target_source=ex.text('Scripts/UI/Battle/BattleSystem.gd')
+    target_match=re.search(r'enum TargetType\s*\{([^}]+)\}',target_source)
+    require(target_match is not None,'Missing source TargetType')
+    targets=[v.strip() for v in target_match[1].split(',')]
+    require(targets.index('SELF')==5,'Unreviewed SELF enum identity')
+    constants=ex.text('Scripts/global/globalData.gd')
+    require('const SKILL_TELEPATHY := "telepathy"' in constants and 'const SKILL_TELEPORT_A := "teleportA"' in constants,'Unreviewed PSI source constants')
+    select=select.replace('BattleSystem.TargetType.SELF',str(targets.index('SELF')))
     psi=PSI+extract('Scripts/UI/PSIMenuUI.gd',['_close','_use_skill'])
     skills={}
     for name in ['strike','splitShot','telepathy']:
@@ -238,7 +245,7 @@ def main():
     require(result.returncode==0 and 'SCRIPT ERROR' not in log and 'ERROR:' not in log and 'FIELD_MENU_REFERENCE_COMPLETE' in log,'Original menu oracle failed; retained log')
     data=json.loads((out/'reference.json').read_text())
     require(data['engine']['string']=='3.6.2-stable (official)','Wrong reference engine')
-    receipt={'commit':ex.lock['commit'],'engine_sha256':sha(a.godot),'tool_sha256':sha(__file__),'sources':ex.sources,'methods_sha256':methods,'reference_sha256':sha(out/'reference.json'),
+    receipt={'commit':ex.lock['commit'],'engine_sha256':sha(a.godot),'tool_sha256':sha(__file__),'sources':ex.sources,'methods_sha256':methods,'reference_sha256':sha(out/'reference.json'),'generated_scripts_sha256':{name:sha(work/name) for name in scripts},'fixture_sha256':sha(work/'fixture.json'),
              'adapters':['Native AnimationPlayer uses checked source durations, without rendering tracks; glyphs, texture geometry and timing equivalence are not tested',
                          'UI/audio/world service records pause and call order; no real sound or world movement',
                          'Character adapter stores PP/status; source PSI selection and PP subtraction execute unchanged',
@@ -247,5 +254,6 @@ def main():
                          'TargetType.SELF is replaced by verified value 5; no other targeting path exercised'],
              'scope':'Bounded extracted original Pause open/cancel/select close, PSI filtering/back and zero-PP telepathy dispatch; not full original game, input device, graphics, or hardware'}
     (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    shutil.rmtree(work)  # this fresh, owned source work copy; original logs/receipts remain
     print(json.dumps(data['cases'],indent=2))
 if __name__=='__main__':main()

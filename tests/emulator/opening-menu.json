@@ -10,7 +10,9 @@
       "Scripts/UI/PSISkillLine.gd": "60dd6c6df7e5eedd96d221f6f8fe68d2826ccda64a92a056ab87e6f5c770476f",
       "Scripts/UI/Pausemenu.gd": "118f19d419a89ec09916961b92322f67ce032b44aa8215f9509d31088b421ca2",
       "Scripts/UI/NamingScreen/Naming screen.gd": "8e094a7d8db69cc90f70f11238a4c5b0231678ad7041dc537ce671e4284b570d",
-      "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401"
+      "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401",
+      "Audio/Music/Mother Earth.mp3": "89d44b28e944108bf285f1656950cba4cf5473764097a3b5138340fcf595fc5f",
+      "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc"
     }
   },
   "projection": [
@@ -43,7 +45,8 @@
         "height": 240
       },
       "capture": true,
-      "audio_progress": true
+      "audio_progress": true,
+      "expected_music": 1202
     },
     {
       "name": "select_guard",
@@ -340,7 +343,8 @@
         "menu_error": ""
       },
       "capture": true,
-      "audio_progress": true
+      "audio_progress": true,
+      "expected_music": 21
     },
     {
       "name": "pause",

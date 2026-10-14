@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient, CdbError
 from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection
-from tools.run_emulator_semantics import validate_scenario
+from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original
 
 
 def wire(**changes):
@@ -57,6 +57,21 @@ class WireBoundary(unittest.TestCase):
             change(candidate)
             with self.assertRaises(ValueError):
                 validate_scenario(candidate)
+
+    def test_original_comparison_rejects_result_drift(self):
+        original={'cases': {'pause_select_close': {'paused': False,'active': False}, 'pause_cancel_close': {'paused': False,'active': False}, 'psi_back': {'paused': True,'pause_active': True}, 'psi_unlearned': {'pp': 26,'skills': 0}}}
+        baseline={'close_pause': {'paused': 0,'menu_phase': 0}, 'cancel_pause': {'paused': 0,'menu_phase': 0}, 'psi_back': {'paused': 1,'menu_phase': 2}, 'psi_unlearned_confirm': {'pp': 26,'menu_phase': 9,'psi_learned': 0}}
+        self.assertEqual(len(compare_original(baseline,original)),4)
+        for key,field in [('close_pause','paused'),('psi_back','menu_phase'),('psi_unlearned_confirm','pp')]:
+            changed=copy.deepcopy(baseline);changed[key][field]=999
+            with self.assertRaises(AssertionError):compare_original(changed,original)
+
+    def test_pinned_original_and_missing_changed_unknown_source(self):
+        scenario=json.loads((ROOT/'tests/emulator/opening-menu.json').read_text())
+        validate_reference(scenario['reference'])
+        for field,value in [('commit','0'*40),('sources',{}),('sources',{'../outside':'0'*64}),('sources',{'Scripts/UI/Pausemenu.gd':'0'*64})]:
+            changed=copy.deepcopy(scenario['reference']);changed[field]=value
+            with self.assertRaises((ValueError,KeyError)):validate_reference(changed)
 
 
 class FakeSocket:

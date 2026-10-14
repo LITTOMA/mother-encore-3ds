@@ -42,7 +42,7 @@ def validate_scenario(scenario):
     known = set(decode(WIRE.pack(MAGIC, 2, WIRE.size, *([0]*37), *([0.0]*4), *(b'' for _ in range(4)))))
     projection({k: 0 for k in known}, scenario['projection'])
     for step in scenario['steps']:
-        if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress'}:
+        if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress', 'expected_music'}:
             raise ValueError('Unknown scenario step field')
         if not isinstance(step.get('name'), str) or not step['name'].replace('_', '').isalnum():
             raise ValueError('Unsafe scenario checkpoint name')
@@ -240,7 +240,7 @@ def run_once(args, scenario, index):
                 if args.require_audio and step.get('audio_progress'):
                     before = (state['dsp_music_sample_pos'], state['dsp_music_wave_seq'])
                     state = session.advance(32)
-                    if not state['music_playing'] or not state['dsp_music_playing'] or before == (state['dsp_music_sample_pos'], state['dsp_music_wave_seq']):
+                    if state['music_asset'] != step.get('expected_music', state['music_asset']) or not state['music_playing'] or not state['dsp_music_playing'] or before == (state['dsp_music_sample_pos'], state['dsp_music_wave_seq']):
                         raise AssertionError('BGM is not being consumed by DSP')
                 if args.require_audio and not state['audio_available']:
                     raise AssertionError('NDSP unavailable in audio-required acceptance')

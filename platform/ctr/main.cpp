@@ -2110,7 +2110,9 @@ int main(int argc,char** argv){
         if(!world_blackbars.update(bars_open,dt))house_error="World blackbar animation rejected";
         if(audio_player.available()){
             // A parked House owner behind a field must not replay its request history.
-            if((!in_field()&&!audio_player.consume(opening_data.view(),gameplay_scene->world.audio_requests(),error))||!audio_player.update(dt,error))audio_status=error;
+            const bool audio_ok=in_field()?audio_player.update(dt,error):
+                audio_player.update_room(opening_data.view(),gameplay_scene->world.audio_requests(),dt,error);
+            if(!audio_ok)audio_status=error;
             if(in_battle()&&battle_entry.encounter_audio_pending())if(!audio_player.play(battle_entry.take_encounter_audio(),ctr::AudioLane::Jingle,error))audio_status=error;
         }else if(in_battle()&&battle_entry.encounter_audio_pending())battle_entry.take_encounter_audio();
         if(!region_music.update(dt,audio_player,error))audio_status=error;

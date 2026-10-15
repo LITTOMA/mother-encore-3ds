@@ -9,3 +9,5 @@ tools/podunk_field.py 将无碰撞区块的包围盒写成四个零。旧版 Fie
 field_collision_index 将缓存查询与修复前的完整枚举逐项比较：数量、预算结果、顺序、偏移、包围盒、顶点和法线，以及原点、院子、区块边界、远处地形、禁用条件、重绑定和动态角色。MSVC 当前通过 220,251 项断言；这只是主机结果。交叉构建、打包、sanitizer 和修复后的模拟器实测结果待补，真机未验证。
 
 性能检查必须记录真实 GSP 游戏提交频率，不能使用 frame.current 的模拟刷新计数替代。配套 Azahar 小补丁从 system.info.performance 暴露已有的只读性能采样；不重置计数，不写游戏内存，也不改变 CPU/GPU 速度或游戏逻辑。输入和存档测试在隔离目录运行，保留有界收据、日志和截图后清理临时 profile。
+
+完整检查首先暴露主线原有的 CMake 配置错误：gameplay_audio 区块重复打开 BUILD_TESTING，缺少对应结束，make test 在配置阶段失败。现移除重复条件，保持目标意图与 BUILD_TESTING=OFF 的作用域，另行重跑完整检查；这不改变游戏代码。初次失败日志保存在 build/yard-performance/gcc-full.log 和 clang-full.log。

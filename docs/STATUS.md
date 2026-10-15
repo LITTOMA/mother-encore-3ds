@@ -64,3 +64,5 @@ Podunk 室外由 `world/podunk/podunk.encmap`、`world/podunk/podunk.encroom` �
 主机测试、真实交叉构建、打包检查、模拟器和真机是不同验证层次。构建步骤见 [BUILD](BUILD.md)，复现与验证要求见 [TESTING](TESTING.md)。当前 Old / New 3DS 真机验收仍未完成，没有全游戏适配百分比或目标设备帧率保证。
 
 后续顺序见 [开发计划](DEVELOPMENT_PLAN.md)。
+
+2026-10-15：进一步修复 Doll 战后旧角色恢复回调释放新角色、妹妹碰撞挡住卧室出口的问题，见 [战后角色恢复](POSTWIN_NPC_RESTORATION.md)。共享核心沿实际步行路线完成玩偶旋律、妈妈、电话、Record 写档及 Continue LOAD；官方 Godot 的 2,150 帧动作样本保持一致。游戏 78d9261 的真实 3DSX/CIA 与 323 项打包资源检查通过，模拟器电话路线两次各 88 检查点、地图边界两次各 19 检查点，结果投影一致。电话模拟器仅验证打开/取消 Record；地图路线明确预置钥匙。Linux Clang 普通及 ASan/UBSan 各 146/146 通过；GCC 的聚合 Python 测试失败已按实际来源修复，针对性 94/17/17 项通过，完整矩阵仍需复验，保持草稿。不能据此声明完整原版、真机或 CIA 安装通过。

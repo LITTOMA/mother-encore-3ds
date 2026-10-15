@@ -127,8 +127,14 @@ try:
         wait(lambda s:s['mick_phase']==1 and s['dialogue_finished']==1);pulse('A')
         final=wait(lambda s:s['field_phase']==0 and s['paused']==0 and s['dialogue_active']==0)
         assert final['key_count']==2 and final['field_error']==''
-        record('repeat_thought_finished');capture('returned_to_field')
-        result={'status':'passed','locale':locale,'projection':{'key_count_before':before['key_count'],'key_count_after':final['key_count'],'repeat_does_not_duplicate':True,'field_phase':final['field_phase'],'paused':final['paused']},'source_commit':receipt['source_commit']}
+        record('repeat_thought_finished')
+        pulse('RIGHT',duration=.4)
+        moved=wait(lambda s:s['player_x']>final['player_x']+8)
+        assert moved['field_phase']==0 and moved['paused']==0 and moved['key_count']==2
+        for field in ('level','hp','pp','inventory_count','experience'):
+            assert moved[field]==before[field],field+' changed during free Telepathy'
+        record('movement_restored');capture('returned_to_field')
+        result={'status':'passed','locale':locale,'projection':{'key_count_before':before['key_count'],'key_count_after':moved['key_count'],'repeat_does_not_duplicate':True,'movement_restored':True,'stats_inventory_conserved':True,'field_phase':moved['field_phase'],'paused':moved['paused']},'source_commit':receipt['source_commit']}
     result.update(memory_write_enabled=False,driver_sha256=r.sha(out/'driver_snapshot.py'),fixture_sha256=r.sha(a.fixture),emulator_sha256=r.sha(a.emulator),game_sha256=identity['sha256'],scope='Artificial shared-core validated level-2 House exit with no basement key; normal LOAD, scratch conversation, Telepathy and repeated Telepathy. Not naturally-played opening or hardware verification.')
 
 finally:

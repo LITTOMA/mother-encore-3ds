@@ -1678,6 +1678,7 @@ void publish_semantic_probe(){
     if(world){const auto& player=world->player();p.player_x=player.position.x;p.player_y=player.position.y;p.direction_x=player.direction.x;p.direction_y=player.direction.y;}
     p.session_ready=session_state_ready;p.battle_active=in_battle();
     p.level=session_rewards_valid?session_rewards.level:0;p.hp=session_rewards_valid?uint32_t(session_rewards.hp):0;p.pp=session_rewards_valid?uint32_t(session_rewards.pp):0;
+    p.experience=session_rewards_valid?session_rewards.experience:0;
     p.inventory_count=session_inventory.size();p.key_count=uint32_t(session_state.key_items.size());
     const auto music=audio_player.observe_music();p.audio_available=audio_player.available();p.music_playing=music.playing;p.music_asset=music.asset_id;
     p.dsp_music_playing=audio_player.available()&&ndspChnIsPlaying(0);p.dsp_music_sample_pos=audio_player.available()?ndspChnGetSamplePos(0):0;p.dsp_music_wave_seq=audio_player.available()?ndspChnGetWaveBufSeq(0):0;
@@ -2147,7 +2148,7 @@ int main(int argc,char** argv){
                 }
                 if(!battle_outcome.idle_frame())round_error=battle_outcome.error();
                 process_battle_audio();
-                if(battle_handoff_pending()){session_rewards=battle_outcome.state();session_rewards_valid=true;}
+                if(const auto* rewards=battle_outcome.committed_state()){session_rewards=*rewards;session_rewards_valid=true;}
             }
         }
         if(in_field()){if(!field_scene->world.end_scene_frame())field_status=field_scene->world.error();}

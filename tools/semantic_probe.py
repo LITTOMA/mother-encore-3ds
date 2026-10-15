@@ -7,10 +7,10 @@ FIELDS = ('version byte_size sequence frame width height title_phase title_optio
           'naming_phase naming_field naming_selected intro_phase menu_phase menu_command '
           'menu_slot menu_candidate field_scene field_phase house_phase world_stage '
           'paused crouch session_ready battle_active level hp pp inventory_count key_count '
-          'audio_available music_playing music_asset dsp_music_playing dsp_music_sample_pos dsp_music_wave_seq psi_learned intro_scene intro_door overflow battle_entry_phase battle_round_phase battle_outcome_phase enemy_hp door_unlocked_mask world_phrase mick_phase choice_phase save_phase present_opened_mask object_flag_count').split()
+          'audio_available music_playing music_asset dsp_music_playing dsp_music_sample_pos dsp_music_wave_seq psi_learned intro_scene intro_door overflow battle_entry_phase battle_round_phase battle_outcome_phase enemy_hp door_unlocked_mask world_phrase mick_phase choice_phase save_phase present_opened_mask object_flag_count experience').split()
 POSITIONS = ('player_x', 'player_y', 'direction_x', 'direction_y', 'mick_x', 'mick_y')
 ERRORS = ('house_error', 'field_error', 'menu_error', 'audio_error')
-WIRE = struct.Struct('<8s50I6f128s128s128s128s')
+WIRE = struct.Struct('<8s51I6f128s128s128s128s')
 
 
 def decode(data):
@@ -18,7 +18,7 @@ def decode(data):
         raise ValueError('Truncated or oversized semantic probe')
     magic, *values = WIRE.unpack(data)
     result = dict(zip(FIELDS, values[:len(FIELDS)]))
-    if magic != MAGIC or result['version'] != 4 or result['byte_size'] != WIRE.size:
+    if magic != MAGIC or result['version'] != 5 or result['byte_size'] != WIRE.size:
         raise ValueError('Unsupported semantic probe identity/version/size')
     if result['sequence'] % 2:
         raise ValueError('Semantic probe producer is mid-commit')

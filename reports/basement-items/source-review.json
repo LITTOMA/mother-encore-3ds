@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "d2106c4424ebc41ec87b674626036a15aa34958afac0947da456e0cf9bf1bf26",
+  "sources": {
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
+    "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Graphics/Objects/Items/BatPlastic.png": "f575293d03d362762bd0240b27cdddcd3df245cef9d2874977a82be12a5cdcc2",
+    "Graphics/Objects/Items/BatPlastic.png.import": "334670f765338ee09d647bd4b0af1dfd8eec3ac938d264556f6acf87ca40a7b7",
+    "Graphics/Character Sprites/Ninten/cutscene.png": "4e6417cf62745d0e652d0b1cee5733a96bdf2236f38b677a0ba6fa0acf741d48",
+    "Graphics/Character Sprites/Ninten/cutscene.png.import": "eb2cec934cc1adfd298d111643c9e187250e140d5293f7ef72fbb4b129103cc3"
+  },
+  "semantics": "Original plastic bat metadata/icon and Ninten special-animation sheet; no whole-game behavior approval",
+  "permission": "Pinned upstream LICENSE permits game-related modifications; original game art remains under upstream terms."
+}

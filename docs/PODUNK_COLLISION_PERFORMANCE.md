@@ -11,3 +11,5 @@ field_collision_index 将缓存查询与修复前的完整枚举逐项比较：�
 性能检查必须记录真实 GSP 游戏提交频率，不能使用 frame.current 的模拟刷新计数替代。配套 Azahar 小补丁从 system.info.performance 暴露已有的只读性能采样；不重置计数，不写游戏内存，也不改变 CPU/GPU 速度或游戏逻辑。输入和存档测试在隔离目录运行，保留有界收据、日志和截图后清理临时 profile。
 
 完整检查首先暴露主线原有的 CMake 配置错误：gameplay_audio 区块重复打开 BUILD_TESTING，缺少对应结束，make test 在配置阶段失败。现移除重复条件，保持目标意图与 BUILD_TESTING=OFF 的作用域，另行重跑完整检查；这不改变游戏代码。初次失败日志保存在 build/yard-performance/gcc-full.log 和 clang-full.log。
+
+配置修复后的完整检查继续在主线旧测试夹具报错：ValueError: Drawer item icon already appended。完整检查未绕过；为独立核验本修复，手动 full 模式现在先运行新碰撞目标的 GCC/Clang 普通及 ASan/UBSan 检查，再继续原有全量构建和测试。资源在同一源码检出先由 make content 生成并审查，后续 make test -o content 复用它；没有修改夹具期望或加入忽略。

@@ -143,6 +143,21 @@ int main(int argc,char**argv){
         check(unpause&&door.phase()==SceneDoorPhase::Done,"fade-out unpauses before it completes");
         check(!door.begin(links,99,fades,error),"unknown route index rejected");
     }
+    // Telepathy follows the source facing ray; adjacency alone cannot select Mick.
+    {
+        RoomData room;check(room.load_file(argv[3],error),error.c_str());MickData data;
+        std::string mick_path(argv[1]);const auto suffix=mick_path.rfind(".encmap");check(suffix!=std::string::npos,"map suffix");mick_path.replace(suffix,7,".encmick");check(data.load_file(mick_path.c_str(),error),error.c_str());
+        struct Host:MickHost {
+            std::string body;bool validate_flag(std::string_view,std::string&)override{return true;}bool validate_item(std::string_view,std::string&)override{return true;}
+            bool flag(std::string_view,bool&v,std::string&)override{v=false;return true;}bool set_flag(std::string_view,bool,std::string&)override{return true;}bool remove_key_item(std::string_view,std::string&)override{return true;}
+            bool show_text(std::string_view,std::string_view v,std::string&)override{body=std::string(v);return true;}bool play_sound(std::string_view,std::string&)override{return true;}
+        }host;
+        const auto actor=data.view().actor();const Vec2 position{actor.position.x,actor.position.y+14};std::vector<bool>flags(room.view().flag_count(),false);
+        auto scene=std::make_unique<FieldScene>();check(scene->prepare(room.view(),view,links,flags,position,{0,-1},{400,240},error),error.c_str());check(scene->finish_transition(),scene->error().c_str());check(!scene->try_telepathy({0,6},16,error),"unbound thoughts rejected");check(scene->bind_mick(data.view(),host,error),error.c_str());
+        check(!scene->try_telepathy({NAN,6},16,error)&&scene->phase()==FieldPhase::Walking&&!scene->world.house_paused(),"invalid ray fails without pause");
+        check(scene->try_telepathy({0,6},16,error),error.c_str());const auto thoughts=host.body;check(scene->phase()==FieldPhase::MickTalk&&scene->world.house_paused(),"thought dialogue owns pause");check(!scene->try_telepathy({0,6},16,error),"cannot restart active thought dialogue");check(scene->mick().advance_text(error)&&scene->finish_talk(),"thought completion resumes world");
+        check(scene->world.set_house_direction({0,1}),"face away");check(scene->try_telepathy({0,6},16,error),error.c_str());check(host.body!=thoughts,"facing away uses source no-problem, not proximity thoughts");check(scene->mick().advance_text(error)&&scene->finish_talk(),"empty-ray dialogue resumes world");
+    }
     std::cout<<"Field data/scene checks: "<<checks<<'\n';
     return 0;
 }

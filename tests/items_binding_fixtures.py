@@ -5,11 +5,24 @@ from pathlib import Path
 from unittest.mock import patch
 ROOT=Path(os.environ.get('ENCORE_SOURCE_ROOT',Path(__file__).resolve().parents[1])).resolve()
 sys.dont_write_bytecode=True;sys.path.insert(0,str(ROOT))
-from tools import items_assets as assets,items_presentation_bindings as bindings,native_items as native
+from tools import items_assets as assets,items_presentation_bindings as bindings,native_items as native,drawer_item
 
 def candidate():
  recipe=bindings.read(bindings.IR);recipe['layouts']['info']['anchor']=[.75,1];recipe['platform']['hint_offset']=[-2,-1]
  return recipe
+
+def base_resources(baseline):
+ # export_ir appends the checked Drawer extension itself. Its caller must pass
+ # the original twelve-resource UI prefix, not the already extended output.
+ recipe=bindings.read(bindings.IR);count=len(recipe['assets'])
+ resources=baseline['resources']
+ if len(resources)!=count+1:raise ValueError('Unexpected Items resource extension count')
+ prefix=resources[:count]
+ if [r['path']for r in prefix]!=[r['output']for r in recipe['assets']]:raise ValueError('Items resource prefix changed')
+ expected=copy.deepcopy(drawer_item.verify_receipt(ROOT)['resource'])
+ expected['id']=max(r['id']for r in prefix)+1
+ if resources[count:]!=[expected]:raise ValueError('Unexpected or stale Items extension resource')
+ return copy.deepcopy(prefix)
 
 def fixtures(output):
  baseline=bindings.read(ROOT/'content/native-items.json');native.verify_sources(baseline,ROOT)
@@ -17,7 +30,7 @@ def fixtures(output):
  require_candidate=bindings.read(output/'bindings.json');assert require_candidate==candidate()
  with patch.object(bindings,'IR',output/'bindings.json'):
   ex,definitions,raw=assets.reviewed_extract();reference=bindings.read(ROOT/'reports/items-menu-source/native-layout.json')
-  changed=assets.export_ir(ex,definitions,raw,reference,baseline['resources'],baseline['dependencies'],write=False)
+  changed=assets.export_ir(ex,definitions,raw,reference,base_resources(baseline),baseline['dependencies'],write=False)
   native.verify_sources(changed,ROOT);blob=native.encode(native.lower(changed,root=ROOT));native.parse_pack(blob)
  assert blob!=original
  assert changed['definitions']==baseline['definitions']and changed['initial_inventory']==baseline['initial_inventory']and changed['clips']==baseline['clips']and changed['sounds']==baseline['sounds']

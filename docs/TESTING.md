@@ -46,3 +46,7 @@ Python 聚合测试占用四个 CTest 槽，将六个已审查只读模块分配
 资源日志与起止时间 / PID / 退出码保存在 `build/content-jobs/`，CI 上传诊断日志。多个 `CONTENT START` 先于对应 `CONTENT END` 表示重叠执行；记录中的区间可核对实际并发峰值。这些属于构建诊断，不进入 RomFS。
 
 默认 `BUILD_JOBS=4`、`CONTENT_JOBS=4`；独立 CMake 的 `ENCORE_CONTENT_JOBS=4` 和测试的 `ENCORE_TEST_JOBS=4` 可调高，CTest 的并发参数应与后者一致。单进程资源基准可显式使用 `make native-content CONTENT_JOBS=1`；测试串行对照可使用 `-DENCORE_TEST_PARALLEL=OFF` 和 `CTEST_ARGS="--parallel 1"`。完整 CI 耗时仍须以当前提交的 runner 记录衡量，不把局部资源基准当作整体加速结果。
+
+## 已授权的模拟器进度验收
+
+当用户明确要求本次持续开发按进度自动化测试时，沿用该会话授权执行相关场景。独立 Godot 原版参考与真实 3DSX/CDB 的重复语义检查、临时 profile 清理和证据边界见 [模拟器语义验收](EMULATOR_SEMANTICS.md)。它不自行开启定时任务，不替代全面回归或真机。

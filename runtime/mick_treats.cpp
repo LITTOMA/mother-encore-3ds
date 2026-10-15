@@ -1,6 +1,7 @@
 #include "encore/mick_treats.hpp"
 #include "encore/content.hpp"
 #include "encore/crc32.hpp"
+#include "encore/utf8.hpp"
 #include <cmath>
 #include <cstring>
 
@@ -61,7 +62,7 @@ MickRngEvent MickView::rng_event(uint32_t i)const{auto*p=record(MickSection::Rng
 bool MickData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kMickSectionCount*16||n>max_bytes)return fail("Mick pack size rejected");
-    if(std::memcmp(p,"ENCMIK01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=1||u32(p+24)!=1||u32(p+28)||u32(p+52)!=kMickSectionCount||u32(p+56)||u32(p+60))
+    if(std::memcmp(p,"ENCMIK01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=2||u32(p+24)!=1||u32(p+28)||u32(p+52)!=kMickSectionCount||u32(p+56)||u32(p+60))
         return fail("Mick pack schema/capability/scene/reserved rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Mick pack source pin rejected");}
     if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Mick pack checksum rejected");
@@ -104,12 +105,15 @@ bool MickData::load(const uint8_t*p,size_t n,std::string&error){
     for(uint32_t i=0;i<v.count(S::Texts);++i){const auto tx=v.text(i);if(tx.en>=v.count(S::Strings)||tx.zh>=v.count(S::Strings))return fail("Mick pack text rejected");}
     auto clip_ok=[&](uint32_t first,uint32_t count,uint16_t anim){for(uint32_t i=0;i<count;++i){const auto c=v.clip(first+i);if(c.anim!=anim||c.direction>3||c.frame>=frames||!c.milliseconds||c.milliseconds>10000)return false;}return true;};
     if(!clip_ok(a.idle_clip,a.idle_clip_count,0)||!clip_ok(a.walk_clip,a.walk_clip_count,1)||!clip_ok(a.talk_clip,a.talk_clip_count,2))return fail("Mick pack clip rejected");
-    bool saw_bark=false,saw_talk=false;
+    bool saw_bark=false,saw_talk=false,saw_thought=false,saw_fallback=false;
     for(uint32_t i=0;i<v.count(S::Programmes);++i){
         const auto g=v.programme(i);
-        if((g.kind!=uint32_t(MickProgramKind::Talk)&&g.kind!=uint32_t(MickProgramKind::Bark))||!g.count||g.first>v.count(S::Commands)||g.count>v.count(S::Commands)-g.first)
+        if((g.kind<uint32_t(MickProgramKind::Talk)||g.kind>uint32_t(MickProgramKind::NoProblem))||!g.count||g.first>v.count(S::Commands)||g.count>v.count(S::Commands)-g.first)
             return fail("Mick pack programme rejected");
-        if(g.kind==uint32_t(MickProgramKind::Talk))saw_talk=true;else saw_bark=true;
+        if(g.kind==uint32_t(MickProgramKind::Talk))saw_talk=true;
+        if(g.kind==uint32_t(MickProgramKind::Bark))saw_bark=true;
+        if(g.kind==uint32_t(MickProgramKind::Thought)&&!g.flag)saw_thought=true;
+        if(g.kind==uint32_t(MickProgramKind::NoProblem)){if(g.flag)return fail("Mick fallback flag rejected");saw_fallback=true;}
         if(g.flag&&v.string(g.flag).empty())return fail("Mick pack programme flag rejected");
         bool ended=false;
         for(uint32_t pc=0;pc<g.count;++pc){const auto c=v.command(g.first+pc);
@@ -117,6 +121,7 @@ bool MickData::load(const uint8_t*p,size_t n,std::string&error){
             case MickOpcode::ShowText:if(c.a>=v.count(S::Texts)||(c.b!=kMickNone&&c.b>=v.count(S::Texts))||c.c||c.d)return fail("Mick pack ShowText rejected");break;
             case MickOpcode::AwaitText:case MickOpcode::End:if(c.a||c.b||c.c||c.d)return fail("Mick pack gate rejected");if(c.opcode==uint32_t(MickOpcode::End))ended=true;break;
             case MickOpcode::RemoveKeyItem:if(c.a!=a.item||c.b||c.c||c.d)return fail("Mick pack RemoveKeyItem rejected");break;
+            case MickOpcode::GrantKeyItem:if(g.kind!=uint32_t(MickProgramKind::Thought)||!safe_path(v.string(c.a))||c.b==0||c.b>65535||c.c||c.d)return fail("Mick pack GrantKeyItem rejected");break;
             case MickOpcode::SetFlag:if(!c.a||c.a>=v.count(S::Strings)||v.string(c.a).empty()||c.b>1||c.c||c.d)return fail("Mick pack SetFlag rejected");break;
             case MickOpcode::Choice:if(c.a>=v.count(S::Texts)||c.c>=v.count(S::Texts)||c.b>=g.count||c.d>=g.count)return fail("Mick pack Choice rejected");break;
             case MickOpcode::PlaySound:if(!c.a||c.a>=v.count(S::Strings)||v.string(c.a).empty()||c.b||c.c||c.d)return fail("Mick pack PlaySound rejected");break;
@@ -127,7 +132,7 @@ bool MickData::load(const uint8_t*p,size_t n,std::string&error){
             default:return fail("Mick pack opcode rejected");}}
         if(!ended||v.command(g.first+g.count-1).opcode!=uint32_t(MickOpcode::End))return fail("Mick pack programme must End");
     }
-    if(!saw_talk||!saw_bark||v.programme(a.bark_programme).kind!=uint32_t(MickProgramKind::Bark))return fail("Mick pack talk/bark programme missing");
+    if(!saw_talk||!saw_bark||!saw_thought||!saw_fallback||v.programme(a.bark_programme).kind!=uint32_t(MickProgramKind::Bark))return fail("Mick pack talk/bark programme missing");
     for(uint32_t i=0;i<v.count(S::Rng);++i){const auto e=v.rng_event(i);
         if(e.kind<uint32_t(MickRngKind::Randi)||e.kind>uint32_t(MickRngKind::ArmWander)||!finite(e.x)||!finite(e.y)||!finite(e.w)||!finite(e.h)||e.w<=0||e.h<=0||!finite(e.a)||!finite(e.b))
             return fail("Mick pack RNG event rejected");
@@ -144,7 +149,7 @@ bool MickRuntime::initialize(MickView view,MickHost&host,std::string&e){
     const auto a=view.actor();
     if(!host.validate_flag(view.string(a.require_flag),e)||!host.validate_flag(view.string(a.consume_flag),e)||!host.validate_item(view.string(a.item),e))return false;
     for(uint32_t i=0;i<view.count(MickSection::Programmes);++i){const auto g=view.programme(i);if(g.flag&&!host.validate_flag(view.string(g.flag),e))return false;
-        for(uint32_t pc=0;pc<g.count;++pc){const auto c=view.command(g.first+pc);if(c.opcode==uint32_t(MickOpcode::SetFlag)&&!host.validate_flag(view.string(c.a),e))return false;}}
+        for(uint32_t pc=0;pc<g.count;++pc){const auto c=view.command(g.first+pc);if(c.opcode==uint32_t(MickOpcode::SetFlag)&&!host.validate_flag(view.string(c.a),e))return false;if(c.opcode==uint32_t(MickOpcode::GrantKeyItem)&&!host.validate_item(view.string(c.a),e))return false;}}
     const std::string locale=locale_;
     *this=MickRuntime{};locale_=locale;view_=view;host_=&host;ready_=true;
     spawn_=position_=a.position;facing_=a.initial_direction;destination_=position_;
@@ -175,6 +180,11 @@ bool MickRuntime::start_talk(std::string&e){
     if(!select(MickProgramKind::Talk,e))return false;
     return step(e);
 }
+bool MickRuntime::start_thought(bool target,std::string&e){
+    if(!ready_||!host_||state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion)return fail(e,"Mick thought start rejected");
+    if(!select(target?MickProgramKind::Thought:MickProgramKind::NoProblem,e))return false;
+    return step(e);
+}
 void MickRuntime::face_toward(Vec2 target){const Vec2 aim{target.x-position_.x,target.y-position_.y};if(aim.x||aim.y)facing_=aim;}
 bool MickRuntime::start_bark(std::string&e){
     if(!ready_||!host_||state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion)return fail(e,"Mick bark start rejected");
@@ -202,6 +212,7 @@ bool MickRuntime::step(std::string&e){
             const auto speaker=c.b==kMickNone?std::string_view{}:localized(view_.text(c.b),locale_);
             if(!host_->show_text(speaker,body,e))return rejected();++pc_;break;}
         case MickOpcode::AwaitText:++pc_;state_=MickProgramState::WaitingText;e.clear();return true;
+        case MickOpcode::GrantKeyItem:if(!host_->grant_key_item(view_.string(c.a),c.b,e))return rejected();++pc_;break;
         case MickOpcode::RemoveKeyItem:if(!host_->remove_key_item(view_.string(c.a),e))return rejected();++pc_;break;
         case MickOpcode::SetFlag:if(!host_->set_flag(view_.string(c.a),c.b!=0,e))return rejected();++pc_;break;
         case MickOpcode::PlaySound:if(!host_->play_sound(view_.string(c.a),e))return rejected();++pc_;break;
@@ -325,8 +336,15 @@ bool MickRuntime::simulate(float dt,Vec2 player,Vec2 camera,Vec2 view,bool pause
     if(state_==MickProgramState::Failed)return false;
     e.clear();return true;
 }
-bool resolve_dialogue_tags(std::string& text,std::string_view name,std::string_view accept,std::string_view toggle,std::string_view select,std::string& error){
+bool resolve_dialogue_tags(std::string& text,std::string_view name,std::string_view accept,std::string_view toggle,std::string_view select,std::string& error,std::string_view favorite_food,uint32_t favorite_food_limit){
     if(name.empty()||accept.empty()||toggle.empty()||select.empty()){error="Dialogue tag label is empty";return false;}
+    std::string_view food=favorite_food;
+    if(favorite_food_limit){
+        if(favorite_food_limit>512){error="Favourite food tag bound rejected";return false;}
+        size_t cursor=0,cut=0;uint32_t codepoint=0,count=0;
+        while(cursor<food.size()){if(!encore::utf8_next(food,cursor,codepoint)){error="Favourite food UTF-8 rejected";return false;}if(++count<=favorite_food_limit)cut=cursor;}
+        food=food.substr(0,cut);
+    }
     std::string out;out.reserve(text.size());
     for(size_t i=0;i<text.size();){
         if(text[i]!='['){out.push_back(text[i]);++i;continue;}
@@ -336,6 +354,7 @@ bool resolve_dialogue_tags(std::string& text,std::string_view name,std::string_v
         if(tag=="ui_accept")replacement=accept;
         else if(tag=="ui_toggle")replacement=toggle;
         else if(tag=="ui_select")replacement=select;
+        else if(tag=="favfood"){if(!favorite_food_limit){error="Favourite food context is missing";return false;}replacement=food;}
         else if(tag=="partylead"||tag=="ninten")replacement=name;
         else{error="Unreviewed dialogue tag";return false;}
         out.append(replacement.data(),replacement.size());i=end+1;

@@ -251,6 +251,44 @@ bool FieldScene::try_mick(bool accept,std::string& error){
     if(!mick_.start_talk(error))return fail(error.empty()?"Field Mick programme rejected":error.c_str());
     error.clear();return true;
 }
+bool FieldScene::try_telepathy(Vec2 offset,float length,std::string& error){
+    if(!mick_bound_||phase_!=FieldPhase::Walking||world.house_paused()||!std::isfinite(offset.x)||!std::isfinite(offset.y)||!std::isfinite(length)||length<=0){error="Field Telepathy state/ray rejected";return false;}
+    const auto player=world.player();const auto direction=normalized(player.direction);
+    const Vec2 origin{player.position.x+offset.x,player.position.y+offset.y};
+    const auto actor=mick_.view().actor();float target_distance=INFINITY,hit=0;
+    bool target=ray_rect(origin,direction,length,mick_.interact_center(),actor.interact_extents,hit);
+    if(target)target_distance=hit;
+    if(ray_rect(origin,direction,length,mick_.collision_center(),actor.collision_extents,hit)){target=true;target_distance=std::min(target_distance,hit);}
+    const Vec2 end{origin.x+direction.x*length,origin.y+direction.y*length};
+    std::vector<MotionObstacle> obstacles;
+    if(!collision_.collect({std::min(origin.x,end.x),std::min(origin.y,end.y)},{std::max(origin.x,end.x),std::max(origin.y,end.y)},obstacles)){error="Field Telepathy collider query rejected";return false;}
+    auto cross=[](Vec2 a,Vec2 b){return a.x*b.y-a.y*b.x;};
+    for(const auto&o:obstacles){
+        const uint32_t edges=o.segment?1:o.count;
+        for(uint32_t i=0;i<edges;++i){const auto p=o.points[i],q=o.points[(i+1)%o.count];
+            const Vec2 a{p.x+o.offset.x-origin.x,p.y+o.offset.y-origin.y},edge{q.x-p.x,q.y-p.y};
+            const float denominator=cross(direction,edge);if(denominator==0)continue;
+            const float distance=cross(a,edge)/denominator,u=cross(a,direction)/denominator;
+            if(distance>=0&&distance<=length&&u>=0&&u<=1&&distance<target_distance){error="Telepathy hit an unported field collider";return false;}
+        }
+    }
+    // Other source actors are represented as notices rather than executable
+    // thought targets. Conservatively reject nearby unknown actors, never invent
+    // their thoughts or silently report an empty ray for unsupported content.
+    for(uint32_t i=0;i<notice_active_.size();++i)if(notice_active_[i]){const auto n=map_.notice(i);
+        if(map_.text(n.path)==mick_.view().string(actor.path))continue;
+        const float x=n.position.x-origin.x,y=n.position.y-origin.y;
+        if(x*x+y*y<=length*length){error="Nearby Telepathy target is not ported";return false;}
+    }
+    if(target){const auto at=mick_.position();Vec2 facing{at.x-player.position.x,at.y-player.position.y};
+        if(std::abs(facing.x)>std::abs(facing.y)&&facing.x!=0)facing={sign(facing.x),0};else if(facing.y!=0)facing={0,sign(facing.y)};else facing=player.direction;
+        if(!world.set_house_direction(facing)){error="Telepathy player turn rejected";return false;}
+    }
+    if(!world.pause_for_house()){error="Telepathy dialogue pause rejected";return false;}
+    phase_=FieldPhase::MickTalk;mick_ignore_accept_=true;
+    if(!mick_.start_thought(target,error))return fail(error.empty()?"Telepathy programme rejected":error.c_str());
+    error.clear();return true;
+}
 bool FieldScene::circle_overlaps(Vec2 center,float radius)const{
     const auto& room=world.content();const auto scene=room.scene();const auto player=world.player().position;
     const float r2=radius*radius;bool inside=true;

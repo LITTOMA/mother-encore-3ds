@@ -1237,7 +1237,7 @@ LINK_STRIDES = (1, 24, 84)
 TRANSITIONS = {'Fade': 0, 'Circle Focus': 1, 'Circle Pop': 2}
 
 
-def pack_container(magic, scene_id, sections, strides, limit):
+def pack_container(magic, scene_id, sections, strides, limit, *, capability=1):
     count = len(sections)
     offset = HEADER.size + count * 16
     directory = bytearray()
@@ -1257,16 +1257,16 @@ def pack_container(magic, scene_id, sections, strides, limit):
     payload = bytearray(HEADER.size) + directory + body
     total = len(payload)
     require(total <= limit, 'Field resource exceeds its format bound')
-    HEADER.pack_into(payload, 0, magic, 1, total, 0, 1, scene_id, 0, bytes.fromhex(PIN), count, 0, 0)
+    HEADER.pack_into(payload, 0, magic, 1, total, 0, capability, scene_id, 0, bytes.fromhex(PIN), count, 0, 0)
     crc = zlib.crc32(bytes(payload[32:]))
     struct.pack_into('<I', payload, 16, crc)
     return bytes(payload)
 
 
-def unpack_container(blob, magic, strides, limit):
+def unpack_container(blob, magic, strides, limit, *, capability=1):
     require(isinstance(blob, (bytes, bytearray)) and HEADER.size <= len(blob) <= limit, 'Field resource size rejected')
-    m, version, total, crc, capability, scene_id, reserved, pin, count, r1, r2 = HEADER.unpack_from(blob)
-    require(m == magic and version == 1 and total == len(blob) and capability == 1 and not reserved and not r1 and not r2,
+    m, version, total, crc, actual_capability, scene_id, reserved, pin, count, r1, r2 = HEADER.unpack_from(blob)
+    require(m == magic and version == 1 and total == len(blob) and actual_capability == capability and not reserved and not r1 and not r2,
             'Field resource header rejected')
     require(pin == bytes.fromhex(PIN), 'Field resource source pin rejected')
     require(zlib.crc32(bytes(blob[32:])) == crc, 'Field resource checksum rejected')

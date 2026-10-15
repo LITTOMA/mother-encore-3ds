@@ -66,6 +66,23 @@ jobs:
         run: echo "PYTHONPATH=$GITHUB_WORKSPACE/tools/ci_python" >> "$GITHUB_ENV"
       - name: Initialize the pinned official submodule and verify every reviewed source byte
         run: python tools/ci_bootstrap.py
+      - name: Regenerate checked resources before focused collision validation
+        run: make content
+      - name: Check ordered field collision results before unrelated fixture preparation
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p build/collision-ci
+          cmake -S . -B build/host -DCMAKE_BUILD_TYPE=Release -DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON 2>&1 | tee build/collision-ci/configure.log
+          cmake --build build/host --parallel 4 --target encore_field_collision_index_tests 2>&1 | tee build/collision-ci/build.log
+          ctest --test-dir build/host --verbose --no-tests=error -R '^field_collision_index$' 2>&1 | tee build/collision-ci/plain.log
+      - name: Check field collision with ASan UBSan and normal leak checking
+        shell: bash
+        run: |
+          set -o pipefail
+          cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug -DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON -DENCORE_SANITIZERS=ON 2>&1 | tee build/collision-ci/sanitize-configure.log
+          cmake --build build/sanitize --parallel 4 --target encore_field_collision_index_tests 2>&1 | tee build/collision-ci/sanitize-build.log
+          ctest --test-dir build/sanitize --verbose --no-tests=error -R '^field_collision_index$' 2>&1 | tee build/collision-ci/sanitize.log
       - name: Regenerate checked resources and run the current shared-core tests
         # The compiler-independent Python methods all run in GCC. Clang still
         # runs every C++ consumer, source CLI and fixture test.
@@ -73,7 +90,7 @@ jobs:
         # the same resources again through CMake's default ALL target.
         # Four CTest slots; the aggregate Python test reserves all four and starts
         # at most four isolated module processes. Unreviewed writers stay serial.
-        run: make test CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 4 --no-tests=error ${{ matrix.ctest_args }}"
+        run: make test -o content CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 4 --no-tests=error ${{ matrix.ctest_args }}"
       - name: Retain Clang coverage for Python suites that compile renderer doubles
         if: matrix.compiler == 'clang'
         run: python -m unittest -v tests.test_loading_texture tests.test_loading_indicator
@@ -91,6 +108,7 @@ jobs:
           name: host-diagnostics-${{ matrix.compiler }}
           if-no-files-found: warn
           path: |
+            build/collision-ci/
             build/host/Testing/Temporary/LastTest.log
             build/host/Testing/Temporary/LastTestsFailed.log
             build/host/CMakeFiles/CMakeConfigureLog.yaml

@@ -24,7 +24,13 @@ private:
     FieldMapView map_;
     std::vector<Vec2> points_,normals_;
     std::vector<uint32_t> first_;
-    std::vector<uint32_t> layers_,bodies_;
+    // Derived in original order. Empty ENCMAP01 chunks have (0,0) bounds;
+    // decorative cells must never be scanned by an origin collision query.
+    struct Cell {Vec2 offset;uint32_t first,count;};
+    struct Chunk {Vec2 minimum,maximum;uint32_t first,count;};
+    std::vector<Cell> cells_;
+    std::vector<Chunk> chunks_;
+    std::vector<uint32_t> bodies_;
     bool extra_=false,extra_enabled_=true;Vec2 extra_points_[4]{},extra_normals_[4]{},extra_minimum_{},extra_maximum_{};
 };
 

@@ -1,0 +1,22 @@
+diff --git a/src/core/cdb/coordinator.cpp b/src/core/cdb/coordinator.cpp
+index 24a767ad0..c0b841f84 100644
+--- a/src/core/cdb/coordinator.cpp
++++ b/src/core/cdb/coordinator.cpp
+@@ -537,9 +537,16 @@ private:
+                           "screen-capture"}}};
+         }
+         if (method == "system.info") {
++            const auto stats = system.GetLastPerfStats();
+             return Json{{"poweredOn", system.IsPoweredOn()},
+                         {"coreCount", system.GetNumCores()},
+-                        {"selectedProcessId", selected_process_id}};
++                        {"selectedProcessId", selected_process_id},
++                        {"performance", {{"systemFps", stats.system_fps},
++                                         {"gameFps", stats.game_fps},
++                                         {"emulationSpeed", stats.emulation_speed},
++                                         {"ipcSeconds", stats.time_hle_ipc},
++                                         {"gpuSeconds", stats.time_gpu},
++                                         {"swapSeconds", stats.time_swap}}}};
+         }
+         if (method == "process.list") {
+             Json result = Json::array();

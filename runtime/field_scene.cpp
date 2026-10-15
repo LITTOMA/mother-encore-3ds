@@ -33,7 +33,22 @@ bool FieldCollision::bind(FieldMapView map,const std::vector<bool>& layer_active
         for(size_t k=0;k<pts.size();++k){const auto a=pts[k],b=pts[(k+1)%pts.size()];normals_.push_back(normalized({b.y-a.y,-(b.x-a.x)}));}
         points_.insert(points_.end(),pts.begin(),pts.end());
     }
-    for(uint32_t i=0;i<layer_active.size();++i)if(layer_active[i]&&(map.layer(i).flags&uint32_t(FieldLayerFlag::Collides)))layers_.push_back(i);
+    for(uint32_t i=0;i<layer_active.size();++i){
+        if(!layer_active[i])continue;
+        const auto layer=map.layer(i);
+        if(!(layer.flags&uint32_t(FieldLayerFlag::Collides)))continue;
+        for(uint32_t c=0;c<layer.chunk_count;++c){
+            const auto chunk=map.chunk(layer.chunk_first+c);
+            const auto first=uint32_t(cells_.size());
+            for(uint32_t k=0;k<chunk.count;++k){
+                const auto cell=map.cell(chunk.first+k);const auto tile=map.tile(cell.tile);
+                if(!tile.shape_count)continue;
+                cells_.push_back({{layer.position.x+float(cell.x)*16.f,layer.position.y+float(cell.y)*16.f},tile.shape_first,tile.shape_count});
+            }
+            const auto count=uint32_t(cells_.size())-first;
+            if(count)chunks_.push_back({chunk.minimum,chunk.maximum,first,count});
+        }
+    }
     for(uint32_t i=0;i<body_active.size();++i)if(body_active[i])bodies_.push_back(i);
     error.clear();return true;
 }
@@ -45,17 +60,11 @@ bool FieldCollision::collect(Vec2 lo,Vec2 hi,std::vector<MotionObstacle>& out)co
         const auto first=first_[shape_index];
         out.push_back({points_.data()+first,normals_.data()+first,s.count,offset,mn,mx,s.kind==uint16_t(FieldShapeKind::Segment)});
     };
-    for(const auto li:layers_){
-        const auto layer=map_.layer(li);
-        for(uint32_t c=0;c<layer.chunk_count;++c){
-            const auto chunk=map_.chunk(layer.chunk_first+c);
-            if(!intersects(lo,hi,chunk.minimum,chunk.maximum))continue;
-            for(uint32_t k=0;k<chunk.count;++k){
-                const auto cell=map_.cell(chunk.first+k);const auto tile=map_.tile(cell.tile);
-                if(!tile.shape_count)continue;
-                const Vec2 offset{layer.position.x+float(cell.x)*16.f,layer.position.y+float(cell.y)*16.f};
-                for(uint32_t s=0;s<tile.shape_count;++s)push(tile.shape_first+s,offset);
-            }
+    for(const auto& chunk:chunks_){
+        if(!intersects(lo,hi,chunk.minimum,chunk.maximum))continue;
+        for(uint32_t k=0;k<chunk.count;++k){
+            const auto& cell=cells_[chunk.first+k];
+            for(uint32_t j=0;j<cell.count;++j)push(cell.first+j,cell.offset);
         }
     }
     for(const auto bi:bodies_){const auto b=map_.body(bi);for(uint32_t s=0;s<b.shape_count;++s)push(b.shape_first+s,{});}

@@ -14,7 +14,7 @@ Mother: Encore 的局部原生 Nintendo 3DS 移植。共享 C++17 核心运行�
 | 世界 | 开局房屋内的移动、碰撞、人物动画、房门切换、七种物件调查、床头抽屉领取喷雾及四个礼物盒绘制（仅 Present4 可领取狗粮钥匙物品）；房屋正门经原版 Circle Focus 转场进入 Podunk 室外（完整 TileMap 图层与碰撞、草丛空闲帧、静态物件、可开启门）并可返回房屋；院子 Mick 会漫步、按旗标说已审查的 woof 树，给粮前南栅栏 `mick_bark` 把玩家往北推回 |
 | 剧情 | Lamp、Doll、Pillow / Minnie 支线及已映射的 Carol、电话和 Dad 流程；电话后的 Carol / Mimmie 钥匙提示与重复对话 |
 | 战斗 | 受检遭遇的原版局部规则、回合、敌方回应、奖励与战后演出；不是完整战斗系统 |
-| 菜单与存档 | 局部 Items 菜单、自由行走 START → Pause / Equip 装卸与属性预览、Minnie 普通仓库存取与装备确认、Dad Record、受限 Continue / LOAD；只接受已支持的房屋、进度和格式 |
+| 菜单与存档 | 局部 Items 菜单、自由行走 START → Pause / PSI / Equip、开局心灵感应与装卸属性预览、Minnie 普通仓库存取与装备确认、Dad Record、受限 Continue / LOAD；只接受已支持的房屋、进度和格式 |
 | 语言 | 英文 `en` 与简体中文 `zh_Hans_CN`；其他语言尚未开放 |
 | 音频 | 房屋门、对白语音、电话、Mick、战斗菜单与命中、胜利和升级音乐已接入；Podunk 的 13 个原版音乐区域使用受检几何和区域控制器；实际可听性未验收 |
 
@@ -30,7 +30,7 @@ Introduction 的音乐、文字音和动画音效在动画开始前一次性校�
 
 Minnie 在玩偶胜利后的原版 Storage 选择已接入双栏仓库：帽子和已领取喷雾转移保留 UID，装备确认同步角色属性，Record／LOAD 保留实际仓库。独立 `.encstorage` 承载规则与布局；Room 能力 8 增加受检子菜单回调而保持游戏规则 7，Session v5 支持库存守恒和装备派生属性。已支持的帽子与喷雾富文本描述已接入；物品使用与少量装饰仍未完成，详见 [Minnie 仓库](MINNIE_STORAGE.md)。
 
-房屋和 Podunk 室外自由行走时按 START 打开原版六项 Pause 菜单；本切片仅开放 Equip。正常新游戏的完整五人角色资料按实际单人 party 选择 Ninten，旧单人 LOAD 资料仍接受。四个原版装备槽使用实际背包 UID，帽子 / None 选择显示七项属性预览，确认才提交库存与派生属性；Record / LOAD 沿用现有装备身份，场景仍限受支持房屋。来源、限制与设备验收步骤见 [野外装备菜单](FIELD_EQUIPMENT.md)。
+房屋和 Podunk 室外自由行走时按 START 打开原版六项 Pause 菜单；本切片开放 Equip 和开局野外 PSI：Ninten 2 级的心灵感应，详见 [野外 PSI](FIELD_PSI.md)。正常新游戏的完整五人角色资料按实际单人 party 选择 Ninten，旧单人 LOAD 资料仍接受。四个原版装备槽使用实际背包 UID，帽子 / None 选择显示七项属性预览，确认才提交库存与派生属性；Record / LOAD 沿用现有装备身份，场景仍限受支持房屋。来源、限制与设备验收步骤见 [野外装备菜单](FIELD_EQUIPMENT.md)。
 
 Pause / Equip 背景绘制保留来源 StyleBox 的扩展量，Pause 标题底板按实际文字宽度绘制，修正宽白边与标题遮挡；布局由受检资源承载，绘制能力升为 2，规则 / 存档不变，设备显示仍待验收。见 [野外装备菜单](FIELD_EQUIPMENT.md)。
 
@@ -43,7 +43,7 @@ Podunk 室外由 `world/podunk/podunk.encmap`、`world/podunk/podunk.encroom` �
 ## 未完成项
 
 - 后续内容继续遵守严格程序 / 数据分离；已迁移的开局范围、版本和验收边界见 [内容与绑定迁移](CONTENT_MIGRATION.md)。这不代表未移植地图与机制已经完成。
-- Introduction 的 3DS 实际显示与可听性验收；Podunk 其余 NPC、野外敌人与战斗、建筑内部、后续地图和剧情。房屋 Present1–3 仍不可开启。Mick 的心灵感应树和爱心表情仍未接入。Mick 的 ButtonPrompt 使用房屋里同一张静态 A 图标，不含原版浮动动画。
+- Introduction 的 3DS 实际显示与可听性验收；Podunk 其余 NPC、野外敌人与战斗、建筑内部、后续地图和剧情。房屋 Present1–3 仍不可开启。Mick 的心灵感应 woof_food / woof_key、KeyBasement 领取与 mick_telepathy 保存已接入；其它思绪、读心 focus 效果、爱心表情及地下室门钥匙使用仍未完成。Mick 的 ButtonPrompt 使用房屋里同一张静态 A 图标，不含原版浮动动画。
 - 完整战斗、物品使用、队伍与菜单机制。
 - 开场过场读取：剧情播放及淡入淡出期间保留剧情画面；最后一句结束、最终 HouseReady 边界准备房屋时，持续超过 250 毫秒的加载允许显示左下角动画，已显示时至少保留 200 毫秒，提交后继续原版房屋淡入。短加载保留当前画面，嵌套加载共用计时；详见 [标题与加载](LOADING_PERFORMANCE.md)。加载回调仍校验资源并补给音频，不推进剧情或随机流；设备显示验收未完成，同步读取耗时仍待优化。
 - 音频实际播放、演出覆盖、全游戏性能和内存验收。

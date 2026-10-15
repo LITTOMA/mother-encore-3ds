@@ -137,7 +137,7 @@ public:
         candidate.assets_.resize(data.count(encore::upstream::FieldSection::Resources));
         for(uint32_t i=0;i<candidate.assets_.size();++i){const auto r=data.resource(i);if(!acquire(candidate.assets_[i],r.image,data.string(r.image.path),root,error))return false;}
         for(uint32_t i=0;i<data.count(encore::upstream::FieldSection::Layouts);++i){const auto l=data.layout(i);
-            if(l.parent!=none||l.role<uint32_t(Role::PausePanel)||l.role>uint32_t(Role::PauseTitleBackdrop)||l.kind<uint32_t(Kind::Container)||l.kind>uint32_t(Kind::Text)||(l.flags&~(uint32_t(encore::upstream::ItemLayoutFlag::Centered)|uint32_t(encore::upstream::ItemLayoutFlag::Visible)))){error="Unsupported field equipment layout operation";return false;}
+            if(l.parent!=none||l.role<uint32_t(Role::PausePanel)||l.role>uint32_t(Role::PsiCursor)||l.kind<uint32_t(Kind::Container)||l.kind>uint32_t(Kind::Text)||(l.flags&~(uint32_t(encore::upstream::ItemLayoutFlag::Centered)|uint32_t(encore::upstream::ItemLayoutFlag::Visible)))){error="Unsupported field equipment layout operation";return false;}
             candidate.layouts_.push_back(l);
         }
         C3D_FrameSync();std::swap(data_,candidate.data_);std::swap(items_,candidate.items_);assets_.swap(candidate.assets_);layouts_.swap(candidate.layouts_);error_.clear();return true;
@@ -186,6 +186,20 @@ inline bool FieldEquipmentRenderer::draw(const Menu& menu,const BattleRenderer& 
     for(const auto& source:layouts_){
         const auto role=Role(source.role);auto l=source;
         const bool pause=role==Role::PausePanel||role==Role::PauseInside||role==Role::PauseTitleBackdrop||role==Role::PauseTitle||role==Role::PauseCommand||role==Role::PauseCash||role==Role::PauseCursor||role==Role::CashLabel||role==Role::CashValue||role==Role::CashCents;
+        const bool psi=source.role>=uint32_t(Role::PsiPanel);
+        if(psi){
+            if(!menu.psi_visible())continue;
+            const float py=dy+menu.animation_value(ClipRole::PsiOpen);
+            switch(role){
+                case Role::PsiPanel:case Role::PsiTitlePanel:case Role::PsiPortrait:if(!art(l,dx,py))return false;break;
+                case Role::PsiTitle:if(!text(main_font,l,data_.binding(Binding::PsiTitle,chinese),dx,py,false,true))return false;break;
+                case Role::PsiName:if(menu.psi_learned()&&!text(main_font,l,data_.binding(Binding::PsiName,chinese),dx,py))return false;break;
+                case Role::PsiDescription:if(menu.psi_learned()&&!text(main_font,l,data_.binding(phase==Phase::PsiFailed?Binding::PsiFailure:Binding::PsiDescription,chinese),dx,py))return false;break;
+                case Role::PsiDivider:if(menu.psi_learned()&&!art(l,dx,py))return false;break;
+                case Role::PsiCursor:if(menu.psi_learned()&&phase!=Phase::PsiFailed){l.frame=menu.cursor_frame();if(!art(l,dx,py))return false;}break;
+                default:return fail("Field PSI draw role rejected");
+            }continue;
+        }
         if(!pause&&!menu.equipment_visible())continue;
         if(role==Role::BoostEmpty||role==Role::BoostBetter||role==Role::BoostLower||role==Role::Cursor)continue;
         const float y=pause?pause_y:equip_y;

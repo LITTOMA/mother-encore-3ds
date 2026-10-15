@@ -15,6 +15,7 @@ struct FieldEquipmentSnapshot {
  int64_t cash=0;
  InventoryState inventory;
  std::array<int32_t,7> stats{};
+ int32_t pp=0;std::vector<std::string> learned_skills;
 };
 // UID zero and UINT32_MAX are legitimate identities. None is a separate tag.
 struct FieldEquipmentCandidate {bool none=true;ItemInstance item{};};
@@ -23,7 +24,7 @@ struct FieldEquipmentHost {
  std::function<bool(uint32_t,bool,uint32_t,std::array<int32_t,7>&,std::string&)> preview;
  std::function<bool(uint32_t,bool,uint32_t,std::string&)> commit;
 };
-enum class FieldEquipmentPhase:uint8_t {Closed,PauseOpening,Pause,EquipOpening,Slots,Candidates,EquipClosing,PauseClosing};
+enum class FieldEquipmentPhase:uint8_t {Closed,PauseOpening,Pause,EquipOpening,Slots,Candidates,EquipClosing,PauseClosing,PsiOpening,Psi,PsiFailed};
 enum class FieldEquipmentSound:uint8_t {PauseOpen=1,PauseClose,EquipOpen,EquipClose,Move,Confirm,Restricted,Clear,Equip,Back};
 class FieldEquipmentMenu {
 public:
@@ -34,6 +35,11 @@ public:
  bool active()const{return phase_!=FieldEquipmentPhase::Closed;}
  bool visible()const{return active();}
  bool equipment_visible()const;
+ bool psi_visible()const{return psi_closing_||phase_==FieldEquipmentPhase::PsiOpening||phase_==FieldEquipmentPhase::Psi||phase_==FieldEquipmentPhase::PsiFailed;}
+ bool psi_learned()const;
+ // Delivered only after the silent menu close; the caller validates the live
+ // skill/PP again before unpausing and dispatching the checked field action.
+ bool take_psi_request(){if(active()||!psi_request_)return false;psi_request_=false;return true;}
  bool description_visible()const{return equipment_visible()&&description_progress()>0;}
  FieldEquipmentPhase phase()const{return phase_;}
  uint32_t command_selection()const{return command_;}
@@ -71,9 +77,9 @@ private:
  std::array<int32_t,7>preview_{};std::vector<FieldEquipmentCandidate>candidates_;
  FieldEquipmentPhase phase_=FieldEquipmentPhase::Closed;
  uint32_t command_=0,slot_=0,candidate_=0,offset_=0;
- bool chinese_=false,description_open_=false,equip_closing_=false;
+ bool chinese_=false,description_open_=false,equip_closing_=false,psi_closing_=false,psi_request_=false;
  bool has_description_=false;ItemInstance description_item_{};
- float phase_time_=0,pause_time_=0,equip_time_=0,description_time_=0;
+ float phase_time_=0,pause_time_=0,equip_time_=0,description_time_=0,psi_time_=0;
  float description_from_=0,description_to_=0;
  float cursor_row_=0,cursor_col_=0,cursor_from_row_=0,cursor_from_col_=0,cursor_target_row_=0,cursor_target_col_=0,cursor_move_time_=0;
  double cursor_time_=0;

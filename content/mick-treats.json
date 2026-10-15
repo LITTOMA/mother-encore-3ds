@@ -2,16 +2,20 @@
   "schema": 1,
   "kind": "encore.mick-treats.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Podunk Mick npc21 walks inside his wander radius, faces the player in the view circle, and speaks woof, woof_secret, woof_deal, woof_treats and woof_animals. Cutscene Area11 runs mick_bark and steps the player 16px north until gave_treats. Field-enter RNG replays reviewed _ready draws and screen-entered draws without spawning enemies. Telepathy, the heart emote, other NPC dialogue and movement, music and field battles stay deferred.",
+  "scope": "Podunk Mick npc21 walks inside his wander radius, faces the player in the view circle, and speaks woof, woof_secret, woof_deal, woof_treats and woof_animals. Cutscene Area11 runs mick_bark and steps the player 16px north until gave_treats. Field-enter RNG replays reviewed _ready draws and screen-entered draws without spawning enemies. Telepathy uses last matching thought row, woof_food/woof_key, source key grant before text and mick_telepathy on its final phrase. Other NPC thoughts, heart/dot emotes, focus shader, music and field battles stay deferred.",
   "sources": {
     "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
     "Data/Dialogue/Podunk/cutscenes/mick_bark.yaml": "c9ae2bd1e5c0078c96e54fc27d63e9cba60fbc9f8a49e5ec23787ab7c0be619d",
     "Data/Dialogue/Podunk/woof.yaml": "bf72427cbb9aaec8f137adc01abecf05a152d9b2259e610ab0e2a80bbee4e7fd",
     "Data/Dialogue/Podunk/woof_animals.yaml": "80fd38f8bacc37d1bbead0c0ded51f19afa51748f7eaf6fe4e699dcd8a08c0eb",
     "Data/Dialogue/Podunk/woof_deal.yaml": "0e92387cbb42d0c7d72744e0e33b7ad6fb563a49866398399a324a494312d227",
+    "Data/Dialogue/Podunk/woof_food.yaml": "624ae86db6d352709245f815de6fc5975044b5c3c63255b9d1e04096a3207412",
+    "Data/Dialogue/Podunk/woof_key.yaml": "dbef94b23ad95e5f549cba9507f6b5bd27d09a951824760b3a088e4101aff7a7",
     "Data/Dialogue/Podunk/woof_secret.yaml": "55b1de9a3aa188caff50d43fdf1eb94702d6ffa4e2f3249afcb4a5aaa686d03a",
     "Data/Dialogue/Podunk/woof_treats.yaml": "a64e5ca07dff6a39a702003d054944968fc8d87a42a2da1920818b85b9d46239",
+    "Data/Dialogue/Reusable/noproblem.yaml": "61ca96e14080a4a4ddb1aa27b186c80e5dc06ea32ddf0217a61aa445be8921c7",
     "Data/Items/DogTreats.yaml": "0512818388242890d704214728e4603f90fa976571240f86361c2917c641d641",
+    "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
     "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9",
     "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
     "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
@@ -73,9 +77,13 @@
     "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
     "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
     "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
     "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
     "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
     "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
     "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
     "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
     "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
@@ -83,7 +91,8 @@
     "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
     "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
     "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
-    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1"
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf"
   },
   "texture": {
     "source": "Graphics/Character Sprites/Npcs/4dir/mick.png",
@@ -318,6 +327,76 @@
         "en": "Looks like Mick has something to tell you.",
         "zh_Hans_CN": "看样子米克有事情和你说。"
       }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_FOOD_0",
+      "localized": {
+        "en": "(I hope they make more [FavFood]...)",
+        "zh_Hans_CN": "（希望他们能再多做些美味的[FavFood]…）"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_FOOD_SPEAKER_Mick",
+      "localized": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_KEY_0",
+      "localized": {
+        "en": "(I hope they haven't found out I ate all of the [FavFood]...)\n(Hey, are you reading my thoughts?)\n(Cut it out! That's an invasion of privacy!)\n(Take this and forget what you just heard.)",
+        "zh_Hans_CN": "（但愿他们没发现是我把所有的[FavFood]给吃光了…）\n（嘿，你是在读取我的想法吗？）\n（快停下！有点边界感好吗！）\n（给你这个，把你刚才听到的忘掉。）"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "localized": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_KEY_4",
+      "localized": {
+        "en": "You got the Basement Key.",
+        "zh_Hans_CN": "你获得了地下室钥匙。"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_KEY_5",
+      "localized": {
+        "en": "(I can smell some Dog Treats in the basement.)",
+        "zh_Hans_CN": "（我闻到地下室里有一些狗狗零食的味道。）"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_KEY_6",
+      "localized": {
+        "en": "(If you fetch them for me, I'll let you go.)",
+        "zh_Hans_CN": "（你要是帮我把它们拿来，我就放你过去哦。）"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_FOOD_0",
+      "localized": {
+        "en": "(I hope they make more [FavFood]...)",
+        "zh_Hans_CN": "（希望他们能再多做些美味的[FavFood]…）"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_FOOD_SPEAKER_Mick",
+      "localized": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_REUSABLE_NOPROBLEM_0",
+      "localized": {
+        "en": "No problem here.",
+        "zh_Hans_CN": "这里没有问题。"
+      }
     }
   ],
   "commands": [
@@ -501,6 +580,88 @@
     },
     {
       "op": "End"
+    },
+    {
+      "op": "ShowText",
+      "a": 21,
+      "b": 22
+    },
+    {
+      "op": "AwaitText"
+    },
+    {
+      "op": "End"
+    },
+    {
+      "op": "ShowText",
+      "a": 23,
+      "b": 24
+    },
+    {
+      "op": "AwaitText"
+    },
+    {
+      "op": "GrantKeyItem",
+      "a": "KeyBasement",
+      "b": 1
+    },
+    {
+      "op": "PlaySound",
+      "a": "res://Audio/Sound effects/Item Received.mp3"
+    },
+    {
+      "op": "ShowText",
+      "a": 25,
+      "b": 4294967295
+    },
+    {
+      "op": "AwaitText"
+    },
+    {
+      "op": "ShowText",
+      "a": 26,
+      "b": 24
+    },
+    {
+      "op": "AwaitText"
+    },
+    {
+      "op": "SetFlag",
+      "a": "mick_telepathy",
+      "b": 1
+    },
+    {
+      "op": "ShowText",
+      "a": 27,
+      "b": 24
+    },
+    {
+      "op": "AwaitText"
+    },
+    {
+      "op": "End"
+    },
+    {
+      "op": "ShowText",
+      "a": 28,
+      "b": 29
+    },
+    {
+      "op": "AwaitText"
+    },
+    {
+      "op": "End"
+    },
+    {
+      "op": "ShowText",
+      "a": 30,
+      "b": 4294967295
+    },
+    {
+      "op": "AwaitText"
+    },
+    {
+      "op": "End"
     }
   ],
   "programmes": [
@@ -539,6 +700,30 @@
       "kind": "Bark",
       "first": 35,
       "count": 9
+    },
+    {
+      "flag": "",
+      "kind": "Thought",
+      "first": 44,
+      "count": 3
+    },
+    {
+      "flag": "mick_scratch",
+      "kind": "Thought",
+      "first": 47,
+      "count": 12
+    },
+    {
+      "flag": "mick_telepathy",
+      "kind": "Thought",
+      "first": 59,
+      "count": 3
+    },
+    {
+      "flag": "",
+      "kind": "NoProblem",
+      "first": 62,
+      "count": 3
     }
   ],
   "clips": [

@@ -95,7 +95,7 @@ def build(root=ROOT):
     menus = table(ex, 'Translations/TranslatedText/menus - sheet.csv')
     native_items = read_json(root / 'content/native-items.json')
     require([(d['id'], d['source']) for d in native_items['definitions']]
-            == [(1, 'BaseballCap'), (2, 'AsthmaSpray')], 'Unsupported details item scope')
+            == [(1, 'BaseballCap'), (2, 'AsthmaSpray'), (3, 'BatPlastic')], 'Unsupported details item scope')
     definitions = []; presentations = []
     for definition_index, d in enumerate(native_items['definitions']):
         doc = ex.yaml('Data/Items/' + d['source'] + '.yaml')
@@ -134,7 +134,7 @@ def build(root=ROOT):
     # line separation, as used by the existing admitted Items layout.
     height = native_items['parameters']['LabelSize'][1] + 1
     return dict(schema=1, kind='encore.native-item-details.source-ir', commit=PIN,
-                scope='Checked BaseballCap/AsthmaSpray descriptions only; en/zh, nickname, inline asthma and actual doses; no item action',
+                scope='Checked BaseballCap/AsthmaSpray/BatPlastic descriptions only; en/zh, nickname, inline asthma and actual doses; no item action',
                 sources=dict(sorted(ex.sources.items())),
                 dependencies={'content/native-items.json': digest(root / 'content/native-items.json')},
                 definitions=definitions, locales=locales, presentations=presentations,
@@ -255,7 +255,7 @@ def validate(t):
         value = pool[off:pool.index(0, off)].decode('utf-8')
         require(len(value.encode('utf-8')) <= 4096, 'Details string capacity')
         return value
-    limits = ((2,2), (2,2), (4,4), (1,1024), (1,1), (4,4))
+    limits = ((1,64), (2,2), (2,128), (1,1024), (1,1), (4,4))
     for n, f, (lo, hi) in zip(NAMES[1:], FORMATS[1:], limits):
         require(lo <= len(t[n]) <= hi, 'Details ' + n + ' capacity')
         for row in t[n]:

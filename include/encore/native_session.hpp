@@ -17,7 +17,7 @@ struct NativeSessionLevel {
 };
 struct NativeSessionAcquisition {
     std::string item_id,flag_id;
-    uint32_t doses=0,max_count=0;
+    uint32_t doses=0,max_count=0,flag_policy=1;
 };
 struct NativeSessionStoragePolicy {
     std::string item_id;uint32_t doses=0,total_count=0;bool required=false;
@@ -29,6 +29,7 @@ struct NativeSessionKeyAcquisition {
     std::string item_id,flag_id,consumed_flag_id;
     uint32_t doses=0,flag_policy=1; // 1: story flag; schema 7 also admits 2: object flag.
 };
+struct NativeSessionSkillAcquisition {std::string skill_id,flag_id;};
 class NativeSessionData {
 public:
     bool load(const uint8_t*,size_t,std::string&);
@@ -55,6 +56,8 @@ public:
     const std::vector<NativeSessionAcquisition>& acquisitions()const{return acquisitions_;}
     uint32_t storage_capacity()const{return storage_capacity_;}
     const std::vector<NativeSessionStoragePolicy>& storage_policies()const{return storage_policies_;}
+    const std::vector<NativeSessionSkillAcquisition>& skill_acquisitions()const{return skill_acquisitions_;}
+    const std::vector<std::string>& skill_order()const{return skill_order_;}
     const std::vector<NativeSessionKeyAcquisition>& key_acquisitions()const{return key_acquisitions_;}
 private:
     std::vector<double> text_speeds_;
@@ -70,7 +73,10 @@ private:
     std::vector<NativeSessionAcquisition>acquisitions_;
     uint32_t storage_capacity_=0;std::vector<NativeSessionStoragePolicy>storage_policies_;
     std::vector<NativeSessionKeyAcquisition>key_acquisitions_;
+    std::vector<NativeSessionSkillAcquisition>skill_acquisitions_;std::vector<std::string>skill_order_;
 };
+// Checked source add_skill: idempotent insertion with data-defined ordering.
+bool native_session_learn_skill(const NativeSessionData&,std::string_view,std::vector<std::string>&,std::string&);
 // Expected key inventory identities for the flags in s (defaults, then held
 // schema-6 acquisitions in policy order). UIDs are not part of identity.
 bool native_session_expected_key_items(const NativeSessionData&,const SessionSnapshot&,std::vector<SessionItem>&,std::string&);

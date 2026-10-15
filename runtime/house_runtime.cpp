@@ -334,6 +334,12 @@ bool HouseRuntime::PresentAdapter::validate_text(uint32_t id,std::string_view pa
  for(uint32_t d=0;d<owner->content_.count(HouseSection::Dialogues);++d){const auto text=owner->content_.dialogue(d);if(text.id==id&&owner->content_.string(text.source_path)==path){e.clear();return true;}}
  e="House present text absent from house pack";return false;
 }
+bool HouseRuntime::PresentAdapter::validate_story(std::string_view path,std::string&e){
+ if(path.substr(0,14)!="Data/Dialogue/"||path.size()<20||!owner->world_->story_skills_ready()||owner->program_for_path(path.substr(14,path.size()-19))==house_no_index){e="Present story programme is absent";return false;}e.clear();return true;
+}
+bool HouseRuntime::PresentAdapter::start_story(std::string_view path,std::string&e){
+ if(!validate_story(path,e))return false;owner->present_story_=owner->program_for_path(path.substr(14,path.size()-19));return true;
+}
 bool HouseRuntime::PresentAdapter::show_text(uint32_t id,std::string&e){
  for(uint32_t d=0;d<owner->content_.count(HouseSection::Dialogues);++d){const auto text=owner->content_.dialogue(d);if(text.id!=id)continue;
   if(!owner->presentation_->present_story_dialogue(text.first_segment,text.segment_count,owner->player_nickname())){e=owner->presentation_->error();return false;}e.clear();return true;}
@@ -348,8 +354,10 @@ bool HouseRuntime::interact_present(uint32_t index){
  if(!world_->set_house_direction(facing)||!world_->pause_for_house())return fail("House present player turn/pause rejected");
  active_=index;
  if(!presents_->supported(index)){phase_=HousePhase::Unsupported;error_="Unported source present item; B returns control";last_safe_position_=p.position;last_safe_direction_=p.direction;return true;}
- phase_=HousePhase::PresentProgram;
+ phase_=HousePhase::PresentProgram;present_story_=house_no_index;
  if(!presents_->start(index,present_error_))return fail("House present programme rejected");
+ if(present_story_!=house_no_index){story_executing_=true;story_original_npc_=house_no_index;phase_=HousePhase::StoryRunning;
+  if(!world_->begin_house_program(present_story_))return fail("Present story handoff rejected");}
  event(HouseEventKind::DialogueOpened,index);return true;
 }
 bool HouseRuntime::validate_text(uint32_t id,std::string&e){

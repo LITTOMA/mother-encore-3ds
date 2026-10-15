@@ -16,6 +16,12 @@ OpeningWorld::OpeningWorld(PersistentPlayerOwner owner):persistent_player_(std::
 OpeningWorld::OpeningWorld(RetainPersistentPlayer,const OpeningWorld& active):persistent_player_(active.persistent_player_),player_read_only_(true){
     error_=persistent_player_?"Retained player requires a scene commit binding":"Persistent player owner is absent";
 }
+bool OpeningWorld::bind_story_skills(StorySkillHost&host){
+ if(!content_)return false;std::string error;
+ for(uint32_t i=0;i<content_.command_count();++i){const auto c=content_.command(i);
+  if(c.opcode==uint16_t(DialogueActionKind::LearnSkill)&&!host.validate_skill(content_.string(c.target_index),error))return false;}
+ story_skills_=&host;return true;
+}
 bool OpeningWorld::has_cutscene_actors() const {return std::find(actor_bound_.begin(),actor_bound_.end(),uint8_t(1))!=actor_bound_.end();}
 uint32_t OpeningWorld::walk_clip(MotionAnimation animation,Vec2 direction) const {
     const auto scene=content_.scene();const auto profile=content_.actor_profile(content_.actor_instance(scene.player_instance_index).profile_index);
@@ -39,7 +45,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     if(player_read_only_){error_="Retained player cannot be reset by New Game or LOAD initialization";return false;}
     healthy_=initialized_=false;error_="Invalid scene content";
     if(!content.valid())return false;
-    content_=content;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
+    content_=content;story_skills_=nullptr;overlay_={};overlay_clip_=kRoomNoIndex;overlay_time_=0;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
     const auto scene=content.scene();
     if(!flags_.initialize(content))return false;
     if(story_flags){for(uint32_t i=0;i<story_flags->size();++i)if(!flags_.set_story_flag(i,(*story_flags)[i],false).applied)return false;}
@@ -310,6 +316,13 @@ bool OpeningWorld::idle_frame(double delta) {
     if(stage_==OpeningStage::ScriptRunning&&!persistent_player_.state_->camera_.idle_frame(delta))return fail("Camera idle rejected");
     for(auto& b:boundaries_){b.remaining-=delta;if(b.remaining<0&&stage_!=OpeningStage::BattleRequested)return fail("Deferred binding reached unsupported execution boundary");}
     if(stage_==OpeningStage::Walking&&!persistent_player_.state_->camera_.idle_frame(delta))return fail("Walking camera idle rejected");
+    if(overlay_clip_!=kRoomNoIndex){const auto clip=content_.clip(overlay_clip_);overlay_time_+=delta;
+        auto first=content_.key(clip.first_key);float alpha=float(first.frame)/65534.f;
+        for(uint32_t i=1;i<clip.key_count;++i){const auto next=content_.key(clip.first_key+i);
+            if(overlay_time_<=next.time){const float t=std::clamp(float((overlay_time_-first.time)/(next.time-first.time)),0.f,1.f);alpha=(float(first.frame)+(float(next.frame)-first.frame)*t)/65534.f;break;}
+            first=next;alpha=float(first.frame)/65534.f;}
+        overlay_.alpha=alpha;if(overlay_time_>=clip.length)overlay_clip_=kRoomNoIndex;
+    }
     return process_room_shakers(delta);
 }
 bool OpeningWorld::vibrate_room(uint32_t binding_index){
@@ -411,7 +424,16 @@ bool OpeningWorld::apply(const DialogueAction& a) {
 
     case K::ShakeActor:return actor&&actor_shake(*actor,a.vector,a.duration);
     case K::JumpActor:return actor&&actor_jump(*actor,float(a.value),a.duration,a.flags+1);
-    case K::AnimateActor:return actor&&actor_play_clip(*actor,a.target_index);
+    case K::SetActorProfile:{
+        if(!actor||a.target_index>=content_.actor_profile_count())return false;
+        ActorActionState visual;if(!initialize_actor(visual,content_,a.target_index,actor->position,actor->direction))return false;
+        actor->profile_index=visual.profile_index;actor->sprite_position=visual.sprite_position;actor->sprite_offset=visual.sprite_offset;
+        actor->emote_position=visual.emote_position;actor->frame=visual.frame;actor->clip_index=visual.clip_index;
+        actor->emote_clip_index=visual.emote_clip_index;actor->emote_frame=visual.emote_frame;actor->shadow_visible=visual.shadow_visible;
+        actor->animation_elapsed=0;actor->directional_animation=visual.directional_animation;return true;}
+    case K::LearnSkill:{std::string error;return story_skills_&&story_skills_->learn_skill(content_.string(a.target_index),error);}
+    case K::ScreenOverlay:overlay_clip_=a.target_index;overlay_time_=0;overlay_.rgb=uint32_t(a.value);overlay_.alpha=float(content_.key(content_.clip(a.target_index).first_key).frame)/65534.f;return true;
+    case K::AnimateActor:return actor&&(!(a.flags&1)||actor->profile_index==a.auxiliary_index)&&actor_play_clip(*actor,a.target_index);
     case K::EmoteActor:return actor&&actor_play_emote(*actor,a.target_index);
     case K::ShakeCamera:return persistent_player_.state_->camera_.shake(a.value,a.duration,a.vector);
     case K::ChangeCamera:if(a.flags&1){follow_actor_=kRoomNoIndex;return persistent_player_.state_->camera_.change_to_dialogue();}if(!actor)return false;follow_actor_=a.actor;return persistent_player_.state_->camera_.change_to_actor(a.actor,actor->position);

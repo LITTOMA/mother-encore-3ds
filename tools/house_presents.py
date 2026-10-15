@@ -46,7 +46,7 @@ SECTIONS = ('Bytes', 'Strings', 'Textures', 'Clips', 'FrameKeys', 'AudioKeys', '
             'Objects', 'Templates', 'Commands', 'Programs', 'Texts')
 STRIDES = (1, 8, 12, 24, 8, 8, 8, 4, 28, 52, 12, 20, 8, 8)
 OPCODES = {'ShowText': 1, 'AwaitText': 2, 'BranchFlag': 3, 'GrantItem': 4, 'PlaySound': 5, 'SetFlag': 6, 'Jump': 7,
-           'End': 8, 'PlayClip': 9}
+           'End': 8, 'PlayClip': 9, 'BranchSpace': 10, 'PreviewItem': 11, 'StartStory': 12, 'QueueClip': 13}
 CLIP_ROLES = {'Unwrapped': 1, 'Wrapped': 2}
 POLICY_FLAG, POLICY_OBJECT_FLAG = 1, 2
 
@@ -214,8 +214,8 @@ def build(root=ROOT):
     require(names == ['Objects/Present1', 'Objects/Present2', 'Objects/Present4', 'Objects/Present3'], 'House present set changed')
     objects, templates, texts, programs = [], [], [], []
     binding = read_json(Path(root) / BINDING)
-    require(set(binding) == {'schema', 'kind', 'commit', 'scene', 'programs', 'empty_text_id', 'text_groups'} and
-            type(binding['schema']) is int and binding['schema'] == 1 and binding['kind'] == 'encore.house-present-bindings' and binding['commit'] == PIN and
+    require(set(binding) == {'schema', 'kind', 'commit', 'scene', 'programs', 'empty_text_id', 'text_groups', 'extensions'} and
+            type(binding['schema']) is int and binding['schema'] == 2 and binding['kind'] == 'encore.house-present-bindings' and binding['commit'] == PIN and
             binding['scene'] == SCENE, 'Unreviewed present binding version/source')
     admitted = {}
     ids = {binding['empty_text_id']}
@@ -225,6 +225,13 @@ def build(root=ROOT):
         require(len(row['check_text_ids']) == 2 and all(type(i) is int and i > 0 and i not in ids for i in row['check_text_ids']) and
                 len(set(row['check_text_ids'])) == 2, 'Duplicate/invalid present text identity')
         ids.update(row['check_text_ids']); admitted[row['source_path']] = row['check_text_ids']
+    for extension in binding['extensions']:
+        if 'story' in extension:
+            require(set(extension)=={'source_path','story'},'Unknown story present binding')
+        else:
+            require(set(extension)=={'source_path','dialogue','texts','full_text_id'} and set(extension['texts'])=={'0','1','3'},'Unknown normal present binding')
+            for identity in list(extension['texts'].values())+[extension['full_text_id']]:
+                require(type(identity) is int and identity>0 and identity not in ids,'Duplicate/invalid normal present text ID');ids.add(identity)
     grouped = [i for group in binding['text_groups'] for i in group['ids']]
     require(set(grouped) == ids and len(grouped) == len(ids) and all(set(g) == {'after_id', 'ids'} and
             type(g['after_id']) is int and g['ids'] and g['ids'] == list(range(g['after_id'] + 1, g['after_id'] + 1 + len(g['ids'])))
@@ -280,6 +287,7 @@ def build(root=ROOT):
             row['program'] = len(programs)
             programs.append(dict(source_path=path, template=template, check=check_ids))
         objects.append(row)
+    extend_basement(ex,nodes,items_csv,dialogue_csv,objects,templates,programs,texts,binding)
     empty_key = empty_doc['0']['text']
     empty_id = binding['empty_text_id']
     texts.append(dict(id=empty_id, source_path=DIALOGUE % 'ItemDialogue/presentempty', label='0', translation_key=empty_key,
@@ -288,16 +296,74 @@ def build(root=ROOT):
     for p in programs:
         p['commands'] = program_commands(p, objects, empty_id)
     texts.sort(key=lambda t: t['id'])
-    return dict(schema=1, capability=2, kind='encore.house-presents.source-ir', commit=PIN,
+    return dict(schema=1, capability=3, kind='encore.house-presents.source-ir', commit=PIN,
                 dependencies={BINDING: digest(Path(root) / BINDING)}, text_groups=binding['text_groups'],
-                scope=('All four original House presents drawn; default fixed key-item grants support story and persistent object flags; '
-                       'custom dialogue and normal inventory presents remain explicit development boundaries'),
+                scope=('Four original House presents; DogTreats/Map key grants, Plastic Bat capacity/custom note/ordinary inventory, '
+                       'and diary grant with checked original room cutscene; story/object flags, UID ownership and deferred rewrap preserved'),
                 sources=dict(sorted(ex.sources.items())), scene=SCENE, textures=textures, sparkles=sparkles, clips=clips,
                 objects=objects, templates=templates, texts=texts, programs=programs)
 
 
+def extend_basement(ex,nodes,items_csv,dialogue_csv,objects,templates,programs,texts,binding):
+    seen=set()
+    for extension in binding['extensions']:
+        path=extension['source_path']
+        require(path not in seen and path in nodes,'Duplicate/unknown basement present');seen.add(path)
+        obj=next(o for o in objects if o['source_path']==path)
+        require(obj['program'] is None,'Present extension overlaps legacy programme')
+        source=ex.yaml('Data/Items/'+obj['item']+'.yaml')
+        require('doses' not in source and 'dialog_full' not in nodes[path].overrides,'Unreviewed present dose/full override')
+        template=len(templates)
+        templates.append(dict(source_item=obj['item'],doses=1,key_item=source['keyitem']))
+        program=dict(source_path=path,template=template)
+        if 'story' in extension:
+            require(obj['item']=='GGFDiary' and source['keyitem'] is True and nodes[path].props['dialog']==extension['story'],
+                    'Unreviewed story present')
+            program['story']=extension['story']
+        else:
+            from tools.basement_items import load
+            require(obj['item']=='BatPlastic' and source==load(ex.root)['bat'] and nodes[path].props['dialog']==extension['dialogue'],
+                    'Unreviewed normal present')
+            doc=ex.yaml(DIALOGUE % extension['dialogue'])
+            require(doc=={'0':dict(text='DIALOGUE_ITEMDIALOGUE_FIRSTBAT_0',goto='1'),
+                          '1':dict(text='DIALOGUE_ITEMDIALOGUE_FIRSTBAT_1',soundeffect='Item Received.mp3',goto='3'),
+                          '3':dict(name='DIALOGUE_ITEMDIALOGUE_FIRSTBAT_SPEAKER_Note',text='DIALOGUE_ITEMDIALOGUE_FIRSTBAT_3')},
+                    'Unreviewed first bat graph')
+            program['check']=[]
+            for label,identity in extension['texts'].items():
+                phrase=doc[label];key=phrase['text'];values={native:bake(dialogue_csv[key][column],items_csv[source['name']][column],
+                    items_csv[source['article']][column]) for native,column in LOCALES}
+                row=dict(id=identity,source_path=DIALOGUE % extension['dialogue'],label=label,translation_key=key,item=obj['item'],raw=values['en'],localized=values)
+                if 'name' in phrase:
+                    row['speaker']={native:dialogue_csv[phrase['name']][column] for native,column in LOCALES}
+                texts.append(row);program['check'].append(identity)
+            full=ex.yaml(DIALOGUE % 'ItemDialogue/itemfull')
+            require(full=={'0':dict(text='DIALOGUE_ITEMDIALOGUE_ITEMFULL_0')},'Unreviewed full inventory graph')
+            key=full['0']['text'];values={native:bake(dialogue_csv[key][column],items_csv[source['name']][column],items_csv[source['article']][column]) for native,column in LOCALES}
+            texts.append(dict(id=extension['full_text_id'],source_path=DIALOGUE % 'ItemDialogue/itemfull',label='0',translation_key=key,item=obj['item'],raw=values['en'],localized=values))
+            program['full']=extension['full_text_id']
+        obj['program']=len(programs);programs.append(program)
+
+
 def program_commands(program, objects, empty_id):
     obj = next(o for o in objects if o['source_path'] == program['source_path'])
+    if 'story' in program:
+        return [dict(op='BranchFlag',a=obj['flag'],b=1,c=6),dict(op='PlayClip',a='Unwrapped'),
+                dict(op='GrantItem',a=program['template']),dict(op='SetFlag',a=obj['flag'],b=1),
+                dict(op='StartStory',a=DIALOGUE % program['story']),dict(op='End'),
+                dict(op='ShowText',a=empty_id),dict(op='AwaitText'),dict(op='End')]
+    if 'full' in program:
+        commands=[dict(op='BranchFlag',a=obj['flag'],b=1,c=0),dict(op='PlayClip',a='Unwrapped'),
+                  dict(op='BranchSpace',a=0),dict(op='GrantItem',a=program['template']),dict(op='SetFlag',a=obj['flag'],b=1)]
+        for i,identity in enumerate(program['check']):
+            commands.append(dict(op='ShowText',a=identity))
+            if i==1:commands.append(dict(op='PlaySound',a=RECEIVED_SOUND))
+            commands.append(dict(op='AwaitText'))
+        commands.append(dict(op='End'));commands[2]['a']=len(commands)
+        commands += [dict(op='QueueClip',a='Wrapped'),dict(op='PreviewItem',a=program['template']),
+                     dict(op='ShowText',a=program['full']),dict(op='AwaitText'),dict(op='End')]
+        commands[0]['c']=len(commands)
+        return commands+[dict(op='ShowText',a=empty_id),dict(op='AwaitText'),dict(op='End')]
     check0, check1 = program['check']
     return [
         dict(op='BranchFlag', a=obj['flag'], b=1, c=10),
@@ -403,13 +469,13 @@ def lower(ir, house):
         for c in p['commands']:
             op = OPCODES[c['op']]
             a, b, cc = 0, 0, 0
-            if c['op'] in ('BranchFlag', 'SetFlag', 'PlaySound'):
+            if c['op'] in ('BranchFlag', 'SetFlag', 'PlaySound', 'StartStory'):
                 a = s(c['a'])
             elif c['op'] == 'ShowText':
                 a = text_index[c['a']]
-            elif c['op'] == 'PlayClip':
+            elif c['op'] in ('PlayClip','QueueClip'):
                 a = clip_index[c['a']]
-            elif c['op'] in ('GrantItem', 'Jump'):
+            elif c['op'] in ('GrantItem', 'Jump', 'BranchSpace', 'PreviewItem'):
                 a = c['a']
             b = c.get('b', 0)
             cc = c.get('c', 0)
@@ -439,7 +505,7 @@ def parse(blob):
     from tools.podunk_field import unpack_container
     require(len(blob) >= 24, 'Present header truncated')
     capability = struct.unpack_from('<I', blob, 20)[0]
-    require(capability in (1, 2), 'Unknown present capability')
+    require(capability in (1, 2, 3), 'Unknown present capability')
     scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT, capability=capability)
     require(scene == 1, 'Present pack scene identity')
     rows = {n: secs[i] for i, n in enumerate(SECTIONS)}
@@ -483,10 +549,10 @@ def review(ir):
                 semantics={
                     'ready': 'Opened presents (flag true) show frame 4 and hide Sparkles; each Sparkles _ready draws rand_range(0,47) in tree order',
                     'interaction': 'Only the interact Area2D participates in the nearest ray hit; player turns on x and y',
-                    'grant': 'Unwrapped clip starts, key item granted to key_items (never full), source story/object flag set, presentcheck opens',
+                    'grant': 'Unwrapped starts; available ordinary/key item granted, source story/object flag set, source custom/default dialogue opens; full ordinary bag constructs preview UID and queues Wrapped after animation completion',
                     'text': 'Fixed-item lowering of [ItemName]/[ItemArt3]; [ItemReceiver] is the singleton leader for key items',
                     'empty': 'Opened present shows ItemDialogue/presentempty'},
-                unsupported=['Present1 diary cutscene and Present2 normal inventory bat',
+                unsupported=['Bat-specific basic-attack animation/swing sound; shared opening battle damage rules remain unchanged',
                              'ButtonPrompt over presents', 'Reusable/noproblem when the ray hits the StaticBody2D'],
                 unverified=['Manual test suites', 'Emulator', 'Hardware', 'Audio audibility'])
 

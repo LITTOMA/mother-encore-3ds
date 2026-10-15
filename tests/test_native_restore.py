@@ -6,6 +6,11 @@ from tools import native_restore as restore
 class RestoreCompilerTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):cls.ir=restore.read(restore.IR)
+ def test_version_admission(self):
+  self.assertTrue(restore.admitted_versions(dict(rules=7,capabilities=9),dict(schema=8)))
+  for rule,cap,house in [(8,9,8),(7,10,8),(7,9,9),(6,9,8),(7,9,7)]:
+   with self.subTest(rule=rule,cap=cap,house=house):
+    self.assertFalse(restore.admitted_versions(dict(rules=rule,capabilities=cap),dict(schema=house)))
  def test_source_recipe_and_staged_binary(self):
   self.assertEqual(restore.extract(),self.ir)
   self.assertEqual(restore.encode(self.ir),restore.PACK.read_bytes())

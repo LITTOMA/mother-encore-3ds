@@ -276,10 +276,20 @@ def verify(r):
  for p,v in r['outputs'].items():require(sha(ROOT/'romfs'/p)==v['sha256'],'Changed naming texture '+p)
 
 def rebound_session_dependency(recipe,previous,current,current_sha):
- require(set(previous)==set(current),'Changed naming session field set')
+ extension=(previous['schema'],current['schema'])==(7,8)
+ require(set(previous)==set(current) or (extension and set(current)==set(previous)|{'skill_acquisitions','skill_order'}),'Changed naming session field set')
  for key in previous:
-  if key not in ('schema','key_acquisitions','mutable_flags','camera_area_ids','dependencies'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
- require(previous['schema']==current['schema'] or (previous['schema'],current['schema'])==(6,7),'Unreviewed naming session schema migration')
+  if key not in ('schema','key_acquisitions','acquisitions','storage_policies','mutable_flags','camera_area_ids','dependencies','scope'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
+ require(previous['schema']==current['schema'] or (previous['schema'],current['schema']) in ((6,7),(7,8)),'Unreviewed naming session schema migration')
+ # New game remains byte-identical: only checked future acquisition policies grow.
+ if extension:
+  require(current['skill_acquisitions']==[dict(skill_id='lifeUpA',flag_id='got_diary')] and current['skill_order']==['strike','splitShot','telepathy','lifeUpA'],'Unreviewed naming story skill scope')
+  for key in ('acquisitions','storage_policies'):
+   require(current[key][:len(previous[key])]==previous[key] and len(current[key])==len(previous[key])+1,'Changed initial item policy prefix')
+  require(current['acquisitions'][-1]==dict(item_id='BatPlastic',doses=1,flag_id="Ninten's House/Present2",max_count=1,flag_policy=2),'Unreviewed naming item acquisition')
+  require(current['storage_policies'][-1]['item_id']=='BatPlastic','Unreviewed naming storage extension')
+ else:
+  for key in ('acquisitions','storage_policies','scope'):require(current[key]==previous[key],'Changed naming session '+key)
  prior_keys=[dict(k,flag_policy=k.get('flag_policy',1)) for k in previous['key_acquisitions']]
  current_keys=[dict(k,flag_policy=k.get('flag_policy',1)) for k in current['key_acquisitions']]
  require(set(previous['mutable_flags'])<=set(current['mutable_flags']) and all(k in current_keys for k in prior_keys),'Removed session acquisition/flag scope')
@@ -293,7 +303,15 @@ def rebound_session_dependency(recipe,previous,current,current_sha):
 def rebound_checked_dependency(previous,current):
  require(set(previous)==set(current),'Changed naming dependency field set')
  if previous.get('kind')=='encore.native-battle-round.source-ir':allowed={'dependencies'}
- elif previous.get('schema')==1 and 'provenance' in previous and 'sections' in previous:allowed={'provenance'}
+ elif previous.get('schema')==1 and 'provenance' in previous and 'sections' in previous:
+  if previous['capabilities']==current['capabilities']:allowed={'provenance'}
+  else:
+   require((previous['rules'],previous['capabilities'],current['rules'],current['capabilities'])==(7,8,7,9),'Unreviewed naming room capabilities')
+   require(current['strings'][:len(previous['strings'])]==previous['strings'],'Changed naming room string prefix')
+   require(set(previous['sections'])==set(current['sections']) and all(current['sections'][k][:len(v)]==v for k,v in previous['sections'].items()),'Changed naming room execution prefix')
+   require((previous['adapter_revision'],current['adapter_revision'])==(8,9),'Unreviewed naming room adapter')
+   allowed={'provenance','strings','sections','capabilities','adapter_revision'}
+
  else:raise ValueError('Unreviewed naming dependency update')
  require(all(previous[k]==current[k]for k in previous if k not in allowed),'Changed naming dependency gameplay')
 

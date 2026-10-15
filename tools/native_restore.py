@@ -22,10 +22,14 @@ def fields(value,names,label):require(isinstance(value,dict) and set(value)==set
 def finite(x):return isinstance(x,(int,float)) and not isinstance(x,bool) and math.isfinite(x)
 def vector(v,positive=False):require(isinstance(v,list) and len(v)==2 and all(finite(x) and abs(x)<=1000000 and (not positive or x>0) for x in v),'Restore geometry rejected')
 def safe_path(p):return isinstance(p,str) and p and not p.startswith('/') and ':'not in p and '\\'not in p and all(x not in ('','.','..')for x in p.split('/'))
+def admitted_versions(room,house):
+ # Additive diary capabilities keep the saved rules and existing restore fields.
+ return (room['rules'],room['capabilities'],house['schema']) in ((6,6,6),(6,6,7),(7,7,6),(7,7,7),(7,8,6),(7,8,7),(7,9,8))
+
 def extract():
  ex=Extractor(ROOT);source=ex.text(HOUSE)
  room=read(ROOT/'content/native-opening.json');house=read(ROOT/'content/native-house.json')
- require((room['rules']==room['capabilities'] or (room['rules']==7 and room['capabilities']==8))and room['rules']in(6,7)and house['schema']in(6,7),'Restore requires reviewed Room/House6 or7')
+ require(admitted_versions(room,house),'Restore Room/House versions rejected')
  flags={room['strings'][f['name_string']]:(i,f['stable_id'])for i,f in enumerate(room['sections']['Flag'])}
  def condition(name,value):
   require(name in flags,'Unknown restore flag '+name);i,identity=flags[name]

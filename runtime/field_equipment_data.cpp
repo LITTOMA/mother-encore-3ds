@@ -13,7 +13,7 @@ uint32_t crc(const uint8_t*p,size_t n){auto c=encore::crc32_update(~0u,p,16);con
 bool path(std::string_view s){if(s.empty()||s.front()=='/'||s.back()=='/'||s.find_first_of("\\:")!=s.npos)return false;for(auto c:s)if(uint8_t(c)<32||uint8_t(c)==127)return false;for(size_t i=0;i<s.size();){auto j=s.find('/',i);if(j==s.npos)j=s.size();auto part=s.substr(i,j-i);if(part.empty()||part=="."||part=="..")return false;i=j+1;}return true;}
 bool utf8(std::string_view s){size_t i=0;while(i<s.size()){uint32_t c=uint8_t(s[i++]);if(c<128){if(c<32||c==127)return false;continue;}uint32_t n,min;if(c>=0xc2&&c<=0xdf){n=1;c&=31;min=128;}else if(c>=0xe0&&c<=0xef){n=2;c&=15;min=2048;}else if(c>=0xf0&&c<=0xf4){n=3;c&=7;min=65536;}else return false;if(i+n>s.size())return false;while(n--){auto b=uint8_t(s[i++]);if((b&0xc0)!=0x80)return false;c=(c<<6)|(b&63);}if(c<min||c>0x10ffff||(c>=0xd800&&c<=0xdfff))return false;}return true;}
 }
-uint32_t FieldEquipmentView::count(FieldSection s)const{auto k=uint32_t(s);return valid()&&k>=1&&k<=10?u32(bytes_+64+(k-1)*16+8):0;}
+uint32_t FieldEquipmentView::count(FieldSection s)const{auto k=uint32_t(s);return valid()&&k>=1&&k<=u32(bytes_+28)?u32(bytes_+64+(k-1)*16+8):0;}
 const uint8_t*FieldEquipmentView::record(FieldSection s,uint32_t i)const{if(i>=count(s))return nullptr;auto*p=bytes_+64+(uint32_t(s)-1)*16;return bytes_+u32(p+4)+size_t(i)*u32(p+12);}
 std::string_view FieldEquipmentView::string(uint32_t i)const{auto*p=record(FieldSection::Strings,i);if(!p||(i&&p[-1]))return {};auto*end=bytes_+u32(bytes_+68)+count(FieldSection::Strings);auto*q=std::find(p,end,uint8_t(0));return {reinterpret_cast<const char*>(p),size_t(q-p)};}
 float FieldEquipmentView::parameter(FieldParameter k)const{auto i=uint32_t(k);auto*p=i?record(FieldSection::Parameters,i-1):nullptr;return p&&u32(p)==i?real(p+4):0;}
@@ -24,6 +24,13 @@ FieldEquipment FieldEquipmentView::equipment(uint32_t i)const{FieldEquipment v;a
 FieldResource FieldEquipmentView::resource(uint32_t i)const{FieldResource v;auto*p=record(FieldSection::Resources,i);if(p){v.image.id=u32(p);v.image.path=u32(p+4);v.image.kind=u32(p+8);v.image.width=u32(p+12);v.image.height=u32(p+16);v.image.columns=u32(p+20);v.image.rows=u32(p+24);std::memcpy(v.image.sha256,p+28,32);v.file_bytes=u32(p+60);v.crc32=u32(p+64);}return v;}
 ItemLayout FieldEquipmentView::layout(uint32_t i)const{ItemLayout v;auto*p=record(FieldSection::Layouts,i);if(p){v.id=u32(p);v.role=u32(p+4);v.parent=u32(p+8);v.kind=u32(p+12);v.resource=u32(p+16);v.frame=u32(p+20);v.flags=u32(p+24);v.anchor={real(p+28),real(p+32)};v.rect={real(p+36),real(p+40),real(p+44),real(p+48)};v.color={real(p+52),real(p+56),real(p+60),real(p+64)};for(size_t j=0;j<4;++j)v.patch[j]=u32(p+68+4*j);}return v;}
 FieldClip FieldEquipmentView::clip(FieldClipRole role)const{auto i=uint32_t(role);auto*p=i?record(FieldSection::Clips,i-1):nullptr;return p&&u32(p)==i?FieldClip{u32(p),u32(p+4),u32(p+8),real(p+12)}:FieldClip{};}
+uint32_t FieldEquipmentView::psi_skill_count()const{return valid()?(count(FieldSection::Skills)?count(FieldSection::Skills):1):0;}
+FieldPsiSkill FieldEquipmentView::psi_skill(uint32_t i)const{
+ if(i>=psi_skill_count())return {};
+ auto*p=record(FieldSection::Skills,i);
+ if(!p)return {binding(FieldBinding::PsiSkillId),binding(FieldBinding::PsiName),binding(FieldBinding::PsiName,true),binding(FieldBinding::PsiDescription),binding(FieldBinding::PsiDescription,true),{},{},{},{},{},uint32_t(parameter(FieldParameter::PsiAction)),uint32_t(parameter(FieldParameter::PsiCost)),0,0};
+ return {string(u32(p)),string(u32(p+4)),string(u32(p+8)),string(u32(p+12)),string(u32(p+16)),string(u32(p+36)),string(u32(p+40)),string(u32(p+44)),string(u32(p+48)),string(u32(p+52)),u32(p+20),u32(p+24),u32(p+28),u32(p+32),u32(p+56)};
+}
 FieldKey FieldEquipmentView::key(uint32_t i)const{auto*p=record(FieldSection::Keys,i);return p?FieldKey{real(p),real(p+4),real(p+8)}:FieldKey{};}
 std::string FieldEquipmentView::reviewed_commit()const{const char*h="0123456789abcdef";std::string s;if(valid())for(size_t i=32;i<52;++i){s+=h[bytes_[i]>>4];s+=h[bytes_[i]&15];}return s;}
 bool FieldEquipmentView::bind_items(ItemView items,std::string&e)const{
@@ -37,15 +44,16 @@ bool FieldEquipmentView::verify_resources(const char*prefix,std::string&e)const{
  for(uint32_t i=0;i<count(FieldSection::Resources);++i){auto r=resource(i);std::string name(prefix);if(name.back()!='/')name+='/';name+=string(r.image.path);FILE*f=std::fopen(name.c_str(),"rb");if(!f)return reject(e,"Field equipment graphics unavailable");uint8_t block[4096];size_t total=0;uint32_t hash=~0u;bool ok=true;for(;;){auto n=std::fread(block,1,sizeof block,f);if(total+n>r.file_bytes){ok=false;break;}total+=n;hash=encore::crc32_update(hash,block,n);if(n<sizeof block){ok=!std::ferror(f);break;}}if(std::fclose(f))ok=false;if(!ok||total!=r.file_bytes||~hash!=r.crc32)return reject(e,"Field equipment graphics size/CRC rejected");}e.clear();return true;
 }
 bool FieldEquipmentData::load(const uint8_t*p,size_t n,std::string&e){
- if(!p||n<224||n>2*1024*1024||std::memcmp(p,"ENCFIE01",8)||u32(p+8)!=2||u32(p+12)!=n||u32(p+16)!=crc(p,n)||u32(p+20)!=3||u32(p+24)!=1||u32(p+28)!=10)return reject(e,"Field equipment header/version/capability/rules/CRC rejected");
+ if(!p||n<224||n>2*1024*1024||std::memcmp(p,"ENCFIE01",8)||!((u32(p+8)==2&&u32(p+20)==3&&u32(p+28)==10)||(u32(p+8)==3&&u32(p+20)==4&&u32(p+28)==11))||u32(p+12)!=n||u32(p+16)!=crc(p,n)||u32(p+24)!=1)return reject(e,"Field equipment header/version/capability/rules/CRC rejected");
  for(size_t i=52;i<64;++i)if(p[i])return reject(e,"Field equipment reserved header rejected");if(!std::any_of(p+32,p+52,[](uint8_t b){return b!=0;}))return reject(e,"Field equipment source pin missing");
- const uint32_t strides[]={1,8,12,16,16,40,68,84,16,12};size_t end=224;
- for(uint32_t i=0;i<10;++i){auto*d=p+64+16*i;auto count=u32(d+8);auto aligned=(end+3)&~size_t(3);for(size_t j=end;j<aligned;++j)if(j>=n||p[j])return reject(e,"Field equipment alignment rejected");end=aligned;if(end>n||u32(d)!=i+1||u32(d+4)!=end||u32(d+12)!=strides[i]||count>65536||size_t(count)*strides[i]>n-end)return reject(e,"Field equipment section directory rejected");end+=size_t(count)*strides[i];}if(end!=n)return reject(e,"Field equipment trailing bytes rejected");
+ const uint32_t strides[]={1,8,12,16,16,40,68,84,16,12,60};const bool extended=u32(p+8)==3;const auto sections=u32(p+28);size_t end=64+size_t(sections)*16;if(n<end)return reject(e,"Field equipment directory truncated");
+ for(uint32_t i=0;i<sections;++i){auto*d=p+64+16*i;auto count=u32(d+8);auto aligned=(end+3)&~size_t(3);for(size_t j=end;j<aligned;++j)if(j>=n||p[j])return reject(e,"Field equipment alignment rejected");end=aligned;if(end>n||u32(d)!=i+1||u32(d+4)!=end||u32(d+12)!=strides[i]||count>65536||size_t(count)*strides[i]>n-end)return reject(e,"Field equipment section directory rejected");end+=size_t(count)*strides[i];}if(end!=n)return reject(e,"Field equipment trailing bytes rejected");
  FieldEquipmentView v;v.bytes_=p;v.size_=n;auto ns=v.count(FieldSection::Strings);if(!ns||p[u32(p+68)+ns-1])return reject(e,"Field equipment string termination rejected");std::set<uint32_t>strings;for(uint32_t i=0;i<ns;){strings.insert(i);auto s=v.string(i);if(s.size()>4096||!utf8(s))return reject(e,"Field equipment UTF-8/control rejected");i+=uint32_t(s.size())+1;}auto str=[&](uint32_t i){return strings.count(i)&&!v.string(i).empty();};
- if(v.count(FieldSection::Parameters)!=uint32_t(FieldParameter::PsiFoodLimitZh)||v.count(FieldSection::Bindings)!=uint32_t(FieldBinding::PsiBaseSkill1)||v.count(FieldSection::Commands)!=6||v.count(FieldSection::Slots)!=4||!v.count(FieldSection::Equipment)||v.count(FieldSection::Equipment)>16)return reject(e,"Field equipment schema counts rejected");
+ if(v.count(FieldSection::Parameters)!=uint32_t(extended?FieldParameter::PsiRowPitch:FieldParameter::PsiFoodLimitZh)||v.count(FieldSection::Bindings)!=uint32_t(FieldBinding::PsiBaseSkill1)||v.count(FieldSection::Commands)!=6||v.count(FieldSection::Slots)!=4||!v.count(FieldSection::Equipment)||v.count(FieldSection::Equipment)>16)return reject(e,"Field equipment schema counts rejected");
  for(uint32_t i=0;i<v.count(FieldSection::Parameters);++i){auto*r=v.record(FieldSection::Parameters,i);if(u32(r)!=i+1||!std::isfinite(real(r+4))||std::abs(real(r+4))>8192)return reject(e,"Field equipment parameter ID/value rejected");}
  auto integer=[&](FieldParameter k,float lo,float hi){auto x=v.parameter(k);return x>=lo&&x<=hi&&x==std::floor(x);};
  if(std::abs(v.parameter(FieldParameter::PsiRayX))>64||std::abs(v.parameter(FieldParameter::PsiRayY))>64||v.parameter(FieldParameter::PsiRayLength)<=0||v.parameter(FieldParameter::PsiRayLength)>64)return reject(e,"Field PSI ray rejected");
+ if(extended&&(v.parameter(FieldParameter::PsiRowPitch)<=0||v.parameter(FieldParameter::PsiRowPitch)>128))return reject(e,"Field PSI row pitch rejected");
  if(!integer(FieldParameter::PsiFoodLimitEn,1,512)||!integer(FieldParameter::PsiFoodLimitZh,1,512))return reject(e,"Field favourite food bounds rejected");
  if(!integer(FieldParameter::PsiCost,0,65535)||!integer(FieldParameter::PsiLearnLevel,1,100)||v.parameter(FieldParameter::PsiAction)!=1)return reject(e,"Field PSI cost/learning/action rejected");
   if(!integer(FieldParameter::OwnerId,1,8192))return reject(e,"Field equipment owner ID rejected");
@@ -59,6 +67,20 @@ bool FieldEquipmentData::load(const uint8_t*p,size_t n,std::string&e){
  for(uint32_t i=1;i<=uint32_t(FieldBinding::PsiBaseSkill1);++i){auto k=FieldBinding(i);if(i>=uint32_t(FieldBinding::Owner)&&i<=uint32_t(FieldBinding::BackSound)){if(v.binding(k)!=v.binding(k,true))return reject(e,"Field equipment locale-dependent source path rejected");}else for(bool zh:{false,true})if(v.binding(k,zh).find_first_of("[]{}")!=std::string_view::npos)return reject(e,"Field equipment unsupported text controls");}
  for(auto k:{FieldBinding::PsiSkillId,FieldBinding::PsiBaseSkill0,FieldBinding::PsiBaseSkill1})if(!path(v.binding(k))||v.binding(k)!=v.binding(k,true))return reject(e,"Field PSI identity binding rejected");
  if(v.binding(FieldBinding::PsiSkillId)==v.binding(FieldBinding::PsiBaseSkill0)||v.binding(FieldBinding::PsiSkillId)==v.binding(FieldBinding::PsiBaseSkill1)||v.binding(FieldBinding::PsiBaseSkill0)==v.binding(FieldBinding::PsiBaseSkill1))return reject(e,"Field PSI duplicate skill identity rejected");
+ if(extended){
+  if(!v.count(FieldSection::Skills)||v.count(FieldSection::Skills)>32)return reject(e,"Field PSI skill capacity rejected");
+  std::set<std::string_view>identities;
+  for(uint32_t i=0;i<v.count(FieldSection::Skills);++i){auto*r=v.record(FieldSection::Skills,i);auto s=v.psi_skill(i);
+   for(uint32_t j: {0u,1u,2u,3u,4u,9u,10u,11u,12u,13u})if(!strings.count(u32(r+j*4)))return reject(e,"Field PSI string reference rejected");
+   if(!path(s.id)||!identities.insert(s.id).second||s.name_en.empty()||s.name_zh.empty()||s.description_en.empty()||s.description_zh.empty()||(s.action!=1&&s.action!=2)||s.cost>65535||s.power>65535||s.variance>65535)return reject(e,"Field PSI identity/effect rejected");
+   for(auto text:{s.name_en,s.name_zh,s.description_en,s.description_zh})if(text.find_first_of("[]{}")!=text.npos)return reject(e,"Field PSI unsupported text control");
+   if(s.action==1){if(s.id!=v.binding(FieldBinding::PsiSkillId)||s.cost||s.power||s.variance||s.iq_divisor||!s.sound.empty()||!s.max_en.empty()||!s.max_zh.empty()||!s.up_en.empty()||!s.up_zh.empty())return reject(e,"Field PSI telepathy payload rejected");}
+   else{
+    if(!s.power||!s.iq_divisor||s.iq_divisor>65535||!path(s.sound))return reject(e,"Field PSI healing payload rejected");
+    for(auto message:{s.max_en,s.max_zh,s.up_en,s.up_zh}){if(message.empty())return reject(e,"Field PSI healing message missing");for(size_t p=0;p<message.size();){if(message[p]!='{'){if(message[p]=='}'||message[p]=='['||message[p]==']')return reject(e,"Field PSI message control rejected");++p;continue;}const auto end=message.find('}',p);if(end==message.npos||(message.substr(p,end-p+1)!="{target}"&&message.substr(p,end-p+1)!="{value}"))return reject(e,"Field PSI unknown message context");p=end+1;}}
+   }
+  }
+ }
  // Command IDs identify the reviewed source command opcodes, not text labels.
  // Capability 3 enables field PSI, with checked policy and layout bindings.
  for(uint32_t i=0;i<6;++i){auto a=v.command(i);if(a.id!=i+1||!str(a.en)||!str(a.zh)||a.enabled!=uint32_t(i==1||i==2))return reject(e,"Field equipment command/capability rejected");}

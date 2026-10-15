@@ -73,7 +73,7 @@ class HouseCompilerTests(unittest.TestCase):
  def test_revision6_delay_newline_tokens_and_legacy_bounds(self):
   # Keep a bounded historical prefix so token admission is independent of
   # current House7's additive source dialogues and capacity expansion.
-  t=self.bounded_legacy_tables(47);self.assertEqual(self.ir['schema'],7)
+  t=self.bounded_legacy_tables(47);self.assertEqual(self.ir['schema'],8)
   self.assertEqual(len(t['Segments']),83);self.assertTrue(any(tok[0]==8 for tok in t['Tokens']));self.assertTrue(any(tok[0]==9 for tok in t['Tokens']))
   delay=next(i for i,tok in enumerate(t['Tokens'])if tok[0]==8)
   newline=next(i for i,tok in enumerate(t['Tokens'])if tok[0]==9)
@@ -97,8 +97,8 @@ class HouseCompilerTests(unittest.TestCase):
    if override[3]!=0xffffffff and override[3]>=dialogue_count:override[3]=0xffffffff
   return t
  def test_revision7_capacity_and_unknown_revision_fail_closed(self):
-  t=h.lower(self.ir,self.pres)
-  self.assertEqual(self.ir['schema'],7)
+  t=self.bounded_legacy_tables(76)
+  self.assertEqual(self.ir['schema'],8)
   self.assertEqual((len(t['Segments']),len(t['Dialogues'])),(139,76))
   h.parse_pack(h.encode(t,version=7))
   with self.assertRaises(h.ContentError):h.parse_pack(h.encode(t,version=6))
@@ -106,7 +106,7 @@ class HouseCompilerTests(unittest.TestCase):
    oversized=copy.deepcopy(t);oversized[section]+=[copy.deepcopy(t[section][0]) for _ in range(limit+1-len(t[section]))]
    with self.subTest(section=section),self.assertRaisesRegex(h.ContentError,'capacity'):h.parse_pack(h.encode(oversized,version=7))
   changed=bytearray(h.encode(t,version=7))
-  for offset in (8,24,28):struct.pack_into('<I',changed,offset,8)
+  for offset in (8,24,28):struct.pack_into('<I',changed,offset,9)
   struct.pack_into('<I',changed,16,0);struct.pack_into('<I',changed,16,zlib.crc32(changed))
   with self.assertRaises(h.ContentError):h.parse_pack(changed)
  def test_revision4_and5_remain_accepted_without_new_tokens(self):

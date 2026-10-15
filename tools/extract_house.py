@@ -80,7 +80,8 @@ def build(root=ROOT):
  linked=append_drawer(ex,linked,ir_room)
  linked=append_storage(ex,linked,ir_room)
  from tools.house_key_doors import append_house as append_key_doors
- return append_presents(ex,append_key_doors(ex,append_presents(ex,linked,ir_room)),ir_room)
+ from tools.diary_story import append_house as append_diary_house
+ return append_diary_house(ex,append_presents(ex,append_presents(ex,append_key_doors(ex,append_presents(ex,linked,ir_room)),ir_room),ir_room))
 def extend_source(ex,house,ir_room,ns,ng,segments,carol,overrides,root_name,ie,area,shape_node,view,radius,ret,b):
  def body(path):
   found=[b['body_id']for b in ir_room['sections']['BodyRule']if ir_room['strings'][b['source_path_string']]==path]

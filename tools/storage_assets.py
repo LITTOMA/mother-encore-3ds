@@ -79,7 +79,7 @@ def build(root=ROOT):
     require('get_item_or_skill_articles(item_or_skill)' in text and 'article_str.split(",")' in text,'Storage item/article interpolation changed')
     menus=table(ex,'Translations/TranslatedText/menus - sheet.csv');items=table(ex,'Translations/TranslatedText/items - sheet.csv')
     native_items=read_json(Path(root)/'content/native-items.json');defs=native_items['definitions']
-    require([(d['id'],d['source']) for d in defs]==[(1,'BaseballCap'),(2,'AsthmaSpray')],'Storage unsupported item definitions')
+    require([(d['id'],d['source']) for d in defs]==[(1,'BaseballCap'),(2,'AsthmaSpray'),(3,'BatPlastic')],'Storage unsupported item definitions')
     policies=[];equipment=[];translations={};articles=[]
     for d in defs:
         doc=ex.yaml('Data/Items/'+d['source']+'.yaml')
@@ -92,8 +92,8 @@ def build(root=ROOT):
         total=sum(v*c for v,c in zip(boosts,[2,2,3,2,1,1,1]))
         if doc.get('status_heals'):score=800000
         elif doc['actions']==[{'function':'equip'}]:
-            require(doc['can_use']==['ninten'] and doc['slot']=='other','Storage equipment ownership/slot changed')
-            score=200000+10000+total
+            require((doc['can_use'],doc['slot']) in ((['ninten'],'other'),(['ninten','pippi'],'weapon')),'Storage equipment ownership/slot changed')
+            score=200000+10000*({'other':1,'weapon':4}[doc['slot']])+total
         else:raise ValueError('Unreviewed Storage sorting category')
         policies.append(dict(definition_id=d['id'],source_item=d['source'],doses=doc.get('doses',1),max_count=1,sort_rank_en=score,sort_rank_zh=score))
         equipment.append(dict(definition_id=d['id'],boosts=boosts))

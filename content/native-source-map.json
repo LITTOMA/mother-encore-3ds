@@ -544,6 +544,11 @@
       "source": "content/native-storage-dialogue.json",
       "selector": "Original choice, hidden submenu callback, dormant phrase2 and goodbye3",
       "derivation": "Append program19, text67..69; no RNG or gameplay rules change"
+    },
+    "Basement diary programme": {
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "selector": "Closed eleven-phrase source graph, original scene white fade and special sprite animation tracks; source skill ordering",
+      "derivation": "Independent room capability 9; alpha samples use 16-bit normalized interpolation; preserved source waits and completion"
     }
   },
   "stable_namespaces": {

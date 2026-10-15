@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.house-present-bindings",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/Nintens House.tscn",
@@ -35,6 +35,31 @@
         75,
         76
       ]
+    },
+    {
+      "after_id": 76,
+      "ids": [
+        77,
+        78,
+        79,
+        80
+      ]
+    }
+  ],
+  "extensions": [
+    {
+      "source_path": "Objects/Present2",
+      "dialogue": "ItemDialogue/firstbat",
+      "texts": {
+        "0": 77,
+        "1": 78,
+        "3": 79
+      },
+      "full_text_id": 80
+    },
+    {
+      "source_path": "Objects/Present1",
+      "story": "Podunk/cutscenes/ggf_diary"
     }
   ]
 }

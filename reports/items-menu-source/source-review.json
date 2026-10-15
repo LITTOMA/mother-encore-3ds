@@ -1,9 +1,11 @@
 {
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "dependencies": {
+    "content/asset-receipts/graphics/basement/source.json": "42b194994aa279276d0cafdf82903d44fae08493f9465e9fa757aa2968a95dd8",
     "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
     "content/asset-receipts/graphics/battle/round/source.json": "343a2c612a7207427f52fbb41b140f55cc3bcbbd438303337a7d5213b9b0d30c",
     "content/asset-receipts/graphics/items/source.json": "c7af22c95eb8b5d9ef194c980239911ce4c03384fc33d040ab590fc9cd4b7244",
+    "content/basement-items.json": "4ec9797e11054b3f20c73e0e4642c18c1ca01d4a9eabcbe37c0334747e11de57",
     "content/drawer-item-assets.json": "3d70e219f6b17725756a6c2d804ec3c3d1165341932ca9d67670ee0192432866",
     "content/native-drawer-item.json": "d869a977ad306af4d939f928665e004792361408236d1209763d3cc2544fc949"
   },

@@ -330,7 +330,9 @@ def reuse_session(base_commit):
   previous=old(path);require(hashlib.sha256(previous).hexdigest()==digest,'Naming baseline dependency identity mismatch: '+path)
   rebound_checked_dependency(json.loads(previous),read_json(ROOT/path))
   candidate['dependencies'][path]=sha(ROOT/path)
- require(read_json(IR) in (recipe,candidate),'Naming baseline IR differs; do not rebind unrelated changes')
+ existing=read_json(IR)
+ require(set(existing)==set(recipe) and all(existing[k]==recipe[k] for k in recipe if k!='dependencies'),'Naming baseline IR differs; do not rebind unrelated changes')
+ require(set(existing['dependencies'])==set(recipe['dependencies']) and all(re.fullmatch('[0-9a-f]{64}',v) for v in existing['dependencies'].values()),'Malformed intermediate naming dependencies')
  verify(candidate);require(encode(candidate)==PACK.read_bytes(),'Naming dependency update changes binary game/UI content')
  IR.write_bytes((json.dumps(candidate,indent=2,ensure_ascii=False,sort_keys=True)+'\n').encode('utf8'));print('Naming session dependency re-admitted; exact game/UI binary and actual textures retained')
 

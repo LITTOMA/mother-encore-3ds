@@ -1543,7 +1543,7 @@ void house_top(){
         for(const auto&draw:room_draw_items){if(draw.kind==2){if(!house_renderer.draw_npc(gameplay_scene->presentation.npc_pose(draw.index),cx,cy))house_error="Lifted NPC renderer rejected";}else opening_actor.draw_actor(gameplay_scene->world.actor(draw.index),cx,cy);}
     }
     const auto overlay=gameplay_scene->world.screen_overlay();
-    if(overlay.alpha>0)BattleRenderer::draw_rect(view_x(),view_y(),float(view_width),float(view_height),{float((overlay.rgb>>16)&255)/255.f,float((overlay.rgb>>8)&255)/255.f,float(overlay.rgb&255)/255.f,overlay.alpha});
+    if(overlay.alpha>0)BattleRenderer::draw_rect(view_x(),view_y(),float(view_width),float(view_height),C2D_Color32(uint8_t(overlay.rgb>>16),uint8_t(overlay.rgb>>8),uint8_t(overlay.rgb),uint8_t(std::clamp(overlay.alpha,0.f,1.f)*255.f)));
     // Source layer-1 bars cover the complete world canvas (including effects),
     // before layer-3 dialogue. Width/bottom anchoring adapt to the native view.
     const auto bars=world_blackbars.pose(float(view_width),float(view_height));

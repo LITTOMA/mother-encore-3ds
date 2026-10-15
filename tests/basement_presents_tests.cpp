@@ -116,6 +116,14 @@ int main(int argc,char**argv){
   if(c.opcode==uint32_t(DialogueActionKind::ScreenOverlay)){bad_room(at+8,0);bad_room(at+28,0xbff00000);}
   if(c.opcode==uint32_t(DialogueActionKind::AnimateActor)&&c.flags==1){bad_room(at+40,UINT32_MAX);bad_room(at+12,2);}
  }
+ // The v8 policy extension rejects foreign flags, invalid domains and missing order coverage.
+ std::vector<uint8_t>session_bytes;CHECK(encore::read_file((base+"/session/opening.encsession").c_str(),session_bytes,1024*1024,error));
+ auto offset_of=[&](const std::string&needle){auto it=std::search(session_bytes.begin(),session_bytes.end(),needle.begin(),needle.end());CHECK(it!=session_bytes.end());return size_t(it-session_bytes.begin());};
+ const auto skill_at=offset_of("lifeUpA"),object_at=offset_of("Ninten's House/Present2");
+ auto bad_session=[&](size_t at,uint32_t value){auto bytes=session_bytes;put(bytes,at,value);put(bytes,16,encore::crc32(bytes.data()+24,bytes.size()-24));CHECK(!session.load(bytes.data(),bytes.size(),error));CHECK(session.skill_acquisitions().size()==1&&session.skill_acquisitions()[0].skill_id=="lifeUpA");};
+ bad_session(skill_at-8,33);bad_session(skill_at-4,0);bad_session(object_at+std::strlen("Ninten's House/Present2"),99);bad_session(object_at+std::strlen("Ninten's House/Present2"),1);
+ auto foreign_skill_flag=session_bytes;foreign_skill_flag[skill_at+7+4]=':';put(foreign_skill_flag,16,encore::crc32(foreign_skill_flag.data()+24,foreign_skill_flag.size()-24));CHECK(!session.load(foreign_skill_flag.data(),foreign_skill_flag.size(),error));
+ auto unknown_order=session_bytes;const std::string order_needle="lifeUpA";auto last=std::find_end(unknown_order.begin(),unknown_order.end(),order_needle.begin(),order_needle.end());CHECK(last!=unknown_order.end());*last='x';put(unknown_order,16,encore::crc32(unknown_order.data()+24,unknown_order.size()-24));CHECK(!session.load(unknown_order.data(),unknown_order.size(),error));
  RoomData old_room;FieldEquipmentData old_menu;NativeSessionData old_session;
  CHECK(old_room.load_file("tests/fixtures/pre-basement-opening.encroom",error));CHECK(old_menu.load_file("tests/fixtures/pre-basement-menu.encfield",error));CHECK(old_session.load_file("tests/fixtures/pre-basement-session.encsession",error));
  CHECK(old_menu.view().psi_skill_count()==1&&old_menu.view().psi_skill(0).id=="telepathy");

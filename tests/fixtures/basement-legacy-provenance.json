@@ -18,6 +18,10 @@
       "source_path": "romfs/session/opening.encsession",
       "sha256": "da2430361aeca6db4cbf8fdc3fde7d58e173729aef2a3a5f097987cf2c8222bb",
       "bytes": 9617
+    },
+    "tests/fixtures/pre-basement-opening.encpresent": {
+      "bytes": 2160,
+      "sha256": "c6b2a2a2771dd46889c092b7c472f655931392019becf805d42068420527e78e"
     }
   }
 }

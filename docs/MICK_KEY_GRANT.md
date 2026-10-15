@@ -23,3 +23,5 @@ python -X utf8 tools/run_mick_key_semantics.py --package dist/<verified-package>
 旧构建可加 `--expect-grant-rejection`，只接受相同的缺失接口报错及钥匙数不变，不能把该负向复现当作修复通过。
 
 本地针对性 MSVC 编译及 Mick 用例已通过，人工起点通过真实 Session 校验和存档往返。完整 GCC/Clang、sanitizer、交叉构建、打包与修复后模拟器验证待本提交构建后独立记录。真机、CIA 安装和设备听感仍未验证。
+
+旧版真实 3DSX `4fb7152c6c796cb201de20d248460baaa935f281` 已实际复现相同报错（`build/emulator-regression/mick-key-old-3/`）：钥匙数仍为 1，Mick 和野外均进入失败状态，截图与报告一致。前两次脚本尝试分别误用菜单限定的 `psi_learned` 观察值、漏确认 `woof_key` 的第三个来源等待点而失败；日志保留在 `mick-key-old-{1,2}`。核对观察值生产代码与固定上游翻译后纠正驱动，游戏行为和期望未改写。

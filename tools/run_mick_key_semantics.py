@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import base64,json,secrets,shutil,socket,subprocess,sys,time
+import base64,json,re,secrets,shutil,socket,subprocess,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from tools import run_emulator_semantics as r
@@ -15,13 +15,16 @@ a=p.parse_args();package=a.package.resolve();out=a.out.resolve();locale=a.locale
 if out.exists() or not out.is_relative_to(ROOT/'build/emulator-regression'):raise ValueError('Fresh owned regression output required')
 if not a.fixture.is_file() or not a.fixture.resolve().is_relative_to(ROOT/'build') or not 0<a.fixture.stat().st_size<=1024*1024:raise ValueError('Bounded shared-core fixture in build required')
 receipt=json.loads((package/'build-receipt.json').read_bytes());game=package/'3ds/encore-native/encore-native.3dsx'
+if not re.fullmatch('[0-9a-f]{40}',receipt['source_commit']):raise ValueError('Exact artifact source commit required')
+if not a.emulator.is_file() or (a.dsp_component and not a.dsp_component.is_file()):raise ValueError('Explicit emulator/DSP file missing')
 identity=receipt['artifacts']['encore-native.3dsx']
 if game.stat().st_size!=identity['bytes'] or r.sha(game)!=identity['sha256']:raise ValueError('Genuine artifact receipt mismatch')
 # The negative run deliberately executes an older, verified console build.
 paths=['romfs','content'] if a.expect_grant_rejection else ['runtime','include','platform','romfs','content']
 subprocess.run(['git','diff','--exit-code',receipt['source_commit'],'--',*paths],cwd=ROOT,check=True)
 if shutil.disk_usage(ROOT).free<2*1024**3:raise ValueError('At least 2 GiB free disk required')
-out.mkdir(parents=True);work=out/'temporary';work.mkdir();(work/'.owned-emulator-workspace').write_text('mick-key-test-v1')
+out.mkdir(parents=True);shutil.copyfile(__file__,out/'driver_snapshot.py')
+work=out/'temporary';work.mkdir();(work/'.owned-emulator-workspace').write_text('mick-key-test-v1')
 r.CONFIG=r.CONFIG.replace('graphics_api=1','graphics_api=2');exe=r.portable(a.emulator.resolve(),work/'emulator')
 p=exe.parent/'user/sdmc/3ds/encore-native/save-1.encsave';p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(a.fixture,p)
 if a.dsp_component:
@@ -97,12 +100,13 @@ try:
     wait(lambda s:s['dialogue_finished']==1);pulse('A')
     wait(lambda s:s['dialogue_finished']==1);pulse('A')
     wait(lambda s:s['field_phase']==0 and s['paused']==0 and s['dialogue_active']==0)
-    before=record('scratch_finished');assert before['level']==2 and before['psi_learned']==1 and before['key_count']==1
+    # psi_learned is a menu-only observation; it is zero when the menu is closed.
+    before=record('scratch_finished');assert before['level']==2 and before['key_count']==1
     # Player still faces Mick. Native source shortcut: hold B, then press A.
     client.call('input.set',{'buttons':['B']});time.sleep(.25)
     client.call('input.set',{'buttons':['B','A']});time.sleep(.1);client.call('input.clear')
     wait(lambda s:s['mick_phase']==1 and s['dialogue_stopped']==1)
-    page('key_wait_1');page('key_wait_2')
+    page('key_wait_1');page('key_wait_2');page('key_wait_3')
     wait(lambda s:s['dialogue_finished']==1);record('before_grant');pulse('A')
     if a.expect_grant_rejection:
         rejected=wait(lambda s:s['mick_phase']==5)
@@ -125,7 +129,7 @@ try:
         assert final['key_count']==2 and final['field_error']==''
         record('repeat_thought_finished');capture('returned_to_field')
         result={'status':'passed','locale':locale,'projection':{'key_count_before':before['key_count'],'key_count_after':final['key_count'],'repeat_does_not_duplicate':True,'field_phase':final['field_phase'],'paused':final['paused']},'source_commit':receipt['source_commit']}
-    result.update(memory_write_enabled=False,fixture_sha256=r.sha(a.fixture),emulator_sha256=r.sha(a.emulator),game_sha256=identity['sha256'],scope='Artificial shared-core validated level-2 House exit with no basement key; normal LOAD, scratch conversation, Telepathy and repeated Telepathy. Not naturally-played opening or hardware verification.')
+    result.update(memory_write_enabled=False,driver_sha256=r.sha(out/'driver_snapshot.py'),fixture_sha256=r.sha(a.fixture),emulator_sha256=r.sha(a.emulator),game_sha256=identity['sha256'],scope='Artificial shared-core validated level-2 House exit with no basement key; normal LOAD, scratch conversation, Telepathy and repeated Telepathy. Not naturally-played opening or hardware verification.')
 
 finally:
     if client:

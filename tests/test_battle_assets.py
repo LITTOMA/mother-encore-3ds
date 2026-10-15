@@ -1,6 +1,7 @@
 import copy
 import hashlib
 import json
+import os
 from pathlib import Path
 import struct
 import subprocess
@@ -161,6 +162,7 @@ inline void C3D_TexSetFilter(C3D_Tex*,int,int){}inline void C3D_TexSetWrap(C3D_T
 inline C2D_SpriteSheet C2D_SpriteSheetLoad(const char*){return nullptr;}inline void C2D_SpriteSheetFree(C2D_SpriteSheet){}
 inline size_t C2D_SpriteSheetCount(C2D_SpriteSheet){return 0;}inline C2D_Image C2D_SpriteSheetGetImage(C2D_SpriteSheet,size_t){return {nullptr,nullptr};}
 inline bool Tex3DS_SubTextureRotated(const Tex3DS_SubTexture*){return false;}
+inline void C2D_AlphaImageTint(C2D_ImageTint*,float){}
 inline void C2D_PlainImageTint(C2D_ImageTint*,u32,float){}
 inline bool C2D_DrawImageAt(C2D_Image,float,float,float,const C2D_ImageTint*,float,float){return true;}
 inline void C2D_DrawRectSolid(float,float,float,float,float,u32){}
@@ -242,12 +244,12 @@ int main(int argc,char**argv){
             background.putdata([(i, 0, 0, 255) for i in [10, 20, 30, 40]])
             (root / 'mask.bpx').write_bytes(assets.encode_indexed(mask, (1, 1)))
             (root / 'bg.bpx').write_bytes(assets.encode_indexed(background, (1, 1)))
-            command = ['c++', '-std=c++17', '-O1', '-Wall', '-Wextra', '-Werror',
+            command = [os.environ.get('CXX','c++'), '-std=c++17', '-O1', '-Wall', '-Wextra', '-Werror',
                             '-I' + str(root), '-I' + str(assets.ROOT), '-I' + str(assets.ROOT / 'include'), str(root / 'test.cpp'),
                             '-o', str(root / 'test')]
             for profile in (False, True):
-                subprocess.run(command + (['-DENCORE_FRAME_PROFILE'] if profile else []),
-                               check=True, capture_output=True, text=True)
+                compiled=subprocess.run(command + (['-DENCORE_FRAME_PROFILE'] if profile else []),capture_output=True,text=True)
+                self.assertEqual(compiled.returncode,0,compiled.stdout+compiled.stderr)
                 subprocess.run([str(root / 'test'), str(root / 'mask.bpx'), str(root / 'bg.bpx')],
                                check=True, capture_output=True, text=True)
 

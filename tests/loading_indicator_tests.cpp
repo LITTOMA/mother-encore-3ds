@@ -155,7 +155,7 @@ int main(int argc,char** argv){
     bad=bytes;put(bad,100,20);reject(bad); // Duplicate source-frame mapping.
     for(auto offset:std::vector<size_t>{8,20}){bad=bytes;put(bad,offset,1);reject(bad);} // Prior schema/capability.
     for(auto offset:std::vector<size_t>{108,112,116}){bad=bytes;put(bad,offset,0);reject(bad);}
-    for(const auto value:std::vector<std::pair<size_t,uint32_t>>{{108,10001},{112,2001},{116,1001},{116,201}}){
+    for(const auto& value:std::vector<std::pair<size_t,uint32_t>>{{108,10001},{112,2001},{116,1001},{116,201}}){
         bad=bytes;put(bad,value.first,value.second);reject(bad);
     }
     bad=bytes;bad[124]='/';reject(bad); // Unsafe relative texture path follows timing policy.

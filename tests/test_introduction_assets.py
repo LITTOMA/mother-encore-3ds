@@ -21,6 +21,13 @@ class IntroductionAssets(unittest.TestCase):
     def setUpClass(cls):
         cls.recipe=A.read(A.RECIPE)
         cls.texts=A.validate(cls.recipe)
+        cls.counters={f['source']:A.storage_counter_lines(ROOT,f['source'])for f in A.font_specs(cls.recipe)}
+
+    def setUp(self):
+        # The isolated texture/font fixture uses actual admitted Storage counter
+        # text, without copying an entire source project into its temporary tree.
+        counter=patch.object(A,'storage_counter_lines',side_effect=lambda project,source:self.counters[source])
+        counter.start();self.addCleanup(counter.stop)
 
     def reject_recipe(self,mutate):
         recipe=copy.deepcopy(self.recipe);mutate(recipe)
@@ -73,6 +80,7 @@ class IntroductionAssets(unittest.TestCase):
         pages=[];faces=[];glyphs=[];native=[]
         for i,spec in enumerate(A.font_specs(self.recipe)):
             cps=sorted({ord(c)for same in self.recipe['fonts']if same['source']==spec['source']for key in same['text_keys']for c in self.texts[key][same['locale']]if ord(c)>=32}|{ord(c)for same in self.recipe['fonts']if same['source']==spec['source']for c in same['extra_characters']})
+            cps=sorted(set(cps)|{ord(c)for line in self.counters[spec['source']]for c in line})
             raw=bytes([i])*(256*256*2);name='fixture-%d.t3x'%i;p=root/'fonts/introduction'/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw)
             pages.append(dict(path=name,width=256,height=256,texture_bytes=len(raw),file_bytes=len(raw),crc32=zlib.crc32(raw),sha256=hashlib.sha256(raw).hexdigest()))
             first=len(glyphs)
@@ -80,6 +88,7 @@ class IntroductionAssets(unittest.TestCase):
             faces.append(dict(source=spec['source'],legacy_ascii=False,first_glyph=first,glyph_count=len(cps),first_page=i,page_count=1,ascent=12,descent=4,height=16,definition=spec['definition']))
         for spec,face in zip(A.font_specs(self.recipe),faces):
             lines=sorted({line for same in self.recipe['fonts']if same['source']==spec['source']for key in same['text_keys']for line in self.texts[key][same['locale']].split('\n')})
+            lines=sorted(set(lines)|self.counters[spec['source']])
             spacing=int(spec['definition']['properties'].get('extra_spacing_char','0'));pairs=[];widths=[]
             for line in lines:
                 widths.append(sum(8+(spacing if i+1<len(line)and c!=' 'else 0)for i,c in enumerate(line)))

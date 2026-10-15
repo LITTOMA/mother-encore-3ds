@@ -26,6 +26,12 @@ int main(int argc,char** argv){
     check(bank.asset(3).stable_id==1002&&!bank.asset(3).loops(),"source Doll boss encounter one-shot");
     const auto first=bank.asset(0);check(first.stable_id==21&&first.loops()&&first.loop_start==281446,"source import loop point");
     check(bank.asset(99).stable_id==0,"missing asset empty");AudioAsset a;check(!bank.find(0,a),"missing stable identity");
+    AudioAsset joined;check(bank.find_source(first.source_path,first.source_sha256,joined)&&joined.stable_id==first.stable_id,"exact source identity joins checked bank");
+    const auto prior=joined;auto wrong_digest=first.source_sha256;wrong_digest[0]^=1;
+    check(!bank.find_source(first.source_path,wrong_digest,joined)&&joined.stable_id==prior.stable_id,"wrong digest rejects without replacing result");
+    check(!bank.find_source("res://unknown.wav",first.source_sha256,joined)&&joined.stable_id==prior.stable_id,"unknown path rejects despite known digest");
+    check(!bank.find_source(first.source_path.substr(6),first.source_sha256,joined),"inexact source path does not silently normalize");
+    AudioBank unloaded;check(!unloaded.find_source(first.source_path,first.source_sha256,joined),"unloaded bank cannot resolve source identity");
     for(size_t n=0;n<bytes.size();++n){AudioBank candidate;check(!candidate.load(bytes.data(),n,error),"all truncations rejected");}
     for(size_t i=0;i<bytes.size();++i){auto changed=bytes;changed[i]^=0x80;check(!bank.load(changed.data(),changed.size(),error),"all one-bit corruptions rejected");check(bank.count()==21,"failed load preserves prior owner");}
     auto reject=[&](size_t offset,uint32_t value,const char* why){auto changed=bytes;put32(changed,offset,value);fix_crc(changed);check(!bank.load(changed.data(),changed.size(),error),why);};

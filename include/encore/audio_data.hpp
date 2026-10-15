@@ -25,6 +25,9 @@ public:
     uint32_t count() const;
     AudioAsset asset(uint32_t index) const;
     bool find(uint32_t stable_id,AudioAsset& result) const;
+    // Stable IDs belong to their pack. Cross-pack joins require both the exact
+    // source path and its reviewed digest; failure leaves result unchanged.
+    bool find_source(std::string_view path,const std::array<uint8_t,32>& digest,AudioAsset& result) const;
     float master_db() const;
     float silence_db() const;
 private:

@@ -280,7 +280,7 @@ class NativeContentTests(unittest.TestCase):
         for change in [dict(flags=16),dict(entry_count=17),dict(speed=0)]:
             self.rejects_ir(lambda d: d['sections']['MovementPath'][loop].update(change))
         stop=next(i for i,c in enumerate(self.ir['sections']['Command'])if c['opcode']==42)
-        for change in [dict(opcode=44),dict(actor_index=NO_ACTOR),dict(target_index=0),dict(flags=1),dict(duration=.1),dict(value=1)]:
+        for change in [dict(opcode=47),dict(actor_index=NO_ACTOR),dict(target_index=0),dict(flags=1),dict(duration=.1),dict(value=1)]:
             self.rejects_ir(lambda d: d['sections']['Command'][stop].update(change))
         jump=next(i for i,c in enumerate(self.ir['sections']['Command'])if c['opcode']==12 and c['flags']==1)
         self.rejects_ir(lambda d:d['sections']['Command'][jump].update(flags=16))

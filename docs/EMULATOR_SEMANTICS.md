@@ -16,7 +16,7 @@
 
 `tools/run_field_menu_reference.py` 提取原版 Pause/PSI 方法，在真实 Godot 3.6.2 中运行。原版技能 YAML、技能筛选、空选择、关闭/返回及零 PP 心灵感应调度均有明确来源；AnimationPlayer 使用受检时长。字符/世界/音频服务及没有比较的布局采用列明的适配器。这不是原版完整游戏自动通关。
 
-`tools/run_emulator_semantics.py` 通过回环 TCP JSON-RPC 控制 CDB，检查只读 `EncoreSemanticProbe` ABI v2。记录有界且没有指针，不消费 RNG、没有存档 IO 或行为入口。奇数提交序号、截断、旧/未知版本、文本溢出和非有限位置明确拒绝。当前字段覆盖菜单、开场场景、玩家、HP/PP、库存计数以及实际 NDSP 音乐播放、采样位置和缓冲序号。没有宣称已经观察全部旗标、物品 UID、敌人和剧情事件。
+`tools/run_emulator_semantics.py` 通过回环 TCP JSON-RPC 控制 CDB，检查只读 `EncoreSemanticProbe` ABI v3（716 字节）。记录有界且没有指针，不消费 RNG、没有存档 IO 或行为入口。奇数提交序号、截断、旧/未知版本、文本溢出和非有限位置明确拒绝。当前字段覆盖菜单、开场场景、玩家、HP/PP、库存计数、战斗阶段 / 敌人 HP、门开锁位图以及实际 NDSP 音乐播放、采样位置和缓冲序号。没有宣称已经观察全部旗标、物品 UID、敌人和剧情事件。
 
 测试场景 `tests/emulator/opening-menu.json` 从正常标题入口完成命名、两段原版开场跳过和房屋菜单操作，包含 START/B 开关、摇杆选择 PSI、1 级空列表确认和 SELECT 保护。命名取消保留原版 0.5 秒保护，不把早于该边界的输入当成失败。最终结果对照独立 Godot 参考；测试计时和 DSP 游标不参与跨次幂等比较。音频模式另检查标题 Mother Earth，以及沿正常移动触发 Lamp 第 2 段和进入战斗后的 Poltergeist 身份、实际 DSP 播放及采样/缓冲持续变化，不能用已排队声音代替实际消费。
 
@@ -51,3 +51,7 @@ ABI v2 的真实构建 `4ca6ccfb480d0c5bf8e6a428e0fa02bb26e41659`（3DSX SHA256 
 Mick 领取钥匙、已学会 PSI 的目标与对白、地下室钥匙使用、战斗和其余场景仍需逐项加入真实输入用例。抽取方法参考、模拟器运行和 Old/New 3DS 真机是不同证据层次，不能由一层推定另一层已经通过。
 
 全面回归还暴露了旧 Items fixture 把已经追加的喷雾图标再次传入原生成器的问题，以及 PresentData 测试调用不存在的 valid()。前者严格核对唯一受检扩展后只传入原 UI 前缀，未知/重复/错误哈希仍拒绝；后者检查实际 view().valid()，原损坏加载/回滚断言保留，已实际通过 3737 项 PresentData 检查。全面 GCC/Clang/sanitizers 必须以修复后重新执行的具体结果为准。
+
+ABI v3 增加战斗阶段、敌人HP和门开锁位图，仍只读。新增模拟器路线按正常按键完成 Lamp 战斗并接近地下室门；有界重复按键最多64次，位置区间严格校验且按单帧采样。原版UID随机化依赖真实时钟，因此新增战斗路线比较剧情/菜单/关键物品/开锁结果，实际HP和行走坐标仍记录，并按检查点范围验证，不声称RNG输出一致。
+
+新增真实构建 cfc9b24 通过带DSP的两次独立冷启动，每次52检查点；范围扩展至Lamp正常战斗胜利、真实行走到地下室门、无钥匙对白及恢复行走。剧情/菜单/关键物品/开锁结果一致，实际行走坐标保留记录并按区间验收。凭据位于build/emulator-regression/basement-route-1；两个临时profile均删除。未宣称已经通过模拟器领取KeyBasement后的正向链，原版和共享核心正向结果见BASEMENT_KEY_DOOR.md。

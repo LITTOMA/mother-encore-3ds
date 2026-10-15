@@ -10,12 +10,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient, CdbError
 from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection
-from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original
+from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original, matches, Session
 
 
 def wire(**changes):
     words = {k: 0 for k in FIELDS}
-    words.update(version=2, byte_size=WIRE.size)
+    words.update(version=3, byte_size=WIRE.size)
     words.update(changes)
     return WIRE.pack(MAGIC, *(words[k] for k in FIELDS), *([0.0]*4), *(b'' for _ in range(4)))
 
@@ -24,18 +24,18 @@ class WireBoundary(unittest.TestCase):
     def test_exact_wire_and_projection(self):
         state = decode(wire(width=400, height=240))
         self.assertEqual(projection(state, ['width', 'height']), {'width': 400, 'height': 240})
-        self.assertEqual(WIRE.size, 692)
+        self.assertEqual(WIRE.size, 716)
 
     def test_truncated_extra_magic_and_versions(self):
         good = wire()
-        for data in (good[:-1], good+b'\0', b'BADMAGIC'+good[8:], wire(version=1), wire(version=3), wire(byte_size=693)):
+        for data in (good[:-1], good+b'\0', b'BADMAGIC'+good[8:], wire(version=1), wire(version=2), wire(version=4), wire(byte_size=717)):
             with self.subTest(data=data[:20]), self.assertRaises(ValueError):
                 decode(data)
 
     def test_torn_overflow_boolean_utf8_and_nonfinite(self):
         cases = [wire(sequence=1), wire(overflow=1), wire(paused=2)]
         good = wire()
-        cases += [good[:164]+b'\0\0\x80\x7f'+good[168:], good[:180]+b'\xff'+good[181:], good[:180]+b'x'*128+good[308:]]
+        cases += [good[:188]+b'\0\0\x80\x7f'+good[192:], good[:204]+b'\xff'+good[205:], good[:204]+b'x'*128+good[332:]]
         for data in cases:
             with self.subTest(data=data[:20]), self.assertRaises(ValueError):
                 decode(data)
@@ -59,6 +59,24 @@ class WireBoundary(unittest.TestCase):
             change(candidate)
             with self.assertRaises(ValueError):
                 validate_scenario(candidate)
+
+    def test_bounded_intervals_and_input_repetition(self):
+        scenario=json.loads((ROOT/'tests/emulator/opening-menu.json').read_text())
+        step={'name':'bounded','buttons':['A'],'frames':120,'repeat_until':{'battle_active':0},'max_attempts':32,'wait':{'player_x':{'min':95,'max':97}}}
+        scenario['steps'].append(step);validate_scenario(scenario)
+        self.assertTrue(matches({'player_x':96},step['wait']))
+        self.assertFalse(matches({'player_x':98},step['wait']))
+        for change in ({'max_attempts':65},{'max_attempts':True},{'max_attempts':0},{'repeat_until':{}},{'hold_until':{'battle_active':0}},{'wait':{'player_x':{'min':98,'max':97}}},{'wait':{'player_x':{'min':False,'max':97}}},{'wait':{'player_x':{'min':0,'max':float('inf')}}},{'wait':{'player_x':{'min':0,'extra':1}}}):
+            candidate=copy.deepcopy(scenario);candidate['steps'][-1].update(change)
+            with self.assertRaises(ValueError):validate_scenario(candidate)
+        s=object.__new__(Session);s.client=mock.Mock();s.state=lambda:{'battle_active':1}
+        s.advance=mock.Mock(side_effect=[{'battle_active':1},{'battle_active':0}])
+        self.assertEqual(s.repeat_input({'buttons':['A']},4,{'battle_active':0},2),{'battle_active':0})
+        self.assertEqual([x.args[0] for x in s.client.call.call_args_list],['input.set','input.clear'])
+        s.client.reset_mock();s.advance=mock.Mock(return_value={'battle_active':1})
+        with self.assertRaises(TimeoutError):s.repeat_input({'buttons':['A']},4,{'battle_active':0},2)
+        self.assertEqual(s.advance.call_count,4)
+        self.assertEqual(s.client.call.call_count,4)
 
     def test_original_comparison_rejects_result_drift(self):
         original={'cases': {'pause_select_close': {'paused': False,'active': False}, 'pause_cancel_close': {'paused': False,'active': False}, 'psi_back': {'paused': True,'pause_active': True}, 'psi_unlearned': {'pp': 26,'skills': 0}}}

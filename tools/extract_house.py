@@ -28,7 +28,7 @@ def build(root=ROOT):
   except ValueError:pass
   center=[pos[i]+scale[i]*child[i]for i in range(2)];extents=[abs(scale[i])*shape[i]for i in range(2)]
   if path not in supported:
-   boundaries.append(dict(id=len(boundaries)+1,source_path=path,kind=2 if d.get('targetScene')else 1,center=center,extents=extents));continue
+   boundaries.append(dict(id=(next(r['id']for r in b['boundaries']if r['source_path']==path)if b['schema']==2 else len(boundaries)+1),source_path=path,kind=2 if d.get('targetScene')else 1,center=center,extents=extents));continue
   require(not d.get('targetScene')and not d.get('flag_set'),'Unsupported door state mutation')
   target=node(house,path+'/'+b['nodes']['door_target'])['position'];destination=[pos[i]+scale[i]*target[i]-b['door']['destination_offset'][i]for i in range(2)]
   sound=lambda k:''if d.get(k,'None')=='None'else b['patterns']['door_sound'].format(sound=d[k])
@@ -79,7 +79,8 @@ def build(root=ROOT):
  linked=append_inspections(ex,linked,ir_room)
  linked=append_drawer(ex,linked,ir_room)
  linked=append_storage(ex,linked,ir_room)
- return append_presents(ex,linked,ir_room)
+ from tools.house_key_doors import append_house as append_key_doors
+ return append_key_doors(ex,append_presents(ex,linked,ir_room))
 def extend_source(ex,house,ir_room,ns,ng,segments,carol,overrides,root_name,ie,area,shape_node,view,radius,ret,b):
  def body(path):
   found=[b['body_id']for b in ir_room['sections']['BodyRule']if ir_room['strings'][b['source_path_string']]==path]

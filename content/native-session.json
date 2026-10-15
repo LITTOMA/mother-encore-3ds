@@ -2414,6 +2414,7 @@
     "mimmie_door_opened",
     "minnie_door",
     "minnie_leave",
+    "ninten_basement_door",
     "phone_ring",
     "pillow_attack",
     "poltergeist",
@@ -2425,7 +2426,8 @@
     2,
     3,
     4,
-    5
+    5,
+    6
   ],
   "uid_policy": "Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.",
   "sources": {
@@ -2445,12 +2447,12 @@
     "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633"
   },
   "dependencies": {
-    "content/native-opening.json": "49f937d162cab8a84ab63e71358389aa48299812ffe7657bbad47f06aaa2572d",
-    "content/native-house.json": "32db926e58c0c4268137cb4def8b1842bc14ec073434807eacaf68c8cfc99f56",
+    "content/native-opening.json": "ea2609e9640067e5b869b9b52301f19b6e50ef0bba2ea42535802672f5a29663",
+    "content/native-house.json": "6e09958e3a96a2efbf5bf256cb2d1bb4d1c9fbb09e86bfd38273fde500e0e9b5",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
     "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
-    "content/native-round.json": "698d993a0c89d3b3bd7260a5261b6886e577e2e8e4a0c63829cc9cafa84abbcc",
-    "content/doll-round.json": "fe77fc2fec72ec31044ab0c38e67f3b72956383e1e59b7f054bcb6a7789a1bac",
+    "content/native-round.json": "3d45c807b18ef04464fc7ab3fec7f7f72f085cacfdd857b1c0b730d28f62d09a",
+    "content/doll-round.json": "4082649ae68cffb2c3b6aaa84a0d2c054980d511ddb812189f061c847886e07d",
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
     "content/house-presents.json": "44b5bd75a4c5594d4b99052de23bcf54b67771153356bbefa3d26c63d0187792",
     "content/mick-treats.json": "39fa7a9d84d2f54a824545026e1e4c390c4455c581db46f108c4922dd43d73be",

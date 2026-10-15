@@ -24,7 +24,7 @@ class HouseSourceBindings(unittest.TestCase):
   self.assertEqual(blob,(ROOT/'romfs/world/house/opening.enchouse').read_bytes())
   assets.verify(ROOT/'upstream/MOTHER-Encore',ROOT/'romfs/graphics/ui/house')
  def test_closed_root_version_pin_unknown_and_duplicate_fields(self):
-  for path,value in [(['schema'],2),(['schema'],True),(['commit'],'0'*40),(['kind'],'other'),(['nodes','door_target'],'../Position2D')]:
+  for path,value in [(['schema'],3),(['schema'],True),(['commit'],'0'*40),(['kind'],'other'),(['nodes','door_target'],'../Position2D')]:
    with self.subTest(path=path,value=value):self.reject(path,value)
   candidate=copy.deepcopy(self.recipe);candidate['unknown']=0
   with self.assertRaises(ValueError):bindings.load(ROOT,candidate)
@@ -39,6 +39,16 @@ class HouseSourceBindings(unittest.TestCase):
    with self.subTest(path=path):self.reject(path,value)
   self.reject(['same_scene_doors',1,'id'],self.recipe['same_scene_doors'][0]['id'])
   self.reject(['same_scene_doors',1,'source_path'],self.recipe['same_scene_doors'][0]['source_path'])
+ def test_basement_routes_complete_coverage_and_preserved_boundary(self):
+  current=bindings.load(ROOT,self.recipe)
+  self.assertEqual([r['id']for r in current['same_scene_doors'][-2:]],[9,10])
+  self.assertEqual(current['boundaries'],[dict(id=3,source_path='Doors/Podunk')])
+  legacy=copy.deepcopy(self.recipe);legacy['schema']=1;legacy['same_scene_doors']=legacy['same_scene_doors'][:8];del legacy['boundaries']
+  self.assertEqual(len(bindings.load(ROOT,legacy)['same_scene_doors']),8)
+  self.reject(['boundaries'],[])
+  self.reject(['boundaries',0,'id'],0)
+  self.reject(['boundaries',0,'source_path'],self.recipe['same_scene_doors'][0]['source_path'])
+  self.reject(['same_scene_doors',9,'source_path'],'Doors/Absent')
  def test_npc_preserved_room_identity_and_animation_profiles(self):
   for path,value in [(['npcs',0,'body_id'],10),(['npcs',0,'actor_stable_id'],999),(['npcs',0,'room_actor'],True),(['npcs',0,'actor_name'],'npc2'),(['npcs',0,'resource'],'unknown'),(['npcs',0,'shadow_resource'],''),(['npcs',1,'profile_id'],1),(['npc','default_direction'],[1,0]),(['npc','primary_segments'],3),(['presentation','profile_order'],[])]:
    with self.subTest(path=path):self.reject(path,value)

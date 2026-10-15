@@ -40,6 +40,22 @@ bool HouseRuntime::initialize(HouseView content,OpeningWorld& world,HousePresent
  presentation.set_text_completion_callback([](void* state){return static_cast<HouseRuntime*>(state)->text_finished();},this);
  return sync_npc_visibility();
 }
+uint32_t HouseRuntime::door_dialogue(uint32_t path)const{
+ uint32_t result=house_no_index;const auto name=content_.string(path);
+ for(uint32_t i=0;i<content_.count(HouseSection::Dialogues);++i)if(content_.string(content_.dialogue(i).source_path)==name){if(result!=house_no_index)return house_no_index;result=i;}
+ return result;
+}
+bool HouseRuntime::bind_key_inventory(HouseKeyInventory&inventory){
+ auto reject=[&](const char*text){error_=text;return false;};
+ if(!world_||!content_.valid()||phase_!=HousePhase::Idle||story_pending()||presentation_->dialogue_active())return reject("Key-door binding requires idle initialized House");
+ for(uint32_t i=0;i<openables_.size();++i){const auto d=content_.openable_door(i);const auto key=content_.string(d.key);if(key.empty())continue;
+  if(d.policy||!content_.string(d.activates_flag).empty()||!content_.string(d.deactivates_flag).empty())return reject("Unsupported key-door policy/notifications");
+  if(content_.string(d.flag).empty()||!validate_flag(content_.string(d.flag),key_error_))return reject("Key-door flag is unregistered");
+  if(door_dialogue(d.locked_dialogue)==house_no_index||door_dialogue(d.opened_dialogue)==house_no_index)return reject("Key-door source text absent/ambiguous");
+  if(!inventory.validate_key(key,key_error_))return reject("Key-door inventory policy is unbound");
+ }
+ key_inventory_=&inventory;error_="";return true;
+}
 bool HouseRuntime::rebind_scene(OpeningWorld&world,HousePresentation&presentation){
  if(!content_.valid()||!world.healthy())return false;
  world_=&world;presentation_=&presentation;
@@ -216,10 +232,34 @@ bool HouseRuntime::advance_openables(double delta){
 bool HouseRuntime::interact_openable(uint32_t index){
  auto& state=openables_[index];const auto data=content_.openable_door(index);if(state.unlocked)return true;
  if(!content_.string(data.activates_flag).empty()||!content_.string(data.deactivates_flag).empty())return fail("Door flag notification side effects are not implemented");
+ uint32_t selected=data.blocked_dialogue;bool held=false;
+ if(!state.blocked){
+  const auto key=content_.string(data.key);
+  if(key.empty()||!key_inventory_||data.policy){
+   if(!world_->pause_for_house())return fail("Door dialogue pause rejected");
+   phase_=HousePhase::Unsupported;error_="Unported key/item interaction; B returns control";last_safe_position_=world_->player().position;last_safe_direction_=world_->player().direction;return true;
+  }
+  if(!key_inventory_->has_key(key,held,key_error_))return fail("Key-door inventory query rejected");
+  selected=door_dialogue(held?data.opened_dialogue:data.locked_dialogue);
+  if(selected==house_no_index)return fail("Key-door source text absent/ambiguous");
+ }
+ if(selected==house_no_index)return fail("Non-NPC dialogue is unbound");
+ // Prepare without publishing UI/audio or advancing RNG. A rejected locale or
+ // glyph must not leave a written flag/open door behind. These door spans are
+ // source literal/name text, with no dynamic currency effect callback.
+ auto candidate=*presentation_;const auto dialogue=content_.dialogue(selected);
+ if(!candidate.begin_dialogue(dialogue.first_segment,dialogue.segment_count,player_nickname()))return fail("Non-NPC dialogue rejected");
+ if(held){
+  // Openable Door._use_key writes the flag, opens, then defers unlock.
+  // Source remove_key defaults false in the admitted door: preserve UID/doses.
+  if(!world_->set_story_flag(content_.string(data.flag),true,false))return fail("Key-door flag write rejected");
+  event(HouseEventKind::OpenableFlagWritten,index);
+  if(!open_openable(index))return false;
+  state.unlocked=true;state.collision_pending=true;state.collision_value=true;
+  event(HouseEventKind::OpenableUnlocked,index);
+ }
  if(!world_->pause_for_house())return fail("Door dialogue pause rejected");
- if(!state.blocked||data.blocked_dialogue==house_no_index){phase_=HousePhase::Unsupported;error_="Unported key/item interaction; B returns control";last_safe_position_=world_->player().position;last_safe_direction_=world_->player().direction;return true;}
- const auto dialogue=content_.dialogue(data.blocked_dialogue);const auto room=world_->content();const auto actor=room.actor_instance(room.scene().player_instance_index);
- if(!presentation_->begin_dialogue(dialogue.first_segment,dialogue.segment_count,room.string(actor.display_name_string)))return fail("Non-NPC dialogue rejected");
+ *presentation_=std::move(candidate);
  active_=index;phase_=HousePhase::Dialogue;event(HouseEventKind::DoorDialogueOpened,index);return true;
 }
 bool HouseRuntime::story_conditions(uint32_t index)const{
@@ -394,7 +434,8 @@ bool HouseRuntime::resolve_npc_dialogue(uint32_t selected,uint32_t&first,uint32_
 bool HouseRuntime::npc_interaction_supported(uint32_t i)const{uint32_t first=0,count=0,program=0,seen=0;return resolve_npc_dialogue(i,first,count,program,seen);}
 bool HouseRuntime::door_interaction_supported(uint32_t i)const{
  if(!content_.valid()||i>=openables_.size())return false;const auto&state=openables_[i];const auto d=content_.openable_door(i);
- return !state.unlocked&&state.blocked&&d.blocked_dialogue!=house_no_index&&content_.string(d.activates_flag).empty()&&content_.string(d.deactivates_flag).empty();
+ return !state.unlocked&&content_.string(d.activates_flag).empty()&&content_.string(d.deactivates_flag).empty()&&
+  ((state.blocked&&d.blocked_dialogue!=house_no_index)||(!state.blocked&&key_inventory_&&!content_.string(d.key).empty()&&!d.policy));
 }
 bool HouseRuntime::phone_interaction_supported(uint32_t i)const{uint32_t program=0;return phone_&&phone_->interaction_program(i,*this,program)&&program_for_path(phone_->view().string(program))!=house_no_index;}
 bool HouseRuntime::inspection_visible(uint32_t i)const{return world_&&inspections_.valid()&&i<inspections_.count(HouseInspectionSection::Objects);}

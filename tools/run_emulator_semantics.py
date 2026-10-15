@@ -40,7 +40,7 @@ def validate_scenario(scenario):
         raise ValueError('Scenario step budget exceeded')
     if not scenario['reference'].get('commit') or not scenario['reference'].get('scope'):
         raise ValueError('Scenario lacks source scope')
-    known = set(decode(WIRE.pack(MAGIC, 4, WIRE.size, *([0]*(len(FIELDS)-2)), *([0.0]*6), *(b'' for _ in range(4)))))
+    known = set(decode(WIRE.pack(MAGIC, 5, WIRE.size, *([0]*(len(FIELDS)-2)), *([0.0]*6), *(b'' for _ in range(4)))))
     projection({k: 0 for k in known}, scenario['projection'])
     for step in scenario['steps']:
         if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress', 'expected_music', 'wait_audio', 'hold_until', 'repeat_until', 'max_attempts'}:

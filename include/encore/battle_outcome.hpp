@@ -13,6 +13,9 @@ public:
  bool advance_post_win();
  BattleOutcomePhase phase()const{return phase_;}
  const BattleRewardState& state()const{return state_;}
+ // Publish the completed reward transaction for ordinary and post-win returns.
+ // The caller copies it before a later encounter can replace this owner.
+ const BattleRewardState* committed_state()const{return phase_==BattleOutcomePhase::Complete||phase_==BattleOutcomePhase::PostWinRequested?&state_:nullptr;}
  const std::vector<BattleRewardEvent>& events()const{return events_;}
  std::string_view post_win_script()const{return content_.string(content_.encounter().post_win_script);}
  const char* error()const{return error_;}

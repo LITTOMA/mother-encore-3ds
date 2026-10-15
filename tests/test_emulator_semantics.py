@@ -15,7 +15,7 @@ from tools.run_emulator_semantics import validate_scenario, validate_reference, 
 
 def wire(**changes):
     words = {k: 0 for k in FIELDS}
-    words.update(version=4, byte_size=WIRE.size)
+    words.update(version=5, byte_size=WIRE.size)
     words.update(changes)
     return WIRE.pack(MAGIC, *(words[k] for k in FIELDS), *([0.0]*6), *(b'' for _ in range(4)))
 
@@ -24,18 +24,18 @@ class WireBoundary(unittest.TestCase):
     def test_exact_wire_and_projection(self):
         state = decode(wire(width=400, height=240))
         self.assertEqual(projection(state, ['width', 'height']), {'width': 400, 'height': 240})
-        self.assertEqual(WIRE.size, 744)
+        self.assertEqual(WIRE.size, 748)
 
     def test_truncated_extra_magic_and_versions(self):
         good = wire()
-        for data in (good[:-1], good+b'\0', b'BADMAGIC'+good[8:], wire(version=1), wire(version=2), wire(version=3), wire(version=5), wire(byte_size=745)):
+        for data in (good[:-1], good+b'\0', b'BADMAGIC'+good[8:], wire(version=1), wire(version=2), wire(version=3), wire(version=4), wire(version=6), wire(byte_size=749)):
             with self.subTest(data=data[:20]), self.assertRaises(ValueError):
                 decode(data)
 
     def test_torn_overflow_boolean_utf8_and_nonfinite(self):
         cases = [wire(sequence=1), wire(overflow=1), wire(paused=2)]
         good = wire()
-        cases += [good[:208]+b'\0\0\x80\x7f'+good[212:], good[:224]+b'\0\0\x80\x7f'+good[228:], good[:232]+b'\xff'+good[233:], good[:232]+b'x'*128+good[360:]]
+        cases += [good[:212]+b'\0\0\x80\x7f'+good[216:], good[:228]+b'\0\0\x80\x7f'+good[232:], good[:236]+b'\xff'+good[237:], good[:236]+b'x'*128+good[364:]]
         for data in cases:
             with self.subTest(data=data[:20]), self.assertRaises(ValueError):
                 decode(data)

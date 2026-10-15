@@ -44,7 +44,7 @@ class DollContentTests(unittest.TestCase):
  def test_battle_and_house_links_keep_original_followup_without_winflag(self):
   b=self.s['Battle'][1];self.assertEqual(b['win_flag_index'],NONE);self.assertEqual(b['flags'],12)
   self.assertEqual(self.ir['strings'][b['win_cutscene_string']],'Podunk/cutscenes/doll_defeated')
-  resource=self.s['Resource'][b['battle_resource_index']];self.assertEqual(resource['kind'],3);self.assertEqual(self.ir['strings'][resource['path_string']],'battle/doll/doll-entry.encbattle')
+  resource=self.s['Resource'][b['battle_resource_index']];self.assertEqual(resource['kind'],3);self.assertEqual(self.ir['strings'][resource['path_string']],'data/doll-entry.encbattle')
   self.assertEqual([n['room_actor_index']for n in self.h['npcs'][:3]],[5,3,2]);self.assertEqual(self.h['story_triggers'][0]['program_index'],1)
   text=[self.h['segments'][d['first_segment']]for d in self.h['dialogues'][1:3]]
   self.assertEqual([s['speaker']for s in text],['Mimmie','Mimmie']);self.assertEqual([s['tokens'][0]['text']for s in text],['Ahhhh!','Big brother! Help!']);self.assertTrue(all(s['voice']=='Audio/Sound effects/text/Kid.mp3'for s in text))

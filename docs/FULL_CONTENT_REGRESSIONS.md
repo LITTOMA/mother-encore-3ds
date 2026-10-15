@@ -48,4 +48,19 @@ Clang 普通区域内核 1183542 检查通过。Windows Clang 音频替身和 tr
 
 完整 Clang 作业 116243726980（Actions 38680506778，游戏源码仍为 b965d54）现已成功：普通 make test 146 / 146，Linux ASan / UBSan 146 / 146，默认泄漏检查保留；重新生成未改变受检资源或上游。完整日志 build/full-content-regressions/clang-full-success.log。GCC 作业在此记录时仍执行完整主机阶段，尚不能宣称全矩阵通过。
 
-GCC full run 38680506778 completed with 160/161 tests passing. The remaining aggregate Python failure treated capability 8 (now supported by rules 7) as invalid. The negative fixture now uses unknown capability 9 and an explicit positive test retains capability 8; the two focused tests passed locally. This correction changes tests only; the full GCC rerun remains pending.
+GCC 的 160/161 是 CTest 组数，不能理解为只有一个 Python 用例失败。完整日志还包含聚合串行阶段 493 项中的 11 个失败、9 个错误；旧能力 8 负例另在并行 NativeContent 组中失败。0f8c5a3 已将该负例改为未知能力 9，并保留能力 8 的明确正例，NativeContent 24 项通过。游戏 78d9261 的 GCC 重跑继续暴露其余旧 fixture；以下修复覆盖这些实际失败。
+
+## GCC 聚合测试的后续修复
+
+游戏 78d9261 的完整 Linux Clang 再次通过：普通和默认泄漏检查下的 ASan/UBSan 均 146/146（Actions 38686620514，job 116262837987；原始日志 build/postwin-npc-restoration/clang-full-success.log）。GCC 为 160/161，失败集中于 python_tools 聚合；不是全矩阵通过。其完整失败日志保留在 build/postwin-npc-restoration/gcc-full-failed.log。
+
+- 资源 DAG 实际有 37 次执行：34 个声明生产者、catalog/encounters 两个最终屏障以及 settings 内的 settings-check。测试核对完整任务名集合、每项只执行一次、四进程重叠和全部依赖，未知任务拒绝；使用实际 Python 解释器生成运行身份。
+- 旧音频前缀只比较其真实 16:21 范围，完整银行仍严格核对 53 项。原版 PK Thunder 资源 23 与 Intro 音频 1305 是同一来源的显式复用，检查其来源 SHA，未重编号任何已保存身份。Items 严格检查帽子与喷雾两项定义及五项来源依赖。
+- 临时 House 纹理负例复制已迁出的来源收据，再损坏输出或收据；不存在的收据不再替代原本应执行的拒绝断言。Intro 字体 fixture 包含真实受审查 Storage 计数文本、字形和逐对宽度，没有复制整个游戏或替换字体。
+- GPU 替身补齐 C2D_AlphaImageTint；严格渲染编译保留 -Werror 并显示完整编译诊断、尊重 CXX。修复实际 renderer 的歧义缩进（仅加大括号，语义不变）以及 loading fixture 的 pair 循环复制警告。Windows 本地编译包装器只补平台 ssize_t 类型和 CRT 的 fopen 兼容声明，不用于 Linux CI，不关闭编译警告。渲染器/加载指示器 17 项通过。
+- Phone 测试从原提取器隔离原 Phone/Pillow 追加边界；有界 House 格式 fixture 使用匹配的有界 Room，纹理来源另由真实资产测试覆盖。完整生成器仍检查所有当前输出，并以两个独立哈希种子核对。Phone 全部 17 项通过。
+- Phone 来源报告由原 report/write 生成器更新，审查差异为 7 个已迁移工具/绑定输入指纹、74 个既有已集成音频/Storage 来源记录和 3 个当前输出指纹。原有来源 SHA、机制说明、Dad 图、选项及稳定命名空间完全相同；没有新增 broad handler 许可。候选和逐项差异保存在 build/full-content-regressions/phone-report-review.json。
+
+历史前缀黄金值没有更新。取仓库 33e246f 的两个真实旧战斗包，与当前 Lamp/Doll 包逐节解析并解引用路径后，全部资源、布局、动画、参数、角色、菜单、元数据、背景、事件和字形完全相同。只有已声明的目录搬迁和随之改变的字符串偏移/CRC/SHA；详细对照位于 build/full-content-regressions/legacy-battle-review/proof.json。测试投影要求冻结 recipe 指纹、当前精确 SHA 和实际包字节均匹配，再还原历史路径/两个包摘要。未知字符串、身份或摘要明确拒绝，新增 3 项正负测试。已接入的 Mom/地下室门须与冻结边界的原版几何逐一一致，再投影旧边界集合；不会泛化忽略字段。
+
+本批源码/格式集合（含 GNU make 调度）94/94、Phone 17/17、严格渲染/加载 17/17 已通过，原始日志均在 build/full-content-regressions；完整 GCC/Clang 矩阵将在提交后重跑。当前始终保持草稿；没有真机、CIA 安装或完整原版兼容声明。

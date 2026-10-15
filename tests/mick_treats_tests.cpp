@@ -75,7 +75,7 @@ int main(int argc,char** argv){
     auto stride=bytes;stride[64+3*16+12]=0;CHECK(!bad.load(stride.data(),stride.size(),error));
     auto get=[](const std::vector<uint8_t>&b,size_t n){return uint32_t(b[n])|uint32_t(b[n+1])<<8|uint32_t(b[n+2])<<16|uint32_t(b[n+3])<<24;};
     auto mutate=[&](size_t n,uint32_t value){auto b=bytes;for(unsigned k=0;k<4;++k)b[n+k]=uint8_t(value>>(k*8));const auto hash=encore::crc32(b.data()+32,b.size()-32);for(unsigned k=0;k<4;++k)b[16+k]=uint8_t(hash>>(k*8));CHECK(!data.load(b.data(),b.size(),error));CHECK(data.view().count(MickSection::Commands)==view.count(MickSection::Commands));};
-    mutate(20,1);mutate(20,3);const auto command_rows=get(bytes,64+5*16+4),programme_rows=get(bytes,64+4*16+4);
+    mutate(20,1);mutate(20,2);mutate(20,4);const auto command_rows=get(bytes,64+5*16+4),programme_rows=get(bytes,64+4*16+4);
     for(uint32_t i=0;i<view.count(MickSection::Commands);++i)if(view.command(i).opcode==uint32_t(MickOpcode::GrantKeyItem)){mutate(command_rows+i*20,99);mutate(command_rows+i*20+4,UINT32_MAX);mutate(command_rows+i*20+8,0);mutate(command_rows+i*20+12,1);}
     mutate(programme_rows+12,5);
     return fails?1:0;

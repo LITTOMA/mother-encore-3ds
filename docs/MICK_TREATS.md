@@ -17,7 +17,9 @@
 
 ## 数据与消费者
 
-`content/mick-treats.json` 为来源 IR；`tools/mick_treats.py` 编译 `world/podunk/podunk.encmick`（ENCMIK01，演员记录 200 字节，九个段）。贴图由真实 `tex3ds` 生成到 `graphics/world/mick/mick.t3x`。
+`content/mick-treats.json` 为来源 IR；`tools/mick_treats.py` 编译 `world/podunk/podunk.encmick`（ENCMIK01，能力 3，演员记录 200 字节，九个段）。贴图由真实 `tex3ds` 生成到 `graphics/world/mick/mick.t3x`。
+
+英文及简体中文长段文字保留来源 `[WAIT@]` 确认停顿，不再降为普通换行。每处停顿显示继续光标，重新按 A 才继续；此前输入的打字加速在停顿处重置，长按不会连续跳过。选项及整句后的剧情命令仍等待内部所有停顿与最后一段完成。来源、兼容性及实际验证见 [对话停顿修复](MICK_DIALOGUE_PACING.md)。
 
 资源目录能力 4 的 MickTreats 角色仍指向该包。`gave_treats` 与 `mick_scratch` 进入会话 `mutable_flags`。增加 mick_telepathy 可变旗标及 KeyBasement 获取策略；DogTreats 仍绑定 `consumed_flag_id=gave_treats`。
 

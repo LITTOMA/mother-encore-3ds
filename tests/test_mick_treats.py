@@ -53,12 +53,30 @@ class MickTreatsTests(unittest.TestCase):
             with self.assertRaises(ValueError):mick.encode(ir)
         ir=copy.deepcopy(self.ir);ir['programmes'][-1]['kind']='Unknown'
         with self.assertRaises((ValueError,KeyError)):mick.encode(ir)
-        for cap in (0,1,3):
+        for cap in (0,1,2,4):
             blob=bytearray(self.blob);struct.pack_into('<I',blob,20,cap)
             with self.assertRaises(ValueError):mick.parse(blob)
     def test_favorite_food_and_unknown_runtime_tags(self):
         self.assertEqual(mick.plain('[@][FavFood]'),'[FavFood]')
         with self.assertRaises(ValueError):mick.plain('Read [unmapped_context].')
+
+    def test_source_wait_gates_are_not_plain_newlines(self):
+        self.assertEqual(mick.plain('[@]First.[WAIT@]Second.[WAIT@]Third.'),
+                         'First.\u2063\nSecond.\u2063\nThird.')
+        self.assertEqual(mick.plain('[@]First.\\nSecond.'), 'First.\nSecond.')
+        for raw in ('First.[WAITBR]Second.', 'First.[WAIT]Second.', 'First.\u2063Second.'):
+            with self.subTest(raw=raw), self.assertRaises(ValueError):mick.plain(raw)
+        import csv
+        with (ROOT/'upstream/MOTHER-Encore'/mick.DIALOGUE_TABLE).open(encoding='utf8') as source:
+            rows={r['key']:r for r in csv.DictReader(source)}
+        gates=0
+        for text in self.ir['texts']:
+            for locale,column in mick.LOCALES:
+                if text['translation_key'] not in rows:continue
+                raw=rows[text['translation_key']][column]
+                self.assertEqual(text['localized'][locale].count('\u2063'),raw.count('[WAIT@]'))
+                gates+=raw.count('[WAIT@]')
+        self.assertGreater(gates,0)
     def test_pack_round_trip(self):
         rows = mick.parse(self.blob)
         self.assertEqual(len(rows['Actor']) // 200, 1)

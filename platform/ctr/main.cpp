@@ -1689,6 +1689,10 @@ void publish_semantic_probe(){
     if(gameplay_scene)for(uint32_t i=0;i<house_data.view().count(upstream::HouseSection::OpenableDoors);++i)if(gameplay_scene->house.openable_state(i).unlocked)p.door_unlocked_mask|=uint32_t(1)<<i;
     p.mick_phase=in_field()?uint32_t(field_scene->mick().state()):UINT32_MAX;
     p.mick_x=in_field()?field_scene->mick().position().x:0;p.mick_y=in_field()?field_scene->mick().position().y:0;
+    p.dialogue_active=gameplay_scene&&gameplay_scene->presentation.dialogue_active();
+    p.dialogue_finished=gameplay_scene&&gameplay_scene->presentation.dialogue_finished();
+    p.dialogue_stopped=gameplay_scene&&gameplay_scene->presentation.dialogue_stopped();
+    p.dialogue_visible=gameplay_scene?gameplay_scene->presentation.visible_characters():0;
     p.choice_phase=uint32_t(dialogue_choices.phase());p.save_phase=uint32_t(save_menu.phase());
     p.present_opened_mask=0;p.object_flag_count=0;
     if(gameplay_scene){p.object_flag_count=uint32_t(gameplay_scene->presents.object_flags().size());for(uint32_t i=0;i<gameplay_scene->presents.count();++i)if(gameplay_scene->presents.pose(i).frame==4)p.present_opened_mask|=uint32_t(1)<<i;}

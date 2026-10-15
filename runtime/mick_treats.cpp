@@ -62,7 +62,7 @@ MickRngEvent MickView::rng_event(uint32_t i)const{auto*p=record(MickSection::Rng
 bool MickData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kMickSectionCount*16||n>max_bytes)return fail("Mick pack size rejected");
-    if(std::memcmp(p,"ENCMIK01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=2||u32(p+24)!=1||u32(p+28)||u32(p+52)!=kMickSectionCount||u32(p+56)||u32(p+60))
+    if(std::memcmp(p,"ENCMIK01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=3||u32(p+24)!=1||u32(p+28)||u32(p+52)!=kMickSectionCount||u32(p+56)||u32(p+60))
         return fail("Mick pack schema/capability/scene/reserved rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Mick pack source pin rejected");}
     if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Mick pack checksum rejected");

@@ -282,9 +282,9 @@ WorldDialoguePose HousePresentation::dialogue_pose()const{
  }
  return p;
 }
-bool HousePresentation::plain_glyphs(std::string_view text)const{
+bool HousePresentation::plain_glyphs(std::string_view text,bool allow_wait)const{
  size_t cursor=0;uint32_t c=0;
- while(cursor<text.size()){if(!encore::utf8_next(text,cursor,c))return false;if(c=='\n')continue;std::string one;if(!encore::utf8_append(c,one)||!valid_text(one))return false;}
+  while(cursor<text.size()){if(!encore::utf8_next(text,cursor,c))return false;if(c=='\n'||(allow_wait&&c==0x2063))continue;std::string one;if(!encore::utf8_append(c,one)||!valid_text(one))return false;}
  return true;
 }
 bool HousePresentation::wrap_plain(std::string_view source,std::vector<Line>& out)const{
@@ -311,7 +311,7 @@ bool HousePresentation::present_plain(std::string_view speaker,std::string_view 
  if(!content_.valid())return fail("World dialogue box is not ready");
  if(closing_)return fail("World dialogue box is closing");
  if(active_&&!external_)return fail("House dialogue owns the box");
- if(text.empty()||!plain_glyphs(speaker)||!plain_glyphs(text))return fail("Unsupported dialogue glyph");
+  if(text.empty()||!plain_glyphs(speaker)||!plain_glyphs(text,true))return fail("Unsupported dialogue glyph");
  std::vector<Line> built;if(!wrap_plain(text,built)||built.empty())return fail("World dialogue line produced no text");
  const std::string speaker_text(speaker);const bool reuse=active_;const bool same=reuse&&!name_closing_&&speaker_==speaker_text;
  const auto old_box=box_time_,old_name=name_time_,old_size=name_size_time_,old_cursor=cursor_time_;const auto old_visible=visible_;

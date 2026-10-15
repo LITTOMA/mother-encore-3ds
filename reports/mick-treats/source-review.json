@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "39fa7a9d84d2f54a824545026e1e4c390c4455c581db46f108c4922dd43d73be",
+  "ir_sha256": "ddd908fbfd963a18cfb27978288bd7579e5cd9c8f2c34e7fa23722416bfc2931",
   "sources": {
     "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
     "Data/Dialogue/Podunk/cutscenes/mick_bark.yaml": "c9ae2bd1e5c0078c96e54fc27d63e9cba60fbc9f8a49e5ec23787ab7c0be619d",
@@ -77,6 +77,7 @@
     "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
     "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
     "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
     "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
     "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
     "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
@@ -102,7 +103,7 @@
     "collision": "The foot rectangle moves with Mick and blocks the player; the sprite y-sorts on his live position",
     "bark": "Cutscene Area11 starts mick_bark and steps the player 16px north while gave_treats is clear",
     "rng": "Initial PCG state is after reviewed _ready draws; screen overlap then consumes butterfly, enemy and wander draws",
-    "display": "Spoken lines use the world DialogueBox: name tag, open/close, typewriter and continue cursor. Two options use the source option grid and arrow. A phrase without name closes the tag. showbox false closes the box before the shove"
+    "display": "Spoken lines use the world DialogueBox: name tag, open/close, typewriter and continue cursor. Source WAIT@ lowers to CHAR_WAIT U+2063 followed by newline: printing stops until a fresh input and resets acceleration, before the next line loads. Two options wait for every internal gate and final printing. A phrase without name closes the tag. showbox false closes the box before the shove"
   },
   "unsupported": [
     "Other NPC thoughts and telepathy focus shader",

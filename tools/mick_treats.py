@@ -85,9 +85,10 @@ def table(ex, path):
 
 
 def plain(raw):
-    """Strip DialogueBox control tags for the field bottom-screen display."""
+    """Lower reviewed text tags, retaining source CHAR_WAIT input gates."""
+    require('\u2063' not in raw, 'Unreviewed literal Mick wait control')
     text = raw.replace('\\n', '\n')
-    text = re.sub(r'\[WAIT@\]', '\n', text)
+    text = text.replace('[WAIT@]', '\u2063\n')
     text = re.sub(r'\[@\]', '', text)
     text = re.sub(r'\[/?color\]', '', text)
     text = re.sub(r'\n+', '\n', text).strip()
@@ -264,7 +265,7 @@ def build(root=ROOT):
     bark_pos, bark_scale = world(nodes, bark_shape.path)
     bark_center = [f32(bark_pos.x), f32(bark_pos.y)]
     bark_extents = [f32(abs(bark_rect['extents'].x * bark_scale.x)), f32(abs(bark_rect['extents'].y * bark_scale.y))]
-    player=ex.text('Scripts/Main/party/Player.gd');ex.text('Scripts/UI/DialogueBox.gd');ex.text('Scripts/global/Inventory.gd')
+    player=ex.text('Scripts/Main/party/Player.gd');ex.text('Scripts/UI/DialogueBox.gd');ex.text('Scripts/UI/AbstractDialogueBox.gd');ex.text('Scripts/global/Inventory.gd')
     require('var collide = eventRayCaster.get_collider()' in player and 'target.telepathy()' in player,'Telepathy target dispatch changed')
     text_tools=ex.text('Scripts/global/text_tools.gd')
     require('result = _cut_custom_name(context.favorite_food, tag_content)' in text_tools and 'max_length = len(_tr("LONGEST_POSSIBLE_FOOD"))' in text_tools,'Favourite-food dialogue binding changed')
@@ -632,7 +633,7 @@ def lower(ir):
     for off, length in strings:
         secs['Strings'] += struct.pack('<2I', off, length)
     secs['Bytes'] = pool
-    return pack_container(MAGIC, 1, [secs[n] for n in SECTIONS], STRIDES, LIMIT, capability=2)
+    return pack_container(MAGIC, 1, [secs[n] for n in SECTIONS], STRIDES, LIMIT, capability=3)
 
 
 def encode(ir):
@@ -643,7 +644,7 @@ def encode(ir):
 
 def parse(blob):
     from tools.podunk_field import unpack_container
-    scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT, capability=2)
+    scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT, capability=3)
     require(scene == 1, 'Mick pack scene identity')
     rows = {n: secs[i] for i, n in enumerate(SECTIONS)}
     count = {n: len(rows[n]) // STRIDES[i] for i, n in enumerate(SECTIONS)}
@@ -681,7 +682,7 @@ def review(ir):
                     'collision': 'The foot rectangle moves with Mick and blocks the player; the sprite y-sorts on his live position',
                     'bark': 'Cutscene Area11 starts mick_bark and steps the player 16px north while gave_treats is clear',
                     'rng': 'Initial PCG state is after reviewed _ready draws; screen overlap then consumes butterfly, enemy and wander draws',
-                    'display': 'Spoken lines use the world DialogueBox: name tag, open/close, typewriter and continue cursor. Two options use the source option grid and arrow. A phrase without name closes the tag. showbox false closes the box before the shove'},
+                    'display': 'Spoken lines use the world DialogueBox: name tag, open/close, typewriter and continue cursor. Source WAIT@ lowers to CHAR_WAIT U+2063 followed by newline: printing stops until a fresh input and resets acceleration, before the next line loads. Two options wait for every internal gate and final printing. A phrase without name closes the tag. showbox false closes the box before the shove'},
                 unsupported=['Other NPC thoughts and telepathy focus shader', 'playeremote dotFast is recognized and not drawn', 'talkeremote heart is recognized and not drawn',
                              'ButtonPrompt over Mick', 'Other Podunk NPC dialogue and walking',
                              'Birds reroll when they leave the screen', 'Enemy bodies and field music',

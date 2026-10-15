@@ -3,7 +3,7 @@
   "name": "Natural opening victories, restored NPCs, melody and Dad phone",
   "reference": {
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
-    "scope": "Pinned source contracts and independently executed Godot Pause/PSI methods; START/SELECT mapping is the declared 3DS adaptation. Covers normal startup/menu safety, excludes full game and learned PSI target effects.; Normal Lamp victory inputs and physical route to locked basement door. RNG remains original clock-seeded; HP and walking coordinates are recorded with source-route intervals, not equated across runs.; natural Doll room entry, battle and learned level-2 Telepathy; no injected flags, inventory or RNG. Extended ordinary-input route: Doll melody, Carol phone ring, first Dad call, stick selection of Nothing then Record, SaveSelect open/cancel and return; no actual Record write/LOAD claim.",
+    "scope": "Pinned source contracts and independently executed Godot Pause/PSI methods; START/SELECT mapping is the declared 3DS adaptation. Covers normal startup/menu safety, excludes full game and learned PSI target effects.; Normal Lamp victory inputs and physical route to locked basement door. RNG remains original clock-seeded; HP and walking coordinates are recorded with source-route intervals, not equated across runs.; natural Doll room entry, battle and learned level-2 Telepathy; no injected flags, inventory or RNG. Extended ordinary-input route: Doll melody, Carol phone ring, first Dad call, stick selection of Nothing then Record, SaveSelect open/cancel and return; no actual Record write/LOAD claim.; Physical postwin route through Doll melody, hallway/stairs, Carol and Dad; repeated normal call uses Circle Pad choice and opens/cancels SaveSelect. No emulator save write or LOAD; original postwin motion verified separately with official Godot, phone source contracts are pinned rather than a full parallel original playthrough.",
     "sources": {
       "Scripts/UI/PSIMenuUI.gd": "988484bff6163bd514de96cf231163939d1a35b7c6d1ebb08dd9cc5c259fac29",
       "Scripts/UI/PSISelect.gd": "f9214e3146d03d71f1f73442e22d04d167703ef5530bbbc9f68f5a937e89aeb2",
@@ -27,7 +27,11 @@
       "Data/Dialogue/Podunk/carol_key_again.yaml": "6a90d8de337828751562f041971f2b2e5ae5cf4b2f51a7a96f8defe5f53dccb7",
       "Data/Dialogue/Podunk/carol_got_key.yaml": "e49a7eebcf1020a49fb80acc0f21ee8ab1794d3d065225a40d7e4defe21dabdf",
       "Data/Dialogue/Podunk/carol_food.yaml": "eb6c465f0bd850cc3642a4dcc3dadefc6abf340d5530007e929e500534b74af5",
-      "Data/Dialogue/Podunk/carol_rested.yaml": "1085830398ff2fdd7f8a91dc4ad3bacf8b9edc22d264325bf5508f21c8ba84b1"
+      "Data/Dialogue/Podunk/carol_rested.yaml": "1085830398ff2fdd7f8a91dc4ad3bacf8b9edc22d264325bf5508f21c8ba84b1",
+      "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+      "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+      "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
+      "Data/Dialogue/Podunk/doll.yaml": "0efec152a3748a064d671e154428acb251995dac5a569f810b8e4c05e4a5ff5a"
     }
   },
   "projection": [
@@ -832,13 +836,21 @@
       ],
       "hold_until": {
         "player_x": {
-          "min": 219,
-          "max": 221
+          "min": 199,
+          "max": 201
         }
       },
       "wait": {
         "house_phase": 0,
-        "paused": 0
+        "paused": 0,
+        "player_x": {
+          "min": 195,
+          "max": 210
+        },
+        "player_y": {
+          "min": 368,
+          "max": 376
+        }
       }
     },
     {
@@ -854,7 +866,15 @@
       },
       "wait": {
         "house_phase": 0,
-        "paused": 0
+        "paused": 0,
+        "player_x": {
+          "min": 195,
+          "max": 210
+        },
+        "player_y": {
+          "min": 408,
+          "max": 420
+        }
       }
     },
     {
@@ -1124,7 +1144,8 @@
       "frames": 4,
       "wait": {
         "save_phase": 2,
-        "paused": 1
+        "house_phase": 7,
+        "world_stage": 1
       },
       "capture": true
     },

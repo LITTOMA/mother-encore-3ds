@@ -9,3 +9,7 @@ Mick 编译器保留 U+2063 等待控制字符与换行，现有共享对话框�
 只读模拟器观察 ABI v6（764 字节）增加对话框 active / finished / stopped / visible 状态；无指针、内存写入、随机数消耗或存档操作。旧/未知版本、错误长度、非法布尔等仍拒绝。
 
 针对性 MSVC 共享核心检查已运行：新用例检查全部 Mick 英文、中文文本的 26 个来源等待点（49,382 项断言），每个停顿空等 600 次更新；原 Mick 用例和房屋演出用例（3,037 项断言）通过。22 项 Python 资源及观察协议检查通过。计时断言保留原版 WAIT 前剩余时间，不要求恢复时清零。日志在 `build/mick-dialogue-pacing/`。交叉构建、模拟器及真机结果需独立记录，不能由主机通过推定。
+
+独立参考 `tools/run_mick_dialogue_reference.py` 已在固定官方 Godot 3.6.2 中实际运行抽取的原版 `AbstractDialogueBox` 方法：14 个英中短语、26 个等待点，每处空等 600 次更新均保持段落和可见字符数，再按 A 才恢复。参考仅使用原版逐字打印方法与原生 RichTextLabel；设置、完成回调及 bullet 绘制使用列明适配器，不代表原版整场景或像素对照。日志、来源、方法及引擎指纹在 `build/emulator-regression/mick-pacing-original-1/`。
+
+首个真实构建 353860f 被命名资源对 Session IR 的旧依赖指纹拒绝（`Changed name dependency content/native-session.json`）。已用原命名工具 `reuse-session --base cfde7bbcc1d400d846cb3b2487506d27a663c1ba` 重新准入；工具验证命名相关内容不变，生成命名二进制逐字节不变，不手改 SHA 或跳过检查。

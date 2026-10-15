@@ -30,7 +30,9 @@ Introduction 的音乐、文字音和动画音效在动画开始前一次性校�
 
 Minnie 在玩偶胜利后的原版 Storage 选择已接入双栏仓库：帽子和已领取喷雾转移保留 UID，装备确认同步角色属性，Record／LOAD 保留实际仓库。独立 `.encstorage` 承载规则与布局；Room 能力 8 增加受检子菜单回调而保持游戏规则 7，Session v5 支持库存守恒和装备派生属性。已支持的帽子与喷雾富文本描述已接入；物品使用与少量装饰仍未完成，详见 [Minnie 仓库](MINNIE_STORAGE.md)。
 
-自由行走时按 START 打开原版六项 Pause 菜单；本切片仅开放 Equip。四个原版装备槽使用实际背包 UID，帽子 / None 选择显示七项属性预览，确认才提交库存与派生属性；Record / LOAD 沿用现有装备身份。来源、限制与设备验收步骤见 [野外装备菜单](FIELD_EQUIPMENT.md)。
+房屋和 Podunk 室外自由行走时按 START 打开原版六项 Pause 菜单；本切片仅开放 Equip。正常新游戏的完整五人角色资料按实际单人 party 选择 Ninten，旧单人 LOAD 资料仍接受。四个原版装备槽使用实际背包 UID，帽子 / None 选择显示七项属性预览，确认才提交库存与派生属性；Record / LOAD 沿用现有装备身份，场景仍限受支持房屋。来源、限制与设备验收步骤见 [野外装备菜单](FIELD_EQUIPMENT.md)。
+
+Pause / Equip 背景绘制保留来源 StyleBox 的扩展量，Pause 标题底板按实际文字宽度绘制，修正宽白边与标题遮挡；布局由受检资源承载，绘制能力升为 2，规则 / 存档不变，设备显示仍待验收。见 [野外装备菜单](FIELD_EQUIPMENT.md)。
 
 具体范围见 [启动设置](STARTUP_SETTINGS_CHECKPOINT.md)、[多语言运行时](MULTILINGUAL_RUNTIME.md)、[Continue / LOAD](CONTINUE_LOAD.md) 和 [战斗资源驻留](BATTLE_RESIDENCY_CHECKPOINT.md) 和 [房屋后续调查与对话](HOUSE_FOLLOWUP.md)。
 

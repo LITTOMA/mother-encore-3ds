@@ -1,9 +1,22 @@
 #include "encore/field_equipment_menu.hpp"
 #include "encore/battle_entry.hpp"
+#include "encore/session_save.hpp"
 #include <algorithm>
 #include <cmath>
 #include <set>
 namespace encore::upstream {
+bool field_equipment_character(FieldEquipmentView data,const SessionSnapshot& session,uint32_t& index,std::string& error){
+ if(!data.valid()||session.party.size()!=1||session.party.front()!=data.binding(FieldBinding::Owner)){
+  error="Field equipment requires the admitted singleton party";return false;
+ }
+ uint32_t selected=UINT32_MAX;
+ for(uint32_t i=0;i<session.characters.size();++i)if(session.characters[i].character_id==session.party.front()){
+  if(selected!=UINT32_MAX){error="Field equipment active character is duplicated";return false;}
+  selected=i;
+ }
+ if(selected==UINT32_MAX){error="Field equipment active character is absent";return false;}
+ index=selected;error.clear();return true;
+}
 bool FieldEquipmentMenu::fail(const char*s){error_=s;return false;}
 bool FieldEquipmentMenu::validate_snapshot(const FieldEquipmentSnapshot&s){
  if(s.owner!=data_.binding(FieldBinding::Owner)||s.nickname.empty()||!s.level||s.cash<0||s.cash>UINT32_MAX||!s.inventory.valid()||!data_.bind_items(s.inventory.content(),error_))return fail("Field equipment character/inventory scope rejected");

@@ -5,11 +5,11 @@ JSON is offline source IR. This slice grants only singleton Ninten equipment;
 known Pause commands other than Equip are represented but explicitly disabled.
 """
 from __future__ import annotations
-import argparse,csv,io,math,re,struct,subprocess,sys,zlib
+import argparse,ast,csv,hashlib,io,json,math,re,struct,subprocess,sys,zlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from tools.extract_battle_entry import Extractor,PIN,require,node,animation
+from tools.extract_battle_entry import Extractor,PIN,require,node,animation,variant
 from tools.drawer_program import canonical,digest,fields,read_json,write_json,safe_path
 IR='content/native-field-equipment.json'
 RECIPE='content/field-equipment-assets.json'
@@ -23,11 +23,34 @@ STRIDES=(1,8,12,16,16,40,68,84,16,12)
 HEADER=224
 PARAMETERS=('ReferenceWidth','ReferenceHeight','PlatformWidth','PlatformHeight','PauseColumns','SlotPitch','ListPitch','StatPitch','CursorMoveSeconds','CursorFps','CursorFrame0','CursorFrame1','CursorFrame2','CursorFrame3','MainLineHeight','NumberLineHeight','NumberSpacing','LoopAround','PauseColumnPitch','PauseRowPitch','ListRows','BoostWeight0','BoostWeight1','BoostWeight2','BoostWeight3','BoostWeight4','BoostWeight5','BoostWeight6','OpenMask','ConfirmMask','CancelMask','ScopeMask','OwnerId')
 BINDINGS=('PauseTitle','EquipTitle','None','Empty','StatMaxHP','StatMaxPP','StatOffense','StatDefense','StatSpeed','StatIQ','StatGuts','Owner','MainFont','NumberFont','PauseOpenSound','PauseCloseSound','EquipOpenSound','EquipCloseSound','MoveSound','ConfirmSound','RestrictedSound','ClearSound','EquipSound','BackSound','Level','CashPattern','CashRight')
-ROLES=('PausePanel','PauseInside','PauseTitle','PauseCommand','PauseCash','EquipmentPanel','StatsPanel','Owner','EquipTitle','Portrait','SlotPanel','SlotLabel','SlotItem','ListPanel','ListItem','StatLabel','StatValue','StatProjected','StatIcon','DescriptionPanel','DescriptionText','Cursor','BoostEmpty','BoostBetter','BoostLower','PauseCursor','SlotCursor','CandidateCursor','CashLabel','CashValue','LevelLabel','LevelValue','PortraitEquipped','PortraitSuitable','PortraitBetter','PortraitLower','CashCents')
+ROLES=('PausePanel','PauseInside','PauseTitle','PauseCommand','PauseCash','EquipmentPanel','StatsPanel','Owner','EquipTitle','Portrait','SlotPanel','SlotLabel','SlotItem','ListPanel','ListItem','StatLabel','StatValue','StatProjected','StatIcon','DescriptionPanel','DescriptionText','Cursor','BoostEmpty','BoostBetter','BoostLower','PauseCursor','SlotCursor','CandidateCursor','CashLabel','CashValue','LevelLabel','LevelValue','PortraitEquipped','PortraitSuitable','PortraitBetter','PortraitLower','CashCents','PauseTitleBackdrop')
 CLIPS=('PauseOpen','PauseClose','EquipOpen','EquipClose','DescriptionOpen','DescriptionClose')
 STATS=('maxhp','maxpp','offense','defense','speed','iq','guts')
 ASSETS=(('panel','Graphics/UI/Overworld/flavours/defaultempty.png',None,[1,1]),('inside','Graphics/UI/Overworld/flavours/defaultbox_inside.png',None,[1,1]),('description','Graphics/UI/Overworld/flavours/defaultbox.png',None,[1,1]),('ninten','Graphics/UI/Inventory/characters/ninten.png',None,[1,1]),('cursor','Graphics/UI/Inventory/cursor.png',None,[3,1]),('boost-empty','Graphics/UI/EquipMenu/empty.png',None,[1,1]),('boost-better','Graphics/UI/EquipMenu/red_arrow.png',None,[1,1]),('boost-lower','Graphics/UI/EquipMenu/blue_arrow.png',None,[1,1]),('portrait-equipped','Graphics/UI/Inventory/modifiers.png',[15,10,9,7],[1,1]),('portrait-suitable','Graphics/UI/Inventory/modifiers.png',[0,10,13,7],[1,1]),('portrait-better','Graphics/UI/Inventory/modifiers2.png',[0,0,11,7],[1,1]),('portrait-lower','Graphics/UI/Inventory/modifiers2.png',[0,7,11,7],[1,1]),('cents','Graphics/UI/Overworld/cents.png',None,[1,1]))
 KINDS=('Container','Sprite','Rectangle','NinePatch','Text')
+
+def panel_geometry(scene,path,rect,texture):
+    """Compile the draw rectangle separately from a PanelContainer's child box."""
+    ref=node(scene,path).get('custom_styles/panel')
+    require(type(ref) is dict and set(ref)=={'SubResource'},'Field panel style reference')
+    matches=re.findall(r'^\[sub_resource type="StyleBoxTexture" id='+str(ref['SubResource'])+r'\]\n(.*?)(?=^\[|\Z)',scene,re.M|re.S)
+    require(len(matches)==1,'Field missing/ambiguous panel style')
+    props={}
+    for line in matches[0].strip().splitlines():
+        key,sep,value=line.partition(' = ')
+        require(sep and key not in props,'Field duplicate/malformed panel property');props[key]=value
+    sides=('left','top','right','bottom')
+    allowed={'texture','region_rect'}|{prefix+side for prefix in ('margin_','expand_margin_','content_margin_') for side in sides}
+    require(set(props)<=allowed and variant(props.get('texture',''))=={'ExtResource':texture},'Field unreviewed panel texture/style operation')
+    require(props.get('region_rect')=='Rect2( 0, 0, 24, 24 )','Field unreviewed panel region')
+    def number(key,default):
+        value=variant(props[key]) if key in props else default
+        require(type(value) in (int,float) and math.isfinite(value) and 0<=value<=128,'Field panel margin bound')
+        return value
+    patch=[number('margin_'+side,0) for side in sides]
+    require(all(value==int(value) for value in patch) and patch[0]+patch[2]<=24 and patch[1]+patch[3]<=24,'Field panel patch bound')
+    expand=[number('expand_margin_'+side,0) for side in sides]
+    return [rect[0]-expand[0],rect[1]-expand[1],rect[2]+expand[0]+expand[2],rect[3]+expand[1]+expand[3]],[int(value) for value in patch]
 
 def table(ex,path):
     result={}
@@ -100,10 +123,14 @@ def build(root=ROOT):
         layouts.append(dict(id=len(layouts)+1,role=role,parent=None,kind=kind,resource=resource,frame=0,flags=1,anchor=[0,0],rect=rect,color=color or [1,1,1,1],patch=patch or [0,0,0,0]))
     # Source viewport pixel rectangles. Container auto-sizing is explicitly
     # adapted to a bounded singleton; no screen scaling or fabricated font.
-    layout('PausePanel','NinePatch',[7,7,156,66],0,[8]*4);layout('PauseInside','NinePatch',[15,15,140,50],1,[8]*4)
+    outer,outer_patch=panel_geometry(pause,'menu/Commands',[7,7,156,66],5)
+    inside,inside_patch=panel_geometry(pause,'menu/Commands/InsideBG',[15,15,140,50],4)
+    layout('PausePanel','NinePatch',outer,0,outer_patch);layout('PauseInside','NinePatch',inside,1,inside_patch)
     layout('PauseTitle','Text',[18,3,120,12]);layout('PauseCommand','Text',[15,15,61,12]);layout('PauseCursor','Sprite',[8.666667,17,8,8],4)
     layout('CashLabel','Text',[16,65,24,12],color=[0,0,0,1]);layout('CashValue','Text',[40,65,94,12],color=[0,0,0,1]);layout('CashCents','Sprite',[134,66,10,9],12);layout('PauseCash','Text',[144,65,15,12],color=[0,0,0,1])
-    layout('EquipmentPanel','NinePatch',[28,0,264,133],2,[4]*4);layout('StatsPanel','NinePatch',[40,23,140,110],1,[8]*4)
+    require(node(equip,'EquipMenu/Box')['texture']=={'ExtResource':11},'Field equipment outer panel texture')
+    stats,stats_patch=panel_geometry(equip,'EquipMenu/Box/Panels/Stats',[40,23,140,110],4)
+    layout('EquipmentPanel','NinePatch',[28,0,264,133],0,[4]*4);layout('StatsPanel','NinePatch',stats,1,stats_patch)
     layout('Owner','Text',[48,27,66,12]);layout('LevelLabel','Text',[48,40,66,12]);layout('LevelValue','Text',[114,40,26,12])
     layout('EquipTitle','Text',[220,5,65,12]);layout('Portrait','Sprite',[34,0,21,21],3)
     layout('SlotPanel','NinePatch',[186,23,106,110],1,[8]*4);layout('SlotLabel','Text',[196,30,86,12],color=[.74902,.705882,.803922,1]);layout('SlotItem','Text',[201,41,86,12])
@@ -112,6 +139,11 @@ def build(root=ROOT):
     layout('BoostEmpty','Sprite',[0,0,8,8],5);layout('BoostBetter','Sprite',[0,0,8,8],6);layout('BoostLower','Sprite',[0,0,8,8],7)
     layout('DescriptionPanel','NinePatch',[28,132,264,48],2,[8]*4);layout('DescriptionText','Text',[66,144,213,28])
     for role,rect,res in [('PortraitEquipped',[40,1,9,7],8),('PortraitSuitable',[38,21,13,7],9),('PortraitBetter',[39,1,11,7],10),('PortraitLower',[39,1,11,7],11)]:layout(role,'Sprite',rect,res)
+    backdrop=node(pause,'menu/Commands/Title/Label/title')
+    require(backdrop['show_behind_parent'] is True and backdrop['anchor_right']==1 and not backdrop.get('anchor_bottom',0),'Field title backdrop anchors')
+    title=next(row for row in layouts if row['role']=='PauseTitle')['rect']
+    ml,mt,mr,mb=(backdrop['margin_'+side] for side in ('left','top','right','bottom'))
+    layout('PauseTitleBackdrop','Rectangle',[title[0]+ml,title[1]+mt,mr-ml,mb-mt],color=backdrop['color'])
     clips=[]
     for role,scene,path,rid,target,base in [('PauseOpen',pause,pause_path,1,'menu:rect_position',0),('PauseClose',pause,pause_path,3,'menu:rect_position',0),('EquipOpen',equip,equip_path,3,'EquipMenu/Box:rect_position:y',0),('EquipClose',equip,equip_path,2,'EquipMenu/Box:rect_position:y',0),('DescriptionOpen',equip,equip_path,7,'../EquipMenu/Description:rect_position:y',132),('DescriptionClose',equip,equip_path,6,'../EquipMenu/Description:rect_position:y',132)]:
         a=animation(scene,rid,path,role);tracks=[track for track in a['tracks'] if track['path']==target]
@@ -123,7 +155,7 @@ def build(root=ROOT):
 def recipe(ir):return dict(schema=1,kind='encore.field-equipment.asset-recipe',commit=PIN,sources=ir['sources'],resources=ir['resources'],licence_review='Pinned upstream LICENSE permits game-related modifications; art/font/audio retain upstream notices, not MIT.')
 def extract(root=ROOT):
     root=Path(root);ir=build(root);write_json(root/IR,ir);write_json(root/RECIPE,recipe(ir))
-    write_json(root/REVIEW,dict(schema=1,commit=PIN,ir_sha256=digest(root/IR),sources=ir['sources'],scope=ir['scope'],semantics=['Stable numeric OwnerId and source party name come from the checked Items identity adapter; they are separate from string-pool offsets','Pause six commands in original row-major order; only Equip admitted; source cancel/select closes Pause; Equip cancel returns Pause','Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty','Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost','Original EBMain/BottleRocket faces, source numeric spacing, original PNG textures, 5fps 0/1/2/1 cursor and0.1sec quart-out movement; Pause cash uses EBMain right alignment and source black text','Source Y animation keys/easing retained; description absolute132px normalized to relative offsets, source timeline remains in IR','Source320x180 rectangles at1:1 centered for400x240; bounded singleton auto-size adaptation recorded explicitly; no claim of exact Godot container pixel parity','Native START/A/B/L masks map source select/accept/cancel/scope; no keycode copied into C++','English source U+200B right-currency placeholder is explicitly rendered empty; no new glyph invented'],unsupported=['Other Pause commands','Other characters/equipment/items','Battle item action and asthma statuses','Character tabs/backing ornaments and Pause info plates/audio muffle remain outside this slice'],unverified=['Tests retained but not run','Emulator and physical3DS visual/input/audio/save acceptance pending']))
+    write_json(root/REVIEW,dict(schema=1,commit=PIN,ir_sha256=digest(root/IR),sources=ir['sources'],scope=ir['scope'],semantics=['Stable numeric OwnerId and source party name come from the checked Items identity adapter; they are separate from string-pool offsets','Pause six commands in original row-major order; only Equip admitted; source cancel/select closes Pause; Equip cancel returns Pause','Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty','Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost','Original EBMain/BottleRocket faces, source numeric spacing, original PNG textures, 5fps 0/1/2/1 cursor and0.1sec quart-out movement; Pause cash uses EBMain right alignment and source black text','PanelContainer StyleBox draw bounds use original expand margins separately from child content; source Pause title ColorRect is drawn behind text and grows by the admitted localized glyph width; Equip outer texture remains original defaultempty','Source Y animation keys/easing retained; description absolute132px normalized to relative offsets, source timeline remains in IR','Source320x180 rectangles at1:1 centered for400x240; bounded singleton auto-size adaptation recorded explicitly; no claim of exact Godot container pixel parity','Native START/A/B/L masks map source select/accept/cancel/scope; no keycode copied into C++','English source U+200B right-currency placeholder is explicitly rendered empty; no new glyph invented'],unsupported=['Other Pause commands','Other characters/equipment/items','Battle item action and asthma statuses','Character tabs, remaining backing ornaments and Pause info plates/audio muffle remain outside this slice'],unverified=['Tests retained but not run','Emulator and physical3DS visual/input/audio/save acceptance pending']))
     return ir
 
 def load(root=ROOT):
@@ -153,6 +185,40 @@ def verify_receipt(ir,root=ROOT,source=None):
         require(o['size']==(a['crop'][2:] if a['crop'] else a['size']) and type(o['bytes']) is int and o['bytes']==len(raw)>0 and digest(source/a['output'])==o['sha256'] and zlib.crc32(raw)&NIL==o['crc32'],'Field changed texture bytes')
     return r
 
+def reuse_asset_receipt(previous_ir_bytes,previous_producer_bytes,previous_receipt,ir):
+    """Rebind unchanged converted art after a reviewed layout-only producer edit."""
+    fields(previous_receipt,('schema','commit','ir_sha256','producer_sha256','tex3ds_sha256','outputs'),'Field reused receipt')
+    require(previous_receipt['schema']==1,'Field reused receipt schema')
+    sha=lambda value:hashlib.sha256(value).hexdigest()
+    previous=json.loads(previous_ir_bytes)
+    require(previous_receipt['commit']==previous['commit']==ir['commit']==PIN and
+            previous_receipt['ir_sha256']==sha(previous_ir_bytes) and
+            previous_receipt['producer_sha256']==sha(previous_producer_bytes),'Field reused asset baseline identity')
+    require(previous['sources']==ir['sources'] and previous['resources']==ir['resources'],'Field reused asset source/recipe changed')
+    def conversion(code):
+        nodes=[n for n in ast.parse(code).body if isinstance(n,ast.FunctionDef) and n.name=='compile_assets']
+        require(len(nodes)==1,'Field asset producer missing/ambiguous')
+        return ast.dump(nodes[0],include_attributes=False)
+    current_producer=(ROOT/'tools/field_equipment.py').read_bytes()
+    require(conversion(previous_producer_bytes)==conversion(current_producer),'Field reused texture conversion changed')
+    candidate=dict(previous_receipt,ir_sha256=sha((ROOT/IR).read_bytes()),producer_sha256=sha(current_producer))
+    require(re.fullmatch('[0-9a-f]{64}',candidate['tex3ds_sha256']) and
+            set(candidate['outputs'])=={a['output'] for a in ir['resources']},'Field reused texture receipt set/tool')
+    return candidate
+
+def reuse_assets(base):
+    require(re.fullmatch('[0-9a-f]{40}',base or ''),'Field asset reuse requires an exact baseline commit')
+    old=lambda name:subprocess.check_output(['git','show',base+':'+name],cwd=ROOT)
+    ir=load();candidate=reuse_asset_receipt(old(IR),old('tools/field_equipment.py'),json.loads(old(RECEIPT)),ir)
+    # Verify all retained bytes against the actual tex3ds receipt before rebinding.
+    for a in ir['resources']:
+        output=candidate['outputs'][a['output']];raw=(ROOT/'romfs'/a['output']).read_bytes()
+        fields(output,('size','bytes','sha256','crc32'),'Field reused texture output')
+        require(output['size']==(a['crop'][2:] if a['crop'] else a['size']) and output['bytes']==len(raw)>0 and
+                output['sha256']==hashlib.sha256(raw).hexdigest() and output['crc32']==zlib.crc32(raw)&NIL,'Field reused texture bytes changed')
+    write_json(ROOT/RECEIPT,candidate)
+    print('Field retained real tex3ds outputs: exact source recipes, conversion AST and all 13 output fingerprints unchanged')
+
 def lower(ir,receipt):
     pool=bytearray(b'\0');offsets={'':0};out={name:[] for name in NAMES}
     def string(value):
@@ -173,7 +239,7 @@ def lower(ir,receipt):
     out['Strings']=bytes(pool);validate(out);return out
 
 def encode(t):
-    validate(t);blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCFIE01',2,0,0,1,1,len(NAMES),bytes.fromhex(PIN))
+    validate(t);blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCFIE01',2,0,0,2,1,len(NAMES),bytes.fromhex(PIN))
     for i,name in enumerate(NAMES):
         while len(blob)%4:blob.append(0)
         data=t[name] if i==0 else b''.join(struct.pack(FORMATS[i],*r) for r in t[name]);struct.pack_into('<4I',blob,64+i*16,i+1,len(blob),len(t[name]),STRIDES[i]);blob.extend(data)
@@ -182,7 +248,7 @@ def encode(t):
 def parse_pack(blob):
     require(isinstance(blob,(bytes,bytearray)) and HEADER<=len(blob)<=1024*1024,'Field pack size')
     magic,schema,size,crc,caps,rules,count,pin=struct.unpack_from('<8s6I20s',blob)
-    require(magic==b'ENCFIE01' and schema==2 and caps==rules==1 and size==len(blob) and count==len(NAMES) and pin.hex()==PIN and not any(blob[52:64]),'Field version/capabilities/pin')
+    require(magic==b'ENCFIE01' and schema==2 and caps==2 and rules==1 and size==len(blob) and count==len(NAMES) and pin.hex()==PIN and not any(blob[52:64]),'Field version/capabilities/pin')
     c=bytearray(blob);c[16:20]=b'\0'*4;require(zlib.crc32(c)&NIL==crc,'Field pack CRC');out={};end=HEADER
     for i,name in enumerate(NAMES):
         kind,start,num,stride=struct.unpack_from('<4I',blob,64+i*16)
@@ -224,6 +290,7 @@ def validate(t):
     roles=set()
     for i,l in enumerate(t['Layouts']):
         require(len(l)==21 and l[0]==i+1 and integer(l[1],1,len(ROLES)) and l[1] not in roles and l[2]==NIL and integer(l[3],1,len(KINDS)) and (l[4]==NIL or integer(l[4],0,len(t['Resources'])-1)) and integer(l[5],0,1023) and l[6]==1 and all(finite(v) for v in l[7:17]) and l[11]>=0 and l[12]>=0 and all(0<=v<=1 for v in l[13:17]) and all(integer(v,0,64) for v in l[17:]),'Field layout');roles.add(l[1])
+        if l[1]==ROLES.index('PauseTitleBackdrop')+1:require(l[3]==KINDS.index('Rectangle')+1 and l[11]>0 and l[12]>0,'Field title backdrop draw kind/bounds')
         if l[3] in (2,4):require(l[4]!=NIL and l[5]<t['Resources'][l[4]][5]*t['Resources'][l[4]][6],'Field texture layout')
         else:require(l[4]==NIL,'Field nontexture resource')
     required=set(range(1,len(ROLES)+1))-{22};require(required<=roles,'Field missing layout role')
@@ -239,9 +306,10 @@ def compile_pack(root=ROOT):
 def stage_files(source):
     source=Path(source);ir=load();receipt=verify_receipt(ir,ROOT,source);blob=(source/'ui/opening.encfield').read_bytes();require(blob==encode(lower(ir,receipt)),'Field staged pack differs from source');parse_pack(blob);return {Path('ui/opening.encfield'):blob,**{Path(r['output']):(source/r['output']).read_bytes() for r in ir['resources']}}
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('extract','assets','compile','verify'));p.add_argument('--tex3ds',type=Path);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('extract','assets','reuse-assets','compile','verify'));p.add_argument('--tex3ds',type=Path);p.add_argument('--base');a=p.parse_args()
     if a.action=='extract':extract();print('Field equipment source extract: admitted')
     elif a.action=='assets':compile_assets(a.tex3ds);print('Field equipment genuine assets: admitted')
+    elif a.action=='reuse-assets':reuse_assets(a.base)
     elif a.action=='compile':compile_pack()
     else:
         ir=load();receipt=verify_receipt(ir);blob=(ROOT/PACK).read_bytes();require(blob==encode(lower(ir,receipt)),'Field generated pack differs');parse_pack(blob);print('Field equipment source/format verify: admitted')

@@ -705,6 +705,7 @@ void draw_mick_actor(float camera_x,float camera_y,float offset_x,float offset_y
  if(choice<0||!upstream::evaluate_npc_button_prompt(house_prompt_data,uint32_t(choice),player.position,player.direction,paused,player.crouch,mick.position(),mick.interact_center(),view.actor().interact_extents,pose,why)||!house_prompt_renderer.draw(pose,camera_x-offset_x,camera_y-offset_y))field_status=why.empty()?"Field prompt renderer rejected checked pose":why;
 }
 bool in_field(){return field_scene!=nullptr;}
+upstream::OpeningWorld& active_overworld(){return in_field()?field_scene->world:gameplay_scene->world;}
 bool bind_house_routes(upstream::HouseRuntime& house,std::string& error){
     using namespace upstream;
     if(!world_links.valid()&&!world_links.load_file(resource_path(ResourceRole::WorldLinks).c_str(),error))return false;
@@ -887,10 +888,19 @@ upstream::SaveSlotMetadata slot_metadata(const upstream::SessionSnapshot&state){
     for(const auto&character:state.characters){metadata.highest_level=std::max(metadata.highest_level,uint32_t(character.level));if(!state.party.empty()&&character.character_id==state.party.front())metadata.lead_name=character.nickname;}
     return metadata;
 }
-bool collect_session_snapshot(upstream::SessionSnapshot&result,std::string&error){
+// The snapshot retains the real parked House position/identity. Equipment can
+// validate current field progress against the same session contract; this does
+// not serialize a field location or enable Record/LOAD outside the House.
+bool collect_session_snapshot(upstream::SessionSnapshot&result,std::string&error,const upstream::OpeningWorld*progress_world=nullptr){
     using namespace upstream;if(!session_state_ready||!session_rewards_valid){error="Session save lacks live battle state";return false;}
     auto state=session_state;const auto player=gameplay_scene->world.player();state.position_x=player.position.x;state.position_y=player.position.y;state.direction_x=player.direction.x;state.direction_y=player.direction.y;
-    const auto room=opening_data.view();state.flags.clear();for(uint32_t i=0;i<room.flag_count();++i){const std::string id(room.string(room.flag(i).name_string));state.flags.push_back({id,gameplay_scene->world.story_flag(id)});}
+    const auto room=opening_data.view();const auto& progress=progress_world?*progress_world:gameplay_scene->world;
+    if(!progress.healthy()){error="Session progress owner is invalid";return false;}
+    state.flags.clear();for(uint32_t i=0;i<room.flag_count();++i){const std::string id(room.string(room.flag(i).name_string));
+        bool found=false;const auto source=progress.content();for(uint32_t j=0;j<source.flag_count();++j)if(source.string(source.flag(j).name_string)==id){found=true;break;}
+        if(!found){error="Session progress flag is absent from active scene: "+id;return false;}
+        state.flags.push_back({id,progress.story_flag(id)});
+    }
     for(auto index:gameplay_scene->house.seen_dialogue_keys()){
         const std::string id(house_data.view().string(index));auto found=std::find_if(state.seen_dialogue_flags.begin(),state.seen_dialogue_flags.end(),[&](const auto&value){return value.id==id;});if(found==state.seen_dialogue_flags.end())state.seen_dialogue_flags.push_back({id,true});else found->value=true;
     }
@@ -909,8 +919,8 @@ bool prepare_field_equipment(uint32_t slot,bool none,uint32_t uid,PreparedFieldE
     using namespace upstream;
     const auto view=field_equipment_data.view();
     if(!view.valid()||slot>=view.count(FieldSection::Slots)||!session_rewards_valid||!session_state_ready){error="Equipment lacks a checked live session";return false;}
-    SessionSnapshot snapshot;if(!collect_session_snapshot(snapshot,error))return false;
-    if(snapshot.characters.size()!=1||snapshot.party.size()!=1||snapshot.characters.front().character_id!=view.binding(FieldBinding::Owner)){error="Equipment character scope rejected";return false;}
+    SessionSnapshot snapshot;if(!collect_session_snapshot(snapshot,error,&active_overworld()))return false;
+    uint32_t character_index=0;if(!field_equipment_character(view,snapshot,character_index,error))return false;
     auto inventory=session_inventory;
     bool cleared=false;
     for(const auto&item:session_inventory.instances())if(item.equipped&&items_data.view().definition(item.definition).equipment_slot==slot){
@@ -924,7 +934,7 @@ bool prepare_field_equipment(uint32_t slot,bool none,uint32_t uid,PreparedFieldE
         if(!admitted||at==instances.end()||items_data.view().definition(at->definition).equipment_slot!=slot){error="Equipment candidate identity/slot rejected";return false;}
         if(!inventory.equip_uid(uid,true,error))return false;
     }
-    auto character=snapshot.characters.front();character.inventory.clear();
+    auto character=snapshot.characters[character_index];character.inventory.clear();
     for(const auto&item:inventory.instances())character.inventory.push_back({std::string(items_data.view().string(items_data.view().definition(item.definition).source)),item.equipped!=0,int64_t(item.doses),item.id});
     std::array<int32_t,7> derived{};if(!native_session_derived_stats(native_session_data,items_data.view(),character,derived,error))return false;
     auto stats=session_rewards;stats.maxhp=derived[0];stats.maxpp=derived[1];stats.offense=derived[2];stats.defense=derived[3];stats.speed=derived[4];stats.iq=derived[5];stats.guts=derived[6];
@@ -946,10 +956,11 @@ bool open_field_equipment(std::string&error){
     }
     field_equipment_renderer.set_locale(&locale_selection);field_equipment_renderer.set_details(&item_details_renderer);
     FieldEquipmentHost host;
-    host.read=[&](FieldEquipmentSnapshot&out,std::string&e){
-        SessionSnapshot snapshot;if(!collect_session_snapshot(snapshot,e))return false;
-        if(snapshot.characters.size()!=1||snapshot.party.size()!=1){e="Field menu party scope rejected";return false;}
-        FieldEquipmentSnapshot next;next.owner=snapshot.characters.front().character_id;next.nickname=snapshot.characters.front().nickname;next.level=session_rewards.level;next.cash=session_rewards.cash;next.inventory=session_inventory;
+    host.read=[view](FieldEquipmentSnapshot&out,std::string&e){
+        SessionSnapshot snapshot;if(!collect_session_snapshot(snapshot,e,&active_overworld()))return false;
+        uint32_t character_index=0;if(!field_equipment_character(view,snapshot,character_index,e))return false;
+        const auto& character=snapshot.characters[character_index];
+        FieldEquipmentSnapshot next;next.owner=character.character_id;next.nickname=character.nickname;next.level=session_rewards.level;next.cash=session_rewards.cash;next.inventory=session_inventory;
         next.stats={{session_rewards.maxhp,session_rewards.maxpp,session_rewards.offense,session_rewards.defense,session_rewards.speed,session_rewards.iq,session_rewards.guts}};
         out=std::move(next);e.clear();return true;
     };
@@ -1539,7 +1550,7 @@ void house_bottom(){
 #endif
     text(3,14,143,0.37f,debug_reference_view_enabled&&continue_menu.phase()==upstream::ContinuePhase::Title?
          "D-pad: move / choose    A: select\nL+R+SELECT: reference view + restart\nExit: title menu":
-         "D-pad: move / choose    A: select\nSTART: house menu / intro skip\nExit: title menu",ink,292);
+         "D-pad: move / choose    A: select\nSTART: menu / intro skip\nExit: title menu",ink,292);
     char position[240];const auto& player=gameplay_scene->world.player();
     if(stage==upstream::OpeningStage::Walking){
         const auto instance=room.actor_instance(scene.player_instance_index);
@@ -1599,11 +1610,13 @@ void field_bottom(){
     default:scope=field_scene->error();break;
     }
     if(!field_status.empty()&&field_scene->phase()!=FieldPhase::MickTalk)scope=field_status;
+    if(field_equipment_menu.visible())scope="Original Pause / Equip; START menu, A choose, B back";
+    if(!field_equipment_status.empty())scope=field_equipment_status;
     const auto player=field_scene->world.player().position;
     const auto nearby=field_scene->nearby_notices(player,200.f,3);
-    if(!nearby.empty()&&field_scene->phase()==FieldPhase::Walking){scope+="\nNearby, not ported:";for(const auto&n:nearby){scope+=" ";scope+=std::string(map.text(map.notice(n.index).label));scope+=";";}}
+    if(!nearby.empty()&&field_scene->phase()==FieldPhase::Walking&&!field_equipment_menu.visible()&&field_equipment_status.empty()){scope+="\nNearby, not ported:";for(const auto&n:nearby){scope+=" ";scope+=std::string(map.text(map.notice(n.index).label));scope+=";";}}
     text(2,14,84,0.35f,scope,muted,292);
-    text(3,14,150,0.37f,"D-pad: move   A: talk / continue   B at a stop: return\nSTART menus are not ported in this field",ink,292);
+    text(3,14,150,0.37f,"D-pad: move   A: talk / continue   B at a stop: return\nSTART: menu    B: close menu",ink,292);
     char position[160];const auto instance=room.actor_instance(room.scene().player_instance_index);
     std::snprintf(position,sizeof(position),"%s: %.0f, %.0f  door sound requests %llu",room.string_data(instance.display_name_string),double(player.x),double(player.y),(unsigned long long)door_sound_requests);
     text(4,14,192,0.30f,position,muted,292);
@@ -1739,11 +1752,14 @@ int main(int argc,char** argv){
         // touch or stick until release, so transitions cannot inherit gestures.
         const bool field_was_open=field_equipment_menu.visible();
         const auto field_view=field_equipment_data.view();
-        const bool may_open_field=!field_was_open&&!new_game_setup.active()&&!introduction.active()&&!continue_menu.is_open()&&!restore_input_pending&&!in_battle()&&!battle_handoff_pending()&&!storage_menu.active()&&!storage_open_failed&&!save_menu.is_open()&&!save_open_failed&&!dialogue_choices.active()&&house_error.empty()&&round_error.empty()&&gameplay_scene->world.healthy()&&gameplay_scene->world.stage()==upstream::OpeningStage::Walking&&!gameplay_scene->world.house_paused()&&!gameplay_scene->world.cutscene_active()&&!gameplay_scene->house.blocks_player()&&!gameplay_scene->house.entering_door()&&!in_field()&&!scene_door.active();
+        auto& menu_world=active_overworld();
+        const bool scene_allows_menu=menu_world.healthy()&&menu_world.stage()==upstream::OpeningStage::Walking&&!menu_world.house_paused()&&!menu_world.cutscene_active()&&
+            (in_field()?field_scene->phase()==upstream::FieldPhase::Walking:!gameplay_scene->house.blocks_player()&&!gameplay_scene->house.entering_door());
+        const bool may_open_field=!field_was_open&&!new_game_setup.active()&&!introduction.active()&&!continue_menu.is_open()&&!restore_input_pending&&!in_battle()&&!battle_handoff_pending()&&!storage_menu.active()&&!storage_open_failed&&!save_menu.is_open()&&!save_open_failed&&!dialogue_choices.active()&&house_error.empty()&&round_error.empty()&&scene_allows_menu&&!scene_door.active();
         if(may_open_field&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::OpenMask)))){
             wait_for_gpu_idle();
-            if(!gameplay_scene->world.pause_for_house())field_equipment_status="Field menu pause rejected";
-            else if(!open_field_equipment(error)){field_equipment_status=error;field_equipment_menu=upstream::FieldEquipmentMenu{};gameplay_scene->world.unpause_from_house();}
+            if(!menu_world.pause_for_house())field_equipment_status="Field menu pause rejected";
+            else if(!open_field_equipment(error)){field_equipment_status="Menu could not open: "+error;field_equipment_menu=upstream::FieldEquipmentMenu{};if(!menu_world.unpause_from_house())field_equipment_status+="; player resume rejected";}
         }
         const uint32_t sampled_context=input_context();
         circlePosition circle{};hidCircleRead(&circle);
@@ -1981,7 +1997,7 @@ int main(int argc,char** argv){
                 const auto binding=upstream::FieldBinding(uint32_t(upstream::FieldBinding::PauseOpenSound)+uint32_t(event)-1);
                 if(!play_source_audio(std::string(field_view.binding(binding))))field_equipment_status=audio_status.empty()?house_error:audio_status;
             }
-            if(!field_equipment_menu.visible()&&!gameplay_scene->world.unpause_from_house())field_equipment_status="Field menu resume rejected";
+            if(!field_equipment_menu.visible()&&!active_overworld().unpause_from_house())field_equipment_status="Field menu resume rejected";
         }
         const bool storage_was_open=storage_menu.active();
         if(gameplay_scene->world.take_storage_request()){
@@ -2069,7 +2085,7 @@ int main(int argc,char** argv){
         // uiManager owns bars for the entire dialogue lifetime, including
         // showbox:false movement phrases. Closing text alone is not an end.
         const bool dialogue_bars=gameplay_scene->presentation.dialogue_active()&&!gameplay_scene->presentation.dialogue_closing();
-        const bool bars_open=world_visible&&!in_battle()&&(dialogue_bars||(!in_field()&&(field_equipment_menu.visible()||gameplay_scene->world.cutscene_active())));
+        const bool bars_open=world_visible&&!in_battle()&&(dialogue_bars||field_equipment_menu.visible()||(!in_field()&&gameplay_scene->world.cutscene_active()));
         if(!world_blackbars.update(bars_open,dt))house_error="World blackbar animation rejected";
         if(audio_player.available()){
             // A parked House owner behind a field must not replay its request history.
@@ -2103,6 +2119,7 @@ int main(int argc,char** argv){
             if(field_equipment_menu.visible()&&!field_equipment_renderer.draw(field_equipment_menu,battle_renderer,field_counter_text,float(view_width),float(view_height),view_x(),view_y()))field_equipment_status=field_equipment_renderer.error();
             const auto fade=gameplay_scene->house.fade_color();if(fade.w>0)BattleRenderer::draw_rect(view_x(),view_y(),float(view_width),float(view_height),battle_color(fade));
         }
+        if(draw_field&&!in_battle()&&field_equipment_menu.visible()&&!field_equipment_renderer.draw(field_equipment_menu,battle_renderer,field_counter_text,float(view_width),float(view_height),view_x(),view_y()))field_equipment_status=field_equipment_renderer.error();
         if((draw_house||draw_field)&&scene_door.covering()){
             // Circle Focus follows the player's screen position in the current scene.
             float fx=0,fy=0;

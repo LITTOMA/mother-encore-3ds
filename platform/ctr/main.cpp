@@ -1686,6 +1686,11 @@ void publish_semantic_probe(){
     p.battle_outcome_phase=uint32_t(battle_outcome.phase());p.enemy_hp=round_ready?uint32_t(std::max<int32_t>(0,battle_round.battler(round_data.view().binding().enemy_participant).target_hp)):0;
     p.world_phrase=world?world->phrase():UINT32_MAX;p.door_unlocked_mask=0;
     if(gameplay_scene)for(uint32_t i=0;i<house_data.view().count(upstream::HouseSection::OpenableDoors);++i)if(gameplay_scene->house.openable_state(i).unlocked)p.door_unlocked_mask|=uint32_t(1)<<i;
+    p.mick_phase=in_field()?uint32_t(field_scene->mick().state()):UINT32_MAX;
+    p.mick_x=in_field()?field_scene->mick().position().x:0;p.mick_y=in_field()?field_scene->mick().position().y:0;
+    p.choice_phase=uint32_t(dialogue_choices.phase());p.save_phase=uint32_t(save_menu.phase());
+    p.present_opened_mask=0;p.object_flag_count=0;
+    if(gameplay_scene){p.object_flag_count=uint32_t(gameplay_scene->presents.object_flags().size());for(uint32_t i=0;i<gameplay_scene->presents.count();++i)if(gameplay_scene->presents.pose(i).frame==4)p.present_opened_mask|=uint32_t(1)<<i;}
     semantic_probe_text(p.house_error,house_error,p.overflow);semantic_probe_text(p.field_error,field_status,p.overflow);
     semantic_probe_text(p.menu_error,field_equipment_status,p.overflow);semantic_probe_text(p.audio_error,audio_status,p.overflow);
     std::atomic_signal_fence(std::memory_order_seq_cst);++p.sequence;

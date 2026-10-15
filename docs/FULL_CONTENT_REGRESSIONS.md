@@ -47,3 +47,5 @@ Clang 普通区域内核 1183542 检查通过。Windows Clang 音频替身和 tr
 906 方法覆盖再次核对为 595 汇总 + 311 专用。另安全移除已被 44f 受测构建替代的 c5 旧二进制，释放 489,907,076 字节（cleanup.json）；核对本轮 Dad 用例独占临时目录的时间、文件名与固定测试快照标记后，另释放 8,320 字节（cleanup-dad.json）。新 b965 构建四次冷启动验收后，再移除被替代的 44f 二进制 489,907,280 字节（cleanup-retire44.json）。均保留来源收据、指纹和日志；加此前另一批 489,911,986 字节，本轮累计清理 1,469,734,662 字节，不重复计算。
 
 完整 Clang 作业 116243726980（Actions 38680506778，游戏源码仍为 b965d54）现已成功：普通 make test 146 / 146，Linux ASan / UBSan 146 / 146，默认泄漏检查保留；重新生成未改变受检资源或上游。完整日志 build/full-content-regressions/clang-full-success.log。GCC 作业在此记录时仍执行完整主机阶段，尚不能宣称全矩阵通过。
+
+GCC full run 38680506778 completed with 160/161 tests passing. The remaining aggregate Python failure treated capability 8 (now supported by rules 7) as invalid. The negative fixture now uses unknown capability 9 and an explicit positive test retains capability 8; the two focused tests passed locally. This correction changes tests only; the full GCC rerun remains pending.

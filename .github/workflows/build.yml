@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Build artifacts only, or explicitly run full verification
+        description: Build artifacts, run full verification, or regenerate reviewed basement textures
         type: choice
         required: true
         default: build

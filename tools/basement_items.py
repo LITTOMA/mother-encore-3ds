@@ -5,7 +5,7 @@ This adapter admits two source items, not arbitrary item YAML or scripts.
 The checked resources are consumed by the ordinary inventory and room core.
 """
 from __future__ import annotations
-import argparse, copy, subprocess, sys, tempfile
+import argparse, copy, re, subprocess, sys, tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
@@ -56,7 +56,7 @@ def verify_receipt(root=ROOT,source=None):
     root=Path(root);ir=load(root);r=read_json(root/RECEIPT)
     require(set(r)=={'schema','commit','ir_sha256','producer_sha256','tex3ds_sha256','assets','outputs'} and r['schema']==1 and
         r['commit']==PIN and r['ir_sha256']==digest(root/IR) and r['producer_sha256']==digest(root/'tools/basement_items.py') and
-        r['assets']==ir['assets'] and len(r['tex3ds_sha256'])==64,'Basement texture provenance mismatch')
+        r['assets']==ir['assets'] and isinstance(r['tex3ds_sha256'],str) and re.fullmatch('[0-9a-f]{64}',r['tex3ds_sha256']) is not None,'Basement texture provenance mismatch')
     require(set(r['outputs'])=={a['output'] for a in ir['assets']},'Basement texture set mismatch')
     base=root/'romfs' if source is None else Path(source)
     for path,rec in r['outputs'].items():

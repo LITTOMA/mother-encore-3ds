@@ -76,7 +76,7 @@ public:
  bool entering_door()const;
  float fade_alpha()const;
  BattleValue fade_color()const;
- const char* error()const{return error_;}
+ const char* error()const{return error_.c_str();}
  uint32_t active_object()const{return active_;}
  const HouseOpenableState& openable_state(uint32_t index)const{return openables_[index];}
  bool story_executing()const{return story_executing_;}
@@ -165,6 +165,6 @@ private:
  HousePhase phase_=HousePhase::Idle;uint32_t active_=house_no_index;double fade_time_=0;
  bool door_unpaused_=false;uint64_t physics_tick_=0,idle_frame_=0,await_idle_=0;
  std::vector<uint32_t>boundary_routes_;uint32_t scene_route_=WorldLinksData::kNotFound;
- Vec2 last_safe_position_{},last_safe_direction_{};const char*error_="";
+ Vec2 last_safe_position_{},last_safe_direction_{};std::string error_;
 };
 }

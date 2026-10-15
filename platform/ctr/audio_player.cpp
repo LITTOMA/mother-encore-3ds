@@ -7,7 +7,8 @@ namespace encore::ctr {
 namespace {
 // Area-music streaming owns channels 4..19. Optional cutscene effects use two
 // otherwise unowned hardware channels; text and phone use channels 22 and 23.
-int hardware_channel(uint32_t lane){return int(lane<4?lane:lane+18);}
+// 0..3 main voices, 4..19 regional music, 20..23 auxiliary/text/phone.
+int hardware_channel(uint32_t lane){return int(lane<4?lane:lane+16);}
 }
 MusicObservation AudioPlayer::observe_music() const {
     const auto& music=voices_[uint32_t(AudioLane::Music)];

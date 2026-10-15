@@ -516,7 +516,7 @@ if(BUILD_TESTING)
  target_include_directories(encore_audio_player_regression BEFORE PRIVATE tests/fixtures/audio_ndsp platform/ctr)
  target_link_libraries(encore_audio_player_regression PRIVATE encore_core)
  add_test(NAME audio_player_regression COMMAND encore_audio_player_regression ${CMAKE_SOURCE_DIR}/romfs/sound/banks/opening.encaudio ${CMAKE_SOURCE_DIR}/romfs/ ${CMAKE_SOURCE_DIR}/romfs/world/house/opening.encroom)
- set_tests_properties(audio_player_regression PROPERTIES PASS_REGULAR_EXPRESSION "TRACE 516 56ffdd52e57c7f69")
+ set_tests_properties(audio_player_regression PROPERTIES PASS_REGULAR_EXPRESSION "TRACE 529 71a30145b163903b")
 endif()
 
 if(BUILD_TESTING)

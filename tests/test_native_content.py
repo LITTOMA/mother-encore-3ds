@@ -54,11 +54,16 @@ class NativeContentTests(unittest.TestCase):
 
     def test_header_versions_capabilities_size_reserved_rejected(self):
         changes=[(0,'I',0),(8,'H',2),(10,'H',1),(12,'I',64),(16,'I',0xffffffff),
-                 (20,'I',0x04030201),(24,'I',2),(28,'I',0),(32,'I',1),(36,'I',1),(36,'I',8),
+                 (20,'I',0x04030201),(24,'I',2),(28,'I',0),(32,'I',1),(36,'I',1),(36,'I',9),
                  (40,'I',0),(44,'I',0xfffffff0),(48,'H',25),(50,'H',28),
                  (108,'I',0),(112,'I',0),(116,'I',1),(120,'I',1)]
         for offset,fmt,value in changes:
             with self.subTest(offset=offset),self.assertRaises(ContentError):parse_pack(self.mutation(offset,fmt,value))
+
+    def test_current_extended_capability_is_valid(self):
+        parsed=parse_pack(self.blob)
+        self.assertEqual((parsed['rules'],parsed['capabilities']),(7,8))
+        self.assertEqual(parse_pack(self.mutation(36,'I',8)),parsed)
 
     def test_checksum_and_unknown_directory_values(self):
         corrupt=bytearray(self.blob);corrupt[-1]^=1

@@ -135,6 +135,7 @@ class HouseLayersTests(unittest.TestCase):
                 out = Path(td)
                 for file in h.OUT.iterdir():
                     shutil.copyfile(file, out / file.name)
+                shutil.copyfile(h.receipt_path(h.OUT,h.ROOT),out/'source.json')
                 (out / name).write_bytes(b'changed texture')
                 with self.assertRaisesRegex(ValueError, 'Stale or tampered'):
                     h.verify(self.upstream, out)
@@ -148,6 +149,7 @@ class HouseLayersTests(unittest.TestCase):
                 out = Path(td)
                 for file in h.OUT.iterdir():
                     shutil.copyfile(file, out / file.name)
+                shutil.copyfile(h.receipt_path(h.OUT,h.ROOT),out/'source.json')
                 receipt = h.read_json(out / 'source.json')
                 mutation(receipt)
                 h.write_json(out / 'source.json', receipt)
@@ -191,8 +193,8 @@ class HouseLayersTests(unittest.TestCase):
                           'graphics/actors/emotes.t3x', 'graphics/actors/shadow.t3x', 'graphics/world/house-layers/objects.t3x']
         original_paths += ['graphics/world/house-map/house-%02d.t3x' % i for i in range(15)]
         original_paths += ['res://Audio/Music/Poltergeist.ogg', 'res://Audio/Sound effects/bash.mp3',
-                           'res://Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav', 'battle/lamp/opening.encbattle',
-                           'graphics/ui/house/doll.t3x', 'graphics/ui/house/mimmie.t3x', 'battle/doll/doll-entry.encbattle']
+                           'res://Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav', 'data/opening.encbattle',
+                           'graphics/ui/house/doll.t3x', 'graphics/ui/house/mimmie.t3x', 'data/doll-entry.encbattle']
         resources = self.ir['sections']['Resource']
         self.assertEqual([(r['stable_id'], self.ir['strings'][r['path_string']]) for r in resources[:27]],
                          list(enumerate(original_paths, 1)))
@@ -202,9 +204,9 @@ class HouseLayersTests(unittest.TestCase):
         audio = h.read_json(h.ROOT / 'content/native-audio.json')
         paths = {self.ir['strings'][r['path_string']]: r for r in resources}
         shared = [asset for asset in audio['assets'] if asset['source_path'] in paths]
-        self.assertEqual([asset['stable_id'] for asset in shared], [21, 22, 30, 32, 33, 34, 36, 37])  # Preserved source identities plus phone ring/hangup.
+        self.assertEqual([asset['stable_id'] for asset in shared], [21, 22, 30, 32, 33, 34, 36, 37, 1305])  # Preserved source identities plus phone ring/hangup.
         for asset in shared:
-            self.assertEqual(paths[asset['source_path']]['stable_id'], asset['stable_id'])
+            self.assertEqual(paths[asset['source_path']]['stable_id'],23 if asset['stable_id']==1305 else asset['stable_id'])  # Intro reuses original PK Thunder source.
             self.assertEqual(paths[asset['source_path']]['sha256'], asset['source_sha256'])
 
 

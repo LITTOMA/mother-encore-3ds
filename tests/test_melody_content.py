@@ -4,6 +4,7 @@ from pathlib import Path
 from unittest.mock import patch
 from tools import melody_dialogue as melody, native_content as room, native_house as house
 from tools.doll_dialogue import decode
+from tests.legacy_resource_prefix import historical_room,historical_house_presentation,historical_audio
 sys.path.insert(0,str(room.ROOT/'tools'))
 
 def digest(value):return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':')).encode()).hexdigest()
@@ -44,7 +45,7 @@ class MelodyContentTests(unittest.TestCase):
   self.assertEqual(move['path'],dict(movement=[dict(x=0,y=-12)],speed=64,animation='Walk',type='step'))
   self.assertFalse(any(a['kind']in('StartWait','AwaitTimer','SetFlag')for a in self.guard))
  def test_program_paths_source_labels_and_binary_roundtrip(self):
-  self.assertEqual((self.ir['rules'],self.ir['capabilities'],self.ir['adapter_revision']),(7,7,8))
+  self.assertEqual((self.ir['rules'],self.ir['capabilities'],self.ir['adapter_revision']),(7,8,8))
   for index,path,actions,phrases in [(3,'Podunk/dollmelody',self.actions,3),(4,'Podunk/cutscenes/mimmie_ignore',self.guard,2)]:
    p=self.s['Program'][index];self.assertEqual(self.ir['strings'][p['source_path_string']],path)
    self.assertEqual((p['stable_id'],p['command_count'],p['phrase_count']),(index+1,len(actions),phrases))
@@ -52,7 +53,7 @@ class MelodyContentTests(unittest.TestCase):
   house.verify_sources(self.h,self.pres);table=house.parse_pack(house.encode(house.lower(self.h,self.pres),version=self.h['schema']))
   self.assertEqual((house.STRIDES[2],house.STRIDES[11]),(104,20));self.assertEqual(table['Parameters'][-1],(19,1,0,0,0))
  def test_resource_binding_and_audio_identity(self):
-  self.assertEqual([(r['stable_id'],r['kind'],self.ir['strings'][r['path_string']])for r in self.s['Resource'][30:34]],[(31,4,'story/melody.encfx'),(32,2,'res://'+melody.AUDIO[0]),(33,2,'res://'+melody.AUDIO[1]),(34,2,'res://'+melody.AUDIO[2])])
+  self.assertEqual([(r['stable_id'],r['kind'],self.ir['strings'][r['path_string']])for r in self.s['Resource'][30:34]],[(31,4,'data/melody.encfx'),(32,2,'res://'+melody.AUDIO[0]),(33,2,'res://'+melody.AUDIO[1]),(34,2,'res://'+melody.AUDIO[2])])
   self.assertEqual([(b['stable_id'],b['kind'],b['target_index'])for b in self.s['Binding'][3:7]],[(4,5,33),(5,6,30),(6,1,33),(7,7,30)])
   self.assertEqual(self.s['Resource'][30]['sha256'],hashlib.sha256((room.ROOT/'romfs/story/melody.encfx').read_bytes()).hexdigest())
   from tools.audio_asset import parse_bank
@@ -81,9 +82,12 @@ class MelodyContentTests(unittest.TestCase):
   self.assertEqual(self.h['doors'][5]['center'],[128,188]);self.assertEqual(self.h['npcs'][3]['position'],[472,88])
  def test_preserved_prefixes_and_only_documented_append_metadata(self):
   receipt=json.loads((room.ROOT/'reports/doll-melody/preserved-prefixes.json').read_text())
-  strings=receipt['string_prefix'];self.assertEqual(digest(self.ir['strings'][:strings['count']]),strings['sha256'])
+  strings=receipt['string_prefix'];self.assertEqual(digest(historical_room(self.ir)['strings'][:strings['count']]),strings['sha256'])
   for source,tables in receipt['prefixes'].items():
    d=json.loads((room.ROOT/source).read_text())
+   if source=='content/native-opening.json':d=historical_room(d)
+   if source=='content/native-audio.json':d=historical_audio(d)
+   if source=='content/native-house-presentation.json':d=historical_house_presentation(d)
    if source=='content/native-house.json':
     # The phone adapter adds Carol's source actor mapping; legacy data
     # fingerprints still cover every earlier field after reversing it.
@@ -93,21 +97,17 @@ class MelodyContentTests(unittest.TestCase):
     # Only the two now-supported Mom-room boundaries and Minnie's newly linked
     # program/seen key are projected back; the reviewed historical hashes stay
     # unchanged and every other prefix field is still checked below.
-    from tools import extract_house,link_pillow_content
-    legacy_doors=['Ninten_upstairs','Upstairs_Ninten','Upstairs_Living','Living_Upstairs','Upstair_Sister','Sister_Upstair']
-    from tools import house_source_bindings
-    load_bindings=house_source_bindings.load
-    def previous_door_view(root):
-     # Validate the current source contract before projecting the historical
-     # six-door fixture; no removed Python content table is recreated.
-     bindings=copy.deepcopy(load_bindings(root))
-     bindings['same_scene_doors']=[row for row in bindings['same_scene_doors']if row['source_path']in {'Doors/'+name for name in legacy_doors}]
-     self.assertEqual(len(bindings['same_scene_doors']),len(legacy_doors))
-     return bindings
-    with patch.object(house_source_bindings,'load',previous_door_view),patch.object(link_pillow_content,'append_house',lambda ex,ir,room:ir):
-     legacy=extract_house.build(room.ROOT)
-    current_boundaries=[dict(row,id=i+1)for i,row in enumerate(row for row in legacy['boundaries']if row['source_path']not in ('Doors/Upstair_Mom','Doors/Mom_Upstair'))]
-    self.assertEqual(d['boundaries'],current_boundaries)
+    # Freeze the old five unsupported boundaries, checking each now-supported
+    # door against its exact previous source geometry before projecting it back.
+    raw=(room.ROOT/'content/legacy-rules6/native-house.json').read_bytes()
+    manifest=json.loads((room.ROOT/'content/legacy-rules6/manifest.json').read_text())
+    self.assertEqual(hashlib.sha256(raw).hexdigest(),manifest['recipes']['native-house.json'])
+    legacy=json.loads(raw);mapped={'Doors/Upstair_Mom','Doors/Mom_Upstair','Doors/Living_Basement','Doors/Living_Basement2'}
+    for boundary in legacy['boundaries']:
+     if boundary['source_path']in mapped:
+      door=next(row for row in d['doors']if row['source_path']==boundary['source_path'])
+      self.assertEqual((door['center'],door['extents']),(boundary['center'],boundary['extents']))
+    self.assertEqual(d['boundaries'],[dict(row,id=3)for row in legacy['boundaries']if row['source_path']not in mapped])
     d['boundaries']=legacy['boundaries']
     minnie=d['npcs'][3];self.assertEqual(minnie['source_path'],'Objects/npc3')
     self.assertEqual(self.ir['strings'][self.s['Program'][minnie['program_index']]['source_path_string']],'Podunk/minnie_run_tutorial')

@@ -4,9 +4,10 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace encore;
 namespace {
-unsigned checks=0;Result init_result=0,flush_result=0;bool ndsp_started=false;int exits=0;size_t allocated=0;bool fail_alloc=false;
+unsigned checks=0;Result init_result=0,flush_result=0;bool ndsp_started=false;int exits=0;size_t allocated=0;bool fail_alloc=false;std::map<void*,size_t> allocations;
 constexpr size_t channel_count=24;
 std::array<std::vector<ndspWaveBuf*>,channel_count> queues;std::array<float,channel_count> gains{},rates{};float master=0;
 std::array<bool,channel_count> paused{};unsigned pause_calls=0;
@@ -24,8 +25,8 @@ Result ndspInit(){if(init_result>=0)ndsp_started=true;return init_result;}
 void ndspExit(){for(size_t i=0;i<queues.size();++i)drain(int(i));ndsp_started=false;++exits;}
 void ndspSetMasterVol(float v){master=v;}
 void ndspChnReset(int lane){drain(lane);}
-void* linearAlloc(size_t n){if(fail_alloc)return nullptr;allocated+=n;return std::malloc(n);}
-void linearFree(void* p){check(!ndsp_started,"buffer freed only after NDSP exit");std::free(p);}
+void* linearAlloc(size_t n){if(fail_alloc)return nullptr;auto*p=std::malloc(n);if(p){allocated+=n;allocations.emplace(p,n);}return p;}
+void linearFree(void* p){check(!ndsp_started,"buffer freed only after NDSP exit");auto i=allocations.find(p);check(i!=allocations.end(),"freed buffer has a live allocation");allocated-=i->second;allocations.erase(i);std::free(p);}
 uint32_t ndspGetDroppedFrames(){return 7;}
 void ndspChnWaveBufClear(int lane){drain(lane);}
 void ndspChnSetMix(int lane,float* mix){gains[channel(lane)]=mix[0];check(mix[0]==mix[1],"stereo equal gain");}
@@ -167,7 +168,7 @@ int main(int argc,char** argv){
         check(player.update_room(view,pending,.01,error)&&error.empty()&&player.consumed_requests()==2,"checked source retry consumes history without losing live playback");
     }
     check(player.dropped_frames()==7,"platform drop count reported");player.shutdown();check(!player.available()&&player.dropped_frames()==0,"shutdown explicit");
-    player.reset_scene();check(!player.available()&&!ndsp_started,"scene reset after shutdown stays unavailable");
+    player.reset_scene();check(!player.available()&&!ndsp_started&&allocated==0&&allocations.empty(),"scene reset after shutdown stays unavailable and releases all buffers");
     for(const auto& queue:queues)check(queue.empty(),"shutdown drains all four channels before freeing buffers");
     std::cout<<"Audio adapter: "<<checks<<" host-double checks passed; this is NOT NDSP audibility verification\n";
 }

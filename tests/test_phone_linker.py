@@ -4,8 +4,11 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 import unittest
 from unittest.mock import patch
+from contextlib import ExitStack
+from tools import link_family_followup,storage_dialogue,link_house_inspections,link_drawer_content,link_present_content,house_key_doors
 
 from tools import link_phone_content as linker
 from tools import native_content, native_house
@@ -24,17 +27,32 @@ class PhoneLinkerTests(unittest.TestCase):
         cls.audio = json.loads((cls.root / 'content/native-audio.json').read_text())
         cls.stage, cls.presentation = linker.load_stage(cls.root)
         cls.dad, cls.choices = linker.load_dad(cls.root)
-        with patch.object(linker, 'append_dad_room', lambda ex, dialogue: None), patch.object(pillow, 'append_room', lambda *args: None):
-            cls.phone_room, _ = Extractor(cls.root).run()
-        with patch.object(linker, 'link_room', lambda ex: None), patch.object(pillow, 'append_room', lambda *args: None):
-            cls.base_room, _ = Extractor(cls.root).run()
-        with patch.object(linker, 'link_house', lambda ex, ir, room: ir), patch.object(pillow, 'append_house', lambda ex, ir, room: ir):
-            cls.base_house = build_house(cls.root)
+        # Isolate the original Phone/Pillow slice at its actual append boundary.
+        # Later families, inspections, drawer, storage and presents are covered
+        # by their own suites; they must not run against a deliberately absent Dad.
+        with ExitStack()as bounded:
+            bounded.enter_context(patch.object(link_family_followup,'append_room',lambda *args:None))
+            bounded.enter_context(patch.object(storage_dialogue,'append_room',lambda *args:None))
+            for module in (link_family_followup,link_house_inspections,link_drawer_content,storage_dialogue,link_present_content,house_key_doors):
+                bounded.enter_context(patch.object(module,'append_house',lambda ex,ir,*args:ir))
+            cls.room,_=Extractor(cls.root).run()
+            cls.house=build_house(cls.root)
+            with patch.object(linker,'append_dad_room',lambda ex,dialogue:None),patch.object(pillow,'append_room',lambda *args:None):
+                cls.phone_room,_=Extractor(cls.root).run()
+            with patch.object(linker,'link_room',lambda ex:None),patch.object(pillow,'append_room',lambda *args:None):
+                cls.base_room,_=Extractor(cls.root).run()
+            with patch.object(linker,'link_house',lambda ex,ir,room:ir),patch.object(pillow,'append_house',lambda ex,ir,room:ir):
+                cls.base_house=build_house(cls.root)
         # Carol's mapping now comes from reviewed House bindings before the
         # phone append pass. Project only that documented metadata to the
         # previous prefix; every other old-field equality remains checked.
         assert cls.base_house['npcs'][0]['room_actor_index'] == 5
         cls.base_house['npcs'][0]['room_actor_index'] = linker.NONE
+        cls.fixture=tempfile.TemporaryDirectory(dir=cls.root/'build',prefix='phone-linker-fixture-')
+        cls.addClassCleanup(cls.fixture.cleanup);cls.fixture_root=Path(cls.fixture.name)
+        (cls.fixture_root/'content').mkdir()
+        (cls.fixture_root/'content/native-opening.json').write_text(json.dumps(cls.room),encoding='utf8')
+        (cls.fixture_root/'content/native-house-presentation.json').write_bytes((cls.root/'content/native-house-presentation.json').read_bytes())
 
     def program(self, identity):
         return next(p for p in self.room['sections']['Program']
@@ -48,7 +66,7 @@ class PhoneLinkerTests(unittest.TestCase):
         self.assertEqual(self.room['strings'][:len(self.base_room['strings'])], self.base_room['strings'])
         for name, rows in self.base_room['sections'].items():
             self.assertEqual(self.room['sections'][name][:len(rows)], rows, name)
-        self.assertEqual((self.room['rules'], self.room['capabilities']), (7, 7))
+        self.assertEqual((self.room['rules'], self.room['capabilities']), (7, 8))
         self.assertEqual(len(self.room['sections']['Program']), 16)
         self.assertEqual(len(self.room['sections']['ActorInstance']), 7)
 
@@ -132,7 +150,7 @@ class PhoneLinkerTests(unittest.TestCase):
         self.assertEqual(self.room['sections']['Binding'][-2],
             dict(stable_id=8, kind=8, flags=0, target_index=0, auxiliary_index=linker.NONE, value=0, duration=0))
         self.assertEqual(self.audio, linker.build_audio(self.root, self.room))
-        self.assertEqual([a['stable_id'] for a in self.audio['assets']],
+        self.assertEqual([a['stable_id'] for a in self.audio['assets'][:16]],
                          [21, 22, 1001, 1002, 1101, 1102, 1103, 1104, 30, 32, 33, 34, 36, 37, 1201, 1202])
         self.assertEqual([a['source_path'] for a in self.audio['assets'][12:15]],
             ['res://' + linker.RING_SOUND, 'res://' + linker.HANGUP_SOUND, 'res://Audio/Sound effects/text/Adult.mp3'])
@@ -226,7 +244,7 @@ class PhoneLinkerTests(unittest.TestCase):
         blob, manifest = native_content.compile_ir(self.room)
         native_content.parse_pack(blob)
         self.assertEqual(manifest['rules'], 7)
-        tables = native_house.lower(self.house, root=self.root)
+        tables = native_house.lower(self.house, root=self.fixture_root,verify_assets=False)
         blob = native_house.encode(tables, version=6)
         decoded = native_house.parse_pack(blob)
         self.assertEqual(decoded['Tokens'], [tuple(t) for t in tables['Tokens']])
@@ -241,7 +259,7 @@ class PhoneLinkerTests(unittest.TestCase):
             mutate(ir)
             with self.assertRaises(ValueError):
                 native_content.compile_ir(ir)
-        tables = native_house.lower(self.house, root=self.root)
+        tables = native_house.lower(self.house, root=self.fixture_root,verify_assets=False)
         with self.assertRaises(ValueError):
             native_house.parse_pack(native_house.encode(tables, version=4))
 

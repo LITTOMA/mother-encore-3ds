@@ -121,7 +121,11 @@ class ItemDetailsFormat(unittest.TestCase):
     def test_unknown_color(self): self.reject_row('Tokens',0,2,2)
     def test_reserved_token(self): self.reject_row('Tokens',0,3,1)
     def test_text_color_alpha(self): self.reject_row('Locales',0,6,0)
-    def test_invalid_string_offset(self): self.reject_row('Tokens',0,1,1)
+    def test_invalid_string_offset(self):
+        pool = self.tables['Strings']
+        interior = next(i for i in range(1, len(pool)) if pool[i-1] != 0)
+        for offset in (interior, len(pool), 0xffffffff):
+            with self.subTest(offset=offset): self.reject_row('Tokens',0,1,offset)
     def test_invalid_utf8(self):
         t = copy.deepcopy(self.tables); t['Strings'] = b'\0\xff\0'
         with self.assertRaises(ValueError): pack.encode(t)

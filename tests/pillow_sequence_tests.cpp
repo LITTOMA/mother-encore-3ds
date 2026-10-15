@@ -80,7 +80,7 @@ void tutorial(Fixture&f,bool yes,bool cancel){
 }
 }
 int main(int argc,char**argv){CHECK(argc==2);Fixture f(argv[1]);
- CHECK(f.house.view().count(HouseSection::Doors)==8);
+ CHECK(f.house.view().count(HouseSection::Doors)==10);
  for(unsigned n=0;n<1800&&f.world.stage()!=OpeningStage::BattleRequested;++n)f.auto_step({0,-1});
  CHECK(f.world.stage()==OpeningStage::BattleRequested);CHECK(f.world.battle_request().actor_index==6);CHECK(f.world.story_flag("pillow_attack"));CHECK(!f.world.story_flag("minnie_leave"));
  win_pillow(f);

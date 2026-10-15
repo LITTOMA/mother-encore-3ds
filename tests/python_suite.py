@@ -13,20 +13,29 @@ import unittest
 
 
 DEDICATED = {
-    'encounter_dependency_manifest': 'test_encounter_dependencies',
-    'battle_round_source_bindings': 'test_battle_round_bindings',
-    'round_recipe_source': 'test_round_presentation_recipe',
-    'boss_presentation_bindings': 'test_boss_presentation_bindings',
-    'phone_presentation_bindings': 'test_phone_presentation_bindings',
-    'items_presentation_bindings': 'test_items_presentation_bindings',
-    'world_program_bindings': 'test_world_program_bindings',
-    'programme_lowering_recipe': 'test_programme_lowering_recipe',
-    'battle_entry_bindings': 'test_battle_entry_bindings',
-    'ui_presentation_bindings': 'test_ui_presentation_bindings',
-    'house_source_bindings': 'test_house_source_bindings',
-    'naming_presentation_bindings': 'test_naming_presentation_bindings',
-    'phone_linker_bindings': 'test_phone_linker_bindings',
-    'pillow_source_bindings': 'test_pillow_source_bindings',
+    'encounter_dependency_manifest': ('test_encounter_dependencies',),
+    'battle_round_source_bindings': ('test_battle_round_bindings',),
+    'round_recipe_source': ('test_round_presentation_recipe',),
+    'boss_presentation_bindings': ('test_boss_presentation_bindings',),
+    'phone_presentation_bindings': ('test_phone_presentation_bindings',),
+    'items_presentation_bindings': ('test_items_presentation_bindings',),
+    'world_program_bindings': ('test_world_program_bindings',),
+    'programme_lowering_recipe': ('test_programme_lowering_recipe',),
+    'battle_entry_bindings': ('test_battle_entry_bindings',),
+    'ui_presentation_bindings': ('test_ui_presentation_bindings',),
+    'house_source_bindings': ('test_house_source_bindings',),
+    'naming_presentation_bindings': ('test_naming_presentation_bindings',),
+    'phone_linker_bindings': ('test_phone_linker_bindings',),
+    'pillow_source_bindings': ('test_pillow_source_bindings',),
+    'house_inspection_source': ('test_house_inspections',),
+    'family_followup_source': ('test_family_followup',),
+    'drawer_program_source': ('test_drawer_program',),
+    'storage_source': ('test_native_storage', 'test_storage_dialogue'),
+    'item_details_source': ('test_item_details',),
+    'field_equipment_source': ('test_field_equipment', 'test_field_audio'),
+    'present_data_source': ('test_house_presents',),
+    'mick_treats_source': ('test_mick_treats',),
+    'runtime_layout': ('test_runtime_layout',),
 }
 
 # Audited modules read shipping inputs and mutate only copies/unique temporary
@@ -52,17 +61,23 @@ def identity(case):
     return value[6:] if value.startswith('tests.') else value
 
 
-def registered_module(command, project):
-    if len(command) == 4 and command[1:3] == ['-m', 'unittest']:
-        name = command[3]
-        if name.startswith('tests.test_') and '.' not in name[6:]:
-            return name[6:]
-    if len(command) == 2:
+def registered_modules(command, project):
+    if command[1:3] == ['-m', 'unittest']:
+        names = command[3:]
+        if not names or any(not name.startswith('tests.test_') or
+                            not name[6:].isidentifier() for name in names):
+            raise ValueError('Unsupported dedicated unittest command')
+        modules = tuple(name[6:] for name in names)
+        if len(set(modules)) != len(modules):
+            raise ValueError('Duplicate module in dedicated unittest command')
+        return modules
+    if len(command) >= 2:
         path = Path(command[1]).resolve()
         if path.parent == project / 'tests' and path.name.startswith('test_') and path.suffix == '.py':
-            return path.stem
+            if len(command) != 2:
+                raise ValueError('Unsupported dedicated unittest script arguments')
+            return (path.stem,)
     return None
-
 
 def parallel_partition(suite):
     original = list(cases(suite))
@@ -161,12 +176,12 @@ def plan(project, ctest_dir):
     for test in metadata['tests']:
         name = test['name']
         command = test.get('command', [])
-        module = registered_module(command, project)
+        registered = registered_modules(command, project)
         if name in DEDICATED:
-            if name in observed or module != DEDICATED[name]:
+            if name in observed or registered != DEDICATED[name]:
                 raise ValueError('Missing/changed dedicated unittest command: ' + name)
-            observed[name] = module
-        elif module is not None:
+            observed[name] = registered
+        elif registered is not None:
             raise ValueError('Unmapped dedicated unittest registration: ' + name)
     if observed != DEDICATED:
         raise ValueError('Missing dedicated CTest registration: ' + ', '.join(sorted(set(DEDICATED) - set(observed))))
@@ -174,15 +189,15 @@ def plan(project, ctest_dir):
     full_ids = Counter(identity(c) for c in full)
     if any(count != 1 for count in full_ids.values()):
         raise ValueError('Duplicate IDs in unittest discovery')
-    modules = set(DEDICATED.values())
+    modules = {module for group in DEDICATED.values() for module in group}
     remaining = [c for c in full if identity(c).split('.')[0] not in modules]
     remaining_ids = Counter(identity(c) for c in remaining)
     groups = {}
     combined = remaining_ids.copy()
-    for name, module in DEDICATED.items():
-        dedicated = list(cases(unittest.defaultTestLoader.loadTestsFromName('tests.' + module)))
+    for name, modules in DEDICATED.items():
+        dedicated = list(cases(unittest.defaultTestLoader.loadTestsFromNames(['tests.' + module for module in modules])))
         ids = Counter(identity(c) for c in dedicated)
-        expected = Counter({key: count for key, count in full_ids.items() if key.split('.')[0] == module})
+        expected = Counter({key: count for key, count in full_ids.items() if key.split('.')[0] in modules})
         if not expected or ids != expected:
             raise ValueError('Dedicated suite differs from discovery: ' + name)
         combined.update(ids)
@@ -192,7 +207,7 @@ def plan(project, ctest_dir):
     receipt = dict(discovered=len(full), aggregate=len(remaining), dedicated=len(full) - len(remaining),
                    discovery_ids=sorted(full_ids.elements()), aggregate_ids=sorted(remaining_ids.elements()),
                    dedicated_ids=groups, multiset_equal=True,
-                   policy='New unregistered modules stay in discovery; dedicated modules run through their existing CTest commands. No test methods or subTest assertions changed.')
+                   policy='New unregistered modules stay in discovery; dedicated commands and the complete discovered method multiset are preserved. Assertions remain owned by their suites.')
     return unittest.TestSuite(remaining), receipt
 
 

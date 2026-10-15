@@ -53,6 +53,8 @@ Podunk 室外由 `world/podunk/podunk.encmap`、`world/podunk/podunk.encroom` �
 
 ## 验证
 
+2026-10-15 完整回归修复候选 b965d54：辅助 / 对白 / 电话改用 NDSP 20–23，避免错误的 22–25 越界；音频数据与原版内容不变。完整 Clang 普通及 Linux ASan / UBSan 各 146 项全部通过，保留默认泄漏检查。真实 3DSX / CIA、323 项包内资源以及两条模拟器路线各两次冷启动通过（地图 19 / 自然开局 56 检查点）；GCC 完整作业仍在运行。来源审查、历史 trace 约束、独立 Godot 碰撞预期、Windows 限制和约 1.47 GB 清理记录见 [完整回归修复](FULL_CONTENT_REGRESSIONS.md)。没有完整游戏或真机通过声明。
+
 2026-10-15：游戏源码 `44f1c0a` 的真实 3DSX / CIA 构建与 323 项包内资源核对通过。Azahar 独立冷启动重复验收通过：地下室连续移动 / 地图领取每次 19 检查点，人工测试存档明确预置钥匙；正常新游戏到 Lamp / Doll、11 经验 / 2 级及已学 PSI 每次 56 检查点，两条路线各运行两次且结果投影一致。另修复普通 Lamp 胜利未复制持续会话奖励，以及后台加载无条件隔离持续方向输入，见 [奖励交接](OPENING_REWARD_HANDOFF.md)、[加载后输入](LOADING_INPUT_CONTINUITY.md)。没有全游戏、PSI 实际施放、模拟器电话存档或真机验收声明。
 
 同源码完整 Clang 主机回归仍有 16 / 146 项失败，Linux sanitizer 未执行；记录时 GCC 完整作业尚在运行。针对性 MSVC / Windows Clang 检查与真实交叉构建成功不能替代完整回归。相关 PR 保持草稿；先修复其余回归，再补地下室日记、球棒、地图查看和后续剧情。

@@ -49,10 +49,10 @@ def main():
   ir=copy.deepcopy(base);first=firsts[len(case['segments'])];ir['interaction']['text_seconds']=case['speed']
   for i,seg in enumerate(case['segments']):
    dst=ir['segments'][first+i];dst['speaker']='Carol';dst['voice']=base['segments'][0]['voice'];dst['tokens']=seg['house_tokens'];dst['flags']=3 if seg['wait_for_input'] else 5
-  (work/(case['name']+'.enchouse')).write_bytes(encode(lower(ir,presentation,verify_assets=False),version=6))
+  (work/(case['name']+'.enchouse')).write_bytes(encode(lower(ir,presentation,verify_assets=False),version=ir['schema']))
   metadata.append(f"{case['name']} {first} {len(case['segments'])} {case['fast']}")
  ir=copy.deepcopy(base);ir['interaction']['text_seconds']=1e-12;ir['segments'][firsts[1]]['tokens']=[dict(kind=8,text='4')]
- (work/'excessive-delay.enchouse').write_bytes(encode(lower(ir,presentation,verify_assets=False),version=6))
+ (work/'excessive-delay.enchouse').write_bytes(encode(lower(ir,presentation,verify_assets=False),version=ir['schema']))
  (work/'cases.json').write_text(json.dumps(cases))
  case_metadata='\n'.join(metadata)+'\n'
  case_hash=hashlib.sha256(json.dumps(cases,sort_keys=True).encode()).hexdigest()

@@ -3,6 +3,7 @@ import copy, hashlib, json, tempfile, unittest
 from pathlib import Path
 from tools import doll_postwin as post, native_content as room, native_house as house
 from tools.doll_dialogue import decode
+from tests.legacy_resource_prefix import historical_room,historical_house_presentation
 
 def digest(value):return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
@@ -69,7 +70,8 @@ class DollPostwinTests(unittest.TestCase):
   receipt=json.loads((room.ROOT/'reports/doll-postwin/preserved-prefixes.json').read_text())
   docs={'content/native-opening.json':self.ir,'content/native-house.json':self.h,'content/native-house-presentation.json':self.pres}
   for source,entries in receipt['prefixes'].items():
-   doc=copy.deepcopy(docs[source])
+   doc=historical_room(docs[source])if source=='content/native-opening.json'else copy.deepcopy(docs[source])
+   if source=='content/native-house-presentation.json':doc=historical_house_presentation(doc)
    if source=='content/native-house.json':
     # Carol now participates in the source-backed phone cutscene. Undo only
     # that reviewed actor binding before checking the older frozen prefix.

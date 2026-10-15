@@ -20,7 +20,7 @@ for i in range(2):
  base['segments'][first+i]['speaker']='Carol';base['segments'][first+i]['voice']=base['segments'][0]['voice'];base['segments'][first+i]['flags']=3 if i==0 else 5
 base['segments'][first]['tokens']=[dict(kind=1,text='A'),dict(kind=8,text='4'),dict(kind=1,text='B')]
 base['segments'][first+1]['tokens']=[dict(kind=1,text='C')]
-def pack(name,data):(WORK/name).write_bytes(encode(lower(data,presentation,verify_assets=False),version=6))
+def pack(name,data):(WORK/name).write_bytes(encode(lower(data,presentation,verify_assets=False),version=data['schema']))
 pack('default.enchouse',base)
 for i,speed in enumerate(speeds):
  data=copy.deepcopy(base);data['interaction']['text_seconds']=speed;pack(f'speed-{i}.enchouse',data)

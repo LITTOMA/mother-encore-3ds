@@ -25,7 +25,7 @@ class BattleEntryBindingsTest(unittest.TestCase):
   for name,extract in [('native-battle',lambda:Extractor(ROOT).build()),('doll-entry',doll_entry_asset.extract),('pillow-entry',pillow_entry_asset.extract)]:
    old=json.loads((ROOT/'content'/str(name+'.json')).read_text(encoding='utf8'));actual=extract();self.assertEqual({k:v for k,v in actual.items()if k not in('entry_bindings','sources')},{k:v for k,v in old.items()if k not in('entry_bindings','sources')})
    n.verify_sources(actual);assets=json.loads((ROOT/actual['presentation']['asset_receipt_path']).read_text(encoding='utf8'));blob=n.encode(n.lower(actual,assets,(ROOT/'romfs/world/house/opening.encroom').read_bytes()),actual['commit']);n.parse_sections(blob)
-   self.assertEqual(blob,(ROOT/'romfs/data'/str('opening.encbattle'if name=='native-battle'else name+'.encbattle')).read_bytes())
+   self.assertEqual(blob,(ROOT/'romfs'/('battle/lamp/opening.encbattle' if name=='native-battle' else 'battle/'+('doll' if name=='doll-entry' else 'pillow')+'/'+name+'.encbattle')).read_bytes())
  def test_schema_pin_missing_unknown_duplicate(self):
   for value in [None,0,2,True,'1']:self.rejected(lambda r:r.update(schema=value))
   self.rejected(lambda r:r.update(commit='0'*40));self.rejected(lambda r:r.update(unknown=1))

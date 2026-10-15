@@ -40,7 +40,7 @@ def validate_scenario(scenario):
         raise ValueError('Scenario step budget exceeded')
     if not scenario['reference'].get('commit') or not scenario['reference'].get('scope'):
         raise ValueError('Scenario lacks source scope')
-    known = set(decode(WIRE.pack(MAGIC, 3, WIRE.size, *([0]*(len(FIELDS)-2)), *([0.0]*4), *(b'' for _ in range(4)))))
+    known = set(decode(WIRE.pack(MAGIC, 4, WIRE.size, *([0]*(len(FIELDS)-2)), *([0.0]*6), *(b'' for _ in range(4)))))
     projection({k: 0 for k in known}, scenario['projection'])
     for step in scenario['steps']:
         if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress', 'expected_music', 'wait_audio', 'hold_until', 'repeat_until', 'max_attempts'}:
@@ -76,6 +76,42 @@ def validate_reference(reference):
         ex.data(source)  # checks the readonly full inventory before returning bytes
         if ex.sources[source] != digest:
             raise ValueError('Original source changed; semantic review required')
+
+
+def validate_save_fixture(path, receipt):
+    path=Path(path).resolve()
+    if not path.is_relative_to(ROOT/'build'):raise ValueError('Save fixture must be an owned build output')
+    fixture=json.loads(path.read_text(encoding='utf8'))
+    if set(fixture)!={'schema','kind','source_commit','upstream_commit','file','sha256','resources','base_key_count','present_index','scope','execution'} or type(fixture['schema']) is not int or fixture['schema']!=1 or fixture['kind']!='encore.emulator-save-fixture':
+        raise ValueError('Unknown save fixture schema/fields')
+    if fixture['source_commit']!=receipt['source_commit'] or fixture['upstream_commit']!='7d9246600fffe518408f5830d4848635019005a3' or not fixture['scope']:
+        raise ValueError('Save fixture source/precondition mismatch')
+    if type(fixture['file']) is not str or Path(fixture['file']).name!=fixture['file'] or not fixture['file'].endswith('.encsave'):
+        raise ValueError('Unsafe save fixture path')
+    save=(path.parent/fixture['file']).resolve()
+    if not save.is_relative_to(path.parent) or not 0<save.stat().st_size<=1024*1024 or sha(save)!=fixture['sha256']:
+        raise ValueError('Save fixture bytes differ from admitted snapshot')
+    if type(fixture['base_key_count']) is not int or not 1<=fixture['base_key_count']<=16 or type(fixture['present_index']) is not int or not 0<=fixture['present_index']<32:
+        raise ValueError('Save fixture observation bounds')
+    required={'session/opening.encsession','world/house/opening.encroom','world/house/opening.enchouse','world/house/opening.encpresent','ui/opening.encitems','battle/lamp/opening.encround'}
+    if not isinstance(fixture['resources'],dict) or set(fixture['resources'])!=required:raise ValueError('Incomplete save fixture resource bindings')
+    for name,digest in fixture['resources'].items():
+        if sha(ROOT/'romfs'/name)!=digest:raise ValueError('Save fixture checked resource changed: '+name)
+    execution=fixture['execution']
+    if not isinstance(execution,dict) or set(execution)!={'generator_sha256','producer_sha256','log_sha256'} or any(type(v) is not str or not re.fullmatch('[0-9a-f]{64}',v) for v in execution.values()):raise ValueError('Incomplete save fixture execution provenance')
+    if sha(path.parent/'generator.log')!=execution['log_sha256']:raise ValueError('Save fixture generation log changed')
+    return fixture,save
+
+
+def compare_present(checkpoints, original, fixture):
+    if not original.get('namespace_isolated') or original['grant']['item']['item_name']!='MapPodunk' or original['repeat']['count']!=1 or original['reconstructed']['frame']!=4:
+        raise ValueError('Original present oracle is not the reviewed map interaction')
+    expected_count=fixture['base_key_count']+1;bit=1<<fixture['present_index']
+    for name in ('map_collected','map_repeat','map_reentered'):
+        state=checkpoints[name]
+        if state['key_count']!=expected_count or state['object_flag_count']!=1 or not state['present_opened_mask']&bit:
+            raise AssertionError('Original present repeat/reconstruction result differs: '+name)
+    return ['present_grant','present_repeat','present_reconstructed','object_namespace']
 
 
 def compare_original(checkpoints, original):
@@ -227,6 +263,10 @@ def run_once(args, scenario, index):
         component = exe.parent / 'user/sdmc/3ds/dspfirm.cdc'
         component.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(args.dsp_component, component)
+    if getattr(args,'fixture_save',None):
+        save=exe.parent/'user/sdmc/3ds/encore-native/save-1.encsave'
+        save.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(args.fixture_save,save)
     with socket.socket() as sock:
         sock.bind(('127.0.0.1', 0))
         port = sock.getsockname()[1]
@@ -300,6 +340,11 @@ def run_once(args, scenario, index):
         if session is not None:
             try:state=session.state();fresh=True
             except Exception as observation_error:result['observation_error']=str(observation_error)
+        if session is not None:
+            try:
+                result['failed_input']=client.call('input.state')
+                if captures<8:session.capture(folder/'failed.png')
+            except Exception as diagnostic_error:result['diagnostic_error']=str(diagnostic_error)
         if state is not None and step is not None:
             result['failed_observation'] = {'checkpoint': step['name'], 'observed': state, 'fresh':fresh}
         raise
@@ -342,6 +387,7 @@ def main():
     parser.add_argument('--original-reference', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--repetitions', type=int, default=2)
+    parser.add_argument('--save-fixture',type=Path,help='Explicit checked native snapshot boundary; never a personal or played save')
     parser.add_argument('--dsp-component', type=Path, help='Existing private local DSP component, test profile only; never packaged')
     parser.add_argument('--require-audio', action='store_true')
     args = parser.parse_args()
@@ -371,20 +417,23 @@ def main():
     identity = receipt['artifacts']['encore-native.3dsx']
     if args.game.stat().st_size != identity['bytes'] or sha(args.game) != identity['sha256']:
         raise ValueError('Game does not match the genuine cross-build receipt')
+    args.fixture=None;args.fixture_save=None
+    if args.save_fixture:args.fixture,args.fixture_save=validate_save_fixture(args.save_fixture,receipt)
     if shutil.disk_usage(ROOT).free < 2*1024**3:
         raise RuntimeError('Insufficient free disk for bounded emulator run')
     args.out.mkdir(parents=True)
     report = {'status': 'failed', 'source_commit': receipt['source_commit'], 'game_sha256': identity['sha256'],
               'private_dsp_sha256': sha(args.dsp_component) if args.dsp_component else None,
               'audio_required': args.require_audio, 'emulator_sha256': sha(args.emulator), 'scenario_sha256': sha(args.scenario), 'original_reference_sha256': sha(args.original_reference), 'reference': scenario['reference'],
-              'scope': 'Fresh 3DSX emulator semantic repetitions; no pixel equivalence, CIA installation or hardware claim'}
+              'scope': 'Fresh 3DSX emulator semantic repetitions; no pixel equivalence, CIA installation or hardware claim',
+              'initial_save_fixture':args.fixture,'initial_save_fixture_sha256':sha(args.save_fixture) if args.save_fixture else None}
     try:
         baseline = run_once(args, scenario, 1)
         for index in range(2, args.repetitions+1):
             current = run_once(args, scenario, index)
             if current != baseline:
                 raise AssertionError('Fresh repetitions produced different semantic outcomes')
-        report.update(status='passed', repetitions=args.repetitions, semantic=baseline, compared_original_cases=compare_original(baseline, original), unverified=['learned PSI use/targeting in emulator', 'CIA installation', 'Old/New 3DS hardware', 'perceptual audio quality'])
+        report.update(status='passed', repetitions=args.repetitions, semantic=baseline, compared_original_cases=compare_present(baseline, original,args.fixture) if args.fixture else compare_original(baseline, original), unverified=['learned PSI use/targeting in emulator', 'CIA installation', 'Old/New 3DS hardware', 'perceptual audio quality'])
     except Exception as error:
         report['error'] = str(error)
         raise

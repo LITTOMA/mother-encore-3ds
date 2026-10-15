@@ -22,12 +22,12 @@ class NativeSessionTests(unittest.TestCase):
         self.assertEqual(r['levels'][1]['stats'],[65,27,12,12,6,6,8])
         self.assertEqual(r['levels'][1]['skills'],['strike','splitShot','telepathy'])
         self.assertIn('mimmie_door_opened',r['mutable_flags'])
-        self.assertNotIn('ninten_basement_door',r['mutable_flags'])
+        self.assertIn('ninten_basement_door',r['mutable_flags'])
         self.assertEqual(s['key_items'][0]['item_id'],'CashCard')
         self.assertNotEqual(s['key_items'][0]['uid'],c['inventory'][0]['uid'])
     def test_additive_startup_roster_and_legacy_bytes(self):
         r=self.recipe;startup=r['startup'];characters=startup['characters']
-        self.assertEqual((r['schema'],struct.unpack_from('<I',native.encode(r),8)[0],struct.unpack_from('<I',native.encode(r),20)[0]),(4,4,4))
+        self.assertEqual((r['schema'],struct.unpack_from('<I',native.encode(r),8)[0],struct.unpack_from('<I',native.encode(r),20)[0]),(7,7,7))
         self.assertEqual(hashlib.sha256(native.encode_snapshot(r['defaults'],r['compatibility'])).hexdigest(),
                          'a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f')
         self.assertEqual(startup['party'],['ninten'])
@@ -55,7 +55,7 @@ class NativeSessionTests(unittest.TestCase):
         legacy=native.read(frozen/'native-session.json')
         self.assertEqual(legacy['schema'],1)
         self.assertEqual(native.encode(legacy),(frozen/'opening.encsession').read_bytes())
-        bad=copy.deepcopy(self.recipe);bad['schema']=6
+        bad=copy.deepcopy(self.recipe);bad['schema']=8
         with self.assertRaises(ValueError):native.encode(bad)
     def test_startup_clamps_are_derived_from_serialized_hp_and_equipment(self):
         ex=native.Extractor(native.ROOT);save=ex.yaml('Data/save_new_game.yaml');overrides=ex.yaml('Data/save_overrides.yaml')
@@ -90,7 +90,7 @@ class NativeSessionTests(unittest.TestCase):
     def test_storage_conservation_policy_is_source_derived(self):
         from tools.storage_assets import load, IR
         storage=load(native.ROOT);r=self.recipe
-        self.assertEqual(r['schema'],5)
+        self.assertEqual(r['schema'],7)
         self.assertEqual(r['storage_capacity'],storage['parameters']['StorageCapacity'])
         self.assertEqual(r['dependencies'][IR],hashlib.sha256((native.ROOT/IR).read_bytes()).hexdigest())
         by_id={p['item_id']:p for p in r['storage_policies']}
@@ -100,6 +100,18 @@ class NativeSessionTests(unittest.TestCase):
         for edit in [lambda r:r.update(storage_capacity=99),lambda r:r['storage_policies'].pop(),lambda r:r['storage_policies'][0].update(required=False),lambda r:r['storage_policies'][0]['boosts'].__setitem__(3,6),lambda r:r['storage_policies'][1].update(total_count=2)]:
             bad=copy.deepcopy(r);edit(bad)
             with self.assertRaises(ValueError):native.verify_recipe(bad)
+    def test_map_object_policy_is_derived_from_present(self):
+        from tools.house_presents import load
+        ir=load(native.ROOT);obj=next(o for o in ir['objects'] if o['source_path']=='Objects/Present3')
+        policy=next(k for k in self.recipe['key_acquisitions'] if k['item_id']=='MapPodunk')
+        self.assertEqual((policy['flag_id'],policy['flag_policy'],policy['doses'],policy['consumed_flag_id']),
+                         (obj['flag'],obj['policy'],1,''))
+        self.assertNotIn(obj['flag'],self.recipe['mutable_flags'])
+        self.assertFalse(self.recipe['defaults']['object_flags'])
+        for field,value in [('flag_policy',3),('flag_id','wrong/Present3'),('consumed_flag_id','gave_treats')]:
+            bad=copy.deepcopy(self.recipe);next(k for k in bad['key_acquisitions'] if k['item_id']=='MapPodunk')[field]=value
+            with self.assertRaises(ValueError):native.verify_recipe(bad)
+
     def test_recipe_drift_fails_closed(self):
         for edit in [lambda r:r.update(unknown=1),lambda r:r['defaults']['settings'].update(text_speed=.1),lambda r:r['levels'][1]['stats'].__setitem__(3,17),lambda r:r['defaults']['characters'][0]['affinity_multipliers'].clear(),lambda r:r.update(saved_flag='unknown'),lambda r:r['sources'].clear(),lambda r:r['camera_area_ids'].append(2),lambda r:r['startup']['characters'].pop(),lambda r:r['startup']['characters'][1].update(hp=43),lambda r:r['startup']['characters'][2]['inventory'].reverse(),lambda r:r['startup_derivation'][2]['equipment_boosts'].update(defense=3)]:
             bad=copy.deepcopy(self.recipe);edit(bad)

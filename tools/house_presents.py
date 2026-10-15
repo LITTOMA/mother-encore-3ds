@@ -15,6 +15,7 @@ from tools.extract_battle_entry import Extractor, PIN, require
 from tools.godot_text import Document, ExtRef, SubRef, Vec2, instantiate
 
 IR = 'content/house-presents.json'
+BINDING = 'content/house-present-bindings.json'
 REVIEW = 'reports/house-presents/source-review.json'
 RECEIPT = 'content/asset-receipts/graphics/world/presents/source.json'
 PACK = 'world/house/opening.encpresent'
@@ -107,7 +108,8 @@ def contract(ex):
             'uiManager.open_dialogue_box("ItemDialogue/presentempty")' in holder, 'ItemHolder empty path changed')
     require('if flag != null and flag != "":' in flaggable and 'return globaldata.flags.get(flag, false)' in flaggable and
             'globaldata.set_flag(flag, value, emit_flag_updated_signal)' in flaggable and
-            'globaldata.object_flags.get(global.currentScene.name + "/" + name, false)' in flaggable, 'FlaggableObject flag policy changed')
+            'globaldata.object_flags.get(global.currentScene.name + "/" + name, false)' in flaggable and
+            'globaldata.set_object_flag(global.currentScene.name + "/" + name, value, emit_flag_updated_signal)' in flaggable, 'FlaggableObject flag policy changed')
     require('frame = int(rand_range(0, 47))' in sparkles, 'Sparkles initial frame RNG changed')
     require('if "interact" in collide.name:' in player and 'global.party_call("try_to_turn",c)' in player and
             'c.interact()' in player, 'Player interaction dispatch changed')
@@ -211,7 +213,22 @@ def build(root=ROOT):
     names = [n.path for n in nodes.values() if n.scene == PRESENT]
     require(names == ['Objects/Present1', 'Objects/Present2', 'Objects/Present4', 'Objects/Present3'], 'House present set changed')
     objects, templates, texts, programs = [], [], [], []
-    next_text = FIRST_TEXT_ID
+    binding = read_json(Path(root) / BINDING)
+    require(set(binding) == {'schema', 'kind', 'commit', 'scene', 'programs', 'empty_text_id', 'text_groups'} and
+            type(binding['schema']) is int and binding['schema'] == 1 and binding['kind'] == 'encore.house-present-bindings' and binding['commit'] == PIN and
+            binding['scene'] == SCENE, 'Unreviewed present binding version/source')
+    admitted = {}
+    ids = {binding['empty_text_id']}
+    for row in binding['programs']:
+        require(set(row) == {'source_path', 'check_text_ids'} and row['source_path'] in names and row['source_path'] not in admitted,
+                'Unknown/duplicate present programme binding')
+        require(len(row['check_text_ids']) == 2 and all(type(i) is int and i > 0 and i not in ids for i in row['check_text_ids']) and
+                len(set(row['check_text_ids'])) == 2, 'Duplicate/invalid present text identity')
+        ids.update(row['check_text_ids']); admitted[row['source_path']] = row['check_text_ids']
+    grouped = [i for group in binding['text_groups'] for i in group['ids']]
+    require(set(grouped) == ids and len(grouped) == len(ids) and all(set(g) == {'after_id', 'ids'} and
+            type(g['after_id']) is int and g['ids'] and g['ids'] == list(range(g['after_id'] + 1, g['after_id'] + 1 + len(g['ids'])))
+            for g in binding['text_groups']), 'Unreviewed present append groups')
     for path in names:
         n = nodes[path]
         unknown = set(n.props) - {'script', 'dialog', 'dialog_full', 'button_prompt', 'type', 'position', 'flag', 'item'}
@@ -237,11 +254,13 @@ def build(root=ROOT):
         policy = POLICY_FLAG if flag else POLICY_OBJECT_FLAG
         if flag:
             require(flag in flags, 'Present flag unregistered: ' + flag)
-        key = flag if flag else 'Nintens House/' + path.rsplit('/', 1)[1]
+        key = flag if flag else nodes['.'].name + '/' + path.rsplit('/', 1)[1]
         item_doc = ex.yaml('Data/Items/%s.yaml' % item) if item else {}
         require(n.props.get('dialog') in (None, root_node.props['dialog']) or 'dialog' in n.overrides, 'Present dialog default changed')
-        supported = (bool(flag) and item_doc.get('keyitem') is True and n.props.get('dialog') == root_node.props['dialog']
-                     and 'dialog_full' not in n.overrides and 'dialog_empty' not in n.props)
+        supported = path in admitted
+        if supported:
+            require(item_doc.get('keyitem') is True and n.props.get('dialog') == root_node.props['dialog'] and
+                    'dialog_full' not in n.overrides and 'dialog_empty' not in n.props, 'Unsupported admitted present behavior')
         row = dict(source_path=path, type=kind, position=position, flag=key, policy=policy, item=item,
                    interact_center=center, interact_extents=extents, program=None, sound=GIFT_SOUND)
         if supported:
@@ -249,7 +268,7 @@ def build(root=ROOT):
             template = len(templates)
             templates.append(dict(source_item=item, doses=1, key_item=True))
             check_ids = []
-            for label in ('0', '1'):
+            for label, next_text in zip(('0', '1'), admitted[path]):
                 key_name = check_doc[label]['text']
                 values = {}
                 for native, column in LOCALES:
@@ -258,20 +277,21 @@ def build(root=ROOT):
                 texts.append(dict(id=next_text, source_path=DIALOGUE % 'ItemDialogue/presentcheck', label=label,
                                   translation_key=key_name, item=item, raw=values['en'], localized=values))
                 check_ids.append(next_text)
-                next_text += 1
             row['program'] = len(programs)
             programs.append(dict(source_path=path, template=template, check=check_ids))
         objects.append(row)
     empty_key = empty_doc['0']['text']
-    empty_id = next_text
+    empty_id = binding['empty_text_id']
     texts.append(dict(id=empty_id, source_path=DIALOGUE % 'ItemDialogue/presentempty', label='0', translation_key=empty_key,
                       item='', raw=dialogue_csv[empty_key]['en'],
                       localized={native: dialogue_csv[empty_key][column] for native, column in LOCALES}))
     for p in programs:
         p['commands'] = program_commands(p, objects, empty_id)
-    return dict(schema=1, kind='encore.house-presents.source-ir', commit=PIN,
-                scope=('All four original House presents drawn with flag state, Unwrapped clip and Sparkles; only fixed '
-                       'key-item presents with default dialogues execute; other presents are explicit development boundaries'),
+    texts.sort(key=lambda t: t['id'])
+    return dict(schema=1, capability=2, kind='encore.house-presents.source-ir', commit=PIN,
+                dependencies={BINDING: digest(Path(root) / BINDING)}, text_groups=binding['text_groups'],
+                scope=('All four original House presents drawn; default fixed key-item grants support story and persistent object flags; '
+                       'custom dialogue and normal inventory presents remain explicit development boundaries'),
                 sources=dict(sorted(ex.sources.items())), scene=SCENE, textures=textures, sparkles=sparkles, clips=clips,
                 objects=objects, templates=templates, texts=texts, programs=programs)
 
@@ -409,7 +429,7 @@ def lower(ir, house):
 def encode(ir, house):
     from tools.podunk_field import pack_container
     secs = lower(ir, house)
-    blob = pack_container(MAGIC, 1, [secs[n] for n in SECTIONS], STRIDES, LIMIT)
+    blob = pack_container(MAGIC, 1, [secs[n] for n in SECTIONS], STRIDES, LIMIT, capability=ir.get('capability', 1))
     parse(blob)
     return blob
 
@@ -417,13 +437,32 @@ def encode(ir, house):
 def parse(blob):
     """Independent structural check mirrored by runtime/present_data.cpp."""
     from tools.podunk_field import unpack_container
-    scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT)
+    require(len(blob) >= 24, 'Present header truncated')
+    capability = struct.unpack_from('<I', blob, 20)[0]
+    require(capability in (1, 2), 'Unknown present capability')
+    scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT, capability=capability)
     require(scene == 1, 'Present pack scene identity')
     rows = {n: secs[i] for i, n in enumerate(SECTIONS)}
     count = {n: len(rows[n]) // STRIDES[i] for i, n in enumerate(SECTIONS)}
     require(count['Textures'] == 4 and count['Clips'] == 2 and count['Sparkles'] == 1 and 0 < count['Objects'] <= 32 and
             count['Programs'] <= count['Objects'] and count['Commands'] <= 256 and 0 < count['SparkleOrder'] <= 256,
             'Present pack table counts')
+    objects = [struct.unpack_from('<5I6f2I', rows['Objects'], i) for i in range(0, len(rows['Objects']), 52)]
+    programs = [struct.unpack_from('<2I', rows['Programs'], i) for i in range(0, len(rows['Programs']), 8)]
+    seen = set()
+    for obj in objects:
+        policy, flag, programme = obj[2], obj[3], obj[11]
+        require(policy in (1, 2), 'Unknown present flag policy')
+        if policy == 2:
+            require(flag not in seen, 'Duplicate present object flag'); seen.add(flag)
+        if programme == NONE:continue
+        require(programme < len(programs) and (policy == 1 or capability >= 2), 'Present capability/programme binding')
+        first, n = programs[programme]
+        require(n > 0 and first + n <= count['Commands'], 'Present programme span')
+        if policy == 2:
+            for i in range(first, first + n):
+                op, a, b, c, d = struct.unpack_from('<5I', rows['Commands'], i * 20)
+                require(op not in (OPCODES['BranchFlag'], OPCODES['SetFlag']) or a == flag, 'Foreign present object flag command')
     return rows
 
 
@@ -444,10 +483,10 @@ def review(ir):
                 semantics={
                     'ready': 'Opened presents (flag true) show frame 4 and hide Sparkles; each Sparkles _ready draws rand_range(0,47) in tree order',
                     'interaction': 'Only the interact Area2D participates in the nearest ray hit; player turns on x and y',
-                    'grant': 'Unwrapped clip starts, key item granted to key_items (never full), flag set, presentcheck opens',
+                    'grant': 'Unwrapped clip starts, key item granted to key_items (never full), source story/object flag set, presentcheck opens',
                     'text': 'Fixed-item lowering of [ItemName]/[ItemArt3]; [ItemReceiver] is the singleton leader for key items',
                     'empty': 'Opened present shows ItemDialogue/presentempty'},
-                unsupported=['Presents with object flags or non-key items (Present1 diary cutscene, Present2 bat, Present3 map)',
+                unsupported=['Present1 diary cutscene and Present2 normal inventory bat',
                              'ButtonPrompt over presents', 'Reusable/noproblem when the ray hits the StaticBody2D'],
                 unverified=['Manual test suites', 'Emulator', 'Hardware', 'Audio audibility'])
 

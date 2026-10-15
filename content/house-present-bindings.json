@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "kind": "encore.house-present-bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "programs": [
+    {
+      "source_path": "Objects/Present4",
+      "check_text_ids": [
+        70,
+        71
+      ]
+    },
+    {
+      "source_path": "Objects/Present3",
+      "check_text_ids": [
+        75,
+        76
+      ]
+    }
+  ],
+  "empty_text_id": 72,
+  "text_groups": [
+    {
+      "after_id": 69,
+      "ids": [
+        70,
+        71,
+        72
+      ]
+    },
+    {
+      "after_id": 74,
+      "ids": [
+        75,
+        76
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "schema": 7,
   "kind": "encore.native-house.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Six same-scene house warps; original NPCs and openable doors; Lamp/Doll/melody plus six reviewed Carol/Phone programs; original Area3/4 contact gates; complete reviewed Dad-normal branch/choice/save-continuation graph and all leader texts; original Mom-room warps and optional Pillow/Minnie event chain/tutorial; checked post-phone family key requests and repeats; checked Drawer phrase text with independent effect programme; original Minnie storage choice and callback dialogue; original House present text with independent present programme; source automatic basement-key door investigation and fixed-item localized lock text",
+  "scope": "Six same-scene house warps; original NPCs and openable doors; Lamp/Doll/melody plus six reviewed Carol/Phone programs; original Area3/4 contact gates; complete reviewed Dad-normal branch/choice/save-continuation graph and all leader texts; original Mom-room warps and optional Pillow/Minnie event chain/tutorial; checked post-phone family key requests and repeats; checked Drawer phrase text with independent effect programme; original Minnie storage choice and callback dialogue; original House present text with independent present programme; source automatic basement-key door investigation and fixed-item localized lock text; original House present text with independent present programme",
   "sources": {
     "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
     "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
@@ -2747,6 +2747,38 @@
         }
       ],
       "flags": 5
+    },
+    {
+      "id": 138,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " opened the present."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 139,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " got the Podunk Map!"
+        }
+      ],
+      "flags": 5
     }
   ],
   "interaction": {
@@ -3337,6 +3369,18 @@
       "id": 74,
       "source_path": "Data/Dialogue/Reusable/lockopened.yaml",
       "first_segment": 136,
+      "segment_count": 1
+    },
+    {
+      "id": 75,
+      "source_path": "Data/Dialogue/ItemDialogue/presentcheck.yaml",
+      "first_segment": 137,
+      "segment_count": 1
+    },
+    {
+      "id": 76,
+      "source_path": "Data/Dialogue/ItemDialogue/presentcheck.yaml",
+      "first_segment": 138,
       "segment_count": 1
     }
   ],

@@ -15,27 +15,27 @@ from tools.run_emulator_semantics import validate_scenario, validate_reference, 
 
 def wire(**changes):
     words = {k: 0 for k in FIELDS}
-    words.update(version=3, byte_size=WIRE.size)
+    words.update(version=4, byte_size=WIRE.size)
     words.update(changes)
-    return WIRE.pack(MAGIC, *(words[k] for k in FIELDS), *([0.0]*4), *(b'' for _ in range(4)))
+    return WIRE.pack(MAGIC, *(words[k] for k in FIELDS), *([0.0]*6), *(b'' for _ in range(4)))
 
 
 class WireBoundary(unittest.TestCase):
     def test_exact_wire_and_projection(self):
         state = decode(wire(width=400, height=240))
         self.assertEqual(projection(state, ['width', 'height']), {'width': 400, 'height': 240})
-        self.assertEqual(WIRE.size, 716)
+        self.assertEqual(WIRE.size, 744)
 
     def test_truncated_extra_magic_and_versions(self):
         good = wire()
-        for data in (good[:-1], good+b'\0', b'BADMAGIC'+good[8:], wire(version=1), wire(version=2), wire(version=4), wire(byte_size=717)):
+        for data in (good[:-1], good+b'\0', b'BADMAGIC'+good[8:], wire(version=1), wire(version=2), wire(version=3), wire(version=5), wire(byte_size=745)):
             with self.subTest(data=data[:20]), self.assertRaises(ValueError):
                 decode(data)
 
     def test_torn_overflow_boolean_utf8_and_nonfinite(self):
         cases = [wire(sequence=1), wire(overflow=1), wire(paused=2)]
         good = wire()
-        cases += [good[:188]+b'\0\0\x80\x7f'+good[192:], good[:204]+b'\xff'+good[205:], good[:204]+b'x'*128+good[332:]]
+        cases += [good[:208]+b'\0\0\x80\x7f'+good[212:], good[:224]+b'\0\0\x80\x7f'+good[228:], good[:232]+b'\xff'+good[233:], good[:232]+b'x'*128+good[360:]]
         for data in cases:
             with self.subTest(data=data[:20]), self.assertRaises(ValueError):
                 decode(data)
@@ -148,5 +148,32 @@ class RpcBoundary(unittest.TestCase):
             client.call('system.info')
 
 
-if __name__ == '__main__':
-    unittest.main()
+class SaveFixtureBoundary(unittest.TestCase):
+    def test_fixture_versions_identity_paths_hashes_and_resources(self):
+        import hashlib, tempfile
+        from tools.run_emulator_semantics import validate_save_fixture
+        from tools.native_session import encode_snapshot,read,IR
+        recipe=read(IR)
+        with tempfile.TemporaryDirectory(dir=ROOT/'build') as directory:
+            base=Path(directory);save=base/'test.encsave'
+            save.write_bytes(encode_snapshot(recipe['defaults'],recipe['compatibility']))
+            resources=['session/opening.encsession','world/house/opening.encroom','world/house/opening.enchouse','world/house/opening.encpresent','ui/opening.encitems','battle/lamp/opening.encround']
+            f=dict(schema=1,kind='encore.emulator-save-fixture',source_commit='test-source',upstream_commit='7d9246600fffe518408f5830d4848635019005a3',file=save.name,sha256=hashlib.sha256(save.read_bytes()).hexdigest(),resources={n:hashlib.sha256((ROOT/'romfs'/n).read_bytes()).hexdigest() for n in resources},base_key_count=2,present_index=3,scope='Unit fixture, no played-save claim')
+            (base/'generator.log').write_bytes(b'unit validation log')
+            f['execution']=dict(generator_sha256='1'*64,producer_sha256='2'*64,log_sha256=hashlib.sha256((base/'generator.log').read_bytes()).hexdigest())
+            manifest=base/'fixture.json';manifest.write_text(json.dumps(f))
+            self.assertEqual(validate_save_fixture(manifest,{'source_commit':'test-source'})[1],save.resolve())
+            for edit in (lambda f:f.update(schema=2),lambda f:f.update(schema=True),lambda f:f.update(extra=1),lambda f:f.update(source_commit='different'),lambda f:f.update(upstream_commit='0'*40),lambda f:f.update(file='../test.encsave'),lambda f:f.update(sha256='0'*64),lambda f:f['resources'].pop(resources[0]),lambda f:f['resources'].update({resources[0]:'0'*64}),lambda f:f.update(base_key_count=True),lambda f:f.update(present_index=32),lambda f:f.update(scope=''),lambda f:f['execution'].pop('generator_sha256'),lambda f:f['execution'].update(log_sha256='0'*64)):
+                bad=copy.deepcopy(f);edit(bad);manifest.write_text(json.dumps(bad))
+                with self.assertRaises(ValueError):validate_save_fixture(manifest,{'source_commit':'test-source'})
+
+    def test_present_comparison_requires_each_result_and_repeat_invariant(self):
+        from tools.run_emulator_semantics import compare_present
+        source={'namespace_isolated':True,'grant':{'item':{'item_name':'MapPodunk'}},'repeat':{'count':1},'reconstructed':{'frame':4}}
+        checkpoints={name:dict(key_count=3,object_flag_count=1,present_opened_mask=8) for name in ('map_collected','map_repeat','map_reentered')}
+        self.assertEqual(len(compare_present(checkpoints,source,{'base_key_count':2,'present_index':3})),4)
+        for edit in (lambda c:c['map_repeat'].update(key_count=4),lambda c:c['map_collected'].update(object_flag_count=0),lambda c:c['map_reentered'].update(present_opened_mask=0)):
+            bad=copy.deepcopy(checkpoints);edit(bad)
+            with self.assertRaises(AssertionError):compare_present(bad,source,{'base_key_count':2,'present_index':3})
+
+if __name__ == "__main__": unittest.main()

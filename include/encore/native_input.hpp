@@ -46,6 +46,10 @@ class NativeInputAdapter {
 public:
     bool configure(const NativeInputData& data,std::string& error);
     void reset();
+    // A read without an owner change keeps admitted physical directions. Touch
+    // gestures are cancelled so a lift during IO cannot become a confirmation.
+    // Returns false and resets when the owner is new, disabled or uninitialized.
+    bool resume_after_loading(uint32_t context);
     NativeInputResult sample(uint32_t context,int16_t circle_x,int16_t circle_y,
         NativeDpad dpad,bool touch_down,int touch_x,int touch_y,double real_delta);
 private:

@@ -2166,7 +2166,13 @@ int main(int argc,char** argv){
             if(in_battle()&&battle_entry.encounter_audio_pending())if(!audio_player.play(battle_entry.take_encounter_audio(),ctr::AudioLane::Jingle,error))audio_status=error;
         }else if(in_battle()&&battle_entry.encounter_audio_pending())battle_entry.take_encounter_audio();
         if(!region_music.update(dt,audio_player,error))audio_status=error;
-        if(frame_load_generation!=loading_generation){last=osGetTime();accumulator=0;native_input.reset();menu_navigation.reset();field_choice_navigation.reset();}
+        if(frame_load_generation!=loading_generation){
+            last=osGetTime();accumulator=0;
+            // Background PCM/encounter admission does not change the walking
+            // owner. Preserve its held directions; actual ownership changes
+            // keep the existing release quarantine and menu-repeat reset.
+            if(!native_input.resume_after_loading(input_context())){menu_navigation.reset();field_choice_navigation.reset();}
+        }
         if(!in_field()&&!update_house_prompt(error))house_error=error;
         upstream::IntroductionPose intro_pose;
         bool draw_introduction=introduction.active();

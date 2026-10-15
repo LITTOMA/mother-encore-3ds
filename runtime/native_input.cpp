@@ -79,6 +79,12 @@ void NativeInputAdapter::reset(){
     touch_active_=touch_dragged_=touch_timed_out_=false;pad_sector_=touch_sector_=-1;
     origin_x_=origin_y_=0;touch_seconds_=touch_max_distance_=0;
 }
+bool NativeInputAdapter::resume_after_loading(uint32_t context){
+    if(!configured_||!context_seen_||!context||context!=context_){reset();return false;}
+    touch_active_=touch_dragged_=touch_timed_out_=false;touch_blocked_=true;touch_sector_=-1;
+    origin_x_=origin_y_=0;touch_seconds_=touch_max_distance_=0;
+    return true;
+}
 NativeInputResult NativeInputAdapter::sample(uint32_t context,int16_t circle_x,int16_t circle_y,
         NativeDpad dpad,bool touch_down,int touch_x,int touch_y,double real_delta){
     NativeInputResult result;

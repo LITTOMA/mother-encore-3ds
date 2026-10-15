@@ -327,6 +327,7 @@ if(BUILD_TESTING)
  add_executable(encore_native_session_tests tests/native_session_tests.cpp)
  target_link_libraries(encore_native_session_tests PRIVATE encore_core)
  add_test(NAME native_session COMMAND encore_native_session_tests ${CMAKE_SOURCE_DIR}/romfs)
+ set_tests_properties(native_session PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()
 
 if(BUILD_TESTING)

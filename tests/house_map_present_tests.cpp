@@ -9,6 +9,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <map>
+#include <fstream>
 using namespace encore::upstream;
 static unsigned checks=0;static std::string error;
 #define CHECK(x) do{++checks;if(!(x)){std::fprintf(stderr,"Map present failure at %d: %s; %s\n",__LINE__,#x,error.c_str());std::exit(1);}}while(0)
@@ -61,6 +62,12 @@ int main(int argc,char**argv){
  CHECK(decoded.key_items.back().uid==0xabc&&decoded.object_flags[0].id=="Ninten's House/Present3"&&decoded.object_flags[0].value);
  PreparedSessionRestore prepared;CHECK(prepare_session_restore(session,room.view(),house.view(),round.view(),items.view(),font.view(),decoded,prepared,error));
  CHECK(prepared.state.key_items.back().uid==0xabc&&prepared.state.object_flags[0].value);
+ NativeSnapshotInput live;live.state=decoded;live.stats=&prepared.stats;live.inventory=&prepared.inventory;live.storage=&prepared.storage;
+ SessionSnapshot collected;CHECK(build_native_session_snapshot(session,room.view(),house.view(),round.view(),items.view(),live,collected,error));
+ CHECK(collected.object_flags[0].value&&collected.key_items.back().uid==0xabc);
+ CHECK(encode_session_save(collected,session.compatibility(),save,error));
+ CHECK(decode_session_save(save.data(),save.size(),session.compatibility(),decoded,error));
+ CHECK(decoded.object_flags[0].value&&decoded.key_items.back().uid==0xabc);
  auto bad=state;bad.object_flags.clear();CHECK(!validate_native_session_snapshot(session,room.view(),house.view(),round.view(),items.view(),bad,error));
  bad=state;bad.key_items.pop_back();CHECK(!validate_native_session_snapshot(session,room.view(),house.view(),round.view(),items.view(),bad,error));
  bad=state;bad.object_flags[0].value=false;CHECK(!validate_native_session_snapshot(session,room.view(),house.view(),round.view(),items.view(),bad,error));
@@ -75,5 +82,16 @@ int main(int argc,char**argv){
  Host refused;refused.house=host.house;refused.flags=host.flags;refused.reject_grant=true;
  PresentRuntime fail;CHECK(fail.initialize(view,refused,error));CHECK(fail.scene_ready(rng,error));CHECK(!fail.start(map,error));
  CHECK(fail.object_flags().empty()&&refused.keys.empty()&&refused.texts.empty());CHECK(fail.pose(map).sparkles);
+ if(argc>2){
+  // Explicit test boundary: this is not a played save or evidence that the
+  // original key acquisition chain has been completed in the emulator.
+  auto fixture=session.defaults();fixture.position_x=96;fixture.position_y=735;fixture.direction_x=0;fixture.direction_y=-1;
+  auto policy=std::find_if(session.key_acquisitions().begin(),session.key_acquisitions().end(),[](const auto&k){return k.item_id=="KeyBasement";});
+  CHECK(policy!=session.key_acquisitions().end());for(auto&f:fixture.flags)if(f.id==policy->flag_id)f.value=true;
+  fixture.key_items.push_back({policy->item_id,false,policy->doses,0xabcde});
+  CHECK(validate_native_session_snapshot(session,room.view(),house.view(),round.view(),items.view(),fixture,error));
+  std::vector<uint8_t>encoded;CHECK(encode_session_save(fixture,session.compatibility(),encoded,error));
+  std::ofstream file(argv[2],std::ios::binary|std::ios::trunc);CHECK(file.good());file.write(reinterpret_cast<const char*>(encoded.data()),std::streamsize(encoded.size()));file.flush();CHECK(file.good());
+ }
  std::printf("Map present: %u checks; source object flags, grant ordering, repeated/restored state and save identity\n",checks);
 }

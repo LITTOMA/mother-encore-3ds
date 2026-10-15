@@ -53,6 +53,16 @@ class HousePresentsTests(unittest.TestCase):
             if t['item']=='MapPodunk':
                 self.assertNotIn('[ItemName]',t['raw']);self.assertIn('en',t['localized']);self.assertIn('zh_Hans_CN',t['localized'])
 
+    def test_unknown_binding_fields_versions_and_aliases_rejected(self):
+        from unittest import mock
+        from tools import house_presents as presents
+        original=presents.read_json
+        binding=original(ROOT/presents.BINDING)
+        for edit in (lambda b:b.update(schema=2),lambda b:b.update(schema=True),lambda b:b.update(extra=1),lambda b:b['programs'].append(copy.deepcopy(b['programs'][0])),lambda b:b['programs'][1].update(check_text_ids=[70,71]),lambda b:b['text_groups'][1].update(ids=[73,74])):
+            bad=copy.deepcopy(binding);edit(bad)
+            with mock.patch.object(presents,'read_json',side_effect=lambda path:bad if Path(path)==ROOT/presents.BINDING else original(path)):
+                with self.assertRaises(ValueError):presents.build(ROOT)
+
     def test_crc_and_unknown_opcode_rejected(self):
         bad = bytearray(self.blob)
         bad[-1] ^= 1

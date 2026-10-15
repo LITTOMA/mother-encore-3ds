@@ -23,3 +23,11 @@
 本地验证记录位于 `build/basement-map/`。`tools/run_present_reference.py` 在官方 Godot 3.6.2 执行原版三个脚本的方法体，对照领取顺序、重复调查、JSON 状态重建与命名空间隔离。它使用明确的服务、钥匙库存和 Sparkles 适配器，固定测试 UID，手动推进真实 AnimationPlayer；不声称运行完整原版存档、声音混音或 UI。
 
 共享核心回归覆盖领取和空盒文本、物件旗标、拒绝绑定不覆盖旧状态、拒绝领取不提交旗标、存档 UID 往返、两种获取顺序，以及损坏 / 未知资源和旧格式。测试、真实 3DS 构建、模拟器和真机结果必须分别记录；真机仍未验证。原版日记睡梦演出及学习 PSI、塑料球棒、地图查看界面尚未接入。
+
+本次实际记录（游戏源码 `c5e1dc32d229dd79d983cdf56417b579f5331baa`）：真实 3DSX / CIA 及 323 项包内资源核对通过，Actions `38668731249`。MSVC 地图 67、礼物资源 4347、会话 19444、House 23227、钥匙门 1474 检查通过；来源 Python 21 项另加绑定负向 7 项，协议最终 14 项通过。Clang ASan / UBSan 的地图、礼物资源和会话针对性运行完成，但 Windows 拦截器报告两条 unhandled instruction 警告，不能称为完整无警告 sanitizer 通过。
+
+模拟器 `build/emulator-regression/map-boundary-4/receipt.json` 记录两次冷启动、每次 19 检查点，结果相同，按真实 LOAD、开锁、地图领取、空盒、地下室出入行走；四项结果与原版方法对照一致。起点是明确标记的人工测试存档，预置了地下室钥匙，不证明正常取得钥匙的剧情链已通过。UID 与完整保存 / 恢复在共享核心验证；模拟器本路线没有执行电话 Record 后再次 LOAD。
+
+检查点必须由 `tools/emulator_save_fixture.py` 调用实际编译的 `encore_house_map_present_tests` 生成，记录生成器、工具、日志、快照、资源指纹和真实游戏源码身份。测试存档只复制进带标记的临时模拟器目录，不读取或覆盖个人存档。用 `tools/run_emulator_semantics.py --save-fixture <生成的 fixture.json>` 配合 `tests/emulator/basement-map-save-boundary.json` 与原版 present reference 复现。
+
+同源码手动完整 Linux 回归 `38669037134` 仍有 GCC 22 / 161、Clang 18 / 146 项失败；新地图、礼物解析、会话测试通过。Linux sanitizer 因前置主机回归失败而未运行。自然新游戏探针已进入并打赢 Doll，但因持续会话未接收 Lamp 奖励而仍为 1 级，该路线明确失败；不能放宽 2 级预期或改写原版奖励。另发现加载完成会无条件重置输入，持续行走需要重按；地图边界测试使用有界重按且保留全部结果断言。后续分别修复这两个实际交接问题。

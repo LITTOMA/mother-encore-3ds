@@ -215,7 +215,7 @@ def build(root=ROOT):
     objects, templates, texts, programs = [], [], [], []
     binding = read_json(Path(root) / BINDING)
     require(set(binding) == {'schema', 'kind', 'commit', 'scene', 'programs', 'empty_text_id', 'text_groups'} and
-            binding['schema'] == 1 and binding['kind'] == 'encore.house-present-bindings' and binding['commit'] == PIN and
+            type(binding['schema']) is int and binding['schema'] == 1 and binding['kind'] == 'encore.house-present-bindings' and binding['commit'] == PIN and
             binding['scene'] == SCENE, 'Unreviewed present binding version/source')
     admitted = {}
     ids = {binding['empty_text_id']}

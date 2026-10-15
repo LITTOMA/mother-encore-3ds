@@ -151,6 +151,8 @@ def main():
     require(not out.exists() and out.is_relative_to(ROOT/'build'),'Fresh owned build output required')
     out.mkdir(parents=True);work=out/'temporary';work.mkdir()
     ex=Extractor(ROOT);ir=load();obj=next(o for o in ir['objects'] if o['item']=='MapPodunk')
+    for source,digest in ir['sources'].items():
+        ex.data(source);require(ex.sources[source]==digest,'Changed present oracle source: '+source)
     methods={}
     def extract(path,names):
         source=ex.text(path);parts=[]
@@ -170,7 +172,7 @@ def main():
         require(proc.returncode==0 and (out/'reference.json').is_file(),'Original present oracle failed; inspect retained work/log')
         result=json.loads((out/'reference.json').read_bytes());engine=result['engine']
         require((engine.get('major'),engine.get('minor'),engine.get('patch'))==(3,6,2) and engine.get('build')=='official','Unreviewed reference engine')
-        receipt=dict(commit=ex.lock['commit'],sources=ex.sources,methods_sha256=methods,
+        receipt=dict(commit=ex.lock['commit'],sources=ex.sources,methods_sha256=methods,tool_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                      godot_sha256=hashlib.sha256(args.godot.read_bytes()).hexdigest(),
                      reference_sha256=hashlib.sha256((out/'reference.json').read_bytes()).hexdigest(),
                      generated_sha256={k:hashlib.sha256(v.encode()).hexdigest() for k,v in generated.items()},

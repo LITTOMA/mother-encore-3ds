@@ -31,6 +31,16 @@ int main(int argc,char**argv){
  put(downgraded,get(bytes,objects_offset+4)+map_index*52+8,1);fix(downgraded);
  CHECK(data.load(downgraded.data(),downgraded.size(),error)); // capability1 still admits story-only programmes
  CHECK(data.load(bytes.data(),bytes.size(),error));
+ const auto directory=[&](PresentSection s){return 64+(uint32_t(s)-1)*16;};
+ const auto object_base=get(bytes,directory(PresentSection::Objects)+4),program_base=get(bytes,directory(PresentSection::Programs)+4),command_base=get(bytes,directory(PresentSection::Commands)+4);
+ const auto map_program=data.view().object(map_index).program,map_first=get(bytes,program_base+map_program*8);
+ auto foreign=bytes;put(foreign,command_base+(map_first+3)*20+4,data.view().object(2).flag);fix(foreign);
+ CHECK(!data.load(foreign.data(),foreign.size(),error));CHECK(error=="Present pack foreign object flag command rejected");
+ auto duplicate=bytes;put(duplicate,object_base+52+12,data.view().object(map_index).flag);fix(duplicate);
+ CHECK(!data.load(duplicate.data(),duplicate.size(),error));CHECK(error=="Present pack duplicate object flag");
+ auto overlap=bytes;put(overlap,program_base+map_program*8,0);fix(overlap);
+ CHECK(!data.load(overlap.data(),overlap.size(),error));CHECK(error=="Present pack overlapping programmes rejected");
+ CHECK(data.view().object(map_index).program==map_program);
  auto trailing=bytes;trailing.push_back(0);fix(trailing);CHECK(!data.load(trailing.data(),trailing.size(),error));
  CHECK(data.load(bytes.data(),bytes.size(),error));
  std::printf("PresentData: %u checks; ENCPRS01 load, object/programme counts and fail-closed mutations\n",checks);

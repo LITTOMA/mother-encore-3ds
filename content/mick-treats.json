@@ -78,6 +78,7 @@
     "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
     "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
     "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
     "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
     "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
     "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
@@ -184,8 +185,8 @@
     {
       "translation_key": "DIALOGUE_PODUNK_WOOF_0",
       "localized": {
-        "en": "Woof woof!\n(Grrr, my butt is so itchy!)\n(Stop standing there and lend me a hand!)",
-        "zh_Hans_CN": "汪汪！\n（呃——，我的屁股好痒啊！）\n（别光站在那儿，快帮我一把！）"
+        "en": "Woof woof!⁣\n(Grrr, my butt is so itchy!)⁣\n(Stop standing there and lend me a hand!)",
+        "zh_Hans_CN": "汪汪！⁣\n（呃——，我的屁股好痒啊！）⁣\n（别光站在那儿，快帮我一把！）"
       }
     },
     {
@@ -205,8 +206,8 @@
     {
       "translation_key": "DIALOGUE_PODUNK_WOOF_4",
       "localized": {
-        "en": "(Ahhh, many thanks.)\n(Wait a minute, you can understand me?)\n(You must have learned Telepathy!)\n(That's great and all, but don't you dare use it on me by pressing [ui_select] and selecting it within the PSI menu.)",
-        "zh_Hans_CN": "（啊啊啊，感激不尽。）\n（等一下，你能听懂我说话？）\n（你一定是学会了心灵感应吧！）\n（那倒是挺厉害的，不过你可别通过按[ui_select]并在PSI菜单里选择它来对我使用哦。）"
+        "en": "(Ahhh, many thanks.)⁣\n(Wait a minute, you can understand me?)⁣\n(You must have learned Telepathy!)⁣\n(That's great and all, but don't you dare use it on me by pressing [ui_select] and selecting it within the PSI menu.)",
+        "zh_Hans_CN": "（啊啊啊，感激不尽。）⁣\n（等一下，你能听懂我说话？）⁣\n（你一定是学会了心灵感应吧！）⁣\n（那倒是挺厉害的，不过你可别通过按[ui_select]并在PSI菜单里选择它来对我使用哦。）"
       }
     },
     {
@@ -240,8 +241,8 @@
     {
       "translation_key": "DIALOGUE_PODUNK_WOOF_SECRET_0",
       "localized": {
-        "en": "Woof woof!\n(Don't you dare use Telepathy on me by pressing [ui_select] and selecting it within the PSI menu.)\n(And don't even think of using it by simply holding down [ui_toggle] and pressing [ui_accept].)",
-        "zh_Hans_CN": "汪汪！\n（你可别通过按[ui_select]并在PSI菜单里选择它来对我使用心灵感应哦。）\n（而且，按住[ui_toggle]后再按下[ui_accept]来使用这个能力的念头更是想都别想。）"
+        "en": "Woof woof!⁣\n(Don't you dare use Telepathy on me by pressing [ui_select] and selecting it within the PSI menu.)⁣\n(And don't even think of using it by simply holding down [ui_toggle] and pressing [ui_accept].)",
+        "zh_Hans_CN": "汪汪！⁣\n（你可别通过按[ui_select]并在PSI菜单里选择它来对我使用心灵感应哦。）⁣\n（而且，按住[ui_toggle]后再按下[ui_accept]来使用这个能力的念头更是想都别想。）"
       }
     },
     {
@@ -254,8 +255,8 @@
     {
       "translation_key": "DIALOGUE_PODUNK_WOOF_DEAL_0",
       "localized": {
-        "en": "(I can smell some Dog Treats in the basement.)\n(If you fetch them for me, I'll let you go.)",
-        "zh_Hans_CN": "（我闻到地下室里有一些狗狗零食的味道。）\n（你要是帮我把它们拿来，我就放你过去哦。）"
+        "en": "(I can smell some Dog Treats in the basement.)⁣\n(If you fetch them for me, I'll let you go.)",
+        "zh_Hans_CN": "（我闻到地下室里有一些狗狗零食的味道。）⁣\n（你要是帮我把它们拿来，我就放你过去哦。）"
       }
     },
     {
@@ -268,8 +269,8 @@
     {
       "translation_key": "DIALOGUE_PODUNK_WOOF_TREATS_0",
       "localized": {
-        "en": "Woof!\n(Woah, are those Dog Treats? Give them to me!)",
-        "zh_Hans_CN": "汪！\n（哇，那是狗狗零食？快把它们给我！）"
+        "en": "Woof!⁣\n(Woah, are those Dog Treats? Give them to me!)",
+        "zh_Hans_CN": "汪！⁣\n（哇，那是狗狗零食？快把它们给我！）"
       }
     },
     {
@@ -296,8 +297,8 @@
     {
       "translation_key": "DIALOGUE_PODUNK_WOOF_ANIMALS_0",
       "localized": {
-        "en": "Woof woof!\n(If you see any other animals, try listening to their thoughts.)",
-        "zh_Hans_CN": "汪汪！\n（要是见到了其他动物，也试着听听它们的想法吧。）"
+        "en": "Woof woof!⁣\n(If you see any other animals, try listening to their thoughts.)",
+        "zh_Hans_CN": "汪汪！⁣\n（要是见到了其他动物，也试着听听它们的想法吧。）"
       }
     },
     {
@@ -345,8 +346,8 @@
     {
       "translation_key": "DIALOGUE_PODUNK_WOOF_KEY_0",
       "localized": {
-        "en": "(I hope they haven't found out I ate all of the [FavFood]...)\n(Hey, are you reading my thoughts?)\n(Cut it out! That's an invasion of privacy!)\n(Take this and forget what you just heard.)",
-        "zh_Hans_CN": "（但愿他们没发现是我把所有的[FavFood]给吃光了…）\n（嘿，你是在读取我的想法吗？）\n（快停下！有点边界感好吗！）\n（给你这个，把你刚才听到的忘掉。）"
+        "en": "(I hope they haven't found out I ate all of the [FavFood]...)⁣\n(Hey, are you reading my thoughts?)⁣\n(Cut it out! That's an invasion of privacy!)⁣\n(Take this and forget what you just heard.)",
+        "zh_Hans_CN": "（但愿他们没发现是我把所有的[FavFood]给吃光了…）⁣\n（嘿，你是在读取我的想法吗？）⁣\n（快停下！有点边界感好吗！）⁣\n（给你这个，把你刚才听到的忘掉。）"
       }
     },
     {

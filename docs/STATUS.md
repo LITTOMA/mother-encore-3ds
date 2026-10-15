@@ -44,6 +44,8 @@ Podunk 室外由 `world/podunk/podunk.encmap`、`world/podunk/podunk.encroom` �
 
 ## 未完成项
 
+Mick 长段对话已恢复原版 `[WAIT@]` 确认停顿，避免普通换行一路打印、滚动；英文和简体中文共 26 个来源等待点通过针对性共享核心检查。Mick 包能力 3、只读观察 ABI v6，规则和存档不变。交叉构建、模拟器和真机验证状态见 [对话停顿](MICK_DIALOGUE_PACING.md)。
+
 - 后续内容继续遵守严格程序 / 数据分离；已迁移的开局范围、版本和验收边界见 [内容与绑定迁移](CONTENT_MIGRATION.md)。这不代表未移植地图与机制已经完成。
 - Introduction 的 3DS 实际显示与可听性验收；Podunk 其余 NPC、野外敌人与战斗、建筑内部、后续地图和剧情。房屋 Present1 日记和 Present2 球棒仍不可开启；Present3 地图领取与物件状态保存见 [地下室地图](BASEMENT_MAP_PRESENT.md)，地图查看菜单尚未接入。Mick 的心灵感应 woof_food / woof_key、KeyBasement 领取与 mick_telepathy 保存已接入；地下室门支持自动查找钥匙、原版开锁对白与 SE、保留钥匙和保存开锁状态，并接入地下室往返通路（见 [地下室钥匙](BASEMENT_KEY_DOOR.md)）；其它思绪、读心 focus 效果及爱心表情仍未完成。Mick 的 ButtonPrompt 使用房屋里同一张静态 A 图标，不含原版浮动动画。
 - 完整战斗、物品使用、队伍与菜单机制。

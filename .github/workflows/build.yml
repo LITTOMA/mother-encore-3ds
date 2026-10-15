@@ -12,7 +12,7 @@ on:
         type: choice
         required: true
         default: build
-        options: [build, full]
+        options: [build, full, basement-assets]
 
 permissions:
   contents: read
@@ -120,7 +120,7 @@ jobs:
 
   console:
     name: Real 3DSX and CIA (GPU 1:1:1)
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.mode != 'basement-assets')
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     env:
@@ -214,6 +214,37 @@ jobs:
           for log in build/console-ci/cia-contents.log build/console-ci/cia-romfs.log; do
             if test -f "$log"; then cat "$log"; fi
           done
+
+  basement-assets:
+    name: Checked original basement textures
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'basement-assets'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          submodules: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow==12.3.0 PyYAML==6.0.3
+      - run: python tools/ci_bootstrap.py
+      - name: Restore the checksum-pinned official converter
+        run: |
+          mkdir -p build/console-sdk/downloads
+          cp tools/cloud-sdk/fetch-official-sdk.py build/console-sdk/
+          cp -r tools/cloud-sdk/reference build/console-sdk/
+          python build/console-sdk/fetch-official-sdk.py
+      - name: Generate reviewed source art with genuine tex3ds
+        run: python tools/basement_items.py compile --tex3ds build/console-sdk/sdk-image/opt/devkitpro/tools/bin/tex3ds
+      - uses: actions/upload-artifact@v4
+        with:
+          name: basement-source-textures
+          retention-days: 7
+          path: |
+            romfs/graphics/basement/
+            content/asset-receipts/graphics/basement/source.json
 
 # Actions artifacts are downloadable build outputs, not GitHub Releases.
 # Download full Actions run logs separately into the private validation archive.

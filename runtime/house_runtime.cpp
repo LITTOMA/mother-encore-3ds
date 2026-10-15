@@ -118,10 +118,13 @@ bool HouseRuntime::sync_npc_visibility(){
 bool HouseRuntime::process_npc_restores(){
  if(!sync_npc_visibility())return false;
  for(uint32_t i=0;i<npc_restore_.size();++i){const auto n=content_.npc(i);if(n.room_actor_index==house_no_index)continue;auto&w=npc_restore_[i];
-  if(!w.phase&&world_->actor_restore_requested(n.room_actor_index)){const auto&a=world_->actor(n.room_actor_index);w.frame_revision=presentation_->npc_frame_revision(i);w.phase=1;
+  const auto revision=world_->actor_binding_revision(n.room_actor_index);
+  // Godot deletes an individual Actor; a newer binding owns a different lifetime.
+  if(w.phase&&w.binding_revision!=revision)w=RestoreWait{};
+  if(!w.phase&&world_->actor_restore_requested(n.room_actor_index)){const auto&a=world_->actor(n.room_actor_index);w.binding_revision=revision;w.frame_revision=presentation_->npc_frame_revision(i);w.phase=1;
    if(!presentation_->restore_npc_pose(i,a.position,{std::round(a.direction.x),std::round(a.direction.y)})||!world_->set_body_offset(n.body_id,{a.position.x-n.position.x,a.position.y-n.position.y}))return fail("NPC restored pose/collision rejected");}
   else if(w.phase==1&&presentation_->npc_frame_revision(i)!=w.frame_revision){w.phase=2;w.ready_idle=idle_frame_+1;}
-  else if(w.phase==2&&idle_frame_>=w.ready_idle){if(!world_->complete_actor_restore(n.room_actor_index))return fail("NPC deferred restoration rejected");w.phase=0;}
+  else if(w.phase==2&&idle_frame_>=w.ready_idle){if(!world_->complete_actor_restore(n.room_actor_index,w.binding_revision))return fail("NPC deferred restoration rejected");w.phase=0;}
  }
  return sync_npc_visibility();
 }

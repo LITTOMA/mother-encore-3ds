@@ -149,7 +149,7 @@ private:
  std::vector<AreaContact>pending_contacts_;
  std::vector<uint8_t>door_inside_,boundary_inside_,story_inside_,story_process_;
  std::vector<HouseOpenableState>openables_;
- struct RestoreWait {uint64_t frame_revision=0,ready_idle=0;uint8_t phase=0;};
+ struct RestoreWait {uint64_t frame_revision=0,ready_idle=0,binding_revision=0;uint8_t phase=0;};
  std::vector<RestoreWait>npc_restore_;
  std::vector<uint64_t>story_ready_idle_;
  Vec2 observed_physics_position_{};

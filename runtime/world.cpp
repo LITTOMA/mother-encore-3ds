@@ -2,6 +2,7 @@
 #include "encore/opening_trigger.hpp"
 #include <algorithm>
 #include <cmath>
+#include <limits>
 namespace encore::upstream {
 namespace {
 unsigned direction_index(Vec2 d){if(d.y>0)return d.x<0?4:(d.x>0?5:0);if(d.y<0)return d.x<0?6:(d.x>0?7:3);return d.x<0?1:2;}
@@ -46,6 +47,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     dialogue_=DialoguePlayer{};battle_=OpeningBattleRequest{};audio_.clear();trace_.clear();deferred_.clear();boundaries_.clear();room_shakers_.clear();random_=nullptr;
     actors_.assign(content.actor_instance_count(),ActorActionState{});
     actor_visible_.assign(actors_.size(),0);actor_restore_.assign(actors_.size(),0);
+    actor_binding_revisions_.assign(actors_.size(),0);
     actor_bound_.assign(actors_.size(),0);actor_persistent_.assign(actors_.size(),0);
     inside_trigger_.assign(content.trigger_count(),0);trigger_pending_.assign(content.trigger_count(),0);
     stage_=OpeningStage::Walking;cutscene_done_=restore_pending_=overworld_music_=false;
@@ -170,7 +172,7 @@ bool OpeningWorld::finish_story_dialogue(bool automatic){
     if(!dialogue_.dialogue_finished(*this,automatic))return fail(dialogue_.error());
     return flush_deferred();
 }
-bool OpeningWorld::complete_actor_restore(uint32_t index){if(!healthy_||index>=actors_.size()||!actor_restore_[index])return false;actor_restore_[index]=0;actor_bound_[index]=0;actor_persistent_[index]=0;persistent_player_.state_->camera_.remove_actor(index);return true;}
+bool OpeningWorld::complete_actor_restore(uint32_t index,uint64_t revision){if(!healthy_||index>=actors_.size()||!revision||revision!=actor_binding_revisions_[index]||!actor_restore_[index])return false;actor_restore_[index]=0;actor_bound_[index]=0;actor_persistent_[index]=0;persistent_player_.state_->camera_.remove_actor(index);return true;}
 bool OpeningWorld::accept_battle_entry(){if(!healthy_||!battle_.requested||battle_accepted_)return false;battle_accepted_=true;battle_original_direction_=persistent_player_.state_->player_.direction;return true;}
 bool OpeningWorld::pause_for_house(){
     if(!healthy_||stage_!=OpeningStage::Walking)return false;
@@ -365,10 +367,12 @@ bool OpeningWorld::apply(const DialogueAction& a) {
         stage_=OpeningStage::ScriptRunning;persistent_player_.state_->player_.crouch=persistent_player_.state_->player_.walking=false;if(!persistent_player_.state_->player_.tap_run)persistent_player_.state_->player_.running=false;
         persistent_player_.state_->player_.animation=MotionAnimation::Idle;return true;
     case K::BindActor:{
-        if(!actor||pending_actor_!=kRoomNoActor)return false;
+        if(!actor||pending_actor_!=kRoomNoActor||actor_binding_revisions_[a.actor]==std::numeric_limits<uint64_t>::max())return false;
         const auto instance=content_.actor_instance(a.actor);const bool controlled=instance.binding_kind==1;
         const auto position=controlled?persistent_player_.state_->player_.position:actor->position,direction=controlled?persistent_player_.state_->player_.direction:actor->direction;
         if(!initialize_actor(*actor,content_,instance.profile_index,position,direction))return false;
+        ++actor_binding_revisions_[a.actor];actor_restore_[a.actor]=0;
+        if(controlled)restore_pending_=false;
         pending_actor_=a.actor;return true;}
     case K::ActorPersistent:if(!actor)return false;actor_persistent_[a.actor]=1;return true;
     case K::StartWait:return true;

@@ -666,6 +666,11 @@ public:
   if(it==keys.end()){e.clear();return true;}
   keys.erase(it);e.clear();return true;
  }
+ bool grant_key_item(std::string_view name,uint32_t doses,std::string&e)override{
+  // Use the same checked key inventory and Item.new UID transaction as Presents.
+  // Item identity and doses come from the admitted Mick programme/session policy.
+  return present_effects.grant_item({0,doses,1},name,e);
+ }
  bool play_sound(std::string_view path,std::string& e)override{
    ++door_sound_requests;if(!play_source_audio(std::string(path),ctr::AudioLane::Effect,0,1)){e=house_error.empty()?audio_status:house_error;return false;}e.clear();return true;
  }

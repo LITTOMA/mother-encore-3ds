@@ -152,6 +152,7 @@ int main(int argc,char**argv){
         RoomData room;check(room.load_file(argv[3],error),error.c_str());MickData data;
         std::string mick_path(argv[1]);const auto suffix=mick_path.rfind(".encmap");check(suffix!=std::string::npos,"map suffix");mick_path.replace(suffix,7,".encmick");check(data.load_file(mick_path.c_str(),error),error.c_str());
         struct Host:MickHost {
+            bool grant_key_item(std::string_view,uint32_t,std::string&e)override{e="Ray-only test host cannot grant keys";return false;}
             std::string body;bool validate_flag(std::string_view,std::string&)override{return true;}bool validate_item(std::string_view,std::string&)override{return true;}
             bool flag(std::string_view,bool&v,std::string&)override{v=false;return true;}bool set_flag(std::string_view,bool,std::string&)override{return true;}bool remove_key_item(std::string_view,std::string&)override{return true;}
             bool show_text(std::string_view,std::string_view v,std::string&)override{body=std::string(v);return true;}bool play_sound(std::string_view,std::string&)override{return true;}

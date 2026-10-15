@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <fstream>
 #include <string>
+#include <type_traits>
 #include <vector>
 
 using namespace encore::upstream;
@@ -29,16 +30,19 @@ int main(int argc,char** argv){
     for(uint32_t i=0;i<view.count(MickSection::Commands);++i){const auto c=view.command(i);if(c.opcode!=uint32_t(MickOpcode::ShowText))continue;
         if(c.b==kMickNone)blank=true;else{CHECK(c.b<view.count(MickSection::Texts));const auto speaker=view.text(c.b);CHECK(!view.string(speaker.en).empty()&&!view.string(speaker.zh).empty());named=true;}}
     CHECK(named&&blank);
-    struct Host:MickHost{
+    struct HostWithoutGrant:MickHost{
         std::string speaker,body;bool scratch=false,thought_done=false,reject_grant=false,reject_item=false;unsigned grants=0;
         bool validate_flag(std::string_view,std::string& e)override{e.clear();return true;}
         bool validate_item(std::string_view name,std::string& e)override{if(reject_item&&name=="KeyBasement"){e="rejected key source";return false;}e.clear();return true;}
         bool flag(std::string_view name,bool& on,std::string& e)override{on=name=="mick_scratch"?scratch:name=="mick_telepathy"?thought_done:false;e.clear();return true;}
         bool set_flag(std::string_view name,bool value,std::string& e)override{if(name=="mick_telepathy")thought_done=value;e.clear();return true;}
-        bool grant_key_item(std::string_view name,uint32_t doses,std::string& e)override{if(reject_grant||name!="KeyBasement"||doses!=1){e="key grant rejected";return false;}++grants;e.clear();return true;}
         bool remove_key_item(std::string_view,std::string& e)override{e.clear();return true;}
         bool show_text(std::string_view s,std::string_view b,std::string& e)override{speaker=std::string(s);body=std::string(b);e.clear();return true;}
         bool play_sound(std::string_view,std::string& e)override{e.clear();return true;}
+    };
+    static_assert(std::is_abstract<HostWithoutGrant>::value,"An unwired key grant must fail at compile time");
+    struct Host final:HostWithoutGrant {
+        bool grant_key_item(std::string_view name,uint32_t doses,std::string& e)override{if(reject_grant||name!="KeyBasement"||doses!=1){e="key grant rejected";return false;}++grants;e.clear();return true;}
     } host;
     MickRuntime chinese;chinese.set_locale("zh_Hans_CN");
     CHECK(chinese.initialize(view,host,error));

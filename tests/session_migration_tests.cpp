@@ -32,7 +32,7 @@ struct MemoryFiles:ReadOnlyFiles {
 int main(int argc,char**argv){
  const std::string root=argc>1?argv[1]:"romfs",legacy_root=argc>2?argv[2]:"content/legacy-rules6";std::string error;
  NativeSessionData data,old;RoomData room;HouseData house;BattleRoundData round;ItemData items;BattleData font;SessionMigrationData migration;
- CHECK(data.load_file((root+"/session/opening.encsession").c_str(),error));CHECK(old.load_file((legacy_root+"/session/opening.encsession").c_str(),error));
+ CHECK(data.load_file((root+"/session/opening.encsession").c_str(),error));CHECK(old.load_file((legacy_root+"/opening.encsession").c_str(),error));
  CHECK(room.load_file((root+"/world/house/opening.encroom").c_str(),error));CHECK(house.load_file((root+"/world/house/opening.enchouse").c_str(),error));
  CHECK(round.load_file((root+"/battle/lamp/opening.encround").c_str(),error));CHECK(items.load_file((root+"/ui/opening.encitems").c_str(),error));CHECK(font.load_file((root+"/battle/lamp/opening.encbattle").c_str(),error));
  const auto policy=read(root+"/session/rules6-to7.encmigration");CHECK(migration.load(policy.data(),policy.size(),error));
@@ -48,7 +48,7 @@ int main(int argc,char**argv){
  for(const auto&f:prepared.state.flags)if(f.id=="minnie_leave"||f.id=="minnie_door")CHECK(!f.value);
  // Every originally permitted camera remains accepted, and neither old flags
  // nor explicit false encounter/seen entries are filled, removed, or reordered.
- RoomData old_room;HouseData old_house;CHECK(old_room.load_file((legacy_root+"/world/house/opening.encroom").c_str(),error));CHECK(old_house.load_file((legacy_root+"/world/house/opening.enchouse").c_str(),error));
+ RoomData old_room;HouseData old_house;CHECK(old_room.load_file((legacy_root+"/opening.encroom").c_str(),error));CHECK(old_house.load_file((legacy_root+"/opening.enchouse").c_str(),error));
  for(uint32_t i=0;i<old_room.view().battle_count();++i)saved.encountered.push_back({std::string(old_room.view().string(old_room.view().battle(i).enemy_string)),i%2==0});
  for(uint32_t i=0;i<old_house.view().count(HouseSection::Npcs);++i){auto id=old_house.view().string(old_house.view().npc(i).seen_key);if(!id.empty())saved.seen_dialogue_flags.push_back({std::string(id),false});}
  for(auto id:old.camera_area_ids())for(uint32_t i=0;i<old_room.view().camera_area_count();++i){auto area=old_room.view().camera_area(i);if(area.stable_id!=id)continue;auto s=saved;s.position_x=area.center.x;s.position_y=area.center.y;auto b=bytes(s,old.compatibility());CHECK(prepare(b,prepared,migrated));CHECK(bytes(prepared.state,old.compatibility())==b);}

@@ -22,12 +22,12 @@ int main(int argc,char**argv){
  check(d.columns()==3&&d.child_count()==6,"source grid includes hidden children");
  check(d.trailing_blank_lines()==1,"source adds blank line to reserve options row");
  check(d.minimum().w==60&&d.minimum().h==10&&d.grid().x==52&&d.grid().y==38,"source local options geometry");
- check(d.groups().size()==2&&d.groups()[0].options.size()==2,"cancel remains hidden");
+ check(d.groups().size()==3&&d.groups()[0].options.size()==2,"cancel remains hidden");
  const auto&g=d.groups()[0];check(g.options[0].text=="Record"&&g.options[1].text=="Nothing, really","source translated labels");
  check(g.options[0].rect.w==64&&g.options[1].rect.x==76,"native translated GridContainer layout");
  check(d.sound(DialogueChoiceSound::Accept)==d.sound(DialogueChoiceSound::Cancel)&&d.sound(DialogueChoiceSound::Accept)=="Audio/Sound effects/Cursor 2.mp3","source confirm and cancel both InputSound");
  check(d.validate_program(0,g.program_identity,g.program_command_count,error),"bind matching program");
- check(!d.validate_program(2,g.program_identity,g.program_command_count,error),"unknown group rejected");
+ check(!d.validate_program(uint32_t(d.groups().size()),g.program_identity,g.program_command_count,error),"unknown group rejected");
  check(!d.validate_program(0,"Reusable/other",g.program_command_count,error),"wrong program rejected");
  check(!d.validate_program(0,g.program_identity,g.program_command_count-1,error),"wrong program extent rejected");
  DialogueChoices m;check(!m.text_completed(error),"completion without prepare rejected");

@@ -5,6 +5,7 @@
 #include "encore/collision.hpp"
 #include "encore/content.hpp"
 #include "encore/crc32.hpp"
+#include "fixtures/segment_v0362.hpp"
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
@@ -55,7 +56,7 @@ int main(int argc,char**argv){
     {auto b=map_bytes;put(b,64+16*1,get(b,64+16*1)+1);reject(b,"reordered section kind rejected");}
     {auto b=map_bytes;put(b,64+16*1+4,get(b,64+16*1+4)+2);reject(b,"misaligned section rejected");}
     const size_t atlases=section(map_bytes,2),tiles=section(map_bytes,6),chunks=section(map_bytes,11),cell_rows=section(map_bytes,12),items=section(map_bytes,14),groups=section(map_bytes,15);
-    {auto b=map_bytes;const auto len=get(b,atlases+4);b[section(b,1)+get(b,atlases)+len-1]='x';reject(b,"non-t3x atlas path rejected");}
+    {auto b=map_bytes;const auto len=get(b,atlases+4);b[section(b,1)+get(b,atlases)+len-1]^=1;reject(b,"non-t3x atlas path rejected");}
     {auto b=map_bytes;put16(b,atlases+8,1000);reject(b,"non power-of-two atlas rejected");}
     {auto b=map_bytes;put(b,tiles,count(b,4));reject(b,"tile picture outside table rejected");}
     {auto b=map_bytes;put_float(b,tiles+8,NAN);reject(b,"nonfinite tile offset rejected");}
@@ -97,14 +98,17 @@ int main(int argc,char**argv){
         const ConvexPolygon actor{{{-7,3},{6,3},{6,9},{-7,9}}};
         check(solver.configure(actor,{},0.08f),"solver configured");
         WallSource wall;solver.attach_source(&wall);
-        SlideResult r;Vec2 p{0,-20};
-        for(int i=0;i<60;++i){check(solver.slide(p,{0,60},r),"slide against segment");p=r.position;}
-        check(p.y+9<=0.2f&&p.y+9>=-1.0f,"segment wall stops the actor at its surface");
-        for(int i=0;i<10;++i){check(solver.slide(p,{60,60},r),"diagonal slide along segment");p=r.position;}
-        check(p.x>8&&p.y+9<=0.2f,"actor slides along the segment wall");
+        SlideResult r;Vec2 p{0,-20};size_t frame=0;
+        auto compare=[&]{
+            const auto&reference=segment_reference::frames.at(frame++);
+            check(std::abs(p.x-reference.position.x)<0.0001f&&std::abs(p.y-reference.position.y)<0.0001f,"segment position matches official Godot recovery, including its nonzero overlap");
+            check(std::abs(r.velocity.x-reference.velocity.x)<0.0001f&&std::abs(r.velocity.y-reference.velocity.y)<0.0001f,"segment velocity matches official Godot frame");
+        };
+        for(int i=0;i<60;++i){check(solver.slide(p,{0,60},r),"slide against segment");p=r.position;compare();}
+        for(int i=0;i<10;++i){check(solver.slide(p,{60,60},r),"diagonal slide along segment");p=r.position;compare();}
         solver.attach_source(nullptr);
-        for(int i=0;i<30;++i){check(solver.slide(p,{0,60},r),"free slide");p=r.position;}
-        check(p.y>5,"detached source no longer blocks");
+        for(int i=0;i<30;++i){check(solver.slide(p,{0,60},r),"free slide");p=r.position;compare();}
+        check(frame==segment_reference::frames.size(),"all 100 official segment frames checked");
     }
 
     // Live scene: spawn from the House route, walk, stop at a boundary, return home.

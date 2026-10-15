@@ -327,7 +327,7 @@ bool HouseRuntime::bind_presents(PresentRuntime&runtime,PresentView candidate,Pr
   bool found=false;for(uint32_t b=0;b<room.body_rule_count();++b)found|=room.string(room.body_rule(b).source_path_string)==path;
   if(!found)return reject("House present collision body absent from room pack");}
  const auto previous_host=present_host_;present_host_.owner=this;present_host_.effects=&effects;
- if(!runtime.initialize(candidate,present_host_,present_error_,object_flags)){present_host_=previous_host;error_="House present binding rejected";return false;}
+ if(!runtime.initialize(candidate,present_host_,present_error_,object_flags)){present_host_=previous_host;error_=present_error_.empty()?"House present binding rejected":"House present binding rejected: "+present_error_;return false;}
  presents_=&runtime;error_="";return true;
 }
 bool HouseRuntime::PresentAdapter::validate_text(uint32_t id,std::string_view path,std::string&e){

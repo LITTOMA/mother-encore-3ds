@@ -96,7 +96,12 @@ try:
     def close_psi():
         pulse('B',settle=.6);wait(lambda s:s['menu_phase']==2)
         pulse('B',settle=.6);wait(lambda s:s['menu_phase']==0 and s['paused']==0)
+    record('bridge_attached');capture('startup_after_attach')
     wait(lambda s:s['title_phase']==1)
+    if a.dsp_component:
+        sounding=wait(lambda s:s['audio_available']==1 and s['music_playing']==1 and s['dsp_music_playing']==1)
+        time.sleep(1);advanced=record('title_music_advances')
+        assert (advanced['dsp_music_sample_pos'],advanced['dsp_music_wave_seq'])!=(sounding['dsp_music_sample_pos'],sounding['dsp_music_wave_seq'])
     if locale=='zh':pulse('R',settle=2)
     pulse('DOWN');pulse('A');wait(lambda s:s['title_phase']==3)
     pulse('A');wait(lambda s:s['title_phase']==4)

@@ -18,11 +18,12 @@ static unsigned checks=0;static std::string error;
 struct Effects final:PresentHost,PresentEffects,StorySkillHost {
  const NativeSessionData&session;InventoryState inventory;std::vector<SessionItem>keys;
  std::map<std::string,bool>flags;std::vector<uint32_t>texts;std::vector<std::string>sounds;
- std::vector<std::string>skills;bool space=true,reject=false;unsigned previews=0,learns=0;uint32_t uid=0xabcd;
+ std::vector<std::string>skills;bool space=true,reject=false,reject_binding=false;unsigned previews=0,learns=0;uint32_t uid=0xabcd;
  explicit Effects(const NativeSessionData&s,ItemView items):session(s){CHECK(inventory.initialize(items));for(const auto&f:s.defaults().flags)flags[f.id]=f.value;skills=s.defaults().characters[0].learned_skills;}
  bool validate_text(uint32_t,std::string_view,std::string&)override{return true;}
  bool validate_flag(std::string_view name,std::string&)override{return flags.count(std::string(name));}
- bool validate_item(PresentTemplate t,std::string_view name,std::string&)override{
+ bool validate_item(PresentTemplate t,std::string_view name,std::string&e)override{
+  if(reject_binding){e="Fixture item binding rejected";return false;}
   if(t.key_item){for(const auto&k:session.key_acquisitions())if(k.item_id==name&&k.doses==t.doses)return true;}
   else for(const auto&a:session.acquisitions())if(a.item_id==name&&a.doses==t.doses)return true;
   return false;
@@ -73,7 +74,9 @@ int main(int argc,char**argv){
  uint32_t house_music=kRoomNoIndex;for(uint32_t i=0;i<room.view().resource_count();++i)if(room.view().string(room.view().resource(i).path_string)=="res://Audio/Music/House.mp3")house_music=i;
  CHECK(house_music!=kRoomNoIndex&&world.start_area_music(house_music,0,0));const auto audio_before=world.audio_requests().size();
  CHECK(world.warp_same_scene({128,1040},{0,-1}));CHECK(presentation.begin(house.view(),font.view(),story_random));CHECK(runtime.initialize(house.view(),world,presentation));
- CHECK(runtime.set_player_nickname(session.defaults().characters[0].nickname));CHECK(runtime.bind_presents(boxes,view,story));CHECK(boxes.scene_ready(story_random,error));
+ CHECK(runtime.set_player_nickname(session.defaults().characters[0].nickname));
+ story.reject_binding=true;CHECK(!runtime.bind_presents(boxes,view,story));CHECK(std::string(runtime.error())=="House present binding rejected: Fixture item binding rejected");story.reject_binding=false;
+ CHECK(runtime.bind_presents(boxes,view,story));CHECK(boxes.scene_ready(story_random,error));
  const double dt=double(1.f/60);unsigned frames=0;std::set<uint32_t>phrases;float max_alpha=0;bool special=false;std::set<uint32_t>sleep_frames,wake_frames;
  auto tick=[&](bool accept,bool cancel){WalkInput input{};CHECK(runtime.before_physics(input));CHECK(presentation.physics_frame(dt,world.player().position));CHECK(world.advance(input));CHECK(runtime.after_physics());CHECK(world.idle_frame(dt));CHECK(presentation.idle_frame(dt));CHECK(runtime.idle_frame(dt,accept,cancel));CHECK(world.end_scene_frame());++frames;};
  tick(false,false);tick(true,false);CHECK(runtime.phase()==HousePhase::StoryRunning&&world.story_flag("got_diary"));CHECK(story.keys.size()==1&&story.keys[0].item_id=="GGFDiary");

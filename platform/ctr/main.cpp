@@ -576,14 +576,14 @@ public:
 class PresentEffects final:public upstream::PresentEffects {
 public:
  bool validate_item(upstream::PresentTemplate t,std::string_view name,std::string&e)override{
-  if(!t.key_item)return drawer_effects.validate_item({t.item,t.doses,t.key_item},name,e);
+  if(!t.key_item)return drawer_effects.validate_item({0,t.item,t.doses,t.key_item},name,e);
   for(const auto&k:native_session_data.key_acquisitions())if(k.item_id==name&&k.doses==t.doses){e.clear();return true;}
   e="Present grant is absent from checked session key acquisitions";return false;
  }
  bool validate_sound(std::string_view name,std::string&e)override{return drawer_effects.validate_sound(name,e);}
  bool grant_item(upstream::PresentTemplate t,std::string_view name,std::string&e)override{
   if(!validate_item(t,name,e))return false;
-  if(!t.key_item)return drawer_effects.grant_item({t.item,t.doses,t.key_item},name,e);
+  if(!t.key_item)return drawer_effects.grant_item({0,t.item,t.doses,t.key_item},name,e);
   for(const auto&item:session_state.key_items)if(item.item_id==name){e="Present key item already held";return false;}
   auto random=battle_random;auto ledger=generated_uid_ledger;
   const upstream::LoadRngClockProvider clock=[](upstream::LoadRngClockSample&sample,std::string&why){const auto now=std::time(nullptr);if(now<0){why="Clock unavailable for source item entropy";return false;}const u64 ticks=svcGetSystemTick()-load_epoch_tick;sample.unix_seconds=uint64_t(now);sample.ticks_usec=(ticks/SYSCLOCK_ARM11)*1000000+(ticks%SYSCLOCK_ARM11)*1000000/SYSCLOCK_ARM11;return true;};

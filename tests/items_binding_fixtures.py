@@ -1,27 +1,31 @@
 #!/usr/bin/env python3
 """Explicit build preparation; ordinary fixture verification is read-only."""
 import argparse,copy,json,os,sys
+from types import SimpleNamespace
 from pathlib import Path
 from unittest.mock import patch
 ROOT=Path(os.environ.get('ENCORE_SOURCE_ROOT',Path(__file__).resolve().parents[1])).resolve()
 sys.dont_write_bytecode=True;sys.path.insert(0,str(ROOT))
-from tools import items_assets as assets,items_presentation_bindings as bindings,native_items as native,drawer_item
+from tools import items_assets as assets,items_presentation_bindings as bindings,native_items as native,drawer_item,basement_items
 
 def candidate():
  recipe=bindings.read(bindings.IR);recipe['layouts']['info']['anchor']=[.75,1];recipe['platform']['hint_offset']=[-2,-1]
  return recipe
 
 def base_resources(baseline):
- # export_ir appends the checked Drawer extension itself. Its caller must pass
+ # export_ir appends the checked Drawer and basement extensions. Pass
  # the original twelve-resource UI prefix, not the already extended output.
  recipe=bindings.read(bindings.IR);count=len(recipe['assets'])
  resources=baseline['resources']
- if len(resources)!=count+1:raise ValueError('Unexpected Items resource extension count')
+ if len(resources)!=count+2:raise ValueError('Unexpected Items resource extension count')
  prefix=resources[:count]
  if [r['path']for r in prefix]!=[r['output']for r in recipe['assets']]:raise ValueError('Items resource prefix changed')
  expected=copy.deepcopy(drawer_item.verify_receipt(ROOT)['resource'])
  expected['id']=max(r['id']for r in prefix)+1
- if resources[count:]!=[expected]:raise ValueError('Unexpected or stale Items extension resource')
+ before_bat=copy.deepcopy(baseline);before_bat['resources']=copy.deepcopy(prefix)+[expected]
+ before_bat['definitions']=before_bat['definitions'][:-1]
+ checked=basement_items.append_item(SimpleNamespace(root=ROOT),before_bat)['resources']
+ if resources!=checked:raise ValueError('Unexpected or stale Items extension resource')
  return copy.deepcopy(prefix)
 
 def fixtures(output):

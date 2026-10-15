@@ -134,11 +134,25 @@ void ownership(){
     check(!touch(a,false,0,0).confirm_pulse,"long menu drag never confirms");
     touch(a,true,100,100);r=touch(a,false,0,0,.1);const bool physical_a=true;check((physical_a||r.confirm_pulse)==true,"physical A and touch A combine as one boolean pulse");
 }
+void loading_resume(){
+    NativeDpad right{false,true,false,false};auto a=fresh();
+    axes(a.sample(1,0,0,right,false,0,0,.016),1,0,"D-pad admitted before background read");
+    check(a.resume_after_loading(1),"unchanged owner resumes after read");
+    axes(a.sample(1,0,0,right,false,0,0,.016),1,0,"held D-pad continues without release after background read");
+    a=fresh();axes(pad(a,156,0),1,0,"stick admitted before read");check(a.resume_after_loading(1),"stick owner retained");axes(pad(a,156,0),1,0,"held stick continues after read");
+    a=fresh();a.sample(2,0,0,right,false,0,0,.016);check(a.resume_after_loading(2),"existing owner remains recognized even when held device was quarantined");
+    axes(a.sample(2,0,0,right,false,0,0,.016),0,0,"read cannot clear an existing D-pad quarantine");a.sample(2,0,0,{},false,0,0,.016);axes(a.sample(2,0,0,right,false,0,0,.016),1,0,"release still re-arms after read");
+    a=fresh();pad(a,156,0);check(!a.resume_after_loading(3),"owner change during read takes full reset path");axes(pad(a,156,0,.016,3),0,0,"menu/scene owner cannot inherit held stick");pad(a,0,0,.016,3);axes(pad(a,156,0,.016,3),1,0,"new owner needs neutral before direction");
+    a=fresh();touch(a,true,100,100);check(a.resume_after_loading(1),"short touch owner unchanged");check(!touch(a,false,0,0).confirm_pulse,"finger lifted during read cannot confirm");
+    a=fresh();touch(a,true,100,100);touch(a,true,130,100);check(a.resume_after_loading(1),"drag owner unchanged");auto r=touch(a,true,130,100);check(!r.gesture.active&&r.source!=NativeInputSource::Touch,"held old drag stays cancelled until lift");check(!touch(a,false,0,0).confirm_pulse,"cancelled drag lift is neutral");touch(a,true,100,100);check(touch(a,false,0,0,.05).confirm_pulse,"fresh post-read tap still confirms");
+    a=fresh();check(!a.resume_after_loading(0),"disabled owner cannot preserve devices");axes(a.sample(0,0,0,right,false,0,0,.016),0,0,"disabled context remains neutral");
+    NativeInputAdapter unknown;check(!unknown.resume_after_loading(1),"unconfigured read resume fails closed");axes(unknown.sample(1,0,0,right,false,0,0,.016),0,0,"unconfigured input remains neutral");
+}
 }
 int main(int argc,char** argv){
     if(argc!=2)return 2;
     check(data.load_file(argv[1],error),error.c_str());if(!ok)return 1;
     FILE* file=std::fopen(argv[1],"rb");if(!file)return 2;std::vector<uint8_t> bytes(88);const size_t read=std::fread(bytes.data(),1,bytes.size(),file);std::fclose(file);if(read!=bytes.size())return 2;
-    parser(bytes);circle();gestures();ownership();
+    parser(bytes);circle();gestures();ownership();loading_resume();
     std::printf("Native stick/touch adapter: %u checks\n",checks);return ok?0:1;
 }

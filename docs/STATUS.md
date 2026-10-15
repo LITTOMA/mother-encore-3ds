@@ -53,6 +53,10 @@ Podunk 室外由 `world/podunk/podunk.encmap`、`world/podunk/podunk.encroom` �
 
 ## 验证
 
+2026-10-15：游戏源码 `44f1c0a` 的真实 3DSX / CIA 构建与 323 项包内资源核对通过。Azahar 独立冷启动重复验收通过：地下室连续移动 / 地图领取每次 19 检查点，人工测试存档明确预置钥匙；正常新游戏到 Lamp / Doll、11 经验 / 2 级及已学 PSI 每次 56 检查点，两条路线各运行两次且结果投影一致。另修复普通 Lamp 胜利未复制持续会话奖励，以及后台加载无条件隔离持续方向输入，见 [奖励交接](OPENING_REWARD_HANDOFF.md)、[加载后输入](LOADING_INPUT_CONTINUITY.md)。没有全游戏、PSI 实际施放、模拟器电话存档或真机验收声明。
+
+同源码完整 Clang 主机回归仍有 16 / 146 项失败，Linux sanitizer 未执行；记录时 GCC 完整作业尚在运行。针对性 MSVC / Windows Clang 检查与真实交叉构建成功不能替代完整回归。相关 PR 保持草稿；先修复其余回归，再补地下室日记、球棒、地图查看和后续剧情。
+
 手动完整 CI 检查 Linux 共享核心与数据工具，分别使用 GCC、Clang 运行主机测试和 ASan / UBSan，默认保留泄漏检查。另有 Ubuntu runner 任务恢复固定官方 SDK，执行真实 3DSX / CIA 构建与提取资源校验，成功后上传 Actions artifact；不创建发行版。具体结果以 [Actions](https://github.com/LITTOMA/mother-encore-3ds/actions) 中对应提交的检查为准；工作流配置本身不代表检查通过。
 
 主机测试、真实交叉构建、打包检查、模拟器和真机是不同验证层次。构建步骤见 [BUILD](BUILD.md)，复现与验证要求见 [TESTING](TESTING.md)。当前 Old / New 3DS 真机验收仍未完成，没有全游戏适配百分比或目标设备帧率保证。

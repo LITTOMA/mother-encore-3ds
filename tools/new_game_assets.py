@@ -278,8 +278,11 @@ def verify(r):
 def rebound_session_dependency(recipe,previous,current,current_sha):
  require(set(previous)==set(current),'Changed naming session field set')
  for key in previous:
-  if key not in ('key_acquisitions','mutable_flags','camera_area_ids','dependencies'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
- require(set(previous['mutable_flags'])<=set(current['mutable_flags']) and all(k in current['key_acquisitions'] for k in previous['key_acquisitions']),'Removed session acquisition/flag scope')
+  if key not in ('schema','key_acquisitions','mutable_flags','camera_area_ids','dependencies'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
+ require(previous['schema']==current['schema'] or (previous['schema'],current['schema'])==(6,7),'Unreviewed naming session schema migration')
+ prior_keys=[dict(k,flag_policy=k.get('flag_policy',1)) for k in previous['key_acquisitions']]
+ current_keys=[dict(k,flag_policy=k.get('flag_policy',1)) for k in current['key_acquisitions']]
+ require(set(previous['mutable_flags'])<=set(current['mutable_flags']) and all(k in current_keys for k in prior_keys),'Removed session acquisition/flag scope')
  require(set(previous['camera_area_ids'])<=set(current['camera_area_ids']),'Removed session camera scope')
  result=dict(recipe,dependencies=dict(recipe['dependencies']))
  c,_,_=load_presentation(ROOT);require(c['session_ir'] in result['dependencies'],'Missing source naming session binding')

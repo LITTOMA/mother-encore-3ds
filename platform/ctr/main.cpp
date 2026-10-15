@@ -614,10 +614,10 @@ public:
   e.clear();return true;
  }
 } house_keys;
-bool bind_house_presents(GameplayScene& scene,std::string& error){
+bool bind_house_presents(GameplayScene& scene,std::string& error,const std::vector<upstream::SessionFlag>&object_flags={}){
  if(!scene.house.bind_key_inventory(house_keys)){error=scene.house.error();return false;}
  if(!present_data.view().valid()&&!present_data.load_file(resource_path(ResourceRole::HousePresents).c_str(),error))return false;
- if(!scene.house.bind_presents(scene.presents,present_data.view(),present_effects)){error=scene.house.error();return false;}
+ if(!scene.house.bind_presents(scene.presents,present_data.view(),present_effects,object_flags)){error=scene.house.error();return false;}
  return true;
 }
 // Linked exterior field scenes. The House owner stays the only save/LOAD
@@ -911,6 +911,7 @@ bool collect_session_snapshot(upstream::SessionSnapshot&result,std::string&error
     auto state=session_state;const auto player=gameplay_scene->world.player();state.position_x=player.position.x;state.position_y=player.position.y;state.direction_x=player.direction.x;state.direction_y=player.direction.y;
     const auto room=opening_data.view();const auto& progress=progress_world?*progress_world:gameplay_scene->world;
     if(!progress.healthy()){error="Session progress owner is invalid";return false;}
+    state.object_flags=gameplay_scene->presents.object_flags();
     state.flags.clear();for(uint32_t i=0;i<room.flag_count();++i){const std::string id(room.string(room.flag(i).name_string));
         bool found=false;const auto source=progress.content();for(uint32_t j=0;j<source.flag_count();++j)if(source.string(source.flag(j).name_string)==id){found=true;break;}
         if(!found){error="Session progress flag is absent from active scene: "+id;return false;}
@@ -1061,7 +1062,7 @@ bool apply_loaded_slot(uint32_t slot,std::string&error){
     const LoadRngClockProvider clocks=[](LoadRngClockSample&sample,std::string&why){const auto unix_now=std::time(nullptr);if(unix_now<0){why="Clock unavailable for source LOAD entropy";return false;}const u64 ticks=svcGetSystemTick()-load_epoch_tick;sample.unix_seconds=uint64_t(unix_now);sample.ticks_usec=(ticks/SYSCLOCK_ARM11)*1000000+(ticks%SYSCLOCK_ARM11)*1000000/SYSCLOCK_ARM11;return true;};
     if(!loading.step([&]{return apply_load_uid_allocations(next_random,next_ledger,allocations,clocks,error);}))return false;
     if(!candidate->house.bind_drawer(drawer_program_data.view(),drawer_effects)||!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
-    if(!bind_house_presents(*candidate,error))return false;
+    if(!bind_house_presents(*candidate,error,prepared.state.object_flags))return false;
     bind_localized_house(candidate->presentation);
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);
@@ -1097,7 +1098,7 @@ bool commit_named_new_game(std::string&error){
     std::unique_ptr<GameplayScene>candidate;
     if(!loading.step([&]{return prepare_fresh_house(prepared,restore_data,opening_data.view(),house_data.view(),house_font_data.view(),phone_data.view(),random,{float(view_width),float(view_height)},candidate,error);}))return false;
     if(!candidate->house.bind_drawer(drawer_program_data.view(),drawer_effects)||!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
-    if(!bind_house_presents(*candidate,error))return false;
+    if(!bind_house_presents(*candidate,error,prepared.state.object_flags))return false;
     bind_localized_house(candidate->presentation);
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);candidate->presentation.set_text_value_callback(resolve_dialogue_value,&candidate->world);
@@ -1229,7 +1230,7 @@ bool enter_house_from_field(const upstream::WorldRoute& route,std::string& error
             prepare_session_restore(native_session_data,room,house_data.view(),round_data.view(),items_data.view(),house_font_data.view(),snapshot,prepared,error)&&
             prepare_fresh_house(prepared,restore_data,room,house_data.view(),house_font_data.view(),phone_data.view(),battle_random,{float(view_width),float(view_height)},candidate,error);},"house-scene"))return false;
     if(!candidate->house.bind_drawer(drawer_program_data.view(),drawer_effects)||!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
-    if(!bind_house_presents(*candidate,error))return false;
+    if(!bind_house_presents(*candidate,error,prepared.state.object_flags))return false;
     bind_localized_house(candidate->presentation);
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);candidate->presentation.set_text_value_callback(resolve_dialogue_value,&candidate->world);

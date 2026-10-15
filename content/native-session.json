@@ -1,5 +1,5 @@
 {
-  "schema": 6,
+  "schema": 7,
   "storage_capacity": 64,
   "storage_policies": [
     {
@@ -46,13 +46,22 @@
       "item_id": "DogTreats",
       "doses": 1,
       "flag_id": "got_dog_treats",
-      "consumed_flag_id": "gave_treats"
+      "consumed_flag_id": "gave_treats",
+      "flag_policy": 1
+    },
+    {
+      "item_id": "MapPodunk",
+      "doses": 1,
+      "flag_id": "Ninten's House/Present3",
+      "consumed_flag_id": "",
+      "flag_policy": 2
     },
     {
       "item_id": "KeyBasement",
       "doses": 1,
       "flag_id": "mick_telepathy",
-      "consumed_flag_id": ""
+      "consumed_flag_id": "",
+      "flag_policy": 1
     }
   ],
   "settings_choices": {
@@ -2448,13 +2457,13 @@
   },
   "dependencies": {
     "content/native-opening.json": "ea2609e9640067e5b869b9b52301f19b6e50ef0bba2ea42535802672f5a29663",
-    "content/native-house.json": "6e09958e3a96a2efbf5bf256cb2d1bb4d1c9fbb09e86bfd38273fde500e0e9b5",
+    "content/native-house.json": "66d501552ed52fd7d7286daa91dfebb48e81dedf143c4d4215d0fcb19994b30d",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
     "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
     "content/native-round.json": "3d45c807b18ef04464fc7ab3fec7f7f72f085cacfdd857b1c0b730d28f62d09a",
     "content/doll-round.json": "4082649ae68cffb2c3b6aaa84a0d2c054980d511ddb812189f061c847886e07d",
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
-    "content/house-presents.json": "44b5bd75a4c5594d4b99052de23bcf54b67771153356bbefa3d26c63d0187792",
+    "content/house-presents.json": "e0f56fcbfe7bbbdd68063b40d67e56856639d4ff80c074b26fd04b42b8b5a827",
     "content/mick-treats.json": "39fa7a9d84d2f54a824545026e1e4c390c4455c581db46f108c4922dd43d73be",
     "content/native-storage.json": "c4cb1436789597fe592bb50f6e807913e3747aa363adb24b5e7a2771a9f480e2"
   }

@@ -12,12 +12,14 @@ def append_house(ex, house, room=None):
     for path, sha in ir['sources'].items():
         ex.data(path)
         require(ex.sources[path] == sha, 'Present linking source mismatch: ' + path)
-    require(max(d['id'] for d in house['dialogues']) == FIRST_TEXT_ID - 1, 'Present stable text prefix changed')
-    known = {d['source_path'] for d in house['dialogues']}
-    require(all(t['source_path'] not in known for t in ir['texts']), 'Present source text already linked')
-    require([t['id'] for t in ir['texts']] == list(range(FIRST_TEXT_ID, FIRST_TEXT_ID + len(ir['texts']))), 'Present text IDs not contiguous')
+    groups = [g for g in ir['text_groups'] if g['after_id'] == max(d['id'] for d in house['dialogues'])]
+    require(len(groups) == 1, 'Present stable text prefix changed')
+    rows = [t for t in ir['texts'] if t['id'] in groups[0]['ids']]
+    known = {d['id'] for d in house['dialogues']}
+    require(all(t['id'] not in known for t in rows), 'Present source text already linked')
+    require([t['id'] for t in rows] == groups[0]['ids'], 'Present text IDs differ from admitted append group')
     out = copy.deepcopy(house)
-    for row in ir['texts']:
+    for row in rows:
         parts = text_segments(row['raw'])
         first = len(out['segments'])
         for i, tokens in enumerate(parts):

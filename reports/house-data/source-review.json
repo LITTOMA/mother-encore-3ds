@@ -155,7 +155,7 @@
   "dependencies": {
     "content/native-opening.json": "ea2609e9640067e5b869b9b52301f19b6e50ef0bba2ea42535802672f5a29663"
   },
-  "ir_sha256": "6e09958e3a96a2efbf5bf256cb2d1bb4d1c9fbb09e86bfd38273fde500e0e9b5",
+  "ir_sha256": "66d501552ed52fd7d7286daa91dfebb48e81dedf143c4d4215d0fcb19994b30d",
   "mechanisms": [
     "ancestor-scaled door shape and target minus (0,7)",
     "same scene preserves rewards and flags",

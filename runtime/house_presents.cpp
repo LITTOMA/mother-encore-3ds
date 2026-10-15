@@ -1,27 +1,41 @@
 #include "encore/house_presents.hpp"
 #include <algorithm>
 #include <cmath>
+#include <set>
 
 namespace encore::upstream {
 bool PresentRuntime::fail(std::string&e,const char*m){e=m;state_=PresentProgramState::Failed;return false;}
-bool PresentRuntime::initialize(PresentView view,PresentHost&host,std::string&e){
+bool PresentRuntime::initialize(PresentView view,PresentHost&host,std::string&e,const std::vector<SessionFlag>&object_flags){
     // Built as a candidate: a rejected binding keeps the current state.
     if(!view){e="Present runtime requires a checked pack";return false;}
     for(uint32_t i=0;i<view.count(PresentSection::Texts);++i){const auto t=view.text(i);if(!host.validate_text(t.dialogue_id,view.string(t.source_path),e))return false;}
     for(uint32_t i=0;i<view.count(PresentSection::Templates);++i){const auto t=view.item_template(i);if(!host.validate_item(t,view.string(t.item),e))return false;}
-    for(uint32_t i=0;i<view.count(PresentSection::Commands);++i){const auto c=view.command(i);
-        if((c.opcode==uint32_t(PresentOpcode::BranchFlag)||c.opcode==uint32_t(PresentOpcode::SetFlag))&&!host.validate_flag(view.string(c.a),e))return false;
-        if(c.opcode==uint32_t(PresentOpcode::PlaySound)&&!host.validate_sound(view.string(c.a),e))return false;}
+    for(uint32_t i=0;i<view.count(PresentSection::Objects);++i){const auto o=view.object(i);if(o.program==kPresentNone)continue;
+        const auto pr=view.program(o.program);
+        for(uint32_t j=0;j<pr.count;++j){const auto c=view.command(pr.first+j);
+            if(o.policy==uint32_t(PresentPolicy::Flag)&&(c.opcode==uint32_t(PresentOpcode::BranchFlag)||c.opcode==uint32_t(PresentOpcode::SetFlag))&&!host.validate_flag(view.string(c.a),e))return false;
+            if(c.opcode==uint32_t(PresentOpcode::PlaySound)&&!host.validate_sound(view.string(c.a),e))return false;}}
+    std::set<std::string>seen;
+    for(const auto&f:object_flags){bool known=false;
+        for(uint32_t i=0;i<view.count(PresentSection::Objects);++i){const auto o=view.object(i);known|=o.program!=kPresentNone&&o.policy==uint32_t(PresentPolicy::ObjectFlag)&&view.string(o.flag)==f.id;}
+        if(!known||!seen.insert(f.id).second){e="Unknown/duplicate present object flag";return false;}}
     const auto sp=view.sparkles();
     std::vector<Object>objects(view.count(PresentSection::Objects));
     for(uint32_t i=0;i<objects.size();++i){const auto o=view.object(i);auto&s=objects[i];
         if(!host.validate_sound(view.string(o.sound),e))return false;
         bool opened=false;
         if(o.policy==uint32_t(PresentPolicy::Flag)){if(!host.validate_flag(view.string(o.flag),e)||!host.flag(view.string(o.flag),opened,e))return false;}
+        else if(o.program!=kPresentNone){for(const auto&f:object_flags)if(view.string(o.flag)==f.id){opened=s.flag_value=f.value;s.flag_present=true;}}
         // Present._ready: an opened box shows its last frame and stops/hides Sparkles.
         s.frame=opened?4:0;s.sparkles_visible=s.sparkles_playing=!opened;
         s.sparkle_frame=std::min<uint32_t>(22,sp.order_count-1);s.sparkle_timeout=float(1.0/double(sp.fps));}
     *this=PresentRuntime{};objects_=std::move(objects);view_=view;host_=&host;e.clear();return true;
+}
+std::vector<SessionFlag> PresentRuntime::object_flags()const{
+    std::vector<SessionFlag>out;if(!view_)return out;
+    for(uint32_t i=0;i<objects_.size();++i){const auto o=view_.object(i);const auto&s=objects_[i];
+        if(o.policy==uint32_t(PresentPolicy::ObjectFlag)&&s.flag_present)out.push_back({std::string(view_.string(o.flag)),s.flag_value});}
+    return out;
 }
 bool PresentRuntime::scene_ready(SourceRandom&random,std::string&e){
     if(!view_||ready_)return fail(e,"Present scene ready out of order");
@@ -85,10 +99,10 @@ bool PresentRuntime::step(std::string&e){
         switch(PresentOpcode(c.opcode)){
         case PresentOpcode::ShowText:{const auto t=view_.text(c.a);if(!host_->show_text(t.dialogue_id,e))return rejected();++pc_;break;}
         case PresentOpcode::AwaitText:++pc_;state_=PresentProgramState::WaitingText;e.clear();return true;
-        case PresentOpcode::BranchFlag:{bool value=false;if(!host_->flag(view_.string(c.a),value,e))return rejected();pc_=value==(c.b!=0)?c.c:pc_+1;break;}
+        case PresentOpcode::BranchFlag:{bool value=false;if(o.policy==uint32_t(PresentPolicy::ObjectFlag))value=objects_[active_].flag_value;else if(!host_->flag(view_.string(c.a),value,e))return rejected();pc_=value==(c.b!=0)?c.c:pc_+1;break;}
         case PresentOpcode::GrantItem:{const auto t=view_.item_template(c.a);if(!host_->grant_item(t,view_.string(t.item),e))return rejected();++pc_;break;}
         case PresentOpcode::PlaySound:if(!host_->play_sound(view_.string(c.a),e))return rejected();++pc_;break;
-        case PresentOpcode::SetFlag:{const auto name=view_.string(c.a);if(!host_->set_flag(name,c.b!=0,e))return rejected();
+        case PresentOpcode::SetFlag:{const auto name=view_.string(c.a);if(o.policy==uint32_t(PresentPolicy::ObjectFlag)){objects_[active_].flag_value=c.b!=0;objects_[active_].flag_present=true;}else if(!host_->set_flag(name,c.b!=0,e))return rejected();
             // ItemHolder._update_state after _set_flag_status: an opened box stops/hides Sparkles.
             if(name==view_.string(o.flag)&&c.b){auto&s=objects_[active_];s.sparkles_visible=s.sparkles_playing=false;}
             ++pc_;break;}

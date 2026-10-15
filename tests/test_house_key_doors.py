@@ -20,12 +20,13 @@ class KeyDoorBindings(unittest.TestCase):
         self.assertEqual(rows[0]['localized'],{'en':"[@]It's locked.",'zh_Hans_CN':'[@]锁住了。'})
         self.assertEqual(rows[1]['localized'],{'en':'[@][PartyLead] used the Basement Key.','zh_Hans_CN':'[@][PartyLead]使用了地下室钥匙。'})
         prefix=copy.deepcopy(self.house)
-        prefix['dialogues']=prefix['dialogues'][:-2]
-        prefix['segments']=prefix['segments'][:-2]
+        prefix['dialogues']=[d for d in prefix['dialogues'] if d['id']<=72]
+        prefix['segments']=prefix['segments'][:next(d['first_segment'] for d in self.house['dialogues'] if d['id']==73)]
         result=append_house(Extractor(ROOT),prefix)
-        self.assertEqual(result['dialogues'],self.house['dialogues'])
-        self.assertEqual(result['segments'],self.house['segments'])
-        self.assertEqual(prefix['segments'],self.house['segments'][:-2])
+        self.assertEqual(result['dialogues'],[d for d in self.house['dialogues'] if d['id']<=74])
+        end=next(d['first_segment'] for d in self.house['dialogues'] if d['id']==75)
+        self.assertEqual(result['segments'],self.house['segments'][:end])
+        self.assertEqual(prefix['segments'],self.house['segments'][:next(d['first_segment'] for d in self.house['dialogues'] if d['id']==73)])
 
     def test_prompt_and_naming_dependency_reuse_rejects_semantic_changes(self):
         from tools import house_button_prompt_assets as prompts,new_game_assets as naming

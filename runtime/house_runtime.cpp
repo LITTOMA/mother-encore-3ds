@@ -315,7 +315,7 @@ bool HouseRuntime::bind_drawer(DrawerProgramView candidate,DrawerHost&effects){
  for(uint32_t i=0;i<candidate.count(DrawerSection::Templates);++i){const auto t=candidate.item_template(i);if(!effects.validate_item(t,candidate.string(t.source),error))return reject("Inspection programme grant is unbound");}
  drawer_=candidate;drawer_effects_=&effects;drawer_runtime_.reset();error_="";return true;
 }
-bool HouseRuntime::bind_presents(PresentRuntime&runtime,PresentView candidate,PresentEffects&effects){
+bool HouseRuntime::bind_presents(PresentRuntime&runtime,PresentView candidate,PresentEffects&effects,const std::vector<SessionFlag>&object_flags){
  auto reject=[&](const char*text){error_=text;return false;};
  if(!world_||!content_.valid()||!candidate.valid()||phase_!=HousePhase::Idle||story_pending()||presentation_->dialogue_active())return reject("House presents require an idle initialized scene");
  if(std::memcmp(candidate.reviewed_commit(),content_.bytes()+32,20))return reject("House present provenance does not match house pack");
@@ -323,8 +323,8 @@ bool HouseRuntime::bind_presents(PresentRuntime&runtime,PresentView candidate,Pr
  for(uint32_t i=0;i<candidate.count(PresentSection::Objects);++i){const auto path=std::string(candidate.string(candidate.object(i).path))+"/StaticBody2D";
   bool found=false;for(uint32_t b=0;b<room.body_rule_count();++b)found|=room.string(room.body_rule(b).source_path_string)==path;
   if(!found)return reject("House present collision body absent from room pack");}
- present_host_.owner=this;present_host_.effects=&effects;
- if(!runtime.initialize(candidate,present_host_,present_error_)){error_="House present binding rejected";return false;}
+ const auto previous_host=present_host_;present_host_.owner=this;present_host_.effects=&effects;
+ if(!runtime.initialize(candidate,present_host_,present_error_,object_flags)){present_host_=previous_host;error_="House present binding rejected";return false;}
  presents_=&runtime;error_="";return true;
 }
 bool HouseRuntime::PresentAdapter::validate_text(uint32_t id,std::string_view path,std::string&e){

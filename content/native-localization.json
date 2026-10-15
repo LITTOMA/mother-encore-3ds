@@ -1859,6 +1859,24 @@
       }
     },
     {
+      "key": "@native.present/75",
+      "source": "Data/Dialogue/ItemDialogue/presentcheck.yaml#DIALOGUE_ITEMDIALOGUE_PRESENTCHECK_0@MapPodunk",
+      "line": 75,
+      "values": {
+        "en": "[@][PartyLead] opened the present.",
+        "zh_Hans_CN": "[@][PartyLead]拆开了礼物盒。"
+      }
+    },
+    {
+      "key": "@native.present/76",
+      "source": "Data/Dialogue/ItemDialogue/presentcheck.yaml#DIALOGUE_ITEMDIALOGUE_PRESENTCHECK_1@MapPodunk",
+      "line": 76,
+      "values": {
+        "en": "[@][PartyLead] got the Podunk Map!",
+        "zh_Hans_CN": "[@][PartyLead]获得了波顿克地图！"
+      }
+    },
+    {
       "key": "ACTION_RESULT_FAIL_ANY",
       "source": "Translations/TranslatedText/menus - sheet.csv",
       "line": 372,
@@ -78312,6 +78330,18 @@
       "origin": "Data/Dialogue/Reusable/lockopened.yaml:0:checked native token projection"
     },
     {
+      "identity": "house.expected/137/1",
+      "key": "5/0:0:2/2/0:1/20: opened the present.",
+      "expected": "5/0:0:2/2/0:1/20: opened the present.",
+      "origin": "Data/Dialogue/ItemDialogue/presentcheck.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/138/1",
+      "key": "5/0:0:2/2/0:1/20: got the Podunk Map!",
+      "expected": "5/0:0:2/2/0:1/20: got the Podunk Map!",
+      "origin": "Data/Dialogue/ItemDialogue/presentcheck.yaml:1:checked native token projection"
+    },
+    {
       "identity": "house.expected/14/1",
       "key": "5/0:0:2/2/0:1/21: remembered the tune.",
       "expected": "5/0:0:2/2/0:1/21: remembered the tune.",
@@ -79072,6 +79102,18 @@
       "key": "@native.key-door/74",
       "expected": "[@][PartyLead] used the Basement Key.",
       "origin": "Data/Dialogue/Reusable/lockopened.yaml:0"
+    },
+    {
+      "identity": "house/137/1",
+      "key": "@native.present/75",
+      "expected": "[@][PartyLead] opened the present.",
+      "origin": "Data/Dialogue/ItemDialogue/presentcheck.yaml:0"
+    },
+    {
+      "identity": "house/138/1",
+      "key": "@native.present/76",
+      "expected": "[@][PartyLead] got the Podunk Map!",
+      "origin": "Data/Dialogue/ItemDialogue/presentcheck.yaml:1"
     },
     {
       "identity": "house/14/1",
@@ -79882,6 +79924,7 @@
     "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
     "Scripts/languages/KoreanHangul.gd": "91705af4d0be5ac288c5b0c110a4b2db2daa7437998498bc25cffb114b2b6bbf",
     "Data/Items/DogTreats.yaml": "0512818388242890d704214728e4603f90fa976571240f86361c2917c641d641",
+    "Data/Items/MapPodunk.yaml": "a0a9b41e46eef76044809dc698abc1afc1dab534b4dcb7e37563ea01e54afe43",
     "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
     "Data/Dialogue/Podunk/carol_panic.yaml": "e74b73f1ab2500ab77c8be31bbd51a8c8a385302542f62d9bc750dc0612fb2f9",
     "Data/Dialogue/Podunk/mimmie_doll_defeated.yaml": "24937777b12b6796ec2c3ce357a95b032575926ec836a097aa37b8620808ed03",
@@ -80615,6 +80658,22 @@
       "speaker_key": "",
       "source": "Data/Dialogue/Reusable/lockopened.yaml",
       "phrase": "0"
+    },
+    {
+      "first": 137,
+      "count": 1,
+      "key": "@native.present/75",
+      "speaker_key": "",
+      "source": "Data/Dialogue/ItemDialogue/presentcheck.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 138,
+      "count": 1,
+      "key": "@native.present/76",
+      "speaker_key": "",
+      "source": "Data/Dialogue/ItemDialogue/presentcheck.yaml",
+      "phrase": "1"
     }
   ],
   "battle_bindings": [

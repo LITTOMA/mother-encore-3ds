@@ -1,8 +1,8 @@
-# 房屋礼物盒（Present4 狗粮）
+# 房屋礼物盒（狗粮与地图）
 
 固定来源：Mother: Encore `7d9246600fffe518408f5830d4848635019005a3`，场景 `Maps/podunk/Nintens House.tscn`、实例 `Nodes/Overworld/Objects/Present.tscn`、`Scripts/Main/Present.gd` / `ItemHolder.gd` / `FlaggableObject.gd`、`Scripts/misc/sparkles.gd`。
 
-本切片在房屋内画出全部四个原版礼物盒，并接入 Present4 的狗粮领取。它不是完整礼物盒系统，也不包含 Mick 对话或南栅栏 `mick_bark`。
+在房屋内画出全部四个原版礼物盒，并接入 Present4 狗粮及 Present3 地图领取。地图的独立物件状态、会话版本和验证见 [地下室地图](BASEMENT_MAP_PRESENT.md)。它不是完整礼物盒系统，也不包含 Mick 对话或南栅栏 `mick_bark`。
 
 ## 可玩范围
 
@@ -22,7 +22,7 @@ Gift Box 音效经 `content/present-audio-binding.json` 并入既有 opening 音
 
 ## 明确边界
 
-- Present1（日记过场）、Present2（塑料球棒）、Present3（地图）只绘制，交互为明确开发边界。
+- Present1（日记过场）、Present2（塑料球棒）只绘制，交互为明确开发边界。地图查看界面尚未接入。
 - 礼物盒上的 ButtonPrompt、射线打到 StaticBody2D 时的 noproblem 提示未接入。
 - Mick 给粮、漫步与 `mick_bark` 推回见 [Mick](MICK_TREATS.md)。
 - 礼物盒贴图由 CI / `make 3dsx` 的 tex3ds 生成，不作为已审查二进制入库；没有 tex3ds 时不能 staging。

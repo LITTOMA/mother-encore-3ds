@@ -22,19 +22,36 @@ class HousePresentsTests(unittest.TestCase):
         self.assertEqual((ROOT / 'romfs' / PACK).read_bytes(), self.blob)
         rows = parse(self.blob)
         self.assertEqual(len(rows['Objects']) // 52, 4)
-        self.assertEqual(len(rows['Programs']) // 8, 1)
-        self.assertEqual([t['id'] for t in self.ir['texts']], list(range(FIRST_TEXT_ID, FIRST_TEXT_ID + 3)))
+        self.assertEqual(len(rows['Programs']) // 8, 2)
+        self.assertEqual([t['id'] for t in self.ir['texts']], [70,71,72,75,76])
         present4 = next(o for o in self.ir['objects'] if o['source_path'] == 'Objects/Present4')
         self.assertEqual(present4['item'], 'DogTreats')
         self.assertIsNotNone(present4['program'])
-        for path in ('Objects/Present1', 'Objects/Present2', 'Objects/Present3'):
+        for path in ('Objects/Present1', 'Objects/Present2'):
             self.assertIsNone(next(o for o in self.ir['objects'] if o['source_path'] == path)['program'])
 
     def test_missing_unknown_header_versions_rejected(self):
         for blob in (self.blob[:32], self.blob[:-1], self.change(self.blob, 8, 'I', 2),
-                     self.change(self.blob, 20, 'I', 2), self.change(self.blob, 24, 'I', 2)):
+                     self.change(self.blob, 20, 'I', 3), self.change(self.blob, 24, 'I', 2)):
             with self.subTest(size=len(blob)), self.assertRaises(ValueError):
                 parse(blob)
+
+    def test_map_capability_downgrade_and_foreign_flag_rejected(self):
+        with self.assertRaises(ValueError):parse(self.change(self.blob, 20, 'I', 1))
+        ir=copy.deepcopy(self.ir)
+        program=next(p for p in ir['programs'] if p['source_path']=='Objects/Present3')
+        next(c for c in program['commands'] if c['op']=='SetFlag')['a']='got_dog_treats'
+        with self.assertRaises(ValueError):encode(ir,self.house)
+        ir=copy.deepcopy(self.ir);next(o for o in ir['objects'] if o['source_path']=='Objects/Present3')['policy']=3
+        with self.assertRaises(ValueError):encode(ir,self.house)
+
+    def test_map_source_identity_and_localized_text(self):
+        obj=next(o for o in self.ir['objects'] if o['source_path']=='Objects/Present3')
+        self.assertEqual((obj['item'],obj['policy'],obj['flag']),('MapPodunk',2,"Ninten's House/Present3"))
+        self.assertIsNotNone(obj['program'])
+        for t in self.ir['texts']:
+            if t['item']=='MapPodunk':
+                self.assertNotIn('[ItemName]',t['raw']);self.assertIn('en',t['localized']);self.assertIn('zh_Hans_CN',t['localized'])
 
     def test_crc_and_unknown_opcode_rejected(self):
         bad = bytearray(self.blob)

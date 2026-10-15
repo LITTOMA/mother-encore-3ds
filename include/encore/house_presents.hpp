@@ -1,6 +1,7 @@
 #pragma once
 #include "encore/present_data.hpp"
 #include "encore/source_random.hpp"
+#include "encore/session_save.hpp"
 #include <string>
 #include <string_view>
 #include <vector>
@@ -41,9 +42,11 @@ enum class PresentProgramState:uint8_t {Idle,WaitingText,Complete,Failed};
 
 class PresentRuntime {
 public:
-    // Opened state comes from the source flag (object flags are never set in
-    // the supported session scope). Consumes no RNG.
-    bool initialize(PresentView,PresentHost&,std::string&);
+    // Opened state comes from source story flags or checked saved object flags.
+    // Consumes no RNG; rejected bindings preserve the previous runtime.
+    bool initialize(PresentView,PresentHost&,std::string&,const std::vector<SessionFlag>& object_flags={});
+    // Only admitted source object identities are exposed; missing means false.
+    std::vector<SessionFlag> object_flags()const;
     // Each Sparkles _ready: frame = int(rand_range(0, 47)) in scene tree order.
     bool scene_ready(SourceRandom&,std::string&);
     bool ready()const{return ready_;}
@@ -61,7 +64,7 @@ public:
     bool continues()const;
     PresentView view()const{return view_;}
 private:
-    struct Object {bool sparkles_visible=true,sparkles_playing=true;uint32_t frame=0,sparkle_frame=0;float sparkle_timeout=0;
+    struct Object {bool sparkles_visible=true,sparkles_playing=true,flag_value=false,flag_present=false;uint32_t frame=0,sparkle_frame=0;float sparkle_timeout=0;
         uint32_t clip=kPresentNone;float clip_time=0;bool clip_started=false;};
     bool step(std::string&);bool fail(std::string&,const char*);
     void play_clip(uint32_t object,uint32_t clip);

@@ -44,7 +44,7 @@ public:
  void bind_choices(const DialogueChoicesData&data,DialogueChoices&model){choices_data_=&data;choices_=&model;}
  // Present text and flags are owned here; effects own key-item grants and audio.
  // Transactional: a rejected pack keeps the previous binding. Bind before scene ready.
- bool bind_presents(PresentRuntime&,PresentView,PresentEffects&);
+ bool bind_presents(PresentRuntime&,PresentView,PresentEffects&,const std::vector<SessionFlag>& object_flags={});
  bool present_interaction_supported(uint32_t i)const{return presents_&&presents_->supported(i);}
  // Boundaries of kind UnsupportedScene whose source door has a reviewed route
  // become cross-scene doors; every other boundary keeps the development stop.

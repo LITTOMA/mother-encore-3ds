@@ -58,3 +58,5 @@ Podunk 室外由 `world/podunk/podunk.encmap`、`world/podunk/podunk.encroom` �
 主机测试、真实交叉构建、打包检查、模拟器和真机是不同验证层次。构建步骤见 [BUILD](BUILD.md)，复现与验证要求见 [TESTING](TESTING.md)。当前 Old / New 3DS 真机验收仍未完成，没有全游戏适配百分比或目标设备帧率保证。
 
 后续顺序见 [开发计划](DEVELOPMENT_PLAN.md)。
+
+2026-10-15：修复院子世界原点附近无碰撞区块仍扫描大量装饰格子的性能退化，见 [碰撞性能](PODUNK_COLLISION_PERFORMANCE.md)。保留全部碰撞形状、顺序、条件和窄相规则；主机逐项对照 220,251 项断言，GCC/Clang 针对性普通及 ASan/UBSan 检查通过。游戏 53765f5 真实 3DSX/CIA 与 323 项资源检查通过，两次隔离冷启动在原先 1–2 FPS 的位置测得 59.4–60.5 FPS，临时 profile 已清理。全量检查仍因主线既有 Drawer 图标重复追加夹具失败，不能称为全量通过；人工出口存档、CIA 安装和真机限制见专项记录。

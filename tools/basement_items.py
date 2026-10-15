@@ -5,7 +5,7 @@ This adapter admits two source items, not arbitrary item YAML or scripts.
 The checked resources are consumed by the ordinary inventory and room core.
 """
 from __future__ import annotations
-import argparse, copy, subprocess, sys
+import argparse, copy, subprocess, sys, tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
@@ -33,7 +33,11 @@ def build(root=ROOT):
     for role,source,output,grid in ASSETS:
         size=ex.png_size(source);ex.data(source+'.import')
         require(all(s%g==0 for s,g in zip(size,grid)),'Basement sprite grid mismatch')
-        assets.append(dict(role=role,source=source,output=output,size=size,grid=grid))
+        if role=='special':
+            require(size==[1280,640] and grid==[20,10],'Special sprite source geometry changed')
+            assets.append(dict(role=role,source=source,output=output,source_size=size,source_grid=grid,
+                size=[512,448],grid=[8,7],frames=list(range(15,68))))
+        else:assets.append(dict(role=role,source=source,output=output,size=size,grid=grid))
     require(assets[0]['size']==[20,20],'Bat icon geometry changed')
     return dict(schema=1,kind='encore.basement-items.source-ir',commit=PIN,sources=ex.sources,
         bat=bat,diary=diary,translations=translations,assets=assets,
@@ -86,7 +90,19 @@ def main():
         require(a.tex3ds is not None,'Genuine tex3ds is required');ir=load();outputs={}
         for asset in ir['assets']:
             dest=ROOT/'romfs'/asset['output'];dest.parent.mkdir(parents=True,exist_ok=True)
-            subprocess.run([str(a.tex3ds),'-f','rgba8','-z','none','-o',str(dest),str(ROOT/'upstream/MOTHER-Encore'/asset['source'])],check=True)
+            source=ROOT/'upstream/MOTHER-Encore'/asset['source']
+            if 'frames' in asset:
+                from PIL import Image
+                scratch=ROOT/'build/basement-assets';scratch.mkdir(parents=True,exist_ok=True)
+                with tempfile.TemporaryDirectory(prefix='sprite-',dir=scratch) as td:
+                    with Image.open(source) as image:
+                        atlas=Image.new('RGBA',asset['size'])
+                        for i,frame in enumerate(asset['frames']):
+                            x,y=frame%20*64,frame//20*64
+                            atlas.paste(image.crop((x,y,x+64,y+64)),(i%8*64,i//8*64))
+                    png=Path(td)/'special.png';atlas.save(png)
+                    subprocess.run([str(a.tex3ds),'-f','rgba8','-z','none','-o',str(dest),str(png)],check=True)
+            else:subprocess.run([str(a.tex3ds),'-f','rgba8','-z','none','-o',str(dest),str(source)],check=True)
             outputs[asset['output']]=dict(bytes=dest.stat().st_size,sha256=digest(dest))
         write_json(ROOT/RECEIPT,dict(schema=1,commit=PIN,ir_sha256=digest(ROOT/IR),producer_sha256=digest(ROOT/'tools/basement_items.py'),
             tex3ds_sha256=digest(a.tex3ds),assets=ir['assets'],outputs=outputs))

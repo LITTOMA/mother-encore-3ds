@@ -20,7 +20,7 @@
       "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99"
     }
   },
-  "catalog_sha256": "a941496dc03b231c15b1cc4385d1de7d7b9401de1f008785d6697d9a35752f57",
+  "catalog_sha256": "9b9048adbdaa3bf94f62c94211c88193c825885c253d3260ff747af6957e6898",
   "generator_sha256": "a8b56baa0d7af4f65d6f293fca08117e4ff18840ce9d7aaf9671447e5523cb81",
   "godot_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
@@ -53910,5 +53910,12 @@
     "sha256": "435951883d481167b1f5ae0367646939f88d039db70b92ce732c6b9943da07c9",
     "bytes": 148979
   },
-  "limits": "EBMain role only; no new fonts or invented glyph replacements. Native Godot 3.6.2 advances checked for every included glyph; baseline from native ascent. Glyph pixels are Pillow/FreeType rasters; no rendered Godot/GPU pixel or hardware comparison claimed. Missing source glyphs are not encoded and reject at lookup. All assets remain game-related derivatives, not MIT-relicensed."
+  "limits": "EBMain role only; no new fonts or invented glyph replacements. Native Godot 3.6.2 advances checked for every included glyph; baseline from native ascent. Glyph pixels are Pillow/FreeType rasters; no rendered Godot/GPU pixel or hardware comparison claimed. Missing source glyphs are not encoded and reject at lookup. All assets remain game-related derivatives, not MIT-relicensed.",
+  "catalogue_reuse": {
+    "baseline_commit": "76012723a53ebd06d6cdbc5c93b43188d693ce62",
+    "baseline_catalogue_sha256": "053d9bcc894eabda8457deaee5ebe310479f2baef7f653c0bc4b54632a6040c3",
+    "required_glyph_sets_equal": true,
+    "retained_original_atlas_priority": true,
+    "admission_tool_sha256": "e7c9afedd753c20b9b650322e8f50c9cd85b9f8e10d41b6a4cd9e99a8ed7fed4"
+  }
 }

@@ -94,6 +94,7 @@ public:
     // A against Mick's live interact rectangle while walking. The matching spoken tree starts.
     bool try_mick(bool accept,std::string& error);
     bool mick_contact()const;
+    bool try_telepathy(Vec2 source_ray_offset,float source_ray_length,std::string& error);
     FieldPhase phase()const{return phase_;}
     const std::string& error()const{return error_;}
     bool blocks_player()const{return phase_!=FieldPhase::Walking;}

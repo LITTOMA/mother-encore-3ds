@@ -22,7 +22,15 @@ class StorageFormat(unittest.TestCase):
         with self.assertRaises((ValueError,TypeError,struct.error,OverflowError)):pack.encode(t)
     def changed_blob(self,offset,data):
         b=bytearray(self.blob);b[offset:offset+len(data)]=data;b[16:20]=b'\0'*4;struct.pack_into('<I',b,16,zlib.crc32(b)&0xffffffff);return b
-    def test_positive_round_trip(self):self.assertEqual(pack.parse_pack(self.blob),self.tables)
+    def test_positive_round_trip(self):
+        # The wire schema uses IEEE float32. Compare every decoded field to
+        # that exact representation, then require byte-identical re-encoding.
+        expected = {'Strings': self.tables['Strings']}
+        for name, fmt in zip(pack.NAMES[1:], pack.FORMATS[1:]):
+            expected[name] = [list(struct.unpack(fmt, struct.pack(fmt, *r))) for r in self.tables[name]]
+        decoded = pack.parse_pack(self.blob)
+        self.assertEqual(decoded, expected)
+        self.assertEqual(pack.encode(decoded), self.blob)
     def test_pinned_source_ir(self):self.assertEqual(load(ROOT),build(ROOT))
     def test_source_unknown_field(self):
         ir=copy.deepcopy(self.ir);ir['unknown']=True
@@ -50,7 +58,11 @@ class StorageFormat(unittest.TestCase):
         with self.assertRaises(ValueError):pack.parse_pack(self.changed_blob(64+16+4,struct.pack('<I',pack.HEADER)))
     def test_trailing_bytes(self):
         with self.assertRaises(ValueError):pack.parse_pack(self.blob+b'\0')
-    def test_bad_string_reference(self):self.reject_table('Policies',0,1,1)
+    def test_bad_string_reference(self):
+        pool = self.tables['Strings']
+        interior = next(i for i in range(1, len(pool)) if pool[i-1] != 0)
+        for offset in (interior, len(pool), 0xffffffff):
+            with self.subTest(offset=offset): self.reject_table('Policies',0,1,offset)
     def test_invalid_utf8(self):
         t=copy.deepcopy(self.tables);t['Strings']=b'\0\xff\0'
         with self.assertRaises(ValueError):pack.encode(t)

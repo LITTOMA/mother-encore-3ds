@@ -1,6 +1,6 @@
 # Mick（院子 npc21）
 
-固定来源：Mother: Encore `7d9246600fffe518408f5830d4848635019005a3`，场景 `Maps/podunk/podunk.tscn` 实例 `Objects/NPCS/npc21`、`Nodes/Reusables/npc.tscn`、`Scripts/Main/npc.gd`、`Scripts/Main/actor.gd`、`Data/Animations/4dir.yaml`、`Graphics/Character Sprites/Npcs/4dir/mick.png`，以及 `Data/Dialogue/Podunk/` 下的 `woof.yaml`、`woof_secret.yaml`、`woof_deal.yaml`、`woof_treats.yaml`、`woof_animals.yaml` 和 `cutscenes/mick_bark.yaml`。
+固定来源：Mother: Encore `7d9246600fffe518408f5830d4848635019005a3`，场景 `Maps/podunk/podunk.tscn` 实例 `Objects/NPCS/npc21`、`Nodes/Reusables/npc.tscn`、`Scripts/Main/npc.gd`、`Scripts/Main/actor.gd`、`Data/Animations/4dir.yaml`、`Graphics/Character Sprites/Npcs/4dir/mick.png`，以及 `Data/Dialogue/Podunk/` 下的 `woof.yaml`、`woof_secret.yaml`、`woof_deal.yaml`、`woof_treats.yaml`、`woof_animals.yaml`、`woof_food.yaml`、`woof_key.yaml` 和 `cutscenes/mick_bark.yaml`。
 
 本切片让院子里的 Mick 按已审查的漫步、凝视和口语句走路并对话，并用南栅栏 `mick_bark` 在给粮前把玩家往北推回。它不是完整 NPC 系统，也不生成其它 NPC 或野外敌人。
 
@@ -19,12 +19,12 @@
 
 `content/mick-treats.json` 为来源 IR；`tools/mick_treats.py` 编译 `world/podunk/podunk.encmick`（ENCMIK01，演员记录 200 字节，九个段）。贴图由真实 `tex3ds` 生成到 `graphics/world/mick/mick.t3x`。
 
-资源目录能力 4 的 MickTreats 角色仍指向该包。`gave_treats` 与 `mick_scratch` 进入会话 `mutable_flags`。钥匙获取策略仍是 DogTreats 绑定 `consumed_flag_id=gave_treats`。
+资源目录能力 4 的 MickTreats 角色仍指向该包。`gave_treats` 与 `mick_scratch` 进入会话 `mutable_flags`。增加 mick_telepathy 可变旗标及 KeyBasement 获取策略；DogTreats 仍绑定 `consumed_flag_id=gave_treats`。
 
 ## 明确边界
 
-- `woof_food` / `woof_key` 心灵感应树未接入，因此 `mick_telepathy` 不会被本切片设置。`talkeremote: heart` 被识别但不显示。ButtonPrompt 只画静态可见姿态，不播放原版出现、浮动、隐藏和按下动画。
-- 汪汪与呜咽只计数，不播放。对话框沿用房屋 `DialogueBox` 的九宫格、字体和选项箭头；野外保留这套贴图。`showbox: false` 的推回句会先关上对话框。
+- PSI 心灵感应已接入 woof_food / woof_key、获得钥匙音效、KeyBasement 真实 UID 与 mick_telepathy；节目和指令能力升为 2，格式 / 原九段布局不变。详见 [野外 PSI](FIELD_PSI.md)。原版读心 focus 效果与其它 NPC 思绪仍未接入。`talkeremote: heart` 被识别但不显示。ButtonPrompt 只画静态可见姿态，不播放原版出现、浮动、隐藏和按下动画。
+- 汪汪与呜咽使用既有受检音频 bank；可听性仍待设备验收。对话框沿用房屋 `DialogueBox` 的九宫格、字体和选项箭头；野外保留这套贴图。`showbox: false` 的推回句会先关上对话框。
 - 漫步探路用脚底盒的 `StaticMotionSolver`，不是 `RayCast2D`。鸟离开屏幕后的再次 `_ready` 重抽不在首次重叠账本里。其它 `wander=true` 的 NPC 只贡献进场 `rand_range`，自己不走路、不说话。
 - 其余 Podunk NPC、音乐区和野外敌人仍是下一步。Mick 贴图由 CI / `make 3dsx` 的 tex3ds 生成，不作为已审查二进制入库。
 

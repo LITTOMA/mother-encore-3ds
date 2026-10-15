@@ -1,8 +1,8 @@
 // Shared-core acceptance test; actual supported original packs and consumers.
 // No renderer, emulator, hardware, or independently playable desktop product.
 // Runs original Introduction consumers before the checked FreshHouse boundary.
-// Postwin NPC/phone positioning uses explicit public warp shortcuts; the House
-// route to Doll uses actual movement, door callbacks, dialogue and source script.
+// Postwin Doll melody -> hallway -> Carol -> phone uses physical movement,
+// original door callbacks, dialogue and source scripts.
 #include "encore/battle_outcome.hpp"
 #include "encore/battle_entry.hpp"
 #include "encore/continue_menu.hpp"
@@ -45,7 +45,7 @@ void lamp_to_doll_entry(FreshHouseState&fresh,HouseView house,SourceRandom&rando
   if(l.role==uint32_t(BattleRole::PartyPlate)&&l.kind==uint32_t(BattleDrawKind::NinePatch))check(p.set_plate_base(pose.rect),"plate pose");
  }
  WorldBattleHost host;host.bind(p,world,r);BattleRound round;BattleOutcome outcome;
- check(outcome.initialize(r,room,&live),outcome.error());check(round.begin(r,entry,random,host,&live),round.error());
+ check(outcome.initialize(r,room,&live),outcome.error());check(!outcome.committed_state(),"No unearned live rewards at encounter initialization");check(round.begin(r,entry,random,host,&live),round.error());
  unsigned lamp_turns=0;
  while(round.phase()!=BattleRoundPhase::VictoryPending&&lamp_turns++<16){
   check(round.phase()==BattleRoundPhase::Commands,"Actual conscious party resumes Lamp commands");
@@ -66,13 +66,13 @@ void lamp_to_doll_entry(FreshHouseState&fresh,HouseView house,SourceRandom&rando
   check(outcome.idle_frame(),outcome.error());
  };
  for(unsigned n=0;n<600&&outcome.phase()!=BattleOutcomePhase::ExperienceDialogue;++n)frame();
- check(outcome.phase()==BattleOutcomePhase::ExperienceDialogue,"native banner leads to XP text");
+ check(outcome.phase()==BattleOutcomePhase::ExperienceDialogue,"native banner leads to XP text");check(!outcome.committed_state(),"Unacknowledged XP cannot publish a live session");
  for(unsigned n=0;n<180;++n)frame();
  check(p.dialogue().finished()&&!p.dialogue().done(),"XP text requires manual acknowledgment");
  check(outcome.state().experience==0&&outcome.state().bank==0&&!world.story_flag(world.battle_request().win_flag),"waiting leaves all rewards untouched");
  check(world.player().position.x==original.x&&world.player().position.y==original.y,"input blocked throughout victory wait");
  p.input(false,true);check(outcome.idle_frame(),outcome.error());
- check(outcome.phase()==BattleOutcomePhase::Returning,"actual cancel input acknowledges finished source text");
+ check(outcome.phase()==BattleOutcomePhase::Returning,"actual cancel input acknowledges finished source text");check(!outcome.committed_state(),"Return animation is not a completed live transaction");
  check(world.area_music_resource()==area_music,"Ordinary Lamp return preserves owned area music");
  for(const auto&request:world.audio_requests())check(request.kind!=AudioRequestKind::StopMusicResource,"Lamp return does not issue boss-only area cleanup");
  check(outcome.state().experience==3&&outcome.state().level==1&&outcome.state().bank==5&&outcome.state().earned_cash==5&&outcome.state().cash==0,"source rewards values");
@@ -215,7 +215,7 @@ void lamp_to_doll_entry(FreshHouseState&fresh,HouseView house,SourceRandom&rando
  check(sister_normal.physics_tick-sister_moved.physics_tick==2&&sister_requested.physics_tick-sister_normal.physics_tick==1,"native warp-to-openable-exit two physics callbacks and next-idle story request");
  check(sister_moved.idle_frame-sister_paused.idle_frame==41&&native_exit_frame==43&&sister_requested.idle_frame-sister_paused.idle_frame==44&&sister_done.idle_frame-sister_paused.idle_frame==57,"official Godot sister warp/body-exit/request/done timings +41/+43/+44/+57");
  std::cout<<"Source-aligned sister frames: warp=41 openable_exit="<<native_exit_frame<<" request=44 done=57\n";
- BattleData doll_entry;const auto doll_path=std::filesystem::path(argv[2]).parent_path()/"doll-entry.encbattle";
+ BattleData doll_entry;const auto doll_path=std::filesystem::path(argv[2]).parent_path().parent_path()/"doll"/"doll-entry.encbattle";
  check(doll_entry.load_file(doll_path.string().c_str(),error),error.c_str());const auto dv=doll_entry.view();BattleEntry entry_runtime;
  const auto native=dv.parameter(BattleParameter::CanvasSize);const auto center=world.cutscene_camera().center();const auto enemy=world.actor(world.battle_request().actor_index);
  BattleEntrySnapshot snap{{world.player().position.x-center.x+native.x/2,world.player().position.y-center.y+native.y/2},{enemy.position.x-center.x+native.x/2,enemy.position.y-center.y+native.y/2},world.cutscene_camera().is_shaking(),enemy.frame,0,enemy.sprite_offset};
@@ -228,7 +228,8 @@ void lamp_to_doll_entry(FreshHouseState&fresh,HouseView house,SourceRandom&rando
  for(uint32_t i=0;i<dv.count(BattleSection::Layouts);++i){auto l=dv.layout(i);if(l.role!=uint32_t(BattleRole::PartyHP)&&l.role!=uint32_t(BattleRole::PartyPP))continue;auto pose=entry_runtime.pose(i);const auto value=l.role==uint32_t(BattleRole::PartyHP)?snap.party_hp:snap.party_pp;const uint32_t divisor=l.binding==0?100:l.binding==1?10:1;check(pose.frame==(uint32_t(value)/divisor%10)*dv.resource(l.resource).columns,"retained HP/PP uses source digit row and transition-column stride");check(pose.visible==(l.binding!=0||uint32_t(value)>=100),"source plate only suppresses leading hundreds");}
  check(dv.participant(1).maxhp==38&&dv.participant(1).offense==4&&dv.participant(1).defense==9,"source Doll entry stats independent from Lamp");
  check(!world.story_flag("doll_defeated")&&!world.story_flag("doll_melody"),"entry alone does not grant victory");
- live=outcome.state();
+ check(outcome.committed_state(),"Ordinary Lamp completion publishes its earned live session");
+ live=*outcome.committed_state();check(live.experience==3&&live.bank==5,"Lamp live handoff retains source XP and currency for Doll");
  std::cout<<"Actual Lamp victory and House route to Doll entry passed\n";
 
 }
@@ -244,8 +245,14 @@ struct HouseDriver {
  bool idle()const{return scene.world.stage()==OpeningStage::Walking&&scene.house.phase()==HousePhase::Idle&&!scene.house.story_executing()&&!scene.presentation.dialogue_active();}
  void auto_step(){auto&p=scene.presentation;step({},p.dialogue_active()&&!p.dialogue_closing()&&(p.dialogue_stopped()||p.dialogue_finished()));}
  void finish(){for(unsigned n=0;n<12000&&!idle();++n)auto_step();if(!idle())std::cerr<<"House stalled stage="<<int(scene.world.stage())<<" phrase="<<scene.world.phrase()<<" house="<<int(scene.house.phase())<<"\n";check(idle(),"Actual dialogue/program returns to walking");}
- void interact_npc(HouseView house,std::string_view path){uint32_t index=house_no_index;for(uint32_t i=0;i<house.count(HouseSection::Npcs);++i)if(house.string(house.npc(i).source_path)==path)index=i;check(index!=house_no_index,"Source NPC exists");const auto point=scene.presentation.npc_pose(index).position;check(scene.world.warp_same_scene({point.x,point.y+27},{0,-1}),scene.world.error());check(scene.house.after_physics(),scene.house.error());step({},true);for(unsigned n=0;n<16&&!scene.presentation.dialogue_active();++n)step();check(scene.presentation.dialogue_active(),"Real NPC interaction opens dialogue");}
- void interact_phone(PhoneView phone){const auto point=phone.object(0).interact_center;check(scene.world.warp_same_scene({point.x,point.y+21},{0,-1}),scene.world.error());check(scene.house.after_physics(),scene.house.error());step({},true);for(unsigned n=0;n<16&&!scene.presentation.dialogue_active();++n)step();check(scene.presentation.dialogue_active()&&scene.house.story_executing(),"Actual phone dispatch opens source program");}
+ void walk_axis(float target,bool horizontal){
+  for(unsigned n=0;n<4000;++n){const auto p=scene.world.player().position;const auto value=horizontal?p.x:p.y;if(std::abs(value-target)<=1)return;WalkInput in;if(horizontal)in.x=value<target?1:-1;else in.y=value<target?1:-1;step(in);}
+  const auto p=scene.world.player().position;std::cerr<<"Physical route stalled at "<<p.x<<","<<p.y<<" target "<<target<<"\n";check(false,"Physical route reaches source interaction");
+ }
+ void cross_door(WalkInput input,uint32_t expected){const auto begin=scene.house.events().size();bool done=false;for(unsigned n=0;n<600&&!done;++n){step(scene.house.blocks_player()?WalkInput{}:input);for(size_t i=begin;i<scene.house.events().size();++i){const auto&e=scene.house.events()[i];if(e.kind==HouseEventKind::DoorDone){check(e.object==expected,"Physical route uses expected original door");done=true;}}}check(done,"Physical route completes door transition");settle_door();}
+ void settle_door(){for(unsigned n=0;n<600&&scene.house.phase()!=HousePhase::Idle;++n)step();check(scene.house.phase()==HousePhase::Idle,"physical door route resumes input");}
+void interact_npc(HouseView house,std::string_view path){uint32_t index=house_no_index;for(uint32_t i=0;i<house.count(HouseSection::Npcs);++i)if(house.string(house.npc(i).source_path)==path)index=i;check(index!=house_no_index,"Source NPC exists");if(path=="Objects/npcdoll"){walk_axis(105,false);walk_axis(62,true);walk_axis(40,false);step({-1,0});}else{walk_axis(62,true);walk_axis(105,false);walk_axis(128,true);walk_axis(369,false);settle_door();walk_axis(200,true);walk_axis(410,false);cross_door({-1,0},2);walk_axis(752,false);walk_axis(192,true);walk_axis(732,false);step({0,-1});}step({},true);for(unsigned n=0;n<16&&!scene.presentation.dialogue_active();++n)step();check(scene.presentation.dialogue_active(),"Real NPC interaction opens dialogue");}
+ void interact_phone(PhoneView phone){const auto point=phone.object(0).interact_center;walk_axis(point.x,true);walk_axis(point.y+21,false);step({0,-1});step({},true);for(unsigned n=0;n<16&&!scene.presentation.dialogue_active();++n)step();check(scene.presentation.dialogue_active()&&scene.house.story_executing(),"Actual phone dispatch opens source program");}
 };
 void complete_chain(const std::string&root,const NativeSessionData&session,const RestoreData&restore,const RoomData&room,const HouseData&house,const BattleData&font,const PhoneData&phone,const BattleRoundData&rounddata,const ItemData&items,const ContinueMenuData&title,const SaveMenuData&save,PreparedSessionRestore&saved,SourceRandom&random,std::vector<uint32_t>&ledger,const LoadRngClockProvider&clock,std::unique_ptr<FreshHouseState>&fresh,std::string&error){
  auto&world=fresh->world;auto*original_owner=fresh.get();const auto r=rounddata.view();BattleData entry;check(entry.load_file((root+"/battle/doll/doll-entry.encbattle").c_str(),error),error.c_str());const auto e=entry.view();
@@ -255,11 +262,22 @@ void complete_chain(const std::string&root,const NativeSessionData&session,const
  check(round.phase()==BattleRoundPhase::VictoryPending,"Actual Doll round wins through actions and boss callback");check(!world.story_flag("doll_defeated"),"Victory cannot bypass source postwin");
  BattleOutcome outcome;check(outcome.initialize(r,room.view(),&saved.stats),outcome.error());check(outcome.begin(round,p,world),outcome.error());
  auto frame=[&]{check(world.advance({})&&world.idle_frame(tick),world.error());check(p.physics_frame(tick)&&p.idle_frame(tick),p.error());for(auto kind:p.take_return_events()){if(kind==RoundEventKind::HideBattleBackground)check(world.resume_battle_camera(),world.error());if(kind==RoundEventKind::JumpPartyToWorld){auto c=world.cutscene_camera().center();check(p.begin_party_return({world.player().position.x-c.x+200,world.player().position.y-c.y+120},{80,60}),p.error());}if(kind==RoundEventKind::PartyReturnLanded){auto turn=r.parameter(RoundParameter::ReturnPartyTurn);check(world.land_battle_player({turn.x,turn.y},uint16_t(r.parameter(RoundParameter::ReturnPartyFrames).y)),world.error());}if(kind==RoundEventKind::RotatePartyOriginal)check(world.rotate_battle_player(r.parameter(RoundParameter::ReturnPartyTurn).z),world.error());}if((outcome.phase()==BattleOutcomePhase::ExperienceDialogue||outcome.phase()==BattleOutcomePhase::LevelDialogue)&&p.dialogue().finished()&&!p.dialogue().done())p.input(true,false);check(outcome.idle_frame(),outcome.error());};
- for(unsigned n=0;n<16000&&outcome.phase()!=BattleOutcomePhase::PostWinRequested;++n)frame();check(outcome.phase()==BattleOutcomePhase::PostWinRequested,"Acknowledged actual rewards return through world transition");saved.stats=outcome.state();check(saved.stats.experience==11&&saved.stats.bank==15&&saved.stats.level==2,"Two original victory rewards retained");check(outcome.advance_post_win(),outcome.error());
- for(unsigned n=0;n<12000&&outcome.phase()==BattleOutcomePhase::PostWinRequested;++n){drive.auto_step();check(outcome.advance_post_win(),outcome.error());}check(outcome.phase()==BattleOutcomePhase::Complete,"Actual eight-phrase Doll postwin completes");drive.finish();check(world.story_flag("doll_defeated")&&world.story_flag("pillow_attack")&&!world.story_flag("doll_melody"),"Source postwin earns only its own flags");
+ for(unsigned n=0;n<16000&&outcome.phase()!=BattleOutcomePhase::PostWinRequested;++n)frame();check(outcome.phase()==BattleOutcomePhase::PostWinRequested,"Acknowledged actual rewards return through world transition");check(outcome.committed_state(),"Post-win Doll publishes the same complete reward boundary");saved.stats=*outcome.committed_state();check(saved.stats.experience==11&&saved.stats.bank==15&&saved.stats.level==2,"Two original victory rewards retained");uint32_t sibling=house_no_index;for(uint32_t i=0;i<house.view().count(HouseSection::Npcs);++i)if(house.view().string(house.view().npc(i).source_path)=="Objects/npc2")sibling=i;
+ check(sibling!=house_no_index,"Original Mimmie NPC binding exists");const auto sibling_data=house.view().npc(sibling);const auto sibling_actor=sibling_data.room_actor_index;
+ const auto previous_binding=world.actor_binding_revision(sibling_actor);check(previous_binding&&world.actor_restore_requested(sibling_actor),"Attack restoration remains pending across battle ownership");
+ check(!world.complete_actor_restore(kRoomNoIndex,previous_binding)&&!world.complete_actor_restore(sibling_actor,0),"Unknown actor and zero restoration identity rejected");
+ check(outcome.advance_post_win(),outcome.error());bool rebind_checked=false;
+ for(unsigned n=0;n<12000&&outcome.phase()==BattleOutcomePhase::PostWinRequested;++n){drive.auto_step();
+  if(world.actor_binding_revision(sibling_actor)!=previous_binding&&!rebind_checked){const auto before=world.actor(sibling_actor);const bool bound=world.actor_bound(sibling_actor),pending=world.actor_restore_requested(sibling_actor);const auto revision=world.actor_binding_revision(sibling_actor);
+   check(revision>previous_binding,"Postwin creates a new Actor lifetime");check(!world.complete_actor_restore(sibling_actor,previous_binding)&&!world.complete_actor_restore(sibling_actor,revision+1),"Stale and future restoration callbacks rejected");
+   check(world.actor_bound(sibling_actor)==bound&&world.actor_restore_requested(sibling_actor)==pending&&world.actor(sibling_actor).position.x==before.position.x&&world.actor(sibling_actor).position.y==before.position.y&&world.healthy(),"Rejected callback cannot mutate current Actor ownership or pose");rebind_checked=true;}
+  check(outcome.advance_post_win(),outcome.error());}
+ check(rebind_checked,"Natural battle/postwin route exercises overlapping Actor lifetimes");check(outcome.phase()==BattleOutcomePhase::Complete,"Actual eight-phrase Doll postwin completes");drive.finish();check(world.story_flag("doll_defeated")&&world.story_flag("pillow_attack")&&!world.story_flag("doll_melody"),"Source postwin earns only its own flags");
+ check(!world.actor_bound(sibling_actor)&&!world.actor_restore_requested(sibling_actor)&&world.body_enabled(sibling_data.body_id),"Current Mimmie restoration releases actor and restores collision");
+ const auto sibling_pose=fresh->presentation.npc_pose(sibling).position;check(std::abs(sibling_pose.x-112)<.001f&&std::abs(sibling_pose.y-88)<.001f,"Original postwin steps retain Mimmie at (112,88)");
+ check(!world.complete_actor_restore(sibling_actor,world.actor_binding_revision(sibling_actor)),"A completed restoration cannot run twice");
  std::cout<<"Actual Doll action/victory/growth/postwin passed\n";
- // Explicit test positioning shortcuts call the shared world warp API; they
- // do not manufacture story success, edit flags, or load postwin snapshots.
+ // These postwin routes use walking and interaction rays, without warps.
  drive.interact_npc(house.view(),"Objects/npcdoll");drive.finish();check(world.story_flag("doll_melody"),"Actual Doll melody interaction earns its own flag");
  drive.interact_npc(house.view(),"Objects/npc");drive.finish();check(world.story_flag("phone_ring")&&fresh->phone.ringing(0),"Actual Carol call requests ringing phone");
  drive.interact_phone(phone.view());drive.finish();check(world.story_flag("talked_to_dad"),"Actual first Dad call earns repeat-call dispatch");

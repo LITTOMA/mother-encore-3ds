@@ -355,11 +355,15 @@ public:
         size_t bytes=assets_.size()*sizeof(IndexedResident);for(const auto& a:assets_)if(a.all_frames)bytes+=a.path.capacity()+a.palette.capacity()*sizeof(uint32_t);return bytes;
     }
     std::vector<IndexedResident> indexed_residents()const{
-        std::vector<IndexedResident> out;out.reserve(assets_.size());for(const auto& a:assets_)if(a.all_frames)out.push_back({a.path,a.width,a.height,a.frames,a.palette,a.all_frames
+        std::vector<IndexedResident> out;out.reserve(assets_.size());
+        for(const auto& a:assets_){
+            if(a.all_frames)out.push_back({a.path,a.width,a.height,a.frames,a.palette,a.all_frames
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
             ,a.mask_plan
 #endif
-        });return out;
+            });
+        }
+        return out;
     }
     size_t prepared_linear_bytes()const{
         size_t bytes=texture_ready_?surface_texture_.size:0;

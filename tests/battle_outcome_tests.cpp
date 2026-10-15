@@ -211,8 +211,8 @@ int main(int argc,char**argv){
  check(sister_normal.physics_tick-sister_moved.physics_tick==2&&sister_requested.physics_tick-sister_normal.physics_tick==1,"native warp-to-openable-exit two physics callbacks and next-idle story request");
  check(sister_moved.idle_frame-sister_paused.idle_frame==41&&native_exit_frame==43&&sister_requested.idle_frame-sister_paused.idle_frame==44&&sister_done.idle_frame-sister_paused.idle_frame==57,"official Godot sister warp/body-exit/request/done timings +41/+43/+44/+57");
  std::cout<<"Source-aligned sister frames: warp=41 openable_exit="<<native_exit_frame<<" request=44 done=57\n";
- BattleData doll_entry;const auto doll_path=std::filesystem::path(argv[2]).parent_path()/"doll-entry.encbattle";
- check(doll_entry.load_file(doll_path.c_str(),error),error.c_str());const auto dv=doll_entry.view();BattleEntry entry_runtime;
+ BattleData doll_entry;const auto doll_path=std::filesystem::path(argv[2]).parent_path().parent_path()/"doll"/"doll-entry.encbattle";
+ check(doll_entry.load_file(doll_path.string().c_str(),error),error.c_str());const auto dv=doll_entry.view();BattleEntry entry_runtime;
  const auto native=dv.parameter(BattleParameter::CanvasSize);const auto center=world.cutscene_camera().center();const auto enemy=world.actor(world.battle_request().actor_index);
  BattleEntrySnapshot snap{{world.player().position.x-center.x+native.x/2,world.player().position.y-center.y+native.y/2},{enemy.position.x-center.x+native.x/2,enemy.position.y-center.y+native.y/2},world.cutscene_camera().is_shaking(),enemy.frame,0,enemy.sprite_offset};
  const auto nudge=dv.parameter(BattleParameter::PartyNudge);if(std::abs(snap.player_screen.x-nudge.x)<nudge.y)snap.nudge_sign=(random.randi()%2)==1?-1:1;

@@ -1,8 +1,29 @@
 {
   "schema": 1,
+  "capability": 2,
   "kind": "encore.house-presents.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "All four original House presents drawn with flag state, Unwrapped clip and Sparkles; only fixed key-item presents with default dialogues execute; other presents are explicit development boundaries",
+  "dependencies": {
+    "content/house-present-bindings.json": "f5d5296b05ac2a2bebca142ed719fb7f05aec9ad56f8687117c8048f0fc7456d"
+  },
+  "text_groups": [
+    {
+      "after_id": 69,
+      "ids": [
+        70,
+        71,
+        72
+      ]
+    },
+    {
+      "after_id": 74,
+      "ids": [
+        75,
+        76
+      ]
+    }
+  ],
+  "scope": "All four original House presents drawn; default fixed key-item grants support story and persistent object flags; custom dialogue and normal inventory presents remain explicit development boundaries",
   "sources": {
     "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
     "Audio/Sound effects/Gift Box.mp3.import": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
@@ -280,7 +301,7 @@
         160.0,
         1072.0
       ],
-      "flag": "Nintens House/Present2",
+      "flag": "Ninten's House/Present2",
       "policy": 2,
       "item": "BatPlastic",
       "interact_center": [
@@ -322,7 +343,7 @@
         96.0,
         1072.0
       ],
-      "flag": "Nintens House/Present3",
+      "flag": "Ninten's House/Present3",
       "policy": 2,
       "item": "MapPodunk",
       "interact_center": [
@@ -333,13 +354,18 @@
         16.0,
         16.0
       ],
-      "program": null,
+      "program": 1,
       "sound": "Audio/Sound effects/Gift Box.mp3"
     }
   ],
   "templates": [
     {
       "source_item": "DogTreats",
+      "doses": 1,
+      "key_item": true
+    },
+    {
+      "source_item": "MapPodunk",
       "doses": 1,
       "key_item": true
     }
@@ -379,6 +405,30 @@
       "localized": {
         "en": "[@]It's empty...",
         "zh_Hans_CN": "[@]是空的…"
+      }
+    },
+    {
+      "id": 75,
+      "source_path": "Data/Dialogue/ItemDialogue/presentcheck.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_ITEMDIALOGUE_PRESENTCHECK_0",
+      "item": "MapPodunk",
+      "raw": "[@][PartyLead] opened the present.",
+      "localized": {
+        "en": "[@][PartyLead] opened the present.",
+        "zh_Hans_CN": "[@][PartyLead]拆开了礼物盒。"
+      }
+    },
+    {
+      "id": 76,
+      "source_path": "Data/Dialogue/ItemDialogue/presentcheck.yaml",
+      "label": "1",
+      "translation_key": "DIALOGUE_ITEMDIALOGUE_PRESENTCHECK_1",
+      "item": "MapPodunk",
+      "raw": "[@][PartyLead] got the Podunk Map!",
+      "localized": {
+        "en": "[@][PartyLead] got the Podunk Map!",
+        "zh_Hans_CN": "[@][PartyLead]获得了波顿克地图！"
       }
     }
   ],
@@ -420,6 +470,66 @@
         {
           "op": "ShowText",
           "a": 71
+        },
+        {
+          "op": "PlaySound",
+          "a": "Audio/Sound effects/Item Received.mp3"
+        },
+        {
+          "op": "AwaitText"
+        },
+        {
+          "op": "End"
+        },
+        {
+          "op": "ShowText",
+          "a": 72
+        },
+        {
+          "op": "AwaitText"
+        },
+        {
+          "op": "End"
+        }
+      ]
+    },
+    {
+      "source_path": "Objects/Present3",
+      "template": 1,
+      "check": [
+        75,
+        76
+      ],
+      "commands": [
+        {
+          "op": "BranchFlag",
+          "a": "Ninten's House/Present3",
+          "b": 1,
+          "c": 10
+        },
+        {
+          "op": "PlayClip",
+          "a": "Unwrapped"
+        },
+        {
+          "op": "GrantItem",
+          "a": 1
+        },
+        {
+          "op": "SetFlag",
+          "a": "Ninten's House/Present3",
+          "b": 1
+        },
+        {
+          "op": "ShowText",
+          "a": 75
+        },
+        {
+          "op": "AwaitText"
+        },
+        {
+          "op": "ShowText",
+          "a": 76
         },
         {
           "op": "PlaySound",

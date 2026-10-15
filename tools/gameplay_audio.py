@@ -4,9 +4,28 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.extract_battle_entry import Extractor, require
-from tools.drawer_program import read_json, fields, safe_path
+from tools.drawer_program import read_json, write_json, fields, safe_path
 ROLES=["MenuOpen","MenuClose","Confirm","Cursor","Back","Error","EnemyTurn","EnemyDefeat","PlayerDefeat","MortalDamage","Smash","Hurt","HurtCritical","Dodge","Miss","Swing","Attack","Hit","LearnedPsi","BossVictory","VictoryLoop","LevelUp","LevelUpLayer","Victory"]
 OUT=Path('sound/banks/gameplay.enccues')
+
+def world_sources(root=ROOT):
+    root=Path(root);house=read_json(root/'content/native-house.json');mick=read_json(root/'content/mick-treats.json')
+    expected={v for d in house['doors']+house['openable_doors'] for k,v in d.items() if k in ('start_sound','end_sound','ram_sound') and v}
+    expected.update(s['voice'] for s in house['segments'] if s['voice'])
+    expected.update(c['a'].removeprefix('res://') for c in mick['commands'] if c['op']=='PlaySound')
+    return expected
+
+def extract_world_coverage(root=ROOT):
+    root=Path(root);target=root/'content/gameplay-audio-bindings.json';config=read_json(target)
+    expected=world_sources(root);candidate=dict(config,extra_sources=sorted(expected))
+    # This updates only the coverage join. Selectors, conversion policy, source
+    # pin and licence admission remain checked by the existing complete loader.
+    previous=target.read_bytes()
+    try:
+        write_json(target,candidate);load(root)
+    except Exception:
+        target.write_bytes(previous);raise
+    return candidate
 
 def load(root=ROOT):
     root=Path(root); ex=Extractor(root)
@@ -25,10 +44,7 @@ def load(root=ROOT):
         require(len(rows)==1,'Missing/ambiguous audio selector')
         source=rows[0].removeprefix('res://') if row['dictionary']=='_sound_effects' else 'Audio/Music/'+rows[0]
         ex.data(source);ex.data(source+'.import');cues.append(source)
-    house=read_json(root/'content/native-house.json');mick=read_json(root/'content/mick-treats.json')
-    expected={v for d in house['doors']+house['openable_doors'] for k,v in d.items() if k in ('start_sound','end_sound','ram_sound') and v}
-    expected.update(s['voice'] for s in house['segments'] if s['voice'])
-    expected.update(c['a'].removeprefix('res://') for c in mick['commands'] if c['op']=='PlaySound')
+    expected=world_sources(root)
     require(type(config['extra_sources']) is list and len(config['extra_sources'])==len(expected) and set(config['extra_sources'])==expected,'World audio coverage mismatch')
     for source in expected:ex.data(source);ex.data(source+'.import')
     import wave
@@ -64,4 +80,7 @@ def stage_files(source):
     blob=encode(load()[0]);require((Path(source)/OUT).read_bytes()==blob,'Stale gameplay audio cues');return {OUT:blob}
 
 if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser();parser.add_argument('action',choices=('extract','compile'),nargs='?',default='compile');args=parser.parse_args()
+    if args.action=='extract':extract_world_coverage();print('Gameplay world audio coverage extracted and admitted')
     cues,_,_=load();out=ROOT/'romfs'/OUT;out.parent.mkdir(parents=True,exist_ok=True);out.write_bytes(encode(cues));print('Compiled gameplay sound cues:',len(cues))

@@ -135,8 +135,30 @@ def stage_files(source_root):
   path=Path(r['path']);raw=(root/path).read_bytes();require(hashlib.sha256(raw).hexdigest()==r['sha256'],'Staged prompt texture mismatch');files[path]=raw
  return files
 
+def rebound_house_dependency(recipe, previous, current, current_sha):
+ for key in ('npcs','openable_doors','interaction'):
+  require(previous[key]==current[key],'Changed prompt-relevant House '+key)
+ require(re.fullmatch('[0-9a-f]{64}',current_sha),'Invalid House dependency fingerprint')
+ candidate=dict(recipe,dependencies=dict(recipe['dependencies']))
+ require('content/native-house.json' in candidate['dependencies'],'Missing prompt House dependency')
+ candidate['dependencies']['content/native-house.json']=current_sha
+ return candidate
+
+def reuse_house(base):
+ require(re.fullmatch('[0-9a-f]{40}',base or ''),'Prompt reuse requires exact baseline commit')
+ old=lambda name:subprocess.check_output(['git','show',base+':'+name],cwd=ROOT)
+ prior=old(IR.relative_to(ROOT).as_posix());house=old('content/native-house.json');recipe=json.loads(prior)
+ require(recipe['dependencies']['content/native-house.json']==hashlib.sha256(house).hexdigest(),'Prompt baseline House mismatch')
+ candidate=rebound_house_dependency(recipe,json.loads(house),json.loads((ROOT/'content/native-house.json').read_text()),sha(ROOT/'content/native-house.json'))
+ require(json.loads(IR.read_text()) in (recipe,candidate),'Prompt baseline differs; refusing unrelated edits')
+ verify(candidate);require(encode(candidate)==PACK.read_bytes(),'Prompt reuse changes checked binary')
+ IR.write_bytes((json.dumps(candidate,indent=2)+'\n').encode('utf8'))
+ print('House prompt source dependency re-admitted; exact prompt binary and textures retained')
+
 def main():
- p=argparse.ArgumentParser();p.add_argument('action',choices=['assets','compile','verify']);p.add_argument('--tex3ds',type=Path);p.add_argument('--godot',type=Path);a=p.parse_args();d=build(a.tex3ds,a.godot) if a.action=='assets' else json.loads(IR.read_text());verify(d);blob=encode(d)
+ p=argparse.ArgumentParser();p.add_argument('action',choices=['assets','compile','verify','reuse-house']);p.add_argument('--tex3ds',type=Path);p.add_argument('--godot',type=Path);p.add_argument('--base');a=p.parse_args();
+ if a.action=='reuse-house':reuse_house(a.base);return
+ d=build(a.tex3ds,a.godot) if a.action=='assets' else json.loads(IR.read_text());verify(d);blob=encode(d)
  if a.action=='verify':require(PACK.read_bytes()==blob,'Prompt pack stale')
  else:PACK.write_bytes(blob)
  REPORT.mkdir(parents=True,exist_ok=True);(REPORT/'build.json').write_text(json.dumps(dict(bytes=len(blob),sha256=hashlib.sha256(blob).hexdigest(),scope=d['scope']),indent=2)+'\n');print('House prompts:',len(blob),'bytes')

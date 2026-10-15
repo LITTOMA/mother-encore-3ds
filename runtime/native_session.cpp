@@ -18,6 +18,13 @@ struct Reader {
  std::string text(){const auto length=count(4096);if(length>n){ok=false;return {};}std::string s(reinterpret_cast<const char*>(p),length);p+=length;n-=length;for(unsigned char c:s)if(c<32||c>126)ok=false;return s;}
 };
 bool same_items(const std::vector<SessionItem>&a,const std::vector<SessionItem>&b){if(a.size()!=b.size())return false;for(size_t i=0;i<a.size();++i)if(a[i].item_id!=b[i].item_id||a[i].equipped!=b[i].equipped||a[i].doses!=b[i].doses)return false;return true;}
+bool same_key_items(const std::vector<SessionItem>&a,const std::vector<SessionItem>&b){
+ if(a.size()!=b.size())return false;
+ // Key items are appended in pickup order. Compare admitted identities without
+ // rewriting that order or their opaque source UIDs.
+ for(const auto&i:b)if(std::count_if(a.begin(),a.end(),[&](const SessionItem&v){return v.item_id==i.item_id&&v.doses==i.doses&&v.equipped==i.equipped;})!=1)return false;
+ return true;
+}
 bool same_affinities(const std::vector<SessionRealValue>&a,const std::vector<SessionRealValue>&b){if(a.size()!=b.size())return false;for(size_t i=0;i<a.size();++i)if(a[i].id!=b[i].id||a[i].value!=b[i].value)return false;return true;}
 bool same_integers(const std::vector<SessionIntegerValue>&a,const std::vector<SessionIntegerValue>&b){if(a.size()!=b.size())return false;for(size_t i=0;i<a.size();++i)if(a[i].id!=b[i].id||a[i].value!=b[i].value)return false;return true;}
 bool same_character(const SessionCharacter&a,const SessionCharacter&b,bool names=false,bool uids=false){
@@ -76,7 +83,7 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
 bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>session_save_max_bytes)return fail(e,"Native session pack size rejected");
  const auto schema=integer(p+8),capability=integer(p+20);
- if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>6||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
+ if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>7||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
  if(crc(p+24,n-24)!=integer(p+16))return fail(e,"Native session CRC mismatch");
  NativeSessionData d;Reader r{p+24,n-24};d.compatibility_={r.u32(),r.u32(),r.u32()};
  const auto template_size=r.count(uint32_t(session_save_max_bytes));
@@ -131,12 +138,19 @@ bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
  }
  if(schema>=6){
   const auto n=r.count(16);std::set<std::string>items,flags;
-  for(uint32_t i=0;i<n;++i){NativeSessionKeyAcquisition k;k.item_id=r.text();k.doses=r.u32();k.flag_id=r.text();k.consumed_flag_id=r.text();
+  for(uint32_t i=0;i<n;++i){NativeSessionKeyAcquisition k;k.item_id=r.text();k.doses=r.u32();k.flag_id=r.text();k.consumed_flag_id=r.text();if(schema>=7)k.flag_policy=r.u32();
    bool default_key=false;for(const auto&item:d.defaults_.key_items)if(item.item_id==k.item_id)default_key=true;
    bool flag_false=false,consumed_false=k.consumed_flag_id.empty();
    for(const auto&f:d.defaults_.flags){if(f.id==k.flag_id&&!f.value)flag_false=true;if(!k.consumed_flag_id.empty()&&f.id==k.consumed_flag_id&&!f.value)consumed_false=true;}
+   if(k.flag_policy==2){
+    const auto slash=k.flag_id.find('/');
+    flag_false=slash!=k.flag_id.npos&&slash>0&&slash+1<k.flag_id.size()&&k.flag_id.find('/',slash+1)==k.flag_id.npos&&
+     k.flag_id.find("..") == k.flag_id.npos&&k.flag_id.find(':')==k.flag_id.npos&&k.flag_id.find('\\')==k.flag_id.npos&&
+     !contains(d.mutable_flags_,k.flag_id)&&k.consumed_flag_id.empty();
+    for(const auto&f:d.defaults_.flags)if(f.id==k.flag_id)flag_false=false;
+   }
    bool normal=false;for(const auto&a:d.acquisitions_)normal|=a.item_id==k.item_id;
-   if(k.item_id.empty()||k.flag_id.empty()||k.flag_id==k.consumed_flag_id||!items.insert(k.item_id).second||!flags.insert(k.flag_id).second||k.doses!=1||default_key||normal||!flag_false||!consumed_false||!contains(d.mutable_flags_,k.flag_id)||(!k.consumed_flag_id.empty()&&!contains(d.mutable_flags_,k.consumed_flag_id)))return fail(e,"Native session key acquisition policy rejected");
+   if(k.item_id.empty()||k.flag_id.empty()||k.flag_id==k.consumed_flag_id||!items.insert(k.item_id).second||!flags.insert(k.flag_id).second||k.doses!=1||default_key||normal||!flag_false||!consumed_false||(k.flag_policy!=1&&k.flag_policy!=2)||(k.flag_policy==1&&!contains(d.mutable_flags_,k.flag_id))||(!k.consumed_flag_id.empty()&&!contains(d.mutable_flags_,k.consumed_flag_id)))return fail(e,"Native session key acquisition policy rejected");
    d.key_acquisitions_.push_back(std::move(k));
   }
  }
@@ -173,7 +187,7 @@ bool validate_native_session_snapshot(const NativeSessionData&data,RoomView room
  if(c.hp>derived[0]||c.pp>derived[1]||c.learned_skills!=row->skills)return fail(e,"Native session HP/PP/skills disagree with source level");
  if(!supported_inventory(data,items,s,e))return false;
  std::vector<SessionItem>keys;if(!native_session_expected_key_items(data,s,keys,e))return false;
- if(!same_items(s.key_items,keys)||(!data.storage_capacity()&&!s.storage.empty())||!s.object_flags.empty()||!same_integers(s.keys,d.keys)||!s.rare_drops.empty())return fail(e,"Native session unsupported key/storage/object/counter state");
+ if(!same_key_items(s.key_items,keys)||(!data.storage_capacity()&&!s.storage.empty())||!same_integers(s.keys,d.keys)||!s.rare_drops.empty())return fail(e,"Native session unsupported key/storage/object/counter state");
  if(s.flags.size()!=room.flag_count()||s.flags.size()!=d.flags.size())return fail(e,"Native session requires the complete story flag registry");
  for(const auto&f:s.flags){auto found=std::find_if(d.flags.begin(),d.flags.end(),[&](const SessionFlag&x){return x.id==f.id;});if(found==d.flags.end())return fail(e,"Native session unknown story flag");bool in_room=false;for(uint32_t i=0;i<room.flag_count();++i)if(room.string(room.flag(i).name_string)==f.id){in_room=true;break;}if(!in_room||(f.value!=found->value&&!contains(data.mutable_flags(),f.id)))return fail(e,"Native session unsupported story flag state");}
  std::set<std::string>seen;for(uint32_t i=0;i<house.count(HouseSection::Npcs);++i){const auto key=house.string(house.npc(i).seen_key);if(!key.empty())seen.emplace(key);}for(uint32_t i=0;i<house.count(HouseSection::Overrides);++i){const auto key=house.string(house.override_dialogue(i).seen_key);if(!key.empty())seen.emplace(key);}for(const auto&f:s.seen_dialogue_flags)if(!seen.count(f.id))return fail(e,"Native session unknown seen dialogue identity");
@@ -189,9 +203,14 @@ bool validate_native_session_snapshot(const NativeSessionData&data,RoomView room
 bool native_session_expected_key_items(const NativeSessionData&data,const SessionSnapshot&s,std::vector<SessionItem>&out,std::string&e){
  if(!data.valid())return fail(e,"Native session key inventory requires checked data");
  auto flag=[&](const std::string&id,bool&value){for(const auto&f:s.flags)if(f.id==id){value=f.value;return true;}return false;};
+ std::set<std::string>seen;
+ for(const auto&f:s.object_flags){bool known=false;for(const auto&k:data.key_acquisitions())known|=k.flag_policy==2&&k.flag_id==f.id;
+  if(!known||!seen.insert(f.id).second)return fail(e,"Native session unknown/duplicate object flag");}
  std::vector<SessionItem>next=data.defaults().key_items;
  for(const auto&k:data.key_acquisitions()){bool held=false,consumed=false;
-  if(!flag(k.flag_id,held)||(!k.consumed_flag_id.empty()&&!flag(k.consumed_flag_id,consumed)))return fail(e,"Native session key acquisition flag absent");
+  if(k.flag_policy==2){for(const auto&f:s.object_flags)if(f.id==k.flag_id)held=f.value;}
+  else if(!flag(k.flag_id,held))return fail(e,"Native session key acquisition flag absent");
+  if(!k.consumed_flag_id.empty()&&!flag(k.consumed_flag_id,consumed))return fail(e,"Native session key consumption flag absent");
   if(held&&!consumed)next.push_back({k.item_id,false,k.doses,0});}
  out=std::move(next);e.clear();return true;
 }

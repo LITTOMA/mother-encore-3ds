@@ -22,7 +22,7 @@ class WorkflowPolicyTests(unittest.TestCase):
         # YAML 1.1 parsers may treat the unquoted GitHub key `on` as True.
         triggers = self.workflow.get('on', self.workflow.get(True))
         self.assertEqual(set(triggers), {'push', 'workflow_dispatch'})
-        self.assertEqual(triggers['push'], {'branches': ['main']})
+        self.assertIsNone(triggers['push'])  # Every branch push publishes a genuine build.
         mode = triggers['workflow_dispatch']['inputs']['mode']
         self.assertEqual(mode['type'], 'choice')
         self.assertEqual(mode['default'], 'build')

@@ -115,7 +115,9 @@ public:
     uint32_t actor_count() const { return uint32_t(actors_.size()); }
     const ActorActionState& actor(uint32_t index) const { return actors_[index]; }
     bool actor_restore_requested(uint32_t index)const{return index<actor_restore_.size()&&actor_restore_[index];}
-    bool complete_actor_restore(uint32_t index);
+    // Deferred restoration belongs to one Actor instance, not its reusable slot.
+    uint64_t actor_binding_revision(uint32_t index)const{return index<actor_binding_revisions_.size()?actor_binding_revisions_[index]:0;}
+    bool complete_actor_restore(uint32_t index,uint64_t binding_revision);
     bool actor_bound(uint32_t index) const { return index<actor_bound_.size()&&actor_bound_[index]; }
     bool instance_visible(uint32_t index) const { return initialized_&&index<actor_visible_.size()&&actor_visible_[index]; }
     // Camera observation requires persistent_player()!=nullptr (normally healthy()).
@@ -156,6 +158,7 @@ private:
     WorldFlags flags_;
     DialoguePlayer dialogue_;
     std::vector<ActorActionState> actors_;
+    std::vector<uint64_t> actor_binding_revisions_;
     OpeningBattleRequest battle_;
     std::vector<OpeningAudioRequest> audio_;
     std::vector<OpeningTraceEvent> trace_;

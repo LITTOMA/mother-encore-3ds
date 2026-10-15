@@ -27,15 +27,15 @@ class FieldEquipmentFormat(unittest.TestCase):
         for actual,source in zip(decoded['Keys'],self.tables['Keys']):
             for value,expected in zip(actual,source):self.assertAlmostEqual(value,expected,places=5)
         self.assertEqual((ROOT/pack.PACK).read_bytes(),self.blob)
-    def test_six_known_commands_only_equipment(self):
-        self.assertEqual([r[3] for r in self.tables['Commands']],[0,0,1,0,0,0])
+    def test_six_known_commands_equipment_and_field_psi(self):
+        self.assertEqual([r[3] for r in self.tables['Commands']],[0,1,1,0,0,0])
         self.rejects('Commands',0,3,1)
     def test_source_slots_and_equipment(self):
         self.assertEqual([s['source'] for s in self.ir['slots']],['weapon','body','arms','other'])
         self.assertEqual(self.ir['equipment'][0]['boosts'],[0,0,0,5,0,0,0])
         self.rejects('Equipment',0,2,4)
     def test_unknown_versions_and_capabilities(self):
-        for offset,value in ((8,1),(8,3),(20,1),(20,3),(24,2)):
+        for offset,value in ((8,1),(8,3),(20,1),(20,2),(20,4),(24,2)):
             with self.subTest(offset=offset,value=value),self.assertRaises(ValueError):pack.parse_pack(self.changed(offset,struct.pack('<I',value)))
     def test_corrupt_pin_reserved_crc_and_truncation(self):
         for blob in (self.changed(32,b'\x01'),self.changed(52,b'\x01'),self.blob[:-1],self.blob+b'\0'):
@@ -85,7 +85,7 @@ class FieldEquipmentFormat(unittest.TestCase):
         self.assertEqual(pack.reuse_asset_receipt(previous,producer,self.receipt,self.ir),self.receipt)
         changed=copy.deepcopy(self.ir);changed['resources'][0]['source']='unreviewed.png'
         with self.assertRaises(ValueError):pack.reuse_asset_receipt(previous,producer,self.receipt,changed)
-        changed=copy.deepcopy(self.ir);changed['sources']['unreviewed']='0'*64
+        changed=copy.deepcopy(self.ir);changed['sources'][next(iter(changed['sources']))]='0'*64
         with self.assertRaises(ValueError):pack.reuse_asset_receipt(previous,producer,self.receipt,changed)
         receipt=copy.deepcopy(self.receipt);receipt['producer_sha256']='0'*64
         with self.assertRaises(ValueError):pack.reuse_asset_receipt(previous,producer,receipt,self.ir)
@@ -93,6 +93,19 @@ class FieldEquipmentFormat(unittest.TestCase):
         self.assertNotEqual(altered,producer)
         receipt=copy.deepcopy(self.receipt);receipt['producer_sha256']=hashlib.sha256(altered).hexdigest()
         with self.assertRaises(ValueError):pack.reuse_asset_receipt(previous,altered,receipt,self.ir)
+    def test_field_psi_source_and_negative_policy(self):
+        self.assertEqual(self.ir['bindings']['PsiName']['zh_Hans_CN'],'心灵感应')
+        self.assertEqual(self.ir['bindings']['PsiSkillId']['en'],'telepathy')
+        self.assertEqual(self.ir['parameters']['PsiCost'],0)
+        self.assertEqual(self.ir['parameters']['PsiLearnLevel'],2)
+        self.assertEqual(self.ir['parameters']['PsiRayY'],6)
+        for name,value in [('PsiCost',-1),('PsiCost',0.5),('PsiLearnLevel',0),('PsiAction',2),('PsiRayLength',0),('PsiRayY',65),('PsiFoodLimitEn',0),('PsiFoodLimitZh',513)]:
+            self.rejects('Parameters',pack.PARAMETERS.index(name),1,value)
+        row=next(i for i,l in enumerate(self.ir['layouts']) if l['role']=='PsiPanel')
+        self.rejects('Layouts',row,4,99);self.rejects('Layouts',row,3,5)
+        self.rejects('Bindings',pack.BINDINGS.index('PsiSkillId'),1,self.tables['Bindings'][pack.BINDINGS.index('PsiBaseSkill0')][1])
+        t=copy.deepcopy(self.tables);t['Layouts'].pop(row)
+        with self.assertRaises(ValueError):pack.encode(t)
     def test_actual_staged_resources(self):
         files=pack.stage_files(ROOT/'romfs')
         self.assertEqual(files[Path('ui/opening.encfield')],self.blob)

@@ -13,7 +13,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from tools import field_audio, present_audio
+from tools import field_audio, present_audio, gameplay_audio, extension_audio
 
 
 class FieldAudioBinding(unittest.TestCase):
@@ -21,7 +21,7 @@ class FieldAudioBinding(unittest.TestCase):
     def setUpClass(cls):
         cls.ir = json.loads((ROOT / 'content/native-field-equipment.json').read_text(encoding='utf-8'))
         cls.config = json.loads((ROOT / 'content/field-audio-binding.json').read_text(encoding='utf-8'))
-        cls.present = present_audio.bindings(ROOT)
+        cls.extension = extension_audio.bindings(ROOT)
 
     def validate_detached(self, config=None, ir=None):
         config = copy.deepcopy(self.config if config is None else config)
@@ -34,7 +34,9 @@ class FieldAudioBinding(unittest.TestCase):
             return result
 
     def combined(self, pause=None):
-        return (self.config['assets'] if pause is None else pause) + self.present
+        # Since audio completion (#40), the checked chain also includes the
+        # 26 gameplay/region additions. Keep the full ordered identity contract.
+        return (self.config['assets'] if pause is None else pause) + self.extension
 
     def reject(self, change, ir_change=None):
         config, ir = copy.deepcopy(self.config), copy.deepcopy(self.ir)
@@ -151,6 +153,34 @@ class FieldAudioBinding(unittest.TestCase):
             with self.subTest(pcm=value):
                 self.reject(lambda c, value=value: c['assets'][0].update(pcm=value))
         self.reject(lambda c: c['assets'][1].update(pcm=c['assets'][0]['pcm']))
+
+
+class GameplayWorldCoverage(unittest.TestCase):
+    def test_key_received_source_reuses_existing_audio_identity(self):
+        cues,extra,_=gameplay_audio.load(ROOT)
+        source='Audio/Sound effects/Item Received.mp3'
+        self.assertIn(source,extra)
+        native=json.loads((ROOT/'content/native-audio.json').read_text(encoding='utf8'))
+        self.assertEqual(sum(a['source_path']=='res://'+source for a in native['assets']),1)
+        self.assertNotIn(source,[b['source'] for b in gameplay_audio.bindings(ROOT)])
+        self.assertEqual((ROOT/'romfs/sound/banks/gameplay.enccues').read_bytes(),gameplay_audio.encode(cues))
+    def test_missing_duplicate_and_unbound_coverage_rejected(self):
+        target=ROOT/'content/gameplay-audio-bindings.json';base=gameplay_audio.read_json(target);read=gameplay_audio.read_json
+        for kind in ('missing','duplicate','unbound'):
+            config=copy.deepcopy(base)
+            if kind=='missing':config['extra_sources'].remove('Audio/Sound effects/Item Received.mp3')
+            elif kind=='duplicate':config['extra_sources'].append(config['extra_sources'][0])
+            else:config['extra_sources'].append('Audio/Sound effects/unreviewed.wav')
+            with mock.patch.object(gameplay_audio,'read_json',side_effect=lambda p: config if p==target else read(p)):
+                with self.subTest(kind=kind),self.assertRaisesRegex(ValueError,'World audio coverage mismatch'):gameplay_audio.load(ROOT)
+    def test_failed_extract_restores_exact_previous_bytes(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);target=root/'content/gameplay-audio-bindings.json';target.parent.mkdir(parents=True)
+            original=b'{"extra_sources": ["old"], "unknown": true}\n';target.write_bytes(original)
+            with mock.patch.object(gameplay_audio,'world_sources',return_value={'new'}),mock.patch.object(gameplay_audio,'load',side_effect=ValueError('source rejection')):
+                with self.assertRaises(ValueError):gameplay_audio.extract_world_coverage(root)
+            self.assertEqual(target.read_bytes(),original)
 
 
 if __name__ == '__main__':

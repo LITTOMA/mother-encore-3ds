@@ -44,7 +44,7 @@ PresentText PresentView::text(uint32_t i)const{auto*p=record(PresentSection::Tex
 bool PresentData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kPresentSectionCount*16||n>max_bytes)return fail("Present pack size rejected");
-    if(std::memcmp(p,"ENCPRS01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=1||u32(p+24)!=1||u32(p+28)||u32(p+52)!=kPresentSectionCount||u32(p+56)||u32(p+60))
+    if(std::memcmp(p,"ENCPRS01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)<1||u32(p+20)>2)||u32(p+24)!=1||u32(p+28)||u32(p+52)!=kPresentSectionCount||u32(p+56)||u32(p+60))
         return fail("Present pack schema/capability/scene/reserved rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Present pack source pin rejected");}
     if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Present pack checksum rejected");
@@ -85,17 +85,22 @@ bool PresentData::load(const uint8_t*p,size_t n,std::string&error){
     for(uint32_t i=0;i<templates;++i){const auto t=v.item_template(i);if(!str(t.item)||v.string(t.item).find('/')!=std::string_view::npos||!t.doses||t.doses>65535||t.key_item>1)return fail("Present pack item template rejected");}
     std::set<uint32_t>ids;
     for(uint32_t i=0;i<texts;++i){const auto t=v.text(i);if(!t.dialogue_id||!ids.insert(t.dialogue_id).second||!str(t.source_path)||!safe_path(v.string(t.source_path))||!ends_with(v.string(t.source_path),".yaml"))return fail("Present pack text rejected");}
-    std::vector<uint32_t>program_owner(programs,kPresentNone);std::set<std::string_view>paths;
+    std::vector<uint32_t>program_owner(programs,kPresentNone);std::set<std::string_view>paths,object_flags;
     for(uint32_t i=0;i<objects;++i){const auto o=v.object(i);
         if(!str(o.path)||!paths.insert(v.string(o.path)).second||o.texture>=textures||o.texture==sp.texture||(o.policy!=1&&o.policy!=2)||!str(o.flag)||(o.item!=kPresentNone&&!str(o.item))||
            !finite(o.position)||!finite(o.interact_center)||!finite(o.interact_extents)||o.interact_extents.x<=0||o.interact_extents.y<=0||!str(o.sound)||!safe_path(v.string(o.sound))||v.string(o.sound).rfind("Audio/",0)!=0)
             return fail("Present pack object rejected");
-        if(o.program!=kPresentNone){if(o.program>=programs||program_owner[o.program]!=kPresentNone||o.policy!=uint32_t(PresentPolicy::Flag)||o.item==kPresentNone)return fail("Present pack object programme binding rejected");program_owner[o.program]=i;}}
+        if(o.policy==uint32_t(PresentPolicy::ObjectFlag)&&!object_flags.insert(v.string(o.flag)).second)return fail("Present pack duplicate object flag");
+        if(o.program!=kPresentNone){if(o.program>=programs||program_owner[o.program]!=kPresentNone||(o.policy==uint32_t(PresentPolicy::ObjectFlag)&&u32(p+20)<2)||o.item==kPresentNone)return fail("Present pack object programme binding rejected");program_owner[o.program]=i;}}
+    std::vector<uint32_t>command_owner(commands,kPresentNone);
     for(uint32_t i=0;i<programs;++i){const auto pr=v.program(i);if(program_owner[i]==kPresentNone||!pr.count||pr.first>commands||pr.count>commands-pr.first)return fail("Present pack programme span rejected");
+        for(uint32_t j=0;j<pr.count;++j){auto&owner=command_owner[pr.first+j];if(owner!=kPresentNone)return fail("Present pack overlapping programmes rejected");owner=i;}
         // Every command must terminate and keep ShowText/AwaitText discipline on all paths.
         std::vector<std::vector<uint32_t>>edges(pr.count);
         for(uint32_t pc=0;pc<pr.count;++pc){const auto c=v.command(pr.first+pc);auto&e=edges[pc];
             if(c.d)return fail("Present pack command reserved operand rejected");
+            const auto owner=v.object(program_owner[i]);
+            if(owner.policy==uint32_t(PresentPolicy::ObjectFlag)&&(c.opcode==uint32_t(PresentOpcode::BranchFlag)||c.opcode==uint32_t(PresentOpcode::SetFlag))&&v.string(c.a)!=v.string(owner.flag))return fail("Present pack foreign object flag command rejected");
             switch(PresentOpcode(c.opcode)){
             case PresentOpcode::ShowText:if(c.a>=texts||c.b||c.c)return fail("Present pack text command rejected");break;
             case PresentOpcode::AwaitText:case PresentOpcode::End:if(c.a||c.b||c.c)return fail("Present pack gate/end command rejected");break;
@@ -119,6 +124,7 @@ bool PresentData::load(const uint8_t*p,size_t n,std::string&error){
             for(auto t:edges[pc])queue.push_back({t,pending});}
         bool ends=false;for(uint32_t pc=0;pc<pr.count;++pc)ends|=v.command(pr.first+pc).opcode==uint32_t(PresentOpcode::End);if(!ends)return fail("Present pack programme lacks End");
         if(v.command(pr.first).opcode!=uint32_t(PresentOpcode::BranchFlag)||v.string(v.command(pr.first).a)!=v.string(v.object(program_owner[i]).flag))return fail("Present pack programme must test its own flag first");}
+    for(auto owner:command_owner)if(owner==kPresentNone)return fail("Present pack unowned command rejected");
     bytes_.assign(p,p+n);error.clear();return true;
 }
 bool PresentData::load_file(const char*path,std::string&error){

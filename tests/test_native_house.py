@@ -12,8 +12,8 @@ class HouseCompilerTests(unittest.TestCase):
  def test_deterministic_source_and_binary(self):
   self.assertEqual(x.build(),self.ir);h.verify_sources(self.ir,self.pres);self.assertEqual(h.encode(h.lower(self.ir,self.pres),version=self.ir['schema']),self.blob);h.parse_pack(self.blob)
  def test_authored_transform_and_wait_semantics(self):
-  self.assertEqual([d['destination']for d in self.ir['doors']],[[220,385],[430,387],[32,681],[155,401],[128,169],[64,369],[464,169],[176,369]])
-  self.assertEqual([d['center']for d in self.ir['doors']],[[416,394],[234,392],[140,416],[32,676],[64,363],[128,188],[176,363],[464,188]])
+  self.assertEqual([d['destination']for d in self.ir['doors']],[[220,385],[430,387],[32,681],[155,401],[128,169],[64,369],[464,169],[176,369],[88,977],[96,705]])
+  self.assertEqual([d['center']for d in self.ir['doors']],[[416,394],[234,392],[140,416],[32,676],[64,363],[128,188],[176,363],[464,188],[96,699],[88,972]])
   self.assertEqual([s['flags']for s in self.ir['segments'][:7]],[3,3,3,5,5,5,5]);self.assertEqual(self.ir['npcs'][0]['body_id'],9)
   self.assertEqual(self.ir['fade_parameters'],{'FadeCuts':[1.,0.,0.,1.],'FadeShader':[1.,1.,0,0]})
  def test_source_openable_policy_and_standalone_dialogue(self):
@@ -99,7 +99,7 @@ class HouseCompilerTests(unittest.TestCase):
  def test_revision7_capacity_and_unknown_revision_fail_closed(self):
   t=h.lower(self.ir,self.pres)
   self.assertEqual(self.ir['schema'],7)
-  self.assertEqual((len(t['Segments']),len(t['Dialogues'])),(129,66))
+  self.assertEqual((len(t['Segments']),len(t['Dialogues'])),(139,76))
   h.parse_pack(h.encode(t,version=7))
   with self.assertRaises(h.ContentError):h.parse_pack(h.encode(t,version=6))
   for section,limit in [('Segments',256),('Dialogues',128),('Tokens',256)]:

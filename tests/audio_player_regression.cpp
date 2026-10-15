@@ -5,12 +5,15 @@
 #include <cstring>
 #include <iostream>
 #include <vector>
+#include <map>
+#include <algorithm>
 using namespace encore;
 namespace {
 uint64_t audio_trace=1469598103934665603ull;uint64_t trace_events=0;
-void trace(uint32_t kind,uint32_t a=0,uint32_t b=0){++trace_events;for(uint32_t v:{kind,a,b})for(unsigned i=0;i<4;++i){audio_trace^=uint8_t(v>>(8*i));audio_trace*=1099511628211ull;}}
+using TraceEvent=std::array<uint32_t,3>;std::vector<TraceEvent> trace_log;
+void trace(uint32_t kind,uint32_t a=0,uint32_t b=0){trace_log.push_back({kind,a,b});++trace_events;for(uint32_t v:{kind,a,b})for(unsigned i=0;i<4;++i){audio_trace^=uint8_t(v>>(8*i));audio_trace*=1099511628211ull;}}
 uint32_t bits(float f){uint32_t v;std::memcpy(&v,&f,4);return v;}
-unsigned checks=0;Result init_result=0,flush_result=0;bool ndsp_started=false;int exits=0;size_t allocated=0;bool fail_alloc=false;
+unsigned checks=0;Result init_result=0,flush_result=0;bool ndsp_started=false;int exits=0;size_t allocated=0;bool fail_alloc=false;std::map<void*,size_t> allocations;
 constexpr size_t channel_count=24;
 std::array<std::vector<ndspWaveBuf*>,channel_count> queues;std::array<float,channel_count> gains{};float master=0;
 void check(bool ok,const char* why){++checks;if(!ok){std::cerr<<"FAIL: "<<why<<"\n";std::exit(1);}}
@@ -25,8 +28,8 @@ Result ndspInit(){trace(1,uint32_t(init_result));if(init_result>=0)ndsp_started=
 void ndspExit(){trace(2);for(size_t i=0;i<queues.size();++i)drain(int(i));ndsp_started=false;++exits;}
 void ndspSetMasterVol(float v){trace(3,bits(v));master=v;}
 void ndspChnReset(int lane){trace(4,uint32_t(lane));drain(lane);}
-void* linearAlloc(size_t n){trace(5,uint32_t(n),uint32_t(fail_alloc));if(fail_alloc)return nullptr;allocated+=n;return std::malloc(n);}
-void linearFree(void* p){trace(6);check(!ndsp_started,"buffer freed only after NDSP exit");std::free(p);}
+void* linearAlloc(size_t n){trace(5,uint32_t(n),uint32_t(fail_alloc));if(fail_alloc)return nullptr;auto*p=std::malloc(n);if(p){allocated+=n;allocations.emplace(p,n);}return p;}
+void linearFree(void* p){trace(6);check(!ndsp_started,"buffer freed only after NDSP exit");auto i=allocations.find(p);check(i!=allocations.end(),"freed buffer has a live allocation");allocated-=i->second;allocations.erase(i);std::free(p);}
 uint32_t ndspGetDroppedFrames(){return 7;}
 void ndspChnWaveBufClear(int lane){trace(7,uint32_t(lane));drain(lane);}
 void ndspChnSetMix(int lane,float* mix){trace(8,uint32_t(lane),bits(mix[0]));gains[channel(lane)]=mix[0];check(mix[0]==mix[1],"stereo equal gain");}
@@ -109,8 +112,23 @@ int main(int argc,char** argv){
     upstream::AudioBank checked_bank;upstream::AudioAsset house_music;check(checked_bank.load_file(argv[1],error)&&checked_bank.find(34,house_music),"checked music gain available");
     check(std::abs(gains[0]-upstream::audio_linear_gain(house_music.gain_db))<.00001f,"fresh music has no stale fade gain");
     check(player.dropped_frames()==7,"platform drop count reported");player.shutdown();check(!player.available()&&player.dropped_frames()==0,"shutdown explicit");
-    player.reset_scene();check(!player.available()&&!ndsp_started,"scene reset after shutdown stays unavailable");
+    player.reset_scene();check(!player.available()&&!ndsp_started&&allocated==0&&allocations.empty(),"scene reset after shutdown stays unavailable and releases all buffers");
     for(const auto& queue:queues)check(queue.empty(),"shutdown drains all four channels before freeing buffers");
+    // Deferred preparation (116fe2b) initializes buffers before a missing PCM
+    // is first requested. Its reviewed startup adds 13 events. Retain the
+    // historical hash for EVERY later event, rather than replacing it blindly.
+    const std::vector<TraceEvent> deferred_prefix={
+        {1,uint32_t(-42),0},{1,0,0},{3,bits(upstream::audio_linear_gain(-5.93075f)),0},
+        {5,24576,0},{4,0,0},{5,24576,0},{4,1,0},{5,24576,0},{4,2,0},{5,24576,0},{4,3,0},
+        {7,0,0},{7,1,0},{7,2,0},{7,3,0},{2,0,0},{6,0,0},{6,0,0},{6,0,0},{6,0,0}};
+    check(trace_log.size()>=deferred_prefix.size()&&std::equal(deferred_prefix.begin(),deferred_prefix.end(),trace_log.begin()),"exact reviewed deferred-PCM startup and cleanup");
+    auto legacy=trace_log;legacy.erase(legacy.begin()+1,legacy.begin()+deferred_prefix.size());
+    legacy.insert(legacy.begin()+1,{{1,0,0},{7,0,0},{7,1,0},{7,2,0},{7,3,0},{2,0,0}});
+    uint64_t legacy_hash=1469598103934665603ull;
+    for(const auto&event:legacy)for(auto v:event)for(unsigned i=0;i<4;++i){legacy_hash^=uint8_t(v>>(i*8));legacy_hash*=1099511628211ull;}
+    check(legacy.size()==516&&legacy_hash==0x56ffdd52e57c7f69ull,"historical trace remains exact after only the reviewed startup substitution");
+    check(trace_events==529&&audio_trace==0x71a30145b163903bull,"current complete deferred trace remains exact");
+    std::cout<<"LEGACY_TRACE "<<legacy.size()<<" "<<std::hex<<legacy_hash<<std::dec<<"\n";
     std::cout<<"TRACE "<<trace_events<<" "<<std::hex<<audio_trace<<std::dec<<"\n";
     std::cout<<"Audio adapter: "<<checks<<" host-double checks passed; this is NOT NDSP audibility verification\n";
 }

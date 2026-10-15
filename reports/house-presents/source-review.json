@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "44b5bd75a4c5594d4b99052de23bcf54b67771153356bbefa3d26c63d0187792",
+  "ir_sha256": "e0f56fcbfe7bbbdd68063b40d67e56856639d4ff80c074b26fd04b42b8b5a827",
   "sources": {
     "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
     "Audio/Sound effects/Gift Box.mp3.import": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
@@ -56,16 +56,16 @@
     "Translations/TranslatedText/dialogue_ItemDialogue - sheet.csv": "af2de174e5c3c6375ee1fb0aeea018660998d76e8825d6f0acb986faa179dce1",
     "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e"
   },
-  "scope": "All four original House presents drawn with flag state, Unwrapped clip and Sparkles; only fixed key-item presents with default dialogues execute; other presents are explicit development boundaries",
+  "scope": "All four original House presents drawn; default fixed key-item grants support story and persistent object flags; custom dialogue and normal inventory presents remain explicit development boundaries",
   "semantics": {
     "ready": "Opened presents (flag true) show frame 4 and hide Sparkles; each Sparkles _ready draws rand_range(0,47) in tree order",
     "interaction": "Only the interact Area2D participates in the nearest ray hit; player turns on x and y",
-    "grant": "Unwrapped clip starts, key item granted to key_items (never full), flag set, presentcheck opens",
+    "grant": "Unwrapped clip starts, key item granted to key_items (never full), source story/object flag set, presentcheck opens",
     "text": "Fixed-item lowering of [ItemName]/[ItemArt3]; [ItemReceiver] is the singleton leader for key items",
     "empty": "Opened present shows ItemDialogue/presentempty"
   },
   "unsupported": [
-    "Presents with object flags or non-key items (Present1 diary cutscene, Present2 bat, Present3 map)",
+    "Present1 diary cutscene and Present2 normal inventory bat",
     "ButtonPrompt over presents",
     "Reusable/noproblem when the ray hits the StaticBody2D"
   ],

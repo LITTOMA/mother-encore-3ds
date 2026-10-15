@@ -48,10 +48,10 @@ int main(int argc,char**argv){
  CHECK(build());CHECK(flag_value(output,data.saved_flag_id()));
  live.earned_cash=0;for(auto&f:input.state.flags)if(f.id==data.earned_cash_flag_id())f.value=false;CHECK(build());CHECK(output.bank==15&&output.earned_cash==0&&!flag_value(output,data.earned_cash_flag_id()));
  const auto good=output;
- // Mom room is now a source-connected native route; basement remains unported.
+ // Mom room and basement are now source-connected native routes.
  auto mom=good;mom.position_x=496;mom.position_y=96;CHECK(validate(mom));
  std::vector<std::function<void(SessionSnapshot&)>>bad={
- [](auto&s){s.scene_id="unknown";},[](auto&s){s.scene_label="unknown";},[](auto&s){s.source_version="unknown";},[](auto&s){s.party[0]="nickname";},[](auto&s){s.characters[0].character_id="unknown";},[](auto&s){s.characters.push_back(s.characters[0]);},[](auto&s){s.characters[0].permanent_boosts.push_back({"defense",5});},[](auto&s){s.characters[0].status.push_back({"unknown",0});},[](auto&s){s.characters[0].affinity_multipliers[0].value=2;},[](auto&s){s.characters[0].level=3;},[](auto&s){s.characters[0].experience=27;},[](auto&s){s.characters[0].hp=66;},[](auto&s){s.characters[0].pp=28;},[](auto&s){s.characters[0].learned_skills.push_back("unknown");},[](auto&s){s.characters[0].inventory[0].item_id="unknown";},[](auto&s){s.characters[0].inventory[0].doses=2;},[](auto&s){s.key_items[0].uid=s.characters[0].inventory[0].uid;},[](auto&s){s.key_items[0].item_id="unknown";},[](auto&s){s.storage=s.key_items;},[](auto&s){s.keys[0].value=1;},[](auto&s){s.rare_drops.push_back({"unknown",1});},[](auto&s){s.object_flags.push_back({"unknown",true});},[](auto&s){s.flags.pop_back();},[](auto&s){s.flags[0].id="unknown";},[](auto&s){s.seen_dialogue_flags.push_back({"unknown",true});},[](auto&s){s.encountered.push_back({"unknown",true});},[](auto&s){s.position_x=1e6;},[](auto&s){s.position_x=96;s.position_y=1000;},[](auto&s){s.direction_x=.2;s.direction_y=.3;},[](auto&s){s.settings.text_speed=.1;},[](auto&s){s.settings.menu_flavor="unknown";},[](auto&s){s.settings.button_prompts="unknown";},[](auto&s){s.settings.description=false;},[](auto&s){s.run_sound="unknown";},[](auto&s){s.shadow_effect="unknown";}
+ [](auto&s){s.scene_id="unknown";},[](auto&s){s.scene_label="unknown";},[](auto&s){s.source_version="unknown";},[](auto&s){s.party[0]="nickname";},[](auto&s){s.characters[0].character_id="unknown";},[](auto&s){s.characters.push_back(s.characters[0]);},[](auto&s){s.characters[0].permanent_boosts.push_back({"defense",5});},[](auto&s){s.characters[0].status.push_back({"unknown",0});},[](auto&s){s.characters[0].affinity_multipliers[0].value=2;},[](auto&s){s.characters[0].level=3;},[](auto&s){s.characters[0].experience=27;},[](auto&s){s.characters[0].hp=66;},[](auto&s){s.characters[0].pp=28;},[](auto&s){s.characters[0].learned_skills.push_back("unknown");},[](auto&s){s.characters[0].inventory[0].item_id="unknown";},[](auto&s){s.characters[0].inventory[0].doses=2;},[](auto&s){s.key_items[0].uid=s.characters[0].inventory[0].uid;},[](auto&s){s.key_items[0].item_id="unknown";},[](auto&s){s.storage=s.key_items;},[](auto&s){s.keys[0].value=1;},[](auto&s){s.rare_drops.push_back({"unknown",1});},[](auto&s){s.object_flags.push_back({"unknown",true});},[](auto&s){s.flags.pop_back();},[](auto&s){s.flags[0].id="unknown";},[](auto&s){s.seen_dialogue_flags.push_back({"unknown",true});},[](auto&s){s.encountered.push_back({"unknown",true});},[](auto&s){s.position_x=1e6;},[](auto&s){s.position_x=96;s.position_y=2000;},[](auto&s){s.direction_x=.2;s.direction_y=.3;},[](auto&s){s.settings.text_speed=.1;},[](auto&s){s.settings.menu_flavor="unknown";},[](auto&s){s.settings.button_prompts="unknown";},[](auto&s){s.settings.description=false;},[](auto&s){s.run_sound="unknown";},[](auto&s){s.shadow_effect="unknown";}
  };
  for(const auto&edit:bad){auto s=good;edit(s);CHECK(!validate(s));}
  // Registered but unsupported story state must not become a valid save merely
@@ -69,7 +69,7 @@ int main(int argc,char**argv){
  for(size_t n=0;n<bytes.size();++n)CHECK(!data.load(bytes.data(),n,error));
  CHECK(data.valid()&&data.leader_id()=="ninten");
  for(size_t i=0;i<bytes.size();++i){auto mutation=bytes;mutation[i]^=1;CHECK(!data.load(mutation.data(),mutation.size(),error));}
- for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,7},{20,7},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,8},{20,8},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  auto trailing=bytes;trailing.push_back(0);fix(trailing);CHECK(!data.load(trailing.data(),trailing.size(),error));CHECK(data.load(bytes.data(),bytes.size(),error));CHECK(validate(good));
  // A schema1/capability1 resource still loads without injecting the new
  // startup roster, as required by the archived rules6 migration resource.
@@ -77,8 +77,18 @@ int main(int argc,char**argv){
  size_t settings_bytes=4+8*data.text_speeds().size()+4+4;for(const auto&v:data.menu_flavors())settings_bytes+=4+v.size();for(const auto&v:data.button_prompts())settings_bytes+=4+v.size();
  size_t acquisition_bytes=4;for(const auto&policy:data.acquisitions())acquisition_bytes+=4+policy.item_id.size()+8+4+policy.flag_id.size();
  size_t storage_bytes=8;for(const auto&p:data.storage_policies())storage_bytes+=4+p.item_id.size()+12+28;
- size_t key_bytes=4;for(const auto&k:data.key_acquisitions())key_bytes+=4+k.item_id.size()+4+4+k.flag_id.size()+4+k.consumed_flag_id.size();
+ size_t key_bytes=4;for(const auto&k:data.key_acquisitions())key_bytes+=4+k.item_id.size()+4+4+k.flag_id.size()+4+k.consumed_flag_id.size()+4;
  auto v5_resource=bytes;v5_resource.resize(bytes.size()-key_bytes);put(v5_resource,8,5);put(v5_resource,20,5);fix(v5_resource);NativeSessionData v5;CHECK(v5.load(v5_resource.data(),v5_resource.size(),error));CHECK(v5.key_acquisitions().empty());
+ auto v6_resource=v5_resource;
+ auto append32=[&](uint32_t value){const auto at=v6_resource.size();v6_resource.resize(at+4);put(v6_resource,at,value);};
+ auto append_text=[&](const std::string&value){append32(uint32_t(value.size()));v6_resource.insert(v6_resource.end(),value.begin(),value.end());};
+ append32(uint32_t(std::count_if(data.key_acquisitions().begin(),data.key_acquisitions().end(),[](const auto&k){return k.flag_policy==1;})));
+ for(const auto&k:data.key_acquisitions())if(k.flag_policy==1){append_text(k.item_id);append32(k.doses);append_text(k.flag_id);append_text(k.consumed_flag_id);}
+ put(v6_resource,8,6);put(v6_resource,20,6);fix(v6_resource);NativeSessionData v6;
+ CHECK(v6.load(v6_resource.data(),v6_resource.size(),error));CHECK(v6.key_acquisitions().size()==2);
+ for(const auto&k:v6.key_acquisitions())CHECK(k.flag_policy==1);
+ auto unknown_policy=bytes;put(unknown_policy,unknown_policy.size()-4,3);fix(unknown_policy);
+ CHECK(!data.load(unknown_policy.data(),unknown_policy.size(),error));CHECK(data.key_acquisitions().size()==3);
  auto v4_resource=v5_resource;v4_resource.resize(v5_resource.size()-storage_bytes);put(v4_resource,8,4);put(v4_resource,20,4);fix(v4_resource);NativeSessionData v4;CHECK(v4.load(v4_resource.data(),v4_resource.size(),error));CHECK(v4.storage_capacity()==0);
  auto v3_resource=v4_resource;v3_resource.resize(v4_resource.size()-acquisition_bytes);put(v3_resource,8,3);put(v3_resource,20,3);fix(v3_resource);NativeSessionData v3;CHECK(v3.load(v3_resource.data(),v3_resource.size(),error));CHECK(v3.acquisitions().empty());
  auto v2_resource=v3_resource;v2_resource.resize(v2_resource.size()-settings_bytes);put(v2_resource,8,2);put(v2_resource,20,2);fix(v2_resource);NativeSessionData v2;CHECK(v2.load(v2_resource.data(),v2_resource.size(),error));CHECK(v2.acquisitions().empty());
@@ -87,12 +97,18 @@ int main(int argc,char**argv){
  std::vector<uint8_t>current_defaults,legacy_defaults;CHECK(encode_session_save(data.defaults(),data.compatibility(),current_defaults,error));CHECK(encode_session_save(legacy.defaults(),legacy.compatibility(),legacy_defaults,error));CHECK(current_defaults==legacy_defaults);
  CHECK(validate_native_session_snapshot(legacy,room.view(),house.view(),round.view(),items.view(),good,error));CHECK(!validate_native_session_snapshot(legacy,room.view(),house.view(),round.view(),items.view(),startup,error));
  CHECK(data.acquisitions().size()==1);const auto&policy=data.acquisitions()[0];CHECK(policy.max_count==1);
- CHECK(data.key_acquisitions().size()==1);const auto&key_policy=data.key_acquisitions()[0];CHECK(key_policy.item_id=="DogTreats"&&key_policy.flag_id=="got_dog_treats"&&key_policy.consumed_flag_id=="gave_treats"&&key_policy.doses==1);
+ CHECK(data.key_acquisitions().size()==3);const auto&key_policy=data.key_acquisitions()[0];CHECK(key_policy.item_id=="DogTreats"&&key_policy.flag_id=="got_dog_treats"&&key_policy.consumed_flag_id=="gave_treats"&&key_policy.doses==1);
  auto acquired=good;uint32_t uid=UINT32_MAX;auto used=[&](uint32_t value){for(const auto&c:acquired.characters)for(const auto&item:c.inventory)if(item.uid==value)return true;for(const auto&item:acquired.key_items)if(item.uid==value)return true;return false;};while(used(uid))--uid;
  {auto held=good;uint32_t key_uid=uid-1;while(used(key_uid))--key_uid;held.key_items.push_back({key_policy.item_id,false,key_policy.doses,key_uid});for(auto&f:held.flags)if(f.id==key_policy.flag_id)f.value=true;CHECK(validate(held));
   {auto s=held;s.key_items.pop_back();CHECK(!validate(s));}{auto s=held;for(auto&f:s.flags)if(f.id==key_policy.flag_id)f.value=false;CHECK(!validate(s));}
   {auto s=held;s.key_items.back().item_id="unknown";CHECK(!validate(s));}{auto s=held;s.key_items.back().doses++;CHECK(!validate(s));}
-  {auto consumed=held;for(auto&f:consumed.flags)if(f.id==key_policy.consumed_flag_id)f.value=true;CHECK(!validate(consumed));consumed.key_items.clear();CHECK(validate(consumed));}}
+  {auto consumed=held;for(auto&f:consumed.flags)if(f.id==key_policy.consumed_flag_id)f.value=true;CHECK(!validate(consumed));consumed.key_items.erase(std::remove_if(consumed.key_items.begin(),consumed.key_items.end(),[&](const SessionItem&i){return i.item_id==key_policy.item_id;}),consumed.key_items.end());CHECK(validate(consumed));}}
+ {const auto basement=*std::find_if(data.key_acquisitions().begin(),data.key_acquisitions().end(),[](const auto&k){return k.item_id=="KeyBasement";});CHECK(basement.item_id=="KeyBasement"&&basement.flag_id=="mick_telepathy"&&basement.consumed_flag_id.empty()&&basement.doses==1);
+  auto held=good;held.key_items.push_back({basement.item_id,false,basement.doses,uid});CHECK(!validate(held));for(auto&f:held.flags)if(f.id==basement.flag_id)f.value=true;CHECK(validate(held));
+  for(const auto&door:std::vector<HouseOpenableDoor>{house.view().openable_door(2)})for(auto&f:held.flags)if(f.id==house.view().string(door.flag))f.value=true;
+   held.position_x=88;held.position_y=977;CHECK(validate(held));CHECK(encode_session_save(held,data.compatibility(),encoded,error));CHECK(decode_session_save(encoded.data(),encoded.size(),data.compatibility(),restored,error));CHECK(validate(restored)&&restored.key_items.back().uid==uid);
+   for(const auto&f:restored.flags)if(f.id==house.view().string(house.view().openable_door(2).flag))CHECK(f.value);
+  held.key_items.pop_back();CHECK(!validate(held));}
  acquired.characters[0].inventory.push_back({policy.item_id,false,policy.doses,uid});for(auto&f:acquired.flags)if(f.id==policy.flag_id)f.value=true;CHECK(validate(acquired));
  CHECK(encode_session_save(acquired,data.compatibility(),encoded,error));CHECK(decode_session_save(encoded.data(),encoded.size(),data.compatibility(),restored,error));CHECK(validate(restored));CHECK(restored.characters[0].inventory.back().uid==uid);
  CHECK(!validate_native_session_snapshot(v3,room.view(),house.view(),round.view(),items.view(),acquired,error));
@@ -102,7 +118,8 @@ int main(int argc,char**argv){
  {auto s=acquired;s.characters[0].inventory.back().uid=s.characters[0].inventory.front().uid;CHECK(!validate(s));}
  {auto s=acquired;auto duplicate=s.characters[0].inventory.back();duplicate.uid=uid-1;s.characters[0].inventory.push_back(duplicate);CHECK(!validate(s));}
  {auto s=acquired;for(auto&f:s.flags)if(f.id==policy.flag_id)f.value=false;CHECK(!validate(s));}
- {auto s=acquired;std::swap(s.characters[0].inventory.front(),s.characters[0].inventory.back());CHECK(!validate(s));}
+ // Source storage transfers can reorder inventory; stable UIDs identify items.
+  {auto s=acquired;std::swap(s.characters[0].inventory.front(),s.characters[0].inventory.back());CHECK(validate(s));CHECK(encode_session_save(s,data.compatibility(),encoded,error));CHECK(decode_session_save(encoded.data(),encoded.size(),data.compatibility(),restored,error));CHECK(validate(restored));CHECK(restored.characters[0].inventory.front().uid==s.characters[0].inventory.front().uid);}
  uint32_t definition=UINT32_MAX;for(uint32_t i=0;i<items.view().count(ItemSection::Definitions);++i)if(items.view().string(items.view().definition(i).source)==policy.item_id)definition=i;CHECK(definition!=UINT32_MAX);
  InventoryState acquired_inventory;CHECK(acquired_inventory.initialize(items.view()));CHECK(acquired_inventory.append(definition,policy.doses,uid,error));input.state=good;for(auto&f:input.state.flags)if(f.id==policy.flag_id)f.value=true;input.inventory=&acquired_inventory;CHECK(build());CHECK(output.characters[0].inventory.back().uid==uid&&output.characters[0].inventory.back().doses==policy.doses);
  for(auto&f:input.state.flags)if(f.id==policy.flag_id)f.value=false;const auto previous_output=output;CHECK(!build());CHECK(output.characters[0].inventory.back().uid==previous_output.characters[0].inventory.back().uid);

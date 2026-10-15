@@ -10,7 +10,7 @@ from round_assets import Presentation
 IR=ROOT/'content/doll-round.json';PACK=ROOT/'romfs/battle/doll/doll-entry.encround';REPORT=ROOT/'reports/doll-round'
 def digest(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def read(p):return json.loads(Path(p).read_text())
-def write(p,v):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(v,indent=2,ensure_ascii=False)+'\n')
+def write(p,v):p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes((json.dumps(v,indent=2,ensure_ascii=False)+'\n').encode('utf8'))
 def conditional_growth_policy(pm):
  """Audit the source boundary that makes growth conditional on live EXP."""
  from boss_presentation_bindings import load

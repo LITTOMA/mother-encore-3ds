@@ -21,6 +21,13 @@ bool FieldEquipmentMenu::fail(const char*s){error_=s;return false;}
 bool FieldEquipmentMenu::validate_snapshot(const FieldEquipmentSnapshot&s){
  if(s.owner!=data_.binding(FieldBinding::Owner)||s.nickname.empty()||!s.level||s.cash<0||s.cash>UINT32_MAX||!s.inventory.valid()||!data_.bind_items(s.inventory.content(),error_))return fail("Field equipment character/inventory scope rejected");
  if(s.stats[0]<=0||std::any_of(s.stats.begin(),s.stats.end(),[](int32_t n){return n<0;}))return fail("Field equipment current stats rejected");
+ if(s.pp<0||s.pp>s.stats[1])return fail("Field PSI current PP rejected");
+ std::set<std::string> skills;
+ for(const auto&skill:s.learned_skills)if(!skills.insert(skill).second||(skill!=data_.binding(FieldBinding::PsiSkillId)&&skill!=data_.binding(FieldBinding::PsiBaseSkill0)&&skill!=data_.binding(FieldBinding::PsiBaseSkill1)))return fail("Field PSI unknown/duplicate learned skill rejected");
+ if(!skills.count(std::string(data_.binding(FieldBinding::PsiBaseSkill0)))||!skills.count(std::string(data_.binding(FieldBinding::PsiBaseSkill1))))return fail("Field PSI base skill identity missing");
+ const bool knows=skills.count(std::string(data_.binding(FieldBinding::PsiSkillId)))!=0;
+ if(s.level+1<uint32_t(data_.parameter(FieldParameter::PsiLearnLevel))||s.level>uint32_t(data_.parameter(FieldParameter::PsiLearnLevel)))return fail("Field PSI level scope rejected");
+ if(knows!=(s.level>=uint32_t(data_.parameter(FieldParameter::PsiLearnLevel))))return fail("Field PSI learned skill/level binding rejected");
  std::set<uint32_t>uids,slots;for(const auto&i:s.inventory.instances()){
   if(i.definition>=s.inventory.content().count(ItemSection::Definitions)||!uids.insert(i.id).second||i.equipped>1||!i.doses||i.doses>65535)return fail("Field equipment inventory identity rejected");
   auto d=s.inventory.content().definition(i.definition);if(!(d.flags&uint32_t(ItemDefinitionFlag::Equipment))){if(i.equipped)return fail("Field equipment ordinary item marked equipped");continue;}
@@ -30,14 +37,16 @@ bool FieldEquipmentMenu::validate_snapshot(const FieldEquipmentSnapshot&s){
 }
 bool FieldEquipmentMenu::read_snapshot(){FieldEquipmentSnapshot next;if(!host_.read(next,error_))return false;if(!validate_snapshot(next))return false;snapshot_=std::move(next);return true;}
 bool FieldEquipmentMenu::initialize(FieldEquipmentView data,FieldEquipmentHost host,bool chinese){if(!data.valid()||!host.read||!host.preview||!host.commit)return fail("Field equipment requires checked content/host");FieldEquipmentMenu next;next.data_=data;next.host_=std::move(host);next.chinese_=chinese;if(!next.read_snapshot())return fail(next.error());next.preview_=next.snapshot_.stats;*this=std::move(next);return true;}
-bool FieldEquipmentMenu::open(){if(!data_.valid()||!host_.read||active())return fail("Field equipment open state rejected");if(!read_snapshot())return false;command_=slot_=candidate_=offset_=0;candidates_.clear();preview_=snapshot_.stats;phase_=FieldEquipmentPhase::PauseOpening;phase_time_=pause_time_=equip_time_=description_time_=0;description_open_=equip_closing_=has_description_=false;description_from_=description_to_=0;cursor_time_=0;retarget_cursor(true);sounds_.clear();sounds_.push_back(FieldEquipmentSound::PauseOpen);error_.clear();return true;}
+bool FieldEquipmentMenu::open(){if(!data_.valid()||!host_.read||active())return fail("Field equipment open state rejected");if(!read_snapshot())return false;command_=slot_=candidate_=offset_=0;candidates_.clear();preview_=snapshot_.stats;phase_=FieldEquipmentPhase::PauseOpening;phase_time_=pause_time_=equip_time_=description_time_=0;description_open_=equip_closing_=has_description_=psi_closing_=psi_request_=false;psi_time_=0;description_from_=description_to_=0;cursor_time_=0;retarget_cursor(true);sounds_.clear();sounds_.push_back(FieldEquipmentSound::PauseOpen);error_.clear();return true;}
+bool FieldEquipmentMenu::psi_learned()const{return std::find(snapshot_.learned_skills.begin(),snapshot_.learned_skills.end(),data_.binding(FieldBinding::PsiSkillId))!=snapshot_.learned_skills.end();}
 bool FieldEquipmentMenu::equipment_visible()const{return equip_closing_||phase_==FieldEquipmentPhase::EquipOpening||phase_==FieldEquipmentPhase::Slots||phase_==FieldEquipmentPhase::Candidates;}
 const ItemInstance*FieldEquipmentMenu::equipped_item(uint32_t slot)const{for(const auto&i:snapshot_.inventory.instances())if(i.equipped)for(uint32_t j=0;j<data_.count(FieldSection::Equipment);++j){auto e=data_.equipment(j);if(e.definition==i.definition&&e.slot==slot)return &i;}return nullptr;}
 const ItemInstance*FieldEquipmentMenu::selected_item()const{if(phase_==FieldEquipmentPhase::Candidates)return candidate_<candidates_.size()&&!candidates_[candidate_].none?&candidates_[candidate_].item:nullptr;if(phase_==FieldEquipmentPhase::Slots||phase_==FieldEquipmentPhase::EquipOpening)return equipped_item(slot_);return nullptr;}
 void FieldEquipmentMenu::retarget_cursor(bool instant){
  auto rows=uint32_t(data_.parameter(FieldParameter::ListRows));if(phase_==FieldEquipmentPhase::Candidates){if(candidate_<offset_)offset_=candidate_;else if(candidate_>=offset_+rows)offset_=candidate_-rows+1;cursor_target_row_=float(candidate_-offset_);cursor_target_col_=0;}
  else if(phase_==FieldEquipmentPhase::Slots||phase_==FieldEquipmentPhase::EquipOpening){cursor_target_row_=float(slot_);cursor_target_col_=0;}
- else{auto columns=uint32_t(data_.parameter(FieldParameter::PauseColumns));cursor_target_row_=float(command_/columns);cursor_target_col_=float(command_%columns);}
+ else if(phase_==FieldEquipmentPhase::PsiOpening||phase_==FieldEquipmentPhase::Psi||phase_==FieldEquipmentPhase::PsiFailed){cursor_target_row_=cursor_target_col_=0;}
+  else{auto columns=uint32_t(data_.parameter(FieldParameter::PauseColumns));cursor_target_row_=float(command_/columns);cursor_target_col_=float(command_%columns);}
  cursor_from_row_=cursor_row_;cursor_from_col_=cursor_col_;cursor_move_time_=0;if(instant){cursor_row_=cursor_from_row_=cursor_target_row_;cursor_col_=cursor_from_col_=cursor_target_col_;}
 }
 void FieldEquipmentMenu::update_description(){const auto*item=selected_item();const bool next=item!=nullptr;if(item){description_item_=*item;has_description_=true;}if(next==description_open_)return;description_from_=description_progress();description_to_=next?1.f:0.f;description_time_=0;description_open_=next;}
@@ -58,7 +67,19 @@ bool FieldEquipmentMenu::input(int x,int y,bool confirm,bool cancel,bool scope,b
   if(cancel||pause_toggle){phase_=FieldEquipmentPhase::PauseClosing;pause_time_=phase_time_=0;sounds_.push_back(FieldEquipmentSound::PauseClose);return true;}
   if(phase_==FieldEquipmentPhase::PauseOpening)return true;
   if(y||x){auto columns=uint32_t(data_.parameter(FieldParameter::PauseColumns)),rows=data_.count(FieldSection::Commands)/columns;auto row=int(command_/columns),col=int(command_%columns);if(y)row=(row+y+int(rows))%int(rows);else col=(col+x+int(columns))%int(columns);auto next=uint32_t(row)*columns+uint32_t(col);if(next!=command_){command_=next;retarget_cursor();sounds_.push_back(FieldEquipmentSound::Move);}}
-  if(confirm){if(!data_.command(command_).enabled){sounds_.push_back(FieldEquipmentSound::Restricted);return true;}if(!read_snapshot())return false;phase_=FieldEquipmentPhase::EquipOpening;phase_time_=equip_time_=0;equip_closing_=false;slot_=candidate_=offset_=0;preview_=snapshot_.stats;retarget_cursor(true);update_description();sounds_.push_back(FieldEquipmentSound::EquipOpen);}return true;
+  if(confirm){if(!data_.command(command_).enabled){sounds_.push_back(FieldEquipmentSound::Restricted);return true;}if(!read_snapshot())return false;if(data_.command(command_).id==2){phase_=FieldEquipmentPhase::PsiOpening;psi_closing_=false;psi_time_=phase_time_=0;retarget_cursor(true);sounds_.push_back(FieldEquipmentSound::EquipOpen);return true;}if(data_.command(command_).id!=3)return fail("Field command action rejected");phase_=FieldEquipmentPhase::EquipOpening;phase_time_=equip_time_=0;equip_closing_=false;slot_=candidate_=offset_=0;preview_=snapshot_.stats;retarget_cursor(true);update_description();sounds_.push_back(FieldEquipmentSound::EquipOpen);}return true;
+ }
+ if(phase_==FieldEquipmentPhase::PsiOpening||phase_==FieldEquipmentPhase::Psi||phase_==FieldEquipmentPhase::PsiFailed){
+  if(phase_==FieldEquipmentPhase::PsiFailed){if(confirm||cancel)phase_=FieldEquipmentPhase::Psi;return true;}
+  if(cancel){phase_=FieldEquipmentPhase::Pause;psi_closing_=true;psi_time_=0;retarget_cursor(true);sounds_.push_back(FieldEquipmentSound::EquipClose);return true;}
+  if(phase_==FieldEquipmentPhase::PsiOpening)return true;
+  // The admitted field list contains one unlevelled skill. Empty lists have no cursor.
+  if(confirm&&psi_learned()){
+   if(!read_snapshot())return false;
+   if(!psi_learned())return fail("Field PSI skill changed during selection");
+   if(snapshot_.pp<int32_t(data_.parameter(FieldParameter::PsiCost))){phase_=FieldEquipmentPhase::PsiFailed;sounds_.push_back(FieldEquipmentSound::Restricted);return true;}
+   psi_request_=true;psi_closing_=true;psi_time_=pause_time_=phase_time_=0;phase_=FieldEquipmentPhase::PauseClosing;sounds_.push_back(FieldEquipmentSound::Confirm);
+  }return true;
  }
  if(phase_!=FieldEquipmentPhase::EquipOpening&&phase_!=FieldEquipmentPhase::Slots&&phase_!=FieldEquipmentPhase::Candidates)return fail("Field equipment unknown active phase");
  if(cancel){if(phase_==FieldEquipmentPhase::Candidates){phase_=FieldEquipmentPhase::Slots;candidates_.clear();candidate_=offset_=0;retarget_cursor(true);sounds_.push_back(FieldEquipmentSound::Back);return update_preview();}
@@ -80,14 +101,17 @@ float FieldEquipmentMenu::animation_value(FieldClipRole role)const{
  if(role==FieldClipRole::PauseOpen||role==FieldClipRole::PauseClose){auto c=phase_==FieldEquipmentPhase::PauseClosing?FieldClipRole::PauseClose:FieldClipRole::PauseOpen;return sample(c,phase_==FieldEquipmentPhase::PauseOpening||phase_==FieldEquipmentPhase::PauseClosing?pause_time_:data_.clip(c).duration);}
  if(role==FieldClipRole::EquipOpen||role==FieldClipRole::EquipClose){auto c=equip_closing_?FieldClipRole::EquipClose:FieldClipRole::EquipOpen;return sample(c,equip_time_);}
  if(role==FieldClipRole::DescriptionOpen||role==FieldClipRole::DescriptionClose){auto c=description_open_?FieldClipRole::DescriptionOpen:FieldClipRole::DescriptionClose;return sample(c,description_time_);}
+ if(role==FieldClipRole::PsiOpen||role==FieldClipRole::PsiClose){auto c=psi_closing_?FieldClipRole::PsiClose:FieldClipRole::PsiOpen;return sample(c,psi_time_);}
  return 0;
 }
 uint32_t FieldEquipmentMenu::cursor_frame()const{if(!data_.valid())return 0;auto i=uint32_t(std::fmod(cursor_time_*data_.parameter(FieldParameter::CursorFps),4.0));return uint32_t(data_.parameter(FieldParameter(uint32_t(FieldParameter::CursorFrame0)+i)));}
-bool FieldEquipmentMenu::idle_frame(double dt){if(!data_.valid()||!std::isfinite(dt)||dt<0||dt>1)return fail("Field equipment delta rejected");if(!active())return true;phase_time_+=float(dt);pause_time_+=float(dt);equip_time_+=float(dt);description_time_+=float(dt);cursor_time_+=dt;cursor_move_time_+=float(dt);float t=std::min(cursor_move_time_/data_.parameter(FieldParameter::CursorMoveSeconds),1.f);float ease=1-std::pow(1-t,4.f);cursor_row_=cursor_from_row_+(cursor_target_row_-cursor_from_row_)*ease;cursor_col_=cursor_from_col_+(cursor_target_col_-cursor_from_col_)*ease;
+bool FieldEquipmentMenu::idle_frame(double dt){if(!data_.valid()||!std::isfinite(dt)||dt<0||dt>1)return fail("Field equipment delta rejected");if(!active())return true;phase_time_+=float(dt);pause_time_+=float(dt);equip_time_+=float(dt);psi_time_+=float(dt);description_time_+=float(dt);cursor_time_+=dt;cursor_move_time_+=float(dt);float t=std::min(cursor_move_time_/data_.parameter(FieldParameter::CursorMoveSeconds),1.f);float ease=1-std::pow(1-t,4.f);cursor_row_=cursor_from_row_+(cursor_target_row_-cursor_from_row_)*ease;cursor_col_=cursor_from_col_+(cursor_target_col_-cursor_from_col_)*ease;
  if(phase_==FieldEquipmentPhase::PauseOpening&&pause_time_>=data_.clip(FieldClipRole::PauseOpen).duration)phase_=FieldEquipmentPhase::Pause;
  if(phase_==FieldEquipmentPhase::EquipOpening&&equip_time_>=data_.clip(FieldClipRole::EquipOpen).duration)phase_=FieldEquipmentPhase::Slots;
+ if(phase_==FieldEquipmentPhase::PsiOpening&&psi_time_>=data_.clip(FieldClipRole::PsiOpen).duration)phase_=FieldEquipmentPhase::Psi;
+ if(psi_closing_&&psi_time_>=data_.clip(FieldClipRole::PsiClose).duration)psi_closing_=false;
  if(equip_closing_&&equip_time_>=data_.clip(FieldClipRole::EquipClose).duration)equip_closing_=false;
- if(phase_==FieldEquipmentPhase::PauseClosing&&pause_time_>=data_.clip(FieldClipRole::PauseClose).duration){phase_=FieldEquipmentPhase::Closed;equip_closing_=false;command_=slot_=candidate_=offset_=0;candidates_.clear();}
+ if(phase_==FieldEquipmentPhase::PauseClosing&&pause_time_>=data_.clip(FieldClipRole::PauseClose).duration){phase_=FieldEquipmentPhase::Closed;equip_closing_=psi_closing_=false;command_=slot_=candidate_=offset_=0;candidates_.clear();}
  return true;
 }
 }

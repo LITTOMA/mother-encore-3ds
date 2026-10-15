@@ -19,6 +19,7 @@ public:
  bool poll_event(ContinueEvent&);void close();
  bool is_open()const{return phase_!=ContinuePhase::Closed;}ContinuePhase phase()const{return phase_;}
  const ContinueMenuData*data()const{return data_;}const SaveMenu&slot_model()const{return slots_;}
+ uint32_t title_selection()const{return title_;}
  uint32_t selected_slot()const{return slots_.selected_slot();}ContinuePose pose()const;
 private:
  enum class Transit {None,ToSlotsIn,ToSlotsYield,ToSlotsOut,ToTitleIn,ToTitleYield,ToTitleOut,LoadIn,RevealYield,RevealOut};

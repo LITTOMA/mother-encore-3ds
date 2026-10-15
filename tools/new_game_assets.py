@@ -275,14 +275,56 @@ def verify(r):
  check=dict(dependencies={});resolve_bindings(ex,check);require(check['bindings']==r['bindings'],'Changed battle name binding')
  for p,v in r['outputs'].items():require(sha(ROOT/'romfs'/p)==v['sha256'],'Changed naming texture '+p)
 
+def rebound_session_dependency(recipe,previous,current,current_sha):
+ require(set(previous)==set(current),'Changed naming session field set')
+ for key in previous:
+  if key not in ('schema','key_acquisitions','mutable_flags','camera_area_ids','dependencies'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
+ require(previous['schema']==current['schema'] or (previous['schema'],current['schema'])==(6,7),'Unreviewed naming session schema migration')
+ prior_keys=[dict(k,flag_policy=k.get('flag_policy',1)) for k in previous['key_acquisitions']]
+ current_keys=[dict(k,flag_policy=k.get('flag_policy',1)) for k in current['key_acquisitions']]
+ require(set(previous['mutable_flags'])<=set(current['mutable_flags']) and all(k in current_keys for k in prior_keys),'Removed session acquisition/flag scope')
+ require(set(previous['camera_area_ids'])<=set(current['camera_area_ids']),'Removed session camera scope')
+ result=dict(recipe,dependencies=dict(recipe['dependencies']))
+ c,_,_=load_presentation(ROOT);require(c['session_ir'] in result['dependencies'],'Missing source naming session binding')
+ require(re.fullmatch('[0-9a-f]{64}',current_sha),'Invalid naming session fingerprint')
+ result['dependencies'][c['session_ir']]=current_sha
+ return result
+
+def rebound_checked_dependency(previous,current):
+ require(set(previous)==set(current),'Changed naming dependency field set')
+ if previous.get('kind')=='encore.native-battle-round.source-ir':allowed={'dependencies'}
+ elif previous.get('schema')==1 and 'provenance' in previous and 'sections' in previous:allowed={'provenance'}
+ else:raise ValueError('Unreviewed naming dependency update')
+ require(all(previous[k]==current[k]for k in previous if k not in allowed),'Changed naming dependency gameplay')
+
+def reuse_session(base_commit):
+ require(re.fullmatch('[0-9a-f]{40}',base_commit or ''),'Naming dependency reuse requires exact baseline commit')
+ c,_,_=load_presentation(ROOT)
+ old=lambda name:subprocess.check_output(['git','show',base_commit+':'+name],cwd=ROOT)
+ prior_ir=old(IR.relative_to(ROOT).as_posix());prior_session=old(c['session_ir'])
+ recipe=json.loads(prior_ir);require(recipe['dependencies'][c['session_ir']]==hashlib.sha256(prior_session).hexdigest(),'Naming baseline session identity mismatch')
+ current=read_json(ROOT/c['session_ir'])
+ from tools.native_session import verify_recipe
+ verify_recipe(current)
+ candidate=rebound_session_dependency(recipe,json.loads(prior_session),current,sha(ROOT/c['session_ir']))
+ for path,digest in recipe['dependencies'].items():
+  if path==c['session_ir'] or sha(ROOT/path)==digest:continue
+  previous=old(path);require(hashlib.sha256(previous).hexdigest()==digest,'Naming baseline dependency identity mismatch: '+path)
+  rebound_checked_dependency(json.loads(previous),read_json(ROOT/path))
+  candidate['dependencies'][path]=sha(ROOT/path)
+ require(read_json(IR) in (recipe,candidate),'Naming baseline IR differs; do not rebind unrelated changes')
+ verify(candidate);require(encode(candidate)==PACK.read_bytes(),'Naming dependency update changes binary game/UI content')
+ IR.write_bytes((json.dumps(candidate,indent=2,ensure_ascii=False,sort_keys=True)+'\n').encode('utf8'));print('Naming session dependency re-admitted; exact game/UI binary and actual textures retained')
+
 def stage_files(root):
  r=read_json(IR);verify(r);files={Path('ui/opening.encnewgame'):(Path(root)/'ui/opening.encnewgame').read_bytes()};require(files[Path('ui/opening.encnewgame')]==encode(r),'Stale naming pack')
  for p,v in r['outputs'].items():
   path=Path(p);require(not path.is_absolute()and'..'not in path.parts,'Unsafe name resource');raw=(Path(root)/path).read_bytes();require(hashlib.sha256(raw).hexdigest()==v['sha256'],'Staged naming texture mismatch');files[path]=raw
  return files
 if __name__=='__main__':
- ap=argparse.ArgumentParser();ap.add_argument('action',choices=['assets','compile','verify']);ap.add_argument('--tex3ds');ap.add_argument('--godot');a=ap.parse_args()
- if a.action=='assets':extract_assets(Path(a.tex3ds),Path(a.godot))
+ ap=argparse.ArgumentParser();ap.add_argument('action',choices=['assets','compile','verify','reuse-session']);ap.add_argument('--tex3ds');ap.add_argument('--godot');ap.add_argument('--base');a=ap.parse_args()
+ if a.action=='reuse-session':reuse_session(a.base)
+ elif a.action=='assets':extract_assets(Path(a.tex3ds),Path(a.godot))
  else:
   r=read_json(IR);verify(r);raw=encode(r)
   if a.action=='compile':PACK.write_bytes(raw)

@@ -5,6 +5,7 @@
 #include "encore/collision.hpp"
 #include "encore/content.hpp"
 #include "encore/crc32.hpp"
+#include "fixtures/segment_v0362.hpp"
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
@@ -55,7 +56,7 @@ int main(int argc,char**argv){
     {auto b=map_bytes;put(b,64+16*1,get(b,64+16*1)+1);reject(b,"reordered section kind rejected");}
     {auto b=map_bytes;put(b,64+16*1+4,get(b,64+16*1+4)+2);reject(b,"misaligned section rejected");}
     const size_t atlases=section(map_bytes,2),tiles=section(map_bytes,6),chunks=section(map_bytes,11),cell_rows=section(map_bytes,12),items=section(map_bytes,14),groups=section(map_bytes,15);
-    {auto b=map_bytes;const auto len=get(b,atlases+4);b[section(b,1)+get(b,atlases)+len-1]='x';reject(b,"non-t3x atlas path rejected");}
+    {auto b=map_bytes;const auto len=get(b,atlases+4);b[section(b,1)+get(b,atlases)+len-1]^=1;reject(b,"non-t3x atlas path rejected");}
     {auto b=map_bytes;put16(b,atlases+8,1000);reject(b,"non power-of-two atlas rejected");}
     {auto b=map_bytes;put(b,tiles,count(b,4));reject(b,"tile picture outside table rejected");}
     {auto b=map_bytes;put_float(b,tiles+8,NAN);reject(b,"nonfinite tile offset rejected");}
@@ -97,14 +98,17 @@ int main(int argc,char**argv){
         const ConvexPolygon actor{{{-7,3},{6,3},{6,9},{-7,9}}};
         check(solver.configure(actor,{},0.08f),"solver configured");
         WallSource wall;solver.attach_source(&wall);
-        SlideResult r;Vec2 p{0,-20};
-        for(int i=0;i<60;++i){check(solver.slide(p,{0,60},r),"slide against segment");p=r.position;}
-        check(p.y+9<=0.2f&&p.y+9>=-1.0f,"segment wall stops the actor at its surface");
-        for(int i=0;i<10;++i){check(solver.slide(p,{60,60},r),"diagonal slide along segment");p=r.position;}
-        check(p.x>8&&p.y+9<=0.2f,"actor slides along the segment wall");
+        SlideResult r;Vec2 p{0,-20};size_t frame=0;
+        auto compare=[&]{
+            const auto&reference=segment_reference::frames.at(frame++);
+            check(std::abs(p.x-reference.position.x)<0.0001f&&std::abs(p.y-reference.position.y)<0.0001f,"segment position matches official Godot recovery, including its nonzero overlap");
+            check(std::abs(r.velocity.x-reference.velocity.x)<0.0001f&&std::abs(r.velocity.y-reference.velocity.y)<0.0001f,"segment velocity matches official Godot frame");
+        };
+        for(int i=0;i<60;++i){check(solver.slide(p,{0,60},r),"slide against segment");p=r.position;compare();}
+        for(int i=0;i<10;++i){check(solver.slide(p,{60,60},r),"diagonal slide along segment");p=r.position;compare();}
         solver.attach_source(nullptr);
-        for(int i=0;i<30;++i){check(solver.slide(p,{0,60},r),"free slide");p=r.position;}
-        check(p.y>5,"detached source no longer blocks");
+        for(int i=0;i<30;++i){check(solver.slide(p,{0,60},r),"free slide");p=r.position;compare();}
+        check(frame==segment_reference::frames.size(),"all 100 official segment frames checked");
     }
 
     // Live scene: spawn from the House route, walk, stop at a boundary, return home.
@@ -142,6 +146,21 @@ int main(int argc,char**argv){
         while(door.phase()!=SceneDoorPhase::Done&&frames++<600){check(door.idle_frame(1.0/60,error),"fade-out");for(const auto&e:door.take_events())unpause|=e.kind==SceneDoorEventKind::Unpause;}
         check(unpause&&door.phase()==SceneDoorPhase::Done,"fade-out unpauses before it completes");
         check(!door.begin(links,99,fades,error),"unknown route index rejected");
+    }
+    // Telepathy follows the source facing ray; adjacency alone cannot select Mick.
+    {
+        RoomData room;check(room.load_file(argv[3],error),error.c_str());MickData data;
+        std::string mick_path(argv[1]);const auto suffix=mick_path.rfind(".encmap");check(suffix!=std::string::npos,"map suffix");mick_path.replace(suffix,7,".encmick");check(data.load_file(mick_path.c_str(),error),error.c_str());
+        struct Host:MickHost {
+            std::string body;bool validate_flag(std::string_view,std::string&)override{return true;}bool validate_item(std::string_view,std::string&)override{return true;}
+            bool flag(std::string_view,bool&v,std::string&)override{v=false;return true;}bool set_flag(std::string_view,bool,std::string&)override{return true;}bool remove_key_item(std::string_view,std::string&)override{return true;}
+            bool show_text(std::string_view,std::string_view v,std::string&)override{body=std::string(v);return true;}bool play_sound(std::string_view,std::string&)override{return true;}
+        }host;
+        const auto actor=data.view().actor();const Vec2 position{actor.position.x,actor.position.y+14};std::vector<bool>flags(room.view().flag_count(),false);
+        auto scene=std::make_unique<FieldScene>();check(scene->prepare(room.view(),view,links,flags,position,{0,-1},{400,240},error),error.c_str());check(scene->finish_transition(),scene->error().c_str());check(!scene->try_telepathy({0,6},16,error),"unbound thoughts rejected");check(scene->bind_mick(data.view(),host,error),error.c_str());
+        check(!scene->try_telepathy({NAN,6},16,error)&&scene->phase()==FieldPhase::Walking&&!scene->world.house_paused(),"invalid ray fails without pause");
+        check(scene->try_telepathy({0,6},16,error),error.c_str());const auto thoughts=host.body;check(scene->phase()==FieldPhase::MickTalk&&scene->world.house_paused(),"thought dialogue owns pause");check(!scene->try_telepathy({0,6},16,error),"cannot restart active thought dialogue");check(scene->mick().advance_text(error)&&scene->finish_talk(),"thought completion resumes world");
+        check(scene->world.set_house_direction({0,1}),"face away");check(scene->try_telepathy({0,6},16,error),error.c_str());check(host.body!=thoughts,"facing away uses source no-problem, not proximity thoughts");check(scene->mick().advance_text(error)&&scene->finish_talk(),"empty-ray dialogue resumes world");
     }
     std::cout<<"Field data/scene checks: "<<checks<<'\n';
     return 0;

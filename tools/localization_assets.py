@@ -90,6 +90,14 @@ def extract():
   require(values==t['localized'],'House present text disagrees with original CSV rows: '+str(t['id']))
   records[key]=dict(key=key,source=t['source_path']+'#'+t['translation_key']+'@'+t['item'],line=t['id'],values=values)
   fixed[t['id']]=(key,t['label'])
+ from tools.house_key_doors import texts as key_door_texts
+ from tools.extract_battle_entry import Extractor
+ for t in key_door_texts(Extractor(BASE),load(BASE/'content/native-house.json')):
+  item=yaml.safe_load(source('Data/Items/'+t['item']+'.yaml'));key='@native.key-door/'+str(t['id'])
+  values={l:bake(records[t['translation_key']]['values'][l],records[item['name']]['values'][l],records[item['article']]['values'][l])for l in ('en','zh_Hans_CN')}
+  require(values==t['localized'],'Key-door text disagrees with original CSV rows: '+str(t['id']))
+  records[key]=dict(key=key,source=t['source_path']+'#'+t['translation_key']+'@'+t['item'],line=t['id'],values=values)
+  fixed[t['id']]=(key,t['label'])
  house=house_bindings(records,source,bind,tr,fixed)
  from localization_battle import add as battle_bindings
  battles=battle_bindings(records,locales,source,bind,tr)

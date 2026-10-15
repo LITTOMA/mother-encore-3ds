@@ -1,6 +1,7 @@
 import copy,hashlib,json,os,shutil,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
+from tests.items_binding_fixtures import base_resources
 from tools import items_assets as assets,items_presentation_bindings as bindings,native_items as native
 ROOT=Path(os.environ.get('ENCORE_SOURCE_ROOT',Path(__file__).resolve().parents[1]))
 
@@ -15,7 +16,7 @@ class ItemsPresentationBindingsTests(unittest.TestCase):
  def test_default_art_ir_and_checked_pack_are_identical(self):
   ex,definitions,raw=assets.reviewed_extract()
   self.assertEqual(assets.make_recipe(ex),bindings.read(ROOT/'content/items-assets.json'))
-  ir=assets.export_ir(ex,definitions,raw,self.reference,self.ir['resources'],self.ir['dependencies'],write=False)
+  ir=assets.export_ir(ex,definitions,raw,self.reference,base_resources(self.ir),self.ir['dependencies'],write=False)
   self.assertEqual(ir,self.ir);native.verify_sources(ir,ROOT)
   self.assertEqual(native.encode(native.lower(ir,root=ROOT)),(ROOT/'romfs/ui/opening.encitems').read_bytes())
   receipt=bindings.read(ROOT/'content/asset-receipts/graphics/ui/items/source.json')
@@ -85,7 +86,7 @@ class ItemsPresentationBindingsTests(unittest.TestCase):
   with tempfile.TemporaryDirectory(dir=self.fixture)as directory:
    path=Path(directory)/'bindings.json';path.write_text(json.dumps(recipe),encoding='utf-8')
    with patch.object(bindings,'IR',path):
-    ex,definitions,raw=assets.reviewed_extract();changed=assets.export_ir(ex,definitions,raw,self.reference,self.ir['resources'],self.ir['dependencies'],write=False)
+    ex,definitions,raw=assets.reviewed_extract();changed=assets.export_ir(ex,definitions,raw,self.reference,base_resources(self.ir),self.ir['dependencies'],write=False)
     native.verify_sources(changed,ROOT);blob=native.encode(native.lower(changed,root=ROOT));native.parse_pack(blob)
    self.assertNotEqual(blob,(ROOT/'romfs/ui/opening.encitems').read_bytes())
    self.assertEqual(changed['definitions'],self.ir['definitions']);self.assertEqual(changed['initial_inventory'],self.ir['initial_inventory']);self.assertEqual(changed['sounds'],self.ir['sounds']);self.assertEqual(changed['clips'],self.ir['clips'])

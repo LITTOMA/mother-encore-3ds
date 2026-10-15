@@ -49,8 +49,8 @@ class PhoneLinkerBindingTests(unittest.TestCase):
   self.assertEqual([r['identity']['value']for r in rows],[1301,1302,1303,1304,1305])
   self.assertTrue(all(r['gain_db']==0 and r['conversion']is None for r in rows))
   linked=recipe.audio(self.root,self.room,self.c)['assets']
-  self.assertEqual(len(linked),21)
-  self.assertEqual([r['stable_id']for r in linked[-5:]],[1301,1302,1303,1304,1305])
+  self.assertEqual(len(linked),53)
+  self.assertEqual([r['stable_id']for r in linked[16:21]],[1301,1302,1303,1304,1305])
  def test_intro_schema_pin_unknown_hash_paths_and_gain(self):
   def row(c):return next(iter(c['audio'].values()))
   changes=[lambda c:c.update(schema=True),lambda c:c.update(schema=2),lambda c:c.update(commit='0'*40),lambda c:row(c).update(extra=1),lambda c:row(c).update(stable_id=True),lambda c:row(c).update(source_sha256='0'*64),lambda c:row(c).update(import_sha256='0'*64),lambda c:row(c).update(pcm_path='../escaped.pcm'),lambda c:row(c).update(gain_db=True),lambda c:row(c).update(gain_db=1),lambda c:row(c).update(gain_db=float('nan'))]

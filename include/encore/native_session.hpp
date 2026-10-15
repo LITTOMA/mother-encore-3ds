@@ -27,7 +27,7 @@ struct NativeSessionStoragePolicy {
 // flag_id is true and consumed_flag_id (if any) is false, after the defaults.
 struct NativeSessionKeyAcquisition {
     std::string item_id,flag_id,consumed_flag_id;
-    uint32_t doses=0;
+    uint32_t doses=0,flag_policy=1; // 1: story flag; schema 7 also admits 2: object flag.
 };
 class NativeSessionData {
 public:

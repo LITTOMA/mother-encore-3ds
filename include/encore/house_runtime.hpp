@@ -10,6 +10,13 @@
 #include <set>
 namespace encore::upstream {
 class HousePresentation;
+// Read-only live inventory query; all door identities/text/flags come from House.
+class HouseKeyInventory {
+public:
+ virtual ~HouseKeyInventory()=default;
+ virtual bool validate_key(std::string_view,std::string&)=0;
+ virtual bool has_key(std::string_view,bool&,std::string&)=0;
+};
 enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error,InspectionProgram,SceneDoorAwaitIdle,SceneTransition,PresentProgram};
 enum class HouseEventKind:uint8_t {Paused,DoorStarted,DoorEntered,PlayerMoved,FadeOutStarted,DoorDone,DialogueOpened,DialogueSeen,DialogueClosed,OpenableOpened,OpenableUnlocked,OpenableFlagWritten,OpenableNormal,DoorDialogueOpened,StoryRequested};
 struct HouseEvent {HouseEventKind kind{};uint32_t object=0;uint64_t physics_tick=0,idle_frame=0;Vec2 position{};};
@@ -23,6 +30,8 @@ class HouseRuntime : public PhoneFlagQuery, public PhoneSoundSink, private Drawe
 public:
  bool initialize(HouseView,OpeningWorld&,HousePresentation&);
  bool rebind_scene(OpeningWorld&,HousePresentation&);
+ // Admit both source texts and key policy before any door interaction mutates state.
+ bool bind_key_inventory(HouseKeyInventory&);
  bool restore_seen_dialogue(const std::set<uint32_t>&);
  bool set_player_nickname(std::string_view);
  bool bind_phone(PhoneRuntime&);
@@ -35,7 +44,7 @@ public:
  void bind_choices(const DialogueChoicesData&data,DialogueChoices&model){choices_data_=&data;choices_=&model;}
  // Present text and flags are owned here; effects own key-item grants and audio.
  // Transactional: a rejected pack keeps the previous binding. Bind before scene ready.
- bool bind_presents(PresentRuntime&,PresentView,PresentEffects&);
+ bool bind_presents(PresentRuntime&,PresentView,PresentEffects&,const std::vector<SessionFlag>& object_flags={});
  bool present_interaction_supported(uint32_t i)const{return presents_&&presents_->supported(i);}
  // Boundaries of kind UnsupportedScene whose source door has a reviewed route
  // become cross-scene doors; every other boundary keeps the development stop.
@@ -89,6 +98,7 @@ private:
  bool open_openable(uint32_t index);
  bool normal_openable(uint32_t index);
  bool interact_openable(uint32_t index);
+ uint32_t door_dialogue(uint32_t path)const;
  bool interact_phone(uint32_t index);
  bool interact_inspection(uint32_t index);
  bool resolve_inspection_dialogue(uint32_t,uint32_t&)const;
@@ -133,12 +143,13 @@ private:
  PhoneRuntime*phone_=nullptr;std::vector<PhoneSoundRequest>phone_sounds_;
  HouseInspectionView inspections_;
  DrawerProgramView drawer_;DrawerHost*drawer_effects_=nullptr;DrawerProgramRuntime drawer_runtime_;std::string drawer_error_;
+ HouseKeyInventory*key_inventory_=nullptr;std::string key_error_;
  HouseView content_;OpeningWorld*world_=nullptr;HousePresentation*presentation_=nullptr;
  struct AreaContact {uint8_t kind;uint32_t index;bool entered;};
  std::vector<AreaContact>pending_contacts_;
  std::vector<uint8_t>door_inside_,boundary_inside_,story_inside_,story_process_;
  std::vector<HouseOpenableState>openables_;
- struct RestoreWait {uint64_t frame_revision=0,ready_idle=0;uint8_t phase=0;};
+ struct RestoreWait {uint64_t frame_revision=0,ready_idle=0,binding_revision=0;uint8_t phase=0;};
  std::vector<RestoreWait>npc_restore_;
  std::vector<uint64_t>story_ready_idle_;
  Vec2 observed_physics_position_{};

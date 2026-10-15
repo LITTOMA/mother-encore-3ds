@@ -186,7 +186,7 @@ void disk_record(Fixture&f,const NativeSessionData&data,RoundView round,ItemView
   std::string error;check(build_native_session_snapshot(data,room,f.house,round,items,input,out,error),error.c_str());
  };
  std::filesystem::path directory;std::error_code filesystem_error;
- const char*temporary_root=std::getenv("TMPDIR");if(!temporary_root)temporary_root="/tmp";
+ const auto temporary_root=std::filesystem::temp_directory_path(filesystem_error);check(!filesystem_error,"Native temporary root is available");
  for(unsigned i=0;i<1000;++i){auto candidate=std::filesystem::path(temporary_root)/("encore-dad-record-sequence-"+std::to_string(i));if(std::filesystem::create_directory(candidate,filesystem_error)){directory=candidate;break;}}
  check(!directory.empty(),"Create an exclusive integration-only save directory");const auto path=(directory/"slot1.encsave").string();
  SessionSnapshot before,first,second,backup;std::string error;collect(before);
@@ -243,8 +243,8 @@ int main(int argc,char**argv){
   Fixture invalid(room.view(),house.view(),font.view(),phone.view(),bad,menu,{400,240},false,false);invalid.interact_phone();invalid.finish_text(greeting);invalid.settle_open();check(invalid.world.finish_story_dialogue(),invalid.world.error());
   check(!invalid.runtime.idle_frame(dt,false,false),"Cross-pack choice target must be a forward phrase entry");
  }
- const auto pack_root=std::filesystem::path(argv[1]).parent_path();NativeSessionData session;BattleRoundData round;ItemData items;
- check(session.load_file((pack_root/"opening.encsession").string().c_str(),error),error.c_str());check(round.load_file((pack_root/"doll-entry.encround").string().c_str(),error),error.c_str());check(items.load_file((pack_root/"opening.encitems").string().c_str(),error),error.c_str());
+ const auto pack_root=std::filesystem::path(argv[1]).parent_path().parent_path().parent_path();NativeSessionData session;BattleRoundData round;ItemData items;
+ check(session.load_file((pack_root/"session/opening.encsession").string().c_str(),error),error.c_str());check(round.load_file((pack_root/"battle/doll/doll-entry.encround").string().c_str(),error),error.c_str());check(items.load_file((pack_root/"ui/opening.encitems").string().c_str(),error),error.c_str());
  Fixture disk(room.view(),house.view(),font.view(),phone.view(),choices,menu,{400,240},true,true);disk_record(disk,session,round.view(),items.view());
  std::cout<<"Dad/Record integration: "<<checks<<" checks; actual phone dispatch, all leader branches, currency interpolation, real text-completion choices, Nothing/hidden Cancel, hidden Record, actual SaveMenu activation/write acknowledgments/retries/close, and movement return. Fault cases use fixture acknowledgments; one Record route commits and validates real native files and backup. No renderer, fresh-game or hardware claim.\n";
 }

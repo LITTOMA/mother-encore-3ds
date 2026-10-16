@@ -79,4 +79,4 @@ Mick 长段对话已恢复原版 `[WAIT@]` 确认停顿，避免普通换行一�
 
 当前分支接入 START 六项在已支持角色/物品/技能范围内的子菜单，详见 [FIELD_MENUS](FIELD_MENUS.md)。新菜单为独立资源，存档资源 schema 9 明确允许来源已审查的物品消耗与丢弃；不扩大剧情、地图和角色战斗范围。实际验证层级以 PR 记录为准，真机仍未验证。
 
-2026-10-16：菜单游戏源码 `64f8855` 真实 3DSX / CIA 与 327 项资源检查通过，原版方法参考和两次各 202 检查点的 Azahar 运行通过，覆盖室内 / 室外六项菜单、显示切换、库存身份与实际标题 BGM；最终投影完全相同，临时 profile 已删除。全面 CI 源码 `c1ceee5` 的 Clang 普通 / ASan / UBSan 各 154/154 通过，GCC 全量仍在执行，PR 保持草稿；后续仅测试工具、文档和证据有变。细节与人工检查点、CIA 安装及真机限制见 [START 菜单](FIELD_MENUS.md) 和 [验证凭据](../reports/field-menus-validation/validation.json)。
+2026-10-16：菜单游戏源码 `64f8855` 真实 3DSX / CIA 与 327 项资源检查通过，原版方法参考和两次各 202 检查点的 Azahar 运行通过，覆盖室内 / 室外六项菜单、显示切换、库存身份与实际标题 BGM；最终投影完全相同，临时 profile 已删除。全面 CI 源码 `c1ceee5` 的 Clang 普通 / ASan / UBSan 各 154/154 通过，GCC 普通 `make test` 已通过，全量 sanitizer 仍在执行，PR 保持草稿；后续仅测试工具、文档和证据有变。细节与人工检查点、CIA 安装及真机限制见 [START 菜单](FIELD_MENUS.md) 和 [验证凭据](../reports/field-menus-validation/validation.json)。

@@ -30,7 +30,8 @@
       "compiler": "gcc",
       "status": "in_progress",
       "full_log_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38893989632/job/116949978951",
-      "pending_step": "Regenerate checked resources and run the current shared-core tests"
+      "normal_make_test_passed": true,
+      "pending_step": "Run ASan and UBSan with the hosted runner's normal leak checking"
     },
     {
       "compiler": "clang",
@@ -174,13 +175,13 @@
     },
     {
       "file": "full-ci.json",
-      "sha256": "6a49454663000505009469992fb58a86b8d442d0c2ad6f8f4556e7c4293721e8",
+      "sha256": "ff106b4a6a78dabaadf420d51848892cfa7124a567a032106c7bd303b015c26c",
       "bytes": 13879
     },
     {
       "file": "full-ci-jobs.json",
-      "sha256": "26642c6e1c55aacffa3b88bf1f2c5a537962760110c34b0b3b916b02ae6c2974",
-      "bytes": 14047
+      "sha256": "ebf7d0ad056e81ba90bbe1b85872ee6d453369beb03ef244bdeba8a64751d41c",
+      "bytes": 14133
     },
     {
       "file": "cleanup/cleanup-old.json",
@@ -203,7 +204,7 @@
     "Old/New 3DS hardware",
     "perceptual audio quality",
     "unported content and party mechanics",
-    "Full GCC normal and sanitizer CI, still in progress; PR remains draft"
+    "Full GCC CI still in progress; see its exact completed/pending steps. PR remains draft"
   ],
-  "recorded_at_utc": "2026-10-16T12:27:15.178189+00:00"
+  "recorded_at_utc": "2026-10-16T12:33:35.288074+00:00"
 }

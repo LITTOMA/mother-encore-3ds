@@ -2,8 +2,8 @@
 #include "encore/items_data.hpp"
 #include <array>
 namespace encore::upstream {
-enum class FieldSection:uint16_t {Strings=1,Parameters,Bindings,Commands,Slots,Equipment,Resources,Layouts,Clips,Keys};
-enum class FieldParameter:uint32_t {ReferenceWidth=1,ReferenceHeight,PlatformWidth,PlatformHeight,PauseColumns,SlotPitch,ListPitch,StatPitch,CursorMoveSeconds,CursorFps,CursorFrame0,CursorFrame1,CursorFrame2,CursorFrame3,MainLineHeight,NumberLineHeight,NumberSpacing,LoopAround,PauseColumnPitch,PauseRowPitch,ListRows,BoostWeight0,BoostWeight1,BoostWeight2,BoostWeight3,BoostWeight4,BoostWeight5,BoostWeight6,OpenMask,ConfirmMask,CancelMask,ScopeMask,OwnerId,PsiCost,PsiLearnLevel,PsiAction,PsiRayX,PsiRayY,PsiRayLength,PsiFoodLimitEn,PsiFoodLimitZh};
+enum class FieldSection:uint16_t {Strings=1,Parameters,Bindings,Commands,Slots,Equipment,Resources,Layouts,Clips,Keys,Skills};
+enum class FieldParameter:uint32_t {ReferenceWidth=1,ReferenceHeight,PlatformWidth,PlatformHeight,PauseColumns,SlotPitch,ListPitch,StatPitch,CursorMoveSeconds,CursorFps,CursorFrame0,CursorFrame1,CursorFrame2,CursorFrame3,MainLineHeight,NumberLineHeight,NumberSpacing,LoopAround,PauseColumnPitch,PauseRowPitch,ListRows,BoostWeight0,BoostWeight1,BoostWeight2,BoostWeight3,BoostWeight4,BoostWeight5,BoostWeight6,OpenMask,ConfirmMask,CancelMask,ScopeMask,OwnerId,PsiCost,PsiLearnLevel,PsiAction,PsiRayX,PsiRayY,PsiRayLength,PsiFoodLimitEn,PsiFoodLimitZh,PsiRowPitch};
 enum class FieldBinding:uint32_t {PauseTitle=1,EquipTitle,None,Empty,StatMaxHP,StatMaxPP,StatOffense,StatDefense,StatSpeed,StatIQ,StatGuts,Owner,MainFont,NumberFont,PauseOpenSound,PauseCloseSound,EquipOpenSound,EquipCloseSound,MoveSound,ConfirmSound,RestrictedSound,ClearSound,EquipSound,BackSound,Level,CashPattern,CashRight,PsiTitle,PsiSkillId,PsiName,PsiDescription,PsiFailure,PsiBaseSkill0,PsiBaseSkill1};
 enum class FieldLayoutRole:uint32_t {PausePanel=1,PauseInside,PauseTitle,PauseCommand,PauseCash,EquipmentPanel,StatsPanel,Owner,EquipTitle,Portrait,SlotPanel,SlotLabel,SlotItem,ListPanel,ListItem,StatLabel,StatValue,StatProjected,StatIcon,DescriptionPanel,DescriptionText,Cursor,BoostEmpty,BoostBetter,BoostLower,PauseCursor,SlotCursor,CandidateCursor,CashLabel,CashValue,LevelLabel,LevelValue,PortraitEquipped,PortraitSuitable,PortraitBetter,PortraitLower,CashCents,PauseTitleBackdrop,PsiPanel,PsiTitlePanel,PsiTitle,PsiPortrait,PsiName,PsiDescription,PsiDivider,PsiCursor};
 enum class FieldClipRole:uint32_t {PauseOpen=1,PauseClose,EquipOpen,EquipClose,DescriptionOpen,DescriptionClose,PsiOpen,PsiClose};
@@ -12,6 +12,12 @@ struct FieldSlot {uint32_t id=0,source=0,en=0,zh=0;};
 struct FieldEquipment {uint32_t definition=0,source=0,slot=0;std::array<int32_t,7> boosts{};};
 struct FieldResource {BattleResource image{};uint32_t file_bytes=0,crc32=0;};
 struct FieldClip {uint32_t role=0,first_key=0,key_count=0;float duration=0;};
+struct FieldPsiSkill {
+ std::string_view id,name_en,name_zh,description_en,description_zh,sound,max_en,max_zh,up_en,up_zh;
+ uint32_t action=0,cost=0,power=0,variance=0,iq_divisor=0;
+ std::string_view name(bool zh=false)const{return zh?name_zh:name_en;}
+ std::string_view description(bool zh=false)const{return zh?description_zh:description_en;}
+};
 struct FieldKey {float time=0,value=0,ease=1;};
 class FieldEquipmentView {
 public:
@@ -21,6 +27,7 @@ public:
  float parameter(FieldParameter)const;std::string_view binding(FieldBinding,bool chinese=false)const;
  FieldCommand command(uint32_t)const;FieldSlot slot(uint32_t)const;FieldEquipment equipment(uint32_t)const;
  FieldResource resource(uint32_t)const;ItemLayout layout(uint32_t)const;
+ uint32_t psi_skill_count()const;FieldPsiSkill psi_skill(uint32_t)const;
  FieldClip clip(FieldClipRole)const;FieldKey key(uint32_t)const;
  std::string reviewed_commit()const;bool bind_items(ItemView,std::string&)const;
  bool verify_resources(const char*prefix,std::string&)const;

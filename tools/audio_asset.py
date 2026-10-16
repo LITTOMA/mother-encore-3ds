@@ -167,7 +167,7 @@ def compile_assets(recipe,upstream,output,ffmpeg='ffmpeg',ffprobe='ffprobe'):
     bank=build_bank(records,master,floor);payloads['sound/banks/opening.encaudio']=bank
     manifest=dict(schema=1,upstream_commit=recipe['upstream_commit'],recipe_sha256=sha(json.dumps(recipe,sort_keys=True,separators=(',',':')).encode()),ffmpeg_version=version,ffmpeg_sha256=sha(Path(ffmpeg_path).read_bytes()),assets=receipts,files=[dict(path=path,size=len(data),sha256=sha(data)) for path,data in sorted(payloads.items())],scope='PCM decode and stream metadata only; no DSP firmware; no hardware audibility or Godot decoder bit-exactness claim')
     for path,data in payloads.items():target=output/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
-    report=manifest_path(output);report.parent.mkdir(parents=True,exist_ok=True);report.write_text(json.dumps(manifest,indent=2)+'\n');return manifest
+    report=manifest_path(output);report.parent.mkdir(parents=True,exist_ok=True);report.write_bytes((json.dumps(manifest,indent=2)+'\n').encode('utf-8'));return manifest
 
 def stage_files(source):
     """Return only verified audio paths/bytes for the existing host staging tool."""

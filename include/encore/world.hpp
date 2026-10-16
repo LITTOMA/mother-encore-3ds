@@ -24,6 +24,13 @@ struct OpeningBattleRequest {
     bool keep_actor_after_battle=false;
     const char* enemy="";const char* win_flag="";
 };
+class StorySkillHost {
+public:
+ virtual ~StorySkillHost()=default;
+ virtual bool validate_skill(std::string_view,std::string&)=0;
+ virtual bool learn_skill(std::string_view,std::string&)=0;
+};
+struct OpeningScreenOverlay {uint32_t rgb=0;float alpha=0;};
 struct OpeningSceneCall {uint32_t object=0;};
 struct OpeningTraceEvent { DialogueAction action; uint64_t physics_tick,idle_frame; };
 class OpeningWorld final : private DialogueSink {
@@ -72,6 +79,9 @@ public:
     bool story_auto_advance_ready()const{return dialogue_.auto_advance_ready();}
     std::vector<bool> take_story_hides(){auto result=std::move(story_hides_);story_hides_.clear();return result;}
     const std::vector<OpeningEffectRequest>& effect_requests()const{return effects_;}
+    bool bind_story_skills(StorySkillHost&);
+    bool story_skills_ready()const{return story_skills_!=nullptr;}
+    OpeningScreenOverlay screen_overlay()const{return overlay_;}
     bool pause_for_house();
     bool unpause_from_house();
     bool set_house_direction(Vec2 direction);
@@ -151,6 +161,8 @@ private:
     bool vibrate_room(uint32_t binding);
     uint32_t walk_clip(MotionAnimation animation,Vec2 direction) const;
     bool trigger_conditions(uint32_t index) const;
+    StorySkillHost*story_skills_=nullptr;
+    OpeningScreenOverlay overlay_{};uint32_t overlay_clip_=kRoomNoIndex;double overlay_time_=0;
     RoomView content_;
     Vec2 viewport_{400,240};double last_idle_delta_=0;bool battle_accepted_=false;
     StaticMotionSolver solver_;

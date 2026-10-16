@@ -15,7 +15,7 @@ static uint32_t section(const std::vector<uint8_t>&b,ItemDetailsSection s){retur
 static std::string text(const ItemDetailsComposition&c){std::string s;for(const auto&a:c.atoms)if(a.kind==ItemDetailsTokenKind::Text)s+=a.text;return s;}
 int main(int argc,char**argv){
  const std::string root=argc>1?argv[1]:"romfs";std::string error;ItemData items;ItemDetailsData data;std::vector<uint8_t>bytes;
- CHECK(items.load_file((root+"/ui/opening.encitems").c_str(),error));CHECK(encore::read_file((root+"/ui/opening.encdetails").c_str(),bytes,1024*1024,error));CHECK(data.load(bytes.data(),bytes.size(),error));const auto v=data.view();CHECK(v.bind_items(items.view(),error));CHECK(v.verify_resources(root.c_str(),error));CHECK(v.count(ItemDetailsSection::Definitions)==2);CHECK(v.count(ItemDetailsSection::Locales)==2);
+ CHECK(items.load_file((root+"/ui/opening.encitems").c_str(),error));CHECK(encore::read_file((root+"/ui/opening.encdetails").c_str(),bytes,1024*1024,error));CHECK(data.load(bytes.data(),bytes.size(),error));const auto v=data.view();CHECK(v.bind_items(items.view(),error));CHECK(v.verify_resources(root.c_str(),error));CHECK(v.count(ItemDetailsSection::Definitions)==3);CHECK(v.count(ItemDetailsSection::Locales)==2);
  // This deliberately simple metric double tests semantic substitutions and
  // source word assembly. Device rendering uses the checked source font.
  const ItemDetailsMeasure measure=[](std::string_view s){float n=0;for(unsigned char c:s)if((c&0xc0)!=0x80)n+=6;return n;};

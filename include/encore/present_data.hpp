@@ -15,7 +15,8 @@ enum class PresentSection:uint32_t {Bytes=1,Strings,Textures,Clips,FrameKeys,Aud
 constexpr uint32_t kPresentSectionCount=14;
 enum class PresentClipRole:uint32_t {Unwrapped=1,Wrapped=2};
 enum class PresentPolicy:uint32_t {Flag=1,ObjectFlag=2};
-enum class PresentOpcode:uint32_t {ShowText=1,AwaitText,BranchFlag,GrantItem,PlaySound,SetFlag,Jump,End,PlayClip};
+enum class PresentOpcode:uint32_t {ShowText=1,AwaitText,BranchFlag,GrantItem,PlaySound,SetFlag,Jump,End,PlayClip,
+    BranchSpace,PreviewItem,StartStory,QueueClip};
 struct PresentTexture {uint32_t path=0;uint16_t width=0,height=0,columns=0,rows=0;};
 struct PresentClip {uint32_t role=0,first_frame_key=0,frame_key_count=0,first_audio_key=0,audio_key_count=0;float length=0;};
 struct PresentFrameKey {float time=0;uint32_t frame=0;};

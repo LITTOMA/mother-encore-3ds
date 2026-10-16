@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "baseline_commit": "2e2f7c9542a5eec5ba1d345bab087ecc0a66ad4b",
+  "original_receipt_sha256": "dd8bbbda197016180e98c7c75011d0ccc15ded0c0959296f4aff88af30f3ebfc",
+  "receipt_sha256": "c46f2b799416270f8609e2e7b0536536abd50b5e23b8b1fbc08ca1dcd7e95dcf",
+  "catalog_sha256": "7777899816f9f9fd97de6ee1c16b26fc327da5b5b87f7ca57f0b2600a7d10b0f",
+  "generator_unchanged": true,
+  "glyph_requirements_unchanged": true,
+  "newly_active_text_covered": true,
+  "binary_and_pages_verified": true,
+  "scope": "Existing original glyph pixels, native advances and atlas packing retained; catalogue bindings only"
+}

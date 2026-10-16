@@ -2,7 +2,7 @@
   "schema": 1,
   "kind": "encore.field-equipment.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Original Pause -> Equip for singleton Ninten and admitted BaseballCap; PSI Telepathy for admitted levels 1/2 and singleton Ninten; other known commands disabled; current UID and seven derived stats committed transactionally; no battle item-use or broader party capability",
+  "scope": "Original Pause/Equip for singleton Ninten and admitted cap/plastic bat; field Telepathy and learned Lifeup-alpha with target/cancel, PP cost, source IQ/variance roll, original sound and acknowledged result; other known commands disabled; stable UIDs and seven derived stats; no battle item-use or broader party capability",
   "sources": {
     "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
     "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
@@ -10,6 +10,8 @@
     "Audio/Sound effects/Cursor 2.mp3.import": "08265ad592b74b9c5644f8c9c34586cdedc38f6f84c2a92dd7bb4f6acf82e54e",
     "Audio/Sound effects/EB/close.wav": "5238b0dfee0460c7ee219fd4cdc0c39d37829192c7af828429d10b00845efa56",
     "Audio/Sound effects/EB/close.wav.import": "eb9a152837ffc1c39af9086767ef2bbc9217eba042bfaf24d360fcf90f8a8324",
+    "Audio/Sound effects/EB/heal 1.wav": "77b3c37bd00af37b736c203855e5c2908dbcfcbae11d0e097e1025f53fff5e36",
+    "Audio/Sound effects/EB/heal 1.wav.import": "b06c91fd531323aaf9e0b07ffe328e23b9be47dd7c31a821b207b325b1b7ed80",
     "Audio/Sound effects/M3/bump.wav": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
     "Audio/Sound effects/M3/bump.wav.import": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
     "Audio/Sound effects/M3/curshoriz.wav": "b16277ce84ab106804ebf18135cac83b41acfc9b88b0a7c9b7ab03456f797fed",
@@ -24,6 +26,7 @@
     "Audio/Sound effects/M3/menu_open.wav.import": "ed14a77347f70116b0521143e87cd2dbfc88283f8183d50a8b155cfd6bf5fb41",
     "Audio/Sound effects/M3/menu_open2.wav": "dfd2f4e3dbb64188e91fb7aff483983edd7f4a1d6856c54d3ebd9b61b9b89a3d",
     "Audio/Sound effects/M3/menu_open2.wav.import": "f7e27b0f1293df6119a65ce0bc58915f40337d321f8127b8c2c4a895ed7edfa7",
+    "Data/BattleSkills/lifeUpA.yaml": "9a2196d71255d94998502717254bbb569cb91bb2fb5edec053c15c1b2c1a73d3",
     "Data/BattleSkills/telepathy.yaml": "9240e42dd77ef0c7518c47c9c3396889c2a3b65b4b633197edc816646c114066",
     "Data/FieldSkills/telepathy.yaml": "1529b8c0631d697377eb293e107b37068c03ba8588fdd254b37e33bc22559230",
     "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
@@ -94,7 +97,7 @@
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
   },
   "dependencies": {
-    "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
+    "content/native-items.json": "347abe721100ab995cce7a07f6a7949c772f9ff66ffb2416af9cfc6523ccd397",
     "content/items-presentation-bindings.json": "3d532b1934f5c1c8cf08bf7ccc5199c65b801b8e608a4aa7d2f9b5bb2f5bca59"
   },
   "parameters": {
@@ -138,7 +141,8 @@
     "PsiRayLength": 16,
     "PsiCost": 0,
     "PsiLearnLevel": 2,
-    "PsiAction": 1
+    "PsiAction": 1,
+    "PsiRowPitch": 12
   },
   "bindings": {
     "PauseTitle": {
@@ -362,6 +366,58 @@
       }
     }
   ],
+  "skills": [
+    {
+      "source": "telepathy",
+      "names": {
+        "en": "Telepathy",
+        "zh_Hans_CN": "心灵感应"
+      },
+      "descriptions": {
+        "en": "Read the thoughts of people and animals.",
+        "zh_Hans_CN": "读取他人的想法。"
+      },
+      "action": 1,
+      "iq_divisor": 0,
+      "cost": 0,
+      "power": 0,
+      "variance": 0,
+      "sound": "",
+      "max_message": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "up_message": {
+        "en": "",
+        "zh_Hans_CN": ""
+      }
+    },
+    {
+      "source": "lifeUpA",
+      "names": {
+        "en": "Lifeup α",
+        "zh_Hans_CN": "生命回复 α"
+      },
+      "descriptions": {
+        "en": "Restores around 60 HP to one ally.",
+        "zh_Hans_CN": "为一名队友回复60HP左右。"
+      },
+      "iq_divisor": 5,
+      "action": 2,
+      "cost": 5,
+      "power": 65,
+      "variance": 5,
+      "sound": "Audio/Sound effects/EB/heal 1.wav",
+      "max_message": {
+        "en": "{target}'s HP was maxed out!",
+        "zh_Hans_CN": "{target}的HP回满了！"
+      },
+      "up_message": {
+        "en": "{target} recovered {value} HP!",
+        "zh_Hans_CN": "{target}回复了{value}点HP！"
+      }
+    }
+  ],
   "equipment": [
     {
       "definition": 0,
@@ -372,6 +428,20 @@
         0,
         0,
         5,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "definition": 2,
+      "source": "BatPlastic",
+      "slot": 0,
+      "boosts": [
+        0,
+        0,
+        3,
+        0,
         0,
         0,
         0

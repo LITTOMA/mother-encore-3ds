@@ -1,5 +1,5 @@
 {
-  "schema": 7,
+  "schema": 8,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "sources": {
     "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
@@ -9,6 +9,7 @@
     "Audio/Sound effects/Gift Box.mp3.import": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
     "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
     "Audio/Sound effects/Item Received.mp3.import": "0ad60a0d1864b075695cdc0dbe45d3a2affe613c359f71f1dcfb5ae7309855e5",
+    "Audio/Sound effects/M3/Learned PSI.wav": "f28b9e605a82bd89199d42b9448f03f42451714d17598bcd677fe5fa49c96a04",
     "Audio/Sound effects/M3/door_open.wav": "96254dbc6980cb8080bbae1321340768debc2690f3b76d55c2905611f869450c",
     "Audio/Sound effects/Stairs_Down.mp3": "14d839a41c3c033cc3def3234f22d6c7defc22bc1ade34b713eea6b4e360860a",
     "Audio/Sound effects/Stairs_Up.mp3": "13ca833111ca480ab932daa1df15b0d5d14851d7c40f77a7b5db906e01acaa37",
@@ -22,7 +23,10 @@
     "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
     "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
     "Data/Animations/Floater.yaml": "880a7d6662f5dbf53c313124f0dbdaff5f4b0806a2f5f032a1366142b748d047",
+    "Data/Animations/NintenCutscene.yaml": "5c58c8034f23d8d2d485aaf40efa2dc584962916170db8e42f6281aafb25e2e8",
     "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Data/Dialogue/ItemDialogue/firstbat.yaml": "257088702e02112fd46e0a623d4b15d67a283207fadd08cd9a480924ec020d92",
+    "Data/Dialogue/ItemDialogue/itemfull.yaml": "5143202ccf3ab17c303de414049bf7a0d7fe7e885ac6c99643a98b1732a285d6",
     "Data/Dialogue/ItemDialogue/presentcheck.yaml": "0d7faebe7fa884315140d7e038f39bef61401baca5eb31d3207c3b3ebd182b42",
     "Data/Dialogue/ItemDialogue/presentempty.yaml": "11622c6c634599909d8524bd4be8d8720950d029cb9d2c89c58c2b4dbebb8152",
     "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
@@ -34,6 +38,7 @@
     "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": "a65909fb950988db8dd698fcc33a46417f88b02f9b8a2ab382b6ab7d4adc3198",
     "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
     "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": "50ed3ecac93141f5ddbd1c3928dc8e5a1cb9ed8c34ce294f6a94a972720f2cba",
+    "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml": "a8e7fd1e2ab459b1aee7edc72ca503e488af8c85c7223178860d5fe996dab9f8",
     "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml": "b9e930948fd7eb54169c048426c125190f8e90ac10974368e54e75785fe7400a",
     "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml": "0c07ab7c8f6c64708c9f41571429967827ba7ac82d8dc72a156aad84d17cd07a",
     "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml": "6cc6d9c3c8f7eb2517dd945369b272b315e344e0af5afd0721a6b485894d053a",
@@ -106,8 +111,10 @@
     "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
     "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
     "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
     "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
     "Nodes/Ui/DialogueOptions.tscn": "862a800366644d825ca692fdece889f130af52298c23c02dda0b0765e0b9d3d9",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
     "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
     "Nodes/Ui/effects/Fade.gd": "8266bf5f24eedd8281be92a04abe8ab988da720189f2bbc90c24656cbb99efaa",
     "Nodes/Ui/effects/Fade.tscn": "87dcacdfd84e3640cce58dec3e8b33cb6db73ef2b4ee1b0a5d032c9ff996b71f",
@@ -142,6 +149,7 @@
     "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
     "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
     "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
     "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
     "Shaders/Fade.shader": "c5c5b6b5b60c8c4b4fab8a9aa105cfa3777ab88eecf1c1ccdfb591db2245146d",
     "Translations/TranslatedText/dialogue_ItemDialogue - sheet.csv": "af2de174e5c3c6375ee1fb0aeea018660998d76e8825d6f0acb986faa179dce1",
@@ -153,9 +161,9 @@
     "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
   },
   "dependencies": {
-    "content/native-opening.json": "ea2609e9640067e5b869b9b52301f19b6e50ef0bba2ea42535802672f5a29663"
+    "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035"
   },
-  "ir_sha256": "66d501552ed52fd7d7286daa91dfebb48e81dedf143c4d4215d0fcb19994b30d",
+  "ir_sha256": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
   "mechanisms": [
     "ancestor-scaled door shape and target minus (0,7)",
     "same scene preserves rewards and flags",

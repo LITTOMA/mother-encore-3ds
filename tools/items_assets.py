@@ -25,6 +25,11 @@ NIL = 0xffffffff
 PARAMETERS = ['SourceViewport','PlatformViewport','GridShape','LabelSize','CursorOffset','CursorMotion','InfoMotion','DisabledColor','NormalColor','ScrollColor','InputBinding','InputRepeat']
 LICENSE_REVIEW = 'Pinned LICENSE permits assets/music in game-related forks and modifications. Original art/font/audio are used only by this Mother: Encore port and retain upstream terms; they are not relicensed as MIT.'
 
+def write_json(path,value):
+    # Asset provenance is byte-exact; Windows must produce the same LF/UTF-8 IR.
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+    path.write_bytes((json.dumps(value,indent=2,sort_keys=True,ensure_ascii=False)+'\n').encode('utf-8'))
+
 def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def f32(value): return struct.unpack('<f', struct.pack('<f', value))[0]
 def sn(text,path): return node(text.replace('Rect2(', 'Color('),path)
@@ -332,6 +337,11 @@ def export_ir(ex,definitions,raw,reference,resources,dependencies,write=True):
     result=dict(schema=1,kind='encore.native-items.source-ir',commit=PIN,sources=ex.sources,dependencies=dependencies,scope='Bounded initial single-owner inventory: equipped Baseball Cap, source list/info/cancel/restricted feedback only; no consumable action, random UID creation, saving, or additional inventory source. Pixel geometry retains320x180 with centered-top/bottom anchoring at400x240. Owner/item/instance IDs are deterministic adapter identities. Native L maps original ui_scope left trigger.',capacity=raw['capacity'],owner=b['item']['owner_id'],definitions=definitions,initial_inventory=[dict(id=b['item']['instance_id'],definition=0,equipped=True,doses=raw['doses'])],resources=resources,layouts=layouts,parameters=params,clips=clips,sounds=sounds)
     from tools.drawer_item import append_item
     result=append_item(ex,result)
+    from tools.basement_items import append_item as append_basement_item
+    result=append_basement_item(ex,result)
+    from tools.basement_items import load as basement_metadata
+    bat=basement_metadata(ex.root)
+    result['definitions'][-1]['description']=bat['translations']['en']['description'].replace('[ItemValue]',str(bat['bat']['boost']['offense'])).replace('\\n','\n')
     if write:
         write_json(IR,result)
         write_json(REPORT/'source-review.json',dict(schema=1,commit=PIN,sources=ex.sources,dependencies=result['dependencies'],raw=raw,native_reference_sha256=sha(REPORT/'native-layout.json'),resource_roles={r['name']:i for i,r in enumerate(b['assets'])},layout_bindings=dict(menu=panel,grid=grid,cursor=cursor,cursor_back=cursor_back,scrollbar=scroll,info=info,hint=hintbox),semantics={'disabled_color':'uiManager.get_flavor_color(3) is one-based NEWCOLOR3','close_visibility':'ItemsBox.hide schedules Close then BattleMenuBox.hide immediately hides; retain source clip but do not promise a visible close tween','cursor_position':'Native float vector operations; source centered origin retained with Centered flag; cursor backplate retains show_behind_parent','scroll_arrows':'Source +/-1.5708 rotations mapped to nearest-sampled lossless90-degree per-frame rotation; headless initial single-row scrollbar hidden','description':'Original TextTools.add_line_breaks and strip_bbcode executed with native font in isolated headless helper for Baseball Cap; AsthmaSpray raw rich description remains explicitly gated','scope_binding':'Source joypadbutton6 left trigger → native3DS L512; explicit adaptation','hint':'Source ButtonText custom BottleRocket font and native Panel/MarginContainer/Label layout; platform scope labelL rasterized monochrome with source outline1; noGPU raster equality claim','drawer_extension':'Definition/resource appended from independent source IR and real tex3ds receipt; normal starting instances and UI receipt preserved; acquisition/name/icon supported, consume and rich-description rendering unsupported'},extension=dict(source_ir='content/native-drawer-item.json',review='reports/drawer-program/item-source-review.json',receipt='content/asset-receipts/graphics/items/source.json',capability='RichDescription disabled plain rendering/action'),limits=['No GUI/screenshot capture','No pixel or audibility comparison','No hardware validation','AsthmaSpray consume/status-healing and rich description unsupported']))

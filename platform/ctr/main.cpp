@@ -546,7 +546,6 @@ public:
  bool validate_flag(std::string_view,std::string&e)override{e="Scene flags must be owned by HouseRuntime";return false;}
  bool validate_item(upstream::DrawerItemTemplate t,std::string_view name,std::string&e)override{
   const auto index=definition(name);if(index==upstream::item_no_index||t.key_item){e="Unbound normal inventory grant";return false;}
-  const auto d=items_data.view().definition(index);if(d.flags&uint32_t(upstream::ItemDefinitionFlag::Equipment)){e="Grant defaults are not compatible with item definition";return false;}
   for(const auto&p:native_session_data.acquisitions())if(p.item_id==name&&p.doses==t.doses&&p.max_count==1){e.clear();return true;}
   e="Grant is absent from checked session acquisition policy";return false;
  }
@@ -577,13 +576,14 @@ public:
 class PresentEffects final:public upstream::PresentEffects {
 public:
  bool validate_item(upstream::PresentTemplate t,std::string_view name,std::string&e)override{
-  if(!t.key_item){e="Present grant is not a reviewed key item";return false;}
+  if(!t.key_item)return drawer_effects.validate_item({0,t.item,t.doses,t.key_item},name,e);
   for(const auto&k:native_session_data.key_acquisitions())if(k.item_id==name&&k.doses==t.doses){e.clear();return true;}
   e="Present grant is absent from checked session key acquisitions";return false;
  }
  bool validate_sound(std::string_view name,std::string&e)override{return drawer_effects.validate_sound(name,e);}
  bool grant_item(upstream::PresentTemplate t,std::string_view name,std::string&e)override{
   if(!validate_item(t,name,e))return false;
+  if(!t.key_item)return drawer_effects.grant_item({0,t.item,t.doses,t.key_item},name,e);
   for(const auto&item:session_state.key_items)if(item.item_id==name){e="Present key item already held";return false;}
   auto random=battle_random;auto ledger=generated_uid_ledger;
   const upstream::LoadRngClockProvider clock=[](upstream::LoadRngClockSample&sample,std::string&why){const auto now=std::time(nullptr);if(now<0){why="Clock unavailable for source item entropy";return false;}const u64 ticks=svcGetSystemTick()-load_epoch_tick;sample.unix_seconds=uint64_t(now);sample.ticks_usec=(ticks/SYSCLOCK_ARM11)*1000000+(ticks%SYSCLOCK_ARM11)*1000000/SYSCLOCK_ARM11;return true;};
@@ -591,6 +591,14 @@ public:
   if(!upstream::apply_load_uid_allocations(random,ledger,{{1,1}},clock,e,&trace)||trace.size()!=1){if(e.empty())e="Source key item UID allocation incomplete";return false;}
   session_state.key_items.push_back({std::string(name),false,int64_t(t.doses),trace.front().generated_uid});
   battle_random=random;generated_uid_ledger=std::move(ledger);e.clear();return true;
+ }
+ bool inventory_space()const override{return session_inventory.has_space();}
+ bool preview_item(upstream::PresentTemplate t,std::string_view name,std::string&e)override{
+  if(t.key_item||!validate_item(t,name,e))return false;
+  auto random=battle_random;auto ledger=generated_uid_ledger;
+  const upstream::LoadRngClockProvider clock=[](upstream::LoadRngClockSample&s,std::string&why){const auto now=std::time(nullptr);if(now<0){why="Clock unavailable for source item entropy";return false;}const u64 ticks=svcGetSystemTick()-load_epoch_tick;s.unix_seconds=uint64_t(now);s.ticks_usec=(ticks/SYSCLOCK_ARM11)*1000000+(ticks%SYSCLOCK_ARM11)*1000000/SYSCLOCK_ARM11;return true;};
+  if(!upstream::apply_load_uid_allocations(random,ledger,{{1,1}},clock,e))return false;
+  battle_random=random;generated_uid_ledger=std::move(ledger);return true;
  }
  bool play_sound(std::string_view name,std::string&e)override{return drawer_effects.play_sound(name,e);}
 } present_effects;
@@ -614,7 +622,20 @@ public:
   e.clear();return true;
  }
 } house_keys;
+class SessionStorySkills final:public upstream::StorySkillHost {
+public:
+ bool validate_skill(std::string_view id,std::string&e)override{
+  for(const auto&p:native_session_data.skill_acquisitions())if(p.skill_id==id){e.clear();return true;}
+  e="Story skill has no checked session acquisition";return false;
+ }
+ bool learn_skill(std::string_view id,std::string&e)override{
+  if(!session_rewards_valid||!gameplay_scene||!validate_skill(id,e))return false;
+  for(const auto&p:native_session_data.skill_acquisitions())if(p.skill_id==id&&!gameplay_scene->world.story_flag(p.flag_id)){e="Story skill grant flag is absent";return false;}
+  return upstream::native_session_learn_skill(native_session_data,id,session_rewards.learned_skills,e);
+ }
+} session_story_skills;
 bool bind_house_presents(GameplayScene& scene,std::string& error,const std::vector<upstream::SessionFlag>&object_flags={}){
+ if(!scene.world.bind_story_skills(session_story_skills)){error="House story skills rejected checked session bindings";return false;}
  if(!scene.house.bind_key_inventory(house_keys)){error=scene.house.error();return false;}
  if(!present_data.view().valid()&&!present_data.load_file(resource_path(ResourceRole::HousePresents).c_str(),error))return false;
  if(!scene.house.bind_presents(scene.presents,present_data.view(),present_effects,object_flags)){error=scene.house.error();return false;}
@@ -964,10 +985,11 @@ bool prepare_field_equipment(uint32_t slot,bool none,uint32_t uid,PreparedFieldE
     SessionSnapshot checked;if(!build_native_session_snapshot(native_session_data,opening_data.view(),house_data.view(),round_data.view(),items_data.view(),input,checked,error))return false;
     result.inventory=std::move(inventory);result.stats=std::move(stats);result.projected=derived;error.clear();return true;
 }
-bool use_field_psi(std::string&error){
+bool use_field_psi(std::string&error,uint32_t selected=UINT32_MAX){
     using namespace upstream;const auto view=field_equipment_data.view();
     if(!in_field()||!session_rewards_valid||view.parameter(FieldParameter::PsiAction)!=1){error="Field PSI execution scope rejected";return false;}
-    const auto skill=view.binding(FieldBinding::PsiSkillId);const auto&skills=session_rewards.learned_skills;
+    if(selected!=UINT32_MAX&&(selected>=view.psi_skill_count()||view.psi_skill(selected).action!=1)){error="Field PSI dispatch is not a telepathy action";return false;}
+    const auto skill=selected==UINT32_MAX?view.binding(FieldBinding::PsiSkillId):view.psi_skill(selected).id;const auto&skills=session_rewards.learned_skills;
     if(std::find(skills.begin(),skills.end(),skill)==skills.end()||session_rewards.level<uint32_t(view.parameter(FieldParameter::PsiLearnLevel))){error="Field PSI has not been learned";return false;}
     const int32_t cost=int32_t(view.parameter(FieldParameter::PsiCost));
     if(session_rewards.pp<cost){error=std::string(view.binding(FieldBinding::PsiFailure,locale_selection.code()=="zh_Hans_CN"));return false;}
@@ -982,7 +1004,7 @@ bool open_field_equipment(std::string&error){
         LoadingScope loading("Preparing equipment menu",3);
         if(!loading.step([&]{return field_equipment_renderer.load(view,items_data.view(),"romfs:/",error);},"equipment-textures")||
            !loading.step([&]{return load_introduction(error)&&field_counter_font.load_catalog_at_safe_boundary((std::string("romfs:/")+introduction_data.font_catalog).c_str(),"romfs:/fonts/introduction/",error)&&field_counter_font.select_font_at_safe_boundary(view.binding(FieldBinding::NumberFont),error)&&field_counter_font.admit_selected_font(error);},"equipment-number-font")||
-           !loading.step([&]{for(uint32_t i=uint32_t(FieldBinding::PauseOpenSound);i<=uint32_t(FieldBinding::BackSound);++i)if(!prepare_source_audio(std::string(view.binding(FieldBinding(i))),error))return false;return true;},"equipment-sounds")||!loading.finish())return false;
+           !loading.step([&]{for(uint32_t i=uint32_t(FieldBinding::PauseOpenSound);i<=uint32_t(FieldBinding::BackSound);++i)if(!prepare_source_audio(std::string(view.binding(FieldBinding(i))),error))return false;for(uint32_t i=0;i<view.psi_skill_count();++i)if(!view.psi_skill(i).sound.empty()&&!prepare_source_audio(std::string(view.psi_skill(i).sound),error))return false;return true;},"equipment-sounds")||!loading.finish())return false;
         field_counter_text.attach_source_font(&field_counter_font);field_equipment_assets_ready=true;
     }
     field_equipment_renderer.set_locale(&locale_selection);field_equipment_renderer.set_details(&item_details_renderer);
@@ -997,6 +1019,19 @@ bool open_field_equipment(std::string&error){
     };
     host.preview=[](uint32_t slot,bool none,uint32_t uid,std::array<int32_t,7>&out,std::string&e){PreparedFieldEquipment candidate;if(!prepare_field_equipment(slot,none,uid,candidate,e))return false;out=candidate.projected;return true;};
     host.commit=[](uint32_t slot,bool none,uint32_t uid,std::string&e){PreparedFieldEquipment candidate;if(!prepare_field_equipment(slot,none,uid,candidate,e))return false;session_inventory=std::move(candidate.inventory);session_rewards=std::move(candidate.stats);return true;};
+    host.use_skill=[view](uint32_t index,std::string&message,std::string&e){
+        if(index>=view.psi_skill_count()||!session_rewards_valid){e="Field healing source index rejected";return false;}
+        const auto skill=view.psi_skill(index);
+        if(std::find(session_rewards.learned_skills.begin(),session_rewards.learned_skills.end(),skill.id)==session_rewards.learned_skills.end()){e="Field healing skill is not learned";return false;}
+        auto random=battle_random;FieldHealingResult result;
+        if(!field_healing(skill,session_rewards.hp,session_rewards.maxhp,session_rewards.pp,session_rewards.iq,random,result,e))return false;
+        if(!play_source_audio(std::string(skill.sound),ctr::AudioLane::Effect,0,1)){e=audio_status;return false;}
+        const bool chinese=locale_selection.code()=="zh_Hans_CN";auto pattern=result.full?(chinese?skill.max_zh:skill.max_en):(chinese?skill.up_zh:skill.up_en);
+        const auto nickname=field_equipment_menu.snapshot().nickname;message.clear();
+        while(!pattern.empty()){const auto at=pattern.find('{');if(at==pattern.npos){message.append(pattern);break;}message.append(pattern.substr(0,at));pattern.remove_prefix(at);
+            if(pattern.substr(0,8)=="{target}"){message+=nickname;pattern.remove_prefix(8);}else if(pattern.substr(0,7)=="{value}"){message+=std::to_string(result.rolled);pattern.remove_prefix(7);}else{e="Field healing message context rejected";return false;}}
+        session_rewards.hp=result.hp;session_rewards.pp=result.pp;battle_random=random;e.clear();return true;
+    };
     if(!field_equipment_menu.initialize(view,std::move(host),locale_selection.code()=="zh_Hans_CN")||!field_equipment_menu.open()){error=field_equipment_menu.error();return false;}
     field_equipment_status.clear();return true;
 }
@@ -1507,6 +1542,8 @@ void house_top(){
         std::stable_sort(room_draw_items.begin(),room_draw_items.end(),[](const RoomDrawItem&a,const RoomDrawItem&b){return a.y<b.y;});
         for(const auto&draw:room_draw_items){if(draw.kind==2){if(!house_renderer.draw_npc(gameplay_scene->presentation.npc_pose(draw.index),cx,cy))house_error="Lifted NPC renderer rejected";}else opening_actor.draw_actor(gameplay_scene->world.actor(draw.index),cx,cy);}
     }
+    const auto overlay=gameplay_scene->world.screen_overlay();
+    if(overlay.alpha>0)BattleRenderer::draw_rect(view_x(),view_y(),float(view_width),float(view_height),C2D_Color32(uint8_t(overlay.rgb>>16),uint8_t(overlay.rgb>>8),uint8_t(overlay.rgb),uint8_t(std::clamp(overlay.alpha,0.f,1.f)*255.f)));
     // Source layer-1 bars cover the complete world canvas (including effects),
     // before layer-3 dialogue. Width/bottom anchoring adapt to the native view.
     const auto bars=world_blackbars.pose(float(view_width),float(view_height));
@@ -2075,7 +2112,7 @@ int main(int argc,char** argv){
                 if(!active_overworld().unpause_from_house())field_equipment_status="Field menu resume rejected";
                 else if(psi){
                     if(!in_field())field_equipment_status="Telepathy in this room is not yet ported";
-                    else if(!use_field_psi(error))field_equipment_status=error;
+                    else if(!use_field_psi(error,field_equipment_menu.psi_requested_skill()))field_equipment_status=error;
                 }
             }
         }

@@ -2,11 +2,11 @@
   "schema": 1,
   "family": 1162739714,
   "rules": 7,
-  "capabilities": 8,
+  "capabilities": 9,
   "scene_id": 1,
   "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
   "exporter_version": 1,
-  "adapter_revision": 8,
+  "adapter_revision": 9,
   "strings": [
     "",
     "Below/Openable Door/StaticBody2D",
@@ -280,7 +280,12 @@
     "Podunk/minnie_run_tutorial",
     "Podunk/carol_key",
     "Podunk/mimmie_key",
-    "Podunk/minnie_storage"
+    "Podunk/minnie_storage",
+    "graphics/basement/ninten-cutscene.t3x",
+    "res://Audio/Sound effects/Item Received.mp3",
+    "res://Audio/Sound effects/M3/Learned PSI.wav",
+    "lifeUpA",
+    "Podunk/cutscenes/ggf_diary"
   ],
   "sections": {
     "Resource": [
@@ -712,6 +717,39 @@
         "kind": 3,
         "flags": 0,
         "sha256": "d496e994932ee8d519fffa002994a896cf5f5e504bbc62523e0cbd32049c30ea"
+      },
+      {
+        "stable_id": 40,
+        "path_string": 273,
+        "width": 512,
+        "height": 448,
+        "columns": 8,
+        "rows": 7,
+        "kind": 1,
+        "flags": 0,
+        "sha256": "a0c5a329b27aad8642cee4cbe7b95602e7fa9c9f0dc75de34bbf040b0bd72134"
+      },
+      {
+        "stable_id": 41,
+        "path_string": 274,
+        "width": 0,
+        "height": 0,
+        "columns": 0,
+        "rows": 0,
+        "kind": 2,
+        "flags": 0,
+        "sha256": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96"
+      },
+      {
+        "stable_id": 42,
+        "path_string": 275,
+        "width": 0,
+        "height": 0,
+        "columns": 0,
+        "rows": 0,
+        "kind": 2,
+        "flags": 0,
+        "sha256": "f28b9e605a82bd89199d42b9448f03f42451714d17598bcd677fe5fa49c96a04"
       }
     ],
     "Vec2": [
@@ -8424,6 +8462,36 @@
         "visibility": 0,
         "frame_count": 144,
         "channel": 1
+      },
+      {
+        "stable_id": 73,
+        "length": 5.063000202178955,
+        "first_key": 234,
+        "key_count": 35,
+        "flags": 2,
+        "visibility": 0,
+        "frame_count": 56,
+        "channel": 0
+      },
+      {
+        "stable_id": 74,
+        "length": 2.506999969482422,
+        "first_key": 269,
+        "key_count": 18,
+        "flags": 2,
+        "visibility": 0,
+        "frame_count": 56,
+        "channel": 0
+      },
+      {
+        "stable_id": 75,
+        "length": 4.416669845581055,
+        "first_key": 287,
+        "key_count": 5,
+        "flags": 0,
+        "visibility": 0,
+        "frame_count": 65535,
+        "channel": 2
       }
     ],
     "Key": [
@@ -9362,6 +9430,238 @@
       {
         "time": 1.0,
         "frame": 80
+      },
+      {
+        "time": 0.0,
+        "frame": 0
+      },
+      {
+        "time": 0.08299999684095383,
+        "frame": 1
+      },
+      {
+        "time": 0.16599999368190765,
+        "frame": 2
+      },
+      {
+        "time": 0.24899999797344208,
+        "frame": 3
+      },
+      {
+        "time": 0.3319999873638153,
+        "frame": 4
+      },
+      {
+        "time": 0.41499999165534973,
+        "frame": 5
+      },
+      {
+        "time": 0.9129999876022339,
+        "frame": 6
+      },
+      {
+        "time": 0.9959999918937683,
+        "frame": 7
+      },
+      {
+        "time": 1.0789999961853027,
+        "frame": 8
+      },
+      {
+        "time": 1.1619999408721924,
+        "frame": 9
+      },
+      {
+        "time": 1.2450000047683716,
+        "frame": 10
+      },
+      {
+        "time": 1.8259999752044678,
+        "frame": 11
+      },
+      {
+        "time": 1.909000039100647,
+        "frame": 12
+      },
+      {
+        "time": 1.9919999837875366,
+        "frame": 13
+      },
+      {
+        "time": 2.075000047683716,
+        "frame": 14
+      },
+      {
+        "time": 2.1579999923706055,
+        "frame": 15
+      },
+      {
+        "time": 2.572999954223633,
+        "frame": 16
+      },
+      {
+        "time": 2.6559998989105225,
+        "frame": 17
+      },
+      {
+        "time": 2.739000082015991,
+        "frame": 18
+      },
+      {
+        "time": 2.822000026702881,
+        "frame": 19
+      },
+      {
+        "time": 3.319999933242798,
+        "frame": 20
+      },
+      {
+        "time": 3.4030001163482666,
+        "frame": 21
+      },
+      {
+        "time": 3.4860000610351562,
+        "frame": 22
+      },
+      {
+        "time": 3.569000005722046,
+        "frame": 23
+      },
+      {
+        "time": 3.6519999504089355,
+        "frame": 24
+      },
+      {
+        "time": 3.734999895095825,
+        "frame": 25
+      },
+      {
+        "time": 3.818000078201294,
+        "frame": 26
+      },
+      {
+        "time": 3.9010000228881836,
+        "frame": 27
+      },
+      {
+        "time": 3.9839999675750732,
+        "frame": 28
+      },
+      {
+        "time": 4.48199987411499,
+        "frame": 29
+      },
+      {
+        "time": 4.6479997634887695,
+        "frame": 30
+      },
+      {
+        "time": 4.730999946594238,
+        "frame": 31
+      },
+      {
+        "time": 4.814000129699707,
+        "frame": 32
+      },
+      {
+        "time": 4.896999835968018,
+        "frame": 33
+      },
+      {
+        "time": 4.980000019073486,
+        "frame": 34
+      },
+      {
+        "time": 0.0,
+        "frame": 35
+      },
+      {
+        "time": 0.08299999684095383,
+        "frame": 36
+      },
+      {
+        "time": 0.24899999797344208,
+        "frame": 37
+      },
+      {
+        "time": 0.8299999833106995,
+        "frame": 38
+      },
+      {
+        "time": 0.9129999876022339,
+        "frame": 39
+      },
+      {
+        "time": 0.9959999918937683,
+        "frame": 40
+      },
+      {
+        "time": 1.0789999961853027,
+        "frame": 41
+      },
+      {
+        "time": 1.1619999408721924,
+        "frame": 42
+      },
+      {
+        "time": 1.2450000047683716,
+        "frame": 43
+      },
+      {
+        "time": 1.659999966621399,
+        "frame": 44
+      },
+      {
+        "time": 1.7430000305175781,
+        "frame": 45
+      },
+      {
+        "time": 1.8259999752044678,
+        "frame": 46
+      },
+      {
+        "time": 1.909000039100647,
+        "frame": 47
+      },
+      {
+        "time": 1.9919999837875366,
+        "frame": 48
+      },
+      {
+        "time": 2.075000047683716,
+        "frame": 49
+      },
+      {
+        "time": 2.240999937057495,
+        "frame": 50
+      },
+      {
+        "time": 2.3239998817443848,
+        "frame": 51
+      },
+      {
+        "time": 2.4070000648498535,
+        "frame": 52
+      },
+      {
+        "time": 0.0,
+        "frame": 0
+      },
+      {
+        "time": 3.416670083999634,
+        "frame": 0
+      },
+      {
+        "time": 3.666670083999634,
+        "frame": 10280
+      },
+      {
+        "time": 4.166669845581055,
+        "frame": 10280
+      },
+      {
+        "time": 4.416669845581055,
+        "frame": 0
       }
     ],
     "DirectionFrame": [
@@ -9650,6 +9950,38 @@
         "direction_count": 0,
         "idle_clip": 43,
         "emote_clip": 4294967295
+      },
+      {
+        "stable_id": 8,
+        "execution_kind": 2,
+        "flags": 1,
+        "primary_resource": 39,
+        "shadow_resource": 3,
+        "emote_resource": 2,
+        "animation_binding_first": 76,
+        "animation_binding_count": 0,
+        "initial_frame": 0,
+        "emote_initial_frame": 64,
+        "sprite_position": [
+          0.0,
+          11.0
+        ],
+        "sprite_offset": [
+          0.0,
+          -15.0
+        ],
+        "emote_offset": [
+          0,
+          -37.0
+        ],
+        "shadow_offset": [
+          0.0,
+          7.0
+        ],
+        "direction_first": 20,
+        "direction_count": 0,
+        "idle_clip": 72,
+        "emote_clip": 34
       }
     ],
     "ActorInstance": [
@@ -11097,6 +11429,13 @@
         "command_count": 19,
         "phrase_count": 4,
         "source_path_string": 272
+      },
+      {
+        "stable_id": 20,
+        "first_command": 570,
+        "command_count": 51,
+        "phrase_count": 11,
+        "source_path_string": 277
       }
     ],
     "Command": [
@@ -19079,6 +19418,720 @@
         "value": 0,
         "duration": 0.5,
         "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 0,
+        "actor_index": 65535,
+        "phrase": 0,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 1,
+        "actor_index": 0,
+        "phrase": 0,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 0,
+        "target_index": 81,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 0,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 8,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 40,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 82,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 3,
+        "actor_index": 65535,
+        "phrase": 2,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 1,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 35,
+        "actor_index": 65535,
+        "phrase": 2,
+        "target_index": 4294967295,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 29,
+        "actor_index": 0,
+        "phrase": 2,
+        "target_index": 19,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 10,
+        "actor_index": 0,
+        "phrase": 2,
+        "target_index": 4294967295,
+        "flags": 1,
+        "vector": [
+          0,
+          1
+        ],
+        "value": 0,
+        "duration": 0.08,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 26,
+        "actor_index": 65535,
+        "phrase": 2,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 3,
+        "actor_index": 65535,
+        "phrase": 3,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 7,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 46,
+        "actor_index": 65535,
+        "phrase": 3,
+        "target_index": 74,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 16777215,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 6,
+        "actor_index": 65535,
+        "phrase": 3,
+        "target_index": 3,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 44,
+        "actor_index": 0,
+        "phrase": 3,
+        "target_index": 7,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 13,
+        "actor_index": 0,
+        "phrase": 3,
+        "target_index": 72,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 7
+      },
+      {
+        "opcode": 16,
+        "actor_index": 0,
+        "phrase": 3,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 30,
+        "actor_index": 65535,
+        "phrase": 3,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0.01,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 26,
+        "actor_index": 65535,
+        "phrase": 3,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 3,
+        "actor_index": 65535,
+        "phrase": 4,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 2,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 6,
+        "actor_index": 65535,
+        "phrase": 4,
+        "target_index": 4,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 4,
+        "target_index": 83,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 4,
+        "target_index": 4294967295,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 3,
+        "actor_index": 65535,
+        "phrase": 5,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 2,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 5,
+        "target_index": 84,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 5,
+        "target_index": 4294967295,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 3,
+        "actor_index": 65535,
+        "phrase": 6,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 2,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 6,
+        "target_index": 85,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 6,
+        "target_index": 4294967295,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 3,
+        "actor_index": 65535,
+        "phrase": 7,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 3,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 35,
+        "actor_index": 65535,
+        "phrase": 7,
+        "target_index": 4294967295,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 13,
+        "actor_index": 0,
+        "phrase": 7,
+        "target_index": 73,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 7
+      },
+      {
+        "opcode": 26,
+        "actor_index": 65535,
+        "phrase": 7,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 8,
+        "target_index": 86,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 8,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 3,
+        "actor_index": 65535,
+        "phrase": 9,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0.6,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 6,
+        "actor_index": 65535,
+        "phrase": 9,
+        "target_index": 5,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 6,
+        "actor_index": 65535,
+        "phrase": 9,
+        "target_index": 6,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 8,
+        "actor_index": 65535,
+        "phrase": 9,
+        "target_index": 41,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 9,
+        "target_index": 87,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 45,
+        "actor_index": 65535,
+        "phrase": 9,
+        "target_index": 276,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 9,
+        "target_index": 4294967295,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 10,
+        "target_index": 88,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 10,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 19,
+        "actor_index": 65535,
+        "phrase": 10,
+        "target_index": 4294967295,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 5,
+        "actor_index": 65535,
+        "phrase": 10,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 44,
+        "actor_index": 0,
+        "phrase": 10,
+        "target_index": 0,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 20,
+        "actor_index": 0,
+        "phrase": 10,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 22,
+        "actor_index": 65535,
+        "phrase": 10,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 23,
+        "actor_index": 65535,
+        "phrase": 10,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0.5,
+        "auxiliary_index": 4294967295
       }
     ],
     "Binding": [
@@ -20064,6 +21117,14 @@
         "flags": 1,
         "animation_motion": 4,
         "speed": 32
+      },
+      {
+        "stable_id": 20,
+        "first_entry": 48,
+        "entry_count": 1,
+        "flags": 0,
+        "animation_motion": 4,
+        "speed": 32
       }
     ],
     "MovementEntry": [
@@ -20450,6 +21511,14 @@
           0.0
         ],
         "duration": 0
+      },
+      {
+        "kind": 0,
+        "vector": [
+          128,
+          1040
+        ],
+        "duration": 0
       }
     ]
   },
@@ -20708,6 +21777,26 @@
       "tools/link_family_followup.py": "d0bde0150fa01951455d807632b0fe53c298945fd84aba9b2e2631e80de48b24",
       "content/native-storage-dialogue.json": "909ef2249a133fa5c09ea4387e16738aeff464041d601cc2c1ddbead80c7292a",
       "tools/storage_dialogue.py": "ff2b81a265c9fe707fc2ce2aafb683b0ed095713f9a39433039edf818832cc76",
+      "upstream/MOTHER-Encore/Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml": "a8e7fd1e2ab459b1aee7edc72ca503e488af8c85c7223178860d5fe996dab9f8",
+      "upstream/MOTHER-Encore/Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+      "upstream/MOTHER-Encore/Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+      "upstream/MOTHER-Encore/Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "upstream/MOTHER-Encore/Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "upstream/MOTHER-Encore/Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+      "upstream/MOTHER-Encore/Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "upstream/MOTHER-Encore/Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "upstream/MOTHER-Encore/Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+      "upstream/MOTHER-Encore/Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "upstream/MOTHER-Encore/Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+      "upstream/MOTHER-Encore/Data/Animations/NintenCutscene.yaml": "5c58c8034f23d8d2d485aaf40efa2dc584962916170db8e42f6281aafb25e2e8",
+      "upstream/MOTHER-Encore/Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
+      "upstream/MOTHER-Encore/Audio/Sound effects/M3/Learned PSI.wav": "f28b9e605a82bd89199d42b9448f03f42451714d17598bcd677fe5fa49c96a04",
+      "romfs/graphics/basement/ninten-cutscene.t3x": "a0c5a329b27aad8642cee4cbe7b95602e7fa9c9f0dc75de34bbf040b0bd72134",
+      "content/diary-story.json": "b9e93337b086ad2b951a8a6861d8020a70bd848b7ebd415d140b98d07b317409",
+      "content/diary-story-bindings.json": "9051412b9baf6020e33d25a27a25185dd596ab96f459ac748b62aa26953b660f",
+      "tools/diary_story.py": "cf0cc75f930759ddf39c97040cfffa2bbb0da16cd7c5f5eeba1bed9a85d2586e",
+      "content/basement-items.json": "4ec9797e11054b3f20c73e0e4642c18c1ca01d4a9eabcbe37c0334747e11de57",
+      "content/asset-receipts/graphics/basement/source.json": "42b194994aa279276d0cafdf82903d44fae08493f9465e9fa757aa2968a95dd8",
       "tools/world_geometry.py": "b6133bc135d9b96d42899e085e4dab95de9a061272609c98deee2566537128e0",
       "tools/house_layers.py": "069ba6a9d2c278357f72067a28cb50a98e15a1867807b4fd3d0609a16ab35a5f",
       "tools/character_animation.py": "05acd6bc776d5654e1fbf48d442b22a574c5e42c7e7144e68090d20d5b13bc4f",
@@ -20721,7 +21810,7 @@
       "tools/upstream.py": "de58abb2f289d282de4c6d5883b2399fb32d59537ee3219acd73fb3ceed86dfe",
       "tools/map_asset.py": "f42c06b290d01258e572038a4d1cd98f3cbe543d777c7c9cec7ed70e7fc7db42",
       "tools/world_program_bindings.py": "066723a4ab3f89f51e499cba96d87bf8718ad6bf8499ab5f35f905d677f24a22",
-      "tools/extract_native_content.py": "3630a7e2edaea6b85dacc2bc3494def929fc9241269bf1c03464eba9c7c50654",
+      "tools/extract_native_content.py": "565123dd1fa34d4a8f30f1ded6d46951cc944f175ec3d29e930022d4dc6f7e83",
       "tools/programme_lowering_recipe.py": "98abfe4d45e9bb2f4032fe7646b396b39d1c81bb555d05f938de9ea4c33fefa3",
       "content/programme-lowering-recipe.json": "f4f065067e5c13d0fe77547f8c88f5b3630fbe9794fb822ed66115f4f57e81b0"
     },

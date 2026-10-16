@@ -90,6 +90,13 @@ def extract():
   require(values==t['localized'],'House present text disagrees with original CSV rows: '+str(t['id']))
   records[key]=dict(key=key,source=t['source_path']+'#'+t['translation_key']+'@'+t['item'],line=t['id'],values=values)
   fixed[t['id']]=(key,t['label'])
+ from tools.diary_story import load as diary_source
+ diary=diary_source(BASE)
+ for t in diary['texts']:
+  key='@native.diary/'+str(t['id']);values={l:records[t['translation_key']]['values'][l].replace('[ui_select]',diary['menu_button']['label'])for l in ('en','zh_Hans_CN')}
+  require(values==t['localized'],'Diary text disagrees with reviewed input lowering')
+  records[key]=dict(key=key,source=t['source_path']+'#'+t['translation_key']+'@native-input',line=t['id'],values=values)
+  fixed[t['id']]=(key,t['label'])
  from tools.house_key_doors import texts as key_door_texts
  from tools.extract_battle_entry import Extractor
  for t in key_door_texts(Extractor(BASE),load(BASE/'content/native-house.json')):

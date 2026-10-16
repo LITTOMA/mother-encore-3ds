@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "locale": "zh",
+  "restored": false,
+  "projection": {
+    "inventory_count": 2,
+    "key_count": 3,
+    "present_opened_mask": 3,
+    "object_flag_count": 1,
+    "hp": 65,
+    "pp": 22
+  },
+  "record_sha256": "5da0a90055d6b269224d653e07aaab662861105920a70940b06ad60afcf3396b",
+  "repeat_does_not_duplicate": true,
+  "target_cancel_preserves_pp": true,
+  "one_use_costs_five_pp": true,
+  "source_commit": "09bd23067bcd1534bb4c4b4d4edd57ccfa6e059a",
+  "memory_write_enabled": false,
+  "driver_sha256": "43f1361f4a0e41e5bfa44a581d4bda78a2ab6ee4e597b2ca24fbe12e21a05a2e",
+  "fixture_sha256": "7d130498eabb85084f160b4a2f64dd1966b52f341266c52d354c7f0aaa63883b",
+  "emulator_sha256": "bd50cebf6427410df090855c4f5ba7cd1991b7fe1ff7f7f12f2ac49e187da525",
+  "game_sha256": "4360ca560f30dd7e385b022404e5f52ef09b22d8f1693ceacdbcbb4aa2b63ada",
+  "scope": "Explicit shared-core validated level-2 basement checkpoint; normal LOAD, movement, A, START, target cancellation, healing, equipment and Dad Record. Separate cold boot consumes the actual Record output. No naturally-played whole opening or hardware claim."
+}

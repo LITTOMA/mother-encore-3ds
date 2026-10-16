@@ -37,8 +37,8 @@ class StorageDialogueTests(unittest.TestCase):
         at=next(i for i,c in enumerate(self.room['sections']['Command'])if c['opcode']==43)
         for mutate in (
             lambda d:d.update(capabilities=7),
-            lambda d:d.update(capabilities=9),
-            lambda d:d['sections']['Command'][at].update(opcode=44),
+            lambda d:d.update(capabilities=10),
+            lambda d:d['sections']['Command'][at].update(opcode=47),
             lambda d:d['sections']['Command'][at].update(actor_index=0),
             lambda d:d['sections']['Command'][at].update(target_index=0),
             lambda d:d['sections']['Command'][at].update(flags=1),

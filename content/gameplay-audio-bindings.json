@@ -151,6 +151,7 @@
   ],
   "extra_sources": [
     "Audio/Sound effects/Door_Short.mp3",
+    "Audio/Sound effects/EB/heal 1.wav",
     "Audio/Sound effects/Item Received.mp3",
     "Audio/Sound effects/M3/Dog_whining.wav",
     "Audio/Sound effects/M3/Woof Woof!.wav",

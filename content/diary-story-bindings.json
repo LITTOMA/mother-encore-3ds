@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "encore.diary-story.bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "source_path": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+  "text_ids": {
+    "0": 81,
+    "1": 82,
+    "4": 83,
+    "5": 84,
+    "6": 85,
+    "8": 86,
+    "9": 87,
+    "10": 88
+  },
+  "menu_button": {
+    "action": "ui_select",
+    "label": "START",
+    "mask": 8
+  }
+}

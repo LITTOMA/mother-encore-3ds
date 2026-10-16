@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "4ec9797e11054b3f20c73e0e4642c18c1ca01d4a9eabcbe37c0334747e11de57",
+  "producer_sha256": "9dcfe1e16cf3ae1761fbec37f370f5ea01547db237696ac9e932cf137aee3f2e",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "assets": [
+    {
+      "role": "bat",
+      "source": "Graphics/Objects/Items/BatPlastic.png",
+      "output": "graphics/basement/plastic-bat.t3x",
+      "size": [
+        20,
+        20
+      ],
+      "grid": [
+        1,
+        1
+      ]
+    },
+    {
+      "role": "special",
+      "source": "Graphics/Character Sprites/Ninten/cutscene.png",
+      "output": "graphics/basement/ninten-cutscene.t3x",
+      "source_size": [
+        1280,
+        640
+      ],
+      "source_grid": [
+        20,
+        10
+      ],
+      "size": [
+        512,
+        448
+      ],
+      "grid": [
+        8,
+        7
+      ],
+      "frames": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ]
+    }
+  ],
+  "outputs": {
+    "graphics/basement/plastic-bat.t3x": {
+      "bytes": 4117,
+      "sha256": "61f35354fa0c570858fe1b70ee243742b85cd9ffbd1b4ff6beaa3b993e3f236e"
+    },
+    "graphics/basement/ninten-cutscene.t3x": {
+      "bytes": 1048597,
+      "sha256": "a0c5a329b27aad8642cee4cbe7b95602e7fa9c9f0dc75de34bbf040b0bd72134"
+    }
+  }
+}

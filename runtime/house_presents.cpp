@@ -13,6 +13,7 @@ bool PresentRuntime::initialize(PresentView view,PresentHost&host,std::string&e,
     for(uint32_t i=0;i<view.count(PresentSection::Objects);++i){const auto o=view.object(i);if(o.program==kPresentNone)continue;
         const auto pr=view.program(o.program);
         for(uint32_t j=0;j<pr.count;++j){const auto c=view.command(pr.first+j);
+            if(c.opcode==uint32_t(PresentOpcode::StartStory)&&!host.validate_story(view.string(c.a),e))return false;
             if(o.policy==uint32_t(PresentPolicy::Flag)&&(c.opcode==uint32_t(PresentOpcode::BranchFlag)||c.opcode==uint32_t(PresentOpcode::SetFlag))&&!host.validate_flag(view.string(c.a),e))return false;
             if(c.opcode==uint32_t(PresentOpcode::PlaySound)&&!host.validate_sound(view.string(c.a),e))return false;}}
     std::set<std::string>seen;
@@ -48,7 +49,7 @@ bool PresentRuntime::scene_ready(SourceRandom&random,std::string&e){
     }
     ready_=true;e.clear();return true;
 }
-void PresentRuntime::play_clip(uint32_t object,uint32_t clip){auto&s=objects_[object];s.clip=clip;s.clip_time=0;s.clip_started=false;}
+void PresentRuntime::play_clip(uint32_t object,uint32_t clip){auto&s=objects_[object];s.clip=clip;s.queued_clip=kPresentNone;s.clip_time=0;s.clip_started=false;}
 bool PresentRuntime::advance(double delta,std::string&e){
     if(!view_)return fail(e,"Present runtime is not initialized");
     if(!std::isfinite(delta)||delta<0||delta>1)return fail(e,"Present idle time rejected");
@@ -66,7 +67,7 @@ bool PresentRuntime::advance(double delta,std::string&e){
         for(uint32_t k=0;k<clip.frame_key_count;++k){const auto key=view_.frame_key(clip.first_frame_key+k);if(in_range(key.time))s.frame=key.frame;}
         for(uint32_t k=0;k<clip.audio_key_count;++k){const auto key=view_.audio_key(clip.first_audio_key+k);
             if(in_range(key.time))audio_.push_back({key.playing?PresentAudioKind::Play:PresentAudioKind::Stop,i,view_.string(view_.object(i).sound)});}
-        s.clip_started=true;s.clip_time=to;if(end)s.clip=kPresentNone;
+        s.clip_started=true;s.clip_time=to;if(end){s.clip=s.queued_clip;s.queued_clip=kPresentNone;s.clip_time=0;s.clip_started=false;}
     }
     e.clear();return true;
 }
@@ -100,6 +101,9 @@ bool PresentRuntime::step(std::string&e){
         case PresentOpcode::ShowText:{const auto t=view_.text(c.a);if(!host_->show_text(t.dialogue_id,e))return rejected();++pc_;break;}
         case PresentOpcode::AwaitText:++pc_;state_=PresentProgramState::WaitingText;e.clear();return true;
         case PresentOpcode::BranchFlag:{bool value=false;if(o.policy==uint32_t(PresentPolicy::ObjectFlag))value=objects_[active_].flag_value;else if(!host_->flag(view_.string(c.a),value,e))return rejected();pc_=value==(c.b!=0)?c.c:pc_+1;break;}
+        case PresentOpcode::BranchSpace:pc_=host_->inventory_space()?pc_+1:c.a;break;
+        case PresentOpcode::PreviewItem:{const auto t=view_.item_template(c.a);if(!host_->preview_item(t,view_.string(t.item),e))return rejected();++pc_;break;}
+        case PresentOpcode::StartStory:if(!host_->start_story(view_.string(c.a),e))return rejected();++pc_;break;
         case PresentOpcode::GrantItem:{const auto t=view_.item_template(c.a);if(!host_->grant_item(t,view_.string(t.item),e))return rejected();++pc_;break;}
         case PresentOpcode::PlaySound:if(!host_->play_sound(view_.string(c.a),e))return rejected();++pc_;break;
         case PresentOpcode::SetFlag:{const auto name=view_.string(c.a);if(o.policy==uint32_t(PresentPolicy::ObjectFlag)){objects_[active_].flag_value=c.b!=0;objects_[active_].flag_present=true;}else if(!host_->set_flag(name,c.b!=0,e))return rejected();
@@ -108,6 +112,7 @@ bool PresentRuntime::step(std::string&e){
             ++pc_;break;}
         case PresentOpcode::Jump:pc_=c.a;break;
         case PresentOpcode::PlayClip:play_clip(active_,c.a);++pc_;break;
+        case PresentOpcode::QueueClip:if(objects_[active_].clip==kPresentNone||objects_[active_].queued_clip!=kPresentNone)return fail(e,"Present clip completion callback rejected");objects_[active_].queued_clip=c.a;++pc_;break;
         case PresentOpcode::End:state_=PresentProgramState::Complete;e.clear();return true;
         default:return fail(e,"Present programme opcode rejected");}
     }

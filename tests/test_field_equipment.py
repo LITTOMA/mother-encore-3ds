@@ -35,7 +35,7 @@ class FieldEquipmentFormat(unittest.TestCase):
         self.assertEqual(self.ir['equipment'][0]['boosts'],[0,0,0,5,0,0,0])
         self.rejects('Equipment',0,2,4)
     def test_unknown_versions_and_capabilities(self):
-        for offset,value in ((8,1),(8,3),(20,1),(20,2),(20,4),(24,2)):
+        for offset,value in ((8,1),(8,4),(20,1),(20,2),(20,5),(24,2)):
             with self.subTest(offset=offset,value=value),self.assertRaises(ValueError):pack.parse_pack(self.changed(offset,struct.pack('<I',value)))
     def test_corrupt_pin_reserved_crc_and_truncation(self):
         for blob in (self.changed(32,b'\x01'),self.changed(52,b'\x01'),self.blob[:-1],self.blob+b'\0'):

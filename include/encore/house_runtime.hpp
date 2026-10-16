@@ -76,7 +76,7 @@ public:
  bool entering_door()const;
  float fade_alpha()const;
  BattleValue fade_color()const;
- const char* error()const{return error_;}
+ const char* error()const{return error_.c_str();}
  uint32_t active_object()const{return active_;}
  const HouseOpenableState& openable_state(uint32_t index)const{return openables_[index];}
  bool story_executing()const{return story_executing_;}
@@ -132,13 +132,17 @@ private:
   bool validate_flag(std::string_view n,std::string&e)override{return owner->validate_flag(n,e);}
   bool validate_item(PresentTemplate t,std::string_view n,std::string&e)override{return effects->validate_item(t,n,e);}
   bool validate_sound(std::string_view n,std::string&e)override{return effects->validate_sound(n,e);}
+  bool validate_story(std::string_view,std::string&)override;
   bool show_text(uint32_t,std::string&)override;
   bool flag(std::string_view n,bool&v,std::string&e)override{return owner->flag(n,v,e);}
   bool set_flag(std::string_view n,bool v,std::string&e)override{return owner->set_flag(n,v,e);}
   bool grant_item(PresentTemplate t,std::string_view n,std::string&e)override{return effects->grant_item(t,n,e);}
+  bool inventory_space()const override{return effects->inventory_space();}
+  bool preview_item(PresentTemplate t,std::string_view n,std::string&e)override{return effects->preview_item(t,n,e);}
+  bool start_story(std::string_view,std::string&)override;
   bool play_sound(std::string_view n,std::string&e)override{return effects->play_sound(n,e);}
  };
- PresentAdapter present_host_;PresentRuntime*presents_=nullptr;std::string present_error_;
+ PresentAdapter present_host_;PresentRuntime*presents_=nullptr;std::string present_error_;uint32_t present_story_=house_no_index;
  const DialogueChoicesData*choices_data_=nullptr;DialogueChoices*choices_=nullptr;uint32_t choices_generation_=0;
  PhoneRuntime*phone_=nullptr;std::vector<PhoneSoundRequest>phone_sounds_;
  HouseInspectionView inspections_;
@@ -161,6 +165,6 @@ private:
  HousePhase phase_=HousePhase::Idle;uint32_t active_=house_no_index;double fade_time_=0;
  bool door_unpaused_=false;uint64_t physics_tick_=0,idle_frame_=0,await_idle_=0;
  std::vector<uint32_t>boundary_routes_;uint32_t scene_route_=WorldLinksData::kNotFound;
- Vec2 last_safe_position_{},last_safe_direction_{};const char*error_="";
+ Vec2 last_safe_position_{},last_safe_direction_{};std::string error_;
 };
 }

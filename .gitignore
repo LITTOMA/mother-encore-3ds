@@ -198,6 +198,8 @@ cookies.json
 !/reports/house-animation-reference-final/reference.log
 !/reports/house-data/source-review.json
 !/reports/house-presents/source-review.json
+!/reports/basement-items/source-review.json
+!/reports/basement-items/diary-source-review.json
 !/reports/mick-treats/source-review.json
 !/reports/house-profile-reference/frames.tsv
 !/reports/house-profile-reference/reference.json
@@ -300,3 +302,9 @@ cookies.json
 !/reports/npc-doorway-occlusion/start-and-npc-fix.patch
 
 # Reviewed public-preparation audits and actual validation receipts.
+
+# Actual basement emulator evidence (no private emulator profile or DSP files).
+!reports/basement-items/validation/
+!reports/basement-items/validation/*.json
+!reports/basement-items/validation/*.png
+!reports/basement-items/validation/*.log

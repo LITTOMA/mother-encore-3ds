@@ -44,7 +44,7 @@ PresentText PresentView::text(uint32_t i)const{auto*p=record(PresentSection::Tex
 bool PresentData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kPresentSectionCount*16||n>max_bytes)return fail("Present pack size rejected");
-    if(std::memcmp(p,"ENCPRS01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)<1||u32(p+20)>2)||u32(p+24)!=1||u32(p+28)||u32(p+52)!=kPresentSectionCount||u32(p+56)||u32(p+60))
+    if(std::memcmp(p,"ENCPRS01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)<1||u32(p+20)>3)||u32(p+24)!=1||u32(p+28)||u32(p+52)!=kPresentSectionCount||u32(p+56)||u32(p+60))
         return fail("Present pack schema/capability/scene/reserved rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Present pack source pin rejected");}
     if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Present pack checksum rejected");
@@ -82,7 +82,7 @@ bool PresentData::load(const uint8_t*p,size_t n,std::string&error){
         roles|=1u<<c.role;float last=-1;
         for(uint32_t k=0;k<c.frame_key_count;++k){const auto key=v.frame_key(c.first_frame_key+k);if(!finite(key.time)||key.time<0||key.time>c.length||key.time<last||key.frame>=box_frames)return fail("Present pack frame key rejected");last=key.time;}
         last=-1;for(uint32_t k=0;k<c.audio_key_count;++k){const auto key=v.audio_key(c.first_audio_key+k);if(!finite(key.time)||key.time<0||key.time>c.length||key.time<last||key.playing>1)return fail("Present pack audio key rejected");last=key.time;}}
-    for(uint32_t i=0;i<templates;++i){const auto t=v.item_template(i);if(!str(t.item)||v.string(t.item).find('/')!=std::string_view::npos||!t.doses||t.doses>65535||t.key_item>1)return fail("Present pack item template rejected");}
+    for(uint32_t i=0;i<templates;++i){const auto t=v.item_template(i);if(!str(t.item)||v.string(t.item).find('/')!=std::string_view::npos||!t.doses||t.doses>65535||t.key_item>1||(!t.key_item&&u32(p+20)<3))return fail("Present pack item template rejected");}
     std::set<uint32_t>ids;
     for(uint32_t i=0;i<texts;++i){const auto t=v.text(i);if(!t.dialogue_id||!ids.insert(t.dialogue_id).second||!str(t.source_path)||!safe_path(v.string(t.source_path))||!ends_with(v.string(t.source_path),".yaml"))return fail("Present pack text rejected");}
     std::vector<uint32_t>program_owner(programs,kPresentNone);std::set<std::string_view>paths,object_flags;
@@ -105,11 +105,15 @@ bool PresentData::load(const uint8_t*p,size_t n,std::string&error){
             case PresentOpcode::ShowText:if(c.a>=texts||c.b||c.c)return fail("Present pack text command rejected");break;
             case PresentOpcode::AwaitText:case PresentOpcode::End:if(c.a||c.b||c.c)return fail("Present pack gate/end command rejected");break;
             case PresentOpcode::BranchFlag:if(!str(c.a)||c.b>1||c.c>=pr.count)return fail("Present pack flag branch rejected");e.push_back(c.c);break;
-            case PresentOpcode::GrantItem:if(c.a>=templates||c.b||c.c)return fail("Present pack grant rejected");break;
+            case PresentOpcode::GrantItem:if(c.a>=templates||v.string(v.item_template(c.a).item)!=v.string(owner.item)||c.b||c.c)return fail("Present pack grant rejected");break;
             case PresentOpcode::PlaySound:if(!str(c.a)||!safe_path(v.string(c.a))||v.string(c.a).rfind("Audio/",0)!=0||c.b||c.c)return fail("Present pack sound command rejected");break;
             case PresentOpcode::SetFlag:if(!str(c.a)||c.b>1||c.c)return fail("Present pack flag write rejected");break;
             case PresentOpcode::Jump:if(c.a>=pr.count||c.b||c.c)return fail("Present pack jump rejected");e.push_back(c.a);break;
             case PresentOpcode::PlayClip:if(c.a>=clips||c.b||c.c)return fail("Present pack clip command rejected");break;
+            case PresentOpcode::QueueClip:if(u32(p+20)<3||c.a>=clips||c.b||c.c)return fail("Present pack queued clip rejected");break;
+            case PresentOpcode::BranchSpace:if(u32(p+20)<3||c.a>=pr.count||c.b||c.c)return fail("Present pack capacity branch rejected");e.push_back(c.a);break;
+            case PresentOpcode::PreviewItem:if(u32(p+20)<3||c.a>=templates||v.item_template(c.a).key_item||v.string(v.item_template(c.a).item)!=v.string(owner.item)||c.b||c.c)return fail("Present pack full inventory preview rejected");break;
+            case PresentOpcode::StartStory:if(u32(p+20)<3||!str(c.a)||!safe_path(v.string(c.a))||v.string(c.a).rfind("Data/Dialogue/",0)!=0||!ends_with(v.string(c.a),".yaml")||c.b||c.c)return fail("Present pack story binding rejected");break;
             default:return fail("Present pack unknown opcode rejected");}
             if(c.opcode!=uint32_t(PresentOpcode::Jump)&&c.opcode!=uint32_t(PresentOpcode::End)){if(pc+1>=pr.count)return fail("Present pack programme falls through");e.push_back(pc+1);}}
         std::vector<uint32_t>degree(pr.count);for(auto&e:edges)for(auto t:e)++degree[t];
@@ -121,6 +125,7 @@ bool PresentData::load(const uint8_t*p,size_t n,std::string&error){
             if(op==PresentOpcode::ShowText){if(pending)return fail("Present pack unacknowledged text replaced");pending=true;}
             else if(op==PresentOpcode::AwaitText){if(!pending)return fail("Present pack gate without text");pending=false;}
             else if(op==PresentOpcode::End&&pending)return fail("Present pack unacknowledged termination");
+            else if(op==PresentOpcode::StartStory&&pending)return fail("Present pack unacknowledged story handoff");
             for(auto t:edges[pc])queue.push_back({t,pending});}
         bool ends=false;for(uint32_t pc=0;pc<pr.count;++pc)ends|=v.command(pr.first+pc).opcode==uint32_t(PresentOpcode::End);if(!ends)return fail("Present pack programme lacks End");
         if(v.command(pr.first).opcode!=uint32_t(PresentOpcode::BranchFlag)||v.string(v.command(pr.first).a)!=v.string(v.object(program_owner[i]).flag))return fail("Present pack programme must test its own flag first");}

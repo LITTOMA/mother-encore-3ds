@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "capability": 2,
+  "capability": 3,
   "kind": "encore.house-presents.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "dependencies": {
-    "content/house-present-bindings.json": "f5d5296b05ac2a2bebca142ed719fb7f05aec9ad56f8687117c8048f0fc7456d"
+    "content/house-present-bindings.json": "92f33acf0298e54e3cca7559a0f1cf8ed8780cdda75330b77d7b033041a1ba51"
   },
   "text_groups": [
     {
@@ -21,14 +21,25 @@
         75,
         76
       ]
+    },
+    {
+      "after_id": 76,
+      "ids": [
+        77,
+        78,
+        79,
+        80
+      ]
     }
   ],
-  "scope": "All four original House presents drawn; default fixed key-item grants support story and persistent object flags; custom dialogue and normal inventory presents remain explicit development boundaries",
+  "scope": "Four original House presents; DogTreats/Map key grants, Plastic Bat capacity/custom note/ordinary inventory, and diary grant with checked original room cutscene; story/object flags, UID ownership and deferred rewrap preserved",
   "sources": {
     "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
     "Audio/Sound effects/Gift Box.mp3.import": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
     "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
     "Audio/Sound effects/Item Received.mp3.import": "0ad60a0d1864b075695cdc0dbe45d3a2affe613c359f71f1dcfb5ae7309855e5",
+    "Data/Dialogue/ItemDialogue/firstbat.yaml": "257088702e02112fd46e0a623d4b15d67a283207fadd08cd9a480924ec020d92",
+    "Data/Dialogue/ItemDialogue/itemfull.yaml": "5143202ccf3ab17c303de414049bf7a0d7fe7e885ac6c99643a98b1732a285d6",
     "Data/Dialogue/ItemDialogue/presentcheck.yaml": "0d7faebe7fa884315140d7e038f39bef61401baca5eb31d3207c3b3ebd182b42",
     "Data/Dialogue/ItemDialogue/presentempty.yaml": "11622c6c634599909d8524bd4be8d8720950d029cb9d2c89c58c2b4dbebb8152",
     "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
@@ -291,7 +302,7 @@
         24.0,
         24.0
       ],
-      "program": null,
+      "program": 3,
       "sound": "Audio/Sound effects/Gift Box.mp3"
     },
     {
@@ -312,7 +323,7 @@
         16.0,
         16.0
       ],
-      "program": null,
+      "program": 2,
       "sound": "Audio/Sound effects/Gift Box.mp3"
     },
     {
@@ -366,6 +377,16 @@
     },
     {
       "source_item": "MapPodunk",
+      "doses": 1,
+      "key_item": true
+    },
+    {
+      "source_item": "BatPlastic",
+      "doses": 1,
+      "key_item": false
+    },
+    {
+      "source_item": "GGFDiary",
       "doses": 1,
       "key_item": true
     }
@@ -429,6 +450,58 @@
       "localized": {
         "en": "[@][PartyLead] got the Podunk Map!",
         "zh_Hans_CN": "[@][PartyLead]获得了波顿克地图！"
+      }
+    },
+    {
+      "id": 77,
+      "source_path": "Data/Dialogue/ItemDialogue/firstbat.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_ITEMDIALOGUE_FIRSTBAT_0",
+      "item": "BatPlastic",
+      "raw": "[@][PartyLead] opened the present.",
+      "localized": {
+        "en": "[@][PartyLead] opened the present.",
+        "zh_Hans_CN": "[@][PartyLead]拆开了礼物盒。"
+      }
+    },
+    {
+      "id": 78,
+      "source_path": "Data/Dialogue/ItemDialogue/firstbat.yaml",
+      "label": "1",
+      "translation_key": "DIALOGUE_ITEMDIALOGUE_FIRSTBAT_1",
+      "item": "BatPlastic",
+      "raw": "[@][PartyLead] got a Plastic Bat![WAIT@]There's a note attached to it.",
+      "localized": {
+        "en": "[@][PartyLead] got a Plastic Bat![WAIT@]There's a note attached to it.",
+        "zh_Hans_CN": "[@][PartyLead]获得了塑料球棒！[WAIT@]上面附有一张便条。"
+      }
+    },
+    {
+      "id": 79,
+      "source_path": "Data/Dialogue/ItemDialogue/firstbat.yaml",
+      "label": "3",
+      "translation_key": "DIALOGUE_ITEMDIALOGUE_FIRSTBAT_3",
+      "item": "BatPlastic",
+      "raw": "[@]Bats are pretty cool, but they don't really do much unless you equip them.",
+      "localized": {
+        "en": "[@]Bats are pretty cool, but they don't really do much unless you equip them.",
+        "zh_Hans_CN": "[@]球棒很酷，但前提是你得装备它，要不然可一点用处都没有。"
+      },
+      "speaker": {
+        "en": "Note",
+        "zh_Hans_CN": "便条"
+      }
+    },
+    {
+      "id": 80,
+      "source_path": "Data/Dialogue/ItemDialogue/itemfull.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_ITEMDIALOGUE_ITEMFULL_0",
+      "item": "BatPlastic",
+      "raw": "[@]Your inventory's full...",
+      "localized": {
+        "en": "[@]Your inventory's full...",
+        "zh_Hans_CN": "[@]你的背包已满…"
       }
     }
   ],
@@ -537,6 +610,140 @@
         },
         {
           "op": "AwaitText"
+        },
+        {
+          "op": "End"
+        },
+        {
+          "op": "ShowText",
+          "a": 72
+        },
+        {
+          "op": "AwaitText"
+        },
+        {
+          "op": "End"
+        }
+      ]
+    },
+    {
+      "source_path": "Objects/Present2",
+      "template": 2,
+      "check": [
+        77,
+        78,
+        79
+      ],
+      "full": 80,
+      "commands": [
+        {
+          "op": "BranchFlag",
+          "a": "Ninten's House/Present2",
+          "b": 1,
+          "c": 18
+        },
+        {
+          "op": "PlayClip",
+          "a": "Unwrapped"
+        },
+        {
+          "op": "BranchSpace",
+          "a": 13
+        },
+        {
+          "op": "GrantItem",
+          "a": 2
+        },
+        {
+          "op": "SetFlag",
+          "a": "Ninten's House/Present2",
+          "b": 1
+        },
+        {
+          "op": "ShowText",
+          "a": 77
+        },
+        {
+          "op": "AwaitText"
+        },
+        {
+          "op": "ShowText",
+          "a": 78
+        },
+        {
+          "op": "PlaySound",
+          "a": "Audio/Sound effects/Item Received.mp3"
+        },
+        {
+          "op": "AwaitText"
+        },
+        {
+          "op": "ShowText",
+          "a": 79
+        },
+        {
+          "op": "AwaitText"
+        },
+        {
+          "op": "End"
+        },
+        {
+          "op": "QueueClip",
+          "a": "Wrapped"
+        },
+        {
+          "op": "PreviewItem",
+          "a": 2
+        },
+        {
+          "op": "ShowText",
+          "a": 80
+        },
+        {
+          "op": "AwaitText"
+        },
+        {
+          "op": "End"
+        },
+        {
+          "op": "ShowText",
+          "a": 72
+        },
+        {
+          "op": "AwaitText"
+        },
+        {
+          "op": "End"
+        }
+      ]
+    },
+    {
+      "source_path": "Objects/Present1",
+      "template": 3,
+      "story": "Podunk/cutscenes/ggf_diary",
+      "commands": [
+        {
+          "op": "BranchFlag",
+          "a": "got_diary",
+          "b": 1,
+          "c": 6
+        },
+        {
+          "op": "PlayClip",
+          "a": "Unwrapped"
+        },
+        {
+          "op": "GrantItem",
+          "a": 3
+        },
+        {
+          "op": "SetFlag",
+          "a": "got_diary",
+          "b": 1
+        },
+        {
+          "op": "StartStory",
+          "a": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml"
         },
         {
           "op": "End"

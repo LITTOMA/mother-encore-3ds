@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "repository_commit": "2e2f7c9542a5eec5ba1d345bab087ecc0a66ad4b",
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Unmodified generated resources from merged main, retained as legacy compatibility and unchanged-prefix oracles; not new release packs",
+  "files": {
+    "tests/fixtures/pre-basement-opening.encroom": {
+      "source_path": "romfs/world/house/opening.encroom",
+      "sha256": "1486a4176963a7275bbbd697ed9a711f935051e28412d0642b52252decf9cfb6",
+      "bytes": 65608
+    },
+    "tests/fixtures/pre-basement-menu.encfield": {
+      "source_path": "romfs/ui/opening.encfield",
+      "sha256": "f9906f8999f2722a08e881e9733c70e8dc8b572be297900e6e92fee71356d6e4",
+      "bytes": 7548
+    },
+    "tests/fixtures/pre-basement-session.encsession": {
+      "source_path": "romfs/session/opening.encsession",
+      "sha256": "da2430361aeca6db4cbf8fdc3fde7d58e173729aef2a3a5f097987cf2c8222bb",
+      "bytes": 9617
+    },
+    "tests/fixtures/pre-basement-opening.encpresent": {
+      "bytes": 2160,
+      "sha256": "c6b2a2a2771dd46889c092b7c472f655931392019becf805d42068420527e78e"
+    }
+  }
+}

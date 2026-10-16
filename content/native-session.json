@@ -1,5 +1,17 @@
 {
-  "schema": 7,
+  "schema": 8,
+  "skill_acquisitions": [
+    {
+      "skill_id": "lifeUpA",
+      "flag_id": "got_diary"
+    }
+  ],
+  "skill_order": [
+    "strike",
+    "splitShot",
+    "telepathy",
+    "lifeUpA"
+  ],
   "storage_capacity": 64,
   "storage_policies": [
     {
@@ -31,6 +43,21 @@
         0,
         0
       ]
+    },
+    {
+      "item_id": "BatPlastic",
+      "doses": 1,
+      "total_count": 1,
+      "required": false,
+      "boosts": [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0
+      ]
     }
   ],
   "acquisitions": [
@@ -39,6 +66,13 @@
       "doses": 3,
       "max_count": 1,
       "flag_id": "got_asthma_spray"
+    },
+    {
+      "item_id": "BatPlastic",
+      "doses": 1,
+      "flag_id": "Ninten's House/Present2",
+      "max_count": 1,
+      "flag_policy": 2
     }
   ],
   "key_acquisitions": [
@@ -55,6 +89,13 @@
       "flag_id": "Ninten's House/Present3",
       "consumed_flag_id": "",
       "flag_policy": 2
+    },
+    {
+      "item_id": "GGFDiary",
+      "doses": 1,
+      "flag_id": "got_diary",
+      "consumed_flag_id": "",
+      "flag_policy": 1
     },
     {
       "item_id": "KeyBasement",
@@ -93,7 +134,7 @@
   },
   "kind": "encore.native-session.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Single live party member; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot",
+  "scope": "Single live party member; source normal/object/key acquisitions and story-learned skills; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot",
   "compatibility": {
     "content_family": 1162739714,
     "content_revision": 1,
@@ -2416,6 +2457,7 @@
     "earned_cash",
     "gave_treats",
     "got_asthma_spray",
+    "got_diary",
     "got_dog_treats",
     "mick_scratch",
     "mick_telepathy",
@@ -2456,15 +2498,16 @@
     "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633"
   },
   "dependencies": {
-    "content/native-opening.json": "ea2609e9640067e5b869b9b52301f19b6e50ef0bba2ea42535802672f5a29663",
-    "content/native-house.json": "66d501552ed52fd7d7286daa91dfebb48e81dedf143c4d4215d0fcb19994b30d",
+    "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
+    "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
-    "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
-    "content/native-round.json": "3d45c807b18ef04464fc7ab3fec7f7f72f085cacfdd857b1c0b730d28f62d09a",
-    "content/doll-round.json": "4082649ae68cffb2c3b6aaa84a0d2c054980d511ddb812189f061c847886e07d",
+    "content/native-items.json": "347abe721100ab995cce7a07f6a7949c772f9ff66ffb2416af9cfc6523ccd397",
+    "content/native-round.json": "ab87e11454c423b38d251c8ab005935415daebfe22ef7ed441c09ed3e32228ea",
+    "content/doll-round.json": "f9332a1936a50ab813dc403ecae6834d569a7dd36f774c5c29112bfd6eb7e4f0",
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
-    "content/house-presents.json": "e0f56fcbfe7bbbdd68063b40d67e56856639d4ff80c074b26fd04b42b8b5a827",
+    "content/house-presents.json": "332d984bc2332f2b43fa49d814a38a0c84ee4ed79a02eb46f80c4da38452831a",
     "content/mick-treats.json": "ddd908fbfd963a18cfb27978288bd7579e5cd9c8f2c34e7fa23722416bfc2931",
-    "content/native-storage.json": "c4cb1436789597fe592bb50f6e807913e3747aa363adb24b5e7a2771a9f480e2"
+    "content/native-storage.json": "414c0c4bc096987509e167d63e454c21e1f5a07002ad1ee91f10a7367aba3862",
+    "content/diary-story.json": "b9e93337b086ad2b951a8a6861d8020a70bd848b7ebd415d140b98d07b317409"
   }
 }

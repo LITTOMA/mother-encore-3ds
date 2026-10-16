@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "b9e93337b086ad2b951a8a6861d8020a70bd848b7ebd415d140b98d07b317409",
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml": "a8e7fd1e2ab459b1aee7edc72ca503e488af8c85c7223178860d5fe996dab9f8",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Data/Animations/NintenCutscene.yaml": "5c58c8034f23d8d2d485aaf40efa2dc584962916170db8e42f6281aafb25e2e8",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
+    "Audio/Sound effects/M3/Learned PSI.wav": "f28b9e605a82bd89199d42b9448f03f42451714d17598bcd677fe5fa49c96a04"
+  },
+  "document": {
+    "0": {
+      "actors": {
+        "ninten": "ninten"
+      },
+      "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_0",
+      "goto": "1"
+    },
+    "1": {
+      "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_1",
+      "soundeffect": "Item Received.mp3",
+      "goto": "2"
+    },
+    "2": {
+      "showbox": false,
+      "actorsmove": {
+        "ninten": {
+          "movement": [
+            {
+              "x": 128,
+              "y": 1040
+            }
+          ],
+          "speed": 32,
+          "animation": "Walk",
+          "type": "position"
+        }
+      },
+      "actorsturn": {
+        "ninten": {
+          "x": 0,
+          "y": 1,
+          "queue": true
+        }
+      },
+      "wait": 1,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "3"
+    },
+    "3": {
+      "changecam": "ninten",
+      "returncam": 0.01,
+      "objectsfunction": {
+        "AnimationPlayer": "play_anim",
+        "MusicArea2": "stop_music"
+      },
+      "wait": 7,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "4",
+      "actorsanim": {
+        "ninten": {
+          "type": 1,
+          "anim": "NintenDiarySleep"
+        }
+      }
+    },
+    "4": {
+      "name": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "sound": "Female",
+      "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_4",
+      "objectsfunction": {
+        "melodyBG": "appear"
+      },
+      "wait": 2,
+      "goto": "5"
+    },
+    "5": {
+      "name": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "sound": "Female",
+      "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_5",
+      "wait": 2,
+      "goto": "6"
+    },
+    "6": {
+      "name": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "sound": "Female",
+      "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_6",
+      "wait": 2,
+      "goto": "7"
+    },
+    "7": {
+      "showbox": false,
+      "wait": 3,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "8",
+      "actorsanim": {
+        "ninten": {
+          "type": 1,
+          "anim": "NintenDiaryWakeUp"
+        }
+      }
+    },
+    "8": {
+      "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_8",
+      "goto": "9"
+    },
+    "9": {
+      "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_9",
+      "soundeffect": "M3/Learned PSI.wav",
+      "objectsfunction": {
+        "MusicArea2": "play_music",
+        "melodyBG": "disappear"
+      },
+      "wait": 0.6,
+      "goto": "10",
+      "learnskills": {
+        "ninten": "lifeUpA"
+      }
+    },
+    "10": {
+      "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_10"
+    }
+  },
+  "semantics": "Original grant precedes dialogue; move/queued turn; seven-second sleep, white fade and music stop; three delayed voice phrases; wake, music restore, lifeUpA learning; original completion and camera return. Alpha keys quantized to 16-bit, special pixels losslessly repacked."
+}

@@ -59,7 +59,9 @@ class AudioAssetTests(unittest.TestCase):
         prefix=[21,22,1001,1002,1101,1102,1103,1104,30,32,33,34,36,37,1201,1202]
         self.assertEqual([a['stable_id'] for a in bank['assets'][:16]],prefix)
         self.assertEqual([a['stable_id'] for a in bank['assets'][16:21]],[1301,1302,1303,1304,1305])
-        self.assertEqual(len(bank['assets']),53)
+        self.assertEqual(len(bank['assets']),54)
+        heal=next(a for a in bank['assets'] if a['stable_id']==3334220389)
+        self.assertEqual((heal['source_path'],heal['sample_rate'],heal['channels'],heal['frames']),('res://Audio/Sound effects/EB/heal 1.wav',44100,1,42562))
         intro=json.loads((ROOT/'content/introduction-bindings.json').read_text())['audio']
         self.assertEqual([(a['stable_id'],a['source_path'],a['pcm_path'],a['gain_db']) for a in bank['assets'][16:21]],[(r['stable_id'],r['source_path'],r['pcm_path'],r['gain_db']) for r in intro.values()])
         self.assertEqual(bank['assets'][0]['loop_start'],int(6.382*44100));self.assertTrue(bank['assets'][0]['loop']);self.assertFalse(bank['assets'][1]['loop']);self.assertFalse(bank['assets'][2]['loop'])

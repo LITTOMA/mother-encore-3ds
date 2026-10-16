@@ -34,6 +34,7 @@ DEDICATED = {
     'item_details_source': ('test_item_details',),
     'field_equipment_source': ('test_field_equipment', 'test_field_audio'),
     'present_data_source': ('test_house_presents',),
+    'basement_presents_source': ('test_basement_presents',),
     'mick_treats_source': ('test_mick_treats',),
     'runtime_layout': ('test_runtime_layout',),
 }

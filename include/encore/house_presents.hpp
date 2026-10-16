@@ -16,10 +16,14 @@ public:
     virtual bool validate_flag(std::string_view,std::string&)=0;
     virtual bool validate_item(PresentTemplate,std::string_view item,std::string&)=0;
     virtual bool validate_sound(std::string_view,std::string&)=0;
+    virtual bool validate_story(std::string_view,std::string&)=0;
     virtual bool show_text(uint32_t dialogue_id,std::string&)=0;
     virtual bool flag(std::string_view,bool&,std::string&)=0;
     virtual bool set_flag(std::string_view,bool,std::string&)=0;
     virtual bool grant_item(PresentTemplate,std::string_view item,std::string&)=0;
+    virtual bool inventory_space()const=0;
+    virtual bool preview_item(PresentTemplate,std::string_view,std::string&)=0;
+    virtual bool start_story(std::string_view,std::string&)=0;
     virtual bool play_sound(std::string_view,std::string&)=0;
 };
 // Platform-owned effects behind HouseRuntime's PresentHost: inventory and audio.
@@ -29,6 +33,8 @@ public:
     virtual bool validate_item(PresentTemplate,std::string_view item,std::string&)=0;
     virtual bool validate_sound(std::string_view,std::string&)=0;
     virtual bool grant_item(PresentTemplate,std::string_view item,std::string&)=0;
+    virtual bool inventory_space()const=0;
+    virtual bool preview_item(PresentTemplate,std::string_view,std::string&)=0;
     virtual bool play_sound(std::string_view,std::string&)=0;
 };
 struct PresentPose {
@@ -65,7 +71,7 @@ public:
     PresentView view()const{return view_;}
 private:
     struct Object {bool sparkles_visible=true,sparkles_playing=true,flag_value=false,flag_present=false;uint32_t frame=0,sparkle_frame=0;float sparkle_timeout=0;
-        uint32_t clip=kPresentNone;float clip_time=0;bool clip_started=false;};
+        uint32_t clip=kPresentNone,queued_clip=kPresentNone;float clip_time=0;bool clip_started=false;};
     bool step(std::string&);bool fail(std::string&,const char*);
     void play_clip(uint32_t object,uint32_t clip);
     PresentView view_;PresentHost* host_=nullptr;std::vector<Object>objects_;std::vector<PresentAudioRequest>audio_;

@@ -96,6 +96,8 @@ def main():
     files.update(podunk_files(source))
     from house_presents import stage_files as present_files
     files.update(present_files(source))
+    from basement_items import stage_files as basement_files
+    files.update(basement_files(source))
     from mick_treats import stage_files as mick_files
     files.update(mick_files(source))
     files.update(catalog_files(source, files))

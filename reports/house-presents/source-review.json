@@ -1,12 +1,14 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "e0f56fcbfe7bbbdd68063b40d67e56856639d4ff80c074b26fd04b42b8b5a827",
+  "ir_sha256": "332d984bc2332f2b43fa49d814a38a0c84ee4ed79a02eb46f80c4da38452831a",
   "sources": {
     "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
     "Audio/Sound effects/Gift Box.mp3.import": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
     "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
     "Audio/Sound effects/Item Received.mp3.import": "0ad60a0d1864b075695cdc0dbe45d3a2affe613c359f71f1dcfb5ae7309855e5",
+    "Data/Dialogue/ItemDialogue/firstbat.yaml": "257088702e02112fd46e0a623d4b15d67a283207fadd08cd9a480924ec020d92",
+    "Data/Dialogue/ItemDialogue/itemfull.yaml": "5143202ccf3ab17c303de414049bf7a0d7fe7e885ac6c99643a98b1732a285d6",
     "Data/Dialogue/ItemDialogue/presentcheck.yaml": "0d7faebe7fa884315140d7e038f39bef61401baca5eb31d3207c3b3ebd182b42",
     "Data/Dialogue/ItemDialogue/presentempty.yaml": "11622c6c634599909d8524bd4be8d8720950d029cb9d2c89c58c2b4dbebb8152",
     "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
@@ -56,16 +58,16 @@
     "Translations/TranslatedText/dialogue_ItemDialogue - sheet.csv": "af2de174e5c3c6375ee1fb0aeea018660998d76e8825d6f0acb986faa179dce1",
     "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e"
   },
-  "scope": "All four original House presents drawn; default fixed key-item grants support story and persistent object flags; custom dialogue and normal inventory presents remain explicit development boundaries",
+  "scope": "Four original House presents; DogTreats/Map key grants, Plastic Bat capacity/custom note/ordinary inventory, and diary grant with checked original room cutscene; story/object flags, UID ownership and deferred rewrap preserved",
   "semantics": {
     "ready": "Opened presents (flag true) show frame 4 and hide Sparkles; each Sparkles _ready draws rand_range(0,47) in tree order",
     "interaction": "Only the interact Area2D participates in the nearest ray hit; player turns on x and y",
-    "grant": "Unwrapped clip starts, key item granted to key_items (never full), source story/object flag set, presentcheck opens",
+    "grant": "Unwrapped starts; available ordinary/key item granted, source story/object flag set, source custom/default dialogue opens; full ordinary bag constructs preview UID and queues Wrapped after animation completion",
     "text": "Fixed-item lowering of [ItemName]/[ItemArt3]; [ItemReceiver] is the singleton leader for key items",
     "empty": "Opened present shows ItemDialogue/presentempty"
   },
   "unsupported": [
-    "Present1 diary cutscene and Present2 normal inventory bat",
+    "Bat-specific basic-attack animation/swing sound; shared opening battle damage rules remain unchanged",
     "ButtonPrompt over presents",
     "Reusable/noproblem when the ray hits the StaticBody2D"
   ],

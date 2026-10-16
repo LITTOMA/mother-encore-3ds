@@ -18,7 +18,11 @@ struct Host final:PresentHost{
  bool reject_grant=false;
  bool validate_text(uint32_t id,std::string_view path,std::string&e)override{for(uint32_t i=0;i<house.count(HouseSection::Dialogues);++i){const auto d=house.dialogue(i);if(d.id==id&&house.string(d.source_path)==path)return true;}e="Fixture missing text";return false;}
  bool validate_flag(std::string_view n,std::string&e)override{if(flags.count(std::string(n)))return true;e="Fixture unknown story flag";return false;}
- bool validate_item(PresentTemplate t,std::string_view n,std::string&e)override{if(t.key_item&&t.doses==1&&(n=="MapPodunk"||n=="DogTreats"))return true;e="Fixture unknown key";return false;}
+ bool validate_item(PresentTemplate t,std::string_view n,std::string&e)override{if((n=="BatPlastic"&&!t.key_item&&t.doses==1)||(t.key_item&&t.doses==1&&(n=="MapPodunk"||n=="DogTreats"||n=="GGFDiary")))return true;e="Fixture unknown key";return false;}
+ bool validate_story(std::string_view,std::string&)override{return true;}
+ bool inventory_space()const override{return true;}
+ bool preview_item(PresentTemplate,std::string_view,std::string&)override{return true;}
+ bool start_story(std::string_view,std::string&)override{events.push_back("story");return true;}
  bool validate_sound(std::string_view n,std::string&)override{return n.substr(0,6)=="Audio/";}
  bool show_text(uint32_t id,std::string&)override{events.push_back("text");texts.push_back(id);return true;}
  bool flag(std::string_view n,bool&v,std::string&e)override{if(!validate_flag(n,e))return false;v=flags[std::string(n)];return true;}

@@ -28,7 +28,7 @@ def lower(ir,receipt):
         fields(p,('definition_id','source_item','doses','max_count','sort_rank_en','sort_rank_zh'),'Storage policy')
         # IR retains stable definition identity; the pack addresses the checked
         # immutable native Items prefix (id1/id2 -> index0/index1).
-        require(p['definition_id'] in (1,2),'Storage stable Items identity')
+        require(p['definition_id'] in (1,2,3),'Storage stable Items identity')
         out['Policies'].append([p['definition_id']-1,string(p['source_item']),p['doses'],p['max_count'],p['sort_rank_en'],p['sort_rank_zh']])
     out['Parameters']=[[i+1,ir['parameters'][name]] for i,name in enumerate(PARAMETERS)]
     out['Bindings']=[[i+1,string(ir['bindings'][name])] for i,name in enumerate(BINDINGS)]
@@ -42,7 +42,7 @@ def lower(ir,receipt):
         out['Layouts'].append([l['id'],ROLES.index(l['role'])+1,NIL if l['parent'] is None else l['parent'],KINDS.index(l['kind'])+1,NIL if l['resource'] is None else l['resource'],l['frame'],l['flags'],*l['anchor'],*l['rect'],*l['color'],*l['patch']])
     for e in ir['equipment']:
         fields(e,('definition_id','boosts'),'Storage equipment');require(len(e['boosts'])==7,'Storage equipment stats')
-        require(e['definition_id'] in (1,2),'Storage equipment stable identity');out['Equipment'].append([e['definition_id']-1,*e['boosts']])
+        require(e['definition_id'] in (1,2,3),'Storage equipment stable identity');out['Equipment'].append([e['definition_id']-1,*e['boosts']])
     out['Strings']=bytes(pool);validate(out);return out
 
 def encode(t,pin=PIN):

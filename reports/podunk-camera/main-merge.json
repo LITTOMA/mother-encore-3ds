@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "main": "8af7eb9bf6cae06f84096ff821253081f74104c1",
+  "camera_parent": "3f1c2384feb99cc2be5cd79c0c68b4d2b0ce380d",
+  "resolution": "Merge main; retain both evidence allowlists; regenerate map and resource catalog using original compilers",
+  "camera_map_bytes_preserved": true,
+  "main_room_links_and_runtime_preserved": true,
+  "all_other_romfs_bytes_match_main": true,
+  "atlas_and_source_receipts_preserved": true,
+  "catalog_bindings_preserved": 41,
+  "changed_catalog_roles": [
+    "FieldMap"
+  ],
+  "resource_compilation_admission": "passed",
+  "new_test_suites_run": false,
+  "historical_validation": "Existing CI/emulator evidence covers its recorded pre-merge source only",
+  "hardware_verified": false
+}

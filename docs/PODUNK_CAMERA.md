@@ -15,3 +15,11 @@
 修正版实际 Azahar 冷启动三次（英文、中文、进一步边界返回）全部通过，相同语义投影；玩家在旧触发点后持续可见。第三次继续到 (450,279)，按 B 从尚未移植的 beat_dog_bridge 桥头狗战事件返回，再次往返正常。相关剧情仍是明确开发边界，完整过桥剧情和真机未完成。参见 [模拟器比较](../reports/podunk-camera/emulator-comparison.json)、[修复后画面](../reports/podunk-camera/fixed-crossing.png) 和 [剧情边界](../reports/podunk-camera/story-boundary.png)。
 
 已清理独立临时模拟器配置、私人 DSP 副本和旧对照安装包 490,183,567 字节；保留来源收据、截图、日志及新真实安装包 dist/podunk-camera-51979af。
+
+## 同步主线后的冲突处理
+
+2026-10-16：合入主线 8af7eb9（已合并 #60）。`.gitignore` 保留两边的验证记录规则；Podunk 资源通过原地图编译器重新生成，再由资源目录编译器生成 `native.encresources`，没有手改二进制或来源收据。
+
+字节核对确认：相机地图与 #61 原提交 3f1c238 完全相同；房屋、Podunk 房间、场景链接、其他全部 RomFS 资源及运行代码均保留主线版本。纹理和上游来源收据不变，目录仍有 41 项绑定，相对主线只改变 FieldMap 的指纹。结果见 [合入核对](../reports/podunk-camera/main-merge.json)，实际资源编译日志保存在 `build/podunk-camera/conflict-*-compile.log`。
+
+本轮只执行资源编译所需的来源、格式准入及合入字节核对；未额外启动测试套件、完整 CI 或模拟器。上文 CI 和模拟器记录仍只覆盖其注明的历史源码与安装包。推送后的自动 3DSX/CIA 构建单独以 Actions 结果为准，真机仍未验证。

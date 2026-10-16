@@ -45,7 +45,7 @@ class MelodyContentTests(unittest.TestCase):
   self.assertEqual(move['path'],dict(movement=[dict(x=0,y=-12)],speed=64,animation='Walk',type='step'))
   self.assertFalse(any(a['kind']in('StartWait','AwaitTimer','SetFlag')for a in self.guard))
  def test_program_paths_source_labels_and_binary_roundtrip(self):
-  self.assertEqual((self.ir['rules'],self.ir['capabilities'],self.ir['adapter_revision']),(7,8,8))
+  self.assertEqual((self.ir['rules'],self.ir['capabilities'],self.ir['adapter_revision']),(7,9,9))
   for index,path,actions,phrases in [(3,'Podunk/dollmelody',self.actions,3),(4,'Podunk/cutscenes/mimmie_ignore',self.guard,2)]:
    p=self.s['Program'][index];self.assertEqual(self.ir['strings'][p['source_path_string']],path)
    self.assertEqual((p['stable_id'],p['command_count'],p['phrase_count']),(index+1,len(actions),phrases))

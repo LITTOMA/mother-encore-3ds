@@ -54,7 +54,7 @@ class NativeContentTests(unittest.TestCase):
 
     def test_header_versions_capabilities_size_reserved_rejected(self):
         changes=[(0,'I',0),(8,'H',2),(10,'H',1),(12,'I',64),(16,'I',0xffffffff),
-                 (20,'I',0x04030201),(24,'I',2),(28,'I',0),(32,'I',1),(36,'I',1),(36,'I',9),
+                 (20,'I',0x04030201),(24,'I',2),(28,'I',0),(32,'I',1),(36,'I',1),(36,'I',10),
                  (40,'I',0),(44,'I',0xfffffff0),(48,'H',25),(50,'H',28),
                  (108,'I',0),(112,'I',0),(116,'I',1),(120,'I',1)]
         for offset,fmt,value in changes:
@@ -62,8 +62,13 @@ class NativeContentTests(unittest.TestCase):
 
     def test_current_extended_capability_is_valid(self):
         parsed=parse_pack(self.blob)
-        self.assertEqual((parsed['rules'],parsed['capabilities']),(7,8))
-        self.assertEqual(parse_pack(self.mutation(36,'I',8)),parsed)
+        self.assertEqual((parsed['rules'],parsed['capabilities']),(7,9))
+        with self.assertRaises(ContentError):parse_pack(self.mutation(36,'I',8))
+        legacy=parse_pack((ROOT/'tests/fixtures/pre-basement-opening.encroom').read_bytes())
+        self.assertEqual((legacy['rules'],legacy['capabilities']),(7,8))
+        self.assertEqual(parsed['strings'][:len(legacy['strings'])],legacy['strings'])
+        for name,rows in legacy['sections'].items():
+            with self.subTest(section=name):self.assertEqual(parsed['sections'][name][:len(rows)],rows)
 
     def test_checksum_and_unknown_directory_values(self):
         corrupt=bytearray(self.blob);corrupt[-1]^=1
@@ -161,7 +166,7 @@ class NativeContentTests(unittest.TestCase):
         self.rejects_ir(lambda d:d['sections']['Experience'][2].update(required_total_exp=1))
 
     def test_periodic_room_shake_source_contract(self):
-        self.assertEqual((self.ir['rules'],self.ir['capabilities']),(7,8))
+        self.assertEqual((self.ir['rules'],self.ir['capabilities']),(7,9))
         binding=self.ir['sections']['Binding'][1]
         self.assertEqual((binding['kind'],binding['value'],binding['duration']),(3,4,5))
         resource=self.ir['sections']['Resource'][binding['target_index']]
@@ -244,7 +249,10 @@ class NativeContentTests(unittest.TestCase):
         data['sections']['Command'][first+3]['duration']=0
         with self.assertRaises(ContentError):compile_ir(data)
         for rules,programs,bindings in [(6,12,9),(5,11,9),(4,5,7)]:
-            old=copy.deepcopy(self.ir);old.update(rules=rules,capabilities=rules)
+            old=copy.deepcopy(self.ir)
+            baseline=parse_pack((ROOT/'tests/fixtures/pre-basement-opening.encroom').read_bytes())
+            old['strings'],old['sections']=baseline['strings'],baseline['sections']
+            old.update(rules=rules,capabilities=rules)
             old['sections']['Program']=old['sections']['Program'][:programs]
             end=old['sections']['Program'][-1]['first_command']+old['sections']['Program'][-1]['command_count']
             old['sections']['Command']=old['sections']['Command'][:end]
@@ -265,14 +273,14 @@ class NativeContentTests(unittest.TestCase):
             self.rejects_ir(lambda d:d.update(rules=rules,capabilities=rules))
 
     def test_revision7_actor_loop_repeat_and_stop_operands(self):
-        self.assertEqual((self.ir['rules'], self.ir['capabilities']), (7, 8))
+        self.assertEqual((self.ir['rules'], self.ir['capabilities']), (7, 9))
         paths=self.ir['sections']['MovementPath']
         loop=next(i for i,p in enumerate(paths)if p['flags']&4)
         self.assertEqual(paths[loop]['entry_count'],14)
         for change in [dict(flags=16),dict(entry_count=17),dict(speed=0)]:
             self.rejects_ir(lambda d: d['sections']['MovementPath'][loop].update(change))
         stop=next(i for i,c in enumerate(self.ir['sections']['Command'])if c['opcode']==42)
-        for change in [dict(opcode=44),dict(actor_index=NO_ACTOR),dict(target_index=0),dict(flags=1),dict(duration=.1),dict(value=1)]:
+        for change in [dict(opcode=47),dict(actor_index=NO_ACTOR),dict(target_index=0),dict(flags=1),dict(duration=.1),dict(value=1)]:
             self.rejects_ir(lambda d: d['sections']['Command'][stop].update(change))
         jump=next(i for i,c in enumerate(self.ir['sections']['Command'])if c['opcode']==12 and c['flags']==1)
         self.rejects_ir(lambda d:d['sections']['Command'][jump].update(flags=16))

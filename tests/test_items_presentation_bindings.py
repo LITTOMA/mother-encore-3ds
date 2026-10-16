@@ -81,6 +81,11 @@ class ItemsPresentationBindingsTests(unittest.TestCase):
      target=root/path;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/path,target)
     path=root/'compatibility/upstream-inventory.json';path.parent.mkdir(parents=True);path.write_text(json.dumps(inventory),encoding='utf-8')
     with self.assertRaises(ValueError):bindings.load(root,recipe)
+ def test_resource_extensions_are_closed_and_checked(self):
+  self.assertEqual(len(base_resources(self.ir)),len(self.recipe['assets']))
+  for mutate in (lambda r:r['resources'].pop(),lambda r:r['resources'].append(dict(r['resources'][-1])),lambda r:r['resources'][-1].update(sha256='0'*64),lambda r:r['resources'][-1].update(path='graphics/invented.t3x')):
+   bad=copy.deepcopy(self.ir);mutate(bad)
+   with self.subTest(mutate=mutate),self.assertRaises(ValueError):base_resources(bad)
  def test_checked_adapter_data_changes_without_new_code(self):
   recipe=copy.deepcopy(self.recipe);recipe['layouts']['info']['anchor']=[.75,1];recipe['platform']['hint_offset']=[-2,-1]
   with tempfile.TemporaryDirectory(dir=self.fixture)as directory:

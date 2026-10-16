@@ -1,0 +1,178 @@
+{
+  "schema": 1,
+  "kind": "encore.basement-items.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
+    "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Graphics/Objects/Items/BatPlastic.png": "f575293d03d362762bd0240b27cdddcd3df245cef9d2874977a82be12a5cdcc2",
+    "Graphics/Objects/Items/BatPlastic.png.import": "334670f765338ee09d647bd4b0af1dfd8eec3ac938d264556f6acf87ca40a7b7",
+    "Graphics/Character Sprites/Ninten/cutscene.png": "4e6417cf62745d0e652d0b1cee5733a96bdf2236f38b677a0ba6fa0acf741d48",
+    "Graphics/Character Sprites/Ninten/cutscene.png.import": "eb2cec934cc1adfd298d111643c9e187250e140d5293f7ef72fbb4b129103cc3"
+  },
+  "bat": {
+    "name": "BATPLASTIC_NAME",
+    "sorting_name": "BATPLASTIC_SORT",
+    "description": "BATPLASTIC_DESC",
+    "article": "BATPLASTIC_ART",
+    "keyitem": false,
+    "cost": 100,
+    "value": 50,
+    "can_use": [
+      "ninten",
+      "pippi"
+    ],
+    "actions": [
+      {
+        "function": "equip"
+      }
+    ],
+    "basic_skill": "attack_bat",
+    "transform": "",
+    "slot": "weapon",
+    "HPrecover": 0,
+    "PPrecover": 0,
+    "boost": {
+      "maxhp": 0,
+      "maxpp": 0,
+      "offense": 3,
+      "defense": 0,
+      "speed": 0,
+      "iq": 0,
+      "guts": 0
+    }
+  },
+  "diary": {
+    "name": "GGFDIARY_NAME",
+    "sorting_name": "GGFDIARY_SORT",
+    "description": "GGFDIARY_DESC",
+    "article": "GGFDIARY_ART",
+    "keyitem": true,
+    "cost": 0,
+    "value": 0,
+    "actions": [],
+    "transform": "",
+    "slot": "",
+    "HPrecover": 0,
+    "PPrecover": 0,
+    "boost": {
+      "maxhp": 0,
+      "maxpp": 0,
+      "offense": 0,
+      "defense": 0,
+      "speed": 0,
+      "iq": 0,
+      "guts": 0
+    }
+  },
+  "translations": {
+    "en": {
+      "name": "Plastic Bat",
+      "sorting_name": "Bat Plastic",
+      "article": "The ,the ,A ,a ,this ,it,was",
+      "description": "A cheap plastic bat.\\nWeapon @ Offense +[ItemValue]."
+    },
+    "zh_Hans_CN": {
+      "name": "塑料球棒",
+      "sorting_name": "塑料球棒",
+      "article": ",,,,这个,它,是",
+      "description": "一支便宜的塑料球棒。[BR]武器@攻击力+[ItemValue]。"
+    }
+  },
+  "assets": [
+    {
+      "role": "bat",
+      "source": "Graphics/Objects/Items/BatPlastic.png",
+      "output": "graphics/basement/plastic-bat.t3x",
+      "size": [
+        20,
+        20
+      ],
+      "grid": [
+        1,
+        1
+      ]
+    },
+    {
+      "role": "special",
+      "source": "Graphics/Character Sprites/Ninten/cutscene.png",
+      "output": "graphics/basement/ninten-cutscene.t3x",
+      "source_size": [
+        1280,
+        640
+      ],
+      "source_grid": [
+        20,
+        10
+      ],
+      "size": [
+        512,
+        448
+      ],
+      "grid": [
+        8,
+        7
+      ],
+      "frames": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ]
+    }
+  ],
+  "permission": "Pinned upstream LICENSE permits game-related modifications; original game art remains under upstream terms.",
+  "definition_id": 3,
+  "scope": "Original plastic bat metadata/icon and Ninten special-animation sheet; no whole-game behavior approval"
+}

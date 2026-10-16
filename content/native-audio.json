@@ -296,6 +296,14 @@
       "gain_db": 0
     },
     {
+      "stable_id": 3334220389,
+      "source_path": "res://Audio/Sound effects/EB/heal 1.wav",
+      "source_sha256": "77b3c37bd00af37b736c203855e5c2908dbcfcbae11d0e097e1025f53fff5e36",
+      "import_sha256": "b06c91fd531323aaf9e0b07ffe328e23b9be47dd7c31a821b207b325b1b7ed80",
+      "pcm_path": "sound/effects/gameplay-3334220389.pcm",
+      "gain_db": 0
+    },
+    {
       "stable_id": 2793307618,
       "source_path": "res://Audio/Sound effects/EB/miss.wav",
       "source_sha256": "6696e8e759be9dca1ef2e70a09a79d060163e7757c61d7494137c06ccebefd8d",

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "daf15c76b8c3b0b1274949a819bab4af74a6d31e9c9017135b4b5c9613c03bcf",
+  "ir_sha256": "74b32fc574343c6624789b3ed15fd2ab378be237f3af76e65d4fe86cf510ec76",
   "sources": {
     "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
     "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
@@ -9,6 +9,8 @@
     "Audio/Sound effects/Cursor 2.mp3.import": "08265ad592b74b9c5644f8c9c34586cdedc38f6f84c2a92dd7bb4f6acf82e54e",
     "Audio/Sound effects/EB/close.wav": "5238b0dfee0460c7ee219fd4cdc0c39d37829192c7af828429d10b00845efa56",
     "Audio/Sound effects/EB/close.wav.import": "eb9a152837ffc1c39af9086767ef2bbc9217eba042bfaf24d360fcf90f8a8324",
+    "Audio/Sound effects/EB/heal 1.wav": "77b3c37bd00af37b736c203855e5c2908dbcfcbae11d0e097e1025f53fff5e36",
+    "Audio/Sound effects/EB/heal 1.wav.import": "b06c91fd531323aaf9e0b07ffe328e23b9be47dd7c31a821b207b325b1b7ed80",
     "Audio/Sound effects/M3/bump.wav": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
     "Audio/Sound effects/M3/bump.wav.import": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
     "Audio/Sound effects/M3/curshoriz.wav": "b16277ce84ab106804ebf18135cac83b41acfc9b88b0a7c9b7ab03456f797fed",
@@ -23,6 +25,7 @@
     "Audio/Sound effects/M3/menu_open.wav.import": "ed14a77347f70116b0521143e87cd2dbfc88283f8183d50a8b155cfd6bf5fb41",
     "Audio/Sound effects/M3/menu_open2.wav": "dfd2f4e3dbb64188e91fb7aff483983edd7f4a1d6856c54d3ebd9b61b9b89a3d",
     "Audio/Sound effects/M3/menu_open2.wav.import": "f7e27b0f1293df6119a65ce0bc58915f40337d321f8127b8c2c4a895ed7edfa7",
+    "Data/BattleSkills/lifeUpA.yaml": "9a2196d71255d94998502717254bbb569cb91bb2fb5edec053c15c1b2c1a73d3",
     "Data/BattleSkills/telepathy.yaml": "9240e42dd77ef0c7518c47c9c3396889c2a3b65b4b633197edc816646c114066",
     "Data/FieldSkills/telepathy.yaml": "1529b8c0631d697377eb293e107b37068c03ba8588fdd254b37e33bc22559230",
     "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
@@ -92,11 +95,11 @@
     "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
   },
-  "scope": "Original Pause -> Equip for singleton Ninten and admitted BaseballCap; PSI Telepathy for admitted levels 1/2 and singleton Ninten; other known commands disabled; current UID and seven derived stats committed transactionally; no battle item-use or broader party capability",
+  "scope": "Original Pause/Equip for singleton Ninten and admitted cap/plastic bat; field Telepathy and learned Lifeup-alpha with target/cancel, PP cost, source IQ/variance roll, original sound and acknowledged result; other known commands disabled; stable UIDs and seven derived stats; no battle item-use or broader party capability",
   "semantics": [
     "Stable numeric OwnerId and source party name come from the checked Items identity adapter; they are separate from string-pool offsets",
     "Pause six commands in original row-major order; Equip and field PSI admitted; source cancel/select closes Pause; Equip cancel returns Pause",
-    "Field PSI uses source Telepathy name/description, learned skill identity and level-2 condition, Self field-only use case, zero PP cost, menu-open/close/confirm sounds and original Y animation; the silent close emits one field action after animation completion; level-1 PSI list stays empty",
+    "Field PSI uses source Telepathy name/description, learned skill identity and level-2 condition, Self field-only use case, zero PP cost, menu-open/close/confirm sounds and original Y animation; the silent close emits one field action after animation completion; level-1 PSI list contains no Telepathy; story-acquired Lifeup-alpha is listed independently",
     "Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty",
     "Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost",
     "Original EBMain/BottleRocket faces, source numeric spacing, original PNG textures, 5fps 0/1/2/1 cursor and0.1sec quart-out movement; Pause cash uses EBMain right alignment and source black text",

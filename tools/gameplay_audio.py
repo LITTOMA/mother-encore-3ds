@@ -13,6 +13,8 @@ def world_sources(root=ROOT):
     expected={v for d in house['doors']+house['openable_doors'] for k,v in d.items() if k in ('start_sound','end_sound','ram_sound') and v}
     expected.update(s['voice'] for s in house['segments'] if s['voice'])
     expected.update(c['a'].removeprefix('res://') for c in mick['commands'] if c['op']=='PlaySound')
+    field=read_json(root/'content/native-field-equipment.json')
+    expected.update(s['sound'] for s in field.get('skills',[]) if s['sound'])
     return expected
 
 def extract_world_coverage(root=ROOT):

@@ -1,10 +1,13 @@
 #pragma once
 #include "encore/field_equipment_data.hpp"
 #include "encore/items_menu.hpp"
+#include "encore/source_random.hpp"
 #include <functional>
 
 namespace encore::upstream {
 struct SessionSnapshot;
+struct FieldHealingResult {int32_t hp=0,pp=0,rolled=0;bool full=false;};
+bool field_healing(FieldPsiSkill,int32_t hp,int32_t maxhp,int32_t pp,int32_t iq,SourceRandom&,FieldHealingResult&,std::string&);
 // Select the admitted active party member from either a legacy singleton or a
 // complete startup roster. Inactive character records do not expand the party.
 // Failed selection leaves the previous index unchanged.
@@ -23,8 +26,9 @@ struct FieldEquipmentHost {
  std::function<bool(FieldEquipmentSnapshot&,std::string&)> read;
  std::function<bool(uint32_t,bool,uint32_t,std::array<int32_t,7>&,std::string&)> preview;
  std::function<bool(uint32_t,bool,uint32_t,std::string&)> commit;
+ std::function<bool(uint32_t,std::string&,std::string&)> use_skill;
 };
-enum class FieldEquipmentPhase:uint8_t {Closed,PauseOpening,Pause,EquipOpening,Slots,Candidates,EquipClosing,PauseClosing,PsiOpening,Psi,PsiFailed};
+enum class FieldEquipmentPhase:uint8_t {Closed,PauseOpening,Pause,EquipOpening,Slots,Candidates,EquipClosing,PauseClosing,PsiOpening,Psi,PsiFailed,PsiTarget,PsiResult};
 enum class FieldEquipmentSound:uint8_t {PauseOpen=1,PauseClose,EquipOpen,EquipClose,Move,Confirm,Restricted,Clear,Equip,Back};
 class FieldEquipmentMenu {
 public:
@@ -35,8 +39,13 @@ public:
  bool active()const{return phase_!=FieldEquipmentPhase::Closed;}
  bool visible()const{return active();}
  bool equipment_visible()const;
- bool psi_visible()const{return psi_closing_||phase_==FieldEquipmentPhase::PsiOpening||phase_==FieldEquipmentPhase::Psi||phase_==FieldEquipmentPhase::PsiFailed;}
+ bool psi_visible()const{return psi_closing_||phase_==FieldEquipmentPhase::PsiOpening||phase_==FieldEquipmentPhase::Psi||phase_==FieldEquipmentPhase::PsiFailed||phase_==FieldEquipmentPhase::PsiTarget||phase_==FieldEquipmentPhase::PsiResult;}
  bool psi_learned()const;
+ uint32_t psi_skill_count()const;uint32_t psi_skill_index(uint32_t row)const;
+ uint32_t psi_selection()const{return psi_;}
+ uint32_t psi_requested_skill()const{return psi_requested_;}
+ FieldPsiSkill psi_selected_skill()const{return data_.psi_skill(psi_skill_index(psi_));}
+ std::string_view psi_message()const{return psi_message_;}
  // Delivered only after the silent menu close; the caller validates the live
  // skill/PP again before unpausing and dispatching the checked field action.
  bool take_psi_request(){if(active()||!psi_request_)return false;psi_request_=false;return true;}
@@ -76,7 +85,7 @@ private:
  FieldEquipmentView data_;FieldEquipmentHost host_;FieldEquipmentSnapshot snapshot_;
  std::array<int32_t,7>preview_{};std::vector<FieldEquipmentCandidate>candidates_;
  FieldEquipmentPhase phase_=FieldEquipmentPhase::Closed;
- uint32_t command_=0,slot_=0,candidate_=0,offset_=0;
+ uint32_t command_=0,slot_=0,candidate_=0,offset_=0,psi_=0,psi_requested_=0;std::string psi_message_;
  bool chinese_=false,description_open_=false,equip_closing_=false,psi_closing_=false,psi_request_=false;
  bool has_description_=false;ItemInstance description_item_{};
  float phase_time_=0,pause_time_=0,equip_time_=0,description_time_=0,psi_time_=0;

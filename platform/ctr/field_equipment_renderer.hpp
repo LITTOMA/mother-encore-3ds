@@ -193,10 +193,12 @@ inline bool FieldEquipmentRenderer::draw(const Menu& menu,const BattleRenderer& 
             switch(role){
                 case Role::PsiPanel:case Role::PsiTitlePanel:case Role::PsiPortrait:if(!art(l,dx,py))return false;break;
                 case Role::PsiTitle:if(!text(main_font,l,data_.binding(Binding::PsiTitle,chinese),dx,py,false,true))return false;break;
-                case Role::PsiName:if(menu.psi_learned()&&!text(main_font,l,data_.binding(Binding::PsiName,chinese),dx,py))return false;break;
-                case Role::PsiDescription:if(menu.psi_learned()&&!text(main_font,l,data_.binding(phase==Phase::PsiFailed?Binding::PsiFailure:Binding::PsiDescription,chinese),dx,py))return false;break;
+                case Role::PsiName:for(uint32_t row=0;row<menu.psi_skill_count();++row){auto line=l;line.rect.y+=row*data_.parameter(encore::upstream::FieldParameter::PsiRowPitch);const auto skill=data_.psi_skill(menu.psi_skill_index(row));if(!text(main_font,line,skill.name(chinese),dx,py))return false;}break;
+                case Role::PsiDescription:if(menu.psi_learned()){
+                    const std::string_view description=phase==Phase::PsiTarget?std::string_view(menu.snapshot().nickname):phase==Phase::PsiResult?menu.psi_message():phase==Phase::PsiFailed?data_.binding(Binding::PsiFailure,chinese):menu.psi_selected_skill().description(chinese);
+                    if(!text(main_font,l,description,dx,py))return false;}break;
                 case Role::PsiDivider:if(menu.psi_learned()&&!art(l,dx,py))return false;break;
-                case Role::PsiCursor:if(menu.psi_learned()&&phase!=Phase::PsiFailed){l.frame=menu.cursor_frame();if(!art(l,dx,py))return false;}break;
+                case Role::PsiCursor:if(menu.psi_learned()&&phase!=Phase::PsiFailed&&phase!=Phase::PsiResult){l.rect.y+=menu.cursor_row()*data_.parameter(encore::upstream::FieldParameter::PsiRowPitch);l.frame=menu.cursor_frame();if(!art(l,dx,py))return false;}break;
                 default:return fail("Field PSI draw role rejected");
             }continue;
         }

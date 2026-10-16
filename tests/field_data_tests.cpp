@@ -40,7 +40,7 @@ int main(int argc,char**argv){
     // ENCMAP01 admission and transactional rejection.
     FieldMapData map;check(map.load(map_bytes.data(),map_bytes.size(),error),error.c_str());
     const auto view=map.view();const auto layers=view.count(FieldMapSection::Layers),cells=view.count(FieldMapSection::Cells);
-    check(view.capabilities()==2,"confirm-only boundary capability admitted");
+    check(view.capabilities()==3,"field actor and confirm boundary capabilities admitted");
     check(view.scene_id()!=0&&layers>0&&cells>0&&view.count(FieldMapSection::Groups)>0,"checked field map content");
     check(view.count(static_cast<FieldMapSection>(0))==0&&view.count(static_cast<FieldMapSection>(99))==0&&view.text({UINT32_MAX,1}).empty(),"unknown lookups are empty");
     auto reject=[&](std::vector<uint8_t>b,const char*why,bool fix=true){if(fix)rehash(b);check(!map.load(b.data(),b.size(),error),why);
@@ -55,6 +55,13 @@ int main(int argc,char**argv){
             ++actions;put16(b,first+i*48,2);
         }
         check(actions==14,"all fourteen original jump areas are confirm-only");
+        put(b,20,2);reject(b,"actor items require capability 3");
+        // A legacy map is assembled by excluding the new actor draw records;
+        // generated game resources themselves are never patched by hand.
+        const auto start=section(b,14);
+        for(uint32_t i=0;i<count(b,14);++i)if(view.item(i).kind==uint16_t(FieldItemKind::Actor)){
+            put16(b,start+i*32,uint16_t(FieldItemKind::Sprites));put(b,start+i*32+4,0);
+        }
         reject(b,"action capability without an action is rejected");
         put(b,20,1);rehash(b);FieldMapData legacy;
         check(legacy.load(b.data(),b.size(),error)&&legacy.view().capabilities()==1,"legacy passive-boundary map remains admitted");
@@ -69,6 +76,13 @@ int main(int argc,char**argv){
     {auto b=map_bytes;put(b,64+16*1,get(b,64+16*1)+1);reject(b,"reordered section kind rejected");}
     {auto b=map_bytes;put(b,64+16*1+4,get(b,64+16*1+4)+2);reject(b,"misaligned section rejected");}
     const size_t atlases=section(map_bytes,2),tiles=section(map_bytes,6),chunks=section(map_bytes,11),cell_rows=section(map_bytes,12),items=section(map_bytes,14),groups=section(map_bytes,15);
+    for(uint32_t i=0;i<count(map_bytes,14);++i)if(view.item(i).kind==uint16_t(FieldItemKind::Actor)){
+        const auto at=items+i*32;
+        for(uint32_t index:{0u,64u,UINT32_MAX}){auto b=map_bytes;put(b,at+4,index);reject(b,"invalid actor identity rejected");}
+        {auto b=map_bytes;put(b,at+8,2);reject(b,"actor items cannot bind a range");}
+        {auto b=map_bytes;put(b,20,2);reject(b,"actor item cannot downgrade to action-only map");}
+        break;
+    }
     {auto b=map_bytes;const auto len=get(b,atlases+4);b[section(b,1)+get(b,atlases)+len-1]^=1;reject(b,"non-t3x atlas path rejected");}
     {auto b=map_bytes;put16(b,atlases+8,1000);reject(b,"non power-of-two atlas rejected");}
     {auto b=map_bytes;put(b,tiles,count(b,4));reject(b,"tile picture outside table rejected");}

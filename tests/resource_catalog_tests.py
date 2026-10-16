@@ -52,9 +52,12 @@ class ResourceCatalogTests(unittest.TestCase):
         self.assertFalse(any(row['role'] in catalog.EXTENSION_ROLES for row in self.base['bindings']))
         self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.EXTENSION_ROLES)
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
-        self.assertEqual(catalog.capability_for(self.ir['bindings']), 5)
+        self.assertEqual(catalog.capability_for(self.ir['bindings']), 6)
+        motion=[r for r in self.ir['bindings']if r['role']=='FieldNpc']
+        self.assertEqual(len(motion),2)
+        self.assertTrue(all(r['id']>=256 for r in motion))
         audio_roles={'GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones'}
-        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles]
+        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles|{'FieldNpc'}]
         self.assertEqual(catalog.capability_for(legacy), 4)
         for role in audio_roles:
             self.reject(lambda ir: ir.update(bindings=[row for row in ir['bindings'] if row['role']!=role]))
@@ -212,7 +215,7 @@ class ResourceCatalogTests(unittest.TestCase):
         for size in range(len(original)):
             with self.subTest(size=size), self.assertRaises(ValueError):
                 catalog.decode(original[:size])
-        for offset, value in [(8, 0), (8, 2), (20, 0), (20, 1), (20, 2), (20, 6), (24, 1), (28, 1)]:
+        for offset, value in [(8, 0), (8, 2), (20, 0), (20, 1), (20, 2), (20, 5), (20, 7), (24, 1), (28, 1)]:
             bad = bytearray(original)
             struct.pack_into('<I', bad, offset, value)
             with self.subTest(offset=offset, value=value), self.assertRaises(ValueError):

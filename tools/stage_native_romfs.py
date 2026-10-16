@@ -100,6 +100,8 @@ def main():
     files.update(basement_files(source))
     from mick_treats import stage_files as mick_files
     files.update(mick_files(source))
+    from field_npcs import stage_files as npc_files
+    files.update(npc_files(source))
     files.update(catalog_files(source, files))
     from romfs_layout import check_layout
     check_layout(files)

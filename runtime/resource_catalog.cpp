@@ -39,6 +39,7 @@ const char* suffix(uint32_t role) {
     case ResourceRole::FieldMusic:return ".encmusic";
     case ResourceRole::FieldAudio:return ".encaudio";
     case ResourceRole::FieldMusicZones:return ".enczones";
+    case ResourceRole::FieldNpc:return ".encmick";
     }return nullptr;
 }
 bool canonical(const std::string& path) {
@@ -64,9 +65,9 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     auto fail=[&](const char* message){error=message;return false;};
     if(!p||n<60||n>catalog_limit)return fail("Resource catalog size rejected");
     const auto capability=u32(p+20);
-    if(std::memcmp(p,"ENCRSC01",8)||u32(p+8)!=1||u32(p+12)!=n||capability<1||capability>5||u32(p+24)||u32(p+28))
+    if(std::memcmp(p,"ENCRSC01",8)||u32(p+8)!=1||u32(p+12)!=n||capability<1||capability>6||u32(p+24)||u32(p+28))
         return fail("Resource catalog schema/size/capability/reserved rejected");
-    const uint32_t max_role=capability==1?30:capability==2?33:capability==3?34:capability==4?35:39;
+    const uint32_t max_role=capability==1?30:capability==2?33:capability==3?34:capability==4?35:capability==5?39:40;
     if(~encore::crc32_update(~0u,p+32,n-32)!=u32(p+16))return fail("Resource catalog checksum rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};
         if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Resource catalog source pin rejected");}
@@ -75,7 +76,7 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     ResourceCatalog data;
     bool roots[22]={};
     for(uint32_t i=0;i<count;++i){const auto id=r.integer(),role=r.integer(),size=r.integer(),checksum=r.integer();auto path=r.path();
-        if(!r.ok||role<1||role>max_role||((role<=22||role>=25)?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
+        if(!r.ok||role<1||role>max_role||((role<=22||(role>=25&&role<40))?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
         const auto expected=suffix(role);const auto len=std::strlen(expected);
         if(path.size()<=len||path.compare(path.size()-len,len,expected))return fail("Resource catalog binding type rejected");
         for(const auto& prior:data.bindings_)if(prior.id==id||prior.path==path)return fail("Resource catalog duplicate ID/path rejected");
@@ -89,6 +90,8 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
         if(mick!=(capability>=4?1u:0u))return fail("Resource catalog Mick treats role rejected");}
     {unsigned audio=0;for(const auto& row:data.bindings_)audio+=uint32_t(row.role)>=36&&uint32_t(row.role)<=39;
      if(audio!=(capability>=5?4u:0u))return fail("Resource catalog gameplay audio role rejected");}
+    {unsigned actors=0;for(const auto& row:data.bindings_)actors+=row.role==ResourceRole::FieldNpc;
+     if((capability==6&&!actors)||(capability<6&&actors))return fail("Resource catalog field NPC roles rejected");}
     auto binding=[&](uint32_t id)->const Binding*{for(const auto& row:data.bindings_)if(row.id==id)return &row;return nullptr;};
     for(uint32_t i=0;i<pairs;++i){const auto battle=r.integer(),round=r.integer();
         const auto* b=binding(battle);const auto* v=binding(round);
@@ -106,6 +109,11 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
 bool ResourceCatalog::load_file(const char* path,std::string& error) {
     if(!path){error="Missing resource catalog path";return false;}
     std::vector<uint8_t> bytes;return encore::read_file(path,bytes,catalog_limit,error)&&load(bytes.data(),bytes.size(),error);
+}
+std::vector<std::string_view> ResourceCatalog::paths(ResourceRole role)const {
+    std::vector<std::string_view> result;
+    if(valid_)for(const auto& row:bindings_)if(row.role==role)result.push_back(row.path);
+    return result;
 }
 const std::string& ResourceCatalog::path(ResourceRole role)const {
     static const std::string empty;

@@ -249,6 +249,9 @@ class Scene:
             if a != path and node.type == 'TileMap' and 'disappear_flag' in node.props:
                 raise FieldError('Unreviewed nested flag TileMap at ' + a)
         node = self.by_path[path]
+        if node.scene == 'Nodes/Reusables/npc.tscn' and self.instance_root(node):
+            for flag,value in ((node.props.get('appear_flag',''),True),(node.props.get('disappear_flag',''),False)):
+                if flag:out.append((flag,value))
         if node.type == 'TileMap' and node.script:
             require(node.script == 'Scripts/Main/Flag Landmarks.gd', 'Unreviewed TileMap script at ' + path)
             appear, disappear = node.props.get('appear_flag', ''), node.props.get('disappear_flag', '')
@@ -285,8 +288,9 @@ def load_recipe(path=RECIPE):
     require(recipe.get('schema') == 1 and recipe.get('kind') == 'encore.podunk-field.recipe', 'Unsupported Podunk recipe')
     require(recipe.get('commit') == PIN, 'Podunk recipe source pin mismatch')
     expected = {'schema', 'kind', 'commit', 'scope', 'scene', 'house', 'player', 'tileset', 'door', 'routes', 'locales',
-                'ported_notices', 'action_boundaries', 'categories', 'prop_sprites', 'labels', 'atlas_directory', 'outputs'}
+                'ported_notices', 'action_boundaries', 'npc_recipe', 'categories', 'prop_sprites', 'labels', 'atlas_directory', 'outputs'}
     require(set(recipe) == expected, 'Unknown/missing Podunk recipe fields')
+    require(recipe['npc_recipe']=='content/podunk-npcs.json','Unreviewed field NPC policy binding')
     valid = {'door', 'openable_door', 'grass', 'prop', 'flag_landmark', 'camera_area', 'boundary', 'notice'}
     require(all(v in valid for v in recipe['categories'].values()), 'Unknown recipe category')
     require(set(recipe['prop_sprites']) == {k for k, v in recipe['categories'].items() if v == 'prop'}, 'Prop sprite policy coverage')
@@ -670,6 +674,8 @@ class Model:
         self.recipe = recipe
         self.sources = sources or Sources()
         self.scene = Scene(self.sources, recipe)
+        from tools.field_npcs import load_policy
+        self.npc_bindings={a['path']:a['id']-1 for a in load_policy(ROOT/recipe['npc_recipe'])['actors']}
         self.images = Images(self.sources)
         self.pictures = Pictures(self.images)
         self.textures = Textures(self.sources, recipe, self.images)
@@ -1056,7 +1062,7 @@ class Model:
                 for xf, extents in rects:
                     self._boundary(2, n.path, labels[n.scene], xf, extents, cond)
             elif cat == 'notice':
-                if n.path in self.recipe.get('ported_notices', []):
+                if n.path in self.recipe.get('ported_notices', []) or n.path in self.npc_bindings:
                     continue
                 xf = sc.global_xf[n.path]
                 self.notices.append(dict(kind=1, path=self.string(n.path), label=self.string(labels[n.scene]),
@@ -1139,6 +1145,8 @@ class Model:
             return out
         cat = sc.category[path]
         cond = self.condition_span(sc.conditions(path))
+        if path in self.npc_bindings:
+            return [self._item(6,self.npc_bindings[path],1,cond=cond)]
         if cat in ('notice', 'boundary', 'door', 'camera_area', 'camera_rect', 'static_body'):
             return out
         if cat == 'grass':
@@ -1309,11 +1317,11 @@ def pack_container(magic, scene_id, sections, strides, limit, *, capability=1):
     return bytes(payload)
 
 
-def unpack_container(blob, magic, strides, limit, *, capability=None):
+def unpack_container(blob, magic, strides, limit, *, capability=None, header_flags_mask=0):
     require(isinstance(blob, (bytes, bytearray)) and HEADER.size <= len(blob) <= limit, 'Field resource size rejected')
     m, version, total, crc, actual_capability, scene_id, reserved, pin, count, r1, r2 = HEADER.unpack_from(blob)
-    allowed = (capability,) if capability is not None else ((1, 2) if magic == MAP_MAGIC else (1,))
-    require(m == magic and version == 1 and total == len(blob) and actual_capability in allowed and not reserved and not r1 and not r2,
+    allowed = (capability,) if capability is not None else ((1, 2, 3) if magic == MAP_MAGIC else (1,))
+    require(m == magic and version == 1 and total == len(blob) and actual_capability in allowed and not (reserved & ~header_flags_mask) and not r1 and not r2,
             'Field resource header rejected')
     require(pin == bytes.fromhex(PIN), 'Field resource source pin rejected')
     require(zlib.crc32(bytes(blob[32:])) == crc, 'Field resource checksum rejected')
@@ -1334,8 +1342,10 @@ def unpack_container(blob, magic, strides, limit, *, capability=None):
     require(cursor == len(blob), 'Trailing field resource bytes')
     if magic == MAP_MAGIC:
         kinds = [struct.unpack_from('<H', sections[17], i)[0] for i in range(0, len(sections[17]), strides[17])]
-        require(all(k in (1, 2) or (actual_capability == 2 and k == 3) for k in kinds), 'Field boundary capability rejected')
-        require(actual_capability == 1 or 3 in kinds, 'Noncanonical action-boundary capability')
+        require(all(k in (1, 2) or (actual_capability >= 2 and k == 3) for k in kinds), 'Field boundary capability rejected')
+        actors=[struct.unpack_from('<H',sections[13],i)[0] for i in range(0,len(sections[13]),strides[13])]
+        require(all(k in (1,2,3,4,5) or actual_capability==3 and k==6 for k in actors),'Field actor capability rejected')
+        require((actual_capability!=2 or 3 in kinds) and (actual_capability!=3 or 6 in actors),'Noncanonical field capability')
     return scene_id, sections
 
 
@@ -1470,7 +1480,7 @@ def encode_map(model, atlases, atlas_paths):
         secs['Bodies'] += struct.pack('<4I', b['first'], b['count'], b['cond'][0], b['cond'][1])
     secs['Bytes'] = bytearray(model.strings)
     return pack_container(MAP_MAGIC, model.recipe['scene']['id'], [secs[n] for n in MAP_SECTIONS], MAP_STRIDES, MAP_LIMIT,
-                          capability=2 if any(b['kind'] == 3 for b in model.boundaries) else 1)
+                          capability=3 if model.npc_bindings else 2 if any(b['kind'] == 3 for b in model.boundaries) else 1)
 
 
 def door_parameters(sources, recipe, scene_doc_nodes, door_path):
@@ -1618,6 +1628,8 @@ def build_room(recipe, model, house_ir_path):
     inst['display_name_string'] = S(hstr[player['display_name_string']])
     inst['initial_clip'] = clip(player['initial_clip'])
     sections['ActorInstance'].append(inst)
+    from tools.field_npcs import add_room
+    npc_provenance=add_room(sections,strings,S,house,resource)
     for f in hs['Flag']:
         row = dict(f)
         row['name_string'] = S(hstr[f['name_string']])
@@ -1635,7 +1647,7 @@ def build_room(recipe, model, house_ir_path):
                                   start_direction=[entry['dx'], entry['dy']], initial_motion_state=0, initial_frame=scene['initial_frame'],
                                   initial_flag_first=0, initial_flag_count=0, body_rule_first=0, body_rule_count=0,
                                   default_camera_area=0, rule_profile_id=1, flags=0))
-    provenance = dict(sorted({**{('upstream/MOTHER-Encore/' + k): v for k, v in model.sources.digests().items()},
+    provenance = dict(sorted({**npc_provenance,**{('upstream/MOTHER-Encore/' + k): v for k, v in model.sources.digests().items()},
                               house_ir_path: hashlib.sha256((ROOT / house_ir_path).read_bytes()).hexdigest(),
                               'content/podunk-field.json': hashlib.sha256(RECIPE.read_bytes()).hexdigest()}.items()))
     ir = dict(schema=1, family=native_content.FAMILY, rules=house['rules'], capabilities=house['capabilities'],

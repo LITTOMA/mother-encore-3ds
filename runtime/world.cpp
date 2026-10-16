@@ -218,7 +218,11 @@ bool OpeningWorld::script_move(Vec2 position,Vec2 direction,bool walking){
     return persistent_player_.state_->camera_.relocate_player(position);
 }
 bool OpeningWorld::set_initial_actor_pose(uint32_t index,Vec2 position,Vec2 direction){
-    if(!healthy_||stage_!=OpeningStage::Walking||physics_tick_||idle_frame_||index>=actors_.size()||index==content_.scene().player_instance_index||actor_bound_[index]||!std::isfinite(position.x)||!std::isfinite(position.y)||!std::isfinite(direction.x)||!std::isfinite(direction.y)||(!direction.x&&!direction.y))return false;
+    if(physics_tick_||idle_frame_)return false;
+    return sync_unbound_actor_pose(index,position,direction);
+}
+bool OpeningWorld::sync_unbound_actor_pose(uint32_t index,Vec2 position,Vec2 direction){
+    if(!healthy_||stage_!=OpeningStage::Walking||index>=actors_.size()||index==content_.scene().player_instance_index||actor_bound_[index]||!std::isfinite(position.x)||!std::isfinite(position.y)||!std::isfinite(direction.x)||!std::isfinite(direction.y)||(!direction.x&&!direction.y))return false;
     auto&actor=actors_[index];actor.position=position;actor.direction=direction;return true;
 }
 bool OpeningWorld::body_enabled(uint32_t body_id)const{

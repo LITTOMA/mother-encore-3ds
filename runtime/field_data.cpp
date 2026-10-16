@@ -1,4 +1,5 @@
 #include "encore/field_data.hpp"
+#include <algorithm>
 #include "encore/content.hpp"
 #include "encore/crc32.hpp"
 #include <cmath>
@@ -62,7 +63,7 @@ uint32_t FieldMapView::localized_picture(uint32_t index,std::string_view locale)
 bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kFieldMapSectionCount*16||n>max_bytes)return fail("Field map size rejected");
-    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)!=1&&u32(p+20)!=2)||u32(p+28)||u32(p+52)!=kFieldMapSectionCount||u32(p+56)||u32(p+60))
+    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)<1||u32(p+20)>3||u32(p+28)||u32(p+52)!=kFieldMapSectionCount||u32(p+56)||u32(p+60))
         return fail("Field map schema/capability/reserved rejected");
     if(!u32(p+24))return fail("Field map scene identity rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Field map source pin rejected");}
@@ -143,7 +144,7 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     for(uint32_t i=0;i<sprites;++i){const auto s=v.sprite(i);const auto pic=v.picture(s.picture);const auto f=v.frame(pic.first_frame);
         if(s.picture>=pictures||f.w!=s.w||f.h!=s.h||!finite(s.position)||s.flags>3||(s.openable!=kFieldNoOpenable&&s.openable>=openables)||!cond_ok(s.conditions)||u32(v.record(S::Sprites,i)+28))
             return fail("Field map sprite rejected");}
-    uint32_t players=0;
+    uint32_t players=0;std::vector<uint32_t> actors;
     for(uint32_t i=0;i<items;++i){const auto it=v.item(i);const auto*raw=v.record(S::Items,i);
         if(u16(raw+2)||u32(raw+28)||!std::isfinite(it.sort_y)||std::fabs(it.sort_y)>1000000||!cond_ok(it.conditions))return fail("Field map item rejected");
         switch(FieldItemKind(it.kind)){
@@ -155,6 +156,9 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
             if(!it.count||it.first>sprites||it.count>sprites-it.first)return fail("Field map sprite item rejected");break;
         case FieldItemKind::Player:
             if(it.first||it.count)return fail("Field map player item rejected");++players;break;
+        case FieldItemKind::Actor:
+            if(u32(p+20)!=3||!it.first||it.first>=64||it.count!=1||std::find(actors.begin(),actors.end(),it.first)!=actors.end())return fail("Field map actor item rejected");
+            actors.push_back(it.first);break;
         default:return fail("Field map item kind rejected");}
     }
     uint32_t item_cursor=0;bool player_sorted=false;
@@ -167,6 +171,7 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
             if(kind==FieldItemKind::Player)player_sorted=true;}
         item_cursor+=g.count;}
     if(item_cursor!=items||players!=1||!player_sorted)return fail("Field map draw program rejected");
+    if(u32(p+20)==3&&actors.empty())return fail("Field actor capability has no actors");
     for(uint32_t i=0;i<openables;++i){const auto o=v.openable(i);
         auto audio=[&](FieldText t){return text_ok(t,true,256)&&(!t.length||v.text(t).substr(0,6)=="res://");};
         if(!text_ok(o.path,false,512)||!finite(o.center)||!finite(o.extents)||o.extents.x<=0||o.extents.y<=0||!audio(o.sound)||!audio(o.end_sound)||
@@ -177,7 +182,7 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     bool has_confirm=false;
     for(uint32_t i=0;i<v.count(S::Boundaries);++i){const auto b=v.boundary(i);const auto*raw=v.record(S::Boundaries,i);
         has_confirm|=b.kind==uint16_t(FieldBoundaryKind::Confirm);
-        if((b.kind!=1&&b.kind!=2&&!(u32(p+20)==2&&b.kind==uint16_t(FieldBoundaryKind::Confirm)))||u16(raw+2)||!text_ok(b.path,false,512)||!text_ok(b.label,false,128)||!finite(b.center)||!finite(b.extents)||b.extents.x<=0||b.extents.y<=0||
+        if((b.kind!=1&&b.kind!=2&&!(u32(p+20)>=2&&b.kind==uint16_t(FieldBoundaryKind::Confirm)))||u16(raw+2)||!text_ok(b.path,false,512)||!text_ok(b.label,false,128)||!finite(b.center)||!finite(b.extents)||b.extents.x<=0||b.extents.y<=0||
            !cond_ok(b.conditions)||u32(raw+44))return fail("Field map boundary rejected");}
     if(u32(p+20)==2&&!has_confirm)return fail("Field map action capability has no action boundary");
     for(uint32_t i=0;i<v.count(S::Notices);++i){const auto b=v.notice(i);const auto*raw=v.record(S::Notices,i);

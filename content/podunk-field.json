@@ -164,5 +164,6 @@
     "map": "world/podunk/podunk.encmap",
     "room": "world/podunk/podunk.encroom",
     "links": "world/world.enclinks"
-  }
+  },
+  "npc_recipe": "content/podunk-npcs.json"
 }

@@ -721,6 +721,21 @@ bool bind_field_mick(upstream::FieldScene& scene,std::string& error){
  if(!scene.bind_mick(mick_data.view(),mick_effects,error))return false;
  scene.mick().set_locale(locale_selection.code());return true;
 }
+std::vector<std::unique_ptr<upstream::MickData>> field_npc_data;
+bool bind_field_npcs(upstream::FieldScene& scene,std::string& error){
+ if(field_npc_data.empty()){
+  std::vector<std::unique_ptr<upstream::MickData>> checked;
+  for(const auto path:resource_catalog.paths(ResourceRole::FieldNpc)){
+   auto data=std::make_unique<upstream::MickData>();const std::string file="romfs:/"+std::string(path);
+   if(!data->load_file(file.c_str(),error)||!data->view().motion_only()){error="Field motion owner rejected: "+file+": "+error;return false;}
+   checked.push_back(std::move(data));
+  }
+  field_npc_data=std::move(checked);
+ }
+ for(const auto& data:field_npc_data)if(!scene.bind_npc(data->view(),mick_effects,error))return false;
+ if(!scene.npcs_ready()){error="Field map has an unbound NPC motion owner";return false;}
+ return true;
+}
 std::string field_status;
 void draw_mick_actor(float camera_x,float camera_y,float offset_x,float offset_y){
  if(!mick_sheet||!field_scene||!field_scene->mick().ready())return;
@@ -1242,7 +1257,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     if(!loading.step([&]{return candidate->prepare(room,field_map_data.view(),world_links,flags,route.destination,route.direction,{float(view_width),float(view_height)},error);},"field-scene"))return false;
     // Mick bind needs the prepared world for flag validation before graphics commit.
     mick_bind_target=candidate.get();
-    if(!loading.step([&]{return bind_field_mick(*candidate,error);},"field-mick")){mick_bind_target=nullptr;return false;}
+    if(!loading.step([&]{return bind_field_mick(*candidate,error)&&bind_field_npcs(*candidate,error);},"field-actors")){mick_bind_target=nullptr;return false;}
     mick_bind_target=nullptr;
     release_house_graphics();
     if(!loading.step([&]{return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error)&&load_mick_graphics(error);},"field-atlases")){

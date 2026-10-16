@@ -6,6 +6,7 @@
 #include "encore/world.hpp"
 #include "encore/world_links.hpp"
 #include <cstdint>
+#include <memory>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -16,9 +17,10 @@ namespace encore::upstream {
 class FieldCollision final : public MotionObstacleSource {
 public:
     bool bind(FieldMapView map,const std::vector<bool>& layer_active,const std::vector<bool>& body_active,std::string& error);
-    // One extra solid rectangle (Mick's foot body). bind() clears it.
-    void set_body(Vec2 center,Vec2 extents);
-    void set_extra_enabled(bool enabled){extra_enabled_=enabled;}
+    // Source-ordered moving foot bodies. Slot zero retains Mick's legacy API.
+    void set_body(Vec2 center,Vec2 extents,uint32_t slot=0,bool enabled=true);
+    void set_extra_enabled(bool enabled){set_excluded(enabled?UINT32_MAX:0);}
+    void set_excluded(uint32_t slot){excluded_=slot;}
     bool collect(Vec2 minimum,Vec2 maximum,std::vector<MotionObstacle>& out)const override;
 private:
     FieldMapView map_;
@@ -31,7 +33,8 @@ private:
     std::vector<Cell> cells_;
     std::vector<Chunk> chunks_;
     std::vector<uint32_t> bodies_;
-    bool extra_=false,extra_enabled_=true;Vec2 extra_points_[4]{},extra_normals_[4]{},extra_minimum_{},extra_maximum_{};
+    struct Extra {bool enabled=false;Vec2 points[4]{},normals[4]{},minimum{},maximum{};};
+    std::vector<Extra> extra_;uint32_t excluded_=UINT32_MAX;
 };
 
 // Original Door/SceneTransition sequence for one cross-scene route: pause, one
@@ -82,6 +85,10 @@ public:
     bool refresh_conditions(std::string& error);
     // Bind Mick after prepare; host effects stay platform-owned.
     bool bind_mick(MickView,MickHost&,std::string& error);
+    bool bind_npc(MickView,MickHost&,std::string& error);
+    bool npcs_ready()const;
+    bool actor_visible(uint32_t index)const;
+    ActorActionState actor_pose(uint32_t index)const;
     MickRuntime& mick(){return mick_;}
     const MickRuntime& mick()const{return mick_;}
     OpeningWorld world;
@@ -123,11 +130,14 @@ private:
     bool circle_overlaps(Vec2 center,float radius)const;
     bool conditions(FieldSpan)const;
     void apply_mick_body();
+    void apply_npc_bodies();
     bool fail(std::string message){phase_=FieldPhase::Error;error_=std::move(message);return false;}
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
     StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;
     MickRuntime mick_;bool mick_bound_=false;
+    struct Npc {uint32_t actor=0,item=0;MickRuntime motion;StaticMotionSolver solver;};
+    std::vector<std::unique_ptr<Npc>> npcs_;
     Vec2 viewport_{400,240};
     // Suppress the same confirm pulse that started MickTalk from advancing text.
     bool mick_ignore_accept_=false;

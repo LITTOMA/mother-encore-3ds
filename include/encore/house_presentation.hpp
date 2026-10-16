@@ -52,7 +52,7 @@ public:
  // a new or missing name clears the text. An empty speaker closes the name tag.
  // Admitted body text may contain source CHAR_WAIT (U+2063). It has no glyph
  // or width and stops printing before the following line until fresh input.
- bool present_plain(std::string_view speaker,std::string_view text);
+ bool present_plain(std::string_view speaker,std::string_view text,std::string_view voice={});
  // Typewriter only. physics_frame also turns house NPCs; the field must not.
  bool advance_dialogue(double);
  // Box, name and cursor clocks only. idle_frame also steps house NPC clips.

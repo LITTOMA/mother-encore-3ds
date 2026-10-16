@@ -69,7 +69,14 @@ int main(int argc,char**argv){
  for(size_t n=0;n<bytes.size();++n)CHECK(!data.load(bytes.data(),n,error));
  CHECK(data.valid()&&data.leader_id()=="ninten");
  for(size_t i=0;i<bytes.size();++i){auto mutation=bytes;mutation[i]^=1;CHECK(!data.load(mutation.data(),mutation.size(),error));}
- for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,9},{20,9},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,10},{20,10},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ CHECK(data.field_encounters()==std::vector<std::string>{"straydog"});
+ const size_t field_count=bytes.size()-16;CHECK(std::string(bytes.begin()+field_count+8,bytes.end())=="straydog");
+ for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{field_count,0},{field_count,65},{field_count+4,0},{field_count+4,65}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto mutation=bytes;mutation[field_count+8]='/';fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto mutation=bytes;const std::vector<uint8_t>duplicate(mutation.begin()+field_count+4,mutation.end());mutation.insert(mutation.end(),duplicate.begin(),duplicate.end());put(mutation,field_count,2);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto mutation=bytes;put(mutation,8,8);put(mutation,20,8);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto snapshot=good;snapshot.encountered.push_back({"straydog",true});CHECK(validate(snapshot));snapshot.encountered.push_back({"invented_enemy",true});CHECK(!validate(snapshot));}
  auto trailing=bytes;trailing.push_back(0);fix(trailing);CHECK(!data.load(trailing.data(),trailing.size(),error));CHECK(data.load(bytes.data(),bytes.size(),error));CHECK(validate(good));
  // A schema1/capability1 resource still loads without injecting the new
  // startup roster, as required by the archived rules6 migration resource.
@@ -98,7 +105,7 @@ int main(int argc,char**argv){
  NativeSessionData legacy;CHECK(legacy.load(legacy_resource.data(),legacy_resource.size(),error));CHECK(legacy.startup_characters().size()==1);CHECK(legacy.defaults().characters.size()==1);
  std::vector<uint8_t>current_defaults,legacy_defaults;CHECK(encode_session_save(historical.defaults(),historical.compatibility(),current_defaults,error));CHECK(encode_session_save(legacy.defaults(),legacy.compatibility(),legacy_defaults,error));CHECK(current_defaults==legacy_defaults);
  CHECK(validate_native_session_snapshot(legacy,room.view(),house.view(),round.view(),items.view(),good,error));CHECK(!validate_native_session_snapshot(legacy,room.view(),house.view(),round.view(),items.view(),startup,error));
- CHECK(data.acquisitions().size()==2);const auto&policy=data.acquisitions()[0];CHECK(policy.max_count==1);
+ CHECK(data.acquisitions().size()==3);const auto&policy=data.acquisitions()[0];CHECK(policy.max_count==1);
  CHECK(data.key_acquisitions().size()==4);const auto&key_policy=data.key_acquisitions()[0];CHECK(key_policy.item_id=="DogTreats"&&key_policy.flag_id=="got_dog_treats"&&key_policy.consumed_flag_id=="gave_treats"&&key_policy.doses==1);
  auto acquired=good;uint32_t uid=UINT32_MAX;auto used=[&](uint32_t value){for(const auto&c:acquired.characters)for(const auto&item:c.inventory)if(item.uid==value)return true;for(const auto&item:acquired.key_items)if(item.uid==value)return true;return false;};while(used(uid))--uid;
  {auto held=good;uint32_t key_uid=uid-1;while(used(key_uid))--key_uid;held.key_items.push_back({key_policy.item_id,false,key_policy.doses,key_uid});for(auto&f:held.flags)if(f.id==key_policy.flag_id)f.value=true;CHECK(validate(held));

@@ -9,7 +9,7 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient, CdbError
-from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection
+from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection, EXTRA_FIELDS, TAIL8
 from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original, matches, Session
 
 
@@ -21,6 +21,16 @@ def wire(**changes):
 
 
 class WireBoundary(unittest.TestCase):
+    def test_v8_typed_field_inventory_music_and_negative_bounds(self):
+        def extended(**values):
+            base={k:0 for k in FIELDS};base.update(version=8,byte_size=WIRE.size+TAIL8.size,inventory_count=1)
+            tail={k:0 for k in EXTRA_FIELDS};tail.update(story_flag_count=178,inventory_0_definition=3,inventory_0_doses=1,inventory_0_equipped=1);tail.update(values)
+            return WIRE.pack(MAGIC,*(base[k]for k in FIELDS),*([0.0]*6),*(b''for _ in range(4)))+TAIL8.pack(*(tail[k]for k in EXTRA_FIELDS),b'')
+        state=decode(extended());self.assertEqual(state['inventory_0_definition'],3);self.assertEqual(state['story_flag_count'],178);self.assertEqual(len(extended()),1220)
+        for change in ({'story_flag_count':193},{'story_flag_5':1<<31},{'loot_ready':2},{'region_music_paused':2},{'region_music_voices':17},{'dsp_region_playing':17},{'inventory_0_definition':0},{'inventory_0_doses':0},{'inventory_0_equipped':2},{'inventory_1_definition':4}):
+            with self.subTest(change=change),self.assertRaises(ValueError):decode(extended(**change))
+        for bad in (extended()[:-1],extended()+b'\0'):
+            with self.assertRaises(ValueError):decode(bad)
     def test_exact_wire_and_projection(self):
         state = decode(wire(width=400, height=240))
         self.assertEqual(projection(state, ['width', 'height']), {'width': 400, 'height': 240})

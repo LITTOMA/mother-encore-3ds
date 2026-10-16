@@ -308,6 +308,20 @@
       "max_pp_boost": 0,
       "name": "Plastic Bat",
       "source": "BatPlastic"
+    },
+    {
+      "can_use": 0,
+      "description": "Filled with fleas and lice.\nThrow it at the enemy and see what happens!",
+      "equipment_slot": 4294967295,
+      "flags": 0,
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "icon": 14,
+      "id": 4,
+      "max_hp_boost": 0,
+      "max_pp_boost": 0,
+      "name": "Flea Bag",
+      "source": "FleaBag"
     }
   ],
   "dependencies": {
@@ -315,8 +329,10 @@
     "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
     "content/asset-receipts/graphics/battle/round/source.json": "343a2c612a7207427f52fbb41b140f55cc3bcbbd438303337a7d5213b9b0d30c",
     "content/asset-receipts/graphics/items/source.json": "c7af22c95eb8b5d9ef194c980239911ce4c03384fc33d040ab590fc9cd4b7244",
+    "content/asset-receipts/graphics/ui/field-rewards/source.json": "51114d79b3756070708ab4580430fb1a9a7fc3d7dda903843e283127a93b8b3d",
     "content/basement-items.json": "4ec9797e11054b3f20c73e0e4642c18c1ca01d4a9eabcbe37c0334747e11de57",
     "content/drawer-item-assets.json": "3d70e219f6b17725756a6c2d804ec3c3d1165341932ca9d67670ee0192432866",
+    "content/field-rewards.json": "ae5f4844457bff31732cebd05aa0c03a4cb35ef9bc7f09e4d577898c580754c3",
     "content/native-drawer-item.json": "d869a977ad306af4d939f928665e004792361408236d1209763d3cc2544fc949"
   },
   "initial_inventory": [
@@ -1661,10 +1677,20 @@
       "rows": 1,
       "sha256": "61f35354fa0c570858fe1b70ee243742b85cd9ffbd1b4ff6beaa3b993e3f236e",
       "width": 20
+    },
+    {
+      "columns": 1,
+      "height": 21,
+      "id": 15,
+      "kind": 1,
+      "path": "graphics/ui/field-rewards/flea-bag.t3x",
+      "rows": 1,
+      "sha256": "18b94aecbc7f89bef3791e1526191f891bd616b5de0e631bfc94b714d3786a6f",
+      "width": 20
     }
   ],
   "schema": 1,
-  "scope": "Bounded initial single-owner inventory: equipped Baseball Cap, source list/info/cancel/restricted feedback only; no consumable action, random UID creation, saving, or additional inventory source. Pixel geometry retains320x180 with centered-top/bottom anchoring at400x240. Owner/item/instance IDs are deterministic adapter identities. Native L maps original ui_scope left trigger.; checked AsthmaSpray acquired definition/icon; raw rich description and consume action explicitly gated; original unequipped plastic bat acquisition, weapon slot and icon",
+  "scope": "Bounded initial single-owner inventory: equipped Baseball Cap, source list/info/cancel/restricted feedback only; no consumable action, random UID creation, saving, or additional inventory source. Pixel geometry retains320x180 with centered-top/bottom anchoring at400x240. Owner/item/instance IDs are deterministic adapter identities. Native L maps original ui_scope left trigger.; checked AsthmaSpray acquired definition/icon; raw rich description and consume action explicitly gated; original unequipped plastic bat acquisition, weapon slot and icon; ordinary bridge loot carrying and descriptions; source battle use remains disabled",
   "sounds": [
     {
       "audio_id": 1102,

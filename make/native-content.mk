@@ -8,7 +8,7 @@ $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio gameplay-audio music-zones bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house house-presents mick-treats items-check items session migration restore \
- continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment
+ continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment bridge-entry bridge-round field-story field-room field-npcs
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
@@ -22,7 +22,7 @@ battle: room
 restore: room house
 items: items-check
 # Localization writes its legacy-lane IR; finish frozen migration admission first.
-locale: migration house-presents
+locale: migration house-presents bridge-round
 # Intro admission reads its audio bank and immutable scene/font inputs.
 introduction: audio
 inspections: house
@@ -33,6 +33,22 @@ storage: items
 item-details: items
 field-equipment: items item-details
 session: drawer items storage house-presents mick-treats
+bridge-entry: pillow-entry
+bridge-round: bridge-entry pillow-round
+field-story: bridge-entry items
+field-room: room field-story field-npcs
+field-npcs: mick-treats
+
+bridge-entry:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/bridge_entry.py compile
+bridge-round:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/bridge_round.py compile
+field-story:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_story.py compile
+field-room:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/podunk_field.py compile
+field-npcs:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_npcs.py compile
 
 audio:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/restore_audio.py

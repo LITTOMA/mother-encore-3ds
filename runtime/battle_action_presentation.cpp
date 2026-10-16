@@ -393,9 +393,12 @@ bool BattleActionPresentation::emit(const BattleRoundCue&cue,SourceRandom&r){
  
  case BattleRoundCueKind::PrepareAction:commands_=false;
  if(actor>=actors_.size())return fail("Prepare actor invalid");
+ if(content_.version()>=6){const auto action=content_.action_media(cue.skill);if(action.preparation==round_no_index)return fail("Party action preparation missing");actors_[actor].animation=clip(action.preparation);break;}
  actors_[actor].animation=slot(cue.skill<content_.count(RoundSection::Skills)&&(content_.skill(cue.skill).traits&uint32_t(RoundTrait::Guard))?RoundPresentationSlot::PartyGuardPrepare:RoundPresentationSlot::PartyPrepare);
  break;
  
+ case BattleRoundCueKind::UseSkillSound:
+ if(content_.action_media(cue.skill).use_sound!=1)return fail("Unreviewed skill sound");audio_.push_back(GameplayCue::Swing);break;
  case BattleRoundCueKind::Guard:if(actor>=actors_.size())return fail("Guard actor invalid");
  actors_[actor].defending=true;
  actors_[actor].animation=slot(RoundPresentationSlot::PartyGuardPrepare);
@@ -410,6 +413,13 @@ bool BattleActionPresentation::emit(const BattleRoundCue&cue,SourceRandom&r){
  if(cue.text>=content_.count(RoundSection::Texts))return fail("Dialogue record invalid");
  {std::string resolved;if(!resolve_text(cue.text,resolved))return fail("Source battle text resolver rejected record");return text_.begin(content_,resolved);}
  
+ case BattleRoundCueKind::PreHit:{
+  if(actor>=actors_.size()||target>=actors_.size()||cue.skill>=content_.count(RoundSection::Skills))return fail("Pre-hit binding invalid");
+  const auto binding=content_.pre_hit(cue.skill);if(binding.media==round_no_index)return fail("Pre-hit lacks checked source media");
+  pre_hit_elapsed_=0;pre_hit_key_=binding.apply_time;pre_hit_started_=true;pre_hit_undimmed_=false;
+  background_=slot(RoundPresentationSlot::BackgroundDim);effects_.push_back(clip(binding.media,effect_position(target,false)));effects_.back().target=target;
+  break;
+ }
  case BattleRoundCueKind::Attack:if(actor>=actors_.size()||cue.skill>=content_.count(RoundSection::Skills))return fail("Attack binding invalid");
  actors_[actor].apply_damage=false;
  if(actor==player_)actors_[actor].animation=clip(content_.skill(cue.skill).user_media);
@@ -568,6 +578,7 @@ std::vector<BattleActionPose> BattleActionPresentation::return_overlays()const{
  return result;
 }
 bool BattleActionPresentation::ready(BattleRoundGate gate,uint32_t actor)const{if(gate==BattleRoundGate::DialogueDone)return text_.done();
+ if(gate==BattleRoundGate::PreHitDone)return pre_hit_started_&&pre_hit_undimmed_;
  if(gate==BattleRoundGate::BossDefeatDone)return boss_defeat_&&boss_flash_.active&&boss_flash_.time>=content_.media(boss_flash_.media).duration;
  return actor<actors_.size()&&actors_[actor].apply_damage;
  }
@@ -596,6 +607,12 @@ double BattleActionPresentation::advance_real_time(double dt){if(!std::isfinite(
  }
 bool BattleActionPresentation::idle_frame(double dt){
  if(!std::isfinite(dt)||dt<0)return fail("Invalid presentation delta");
+ if(pre_hit_started_&&!pre_hit_undimmed_){
+  // AnimationPlayer uses deferred method calls. The damage signal is delivered
+  // on the following idle boundary, not inside the key's evaluation frame.
+  if(pre_hit_elapsed_>=pre_hit_key_){background_=slot(RoundPresentationSlot::BackgroundUndim);pre_hit_undimmed_=true;}
+  else pre_hit_elapsed_=double(float(float(pre_hit_elapsed_)+float(dt)));
+ }
  if(boss_defeat_){
   const double before=boss_time_;boss_time_=double(float(float(boss_time_)+float(dt)));
   while(next_boss_shake_<content_.count(RoundSection::BossShakes)&&content_.boss_shake(next_boss_shake_).time<boss_time_){

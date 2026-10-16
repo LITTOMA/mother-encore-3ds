@@ -59,7 +59,9 @@ void battle_prewarm_trace(const char* phase,const BattlePrewarm& p,double commit
     if(qa_log){std::fprintf(qa_log,"%s",line);std::fflush(qa_log);}
 #endif
 }
+upstream::RoomView encounter_room;
 void cancel_battle_prewarm(){
+    encounter_room={};
     battle_resident.clear();encounter_admission.retire();unproven_active={};
     if(!battle_prewarm)return;
     auto& p=*battle_prewarm;p.cancelled.store(true,std::memory_order_relaxed);
@@ -78,7 +80,7 @@ void report_battle_entry_commit(const std::string& path,double ms,uint64_t load_
 }
 bool commit_battle_prewarm(const std::string& path,std::string& error){
     if(!battle_prewarm_ready(path)){error="Battle presentation is not prepared";return false;}
-    auto& p=*battle_ready(path);const std::string previous=loaded_battle_path;const bool keep_previous=battle_renderer.fully_resident();battle_data.swap(p.battle);round_data.swap(p.round);battle_renderer.swap(p.renderer);round_renderer.swap(p.actions);battle_paths.swap(p.paths);battle_draw_order.swap(p.order);
+    auto& p=*battle_ready(path);const std::string previous=loaded_battle_path;const auto& current_declaration=encounter_admission.declaration();const bool previous_declared=std::any_of(current_declaration.encounters.begin(),current_declaration.encounters.end(),[&](const auto& entry){return "romfs:/"+entry.battle_pack==previous;});const bool keep_previous=battle_renderer.fully_resident()&&previous_declared;battle_data.swap(p.battle);round_data.swap(p.round);battle_renderer.swap(p.renderer);round_renderer.swap(p.actions);battle_paths.swap(p.paths);battle_draw_order.swap(p.order);
     battle_renderer.attach_source_font(&locale_font);loaded_battle_path=path;p.path=previous;p.ready=keep_previous&&!previous.empty();
     const auto& declared=encounter_admission.declaration();for(size_t i=0;i<declared.encounters.size();++i)if("romfs:/"+declared.encounters[i].battle_pack==previous)p.ticket={declared.scene_epoch,i};
     // The old ready encounter remains in the same bounded scene working set.
@@ -87,7 +89,8 @@ bool commit_battle_prewarm(const std::string& path,std::string& error){
     return true;
 }
 uint32_t predicted_battle_resource(){
-    using namespace upstream;const auto room=opening_data.view();const auto& world=gameplay_scene->world;
+    using namespace upstream;const auto room=encounter_room.valid()?encounter_room:active_room();const auto& world=active_overworld();
+    if(world.content().scene().stable_id!=room.scene().stable_id)return kRoomNoIndex;
     if(world.battle_request().requested)return world.battle_request().battle_resource_index;
     // Read-only scan of a running original script. No command dispatch, branch
     // evaluation, actor tick, clock or RNG call occurs during anticipation.
@@ -110,7 +113,7 @@ void update_battle_prewarm(bool world_phase,uint64_t frame_gap=0,bool admission=
     if(!world_phase)return; // Menus may obscure an admitted world without retiring its epoch.
     if(!admission&&(in_battle()||battle_handoff_pending()))return;
     if(!encounter_admission.epoch()){
-        SceneEncounterDependencies declaration;declaration.scene_epoch=++encounter_scene_epoch;const auto room=opening_data.view();
+        SceneEncounterDependencies declaration;declaration.scene_epoch=++encounter_scene_epoch;const auto room=encounter_room.valid()?encounter_room:active_room();
         for(uint32_t i=0;i<room.battle_count();++i){const auto index=room.battle(i).battle_resource_index;
             if(index>=room.resource_count()||room.resource(index).kind!=uint16_t(upstream::RoomResourceKind::CheckedBattlePack)){house_error="Scene encounter declaration has an uncompiled dependency";return;}
             const std::string path(room.string(room.resource(index).path_string));bool found=false;for(const auto& e:declaration.encounters)found|=e.battle_pack==path;if(found)continue;
@@ -128,11 +131,12 @@ void update_battle_prewarm(bool world_phase,uint64_t frame_gap=0,bool admission=
         const size_t current=battle_renderer.prepared_cpu_bytes()+battle_data.resident_bytes()+round_data.resident_bytes();const auto heap=mallinfo();const size_t used=size_t(heap.uordblks);const size_t outside=used>current?used-current:0;
         const size_t total=envGetHeapSize();const size_t available=total>outside+2*1024*1024?total-outside-2*1024*1024:0;
         const EncounterResidencyBytes budget{std::min<size_t>(28*1024*1024,available),std::min<size_t>(16*1024*1024,size_t(linearSpaceFree())+battle_renderer.prepared_linear_bytes())};
-        unproven_active=battle_renderer.fully_resident()?EncounterResidencyBytes{}:EncounterResidencyBytes{current,battle_renderer.prepared_linear_bytes()};
+        const bool current_declared=std::any_of(declaration.encounters.begin(),declaration.encounters.end(),[&](const auto& entry){return "romfs:/"+entry.battle_pack==loaded_battle_path;});
+        unproven_active=battle_renderer.fully_resident()&&current_declared?EncounterResidencyBytes{}:EncounterResidencyBytes{current,battle_renderer.prepared_linear_bytes()};
         if(!encounter_admission.declare(declaration,budget,unproven_active,error)){house_error=error;return;}
         for(size_t i=0;i<declaration.encounters.size();++i)if("romfs:/"+declaration.encounters[i].battle_pack==loaded_battle_path&&battle_renderer.fully_resident()){const EncounterResidencyBytes retained{current,battle_renderer.prepared_linear_bytes()};if(!encounter_admission.reserve(i,retained,error)||!encounter_admission.publish({declaration.scene_epoch,i},retained,error)){house_error=error;return;}}
     }
-    const auto resource=predicted_battle_resource();const auto room=opening_data.view();
+    const auto resource=predicted_battle_resource();const auto room=encounter_room.valid()?encounter_room:active_room();
     std::string path;
     const auto missing=[&](uint32_t index){
         if(index>=room.resource_count()||room.resource(index).kind!=uint16_t(upstream::RoomResourceKind::CheckedBattlePack))return std::string{};
@@ -187,7 +191,8 @@ void update_battle_prewarm(bool world_phase,uint64_t frame_gap=0,bool admission=
         battle_resident.push_back(std::move(battle_prewarm));
         // A synchronous boot renderer is not a readiness certificate. Upgrade
         // it to the same immutable indexed residency before exposing the scene.
-        if(!battle_renderer.fully_resident()&&(loaded_battle_path.empty()||prepared_path==loaded_battle_path)){
+        const auto& declaration=encounter_admission.declaration();const bool active_declared=std::any_of(declaration.encounters.begin(),declaration.encounters.end(),[&](const auto& entry){return "romfs:/"+entry.battle_pack==loaded_battle_path;});
+        if((!battle_renderer.fully_resident()||!active_declared)&&(loaded_battle_path.empty()||prepared_path==loaded_battle_path||!active_declared)){
             wait_for_gpu_idle();std::string error;if(!commit_battle_prewarm(prepared_path,error)){house_error=error;return;}
             if(!encounter_admission.retire_other_live(unproven_active)){house_error="Encounter old-owner budget retirement rejected";return;}
             unproven_active={};battle_resident.erase(std::remove_if(battle_resident.begin(),battle_resident.end(),[](const auto& owner){return !owner->ready&&owner->path.empty();}),battle_resident.end());
@@ -199,6 +204,7 @@ void update_battle_prewarm(bool world_phase,uint64_t frame_gap=0,bool admission=
 // been released; no world, animation, inventory or RNG tick occurs here. This
 // cannot be called from an encounter request or add a battle loading screen.
 bool admit_encounter_scene(std::string& error){
+    const auto room=opening_data.view();if(!encounter_room.valid()||encounter_room.scene().stable_id!=room.scene().stable_id){cancel_battle_prewarm();encounter_room=room;}
     const auto started=osGetTime();encounter_admission_cancelled=false;
     while(!encounter_admission.scene_ready()){
         if(!aptMainLoop()){encounter_admission_cancelled=true;cancel_battle_prewarm();error="Scene admission interrupted";return false;}

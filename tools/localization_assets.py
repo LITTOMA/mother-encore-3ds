@@ -40,8 +40,8 @@ def extract():
  def tr(key,locale='en'):
   r=records.get(key);return unescape((r['values'].get(locale)or r['values'].get(fallback)or key)if r else key)
  bindings=[]
- def bind(identity,key,expected,origin):
-  require(tr(key)==expected,f'Source binding mismatch {identity}: {key!r} {tr(key)!r} != {expected!r}')
+ def bind(identity,key,expected,origin,projection=None):
+  require((tr(key)if projection is None else projection)==expected,f'Source binding mismatch {identity}: {key!r} {tr(key)!r} != {expected!r}')
   bindings.append(dict(identity=identity,key=key,expected=expected,origin=origin))
  naming=load(BASE/'content/native-new-game.json'); sequence=yaml.safe_load(source('Data/NamingSequences/intro.yaml'))['scenario']
  for i,step in enumerate(sequence[:6]):

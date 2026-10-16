@@ -83,7 +83,7 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
 bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>session_save_max_bytes)return fail(e,"Native session pack size rejected");
  const auto schema=integer(p+8),capability=integer(p+20);
- if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>8||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
+ if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>9||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
  if(crc(p+24,n-24)!=integer(p+16))return fail(e,"Native session CRC mismatch");
  NativeSessionData d;Reader r{p+24,n-24};d.compatibility_={r.u32(),r.u32(),r.u32()};
  const auto template_size=r.count(uint32_t(session_save_max_bytes));
@@ -169,6 +169,10 @@ bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
   for(uint32_t i=0;i<count;++i){auto skill=r.text();if(!skills.count(skill)||!order.insert(skill).second)return fail(e,"Native session skill order rejected");d.skill_order_.push_back(std::move(skill));}
   if(order!=skills)return fail(e,"Native session skill order coverage rejected");
  }
+ if(schema>=9){const auto count=r.count(64);std::set<std::string>unique;
+  for(uint32_t i=0;i<count;++i){auto id=r.text();if(id.empty()||id.size()>64||!unique.insert(id).second)return fail(e,"Native session field encounter identity rejected");for(char c:id)if(!((c>='a'&&c<='z')||(c>='A'&&c<='Z')||(c>='0'&&c<='9')||c=='_'))return fail(e,"Native session field encounter syntax rejected");d.field_encounters_.push_back(std::move(id));}
+  if(!count)return fail(e,"Native session field encounter coverage rejected");
+ }
  if(!r.ok||r.n||d.text_speeds_.empty()||d.menu_flavors_.empty()||d.button_prompts_.empty()||!d.supports_settings(d.defaults_.settings))return fail(e,"Native session malformed/trailing settings payload");
  const auto*initial=level_row(d,d.defaults_.characters[0].level);
  const auto&c=d.defaults_.characters[0];if(!initial||c.experience!=initial->minimum_exp||c.hp>initial->stats[0]||c.pp>initial->stats[1]||c.learned_skills!=initial->skills)return fail(e,"Native session initial character disagrees with source rows");
@@ -210,7 +214,7 @@ bool validate_native_session_snapshot(const NativeSessionData&data,RoomView room
  if(s.flags.size()!=room.flag_count()||s.flags.size()!=d.flags.size())return fail(e,"Native session requires the complete story flag registry");
  for(const auto&f:s.flags){auto found=std::find_if(d.flags.begin(),d.flags.end(),[&](const SessionFlag&x){return x.id==f.id;});if(found==d.flags.end())return fail(e,"Native session unknown story flag");bool in_room=false;for(uint32_t i=0;i<room.flag_count();++i)if(room.string(room.flag(i).name_string)==f.id){in_room=true;break;}if(!in_room||(f.value!=found->value&&!contains(data.mutable_flags(),f.id)))return fail(e,"Native session unsupported story flag state");}
  std::set<std::string>seen;for(uint32_t i=0;i<house.count(HouseSection::Npcs);++i){const auto key=house.string(house.npc(i).seen_key);if(!key.empty())seen.emplace(key);}for(uint32_t i=0;i<house.count(HouseSection::Overrides);++i){const auto key=house.string(house.override_dialogue(i).seen_key);if(!key.empty())seen.emplace(key);}for(const auto&f:s.seen_dialogue_flags)if(!seen.count(f.id))return fail(e,"Native session unknown seen dialogue identity");
- std::set<std::string>encountered;for(uint32_t i=0;i<room.battle_count();++i)encountered.emplace(room.string(room.battle(i).enemy_string));for(const auto&f:s.encountered)if(!encountered.count(f.id))return fail(e,"Native session unknown encounter identity");
+ std::set<std::string>encountered(data.field_encounters().begin(),data.field_encounters().end());for(uint32_t i=0;i<room.battle_count();++i)encountered.emplace(room.string(room.battle(i).enemy_string));for(const auto&f:s.encountered)if(!encountered.count(f.id))return fail(e,"Native session unknown encounter identity");
  bool position_ok=false;for(auto id:data.camera_area_ids()){bool exists=false;for(uint32_t i=0;i<room.camera_area_count();++i){const auto area=room.camera_area(i);if(area.stable_id!=id)continue;exists=true;if(std::abs(s.position_x-area.center.x)<=area.extents.x&&std::abs(s.position_y-area.center.y)<=area.extents.y)position_ok=true;}if(!exists)return fail(e,"Native session scene bounds identity mismatch");}if(!position_ok)return fail(e,"Native session position outside supported house rooms");
  // Source player directions allow normalized or unnormalized eight-way vectors.
  const double x=std::abs(s.direction_x),y=std::abs(s.direction_y);const bool cardinal=(x==0&&y==1)||(x==1&&y==0);const bool diagonal=x==y&&(x==1||std::abs(x-std::sqrt(.5))<1e-6);if(!cardinal&&!diagonal)return fail(e,"Native session unsupported facing direction");

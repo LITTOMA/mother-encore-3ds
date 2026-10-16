@@ -22,7 +22,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient
-from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection
+from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection, wire_size
 
 
 def sha(path):
@@ -205,8 +205,12 @@ class Session:
             raise RuntimeError('Genuine build does not expose a supported semantic probe')
 
     def read(self, address=None):
-        result = self.client.call('memory.read', {'address': self.address if address is None else address, 'size': WIRE.size})
-        if result['encoding'] != 'hex' or result['size'] != WIRE.size:
+        address=self.address if address is None else address
+        header=self.client.call('memory.read',{'address':address,'size':16})
+        if header['encoding']!='hex'or header['size']!=16:raise ValueError('Unknown CDB probe header encoding/size')
+        size=wire_size(bytes.fromhex(header['data']))
+        result = self.client.call('memory.read', {'address': address, 'size': size})
+        if result['encoding'] != 'hex' or result['size'] != size:
             raise ValueError('Unknown CDB memory encoding/size')
         return bytes.fromhex(result['data'])
 

@@ -81,6 +81,10 @@ introduction-assets:
 	$(PYTHON) tools/doll_entry_asset.py verify
 	$(PYTHON) tools/pillow_entry_asset.py verify
 	$(PYTHON) tools/pillow_round.py verify
+	$(PYTHON) tools/bridge_entry.py verify
+	$(PYTHON) tools/bridge_round.py verify
+	$(PYTHON) tools/field_story.py verify
+	$(PYTHON) tools/field_rewards.py verify
 	$(PYTHON) tools/native_battle.py verify
 	$(PYTHON) tools/native_round.py verify
 	$(PYTHON) tools/native_house.py verify

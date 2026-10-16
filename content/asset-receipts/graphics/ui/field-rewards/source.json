@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "policy_sha256": "ae5f4844457bff31732cebd05aa0c03a4cb35ef9bc7f09e4d577898c580754c3",
+  "producer_sha256": "315d583168fe64911a2cbd8d8eb319d995d3ec2f985ce43d52d005dde3c4231b",
+  "sources": {
+    "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5",
+    "Data/Battlers/straydog.yaml": "424b46287cc6bbee0d8940230c4e8def36aff81cbdc3397a02f3880bfd9b5247",
+    "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml": "92cc12c71968a6e732f763ad00c23515b2c5f46c751a5b2afe4d4906011d4ef3",
+    "Graphics/Objects/Items/FleaBag.png": "a0382f12ddb07444fb9c67ca6f1688d11b1b209f66828928d7f1b644d8d81b5a",
+    "Graphics/Objects/Items/FleaBag.png.import": "61bf14d6cf268a520f0a09301ab8b03bc81072dafaa0bf44d068ea45dadf5417",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "outputs": {
+    "graphics/ui/field-rewards/flea-bag.t3x": "18b94aecbc7f89bef3791e1526191f891bd616b5de0e631bfc94b714d3786a6f"
+  },
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "permission": "Original game-related derivative art under the reviewed upstream LICENSE; no font or third-party binary copied."
+}

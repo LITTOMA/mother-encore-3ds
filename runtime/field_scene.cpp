@@ -188,7 +188,10 @@ bool FieldScene::refresh_conditions(std::string& error){
     std::vector<bool> body_active(bodies,false);for(uint32_t i=0;i<bodies;++i)body_active[i]=conditions(map_.body(i).conditions);
     std::vector<bool> collide(layers,false);for(uint32_t i=0;i<layers;++i)collide[i]=layer_active_[i];
     std::string why;
-    if(!collision_.bind(map_,collide,body_active,why)){error=why;return false;}
+    if(!collision_ready_||collision_layers_!=collide||collision_bodies_!=body_active){
+        if(!collision_.bind(map_,collide,body_active,why)){error=why;return false;}
+        collision_layers_=collide;collision_bodies_=body_active;collision_ready_=true;
+    }
     world.attach_obstacles(&collision_);
     if(boundary_inside_.size()==boundaries){
         for(uint32_t i=0;i<boundaries;++i)if(!boundary_active_[i])boundary_inside_[i]=0;
@@ -203,7 +206,11 @@ bool FieldScene::refresh_conditions(std::string& error){
     }
     if(mick_bound_)apply_mick_body();
     apply_npc_bodies();
-    error.clear();return true;
+    story_revision_=world.story_revision();error.clear();return true;
+}
+bool FieldScene::bind_story(FieldStoryView view,ItemView items,FieldStoryHost& host,std::string& error){
+    if(!view.bind(world.content(),map_,items,error))return false;
+    story_=view;story_host_=&host;error.clear();return true;
 }
 void FieldScene::apply_mick_body(){
     const auto a=mick_.view().actor();
@@ -269,7 +276,7 @@ ActorActionState FieldScene::actor_pose(uint32_t index)const{
 }
 void FieldScene::apply_npc_bodies(){
     for(uint32_t i=0;i<npcs_.size();++i){const auto& n=*npcs_[i];const auto a=n.motion.view().actor();const auto p=actor_pose(n.actor).position;
-        collision_.set_body({p.x+a.collision_center.x-a.position.x,p.y+a.collision_center.y-a.position.y},a.collision_extents,i+1,actor_visible(n.actor));}
+        collision_.set_body({p.x+a.collision_center.x-a.position.x,p.y+a.collision_center.y-a.position.y},a.collision_extents,i+1,actor_visible(n.actor)&&!world.actor_bound(n.actor));}
 }
 bool FieldScene::finish_transition(){
     if(phase_!=FieldPhase::Transition)return fail("Field transition finish outside its boundary");
@@ -305,6 +312,7 @@ bool FieldScene::try_mick(bool accept,std::string& error){
     error.clear();return true;
 }
 bool FieldScene::try_interaction(bool accept,std::string& error){
+    if(world.stage()!=OpeningStage::Walking){error.clear();return true;}
     if(!try_mick(accept,error))return false;
     if(!accept||phase_!=FieldPhase::Walking||world.house_paused()||world.player().crouch)return true;
     for(const auto& ptr:npcs_){const auto& n=*ptr;if(!actor_visible(n.actor))continue;
@@ -390,9 +398,10 @@ bool FieldScene::overlaps(Vec2 center,Vec2 extents,Vec2 player)const{
 }
 bool FieldScene::before_physics(WalkInput& input){
     if(phase_==FieldPhase::Error)return false;
+    if(story_revision_!=world.story_revision()){std::string why;if(!refresh_conditions(why))return fail(why);}
     if(mick_bound_){
         FieldMickWorld motion{*this};std::string why;const auto player=world.player().position;
-        if(!mick_.simulate(1.f/60.f,player,camera_origin(player,viewport_),viewport_,world.house_paused(),motion,why))
+        if(!mick_.simulate(1.f/60.f,player,camera_origin(player,viewport_),viewport_,world.house_paused()||world.stage()!=OpeningStage::Walking,motion,why))
             return fail(why.empty()?"Field Mick simulation rejected":why.c_str());
         apply_mick_body();
     }
@@ -401,7 +410,7 @@ bool FieldScene::before_physics(WalkInput& input){
             const auto pose=world.actor(n.actor);
             if(!n.motion.restore_motion_pose(pose.position,pose.direction,why)||!world.complete_actor_restore(n.actor,world.actor_binding_revision(n.actor)))return fail("Field NPC restoration rejected");
         }
-        if(world.actor_bound(n.actor))continue;
+        if(world.actor_bound(n.actor)){apply_npc_bodies();continue;}
         FieldMickWorld motion{*this,i+1,&n.solver};const auto p=world.player().position;
         const bool paused=world.house_paused()||world.stage()!=OpeningStage::Walking;
         if(!n.motion.simulate(1.f/60.f,p,camera_origin(p,viewport_),viewport_,paused,motion,why))return fail(why);
@@ -415,6 +424,7 @@ bool FieldScene::before_physics(WalkInput& input){
 bool FieldScene::after_physics(){
     if(phase_==FieldPhase::Error)return false;
     if(!world.healthy())return fail(std::string("Field world: ")+world.error());
+    if(world.stage()!=OpeningStage::Walking)return true;
     const auto position=world.player().position;bool any=false;
     const bool paused=world.house_paused();
     for(uint32_t i=0;i<door_inside_.size();++i){
@@ -438,6 +448,17 @@ bool FieldScene::after_physics(){
             std::string why;if(!mick_.start_bark(why))return fail(why.empty()?"Field Mick bark rejected":why.c_str());
             continue;
         }
+        bool handled=false;
+        if(story_.valid())for(uint32_t k=0;k<story_.programme_count();++k){const auto p=story_.programme(k);
+            if(story_.text(p.boundary)!=map_.text(b.path))continue;
+            std::string why;
+            if(!story_host_||!story_host_->can_start(story_,p.programme,why)){
+                boundary_=0x80000000u|i;phase_=FieldPhase::Unsupported;error_=why.empty()?"Field story admission rejected; B returns":why+"; B returns";
+                if(!world.pause_for_house())return fail("Field story admission pause rejected");
+            }else if(!world.begin_house_program(p.programme))return fail("Field story programme rejected");
+            handled=true;break;
+        }
+        if(handled)continue;
         boundary_=0x80000000u|i;phase_=FieldPhase::Unsupported;error_=std::string(map_.text(b.label))+" not ported; B returns";
         if(!world.pause_for_house())return fail("Field boundary pause rejected");
     }
@@ -496,6 +517,7 @@ bool FieldScene::sprite_visible(uint32_t i)const{
     return openable==kFieldNoOpenable||!openable_open(openable);
 }
 Vec2 FieldScene::camera_origin(Vec2 player,Vec2 viewport)const{
+    if(world.stage()!=OpeningStage::Walking){const auto center=world.cutscene_camera().center();return {std::floor(center.x-viewport.x*.5f),std::floor(center.y-viewport.y*.5f)};}
     float x=std::floor(player.x-viewport.x*.5f),y=std::floor(player.y-viewport.y*.5f);
     for(uint32_t i=0;i<camera_inside_.size();++i){
         if(!camera_inside_[i])continue;

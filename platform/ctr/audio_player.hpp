@@ -46,6 +46,7 @@ public:
     bool update_room(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,double delta,std::string& error);
     bool available() const{return ready_;}
     MusicObservation observe_music() const;
+    uint32_t lane_asset_id(AudioLane lane)const{const auto i=uint32_t(lane);return i<voices_.size()&&voices_[i].active?voices_[i].asset.stable_id:0;}
     // Loading cooperation only: feed existing queues and observe natural ends.
     // No elapsed game/fade time, volume mix writes, new voice or init retry.
     bool pump_streams(std::string& error);

@@ -26,6 +26,7 @@ public:
  uint64_t prepared_pcm_bytes()const{return verified_bytes_;}
  uint64_t total_pcm_bytes()const{return total_bytes_;}
  bool sync(const upstream::MusicRegionController&,std::string&);
+ bool set_paused(bool,std::string&);
  void shutdown();
  bool prepared()const{return prepared_;}
  uint32_t submitted_voices()const{return submitted_;}
@@ -39,7 +40,7 @@ private:
  upstream::AudioBank bank_;std::array<Track,16>tracks_{};
  std::array<Voice,maximum_voices>voices_{};uint32_t capacity_=0,track_count_=0,submitted_=0;
  const upstream::MusicRegionController*owner_=nullptr;
- bool prepared_=false,preparing_=false;
+ bool prepared_=false,preparing_=false,paused_=false;
  uint32_t validation_track_=0,allocation_voice_=0,validation_crc_=0xffffffffu;
  uint64_t track_bytes_=0,verified_bytes_=0,total_bytes_=0;
  std::string asset_root_;

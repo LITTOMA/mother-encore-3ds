@@ -150,10 +150,13 @@
     }
   ],
   "extra_sources": [
+    "Audio/Music/Battle Themes/Flippant Foe.mp3",
     "Audio/Sound effects/Door_Short.mp3",
     "Audio/Sound effects/EB/heal 1.wav",
+    "Audio/Sound effects/EB/itemget1.wav",
     "Audio/Sound effects/Item Received.mp3",
     "Audio/Sound effects/M3/Dog_whining.wav",
+    "Audio/Sound effects/M3/Growl 2.mp3",
     "Audio/Sound effects/M3/Woof Woof!.wav",
     "Audio/Sound effects/M3/door_open.wav",
     "Audio/Sound effects/Stairs_Down.mp3",

@@ -260,7 +260,12 @@ bool actor_play_clip(ActorActionState& a,uint32_t clip_index) {
     return true;
 }
 bool actor_play_emote(ActorActionState& a,uint32_t clip_index) {
-    if(!valid(a)||clip_index>=a.content.clip_count()||a.emote_playing)return false;
+    if(!valid(a)||clip_index>=a.content.clip_count())return false;
+    // The source AnimationPlayer retains its final Sprite frame after a
+    // non-looping animation ends. That visible pose does not prevent play()
+    // replacing the finished animation. Interruption of an active clip remains
+    // outside this admitted executor.
+    if(a.emote_playing){const auto previous=a.content.clip(a.emote_clip_index);if(previous.loop()||a.emote_elapsed<previous.length)return false;}
     const auto clip=a.content.clip(clip_index);
     if(clip.channel!=1)return false;
     a.emote_clip_index=clip_index;a.emote_elapsed=0;a.emote_playing=true;return true;

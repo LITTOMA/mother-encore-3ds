@@ -30,6 +30,15 @@ class NamingSessionDependency(unittest.TestCase):
             with self.subTest(kind=kind),self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,self.previous,value,'a'*64)
         for sha in ('','unknown','g'*64):
             with self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,self.previous,self.current,sha)
+    def test_field_session_extension_preserves_startup_and_rejects_unreviewed_policy(self):
+        previous=copy.deepcopy(self.current);previous['schema']=8;previous.pop('field_encounters')
+        previous['acquisitions']=previous['acquisitions'][:-1];previous['storage_policies']=previous['storage_policies'][:-1]
+        previous['mutable_flags']=[x for x in previous['mutable_flags']if x not in ('beat_dog_bridge','pippis_mom_call')]
+        candidate=naming.rebound_session_dependency(self.recipe,previous,self.current,'b'*64)
+        self.assertEqual(naming.encode(candidate),naming.PACK.read_bytes())
+        for key,value in [('field_encounters',['unknown']),('acquisitions',[]),('storage_policies',[]),('schema',10)]:
+            bad=copy.deepcopy(self.current);bad[key]=value
+            with self.subTest(key=key),self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,previous,bad,'b'*64)
     def test_exact_baseline_required(self):
         for sha in (None,'main','1234','g'*40):
             with self.assertRaises(ValueError):naming.reuse_session(sha)

@@ -21,6 +21,13 @@
       "round_ir": "content/pillow-round.json",
       "battle_pack": "battle/pillow/pillow-entry.encbattle",
       "round_pack": "battle/pillow/pillow-entry.encround"
+    },
+    {
+      "formation": "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml#2",
+      "entry_ir": "content/bridge-entry.json",
+      "round_ir": "content/bridge-round.json",
+      "battle_pack": "battle/straydog/bridge.encbattle",
+      "round_pack": "battle/straydog/bridge.encround"
     }
   ]
 }

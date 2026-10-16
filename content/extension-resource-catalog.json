@@ -65,6 +65,27 @@
       "id": 321,
       "role": "FieldNpc",
       "path": "world/podunk/npcs/bridge-dog.encmick"
+    },
+    {
+      "id": 41,
+      "role": "FieldStory",
+      "path": "world/podunk/story.encstory"
+    },
+    {
+      "id": 512,
+      "role": "EncounterBattle",
+      "path": "battle/straydog/bridge.encbattle"
+    },
+    {
+      "id": 513,
+      "role": "EncounterRound",
+      "path": "battle/straydog/bridge.encround"
+    }
+  ],
+  "encounters": [
+    {
+      "battle_id": 512,
+      "round_id": 513
     }
   ]
 }

@@ -7,6 +7,7 @@ struct MusicRegionService::State {
  upstream::MusicRegionController controller;
  MusicRegionPlayer player;
  uint64_t external_generation=0;
+ bool paused=false;
 };
 MusicRegionService::MusicRegionService()=default;
 MusicRegionService::~MusicRegionService(){shutdown();}
@@ -15,6 +16,19 @@ uint64_t MusicRegionService::scene_epoch()const{return state_?state_->controller
 uint32_t MusicRegionService::live_voice_count()const{uint32_t count=0;if(state_)for(const auto&v:state_->controller.voices())count+=v.allocated&&v.playing;return count;}
 uint32_t MusicRegionService::submitted_voices()const{return state_?state_->player.submitted_voices():0;}
 uint32_t MusicRegionService::buffer_bytes()const{return state_?state_->player.buffer_bytes():0;}
+bool MusicRegionService::paused_for_battle()const{return state_&&state_->paused;}
+uint32_t MusicRegionService::primary_track_id()const{if(!state_)return 0;const upstream::MusicRegionVoice*first=nullptr;for(const auto&voice:state_->controller.voices())if(voice.allocated&&voice.playing&&voice.track_id&&(!first||voice.order<first->order))first=&voice;return first?first->track_id:0;}
+bool MusicRegionService::suspend_for_battle(std::string&e){
+ if(!state_||phase_!=MusicRegionServicePhase::Active)return fail(e,"Music battle pause requires an active scene");
+ if(state_->paused){e.clear();return true;}
+ if(!state_->controller.finish_tweens_for_pause(e)||!state_->player.sync(state_->controller,e)||!state_->player.set_paused(true,e))return false;
+ state_->paused=true;e.clear();return true;
+}
+bool MusicRegionService::resume_after_battle(double seconds,upstream::MusicRegionCurve curve,std::string&e){
+ if(!state_||phase_!=MusicRegionServicePhase::Active||!state_->paused)return fail(e,"Music battle resume requires its paused scene owner");
+ if(!state_->controller.fade_first_from_silence(seconds,curve,e)||!state_->player.sync(state_->controller,e)||!state_->player.set_paused(false,e))return false;
+ state_->paused=false;e.clear();return true;
+}
 bool MusicRegionService::begin_prepare(const char*regions,const char*bank,const char*root,uint32_t capacity,const AudioPlayer&owner,std::string&e){
  if(state_)return fail(e,"Music region service already prepared; preserve the live owner");
  const auto snapshot=owner.observe_music();
@@ -61,18 +75,19 @@ bool MusicRegionService::area_enter(uint64_t epoch,std::string_view path,const u
  state_->controller=std::move(next);state_->external_generation=generation;e.clear();return true;
 }
 bool MusicRegionService::area_exit(uint64_t epoch,std::string_view path,const upstream::MusicRegionContext&context,std::string&e){if(!state_)return fail(e,"Music region Area event has no prepared service");if(epoch!=scene_epoch()){e.clear();return true;}if(phase_!=MusicRegionServicePhase::Active)return fail(e,"Music region Area exit outside active scene");return state_->controller.exit(epoch,path,context,e);}
-bool MusicRegionService::idle_frame(uint64_t epoch,std::string&e){if(!state_)return fail(e,"Music region idle event has no prepared service");if(epoch!=scene_epoch()){e.clear();return true;}if(phase_!=MusicRegionServicePhase::Active)return fail(e,"Music region idle event outside active scene");return state_->controller.idle_frame(epoch,e);}
-bool MusicRegionService::tree_exit(uint64_t epoch,std::string_view path,std::string&e){if(!state_)return fail(e,"Music region tree event has no prepared service");if(epoch!=scene_epoch()){e.clear();return true;}if(phase_!=MusicRegionServicePhase::Active)return fail(e,"Music region tree exit outside active scene");return state_->controller.tree_exit(epoch,path,e);}
+bool MusicRegionService::idle_frame(uint64_t epoch,std::string&e){if(!state_)return fail(e,"Music region idle event has no prepared service");if(epoch!=scene_epoch()){e.clear();return true;}if(phase_!=MusicRegionServicePhase::Active)return fail(e,"Music region idle event outside active scene");if(state_->paused){e.clear();return true;}return state_->controller.idle_frame(epoch,e);}
+bool MusicRegionService::tree_exit(uint64_t epoch,std::string_view path,std::string&e){if(!state_)return fail(e,"Music region tree event has no prepared service");if(epoch!=scene_epoch()){e.clear();return true;}if(phase_!=MusicRegionServicePhase::Active||state_->paused)return fail(e,"Music region tree exit outside an unpaused active scene");return state_->controller.tree_exit(epoch,path,e);}
 bool MusicRegionService::finish_scene(uint64_t epoch,std::string&e){
  if(!state_)return fail(e,"Music region finish has no prepared service");
  if(epoch!=scene_epoch()){e.clear();return true;}
- if(phase_!=MusicRegionServicePhase::Active)return fail(e,"Music region scene is not active");
+ if(phase_!=MusicRegionServicePhase::Active||state_->paused)return fail(e,"Music region scene is not unpaused and active");
  for(const auto&area:state_->controller.regions())if(area.inside||area.registered||area.pending_exit)return fail(e,"Music region source tree exits are incomplete");
  phase_=MusicRegionServicePhase::Draining;e.clear();return true;
 }
 bool MusicRegionService::update(double delta,const AudioPlayer&owner,std::string&e){
  if(phase_==MusicRegionServicePhase::Dormant||phase_==MusicRegionServicePhase::Preparing||phase_==MusicRegionServicePhase::Prepared){e.clear();return true;}
  if(!std::isfinite(delta)||delta<0)return fail(e,"Invalid music region service delta");
+ if(state_->paused){e.clear();return true;}
  const auto snapshot=owner.observe_music();
  if(!observe(state_->controller,state_->external_generation,snapshot,e)||
     !state_->controller.advance(delta,snapshot.any_music_tweening,e)||!state_->player.sync(state_->controller,e))return false;

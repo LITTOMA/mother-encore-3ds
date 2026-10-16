@@ -4,18 +4,24 @@
 #include <utility>
 namespace encore::upstream {
 bool BattleOutcome::fail(const char* e){error_=e;phase_=BattleOutcomePhase::Error;return false;}
-bool BattleOutcome::initialize(RoundView content,RoomView room,const BattleSessionStats*session){
+bool BattleOutcome::initialize(RoundView content,RoomView room,const BattleSessionStats*session,BattleLoot* loot){
+ return prepare(content,room,session,loot,true);
+}
+bool BattleOutcome::preflight(RoundView content,RoomView room,const BattleSessionStats*session,std::string& error){
+ BattleOutcome candidate;if(!candidate.prepare(content,room,session,nullptr,false)){error=candidate.error();return false;}error.clear();return true;
+}
+bool BattleOutcome::prepare(RoundView content,RoomView room,const BattleSessionStats*session,BattleLoot* loot,bool require_loot){
  *this=BattleOutcome{};
  if(!content.valid()||!room.valid())return fail("Invalid reward content");
- content_=content;const auto v=content.victory();
+ content_=content;loot_=loot;const auto v=content.victory();
  if(v.initial_level==0||v.initial_level>=v.level_cap||v.level_cap!=room.experience_count()||v.next_level_exp!=room.experience(v.initial_level)||v.max_exp!=room.experience(v.level_cap-1))return fail("Reward progression contract mismatch");
  const auto encounter=content.encounter();
- if(v.reward_item_count||(!encounter.promoted_level&&uint64_t(v.initial_exp)+v.reward_exp>=v.next_level_exp))return fail("Unreviewed reward progression");
+ if((require_loot&&v.reward_item_count&&(!loot||!loot->matches(content)))||(!encounter.promoted_level&&uint64_t(v.initial_exp)+v.reward_exp>=v.next_level_exp))return fail("Unreviewed reward progression");
  if(encounter.promoted_level&&encounter.following_level_exp!=room.experience(encounter.promoted_level))return fail("Promoted level progression mismatch");
  if(uint64_t(v.initial_bank)+v.reward_cash>std::numeric_limits<uint32_t>::max()||uint64_t(v.initial_earned_cash)+v.reward_cash>std::numeric_limits<uint32_t>::max())return fail("Reward currency overflow");
  state_.experience=v.initial_exp;state_.level=v.initial_level;state_.bank=v.initial_bank;state_.cash=v.initial_cash;state_.earned_cash=v.initial_earned_cash;
  if(session)state_=*session;
- if(content.version()==5){
+ if(content.version()>=5){
   // v5 carries the live session through either side of one reviewed promotion.
   // Threshold values remain external and must match the checked room table.
   if(state_.level!=v.initial_level&&state_.level!=encounter.promoted_level)return fail("Session level outside reviewed progression");
@@ -43,7 +49,7 @@ bool BattleOutcome::start_victory(){
 }
 bool BattleOutcome::commit_experience(){
  const auto v=content_.victory();const auto e=content_.encounter();
- const bool conditional=content_.version()==5;
+ const bool conditional=content_.version()>=5;
  const bool promote=e.promoted_level&&(!conditional||(state_.level==v.initial_level&&state_.experience<v.next_level_exp&&uint64_t(state_.experience)+v.reward_exp>=v.next_level_exp));
  BattleRewardState grown=state_;
  if(promote){
@@ -69,7 +75,7 @@ bool BattleOutcome::commit_experience(){
   if(conditional&&!apply_session_stats(checked,grown))return fail("Invalid promoted reward session");
  }
  state_.experience+=v.reward_exp;events_.push_back(BattleRewardEvent::ExperienceCommitted);
- if(!promote)return commit_rewards();
+ if(!promote)return begin_loot();
  grown.experience=state_.experience;state_=std::move(grown);growth_texts_.push_back(e.level_text);
  for(uint32_t i=0;i<content_.count(RoundSection::Growth);++i){const auto g=content_.growth(i);if(g.text)growth_texts_.push_back(g.text);}
  events_.push_back(BattleRewardEvent::LevelCommitted);
@@ -78,10 +84,25 @@ bool BattleOutcome::commit_experience(){
  return next_growth_text();
 }
 bool BattleOutcome::next_growth_text(){
- if(growth_text_index_>=growth_texts_.size())return commit_rewards();
+ if(growth_text_index_>=growth_texts_.size())return begin_loot();
  const auto text=growth_texts_[growth_text_index_++];
  if(!presentation_->begin_outcome_text(text))return fail(presentation_->error());
  events_.push_back(BattleRewardEvent::LevelPrompt);phase_=BattleOutcomePhase::LevelDialogue;return true;
+}
+bool BattleOutcome::begin_loot(){
+ if(!content_.victory().reward_item_count)return commit_rewards();
+ if(!loot_||!loot_->matches(content_))return fail("Reward pool differs from the prepared encounter");
+ std::string error;if(!loot_->grant(error))return fail("Reserved source item grant rejected");
+ if(!loot_->selected())return commit_rewards();
+ events_.push_back(BattleRewardEvent::ItemGranted);loot_text_index_=0;return next_loot_text();
+}
+bool BattleOutcome::next_loot_text(){
+ if(!loot_||!loot_->selected()||!loot_->granted())return fail("Loot dialogue has no committed source item");
+ if(loot_text_index_>=3)return commit_rewards();
+ const auto policy=loot_->policy();const uint32_t texts[]={policy.present_text,policy.inside_text,policy.taking_text};
+ std::string error;if(loot_text_index_==2&&!loot_->play_sound(error))return fail("Loot acquisition sound rejected");
+ if(!presentation_->begin_outcome_text(texts[loot_text_index_++]))return fail(presentation_->error());
+ events_.push_back(BattleRewardEvent::LootPrompt);phase_=BattleOutcomePhase::LootDialogue;return true;
 }
 bool BattleOutcome::commit_rewards(){
  const auto v=content_.victory();
@@ -114,6 +135,7 @@ bool BattleOutcome::idle_frame(){
   }break;
  case BattleOutcomePhase::ExperienceDialogue:if(presentation_->dialogue().done())return commit_experience();break;
  case BattleOutcomePhase::LevelDialogue:if(presentation_->dialogue().done())return next_growth_text();break;
+ case BattleOutcomePhase::LootDialogue:if(presentation_->dialogue().done())return next_loot_text();break;
  case BattleOutcomePhase::Returning:if(presentation_->return_done()){
    if(!content_.string(content_.encounter().post_win_script).empty()){events_.push_back(BattleRewardEvent::BattleEnded);events_.push_back(BattleRewardEvent::PostWinRequested);phase_=BattleOutcomePhase::PostWinRequested;return true;}
    if(!world_->finish_battle_return())return fail("World return rejected");

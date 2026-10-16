@@ -8,7 +8,7 @@
 namespace encore::upstream {
 // Schema identifiers only; content, tuning, labels and media are in opening.encround.
 constexpr uint32_t round_no_index=UINT32_MAX;
-enum class RoundSection:uint16_t {Strings=1,Skills,EnemyChoices,Rules,Bindings,Texts,Resources,Media,Tracks,Keys,Events,PresentationBindings,Parameters,Victory,Encounter,Growth,BossShakes};
+enum class RoundSection:uint16_t {Strings=1,Skills,EnemyChoices,Rules,Bindings,Texts,Resources,Media,Tracks,Keys,Events,PresentationBindings,Parameters,Victory,Encounter,Growth,BossShakes,Loot,PreHit,ActionMedia};
 enum class RoundActionType:uint32_t {Damage=0,Other=4};
 enum class RoundTargetType:uint32_t {Enemy=0,Self=5};
 enum class RoundSkillType:uint32_t {None=0,Basic=1,Skill=2};
@@ -22,7 +22,7 @@ enum class RoundRule:uint32_t {
  TextSecondsPerChar,TextAcceptMultiplier,TextCancelMultiplier,TextAutoAdvanceSeconds,
  TextNormalMultiplier,TextFasterMultiplier,TextSlowerMultiplier,SmashTimeScale,SmashRealSeconds,VictoryBannerSeconds,Count
 };
-enum class RoundTextRole:uint32_t {Empty=0,SkillName=1,SkillDescription,SkillDialog,EnemyName,EnemyArticle,EnemyOutro,MortalDamage,NoEffect,Experience,LevelUp,StatGrowth,Learning};
+ enum class RoundTextRole:uint32_t {Empty=0,SkillName=1,SkillDescription,SkillDialog,EnemyName,EnemyArticle,EnemyOutro,MortalDamage,NoEffect,Experience,LevelUp,StatGrowth,Learning,Loot};
 enum class RoundAcknowledgment:uint32_t {AcceptOrCancelAfterFinished=1};
 enum class RoundCurrencyPolicy:uint32_t {BankAndEarnedCash=1};
 enum class RoundMediaRole:uint32_t {PartySprite=1,EnemySprite,HitEffect,PartyPlate,TargetPointer,Dialogue,FlyingNumber,RisingNumber,BackgroundDim,TransitionRect,WorldParty,BossFlash};
@@ -57,6 +57,10 @@ enum class RoundStat:uint32_t {MaxHp=1,MaxPp,Offense,Defense,Speed,Iq,Guts};
 struct RoundEncounter {uint32_t boss=0,keep_actor=0,post_win_script=0,boss_flash_media=round_no_index,promoted_level=0,following_level_exp=0,level_text=0,learned_skill=0,learned_text=0,stop_area_music_if_overworld=0;};
 struct RoundGrowth {uint32_t stat=0,before=0,after=0,text=0;};
 struct RoundBossShake {float time=0,magnitude=0,length=0,interval=0,weight=0;};
+// v6 ordinary single-enemy loot and checked pre-hit effect timing.
+struct RoundLoot {uint32_t item=0;float chance=0;uint32_t doses=0,present_text=0,inside_text=0,taking_text=0,sound=0,flags=0;};
+struct RoundPreHit {uint32_t skill=round_no_index,media=round_no_index;float apply_time=0;};
+struct RoundActionMedia {uint32_t skill=round_no_index,preparation=round_no_index,use_sound=0;};
 struct RoundMedia {
  uint32_t id=0,name=0,role=0,resource=round_no_index,first_track=0,track_count=0,first_event=0,event_count=0,flags=0;
  float duration=0;BattleValue rect{},color{};Vec2 anchor{};
@@ -66,13 +70,15 @@ struct RoundEvent {uint32_t media=0;float time=0;uint32_t kind=0;};
 class RoundView {
 public:
  bool valid()const{return bytes_!=nullptr;}
+ const void* bytes_identity()const{return bytes_;}
  uint32_t version()const;
  uint32_t count(RoundSection)const;std::string_view string(uint32_t)const;
  RoundSkill skill(uint32_t)const;RoundEnemyChoice enemy_choice(uint32_t)const;
- double rule(RoundRule)const;BattleValue parameter(RoundParameter)const;RoundBinding binding()const;RoundText text(uint32_t)const;RoundVictory victory()const;RoundEncounter encounter()const;RoundGrowth growth(uint32_t)const;RoundBossShake boss_shake(uint32_t)const;
+ double rule(RoundRule)const;BattleValue parameter(RoundParameter)const;RoundBinding binding()const;RoundText text(uint32_t)const;RoundVictory victory()const;RoundEncounter encounter()const;RoundGrowth growth(uint32_t)const;RoundBossShake boss_shake(uint32_t)const;RoundLoot loot()const;RoundPreHit pre_hit(uint32_t skill)const;
  BattleResource resource(uint32_t)const;RoundMedia media(uint32_t)const;RoundTrack track(uint32_t)const;
  BattleKey key(uint32_t)const;RoundEvent event(uint32_t)const;
  uint32_t presentation(RoundPresentationSlot)const;
+ RoundActionMedia action_media(uint32_t skill)const;
 private:
  friend class BattleRoundData;const uint8_t*bytes_=nullptr;size_t size_=0;
  const uint8_t*record(RoundSection,uint32_t)const;

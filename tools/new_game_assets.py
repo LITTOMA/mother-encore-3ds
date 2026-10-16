@@ -277,10 +277,11 @@ def verify(r):
 
 def rebound_session_dependency(recipe,previous,current,current_sha):
  extension=(previous['schema'],current['schema'])==(7,8)
- require(set(previous)==set(current) or (extension and set(current)==set(previous)|{'skill_acquisitions','skill_order'}),'Changed naming session field set')
+ field_extension=(previous['schema'],current['schema'])==(8,9)
+ require(set(previous)==set(current) or (extension and set(current)==set(previous)|{'skill_acquisitions','skill_order'}) or (field_extension and set(current)==set(previous)|{'field_encounters'}),'Changed naming session field set')
  for key in previous:
   if key not in ('schema','key_acquisitions','acquisitions','storage_policies','mutable_flags','camera_area_ids','dependencies','scope'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
- require(previous['schema']==current['schema'] or (previous['schema'],current['schema']) in ((6,7),(7,8)),'Unreviewed naming session schema migration')
+ require(previous['schema']==current['schema'] or extension or field_extension or (previous['schema'],current['schema'])==(6,7),'Unreviewed naming session schema migration')
  # New game remains byte-identical: only checked future acquisition policies grow.
  if extension:
   require(current['skill_acquisitions']==[dict(skill_id='lifeUpA',flag_id='got_diary')] and current['skill_order']==['strike','splitShot','telepathy','lifeUpA'],'Unreviewed naming story skill scope')
@@ -288,6 +289,13 @@ def rebound_session_dependency(recipe,previous,current,current_sha):
    require(current[key][:len(previous[key])]==previous[key] and len(current[key])==len(previous[key])+1,'Changed initial item policy prefix')
   require(current['acquisitions'][-1]==dict(item_id='BatPlastic',doses=1,flag_id="Ninten's House/Present2",max_count=1,flag_policy=2),'Unreviewed naming item acquisition')
   require(current['storage_policies'][-1]['item_id']=='BatPlastic','Unreviewed naming storage extension')
+ elif field_extension:
+  from tools.native_session import extract
+  reviewed=extract()
+  for key in ('field_encounters','acquisitions','storage_policies','mutable_flags','scope'):
+   require(current[key]==reviewed[key],'Unreviewed naming field session '+key)
+  for key in ('acquisitions','storage_policies'):
+   require(current[key][:len(previous[key])]==previous[key] and len(current[key])==len(previous[key])+1,'Changed initial field item policy prefix')
  else:
   for key in ('acquisitions','storage_policies','scope'):require(current[key]==previous[key],'Changed naming session '+key)
  prior_keys=[dict(k,flag_policy=k.get('flag_policy',1)) for k in previous['key_acquisitions']]

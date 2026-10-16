@@ -110,4 +110,17 @@ bool MusicRegionController::advance(double delta,bool external_tween_active,std:
  if(cleanup_waiting_&&!active){for(size_t i=0;i<voices_.size();++i)if(voices_[i].allocated&&(!voices_[i].playing||voices_[i].gain_db<=data_->silence_db()))detach_dead(int(i));cleanup_waiting_=false;}
  e.clear();return true;
 }
+bool MusicRegionController::finish_tweens_for_pause(std::string&e){
+ if(!data_)return fail(e,"Music pause requires checked region data");
+ for(auto&v:voices_)if(v.allocated&&v.tweening){v.elapsed=v.duration;v.gain_db=v.target_db;v.tweening=false;}
+ cleanup_waiting_=true;return advance(0,false,e);
+}
+bool MusicRegionController::fade_first_from_silence(double seconds,MusicRegionCurve curve,std::string&e){
+ if(!data_||!std::isfinite(seconds)||seconds<=0||seconds>60||curve<MusicRegionCurve::Linear||curve>MusicRegionCurve::QuartOut)return fail(e,"Music resume fade contract rejected");
+ int first=-1;for(uint32_t i=0;i<voices_.size();++i)if(voices_[i].allocated&&voices_[i].playing&&(first<0||voices_[i].order<voices_[uint32_t(first)].order))first=int(i);
+ if(external_.present&&(first<0||external_order_<voices_[uint32_t(first)].order))return fail(e,"External first-player resume is not mapped to the regional owner");
+ if(first<0){e.clear();return true;}
+ auto&voice=voices_[uint32_t(first)];if(!voice.track_id)return fail(e,"External first-player resume is not mapped to the regional owner");
+ const auto target=voice.gain_db;voice.gain_db=data_->silence_db();tween(first,target,seconds,curve);e.clear();return true;
+}
 }

@@ -20,6 +20,7 @@ void*linearAlloc(size_t n){if(alloc_left==0)return nullptr;if(alloc_left>0)--all
 void linearFree(void*p){check(p!=nullptr,"valid release");allocated-=3*2048*4;std::free(p);}
 void ndspChnReset(int c){drain(c);}void ndspChnWaveBufClear(int c){drain(c);}
 void ndspChnSetMix(int c,float*v){gains[ch(c)]=v[0];check(v[0]==v[1],"equal stereo gain");}
+void ndspChnSetPaused(int c,bool){ch(c);}
 Result DSP_FlushDataCache(const void*p,uint32_t n){check(p&&n>0&&n<=2048*4,"bounded streaming flush");return flush_result;}
 void ndspChnWaveBufAdd(int c,ndspWaveBuf*b){auto&q=queues[ch(c)];check(b->data_pcm16&&b->nsamples==2048&&!b->looping,"source streamed frame buffer");b->status=NDSP_WBUF_QUEUED;q.push_back(b);}
 void ndspChnSetInterp(int c,int){ch(c);}void ndspChnSetRate(int c,float){ch(c);}void ndspChnSetFormat(int c,int){ch(c);}

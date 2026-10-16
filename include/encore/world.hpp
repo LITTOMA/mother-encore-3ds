@@ -104,7 +104,9 @@ public:
     bool shake_house_camera(double magnitude,double duration,Vec2 direction){return healthy_&&persistent_player_.state_->camera_.shake(magnitude,duration,direction);}
     bool set_battle_story_flag();
     bool set_story_flag(std::string_view name,bool value,bool emit);
+    uint64_t story_revision()const{return story_revision_;}
     bool story_flag(std::string_view name)const{return flags_.story_flag(name);}
+    bool story_flag_at(uint32_t index)const{return flags_.story_flag(index);}
     bool resume_battle_camera();
     bool stop_area_music();
     bool start_area_music(uint32_t resource,double gain_db,double fadein_seconds);
@@ -178,6 +180,7 @@ private:
     std::vector<OpeningTraceEvent> trace_;
     std::vector<DialogueAction> deferred_;
     std::vector<uint8_t> actor_bound_,actor_persistent_,actor_visible_,actor_restore_,inside_trigger_,trigger_pending_;
+    uint64_t story_revision_=0;
     Vec2 battle_original_direction_{};
     struct Boundary { uint32_t binding;double remaining; };
     std::vector<Boundary> boundaries_;

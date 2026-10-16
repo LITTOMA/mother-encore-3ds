@@ -1,6 +1,7 @@
 #pragma once
 #include "encore/collision.hpp"
 #include "encore/field_data.hpp"
+#include "encore/field_story.hpp"
 #include "encore/introduction.hpp"
 #include "encore/mick_treats.hpp"
 #include "encore/world.hpp"
@@ -68,6 +69,12 @@ private:
 enum class FieldPhase:uint8_t {Walking,DoorAwaitIdle,Transition,Unsupported,MickTalk,Error};
 struct FieldNoticeView {uint32_t index=0;float distance=0;};
 struct FieldMickWorld;
+class FieldStoryHost {
+public:
+    virtual ~FieldStoryHost()=default;
+    // Pure admission before any cutscene, RNG, inventory or flag mutation.
+    virtual bool can_start(FieldStoryView,uint32_t programme,std::string& error)=0;
+};
 
 // AreaRoom field: TileMap world, routed and unported doors, explicit development
 // boundaries and unlocked openable doors. Rendering and scene swaps are platform owned.
@@ -83,6 +90,8 @@ public:
     // Re-evaluate FlagLandmark / CutsceneArea conditions after a live story flag write.
     // Podunk can change gave_treats in-session once Mick accepts DogTreats.
     bool refresh_conditions(std::string& error);
+    bool bind_story(FieldStoryView,ItemView,FieldStoryHost&,std::string& error);
+    FieldStoryView story()const{return story_;}
     // Bind Mick after prepare; host effects stay platform-owned.
     bool bind_mick(MickView,MickHost&,std::string& error);
     bool bind_npc(MickView,MickHost&,std::string& error);
@@ -134,6 +143,7 @@ private:
     bool fail(std::string message){phase_=FieldPhase::Error;error_=std::move(message);return false;}
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
+    std::vector<bool>collision_layers_,collision_bodies_;bool collision_ready_=false;
     StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;
     MickRuntime mick_;bool mick_bound_=false;
     struct Npc {uint32_t actor=0,item=0;MickRuntime motion;StaticMotionSolver solver;};
@@ -148,5 +158,6 @@ private:
     FieldPhase phase_=FieldPhase::Error;std::string error_="Field not prepared";
     uint32_t route_=WorldLinksData::kNotFound,pending_door_=WorldLinksData::kNotFound,boundary_=WorldLinksData::kNotFound;
     Vec2 last_safe_position_{},last_safe_direction_{};
+    FieldStoryView story_;FieldStoryHost*story_host_=nullptr;uint64_t story_revision_=0;
 };
 }

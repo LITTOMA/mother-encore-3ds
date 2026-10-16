@@ -6,8 +6,8 @@
 #include <set>
 namespace encore::upstream {
 namespace {
-constexpr uint32_t section_count=17,header_bytes=288,max_bytes=2*1024*1024;
-constexpr uint32_t strides[]={1,80,8,12,64,20,60,80,28,24,12,8,20,64,40,16,20};
+constexpr uint32_t section_count=20,header_bytes=288,max_bytes=2*1024*1024;
+constexpr uint32_t strides[]={1,80,8,12,64,20,60,80,28,24,12,8,20,64,40,16,20,32,12,12};
 uint32_t u32(const uint8_t*p){return uint32_t(p[0])|(uint32_t(p[1])<<8)|(uint32_t(p[2])<<16)|(uint32_t(p[3])<<24);}
 uint16_t u16(const uint8_t*p){return uint16_t(p[0])|(uint16_t(p[1])<<8);}
 int32_t i32(const uint8_t*p){auto b=u32(p);int32_t v;std::memcpy(&v,&b,4);return v;}
@@ -38,10 +38,13 @@ RoundEncounter RoundView::encounter()const{
  if(version()>=4)result.stop_area_music_if_overworld=u32(p+36);
  return result;
 }
+RoundLoot RoundView::loot()const{const auto*p=record(RoundSection::Loot,0);return p?RoundLoot{u32(p),f32(p+4),u32(p+8),u32(p+12),u32(p+16),u32(p+20),u32(p+24),u32(p+28)}:RoundLoot{};}
+RoundPreHit RoundView::pre_hit(uint32_t skill)const{for(uint32_t i=0;i<count(RoundSection::PreHit);++i){const auto*p=record(RoundSection::PreHit,i);if(u32(p)==skill)return {skill,u32(p+4),f32(p+8)};}return {};}
 RoundGrowth RoundView::growth(uint32_t i)const{auto*p=record(RoundSection::Growth,i);return p?RoundGrowth{u32(p),u32(p+4),u32(p+8),u32(p+12)}:RoundGrowth{};}
 RoundBossShake RoundView::boss_shake(uint32_t i)const{auto*p=record(RoundSection::BossShakes,i);return p?RoundBossShake{f32(p),f32(p+4),f32(p+8),f32(p+12),f32(p+16)}:RoundBossShake{};}
 BattleResource RoundView::resource(uint32_t i)const{BattleResource r;auto*p=record(RoundSection::Resources,i);if(p){r={u32(p),u32(p+4),u32(p+8),u32(p+12),u32(p+16),u32(p+20),u32(p+24),{}};std::memcpy(r.sha256,p+28,32);}return r;}
 RoundMedia RoundView::media(uint32_t i)const{auto*p=record(RoundSection::Media,i);if(!p)return {};return {u32(p),u32(p+4),u32(p+8),u32(p+12),u32(p+16),u32(p+20),u32(p+24),u32(p+28),u32(p+32),f32(p+36),value(p+40),value(p+56),{f32(p+72),f32(p+76)}};}
+RoundActionMedia RoundView::action_media(uint32_t skill)const{for(uint32_t i=0;i<count(RoundSection::ActionMedia);++i){const auto*p=record(RoundSection::ActionMedia,i);if(u32(p)==skill)return {skill,u32(p+4),u32(p+8)};}return {};}
 RoundTrack RoundView::track(uint32_t i)const{auto*p=record(RoundSection::Tracks,i);return p?RoundTrack{u32(p),u32(p+4),u32(p+8),u32(p+12),u32(p+16),u32(p+20),u32(p+24)}:RoundTrack{};}
 BattleKey RoundView::key(uint32_t i)const{auto*p=record(RoundSection::Keys,i);return p?BattleKey{f32(p),f32(p+4),value(p+8)}:BattleKey{};}
 RoundEvent RoundView::event(uint32_t i)const{auto*p=record(RoundSection::Events,i);return p?RoundEvent{u32(p),f32(p+4),u32(p+8)}:RoundEvent{};}
@@ -49,7 +52,7 @@ bool BattleRoundData::load(const uint8_t*input,size_t size,std::string&error,con
  auto fail=[&](const char*s){error=s;return false;};
  if(!input||size<header_bytes||size>max_bytes)return fail("Round pack size rejected");
  const auto version=u32(input+8),sections=u32(input+20);
- if(std::memcmp(input,"ENCRND01",8)||(version!=2&&version!=3&&version!=4&&version!=5)||u32(input+12)!=size||sections!=(version==2?14u:17u)||u32(input+24)!=version||u32(input+28)!=version||size<64+16*sections)return fail("Round schema/capability/rules rejected");
+ if(std::memcmp(input,"ENCRND01",8)||(version<2||version>6)||u32(input+12)!=size||sections!=(version==2?14u:version==6?20u:17u)||u32(input+24)!=version||u32(input+28)!=version||size<64+16*sections)return fail("Round schema/capability/rules rejected");
  for(unsigned i=52;i<64;++i)if(input[i])return fail("Round reserved header bytes set");
  const auto checksum=crc(input,size,control);if(control&&control->stopped())return fail("Checked pack preparation cancelled");
  if(checksum!=u32(input+16))return fail("Round CRC mismatch");
@@ -67,17 +70,17 @@ bool BattleRoundData::load(const uint8_t*input,size_t size,std::string&error,con
  std::set<uint32_t>rules;for(uint32_t i=0;i<count(RoundSection::Rules);++i){auto*p=v.record(RoundSection::Rules,i);auto k=u32(p);auto f=f64(p+4);if(!k||k>=uint32_t(RoundRule::Count)||!rules.insert(k).second||!std::isfinite(f)||f<=0||f>100000)return fail("Round rule rejected");}
  for(auto key:{RoundRule::PercentScale,RoundRule::HpTransitionFrames}){auto f=v.rule(key);if(std::floor(f)!=f)return fail("Round integer rule rejected");}
  auto b=v.binding();if(!b.battle_id||b.player_participant!=0||b.enemy_participant!=1||b.basic_skill>=count(RoundSection::Skills)||b.guard_skill>=count(RoundSection::Skills)||!b.basic_menu||!b.items_menu||!b.guard_menu||b.basic_menu==b.items_menu||b.basic_menu==b.guard_menu||b.items_menu==b.guard_menu||!str(b.locale)||v.string(b.locale).empty()||b.enemy_name>=count(RoundSection::Texts)||b.enemy_article>=count(RoundSection::Texts)||b.enemy_outro>=count(RoundSection::Texts)||b.mortal_damage>=count(RoundSection::Texts)||b.no_effect>=count(RoundSection::Texts)||b.show_intro_outro>1||!str(b.win_flag))return fail("Round binding rejected");if(v.skill(b.basic_skill).skill_type!=1||!(v.skill(b.guard_skill).traits&1))return fail("Round bound skill role rejected");
- for(uint32_t i=0;i<count(RoundSection::Texts);++i){auto t=v.text(i);if(t.role>uint32_t(version==2?RoundTextRole::Experience:RoundTextRole::Learning)||!str(t.key)||!str(t.source_text)||!str(t.text))return fail("Round text rejected");}auto empty=v.text(0);if(empty.role||empty.key||empty.source_text||empty.text)return fail("Round empty text rejected");
+ for(uint32_t i=0;i<count(RoundSection::Texts);++i){auto t=v.text(i);if(t.role>uint32_t(version==2?RoundTextRole::Experience:version==6?RoundTextRole::Loot:RoundTextRole::Learning)||!str(t.key)||!str(t.source_text)||!str(t.text))return fail("Round text rejected");}auto empty=v.text(0);if(empty.role||empty.key||empty.source_text||empty.text)return fail("Round empty text rejected");
  auto reward=v.victory();
- if(!reward.enemy_body_id||!reward.initial_level||reward.initial_level>=reward.level_cap||reward.level_cap>1000||!reward.reward_exp||reward.reward_item_count||reward.next_level_exp>reward.max_exp||reward.max_exp>INT32_MAX||(version==2&&uint64_t(reward.initial_exp)+reward.reward_exp>=reward.next_level_exp)||(version==5&&reward.initial_exp>=reward.next_level_exp)||reward.initial_bank>INT32_MAX||reward.initial_cash>INT32_MAX||reward.initial_earned_cash>INT32_MAX||uint64_t(reward.initial_bank)+reward.reward_cash>INT32_MAX||uint64_t(reward.initial_earned_cash)+reward.reward_cash>INT32_MAX)return fail("Round unsupported victory progression/reward state");
+ if(!reward.enemy_body_id||!reward.initial_level||reward.initial_level>=reward.level_cap||reward.level_cap>1000||!reward.reward_exp||(version==6?reward.reward_item_count!=1:reward.reward_item_count!=0)||reward.next_level_exp>reward.max_exp||reward.max_exp>INT32_MAX||(version==2&&uint64_t(reward.initial_exp)+reward.reward_exp>=reward.next_level_exp)||(version>=5&&reward.initial_exp>=reward.next_level_exp)||reward.initial_bank>INT32_MAX||reward.initial_cash>INT32_MAX||reward.initial_earned_cash>INT32_MAX||uint64_t(reward.initial_bank)+reward.reward_cash>INT32_MAX||uint64_t(reward.initial_earned_cash)+reward.reward_cash>INT32_MAX)return fail("Round unsupported victory progression/reward state");
  if(reward.exp_text>=count(RoundSection::Texts)||v.text(reward.exp_text).role!=uint32_t(RoundTextRole::Experience)||v.string(v.text(reward.exp_text).text).empty()||reward.acknowledgment!=uint32_t(RoundAcknowledgment::AcceptOrCancelAfterFinished)||reward.currency_policy!=uint32_t(RoundCurrencyPolicy::BankAndEarnedCash)||!str(reward.earned_cash_flag)||v.string(reward.earned_cash_flag).empty()||reward.earned_cash_flag==b.win_flag)return fail("Round victory binding/policy rejected");
  if(version>=3){
   if(count(RoundSection::Encounter)!=1||count(RoundSection::Growth)!=7||(version<5&&count(RoundSection::BossShakes)!=3))return fail("Round encounter capacity rejected");
   const auto e=v.encounter();
   if(e.stop_area_music_if_overworld>1)return fail("Round area music policy rejected");
-  if((version<5?(e.boss!=1||e.keep_actor!=1):(e.boss>1||e.keep_actor>1))||!str(e.post_win_script)||!safe_path(v.string(e.post_win_script))||(e.boss&&e.boss_flash_media>=count(RoundSection::Media))||e.promoted_level!=reward.initial_level+1||e.promoted_level>=reward.level_cap||e.following_level_exp<=reward.next_level_exp||e.following_level_exp>reward.max_exp||(version<5&&uint64_t(reward.initial_exp)+reward.reward_exp<reward.next_level_exp)||uint64_t(reward.initial_exp)+reward.reward_exp>=e.following_level_exp||e.level_text>=count(RoundSection::Texts)||v.text(e.level_text).role!=uint32_t(RoundTextRole::LevelUp)||!str(e.learned_skill)||v.string(e.learned_skill).empty()||e.learned_text>=count(RoundSection::Texts)||v.text(e.learned_text).role!=uint32_t(RoundTextRole::Learning)||!v.string(b.win_flag).empty())return fail("Round encounter policy rejected");
+  if((version<5?(e.boss!=1||e.keep_actor!=1):(e.boss>1||e.keep_actor>1))||!str(e.post_win_script)||(!safe_path(v.string(e.post_win_script))&&!(version==6&&v.string(e.post_win_script).empty()))||(e.boss&&e.boss_flash_media>=count(RoundSection::Media))||e.promoted_level!=reward.initial_level+1||e.promoted_level>=reward.level_cap||e.following_level_exp<=reward.next_level_exp||e.following_level_exp>reward.max_exp||(version<5&&uint64_t(reward.initial_exp)+reward.reward_exp<reward.next_level_exp)||uint64_t(reward.initial_exp)+reward.reward_exp>=e.following_level_exp||e.level_text>=count(RoundSection::Texts)||v.text(e.level_text).role!=uint32_t(RoundTextRole::LevelUp)||!str(e.learned_skill)||v.string(e.learned_skill).empty()||e.learned_text>=count(RoundSection::Texts)||v.text(e.learned_text).role!=uint32_t(RoundTextRole::Learning)||(version<6&&!v.string(b.win_flag).empty()))return fail("Round encounter policy rejected");
   std::set<uint32_t>stats;for(uint32_t i=0;i<count(RoundSection::Growth);++i){auto g=v.growth(i);if(g.stat<1||g.stat>7||!stats.insert(g.stat).second||g.before>INT32_MAX||g.after<g.before||g.after>INT32_MAX||g.text>=count(RoundSection::Texts)||(g.after==g.before?g.text!=0:v.text(g.text).role!=uint32_t(RoundTextRole::StatGrowth)))return fail("Round growth rejected");}
-  if(version==5){
+  if(version>=5){
    if(e.boss){if(count(RoundSection::BossShakes)!=3)return fail("Round boss shake capacity rejected");}
    else{
     if(count(RoundSection::BossShakes)||e.boss_flash_media!=round_no_index)return fail("Round nonboss encounter policy rejected");
@@ -90,6 +93,18 @@ bool BattleRoundData::load(const uint8_t*input,size_t size,std::string&error,con
   for(uint32_t i=0;i<count(RoundSection::Events);++i){const auto event=v.event(i);if((event.kind==uint32_t(RoundEventKind::BossFlashStart)&&event.media!=v.presentation(RoundPresentationSlot::EnemyDefeat))||(event.kind==uint32_t(RoundEventKind::BossKillEnemies)&&event.media!=e.boss_flash_media))return fail("Round boss callback owner rejected");}
   const auto flash=v.media(e.boss_flash_media),defeat=v.media(v.presentation(RoundPresentationSlot::EnemyDefeat));
   if(flash.role!=uint32_t(RoundMediaRole::BossFlash)||flash.resource!=round_no_index||flash.event_count!=1||defeat.event_count!=1||v.event(flash.first_event).kind!=uint32_t(RoundEventKind::BossKillEnemies)||v.event(defeat.first_event).kind!=uint32_t(RoundEventKind::BossFlashStart)||v.event(defeat.first_event).time>=defeat.duration||prior>=v.event(defeat.first_event).time)return fail("Round boss callback contract rejected");
+  }
+ }
+ if(version==6){
+  if(count(RoundSection::Loot)!=1||!count(RoundSection::PreHit)||count(RoundSection::PreHit)>count(RoundSection::Skills)||count(RoundSection::ActionMedia)!=count(RoundSection::Skills))return fail("Round loot/pre-hit/action capacity rejected");
+  std::set<uint32_t>action_skills;for(uint32_t i=0;i<count(RoundSection::ActionMedia);++i){const auto*p=v.record(RoundSection::ActionMedia,i);const auto skill=u32(p),media=u32(p+4),sound=u32(p+8);if(skill>=count(RoundSection::Skills)||!action_skills.insert(skill).second||sound>1||(media!=round_no_index&&(media>=count(RoundSection::Media)||v.media(media).role!=uint32_t(RoundMediaRole::PartySprite))))return fail("Round skill presentation rejected");}
+  if(v.action_media(v.binding().basic_skill).preparation==round_no_index||v.action_media(v.binding().guard_skill).preparation==round_no_index)return fail("Round party preparation is missing");
+  const auto loot=v.loot();
+  if(!str(loot.item)||v.string(loot.item).empty()||!std::isfinite(loot.chance)||loot.chance<=0||loot.chance>100||loot.doses!=1||loot.flags||!str(loot.sound)||!safe_path(v.string(loot.sound)))return fail("Round ordinary loot policy rejected");
+  for(const auto text:{loot.present_text,loot.inside_text,loot.taking_text})if(!text||text>=count(RoundSection::Texts)||v.string(v.text(text).text).empty())return fail("Round loot dialogue rejected");
+  std::set<uint32_t>seen;
+  for(uint32_t i=0;i<count(RoundSection::PreHit);++i){const auto*p=v.record(RoundSection::PreHit,i);const auto effect=v.pre_hit(u32(p));
+   if(effect.skill>=count(RoundSection::Skills)||!seen.insert(effect.skill).second||effect.media>=count(RoundSection::Media)||v.media(effect.media).role!=uint32_t(RoundMediaRole::HitEffect)||!std::isfinite(effect.apply_time)||effect.apply_time<=0||effect.apply_time>v.media(effect.media).duration||v.skill(effect.skill).action_type!=uint32_t(RoundActionType::Damage))return fail("Round pre-hit binding rejected");
   }
  }
  for(uint32_t i=0;i<count(RoundSection::Resources);++i){auto r=v.resource(i);if(!str(r.path)||!safe_path(v.string(r.path))||r.kind<1||r.kind>3||!r.width||r.width>8192||!r.height||r.height>8192||!r.columns||r.columns>256||!r.rows||r.rows>256||(r.kind==1&&(r.width%r.columns||r.height%r.rows)))return fail("Round resource rejected");}

@@ -27,6 +27,10 @@ public:
  // Call after the existing AudioPlayer consume/update boundary. Dormant and
  // Preparing/Prepared are strict no-ops; no implicit prepare, scene entry or track play.
  bool update(double delta,const AudioPlayer&,std::string&);
+ bool suspend_for_battle(std::string&);
+ bool resume_after_battle(double seconds,upstream::MusicRegionCurve,std::string&);
+ bool paused_for_battle()const;
+ uint32_t primary_track_id()const;
  // Explicit NewGame/application teardown only. Ordinary scene exits must use
  // tree_exit + finish_scene so their voices drain according to source fades.
  void shutdown();

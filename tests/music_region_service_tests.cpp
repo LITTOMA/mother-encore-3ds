@@ -8,6 +8,7 @@ namespace {
 unsigned checks=0,mutations=0,owner_calls=0,file_opens=0;
 size_t linear_bytes=0;bool dsp=false;
 std::array<std::vector<ndspWaveBuf*>,20>queues;
+std::array<bool,20>paused_channels{};
 void check(bool okay,const char*why){++checks;if(!okay){std::cerr<<"FAIL: "<<why<<'\n';std::exit(1);}}
 size_t channel(int i){check(i>=0&&i<20,"valid observed channel");++mutations;return size_t(i);}
 void drain(int i){for(auto*p:queues[size_t(i)])p->status=NDSP_WBUF_DONE;queues[size_t(i)].clear();}
@@ -24,7 +25,7 @@ void ndspChnReset(int i){channel(i);drain(i);}void ndspChnWaveBufClear(int i){ch
 void ndspChnSetMix(int i,float*v){channel(i);check(v[0]==v[1],"stereo mix unchanged");}
 Result DSP_FlushDataCache(const void*p,uint32_t n){check(p&&n&&n<=8192,"checked streaming payload");return 0;}
 void ndspChnWaveBufAdd(int i,ndspWaveBuf*p){check(dsp,"NDSP owner still alive");p->status=NDSP_WBUF_QUEUED;queues[channel(i)].push_back(p);}
-void ndspChnSetPaused(int lane,bool){channel(lane);++mutations;}
+void ndspChnSetPaused(int lane,bool paused){paused_channels[channel(lane)]=paused;++mutations;}
 void ndspChnSetInterp(int i,int){channel(i);}void ndspChnSetRate(int i,float){channel(i);}void ndspChnSetFormat(int i,int){channel(i);}
 bool complete_prepare(ctr::MusicRegionService&service,const char*regions,const char*bank,const char*root,uint32_t capacity,const ctr::AudioPlayer&owner,std::string&e){
  if(!service.begin_prepare(regions,bank,root,capacity,owner,e))return false;
@@ -71,6 +72,15 @@ int main(int argc,char**argv){
  const auto house_queue=queues[0];check(service.update(0,owner,e)&&service.live_voice_count()==1&&service.submitted_voices()==1,"first actual Area event reaches the production adapter");
  check(queues[0]==house_queue&&queues[4].size()==3&&owner.observe_music().generation==house_generation,"new region channel does not change House voice or identity");
  check(service.update(.1,owner,e)&&service.area_enter(1,"Music/MusicArea3",ctx,owner,e)&&service.update(.5,owner,e)&&service.submitted_voices()==1,"same-song callback above silent threshold reuses production voice");
+ check(owner.stop_lane(ctr::AudioLane::Music,e)&&service.update(0,owner,e),"field-like regional ownership without external House voice");
+ const auto track=service.primary_track_id();check(track&&service.suspend_for_battle(e)&&service.paused_for_battle()&&paused_channels[4],"actual region hardware channel pauses");
+ check(!service.tree_exit(1,"Music/MusicArea",e)&&!service.finish_scene(1,e),"paused owner cannot be torn down by scene callbacks");
+ const auto paused_queue=queues[4];const auto paused_mutations=mutations+owner_calls,paused_files=file_opens;
+ for(unsigned i=0;i<20;++i)check(service.update(.1,owner,e)&&service.idle_frame(1,e),"suspended region clocks stay accepted");
+ check(queues[4]==paused_queue&&paused_mutations==mutations+owner_calls&&paused_files==file_opens,"pause preserves queued phase without refill/IO/mix writes");
+ check(!service.resume_after_battle(0,upstream::MusicRegionCurve::QuartOut,e)&&service.paused_for_battle()&&paused_channels[4],"invalid resume preserves suspended owner");
+ check(service.resume_after_battle(3,upstream::MusicRegionCurve::QuartOut,e)&&!service.paused_for_battle()&&!paused_channels[4]&&service.primary_track_id()==track,"resume retains original region song and queue");
+ check(service.update(3,owner,e)&&queues[4]==paused_queue,"original return fade runs without stream restart");
  check(!service.cancel_preparation(e)&&!service.finish_scene(1,e),"committed scene requires its source exits");
  const auto busy_mutations=mutations+owner_calls,busy_opens=file_opens;check(!complete_prepare(service,argv[3],argv[4],argv[5],8,owner,e)&&mutations+owner_calls==busy_mutations&&file_opens==busy_opens,"new preparation cannot replace live service");
  check(service.tree_exit(1,"Music/MusicArea",e)&&service.tree_exit(1,"Music/MusicArea3",e)&&service.finish_scene(1,e),"actual tree exit order enters Draining");

@@ -90,7 +90,12 @@ class BasementSourceTests(unittest.TestCase):
 
     def test_naming_dependency_extension_keeps_defaults_and_rejects_mutation(self):
         from tools import new_game_assets as n
-        current=copy.deepcopy(self.session);previous=copy.deepcopy(current)
+        current=copy.deepcopy(self.session)
+        current['schema']=8;current.pop('field_encounters')
+        current['acquisitions']=[x for x in current['acquisitions']if x['item_id']!='FleaBag']
+        current['storage_policies']=[x for x in current['storage_policies']if x['item_id']!='FleaBag']
+        current['mutable_flags']=[x for x in current['mutable_flags']if x not in ('beat_dog_bridge','pippis_mom_call')]
+        previous=copy.deepcopy(current)
         previous['schema']=7
         previous.pop('skill_acquisitions');previous.pop('skill_order')
         previous['acquisitions']=previous['acquisitions'][:-1]

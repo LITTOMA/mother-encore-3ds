@@ -307,7 +307,7 @@ bool HousePresentation::wrap_plain(std::string_view source,std::vector<Line>& ou
   if(!line.empty())push();if(newline==std::u32string::npos)break;paragraph=newline+1;}
  return true;
 }
-bool HousePresentation::present_plain(std::string_view speaker,std::string_view text){
+bool HousePresentation::present_plain(std::string_view speaker,std::string_view text,std::string_view voice){
  if(!content_.valid())return fail("World dialogue box is not ready");
  if(closing_)return fail("World dialogue box is closing");
  if(active_&&!external_)return fail("House dialogue owns the box");
@@ -329,7 +329,7 @@ bool HousePresentation::present_plain(std::string_view speaker,std::string_view 
   if(!reuse){box_time_=name_time_=name_size_time_=cursor_time_=0;audio_.push_back({HouseAudioKind::MenuOpen,{},1});active_=true;done_=false;}
   else box_time_=old_box,cursor_time_=old_cursor;
  }
- text_time_=0;multiplier_=1;advance_requested_=false;choice_rows_=0;segment_=0;finished_=stopped_=talking_=false;voice_.clear();voice_playing_=false;
+ text_time_=0;multiplier_=1;advance_requested_=false;choice_rows_=0;segment_=0;finished_=stopped_=talking_=false;if(voice_playing_&&!voice_.empty())audio_.push_back({HouseAudioKind::VoiceStop,voice_,1});voice_=std::string(voice);voice_playing_=false;
  external_=true;npc_=house_no_index;done_=false;bullet_=std::string(content_.string(content_.interaction().bullet_string));error_="";return true;
 }
 std::vector<HouseAudioEvent>HousePresentation::take_audio_events(){auto result=std::move(audio_);audio_.clear();return result;}

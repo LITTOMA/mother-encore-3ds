@@ -50,14 +50,14 @@ class ResourceCatalogTests(unittest.TestCase):
 
     def test_field_extension_is_separate_and_fail_closed(self):
         self.assertFalse(any(row['role'] in catalog.EXTENSION_ROLES for row in self.base['bindings']))
-        self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.EXTENSION_ROLES)
+        self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.EXTENSION_ROLES|{'EncounterBattle','EncounterRound'})
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
-        self.assertEqual(catalog.capability_for(self.ir['bindings']), 6)
+        self.assertEqual(catalog.capability_for(self.ir['bindings']), 7)
         motion=[r for r in self.ir['bindings']if r['role']=='FieldNpc']
         self.assertEqual(len(motion),2)
         self.assertTrue(all(r['id']>=256 for r in motion))
         audio_roles={'GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones'}
-        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles|{'FieldNpc'}]
+        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles|{'FieldNpc','FieldStory'}]
         self.assertEqual(catalog.capability_for(legacy), 4)
         for role in audio_roles:
             self.reject(lambda ir: ir.update(bindings=[row for row in ir['bindings'] if row['role']!=role]))

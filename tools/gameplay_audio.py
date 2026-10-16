@@ -15,6 +15,10 @@ def world_sources(root=ROOT):
     expected.update(c['a'].removeprefix('res://') for c in mick['commands'] if c['op']=='PlaySound')
     field=read_json(root/'content/native-field-equipment.json')
     expected.update(s['sound'] for s in field.get('skills',[]) if s['sound'])
+    from tools.field_story import audio_sources
+    expected.update(audio_sources())
+    from tools.bridge_round import IR as bridge_round_ir
+    expected.add(read_json(bridge_round_ir)['loot']['sound'])
     return expected
 
 def extract_world_coverage(root=ROOT):

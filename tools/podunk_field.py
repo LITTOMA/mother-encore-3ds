@@ -1647,7 +1647,9 @@ def build_room(recipe, model, house_ir_path):
                                   start_direction=[entry['dx'], entry['dy']], initial_motion_state=0, initial_frame=scene['initial_frame'],
                                   initial_flag_first=0, initial_flag_count=0, body_rule_first=0, body_rule_count=0,
                                   default_camera_area=0, rule_profile_id=1, flags=0))
-    provenance = dict(sorted({**npc_provenance,**{('upstream/MOTHER-Encore/' + k): v for k, v in model.sources.digests().items()},
+    from tools.field_story import add_room as add_story
+    story_provenance=add_story(sections,strings,S)
+    provenance = dict(sorted({**story_provenance,**npc_provenance,**{('upstream/MOTHER-Encore/' + k): v for k, v in model.sources.digests().items()},
                               house_ir_path: hashlib.sha256((ROOT / house_ir_path).read_bytes()).hexdigest(),
                               'content/podunk-field.json': hashlib.sha256(RECIPE.read_bytes()).hexdigest()}.items()))
     ir = dict(schema=1, family=native_content.FAMILY, rules=house['rules'], capabilities=house['capabilities'],
@@ -1767,6 +1769,8 @@ def stage_files(source_root=ROOT / 'romfs'):
     room = native_content.parse_pack(files[Path(recipe['outputs']['room'])])
     require(room['scene_id'] == recipe['scene']['id'], 'Podunk room scene identity changed')
     for resource in room['sections']['Resource']:
+        if resource['kind']==2:continue # typed upstream audio request; PCM is separately admitted
+        require(resource['kind']in(1,3),'Unsupported field Room staged resource kind')
         path = Path(room['strings'][resource['path_string']])
         data = (source_root / path).read_bytes()
         require(hashlib.sha256(data).hexdigest() == resource['sha256'], 'Podunk player texture fingerprint mismatch: ' + str(path))

@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "sources": {
     "Scripts/UI/Pausemenu.gd": "118f19d419a89ec09916961b92322f67ce032b44aa8215f9509d31088b421ca2",
@@ -17,6 +17,7 @@
     "Nodes/Ui/Inventory/ConfirmationSelect.gd": "adc3c9abd86d39a221a80424fe2d4ab091b91189efd93da1ae91233048c8e7e0",
     "Nodes/Ui/StatsMenuUI.tscn": "2f227b691a555928da1d6fad7d33f800bf0921f90ddc92be05332994e46168bd",
     "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
     "Scripts/UI/Options/ControlsUI.gd": "b3861f5125664b685a71cca3b5381601a84b0e1acb15edb584e3e1ed4214d6b8",
     "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
     "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
@@ -56,6 +57,8 @@
     "Nodes/Ui/MapScreen/Maps/Podunk.tscn": "25281ed2dd5479a2c62addaffbde935f5677dbb41e64ba19354bd474701b36c6",
     "Nodes/Ui/MapScreen/Maps/404.tscn": "aa8ace46b5b70a908efe6aa22c07926b30a31d6b9d12bb95d74b54d13da8f78a",
     "Nodes/Ui/MapScreen/MapScreen.tscn": "54954ff6eaa5ea46c8caa03d084461978f77a596f7047068fadb6e60d5d5562c",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
     "Graphics/UI/Maps/Podunk_map.png": "1b5f41e90c7eadad93c5128ed0aca5f03f9bd35eac278f9759fdb100e525ed75",
     "Graphics/UI/Maps/Podunk_map.png.import": "a9ccbe95bc45af75a3ad657eb52d2a8be49a899efefad91b1ff11911a3ae319a",
     "Graphics/UI/Maps/404_map.png": "defc97a2ed6b5a44cd8fe05d2d3b332019ec84aadbeaa13648a803a25709e3da",
@@ -74,6 +77,8 @@
     "Graphics/UI/Maps/marker_hospital.png.import": "05fb55f359520ee5416d404a11e549956226f6f96d48bc40abcb81329877f77e",
     "Graphics/UI/Maps/marker_home.png": "322c52b6ab3b0bb68a3a0202279030d26a1113e1448dfc825ca24445c0aff30f",
     "Graphics/UI/Maps/marker_home.png.import": "4ee18aa96bbd723badbc71ab0b63f86ddca21354f31efe3323ed99c2e2027d10",
+    "Graphics/UI/Maps/marker_arrow_side.png": "4a38378866d3d0f008a13911ce5ce14f6c09c8701d0fb0c00a416dffe61f1296",
+    "Graphics/UI/Maps/marker_arrow_side.png.import": "a64f7e97cc6f1b8e1b2bbbe99904c795656c1d35765a717de55182f3a8bee0aa",
     "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
     "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e"
   },
@@ -393,13 +398,14 @@
       "score": 210010,
       "equipped_score": 110010,
       "slot": 3,
+      "definition": 0,
       "name": {
         "en": "Baseball Cap",
         "zh": "棒球帽"
       },
       "description": {
-        "en": "A hat for baseball players.\nOther @ Defense +.",
-        "zh": "一顶棒球手的帽子。其他@防御力+。"
+        "en": "",
+        "zh": ""
       },
       "sorting": {
         "en": "Baseball Cap",
@@ -419,6 +425,7 @@
       "score": 100000,
       "equipped_score": 100000,
       "slot": 4294967295,
+      "definition": 4294967295,
       "name": {
         "en": "Cash Card",
         "zh": "金融卡"
@@ -445,13 +452,14 @@
       "score": 800000,
       "equipped_score": 800000,
       "slot": 4294967295,
+      "definition": 1,
       "name": {
         "en": "Asthma Spray",
         "zh": "哮喘喷雾"
       },
       "description": {
-        "en": "When 's asthma () kicks in, use this. %s",
-        "zh": "在的哮喘（）发作时使用。 %s"
+        "en": "",
+        "zh": ""
       },
       "sorting": {
         "en": "Asthma Spray",
@@ -471,13 +479,14 @@
       "score": 240009,
       "equipped_score": 140009,
       "slot": 0,
+      "definition": 2,
       "name": {
         "en": "Plastic Bat",
         "zh": "塑料球棒"
       },
       "description": {
-        "en": "A cheap plastic bat.\nWeapon @ Offense +.",
-        "zh": "一支便宜的塑料球棒。武器@攻击力+。"
+        "en": "",
+        "zh": ""
       },
       "sorting": {
         "en": "Bat Plastic",
@@ -497,6 +506,7 @@
       "score": 100000,
       "equipped_score": 100000,
       "slot": 4294967295,
+      "definition": 4294967295,
       "name": {
         "en": "Dog Treats",
         "zh": "狗狗零食"
@@ -523,6 +533,7 @@
       "score": 100000,
       "equipped_score": 100000,
       "slot": 4294967295,
+      "definition": 4294967295,
       "name": {
         "en": "Podunk Map",
         "zh": "波顿克地图"
@@ -549,6 +560,7 @@
       "score": 100000,
       "equipped_score": 100000,
       "slot": 4294967295,
+      "definition": 4294967295,
       "name": {
         "en": "GGF Diary",
         "zh": "曾祖父的日记"
@@ -575,13 +587,14 @@
       "score": 100000,
       "equipped_score": 100000,
       "slot": 4294967295,
+      "definition": 4294967295,
       "name": {
         "en": "Basement Key",
         "zh": "地下室钥匙"
       },
       "description": {
         "en": "Mick was carrying this.\nIt's the key for your house's basement.",
-        "zh": "这是你家地下室的钥匙。米克之前一直拿着它。"
+        "zh": "这是你家地下室的钥匙。\n米克之前一直拿着它。"
       },
       "sorting": {
         "en": "Key Basement",
@@ -605,8 +618,8 @@
         "zh": "跳跃"
       },
       "description": {
-        "en": "Press  near certain ledges to Jump.",
-        "zh": "在特定边缘按下键进行跳跃。"
+        "en": "Press {button:0} near certain ledges to Jump.",
+        "zh": "在特定边缘按下{button:0}键进行跳跃。"
       },
       "category": 0,
       "cost": 0
@@ -622,8 +635,8 @@
         "zh": "轮换"
       },
       "description": {
-        "en": "Press  or  to change the party leader.",
-        "zh": "按住或来更换队伍领队。"
+        "en": "Press {button:5} or {button:6} to change the party leader.",
+        "zh": "按住{button:5}或{button:6}来更换队伍领队。"
       },
       "category": 0,
       "cost": 0
@@ -639,8 +652,8 @@
         "zh": "奔跑"
       },
       "description": {
-        "en": "Hold  to Crouch, then release it to Run.\nOr, hold  while moving to Run.",
-        "zh": "按住键蹲伏，松开按键即可奔跑。或者，在移动时按住键也可以奔跑。"
+        "en": "Hold {button:4} to Crouch, then release it to Run.\nOr, hold {button:4} while moving to Run.",
+        "zh": "按住{button:4}键蹲伏，松开按键即可奔跑。\n或者，在移动时按住{button:4}键也可以奔跑。"
       },
       "category": 0,
       "cost": 0
@@ -656,8 +669,8 @@
         "zh": "眺望"
       },
       "description": {
-        "en": "Hold  to Scope.\nCan be used to view places you can't normally see.",
-        "zh": "按住进行眺望。可以看见一般情况下看不到的地方。"
+        "en": "Hold {button:3} to Scope.\nCan be used to view places you can't normally see.",
+        "zh": "按住{button:3}进行眺望。\n可以看见一般情况下看不到的地方。"
       },
       "category": 0,
       "cost": 0
@@ -673,8 +686,8 @@
         "zh": "挥棒"
       },
       "description": {
-        "en": "Press  when  is the leader to Swing your bat. Can let you get a first strike on enemies.",
-        "zh": "当成为领队时，按下即可挥动球棒，可以让你对敌人发动先制攻击。"
+        "en": "Press {button:1} when {owner} is the leader to Swing your bat. Can let you get a first strike on enemies.",
+        "zh": "当{owner}成为领队时，按下{button:1}即可挥动球棒，可以让你对敌人发动先制攻击。"
       },
       "category": 0,
       "cost": 0
@@ -690,8 +703,8 @@
         "zh": "心灵感应"
       },
       "description": {
-        "en": "Hold  to Crouch, then press  to read the thoughts of people and animals with Telepathy.",
-        "zh": "按住键蹲伏，随后按住键以使用心灵感应来感应他人和动物的想法。"
+        "en": "Hold {button:4} to Crouch, then press {button:0} to read the thoughts of people and animals with Telepathy.",
+        "zh": "按住{button:4}键蹲伏，随后按住{button:0}键以使用心灵感应\n来感应他人和动物的想法。"
       },
       "category": 0,
       "cost": 0
@@ -792,8 +805,8 @@
       "weapon": "",
       "weapons": [],
       "name": {
-        "en": "Lifeup",
-        "zh": "生命回复"
+        "en": "Lifeup α",
+        "zh": "生命回复 α"
       },
       "description": {
         "en": "Restores around 60 HP to one ally.",
@@ -812,7 +825,8 @@
     "Graphics/UI/Maps/marker_atm.png",
     "Graphics/UI/Maps/marker_food.png",
     "Graphics/UI/Maps/marker_hospital.png",
-    "Graphics/UI/Maps/marker_home.png"
+    "Graphics/UI/Maps/marker_home.png",
+    "Graphics/UI/Maps/marker_arrow_side.png"
   ],
   "markers": [
     {
@@ -939,6 +953,26 @@
       "image": 8,
       "x": 93.0,
       "y": 107.0,
+      "flip": false,
+      "label": {
+        "en": "",
+        "zh": ""
+      }
+    },
+    {
+      "image": 9,
+      "x": 307.0,
+      "y": 15.0,
+      "flip": false,
+      "label": {
+        "en": "",
+        "zh": ""
+      }
+    },
+    {
+      "image": 9,
+      "x": 309.0,
+      "y": 209.0,
       "flip": false,
       "label": {
         "en": "",

@@ -9,7 +9,7 @@
 // Do not expose C++ object layouts or pointers to the runner.
 struct EncoreSemanticProbe {
     char magic[8]={'E','N','C','S','E','M','0','1'};
-    uint32_t version=6,byte_size=764,sequence=0,frame=0,width=0,height=0;
+    uint32_t version=7,byte_size=844,sequence=0,frame=0,width=0,height=0;
     uint32_t title_phase=0,title_option=0,naming_phase=0,naming_field=0,naming_selected=0;
     uint32_t intro_phase=0,menu_phase=0,menu_command=0,menu_slot=0,menu_candidate=0;
     uint32_t field_scene=0,field_phase=0,house_phase=0,world_stage=0;
@@ -23,8 +23,13 @@ struct EncoreSemanticProbe {
     uint32_t dialogue_active=0,dialogue_finished=0,dialogue_stopped=0,dialogue_visible=0;
     float player_x=0,player_y=0,direction_x=0,direction_y=0,mick_x=0,mick_y=0;
     char house_error[128]{},field_error[128]{},menu_error[128]{},audio_error[128]{};
+    uint32_t submenu_phase=0,submenu_selection=0,submenu_keys=0,submenu_count=0;
+    uint32_t menu_inventory_hash=0,menu_key_hash=0,menu_settings_hash=0,menu_controls_hash=0;
+    uint32_t menu_master=0,menu_music=0,menu_sfx=0,menu_display=0;
+    uint32_t menu_maxhp=0,menu_maxpp=0,menu_offense=0,menu_defense=0;
+    uint32_t menu_map_x=0,menu_map_y=0,menu_uid_hash=0,menu_key_uid_hash=0;
 };
-static_assert(sizeof(EncoreSemanticProbe)==764,"Semantic probe ABI changed");
+static_assert(sizeof(EncoreSemanticProbe)==844,"Semantic probe ABI changed");
 static_assert(offsetof(EncoreSemanticProbe,player_x)==228,"Semantic probe word order changed");
 static_assert(offsetof(EncoreSemanticProbe,house_error)==252,"Semantic probe text order changed");
 

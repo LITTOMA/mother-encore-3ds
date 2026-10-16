@@ -888,14 +888,16 @@ if(BUILD_TESTING)
  set_tests_properties(basement_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
 endif()
 
-include(cmake/TestParallelism.cmake)
 if(BUILD_TESTING)
  add_executable(encore_field_menus_tests tests/field_menus_tests.cpp)
+ add_executable(encore_emulator_field_menus_fixture tools/emulator_field_menus_fixture.cpp)
+ target_link_libraries(encore_emulator_field_menus_fixture PRIVATE encore_core)
  target_link_libraries(encore_field_menus_tests PRIVATE encore_core)
  add_test(NAME field_menus COMMAND encore_field_menus_tests ${CMAKE_SOURCE_DIR}/romfs)
  add_test(NAME field_menus_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_field_menus)
  set_tests_properties(field_menus field_menus_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
 endif()
+include(cmake/TestParallelism.cmake)
 
 # Resource writers finish before compilation or fixture preparers read packs.
 if(ENCORE_REGENERATE_NATIVE_CONTENT)

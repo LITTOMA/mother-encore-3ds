@@ -23,7 +23,7 @@ class FieldMenuSourceTests(unittest.TestCase):
         self.assertEqual(self.ir['map_offset'],[98,132])
         self.assertEqual(self.ir['map_home'],[99,127])
     def test_unknown_source_or_rule_does_not_rebind(self):
-        for key,value in [('schema',2),('schema',True),('commit','0'*40),('map_divisor',8),('rows',100),('logical_buttons',[1]*8)]:
+        for key,value in [('schema',3),('schema',True),('commit','0'*40),('map_divisor',8),('rows',100),('logical_buttons',[1]*8)]:
             bad=copy.deepcopy(self.ir);bad[key]=value
             with tempfile.TemporaryDirectory() as tmp:
                 root=Path(tmp);(root/'content').mkdir();(root/'content/native-field-menus.json').write_text(json.dumps(bad),encoding='utf8')

@@ -9,6 +9,7 @@ import argparse
 import base64
 import hashlib
 import json
+import struct
 import os
 import re
 from pathlib import Path
@@ -22,7 +23,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient
-from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection
+from tools.semantic_probe import MAGIC, WIRE, FIELDS, POSITIONS, ERRORS, MENU_FIELDS, SIZES, decode, projection
 
 
 def sha(path):
@@ -40,7 +41,7 @@ def validate_scenario(scenario):
         raise ValueError('Scenario step budget exceeded')
     if not scenario['reference'].get('commit') or not scenario['reference'].get('scope'):
         raise ValueError('Scenario lacks source scope')
-    known = set(decode(WIRE.pack(MAGIC, 6, WIRE.size, *([0]*(len(FIELDS)-2)), *([0.0]*6), *(b'' for _ in range(4)))))
+    known = set(FIELDS+list(POSITIONS)+list(ERRORS)+MENU_FIELDS)
     projection({k: 0 for k in known}, scenario['projection'])
     for step in scenario['steps']:
         if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress', 'expected_music', 'wait_audio', 'hold_until', 'repeat_until', 'max_attempts'}:
@@ -190,9 +191,10 @@ class Session:
         client.call('process.attach', {'processId': self.pid, 'pause': True})
         result = client.call('memory.search', {'text': MAGIC.decode(), 'maxResults': 32, 'maxBytes': 64*1024*1024})
         maps = client.call('memory.maps')
+        self.maps=maps
         for match in result['matches']:
             address = match['address']
-            if not any(m['base'] <= address and address+WIRE.size <= m['end'] and 'w' in m['permissions'] for m in maps):
+            if not any(m['base'] <= address and address+16 <= m['end'] and 'w' in m['permissions'] for m in maps):
                 continue
             try:
                 decode(self.read(address))
@@ -205,8 +207,13 @@ class Session:
             raise RuntimeError('Genuine build does not expose a supported semantic probe')
 
     def read(self, address=None):
-        result = self.client.call('memory.read', {'address': self.address if address is None else address, 'size': WIRE.size})
-        if result['encoding'] != 'hex' or result['size'] != WIRE.size:
+        address=self.address if address is None else address
+        header=self.client.call('memory.read',{'address':address,'size':16})
+        if header['encoding']!='hex' or header['size']!=16:raise ValueError('Unknown probe header encoding/size')
+        raw=bytes.fromhex(header['data']);magic,version,size=struct.unpack('<8s2I',raw)
+        if magic!=MAGIC or SIZES.get(version)!=size or not any(m['base']<=address and address+size<=m['end']and'w'in m['permissions']for m in self.maps):raise ValueError('Unsupported probe header/mapping')
+        result = self.client.call('memory.read', {'address':address,'size':size})
+        if result['encoding'] != 'hex' or result['size'] != size:
             raise ValueError('Unknown CDB memory encoding/size')
         return bytes.fromhex(result['data'])
 

@@ -19,7 +19,7 @@ PC 的窗口分辨率、全屏、整数缩放与 VSync 适配为 3DS 的固定�
 
 控件以实际重绑后的按键显示。方向键/摇杆导航与触屏确定沿用共享输入适配器；按键捕获用方向键左取消，交换已有绑定以保证确定、取消等操作仍可到达。音量改变直接更新混音，含区域 BGM，不重启音乐流。全局音量、显示与绑定写入独立的 `menus.encprefs`；语言沿用独立偏好文件；文本速度、主题、提示和描述开关进入原有会话保存，不自动覆盖游戏槽位。
 
-`ENCFMN01` schema 1 / capability 1 / rules 1 保存菜单文案、物品动作和排序分数、技能筛选条件、布局、平台绑定与原版 RGBA 地图。加载器拒绝未知版本、动作、非法引用/尺寸、非有限数、重复绑定和尾随数据，失败保留先前对象。3DS 层只上传像素并绘制共享状态；字体继续使用已有、来源已审查的字体包。`FieldEquipment` capability 5 接纳六项命令，其他四项须有显式 host，不能隐式成功。`NativeSession` schema/capability 9 增加逐物品的丢弃/消耗政策和描述开关，ENCSNAP1 存档结构不变，旧资源按旧规则加载。资源目录 capability 6 要求新的 FieldMenus 角色。
+`ENCFMN01` schema 2 / capability 2 / rules 1 保存菜单文案、物品动作和排序分数、技能筛选条件、布局、平台绑定与原版 RGBA 地图。加载器拒绝未知版本、动作、非法引用/尺寸、非有限数、重复绑定和尾随数据，失败保留先前对象。3DS 层只上传像素并绘制共享状态；字体继续使用已有、来源已审查的字体包。`FieldEquipment` capability 5 接纳六项命令，其他四项须有显式 host，不能隐式成功。`NativeSession` schema/capability 9 增加逐物品的丢弃/消耗政策和描述开关，ENCSNAP1 存档结构不变，旧资源按旧规则加载。资源目录 capability 6 要求新的 FieldMenus 角色。
 
 来源固定在 `7d9246600fffe518408f5830d4848635019005a3`。提取、编译与暂存均通过 `tools/field_menus.py`，完整来源列表见 `reports/field-menus-source/source-review.json`。地图图像符合上游 LICENSE 中与本游戏相关的修改用途；保留原始许可，不视为本项目 MIT 代码许可。既有装备纹理通过原转换 AST、来源和字节指纹保持不变的复用程序重绑定，命名流程的游戏/UI 二进制也保持不变。
 

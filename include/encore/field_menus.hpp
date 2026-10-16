@@ -1,6 +1,7 @@
 #pragma once
 #include "encore/native_session.hpp"
 #include "encore/startup_settings.hpp"
+#include "encore/item_details.hpp"
 #include <functional>
 
 namespace encore::upstream {
@@ -11,6 +12,7 @@ struct FieldMenuLabel {std::string en,zh;const std::string&get(bool chinese)cons
 struct FieldMenuItem {
  std::string id;FieldMenuLabel name,description,sorting,result;
  uint32_t key=0,drop=0,action=0,doses=0,score=0,equipped_score=0,slot=UINT32_MAX;
+ uint32_t definition=UINT32_MAX;
 };
 struct FieldMenuSkill {
  std::string id,flag,battle_skill,weapon;FieldMenuLabel name,description;
@@ -25,12 +27,14 @@ struct FieldMenuPreferences {
  // Logical masks are schema input identities; values are physical HID masks.
  std::vector<uint32_t>buttons;
 };
+bool expand_field_menu_text(std::string_view,std::string_view,const std::vector<std::string>&,std::string&,std::string&);
 class FieldMenusData {
 public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
  bool valid()const{return valid_;}
  const std::string&text(FieldMenuText id,bool zh)const{return labels.at(size_t(id)).get(zh);}
  const FieldMenuItem*item(std::string_view)const;
+ bool bind_items(ItemView,ItemDetailsView,std::string&)const;
  bool supports(const FieldMenuPreferences&)const;
  uint32_t remap(uint32_t raw,const FieldMenuPreferences&)const;
  std::vector<FieldMenuLabel>labels;std::vector<FieldMenuItem>items;std::vector<FieldMenuSkill>skills;
@@ -49,18 +53,20 @@ FieldPreferenceRead read_field_preferences(const FieldMenusData&,const char*,Fie
 bool write_field_preferences(const FieldMenusData&,const char*,const FieldMenuPreferences&,std::string&);
 
 struct FieldMenusState {SessionSnapshot session;std::array<int32_t,7>stats{};uint32_t next_exp=0;FieldMenuPreferences preferences;bool chinese=false,in_field=false;};
+struct FieldMenusChanges {std::vector<SessionItem>inventory,keys;SessionSettings settings;FieldMenuPreferences preferences;};
+bool merge_field_menu_session(const FieldMenusState&,const FieldMenusChanges&,const SessionSnapshot&,SessionSnapshot&,std::string&);
 // Every write stages the entire candidate and commits only after the host has
 // validated the live session, resource scope and persistent settings.
 struct FieldMenusHost {
  std::function<bool(FieldMenusState&,std::string&)>read;
- std::function<bool(const FieldMenusState&,std::string&)>commit;
+ std::function<bool(const FieldMenusState&,const FieldMenusChanges&,std::string&)>commit;
  std::function<bool(uint32_t,bool,uint32_t,std::string&)>equip;
  std::function<bool(std::string_view,std::string&)>locale;
 };
 enum class FieldMenusPhase:uint32_t {Closed,Goods,Actions,Sort,SortTarget,Drop,Target,Message,Status,SkillTabs,Skills,Map,Options,File,General,Audio,Video,Controls,Choice,Confirm,Capture};
 enum class FieldMenusExit:uint32_t {None,Pause,Title,Quit};
 struct FieldMenuLine {std::string label,value;bool disabled=false;uint32_t column=0;bool equipped=false;};
-struct FieldMenuPage {std::string title,subtitle,description,footer;std::vector<FieldMenuLine>lines;uint32_t selected=0,offset=0;bool cursor=true,grid=false;};
+struct FieldMenuPage {std::string title,subtitle,description,footer;std::vector<FieldMenuLine>lines;uint32_t selected=0,offset=0;bool cursor=true,grid=false,has_item_description=false;ItemInstance described_item{};};
 class FieldMenus {
 public:
  bool initialize(const FieldMenusData&,const StartupSettingsData&,FieldMenusHost,std::string&);
@@ -70,6 +76,7 @@ public:
  void abort_map(){if(phase_==FieldMenusPhase::Map)back();}
  bool active()const{return phase_!=FieldMenusPhase::Closed;}
  FieldMenusPhase phase()const{return phase_;}uint32_t owner_token()const{return uint32_t(phase_);}
+ uint32_t selection()const{return phase_==FieldMenusPhase::Choice?choice_:selection_;}bool key_inventory()const{return key_;}
  FieldMenusExit take_exit(){auto e=exit_;exit_=FieldMenusExit::None;return e;}
  FieldMenuPage page()const;
  int flavor_preview_index()const{return !settings_?-1:phase_==FieldMenusPhase::Choice&&choice_kind_==1?int(choice_):settings_->flavor_index(state_.session.settings.menu_flavor);}

@@ -39,7 +39,7 @@ class FieldEquipmentRenderer {
     static uint32_t color(encore::upstream::BattleValue value){return encore::ctr::loading_menu_flavor_color(C2D_Color32f(value.x,value.y,value.z,value.w));}
     static bool plain(std::string_view text){
         size_t cursor=0;uint32_t cp=0;
-        while(cursor<text.size())if(!encore::utf8_next(text,cursor,cp)||cp=='['||cp==']'||(cp<32&&cp!='\n'))return false;
+        while(cursor<text.size())if(!encore::utf8_next(text,cursor,cp)||(cp<32&&cp!='\n'))return false;
         return true;
     }
     static bool acquire(Asset& asset,const encore::upstream::BattleResource& r,std::string_view path,const char* root,std::string& error){
@@ -176,7 +176,9 @@ inline bool FieldEquipmentRenderer::draw_submenu(const encore::upstream::FieldMe
     while(at<page.description.size()){auto begin=at;if(!encore::utf8_next(page.description,at,cp))return fail("Field submenu description UTF-8 rejected");const std::string glyph=page.description.substr(begin,at-begin);
         if(cp=='\n'){wrapped+=line+'\n';line.clear();continue;}if(!line.empty()&&font.text_width((line+glyph).c_str())>desc.w){wrapped+=line+'\n';line.clear();}line+=glyph;}
     wrapped+=line;
-    if(!write(wrapped,desc.x,desc.y,desc.w,desc.h)||!write(page.footer,footer.x,footer.y,footer.w,footer.h))return false;
+    if(page.has_item_description){if(!details_||!details_->ready()||!details_->draw(page.described_item,font,dx+desc.x,dy+desc.y,desc.w,desc.h))return fail("Field item description rejected");}
+    else if(!write(wrapped,desc.x,desc.y,desc.w,desc.h))return false;
+    if(!write(page.footer,footer.x,footer.y,footer.w,footer.h))return false;
     return true;
 }
 

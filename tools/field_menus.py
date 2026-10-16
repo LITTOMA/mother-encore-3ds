@@ -30,16 +30,31 @@ def build(root=ROOT):
     for path,checks in snippets.items():
         code=ex.text(path)
         for check in checks:require(check in code,'Unreviewed field menu behavior: '+path+': '+check)
-    for path in ('Nodes/Ui/Inventory/InventoryUI.tscn','Scripts/UI/Inventory/InventoryUI.gd','Nodes/Ui/Inventory/InventorySelect.gd','Nodes/Ui/Inventory/TargetCharaSelect.gd','Nodes/Ui/Inventory/SortTypeSelect.gd','Nodes/Ui/Inventory/ConfirmationSelect.gd','Nodes/Ui/StatsMenuUI.tscn','Scripts/global/PartyMember.gd','Scripts/UI/Options/ControlsUI.gd','Scripts/Main/RoomTypes/AreaRoom.gd','Scripts/global/uiManager.gd','Scripts/global/audioManager.gd','LICENSE'):
+    for path in ('Nodes/Ui/Inventory/InventoryUI.tscn','Scripts/UI/Inventory/InventoryUI.gd','Nodes/Ui/Inventory/InventorySelect.gd','Nodes/Ui/Inventory/TargetCharaSelect.gd','Nodes/Ui/Inventory/SortTypeSelect.gd','Nodes/Ui/Inventory/ConfirmationSelect.gd','Nodes/Ui/StatsMenuUI.tscn','Scripts/global/PartyMember.gd','Scripts/global/text_tools.gd','Scripts/UI/Options/ControlsUI.gd','Scripts/Main/RoomTypes/AreaRoom.gd','Scripts/global/uiManager.gd','Scripts/global/audioManager.gd','LICENSE'):
         ex.text(path)
     translations={}
     for file in ('menus','items','fieldskills','battleskills','locations'):
         for row in csv.DictReader(io.StringIO(ex.text('Translations/TranslatedText/'+file+' - sheet.csv'))):
             if not row.get('key'):continue
             translations[row['key']]=dict(en=row['en'],zh=row.get('zh_CN') or row['en'])
-    def label(key):
+    def label(key,ui=False):
         require(key in translations,'Missing reviewed translation '+str(key))
-        return {lang:re.sub(r'\[/?[^\]]+\]','',v.replace('\\n','\n')).replace('\u200b','') for lang,v in translations[key].items()}
+        result={lang:v.replace('\\n','\n').replace('[BR]','\n') for lang,v in translations[key].items()}
+        if ui:
+            inputs={name:'{button:'+str(i)+'}' for i,name in enumerate(('ui_accept','ui_cancel','ui_select','ui_scope','ui_toggle','ui_focus_prev','ui_focus_next','ui_map'))}
+            for lang,value in result.items():
+                depth=0
+                def token(match):
+                    nonlocal depth
+                    name=match[1]
+                    if name=='color':require(depth==0,'Nested source hint wrapper');depth=1;return ''
+                    if name=='/color':require(depth==1,'Unbalanced source hint wrapper');depth=0;return ''
+                    if name=='Ninten':return '{owner}'
+                    require(name in inputs,'Unreviewed field skill text token: '+name);return inputs[name]
+                result[lang]=re.sub(r'\[([^\]]+)\]',token,value)
+                require(depth==0,'Unclosed source hint wrapper')
+        require(all('['not in v and ']'not in v and '\u200b'not in v for v in result.values()),'Unreviewed field menu text controls: '+key)
+        return result
     labels=[label(key) if key else dict(zip(('en','zh'),ADAPT[i])) for i,key in enumerate(KEYS)]
     from tools.source_settings import choices
     settings=choices(ex)
@@ -48,6 +63,7 @@ def build(root=ROOT):
     # every source action; unsupported effects cannot become enabled menu rows.
     session=json.loads((root/'content/native-session.json').read_text(encoding='utf8'))
     identities=list(dict.fromkeys([i['item_id'] for i in session['defaults']['characters'][0]['inventory']+session['defaults']['key_items']]+[i['item_id']for i in session['acquisitions']+session['key_acquisitions']]))
+    item_definitions={d['source']:d['id']-1 for d in json.loads((root/'content/native-items.json').read_text(encoding='utf8'))['definitions']}
     items=[]
     for identity in identities:
         item=ex.yaml('Data/Items/'+identity+'.yaml');actions=item.get('actions',[])
@@ -68,26 +84,28 @@ def build(root=ROOT):
                 boost=sum(item['boost'][name]*weight for name,weight in zip(('maxhp','maxpp','offense','defense','speed','iq','guts'),weights))
                 base=200000+slot*10000+boost;equipped=100000+slot*10000+boost
             else:raise ValueError('Unreviewed source sort category')
-        items.append(dict(id=identity,key=int(item['keyitem']),drop=int(not item['keyitem'] and item['value']!=0),action=action,doses=item.get('doses',1),score=base,equipped_score=equipped,slot=('weapon','body','arms','other').index(item['slot']) if item.get('slot') else 0xffffffff,name=label(item['name']),description=label(item['description']),sorting=label(item['sorting_name']),result=result))
+        require(item['keyitem'] or identity in item_definitions,'Missing checked ordinary item description binding')
+        items.append(dict(id=identity,key=int(item['keyitem']),drop=int(not item['keyitem'] and item['value']!=0),action=action,doses=item.get('doses',1),score=base,equipped_score=equipped,slot=('weapon','body','arms','other').index(item['slot']) if item.get('slot') else 0xffffffff,definition=0xffffffff if item['keyitem'] else item_definitions[identity],name=label(item['name']),description=label(item['description']) if item['keyitem'] else dict(en='',zh=''),sorting=label(item['sorting_name']),result=result))
     skills=[]
     for path in sorted((root/'upstream/MOTHER-Encore/Data/FieldSkills').glob('*.yaml')):
         identity=path.stem;s=ex.yaml('Data/FieldSkills/'+path.name)
-        if not s.get('usable',{}).get('ninten',True):continue
+        if 'usable' in s and not s['usable'].get('ninten',False):continue
         require(set(s)<= {'name','description','battle_skill','usable','flag','is_skill_button'},'Unreviewed field skill condition')
-        skills.append(dict(id=identity,flag=s.get('flag',''),battle_skill=s.get('battle_skill',''),weapon='',weapons=[],name=label(s['name']),description=label(s['description']),category=0,cost=0))
+        skills.append(dict(id=identity,flag=s.get('flag',''),battle_skill=s.get('battle_skill',''),weapon='',weapons=[],name=label(s['name']),description=label(s['description'],True),category=0,cost=0))
     known=list(dict.fromkeys([s for row in session['levels'] for s in row['skills']]+[s['skill_id']for s in session['skill_acquisitions']]))
     party=ex.text('Scripts/global/PartyMember.gd');weapon_body=re.findall(r'const WEAPONS : Dictionary = \{(.*?)^\}',party,re.M|re.S);require(len(weapon_body)==1,'Missing source weapon skill conditions')
     weapons={key:json.loads(values) for key,values in re.findall(r'"([^"]+)"\s*:\s*(\[[^\]]*\])',weapon_body[0],re.S)}
+    psi_names={s['source']:dict(en=s['names']['en'],zh=s['names']['zh_Hans_CN']) for s in json.loads((root/'content/native-field-equipment.json').read_text(encoding='utf8'))['skills']}
     for identity in known:
         s=ex.yaml('Data/BattleSkills/'+identity+'.yaml')
         if s['skill_type'] not in ('skill','psi'):continue
-        desc=label(s['description'])
+        desc=label(s['description'],True)
         if s.get('description_ext'):
             extra=label(s['description_ext']);desc={lang:desc[lang]+'\n'+extra[lang] for lang in desc}
         weapon=s.get('required_weapon','');require(not weapon or weapon in weapons,'Unreviewed source skill weapon')
-        skills.append(dict(id=identity,flag='',battle_skill=identity,weapon=weapon,weapons=weapons[weapon] if weapon else [],name=label(s['name']),description=desc,category=1 if s['skill_type']=='skill' else 2,cost=s.get('sp_cost',0) if s['skill_type']=='skill' else s.get('pp_cost',0)))
+        skills.append(dict(id=identity,flag='',battle_skill=identity,weapon=weapon,weapons=weapons[weapon] if weapon else [],name=psi_names.get(identity,label(s['name'])),description=desc,category=1 if s['skill_type']=='skill' else 2,cost=s.get('sp_cost',0) if s['skill_type']=='skill' else s.get('pp_cost',0)))
     images=['Graphics/UI/Maps/Podunk_map.png','Graphics/UI/Maps/404_map.png','Graphics/UI/Maps/player_map_locator.png']
-    markers=[];scene=ex.text('Nodes/Ui/MapScreen/Markers/PodunkMapMarkers.tscn');ex.text('Nodes/Ui/MapScreen/Maps/Podunk.tscn');ex.text('Nodes/Ui/MapScreen/Maps/404.tscn');ex.text('Nodes/Ui/MapScreen/MapScreen.tscn')
+    markers=[];scene=ex.text('Nodes/Ui/MapScreen/Markers/PodunkMapMarkers.tscn');map_scene=ex.text('Nodes/Ui/MapScreen/Maps/Podunk.tscn');ex.text('Nodes/Ui/MapScreen/Maps/404.tscn');ex.text('Nodes/Ui/MapScreen/MapScreen.tscn');ex.text('Nodes/Ui/MapScreen/MapArrows.tscn');ex.text('Scripts/UI/MapScreen/MapArrows.gd')
     ext={int(i):p for p,i in re.findall(r'\[ext_resource path="res://([^"]+)"[^\n]*id=(\d+)\]',scene)}
     for name,body in re.findall(r'\[node name="([^"]+)" type="(?:Label|TextureRect)" parent="\."\]\n(.*?)(?=\[node|\Z)',scene,re.S):
         values=node(scene,name);texture=values.get('texture');image=0xffffffff;txt=dict(en='',zh='')
@@ -97,12 +115,17 @@ def build(root=ROOT):
             image=images.index(source)
         else:txt=label(values['text'])
         markers.append(dict(image=image,x=values.get('margin_left',0),y=values.get('margin_top',0),flip=values.get('flip_v',False),label=txt))
+    map_ext={int(i):p for p,i in re.findall(r'\[ext_resource path="res://([^"]+)"[^\n]*id=(\d+)\]',map_scene)}
+    for name in re.findall(r'\[node name="([^"]+)" type="TextureRect" parent="\."\]',map_scene):
+        values=node(map_scene,name);source=map_ext[values['texture']['ExtResource']]
+        if source not in images:images.append(source)
+        markers.append(dict(image=images.index(source),x=values.get('margin_left',0),y=values.get('margin_top',0),flip=values.get('flip_v',False),label=dict(en='',zh='')))
     for p in images:ex.data(p);ex.data(p+'.import')
     field_scene=ex.text('Maps/podunk/podunk.tscn');home_scene=ex.text('Maps/podunk/Nintens House.tscn')
     def map_offset(scene):
         values=re.findall(r'^_player_map_offset = Vector2\( ([\d.-]+), ([\d.-]+) \)',scene,re.M);require(len(values)==1,'Ambiguous source map player offset');return [float(v)for v in values[0]]
     # Platform adaptation is explicit data, separate from source game rules.
-    return dict(schema=1,commit=PIN,sources=ex.sources,labels=labels,items=items,skills=skills,images=images,markers=markers,setting_labels=setting_labels,
+    return dict(schema=2,commit=PIN,sources=ex.sources,labels=labels,items=items,skills=skills,images=images,markers=markers,setting_labels=setting_labels,
       geometry=[[20,0,280,180],[32,6,256,16],[40,31,240,98],[32,133,256,29],[32,165,256,12],[32,32,8,8]],rows=7,columns=2,row_pitch=14,column_pitch=123,line_height=14,
       volume_db=[40*math.log((v+1)/11) for v in range(11)],logical_buttons=[1,2,8,2048,1024,512,256,4],button_names=['A','B','START','Y','X','L','R','SELECT'],default_volume=[10,10,10],display=0,
       locales=['en','zh_Hans_CN'],locale_names=[label('OPTIONS_LANGUAGE_EN'),label('OPTIONS_LANGUAGE_ZH_HANS_CN')],map_item='MapPodunk',map_offset=map_offset(field_scene),map_home=map_offset(home_scene),map_divisor=16,map_speed=60,map_fast=2,description_toggle=True,display_sizes=[[400,240],[320,180]],display_names=['400x240','320x180'],capture_cancel=dict(en='Assigned buttons swap bindings. D-pad Left: Back.',zh='已占用按键会交换绑定。方向键左：返回'))
@@ -117,7 +140,7 @@ def encode(ir,root=ROOT):
     def label(v):text(v['en']);text(v['zh'])
     def array(a,f):put('I',len(a));[f(v)for v in a]
     array(ir['labels'],label)
-    def item(v):text(v['id']);put('7I',*[v[k]for k in ('key','drop','action','doses','score','equipped_score','slot')]);[label(v[k])for k in ('name','description','sorting','result')]
+    def item(v):text(v['id']);put('8I',*[v[k]for k in ('key','drop','action','doses','score','equipped_score','slot','definition')]);[label(v[k])for k in ('name','description','sorting','result')]
     array(ir['items'],item)
     def skill(v):[text(v[k])for k in ('id','flag','battle_skill','weapon')];put('2I',v['category'],v['cost']);label(v['name']);label(v['description']);array(v['weapons'],text)
     array(ir['skills'],skill)
@@ -132,7 +155,7 @@ def encode(ir,root=ROOT):
     put('4I',*ir['default_volume'],ir['display']);array(ir['locales'],text);array(ir['locale_names'],label);text(ir['map_item']);put('5fI',*ir['map_offset'],ir['map_divisor'],ir['map_speed'],ir['map_fast'],ir['description_toggle'])
     for group in ir['setting_labels']:array(group,label)
     array(ir['display_names'],text);label(ir['capture_cancel']);put('2f',*ir['map_home']);put('4I',*ir['display_sizes'][0],*ir['display_sizes'][1])
-    return struct.pack('<8s6I',b'ENCFMN01',1,32+len(p),zlib.crc32(p),1,1,0)+p
+    return struct.pack('<8s6I',b'ENCFMN01',2,32+len(p),zlib.crc32(p),2,1,0)+p
 
 def load(root=ROOT):
     ir=json.loads((Path(root)/'content/native-field-menus.json').read_text(encoding='utf8'));require(canonical(ir)==canonical(build(root)),'Field menus IR differs from reviewed source/adapter');return ir
@@ -141,7 +164,7 @@ def stage_files(source):
 def main():
     p=argparse.ArgumentParser();p.add_argument('action',choices=('extract','compile','verify'));a=p.parse_args()
     ir=build() if a.action=='extract' else load()
-    if a.action=='extract':dump(IR,ir);dump(ROOT/'reports/field-menus-source/source-review.json',dict(commit=PIN,sources=ir['sources'],scope='START six commands and all submenus for the currently admitted singleton, inventory and skill set. PC window-only controls are fixed 3DS capabilities. Game assets remain covered by the upstream game-related-use permission; original LICENSE retained.',mechanisms=['Goods equip/unequip, consume even on heal failure, protected keys, manual swap and score/name auto sort; singleton hides Give as source does','Status derived live stats, EXP threshold, equipment and source learned/flagged skill filters','Map possession, missing page, source map/player offsets, scroll/fast scroll and markers','File settings, platform audio/display/input/language persistence, explicit title/quit confirmation']))
+    if a.action=='extract':dump(IR,ir);dump(ROOT/'reports/field-menus-source/source-review.json',dict(commit=PIN,sources=ir['sources'],scope='START six commands and all submenus for the currently admitted singleton, inventory and skill set. PC window-only controls are fixed 3DS capabilities. Game assets remain covered by the upstream game-related-use permission; original LICENSE retained.',mechanisms=['Typed ordinary item descriptions reuse the checked ItemDetails binding; exact source key line breaks and field skill input/nickname templates; unknown tags reject', 'Goods equip/unequip, consume even on heal failure, protected keys, manual swap and score/name auto sort; singleton hides Give as source does','Status derived live stats, EXP threshold, equipment and source learned/flagged skill filters','Map possession, missing page, source map/player offsets, scroll/fast scroll and markers','File settings, platform audio/display/input/language persistence, explicit title/quit confirmation']))
     raw=encode(ir);out=ROOT/'romfs'/PACK
     if a.action=='verify':require(out.read_bytes()==raw,'Stale field menus pack')
     else:out.parent.mkdir(parents=True,exist_ok=True);out.write_bytes(raw)

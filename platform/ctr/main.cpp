@@ -1009,7 +1009,7 @@ bool apply_field_volume(const upstream::FieldMenuPreferences&p,std::string&error
     return audio_player.set_user_volume(float(field_menus_data.volume_db[p.volume[0]]),float(field_menus_data.volume_db[p.volume[1]]),float(field_menus_data.volume_db[p.volume[2]]),error);
 }
 bool initialize_field_preferences(std::string&error){
-    if(!field_menus_data.load_file(resource_path(ResourceRole::FieldMenus).c_str(),error))return false;
+    if(!field_menus_data.load_file(resource_path(ResourceRole::FieldMenus).c_str(),error)||!field_menus_data.bind_items(items_data.view(),item_details_data.view(),error))return false;
     field_preferences=field_menus_data.defaults;
     const auto status=upstream::read_field_preferences(field_menus_data,"sdmc:/3ds/encore-native/menus.encprefs",field_preferences,error);
     if(status==upstream::FieldPreferenceRead::Error){field_equipment_status=error;error.clear();}
@@ -1026,9 +1026,9 @@ bool initialize_field_menus(std::string&error){
     };
     host.equip=[](uint32_t slot,bool none,uint32_t uid,std::string&e){PreparedFieldEquipment candidate;if(!prepare_field_equipment(slot,none,uid,candidate,e))return false;session_inventory=std::move(candidate.inventory);session_rewards=std::move(candidate.stats);return true;};
     host.locale=[](std::string_view code,std::string&e){return select_native_locale(code,true,e);};
-    host.commit=[](const FieldMenusState&next,std::string&e){
-        if(next.session.characters.empty()||!field_menus_data.supports(next.preferences)){e="Field menu candidate rejected";return false;}
-        auto candidate=next.session;auto character=candidate.characters[0];const auto items=items_data.view();std::vector<ItemInstance>instances;
+    host.commit=[](const FieldMenusState&before,const FieldMenusChanges&next,std::string&e){
+        if(!field_menus_data.supports(next.preferences)){e="Field menu candidate rejected";return false;}
+        SessionSnapshot current,candidate;if(!collect_session_snapshot(current,e,&active_overworld())||!merge_field_menu_session(before,next,current,candidate,e))return false;auto character=candidate.characters[0];const auto items=items_data.view();std::vector<ItemInstance>instances;
         for(const auto&i:character.inventory){uint32_t definition=item_no_index;for(uint32_t j=0;j<items.count(ItemSection::Definitions);++j)if(items.string(items.definition(j).source)==i.item_id)definition=j;
             if(definition==item_no_index||i.doses<=0||i.doses>65535){e="Field item identity/doses rejected";return false;}
             instances.push_back({i.uid,definition,uint32_t(i.equipped),uint32_t(i.doses)});
@@ -1064,9 +1064,10 @@ bool open_field_equipment(std::string&error){
     if(!session_state_ready||!session_rewards_valid){error="Field menu needs a prepared session";return false;}
     const auto view=field_equipment_data.view();
     if(!field_equipment_assets_ready){
-        LoadingScope loading("Preparing equipment menu",3);
+        LoadingScope loading("Preparing equipment menu",4);
         if(!loading.step([&]{return field_equipment_renderer.load(view,items_data.view(),"romfs:/",error);},"equipment-textures")||
            !loading.step([&]{return load_introduction(error)&&field_counter_font.load_catalog_at_safe_boundary((std::string("romfs:/")+introduction_data.font_catalog).c_str(),"romfs:/fonts/introduction/",error)&&field_counter_font.select_font_at_safe_boundary(view.binding(FieldBinding::NumberFont),error)&&field_counter_font.admit_selected_font(error);},"equipment-number-font")||
+           !loading.step([&]{return item_details_renderer.ready()||item_details_renderer.load(item_details_data.view(),items_data.view(),"romfs:/",error);},"item-details-texture")||
            !loading.step([&]{for(uint32_t i=uint32_t(FieldBinding::PauseOpenSound);i<=uint32_t(FieldBinding::BackSound);++i)if(!prepare_source_audio(std::string(view.binding(FieldBinding(i))),error))return false;for(uint32_t i=0;i<view.psi_skill_count();++i)if(!view.psi_skill(i).sound.empty()&&!prepare_source_audio(std::string(view.psi_skill(i).sound),error))return false;return true;},"equipment-sounds")||!loading.finish())return false;
         field_counter_text.attach_source_font(&field_counter_font);field_equipment_assets_ready=true;
     }
@@ -1101,7 +1102,7 @@ bool open_field_equipment(std::string&error){
         session_rewards.hp=result.hp;session_rewards.pp=result.pp;battle_random=random;e.clear();return true;
     };
     if(!field_equipment_menu.initialize(view,std::move(host),locale_selection.code()=="zh_Hans_CN")||!field_equipment_menu.open()){error=field_equipment_menu.error();return false;}
-    field_equipment_status.clear();return true;
+    item_details_renderer.set_nickname(field_equipment_menu.snapshot().nickname);item_details_renderer.set_locale(locale_selection.code());field_equipment_status.clear();return true;
 }
 
 bool read_prepared_slot(uint32_t slot,upstream::SessionSnapshot&snapshot,upstream::PreparedSessionRestore&prepared,std::string&error){
@@ -1790,6 +1791,19 @@ void publish_semantic_probe(){
     p.level=session_rewards_valid?session_rewards.level:0;p.hp=session_rewards_valid?uint32_t(session_rewards.hp):0;p.pp=session_rewards_valid?uint32_t(session_rewards.pp):0;
     p.experience=session_rewards_valid?session_rewards.experience:0;
     p.inventory_count=session_inventory.size();p.key_count=uint32_t(session_state.key_items.size());
+    p.submenu_phase=uint32_t(field_menus.phase());p.submenu_selection=field_menus.selection();p.submenu_keys=field_menus.key_inventory();p.submenu_count=p.submenu_keys?p.key_count:p.inventory_count;
+    // Stable wire projections, never object representations or game mutations.
+    auto hash_word=[](uint32_t&h,uint64_t v){for(unsigned i=0;i<8;++i){h^=uint8_t(v>>(i*8));h*=16777619u;}};
+    auto hash_text=[](uint32_t&h,std::string_view v){for(unsigned char c:v){h^=c;h*=16777619u;}h^=0;h*=16777619u;};
+    p.menu_inventory_hash=p.menu_key_hash=p.menu_uid_hash=p.menu_key_uid_hash=p.menu_settings_hash=p.menu_controls_hash=2166136261u;
+    const auto items=items_data.view();for(const auto&i:session_inventory.instances()){hash_text(p.menu_inventory_hash,items.string(items.definition(i.definition).source));hash_word(p.menu_inventory_hash,i.doses);hash_word(p.menu_inventory_hash,i.equipped);hash_word(p.menu_uid_hash,i.id);}
+    for(const auto&i:session_state.key_items){hash_text(p.menu_key_hash,i.item_id);hash_word(p.menu_key_hash,uint64_t(i.doses));hash_word(p.menu_key_hash,i.equipped);hash_word(p.menu_key_uid_hash,i.uid);}
+    const auto&setting=session_state.settings;uint64_t speed=0;std::memcpy(&speed,&setting.text_speed,sizeof speed);hash_word(p.menu_settings_hash,speed);hash_text(p.menu_settings_hash,setting.menu_flavor);hash_text(p.menu_settings_hash,setting.button_prompts);hash_word(p.menu_settings_hash,setting.description);
+    for(auto button:field_preferences.buttons)hash_word(p.menu_controls_hash,button);
+    p.menu_master=field_preferences.volume[0];p.menu_music=field_preferences.volume[1];p.menu_sfx=field_preferences.volume[2];p.menu_display=field_preferences.display;
+    p.menu_maxhp=session_rewards_valid?uint32_t(session_rewards.maxhp):0;p.menu_maxpp=session_rewards_valid?uint32_t(session_rewards.maxpp):0;p.menu_offense=session_rewards_valid?uint32_t(session_rewards.offense):0;p.menu_defense=session_rewards_valid?uint32_t(session_rewards.defense):0;
+    p.menu_map_x=uint32_t(field_menus.map_x());p.menu_map_y=uint32_t(field_menus.map_y());
+
     const auto music=audio_player.observe_music();p.audio_available=audio_player.available();p.music_playing=music.playing;p.music_asset=music.asset_id;
     p.dsp_music_playing=audio_player.available()&&ndspChnIsPlaying(0);p.dsp_music_sample_pos=audio_player.available()?ndspChnGetSamplePos(0):0;p.dsp_music_wave_seq=audio_player.available()?ndspChnGetWaveBufSeq(0):0;
     p.psi_learned=field_equipment_menu.active()&&field_equipment_menu.psi_learned();p.intro_scene=introduction.scene_index();p.intro_door=introduction.door_index();
@@ -2167,6 +2181,7 @@ int main(int argc,char** argv){
             }
         }
         if(field_menus.active()){
+            if(!field_equipment_menu.idle_frame(dt))field_equipment_status=field_equipment_menu.error();
             const bool allowed=field_was_open&&same_input_owner;
             const auto&buttons=field_menus_data.logical_buttons;
             const bool confirm=allowed&&((down&buttons[0])||native_controls.confirm_pulse),cancel=allowed&&((down&buttons[1])||(field_menus.phase()==upstream::FieldMenusPhase::Map&&(down&buttons[7]))),scope=allowed&&(down&buttons[3]);

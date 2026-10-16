@@ -9,7 +9,7 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient, CdbError
-from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection
+from tools.semantic_probe import MAGIC, WIRE, WIRE_V7, MENU_FIELDS, FIELDS, decode, projection
 from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original, matches, Session
 
 
@@ -21,6 +21,13 @@ def wire(**changes):
 
 
 class WireBoundary(unittest.TestCase):
+    def test_menu_appendix_preserves_legacy_offsets(self):
+        base=wire(version=7,byte_size=WIRE_V7.size);extra={name:0 for name in MENU_FIELDS};extra.update(submenu_phase=12,submenu_selection=3,menu_master=10,menu_inventory_hash=123)
+        raw=base+b''.join(int(extra[name]).to_bytes(4,'little')for name in MENU_FIELDS)
+        result=decode(raw);self.assertEqual(result['version'],7);self.assertEqual(result['menu_inventory_hash'],123);self.assertEqual(result['submenu_phase'],12)
+        self.assertEqual(result['player_x'],decode(wire())['player_x'])
+        for changed in (raw[:-1],raw+b'\0',wire()+raw[-80:],base+b'\0'*76,raw[:12]+(764).to_bytes(4,'little')+raw[16:]):
+            with self.assertRaises(ValueError):decode(changed)
     def test_exact_wire_and_projection(self):
         state = decode(wire(width=400, height=240))
         self.assertEqual(projection(state, ['width', 'height']), {'width': 400, 'height': 240})

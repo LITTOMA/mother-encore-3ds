@@ -315,3 +315,10 @@ cookies.json
 !reports/basement-items/validation/*.json
 !reports/basement-items/validation/*.png
 !reports/basement-items/validation/*.log
+
+# Bounded menu verification receipts; never emulator profiles or DSP binaries.
+!reports/field-menus-validation/
+!reports/field-menus-validation/**/
+!reports/field-menus-validation/**/*.json
+!reports/field-menus-validation/**/*.log
+!reports/field-menus-validation/**/*.png

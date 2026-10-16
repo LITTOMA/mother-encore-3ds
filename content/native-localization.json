@@ -1803,8 +1803,48 @@
       }
     },
     {
+      "key": "@native.battle/4/1/expected",
+      "source": "content/bridge-round.json:texts/1:ATTACK_NAME",
+      "line": 2,
+      "values": {
+        "en": "Bash",
+        "fr": "Bash",
+        "it": "Bash",
+        "ja": "Bash",
+        "ko": "Bash",
+        "es": "Bash",
+        "es_ES": "Bash",
+        "pt_BR": "Bash",
+        "pl": "Bash",
+        "de": "Bash",
+        "ru": "Bash",
+        "uk": "Bash",
+        "zh_Hans_CN": "Bash"
+      }
+    },
+    {
       "key": "@native.battle/4/10",
       "source": "content/bridge-round.json#GUARD_NAME",
+      "line": 11,
+      "values": {
+        "en": "GUARD_NAME",
+        "fr": "GUARD_NAME",
+        "it": "GUARD_NAME",
+        "ja": "GUARD_NAME",
+        "ko": "GUARD_NAME",
+        "es": "GUARD_NAME",
+        "es_ES": "GUARD_NAME",
+        "pt_BR": "GUARD_NAME",
+        "pl": "GUARD_NAME",
+        "de": "GUARD_NAME",
+        "ru": "GUARD_NAME",
+        "uk": "GUARD_NAME",
+        "zh_Hans_CN": "GUARD_NAME"
+      }
+    },
+    {
+      "key": "@native.battle/4/10/expected",
+      "source": "content/bridge-round.json:texts/10:GUARD_NAME",
       "line": 11,
       "values": {
         "en": "GUARD_NAME",
@@ -1843,6 +1883,26 @@
       }
     },
     {
+      "key": "@native.battle/4/11/expected",
+      "source": "content/bridge-round.json:texts/11:GUARD_DESC",
+      "line": 12,
+      "values": {
+        "en": "GUARD_DESC",
+        "fr": "GUARD_DESC",
+        "it": "GUARD_DESC",
+        "ja": "GUARD_DESC",
+        "ko": "GUARD_DESC",
+        "es": "GUARD_DESC",
+        "es_ES": "GUARD_DESC",
+        "pt_BR": "GUARD_DESC",
+        "pl": "GUARD_DESC",
+        "de": "GUARD_DESC",
+        "ru": "GUARD_DESC",
+        "uk": "GUARD_DESC",
+        "zh_Hans_CN": "GUARD_DESC"
+      }
+    },
+    {
       "key": "@native.battle/4/12",
       "source": "content/bridge-round.json#LAMP_NAME",
       "line": 13,
@@ -1860,6 +1920,26 @@
         "ru": "Лампа",
         "uk": "Лампа",
         "zh_Hans_CN": "台灯"
+      }
+    },
+    {
+      "key": "@native.battle/4/12/expected",
+      "source": "content/bridge-round.json:texts/12:LAMP_NAME",
+      "line": 13,
+      "values": {
+        "en": "Lamp",
+        "fr": "Lamp",
+        "it": "Lamp",
+        "ja": "Lamp",
+        "ko": "Lamp",
+        "es": "Lamp",
+        "es_ES": "Lamp",
+        "pt_BR": "Lamp",
+        "pl": "Lamp",
+        "de": "Lamp",
+        "ru": "Lamp",
+        "uk": "Lamp",
+        "zh_Hans_CN": "Lamp"
       }
     },
     {
@@ -1883,6 +1963,26 @@
       }
     },
     {
+      "key": "@native.battle/4/13/expected",
+      "source": "content/bridge-round.json:texts/13:LAMP_ART",
+      "line": 14,
+      "values": {
+        "en": "The ,the ,A ,a ,its,it,it",
+        "fr": "The ,the ,A ,a ,its,it,it",
+        "it": "The ,the ,A ,a ,its,it,it",
+        "ja": "The ,the ,A ,a ,its,it,it",
+        "ko": "The ,the ,A ,a ,its,it,it",
+        "es": "The ,the ,A ,a ,its,it,it",
+        "es_ES": "The ,the ,A ,a ,its,it,it",
+        "pt_BR": "The ,the ,A ,a ,its,it,it",
+        "pl": "The ,the ,A ,a ,its,it,it",
+        "de": "The ,the ,A ,a ,its,it,it",
+        "ru": "The ,the ,A ,a ,its,it,it",
+        "uk": "The ,the ,A ,a ,its,it,it",
+        "zh_Hans_CN": "The ,the ,A ,a ,its,it,it"
+      }
+    },
+    {
       "key": "@native.battle/4/14",
       "source": "content/bridge-round.json#",
       "line": 15,
@@ -1900,6 +2000,26 @@
         "ru": "лампаЛампа became tame!",
         "uk": "лампаЛампа became tame!",
         "zh_Hans_CN": "台灯 became tame!"
+      }
+    },
+    {
+      "key": "@native.battle/4/14/expected",
+      "source": "content/bridge-round.json:texts/14:",
+      "line": 15,
+      "values": {
+        "en": "The Lamp became tame!",
+        "fr": "The Lamp became tame!",
+        "it": "The Lamp became tame!",
+        "ja": "The Lamp became tame!",
+        "ko": "The Lamp became tame!",
+        "es": "The Lamp became tame!",
+        "es_ES": "The Lamp became tame!",
+        "pt_BR": "The Lamp became tame!",
+        "pl": "The Lamp became tame!",
+        "de": "The Lamp became tame!",
+        "ru": "The Lamp became tame!",
+        "uk": "The Lamp became tame!",
+        "zh_Hans_CN": "The Lamp became tame!"
       }
     },
     {
@@ -1923,6 +2043,26 @@
       }
     },
     {
+      "key": "@native.battle/4/15/expected",
+      "source": "content/bridge-round.json:texts/15:BATTLE_MSG_MORTAL_DAMAGE",
+      "line": 16,
+      "values": {
+        "en": "Ninten took mortal damage!",
+        "fr": "Ninten took mortal damage!",
+        "it": "Ninten took mortal damage!",
+        "ja": "Ninten took mortal damage!",
+        "ko": "Ninten took mortal damage!",
+        "es": "Ninten took mortal damage!",
+        "es_ES": "Ninten took mortal damage!",
+        "pt_BR": "Ninten took mortal damage!",
+        "pl": "Ninten took mortal damage!",
+        "de": "Ninten took mortal damage!",
+        "ru": "Ninten took mortal damage!",
+        "uk": "Ninten took mortal damage!",
+        "zh_Hans_CN": "Ninten took mortal damage!"
+      }
+    },
+    {
       "key": "@native.battle/4/16",
       "source": "content/bridge-round.json#BATTLE_MSG_TARGET_NO_EFFECT",
       "line": 17,
@@ -1940,6 +2080,26 @@
         "ru": "Лампа не почувствовала изменений.",
         "uk": "Лампа не відчула змін.",
         "zh_Hans_CN": "它对台灯没有效果！"
+      }
+    },
+    {
+      "key": "@native.battle/4/16/expected",
+      "source": "content/bridge-round.json:texts/16:BATTLE_MSG_TARGET_NO_EFFECT",
+      "line": 17,
+      "values": {
+        "en": "It had no effect on the Lamp!",
+        "fr": "It had no effect on the Lamp!",
+        "it": "It had no effect on the Lamp!",
+        "ja": "It had no effect on the Lamp!",
+        "ko": "It had no effect on the Lamp!",
+        "es": "It had no effect on the Lamp!",
+        "es_ES": "It had no effect on the Lamp!",
+        "pt_BR": "It had no effect on the Lamp!",
+        "pl": "It had no effect on the Lamp!",
+        "de": "It had no effect on the Lamp!",
+        "ru": "It had no effect on the Lamp!",
+        "uk": "It had no effect on the Lamp!",
+        "zh_Hans_CN": "It had no effect on the Lamp!"
       }
     },
     {
@@ -1963,6 +2123,26 @@
       }
     },
     {
+      "key": "@native.battle/4/17/expected",
+      "source": "content/bridge-round.json:texts/17:BATTLE_MSG_EXP_ONE_ALLY",
+      "line": 18,
+      "values": {
+        "en": "Ninten gained 3 exp.",
+        "fr": "Ninten gained 3 exp.",
+        "it": "Ninten gained 3 exp.",
+        "ja": "Ninten gained 3 exp.",
+        "ko": "Ninten gained 3 exp.",
+        "es": "Ninten gained 3 exp.",
+        "es_ES": "Ninten gained 3 exp.",
+        "pt_BR": "Ninten gained 3 exp.",
+        "pl": "Ninten gained 3 exp.",
+        "de": "Ninten gained 3 exp.",
+        "ru": "Ninten gained 3 exp.",
+        "uk": "Ninten gained 3 exp.",
+        "zh_Hans_CN": "Ninten gained 3 exp."
+      }
+    },
+    {
       "key": "@native.battle/4/18",
       "source": "content/bridge-round.json#ATTACK_DIALOG",
       "line": 19,
@@ -1980,6 +2160,26 @@
         "ru": "[Ninten] атакует!",
         "uk": "[Ninten] атакує!",
         "zh_Hans_CN": "[Ninten]的攻击！"
+      }
+    },
+    {
+      "key": "@native.battle/4/18/expected",
+      "source": "content/bridge-round.json:texts/18:ATTACK_DIALOG",
+      "line": 19,
+      "values": {
+        "en": "Ninten attacks!",
+        "fr": "Ninten attacks!",
+        "it": "Ninten attacks!",
+        "ja": "Ninten attacks!",
+        "ko": "Ninten attacks!",
+        "es": "Ninten attacks!",
+        "es_ES": "Ninten attacks!",
+        "pt_BR": "Ninten attacks!",
+        "pl": "Ninten attacks!",
+        "de": "Ninten attacks!",
+        "ru": "Ninten attacks!",
+        "uk": "Ninten attacks!",
+        "zh_Hans_CN": "Ninten attacks!"
       }
     },
     {
@@ -2003,6 +2203,26 @@
       }
     },
     {
+      "key": "@native.battle/4/19/expected",
+      "source": "content/bridge-round.json:texts/19:TACKLE_DIALOG",
+      "line": 20,
+      "values": {
+        "en": "The Pillow threw its body at Ninten!",
+        "fr": "The Pillow threw its body at Ninten!",
+        "it": "The Pillow threw its body at Ninten!",
+        "ja": "The Pillow threw its body at Ninten!",
+        "ko": "The Pillow threw its body at Ninten!",
+        "es": "The Pillow threw its body at Ninten!",
+        "es_ES": "The Pillow threw its body at Ninten!",
+        "pt_BR": "The Pillow threw its body at Ninten!",
+        "pl": "The Pillow threw its body at Ninten!",
+        "de": "The Pillow threw its body at Ninten!",
+        "ru": "The Pillow threw its body at Ninten!",
+        "uk": "The Pillow threw its body at Ninten!",
+        "zh_Hans_CN": "The Pillow threw its body at Ninten!"
+      }
+    },
+    {
       "key": "@native.battle/4/2",
       "source": "content/bridge-round.json#ATTACK_DESC",
       "line": 3,
@@ -2020,6 +2240,26 @@
         "ru": "Ранит врага.",
         "uk": "Завдає шкоди ворогу.",
         "zh_Hans_CN": "对一名敌人造成伤害。"
+      }
+    },
+    {
+      "key": "@native.battle/4/2/expected",
+      "source": "content/bridge-round.json:texts/2:ATTACK_DESC",
+      "line": 3,
+      "values": {
+        "en": "Deals damage to an enemy.",
+        "fr": "Deals damage to an enemy.",
+        "it": "Deals damage to an enemy.",
+        "ja": "Deals damage to an enemy.",
+        "ko": "Deals damage to an enemy.",
+        "es": "Deals damage to an enemy.",
+        "es_ES": "Deals damage to an enemy.",
+        "pt_BR": "Deals damage to an enemy.",
+        "pl": "Deals damage to an enemy.",
+        "de": "Deals damage to an enemy.",
+        "ru": "Deals damage to an enemy.",
+        "uk": "Deals damage to an enemy.",
+        "zh_Hans_CN": "Deals damage to an enemy."
       }
     },
     {
@@ -2043,6 +2283,26 @@
       }
     },
     {
+      "key": "@native.battle/4/20/expected",
+      "source": "content/bridge-round.json:texts/20:FLOAT_DIALOG",
+      "line": 21,
+      "values": {
+        "en": "The Pillow floated around!",
+        "fr": "The Pillow floated around!",
+        "it": "The Pillow floated around!",
+        "ja": "The Pillow floated around!",
+        "ko": "The Pillow floated around!",
+        "es": "The Pillow floated around!",
+        "es_ES": "The Pillow floated around!",
+        "pt_BR": "The Pillow floated around!",
+        "pl": "The Pillow floated around!",
+        "de": "The Pillow floated around!",
+        "ru": "The Pillow floated around!",
+        "uk": "The Pillow floated around!",
+        "zh_Hans_CN": "The Pillow floated around!"
+      }
+    },
+    {
       "key": "@native.battle/4/21",
       "source": "content/bridge-round.json#",
       "line": 22,
@@ -2060,6 +2320,26 @@
         "ru": "подушкаПодушка became tame!",
         "uk": "подушкаПодушка became tame!",
         "zh_Hans_CN": "枕头 became tame!"
+      }
+    },
+    {
+      "key": "@native.battle/4/21/expected",
+      "source": "content/bridge-round.json:texts/21:",
+      "line": 22,
+      "values": {
+        "en": "The Pillow became tame!",
+        "fr": "The Pillow became tame!",
+        "it": "The Pillow became tame!",
+        "ja": "The Pillow became tame!",
+        "ko": "The Pillow became tame!",
+        "es": "The Pillow became tame!",
+        "es_ES": "The Pillow became tame!",
+        "pt_BR": "The Pillow became tame!",
+        "pl": "The Pillow became tame!",
+        "de": "The Pillow became tame!",
+        "ru": "The Pillow became tame!",
+        "uk": "The Pillow became tame!",
+        "zh_Hans_CN": "The Pillow became tame!"
       }
     },
     {
@@ -2083,6 +2363,26 @@
       }
     },
     {
+      "key": "@native.battle/4/22/expected",
+      "source": "content/bridge-round.json:texts/22:BATTLE_MSG_MORTAL_DAMAGE",
+      "line": 23,
+      "values": {
+        "en": "Ninten took mortal damage!",
+        "fr": "Ninten took mortal damage!",
+        "it": "Ninten took mortal damage!",
+        "ja": "Ninten took mortal damage!",
+        "ko": "Ninten took mortal damage!",
+        "es": "Ninten took mortal damage!",
+        "es_ES": "Ninten took mortal damage!",
+        "pt_BR": "Ninten took mortal damage!",
+        "pl": "Ninten took mortal damage!",
+        "de": "Ninten took mortal damage!",
+        "ru": "Ninten took mortal damage!",
+        "uk": "Ninten took mortal damage!",
+        "zh_Hans_CN": "Ninten took mortal damage!"
+      }
+    },
+    {
       "key": "@native.battle/4/23",
       "source": "content/bridge-round.json#BATTLE_MSG_TARGET_NO_EFFECT",
       "line": 24,
@@ -2100,6 +2400,26 @@
         "ru": "Подушка не почувствовала изменений.",
         "uk": "Подушка не відчула змін.",
         "zh_Hans_CN": "它对枕头没有效果！"
+      }
+    },
+    {
+      "key": "@native.battle/4/23/expected",
+      "source": "content/bridge-round.json:texts/23:BATTLE_MSG_TARGET_NO_EFFECT",
+      "line": 24,
+      "values": {
+        "en": "It had no effect on the Pillow!",
+        "fr": "It had no effect on the Pillow!",
+        "it": "It had no effect on the Pillow!",
+        "ja": "It had no effect on the Pillow!",
+        "ko": "It had no effect on the Pillow!",
+        "es": "It had no effect on the Pillow!",
+        "es_ES": "It had no effect on the Pillow!",
+        "pt_BR": "It had no effect on the Pillow!",
+        "pl": "It had no effect on the Pillow!",
+        "de": "It had no effect on the Pillow!",
+        "ru": "It had no effect on the Pillow!",
+        "uk": "It had no effect on the Pillow!",
+        "zh_Hans_CN": "It had no effect on the Pillow!"
       }
     },
     {
@@ -2123,6 +2443,26 @@
       }
     },
     {
+      "key": "@native.battle/4/24/expected",
+      "source": "content/bridge-round.json:texts/24:PILLOW_NAME",
+      "line": 25,
+      "values": {
+        "en": "Pillow",
+        "fr": "Pillow",
+        "it": "Pillow",
+        "ja": "Pillow",
+        "ko": "Pillow",
+        "es": "Pillow",
+        "es_ES": "Pillow",
+        "pt_BR": "Pillow",
+        "pl": "Pillow",
+        "de": "Pillow",
+        "ru": "Pillow",
+        "uk": "Pillow",
+        "zh_Hans_CN": "Pillow"
+      }
+    },
+    {
       "key": "@native.battle/4/25",
       "source": "content/bridge-round.json#PILLOW_ART",
       "line": 26,
@@ -2140,6 +2480,26 @@
         "ru": "подушка,подушки,подушке,подушку,подушке,,а,ена,ась,ет,её",
         "uk": "подушка,подушки,подушці,подушку,подушці,,ла,а,є,ить,її",
         "zh_Hans_CN": ",,一个,一个,它的,它,它"
+      }
+    },
+    {
+      "key": "@native.battle/4/25/expected",
+      "source": "content/bridge-round.json:texts/25:PILLOW_ART",
+      "line": 26,
+      "values": {
+        "en": "The ,the ,A ,a ,its,it,it",
+        "fr": "The ,the ,A ,a ,its,it,it",
+        "it": "The ,the ,A ,a ,its,it,it",
+        "ja": "The ,the ,A ,a ,its,it,it",
+        "ko": "The ,the ,A ,a ,its,it,it",
+        "es": "The ,the ,A ,a ,its,it,it",
+        "es_ES": "The ,the ,A ,a ,its,it,it",
+        "pt_BR": "The ,the ,A ,a ,its,it,it",
+        "pl": "The ,the ,A ,a ,its,it,it",
+        "de": "The ,the ,A ,a ,its,it,it",
+        "ru": "The ,the ,A ,a ,its,it,it",
+        "uk": "The ,the ,A ,a ,its,it,it",
+        "zh_Hans_CN": "The ,the ,A ,a ,its,it,it"
       }
     },
     {
@@ -2163,6 +2523,26 @@
       }
     },
     {
+      "key": "@native.battle/4/26/expected",
+      "source": "content/bridge-round.json:texts/26:BATTLE_MSG_EXP_ONE_ALLY",
+      "line": 27,
+      "values": {
+        "en": "Ninten gained 5 exp.",
+        "fr": "Ninten gained 5 exp.",
+        "it": "Ninten gained 5 exp.",
+        "ja": "Ninten gained 5 exp.",
+        "ko": "Ninten gained 5 exp.",
+        "es": "Ninten gained 5 exp.",
+        "es_ES": "Ninten gained 5 exp.",
+        "pt_BR": "Ninten gained 5 exp.",
+        "pl": "Ninten gained 5 exp.",
+        "de": "Ninten gained 5 exp.",
+        "ru": "Ninten gained 5 exp.",
+        "uk": "Ninten gained 5 exp.",
+        "zh_Hans_CN": "Ninten gained 5 exp."
+      }
+    },
+    {
       "key": "@native.battle/4/27",
       "source": "content/bridge-round.json#BATTLE_MSG_LEVEL_UP_STAT",
       "line": 28,
@@ -2180,6 +2560,26 @@
         "ru": "Максимальное количество ОЗ увеличилось на 3 единиц[slav_num:3:у:ы:].",
         "uk": "Максимальна кількість ОЗ піднялася на 3!",
         "zh_Hans_CN": "最大HP上升了3点！"
+      }
+    },
+    {
+      "key": "@native.battle/4/27/expected",
+      "source": "content/bridge-round.json:texts/27:BATTLE_MSG_LEVEL_UP_STAT",
+      "line": 28,
+      "values": {
+        "en": "Max. HP raised by 3!",
+        "fr": "Max. HP raised by 3!",
+        "it": "Max. HP raised by 3!",
+        "ja": "Max. HP raised by 3!",
+        "ko": "Max. HP raised by 3!",
+        "es": "Max. HP raised by 3!",
+        "es_ES": "Max. HP raised by 3!",
+        "pt_BR": "Max. HP raised by 3!",
+        "pl": "Max. HP raised by 3!",
+        "de": "Max. HP raised by 3!",
+        "ru": "Max. HP raised by 3!",
+        "uk": "Max. HP raised by 3!",
+        "zh_Hans_CN": "Max. HP raised by 3!"
       }
     },
     {
@@ -2203,6 +2603,26 @@
       }
     },
     {
+      "key": "@native.battle/4/28/expected",
+      "source": "content/bridge-round.json:texts/28:BATTLE_MSG_LEVEL_UP_STAT",
+      "line": 29,
+      "values": {
+        "en": "Max. PP raised by 1!",
+        "fr": "Max. PP raised by 1!",
+        "it": "Max. PP raised by 1!",
+        "ja": "Max. PP raised by 1!",
+        "ko": "Max. PP raised by 1!",
+        "es": "Max. PP raised by 1!",
+        "es_ES": "Max. PP raised by 1!",
+        "pt_BR": "Max. PP raised by 1!",
+        "pl": "Max. PP raised by 1!",
+        "de": "Max. PP raised by 1!",
+        "ru": "Max. PP raised by 1!",
+        "uk": "Max. PP raised by 1!",
+        "zh_Hans_CN": "Max. PP raised by 1!"
+      }
+    },
+    {
       "key": "@native.battle/4/29",
       "source": "content/bridge-round.json#BATTLE_MSG_LEVEL_UP_STAT",
       "line": 30,
@@ -2220,6 +2640,26 @@
         "ru": "Атака повысилась на 1 единиц[slav_num:1:у:ы:].",
         "uk": "Атака піднялася на 1!",
         "zh_Hans_CN": "攻击力上升了1点！"
+      }
+    },
+    {
+      "key": "@native.battle/4/29/expected",
+      "source": "content/bridge-round.json:texts/29:BATTLE_MSG_LEVEL_UP_STAT",
+      "line": 30,
+      "values": {
+        "en": "Offense raised by 1!",
+        "fr": "Offense raised by 1!",
+        "it": "Offense raised by 1!",
+        "ja": "Offense raised by 1!",
+        "ko": "Offense raised by 1!",
+        "es": "Offense raised by 1!",
+        "es_ES": "Offense raised by 1!",
+        "pt_BR": "Offense raised by 1!",
+        "pl": "Offense raised by 1!",
+        "de": "Offense raised by 1!",
+        "ru": "Offense raised by 1!",
+        "uk": "Offense raised by 1!",
+        "zh_Hans_CN": "Offense raised by 1!"
       }
     },
     {
@@ -2243,6 +2683,26 @@
       }
     },
     {
+      "key": "@native.battle/4/3/expected",
+      "source": "content/bridge-round.json:texts/3:ATTACK_DIALOG",
+      "line": 4,
+      "values": {
+        "en": "Ninten attacks!",
+        "fr": "Ninten attacks!",
+        "it": "Ninten attacks!",
+        "ja": "Ninten attacks!",
+        "ko": "Ninten attacks!",
+        "es": "Ninten attacks!",
+        "es_ES": "Ninten attacks!",
+        "pt_BR": "Ninten attacks!",
+        "pl": "Ninten attacks!",
+        "de": "Ninten attacks!",
+        "ru": "Ninten attacks!",
+        "uk": "Ninten attacks!",
+        "zh_Hans_CN": "Ninten attacks!"
+      }
+    },
+    {
       "key": "@native.battle/4/30",
       "source": "content/bridge-round.json#BATTLE_MSG_LEVEL_UP_STAT",
       "line": 31,
@@ -2260,6 +2720,26 @@
         "ru": "IQ повысился на 1 единиц[slav_num:1:у:ы:].",
         "uk": "IQ піднявся на 1!",
         "zh_Hans_CN": "智力上升了1点！"
+      }
+    },
+    {
+      "key": "@native.battle/4/30/expected",
+      "source": "content/bridge-round.json:texts/30:BATTLE_MSG_LEVEL_UP_STAT",
+      "line": 31,
+      "values": {
+        "en": "IQ raised by 1!",
+        "fr": "IQ raised by 1!",
+        "it": "IQ raised by 1!",
+        "ja": "IQ raised by 1!",
+        "ko": "IQ raised by 1!",
+        "es": "IQ raised by 1!",
+        "es_ES": "IQ raised by 1!",
+        "pt_BR": "IQ raised by 1!",
+        "pl": "IQ raised by 1!",
+        "de": "IQ raised by 1!",
+        "ru": "IQ raised by 1!",
+        "uk": "IQ raised by 1!",
+        "zh_Hans_CN": "IQ raised by 1!"
       }
     },
     {
@@ -2283,6 +2763,26 @@
       }
     },
     {
+      "key": "@native.battle/4/31/expected",
+      "source": "content/bridge-round.json:texts/31:BATTLE_MSG_LEVEL_UP",
+      "line": 32,
+      "values": {
+        "en": "Ninten leveled up to 2!",
+        "fr": "Ninten leveled up to 2!",
+        "it": "Ninten leveled up to 2!",
+        "ja": "Ninten leveled up to 2!",
+        "ko": "Ninten leveled up to 2!",
+        "es": "Ninten leveled up to 2!",
+        "es_ES": "Ninten leveled up to 2!",
+        "pt_BR": "Ninten leveled up to 2!",
+        "pl": "Ninten leveled up to 2!",
+        "de": "Ninten leveled up to 2!",
+        "ru": "Ninten leveled up to 2!",
+        "uk": "Ninten leveled up to 2!",
+        "zh_Hans_CN": "Ninten leveled up to 2!"
+      }
+    },
+    {
       "key": "@native.battle/4/32",
       "source": "content/bridge-round.json#BATTLE_MSG_LEARNING",
       "line": 33,
@@ -2300,6 +2800,26 @@
         "ru": "[Ninten] познаёт «телепатию»!",
         "uk": "[Ninten] навчився Телепатії!",
         "zh_Hans_CN": "[Ninten]学会了心灵感应！"
+      }
+    },
+    {
+      "key": "@native.battle/4/32/expected",
+      "source": "content/bridge-round.json:texts/32:BATTLE_MSG_LEARNING",
+      "line": 33,
+      "values": {
+        "en": "Ninten learned Telepathy!",
+        "fr": "Ninten learned Telepathy!",
+        "it": "Ninten learned Telepathy!",
+        "ja": "Ninten learned Telepathy!",
+        "ko": "Ninten learned Telepathy!",
+        "es": "Ninten learned Telepathy!",
+        "es_ES": "Ninten learned Telepathy!",
+        "pt_BR": "Ninten learned Telepathy!",
+        "pl": "Ninten learned Telepathy!",
+        "de": "Ninten learned Telepathy!",
+        "ru": "Ninten learned Telepathy!",
+        "uk": "Ninten learned Telepathy!",
+        "zh_Hans_CN": "Ninten learned Telepathy!"
       }
     },
     {
@@ -2323,6 +2843,26 @@
       }
     },
     {
+      "key": "@native.battle/4/33/expected",
+      "source": "content/bridge-round.json:texts/33:BITE_NAME",
+      "line": 34,
+      "values": {
+        "en": "Bite",
+        "fr": "Bite",
+        "it": "Bite",
+        "ja": "Bite",
+        "ko": "Bite",
+        "es": "Bite",
+        "es_ES": "Bite",
+        "pt_BR": "Bite",
+        "pl": "Bite",
+        "de": "Bite",
+        "ru": "Bite",
+        "uk": "Bite",
+        "zh_Hans_CN": "Bite"
+      }
+    },
+    {
       "key": "@native.battle/4/34",
       "source": "content/bridge-round.json#BITE_DESC",
       "line": 35,
@@ -2340,6 +2880,26 @@
         "ru": "Укус острыми клыками.",
         "uk": "Укус гострими іклами.",
         "zh_Hans_CN": "用利牙狠狠咬住。"
+      }
+    },
+    {
+      "key": "@native.battle/4/34/expected",
+      "source": "content/bridge-round.json:texts/34:BITE_DESC",
+      "line": 35,
+      "values": {
+        "en": "A bite using sharp fangs.",
+        "fr": "A bite using sharp fangs.",
+        "it": "A bite using sharp fangs.",
+        "ja": "A bite using sharp fangs.",
+        "ko": "A bite using sharp fangs.",
+        "es": "A bite using sharp fangs.",
+        "es_ES": "A bite using sharp fangs.",
+        "pt_BR": "A bite using sharp fangs.",
+        "pl": "A bite using sharp fangs.",
+        "de": "A bite using sharp fangs.",
+        "ru": "A bite using sharp fangs.",
+        "uk": "A bite using sharp fangs.",
+        "zh_Hans_CN": "A bite using sharp fangs."
       }
     },
     {
@@ -2363,6 +2923,26 @@
       }
     },
     {
+      "key": "@native.battle/4/35/expected",
+      "source": "content/bridge-round.json:texts/35:BITE_DIALOG",
+      "line": 36,
+      "values": {
+        "en": "The Stray Dog bit into Ninten!",
+        "fr": "The Stray Dog bit into Ninten!",
+        "it": "The Stray Dog bit into Ninten!",
+        "ja": "The Stray Dog bit into Ninten!",
+        "ko": "The Stray Dog bit into Ninten!",
+        "es": "The Stray Dog bit into Ninten!",
+        "es_ES": "The Stray Dog bit into Ninten!",
+        "pt_BR": "The Stray Dog bit into Ninten!",
+        "pl": "The Stray Dog bit into Ninten!",
+        "de": "The Stray Dog bit into Ninten!",
+        "ru": "The Stray Dog bit into Ninten!",
+        "uk": "The Stray Dog bit into Ninten!",
+        "zh_Hans_CN": "The Stray Dog bit into Ninten!"
+      }
+    },
+    {
       "key": "@native.battle/4/36",
       "source": "content/bridge-round.json#BASH_NAME",
       "line": 37,
@@ -2380,6 +2960,26 @@
         "ru": "Удар",
         "uk": "Удар",
         "zh_Hans_CN": "击打"
+      }
+    },
+    {
+      "key": "@native.battle/4/36/expected",
+      "source": "content/bridge-round.json:texts/36:BASH_NAME",
+      "line": 37,
+      "values": {
+        "en": "Bash",
+        "fr": "Bash",
+        "it": "Bash",
+        "ja": "Bash",
+        "ko": "Bash",
+        "es": "Bash",
+        "es_ES": "Bash",
+        "pt_BR": "Bash",
+        "pl": "Bash",
+        "de": "Bash",
+        "ru": "Bash",
+        "uk": "Bash",
+        "zh_Hans_CN": "Bash"
       }
     },
     {
@@ -2403,6 +3003,26 @@
       }
     },
     {
+      "key": "@native.battle/4/37/expected",
+      "source": "content/bridge-round.json:texts/37:BASH_DESC",
+      "line": 38,
+      "values": {
+        "en": "Deals a low amount of damage against an enemy.",
+        "fr": "Deals a low amount of damage against an enemy.",
+        "it": "Deals a low amount of damage against an enemy.",
+        "ja": "Deals a low amount of damage against an enemy.",
+        "ko": "Deals a low amount of damage against an enemy.",
+        "es": "Deals a low amount of damage against an enemy.",
+        "es_ES": "Deals a low amount of damage against an enemy.",
+        "pt_BR": "Deals a low amount of damage against an enemy.",
+        "pl": "Deals a low amount of damage against an enemy.",
+        "de": "Deals a low amount of damage against an enemy.",
+        "ru": "Deals a low amount of damage against an enemy.",
+        "uk": "Deals a low amount of damage against an enemy.",
+        "zh_Hans_CN": "Deals a low amount of damage against an enemy."
+      }
+    },
+    {
       "key": "@native.battle/4/38",
       "source": "content/bridge-round.json#BASH_DIALOG",
       "line": 39,
@@ -2420,6 +3040,26 @@
         "ru": "Бродячий пёс атакует!",
         "uk": "Бродячий собака атакує!",
         "zh_Hans_CN": "流浪狗的攻击！"
+      }
+    },
+    {
+      "key": "@native.battle/4/38/expected",
+      "source": "content/bridge-round.json:texts/38:BASH_DIALOG",
+      "line": 39,
+      "values": {
+        "en": "The Stray Dog attacks!",
+        "fr": "The Stray Dog attacks!",
+        "it": "The Stray Dog attacks!",
+        "ja": "The Stray Dog attacks!",
+        "ko": "The Stray Dog attacks!",
+        "es": "The Stray Dog attacks!",
+        "es_ES": "The Stray Dog attacks!",
+        "pt_BR": "The Stray Dog attacks!",
+        "pl": "The Stray Dog attacks!",
+        "de": "The Stray Dog attacks!",
+        "ru": "The Stray Dog attacks!",
+        "uk": "The Stray Dog attacks!",
+        "zh_Hans_CN": "The Stray Dog attacks!"
       }
     },
     {
@@ -2443,6 +3083,26 @@
       }
     },
     {
+      "key": "@native.battle/4/39/expected",
+      "source": "content/bridge-round.json:texts/39:STRAYDOG_NAME",
+      "line": 40,
+      "values": {
+        "en": "Stray Dog",
+        "fr": "Stray Dog",
+        "it": "Stray Dog",
+        "ja": "Stray Dog",
+        "ko": "Stray Dog",
+        "es": "Stray Dog",
+        "es_ES": "Stray Dog",
+        "pt_BR": "Stray Dog",
+        "pl": "Stray Dog",
+        "de": "Stray Dog",
+        "ru": "Stray Dog",
+        "uk": "Stray Dog",
+        "zh_Hans_CN": "Stray Dog"
+      }
+    },
+    {
       "key": "@native.battle/4/4",
       "source": "content/bridge-round.json#TACKLE_NAME",
       "line": 5,
@@ -2460,6 +3120,26 @@
         "ru": "Таран",
         "uk": "Таран",
         "zh_Hans_CN": "蓄力"
+      }
+    },
+    {
+      "key": "@native.battle/4/4/expected",
+      "source": "content/bridge-round.json:texts/4:TACKLE_NAME",
+      "line": 5,
+      "values": {
+        "en": "Charge",
+        "fr": "Charge",
+        "it": "Charge",
+        "ja": "Charge",
+        "ko": "Charge",
+        "es": "Charge",
+        "es_ES": "Charge",
+        "pt_BR": "Charge",
+        "pl": "Charge",
+        "de": "Charge",
+        "ru": "Charge",
+        "uk": "Charge",
+        "zh_Hans_CN": "Charge"
       }
     },
     {
@@ -2483,6 +3163,26 @@
       }
     },
     {
+      "key": "@native.battle/4/40/expected",
+      "source": "content/bridge-round.json:texts/40:STRAYDOG_ART",
+      "line": 41,
+      "values": {
+        "en": "The ,the ,A ,a ,its,it,it",
+        "fr": "The ,the ,A ,a ,its,it,it",
+        "it": "The ,the ,A ,a ,its,it,it",
+        "ja": "The ,the ,A ,a ,its,it,it",
+        "ko": "The ,the ,A ,a ,its,it,it",
+        "es": "The ,the ,A ,a ,its,it,it",
+        "es_ES": "The ,the ,A ,a ,its,it,it",
+        "pt_BR": "The ,the ,A ,a ,its,it,it",
+        "pl": "The ,the ,A ,a ,its,it,it",
+        "de": "The ,the ,A ,a ,its,it,it",
+        "ru": "The ,the ,A ,a ,its,it,it",
+        "uk": "The ,the ,A ,a ,its,it,it",
+        "zh_Hans_CN": "The ,the ,A ,a ,its,it,it"
+      }
+    },
+    {
       "key": "@native.battle/4/41",
       "source": "content/bridge-round.json#",
       "line": 42,
@@ -2500,6 +3200,26 @@
         "ru": "бродячий пёсБродячий пёс became tame!",
         "uk": "бродячий собакаБродячий собака became tame!",
         "zh_Hans_CN": "流浪狗 became tame!"
+      }
+    },
+    {
+      "key": "@native.battle/4/41/expected",
+      "source": "content/bridge-round.json:texts/41:",
+      "line": 42,
+      "values": {
+        "en": "The Stray Dog became tame!",
+        "fr": "The Stray Dog became tame!",
+        "it": "The Stray Dog became tame!",
+        "ja": "The Stray Dog became tame!",
+        "ko": "The Stray Dog became tame!",
+        "es": "The Stray Dog became tame!",
+        "es_ES": "The Stray Dog became tame!",
+        "pt_BR": "The Stray Dog became tame!",
+        "pl": "The Stray Dog became tame!",
+        "de": "The Stray Dog became tame!",
+        "ru": "The Stray Dog became tame!",
+        "uk": "The Stray Dog became tame!",
+        "zh_Hans_CN": "The Stray Dog became tame!"
       }
     },
     {
@@ -2523,6 +3243,26 @@
       }
     },
     {
+      "key": "@native.battle/4/42/expected",
+      "source": "content/bridge-round.json:texts/42:BATTLE_MSG_MORTAL_DAMAGE",
+      "line": 43,
+      "values": {
+        "en": "Ninten took mortal damage!",
+        "fr": "Ninten took mortal damage!",
+        "it": "Ninten took mortal damage!",
+        "ja": "Ninten took mortal damage!",
+        "ko": "Ninten took mortal damage!",
+        "es": "Ninten took mortal damage!",
+        "es_ES": "Ninten took mortal damage!",
+        "pt_BR": "Ninten took mortal damage!",
+        "pl": "Ninten took mortal damage!",
+        "de": "Ninten took mortal damage!",
+        "ru": "Ninten took mortal damage!",
+        "uk": "Ninten took mortal damage!",
+        "zh_Hans_CN": "Ninten took mortal damage!"
+      }
+    },
+    {
       "key": "@native.battle/4/43",
       "source": "content/bridge-round.json#BATTLE_MSG_TARGET_NO_EFFECT",
       "line": 44,
@@ -2540,6 +3280,26 @@
         "ru": "Бродячий пёс не почувствовал изменений.",
         "uk": "Бродячий собака не відчув змін.",
         "zh_Hans_CN": "它对流浪狗没有效果！"
+      }
+    },
+    {
+      "key": "@native.battle/4/43/expected",
+      "source": "content/bridge-round.json:texts/43:BATTLE_MSG_TARGET_NO_EFFECT",
+      "line": 44,
+      "values": {
+        "en": "It had no effect on the Stray Dog!",
+        "fr": "It had no effect on the Stray Dog!",
+        "it": "It had no effect on the Stray Dog!",
+        "ja": "It had no effect on the Stray Dog!",
+        "ko": "It had no effect on the Stray Dog!",
+        "es": "It had no effect on the Stray Dog!",
+        "es_ES": "It had no effect on the Stray Dog!",
+        "pt_BR": "It had no effect on the Stray Dog!",
+        "pl": "It had no effect on the Stray Dog!",
+        "de": "It had no effect on the Stray Dog!",
+        "ru": "It had no effect on the Stray Dog!",
+        "uk": "It had no effect on the Stray Dog!",
+        "zh_Hans_CN": "It had no effect on the Stray Dog!"
       }
     },
     {
@@ -2563,6 +3323,26 @@
       }
     },
     {
+      "key": "@native.battle/4/44/expected",
+      "source": "content/bridge-round.json:texts/44:BATTLE_MSG_EXP_ONE_ALLY",
+      "line": 45,
+      "values": {
+        "en": "Ninten gained 8 exp.",
+        "fr": "Ninten gained 8 exp.",
+        "it": "Ninten gained 8 exp.",
+        "ja": "Ninten gained 8 exp.",
+        "ko": "Ninten gained 8 exp.",
+        "es": "Ninten gained 8 exp.",
+        "es_ES": "Ninten gained 8 exp.",
+        "pt_BR": "Ninten gained 8 exp.",
+        "pl": "Ninten gained 8 exp.",
+        "de": "Ninten gained 8 exp.",
+        "ru": "Ninten gained 8 exp.",
+        "uk": "Ninten gained 8 exp.",
+        "zh_Hans_CN": "Ninten gained 8 exp."
+      }
+    },
+    {
       "key": "@native.battle/4/45",
       "source": "content/bridge-round.json#BATTLE_MSG_PRESENT",
       "line": 46,
@@ -2580,6 +3360,26 @@
         "ru": "Противник обронил подарок!",
         "uk": "Ворог впустив подарунок!",
         "zh_Hans_CN": "敌人的身上掉落了一个礼物盒！"
+      }
+    },
+    {
+      "key": "@native.battle/4/45/expected",
+      "source": "content/bridge-round.json:texts/45:BATTLE_MSG_PRESENT",
+      "line": 46,
+      "values": {
+        "en": "The enemy dropped a present!",
+        "fr": "The enemy dropped a present!",
+        "it": "The enemy dropped a present!",
+        "ja": "The enemy dropped a present!",
+        "ko": "The enemy dropped a present!",
+        "es": "The enemy dropped a present!",
+        "es_ES": "The enemy dropped a present!",
+        "pt_BR": "The enemy dropped a present!",
+        "pl": "The enemy dropped a present!",
+        "de": "The enemy dropped a present!",
+        "ru": "The enemy dropped a present!",
+        "uk": "The enemy dropped a present!",
+        "zh_Hans_CN": "The enemy dropped a present!"
       }
     },
     {
@@ -2603,6 +3403,26 @@
       }
     },
     {
+      "key": "@native.battle/4/46/expected",
+      "source": "content/bridge-round.json:texts/46:BATTLE_MSG_PRESENT_INSIDE",
+      "line": 47,
+      "values": {
+        "en": "Inside the present, there was a Flea Bag.",
+        "fr": "Inside the present, there was a Flea Bag.",
+        "it": "Inside the present, there was a Flea Bag.",
+        "ja": "Inside the present, there was a Flea Bag.",
+        "ko": "Inside the present, there was a Flea Bag.",
+        "es": "Inside the present, there was a Flea Bag.",
+        "es_ES": "Inside the present, there was a Flea Bag.",
+        "pt_BR": "Inside the present, there was a Flea Bag.",
+        "pl": "Inside the present, there was a Flea Bag.",
+        "de": "Inside the present, there was a Flea Bag.",
+        "ru": "Inside the present, there was a Flea Bag.",
+        "uk": "Inside the present, there was a Flea Bag.",
+        "zh_Hans_CN": "Inside the present, there was a Flea Bag."
+      }
+    },
+    {
       "key": "@native.battle/4/47",
       "source": "content/bridge-round.json#BATTLE_MSG_PRESENT_TAKING",
       "line": 48,
@@ -2620,6 +3440,26 @@
         "ru": "[Ninten] забирает его себе.",
         "uk": "[Ninten] взяв його.",
         "zh_Hans_CN": "[Ninten]把它拿走了。"
+      }
+    },
+    {
+      "key": "@native.battle/4/47/expected",
+      "source": "content/bridge-round.json:texts/47:BATTLE_MSG_PRESENT_TAKING",
+      "line": 48,
+      "values": {
+        "en": "Ninten took it.",
+        "fr": "Ninten took it.",
+        "it": "Ninten took it.",
+        "ja": "Ninten took it.",
+        "ko": "Ninten took it.",
+        "es": "Ninten took it.",
+        "es_ES": "Ninten took it.",
+        "pt_BR": "Ninten took it.",
+        "pl": "Ninten took it.",
+        "de": "Ninten took it.",
+        "ru": "Ninten took it.",
+        "uk": "Ninten took it.",
+        "zh_Hans_CN": "Ninten took it."
       }
     },
     {
@@ -2643,6 +3483,26 @@
       }
     },
     {
+      "key": "@native.battle/4/5/expected",
+      "source": "content/bridge-round.json:texts/5:TACKLE_DESC",
+      "line": 6,
+      "values": {
+        "en": "A charge attack by using one's body.",
+        "fr": "A charge attack by using one's body.",
+        "it": "A charge attack by using one's body.",
+        "ja": "A charge attack by using one's body.",
+        "ko": "A charge attack by using one's body.",
+        "es": "A charge attack by using one's body.",
+        "es_ES": "A charge attack by using one's body.",
+        "pt_BR": "A charge attack by using one's body.",
+        "pl": "A charge attack by using one's body.",
+        "de": "A charge attack by using one's body.",
+        "ru": "A charge attack by using one's body.",
+        "uk": "A charge attack by using one's body.",
+        "zh_Hans_CN": "A charge attack by using one's body."
+      }
+    },
+    {
       "key": "@native.battle/4/6",
       "source": "content/bridge-round.json#TACKLE_DIALOG",
       "line": 7,
@@ -2660,6 +3520,26 @@
         "ru": "Лампа наваливается на [decline:Ninten:M:3]!",
         "uk": "Лампа накинулася на [decline:Ninten:M:3]!",
         "zh_Hans_CN": "台灯猛烈撞向[Ninten]！"
+      }
+    },
+    {
+      "key": "@native.battle/4/6/expected",
+      "source": "content/bridge-round.json:texts/6:TACKLE_DIALOG",
+      "line": 7,
+      "values": {
+        "en": "The Lamp threw its body at Ninten!",
+        "fr": "The Lamp threw its body at Ninten!",
+        "it": "The Lamp threw its body at Ninten!",
+        "ja": "The Lamp threw its body at Ninten!",
+        "ko": "The Lamp threw its body at Ninten!",
+        "es": "The Lamp threw its body at Ninten!",
+        "es_ES": "The Lamp threw its body at Ninten!",
+        "pt_BR": "The Lamp threw its body at Ninten!",
+        "pl": "The Lamp threw its body at Ninten!",
+        "de": "The Lamp threw its body at Ninten!",
+        "ru": "The Lamp threw its body at Ninten!",
+        "uk": "The Lamp threw its body at Ninten!",
+        "zh_Hans_CN": "The Lamp threw its body at Ninten!"
       }
     },
     {
@@ -2683,6 +3563,26 @@
       }
     },
     {
+      "key": "@native.battle/4/7/expected",
+      "source": "content/bridge-round.json:texts/7:FLOAT_NAME",
+      "line": 8,
+      "values": {
+        "en": "Float",
+        "fr": "Float",
+        "it": "Float",
+        "ja": "Float",
+        "ko": "Float",
+        "es": "Float",
+        "es_ES": "Float",
+        "pt_BR": "Float",
+        "pl": "Float",
+        "de": "Float",
+        "ru": "Float",
+        "uk": "Float",
+        "zh_Hans_CN": "Float"
+      }
+    },
+    {
       "key": "@native.battle/4/8",
       "source": "content/bridge-round.json#FLOAT_DESC",
       "line": 9,
@@ -2703,6 +3603,26 @@
       }
     },
     {
+      "key": "@native.battle/4/8/expected",
+      "source": "content/bridge-round.json:texts/8:FLOAT_DESC",
+      "line": 9,
+      "values": {
+        "en": "Float around.",
+        "fr": "Float around.",
+        "it": "Float around.",
+        "ja": "Float around.",
+        "ko": "Float around.",
+        "es": "Float around.",
+        "es_ES": "Float around.",
+        "pt_BR": "Float around.",
+        "pl": "Float around.",
+        "de": "Float around.",
+        "ru": "Float around.",
+        "uk": "Float around.",
+        "zh_Hans_CN": "Float around."
+      }
+    },
+    {
       "key": "@native.battle/4/9",
       "source": "content/bridge-round.json#FLOAT_DIALOG",
       "line": 10,
@@ -2720,6 +3640,26 @@
         "ru": "Лампа наматывает круги в воздухе!",
         "uk": "Лампа ширяє в повітрі!",
         "zh_Hans_CN": "台灯四处漂浮！"
+      }
+    },
+    {
+      "key": "@native.battle/4/9/expected",
+      "source": "content/bridge-round.json:texts/9:FLOAT_DIALOG",
+      "line": 10,
+      "values": {
+        "en": "The Lamp floated around!",
+        "fr": "The Lamp floated around!",
+        "it": "The Lamp floated around!",
+        "ja": "The Lamp floated around!",
+        "ko": "The Lamp floated around!",
+        "es": "The Lamp floated around!",
+        "es_ES": "The Lamp floated around!",
+        "pt_BR": "The Lamp floated around!",
+        "pl": "The Lamp floated around!",
+        "de": "The Lamp floated around!",
+        "ru": "The Lamp floated around!",
+        "uk": "The Lamp floated around!",
+        "zh_Hans_CN": "The Lamp floated around!"
       }
     },
     {
@@ -78794,6 +79734,288 @@
   ],
   "bindings": [
     {
+      "identity": "battle.expected/4/1",
+      "key": "@native.battle/4/1/expected",
+      "expected": "Bash",
+      "origin": "content/bridge-round.json:texts/1:ATTACK_NAME"
+    },
+    {
+      "identity": "battle.expected/4/10",
+      "key": "@native.battle/4/10/expected",
+      "expected": "GUARD_NAME",
+      "origin": "content/bridge-round.json:texts/10:GUARD_NAME"
+    },
+    {
+      "identity": "battle.expected/4/11",
+      "key": "@native.battle/4/11/expected",
+      "expected": "GUARD_DESC",
+      "origin": "content/bridge-round.json:texts/11:GUARD_DESC"
+    },
+    {
+      "identity": "battle.expected/4/12",
+      "key": "@native.battle/4/12/expected",
+      "expected": "Lamp",
+      "origin": "content/bridge-round.json:texts/12:LAMP_NAME"
+    },
+    {
+      "identity": "battle.expected/4/13",
+      "key": "@native.battle/4/13/expected",
+      "expected": "The ,the ,A ,a ,its,it,it",
+      "origin": "content/bridge-round.json:texts/13:LAMP_ART"
+    },
+    {
+      "identity": "battle.expected/4/14",
+      "key": "@native.battle/4/14/expected",
+      "expected": "The Lamp became tame!",
+      "origin": "content/bridge-round.json:texts/14:"
+    },
+    {
+      "identity": "battle.expected/4/15",
+      "key": "@native.battle/4/15/expected",
+      "expected": "Ninten took mortal damage!",
+      "origin": "content/bridge-round.json:texts/15:BATTLE_MSG_MORTAL_DAMAGE"
+    },
+    {
+      "identity": "battle.expected/4/16",
+      "key": "@native.battle/4/16/expected",
+      "expected": "It had no effect on the Lamp!",
+      "origin": "content/bridge-round.json:texts/16:BATTLE_MSG_TARGET_NO_EFFECT"
+    },
+    {
+      "identity": "battle.expected/4/17",
+      "key": "@native.battle/4/17/expected",
+      "expected": "Ninten gained 3 exp.",
+      "origin": "content/bridge-round.json:texts/17:BATTLE_MSG_EXP_ONE_ALLY"
+    },
+    {
+      "identity": "battle.expected/4/18",
+      "key": "@native.battle/4/18/expected",
+      "expected": "Ninten attacks!",
+      "origin": "content/bridge-round.json:texts/18:ATTACK_DIALOG"
+    },
+    {
+      "identity": "battle.expected/4/19",
+      "key": "@native.battle/4/19/expected",
+      "expected": "The Pillow threw its body at Ninten!",
+      "origin": "content/bridge-round.json:texts/19:TACKLE_DIALOG"
+    },
+    {
+      "identity": "battle.expected/4/2",
+      "key": "@native.battle/4/2/expected",
+      "expected": "Deals damage to an enemy.",
+      "origin": "content/bridge-round.json:texts/2:ATTACK_DESC"
+    },
+    {
+      "identity": "battle.expected/4/20",
+      "key": "@native.battle/4/20/expected",
+      "expected": "The Pillow floated around!",
+      "origin": "content/bridge-round.json:texts/20:FLOAT_DIALOG"
+    },
+    {
+      "identity": "battle.expected/4/21",
+      "key": "@native.battle/4/21/expected",
+      "expected": "The Pillow became tame!",
+      "origin": "content/bridge-round.json:texts/21:"
+    },
+    {
+      "identity": "battle.expected/4/22",
+      "key": "@native.battle/4/22/expected",
+      "expected": "Ninten took mortal damage!",
+      "origin": "content/bridge-round.json:texts/22:BATTLE_MSG_MORTAL_DAMAGE"
+    },
+    {
+      "identity": "battle.expected/4/23",
+      "key": "@native.battle/4/23/expected",
+      "expected": "It had no effect on the Pillow!",
+      "origin": "content/bridge-round.json:texts/23:BATTLE_MSG_TARGET_NO_EFFECT"
+    },
+    {
+      "identity": "battle.expected/4/24",
+      "key": "@native.battle/4/24/expected",
+      "expected": "Pillow",
+      "origin": "content/bridge-round.json:texts/24:PILLOW_NAME"
+    },
+    {
+      "identity": "battle.expected/4/25",
+      "key": "@native.battle/4/25/expected",
+      "expected": "The ,the ,A ,a ,its,it,it",
+      "origin": "content/bridge-round.json:texts/25:PILLOW_ART"
+    },
+    {
+      "identity": "battle.expected/4/26",
+      "key": "@native.battle/4/26/expected",
+      "expected": "Ninten gained 5 exp.",
+      "origin": "content/bridge-round.json:texts/26:BATTLE_MSG_EXP_ONE_ALLY"
+    },
+    {
+      "identity": "battle.expected/4/27",
+      "key": "@native.battle/4/27/expected",
+      "expected": "Max. HP raised by 3!",
+      "origin": "content/bridge-round.json:texts/27:BATTLE_MSG_LEVEL_UP_STAT"
+    },
+    {
+      "identity": "battle.expected/4/28",
+      "key": "@native.battle/4/28/expected",
+      "expected": "Max. PP raised by 1!",
+      "origin": "content/bridge-round.json:texts/28:BATTLE_MSG_LEVEL_UP_STAT"
+    },
+    {
+      "identity": "battle.expected/4/29",
+      "key": "@native.battle/4/29/expected",
+      "expected": "Offense raised by 1!",
+      "origin": "content/bridge-round.json:texts/29:BATTLE_MSG_LEVEL_UP_STAT"
+    },
+    {
+      "identity": "battle.expected/4/3",
+      "key": "@native.battle/4/3/expected",
+      "expected": "Ninten attacks!",
+      "origin": "content/bridge-round.json:texts/3:ATTACK_DIALOG"
+    },
+    {
+      "identity": "battle.expected/4/30",
+      "key": "@native.battle/4/30/expected",
+      "expected": "IQ raised by 1!",
+      "origin": "content/bridge-round.json:texts/30:BATTLE_MSG_LEVEL_UP_STAT"
+    },
+    {
+      "identity": "battle.expected/4/31",
+      "key": "@native.battle/4/31/expected",
+      "expected": "Ninten leveled up to 2!",
+      "origin": "content/bridge-round.json:texts/31:BATTLE_MSG_LEVEL_UP"
+    },
+    {
+      "identity": "battle.expected/4/32",
+      "key": "@native.battle/4/32/expected",
+      "expected": "Ninten learned Telepathy!",
+      "origin": "content/bridge-round.json:texts/32:BATTLE_MSG_LEARNING"
+    },
+    {
+      "identity": "battle.expected/4/33",
+      "key": "@native.battle/4/33/expected",
+      "expected": "Bite",
+      "origin": "content/bridge-round.json:texts/33:BITE_NAME"
+    },
+    {
+      "identity": "battle.expected/4/34",
+      "key": "@native.battle/4/34/expected",
+      "expected": "A bite using sharp fangs.",
+      "origin": "content/bridge-round.json:texts/34:BITE_DESC"
+    },
+    {
+      "identity": "battle.expected/4/35",
+      "key": "@native.battle/4/35/expected",
+      "expected": "The Stray Dog bit into Ninten!",
+      "origin": "content/bridge-round.json:texts/35:BITE_DIALOG"
+    },
+    {
+      "identity": "battle.expected/4/36",
+      "key": "@native.battle/4/36/expected",
+      "expected": "Bash",
+      "origin": "content/bridge-round.json:texts/36:BASH_NAME"
+    },
+    {
+      "identity": "battle.expected/4/37",
+      "key": "@native.battle/4/37/expected",
+      "expected": "Deals a low amount of damage against an enemy.",
+      "origin": "content/bridge-round.json:texts/37:BASH_DESC"
+    },
+    {
+      "identity": "battle.expected/4/38",
+      "key": "@native.battle/4/38/expected",
+      "expected": "The Stray Dog attacks!",
+      "origin": "content/bridge-round.json:texts/38:BASH_DIALOG"
+    },
+    {
+      "identity": "battle.expected/4/39",
+      "key": "@native.battle/4/39/expected",
+      "expected": "Stray Dog",
+      "origin": "content/bridge-round.json:texts/39:STRAYDOG_NAME"
+    },
+    {
+      "identity": "battle.expected/4/4",
+      "key": "@native.battle/4/4/expected",
+      "expected": "Charge",
+      "origin": "content/bridge-round.json:texts/4:TACKLE_NAME"
+    },
+    {
+      "identity": "battle.expected/4/40",
+      "key": "@native.battle/4/40/expected",
+      "expected": "The ,the ,A ,a ,its,it,it",
+      "origin": "content/bridge-round.json:texts/40:STRAYDOG_ART"
+    },
+    {
+      "identity": "battle.expected/4/41",
+      "key": "@native.battle/4/41/expected",
+      "expected": "The Stray Dog became tame!",
+      "origin": "content/bridge-round.json:texts/41:"
+    },
+    {
+      "identity": "battle.expected/4/42",
+      "key": "@native.battle/4/42/expected",
+      "expected": "Ninten took mortal damage!",
+      "origin": "content/bridge-round.json:texts/42:BATTLE_MSG_MORTAL_DAMAGE"
+    },
+    {
+      "identity": "battle.expected/4/43",
+      "key": "@native.battle/4/43/expected",
+      "expected": "It had no effect on the Stray Dog!",
+      "origin": "content/bridge-round.json:texts/43:BATTLE_MSG_TARGET_NO_EFFECT"
+    },
+    {
+      "identity": "battle.expected/4/44",
+      "key": "@native.battle/4/44/expected",
+      "expected": "Ninten gained 8 exp.",
+      "origin": "content/bridge-round.json:texts/44:BATTLE_MSG_EXP_ONE_ALLY"
+    },
+    {
+      "identity": "battle.expected/4/45",
+      "key": "@native.battle/4/45/expected",
+      "expected": "The enemy dropped a present!",
+      "origin": "content/bridge-round.json:texts/45:BATTLE_MSG_PRESENT"
+    },
+    {
+      "identity": "battle.expected/4/46",
+      "key": "@native.battle/4/46/expected",
+      "expected": "Inside the present, there was a Flea Bag.",
+      "origin": "content/bridge-round.json:texts/46:BATTLE_MSG_PRESENT_INSIDE"
+    },
+    {
+      "identity": "battle.expected/4/47",
+      "key": "@native.battle/4/47/expected",
+      "expected": "Ninten took it.",
+      "origin": "content/bridge-round.json:texts/47:BATTLE_MSG_PRESENT_TAKING"
+    },
+    {
+      "identity": "battle.expected/4/5",
+      "key": "@native.battle/4/5/expected",
+      "expected": "A charge attack by using one's body.",
+      "origin": "content/bridge-round.json:texts/5:TACKLE_DESC"
+    },
+    {
+      "identity": "battle.expected/4/6",
+      "key": "@native.battle/4/6/expected",
+      "expected": "The Lamp threw its body at Ninten!",
+      "origin": "content/bridge-round.json:texts/6:TACKLE_DIALOG"
+    },
+    {
+      "identity": "battle.expected/4/7",
+      "key": "@native.battle/4/7/expected",
+      "expected": "Float",
+      "origin": "content/bridge-round.json:texts/7:FLOAT_NAME"
+    },
+    {
+      "identity": "battle.expected/4/8",
+      "key": "@native.battle/4/8/expected",
+      "expected": "Float around.",
+      "origin": "content/bridge-round.json:texts/8:FLOAT_DESC"
+    },
+    {
+      "identity": "battle.expected/4/9",
+      "key": "@native.battle/4/9/expected",
+      "expected": "The Lamp floated around!",
+      "origin": "content/bridge-round.json:texts/9:FLOAT_DIALOG"
+    },
+    {
       "identity": "battle.menu/0",
       "key": "ATTACK_NAME",
       "expected": "Bash",
@@ -79318,7 +80540,7 @@
     {
       "identity": "battle/4/15",
       "key": "@native.battle/4/15",
-      "expected": "Ninten took mortal damage!",
+      "expected": "[Ninten] took mortal damage!",
       "origin": "content/bridge-round.json:texts/15:BATTLE_MSG_MORTAL_DAMAGE"
     },
     {
@@ -79330,19 +80552,19 @@
     {
       "identity": "battle/4/17",
       "key": "@native.battle/4/17",
-      "expected": "Ninten gained 3 exp.",
+      "expected": "[Ninten] gained 3 exp.",
       "origin": "content/bridge-round.json:texts/17:BATTLE_MSG_EXP_ONE_ALLY"
     },
     {
       "identity": "battle/4/18",
       "key": "@native.battle/4/18",
-      "expected": "Ninten attacks!",
+      "expected": "[Ninten] attacks!",
       "origin": "content/bridge-round.json:texts/18:ATTACK_DIALOG"
     },
     {
       "identity": "battle/4/19",
       "key": "@native.battle/4/19",
-      "expected": "The Pillow threw its body at Ninten!",
+      "expected": "The Pillow threw its body at [Ninten]!",
       "origin": "content/bridge-round.json:texts/19:TACKLE_DIALOG"
     },
     {
@@ -79366,7 +80588,7 @@
     {
       "identity": "battle/4/22",
       "key": "@native.battle/4/22",
-      "expected": "Ninten took mortal damage!",
+      "expected": "[Ninten] took mortal damage!",
       "origin": "content/bridge-round.json:texts/22:BATTLE_MSG_MORTAL_DAMAGE"
     },
     {
@@ -79390,7 +80612,7 @@
     {
       "identity": "battle/4/26",
       "key": "@native.battle/4/26",
-      "expected": "Ninten gained 5 exp.",
+      "expected": "[Ninten] gained 5 exp.",
       "origin": "content/bridge-round.json:texts/26:BATTLE_MSG_EXP_ONE_ALLY"
     },
     {
@@ -79414,7 +80636,7 @@
     {
       "identity": "battle/4/3",
       "key": "@native.battle/4/3",
-      "expected": "Ninten attacks!",
+      "expected": "[Ninten] attacks!",
       "origin": "content/bridge-round.json:texts/3:ATTACK_DIALOG"
     },
     {
@@ -79426,13 +80648,13 @@
     {
       "identity": "battle/4/31",
       "key": "@native.battle/4/31",
-      "expected": "Ninten leveled up to 2!",
+      "expected": "[Ninten] leveled up to 2!",
       "origin": "content/bridge-round.json:texts/31:BATTLE_MSG_LEVEL_UP"
     },
     {
       "identity": "battle/4/32",
       "key": "@native.battle/4/32",
-      "expected": "Ninten learned Telepathy!",
+      "expected": "[Ninten] learned Telepathy!",
       "origin": "content/bridge-round.json:texts/32:BATTLE_MSG_LEARNING"
     },
     {
@@ -79450,7 +80672,7 @@
     {
       "identity": "battle/4/35",
       "key": "@native.battle/4/35",
-      "expected": "The Stray Dog bit into Ninten!",
+      "expected": "The Stray Dog bit into [Ninten]!",
       "origin": "content/bridge-round.json:texts/35:BITE_DIALOG"
     },
     {
@@ -79498,7 +80720,7 @@
     {
       "identity": "battle/4/42",
       "key": "@native.battle/4/42",
-      "expected": "Ninten took mortal damage!",
+      "expected": "[Ninten] took mortal damage!",
       "origin": "content/bridge-round.json:texts/42:BATTLE_MSG_MORTAL_DAMAGE"
     },
     {
@@ -79510,7 +80732,7 @@
     {
       "identity": "battle/4/44",
       "key": "@native.battle/4/44",
-      "expected": "Ninten gained 8 exp.",
+      "expected": "[Ninten] gained 8 exp.",
       "origin": "content/bridge-round.json:texts/44:BATTLE_MSG_EXP_ONE_ALLY"
     },
     {
@@ -79528,7 +80750,7 @@
     {
       "identity": "battle/4/47",
       "key": "@native.battle/4/47",
-      "expected": "Ninten took it.",
+      "expected": "[Ninten] took it.",
       "origin": "content/bridge-round.json:texts/47:BATTLE_MSG_PRESENT_TAKING"
     },
     {
@@ -79540,7 +80762,7 @@
     {
       "identity": "battle/4/6",
       "key": "@native.battle/4/6",
-      "expected": "The Lamp threw its body at Ninten!",
+      "expected": "The Lamp threw its body at [Ninten]!",
       "origin": "content/bridge-round.json:texts/6:TACKLE_DIALOG"
     },
     {

@@ -68,6 +68,15 @@ int main(int argc,char**argv){
  unsigned call_lines=0;uint32_t call_previous=UINT32_MAX;
  for(unsigned tick=0;tick<2400&&field.world.stage()!=OpeningStage::Walking;++tick){const bool ok=field.world.advance({})&&field.world.idle_frame(1.0/60);check(ok,field.world.error());const auto id=field.world.pending_dialogue_id();if(id!=UINT32_MAX&&id!=call_previous){call_previous=id;++call_lines;}if(field.world.story_input_allowed())check(field.world.finish_story_dialogue(),"normal call acknowledgement");}
  check(call_lines==5&&field.world.story_flag("pippis_mom_call")&&field.world.stage()==OpeningStage::Walking,"battle, source boundary and all five call phrases form one playable chain");
+ // Continue by ordinary physics input onto the newly connected west road.
+ // These are test waypoints derived from the unchanged original collision map.
+ for(const Vec2 target:std::vector<Vec2>{{536,272},{536,480},{408,480},{408,488},{400,488},{400,512},{344,512},{344,520},{336,520},{336,528},{184,528},{184,536},{176,536},{176,560},{-560,560},{-560,496}}){
+  unsigned tick=0;for(;tick<1600;++tick){const auto at=field.world.player().position;const float dx=target.x-at.x,dy=target.y-at.y;if(std::abs(dx)<.1f&&std::abs(dy)<.1f)break;WalkInput input{};if(std::abs(dx)>=.1f)input.x=dx>0?1:-1;else input.y=dy>0?1:-1;
+   check(field.before_physics(input)&&field.world.advance(input)&&field.after_physics()&&field.world.idle_frame(1.0/60),field.world.error());check(field.phase()==FieldPhase::Walking&&field.world.stage()==OpeningStage::Walking,"ordinary road movement does not reenter completed source triggers");}
+  if(tick==1600){const auto at=field.world.player().position;std::fprintf(stderr,"blocked road waypoint %.0f,%.0f at %.3f,%.3f\n",target.x,target.y,at.x,at.y);}
+  check(tick<1600,"post-battle west-road waypoint is reachable without changing position/flags");
+ }
+ check(field.world.player().position.x<=-558&&field.world.player().position.y<=498,"normal movement connects bridge win and mom call to west road");
  // An independent source programme fixture checks all five player-controlled
  // lines and the final movement; combat-to-call reachability is tested separately.
  OpeningWorld call;check(call.initialize_restored(room.view(),flags,std::vector<bool>(flags.size(),true),{510,272},{1,0}),call.error());call.attach_random(random);check(call.begin_house_program(1),call.error());unsigned lines=0;uint32_t previous=UINT32_MAX;

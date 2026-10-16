@@ -53,8 +53,13 @@ def add(records,locales,source,bind,tr):
      ctx.update({'i'+str(j):a for j,a in enumerate(articles(item['article'],lang,iname))})
     values[lang]=row['text']if lang=='en'and ir['schema']<6 else fmt(tr(key,lang),ctx)
    synthetic=f'@native.battle/{battle}/{i}';records[synthetic]=dict(key=synthetic,source=path+'#'+row['key'],line=i+1,values=values)
-   projection=values['en'].replace('[Ninten]','Ninten')if ir['schema']>=6 else None
-   bind(f'battle/{battle}/{i}',synthetic,row['text'],path+':texts/'+str(i)+':'+row['key'],projection)
+   origin=path+':texts/'+str(i)+':'+row['key']
+   if ir['schema']>=6:
+    require(values['en'].replace('[Ninten]','Ninten')==row['text'],'Dynamic source battle projection changed')
+    guard=synthetic+'/expected'
+    records[guard]=dict(key=guard,source=origin,line=i+1,values={lang:row['text']for lang in locales})
+    bind(f'battle.expected/{battle}/{i}',guard,row['text'],origin)
+   bind(f'battle/{battle}/{i}',synthetic,values['en'],origin)
    # Preserve original source key and source template explicitly in sidecar.
    result.append(dict(battle=battle,index=i,key=row['key'],source_text=row['source_text'],expected=row['text'],actor=chosen[0],target=chosen[1],enemy=chosen[2]['name'],value=chosen[3],stat=chosen[4],derived_key=synthetic))
  return result

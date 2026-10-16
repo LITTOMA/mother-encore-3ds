@@ -16,6 +16,18 @@ class BridgeRoundTests(unittest.TestCase):
         self.assertEqual(self.ir['victory']['reward_exp'],8)
         self.assertEqual(self.ir['victory']['reward_cash'],20)
         self.assertEqual([x['weight']for x in self.ir['enemy_choices']],[2,1])
+    def test_locale_binding_guards_and_display_templates_both_match_catalog_contract(self):
+        import sys
+        sys.path.insert(0,str(ROOT/'tools'))
+        from tools import localization_assets as locale
+        from tools.localization_house import unescape
+        catalog=locale.extract();records={r['key']:r for r in catalog['records']}
+        bindings={b['identity']:b for b in catalog['bindings']}
+        for i,row in enumerate(self.ir['texts']):
+            if row['role']==0:continue
+            guard=bindings['battle.expected/4/'+str(i)];display=bindings['battle/4/'+str(i)]
+            self.assertEqual(guard['expected'],row['text'])
+            for binding in (guard,display):self.assertEqual(unescape(records[binding['key']]['values']['en']),binding['expected'])
     def test_changed_reviewed_content_is_rejected(self):
         for section,key,value in [('binding','win_flag','invented_flag'),('victory','reward_cash',999),('loot','chance',100),('loot','item','InventedItem')]:
             candidate=copy.deepcopy(self.ir);candidate[section][key]=value

@@ -1,5 +1,5 @@
 {
-  "head_at_compile": "a6b2eeca00ea5a45baace55f10e4fe1230199091",
+  "head_at_compile": "2ca4a49798653d16042178fe30752b5a27abce35",
   "level": "GCC host ASan/UBSan, not GPU or hardware",
   "flags": [
     "g++",
@@ -57,7 +57,7 @@
     "runtime/load_rng.cpp": "d46de5854cb5624246ae8a66002bbe73449440f9905ca2c271b70a699017b89e",
     "runtime/locale_preference.cpp": "02705b377b8f4ea34dd487183e44a6442c28741caea02ebb77a565ab22f89fc3",
     "runtime/localization.cpp": "f818f149e6d17afd73e526570614693199315f174520da92cf295195fc0a61ae",
-    "runtime/localized_presentation.cpp": "037c7f137a161a2050ac4a9fc4f51ae1237c88f0230e27bcd16f6a09b3c6669e",
+    "runtime/localized_presentation.cpp": "a554bfd3ea46a909fc5640a1f8263994f2faf0e0acfb8700042dff94387f9d81",
     "runtime/mick_treats.cpp": "02dda47a5d4e3e23214fa027225513a0701c41f0b515da4e3083d8fff2f8065c",
     "runtime/movement.cpp": "268a370d09916a276e0029955359e299dc70e8aea428465873313cf785839fbd",
     "runtime/music_regions.cpp": "c201946fb63c01385c1174717d3a8b7342ce4d0a66c44aa5ca5ab8a572b45116",
@@ -185,10 +185,11 @@
     "include/encore/world_effect_data.hpp": "046397dbb1644115543d8189eac21a45410c05024395771fea3288c6d0450781",
     "include/encore/world_flags.hpp": "a36d5f997217a8c361a94abd6fa54530d7903d3c8835664bd3d3ae8f244d7e36",
     "include/encore/world_links.hpp": "85e46f957a4cfb0b5e37ebf6b4915711dc2603f7725d8188883920ce509abb5f",
+    "tests/bridge_localization_tests.cpp": "0cee1c73b0dcd2327d20c17eb6418f06bfb40afd3b1b724e0c41b31ba83f3e84",
     "tests/native_session_tests.cpp": "6bafb5e6c5b6c1e7b20f293c6b097d7dcdece0edcfa7d6c3cbedacf4f1f1ecd5",
     "tests/music_regions_tests.cpp": "5b45c08f014262a6eb9a4d12422f5715f6d8360784188e9d2849e660cf104a1c",
     "tools/emulator_bridge_fixture.cpp": "9bbfd106cc9a06e9d60adb65112eed7d20a14a077e30ea6d5b20167ad3222340",
-    "tests/field_story_tests.cpp": "275c970528851b8cec5731b685aaf297751e011cd8f4bb9e3170a4d7d8154f68",
+    "tests/field_story_tests.cpp": "563ee8fa9cef8e80044627ccbbd54f0da13039c0771d19e876817ac836633ae9",
     "tests/bridge_round_tests.cpp": "771235f67414a1bd395daf926972ed8f6ea42facf7a1567447494ea9e3e754b6",
     "tests/resource_catalog_tests.cpp": "f241588c5cb09ada45ade96028a32581c9edc3890f7052a07ad08a196f9e906e",
     "tests/field_npc_motion_tests.cpp": "3b7dd987b1baf175ba062cddc1ffae56b1312eeba04779f7055b0ab72f90dd6b",

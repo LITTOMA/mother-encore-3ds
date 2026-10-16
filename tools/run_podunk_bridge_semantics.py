@@ -82,7 +82,7 @@ try:
   assert s['battle_round_phase']!=6,('Fixture was defeated',s)
   pulse('A',settle=35)
  else:raise TimeoutError('Battle did not return '+str(state()))
- won=record('victory_return');capture('victory-return');assert flag(won,'beat_dog_bridge')and not flag(won,'pippis_mom_call');assert won['experience']==initial['experience']+8 and won['cash']==initial['cash']+20
+ won=record('victory_return');capture('victory-return');assert flag(won,'beat_dog_bridge')and not flag(won,'pippis_mom_call');assert won['experience']==initial['experience']+8 and won['cash']==initial['cash'] and won['bank']==initial['bank']+20 and won['earned_cash']==initial['earned_cash']+20
  assert won['loot_ready']and won['loot_granted']==won['loot_selected'];assert won['inventory_count']==initial['inventory_count']+won['loot_selected'];assert not won['region_music_paused']and not won['dialogue_music_playing']
  music_before=(won['dsp_region_sample_sum'],won['dsp_region_wave_sum']);advance(120);audio=record('returned_audio');assert audio['dsp_region_playing']and music_before!=(audio['dsp_region_sample_sum'],audio['dsp_region_wave_sum'])
  wait(lambda s:s['world_stage']==0 and s['paused']==0,limit=1200)
@@ -94,7 +94,10 @@ try:
  wait(lambda s:s['world_stage']==0 and s['paused']==0,limit=1200)
  called=record('mom_complete');assert flag(called,'pippis_mom_call')and flag(called,'beat_dog_bridge')
  # Walk beyond both original progress triggers by normal input.
- travel('RIGHT',lambda s:s['player_x']>=700);frontier=record('east_of_call');capture('east-of-call')
+ travel('RIGHT',lambda s:s['player_x']>=536)
+ for button,axis,value in [('DOWN','player_y',480),('LEFT','player_x',408),('DOWN','player_y',488),('LEFT','player_x',400),('DOWN','player_y',512),('LEFT','player_x',344),('DOWN','player_y',520),('LEFT','player_x',336),('DOWN','player_y',528),('LEFT','player_x',184),('DOWN','player_y',536),('LEFT','player_x',176),('DOWN','player_y',560),('LEFT','player_x',-560),('UP','player_y',496)]:
+  travel(button,lambda s,axis=axis,value=value,positive=button in ('RIGHT','DOWN'):s[axis]>=value if positive else s[axis]<=value)
+ frontier=record('west_road');capture('west-road')
  result={'status':'passed','scope':'Artificial post-basement checkpoint, normal LOAD/door/walk/battle/dialogue input; no original pixel or whole-game claim','source_commit':receipt['source_commit'],'clock_fixture':a.clock,'fixture_sha256':r.sha(a.fixture),'emulator_sha256':r.sha(a.emulator),'capabilities':{'memoryWriteEnabled':caps['memoryWriteEnabled'],'inputEnabled':caps['inputEnabled']},'projection':{k:frontier[k]for k in ['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','loot_selected',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+n for i in range(16)for n in ('definition','doses','equipped')]]}}
 except BaseException as exc:
  result['error']=repr(exc)

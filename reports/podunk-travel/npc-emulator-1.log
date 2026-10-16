@@ -1,0 +1,19 @@
+loaded {'field_scene': 0, 'field_phase': 4294967295, 'player_x': 136.0, 'player_y': 800.0, 'mick_x': 0.0, 'mick_y': 0.0, 'mick_phase': 4294967295, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+outside {'field_scene': 2, 'field_phase': 0, 'player_x': 8.0, 'player_y': -39.0, 'mick_x': -88.0, 'mick_y': 8.0, 'mick_phase': 0, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+travel DOWN 0 (8.0, -39.0)
+travel LEFT 0 (8.0, 68.0)
+travel DOWN 0 (-35.0, 68.0)
+south_of_yard {'field_scene': 2, 'field_phase': 0, 'player_x': -35.0, 'player_y': 194.0, 'mick_x': -105.0, 'mick_y': -5.066675662994385, 'mick_phase': 0, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+travel RIGHT 0 (-35.0, 194.0)
+travel DOWN 0 (324.0, 194.0)
+bridge_approach {'field_scene': 2, 'field_phase': 0, 'player_x': 324.0, 'player_y': 278.0, 'mick_x': -107.0, 'mick_y': -4.0, 'mick_phase': 0, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+travel RIGHT 0 (324.0, 278.0)
+bridge_crossed {'field_scene': 2, 'field_phase': 0, 'player_x': 355.0, 'player_y': 278.0, 'mick_x': -107.0, 'mick_y': 18.400001525878906, 'mick_phase': 0, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+travel RIGHT 0 (355.0, 278.0)
+bridge_story_boundary {'field_scene': 2, 'field_phase': 3, 'player_x': 450.0, 'player_y': 278.0, 'mick_x': -107.0, 'mick_y': 9.0, 'mick_phase': 0, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+travel LEFT 0 (449.0, 278.0)
+travel RIGHT 0 (307.0, 278.0)
+travel LEFT 0 (356.0, 278.0)
+travel RIGHT 0 (311.0, 278.0)
+bridge_repeat {'field_scene': 2, 'field_phase': 0, 'player_x': 356.0, 'player_y': 278.0, 'mick_x': -85.0, 'mick_y': 18.0, 'mick_phase': 0, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+PASSED passed

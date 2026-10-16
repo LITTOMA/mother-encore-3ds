@@ -1,0 +1,19 @@
+loaded {'field_scene': 0, 'field_phase': 4294967295, 'player_x': 136.0, 'player_y': 800.0, 'mick_x': 0.0, 'mick_y': 0.0, 'mick_phase': 4294967295, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+outside {'field_scene': 2, 'field_phase': 0, 'player_x': 8.0, 'player_y': -39.0, 'mick_x': -88.0, 'mick_y': 8.0, 'mick_phase': 0, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+travel DOWN 0 (8.0, -39.0)
+travel LEFT 0 (8.0, 64.0)
+travel DOWN 0 (-35.0, 64.0)
+south_of_yard {'field_scene': 2, 'field_phase': 0, 'player_x': -35.0, 'player_y': 195.0, 'mick_x': -105.0, 'mick_y': -1.866675853729248, 'mick_phase': 0, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+travel RIGHT 0 (-35.0, 195.0)
+travel DOWN 0 (319.0, 195.0)
+bridge_approach {'field_scene': 2, 'field_phase': 0, 'player_x': 319.0, 'player_y': 282.0, 'mick_x': -107.0, 'mick_y': -4.0, 'mick_phase': 0, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+travel RIGHT 0 (319.0, 282.0)
+bridge_crossed {'field_scene': 2, 'field_phase': 0, 'player_x': 355.0, 'player_y': 282.0, 'mick_x': -107.0, 'mick_y': 19.4666690826416, 'mick_phase': 0, 'dialogue_stopped': 0, 'dialogue_finished': 0, 'dialogue_visible': 0}
+travel RIGHT 0 (355.0, 282.0)
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_podunk_camera_semantics.py", line 102, in <module>
+    travel('RIGHT',lambda s:s['field_phase']!=0,allow_boundary=True)
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_podunk_camera_semantics.py", line 77, in travel
+    if unchanged>=90:raise TimeoutError('Blocked '+button+': '+str(s))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: Blocked RIGHT: {'version': 6, 'byte_size': 764, 'sequence': 1174, 'frame': 587, 'width': 400, 'height': 240, 'title_phase': 0, 'title_option': 1, 'naming_phase': 0, 'naming_field': 0, 'naming_selected': 0, 'intro_phase': 0, 'menu_phase': 0, 'menu_command': 0, 'menu_slot': 0, 'menu_candidate': 0, 'field_scene': 2, 'field_phase': 0, 'house_phase': 12, 'world_stage': 0, 'paused': 0, 'crouch': 0, 'session_ready': 1, 'battle_active': 0, 'level': 2, 'hp': 65, 'pp': 27, 'inventory_count': 1, 'key_count': 1, 'audio_available': 1, 'music_playing': 0, 'music_asset': 1202, 'dsp_music_playing': 0, 'dsp_music_sample_pos': 1720, 'dsp_music_wave_seq': 23, 'psi_learned': 0, 'intro_scene': 0, 'intro_door': 0, 'overflow': 0, 'battle_entry_phase': 0, 'battle_round_phase': 4294967295, 'battle_outcome_phase': 0, 'enemy_hp': 0, 'door_unlocked_mask': 9, 'world_phrase': 0, 'mick_phase': 0, 'choice_phase': 0, 'save_phase': 0, 'present_opened_mask': 4, 'object_flag_count': 0, 'experience': 9, 'dialogue_active': 0, 'dialogue_finished': 0, 'dialogue_stopped': 0, 'dialogue_visible': 0, 'player_x': 411.0, 'player_y': 282.0, 'direction_x': 1.0, 'direction_y': 0.0, 'mick_x': -68.0, 'mick_y': 19.666669845581055, 'house_error': '', 'field_error': '', 'menu_error': '', 'audio_error': ''}

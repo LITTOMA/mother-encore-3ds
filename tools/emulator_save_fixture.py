@@ -35,7 +35,7 @@ def main():
     manifest=dict(schema=1,kind='encore.emulator-save-fixture',source_commit=source,upstream_commit=session['commit'],
                   file=save.name,sha256=sha(save),resources={name:sha(ROOT/'romfs'/name) for name in RESOURCES},
                   base_key_count=len(session['defaults']['key_items'])+1,present_index=indices[0],
-                  scope='Artificial shared-core-validated snapshot starts beside the basement with KeyBasement already held. Not a played save or evidence of naturally obtaining the key. LOAD, unlock, pickup and reentry use normal game input; no memory writes.',
+                  scope='Artificial shared-core-validated snapshot starts beside the basement with KeyBasement already held and talked_to_dad set for the field-exit regression. Not a played save or evidence of naturally obtaining the key or playing the Dad call. LOAD, unlock, pickup and reentry use normal game input; no memory writes.',
                   execution=dict(generator_sha256=sha(generator),producer_sha256=sha(__file__),log_sha256=sha(out/'generator.log')))
     (out/'fixture.json').write_bytes((json.dumps(manifest,indent=2)+'\n').encode('utf8'))
     print('Checked artificial save fixture generated; original acquisition history is outside this checkpoint')

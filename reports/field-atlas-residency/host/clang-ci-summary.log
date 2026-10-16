@@ -1,0 +1,11 @@
+Literal excerpts from job 116986867603; full raw log SHA/path in ../ci.json.
+2026-10-16T13:08:49.9931566Z 100% tests passed, 0 tests failed out of 1
+2026-10-16T13:08:49.9931935Z Total Test time (real) =   0.04 sec
+2026-10-16T13:09:23.3037846Z 100% tests passed, 0 tests failed out of 1
+2026-10-16T13:09:23.3038163Z Total Test time (real) =   1.70 sec
+2026-10-16T13:09:23.3101553Z ##[group]Run make test -o content CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 4 --no-tests=error --label-exclude python_unit"
+2026-10-16T13:23:55.2026487Z 100% tests passed, 0 tests failed out of 152
+2026-10-16T13:23:55.2026835Z Total Test time (real) = 496.35 sec
+2026-10-16T13:23:58.9332107Z ##[group]Run make sanitize -o content CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 4 --no-tests=error --label-exclude python_unit"
+2026-10-16T13:40:01.0398517Z 100% tests passed, 0 tests failed out of 152
+2026-10-16T13:40:01.0399001Z Total Test time (real) = 583.08 sec

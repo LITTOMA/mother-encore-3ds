@@ -50,7 +50,7 @@ python tools/resource_catalog.py compile
 - `FieldScene`（共享核心）拥有一个 `OpeningWorld`，通过 `MotionObstacleSource` 向 `StaticMotionSolver` 提供查询范围内的图块与静态体形状。
 - `HouseRuntime::bind_scene_routes` 只把有受检路线的 `UnsupportedScene` 边界变成跨场景门，其余边界保持原开发停止。
 - `SceneDoorTransition` 使用 `.encintro` 中同一套 uiManager fade 曲线与圆形遮罩着色参数；遮罩计算从 `Introduction` 抽出为共享函数，开场行为不变。
-- 平台在换场时先准备新场景，失败则保留原场景并给出可按 B 退回的停止；进入 Podunk 时释放房屋地图贴图，回家时重新加载。
+- 平台在换场时先准备新场景，失败则保留原场景并给出可按 B 退回的停止；进入 Podunk 时释放房屋地图贴图、最近实际使用的战斗绘制资源与回合媒体，保留室外菜单需要的受检对话字体，再加载室外图集。回家时按原有流程重新准备。图集失败保留底层具体原因，见 [图集驻留修复与实际验证](FIELD_ATLAS_RESIDENCY.md)。
 
 ## 与原版的已知差异
 

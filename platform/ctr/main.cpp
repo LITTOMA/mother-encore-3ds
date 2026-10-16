@@ -1271,12 +1271,21 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     mick_bind_target=candidate.get();
     if(!loading.step([&]{return bind_field_mick(*candidate,error)&&bind_field_npcs(*candidate,error)&&candidate->bind_story(field_story_data.view(),items_data.view(),field_story_host,error);},"field-actors")){mick_bind_target=nullptr;return false;}
     mick_bind_target=nullptr;
+    texture_owner_checkpoint("field-before-house-release");
     release_house_graphics();
-    if(!loading.step([&]{return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error)&&load_mick_graphics(error);},"field-atlases")){
+    if(!loading.step([&]{
+        // Retire played battle media before importing the field atlas; retain
+        // only the checked UI font. The field encounter prewarms separately.
+        round_renderer.free();
+        if(!load_ui_font_only(error))return false;
+        texture_owner_checkpoint("field-battle-retired");
+        return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error)&&load_mick_graphics(error);
+    },"field-atlases")){
         release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     if(!loading.finish()){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     audio_player.reset_scene();
     if(!commit_field_music(error)){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
+    texture_owner_checkpoint("field-graphics-ready");
     // Commit: the House owner stays parked (paused in SceneTransition) behind the field.
     candidate->world.attach_random(battle_random);
     cancel_battle_prewarm();field_story_text=UINT32_MAX;session_state=std::move(snapshot);field_scene=std::move(candidate);field_status.clear();field_choice_shown=false;

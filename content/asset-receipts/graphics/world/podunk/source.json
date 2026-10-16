@@ -1,16 +1,16 @@
 {
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "compiler_sha256": "bff1a434bfbb8923f00efd418bdcffcfbe1a4581fe1541ff6063fe1ff9f687e1",
+  "compiler_sha256": "b849f35f0b1ebd261926762c73286061553a244439ac3ccfbee3a7e4c3dda60f",
   "compression": "none",
   "format": "rgba8",
   "outputs": {
     "world/podunk/podunk.encmap": {
-      "bytes": 1620684,
-      "sha256": "ec39c7ae8c174bd6ffe3697cceb7812e4b34428d380fbffc9b95fdf84caf5638"
+      "bytes": 1619388,
+      "sha256": "b9bb6de0f9abd6a22736bd2eac64ce6ecf002adacb5cefd9adf7610431c5a842"
     },
     "world/podunk/podunk.encroom": {
       "bytes": 11536,
-      "sha256": "d1b9eccc0cbb654d641c4a3c7cf9c93b7e7809d162ff113fd3241d1b98048081"
+      "sha256": "3b95780efd016cacba6b205a32f825d5b77eebb2a5e8ed046a472397df0640bb"
     },
     "world/world.enclinks": {
       "bytes": 528,
@@ -27,7 +27,7 @@
       "width": 1024
     }
   ],
-  "recipe_sha256": "cbff5ff6fd2e36b8de88ae1b548be0d4bb12f2a23f392c65ad965a0eb056e370",
+  "recipe_sha256": "6f50417e78d81c9ef74586d4659f482a734a0e9f41ea360d4e144c751a6fb322",
   "schema": 1,
   "sources": {
     "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
@@ -93,7 +93,9 @@
     "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
     "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
     "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
     "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Switches/ControlledTwoStatesObject.gd": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee",
     "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
     "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
     "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",

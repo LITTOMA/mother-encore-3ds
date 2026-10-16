@@ -40,6 +40,7 @@ int main(int argc,char**argv){
     // ENCMAP01 admission and transactional rejection.
     FieldMapData map;check(map.load(map_bytes.data(),map_bytes.size(),error),error.c_str());
     const auto view=map.view();const auto layers=view.count(FieldMapSection::Layers),cells=view.count(FieldMapSection::Cells);
+    check(view.capabilities()==2,"confirm-only boundary capability admitted");
     check(view.scene_id()!=0&&layers>0&&cells>0&&view.count(FieldMapSection::Groups)>0,"checked field map content");
     check(view.count(static_cast<FieldMapSection>(0))==0&&view.count(static_cast<FieldMapSection>(99))==0&&view.text({UINT32_MAX,1}).empty(),"unknown lookups are empty");
     auto reject=[&](std::vector<uint8_t>b,const char*why,bool fix=true){if(fix)rehash(b);check(!map.load(b.data(),b.size(),error),why);
@@ -47,6 +48,18 @@ int main(int argc,char**argv){
     for(size_t size:{size_t(0),size_t(63),size_t(64+21*16-1),map_bytes.size()-1})check(!map.load(map_bytes.data(),size,error),"truncated map rejected");
     check(!map.load(nullptr,map_bytes.size(),error),"null map rejected");
     {auto b=map_bytes;b[0]^=1;reject(b,"unknown map magic");}
+    {auto b=map_bytes;put(b,20,1);reject(b,"confirm boundary cannot be downgraded to legacy capability");}
+    {
+        auto b=map_bytes;const auto first=section(b,18);uint32_t actions=0;
+        for(uint32_t i=0;i<count(b,18);++i)if(view.boundary(i).kind==uint16_t(FieldBoundaryKind::Confirm)){
+            ++actions;put16(b,first+i*48,2);
+        }
+        check(actions==14,"all fourteen original jump areas are confirm-only");
+        reject(b,"action capability without an action is rejected");
+        put(b,20,1);rehash(b);FieldMapData legacy;
+        check(legacy.load(b.data(),b.size(),error)&&legacy.view().capabilities()==1,"legacy passive-boundary map remains admitted");
+        put16(b,first,4);reject(b,"unknown boundary operation rejected");
+    }
     for(size_t field:{size_t(8),size_t(20),size_t(28),size_t(52),size_t(56),size_t(60)}){auto b=map_bytes;put(b,field,get(b,field)+1);reject(b,"unknown map version/capability/reserved/section count");}
     {auto b=map_bytes;put(b,24,0);reject(b,"zero scene identity rejected");}
     {auto b=map_bytes;b[40]^=1;reject(b,"wrong source pin rejected");}
@@ -146,6 +159,38 @@ int main(int argc,char**argv){
         while(door.phase()!=SceneDoorPhase::Done&&frames++<600){check(door.idle_frame(1.0/60,error),"fade-out");for(const auto&e:door.take_events())unpause|=e.kind==SceneDoorEventKind::Unpause;}
         check(unpause&&door.phase()==SceneDoorPhase::Done,"fade-out unpauses before it completes");
         check(!door.begin(links,99,fades,error),"unknown route index rejected");
+    }
+    // Confirm-only areas never act as proximity walls. A is guarded by the
+    // source ability flag; the actual jump remains an explicit unsupported action.
+    {
+        RoomData room;check(room.load_file(argv[3],error),error.c_str());
+        std::vector<bool> flags(room.view().flag_count(),false);
+        for(uint32_t i=0;i<room.view().flag_count();++i)if(room.view().string(room.view().flag(i).name_string)=="gave_treats")flags[i]=true;
+        for(uint32_t i=0;i<view.count(FieldMapSection::Boundaries);++i){const auto b=view.boundary(i);
+            if(b.kind!=uint16_t(FieldBoundaryKind::Confirm))continue;
+            auto scene=std::make_unique<FieldScene>();
+            check(scene->prepare(room.view(),view,links,flags,b.center,{1,0},{400,240},error),error.c_str());
+            check(scene->finish_transition()&&scene->after_physics(),"enter passive action area without a contact stop");
+            check(scene->try_interaction(true,error)&&scene->phase()==FieldPhase::Walking,"no feather means no jump action or pause");
+            check(scene->world.set_story_flag("eagle_feather",true,false)&&scene->refresh_conditions(error),"enable reviewed source ability");
+            check(scene->after_physics()&&scene->phase()==FieldPhase::Walking,"eligible action still does not stop walking");
+            check(scene->try_interaction(false,error)&&scene->phase()==FieldPhase::Walking,"no confirmation means no action");
+            check(scene->try_interaction(true,error)&&scene->phase()==FieldPhase::Unsupported&&scene->world.house_paused(),"unimplemented eligible jump is explicitly rejected on confirm");
+            check(scene->idle_frame(1.0/60,true)&&scene->phase()==FieldPhase::Walking&&!scene->world.house_paused(),"B returns control after the explicit action stop");
+            check(scene->try_interaction(true,error)&&scene->phase()==FieldPhase::Unsupported,"confirm can retry the unsupported action");
+            check(scene->world.set_story_flag("eagle_feather",false,false)&&scene->refresh_conditions(error)&&scene->phase()==FieldPhase::Walking,"source gate removal clears an action stop");
+        }
+        for(const Vec2 viewport:{Vec2{400,240},Vec2{320,180}}){
+            auto scene=std::make_unique<FieldScene>();
+            check(scene->prepare(room.view(),view,links,flags,{-392,480},{-1,0},viewport,error),error.c_str());
+            check(scene->finish_transition(),"west road checkpoint starts walking");
+            for(unsigned frame=0;frame<160;++frame){WalkInput input;input.x=-1;
+                check(scene->before_physics(input)&&scene->world.advance(input)&&scene->after_physics(),"normal west road movement");
+                scene->world.idle_frame(1.0/60);check(scene->idle_frame(1.0/60,false),"west road idle");
+                check(scene->phase()==FieldPhase::Walking,"jump prompt does not block the west road");
+            }
+            check(scene->world.player().position.x<-540,"west road passes the old prompt-circle barrier");
+        }
     }
     // Pinned CamareaRect Control margins place its trigger far from the bridge.
     // Godot 3.6.2 source-script oracle: center (2390,1308), limits 1952/1064/2472/1520.

@@ -155,6 +155,22 @@ class Scene:
         self.source = recipe['scene']['source']
         self.nodes = instantiate(sources.doc, self.source)
         self.by_path = {n.path: n for n in self.nodes}
+        self.action_boundaries = recipe['action_boundaries']
+        for scene, policy in self.action_boundaries.items():
+            script = sources.text(policy['script'])
+            control = sources.text(policy['control_script'])
+            require(all(fact in script for fact in policy['source_facts']), 'Changed action-boundary source facts')
+            require(all(fact in control for fact in policy['control_facts']), 'Changed action-boundary controller facts')
+            skill = re.search(r'^func ' + re.escape(policy['ability_function']) + r'\(\):\s*\n\s*return globaldata\.flags\.get\("([^"\n]+)"\)', script, re.M)
+            require(skill and skill[1] == policy['ability_flag'], 'Changed action-boundary ability gate')
+            house = json.loads((ROOT / recipe['house']['room_ir']).read_text(encoding='utf-8'))
+            declared = {f['name_string'] for f in house['sections']['Flag']}
+            require(policy['ability_flag'] in {house['strings'][i] for i in declared}, 'Action-boundary flag is not declared')
+            for n in self.nodes:
+                if n.scene != scene or n.path + '/' + policy['shape'] not in self.by_path:
+                    continue
+                require(n.script == policy['script'] and n.props.get(policy['initial_property']) is True and
+                        n.props.get(policy['sync_property'], False) is False, 'Unreviewed action-boundary switch state at ' + n.path)
         self.index = {n.path: i for i, n in enumerate(self.nodes)}
         self.children = {n.path: [] for n in self.nodes}
         for n in self.nodes:
@@ -269,13 +285,20 @@ def load_recipe(path=RECIPE):
     require(recipe.get('schema') == 1 and recipe.get('kind') == 'encore.podunk-field.recipe', 'Unsupported Podunk recipe')
     require(recipe.get('commit') == PIN, 'Podunk recipe source pin mismatch')
     expected = {'schema', 'kind', 'commit', 'scope', 'scene', 'house', 'player', 'tileset', 'door', 'routes', 'locales',
-                'ported_notices', 'categories', 'prop_sprites', 'labels', 'atlas_directory', 'outputs'}
+                'ported_notices', 'action_boundaries', 'categories', 'prop_sprites', 'labels', 'atlas_directory', 'outputs'}
     require(set(recipe) == expected, 'Unknown/missing Podunk recipe fields')
     valid = {'door', 'openable_door', 'grass', 'prop', 'flag_landmark', 'camera_area', 'boundary', 'notice'}
     require(all(v in valid for v in recipe['categories'].values()), 'Unknown recipe category')
     require(set(recipe['prop_sprites']) == {k for k, v in recipe['categories'].items() if v == 'prop'}, 'Prop sprite policy coverage')
     require(isinstance(recipe['ported_notices'], list) and all(isinstance(p, str) and p for p in recipe['ported_notices']),
             'ported_notices must be scene-relative paths')
+    actions = recipe['action_boundaries']
+    require(isinstance(actions, dict) and 0 < len(actions) <= 16, 'Missing action-boundary policies')
+    for scene, policy in actions.items():
+        require(recipe['categories'].get(scene) == 'boundary' and isinstance(policy, dict) and set(policy) == {
+            'script', 'control_script', 'shape', 'ability_flag', 'ability_function', 'initial_property', 'sync_property', 'source_facts', 'control_facts'}, 'Unknown action-boundary policy')
+        require(all(isinstance(policy[k], str) and policy[k] for k in ('script', 'control_script', 'shape', 'ability_flag', 'ability_function', 'initial_property', 'sync_property')), 'Bad action-boundary binding')
+        require(all(isinstance(policy[k], list) and policy[k] and all(isinstance(f, str) and f for f in policy[k]) for k in ('source_facts', 'control_facts')), 'Missing action-boundary facts')
     return recipe
 
 
@@ -1016,6 +1039,18 @@ class Model:
                     require(target, 'Routed door lacks targetScene ' + n.path)
                 self.door_params[n.path] = n
             elif cat == 'boundary':
+                action = sc.action_boundaries.get(n.scene)
+                if action:
+                    # JumpArea pauses only after an explicit eligible confirm.
+                    # Its Close circle is a prompt/visibility area, not a wall.
+                    shape = sc.by_path[n.path + '/' + action['shape']]
+                    doc = owner_of(shape, 'shape')
+                    require(doc.sub_type(shape.props['shape']) == 'RectangleShape2D', 'Unreviewed action-boundary shape')
+                    xf = sc.global_xf[shape.path]
+                    extents = doc.sub_resource(shape.props['shape'])['extents']
+                    gate = self.condition_span(sc.conditions(n.path) + [(action['ability_flag'], True)])
+                    self._boundary(3, n.path, labels[n.scene], xf, extents, gate)
+                    continue
                 rects = self._area_rects(n.path)
                 require(rects, 'Boundary without area shape ' + n.path)
                 for xf, extents in rects:
@@ -1274,10 +1309,11 @@ def pack_container(magic, scene_id, sections, strides, limit, *, capability=1):
     return bytes(payload)
 
 
-def unpack_container(blob, magic, strides, limit, *, capability=1):
+def unpack_container(blob, magic, strides, limit, *, capability=None):
     require(isinstance(blob, (bytes, bytearray)) and HEADER.size <= len(blob) <= limit, 'Field resource size rejected')
     m, version, total, crc, actual_capability, scene_id, reserved, pin, count, r1, r2 = HEADER.unpack_from(blob)
-    require(m == magic and version == 1 and total == len(blob) and actual_capability == capability and not reserved and not r1 and not r2,
+    allowed = (capability,) if capability is not None else ((1, 2) if magic == MAP_MAGIC else (1,))
+    require(m == magic and version == 1 and total == len(blob) and actual_capability in allowed and not reserved and not r1 and not r2,
             'Field resource header rejected')
     require(pin == bytes.fromhex(PIN), 'Field resource source pin rejected')
     require(zlib.crc32(bytes(blob[32:])) == crc, 'Field resource checksum rejected')
@@ -1296,6 +1332,10 @@ def unpack_container(blob, magic, strides, limit, *, capability=1):
         sections.append(bytes(blob[offset:offset + n * stride]))
         cursor = offset + n * stride
     require(cursor == len(blob), 'Trailing field resource bytes')
+    if magic == MAP_MAGIC:
+        kinds = [struct.unpack_from('<H', sections[17], i)[0] for i in range(0, len(sections[17]), strides[17])]
+        require(all(k in (1, 2) or (actual_capability == 2 and k == 3) for k in kinds), 'Field boundary capability rejected')
+        require(actual_capability == 1 or 3 in kinds, 'Noncanonical action-boundary capability')
     return scene_id, sections
 
 
@@ -1429,7 +1469,8 @@ def encode_map(model, atlases, atlas_paths):
     for b in model.bodies:
         secs['Bodies'] += struct.pack('<4I', b['first'], b['count'], b['cond'][0], b['cond'][1])
     secs['Bytes'] = bytearray(model.strings)
-    return pack_container(MAP_MAGIC, model.recipe['scene']['id'], [secs[n] for n in MAP_SECTIONS], MAP_STRIDES, MAP_LIMIT)
+    return pack_container(MAP_MAGIC, model.recipe['scene']['id'], [secs[n] for n in MAP_SECTIONS], MAP_STRIDES, MAP_LIMIT,
+                          capability=2 if any(b['kind'] == 3 for b in model.boundaries) else 1)
 
 
 def door_parameters(sources, recipe, scene_doc_nodes, door_path):

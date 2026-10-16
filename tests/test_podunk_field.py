@@ -50,12 +50,23 @@ class RecipeTests(unittest.TestCase):
             lambda r: r['categories'].update({'Nodes/Overworld/Door.tscn': 'teleport'}),
             lambda r: r['prop_sprites'].pop('Nodes/Overworld/Objects/Present.tscn'),
             lambda r: r.pop('routes'),
+            lambda r: r.pop('action_boundaries'),
+            lambda r: r['action_boundaries'].update({'unknown.tscn': {}}),
+            lambda r: next(iter(r['action_boundaries'].values())).update(extra=True),
         ]
         for mutate in mutations:
             data = copy.deepcopy(base)
             mutate(data)
             with self.subTest(mutate=mutate), self.assertRaises(pf.FieldError):
                 pf.load_recipe(self.write(data))
+
+    def test_action_source_gate_is_not_replaceable(self):
+        for key, value in [('ability_flag', 'talked_to_dad'), ('ability_function', 'unknown'),
+                           ('script', 'Scripts/Main/npc.gd'), ('source_facts', ['unknown source behavior'])]:
+            recipe = copy.deepcopy(pf.load_recipe())
+            next(iter(recipe['action_boundaries'].values()))[key] = value
+            with self.subTest(key=key), self.assertRaises(pf.FieldError):
+                pf.Scene(pf.Sources(), recipe)
 
     def test_unclassified_scene_class_fails_closed(self):
         recipe = copy.deepcopy(pf.load_recipe())
@@ -65,6 +76,21 @@ class RecipeTests(unittest.TestCase):
 
 
 class ContainerTests(unittest.TestCase):
+    def test_confirm_boundaries_require_their_capability(self):
+        sections = [b'' for _ in pf.MAP_STRIDES]
+        sections[17] = struct.pack('<2H4I4f3I', 3, 0, 0, 0, 0, 0, 0, 0, 8, 8, 0, 0, 0)
+        def make(capability):
+            return pf.pack_container(pf.MAP_MAGIC, 2, sections, pf.MAP_STRIDES, pf.MAP_LIMIT, capability=capability)
+        pf.unpack_container(make(2), pf.MAP_MAGIC, pf.MAP_STRIDES, pf.MAP_LIMIT)
+        for capability in (0, 1, 3):
+            with self.subTest(capability=capability), self.assertRaises(pf.FieldError):
+                pf.unpack_container(make(capability), pf.MAP_MAGIC, pf.MAP_STRIDES, pf.MAP_LIMIT)
+        sections[17] = bytes(48)
+        with self.assertRaises(pf.FieldError):
+            pf.unpack_container(make(2), pf.MAP_MAGIC, pf.MAP_STRIDES, pf.MAP_LIMIT)
+        sections[17] = b''
+        pf.unpack_container(make(1), pf.MAP_MAGIC, pf.MAP_STRIDES, pf.MAP_LIMIT)
+
     def test_round_trip_and_rejections(self):
         blob = pf.pack_container(pf.LINK_MAGIC, 0, [b'abc', b'', bytes(84)], pf.LINK_STRIDES, pf.LINK_LIMIT)
         scene, sections = pf.unpack_container(blob, pf.LINK_MAGIC, pf.LINK_STRIDES, pf.LINK_LIMIT)

@@ -1899,7 +1899,7 @@ int main(int argc,char** argv){
                         if(confirm&&!field_action_sampled){
                             field_action_sampled=true;std::string why;
                             if(field_scene->world.player().crouch){if(!use_field_psi(why))field_equipment_status=why;}
-                            else{ok=field_scene->try_mick(true,why);if(!ok)field_status=field_scene->error();else if(!why.empty())field_status=why;}
+                            else{ok=field_scene->try_interaction(true,why);if(!ok)field_status=field_scene->error();else if(!why.empty())field_status=why;}
                         }
                     }
                     if(ok&&field_scene->phase()==upstream::FieldPhase::MickTalk&&!gameplay_scene->presentation.advance_dialogue(double(float(time_scale/60.0))))field_status=gameplay_scene->presentation.error();

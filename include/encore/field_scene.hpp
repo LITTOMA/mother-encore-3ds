@@ -93,6 +93,8 @@ public:
     bool talk_accept_latched()const{return mick_ignore_accept_;}
     // A against Mick's live interact rectangle while walking. The matching spoken tree starts.
     bool try_mick(bool accept,std::string& error);
+    // Ordinary walking never activates confirm-only development boundaries.
+    bool try_interaction(bool accept,std::string& error);
     bool mick_contact()const;
     bool try_telepathy(Vec2 source_ray_offset,float source_ray_length,std::string& error);
     FieldPhase phase()const{return phase_;}

@@ -39,7 +39,7 @@ enum class FieldGroupKind:uint32_t {Static=1,YSort=2};
 struct FieldGroup {uint32_t kind=0,first=0,count=0;};
 struct FieldOpenable {FieldText path;Vec2 center{},extents{};FieldText sound,end_sound;float timer=0;uint32_t sprite=0;FieldSpan conditions;};
 struct FieldDoor {FieldText path,target;uint32_t route=0;Vec2 center{},extents{};FieldSpan conditions;};
-enum class FieldBoundaryKind:uint16_t {LockedDoor=1,Area=2};
+enum class FieldBoundaryKind:uint16_t {LockedDoor=1,Area=2,Confirm=3};
 struct FieldBoundary {uint16_t kind=0;FieldText path,label;Vec2 center{},extents{};FieldSpan conditions;};
 enum class FieldNoticeKind:uint16_t {NotPorted=1,Interaction=2};
 struct FieldNotice {uint16_t kind=0;FieldText path,label;Vec2 position{};FieldSpan conditions;};
@@ -53,6 +53,7 @@ public:
     // Identity of the borrowed buffer, for binding checks between owners.
     const void* bytes_identity()const{return bytes_;}
     uint32_t scene_id()const;
+    uint32_t capabilities()const;
     uint32_t count(FieldMapSection)const;
     std::string_view text(FieldText)const;
     FieldAtlas atlas(uint32_t)const;

@@ -260,6 +260,19 @@ bool FieldScene::try_mick(bool accept,std::string& error){
     if(!mick_.start_talk(error))return fail(error.empty()?"Field Mick programme rejected":error.c_str());
     error.clear();return true;
 }
+bool FieldScene::try_interaction(bool accept,std::string& error){
+    if(!try_mick(accept,error))return false;
+    if(!accept||phase_!=FieldPhase::Walking||world.house_paused()||world.player().crouch)return true;
+    for(uint32_t i=0;i<boundary_active_.size();++i){
+        const auto b=map_.boundary(i);
+        if(!boundary_active_[i]||b.kind!=uint16_t(FieldBoundaryKind::Confirm)||!overlaps(b.center,b.extents,world.player().position))continue;
+        if(!world.pause_for_house())return fail("Field action boundary pause rejected");
+        boundary_=0x80000000u|i;phase_=FieldPhase::Unsupported;
+        error_=std::string(map_.text(b.label))+" not ported; B returns";
+        return true;
+    }
+    error.clear();return true;
+}
 bool FieldScene::try_telepathy(Vec2 offset,float length,std::string& error){
     if(!mick_bound_||phase_!=FieldPhase::Walking||world.house_paused()||!std::isfinite(offset.x)||!std::isfinite(offset.y)||!std::isfinite(length)||length<=0){error="Field Telepathy state/ray rejected";return false;}
     const auto player=world.player();const auto direction=normalized(player.direction);
@@ -350,7 +363,9 @@ bool FieldScene::after_physics(){
         if(!world.pause_for_house())return fail("Field door pause rejected");
     }
     for(uint32_t i=0;i<boundary_inside_.size();++i){
-        const auto b=map_.boundary(i);const bool inside=boundary_active_[i]&&overlaps(b.center,b.extents,position);
+        const auto b=map_.boundary(i);
+        if(b.kind==uint16_t(FieldBoundaryKind::Confirm))continue;
+        const bool inside=boundary_active_[i]&&overlaps(b.center,b.extents,position);
         const bool entered=inside&&!boundary_inside_[i];boundary_inside_[i]=inside;any|=inside;
         if(!entered||phase_!=FieldPhase::Walking)continue;
         const auto bark=mick_bound_?mick_.view().string(mick_.view().actor().bark_path):std::string_view{};

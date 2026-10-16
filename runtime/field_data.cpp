@@ -27,6 +27,7 @@ bool safe_path(std::string_view p){if(p.empty()||p.size()>256||p.front()=='/'||p
 bool pow2(uint32_t v){return v>=8&&v<=1024&&(v&(v-1))==0;}
 }
 uint32_t FieldMapView::scene_id()const{return bytes_?u32(bytes_+24):0;}
+uint32_t FieldMapView::capabilities()const{return bytes_?u32(bytes_+20):0;}
 uint32_t FieldMapView::count(FieldMapSection s)const{const auto k=uint32_t(s);return bytes_&&k>=1&&k<=kFieldMapSectionCount?u32(bytes_+header_bytes+(k-1)*16+8):0;}
 const uint8_t*FieldMapView::record(FieldMapSection s,uint32_t i)const{const auto k=uint32_t(s);if(!bytes_||k<1||k>kFieldMapSectionCount||i>=count(s))return nullptr;
     return bytes_+u32(bytes_+header_bytes+(k-1)*16+4)+size_t(i)*strides[k-1];}
@@ -61,7 +62,7 @@ uint32_t FieldMapView::localized_picture(uint32_t index,std::string_view locale)
 bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kFieldMapSectionCount*16||n>max_bytes)return fail("Field map size rejected");
-    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=1||u32(p+28)||u32(p+52)!=kFieldMapSectionCount||u32(p+56)||u32(p+60))
+    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)!=1&&u32(p+20)!=2)||u32(p+28)||u32(p+52)!=kFieldMapSectionCount||u32(p+56)||u32(p+60))
         return fail("Field map schema/capability/reserved rejected");
     if(!u32(p+24))return fail("Field map scene identity rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Field map source pin rejected");}
@@ -173,9 +174,12 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     for(uint32_t i=0;i<v.count(S::Doors);++i){const auto d=v.door(i);
         if(!text_ok(d.path,false,512)||!text_ok(d.target,true,512)||(d.target.length&&v.text(d.target).substr(0,6)!="res://")||!finite(d.center)||!finite(d.extents)||
            d.extents.x<=0||d.extents.y<=0||!cond_ok(d.conditions)||u32(v.record(S::Doors,i)+44))return fail("Field map door rejected");}
+    bool has_confirm=false;
     for(uint32_t i=0;i<v.count(S::Boundaries);++i){const auto b=v.boundary(i);const auto*raw=v.record(S::Boundaries,i);
-        if((b.kind!=1&&b.kind!=2)||u16(raw+2)||!text_ok(b.path,false,512)||!text_ok(b.label,false,128)||!finite(b.center)||!finite(b.extents)||b.extents.x<=0||b.extents.y<=0||
+        has_confirm|=b.kind==uint16_t(FieldBoundaryKind::Confirm);
+        if((b.kind!=1&&b.kind!=2&&!(u32(p+20)==2&&b.kind==uint16_t(FieldBoundaryKind::Confirm)))||u16(raw+2)||!text_ok(b.path,false,512)||!text_ok(b.label,false,128)||!finite(b.center)||!finite(b.extents)||b.extents.x<=0||b.extents.y<=0||
            !cond_ok(b.conditions)||u32(raw+44))return fail("Field map boundary rejected");}
+    if(u32(p+20)==2&&!has_confirm)return fail("Field map action capability has no action boundary");
     for(uint32_t i=0;i<v.count(S::Notices);++i){const auto b=v.notice(i);const auto*raw=v.record(S::Notices,i);
         if((b.kind!=1&&b.kind!=2)||u16(raw+2)||!text_ok(b.path,false,512)||!text_ok(b.label,false,128)||!finite(b.position)||!cond_ok(b.conditions)||u32(raw+36))
             return fail("Field map notice rejected");}

@@ -90,6 +90,9 @@ int main(int argc,char**argv){
   // Explicit test boundary: this is not a played save or evidence that the
   // original key acquisition chain has been completed in the emulator.
   auto fixture=session.defaults();fixture.position_x=96;fixture.position_y=735;fixture.direction_x=0;fixture.direction_y=-1;
+  // The extended fixture route leaves the house after collecting DogTreats.
+  // This is an explicit precondition, not evidence of playing the Dad call.
+  auto dad=std::find_if(fixture.flags.begin(),fixture.flags.end(),[](const auto&f){return f.id=="talked_to_dad";});CHECK(dad!=fixture.flags.end());dad->value=true;
   auto policy=std::find_if(session.key_acquisitions().begin(),session.key_acquisitions().end(),[](const auto&k){return k.item_id=="KeyBasement";});
   CHECK(policy!=session.key_acquisitions().end());for(auto&f:fixture.flags)if(f.id==policy->flag_id)f.value=true;
   fixture.key_items.push_back({policy->item_id,false,policy->doses,0xabcde});

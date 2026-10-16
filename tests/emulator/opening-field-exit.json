@@ -695,8 +695,8 @@
       ],
       "hold_until": {
         "player_x": {
-          "min": 61,
-          "max": 63
+          "min": 68,
+          "max": 70
         }
       },
       "wait": {

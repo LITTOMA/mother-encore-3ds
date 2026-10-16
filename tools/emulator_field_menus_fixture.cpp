@@ -18,6 +18,8 @@ int main(int argc,char**argv){
  for(const auto&s:data.skill_acquisitions()){if(!set(s.flag_id,1)||!native_session_learn_skill(data,s.skill_id,hero.learned_skills,error))return fail();}
  if(!native_session_expected_key_items(data,state,state.key_items,error))return fail();for(auto&k:state.key_items)k.uid=uid++;
  if(!set(data.saved_flag_id(),1))return fail();
+ // Same reviewed house-exit precondition as emulator_mick_fixture.cpp.
+ if(!set("talked_to_dad",1))return fail();
  std::array<int32_t,7>stats{};if(!native_session_derived_stats(data,items.view(),hero,stats,error))return fail();hero.hp=stats[0]-5;hero.pp=stats[1];
  state.position_x=88;state.position_y=977;state.direction_x=0;state.direction_y=1;
  if(!validate_native_session_snapshot(data,room.view(),house.view(),round.view(),items.view(),state,error))return fail();

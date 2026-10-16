@@ -52,7 +52,9 @@ bool decode_field_preferences(const FieldMenusData&,const uint8_t*,size_t,FieldM
 FieldPreferenceRead read_field_preferences(const FieldMenusData&,const char*,FieldMenuPreferences&,std::string&);
 bool write_field_preferences(const FieldMenusData&,const char*,const FieldMenuPreferences&,std::string&);
 
-struct FieldMenusState {SessionSnapshot session;std::array<int32_t,7>stats{};uint32_t next_exp=0;FieldMenuPreferences preferences;bool chinese=false,in_field=false;};
+// The save snapshot retains its admitted house checkpoint. Actual field map
+// coordinates are transient context, never an unsupported field-save migration.
+struct FieldMenusState {SessionSnapshot session;std::array<int32_t,7>stats{};uint32_t next_exp=0;FieldMenuPreferences preferences;bool chinese=false,in_field=false;float world_x=0,world_y=0;};
 struct FieldMenusChanges {std::vector<SessionItem>inventory,keys;SessionSettings settings;FieldMenuPreferences preferences;};
 bool merge_field_menu_session(const FieldMenusState&,const FieldMenusChanges&,const SessionSnapshot&,SessionSnapshot&,std::string&);
 // Every write stages the entire candidate and commits only after the host has

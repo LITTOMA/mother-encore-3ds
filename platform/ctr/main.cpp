@@ -706,8 +706,10 @@ public:
  bool show_text(std::string_view speaker,std::string_view body,std::string&e)override{
   std::string out(body);
   const std::string lead=session_state.characters.empty()?std::string("Ninten"):session_state.characters[0].nickname;
-  // CTR A confirms, B runs, and START opens the menu. Nintendo-style Start is "+".
-  if(!upstream::resolve_dialogue_tags(out,lead,"A","B","+",e,session_state.favorite_food,uint32_t(field_equipment_data.view().parameter(locale_selection.code()=="zh_Hans_CN"?upstream::FieldParameter::PsiFoodLimitZh:upstream::FieldParameter::PsiFoodLimitEn))))return false;
+  // Expand source hints using the current checked native button bindings.
+  if(!field_menus_data.supports(field_preferences)){e="World dialogue controls are not admitted";return false;}
+  const auto button=[&](size_t action)->std::string_view{const auto at=std::find(field_menus_data.logical_buttons.begin(),field_menus_data.logical_buttons.end(),field_preferences.buttons[action]);return field_menus_data.button_names[size_t(at-field_menus_data.logical_buttons.begin())];};
+  if(!upstream::resolve_dialogue_tags(out,lead,button(0),button(4),button(2),e,session_state.favorite_food,uint32_t(field_equipment_data.view().parameter(locale_selection.code()=="zh_Hans_CN"?upstream::FieldParameter::PsiFoodLimitZh:upstream::FieldParameter::PsiFoodLimitEn))))return false;
   if(!gameplay_scene||!gameplay_scene->presentation.present_plain(speaker,out)){e=gameplay_scene?gameplay_scene->presentation.error():"World dialogue box is not ready";return false;}
   e.clear();return true;
  }
@@ -1022,10 +1024,10 @@ bool initialize_field_menus(std::string&error){
         FieldMenusState next;if(!collect_session_snapshot(next.session,e,&active_overworld()))return false;
         next.stats={{session_rewards.maxhp,session_rewards.maxpp,session_rewards.offense,session_rewards.defense,session_rewards.speed,session_rewards.iq,session_rewards.guts}};
         for(const auto&row:native_session_data.levels())if(row.level==session_rewards.level)next.next_exp=row.next_exp;
-        next.preferences=field_preferences;next.chinese=locale_selection.code()=="zh_Hans_CN";next.in_field=in_field();out=std::move(next);return true;
+        next.preferences=field_preferences;next.chinese=locale_selection.code()=="zh_Hans_CN";next.in_field=in_field();const auto position=active_overworld().player().position;next.world_x=position.x;next.world_y=position.y;out=std::move(next);return true;
     };
     host.equip=[](uint32_t slot,bool none,uint32_t uid,std::string&e){PreparedFieldEquipment candidate;if(!prepare_field_equipment(slot,none,uid,candidate,e))return false;session_inventory=std::move(candidate.inventory);session_rewards=std::move(candidate.stats);return true;};
-    host.locale=[](std::string_view code,std::string&e){return select_native_locale(code,true,e);};
+    host.locale=[](std::string_view code,std::string&e){if(!select_native_locale(code,true,e))return false;if(in_field())field_scene->mick().set_locale(locale_selection.code());return true;};
     host.commit=[](const FieldMenusState&before,const FieldMenusChanges&next,std::string&e){
         if(!field_menus_data.supports(next.preferences)){e="Field menu candidate rejected";return false;}
         SessionSnapshot current,candidate;if(!collect_session_snapshot(current,e,&active_overworld())||!merge_field_menu_session(before,next,current,candidate,e))return false;auto character=candidate.characters[0];const auto items=items_data.view();std::vector<ItemInstance>instances;

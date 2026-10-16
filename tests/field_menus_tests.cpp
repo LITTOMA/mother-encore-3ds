@@ -2,6 +2,7 @@
 #include "encore/content.hpp"
 #include "encore/crc32.hpp"
 #include <algorithm>
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
@@ -70,6 +71,11 @@ int main(int argc,char**argv){
  // Map clipping follows the checked resource viewport, including a different
  // admitted presentation size; it does not retain a C++ source-canvas constant.
  auto smaller=data;smaller.display_sizes[1]={256,144};CHECK(menu.initialize(smaller,settings,host,error));CHECK(menu.open(5,error));for(unsigned i=0;i<32;++i)CHECK(menu.tick_map(1,1,true,1,error));CHECK(menu.map_x()==std::max(0.f,float(smaller.images[0].width)-256)&&menu.map_y()==std::max(0.f,float(smaller.images[0].height)-144));CHECK(input(0,0,false,true));menu.take_exit();
+ // A field menu retains the valid parked house snapshot for session policy,
+ // while the map centers on the actual field player, without migrating saves.
+ const auto house_x=live.session.position_x,house_y=live.session.position_y;live.in_field=true;live.world_x=live.world_y=1600;
+ CHECK(menu.initialize(data,settings,host,error));CHECK(menu.open(5,error));CHECK(menu.map_x()==std::clamp(data.map_offset_x+live.world_x/data.map_divisor-data.display_sizes[1][0]/2.f,0.f,float(data.images[0].width-data.display_sizes[1][0])));CHECK(menu.map_y()==std::clamp(data.map_offset_y+live.world_y/data.map_divisor-data.display_sizes[1][1]/2.f,0.f,float(data.images[0].height-data.display_sizes[1][1])));CHECK(live.session.position_x==house_x&&live.session.position_y==house_y);CHECK(input(0,0,false,true));menu.take_exit();
+ live.world_x=NAN;CHECK(!menu.initialize(data,settings,host,error));live.world_x=live.world_y=0;live.in_field=false;
  // A partially used source consumable remains storable without broadening
  // the legacy store contract or allowing unknown definition/dose ranges.
  StorageData storage_data;StorageState stored;InventoryState carried;BattleSessionStats stats;stats.maxhp=stats.hp=30;stats.maxpp=stats.pp=26;

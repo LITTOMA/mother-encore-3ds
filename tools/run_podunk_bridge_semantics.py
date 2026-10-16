@@ -85,6 +85,7 @@ try:
  won=record('victory_return');capture('victory-return');assert flag(won,'beat_dog_bridge')and not flag(won,'pippis_mom_call');assert won['experience']==initial['experience']+8 and won['cash']==initial['cash']+20
  assert won['loot_ready']and won['loot_granted']==won['loot_selected'];assert won['inventory_count']==initial['inventory_count']+won['loot_selected'];assert not won['region_music_paused']and not won['dialogue_music_playing']
  music_before=(won['dsp_region_sample_sum'],won['dsp_region_wave_sum']);advance(120);audio=record('returned_audio');assert audio['dsp_region_playing']and music_before!=(audio['dsp_region_sample_sum'],audio['dsp_region_wave_sum'])
+ wait(lambda s:s['world_stage']==0 and s['paused']==0,limit=1200)
  travel('RIGHT',lambda s:s['world_stage']!=0);record('mom_trigger');capture('mom-trigger')
  for text in range(1000,1005):
   wait(lambda s:s['world_dialogue']==text and s['dialogue_active']and s['dialogue_finished'],limit=1800)

@@ -27,7 +27,7 @@ class NativeSessionTests(unittest.TestCase):
         self.assertNotEqual(s['key_items'][0]['uid'],c['inventory'][0]['uid'])
     def test_additive_startup_roster_and_legacy_bytes(self):
         r=self.recipe;startup=r['startup'];characters=startup['characters']
-        self.assertEqual((r['schema'],struct.unpack_from('<I',native.encode(r),8)[0],struct.unpack_from('<I',native.encode(r),20)[0]),(8,8,8))
+        self.assertEqual((r['schema'],struct.unpack_from('<I',native.encode(r),8)[0],struct.unpack_from('<I',native.encode(r),20)[0]),(9,9,9))
         self.assertEqual(hashlib.sha256(native.encode_snapshot(r['defaults'],r['compatibility'])).hexdigest(),
                          'a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f')
         self.assertEqual(startup['party'],['ninten'])
@@ -55,7 +55,7 @@ class NativeSessionTests(unittest.TestCase):
         legacy=native.read(frozen/'native-session.json')
         self.assertEqual(legacy['schema'],1)
         self.assertEqual(native.encode(legacy),(frozen/'opening.encsession').read_bytes())
-        bad=copy.deepcopy(self.recipe);bad['schema']=9
+        bad=copy.deepcopy(self.recipe);bad['schema']=10
         with self.assertRaises(ValueError):native.encode(bad)
     def test_startup_clamps_are_derived_from_serialized_hp_and_equipment(self):
         ex=native.Extractor(native.ROOT);save=ex.yaml('Data/save_new_game.yaml');overrides=ex.yaml('Data/save_overrides.yaml')
@@ -73,7 +73,7 @@ class NativeSessionTests(unittest.TestCase):
     def test_acquisition_policy_is_source_derived_and_additive(self):
         from tools.drawer_program import load, IR
         drawer=load(native.ROOT);r=self.recipe
-        self.assertEqual(len(r['acquisitions']),len(drawer['templates'])+1)
+        self.assertEqual(len(r['acquisitions']),len(drawer['templates'])+2)
         bat=next(a for a in r['acquisitions'] if a['item_id']=='BatPlastic')
         self.assertEqual((bat['doses'],bat['max_count'],bat['flag_policy'],bat['flag_id']),(1,1,2,"Ninten's House/Present2"))
         for policy,template in zip(r['acquisitions'],drawer['templates']):
@@ -89,10 +89,19 @@ class NativeSessionTests(unittest.TestCase):
         for field,value in [('item_id','unknown'),('doses',0),('max_count',2),('flag_id','unknown')]:
             bad=copy.deepcopy(r);bad['acquisitions'][0][field]=value
             with self.assertRaises(ValueError):native.verify_recipe(bad)
+    def test_field_scope_is_source_derived_and_defaults_stay_frozen(self):
+        r=self.recipe
+        self.assertEqual(r['field_encounters'],['straydog'])
+        reward=next(a for a in r['acquisitions']if a['item_id']=='FleaBag')
+        self.assertEqual(reward,dict(item_id='FleaBag',doses=1,max_count=1,flag_id='beat_dog_bridge',flag_policy=1))
+        for flag in ('beat_dog_bridge','pippis_mom_call'):self.assertIn(flag,r['mutable_flags'])
+        for mutate in (lambda x:x['field_encounters'].append('unknown'),lambda x:x['acquisitions'][-1].update(max_count=2),lambda x:x['mutable_flags'].remove('beat_dog_bridge')):
+            bad=copy.deepcopy(r);mutate(bad)
+            with self.assertRaises(ValueError):native.verify_recipe(bad)
     def test_storage_conservation_policy_is_source_derived(self):
         from tools.storage_assets import load, IR
         storage=load(native.ROOT);r=self.recipe
-        self.assertEqual(r['schema'],8)
+        self.assertEqual(r['schema'],9)
         self.assertEqual(r['storage_capacity'],storage['parameters']['StorageCapacity'])
         self.assertEqual(r['dependencies'][IR],hashlib.sha256((native.ROOT/IR).read_bytes()).hexdigest())
         by_id={p['item_id']:p for p in r['storage_policies']}

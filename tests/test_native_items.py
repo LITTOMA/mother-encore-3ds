@@ -37,7 +37,7 @@ class ItemsBinaryTests(unittest.TestCase):
         parsed = m.parse_pack(self.blob)
         self.assertEqual(parsed['Metadata'][0][0], self.ir['capacity'])
         self.assertEqual(parsed['Instances'][0][2:], (1, 1))
-        self.assertEqual(len(parsed['Definitions']), 3)
+        self.assertEqual(len(parsed['Definitions']), 4)
         self.assertEqual(len(parsed['Clips']), 3)
 
     def test_every_truncation_and_checksum(self):

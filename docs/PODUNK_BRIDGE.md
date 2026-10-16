@@ -6,7 +6,7 @@
 
 | 来源 | 独立内容 | 执行与检查 |
 |---|---|---|
-| bridge_fight.yaml、pippismom_call.yaml、podunk.tscn | podunk-story.json → Field Room 与 ENCSTY01 | FieldStory 的绑定和纯预检、既有类型化剧情 VM、演员接管 / 释放、五段手动推进对白 |
+| bridge_fight.yaml、pippismom_call.yaml、podunk.tscn | podunk-story.json → Field Room 与 ENCFST01 | FieldStory 的绑定和纯预检、既有类型化剧情 VM、演员接管 / 释放、五段手动推进对白 |
 | straydog.yaml、bite / bash / attack_bat.yaml、straydog.bbg | bridge-entry / bridge-round → ENCBTL01 / ENCRND01 v6 | 实际 84 HP、13 攻、20 防、5 速；bite:bash=2:1；原背景、Bite 回调、塑料球棒准备与挥击动画 / Swing SE |
 | BattleItemPool.gd、BattleSystem.gd、FleaBag.yaml | Loot / PreHit / ActionMedia 三个受检 v6 section | 原候选选择和 <=40 概率，胜利后入包，8 EXP、20 cash、beat_dog_bridge；来源不会注册 straydog_fought，不伪造该旗标 |
 | DialogueBox.gd、audioManager.gd、BattleSystem.gd | 独立声音绑定、返回音乐 3 秒 QuartOut 参数 | 野外 NDSP 区域通道暂停 / 保留队列，战斗使用独立音乐，返回按原曲位置渐入 |
@@ -26,3 +26,5 @@
 全背包掉落地面分支未映射，预检在消耗随机数和改进度前明确拒绝。FleaBag 可以领取和携带，战斗使用未开放。日常 NPC 对话、其他建筑入口、随机敌群、多角色、状态与完整败北演出未完成；败北保留明确诊断及 B 返回标题。野外存档仍经受检 House 入口恢复，不支持任意地图位置快照。
 
 新增剧情保留原时长、文案、帧和动作；表情偏移 / 镜像等视觉细节尚有差异。NPC 的局部运动 RNG 不能代表原场景共享 RNG。自动化接受语义结果，不要求像素、存档 UID 或原版字节一致。
+
+构建回归修复：首轮 CI 拒绝本机 FFmpeg 6 改变的既有 PCM；改用原 FFmpeg 7 后逐项确认旧 53 项记录一致。首轮完整主机构建停在 Items 绑定夹具仍假定仅 Drawer / Bat 两项扩展；夹具现逐个核对新增 FleaBag 真实收据，仍拒绝未知、重复或陈旧资源。对应实际失败日志保留。Python 消费者 74 项、Items 绑定 10 项（其中一次旧计数断言失败并保留）及最后夹具负例 2 项已实测；GCC ASan/UBSan 的 Items / Details 通过。

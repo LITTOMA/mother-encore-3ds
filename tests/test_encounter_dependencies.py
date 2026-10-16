@@ -13,6 +13,7 @@ import encounter_dependencies as e
 LAMP = 'Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml#12'
 DOLL = 'Data/Dialogue/Podunk/cutscenes/doll_attack.yaml#6'
 PILLOW = 'Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml#6'
+BRIDGE = 'Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml#2'
 TRIPLE = 'Data/Dialogue/Merrysville/Cutscenes/DrDistorto3.yaml#battle'
 PODUNK = 'Maps/podunk/podunk.tscn'
 
@@ -92,8 +93,15 @@ class EncounterDependenciesTests(unittest.TestCase):
         self.assertEqual([p['battle_pack'] for p in result['encounters']], ['battle/lamp/opening.encbattle','battle/doll/doll-entry.encbattle','battle/pillow/pillow-entry.encbattle'])
         self.assertTrue(all(set(p) == {'key','battle_pack','round_pack'} for p in result['encounters']))
 
+    def test_bridge_pair_admits_only_its_real_actor_and_own_resources(self):
+        result=e.adapt_compiled_dependencies(self.doc,[BRIDGE],17,ROOT)
+        self.assertEqual(result['encounters'],[dict(key=BRIDGE,battle_pack='battle/straydog/bridge.encbattle',round_pack='battle/straydog/bridge.encround')])
+        bad=copy.deepcopy(self.doc)
+        formation=next(f for f in bad['formations']if f['key']==BRIDGE)
+        formation['ordered_members'][0]['actor']='different_actor'
+        with self.assertRaises(e.DependencyError):e.adapt_compiled_dependencies(bad,[BRIDGE],17,ROOT)
     def test_source_scene_and_multi_enemy_fail_readiness(self):
-        for key in [PODUNK, TRIPLE, 'Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml#2']:
+        for key in [PODUNK, TRIPLE]:
             with self.subTest(key=key), self.assertRaisesRegex(e.DependencyError, 'readiness rejected'):
                 e.adapt_compiled_dependencies(self.doc, [key], 1, ROOT)
         with self.assertRaisesRegex(e.DependencyError, 'readiness rejected'):
@@ -160,7 +168,7 @@ class EncounterDependenciesTests(unittest.TestCase):
         # a layout change must not leave last generation's pack fingerprints.
         stored = json.loads((ROOT / 'content/encounter-dependencies.json').read_bytes())
         keys = [f['key'] for f in stored['formations'] if f['compiled'] is not None]
-        self.assertEqual(set(keys), {LAMP, DOLL, PILLOW})
+        self.assertEqual(set(keys), {LAMP, DOLL, PILLOW, BRIDGE})
         admitted = e.adapt_compiled_dependencies(stored, keys, 1, ROOT)
         self.assertEqual({row['key'] for row in admitted['encounters']}, set(keys))
 

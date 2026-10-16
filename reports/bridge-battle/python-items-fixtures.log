@@ -1,0 +1,14 @@
+F.........
+======================================================================
+FAIL: test_exact_checked_prefix_and_independent_copy (tests.test_items_fixture_resources.ItemFixtureResources.test_exact_checked_prefix_and_independent_copy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_items_fixture_resources.py", line 8, in test_exact_checked_prefix_and_independent_copy
+    result=base_resources(self.ir);self.assertEqual(len(result),12);self.assertEqual(len(self.ir['resources']),14)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 15 != 14
+
+----------------------------------------------------------------------
+Ran 10 tests in 22.019s
+
+FAILED (failures=1)

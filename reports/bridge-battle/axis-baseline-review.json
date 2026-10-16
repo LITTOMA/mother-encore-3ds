@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "review_date_utc": "2026-10-16",
+  "baseline": "include/encore/background_kernel.hpp",
+  "source_commit": "1c192b7e7160132d89e9c5f547e6885bee3486bb",
+  "file_sha256": "6175ba8adaabb1e357528e3e15c9e3c4a8acd0cff9fd5ad55c10afc94cec7f96",
+  "normalized_sha256": "cbe254eb28b725e000c7d4c54ebb12cb9cc00c5ffbe6a001e81d8f1d114dbecf",
+  "normalization": "UTF-8 universal newlines; remove exact four-space friend class RegionBackgroundKernel declaration and its newline.",
+  "review": {
+    "implementation": "Only two non-barrel layers with opaque first palette, no palette shifting or cross-axis oscillation and active independent compression can enter the new axis factorization. It retains scalar float operation order, coordinate bounds, blend and mapped write order. Existing shapes retain dispatch and optional fallback.",
+    "memory": "Axis palette pairs reuse the existing pair reservation; coordinate arrays are added to preparation, prepared and allocated byte accounting. Clear invalidates all new storage.",
+    "independent_oracle": "tests/baby_background_scalar_reference.hpp was retained unchanged; tests/baby_background_kernel_tests.cpp compares 11999792 sample pixels, including axis X/Y, movement, clamp/repeat, transparency fallback and invalid phase no-write cases.",
+    "evidence": "reports/bridge-battle/axis-kernel-sanitize-final.log; GCC ASan/UBSan/float-cast-overflow and a separate detect_leaks=1 execution passed 314785 checks. Region integration must be rerun after admitting this exact hash; this review is not a passed integration claim."
+  },
+  "gate": "Add only this exact normalized SHA to the existing narrow set; unknown headers still fail before overlay compilation. Existing scalar and region comparison expectations remain unchanged."
+}

@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "scope": "Host focused tests with generated one-friend baseline overlay",
+  "commands": [
+    [
+      "c++",
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Werror",
+      "-ffp-contract=off",
+      "-I/mnt/d/GameDev/3DS/mother-encore-3ds/build/region-background-integration/overlay",
+      "-I/mnt/d/GameDev/3DS/mother-encore-3ds",
+      "-I/mnt/d/GameDev/3DS/mother-encore-3ds/include",
+      "-g",
+      "-fsanitize=address,undefined,float-cast-overflow",
+      "-fno-omit-frame-pointer",
+      "-fno-pie",
+      "-no-pie",
+      "/mnt/d/GameDev/3DS/mother-encore-3ds/tests/region_background_kernel_tests.cpp",
+      "/mnt/d/GameDev/3DS/mother-encore-3ds/runtime/battle_data.cpp",
+      "/mnt/d/GameDev/3DS/mother-encore-3ds/runtime/file_io.cpp",
+      "-o",
+      "/mnt/d/GameDev/3DS/mother-encore-3ds/build/region-background-integration/integration-sanitize"
+    ],
+    [
+      "/mnt/d/GameDev/3DS/mother-encore-3ds/build/region-background-integration/integration-sanitize"
+    ]
+  ],
+  "inputs": {
+    "include/encore/background_kernel.hpp": "6175ba8adaabb1e357528e3e15c9e3c4a8acd0cff9fd5ad55c10afc94cec7f96",
+    "include/encore/region_background_kernel.hpp": "67938a583068f7f6f3b7b4e80dbb7a406e580a17b592635e9dd4413e90c6e91f",
+    "build/region-background-integration/overlay/encore/background_kernel.hpp": "6175ba8adaabb1e357528e3e15c9e3c4a8acd0cff9fd5ad55c10afc94cec7f96",
+    "tests/region_background_kernel_tests.cpp": "7e8b0f0109eb1c7d2359ada97676c6db0e470e61c53dabf9489cbbbb9c2cf3f9",
+    "tools/test_region_background.py": "770f985791aeaf4f3802f67a9926069e196f1de462d375cd59162bc51f80eb2c"
+  },
+  "binary": "/mnt/d/GameDev/3DS/mother-encore-3ds/build/region-background-integration/integration-sanitize",
+  "binary_sha256": "5c01b0a5516f65a8587cdf430097668ca56d8c6e9c9dfb748477fe278e84bf93",
+  "baseline_changed": false,
+  "sanitize": true,
+  "leak_check": true,
+  "log": "/mnt/d/GameDev/3DS/mother-encore-3ds/build/region-background-integration/reports/integration-sanitize.log"
+}

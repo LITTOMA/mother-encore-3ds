@@ -393,8 +393,7 @@
       },
       "buttons": [
         "A"
-      ],
-      "capture": true
+      ]
     },
     {
       "name": "spray_return",
@@ -1476,8 +1475,7 @@
       },
       "buttons": [
         "X"
-      ],
-      "capture": true
+      ]
     },
     {
       "name": "controls_back",
@@ -1617,6 +1615,302 @@
       },
       "buttons": [
         "SELECT"
+      ]
+    },
+    {
+      "name": "basement_exit",
+      "wait": {
+        "house_phase": 0
+      },
+      "buttons": [
+        "UP"
+      ],
+      "hold_until": {
+        "player_x": 96,
+        "player_y": 705
+      }
+    },
+    {
+      "name": "living_walk",
+      "wait": {
+        "house_phase": 0
+      },
+      "buttons": [
+        "DOWN"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": 798,
+          "max": 802
+        }
+      }
+    },
+    {
+      "name": "front_walk",
+      "wait": {
+        "house_phase": 0
+      },
+      "buttons": [
+        "RIGHT"
+      ],
+      "hold_until": {
+        "player_x": {
+          "min": 134,
+          "max": 138
+        }
+      }
+    },
+    {
+      "name": "field_entry",
+      "wait": {
+        "field_scene": 1,
+        "field_phase": 0,
+        "paused": 0
+      },
+      "buttons": [
+        "DOWN"
+      ],
+      "hold_until": {
+        "field_scene": 1
+      }
+    },
+    {
+      "name": "field_pause",
+      "wait": {
+        "menu_phase": 2,
+        "menu_command": 0,
+        "field_scene": 1
+      },
+      "buttons": [
+        "START"
+      ]
+    },
+    {
+      "name": "field_status_col",
+      "wait": {
+        "menu_command": 1
+      },
+      "buttons": [
+        "RIGHT"
+      ]
+    },
+    {
+      "name": "field_status_row",
+      "wait": {
+        "menu_command": 3
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "field_status",
+      "wait": {
+        "submenu_phase": 8
+      },
+      "buttons": [
+        "A"
+      ],
+      "capture": true
+    },
+    {
+      "name": "field_status_back",
+      "wait": {
+        "menu_phase": 2
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "field_map_row",
+      "wait": {
+        "menu_command": 5
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "field_map_col",
+      "wait": {
+        "menu_command": 4
+      },
+      "buttons": [
+        "LEFT"
+      ]
+    },
+    {
+      "name": "field_map",
+      "wait": {
+        "submenu_phase": 11
+      },
+      "buttons": [
+        "A"
+      ],
+      "capture": true
+    },
+    {
+      "name": "field_map_back",
+      "wait": {
+        "menu_phase": 2
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "field_options_col",
+      "wait": {
+        "menu_command": 5
+      },
+      "buttons": [
+        "RIGHT"
+      ]
+    },
+    {
+      "name": "field_options",
+      "wait": {
+        "submenu_phase": 12
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_general_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "field_general",
+      "wait": {
+        "submenu_phase": 14
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_video_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "field_display_before",
+      "wait": {
+        "submenu_phase": 16
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_display_choice",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_reference",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "field_display_changed",
+      "wait": {
+        "submenu_phase": 16,
+        "width": 320,
+        "height": 180,
+        "field_scene": 1,
+        "hp": 65,
+        "pp": 22,
+        "inventory_count": 1,
+        "key_count": 5
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_display_choice_again",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_native",
+      "wait": {
+        "submenu_selection": 0
+      },
+      "buttons": [
+        "UP"
+      ]
+    },
+    {
+      "name": "field_display_restored",
+      "wait": {
+        "submenu_phase": 16
+      },
+      "buttons": [
+        "A"
+      ],
+      "same_as": "field_display_before"
+    },
+    {
+      "name": "field_video_back",
+      "wait": {
+        "submenu_phase": 14
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "field_general_back",
+      "wait": {
+        "submenu_phase": 12
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "field_options_back",
+      "wait": {
+        "menu_phase": 2
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "field_close",
+      "wait": {
+        "menu_phase": 0,
+        "paused": 0,
+        "field_scene": 1
+      },
+      "buttons": [
+        "B"
       ]
     },
     {

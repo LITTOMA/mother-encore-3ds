@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "name": "Validated key/Dad boundary, normal map and DogTreats pickup, field exit and return",
+  "name": "Validated key/Dad boundary, normal map and DogTreats pickup, field exit and return (Simplified Chinese)",
   "reference": {
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
     "scope": "Explicit artificial native save checkpoint: begins with KeyBasement held, not a claim of naturally reaching this point. Normal LOAD, source key-door unlock, MapPodunk grant, repeat and basement exit/reentry are compared semantically to pinned Godot present methods. No memory writes, pixel equivalence or original full save-loading claim.; continuous held DOWN through background preparation must reach the source map approach without release/repress.; The explicit checkpoint also sets talked_to_dad to admit the normal house exit. Then real input collects DogTreats, leaves, opens/closes START and returns with both presents retained. This checkpoint route does not reproduce prior battle memory residency; the separate natural opening-field-exit route does.",
@@ -43,6 +43,16 @@
         "title_phase": 1,
         "width": 400,
         "height": 240
+      }
+    },
+    {
+      "name": "choose_chinese",
+      "buttons": [
+        "R"
+      ],
+      "frames": 120,
+      "wait": {
+        "title_phase": 1
       }
     },
     {

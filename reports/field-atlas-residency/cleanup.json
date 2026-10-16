@@ -1,0 +1,326 @@
+{
+  "scope": "Only task-owned compiled objects, three host executables and already-verified download archive; extracted genuine game and all logs retained",
+  "bytes": 514767497.0,
+  "removed": [
+    {
+      "bytes": 355787801,
+      "path": "validated-package.zip"
+    },
+    {
+      "bytes": 706624,
+      "path": "host\\actor_actions.o"
+    },
+    {
+      "bytes": 64584,
+      "path": "host\\animation.o"
+    },
+    {
+      "bytes": 339744,
+      "path": "host\\audio_data.o"
+    },
+    {
+      "bytes": 1965480,
+      "path": "host\\battle_action_presentation.o"
+    },
+    {
+      "bytes": 424104,
+      "path": "host\\battle_data.o"
+    },
+    {
+      "bytes": 316768,
+      "path": "host\\battle_entry.o"
+    },
+    {
+      "bytes": 888800,
+      "path": "host\\battle_outcome.o"
+    },
+    {
+      "bytes": 501136,
+      "path": "host\\battle_round_data.o"
+    },
+    {
+      "bytes": 1048424,
+      "path": "host\\battle_round.o"
+    },
+    {
+      "bytes": 928808,
+      "path": "host\\collision.o"
+    },
+    {
+      "bytes": 1275960,
+      "path": "host\\content.o"
+    },
+    {
+      "bytes": 1488296,
+      "path": "host\\continue_menu_data.o"
+    },
+    {
+      "bytes": 1436448,
+      "path": "host\\continue_menu.o"
+    },
+    {
+      "bytes": 1048400,
+      "path": "host\\cutscene_camera.o"
+    },
+    {
+      "bytes": 1113040,
+      "path": "host\\dialogue_choices_data.o"
+    },
+    {
+      "bytes": 357344,
+      "path": "host\\dialogue_choices.o"
+    },
+    {
+      "bytes": 126216,
+      "path": "host\\dialogue.o"
+    },
+    {
+      "bytes": 745448,
+      "path": "host\\drawer_program.o"
+    },
+    {
+      "bytes": 420896,
+      "path": "host\\field_data.o"
+    },
+    {
+      "bytes": 822384,
+      "path": "host\\field_equipment_data.o"
+    },
+    {
+      "bytes": 1644160,
+      "path": "host\\field_equipment_menu.o"
+    },
+    {
+      "bytes": 2771240,
+      "path": "host\\field_scene.o"
+    },
+    {
+      "bytes": 130800,
+      "path": "host\\file_io.o"
+    },
+    {
+      "bytes": 1447960,
+      "path": "host\\fresh_house.o"
+    },
+    {
+      "bytes": 229328,
+      "path": "host\\game.o"
+    },
+    {
+      "bytes": 222104,
+      "path": "host\\gameplay_audio.o"
+    },
+    {
+      "bytes": 225960,
+      "path": "host\\house_audio.o"
+    },
+    {
+      "bytes": 1052696,
+      "path": "host\\house_button_prompts.o"
+    },
+    {
+      "bytes": 703616,
+      "path": "host\\house_data.o"
+    },
+    {
+      "bytes": 452352,
+      "path": "host\\house_inspection_data.o"
+    },
+    {
+      "bytes": 2325808,
+      "path": "host\\house_presentation.o"
+    },
+    {
+      "bytes": 803072,
+      "path": "host\\house_presents.o"
+    },
+    {
+      "bytes": 4205536,
+      "path": "host\\house_runtime.o"
+    },
+    {
+      "bytes": 4061136,
+      "path": "host\\introduction.o"
+    },
+    {
+      "bytes": 1558840,
+      "path": "host\\item_details.o"
+    },
+    {
+      "bytes": 675136,
+      "path": "host\\items_data.o"
+    },
+    {
+      "bytes": 837112,
+      "path": "host\\items_menu.o"
+    },
+    {
+      "bytes": 365928,
+      "path": "host\\load_rng.o"
+    },
+    {
+      "bytes": 417448,
+      "path": "host\\loading_indicator_data.o"
+    },
+    {
+      "bytes": 157496,
+      "path": "host\\locale_preference.o"
+    },
+    {
+      "bytes": 1737600,
+      "path": "host\\localization.o"
+    },
+    {
+      "bytes": 867440,
+      "path": "host\\localized_presentation.o"
+    },
+    {
+      "bytes": 907808,
+      "path": "host\\mick_treats.o"
+    },
+    {
+      "bytes": 69760,
+      "path": "host\\movement.o"
+    },
+    {
+      "bytes": 1946840,
+      "path": "host\\music_regions.o"
+    },
+    {
+      "bytes": 592272,
+      "path": "host\\music_zones.o"
+    },
+    {
+      "bytes": 201208,
+      "path": "host\\native_input.o"
+    },
+    {
+      "bytes": 4640584,
+      "path": "host\\native_session.o"
+    },
+    {
+      "bytes": 4965840,
+      "path": "host\\new_game_setup.o"
+    },
+    {
+      "bytes": 36064,
+      "path": "host\\opening_trigger.o"
+    },
+    {
+      "bytes": 527984,
+      "path": "host\\phone_data.o"
+    },
+    {
+      "bytes": 219528,
+      "path": "host\\phone_runtime.o"
+    },
+    {
+      "bytes": 1048608,
+      "path": "host\\present_data.o"
+    },
+    {
+      "bytes": 11632,
+      "path": "host\\progression.o"
+    },
+    {
+      "bytes": 553488,
+      "path": "host\\resource_catalog.o"
+    },
+    {
+      "bytes": 1529728,
+      "path": "host\\restore_data.o"
+    },
+    {
+      "bytes": 1180800,
+      "path": "host\\room_data.o"
+    },
+    {
+      "bytes": 1971376,
+      "path": "host\\save_menu_data.o"
+    },
+    {
+      "bytes": 910184,
+      "path": "host\\save_menu.o"
+    },
+    {
+      "bytes": 399992,
+      "path": "host\\save.o"
+    },
+    {
+      "bytes": 3057616,
+      "path": "host\\session_migration.o"
+    },
+    {
+      "bytes": 2384328,
+      "path": "host\\session_restore.o"
+    },
+    {
+      "bytes": 2388832,
+      "path": "host\\session_save.o"
+    },
+    {
+      "bytes": 264216,
+      "path": "host\\slot_preference.o"
+    },
+    {
+      "bytes": 860328,
+      "path": "host\\source_font.o"
+    },
+    {
+      "bytes": 15248,
+      "path": "host\\source_random.o"
+    },
+    {
+      "bytes": 1767904,
+      "path": "host\\startup_settings.o"
+    },
+    {
+      "bytes": 646296,
+      "path": "host\\storage_data.o"
+    },
+    {
+      "bytes": 1463336,
+      "path": "host\\storage_menu.o"
+    },
+    {
+      "bytes": 46272,
+      "path": "host\\story.o"
+    },
+    {
+      "bytes": 1107768,
+      "path": "host\\title_locale_data.o"
+    },
+    {
+      "bytes": 149512,
+      "path": "host\\world_effect_data.o"
+    },
+    {
+      "bytes": 416416,
+      "path": "host\\world_effect.o"
+    },
+    {
+      "bytes": 542712,
+      "path": "host\\world_flags.o"
+    },
+    {
+      "bytes": 262144,
+      "path": "host\\world_links.o"
+    },
+    {
+      "bytes": 3725256,
+      "path": "host\\world.o"
+    },
+    {
+      "bytes": 37728496,
+      "path": "host\\house_map_present"
+    },
+    {
+      "bytes": 37023688,
+      "path": "host\\encounter_residency"
+    },
+    {
+      "bytes": 503960,
+      "path": "host\\loading_texture"
+    }
+  ]
+}

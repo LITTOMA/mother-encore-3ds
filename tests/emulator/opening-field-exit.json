@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "name": "Natural opening battles and Dad call, then repeated field/house graphics handoff",
+  "name": "Natural opening battles and Dad call, then repeated field/house graphics handoff (Simplified Chinese)",
   "reference": {
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
     "scope": "Pinned source contracts and independently executed Godot Pause/PSI methods; START/SELECT mapping is the declared 3DS adaptation. Covers normal startup/menu safety, excludes full game and learned PSI target effects.; Normal Lamp victory inputs and physical route to locked basement door. RNG remains original clock-seeded; HP and walking coordinates are recorded with source-route intervals, not equated across runs.; natural Doll room entry, battle and learned level-2 Telepathy; no injected flags, inventory or RNG. Extended ordinary-input route: Doll melody, Carol phone ring, first Dad call, stick selection of Nothing then Record, SaveSelect open/cancel and return; no actual Record write/LOAD claim.; Physical postwin route through Doll melody, hallway/stairs, Carol and Dad; repeated normal call uses Circle Pad choice and opens/cancels SaveSelect. No emulator save write or LOAD; original postwin motion verified separately with official Godot, phone source contracts are pinned rather than a full parallel original playthrough.; Extended normal-input house/Podunk/house/Podunk route without checkpoint or injected items/flags; checks graphics admission and session control, not a complete original playthrough.",
@@ -64,6 +64,16 @@
       },
       "audio_progress": true,
       "expected_music": 1202
+    },
+    {
+      "name": "choose_chinese",
+      "buttons": [
+        "R"
+      ],
+      "frames": 120,
+      "wait": {
+        "title_phase": 1
+      }
     },
     {
       "name": "select_guard",
@@ -711,8 +721,8 @@
       ],
       "hold_until": {
         "player_y": {
-          "min": 39,
-          "max": 41
+          "min": 34,
+          "max": 46
         }
       },
       "wait": {
@@ -770,7 +780,7 @@
       "hold_until": {
         "player_x": {
           "min": 61,
-          "max": 63
+          "max": 72
         }
       },
       "wait": {
@@ -785,8 +795,8 @@
       ],
       "hold_until": {
         "player_y": {
-          "min": 104,
-          "max": 106
+          "min": 100,
+          "max": 112
         }
       },
       "wait": {
@@ -801,8 +811,8 @@
       ],
       "hold_until": {
         "player_x": {
-          "min": 127,
-          "max": 129
+          "min": 124,
+          "max": 134
         }
       },
       "wait": {
@@ -837,8 +847,8 @@
       ],
       "hold_until": {
         "player_x": {
-          "min": 199,
-          "max": 201
+          "min": 195,
+          "max": 205
         }
       },
       "wait": {
@@ -861,8 +871,8 @@
       ],
       "hold_until": {
         "player_y": {
-          "min": 409,
-          "max": 411
+          "min": 405,
+          "max": 415
         }
       },
       "wait": {
@@ -905,8 +915,8 @@
       ],
       "hold_until": {
         "player_y": {
-          "min": 751,
-          "max": 753
+          "min": 748,
+          "max": 758
         }
       },
       "wait": {
@@ -921,7 +931,7 @@
       ],
       "hold_until": {
         "player_x": {
-          "min": 191,
+          "min": 184,
           "max": 193
         }
       },
@@ -937,8 +947,8 @@
       ],
       "hold_until": {
         "player_y": {
-          "min": 731,
-          "max": 733
+          "min": 727,
+          "max": 737
         }
       },
       "wait": {
@@ -995,8 +1005,8 @@
       ],
       "hold_until": {
         "player_x": {
-          "min": 147,
-          "max": 149
+          "min": 145,
+          "max": 153
         }
       },
       "wait": {
@@ -1011,8 +1021,8 @@
       ],
       "hold_until": {
         "player_y": {
-          "min": 712,
-          "max": 714
+          "min": 708,
+          "max": 718
         }
       },
       "wait": {
@@ -1063,7 +1073,7 @@
       },
       "hold_until": {
         "player_y": {
-          "min": 798,
+          "min": 794,
           "max": 802
         }
       }
@@ -1079,8 +1089,8 @@
       },
       "hold_until": {
         "player_x": {
-          "min": 134,
-          "max": 138
+          "min": 128,
+          "max": 143
         }
       }
     },
@@ -1111,8 +1121,8 @@
       },
       "hold_until": {
         "player_y": {
-          "min": -19,
-          "max": -15
+          "min": -25,
+          "max": -12
         }
       },
       "capture": true
@@ -1182,8 +1192,8 @@
       },
       "hold_until": {
         "player_y": {
-          "min": -19,
-          "max": -15
+          "min": -25,
+          "max": -12
         }
       },
       "capture": true

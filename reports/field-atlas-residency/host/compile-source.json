@@ -1,0 +1,16 @@
+{
+  "source_commit": "ea7354a617f7ee3679f35e47c1fd4a84ca5fc5cc",
+  "level": "GCC host ASan/UBSan; not GPU, emulator or hardware validation",
+  "flags": [
+    "g++",
+    "-std=c++17",
+    "-O0",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer",
+    "-fno-pie",
+    "-fno-exceptions",
+    "-fno-rtti",
+    "-Iinclude"
+  ],
+  "objects": 76
+}

@@ -53,6 +53,7 @@ try:
  def capture(name):
   job=client.call('screen.capture',{'screen':'combined'});event=client.event('screen.captured',jobId=job['jobId']);raw=base64.b64decode(event['data']);assert len(raw)<=2097152;(out/(name+'.png')).write_bytes(raw)
  def travel(button,predicate,limit=1800):
+  client.call('input.clear');advance(3)
   client.call('input.set',{'buttons':[button]})
   try:
    last=None;stopped=0
@@ -112,7 +113,7 @@ finally:
   try:process.wait(timeout=15)
   except subprocess.TimeoutExpired:process.kill();process.wait(timeout=15)
  if client:client.close()
- log=exe.parent/'user/log/citra_log.txt'
+ log=exe.parent/'user/log/azahar_log.txt'
  if log.exists():shutil.copyfile(log,out/'emulator.log')
  if (work/'.owned-emulator-workspace').read_text()!='podunk-bridge-v1':raise ValueError('Cleanup ownership marker differs')
  shutil.rmtree(work)

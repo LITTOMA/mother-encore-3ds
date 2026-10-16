@@ -110,6 +110,17 @@ def godot_string_hash(text):
 # ---------------------------------------------------------------- transforms
 def local_transform(node):
     props = node.props
+    if node.type == 'ReferenceRect':
+        # Audited static Control layout: zero anchors/pivot/rotation, unit scale.
+        # Its rect position participates in the CanvasItem chain, including
+        # Node2D children (Godot 3.6.2 Control::get_transform).
+        allowed = {'margin_left', 'margin_top', 'margin_right', 'margin_bottom',
+                   'mouse_filter', 'border_color', 'editor_only', 'visible'}
+        require(not (set(props) - allowed), 'Unreviewed ReferenceRect layout on ' + node.path)
+        margins = [props.get(k, 0) for k in ('margin_left', 'margin_top', 'margin_right', 'margin_bottom')]
+        require(all(type(v) in (int, float) and math.isfinite(v) for v in margins),
+                'Bad ReferenceRect margin on ' + node.path)
+        return Transform2D(1, 0, 0, 1, margins[0], margins[1])
     if node.type not in NODE2D:
         return Transform2D(1, 0, 0, 1, 0, 0)
     for key in ('transform', 'skew', 'global_position', 'rotation_degrees'):

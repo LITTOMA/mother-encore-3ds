@@ -1,0 +1,6 @@
+{
+  "removed": "dist/mick-key-64940c4",
+  "bytes_removed": 490183567,
+  "retained": "dist/podunk-camera-51979af",
+  "reason": "New real package passed English and Chinese emulator runs; baseline receipt, screenshots and observations retained"
+}

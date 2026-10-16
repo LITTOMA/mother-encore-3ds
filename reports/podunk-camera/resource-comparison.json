@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "baseline": "2e2f7c9542a5eec5ba1d345bab087ecc0a66ad4b",
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "changed_map_sections": [
+    "Cameras"
+  ],
+  "old_camera": [
+    438.0,
+    244.0,
+    98.0,
+    188.0,
+    1952.0,
+    1064.0,
+    520.0,
+    456.0,
+    0.0,
+    0.0,
+    0,
+    0,
+    1,
+    0
+  ],
+  "new_camera": [
+    2390.0,
+    1308.0,
+    98.0,
+    188.0,
+    1952.0,
+    1064.0,
+    520.0,
+    456.0,
+    0.0,
+    0.0,
+    0,
+    0,
+    1,
+    0
+  ],
+  "all_other_map_sections_identical": true,
+  "atlas_receipts_identical": true,
+  "source_recipe_and_inventory_identical": true,
+  "room_and_links_identical": true,
+  "compiler_sha256": "bff1a434bfbb8923f00efd418bdcffcfbe1a4581fe1541ff6063fe1ff9f687e1",
+  "source_script_oracle": {
+    "center": [
+      2390,
+      1308
+    ],
+    "size": [
+      520,
+      456
+    ],
+    "limits": [
+      1952,
+      1064,
+      2472,
+      1520
+    ],
+    "reported_points_outside": [
+      true,
+      true
+    ]
+  }
+}

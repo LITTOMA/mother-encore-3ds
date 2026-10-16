@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "baseline_capture": false,
+  "projection": {
+    "field_scene": 2,
+    "field_phase": 0,
+    "paused": 0,
+    "inventory_count": 1,
+    "key_count": 1,
+    "hp": 65,
+    "pp": 27,
+    "object_flag_count": 0
+  },
+  "source_commit": "51979af1dc6d5368ad61e146bb6cee92427c692c",
+  "memory_write_enabled": false,
+  "driver_sha256": "35b48bfc376910b6b5336c94591a1d8bc0c85c9a11db241637ce6892d8f8a4b3",
+  "fixture_sha256": "5e97629c82452760f3a607d5964d83e6d077726bec0a1fb7809a3d137fb30892",
+  "emulator_sha256": "bd50cebf6427410df090855c4f5ba7cd1991b7fe1ff7f7f12f2ac49e187da525",
+  "game_sha256": "42f653d031bf1ab4e662ec6fc8f568d56c24d20d375027c4c02a7325b77f2fd0",
+  "scope": "Artificial shared-core validated post-treats House-exit checkpoint. Normal LOAD and movement; bridge repeated twice. Screenshots are visual evidence, not a pixel oracle; exact camera origin is separately checked by shared core tests. No natural opening or hardware claim."
+}

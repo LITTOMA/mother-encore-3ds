@@ -1,12 +1,12 @@
 {
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "compiler_sha256": "aa38b04bfa46f92272c70f3509d53077078540d7b8b774d23080180a3a8cbdd9",
+  "compiler_sha256": "bff1a434bfbb8923f00efd418bdcffcfbe1a4581fe1541ff6063fe1ff9f687e1",
   "compression": "none",
   "format": "rgba8",
   "outputs": {
     "world/podunk/podunk.encmap": {
       "bytes": 1620684,
-      "sha256": "cabe619945b83a1a8d91af660c599035a4917b71ef9ddc8ab7d12879993b3b2b"
+      "sha256": "ec39c7ae8c174bd6ffe3697cceb7812e4b34428d380fbffc9b95fdf84caf5638"
     },
     "world/podunk/podunk.encroom": {
       "bytes": 11536,

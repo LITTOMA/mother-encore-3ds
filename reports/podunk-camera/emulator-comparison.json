@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "runs": [
+    "podunk-camera-fixed-1",
+    "podunk-camera-fixed-zh-1",
+    "podunk-camera-frontier-2"
+  ],
+  "projection": {
+    "field_scene": 2,
+    "field_phase": 0,
+    "paused": 0,
+    "inventory_count": 1,
+    "key_count": 1,
+    "hp": 65,
+    "pp": 27,
+    "object_flag_count": 0
+  },
+  "memory_write_enabled": false,
+  "source_commit": "51979af1dc6d5368ad61e146bb6cee92427c692c",
+  "game_sha256": "42f653d031bf1ab4e662ec6fc8f568d56c24d20d375027c4c02a7325b77f2fd0",
+  "emulator_sha256": "bd50cebf6427410df090855c4f5ba7cd1991b7fe1ff7f7f12f2ac49e187da525",
+  "visual_review": "Old package jumps at x~340 and hides player; fixed package keeps player centered at x~356. Screenshots reviewed, no pixel equivalence assertion.",
+  "frontier": "At x450 original beat_dog_bridge=false Cutscene Area10 remains unsupported; phase3/paused; normal B returns to phase0/unpaused and bridge approach remains usable.",
+  "scope": "Artificial post-treats House-exit fixture; source-script isolated oracle, shared core camera tests, and actual Azahar normal-input runs. No whole-map original gameplay or hardware verification."
+}

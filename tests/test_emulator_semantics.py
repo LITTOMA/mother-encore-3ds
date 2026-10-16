@@ -184,4 +184,32 @@ class SaveFixtureBoundary(unittest.TestCase):
             bad=copy.deepcopy(checkpoints);edit(bad)
             with self.assertRaises(AssertionError):compare_present(bad,source,{'base_key_count':2,'present_index':3})
 
+    def test_menu_fixture_has_its_own_exact_resource_contract(self):
+        import hashlib,tempfile
+        from tools.run_emulator_semantics import validate_save_fixture
+        resources=['session/opening.encsession','world/house/opening.encroom','world/house/opening.enchouse','world/house/opening.encpresent','ui/opening.encitems','battle/lamp/opening.encround','ui/field.encmenus','ui/opening.encdetails','ui/opening.encsettings','ui/opening.encfield']
+        with tempfile.TemporaryDirectory(dir=ROOT/'build')as directory:
+            base=Path(directory);(base/'menus.encsave').write_bytes(b'explicit test fixture');(base/'generator.log').write_bytes(b'validation log')
+            fixture=dict(schema=1,kind='encore.emulator-menu-fixture',source_commit='checked',upstream_commit='7d9246600fffe518408f5830d4848635019005a3',file='menus.encsave',sha256=hashlib.sha256((base/'menus.encsave').read_bytes()).hexdigest(),resources={name:hashlib.sha256((ROOT/'romfs'/name).read_bytes()).hexdigest()for name in resources},scope='Artificial unit fixture',execution=dict(generator_sha256='1'*64,producer_sha256='2'*64,log_sha256=hashlib.sha256((base/'generator.log').read_bytes()).hexdigest()))
+            manifest=base/'fixture.json';manifest.write_text(json.dumps(fixture));validate_save_fixture(manifest,{'source_commit':'checked'})
+            for edit in (lambda f:f.update(kind='unknown'),lambda f:f.update(base_key_count=5),lambda f:f['resources'].pop('ui/field.encmenus'),lambda f:f.update(schema=2)):
+                bad=copy.deepcopy(fixture);edit(bad);manifest.write_text(json.dumps(bad))
+                with self.assertRaises(ValueError):validate_save_fixture(manifest,{'source_commit':'checked'})
+
+    def test_menu_comparison_rejects_inventory_uid_display_and_return_drift(self):
+        from tools.run_emulator_semantics import compare_field_menus,menu_inventory_hash
+        rows=[dict(item_id='AsthmaSpray',doses=3,equipped=False),dict(item_id='BaseballCap',doses=1,equipped=True)]
+        consumed=copy.deepcopy(rows);consumed[0]['doses']=2
+        cases=dict(sorted_items=rows,consumed_items=consumed,exhausted_items=rows[1:],dropped_items=[])
+        original=dict(kind='field-menus',cases=cases)
+        checkpoints={name:dict(menu_inventory_hash=menu_inventory_hash(cases[case]),inventory_count=len(cases[case]),menu_uid_hash=123,hp=25,pp=26)for name,case in [('goods_sorted','sorted_items'),('goods_consumed','consumed_items'),('goods_exhausted','exhausted_items'),('goods_dropped','dropped_items')]}
+        checkpoints['display_before']=dict(player_x=88,player_y=977,menu_inventory_hash=1,key_count=5,menu_controls_hash=456)
+        checkpoints['display_after']=dict(checkpoints['display_before'],width=320,height=180)
+        checkpoints['controls_default']=dict(menu_controls_hash=456);checkpoints['closed']=dict(menu_phase=0,paused=0)
+        self.assertEqual(len(compare_field_menus(checkpoints,original)),8)
+        for name,field in [('goods_sorted','menu_inventory_hash'),('goods_consumed','menu_uid_hash'),('goods_consumed','hp'),('goods_exhausted','inventory_count'),('display_after','player_x'),('display_after','width'),('controls_default','menu_controls_hash'),('closed','paused')]:
+            bad=copy.deepcopy(checkpoints);bad[name][field]+=1
+            with self.assertRaises(AssertionError):compare_field_menus(bad,original)
+        with self.assertRaises(ValueError):compare_field_menus(checkpoints,dict(original,kind='present'))
+
 if __name__ == "__main__": unittest.main()

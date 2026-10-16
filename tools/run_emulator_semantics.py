@@ -34,6 +34,11 @@ def sha(path):
     return h.hexdigest()
 
 
+def is_within(path,parent):
+    try:Path(path).resolve().relative_to(Path(parent).resolve());return True
+    except ValueError:return False
+
+
 def validate_scenario(scenario):
     if set(scenario) != {'schema', 'name', 'reference', 'projection', 'steps'} or type(scenario['schema']) is not int or scenario['schema'] != 1:
         raise ValueError('Unknown scenario schema/fields')
@@ -81,20 +86,24 @@ def validate_reference(reference):
 
 def validate_save_fixture(path, receipt):
     path=Path(path).resolve()
-    if not path.is_relative_to(ROOT/'build'):raise ValueError('Save fixture must be an owned build output')
+    if not is_within(path,ROOT/'build'):raise ValueError('Save fixture must be an owned build output')
     fixture=json.loads(path.read_text(encoding='utf8'))
-    if set(fixture)!={'schema','kind','source_commit','upstream_commit','file','sha256','resources','base_key_count','present_index','scope','execution'} or type(fixture['schema']) is not int or fixture['schema']!=1 or fixture['kind']!='encore.emulator-save-fixture':
+    menu=fixture.get('kind')=='encore.emulator-menu-fixture'
+    fields={'schema','kind','source_commit','upstream_commit','file','sha256','resources','scope','execution'}
+    if not menu:fields|={'base_key_count','present_index'}
+    if set(fixture)!=fields or type(fixture['schema']) is not int or fixture['schema']!=1 or fixture['kind'] not in ('encore.emulator-save-fixture','encore.emulator-menu-fixture'):
         raise ValueError('Unknown save fixture schema/fields')
     if fixture['source_commit']!=receipt['source_commit'] or fixture['upstream_commit']!='7d9246600fffe518408f5830d4848635019005a3' or not fixture['scope']:
         raise ValueError('Save fixture source/precondition mismatch')
     if type(fixture['file']) is not str or Path(fixture['file']).name!=fixture['file'] or not fixture['file'].endswith('.encsave'):
         raise ValueError('Unsafe save fixture path')
     save=(path.parent/fixture['file']).resolve()
-    if not save.is_relative_to(path.parent) or not 0<save.stat().st_size<=1024*1024 or sha(save)!=fixture['sha256']:
+    if not is_within(save,path.parent) or not 0<save.stat().st_size<=1024*1024 or sha(save)!=fixture['sha256']:
         raise ValueError('Save fixture bytes differ from admitted snapshot')
-    if type(fixture['base_key_count']) is not int or not 1<=fixture['base_key_count']<=16 or type(fixture['present_index']) is not int or not 0<=fixture['present_index']<32:
+    if not menu and (type(fixture['base_key_count']) is not int or not 1<=fixture['base_key_count']<=16 or type(fixture['present_index']) is not int or not 0<=fixture['present_index']<32):
         raise ValueError('Save fixture observation bounds')
     required={'session/opening.encsession','world/house/opening.encroom','world/house/opening.enchouse','world/house/opening.encpresent','ui/opening.encitems','battle/lamp/opening.encround'}
+    if menu:required|={'ui/field.encmenus','ui/opening.encdetails','ui/opening.encsettings','ui/opening.encfield'}
     if not isinstance(fixture['resources'],dict) or set(fixture['resources'])!=required:raise ValueError('Incomplete save fixture resource bindings')
     for name,digest in fixture['resources'].items():
         if sha(ROOT/'romfs'/name)!=digest:raise ValueError('Save fixture checked resource changed: '+name)
@@ -102,6 +111,31 @@ def validate_save_fixture(path, receipt):
     if not isinstance(execution,dict) or set(execution)!={'generator_sha256','producer_sha256','log_sha256'} or any(type(v) is not str or not re.fullmatch('[0-9a-f]{64}',v) for v in execution.values()):raise ValueError('Incomplete save fixture execution provenance')
     if sha(path.parent/'generator.log')!=execution['log_sha256']:raise ValueError('Save fixture generation log changed')
     return fixture,save
+
+
+def menu_inventory_hash(items):
+    """Defined wire hash of source identity/doses/equip, independent of save UIDs."""
+    value=2166136261
+    for item in items:
+        raw=item['item_id'].encode('utf8')+b'\0'+int(item['doses']).to_bytes(8,'little')+int(item['equipped']).to_bytes(8,'little')
+        for byte in raw:value=((value^byte)*16777619)&0xffffffff
+    return value
+
+
+def compare_field_menus(checkpoints,original):
+    if original.get('kind')!='field-menus':raise ValueError('Wrong original menu oracle scope')
+    cases=original['cases']
+    for checkpoint,case in [('goods_sorted','sorted_items'),('goods_consumed','consumed_items'),('goods_exhausted','exhausted_items'),('goods_dropped','dropped_items')]:
+        state=checkpoints[checkpoint];expected=cases[case]
+        if state['menu_inventory_hash']!=menu_inventory_hash(expected) or state['inventory_count']!=len(expected):raise AssertionError('Original inventory result differs: '+checkpoint)
+    if checkpoints['goods_sorted']['menu_uid_hash']!=checkpoints['goods_consumed']['menu_uid_hash']:raise AssertionError('Consume changed item identity/order')
+    if checkpoints['goods_sorted']['hp']!=checkpoints['goods_consumed']['hp'] or checkpoints['goods_sorted']['pp']!=checkpoints['goods_consumed']['pp']:raise AssertionError('Source heal-fail changed healthy HP/PP')
+    for field in ('player_x','player_y','menu_inventory_hash','key_count'):
+        if checkpoints['display_before'][field]!=checkpoints['display_after'][field]:raise AssertionError('Display selection reset live session: '+field)
+    if checkpoints['display_after']['width']!=320 or checkpoints['display_after']['height']!=180:raise AssertionError('Display selection was not applied')
+    if checkpoints['controls_default']['menu_controls_hash']!=checkpoints['display_before']['menu_controls_hash']:raise AssertionError('Control reset did not restore defaults')
+    if checkpoints['closed']['menu_phase']!=0 or checkpoints['closed']['paused']!=0:raise AssertionError('START menus did not return control')
+    return ['source_sort','source_consume_heal_fail','source_exhaustion','source_drop','stable_item_identity','display_preserves_session','controls_reset','menu_return']
 
 
 def compare_present(checkpoints, original, fixture):
@@ -440,7 +474,8 @@ def main():
             current = run_once(args, scenario, index)
             if current != baseline:
                 raise AssertionError('Fresh repetitions produced different semantic outcomes')
-        report.update(status='passed', repetitions=args.repetitions, semantic=baseline, compared_original_cases=compare_present(baseline, original,args.fixture) if args.fixture else compare_original(baseline, original), unverified=['learned PSI use/targeting in emulator', 'CIA installation', 'Old/New 3DS hardware', 'perceptual audio quality'])
+        comparison=compare_field_menus(baseline,original) if args.fixture and args.fixture['kind']=='encore.emulator-menu-fixture' else compare_present(baseline, original,args.fixture) if args.fixture else compare_original(baseline, original)
+        report.update(status='passed', repetitions=args.repetitions, semantic=baseline, compared_original_cases=comparison, unverified=['CIA installation', 'Old/New 3DS hardware', 'perceptual audio quality'])
     except Exception as error:
         report['error'] = str(error)
         raise

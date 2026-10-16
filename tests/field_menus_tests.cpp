@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cstdio>
 #include <cstdlib>
+#include <fstream>
 using namespace encore::upstream;
 static unsigned checks=0;
 #define CHECK(x) do{++checks;if(!(x)){std::fprintf(stderr,"Field menus check %d: %s (%s)\n",__LINE__,#x,error.c_str());std::exit(1);}}while(0)
@@ -12,7 +13,7 @@ static void put(std::vector<uint8_t>&b,size_t n,uint32_t v){for(unsigned i=0;i<4
 static void fix(std::vector<uint8_t>&b){put(b,16,encore::crc32(b.data()+32,b.size()-32));}
 static size_t skip_text(const std::vector<uint8_t>&b,size_t p){return p+4+get(b,p);}
 int main(int argc,char**argv){
- std::string error;const std::string root=argc>1?argv[1]:"romfs";std::vector<uint8_t>bytes;FieldMenusData data;StartupSettingsData settings;NativeSessionData session;
+ std::string error;CHECK(argc==3);const std::string root=argv[1],preference_path=argv[2];std::vector<uint8_t>bytes;FieldMenusData data;StartupSettingsData settings;NativeSessionData session;
  CHECK(encore::read_file((root+"/ui/field.encmenus").c_str(),bytes,4*1024*1024,error));CHECK(data.load(bytes.data(),bytes.size(),error));CHECK(settings.load_file((root+"/ui/opening.encsettings").c_str(),error));CHECK(session.load_file((root+"/session/opening.encsession").c_str(),error));
  CHECK(data.labels.size()==size_t(FieldMenuText::Count));CHECK(data.supports(data.defaults));CHECK(data.item(data.map_item)&&data.item(data.map_item)->action==3);
  ItemData items;ItemDetailsData details;CHECK(items.load_file((root+"/ui/opening.encitems").c_str(),error));CHECK(details.load_file((root+"/ui/opening.encdetails").c_str(),error));CHECK(data.bind_items(items.view(),details.view(),error));
@@ -34,6 +35,17 @@ int main(int argc,char**argv){
  FieldMenuPreferences pref=data.defaults;std::vector<uint8_t>prefs;CHECK(encode_field_preferences(data,pref,prefs,error));FieldMenuPreferences restored;CHECK(decode_field_preferences(data,prefs.data(),prefs.size(),restored,error));CHECK(restored.buttons==pref.buttons&&restored.volume==pref.volume);
  for(size_t offset:{size_t(8),size_t(12),size_t(24),size_t(28),size_t(32)}){auto invalid=prefs;put(invalid,offset,UINT32_MAX);put(invalid,invalid.size()-4,encore::crc32(invalid.data(),invalid.size()-4));auto previous=restored;CHECK(!decode_field_preferences(data,invalid.data(),invalid.size(),restored,error));CHECK(restored.buttons==previous.buttons&&restored.volume==previous.volume);}
  pref.buttons[0]=pref.buttons[1];CHECK(!data.supports(pref));CHECK(!encode_field_preferences(data,pref,prefs,error));pref=data.defaults;std::swap(pref.buttons[0],pref.buttons[1]);CHECK(data.remap(pref.buttons[0],pref)==data.logical_buttons[0]);CHECK(data.remap(pref.buttons[1],pref)==data.logical_buttons[1]);CHECK(data.remap(16|64,pref)==(16|64));
+ // Actual preference-file round trips, backup, corrupt-primary rejection and
+ // exclusive temporary creation. The caller supplies a fresh build-only path.
+ CHECK(read_field_preferences(data,preference_path.c_str(),restored,error)==FieldPreferenceRead::Missing);
+ CHECK(write_field_preferences(data,preference_path.c_str(),pref,error));CHECK(read_field_preferences(data,preference_path.c_str(),restored,error)==FieldPreferenceRead::Loaded&&restored.buttons==pref.buttons);
+ auto edited=pref;edited.volume[1]=3;edited.display=1;CHECK(write_field_preferences(data,preference_path.c_str(),edited,error));CHECK(read_field_preferences(data,preference_path.c_str(),restored,error)==FieldPreferenceRead::Loaded&&restored.volume==edited.volume&&restored.display==1);
+ FieldMenuPreferences backup;CHECK(read_field_preferences(data,(preference_path+".bak").c_str(),backup,error)==FieldPreferenceRead::Loaded&&backup.buttons==pref.buttons&&backup.volume==pref.volume);
+ std::vector<uint8_t>disk;CHECK(encore::read_file(preference_path.c_str(),disk,1024,error));{std::ofstream blocked(preference_path+".tmp",std::ios::binary);blocked<<"owned test interruption";CHECK(blocked.good());}
+ CHECK(!write_field_preferences(data,preference_path.c_str(),pref,error));CHECK(read_field_preferences(data,preference_path.c_str(),restored,error)==FieldPreferenceRead::Loaded&&restored.volume==edited.volume);CHECK(std::remove((preference_path+".tmp").c_str())==0);
+ auto corrupt=disk;corrupt.back()^=1;{std::ofstream file(preference_path,std::ios::binary|std::ios::trunc);file.write(reinterpret_cast<const char*>(corrupt.data()),corrupt.size());CHECK(file.good());}
+ CHECK(read_field_preferences(data,preference_path.c_str(),restored,error)==FieldPreferenceRead::Error&&restored.volume==edited.volume);CHECK(!write_field_preferences(data,preference_path.c_str(),pref,error));std::vector<uint8_t>retained;CHECK(encore::read_file(preference_path.c_str(),retained,1024,error)&&retained==corrupt);
+ CHECK(read_field_preferences(data,nullptr,restored,error)==FieldPreferenceRead::Error);CHECK(!write_field_preferences(data,"../unowned.encprefs",pref,error));CHECK(std::remove(preference_path.c_str())==0);CHECK(std::remove((preference_path+".bak").c_str())==0);
  FieldMenusState live;live.session=session.defaults();live.stats=session.levels()[0].stats;live.next_exp=session.levels()[0].next_exp;live.preferences=data.defaults;unsigned commits=0,equips=0;bool reject_commit=false;
 
  FieldMenusChanges proposed{live.session.characters[0].inventory,live.session.key_items,live.session.settings,live.preferences};auto ticking=live.session;ticking.playtime_seconds+=30;ticking.bank+=1;SessionSnapshot merged;
@@ -51,6 +63,13 @@ int main(int argc,char**argv){
  CHECK(menu.open(5,error));CHECK(menu.map_missing());CHECK(input(0,0,false,true));menu.take_exit();live.session.key_items.push_back({data.map_item,false,1,20});CHECK(menu.open(5,error));CHECK(!menu.map_missing());CHECK(menu.tick_map(1,1,true,1,error));CHECK(menu.map_x()>=0&&menu.map_y()>=0);CHECK(input(0,0,false,false,true));CHECK(!menu.markers_visible());CHECK(!menu.tick_map(2,0,false,.1,error));CHECK(input(0,0,false,true));menu.take_exit();
  CHECK(menu.open(6,error));CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::File);CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::Choice);CHECK(input(0,1));const auto speed=live.session.settings.text_speed;CHECK(input(0,0,false,true));CHECK(live.session.settings.text_speed==speed);CHECK(input(0,0,true));CHECK(input(0,1));CHECK(input(0,0,true));CHECK(live.session.settings.text_speed!=speed);CHECK(input(0,0,false,true));CHECK(input(0,1));CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::General);CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::Audio);const auto old=live.preferences.volume;CHECK(input(-1,0));CHECK(live.preferences.volume[0]+1==old[0]&&live.preferences.volume[1]==old[1]);CHECK(input(0,0,false,true));CHECK(input(0,1));CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::Video);CHECK(input(0,0,true));CHECK(input(0,1));CHECK(input(0,0,true));CHECK(live.preferences.display==1);CHECK(input(0,0,false,true));CHECK(input(0,1));CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::Controls);CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::Capture);CHECK(input(0,0,false,false,false,0,data.logical_buttons[1]));CHECK(live.preferences.buttons[0]==data.logical_buttons[1]&&live.preferences.buttons[1]==data.logical_buttons[0]);CHECK(input(0,0,false,true));CHECK(input(0,0,false,true));CHECK(input(0,1));CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::Confirm);CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::Options);CHECK(menu.take_exit()==FieldMenusExit::None);
 
+ // Destructive menu exits require an explicit Yes; the default No was checked
+ // above. These report typed host requests without altering the game snapshot.
+ CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::Confirm);CHECK(input(0,-1));CHECK(input(0,0,true));CHECK(!menu.active()&&menu.take_exit()==FieldMenusExit::Title);
+ CHECK(menu.open(6,error));CHECK(input(0,-1));CHECK(input(0,0,true));CHECK(menu.phase()==FieldMenusPhase::Confirm);CHECK(input(0,-1));CHECK(input(0,0,true));CHECK(!menu.active()&&menu.take_exit()==FieldMenusExit::Quit);
+ // Map clipping follows the checked resource viewport, including a different
+ // admitted presentation size; it does not retain a C++ source-canvas constant.
+ auto smaller=data;smaller.display_sizes[1]={256,144};CHECK(menu.initialize(smaller,settings,host,error));CHECK(menu.open(5,error));for(unsigned i=0;i<32;++i)CHECK(menu.tick_map(1,1,true,1,error));CHECK(menu.map_x()==std::max(0.f,float(smaller.images[0].width)-256)&&menu.map_y()==std::max(0.f,float(smaller.images[0].height)-144));CHECK(input(0,0,false,true));menu.take_exit();
  // A partially used source consumable remains storable without broadening
  // the legacy store contract or allowing unknown definition/dose ranges.
  StorageData storage_data;StorageState stored;InventoryState carried;BattleSessionStats stats;stats.maxhp=stats.hp=30;stats.maxpp=stats.pp=26;

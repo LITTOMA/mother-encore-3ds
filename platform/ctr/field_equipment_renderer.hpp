@@ -153,8 +153,8 @@ public:
 
 inline bool FieldEquipmentRenderer::draw_submenu(const encore::upstream::FieldMenus& menu,const BattleRenderer& font,float width,float height,float left,float top)const{
     if(!menu.active())return true;const auto* data=menu.content();if(!data||!data_.valid())return fail("Field submenu presentation unavailable");
-    const auto page=menu.page();const float dx=left+(width-320)/2,dy=top+(height-180)/2;
-    clip_left_=dx;clip_top_=dy;clip_right_=dx+320;clip_bottom_=dy+180;
+    const auto page=menu.page();const auto&reference=data->display_sizes[1];const float dx=left+(width-reference[0])/2,dy=top+(height-reference[1])/2;
+    clip_left_=dx;clip_top_=dy;clip_right_=dx+reference[0];clip_bottom_=dy+reference[1];
     // EquipmentPanel is the pale outer backing; DescriptionPanel carries the
     // source dark fill and border required behind normal menu text.
     const auto* source=layout(Role::DescriptionPanel);if(!source)return fail("Field submenu source panel missing");

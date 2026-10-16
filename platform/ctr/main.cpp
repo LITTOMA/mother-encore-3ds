@@ -1251,6 +1251,7 @@ bool load_field_resources(std::string& error){
     if(field_room_data.empty()&&!field_room_data.load_file(resource_path(ResourceRole::FieldRoom).c_str(),error))return false;
     if(!field_map_data.view().valid()&&!field_map_data.load_file(resource_path(ResourceRole::FieldMap).c_str(),error))return false;
     if(!field_story_data.view().valid()&&!field_story_data.load_file(resource_path(ResourceRole::FieldStory).c_str(),error))return false;
+    if(!new_game_data.valid()&&!new_game_data.load_file(resource_path(ResourceRole::NewGame).c_str(),error))return false;
     // Flags cross scenes by stable name; the field room must carry the House table.
     const auto field=field_room_data.view(),house=opening_data.view();
     if(field.flag_count()!=house.flag_count()){error="Field flag table differs from the House table";return false;}

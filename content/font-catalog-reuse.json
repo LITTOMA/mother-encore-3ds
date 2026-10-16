@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "baseline_commit": "2ca4a49798653d16042178fe30752b5a27abce35",
-  "original_receipt_sha256": "06947d139bb19c91f23430101170ae196484ab6009f760a4d5ea1be699414a84",
-  "receipt_sha256": "bf224c1ce8e8e90be7c90a4a82b57d641b0786c94e61200eabd9e88356f461e2",
-  "catalog_sha256": "1e1e0168771426775fe3ecd0740203f65cf53f85fe0e81fc024d03fe6ec60716",
+  "baseline_commit": "8d70ab1559b9093511363e0fa723000952eab826",
+  "original_receipt_sha256": "bf224c1ce8e8e90be7c90a4a82b57d641b0786c94e61200eabd9e88356f461e2",
+  "receipt_sha256": "b34ad6c87b7afcbdb288fc03344aed91a0d2e31d830027bee9c503dbee4bb071",
+  "catalog_sha256": "496c2e1b6c16a8b155a34b5c87aec0a3f2d85975122e3ad2a5b5cd808a9efbbf",
   "generator_unchanged": true,
   "glyph_requirements_unchanged": true,
   "newly_active_text_covered": true,

@@ -15,7 +15,7 @@ class FieldStoryTests(unittest.TestCase):
  def test_checked_source_dialogues(self):
   policy,ex=story.read();texts=story.dialogues(policy,ex);self.assertEqual(len(texts),10);self.assertEqual({r['locale']for r in texts},{'en','zh_Hans_CN'})
   self.assertTrue(all(r['speaker']and r['body']and r['voice'].endswith('/Female.mp3')for r in texts))
-  self.assertFalse(any('[Pippi]'in r['body']or'[@]'in r['body']for r in texts))
+  self.assertTrue(any('[Pippi]'in r['body']for r in texts));self.assertFalse(any('[@]'in r['body']for r in texts))
  def reject_policy(self,mutation,lower=False):
   candidate=copy.deepcopy(self.policy);mutation(candidate)
   folder=ROOT/'build/podunk-routes';folder.mkdir(parents=True,exist_ok=True)

@@ -13,6 +13,9 @@ import unittest
 
 
 DEDICATED = {
+    'field_story_source': ('test_field_story',),
+    'bridge_round_source': ('test_bridge_round',),
+    'field_npc_source': ('test_field_npcs',),
     'encounter_dependency_manifest': ('test_encounter_dependencies',),
     'battle_round_source_bindings': ('test_battle_round_bindings',),
     'round_recipe_source': ('test_round_presentation_recipe',),

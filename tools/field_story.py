@@ -38,8 +38,8 @@ def dialogues(p,ex):
   doc=p['documents'][binding['source']][binding['label']]
   for locale in p['locales']:
    def text(key):
-    value=rows[key][locale]or rows[key]['en'];value=value.replace('[@]','').replace('[Pippi]',battlers[pippi['name']][locale]or battlers[pippi['name']]['en'])
-    require(not re.search(r'\[[^]]+\]',value),'Unreviewed field dialogue token');return value
+    value=rows[key][locale]or rows[key]['en'];value=value.replace('[@]','')
+    require(all(tag=='[Pippi]'for tag in re.findall(r'\[[^]]+\]',value)),'Unreviewed field dialogue token');return value
    voice=p['voice_root']+doc['sound']+'.mp3';ex.data(voice)
    out.append(dict(id=binding['id'],locale='zh_Hans_CN'if locale=='zh_CN'else locale,speaker=text(doc['name']),body=text(doc['text']),voice=voice))
  return out

@@ -1,0 +1,86 @@
+........D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\battlers - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\battlescenes - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\battleskills - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\battletext - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\credits - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Hotel Party Banter - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_ItemDialogue - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Magicant - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Magicant_Castle - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Magicant_descriptions - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Merrysville - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Merrysville_Cutscenes - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Merrysville_TwinkleElementary - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Merrysville_TwinkleElementary_Descriptions - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Merrysville_descriptions - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Podunk - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Podunk_cutscenes - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Podunk_non-person text - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name="D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Podunk_non-person text_Ninten's house - sheet.csv" mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Reusable - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\dialogue_Testing - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\fieldskills - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\items - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\keyboard - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\locations - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\menus - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\GameDev\3DS\mother-encore-3ds\tools\localization_assets.py:31: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Translations\\TranslatedText\\story - sheet.csv' mode='r' encoding='utf-8-sig'>
+  path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+................
+----------------------------------------------------------------------
+Ran 24 tests in 189.241s
+
+OK

@@ -44,6 +44,11 @@ def extract():
   require(tr(key)==expected,f'Source binding mismatch {identity}: {key!r} {tr(key)!r} != {expected!r}')
   bindings.append(dict(identity=identity,key=key,expected=expected,origin=origin))
  naming=load(BASE/'content/native-new-game.json'); sequence=yaml.safe_load(source('Data/NamingSequences/intro.yaml'))['scenario']
+ from tools.field_story import read as field_policy,dialogues as field_dialogues
+ policy,field_source=field_policy();tags={tag.lower()for row in field_dialogues(policy,field_source)for key in ('speaker','body')for tag in re.findall(r'\[([A-Za-z]+)\]',row[key])}
+ targets={field['target']for field in naming['fields']if field['kind']==0};require(tags<=targets,'Unmapped field character tag')
+ for target in sorted(tags):
+  path='Data/Battlers/'+target+'.yaml';battler=yaml.safe_load(source(path));key=battler['name'];bind('field.character/'+target,key,tr(key),path+':name')
  for i,step in enumerate(sequence[:6]):
   bind(f'naming.prompt/{i}',step['prompt'],naming['fields'][i]['prompt'],'Data/NamingSequences/intro.yaml:'+str(i))
  for i,key in enumerate([sequence[0]['prompt'],'NAME_BLOCKED','NAME_DUPLICATED','SYMBOL_BULLET_NAMING','SYMBOL_DOT','KEYBOARD_PANEL1_NAME','KEYBOARD_PANEL0_NAME']):bind(f'naming.text/{i}',key,naming['texts'][i],'Maps/Naming screen.tscn')

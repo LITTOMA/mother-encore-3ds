@@ -76,6 +76,35 @@ private:
     // Isolated experiment: classify blocks first, then run all exact scalar
     // fallback spans in one loop so frame constants are loaded once per frame.
     struct FallbackSpan { uint32_t first=0,end=0; };
+    std::vector<uint32_t> axis_colors_,mapped_axis_colors_;
+    mutable std::vector<uint32_t> axis_x_[2],axis_y_[2];
+    static bool potential_axis_pair(const std::vector<Layer>& layers){
+        if(layers.size()!=2||layers[0].opacity!=1)return false;
+        bool compression=false;
+        for(const auto&l:layers){if(l.barrel||l.palette_shifting||(l.amplitude_x!=0&&l.frequency_x!=0)||(l.amplitude_y!=0&&l.frequency_y!=0))return false;
+            compression|=(l.compression_amplitude_x!=0&&l.compression_frequency_x!=0)||(l.compression_amplitude_y!=0&&l.compression_frequency_y!=0);}
+        return compression;
+    }
+    template<bool Mapped> bool compose_axis_pair(float time,uint32_t*output)const{
+        if(axis_colors_.empty()||!std::isfinite(time))return false;
+        // Complete coordinate validation before any mapped output write. Keep
+        // the scalar shader's multiply/add/cosine order; no trig identities.
+        for(size_t n=0;n<2;++n){const auto&l=layers_[n].config;
+            const float px=(l.compression_frequency_x!=0&&l.compression_amplitude_x!=0)?time*l.compression_speed_x:0,py=(l.compression_frequency_y!=0&&l.compression_amplitude_y!=0)?time*l.compression_speed_y:0;
+            const float mx=l.ping_pong_speed_x!=0?l.move_x*std::cos(l.ping_pong_speed_x*time):time*l.move_x/0.5f;
+            const float my=l.ping_pong_speed_y!=0?l.move_y*std::cos(l.ping_pong_speed_y*time):time*l.move_y/0.5f;
+            if(!std::isfinite(time*l.speed_x)||!std::isfinite(time*l.speed_y)||!std::isfinite(px)||!std::isfinite(py)||!std::isfinite(mx)||!std::isfinite(my))return false;
+            for(uint32_t x=0;x<prepared_width_;++x){float u=(float(x)+0.5f)/l.width;
+                if(l.compression_frequency_x!=0&&l.compression_amplitude_x!=0){const float phase=l.compression_frequency_x*u+px;if(!std::isfinite(phase))return false;u+=l.compression_amplitude_x*std::cos(phase);}
+                u+=mx;if(!std::isfinite(u))return false;axis_x_[n][x]=coordinate(u,l.source.width,l.repeat);}
+            for(uint32_t y=0;y<prepared_height_;++y){float v=(float(y)+0.5f)/l.height;
+                if(l.compression_frequency_y!=0&&l.compression_amplitude_y!=0){const float phase=l.compression_frequency_y*v+py;if(!std::isfinite(phase))return false;v+=l.compression_amplitude_y*std::cos(phase);}
+                v+=my;if(!std::isfinite(v))return false;axis_y_[n][y]=coordinate(v,l.source.height,l.repeat)*l.source.width;}
+        }
+        const auto&a=layers_[0].config.source;const auto&b=layers_[1].config.source;const auto*colors=Mapped?mapped_axis_colors_.data():axis_colors_.data();
+        size_t i=0;for(uint32_t y=0;y<prepared_height_;++y){const auto ar=axis_y_[0][y],br=axis_y_[1][y];for(uint32_t x=0;x<prepared_width_;++x,++i){const auto ai=a.pixels[ar+axis_x_[0][x]],bi=b.pixels[br+axis_x_[1][x]];if constexpr(Mapped)output[output_offsets_[i]]=colors[size_t(ai)*b.palette_size+bi];else output[i]=colors[size_t(ai)*b.palette_size+bi];}}
+        return true;
+    }
     mutable std::vector<FallbackSpan> fallback_spans_;
     mutable size_t fallback_span_count_=0;
     std::vector<Block> blocks_;
@@ -429,11 +458,12 @@ private:
     }
 
 public:
-    void clear(){fallback_spans_.clear();fallback_span_count_=0;layers_.clear();pair_colors_.clear();mapped_pair_colors_.clear();extended_pair_colors_.clear();mapped_extended_pair_colors_.clear();blocks_.clear();block_roots_.clear();homogeneity_.clear();block_stats_={};mapped_unique_=false;output_width_=0;output_offsets_=nullptr;mapped_output_count_=0;size_=0;prepared_width_=prepared_height_=0;}
+    void clear(){axis_colors_.clear();mapped_axis_colors_.clear();for(size_t n=0;n<2;++n){axis_x_[n].clear();axis_y_[n].clear();}fallback_spans_.clear();fallback_span_count_=0;layers_.clear();pair_colors_.clear();mapped_pair_colors_.clear();extended_pair_colors_.clear();mapped_extended_pair_colors_.clear();blocks_.clear();block_roots_.clear();homogeneity_.clear();block_stats_={};mapped_unique_=false;output_width_=0;output_offsets_=nullptr;mapped_output_count_=0;size_=0;prepared_width_=prepared_height_=0;}
     bool fused_pair()const{return !pair_colors_.empty();}
+    bool axis_pair()const{return !axis_colors_.empty();}
     bool separable_pair()const{return !extended_pair_colors_.empty();}
     bool bounded_pair()const{return fused_pair()&&layers_[0].bounded_x&&layers_[1].bounded_x;}
-    size_t prepared_bytes()const{size_t bytes=layers_.size()*size_*sizeof(Pixel)+(pair_colors_.size()+mapped_pair_colors_.size()+extended_pair_colors_.size()+mapped_extended_pair_colors_.size())*sizeof(uint32_t);for(const auto& p:layers_)bytes+=p.compression_trig.size()*sizeof(Prepared::Trig);for(const auto& h:homogeneity_)bytes+=h.counts.size()*sizeof(uint32_t);return bytes+fallback_spans_.size()*sizeof(FallbackSpan)+blocks_.size()*sizeof(Block)+block_roots_.size()*sizeof(uint32_t);}
+    size_t prepared_bytes()const{size_t extra=(axis_colors_.size()+mapped_axis_colors_.size())*sizeof(uint32_t);for(size_t n=0;n<2;++n)extra+=(axis_x_[n].size()+axis_y_[n].size())*sizeof(uint32_t);size_t bytes=extra+layers_.size()*size_*sizeof(Pixel)+(pair_colors_.size()+mapped_pair_colors_.size()+extended_pair_colors_.size()+mapped_extended_pair_colors_.size())*sizeof(uint32_t);for(const auto& p:layers_)bytes+=p.compression_trig.size()*sizeof(Prepared::Trig);for(const auto& h:homogeneity_)bytes+=h.counts.size()*sizeof(uint32_t);return bytes+fallback_spans_.size()*sizeof(FallbackSpan)+blocks_.size()*sizeof(Block)+block_roots_.size()*sizeof(uint32_t);}
     // Peak reservation for a FRESH kernel. No pixels or palettes are read;
     // validated source dimensions/palette cardinalities are sufficient. The
     // optional block vectors reserve their complete capacities once above.
@@ -444,7 +474,8 @@ public:
     }
     static size_t preparation_upper_bound(const std::vector<Layer>& layers,uint32_t width,uint32_t height){
         const size_t area=size_t(width)*height;
-        size_t bytes=layers.size()*(sizeof(Prepared)+area*sizeof(Pixel));
+        size_t extra=potential_axis_pair(layers)?2*(size_t(width)+height)*sizeof(uint32_t):0;
+        size_t bytes=extra+layers.size()*(sizeof(Prepared)+area*sizeof(Pixel));
         if(layers.size()==2)bytes+=layers[0].source.palette_size*layers[1].source.palette_size*sizeof(uint32_t)*2;
         if(potential_separable_pair(layers)){
             bytes+=area*sizeof(Prepared::Trig);
@@ -458,7 +489,8 @@ public:
         return bytes;
     }
     size_t allocated_bytes()const{
-        size_t bytes=layers_.capacity()*sizeof(Prepared)+(pair_colors_.capacity()+mapped_pair_colors_.capacity()+extended_pair_colors_.capacity()+mapped_extended_pair_colors_.capacity())*sizeof(uint32_t);
+        size_t extra=(axis_colors_.capacity()+mapped_axis_colors_.capacity())*sizeof(uint32_t);for(size_t n=0;n<2;++n)extra+=(axis_x_[n].capacity()+axis_y_[n].capacity())*sizeof(uint32_t);
+        size_t bytes=extra+layers_.capacity()*sizeof(Prepared)+(pair_colors_.capacity()+mapped_pair_colors_.capacity()+extended_pair_colors_.capacity()+mapped_extended_pair_colors_.capacity())*sizeof(uint32_t);
         for(const auto& p:layers_)bytes+=p.pixels.capacity()*sizeof(Pixel)+p.compression_trig.capacity()*sizeof(Prepared::Trig);
         bytes+=homogeneity_.capacity()*sizeof(Homogeneity);for(const auto& h:homogeneity_)bytes+=h.counts.capacity()*sizeof(uint32_t);
         return bytes+fallback_spans_.capacity()*sizeof(FallbackSpan)+blocks_.capacity()*sizeof(Block)+block_roots_.capacity()*sizeof(uint32_t);
@@ -602,6 +634,12 @@ public:
                 }
             }
         }
+        if(potential_axis_pair(layers)&&layers_[0].opaque){
+            const auto&a=layers_[0].config;const auto&b=layers_[1].config;
+            axis_colors_.resize(a.source.palette_size*b.source.palette_size);mapped_axis_colors_.resize(axis_colors_.size());
+            for(size_t i=0;i<a.source.palette_size;++i)for(size_t j=0;j<b.source.palette_size;++j){const auto color=blend(b.source.palette[j],a.source.palette[i],b.opacity);axis_colors_[i*b.source.palette_size+j]=color;mapped_axis_colors_[i*b.source.palette_size+j]=((color&0xffu)<<24)|((color&0xff00u)<<8)|((color>>8)&0xff00u)|(color>>24);}
+            for(size_t n=0;n<2;++n){axis_x_[n].resize(width);axis_y_[n].resize(height);}
+        }
         prepare_blocks(width,height,control);
         if(control&&control->stopped())return fail("Background preparation cancelled");
         return true;
@@ -632,6 +670,7 @@ public:
     // The caller owns GPU synchronization and flush; this kernel does no GPU IO.
     bool compose_mapped(float time,uint32_t,uint32_t* output,size_t output_count)const{
         if(!std::isfinite(time)||!output_offsets_||!output||output_count<mapped_output_count_)return false;
+        if(!axis_colors_.empty())return compose_axis_pair<true>(time,output);
         if(!extended_pair_colors_.empty()){
             SeparableFrame frames[2];if(!prepare_separable_frame(time,frames))return false;
             if(frames[0].guarded&&frames[1].guarded)compose_separable_pair<true,true>(frames,output);
@@ -653,6 +692,7 @@ public:
     // write it, like the reference; callers must not upload failed output.
     bool compose(float time,uint32_t clear_color,uint32_t* output)const{
         if(!std::isfinite(time)||layers_.empty()||!output)return false;
+        if(!axis_colors_.empty()&&compose_axis_pair<false>(time,output))return true;
         if(!extended_pair_colors_.empty()){
             SeparableFrame frames[2];
             if(prepare_separable_frame(time,frames)){

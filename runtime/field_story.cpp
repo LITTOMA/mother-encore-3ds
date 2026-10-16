@@ -3,6 +3,7 @@
 #include "encore/crc32.hpp"
 #include "encore/utf8.hpp"
 #include "encore/dialogue.hpp"
+#include "encore/new_game_setup.hpp"
 #include <cstring>
 #include <cmath>
 #include <set>
@@ -13,6 +14,18 @@ constexpr uint32_t strides[]={1,24,36,40,12};
 float f32(const uint8_t*p){const auto bits=u32(p);float value;std::memcpy(&value,&bits,4);return value;}
 bool path(std::string_view value){if(value.empty()||value.size()>512||value.front()=='/'||value.find(':')!=value.npos||value.find('\\')!=value.npos)return false;
  size_t at=0;while(at<=value.size()){auto end=value.find('/',at);if(end==value.npos)end=value.size();const auto part=value.substr(at,end-at);if(part.empty()||part=="."||part=="..")return false;if(end==value.size())break;at=end+1;}return true;}
+}
+bool format_field_story_text(std::string_view input,const NewGameSetupData&names,const SessionSnapshot&snapshot,const LocaleSelection&locale,std::string&out,std::string&error){
+ auto reject=[&]{error="Unmapped field character text binding";return false;};
+ if(!names.valid()||!locale.catalog()||input.size()>16384)return reject();std::string result;size_t at=0;
+ while(at<input.size()){const auto open=input.find('[',at);if(open==input.npos){result.append(input.substr(at));break;}result.append(input.substr(at,open-at));const auto close=input.find(']',open);if(close==input.npos)return reject();
+  std::string id(input.substr(open+1,close-open-1));for(char&c:id)if(c>='A'&&c<='Z')c=char(c-'A'+'a');
+  bool known=false;for(const auto&field:names.fields)known|=field.kind==0&&field.target==id;if(!known)return reject();
+  std::string value;bool found=false;for(const auto&character:snapshot.characters)if(character.character_id==id){if(found)return reject();found=true;value=character.nickname;}
+  if(value.empty()){const auto*binding=locale.catalog()->binding("field.character/"+id);if(!binding||!locale.catalog()->bound(binding->identity,binding->expected,locale.code(),value,error))return reject();}
+  if(value.empty()||value.size()>128)return reject();result+=value;if(result.size()>65536)return reject();at=close+1;
+ }
+ out=std::move(result);error.clear();return true;
 }
 uint32_t FieldStoryView::count(uint32_t s)const{return bytes_&&s>=1&&s<=5?u32(bytes_+64+(s-1)*16+8):0;}
 const uint8_t*FieldStoryView::record(uint32_t s,uint32_t i)const{return i<count(s)?bytes_+u32(bytes_+64+(s-1)*16+4)+i*strides[s-1]:nullptr;}

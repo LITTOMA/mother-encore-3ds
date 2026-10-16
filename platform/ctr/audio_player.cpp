@@ -18,7 +18,7 @@ MusicObservation AudioPlayer::observe_music() const {
     out.tweening=out.playing&&music.fading&&music.fade.active();
     out.dialogue_music_playing=ready_&&dialogue.active;
     out.any_music_tweening=out.tweening||(out.dialogue_music_playing&&dialogue.fading&&dialogue.fade.active());
-    out.master_db=bank_.master_db();return out;
+    out.master_db=bank_.master_db();out.user_music_db=user_music_db_;return out;
 }
 
 bool AudioPlayer::initialize(const char* bank_path,const char* root,std::string& error){
@@ -33,7 +33,7 @@ bool AudioPlayer::initialize(const char* bank_path,const char* root,std::string&
     if(R_FAILED(dsp_result_)){char message[112];std::snprintf(message,sizeof(message),"Audio unavailable: NDSP init 0x%08lX (DSP component/service required)",static_cast<unsigned long>(uint32_t(dsp_result_)));error=message;shutdown();return false;}
     ndsp_initialized_=true;
     asset_root_=root;
-    ndspSetMasterVol(upstream::audio_linear_gain(bank_.master_db()));
+    ndspSetMasterVol(upstream::audio_linear_gain(bank_.master_db()+user_master_db_));
     for(uint32_t i=0;i<4;++i){
         voices_[i].samples=static_cast<int16_t*>(linearAlloc(buffer_count*buffer_frames*2*sizeof(int16_t)));
         if(!voices_[i].samples){error="Audio unavailable: linear streaming-buffer allocation failed";shutdown();return false;}
@@ -77,7 +77,8 @@ void AudioPlayer::stop(uint32_t lane){
     if(voice.paused)ndspChnSetPaused(hardware_channel(lane),false);
     voice.active=voice.fading=voice.paused=false;
 }
-void AudioPlayer::mix(uint32_t lane){float volumes[12]{};const float gain=upstream::audio_linear_gain(voices_[lane].fade.db());volumes[0]=gain;volumes[1]=gain;ndspChnSetMix(hardware_channel(lane),volumes);}
+void AudioPlayer::mix(uint32_t lane){float volumes[12]{};const bool music=lane==uint32_t(AudioLane::Music)||lane==uint32_t(AudioLane::Jingle)||lane==uint32_t(AudioLane::DialogueMusic);const float gain=upstream::audio_linear_gain(voices_[lane].fade.db()+(music?user_music_db_:user_sfx_db_));volumes[0]=gain;volumes[1]=gain;ndspChnSetMix(hardware_channel(lane),volumes);}
+bool AudioPlayer::set_user_volume(float master,float music,float sfx,std::string&e){if(!std::isfinite(master)||!std::isfinite(music)||!std::isfinite(sfx)||master<-120||master>0||music<-120||music>0||sfx<-120||sfx>0){e="User audio gain rejected";return false;}user_master_db_=master;user_music_db_=music;user_sfx_db_=sfx;if(ready_){ndspSetMasterVol(upstream::audio_linear_gain(bank_.master_db()+master));for(uint32_t i=0;i<lane_count;++i)if(voices_[i].active)mix(i);}e.clear();return true;}
 bool AudioPlayer::refill(uint32_t lane,std::string& error){
     auto& voice=voices_[lane];if(!voice.active||voice.paused)return true;bool queued=false;
     for(uint32_t i=0;i<buffer_count;++i){auto& wave=voice.waves[i];

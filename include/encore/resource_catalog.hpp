@@ -21,7 +21,7 @@ enum class ResourceRole : uint32_t {
     // Capability 4: capability 3 plus Mick DogTreats → gave_treats.
     MickTreats=35,
     // Capability 5: original world/battle audio bindings.
-    GameplayAudio=36, FieldMusic=37, FieldAudio=38, FieldMusicZones=39
+    GameplayAudio=36, FieldMusic=37, FieldAudio=38, FieldMusicZones=39, FieldMenus=40
 };
 
 class ResourceCatalog {

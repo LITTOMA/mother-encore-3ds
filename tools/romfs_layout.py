@@ -11,7 +11,7 @@ EXTENSIONS = {
     'session': {'.encsession', '.encrestore', '.encmigration'},
     'system': {'.encresources', '.encinput'},
     'localization': {'.enclocale', '.enctitlelocale'},
-    'ui': {'.encbars', '.encchoices', '.enccontinue', '.encdetails', '.encfield', '.encitems', '.encload', '.encnewgame', '.encprompts', '.encsavemenu', '.encsettings', '.encstorage'},
+    'ui': {'.encbars', '.encchoices', '.enccontinue', '.encdetails', '.encfield', '.encitems', '.encload', '.encmenus', '.encnewgame', '.encprompts', '.encsavemenu', '.encsettings', '.encstorage'},
 }
 
 

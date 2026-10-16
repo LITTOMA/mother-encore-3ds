@@ -141,7 +141,14 @@ public:
             if(l.parent!=none||l.role<uint32_t(Role::PausePanel)||l.role>uint32_t(Role::PsiCursor)||l.kind<uint32_t(Kind::Container)||l.kind>uint32_t(Kind::Text)||(l.flags&~(uint32_t(encore::upstream::ItemLayoutFlag::Centered)|uint32_t(encore::upstream::ItemLayoutFlag::Visible)))){error="Unsupported field equipment layout operation";return false;}
             candidate.layouts_.push_back(l);
         }
-        C3D_FrameSync();std::swap(data_,candidate.data_);std::swap(items_,candidate.items_);assets_.swap(candidate.assets_);layouts_.swap(candidate.layouts_);error_.clear();return true;
+        C3D_FrameSync();
+        // All accepted NinePatch operations are source MenuFlavors panels.
+        // Their identities come from the checked layout/resource bindings;
+        // portraits, actors and other Sprite operations never join the palette.
+        for(const auto&l:candidate.layouts_)if(l.kind==uint32_t(Kind::NinePatch)){
+            if(l.resource>=candidate.assets_.size()||!encore::ctr::loading_menu_flavor_bind_panel(candidate.assets_[l.resource].sheet,data.string(data.resource(l.resource).image.path))){error="Field menu panel palette binding rejected";return false;}
+        }
+        std::swap(data_,candidate.data_);std::swap(items_,candidate.items_);assets_.swap(candidate.assets_);layouts_.swap(candidate.layouts_);error_.clear();return true;
     }
     void free(){
         if(!assets_.empty())C3D_FrameSync();for(auto& asset:assets_)if(asset.sheet)encore::ctr::loading_sprite_sheet_free(asset.sheet);

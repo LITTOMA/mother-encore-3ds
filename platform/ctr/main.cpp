@@ -1041,8 +1041,14 @@ bool initialize_field_menus(std::string&error){
         const bool prefs=next.preferences.volume!=field_preferences.volume||next.preferences.display!=field_preferences.display||next.preferences.buttons!=field_preferences.buttons;
         const bool resized=next.preferences.display!=field_preferences.display;const auto size=field_menus_data.display_sizes[next.preferences.display];
         if(resized&&(active_overworld().cutscene_camera().follows_actor()||active_overworld().cutscene_camera().is_moving())){e="Display resize needs a resting player camera";return false;}
+        // Prepared encounter surfaces belong to a viewport and residency epoch.
+        // Clearing only their path re-reserved an already published ticket and
+        // left a permanent error that blocked the next START. Retire the whole
+        // preparation owner while retaining the checked UI font; the ordinary
+        // background pump admits surfaces for the selected size on later frames.
+        if(resized){wait_for_gpu_idle();if(!load_ui_font_only(e))return false;}
         if(prefs){::mkdir("sdmc:/3ds",0777);::mkdir("sdmc:/3ds/encore-native",0777);if(!write_field_preferences(field_menus_data,"sdmc:/3ds/encore-native/menus.encprefs",next.preferences,e))return false;}
-        if(resized){const Vec2 viewport{float(size[0]),float(size[1])};if(!(in_field()?field_scene->resize_viewport(viewport):gameplay_scene->world.resize_field_viewport(viewport))){e="Field display camera resize rejected";return false;}view_width=size[0];view_height=size[1];world_effect_assets_ready=false;loaded_battle_path.clear();}
+        if(resized){const Vec2 viewport{float(size[0]),float(size[1])};if(!(in_field()?field_scene->resize_viewport(viewport):gameplay_scene->world.resize_field_viewport(viewport))){e="Field display camera resize rejected";return false;}view_width=size[0];view_height=size[1];world_effect_assets_ready=false;}
         wait_for_gpu_idle();const auto flavor=startup_settings_data.flavor_index(checked.settings.menu_flavor);
         if(flavor<0||!ctr::loading_menu_flavor_select(uint32_t(flavor))){e="Field menu flavor rejected";return false;}
         if(!apply_field_volume(next.preferences,e))return false;

@@ -1663,7 +1663,7 @@
     {
       "name": "field_entry",
       "wait": {
-        "field_scene": 1,
+        "field_scene": 2,
         "field_phase": 0,
         "paused": 0
       },
@@ -1671,7 +1671,7 @@
         "DOWN"
       ],
       "hold_until": {
-        "field_scene": 1
+        "field_scene": 2
       }
     },
     {
@@ -1679,7 +1679,7 @@
       "wait": {
         "menu_phase": 2,
         "menu_command": 0,
-        "field_scene": 1
+        "field_scene": 2
       },
       "buttons": [
         "START"
@@ -1837,7 +1837,7 @@
         "submenu_phase": 16,
         "width": 320,
         "height": 180,
-        "field_scene": 1,
+        "field_scene": 2,
         "hp": 65,
         "pp": 22,
         "inventory_count": 1,
@@ -1907,7 +1907,7 @@
       "wait": {
         "menu_phase": 0,
         "paused": 0,
-        "field_scene": 1
+        "field_scene": 2
       },
       "buttons": [
         "B"

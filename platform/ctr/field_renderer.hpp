@@ -23,7 +23,8 @@ public:
             encore::report_load_progress(encore::LoadPhase::Texture,i,atlases);
             const auto atlas=map.atlas(i);const std::string path="romfs:/"+std::string(map.text(atlas.path));
             std::string why;auto sheet=encore::ctr::loading_sprite_sheet_load(path.c_str(),&why);
-            if(!sheet||encore::ctr::loading_sprite_sheet_count(sheet)!=1){if(sheet)encore::ctr::loading_sprite_sheet_free(sheet);error="Field atlas missing or invalid: "+path;free();return false;}
+            if(!sheet){error=why.empty()?"Field atlas could not be loaded: "+path:why;free();return false;}
+            if(encore::ctr::loading_sprite_sheet_count(sheet)!=1){encore::ctr::loading_sprite_sheet_free(sheet);error="Field atlas must contain one image: "+path;free();return false;}
             const auto image=encore::ctr::loading_sprite_sheet_get_image(sheet,0);
             if(!image.tex||!image.subtex||image.subtex->width!=atlas.width||image.subtex->height!=atlas.height||Tex3DS_SubTextureRotated(image.subtex)){
                 encore::ctr::loading_sprite_sheet_free(sheet);error="Field atlas layout differs from checked metadata: "+path;free();return false;}

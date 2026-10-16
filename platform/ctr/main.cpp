@@ -1244,11 +1244,22 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     mick_bind_target=candidate.get();
     if(!loading.step([&]{return bind_field_mick(*candidate,error);},"field-mick")){mick_bind_target=nullptr;return false;}
     mick_bind_target=nullptr;
+    texture_owner_checkpoint("field-before-house-release");
     release_house_graphics();
-    if(!loading.step([&]{return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error)&&load_mick_graphics(error);},"field-atlases")){
+    if(!loading.step([&]{
+        // Cancelling prewarm frees the pending/resident encounters, but the
+        // most recently played battle still owns its renderer and round media.
+        // Neither is drawn in the field. Release both before the 4 MiB field
+        // atlas import; keep the checked dialogue font used by field menus.
+        round_renderer.free();
+        if(!load_ui_font_only(error))return false;
+        texture_owner_checkpoint("field-battle-retired");
+        return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error)&&load_mick_graphics(error);
+    },"field-atlases")){
         release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     if(!loading.finish()){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     if(!commit_field_music(error)){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
+    texture_owner_checkpoint("field-graphics-ready");
     // Commit: the House owner stays parked (paused in SceneTransition) behind the field.
     candidate->world.attach_random(battle_random);
     session_state=std::move(snapshot);field_scene=std::move(candidate);field_status.clear();field_choice_shown=false;

@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "run": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38854064478",
+  "source_commit": "51979af1dc6d5368ad61e146bb6cee92427c692c",
+  "status": "success",
+  "gcc": {
+    "normal": 164,
+    "sanitizers": 149
+  },
+  "clang": {
+    "normal": 149,
+    "sanitizers": 149
+  },
+  "real_3dsx_cia_and_extraction": true,
+  "packaged_resources": 323,
+  "actual_log_checksums": {
+    "gcc": {
+      "sha256": "61b2175abc17cb33bceb404558ea1c0305a3d75825ca0366abf2109024e6f26d",
+      "passed_test_totals": [
+        1,
+        1,
+        164,
+        149
+      ]
+    },
+    "clang": {
+      "sha256": "5b7f378ca55eb8b777d1d18ce7da7a22dae3644acc1d5ef96bb0b0a213ff010b",
+      "passed_test_totals": [
+        1,
+        1,
+        149,
+        149
+      ]
+    },
+    "console": {
+      "sha256": "d1b3d025fa5362ad83945e2ac10da686e6a18d76b7be8fd7ecfcd61159745231",
+      "passed_test_totals": []
+    }
+  },
+  "hardware_verified": false
+}

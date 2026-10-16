@@ -300,3 +300,9 @@ cookies.json
 !/reports/npc-doorway-occlusion/start-and-npc-fix.patch
 
 # Reviewed public-preparation audits and actual validation receipts.
+
+# Audited Podunk camera regression evidence
+!reports/podunk-camera/
+!reports/podunk-camera/*.json
+!reports/podunk-camera/*.log
+!reports/podunk-camera/*.png

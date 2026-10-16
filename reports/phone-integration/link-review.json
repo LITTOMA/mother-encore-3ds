@@ -8,8 +8,8 @@
     "content/phone-stage/native-parser.json": "0036925ac2fe17d4426854ccc7d8d4618c017db9fbbfd88699c406ecefa0af5b",
     "reports/doll-postwin/native-parser-animation.json": "a27f1abd99a61811fbc6d15a9708c39d1a21815c654aeacc40f23f269e5be2de",
     "tools/link_phone_content.py": "04050c3da322104dc1534d0a2cf18b5a7019eebe33c88bec728af153dc49d690",
-    "tools/extract_native_content.py": "3630a7e2edaea6b85dacc2bc3494def929fc9241269bf1c03464eba9c7c50654",
-    "tools/extract_house.py": "5f5ba6a18459ff3996c6b4ffae07249517caf551dc0d8153c623904b7c6085dd",
+    "tools/extract_native_content.py": "565123dd1fa34d4a8f30f1ded6d46951cc944f175ec3d29e930022d4dc6f7e83",
+    "tools/extract_house.py": "46a0f24f42ea0023fb01a4c320fed0abb2713b59cacb1b9460b5da20847c2b2b",
     "tools/dad_record_dialogue.py": "8a4b666487811038df9f922438e37e483bec7a7c93137d717d049ac4b8cb58be",
     "tools/dialogue_choice_assets.py": "6e9075a35bfe459f99a51184960403cf49ad92ae4e3f85a11b1ac52b164e402f",
     "tools/menu_audio_binding.py": "e62bd2de48cea6a4822773246a8582ce20f4db45118be13dede21935266e87ac",
@@ -126,6 +126,8 @@
     "Audio/Sound effects/EB/die.wav.import": "57d6cdd3d16acb68f8951f8bce64432db8922aa417fb0e65b4ebc3af1c6c8f66",
     "Audio/Sound effects/EB/dodge.wav": "af5b7dda9cf5fbce60165c6bcce1cb097d301de4a5749129eacf1c9a3fcd71a3",
     "Audio/Sound effects/EB/dodge.wav.import": "671d23908b363f59953cf8fcbf2eb9becf35746b21101da48536a085e97a8891",
+    "Audio/Sound effects/EB/heal 1.wav": "77b3c37bd00af37b736c203855e5c2908dbcfcbae11d0e097e1025f53fff5e36",
+    "Audio/Sound effects/EB/heal 1.wav.import": "b06c91fd531323aaf9e0b07ffe328e23b9be47dd7c31a821b207b325b1b7ed80",
     "Audio/Sound effects/EB/miss.wav": "6696e8e759be9dca1ef2e70a09a79d060163e7757c61d7494137c06ccebefd8d",
     "Audio/Sound effects/EB/miss.wav.import": "74d10ef8728d6498b1c9d685eca7783815d69d802e2f40b20029752b687c46d0",
     "Audio/Sound effects/Enemy Defeat.mp3": "0f3fc1786c939a30499d856e5f8ed543dce5d05b08b6c2a89b714cb0a2e08edc",
@@ -162,9 +164,9 @@
     "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699"
   },
   "outputs": {
-    "content/native-opening.json": "ea2609e9640067e5b869b9b52301f19b6e50ef0bba2ea42535802672f5a29663",
-    "content/native-house.json": "66d501552ed52fd7d7286daa91dfebb48e81dedf143c4d4215d0fcb19994b30d",
-    "content/native-audio.json": "bdffd7fdc15d85f56dbfa98cbd86d0343bcc17f1a880fa791108350630b97f04"
+    "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
+    "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
+    "content/native-audio.json": "a81ca1a79ba2a5b04bc4c5f8fa98035582ed9ecb5a4b6e6b40a062275b01b482"
   },
   "stable_namespaces": {
     "preserved_program_ids": [

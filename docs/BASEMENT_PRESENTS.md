@@ -11,7 +11,7 @@ Present2 按原版领取未装备的 BatPlastic；装备后攻击力 +3。保留
 - 本地 MSVC 完整共享核心重编译：地下室流程 9,300 项检查；普通领取/满背包/重复调查、日记 1,141 帧脚本、技能/目标/回复、装备及保存读取均通过。音频资源 28,254 项检查通过。
 - 本地来源回归：186 项 Python 测试、后续 22 项地下室/命名测试、8 项 Items 绑定测试通过；后续边界检查以保留日志为准。
 - 原有房屋往返、钥匙门、NPC 恢复、旋律、Pillow 支线、语言和恢复测试通过；完整开局到首次 Record/LOAD 的桌面验收通过 54,851 项。Windows 的重复文件替换及 mkdtemp 用例有平台限制，完整 Linux CI 单独验收。
-- 真正的 make 3dsx / make cia 及 CIA 解包资源比较成功。实际测试包来自提交 09bd23067bcd1534bb4c4b4d4edd57ccfa6e059a；后续代码差异仅为测试，已检查 runtime/include/platform/romfs/content 相同。
+- 真正的 make 3dsx / make cia 及 CIA 解包资源比较成功。实际测试包来自提交 09bd23067bcd1534bb4c4b4d4edd57ccfa6e059a；到 d920f4e 的差异仅为测试，已检查 runtime/include/platform/romfs/content 相同。其后 House 最终来源列表改为确定性排序，已递归比较 JSON 的所有游戏字段完全相同；相关提示和恢复依赖通过原生成器重新验收，此元数据修复的完整 CI 另行重跑。
 - 完整运行 38801486907：Clang 普通 152/152、ASan/UBSan 152/152 通过；真实 3DSX/CIA 与解包检查通过。GCC 的 167 项中仅 Python discovery 失败，报告了仍使用旧资源数量/版本的断言及电话测试未隔离日记追加阶段；已针对来源扩展修正，GCC 全套及 sanitizer 尚待重跑，不能视为通过。
 
 ## 修改版 Azahar

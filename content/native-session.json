@@ -2499,7 +2499,7 @@
   },
   "dependencies": {
     "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
-    "content/native-house.json": "4244a83f89cff06c17d94f279b44fa1ca96c90fcde827343f5bf3ff7e93ec565",
+    "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
     "content/native-items.json": "347abe721100ab995cce7a07f6a7949c772f9ff66ffb2416af9cfc6523ccd397",
     "content/native-round.json": "ab87e11454c423b38d251c8ab005935415daebfe22ef7ed441c09ed3e32228ea",

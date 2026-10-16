@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "position_tolerance": 4,
   "name": "field_menus_all_six",
   "reference": {
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
@@ -1633,7 +1634,12 @@
     {
       "name": "living_walk",
       "wait": {
-        "house_phase": 0
+        "house_phase": 0,
+        "player_x": 96,
+        "player_y": {
+          "min": 798,
+          "max": 807
+        }
       },
       "buttons": [
         "DOWN"
@@ -1648,7 +1654,15 @@
     {
       "name": "front_walk",
       "wait": {
-        "house_phase": 0
+        "house_phase": 0,
+        "player_x": {
+          "min": 134,
+          "max": 144
+        },
+        "player_y": {
+          "min": 798,
+          "max": 807
+        }
       },
       "buttons": [
         "RIGHT"
@@ -1672,6 +1686,28 @@
       ],
       "hold_until": {
         "field_scene": 2
+      }
+    },
+    {
+      "name": "field_clear_door",
+      "wait": {
+        "field_scene": 2,
+        "field_phase": 0,
+        "paused": 0,
+        "player_x": 8,
+        "player_y": {
+          "min": -19,
+          "max": -10
+        }
+      },
+      "buttons": [
+        "DOWN"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": -19,
+          "max": -15
+        }
       }
     },
     {

@@ -40,8 +40,12 @@ def is_within(path,parent):
 
 
 def validate_scenario(scenario):
-    if set(scenario) != {'schema', 'name', 'reference', 'projection', 'steps'} or type(scenario['schema']) is not int or scenario['schema'] != 1:
+    required={'schema', 'name', 'reference', 'projection', 'steps'}
+    if set(scenario)-required-{'position_tolerance'} or not required.issubset(scenario) or type(scenario['schema']) is not int or scenario['schema'] != 1:
         raise ValueError('Unknown scenario schema/fields')
+    tolerance=scenario.get('position_tolerance',0)
+    if type(tolerance)is not int or not 0<=tolerance<=4 or (tolerance and not {'player_x','player_y'}.issubset(scenario['projection'])):
+        raise ValueError('Invalid bounded repetition position tolerance')
     if not isinstance(scenario['steps'], list) or not 1 <= len(scenario['steps']) <= 256:
         raise ValueError('Scenario step budget exceeded')
     if not scenario['reference'].get('commit') or not scenario['reference'].get('scope'):
@@ -69,6 +73,27 @@ def validate_scenario(scenario):
             raise ValueError('Input frame budget exceeded')
     if len({s['name'] for s in scenario['steps']}) != len(scenario['steps']):
         raise ValueError('Duplicate checkpoint identity')
+
+
+def compare_repetitions(baseline,current,position_tolerance=0):
+    # CDB steps real frames: clearing a held movement after an observation can
+    # stop within the source input-release window on a different physics tick.
+    # Only an explicitly admitted <=4 pixel position difference is tolerated.
+    # Menu transactions, identities, HP/PP and same_as checks remain exact.
+    if type(position_tolerance)is not int or not 0<=position_tolerance<=4:
+        raise ValueError('Invalid repetition position tolerance')
+    if baseline.keys()!=current.keys():raise AssertionError('Repetition checkpoint identities differ')
+    accepted=[]
+    for name,row in baseline.items():
+        other=current[name]
+        if row.keys()!=other.keys():raise AssertionError('Repetition observation fields differ: '+name)
+        for key,value in row.items():
+            actual=other[key]
+            if value==actual:continue
+            if key in ('player_x','player_y') and all(type(v)in(int,float)and math.isfinite(v)for v in(value,actual)) and abs(value-actual)<=position_tolerance:
+                accepted.append(dict(checkpoint=name,field=key,baseline=value,actual=actual));continue
+            raise AssertionError(f'Repetition differs at {name}.{key}: {value} != {actual}')
+    return accepted
 
 
 def validate_reference(reference):
@@ -470,12 +495,12 @@ def main():
               'initial_save_fixture':args.fixture,'initial_save_fixture_sha256':sha(args.save_fixture) if args.save_fixture else None}
     try:
         baseline = run_once(args, scenario, 1)
+        position_differences=[]
         for index in range(2, args.repetitions+1):
             current = run_once(args, scenario, index)
-            if current != baseline:
-                raise AssertionError('Fresh repetitions produced different semantic outcomes')
+            position_differences.append(dict(run=index,differences=compare_repetitions(baseline,current,scenario.get('position_tolerance',0))))
         comparison=compare_field_menus(baseline,original) if args.fixture and args.fixture['kind']=='encore.emulator-menu-fixture' else compare_present(baseline, original,args.fixture) if args.fixture else compare_original(baseline, original)
-        report.update(status='passed', repetitions=args.repetitions, semantic=baseline, compared_original_cases=comparison, unverified=['CIA installation', 'Old/New 3DS hardware', 'perceptual audio quality'])
+        report.update(status='passed', repetitions=args.repetitions, semantic=baseline, compared_original_cases=comparison, position_tolerance=scenario.get('position_tolerance',0),repetition_position_differences=position_differences,unverified=['CIA installation', 'Old/New 3DS hardware', 'perceptual audio quality'])
     except Exception as error:
         report['error'] = str(error)
         raise

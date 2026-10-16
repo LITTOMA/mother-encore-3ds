@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient, CdbError
 from tools.semantic_probe import MAGIC, WIRE, WIRE_V7, MENU_FIELDS, FIELDS, decode, projection
-from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original, matches, Session
+from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original, compare_repetitions, matches, Session
 
 
 def wire(**changes):
@@ -85,6 +85,25 @@ class WireBoundary(unittest.TestCase):
         with self.assertRaises(TimeoutError):s.repeat_input({'buttons':['A']},4,{'battle_active':0},2)
         self.assertEqual(s.advance.call_count,4)
         self.assertEqual(s.client.call.call_count,4)
+
+    def test_repetition_position_tolerance_is_explicit_and_bounded(self):
+        scenario=json.loads((ROOT/'tests/emulator/field-menus.json').read_text())
+        scenario['position_tolerance']=4;validate_scenario(scenario)
+        for value in (-1,5,True,1.5,float('nan'),'4',None):
+            bad=copy.deepcopy(scenario);bad['position_tolerance']=value
+            with self.assertRaises(ValueError):validate_scenario(bad)
+        bad=copy.deepcopy(scenario);bad['projection'].remove('player_x')
+        with self.assertRaises(ValueError):validate_scenario(bad)
+        base={'stop':{'player_x':8.,'player_y':-13.,'hp':65,'menu_uid_hash':123}}
+        moved=copy.deepcopy(base);moved['stop']['player_y']=-17.
+        with self.assertRaises(AssertionError):compare_repetitions(base,moved)
+        accepted=compare_repetitions(base,moved,4);self.assertEqual(len(accepted),1);self.assertEqual(accepted[0]['field'],'player_y')
+        for field,value in [('player_y',-18.),('player_y',float('nan')),('hp',64),('menu_uid_hash',124)]:
+            changed=copy.deepcopy(base);changed['stop'][field]=value
+            with self.assertRaises(AssertionError):compare_repetitions(base,changed,4)
+        for changed in ({},{'stop':{}},{'else':base['stop']}):
+            with self.assertRaises(AssertionError):compare_repetitions(base,changed,4)
+        with self.assertRaises(ValueError):compare_repetitions(base,base,5)
 
     def test_original_comparison_rejects_result_drift(self):
         original={'cases': {'pause_select_close': {'paused': False,'active': False}, 'pause_cancel_close': {'paused': False,'active': False}, 'psi_back': {'paused': True,'pause_active': True}, 'psi_unlearned': {'pp': 26,'skills': 0}}}

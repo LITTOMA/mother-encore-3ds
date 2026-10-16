@@ -123,18 +123,20 @@ try:
   pulse('A',settle=20)
  wait(lambda s:s['world_stage']==0 and s['paused']==0,limit=1200)
  called=record('mom_complete');assert flag(called,'pippis_mom_call')and flag(called,'beat_dog_bridge')
+ # Revisit both completed areas before continuing along the road. The host
+ # test separately covers the full forest-corridor round trip. Reward and
+ # dialogue idempotence use exactly the same state assertion in the emulator.
+ stable=['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','loot_selected',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+n for i in range(16)for n in ('definition','doses','equipped')]]
+ travel('LEFT',lambda s:s['player_x']<=400)
+ travel('RIGHT',lambda s:s['player_x']>=600)
+ travel('LEFT',lambda s:s['player_x']<=536)
+ repeated=record('completed_triggers_repeated');assert not repeated['battle_active']and repeated['world_stage']==0
+ assert {k:called[k]for k in stable}=={k:repeated[k]for k in stable}
  # Walk beyond both original progress triggers by normal input.
  waypoint('RIGHT','player_x',536)
  for button,axis,value in [('DOWN','player_y',480),('LEFT','player_x',408),('DOWN','player_y',488),('LEFT','player_x',400),('DOWN','player_y',512),('LEFT','player_x',344),('DOWN','player_y',520),('LEFT','player_x',336),('DOWN','player_y',528),('LEFT','player_x',184),('DOWN','player_y',536),('LEFT','player_x',176),('DOWN','player_y',560),('LEFT','player_x',-560),('UP','player_y',496)]:
   waypoint(button,axis,value)
  frontier=record('west_road');capture('west-road')
- # Crossing the completed triggers again must not replay the encounter or
- # grant a second reward. This is the idempotence assertion within each run.
- stable=['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','loot_selected',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+n for i in range(16)for n in ('definition','doses','equipped')]]
- for button,axis,value in [('DOWN','player_y',560),('RIGHT','player_x',176),('UP','player_y',536),('RIGHT','player_x',184),('UP','player_y',528),('RIGHT','player_x',336),('UP','player_y',520),('RIGHT','player_x',344),('UP','player_y',512),('RIGHT','player_x',400),('UP','player_y',488),('RIGHT','player_x',408),('UP','player_y',480),('RIGHT','player_x',536),('UP','player_y',272),('LEFT','player_x',400),('RIGHT','player_x',600),('LEFT','player_x',536)]:
-  waypoint(button,axis,value)
- repeated=record('completed_triggers_repeated');assert not repeated['battle_active']and repeated['world_stage']==0
- assert {k:frontier[k]for k in stable}=={k:repeated[k]for k in stable}
  result={'status':'passed','scope':'Artificial post-basement checkpoint, normal LOAD/door/walk/battle/dialogue input; no original pixel or whole-game claim','source_commit':receipt['source_commit'],'clock_fixture':a.clock,'fixture_sha256':r.sha(a.fixture),'emulator_sha256':r.sha(a.emulator),'capabilities':{'memoryWriteEnabled':caps['memoryWriteEnabled'],'inputEnabled':caps['inputEnabled']},'idempotent_trigger_revisit':True,'completion_projection':{k:frontier[k]for k in ['level','experience','cash','bank','earned_cash','key_count',*['story_flag_'+str(i)for i in range(6)]]},'projection':{k:frontier[k]for k in ['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','loot_selected',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+n for i in range(16)for n in ('definition','doses','equipped')]]}}
 except BaseException as exc:
  result['error']=repr(exc)

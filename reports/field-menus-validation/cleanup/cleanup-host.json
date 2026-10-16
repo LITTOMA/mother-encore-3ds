@@ -1,0 +1,354 @@
+{
+  "removed_bytes": 1346085144,
+  "files": [
+    {
+      "path": "build\\field-menus\\host\\actor_actions.o",
+      "bytes": 1270552
+    },
+    {
+      "path": "build\\field-menus\\host\\animation.o",
+      "bytes": 239904
+    },
+    {
+      "path": "build\\field-menus\\host\\audio_data.o",
+      "bytes": 832392
+    },
+    {
+      "path": "build\\field-menus\\host\\audio_player_tests",
+      "bytes": 127470440
+    },
+    {
+      "path": "build\\field-menus\\host\\battle_action_presentation.o",
+      "bytes": 8456360
+    },
+    {
+      "path": "build\\field-menus\\host\\battle_data.o",
+      "bytes": 943568
+    },
+    {
+      "path": "build\\field-menus\\host\\battle_entry.o",
+      "bytes": 542048
+    },
+    {
+      "path": "build\\field-menus\\host\\battle_outcome.o",
+      "bytes": 2305128
+    },
+    {
+      "path": "build\\field-menus\\host\\battle_round.o",
+      "bytes": 2339384
+    },
+    {
+      "path": "build\\field-menus\\host\\battle_round_data.o",
+      "bytes": 1246336
+    },
+    {
+      "path": "build\\field-menus\\host\\collision.o",
+      "bytes": 3020784
+    },
+    {
+      "path": "build\\field-menus\\host\\content.o",
+      "bytes": 3538936
+    },
+    {
+      "path": "build\\field-menus\\host\\continue_menu.o",
+      "bytes": 3868144
+    },
+    {
+      "path": "build\\field-menus\\host\\continue_menu_data.o",
+      "bytes": 4157760
+    },
+    {
+      "path": "build\\field-menus\\host\\cutscene_camera.o",
+      "bytes": 2251528
+    },
+    {
+      "path": "build\\field-menus\\host\\dialogue.o",
+      "bytes": 376016
+    },
+    {
+      "path": "build\\field-menus\\host\\dialogue_choices.o",
+      "bytes": 915928
+    },
+    {
+      "path": "build\\field-menus\\host\\dialogue_choices_data.o",
+      "bytes": 4789456
+    },
+    {
+      "path": "build\\field-menus\\host\\drawer_program.o",
+      "bytes": 1692360
+    },
+    {
+      "path": "build\\field-menus\\host\\field_data.o",
+      "bytes": 990744
+    },
+    {
+      "path": "build\\field-menus\\host\\field_equipment_data.o",
+      "bytes": 1811896
+    },
+    {
+      "path": "build\\field-menus\\host\\field_equipment_menu.o",
+      "bytes": 3774272
+    },
+    {
+      "path": "build\\field-menus\\host\\field_equipment_tests",
+      "bytes": 130776144
+    },
+    {
+      "path": "build\\field-menus\\host\\field_menus.o",
+      "bytes": 16602656
+    },
+    {
+      "path": "build\\field-menus\\host\\field_menus_data.o",
+      "bytes": 13618904
+    },
+    {
+      "path": "build\\field-menus\\host\\field_menus_fixture",
+      "bytes": 128069392
+    },
+    {
+      "path": "build\\field-menus\\host\\field_menus_tests",
+      "bytes": 132498040
+    },
+    {
+      "path": "build\\field-menus\\host\\field_scene.o",
+      "bytes": 9080232
+    },
+    {
+      "path": "build\\field-menus\\host\\file_io.o",
+      "bytes": 618264
+    },
+    {
+      "path": "build\\field-menus\\host\\fresh_house.o",
+      "bytes": 5162016
+    },
+    {
+      "path": "build\\field-menus\\host\\game.o",
+      "bytes": 909248
+    },
+    {
+      "path": "build\\field-menus\\host\\gameplay_audio.o",
+      "bytes": 981600
+    },
+    {
+      "path": "build\\field-menus\\host\\house_audio.o",
+      "bytes": 1182904
+    },
+    {
+      "path": "build\\field-menus\\host\\house_button_prompts.o",
+      "bytes": 2741712
+    },
+    {
+      "path": "build\\field-menus\\host\\house_data.o",
+      "bytes": 1502152
+    },
+    {
+      "path": "build\\field-menus\\host\\house_inspection_data.o",
+      "bytes": 1000680
+    },
+    {
+      "path": "build\\field-menus\\host\\house_presentation.o",
+      "bytes": 8920656
+    },
+    {
+      "path": "build\\field-menus\\host\\house_presents.o",
+      "bytes": 2051832
+    },
+    {
+      "path": "build\\field-menus\\host\\house_runtime.o",
+      "bytes": 10308912
+    },
+    {
+      "path": "build\\field-menus\\host\\introduction.o",
+      "bytes": 16094104
+    },
+    {
+      "path": "build\\field-menus\\host\\items_data.o",
+      "bytes": 1573048
+    },
+    {
+      "path": "build\\field-menus\\host\\items_menu.o",
+      "bytes": 1664152
+    },
+    {
+      "path": "build\\field-menus\\host\\item_details.o",
+      "bytes": 5725832
+    },
+    {
+      "path": "build\\field-menus\\host\\loading_indicator_data.o",
+      "bytes": 924408
+    },
+    {
+      "path": "build\\field-menus\\host\\loading_texture_tests",
+      "bytes": 133152
+    },
+    {
+      "path": "build\\field-menus\\host\\load_rng.o",
+      "bytes": 911192
+    },
+    {
+      "path": "build\\field-menus\\host\\locale_preference.o",
+      "bytes": 829688
+    },
+    {
+      "path": "build\\field-menus\\host\\localization.o",
+      "bytes": 4009000
+    },
+    {
+      "path": "build\\field-menus\\host\\localized_presentation.o",
+      "bytes": 5030504
+    },
+    {
+      "path": "build\\field-menus\\host\\mick_treats.o",
+      "bytes": 1734120
+    },
+    {
+      "path": "build\\field-menus\\host\\movement.o",
+      "bytes": 281824
+    },
+    {
+      "path": "build\\field-menus\\host\\music_regions.o",
+      "bytes": 5598328
+    },
+    {
+      "path": "build\\field-menus\\host\\music_zones.o",
+      "bytes": 2231288
+    },
+    {
+      "path": "build\\field-menus\\host\\native_input.o",
+      "bytes": 430880
+    },
+    {
+      "path": "build\\field-menus\\host\\native_session.o",
+      "bytes": 23526192
+    },
+    {
+      "path": "build\\field-menus\\host\\native_session_tests",
+      "bytes": 133936392
+    },
+    {
+      "path": "build\\field-menus\\host\\new_game_setup.o",
+      "bytes": 20902448
+    },
+    {
+      "path": "build\\field-menus\\host\\opening_trigger.o",
+      "bytes": 239576
+    },
+    {
+      "path": "build\\field-menus\\host\\phone_data.o",
+      "bytes": 1203600
+    },
+    {
+      "path": "build\\field-menus\\host\\phone_runtime.o",
+      "bytes": 578888
+    },
+    {
+      "path": "build\\field-menus\\host\\present_data.o",
+      "bytes": 2160632
+    },
+    {
+      "path": "build\\field-menus\\host\\progression.o",
+      "bytes": 187456
+    },
+    {
+      "path": "build\\field-menus\\host\\resource_catalog.o",
+      "bytes": 1625760
+    },
+    {
+      "path": "build\\field-menus\\host\\resource_catalog_tests",
+      "bytes": 127635168
+    },
+    {
+      "path": "build\\field-menus\\host\\restore_data.o",
+      "bytes": 5878480
+    },
+    {
+      "path": "build\\field-menus\\host\\room_data.o",
+      "bytes": 2581288
+    },
+    {
+      "path": "build\\field-menus\\host\\save.o",
+      "bytes": 959352
+    },
+    {
+      "path": "build\\field-menus\\host\\save_menu.o",
+      "bytes": 2486360
+    },
+    {
+      "path": "build\\field-menus\\host\\save_menu_data.o",
+      "bytes": 5953032
+    },
+    {
+      "path": "build\\field-menus\\host\\session_migration.o",
+      "bytes": 12045656
+    },
+    {
+      "path": "build\\field-menus\\host\\session_restore.o",
+      "bytes": 8174544
+    },
+    {
+      "path": "build\\field-menus\\host\\session_save.o",
+      "bytes": 15949984
+    },
+    {
+      "path": "build\\field-menus\\host\\settings_palette_tests",
+      "bytes": 127853408
+    },
+    {
+      "path": "build\\field-menus\\host\\slot_preference.o",
+      "bytes": 1141016
+    },
+    {
+      "path": "build\\field-menus\\host\\source_font.o",
+      "bytes": 2975024
+    },
+    {
+      "path": "build\\field-menus\\host\\source_random.o",
+      "bytes": 98712
+    },
+    {
+      "path": "build\\field-menus\\host\\startup_settings.o",
+      "bytes": 6903608
+    },
+    {
+      "path": "build\\field-menus\\host\\storage_data.o",
+      "bytes": 1450656
+    },
+    {
+      "path": "build\\field-menus\\host\\storage_menu.o",
+      "bytes": 3798544
+    },
+    {
+      "path": "build\\field-menus\\host\\storage_runtime_tests",
+      "bytes": 129344440
+    },
+    {
+      "path": "build\\field-menus\\host\\story.o",
+      "bytes": 232208
+    },
+    {
+      "path": "build\\field-menus\\host\\title_locale_data.o",
+      "bytes": 4171776
+    },
+    {
+      "path": "build\\field-menus\\host\\world.o",
+      "bytes": 7820008
+    },
+    {
+      "path": "build\\field-menus\\host\\world_effect.o",
+      "bytes": 1066184
+    },
+    {
+      "path": "build\\field-menus\\host\\world_effect_data.o",
+      "bytes": 479792
+    },
+    {
+      "path": "build\\field-menus\\host\\world_flags.o",
+      "bytes": 1928184
+    },
+    {
+      "path": "build\\field-menus\\host\\world_links.o",
+      "bytes": 765976
+    }
+  ],
+  "retained": "Actual compile/link/test logs, fixture provenance and source commands; all binaries were owned temporary host builds for this task"
+}

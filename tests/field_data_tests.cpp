@@ -147,6 +147,34 @@ int main(int argc,char**argv){
         check(unpause&&door.phase()==SceneDoorPhase::Done,"fade-out unpauses before it completes");
         check(!door.begin(links,99,fades,error),"unknown route index rejected");
     }
+    // Pinned CamareaRect Control margins place its trigger far from the bridge.
+    // Godot 3.6.2 source-script oracle: center (2390,1308), limits 1952/1064/2472/1520.
+    {
+        check(view.count(FieldMapSection::Cameras)==1,"one audited Podunk camera area");
+        const auto camera=view.camera(0);
+        check(camera.center.x==2390&&camera.center.y==1308&&camera.extents.x==98&&camera.extents.y==188,"camera trigger includes ReferenceRect parent translation");
+        check(camera.has_rect&&camera.left==1952&&camera.top==1064&&camera.width==520&&camera.height==456,"original ReferenceRect camera limits retained");
+        RoomData room;check(room.load_file(argv[3],error),error.c_str());
+        std::vector<bool> flags(room.view().flag_count(),false);
+        for(const Vec2 viewport:{Vec2{400,240},Vec2{320,180}}){
+            auto scene=std::make_unique<FieldScene>();
+            check(scene->prepare(room.view(),view,links,flags,{314,279},{1,0},viewport,error),error.c_str());
+            check(scene->finish_transition()&&scene->after_physics(),"camera bridge fixture initialized");
+            auto follows=[&]{const auto p=scene->world.player().position;const auto o=scene->camera_origin(p,viewport);
+                check(o.x==std::floor(p.x-viewport.x*.5f)&&o.y==std::floor(p.y-viewport.y*.5f),"bridge camera follows player without distant limits");};
+            follows();
+            for(int direction:{1,-1})for(int i=0;i<48;++i){
+                WalkInput input;input.x=int8_t(direction);
+                check(scene->before_physics(input)&&scene->world.advance(input)&&scene->after_physics(),"normal movement across old camera trigger");
+                scene->world.idle_frame(1.0/60);check(scene->idle_frame(1.0/60,false),"camera idle");
+                check(scene->phase()==FieldPhase::Walking,"bridge remains walkable");follows();
+            }
+            check(scene->world.warp_same_scene({2390,1308},{1,0})&&scene->after_physics(),"enter actual distant camera area");
+            const auto limited=scene->camera_origin({2390,1308},viewport);
+            check(limited.x==2472-viewport.x&&limited.y==std::floor(1308-viewport.y*.5f),"actual area still applies original limits");
+            check(scene->world.warp_same_scene({351,274},{1,0})&&scene->after_physics(),"leave actual camera area");follows();
+        }
+    }
     // Telepathy follows the source facing ray; adjacency alone cannot select Mick.
     {
         RoomData room;check(room.load_file(argv[3],error),error.c_str());MickData data;

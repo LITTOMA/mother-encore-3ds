@@ -27,7 +27,7 @@ class ItemsAssetsTests(unittest.TestCase):
     def test_original_inventory_and_resolved_description(self):
         self.assertEqual(self.ir['capacity'],16)
         self.assertEqual(self.ir['initial_inventory'],[dict(id=1,definition=0,equipped=True,doses=1)])
-        self.assertEqual([d['source']for d in self.ir['definitions']],['BaseballCap','AsthmaSpray'])
+        self.assertEqual([d['source']for d in self.ir['definitions']],['BaseballCap','AsthmaSpray','BatPlastic'])
         item=self.ir['definitions'][0]
         self.assertEqual((item['source'],item['name'],item['flags'],item['equipment_slot'],item['can_use']),('BaseballCap','Baseball Cap',1,3,1))
         self.assertEqual(item['description'],'A hat for baseball players.\nOther @ Defense +5.')
@@ -83,7 +83,7 @@ class ItemsAssetsTests(unittest.TestCase):
         self.assertEqual([r['name']for r in reused],['box','cursor','font'])
         self.assertEqual(self.ir['resources'][9]['path'],'graphics/battle/lamp/font.t3x')
         self.assertFalse((a.OUT/'font.t3x').exists())
-        self.assertEqual(set(self.ir['dependencies']),{'content/asset-receipts/graphics/battle/lamp/source.json','content/asset-receipts/graphics/battle/round/source.json','content/asset-receipts/graphics/items/source.json','content/native-drawer-item.json','content/drawer-item-assets.json'})
+        self.assertEqual(set(self.ir['dependencies']),{'content/asset-receipts/graphics/battle/lamp/source.json','content/asset-receipts/graphics/battle/round/source.json','content/asset-receipts/graphics/items/source.json','content/native-drawer-item.json','content/drawer-item-assets.json','content/basement-items.json','content/asset-receipts/graphics/basement/source.json'})
 
     def test_rotation_is_lossless_per_frame_including_transparent_rgb(self):
         image=Image.new('RGBA',(24,8));image.putdata([(i%256,i//256,255-i%256,0 if i%3==0 else 255)for i in range(192)])

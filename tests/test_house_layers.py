@@ -204,9 +204,9 @@ class HouseLayersTests(unittest.TestCase):
         audio = h.read_json(h.ROOT / 'content/native-audio.json')
         paths = {self.ir['strings'][r['path_string']]: r for r in resources}
         shared = [asset for asset in audio['assets'] if asset['source_path'] in paths]
-        self.assertEqual([asset['stable_id'] for asset in shared], [21, 22, 30, 32, 33, 34, 36, 37, 1305])  # Preserved source identities plus phone ring/hangup.
+        self.assertEqual([asset['stable_id'] for asset in shared], [21, 22, 30, 32, 33, 34, 36, 37, 1305, 1401, 3641716319])  # Preserved prefix; source item-received and learned-PSI sounds append.
         for asset in shared:
-            self.assertEqual(paths[asset['source_path']]['stable_id'],23 if asset['stable_id']==1305 else asset['stable_id'])  # Intro reuses original PK Thunder source.
+            self.assertEqual(paths[asset['source_path']]['stable_id'],{1305:23,1401:41,3641716319:42}.get(asset['stable_id'],asset['stable_id']))  # Intro reuses original PK Thunder source.
             self.assertEqual(paths[asset['source_path']]['sha256'], asset['source_sha256'])
 
 

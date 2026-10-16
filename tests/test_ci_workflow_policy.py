@@ -26,17 +26,19 @@ class WorkflowPolicyTests(unittest.TestCase):
         mode = triggers['workflow_dispatch']['inputs']['mode']
         self.assertEqual(mode['type'], 'choice')
         self.assertEqual(mode['default'], 'build')
-        self.assertEqual(mode['options'], ['build', 'full'])
-        self.assertEqual(set(self.workflow['jobs']), {'host', 'console'})
+        self.assertEqual(mode['options'], ['build', 'full', 'basement-assets'])
+        self.assertEqual(set(self.workflow['jobs']), {'host', 'console', 'basement-assets'})
 
     def test_only_explicit_full_mode_admits_tests(self):
         for event in ('push', 'pull_request', 'schedule', 'repository_dispatch', 'workflow_dispatch'):
-            for mode in ('', 'build', 'full'):
+            for mode in ('', 'build', 'full', 'basement-assets'):
                 with self.subTest(event=event, mode=mode):
                     full = event == 'workflow_dispatch' and mode == 'full'
                     self.assertEqual(matches(self.workflow['jobs']['host']['if'], event, mode=mode), full)
                     self.assertEqual(matches(self.workflow['jobs']['console']['if'], event, mode=mode),
-                                     event in ('push', 'workflow_dispatch'))
+                                     event == 'push' or (event == 'workflow_dispatch' and mode != 'basement-assets'))
+                    self.assertEqual(matches(self.workflow['jobs']['basement-assets']['if'], event, mode=mode),
+                                     event == 'workflow_dispatch' and mode == 'basement-assets')
                     step = next(s for s in self.workflow['jobs']['console']['steps']
                                 if s.get('run') == 'python tests/test_ci_console_check.py')
                     self.assertEqual(matches(step['if'], event, mode=mode), full)

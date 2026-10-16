@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "scope": "Normal emulator input; source-audited semantic outcomes. UID values and input-timing positions are deliberately excluded from cross-run equality; shared-core save tests retain exact UID identity.",
+  "runs": [
+    "basement-en-3",
+    "basement-zh-1",
+    "basement-en-repeat-1",
+    "basement-restore-zh-1"
+  ],
+  "all_passed": true,
+  "projections_equal": true,
+  "projection": {
+    "inventory_count": 2,
+    "key_count": 3,
+    "present_opened_mask": 3,
+    "object_flag_count": 1,
+    "hp": 65,
+    "pp": 22
+  },
+  "runtime_commit": "09bd23067bcd1534bb4c4b4d4edd57ccfa6e059a",
+  "game_sha256": "4360ca560f30dd7e385b022404e5f52ef09b22d8f1693ceacdbcbb4aa2b63ada",
+  "emulator_sha256": "bd50cebf6427410df090855c4f5ba7cd1991b7fe1ff7f7f12f2ac49e187da525",
+  "memory_write_enabled": false
+}

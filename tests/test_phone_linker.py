@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from contextlib import ExitStack
-from tools import link_family_followup,storage_dialogue,link_house_inspections,link_drawer_content,link_present_content,house_key_doors
+from tools import link_family_followup,storage_dialogue,link_house_inspections,link_drawer_content,link_present_content,house_key_doors,diary_story
 
 from tools import link_phone_content as linker
 from tools import native_content, native_house
@@ -33,7 +33,8 @@ class PhoneLinkerTests(unittest.TestCase):
         with ExitStack()as bounded:
             bounded.enter_context(patch.object(link_family_followup,'append_room',lambda *args:None))
             bounded.enter_context(patch.object(storage_dialogue,'append_room',lambda *args:None))
-            for module in (link_family_followup,link_house_inspections,link_drawer_content,storage_dialogue,link_present_content,house_key_doors):
+            bounded.enter_context(patch.object(diary_story,'append_room',lambda *args:None))
+            for module in (link_family_followup,link_house_inspections,link_drawer_content,storage_dialogue,link_present_content,house_key_doors,diary_story):
                 bounded.enter_context(patch.object(module,'append_house',lambda ex,ir,*args:ir))
             cls.room,_=Extractor(cls.root).run()
             cls.house=build_house(cls.root)
@@ -66,7 +67,7 @@ class PhoneLinkerTests(unittest.TestCase):
         self.assertEqual(self.room['strings'][:len(self.base_room['strings'])], self.base_room['strings'])
         for name, rows in self.base_room['sections'].items():
             self.assertEqual(self.room['sections'][name][:len(rows)], rows, name)
-        self.assertEqual((self.room['rules'], self.room['capabilities']), (7, 8))
+        self.assertEqual((self.room['rules'], self.room['capabilities']), (7, 9))
         self.assertEqual(len(self.room['sections']['Program']), 16)
         self.assertEqual(len(self.room['sections']['ActorInstance']), 7)
 

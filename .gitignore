@@ -302,3 +302,9 @@ cookies.json
 !/reports/npc-doorway-occlusion/start-and-npc-fix.patch
 
 # Reviewed public-preparation audits and actual validation receipts.
+
+# Actual basement emulator evidence (no private emulator profile or DSP files).
+!reports/basement-items/validation/
+!reports/basement-items/validation/*.json
+!reports/basement-items/validation/*.png
+!reports/basement-items/validation/*.log

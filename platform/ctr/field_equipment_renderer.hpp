@@ -155,7 +155,9 @@ inline bool FieldEquipmentRenderer::draw_submenu(const encore::upstream::FieldMe
     if(!menu.active())return true;const auto* data=menu.content();if(!data||!data_.valid())return fail("Field submenu presentation unavailable");
     const auto page=menu.page();const float dx=left+(width-320)/2,dy=top+(height-180)/2;
     clip_left_=dx;clip_top_=dy;clip_right_=dx+320;clip_bottom_=dy+180;
-    const auto* source=layout(Role::EquipmentPanel);if(!source)return fail("Field submenu source panel missing");
+    // EquipmentPanel is the pale outer backing; DescriptionPanel carries the
+    // source dark fill and border required behind normal menu text.
+    const auto* source=layout(Role::DescriptionPanel);if(!source)return fail("Field submenu source panel missing");
     auto panel=*source;const auto&box=data->geometry[0];panel.rect={box.x,box.y,box.w,box.h};if(!art(panel,dx,dy))return false;
     auto write=[&](std::string_view s,float x,float y,float w,float h,bool right=false,bool disabled=false){Layout l{};l.role=uint32_t(Role::DescriptionText);l.kind=uint32_t(Kind::Text);l.color={1,1,1,1};if(disabled){const auto* dim=layout(Role::SlotLabel);if(!dim)return false;l.color=dim->color;}l.rect={x,y,w,h};return text(font,l,s,dx,dy,false,false,right);};
     const auto&header=data->geometry[1];const auto&body=data->geometry[2];auto desc=data->geometry[3];const auto&footer=data->geometry[4];

@@ -6,7 +6,7 @@
 #include <vector>
 using namespace encore;
 namespace {unsigned checks=0,mutations=0;int alloc_left=-1;size_t allocated=0;Result flush_result=0;
-std::array<std::vector<ndspWaveBuf*>,20>queues;std::array<float,20>gains{};
+std::array<std::vector<ndspWaveBuf*>,20>queues;std::array<float,20>gains{};std::array<bool,20>paused{};
 void check(bool x,const char*m){++checks;if(!x){std::cerr<<"FAIL "<<m<<'\n';std::exit(1);}}
 size_t ch(int c){check(c>=4&&c<20,"existing music/SFX/jingle/dialogue channels never touched");++mutations;return size_t(c);}
 void drain(int c){auto&q=queues[ch(c)];for(auto*b:q)b->status=NDSP_WBUF_DONE;q.clear();}
@@ -20,7 +20,7 @@ void*linearAlloc(size_t n){if(alloc_left==0)return nullptr;if(alloc_left>0)--all
 void linearFree(void*p){check(p!=nullptr,"valid release");allocated-=3*2048*4;std::free(p);}
 void ndspChnReset(int c){drain(c);}void ndspChnWaveBufClear(int c){drain(c);}
 void ndspChnSetMix(int c,float*v){gains[ch(c)]=v[0];check(v[0]==v[1],"equal stereo gain");}
-void ndspChnSetPaused(int c,bool){ch(c);}
+void ndspChnSetPaused(int c,bool value){paused[ch(c)]=value;}
 Result DSP_FlushDataCache(const void*p,uint32_t n){check(p&&n>0&&n<=2048*4,"bounded streaming flush");return flush_result;}
 void ndspChnWaveBufAdd(int c,ndspWaveBuf*b){auto&q=queues[ch(c)];check(b->data_pcm16&&b->nsamples==2048&&!b->looping,"source streamed frame buffer");b->status=NDSP_WBUF_QUEUED;q.push_back(b);}
 void ndspChnSetInterp(int c,int){ch(c);}void ndspChnSetRate(int c,float){ch(c);}void ndspChnSetFormat(int c,int){ch(c);}
@@ -45,6 +45,13 @@ int main(int argc,char**argv){check(argc==4,"region+audio+root arguments");upstr
  check(c.enter(1,"Music/MusicArea3",context,e)&&c.advance(.5,false,e)&&audio.sync(c,e),"same track lower-gain area");check(audio.submitted_voices()==1&&c.voices()[0].generation==generation&&std::abs(gains[4]-upstream::audio_linear_gain(-4))<1e-5,"fadeto keeps queued voice and cursor");
  check(c.exit(1,"Music/MusicArea",context,e)&&c.exit(1,"Music/MusicArea3",context,e)&&c.idle_frame(1,e)&&c.enter(1,"Music/MusicArea6",context,e)&&audio.sync(c,e),"overlap crossfade retains old track");check(queues[4].size()==3&&queues[5].size()==3,"both music voices concurrently queued");
  check(c.exit(1,"Music/MusicArea6",context,e)&&c.idle_frame(1,e)&&c.enter(1,"Music/MusicArea",context,e)&&audio.sync(c,e),"rapid return duplicate original loop");check(audio.submitted_voices()==3&&queues[6].size()==3,"independent same-track duplicate voice supported");check(checksum(queues[6][0]->data_pcm16,4096)==first,"new duplicate starts at source frame zero");drain(4);check(audio.sync(c,e),"old same-track cursor refilled");check(checksum(queues[4][0]->data_pcm16,4096)!=first,"old voice phase continues independently");
+ // Mainline menu gain and field-battle pause must coexist on the same voice.
+ auto retained=queues[6];check(audio.set_paused(true,e)&&paused[6],"battle pause reaches live region voice");
+ check(audio.set_user_music_db(-12)&&audio.sync(c,e)&&paused[6]&&queues[6]==retained,"menu volume update preserves battle pause and queued cursor");
+ check(std::abs(gains[6]-upstream::audio_linear_gain(c.voices()[2].gain_db-12))<1e-5,"menu music gain remains applied while paused");
+ check(!audio.set_user_music_db(25)&&!audio.set_user_music_db(NAN),"invalid menu music gain rejected");
+ check(audio.set_paused(false,e)&&!paused[6]&&queues[6]==retained,"resume preserves queued audio");
+ check(audio.set_user_music_db(0)&&audio.sync(c,e),"restore menu gain without restarting track");
  upstream::MusicRegionController wrong;check(wrong.initialize(data,1,e)&&wrong.attach_scene(2,e),"wrong capacity fixture");auto old=queues;check(!audio.sync(wrong,e)&&queues==old,"bad snapshot capacity cannot stop old audio");
  check(c.advance(2,false,e)&&audio.sync(c,e),"completed fades clear only old region channels");check(queues[4].empty()&&queues[5].empty()&&queues[6].size()==3,"current duplicate survives old fade cleanup");
  // Detached candidates can prepare without taking the live range; accidental

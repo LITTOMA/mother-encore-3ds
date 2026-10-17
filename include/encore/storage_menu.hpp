@@ -2,6 +2,7 @@
 #include "encore/storage_data.hpp"
 #include "encore/items_menu.hpp"
 #include "encore/battle_round.hpp"
+#include <functional>
 namespace encore::upstream {
 class StorageState {
 public:
@@ -19,7 +20,10 @@ enum class StorageMenuPhase:uint8_t {Closed,List,AskUnequip,AskEquip,Warning};
 enum class StorageSoundEvent:uint32_t {Move=1,Confirm,Restricted,Clear,Equip,Back};
 class StorageMenu {
 public:
- bool initialize(StorageView,InventoryState&,StorageState&,BattleSessionStats&,bool chinese=false);
+ // Optional additional admission from a checked consumable resource. Legacy
+ // callers retain exact-dose rules; the callback cannot bypass count/UID/slot checks.
+ using DoseAdmission=std::function<bool(const ItemInstance&,uint32_t)>;
+ bool initialize(StorageView,InventoryState&,StorageState&,BattleSessionStats&,bool chinese=false,DoseAdmission={});
  bool open();bool input(int x,int y,bool confirm,bool cancel);bool idle_frame(double);
  bool active()const{return phase_!=StorageMenuPhase::Closed;}StorageMenuPhase phase()const{return phase_;}
  bool storage_panel()const{return storage_panel_;}uint32_t selection()const{return selection_;}uint32_t row_offset()const{return row_offset_;}
@@ -44,5 +48,6 @@ private:
  std::array<float,2>cursor_rows_{},cursor_start_{},cursor_target_{},cursor_move_time_{};
  double cursor_time_=0;float question_row_=0,question_start_=0,question_target_=0,question_move_time_=0;
  std::vector<StorageSoundEvent>sounds_;std::string error_;
+ DoseAdmission dose_admission_;
 };
 }

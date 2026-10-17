@@ -188,6 +188,7 @@ bool OpeningWorld::pause_for_house(){
     return content_.frame_clip(persistent_player_.state_->clip_,clip)&&begin_clip(clip,content_.clip(persistent_player_.state_->clip_).frame_count,persistent_player_.state_->playback_);
 }
 bool OpeningWorld::unpause_from_house(){if(!healthy_||stage_!=OpeningStage::Walking)return false;persistent_player_.state_->house_paused_=false;return true;}
+bool OpeningWorld::resize_field_viewport(Vec2 viewport){if(!healthy_||stage_!=OpeningStage::Walking||!persistent_player_.state_->house_paused_||!persistent_player_.state_->camera_.resize_viewport(viewport))return false;viewport_=viewport;return true;}
 bool OpeningWorld::set_house_direction(Vec2 direction){
     if(!healthy_||stage_!=OpeningStage::Walking)return false;
     if(direction.x==0&&direction.y==0)return true;

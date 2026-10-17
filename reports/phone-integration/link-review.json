@@ -108,6 +108,8 @@
     "Audio/Sound effects/M3/menu_close2.wav.import": "ec8c7281ddb3886730d39aa18f8ce194909e089f6ceafa394154032f8dca1bca",
     "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
     "Audio/Sound effects/Gift Box.mp3.import": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
+    "Audio/Music/Battle Themes/Flippant Foe.mp3": "aa17a9926a0774d8e55cead372bcc76eb43ef2f0210fd02c01b47b4448638c11",
+    "Audio/Music/Battle Themes/Flippant Foe.mp3.import": "888c7c77d3d1dff80fb6506d4e9d89eb5bc78f1432077106e67dc44091aba234",
     "Audio/Music/You Win/LVLUP.mp3": "7ed8774a212f98a0ea416b0dfe1938069cac850a9793177d1f77e4ef976beffc",
     "Audio/Music/You Win/LVLUP.mp3.import": "57a62b02d6a29b449198bfb5ca992da7439bdb1602fee0e1797af20625da21a5",
     "Audio/Music/You Win/LVLUP_ninten.mp3": "ea0d7b059fb83f5b7f09cd5a47e9f495d7422f742176a51627188b609d9a9ac0",
@@ -128,6 +130,8 @@
     "Audio/Sound effects/EB/dodge.wav.import": "671d23908b363f59953cf8fcbf2eb9becf35746b21101da48536a085e97a8891",
     "Audio/Sound effects/EB/heal 1.wav": "77b3c37bd00af37b736c203855e5c2908dbcfcbae11d0e097e1025f53fff5e36",
     "Audio/Sound effects/EB/heal 1.wav.import": "b06c91fd531323aaf9e0b07ffe328e23b9be47dd7c31a821b207b325b1b7ed80",
+    "Audio/Sound effects/EB/itemget1.wav": "dcb8603faf73979ea4d22df9a70b149b61b9e67cf0f2a56016115d1bc759f857",
+    "Audio/Sound effects/EB/itemget1.wav.import": "48c3d840655619fbfe487d28647b415b6b9d6eff2db7de568accfef7f473d3c8",
     "Audio/Sound effects/EB/miss.wav": "6696e8e759be9dca1ef2e70a09a79d060163e7757c61d7494137c06ccebefd8d",
     "Audio/Sound effects/EB/miss.wav.import": "74d10ef8728d6498b1c9d685eca7783815d69d802e2f40b20029752b687c46d0",
     "Audio/Sound effects/Enemy Defeat.mp3": "0f3fc1786c939a30499d856e5f8ed543dce5d05b08b6c2a89b714cb0a2e08edc",
@@ -140,6 +144,8 @@
     "Audio/Sound effects/Hurt 2.mp3.import": "20d650f1d02b7492d70a2ac66d5a97bbe192fbbf5c769091c9aeb5446714e323",
     "Audio/Sound effects/M3/Dog_whining.wav": "e472611c9399ef97d628f31f2bd81dd5cc8ba4ede703ac117c15e985128b7c17",
     "Audio/Sound effects/M3/Dog_whining.wav.import": "4c3f61c94e830a5014f1d95096bbfe7d90b8eed09a59de0c91625e0e3debd08e",
+    "Audio/Sound effects/M3/Growl 2.mp3": "0b3d7f970bc72354c04ad192a73564c19719e0059148042c1b25705ae68e20dd",
+    "Audio/Sound effects/M3/Growl 2.mp3.import": "564861459a5022d0126f448ff0125cc3466bb1e0bfb160f0e7887c33fea75f7c",
     "Audio/Sound effects/M3/Learned PSI.wav": "f28b9e605a82bd89199d42b9448f03f42451714d17598bcd677fe5fa49c96a04",
     "Audio/Sound effects/M3/Learned PSI.wav.import": "b7c2531943d39eef28e9d75af3adc510e974bc87e9e503d562cbf654e746de88",
     "Audio/Sound effects/M3/Mortal_Blow.wav": "ffaf70dc19c463adacd9eb5faa37d12e20af0de171c592ccd373afcd7024bb55",
@@ -166,7 +172,7 @@
   "outputs": {
     "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
     "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
-    "content/native-audio.json": "a81ca1a79ba2a5b04bc4c5f8fa98035582ed9ecb5a4b6e6b40a062275b01b482"
+    "content/native-audio.json": "67e516a79e287b264eb045d734080c5ee2cb374e6c2e9eb01013e6238e283c52"
   },
   "stable_namespaces": {
     "preserved_program_ids": [

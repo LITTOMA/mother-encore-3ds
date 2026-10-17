@@ -40,3 +40,5 @@ Godot 3.6.2 实际运行了固定上游的 Present 方法参考，狗粮检查�
 先创建 `build/field-atlas`，按 `tools/emulator_save_fixture.py` 生成与构建收据匹配的人工检查点。将包装脚本复制到 `build/field-atlas/run_compatible_probe.py`，以 `--scenario tests/emulator/dog-treats-field-exit.json --save-fixture <fixture.json> --original-reference <Present参考/reference.json>` 执行；开场路线改用 `opening-field-exit.json` 和 Pause / PSI 参考，不传 `--save-fixture`。其余模拟器、真实游戏、收据、私有 DSP 和全新输出目录参数同 [模拟器语义验收](EMULATOR_SEMANTICS.md)。
 
 每次测试创建的临时 profile 在结束后删除。已清理本次对象文件、三项主机可执行文件与核验后的下载压缩包，约 491 MiB；保留真实 3DSX、收据及日志。没有分发私有 DSP、个人存档或模拟器 profile。CIA 安装、Old / New 3DS 真机、用户旧 Citra 环境与完整游戏尚未验收。
+
+同步主线 `77915a9`（#62）时，保留菜单的显示切换 / 音量 / 输入实现，同时保留进入 Podunk 前释放最近战斗纹理与回合媒体、重新装载对白字体的顺序。只解决文档与日志白名单冲突，游戏资源沿用主线生成结果；此次合并的真实构建状态以新提交的 Actions 为准，不沿用旧模拟器结论。

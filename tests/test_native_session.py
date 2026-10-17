@@ -27,7 +27,7 @@ class NativeSessionTests(unittest.TestCase):
         self.assertNotEqual(s['key_items'][0]['uid'],c['inventory'][0]['uid'])
     def test_additive_startup_roster_and_legacy_bytes(self):
         r=self.recipe;startup=r['startup'];characters=startup['characters']
-        self.assertEqual((r['schema'],struct.unpack_from('<I',native.encode(r),8)[0],struct.unpack_from('<I',native.encode(r),20)[0]),(9,9,9))
+        self.assertEqual((r['schema'],struct.unpack_from('<I',native.encode(r),8)[0],struct.unpack_from('<I',native.encode(r),20)[0]),(10,10,10))
         self.assertEqual(hashlib.sha256(native.encode_snapshot(r['defaults'],r['compatibility'])).hexdigest(),
                          'a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f')
         self.assertEqual(startup['party'],['ninten'])
@@ -50,12 +50,19 @@ class NativeSessionTests(unittest.TestCase):
         self.assertEqual(native.encode(r)[24:len(older)],older[24:])
         self.assertEqual(r['settings_choices']['speeds'],[.02,.028,.035])
         self.assertEqual(r['settings_choices']['prompts'],['Both','Objects','NPCs','None'])
+    def test_v10_keeps_complete_v9_menu_prefix(self):
+        legacy=copy.deepcopy(self.recipe);legacy['schema']=9;legacy.pop('field_encounters')
+        old=native.encode(legacy);new=native.encode(self.recipe)
+        self.assertEqual(new[24:len(old)],old[24:])
+        self.assertEqual(new[len(old):],struct.pack('<II',1,8)+b'straydog')
+        self.assertEqual(len(legacy['field_items']),4)
+
     def test_frozen_rules6_resource_encoding_is_unchanged(self):
         frozen=native.ROOT/'content/legacy-rules6'
         legacy=native.read(frozen/'native-session.json')
         self.assertEqual(legacy['schema'],1)
         self.assertEqual(native.encode(legacy),(frozen/'opening.encsession').read_bytes())
-        bad=copy.deepcopy(self.recipe);bad['schema']=10
+        bad=copy.deepcopy(self.recipe);bad['schema']=11
         with self.assertRaises(ValueError):native.encode(bad)
     def test_startup_clamps_are_derived_from_serialized_hp_and_equipment(self):
         ex=native.Extractor(native.ROOT);save=ex.yaml('Data/save_new_game.yaml');overrides=ex.yaml('Data/save_overrides.yaml')
@@ -101,7 +108,7 @@ class NativeSessionTests(unittest.TestCase):
     def test_storage_conservation_policy_is_source_derived(self):
         from tools.storage_assets import load, IR
         storage=load(native.ROOT);r=self.recipe
-        self.assertEqual(r['schema'],9)
+        self.assertEqual(r['schema'],10)
         self.assertEqual(r['storage_capacity'],storage['parameters']['StorageCapacity'])
         self.assertEqual(r['dependencies'][IR],hashlib.sha256((native.ROOT/IR).read_bytes()).hexdigest())
         by_id={p['item_id']:p for p in r['storage_policies']}

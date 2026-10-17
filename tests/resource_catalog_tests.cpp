@@ -107,8 +107,8 @@ int main(int argc,char** argv){
  bad=blob;bad[0]^=1;reject(bad,"unknown magic rejected");
  // Capability 2 admits the linked field roles; capability 3 additionally
  // requires HousePresents. Lower capabilities must reject the newer roles.
- check(get(blob,20)==7,"actual catalog declares checked field story capability");
- for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{8,0},{8,2},{12,uint32_t(blob.size()+1)},{20,0},{20,1},{20,2},{20,3},{20,4},{20,5},{20,6},{20,8},{24,1},{28,1},{52,0},{52,129},{56,0},{56,33}}){bad=blob;put(bad,edit.first,edit.second);if(edit.first!=12)fix(bad);reject(bad,"unknown header, capability/role mismatch or record count rejected");}
+ check(get(blob,20)==8,"actual catalog declares checked field story capability");
+ for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{8,0},{8,2},{12,uint32_t(blob.size()+1)},{20,0},{20,1},{20,2},{20,3},{20,4},{20,5},{20,6},{20,7},{20,9},{24,1},{28,1},{52,0},{52,129},{56,0},{56,33}}){bad=blob;put(bad,edit.first,edit.second);if(edit.first!=12)fix(bad);reject(bad,"unknown header, capability/role mismatch or record count rejected");}
  for(const auto role:{ResourceRole::FieldRoom,ResourceRole::FieldMap,ResourceRole::WorldLinks,ResourceRole::HousePresents,ResourceRole::MickTreats,ResourceRole::GameplayAudio,ResourceRole::FieldMusic,ResourceRole::FieldAudio,ResourceRole::FieldMusicZones}){const auto r=row(blob,role);
   check(catalog.path(role)==row_path(blob,r),"extension role resolves its checked resource");
   bad=blob;put(bad,r+4,uint32_t(ResourceRole::FieldEquipment));fix(bad);reject(bad,"extension role cannot be dropped or duplicated");}

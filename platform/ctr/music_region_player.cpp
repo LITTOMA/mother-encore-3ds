@@ -74,7 +74,7 @@ bool MusicRegionPlayer::sync(const upstream::MusicRegionController&controller,st
   if(!v.active||v.generation!=s.generation){stop(i);v.track=index[i];auto&a=tracks_[v.track].asset;if(!v.cursor.reset(a.frames,a.loop_start,a.loops()))return fail(e,"Invalid region cursor");v.generation=s.generation;v.active=true;
    int channel=int(first_channel+i);ndspChnReset(channel);ndspChnSetInterp(channel,NDSP_INTERP_POLYPHASE);ndspChnSetRate(channel,float(a.sample_rate));ndspChnSetFormat(channel,a.channels==2?NDSP_FORMAT_STEREO_PCM16:NDSP_FORMAT_MONO_PCM16);newly_started=true;
   }
-  float volumes[12]{};volumes[0]=volumes[1]=upstream::audio_linear_gain(s.gain_db+tracks_[v.track].asset.gain_db);ndspChnSetMix(int(first_channel+i),volumes);if(!refill(i,e))return false;if(newly_started){if(paused_)ndspChnSetPaused(int(first_channel+i),true);++submitted_;}
+  float volumes[12]{};volumes[0]=volumes[1]=upstream::audio_linear_gain(s.gain_db+tracks_[v.track].asset.gain_db+user_music_db_);ndspChnSetMix(int(first_channel+i),volumes);if(!refill(i,e))return false;if(newly_started){if(paused_)ndspChnSetPaused(int(first_channel+i),true);++submitted_;}
  }
  e.clear();return true;
 }

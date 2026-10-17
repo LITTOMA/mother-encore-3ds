@@ -19,11 +19,15 @@ EXTRA_FIELDS = ('world_programme world_dialogue story_revision_lo story_revision
                 + ' '.join('inventory_'+str(i)+'_'+name for i in range(16)for name in ('definition','doses','equipped'))+' '
                 'random_state_lo random_state_hi random_draws_lo random_draws_hi').split()
 TAIL8 = struct.Struct('<82I128s')
+MENU_FIELDS=('submenu_phase submenu_selection submenu_keys submenu_count menu_inventory_hash menu_key_hash menu_settings_hash menu_controls_hash menu_master menu_music menu_sfx menu_display menu_maxhp menu_maxpp menu_offense menu_defense menu_map_x menu_map_y menu_uid_hash menu_key_uid_hash').split()
+WIRE_V7=struct.Struct('<8s55I6f128s128s128s128s20I')
+MENU_TAIL=struct.Struct('<20I')
+SIZES={6:WIRE.size,7:WIRE_V7.size,8:WIRE.size+TAIL8.size,9:WIRE.size+TAIL8.size+MENU_TAIL.size}
 
 def wire_size(header):
     if len(header)<16 or header[:8]!=MAGIC:raise ValueError('Unsupported semantic probe magic/header')
     version,size=struct.unpack_from('<2I',header,8)
-    if (version,size)not in ((6,WIRE.size),(8,WIRE.size+TAIL8.size)):raise ValueError('Unsupported semantic probe identity/version/size')
+    if SIZES.get(version)!=size:raise ValueError('Unsupported semantic probe identity/version/size')
     return size
 
 
@@ -41,14 +45,14 @@ def decode(data):
     result.update(zip(POSITIONS, values[len(FIELDS):len(FIELDS)+len(POSITIONS)]))
     if not all(math.isfinite(result[k]) for k in POSITIONS):
         raise ValueError('Nonfinite semantic probe position')
-    for name, raw in zip(ERRORS, values[-4:]):
+    for name, raw in zip(ERRORS, values[len(FIELDS)+len(POSITIONS):len(FIELDS)+len(POSITIONS)+4]):
         if b'\0' not in raw:
             raise ValueError('Unterminated semantic probe text')
         result[name] = raw.split(b'\0', 1)[0].decode('utf-8', errors='strict')
     for name in ('paused', 'crouch', 'session_ready', 'battle_active', 'audio_available', 'music_playing', 'dsp_music_playing', 'psi_learned', 'dialogue_active', 'dialogue_finished', 'dialogue_stopped'):
         if result[name] not in (0, 1):
             raise ValueError('Invalid semantic probe boolean')
-    if result['version']==8:
+    if result['version']in (8,9):
         extra=TAIL8.unpack_from(data,WIRE.size);result.update(zip(EXTRA_FIELDS,extra[:-1]));raw=extra[-1]
         if b'\0'not in raw:raise ValueError('Unterminated battle observation error')
         result['battle_error']=raw.split(b'\0',1)[0].decode('utf8',errors='strict')
@@ -62,6 +66,10 @@ def decode(data):
             if i<result['inventory_count']:
                 if not definition or not 1<=doses<=65535 or equipped not in (0,1):raise ValueError('Invalid observed item identity/doses/equipment')
             elif definition or doses or equipped:raise ValueError('Trailing observed inventory data')
+    if result['version']in (7,9):
+        offset=WIRE.size if result['version']==7 else WIRE.size+TAIL8.size
+        result.update(zip(MENU_FIELDS,MENU_TAIL.unpack_from(data,offset)))
+        if result['submenu_keys']not in (0,1)or result['menu_display']not in (0,1):raise ValueError('Invalid menu observation boolean')
     return result
 
 

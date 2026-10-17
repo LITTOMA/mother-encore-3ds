@@ -35,7 +35,7 @@ bool MusicRegionService::begin_prepare(const char*regions,const char*bank,const 
  if(!snapshot.available)return fail(e,"Music region service unavailable: existing NDSP owner is not initialized");
  auto candidate=std::make_unique<State>();
  if(!candidate->data.load_file(regions,e)||!candidate->controller.initialize(candidate->data,capacity,e)||
-    !candidate->player.begin_prepare(bank,root,candidate->data,capacity,snapshot.available,snapshot.master_db,e))return false;
+    !candidate->player.begin_prepare(bank,root,candidate->data,capacity,snapshot.available,snapshot.master_db,e)||!candidate->player.set_user_music_db(snapshot.user_music_db))return false;
  state_=std::move(candidate);phase_=MusicRegionServicePhase::Preparing;e.clear();return true;
 }
 uint64_t MusicRegionService::prepared_pcm_bytes()const{return state_?state_->player.prepared_pcm_bytes():0;}
@@ -89,7 +89,7 @@ bool MusicRegionService::update(double delta,const AudioPlayer&owner,std::string
  if(!std::isfinite(delta)||delta<0)return fail(e,"Invalid music region service delta");
  if(state_->paused){e.clear();return true;}
  const auto snapshot=owner.observe_music();
- if(!observe(state_->controller,state_->external_generation,snapshot,e)||
+ if(!state_->player.set_user_music_db(snapshot.user_music_db)||!observe(state_->controller,state_->external_generation,snapshot,e)||
     !state_->controller.advance(delta,snapshot.any_music_tweening,e)||!state_->player.sync(state_->controller,e))return false;
  if(phase_==MusicRegionServicePhase::Draining){bool allocated=false;for(const auto&v:state_->controller.voices())allocated|=v.allocated;if(!allocated)phase_=MusicRegionServicePhase::Prepared;}
  e.clear();return true;

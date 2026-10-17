@@ -68,6 +68,16 @@ int main(int argc,char** argv){
     check(player.consume(room.view(),requests,error),"fourth-lane dialogue music request accepted");
     check(queues[3].size()==3&&queues[0]==existing_queues[0]&&queues[1]==existing_queues[1]&&queues[2]==existing_queues[2],"dialogue music preserves all three concurrent voices");
     const auto concurrent_queues=queues;const auto submissions=player.submitted_voices();
+    const auto baseline_gains=gains;const float baseline_master=master;const auto music_generation=player.observe_music().generation;
+    check(player.set_user_volume(-3,-6,-12,error),"independent user audio buses accepted");
+    check(std::abs(master-baseline_master*0.7079458f)<0.00001f,"master bus applies without restarting channels");
+    for(auto lane:{0u,2u,3u})check(std::abs(gains[lane]-baseline_gains[lane]*0.5011872f)<0.00001f,"all music lanes share user BGM gain");
+    check(std::abs(gains[1]-baseline_gains[1]*0.2511886f)<0.00001f,"effect bus has independent user gain");
+    check(queues==concurrent_queues&&player.submitted_voices()==submissions&&player.observe_music().generation==music_generation,"volume edits preserve queues and BGM identity");
+    const auto changed_gains=gains;const auto changed_master=master;
+    check(!player.set_user_volume(1,0,0,error)&&!player.set_user_volume(0,NAN,0,error)&&!player.set_user_volume(0,0,-121,error),"invalid user gain fails closed");
+    check(gains==changed_gains&&master==changed_master&&queues==concurrent_queues,"invalid gain preserves every active voice");
+    check(player.set_user_volume(0,0,0,error)&&gains==baseline_gains&&master==baseline_master,"default bus selection restores original source mix");
     check(!player.play(32,ctr::AudioLane::Music,error)&&queues==concurrent_queues,"fourth-lane same-asset collision leaves all voices intact");
     check(player.consume(room.view(),requests,error)&&player.submitted_voices()==submissions,"dialogue music history is not replayed");
     requests.push_back({upstream::AudioRequestKind::StopMusicResource,room_resource(room.view(),21),0,0});

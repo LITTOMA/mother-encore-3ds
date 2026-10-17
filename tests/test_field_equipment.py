@@ -28,14 +28,14 @@ class FieldEquipmentFormat(unittest.TestCase):
             for value,expected in zip(actual,source):self.assertAlmostEqual(value,expected,places=5)
         self.assertEqual((ROOT/pack.PACK).read_bytes(),self.blob)
     def test_six_known_commands_equipment_and_field_psi(self):
-        self.assertEqual([r[3] for r in self.tables['Commands']],[0,1,1,0,0,0])
-        self.rejects('Commands',0,3,1)
+        self.assertEqual([r[3] for r in self.tables['Commands']],[1,1,1,1,1,1])
+        self.rejects('Commands',0,3,0)
     def test_source_slots_and_equipment(self):
         self.assertEqual([s['source'] for s in self.ir['slots']],['weapon','body','arms','other'])
         self.assertEqual(self.ir['equipment'][0]['boosts'],[0,0,0,5,0,0,0])
         self.rejects('Equipment',0,2,4)
     def test_unknown_versions_and_capabilities(self):
-        for offset,value in ((8,1),(8,4),(20,1),(20,2),(20,5),(24,2)):
+        for offset,value in ((8,1),(8,4),(20,1),(20,2),(20,6),(24,2)):
             with self.subTest(offset=offset,value=value),self.assertRaises(ValueError):pack.parse_pack(self.changed(offset,struct.pack('<I',value)))
     def test_corrupt_pin_reserved_crc_and_truncation(self):
         for blob in (self.changed(32,b'\x01'),self.changed(52,b'\x01'),self.blob[:-1],self.blob+b'\0'):

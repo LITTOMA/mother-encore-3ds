@@ -289,7 +289,7 @@
         "en": "Goods",
         "zh_Hans_CN": "道具"
       },
-      "enabled": false
+      "enabled": true
     },
     {
       "id": 2,
@@ -313,7 +313,7 @@
         "en": "Status",
         "zh_Hans_CN": "状态"
       },
-      "enabled": false
+      "enabled": true
     },
     {
       "id": 5,
@@ -321,7 +321,7 @@
         "en": "Map",
         "zh_Hans_CN": "地图"
       },
-      "enabled": false
+      "enabled": true
     },
     {
       "id": 6,
@@ -329,7 +329,7 @@
         "en": "Options",
         "zh_Hans_CN": "选项"
       },
-      "enabled": false
+      "enabled": true
     }
   ],
   "slots": [

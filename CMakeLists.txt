@@ -8,6 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
+    runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
     runtime/house_inspection_data.cpp
@@ -910,6 +911,15 @@ if(BUILD_TESTING)
  set_tests_properties(basement_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
 endif()
 
+if(BUILD_TESTING)
+ add_executable(encore_field_menus_tests tests/field_menus_tests.cpp)
+ add_executable(encore_emulator_field_menus_fixture tools/emulator_field_menus_fixture.cpp)
+ target_link_libraries(encore_emulator_field_menus_fixture PRIVATE encore_core)
+ target_link_libraries(encore_field_menus_tests PRIVATE encore_core)
+ add_test(NAME field_menus COMMAND encore_field_menus_tests ${CMAKE_SOURCE_DIR}/romfs ${CMAKE_CURRENT_BINARY_DIR}/field-menu-preferences.encprefs)
+ add_test(NAME field_menus_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_field_menus)
+ set_tests_properties(field_menus field_menus_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
+endif()
 include(cmake/TestParallelism.cmake)
 
 # Resource writers finish before compilation or fixture preparers read packs.

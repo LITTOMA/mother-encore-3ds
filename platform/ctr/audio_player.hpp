@@ -16,6 +16,7 @@ struct MusicObservation {
     bool available=false,playing=false,tweening=false;
     bool dialogue_music_playing=false,any_music_tweening=false;
     float master_db=0;
+    float user_music_db=0;
 };
 // Bounded slice adapter: independent area music, named dialogue SFX, musical
 // jingle and dialogue music voices. It is not the full Godot audio graph.
@@ -45,6 +46,7 @@ public:
     // Rejected requests remain pending and reported; existing voices still refill.
     bool update_room(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,double delta,std::string& error);
     bool available() const{return ready_;}
+    bool set_user_volume(float master_db,float music_db,float sfx_db,std::string&);
     MusicObservation observe_music() const;
     uint32_t lane_asset_id(AudioLane lane)const{const auto i=uint32_t(lane);return i<voices_.size()&&voices_[i].active?voices_[i].asset.stable_id:0;}
     // Loading cooperation only: feed existing queues and observe natural ends.
@@ -77,6 +79,7 @@ private:
     std::array<Voice,lane_count> voices_;
     Result dsp_result_=0;
     bool ndsp_initialized_=false,ready_=false;
+    float user_master_db_=0,user_music_db_=0,user_sfx_db_=0;
     uint64_t music_generation_=0;
     size_t consumed_=0;
     uint32_t submitted_=0,completed_=0,queued_frames_=0;

@@ -67,7 +67,7 @@
       "path": "world/podunk/npcs/bridge-dog.encmick"
     },
     {
-      "id": 41,
+      "id": 42,
       "role": "FieldStory",
       "path": "world/podunk/story.encstory"
     },
@@ -80,6 +80,11 @@
       "id": 513,
       "role": "EncounterRound",
       "path": "battle/straydog/bridge.encround"
+    },
+    {
+      "id": 40,
+      "role": "FieldMenus",
+      "path": "ui/field.encmenus"
     }
   ],
   "encounters": [

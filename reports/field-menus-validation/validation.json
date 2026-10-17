@@ -1,0 +1,210 @@
+{
+  "schema": 1,
+  "status": "full-gcc-pending",
+  "scope": "START six commands and admitted singleton-content submenus; no whole-game, CIA-installation or hardware claim",
+  "native_source_commit": "64f88557859a995537dcae4d85778eb94ab9225b",
+  "full_ci_source_commit": "c1ceee50653a7c6e42a42681044c3794ed76f7e9",
+  "post_ci": "Only documentation, emulator scenario and its bounded position comparator/tests changed after the full CI source; runtime/include/platform/romfs/content match the genuine build source. 31 runner/registration tests separately passed.",
+  "runner_sha256": "4759209a49cab7589a18039e7862d96991ee9a67c3db777112a6e968c93af915",
+  "runner_tests_sha256": "2d6b24330268e8a6427651946e963b68b5f2f1fc115e8e5e83212ae1c9bb9afc",
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scenario_sha256": "8014bcba04f67b6e8023ccd6c328a64378bd2de0f587ace7c699872fe673d14b",
+  "observations": [
+    {
+      "run": 1,
+      "checkpoints": 202,
+      "raw_result_sha256": "3a5043f6ee712f7520eebfff57ff83bb413d86564d57250d3fef6b860b11f81a",
+      "all_observed_errors_empty": true,
+      "temporary_bytes_deleted": 96450904
+    },
+    {
+      "run": 2,
+      "checkpoints": 202,
+      "raw_result_sha256": "480aa5da6b63ca861dfc2f102f72ebb040a9996b2c64925bff22291cdde8b8b5",
+      "all_observed_errors_empty": true,
+      "temporary_bytes_deleted": 96450904
+    }
+  ],
+  "full_ci": [
+    {
+      "compiler": "gcc",
+      "status": "in_progress",
+      "full_log_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38893989632/job/116949978951",
+      "normal_make_test_passed": true,
+      "pending_step": "Run ASan and UBSan with the hosted runner's normal leak checking"
+    },
+    {
+      "compiler": "clang",
+      "status": "passed",
+      "raw_log_sha256": "662c13bb38802a15ef20feb1ee022676f1427081027bb8ede1945c0c250600a2",
+      "full_log_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38893989632/job/116949978559",
+      "passed_test_totals": [
+        1,
+        1,
+        154,
+        154
+      ]
+    }
+  ],
+  "owned_build_bytes_removed": 3181269734,
+  "records": [
+    {
+      "file": "host/field_menus-asan.log",
+      "sha256": "7f92fceb30ea5542ac9dc6067b854f3445edd4c4fc92899c1f37a1974ebfb1df",
+      "bytes": 24
+    },
+    {
+      "file": "host/native_session-asan.log",
+      "sha256": "08187e0bca9130eff08cd6b3698e78ae80cd04fc3b0371d38f2455f5c1fabd98",
+      "bytes": 126
+    },
+    {
+      "file": "host/field_equipment-asan.log",
+      "sha256": "26347d5cf844636e004249ade3a414e9993e0baf4d6e441480bc9b27f8771333",
+      "bytes": 118
+    },
+    {
+      "file": "host/resource_catalog-asan.log",
+      "sha256": "6673efb43bfc5a5ae31251174c59ac4b54bfe485ec785bd46cc3576cc2c0c5d0",
+      "bytes": 120
+    },
+    {
+      "file": "host/audio-player-asan.log",
+      "sha256": "9d3218e778ff77cca71b606f2936984cabd460306ae27dd575c2e6cb264bd440",
+      "bytes": 88
+    },
+    {
+      "file": "host/storage-runtime-asan.log",
+      "sha256": "089272416f02131463ae2e1259bce8cee29e31958fa8e37a8ed4bed7d0172faa",
+      "bytes": 44
+    },
+    {
+      "file": "host/settings-palette-asan.log",
+      "sha256": "126cf38869dd22118d691b91fef718a0d31dea70e22f046072c6b50dccb67d15",
+      "bytes": 188
+    },
+    {
+      "file": "host/loading-texture.log",
+      "sha256": "db6877a3049ae8d4154a3e26f480cf4bf3cbc2501cbae7585d230cba2b2b3a45",
+      "bytes": 102
+    },
+    {
+      "file": "emulator-receipt.json",
+      "sha256": "54d0083dd7e194db074521c6ea2713abf6dc7c9cd766e329d56a266709b97e83",
+      "bytes": 199379
+    },
+    {
+      "file": "host/runner-tolerance-tests.log",
+      "sha256": "1cd43c88c59a50881b1daf14f3a05b369f28aa16446e2c3bbb98c0a8cdeb9f09",
+      "bytes": 135
+    },
+    {
+      "file": "host/content-graph-tests.log",
+      "sha256": "3baa2139a947894aed5ee15b071daae89310be860e6a4908ddef09237b7ad131",
+      "bytes": 132
+    },
+    {
+      "file": "host/source-tools-tests.log",
+      "sha256": "622cc77152060a50bbbe69fc3cb04bf80996fa8be9efebdf49c0ba6e11656d36",
+      "bytes": 176
+    },
+    {
+      "file": "screenshots/display_after.png",
+      "sha256": "35b616aff9ed57fc29ebf9e0b0c58bd20f8e8e538508e4bfdb558c50bf341e39",
+      "bytes": 14208
+    },
+    {
+      "file": "screenshots/field_map.png",
+      "sha256": "3ddbeabe355af95806f329cff40707816838b66464ddbdb9386127b4d089a007",
+      "bytes": 45396
+    },
+    {
+      "file": "screenshots/field_status.png",
+      "sha256": "ee688f1cb2009993c45dde534563a420ca2b85675b6cca1d60ac72ceae10c8b4",
+      "bytes": 27275
+    },
+    {
+      "file": "screenshots/goods.png",
+      "sha256": "77c96740d9db51abbdcb4bacbec03205302ac4313fbc8f80f210c1a032befdfb",
+      "bytes": 14679
+    },
+    {
+      "file": "screenshots/lifeup_result.png",
+      "sha256": "f76acc576b400b4639fb5bd9157a65b5c8f8a5957b1c3c31c2519043da42523a",
+      "bytes": 16684
+    },
+    {
+      "file": "screenshots/map.png",
+      "sha256": "510031ca10c47298acf76b28b29bfc68f41eac1b538a45f6304ad7eb85f523ac",
+      "bytes": 36008
+    },
+    {
+      "file": "screenshots/returned_title.png",
+      "sha256": "6c73b9d99b7d0c45555726bfce90f719a63ad6b6accb49c1695a63e25c9569e4",
+      "bytes": 32711
+    },
+    {
+      "file": "screenshots/status.png",
+      "sha256": "f13cda4ec8aabf459fefd74c18b6ba26e932eba1d5cd29964a5010f68fd40484",
+      "bytes": 15178
+    },
+    {
+      "file": "original/receipt.json",
+      "sha256": "e7e57a0ffa1401d80176b88cd89b5095b55852d52151c554dc5faf8d9f11dfd1",
+      "bytes": 3412
+    },
+    {
+      "file": "original/reference.json",
+      "sha256": "02a61f3704bdf1b7cb5b0d69417225d4a8cbffdc83f3ccf3c13d65ad09df1237",
+      "bytes": 1943
+    },
+    {
+      "file": "original/godot.log",
+      "sha256": "9d572e4bd4cdb20ae3c7e1ebd516096a79590875e070e096087aa3f44de85a75",
+      "bytes": 268
+    },
+    {
+      "file": "build-receipt.json",
+      "sha256": "d0a977cd459e1ff5f6d2c38a5c77b60faf11322df98ce94ca6d93aa1fa234cf3",
+      "bytes": 758
+    },
+    {
+      "file": "console-artifacts.json",
+      "sha256": "d3ed73034fda4baeab185a7f5a287965c95d2955cd3b870e3d80c99b0c49d632",
+      "bytes": 997
+    },
+    {
+      "file": "full-ci.json",
+      "sha256": "ff106b4a6a78dabaadf420d51848892cfa7124a567a032106c7bd303b015c26c",
+      "bytes": 13879
+    },
+    {
+      "file": "full-ci-jobs.json",
+      "sha256": "ebf7d0ad056e81ba90bbe1b85872ee6d453369beb03ef244bdeba8a64751d41c",
+      "bytes": 14133
+    },
+    {
+      "file": "cleanup/cleanup-old.json",
+      "sha256": "fe2506a35d54aeec9e9c9eebb493d27cd5c990313509500d01fb3c09b47b7973",
+      "bytes": 1106
+    },
+    {
+      "file": "cleanup/cleanup-packages.json",
+      "sha256": "4f09d40268e415452cf3b4ad888e9c80ad5188ae72c451c2a0b461a4680b4d01",
+      "bytes": 589
+    },
+    {
+      "file": "cleanup/cleanup-host.json",
+      "sha256": "4b4340a2de6ce2cc9f5debf92cb2fb51ef38e5a94b89d6a8d691a4eea378ea38",
+      "bytes": 8505
+    }
+  ],
+  "unverified": [
+    "CIA installation",
+    "Old/New 3DS hardware",
+    "perceptual audio quality",
+    "unported content and party mechanics",
+    "Full GCC CI still in progress; see its exact completed/pending steps. PR remains draft"
+  ],
+  "recorded_at_utc": "2026-10-16T12:33:35.288074+00:00"
+}

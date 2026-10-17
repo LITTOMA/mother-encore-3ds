@@ -127,6 +127,7 @@ public:
     bool sprite_visible(uint32_t i)const;
     bool openable_open(uint32_t i)const{return i<openables_.size()&&openables_[i].open;}
     Vec2 camera_origin(Vec2 player,Vec2 viewport)const;
+    bool resize_viewport(Vec2 viewport){if(!world.resize_field_viewport(viewport))return false;viewport_=viewport;return true;}
     std::vector<FieldNoticeView> nearby_notices(Vec2 center,float radius,uint32_t limit)const;
     uint32_t boundary_index()const{return boundary_;}
     std::vector<std::string_view> take_sounds(){auto out=std::move(sounds_);sounds_.clear();return out;}

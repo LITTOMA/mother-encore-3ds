@@ -16,7 +16,7 @@
 
 `tools/run_field_menu_reference.py` 提取原版 Pause/PSI 方法，在真实 Godot 3.6.2 中运行。原版技能 YAML、技能筛选、空选择、关闭/返回及零 PP 心灵感应调度均有明确来源；AnimationPlayer 使用受检时长。字符/世界/音频服务及没有比较的布局采用列明的适配器。这不是原版完整游戏自动通关。
 
-`tools/run_emulator_semantics.py` 通过回环 TCP JSON-RPC 控制 CDB，检查只读 `EncoreSemanticProbe` ABI v3（716 字节）。记录有界且没有指针，不消费 RNG、没有存档 IO 或行为入口。奇数提交序号、截断、旧/未知版本、文本溢出和非有限位置明确拒绝。当前字段覆盖菜单、开场场景、玩家、HP/PP、库存计数、战斗阶段 / 敌人 HP、门开锁位图以及实际 NDSP 音乐播放、采样位置和缓冲序号。没有宣称已经观察全部旗标、物品 UID、敌人和剧情事件。
+`tools/run_emulator_semantics.py` 通过回环 TCP JSON-RPC 控制 CDB，检查只读 `EncoreSemanticProbe` ABI v7（844 字节），解码器仍接受 v6（764 字节）。v7 保留 v6 的字段和错误文本偏移，在末尾追加子菜单、库存内容/UID、设置/绑定的稳定摘要及派生属性。记录有界且没有指针，不消费 RNG、没有存档 IO 或行为入口。奇数提交序号、截断、未知/尺寸不符的版本、文本溢出和非有限位置明确拒绝。另有开场场景、玩家、HP/PP、战斗阶段 / 敌人 HP、门/礼物状态，以及实际 NDSP 音乐播放、采样位置和缓冲序号。尚未覆盖全部旗标、敌人和剧情事件。
 
 测试场景 `tests/emulator/opening-menu.json` 从正常标题入口完成命名、两段原版开场跳过和房屋菜单操作，包含 START/B 开关、摇杆选择 PSI、1 级空列表确认和 SELECT 保护。命名取消保留原版 0.5 秒保护，不把早于该边界的输入当成失败。最终结果对照独立 Godot 参考；测试计时和 DSP 游标不参与跨次幂等比较。音频模式另检查标题 Mother Earth，以及沿正常移动触发 Lamp 第 2 段和进入战斗后的 Poltergeist 身份、实际 DSP 播放及采样/缓冲持续变化，不能用已排队声音代替实际消费。
 
@@ -55,3 +55,17 @@ Mick 领取钥匙、已学会 PSI 的目标与对白、地下室钥匙使用、�
 ABI v3 增加战斗阶段、敌人HP和门开锁位图，仍只读。新增模拟器路线按正常按键完成 Lamp 战斗并接近地下室门；有界重复按键最多64次，位置区间严格校验且按单帧采样。原版UID随机化依赖真实时钟，因此新增战斗路线比较剧情/菜单/关键物品/开锁结果，实际HP和行走坐标仍记录，并按检查点范围验证，不声称RNG输出一致。
 
 新增真实构建 cfc9b24 通过带DSP的两次独立冷启动，每次52检查点；范围扩展至Lamp正常战斗胜利、真实行走到地下室门、无钥匙对白及恢复行走。剧情/菜单/关键物品/开锁结果一致，实际行走坐标保留记录并按区间验收。凭据位于build/emulator-regression/basement-route-1；两个临时profile均删除。未宣称已经通过模拟器领取KeyBasement后的正向链，原版和共享核心正向结果见BASEMENT_KEY_DOOR.md。
+
+## START 六项菜单
+
+`tools/run_field_menus_reference.py` 在官方 Godot 3.6.2 中执行抽取的原版 Inventory 排序、手动交换、健康角色使用喷雾、耗尽和丢弃方法，以及 Options 的 11 档音量转换。物品数据来自固定 YAML；物品身份、角色状态和全局服务采用凭据中列明的适配器。枚举/属性常量经源码核对后替换为实际值，不复制原版完整场景，不宣称原版 UI 或声音已经验收。
+
+`encore_emulator_field_menus_fixture` CMake 目标生成经过完整原生会话校验、编码、解码并再次校验的人工检查点：2 级 Ninten、当前已接纳的三件普通道具和五件关键道具，以及对应取得/技能旗标。这不是实际通关历史。构建目标后，在同一份源码与资源环境生成携带 SHA 的清单：
+
+```sh
+python tools/prepare_field_menus_fixture.py --producer build/host/encore_emulator_field_menus_fixture --receipt <genuine-build-receipt.json> --out build/field-menus/fixture-unique
+```
+
+生成器会拒绝与真实构建提交不同的核心、平台、内容、资源或检查点来源。Windows 运行 `tools/run_emulator_semantics.py` 时传入 `--scenario tests/emulator/field-menus.json --save-fixture <fixture-unique/fixture.json>`，并使用上述新原版参考的 `reference.json`。场景经普通 LOAD 和真实 HID 输入，覆盖六项入口、道具剂量/UID、PSI 目标取消与回复、装备、技能书、地图、选项、重绑/重置和返回标题。比较稳定结果；绘制仍单独审图，退出程序的 host 清理由共享核心请求测试和真实交叉构建另行验证。
+
+此路线还从地下室正常出门，走出门口转场后再验证室外 START、地图和显示范围恢复。跨冷启动的真实帧输入会在松开方向键时产生少量停步差异：首次两次完整运行仅玩家坐标相差 1～3 像素，其余投影字段全部相同。场景显式设置 `position_tolerance: 4`，仅跨次玩家坐标允许至多 4 像素差异；缺省仍为 0，超过 4、未知字段、错误类型、HP/PP 或 UID 等状态变化均拒绝。行走检查点另有坐标区间；单次 `same_as` 和显示切换比较仍精确检查位置，没有放宽游戏逻辑或来源期望。原始坐标与接受的跨次差异保留在凭据中。

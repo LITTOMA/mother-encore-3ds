@@ -52,14 +52,15 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
    if(at==data.storage_policies().size())return fail(e,"Native session unknown storage item");
    const auto&p=data.storage_policies()[at];uint32_t definition=item_no_index;
    for(uint32_t j=0;j<items.count(ItemSection::Definitions);++j)if(items.string(items.definition(j).source)==item.item_id){if(definition!=item_no_index)return fail(e,"Native session ambiguous storage definition");definition=j;}
-   if(definition==item_no_index||item.doses!=p.doses||++counts[at]>p.total_count||(stored&&item.equipped))return fail(e,"Native session storage doses/count/equipment rejected");
+   bool dose_ok=item.doses==p.doses;for(const auto&rule:data.field_items())if(rule.item_id==item.item_id&&rule.consume)dose_ok=item.doses>=1&&item.doses<=rule.doses;
+   if(definition==item_no_index||!dose_ok||++counts[at]>p.total_count||(stored&&item.equipped))return fail(e,"Native session storage doses/count/equipment rejected");
    if(item.equipped&&(!(items.definition(definition).flags&uint32_t(ItemDefinitionFlag::Equipment))||std::all_of(p.boosts.begin(),p.boosts.end(),[](int32_t n){return n==0;})))return fail(e,"Native session unsupported storage equipment");
    if(!p.required){auto a=std::find_if(data.acquisitions().begin(),data.acquisitions().end(),[&](const NativeSessionAcquisition&a){return a.item_id==item.item_id;});if(a==data.acquisitions().end())return fail(e,"Native session storage acquisition binding missing");bool flag=false;for(auto&f:(a->flag_policy==2?s.object_flags:s.flags))if(f.id==a->flag_id)flag=f.value;if(!flag)return fail(e,"Native session storage acquisition flag rejected");}
    return true;
   };
   for(auto&i:s.characters[0].inventory)if(!check(i,false))return false;
   for(auto&i:s.storage)if(!check(i,true))return false;
-  for(size_t i=0;i<counts.size();++i)if(data.storage_policies()[i].required&&counts[i]!=data.storage_policies()[i].total_count)return fail(e,"Native session required item conservation rejected");
+  for(size_t i=0;i<counts.size();++i){bool loss=false;for(const auto&rule:data.field_items())if(rule.item_id==data.storage_policies()[i].item_id)loss=rule.drop||rule.consume;if(data.storage_policies()[i].required&&!loss&&counts[i]!=data.storage_policies()[i].total_count)return fail(e,"Native session required item conservation rejected");}
   return true;
  }
  const auto&inventory=s.characters[0].inventory;const auto&initial=data.defaults().characters[0].inventory;
@@ -83,7 +84,7 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
 bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>session_save_max_bytes)return fail(e,"Native session pack size rejected");
  const auto schema=integer(p+8),capability=integer(p+20);
- if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>8||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
+ if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>9||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
  if(crc(p+24,n-24)!=integer(p+16))return fail(e,"Native session CRC mismatch");
  NativeSessionData d;Reader r{p+24,n-24};d.compatibility_={r.u32(),r.u32(),r.u32()};
  const auto template_size=r.count(uint32_t(session_save_max_bytes));
@@ -169,6 +170,15 @@ bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
   for(uint32_t i=0;i<count;++i){auto skill=r.text();if(!skills.count(skill)||!order.insert(skill).second)return fail(e,"Native session skill order rejected");d.skill_order_.push_back(std::move(skill));}
   if(order!=skills)return fail(e,"Native session skill order coverage rejected");
  }
+ if(schema>=9){
+  const auto count=r.count(128);std::set<std::string>identities;
+  for(uint32_t i=0;i<count;++i){NativeSessionFieldItem rule;rule.item_id=r.text();rule.doses=r.u32();auto drop=r.u32(),consume=r.u32();rule.drop=drop!=0;rule.consume=consume!=0;
+   auto policy=std::find_if(d.storage_policies_.begin(),d.storage_policies_.end(),[&](const NativeSessionStoragePolicy&p){return p.item_id==rule.item_id;});
+   if(!identities.insert(rule.item_id).second||policy==d.storage_policies_.end()||!rule.doses||rule.doses!=policy->doses||drop>1||consume>1)return fail(e,"Native session field item policy rejected");
+   d.field_items_.push_back(std::move(rule));
+  }
+  auto toggle=r.u32();if(toggle>1||d.field_items_.size()!=d.storage_policies_.size())return fail(e,"Native session field policy coverage rejected");d.description_toggle_=toggle!=0;
+ }
  if(!r.ok||r.n||d.text_speeds_.empty()||d.menu_flavors_.empty()||d.button_prompts_.empty()||!d.supports_settings(d.defaults_.settings))return fail(e,"Native session malformed/trailing settings payload");
  const auto*initial=level_row(d,d.defaults_.characters[0].level);
  const auto&c=d.defaults_.characters[0];if(!initial||c.experience!=initial->minimum_exp||c.hp>initial->stats[0]||c.pp>initial->stats[1]||c.learned_skills!=initial->skills)return fail(e,"Native session initial character disagrees with source rows");
@@ -181,7 +191,7 @@ bool NativeSessionData::load_file(const char*path,std::string&e){
 }
 
 bool NativeSessionData::supports_settings(const SessionSettings&s)const{
- return std::find(text_speeds_.begin(),text_speeds_.end(),s.text_speed)!=text_speeds_.end()&&contains(menu_flavors_,s.menu_flavor)&&contains(button_prompts_,s.button_prompts)&&s.description==defaults_.settings.description;
+ return std::find(text_speeds_.begin(),text_speeds_.end(),s.text_speed)!=text_speeds_.end()&&contains(menu_flavors_,s.menu_flavor)&&contains(button_prompts_,s.button_prompts)&&(description_toggle_||s.description==defaults_.settings.description);
 }
 
 bool validate_native_session_snapshot(const NativeSessionData&data,RoomView room,HouseView house,RoundView round,ItemView items,const SessionSnapshot&s,std::string&e){

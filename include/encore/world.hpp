@@ -84,6 +84,7 @@ public:
     OpeningScreenOverlay screen_overlay()const{return overlay_;}
     bool pause_for_house();
     bool unpause_from_house();
+    bool resize_field_viewport(Vec2 viewport);
     bool set_house_direction(Vec2 direction);
     bool warp_same_scene(Vec2 position,Vec2 direction);
     // Scripted step used by mick_bark. Restarts the walk clip only when the pose changes.

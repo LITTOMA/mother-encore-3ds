@@ -1,0 +1,19 @@
+{
+  "removed_bytes": 1204959638,
+  "paths": [
+    "build\\field-menus\\package.zip",
+    "build\\field-menus\\panel-package.zip",
+    "build\\field-menus\\artifact\\3ds\\encore-native\\encore-native.3dsx",
+    "build\\field-menus\\panel-artifact\\3ds\\encore-native\\encore-native.3dsx",
+    "build\\emulator-regression\\field-menus-original-1\\temporary",
+    "build\\emulator-regression\\field-menus-original-2\\temporary",
+    "build\\emulator-regression\\field-menus-original-3\\temporary",
+    "build\\emulator-regression\\field-menus-original-4\\temporary",
+    "build\\emulator-regression\\field-menus-original-5\\temporary",
+    "build\\emulator-regression\\field-menus-original-6\\temporary",
+    "build\\emulator-regression\\field-menus-original-7\\temporary",
+    "build\\emulator-regression\\field-menus-original-8\\temporary",
+    "build\\emulator-regression\\field-menus-original-9\\temporary"
+  ],
+  "retained": "Original logs, source/cross-build receipts, semantic results and screenshots; previous genuine packages remain downloadable from recorded Actions artifacts"
+}

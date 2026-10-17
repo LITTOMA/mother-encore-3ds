@@ -1,0 +1,22 @@
+{
+  "removed_bytes": 630224952,
+  "paths": [
+    {
+      "path": "build\\field-menus\\final-package.zip",
+      "bytes": 356014769
+    },
+    {
+      "path": "build\\field-menus\\final-artifact\\3ds\\encore-native\\encore-native.3dsx",
+      "bytes": 246421828
+    },
+    {
+      "path": "build\\field-menus\\verified-package.zip",
+      "bytes": 27787264
+    },
+    {
+      "path": "build\\field-menus\\artifact-redirect-private.txt",
+      "bytes": 1091
+    }
+  ],
+  "retained": "All logs and build receipts; validated current 64f8855 package and 3DSX are retained for emulator tests"
+}

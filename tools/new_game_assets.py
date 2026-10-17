@@ -277,10 +277,15 @@ def verify(r):
 
 def rebound_session_dependency(recipe,previous,current,current_sha):
  extension=(previous['schema'],current['schema'])==(7,8)
- require(set(previous)==set(current) or (extension and set(current)==set(previous)|{'skill_acquisitions','skill_order'}),'Changed naming session field set')
+ menus=(previous['schema'],current['schema'])==(8,9)
+ require(set(previous)==set(current) or (extension and set(current)==set(previous)|{'skill_acquisitions','skill_order'}) or (menus and set(current)==set(previous)|{'field_items','description_toggle'}),'Changed naming session field set')
  for key in previous:
-  if key not in ('schema','key_acquisitions','acquisitions','storage_policies','mutable_flags','camera_area_ids','dependencies','scope'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
- require(previous['schema']==current['schema'] or (previous['schema'],current['schema']) in ((6,7),(7,8)),'Unreviewed naming session schema migration')
+  if key not in ('schema','key_acquisitions','acquisitions','storage_policies','mutable_flags','camera_area_ids','dependencies','scope','sources'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
+ require(all(current['sources'].get(p)==h for p,h in previous['sources'].items()),'Changed naming session source')
+ require(previous['schema']==current['schema'] or (previous['schema'],current['schema']) in ((6,7),(7,8),(8,9)),'Unreviewed naming session schema migration')
+ if menus:
+  require(current['description_toggle'] is True and len(current['field_items'])==len(current['storage_policies']),'Incomplete field menu session policies')
+  require([p['item_id']for p in current['field_items']]==[p['item_id']for p in current['storage_policies']],'Changed field menu item scope')
  # New game remains byte-identical: only checked future acquisition policies grow.
  if extension:
   require(current['skill_acquisitions']==[dict(skill_id='lifeUpA',flag_id='got_diary')] and current['skill_order']==['strike','splitShot','telepathy','lifeUpA'],'Unreviewed naming story skill scope')

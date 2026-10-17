@@ -27,8 +27,9 @@ struct FieldEquipmentHost {
  std::function<bool(uint32_t,bool,uint32_t,std::array<int32_t,7>&,std::string&)> preview;
  std::function<bool(uint32_t,bool,uint32_t,std::string&)> commit;
  std::function<bool(uint32_t,std::string&,std::string&)> use_skill;
+ std::function<bool(uint32_t,std::string&)> open_command;
 };
-enum class FieldEquipmentPhase:uint8_t {Closed,PauseOpening,Pause,EquipOpening,Slots,Candidates,EquipClosing,PauseClosing,PsiOpening,Psi,PsiFailed,PsiTarget,PsiResult};
+enum class FieldEquipmentPhase:uint8_t {Closed,PauseOpening,Pause,EquipOpening,Slots,Candidates,EquipClosing,PauseClosing,PsiOpening,Psi,PsiFailed,PsiTarget,PsiResult,Submenu};
 enum class FieldEquipmentSound:uint8_t {PauseOpen=1,PauseClose,EquipOpen,EquipClose,Move,Confirm,Restricted,Clear,Equip,Back};
 class FieldEquipmentMenu {
 public:
@@ -36,6 +37,7 @@ public:
  bool open();
  bool input(int x,int y,bool confirm,bool cancel,bool scope=false,bool pause_toggle=false);
  bool idle_frame(double);
+ bool resume_submenu(){if(phase_!=FieldEquipmentPhase::Submenu)return fail("Field submenu resume state rejected");if(!read_snapshot())return false;phase_=FieldEquipmentPhase::Pause;preview_=snapshot_.stats;retarget_cursor(true);return true;}
  bool active()const{return phase_!=FieldEquipmentPhase::Closed;}
  bool visible()const{return active();}
  bool equipment_visible()const;

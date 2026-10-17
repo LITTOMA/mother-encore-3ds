@@ -13,6 +13,8 @@ extern "C" { EncoreSemanticProbe encore_semantic_probe; }
 #include "round_renderer.hpp"
 #include "items_renderer.hpp"
 #include "field_equipment_renderer.hpp"
+#include "field_map_renderer.hpp"
+#include "encore/field_menus.hpp"
 #include "encore/field_equipment_menu.hpp"
 #include "world_effect_renderer.hpp"
 #include "house_renderer.hpp"
@@ -180,6 +182,12 @@ ItemDetailsRenderer item_details_renderer;
 upstream::FieldEquipmentData field_equipment_data;
 upstream::FieldEquipmentMenu field_equipment_menu;
 FieldEquipmentRenderer field_equipment_renderer;
+upstream::FieldMenusData field_menus_data;
+upstream::FieldMenus field_menus;
+upstream::FieldMenuPreferences field_preferences;
+FieldMapRenderer field_map_renderer;
+bool field_quit_requested=false;
+
 encore::ctr::SourceFontRenderer field_counter_font;
 BattleRenderer field_counter_text;
 bool field_equipment_assets_ready=false;
@@ -698,8 +706,10 @@ public:
  bool show_text(std::string_view speaker,std::string_view body,std::string&e)override{
   std::string out(body);
   const std::string lead=session_state.characters.empty()?std::string("Ninten"):session_state.characters[0].nickname;
-  // CTR A confirms, B runs, and START opens the menu. Nintendo-style Start is "+".
-  if(!upstream::resolve_dialogue_tags(out,lead,"A","B","+",e,session_state.favorite_food,uint32_t(field_equipment_data.view().parameter(locale_selection.code()=="zh_Hans_CN"?upstream::FieldParameter::PsiFoodLimitZh:upstream::FieldParameter::PsiFoodLimitEn))))return false;
+  // Expand source hints using the current checked native button bindings.
+  if(!field_menus_data.supports(field_preferences)){e="World dialogue controls are not admitted";return false;}
+  const auto button=[&](size_t action)->std::string_view{const auto at=std::find(field_menus_data.logical_buttons.begin(),field_menus_data.logical_buttons.end(),field_preferences.buttons[action]);return field_menus_data.button_names[size_t(at-field_menus_data.logical_buttons.begin())];};
+  if(!upstream::resolve_dialogue_tags(out,lead,button(0),button(4),button(2),e,session_state.favorite_food,uint32_t(field_equipment_data.view().parameter(locale_selection.code()=="zh_Hans_CN"?upstream::FieldParameter::PsiFoodLimitZh:upstream::FieldParameter::PsiFoodLimitEn))))return false;
   if(!gameplay_scene||!gameplay_scene->presentation.present_plain(speaker,out)){e=gameplay_scene?gameplay_scene->presentation.error():"World dialogue box is not ready";return false;}
   e.clear();return true;
  }
@@ -886,9 +896,9 @@ bool open_storage_menu(std::string&error){
         LoadingScope loading("Preparing storage",3);
         if(!loading.step([&]{return storage_renderer.load(storage_data.view(),items_data.view(),"romfs:/",error);},"storage-textures")||
            !loading.step([&]{return load_introduction(error)&&storage_counter_font.load_catalog_at_safe_boundary((std::string("romfs:/")+introduction_data.font_catalog).c_str(),"romfs:/fonts/introduction/",error)&&storage_counter_font.select_font_at_safe_boundary(storage_data.view().binding(StorageBinding::CounterFont),error)&&storage_counter_font.admit_selected_font(error);},"storage-counter-font")||
-           !loading.step([&]{return storage_menu.initialize(storage_data.view(),session_inventory,session_storage,session_rewards,locale_selection.code()=="zh_Hans_CN");},"storage-model")||!loading.finish())return false;
+           !loading.step([&]{return storage_menu.initialize(storage_data.view(),session_inventory,session_storage,session_rewards,locale_selection.code()=="zh_Hans_CN",[](const upstream::ItemInstance&i,uint32_t maximum){const auto items=items_data.view();if(i.definition>=items.count(upstream::ItemSection::Definitions))return false;const auto*p=field_menus_data.item(items.string(items.definition(i.definition).source));return p&&p->action==2&&p->doses==maximum&&i.doses>=1&&i.doses<=maximum;});},"storage-model")||!loading.finish())return false;
         storage_counter_text.attach_source_font(&storage_counter_font);storage_assets_ready=true;
-    }else if(!storage_menu.initialize(storage_data.view(),session_inventory,session_storage,session_rewards,locale_selection.code()=="zh_Hans_CN")){error=storage_menu.error();return false;}
+    }else if(!storage_menu.initialize(storage_data.view(),session_inventory,session_storage,session_rewards,locale_selection.code()=="zh_Hans_CN",[](const upstream::ItemInstance&i,uint32_t maximum){const auto items=items_data.view();if(i.definition>=items.count(upstream::ItemSection::Definitions))return false;const auto*p=field_menus_data.item(items.string(items.definition(i.definition).source));return p&&p->action==2&&p->doses==maximum&&i.doses>=1&&i.doses<=maximum;})){error=storage_menu.error();return false;}
     storage_renderer.set_locale(&locale_selection);
     if(!storage_menu.open()){error=storage_menu.error();return false;}return true;
 }
@@ -996,19 +1006,86 @@ bool use_field_psi(std::string&error,uint32_t selected=UINT32_MAX){
     if(!field_scene->try_telepathy({view.parameter(FieldParameter::PsiRayX),view.parameter(FieldParameter::PsiRayY)},view.parameter(FieldParameter::PsiRayLength),error))return false;
     session_rewards.pp-=cost;field_equipment_status.clear();return true;
 }
+bool apply_field_volume(const upstream::FieldMenuPreferences&p,std::string&error){
+    if(!field_menus_data.supports(p)){error="Field preferences rejected";return false;}
+    return audio_player.set_user_volume(float(field_menus_data.volume_db[p.volume[0]]),float(field_menus_data.volume_db[p.volume[1]]),float(field_menus_data.volume_db[p.volume[2]]),error);
+}
+bool initialize_field_preferences(std::string&error){
+    if(!field_menus_data.load_file(resource_path(ResourceRole::FieldMenus).c_str(),error)||!field_menus_data.bind_items(items_data.view(),item_details_data.view(),error))return false;
+    field_preferences=field_menus_data.defaults;
+    const auto status=upstream::read_field_preferences(field_menus_data,"sdmc:/3ds/encore-native/menus.encprefs",field_preferences,error);
+    if(status==upstream::FieldPreferenceRead::Error){field_equipment_status=error;error.clear();}
+    const auto size=field_menus_data.display_sizes[field_preferences.display];view_width=size[0];view_height=size[1];
+    return true;
+}
+bool initialize_field_menus(std::string&error){
+    using namespace upstream;FieldMenusHost host;
+    host.read=[](FieldMenusState&out,std::string&e){
+        FieldMenusState next;if(!collect_session_snapshot(next.session,e,&active_overworld()))return false;
+        next.stats={{session_rewards.maxhp,session_rewards.maxpp,session_rewards.offense,session_rewards.defense,session_rewards.speed,session_rewards.iq,session_rewards.guts}};
+        for(const auto&row:native_session_data.levels())if(row.level==session_rewards.level)next.next_exp=row.next_exp;
+        next.preferences=field_preferences;next.chinese=locale_selection.code()=="zh_Hans_CN";next.in_field=in_field();const auto position=active_overworld().player().position;next.world_x=position.x;next.world_y=position.y;out=std::move(next);return true;
+    };
+    host.equip=[](uint32_t slot,bool none,uint32_t uid,std::string&e){PreparedFieldEquipment candidate;if(!prepare_field_equipment(slot,none,uid,candidate,e))return false;session_inventory=std::move(candidate.inventory);session_rewards=std::move(candidate.stats);return true;};
+    host.locale=[](std::string_view code,std::string&e){if(!select_native_locale(code,true,e))return false;if(in_field())field_scene->mick().set_locale(locale_selection.code());return true;};
+    host.commit=[](const FieldMenusState&before,const FieldMenusChanges&next,std::string&e){
+        if(!field_menus_data.supports(next.preferences)){e="Field menu candidate rejected";return false;}
+        SessionSnapshot current,candidate;if(!collect_session_snapshot(current,e,&active_overworld())||!merge_field_menu_session(before,next,current,candidate,e))return false;auto character=candidate.characters[0];const auto items=items_data.view();std::vector<ItemInstance>instances;
+        for(const auto&i:character.inventory){uint32_t definition=item_no_index;for(uint32_t j=0;j<items.count(ItemSection::Definitions);++j)if(items.string(items.definition(j).source)==i.item_id)definition=j;
+            if(definition==item_no_index||i.doses<=0||i.doses>65535){e="Field item identity/doses rejected";return false;}
+            instances.push_back({i.uid,definition,uint32_t(i.equipped),uint32_t(i.doses)});
+        }
+        InventoryState inventory;if(!inventory.restore(items,instances,e))return false;
+        std::array<int32_t,7>derived{};if(!native_session_derived_stats(native_session_data,items,character,derived,e))return false;
+        auto stats=session_rewards;stats.maxhp=derived[0];stats.maxpp=derived[1];stats.offense=derived[2];stats.defense=derived[3];stats.speed=derived[4];stats.iq=derived[5];stats.guts=derived[6];stats.hp=std::min(stats.hp,stats.maxhp);stats.pp=std::min(stats.pp,stats.maxpp);
+        NativeSnapshotInput input;input.state=std::move(candidate);input.stats=&stats;input.inventory=&inventory;input.storage=&session_storage;
+        SessionSnapshot checked;if(!build_native_session_snapshot(native_session_data,opening_data.view(),house_data.view(),round_data.view(),items,input,checked,e))return false;
+        const bool prefs=next.preferences.volume!=field_preferences.volume||next.preferences.display!=field_preferences.display||next.preferences.buttons!=field_preferences.buttons;
+        const bool resized=next.preferences.display!=field_preferences.display;const auto size=field_menus_data.display_sizes[next.preferences.display];
+        if(resized&&(active_overworld().cutscene_camera().follows_actor()||active_overworld().cutscene_camera().is_moving())){e="Display resize needs a resting player camera";return false;}
+        // Prepared encounter surfaces belong to a viewport and residency epoch.
+        // Clearing only their path re-reserved an already published ticket and
+        // left a permanent error that blocked the next START. Retire the whole
+        // preparation owner while retaining the checked UI font; the ordinary
+        // background pump admits surfaces for the selected size on later frames.
+        if(resized){wait_for_gpu_idle();if(!load_ui_font_only(e))return false;}
+        if(prefs){::mkdir("sdmc:/3ds",0777);::mkdir("sdmc:/3ds/encore-native",0777);if(!write_field_preferences(field_menus_data,"sdmc:/3ds/encore-native/menus.encprefs",next.preferences,e))return false;}
+        if(resized){const Vec2 viewport{float(size[0]),float(size[1])};if(!(in_field()?field_scene->resize_viewport(viewport):gameplay_scene->world.resize_field_viewport(viewport))){e="Field display camera resize rejected";return false;}view_width=size[0];view_height=size[1];world_effect_assets_ready=false;}
+        wait_for_gpu_idle();const auto flavor=startup_settings_data.flavor_index(checked.settings.menu_flavor);
+        if(flavor<0||!ctr::loading_menu_flavor_select(uint32_t(flavor))){e="Field menu flavor rejected";return false;}
+        if(!apply_field_volume(next.preferences,e))return false;
+        session_state=std::move(checked);session_inventory=std::move(inventory);session_rewards=std::move(stats);field_preferences=next.preferences;
+        if(!gameplay_scene->presentation.set_text_speed(session_state.settings.text_speed)){e="Field text speed rejected";return false;}
+        e.clear();return true;
+    };
+    return field_menus.initialize(field_menus_data,startup_settings_data,std::move(host),error);
+}
+bool draw_field_menus(){
+    if(field_menus.active()){
+        if(field_menus.phase()==upstream::FieldMenusPhase::Map)return field_map_renderer.draw(field_menus,battle_renderer,float(view_width),float(view_height),view_x(),view_y());
+        return field_equipment_renderer.draw_submenu(field_menus,battle_renderer,float(view_width),float(view_height),view_x(),view_y());
+    }
+    return field_equipment_renderer.draw(field_equipment_menu,battle_renderer,field_counter_text,float(view_width),float(view_height),view_x(),view_y());
+}
 bool open_field_equipment(std::string&error){
     using namespace upstream;
     if(!session_state_ready||!session_rewards_valid){error="Field menu needs a prepared session";return false;}
     const auto view=field_equipment_data.view();
     if(!field_equipment_assets_ready){
-        LoadingScope loading("Preparing equipment menu",3);
+        LoadingScope loading("Preparing equipment menu",4);
         if(!loading.step([&]{return field_equipment_renderer.load(view,items_data.view(),"romfs:/",error);},"equipment-textures")||
            !loading.step([&]{return load_introduction(error)&&field_counter_font.load_catalog_at_safe_boundary((std::string("romfs:/")+introduction_data.font_catalog).c_str(),"romfs:/fonts/introduction/",error)&&field_counter_font.select_font_at_safe_boundary(view.binding(FieldBinding::NumberFont),error)&&field_counter_font.admit_selected_font(error);},"equipment-number-font")||
+           !loading.step([&]{return item_details_renderer.ready()||item_details_renderer.load(item_details_data.view(),items_data.view(),"romfs:/",error);},"item-details-texture")||
            !loading.step([&]{for(uint32_t i=uint32_t(FieldBinding::PauseOpenSound);i<=uint32_t(FieldBinding::BackSound);++i)if(!prepare_source_audio(std::string(view.binding(FieldBinding(i))),error))return false;for(uint32_t i=0;i<view.psi_skill_count();++i)if(!view.psi_skill(i).sound.empty()&&!prepare_source_audio(std::string(view.psi_skill(i).sound),error))return false;return true;},"equipment-sounds")||!loading.finish())return false;
         field_counter_text.attach_source_font(&field_counter_font);field_equipment_assets_ready=true;
     }
     field_equipment_renderer.set_locale(&locale_selection);field_equipment_renderer.set_details(&item_details_renderer);
+    if(!initialize_field_menus(error))return false;
     FieldEquipmentHost host;
+    host.open_command=[](uint32_t command,std::string&e){if(!field_menus.open(command,e))return false;
+        if(command==5&&!field_map_renderer.ready()){LoadingScope loading("Preparing map",1);if(!loading.step([&]{return field_map_renderer.load(field_menus_data,e);},"field-map-upload")||!loading.finish()){field_menus=FieldMenus{};return false;}}
+        return true;
+    };
     host.read=[view](FieldEquipmentSnapshot&out,std::string&e){
         SessionSnapshot snapshot;if(!collect_session_snapshot(snapshot,e,&active_overworld()))return false;
         uint32_t character_index=0;if(!field_equipment_character(view,snapshot,character_index,e))return false;
@@ -1033,7 +1110,7 @@ bool open_field_equipment(std::string&error){
         session_rewards.hp=result.hp;session_rewards.pp=result.pp;battle_random=random;e.clear();return true;
     };
     if(!field_equipment_menu.initialize(view,std::move(host),locale_selection.code()=="zh_Hans_CN")||!field_equipment_menu.open()){error=field_equipment_menu.error();return false;}
-    field_equipment_status.clear();return true;
+    item_details_renderer.set_nickname(field_equipment_menu.snapshot().nickname);item_details_renderer.set_locale(locale_selection.code());field_equipment_status.clear();return true;
 }
 
 bool read_prepared_slot(uint32_t slot,upstream::SessionSnapshot&snapshot,upstream::PreparedSessionRestore&prepared,std::string&error){
@@ -1471,7 +1548,7 @@ bool load_house(std::string& error){
     room_draw_items.reserve(size_t(room.overlay_count())+room.actor_instance_count()+32);
     return true;
 }
-void free_house(){cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();region_music.shutdown();audio_player.shutdown();house_renderer.free();present_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();field_renderer.free();field_actor.free();release_mick_graphics();field_scene.reset();}
+void free_house(){cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();field_map_renderer.free();field_menus=upstream::FieldMenus{};field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();region_music.shutdown();audio_player.shutdown();house_renderer.free();present_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();field_renderer.free();field_actor.free();release_mick_graphics();field_scene.reset();}
 void text(unsigned index,float x,float y,float scale,const std::string& value,u32 color=ink,float width=380){
     auto& slot=debug_text[index];
     if(!slot.ready||slot.value!=value){
@@ -1722,6 +1799,19 @@ void publish_semantic_probe(){
     p.level=session_rewards_valid?session_rewards.level:0;p.hp=session_rewards_valid?uint32_t(session_rewards.hp):0;p.pp=session_rewards_valid?uint32_t(session_rewards.pp):0;
     p.experience=session_rewards_valid?session_rewards.experience:0;
     p.inventory_count=session_inventory.size();p.key_count=uint32_t(session_state.key_items.size());
+    p.submenu_phase=uint32_t(field_menus.phase());p.submenu_selection=field_menus.selection();p.submenu_keys=field_menus.key_inventory();p.submenu_count=p.submenu_keys?p.key_count:p.inventory_count;
+    // Stable wire projections, never object representations or game mutations.
+    auto hash_word=[](uint32_t&h,uint64_t v){for(unsigned i=0;i<8;++i){h^=uint8_t(v>>(i*8));h*=16777619u;}};
+    auto hash_text=[](uint32_t&h,std::string_view v){for(unsigned char c:v){h^=c;h*=16777619u;}h^=0;h*=16777619u;};
+    p.menu_inventory_hash=p.menu_key_hash=p.menu_uid_hash=p.menu_key_uid_hash=p.menu_settings_hash=p.menu_controls_hash=2166136261u;
+    const auto items=items_data.view();for(const auto&i:session_inventory.instances()){hash_text(p.menu_inventory_hash,items.string(items.definition(i.definition).source));hash_word(p.menu_inventory_hash,i.doses);hash_word(p.menu_inventory_hash,i.equipped);hash_word(p.menu_uid_hash,i.id);}
+    for(const auto&i:session_state.key_items){hash_text(p.menu_key_hash,i.item_id);hash_word(p.menu_key_hash,uint64_t(i.doses));hash_word(p.menu_key_hash,i.equipped);hash_word(p.menu_key_uid_hash,i.uid);}
+    const auto&setting=session_state.settings;uint64_t speed=0;std::memcpy(&speed,&setting.text_speed,sizeof speed);hash_word(p.menu_settings_hash,speed);hash_text(p.menu_settings_hash,setting.menu_flavor);hash_text(p.menu_settings_hash,setting.button_prompts);hash_word(p.menu_settings_hash,setting.description);
+    for(auto button:field_preferences.buttons)hash_word(p.menu_controls_hash,button);
+    p.menu_master=field_preferences.volume[0];p.menu_music=field_preferences.volume[1];p.menu_sfx=field_preferences.volume[2];p.menu_display=field_preferences.display;
+    p.menu_maxhp=session_rewards_valid?uint32_t(session_rewards.maxhp):0;p.menu_maxpp=session_rewards_valid?uint32_t(session_rewards.maxpp):0;p.menu_offense=session_rewards_valid?uint32_t(session_rewards.offense):0;p.menu_defense=session_rewards_valid?uint32_t(session_rewards.defense):0;
+    p.menu_map_x=uint32_t(field_menus.map_x());p.menu_map_y=uint32_t(field_menus.map_y());
+
     const auto music=audio_player.observe_music();p.audio_available=audio_player.available();p.music_playing=music.playing;p.music_asset=music.asset_id;
     p.dsp_music_playing=audio_player.available()&&ndspChnIsPlaying(0);p.dsp_music_sample_pos=audio_player.available()?ndspChnGetSamplePos(0):0;p.dsp_music_wave_seq=audio_player.available()?ndspChnGetWaveBufSeq(0):0;
     p.psi_learned=field_equipment_menu.active()&&field_equipment_menu.psi_learned();p.intro_scene=introduction.scene_index();p.intro_door=introduction.door_index();
@@ -1784,7 +1874,7 @@ int main(int argc,char** argv){
        !loading.step([&]{return house_data.load_file(resource_path(ResourceRole::House).c_str(),error);},"house-metadata")||
        !loading.step([&]{return items_data.load_file(resource_path(ResourceRole::Items).c_str(),error);},"item-metadata")||
        !loading.step([&]{return item_details_data.load_file(resource_path(ResourceRole::ItemDetails).c_str(),error)&&item_details_data.view().bind_items(items_data.view(),error);},"item-details-metadata")||
-       !loading.step([&]{return field_equipment_data.load_file(resource_path(ResourceRole::FieldEquipment).c_str(),error)&&field_equipment_data.view().bind_items(items_data.view(),error);},"field-equipment-metadata")||
+       !loading.step([&]{return field_equipment_data.load_file(resource_path(ResourceRole::FieldEquipment).c_str(),error)&&field_equipment_data.view().bind_items(items_data.view(),error)&&initialize_field_preferences(error);},"field-equipment-metadata")||
        !loading.step([&]{return initialize_house_interactions(error);},"menus-localization-session")||
        !loading.step([&]{return session_inventory.initialize(items_data.view());},"inventory")||
        !loading.step([&]{return items_menu.initialize(session_inventory);},"item-menu")||
@@ -1796,7 +1886,7 @@ int main(int argc,char** argv){
     if(!loading.step([&]{return native_input_data.load_file(resource_path(ResourceRole::Input).c_str(),error);},"input-metadata")||!loading.step([&]{return native_input.configure(native_input_data,error);},"input-adapter")){
         free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;
     }
-    if(!loading.step([&]{initialize_audio();return true;},"audio-stream-backend")){error="Startup loading plan rejected";free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
+    if(!loading.step([&]{initialize_audio();return apply_field_volume(field_preferences,error);},"audio-stream-backend")){error="Startup loading plan rejected";free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
 
     // One shared stream for mechanics and action presentation. The full original
     // startup/entry random stream is not yet ported; seeded oracle runs explicitly
@@ -1827,7 +1917,7 @@ int main(int argc,char** argv){
     const auto input_context=[&]()->uint32_t{
         if(!gameplay_scene->world.healthy()||!house_error.empty()||!round_error.empty())return 0;
         const bool battle=in_battle();
-        const InputOwner owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase())+(in_field()?64u+uint32_t(field_scene->phase()):0u),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u),uint32_t(field_equipment_menu.phase()),uint32_t(field_choice_ready())}};
+        const InputOwner owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase())+(in_field()?64u+uint32_t(field_scene->phase()):0u),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u),uint32_t(field_equipment_menu.phase())+32*field_menus.owner_token(),uint32_t(field_choice_ready())}};
         if(!have_input_owner||owner!=prior_input_owner){prior_input_owner=owner;have_input_owner=true;if(++input_owner_token==0)++input_owner_token;}
         return input_owner_token;
     };
@@ -1838,7 +1928,7 @@ int main(int argc,char** argv){
         if(input_resume_reset.exchange(false,std::memory_order_relaxed)){
             native_input.reset();menu_navigation.reset();field_choice_navigation.reset();last=osGetTime();accumulator=0;
         }
-        hidScanInput();u32 down=hidKeysDown(),held=hidKeysHeld();
+        hidScanInput();const u32 raw_down=hidKeysDown();u32 down=field_menus_data.remap(raw_down,field_preferences),held=field_menus_data.remap(hidKeysHeld(),field_preferences);
         // START is not a global quit shortcut: UI editing must not discard the
         // pending session. Normal exit is the explicit title-menu request.
         // The destructive reference-view reset is an explicit developer build
@@ -1887,7 +1977,7 @@ int main(int argc,char** argv){
             upstream::WalkInput input;
             input.x=int8_t(input_context()==sampled_context?native_controls.direction.x:0);
             input.y=int8_t(input_context()==sampled_context?native_controls.direction.y:0);
-            input.toggle=(held&KEY_B)!=0;input.paused=!world_input;
+            input.toggle=(held&(KEY_B|field_menus_data.logical_buttons[4]))!=0;input.paused=!world_input;
             if(in_field()){
                 if(field_scene->phase()!=upstream::FieldPhase::Error){
                     bool ok=field_scene->before_physics(input);
@@ -2010,7 +2100,7 @@ int main(int argc,char** argv){
         if(dialogue_choices.active())navigation_context=4;
         if(save_menu.is_open())navigation_context=5;
         if(storage_menu.active()||storage_open_failed)navigation_context=6;
-        if(field_equipment_menu.visible())navigation_context=3000+uint32_t(field_equipment_menu.phase());
+        if(field_equipment_menu.visible())navigation_context=3000+uint32_t(field_equipment_menu.phase())+32*field_menus.owner_token();
         if(continue_menu.is_open()&&!continue_menu.pose().world_visible)navigation_context=1000+uint32_t(continue_menu.phase());
         if(new_game_setup.active())navigation_context=2000+new_game_setup.field_index()+32*uint32_t(new_game_setup.phase());
         const auto navigation=menu_navigation.sample(navigation_context,held_x,held_y,double(elapsed)/1000.0,repeat.x,repeat.y,navigation_context==2||navigation_context>=4);
@@ -2098,7 +2188,25 @@ int main(int argc,char** argv){
                 }else play_source_audio(choice_data.sound(event.sound));
             }
         }
-        if(field_equipment_menu.visible()){
+        if(field_menus.active()){
+            if(!field_equipment_menu.idle_frame(dt))field_equipment_status=field_equipment_menu.error();
+            const bool allowed=field_was_open&&same_input_owner;
+            const auto&buttons=field_menus_data.logical_buttons;
+            const bool confirm=allowed&&((down&buttons[0])||native_controls.confirm_pulse),cancel=allowed&&((down&buttons[1])||(field_menus.phase()==upstream::FieldMenusPhase::Map&&(down&buttons[7]))),scope=allowed&&(down&buttons[3]);
+            const int tab=allowed?((down&buttons[5])?-1:(down&buttons[6])?1:0):0;
+            if(!field_menus.input(allowed?navigation.x:0,allowed?navigation.y:0,confirm,cancel,scope,tab,allowed?raw_down:0,error)||
+               !field_menus.tick_map(allowed?native_controls.direction.x:0,allowed?native_controls.direction.y:0,allowed&&(held&buttons[4]),dt,error))field_equipment_status=error;
+            if(field_menus.phase()==upstream::FieldMenusPhase::Map&&!field_map_renderer.ready()){
+                LoadingScope loading("Preparing map",1);if(!loading.step([&]{return field_map_renderer.load(field_menus_data,error);},"field-map-upload")||!loading.finish()){field_equipment_status=error;field_menus.abort_map();}
+            }
+            for(auto event:field_menus.take_sounds()){const auto binding=upstream::FieldBinding(uint32_t(upstream::FieldBinding::PauseOpenSound)+event-1);if(!play_source_audio(std::string(field_view.binding(binding))))field_equipment_status=audio_status;}
+            const auto exit=field_menus.take_exit();
+            if(exit==upstream::FieldMenusExit::Pause){if(!field_equipment_menu.resume_submenu())field_equipment_status=field_equipment_menu.error();}
+            else if(exit==upstream::FieldMenusExit::Quit){field_quit_requested=true;}
+            else if(exit==upstream::FieldMenusExit::Title){field_menus=upstream::FieldMenus{};field_equipment_menu=upstream::FieldEquipmentMenu{};cancel_battle_prewarm();region_music.shutdown();audio_player.reset_scene();if(!open_continue(error))house_error=error;native_input.reset();menu_navigation.reset();field_choice_navigation.reset();accumulator=0;}
+            field_menus.take_changed();
+            const auto preview=field_menus.flavor_preview_index();if(preview>=0&&ctr::loading_menu_flavor_selected()!=uint32_t(preview)){wait_for_gpu_idle();if(!ctr::loading_menu_flavor_select(uint32_t(preview)))field_equipment_status="Field flavor preview rejected";}
+        }else if(field_equipment_menu.visible()){
             const bool allowed=field_was_open&&same_input_owner;
             if(!field_equipment_menu.input(allowed?navigation.x:0,allowed?navigation.y:0,allowed&&((down&uint32_t(field_view.parameter(upstream::FieldParameter::ConfirmMask)))||native_controls.confirm_pulse),allowed&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::CancelMask))),allowed&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::ScopeMask))),allowed&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::OpenMask))))||!field_equipment_menu.idle_frame(dt)){
                 field_equipment_status=field_equipment_menu.error();field_equipment_menu=upstream::FieldEquipmentMenu{};
@@ -2116,6 +2224,7 @@ int main(int argc,char** argv){
                 }
             }
         }
+        if(field_quit_requested)break;
         const bool storage_was_open=storage_menu.active();
         if(gameplay_scene->world.take_storage_request()){
             storage_generation=gameplay_scene->world.story_generation();
@@ -2241,10 +2350,10 @@ int main(int argc,char** argv){
             if(!choice_renderer.draw(dialogue_choices,battle_renderer,view_x()+dialogue_pose.box.x+dialogue_pose.anchor.x*(view_width-canvas.x),view_y()+dialogue_pose.box.y+dialogue_pose.anchor.y*(view_height-canvas.y)))house_error="Dialogue choices renderer rejected pose";
             if(save_menu.is_open()){const auto flavor=save_menu_data.flavor_index(session_state.settings.menu_flavor);C3D_Mtx saved_view;C2D_ViewSave(&saved_view);C2D_ViewTranslate(view_x(),view_y());if(flavor<0||!save_renderer.draw(save_menu,battle_renderer,uint32_t(flavor),float(view_width),float(view_height)))house_error="Save menu renderer rejected checked pose";C2D_ViewRestore(&saved_view);}
             if(storage_menu.active()&&!storage_renderer.draw(storage_menu,battle_renderer,storage_counter_text,float(view_width),float(view_height),view_x(),view_y()))house_error="Storage renderer rejected checked pose";
-            if(field_equipment_menu.visible()&&!field_equipment_renderer.draw(field_equipment_menu,battle_renderer,field_counter_text,float(view_width),float(view_height),view_x(),view_y()))field_equipment_status=field_equipment_renderer.error();
+            if(field_equipment_menu.visible()&&!draw_field_menus())field_equipment_status=field_equipment_renderer.error();
             const auto fade=gameplay_scene->house.fade_color();if(fade.w>0)BattleRenderer::draw_rect(view_x(),view_y(),float(view_width),float(view_height),battle_color(fade));
         }
-        if(draw_field&&!in_battle()&&field_equipment_menu.visible()&&!field_equipment_renderer.draw(field_equipment_menu,battle_renderer,field_counter_text,float(view_width),float(view_height),view_x(),view_y()))field_equipment_status=field_equipment_renderer.error();
+        if(draw_field&&!in_battle()&&field_equipment_menu.visible()&&!draw_field_menus())field_equipment_status=field_equipment_renderer.error();
         if((draw_house||draw_field)&&scene_door.covering()){
             // Circle Focus follows the player's screen position in the current scene.
             float fx=0,fy=0;

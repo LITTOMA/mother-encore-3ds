@@ -29,6 +29,7 @@ bool CutsceneCamera::relocate_player(Vec2 player){
     // camarea position; source Shaker children and offsets continue to exist.
     current_index_=0;player_=player;auto& c=current();c.local={};c.global=player;c.parent=player;c.min_center=min_center_;c.max_center=max_center_;return true;
 }
+bool CutsceneCamera::resize_viewport(Vec2 viewport){if(!initialized_||follows_actor()||is_moving()||!finite(viewport)||viewport.x<=0||viewport.y<=0)return false;viewport_=viewport;return relocate_player(player_);}
 Vec2 CutsceneCamera::center(const Camera& c) const {
     return {std::clamp(c.global.x,c.min_center.x,c.max_center.x)+c.offset.x,std::clamp(c.global.y,c.min_center.y,c.max_center.y)+c.offset.y};
 }

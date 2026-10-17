@@ -90,7 +90,12 @@ class BasementSourceTests(unittest.TestCase):
 
     def test_naming_dependency_extension_keeps_defaults_and_rejects_mutation(self):
         from tools import new_game_assets as n
-        current=copy.deepcopy(self.session);previous=copy.deepcopy(current)
+        # Keep the historical 7 -> 8 story-item extension separate from the
+        # new 8 -> 9 menu policy extension. A schema-7 fixture cannot contain
+        # schema-9 fields, and directly rebinding 7 -> 9 must remain rejected.
+        menus=copy.deepcopy(self.session);current=copy.deepcopy(menus)
+        current['schema']=8;current.pop('field_items');current.pop('description_toggle')
+        previous=copy.deepcopy(current)
         previous['schema']=7
         previous.pop('skill_acquisitions');previous.pop('skill_order')
         previous['acquisitions']=previous['acquisitions'][:-1]
@@ -103,5 +108,10 @@ class BasementSourceTests(unittest.TestCase):
                        lambda r:r['acquisitions'][0].update(doses=99),lambda r:r.update(unreviewed=True)):
             bad=copy.deepcopy(current);mutate(bad)
             with self.subTest(mutate=mutate),self.assertRaises(ValueError):n.rebound_session_dependency(recipe,previous,bad,'b'*64)
+        self.assertEqual(n.rebound_session_dependency(recipe,current,menus,'c'*64)['dependencies'][binding['session_ir']],'c'*64)
+        for mutate in (lambda r:r['defaults'].update(position_x=999),lambda r:r['levels'][0]['stats'].__setitem__(0,999),lambda r:r.update(description_toggle=False),lambda r:r['field_items'].pop(),lambda r:r['field_items'][0].update(item_id='unknown'),lambda r:r.update(unreviewed=True)):
+            bad=copy.deepcopy(menus);mutate(bad)
+            with self.subTest(mutate=mutate),self.assertRaises(ValueError):n.rebound_session_dependency(recipe,current,bad,'c'*64)
+        with self.assertRaises(ValueError):n.rebound_session_dependency(recipe,previous,menus,'c'*64)
 
 if __name__=='__main__':unittest.main()

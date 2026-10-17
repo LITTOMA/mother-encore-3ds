@@ -26,9 +26,11 @@
     "content": "make content passed",
     "python": "91 tests passed; later focused naming migration negative test passed",
     "sanitizers": "17 GCC9 ASan/UBSan host targets passed, including production NDSP adapters with doubles",
-    "windows_make_test": "running; no full pass claimed",
-    "console": "pending push",
-    "emulator": "previous branch runs only; merged build not yet run",
-    "hardware": "unverified"
-  }
+    "windows_make_test": "failed before CTest: MSVC C1083 locale_preference.cpp unistd.h missing; full Linux suite not rerun",
+    "console": "70f0383 genuine 3DSX/CIA and 341 packaged resources passed; Actions 39006430784",
+    "emulator": "Two cold Azahar runs passed with original-input bridge, menu before/after, rewards, audio, five manual dialogues, idempotent trigger revisits and west road; artificial checkpoint",
+    "hardware": "unverified",
+    "probe_runner": "21 tests passed after bounded mid-commit handling; unknown observations still rejected"
+  },
+  "merge_commit": "70f03834cfa0512722ea9027591b3452b2668f06"
 }

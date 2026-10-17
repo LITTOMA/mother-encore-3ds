@@ -1,0 +1,5 @@
+{
+  "status": "failed",
+  "error": "ValueError('Semantic probe producer is mid-commit')",
+  "performance": {}
+}

@@ -46,6 +46,18 @@ class WireBoundary(unittest.TestCase):
         for bad in (raw[:-1],raw+b'\0',bytes(bad_bridge),bytes(bad_menu),wire(version=8,byte_size=1300)+raw[764:],wire(version=10,byte_size=1300)+raw[764:]):
             with self.assertRaises(ValueError):decode(bad)
 
+    def test_frame_step_recovers_only_bounded_mid_commit_samples(self):
+        session=object.__new__(Session);session.client=mock.Mock();session.pid=7
+        session.state=mock.Mock(side_effect=[ValueError('Semantic probe producer is mid-commit'),{'frame':9}])
+        self.assertEqual(session.advance(8),{'frame':9})
+        self.assertEqual([c.args for c in session.client.call.call_args_list],[('frame.step',{'frames':8}),('frame.step',{'frames':1})])
+        session.client.reset_mock();session.state=mock.Mock(side_effect=ValueError('Semantic probe producer is mid-commit'))
+        with self.assertRaises(ValueError):session.advance(8)
+        self.assertEqual(session.client.call.call_count,4)
+        session.client.reset_mock();session.state=mock.Mock(side_effect=ValueError('Unsupported semantic probe identity/version/size'))
+        with self.assertRaises(ValueError):session.advance(8)
+        self.assertEqual(session.client.call.call_count,1)
+
     def test_menu_appendix_preserves_legacy_offsets(self):
         base=wire(version=7,byte_size=WIRE_V7.size);extra={name:0 for name in MENU_FIELDS};extra.update(submenu_phase=12,submenu_selection=3,menu_master=10,menu_inventory_hash=123)
         raw=base+b''.join(int(extra[name]).to_bytes(4,'little')for name in MENU_FIELDS)

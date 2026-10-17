@@ -1,0 +1,20 @@
+title_ready {'frame': 1, 'field_phase': 4294967295, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 4294967295, 'hp': 0, 'enemy_hp': 0, 'experience': 0, 'cash': 0, 'player_x': 520.0, 'player_y': 397.0}
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_podunk_bridge_semantics.py", line 108, in <module>
+    pulse('DOWN');pulse('A');wait(lambda s:s['title_phase']==3);pulse('A');wait(lambda s:s['title_phase']==4);pulse('A');wait(lambda s:s['title_phase']==0 and s['paused']==0)
+                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_podunk_bridge_semantics.py", line 53, in wait
+    s=advance(chunk)
+      ^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_podunk_bridge_semantics.py", line 48, in advance
+    s=session.advance(frames);clean(s);return s
+      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_emulator_semantics.py", line 285, in advance
+    return self.state()
+           ^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_emulator_semantics.py", line 280, in state
+    return decode(self.read())
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\semantic_probe.py", line 42, in decode
+    raise ValueError('Semantic probe producer is mid-commit')
+ValueError: Semantic probe producer is mid-commit

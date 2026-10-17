@@ -69,6 +69,19 @@ try:
    performance[name]=client.call('system.info').get('performance',{})
   finally:client.call('process.pause')
   return samples
+ def menu_smoke(name):
+  # SceneDoor Unpause fires at mostly_out, before the full FadeOut is done.
+  # Wait through that source transition; START is intentionally gated meanwhile.
+  advance(60)
+  before=state();assert before['version']==9 and before['menu_phase']==0 and before['submenu_phase']==0
+  pulse('START');wait(lambda s:s['menu_phase']==2 and s['paused'])
+  pulse('A');wait(lambda s:s['submenu_phase']==1)
+  shown=record(name);capture(name);assert shown['submenu_count']==before['inventory_count']
+  pulse('B');wait(lambda s:s['submenu_phase']==0 and s['menu_phase']==2)
+  pulse('B');wait(lambda s:s['menu_phase']==0 and not s['paused'])
+  after=state()
+  stable=['hp','pp','inventory_count','key_count','experience','cash','bank','earned_cash',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+key for i in range(16)for key in ('definition','doses','equipped')]]
+  assert {k:before[k]for k in stable}=={k:after[k]for k in stable},'Opening Goods mutated session state'
  def travel(button,predicate,limit=1800):
   client.call('input.clear');advance(3)
   client.call('input.set',{'buttons':[button]})
@@ -94,7 +107,7 @@ try:
  while state()['frame']<2000:advance(min(120,2000-state()['frame']))
  pulse('DOWN');pulse('A');wait(lambda s:s['title_phase']==3);pulse('A');wait(lambda s:s['title_phase']==4);pulse('A');wait(lambda s:s['title_phase']==0 and s['paused']==0)
  initial=record('loaded');assert not flag(initial,'beat_dog_bridge')and not flag(initial,'pippis_mom_call');assert any(initial['inventory_'+str(i)+'_definition']==3 and initial['inventory_'+str(i)+'_equipped']for i in range(initial['inventory_count']))
- travel('DOWN',lambda s:s['field_scene']!=0 and s['field_phase']==0 and s['paused']==0);record('outside')
+ travel('DOWN',lambda s:s['field_scene']!=0 and s['field_phase']==0 and s['paused']==0);record('outside');menu_smoke('goods_before_battle')
  travel('DOWN',lambda s:s['player_y']>=60);travel('LEFT',lambda s:s['player_x']<=-32);travel('DOWN',lambda s:s['player_y']>=190);travel('RIGHT',lambda s:s['player_x']>=314);travel('DOWN',lambda s:s['player_y']>=274)
  if state()['player_y']>278:travel('UP',lambda s:s['player_y']<=276)
  travel('RIGHT',lambda s:s['world_stage']!=0);record('bridge_trigger');capture('bridge-trigger')
@@ -116,6 +129,7 @@ try:
  assert all(not s['region_music_paused']and not s['dialogue_music_playing']and s['region_music_track']==battle['region_music_track']for s in samples)
  assert any(s['dsp_region_playing']for s in samples)and len({(s['dsp_region_sample_sum'],s['dsp_region_wave_sum'])for s in samples})>1
  wait(lambda s:s['world_stage']==0 and s['paused']==0,limit=1200)
+ menu_smoke('goods_after_battle')
  travel('RIGHT',lambda s:s['world_stage']!=0);record('mom_trigger');capture('mom-trigger')
  for text in range(1000,1005):
   wait(lambda s:s['world_dialogue']==text and s['dialogue_active']and s['dialogue_finished'],limit=1800)
@@ -137,7 +151,7 @@ try:
  for button,axis,value in [('DOWN','player_y',480),('LEFT','player_x',408),('DOWN','player_y',488),('LEFT','player_x',400),('DOWN','player_y',512),('LEFT','player_x',344),('DOWN','player_y',520),('LEFT','player_x',336),('DOWN','player_y',528),('LEFT','player_x',184),('DOWN','player_y',536),('LEFT','player_x',176),('DOWN','player_y',560),('LEFT','player_x',-560),('UP','player_y',496)]:
   waypoint(button,axis,value)
  frontier=record('west_road');capture('west-road')
- result={'status':'passed','scope':'Artificial post-basement checkpoint, normal LOAD/door/walk/battle/dialogue input; no original pixel or whole-game claim','source_commit':receipt['source_commit'],'clock_fixture':a.clock,'fixture_sha256':r.sha(a.fixture),'emulator_sha256':r.sha(a.emulator),'capabilities':{'memoryWriteEnabled':caps['memoryWriteEnabled'],'inputEnabled':caps['inputEnabled']},'idempotent_trigger_revisit':True,'completion_projection':{k:frontier[k]for k in ['level','experience','cash','bank','earned_cash','key_count',*['story_flag_'+str(i)for i in range(6)]]},'projection':{k:frontier[k]for k in ['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','loot_selected',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+n for i in range(16)for n in ('definition','doses','equipped')]]}}
+ result={'status':'passed','scope':'Artificial post-basement checkpoint, normal LOAD/door/walk/battle/dialogue input; no original pixel or whole-game claim','source_commit':receipt['source_commit'],'clock_fixture':a.clock,'fixture_sha256':r.sha(a.fixture),'emulator_sha256':r.sha(a.emulator),'capabilities':{'memoryWriteEnabled':caps['memoryWriteEnabled'],'inputEnabled':caps['inputEnabled']},'idempotent_trigger_revisit':True,'menu_before_and_after_battle':True,'completion_projection':{k:frontier[k]for k in ['level','experience','cash','bank','earned_cash','key_count',*['story_flag_'+str(i)for i in range(6)]]},'projection':{k:frontier[k]for k in ['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','loot_selected',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+n for i in range(16)for n in ('definition','doses','equipped')]]}}
 except BaseException as exc:
  result['error']=repr(exc)
  if session:

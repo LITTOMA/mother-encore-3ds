@@ -335,3 +335,5 @@ cookies.json
 !reports/pr64-merge-validation/
 !reports/pr64-merge-validation/*.json
 !reports/pr64-merge-validation/*.log
+!reports/pr64-merge-validation/*.png
+!reports/pr64-merge-validation/*.py

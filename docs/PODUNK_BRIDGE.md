@@ -68,4 +68,14 @@ Pippi 名称保留原始来源标签，由已验证命名角色身份、已存�
 
 本次 `make content` 全部通过：47 个类型绑定、4 对遭遇，实际日志见 `reports/pr64-merge-validation/content-final2.log`。稳定资源上的 Python 91 项通过，追加的 v9→v10 命名依赖正 / 负例通过。17 个 GCC 9 ASan/UBSan 主机目标通过，包括 START 菜单、装备、仓库、Session、目录、桥头剧情 / 战斗，以及区域音频暂停与菜单音量共同工作；NDSP 使用替身，不能代表扬声器或真机结果。
 
-旧候选全量 GCC 的失败并非全部测试通过；旧 Clang / 模拟器结果仅属于上文标注的源码。本次 Windows `make test`、新 3DS 构建及合并后的模拟器结果将分别补充，不以历史通过替代。兼容审查、默认存档和命名包 SHA、实际日志见 `reports/pr64-merge-validation/`。
+旧候选全量 GCC 的失败并非全部测试通过；旧 Clang / 模拟器结果仅属于上文标注的源码。本次 Windows `make test -o content` 已实际运行，在共享核心编译阶段因 MSVC 缺少 `locale_preference.cpp` 使用的 `unistd.h` 失败，未进入 CTest。Linux 全量尚未复跑；GCC 针对性 sanitizer 结果不替代全量。本次合并的实际控制台和模拟器结果如下，不以历史通过替代。兼容审查、默认存档和命名包 SHA、实际日志见 `reports/pr64-merge-validation/`。
+
+合并源码 `70f0383` 的真实 ARM / 3DSX / CIA、341 项包内资源和提取核对通过（Actions 39006430784）。只下载模拟器所需 ZIP 成员，ZIP 成员 CRC 和构建收据里的 3DSX SHA-256 均核对通过；未下载完整 ZIP，因此不声称本地核对了整个归档 SHA。后续验收提交只改测试工具、记录和文档，runtime / include / platform / romfs / content 保持该源码与资源。
+
+Azahar 第 3 / 4 次独立冷启动均通过：正常 LOAD → 出门 → START / Goods 打开关闭 → 桥头原版战斗 → 奖励 / BGM 恢复 → 战后 Goods → 妈妈五段手动确认 → 两个已完成区域重复穿过 → 西侧道路。两次均逐项检查菜单不改变 HP / PP / 库存 / 奖励 / 旗标，重复触发同样保持全部受检状态。内存写入始终禁用。人工地下室后存档并非自然开局。
+
+两次进度 / EXP / 金钱 / 旗标投影完全一致，HP 都为 4；FleaBag 条件掉落分别为 1 / 0，因此完整库存投影不同，原始结果不改写。固定 RTC 没有冻结全部共享 RNG，不能把这两次运行声称为全部随机流 / 字节一致；第一轮也实际覆盖了领取 FleaBag 后的菜单。短窗口战斗为 29.9–30.2 FPS、返回野外 60.0–60.1 FPS，八次 DSP 采样均检验实际推进，不能代表真机或长期性能。
+
+前两次失败保留：第一次在 SceneDoor 的 mostly_out 已解除玩家暂停、完整 FadeOut 尚未结束时发送 START，被正常过门门禁拒绝；测试现等待 60 个中立帧。第二次在 LOAD 的快照 seqlock 写入中途停止，读取器正确拒绝半份数据；逐帧工具现仅对这一明确错误最多补进三帧，不重发 HID，未知版本 / 格式仍立即拒绝，21 项工具测试通过。未修改游戏内容或放宽成功条件来掩盖这两次失败。
+
+所有四次模拟器临时 profile / 私有 DSP 副本已由各自 finally 清理，下载分块、旧 3DSX 和本次 Windows 失败构建 / 五个 sanitizer 可执行文件已删除；仅保留当前真实 3DSX、必要编译缓存与验收证据。详细比较见 `reports/pr64-merge-validation/emulator-comparison.json`，失败 / 成功日志和对应脚本、截图均保留。完整 Linux 回归、CIA 安装和硬件仍未验证，PR 保持草稿。

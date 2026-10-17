@@ -280,9 +280,17 @@ class Session:
         return decode(self.read())
 
     def advance(self, frames):
-        result = self.client.call('frame.step', {'frames': frames})
-        self.client.event('frame.stepComplete', processId=self.pid)
-        return self.state()
+        for attempt in range(4):
+            self.client.call('frame.step', {'frames': frames if attempt == 0 else 1})
+            self.client.event('frame.stepComplete', processId=self.pid)
+            try:
+                return self.state()
+            except ValueError as error:
+                # A vblank can suspend the publisher inside its seqlock. Let
+                # that write finish on a bounded extra frame; never replay HID
+                # or accept a partial/unknown observation as valid state.
+                if str(error) != 'Semantic probe producer is mid-commit' or attempt == 3:
+                    raise
 
     def wait(self, expected, timeout=45):
         deadline = time.monotonic() + timeout

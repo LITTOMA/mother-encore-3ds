@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "kind": "encore.emulator-save-fixture",
+  "source_commit": "ea7354a617f7ee3679f35e47c1fd4a84ca5fc5cc",
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "file": "initial.encsave",
+  "sha256": "86e7299a8e5c9ba5f81b8511d84fb9c4e8a29c3de7a23c41c9bfac5d1af64b13",
+  "resources": {
+    "session/opening.encsession": "c145bcc82fa01260098140d763002e7be028a424118fbf208cf328237850b73e",
+    "world/house/opening.encroom": "e98d079ffaf8615e70e71c7d61850955ff612a66493827acc7783e9ae80ede0f",
+    "world/house/opening.enchouse": "1bbd3ba9148fd37395d69947aee47b105c4c8df9c09bffd13e5fd5ba3bc0ba3f",
+    "world/house/opening.encpresent": "613acce8d8a1f15f2d76428da0c87981b2f6b441527e6b681315c48b659cf07c",
+    "ui/opening.encitems": "506319cd195d38ca82ad6a8f4b271686c5710d2a0da31c3e1ac9a198cf2bfabc",
+    "battle/lamp/opening.encround": "fcc6946d95f58d553737e52fccbda746388cf3b14a61480c5c221e2987d59dfe"
+  },
+  "base_key_count": 2,
+  "present_index": 3,
+  "scope": "Artificial shared-core-validated snapshot starts beside the basement with KeyBasement already held and talked_to_dad set for the field-exit regression. Not a played save or evidence of naturally obtaining the key or playing the Dad call. LOAD, unlock, pickup and reentry use normal game input; no memory writes.",
+  "execution": {
+    "generator_sha256": "4edd71515fe74d327f8354005857327ff78acf8a3acb3bb8fc58fea46775983b",
+    "producer_sha256": "e049c577566eea24587704ccbdd20bec69650ea60eadb57b9385f2bbb383afeb",
+    "log_sha256": "30d9eefee325bcc5dd93fc2786e00e77a7dc29c33b7d69bd2702ae24a9c57815"
+  }
+}

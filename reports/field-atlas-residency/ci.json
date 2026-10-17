@@ -1,0 +1,467 @@
+{
+  "captured_utc": "2026-10-16T14:04:02.904314+00:00",
+  "runs": [
+    {
+      "run_id": 38904054845,
+      "source_commit": "ea7354a617f7ee3679f35e47c1fd4a84ca5fc5cc",
+      "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38904054845",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 116983098510,
+          "name": "Real 3DSX and CIA (GPU 1:1:1)",
+          "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38904054845/job/116983098510",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned Python data tools and host dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Enable the validated LibYAML safe parser after installing dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Restore the SDK from the existing checksum-pinned official layers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Restore pinned CIA packaging tools from official sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Validate the fixed official submodule before restoring any content",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check console header positive and negative cases",
+              "status": "completed",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Build a genuine ARM ELF and 3DSX with checked RomFS",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Package the genuine ARM ELF as CIA",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Extract and compare the actual packaged resources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Confirm the readonly upstream and tracked source remain unchanged",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare installable artifacts with notices and commit receipt",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Upload genuine 3DSX and CIA installable artifacts",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Link the downloadable package in the run summary",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Include package diagnostics in the run log",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "raw_log": "build\\field-atlas\\ci\\116983098510.log",
+          "raw_log_bytes": 464814,
+          "raw_log_sha256": "61ec1596bd6cbfebd36308cdeaf4df7cdc7dff0bbcc5a2a78f58377122c5e29f"
+        },
+        {
+          "id": 116983100195,
+          "name": "Checked original basement textures",
+          "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38904054845/job/116983100195",
+          "status": "completed",
+          "conclusion": "skipped",
+          "steps": []
+        },
+        {
+          "id": 116983100273,
+          "name": "Host and sanitizers (${{ matrix.compiler }})",
+          "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38904054845/job/116983100273",
+          "status": "completed",
+          "conclusion": "skipped",
+          "steps": []
+        }
+      ]
+    },
+    {
+      "run_id": 38905188193,
+      "source_commit": "6979ef4841e8303ba66d502d85c9b3725a731516",
+      "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38905188193",
+      "status": "in_progress",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 116986867013,
+          "name": "Real 3DSX and CIA (GPU 1:1:1)",
+          "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38905188193/job/116986867013",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned Python data tools and host dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Enable the validated LibYAML safe parser after installing dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Restore the SDK from the existing checksum-pinned official layers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Restore pinned CIA packaging tools from official sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Validate the fixed official submodule before restoring any content",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check console header positive and negative cases",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build a genuine ARM ELF and 3DSX with checked RomFS",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Package the genuine ARM ELF as CIA",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Extract and compare the actual packaged resources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Confirm the readonly upstream and tracked source remain unchanged",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare installable artifacts with notices and commit receipt",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Upload genuine 3DSX and CIA installable artifacts",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Link the downloadable package in the run summary",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Include package diagnostics in the run log",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "raw_log": "build\\field-atlas\\ci\\116986867013.log",
+          "raw_log_bytes": 466582,
+          "raw_log_sha256": "1f22d1ba09493fa52662ee43566cb401d5ed6de8d0d09d5b157a7f8a5daa2ae5"
+        },
+        {
+          "id": 116986867549,
+          "name": "Host and sanitizers (gcc)",
+          "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38905188193/job/116986867549",
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned host data-tool dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install audio restoration tools from Ubuntu packages",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Enable the validated LibYAML safe parser after installing dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Initialize the pinned official submodule and verify every reviewed source byte",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Regenerate checked resources before focused collision validation",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check ordered field collision results before unrelated fixture preparation",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check field collision with ASan UBSan and normal leak checking",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Regenerate checked resources and run the current shared-core tests",
+              "status": "in_progress",
+              "conclusion": null
+            },
+            {
+              "name": "Retain Clang coverage for Python suites that compile renderer doubles",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Run ASan and UBSan with the hosted runner's normal leak checking",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Confirm regeneration did not change tracked source or resources",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Retain failure logs and current build diagnostics",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "pending",
+              "conclusion": null
+            }
+          ]
+        },
+        {
+          "id": 116986867603,
+          "name": "Host and sanitizers (clang)",
+          "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38905188193/job/116986867603",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned host data-tool dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install audio restoration tools from Ubuntu packages",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Enable the validated LibYAML safe parser after installing dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Initialize the pinned official submodule and verify every reviewed source byte",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Regenerate checked resources before focused collision validation",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check ordered field collision results before unrelated fixture preparation",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check field collision with ASan UBSan and normal leak checking",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Regenerate checked resources and run the current shared-core tests",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Retain Clang coverage for Python suites that compile renderer doubles",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run ASan and UBSan with the hosted runner's normal leak checking",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Confirm regeneration did not change tracked source or resources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Retain failure logs and current build diagnostics",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "raw_log": "build\\field-atlas\\ci\\116986867603.log",
+          "raw_log_bytes": 410278,
+          "raw_log_sha256": "a1a4a6b0dc3c0b021e81a130aba2e7d149038ff83aebecc3e38602e49a63f5f5"
+        },
+        {
+          "id": 116986868707,
+          "name": "Checked original basement textures",
+          "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38905188193/job/116986868707",
+          "status": "completed",
+          "conclusion": "skipped",
+          "steps": []
+        }
+      ]
+    }
+  ]
+}

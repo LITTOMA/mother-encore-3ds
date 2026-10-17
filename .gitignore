@@ -316,6 +316,14 @@ cookies.json
 !reports/basement-items/validation/*.png
 !reports/basement-items/validation/*.log
 
+# Focused field-atlas handoff evidence; no emulator profiles, saves or binaries.
+!/reports/field-atlas-residency/**/*.json
+!/reports/field-atlas-residency/**/*.log
+!/reports/field-atlas-residency/**/*.png
+!/reports/field-atlas-residency/**/*.py
+!/reports/field-atlas-residency/*.json
+!/reports/field-atlas-residency/*.py
+
 # Bounded menu verification receipts; never emulator profiles or DSP binaries.
 !reports/field-menus-validation/
 !reports/field-menus-validation/**/

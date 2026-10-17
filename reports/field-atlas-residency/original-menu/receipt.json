@@ -1,0 +1,55 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "tool_sha256": "076b0e2ecea132d8e5442c6f3dad41f07149761817b7a1f4bb19855465b85528",
+  "sources": {
+    "Scripts/UI/Pausemenu.gd": "118f19d419a89ec09916961b92322f67ce032b44aa8215f9509d31088b421ca2",
+    "Scripts/UI/PSISelect.gd": "f9214e3146d03d71f1f73442e22d04d167703ef5530bbbc9f68f5a937e89aeb2",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/UI/PSIMenuUI.gd": "988484bff6163bd514de96cf231163939d1a35b7c6d1ebb08dd9cc5c259fac29",
+    "Data/BattleSkills/strike.yaml": "2249e5e4d4e3113a037ae888a76f8c1af3494a7e156003bc0374f8449e59d53e",
+    "Data/BattleSkills/splitShot.yaml": "efdd73c94385d40a882c9173b15097d5e03591d1f99d9da5655bda580239523b",
+    "Data/BattleSkills/telepathy.yaml": "9240e42dd77ef0c7518c47c9c3396889c2a3b65b4b633197edc816646c114066"
+  },
+  "methods_sha256": {
+    "Scripts/UI/Pausemenu.gd:open": "0c06d24a06877f1b30f5254748670bcd63460862ba2fa33e46525b7c3e06ce12",
+    "Scripts/UI/Pausemenu.gd:_input": "847d249db6f89ba7d080a70d31958072f058e39e4cc6e8436961cff57f9d01d4",
+    "Scripts/UI/Pausemenu.gd:_deactivate": "549d84d3a9d3fcef93f9d63bfea5f074a568865b50058820b8d85e3f0d0c7373",
+    "Scripts/UI/Pausemenu.gd:_activate": "f0399019dfb217988c64dcf1676b357361f6fa069f12b3882422a2c366318b6f",
+    "Scripts/UI/Pausemenu.gd:_on_submenu_back": "61662e498c7b1edd36953929271ac2e25bb8713cf8dcd33b7be0572b2edfd5ee",
+    "Scripts/UI/Pausemenu.gd:_on_Arrow_cancel": "93365e31bc592445318e31b3f31c96b56c1cd6744246a7e944d093b65bf51ab4",
+    "Scripts/UI/Pausemenu.gd:_close_view": "68221cb5e705a8fcbdae658c06204f10688ed3c235b228198c6f676d324699c4",
+    "Scripts/UI/Pausemenu.gd:close": "8db318b32679f53ff68c9cd7f2e85bb22a0c8cf6a693ffdb1c8e15877ee03444",
+    "Scripts/UI/PSISelect.gd:update_skills": "24feb27e5bfbe7637755bc5d4b257fd8f68167e4ac7823982671e24a9fa42f34",
+    "Scripts/UI/PSISelect.gd:_condense_skills": "83ef613aa73ed2398f52183b06149186d5688dce59cfbc1728428d17ebb95ca4",
+    "Scripts/UI/PSISelect.gd:is_empty": "aa12147aa0ee3b6c1877d1c2a3b3e3cb412f26c673b5013feea11181f3b39472",
+    "Scripts/UI/PSISelect.gd:set_active": "274819e4adee4ace07bdec055dbea72cdaed0e00c53afde40b97979a696df6a5",
+    "Scripts/UI/PSISelect.gd:refresh_selectable": "0e24435b29473d3dfd75f4bf8ba59eacfd239294b76a859429a523b2b1bad970",
+    "Scripts/UI/PSISelect.gd:_cursor_selected": "f0f9763475fbf5282e79dc11a7d227b7d03a5c65891994b7b8887a89ad0dfffa",
+    "Scripts/UI/PSISelect.gd:_does_it_do_anything": "ab9e162c35b4e46fdf5cfb5980ccf1c85c9e9bc3c7e85cb26940a949da60b141",
+    "Scripts/UI/PSIMenuUI.gd:_close": "892381d8fe68c97e0d93b327605488b2b35394959e262c57537967eadf4abda9",
+    "Scripts/UI/PSIMenuUI.gd:_use_skill": "8bec77986f370d802e4fd585c6204fe330123ca2bb2393e245232dfd90afd2ed"
+  },
+  "reference_sha256": "8f25cba4b518c68ffee1253d4832360c7916cf8f514b98618c8e995b5366dfec",
+  "generated_scripts_sha256": {
+    "service.gd": "c1e92989250fc6ea21c66d5fe6b228448bfd173e4ca81e23047190bbe283c27b",
+    "arrow.gd": "53023d30f149a5f9bdfb384903e0d3f32721e963ebb7ab8959c6cf86286be069",
+    "member.gd": "d97003d1bfce232e20e3d1eb10dfce0b5f661e0527b6b69072e8595f41a63125",
+    "line.gd": "6c603660b6f7dde9a680d6952747ed53f6f462283762ce455424e49474500e89",
+    "pause.gd": "a708224e1cdea740f9d79508b6adea2e4c8b3b70262784812f518c65a37a3d9b",
+    "select.gd": "1da3b47fc388478482b59e186e91aeb459dfa140a9d0e6433f1cdc750be028b6",
+    "psi.gd": "3bd925a86666dafd151b4e94f8ea347ef05495db9cd00ee93092ef80f9d06ae4",
+    "probe.gd": "91513984fba6859621c1500776963465369de3488360081766f9e4745d642abd"
+  },
+  "fixture_sha256": "dcae0d59fa4db7c4194edad6c47ce8471fc5ca1cdfdbd772f8bf819e899b8fa7",
+  "adapters": [
+    "Native AnimationPlayer uses checked source durations, without rendering tracks; glyphs, texture geometry and timing equivalence are not tested",
+    "UI/audio/world service records pause and call order; no real sound or world movement",
+    "Character adapter stores PP/status; source PSI selection and PP subtraction execute unchanged",
+    "Skill dictionaries read from checked source YAML and identity appended as the original lookup does",
+    "PSI line layout/page refresh and cursor containers are stubs; filtering/empty selection logic executes original methods",
+    "TargetType.SELF is replaced by verified value 5; no other targeting path exercised"
+  ],
+  "scope": "Bounded extracted original Pause open/cancel/select close, PSI filtering/back and zero-PP telepathy dispatch; not full original game, input device, graphics, or hardware"
+}

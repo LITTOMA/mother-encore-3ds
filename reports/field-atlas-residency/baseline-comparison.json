@@ -1,0 +1,7 @@
+{
+  "old_source": "64f88557859a995537dcae4d85778eb94ab9225b",
+  "fixed_source": "ea7354a617f7ee3679f35e47c1fd4a84ca5fc5cc",
+  "same_scenario": true,
+  "equal_semantic_projection": true,
+  "scope": "Only the recorded progression/menu/inventory projection, not all state, timing, HP, RNG, pixels or a demonstrated old failure. Old and fixed both passed this Azahar route."
+}

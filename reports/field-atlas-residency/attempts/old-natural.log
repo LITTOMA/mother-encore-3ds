@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_emulator_semantics.py", line 445, in <module>
+    main()
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_emulator_semantics.py", line 431, in main
+    baseline = run_once(args, scenario, 1)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_emulator_semantics.py", line 298, in run_once
+    session = Session(client)
+              ^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_emulator_semantics.py", line 205, in __init__
+    raise RuntimeError('Genuine build does not expose a supported semantic probe')
+RuntimeError: Genuine build does not expose a supported semantic probe

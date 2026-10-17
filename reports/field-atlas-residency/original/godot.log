@@ -1,0 +1,41 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+Using GLES3 video driver
+OpenGL ES 3.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+Async. shader compilation: OFF
+OpenGL ES 2D Batching: ON
+Batching Options:
+	max_join_item_commands 16
+	colored_vertex_format_threshold 0.25
+	batch_buffer_effective_size 16384
+	light_scissor_area_threshold 1
+	item_reordering_lookahead 4
+	light_max_join_items 32
+	single_rect_fallback False
+	debug_flash False
+	diagnose_frame False
+WASAPI: wFormatTag = 65534
+WASAPI: nChannels = 2
+WASAPI: nSamplesPerSec = 48000
+WASAPI: nAvgBytesPerSec = 384000
+WASAPI: nBlockAlign = 8
+WASAPI: wBitsPerSample = 32
+WASAPI: cbSize = 22
+WASAPI: detected 2 channels
+WASAPI: audio buffer frames: 1962 calculated latency: 44ms
+ 
+CORE API HASH: 1922975809339680405
+EDITOR API HASH: 1307865197627434137
+Loading resource: res://probe.gd
+Loaded builtin certs
+PRESENT_ORACLE run
+Loading resource: res://service.gd
+PRESENT_ORACLE create
+Loading resource: res://present.gd
+Loading resource: res://sparkles.gd
+PRESENT_ORACLE ready
+PRESENT_ORACLE events [animation:Unwrapped, grant, object-flag, ItemDialogue/presentcheck]
+PRESENT_ORACLE flags {Ninten's House/Present3:True} expected Ninten's House/Present3
+PRESENT_ORACLE animation advanced
+Loading resource: res://present.gd
+Loading resource: res://sparkles.gd

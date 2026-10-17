@@ -39,6 +39,7 @@ const char* suffix(uint32_t role) {
     case ResourceRole::FieldMusic:return ".encmusic";
     case ResourceRole::FieldAudio:return ".encaudio";
     case ResourceRole::FieldMusicZones:return ".enczones";
+    case ResourceRole::FieldMenus:return ".encmenus";
     }return nullptr;
 }
 bool canonical(const std::string& path) {
@@ -64,9 +65,9 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     auto fail=[&](const char* message){error=message;return false;};
     if(!p||n<60||n>catalog_limit)return fail("Resource catalog size rejected");
     const auto capability=u32(p+20);
-    if(std::memcmp(p,"ENCRSC01",8)||u32(p+8)!=1||u32(p+12)!=n||capability<1||capability>5||u32(p+24)||u32(p+28))
+    if(std::memcmp(p,"ENCRSC01",8)||u32(p+8)!=1||u32(p+12)!=n||capability<1||capability>6||u32(p+24)||u32(p+28))
         return fail("Resource catalog schema/size/capability/reserved rejected");
-    const uint32_t max_role=capability==1?30:capability==2?33:capability==3?34:capability==4?35:39;
+    const uint32_t max_role=capability==1?30:capability==2?33:capability==3?34:capability==4?35:capability==5?39:40;
     if(~encore::crc32_update(~0u,p+32,n-32)!=u32(p+16))return fail("Resource catalog checksum rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};
         if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Resource catalog source pin rejected");}
@@ -89,6 +90,7 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
         if(mick!=(capability>=4?1u:0u))return fail("Resource catalog Mick treats role rejected");}
     {unsigned audio=0;for(const auto& row:data.bindings_)audio+=uint32_t(row.role)>=36&&uint32_t(row.role)<=39;
      if(audio!=(capability>=5?4u:0u))return fail("Resource catalog gameplay audio role rejected");}
+    {unsigned menus=0;for(const auto&row:data.bindings_)menus+=row.role==ResourceRole::FieldMenus;if(menus!=(capability>=6?1u:0u))return fail("Resource catalog field menus role rejected");}
     auto binding=[&](uint32_t id)->const Binding*{for(const auto& row:data.bindings_)if(row.id==id)return &row;return nullptr;};
     for(uint32_t i=0;i<pairs;++i){const auto battle=r.integer(),round=r.integer();
         const auto* b=binding(battle);const auto* v=binding(round);

@@ -1,0 +1,106 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "kind": "field-menus",
+  "cases": {
+    "sorted": [
+      "AsthmaSpray",
+      "BatPlastic",
+      "BaseballCap"
+    ],
+    "sorted_items": [
+      {
+        "item_id": "AsthmaSpray",
+        "equipped": false,
+        "doses": 3,
+        "uid": 100
+      },
+      {
+        "item_id": "BatPlastic",
+        "equipped": false,
+        "doses": 1,
+        "uid": 101
+      },
+      {
+        "item_id": "BaseballCap",
+        "equipped": true,
+        "doses": 1,
+        "uid": 1
+      }
+    ],
+    "consume_fail": {
+      "doses": 2,
+      "hp": 25,
+      "pp": 26,
+      "count": 3,
+      "uid": 100
+    },
+    "consumed_items": [
+      {
+        "item_id": "AsthmaSpray",
+        "equipped": false,
+        "doses": 2,
+        "uid": 100
+      },
+      {
+        "item_id": "BatPlastic",
+        "equipped": false,
+        "doses": 1,
+        "uid": 101
+      },
+      {
+        "item_id": "BaseballCap",
+        "equipped": true,
+        "doses": 1,
+        "uid": 1
+      }
+    ],
+    "manual_preserves_uid": true,
+    "exhausted_count": 2,
+    "exhausted_items": [
+      {
+        "item_id": "BatPlastic",
+        "equipped": false,
+        "doses": 1,
+        "uid": 101
+      },
+      {
+        "item_id": "BaseballCap",
+        "equipped": true,
+        "doses": 1,
+        "uid": 1
+      }
+    ],
+    "dropped_count": 1,
+    "dropped_items": [
+      {
+        "item_id": "BaseballCap",
+        "equipped": true,
+        "doses": 1,
+        "uid": 1
+      }
+    ],
+    "volume_db": [
+      -95.915811,
+      -68.189924,
+      -51.971319,
+      -40.464036,
+      -31.538294,
+      -24.245432,
+      -18.079405,
+      -12.738149,
+      -8.026828,
+      -3.812407,
+      0
+    ]
+  }
+}

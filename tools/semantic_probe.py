@@ -11,14 +11,18 @@ FIELDS = ('version byte_size sequence frame width height title_phase title_optio
 POSITIONS = ('player_x', 'player_y', 'direction_x', 'direction_y', 'mick_x', 'mick_y')
 ERRORS = ('house_error', 'field_error', 'menu_error', 'audio_error')
 WIRE = struct.Struct('<8s55I6f128s128s128s128s')
+MENU_FIELDS=('submenu_phase submenu_selection submenu_keys submenu_count menu_inventory_hash menu_key_hash menu_settings_hash menu_controls_hash menu_master menu_music menu_sfx menu_display menu_maxhp menu_maxpp menu_offense menu_defense menu_map_x menu_map_y menu_uid_hash menu_key_uid_hash').split()
+WIRE_V7=struct.Struct('<8s55I6f128s128s128s128s20I')
+SIZES={6:WIRE.size,7:WIRE_V7.size}
 
 
 def decode(data):
-    if len(data) != WIRE.size:
+    if len(data) not in SIZES.values():
         raise ValueError('Truncated or oversized semantic probe')
-    magic, *values = WIRE.unpack(data)
+    wire=WIRE if len(data)==WIRE.size else WIRE_V7
+    magic, *values = wire.unpack(data)
     result = dict(zip(FIELDS, values[:len(FIELDS)]))
-    if magic != MAGIC or result['version'] != 6 or result['byte_size'] != WIRE.size:
+    if magic != MAGIC or SIZES.get(result['version'])!=len(data) or result['byte_size'] != len(data):
         raise ValueError('Unsupported semantic probe identity/version/size')
     if result['sequence'] % 2:
         raise ValueError('Semantic probe producer is mid-commit')
@@ -27,13 +31,16 @@ def decode(data):
     result.update(zip(POSITIONS, values[len(FIELDS):len(FIELDS)+len(POSITIONS)]))
     if not all(math.isfinite(result[k]) for k in POSITIONS):
         raise ValueError('Nonfinite semantic probe position')
-    for name, raw in zip(ERRORS, values[-4:]):
+    for name, raw in zip(ERRORS, values[len(FIELDS)+len(POSITIONS):len(FIELDS)+len(POSITIONS)+4]):
         if b'\0' not in raw:
             raise ValueError('Unterminated semantic probe text')
         result[name] = raw.split(b'\0', 1)[0].decode('utf-8', errors='strict')
     for name in ('paused', 'crouch', 'session_ready', 'battle_active', 'audio_available', 'music_playing', 'dsp_music_playing', 'psi_learned', 'dialogue_active', 'dialogue_finished', 'dialogue_stopped'):
         if result[name] not in (0, 1):
             raise ValueError('Invalid semantic probe boolean')
+    if result['version']==7:
+        result.update(zip(MENU_FIELDS,values[-len(MENU_FIELDS):]))
+        if result['submenu_keys']not in (0,1) or result['menu_display']not in (0,1):raise ValueError('Invalid menu observation boolean')
     return result
 
 

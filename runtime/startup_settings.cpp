@@ -25,7 +25,7 @@ bool unique(const std::vector<std::string>&v){return !v.empty()&&std::set<std::s
 }
 int StartupSettingsData::speed_index(double v)const{return index(speeds,v);}int StartupSettingsData::flavor_index(const std::string&v)const{return index(flavors,v);}int StartupSettingsData::prompt_index(const std::string&v)const{return index(prompts,v);}
 SessionSettings StartupSettingsData::defaults()const{SessionSettings s;if(valid_){s.text_speed=speeds[default_indices[0]];s.menu_flavor=flavors[default_indices[1]];s.button_prompts=prompts[default_indices[2]];s.description=description;}return s;}
-bool StartupSettingsData::supports(const SessionSettings&s)const{return valid_&&speed_index(s.text_speed)>=0&&flavor_index(s.menu_flavor)>=0&&prompt_index(s.button_prompts)>=0&&s.description==description;}
+bool StartupSettingsData::supports(const SessionSettings&s)const{return valid_&&speed_index(s.text_speed)>=0&&flavor_index(s.menu_flavor)>=0&&prompt_index(s.button_prompts)>=0;}
 bool StartupSettingsData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>1024*1024||std::memcmp(p,"ENCSETUI",8)||integer(p+8)!=2||integer(p+12)!=n||integer(p+20)!=1||crc(p+24,n-24)!=integer(p+16))return fail(e,"Startup settings schema/size/CRC rejected");
  StartupSettingsData d;Reader r{p+24,n-24};auto count=r.count(16);for(uint32_t i=0;i<count;++i){double v=r.number();if(v<=0||v>1||index(d.speeds,v)>=0)return fail(e,"Startup text speed choice rejected");d.speeds.push_back(v);}

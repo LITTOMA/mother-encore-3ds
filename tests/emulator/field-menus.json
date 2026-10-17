@@ -1,0 +1,2040 @@
+{
+  "schema": 1,
+  "position_tolerance": 4,
+  "name": "field_menus_all_six",
+  "reference": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "scope": "Artificial admitted level-2 checkpoint loaded normally, not naturally played progress. Source inventory sort/consume/drop compared to bounded original Godot methods. Native START integration, PSI target/cancel/heal, equipment, status books, map and options repeated through real HID. No pixel, full-game, CIA installation or hardware equivalence claim.",
+    "sources": {
+      "Scripts/UI/Pausemenu.gd": "118f19d419a89ec09916961b92322f67ce032b44aa8215f9509d31088b421ca2",
+      "Nodes/Ui/Inventory/ActionSelect.gd": "3cd54d9a8c6dae90c08de99422c5059a925e922dba6deacb739db88e9a19a5cd",
+      "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+      "Scripts/UI/MapScreen/MapScreen.gd": "3d6bc422458e3bb8862522ce7d991ebef847618fe30dc5a0ac39c9e358c2f4d6",
+      "Scripts/UI/Options/OptionsUI.gd": "3a7ed05264be2144d8e70fac35ba882ef5593eaa6bce013db916c98c6c529b31",
+      "Scripts/UI/statsmenu.gd": "b9422300dd119188b9ae195138f81040327855dacf226c1736a74d801c87537f",
+      "Scripts/UI/SkillsMenuUI.gd": "0715893ec8b354f412d10986898b0589d5f9db86688ee36432d6c619ff9ae278",
+      "Nodes/Ui/Inventory/InventoryUI.tscn": "90bb226c950bb9903db792e51bed1a4f83b79d906917d194ffccbb9d24c7cb07",
+      "Scripts/UI/Inventory/InventoryUI.gd": "8d3381024230c304281ebef680e3e26e43e48d3f1ec286b7e76a0d9120d576bd",
+      "Nodes/Ui/Inventory/InventorySelect.gd": "2cb4041595c68c059e2c2bf5bb97836e27965501bb3a061374270480a2d8a738",
+      "Nodes/Ui/Inventory/TargetCharaSelect.gd": "09c958e188afc50247b8ed755465768e68728ef624fe43dc0afae83eac98d6c3",
+      "Nodes/Ui/Inventory/SortTypeSelect.gd": "ede1d08cee14e598c1a3f9c55b29a50416861aad62008dd20ad4127d730aabd4",
+      "Nodes/Ui/Inventory/ConfirmationSelect.gd": "adc3c9abd86d39a221a80424fe2d4ab091b91189efd93da1ae91233048c8e7e0",
+      "Nodes/Ui/StatsMenuUI.tscn": "2f227b691a555928da1d6fad7d33f800bf0921f90ddc92be05332994e46168bd",
+      "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+      "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+      "Scripts/UI/Options/ControlsUI.gd": "b3861f5125664b685a71cca3b5381601a84b0e1acb15edb584e3e1ed4214d6b8",
+      "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+      "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+      "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+      "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+      "Translations/TranslatedText/fieldskills - sheet.csv": "390acaa652899c4f0e2f7c9b26fa9563c035f9014b158d0469c2c34afecaaec8",
+      "Translations/TranslatedText/battleskills - sheet.csv": "cd4d4cbaeb8eec6bcda6b042fed70823c6ee790e9d3e4535e09c88a698781235",
+      "Translations/TranslatedText/locations - sheet.csv": "be88d68145dc1afcd051e185392a2ef19e9b98a7fa53a4766ff7c986a4f88664",
+      "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+      "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+      "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
+      "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+      "Data/StatusAilments/asthma.yaml": "6f2485b55a9b01c6cd8bdaaed248683c22eebc912c9445437d3193659fa754c3",
+      "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
+      "Data/Items/DogTreats.yaml": "0512818388242890d704214728e4603f90fa976571240f86361c2917c641d641",
+      "Data/Items/MapPodunk.yaml": "a0a9b41e46eef76044809dc698abc1afc1dab534b4dcb7e37563ea01e54afe43",
+      "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+      "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
+      "Data/FieldSkills/energy_beam.yaml": "3961655136461f6fcd6393d11258278926f2a08a8580a3a777ab8f7d9ceb1ef6",
+      "Data/FieldSkills/jump.yaml": "4776bf182484ca963a4ef11cbe1b2e0b8d3a4dc392640e9bec27b952ed493194",
+      "Data/FieldSkills/pkfire.yaml": "13b1b98af2b3247c9a65b55c597b79e4f7a88e98b0c3ed1eb076f79d1340634f",
+      "Data/FieldSkills/pkfreeze.yaml": "099762fd625d6b19c5b8f528df6fd35450b08aae0d1a357c89e8fcebbfe97e74",
+      "Data/FieldSkills/pkthunder.yaml": "d86efec20bfd05bac7e18cf815ead57e02aca18dfb330ce15f2a34af1b1b5539",
+      "Data/FieldSkills/relay.yaml": "926da56bbbefdc992945485923aed00f9b6497dcddd95ca7b871cd880024103a",
+      "Data/FieldSkills/run.yaml": "2a9a3d5c972d816f180e5c6115160fdba0f8540a812deb61aa925373c9f83d6a",
+      "Data/FieldSkills/scope.yaml": "3e9581e222ac15651eb268b062d069a27e6d185a3f06f98b8f1684ac98eb4d56",
+      "Data/FieldSkills/swing.yaml": "e3e770194ec22e76fe75a271f2cda85371cbb3c50277275067fd68d1539bf0aa",
+      "Data/FieldSkills/telepathy.yaml": "1529b8c0631d697377eb293e107b37068c03ba8588fdd254b37e33bc22559230",
+      "Data/FieldSkills/teleport.yaml": "9ba1414722d2f0b2661b41d758534fe5638f267a877e1f1ed741c17503122e3e",
+      "Data/BattleSkills/strike.yaml": "2249e5e4d4e3113a037ae888a76f8c1af3494a7e156003bc0374f8449e59d53e",
+      "Data/BattleSkills/splitShot.yaml": "efdd73c94385d40a882c9173b15097d5e03591d1f99d9da5655bda580239523b",
+      "Data/BattleSkills/telepathy.yaml": "9240e42dd77ef0c7518c47c9c3396889c2a3b65b4b633197edc816646c114066",
+      "Data/BattleSkills/lifeUpA.yaml": "9a2196d71255d94998502717254bbb569cb91bb2fb5edec053c15c1b2c1a73d3",
+      "Nodes/Ui/MapScreen/Markers/PodunkMapMarkers.tscn": "ad88dfc246f853cd242aa275c2fd2f6b7ad02c2ff0d6fea731ca921e63902e6e",
+      "Nodes/Ui/MapScreen/Maps/Podunk.tscn": "25281ed2dd5479a2c62addaffbde935f5677dbb41e64ba19354bd474701b36c6",
+      "Nodes/Ui/MapScreen/Maps/404.tscn": "aa8ace46b5b70a908efe6aa22c07926b30a31d6b9d12bb95d74b54d13da8f78a",
+      "Nodes/Ui/MapScreen/MapScreen.tscn": "54954ff6eaa5ea46c8caa03d084461978f77a596f7047068fadb6e60d5d5562c",
+      "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+      "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+      "Graphics/UI/Maps/Podunk_map.png": "1b5f41e90c7eadad93c5128ed0aca5f03f9bd35eac278f9759fdb100e525ed75",
+      "Graphics/UI/Maps/Podunk_map.png.import": "a9ccbe95bc45af75a3ad657eb52d2a8be49a899efefad91b1ff11911a3ae319a",
+      "Graphics/UI/Maps/404_map.png": "defc97a2ed6b5a44cd8fe05d2d3b332019ec84aadbeaa13648a803a25709e3da",
+      "Graphics/UI/Maps/404_map.png.import": "6c86f32c9166368e3afc9f92458ff6001de677bced6fde0f9a30e152a93c3e03",
+      "Graphics/UI/Maps/player_map_locator.png": "e507f7f17fc1998040dfaa1323bc5410d62e5c92b6a91d40223aef8a79065470",
+      "Graphics/UI/Maps/player_map_locator.png.import": "24a29e964e6c8f9ca3762bf148e6937e57c82a4830464f0671a0f73041d08bf4",
+      "Graphics/UI/Maps/marker_phone.png": "3ddd17ffa19cc67d550d9c65e9084a032bc37d187134cc8b4d61efeb3e2c3348",
+      "Graphics/UI/Maps/marker_phone.png.import": "b5656f979f5a3263dcb63ffc7893f2032be9efb8362de4a458b2b38fbb4e9b8f",
+      "Graphics/UI/Maps/marker_hotel.png": "c0d1bd950ba0d7a233be7b98fb1ea83c2682334f2152a022aa016b4ad859469d",
+      "Graphics/UI/Maps/marker_hotel.png.import": "20e7bb419fd79e891e4dd88ff7857cc71f371a857f0df37063c976944c814bcf",
+      "Graphics/UI/Maps/marker_atm.png": "32ee7bde054d36ababf6cfcb3995f2b1c6cbc5d9a689a839ba3b0e1a566bed02",
+      "Graphics/UI/Maps/marker_atm.png.import": "4e389b4b2657430f0fe60c829f19aa1d12f3dd640c24a7a52e4bce7eaa75b7a5",
+      "Graphics/UI/Maps/marker_food.png": "0dcbb596acda9c72639f3e9c26486d0cdf72bc4247e2036feea408eb6e59a45b",
+      "Graphics/UI/Maps/marker_food.png.import": "c9f20a8ff72f30917634bfcb1d56fa50a4417d1dc768dad33ac61cba16896f46",
+      "Graphics/UI/Maps/marker_hospital.png": "b015016bb852e1ce01394caeea3ab4d19ddb9b18b1910712a90fa468b2fe09a8",
+      "Graphics/UI/Maps/marker_hospital.png.import": "05fb55f359520ee5416d404a11e549956226f6f96d48bc40abcb81329877f77e",
+      "Graphics/UI/Maps/marker_home.png": "322c52b6ab3b0bb68a3a0202279030d26a1113e1448dfc825ca24445c0aff30f",
+      "Graphics/UI/Maps/marker_home.png.import": "4ee18aa96bbd723badbc71ab0b63f86ddca21354f31efe3323ed99c2e2027d10",
+      "Graphics/UI/Maps/marker_arrow_side.png": "4a38378866d3d0f008a13911ce5ce14f6c09c8701d0fb0c00a416dffe61f1296",
+      "Graphics/UI/Maps/marker_arrow_side.png.import": "a64f7e97cc6f1b8e1b2bbbe99904c795656c1d35765a717de55182f3a8bee0aa",
+      "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e"
+    }
+  },
+  "projection": [
+    "width",
+    "height",
+    "title_phase",
+    "field_scene",
+    "menu_phase",
+    "menu_command",
+    "submenu_phase",
+    "submenu_selection",
+    "submenu_keys",
+    "paused",
+    "session_ready",
+    "battle_active",
+    "level",
+    "hp",
+    "pp",
+    "inventory_count",
+    "key_count",
+    "player_x",
+    "player_y",
+    "menu_inventory_hash",
+    "menu_key_hash",
+    "menu_settings_hash",
+    "menu_controls_hash",
+    "menu_master",
+    "menu_music",
+    "menu_sfx",
+    "menu_display",
+    "menu_maxhp",
+    "menu_maxpp",
+    "menu_offense",
+    "menu_defense",
+    "menu_uid_hash",
+    "menu_key_uid_hash"
+  ],
+  "steps": [
+    {
+      "name": "title",
+      "wait": {
+        "title_phase": 1,
+        "width": 400,
+        "height": 240
+      },
+      "audio_progress": true,
+      "expected_music": 1202
+    },
+    {
+      "name": "choose_load",
+      "wait": {
+        "title_option": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "slots",
+      "wait": {
+        "title_phase": 3
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "load_actions",
+      "wait": {
+        "title_phase": 4
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "loaded",
+      "wait": {
+        "title_phase": 0,
+        "house_phase": 0,
+        "paused": 0,
+        "inventory_count": 3,
+        "key_count": 5,
+        "level": 2,
+        "player_x": 88,
+        "player_y": 977
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "pause",
+      "wait": {
+        "menu_phase": 2,
+        "menu_command": 0
+      },
+      "buttons": [
+        "START"
+      ]
+    },
+    {
+      "name": "goods",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "A"
+      ],
+      "capture": true
+    },
+    {
+      "name": "manual_actions",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "manual_sort_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "manual_sort",
+      "wait": {
+        "submenu_phase": 3
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "manual_target",
+      "wait": {
+        "submenu_phase": 4
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "manual_target_next",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "RIGHT"
+      ]
+    },
+    {
+      "name": "manual_swapped",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "manual_restore_actions",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "manual_restore_sort_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "manual_restore_sort",
+      "wait": {
+        "submenu_phase": 3
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "manual_restore_target",
+      "wait": {
+        "submenu_phase": 4
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "manual_restore_previous",
+      "wait": {
+        "submenu_selection": 0
+      },
+      "buttons": [
+        "LEFT"
+      ]
+    },
+    {
+      "name": "manual_restored",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "A"
+      ],
+      "same_as": "goods"
+    },
+    {
+      "name": "description_hidden",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "Y"
+      ]
+    },
+    {
+      "name": "description_restored",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "Y"
+      ],
+      "same_as": "goods"
+    },
+    {
+      "name": "cap_actions",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "cap_sort",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "sort",
+      "wait": {
+        "submenu_phase": 3
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "auto",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "goods_sorted",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_actions",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_target",
+      "wait": {
+        "submenu_phase": 6
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "goods_consumed",
+      "wait": {
+        "submenu_phase": 7
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_return",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_actions_2",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_target_2",
+      "wait": {
+        "submenu_phase": 6
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_result_2",
+      "wait": {
+        "submenu_phase": 7
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_return_2",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_actions_3",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_target_3",
+      "wait": {
+        "submenu_phase": 6
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_result_3",
+      "wait": {
+        "submenu_phase": 7
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "spray_return_3",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "goods_exhausted",
+      "wait": {
+        "inventory_count": 2,
+        "submenu_phase": 1
+      }
+    },
+    {
+      "name": "bat_actions",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "bat_sort_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "bat_drop_row",
+      "wait": {
+        "submenu_selection": 2
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "drop_no_default",
+      "wait": {
+        "submenu_phase": 5
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "drop_cancel",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "drop_again",
+      "wait": {
+        "submenu_phase": 5
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "drop_yes",
+      "wait": {
+        "submenu_selection": 0
+      },
+      "buttons": [
+        "UP"
+      ]
+    },
+    {
+      "name": "goods_dropped",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "cap_unequip_actions",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "cap_unequipped",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "cap_equip_actions",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "cap_equipped",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "key_goods",
+      "wait": {
+        "submenu_phase": 1,
+        "submenu_keys": 1,
+        "submenu_count": 5
+      },
+      "buttons": [
+        "R"
+      ]
+    },
+    {
+      "name": "key_map_row",
+      "wait": {
+        "submenu_selection": 2
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "key_map_actions",
+      "wait": {
+        "submenu_phase": 2
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "key_map_use",
+      "wait": {
+        "submenu_phase": 11
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "key_map_back",
+      "wait": {
+        "submenu_phase": 1
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "goods_back",
+      "wait": {
+        "menu_phase": 2,
+        "submenu_phase": 0,
+        "menu_command": 0
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "psi_select",
+      "wait": {
+        "menu_command": 1
+      },
+      "buttons": [
+        "RIGHT"
+      ]
+    },
+    {
+      "name": "psi",
+      "wait": {
+        "menu_phase": 9,
+        "psi_learned": 1
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "lifeup_select",
+      "wait": {
+        "menu_phase": 9
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "lifeup_target",
+      "wait": {
+        "menu_phase": 11
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "lifeup_cancel",
+      "wait": {
+        "menu_phase": 9
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "lifeup_target_again",
+      "wait": {
+        "menu_phase": 11
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "lifeup_result",
+      "wait": {
+        "menu_phase": 12
+      },
+      "buttons": [
+        "A"
+      ],
+      "capture": true
+    },
+    {
+      "name": "lifeup_back",
+      "wait": {
+        "menu_phase": 9
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "psi_back",
+      "wait": {
+        "menu_phase": 2
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "equip_row",
+      "wait": {
+        "menu_command": 3
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "equip_select",
+      "wait": {
+        "menu_command": 2
+      },
+      "buttons": [
+        "LEFT"
+      ]
+    },
+    {
+      "name": "equip",
+      "wait": {
+        "menu_phase": 4
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "equip_other",
+      "wait": {
+        "menu_slot": 3
+      },
+      "buttons": [
+        "UP"
+      ]
+    },
+    {
+      "name": "equip_candidates",
+      "wait": {
+        "menu_phase": 5
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "equip_none",
+      "wait": {
+        "menu_phase": 4
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "equip_other_again",
+      "wait": {
+        "menu_phase": 5
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "equip_restore",
+      "wait": {
+        "menu_phase": 4
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "equip_back",
+      "wait": {
+        "menu_phase": 2
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "status_select",
+      "wait": {
+        "menu_command": 3
+      },
+      "buttons": [
+        "RIGHT"
+      ]
+    },
+    {
+      "name": "status",
+      "wait": {
+        "submenu_phase": 8
+      },
+      "buttons": [
+        "A"
+      ],
+      "capture": true
+    },
+    {
+      "name": "skills_tabs",
+      "wait": {
+        "submenu_phase": 9
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_skills",
+      "wait": {
+        "submenu_phase": 10
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_skills_back",
+      "wait": {
+        "submenu_phase": 9
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "battle_tab",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "circle": {
+        "x": 1,
+        "y": 0,
+        "override": true
+      }
+    },
+    {
+      "name": "battle_skills",
+      "wait": {
+        "submenu_phase": 10
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "battle_skills_back",
+      "wait": {
+        "submenu_phase": 9
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "psi_tab",
+      "wait": {
+        "submenu_selection": 2
+      },
+      "buttons": [
+        "RIGHT"
+      ]
+    },
+    {
+      "name": "psi_book",
+      "wait": {
+        "submenu_phase": 10
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "psi_book_back",
+      "wait": {
+        "submenu_phase": 9
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "status_back",
+      "wait": {
+        "submenu_phase": 8
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "status_pause",
+      "wait": {
+        "menu_phase": 2,
+        "submenu_phase": 0
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "map_row",
+      "wait": {
+        "menu_command": 5
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "map_select",
+      "wait": {
+        "menu_command": 4
+      },
+      "buttons": [
+        "LEFT"
+      ]
+    },
+    {
+      "name": "map",
+      "wait": {
+        "submenu_phase": 11
+      },
+      "buttons": [
+        "A"
+      ],
+      "capture": true
+    },
+    {
+      "name": "map_scroll",
+      "wait": {
+        "submenu_phase": 11
+      },
+      "buttons": [
+        "RIGHT",
+        "X"
+      ],
+      "frames": 20
+    },
+    {
+      "name": "map_markers",
+      "wait": {
+        "submenu_phase": 11
+      },
+      "buttons": [
+        "Y"
+      ]
+    },
+    {
+      "name": "map_back",
+      "wait": {
+        "menu_phase": 2,
+        "submenu_phase": 0
+      },
+      "buttons": [
+        "SELECT"
+      ]
+    },
+    {
+      "name": "options_select",
+      "wait": {
+        "menu_command": 5
+      },
+      "buttons": [
+        "RIGHT"
+      ]
+    },
+    {
+      "name": "options",
+      "wait": {
+        "submenu_phase": 12
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "file",
+      "wait": {
+        "submenu_phase": 13
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "speed",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "speed_next",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "speed_cancel",
+      "wait": {
+        "submenu_phase": 13
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "speed_again",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "speed_next_again",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "speed_apply",
+      "wait": {
+        "submenu_phase": 13
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "flavor_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "flavor",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "flavor_next",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "flavor_apply",
+      "wait": {
+        "submenu_phase": 13
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "prompts_row",
+      "wait": {
+        "submenu_selection": 2
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "prompts",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "prompts_next",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "prompts_apply",
+      "wait": {
+        "submenu_phase": 13
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "file_back",
+      "wait": {
+        "submenu_phase": 12
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "general_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "general",
+      "wait": {
+        "submenu_phase": 14
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "audio",
+      "wait": {
+        "submenu_phase": 15
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "master_down",
+      "wait": {
+        "menu_master": 9
+      },
+      "buttons": [
+        "LEFT"
+      ]
+    },
+    {
+      "name": "music_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "music_down",
+      "wait": {
+        "menu_music": 9
+      },
+      "buttons": [
+        "LEFT"
+      ]
+    },
+    {
+      "name": "sfx_row",
+      "wait": {
+        "submenu_selection": 2
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "sfx_down",
+      "wait": {
+        "menu_sfx": 9
+      },
+      "buttons": [
+        "LEFT"
+      ]
+    },
+    {
+      "name": "audio_back",
+      "wait": {
+        "submenu_phase": 14
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "video_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "video",
+      "wait": {
+        "submenu_phase": 16
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "display_before",
+      "wait": {
+        "width": 400,
+        "height": 240
+      }
+    },
+    {
+      "name": "display_choice",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "display_reference",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "display_after",
+      "wait": {
+        "submenu_phase": 16
+      },
+      "buttons": [
+        "A"
+      ],
+      "capture": true
+    },
+    {
+      "name": "display_choice_again",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "display_native",
+      "wait": {
+        "submenu_selection": 0
+      },
+      "buttons": [
+        "UP"
+      ]
+    },
+    {
+      "name": "display_restored",
+      "wait": {
+        "submenu_phase": 16
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "video_back",
+      "wait": {
+        "submenu_phase": 14
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "controls_row",
+      "wait": {
+        "submenu_selection": 2
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "controls",
+      "wait": {
+        "submenu_phase": 17
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "capture_accept",
+      "wait": {
+        "submenu_phase": 20
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "accept_bound_x",
+      "wait": {
+        "submenu_phase": 17
+      },
+      "buttons": [
+        "X"
+      ]
+    },
+    {
+      "name": "capture_accept_x",
+      "wait": {
+        "submenu_phase": 20
+      },
+      "buttons": [
+        "X"
+      ]
+    },
+    {
+      "name": "capture_cancel",
+      "wait": {
+        "submenu_phase": 17
+      },
+      "buttons": [
+        "LEFT"
+      ]
+    },
+    {
+      "name": "controls_next_0",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "controls_next_1",
+      "wait": {
+        "submenu_selection": 2
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "controls_next_2",
+      "wait": {
+        "submenu_selection": 3
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "controls_next_3",
+      "wait": {
+        "submenu_selection": 4
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "controls_next_4",
+      "wait": {
+        "submenu_selection": 5
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "controls_next_5",
+      "wait": {
+        "submenu_selection": 6
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "controls_next_6",
+      "wait": {
+        "submenu_selection": 7
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "controls_next_7",
+      "wait": {
+        "submenu_selection": 8
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "controls_reset_confirm",
+      "wait": {
+        "submenu_phase": 19
+      },
+      "buttons": [
+        "X"
+      ]
+    },
+    {
+      "name": "controls_reset_yes",
+      "wait": {
+        "submenu_selection": 0
+      },
+      "buttons": [
+        "UP"
+      ]
+    },
+    {
+      "name": "controls_default",
+      "wait": {
+        "submenu_phase": 17
+      },
+      "buttons": [
+        "X"
+      ]
+    },
+    {
+      "name": "controls_back",
+      "wait": {
+        "submenu_phase": 14
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "language_row",
+      "wait": {
+        "submenu_selection": 3
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "language",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "language_other",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "language_apply",
+      "wait": {
+        "submenu_phase": 14
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "general_back",
+      "wait": {
+        "submenu_phase": 12
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "title_row",
+      "wait": {
+        "submenu_selection": 2
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "title_confirm",
+      "wait": {
+        "submenu_phase": 19
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "title_no",
+      "wait": {
+        "submenu_phase": 12
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "quit_row",
+      "wait": {
+        "submenu_selection": 3
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "quit_confirm",
+      "wait": {
+        "submenu_phase": 19
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "quit_no",
+      "wait": {
+        "submenu_phase": 12
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "options_back",
+      "wait": {
+        "menu_phase": 2,
+        "submenu_phase": 0
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "closed",
+      "wait": {
+        "menu_phase": 0,
+        "paused": 0
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "select_safe",
+      "wait": {
+        "menu_phase": 0,
+        "paused": 0,
+        "width": 400,
+        "height": 240
+      },
+      "buttons": [
+        "SELECT"
+      ]
+    },
+    {
+      "name": "basement_exit",
+      "wait": {
+        "house_phase": 0
+      },
+      "buttons": [
+        "UP"
+      ],
+      "hold_until": {
+        "player_x": 96,
+        "player_y": 705
+      }
+    },
+    {
+      "name": "living_walk",
+      "wait": {
+        "house_phase": 0,
+        "player_x": 96,
+        "player_y": {
+          "min": 798,
+          "max": 807
+        }
+      },
+      "buttons": [
+        "DOWN"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": 798,
+          "max": 802
+        }
+      }
+    },
+    {
+      "name": "front_walk",
+      "wait": {
+        "house_phase": 0,
+        "player_x": {
+          "min": 134,
+          "max": 144
+        },
+        "player_y": {
+          "min": 798,
+          "max": 807
+        }
+      },
+      "buttons": [
+        "RIGHT"
+      ],
+      "hold_until": {
+        "player_x": {
+          "min": 134,
+          "max": 138
+        }
+      }
+    },
+    {
+      "name": "field_entry",
+      "wait": {
+        "field_scene": 2,
+        "field_phase": 0,
+        "paused": 0
+      },
+      "buttons": [
+        "DOWN"
+      ],
+      "hold_until": {
+        "field_scene": 2
+      }
+    },
+    {
+      "name": "field_clear_door",
+      "wait": {
+        "field_scene": 2,
+        "field_phase": 0,
+        "paused": 0,
+        "player_x": 8,
+        "player_y": {
+          "min": -19,
+          "max": -10
+        }
+      },
+      "buttons": [
+        "DOWN"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": -19,
+          "max": -15
+        }
+      }
+    },
+    {
+      "name": "field_pause",
+      "wait": {
+        "menu_phase": 2,
+        "menu_command": 0,
+        "field_scene": 2
+      },
+      "buttons": [
+        "START"
+      ]
+    },
+    {
+      "name": "field_status_col",
+      "wait": {
+        "menu_command": 1
+      },
+      "buttons": [
+        "RIGHT"
+      ]
+    },
+    {
+      "name": "field_status_row",
+      "wait": {
+        "menu_command": 3
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "field_status",
+      "wait": {
+        "submenu_phase": 8
+      },
+      "buttons": [
+        "A"
+      ],
+      "capture": true
+    },
+    {
+      "name": "field_status_back",
+      "wait": {
+        "menu_phase": 2
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "field_map_row",
+      "wait": {
+        "menu_command": 5
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "field_map_col",
+      "wait": {
+        "menu_command": 4
+      },
+      "buttons": [
+        "LEFT"
+      ]
+    },
+    {
+      "name": "field_map",
+      "wait": {
+        "submenu_phase": 11
+      },
+      "buttons": [
+        "A"
+      ],
+      "capture": true
+    },
+    {
+      "name": "field_map_back",
+      "wait": {
+        "menu_phase": 2
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "field_options_col",
+      "wait": {
+        "menu_command": 5
+      },
+      "buttons": [
+        "RIGHT"
+      ]
+    },
+    {
+      "name": "field_options",
+      "wait": {
+        "submenu_phase": 12
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_general_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "field_general",
+      "wait": {
+        "submenu_phase": 14
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_video_row",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "field_display_before",
+      "wait": {
+        "submenu_phase": 16
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_display_choice",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_reference",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "field_display_changed",
+      "wait": {
+        "submenu_phase": 16,
+        "width": 320,
+        "height": 180,
+        "field_scene": 2,
+        "hp": 65,
+        "pp": 22,
+        "inventory_count": 1,
+        "key_count": 5
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_display_choice_again",
+      "wait": {
+        "submenu_phase": 18
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "field_native",
+      "wait": {
+        "submenu_selection": 0
+      },
+      "buttons": [
+        "UP"
+      ]
+    },
+    {
+      "name": "field_display_restored",
+      "wait": {
+        "submenu_phase": 16
+      },
+      "buttons": [
+        "A"
+      ],
+      "same_as": "field_display_before"
+    },
+    {
+      "name": "field_video_back",
+      "wait": {
+        "submenu_phase": 14
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "field_general_back",
+      "wait": {
+        "submenu_phase": 12
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "field_options_back",
+      "wait": {
+        "menu_phase": 2
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "field_close",
+      "wait": {
+        "menu_phase": 0,
+        "paused": 0,
+        "field_scene": 2
+      },
+      "buttons": [
+        "B"
+      ]
+    },
+    {
+      "name": "title_exit_pause",
+      "wait": {
+        "menu_phase": 2,
+        "menu_command": 0
+      },
+      "buttons": [
+        "START"
+      ]
+    },
+    {
+      "name": "title_exit_row",
+      "wait": {
+        "menu_command": 4
+      },
+      "buttons": [
+        "UP"
+      ]
+    },
+    {
+      "name": "title_exit_options",
+      "wait": {
+        "menu_command": 5
+      },
+      "buttons": [
+        "RIGHT"
+      ]
+    },
+    {
+      "name": "title_exit_open",
+      "wait": {
+        "submenu_phase": 12
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "title_exit_general",
+      "wait": {
+        "submenu_selection": 1
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "title_exit_choice",
+      "wait": {
+        "submenu_selection": 2
+      },
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "title_exit_confirm",
+      "wait": {
+        "submenu_phase": 19
+      },
+      "buttons": [
+        "A"
+      ]
+    },
+    {
+      "name": "title_exit_yes",
+      "wait": {
+        "submenu_selection": 0
+      },
+      "buttons": [
+        "UP"
+      ]
+    },
+    {
+      "name": "returned_title",
+      "wait": {
+        "title_phase": 1,
+        "menu_phase": 0,
+        "submenu_phase": 0
+      },
+      "buttons": [
+        "A"
+      ],
+      "audio_progress": true,
+      "expected_music": 1202,
+      "capture": true
+    }
+  ]
+}

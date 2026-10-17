@@ -6,6 +6,7 @@
 #include <new>
 #include <array>
 #include <string>
+#include <string_view>
 #include <vector>
 #include "encore/load_progress.hpp"
 
@@ -97,6 +98,17 @@ inline bool loading_menu_flavor_configure(const std::vector<std::string>&paths,c
 }
 inline uint32_t loading_menu_flavor_selected(){return loading_menu_flavor_detail::selected;}
 inline bool loading_menu_flavor_select(uint32_t index){using namespace loading_menu_flavor_detail;if(index>=palettes.size())return false;if(index==selected)return true;selected=index;for(auto*sheet:sheets)apply(sheet);return true;}
+// Checked native UI schemas can admit their own panel bindings after startup.
+// The caller supplies the exact resource path of a reviewed panel operation;
+// nothing scans or recolors unrelated world/actor sheets by matching pixels.
+// This is a GPU-idle operation, like selecting an existing palette.
+inline bool loading_menu_flavor_bind_panel(LoadingSpriteSheet sheet,std::string_view expected_path){
+ using namespace loading_menu_flavor_detail;
+ if(!sheet||palettes.empty()||expected_path.empty()||sheet->source_path!=expected_path||sheet->texture.fmt!=GPU_RGBA8||!sheet->texture.data||!sheet->texture.size||sheet->texture.size%4||std::find(sheets.begin(),sheets.end(),sheet)==sheets.end())return false;
+ if(!sheet->flavor_pixels.empty())return true; // Never rescan already recolored pixels.
+ const bool added=std::find(paths.begin(),paths.end(),expected_path)==paths.end();if(added)paths.emplace_back(expected_path);
+ if(!prepare(sheet)){if(added)paths.pop_back();return false;}apply(sheet);return true;
+}
 inline uint32_t loading_menu_flavor_color(uint32_t color){using namespace loading_menu_flavor_detail;if(selected==base_index||palettes.empty())return color;const auto alpha=color&0xff000000u;const int i=slot(color|0xff000000u);return i<0?color:(palettes[selected][size_t(i)]&0x00ffffffu)|alpha;}
 inline void loading_sprite_sheet_free(LoadingSpriteSheet sheet) {if(!sheet||--sheet->references)return;auto&v=loading_menu_flavor_detail::sheets;v.erase(std::remove(v.begin(),v.end(),sheet),v.end());delete sheet;}
 

@@ -10,6 +10,7 @@ class CutsceneCamera {
 public:
     bool initialize(const RoomView& content,Vec2 player,Vec2 viewport={400,240});
     bool relocate_player(Vec2 player);
+    bool resize_viewport(Vec2 viewport);
     bool is_shaking()const{return !current().shakes.empty()||!current().recoveries.empty();}
     bool change_to_dialogue(){return change_to_actor(kRoomNoIndex,{});}
     bool change_to_actor(Vec2 target); // Legacy single-actor caller uses actor id 0.

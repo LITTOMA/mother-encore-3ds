@@ -1,0 +1,41 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "tool_sha256": "e19203c997745d699c6ffcfe6de0df7964cb16ca49dfc2abb1b1ce64de6ab6e7",
+  "sources": {
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/UI/Options/OptionsUI.gd": "3a7ed05264be2144d8e70fac35ba882ef5593eaa6bce013db916c98c6c529b31",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731"
+  },
+  "methods_sha256": {
+    "Scripts/global/Inventory.gd:get_items": "f6da968412a2f2273ae057876f3679fb8028ea2f3d730ba0392c5857a1be5a72",
+    "Scripts/global/Inventory.gd:drop_item": "d0a46f5c1f5a571382a8d4e103340e89787aec29e7bd1f653c70bb5130b01473",
+    "Scripts/global/Inventory.gd:reduce_or_drop_item": "1accf265d4ddf267d5d60203fd9b052367dc3eaba3b7e7c045be823f1cea51e9",
+    "Scripts/global/Inventory.gd:_sort_auto": "f639f00cde55bbcb9cbeb00256c54518b0992d1b3858e44a4fba35c031a1180e",
+    "Scripts/global/Inventory.gd:sort_auto": "02aadd9694f333b8379964f4316346029d5537726f76f4952aae558bbc45bad7",
+    "Scripts/global/Inventory.gd:switch_items": "7733fc7e7d8227343d055b05eb65e847509c7bc40c5e51672781438b90f3bb07",
+    "Scripts/global/Inventory.gd:consume_item": "c911eb19ccbf833d0b2162a8c4791a007bbca4ec4f4087ac1d0b71edbd8e7a98",
+    "Scripts/global/Inventory.gd:get_boost_total": "5db133fb5984bd60a01681b0a47ed3b290694cfcc94c2bd6d59d16c63c5f13eb",
+    "Scripts/UI/Options/OptionsUI.gd:_volume_units_to_db": "3b70b70955d196ed24c5747c58b65b8d167dccfafc61ae33eac420dc27af2d9b",
+    "Scripts/UI/Options/OptionsUI.gd:_volume_db_to_units": "ec8dfa8102de65d11c4b05755afc574b56abbec868cb53127060012a83b1db1e"
+  },
+  "reference_sha256": "02a61f3704bdf1b7cb5b0d69417225d4a8cbffdc83f3ccf3c13d65ad09df1237",
+  "generated_scripts_sha256": {
+    "item.gd": "0da3f3181354a0dffbc51686f77187af27b38d205ccedbe0116a3f44ce72a0cc",
+    "character.gd": "57bf307f852c0a733889cbe5324a56819b188f2cfabb30dbd76d6f1904dac134",
+    "inventory.gd": "ca0a8d388b8bda7090ba94c27d74104e8568f51ef47e0992909c27d62c7d7995",
+    "options.gd": "c1377b8cf5244b306f23a374e3ef517dfc3a2d21c52d19e9587f0695731b9caf",
+    "probe.gd": "cd911bc791b96ec533cd4e70c7d32606039e71574bf7802b83b5b6ce07480355"
+  },
+  "fixture_sha256": "54a7cff093c332c2a566b87c9208ebfbef5edba61982be095add6221ef9ba7ea",
+  "adapters": [
+    "Item dictionaries are pinned YAML; item identity, get_data and equippable lookup are bounded adapters without RNG",
+    "Character has no asthma, no boosts and fixed HP/PP; source consume_item executes its real failure and dose removal branches",
+    "Only sorting, manual swap, consumption, drop and volume conversion methods execute; no original UI rendering/input/audio or full-game claim"
+  ],
+  "scope": "Bounded source inventory and options methods; START controller integration is tested separately in the native emulator"
+}

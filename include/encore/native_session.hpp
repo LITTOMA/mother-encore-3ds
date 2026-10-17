@@ -30,6 +30,7 @@ struct NativeSessionKeyAcquisition {
     uint32_t doses=0,flag_policy=1; // 1: story flag; schema 7 also admits 2: object flag.
 };
 struct NativeSessionSkillAcquisition {std::string skill_id,flag_id;};
+struct NativeSessionFieldItem {std::string item_id;uint32_t doses=0;bool drop=false,consume=false;};
 class NativeSessionData {
 public:
     bool load(const uint8_t*,size_t,std::string&);
@@ -59,6 +60,8 @@ public:
     const std::vector<NativeSessionSkillAcquisition>& skill_acquisitions()const{return skill_acquisitions_;}
     const std::vector<std::string>& skill_order()const{return skill_order_;}
     const std::vector<NativeSessionKeyAcquisition>& key_acquisitions()const{return key_acquisitions_;}
+    const std::vector<NativeSessionFieldItem>&field_items()const{return field_items_;}
+    bool description_toggle()const{return description_toggle_;}
 private:
     std::vector<double> text_speeds_;
     std::vector<std::string> menu_flavors_,button_prompts_;
@@ -74,6 +77,7 @@ private:
     uint32_t storage_capacity_=0;std::vector<NativeSessionStoragePolicy>storage_policies_;
     std::vector<NativeSessionKeyAcquisition>key_acquisitions_;
     std::vector<NativeSessionSkillAcquisition>skill_acquisitions_;std::vector<std::string>skill_order_;
+    std::vector<NativeSessionFieldItem>field_items_;bool description_toggle_=false;
 };
 // Checked source add_skill: idempotent insertion with data-defined ordering.
 bool native_session_learn_skill(const NativeSessionData&,std::string_view,std::vector<std::string>&,std::string&);

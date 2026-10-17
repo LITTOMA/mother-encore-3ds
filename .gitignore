@@ -310,6 +310,7 @@ cookies.json
 !reports/podunk-camera/*.png
 
 # Actual basement emulator evidence (no private emulator profile or DSP files).
+!/reports/field-menus-source/source-review.json
 !reports/basement-items/validation/
 !reports/basement-items/validation/*.json
 !reports/basement-items/validation/*.png
@@ -322,3 +323,10 @@ cookies.json
 !/reports/field-atlas-residency/**/*.py
 !/reports/field-atlas-residency/*.json
 !/reports/field-atlas-residency/*.py
+
+# Bounded menu verification receipts; never emulator profiles or DSP binaries.
+!reports/field-menus-validation/
+!reports/field-menus-validation/**/
+!reports/field-menus-validation/**/*.json
+!reports/field-menus-validation/**/*.log
+!reports/field-menus-validation/**/*.png

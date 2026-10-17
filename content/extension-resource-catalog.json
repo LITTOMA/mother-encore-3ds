@@ -55,6 +55,11 @@
       "id": 39,
       "role": "FieldMusicZones",
       "path": "sound/banks/podunk.enczones"
+    },
+    {
+      "id": 40,
+      "role": "FieldMenus",
+      "path": "ui/field.encmenus"
     }
   ]
 }

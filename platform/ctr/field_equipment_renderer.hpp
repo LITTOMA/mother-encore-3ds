@@ -3,6 +3,7 @@
 #include "item_details_renderer.hpp"
 #include "loading_texture.hpp"
 #include "encore/field_equipment_menu.hpp"
+#include "encore/field_menus.hpp"
 #include "encore/localization.hpp"
 #include "encore/utf8.hpp"
 #include <algorithm>
@@ -38,7 +39,7 @@ class FieldEquipmentRenderer {
     static uint32_t color(encore::upstream::BattleValue value){return encore::ctr::loading_menu_flavor_color(C2D_Color32f(value.x,value.y,value.z,value.w));}
     static bool plain(std::string_view text){
         size_t cursor=0;uint32_t cp=0;
-        while(cursor<text.size())if(!encore::utf8_next(text,cursor,cp)||cp=='['||cp==']'||(cp<32&&cp!='\n'))return false;
+        while(cursor<text.size())if(!encore::utf8_next(text,cursor,cp)||(cp<32&&cp!='\n'))return false;
         return true;
     }
     static bool acquire(Asset& asset,const encore::upstream::BattleResource& r,std::string_view path,const char* root,std::string& error){
@@ -140,14 +141,55 @@ public:
             if(l.parent!=none||l.role<uint32_t(Role::PausePanel)||l.role>uint32_t(Role::PsiCursor)||l.kind<uint32_t(Kind::Container)||l.kind>uint32_t(Kind::Text)||(l.flags&~(uint32_t(encore::upstream::ItemLayoutFlag::Centered)|uint32_t(encore::upstream::ItemLayoutFlag::Visible)))){error="Unsupported field equipment layout operation";return false;}
             candidate.layouts_.push_back(l);
         }
-        C3D_FrameSync();std::swap(data_,candidate.data_);std::swap(items_,candidate.items_);assets_.swap(candidate.assets_);layouts_.swap(candidate.layouts_);error_.clear();return true;
+        C3D_FrameSync();
+        // All accepted NinePatch operations are source MenuFlavors panels.
+        // Their identities come from the checked layout/resource bindings;
+        // portraits, actors and other Sprite operations never join the palette.
+        for(const auto&l:candidate.layouts_)if(l.kind==uint32_t(Kind::NinePatch)){
+            if(l.resource>=candidate.assets_.size()||!encore::ctr::loading_menu_flavor_bind_panel(candidate.assets_[l.resource].sheet,data.string(data.resource(l.resource).image.path))){error="Field menu panel palette binding rejected";return false;}
+        }
+        std::swap(data_,candidate.data_);std::swap(items_,candidate.items_);assets_.swap(candidate.assets_);layouts_.swap(candidate.layouts_);error_.clear();return true;
     }
     void free(){
         if(!assets_.empty())C3D_FrameSync();for(auto& asset:assets_)if(asset.sheet)encore::ctr::loading_sprite_sheet_free(asset.sheet);
         assets_.clear();layouts_.clear();data_={};items_={};error_.clear();
     }
     bool draw(const Menu& menu,const BattleRenderer& main_font,const BattleRenderer& number_font,float width,float height,float left=0,float top=0)const;
+    bool draw_submenu(const encore::upstream::FieldMenus& menu,const BattleRenderer& font,float width,float height,float left=0,float top=0)const;
 };
+
+inline bool FieldEquipmentRenderer::draw_submenu(const encore::upstream::FieldMenus& menu,const BattleRenderer& font,float width,float height,float left,float top)const{
+    if(!menu.active())return true;const auto* data=menu.content();if(!data||!data_.valid())return fail("Field submenu presentation unavailable");
+    const auto page=menu.page();const auto&reference=data->display_sizes[1];const float dx=left+(width-reference[0])/2,dy=top+(height-reference[1])/2;
+    clip_left_=dx;clip_top_=dy;clip_right_=dx+reference[0];clip_bottom_=dy+reference[1];
+    // EquipmentPanel is the pale outer backing; DescriptionPanel carries the
+    // source dark fill and border required behind normal menu text.
+    const auto* source=layout(Role::DescriptionPanel);if(!source)return fail("Field submenu source panel missing");
+    auto panel=*source;const auto&box=data->geometry[0];panel.rect={box.x,box.y,box.w,box.h};if(!art(panel,dx,dy))return false;
+    auto write=[&](std::string_view s,float x,float y,float w,float h,bool right=false,bool disabled=false){Layout l{};l.role=uint32_t(Role::DescriptionText);l.kind=uint32_t(Kind::Text);l.color={1,1,1,1};if(disabled){const auto* dim=layout(Role::SlotLabel);if(!dim)return false;l.color=dim->color;}l.rect={x,y,w,h};return text(font,l,s,dx,dy,false,false,right);};
+    const auto&header=data->geometry[1];const auto&body=data->geometry[2];auto desc=data->geometry[3];const auto&footer=data->geometry[4];
+    if(!write(page.title+(page.subtitle.empty()?std::string{}:" - "+page.subtitle),header.x,header.y,header.w,header.h))return false;
+    const uint32_t capacity=data->rows*(page.grid?data->columns:1);
+    for(uint32_t i=page.offset;i<page.lines.size()&&i<page.offset+capacity;++i){const auto&line=page.lines[i];const auto row=i-page.offset;
+        const float x=body.x+(page.grid?row%data->columns*data->column_pitch:0),y=body.y+(page.grid?row/data->columns:row)*data->row_pitch;
+        const float span=page.grid?data->column_pitch-4:body.w;const float value_width=line.value.empty()?0:std::min(span/2,font.text_width(line.value.c_str())+4);
+        float badge_width=0;if(line.equipped){const auto* badge=layout(Role::PortraitEquipped);if(!badge)return fail("Field equipped marker missing");auto b=*badge;badge_width=b.rect.z;b.rect.x=x+span-value_width-b.rect.z;b.rect.y=y+(data->row_pitch-b.rect.w)/2;if(!art(b,dx,dy))return false;}
+        if(!write(line.label,x,y,span-value_width-badge_width,data->row_pitch,false,line.disabled))return false;if(value_width&&!write(line.value,x+span-value_width,y,value_width,data->row_pitch,true,line.disabled))return false;
+        if(page.cursor&&i==page.selected){const auto* cursor=layout(Role::CandidateCursor);if(!cursor)return fail("Field submenu source cursor missing");auto c=*cursor;c.rect.x=x-data->geometry[5].w;c.rect.y=y+data->geometry[5].y-body.y;c.rect.z=data->geometry[5].w;c.rect.w=data->geometry[5].h;if(!art(c,dx,dy))return false;}
+    }
+    const auto shown=std::min(uint32_t(page.lines.size())-std::min(page.offset,uint32_t(page.lines.size())),capacity);
+    const auto occupied=page.grid?(shown+data->columns-1)/data->columns:shown;
+    const float description_y=std::min(desc.y,body.y+(occupied+1)*data->row_pitch);desc.h+=desc.y-description_y;desc.y=description_y;
+    // Wrap by admitted source glyph advances; no system-font substitution.
+    std::string wrapped,line;size_t at=0;uint32_t cp=0;
+    while(at<page.description.size()){auto begin=at;if(!encore::utf8_next(page.description,at,cp))return fail("Field submenu description UTF-8 rejected");const std::string glyph=page.description.substr(begin,at-begin);
+        if(cp=='\n'){wrapped+=line+'\n';line.clear();continue;}if(!line.empty()&&font.text_width((line+glyph).c_str())>desc.w){wrapped+=line+'\n';line.clear();}line+=glyph;}
+    wrapped+=line;
+    if(page.has_item_description){if(!details_||!details_->ready()||!details_->draw(page.described_item,font,dx+desc.x,dy+desc.y,desc.w,desc.h))return fail("Field item description rejected");}
+    else if(!write(wrapped,desc.x,desc.y,desc.w,desc.h))return false;
+    if(!write(page.footer,footer.x,footer.y,footer.w,footer.h))return false;
+    return true;
+}
 
 inline bool FieldEquipmentRenderer::draw(const Menu& menu,const BattleRenderer& main_font,const BattleRenderer& number_font,float width,float height,float left,float top)const{
     if(!menu.visible())return true;error_.clear();

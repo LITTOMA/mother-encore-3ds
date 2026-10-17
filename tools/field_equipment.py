@@ -110,7 +110,7 @@ def build(root=ROOT):
     commands=[]
     for i,(name,key) in enumerate(zip(('Goods','PSI','Equip','Status','Map','Options'),('MENU_GOODS','MENU_PSI','MENU_EQUIP','MENU_STATUS','MENU_MAP','MENU_OPTIONS'))):
         require(node(pause,'menu/Commands/Items/'+name)['text']==key,'Field command translation binding')
-        commands.append(dict(id=i+1,labels=text(key),enabled=i in (1,2)))
+        commands.append(dict(id=i+1,labels=text(key),enabled=True))
     slots=[dict(id=i+1,source=source,labels=text('EQUIP_'+source.upper())) for i,source in enumerate(('weapon','body','arms','other'))]
     for part in ('SlotArrow','ItemListPanel/ItemArrow'):
         require(node(equip,'EquipMenu/Box/Panels/Slots/'+part)['loop_around'],'Field slot/list wrapping changed')
@@ -193,7 +193,7 @@ def build(root=ROOT):
 def recipe(ir):return dict(schema=1,kind='encore.field-equipment.asset-recipe',commit=PIN,sources=ir['sources'],resources=ir['resources'],licence_review='Pinned upstream LICENSE permits game-related modifications; art/font/audio retain upstream notices, not MIT.')
 def extract(root=ROOT):
     root=Path(root);ir=build(root);write_json(root/IR,ir);write_json(root/RECIPE,recipe(ir))
-    write_json(root/REVIEW,dict(schema=1,commit=PIN,ir_sha256=digest(root/IR),sources=ir['sources'],scope=ir['scope'],semantics=['Stable numeric OwnerId and source party name come from the checked Items identity adapter; they are separate from string-pool offsets','Pause six commands in original row-major order; Equip and field PSI admitted; source cancel/select closes Pause; Equip cancel returns Pause','Field PSI uses source Telepathy name/description, learned skill identity and level-2 condition, Self field-only use case, zero PP cost, menu-open/close/confirm sounds and original Y animation; the silent close emits one field action after animation completion; level-1 PSI list contains no Telepathy; story-acquired Lifeup-alpha is listed independently','Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty','Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost','Original EBMain/BottleRocket faces, source numeric spacing, original PNG textures, 5fps 0/1/2/1 cursor and0.1sec quart-out movement; Pause cash uses EBMain right alignment and source black text','PanelContainer StyleBox draw bounds use original expand margins separately from child content; source Pause title ColorRect is drawn behind text and grows by the admitted localized glyph width; Equip outer texture remains original defaultempty','Source Y animation keys/easing retained; description absolute132px normalized to relative offsets, source timeline remains in IR','Source320x180 rectangles at1:1 centered for400x240; bounded singleton auto-size adaptation recorded explicitly; no claim of exact Godot container pixel parity','Native START/A/B/L masks map source select/accept/cancel/scope; no keycode copied into C++','English source U+200B right-currency placeholder is explicitly rendered empty; no new glyph invented'],unsupported=['Goods, Status, Map and Options','Other characters/equipment/items','Battle item action and asthma statuses','Other character tabs, PSI character-bar backing, remaining backing ornaments and Pause info plates/audio muffle remain outside this slice'],unverified=['Tests retained but not run','Emulator and physical3DS visual/input/audio/save acceptance pending']))
+    write_json(root/REVIEW,dict(schema=1,commit=PIN,ir_sha256=digest(root/IR),sources=ir['sources'],scope=ir['scope'],semantics=['Stable numeric OwnerId and source party name come from the checked Items identity adapter; they are separate from string-pool offsets','Pause six commands in original row-major order; Equip and field PSI admitted; source cancel/select closes Pause; Equip cancel returns Pause','Field PSI uses source Telepathy name/description, learned skill identity and level-2 condition, Self field-only use case, zero PP cost, menu-open/close/confirm sounds and original Y animation; the silent close emits one field action after animation completion; level-1 PSI list contains no Telepathy; story-acquired Lifeup-alpha is listed independently','Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty','Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost','Original EBMain/BottleRocket faces, source numeric spacing, original PNG textures, 5fps 0/1/2/1 cursor and0.1sec quart-out movement; Pause cash uses EBMain right alignment and source black text','PanelContainer StyleBox draw bounds use original expand margins separately from child content; source Pause title ColorRect is drawn behind text and grows by the admitted localized glyph width; Equip outer texture remains original defaultempty','Source Y animation keys/easing retained; description absolute132px normalized to relative offsets, source timeline remains in IR','Source320x180 rectangles at1:1 centered for400x240; bounded singleton auto-size adaptation recorded explicitly; no claim of exact Godot container pixel parity','Native START/A/B/L masks map source select/accept/cancel/scope; no keycode copied into C++','English source U+200B right-currency placeholder is explicitly rendered empty; no new glyph invented'],unsupported=['Other characters/equipment/items','Battle item action and asthma statuses','Other character tabs, PSI character-bar backing, remaining backing ornaments and Pause info plates/audio muffle remain outside this slice'],unverified=['Tests retained but not run','Emulator and physical3DS visual/input/audio/save acceptance pending']))
     return ir
 
 def load(root=ROOT):
@@ -278,7 +278,7 @@ def lower(ir,receipt):
     out['Strings']=bytes(pool);validate(out);return out
 
 def encode(t):
-    validate(t);blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCFIE01',3,0,0,4,1,len(NAMES),bytes.fromhex(PIN))
+    validate(t);blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCFIE01',3,0,0,5,1,len(NAMES),bytes.fromhex(PIN))
     for i,name in enumerate(NAMES):
         while len(blob)%4:blob.append(0)
         data=t[name] if i==0 else b''.join(struct.pack(FORMATS[i],*r) for r in t[name]);struct.pack_into('<4I',blob,64+i*16,i+1,len(blob),len(t[name]),STRIDES[i]);blob.extend(data)
@@ -287,7 +287,7 @@ def encode(t):
 def parse_pack(blob):
     require(isinstance(blob,(bytes,bytearray)) and HEADER<=len(blob)<=1024*1024,'Field pack size')
     magic,schema,size,crc,caps,rules,count,pin=struct.unpack_from('<8s6I20s',blob)
-    require(magic==b'ENCFIE01' and schema==3 and caps==4 and rules==1 and size==len(blob) and count==len(NAMES) and pin.hex()==PIN and not any(blob[52:64]),'Field version/capabilities/pin')
+    require(magic==b'ENCFIE01' and schema==3 and caps==5 and rules==1 and size==len(blob) and count==len(NAMES) and pin.hex()==PIN and not any(blob[52:64]),'Field version/capabilities/pin')
     c=bytearray(blob);c[16:20]=b'\0'*4;require(zlib.crc32(c)&NIL==crc,'Field pack CRC');out={};end=HEADER
     for i,name in enumerate(NAMES):
         kind,start,num,stride=struct.unpack_from('<4I',blob,64+i*16)
@@ -324,7 +324,7 @@ def validate(t):
         else:require(all(not any(c in v for c in '\n\r[]{}') for v in values),'Field text controls')
     identities=[string(t['Bindings'][BINDINGS.index(name)][1]) for name in ('PsiSkillId','PsiBaseSkill0','PsiBaseSkill1')]
     require(len(set(identities))==3 and all(safe_path(s) for s in identities) and all(t['Bindings'][BINDINGS.index(name)][1]==t['Bindings'][BINDINGS.index(name)][2] for name in ('PsiSkillId','PsiBaseSkill0','PsiBaseSkill1')),'Field PSI skill identities')
-    for i,c in enumerate(t['Commands']):require(len(c)==4 and c[0]==i+1 and string(c[1]) and string(c[2]) and c[3]==int(i in (1,2)),'Field command grants')
+    for i,c in enumerate(t['Commands']):require(len(c)==4 and c[0]==i+1 and string(c[1]) and string(c[2]) and c[3]==1,'Field command grants')
     slot_names=set()
     for i,s in enumerate(t['Slots']):require(len(s)==4 and s[0]==i+1 and safe_path(string(s[1])) and string(s[1]) not in slot_names and string(s[2]) and string(s[3]),'Field slot identity');slot_names.add(string(s[1]))
     for e in t['Equipment']:require(len(e)==10 and integer(e[0],0,15) and safe_path(string(e[1])) and integer(e[2],0,3) and all(integer(v,-65535,65535) for v in e[3:]),'Field equipment policy')

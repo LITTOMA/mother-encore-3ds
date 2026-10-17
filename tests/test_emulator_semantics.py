@@ -9,8 +9,8 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient, CdbError
-from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection
-from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original, matches, Session
+from tools.semantic_probe import MAGIC, WIRE, WIRE_V7, MENU_FIELDS, FIELDS, decode, projection
+from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original, compare_repetitions, matches, Session
 
 
 def wire(**changes):
@@ -21,6 +21,13 @@ def wire(**changes):
 
 
 class WireBoundary(unittest.TestCase):
+    def test_menu_appendix_preserves_legacy_offsets(self):
+        base=wire(version=7,byte_size=WIRE_V7.size);extra={name:0 for name in MENU_FIELDS};extra.update(submenu_phase=12,submenu_selection=3,menu_master=10,menu_inventory_hash=123)
+        raw=base+b''.join(int(extra[name]).to_bytes(4,'little')for name in MENU_FIELDS)
+        result=decode(raw);self.assertEqual(result['version'],7);self.assertEqual(result['menu_inventory_hash'],123);self.assertEqual(result['submenu_phase'],12)
+        self.assertEqual(result['player_x'],decode(wire())['player_x'])
+        for changed in (raw[:-1],raw+b'\0',wire()+raw[-80:],base+b'\0'*76,raw[:12]+(764).to_bytes(4,'little')+raw[16:]):
+            with self.assertRaises(ValueError):decode(changed)
     def test_exact_wire_and_projection(self):
         state = decode(wire(width=400, height=240))
         self.assertEqual(projection(state, ['width', 'height']), {'width': 400, 'height': 240})
@@ -78,6 +85,25 @@ class WireBoundary(unittest.TestCase):
         with self.assertRaises(TimeoutError):s.repeat_input({'buttons':['A']},4,{'battle_active':0},2)
         self.assertEqual(s.advance.call_count,4)
         self.assertEqual(s.client.call.call_count,4)
+
+    def test_repetition_position_tolerance_is_explicit_and_bounded(self):
+        scenario=json.loads((ROOT/'tests/emulator/field-menus.json').read_text())
+        scenario['position_tolerance']=4;validate_scenario(scenario)
+        for value in (-1,5,True,1.5,float('nan'),'4',None):
+            bad=copy.deepcopy(scenario);bad['position_tolerance']=value
+            with self.assertRaises(ValueError):validate_scenario(bad)
+        bad=copy.deepcopy(scenario);bad['projection'].remove('player_x')
+        with self.assertRaises(ValueError):validate_scenario(bad)
+        base={'stop':{'player_x':8.,'player_y':-13.,'hp':65,'menu_uid_hash':123}}
+        moved=copy.deepcopy(base);moved['stop']['player_y']=-17.
+        with self.assertRaises(AssertionError):compare_repetitions(base,moved)
+        accepted=compare_repetitions(base,moved,4);self.assertEqual(len(accepted),1);self.assertEqual(accepted[0]['field'],'player_y')
+        for field,value in [('player_y',-18.),('player_y',float('nan')),('hp',64),('menu_uid_hash',124)]:
+            changed=copy.deepcopy(base);changed['stop'][field]=value
+            with self.assertRaises(AssertionError):compare_repetitions(base,changed,4)
+        for changed in ({},{'stop':{}},{'else':base['stop']}):
+            with self.assertRaises(AssertionError):compare_repetitions(base,changed,4)
+        with self.assertRaises(ValueError):compare_repetitions(base,base,5)
 
     def test_original_comparison_rejects_result_drift(self):
         original={'cases': {'pause_select_close': {'paused': False,'active': False}, 'pause_cancel_close': {'paused': False,'active': False}, 'psi_back': {'paused': True,'pause_active': True}, 'psi_unlearned': {'pp': 26,'skills': 0}}}
@@ -176,5 +202,33 @@ class SaveFixtureBoundary(unittest.TestCase):
         for edit in (lambda c:c['map_repeat'].update(key_count=4),lambda c:c['map_collected'].update(object_flag_count=0),lambda c:c['map_reentered'].update(present_opened_mask=0)):
             bad=copy.deepcopy(checkpoints);edit(bad)
             with self.assertRaises(AssertionError):compare_present(bad,source,{'base_key_count':2,'present_index':3})
+
+    def test_menu_fixture_has_its_own_exact_resource_contract(self):
+        import hashlib,tempfile
+        from tools.run_emulator_semantics import validate_save_fixture
+        resources=['session/opening.encsession','world/house/opening.encroom','world/house/opening.enchouse','world/house/opening.encpresent','ui/opening.encitems','battle/lamp/opening.encround','ui/field.encmenus','ui/opening.encdetails','ui/opening.encsettings','ui/opening.encfield']
+        with tempfile.TemporaryDirectory(dir=ROOT/'build')as directory:
+            base=Path(directory);(base/'menus.encsave').write_bytes(b'explicit test fixture');(base/'generator.log').write_bytes(b'validation log')
+            fixture=dict(schema=1,kind='encore.emulator-menu-fixture',source_commit='checked',upstream_commit='7d9246600fffe518408f5830d4848635019005a3',file='menus.encsave',sha256=hashlib.sha256((base/'menus.encsave').read_bytes()).hexdigest(),resources={name:hashlib.sha256((ROOT/'romfs'/name).read_bytes()).hexdigest()for name in resources},scope='Artificial unit fixture',execution=dict(generator_sha256='1'*64,producer_sha256='2'*64,log_sha256=hashlib.sha256((base/'generator.log').read_bytes()).hexdigest()))
+            manifest=base/'fixture.json';manifest.write_text(json.dumps(fixture));validate_save_fixture(manifest,{'source_commit':'checked'})
+            for edit in (lambda f:f.update(kind='unknown'),lambda f:f.update(base_key_count=5),lambda f:f['resources'].pop('ui/field.encmenus'),lambda f:f.update(schema=2)):
+                bad=copy.deepcopy(fixture);edit(bad);manifest.write_text(json.dumps(bad))
+                with self.assertRaises(ValueError):validate_save_fixture(manifest,{'source_commit':'checked'})
+
+    def test_menu_comparison_rejects_inventory_uid_display_and_return_drift(self):
+        from tools.run_emulator_semantics import compare_field_menus,menu_inventory_hash
+        rows=[dict(item_id='AsthmaSpray',doses=3,equipped=False),dict(item_id='BaseballCap',doses=1,equipped=True)]
+        consumed=copy.deepcopy(rows);consumed[0]['doses']=2
+        cases=dict(sorted_items=rows,consumed_items=consumed,exhausted_items=rows[1:],dropped_items=[])
+        original=dict(kind='field-menus',cases=cases)
+        checkpoints={name:dict(menu_inventory_hash=menu_inventory_hash(cases[case]),inventory_count=len(cases[case]),menu_uid_hash=123,hp=25,pp=26)for name,case in [('goods_sorted','sorted_items'),('goods_consumed','consumed_items'),('goods_exhausted','exhausted_items'),('goods_dropped','dropped_items')]}
+        checkpoints['display_before']=dict(player_x=88,player_y=977,menu_inventory_hash=1,key_count=5,menu_controls_hash=456)
+        checkpoints['display_after']=dict(checkpoints['display_before'],width=320,height=180)
+        checkpoints['controls_default']=dict(menu_controls_hash=456);checkpoints['closed']=dict(menu_phase=0,paused=0)
+        self.assertEqual(len(compare_field_menus(checkpoints,original)),8)
+        for name,field in [('goods_sorted','menu_inventory_hash'),('goods_consumed','menu_uid_hash'),('goods_consumed','hp'),('goods_exhausted','inventory_count'),('display_after','player_x'),('display_after','width'),('controls_default','menu_controls_hash'),('closed','paused')]:
+            bad=copy.deepcopy(checkpoints);bad[name][field]+=1
+            with self.assertRaises(AssertionError):compare_field_menus(bad,original)
+        with self.assertRaises(ValueError):compare_field_menus(checkpoints,dict(original,kind='present'))
 
 if __name__ == "__main__": unittest.main()

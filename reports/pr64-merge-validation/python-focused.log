@@ -1,0 +1,92 @@
+......................E....................................F..F.............F....F......
+======================================================================
+ERROR: test_semantics_are_bound_to_source (tests.test_field_menus.FieldMenuSourceTests.test_semantics_are_bound_to_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_field_menus.py", line 25, in test_semantics_are_bound_to_source
+    self.assertEqual(items['FleaBag']['sort_base'],600000)
+                     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'sort_base'
+
+======================================================================
+FAIL: test_four_process_overlap_dependencies_and_final_barrier (tests.test_content_parallelism.ContentParallelTests.test_four_process_overlap_dependencies_and_final_barrier)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_content_parallelism.py", line 23, in test_four_process_overlap_dependencies_and_final_barrier
+    self.run_graph(False)
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_content_parallelism.py", line 65, in run_graph
+    self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+AssertionError: 2 != 0 : CONTENT RUN 8e8c1225c22e4f768e66b62b46d92656
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" audio -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/restore_audio.py
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" gameplay-audio -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/gameplay_audio.py
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" music-zones -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/music_zones.py
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" bars -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/blackbars_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" input -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_input.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" phone -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_phone.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" effects -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/world_effect_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" doll-entry -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/doll_entry_asset.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" pillow-entry -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/pillow_entry_asset.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" round -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_round.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" doll-round -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/doll_round.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" pillow-round -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/pillow_round.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" house -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_house.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" mick-treats -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/mick_treats.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" items-check -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/items_assets.py verify
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" migration -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/session_migration.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" continue -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/continue_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" loading -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/loading_indicator_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" naming -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/new_game_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" settings -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/startup_settings_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" prompts -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/house_button_prompt_assets.py verify
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" bridge-entry -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/bridge_entry.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" introduction -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_introduction.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py" settings-check -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/startup_settings_assets.py verify
+Traceback (most recent call last):
+  File "C:\Users\litto\AppData\Local\Temp\tmpy8y4cnnp\task.py", line 8, in <module>
+    assert task in producers + ['catalog','encounters'], ('unknown content task',task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('unknown content task', 'bridge-entry')
+make: *** [D:\GameDev\3DS\mother-encore-3ds\make\native-content.mk:44: bridge-entry] Error 1
+make: *** Waiting for unfinished jobs....
+
+
+======================================================================
+FAIL: test_actual_manifest_and_source_loop (tests.test_audio_asset.AudioAssetTests.test_actual_manifest_and_source_loop)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_audio_asset.py", line 62, in test_actual_manifest_and_source_loop
+    self.assertEqual(len(bank['assets']),54)
+AssertionError: 57 != 54
+
+======================================================================
+FAIL: test_existing_font_box_cursor_are_checked_references (tests.test_items_assets.ItemsAssetsTests.test_existing_font_box_cursor_are_checked_references)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_items_assets.py", line 86, in test_existing_font_box_cursor_are_checked_references
+    self.assertEqual(set(self.ir['dependencies']),{'content/asset-receipts/graphics/battle/lamp/source.json','content/asset-receipts/graphics/battle/round/source.json','content/asset-receipts/graphics/items/source.json','content/native-drawer-item.json','content/drawer-item-assets.json','content/basement-items.json','content/asset-receipts/graphics/basement/source.json'})
+AssertionError: Items in the first set but not the second:
+'content/asset-receipts/graphics/ui/field-rewards/source.json'
+'content/field-rewards.json'
+
+======================================================================
+FAIL: test_original_inventory_and_resolved_description (tests.test_items_assets.ItemsAssetsTests.test_original_inventory_and_resolved_description)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_items_assets.py", line 30, in test_original_inventory_and_resolved_description
+    self.assertEqual([d['source']for d in self.ir['definitions']],['BaseballCap','AsthmaSpray','BatPlastic'])
+AssertionError: Lists differ: ['BaseballCap', 'AsthmaSpray', 'BatPlastic', 'FleaBag'] != ['BaseballCap', 'AsthmaSpray', 'BatPlastic']
+
+First list contains 1 additional elements.
+First extra element 3:
+'FleaBag'
+
+- ['BaseballCap', 'AsthmaSpray', 'BatPlastic', 'FleaBag']
+?                                            -----------
+
++ ['BaseballCap', 'AsthmaSpray', 'BatPlastic']
+
+----------------------------------------------------------------------
+Ran 88 tests in 78.009s
+
+FAILED (failures=4, errors=1)
+Verified source-pinned Items art, IR dependencies and native layout provenance

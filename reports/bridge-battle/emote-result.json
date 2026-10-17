@@ -1,0 +1,28 @@
+{
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "ended_playing": false,
+  "ended_frame": 64,
+  "ended_visible": true,
+  "replacement_frame": 85,
+  "replacement_playing": true,
+  "source_left_scale": -1,
+  "sources": {
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03"
+  },
+  "godot_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "probe_sha256": "053990505d255bd3a9314f2de1c0d1b6fb8bdb7df2ee377a2c20cbade8185de1",
+  "scope": "Original unchanged emotes.tscn, manual native 60 Hz clock; final-frame retention and subsequent play replacement only; no full game/pixel comparison"
+}

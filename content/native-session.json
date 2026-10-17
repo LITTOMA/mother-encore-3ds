@@ -1,5 +1,8 @@
 {
-  "schema": 9,
+  "schema": 10,
+  "field_encounters": [
+    "straydog"
+  ],
   "skill_acquisitions": [
     {
       "skill_id": "lifeUpA",
@@ -58,6 +61,21 @@
         0,
         0
       ]
+    },
+    {
+      "item_id": "FleaBag",
+      "doses": 1,
+      "total_count": 1,
+      "required": false,
+      "boosts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
     }
   ],
   "acquisitions": [
@@ -73,6 +91,13 @@
       "flag_id": "Ninten's House/Present2",
       "max_count": 1,
       "flag_policy": 2
+    },
+    {
+      "item_id": "FleaBag",
+      "doses": 1,
+      "max_count": 1,
+      "flag_id": "beat_dog_bridge",
+      "flag_policy": 1
     }
   ],
   "key_acquisitions": [
@@ -134,7 +159,7 @@
   },
   "kind": "encore.native-session.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Single live party member; source normal/object/key acquisitions and story-learned skills; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot",
+  "scope": "Single live party member; source normal/object/key acquisitions and story-learned skills; complete inactive startup naming roster; connected native house rooms and checked Podunk encounter rewards/flags; saves return through House authority; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot",
   "compatibility": {
     "content_family": 1162739714,
     "content_revision": 1,
@@ -2450,6 +2475,7 @@
   "saved_flag": "saved",
   "earned_cash_flag": "earned_cash",
   "mutable_flags": [
+    "beat_dog_bridge",
     "carol_ask_key",
     "doll_attack",
     "doll_defeated",
@@ -2468,6 +2494,7 @@
     "ninten_basement_door",
     "phone_ring",
     "pillow_attack",
+    "pippis_mom_call",
     "poltergeist",
     "saved",
     "talked_to_dad"
@@ -2497,20 +2524,23 @@
     "Data/Items/KickMeNote.yaml": "3d1481a5d1eac9a119e804a1d7d4924bfca03a25c29376a01586596a46d43165",
     "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633",
     "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
-    "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731"
+    "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
+    "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5"
   },
   "dependencies": {
     "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
     "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
-    "content/native-items.json": "347abe721100ab995cce7a07f6a7949c772f9ff66ffb2416af9cfc6523ccd397",
+    "content/native-items.json": "e3e432d9292f1b74f565a7aca71f41a15cd7397ccd9323700e6a919aa5219986",
     "content/native-round.json": "ab87e11454c423b38d251c8ab005935415daebfe22ef7ed441c09ed3e32228ea",
     "content/doll-round.json": "f9332a1936a50ab813dc403ecae6834d569a7dd36f774c5c29112bfd6eb7e4f0",
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
     "content/house-presents.json": "332d984bc2332f2b43fa49d814a38a0c84ee4ed79a02eb46f80c4da38452831a",
     "content/mick-treats.json": "ddd908fbfd963a18cfb27978288bd7579e5cd9c8f2c34e7fa23722416bfc2931",
-    "content/native-storage.json": "414c0c4bc096987509e167d63e454c21e1f5a07002ad1ee91f10a7367aba3862",
-    "content/diary-story.json": "b9e93337b086ad2b951a8a6861d8020a70bd848b7ebd415d140b98d07b317409"
+    "content/native-storage.json": "15c7144c455736ed3aebc6c96c16f9959a3362f93aec26e688236cc88548ab88",
+    "content/field-rewards.json": "ae5f4844457bff31732cebd05aa0c03a4cb35ef9bc7f09e4d577898c580754c3",
+    "content/diary-story.json": "b9e93337b086ad2b951a8a6861d8020a70bd848b7ebd415d140b98d07b317409",
+    "content/podunk-story.json": "0d53438ee7e9f33e72f4d975e19a855d0dce85b473bc15b8bbcd1a9d12d091f7"
   },
   "field_items": [
     {
@@ -2527,6 +2557,12 @@
     },
     {
       "item_id": "BatPlastic",
+      "doses": 1,
+      "drop": true,
+      "consume": false
+    },
+    {
+      "item_id": "FleaBag",
       "doses": 1,
       "drop": true,
       "consume": false

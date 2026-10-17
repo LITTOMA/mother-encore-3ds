@@ -38,6 +38,11 @@ Vec2 rounded_dir(Vec2 v){
 }
 }
 uint32_t MickView::count(MickSection s)const{const auto k=uint32_t(s);return bytes_&&k>=1&&k<=kMickSectionCount?u32(bytes_+header_bytes+(k-1)*16+8):0;}
+bool MickView::motion_only()const{return bytes_&&u32(bytes_+20)==4;}
+uint32_t MickView::owner_id()const{return bytes_?u32(bytes_+24):0;}
+bool MickView::wanders()const{return bytes_&&(!motion_only()||(u32(bytes_+28)&1));}
+bool MickView::stares()const{return bytes_&&(!motion_only()||(u32(bytes_+28)&2));}
+bool MickView::animated_idle()const{return motion_only()&&(u32(bytes_+28)&4);}
 const uint8_t*MickView::record(MickSection s,uint32_t i)const{const auto k=uint32_t(s);if(!bytes_||k<1||k>kMickSectionCount||i>=count(s))return nullptr;
     return bytes_+u32(bytes_+header_bytes+(k-1)*16+4)+size_t(i)*strides[k-1];}
 std::string_view MickView::string(uint32_t i)const{auto*p=record(MickSection::Strings,i);if(!p)return {};const auto off=u32(p),len=u32(p+4),pool=count(MickSection::Bytes);
@@ -62,7 +67,9 @@ MickRngEvent MickView::rng_event(uint32_t i)const{auto*p=record(MickSection::Rng
 bool MickData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kMickSectionCount*16||n>max_bytes)return fail("Mick pack size rejected");
-    if(std::memcmp(p,"ENCMIK01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=3||u32(p+24)!=1||u32(p+28)||u32(p+52)!=kMickSectionCount||u32(p+56)||u32(p+60))
+    const bool motion_only=u32(p+20)==4;
+    if(std::memcmp(p,"ENCMIK01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)!=3&&!motion_only)||
+       (motion_only?(!u32(p+24)||u32(p+28)>7):(u32(p+24)!=1||u32(p+28)))||u32(p+52)!=kMickSectionCount||u32(p+56)||u32(p+60))
         return fail("Mick pack schema/capability/scene/reserved rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Mick pack source pin rejected");}
     if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Mick pack checksum rejected");
@@ -77,8 +84,9 @@ bool MickData::load(const uint8_t*p,size_t n,std::string&error){
     MickView v;v.bytes_=p;v.size_=n;
     using S=MickSection;
     if(v.count(S::Bytes)==0||v.count(S::Strings)==0||v.count(S::Strings)>512||v.count(S::Texture)!=1||v.count(S::Actor)!=1||
-       v.count(S::Programmes)==0||v.count(S::Programmes)>16||v.count(S::Commands)==0||v.count(S::Commands)>128||
-       v.count(S::Texts)==0||v.count(S::Texts)>64||v.count(S::Clips)==0||v.count(S::Clips)>64||v.count(S::Rng)>512)
+       (motion_only?(v.count(S::Programmes)||v.count(S::Commands)||v.count(S::Texts)):
+          (v.count(S::Programmes)==0||v.count(S::Programmes)>16||v.count(S::Commands)==0||v.count(S::Commands)>128||v.count(S::Texts)==0||v.count(S::Texts)>64))||
+       v.count(S::Clips)==0||v.count(S::Clips)>64||v.count(S::Rng)>512)
         return fail("Mick pack table counts rejected");
     for(uint32_t i=0;i<v.count(S::Strings);++i)if(!text_ok(v.string(i)))return fail("Mick pack string rejected");
     const auto t=v.texture();
@@ -86,17 +94,20 @@ bool MickData::load(const uint8_t*p,size_t n,std::string&error){
        t.width>1024||t.height>1024||t.width%t.columns||t.height%t.rows)return fail("Mick pack texture rejected");
     const auto a=v.actor();
     const auto frames=uint32_t(t.columns)*uint32_t(t.rows);
-    if(v.string(a.path).empty()||v.string(a.bark_path).empty()||a.sprite!=0||a.frame>=frames||!finite(a.position)||!finite(a.sprite_position)||
+    const bool programme_bad=motion_only?
+        (a.item!=kMickNone||a.require_flag!=kMickNone||a.consume_flag!=kMickNone||a.bark_path!=kMickNone||a.bark_programme!=kMickNone||a.first_command||a.command_count||
+         a.bark_center.x||a.bark_center.y||a.bark_extents.x||a.bark_extents.y):
+        (v.string(a.bark_path).empty()||v.string(a.item).empty()||v.string(a.require_flag).empty()||v.string(a.consume_flag).empty()||a.require_flag==a.consume_flag||
+         !a.command_count||a.first_command>v.count(S::Commands)||a.command_count>v.count(S::Commands)-a.first_command||a.bark_programme>=v.count(S::Programmes)||a.bark_extents.x<=0||a.bark_extents.y<=0);
+    if(programme_bad||v.string(a.path).empty()||a.sprite!=0||a.frame>=frames||!finite(a.position)||!finite(a.sprite_position)||
        !finite(a.interact_center)||!finite(a.interact_extents)||a.interact_extents.x<=0||a.interact_extents.y<=0||
        !finite(a.collision_center)||!finite(a.collision_extents)||a.collision_extents.x<=0||a.collision_extents.y<=0||!finite(a.sort_y)||
-       v.string(a.item).empty()||v.string(a.require_flag).empty()||v.string(a.consume_flag).empty()||a.require_flag==a.consume_flag||
-       !a.command_count||a.first_command>v.count(S::Commands)||a.command_count>v.count(S::Commands)-a.first_command||
        !finite(a.ray_length)||a.ray_length<=0||a.ray_length>64||!finite(a.speed)||a.speed<=0||a.speed>512||
        !finite(a.walk_frequency)||a.walk_frequency<=0||a.walk_frequency>30||!finite(a.wander_radius)||a.wander_radius<=0||a.wander_radius>512||
        !finite(a.near_offset)||!finite(a.near_extents)||a.near_extents.x<=0||a.near_extents.y<=0||!finite(a.view_offset)||
        !finite(a.view_radius)||a.view_radius<=0||a.view_radius>512||!finite(a.ray_offset)||!finite(a.bark_center)||
-       !finite(a.bark_extents)||a.bark_extents.x<=0||a.bark_extents.y<=0||!finite(a.initial_direction)||
-       (a.initial_direction.x==0&&a.initial_direction.y==0)||a.bark_programme>=v.count(S::Programmes)||
+       !finite(a.bark_extents)||!finite(a.initial_direction)||
+       (a.initial_direction.x==0&&a.initial_direction.y==0)||
        a.idle_clip_count==0||a.walk_clip_count==0||a.talk_clip_count==0||
        a.idle_clip>v.count(S::Clips)||a.idle_clip_count>v.count(S::Clips)-a.idle_clip||
        a.walk_clip>v.count(S::Clips)||a.walk_clip_count>v.count(S::Clips)-a.walk_clip||
@@ -132,9 +143,9 @@ bool MickData::load(const uint8_t*p,size_t n,std::string&error){
             default:return fail("Mick pack opcode rejected");}}
         if(!ended||v.command(g.first+g.count-1).opcode!=uint32_t(MickOpcode::End))return fail("Mick pack programme must End");
     }
-    if(!saw_talk||!saw_bark||!saw_thought||!saw_fallback||v.programme(a.bark_programme).kind!=uint32_t(MickProgramKind::Bark))return fail("Mick pack talk/bark programme missing");
+    if(!motion_only&&(!saw_talk||!saw_bark||!saw_thought||!saw_fallback||v.programme(a.bark_programme).kind!=uint32_t(MickProgramKind::Bark)))return fail("Mick pack talk/bark programme missing");
     for(uint32_t i=0;i<v.count(S::Rng);++i){const auto e=v.rng_event(i);
-        if(e.kind<uint32_t(MickRngKind::Randi)||e.kind>uint32_t(MickRngKind::ArmWander)||!finite(e.x)||!finite(e.y)||!finite(e.w)||!finite(e.h)||e.w<=0||e.h<=0||!finite(e.a)||!finite(e.b))
+        if(e.kind<uint32_t(MickRngKind::Randi)||e.kind>uint32_t(MickRngKind::ArmWander)||!finite(e.x)||!finite(e.y)||!finite(e.w)||!finite(e.h)||e.w<=0||e.h<=0||!finite(e.a)||!finite(e.b)||u32(v.record(S::Rng,i)+28))
             return fail("Mick pack RNG event rejected");
         if(e.kind==uint32_t(MickRngKind::RandRange)&&(e.a==e.b))return fail("Mick pack RNG range rejected");}
     error.clear();bytes_.assign(p,p+n);return true;
@@ -147,7 +158,7 @@ bool MickRuntime::fail(std::string&e,const char*m){e=m;state_=MickProgramState::
 bool MickRuntime::initialize(MickView view,MickHost&host,std::string&e){
     if(!view){e="Mick runtime requires a checked pack";return false;}
     const auto a=view.actor();
-    if(!host.validate_flag(view.string(a.require_flag),e)||!host.validate_flag(view.string(a.consume_flag),e)||!host.validate_item(view.string(a.item),e))return false;
+    if(!view.motion_only()&&(!host.validate_flag(view.string(a.require_flag),e)||!host.validate_flag(view.string(a.consume_flag),e)||!host.validate_item(view.string(a.item),e)))return false;
     for(uint32_t i=0;i<view.count(MickSection::Programmes);++i){const auto g=view.programme(i);if(g.flag&&!host.validate_flag(view.string(g.flag),e))return false;
         for(uint32_t pc=0;pc<g.count;++pc){const auto c=view.command(g.first+pc);if(c.opcode==uint32_t(MickOpcode::SetFlag)&&!host.validate_flag(view.string(c.a),e))return false;if(c.opcode==uint32_t(MickOpcode::GrantKeyItem)&&!host.validate_item(view.string(c.a),e))return false;}}
     const std::string locale=locale_;
@@ -176,17 +187,24 @@ bool MickRuntime::select(MickProgramKind kind,std::string&e){
     programme_first_=g.first;programme_count_=g.count;pc_=0;state_=MickProgramState::Idle;return true;
 }
 bool MickRuntime::start_talk(std::string&e){
+    if(view_.motion_only())return fail(e,"NPC dialogue is outside this motion resource");
     if(!ready_||!host_||state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion)return fail(e,"Mick programme start rejected");
     if(!select(MickProgramKind::Talk,e))return false;
     return step(e);
 }
 bool MickRuntime::start_thought(bool target,std::string&e){
+    if(view_.motion_only())return fail(e,"NPC thoughts are outside this motion resource");
     if(!ready_||!host_||state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion)return fail(e,"Mick thought start rejected");
     if(!select(target?MickProgramKind::Thought:MickProgramKind::NoProblem,e))return false;
     return step(e);
 }
 void MickRuntime::face_toward(Vec2 target){const Vec2 aim{target.x-position_.x,target.y-position_.y};if(aim.x||aim.y)facing_=aim;}
+bool MickRuntime::restore_motion_pose(Vec2 position,Vec2 direction,std::string&e){
+    if(!ready_||!view_.motion_only()||!finite(position)||!finite(direction)||(direction.x==0&&direction.y==0))return fail(e,"NPC motion restoration rejected");
+    spawn_=position_=destination_=position;facing_=direction;anim_=0;anim_time_=0;probing_=false;e.clear();return true;
+}
 bool MickRuntime::start_bark(std::string&e){
+    if(view_.motion_only())return fail(e,"NPC cutscene is outside this motion resource");
     if(!ready_||!host_||state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion)return fail(e,"Mick bark start rejected");
     const auto g=view_.programme(view_.actor().bark_programme);
     programme_first_=g.first;programme_count_=g.count;pc_=0;state_=MickProgramState::Idle;return step(e);
@@ -243,7 +261,7 @@ uint32_t MickRuntime::sheet_frame()const{
     uint32_t begin=first,n=0;float total=0;
     for(uint32_t i=0;i<count;++i){const auto c=view_.clip(first+i);if(c.direction!=dir)continue;if(!n)begin=first+i;++n;total+=c.milliseconds*0.001f;}
     if(!n)return a.frame;
-    if(anim_==0)return view_.clip(begin).frame;
+    if(anim_==0&&!view_.animated_idle())return view_.clip(begin).frame;
     float t=total>0?std::fmod(anim_time_,total):0;
     for(uint32_t i=0;i<n;++i){const auto c=view_.clip(begin+i);const float d=c.milliseconds*0.001f;if(t<=d||i+1==n)return c.frame;t-=d;}
     return view_.clip(begin).frame;
@@ -275,9 +293,10 @@ void MickRuntime::pick_destination(){
 }
 void MickRuntime::tick_wander(float dt,Vec2,bool paused,MickWorld& world){
     const auto a=view_.actor();const bool busy=state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion||state_==MickProgramState::Failed;
+    if(!view_.wanders()){anim_=0;return;}
     const bool near=world.player_near({position_.x+a.near_offset.x,position_.y+a.near_offset.y},a.near_extents);
     const bool view=world.player_in_view({position_.x+a.view_offset.x,position_.y+a.view_offset.y},a.view_radius);
-    if(view)looking_=true;else looking_=false;
+    looking_=view_.stares()&&view;
     if(looking_&&!busy){const Vec2 aim{0,0};(void)aim;}
     if(paused||busy||!wander_armed_){if(!busy)anim_=0;return;}
     if(wander_left_>=0){wander_left_-=dt;if(wander_left_<=0){if(!looking_&&!near)pick_destination();else destination_=position_;wander_left_=float(rng_.rand_range(a.walk_frequency-0.5,a.walk_frequency+0.5));}}
@@ -317,7 +336,7 @@ bool MickRuntime::simulate(float dt,Vec2 player,Vec2 camera,Vec2 view,bool pause
     if(!(dt>0)||dt>0.1f)return fail(e,"Mick step time rejected");
     consume_rng(camera,view);
     const auto actor=view_.actor();
-    const bool seen=world.player_in_view({position_.x+actor.view_offset.x,position_.y+actor.view_offset.y},actor.view_radius);
+    const bool seen=view_.stares()&&world.player_in_view({position_.x+actor.view_offset.x,position_.y+actor.view_offset.y},actor.view_radius);
     const bool talking=state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion;
     if(seen&&!talking){const Vec2 aim{player.x-position_.x,player.y-position_.y};if(aim.x||aim.y)facing_=aim;}
     tick_motion(dt);
@@ -333,6 +352,7 @@ bool MickRuntime::simulate(float dt,Vec2 player,Vec2 camera,Vec2 view,bool pause
     }
     if(state_!=MickProgramState::WaitingText&&state_!=MickProgramState::WaitingChoice&&state_!=MickProgramState::WaitingMotion&&state_!=MickProgramState::Failed)
         tick_wander(dt,player,paused,world);
+    if(view_.animated_idle()&&anim_==0&&!paused)anim_time_+=dt;
     if(state_==MickProgramState::Failed)return false;
     e.clear();return true;
 }

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "kind": "encore.field-npc.recipe",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "npc_scene": "Nodes/Reusables/npc.tscn",
+  "npc_script": "Scripts/Main/npc.gd",
+  "animation": "Data/Animations/4dir.yaml",
+  "receipt": "content/asset-receipts/graphics/world/podunk/npcs.json",
+  "actors": [
+    {
+      "id": 2,
+      "alias": "lindgren",
+      "path": "Objects/NPCS/npc20",
+      "texture": "graphics/world/podunk/lindgren.t3x",
+      "motion": "world/podunk/npcs/lindgren.encmick"
+    },
+    {
+      "id": 3,
+      "alias": "dog",
+      "path": "Objects/NPCS/npc41",
+      "texture": "graphics/world/podunk/bridge-dog.t3x",
+      "motion": "world/podunk/npcs/bridge-dog.encmick"
+    }
+  ]
+}

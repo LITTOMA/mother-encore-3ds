@@ -1,0 +1,6400 @@
+{
+  "schema": 6,
+  "kind": "encore.native-battle-round.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original bridge stray dog: bite/bash weighted AI, checked pre-hit timing, default or plastic-bat player attack with original preparation, damage/pause keys and swing SE, one non-rare FleaBag pool, 8 EXP/20 cash and beat_dog_bridge. No full inventory dropped-world-item branch, arbitrary enemies, battle items, statuses or multi-party.",
+  "sources": {
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/Battle/PartyInfoPlate.gd": "cf56bdb73b03cb2333fc229fe72c8306ce1d9276296e50c551c564099527920d",
+    "Scripts/UI/Battle/BattleParticipant.gd": "a6012e909f32931dd673b884bfc3564ae78741e64a18adb3a23cf5c25c9a1fdb",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Enemy.gd": "ba81a8f7144dc06cd1674413e5c9b6e670c05aed00c44de98161ad7dda8ebe1b",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/UI/Battle/EnemySkill.gd": "152280867468742f87b0212237d27df4c28ec7717217fbcf6cb72663363236c6",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Scripts/UI/Battle/BattleDialogueBox.gd": "d712af3bbdcc1bab9ed24caccf7a9f4702187b60c24092beec9a7138394e09a5",
+    "Scripts/UI/Battle/BattleItemPool.gd": "8f193447042817087a33cf761ea4c89cb6e9e453bc257a04b95089deaee8ff07",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Translations/TranslatedText/battleskills - sheet.csv": "cd4d4cbaeb8eec6bcda6b042fed70823c6ee790e9d3e4535e09c88a698781235",
+    "Translations/TranslatedText/battletext - sheet.csv": "740b4c183584fd29b9876c7905e5e0f53a317d63399f1bee4a809c94ab6ebd65",
+    "Translations/TranslatedText/battlers - sheet.csv": "d90fc7ffdc1a5c0550e4cb1d52b7cf5f666383d96ace8dca0d5550c9bf800b1e",
+    "Data/BattleSkills/attack.yaml": "97d01c135e783f4510b13501fd79b3b0f023297d6c860c3d06ac7db07f1f26ae",
+    "Data/BattleSkills/tackle.yaml": "8b82dc31555bdc4f6a3c1843eb8e8a81eb1ded3c2efa7b4f433ab424c7d88078",
+    "Data/BattleSkills/float.yaml": "febabbfa812aeda67aaf4177c99f49abb7c76b038bf418abe0e47429b5966221",
+    "Data/BattleSkills/guard.yaml": "3dd5ab7132619f863332845e7fbcd46b56cc9bf0f32ae2b864fd4b30c38294c0",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Fonts/HitNumber.tres": "a5dc45e581a98dbbd4498c6aea51d807cc53727ca3620a0023e2994395dbd6a1",
+    "Graphics/Battle Effects/Smaaaaash!.png": "64b72d368268ccd502ef5182906e2a1969ce71037cfcefddfd37aa7c6747dd63",
+    "Graphics/Battle Effects/Smaaaaash!.png.import": "de6acb06fc1be8cf07b4fb7d5d6f37bafa0a574008778d3967566232e47be968",
+    "Graphics/Battle Sprites/lamp.png": "9a368ef8ba5727af433c84077db7ad25ecbfe66cdc7cc6a041c407b6e30cc385",
+    "Graphics/Battle Sprites/lamp.png.import": "c62e28f5cf645b2d4e4c68ae7c4522d4f9664202c9742eb508eeefcd2ce93699",
+    "Graphics/Character Sprites/Ninten/battle.png": "b541795453ef23b211486d741e0485a68b1df9b5ea533d07ada1051197a95a5b",
+    "Graphics/Character Sprites/Ninten/battle.png.import": "6617cccb749bbcdc105245fb6d03692c1a015f5dbd7dbb9500fbe3330c5b6ef2",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Graphics/Character Sprites/Ninten/main.png.import": "26679ede556b6d516e35824e952c32ac0657c622951eb88559d447164cd756fb",
+    "Graphics/UI/Battle/bash-effect.png": "2be5cc450467d2c661800dbd6f5da92f15e9a64d5f0dedade8eadec44fa93576",
+    "Graphics/UI/Battle/bash-effect.png.import": "cb40d39dd928f1744e841b3e29ff4673c11452cf8e525b565df55edbdd043de3",
+    "Graphics/UI/Battle/hit_number.png": "68e34a644687b719d7af43bcccab1340baa9076b545f415017630eae2cc1325e",
+    "Graphics/UI/Battle/hit_number.png.import": "db3a5bb3532d0de761b6de461911b394e00f0f2dd280e294fff706966eb15ad7",
+    "Graphics/UI/Battle/miss.png": "999b1ecf268c358217d5b0ea0e55beb067a03000e52d14f3400306f0517179ec",
+    "Graphics/UI/Battle/miss.png.import": "714dbcd34dcad84a082e55643f9a1e1ce15e20a6ecad9ac4627133e1bda54692",
+    "Graphics/UI/Battle/pointer.png": "fbfe2b28eae78d1bc09fd9dd891b528db74ff6b1d1dc95e92ff0d3f39674172d",
+    "Graphics/UI/Battle/pointer.png.import": "5d10fc9cf85cdcc0b897553b94011ebc318b93356af23a707b67611a1ff4df93",
+    "Graphics/UI/Battle/youwin.png": "6d2e5be0fe534e59424ec284d59e93661a699d89f55fe3d635de6297d619c2b1",
+    "Graphics/UI/Battle/youwin.png.import": "0559ed44b6f54effa840a172fc78c3bcb90499dca4c725689e88e25806cb5fbd",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/Battle/BGDarkinator.tscn": "c13599a9b0a0970c8dcd3dcd5db26997ea4093cac9f45691897c6044557ecc2a",
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Nodes/Ui/Battle/BattleDialogueBox.tscn": "f8ab52a6550c1a429e802594fd9617cff56a7da7bdc071df3f642aa459a4f69b",
+    "Nodes/Ui/Battle/BattleSpriteNinten.tscn": "be9e30af97fc90414a5c45102338cd27d78e11accb75f2e905b833f551843b1e",
+    "Nodes/Ui/Battle/EnemySprite.tscn": "4a1549d50c44c994f6121d1c4691011429a70da4bb940b87d0bb94d20f861129",
+    "Nodes/Ui/Battle/FlyingNumber.tscn": "47f54f11a67d7f4138bf042f189f4617bf57fff40b5d463093ad094fa4ac3e22",
+    "Nodes/Ui/Battle/RisingNumber.tscn": "0354d11990a85913945fad6d220b83c72e36d13abc369ef6e88e94b96ddd0b08",
+    "Nodes/Ui/Battle/Smash.tscn": "f82e7a1caa0dfb3f54fe9107a3328d814c241040779a6845b65f2690c19068f9",
+    "Nodes/Ui/Battle/TargetsBox.gd": "071c01038ea9bc830a1c69ed6d3d7f539ecde5f0a8926c44ad3f7b3faa786885",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/UI/Battle/BattleSpriteParty.gd": "49371a470917b0d969fb1bae3fa9bdfce121bcbb0192bf448b95bc483aac6f78",
+    "Scripts/UI/Battle/EnemySprite.gd": "04885b26ec849e2ae20bd09aec27eed5b203264723a94cdcb396ac4a094f88eb",
+    "Scripts/UI/Battle/FlyingNumber.gd": "b3dadd044c6087f4bd7354f532e7d4b0268e3021ea14ae020ac3092bec8e3c09",
+    "Scripts/UI/Battle/RisingNumber.gd": "d22dd5e96e69a8331ffd1183de2ff32b2e2eff6e01059f4ce0b104bdd6dc9dba",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Scripts/global/Slowmo.gd": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8",
+    "Data/Battlers/doll.yaml": "89fff7a6f682152b66207601190e24d03eb273e6d79243d8f34a9b98e72a6a97",
+    "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "Graphics/Battle Sprites/doll.png": "a6ad8fa2b88d12cb51e24e8c995ee0203be97275e6e7a86c63b52170f7f5a295",
+    "Nodes/Ui/Battle/BossDefeatFlash.tscn": "beccb44697e77bd232f1ce3173ac16d427ddc1c9d0c45b9f265423d8166dbac8",
+    "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "Scripts/UI/Battle/BossDefeatFlash.gd": "3dc4a7cc686985c0021c956e511e1ca1a3560e2ef4d495769fe07c5fbd697eb1",
+    "Data/BattleSkills/telepathy.yaml": "9240e42dd77ef0c7518c47c9c3396889c2a3b65b4b633197edc816646c114066",
+    "Data/Battlers/pillow.yaml": "61669b6bebdb287807b7dd3b0a87608598059cba83144dd2c8748a03de24d516",
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml": "6e100c4ed8dc5cfd1fc6f88bc79ef9198d57c32721c5a9690d38e2e9c59c2f17",
+    "Graphics/Battle Sprites/pillow.png": "041791dc0664442498bad2ba5867748987c5fa70c8d7b04cba520a1e278baee9",
+    "Scripts/UI/Battle/EnemySpritesManager.gd": "663250716e71c14f91a9e723c8d8c9ae9ff4a60dd1f4a092a46b1cd1d4469e4f",
+    "Nodes/Ui/Battle/ActionMenuBox.gd": "92142910d696db1a7f007ee174854277f926c705fd123ee07d9cef11ef640ebd",
+    "Nodes/Ui/Battle/PartyInfoPlate.tscn": "68c3b317655f77cf0461efaa47e9a427d081614ad124a1aa87f66af86147db9f",
+    "Nodes/Ui/Battle/Battle Transition.tscn": "392290f15f3ea5e6ef855f3a8fa78720c718e71cd56470d15dde008192da4848",
+    "Data/BattleSkills/strike.yaml": "2249e5e4d4e3113a037ae888a76f8c1af3494a7e156003bc0374f8449e59d53e",
+    "Data/BattleSkills/splitShot.yaml": "efdd73c94385d40a882c9173b15097d5e03591d1f99d9da5655bda580239523b",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/UI/Battle/BattleMenuBox.gd": "d01947cb671feedc0467069af68c680a94002650bd34e405afc00d44dfc6902b",
+    "Scripts/UI/Battle/OnScreenEnemy.gd": "5f7842328e0017243286f2808d0308f83d96ee8cb8b5fa7840fc4e39eef316a9",
+    "Scripts/UI/BattleTransition.gd": "ba3217779943e87fbb604f46e7ebd935ed74a37f8cec2dd4a45b4bab2ad50a81",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "addons/distortionator_integration/scene_importer.gd": "3b800ed49e18d07438e9b75abc98787b837ded3c9128922d634114ecaef798f9",
+    "addons/distortionator_integration/default_shader.tres": "f65588ad747f102d2358bc016a016e22a2d1ef986a461938b8c1e3b75122d61c",
+    "Shaders/Transition.shader": "12270f6f16cfda98d7ae01435c9e33d50aa31606c901a360317e742da5b0b5ae",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Scripts/UI/colorRectFlavor.gd": "aa54241880f05f6efaa4cc7d1996eac12b3c1749a739482976fd4bc3af59d82a",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Graphics/Battle BGS/lamp.bbg": "10ea9c5ba2a5a109c6c815180d4ee21683191263ca25dc6c829ca1598f97734f",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3": "8739f039b6b49aa984685c0d4d20b9a647256ca1436dab5cd30de6ff8d6a0918",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3.import": "27cf9d7f6a8b02fbe83d397c925a3b6679361c8b0e4718e06dbf7a844aabe663",
+    "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+    "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+    "Graphics/VFX/battle_transition.png": "8ab268b2d77ee3b7c2979f5c77d59af1d15a5bbe36912af21df20fc556b212c9",
+    "Graphics/VFX/battle_transition.png.import": "1d938e8efb1b57203caf930e5b9ca4ace7fde3c67b038e4e25c3770de841a144",
+    "Graphics/Battle BGS/lamp.png": "c99233a36071100ad022c43f940d76c741d8fcfa9d4abf23f378327bc96211ec",
+    "Graphics/Battle BGS/lamp.png.import": "5a946bf7f1445c65bf2942b0659f7ccd9e6e6ee27986bf967722c5322c788dbe",
+    "Graphics/UI/Battle/hp_pp_numbers.png": "b049dc27660d35a837bacb1ced15171876b389e863a63e707d0dafbdd4e7287c",
+    "Graphics/UI/Battle/hp_pp_numbers.png.import": "e15d435126208c2a269b572d8ac3c64f88f9ae34c504b54428eecdeb6cbdfac9",
+    "Graphics/UI/Battle/bashIcon.png": "36f8e4622fdac4fa075438e515b353898a76562cfffe895defd8b3e53a3ee80c",
+    "Graphics/UI/Battle/bashIcon.png.import": "76843a2fc29b3d7a12a6c07f14ad845eaf8f325bf3754b3546f830363df270c5",
+    "Graphics/UI/Battle/itemIcon.png": "b143b4242452df9ad20a552fcaeb2133ce917e6515317a9d973c8112f220bcbe",
+    "Graphics/UI/Battle/itemIcon.png.import": "a622e0ab97d4d34431c467e9fd7f77c940ad2c7869079bc71900652721fab39d",
+    "Graphics/UI/Battle/defendIcon.png": "bd095505d74731279c8a72f3efdf4cbc5df3a4ddd16dc72bff13fce87701dcb8",
+    "Graphics/UI/Battle/defendIcon.png.import": "3cf1ac756bb55b61f123485a8887dec70006da006e16e074b1ab0bada169e3f5",
+    "Graphics/UI/Battle/info_plate_frame.png": "8197c5b812d54ad5ba4fdfa21548650cd9dab4f2f66163062271aa6425d25fff",
+    "Graphics/UI/Battle/info_plate_frame.png.import": "9ef824d90dbd55a26ea8b7a7d62cc85c358b76ebc27ffe35e7c156e2f4b76290",
+    "Graphics/UI/Battle/info_plate_bg_battle.png": "a274306d7797a2cb0c9a296c610061a8d6690e59b011d9abaaa4f386da6d0e0f",
+    "Graphics/UI/Battle/info_plate_bg_battle.png.import": "81d4c0be2e1142cfb2a2027a481d774091094d693ec62258d9ea3fbd71242cfc",
+    "Graphics/UI/Battle/info_plate_counter_bg.png": "8a024af6dde38ace443b6fec4dc87832a631557991768199a2b0e7f2867ed0c2",
+    "Graphics/UI/Battle/info_plate_counter_bg.png.import": "f59e9d22294d481bbe6cd2763d9f213b03d77d71f9fbc29d7291ff66253a67cd",
+    "Graphics/UI/Battle/label_hp.png": "892919e65839ac857e6334c03c75f8d3a818e5146bd29ced26ce3f04da5274e3",
+    "Graphics/UI/Battle/label_hp.png.import": "4b3618b4c6746eaaca5497a32e617805492761b4c49b4ea05e55390b307f76be",
+    "Graphics/UI/Battle/label_pp.png": "7581ee7a53dcebb86be3ffd7755972b1c82b6d605f823457d2e48a09f35c394d",
+    "Graphics/UI/Battle/label_pp.png.import": "abbb87b498049601a2e64d274d8547e4f13d390b45f0865515b43de6d2d38c99",
+    "Data/Battlers/straydog.yaml": "424b46287cc6bbee0d8940230c4e8def36aff81cbdc3397a02f3880bfd9b5247",
+    "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml": "92cc12c71968a6e732f763ad00c23515b2c5f46c751a5b2afe4d4906011d4ef3",
+    "Graphics/Battle Sprites/stray dog.png": "e00a5ea919d2af956fccea868209c44f80c2b3fe3e809042835fce8f1f361eef",
+    "Graphics/Battle Sprites/stray dog.png.import": "2a3524a01c7157bc2993e12c437cd95c7332beab78b0dcc65e36a3c08a6220bd",
+    "Graphics/Battle BGS/straydog.bbg": "26035b6701f4c7f306e7d349687b1908bdd3b5cc826921eb99569aeab493fa49",
+    "Graphics/Battle BGS/stray_dog.png": "373f938e0ef0811ab5ad8a55b8871724b303d8233897edc052ad816bb096d12f",
+    "Graphics/Battle BGS/stray_dog.png.import": "ba87a560fe2ed17e8b8ed5df2a4d043eb43e950577d02e5e65ff2f26a18e3260",
+    "Audio/Music/Battle Themes/Flippant Foe.mp3": "aa17a9926a0774d8e55cead372bcc76eb43ef2f0210fd02c01b47b4448638c11",
+    "Audio/Music/Battle Themes/Flippant Foe.mp3.import": "888c7c77d3d1dff80fb6506d4e9d89eb5bc78f1432077106e67dc44091aba234",
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Data/Dialogue/Podunk/cutscenes/mick_bark.yaml": "c9ae2bd1e5c0078c96e54fc27d63e9cba60fbc9f8a49e5ec23787ab7c0be619d",
+    "Data/Dialogue/Podunk/woof.yaml": "bf72427cbb9aaec8f137adc01abecf05a152d9b2259e610ab0e2a80bbee4e7fd",
+    "Data/Dialogue/Podunk/woof_animals.yaml": "80fd38f8bacc37d1bbead0c0ded51f19afa51748f7eaf6fe4e699dcd8a08c0eb",
+    "Data/Dialogue/Podunk/woof_deal.yaml": "0e92387cbb42d0c7d72744e0e33b7ad6fb563a49866398399a324a494312d227",
+    "Data/Dialogue/Podunk/woof_food.yaml": "624ae86db6d352709245f815de6fc5975044b5c3c63255b9d1e04096a3207412",
+    "Data/Dialogue/Podunk/woof_key.yaml": "dbef94b23ad95e5f549cba9507f6b5bd27d09a951824760b3a088e4101aff7a7",
+    "Data/Dialogue/Podunk/woof_secret.yaml": "55b1de9a3aa188caff50d43fdf1eb94702d6ffa4e2f3249afcb4a5aaa686d03a",
+    "Data/Dialogue/Podunk/woof_treats.yaml": "a64e5ca07dff6a39a702003d054944968fc8d87a42a2da1920818b85b9d46239",
+    "Data/Dialogue/Reusable/noproblem.yaml": "61ca96e14080a4a4ddb1aa27b186c80e5dc06ea32ddf0217a61aa445be8921c7",
+    "Data/Items/DogTreats.yaml": "0512818388242890d704214728e4603f90fa976571240f86361c2917c641d641",
+    "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
+    "Graphics/Character Sprites/Npcs/4dir/dogstray.png": "12971c1bc182ce497f22f865e96a035335c45bbfb104c31d91570ce8b54e5f2f",
+    "Graphics/Character Sprites/Npcs/4dir/dogstray.png.import": "121a03722c037c835927b1a6aaf335ec738f379501fa5a31ccb6d0069a6a22a9",
+    "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9",
+    "Graphics/Character Sprites/Npcs/4dir/pippismom.png": "46fcad47e02f19dc92601d47a6bd702db1c71f38bf2422cf043f0fde91dc43e7",
+    "Graphics/Character Sprites/Npcs/4dir/pippismom.png.import": "b116f3891adc6b0c9564e8ce771cfa2b69c1d871e0461bff0fd8fc3afd572422",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+    "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+    "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+    "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+    "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+    "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+    "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+    "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5",
+    "Graphics/Battle Effects/Bite.png": "9c027398c9a58e1a7da6d60084c4e3e1f72dc5d59ddfe10a96d9e236c2be306d",
+    "Graphics/Battle Effects/Bite.png.import": "b9c24ab080cf0e12f01a1ac28686ff374980817d8c899250d331d54e6268d86d",
+    "Scripts/UI/Battle/PreHitEffect.gd": "3a630fa3c9fab120c6861361c2938153eee4dec6ad4c6a4ce6731bbdf1338ab9",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Data/BattleSkills/bite.yaml": "57d2c951f47e72379f09d27b2b7467e497be23e337bf674b16b2abba1da7a3f5",
+    "Data/BattleSkills/bash.yaml": "ef8f69c8897aa82f91dedf69bc662761f894c75374dca7b5b0a9ef6fa4d4b407",
+    "Data/BattleSkills/attack_bat.yaml": "99a5757609a6fbf42358aba886f56cc18a00796a4b38eeef8e4fc59307a385a3",
+    "Audio/Sound effects/EB/itemget1.wav": "dcb8603faf73979ea4d22df9a70b149b61b9e67cf0f2a56016115d1bc759f857"
+  },
+  "dependencies": {
+    "content/pillow-round.json": "995ea8183dd9b15f291501e203d81329566cb9e56861ce0a0d8d4ce802c7f625",
+    "content/bridge-entry.json": "ff95198af5c495fe1d20698ecde918edc7b91e96b1c100783547b3ec63bdf720",
+    "content/bridge-encounter.json": "5da939bdd9c2ebde0a50bc18f1369b93d034fa3473d7e7ecfbd90f6a3a171e84",
+    "content/podunk-npcs.json": "b2d276de1a49caededbd3c02a87b0cf0c0177b57083f72e9980fc8fc6ec0b41e",
+    "content/asset-receipts/graphics/battle/straydog/pre-hit.json": "f71782c645596d25d2d84b0d2f517d4a57a13490accdb466daaf0f3f0ad8c6d8"
+  },
+  "skills": [
+    {
+      "id": 1,
+      "source": "Data/BattleSkills/attack.yaml",
+      "name": 1,
+      "description": 2,
+      "dialog": 18,
+      "action_type": 0,
+      "target_type": 0,
+      "skill_type": 1,
+      "damage_type": 1,
+      "traits": 0,
+      "power": 10,
+      "variance": 5,
+      "priority": 0,
+      "miss_chance": 0,
+      "pp_cost": 0,
+      "hp_cost": 0,
+      "crit_chance": 5,
+      "user_media": 8,
+      "hit_media": 12,
+      "fail_chance": 0
+    },
+    {
+      "id": 2,
+      "source": "Data/BattleSkills/bite.yaml",
+      "name": 33,
+      "description": 34,
+      "dialog": 35,
+      "action_type": 0,
+      "target_type": 0,
+      "skill_type": 1,
+      "damage_type": 1,
+      "traits": 0,
+      "power": 5,
+      "variance": 10,
+      "priority": 0,
+      "miss_chance": 5,
+      "pp_cost": 0,
+      "hp_cost": 0,
+      "crit_chance": 0,
+      "user_media": 4294967295,
+      "hit_media": 4294967295,
+      "fail_chance": 0
+    },
+    {
+      "id": 3,
+      "source": "Data/BattleSkills/bash.yaml",
+      "name": 36,
+      "description": 37,
+      "dialog": 38,
+      "action_type": 0,
+      "target_type": 0,
+      "skill_type": 1,
+      "damage_type": 1,
+      "traits": 0,
+      "power": 5,
+      "variance": 2,
+      "priority": 0,
+      "miss_chance": 0,
+      "pp_cost": 0,
+      "hp_cost": 0,
+      "crit_chance": 0,
+      "user_media": 4294967295,
+      "hit_media": 12,
+      "fail_chance": 0
+    },
+    {
+      "id": 4,
+      "source": "Data/BattleSkills/guard.yaml",
+      "name": 10,
+      "description": 11,
+      "dialog": 0,
+      "action_type": 4,
+      "target_type": 5,
+      "skill_type": 0,
+      "damage_type": 0,
+      "traits": 1,
+      "power": 0,
+      "variance": 0,
+      "priority": 3,
+      "miss_chance": 0,
+      "pp_cost": 0,
+      "hp_cost": 0,
+      "crit_chance": 0,
+      "user_media": 3,
+      "hit_media": 4294967295,
+      "fail_chance": 0
+    },
+    {
+      "id": 5,
+      "source": "Data/BattleSkills/attack_bat.yaml",
+      "name": 1,
+      "description": 2,
+      "dialog": 18,
+      "action_type": 0,
+      "target_type": 0,
+      "skill_type": 1,
+      "damage_type": 1,
+      "traits": 0,
+      "power": 10,
+      "variance": 5,
+      "priority": 0,
+      "miss_chance": 0,
+      "pp_cost": 0,
+      "hp_cost": 0,
+      "crit_chance": 5,
+      "user_media": 41,
+      "hit_media": 12,
+      "fail_chance": 0
+    }
+  ],
+  "enemy_choices": [
+    {
+      "skill": 1,
+      "weight": 2
+    },
+    {
+      "skill": 2,
+      "weight": 1
+    }
+  ],
+  "rules": {
+    "DefenseDivisor": 2.0,
+    "GuardDivisor": 2.0,
+    "MinimumDamage": 1.0,
+    "GutsDivisor": 500.0,
+    "MinimumCritPercent": 5.0,
+    "PercentScale": 100.0,
+    "AdrenalineMultiplier": 1.5,
+    "SmashMultiplier": 4.0,
+    "EnemyChoiceDelay": 0.3,
+    "ActionStartDelay": 0.05,
+    "TargetEndDelay": 0.08,
+    "ActionEndDelay": 0.4,
+    "RoundEndDelay": 0.4,
+    "DefeatDialogDelay": 0.5,
+    "HpFrameSeconds": 0.03333333333333333,
+    "HpTransitionFrames": 8.0,
+    "HpBaseSpeed": 1.0,
+    "HpDefendingMultiplier": 0.6,
+    "HpFastMultiplier": 4.0,
+    "TextSecondsPerChar": 0.02,
+    "TextAcceptMultiplier": 3.0,
+    "TextCancelMultiplier": 1000.0,
+    "TextAutoAdvanceSeconds": 1.25,
+    "TextNormalMultiplier": 1.0,
+    "TextFasterMultiplier": 2.0,
+    "TextSlowerMultiplier": 0.7,
+    "SmashTimeScale": 0.5,
+    "SmashRealSeconds": 0.5,
+    "VictoryBannerSeconds": 3.0
+  },
+  "binding": {
+    "battle_id": 4,
+    "player_participant": 0,
+    "enemy_participant": 1,
+    "basic_skill": 0,
+    "guard_skill": 3,
+    "locale": "en",
+    "enemy_name": 39,
+    "enemy_article": 40,
+    "enemy_outro": 41,
+    "mortal_damage": 42,
+    "no_effect": 43,
+    "show_intro_outro": 0,
+    "win_flag": "beat_dog_bridge",
+    "basic_menu": 1,
+    "items_menu": 2,
+    "guard_menu": 3
+  },
+  "texts": [
+    {
+      "id": 1,
+      "role": 0,
+      "key": "",
+      "source_text": "",
+      "text": ""
+    },
+    {
+      "id": 2,
+      "role": 1,
+      "key": "ATTACK_NAME",
+      "source_text": "Bash",
+      "text": "Bash"
+    },
+    {
+      "id": 3,
+      "role": 2,
+      "key": "ATTACK_DESC",
+      "source_text": "Deals damage to an enemy.",
+      "text": "Deals damage to an enemy."
+    },
+    {
+      "id": 4,
+      "role": 3,
+      "key": "ATTACK_DIALOG",
+      "source_text": "{n0}{name} attacks!",
+      "text": "Ninten attacks!"
+    },
+    {
+      "id": 5,
+      "role": 1,
+      "key": "TACKLE_NAME",
+      "source_text": "Charge",
+      "text": "Charge"
+    },
+    {
+      "id": 6,
+      "role": 2,
+      "key": "TACKLE_DESC",
+      "source_text": "A charge attack by using one's body.",
+      "text": "A charge attack by using one's body."
+    },
+    {
+      "id": 7,
+      "role": 3,
+      "key": "TACKLE_DIALOG",
+      "source_text": "{n0}{name} threw {n4} body at {t1}{target}!",
+      "text": "The Lamp threw its body at Ninten!"
+    },
+    {
+      "id": 8,
+      "role": 1,
+      "key": "FLOAT_NAME",
+      "source_text": "Float",
+      "text": "Float"
+    },
+    {
+      "id": 9,
+      "role": 2,
+      "key": "FLOAT_DESC",
+      "source_text": "Float around.",
+      "text": "Float around."
+    },
+    {
+      "id": 10,
+      "role": 3,
+      "key": "FLOAT_DIALOG",
+      "source_text": "{n0}{name} floated around!",
+      "text": "The Lamp floated around!"
+    },
+    {
+      "id": 11,
+      "role": 1,
+      "key": "GUARD_NAME",
+      "source_text": "GUARD_NAME",
+      "text": "GUARD_NAME"
+    },
+    {
+      "id": 12,
+      "role": 2,
+      "key": "GUARD_DESC",
+      "source_text": "GUARD_DESC",
+      "text": "GUARD_DESC"
+    },
+    {
+      "id": 13,
+      "role": 4,
+      "key": "LAMP_NAME",
+      "source_text": "Lamp",
+      "text": "Lamp"
+    },
+    {
+      "id": 14,
+      "role": 5,
+      "key": "LAMP_ART",
+      "source_text": "The ,the ,A ,a ,its,it,it",
+      "text": "The ,the ,A ,a ,its,it,it"
+    },
+    {
+      "id": 15,
+      "role": 6,
+      "key": "",
+      "source_text": "{n0}{name} became tame!",
+      "text": "The Lamp became tame!"
+    },
+    {
+      "id": 16,
+      "role": 7,
+      "key": "BATTLE_MSG_MORTAL_DAMAGE",
+      "source_text": "{t0}{target} took mortal damage!",
+      "text": "Ninten took mortal damage!"
+    },
+    {
+      "id": 17,
+      "role": 8,
+      "key": "BATTLE_MSG_TARGET_NO_EFFECT",
+      "source_text": "It had no effect on {t1}{target}!",
+      "text": "It had no effect on the Lamp!"
+    },
+    {
+      "id": 18,
+      "role": 9,
+      "key": "BATTLE_MSG_EXP_ONE_ALLY",
+      "source_text": "{name} gained {value} exp.",
+      "text": "Ninten gained 3 exp."
+    },
+    {
+      "id": 19,
+      "role": 3,
+      "key": "ATTACK_DIALOG",
+      "source_text": "{n0}{name} attacks!",
+      "text": "Ninten attacks!"
+    },
+    {
+      "id": 20,
+      "role": 3,
+      "key": "TACKLE_DIALOG",
+      "source_text": "{n0}{name} threw {n4} body at {t1}{target}!",
+      "text": "The Pillow threw its body at Ninten!"
+    },
+    {
+      "id": 21,
+      "role": 3,
+      "key": "FLOAT_DIALOG",
+      "source_text": "{n0}{name} floated around!",
+      "text": "The Pillow floated around!"
+    },
+    {
+      "id": 22,
+      "role": 6,
+      "key": "",
+      "source_text": "{n0}{name} became tame!",
+      "text": "The Pillow became tame!"
+    },
+    {
+      "id": 23,
+      "role": 7,
+      "key": "BATTLE_MSG_MORTAL_DAMAGE",
+      "source_text": "{t0}{target} took mortal damage!",
+      "text": "Ninten took mortal damage!"
+    },
+    {
+      "id": 24,
+      "role": 8,
+      "key": "BATTLE_MSG_TARGET_NO_EFFECT",
+      "source_text": "It had no effect on {t1}{target}!",
+      "text": "It had no effect on the Pillow!"
+    },
+    {
+      "id": 25,
+      "role": 4,
+      "key": "PILLOW_NAME",
+      "source_text": "Pillow",
+      "text": "Pillow"
+    },
+    {
+      "id": 26,
+      "role": 5,
+      "key": "PILLOW_ART",
+      "source_text": "The ,the ,A ,a ,its,it,it",
+      "text": "The ,the ,A ,a ,its,it,it"
+    },
+    {
+      "id": 27,
+      "role": 9,
+      "key": "BATTLE_MSG_EXP_ONE_ALLY",
+      "source_text": "{name} gained {value} exp.",
+      "text": "Ninten gained 5 exp."
+    },
+    {
+      "id": 28,
+      "role": 11,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "source_text": "{stat} raised by {value}!",
+      "text": "Max. HP raised by 3!"
+    },
+    {
+      "id": 29,
+      "role": 11,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "source_text": "{stat} raised by {value}!",
+      "text": "Max. PP raised by 1!"
+    },
+    {
+      "id": 30,
+      "role": 11,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "source_text": "{stat} raised by {value}!",
+      "text": "Offense raised by 1!"
+    },
+    {
+      "id": 31,
+      "role": 11,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "source_text": "{stat} raised by {value}!",
+      "text": "IQ raised by 1!"
+    },
+    {
+      "id": 32,
+      "role": 10,
+      "key": "BATTLE_MSG_LEVEL_UP",
+      "source_text": "{name} leveled up to {value}!",
+      "text": "Ninten leveled up to 2!"
+    },
+    {
+      "id": 33,
+      "role": 12,
+      "key": "BATTLE_MSG_LEARNING",
+      "source_text": "{n0}{name} learned {skill}{skillLevel}!",
+      "text": "Ninten learned Telepathy!"
+    },
+    {
+      "id": 34,
+      "role": 1,
+      "key": "BITE_NAME",
+      "source_text": "Bite",
+      "text": "Bite"
+    },
+    {
+      "id": 35,
+      "role": 2,
+      "key": "BITE_DESC",
+      "source_text": "A bite using sharp fangs.",
+      "text": "A bite using sharp fangs."
+    },
+    {
+      "id": 36,
+      "role": 3,
+      "key": "BITE_DIALOG",
+      "source_text": "{n0}{name} bit into {t1}{target}!",
+      "text": "The Stray Dog bit into Ninten!"
+    },
+    {
+      "id": 37,
+      "role": 1,
+      "key": "BASH_NAME",
+      "source_text": "Bash",
+      "text": "Bash"
+    },
+    {
+      "id": 38,
+      "role": 2,
+      "key": "BASH_DESC",
+      "source_text": "Deals a low amount of damage against an enemy.",
+      "text": "Deals a low amount of damage against an enemy."
+    },
+    {
+      "id": 39,
+      "role": 3,
+      "key": "BASH_DIALOG",
+      "source_text": "{n0}{name} attacks!",
+      "text": "The Stray Dog attacks!"
+    },
+    {
+      "id": 40,
+      "role": 4,
+      "key": "STRAYDOG_NAME",
+      "source_text": "Stray Dog",
+      "text": "Stray Dog"
+    },
+    {
+      "id": 41,
+      "role": 5,
+      "key": "STRAYDOG_ART",
+      "source_text": "The ,the ,A ,a ,its,it,it",
+      "text": "The ,the ,A ,a ,its,it,it"
+    },
+    {
+      "id": 42,
+      "role": 6,
+      "key": "",
+      "source_text": "{n0}{name} became tame!",
+      "text": "The Stray Dog became tame!"
+    },
+    {
+      "id": 43,
+      "role": 7,
+      "key": "BATTLE_MSG_MORTAL_DAMAGE",
+      "source_text": "{t0}{target} took mortal damage!",
+      "text": "Ninten took mortal damage!"
+    },
+    {
+      "id": 44,
+      "role": 8,
+      "key": "BATTLE_MSG_TARGET_NO_EFFECT",
+      "source_text": "It had no effect on {t1}{target}!",
+      "text": "It had no effect on the Stray Dog!"
+    },
+    {
+      "id": 45,
+      "role": 9,
+      "key": "BATTLE_MSG_EXP_ONE_ALLY",
+      "source_text": "{name} gained {value} exp.",
+      "text": "Ninten gained 8 exp."
+    },
+    {
+      "id": 46,
+      "role": 13,
+      "key": "BATTLE_MSG_PRESENT",
+      "source_text": "The enemy dropped a present!",
+      "text": "The enemy dropped a present!"
+    },
+    {
+      "id": 47,
+      "role": 13,
+      "key": "BATTLE_MSG_PRESENT_INSIDE",
+      "source_text": "Inside the present, there {i6} {i3}{item}.",
+      "text": "Inside the present, there was a Flea Bag."
+    },
+    {
+      "id": 48,
+      "role": 13,
+      "key": "BATTLE_MSG_PRESENT_TAKING",
+      "source_text": "{n0}{name} took {i5}.",
+      "text": "Ninten took it."
+    }
+  ],
+  "victory": {
+    "initial_exp": 3,
+    "initial_level": 1,
+    "initial_bank": 5,
+    "initial_cash": 0,
+    "initial_earned_cash": 5,
+    "reward_exp": 8,
+    "reward_cash": 20,
+    "reward_item_count": 1,
+    "level_cap": 30,
+    "next_level_exp": 9,
+    "max_exp": 20925,
+    "exp_text": 44,
+    "acknowledgment": 1,
+    "currency_policy": 1,
+    "earned_cash_flag": "earned_cash",
+    "enemy_body_id": 3
+  },
+  "presentation": {
+    "bindings": {
+      "BackgroundDim": 14,
+      "BackgroundUndim": 15,
+      "Dialogue": 28,
+      "DialogueCursor": 30,
+      "DialogueText": 29,
+      "EnemyAttack": 20,
+      "EnemyDefeat": 11,
+      "EnemyDodge": 26,
+      "EnemyFlash": 9,
+      "EnemyHit": 10,
+      "FlyingNumber": 18,
+      "PartyBounce": 23,
+      "PartyDodge": 27,
+      "PartyGuard": 3,
+      "PartyGuardPrepare": 7,
+      "PartyHide": 22,
+      "PartyHit": 4,
+      "PartyHit2": 5,
+      "PartyHit3": 6,
+      "PartyIdle": 0,
+      "PartyJumpToWorld": 39,
+      "PartyPrepare": 1,
+      "PartyReturn": 2,
+      "PartyShake": 24,
+      "PartyShow": 21,
+      "PartyVictory": 33,
+      "PlateQuake": 25,
+      "ReturnBottom": 36,
+      "ReturnPlate": 37,
+      "ReturnTimeline": 38,
+      "ReturnTop": 35,
+      "RisingNumber": 19,
+      "Smash": 17,
+      "SmashBackground": 16,
+      "TargetNameBox": 31,
+      "TargetNameText": 32,
+      "TargetPointer": 13,
+      "VictoryBanner": 34
+    },
+    "events": [
+      {
+        "kind": 1,
+        "media": 8,
+        "time": 0.0714286
+      },
+      {
+        "kind": 2,
+        "media": 8,
+        "time": 0.142
+      },
+      {
+        "kind": 1,
+        "media": 20,
+        "time": 0.2
+      },
+      {
+        "kind": 4,
+        "media": 38,
+        "time": 0.1
+      },
+      {
+        "kind": 5,
+        "media": 38,
+        "time": 0.75
+      },
+      {
+        "kind": 6,
+        "media": 38,
+        "time": 0.8
+      },
+      {
+        "kind": 7,
+        "media": 38,
+        "time": 1.65
+      },
+      {
+        "kind": 8,
+        "media": 38,
+        "time": 2.4
+      },
+      {
+        "kind": 9,
+        "media": 39,
+        "time": 0.6
+      },
+      {
+        "media": 41,
+        "time": 0.0714286,
+        "kind": 1
+      },
+      {
+        "media": 41,
+        "time": 0.355,
+        "kind": 2
+      }
+    ],
+    "keys": [
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          110,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.0714286,
+        "value": [
+          111,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.142857,
+        "value": [
+          112,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.214286,
+        "value": [
+          113,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.285714,
+        "value": [
+          114,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.357143,
+        "value": [
+          115,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.5,
+        "value": [
+          116,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.571429,
+        "value": [
+          117,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.642857,
+        "value": [
+          118,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.714286,
+        "value": [
+          119,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.785714,
+        "value": [
+          120,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.857143,
+        "value": [
+          121,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.928571,
+        "value": [
+          122,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          51,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.0714286,
+        "value": [
+          0,
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.142857,
+        "value": [
+          3,
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.214286,
+        "value": [
+          -3,
+          4,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.285714,
+        "value": [
+          2,
+          4,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.5,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          100,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          101,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          102,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.3,
+        "value": [
+          101,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          102,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.5,
+        "value": [
+          101,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.6,
+        "value": [
+          102,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.7,
+        "value": [
+          101,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.8,
+        "value": [
+          102,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.9,
+        "value": [
+          101,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1,
+        "value": [
+          102,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.1,
+        "value": [
+          101,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.2,
+        "value": [
+          102,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.3,
+        "value": [
+          101,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.4,
+        "value": [
+          102,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.5,
+        "value": [
+          101,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.6,
+        "value": [
+          102,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.7,
+        "value": [
+          101,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.8,
+        "value": [
+          102,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.9,
+        "value": [
+          101,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 2,
+        "value": [
+          102,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          103,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          104,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          105,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.3,
+        "value": [
+          104,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          105,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.5,
+        "value": [
+          104,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.6,
+        "value": [
+          105,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.7,
+        "value": [
+          104,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.8,
+        "value": [
+          105,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.9,
+        "value": [
+          104,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1,
+        "value": [
+          105,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.1,
+        "value": [
+          104,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.2,
+        "value": [
+          105,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.3,
+        "value": [
+          104,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.4,
+        "value": [
+          105,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.5,
+        "value": [
+          104,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.6,
+        "value": [
+          105,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.7,
+        "value": [
+          104,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.8,
+        "value": [
+          105,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.9,
+        "value": [
+          104,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 2,
+        "value": [
+          105,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          130,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.0666667,
+        "value": [
+          131,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.133333,
+        "value": [
+          132,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          133,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.266667,
+        "value": [
+          134,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.333333,
+        "value": [
+          135,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          136,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.466667,
+        "value": [
+          137,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.533333,
+        "value": [
+          138,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.6,
+        "value": [
+          139,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          40,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.0714286,
+        "value": [
+          41,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.142857,
+        "value": [
+          42,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.214286,
+        "value": [
+          43,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.285714,
+        "value": [
+          44,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.357143,
+        "value": [
+          45,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.428571,
+        "value": [
+          46,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.5,
+        "value": [
+          47,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.714286,
+        "value": [
+          48,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.785714,
+        "value": [
+          49,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.857143,
+        "value": [
+          50,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.928571,
+        "value": [
+          51,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          123,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.0714286,
+        "value": [
+          124,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.142857,
+        "value": [
+          125,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.357143,
+        "value": [
+          126,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.428571,
+        "value": [
+          127,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.5,
+        "value": [
+          128,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.571429,
+        "value": [
+          17,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.05,
+        "value": [
+          0.9,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          0.9,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.15,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          0.7,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.3,
+        "value": [
+          0.7,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.35,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          5.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.05,
+        "value": [
+          -5.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          5.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.15,
+        "value": [
+          -5.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.05,
+        "value": [
+          1.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          1.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.15,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.15,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.35,
+        "value": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1.03526,
+        "time": 0,
+        "value": [
+          1.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1.03526,
+        "time": 0.15,
+        "value": [
+          1.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.267943,
+        "time": 0.35,
+        "value": [
+          1.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": -3.48219,
+        "time": 0,
+        "value": [
+          0.8,
+          1.2,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": -3.48219,
+        "time": 0.15,
+        "value": [
+          0.8,
+          1.2,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": -3.48219,
+        "time": 0.5,
+        "value": [
+          1.4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.05,
+        "value": [
+          18.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.15,
+        "value": [
+          20.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.6,
+        "value": [
+          -50.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.0666667,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.133333,
+        "value": [
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          32,
+          32,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          2,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.3,
+        "value": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": -2,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0.490196
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": -2,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": -2,
+        "time": 0.2,
+        "value": [
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0.490196
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.5,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": -2,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.3,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": -2,
+        "time": 0.5,
+        "value": [
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0.490196
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          0.329412,
+          1,
+          0.215686,
+          0.490196
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.3,
+        "value": [
+          0.329412,
+          1,
+          0.215686,
+          0.490196
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.5,
+        "value": [
+          0,
+          0,
+          0,
+          0.490196
+        ]
+      },
+      {
+        "ease": 0.25,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.25,
+        "time": 0.583333,
+        "value": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.25,
+        "time": 0.708333,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.0416667,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.0833333,
+        "value": [
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.125,
+        "value": [
+          3,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.166667,
+        "value": [
+          4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.208333,
+        "value": [
+          5,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0.159995,
+          2.04,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          0.8,
+          1.5,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.15,
+        "value": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.65,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.75,
+        "value": [
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.8,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          -20,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          -20,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.8,
+        "value": [
+          180,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.7,
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.8,
+        "value": [
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.6,
+        "value": [
+          -16,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          0,
+          -10,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          0,
+          -10,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.12,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.12,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0.6,
+          1.6,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          -1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.32,
+        "value": [
+          -1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.52,
+        "value": [
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          5,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.15,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          10,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.15,
+        "value": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.15,
+        "value": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.25,
+        "value": [
+          -8,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.25,
+        "value": [
+          -4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.35,
+        "value": [
+          4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.35,
+        "value": [
+          4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.45,
+        "value": [
+          -4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.45,
+        "value": [
+          -4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.6,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.6,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          90.00021045914971,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          81,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.0781391,
+        "value": [
+          82,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.132066,
+        "value": [
+          83,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.253127,
+        "value": [
+          84,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.314443,
+        "value": [
+          85,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.393054,
+        "value": [
+          86,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.44022,
+        "value": [
+          87,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.550275,
+        "value": [
+          88,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.628887,
+        "value": [
+          89,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.707394,
+        "value": [
+          90,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.778859,
+        "value": [
+          91,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.850319,
+        "value": [
+          92,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.921789,
+        "value": [
+          93,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.993249,
+        "value": [
+          94,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.06472,
+        "value": [
+          95,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.157222,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.34151,
+        "time": 0.204737,
+        "value": [
+          0,
+          -2,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.257394,
+        "value": [
+          0,
+          -2,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 6,
+        "time": 0.317451,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.461403,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.341,
+        "time": 0.512142,
+        "value": [
+          0,
+          -2,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.557444,
+        "value": [
+          0,
+          -2,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 6.27667,
+        "time": 0.63,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.1,
+        "value": [
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.2,
+        "value": [
+          3,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.3,
+        "value": [
+          4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          5,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.5,
+        "time": 0,
+        "value": [
+          0,
+          -162,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.466516,
+        "time": 0.7,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.3,
+        "time": 1.4,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.287175,
+        "time": 1.9,
+        "value": [
+          0,
+          -180,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.5,
+        "time": 0,
+        "value": [
+          0,
+          148,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.466516,
+        "time": 0.7,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.3,
+        "time": 1.4,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.287175,
+        "time": 1.9,
+        "value": [
+          0,
+          180,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          180.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 0.5,
+        "time": 1.55,
+        "value": [
+          180.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 1.9,
+        "value": [
+          257.0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.55,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.35,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.35,
+        "value": [
+          0,
+          -24,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          0,
+          -24,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.6,
+        "value": [
+          0,
+          4,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          0.6,
+          1.2,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.4,
+        "value": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0.6,
+        "value": [
+          0.8,
+          1.1,
+          0,
+          0
+        ]
+      },
+      {
+        "ease": 1,
+        "time": 0,
+        "value": [
+          183,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0,
+        "ease": 1,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.05,
+        "ease": 1,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.1,
+        "ease": 1,
+        "value": [
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.15,
+        "ease": 1,
+        "value": [
+          3,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.2,
+        "ease": 1,
+        "value": [
+          4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.25,
+        "ease": 1,
+        "value": [
+          5,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.3,
+        "ease": 1,
+        "value": [
+          6,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.35,
+        "ease": 1,
+        "value": [
+          7,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.4,
+        "ease": 1,
+        "value": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.45,
+        "ease": 1,
+        "value": [
+          9,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.5,
+        "ease": 1,
+        "value": [
+          10,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0,
+        "ease": 1,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.55,
+        "ease": 1,
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0,
+        "ease": 1,
+        "value": [
+          10,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.0714286,
+        "ease": 1,
+        "value": [
+          11,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.214286,
+        "ease": 1,
+        "value": [
+          12,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.285714,
+        "ease": 1,
+        "value": [
+          13,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.357143,
+        "ease": 1,
+        "value": [
+          14,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.428571,
+        "ease": 1,
+        "value": [
+          15,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.5,
+        "ease": 1,
+        "value": [
+          16,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.571429,
+        "ease": 1,
+        "value": [
+          17,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0,
+        "ease": 1,
+        "value": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.0714286,
+        "ease": 1,
+        "value": [
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.142857,
+        "ease": 1,
+        "value": [
+          3,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.214286,
+        "ease": 1,
+        "value": [
+          4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.285714,
+        "ease": 1,
+        "value": [
+          5,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.357143,
+        "ease": 1,
+        "value": [
+          6,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.428571,
+        "ease": 1,
+        "value": [
+          7,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.5,
+        "ease": 1,
+        "value": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "time": 0.571429,
+        "ease": 1,
+        "value": [
+          9,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "media": [
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.0714286,
+        "event_count": 0,
+        "first_event": 0,
+        "first_track": 0,
+        "flags": 2,
+        "id": 1,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:lookIntoYourSoul",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 1.0,
+        "event_count": 0,
+        "first_event": 0,
+        "first_track": 2,
+        "flags": 2,
+        "id": 2,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:bashPrep",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.0714286,
+        "event_count": 0,
+        "first_event": 0,
+        "first_track": 3,
+        "flags": 2,
+        "id": 3,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:lookIntoYourSoul",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.571429,
+        "event_count": 0,
+        "first_event": 0,
+        "first_track": 5,
+        "flags": 2,
+        "id": 4,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:guard",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 2.0,
+        "event_count": 0,
+        "first_event": 0,
+        "first_track": 7,
+        "flags": 2,
+        "id": 5,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:hit1",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 2.0,
+        "event_count": 0,
+        "first_event": 0,
+        "first_track": 8,
+        "flags": 2,
+        "id": 6,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:hit2",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 1.2,
+        "event_count": 0,
+        "first_event": 0,
+        "first_track": 9,
+        "flags": 2,
+        "id": 7,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:hit3",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 1.0,
+        "event_count": 0,
+        "first_event": 0,
+        "first_track": 10,
+        "flags": 2,
+        "id": 8,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:guardPrep",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.642857,
+        "event_count": 2,
+        "first_event": 0,
+        "first_track": 11,
+        "flags": 2,
+        "id": 9,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:bash",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.4,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 12,
+        "flags": 2,
+        "id": 10,
+        "name": "Nodes/Ui/Battle/EnemySprite.tscn:flash",
+        "rect": [
+          0,
+          0,
+          58,
+          52
+        ],
+        "resource": 1,
+        "role": 2,
+        "track_count": 4
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.2,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 16,
+        "flags": 2,
+        "id": 11,
+        "name": "Nodes/Ui/Battle/EnemySprite.tscn:hit",
+        "rect": [
+          0,
+          0,
+          58,
+          52
+        ],
+        "resource": 1,
+        "role": 2,
+        "track_count": 6
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.7,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 22,
+        "flags": 6,
+        "id": 12,
+        "name": "Nodes/Ui/Battle/EnemySprite.tscn:defeat",
+        "rect": [
+          0,
+          0,
+          58,
+          52
+        ],
+        "resource": 1,
+        "role": 2,
+        "track_count": 6
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.2,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 28,
+        "flags": 6,
+        "id": 13,
+        "name": "Nodes/Ui/Battle/Battle.tscn:bash",
+        "rect": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "resource": 2,
+        "role": 3,
+        "track_count": 3
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.4,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 31,
+        "flags": 1,
+        "id": 14,
+        "name": "Nodes/Ui/Battle/Battle.tscn:point",
+        "rect": [
+          0,
+          0,
+          25,
+          25
+        ],
+        "resource": 3,
+        "role": 5,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0,
+          0
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.2,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 32,
+        "flags": 0,
+        "id": 15,
+        "name": "Nodes/Ui/Battle/BGDarkinator.tscn:darken",
+        "rect": [
+          0,
+          0,
+          320,
+          180
+        ],
+        "resource": 4294967295,
+        "role": 9,
+        "track_count": 3
+      },
+      {
+        "anchor": [
+          0,
+          0
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.2,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 35,
+        "flags": 0,
+        "id": 16,
+        "name": "Nodes/Ui/Battle/BGDarkinator.tscn:undarken",
+        "rect": [
+          0,
+          0,
+          320,
+          180
+        ],
+        "resource": 4294967295,
+        "role": 9,
+        "track_count": 3
+      },
+      {
+        "anchor": [
+          0,
+          0
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.5,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 38,
+        "flags": 0,
+        "id": 17,
+        "name": "Nodes/Ui/Battle/BGDarkinator.tscn:smash",
+        "rect": [
+          0,
+          0,
+          320,
+          180
+        ],
+        "resource": 4294967295,
+        "role": 9,
+        "track_count": 3
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.708334,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 41,
+        "flags": 6,
+        "id": 18,
+        "name": "Nodes/Ui/Battle/Smash.tscn:Smaaaash!!",
+        "rect": [
+          0,
+          0,
+          168.0,
+          76.0
+        ],
+        "resource": 7,
+        "role": 3,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.8,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 43,
+        "flags": 4,
+        "id": 19,
+        "name": "Nodes/Ui/Battle/FlyingNumber.tscn:start",
+        "rect": [
+          0,
+          0,
+          55,
+          11
+        ],
+        "resource": 4,
+        "role": 7,
+        "track_count": 5
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 1.0,
+        "event_count": 0,
+        "first_event": 2,
+        "first_track": 48,
+        "flags": 4,
+        "id": 20,
+        "name": "Nodes/Ui/Battle/RisingNumber.tscn:start",
+        "rect": [
+          -4,
+          -4,
+          40,
+          19
+        ],
+        "resource": 5,
+        "role": 8,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.2,
+        "event_count": 1,
+        "first_event": 2,
+        "first_track": 50,
+        "flags": 2,
+        "id": 21,
+        "name": "EnemyAttack",
+        "rect": [
+          0,
+          0,
+          58,
+          52
+        ],
+        "resource": 1,
+        "role": 2,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.12,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 52,
+        "flags": 2,
+        "id": 22,
+        "name": "PartyShow",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.12,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 53,
+        "flags": 2,
+        "id": 23,
+        "name": "PartyHide",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.52,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 54,
+        "flags": 2,
+        "id": 24,
+        "name": "PartyBounce",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 3
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.2,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 57,
+        "flags": 2,
+        "id": 25,
+        "name": "PartyShake",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.6,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 59,
+        "flags": 0,
+        "id": 26,
+        "name": "PlateQuake",
+        "rect": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "resource": 4294967295,
+        "role": 4,
+        "track_count": 5
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.2,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 64,
+        "flags": 2,
+        "id": 27,
+        "name": "EnemyDodge",
+        "rect": [
+          0,
+          0,
+          58,
+          52
+        ],
+        "resource": 1,
+        "role": 2,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.2,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 66,
+        "flags": 2,
+        "id": 28,
+        "name": "PartyDodge",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0.5,
+          0
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 68,
+        "flags": 0,
+        "id": 29,
+        "name": "Dialogue",
+        "rect": [
+          10.0,
+          4.0,
+          300.0,
+          45.0
+        ],
+        "resource": 6,
+        "role": 6,
+        "track_count": 0
+      },
+      {
+        "anchor": [
+          0.5,
+          0
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 68,
+        "flags": 0,
+        "id": 30,
+        "name": "DialogueText",
+        "rect": [
+          19,
+          12,
+          282,
+          32
+        ],
+        "resource": 4294967295,
+        "role": 6,
+        "track_count": 0
+      },
+      {
+        "anchor": [
+          0.5,
+          0
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.8,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 68,
+        "flags": 3,
+        "id": 31,
+        "name": "DialogueCursor",
+        "rect": [
+          295.21,
+          43.306,
+          8,
+          8
+        ],
+        "resource": 8,
+        "role": 3,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          1,
+          0
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 70,
+        "flags": 0,
+        "id": 32,
+        "name": "TargetNameBox",
+        "rect": [
+          194.0,
+          0,
+          126.0,
+          27.0
+        ],
+        "resource": 6,
+        "role": 6,
+        "track_count": 0
+      },
+      {
+        "anchor": [
+          1,
+          0
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 70,
+        "flags": 2,
+        "id": 33,
+        "name": "TargetNameText",
+        "rect": [
+          200.0,
+          8.0,
+          114.0,
+          14.0
+        ],
+        "resource": 4294967295,
+        "role": 6,
+        "track_count": 0
+      },
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 1.6,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 70,
+        "flags": 2,
+        "id": 34,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:victory",
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "resource": 0,
+        "role": 1,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0.5,
+          0
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.6,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 72,
+        "flags": 3,
+        "id": 35,
+        "name": "Dialoguebox:YouWin",
+        "rect": [
+          156.0,
+          26.0,
+          93.0,
+          8.0
+        ],
+        "resource": 9,
+        "role": 3,
+        "track_count": 2
+      },
+      {
+        "anchor": [
+          0,
+          0
+        ],
+        "color": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "duration": 2.7,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 74,
+        "flags": 0,
+        "id": 36,
+        "name": "ReturnTop",
+        "rect": [
+          0,
+          0,
+          448.0,
+          180.0
+        ],
+        "resource": 4294967295,
+        "role": 10,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0,
+          1
+        ],
+        "color": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "duration": 2.7,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 75,
+        "flags": 0,
+        "id": 37,
+        "name": "ReturnBottom",
+        "rect": [
+          0,
+          0,
+          448.0,
+          180.00099999999998
+        ],
+        "resource": 4294967295,
+        "role": 10,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0.5,
+          1
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 2.7,
+        "event_count": 0,
+        "first_event": 3,
+        "first_track": 76,
+        "flags": 0,
+        "id": 38,
+        "name": "ReturnPlate",
+        "rect": [
+          0,
+          180.0,
+          0,
+          0
+        ],
+        "resource": 4294967295,
+        "role": 4,
+        "track_count": 1
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 2.7,
+        "event_count": 5,
+        "first_event": 3,
+        "first_track": 77,
+        "flags": 0,
+        "id": 39,
+        "name": "Battle:transitionOut",
+        "rect": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "resource": 4294967295,
+        "role": 10,
+        "track_count": 0
+      },
+      {
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "duration": 0.6,
+        "event_count": 1,
+        "first_event": 8,
+        "first_track": 77,
+        "flags": 6,
+        "id": 40,
+        "name": "BattleSystem:_jump_to_overworld",
+        "rect": [
+          0,
+          0,
+          31.0,
+          29.0
+        ],
+        "resource": 10,
+        "role": 11,
+        "track_count": 7
+      },
+      {
+        "id": 41,
+        "name": "Nodes/Ui/Battle/Battle.tscn:bite",
+        "role": 3,
+        "resource": 11,
+        "first_track": 84,
+        "track_count": 2,
+        "first_event": 9,
+        "event_count": 0,
+        "flags": 6,
+        "duration": 0.55,
+        "rect": [
+          0,
+          0,
+          91.0,
+          85.0
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "id": 42,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:bat",
+        "role": 1,
+        "resource": 0,
+        "first_track": 86,
+        "track_count": 1,
+        "first_event": 9,
+        "event_count": 2,
+        "flags": 2,
+        "duration": 0.642857,
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      {
+        "id": 43,
+        "name": "Nodes/Ui/Battle/BattleSpriteNinten.tscn:batPrep",
+        "role": 1,
+        "resource": 0,
+        "first_track": 87,
+        "track_count": 1,
+        "first_event": 11,
+        "event_count": 0,
+        "flags": 2,
+        "duration": 0.642857,
+        "rect": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "anchor": [
+          0.5,
+          1
+        ]
+      }
+    ],
+    "parameters": {
+      "DamageGlyphGrid": [
+        32,
+        11,
+        11,
+        11
+      ],
+      "DamageShadow": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "DialogueMargins": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "DialogueTextLayout": [
+        19,
+        12,
+        282,
+        15
+      ],
+      "FlyingNumberRandom": [
+        32,
+        64,
+        0,
+        0
+      ],
+      "HpDigits": [
+        10,
+        8.0,
+        0,
+        0
+      ],
+      "PartyBounceMotion": [
+        32,
+        16,
+        0.32,
+        0.52
+      ],
+      "PartyHit": [
+        16,
+        2,
+        3,
+        3
+      ],
+      "PartyShown": [
+        20,
+        0.12,
+        0.12,
+        1.3
+      ],
+      "PlateHitIntensity": [
+        1,
+        1.5,
+        0.1,
+        0
+      ],
+      "ReturnPartyFrames": [
+        183,
+        33,
+        0,
+        0
+      ],
+      "ReturnPartyGeometry": [
+        0,
+        -4,
+        24,
+        4
+      ],
+      "ReturnPartyTurn": [
+        0,
+        -1,
+        0.05,
+        0
+      ],
+      "RisingNumberSize": [
+        25.0,
+        11.0,
+        0,
+        0
+      ],
+      "SmashOffset": [
+        0,
+        -32,
+        0,
+        0
+      ],
+      "SmashTiming": [
+        0.5,
+        0.5,
+        0,
+        0
+      ],
+      "TargetGlow": [
+        1,
+        1,
+        1,
+        0.25
+      ],
+      "TargetPointerOffset": [
+        1.5,
+        0,
+        0,
+        0
+      ],
+      "TextTagSpeeds": [
+        1.0,
+        2.0,
+        0.7,
+        0
+      ],
+      "TextTiming": [
+        0.02,
+        3.0,
+        1000.0,
+        1.25
+      ],
+      "ReturnCamera": [
+        0.3,
+        0,
+        0,
+        0
+      ]
+    },
+    "resources": [
+      {
+        "columns": 15,
+        "height": 768,
+        "id": 1,
+        "kind": 1,
+        "path": "graphics/battle/round/party.t3x",
+        "rows": 12,
+        "sha256": "9150ff5f2088bb586119a4f293a92d54355d27d249985d31dd1c2882a729c3fb",
+        "width": 960
+      },
+      {
+        "columns": 1,
+        "height": 52,
+        "id": 2,
+        "kind": 1,
+        "path": "graphics/battle/straydog/bridge-enemy.t3x",
+        "rows": 1,
+        "sha256": "bd91145d67a50fba7cf8a37d23ee4231c9fbb1a2498b9361c871014045f5e595",
+        "width": 58
+      },
+      {
+        "columns": 3,
+        "height": 32,
+        "id": 3,
+        "kind": 1,
+        "path": "graphics/battle/round/bash.t3x",
+        "rows": 1,
+        "sha256": "83b83f653d62a11f6324a4eb0238d0b60622ed8dff431cdb5e33cb42d914d170",
+        "width": 96
+      },
+      {
+        "columns": 1,
+        "height": 25,
+        "id": 4,
+        "kind": 1,
+        "path": "graphics/battle/round/pointer.t3x",
+        "rows": 1,
+        "sha256": "9f0b4a78e1c3bf86c8274ad3038c70af45e73d6003992168526acbd2b5ac473d",
+        "width": 25
+      },
+      {
+        "columns": 26,
+        "height": 11,
+        "id": 5,
+        "kind": 1,
+        "path": "graphics/battle/round/numbers.t3x",
+        "rows": 1,
+        "sha256": "fb563e635faeac950a7da7dba3b614791d6d423c7442d024c98b4b1b067d0dff",
+        "width": 286
+      },
+      {
+        "columns": 1,
+        "height": 19,
+        "id": 6,
+        "kind": 1,
+        "path": "graphics/battle/round/miss.t3x",
+        "rows": 1,
+        "sha256": "cf6826fdef170d0a548e338576a592f38e32ee3152ddda9d8c07c2d0bed884e3",
+        "width": 40
+      },
+      {
+        "columns": 1,
+        "height": 24,
+        "id": 7,
+        "kind": 1,
+        "path": "graphics/battle/round/box.t3x",
+        "rows": 1,
+        "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
+        "width": 24
+      },
+      {
+        "columns": 3,
+        "height": 152,
+        "id": 8,
+        "kind": 1,
+        "path": "graphics/battle/round/smash.t3x",
+        "rows": 2,
+        "sha256": "13b0e32bd006f2e7b1ce729fc1dedfa27becbdf1e055b2e413dda5d73847bb84",
+        "width": 504
+      },
+      {
+        "columns": 3,
+        "height": 8,
+        "id": 9,
+        "kind": 1,
+        "path": "graphics/battle/round/dialogue_cursor.t3x",
+        "rows": 1,
+        "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516",
+        "width": 24
+      },
+      {
+        "columns": 1,
+        "height": 48,
+        "id": 10,
+        "kind": 1,
+        "path": "graphics/battle/round/victory.t3x",
+        "rows": 6,
+        "sha256": "4df05b495c27b645e6f4da5a1a0bb706866602864e541ac0ad3425f385d40d01",
+        "width": 93
+      },
+      {
+        "columns": 10,
+        "height": 580,
+        "id": 11,
+        "kind": 1,
+        "path": "graphics/battle/round/world_party.t3x",
+        "rows": 20,
+        "sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2",
+        "width": 310
+      },
+      {
+        "id": 12,
+        "path": "graphics/battle/straydog/bite.t3x",
+        "kind": 1,
+        "width": 1001,
+        "height": 85,
+        "columns": 11,
+        "rows": 1,
+        "sha256": "3c86f235de10f5caa706139f0ca0d6766f32f08e6ad40bf2091debb3bd360cf4"
+      }
+    ],
+    "tracks": [
+      {
+        "count": 1,
+        "first": 0,
+        "interpolation": 0,
+        "media": 0,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 1,
+        "first": 1,
+        "interpolation": 0,
+        "media": 0,
+        "mode": 0,
+        "property": 17,
+        "update": 0
+      },
+      {
+        "count": 13,
+        "first": 2,
+        "interpolation": 0,
+        "media": 1,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 1,
+        "first": 15,
+        "interpolation": 0,
+        "media": 2,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 1,
+        "first": 16,
+        "interpolation": 0,
+        "media": 2,
+        "mode": 0,
+        "property": 17,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 17,
+        "interpolation": 0,
+        "media": 3,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 6,
+        "first": 18,
+        "interpolation": 0,
+        "media": 3,
+        "mode": 0,
+        "property": 11,
+        "update": 0
+      },
+      {
+        "count": 21,
+        "first": 24,
+        "interpolation": 0,
+        "media": 4,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 21,
+        "first": 45,
+        "interpolation": 0,
+        "media": 5,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 10,
+        "first": 66,
+        "interpolation": 0,
+        "media": 6,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 12,
+        "first": 76,
+        "interpolation": 0,
+        "media": 7,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 7,
+        "first": 88,
+        "interpolation": 0,
+        "media": 8,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 1,
+        "first": 95,
+        "interpolation": 0,
+        "media": 9,
+        "mode": 0,
+        "property": 13,
+        "update": 0
+      },
+      {
+        "count": 7,
+        "first": 96,
+        "interpolation": 0,
+        "media": 9,
+        "mode": 0,
+        "property": 14,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 103,
+        "interpolation": 0,
+        "media": 9,
+        "mode": 0,
+        "property": 9,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 104,
+        "interpolation": 0,
+        "media": 9,
+        "mode": 0,
+        "property": 10,
+        "update": 0
+      },
+      {
+        "count": 5,
+        "first": 105,
+        "interpolation": 0,
+        "media": 10,
+        "mode": 0,
+        "property": 12,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 110,
+        "interpolation": 0,
+        "media": 10,
+        "mode": 0,
+        "property": 13,
+        "update": 0
+      },
+      {
+        "count": 4,
+        "first": 111,
+        "interpolation": 0,
+        "media": 10,
+        "mode": 0,
+        "property": 14,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 115,
+        "interpolation": 0,
+        "media": 10,
+        "mode": 0,
+        "property": 4,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 116,
+        "interpolation": 0,
+        "media": 10,
+        "mode": 0,
+        "property": 9,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 117,
+        "interpolation": 0,
+        "media": 10,
+        "mode": 0,
+        "property": 10,
+        "update": 0
+      },
+      {
+        "count": 5,
+        "first": 118,
+        "interpolation": 0,
+        "media": 11,
+        "mode": 0,
+        "property": 9,
+        "update": 0
+      },
+      {
+        "count": 3,
+        "first": 123,
+        "interpolation": 0,
+        "media": 11,
+        "mode": 0,
+        "property": 10,
+        "update": 0
+      },
+      {
+        "count": 3,
+        "first": 126,
+        "interpolation": 0,
+        "media": 11,
+        "mode": 0,
+        "property": 4,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 129,
+        "interpolation": 0,
+        "media": 11,
+        "mode": 0,
+        "property": 13,
+        "update": 0
+      },
+      {
+        "count": 4,
+        "first": 130,
+        "interpolation": 0,
+        "media": 11,
+        "mode": 0,
+        "property": 12,
+        "update": 0
+      },
+      {
+        "count": 3,
+        "first": 134,
+        "interpolation": 0,
+        "media": 11,
+        "mode": 0,
+        "property": 15,
+        "update": 0
+      },
+      {
+        "count": 3,
+        "first": 137,
+        "interpolation": 0,
+        "media": 12,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 1,
+        "first": 140,
+        "interpolation": 0,
+        "media": 12,
+        "mode": 0,
+        "property": 16,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 141,
+        "interpolation": 0,
+        "media": 12,
+        "mode": 0,
+        "property": 7,
+        "update": 1
+      },
+      {
+        "count": 4,
+        "first": 143,
+        "interpolation": 0,
+        "media": 13,
+        "mode": 0,
+        "property": 11,
+        "update": 1
+      },
+      {
+        "count": 1,
+        "first": 147,
+        "interpolation": 0,
+        "media": 14,
+        "mode": 0,
+        "property": 7,
+        "update": 1
+      },
+      {
+        "count": 2,
+        "first": 148,
+        "interpolation": 0,
+        "media": 14,
+        "mode": 0,
+        "property": 15,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 150,
+        "interpolation": 0,
+        "media": 14,
+        "mode": 0,
+        "property": 8,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 151,
+        "interpolation": 0,
+        "media": 15,
+        "mode": 0,
+        "property": 7,
+        "update": 1
+      },
+      {
+        "count": 2,
+        "first": 152,
+        "interpolation": 0,
+        "media": 15,
+        "mode": 0,
+        "property": 15,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 154,
+        "interpolation": 0,
+        "media": 15,
+        "mode": 0,
+        "property": 8,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 155,
+        "interpolation": 0,
+        "media": 16,
+        "mode": 0,
+        "property": 7,
+        "update": 1
+      },
+      {
+        "count": 4,
+        "first": 157,
+        "interpolation": 0,
+        "media": 16,
+        "mode": 0,
+        "property": 15,
+        "update": 0
+      },
+      {
+        "count": 5,
+        "first": 161,
+        "interpolation": 0,
+        "media": 16,
+        "mode": 0,
+        "property": 8,
+        "update": 0
+      },
+      {
+        "count": 3,
+        "first": 166,
+        "interpolation": 0,
+        "media": 17,
+        "mode": 0,
+        "property": 4,
+        "update": 0
+      },
+      {
+        "count": 6,
+        "first": 169,
+        "interpolation": 0,
+        "media": 17,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 3,
+        "first": 175,
+        "interpolation": 7,
+        "media": 18,
+        "mode": 0,
+        "property": 4,
+        "update": 0
+      },
+      {
+        "count": 3,
+        "first": 178,
+        "interpolation": 0,
+        "media": 18,
+        "mode": 0,
+        "property": 15,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 181,
+        "interpolation": 0,
+        "media": 18,
+        "mode": 2,
+        "property": 2,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 183,
+        "interpolation": 3,
+        "media": 18,
+        "mode": 1,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 185,
+        "interpolation": 4,
+        "media": 18,
+        "mode": 1,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 3,
+        "first": 187,
+        "interpolation": 0,
+        "media": 19,
+        "mode": 0,
+        "property": 15,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 190,
+        "interpolation": 3,
+        "media": 19,
+        "mode": 1,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 192,
+        "interpolation": 1,
+        "media": 20,
+        "mode": 0,
+        "property": 11,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 194,
+        "interpolation": 2,
+        "media": 20,
+        "mode": 0,
+        "property": 11,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 196,
+        "interpolation": 0,
+        "media": 21,
+        "mode": 2,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 198,
+        "interpolation": 0,
+        "media": 22,
+        "mode": 2,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 200,
+        "interpolation": 1,
+        "media": 23,
+        "mode": 0,
+        "property": 4,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 202,
+        "interpolation": 1,
+        "media": 23,
+        "mode": 2,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 204,
+        "interpolation": 4,
+        "media": 23,
+        "mode": 2,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 206,
+        "interpolation": 6,
+        "media": 24,
+        "mode": 1,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 208,
+        "interpolation": 5,
+        "media": 24,
+        "mode": 1,
+        "property": 2,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 210,
+        "interpolation": 0,
+        "media": 25,
+        "mode": 2,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 212,
+        "interpolation": 3,
+        "media": 25,
+        "mode": 2,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 214,
+        "interpolation": 3,
+        "media": 25,
+        "mode": 2,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 216,
+        "interpolation": 3,
+        "media": 25,
+        "mode": 2,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 218,
+        "interpolation": 3,
+        "media": 25,
+        "mode": 2,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 220,
+        "interpolation": 1,
+        "media": 26,
+        "mode": 2,
+        "property": 2,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 222,
+        "interpolation": 2,
+        "media": 26,
+        "mode": 2,
+        "property": 2,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 224,
+        "interpolation": 1,
+        "media": 27,
+        "mode": 2,
+        "property": 2,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 226,
+        "interpolation": 2,
+        "media": 27,
+        "mode": 2,
+        "property": 2,
+        "update": 0
+      },
+      {
+        "count": 4,
+        "first": 228,
+        "interpolation": 0,
+        "media": 30,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 1,
+        "first": 232,
+        "interpolation": 0,
+        "media": 30,
+        "mode": 0,
+        "property": 12,
+        "update": 0
+      },
+      {
+        "count": 15,
+        "first": 233,
+        "interpolation": 0,
+        "media": 33,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 9,
+        "first": 248,
+        "interpolation": 0,
+        "media": 33,
+        "mode": 0,
+        "property": 11,
+        "update": 0
+      },
+      {
+        "count": 5,
+        "first": 257,
+        "interpolation": 0,
+        "media": 34,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "count": 1,
+        "first": 262,
+        "interpolation": 0,
+        "media": 34,
+        "mode": 0,
+        "property": 7,
+        "update": 1
+      },
+      {
+        "count": 4,
+        "first": 263,
+        "interpolation": 0,
+        "media": 35,
+        "mode": 0,
+        "property": 1,
+        "update": 0
+      },
+      {
+        "count": 4,
+        "first": 267,
+        "interpolation": 0,
+        "media": 36,
+        "mode": 0,
+        "property": 1,
+        "update": 0
+      },
+      {
+        "count": 3,
+        "first": 271,
+        "interpolation": 0,
+        "media": 37,
+        "mode": 0,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 274,
+        "interpolation": 0,
+        "media": 39,
+        "mode": 2,
+        "property": 2,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 276,
+        "interpolation": 3,
+        "media": 39,
+        "mode": 2,
+        "property": 3,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 278,
+        "interpolation": 3,
+        "media": 39,
+        "mode": 0,
+        "property": 11,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 280,
+        "interpolation": 8,
+        "media": 39,
+        "mode": 0,
+        "property": 11,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 282,
+        "interpolation": 8,
+        "media": 39,
+        "mode": 0,
+        "property": 4,
+        "update": 0
+      },
+      {
+        "count": 2,
+        "first": 284,
+        "interpolation": 8,
+        "media": 39,
+        "mode": 0,
+        "property": 4,
+        "update": 0
+      },
+      {
+        "count": 1,
+        "first": 286,
+        "interpolation": 0,
+        "media": 39,
+        "mode": 0,
+        "property": 6,
+        "update": 1
+      },
+      {
+        "media": 40,
+        "property": 6,
+        "first": 287,
+        "count": 11,
+        "update": 1,
+        "interpolation": 0,
+        "mode": 0
+      },
+      {
+        "media": 40,
+        "property": 7,
+        "first": 298,
+        "count": 2,
+        "update": 1,
+        "interpolation": 0,
+        "mode": 0
+      },
+      {
+        "media": 41,
+        "property": 6,
+        "first": 300,
+        "count": 8,
+        "update": 1,
+        "interpolation": 0,
+        "mode": 0
+      },
+      {
+        "media": 42,
+        "property": 6,
+        "first": 308,
+        "count": 9,
+        "update": 1,
+        "interpolation": 0,
+        "mode": 0
+      }
+    ]
+  },
+  "growth": [
+    {
+      "stat": 1,
+      "before": 62,
+      "after": 65,
+      "text": 27
+    },
+    {
+      "stat": 2,
+      "before": 26,
+      "after": 27,
+      "text": 28
+    },
+    {
+      "stat": 3,
+      "before": 11,
+      "after": 12,
+      "text": 29
+    },
+    {
+      "stat": 4,
+      "before": 12,
+      "after": 12,
+      "text": 0
+    },
+    {
+      "stat": 5,
+      "before": 6,
+      "after": 6,
+      "text": 0
+    },
+    {
+      "stat": 6,
+      "before": 5,
+      "after": 6,
+      "text": 30
+    },
+    {
+      "stat": 7,
+      "before": 8,
+      "after": 8,
+      "text": 0
+    }
+  ],
+  "boss_shakes": [],
+  "encounter": {
+    "boss": 0,
+    "keep_actor": 0,
+    "post_win_script": "",
+    "boss_flash_media": 4294967295,
+    "promoted_level": 2,
+    "following_level_exp": 27,
+    "level_text": 31,
+    "learned_skill": "telepathy",
+    "learned_text": 32,
+    "stop_area_music_if_overworld": 1
+  },
+  "pre_hit": [
+    {
+      "skill": 1,
+      "media": 40,
+      "apply_time": 0.25
+    }
+  ],
+  "action_media": [
+    {
+      "skill": 0,
+      "preparation": 1,
+      "use_sound": 0
+    },
+    {
+      "skill": 1,
+      "preparation": 4294967295,
+      "use_sound": 0
+    },
+    {
+      "skill": 2,
+      "preparation": 4294967295,
+      "use_sound": 0
+    },
+    {
+      "skill": 3,
+      "preparation": 7,
+      "use_sound": 0
+    },
+    {
+      "skill": 4,
+      "preparation": 42,
+      "use_sound": 1
+    }
+  ],
+  "loot": {
+    "item": "FleaBag",
+    "chance": 40,
+    "doses": 1,
+    "present_text": 45,
+    "inside_text": 46,
+    "taking_text": 47,
+    "sound": "Audio/Sound effects/EB/itemget1.wav",
+    "flags": 0
+  }
+}

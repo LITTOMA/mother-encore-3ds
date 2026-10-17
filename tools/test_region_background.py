@@ -9,6 +9,8 @@ REVIEWED_BASELINE_SHA256 = {
  '2c33c6934889a8a48951571da0391e2de041474b39b1fd141faa151f81319dcb',
  # Exact 9078a67 dimension bookkeeping review: docs/FULL_CONTENT_REGRESSIONS.md.
  'e90d39bd25aa7ae02450bd4505143751fecf1c40763fb8993b3d2e059662cf19',
+ # Independent-axis review: reports/bridge-battle/axis-baseline-review.json.
+ 'cbe254eb28b725e000c7d4c54ebb12cb9cc00c5ffbe6a001e81d8f1d114dbecf',
 }
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():

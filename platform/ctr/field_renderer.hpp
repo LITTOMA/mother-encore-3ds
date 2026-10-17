@@ -65,6 +65,8 @@ public:
                 case FieldItemKind::Player:
                     if(extra&&scene.mick().ready())entries_.push_back({scene.mick().sort_y(),item.order,4,0,0});
                     entries_.push_back({scene.world.player().position.y,item.order,3,0,0});break;
+                case FieldItemKind::Actor:
+                    if(scene.actor_visible(item.first))entries_.push_back({scene.actor_pose(item.first).position.y,item.order,5,item.first,0});break;
                 default:break;}
             }
             // VisualServer ItemPtrSort: approximately equal Y falls back to collection order.
@@ -76,6 +78,7 @@ public:
                 else if(e.kind==1)draw_layer(scene,e.first);
                 else if(e.kind==2)draw_sprites(scene,e.first,e.second);
                 else if(e.kind==4)extra(cx_,cy_,ox_,oy_);
+                else if(e.kind==5)actors.draw_actor(scene.actor_pose(e.first),cx_-ox_,cy_-oy_);
                 else actors.draw_player(scene.world.player().position,scene.world.animation(),cx_-ox_,cy_-oy_);
             }
         }

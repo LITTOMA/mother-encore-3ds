@@ -1,0 +1,20 @@
+[   0.189545] Service.FS <Error> core\file_sys\savedata_archive.cpp:FileSys::SaveDataArchive::OpenFile:76: Non-existing file D:\GameDev\3DS\mother-encore-3ds\build\emulator-regression\pr64-merge-2\temporary\emulator/user/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config can't be open without mode create.
+[   0.189596] Service.FS <Error> core\file_sys\savedata_archive.cpp:FileSys::SaveDataArchive::DeleteFile:117: File not found D:\GameDev\3DS\mother-encore-3ds\build\emulator-regression\pr64-merge-2\temporary\emulator/user/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config
+[   0.190884] Service.CFG <Error> core\hle\service\cfg\cfg.cpp:Service::CFG::Module::SaveMacAddress:1134: Cannot open mac address file for write
+[   1.926613] Service.FS <Error> core\file_sys\savedata_archive.cpp:FileSys::SaveDataArchive::OpenFile:76: Non-existing file D:\GameDev\3DS\mother-encore-3ds\build\emulator-regression\pr64-merge-2\temporary\emulator/user/nand/data/00000000000000000000000000000000/sysdata/00010035/00000000/news.db can't be open without mode create.
+[   1.931810] Service.HTTP <Error> core\hle\service\http\http_c.cpp:Service::HTTP::HTTP_C::DecryptClCertA:2127: ClCertA file missing, using default
+[   1.999392] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateDevice::<lambda_1>::operator ():440: Extension VK_EXT_shader_stencil_export unavailable.
+[   1.999401] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateDevice::<lambda_1>::operator ():440: Extension VK_KHR_portability_subset unavailable.
+[   1.999403] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateDevice::<lambda_1>::operator ():436: Extension VK_EXT_fragment_shader_interlock has been blacklisted because it is broken on Nvidia drivers
+[   1.999403] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateDevice::<lambda_1>::operator ():436: Extension VK_EXT_pipeline_creation_cache_control has been blacklisted because it is broken on Nvidia drivers
+[   2.036153] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateFormatTable:303: Format B8G8R8Unorm unsupported, falling back unconditionally to R8G8B8A8Unorm
+[   2.036159] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateFormatTable:303: Format R5G5B5A1UnormPack16 unsupported, falling back unconditionally to R8G8B8A8Unorm
+[   2.036160] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateFormatTable:303: Format R4G4B4A4UnormPack16 unsupported, falling back unconditionally to R8G8B8A8Unorm
+[   2.475031] Service.FS <Warning> core\file_sys\archive_selfncch.cpp:FileSys::ArchiveFactory_SelfNCCH::Register:255: Could not read program id when registering with SelfNCCH, this might be a 3dsx file
+[   2.484784] Core <Error> core\core.cpp:Core::System::Load:461: Failed to find title id for ROM (Error 0)
+[   3.258301] Service.SRV <Warning> core\hle\service\sm\srv.cpp:Service::SM::SRV::RegisterClient:64: (STUBBED) called. Caller PID=11
+[   3.284086] Service.APT <Warning> core\hle\service\apt\apt.cpp:Service::APT::Module::APTInterface::NotifyToWait:362: (STUBBED) app_id=768
+[   3.284816] Service <Error> core\hle\service\service.cpp:Service::ServiceFrameworkBase::ReportUnimplementedFunction:170: unknown / unimplemented function 'ConfigureNew3DSCPU': port='ptm:sysm' cmd_buf={[0]=0x8180040 (0x0818, 1, 0), [1]=0x0}
+[   3.285044] Service.APT <Warning> core\hle\service\apt\apt.cpp:Service::APT::Module::APTInterface::AppletUtility:735: (STUBBED) called command=0X00000007, input_size=0X00000004, output_size=0X00000001
+[   3.285145] Service.APT <Warning> core\hle\service\apt\apt.cpp:Service::APT::Module::APTInterface::AppletUtility:735: (STUBBED) called command=0X00000004, input_size=0X00000001, output_size=0X00000001
+[   3.309496] Service.FS <Error> core/file_sys/archive_backend.h:FileSys::ArchiveBackend::GetOpenDelayNs:221: Delay generator was not initalized. Using default

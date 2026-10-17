@@ -61,6 +61,29 @@
     "Music/MusicArea12",
     "Music/MusicArea13"
   ],
+  "action_boundaries": {
+    "Nodes/Overworld/jump area.tscn": {
+      "script": "Scripts/Main/Jump Area.gd",
+      "control_script": "Scripts/Main/Switches/ControlledTwoStatesObject.gd",
+      "shape": "Inside/CollisionShape2D",
+      "ability_flag": "eagle_feather",
+      "ability_function": "_has_skill",
+      "initial_property": "_initially_on",
+      "sync_property": "_is_synced_with_room",
+      "source_facts": [
+        "event.is_action_pressed(\"ui_accept\")",
+        "return _is_player_inside and _has_skill() and _is_enabled",
+        "if _can_jump() and player.get_state() == player.MOVE and !player.is_paused() and uiManager.is_stack_empty():",
+        "player.pause(false, true, false)"
+      ],
+      "control_facts": [
+        "var state := _initially_on",
+        "if _is_synced_with_room:",
+        "for switch in _switches:",
+        "state = (state != switch.is_on())"
+      ]
+    }
+  },
   "categories": {
     "Nodes/Overworld/Door.tscn": "door",
     "Nodes/Overworld/Objects/Openable Door.tscn": "openable_door",
@@ -141,5 +164,6 @@
     "map": "world/podunk/podunk.encmap",
     "room": "world/podunk/podunk.encroom",
     "links": "world/world.enclinks"
-  }
+  },
+  "npc_recipe": "content/podunk-npcs.json"
 }

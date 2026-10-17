@@ -15,6 +15,10 @@ V3_FORMATS=FORMATS+['<9I','<4I','<5f']
 V3_STRIDES=STRIDES+[36,16,20]
 V4_FORMATS=FORMATS+['<10I','<4I','<5f']
 V4_STRIDES=STRIDES+[40,16,20]
+V6_NAMES=V3_NAMES+['Loot','PreHit','ActionMedia']
+V6_FORMATS=V4_FORMATS+['<If6I','<IIf','<3I']
+V6_STRIDES=V4_STRIDES+[32,12,12]
+LOOT_FIELDS=['item','chance','doses','present_text','inside_text','taking_text','sound','flags']
 V3_ENCOUNTER_FIELDS=['boss','keep_actor','post_win_script','boss_flash_media','promoted_level','following_level_exp','level_text','learned_skill','learned_text']
 ENCOUNTER_FIELDS=V3_ENCOUNTER_FIELDS+['stop_area_music_if_overworld']
 PARAMETERS=['TextTiming','TextTagSpeeds','HpDigits','PartyHit','PartyShown','FlyingNumberRandom','DamageGlyphGrid','TargetPointerOffset','TargetGlow','DialogueMargins','DialogueTextLayout','DamageShadow','SmashTiming','SmashOffset','PartyBounceMotion','PlateHitIntensity','RisingNumberSize','ReturnPartyGeometry','ReturnPartyFrames','ReturnPartyTurn','ReturnCamera']
@@ -33,8 +37,8 @@ def vector(v,n):require(isinstance(v,list)and len(v)==n and all(finite(x)for x i
 def safe_path(name):return isinstance(name,str)and bool(name)and not name.startswith('/')and all(x not in ('','..','.')for x in name.split('/'))and ':'not in name and '\\'not in name
 
 def schema_layout(version):
- require(version in [2,3,4,5],'Round version')
- return {2:(SECTION_NAMES,FORMATS,STRIDES),3:(V3_NAMES,V3_FORMATS,V3_STRIDES),4:(V3_NAMES,V4_FORMATS,V4_STRIDES),5:(V3_NAMES,V4_FORMATS,V4_STRIDES)}[version]
+ require(version in [2,3,4,5,6],'Round version')
+ return {2:(SECTION_NAMES,FORMATS,STRIDES),3:(V3_NAMES,V3_FORMATS,V3_STRIDES),4:(V3_NAMES,V4_FORMATS,V4_STRIDES),5:(V3_NAMES,V4_FORMATS,V4_STRIDES),6:(V6_NAMES,V6_FORMATS,V6_STRIDES)}[version]
 
 class RoundTables(dict):
  """Keep the checked schema explicit while preserving the table mapping API."""
@@ -42,6 +46,9 @@ class RoundTables(dict):
   names,_,_=schema_layout(version);super().__init__((name,[])for name in names);self.version=version
 
 def verify_sources(ir,root=ROOT):
+ if ir.get('schema')==6:
+  from tools.bridge_round import validate as verify_bridge
+  verify_bridge(ir,root);return
  from tools.round_assets import verify_reviewed_presentation
  verify_reviewed_presentation(root)
  from battle_round_bindings import load,check_round
@@ -49,8 +56,8 @@ def verify_sources(ir,root=ROOT):
  if ir.get('encounter',{}).get('boss'):
   from boss_presentation_bindings import load as load_boss, check_round as check_boss
   check_boss(ir,load_boss(root),root)
- require(ir['schema']in[2,3,4,5] and ir['kind']=='encore.native-battle-round.source-ir' and ir['commit']==PIN,'Unreviewed round schema/pin')
- review='reports/pillow-battle/source-review.json'if ir['schema']==5 and ir['binding']['battle_id']==3 else('reports/doll-round/source-review.json'if ir['schema']in[3,4,5] else'reports/battle-victory-data/source-review.json')
+ require(ir['schema']in[2,3,4,5,6] and ir['kind']=='encore.native-battle-round.source-ir' and ir['commit']==PIN,'Unreviewed round schema/pin')
+ review='reports/pillow-battle/source-review.json'if ir['schema']==5 and ir['binding']['battle_id']==3 else('reports/doll-round/source-review.json'if ir['schema']in[3,4,5,6] else'reports/battle-victory-data/source-review.json')
  report=json.loads((root/review).read_text())
  require(report['schema']==ir['schema'] and report['commit']==PIN and report['sources']==ir['sources'] and report['dependencies']==ir['dependencies'],'Round source review does not match')
  inventory=json.loads((root/'compatibility/upstream-inventory.json').read_text())
@@ -58,13 +65,13 @@ def verify_sources(ir,root=ROOT):
  require(isinstance(ir['sources'],dict)and len(ir['sources'])>=20,'Round sources missing')
  for path,sha in ir['sources'].items():
   require(safe_path(path)and inventory['files'][path]['sha256']==sha and digest(root/'upstream/MOTHER-Encore'/path)==sha,'Changed reviewed source '+path)
- expected={'content/native-battle.json','content/native-opening.json','content/native-round.json','content/pillow-entry.json','content/doll-round.json'}if ir['schema']==5 and ir['binding']['battle_id']==3 else({'content/native-battle.json','content/native-opening.json','content/doll-entry.json','content/native-round.json'}if ir['schema']in[3,4,5] else{'content/native-battle.json','content/native-opening.json'})
+ expected={'content/native-battle.json','content/native-opening.json','content/native-round.json','content/pillow-entry.json','content/doll-round.json'}if ir['schema']==5 and ir['binding']['battle_id']==3 else({'content/native-battle.json','content/native-opening.json','content/doll-entry.json','content/native-round.json'}if ir['schema']in[3,4,5,6] else{'content/native-battle.json','content/native-opening.json'})
  require(set(ir['dependencies'])==expected,'Unknown round dependency')
  for path,sha in ir['dependencies'].items():require(digest(root/path)==sha,'Changed round dependency '+path)
 
 def lower(ir,root=ROOT,verify_assets=True):
- require(ir['schema']in[2,3,4,5] and ir['commit']==PIN,'Unreviewed round schema/pin')
- fields(ir,['schema','kind','commit','scope','sources','dependencies','skills','enemy_choices','rules','binding','texts','presentation','victory']+(['encounter','growth','boss_shakes']if ir['schema']in[3,4,5] else[]),'round IR')
+ require(ir['schema']in[2,3,4,5,6] and ir['commit']==PIN,'Unreviewed round schema/pin')
+ fields(ir,['schema','kind','commit','scope','sources','dependencies','skills','enemy_choices','rules','binding','texts','presentation','victory']+(['encounter','growth','boss_shakes']if ir['schema']in[3,4,5,6] else[])+(['loot','pre_hit','action_media']if ir['schema']==6 else[]),'round IR')
  pool=bytearray(b'\0');strings={'':0}
  def string(s):
   require(isinstance(s,str)and '\0'not in s and len(s.encode())<=4096,'Invalid string')
@@ -100,13 +107,19 @@ def lower(ir,root=ROOT,verify_assets=True):
  else:require(not p['bindings']and not p['parameters'],'Media missing')
  tables['PresentationBindings']=[[SLOTS.index(k)+1,v]for k,v in p['bindings'].items()]
  tables['Parameters']=[[PARAMETERS.index(k)+1,*vector(v,4)]for k,v in p['parameters'].items()]
- if ir['schema']in[3,4,5]:
-  encounter_fields=ENCOUNTER_FIELDS if ir['schema']in[4,5] else V3_ENCOUNTER_FIELDS
+ if ir['schema']in[3,4,5,6]:
+  encounter_fields=ENCOUNTER_FIELDS if ir['schema']in[4,5,6] else V3_ENCOUNTER_FIELDS
   fields(ir['encounter'],encounter_fields,'encounter');tables['Encounter']=[[string(ir['encounter'][k])if k in['post_win_script','learned_skill']else ir['encounter'][k]for k in encounter_fields]]
   for g in ir['growth']:
    names=['stat','before','after','text'];fields(g,names,'growth');tables['Growth'].append([g[k]for k in names])
   for q in ir['boss_shakes']:
    names=['time','magnitude','length','interval','weight'];fields(q,names,'boss shake');tables['BossShakes'].append([q[k]for k in names])
+ if ir['schema']==6:
+  fields(ir['loot'],LOOT_FIELDS,'loot');tables['Loot']=[[string(ir['loot'][k])if k in ('item','sound')else ir['loot'][k]for k in LOOT_FIELDS]]
+  for effect in ir['pre_hit']:
+   fields(effect,['skill','media','apply_time'],'pre-hit');tables['PreHit'].append([effect['skill'],effect['media'],effect['apply_time']])
+  for action in ir['action_media']:
+   fields(action,['skill','preparation','use_sound'],'action media');tables['ActionMedia'].append([action[k]for k in ['skill','preparation','use_sound']])
  tables['Strings']=bytes(pool)
  return tables
 
@@ -167,26 +180,26 @@ def validate(t):
  require(string(b[8])and all(x<len(t['Texts'])for x in b[9:14])and b[14]<=1,'Round binding text');string(b[15])
  require(t['Skills'][b[3]][7]==1 and t['Skills'][b[4]][9]&1,'Round bound skill role')
  for row in t['Texts']:
-  require(row[1]<=(12 if version in[3,4,5] else 9),'Round text role');[string(x)for x in row[2:]]
+  require(row[1]<=(13 if version==6 else 12 if version in[3,4,5] else 9),'Round text role');[string(x)for x in row[2:]]
  require(t['Texts'][0][1:]==(0,0,0,0),'Round empty text')
  v=dict(zip(VICTORY_FIELDS,t['Victory'][0]))
- require(v['enemy_body_id']>0 and 0<v['initial_level']<v['level_cap']<=1000 and v['reward_exp']>0 and v['reward_item_count']==0 and (version in[3,4,5] or v['initial_exp']+v['reward_exp']<v['next_level_exp'])and v['next_level_exp']<=v['max_exp']<=0x7fffffff,'Round unsupported victory progression/reward state')
+ require(v['enemy_body_id']>0 and 0<v['initial_level']<v['level_cap']<=1000 and v['reward_exp']>0 and v['reward_item_count']==(1 if version==6 else 0) and (version in[3,4,5,6] or v['initial_exp']+v['reward_exp']<v['next_level_exp'])and v['next_level_exp']<=v['max_exp']<=0x7fffffff,'Round unsupported victory progression/reward state')
  require(v['initial_cash']<=0x7fffffff and v['initial_bank']+v['reward_cash']<=0x7fffffff and v['initial_earned_cash']+v['reward_cash']<=0x7fffffff,'Round victory currency overflow')
  require(v['exp_text']<len(t['Texts'])and t['Texts'][v['exp_text']][1]==9 and string(t['Texts'][v['exp_text']][4])and v['acknowledgment']==1 and v['currency_policy']==1 and string(v['earned_cash_flag'])and v['earned_cash_flag']!=b[15],'Round victory binding/policy')
- if version in[3,4,5]:
-  require(len(t['Encounter'])==1 and len(t['Growth'])==7 and (version==5 or len(t['BossShakes'])==3),'Round encounter capacity')
-  encounter_fields=ENCOUNTER_FIELDS if version in[4,5] else V3_ENCOUNTER_FIELDS
+ if version in[3,4,5,6]:
+  require(len(t['Encounter'])==1 and len(t['Growth'])==7 and (version>=5 or len(t['BossShakes'])==3),'Round encounter capacity')
+  encounter_fields=ENCOUNTER_FIELDS if version in[4,5,6] else V3_ENCOUNTER_FIELDS
   require(len(t['Encounter'][0])==len(encounter_fields),'Round encounter stride')
   e=dict(zip(encounter_fields,t['Encounter'][0]))
-  if version in[4,5]:require(uint(e['stop_area_music_if_overworld'])and e['stop_area_music_if_overworld']<=1,'Round area music policy')
-  if version==5:
+  if version in[4,5,6]:require(uint(e['stop_area_music_if_overworld'])and e['stop_area_music_if_overworld']<=1,'Round area music policy')
+  if version>=5:
    require(e['boss']in[0,1]and e['keep_actor']in[0,1]and len(t['BossShakes'])==(3 if e['boss']else 0),'Round conditional encounter capacity')
    require((e['boss_flash_media']<len(t['Media']))if e['boss']else(e['boss_flash_media']==0xffffffff),'Round conditional boss media')
    require(v['initial_exp']<v['next_level_exp']<e['following_level_exp'] and v['initial_exp']+v['reward_exp']<e['following_level_exp'],'Round conditional progression range')
    if not e['boss']:
     require(not any(event[2]>=10 for event in t['Events'])and not any(media[2]==12 for media in t['Media']),'Round nonboss effect rejected')
   else:require(e['boss']==e['keep_actor']==1 and e['boss_flash_media']<len(t['Media'])and v['next_level_exp']<=v['initial_exp']+v['reward_exp']<e['following_level_exp'],'Round legacy encounter policy')
-  require(safe_path(string(e['post_win_script']))and e['promoted_level']==v['initial_level']+1<v['level_cap']and v['next_level_exp']<e['following_level_exp']<=v['max_exp']and e['level_text']<len(t['Texts'])and t['Texts'][e['level_text']][1]==10 and string(e['learned_skill'])and e['learned_text']<len(t['Texts'])and t['Texts'][e['learned_text']][1]==12 and not string(b[15]),'Round encounter policy')
+  require((safe_path(string(e['post_win_script']))or version==6 and not string(e['post_win_script']))and e['promoted_level']==v['initial_level']+1<v['level_cap']and v['next_level_exp']<e['following_level_exp']<=v['max_exp']and e['level_text']<len(t['Texts'])and t['Texts'][e['level_text']][1]==10 and string(e['learned_skill'])and e['learned_text']<len(t['Texts'])and t['Texts'][e['learned_text']][1]==12 and(version==6 or not string(b[15])),'Round encounter policy')
   require({g[0]for g in t['Growth']}==set(range(1,8)),'Round growth stats')
   for stat,before,after,text in t['Growth']:require(0<=before<=after<=0x7fffffff and text<len(t['Texts'])and(text==0 if before==after else t['Texts'][text][1]==11),'Round growth')
   prior=-1
@@ -199,9 +212,21 @@ def validate(t):
  for r in t['Resources']:
   require(safe_path(string(r[1]))and r[2]in[1,2,3]and 1<=r[3]<=8192 and 1<=r[4]<=8192 and 1<=r[5]<=256 and 1<=r[6]<=256,'Round resource')
   require(r[2]!=1 or(r[3]%r[5]==0 and r[4]%r[6]==0),'Round grid')
+ if version==6:
+  require(len(t['Loot'])==1 and 1<=len(t['PreHit'])<=len(t['Skills'])and len(t['ActionMedia'])==len(t['Skills']),'Round loot/pre-hit/action capacity')
+  action_skills=set()
+  for skill,media,sound in t['ActionMedia']:
+   require(uint(skill)and skill<len(t['Skills'])and skill not in action_skills and uint(sound)and sound<=1 and uint(media)and(media==0xffffffff or media<len(t['Media'])and t['Media'][media][2]==1),'Round action media binding');action_skills.add(skill)
+  preparations={skill:media for skill,media,_ in t['ActionMedia']};require(all(preparations[t['Bindings'][0][i]]!=0xffffffff for i in (3,4)),'Round party preparation is missing')
+  loot=dict(zip(LOOT_FIELDS,t['Loot'][0]))
+  require(string(loot['item'])and finite(loot['chance'])and 0<loot['chance']<=100 and loot['doses']==1 and loot['flags']==0 and safe_path(string(loot['sound'])),'Round ordinary loot policy')
+  require(all(0<i<len(t['Texts'])and string(t['Texts'][i][4])for i in [loot['present_text'],loot['inside_text'],loot['taking_text']]),'Round loot dialogue')
+  seen=set()
+  for skill,media,time in t['PreHit']:
+   require(skill<len(t['Skills'])and skill not in seen and media<len(t['Media'])and t['Media'][media][2]==3 and finite(time)and 0<time<=t['Media'][media][9] and t['Skills'][skill][5]==0,'Round pre-hit binding');seen.add(skill)
  owned_tracks=set();owned_events=set()
  for i,m in enumerate(t['Media']):
-  string(m[1]);require(1<=m[2]<=(12 if version in[3,4,5] else 11) and(m[3]==0xffffffff or m[3]<len(t['Resources']))and m[4]+m[5]<=len(t['Tracks'])and m[6]+m[7]<=len(t['Events'])and m[8]&~7==0 and all(finite(v)for v in m[9:])and 0<=m[9]<=120 and (m[9]>0 or (m[5]==m[7]==0 and not(m[8]&1))) and all(0<=v<=1 for v in m[14:20]),'Round media')
+  string(m[1]);require(1<=m[2]<=(12 if version in[3,4,5,6] else 11) and(m[3]==0xffffffff or m[3]<len(t['Resources']))and m[4]+m[5]<=len(t['Tracks'])and m[6]+m[7]<=len(t['Events'])and m[8]&~7==0 and all(finite(v)for v in m[9:])and 0<=m[9]<=120 and (m[9]>0 or (m[5]==m[7]==0 and not(m[8]&1))) and all(0<=v<=1 for v in m[14:20]),'Round media')
   for j in range(m[4],m[4]+m[5]):
    require(t['Tracks'][j][0]==i and j not in owned_tracks,'Round media track ownership');owned_tracks.add(j)
   prior=-1
@@ -210,7 +235,7 @@ def validate(t):
  require(len(owned_tracks)==len(t['Tracks'])and len(owned_events)==len(t['Events']),'Round orphan tracks/events')
  used_keys=set()
  for tr in t['Tracks']:
-  require(tr[0]<len(t['Media'])and 1<=tr[1]<=(18 if version in[3,4,5] else 17) and tr[3]>0 and tr[2]+tr[3]<=len(t['Keys'])and tr[4]<=1 and tr[5]<=8 and tr[6]<=2,'Round track opcode/span')
+  require(tr[0]<len(t['Media'])and 1<=tr[1]<=(18 if version in[3,4,5,6] else 17) and tr[3]>0 and tr[2]+tr[3]<=len(t['Keys'])and tr[4]<=1 and tr[5]<=8 and tr[6]<=2,'Round track opcode/span')
   prev=-1
   for j in range(tr[2],tr[2]+tr[3]):
    k=t['Keys'][j];require(j not in used_keys,'Round overlapping keys');used_keys.add(j)
@@ -221,7 +246,7 @@ def validate(t):
    if tr[1]==7:require(k[2]in[0,1],'Round visibility')
    if tr[1]==17:require(k[2]==0,'Round unsupported outline')
  require(len(used_keys)==len(t['Keys']),'Round orphan key')
- for e in t['Events']:require(e[0]<len(t['Media'])and finite(e[1])and 0<=e[1]<=t['Media'][e[0]][9]and 1<=e[2]<=(11 if version in[3,4,5] else 9),'Round event opcode/span')
+ for e in t['Events']:require(e[0]<len(t['Media'])and finite(e[1])and 0<=e[1]<=t['Media'][e[0]][9]and 1<=e[2]<=(11 if version in[3,4,5,6] else 9),'Round event opcode/span')
  bindings=set()
  for slot,index in t['PresentationBindings']:require(1<=slot<=len(SLOTS)and slot not in bindings and index<len(t['Media']),'Round presentation binding');bindings.add(slot)
  params=set()

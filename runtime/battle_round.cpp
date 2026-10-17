@@ -14,10 +14,12 @@ bool apply_session_stats(BattleParticipant&p,const BattleSessionStats&s){
  if(!s.level||s.level>INT32_MAX||s.experience>INT32_MAX||s.maxhp<=0||s.maxpp<0||s.hp<=0||s.hp>s.maxhp||s.pp<0||s.pp>s.maxpp||s.offense<0||s.defense<0||s.speed<0||s.iq<0||s.guts<0)return false;
  p.level=int32_t(s.level);p.xp=int32_t(s.experience);p.hp=s.hp;p.pp=s.pp;p.maxhp=s.maxhp;p.maxpp=s.maxpp;p.offense=s.offense;p.defense=s.defense;p.speed=s.speed;p.iq=s.iq;p.guts=s.guts;return true;
 }
-bool BattleRound::begin(RoundView content,BattleView entry,SourceRandom&random,BattleRoundHost&host,const BattleSessionStats*session){
+bool BattleRound::begin(RoundView content,BattleView entry,SourceRandom&random,BattleRoundHost&host,const BattleSessionStats*session,std::string_view basic_source){
  *this=BattleRound{};content_=content;entry_=entry;random_=&random;host_=&host;
  if(!content.valid()||!entry.valid())return fail("Missing checked round/battle data");
  const auto binding=content.binding();
+ basic_skill_=binding.basic_skill;
+ if(!basic_source.empty()){unsigned matches=0;for(uint32_t i=0;i<content.count(RoundSection::Skills);++i){const auto skill=content.skill(i);if(content.string(skill.source)==basic_source){basic_skill_=i;++matches;}}if(matches!=1||content.skill(basic_skill_).skill_type!=uint32_t(RoundSkillType::Basic)||content.skill(basic_skill_).target_type!=uint32_t(RoundTargetType::Enemy)||content.skill(basic_skill_).traits)return fail("Basic weapon action is not admitted");}
  if(binding.battle_id!=entry.metadata().room_battle_id||binding.player_participant>=entry.count(BattleSection::Participants)||binding.enemy_participant>=entry.count(BattleSection::Participants)||binding.player_participant==binding.enemy_participant)return fail("Round participant bindings differ from entry");
  for(uint32_t i=0;i<entry.count(BattleSection::Participants);++i){const auto p=entry.participant(i);battlers_.push_back({p,p.hp,p.pp,false});}
  if(battlers_.size()!=2)return fail("Round execution currently requires the reviewed two-participant encounter");
@@ -34,7 +36,7 @@ bool BattleRound::tick_delay(double delta){remaining_=double(float(remaining_)-f
 bool BattleRound::request_menu(uint32_t menu){
  if(phase_!=BattleRoundPhase::Commands)return phase_!=BattleRoundPhase::Error;
  const auto b=content_.binding();
- if(menu==b.basic_menu){phase_=BattleRoundPhase::Targeting;selected_target_=b.enemy_participant;return cue(BattleRoundCueKind::TargetOpen,b.player_participant,selected_target_,b.basic_skill);}
+ if(menu==b.basic_menu){phase_=BattleRoundPhase::Targeting;selected_target_=b.enemy_participant;return cue(BattleRoundCueKind::TargetOpen,b.player_participant,selected_target_,basic_skill_);}
  if(menu==b.guard_menu){
   if(!queue_actions(b.guard_skill))return false;
   battlers_[b.player_participant].defending=true;
@@ -56,7 +58,7 @@ bool BattleRound::target_input(int direction,bool confirm,bool cancel){
  if(!confirm)return true; // Exactly one reviewed enemy; directional input keeps it selected.
  if(!alive(selected_target_))return fail("Selected battle target is not conscious");
  if(!cue(BattleRoundCueKind::TargetClose,b.player_participant,selected_target_))return false;
- return queue_actions(b.basic_skill);
+ return queue_actions(basic_skill_);
 }
 bool BattleRound::queue_actions(uint32_t skill){
  const auto b=content_.binding();if(skill>=content_.count(RoundSection::Skills))return fail("Missing selected battle skill");
@@ -109,6 +111,7 @@ bool BattleRound::start_action(){
 bool BattleRound::execute_skill(){
  const auto&a=queue_[action_index_];const auto skill=content_.skill(a.skill);
  if(!alive(a.actor))return finish_action();
+ if(content_.action_media(a.skill).use_sound&&!cue(BattleRoundCueKind::UseSkillSound,a.actor,a.target,a.skill))return false;
  if(chance(skill.fail_chance))return fail("Unreviewed nonzero skill failure path");
  miss_=chance(skill.miss_chance);
  if(skill.traits&uint32_t(RoundTrait::Guard)){
@@ -188,9 +191,14 @@ bool BattleRound::idle_frame(double delta){
  case Step::StartSkill:if(!execute_skill())return false;break;
  case Step::WaitImpact:if(host_->ready(BattleRoundGate::ApplyDamage,queue_[action_index_].actor))step_=Step::PreHitIdle;break;
  case Step::PreHitIdle:
-  if(content_.skill(queue_[action_index_].skill).action_type==uint32_t(RoundActionType::Damage)){if(!apply_impact())return false;}
+  if(content_.skill(queue_[action_index_].skill).action_type==uint32_t(RoundActionType::Damage)){
+   const auto& action=queue_[action_index_];
+   if(content_.pre_hit(action.skill).media!=round_no_index){if(!cue(BattleRoundCueKind::PreHit,action.actor,action.target,action.skill))return false;step_=Step::WaitPreHit;}
+   else if(!apply_impact())return false;
+  }
   else delay(Step::TargetDelay,content_.rule(RoundRule::TargetEndDelay));
   break;
+ case Step::WaitPreHit:if(host_->ready(BattleRoundGate::PreHitDone,queue_[action_index_].actor)&&!apply_impact())return false;break;
  case Step::DamageIdle:delay(Step::TargetDelay,content_.rule(RoundRule::TargetEndDelay));break;
  case Step::BossDefeat:if(host_->ready(BattleRoundGate::BossDefeatDone,content_.binding().enemy_participant))phase_=BattleRoundPhase::VictoryPending;break;
  case Step::DefeatDialogue:if(host_->ready(BattleRoundGate::DialogueDone,queue_[action_index_].actor))delay(Step::TargetDelay,content_.rule(RoundRule::TargetEndDelay));break;

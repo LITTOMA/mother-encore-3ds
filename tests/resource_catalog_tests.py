@@ -50,12 +50,14 @@ class ResourceCatalogTests(unittest.TestCase):
 
     def test_field_extension_is_separate_and_fail_closed(self):
         self.assertFalse(any(row['role'] in catalog.EXTENSION_ROLES for row in self.base['bindings']))
-        self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.EXTENSION_ROLES)
+        self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.EXTENSION_ROLES|{'EncounterBattle','EncounterRound'})
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
-        self.assertEqual(catalog.capability_for(self.ir['bindings']), 6)
+        self.assertEqual(catalog.capability_for(self.ir['bindings']), 8)
+        motion=[r for r in self.ir['bindings']if r['role']=='FieldNpc']
+        self.assertEqual(len(motion),2)
+        self.assertTrue(all(r['id']>=256 for r in motion))
         audio_roles={'GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones'}
-        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles|{'FieldMenus'}]
-        self.assertEqual(catalog.capability_for([row for row in self.ir['bindings'] if row['role']!='FieldMenus']),5)
+        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles|{'FieldMenus','FieldNpc','FieldStory'}]
         self.assertEqual(catalog.capability_for(legacy), 4)
         for role in audio_roles:
             self.reject(lambda ir: ir.update(bindings=[row for row in ir['bindings'] if row['role']!=role]))
@@ -96,6 +98,15 @@ class ResourceCatalogTests(unittest.TestCase):
         candidate['sources'][next(iter(candidate['sources']))] = '0' * 64
         with self.assertRaises(ValueError):
             catalog.encode(catalog.merge_catalog(copy.deepcopy(self.base), candidate))
+
+    def test_mainline_menu_identity_and_new_capabilities(self):
+        self.assertEqual((catalog.ROLES['FieldMenus'],catalog.ROLES['FieldNpc'],catalog.ROLES['FieldStory']),(40,41,42))
+        for cap,remove in ((6,{'FieldNpc','FieldStory'}),(7,{'FieldStory'}),(8,set())):
+            ir=copy.deepcopy(self.ir);ir['bindings']=[r for r in ir['bindings'] if r['role'] not in remove]
+            raw=catalog.encode(ir);self.assertEqual(struct.unpack_from('<I',raw,20)[0],cap)
+            self.assertIn(dict(id=40,role='FieldMenus',path='ui/field.encmenus'),catalog.decode(raw)['bindings'])
+        for role,identity in (('FieldMenus',41),('FieldNpc',40),('FieldStory',41)):
+            self.reject(lambda ir: next(r for r in ir['bindings'] if r['role']==role).update(id=identity))
 
     def test_unknown_schema_fields_types_pin_and_empty_scope(self):
         for key, value in [('schema', 2), ('schema', True), ('kind', 'unknown'),
@@ -213,7 +224,7 @@ class ResourceCatalogTests(unittest.TestCase):
         for size in range(len(original)):
             with self.subTest(size=size), self.assertRaises(ValueError):
                 catalog.decode(original[:size])
-        for offset, value in [(8, 0), (8, 2), (20, 0), (20, 1), (20, 2), (20, 7), (24, 1), (28, 1)]:
+        for offset, value in [(8, 0), (8, 2), (20, 0), (20, 1), (20, 2), (20, 5), (20, 6), (20, 7), (20, 9), (24, 1), (28, 1)]:
             bad = bytearray(original)
             struct.pack_into('<I', bad, offset, value)
             with self.subTest(offset=offset, value=value), self.assertRaises(ValueError):

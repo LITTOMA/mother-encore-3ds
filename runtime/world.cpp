@@ -145,7 +145,7 @@ bool OpeningWorld::end_scene_frame(){
     }return true;
 }
 bool OpeningWorld::write_story_flag(uint32_t index,bool value,bool emit){
-    if(!healthy_)return false;const auto result=flags_.set_story_flag(index,value,emit);
+    if(!healthy_)return false;const auto result=flags_.set_story_flag(index,value,emit);if(result.flags_updated)++story_revision_;
     return result.applied&&(!result.flags_updated||refresh_scene_rules());
 }
 bool OpeningWorld::request_sound(uint32_t resource_index){
@@ -219,7 +219,11 @@ bool OpeningWorld::script_move(Vec2 position,Vec2 direction,bool walking){
     return persistent_player_.state_->camera_.relocate_player(position);
 }
 bool OpeningWorld::set_initial_actor_pose(uint32_t index,Vec2 position,Vec2 direction){
-    if(!healthy_||stage_!=OpeningStage::Walking||physics_tick_||idle_frame_||index>=actors_.size()||index==content_.scene().player_instance_index||actor_bound_[index]||!std::isfinite(position.x)||!std::isfinite(position.y)||!std::isfinite(direction.x)||!std::isfinite(direction.y)||(!direction.x&&!direction.y))return false;
+    if(physics_tick_||idle_frame_)return false;
+    return sync_unbound_actor_pose(index,position,direction);
+}
+bool OpeningWorld::sync_unbound_actor_pose(uint32_t index,Vec2 position,Vec2 direction){
+    if(!healthy_||stage_!=OpeningStage::Walking||index>=actors_.size()||index==content_.scene().player_instance_index||actor_bound_[index]||!std::isfinite(position.x)||!std::isfinite(position.y)||!std::isfinite(direction.x)||!std::isfinite(direction.y)||(!direction.x&&!direction.y))return false;
     auto&actor=actors_[index];actor.position=position;actor.direction=direction;return true;
 }
 bool OpeningWorld::body_enabled(uint32_t body_id)const{
@@ -229,6 +233,9 @@ bool OpeningWorld::body_enabled(uint32_t body_id)const{
 bool OpeningWorld::set_body_enabled(uint32_t body_id,bool enabled){
     if(!healthy_)return false;
     bool known=false;for(uint32_t i=0;i<content_.polygon_count();++i)if(content_.polygon(i).body_id==body_id){known=true;break;}
+    // A dynamic field actor owns a checked BodyRule without a static polygon.
+    // Its collision adapter observes instance visibility after battle erasure.
+    if(!known)for(uint32_t i=0;i<content_.body_rule_count();++i)if(content_.body_rule(i).body_id==body_id){known=true;break;}
     if(!known)return false;
     if(body_enabled(body_id)==enabled)return true;
     auto active=active_polygons_;
@@ -256,7 +263,7 @@ bool OpeningWorld::erase_battle_actor(uint32_t body_id){
     erased_bodies_.push_back(body_id);actor_visible_[battle_.actor_index]=0;actor_bound_[battle_.actor_index]=0;actor_persistent_[battle_.actor_index]=0;return true;
 }
 bool OpeningWorld::set_battle_story_flag(){return healthy_&&battle_accepted_&&write_story_flag(battle_.win_flag_index,true);}
-bool OpeningWorld::set_story_flag(std::string_view name,bool value,bool emit){if(!healthy_)return false;const auto result=flags_.set_story_flag(name,value,emit);return result.applied&&(!result.flags_updated||refresh_scene_rules());}
+bool OpeningWorld::set_story_flag(std::string_view name,bool value,bool emit){if(!healthy_)return false;const auto result=flags_.set_story_flag(name,value,emit);if(result.flags_updated)++story_revision_;return result.applied&&(!result.flags_updated||refresh_scene_rules());}
 bool OpeningWorld::start_battle_return_camera(Vec2 target,double duration){return healthy_&&battle_accepted_&&persistent_player_.state_->camera_.return_offset(target,duration)&&persistent_player_.state_->camera_.idle_frame(last_idle_delta_);}
 bool OpeningWorld::start_area_music(uint32_t resource,double gain,double fadein){
  if(!healthy_||resource>=content_.resource_count()||content_.resource(resource).kind!=uint16_t(RoomResourceKind::AudioRequestOnly)||!std::isfinite(gain)||gain<-120||gain>24||!std::isfinite(fadein)||fadein<0||fadein>60)return false;

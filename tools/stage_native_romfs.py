@@ -102,6 +102,17 @@ def main():
     files.update(basement_files(source))
     from mick_treats import stage_files as mick_files
     files.update(mick_files(source))
+    from field_npcs import stage_files as npc_files
+    files.update(npc_files(source))
+    from field_story import stage_files as story_files
+    from field_rewards import stage_files as reward_files
+    files.update(story_files(source));files.update(reward_files(source))
+    field_room=parse_pack(files[Path(next(b['path']for b in catalog['bindings']if b['role']=='FieldRoom'))])
+    for encounter in field_room['sections']['Battle']:
+        path=Path(field_room['strings'][field_room['sections']['Resource'][encounter['battle_resource_index']]['path_string']])
+        files.update(battle_files(source,path))
+        if path.as_posix()not in companions:raise ValueError('Field encounter companion missing')
+        files.update(round_files(source,Path(companions[path.as_posix()])))
     files.update(catalog_files(source, files))
     from romfs_layout import check_layout
     check_layout(files)

@@ -9,7 +9,7 @@
 // Do not expose C++ object layouts or pointers to the runner.
 struct EncoreSemanticProbe {
     char magic[8]={'E','N','C','S','E','M','0','1'};
-    uint32_t version=7,byte_size=844,sequence=0,frame=0,width=0,height=0;
+    uint32_t version=9,byte_size=1300,sequence=0,frame=0,width=0,height=0;
     uint32_t title_phase=0,title_option=0,naming_phase=0,naming_field=0,naming_selected=0;
     uint32_t intro_phase=0,menu_phase=0,menu_command=0,menu_slot=0,menu_candidate=0;
     uint32_t field_scene=0,field_phase=0,house_phase=0,world_stage=0;
@@ -23,13 +23,27 @@ struct EncoreSemanticProbe {
     uint32_t dialogue_active=0,dialogue_finished=0,dialogue_stopped=0,dialogue_visible=0;
     float player_x=0,player_y=0,direction_x=0,direction_y=0,mick_x=0,mick_y=0;
     char house_error[128]{},field_error[128]{},menu_error[128]{},audio_error[128]{};
+    // v8 extends the unchanged v6 prefix. Identity is data-defined; item UIDs
+    // and C++ object addresses are intentionally outside semantic comparison.
+    uint32_t world_programme=0,world_dialogue=0,story_revision_lo=0,story_revision_hi=0,story_flag_count=0;
+    uint32_t story_flags[6]{};
+    uint32_t cash=0,bank=0,earned_cash=0,loot_ready=0,loot_selected=0,loot_granted=0;
+    uint32_t battle_current_hp=0,battle_target_hp=0;
+    uint32_t dialogue_music_playing=0,dialogue_music_asset=0,dsp_dialogue_playing=0,dsp_dialogue_sample_pos=0,dsp_dialogue_wave_seq=0;
+    uint32_t region_music_paused=0,region_music_voices=0,region_music_track=0,dsp_region_playing=0,dsp_region_sample_sum=0,dsp_region_wave_sum=0;
+    struct Item {uint32_t definition=0,doses=0,equipped=0;}inventory[16]{};
+    uint32_t random_state_lo=0,random_state_hi=0,random_draws_lo=0,random_draws_hi=0;
+    char battle_error[128]{};
+    // v9 appends mainline menu observations after the complete v8 prefix.
     uint32_t submenu_phase=0,submenu_selection=0,submenu_keys=0,submenu_count=0;
     uint32_t menu_inventory_hash=0,menu_key_hash=0,menu_settings_hash=0,menu_controls_hash=0;
     uint32_t menu_master=0,menu_music=0,menu_sfx=0,menu_display=0;
     uint32_t menu_maxhp=0,menu_maxpp=0,menu_offense=0,menu_defense=0;
     uint32_t menu_map_x=0,menu_map_y=0,menu_uid_hash=0,menu_key_uid_hash=0;
 };
-static_assert(sizeof(EncoreSemanticProbe)==844,"Semantic probe ABI changed");
+static_assert(sizeof(EncoreSemanticProbe)==1300,"Semantic probe ABI changed");
+static_assert(offsetof(EncoreSemanticProbe,world_programme)==764,"Semantic probe extension offset changed");
+static_assert(offsetof(EncoreSemanticProbe,submenu_phase)==1220,"Menu observation offset changed");
 static_assert(offsetof(EncoreSemanticProbe,player_x)==228,"Semantic probe word order changed");
 static_assert(offsetof(EncoreSemanticProbe,house_error)==252,"Semantic probe text order changed");
 

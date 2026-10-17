@@ -304,7 +304,7 @@ private:
         const bool success=generate_runs<Indices>(time,[&](uint32_t x,uint32_t y,uint32_t width,uint8_t a,uint8_t b,uint32_t color){
             if(count==capacity)return false;
             auto& span=output[count++];span.x=uint16_t(x);span.y=uint16_t(y);span.width=uint16_t(width);
-            if constexpr(Indices){span.index[0]=a;span.index[1]=b;}
+            if constexpr(Indices){(void)color;span.index[0]=a;span.index[1]=b;}
             else span.color=color;
             return true;
         });

@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Graphics/Battle Effects/Bite.png": "9c027398c9a58e1a7da6d60084c4e3e1f72dc5d59ddfe10a96d9e236c2be306d",
+    "Graphics/Battle Effects/Bite.png.import": "b9c24ab080cf0e12f01a1ac28686ff374980817d8c899250d331d54e6268d86d",
+    "Scripts/UI/Battle/PreHitEffect.gd": "3a630fa3c9fab120c6861361c2938153eee4dec6ad4c6a4ce6731bbdf1338ab9",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "spec": {
+    "source": "Nodes/Ui/Battle/Battle.tscn",
+    "length": 0.55,
+    "apply_time": 0.25,
+    "frames": [
+      [
+        0,
+        0
+      ],
+      [
+        0.05,
+        1
+      ],
+      [
+        0.1,
+        2
+      ],
+      [
+        0.15,
+        3
+      ],
+      [
+        0.2,
+        4
+      ],
+      [
+        0.25,
+        5
+      ],
+      [
+        0.3,
+        6
+      ],
+      [
+        0.35,
+        7
+      ],
+      [
+        0.4,
+        8
+      ],
+      [
+        0.45,
+        9
+      ],
+      [
+        0.5,
+        10
+      ]
+    ],
+    "size": [
+      1001,
+      85
+    ],
+    "grid": [
+      11,
+      1
+    ]
+  },
+  "path": "graphics/battle/straydog/bite.t3x",
+  "sha256": "3c86f235de10f5caa706139f0ca0d6766f32f08e6ad40bf2091debb3bd360cf4",
+  "bytes": 524309,
+  "producer_sha256": "4ea6f5fa014743c42d690a33c7e224a6f90c19d141d29bb27d6d05021976ff62",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "permission": "Original Team Encore images used solely for this game-related native port under the pinned upstream LICENSE; shared checked UI/font assets keep their existing notices. No third-party binary or new font is bundled."
+}

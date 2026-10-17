@@ -224,6 +224,14 @@
       "gain_db": 0.0
     },
     {
+      "stable_id": 4229387514,
+      "source_path": "res://Audio/Music/Battle Themes/Flippant Foe.mp3",
+      "source_sha256": "aa17a9926a0774d8e55cead372bcc76eb43ef2f0210fd02c01b47b4448638c11",
+      "import_sha256": "888c7c77d3d1dff80fb6506d4e9d89eb5bc78f1432077106e67dc44091aba234",
+      "pcm_path": "sound/music/gameplay-4229387514.pcm",
+      "gain_db": 0
+    },
+    {
       "stable_id": 3080041499,
       "source_path": "res://Audio/Music/You Win/LVLUP.mp3",
       "source_sha256": "7ed8774a212f98a0ea416b0dfe1938069cac850a9793177d1f77e4ef976beffc",
@@ -304,6 +312,14 @@
       "gain_db": 0
     },
     {
+      "stable_id": 3790917041,
+      "source_path": "res://Audio/Sound effects/EB/itemget1.wav",
+      "source_sha256": "dcb8603faf73979ea4d22df9a70b149b61b9e67cf0f2a56016115d1bc759f857",
+      "import_sha256": "48c3d840655619fbfe487d28647b415b6b9d6eff2db7de568accfef7f473d3c8",
+      "pcm_path": "sound/effects/gameplay-3790917041.pcm",
+      "gain_db": 0
+    },
+    {
       "stable_id": 2793307618,
       "source_path": "res://Audio/Sound effects/EB/miss.wav",
       "source_sha256": "6696e8e759be9dca1ef2e70a09a79d060163e7757c61d7494137c06ccebefd8d",
@@ -350,6 +366,14 @@
       "source_sha256": "e472611c9399ef97d628f31f2bd81dd5cc8ba4ede703ac117c15e985128b7c17",
       "import_sha256": "4c3f61c94e830a5014f1d95096bbfe7d90b8eed09a59de0c91625e0e3debd08e",
       "pcm_path": "sound/effects/gameplay-4096138857.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 3120996676,
+      "source_path": "res://Audio/Sound effects/M3/Growl 2.mp3",
+      "source_sha256": "0b3d7f970bc72354c04ad192a73564c19719e0059148042c1b25705ae68e20dd",
+      "import_sha256": "564861459a5022d0126f448ff0125cc3466bb1e0bfb160f0e7887c33fea75f7c",
+      "pcm_path": "sound/effects/gameplay-3120996676.pcm",
       "gain_db": 0
     },
     {

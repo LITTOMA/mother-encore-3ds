@@ -563,7 +563,7 @@ def stage_files(source):
     return {Path(PACK): blob, Path(OUTPUT): (Path(source) / OUTPUT).read_bytes()}
 
 
-def lower(ir):
+def lower(ir, *, motion_owner=None, motion_flags=0):
     from tools.podunk_field import pack_container
     pool = bytearray()
     strings = []
@@ -586,7 +586,18 @@ def lower(ir):
         text_index.append(len(text_index))
         secs['Texts'] += struct.pack('<2I', s(row['localized']['en']), s(row['localized']['zh_Hans_CN']))
     a = ir['actor']
-    item_s = s(a['item']); req_s = s(a['require_flag']); con_s = s(a['consume_flag']); path_s = s(a['source_path'])
+    motion = motion_owner is not None
+    if motion:
+        require(type(motion_owner) is int and 0 < motion_owner <= 0xffffffff and type(motion_flags) is int and 0 <= motion_flags <= 7, 'Bad NPC motion owner/features')
+        require(not ir['texts'] and not ir['commands'] and not ir['programmes'] and
+                all(a[k] is None for k in ('item', 'require_flag', 'consume_flag', 'bark_path', 'bark_programme')) and
+                a['bark_center'] == [0, 0] and a['bark_extents'] == [0, 0], 'Motion-only resource contains dialogue bindings')
+    else:
+        require(motion_flags == 0, 'Legacy Mick cannot carry NPC motion features')
+    item_s = 0xffffffff if motion else s(a['item'])
+    req_s = 0xffffffff if motion else s(a['require_flag'])
+    con_s = 0xffffffff if motion else s(a['consume_flag'])
+    path_s = s(a['source_path'])
     floats = {'JumpActor': {'a', 'b'}, 'TurnActor': {'a', 'b', 'c'}, 'MovePlayer': {'a', 'b', 'c'}, 'Wait': {'a'}}
 
     def bits(value):
@@ -625,15 +636,19 @@ def lower(ir):
         a['ray_offset'][0], a['ray_offset'][1],
         a['bark_center'][0], a['bark_center'][1], a['bark_extents'][0], a['bark_extents'][1],
         float(a['initial_direction'][0]), float(a['initial_direction'][1]),
-        int(a['rng_lo']), int(a['rng_hi']), int(a['bark_programme']),
+        int(a['rng_lo']), int(a['rng_hi']), 0xffffffff if motion else int(a['bark_programme']),
         int(a['idle_clip']), int(a['idle_clip_count']), int(a['walk_clip']), int(a['walk_clip_count']),
-        int(a['talk_clip']), int(a['talk_clip_count']), s(a['bark_path']))
-    require(item_s == s(a['item']), 'Mick item string drifted')
+        int(a['talk_clip']), int(a['talk_clip_count']), 0xffffffff if motion else s(a['bark_path']))
+    if not motion:require(item_s == s(a['item']), 'Mick item string drifted')
     del text_index
     for off, length in strings:
         secs['Strings'] += struct.pack('<2I', off, length)
     secs['Bytes'] = pool
-    return pack_container(MAGIC, 1, [secs[n] for n in SECTIONS], STRIDES, LIMIT, capability=3)
+    blob = bytearray(pack_container(MAGIC, motion_owner if motion else 1, [secs[n] for n in SECTIONS], STRIDES, LIMIT, capability=4 if motion else 3))
+    # Capability 4 assigns the former reserved word to checked motion features.
+    # It is outside the payload CRC, exactly like the capability and owner words.
+    struct.pack_into('<I', blob, 28, motion_flags)
+    return bytes(blob)
 
 
 def encode(ir):
@@ -642,15 +657,17 @@ def encode(ir):
     return blob
 
 
-def parse(blob):
+def parse(blob, *, allow_motion=False):
     from tools.podunk_field import unpack_container
-    scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT, capability=3)
-    require(scene == 1, 'Mick pack scene identity')
+    motion = allow_motion and len(blob) >= 32 and struct.unpack_from('<I', blob, 20)[0] == 4
+    scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT, capability=4 if motion else 3, header_flags_mask=7 if motion else 0)
+    require(scene > 0 if motion else scene == 1, 'NPC/Mick pack owner identity')
     rows = {n: secs[i] for i, n in enumerate(SECTIONS)}
     count = {n: len(rows[n]) // STRIDES[i] for i, n in enumerate(SECTIONS)}
     require(count['Texture'] == 1 and count['Actor'] == 1 and len(rows['Actor']) == 200
-            and 0 < count['Programmes'] <= 16 and 0 < count['Commands'] <= 128 and 0 < count['Texts'] <= 64
-            and 0 < count['Clips'] <= 64 and 0 < count['Rng'] <= 512, 'Mick pack table counts')
+            and ((count['Programmes'] == count['Commands'] == count['Texts'] == 0) if motion else
+                 (0 < count['Programmes'] <= 16 and 0 < count['Commands'] <= 128 and 0 < count['Texts'] <= 64))
+            and 0 < count['Clips'] <= 64 and (0 <= count['Rng'] <= 512 if motion else 0 < count['Rng'] <= 512), 'Mick pack table counts')
     strings=[struct.unpack_from('<2I',rows['Strings'],i*8) for i in range(count['Strings'])]
     def text(i):
         require(type(i) is int and 0<=i<len(strings),'Mick string index')
@@ -668,7 +685,7 @@ def parse(blob):
             require(op in OPCODES.values(),'Mick unknown opcode')
             if op==OPCODES['GrantKeyItem']:
                 name=text(a);require(kind==PROGRAMME_KINDS['Thought'] and re.fullmatch('[A-Za-z0-9_]+',name) and 1<=b<=65535 and c==d==0,'Mick key grant operands/context')
-    require(set(PROGRAMME_KINDS.values())<=kinds,'Mick missing programme capability')
+    if not motion:require(set(PROGRAMME_KINDS.values())<=kinds,'Mick missing programme capability')
     return rows
 
 

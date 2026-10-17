@@ -49,7 +49,7 @@ class PhoneLinkerBindingTests(unittest.TestCase):
   self.assertEqual([r['identity']['value']for r in rows],[1301,1302,1303,1304,1305])
   self.assertTrue(all(r['gain_db']==0 and r['conversion']is None for r in rows))
   linked=recipe.audio(self.root,self.room,self.c)['assets']
-  self.assertEqual(len(linked),54)
+  self.assertEqual(len(linked),57)
   self.assertEqual([r['stable_id']for r in linked[16:21]],[1301,1302,1303,1304,1305])
  def test_intro_schema_pin_unknown_hash_paths_and_gain(self):
   def row(c):return next(iter(c['audio'].values()))

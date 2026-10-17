@@ -59,6 +59,10 @@ public:
  bool idle_frame(uint64_t,std::string&);
  // Main audio-manager tweens must be counted for source tween_all_completed.
  bool advance(double delta,bool external_tween_active,std::string&);
+ // Source pause_all_music seeks active manager tweens to their end and removes
+ // silent players before suspending their clocks. No world/RNG mutation.
+ bool finish_tweens_for_pause(std::string&);
+ bool fade_first_from_silence(double seconds,MusicRegionCurve,std::string&);
  const std::vector<MusicRegionVoice>&voices()const{return voices_;}
  const std::vector<MusicRegionState>&regions()const{return states_;}
  uint64_t scene_epoch()const{return epoch_;}

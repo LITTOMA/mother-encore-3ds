@@ -77,7 +77,10 @@ def build(root=ROOT):
             status=ex.yaml('Data/StatusAilments/asthma.yaml');result=label(status['messages']['heal_overworld_fail'])
         base=100000;equipped=base
         if not item['keyitem']:
-            if item.get('status_heals'):base=800000;equipped=base
+            if item.get('battle_action',{}).get('skill'):
+                require('score += SCORE_CAT_BATTLE_ITEMS'in ex.text('Scripts/global/Inventory.gd'),'Field battle item sort source changed')
+                base=600000;equipped=base
+            elif item.get('status_heals'):base=800000;equipped=base
             elif item.get('slot'):
                 require(item['slot'] in ('weapon','body','arms','other'),'Unreviewed sort slot')
                 slot=4-('weapon','body','arms','other').index(item['slot']);weights=(2,2,3,2,1,1,1)

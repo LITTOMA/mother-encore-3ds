@@ -79,18 +79,21 @@ def build(root=ROOT):
     require('get_item_or_skill_articles(item_or_skill)' in text and 'article_str.split(",")' in text,'Storage item/article interpolation changed')
     menus=table(ex,'Translations/TranslatedText/menus - sheet.csv');items=table(ex,'Translations/TranslatedText/items - sheet.csv')
     native_items=read_json(Path(root)/'content/native-items.json');defs=native_items['definitions']
-    require([(d['id'],d['source']) for d in defs]==[(1,'BaseballCap'),(2,'AsthmaSpray'),(3,'BatPlastic')],'Storage unsupported item definitions')
+    require([(d['id'],d['source']) for d in defs]==[(1,'BaseballCap'),(2,'AsthmaSpray'),(3,'BatPlastic'),(4,'FleaBag')],'Storage unsupported item definitions')
     policies=[];equipment=[];translations={};articles=[]
     for d in defs:
         doc=ex.yaml('Data/Items/'+d['source']+'.yaml')
         if d['source']=='AsthmaSpray':
             from tools.drawer_item import validate_item
             validate_item(doc)
-        require(doc['keyitem'] is False and doc['transform']=='' and not doc.get('battle_action'),'Unsupported Storage item policy')
+        require(doc['keyitem'] is False and doc['transform']=='' and (not doc.get('battle_action')or d['source']=='FleaBag'and doc['battle_action']=={'skill':'useFleaBag'}),'Unsupported Storage item policy')
         boosts=[doc['boost'][stat] for stat in STATS]
         require(all(type(v) is int and -65535<=v<=65535 for v in boosts),'Storage boost schema')
         total=sum(v*c for v,c in zip(boosts,[2,2,3,2,1,1,1]))
-        if doc.get('status_heals'):score=800000
+        if d['source']=='FleaBag':
+            require(not doc['actions']and not any(boosts)and 'SCORE_CAT_BATTLE_ITEMS\t:= (11 - 5)  * STEP'in ex.text('Scripts/global/Inventory.gd'),'Field reward sorting source changed')
+            score=600000
+        elif doc.get('status_heals'):score=800000
         elif doc['actions']==[{'function':'equip'}]:
             require((doc['can_use'],doc['slot']) in ((['ninten'],'other'),(['ninten','pippi'],'weapon')),'Storage equipment ownership/slot changed')
             score=200000+10000*({'other':1,'weapon':4}[doc['slot']])+total

@@ -96,6 +96,12 @@ try:
     travel('RIGHT',lambda s:s['player_x']>=314)
     travel('DOWN',lambda s:s['player_y']>=274)
     record('bridge_approach');capture('bridge_approach')
+    # The wall-clock entry pulse can leave this approach four pixels farther
+    # south. At y=282 the original bridge railing blocks x=411; source-derived
+    # collision admits the short UP correction before the unchanged crossing.
+    # Steer through the walkable lane with normal input, never warp the player.
+    if state()['player_y']>278:
+        travel('UP',lambda s:s['player_y']<=276)
     travel('RIGHT',lambda s:s['player_x']>=351)
     crossing=record('bridge_crossed');capture('bridge_crossed')
     assert crossing['field_phase']==0 and crossing['paused']==0

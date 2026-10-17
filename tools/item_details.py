@@ -95,7 +95,7 @@ def build(root=ROOT):
     menus = table(ex, 'Translations/TranslatedText/menus - sheet.csv')
     native_items = read_json(root / 'content/native-items.json')
     require([(d['id'], d['source']) for d in native_items['definitions']]
-            == [(1, 'BaseballCap'), (2, 'AsthmaSpray'), (3, 'BatPlastic')], 'Unsupported details item scope')
+            == [(1, 'BaseballCap'), (2, 'AsthmaSpray'), (3, 'BatPlastic'),(4,'FleaBag')], 'Unsupported details item scope')
     definitions = []; presentations = []
     for definition_index, d in enumerate(native_items['definitions']):
         doc = ex.yaml('Data/Items/' + d['source'] + '.yaml')
@@ -111,6 +111,8 @@ def build(root=ROOT):
             if d['source'] == 'AsthmaSpray':
                 require([t['kind'] for t in tokens if t['kind'] != 'Text']
                         == ['Nickname', 'InlineImage', 'Doses'], 'Spray details controls changed')
+            elif d['source']=='FleaBag':
+                require([t['kind']for t in tokens if t['kind']!='Text']==['Newline'],'Unreviewed field reward description controls')
             else:
                 require([t['kind'] for t in tokens if t['kind'] != 'Text']
                         == ['Newline', 'ItemValue'], 'Cap details controls changed')

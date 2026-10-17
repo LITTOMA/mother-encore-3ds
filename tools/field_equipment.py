@@ -79,7 +79,7 @@ def build(root=ROOT):
     identity=load_items_binding(root)['item']
     native=read_json(root/'content/native-items.json')
     require(native['owner']==identity['owner_id'] and type(native['owner']) is int and 1<=native['owner']<=8192,'Field Items owner identity mismatch')
-    require([(d['id'],d['source']) for d in native['definitions']]==[(1,'BaseballCap'),(2,'AsthmaSpray'),(3,'BatPlastic')],'Field Items identity scope changed')
+    require([(d['id'],d['source']) for d in native['definitions']]==[(1,'BaseballCap'),(2,'AsthmaSpray'),(3,'BatPlastic'),(4,'FleaBag')],'Field Items identity scope changed')
     cap=ex.yaml('Data/Items/BaseballCap.yaml')
     require(cap['actions']==[{'function':'equip'}] and cap['can_use']==[identity['party']] and cap['slot']=='other' and cap['keyitem'] is False and cap['transform']=='' and not cap.get('battle_action'),'Field unsupported equipment')
     boosts=[cap['boost'][key] for key in STATS]

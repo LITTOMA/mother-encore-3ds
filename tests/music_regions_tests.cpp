@@ -36,5 +36,14 @@ int main(int argc,char**argv){check(argc==3,"pack+bank arguments");auto bytes=re
  check(revisit.observe_external_player({2,false,false},e)&&!revisit.observe_external_player({2,true,true},e),"removed external identity cannot be resurrected");
  check(!revisit.attach_scene(1,e),"scene epoch cannot regress and accept an old scene callback");
  check(!c.advance(-1,false,e)&&!c.advance(INFINITY,false,e),"invalid timing rejected");check(!c.enter(1,"Music/Unknown",ctx,e),"unknown binding rejected");check(c.enter(999,"Music/Unknown",ctx,e),"stale scene callbacks ignored before path lookup");
+ MusicRegionController paused;check(paused.initialize(d,8,e)&&paused.attach_scene(9,e)&&paused.enter(9,"Music/MusicArea",ctx,e)&&paused.enter(9,"Music/MusicArea6",ctx,e)&&paused.exit(9,"Music/MusicArea",ctx,e)&&paused.idle_frame(9,e),"battle pause source crossfade fixture with real old-area exit");
+ check(paused.finish_tweens_for_pause(e),"pause seeks manager tweens to their original endpoints");
+ unsigned playing=0;for(const auto&v:paused.voices())if(v.allocated){++playing;check(!v.tweening&&v.gain_db>d.silence_db(),"silent source players removed before pause");}check(playing==1,"source pause cleanup leaves current song");
+ const auto slot=voice(paused,d,"Music/MusicArea6");const auto identity=paused.voices()[slot].generation;const auto target=paused.voices()[slot].track_id;const auto gain=paused.voices()[slot].gain_db;
+ check(!paused.fade_first_from_silence(NAN,MusicRegionCurve::QuartOut,e)&&paused.voices()[slot].gain_db==gain,"invalid resume does not change owner/gain");
+ check(!paused.fade_first_from_silence(3,MusicRegionCurve::None,e),"unknown resume curve rejected");
+ check(paused.fade_first_from_silence(3,MusicRegionCurve::QuartOut,e)&&paused.voices()[slot].gain_db==d.silence_db(),"source resume starts from checked silence");
+ check(paused.advance(1.5,false,e)&&std::abs(paused.voices()[slot].gain_db-(d.silence_db()+(gain-d.silence_db())*.9375))<1e-5,"source quart-out return midpoint");
+ check(paused.advance(1.5,false,e)&&paused.voices()[slot].generation==identity&&paused.voices()[slot].track_id==target&&paused.voices()[slot].gain_db==gain,"resume retains song identity and final gain");
  std::cout<<"Music regions PASS "<<checks<<" checks; controller and parser only, no audible output\n";
 }

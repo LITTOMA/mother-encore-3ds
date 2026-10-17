@@ -1,0 +1,36 @@
+{
+  "main": "77915a9039dbc5b53f7ccbc1976bb9b39b44cb5c",
+  "pr63": "cda7f3bcffc2e001b8b77978755f2213d9628765",
+  "pr64_parent": "f85822524eecea79b82345748dc08bfd98404641",
+  "upstream": "7d9246600fffe518408f5830d4848635019005a3",
+  "resource_catalog_capability": 8,
+  "roles": {
+    "FieldMenus": 40,
+    "FieldNpc": 41,
+    "FieldStory": 42
+  },
+  "session_resource_schema": 10,
+  "session_v9_read": true,
+  "save_codec_unchanged": true,
+  "default_save_sha256": "a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f",
+  "naming_binary_unchanged": true,
+  "naming_binary_sha256": "a532d8d0e64bb9b2828fadfd6f003bb6a34150a89b98b31db8563261ff11ecb7",
+  "probe_abi": 9,
+  "probe_bytes": 1300,
+  "legacy_probe_decoders": [
+    6,
+    7,
+    8
+  ],
+  "verification": {
+    "content": "make content passed",
+    "python": "91 tests passed; later focused naming migration negative test passed",
+    "sanitizers": "17 GCC9 ASan/UBSan host targets passed, including production NDSP adapters with doubles",
+    "windows_make_test": "failed before CTest: MSVC C1083 locale_preference.cpp unistd.h missing; full Linux suite not rerun",
+    "console": "70f0383 genuine 3DSX/CIA and 341 packaged resources passed; Actions 39006430784",
+    "emulator": "Two cold Azahar runs passed with original-input bridge, menu before/after, rewards, audio, five manual dialogues, idempotent trigger revisits and west road; artificial checkpoint",
+    "hardware": "unverified",
+    "probe_runner": "21 tests passed after bounded mid-commit handling; unknown observations still rejected"
+  },
+  "merge_commit": "70f03834cfa0512722ea9027591b3452b2668f06"
+}

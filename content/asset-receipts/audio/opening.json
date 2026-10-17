@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "recipe_sha256": "44c2a7d1bfa2c965a279c616e10a97ae3ac52153890c9f470c37eeda4c02db0e",
+  "recipe_sha256": "dc5590185ecc496e73959eaf3294b08ab7d964d718dbae76c2e2ddab02805560",
   "ffmpeg_version": "ffmpeg version 7.0-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers\nbuilt with gcc 13.2.0 (Rev5, Built by MSYS2 project)\nconfiguration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libaribcaption --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libxevd --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxeve --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libcodec2 --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint\nlibavutil      59.  8.100 / 59.  8.100\nlibavcodec     61.  3.100 / 61.  3.100\nlibavformat    61.  1.100 / 61.  1.100\nlibavdevice    61.  1.100 / 61.  1.100\nlibavfilter    10.  1.100 / 10.  1.100\nlibswscale      8.  1.100 /  8.  1.100\nlibswresample   5.  1.100 /  5.  1.100\nlibpostproc    58.  1.100 / 58.  1.100\n",
   "ffmpeg_sha256": "e8de88d0fc5993b76af6337a68f886abc8a052bbbe437b1d2c1b0fde0534582a",
   "assets": [
@@ -23,7 +23,7 @@
       "loop_offset_seconds": 6.382,
       "pcm_sha256": "fb9d28132973477cb13d5d87ed9ec61754c92225ff1e18d45663a9cdb53462f1",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -41,7 +41,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\0.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\0.pcm"
       ]
     },
     {
@@ -62,7 +62,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "0c212e38f9648ca0d7995cabcf2b943dba2ad99adad899e956442788e4aae77c",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -80,7 +80,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\1.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\1.pcm"
       ]
     },
     {
@@ -101,7 +101,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "028f04ce000e58361ef6d19c21143cf225ddd1b435964097363e1a95d7a5f4f9",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -119,7 +119,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\2.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\2.pcm"
       ]
     },
     {
@@ -140,7 +140,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "b0bf6f00b3bcc8d5b5ff0054ccddd867931057f10b75c74147bd94c54ea306c5",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -158,7 +158,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\3.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\3.pcm"
       ]
     },
     {
@@ -179,7 +179,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "750301508a9e702a1c1adf66029c05334dc5bbae31bd3f8a30db5661eb8f60e3",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -197,7 +197,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\4.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\4.pcm"
       ]
     },
     {
@@ -218,7 +218,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "ceeeb3237adc3a1639bd15930bdf72ac5668ab3d5264fa9ece624da3e475b0e9",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -236,7 +236,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\5.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\5.pcm"
       ]
     },
     {
@@ -257,7 +257,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "c1c2cadaea3ca8186efd29e863a41b09a691cf3f422241e4c60ccdaf1c85937c",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -275,7 +275,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\6.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\6.pcm"
       ]
     },
     {
@@ -296,7 +296,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "8326bbc1c70baed1d5818c265ac456e17767ad6509fb95529f887d83c04ae839",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -316,7 +316,7 @@
         "1",
         "-ar",
         "48000",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\7.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\7.pcm"
       ]
     },
     {
@@ -337,7 +337,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "13e1767f062a1b77594f0428655a382f26f6adddf1509c219472e6f0d421cbb6",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -355,7 +355,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\8.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\8.pcm"
       ]
     },
     {
@@ -376,7 +376,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "8055343ce209cc090ad6bf487a995d230b0257c77bf6e02f6bac5bca5ca4810c",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -394,7 +394,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\9.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\9.pcm"
       ]
     },
     {
@@ -415,7 +415,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "28302bba09f15508f1591b34ffbfa43bdf7dd260c06495065a29205fdf5b7811",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -433,7 +433,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\10.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\10.pcm"
       ]
     },
     {
@@ -454,7 +454,7 @@
       "loop_offset_seconds": 2.035,
       "pcm_sha256": "beb4d21f7e43e93dd8c1f401eb2fe8e9a72d4e33b38ef36dfabbeabd50202ae1",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -472,7 +472,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\11.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\11.pcm"
       ]
     },
     {
@@ -493,7 +493,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "83b716a9d57fb5b640114e14e8713f2f09454dceb4ba6a2af370294a7bb6807e",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -511,7 +511,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\12.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\12.pcm"
       ]
     },
     {
@@ -532,7 +532,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "96cb26c1eb21b66ac57b527d0a595448b3aa81fdddfcba701322004f1a14f367",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -550,7 +550,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\13.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\13.pcm"
       ]
     },
     {
@@ -571,7 +571,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "d4f0e98b04db649338c56b1aeaea3b5c78ffbdb7c7863ae8615719d1186d8443",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -589,7 +589,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\14.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\14.pcm"
       ]
     },
     {
@@ -610,7 +610,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "fbf6185fe7a452b1340b024b455d4a6c3dce1e27440e54f5c39eefdd614a9992",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -628,7 +628,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\15.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\15.pcm"
       ]
     },
     {
@@ -649,7 +649,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "fea132a11b00cd2092e844ec8408a5390f2db62aab0524c2302ab950f8cc2432",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -667,7 +667,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\16.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\16.pcm"
       ]
     },
     {
@@ -688,7 +688,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "00214e73fd47ccd15f9a0c5019e584febe8cb4fa474925d6eac7044dcfb36bae",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -706,7 +706,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\17.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\17.pcm"
       ]
     },
     {
@@ -727,7 +727,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "3442491d9a6ab0bf843fa339e7865c03c317d031529637906d87b269f7b7e578",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -745,7 +745,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\18.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\18.pcm"
       ]
     },
     {
@@ -766,7 +766,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "d4f01f48675d8e2ef8a35afe0f71d988f34b37b8702113bb5adc1e84788e4e6d",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -784,7 +784,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\19.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\19.pcm"
       ]
     },
     {
@@ -805,7 +805,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "46113def40102327d47df699af3fa141b4843649ab030a3418467631bfb2e072",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -823,7 +823,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\20.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\20.pcm"
       ]
     },
     {
@@ -844,7 +844,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "858109671300cadb85113b4f5e09613e9567e9dc89f9815f567c3d00c7c24cf5",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -862,7 +862,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\21.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\21.pcm"
       ]
     },
     {
@@ -883,7 +883,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "4624e7c848d7ae603df09b00861001bed6ca1a500cc9acddf0428f462666a8ef",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -901,7 +901,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\22.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\22.pcm"
       ]
     },
     {
@@ -922,7 +922,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "cf6e2ad332ddaa36eed7f5cb2cb59b11226dd4f83af09d56c7ef8c859be05c47",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -940,7 +940,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\23.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\23.pcm"
       ]
     },
     {
@@ -961,7 +961,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "a707c5761a3369847577a5dd23ef5d8c28c9bb3eacb90620fe07a282583ad74e",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -979,7 +979,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\24.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\24.pcm"
       ]
     },
     {
@@ -1000,7 +1000,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "cd8edf55b1247c0dcde0ca68862af62a598c6cfea53de06514564844c682c756",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1018,7 +1018,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\25.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\25.pcm"
       ]
     },
     {
@@ -1039,7 +1039,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "1f6e543441606e7e394f70d217a40bb1ec1bccb9c53c4e103be4376c387c124f",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1057,7 +1057,46 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\26.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\26.pcm"
+      ]
+    },
+    {
+      "stable_id": 4229387514,
+      "source_sha256": "aa17a9926a0774d8e55cead372bcc76eb43ef2f0210fd02c01b47b4448638c11",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": true,
+      "frames": 1505491,
+      "loop_start": 0,
+      "pcm_bytes": 6021964,
+      "pcm_crc32": 631593278,
+      "pcm_path": "sound/music/gameplay-4229387514.pcm",
+      "source_path": "res://Audio/Music/Battle Themes/Flippant Foe.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "888c7c77d3d1dff80fb6506d4e9d89eb5bc78f1432077106e67dc44091aba234",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "59615ea84f1c94b5240728e6b0c90fb6c1a7ebf6862be330d2d8c34fd1e138c8",
+      "command": [
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Audio\\Music\\Battle Themes\\Flippant Foe.mp3",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\27.pcm"
       ]
     },
     {
@@ -1078,7 +1117,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "0624d1ef0ccd4051b5a6c671142b6b7db090b52c0b22fab679b683c29ec62958",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1096,7 +1135,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\27.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\28.pcm"
       ]
     },
     {
@@ -1117,7 +1156,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "3a720f8d7538a58f280fb93d4984c48940e63d4bb714c6bfc16e302f40266ae1",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1135,7 +1174,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\28.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\29.pcm"
       ]
     },
     {
@@ -1156,7 +1195,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "e831baf1936649540b6f128c03064dd1d4354cc54f59425512bddf24e6f7b195",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1174,7 +1213,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\29.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\30.pcm"
       ]
     },
     {
@@ -1195,7 +1234,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "d8b0673591ec8ae07e18239579e4da87cd1dc3c333d16e1ae75de91acdbb1c4e",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1213,7 +1252,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\30.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\31.pcm"
       ]
     },
     {
@@ -1234,7 +1273,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "fa189ebf4339d7ce14be2653b41ef39585e1840094ee0f9833fce1ef73327e27",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1252,7 +1291,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\31.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\32.pcm"
       ]
     },
     {
@@ -1273,7 +1312,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "a2bb8cc1f8ab528148b7bf2e8cba21e12bb77b6a09c1c238e15f1c20d5e37fd6",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1291,7 +1330,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\32.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\33.pcm"
       ]
     },
     {
@@ -1312,7 +1351,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "3519e83798cf6edf3309f80daf8a0af3b6f3f1feacfe61bb988f71fa68261829",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1330,7 +1369,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\33.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\34.pcm"
       ]
     },
     {
@@ -1351,7 +1390,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "61fd78b866eb7b3f4fcfc820b37f4d1cf1957eaf71467927fca74c44e1393d86",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1369,7 +1408,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\34.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\35.pcm"
       ]
     },
     {
@@ -1390,7 +1429,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "ecf1b73409afc107672344101274f8f92935f4d1d0b2e3e3d4493b8dc8bfcfe0",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1408,7 +1447,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\35.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\36.pcm"
       ]
     },
     {
@@ -1429,7 +1468,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "12d503830a2586f147c86eaacb949c5cc20c889fb7cea8f66fe7bce8e50adbad",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1447,7 +1486,46 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\36.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\37.pcm"
+      ]
+    },
+    {
+      "stable_id": 3790917041,
+      "source_sha256": "dcb8603faf73979ea4d22df9a70b149b61b9e67cf0f2a56016115d1bc759f857",
+      "sample_rate": 44100,
+      "channels": 1,
+      "loop": false,
+      "frames": 10745,
+      "loop_start": 0,
+      "pcm_bytes": 21490,
+      "pcm_crc32": 985511582,
+      "pcm_path": "sound/effects/gameplay-3790917041.pcm",
+      "source_path": "res://Audio/Sound effects/EB/itemget1.wav",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "48c3d840655619fbfe487d28647b415b6b9d6eff2db7de568accfef7f473d3c8",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "4b4a78dbd3cfddd1e9bf21affd2593bdc3376779237fea757f911243796d1923",
+      "command": [
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Audio\\Sound effects\\EB\\itemget1.wav",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\38.pcm"
       ]
     },
     {
@@ -1468,7 +1546,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "f14796a2f165ece5299d59dd7d4e809790353a9d00e76047dbe29c540a7df81a",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1488,7 +1566,7 @@
         "1",
         "-ar",
         "48000",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\37.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\39.pcm"
       ]
     },
     {
@@ -1509,7 +1587,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "ab35fe849a64a64a480cfc45e6d94ccec824598731506cbdcbce6ba53a0d79a2",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1527,7 +1605,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\38.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\40.pcm"
       ]
     },
     {
@@ -1548,7 +1626,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "04800338aa8c14ea40540f4efffa2bea93d9a2cec9a5b83ff5657bea3f60dfdb",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1566,7 +1644,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\39.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\41.pcm"
       ]
     },
     {
@@ -1587,7 +1665,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "78cfec2d270c495e889b401e0ec69e846e60245c7179e3fbe4c7c23a14c96c7f",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1605,7 +1683,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\40.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\42.pcm"
       ]
     },
     {
@@ -1626,7 +1704,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "0b02bd8bace8e9d38113fc0dfb76d70e9f8aec324cf93ddb7b2a068fbd2ee82d",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1644,7 +1722,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\41.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\43.pcm"
       ]
     },
     {
@@ -1665,7 +1743,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "7cc92aca57090d96671bf7d4127fc2f1f82da97ea078887570ca2b60613ddb35",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1683,7 +1761,46 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\42.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\44.pcm"
+      ]
+    },
+    {
+      "stable_id": 3120996676,
+      "source_sha256": "0b3d7f970bc72354c04ad192a73564c19719e0059148042c1b25705ae68e20dd",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": false,
+      "frames": 94065,
+      "loop_start": 0,
+      "pcm_bytes": 376260,
+      "pcm_crc32": 640405318,
+      "pcm_path": "sound/effects/gameplay-3120996676.pcm",
+      "source_path": "res://Audio/Sound effects/M3/Growl 2.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "564861459a5022d0126f448ff0125cc3466bb1e0bfb160f0e7887c33fea75f7c",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "2d71d5de64fb4127bfdc1e436ffe6d92ec3a8bc5f43b6fcf536eed4577067997",
+      "command": [
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Audio\\Sound effects\\M3\\Growl 2.mp3",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\45.pcm"
       ]
     },
     {
@@ -1704,7 +1821,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "46724f324b6647a8fc10d7d20efac20af63b5b307e506c67306e340c6d61eec2",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1722,7 +1839,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\43.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\46.pcm"
       ]
     },
     {
@@ -1743,7 +1860,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "31c3604bea0941b556aefd1852bdd78faae4e51adaff8994a4ae59f6dd6ee045",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1761,7 +1878,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\44.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\47.pcm"
       ]
     },
     {
@@ -1782,7 +1899,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "dc7689a33a7c8bc4fffd0c221fb53612f7d688039dedc78b8d5c7c2749b88cd9",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1800,7 +1917,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\45.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\48.pcm"
       ]
     },
     {
@@ -1821,7 +1938,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "f70e2bb4d410fec6e70edec43967395851f4f3541f19f46d542d9f0dc5077a6e",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1839,7 +1956,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\46.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\49.pcm"
       ]
     },
     {
@@ -1860,7 +1977,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "c737d5c4d204a3bea8d33dc4e5a0883bf0feec39c97a0403d7043025abb94b98",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1878,7 +1995,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\47.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\50.pcm"
       ]
     },
     {
@@ -1899,7 +2016,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "1ad7e3e35190fb3e1b232a07bce5e6f80f4428bf20897cbdac3974c47d25d9c9",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1917,7 +2034,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\48.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\51.pcm"
       ]
     },
     {
@@ -1938,7 +2055,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "d253c6024ac6c24953d10f9e4cd0a09be9c69e9a8d9399830917bbf365d41c3d",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1956,7 +2073,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\49.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\52.pcm"
       ]
     },
     {
@@ -1977,7 +2094,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "a02fda3b93502221bbdd35bdc3b7086b797dd501aa69d0872511d158f7c4e143",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -1995,7 +2112,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\50.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\53.pcm"
       ]
     },
     {
@@ -2016,7 +2133,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "d73f78335c07260d95886624869fa2e7e4fa245d82f0c3143b4506e1fcc5cf94",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -2034,7 +2151,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\51.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\54.pcm"
       ]
     },
     {
@@ -2055,7 +2172,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "865612680b5516908291b133072530201adab9eac98386ffe3c1c8314283a218",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -2073,7 +2190,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\52.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\55.pcm"
       ]
     },
     {
@@ -2094,7 +2211,7 @@
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "e54112f322e29a9f91ea856c4d69701df1125fbac040f7cd7e9215d6d6bc353a",
       "command": [
-        "C:\\Users\\litto\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.EXE",
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links\\ffmpeg.EXE",
         "-nostdin",
         "-v",
         "error",
@@ -2112,15 +2229,15 @@
         "-bitexact",
         "-threads",
         "1",
-        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-pr1jnt7w\\53.pcm"
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-xv6rxd3c\\56.pcm"
       ]
     }
   ],
   "files": [
     {
       "path": "sound/banks/opening.encaudio",
-      "size": 9359,
-      "sha256": "311ece197b62653750e39bfeefafb127d7c5343f95e2570de93d5653dae1fec5"
+      "size": 9891,
+      "sha256": "431affa918b13fbf782b740d63b1349730fd1bf96542dd8dc68df69b87a8b748"
     },
     {
       "path": "sound/effects/bash.pcm",
@@ -2223,6 +2340,11 @@
       "sha256": "04800338aa8c14ea40540f4efffa2bea93d9a2cec9a5b83ff5657bea3f60dfdb"
     },
     {
+      "path": "sound/effects/gameplay-3120996676.pcm",
+      "size": 376260,
+      "sha256": "2d71d5de64fb4127bfdc1e436ffe6d92ec3a8bc5f43b6fcf536eed4577067997"
+    },
+    {
       "path": "sound/effects/gameplay-3334220389.pcm",
       "size": 85124,
       "sha256": "12d503830a2586f147c86eaacb949c5cc20c889fb7cea8f66fe7bce8e50adbad"
@@ -2246,6 +2368,11 @@
       "path": "sound/effects/gameplay-3641716319.pcm",
       "size": 283772,
       "sha256": "46724f324b6647a8fc10d7d20efac20af63b5b307e506c67306e340c6d61eec2"
+    },
+    {
+      "path": "sound/effects/gameplay-3790917041.pcm",
+      "size": 21490,
+      "sha256": "4b4a78dbd3cfddd1e9bf21affd2593bdc3376779237fea757f911243796d1923"
     },
     {
       "path": "sound/effects/gameplay-3887550309.pcm",
@@ -2366,6 +2493,11 @@
       "path": "sound/music/gameplay-4107189403.pcm",
       "size": 25403904,
       "sha256": "e831baf1936649540b6f128c03064dd1d4354cc54f59425512bddf24e6f7b195"
+    },
+    {
+      "path": "sound/music/gameplay-4229387514.pcm",
+      "size": 6021964,
+      "sha256": "59615ea84f1c94b5240728e6b0c90fb6c1a7ebf6862be330d2d8c34fd1e138c8"
     },
     {
       "path": "sound/music/gameplay-4290136921.pcm",

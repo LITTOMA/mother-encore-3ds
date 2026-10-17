@@ -40,6 +40,7 @@ actor-assets:
 house-layers:
 	$(PYTHON) tools/house_layers.py compile --tex3ds "$(TEX3DS)"
 podunk-field:
+	$(PYTHON) tools/field_npcs.py assets --tex3ds "$(TEX3DS)"
 	$(PYTHON) tools/podunk_field.py compile --tex3ds "$(TEX3DS)"
 	$(PYTHON) tools/resource_catalog.py compile
 house-presents:
@@ -80,6 +81,10 @@ introduction-assets:
 	$(PYTHON) tools/doll_entry_asset.py verify
 	$(PYTHON) tools/pillow_entry_asset.py verify
 	$(PYTHON) tools/pillow_round.py verify
+	$(PYTHON) tools/bridge_entry.py verify
+	$(PYTHON) tools/bridge_round.py verify
+	$(PYTHON) tools/field_story.py verify
+	$(PYTHON) tools/field_rewards.py verify
 	$(PYTHON) tools/native_battle.py verify
 	$(PYTHON) tools/native_round.py verify
 	$(PYTHON) tools/native_house.py verify
@@ -94,6 +99,7 @@ introduction-assets:
 	$(PYTHON) tools/actor_asset.py verify
 	$(PYTHON) tools/house_layers.py verify
 	$(PYTHON) tools/podunk_field.py verify
+	$(PYTHON) tools/field_npcs.py verify
 	$(PYTHON) tools/house_presents.py compile --tex3ds "$(TEX3DS)"
 	$(PYTHON) tools/house_presents.py verify
 	$(PYTHON) tools/mick_treats.py compile --tex3ds "$(TEX3DS)"

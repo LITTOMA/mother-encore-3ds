@@ -96,5 +96,6 @@ private:
  double victory_remaining_=0,return_frame_delta_=0;bool victory_started_=false,return_started_=false,return_jump_requested_=false,battle_background_visible_=true,enemies_visible_=true;BattleValue plate_{};BattleHpRoll hp_;BattleTextPacer text_;
  uint32_t player_=round_no_index,enemy_=round_no_index;bool target_open_=false,commands_=true,slowmo_=false;
  double slowmo_elapsed_=0,time_scale_=1;const char*error_="";
+ double pre_hit_elapsed_=0,pre_hit_key_=0;bool pre_hit_started_=false,pre_hit_undimmed_=false;
 };
 }

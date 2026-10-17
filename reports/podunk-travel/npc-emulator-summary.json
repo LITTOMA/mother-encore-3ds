@@ -1,0 +1,64 @@
+{
+  "game_source": "e193f6aaec01c474f41cd219225307bc84da116c",
+  "run_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/38946188868",
+  "staged_files": 330,
+  "artifact": {
+    "bytes": 245697228,
+    "sha256": "602faae0239bcc4aab33460fb33fddff950abfc77e89c7708e60cef02c07a7e5"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "status": "passed",
+      "projection": {
+        "field_scene": 2,
+        "field_phase": 0,
+        "paused": 0,
+        "inventory_count": 1,
+        "key_count": 1,
+        "hp": 65,
+        "pp": 27,
+        "object_flag_count": 0
+      },
+      "driver_sha256": "b2a0a330484e57ce02027069d8fb7a82dd09e19a640456f3adcebaec650831b4"
+    },
+    {
+      "run": 2,
+      "status": "failed",
+      "projection": null,
+      "driver_sha256": null
+    },
+    {
+      "run": 3,
+      "status": "passed",
+      "projection": {
+        "field_scene": 2,
+        "field_phase": 0,
+        "paused": 0,
+        "inventory_count": 1,
+        "key_count": 1,
+        "hp": 65,
+        "pp": 27,
+        "object_flag_count": 0
+      },
+      "driver_sha256": "c924e5b8064c501ef14b35d9730effe7843ee22ecbe63af0d01b6e00763e0213"
+    },
+    {
+      "run": 4,
+      "status": "passed",
+      "projection": {
+        "field_scene": 2,
+        "field_phase": 0,
+        "paused": 0,
+        "inventory_count": 1,
+        "key_count": 1,
+        "hp": 65,
+        "pp": 27,
+        "object_flag_count": 0
+      },
+      "driver_sha256": "c924e5b8064c501ef14b35d9730effe7843ee22ecbe63af0d01b6e00763e0213"
+    }
+  ],
+  "scope": "Artificial post-treats House-exit fixture, normal LOAD and input; original bridge story remains closed. Corrected runs 3/4 have equal semantic projections, not equal coordinates/pixels. Run2 hit the actual bridge railing at (411,282); a checked UP correction fixes the route without altering collision or success assertions. No natural opening, combat, full original RNG, physical 3DS or CIA installation claim.",
+  "cleanup": "Downloaded ZIP and all four owned temporary emulator profiles removed; only one verified 3DSX extracted, no duplicated CIA; private DSP bytes are not retained in reports."
+}

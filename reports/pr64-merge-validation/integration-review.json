@@ -1,0 +1,26 @@
+{
+  "scope": "Read-only review of the actual conflicting resources; no resource or core mutation",
+  "defaults": {
+    "main": {
+      "session_resource_schema": 9,
+      "session_resource_bytes": 9945,
+      "embedded_save_bytes": 4127,
+      "embedded_save_sha256": "a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f"
+    },
+    "pr64": {
+      "session_resource_schema": 9,
+      "session_resource_bytes": 10004,
+      "embedded_save_bytes": 4127,
+      "embedded_save_sha256": "a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f"
+    }
+  },
+  "embedded_default_save_identical": true,
+  "save_codec_changed": false,
+  "proposed_resolution": [
+    "Preserve mainline FieldMenus role 40 and capability 6; use FieldNpc 41/capability 7 and FieldStory 42/capability 8.",
+    "Preserve mainline Session 9 menu policy prefix; append field encounter admission in Session 10. Do not change save codec/identity or initial game data.",
+    "Keep read-only probe decoders 6/7/8; encode combined bridge plus menu fields as probe 9.",
+    "Retain active field battle input ownership and mainline submenu token; retain paused region voices and user music volume together.",
+    "Generate all binary resources, source records and dependent naming records using the checked generators; prove naming binary unchanged."
+  ]
+}

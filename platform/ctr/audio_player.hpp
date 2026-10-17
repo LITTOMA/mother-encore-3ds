@@ -48,6 +48,7 @@ public:
     bool available() const{return ready_;}
     bool set_user_volume(float master_db,float music_db,float sfx_db,std::string&);
     MusicObservation observe_music() const;
+    uint32_t lane_asset_id(AudioLane lane)const{const auto i=uint32_t(lane);return i<voices_.size()&&voices_[i].active?voices_[i].asset.stable_id:0;}
     // Loading cooperation only: feed existing queues and observe natural ends.
     // No elapsed game/fade time, volume mix writes, new voice or init retry.
     bool pump_streams(std::string& error);

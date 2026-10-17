@@ -23,7 +23,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient
-from tools.semantic_probe import MAGIC, WIRE, FIELDS, POSITIONS, ERRORS, MENU_FIELDS, SIZES, decode, projection
+from tools.semantic_probe import MAGIC, WIRE, FIELDS, POSITIONS, ERRORS, MENU_FIELDS, EXTRA_FIELDS, SIZES, decode, projection, wire_size
 
 
 def sha(path):
@@ -50,7 +50,7 @@ def validate_scenario(scenario):
         raise ValueError('Scenario step budget exceeded')
     if not scenario['reference'].get('commit') or not scenario['reference'].get('scope'):
         raise ValueError('Scenario lacks source scope')
-    known = set(FIELDS+list(POSITIONS)+list(ERRORS)+MENU_FIELDS)
+    known = set(FIELDS+list(POSITIONS)+list(ERRORS)+MENU_FIELDS+EXTRA_FIELDS+['battle_error'])
     projection({k: 0 for k in known}, scenario['projection'])
     for step in scenario['steps']:
         if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress', 'expected_music', 'wait_audio', 'hold_until', 'repeat_until', 'max_attempts'}:
@@ -280,9 +280,17 @@ class Session:
         return decode(self.read())
 
     def advance(self, frames):
-        result = self.client.call('frame.step', {'frames': frames})
-        self.client.event('frame.stepComplete', processId=self.pid)
-        return self.state()
+        for attempt in range(4):
+            self.client.call('frame.step', {'frames': frames if attempt == 0 else 1})
+            self.client.event('frame.stepComplete', processId=self.pid)
+            try:
+                return self.state()
+            except ValueError as error:
+                # A vblank can suspend the publisher inside its seqlock. Let
+                # that write finish on a bounded extra frame; never replay HID
+                # or accept a partial/unknown observation as valid state.
+                if str(error) != 'Semantic probe producer is mid-commit' or attempt == 3:
+                    raise
 
     def wait(self, expected, timeout=45):
         deadline = time.monotonic() + timeout

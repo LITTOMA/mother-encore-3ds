@@ -34,6 +34,7 @@
     "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
     "Data/StatusAilments/asthma.yaml": "6f2485b55a9b01c6cd8bdaaed248683c22eebc912c9445437d3193659fa754c3",
     "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
+    "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5",
     "Data/Items/DogTreats.yaml": "0512818388242890d704214728e4603f90fa976571240f86361c2917c641d641",
     "Data/Items/MapPodunk.yaml": "a0a9b41e46eef76044809dc698abc1afc1dab534b4dcb7e37563ea01e54afe43",
     "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
@@ -491,6 +492,33 @@
       "sorting": {
         "en": "Bat Plastic",
         "zh": "塑料球棒"
+      },
+      "result": {
+        "en": "",
+        "zh": ""
+      }
+    },
+    {
+      "id": "FleaBag",
+      "key": 0,
+      "drop": 1,
+      "action": 0,
+      "doses": 1,
+      "score": 600000,
+      "equipped_score": 600000,
+      "slot": 4294967295,
+      "definition": 3,
+      "name": {
+        "en": "Flea Bag",
+        "zh": "跳蚤虱子"
+      },
+      "description": {
+        "en": "",
+        "zh": ""
+      },
+      "sorting": {
+        "en": "Flea Bag",
+        "zh": "跳蚤虱子"
       },
       "result": {
         "en": "",

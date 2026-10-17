@@ -330,3 +330,10 @@ cookies.json
 !reports/field-menus-validation/**/*.json
 !reports/field-menus-validation/**/*.log
 !reports/field-menus-validation/**/*.png
+
+# PR64 compatibility merge evidence; no binaries, saves or emulator profiles.
+!reports/pr64-merge-validation/
+!reports/pr64-merge-validation/*.json
+!reports/pr64-merge-validation/*.log
+!reports/pr64-merge-validation/*.png
+!reports/pr64-merge-validation/*.py

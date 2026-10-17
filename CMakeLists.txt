@@ -9,12 +9,12 @@ option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMak
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
     runtime/field_menus_data.cpp runtime/field_menus.cpp
-    runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp
+    runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
     runtime/house_inspection_data.cpp
     runtime/field_equipment_data.cpp runtime/field_equipment_menu.cpp runtime/storage_data.cpp runtime/storage_menu.cpp runtime/item_details.cpp runtime/drawer_program.cpp
     runtime/resource_catalog.cpp runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp
-    runtime/music_regions.cpp runtime/introduction.cpp runtime/new_game_setup.cpp runtime/startup_settings.cpp runtime/house_button_prompts.cpp runtime/loading_indicator_data.cpp runtime/continue_menu_data.cpp runtime/continue_menu.cpp runtime/slot_preference.cpp runtime/restore_data.cpp runtime/session_restore.cpp runtime/session_migration.cpp runtime/load_rng.cpp runtime/fresh_house.cpp runtime/dialogue_choices_data.cpp runtime/dialogue_choices.cpp runtime/phone_data.cpp runtime/phone_runtime.cpp runtime/native_session.cpp runtime/session_save.cpp runtime/save_menu_data.cpp runtime/save_menu.cpp runtime/native_input.cpp runtime/world_effect_data.cpp runtime/world_effect.cpp runtime/items_data.cpp runtime/items_menu.cpp runtime/house_audio.cpp runtime/house_runtime.cpp runtime/house_data.cpp runtime/house_presentation.cpp runtime/battle_outcome.cpp runtime/battle_round.cpp runtime/battle_round_data.cpp runtime/battle_action_presentation.cpp runtime/source_random.cpp runtime/audio_data.cpp runtime/battle_data.cpp runtime/battle_entry.cpp runtime/room_data.cpp runtime/content.cpp runtime/file_io.cpp runtime/story.cpp
+    runtime/music_regions.cpp runtime/introduction.cpp runtime/new_game_setup.cpp runtime/startup_settings.cpp runtime/house_button_prompts.cpp runtime/loading_indicator_data.cpp runtime/continue_menu_data.cpp runtime/continue_menu.cpp runtime/slot_preference.cpp runtime/restore_data.cpp runtime/session_restore.cpp runtime/session_migration.cpp runtime/load_rng.cpp runtime/fresh_house.cpp runtime/dialogue_choices_data.cpp runtime/dialogue_choices.cpp runtime/phone_data.cpp runtime/phone_runtime.cpp runtime/native_session.cpp runtime/session_save.cpp runtime/save_menu_data.cpp runtime/save_menu.cpp runtime/native_input.cpp runtime/world_effect_data.cpp runtime/world_effect.cpp runtime/items_data.cpp runtime/items_menu.cpp runtime/house_audio.cpp runtime/house_runtime.cpp runtime/house_data.cpp runtime/house_presentation.cpp runtime/battle_loot.cpp runtime/battle_outcome.cpp runtime/battle_round.cpp runtime/battle_round_data.cpp runtime/battle_action_presentation.cpp runtime/source_random.cpp runtime/audio_data.cpp runtime/battle_data.cpp runtime/battle_entry.cpp runtime/room_data.cpp runtime/content.cpp runtime/file_io.cpp runtime/story.cpp
     runtime/game.cpp runtime/save.cpp runtime/progression.cpp runtime/movement.cpp runtime/animation.cpp runtime/collision.cpp runtime/world_flags.cpp runtime/world.cpp runtime/opening_trigger.cpp runtime/dialogue.cpp runtime/actor_actions.cpp runtime/cutscene_camera.cpp)
 target_include_directories(encore_core PUBLIC include)
 if(MSVC)
@@ -845,6 +845,29 @@ if(BUILD_TESTING)
     set_tests_properties(house_map_present PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
     set_tests_properties(present_data present_data_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
     add_executable(encore_mick_treats_tests tests/mick_treats_tests.cpp)
+    add_executable(encore_field_npc_motion_tests tests/field_npc_motion_tests.cpp)
+    add_executable(encore_emulator_bridge_fixture tools/emulator_bridge_fixture.cpp)
+    target_link_libraries(encore_emulator_bridge_fixture PRIVATE encore_core)
+    add_test(NAME bridge_fixture COMMAND encore_emulator_bridge_fixture ${CMAKE_BINARY_DIR}/bridge.encsave)
+    set_tests_properties(bridge_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
+    add_executable(encore_bridge_round_tests tests/bridge_round_tests.cpp)
+    add_executable(encore_bridge_localization_tests tests/bridge_localization_tests.cpp)
+    target_link_libraries(encore_bridge_localization_tests PRIVATE encore_core)
+    add_test(NAME bridge_localization COMMAND encore_bridge_localization_tests ${CMAKE_SOURCE_DIR}/romfs)
+    set_tests_properties(bridge_localization PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
+    add_executable(encore_field_story_tests tests/field_story_tests.cpp)
+    add_test(NAME field_story_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_field_story)
+    target_link_libraries(encore_field_story_tests PRIVATE encore_core)
+    add_test(NAME field_story COMMAND encore_field_story_tests ${CMAKE_SOURCE_DIR}/romfs/world/podunk/story.encstory ${CMAKE_SOURCE_DIR}/romfs/world/podunk/podunk.encroom ${CMAKE_SOURCE_DIR}/romfs/world/podunk/podunk.encmap ${CMAKE_SOURCE_DIR}/romfs/world/world.enclinks ${CMAKE_SOURCE_DIR}/romfs/ui/opening.encitems ${CMAKE_SOURCE_DIR}/romfs/story/opening.encintro ${CMAKE_SOURCE_DIR}/romfs/battle/straydog/bridge.encround ${CMAKE_SOURCE_DIR}/romfs/battle/straydog/bridge.encbattle)
+    set_tests_properties(field_story field_story_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
+    target_link_libraries(encore_bridge_round_tests PRIVATE encore_core)
+    add_test(NAME bridge_round COMMAND encore_bridge_round_tests ${CMAKE_SOURCE_DIR}/romfs/battle/straydog/bridge.encround ${CMAKE_SOURCE_DIR}/romfs/battle/straydog/bridge.encbattle ${CMAKE_SOURCE_DIR}/romfs/world/house/opening.encroom ${CMAKE_SOURCE_DIR}/reports/bridge-battle/loot-native.csv)
+    add_test(NAME bridge_round_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_bridge_round)
+    set_tests_properties(bridge_round bridge_round_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
+    target_link_libraries(encore_field_npc_motion_tests PRIVATE encore_core)
+    add_test(NAME field_npc_motion COMMAND encore_field_npc_motion_tests ${CMAKE_SOURCE_DIR}/romfs/world/podunk/npcs/lindgren.encmick ${CMAKE_SOURCE_DIR}/romfs/world/podunk/npcs/bridge-dog.encmick ${CMAKE_SOURCE_DIR}/romfs/world/podunk/podunk.encmick)
+    add_test(NAME field_npc_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_field_npcs)
+    set_tests_properties(field_npc_motion field_npc_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
     add_executable(encore_emulator_mick_fixture tools/emulator_mick_fixture.cpp)
     target_link_libraries(encore_emulator_mick_fixture PRIVATE encore_core)
     add_test(NAME mick_key_fixture COMMAND encore_emulator_mick_fixture ${CMAKE_BINARY_DIR}/mick-no-key.encsave)

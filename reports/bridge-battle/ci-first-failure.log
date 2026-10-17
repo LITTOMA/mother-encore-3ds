@@ -1,0 +1,140 @@
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	﻿2026-10-16T21:20:48.6408925Z ##[group]Run make content
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6409312Z [36;1mmake content[0m
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6473696Z shell: /usr/bin/bash -e {0}
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6474077Z env:
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6474353Z   CC: gcc
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6474626Z   CXX: g++
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6474908Z   BUILD_JOBS: 4
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6475224Z   GIT_OPTIONAL_LOCKS: 0
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6475685Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6476545Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6477492Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6478114Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6478731Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6479356Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6480161Z   PYTHONPATH: /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/ci_python
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6480883Z ##[endgroup]
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.6777678Z make --no-print-directory -f make/native-content.mk -j4 PYTHON="python3" native-content
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.7190476Z CONTENT RUN 8125eada778c47d98e2795d6acc9f280
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.7198467Z "python3" tools/run_content_task.py audio -- "python3" tools/restore_audio.py
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.7202913Z "python3" tools/run_content_task.py gameplay-audio -- "python3" tools/gameplay_audio.py
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.7215190Z "python3" tools/run_content_task.py music-zones -- "python3" tools/music_zones.py
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.7217451Z "python3" tools/run_content_task.py bars -- "python3" tools/blackbars_assets.py compile
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.7987293Z CONTENT START gameplay-audio pid=3735 at=2026-10-16T21:20:48.795307+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.8003685Z CONTENT START music-zones pid=3734 at=2026-10-16T21:20:48.795309+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.8027071Z CONTENT START bars pid=3736 at=2026-10-16T21:20:48.796267+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:48.8056848Z CONTENT START audio pid=3737 at=2026-10-16T21:20:48.800036+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:49.4057717Z Blackbar compile: source-owned animation and layer verified
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:49.4058797Z CONTENT END bars pid=3736 status=0 seconds=0.609
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:49.4177346Z "python3" tools/run_content_task.py input -- "python3" tools/native_input.py compile
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:49.4856932Z CONTENT START input pid=3785 at=2026-10-16T21:20:49.484867+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:49.5597178Z Native input tuning: 88 checked bytes
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:49.5636807Z CONTENT END input pid=3785 status=0 seconds=0.074
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:49.5696866Z "python3" tools/run_content_task.py phone -- "python3" tools/native_phone.py compile
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:49.6467486Z CONTENT START phone pid=3790 at=2026-10-16T21:20:49.644856+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:50.3157196Z Compiled gameplay sound cues: 24
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:50.3160206Z CONTENT END gameplay-audio pid=3735 status=0 seconds=1.517
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:50.3255288Z "python3" tools/run_content_task.py effects -- "python3" tools/world_effect_assets.py compile
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:50.4027265Z CONTENT START effects pid=3845 at=2026-10-16T21:20:50.399556+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:50.5467377Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/romfs/story/melody.encfx: 532 checked bytes
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:50.5526740Z CONTENT END effects pid=3845 status=0 seconds=0.145
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:50.5556889Z "python3" tools/run_content_task.py doll-entry -- "python3" tools/doll_entry_asset.py compile
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:50.6277114Z CONTENT START doll-entry pid=3848 at=2026-10-16T21:20:50.625212+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:52.6208520Z Doll entry compile: 12516 bytes; no combat or fabricated palette period
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:52.6247015Z CONTENT END doll-entry pid=3848 status=0 seconds=1.995
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:52.6333324Z "python3" tools/run_content_task.py pillow-entry -- "python3" tools/pillow_entry_asset.py compile
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:52.7157296Z CONTENT START pillow-entry pid=3932 at=2026-10-16T21:20:52.710435+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:52.7276941Z Compiled music region geometry: 1755 bytes
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:52.7306707Z CONTENT END music-zones pid=3734 status=0 seconds=3.932
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:52.7414258Z "python3" tools/run_content_task.py round -- "python3" tools/native_round.py compile
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:52.8227284Z CONTENT START round pid=3937 at=2026-10-16T21:20:52.819735+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:53.5904186Z Native phone compile complete: 864 bytes
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:53.5927021Z CONTENT END phone pid=3790 status=0 seconds=3.945
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:53.5997075Z "python3" tools/run_content_task.py doll-round -- "python3" tools/doll_round.py compile
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:53.6737984Z CONTENT START doll-round pid=3994 at=2026-10-16T21:20:53.671118+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:53.8667080Z Battle round content: 17764 bytes; checked independent ENCRND01
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:53.8676704Z CONTENT END round pid=3937 status=0 seconds=1.045
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:53.8749132Z "python3" tools/run_content_task.py pillow-round -- "python3" tools/pillow_round.py compile
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:53.9497233Z CONTENT START pillow-round pid=4033 at=2026-10-16T21:20:53.945649+00:00
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.2888593Z Audio restoration blocked: FFmpeg output differs from reviewed PCM for sound/effects/cursor-restricted.pcm; no file published. Use the documented reference decoder, do not refresh expected hashes.
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.3015683Z CONTENT END audio pid=3737 status=1 seconds=5.487
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.3027423Z make[1]: *** [make/native-content.mk:54: audio] Error 1
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.3047110Z make[1]: *** Waiting for unfinished jobs....
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.7828265Z Pillow round: 18764 bytes; checked ENCRND01 v5
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.7829076Z CONTENT END pillow-round pid=4033 status=0 seconds=0.837
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.8462998Z Doll round: 19932 bytes; checked source ENCRND01 v5
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.8463699Z CONTENT END doll-round pid=3994 status=0 seconds=1.175
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.9799646Z Pillow entry compile: 12444 bytes
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.9800549Z CONTENT END pillow-entry pid=3932 status=0 seconds=2.269
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.9883957Z make: *** [Makefile:16: native-content] Error 2
+Host and sanitizers (gcc)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:54.9903255Z ##[error]Process completed with exit code 2.
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	﻿2026-10-16T21:20:39.6998059Z ##[group]Run make content
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.6998360Z [36;1mmake content[0m
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7061686Z shell: /usr/bin/bash -e {0}
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7061952Z env:
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7062143Z   CC: clang
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7062333Z   CXX: clang++
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7062531Z   BUILD_JOBS: 4
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7062739Z   GIT_OPTIONAL_LOCKS: 0
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7063053Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7063706Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7064173Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7064574Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7064972Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7065375Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7065871Z   PYTHONPATH: /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/ci_python
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7066642Z ##[endgroup]
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7175891Z make --no-print-directory -f make/native-content.mk -j4 PYTHON="python3" native-content
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7561834Z CONTENT RUN a3f49599a2744d92a85ac2c319716c83
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7567031Z "python3" tools/run_content_task.py audio -- "python3" tools/restore_audio.py
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7570701Z "python3" tools/run_content_task.py gameplay-audio -- "python3" tools/gameplay_audio.py
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7617092Z "python3" tools/run_content_task.py music-zones -- "python3" tools/music_zones.py
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.7637095Z "python3" tools/run_content_task.py bars -- "python3" tools/blackbars_assets.py compile
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.8318277Z CONTENT START music-zones pid=3747 at=2026-10-16T21:20:39.829499+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.8346879Z CONTENT START bars pid=3750 at=2026-10-16T21:20:39.830662+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.8376930Z CONTENT START audio pid=3748 at=2026-10-16T21:20:39.829504+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:39.8377821Z CONTENT START gameplay-audio pid=3749 at=2026-10-16T21:20:39.830521+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:40.5657371Z Blackbar compile: source-owned animation and layer verified
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:40.5687013Z CONTENT END bars pid=3750 status=0 seconds=0.733
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:40.5767202Z "python3" tools/run_content_task.py input -- "python3" tools/native_input.py compile
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:40.6527150Z CONTENT START input pid=3798 at=2026-10-16T21:20:40.647824+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:40.7347271Z Native input tuning: 88 checked bytes
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:40.7367048Z CONTENT END input pid=3798 status=0 seconds=0.085
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:40.7457126Z "python3" tools/run_content_task.py phone -- "python3" tools/native_phone.py compile
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:40.8207508Z CONTENT START phone pid=3829 at=2026-10-16T21:20:40.817783+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:41.4098074Z Compiled gameplay sound cues: 24
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:41.4117071Z CONTENT END gameplay-audio pid=3749 status=0 seconds=1.579
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:41.4199802Z "python3" tools/run_content_task.py effects -- "python3" tools/world_effect_assets.py compile
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:41.4927253Z CONTENT START effects pid=3845 at=2026-10-16T21:20:41.491192+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:41.6387623Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/romfs/story/melody.encfx: 532 checked bytes
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:41.6426898Z CONTENT END effects pid=3845 status=0 seconds=0.147
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:41.6476998Z "python3" tools/run_content_task.py doll-entry -- "python3" tools/doll_entry_asset.py compile
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:41.7207164Z CONTENT START doll-entry pid=3861 at=2026-10-16T21:20:41.717199+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:43.7637152Z Doll entry compile: 12516 bytes; no combat or fabricated palette period
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:43.7657115Z CONTENT END doll-entry pid=3861 status=0 seconds=2.045
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:43.7757256Z "python3" tools/run_content_task.py pillow-entry -- "python3" tools/pillow_entry_asset.py compile
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:43.8507251Z CONTENT START pillow-entry pid=3932 at=2026-10-16T21:20:43.846206+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:43.9427458Z Compiled music region geometry: 1755 bytes
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:43.9428898Z CONTENT END music-zones pid=3747 status=0 seconds=4.111
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:43.9537720Z "python3" tools/run_content_task.py round -- "python3" tools/native_round.py compile
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:44.0298752Z CONTENT START round pid=3965 at=2026-10-16T21:20:44.026962+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.0947405Z Battle round content: 17764 bytes; checked independent ENCRND01
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.0986891Z CONTENT END round pid=3965 status=0 seconds=1.067
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.1047219Z "python3" tools/run_content_task.py doll-round -- "python3" tools/doll_round.py compile
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.1194176Z Native phone compile complete: 864 bytes
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.1238195Z CONTENT END phone pid=3829 status=0 seconds=4.301
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.1309847Z "python3" tools/run_content_task.py pillow-round -- "python3" tools/pillow_round.py compile
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.1817576Z CONTENT START doll-round pid=4040 at=2026-10-16T21:20:45.174831+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.2077423Z CONTENT START pillow-round pid=4042 at=2026-10-16T21:20:45.205184+00:00
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.2748073Z Audio restoration blocked: FFmpeg output differs from reviewed PCM for sound/effects/cursor-restricted.pcm; no file published. Use the documented reference decoder, do not refresh expected hashes.
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.2749727Z CONTENT END audio pid=3748 status=1 seconds=5.443
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.2879603Z make[1]: *** [make/native-content.mk:54: audio] Error 1
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.2880577Z make[1]: *** Waiting for unfinished jobs....
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.9222108Z Pillow round: 18764 bytes; checked ENCRND01 v5
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:45.9247414Z CONTENT END pillow-round pid=4042 status=0 seconds=0.717
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:46.1359276Z Pillow entry compile: 12444 bytes
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:46.1359943Z CONTENT END pillow-entry pid=3932 status=0 seconds=2.289
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:46.2453477Z Doll round: 19932 bytes; checked source ENCRND01 v5
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:46.2454247Z CONTENT END doll-round pid=4040 status=0 seconds=1.070
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:46.2528622Z make: *** [Makefile:16: native-content] Error 2
+Host and sanitizers (clang)	Regenerate checked resources before focused collision validation	2026-10-16T21:20:46.2554183Z ##[error]Process completed with exit code 2.

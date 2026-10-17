@@ -53,6 +53,7 @@ public:
     const std::string& earned_cash_flag_id()const{return earned_cash_flag_;}
     const std::vector<NativeSessionLevel>& levels()const{return levels_;}
     const std::vector<std::string>& mutable_flags()const{return mutable_flags_;}
+    const std::vector<std::string>& field_encounters()const{return field_encounters_;}
     const std::vector<uint32_t>& camera_area_ids()const{return camera_area_ids_;}
     const std::vector<NativeSessionAcquisition>& acquisitions()const{return acquisitions_;}
     uint32_t storage_capacity()const{return storage_capacity_;}
@@ -72,6 +73,7 @@ private:
     std::vector<NativeSessionLevel> levels_;
     std::string saved_flag_,earned_cash_flag_;
     std::vector<std::string>mutable_flags_;
+    std::vector<std::string>field_encounters_;
     std::vector<uint32_t>camera_area_ids_;
     std::vector<NativeSessionAcquisition>acquisitions_;
     uint32_t storage_capacity_=0;std::vector<NativeSessionStoragePolicy>storage_policies_;

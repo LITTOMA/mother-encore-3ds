@@ -30,7 +30,10 @@ bool LocalizedPresentation::plain_tags(std::string_view input,std::string_view n
 bool LocalizedPresentation::battle(RoundView view,uint32_t index,std::string_view name,std::string&out,std::string&e)const{
  if(!view.valid()||index>=view.count(RoundSection::Texts))return fail(e,"Invalid battle localized record");const auto row=view.text(index);if(row.role==0){out.clear();return true;}
  const auto id="battle/"+std::to_string(view.binding().battle_id)+"/"+std::to_string(index);std::string format;
- if(!selection_->catalog()->bound(id,view.string(row.text),selection_->code(),format,e))return false;
+ std::string_view expected=view.string(row.text);
+ if(view.version()>=6){const auto*guard=selection_->catalog()->binding("battle.expected/"+std::to_string(view.binding().battle_id)+"/"+std::to_string(index));const auto*display=selection_->catalog()->binding(id);
+  if(!guard||guard->expected!=expected||!display)return fail(e,"Dynamic battle locale source binding differs from loaded content");expected=display->expected;}
+ if(!selection_->catalog()->bound(id,expected,selection_->code(),format,e))return false;
  if(!plain_tags(format,name,out,e))return false;
  if(out.find('{')!=std::string::npos||out.find('}')!=std::string::npos)return fail(e,"Unsupported source battle format field: "+id);
  return true;

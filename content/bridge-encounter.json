@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "encore.field-encounter.recipe",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "actor": "Objects/NPCS/npc41",
+  "programme": "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml",
+  "battle_id": 4,
+  "battler": "straydog",
+  "ir": "content/bridge-entry.json",
+  "receipt": "content/asset-receipts/graphics/battle/straydog/source.json",
+  "pack": "battle/straydog/bridge.encbattle",
+  "graphics": "graphics/battle/straydog",
+  "license_review": "Original Team Encore images used solely for this game-related native port under the pinned upstream LICENSE; shared checked UI/font assets keep their existing notices. No third-party binary or new font is bundled."
+}

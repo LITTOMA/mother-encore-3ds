@@ -20,6 +20,9 @@ class FieldMenuSourceTests(unittest.TestCase):
         for i in items.values():
             if i['key']:self.assertFalse(i['drop']);self.assertNotIn(i['action'],(1,2))
         self.assertEqual(items['MapPodunk']['action'],3)
+        self.assertEqual(items['FleaBag']['action'],0)
+        self.assertTrue(items['FleaBag']['drop'])
+        self.assertEqual(items['FleaBag']['score'],600000)
         self.assertEqual(self.ir['map_offset'],[98,132])
         self.assertEqual(self.ir['map_home'],[99,127])
     def test_unknown_source_or_rule_does_not_rebind(self):
@@ -31,7 +34,7 @@ class FieldMenuSourceTests(unittest.TestCase):
     def test_new_game_default_bytes_are_preserved(self):
         from tools import native_session as session
         r=session.read(session.IR)
-        self.assertEqual(r['schema'],9)
+        self.assertEqual(r['schema'],10)
         self.assertTrue(r['description_toggle'])
         self.assertEqual({i['item_id'] for i in r['field_items']},{i['item_id'] for i in r['storage_policies']})
 

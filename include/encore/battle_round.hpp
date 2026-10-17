@@ -5,8 +5,8 @@
 #include <vector>
 namespace encore::upstream {
 enum class BattleRoundPhase:uint8_t {Idle,Commands,Items,Targeting,Running,VictoryPending,DefeatPending,Unsupported,Error};
-enum class BattleRoundCueKind:uint8_t {PrepareAction,TargetOpen,TargetClose,TurnStart,Dialogue,Attack,Hit,Miss,HideParty,Guard,Defeat,ShowMenu};
-enum class BattleRoundGate:uint8_t {DialogueDone,ApplyDamage,BossDefeatDone};
+enum class BattleRoundCueKind:uint8_t {PrepareAction,TargetOpen,TargetClose,TurnStart,Dialogue,Attack,Hit,Miss,HideParty,Guard,Defeat,ShowMenu,PreHit,UseSkillSound};
+enum class BattleRoundGate:uint8_t {DialogueDone,ApplyDamage,BossDefeatDone,PreHitDone};
 struct BattleRoundCue {
  BattleRoundCueKind kind{};
  uint32_t actor=round_no_index,target=round_no_index,skill=round_no_index,text=round_no_index;
@@ -38,7 +38,7 @@ struct RoundDecision {
 };
 class BattleRound {
 public:
- bool begin(RoundView,BattleView,SourceRandom&,BattleRoundHost&,const BattleSessionStats* session=nullptr);
+ bool begin(RoundView,BattleView,SourceRandom&,BattleRoundHost&,const BattleSessionStats* session=nullptr,std::string_view basic_source={});
  bool request_menu(uint32_t menu_id);
  bool return_from_items();
  bool target_input(int direction,bool confirm,bool cancel=false);
@@ -52,7 +52,7 @@ public:
  const char*error()const{return error_;}
  const RoundView&content()const{return content_;}
 private:
- enum class Step:uint8_t {EnemyDelay,DeferredAction,CheckAbleness,StartDelay,EmptyDialogue,Dialogue,StartSkill,WaitImpact,PreHitIdle,DamageIdle,TargetDelay,ActionEndDelay,RoundEndDelay,DefeatDialogueDelay,DefeatDialogue,BossDefeat};
+ enum class Step:uint8_t {EnemyDelay,DeferredAction,CheckAbleness,StartDelay,EmptyDialogue,Dialogue,StartSkill,WaitImpact,PreHitIdle,DamageIdle,TargetDelay,ActionEndDelay,RoundEndDelay,DefeatDialogueDelay,DefeatDialogue,BossDefeat,WaitPreHit};
  bool fail(const char*);bool cue(BattleRoundCueKind,uint32_t actor=round_no_index,uint32_t target=round_no_index,uint32_t skill=round_no_index,uint32_t text=round_no_index,int32_t amount=0,bool smash=false,bool adrenaline=false);
  bool queue_actions(uint32_t skill);bool start_action();bool execute_skill();bool apply_impact();bool finish_action();bool finish_round();
  bool chance(double percentage);int32_t calculate_damage(const RoundActionState&,bool adrenaline,bool smash);
@@ -60,7 +60,7 @@ private:
  RoundView content_;BattleView entry_;SourceRandom*random_=nullptr;BattleRoundHost*host_=nullptr;
  std::vector<RoundBattlerState>battlers_;std::vector<RoundActionState>queue_;std::vector<RoundDecision>decisions_;
  BattleRoundPhase phase_=BattleRoundPhase::Idle;Step step_=Step::EnemyDelay;
- uint32_t number_=1,action_index_=0,selected_target_=0;double remaining_=0;
+ uint32_t number_=1,action_index_=0,selected_target_=0,basic_skill_=round_no_index;double remaining_=0;
  bool menu_return_=false,miss_=false;const char*error_="";
 };
 }

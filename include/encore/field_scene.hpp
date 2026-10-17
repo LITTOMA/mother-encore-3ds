@@ -1,11 +1,13 @@
 #pragma once
 #include "encore/collision.hpp"
 #include "encore/field_data.hpp"
+#include "encore/field_story.hpp"
 #include "encore/introduction.hpp"
 #include "encore/mick_treats.hpp"
 #include "encore/world.hpp"
 #include "encore/world_links.hpp"
 #include <cstdint>
+#include <memory>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -16,9 +18,10 @@ namespace encore::upstream {
 class FieldCollision final : public MotionObstacleSource {
 public:
     bool bind(FieldMapView map,const std::vector<bool>& layer_active,const std::vector<bool>& body_active,std::string& error);
-    // One extra solid rectangle (Mick's foot body). bind() clears it.
-    void set_body(Vec2 center,Vec2 extents);
-    void set_extra_enabled(bool enabled){extra_enabled_=enabled;}
+    // Source-ordered moving foot bodies. Slot zero retains Mick's legacy API.
+    void set_body(Vec2 center,Vec2 extents,uint32_t slot=0,bool enabled=true);
+    void set_extra_enabled(bool enabled){set_excluded(enabled?UINT32_MAX:0);}
+    void set_excluded(uint32_t slot){excluded_=slot;}
     bool collect(Vec2 minimum,Vec2 maximum,std::vector<MotionObstacle>& out)const override;
 private:
     FieldMapView map_;
@@ -31,7 +34,8 @@ private:
     std::vector<Cell> cells_;
     std::vector<Chunk> chunks_;
     std::vector<uint32_t> bodies_;
-    bool extra_=false,extra_enabled_=true;Vec2 extra_points_[4]{},extra_normals_[4]{},extra_minimum_{},extra_maximum_{};
+    struct Extra {bool enabled=false;Vec2 points[4]{},normals[4]{},minimum{},maximum{};};
+    std::vector<Extra> extra_;uint32_t excluded_=UINT32_MAX;
 };
 
 // Original Door/SceneTransition sequence for one cross-scene route: pause, one
@@ -65,6 +69,12 @@ private:
 enum class FieldPhase:uint8_t {Walking,DoorAwaitIdle,Transition,Unsupported,MickTalk,Error};
 struct FieldNoticeView {uint32_t index=0;float distance=0;};
 struct FieldMickWorld;
+class FieldStoryHost {
+public:
+    virtual ~FieldStoryHost()=default;
+    // Pure admission before any cutscene, RNG, inventory or flag mutation.
+    virtual bool can_start(FieldStoryView,uint32_t programme,std::string& error)=0;
+};
 
 // AreaRoom field: TileMap world, routed and unported doors, explicit development
 // boundaries and unlocked openable doors. Rendering and scene swaps are platform owned.
@@ -80,8 +90,14 @@ public:
     // Re-evaluate FlagLandmark / CutsceneArea conditions after a live story flag write.
     // Podunk can change gave_treats in-session once Mick accepts DogTreats.
     bool refresh_conditions(std::string& error);
+    bool bind_story(FieldStoryView,ItemView,FieldStoryHost&,std::string& error);
+    FieldStoryView story()const{return story_;}
     // Bind Mick after prepare; host effects stay platform-owned.
     bool bind_mick(MickView,MickHost&,std::string& error);
+    bool bind_npc(MickView,MickHost&,std::string& error);
+    bool npcs_ready()const;
+    bool actor_visible(uint32_t index)const;
+    ActorActionState actor_pose(uint32_t index)const;
     MickRuntime& mick(){return mick_;}
     const MickRuntime& mick()const{return mick_;}
     OpeningWorld world;
@@ -93,6 +109,8 @@ public:
     bool talk_accept_latched()const{return mick_ignore_accept_;}
     // A against Mick's live interact rectangle while walking. The matching spoken tree starts.
     bool try_mick(bool accept,std::string& error);
+    // Ordinary walking never activates confirm-only development boundaries.
+    bool try_interaction(bool accept,std::string& error);
     bool mick_contact()const;
     bool try_telepathy(Vec2 source_ray_offset,float source_ray_length,std::string& error);
     FieldPhase phase()const{return phase_;}
@@ -122,11 +140,15 @@ private:
     bool circle_overlaps(Vec2 center,float radius)const;
     bool conditions(FieldSpan)const;
     void apply_mick_body();
+    void apply_npc_bodies();
     bool fail(std::string message){phase_=FieldPhase::Error;error_=std::move(message);return false;}
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
+    std::vector<bool>collision_layers_,collision_bodies_;bool collision_ready_=false;
     StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;
     MickRuntime mick_;bool mick_bound_=false;
+    struct Npc {uint32_t actor=0,item=0;MickRuntime motion;StaticMotionSolver solver;};
+    std::vector<std::unique_ptr<Npc>> npcs_;
     Vec2 viewport_{400,240};
     // Suppress the same confirm pulse that started MickTalk from advancing text.
     bool mick_ignore_accept_=false;
@@ -137,5 +159,6 @@ private:
     FieldPhase phase_=FieldPhase::Error;std::string error_="Field not prepared";
     uint32_t route_=WorldLinksData::kNotFound,pending_door_=WorldLinksData::kNotFound,boundary_=WorldLinksData::kNotFound;
     Vec2 last_safe_position_{},last_safe_direction_{};
+    FieldStoryView story_;FieldStoryHost*story_host_=nullptr;uint64_t story_revision_=0;
 };
 }

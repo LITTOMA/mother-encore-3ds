@@ -9,7 +9,7 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient, CdbError
-from tools.semantic_probe import MAGIC, WIRE, WIRE_V7, MENU_FIELDS, FIELDS, decode, projection
+from tools.semantic_probe import MAGIC, WIRE, WIRE_V7, MENU_FIELDS, MENU_TAIL, SIZES, FIELDS, decode, projection, EXTRA_FIELDS, TAIL8
 from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original, compare_repetitions, matches, Session
 
 
@@ -21,6 +21,43 @@ def wire(**changes):
 
 
 class WireBoundary(unittest.TestCase):
+    def test_v8_typed_field_inventory_music_and_negative_bounds(self):
+        def extended(**values):
+            base={k:0 for k in FIELDS};base.update(version=8,byte_size=WIRE.size+TAIL8.size,inventory_count=1)
+            tail={k:0 for k in EXTRA_FIELDS};tail.update(story_flag_count=178,inventory_0_definition=3,inventory_0_doses=1,inventory_0_equipped=1);tail.update(values)
+            return WIRE.pack(MAGIC,*(base[k]for k in FIELDS),*([0.0]*6),*(b''for _ in range(4)))+TAIL8.pack(*(tail[k]for k in EXTRA_FIELDS),b'')
+        state=decode(extended());self.assertEqual(state['inventory_0_definition'],3);self.assertEqual(state['story_flag_count'],178);self.assertEqual(len(extended()),1220)
+        for change in ({'story_flag_count':193},{'story_flag_5':1<<31},{'loot_ready':2},{'region_music_paused':2},{'region_music_voices':17},{'dsp_region_playing':17},{'inventory_0_definition':0},{'inventory_0_doses':0},{'inventory_0_equipped':2},{'inventory_1_definition':4}):
+            with self.subTest(change=change),self.assertRaises(ValueError):decode(extended(**change))
+        for bad in (extended()[:-1],extended()+b'\0'):
+            with self.assertRaises(ValueError):decode(bad)
+
+    def test_v9_combines_bridge_and_menu_appendices(self):
+        base=wire(version=9,byte_size=SIZES[9])
+        tail={k:0 for k in EXTRA_FIELDS};tail.update(story_flag_count=178,region_music_paused=1)
+        menu={k:0 for k in MENU_FIELDS};menu.update(submenu_phase=12,menu_inventory_hash=123)
+        raw=base+TAIL8.pack(*(tail[k] for k in EXTRA_FIELDS),b'')+MENU_TAIL.pack(*(menu[k] for k in MENU_FIELDS))
+        result=decode(raw)
+        self.assertEqual(len(raw),1300)
+        self.assertEqual(result['region_music_paused'],1)
+        self.assertEqual(result['menu_inventory_hash'],123)
+        bad_bridge=bytearray(raw);bad_bridge[WIRE.size+EXTRA_FIELDS.index('region_music_paused')*4:WIRE.size+EXTRA_FIELDS.index('region_music_paused')*4+4]=(2).to_bytes(4,'little')
+        bad_menu=bytearray(raw);bad_menu[1220+MENU_FIELDS.index('submenu_keys')*4:1220+MENU_FIELDS.index('submenu_keys')*4+4]=(2).to_bytes(4,'little')
+        for bad in (raw[:-1],raw+b'\0',bytes(bad_bridge),bytes(bad_menu),wire(version=8,byte_size=1300)+raw[764:],wire(version=10,byte_size=1300)+raw[764:]):
+            with self.assertRaises(ValueError):decode(bad)
+
+    def test_frame_step_recovers_only_bounded_mid_commit_samples(self):
+        session=object.__new__(Session);session.client=mock.Mock();session.pid=7
+        session.state=mock.Mock(side_effect=[ValueError('Semantic probe producer is mid-commit'),{'frame':9}])
+        self.assertEqual(session.advance(8),{'frame':9})
+        self.assertEqual([c.args for c in session.client.call.call_args_list],[('frame.step',{'frames':8}),('frame.step',{'frames':1})])
+        session.client.reset_mock();session.state=mock.Mock(side_effect=ValueError('Semantic probe producer is mid-commit'))
+        with self.assertRaises(ValueError):session.advance(8)
+        self.assertEqual(session.client.call.call_count,4)
+        session.client.reset_mock();session.state=mock.Mock(side_effect=ValueError('Unsupported semantic probe identity/version/size'))
+        with self.assertRaises(ValueError):session.advance(8)
+        self.assertEqual(session.client.call.call_count,1)
+
     def test_menu_appendix_preserves_legacy_offsets(self):
         base=wire(version=7,byte_size=WIRE_V7.size);extra={name:0 for name in MENU_FIELDS};extra.update(submenu_phase=12,submenu_selection=3,menu_master=10,menu_inventory_hash=123)
         raw=base+b''.join(int(extra[name]).to_bytes(4,'little')for name in MENU_FIELDS)

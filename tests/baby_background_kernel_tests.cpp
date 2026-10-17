@@ -113,7 +113,7 @@ void compare(const std::vector<Layer>& layers,uint32_t w,uint32_t h,const std::v
     std::vector<uint32_t> offsets(output.size());for(size_t i=0;i<offsets.size();++i)offsets[i]=uint32_t(i);
     require(kernel.prepare_mapped_output(offsets.data(),offsets.size(),offsets.size(),error),error.c_str());
     std::fill(output.begin(),output.end(),0xbabecafeu);
-    if(kernel.separable_pair()){
+    if(kernel.separable_pair()||kernel.axis_pair()){
         require(kernel.compose_mapped(1,0,output.data(),output.size()),"separable extension supports mapped output");
         for(uint32_t y=0;y<h;++y)for(uint32_t x=0;x<w;++x){
             const auto color=reference_pixel(layers,x,y,1,0);
@@ -180,6 +180,14 @@ int main(int argc,char** argv){
     auto opaque=source;for(auto& color:opaque.colors)color|=0xff000000u;
     auto separable=observed;for(auto& l:separable)l.source=opaque.source();
     compare(separable,400,240,times);compare(separable,320,180,times);
+    // Non-barrel independent axis compression: compare against the retained
+    // literal scalar oracle, including source alpha and opacity blending.
+    std::vector<Layer> axis(2);for(unsigned n=0;n<2;++n){auto&l=axis[n];l.source=opaque.source();l.width=64;l.height=128;l.repeat=true;l.opacity=n?.4f:1.f;l.compression_amplitude_x=1;l.compression_frequency_x=n?3:2;l.compression_speed_x=-1;}
+    compare(axis,400,240,times);compare(axis,320,180,times);
+    {encore::BackgroundKernel fast;std::string why;require(fast.prepare(axis,400,240,why)&&fast.axis_pair(),"axis factorization admitted");require(fast.allocated_bytes()<=encore::BackgroundKernel::preparation_upper_bound(axis,400,240),"axis allocations remain inside preparation reservation");}
+    {encore::BackgroundKernel bad_frame;std::string why;auto extreme=axis;extreme[0].compression_speed_x=std::numeric_limits<float>::max();require(bad_frame.prepare(extreme,8,8,why)&&bad_frame.axis_pair(),"finite extreme axis data still prepares");std::vector<uint32_t>offsets(64),guarded(64,0xdeadbeefu);for(uint32_t i=0;i<64;++i)offsets[i]=i;require(bad_frame.prepare_mapped_output(offsets.data(),64,64,why),"axis negative map fixture");for(float t:{2.f,INFINITY,NAN}){require(!bad_frame.compose_mapped(t,0,guarded.data(),64),"axis nonfinite time/phase rejects");require(std::all_of(guarded.begin(),guarded.end(),[](uint32_t v){return v==0xdeadbeefu;}),"axis rejected frame writes nothing");}}
+    auto transparent=axis;transparent[0].source=source.source();compare(transparent,37,29,times);
+    for(unsigned n=0;n<4;++n){auto varied=axis;for(auto&l:varied){l.repeat=(n&1)!=0;l.compression_amplitude_y=.3f;l.compression_frequency_y=1.7f;l.compression_speed_y=.23f;l.move_x=.17f;l.move_y=-.24f;l.ping_pong_speed_x=(n&2)?.7f:0.f;}compare(varied,37,29,times);}
     // Exercise compression's self-coordinate dependency, oscillation's use of
     // the preceding modified X, both movement branches, repeat/clamp, opacity,
     // palette row direction/boundaries and preserved source alpha.

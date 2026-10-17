@@ -1,0 +1,859 @@
+{
+  "schema": 1,
+  "kind": "encore.field-story.reviewed-lowering",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene_id": 2,
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml": "92cc12c71968a6e732f763ad00c23515b2c5f46c751a5b2afe4d4906011d4ef3",
+    "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml": "3e094d0da71c2b79e1bd0f1c0bd75c25e30de44007b4ec43ad6ff2c87bb85947",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Data/Battlers/pippi.yaml": "bf318bfa87445a4284be7f0e5b2e91c09604b8bc598e0a1f553244ebeefc0ed0",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
+    "Data/BattleSkills/attack_bat.yaml": "99a5757609a6fbf42358aba886f56cc18a00796a4b38eeef8e4fc59307a385a3",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c"
+  },
+  "documents": {
+    "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "dog": "Objects/NPCS/npc41"
+        },
+        "actorsdir": {
+          "ninten": {
+            "x": 1,
+            "y": 0
+          },
+          "dog": {
+            "x": -1,
+            "y": 0
+          }
+        },
+        "actorsemote": {
+          "dog": "exclamation"
+        },
+        "actorsjump": {
+          "dog": {
+            "speed": 0.2,
+            "height": 4
+          }
+        },
+        "movecam": {
+          "x": 488
+        },
+        "wait": 1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "1"
+      },
+      "1": {
+        "actorsemote": {
+          "ninten": "sweat",
+          "dog": "angry"
+        },
+        "actorsmove": {
+          "ninten": {
+            "movement": [
+              {
+                "wait": 0.2
+              },
+              {
+                "x": -8,
+                "y": 0
+              }
+            ],
+            "speed": 16,
+            "animation": "Walk",
+            "type": "step",
+            "moonwalk": true
+          }
+        },
+        "soundeffect": "M3/Growl 2.mp3",
+        "wait": 1.6,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "2",
+        "actorsshake": {
+          "dog": {
+            "x": 1,
+            "length": 0.8
+          }
+        }
+      },
+      "2": {
+        "actorsjump": {
+          "dog": {
+            "height": 12,
+            "length": 0.4
+          }
+        },
+        "actorsmove": {
+          "dog": {
+            "movement": [
+              {
+                "x": -64,
+                "y": 0
+              }
+            ],
+            "speed": 112,
+            "type": "step"
+          }
+        },
+        "startbattle": {
+          "battlers": [
+            {
+              "straydog": "dog"
+            }
+          ],
+          "winflag": "beat_dog_bridge"
+        },
+        "wait": 0.4,
+        "autoadvance": true,
+        "caninput": false
+      }
+    },
+    "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "lindgren": "Objects/NPCS/npc20"
+        },
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_CALL_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_CALL_0",
+        "actorsturn": {
+          "ninten": {
+            "x": 1,
+            "y": 0,
+            "speed": 0.1
+          }
+        },
+        "setflags": "pippis_mom_call",
+        "goto": "1"
+      },
+      "1": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_CALL_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_CALL_1",
+        "actorsmove": {
+          "lindgren": {
+            "movement": [
+              {
+                "x": 0,
+                "y": 16
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "movecam": {
+          "x": 640,
+          "y": 290,
+          "time": 2
+        },
+        "wait": 1,
+        "goto": "2"
+      },
+      "2": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_CALL_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_CALL_2",
+        "actorsmove": {
+          "lindgren": {
+            "movement": [
+              {
+                "x": -16,
+                "y": 0
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "wait": 0.5,
+        "goto": "3"
+      },
+      "3": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_CALL_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_CALL_3",
+        "actorsmove": {
+          "lindgren": {
+            "movement": [
+              {
+                "x": 32,
+                "y": 0
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "wait": 1,
+        "goto": "4"
+      },
+      "4": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_CALL_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_CALL_4",
+        "actorsmove": {
+          "lindgren": {
+            "movement": [
+              {
+                "x": -16,
+                "y": 0
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "wait": 0.5,
+        "goto": "5"
+      },
+      "5": {
+        "showbox": false,
+        "actorsmove": {
+          "lindgren": {
+            "movement": [
+              {
+                "x": 0,
+                "y": 16
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "wait": 0.6,
+        "autoadvance": true
+      }
+    }
+  },
+  "actors": {
+    "ninten": 0,
+    "lindgren": 1,
+    "dog": 2
+  },
+  "programmes": [
+    {
+      "source": "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml",
+      "boundary": "Cutscenes/Cutscene Area10",
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "ninten",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "ninten",
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "dog",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "dog",
+          "phrase": 0
+        },
+        {
+          "kind": "YieldIdle",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "duration": 1,
+          "phrase": 0
+        },
+        {
+          "kind": "SetActorDirection",
+          "actor": "ninten",
+          "vector": [
+            1,
+            0
+          ],
+          "phrase": 0
+        },
+        {
+          "kind": "SetActorDirection",
+          "actor": "dog",
+          "vector": [
+            -1,
+            0
+          ],
+          "phrase": 0
+        },
+        {
+          "kind": "JumpActor",
+          "actor": "dog",
+          "value": 4,
+          "duration": 0.2,
+          "phrase": 0
+        },
+        {
+          "kind": "EmoteActor",
+          "actor": "dog",
+          "emote": "exclamation",
+          "phrase": 0
+        },
+        {
+          "kind": "MoveCamera",
+          "actor": null,
+          "vector": [
+            488,
+            0
+          ],
+          "duration": 1,
+          "flags": 1,
+          "target": 1,
+          "phrase": 0
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "duration": 1.6,
+          "phrase": 1
+        },
+        {
+          "kind": "PlaySound",
+          "actor": null,
+          "audio": "Audio/Sound effects/M3/Growl 2.mp3",
+          "phrase": 1
+        },
+        {
+          "kind": "MoveActorPath",
+          "actor": "ninten",
+          "path": {
+            "entries": [
+              {
+                "kind": 1,
+                "vector": [
+                  0,
+                  0
+                ],
+                "duration": 0.2
+              },
+              {
+                "kind": 0,
+                "vector": [
+                  -8,
+                  0
+                ],
+                "duration": 0
+              }
+            ],
+            "speed": 16,
+            "flags": 3,
+            "animation": 4
+          },
+          "phrase": 1
+        },
+        {
+          "kind": "ShakeActor",
+          "actor": "dog",
+          "vector": [
+            1,
+            0
+          ],
+          "duration": 0.8,
+          "phrase": 1
+        },
+        {
+          "kind": "EmoteActor",
+          "actor": "ninten",
+          "emote": "sweat",
+          "phrase": 1
+        },
+        {
+          "kind": "EmoteActor",
+          "actor": "dog",
+          "emote": "angry",
+          "phrase": 1
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 1
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "duration": 0.4,
+          "phrase": 2
+        },
+        {
+          "kind": "MoveActorPath",
+          "actor": "dog",
+          "path": {
+            "entries": [
+              {
+                "kind": 0,
+                "vector": [
+                  -64,
+                  0
+                ],
+                "duration": 0
+              }
+            ],
+            "speed": 112,
+            "flags": 1,
+            "animation": 65535
+          },
+          "phrase": 2
+        },
+        {
+          "kind": "JumpActor",
+          "actor": "dog",
+          "value": 12,
+          "duration": 0.4,
+          "phrase": 2
+        },
+        {
+          "kind": "QueueBattle",
+          "actor": "dog",
+          "battle": 4,
+          "phrase": 2
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 2
+        },
+        {
+          "kind": "StopInteraction",
+          "actor": null,
+          "flags": 1,
+          "phrase": 2
+        },
+        {
+          "kind": "SetTalker",
+          "actor": null,
+          "phrase": 2
+        },
+        {
+          "kind": "RestoreActor",
+          "actor": "ninten",
+          "phrase": 2
+        },
+        {
+          "kind": "ReleaseBattleActor",
+          "actor": "dog",
+          "phrase": 2
+        },
+        {
+          "kind": "CutsceneEnded",
+          "actor": null,
+          "phrase": 2
+        },
+        {
+          "kind": "DialogueDone",
+          "actor": null,
+          "duration": 0,
+          "phrase": 2
+        },
+        {
+          "kind": "RequestBattle",
+          "actor": "dog",
+          "battle": 4,
+          "phrase": 2
+        }
+      ]
+    },
+    {
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml",
+      "boundary": "Cutscenes/Cutscene Area2",
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "ninten",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "ninten",
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "lindgren",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "lindgren",
+          "phrase": 0
+        },
+        {
+          "kind": "YieldIdle",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "TurnActor",
+          "actor": "ninten",
+          "vector": [
+            1,
+            0
+          ],
+          "duration": 0.1,
+          "phrase": 0
+        },
+        {
+          "kind": "SetFlag",
+          "actor": null,
+          "flag": "pippis_mom_call",
+          "value": 1,
+          "phrase": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "dialogue": 1000,
+          "flags": 1,
+          "phrase": 0
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "flags": 0,
+          "phrase": 0
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "duration": 1,
+          "phrase": 1
+        },
+        {
+          "kind": "MoveActorPath",
+          "actor": "lindgren",
+          "path": {
+            "entries": [
+              {
+                "kind": 0,
+                "vector": [
+                  0,
+                  16
+                ],
+                "duration": 0
+              }
+            ],
+            "speed": 32,
+            "flags": 1,
+            "animation": 4
+          },
+          "phrase": 1
+        },
+        {
+          "kind": "MoveCamera",
+          "actor": null,
+          "vector": [
+            640,
+            290
+          ],
+          "duration": 1,
+          "target": 1,
+          "phrase": 1
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "dialogue": 1001,
+          "flags": 1,
+          "phrase": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "flags": 1,
+          "phrase": 1
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "duration": 0.5,
+          "phrase": 2
+        },
+        {
+          "kind": "MoveActorPath",
+          "actor": "lindgren",
+          "path": {
+            "entries": [
+              {
+                "kind": 0,
+                "vector": [
+                  -16,
+                  0
+                ],
+                "duration": 0
+              }
+            ],
+            "speed": 32,
+            "flags": 1,
+            "animation": 4
+          },
+          "phrase": 2
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "dialogue": 1002,
+          "flags": 1,
+          "phrase": 2
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "flags": 1,
+          "phrase": 2
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "duration": 1,
+          "phrase": 3
+        },
+        {
+          "kind": "MoveActorPath",
+          "actor": "lindgren",
+          "path": {
+            "entries": [
+              {
+                "kind": 0,
+                "vector": [
+                  32,
+                  0
+                ],
+                "duration": 0
+              }
+            ],
+            "speed": 32,
+            "flags": 1,
+            "animation": 4
+          },
+          "phrase": 3
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "dialogue": 1003,
+          "flags": 1,
+          "phrase": 3
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "flags": 1,
+          "phrase": 3
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "duration": 0.5,
+          "phrase": 4
+        },
+        {
+          "kind": "MoveActorPath",
+          "actor": "lindgren",
+          "path": {
+            "entries": [
+              {
+                "kind": 0,
+                "vector": [
+                  -16,
+                  0
+                ],
+                "duration": 0
+              }
+            ],
+            "speed": 32,
+            "flags": 1,
+            "animation": 4
+          },
+          "phrase": 4
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "dialogue": 1004,
+          "flags": 1,
+          "phrase": 4
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "flags": 1,
+          "phrase": 4
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "duration": 0.6,
+          "phrase": 5
+        },
+        {
+          "kind": "MoveActorPath",
+          "actor": "lindgren",
+          "path": {
+            "entries": [
+              {
+                "kind": 0,
+                "vector": [
+                  0,
+                  16
+                ],
+                "duration": 0
+              }
+            ],
+            "speed": 32,
+            "flags": 1,
+            "animation": 4
+          },
+          "phrase": 5
+        },
+        {
+          "kind": "HideDialogue",
+          "actor": null,
+          "flags": 1,
+          "phrase": 5
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 5
+        },
+        {
+          "kind": "StopInteraction",
+          "actor": null,
+          "flags": 1,
+          "phrase": 5
+        },
+        {
+          "kind": "SetTalker",
+          "actor": null,
+          "phrase": 5
+        },
+        {
+          "kind": "RestoreActor",
+          "actor": "ninten",
+          "phrase": 5
+        },
+        {
+          "kind": "RestoreActor",
+          "actor": "lindgren",
+          "phrase": 5
+        },
+        {
+          "kind": "CutsceneEnded",
+          "actor": null,
+          "phrase": 5
+        },
+        {
+          "kind": "DialogueDone",
+          "actor": null,
+          "duration": 0.5,
+          "phrase": 5
+        }
+      ]
+    }
+  ],
+  "encounters": [
+    {
+      "id": 4,
+      "programme": 0,
+      "actor": 2,
+      "enemy": "straydog",
+      "winflag": "beat_dog_bridge",
+      "entry": "battle/straydog/bridge.encbattle",
+      "round": "battle/straydog/bridge.encround",
+      "basic": "Data/BattleSkills/attack.yaml",
+      "music": "Audio/Music/Battle Themes/Flippant Foe.mp3",
+      "body_id": 3,
+      "basic_slot": 0,
+      "return_music_seconds": 3,
+      "return_music_curve": "QuartOut"
+    }
+  ],
+  "basic_overrides": [
+    {
+      "definition": 3,
+      "source": "Data/BattleSkills/attack_bat.yaml"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 1000,
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml",
+      "label": "0"
+    },
+    {
+      "id": 1001,
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml",
+      "label": "1"
+    },
+    {
+      "id": 1002,
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml",
+      "label": "2"
+    },
+    {
+      "id": 1003,
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml",
+      "label": "3"
+    },
+    {
+      "id": 1004,
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml",
+      "label": "4"
+    }
+  ],
+  "emotes": {
+    "exclamation": 8,
+    "sweat": 9,
+    "angry": 10
+  },
+  "voice_root": "Audio/Sound effects/text/",
+  "locales": [
+    "en",
+    "zh_CN"
+  ],
+  "limitations": [
+    "Angry/sweat emote offset and left-facing reflection are visual differences: this admitted executor retains source frame keys and duration only.",
+    "Mom movecam time:2 is ignored by the actual source handler, which reads length and defaults to 1 second.",
+    "Ordinary NPC conversations and subsequent town scenes remain unsupported boundaries."
+  ]
+}

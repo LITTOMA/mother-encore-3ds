@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "items": [
+    {
+      "definition": 4,
+      "source": "FleaBag",
+      "document": {
+        "name": "FLEABAG_NAME",
+        "sorting_name": "FLEABAG_SORT",
+        "description": "FLEABAG_DESC",
+        "article": "FLEABAG_ART",
+        "keyitem": false,
+        "cost": 0,
+        "value": 15,
+        "actions": [],
+        "battle_action": {
+          "skill": "useFleaBag"
+        },
+        "transform": "",
+        "slot": "",
+        "HPrecover": 0,
+        "PPrecover": 0,
+        "boost": {
+          "maxhp": 0,
+          "maxpp": 0,
+          "offense": 0,
+          "defense": 0,
+          "speed": 0,
+          "iq": 0,
+          "guts": 0
+        }
+      },
+      "texture": "Graphics/Objects/Items/FleaBag.png",
+      "output": "graphics/ui/field-rewards/flea-bag.t3x",
+      "winflag": "beat_dog_bridge",
+      "storage": 0
+    }
+  ]
+}

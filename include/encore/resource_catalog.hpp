@@ -21,7 +21,9 @@ enum class ResourceRole : uint32_t {
     // Capability 4: capability 3 plus Mick DogTreats → gave_treats.
     MickTreats=35,
     // Capability 5: original world/battle audio bindings.
-    GameplayAudio=36, FieldMusic=37, FieldAudio=38, FieldMusicZones=39, FieldMenus=40
+    GameplayAudio=36, FieldMusic=37, FieldAudio=38, FieldMusicZones=39, FieldMenus=40,
+    // Capabilities 7/8 extend mainline menus without reusing their role ID.
+    FieldNpc=41, FieldStory=42
 };
 
 class ResourceCatalog {
@@ -30,6 +32,7 @@ public:
     bool load_file(const char*, std::string&);
     bool valid() const { return valid_; }
     const std::string& path(ResourceRole) const;
+    std::vector<std::string_view> paths(ResourceRole) const;
     std::string companion_path(std::string_view battle_path) const;
     bool verify_files(const char* prefix, std::string& error) const;
 private:

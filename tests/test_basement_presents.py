@@ -90,11 +90,14 @@ class BasementSourceTests(unittest.TestCase):
 
     def test_naming_dependency_extension_keeps_defaults_and_rejects_mutation(self):
         from tools import new_game_assets as n
-        # Keep the historical 7 -> 8 story-item extension separate from the
-        # new 8 -> 9 menu policy extension. A schema-7 fixture cannot contain
-        # schema-9 fields, and directly rebinding 7 -> 9 must remain rejected.
-        menus=copy.deepcopy(self.session);current=copy.deepcopy(menus)
-        current['schema']=8;current.pop('field_items');current.pop('description_toggle')
+        current=copy.deepcopy(self.session)
+        current['schema']=8;current.pop('field_encounters')
+        current['acquisitions']=[x for x in current['acquisitions']if x['item_id']!='FleaBag']
+        current['storage_policies']=[x for x in current['storage_policies']if x['item_id']!='FleaBag']
+        current['mutable_flags']=[x for x in current['mutable_flags']if x not in ('beat_dog_bridge','pippis_mom_call')]
+        menus=copy.deepcopy(current);menus['schema']=9
+        menus['field_items']=[x for x in menus['field_items']if x['item_id']!='FleaBag']
+        current.pop('field_items');current.pop('description_toggle')
         previous=copy.deepcopy(current)
         previous['schema']=7
         previous.pop('skill_acquisitions');previous.pop('skill_order')
@@ -113,5 +116,13 @@ class BasementSourceTests(unittest.TestCase):
             bad=copy.deepcopy(menus);mutate(bad)
             with self.subTest(mutate=mutate),self.assertRaises(ValueError):n.rebound_session_dependency(recipe,current,bad,'c'*64)
         with self.assertRaises(ValueError):n.rebound_session_dependency(recipe,previous,menus,'c'*64)
+        # The reviewed v9 menu prefix grows by exactly one future reward policy.
+        from unittest.mock import patch
+        with patch('tools.native_session.extract',return_value=self.session):
+            self.assertEqual(n.rebound_session_dependency(recipe,menus,self.session,'d'*64)['dependencies'][binding['session_ir']],'d'*64)
+            for mutate in (lambda r:r['defaults'].update(position_x=999),lambda r:r.update(description_toggle=False),lambda r:r.update(field_encounters=['unknown']),lambda r:r['field_items'][0].update(drop=False),lambda r:r['acquisitions'].pop(),lambda r:r['mutable_flags'].pop(),lambda r:r.update(schema=11),lambda r:r.update(unreviewed=True)):
+                bad=copy.deepcopy(self.session);mutate(bad)
+                with self.subTest(mutate=mutate),self.assertRaises(ValueError):n.rebound_session_dependency(recipe,menus,bad,'d'*64)
+
 
 if __name__=='__main__':unittest.main()

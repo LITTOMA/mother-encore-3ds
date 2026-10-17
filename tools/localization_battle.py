@@ -4,7 +4,7 @@ from localization_assets import BASE,load,require
 
 def add(records,locales,source,bind,tr):
  enemies=[]
- for enemy in ['lamp','doll','pillow']:
+ for enemy in ['lamp','doll','pillow','straydog']:
   d=yaml.safe_load(source('Data/Battlers/'+enemy+'.yaml'));enemies.append(d)
  telepathy=yaml.safe_load(source('Data/BattleSkills/telepathy.yaml'))
  def articles(key,lang,name):return [x.replace('{0}',name)for x in tr(key,lang).split(',')]
@@ -23,13 +23,15 @@ def add(records,locales,source,bind,tr):
  def fmt(raw,ctx):return re.sub(r'\{([^}]+)\}',lambda m:ctx.get(m[1],m[0]),raw)
  stat_keys=[k for k in records if k.startswith('STAT_')]
  result=[]
- for path in ['content/native-round.json','content/doll-round.json','content/pillow-round.json']:
+ for path in ['content/native-round.json','content/doll-round.json','content/pillow-round.json','content/bridge-round.json']:
   ir=load(BASE/path);battle=ir['binding']['battle_id']
   for i,row in enumerate(ir['texts']):
    if row['role']==0:continue
    key=row['key']or row['source_text'];raw=tr(key);require(raw==row['source_text'],'Battle source key changed '+key)
    role=row['role'];candidates=[]
    if role in (0,1,2,4,5):candidates=[('player','enemy',enemies[0],0,'')]
+   elif role==13:
+    candidates=[('player','enemy',enemies[-1],0,'')]
    else:
     actor='player'if(role in (9,10,12)or(role==3 and key=='ATTACK_DIALOG'))else'enemy'
     target='enemy'if actor=='player'else'player'
@@ -45,9 +47,19 @@ def add(records,locales,source,bind,tr):
    require(candidates,'Unreviewed battle context '+path+':'+str(i))
    chosen=candidates[0];values={}
    for lang in locales:
-    values[lang]=row['text']if lang=='en'else fmt(tr(key,lang),context(*chosen[:3],lang,True,*chosen[3:]))
+    ctx=context(*chosen[:3],lang,True,*chosen[3:])
+    if role==13:
+     item=yaml.safe_load(source('Data/Items/'+ir['loot']['item']+'.yaml'));iname=tr(item['name'],lang);ctx['item']=iname
+     ctx.update({'i'+str(j):a for j,a in enumerate(articles(item['article'],lang,iname))})
+    values[lang]=row['text']if lang=='en'and ir['schema']<6 else fmt(tr(key,lang),ctx)
    synthetic=f'@native.battle/{battle}/{i}';records[synthetic]=dict(key=synthetic,source=path+'#'+row['key'],line=i+1,values=values)
-   bind(f'battle/{battle}/{i}',synthetic,row['text'],path+':texts/'+str(i)+':'+row['key'])
+   origin=path+':texts/'+str(i)+':'+row['key']
+   if ir['schema']>=6:
+    require(values['en'].replace('[Ninten]','Ninten')==row['text'],'Dynamic source battle projection changed')
+    guard=synthetic+'/expected'
+    records[guard]=dict(key=guard,source=origin,line=i+1,values={lang:row['text']for lang in locales})
+    bind(f'battle.expected/{battle}/{i}',guard,row['text'],origin)
+   bind(f'battle/{battle}/{i}',synthetic,values['en'],origin)
    # Preserve original source key and source template explicitly in sidecar.
    result.append(dict(battle=battle,index=i,key=row['key'],source_text=row['source_text'],expected=row['text'],actor=chosen[0],target=chosen[1],enemy=chosen[2]['name'],value=chosen[3],stat=chosen[4],derived_key=synthetic))
  return result

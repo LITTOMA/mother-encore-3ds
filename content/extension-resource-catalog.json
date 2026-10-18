@@ -2,13 +2,14 @@
   "schema": 1,
   "kind": "encore.extension-resource-catalog.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Roles added after the reviewed opening catalog: linked exterior field scene bindings (capability 2), House present objects (capability 3) and Mick wander, reviewed woof trees and mick_bark (capability 4). Kept apart from native-resource-catalog.json so the reviewed opening room provenance does not depend on later scenes or objects; merged into the same data/native.encresources. Capability 6 adds independent source NPC motion owners, with no borrowed Mick dialogue.",
+  "scope": "Roles added after the reviewed opening catalog: linked exterior field scene bindings (capability 2), House present objects (capability 3) and Mick wander, reviewed woof trees and mick_bark (capability 4). Kept apart from native-resource-catalog.json so the reviewed opening room provenance does not depend on later scenes or objects; merged into the same data/native.encresources. Capability 6 adds independent source NPC motion owners, with no borrowed Mick dialogue. Initial Mayor Office scene, stationary source NPCs, reviewed initial help choices, music and run-sound areas; later rescue/zoo branches fail closed.",
   "sources": {
     "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
     "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
     "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
     "Data/Dialogue/Podunk/woof_treats.yaml": "a64e5ca07dff6a39a702003d054944968fc8d87a42a2da1920818b85b9d46239",
-    "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9"
+    "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9",
+    "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e"
   },
   "bindings": [
     {
@@ -85,6 +86,66 @@
       "id": 40,
       "role": "FieldMenus",
       "path": "ui/field.encmenus"
+    },
+    {
+      "id": 1024,
+      "role": "FieldRoom",
+      "path": "world/mayor/mayor.encroom"
+    },
+    {
+      "id": 1025,
+      "role": "FieldMap",
+      "path": "world/mayor/mayor.encmap"
+    },
+    {
+      "id": 1026,
+      "role": "FieldStory",
+      "path": "world/mayor/mayor.encstory"
+    },
+    {
+      "id": 1027,
+      "role": "FieldMusic",
+      "path": "sound/banks/mayor.encmusic"
+    },
+    {
+      "id": 1028,
+      "role": "FieldAudio",
+      "path": "sound/banks/mayor.encaudio"
+    },
+    {
+      "id": 1029,
+      "role": "FieldMusicZones",
+      "path": "sound/banks/mayor.enczones"
+    },
+    {
+      "id": 1030,
+      "role": "FieldSteps",
+      "path": "world/mayor/mayor.encsteps"
+    },
+    {
+      "id": 322,
+      "role": "FieldNpc",
+      "path": "world/mayor/abbott-lobby.encmick"
+    },
+    {
+      "id": 323,
+      "role": "FieldNpc",
+      "path": "world/mayor/mayor-front.encmick"
+    },
+    {
+      "id": 324,
+      "role": "FieldNpc",
+      "path": "world/mayor/mayor-side.encmick"
+    },
+    {
+      "id": 325,
+      "role": "FieldNpc",
+      "path": "world/mayor/abbott-office.encmick"
+    },
+    {
+      "id": 326,
+      "role": "FieldNpc",
+      "path": "world/mayor/pippi.encmick"
     }
   ],
   "encounters": [

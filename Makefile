@@ -98,6 +98,7 @@ introduction-assets:
 	$(PYTHON) tools/map_asset.py verify
 	$(PYTHON) tools/actor_asset.py verify
 	$(PYTHON) tools/house_layers.py verify
+	$(PYTHON) tools/mayor_scene.py verify
 	$(PYTHON) tools/podunk_field.py verify
 	$(PYTHON) tools/field_npcs.py verify
 	$(PYTHON) tools/house_presents.py compile --tex3ds "$(TEX3DS)"

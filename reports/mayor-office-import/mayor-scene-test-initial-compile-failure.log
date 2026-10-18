@@ -1,0 +1,19 @@
+tests/mayor_scene_resources_tests.cpp: In function ‘int main(int, char**)’:
+tests/mayor_scene_resources_tests.cpp:22:18: error: aggregate ‘encore::upstream::ResourceCatalog catalog’ has incomplete type and cannot be defined
+   22 |  ResourceCatalog catalog;WorldLinksData links;RoomData opening;ItemData items;AudioBank audio;NativeSessionData session;
+      |                  ^~~~~~~
+tests/mayor_scene_resources_tests.cpp:27:134: error: ‘class encore::upstream::RoomView’ has no member named ‘metadata’
+   27 |  CHECK(metadata.load(catalog,links,entry.to,root.c_str(),opening.view(),items.view(),error));CHECK(metadata.valid()&&metadata.room().metadata().scene_id==entry.to);CHECK(metadata.npc_count()==5&&metadata.story().programme_count()==4&&metadata.steps().valid());
+      |                                                                                                                                      ^~~~~~~~
+tests/mayor_scene_resources_tests.cpp:11:29: note: in definition of macro ‘CHECK’
+   11 | #define CHECK(x) check(bool(x),#x)
+      |                             ^
+tests/mayor_scene_resources_tests.cpp:28:30: error: ‘class encore::upstream::RoomView’ has no member named ‘metadata’
+   28 |  auto before=metadata.room().metadata().scene_id;CHECK(!metadata.load(catalog,links,2,root.c_str(),opening.view(),items.view(),error));CHECK(metadata.room().metadata().scene_id==before);
+      |                              ^~~~~~~~
+tests/mayor_scene_resources_tests.cpp:28:158: error: ‘class encore::upstream::RoomView’ has no member named ‘metadata’
+   28 |  auto before=metadata.room().metadata().scene_id;CHECK(!metadata.load(catalog,links,2,root.c_str(),opening.view(),items.view(),error));CHECK(metadata.room().metadata().scene_id==before);
+      |                                                                                                                                                              ^~~~~~~~
+tests/mayor_scene_resources_tests.cpp:11:29: note: in definition of macro ‘CHECK’
+   11 | #define CHECK(x) check(bool(x),#x)
+      |                             ^

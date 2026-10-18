@@ -1,0 +1,17 @@
+{
+  "world/podunk/podunk.encmap": {
+    "changed_sections": [
+      "Doors"
+    ],
+    "changed_door_bytes": [
+      304
+    ],
+    "old_bytes": 1619568,
+    "new_bytes": 1619568
+  },
+  "world/podunk/podunk.encroom": {
+    "changed_sections": [],
+    "old_bytes": 20720,
+    "new_bytes": 20720
+  }
+}

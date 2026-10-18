@@ -2,7 +2,7 @@
   "schema": 1,
   "kind": "encore.podunk-field.recipe",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Podunk exterior entered from the original House front door: complete TileMap layers, tile and static-body collision, grass idle sprites, static prop sprites, unlocked openable doors, the House return door and cross-scene routes. Mick (npc21) wander, reviewed woof trees and the south-fence mick_bark shove are ported via ENCMIK01 and omitted from not-ported notices. The 13 original music areas activate the reviewed region controller. Every other NPC, enemy, cutscene and object interaction remains an explicit development boundary.",
+  "scope": "Podunk exterior entered from the original House front door: complete TileMap layers, tile and static-body collision, grass idle sprites, static prop sprites, unlocked openable doors, the House return door and cross-scene routes. Mick (npc21) wander, reviewed woof trees and the south-fence mick_bark shove are ported via ENCMIK01 and omitted from not-ported notices. The 13 original music areas activate the reviewed region controller. Every other NPC, enemy, cutscene and object interaction remains an explicit development boundary. Initial Town Hall entry is admitted by the shared scene graph; later interior rescue/zoo branches remain explicit boundaries.",
   "scene": {
     "id": 2,
     "source": "Maps/podunk/podunk.tscn",
@@ -31,14 +31,38 @@
     {
       "id": 1,
       "from": 1,
-      "door": "Doors/Podunk",
-      "to": 2
+      "to": 2,
+      "door": "Doors/Podunk"
     },
     {
       "id": 2,
       "from": 2,
-      "door": "Objects/Doors/NintensHouse",
-      "to": 1
+      "to": 1,
+      "door": "Objects/Doors/NintensHouse"
+    },
+    {
+      "id": 3,
+      "from": 2,
+      "to": 3,
+      "door": "Objects/Doors/TownHall"
+    },
+    {
+      "id": 4,
+      "from": 3,
+      "to": 2,
+      "door": "Doors/MayorLobby"
+    },
+    {
+      "id": 5,
+      "from": 3,
+      "to": 3,
+      "door": "Doors/MayorLobby2"
+    },
+    {
+      "id": 6,
+      "from": 3,
+      "to": 3,
+      "door": "Doors/MayorLobby3"
     }
   ],
   "locales": [
@@ -165,5 +189,6 @@
     "room": "world/podunk/podunk.encroom",
     "links": "world/world.enclinks"
   },
-  "npc_recipe": "content/podunk-npcs.json"
+  "npc_recipe": "content/podunk-npcs.json",
+  "route_recipe": "content/world-scene-routes.json"
 }

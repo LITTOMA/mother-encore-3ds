@@ -8,7 +8,7 @@ from tools import resource_catalog as c,world_scene_routes as w,field_footsteps 
 
 def build(out):
     out=Path(out).resolve();c.require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Step fixture must stay under build');out.mkdir(parents=True,exist_ok=True)
-    ir=copy.deepcopy(c.load_catalog());graph=copy.deepcopy(w.load());graph['scenes']=graph['scenes'][:2];graph['routes']=graph['routes'][:2];graph['scenes'][1]['assets']['steps']=1030
+    ir=copy.deepcopy(c.load_catalog());ir['bindings']=c.decode((ROOT/'tests/fixtures/catalog-cap8.encresources').read_bytes())['bindings'];graph=copy.deepcopy(w.load());graph['scenes']=graph['scenes'][:2];graph['routes']=graph['routes'][:2];graph['scenes'][1]['assets']['steps']=1030
     links,_=w.build(graph);_,metadata,_=s.source();metadata['scene']=2;packet=s.encode(metadata)
     for row in ir['bindings']:
         target=out/row['path'];target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/'romfs'/row['path'],target)

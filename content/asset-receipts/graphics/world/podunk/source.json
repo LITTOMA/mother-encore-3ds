@@ -1,20 +1,20 @@
 {
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "compiler_sha256": "31632116d0c1182ad910435cb2b894527d56133cf8e8fe574e99cdb5f9046727",
+  "compiler_sha256": "846b29312266b0f6e828c64add2daf8623e519d53d15f4f8108295a5e1565891",
   "compression": "none",
   "format": "rgba8",
   "outputs": {
     "world/podunk/podunk.encmap": {
       "bytes": 1619568,
-      "sha256": "9749716944c38e147ec2ecf3d9829b8bca72dce963114a303d64aab08c6af06a"
+      "sha256": "1b9682df5524c7d9291ea6ddc2ae9af78c4f6a6c698a908a20b9a8c9bc97be7a"
     },
     "world/podunk/podunk.encroom": {
       "bytes": 20720,
-      "sha256": "6f6e6c9b7ee9129225eba5439c1a2d76ba76047656e3b435dce08b54191c9e60"
+      "sha256": "2350c273c22fec1fba4698386b3a831ea5846374e27ca5be1ad0bef6c0b4b3d8"
     },
     "world/world.enclinks": {
-      "bytes": 528,
-      "sha256": "b25f95e8a83740d29c25067dcf04b307690d1e366f87db768af4b9f68a44f8c1"
+      "bytes": 1128,
+      "sha256": "1bda27cde61ac6fde4e8afdfb9994d8c922a4eafb06c469d3ed07fbdc275c63a"
     }
   },
   "pages": [
@@ -27,9 +27,11 @@
       "width": 1024
     }
   ],
-  "recipe_sha256": "422004f195abe2402c09991017658622d7064a242ce84a87d942befc08a8eda6",
+  "recipe_sha256": "e4f414f58e9e04ac87f5fbb6fec4e8925ed90155b6df1baa0c258fa11ebe6d4c",
   "schema": 1,
   "sources": {
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/M3/door_open.wav": "96254dbc6980cb8080bbae1321340768debc2690f3b76d55c2905611f869450c",
     "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
     "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
     "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
@@ -51,6 +53,7 @@
     "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
     "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
     "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+    "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e",
     "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
     "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
     "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
@@ -96,6 +99,7 @@
     "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
     "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
     "Scripts/Main/Switches/ControlledTwoStatesObject.gd": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee",
+    "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
     "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
     "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
     "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",

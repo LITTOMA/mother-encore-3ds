@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 129, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 102, in main
+    files.update(present_files(source))
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\house_presents.py", line 538, in stage_files
+    verify_receipt(root, source)
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\house_presents.py", line 406, in verify_receipt
+    r = read_json(root / RECEIPT)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\house_presents.py", line 63, in read_json
+    return json.loads(Path(path).read_text(encoding='utf-8'))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\GameDev\\3DS\\mother-encore-3ds\\content\\asset-receipts\\graphics\\world\\presents\\source.json'

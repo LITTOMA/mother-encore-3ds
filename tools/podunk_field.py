@@ -299,7 +299,19 @@ def load_recipe(path=RECIPE):
                 'ported_notices', 'action_boundaries', 'npc_recipe', 'categories', 'prop_sprites', 'labels', 'atlas_directory', 'outputs'}
     if general:
         expected = (expected - {'npc_recipe'}) | {'route_recipe', 'static_sprites', 'actor_bindings'}
+    elif 'route_recipe' in recipe:
+        expected = expected | {'route_recipe'}
     require(set(recipe) == expected, 'Unknown/missing field recipe fields')
+    if 'route_recipe' in recipe:
+        path = recipe['route_recipe']
+        require(type(path) is str and path.startswith('content/') and path.endswith('.json') and
+                all(p not in ('', '.', '..') for p in path.split('/')) and ':' not in path and '\\' not in path,
+                'Unsafe field route recipe')
+        from tools.world_scene_routes import load as route_policy
+        graph = route_policy(ROOT / path)
+        require(recipe['routes'] == graph['routes'], 'Field routes differ from admitted graph')
+        require(any(s['id'] == recipe['scene']['id'] and s['source'] == recipe['scene']['source'] and s['map']
+                    for s in graph['scenes']), 'Field graph scene differs')
     if legacy:
         require(recipe['npc_recipe']=='content/podunk-npcs.json','Unreviewed field NPC policy binding')
     else:
@@ -907,7 +919,7 @@ class Model:
         self._doors_and_areas()
         self._bodies()
         self._draw_program()
-        if self.recipe['schema']==2:
+        if 'route_recipe' in self.recipe:
             from tools.world_scene_routes import load as route_policy,rows as source_routes
             self.route_rows=source_routes(route_policy(ROOT/self.recipe['route_recipe']),self.sources)
         else:
@@ -1723,14 +1735,27 @@ def build_outputs(recipe):
     atlases = Atlases(model)
     directory = recipe['atlas_directory']
     atlas_paths = ['%s/atlas-%02d.t3x' % (directory, i) for i in range(len(atlases.pages))]
+    if 'route_recipe' in recipe:
+        from tools.world_scene_routes import load as route_policy, encode as encode_routes
+        links = encode_routes(route_policy(ROOT / recipe['route_recipe']), model.route_rows)
+    else:
+        links = encode_links(recipe, model.route_rows, ROOM_ROLES)
     outputs = {
         recipe['outputs']['map']: encode_map(model, atlases, atlas_paths),
         recipe['outputs']['room']: build_room(recipe, model, recipe['house']['room_ir']),
-        recipe['outputs']['links']: encode_links(recipe, model.route_rows, ROOM_ROLES),
+        recipe['outputs']['links']: links,
     }
     unpack_container(outputs[recipe['outputs']['map']], MAP_MAGIC, MAP_STRIDES, MAP_LIMIT)
-    unpack_container(outputs[recipe['outputs']['links']], LINK_MAGIC, LINK_STRIDES, LINK_LIMIT)
+    check_links(outputs[recipe['outputs']['links']], recipe)
     return model, atlases, atlas_paths, outputs
+
+
+def check_links(blob, recipe):
+    if 'route_recipe' in recipe:
+        from tools.world_scene_routes import STRIDES, load as route_policy
+        cap = 3 if route_policy(ROOT / recipe['route_recipe'])['schema'] == 2 else 2
+        return unpack_container(blob, LINK_MAGIC, STRIDES, LINK_LIMIT, capability=cap)
+    return unpack_container(blob, LINK_MAGIC, LINK_STRIDES, LINK_LIMIT)
 
 
 def compile_all(recipe, tex3ds, romfs=ROOT / 'romfs', command=None):
@@ -1826,7 +1851,7 @@ def stage_files(source_root=ROOT / 'romfs'):
         require(hashlib.sha256(data).hexdigest() == resource['sha256'], 'Podunk player texture fingerprint mismatch: ' + str(path))
         files[path] = data
     _, sections = unpack_container(files[Path(recipe['outputs']['map'])], MAP_MAGIC, MAP_STRIDES, MAP_LIMIT)
-    unpack_container(files[Path(recipe['outputs']['links'])], LINK_MAGIC, LINK_STRIDES, LINK_LIMIT)
+    check_links(files[Path(recipe['outputs']['links'])], recipe)
     pool = sections[0]
     atlases = []
     for i in range(len(sections[1]) // 16):

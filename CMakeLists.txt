@@ -1057,6 +1057,14 @@ if(BUILD_TESTING)
  add_test(NAME field_menus_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_field_menus)
  set_tests_properties(field_menus field_menus_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
 endif()
+
+if(BUILD_TESTING)
+ add_executable(encore_mayor_scene_resources_tests tests/mayor_scene_resources_tests.cpp)
+ target_link_libraries(encore_mayor_scene_resources_tests PRIVATE encore_core)
+ add_test(NAME mayor_scene_resources COMMAND encore_mayor_scene_resources_tests ${CMAKE_SOURCE_DIR}/romfs)
+ set_tests_properties(mayor_scene_resources PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
+endif()
+
 include(cmake/TestParallelism.cmake)
 
 # Resource writers finish before compilation or fixture preparers read packs.

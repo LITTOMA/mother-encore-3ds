@@ -1,5 +1,7 @@
 # 当前状态
 
+本分支候选（2026-10-19）：初始市政厅已纳入正式资源构建和正常门连接，暂存361项资源；主机/ASan/UBSan与Python来源检查通过，当前交叉构建和模拟器验收待完成。市长初始是/否/取消、前厅Abbott与受检人物/地图/脚步/音乐已有消费者；后续Pippi救援/动物园分支仍阻断。全局音乐改造仍未接入主程序。详情见[MAYOR_OFFICE_IMPORT](MAYOR_OFFICE_IMPORT.md)，不能据此声称完整原版可玩。
+
 Mother: Encore 的局部原生 Nintendo 3DS 移植。共享 C++17 核心运行受检内容，3DS 后端负责渲染、输入、音频和存储；不运行 Godot 或通用 GDScript 解释器。完整游戏尚未完成。
 
 本分支已接入 Podunk 桥头流浪狗战斗与 Pippi 妈妈呼喊，包含独立遭遇、Bite / Bash / 塑料球棒动作、原版奖励 / FleaBag 掉落与区域音乐暂停恢复。共享核心已通过实际战斗、全部对白、西侧道路往返及 GCC ASan/UBSan 检查；真实 3DSX / CIA 和 340 项打包资源核对通过。Azahar 两次独立冷启动完成战斗、对白、重复触发幂等检查及步行到西侧道路；使用人工地下室后存档。历史候选 Clang 普通及 ASan/UBSan 各 160 项通过；该候选 GCC 聚合 Python 失败，兼容整合后的验证单独记录。来源映射、兼容与未实现边界见 [PODUNK_BRIDGE](PODUNK_BRIDGE.md)。

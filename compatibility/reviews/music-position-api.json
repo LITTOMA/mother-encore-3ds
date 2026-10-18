@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "source_scope": "Official Godot3.6.2 MP3 and AudioStreamPlayer APIs, libctru immutable source snapshots; no game content/upstream revision changed.",
+  "sources": [
+    {
+      "repo": "godotengine/godot",
+      "path": "scene/audio/audio_stream_player.cpp",
+      "ref": "3.6.2-stable",
+      "git_blob": "b8bd52acaf1f34c80f4a71bd6c9ad51724ebc93c",
+      "sha256": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/audio/audio_stream_player.cpp"
+    },
+    {
+      "repo": "godotengine/godot",
+      "path": "modules/minimp3/audio_stream_mp3.cpp",
+      "ref": "3.6.2-stable",
+      "git_blob": "f99b5a9180c7e97a160c0586bbcd089c14a1cc45",
+      "sha256": "08870cd0d7d944db0b339026c2609e56d7a2a598af732c39fd6c5157cd06c0c5",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/modules/minimp3/audio_stream_mp3.cpp"
+    },
+    {
+      "repo": "devkitPro/libctru",
+      "path": "libctru/source/ndsp/ndsp-channel.c",
+      "ref": "9b55eda44cf80b971503991e0c78f9bc8fe50425",
+      "git_blob": "bd5699d5232ee5b94eab5a7397d25b322f9512d2",
+      "sha256": "3f3ec7e7d38e4c15c702f01f304c5d6ae87718269585c931d8a8e8e68293689b",
+      "url": "https://github.com/devkitPro/libctru/blob/9b55eda44cf80b971503991e0c78f9bc8fe50425/libctru/source/ndsp/ndsp-channel.c"
+    },
+    {
+      "repo": "devkitPro/libctru",
+      "path": "libctru/include/3ds/ndsp/ndsp.h",
+      "ref": "9b55eda44cf80b971503991e0c78f9bc8fe50425",
+      "git_blob": "9673ccfbf1a24e2f9681119bf1618b1a861de6bb",
+      "sha256": "d340ea7022956d4335ce1a5ed19e5e725e2a0c368274e971c4f78cbceeb7e3f8",
+      "url": "https://github.com/devkitPro/libctru/blob/9b55eda44cf80b971503991e0c78f9bc8fe50425/libctru/include/3ds/ndsp/ndsp.h"
+    }
+  ],
+  "review": {
+    "engine_start": "AudioStreamPlayer.play(float) stores pending float seek; get_playback_position returns pending seek before mixer consumes it. MP3.seek compares against float stream length, resets beyond length to0 and casts float(sample_rate)*float(time) to uint32 frames. MP3 playback position is frames_mixed/rate, not a wall clock.",
+    "ndsp_position": "ndspWaveBuf.sequence_id is assigned nonzero u16 on queue, wraps from65535 to1. GetSamplePos and GetWaveBufSeq observe DSP-updated current buffer fields. Their two reads are not an atomic pair; bounded sequence checks yield Pending on detected inconsistencies. Output corresponds to DSP playback observation, not Godot mixer lookahead/latency.",
+    "admission_boundary": "Nonfinite/negative or float-overflow starts fail closed. Zero start remains admitted for prior codecs; nonzero starts currently admit audited lower-case .mp3 sources only. Stable current route+generation/provider/channel lease required for observation. No stopped/unrouted-position query support or actual device timing guarantee."
+  },
+  "mapped_implementation": {
+    "source_float_offset": "runtime/music_players.cpp:play_track",
+    "source_PCM_start": "runtime/audio_data.cpp:music_start_frame",
+    "bounded_loop_source_projection": "runtime/audio_data.cpp:music_position_frame",
+    "stream_cursor": "runtime/audio_data.cpp:AudioFrameCursor::seek",
+    "read_only_DSP_observation": "platform/ctr/music_region_player.cpp:playback_position"
+  }
+}

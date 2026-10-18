@@ -39,7 +39,7 @@ bool MusicBankRoutes::reconcile(const MusicPlayers&players,const std::vector<Mus
         if(next.size()>=policy_.maximum_voices)return fail(e,"Music routing voice capacity exhausted; old routes preserved");
         const MusicPlaybackRoute*old=nullptr;for(const auto&r:routes_)if(r.player==node.identity){old=&r;break;}
         size_t admission=starts.size();for(size_t i=0;i<starts.size();++i)if(starts[i].player==node.identity){admission=i;break;}
-        MusicPlaybackRoute route;route.player=node.identity;route.generation=node.generation;route.gain_db=node.gain_db;route.stream_paused=node.stream_paused;route.slot=policy_.maximum_voices;
+        MusicPlaybackRoute route;route.player=node.identity;route.generation=node.generation;route.gain_db=node.gain_db;route.stream_paused=node.stream_paused;route.start_seconds=node.start_seconds;route.slot=policy_.maximum_voices;
         if(old&&node.generation<old->generation)return fail(e,"Music routed playback generation regressed");
         if(old&&old->generation==node.generation){
             if(admission!=starts.size())return fail(e,"Music start redundantly admits an unchanged playback");
@@ -53,6 +53,7 @@ bool MusicBankRoutes::reconcile(const MusicPlayers&players,const std::vector<Mus
         }
         const auto*owner=provider(route.provider);AudioAsset asset;
         if(!owner||!owner->bank.find(route.track_id,asset)||asset.source_path!=node.stream||(!asset.loops()&&!owner->regions.library())||!std::isfinite(route.gain_db)||route.gain_db<-120||route.gain_db>24)return fail(e,"Music route no longer matches its source player/bank");
+        uint32_t first;if(!music_start_frame(asset,route.start_seconds,first,e))return false;
         if(old){if(old->slot>=slots.size()||slots[old->slot])return fail(e,"Music routed slot ownership is invalid");route.slot=old->slot;slots[route.slot]=true;}
         next.push_back(route);
     }

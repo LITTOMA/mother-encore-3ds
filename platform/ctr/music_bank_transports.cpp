@@ -88,6 +88,11 @@ bool MusicBankTransports::set_user_music_db(float db,std::string&e){
     for(auto&p:providers_)if(!p->player.set_user_music_db(db))return fail(e,"Global music provider volume rejected");
     user_music_db_=db;e.clear();return true;
 }
+MusicPositionStep MusicBankTransports::playback_position(const upstream::MusicBankRoutes&routes,uint64_t player,uint64_t generation,double&seconds,std::string&e)const{
+    if(!check_routes(routes,e))return MusicPositionStep::Failed;
+    for(const auto&r:routes.routes())if(r.player==player&&r.generation==generation){const auto*p=find(r.provider);if(!p||!p->prepared||!p->published){e="Music position provider is unavailable";return MusicPositionStep::Failed;}return p->player.playback_position(routes,r.provider,player,generation,seconds,e);}
+    e="Music position has no current playback route";return MusicPositionStep::Failed;
+}
 bool MusicBankTransports::set_paused(bool value,std::string&e){
     if(!ready_)return fail(e,"Global music transports are not initialized");
     for(auto&p:providers_)if(p->prepared&&!p->player.set_paused(value,e))return false;

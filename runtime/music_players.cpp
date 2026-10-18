@@ -1,6 +1,7 @@
 #include "encore/music_players.hpp"
 #include <algorithm>
 #include <cmath>
+#include <limits>
 namespace encore::upstream {namespace {
 bool bad(std::string&e,const char*why){e=why;return false;}
 bool gain(float value){return std::isfinite(value)&&value>=-120&&value<=24;}
@@ -26,16 +27,17 @@ bool MusicPlayers::add_player(uint64_t&id,std::string&e){
     nodes_.push_back(std::move(next));id=next_identity_++;e.clear();return true;
 }
 bool MusicPlayers::play_loop(uint64_t id,std::string_view source,std::string&e){return play_track(id,source,source,e);}
-bool MusicPlayers::play_track(uint64_t id,std::string_view source,std::string_view loop,std::string&e){
+bool MusicPlayers::play_track(uint64_t id,std::string_view source,std::string_view loop,std::string&e){return play_track(id,source,loop,0,e);}
+bool MusicPlayers::play_track(uint64_t id,std::string_view source,std::string_view loop,double start,std::string&e){
     auto*node=mutable_node(id);
-    if(!ready_||!node||node->generation==UINT64_MAX||!valid_music_stream_uri(source)||(!loop.empty()&&!valid_music_stream_uri(loop)))return bad(e,"Music track identity/source/loop is invalid");
+    if(!ready_||!node||node->generation==UINT64_MAX||!std::isfinite(start)||start<0||start>std::numeric_limits<float>::max()||!valid_music_stream_uri(source)||(!loop.empty()&&!valid_music_stream_uri(loop)))return bad(e,"Music track identity/source/loop is invalid");
     // Source would emit an engine error when connecting the same one-shot
     // removal twice. Refuse that unsupported sequence without partial playback.
     if(loop.empty()&&node->remove_on_finished)return bad(e,"Music one-shot finished callback is already connected");
     std::string retained(source),repeat(loop);
     node->stream=std::move(retained);node->finished_loop=std::move(repeat);
     node->finished_index=loop.empty()?UINT32_MAX:uint32_t(node-nodes_.data());
-    node->remove_on_finished|=loop.empty();node->playing=true;++node->generation;
+    node->remove_on_finished|=loop.empty();node->playing=true;node->start_seconds=double(float(start));++node->generation;
     e.clear();return true;
 }
 bool MusicPlayers::signal_finished(uint64_t id,uint64_t generation,std::string&e){

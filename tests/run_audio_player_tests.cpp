@@ -18,11 +18,11 @@ Result ndspInit(){live=true;return 0;}void ndspExit(){for(int i=0;i<24;++i)drain
 void ndspSetMasterVol(float){++mutations;}uint32_t ndspGetDroppedFrames(){return 0;}
 void*linearAlloc(size_t n){if(fail_allocation)return nullptr;auto*p=std::malloc(n);if(p){bytes+=n;allocations[p]=n;}return p;}
 void linearFree(void*p){CHECK(allocations.count(p));bytes-=allocations[p];allocations.erase(p);std::free(p);}
-void ndspChnReset(int i){channel(i);drain(i);}void ndspChnWaveBufClear(int i){channel(i);drain(i);}
+void ndspChnReset(int i){ndsp_test_reset_sequence(i);channel(i);drain(i);}void ndspChnWaveBufClear(int i){channel(i);drain(i);}
 void ndspChnSetMix(int i,float*g){gains[channel(i)]=g[0];CHECK(g[0]==g[1]);}
 void ndspChnSetPaused(int i,bool){channel(i);}void ndspChnSetInterp(int i,int){channel(i);}void ndspChnSetRate(int i,float){channel(i);}void ndspChnSetFormat(int i,int){channel(i);}
 Result DSP_FlushDataCache(const void*p,uint32_t n){CHECK(p&&n&&n<=8192);return 0;}
-void ndspChnWaveBufAdd(int i,ndspWaveBuf*b){CHECK(live&&b->data_pcm16&&b->nsamples&&b->nsamples<=2048);queues[channel(i)].push_back(b);b->status=NDSP_WBUF_QUEUED;}
+void ndspChnWaveBufAdd(int i,ndspWaveBuf*b){ndsp_test_assign_sequence(i,b);CHECK(live&&b->data_pcm16&&b->nsamples&&b->nsamples<=2048);queues[channel(i)].push_back(b);b->status=NDSP_WBUF_QUEUED;}
 int main(int argc,char**argv){
  CHECK(argc==7);ctr::AudioPlayer owner;upstream::AudioBank bank;CHECK(bank.load_file(argv[1],error));CHECK(owner.initialize(argv[1],argv[2],error));std::vector<uint32_t>loops;uint32_t one_shot=0;for(uint32_t i=0;i<bank.count();++i){auto a=bank.asset(i);if(a.loops())loops.push_back(a.stable_id);else if(!one_shot)one_shot=a.stable_id;}CHECK(loops.size()>=3&&one_shot);
  CHECK(owner.prepare(loops[0],error)&&owner.prepare(loops[1],error)&&owner.prepare(loops[2],error)&&owner.play(loops[0],ctr::AudioLane::Music,error));const auto ordinary=queues;auto music_generation=owner.observe_music().generation;
@@ -66,3 +66,6 @@ int main(int argc,char**argv){
  ctr::FieldRunAudioService unavailable;CHECK(unavailable.prepare(view,integrated,error));upstream::FieldRunLoop silent;CHECK(silent.initialize(view,"wood",error)&&silent.set_running(true,false,true,false,error));const auto offline_calls=mutations;CHECK(unavailable.sync(silent,integrated,error)&&silent.events().empty()&&mutations==offline_calls&&!live);CHECK(integrated.initialize(argv[1],argv[2],error));CHECK(!unavailable.sync(silent,integrated,error));integrated.shutdown();CHECK(!bytes&&allocations.empty());
  std::printf("Run/region NDSP ownership: %u checks; independent loop, music preservation, replacement, capacity failure, reuse, reset and shutdown; API double only\n",checks);
 }
+
+uint32_t ndspChnGetSamplePos(int){std::abort();}
+uint16_t ndspChnGetWaveBufSeq(int){std::abort();}

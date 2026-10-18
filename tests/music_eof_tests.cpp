@@ -1,6 +1,8 @@
 #include "music_bank_transports.hpp"
 #include "audio_player.hpp"
 #include <array>
+#include <cmath>
+#include <cstdio>
 #include <cstdlib>
 #include <iostream>
 #include <vector>
@@ -11,6 +13,7 @@ size_t linear_bytes=0;bool dsp=false;
 std::array<uint64_t,20>frames_added{};std::array<uint32_t,20>resets{};bool partial_wave=false;
 std::array<std::vector<ndspWaveBuf*>,20>queues;
 std::array<bool,20>paused_channels{};
+std::array<uint16_t,20>hardware_sequence{},sequence_seed{};std::array<uint32_t,20>hardware_sample{};bool race_position=false;uint16_t racing_sequence=100;
 void check(bool okay,const char*why){++checks;if(!okay){std::cerr<<"FAIL: "<<why<<'\n';std::exit(1);}}
 size_t channel(int i){check(i>=0&&i<20,"valid observed channel");++mutations;return size_t(i);}
 void drain(int i){for(auto*p:queues[size_t(i)])p->status=NDSP_WBUF_DONE;queues[size_t(i)].clear();}
@@ -23,12 +26,19 @@ void ndspSetMasterVol(float){++owner_calls;}
 uint32_t ndspGetDroppedFrames(){return 0;}
 void*linearAlloc(size_t n){linear_bytes+=n;return std::malloc(n);}
 void linearFree(void*p){linear_bytes-=24576;std::free(p);}
-void ndspChnReset(int i){channel(i);++resets[size_t(i)];drain(i);}void ndspChnWaveBufClear(int i){channel(i);drain(i);}
+void ndspChnReset(int i){ndsp_test_reset_sequence(i);ndsp_test_next_sequence[size_t(i)]=sequence_seed[size_t(i)];hardware_sequence[size_t(i)]=0;hardware_sample[size_t(i)]=0;channel(i);++resets[size_t(i)];drain(i);}void ndspChnWaveBufClear(int i){channel(i);drain(i);}
 void ndspChnSetMix(int i,float*v){channel(i);check(v[0]==v[1],"stereo mix unchanged");}
 Result DSP_FlushDataCache(const void*p,uint32_t n){check(p&&n&&n<=8192,"checked streaming payload");return 0;}
-void ndspChnWaveBufAdd(int i,ndspWaveBuf*p){check(dsp,"NDSP owner still alive");check(p->nsamples>0&&p->nsamples<=2048,"bounded partial/full music buffer");partial_wave|=p->nsamples<2048;frames_added[size_t(i)]+=p->nsamples;p->status=NDSP_WBUF_QUEUED;queues[channel(i)].push_back(p);}
+void ndspChnWaveBufAdd(int i,ndspWaveBuf*p){ndsp_test_assign_sequence(i,p);check(dsp,"NDSP owner still alive");check(p->nsamples>0&&p->nsamples<=2048,"bounded partial/full music buffer");partial_wave|=p->nsamples<2048;frames_added[size_t(i)]+=p->nsamples;p->status=NDSP_WBUF_QUEUED;queues[channel(i)].push_back(p);}
 void ndspChnSetPaused(int lane,bool paused){paused_channels[channel(lane)]=paused;++mutations;}
 void ndspChnSetInterp(int i,int){channel(i);}void ndspChnSetRate(int i,float){channel(i);}void ndspChnSetFormat(int i,int){channel(i);}
+uint32_t ndspChnGetSamplePos(int i){check(i>=0&&i<20,"position channel range");return hardware_sample[size_t(i)];}
+uint16_t ndspChnGetWaveBufSeq(int i){check(i>=0&&i<20,"sequence channel range");return race_position?++racing_sequence:hardware_sequence[size_t(i)];}
+void source_wave(const char*root,const upstream::AudioAsset&asset,uint32_t first,const ndspWaveBuf&wave){
+ FILE*file=std::fopen((std::string(root)+std::string(asset.pcm_path)).c_str(),"rb");check(file!=nullptr,"original PCM for independent sample-range comparison");
+ std::vector<uint8_t>bytes(size_t(wave.nsamples)*asset.channels*2);check(std::fseek(file,long(uint64_t(first)*asset.channels*2),SEEK_SET)==0&&std::fread(bytes.data(),1,bytes.size(),file)==bytes.size(),"read exact source range");check(std::fclose(file)==0,"comparison PCM closed");
+ check(upstream::audio_crc32(bytes.data(),bytes.size())==upstream::audio_crc32(reinterpret_cast<const uint8_t*>(wave.data_pcm16),bytes.size()),"submitted offset waveform equals independent original PCM range");
+}
 bool prepare(ctr::MusicBankTransports&service,uint64_t id,const char*metadata,const char*bank,const char*root,float master,std::string&e){
  if(!service.begin_prepare(id,metadata,bank,root,4,true,master,e))return false;
  for(unsigned i=0;i<20000;++i){const auto step=service.prepare_step(id,8192,e);if(step==ctr::MusicPreparationStep::Ready)return true;if(step==ctr::MusicPreparationStep::Failed)return false;}
@@ -109,7 +119,43 @@ int main(int argc,char**argv){
  for(unsigned i=0;i<intro_frames/(3*2048)+4;++i){drain(5);drain(6);check(service.pump_streams(e),e.c_str());}
  const auto paired=service.take_finished();check(paired.size()==2&&paired[0].player==third&&paired[0].provider==5&&paired[1].player==fourth&&paired[1].provider==4,"completed source nodes delivered in insertion order");
  check(service.take_finished().empty()&&queues[0]==root_queue,"completion tokens consumed once, existing owner intact");
+ // The real source level-up layers have equal media lengths; the personal
+ // layer starts at the base player's sampled playback position, not at zero.
+ for(const auto&done:paired)check(graph.signal_finished(done.player,done.generation,e),"finish paired source nodes");
+ check(graph.dispatch_finished(e)&&graph.flush_deletions(e)&&routes.reconcile(graph,{},e)&&service.sync_routes(routes,e)&&service.retire(4,routes,e)&&service.retire(5,routes,e),"paired providers retire after source deletion");
+ upstream::AudioAsset level_asset,layer_asset;check(original.find(3080041499u,level_asset)&&original.find(3778949439u,layer_asset)&&level_asset.frames==layer_asset.frames,"actual original level-up/layer media");
+ check(prepare_library(service,6,bindings,level_asset.stable_id,argv[2],owner.observe_music().master_db,e)&&prepare_library(service,7,bindings,layer_asset.stable_id,argv[2],owner.observe_music().master_db,e)&&service.publish(6,routes,e)&&service.publish(7,routes,e),"checked source level-up providers");
+ uint64_t level_player,layer_player;uint32_t first_frame=0;
+ check(graph.add_player(level_player,e)&&graph.play_track(level_player,level_asset.source_path,level_asset.source_path,1.375,e)&&routes.reconcile(graph,{{level_player,1,6}},e)&&service.sync_routes(routes,e),"nonzero source start admitted and queued");
+ check(upstream::music_start_frame(level_asset,1.375,first_frame,e)&&first_frame>0,"source float32 seek frame");source_wave(argv[2],level_asset,first_frame,*queues[5][0]);
+ double position=-1;check(service.playback_position(routes,level_player,1,position,e)==ctr::MusicPositionStep::Ready&&position==1.375,"pending hardware start reports requested source seek");
+ hardware_sequence[5]=queues[5][1]->sequence_id;hardware_sample[5]=257;
+ const auto source_position=double(float(double(first_frame+2048+257)/level_asset.sample_rate));
+ auto observation_queues=queues;auto observation_resets=resets;auto observation_frames=frames_added;const auto observation_mutations=mutations;
+ check(service.playback_position(routes,level_player,1,position,e)==ctr::MusicPositionStep::Ready&&position==source_position,"playing source position follows identified buffer and sample offset");
+ check(queues==observation_queues&&resets==observation_resets&&frames_added==observation_frames&&mutations==observation_mutations,"position read does not queue/reset/advance any owner");
+ check(graph.pause_all(e)&&routes.reconcile(graph,{},e)&&service.sync_routes(routes,e)&&paused_channels[5]&&service.playback_position(routes,level_player,1,position,e)==ctr::MusicPositionStep::Ready&&position==source_position,"paused source keeps observed position");
+ check(graph.resume_all(e)&&routes.reconcile(graph,{},e)&&service.sync_routes(routes,e),"resume source level-up without restart");
+ const auto before_refill_frames=frames_added[5];drain(5);check(service.pump_streams(e)&&frames_added[5]>before_refill_frames,"prepare newer buffers while previous DSP status remains observable");
+ check(service.playback_position(routes,level_player,1,position,e)==ctr::MusicPositionStep::Ready&&position==source_position,"recent completed buffer span survives buffer storage reuse");
+ auto candidate_graph=graph;auto candidate_routes=routes;check(candidate_graph.play_track(level_player,level_asset.source_path,level_asset.source_path,2.5,e)&&candidate_routes.reconcile(candidate_graph,{{level_player,2,6}},e),"stage another playback generation without physical publication");
+ position=9999;check(service.playback_position(candidate_routes,level_player,2,position,e)==ctr::MusicPositionStep::Pending&&position==9999,"unsubmitted generation cannot borrow old output position");
+ check(service.playback_position(routes,level_player,1,position,e)==ctr::MusicPositionStep::Ready&&position==source_position,"staged observation leaves current player intact");
+ sequence_seed[6]=65534;const auto layer_baseline=frames_added[6];
+ check(graph.add_player(layer_player,e)&&graph.play_track(layer_player,layer_asset.source_path,layer_asset.source_path,position,e)&&routes.reconcile(graph,{{layer_player,1,7}},e)&&service.sync_routes(routes,e),"personal layer starts from observed base position");sequence_seed[6]=0;
+ uint32_t layer_first=0;check(upstream::music_start_frame(layer_asset,position,layer_first,e)&&layer_first>0,"source layer seek frame");source_wave(argv[2],layer_asset,layer_first,*queues[6][0]);
+ check(queues[6][0]->sequence_id==65534&&queues[6][1]->sequence_id==65535&&queues[6][2]->sequence_id==1,"libctru sequence wraps without zero");
+ hardware_sequence[6]=queues[6][2]->sequence_id;hardware_sample[6]=19;
+ check(service.playback_position(routes,layer_player,1,position,e)==ctr::MusicPositionStep::Ready&&position==double(float(double(layer_first+4096+19)/layer_asset.sample_rate)),"wrapped buffer identity maps to correct source position");
+ position=9999;race_position=true;check(service.playback_position(routes,layer_player,1,position,e)==ctr::MusicPositionStep::Pending&&position==9999,"changing DSP sequence yields bounded pending observation");race_position=false;
+ hardware_sequence[6]=50000;check(service.playback_position(routes,layer_player,1,position,e)==ctr::MusicPositionStep::Pending&&position==9999,"unobserved DSP sequence never invents a position");
+ hardware_sequence[6]=queues[6][0]->sequence_id;hardware_sample[6]=99999;check(service.playback_position(routes,layer_player,1,position,e)==ctr::MusicPositionStep::Pending&&position==9999,"inconsistent sample/sequence preserves output");
+ check(service.playback_position(routes,layer_player,0,position,e)==ctr::MusicPositionStep::Failed&&position==9999&&service.playback_position(routes,99999,1,position,e)==ctr::MusicPositionStep::Failed,"invalid route/generation cannot observe another stream");
+ const auto done_layer=finish(service,6,e);check(done_layer.player==layer_player&&done_layer.generation==1&&frames_added[6]-layer_baseline==layer_asset.frames-layer_first,"seek cycle submits only the exact remaining original frames");
+ check(service.playback_position(routes,layer_player,1,position,e)==ctr::MusicPositionStep::Ready&&position==double(float(double(layer_asset.frames)/layer_asset.sample_rate)),"completed current generation reports source end");
+ check(graph.signal_finished(layer_player,1,e)&&graph.dispatch_finished(e)&&graph.find(layer_player)->start_seconds==0&&routes.reconcile(graph,{{layer_player,2,7}},e)&&service.sync_routes(routes,e),"source finished callback resets next cycle to zero start");source_wave(argv[2],layer_asset,0,*queues[6][0]);
+ check(queues[0]==root_queue,"source seeks and observations preserve independent NDSP owner");
  service.shutdown();owner.shutdown();check(linear_bytes==0,"all buffers released after EOF and loops");
 
- std::cout<<"Music natural EOF NDSP-double PASS "<<checks<<" checks; exact source frames/partial tails, one delivery, latched completed generations, intro/builtin/callback loops, one-shot cleanup and source order; no real device timing/audible-output claim\n";
+ std::cout<<"Music natural EOF NDSP-double PASS "<<checks<<" checks; exact source frames/partial tails, one delivery, latched completed generations, intro/builtin/callback loops, one-shot cleanup, source order, nonzero MP3 seeks and bounded sequence/sample observations; no real device timing/audible-output claim\n";
 }

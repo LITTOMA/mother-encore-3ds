@@ -20,6 +20,7 @@ struct MusicPlayerNode {
     uint32_t finished_index=UINT32_MAX;
     bool remove_on_finished=false;
     float gain_db=0;
+    double start_seconds=0;
     MusicPlayerTween tween;
     bool playing=false,pending_delete=false,ensure_empty_on_delete=false,stream_paused=false;
 };
@@ -33,7 +34,8 @@ public:
     std::shared_ptr<const MusicPlayersOwner>owner()const{return owner_;}
     bool add_player(uint64_t&identity,std::string&);
     bool play_loop(uint64_t,std::string_view,std::string&);
-    // Resolved current/loop URIs; this bounded slice admits only source start=0.
+    // Resolved current/loop URIs. The transport admits the source codec/offset.
+    bool play_track(uint64_t,std::string_view current,std::string_view loop,double start_seconds,std::string&);
     bool play_track(uint64_t,std::string_view current,std::string_view loop,std::string&);
     bool signal_finished(uint64_t,uint64_t playback_generation,std::string&);
     bool dispatch_finished(std::string&);

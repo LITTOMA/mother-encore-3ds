@@ -21,10 +21,10 @@ void ndspSetMasterVol(float){++owner_calls;}
 uint32_t ndspGetDroppedFrames(){return 0;}
 void*linearAlloc(size_t n){linear_bytes+=n;return std::malloc(n);}
 void linearFree(void*p){linear_bytes-=24576;std::free(p);}
-void ndspChnReset(int i){channel(i);drain(i);}void ndspChnWaveBufClear(int i){channel(i);drain(i);}
+void ndspChnReset(int i){ndsp_test_reset_sequence(i);channel(i);drain(i);}void ndspChnWaveBufClear(int i){channel(i);drain(i);}
 void ndspChnSetMix(int i,float*v){channel(i);check(v[0]==v[1],"stereo mix unchanged");}
 Result DSP_FlushDataCache(const void*p,uint32_t n){check(p&&n&&n<=8192,"checked streaming payload");return 0;}
-void ndspChnWaveBufAdd(int i,ndspWaveBuf*p){check(dsp,"NDSP owner still alive");p->status=NDSP_WBUF_QUEUED;queues[channel(i)].push_back(p);}
+void ndspChnWaveBufAdd(int i,ndspWaveBuf*p){ndsp_test_assign_sequence(i,p);check(dsp,"NDSP owner still alive");p->status=NDSP_WBUF_QUEUED;queues[channel(i)].push_back(p);}
 void ndspChnSetPaused(int lane,bool paused){paused_channels[channel(lane)]=paused;++mutations;}
 void ndspChnSetInterp(int i,int){channel(i);}void ndspChnSetRate(int i,float){channel(i);}void ndspChnSetFormat(int i,int){channel(i);}
 bool complete_prepare(ctr::MusicRegionService&service,const char*regions,const char*bank,const char*root,uint32_t capacity,const ctr::AudioPlayer&owner,std::string&e){
@@ -144,3 +144,6 @@ int main(int argc,char**argv){
  check(linear_bytes==0,"all owner and service buffers released");
  std::cout<<"Music production service/observation PASS "<<checks<<" checks; real API under NDSP double, no audible output claim\n";
 }
+
+uint32_t ndspChnGetSamplePos(int){std::abort();}
+uint16_t ndspChnGetWaveBufSeq(int){std::abort();}

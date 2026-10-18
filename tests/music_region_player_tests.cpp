@@ -21,11 +21,11 @@ void ndspSetMasterVol(float){check(false,"adapter must not change master gain");
 uint32_t ndspGetDroppedFrames(){return 0;}
 void*linearAlloc(size_t n){if(alloc_left==0)return nullptr;if(alloc_left>0)--alloc_left;allocated+=n;return std::malloc(n);}
 void linearFree(void*p){check(p!=nullptr,"valid release");allocated-=3*2048*4;std::free(p);}
-void ndspChnReset(int c){drain(c);}void ndspChnWaveBufClear(int c){drain(c);}
+void ndspChnReset(int c){ndsp_test_reset_sequence(c);drain(c);}void ndspChnWaveBufClear(int c){drain(c);}
 void ndspChnSetMix(int c,float*v){gains[ch(c)]=v[0];check(v[0]==v[1],"equal stereo gain");}
 void ndspChnSetPaused(int c,bool value){paused[ch(c)]=value;}
 Result DSP_FlushDataCache(const void*p,uint32_t n){check(p&&n>0&&n<=2048*4,"bounded streaming flush");return flush_result;}
-void ndspChnWaveBufAdd(int c,ndspWaveBuf*b){auto&q=queues[ch(c)];check(b->data_pcm16&&b->nsamples==2048&&!b->looping,"source streamed frame buffer");b->status=NDSP_WBUF_QUEUED;q.push_back(b);}
+void ndspChnWaveBufAdd(int c,ndspWaveBuf*b){ndsp_test_assign_sequence(c,b);auto&q=queues[ch(c)];check(b->data_pcm16&&b->nsamples==2048&&!b->looping,"source streamed frame buffer");b->status=NDSP_WBUF_QUEUED;q.push_back(b);}
 void ndspChnSetInterp(int c,int){ch(c);}void ndspChnSetRate(int c,float){ch(c);}void ndspChnSetFormat(int c,int){ch(c);}
 // Test-only completion driver retains each original adapter case while
 // exercising the production incremental API; this is not a runtime wrapper.
@@ -142,3 +142,6 @@ int main(int argc,char**argv){check(argc==4,"region+audio+root arguments");upstr
  }
  check(allocated==0,"region streaming buffers all released");for(size_t i=4;i<queues.size();++i)check(queues[i].empty(),"region shutdown clear queues before buffers");check(mutations>0,"double exercised adapter");std::cout<<"Music region NDSP-double PASS "<<checks<<" checks; no real audio output claim\n";
 }
+
+uint32_t ndspChnGetSamplePos(int){std::abort();}
+uint16_t ndspChnGetWaveBufSeq(int){std::abort();}

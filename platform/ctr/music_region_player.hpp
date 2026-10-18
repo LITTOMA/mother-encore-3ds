@@ -8,6 +8,7 @@
 
 namespace encore::ctr {
 enum class MusicPreparationStep:uint8_t {Progress,Ready,Failed};
+enum class MusicPositionStep:uint8_t {Ready,Pending,Failed};
 struct MusicPlaybackFinished{uint64_t player=0,generation=0;};
 // Existing AudioPlayer owns NDSP, channels0..3 and global master volume.
 // Regional voices lease distinct channels4..19 across active/draining scenes,
@@ -41,6 +42,7 @@ public:
  // Refill only; preserve gain, fades, pause, controller identity and all other owners.
  bool pump_streams(std::string&);
  std::vector<MusicPlaybackFinished>take_finished();
+ MusicPositionStep playback_position(const upstream::MusicBankRoutes&,uint64_t provider,uint64_t player,uint64_t generation,double&seconds,std::string&)const;
  bool set_paused(bool,std::string&);
  bool set_user_music_db(float db){if(!std::isfinite(db)||db<-120||db>0)return false;user_music_db_=db;return true;}
  void shutdown();
@@ -52,8 +54,10 @@ private:
  static constexpr uint32_t buffer_count=3,buffer_frames=2048;
  struct Track{upstream::AudioAsset asset{};FILE*file=nullptr;};
  struct Voice{uint64_t identity=0,generation=0;uint32_t track=0,channel=maximum_voices;bool active=false,completed=false,stream_paused=false;
+  struct Span{uint16_t sequence=0;uint32_t first=0,count=0;};
+  std::array<Span,6>spans{};uint64_t span_count=0;double start_seconds=0;
   upstream::AudioFrameCursor cursor;std::array<ndspWaveBuf,buffer_count>waves{};int16_t*samples=nullptr;};
- struct PlaybackVoice{uint64_t identity=0,generation=0;uint32_t track_id=0;float gain_db=0;bool playing=false,stream_paused=false;};
+ struct PlaybackVoice{uint64_t identity=0,generation=0;uint32_t track_id=0;float gain_db=0;bool playing=false,stream_paused=false;double start_seconds=0;};
  using PlaybackFrame=std::array<PlaybackVoice,maximum_voices>;
  bool route_frame(const upstream::MusicBankRoutes&,uint64_t,PlaybackFrame&,std::string&)const;
  bool sync_frame(const PlaybackFrame&,const upstream::MusicRegionController*,std::shared_ptr<const upstream::MusicPlayersOwner>,uint64_t,std::string&);

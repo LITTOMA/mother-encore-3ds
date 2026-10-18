@@ -23,6 +23,7 @@ public:
     bool retire(uint64_t,upstream::MusicBankRoutes&,std::string&);
     bool pump_streams(std::string&);
     std::vector<MusicBankFinished>take_finished();
+    MusicPositionStep playback_position(const upstream::MusicBankRoutes&,uint64_t player,uint64_t generation,double&seconds,std::string&)const;
     bool set_user_music_db(float,std::string&);
     bool set_paused(bool,std::string&);
     // Returned metadata is borrowed until that provider is cancelled/retired.

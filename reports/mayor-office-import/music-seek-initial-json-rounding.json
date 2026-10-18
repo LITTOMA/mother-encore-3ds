@@ -1,0 +1,598 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": {
+        "name": "pending_nonzero_start",
+        "actions": [
+          [
+            "play",
+            0,
+            1,
+            2,
+            1.25
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 0
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 1.25
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "pending_layer_fraction",
+        "actions": [
+          [
+            "play",
+            0,
+            4,
+            4,
+            1.375
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            5,
+            5,
+            1.375
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 0
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/LVLUP.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/LVLUP.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 1.375
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/LVLUP.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/LVLUP.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 1.375
+          },
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 0
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/LVLUP.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/LVLUP.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 1.375
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/You Win/LVLUP_ninten.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/LVLUP_ninten.mp3",
+            "index": 1,
+            "remove": false,
+            "position": 1.375
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "float32_forwarding",
+        "actions": [
+          [
+            "play",
+            0,
+            3,
+            3,
+            0.123457
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 0
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/Victory.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/Victory.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 0.123457
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "deferred_loop_resets_start",
+        "actions": [
+          [
+            "play",
+            0,
+            1,
+            2,
+            1.25
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 0
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 1.25
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 1.25
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/House.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 0
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "same_stream_replacement_offset",
+        "actions": [
+          [
+            "play",
+            0,
+            4,
+            4,
+            1.375
+          ],
+          [
+            "play",
+            0,
+            4,
+            4,
+            0.125
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 0
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/LVLUP.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/LVLUP.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 1.375
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/LVLUP.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/LVLUP.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 0.125
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "stop_preserves_pending_seek",
+        "actions": [
+          [
+            "play",
+            0,
+            4,
+            4,
+            2.5
+          ],
+          [
+            "stop",
+            0
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 0
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/LVLUP.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/LVLUP.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 2.5
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/LVLUP.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 2.5
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/LVLUP.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 2.5
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/LVLUP.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 2.5
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "deferred_overwrites_replacement_offset",
+        "actions": [
+          [
+            "play",
+            0,
+            1,
+            2,
+            1.25
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "play",
+            0,
+            3,
+            3,
+            2.5
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 0
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 1.25
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 1.25
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/Victory.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/Victory.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 2.5
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/House.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 0
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "pending_offset_beyond_length",
+        "actions": [
+          [
+            "play",
+            0,
+            4,
+            4,
+            2000
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false,
+            "position": 0
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/LVLUP.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/LVLUP.mp3",
+            "index": 0,
+            "remove": false,
+            "position": 2000
+          }
+        ]
+      ]
+    }
+  ],
+  "imports": [
+    {
+      "source": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+      "loop": false,
+      "offset": 0,
+      "length": 5.590204
+    },
+    {
+      "source": "res://Audio/Music/House.mp3",
+      "loop": true,
+      "offset": 2.035,
+      "length": 34.035259
+    },
+    {
+      "source": "res://Audio/Music/You Win/Victory.mp3",
+      "loop": false,
+      "offset": 0,
+      "length": 144.013062
+    },
+    {
+      "source": "res://Audio/Music/You Win/LVLUP.mp3",
+      "loop": false,
+      "offset": 0,
+      "length": 86.413063
+    },
+    {
+      "source": "res://Audio/Music/You Win/LVLUP_ninten.mp3",
+      "loop": false,
+      "offset": 0,
+      "length": 86.413063
+    }
+  ]
+}

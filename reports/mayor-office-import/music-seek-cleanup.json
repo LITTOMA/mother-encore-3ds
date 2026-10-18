@@ -1,0 +1,91 @@
+{
+  "removed": [
+    {
+      "path": "build/full-port/music_seek-lifetime-check",
+      "bytes": 45243104,
+      "sha256": "396dce925233e76d8d5f8eb773ffeee6aa3f33a8c858dcec78b9d3317787d3bb"
+    },
+    {
+      "path": "build/full-port/audio_data-lifetime-check",
+      "bytes": 45149408,
+      "sha256": "152056f80cdd661a8ede43b11b5f73daa39c7f3c10feaf304c19e475c4f0293d"
+    },
+    {
+      "path": "build/full-port/music_library-lifetime-check",
+      "bytes": 45342792,
+      "sha256": "625fa4f0aabf9874a14ac83beccfc3da93ab96857ad8eb2364fcc2f7b07ea863"
+    },
+    {
+      "path": "build/full-port/music_finished-lifetime-check",
+      "bytes": 45268488,
+      "sha256": "7149f3c447811b0a83a298fa391a9d1e097473a3c6df246712dc09003b51ae05"
+    },
+    {
+      "path": "build/full-port/music_bank_routes-lifetime-check",
+      "bytes": 45701176,
+      "sha256": "1539b703e7ec426069c6bd1847238f01a9d9dc62718c364ef3c1b5548635bdf8"
+    },
+    {
+      "path": "build/full-port/music_scene_graph-lifetime-check",
+      "bytes": 45699888,
+      "sha256": "a702b2f3e2227e0aa88cb2073fc8153c2daed6ccf990e1e2b95fa8f5af85412c"
+    },
+    {
+      "path": "build/full-port/music_players-lifetime-check",
+      "bytes": 45377832,
+      "sha256": "07a6a2d497e9f454374f7fb059564be40766fc51b57d8ee3fad9939f7ab13c8e"
+    },
+    {
+      "path": "build/full-port/music_player_choice-lifetime-check",
+      "bytes": 45218840,
+      "sha256": "2381f4c33850e3840b269e0c4de1a0d91c199671e567a6105f23c62520a8e033"
+    },
+    {
+      "path": "build/full-port/music_regions-lifetime-check",
+      "bytes": 45262032,
+      "sha256": "6b9ee5fffce504b6c84283da941144a3233ba10515c60c1d8529e80852469f10"
+    },
+    {
+      "path": "build/full-port/music_eof-routes-dsp-check",
+      "bytes": 47207408,
+      "sha256": "5f92f7ff6193db2555bdc93eb1a3b49f7b345705f2ae87e08e784ed02a7c3dd4"
+    },
+    {
+      "path": "build/full-port/music_region_player-routes-dsp-check",
+      "bytes": 46165256,
+      "sha256": "369244da73c2533f9a01435e4c3fc30839649a4adcd351b3fc39f93e3c3afb39"
+    },
+    {
+      "path": "build/full-port/music_region_service-routes-dsp-check",
+      "bytes": 46610728,
+      "sha256": "d6cba260045b10bb0fba98ca53465ac247393f2d9f3cb8baf7c7fa7fd626ed1a"
+    },
+    {
+      "path": "build/full-port/music_region_prepare-routes-dsp-check",
+      "bytes": 46643152,
+      "sha256": "438c72e6c9f9d20ac4335444708b027d816c467d645c278e877a065366127e4a"
+    },
+    {
+      "path": "build/full-port/run_audio_player-routes-dsp-check",
+      "bytes": 46509232,
+      "sha256": "2280cbc08c5624270f4be1ef88549dedb408b913b6600e7d61e1817f2ae5223b"
+    },
+    {
+      "path": "build/full-port/music_bank_transports-routes-dsp-check",
+      "bytes": 47126616,
+      "sha256": "5f1a208ccf6c815f5485b6f565397134ecb6e3f349c62212eb939b6254f00179"
+    },
+    {
+      "path": "build/full-port/audio_player-routes-dsp-check",
+      "bytes": 45562840,
+      "sha256": "4ec298f5729d22a9af1c79270ca61d829186678f7cdfc6737e2ca57cd0685778"
+    },
+    {
+      "path": "build/full-port/audio_player_regression-routes-dsp-check",
+      "bytes": 45653736,
+      "sha256": "7b3b82211f05409a1627bd9e69e2ade15fe4daa1cc8d55d3dc33241b638bc022"
+    }
+  ],
+  "total_bytes": 779742528,
+  "kept": "Object cache, raw logs, reviewed official API source cache, current validated b739c6a game and emulator retained. All listed executables had finished."
+}

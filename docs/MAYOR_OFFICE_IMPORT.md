@@ -274,3 +274,20 @@ MusicBankTransports 的 `begin_library` 已消费这个描述符，将校验后�
 GCC9 ASan/UBSan：新描述符 / 读取与失败回滚 1,397 项、经描述符准备的真实 PCM / NDSP double 32,375 项通过；区域后端 930、服务 1,058、增量准备 46,894、脚步流 983、跨库协调器 142 项通过。10 项 Python 来源 / 编解码 / 双平台源文件登记通过；严格 Python 收集为 1,076 = 720 聚合 + 356 独立方法。登记测试曾实际发现新插入源文件时漏掉相邻旧源文件的 runtime/ 前缀，已修正并保留失败日志，没有放宽检查。
 
 暂停提交 5607765 的真实 ARM / 3DSX / CIA 构建已通过（run 39159003359，console job 117768119505），完整 GCC / Clang 在记录时仍运行。本段描述符修改尚未交叉构建，也未接入主程序 / 目录 / 发布流程；不可把先前提交的构建或 b739c6a 的模拟器结果算在本段修改上。下一步仍为数据化源音乐程序与实际前端接线，再开放市政厅并跑正常入口的模拟器路线。游戏存档与现有发货资源未改动，硬件仍未验证。
+
+
+## 非零音乐起点与读取当前播放位置（2026-10-19）
+
+全局战斗音乐迁移需要保留原版升级伴奏的起点：BattleSystem.gd 先从已有 LVLUP 播放器读取 get_playback_position，再用该位置启动角色伴奏。现在 MusicPlayers / MusicBankRoutes 传递每个 generation 的 start_seconds；旧调用仍显式从零开始，源 finished 回调仍以已保存的 child index、零起点重播。新的起点字段是瞬态执行状态，不改变音乐文件格式、存档编码或已发布内容。
+
+审查了官方 [Godot 3.6.2 AudioStreamPlayer](https://github.com/godotengine/godot/blob/3.6.2-stable/scene/audio/audio_stream_player.cpp)、[同版本 MP3 播放器](https://github.com/godotengine/godot/blob/3.6.2-stable/modules/minimp3/audio_stream_mp3.cpp) 与 [libctru 通道实现](https://github.com/devkitPro/libctru/blob/9b55eda44cf80b971503991e0c78f9bc8fe50425/libctru/source/ndsp/ndsp-channel.c)，文件 / blob 指纹和映射在 compatibility/reviews/music-position-api.json。来源 MP3 使用 float32 起点、采样率乘积和整帧截断，起点达到或超过长度时回到零。新的共享核心按这些规则定位 PCM；未审查编码的非零起点、负值和非有限值明确拒绝，旧零起点继续可用。AudioFrameCursor 的 seek 保留原始循环段，并支持恰好到达非循环结尾。
+
+新增原版引擎探针使用未改动的 manager 方法与真实 AudioStreamPlayer，显式在 play 前暂停流，冻结尚未消耗的 seek，核对位置传递、float32 转换、替换、stop 和 deferred loop 重置。该暂停是探针的控制条件，并非声称原作在这些调用点暂停。8 组流程两次生成相同 fixture（SHA-256 497d8eec9710ba57dee4fb7a6a962b534cd185c9f84e4caa8768a034f67f2506）。初版 JSON 输出舍入了输入参数；改用字符串保存高精度输入和 17 位小数字符串观察，最后几位格式化舍入使用 1e-15 容差，不改音乐行为或来源预期。原始结果、收据和初次格式检查失败记录均保留。
+
+物理后端在队列提交前按起点设置游标，记录当前及最近重用缓冲区的源帧 / 样本数 / 非零 NDSP sequence_id。读取位置必须匹配当前路由、provider、generation 和通道租约，再由 DSP 的缓冲序号及其内部样本位置映射回源帧；不能用已预读到未来的文件游标代替播放位置。刚请求播放但 DSP 尚未处理时保留请求起点；当前 generation 完成后返回来源结尾。发现读取期间的序号变化、未知序号或样本越界时有界重试并返回 Pending，保持输出和所有队列不变。两个公共 NDSP 读取并非原子快照，重读只能排除已观察到的不一致；该接口的 DSP 观察时点不等同于 Godot 的混音预读位置，未声称跨设备采样相位或延迟完全一致。停止 / 未路由播放器的位置查询仍未映射，明确拒绝。
+
+真实恢复的 LVLUP / Ninten 伴奏通过新绑定入口加载，并比较起点处提交样本与独立读取的原 PCM 区段。覆盖 base 位置启动 layer、暂停 / 恢复、预读及缓冲复用后仍按已报告的缓冲定位、65535→1 回绕、暂未提交的下一 generation、瞬态不一致、精确剩余帧数与后续循环从零开始；所有已有 NDSP 测试替身补齐实际的非零序号分配，旧测试若意外调用未建模的位置接口会 abort，不能伪造零位置。
+
+GCC9 ASan/UBSan：新 seek 核心 395、音频数据 30,934、真实 PCM / NDSP double 40,487 项通过。既有库、finished、路由、场景图、播放器、区域、服务、增量准备、脚步流和跨库协调目标通过；旧音频适配器 1,445 项、回归 1,096 项通过，原有 TRACE 529 71a30145b163903b 保持不变。6 项相关 Python 通过；严格收集 1,079 = 723 聚合 + 356 独立方法。原始日志在 reports/mayor-office-import；额外旧目标的本地运行封装首次少传 room 参数，已按 CMake 声明补齐，失败日志保留，未改断言。
+
+先前 a69fbda 已真实交叉构建 3DSX / CIA 并完成打包（run 39160028249，job 117771198453）；实际 ARM 编译命令含 music_library_bindings.cpp，原始日志保留。它不覆盖本段未提交代码。当前主程序仍是旧音乐服务，这些新音乐机制未接线；本次没有市政厅入口、模拟器新音乐或硬件通过结论。下一步直接完成独立音乐程序与前端调用迁移，再生成市政厅发货资源和模拟器正常入口路线。

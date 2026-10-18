@@ -34,11 +34,16 @@ private:
     std::vector<uint8_t> bytes_;
 };
 uint32_t audio_crc32(const uint8_t* bytes,size_t size);
+// Nonzero starts currently map the audited MP3 backend, including float32
+// frame conversion and out-of-length reset. Unknown codecs fail closed.
+bool music_start_frame(const AudioAsset&,double seconds,uint32_t&frame,std::string&);
+bool music_position_frame(const AudioAsset&,uint32_t first,uint32_t samples,uint32_t&frame,std::string&);
 // Finite, testable frame cursor. A looping stream plays the whole intro first,
 // then repeats [loop_start,frames), including across partially filled buffers.
 class AudioFrameCursor {
 public:
     bool reset(uint32_t frames,uint32_t loop_start,bool loops);
+    bool seek(uint32_t frame);
     uint32_t take(uint32_t maximum,uint32_t& first);
     uint32_t position() const { return position_; }
 private:

@@ -1,0 +1,46 @@
+{
+  "schema": 2,
+  "kind": "encore.field-npc.candidate-recipe",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Mayors Office.tscn",
+  "npc_scene": "Nodes/Reusables/npc.tscn",
+  "npc_script": "Scripts/Main/npc.gd",
+  "actors": [
+    {
+      "id": 2,
+      "alias": "abbott_lobby",
+      "path": "npc4",
+      "texture": "graphics/world/mayor/abbott.t3x",
+      "motion": "world/mayor/abbott-lobby.encmick"
+    },
+    {
+      "id": 3,
+      "alias": "mayor_front",
+      "path": "Objects/npc",
+      "texture": "graphics/world/mayor/mayor-front.t3x",
+      "motion": "world/mayor/mayor-front.encmick"
+    },
+    {
+      "id": 4,
+      "alias": "mayor_side",
+      "path": "Objects/npc2",
+      "texture": "graphics/world/mayor/mayor-side.t3x",
+      "motion": "world/mayor/mayor-side.encmick"
+    },
+    {
+      "id": 5,
+      "alias": "abbott_office",
+      "path": "Objects/npc3",
+      "texture": "graphics/world/mayor/abbott.t3x",
+      "motion": "world/mayor/abbott-office.encmick"
+    },
+    {
+      "id": 6,
+      "alias": "pippi",
+      "path": "Objects/npc4",
+      "texture": "graphics/world/mayor/pippi.t3x",
+      "motion": "world/mayor/pippi.encmick"
+    }
+  ],
+  "field_recipe": "content/mayor-field.json"
+}

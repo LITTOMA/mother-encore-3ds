@@ -38,7 +38,8 @@ Vec2 rounded_dir(Vec2 v){
 }
 }
 uint32_t MickView::count(MickSection s)const{const auto k=uint32_t(s);return bytes_&&k>=1&&k<=kMickSectionCount?u32(bytes_+header_bytes+(k-1)*16+8):0;}
-bool MickView::motion_only()const{return bytes_&&u32(bytes_+20)==4;}
+bool MickView::motion_only()const{return bytes_&&(u32(bytes_+20)==4||u32(bytes_+20)==6);}
+uint32_t MickView::direction_count()const{return bytes_&&u32(bytes_+20)==6?u32(bytes_+56):4;}
 uint32_t MickView::owner_id()const{return bytes_?u32(bytes_+24):0;}
 bool MickView::wanders()const{return bytes_&&(!motion_only()||(u32(bytes_+28)&1));}
 bool MickView::stares()const{return bytes_&&(!motion_only()||(u32(bytes_+28)&2));}
@@ -67,9 +68,10 @@ MickRngEvent MickView::rng_event(uint32_t i)const{auto*p=record(MickSection::Rng
 bool MickData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kMickSectionCount*16||n>max_bytes)return fail("Mick pack size rejected");
-    const bool motion_only=u32(p+20)==4;
+    const bool eight=u32(p+20)==6;
+    const bool motion_only=u32(p+20)==4||eight;
     if(std::memcmp(p,"ENCMIK01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)!=3&&!motion_only)||
-       (motion_only?(!u32(p+24)||u32(p+28)>7):(u32(p+24)!=1||u32(p+28)))||u32(p+52)!=kMickSectionCount||u32(p+56)||u32(p+60))
+       (motion_only?(!u32(p+24)||u32(p+28)>7):(u32(p+24)!=1||u32(p+28)))||u32(p+52)!=kMickSectionCount||(eight?(u32(p+56)!=8||(u32(p+28)&1)):u32(p+56)!=0)||u32(p+60))
         return fail("Mick pack schema/capability/scene/reserved rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Mick pack source pin rejected");}
     if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Mick pack checksum rejected");
@@ -114,8 +116,18 @@ bool MickData::load(const uint8_t*p,size_t n,std::string&error){
        a.talk_clip>v.count(S::Clips)||a.talk_clip_count>v.count(S::Clips)-a.talk_clip)
         return fail("Mick pack actor rejected");
     for(uint32_t i=0;i<v.count(S::Texts);++i){const auto tx=v.text(i);if(tx.en>=v.count(S::Strings)||tx.zh>=v.count(S::Strings))return fail("Mick pack text rejected");}
-    auto clip_ok=[&](uint32_t first,uint32_t count,uint16_t anim){for(uint32_t i=0;i<count;++i){const auto c=v.clip(first+i);if(c.anim!=anim||c.direction>3||c.frame>=frames||!c.milliseconds||c.milliseconds>10000)return false;}return true;};
+    auto clip_ok=[&](uint32_t first,uint32_t count,uint16_t anim){for(uint32_t i=0;i<count;++i){const auto c=v.clip(first+i);if(c.anim!=anim||c.direction>=v.direction_count()||c.frame>=frames||!c.milliseconds||c.milliseconds>10000)return false;}return true;};
     if(!clip_ok(a.idle_clip,a.idle_clip_count,0)||!clip_ok(a.walk_clip,a.walk_clip_count,1)||!clip_ok(a.talk_clip,a.talk_clip_count,2))return fail("Mick pack clip rejected");
+    if(eight){
+        if(a.idle_clip||a.walk_clip!=a.idle_clip_count||a.talk_clip!=a.walk_clip+a.walk_clip_count||a.talk_clip+a.talk_clip_count!=v.count(S::Clips))return fail("NPC eight-direction clip ownership rejected");
+        for(uint32_t role=0;role<3;++role){
+            const uint32_t first=role==0?a.idle_clip:role==1?a.walk_clip:a.talk_clip;
+            const uint32_t count=role==0?a.idle_clip_count:role==1?a.walk_clip_count:a.talk_clip_count;
+            uint32_t directions=0,last=0;
+            for(uint32_t i=0;i<count;++i){const auto c=v.clip(first+i);if(i&&c.direction<last)return fail("NPC eight-direction clip order rejected");last=c.direction;directions|=1u<<c.direction;}
+            if(directions!=255)return fail("NPC eight-direction coverage rejected");
+        }
+    }
     bool saw_bark=false,saw_talk=false,saw_thought=false,saw_fallback=false;
     for(uint32_t i=0;i<v.count(S::Programmes);++i){
         const auto g=v.programme(i);
@@ -251,6 +263,19 @@ bool MickRuntime::step(std::string&e){
 }
 uint32_t MickRuntime::direction_index()const{
     const float ax=std::fabs(facing_.x),ay=std::fabs(facing_.y);
+    if(view_.direction_count()==8){
+        // Discrete BlendSpace2D selects the closest unit direction. Iteration
+        // retains the first source direction on an exact distance tie.
+        float best=-INFINITY;uint32_t selected=0;
+        for(uint32_t i=0;i<8;++i){
+            const float x=i==1?-1.f:i==2?1.f:i>=4?((i&1)?1.f:-1.f):0.f;
+            const float y=i==0?1.f:i==3?-1.f:i>=4?(i<6?1.f:-1.f):0.f;
+            const float norm=i>=4?std::sqrt(.5f):1.f;
+            const float dot=(facing_.x*x+facing_.y*y)*norm;
+            if(dot>best){best=dot;selected=i;}
+        }
+        return selected;
+    }
     if(ax>ay)return facing_.x<0?1u:2u;
     return facing_.y<0?3u:0u;
 }

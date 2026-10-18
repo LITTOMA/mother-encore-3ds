@@ -48,9 +48,11 @@ public:
     MickClip clip(uint32_t)const;
     MickRngEvent rng_event(uint32_t)const;
     // Capability 4 is an independently bound NPC motion owner, without any
-    // dialogue or inventory programme. Legacy Mick keeps its existing contract.
+    // dialogue or inventory programme. Capability 6 adds stationary eight-
+    // direction NPC motion; capability 5 remains unknown. Legacy Mick is intact.
     bool motion_only()const;
     uint32_t owner_id()const;
+    uint32_t direction_count()const;
     bool wanders()const;
     bool stares()const;
     bool animated_idle()const;

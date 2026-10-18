@@ -22,3 +22,7 @@ Pippi 的 PartyMember 动作使用 ENCMIK01 独立能力 6；原能力 3／4 不
 这仍不是市政厅玩法验收：原版结束交谈／离开视野后的 1 秒朝向恢复、Pippi 的八方向剧情替换 Actor、无对白人物的交互过滤、各剧情选项／后续分支及 AreaRoom／菜单地图／脚步／音乐还待整合。FieldScene 暂拒绝把八方向动作绑定为现有四方向 NPC／Player 替换演员，避免在缺少 Room 执行能力时提交半个场景。没有新增存档编码或改动既有实际资源；不能由这批动作解码通过推定可进入市政厅或实际 GPU 通过。
 
 真实交叉构建 fed5917 的编译／打包完成后，CI 在检查 tracked source 不应改变的步骤拒绝：Podunk source.json 的 compiler_sha256 仍是原生成器，实际生成器已为 Mayor schema2 扩展。保留失败日志，通过原 compile_all 重新生成收据；候选对比仅这一来源字段改变，原纹理页面／输入 SHA／Map／Room／Links 全相同，romfs 无字节变化。Podunk 未重复编译纹理：原生成器校验并复用既有页面及 tex3ds 来源；不是伪造新的纹理编译或修改游戏内容来消除差异。修复后的控制台验收待下一次真实构建记录。
+
+候选 Room 已加入独立 NpcPartyDirectionalProxy=4，Room 格式 1／能力 10 必须实际含该执行器，旧能力仍拒绝它。每个新演员必须有八方向、24 项 Idle／Walk／Talk 绑定与 NPC replacement 归属；不能作为 Player 或仅改旧包能力。共享 Actor 按原版 Actor.gd 的 is_party_member 接受斜向，仍保留初始化时的主轴修正、Talk→Idle 的结束切换和原时序。实际 Mayor 角色候选 Room 16,200 字节，包含共享玩家和五个人物；正确使用显式 Mayor recipe 来源，普通 Podunk 默认构建路径保持。753 项新 GCC9 ASan/UBSan 通过，RoomData 71,939 项与旧演员／Doll／Pillow／排队转向回归分别 10,199／13,730／15,791／10,036 项通过；61 项 Python 解析／来源回归、随后 3 项最新演员来源检查通过。新负向测试自身首次写错记录步长被 ASan 拦截，已按真实 8 字节布局及边界修正；原失败与其他本地测试构建失败均保留。
+
+native_content 编译器来源 SHA 改变后，通过原生成流程刷新 House／Podunk Room、Restore 的来源记录与资源目录。逐字段对比两份旧 Room 的全部数据节、规则、身份、字符串完全相等，解码字段仅 build_input_sha256 改变；旧实际能力仍为 9。Restore 的音乐条件／时长／几何和库存规则相同；Session 兼容身份与默认存档未改。make content 在显式 UTF-8 环境通过，Windows 默认 GBK 的首次失败保留。新能力与候选室内场景尚待完整主机／真实控制台／模拟器整合验证，不把这个候选元数据测试写成 Mayor 可玩。

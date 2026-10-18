@@ -1601,8 +1601,8 @@ def encode_links(recipe, rows, room_roles):
     return pack_container(LINK_MAGIC, 0, [strings, scenes, routes], LINK_STRIDES, LINK_LIMIT)
 
 
-def build_room(recipe, model, house_ir_path):
-    """Podunk room IR: the House player profile, flag table, rules and experience with Podunk scene identity."""
+def build_room(recipe, model, house_ir_path, *, npc_adder=None, story_adder=None, recipe_path=RECIPE):
+    """Field Room with the shared source player/flags/rules and explicit NPC/story consumers."""
     from tools import native_content
     house = json.loads((ROOT / house_ir_path).read_text(encoding='utf-8'))
     native_content.validate_ir(house)
@@ -1666,8 +1666,9 @@ def build_room(recipe, model, house_ir_path):
     inst['display_name_string'] = S(hstr[player['display_name_string']])
     inst['initial_clip'] = clip(player['initial_clip'])
     sections['ActorInstance'].append(inst)
-    from tools.field_npcs import add_room
-    npc_provenance=add_room(sections,strings,S,house,resource)
+    if npc_adder is None:
+        from tools.field_npcs import add_room as npc_adder
+    npc_provenance=npc_adder(sections,strings,S,house,resource)
     for f in hs['Flag']:
         row = dict(f)
         row['name_string'] = S(hstr[f['name_string']])
@@ -1685,12 +1686,13 @@ def build_room(recipe, model, house_ir_path):
                                   start_direction=[entry['dx'], entry['dy']], initial_motion_state=0, initial_frame=scene['initial_frame'],
                                   initial_flag_first=0, initial_flag_count=0, body_rule_first=0, body_rule_count=0,
                                   default_camera_area=0, rule_profile_id=1, flags=0))
-    from tools.field_story import add_room as add_story
-    story_provenance=add_story(sections,strings,S)
+    if story_adder is None:
+        from tools.field_story import add_room as story_adder
+    story_provenance=story_adder(sections,strings,S)
     provenance = dict(sorted({**story_provenance,**npc_provenance,**{('upstream/MOTHER-Encore/' + k): v for k, v in model.sources.digests().items()},
                               house_ir_path: hashlib.sha256((ROOT / house_ir_path).read_bytes()).hexdigest(),
-                              'content/podunk-field.json': hashlib.sha256(RECIPE.read_bytes()).hexdigest()}.items()))
-    ir = dict(schema=1, family=native_content.FAMILY, rules=house['rules'], capabilities=house['capabilities'],
+                              Path(recipe_path).resolve().relative_to(ROOT).as_posix(): hashlib.sha256(Path(recipe_path).read_bytes()).hexdigest()}.items()))
+    ir = dict(schema=1, family=native_content.FAMILY, rules=house['rules'], capabilities=10 if any(p['execution_kind']==4 for p in sections['ActorProfile'])else house['capabilities'],
               scene_id=recipe['scene']['id'], upstream_commit=PIN, exporter_version=1, adapter_revision=1,
               strings=strings, sections=sections, provenance=dict(sources=provenance))
     blob, _ = native_content.compile_ir(ir)

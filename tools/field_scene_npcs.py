@@ -96,8 +96,31 @@ def build(path=ROOT/'content/mayor-npcs.json'):
         blob=field_npc_motion.encode(ir,binding['id'],features)if directions==8 else m.lower(ir,motion_owner=binding['id'],motion_flags=features)
         m.parse(blob,allow_motion=True)if directions==4 else field_npc_motion.parse(blob)
         dialog=n.props.get('dialog','');alternatives=n.props.get('_all_dialog',[])
-        records.append(dict(binding=binding,ir=ir,blob=blob,directions=directions,animation=animation,source_animations=anim['animations'],shadow_visible=not effective('no_shadow',bool),declared_no_collision=effective('no_collision',bool),effective_collision='visible_in_tree',has_initial_dialogue=bool(dialog),dialogue=dialog,alternatives=alternatives,return_after_interaction_seconds=0 if effective('staring',bool)else 1))
+        records.append(dict(binding=binding,ir=ir,blob=blob,directions=directions,idle_animation=idle,animation=animation,source_animations=anim['animations'],shadow_visible=not effective('no_shadow',bool),declared_no_collision=effective('no_collision',bool),effective_collision='visible_in_tree',has_initial_dialogue=bool(dialog),dialogue=dialog,alternatives=alternatives,return_after_interaction_seconds=0 if effective('staring',bool)else 1))
     return p,records,dict(sorted(ex.sources.items()))
+
+
+def add_room(sections,strings,S,house,resource,*,asset_root,recipe=ROOT/'content/mayor-npcs.json'):
+    p,records,sources=build(recipe);hs=house['sections']
+    template=next(row for row in hs['ActorProfile']if row['execution_kind']==3 and row['direction_count']==4)
+    def identity(name):return max((r['stable_id']for r in sections[name]),default=0)+1
+    for row in records:
+        binding=row['binding'];a=row['ir']['actor'];texture=row['ir']['texture'];index=len(sections['ActorProfile'])
+        require(index+1==binding['id']and len(sections['ActorInstance'])==index,'NPC candidate room identity order')
+        file=target(asset_root,binding['texture']);require(file.is_file(),'NPC Room requires actual compiled source texture')
+        primary=len(sections['Resource']);sections['Resource'].append(dict(stable_id=identity('Resource'),path_string=S(binding['texture']),width=texture['size'][0],height=texture['size'][1],columns=texture['columns'],rows=texture['rows'],kind=1,flags=0,sha256=hashlib.sha256(file.read_bytes()).hexdigest()))
+        first=len(sections['AnimationBinding']);directions=len(sections['DirectionFrame']);idle_clips=[]
+        for motion,name in [(0,row['idle_animation']),(4,'Walk'),(5,'Talk')]:
+            for direction,keys in enumerate(row['source_animations'][name]['directions']):
+                time=m.f32(keys[0]);start=len(sections['Key'])
+                for frame,duration in keys[1:]:sections['Key'].append(dict(time=time,frame=frame-1));time=m.f32(time+duration)
+                clip=len(sections['Clip']);sections['Clip'].append(dict(stable_id=identity('Clip'),length=time,first_key=start,key_count=len(keys)-1,flags=1|(16 if keys[0]else 0),visibility=0,frame_count=texture['columns']*texture['rows'],channel=0))
+                sections['AnimationBinding'].append(dict(actor_profile_index=index,motion_state=motion,direction=direction,clip_index=clip))
+                if motion==0:idle_clips.append(clip);sections['DirectionFrame'].append(dict(frame=keys[1][0]-1))
+        profile=dict(template,stable_id=binding['id'],execution_kind=4 if row['directions']==8 else 3,flags=int(row['shadow_visible']),primary_resource=primary,shadow_resource=resource(template['shadow_resource']),emote_resource=resource(template['emote_resource']),animation_binding_first=first,animation_binding_count=len(sections['AnimationBinding'])-first,direction_first=directions,direction_count=row['directions'],idle_clip=idle_clips[0],emote_clip=0xffffffff,initial_frame=a['frame'],sprite_position=[0,0],sprite_offset=[m.f32(a['sprite_position'][i]-a['position'][i])for i in range(2)])
+        sections['ActorProfile'].append(profile)
+        sections['ActorInstance'].append(dict(stable_id=binding['id'],profile_index=index,binding_kind=2,flags=1,display_name_string=S(binding['alias']),position=a['position'],direction=a['initial_direction'],initial_clip=idle_clips[0]))
+    return {**{'upstream/MOTHER-Encore/'+name:digest for name,digest in sources.items()},Path(recipe).resolve().relative_to(ROOT).as_posix():hashlib.sha256(Path(recipe).read_bytes()).hexdigest(),'tools/field_scene_npcs.py':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'tools/field_npc_motion.py':hashlib.sha256((ROOT/'tools/field_npc_motion.py').read_bytes()).hexdigest()}
 
 
 def target(root,relative):

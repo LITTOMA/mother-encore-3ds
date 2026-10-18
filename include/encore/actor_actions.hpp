@@ -4,7 +4,7 @@
 #include <array>
 #include <cstdint>
 namespace encore::upstream {
-enum class ActorExecution : uint16_t { DirectionalProxy=1, TimelineProxy=2, NpcDirectionalProxy=3 };
+enum class ActorExecution : uint16_t { DirectionalProxy=1, TimelineProxy=2, NpcDirectionalProxy=3, NpcPartyDirectionalProxy=4 };
 struct ActorPositionMove { Vec2 target{}; float speed=0; };
 struct ActorTurn { Vec2 target{}; double interval=0,remaining=0; float angle=0; uint32_t timer_order=0,wait_order=0; bool active=false,waiting=false; };
 struct ActorJump {

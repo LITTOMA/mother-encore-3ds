@@ -354,7 +354,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
     if(!bytes||size<kRoomHeaderBytes+kRoomSectionCount*kRoomDirectoryEntryBytes||size>kMaxRoomBytes) return fail("Room: invalid file size");
     if(std::memcmp(bytes,"ENCRMD01",8)!=0) return fail("Room: invalid magic");
     if(u16(bytes+8)!=1||u16(bytes+10)!=0||u32(bytes+12)!=kRoomHeaderBytes||u32(bytes+16)!=size||u32(bytes+20)!=0x01020304u) return fail("Room: unsupported format/header/endianness");
-    if(u32(bytes+24)!=1||u32(bytes+28)!=0x454e0002u||(u32(bytes+32)!=4&&u32(bytes+32)!=5&&u32(bytes+32)!=6&&u32(bytes+32)!=7)||(u32(bytes+36)!=u32(bytes+32)&&!(u32(bytes+32)==7&&(u32(bytes+36)==8||u32(bytes+36)==9)))) return fail("Room: incompatible target/content/rules/capabilities");
+    if(u32(bytes+24)!=1||u32(bytes+28)!=0x454e0002u||(u32(bytes+32)!=4&&u32(bytes+32)!=5&&u32(bytes+32)!=6&&u32(bytes+32)!=7)||(u32(bytes+36)!=u32(bytes+32)&&!(u32(bytes+32)==7&&(u32(bytes+36)==8||u32(bytes+36)==9||u32(bytes+36)==10)))) return fail("Room: incompatible target/content/rules/capabilities");
     if(!u32(bytes+40)||u32(bytes+44)!=kRoomHeaderBytes||u16(bytes+48)!=kRoomSectionCount||u16(bytes+50)!=kRoomDirectoryEntryBytes) return fail("Room: invalid scene identity/directory");
     if(!u32(bytes+108)||!u32(bytes+112)||u32(bytes+116)||!zero(bytes+120,8)||zero(bytes+56,20)||zero(bytes+76,32)) return fail("Room: invalid provenance/header reserved fields");
     if(room_crc(bytes,size)!=u32(bytes+52)) return fail("Room: CRC mismatch");
@@ -449,25 +449,26 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
     };
     for(uint32_t i=0;i<v.actor_profile_count();++i) {
         const auto r=v.actor_profile(i);const auto* p=v.record(RoomSection::ActorProfile,i);
-        if((r.execution_kind<1||r.execution_kind>3)||(r.flags&~1u)||u16(p+30)||u16(p+70)||!texture(r.primary_resource,false)||!texture(r.shadow_resource,true)||!texture(r.emote_resource,true)||!range(r.animation_binding_first,r.animation_binding_count,v.animation_binding_count())||!range(r.direction_first,r.direction_count,v.direction_frame_count())||!finite(r.sprite_position)||!finite(r.sprite_offset)||!finite(r.emote_offset)||!finite(r.shadow_offset))return fail("Room: invalid actor profile");
+        if((r.execution_kind<1||r.execution_kind>(u32(bytes+36)>=10?4:3))||(r.flags&~1u)||u16(p+30)||u16(p+70)||!texture(r.primary_resource,false)||!texture(r.shadow_resource,true)||!texture(r.emote_resource,true)||!range(r.animation_binding_first,r.animation_binding_count,v.animation_binding_count())||!range(r.direction_first,r.direction_count,v.direction_frame_count())||!finite(r.sprite_position)||!finite(r.sprite_offset)||!finite(r.emote_offset)||!finite(r.shadow_offset))return fail("Room: invalid actor profile");
         const auto res=v.resource(r.primary_resource);const auto frames=uint32_t(res.columns)*res.rows;
         if(r.initial_frame>=frames||(r.flags&&r.shadow_resource==kRoomNoIndex)||!compatible_clip(r.idle_clip,r.primary_resource,0,true)||!compatible_clip(r.emote_clip,r.emote_resource,1,true))return fail("Room: invalid actor profile frame/clip");
         if(r.emote_resource==kRoomNoIndex) { if(r.emote_initial_frame)return fail("Room: absent emote has initial frame"); }
         else { const auto e=v.resource(r.emote_resource);if(r.emote_initial_frame>=uint32_t(e.columns)*e.rows)return fail("Room: invalid emote initial frame"); }
-        if((r.execution_kind==1&&r.direction_count!=8)||(r.execution_kind==3&&r.direction_count!=4)||(r.execution_kind==2&&r.direction_count!=0&&r.direction_count!=8))return fail("Room: invalid profile direction count");
+        if(((r.execution_kind==1||r.execution_kind==4)&&r.direction_count!=8)||(r.execution_kind==3&&r.direction_count!=4)||(r.execution_kind==2&&r.direction_count!=0&&r.direction_count!=8))return fail("Room: invalid profile direction count");
         for(uint32_t j=0;j<r.direction_count;++j)if(v.direction_frame(r.direction_first+j)>=frames)return fail("Room: invalid direction frame");
         std::set<uint16_t> motions;
         for(uint32_t j=0;j<r.animation_binding_count;++j) {
             const auto a=v.animation_binding(r.animation_binding_first+j);
-            if(a.actor_profile_index!=i||a.motion_state>5||a.direction>7||(r.execution_kind==1&&a.motion_state>4)||(r.execution_kind==2&&a.motion_state>3)||(r.execution_kind==3&&(a.direction>3||(a.motion_state!=0&&a.motion_state!=4&&a.motion_state!=5)))||!compatible_clip(a.clip_index,r.primary_resource,0,false)||!motions.insert(uint16_t(a.motion_state)*8+a.direction).second)return fail("Room: invalid animation binding ownership/clip");
+            if(a.actor_profile_index!=i||a.motion_state>5||a.direction>7||(r.execution_kind==1&&a.motion_state>4)||(r.execution_kind==2&&a.motion_state>3)||((r.execution_kind==3||r.execution_kind==4)&&((r.execution_kind==3&&a.direction>3)||(a.motion_state!=0&&a.motion_state!=4&&a.motion_state!=5)))||!compatible_clip(a.clip_index,r.primary_resource,0,false)||!motions.insert(uint16_t(a.motion_state)*8+a.direction).second)return fail("Room: invalid animation binding ownership/clip");
         }
         if(r.execution_kind==1) {
             for(uint16_t motion=0;motion<4;++motion)for(uint16_t direction=0;direction<8;++direction)
                 if(!motions.count(motion*8+direction))return fail("Room: incomplete player directional animations");
             if(motions.size()!=32&&motions.size()!=40)return fail("Room: incomplete actor walk animations");
         }
-        if(r.execution_kind==3&&motions.size()!=12)return fail("Room: incomplete NPC directional animations");
+        if((r.execution_kind==3||r.execution_kind==4)&&motions.size()!=size_t(r.direction_count)*3)return fail("Room: incomplete NPC directional animations");
     }
+    if(u32(bytes+36)==10){bool found=false;for(uint32_t i=0;i<v.actor_profile_count();++i)found|=v.actor_profile(i).execution_kind==4;if(!found)return fail("Room: capability 10 requires an eight-direction NPC replacement");}
     for(uint32_t i=0;i<v.animation_binding_count();++i) {
         const auto r=v.animation_binding(i);if(r.actor_profile_index>=v.actor_profile_count()||r.motion_state>5||r.direction>7)return fail("Room: invalid animation binding");
         const auto p=v.actor_profile(r.actor_profile_index);if(i<p.animation_binding_first||i-p.animation_binding_first>=p.animation_binding_count)return fail("Room: orphan animation binding");
@@ -475,7 +476,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
     for(uint32_t i=0;i<v.actor_instance_count();++i) {
         const auto r=v.actor_instance(i);const auto* p=v.record(RoomSection::ActorInstance,i);
         if(!ref(r.profile_index,v.actor_profile_count())||(r.binding_kind!=1&&r.binding_kind!=2)||(r.flags&~1u)||!ref(r.display_name_string,v.string_count())||v.string(r.display_name_string).empty()||(!r.direction.x&&!r.direction.y)||!finite(r.position)||!finite(r.direction)||u32(p+36))return fail("Room: invalid actor instance");
-        if(v.actor_profile(r.profile_index).execution_kind==3&&r.binding_kind!=2)return fail("Room: directional NPC binding rejected");
+        if((v.actor_profile(r.profile_index).execution_kind==3||v.actor_profile(r.profile_index).execution_kind==4)&&r.binding_kind!=2)return fail("Room: directional NPC binding rejected");
         if(!compatible_clip(r.initial_clip,v.actor_profile(r.profile_index).primary_resource,0,true))return fail("Room: incompatible initial actor clip");
     }
     for(uint32_t i=0;i<v.camera_area_count();++i) {
@@ -561,13 +562,13 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         const auto c=v.command(i);const auto* p=v.record(RoomSection::Command,i);
         const bool extended=u32(bytes+32)>=5,branched=u32(bytes+32)>=6;
         const uint32_t allowed_flags=(u32(bytes+36)>=9&&c.opcode==13)?1u:(u32(bytes+32)>=7&&c.opcode==12)?15u:extended?(c.opcode==10?15u:c.opcode==17?3u:c.opcode==33?7u:(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==35)?1u:0u):((c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==33)?1u:0u);
-        if(c.opcode>(u32(bytes+36)==9?46:u32(bytes+36)==8?43:u32(bytes+32)>=7?42:branched?41:extended?35:34)||(c.flags&~allowed_flags)||((c.opcode!=37&&c.opcode!=38&&!(u32(bytes+36)>=9&&c.opcode==13&&c.flags==1))&&c.auxiliary_index!=kRoomNoIndex)||u32(p+44)||!finite(c.vector)||!std::isfinite(c.value)||!std::isfinite(c.duration))return fail("Room: unknown opcode/invalid command fields");
+        if(c.opcode>(u32(bytes+36)>=9?46:u32(bytes+36)==8?43:u32(bytes+32)>=7?42:branched?41:extended?35:34)||(c.flags&~allowed_flags)||((c.opcode!=37&&c.opcode!=38&&!(u32(bytes+36)>=9&&c.opcode==13&&c.flags==1))&&c.auxiliary_index!=kRoomNoIndex)||u32(p+44)||!finite(c.vector)||!std::isfinite(c.value)||!std::isfinite(c.duration))return fail("Room: unknown opcode/invalid command fields");
         const bool inherited_actor=(c.flags&1)&&(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==42);
         const bool actor_used=!inherited_actor&&(c.opcode==1||c.opcode==2||(c.opcode>=9&&c.opcode<=14)||c.opcode==16||(c.opcode>=18&&c.opcode<=21)||c.opcode==24||(c.opcode>=27&&c.opcode<=29)||c.opcode==32||c.opcode==42||c.opcode==44);
         if(actor_used) { if(c.actor_index>=v.actor_instance_count())return fail("Room: invalid command actor reference"); }
         else if(c.opcode==5) { if(c.actor_index!=kRoomNoActor&&c.actor_index>=v.actor_instance_count())return fail("Room: invalid talker reference"); }
         else if(c.actor_index!=kRoomNoActor)return fail("Room: unused command actor");
-        if(c.opcode==20&&v.actor_instance(c.actor_index).binding_kind!=1&&v.actor_profile(v.actor_instance(c.actor_index).profile_index).execution_kind!=3&&v.actor_profile(v.actor_instance(c.actor_index).profile_index).execution_kind!=2)return fail("Room: restore requires a supported NPC replacement");
+        if(c.opcode==20&&v.actor_instance(c.actor_index).binding_kind!=1&&v.actor_profile(v.actor_instance(c.actor_index).profile_index).execution_kind!=3&&v.actor_profile(v.actor_instance(c.actor_index).profile_index).execution_kind!=4&&v.actor_profile(v.actor_instance(c.actor_index).profile_index).execution_kind!=2)return fail("Room: restore requires a supported NPC replacement");
         bool target_used=true;
         switch(c.opcode) {
             case 6:if(!ref(c.target_index,v.binding_count()))return fail("Room: invalid command binding");break;

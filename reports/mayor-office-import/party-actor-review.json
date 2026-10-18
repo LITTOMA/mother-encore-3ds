@@ -1,0 +1,49 @@
+{
+  "room_format": 1,
+  "new_room_capability": 10,
+  "rules_revision": 7,
+  "new_execution_kind": 4,
+  "motion_capability": 6,
+  "new_scene_candidate_only": true,
+  "original_rooms": {
+    "romfs/world/house/opening.encroom": {
+      "old_sha256": "e98d079ffaf8615e70e71c7d61850955ff612a66493827acc7783e9ae80ede0f",
+      "new_sha256": "c39f5fae3bfa3025d8d1dc86abe5549141956c5f95d963a14fff025e7ef7502a",
+      "decoded_changed_fields": [
+        "build_input_sha256"
+      ],
+      "all_sections_equal": true
+    },
+    "romfs/world/podunk/podunk.encroom": {
+      "old_sha256": "4d8a8d55753029bd8f56b6934ab592e4ea908db57e7fd380ffbe30e61b2b46b6",
+      "new_sha256": "6f6e6c9b7ee9129225eba5439c1a2d76ba76047656e3b435dce08b54191c9e60",
+      "decoded_changed_fields": [
+        "build_input_sha256"
+      ],
+      "all_sections_equal": true
+    }
+  },
+  "source_restore_rules_unchanged": true,
+  "save_schema_or_compatibility_changed": false,
+  "gcc9_asan_ubsan": {
+    "party_npc_actor": 753,
+    "room_data": 71939,
+    "actor_actions": 10199,
+    "doll_actor_actions": 13730,
+    "pillow_actor_actions": 15791,
+    "queued_actor_turn": 10036
+  },
+  "python": {
+    "parser_source_regressions": 61,
+    "final_new_actor_source_methods": 3
+  },
+  "content_generation": "make content succeeded with PYTHONUTF8=1; first Windows default GBK attempt failed and is retained",
+  "test_harness_failures": [
+    "Initial corrupt binding fixture assumed 12-byte records; ASan caught the test write beyond buffer. Fixed to read/validate actual 8-byte stride and offset3 before mutation.",
+    "Temporary mixed auto deduction in the correction failed compilation; split the declarations.",
+    "Manual legacy runner omitted the required external-room compile definition; supplied the actual explicit room path."
+  ],
+  "console_for_new_backend": "pending",
+  "gpu_for_mayor": "not tested",
+  "hardware": false
+}

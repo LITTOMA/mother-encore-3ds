@@ -249,9 +249,8 @@ bool FieldScene::bind_npc(MickView view,MickHost& host,std::string& error){
     if(actor==UINT32_MAX||item==UINT32_MAX){error="Field NPC has no room/map owner";return false;}
     for(const auto& n:npcs_)if(n->actor==actor){error="Duplicate field NPC motion owner";return false;}
     const auto instance=room.actor_instance(actor);const auto profile=room.actor_profile(instance.profile_index);const auto texture=room.resource(profile.primary_resource);const auto t=view.texture();const auto a=view.actor();
-    // Eight-direction motion requires its own reviewed replacement profile.
-    // Until that Room capability exists it cannot bind through a Player profile.
-    if(profile.execution_kind!=3||profile.direction_count!=view.direction_count()){error="Field NPC replacement direction profile differs";return false;}
+    // Eight-direction motion must use the checked NPC PartyMember replacement.
+    if(profile.execution_kind!=(view.direction_count()==8?4:3)||profile.direction_count!=view.direction_count()){error="Field NPC replacement direction profile differs";return false;}
     if(room.string(texture.path_string)!=view.string(t.path)||texture.width!=t.width||texture.height!=t.height||texture.columns!=t.columns||texture.rows!=t.rows||instance.position.x!=a.position.x||instance.position.y!=a.position.y){error="Field NPC room/motion binding differs";return false;}
     auto candidate=std::make_unique<Npc>();candidate->actor=actor;candidate->item=item;
     if(!candidate->motion.initialize(view,host,error))return false;

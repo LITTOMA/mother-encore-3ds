@@ -14,7 +14,7 @@ bool valid(const ActorActionState& a) {
 void blend(ActorActionState& a,Vec2 direction) {
     direction={std::round(direction.x),std::round(direction.y)};
     const auto profile=a.content.actor_profile(a.profile_index);
-    if(profile.execution_kind!=uint16_t(ActorExecution::DirectionalProxy)&&std::abs(direction.x)==std::abs(direction.y))return;
+    if(profile.execution_kind!=uint16_t(ActorExecution::DirectionalProxy)&&profile.execution_kind!=uint16_t(ActorExecution::NpcPartyDirectionalProxy)&&std::abs(direction.x)==std::abs(direction.y))return;
     if(direction.x!=0||direction.y!=0)a.blend_direction=direction;
 }
 void finish_action(ActorActionState& a);
@@ -155,8 +155,8 @@ bool initialize_actor(ActorActionState& a,const RoomView& content,uint32_t profi
     }
     blend(next,next.direction);
     next.playing_direction=uint8_t(direction_index(next.blend_direction));
-    next.directional_animation=profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy);
-    if(profile.execution_kind==uint16_t(ActorExecution::DirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy))direction_frame(next);
+    next.directional_animation=profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcPartyDirectionalProxy);
+    if(profile.execution_kind==uint16_t(ActorExecution::DirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcPartyDirectionalProxy))direction_frame(next);
     a=next;return true;
 }
 bool actor_move_position(ActorActionState& a,Vec2 target,float speed) {
@@ -327,7 +327,7 @@ bool actor_idle_animations(ActorActionState& a,double delta) {
     const float dt=float(delta);
     const auto profile=next.content.actor_profile(next.profile_index);
     if(next.directional_animation){if(!advance_directional(next,dt))return false;}
-    else if(profile.execution_kind==uint16_t(ActorExecution::DirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy))direction_frame(next);
+    else if(profile.execution_kind==uint16_t(ActorExecution::DirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcPartyDirectionalProxy))direction_frame(next);
     else if(next.clip_index!=kRoomNoIndex) {
         const auto clip=next.content.clip(next.clip_index);
         if(clip.flags&2) {

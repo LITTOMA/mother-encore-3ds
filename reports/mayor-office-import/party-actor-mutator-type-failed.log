@@ -1,0 +1,4 @@
+tests/party_npc_actor_tests.cpp: In function ‘int main(int, char**)’:
+tests/party_npc_actor_tests.cpp:50:22: error: inconsistent deduction for ‘auto’: ‘const unsigned int’ and then ‘const long unsigned int’
+   50 |  {auto b=bytes;const auto stride=get(b,128+25*24+12),at=section(b,26)+room.actor_profile(5).animation_binding_first*stride;check(stride==8&&at+3<b.size(),"bounded animation-binding corruption fixture");b[at+3]=8;reject(b,"direction out of range");}
+      |                      ^~~~

@@ -14,13 +14,13 @@ bool MusicSceneGraph::attach_scene(uint64_t epoch,const MusicRegionData&data,std
     if(!players_.ready()||!data.valid()||!epoch||epoch<=epoch_||active_||
        data.silence_db()!=policy_.silence_db||data.fade_to_seconds()!=policy_.fade_to_seconds)
         return fail(e,"Music graph scene/epoch/tuning is not admissible");
-    MusicRegionData retained=data;std::vector<MusicSceneArea>areas(data.regions().size());
+    auto retained=std::make_shared<const MusicRegionData>(data);std::vector<MusicSceneArea>areas(data.regions().size());
     data_=std::move(retained);areas_=std::move(areas);registered_.clear();pending_.clear();epoch_=epoch;active_=true;e.clear();return true;
 }
-int MusicSceneGraph::area(std::string_view path)const{for(size_t i=0;i<data_.regions().size();++i)if(data_.regions()[i].source_path==path)return int(i);return -1;}
+int MusicSceneGraph::area(std::string_view path)const{for(size_t i=0;i<data_->regions().size();++i)if(data_->regions()[i].source_path==path)return int(i);return -1;}
 const std::string&MusicSceneGraph::stream(uint32_t index)const{
-    const auto id=data_.regions()[index].track_id;
-    for(const auto&track:data_.tracks())if(track.id==id)return track.source_path;
+    const auto id=data_->regions()[index].track_id;
+    for(const auto&track:data_->tracks())if(track.id==id)return track.source_path;
     // The checked MusicRegionData parser rejects missing track identities.
     static const std::string empty;return empty;
 }
@@ -33,7 +33,7 @@ bool MusicSceneGraph::event(uint64_t epoch,std::string_view path,int&index,std::
 }
 bool MusicSceneGraph::enter(uint64_t epoch,std::string_view path,const MusicRegionContext&context,std::string&e){
     int index;if(!event(epoch,path,index,e))return false;if(index<0)return true;
-    const auto&binding=data_.regions()[size_t(index)];
+    const auto&binding=data_->regions()[size_t(index)];
     // disabled controls the source CollisionShape; the callback itself only
     // checks player/UI/flags. The physical Area emitter owns disabled filtering.
     if(!context.is_player||context.in_cutscene||context.in_battle){e.clear();return true;}
@@ -84,13 +84,13 @@ bool MusicSceneGraph::idle_frame(uint64_t epoch,std::string&e){
     if(!players_.ready()||!epoch_)return fail(e,"Music graph idle has no scene");
     if(epoch!=epoch_){e.clear();return true;}if(!active_)return fail(e,"Music graph idle scene is inactive");
     auto next=*this;auto pending=std::move(next.pending_);next.pending_.clear();
-    for(auto index:pending){auto&state=next.areas_[index];state.pending_exit=false;if(!state.removed&&!state.inside&&!next.stop(index,next.data_.regions()[index].fadeout_seconds,e))return false;}
+    for(auto index:pending){auto&state=next.areas_[index];state.pending_exit=false;if(!state.removed&&!state.inside&&!next.stop(index,next.data_->regions()[index].fadeout_seconds,e))return false;}
     *this=std::move(next);e.clear();return true;
 }
 bool MusicSceneGraph::tree_exit(uint64_t epoch,std::string_view path,std::string&e){
     int index;if(!event(epoch,path,index,e))return false;if(index<0)return true;
     auto next=*this;auto&state=next.areas_[size_t(index)];
-    if(state.registered&&!next.stop(uint32_t(index),data_.regions()[size_t(index)].fadeout_seconds,e))return false;
+    if(state.registered&&!next.stop(uint32_t(index),data_->regions()[size_t(index)].fadeout_seconds,e))return false;
     state.inside=state.registered=state.pending_exit=false;state.removed=true;
     next.pending_.erase(std::remove(next.pending_.begin(),next.pending_.end(),uint32_t(index)),next.pending_.end());
     *this=std::move(next);e.clear();return true;

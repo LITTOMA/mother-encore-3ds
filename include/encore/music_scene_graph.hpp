@@ -6,7 +6,7 @@ struct MusicSceneArea {
     bool inside=false,registered=false,pending_exit=false,removed=false;
 };
 // One scene's source callbacks over the persistent, global loop-player list.
-// Scene binding data is owned, so old Room/Field resource buffers may be freed.
+// Scene binding data is owned and immutable across callback commits, so old Room/Field resource buffers may be freed.
 // No geometry, media/bank routing, non-loop or diegetic playback is inferred.
 class MusicSceneGraph final {
 public:
@@ -23,7 +23,7 @@ public:
     bool flush_deletions(std::string&);
     MusicPlayers&players(){return players_;}
     const MusicPlayers&players()const{return players_;}
-    const MusicRegionData&data()const{return data_;}
+    const MusicRegionData&data()const{static const MusicRegionData empty;return data_?*data_:empty;}
     const std::vector<MusicSceneArea>&areas()const{return areas_;}
     const std::vector<uint32_t>&registered()const{return registered_;}
     uint64_t scene_epoch()const{return epoch_;}
@@ -35,7 +35,7 @@ private:
     bool stop(uint32_t,double,std::string&);
     MusicPlayers players_;
     MusicPlayersPolicy policy_;
-    MusicRegionData data_;
+    std::shared_ptr<const MusicRegionData>data_;
     std::vector<MusicSceneArea>areas_;
     std::vector<uint32_t>registered_,pending_;
     uint64_t epoch_=0;

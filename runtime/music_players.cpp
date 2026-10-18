@@ -16,7 +16,7 @@ bool MusicPlayers::initialize(MusicPlayersPolicy policy,std::string&e){
     if(ready_||!gain(policy.silence_db)||policy.silence_db>-20||!gain(policy.empty_player_gain_db)||
        !duration(policy.fade_to_seconds)||!policy.maximum_nodes||policy.maximum_nodes>256)
         return bad(e,"Loop music player policy/owner is invalid");
-    MusicPlayers next;next.ready_=true;next.policy_=policy;uint64_t empty;
+    MusicPlayers next;next.owner_=std::make_shared<const MusicPlayersOwner>();next.ready_=true;next.policy_=policy;uint64_t empty;
     if(!next.add_player(empty,e))return false;*this=std::move(next);e.clear();return true;
 }
 bool MusicPlayers::add_player(uint64_t&id,std::string&e){

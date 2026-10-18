@@ -1,6 +1,8 @@
 #pragma once
 #include "encore/music_player_choice.hpp"
+#include <memory>
 namespace encore::upstream {
+struct MusicPlayersOwner final {};
 struct MusicPlayersPolicy {
     float silence_db=0,empty_player_gain_db=0;
     double fade_to_seconds=0;
@@ -26,6 +28,7 @@ class MusicPlayers final {
 public:
     bool initialize(MusicPlayersPolicy,std::string&);
     bool ready()const{return ready_;}
+    std::shared_ptr<const MusicPlayersOwner>owner()const{return owner_;}
     bool add_player(uint64_t&identity,std::string&);
     bool play_loop(uint64_t,std::string_view,std::string&);
     bool stop(uint64_t,std::string&);
@@ -48,6 +51,7 @@ private:
     MusicPlayerNode*mutable_node(uint64_t);
     bool tween(uint64_t,float,float,double,MusicRegionCurve,std::string&);
     bool mark_remove(uint64_t,bool,std::string&);
+    std::shared_ptr<const MusicPlayersOwner>owner_;
     MusicPlayersPolicy policy_;
     std::vector<MusicPlayerNode>nodes_;
     std::vector<uint64_t>deletions_;

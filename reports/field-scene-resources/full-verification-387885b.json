@@ -1,0 +1,25 @@
+{
+  "game_source": "387885bd87861e829c9e436094d8dfe2ae012cf6",
+  "full_run": 39110087317,
+  "gcc": {
+    "normal": 181,
+    "sanitizers": 166
+  },
+  "clang": {
+    "normal": 166,
+    "sanitizers": 166,
+    "renderer_python": 5
+  },
+  "packaged_resources": 341,
+  "en_driver": "402caae215d8e6a2512ace86e6f43ae9b8bf52c8",
+  "zh_driver": "9f5ae753a7104a8288ddf0196db8b931bcf17668",
+  "completion_projection_equal": true,
+  "hp_or_loot_projection_equal": false,
+  "hardware": false,
+  "natural_opening": false,
+  "roundtrip_first_attempt": {
+    "status": "failed",
+    "cause": "Test incorrectly required music in a checkpoint with doll_melody, good_morning, poltergeist and doll_defeated all false. Source music conditions select no House area. No game rule changed.",
+    "fixture_sha256": "fa5eaec6c3132013239e8c11b94f202112840ec99c2372c74b5623dd6d1b7777"
+  }
+}

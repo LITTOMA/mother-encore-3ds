@@ -29,6 +29,8 @@ public:
  bool initialize(FieldStepsView,std::string_view inherited_sound,std::string&);
  bool set_running(bool enabled,bool paused,bool move_state,bool climbing,std::string&);
  bool stop_playback(std::string&);
+ // Checked MOVE call-site instructions; unknown operations reject atomically.
+ bool apply_walk_calls(const WalkAudioCalls&,std::string&);
  bool area_event(uint32_t area,bool entered,bool is_player,std::string&);
  bool set_area_enabled(uint32_t area,bool enabled,std::string&);
  bool prepared()const{return data_.valid();}bool running()const{return running_;}bool playing()const{return playing_;}

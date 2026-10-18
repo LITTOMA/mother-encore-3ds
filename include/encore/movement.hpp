@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <array>
 
 namespace encore::upstream {
 class RoomView;
@@ -13,6 +14,11 @@ struct WalkState {
     MotionAnimation animation=MotionAnimation::Idle;
     uint32_t moved_signals=0;
 };
+// Ordered source calls, committed only when the movement transaction succeeds.
+// StopIfPlaying preserves the source stream guard; a caller with no stream has
+// no work to perform. This is execution metadata, not a game sound binding.
+enum class WalkAudioCall:uint8_t {SetRunningFalse=1,SetRunningTrue=2,StopIfPlaying=3};
+struct WalkAudioCalls {std::array<WalkAudioCall,3>calls{};uint8_t count=0;};
 struct SlideResult { Vec2 position{}, velocity{}; };
 // The movement state machine does not implement a physics engine. Collision
 // backends must return a verified move_and_slide result at the fixed 60 Hz.
@@ -29,7 +35,7 @@ public:
 // Audited opening-player MOVE scope: single party member, no climbing,
 // knockback, teleport, attacks, relay, interaction or presentation callbacks.
 // Invalid inputs/backend results leave state unchanged. This is not M0 motion.
-bool advance_walk(WalkState& state, WalkInput input, const MotionSolver& solver,const RoomView& content);
+bool advance_walk(WalkState& state, WalkInput input, const MotionSolver& solver,const RoomView& content,WalkAudioCalls* audio=nullptr);
 // controlsManager._get_vector_sign, including round-before-sign behavior.
 // Upstream `threshold := 0` infers an integer argument in Godot 3.6.
 bool controls_vector(Vec2 input, int32_t threshold, Vec2& result);

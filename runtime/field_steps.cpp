@@ -62,6 +62,17 @@ bool FieldRunLoop::stop_playback(std::string&e){
  if(!prepared()){e="Run-loop stop has no metadata";return false;}
  if(playing_){playing_=false;events_.push_back({FieldRunEventKind::Stop,registered_});}e.clear();return true;
 }
+bool FieldRunLoop::apply_walk_calls(const WalkAudioCalls&calls,std::string&e){
+ if(!prepared()||calls.count>calls.calls.size()){e="Run-loop MOVE calls have no valid owner/count";return false;}
+ FieldRunLoop next=*this;
+ for(uint8_t i=0;i<calls.count;++i){switch(calls.calls[i]){
+  case WalkAudioCall::SetRunningFalse:if(!next.set_running(false,false,true,false,e))return false;break;
+  case WalkAudioCall::SetRunningTrue:if(!next.set_running(true,false,true,false,e))return false;break;
+  case WalkAudioCall::StopIfPlaying:if(!next.stop_playback(e))return false;break;
+  default:e="Unknown run-loop MOVE operation";return false;
+ }}
+ *this=std::move(next);e.clear();return true;
+}
 bool FieldRunLoop::set_area_enabled(uint32_t index,bool enabled,std::string&e){
  if(!prepared()||index>=enabled_.size()){e="Run-loop area enable identity rejected";return false;}
  enabled_[index]=enabled;e.clear();return true;

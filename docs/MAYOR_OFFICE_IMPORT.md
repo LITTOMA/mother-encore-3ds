@@ -107,3 +107,11 @@ e3e3af2 请求的完整 GCC 检查在普通 CTest191／192通过后失败：pyth
 
 
 5fe7491 full rerun: Clang normal and ASan/UBSan each passed all 180 CTest targets; real 3DSX/CIA packaging passed. Raw completed job logs are retained. GCC sanitizer status is checked independently; these results do not cover the subsequent audio append or scene-step binding changes.
+
+
+共享MOVE现在输出有序、仅成功时提交的声音指令：_set_running(false／true)和条件停止；暂停／进门只停止流，不改running；普通步行保留“Nasty fix”停止，撞停后保留原false调用，tap切换中的false→true→阻挡false不合并。FieldRunLoop以受检指令执行并拒绝未知／超长序列，失败保留原状态与事件。原14组227帧位置／状态与逐帧调用一致，GCC9 ASan/UBSan新2,308／旧移动5,499／脚步1,353项通过；Python来源／结果／坏输入5项通过。暂未绑定真实world或NDSP，不能当成游戏已播放。
+
+原生Godot执行未改_move／_movement／_move_state，保留原物理Input边沿和自由KinematicBody位移；原_set_running是记录布尔调用适配器，SFX playing getter记录条件停止指令且返回false，不输出声音。真实_set_running与播放器状态另有29组原生基准，不能把捕获适配器当作完整音频服务。首次独立脚本无法识别autoload音频服务，添加editor导入仍失败；改为显式注入且由场景树拥有测试服务后通过，函数原文不改，失败与临时项目清理均留存。该基准不执行墙体／完整Party／场景互动。
+
+
+5fe7491 full rerun completed successfully: GCC normal195 / ASan-UBSan180, Clang180/180, real console packaging. The strict suite-registration failure on e3e3af2 remains a separate historical failure. 00cb71d genuine console packaging also passed; current MOVE call additions still require their own console job.

@@ -283,6 +283,16 @@ bool FieldScene::finish_transition(){
     if(!world.unpause_from_house())return fail("Field player unpause rejected");
     phase_=FieldPhase::Walking;return true;
 }
+bool FieldScene::warp_route(uint32_t index,std::string&error){
+ if(phase_!=FieldPhase::Transition||!links_||!map_.valid()||index>=links_->route_count()){error="Field door relocation requires a checked transition";return false;}
+ const auto route=links_->route(index);
+ if(route.from!=scene_id()||route.to!=scene_id()){error="Field door relocation cannot change scene ownership";return false;}
+ const auto direction=(route.direction.x||route.direction.y)?route.direction:world.player().direction;
+ if(!world.warp_same_scene(route.destination,direction)){error="Field door relocation pose rejected";return false;}
+ last_safe_position_=route.destination;last_safe_direction_=direction;
+ for(uint32_t i=0;i<door_inside_.size();++i){const auto door=map_.door(i);door_inside_[i]=door_active_[i]&&overlaps(door.center,door.extents,route.destination);}
+ route_=pending_door_=WorldLinksData::kNotFound;error.clear();return true;
+}
 bool FieldScene::bind_mick(MickView view,MickHost& host,std::string& error){
     if(phase_==FieldPhase::Error||!map_.valid()){error="Field Mick bind requires a prepared scene";return false;}
     if(!mick_.initialize(view,host,error))return false;

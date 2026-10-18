@@ -91,6 +91,34 @@ int main(int argc,char**argv){
  check(service.area_enter(1,"Music/Unknown",ctx,owner,e),"old epoch event ignored before source lookup");
  check(service.tree_exit(2,"Music/MusicArea",e)&&service.finish_scene(2,e)&&service.update(.75,owner,e)&&service.phase()==ctr::MusicRegionServicePhase::Draining,"half fade keeps Draining");
  check(service.update(.75,owner,e)&&service.phase()==ctr::MusicRegionServicePhase::Prepared&&service.live_voice_count()==0&&queues[4].empty()&&queues[5].empty()&&!queues[0].empty(),"fade completion returns resident service to Prepared preserving House");
+ // Cross-resource scene handoff must preserve source fade tails and all views
+ // in their stable State objects. Candidate preparation itself is silent.
+ ctr::MusicRegionService candidate,retiring,empty;
+ check(complete_prepare(candidate,argv[3],argv[4],argv[5],8,owner,e),"next scene prepared independently");
+ check(service.commit_scene(3,owner,e)&&service.area_enter(3,"Music/MusicArea",ctx,owner,e)&&service.update(0,owner,e),"third scene active before replacement");
+ const auto live_queues=queues;const auto handoff_mutations=mutations+owner_calls,handoff_files=file_opens;
+ check(!service.handoff_prepared(candidate,retiring,e)&&service.scene_epoch()==3&&candidate.phase()==ctr::MusicRegionServicePhase::Prepared&&retiring.phase()==ctr::MusicRegionServicePhase::Dormant&&queues==live_queues&&mutations+owner_calls==handoff_mutations&&file_opens==handoff_files,"active owner cannot be replaced without source exits");
+ check(!service.handoff_prepared(service,retiring,e)&&!service.handoff_prepared(candidate,service,e)&&!service.handoff_prepared(candidate,candidate,e),"aliased handoff owners rejected");
+ check(service.tree_exit(3,"Music/MusicArea",e)&&service.finish_scene(3,e)&&service.update(0,owner,e),"source exits authorize replacement while old fade is live");
+ ctr::MusicRegionService partial;
+ check(partial.begin_prepare(argv[3],argv[4],argv[5],8,owner,e),"next candidate can start bounded preparation");
+ const auto partial_queues=queues;const auto partial_mutations=mutations+owner_calls;
+ check(!service.handoff_prepared(partial,retiring,e)&&partial.phase()==ctr::MusicRegionServicePhase::Preparing&&service.phase()==ctr::MusicRegionServicePhase::Draining&&queues==partial_queues&&mutations+owner_calls==partial_mutations,"unvalidated candidate cannot replace draining source");check(partial.cancel_preparation(e),"unvalidated candidate cancelled independently");
+ check(owner.play(32,ctr::AudioLane::DialogueMusic,e),"handoff negative external music fixture");
+ const auto rejected_handoff_queues=queues;const auto rejected_handoff_mutations=mutations+owner_calls;
+ check(!service.handoff_scene(candidate,retiring,3,owner,e)&&!service.handoff_scene(candidate,retiring,0,owner,e)&&!service.handoff_scene(candidate,retiring,4,owner,e)&&service.scene_epoch()==3&&candidate.scene_epoch()==0&&retiring.phase()==ctr::MusicRegionServicePhase::Dormant&&queues==rejected_handoff_queues&&mutations+owner_calls==rejected_handoff_mutations,"invalid epoch or external owner cannot half-commit music handoff");
+ check(owner.stop_lane(ctr::AudioLane::DialogueMusic,e),"external owner gate resolved explicitly");
+ const auto fading_queues=queues;const auto silent_handoff=mutations+owner_calls;
+ check(service.handoff_scene(candidate,retiring,4,owner,e)&&service.phase()==ctr::MusicRegionServicePhase::Active&&retiring.phase()==ctr::MusicRegionServicePhase::Draining&&candidate.phase()==ctr::MusicRegionServicePhase::Dormant&&retiring.scene_epoch()==3&&retiring.live_voice_count()==1&&queues==fading_queues&&mutations+owner_calls==silent_handoff,"handoff transfers owners without moving buffers or touching NDSP");
+ check(service.area_enter(4,"Music/MusicArea6",ctx,owner,e)&&service.update(0,owner,e)&&service.live_voice_count()==1&&retiring.live_voice_count()==1&&queues[4]==fading_queues[4]&&queues[5].size()==3,"different scene starts while old scene fades on separate channel");
+ const auto retained_track=retiring.primary_track_id();drain(4);const auto new_scene_queue=queues[5];
+ check(retiring.pump_streams(e)&&queues[4].size()==3&&queues[5]==new_scene_queue&&retiring.primary_track_id()==retained_track&&retiring.scene_epoch()==3,"loading refills old region without restarting identity or new queue");
+ check(retiring.update(1.5,owner,e)&&retiring.phase()==ctr::MusicRegionServicePhase::Prepared&&queues[4].empty()&&queues[5]==new_scene_queue,"source fade completion releases only retired scene voice");
+ check(service.tree_exit(4,"Music/MusicArea6",e)&&service.finish_scene(4,e)&&service.update(1.5,owner,e),"new scene completes its source fade");
+ const auto rejected_queues=queues;const auto rejected_mutations=mutations+owner_calls;
+ check(!service.handoff_prepared(empty,retiring,e)&&!empty.handoff_prepared(service,candidate,e)&&queues==rejected_queues&&mutations+owner_calls==rejected_mutations,"occupied retirement owner and previously committed candidate reject without changes");
+ retiring.shutdown();check(service.handoff_prepared(empty,retiring,e)&&service.phase()==ctr::MusicRegionServicePhase::Dormant,"explicit silent destination retains old prepared owner for cleanup");retiring.shutdown();
+ check(!empty.begin_prepare("not-a-pack",argv[4],argv[5],8,owner,e),"bad next metadata fails without replacing current owner");
  check(service.cancel_preparation(e)&&service.phase()==ctr::MusicRegionServicePhase::Dormant,"prepared cache can be discarded safely");
  const auto previous=owner.observe_music().generation;owner.shutdown();check(!owner.observe_music().available&&!owner.observe_music().playing&&owner.observe_music().generation==previous,"shutdown observation truthful without identity reuse");
  check(owner.initialize(argv[1],argv[2],e)&&owner.play(34,ctr::AudioLane::Music,e)&&owner.observe_music().generation>previous,"reinitialize does not reuse identity");owner.shutdown();

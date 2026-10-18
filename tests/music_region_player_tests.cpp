@@ -54,12 +54,31 @@ int main(int argc,char**argv){check(argc==4,"region+audio+root arguments");upstr
  check(audio.set_user_music_db(0)&&audio.sync(c,e),"restore menu gain without restarting track");
  upstream::MusicRegionController wrong;check(wrong.initialize(data,1,e)&&wrong.attach_scene(2,e),"wrong capacity fixture");auto old=queues;check(!audio.sync(wrong,e)&&queues==old,"bad snapshot capacity cannot stop old audio");
  check(c.advance(2,false,e)&&audio.sync(c,e),"completed fades clear only old region channels");check(queues[4].empty()&&queues[5].empty()&&queues[6].size()==3,"current duplicate survives old fade cleanup");
- // Detached candidates can prepare without taking the live range; accidental
- // activation fails before a single old channel is altered.
+ // A detached candidate does not claim a range. Once explicitly synchronized,
+ // its new voice leases a free channel without touching the old scene voice.
  ctr::MusicRegionPlayer candidate;auto old_queues=queues;auto old_mutations=mutations;
  check(prepare_all(candidate,argv[2],argv[3],data,1,true,bank.master_db(),e)&&mutations==old_mutations,"detached replacement preparation leaves live region audio intact");
- check(!candidate.sync(wrong,e)&&e=="Music region channels already owned; existing audio preserved"&&queues==old_queues&&mutations==old_mutations,"second adapter cannot steal the reserved music range");
- candidate.shutdown();check(queues==old_queues&&mutations==old_mutations,"discarded candidate cannot clear live channels");
+ check(candidate.sync(wrong,e)&&queues==old_queues&&mutations==old_mutations,"silent candidate claims no active channel");
+ check(wrong.enter(2,"Music/MusicArea6",context,e)&&candidate.sync(wrong,e)&&queues[4].size()==3&&queues[6]==old_queues[6],"second explicitly committed scene leases a free channel and preserves old queue");
+ old_queues=queues;const auto pump_gains=gains;const auto submitted=candidate.submitted_voices();
+ drain(4);check(candidate.pump_streams(e)&&queues[4].size()==3&&queues[6]==old_queues[6]&&candidate.submitted_voices()==submitted&&gains==pump_gains,"refill preserves identities and other scene queues");
+ const auto no_op_mutations=mutations;check(candidate.set_paused(true,e),"candidate pause admitted");const auto paused_mutations=mutations;check(candidate.pump_streams(e)&&mutations==paused_mutations,"paused regional refill has zero IO or channel work");check(candidate.set_paused(false,e)&&mutations>no_op_mutations,"candidate resume");
+ candidate.shutdown();check(queues[4].empty()&&queues[6]==old_queues[6],"discarding scene releases only its own channel");
  flush_result=-1;drain(6);check(!audio.sync(c,e)&&e=="Region DSP cache flush failed"&&queues[6].empty(),"stream failure explicit and limited to affected voice");flush_result=0;check(audio.sync(c,e)&&queues[6].size()==3,"authorized retry refills affected region");
- audio.shutdown();check(allocated==0,"region streaming buffers all released");for(size_t i=4;i<queues.size();++i)check(queues[i].empty(),"region shutdown clear queues before buffers");check(mutations>0,"double exercised adapter");std::cout<<"Music region NDSP-double PASS "<<checks<<" checks; no real audio output claim\n";
+ audio.shutdown();check(allocated==0,"first scenes released");
+ // Fill the physical pool with source-owned fade tails, then prove rejection
+ // is atomic across every queue. No fabricated controller voice snapshots.
+ ctr::MusicRegionPlayer full,overflow;
+ upstream::MusicRegionController filled,extra;
+ check(prepare_all(full,argv[2],argv[3],data,16,true,bank.master_db(),e)&&prepare_all(overflow,argv[2],argv[3],data,1,true,bank.master_db(),e),"physical pool fixtures prepared");
+ check(filled.initialize(data,16,e)&&filled.attach_scene(3,e)&&extra.initialize(data,1,e)&&extra.attach_scene(4,e),"physical pool controllers");
+ for(uint64_t n=1;n<=16;++n){
+  check(filled.observe_external_player({n,true,true},e)&&filled.enter(3,"Music/MusicArea",context,e)&&full.sync(filled,e),"new external source order allocates distinct voice");
+  check(filled.tree_exit(3,"Music/MusicArea",e),"source removes registration but retains fade tail");
+ }
+ check(extra.enter(4,"Music/MusicArea6",context,e),"overflow core fixture queued");
+ const auto all_queues=queues;const auto exhausted_mutations=mutations;
+ check(!overflow.sync(extra,e)&&e=="Regional channel capacity exhausted; existing audio preserved"&&queues==all_queues&&mutations==exhausted_mutations&&overflow.submitted_voices()==0,"physical exhaustion preserves all sixteen other queues and identities");
+ full.shutdown();check(overflow.sync(extra,e)&&queues[4].size()==3,"released channel is reusable after explicit old owner teardown");overflow.shutdown();
+check(allocated==0,"region streaming buffers all released");for(size_t i=4;i<queues.size();++i)check(queues[i].empty(),"region shutdown clear queues before buffers");check(mutations>0,"double exercised adapter");std::cout<<"Music region NDSP-double PASS "<<checks<<" checks; no real audio output claim\n";
 }

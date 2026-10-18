@@ -18,6 +18,11 @@ public:
  uint64_t prepared_pcm_bytes()const;
  uint64_t total_pcm_bytes()const;
  bool cancel_preparation(std::string&);
+ // Move a fresh prepared candidate into this owner, keeping the prior source
+ // fades in an empty retirement owner. No IO, NDSP or implicit Area entry.
+ bool handoff_prepared(MusicRegionService&candidate,MusicRegionService&retiring,std::string&);
+ bool handoff_scene(MusicRegionService&candidate,MusicRegionService&retiring,uint64_t epoch,const AudioPlayer&,std::string&);
+ bool pump_streams(std::string&);
  bool commit_scene(uint64_t epoch,const AudioPlayer&,std::string&);
  bool area_enter(uint64_t,std::string_view,const upstream::MusicRegionContext&,const AudioPlayer&,std::string&);
  bool area_exit(uint64_t,std::string_view,const upstream::MusicRegionContext&,std::string&);
@@ -42,6 +47,8 @@ public:
 private:
  struct State;std::unique_ptr<State>state_;
  MusicRegionServicePhase phase_=MusicRegionServicePhase::Dormant;
+ bool can_handoff(const MusicRegionService&,const MusicRegionService&,std::string&)const;
+ void take_prepared(MusicRegionService&,MusicRegionService&);
  static bool observe(upstream::MusicRegionController&,uint64_t&known_generation,const MusicObservation&,std::string&);
 };
 // Explicit loading-loop cooperation. Only old streaming queues move; no world

@@ -49,6 +49,33 @@ MusicPreparationStep MusicRegionService::prepare_step(uint32_t budget,std::strin
  return result;
 }
 bool MusicRegionService::cancel_preparation(std::string&e){if(phase_!=MusicRegionServicePhase::Dormant&&phase_!=MusicRegionServicePhase::Preparing&&phase_!=MusicRegionServicePhase::Prepared)return fail(e,"Cannot cancel committed region music; deliver source exits");shutdown();e.clear();return true;}
+bool MusicRegionService::can_handoff(const MusicRegionService&candidate,const MusicRegionService&retiring,std::string&e)const{
+ if(this==&candidate||this==&retiring||&candidate==&retiring)return fail(e,"Music handoff owners must be distinct");
+ if(retiring.state_||retiring.phase_!=MusicRegionServicePhase::Dormant)return fail(e,"Music retirement owner is not empty");
+ if(phase_!=MusicRegionServicePhase::Dormant&&phase_!=MusicRegionServicePhase::Prepared&&phase_!=MusicRegionServicePhase::Draining)return fail(e,"Music handoff requires source exits before replacement");
+ if((candidate.phase_!=MusicRegionServicePhase::Prepared&&candidate.phase_!=MusicRegionServicePhase::Dormant)||candidate.scene_epoch()||candidate.live_voice_count()||candidate.paused_for_battle())return fail(e,"Music handoff candidate is not fresh and prepared");
+ e.clear();return true;
+}
+void MusicRegionService::take_prepared(MusicRegionService&candidate,MusicRegionService&retiring){
+ retiring.state_=std::move(state_);retiring.phase_=phase_;
+ state_=std::move(candidate.state_);phase_=candidate.phase_;candidate.phase_=MusicRegionServicePhase::Dormant;
+}
+bool MusicRegionService::handoff_prepared(MusicRegionService&candidate,MusicRegionService&retiring,std::string&e){
+ if(!can_handoff(candidate,retiring,e))return false;
+ take_prepared(candidate,retiring);e.clear();return true;
+}
+bool MusicRegionService::handoff_scene(MusicRegionService&candidate,MusicRegionService&retiring,uint64_t epoch,const AudioPlayer&owner,std::string&e){
+ if(!can_handoff(candidate,retiring,e))return false;
+ if(!epoch||epoch<=scene_epoch())return fail(e,"Music scene handoff epoch must advance");
+ // Commit is performed on the detached candidate first. An external-owner or
+ // scene validation failure leaves both existing owners and every queue intact.
+ if(candidate.state_&&!candidate.commit_scene(epoch,owner,e))return false;
+ take_prepared(candidate,retiring);e.clear();return true;
+}
+bool MusicRegionService::pump_streams(std::string&e){
+ if(!state_||phase_==MusicRegionServicePhase::Preparing||phase_==MusicRegionServicePhase::Prepared){e.clear();return true;}
+ return state_->player.pump_streams(e);
+}
 bool MusicRegionService::observe(upstream::MusicRegionController&controller,uint64_t&known,const MusicObservation&s,std::string&e){
  if(!s.available)return fail(e,"Music region service lost its NDSP owner");
  if(s.generation<known)return fail(e,"Existing music owner generation regressed");

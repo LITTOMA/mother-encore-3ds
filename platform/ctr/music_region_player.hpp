@@ -6,9 +6,9 @@
 
 namespace encore::ctr {
 enum class MusicPreparationStep:uint8_t {Progress,Ready,Failed};
-// Separate, opt-in adapter. Existing AudioPlayer owns NDSP, channels0..3 and
-// global master volume. This object uses only channels4..19 and must shut down
-// before that NDSP owner. It never initializes, exits, or reconfigures NDSP.
+// Existing AudioPlayer owns NDSP, channels0..3 and global master volume.
+// Regional voices lease distinct channels4..19 across active/draining scenes.
+// Prepared candidates own no channels. Shut down before the AudioPlayer owner.
 class MusicRegionPlayer {
 public:
  static constexpr uint32_t first_channel=4,maximum_voices=16;
@@ -27,6 +27,8 @@ public:
  uint64_t prepared_pcm_bytes()const{return verified_bytes_;}
  uint64_t total_pcm_bytes()const{return total_bytes_;}
  bool sync(const upstream::MusicRegionController&,std::string&);
+ // Refill only; preserve gain, fades, pause, controller identity and all other owners.
+ bool pump_streams(std::string&);
  bool set_paused(bool,std::string&);
  bool set_user_music_db(float db){if(!std::isfinite(db)||db<-120||db>0)return false;user_music_db_=db;return true;}
  void shutdown();
@@ -36,7 +38,7 @@ public:
 private:
  static constexpr uint32_t buffer_count=3,buffer_frames=2048;
  struct Track{upstream::AudioAsset asset{};FILE*file=nullptr;};
- struct Voice{uint64_t generation=0;uint32_t track=0;bool active=false;
+ struct Voice{uint64_t generation=0;uint32_t track=0,channel=maximum_voices;bool active=false;
   upstream::AudioFrameCursor cursor;std::array<ndspWaveBuf,buffer_count>waves{};int16_t*samples=nullptr;};
  bool refill(uint32_t,std::string&);void stop(uint32_t);
  upstream::AudioBank bank_;std::array<Track,16>tracks_{};

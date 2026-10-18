@@ -1,9 +1,12 @@
 #include "music_region_player.hpp"
 #include <array>
+#include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <iterator>
 using namespace encore;
 namespace {unsigned checks=0,mutations=0;int alloc_left=-1;size_t allocated=0;Result flush_result=0;
 std::array<std::vector<ndspWaveBuf*>,20>queues;std::array<float,20>gains{};std::array<bool,20>paused{};
@@ -80,5 +83,62 @@ int main(int argc,char**argv){check(argc==4,"region+audio+root arguments");upstr
  const auto all_queues=queues;const auto exhausted_mutations=mutations;
  check(!overflow.sync(extra,e)&&e=="Regional channel capacity exhausted; existing audio preserved"&&queues==all_queues&&mutations==exhausted_mutations&&overflow.submitted_voices()==0,"physical exhaustion preserves all sixteen other queues and identities");
  full.shutdown();check(overflow.sync(extra,e)&&queues[4].size()==3,"released channel is reusable after explicit old owner teardown");overflow.shutdown();
-check(allocated==0,"region streaming buffers all released");for(size_t i=4;i<queues.size();++i)check(queues[i].empty(),"region shutdown clear queues before buffers");check(mutations>0,"double exercised adapter");std::cout<<"Music region NDSP-double PASS "<<checks<<" checks; no real audio output claim\n";
+// Global node routes use the same checked PCM transport, with two detached
+ // providers. These bank instances intentionally share the original Podunk
+ // files; distinct Podunk/Mayor metadata ownership is tested in the core.
+ {
+  upstream::MusicPlayers graph;upstream::MusicBankRoutes routes;
+  check(graph.initialize({data.silence_db(),0,data.fade_to_seconds(),32},e),"global graph prepared");
+  check(routes.initialize({8,16,bank.master_db(),bank.silence_db()},e)&&routes.add_provider(1,data,bank,e)&&routes.add_provider(2,data,bank,e),"independent checked providers");
+  ctr::MusicRegionPlayer first_bank,second_bank;
+  auto before_prepare=mutations;
+  check(prepare_all(first_bank,argv[2],argv[3],data,4,true,bank.master_db(),e)&&prepare_all(second_bank,argv[2],argv[3],data,4,true,bank.master_db(),e)&&mutations==before_prepare,"global providers prepare without touching NDSP");
+  check(!first_bank.check_routes(routes,1,e)&&mutations==before_prepare,"unpublished graph cannot acquire a transport");
+  const auto source1=data.tracks()[0].source_path,source2=data.tracks()[1].source_path;
+  check(graph.play_loop(0,source1,e)&&routes.reconcile(graph,{{0,1,1}},e),"first explicitly routed start");
+  check(first_bank.check_routes(routes,1,e)&&second_bank.check_routes(routes,2,e)&&mutations==before_prepare,"complete route preflight is zero NDSP");
+  check(first_bank.sync_routes(routes,1,e)&&queues[4].size()==3&&first_bank.submitted_voices()==1,"first routed stream queued");
+  const auto initial_crc=checksum(queues[4][0]->data_pcm16,4096);
+  auto retained_first=queues[4];
+  check(graph.set_volume(0,-4,e)&&routes.reconcile(graph,{},e)&&first_bank.set_user_music_db(-12)&&first_bank.sync_routes(routes,1,e),"routed property and menu volume");
+  check(queues[4]==retained_first&&first_bank.submitted_voices()==1&&std::abs(gains[4]-upstream::audio_linear_gain(-16))<.00001,"routed gain preserves the original queue and cursor");
+  drain(4);check(first_bank.sync_routes(routes,1,e)&&checksum(queues[4][0]->data_pcm16,4096)!=initial_crc,"routed refill advances existing source phase");
+  uint64_t second;check(graph.add_player(second,e)&&second==1&&graph.play_loop(second,source2,e)&&routes.reconcile(graph,{{second,1,2}},e),"second provider start admitted");
+  retained_first=queues[4];check(second_bank.sync_routes(routes,2,e)&&queues[5].size()==3&&queues[4]==retained_first,"second provider retains first bank fade tail");
+  const auto second_crc=checksum(queues[5][0]->data_pcm16,4096);auto retained_second=queues[5];auto before_reject=mutations;
+  upstream::MusicRegionController legacy;check(legacy.initialize(data,4,e)&&legacy.attach_scene(1,e),"legacy owner fixture");
+  check(!first_bank.sync(legacy,e)&&!first_bank.sync_routes(routes,2,e)&&queues[4]==retained_first&&queues[5]==retained_second&&mutations==before_reject,"wrong graph mode/provider cannot touch either bank");
+  // Same numeric provider/player identities with changed checked metadata must
+  // not redirect an already prepared stream. Only in-memory negative bytes change.
+  for(unsigned kind=0;kind<2;++kind){
+   std::ifstream mf(argv[1],std::ios::binary),af(argv[2],std::ios::binary);
+   std::vector<uint8_t>mb{std::istreambuf_iterator<char>(mf),{}},ab{std::istreambuf_iterator<char>(af),{}};
+   auto fix=[](std::vector<uint8_t>&b){std::fill(b.begin()+16,b.begin()+20,0);auto crc=upstream::audio_crc32(b.data(),b.size());for(unsigned i=0;i<4;++i)b[16+i]=uint8_t(crc>>(8*i));};
+   if(kind==0){mb[100]^=1;fix(mb);}else{ab[120]^=1;fix(ab);}
+   upstream::MusicRegionData changed;upstream::AudioBank altered;upstream::MusicBankRoutes wrong;
+   check(changed.load(mb.data(),mb.size(),e)&&altered.load(ab.data(),ab.size(),e)&&wrong.initialize({8,16,bank.master_db(),bank.silence_db()},e)&&wrong.add_provider(1,changed,altered,e)&&wrong.reconcile(graph,{{0,1,1},{1,1,1}},e),"structurally valid changed metadata fixture");
+   check(!first_bank.check_routes(wrong,1,e)&&!first_bank.sync_routes(wrong,1,e)&&mutations==before_reject&&queues[4]==retained_first&&queues[5]==retained_second,"import/PCM disagreement rejects before any NDSP call");
+  }
+  upstream::MusicPlayers other_graph;upstream::MusicBankRoutes other_routes;
+  check(other_graph.initialize({data.silence_db(),0,data.fade_to_seconds(),16},e)&&other_graph.play_loop(0,source1,e)&&other_routes.initialize({8,16,bank.master_db(),bank.silence_db()},e)&&other_routes.add_provider(1,data,bank,e)&&other_routes.reconcile(other_graph,{{0,1,1}},e),"independent new-game numeric identities");
+  check(!first_bank.sync_routes(other_routes,1,e)&&mutations==before_reject,"owner token prevents new-game alias without transport teardown");
+  // Delete node0 and create node2 before publication: both playback generations
+  // equal 1, so checking only generation would leave node0's old phase playing.
+  check(graph.queue_remove(0,e)&&graph.flush_deletions(e),"source deferred removal boundary");
+  uint64_t third;check(graph.add_player(third,e)&&third==2&&graph.play_loop(third,source1,e)&&routes.reconcile(graph,{{third,1,1}},e),"new node reuses released slot with same numeric playback generation");
+  check(first_bank.check_routes(routes,1,e)&&second_bank.check_routes(routes,2,e)&&first_bank.release_routes(routes,1,e)&&second_bank.release_routes(routes,2,e),"validate all then release obsolete routes");
+  check(queues[4].empty()&&queues[5]==retained_second,"release phase clears only obsolete node");
+  check(first_bank.sync_routes(routes,1,e)&&second_bank.sync_routes(routes,2,e)&&first_bank.submitted_voices()==2&&second_bank.submitted_voices()==1,"new logical identity starts once");
+  check(checksum(queues[4][0]->data_pcm16,4096)==initial_crc&&queues[5]==retained_second,"new node restarts at source frame zero, other provider keeps phase");
+  // Transfer one slot from provider1 to provider2 without touching its other node.
+  check(graph.play_loop(third,source2,e)&&routes.reconcile(graph,{{third,2,2}},e),"node changes prepared bank");
+  check(first_bank.release_routes(routes,1,e)&&second_bank.release_routes(routes,2,e)&&first_bank.sync_routes(routes,1,e)&&second_bank.sync_routes(routes,2,e),"ordered cross-provider physical handoff");
+  check(queues[5]==retained_second&&second_bank.submitted_voices()==2&&checksum(queues[4][0]->data_pcm16,4096)==second_crc,"transferred node resets source and preserves unrelated playback");
+  check(routes.remove_provider(1,e)&&first_bank.sync_routes(routes,1,e),"bound removed provider may drain its empty transport");first_bank.shutdown();
+  auto current_queues=queues;check(second_bank.set_paused(true,e)&&second_bank.set_user_music_db(-12)&&second_bank.sync_routes(routes,2,e)&&queues==current_queues&&paused[4]&&paused[5],"global routes retain pause, user volume and queues");
+  auto paused_calls=mutations;check(second_bank.pump_streams(e)&&mutations==paused_calls,"paused routed pump is silent");check(second_bank.set_paused(false,e),"routed resume");
+  flush_result=-1;drain(4);retained_second=queues[5];check(!second_bank.sync_routes(routes,2,e)&&queues[4].empty()&&queues[5]==retained_second,"routed flush failure affects only its node");flush_result=0;check(second_bank.sync_routes(routes,2,e)&&queues[4].size()==3&&queues[5]==retained_second,"explicit routed retry");
+  second_bank.shutdown();check(allocated==0,"global provider buffers released");
+ }
+ check(allocated==0,"region streaming buffers all released");for(size_t i=4;i<queues.size();++i)check(queues[i].empty(),"region shutdown clear queues before buffers");check(mutations>0,"double exercised adapter");std::cout<<"Music region NDSP-double PASS "<<checks<<" checks; no real audio output claim\n";
 }

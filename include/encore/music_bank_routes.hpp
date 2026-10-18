@@ -31,6 +31,7 @@ public:
     const std::vector<MusicBankProvider>&providers()const{return providers_;}
     const std::vector<MusicPlaybackRoute>&routes()const{return routes_;}
     bool ready()const{return ready_;}
+    std::shared_ptr<const MusicPlayersOwner>owner()const{return owner_;}
 private:
     std::shared_ptr<const MusicPlayersOwner>owner_;
     MusicRoutingPolicy policy_;

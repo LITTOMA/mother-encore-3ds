@@ -47,7 +47,7 @@
     "runtime/house_button_prompts.cpp": "43f7abe96cbd3e7345d910677ad099f40f81265e7c9d8d1a251cac3cf93afdba",
     "runtime/house_data.cpp": "dddfe6d330f58d95f49a7588fcb631076e3633f31d33dfdda009e389795a0afe",
     "runtime/house_inspection_data.cpp": "37feb3da90757c1ae77afd46556555ed6b2777f6b3ac6bb834b5b136fa4985d7",
-    "runtime/house_presentation.cpp": "352d773b4b1f486a49c929a9eb4defa214048478a8189d2945afa1520d8db630",
+    "runtime/house_presentation.cpp": "42069c8ba7f5b61c17e2f12e656228d0ef671df2e0e79c964aad56696f724dcd",
     "runtime/house_presents.cpp": "d5affc6d8f5e5d3e5286be21e16ca69420ac8209f69e781c6e52aeff732ed2a6",
     "runtime/house_runtime.cpp": "29d4f2e61ebfccd701d1e7a5ef79f38ab53513a572139f2304abe31d5feaf435",
     "runtime/introduction.cpp": "fd3d497c2f9cf35ef923ca5e634b537c58e13cd24531df343d9a748b83e46ea4",
@@ -188,11 +188,12 @@
     "include/encore/world_flags.hpp": "a36d5f997217a8c361a94abd6fa54530d7903d3c8835664bd3d3ae8f244d7e36",
     "include/encore/world_links.hpp": "85e46f957a4cfb0b5e37ebf6b4915711dc2603f7725d8188883920ce509abb5f",
     "platform/ctr/field_story.hpp": "7f3cd6a9570be27e644ae952d092f83009957d0ac7906c3625c6bbe5179cb1ec",
-    "tests/field_interaction_tests.cpp": "c759e21b6be0ed366c25d18eaf1e31d7b274c10a5f8d4771fd2bc1ce84e74eca",
+    "tests/field_interaction_tests.cpp": "b5045996fd58cfed8da18ef9b0100eae90ef160ed2609ec277d9542d6ef89009",
     "tests/field_story_tests.cpp": "9184e00f1570d8d6017f48d0dcf146a18098c80879b6f7f75ca63ecf7ee5a9ee",
     "tests/bridge_localization_tests.cpp": "cdeb1ff5c88b6b5db2c466b4afd7213e5dc78ef6473ec14c8f3e3fb70327a29c",
     "tests/house_presentation_tests.cpp": "98804a0e90f50d596ce037284712948a2cf871890654ec14123648be6693be65",
     "tests/native_session_tests.cpp": "7c18297b41f963ffe4d18e789794409dfb1793705270c35c52e3b78092420707",
     "tests/test_field_story.py": "3968686a42b330a809b504b75081b0f4bac5b02bb22bd141e4459f7b9c83bb74"
-  }
+  },
+  "notes": "Adds supplied-bullet propagation, live actor talking and help-flag save codec/admission checks"
 }

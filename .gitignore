@@ -339,3 +339,5 @@ cookies.json
 !reports/pr64-merge-validation/*.py
 !/reports/pippi-mom-help/*.log
 !/reports/pippi-mom-help/*.json
+!/reports/pippi-mom-help/*.png
+!/reports/pippi-mom-help/*.py

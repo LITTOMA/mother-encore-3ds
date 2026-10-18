@@ -328,7 +328,7 @@ bool HousePresentation::present_external(const LocalizedHouseSpan&span,std::stri
  if(candidate.lines_.empty())return fail("External dialogue produced no text");
  auto built=std::move(candidate.lines_);candidate.lines_=lines_;
  if(!candidate.present_lines(span.speaker,std::move(built),voice))return fail(candidate.error());
- *this=std::move(candidate);return true;
+ candidate.bullet_=span.bullet;*this=std::move(candidate);return true;
 }
 bool HousePresentation::present_lines(std::string_view speaker,std::vector<Line>built,std::string_view voice){
  const std::string speaker_text(speaker);const bool reuse=active_;const bool same=reuse&&!name_closing_&&speaker_==speaker_text;

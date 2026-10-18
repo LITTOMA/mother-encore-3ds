@@ -1,6 +1,7 @@
 #include "encore/field_scene.hpp"
 #include "encore/new_game_setup.hpp"
 #include "encore/localization.hpp"
+#include "encore/battle_round_data.hpp"
 #include "encore/content.hpp"
 #include "encore/crc32.hpp"
 #include <cstdio>
@@ -35,6 +36,8 @@ int main(int argc,char**argv){
  std::vector<uint8_t>bytes;CHECK(encore::read_file(path("world/podunk/story.encstory").c_str(),bytes,128*1024,error));const auto at=get(bytes,64+5*16+4);
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{20,1},{20,3},{at,0},{at,63},{at+4,0},{at+16,4},{at+20,1},{at+8,UINT32_MAX},{at+24+4,0}}){auto bad=bytes;put(bad,edit.first,edit.second);sign(bad);FieldStoryData candidate;const bool loaded=candidate.load(bad.data(),bad.size(),error);CHECK(!loaded||!candidate.view().bind(room.view(),map.view(),items.view(),error));}
  for(size_t n:{size_t(63),size_t(145),bytes.size()-1}){FieldStoryData candidate;CHECK(!candidate.load(bytes.data(),n,error));}
+ RoomData home;BattleRoundData lamp;CHECK(home.load_file(path("world/house/opening.encroom").c_str(),error));CHECK(lamp.load_file(path("battle/lamp/opening.encround").c_str(),error));auto saved=session.defaults();bool help_found=false;
+ for(auto&flag:saved.flags)if(flag.id=="pippis_mom_help"){help_found=true;flag.value=true;}CHECK(help_found);CHECK(validate_native_session_snapshot(session,home.view(),house.view(),lamp.view(),items.view(),saved,error));std::vector<uint8_t>save_bytes;CHECK(encode_session_save(saved,session.compatibility(),save_bytes,error));SessionSnapshot restored;CHECK(decode_session_save(save_bytes.data(),save_bytes.size(),session.compatibility(),restored,error));CHECK(validate_native_session_snapshot(session,home.view(),house.view(),lamp.view(),items.view(),restored,error));help_found=false;for(const auto&flag:restored.flags)if(flag.id=="pippis_mom_help")help_found=flag.value;CHECK(help_found);
  LocaleSelection locale;CHECK(locale.bind(catalog,error));auto snapshot=session.defaults();snapshot.characters[0].nickname="Alex[Pippi]";auto pippi=session.startup_characters()[3];pippi.nickname="Peep";snapshot.characters.push_back(pippi);
  for(const auto code:{"en","zh_Hans_CN"}){
   CHECK(locale.select(code,error));for(uint32_t id:{1010u,1011u,1012u,1013u,1014u,1020u}){const auto text=view.dialogue(id,code);LocalizedHouseSpan span;CHECK(format_field_story_span(view.text(text.body),names,snapshot,locale,span,error));CHECK(!span.segments.empty());}
@@ -43,7 +46,7 @@ int main(int argc,char**argv){
  }
  CHECK(locale.select("en",error));snapshot.characters[0].nickname="Alex";
  SourceRandom random(991);HousePresentation box;CHECK(box.begin(house.view(),font.view(),random));
- LocalizedHouseSpan rich;CHECK(format_field_story_span("[@]A[WAIT@][color]B[/color][DELAY]C",names,snapshot,locale,rich,error));rich.speaker="Mom";CHECK(box.present_external(rich,"voice"));CHECK(box.advance_chrome(1));box.input(false,true);
+ LocalizedHouseSpan rich;CHECK(format_field_story_span("[@]A[WAIT@][color]B[/color][DELAY]C",names,snapshot,locale,rich,error));rich.speaker="Mom";rich.bullet=">";CHECK(box.present_external(rich,"voice"));CHECK(box.dialogue_pose().bullet==">");CHECK(box.advance_chrome(1));box.input(false,true);
  for(unsigned i=0;i<300&&!box.dialogue_stopped();++i)CHECK(box.advance_dialogue(1.0/60));CHECK(box.dialogue_stopped()&&!box.dialogue_finished());const auto stopped=box.visible_characters();for(unsigned i=0;i<100;++i)CHECK(box.advance_dialogue(1.0/60));CHECK(box.visible_characters()==stopped);
  auto invalid=rich;invalid.segments[0].tokens[0].kind=999;CHECK(!box.present_external(invalid));CHECK(box.visible_characters()==stopped);invalid=rich;invalid.segments[1].tokens[0].text="ffffffX";CHECK(!box.present_external(invalid));
  box.input(true,false);box.input(false,true);for(unsigned i=0;i<300&&!box.dialogue_finished();++i)CHECK(box.advance_dialogue(1.0/60));CHECK(box.dialogue_finished());bool colored=false;for(const auto&line:box.dialogue_pose().lines)for(auto color:line.colors)colored|=color!=0xffffffffu;CHECK(colored);
@@ -53,7 +56,7 @@ int main(int argc,char**argv){
  CHECK(!field.world.face_interaction({INFINITY,0}));CHECK(field.world.face_interaction({643,272}));CHECK(field.world.player().direction.x>0&&field.world.player().direction.y<0);CHECK(!field.world.set_house_direction({.2f,-.9f}));CHECK(field.world.warp_same_scene({640,292},{0,-1}));
  host.allowed=false;const auto before=random.state();const auto direction=field.actor_pose(1).direction;CHECK(field.try_interaction(true,error));CHECK(field.phase()==FieldPhase::Unsupported&&field.world.stage()==OpeningStage::Walking);CHECK(random.state()==before&&!field.world.story_flag("pippis_mom_help"));CHECK(field.actor_pose(1).direction.x==direction.x&&field.actor_pose(1).direction.y==direction.y);CHECK(field.idle_frame(1.0/60,true));host.allowed=true;
  for(unsigned round=0;round<2;++round){const bool started=field.try_interaction(true,error);if(!started)std::fprintf(stderr,"Interaction: %s / %s\n",field.error().c_str(),field.world.error());CHECK(started);CHECK(host.selected==uint32_t(round?3:2));CHECK(field.world.stage()==OpeningStage::ScriptRunning);unsigned lines=0;uint32_t previous=UINT32_MAX;
-  for(unsigned tick=0;tick<2400&&field.world.stage()!=OpeningStage::Walking;++tick){WalkInput input;CHECK(field.before_physics(input));CHECK(field.world.advance(input));CHECK(field.after_physics());CHECK(field.world.idle_frame(1.0/60));const auto id=field.world.pending_dialogue_id();if(id!=UINT32_MAX&&id!=previous){previous=id;++lines;CHECK(view.dialogue(id,"en").id==id);for(unsigned idle=0;idle<20;++idle)CHECK(field.world.idle_frame(1.0/60));CHECK(field.world.pending_dialogue_id()==id);}
+  for(unsigned tick=0;tick<2400&&field.world.stage()!=OpeningStage::Walking;++tick){WalkInput input;CHECK(field.before_physics(input));CHECK(field.world.advance(input));CHECK(field.after_physics());CHECK(field.world.idle_frame(1.0/60));const auto id=field.world.pending_dialogue_id();CHECK(field.world.set_story_talking(id!=UINT32_MAX));if(id!=UINT32_MAX&&id!=previous){previous=id;++lines;CHECK(view.dialogue(id,"en").id==id);for(unsigned idle=0;idle<20;++idle)CHECK(field.world.idle_frame(1.0/60));CHECK(field.world.pending_dialogue_id()==id);}
    if(field.world.story_input_allowed())CHECK(field.world.finish_story_dialogue());
   }
   CHECK(lines==unsigned(round?1:5));CHECK(field.world.stage()==OpeningStage::Walking&&field.world.story_flag("pippis_mom_help"));WalkInput input;CHECK(field.before_physics(input));CHECK(!field.world.actor_bound(1));CHECK(field.actor_pose(1).position.x==640&&field.actor_pose(1).position.y==272);CHECK(field.world.warp_same_scene({640,292},{0,-1}));

@@ -1,0 +1,17 @@
+tests/music_bank_transports_tests.cpp: In function ‘int main(int, char**)’:
+tests/music_bank_transports_tests.cpp:42:7: error: ‘AudioPlayer’ is not a member of ‘encore::ctr’
+   42 |  ctr::AudioPlayer owner;check(owner.initialize(argv[1],argv[2],e)&&owner.play(34,ctr::AudioLane::Music,e),e.c_str());auto root_queue=queues[0];
+      |       ^~~~~~~~~~~
+tests/music_bank_transports_tests.cpp:42:31: error: ‘owner’ was not declared in this scope
+   42 |  ctr::AudioPlayer owner;check(owner.initialize(argv[1],argv[2],e)&&owner.play(34,ctr::AudioLane::Music,e),e.c_str());auto root_queue=queues[0];
+      |                               ^~~~~
+tests/music_bank_transports_tests.cpp:42:87: error: ‘encore::ctr::AudioLane’ has not been declared
+   42 |  ctr::AudioPlayer owner;check(owner.initialize(argv[1],argv[2],e)&&owner.play(34,ctr::AudioLane::Music,e),e.c_str());auto root_queue=queues[0];
+      |                                                                                       ^~~~~~~~~
+platform/ctr/audio_player.cpp: In member function ‘bool encore::ctr::AudioPlayer::stop_lane(encore::ctr::AudioLane, std::string&)’:
+platform/ctr/audio_player.cpp:155:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  155 |     if(voices_[lane].samples)stop(lane);error.clear();return true;
+      |     ^~
+platform/ctr/audio_player.cpp:155:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  155 |     if(voices_[lane].samples)stop(lane);error.clear();return true;
+      |                                         ^~~~~

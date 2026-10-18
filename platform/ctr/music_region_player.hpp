@@ -41,6 +41,7 @@ public:
  bool set_user_music_db(float db){if(!std::isfinite(db)||db<-120||db>0)return false;user_music_db_=db;return true;}
  void shutdown();
  bool prepared()const{return prepared_;}
+ const upstream::AudioBank&bank()const{return bank_;}
  uint32_t submitted_voices()const{return submitted_;}
  uint32_t buffer_bytes()const{return capacity_*buffer_count*buffer_frames*2*sizeof(int16_t);}
 private:

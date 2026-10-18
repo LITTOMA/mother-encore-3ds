@@ -13,7 +13,7 @@ unsigned checks=0;std::string error;
 bool near(float a,float b){return std::abs(a-b)<.0001f;}
 std::string state(const MusicPlayers&p){
  std::ostringstream out;out<<p.ready()<<p.cleanup_waiting()<<p.deferred_finished_count()<<std::hexfloat;
- for(const auto&n:p.nodes())out<<' '<<n.identity<<' '<<n.generation<<' '<<n.stream<<' '<<n.finished_loop<<' '<<n.finished_index<<' '<<n.remove_on_finished<<' '<<n.gain_db<<' '<<n.playing<<' '<<n.pending_delete<<' '<<n.ensure_empty_on_delete<<' '<<n.tween.from<<' '<<n.tween.to<<' '<<n.tween.duration<<' '<<n.tween.elapsed<<' '<<unsigned(n.tween.curve)<<' '<<n.tween.active;
+ for(const auto&n:p.nodes())out<<' '<<n.identity<<' '<<n.generation<<' '<<n.stream<<' '<<n.finished_loop<<' '<<n.finished_index<<' '<<n.remove_on_finished<<' '<<n.gain_db<<' '<<n.playing<<' '<<n.stream_paused<<' '<<n.pending_delete<<' '<<n.ensure_empty_on_delete<<' '<<n.tween.from<<' '<<n.tween.to<<' '<<n.tween.duration<<' '<<n.tween.elapsed<<' '<<unsigned(n.tween.curve)<<' '<<n.tween.active;
  return out.str();
 }
 void streams(const std::string&line,std::vector<std::string>&sources){

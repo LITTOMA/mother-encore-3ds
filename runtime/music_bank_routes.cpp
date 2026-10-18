@@ -39,7 +39,7 @@ bool MusicBankRoutes::reconcile(const MusicPlayers&players,const std::vector<Mus
         if(next.size()>=policy_.maximum_voices)return fail(e,"Music routing voice capacity exhausted; old routes preserved");
         const MusicPlaybackRoute*old=nullptr;for(const auto&r:routes_)if(r.player==node.identity){old=&r;break;}
         size_t admission=starts.size();for(size_t i=0;i<starts.size();++i)if(starts[i].player==node.identity){admission=i;break;}
-        MusicPlaybackRoute route;route.player=node.identity;route.generation=node.generation;route.gain_db=node.gain_db;route.slot=policy_.maximum_voices;
+        MusicPlaybackRoute route;route.player=node.identity;route.generation=node.generation;route.gain_db=node.gain_db;route.stream_paused=node.stream_paused;route.slot=policy_.maximum_voices;
         if(old&&node.generation<old->generation)return fail(e,"Music routed playback generation regressed");
         if(old&&old->generation==node.generation){
             if(admission!=starts.size())return fail(e,"Music start redundantly admits an unchanged playback");

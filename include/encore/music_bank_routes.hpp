@@ -17,6 +17,7 @@ struct MusicPlaybackRoute {
     uint64_t player=0,generation=0,provider=0;
     uint32_t track_id=0,slot=0;
     float gain_db=0;
+    bool stream_paused=false;
 };
 // Checked metadata ownership and stable logical voice slots. This does not
 // open PCM, allocate DSP memory, stop/start hardware or infer external starts.

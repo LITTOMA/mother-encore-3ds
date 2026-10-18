@@ -8,7 +8,7 @@ using namespace encore::upstream;
 namespace {
 unsigned checks=0;std::string error;
 #define CHECK(x) do{++checks;if(!(x)){std::fprintf(stderr,"Music finished %u: %s (%s)\n",checks,#x,error.c_str());std::exit(1);}}while(0)
-std::string digest(const MusicPlayers&p){std::ostringstream out;out<<p.ready()<<p.cleanup_waiting()<<p.deferred_finished_count();for(const auto&n:p.nodes())out<<' '<<n.identity<<' '<<n.generation<<' '<<n.stream<<' '<<n.finished_loop<<' '<<n.finished_index<<' '<<n.remove_on_finished<<' '<<n.playing<<' '<<n.pending_delete<<' '<<n.ensure_empty_on_delete<<' '<<n.gain_db;return out.str();}
+std::string digest(const MusicPlayers&p){std::ostringstream out;out<<p.ready()<<p.cleanup_waiting()<<p.deferred_finished_count();for(const auto&n:p.nodes())out<<' '<<n.identity<<' '<<n.generation<<' '<<n.stream<<' '<<n.finished_loop<<' '<<n.finished_index<<' '<<n.remove_on_finished<<' '<<n.playing<<' '<<n.stream_paused<<' '<<n.pending_delete<<' '<<n.ensure_empty_on_delete<<' '<<n.gain_db;return out.str();}
 void reference(const char*path){
  std::ifstream file(path);CHECK(bool(file));std::string line;std::vector<std::string>sources(4);MusicPlayersPolicy policy;policy.maximum_nodes=16;MusicPlayers players;unsigned cases=0,steps=0;
  while(std::getline(file,line)){

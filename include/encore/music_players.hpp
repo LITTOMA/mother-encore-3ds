@@ -21,7 +21,7 @@ struct MusicPlayerNode {
     bool remove_on_finished=false;
     float gain_db=0;
     MusicPlayerTween tween;
-    bool playing=false,pending_delete=false,ensure_empty_on_delete=false;
+    bool playing=false,pending_delete=false,ensure_empty_on_delete=false,stream_paused=false;
 };
 // Portable loop-player property/lifetime state. Media admission and waveform
 // ownership stay outside this class; no scene, resource buffer or DSP pointer
@@ -39,6 +39,10 @@ public:
     bool dispatch_finished(std::string&);
     size_t deferred_finished_count()const{return deferred_.size();}
     bool stop(uint64_t,std::string&);
+    // Source pause acts on existing nodes only and seeks/stops owned Tween tracks.
+    // Resume changes stream_paused; a later tween start resumes stopped tracks.
+    bool pause_all(std::string&);
+    bool resume_all(std::string&);
     bool set_volume(uint64_t,float,std::string&);
     bool fade_in(uint64_t,float,double,std::string&);
     bool fade_to(uint64_t,float,double,std::string&);
@@ -61,10 +65,10 @@ private:
     std::shared_ptr<const MusicPlayersOwner>owner_;
     MusicPlayersPolicy policy_;
     std::vector<MusicPlayerNode>nodes_;
-    std::vector<uint64_t>deletions_;
+    std::vector<uint64_t>deletions_,after_tween_deletions_;
     struct DeferredLoop{std::string stream;uint32_t index=0;};
     std::vector<DeferredLoop>deferred_;
     uint64_t next_identity_=0;
-    bool ready_=false,cleanup_waiting_=false;
+    bool ready_=false,cleanup_waiting_=false,tweens_stopped_=false;
 };
 }

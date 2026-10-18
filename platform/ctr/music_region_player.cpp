@@ -47,13 +47,13 @@ MusicPreparationStep MusicRegionPlayer::prepare_step(uint32_t budget,std::string
 }
 void MusicRegionPlayer::stop(uint32_t slot){auto&v=voices_[slot];
  if(v.active&&v.channel<maximum_voices&&channel_owners[v.channel]==this){
-  ndspChnWaveBufClear(int(first_channel+v.channel));if(paused_)ndspChnSetPaused(int(first_channel+v.channel),false);channel_owners[v.channel]=nullptr;
+  ndspChnWaveBufClear(int(first_channel+v.channel));if(paused_||v.stream_paused)ndspChnSetPaused(int(first_channel+v.channel),false);channel_owners[v.channel]=nullptr;
  }
- v.active=false;v.waves={};
+ v.active=false;v.stream_paused=false;v.waves={};
 }
 bool MusicRegionPlayer::set_paused(bool paused,std::string&e){
  if(!prepared_){e="Music pause requires prepared stream ownership";return false;}
- if(paused_!=paused){for(uint32_t i=0;i<capacity_;++i)if(voices_[i].active)ndspChnSetPaused(int(first_channel+voices_[i].channel),paused);paused_=paused;}
+ if(paused_!=paused){for(uint32_t i=0;i<capacity_;++i)if(voices_[i].active)ndspChnSetPaused(int(first_channel+voices_[i].channel),paused||voices_[i].stream_paused);paused_=paused;}
  e.clear();return true;
 }
 void MusicRegionPlayer::shutdown(){for(uint32_t i=0;i<capacity_;++i){stop(i);if(voices_[i].samples)linearFree(voices_[i].samples);voices_[i]={};}for(auto&t:tracks_){if(t.file)std::fclose(t.file);t={};}capacity_=track_count_=submitted_=0;owner_=nullptr;graph_owner_.reset();provider_identity_=0;prepared_regions_={};finished_.clear();prepared_=preparing_=paused_=false;validation_track_=allocation_voice_=0;validation_crc_=0xffffffffu;track_bytes_=verified_bytes_=total_bytes_=0;asset_root_.clear();}
@@ -103,7 +103,7 @@ bool MusicRegionPlayer::route_frame(const upstream::MusicBankRoutes&routes,uint6
   used[route.slot]=true;
   if(route.provider!=provider)continue;
   if(!metadata||route.slot>=capacity_)return fail(e,"Global music provider voice capacity is unavailable");
-  frame[route.slot]={route.player,route.generation,route.track_id,route.gain_db,true};
+  frame[route.slot]={route.player,route.generation,route.track_id,route.gain_db,true,route.stream_paused};
  }
  e.clear();return true;
 }
@@ -145,14 +145,16 @@ bool MusicRegionPlayer::sync_frame(const PlaybackFrame&input,const upstream::Mus
   if(!v.active||(v.generation!=s.generation||v.identity!=s.identity)){stop(i);v.track=index[i];auto&a=tracks_[v.track].asset;if(!v.cursor.reset(a.frames,a.loop_start,a.loops()))return fail(e,"Invalid region cursor");v.identity=s.identity;v.generation=s.generation;v.completed=false;v.channel=channels[i];channel_owners[v.channel]=this;v.active=true;
    int channel=int(first_channel+v.channel);ndspChnReset(channel);ndspChnSetInterp(channel,NDSP_INTERP_POLYPHASE);ndspChnSetRate(channel,float(a.sample_rate));ndspChnSetFormat(channel,a.channels==2?NDSP_FORMAT_STEREO_PCM16:NDSP_FORMAT_MONO_PCM16);newly_started=true;
   }
-  float volumes[12]{};volumes[0]=volumes[1]=upstream::audio_linear_gain(s.gain_db+tracks_[v.track].asset.gain_db+user_music_db_);ndspChnSetMix(int(first_channel+v.channel),volumes);if(!refill(i,e))return false;if(newly_started){if(paused_)ndspChnSetPaused(int(first_channel+v.channel),true);++submitted_;}
+  const bool changed_pause=v.stream_paused!=s.stream_paused;v.stream_paused=s.stream_paused;
+  if((newly_started&&(paused_||v.stream_paused))||(!newly_started&&changed_pause&&!paused_))ndspChnSetPaused(int(first_channel+v.channel),paused_||v.stream_paused);
+  float volumes[12]{};volumes[0]=volumes[1]=upstream::audio_linear_gain(s.gain_db+tracks_[v.track].asset.gain_db+user_music_db_);ndspChnSetMix(int(first_channel+v.channel),volumes);if((newly_started||(!paused_&&!v.stream_paused))&&!refill(i,e))return false;if(newly_started)++submitted_;
  }
  e.clear();return true;
 }
 bool MusicRegionPlayer::pump_streams(std::string&e){
  if(!prepared_||paused_){e.clear();return true;}
  for(uint32_t i=0;i<capacity_;++i)if(voices_[i].active&&(voices_[i].channel>=maximum_voices||channel_owners[voices_[i].channel]!=this))return fail(e,"Invalid regional streaming channel lease");
- for(uint32_t i=0;i<capacity_;++i)if(!refill(i,e))return false;
+ for(uint32_t i=0;i<capacity_;++i)if(!voices_[i].stream_paused&&!refill(i,e))return false;
  e.clear();return true;
 }
 

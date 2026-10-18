@@ -63,6 +63,27 @@ bool MusicPlayers::stop(uint64_t id,std::string&e){
     auto*node=mutable_node(id);if(!ready_||!node)return bad(e,"Loop player stop identity is unavailable");
     node->playing=false;node->finished_loop.clear();node->finished_index=UINT32_MAX;e.clear();return true;
 }
+bool MusicPlayers::pause_all(std::string&e){
+    if(!ready_)return bad(e,"Music pause owner is unavailable");
+    MusicPlayers next=*this;bool active=false;
+    if(!next.tweens_stopped_)for(const auto&node:next.nodes_)active|=node.tween.active;
+    if(active){
+        // Tween.seek beyond runtime applies final values without emitting its
+        // completion signal. stop_all retains the tracks, reset to time zero.
+        for(auto&node:next.nodes_)if(node.tween.active){node.gain_db=node.tween.to;node.tween.elapsed=0;}
+        for(const auto&node:next.nodes_)if(!node.playing||node.gain_db<=next.policy_.silence_db){
+            if(std::find(next.after_tween_deletions_.begin(),next.after_tween_deletions_.end(),node.identity)==next.after_tween_deletions_.end())
+                next.after_tween_deletions_.push_back(node.identity);
+        }
+        next.tweens_stopped_=true;
+    }
+    for(auto&node:next.nodes_)node.stream_paused=true;
+    *this=std::move(next);e.clear();return true;
+}
+bool MusicPlayers::resume_all(std::string&e){
+    if(!ready_)return bad(e,"Music resume owner is unavailable");
+    for(auto&node:nodes_)node.stream_paused=false;e.clear();return true;
+}
 bool MusicPlayers::set_volume(uint64_t id,float value,std::string&e){
     auto*node=mutable_node(id);if(!ready_||!node||!gain(value))return bad(e,"Loop player volume identity/value is invalid");
     node->gain_db=value;e.clear();return true;
@@ -71,7 +92,12 @@ bool MusicPlayers::tween(uint64_t id,float from,float to,double seconds,MusicReg
     auto*node=mutable_node(id);float checked;
     if(!ready_||!node)return bad(e,"Loop player tween identity is unavailable");
     if(!sample_music_tween(from,to,seconds,0,curve,checked,e))return false;
-    node->tween={from,to,seconds,0,curve,true};e.clear();return true;
+    const bool restarting=tweens_stopped_;
+    if(restarting){
+        for(auto&other:nodes_)if(other.tween.active){other.tween.elapsed=0;other.gain_db=other.tween.from;}
+        tweens_stopped_=false;
+    }
+    node->tween={from,to,seconds,0,curve,true};if(restarting)node->gain_db=from;e.clear();return true;
 }
 bool MusicPlayers::fade_in(uint64_t id,float target,double seconds,std::string&e){return tween(id,policy_.silence_db,target,seconds,MusicRegionCurve::QuartOut,e);}
 bool MusicPlayers::fade_to(uint64_t id,float target,double seconds,std::string&e){
@@ -120,6 +146,8 @@ bool MusicPlayers::flush_deletions(std::string&e){
     for(auto id:pending){
         const auto found=std::find_if(next.nodes_.begin(),next.nodes_.end(),[&](const auto&node){return node.identity==id;});
         if(found==next.nodes_.end())return bad(e,"Loop player deletion queue lost its identity");
+        if(std::find(next.after_tween_deletions_.begin(),next.after_tween_deletions_.end(),id)!=next.after_tween_deletions_.end())
+            return bad(e,"Deleting a paused Tween waiter before completion is unsupported");
         const bool ensure=found->ensure_empty_on_delete;next.nodes_.erase(found);
         if(ensure&&next.nodes_.empty()){uint64_t empty;if(!next.add_player(empty,e))return false;}
     }
@@ -128,10 +156,15 @@ bool MusicPlayers::flush_deletions(std::string&e){
 bool MusicPlayers::advance(double delta,bool external,std::string&e){
     if(!ready_||!std::isfinite(delta)||delta<0||delta>1)return bad(e,"Loop player frame delta is invalid");
     MusicPlayers next=*this;bool active=false;
+    if(next.tweens_stopped_){e.clear();return true;}
     for(auto&node:next.nodes_)if(node.tween.active){
         auto&t=node.tween;t.elapsed+=delta;
         if(!sample_music_tween(t.from,t.to,t.duration,t.elapsed,t.curve,node.gain_db,e))return false;
         t.active=t.elapsed<t.duration;active|=t.active;
+    }
+    if(!active&&!external&&!next.after_tween_deletions_.empty()){
+        for(auto id:next.after_tween_deletions_)if(!next.mark_remove(id,true,e))return false;
+        next.after_tween_deletions_.clear();
     }
     if(next.cleanup_waiting_&&!active&&!external){
         next.cleanup_waiting_=false;

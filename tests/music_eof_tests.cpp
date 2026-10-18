@@ -65,14 +65,29 @@ int main(int argc,char**argv){
  const auto house_start=frames_added[4];
  for(unsigned i=0;i<house_frames/(3*2048)+4;++i){drain(4);check(service.pump_streams(e)&&service.take_finished().empty(),"builtin source loop emits no finished callback");}
  check(frames_added[4]-house_start>house_frames&&graph.find(0)->generation==2,"builtin loop wraps without replaying manager call");
- uint64_t second;check(graph.add_player(second,e)&&second==1&&graph.play_track(second,victory_uri,victory_uri,e)&&routes.reconcile(graph,{{second,1,3}},e)&&service.sync_routes(routes,e),"callback-loop victory source starts");
- const auto victory_start=frames_added[5];const auto initial_chunk=frames_added[5];check(initial_chunk>0,"victory initial buffers");
+ // Original pause_all affects existing nodes. A later same-bank node remains
+ // unpaused; routing must preserve both independent stream positions/queues.
+ check(graph.pause_all(e)&&routes.reconcile(graph,{},e)&&service.sync_routes(routes,e)&&paused_channels[4]&&!paused_channels[0],"source pause reaches only retained regional voice");
+ auto paused_queue=queues[4];auto paused_frames=frames_added[4];auto paused_resets=resets[4];
+ for(unsigned i=0;i<5;++i)check(service.pump_streams(e)&&service.take_finished().empty(),"paused source produces neither refill nor EOF");
+ check(queues[4]==paused_queue&&frames_added[4]==paused_frames&&resets[4]==paused_resets,"pause retains queued samples and exact cursor");
+ uint64_t peer;check(graph.add_player(peer,e)&&graph.play_loop(peer,house_uri,e)&&routes.reconcile(graph,{{peer,1,2}},e)&&service.sync_routes(routes,e),"new source node on same checked provider");
+ check(paused_channels[4]&&!paused_channels[5]&&queues[5].size()==3,"existing and newly created same-bank players have independent pause flags");
+ check(service.set_paused(true,e)&&paused_channels[4]&&paused_channels[5],"physical lifecycle override pauses both voices");
+ check(service.set_paused(false,e)&&paused_channels[4]&&!paused_channels[5],"clearing physical override preserves source pause on older node");
+ check(service.set_user_music_db(-12,e)&&service.sync_routes(routes,e)&&paused_channels[4]&&queues[4]==paused_queue,"settings mix changes preserve source pause and queue");
+ check(graph.resume_all(e)&&routes.reconcile(graph,{},e)&&service.sync_routes(routes,e)&&!paused_channels[4]&&!paused_channels[5],"source resume changes existing voice flags");
+ check(queues[4]==paused_queue&&frames_added[4]==paused_frames&&resets[4]==paused_resets,"resume never restarts old stream or advances queued cursor");
+ check(graph.queue_remove(peer,e)&&graph.flush_deletions(e)&&routes.reconcile(graph,{},e)&&service.sync_routes(routes,e)&&!paused_channels[5],"deleting peer releases only its channel");
+ const auto victory_baseline=frames_added[5];
+ uint64_t second;check(graph.add_player(second,e)&&second==peer+1&&graph.play_track(second,victory_uri,victory_uri,e)&&routes.reconcile(graph,{{second,1,3}},e)&&service.sync_routes(routes,e),"callback-loop victory source starts");
+ const auto initial_chunk=frames_added[5]-victory_baseline;check(initial_chunk>0,"victory initial buffers");
  const auto first_wave=upstream::audio_crc32(reinterpret_cast<const uint8_t*>(queues[5][0]->data_pcm16),queues[5][0]->nsamples*va.channels*2);
- const auto v1=finish(service,5,e);check(v1.player==second&&v1.generation==1&&frames_added[5]==victory_frames,"callback body ends after one full source, not a builtin loop");
- check(service.sync_routes(routes,e)&&service.take_finished().empty()&&frames_added[5]==victory_frames,"body also stays latched before callback");
+ const auto v1=finish(service,5,e);check(v1.player==second&&v1.generation==1&&frames_added[5]-victory_baseline==victory_frames,"callback body ends after one full source, not a builtin loop");
+ check(service.sync_routes(routes,e)&&service.take_finished().empty()&&frames_added[5]-victory_baseline==victory_frames,"body also stays latched before callback");
  check(graph.signal_finished(second,1,e)&&graph.dispatch_finished(e)&&routes.reconcile(graph,{{second,2,3}},e)&&service.sync_routes(routes,e),"same URI callback publishes another playback generation");
  check(upstream::audio_crc32(reinterpret_cast<const uint8_t*>(queues[5][0]->data_pcm16),queues[5][0]->nsamples*va.channels*2)==first_wave,"callback restarts at source frame zero");
- const auto v2=finish(service,5,e);check(v2.player==second&&v2.generation==2&&frames_added[5]==uint64_t(victory_frames)*2,"exact second callback cycle");
+ const auto v2=finish(service,5,e);check(v2.player==second&&v2.generation==2&&frames_added[5]-victory_baseline==uint64_t(victory_frames)*2,"exact second callback cycle");
  check(graph.stop(second,e)&&graph.signal_finished(second,2,e)&&graph.dispatch_finished(e)&&graph.deferred_finished_count()==0&&routes.reconcile(graph,{},e)&&service.sync_routes(routes,e),"stop before signal disconnects source loop");
  uint64_t once;check(graph.add_player(once,e)&&graph.play_track(once,intro_uri,{},e)&&routes.reconcile(graph,{{once,1,1}},e)&&service.sync_routes(routes,e),"one-shot source on retained provider");
  const auto only=finish(service,5,e);check(only.player==once&&only.generation==1,"one-shot EOF");
@@ -86,6 +101,6 @@ int main(int argc,char**argv){
  const auto paired=service.take_finished();check(paired.size()==2&&paired[0].player==third&&paired[0].provider==5&&paired[1].player==fourth&&paired[1].provider==4,"completed source nodes delivered in insertion order");
  check(service.take_finished().empty()&&queues[0]==root_queue,"completion tokens consumed once, existing owner intact");
  service.shutdown();owner.shutdown();check(linear_bytes==0,"all buffers released after EOF and loops");
- (void)victory_start;
+
  std::cout<<"Music natural EOF NDSP-double PASS "<<checks<<" checks; exact source frames/partial tails, one delivery, latched completed generations, intro/builtin/callback loops, one-shot cleanup and source order; no real device timing/audible-output claim\n";
 }

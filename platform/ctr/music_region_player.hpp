@@ -49,9 +49,9 @@ public:
 private:
  static constexpr uint32_t buffer_count=3,buffer_frames=2048;
  struct Track{upstream::AudioAsset asset{};FILE*file=nullptr;};
- struct Voice{uint64_t identity=0,generation=0;uint32_t track=0,channel=maximum_voices;bool active=false,completed=false;
+ struct Voice{uint64_t identity=0,generation=0;uint32_t track=0,channel=maximum_voices;bool active=false,completed=false,stream_paused=false;
   upstream::AudioFrameCursor cursor;std::array<ndspWaveBuf,buffer_count>waves{};int16_t*samples=nullptr;};
- struct PlaybackVoice{uint64_t identity=0,generation=0;uint32_t track_id=0;float gain_db=0;bool playing=false;};
+ struct PlaybackVoice{uint64_t identity=0,generation=0;uint32_t track_id=0;float gain_db=0;bool playing=false,stream_paused=false;};
  using PlaybackFrame=std::array<PlaybackVoice,maximum_voices>;
  bool route_frame(const upstream::MusicBankRoutes&,uint64_t,PlaybackFrame&,std::string&)const;
  bool sync_frame(const PlaybackFrame&,const upstream::MusicRegionController*,std::shared_ptr<const upstream::MusicPlayersOwner>,uint64_t,std::string&);

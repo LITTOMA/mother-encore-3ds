@@ -1,0 +1,77 @@
+{
+  "kind": "completed-host-test-executables-only",
+  "removed": [
+    {
+      "path": "build/full-port/music_bank_routes-lifetime-check",
+      "bytes": 45313360,
+      "sha256": "7674bbe44c089e445553e627abf1ae40e91cb4d8acf1a17e46d41c43ef5f6464"
+    },
+    {
+      "path": "build/full-port/music_bank_transports-routes-dsp-check",
+      "bytes": 46641688,
+      "sha256": "8e0bd786dfa48b6db7d11c1d6c24ef6e4f14339aeaae3db003e8b518c1e15ced"
+    },
+    {
+      "path": "build/full-port/music_eof-routes-dsp-check",
+      "bytes": 46540712,
+      "sha256": "dddf5b764a8cecf50d813a04fd5802326c3e5c957db70fb649540d545c128b5d"
+    },
+    {
+      "path": "build/full-port/music_finished-lifetime-check",
+      "bytes": 44880712,
+      "sha256": "578b9ed568413c15acfc238282ee556d1e6ff6611215aed31820f7ddc9581b24"
+    },
+    {
+      "path": "build/full-port/music_library-lifetime-check",
+      "bytes": 44965424,
+      "sha256": "d71de66467d676a56256c05d04b1b2b149e8f42cc5056ad51f5da17f004d10fd"
+    },
+    {
+      "path": "build/full-port/music_pause-lifetime-check",
+      "bytes": 44994016,
+      "sha256": "605d470f5cf387e090311437863db61fbb6ed052d8acf7a483d1778f74853b33"
+    },
+    {
+      "path": "build/full-port/music_player_choice-lifetime-check",
+      "bytes": 44832088,
+      "sha256": "dafea48f0c97686672f1311b8afa9d9f22093b21d718edaac915cdc0bc8ecf73"
+    },
+    {
+      "path": "build/full-port/music_players-lifetime-check",
+      "bytes": 44994120,
+      "sha256": "336d3b2372b94fb5c3c6438987d6bdf6f6e3f962884a54e417d7e026634e24d3"
+    },
+    {
+      "path": "build/full-port/music_region_player-routes-dsp-check",
+      "bytes": 45697584,
+      "sha256": "c069eb5093550f74160799aac0d30f49b8191f251660fc4492216e1286914242"
+    },
+    {
+      "path": "build/full-port/music_region_prepare-routes-dsp-check",
+      "bytes": 46175448,
+      "sha256": "44cd8f0430a8ec07406d0bf4f35ce76444ffadb3805b7a2ee346d9b53771d96e"
+    },
+    {
+      "path": "build/full-port/music_region_service-routes-dsp-check",
+      "bytes": 46143024,
+      "sha256": "911772992513b50e8323be1b486e64158608954e9935072c352d1064ff859182"
+    },
+    {
+      "path": "build/full-port/music_regions-lifetime-check",
+      "bytes": 44884568,
+      "sha256": "0156c792bae29da9d64e0ec2f7d7cc7e6037b71304eacdfbf0f2bd00ec03d779"
+    },
+    {
+      "path": "build/full-port/music_scene_graph-lifetime-check",
+      "bytes": 45316720,
+      "sha256": "954320e8cce519f776c900d5849df012922432cf869a4d32327928cb0cc27b1e"
+    },
+    {
+      "path": "build/full-port/run_audio_player-routes-dsp-check",
+      "bytes": 46041528,
+      "sha256": "a00c1a1a12b6fc342c16a5d70d1446a8b1ec7eef71a270779460091513286b40"
+    }
+  ],
+  "total_bytes": 637420992,
+  "kept": "Object cache, raw logs, latest validated emulator game and all source media retained; no emulator currently running."
+}

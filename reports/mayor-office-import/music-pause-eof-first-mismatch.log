@@ -1,0 +1,1 @@
+FAIL: callback body ends after one full source, not a builtin loop

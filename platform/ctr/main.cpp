@@ -53,6 +53,7 @@ extern "C" { EncoreSemanticProbe encore_semantic_probe; }
 #include "encore/battle_action_presentation.hpp"
 #include "encore/battle_outcome.hpp"
 #include "audio_player.hpp"
+#include "field_run_audio.hpp"
 #include "music_region_service.hpp"
 #include "encore/battle_entry.hpp"
 #include "encore/menu_navigation.hpp"
@@ -669,6 +670,7 @@ std::unique_ptr<upstream::FieldSceneResources> field_resources;
 upstream::BattleLoot battle_loot;
 uint32_t field_story_text=UINT32_MAX,field_story_choices_generation=0;
 std::unique_ptr<upstream::FieldScene> field_scene;
+std::unique_ptr<ctr::FieldRunAudioService> field_run_audio;
 OpeningActorRenderer field_actor;
 FieldRenderer field_renderer;
 encore::ctr::LoadingSpriteSheet mick_sheet=nullptr;
@@ -1354,22 +1356,31 @@ void update_field_music(){
   if(!ok){audio_status=error;return;}field_music_contacts[i]=inside;
  }
 }
+bool prepare_field_run_audio(const upstream::FieldSceneResources&resources,std::unique_ptr<ctr::FieldRunAudioService>&out,std::string&error){
+ if(out){error="Field run audio candidate is already prepared";return false;}
+ if(!resources.steps().valid())return true;
+ auto candidate=std::make_unique<ctr::FieldRunAudioService>();
+ if(!candidate->prepare(resources.steps(),audio_player,error))return false;
+ out=std::move(candidate);error.clear();return true;
+}
+
 bool enter_field(const upstream::WorldRoute& route,std::string& error){
     using namespace upstream;
     LoadingScope loading("Entering field",5);
     SessionSnapshot snapshot;auto resources=std::make_unique<FieldSceneResources>();
     std::unique_ptr<ctr::MusicRegionService> music_candidate;
+    std::unique_ptr<ctr::FieldRunAudioService> run_candidate;
     const auto& source=active_overworld();
     const auto direction=(route.direction.x||route.direction.y)?route.direction:source.player().direction;
     if(!loading.step([&]{return collect_session_snapshot(snapshot,error,&source);},"source-state")||
-       !loading.step([&]{return resources->load(resource_catalog,world_links,route.to,"romfs:/",opening_data.view(),items_data.view(),error)&&prepare_field_music(*resources,music_candidate,error)&&prepare_field_story_audio(*resources,error);},"field-metadata"))return false;
+       !loading.step([&]{return resources->load(resource_catalog,world_links,route.to,"romfs:/",opening_data.view(),items_data.view(),error)&&prepare_field_music(*resources,music_candidate,error)&&prepare_field_story_audio(*resources,error)&&prepare_field_run_audio(*resources,run_candidate,error);},"field-metadata"))return false;
     const auto room=resources->room();std::vector<bool> flags(room.flag_count(),false);
     for(uint32_t i=0;i<room.flag_count();++i)flags[i]=source.story_flag(room.string(room.flag(i).name_string));
     auto candidate=std::make_unique<FieldScene>();
     if(!loading.step([&]{return candidate->prepare(room,resources->map(),world_links,flags,route.destination,direction,{float(view_width),float(view_height)},error);},"field-scene"))return false;
     // Mick bind needs the prepared world for flag validation before graphics commit.
     mick_bind_target=candidate.get();
-    if(!loading.step([&]{return bind_field_mick(*candidate,*resources,error)&&bind_field_npcs(*candidate,*resources,error)&&(!resources->story().valid()||candidate->bind_story(resources->story(),items_data.view(),field_story_host,error));},"field-actors")){mick_bind_target=nullptr;return false;}
+    if(!loading.step([&]{return bind_field_mick(*candidate,*resources,error)&&bind_field_npcs(*candidate,*resources,error)&&(!resources->story().valid()||candidate->bind_story(resources->story(),items_data.view(),field_story_host,error))&&(!resources->steps().valid()||candidate->bind_steps(resources->steps(),audio_player.bank(),snapshot.run_sound,error));},"field-actors")){mick_bind_target=nullptr;return false;}
     mick_bind_target=nullptr;
     if(!candidate->world.set_party_leader(native_session_data.leader_id())){error="Field party leader binding rejected";return false;}
     const auto restore_graphics=[&]{
@@ -1395,7 +1406,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     texture_owner_checkpoint("field-graphics-ready");
     // Commit: the House owner stays parked (paused in SceneTransition) behind the field.
     candidate->world.attach_random(battle_random);
-    cancel_battle_prewarm();field_story_text=UINT32_MAX;session_state=std::move(snapshot);field_scene.reset();field_resources=std::move(resources);field_scene=std::move(candidate);field_status.clear();field_choice_shown=false;
+    cancel_battle_prewarm();field_story_text=UINT32_MAX;session_state=std::move(snapshot);field_run_audio.reset();field_scene.reset();field_resources=std::move(resources);field_scene=std::move(candidate);field_run_audio=std::move(run_candidate);field_status.clear();field_choice_shown=false;
     dialogue_choices.close();save_menu.close();storage_menu=StorageMenu{};field_equipment_menu=FieldEquipmentMenu{};
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;
     error.clear();return true;
@@ -1432,7 +1443,7 @@ bool enter_house_from_field(const upstream::WorldRoute& route,std::string& error
     // Same owner commit as New Game / LOAD, without LOAD's source UID reallocation.
     battle_entry=BattleEntry{};battle_round=BattleRound{};battle_outcome=BattleOutcome{};round_presentation=BattleActionPresentation{};round_ready=false;round_error.clear();battle_loot=upstream::BattleLoot{};
     session_state=std::move(prepared.state);session_rewards=std::move(prepared.stats);session_inventory=std::move(prepared.inventory);session_storage=std::move(prepared.storage);session_state_ready=session_rewards_valid=true;
-    battle_random=ready_random;candidate->world.attach_random(battle_random);candidate->presentation.rebind_random(battle_random);gameplay_scene.swap(candidate);field_scene.reset();field_resources.reset();
+    battle_random=ready_random;candidate->world.attach_random(battle_random);candidate->presentation.rebind_random(battle_random);gameplay_scene.swap(candidate);field_run_audio.reset();field_scene.reset();field_resources.reset();
     dialogue_choices.close();save_menu.close();save_open_failed=storage_open_failed=false;storage_menu=StorageMenu{};field_equipment_menu=FieldEquipmentMenu{};field_equipment_status.clear();save_status.clear();items_status.clear();house_error.clear();house_sound_requests=0;
     if(!items_menu.initialize(session_inventory)){error=items_menu.error();return false;}
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;audio_player.reset_scene_requests();
@@ -1459,7 +1470,7 @@ void perform_scene_swap(){
         scene_reject=error.empty()?"Scene change rejected; B returns":"Scene change rejected: "+error+"; B returns";
         house_error.clear();gameplay_scene->house.abort_scene_transition(scene_reject.c_str());field_status=error;}
 }
-void reset_field_state(){scene_door.cancel();if(in_field()){release_field_graphics();field_scene.reset();}field_resources.reset();field_status.clear();door_sound_requests=0;}
+void reset_field_state(){scene_door.cancel();if(field_run_audio&&audio_player.available()){std::string why;if(!audio_player.stop_lane(ctr::AudioLane::Run,why))audio_status=why;}field_run_audio.reset();if(in_field()){release_field_graphics();field_scene.reset();}field_resources.reset();field_status.clear();door_sound_requests=0;}
 void draw_door_masks(float focus_x,float focus_y){
     if(!scene_door.covering())return;
     const auto masks=upstream::door_transition_masks(introduction_data,scene_door.kind(),scene_door.cut(),float(view_width),float(view_height),focus_x,focus_y);
@@ -1627,7 +1638,7 @@ bool load_house(std::string& error){
     room_draw_items.reserve(size_t(room.overlay_count())+room.actor_instance_count()+32);
     return true;
 }
-void free_house(){cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();field_map_renderer.free();field_menus=upstream::FieldMenus{};field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();shutdown_region_music();audio_player.shutdown();house_renderer.free();present_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();field_renderer.free();field_actor.free();release_mick_graphics();field_scene.reset();field_resources.reset();}
+void free_house(){cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();field_map_renderer.free();field_menus=upstream::FieldMenus{};field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();shutdown_region_music();audio_player.shutdown();house_renderer.free();present_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();field_renderer.free();field_actor.free();release_mick_graphics();field_run_audio.reset();field_scene.reset();field_resources.reset();}
 void text(unsigned index,float x,float y,float scale,const std::string& value,u32 color=ink,float width=380){
     auto& slot=debug_text[index];
     if(!slot.ready||slot.value!=value){
@@ -2081,7 +2092,7 @@ int main(int argc,char** argv){
             if(in_field()){
                 if(field_scene->phase()!=upstream::FieldPhase::Error){
                     bool ok=field_scene->before_physics(input);
-                    if(ok&&field_scene->world.healthy())field_scene->world.advance(input);
+                    if(ok&&field_scene->world.healthy())ok=field_scene->world.advance(input);
                     ok=ok&&field_scene->after_physics();
                     if(ok&&!in_battle())update_field_music();
                     if(ok&&field_scene->phase()==upstream::FieldPhase::Walking){
@@ -2155,6 +2166,7 @@ int main(int argc,char** argv){
             process_dialogue_audio(box);
             if(field_scene->phase()==upstream::FieldPhase::Walking&&!field_status.empty()&&field_status.rfind("Scene change rejected",0)==0)field_status.clear();
             for(const auto sound:field_scene->take_sounds()){++door_sound_requests;if(!sound.empty())play_source_audio(std::string(sound));}
+            if(field_run_audio){std::string why;if(!field_run_audio->sync(field_scene->run_audio(),audio_player,why))audio_status="Run audio rejected: "+why;else if(audio_status.rfind("Run audio rejected:",0)==0)audio_status.clear();}
             requested_route=field_scene->take_route();
         }else{
             if(world_visible&&gameplay_scene->world.healthy())gameplay_scene->world.idle_frame(dt);

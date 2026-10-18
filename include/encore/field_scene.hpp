@@ -98,6 +98,7 @@ public:
     bool bind_mick(MickView,MickHost&,std::string& error);
     bool bind_npc(MickView,MickHost&,std::string& error);
     bool bind_steps(FieldStepsView,const AudioBank&,std::string_view inherited_sound,std::string&);
+    FieldRunLoop&run_audio(){return run_audio_;}
     const FieldRunLoop&run_audio()const{return run_audio_;}
     void clear_run_events(){run_audio_.clear_events();}
     bool npcs_ready()const;

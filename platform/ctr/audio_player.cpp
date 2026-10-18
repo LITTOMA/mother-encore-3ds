@@ -23,6 +23,8 @@ bool AudioPlayer::initialize(const char* bank_path,const char* root,std::string&
     shutdown();consumed_=0;submitted_=completed_=queued_frames_=0;dsp_result_=0;
     if(!root){error="Audio asset root is missing";return false;}
     if(!bank_.load_file(bank_path,error))return false;
+    if(configuration_generation_==UINT64_MAX){error="Audio configuration generation exhausted";return false;}
+    ++configuration_generation_;
     // libctru loads a component already supplied by the launcher or from SD.
     // No firmware is included, downloaded, fabricated, or silently substituted.
     // Admit metadata and the DSP service here; prepare() validates each needed

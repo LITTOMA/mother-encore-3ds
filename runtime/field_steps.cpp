@@ -43,4 +43,33 @@ bool FieldStepsData::load(const uint8_t*p,size_t n,std::string&e){auto fail=[&](
  bytes_.assign(p,p+n);e.clear();return true;
 }
 bool FieldStepsData::load_file(const char*p,std::string&e){std::vector<uint8_t>b;return encore::read_file(p,b,65536,e)&&load(b.data(),b.size(),e);}
+bool FieldRunLoop::initialize(FieldStepsView data,std::string_view inherited,std::string&e){
+ if(prepared()||!data.valid()){e="Run-loop preparation owner rejected";return false;}
+ const auto sound=data.find_sound(inherited);if(sound==kFieldNone){e="Inherited run sound is not admitted";return false;}
+ data_=data;wanted_=registered_=sound;for(uint32_t i=0;i<data.area_count();++i)enabled_.push_back(data.area(i).enabled);e.clear();return true;
+}
+bool FieldRunLoop::set_running(bool enabled,bool paused,bool move,bool climbing,std::string&e){
+ if(!prepared()){e="Run-loop source operation has no metadata";return false;}
+ running_=enabled;
+ if(!paused&&move&&enabled&&!climbing){
+  if(registered_!=wanted_){registered_=wanted_;playing_=true;events_.push_back({FieldRunEventKind::ReplacePlay,wanted_});}
+  else if(!playing_){playing_=true;events_.push_back({FieldRunEventKind::Play,wanted_});}
+ }
+ if(playing_&&!enabled){playing_=false;events_.push_back({FieldRunEventKind::Stop,registered_});}
+ e.clear();return true;
+}
+bool FieldRunLoop::stop_playback(std::string&e){
+ if(!prepared()){e="Run-loop stop has no metadata";return false;}
+ if(playing_){playing_=false;events_.push_back({FieldRunEventKind::Stop,registered_});}e.clear();return true;
+}
+bool FieldRunLoop::set_area_enabled(uint32_t index,bool enabled,std::string&e){
+ if(!prepared()||index>=enabled_.size()){e="Run-loop area enable identity rejected";return false;}
+ enabled_[index]=enabled;e.clear();return true;
+}
+bool FieldRunLoop::area_event(uint32_t index,bool entered,bool player,std::string&e){
+ if(!prepared()||index>=enabled_.size()){e="Run-loop area event identity rejected";return false;}
+ if(player&&enabled_[index]){const auto a=data_.area(index);const auto sound=entered?a.enter:a.exit;if(sound!=kFieldNone)wanted_=sound;}
+ e.clear();return true;
+}
+
 }

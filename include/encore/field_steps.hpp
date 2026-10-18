@@ -20,6 +20,24 @@ private:
  friend class FieldStepsData;const uint8_t*record(uint32_t,uint32_t)const;uint32_t count(uint32_t)const;
  const uint8_t*p_=nullptr;
 };
+enum class FieldRunEventKind:uint8_t {Play=1,ReplacePlay=2,Stop=3};
+struct FieldRunEvent {FieldRunEventKind kind;uint32_t sound=0;};
+// Pure source call semantics. MOVE decides when to invoke these operations;
+// this controller does not infer movement, poll input or own a DSP stream.
+class FieldRunLoop {
+public:
+ bool initialize(FieldStepsView,std::string_view inherited_sound,std::string&);
+ bool set_running(bool enabled,bool paused,bool move_state,bool climbing,std::string&);
+ bool stop_playback(std::string&);
+ bool area_event(uint32_t area,bool entered,bool is_player,std::string&);
+ bool set_area_enabled(uint32_t area,bool enabled,std::string&);
+ bool prepared()const{return data_.valid();}bool running()const{return running_;}bool playing()const{return playing_;}
+ uint32_t wanted_sound()const{return wanted_;}uint32_t registered_sound()const{return registered_;}
+ const std::vector<FieldRunEvent>&events()const{return events_;}void clear_events(){events_.clear();}
+private:
+ FieldStepsView data_;std::vector<bool>enabled_;std::vector<FieldRunEvent>events_;
+ uint32_t wanted_=kFieldNone,registered_=kFieldNone;bool running_=false,playing_=false;
+};
 class FieldStepsData {
 public:
  FieldStepsData()=default;FieldStepsData(const FieldStepsData&)=delete;FieldStepsData&operator=(const FieldStepsData&)=delete;

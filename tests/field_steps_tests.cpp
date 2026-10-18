@@ -2,6 +2,8 @@
 #include "encore/content.hpp"
 #include "encore/crc32.hpp"
 #include <cstdio>
+#include <fstream>
+#include <sstream>
 #include <cstdlib>
 using namespace encore::upstream;
 namespace {
@@ -24,5 +26,14 @@ int main(int argc,char**argv){
  {auto bad=bytes;bad.back()^=1;CHECK(!data.load(bad.data(),bad.size(),error));CHECK(data.view().bytes_identity()==v.bytes_identity());}
  CHECK(!data.load(bytes.data(),65537,error));
  CHECK(!data.load(nullptr,bytes.size(),error));CHECK(data.view().bytes_identity()==v.bytes_identity());
- std::printf("Field stepping codec: %u checks; original loop/media and rectangle identities, strict version/source/negative paths; no movement/audio consumer or scene claim\n",checks);
+ FieldRunLoop detached;CHECK(!detached.set_running(true,false,true,false,error));CHECK(!detached.stop_playback(error));CHECK(!detached.area_event(0,true,true,error));CHECK(!detached.set_area_enabled(0,true,error));CHECK(!detached.initialize({},"wood",error));CHECK(!detached.initialize(v,"unknown",error));CHECK(!detached.prepared());
+ FieldRunLoop loop;CHECK(loop.initialize(v,v.text(v.sound(v.policy().default_sound).name),error));CHECK(!loop.initialize(v,"wood",error));CHECK(loop.wanted_sound()==0&&loop.registered_sound()==0&&!loop.playing()&&!loop.running());
+ std::ifstream native(root+"/run-loop.tsv");CHECK(native.good());std::string line;unsigned rows=0;
+ while(std::getline(native,line)){
+  if(line.empty()||line[0]=='#')continue;int mode,a,b,c,d,wanted,registered,playing,running,count,kind,sound;std::istringstream row(line);CHECK(bool(row>>mode>>a>>b>>c>>d>>wanted>>registered>>playing>>running>>count>>kind>>sound));loop.clear_events();
+  if(mode==0)CHECK(loop.set_running(a,b,c,d,error));else if(mode==1)CHECK(loop.area_event(a,b,c,error));else if(mode==2)CHECK(loop.set_area_enabled(a,b,error));else if(mode==3||mode==4)CHECK(loop.stop_playback(error));else CHECK(false);
+  CHECK(loop.wanted_sound()==unsigned(wanted)&&loop.registered_sound()==unsigned(registered)&&loop.playing()==bool(playing)&&loop.running()==bool(running));CHECK(loop.events().size()==unsigned(count));if(count)CHECK(uint32_t(loop.events()[0].kind)==unsigned(kind)&&loop.events()[0].sound==unsigned(sound));++rows;
+ }
+ CHECK(rows==29);const auto wanted=loop.wanted_sound(),registered=loop.registered_sound();const auto playing=loop.playing(),running=loop.running();const auto events=loop.events().size();CHECK(!loop.area_event(999,true,true,error));CHECK(!loop.set_area_enabled(999,true,error));CHECK(loop.wanted_sound()==wanted&&loop.registered_sound()==registered&&loop.playing()==playing&&loop.running()==running&&loop.events().size()==events);
+ std::printf("Field stepping codec: %u checks; original loop/media and rectangle identities, strict version/source/negative paths; 29 native run-loop and step callback outcomes; no movement/NDSP/scene claim\n",checks);
 }

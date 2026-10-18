@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_footstep_reference.py", line 140, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_footstep_reference.py", line 134, in main
+    invoke(o.godot.resolve(),project,['--editor','--quit'],out/'import.log')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_scene_reference.py", line 44, in invoke
+    raise ValueError('Engine reference failed; inspect ' + str(log))
+ValueError: Engine reference failed; inspect D:\GameDev\3DS\mother-encore-3ds\build\mayor-import\run-loop-native-1\import.log

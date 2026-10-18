@@ -351,3 +351,5 @@ cookies.json
 !/reports/mayor-office-import/*.json
 !/reports/mayor-office-import/*.log
 !/reports/mayor-office-import/*.cpp
+!/reports/field-scene-resources/*.png
+!/reports/field-scene-resources/*.py

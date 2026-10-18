@@ -6,9 +6,10 @@
 #include "encore/battle_round_data.hpp"
 #include <cstdio>
 #include <fstream>
+#include <cstring>
 using namespace encore::upstream;
 int main(int argc,char**argv){
- if(argc!=2)return 1;std::string e;NativeSessionData session;RoomData room;HouseData house;BattleRoundData round;ItemData items;
+ if(argc!=2&&(argc!=3||std::strcmp(argv[2],"--house-melody")))return 1;std::string e;NativeSessionData session;RoomData room;HouseData house;BattleRoundData round;ItemData items;
  auto fail=[&](){std::fprintf(stderr,"%s\n",e.c_str());return 1;};
  if(!session.load_file("romfs/session/opening.encsession",e)||!room.load_file("romfs/world/house/opening.encroom",e)||!house.load_file("romfs/world/house/opening.enchouse",e)||!round.load_file("romfs/battle/lamp/opening.encround",e)||!items.load_file("romfs/ui/opening.encitems",e))return fail();
  auto fixture=session.defaults();NewGameSetupData names;if(!names.load_file("romfs/ui/opening.encnewgame",e))return fail();fixture.characters=session.startup_characters();
@@ -24,9 +25,12 @@ int main(int argc,char**argv){
  fixture.object_flags.push_back({"Ninten's House/Present2",true});
  fixture.position_x=136;fixture.position_y=800;fixture.direction_x=0;fixture.direction_y=1;
  for(auto&f:fixture.flags)if(f.id=="talked_to_dad"||f.id=="got_dog_treats"||f.id=="gave_treats"||f.id=="mick_telepathy"||f.id=="ninten_basement_door"||f.id=="Ninten's House/Present2")f.value=true;
+ // Independent artificial variant exercises the admitted source House music gate.
+ // It is not a claim that the opening or melody was played.
+ if(argc==3)for(auto&f:fixture.flags)if(f.id=="doll_melody")f.value=true;
  if(!validate_native_session_snapshot(session,room.view(),house.view(),round.view(),items.view(),fixture,e))return fail();
  std::vector<uint8_t> encoded;if(!encode_session_save(fixture,session.compatibility(),encoded,e))return fail();SessionSnapshot check;
  if(!decode_session_save(encoded.data(),encoded.size(),session.compatibility(),check,e)||!validate_native_session_snapshot(session,room.view(),house.view(),round.view(),items.view(),check,e))return fail();
  std::ofstream file(argv[1],std::ios::binary|std::ios::trunc);file.write(reinterpret_cast<const char*>(encoded.data()),std::streamsize(encoded.size()));file.flush();if(!file.good())return 1;
- std::printf("Checked artificial post-basement bridge snapshot, complete named roster and custom Pippi nickname; %zu bytes; no played progress claim\n",encoded.size());
+ std::printf("Checked artificial post-basement bridge snapshot, complete named roster and custom Pippi nickname; %zu bytes; no played progress claim; source House melody gate %s\n",encoded.size(),argc==3?"enabled":"unchanged");
 }

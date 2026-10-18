@@ -16,7 +16,9 @@ struct MusicPlayerTween {
 };
 struct MusicPlayerNode {
     uint64_t identity=0,generation=0;
-    std::string stream;
+    std::string stream,finished_loop;
+    uint32_t finished_index=UINT32_MAX;
+    bool remove_on_finished=false;
     float gain_db=0;
     MusicPlayerTween tween;
     bool playing=false,pending_delete=false,ensure_empty_on_delete=false;
@@ -31,6 +33,11 @@ public:
     std::shared_ptr<const MusicPlayersOwner>owner()const{return owner_;}
     bool add_player(uint64_t&identity,std::string&);
     bool play_loop(uint64_t,std::string_view,std::string&);
+    // Resolved current/loop URIs; this bounded slice admits only source start=0.
+    bool play_track(uint64_t,std::string_view current,std::string_view loop,std::string&);
+    bool signal_finished(uint64_t,uint64_t playback_generation,std::string&);
+    bool dispatch_finished(std::string&);
+    size_t deferred_finished_count()const{return deferred_.size();}
     bool stop(uint64_t,std::string&);
     bool set_volume(uint64_t,float,std::string&);
     bool fade_in(uint64_t,float,double,std::string&);
@@ -55,6 +62,8 @@ private:
     MusicPlayersPolicy policy_;
     std::vector<MusicPlayerNode>nodes_;
     std::vector<uint64_t>deletions_;
+    struct DeferredLoop{std::string stream;uint32_t index=0;};
+    std::vector<DeferredLoop>deferred_;
     uint64_t next_identity_=0;
     bool ready_=false,cleanup_waiting_=false;
 };

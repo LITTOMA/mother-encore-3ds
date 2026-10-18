@@ -19,6 +19,7 @@ bool stream(std::string_view value,bool empty=false){
     return true;
 }
 }
+bool valid_music_stream_uri(std::string_view value){return stream(value);}
 bool choose_music_loop(const std::vector<MusicPlayerSnapshot>&players,const MusicLoopRequest&request,MusicLoopChoice&result,std::string&e){
     if(players.empty()||players.size()>256||!stream(request.stream)||
        !stream(request.first_registered_stream)||!gain(request.gain_db)||!gain(request.silence_db)||

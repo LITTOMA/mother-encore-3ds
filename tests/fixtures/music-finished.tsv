@@ -1,0 +1,139 @@
+# original start-zero finished callbacks; explicit synthetic signals
+# stream 1 res://Audio/Music/Battle Encounter/Encounter Enemy.mp3
+# stream 2 res://Audio/Music/House.mp3
+# stream 3 res://Audio/Music/You Win/Victory.mp3
+# policy -80.0 1 0
+case 0 one_shot
+op initial
+state 1 0 0 0 0 0 0 -1 0
+op play 0 1 0
+state 1 0 1 1 0 0 0 -1 1
+op settle
+state 1 0 1 1 0 0 0 -1 1
+op emit 0
+state 1 0 1 0 1 0 0 -1 0
+op flush
+state 1 1 0 0 0 0 0 -1 0
+case 1 intro_loop
+op initial
+state 1 0 0 0 0 0 0 -1 0
+op play 0 1 2
+state 1 0 1 1 0 0 2 0 0
+op settle
+state 1 0 1 1 0 0 2 0 0
+op emit 0
+state 1 0 1 0 0 0 2 0 0
+op flush
+state 1 0 2 1 0 0 2 0 0
+case 2 saved_index_missing
+op initial
+state 1 0 0 0 0 0 0 -1 0
+op add
+state 2 0 0 0 0 0 0 -1 0 1 0 0 0 0 0 -1 0
+op play 1 1 2
+state 2 0 0 0 0 0 0 -1 0 1 1 1 0 0 2 1 0
+op settle
+state 2 0 0 0 0 0 0 -1 0 1 1 1 0 0 2 1 0
+op remove 0
+state 2 0 0 0 1 0 0 -1 0 1 1 1 0 0 2 1 0
+op flush
+state 1 1 1 1 0 0 2 1 0
+op emit 0
+state 1 1 1 0 0 0 2 1 0
+op flush
+state 1 1 1 0 0 0 2 1 0
+case 3 saved_index_now_other_node
+op initial
+state 1 0 0 0 0 0 0 -1 0
+op add
+state 2 0 0 0 0 0 0 -1 0 1 0 0 0 0 0 -1 0
+op play 1 1 2
+state 2 0 0 0 0 0 0 -1 0 1 1 1 0 0 2 1 0
+op settle
+state 2 0 0 0 0 0 0 -1 0 1 1 1 0 0 2 1 0
+op remove 0
+state 2 0 0 0 1 0 0 -1 0 1 1 1 0 0 2 1 0
+op flush
+state 1 1 1 1 0 0 2 1 0
+op add
+state 2 1 1 1 0 0 2 1 0 2 0 0 0 0 0 -1 0
+op emit 0
+state 2 1 1 0 0 0 2 1 0 2 0 0 0 0 0 -1 0
+op flush
+state 2 1 1 0 0 0 2 1 0 2 2 1 0 0 2 1 0
+case 4 stop_disconnects_loop
+op initial
+state 1 0 0 0 0 0 0 -1 0
+op play 0 1 2
+state 1 0 1 1 0 0 2 0 0
+op settle
+state 1 0 1 1 0 0 2 0 0
+op stop 0
+state 1 0 1 0 0 0 0 -1 0
+op emit 0
+state 1 0 1 0 0 0 0 -1 0
+op flush
+state 1 0 1 0 0 0 0 -1 0
+case 5 stop_after_queued_signal
+op initial
+state 1 0 0 0 0 0 0 -1 0
+op play 0 1 2
+state 1 0 1 1 0 0 2 0 0
+op settle
+state 1 0 1 1 0 0 2 0 0
+op emit 0
+state 1 0 1 0 0 0 2 0 0
+op stop 0
+state 1 0 1 0 0 0 0 -1 0
+op flush
+state 1 0 2 1 0 0 2 0 0
+case 6 replace_after_queued_signal
+op initial
+state 1 0 0 0 0 0 0 -1 0
+op play 0 1 2
+state 1 0 1 1 0 0 2 0 0
+op settle
+state 1 0 1 1 0 0 2 0 0
+op emit 0
+state 1 0 1 0 0 0 2 0 0
+op play 0 3 3
+state 1 0 3 1 0 0 3 0 0
+op flush
+state 1 0 2 1 0 0 2 0 0
+case 7 one_shot_then_loop_keeps_remove
+op initial
+state 1 0 0 0 0 0 0 -1 0
+op play 0 1 0
+state 1 0 1 1 0 0 0 -1 1
+op play 0 3 3
+state 1 0 3 1 0 0 3 0 1
+op settle
+state 1 0 3 1 0 0 3 0 1
+op emit 0
+state 1 0 3 0 1 0 3 0 0
+op flush
+state 1 1 0 0 0 0 0 -1 0
+case 8 queued_loop_then_remove
+op initial
+state 1 0 0 0 0 0 0 -1 0
+op play 0 1 2
+state 1 0 1 1 0 0 2 0 0
+op settle
+state 1 0 1 1 0 0 2 0 0
+op emit 0
+state 1 0 1 0 0 0 2 0 0
+op remove 0
+state 1 0 1 0 1 0 2 0 0
+op flush
+state 1 1 0 0 0 0 0 -1 0
+case 9 nonbuiltin_loop_callback
+op initial
+state 1 0 0 0 0 0 0 -1 0
+op play 0 3 3
+state 1 0 3 1 0 0 3 0 0
+op settle
+state 1 0 3 1 0 0 3 0 0
+op emit 0
+state 1 0 3 0 0 0 3 0 0
+op flush
+state 1 0 3 1 0 0 3 0 0

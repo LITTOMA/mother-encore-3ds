@@ -25,17 +25,43 @@ bool MusicPlayers::add_player(uint64_t&id,std::string&e){
     MusicPlayerNode next;next.identity=next_identity_;next.gain_db=policy_.empty_player_gain_db;
     nodes_.push_back(std::move(next));id=next_identity_++;e.clear();return true;
 }
-bool MusicPlayers::play_loop(uint64_t id,std::string_view source,std::string&e){
-    auto*node=mutable_node(id);if(!ready_||!node||node->generation==UINT64_MAX)return bad(e,"Loop player playback identity is unavailable");
-    // Reuse the admitted URI domain without borrowing it after this call.
-    MusicLoopRequest request{source,source,true,policy_.empty_player_gain_db,policy_.silence_db,0,policy_.fade_to_seconds};
-    MusicLoopChoice checked;if(!choose_music_loop({{id,{},false,policy_.empty_player_gain_db}},request,checked,e))return false;
-    std::string retained(source);node->stream=std::move(retained);node->playing=true;++node->generation;
+bool MusicPlayers::play_loop(uint64_t id,std::string_view source,std::string&e){return play_track(id,source,source,e);}
+bool MusicPlayers::play_track(uint64_t id,std::string_view source,std::string_view loop,std::string&e){
+    auto*node=mutable_node(id);
+    if(!ready_||!node||node->generation==UINT64_MAX||!valid_music_stream_uri(source)||(!loop.empty()&&!valid_music_stream_uri(loop)))return bad(e,"Music track identity/source/loop is invalid");
+    // Source would emit an engine error when connecting the same one-shot
+    // removal twice. Refuse that unsupported sequence without partial playback.
+    if(loop.empty()&&node->remove_on_finished)return bad(e,"Music one-shot finished callback is already connected");
+    std::string retained(source),repeat(loop);
+    node->stream=std::move(retained);node->finished_loop=std::move(repeat);
+    node->finished_index=loop.empty()?UINT32_MAX:uint32_t(node-nodes_.data());
+    node->remove_on_finished|=loop.empty();node->playing=true;++node->generation;
     e.clear();return true;
+}
+bool MusicPlayers::signal_finished(uint64_t id,uint64_t generation,std::string&e){
+    const auto*node=find(id);
+    if(!ready_||!node||!generation||node->generation!=generation)return bad(e,"Music finished signal has no current playback identity");
+    if(!node->finished_loop.empty()&&deferred_.size()>=1024)return bad(e,"Music deferred finished callback capacity exhausted");
+    MusicPlayers next=*this;auto*target=next.mutable_node(id);target->playing=false;
+    if(target->remove_on_finished){target->remove_on_finished=false;if(!next.mark_remove(id,true,e))return false;}
+    if(!target->finished_loop.empty())next.deferred_.push_back({target->finished_loop,target->finished_index});
+    *this=std::move(next);e.clear();return true;
+}
+bool MusicPlayers::dispatch_finished(std::string&e){
+    if(!ready_)return bad(e,"Music players are not initialized");
+    MusicPlayers next=*this;auto pending=std::move(next.deferred_);next.deferred_.clear();
+    for(const auto&event:pending){
+        // Original get_audio_player returns null after child-index shifts. A
+        // queued callback deliberately uses that saved index, not its emitter.
+        if(event.index>=next.nodes_.size())continue;
+        const auto id=next.nodes_[event.index].identity;
+        if(!next.play_track(id,event.stream,event.stream,e))return false;
+    }
+    *this=std::move(next);e.clear();return true;
 }
 bool MusicPlayers::stop(uint64_t id,std::string&e){
     auto*node=mutable_node(id);if(!ready_||!node)return bad(e,"Loop player stop identity is unavailable");
-    node->playing=false;e.clear();return true;
+    node->playing=false;node->finished_loop.clear();node->finished_index=UINT32_MAX;e.clear();return true;
 }
 bool MusicPlayers::set_volume(uint64_t id,float value,std::string&e){
     auto*node=mutable_node(id);if(!ready_||!node||!gain(value))return bad(e,"Loop player volume identity/value is invalid");

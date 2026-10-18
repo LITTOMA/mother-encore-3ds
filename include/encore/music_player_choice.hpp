@@ -31,6 +31,7 @@ struct MusicLoopChoice {
 // orders attach -> set silence -> start fade -> play; stopped-player reuse
 // orders attach -> play -> set volume and retains the old tween.
 // This does not allocate players, own banks or provide global scene lifetime.
+bool valid_music_stream_uri(std::string_view);
 bool choose_music_loop(const std::vector<MusicPlayerSnapshot>&,const MusicLoopRequest&,MusicLoopChoice&,std::string&);
 // The manager's observed linear/quartic volume property, independent of DSP.
 bool sample_music_tween(float from,float to,double duration,double elapsed,MusicRegionCurve,float&result,std::string&);

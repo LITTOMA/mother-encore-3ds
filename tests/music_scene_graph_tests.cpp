@@ -12,8 +12,8 @@ unsigned checks=0;std::string error;
 #define CHECK(x) do{++checks;if(!(x)){std::fprintf(stderr,"Music scene graph %u: %s (%s)\n",checks,#x,error.c_str());std::exit(1);}}while(0)
 bool near(float a,float b){return std::abs(a-b)<.0001f;}
 std::string digest(const MusicSceneGraph&g){
- std::ostringstream out;out<<g.scene_epoch()<<g.active()<<g.players().ready()<<g.players().cleanup_waiting()<<std::hexfloat;
- for(const auto&n:g.players().nodes())out<<' '<<n.identity<<' '<<n.generation<<' '<<n.stream<<' '<<n.gain_db<<' '<<n.playing<<' '<<n.pending_delete<<' '<<n.ensure_empty_on_delete<<' '<<n.tween.from<<' '<<n.tween.to<<' '<<n.tween.duration<<' '<<n.tween.elapsed<<' '<<n.tween.active;
+ std::ostringstream out;out<<g.scene_epoch()<<g.active()<<g.players().ready()<<g.players().cleanup_waiting()<<g.players().deferred_finished_count()<<std::hexfloat;
+ for(const auto&n:g.players().nodes())out<<' '<<n.identity<<' '<<n.generation<<' '<<n.stream<<' '<<n.finished_loop<<' '<<n.finished_index<<' '<<n.remove_on_finished<<' '<<n.gain_db<<' '<<n.playing<<' '<<n.pending_delete<<' '<<n.ensure_empty_on_delete<<' '<<n.tween.from<<' '<<n.tween.to<<' '<<n.tween.duration<<' '<<n.tween.elapsed<<' '<<n.tween.active;
  for(const auto&a:g.areas())out<<' '<<a.player<<a.inside<<a.registered<<a.pending_exit<<a.removed;
  for(auto id:g.registered())out<<' '<<id;
  return out.str();

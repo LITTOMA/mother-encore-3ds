@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_scene_music.py", line 106, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_scene_music.py", line 84, in main
+    require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Field music candidates must remain under build');p,metadata,polygons,sources=source(a.recipe);bank,zones=encode(metadata,polygons);out.mkdir(parents=True,exist_ok=True)
+                                                                                                                                                ^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_scene_music.py", line 37, in source
+    script_doc=owner_of(n,'script');require(script_doc.path==CHANGER,'Unreviewed MusicChanger script override');script=script_doc.sub_resource(n.props['script'])['script/source'];defaults={}
+                                            ^^^^^^^^^^^^^^^
+AttributeError: 'Document' object has no attribute 'path'

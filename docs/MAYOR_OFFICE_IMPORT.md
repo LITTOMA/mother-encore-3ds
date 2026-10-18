@@ -58,3 +58,8 @@ GCC9 ASan/UBSan 新目标 6,080 项通过，其中 1,260 条原引擎朝向状�
 
 
 a8168a9 的真实控制台构建在 field_story.hpp 编译处失败：play_source_audio 的 lane／gain／pitch 默认参数只在稍后的函数定义出现，头文件被包含的位置只有不含这些默认值的前置声明。已按原默认值显式传入 Effect、0、1、false，不改音效来源／音量规则；保留真实失败日志。此修复待后续真实交叉构建，不以共享核心通过代替平台编译通过。
+
+
+Town Hall 音乐候选现从原 MusicChanger 类／实例默认值与真实矩形编译：MusicArea、Town Hall.mp3、+6dB、淡入1秒／淡出1.5秒；PCM自身增益0，保留原 import 循环。实际 FFmpeg 解码产生5,345,280字节 PCM，源／import／解码器与命令／输出 SHA 保留；配套 Audio225、Music246、Zones77字节。只有 build 下的候选与小型测试元数据夹具，原 Podunk producer 和发行音频未变。
+
+原 Zones v1 专限 Music/ 路径，真实 Mayor 根节点 MusicArea 触发共享 C++ 拒绝。新增 ENCZON01 v2 明确允许安全的通用场景路径且必须实际使用新特性，v1原限制保持，未知3、降级、伪升级、坏路径与截断均拒绝并保留旧对象；没有改名伪造来源节点。456项 GCC9 ASan/UBSan 检查包含真实音源绑定／空间、重复进入、原淡出与 all-tweens 完成后释放；6项 Python 来源／编码／负向检查、旧 MusicRegions4,087项和 GameplayAudio 回归通过。首次来源工具属性名错误、测试 loops accessor 错误、v1真实拒绝与淡出后测试误读已释放 voice 均保留记录。此处不宣称可听性；在开放 Mayor 前还须完成跨场景的区域音乐首播放器淡出／共享顺序、区域元数据与实际入场验证。

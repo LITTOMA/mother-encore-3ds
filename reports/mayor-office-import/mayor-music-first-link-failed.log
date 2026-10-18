@@ -1,0 +1,7 @@
+tests/mayor_music_tests.cpp: In function ‘int main(int, char**)’:
+tests/mayor_music_tests.cpp:13:301: error: ‘struct encore::upstream::AudioAsset’ has no member named ‘loop’; did you mean ‘loops’?
+   13 |  CHECK(data.tracks().size()==1&&data.regions().size()==1&&data.tracks()[0].source_path=="res://Audio/Music/Town Hall.mp3");const auto r=data.regions()[0];CHECK(r.source_path=="MusicArea"&&r.volume_db==6&&r.fadein_seconds==1&&r.fadeout_seconds==1.5f&&!r.disabled);CHECK(bank.count()==1&&bank.asset(0).loop&&bank.asset(0).gain_db==0);CHECK(zones.overlaps(0,room.view(),{8,9})&&zones.overlaps(0,room.view(),{8,-519})&&!zones.overlaps(0,room.view(),{8,-900}));
+      |                                                                                                                                                                                                                                                                                                             ^~~~
+tests/mayor_music_tests.cpp:9:29: note: in definition of macro ‘CHECK’
+    9 | #define CHECK(x) check(bool(x),#x)
+      |                             ^

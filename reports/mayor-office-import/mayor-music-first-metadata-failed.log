@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_scene_music.py", line 102, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_scene_music.py", line 83, in main
+    require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Field music candidates must remain under build');p,metadata,polygons,sources=source(a.recipe);bank,zones=encode(metadata,polygons);out.mkdir(parents=True,exist_ok=True)
+                                                                                                                                                ^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_scene_music.py", line 50, in source
+    if child.parent!=path:continue
+       ^^^^^^^^^^^^
+AttributeError: 'Node' object has no attribute 'parent'

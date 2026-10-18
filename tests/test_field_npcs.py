@@ -1,4 +1,4 @@
-import copy,json,tempfile,unittest
+import copy,json,struct,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
 from tools import field_npcs as npc,mick_treats as m
@@ -28,6 +28,18 @@ class FieldNpcTests(unittest.TestCase):
     def test_motion_encoder_rejects_programmes(self):
         legacy=json.loads((npc.ROOT/'content/mick-treats.json').read_text(encoding='utf-8'))
         with self.assertRaises(ValueError):m.lower(legacy,motion_owner=2,motion_flags=2)
+    def test_stationary_no_collision_capability(self):
+        _,records,_=npc.build();ir=records[0]['ir']
+        legacy=m.lower(ir,motion_owner=2,motion_flags=2)
+        self.assertEqual(legacy,records[0]['blob']);self.assertEqual(struct.unpack_from('<I',legacy,20)[0],4)
+        candidate=m.lower(ir,motion_owner=2,motion_flags=10)
+        self.assertEqual(struct.unpack_from('<I',candidate,20)[0],5);m.parse(candidate,allow_motion=True)
+        with self.assertRaises(ValueError):m.parse(candidate)
+        for flags in [9,11,15,16]:
+            with self.subTest(flags=flags),self.assertRaises(ValueError):m.lower(ir,motion_owner=2,motion_flags=flags)
+        for at,value in [(20,4),(20,6),(28,2),(28,9),(28,16)]:
+            bad=bytearray(candidate);struct.pack_into('<I',bad,at,value)
+            with self.subTest(at=at,value=value),self.assertRaises(ValueError):m.parse(bad,allow_motion=True)
     def test_unknown_source_actor_rejected(self):
         policy=copy.deepcopy(npc.load_policy());policy['actors'][0]['path']='Objects/missing'
         with patch.object(npc,'load_policy',return_value=policy),self.assertRaises(ValueError):npc.build()

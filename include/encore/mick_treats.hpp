@@ -47,13 +47,15 @@ public:
     MickText text(uint32_t)const;
     MickClip clip(uint32_t)const;
     MickRngEvent rng_event(uint32_t)const;
-    // Capability 4 is an independently bound NPC motion owner, without any
+    // Capabilities 4/5 are independently bound NPC motion owners, without any
     // dialogue or inventory programme. Legacy Mick keeps its existing contract.
     bool motion_only()const;
     uint32_t owner_id()const;
     bool wanders()const;
     bool stares()const;
     bool animated_idle()const;
+    // Capability 5 admits stationary source no_collision actors only.
+    bool collides()const;
     const uint8_t* reviewed_commit()const{return bytes_?bytes_+32:nullptr;}
 private:
     friend class MickData;

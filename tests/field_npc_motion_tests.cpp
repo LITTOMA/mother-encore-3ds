@@ -48,7 +48,12 @@ int main(int argc,char**argv){
   check(runtime.restore_motion_pose(initial,{0,1},error)&&runtime.position().x==initial.x&&runtime.position().y==initial.y,"checked cutscene pose handoff");
   check(!runtime.start_talk(error)&&runtime.state()==MickProgramState::Failed&&host.effects==0,"unsupported NPC dialogue fails closed without copying Mick text");
   auto reject=[&](std::vector<uint8_t>b,const char*why){sign(b);check(!data.load(b.data(),b.size(),error),why);check(data.view().owner_id()==view.owner_id(),"failed admission preserves current resource");};
-  {auto b=bytes;put(b,20,5);reject(b,"unknown capability");}
+  {auto b=bytes;put(b,20,5);reject(b,"new no-collision capability needs its feature bit");}
+  {auto b=bytes;put(b,20,6);reject(b,"unknown capability");}
+  check(view.collides(),"legacy source motion keeps its collision body");
+  if(arg==1){auto b=bytes;put(b,20,5);put(b,28,10);sign(b);MickData stationary;check(stationary.load(b.data(),b.size(),error)&&stationary.view().motion_only()&&!stationary.view().collides()&&!stationary.view().wanders(),"stationary no-collision feature admitted independently");
+   for(auto pair:std::vector<std::pair<size_t,uint32_t>>{{20,4},{20,6},{28,2},{28,9},{28,16}}){auto bad=b;put(bad,pair.first,pair.second);sign(bad);check(!stationary.load(bad.data(),bad.size(),error)&&!stationary.view().collides(),"bad version/feature preserves stationary admitted owner");}
+  }
   {auto b=bytes;put(b,20,3);reject(b,"motion-only cannot masquerade as legacy programme resource");}
   {auto b=bytes;put(b,24,0);reject(b,"missing owner");}
   {auto b=bytes;put(b,28,8);reject(b,"unknown feature bit");}
@@ -59,6 +64,7 @@ int main(int argc,char**argv){
  std::vector<uint8_t>legacy;check(encore::read_file(argv[3],legacy,1024*1024,error),error.c_str());MickData original;
  check(original.load(legacy.data(),legacy.size(),error)&&!original.view().motion_only()&&original.view().wanders()&&original.view().stares(),"legacy Mick contract remains admitted");
  put(legacy,20,4);put(legacy,28,3);sign(legacy);check(!original.load(legacy.data(),legacy.size(),error),"programme-bearing pack cannot masquerade as motion-only");
+ put(legacy,20,5);put(legacy,28,10);sign(legacy);check(!original.load(legacy.data(),legacy.size(),error),"programme-bearing pack cannot masquerade as stationary no-collision motion");
  {
   RoomData room;FieldMapData map;WorldLinksData links;MickData mom,dog;Host host;
   check(room.load_file("romfs/world/podunk/podunk.encroom",error),error.c_str());
@@ -83,6 +89,15 @@ int main(int argc,char**argv){
   check(scene.idle_frame(1.0/60,true)&&scene.phase()==FieldPhase::Walking,"unmapped NPC conversation can return control");
   check(scene.world.set_story_flag("beat_dog_bridge",true,false)&&scene.refresh_conditions(error),error.c_str());
   check(!scene.actor_visible(2)&&scene.actor_visible(1),"source victory flag hides only the defeated source actor");
+  // A stationary source actor with a disabled collision shape stays visible
+  // and interactable. Compare actual player motion against the same map.
+  std::vector<uint8_t>mom_bytes;check(encore::read_file(argv[1],mom_bytes,1024*1024,error),error.c_str());put(mom_bytes,20,5);put(mom_bytes,28,10);sign(mom_bytes);MickData nocollision;check(nocollision.load(mom_bytes.data(),mom_bytes.size(),error),error.c_str());
+  auto walk_past=[&](MickView actor){FieldScene candidate;check(candidate.prepare(room.view(),map.view(),links,flags,{640,300},{0,-1},{400,240},error),error.c_str());check(candidate.bind_npc(actor,host,error)&&candidate.bind_npc(dog.view(),host,error)&&candidate.finish_transition(),error.c_str());
+   for(unsigned tick=0;tick<30;++tick){WalkInput input;input.y=-1;check(candidate.before_physics(input)&&candidate.world.advance(input)&&candidate.after_physics(),candidate.error().c_str());}check(candidate.actor_visible(1),"no-collision actor remains visible");const auto result=candidate.world.player().position.y;
+   if(!actor.collides()){check(candidate.world.warp_same_scene({640,286},{0,-1}),"place non-solid interaction fixture");check(candidate.try_interaction(true,error)&&candidate.phase()==FieldPhase::Unsupported,"disabled physical shape retains source interaction area");}
+   return result;};
+  const auto solid_y=walk_past(mom.view()),clear_y=walk_past(nocollision.view());
+  check(clear_y+5<solid_y,"disabled NPC shape lets player pass through without hiding the actor or removing map collision");
   // Multiple moving foot bodies coexist; excluding one's own foot must retain
   // every other actor obstacle for the same motion query.
   FieldCollision collision;std::vector<bool>layers(map.view().count(FieldMapSection::Layers),false),bodies(map.view().count(FieldMapSection::Bodies),false);

@@ -588,7 +588,8 @@ def lower(ir, *, motion_owner=None, motion_flags=0):
     a = ir['actor']
     motion = motion_owner is not None
     if motion:
-        require(type(motion_owner) is int and 0 < motion_owner <= 0xffffffff and type(motion_flags) is int and 0 <= motion_flags <= 7, 'Bad NPC motion owner/features')
+        require(type(motion_owner) is int and 0 < motion_owner <= 0xffffffff and type(motion_flags) is int and 0 <= motion_flags <= 15, 'Bad NPC motion owner/features')
+        require(not(motion_flags&8 and motion_flags&1), 'Wandering no-collision source is not admitted')
         require(not ir['texts'] and not ir['commands'] and not ir['programmes'] and
                 all(a[k] is None for k in ('item', 'require_flag', 'consume_flag', 'bark_path', 'bark_programme')) and
                 a['bark_center'] == [0, 0] and a['bark_extents'] == [0, 0], 'Motion-only resource contains dialogue bindings')
@@ -644,7 +645,7 @@ def lower(ir, *, motion_owner=None, motion_flags=0):
     for off, length in strings:
         secs['Strings'] += struct.pack('<2I', off, length)
     secs['Bytes'] = pool
-    blob = bytearray(pack_container(MAGIC, motion_owner if motion else 1, [secs[n] for n in SECTIONS], STRIDES, LIMIT, capability=4 if motion else 3))
+    blob = bytearray(pack_container(MAGIC, motion_owner if motion else 1, [secs[n] for n in SECTIONS], STRIDES, LIMIT, capability=(5 if motion_flags&8 else 4) if motion else 3))
     # Capability 4 assigns the former reserved word to checked motion features.
     # It is outside the payload CRC, exactly like the capability and owner words.
     struct.pack_into('<I', blob, 28, motion_flags)
@@ -659,8 +660,11 @@ def encode(ir):
 
 def parse(blob, *, allow_motion=False):
     from tools.podunk_field import unpack_container
-    motion = allow_motion and len(blob) >= 32 and struct.unpack_from('<I', blob, 20)[0] == 4
-    scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT, capability=4 if motion else 3, header_flags_mask=7 if motion else 0)
+    capability = struct.unpack_from('<I',blob,20)[0]if len(blob)>=32 else 0
+    motion = allow_motion and capability in (4,5)
+    scene, secs = unpack_container(blob, MAGIC, STRIDES, LIMIT, capability=capability if motion else 3, header_flags_mask=(15 if capability==5 else 7)if motion else 0)
+    if capability==5:
+        flags=struct.unpack_from('<I',blob,28)[0];require(flags&8 and not flags&1,'Stationary no-collision NPC capability rejected')
     require(scene > 0 if motion else scene == 1, 'NPC/Mick pack owner identity')
     rows = {n: secs[i] for i, n in enumerate(SECTIONS)}
     count = {n: len(rows[n]) // STRIDES[i] for i, n in enumerate(SECTIONS)}

@@ -1,0 +1,18 @@
+test_motion_encoder_rejects_programmes (tests.test_field_npcs.FieldNpcTests.test_motion_encoder_rejects_programmes) ... ok
+test_policy_rejects_unknown_and_duplicate_bindings (tests.test_field_npcs.FieldNpcTests.test_policy_rejects_unknown_and_duplicate_bindings) ... ok
+test_source_owners_and_programme_separation (tests.test_field_npcs.FieldNpcTests.test_source_owners_and_programme_separation) ... ok
+test_stationary_no_collision_capability (tests.test_field_npcs.FieldNpcTests.test_stationary_no_collision_capability) ... ok
+test_unknown_source_actor_rejected (tests.test_field_npcs.FieldNpcTests.test_unknown_source_actor_rejected) ... ok
+test_actor_and_programme (tests.test_mick_treats.MickTreatsTests.test_actor_and_programme) ... ok
+test_favorite_food_and_unknown_runtime_tags (tests.test_mick_treats.MickTreatsTests.test_favorite_food_and_unknown_runtime_tags) ... ok
+test_new_opcode_and_programme_negative_cases (tests.test_mick_treats.MickTreatsTests.test_new_opcode_and_programme_negative_cases) ... ok
+test_pack_round_trip (tests.test_mick_treats.MickTreatsTests.test_pack_round_trip) ... ok
+test_reject_stale_ir (tests.test_mick_treats.MickTreatsTests.test_reject_stale_ir) ... ok
+test_reject_truncated_and_bad_magic (tests.test_mick_treats.MickTreatsTests.test_reject_truncated_and_bad_magic) ... ok
+test_source_wait_gates_are_not_plain_newlines (tests.test_mick_treats.MickTreatsTests.test_source_wait_gates_are_not_plain_newlines) ... ok
+test_thoughts_and_key_order (tests.test_mick_treats.MickTreatsTests.test_thoughts_and_key_order) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 8.934s
+
+OK

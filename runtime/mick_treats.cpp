@@ -38,10 +38,11 @@ Vec2 rounded_dir(Vec2 v){
 }
 }
 uint32_t MickView::count(MickSection s)const{const auto k=uint32_t(s);return bytes_&&k>=1&&k<=kMickSectionCount?u32(bytes_+header_bytes+(k-1)*16+8):0;}
-bool MickView::motion_only()const{return bytes_&&u32(bytes_+20)==4;}
+bool MickView::motion_only()const{return bytes_&&(u32(bytes_+20)==4||u32(bytes_+20)==5);}
 uint32_t MickView::owner_id()const{return bytes_?u32(bytes_+24):0;}
 bool MickView::wanders()const{return bytes_&&(!motion_only()||(u32(bytes_+28)&1));}
 bool MickView::stares()const{return bytes_&&(!motion_only()||(u32(bytes_+28)&2));}
+bool MickView::collides()const{return valid()&&(!motion_only()||!(u32(bytes_+28)&8));}
 bool MickView::animated_idle()const{return motion_only()&&(u32(bytes_+28)&4);}
 const uint8_t*MickView::record(MickSection s,uint32_t i)const{const auto k=uint32_t(s);if(!bytes_||k<1||k>kMickSectionCount||i>=count(s))return nullptr;
     return bytes_+u32(bytes_+header_bytes+(k-1)*16+4)+size_t(i)*strides[k-1];}
@@ -67,10 +68,11 @@ MickRngEvent MickView::rng_event(uint32_t i)const{auto*p=record(MickSection::Rng
 bool MickData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kMickSectionCount*16||n>max_bytes)return fail("Mick pack size rejected");
-    const bool motion_only=u32(p+20)==4;
+    const auto capability=u32(p+20);const bool motion_only=capability==4||capability==5;
     if(std::memcmp(p,"ENCMIK01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)!=3&&!motion_only)||
-       (motion_only?(!u32(p+24)||u32(p+28)>7):(u32(p+24)!=1||u32(p+28)))||u32(p+52)!=kMickSectionCount||u32(p+56)||u32(p+60))
+       (motion_only?(!u32(p+24)||u32(p+28)>(capability==5?15u:7u)):(u32(p+24)!=1||u32(p+28)))||u32(p+52)!=kMickSectionCount||u32(p+56)||u32(p+60))
         return fail("Mick pack schema/capability/scene/reserved rejected");
+    if(capability==5&&(!(u32(p+28)&8)||(u32(p+28)&1)))return fail("Stationary no-collision NPC capability rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Mick pack source pin rejected");}
     if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Mick pack checksum rejected");
     size_t cursor=header_bytes+kMickSectionCount*16;

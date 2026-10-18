@@ -1,0 +1,9 @@
+{
+  "level": "GCC9 ASan/UBSan actual source call + interaction 1804 checks; candidate driver, emulator retry pending",
+  "failure": "Lateral last step faced RIGHT at y283 after source call restored NPC to 640,304; right ray and foot hull miss the interaction area. Prior English success ended DOWN; later Chinese success had marginal body overlap.",
+  "change": "Normal DOWN waypoint to y286 after lateral approach; no game collision, NPC rule or expected reward/flag mutation",
+  "source_sha256": {
+    "tools/run_podunk_bridge_semantics.py": "d555a580877b8ea283d70b448b3ad7992d95878b173085cb45c06dfc9e0a8823",
+    "tests/field_interaction_tests.cpp": "baa96e7508a9edb774a0168fdfabbe5925782a8aed125c29a2c35ce10b133e8d"
+  }
+}

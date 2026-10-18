@@ -148,6 +148,9 @@ try:
   # The source call restores the talker at (640,304). Approach from above
   # by ordinary walking; no guest warp or memory write is permitted.
   waypoint('RIGHT','player_x',584);waypoint('DOWN','player_y',282);waypoint('RIGHT','player_x',640)
+  # The lateral approach ends facing right. Face/walk toward the talker below
+  # us, rather than relying on a marginal body overlap at y283.
+  waypoint('DOWN','player_y',286);approach=record('help_approach');assert approach['direction_y']>0
   pulse('A');wait(lambda s:s['world_programme']==2 and s['world_stage']!=0)
   baseline=record('help_started');assert not flag(baseline,'pippis_mom_help')
   stable_help=['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count',*['inventory_'+str(i)+'_'+key for i in range(16)for key in ('definition','doses','equipped')]]

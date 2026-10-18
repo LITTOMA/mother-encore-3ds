@@ -345,3 +345,6 @@ cookies.json
 !/reports/field-scene-resources/*.log
 !/reports/field-scene-resources/*.json
 !/reports/pippi-mom-help/approach-route.cpp
+
+!/reports/field-scene-resources/*.png
+!/reports/field-scene-resources/*.py

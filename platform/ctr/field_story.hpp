@@ -82,6 +82,6 @@ bool advance_field_story(double delta,bool accept,bool cancel,int horizontal,boo
  if(world.stage()==upstream::OpeningStage::Walking){field_story_text=UINT32_MAX;dialogue_choices.close();if(box.dialogue_active()&&!box.dialogue_closing())box.close_story_dialogue();}
  if(!world.set_story_talking(id!=UINT32_MAX&&box.talking())){error="Field story talking owner rejected";return false;}
  if(box.dialogue_active()&&!box.advance_chrome(delta)){error=box.error();return false;}
- for(const auto&event:choice_events)if(choice_source&&!play_source_audio(choice_source->sound(event.sound))){error=audio_status;return false;}
+ for(const auto&event:choice_events)if(choice_source&&!play_source_audio(choice_source->sound(event.sound),ctr::AudioLane::Effect,0,1,false)){error=audio_status;return false;}
  error.clear();return true;
 }

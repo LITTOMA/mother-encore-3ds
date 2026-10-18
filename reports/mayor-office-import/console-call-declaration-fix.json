@@ -1,0 +1,10 @@
+{
+  "failed_source": "a8168a972d4178ddb837fe3b4f311982529ff58d",
+  "run": 39123191765,
+  "job": 117662838850,
+  "failure": "platform/ctr/field_story.hpp: too few arguments to play_source_audio",
+  "cause": "At the include point only the forward declaration is visible. Lane/gain/pitch defaults are added by the later function definition, so they cannot be used here.",
+  "change": "Pass explicit Effect lane, zero gain, unit pitch and false repeat; these are the existing function defaults.",
+  "verification": "Shared core was already tested; genuine 3DS cross-build rerun pending, not claimed passed.",
+  "source_sha256": "a6b2cd9f80aa3d3831c4cbb3ab2c8e382ac742b45a0a49c70a19b3b8d78e768e"
+}

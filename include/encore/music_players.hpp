@@ -49,6 +49,7 @@ public:
     bool fade_in(uint64_t,float,double,std::string&);
     bool fade_to(uint64_t,float,double,std::string&);
     bool fade_out(uint64_t,double,std::string&);
+    bool fade_all(double,std::string&);
     bool choose_loop(const MusicLoopRequest&,uint64_t&attached,std::string&);
     bool queue_remove(uint64_t,std::string&);
     bool queue_clear(std::string&);
@@ -71,6 +72,6 @@ private:
     struct DeferredLoop{std::string stream;uint32_t index=0;};
     std::vector<DeferredLoop>deferred_;
     uint64_t next_identity_=0;
-    bool ready_=false,cleanup_waiting_=false,tweens_stopped_=false;
+    bool ready_=false,cleanup_waiting_=false,tweens_stopped_=false,completion_suspended_=false;
 };
 }

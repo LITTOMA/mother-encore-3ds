@@ -94,6 +94,7 @@ bool MusicPlayers::tween(uint64_t id,float from,float to,double seconds,MusicReg
     auto*node=mutable_node(id);float checked;
     if(!ready_||!node)return bad(e,"Loop player tween identity is unavailable");
     if(!sample_music_tween(from,to,seconds,0,curve,checked,e))return false;
+    completion_suspended_=false;
     const bool restarting=tweens_stopped_;
     if(restarting){
         for(auto&other:nodes_)if(other.tween.active){other.tween.elapsed=0;other.gain_db=other.tween.from;}
@@ -113,6 +114,16 @@ bool MusicPlayers::fade_out(uint64_t id,double seconds,std::string&e){
     const auto from=node->gain_db;
     if(!tween(id,from,policy_.silence_db,seconds,MusicRegionCurve::QuartIn,e))return false;
     cleanup_waiting_=true;return true;
+}
+bool MusicPlayers::fade_all(double seconds,std::string&e){
+    if(!ready_||!duration(seconds))return bad(e,"Music fade-all owner/duration is invalid");
+    MusicPlayers next=*this;
+    // remove_all does not emit completion; old waiters survive until a future
+    // track actually completes. It also removes stopped-node interpolations.
+    for(auto&node:next.nodes_)node.tween={};
+    next.tweens_stopped_=false;next.completion_suspended_=true;
+    for(const auto&node:next.nodes_)if(!next.fade_out(node.identity,seconds,e))return false;
+    *this=std::move(next);e.clear();return true;
 }
 bool MusicPlayers::choose_loop(const MusicLoopRequest&request,uint64_t&attached,std::string&e){
     if(!ready_||request.silence_db!=policy_.silence_db||request.fade_to_seconds!=policy_.fade_to_seconds)
@@ -158,7 +169,7 @@ bool MusicPlayers::flush_deletions(std::string&e){
 bool MusicPlayers::advance(double delta,bool external,std::string&e){
     if(!ready_||!std::isfinite(delta)||delta<0||delta>1)return bad(e,"Loop player frame delta is invalid");
     MusicPlayers next=*this;bool active=false;
-    if(next.tweens_stopped_){e.clear();return true;}
+    if(next.tweens_stopped_||next.completion_suspended_){e.clear();return true;}
     for(auto&node:next.nodes_)if(node.tween.active){
         auto&t=node.tween;t.elapsed+=delta;
         if(!sample_music_tween(t.from,t.to,t.duration,t.elapsed,t.curve,node.gain_db,e))return false;

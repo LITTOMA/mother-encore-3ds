@@ -1,0 +1,2 @@
+title_ready {'frame': 1, 'field_phase': 4294967295, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 4294967295, 'hp': 0, 'enemy_hp': 0, 'experience': 0, 'cash': 0, 'player_x': 520.0, 'player_y': 397.0}
+loaded {'frame': 2134, 'field_phase': 4294967295, 'world_stage': 1, 'world_dialogue': 16, 'battle_active': 0, 'battle_round_phase': 4294967295, 'hp': 65, 'enemy_hp': 0, 'experience': 9, 'cash': 0, 'player_x': 136.0, 'player_y': 800.0}

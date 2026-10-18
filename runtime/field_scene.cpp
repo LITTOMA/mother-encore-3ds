@@ -168,7 +168,7 @@ bool FieldScene::prepare(RoomView room,FieldMapView map,const WorldLinksData& li
     // A candidate world owns this Ready write; a failed scene publication cannot
     // mutate the old owner. Source set_flag emits even when already true.
     if(map.count(FieldMapSection::Area)&&!world.set_story_flag(map.text(map.area().visit_flag),true,true))return reject("Field AreaRoom visit flag write failed");
-    map_=map;links_=&links;viewport_=viewport;
+    map_=map;links_=&links;viewport_=viewport;run_audio_=FieldRunLoop{};step_inside_.clear();
     const auto doors=map.count(FieldMapSection::Doors),boundaries=map.count(FieldMapSection::Boundaries),cameras=map.count(FieldMapSection::Cameras);
     const auto openables=map.count(FieldMapSection::Openables);
     for(uint32_t i=0;i<doors;++i){const auto d=map.door(i);if(!d.route)continue;
@@ -218,6 +218,13 @@ bool FieldScene::refresh_conditions(std::string& error){
     if(mick_bound_)apply_mick_body();
     apply_npc_bodies();
     story_revision_=world.story_revision();error.clear();return true;
+}
+bool FieldScene::bind_steps(FieldStepsView view,const AudioBank&bank,std::string_view inherited,std::string&error){
+ auto reject=[&](const char*why){error=why;return false;};
+ if(phase_==FieldPhase::Error||run_audio_.prepared()||!view.valid()||view.scene_id()!=scene_id())return reject("Field stepping scene/owner binding rejected");
+ if(!view.matches(bank,error))return false;FieldRunLoop candidate;if(!candidate.initialize(view,inherited,error))return false;
+ run_audio_=std::move(candidate);if(!world.bind_walk_audio(run_audio_)){run_audio_=FieldRunLoop{};return reject("Field stepping MOVE sink binding rejected");}
+ step_inside_.assign(view.area_count(),0);error.clear();return true;
 }
 bool FieldScene::bind_story(FieldStoryView view,ItemView items,FieldStoryHost& host,std::string& error){
     if(!view.bind(world.content(),map_,items,error))return false;
@@ -347,13 +354,13 @@ bool FieldScene::try_interaction(bool accept,std::string& error){
         if(!ray_rect(p.position,normalized(p.direction),a.ray_length,center,a.interact_extents,distance)&&!overlaps(center,a.interact_extents,p.position))continue;
         FieldInteraction selected;for(uint32_t i=0;i<story_.interaction_count();++i){const auto rule=story_.interaction(i);if(rule.actor==n.actor&&(!rule.flag.length||world.story_flag(story_.text(rule.flag))))selected=rule;}
         if(selected.status){
-            if(!world.pause_for_house())return fail("Unavailable source dialogue pause rejected");
+            if(!world.pause_for_house(true))return fail("Unavailable source dialogue pause rejected");
             phase_=FieldPhase::Unsupported;boundary_=WorldLinksData::kNotFound;error_=std::string(story_.text(selected.source))+" not ported; B returns";error.clear();return true;
         }
         if(selected.programme!=UINT32_MAX){
             if(!story_host_||!story_host_->can_start(story_,selected.programme,error)){
                 boundary_=WorldLinksData::kNotFound;phase_=FieldPhase::Unsupported;error_=error.empty()?"Field interaction admission rejected; B returns":error+"; B returns";
-                if(!world.pause_for_house())return fail("Field interaction admission pause rejected");error.clear();return true;
+                if(!world.pause_for_house(true))return fail("Field interaction admission pause rejected");error.clear();return true;
             }
             if(selected.turns&2)n.motion.face_toward(p.position);
             if(!world.sync_unbound_actor_pose(n.actor,at,n.motion.facing()))return fail("Field interaction pose handoff rejected");
@@ -366,7 +373,7 @@ bool FieldScene::try_interaction(bool accept,std::string& error){
             }
             error.clear();return true;
         }
-        if(!world.pause_for_house())return fail("Field NPC interaction pause rejected");
+        if(!world.pause_for_house(true))return fail("Field NPC interaction pause rejected");
         phase_=FieldPhase::Unsupported;boundary_=WorldLinksData::kNotFound;error_="Field NPC dialogue not ported; B returns";error.clear();return true;
     }
     for(uint32_t i=0;i<boundary_active_.size();++i){
@@ -445,6 +452,13 @@ bool FieldScene::overlaps(Vec2 center,Vec2 extents,Vec2 player)const{
 }
 bool FieldScene::before_physics(WalkInput& input){
     if(phase_==FieldPhase::Error)return false;
+    if(run_audio_.prepared()){
+        // Source Area callbacks observe the previous completed physics motion,
+        // before the next Player callback. Source compilation filters these
+        // areas to the persistent Player; no NPC changes run_sound.
+        const auto view=run_audio_.content();const auto position=world.player().position;
+        for(uint32_t i=0;i<step_inside_.size();++i){const auto area=view.area(i);const bool inside=overlaps(area.center,area.extents,position);if(inside!=bool(step_inside_[i])){std::string why;if(!run_audio_.area_event(i,inside,true,why))return fail(why);}step_inside_[i]=inside;}
+    }
     if(story_revision_!=world.story_revision()){std::string why;if(!refresh_conditions(why))return fail(why);}
     if(mick_bound_){
         FieldMickWorld motion{*this};std::string why;const auto player=world.player().position;

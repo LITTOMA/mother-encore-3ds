@@ -83,7 +83,9 @@ public:
     bool bind_story_skills(StorySkillHost&);
     bool story_skills_ready()const{return story_skills_!=nullptr;}
     OpeningScreenOverlay screen_overlay()const{return overlay_;}
-    bool pause_for_house();
+    bool pause_for_house(bool stop_running=false);
+    // The checked scene owns this optional sink and outlives the world binding.
+    bool bind_walk_audio(WalkAudioSink&);
     bool unpause_from_house();
     bool resize_field_viewport(Vec2 viewport);
     bool set_house_direction(Vec2 direction);
@@ -164,6 +166,8 @@ private:
     bool branch_condition(const DialogueAction&,bool&) override;
     uint32_t choice_group_=kRoomNoIndex;bool save_requested_=false,storage_requested_=false;
     bool fail(const char* message);
+    bool emit_walk_audio(const WalkAudioCalls&);
+    WalkAudioSink*walk_audio_=nullptr;
     bool flush_deferred();
     bool process_room_shakers(double delta);
     bool vibrate_room(uint32_t binding);

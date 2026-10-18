@@ -115,3 +115,10 @@ e3e3af2 请求的完整 GCC 检查在普通 CTest191／192通过后失败：pyth
 
 
 5fe7491 full rerun completed successfully: GCC normal195 / ASan-UBSan180, Clang180/180, real console packaging. The strict suite-registration failure on e3e3af2 remains a separate historical failure. 00cb71d genuine console packaging also passed; current MOVE call additions still require their own console job.
+
+
+真实World MOVE现可绑定场景自有的声音消费者；运动事务成功后才交付调用，未准备／重复绑定与消费者拒绝均受检，重置World移除旧借用。FieldScene选择受检场景／媒体一致的步区，按上一已完成物理位置、原Hull与编译顺序分发接触变化，选择不会立即换音轨；当前只有明确的metadata夹具测试，尚无原地图区域物理通过声明。编译时额外确认原区域mask确实观察该受检Player层；既有544字节步区包逐字节保持不变。
+
+暂停按原pause参数保留差异：默认暂停保留tap_run时的running，下一MOVE暂停回调才停止流；unpause对仍在running的状态恢复循环。主动Walking NPC交互对应原uiManager.open_dialogue_box的pause(true,true)，立即清除tap_run和run；未被Actor替换的剧情玩家仍执行暂停MOVE停止，替换后禁用原Player物理。新增原生基准执行未改Player.pause／unpause／_set_running／暂停_move_state，共16次操作；实际MP3导入，动画／计时器／碰撞／party与AreaRoom身份是显式注入服务，不等同整个引擎场景。UI入口、NPC.interact、Player物理分派与Actor.init只有来源审查，不冒称执行通过。共享World结果逐项对照相关原生状态／事件，GCC9 ASan/UBSan123项通过；开场World、旧Mayor Story3,735和MOVE2,308回归通过，Python13项通过。测试夹具的ifstream与WalkInput重名导致一次编译失败，修复并保留真实日志。
+
+尚未把此消费者绑定到主程序和实际Run音轨，也未实现跨场景run_sound保存准入。场景步区的原引擎接触时机、实际音频、正常市政厅进出仍待验证；不由局部核心通过推定完整游戏或真机通过。

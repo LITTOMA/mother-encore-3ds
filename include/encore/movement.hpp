@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <array>
+#include <string>
 
 namespace encore::upstream {
 class RoomView;
@@ -19,6 +20,12 @@ struct WalkState {
 // no work to perform. This is execution metadata, not a game sound binding.
 enum class WalkAudioCall:uint8_t {SetRunningFalse=1,SetRunningTrue=2,StopIfPlaying=3};
 struct WalkAudioCalls {std::array<WalkAudioCall,3>calls{};uint8_t count=0;};
+class WalkAudioSink {
+public:
+ virtual ~WalkAudioSink()=default;
+ virtual bool walk_audio_ready()const=0;
+ virtual bool apply_walk_calls(const WalkAudioCalls&,std::string&)=0;
+};
 struct SlideResult { Vec2 position{}, velocity{}; };
 // The movement state machine does not implement a physics engine. Collision
 // backends must return a verified move_and_slide result at the fixed 60 Hz.

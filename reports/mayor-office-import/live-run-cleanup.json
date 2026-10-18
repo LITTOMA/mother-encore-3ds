@@ -1,0 +1,42 @@
+{
+  "reason": "Completed host-only executables; retained shared object cache, raw logs and current genuine emulator artifact",
+  "removed": [
+    {
+      "path": "build\\podunk-routes\\host\\world-run-audio",
+      "bytes": 42659112
+    },
+    {
+      "path": "build\\podunk-routes\\host\\opening-world",
+      "bytes": 42329744
+    },
+    {
+      "path": "build\\podunk-routes\\host\\mayor-story",
+      "bytes": 43178208
+    },
+    {
+      "path": "build\\podunk-routes\\host\\walk-audio",
+      "bytes": 42290984
+    },
+    {
+      "path": "build\\podunk-routes\\host\\field-steps",
+      "bytes": 42277208
+    },
+    {
+      "path": "build\\podunk-routes\\host\\movement",
+      "bytes": 42144128
+    },
+    {
+      "path": "build\\podunk-routes\\host\\step-scene-resources",
+      "bytes": 42171168
+    },
+    {
+      "path": "build\\podunk-routes\\host\\field-scene-resources",
+      "bytes": 42083432
+    },
+    {
+      "path": "build\\podunk-routes\\host\\world-scene-resources",
+      "bytes": 42263496
+    }
+  ],
+  "bytes": 381397480
+}

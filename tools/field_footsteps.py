@@ -52,6 +52,7 @@ def source(file=RECIPE,*,root=ROOT):
         n=scene.by_path[path];require(n.scene==p['area_scene']and n.type=='Area2D'and owner_of(n,'script').source==p['area_scene'],'Footstep source instance class')
         values={k:n.props.get(k,v)for k,v in defaults.items()};require(set(n.props)<=set(defaults)|{'script','position','scale','rotation','collision_layer','collision_mask','monitorable','monitoring','visible','__meta__'},'Footstep unknown area override')
         require(n.props.get('collision_layer',1)==2048 and n.props.get('collision_mask',1)==1 and n.props.get('monitoring',True)and not n.props.get('monitorable',True),'Footstep source filtering changed')
+        require(n.props.get('collision_mask',1)&recipe['player']['collision_layer'],'Footstep area does not observe the mapped Player')
         require(values['entering_sound']in names and (not values['exiting_sound']or values['exiting_sound']in names)and values['enter_shadow_effect']==shadow[1]and values['exit_shadow_effect']=='','Footstep unreviewed sound/shadow selection')
         shapes=[s for s in scene.nodes if s.path.rpartition('/')[0]==path and s.type=='CollisionShape2D'];require(len(shapes)==1,'Footstep requires one checked rectangle')
         shape=shapes[0];owner=owner_of(shape,'shape');ref=shape.props['shape'];require(owner.sub_type(ref)=='RectangleShape2D'and not shape.props.get('disabled',False),'Footstep rectangle disabled/type');e=owner.sub_resource(ref)['extents'];xf=scene.global_xf[shape.path]

@@ -8,471 +8,471 @@
 # policy -80.0 1 0
 case 0 podunk_to_mayor
 op initial
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 0
 op scene 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op scene 2
 exits 13 Music/MusicArea13 Music/MusicArea12 Music/MusicArea11 Music/MusicArea10 Music/MusicArea6 Music/MusicArea4 Music/MusicArea2 Music/MusicArea9 Music/MusicArea8 Music/MusicArea7 Music/MusicArea5 Music/MusicArea3 Music/MusicArea
 voices 1 0 1 1 0 0
-registered 0 
+registered 0
 areas 1 MusicArea 0 0 -1
 op enter MusicArea
-exits 0 
+exits 0
 voices 2 0 1 1 0 0 1 6 1 -80 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 1
 op finish
-exits 0 
+exits 0
 voices 2 0 1 1 -80 1 1 6 1 6 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 1
 op flush
-exits 0 
+exits 0
 voices 1 1 6 1 6 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 1
 case 1 rapid_podunk_mayor_podunk
 op initial
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 0
 op scene 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op scene 2
 exits 13 Music/MusicArea13 Music/MusicArea12 Music/MusicArea11 Music/MusicArea10 Music/MusicArea6 Music/MusicArea4 Music/MusicArea2 Music/MusicArea9 Music/MusicArea8 Music/MusicArea7 Music/MusicArea5 Music/MusicArea3 Music/MusicArea
 voices 1 0 1 1 0 0
-registered 0 
+registered 0
 areas 1 MusicArea 0 0 -1
 op enter MusicArea
-exits 0 
+exits 0
 voices 2 0 1 1 0 0 1 6 1 -80 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 1
 op scene 1
 exits 1 MusicArea
 voices 2 0 1 1 0 0 1 6 1 -80 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 3 0 1 1 0 0 1 6 1 -80 0 2 1 1 -80 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 2 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op finish
-exits 0 
+exits 0
 voices 3 0 1 1 -80 1 1 6 1 -80 1 2 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 2 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op flush
-exits 0 
+exits 0
 voices 1 2 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 2 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 case 2 stopped_latest_reused_across_banks
 op initial
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 0
 op scene 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op settle
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op stop Music/MusicArea 0
-exits 0 
+exits 0
 voices 1 0 1 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 1 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op scene 2
 exits 13 Music/MusicArea13 Music/MusicArea12 Music/MusicArea11 Music/MusicArea10 Music/MusicArea6 Music/MusicArea4 Music/MusicArea2 Music/MusicArea9 Music/MusicArea8 Music/MusicArea7 Music/MusicArea5 Music/MusicArea3 Music/MusicArea
 voices 1 0 1 0 0 0
-registered 0 
+registered 0
 areas 1 MusicArea 0 0 -1
 op enter MusicArea
-exits 0 
+exits 0
 voices 1 0 6 1 6 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 0
 case 3 shared_song_and_cancelled_exit
 op initial
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 0
 op scene 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea3
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 2 Music/MusicArea Music/MusicArea3
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 1 1 0 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op exit Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 2 Music/MusicArea Music/MusicArea3
 areas 13 Music/MusicArea 0 1 0 Music/MusicArea3 1 1 0 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op idle
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea3
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 1 1 0 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op exit Music/MusicArea3
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea3
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 1 0 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea3
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea3
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 1 1 0 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op idle
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea3
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 1 1 0 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op scene 2
 exits 13 Music/MusicArea13 Music/MusicArea12 Music/MusicArea11 Music/MusicArea10 Music/MusicArea6 Music/MusicArea4 Music/MusicArea2 Music/MusicArea9 Music/MusicArea8 Music/MusicArea7 Music/MusicArea5 Music/MusicArea3 Music/MusicArea
 voices 1 0 1 1 0 0
-registered 0 
+registered 0
 areas 1 MusicArea 0 0 -1
 op enter MusicArea
-exits 0 
+exits 0
 voices 2 0 1 1 0 0 1 6 1 -80 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 1
 case 4 door_live_array_skip
 op initial
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 0
 op scene 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea3
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 2 Music/MusicArea Music/MusicArea3
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 1 1 0 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea6
-exits 0 
+exits 0
 voices 2 0 1 1 0 0 1 3 1 -80 0
 registered 3 Music/MusicArea Music/MusicArea3 Music/MusicArea6
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 1 1 0 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 1 1 1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op door 1
-exits 0 
+exits 0
 voices 2 0 1 1 0 0 1 3 1 -80 0
 registered 1 Music/MusicArea3
 areas 13 Music/MusicArea 1 0 -1 Music/MusicArea3 1 1 0 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 1 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op scene 2
 exits 13 Music/MusicArea13 Music/MusicArea12 Music/MusicArea11 Music/MusicArea10 Music/MusicArea6 Music/MusicArea4 Music/MusicArea2 Music/MusicArea9 Music/MusicArea8 Music/MusicArea7 Music/MusicArea5 Music/MusicArea3 Music/MusicArea
 voices 2 0 1 1 0 0 1 3 1 -80 0
-registered 0 
+registered 0
 areas 1 MusicArea 0 0 -1
 op enter MusicArea
-exits 0 
+exits 0
 voices 3 0 1 1 0 0 1 3 1 -80 0 2 6 1 -80 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 2
 case 5 global_external_latest_same_song
 op initial
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 0
 op scene 2
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 1 MusicArea 0 0 -1
 op enter MusicArea
-exits 0 
+exits 0
 voices 1 0 6 1 6 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 0
 op external 1 1 0
-exits 0 
+exits 0
 voices 2 0 6 1 6 0 1 1 1 0 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 0
 op scene 1
 exits 1 MusicArea
 voices 2 0 6 1 6 0 1 1 1 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 2 0 6 1 6 0 1 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 case 6 global_external_latest_stopped
 op initial
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 0
 op scene 2
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 1 MusicArea 0 0 -1
 op enter MusicArea
-exits 0 
+exits 0
 voices 1 0 6 1 6 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 0
 op external 1 0 0
-exits 0 
+exits 0
 voices 2 0 6 1 6 0 1 1 0 0 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 0
 op scene 1
 exits 1 MusicArea
 voices 2 0 6 1 6 0 1 1 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 2 0 6 1 6 0 1 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 case 7 ui_and_collision_callbacks
 op initial
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 0
 op scene 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op context 0 0 0 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op context 1 1 0 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op context 1 0 1 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op context 1 0 0 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op context 1 1 0 1
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op exit Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op idle
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op context 1 0 0 0
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op exit Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op idle
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op context 1 0 1 1
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op exit Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 0 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op idle
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 case 8 source_appear_disappear_flags
 op initial
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 0
 op scene 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea2
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op flag canary_melody 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea2
-exits 0 
+exits 0
 voices 1 0 2 1 -6 0
 registered 1 Music/MusicArea2
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 1 1 0 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea10
-exits 0 
+exits 0
 voices 2 0 2 1 -6 0 1 4 1 -80 0
 registered 2 Music/MusicArea2 Music/MusicArea10
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 1 1 0 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 1 1 1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op flag zoo_freed 1
-exits 0 
+exits 0
 voices 2 0 2 1 -6 0 1 4 1 -80 0
 registered 2 Music/MusicArea2 Music/MusicArea10
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 1 1 0 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 1 1 1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea10
-exits 0 
+exits 0
 voices 2 0 2 1 -6 0 1 4 1 -80 0
 registered 2 Music/MusicArea2 Music/MusicArea10
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 1 1 0 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 1 1 1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea11
-exits 0 
+exits 0
 voices 3 0 2 1 -6 0 1 4 1 -80 0 2 1 1 -80 0
 registered 3 Music/MusicArea2 Music/MusicArea10 Music/MusicArea11
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 1 1 0 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 1 1 1 Music/MusicArea11 1 1 2 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 case 9 all_source_areas_exit_before_rebind
 op initial
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 0
 op scene 1
-exits 0 
+exits 0
 voices 1 0 0 0 0 0
-registered 0 
+registered 0
 areas 13 Music/MusicArea 0 0 -1 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 1 Music/MusicArea
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 0 0 -1 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea3
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 2 Music/MusicArea Music/MusicArea3
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 1 1 0 Music/MusicArea5 0 0 -1 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea5
-exits 0 
+exits 0
 voices 1 0 1 1 0 0
 registered 3 Music/MusicArea Music/MusicArea3 Music/MusicArea5
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 1 1 0 Music/MusicArea5 1 1 0 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 0 0 -1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op enter Music/MusicArea6
-exits 0 
+exits 0
 voices 2 0 1 1 0 0 1 3 1 -80 0
 registered 4 Music/MusicArea Music/MusicArea3 Music/MusicArea5 Music/MusicArea6
 areas 13 Music/MusicArea 1 1 0 Music/MusicArea3 1 1 0 Music/MusicArea5 1 1 0 Music/MusicArea7 0 0 -1 Music/MusicArea8 0 0 -1 Music/MusicArea9 0 0 -1 Music/MusicArea2 0 0 -1 Music/MusicArea4 0 0 -1 Music/MusicArea6 1 1 1 Music/MusicArea10 0 0 -1 Music/MusicArea11 0 0 -1 Music/MusicArea12 0 0 -1 Music/MusicArea13 0 0 -1
 op scene 2
 exits 13 Music/MusicArea13 Music/MusicArea12 Music/MusicArea11 Music/MusicArea10 Music/MusicArea6 Music/MusicArea4 Music/MusicArea2 Music/MusicArea9 Music/MusicArea8 Music/MusicArea7 Music/MusicArea5 Music/MusicArea3 Music/MusicArea
 voices 2 0 1 1 0 0 1 3 1 -80 0
-registered 0 
+registered 0
 areas 1 MusicArea 0 0 -1
 op enter MusicArea
-exits 0 
+exits 0
 voices 3 0 1 1 0 0 1 3 1 -80 0 2 6 1 -80 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 2
 op finish
-exits 0 
+exits 0
 voices 3 0 1 1 -80 1 1 3 1 -80 1 2 6 1 6 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 2
 op flush
-exits 0 
+exits 0
 voices 1 2 6 1 6 0
 registered 1 MusicArea
 areas 1 MusicArea 1 1 2

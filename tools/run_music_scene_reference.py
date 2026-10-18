@@ -183,10 +183,10 @@ def fixture(doc,proof=None):
   lines.append('case '+str(index)+' '+row['case']['name'])
   for step,view in enumerate(row['views']):
    command=['initial']if step==0 else row['case']['actions'][step-1];lines.append('op '+' '.join(str(int(v))if type(v)is bool else str(v)for v in command))
-   lines.append('exits '+str(len(view['exits']))+' '+' '.join(view['exits']))
+   lines.append(('exits '+str(len(view['exits']))+' '+' '.join(view['exits'])).rstrip())
    values=[len(view['voices'])]
    for v in view['voices']:values.extend([v['id'],ids[v['stream']],int(v['playing']),v['gain'],int(v['queued'])])
-   lines.append('voices '+' '.join(str(v)for v in values));lines.append('registered '+str(len(view['registered']))+' '+' '.join(view['registered']))
+   lines.append('voices '+' '.join(str(v)for v in values));lines.append(('registered '+str(len(view['registered']))+' '+' '.join(view['registered'])).rstrip())
    values=[len(view['areas'])]
    for a in view['areas']:values.extend([a['path'],int(a['inside']),int(a['registered']),a['attached']])
    lines.append('areas '+' '.join(str(v)for v in values))

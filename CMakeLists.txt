@@ -920,7 +920,7 @@ if(BUILD_TESTING)
     set_tests_properties(step_scene_resources PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED step_scene_metadata)
     add_executable(encore_world_run_audio_tests tests/world_run_audio_tests.cpp)
     target_link_libraries(encore_world_run_audio_tests PRIVATE encore_core)
-    add_test(NAME world_run_audio COMMAND encore_world_run_audio_tests ${CMAKE_BINARY_DIR}/step-scene-fixture ${CMAKE_SOURCE_DIR}/tests/fixtures/mayor.encsteps ${CMAKE_SOURCE_DIR}/tests/fixtures/pause-audio.tsv)
+    add_test(NAME world_run_audio COMMAND encore_world_run_audio_tests ${CMAKE_BINARY_DIR}/step-scene-fixture ${CMAKE_SOURCE_DIR}/tests/fixtures/mayor.encsteps ${CMAKE_SOURCE_DIR}/tests/fixtures/pause-audio.tsv ${CMAKE_SOURCE_DIR}/tests/fixtures/step-contacts.tsv)
     set_tests_properties(world_run_audio PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED step_scene_metadata)
     # One negative consumer temporarily corrupts its generated step file; the
     # second consumer reads it. Keep that exact fixture isolated, not the suite.

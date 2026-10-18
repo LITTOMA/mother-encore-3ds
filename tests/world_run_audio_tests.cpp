@@ -15,7 +15,7 @@ struct Unready:WalkAudioSink {bool walk_audio_ready()const override{return false
 struct Reject:WalkAudioSink {bool walk_audio_ready()const override{return true;}bool apply_walk_calls(const WalkAudioCalls&,std::string&)override{return false;}};
 }
 int main(int argc,char**argv){
- CHECK(argc==4);const std::string root=argv[1];FieldStepsData data;CHECK(data.load_file(argv[2],error));auto view=data.view();
+ CHECK(argc==5);const std::string root=argv[1];FieldStepsData data;CHECK(data.load_file(argv[2],error));auto view=data.view();
  struct Expected {int tap=0,running=0,playing=0,paused=0;std::string events;};std::vector<Expected>reference;std::ifstream reference_file(argv[3]);CHECK(bool(reference_file));std::string line;CHECK(bool(std::getline(reference_file,line)));
  while(std::getline(reference_file,line)){std::istringstream row(line);std::string action;int argument;Expected e;CHECK(bool(row>>action>>argument>>e.tap>>e.running>>e.playing>>e.paused>>e.events));reference.push_back(e);}CHECK(reference.size()==16);
  auto compare=[&](unsigned index,OpeningWorld&w,FieldRunLoop&loop,bool capture=true){const auto&e=reference.at(index);CHECK(w.player().tap_run==bool(e.tap)&&w.player().running==bool(e.running)&&loop.running()==bool(e.running)&&loop.playing()==bool(e.playing)&&w.house_paused()==bool(e.paused));if(capture){std::ostringstream events;for(const auto&event:loop.events()){if(events.tellp()>0)events<<',';events<<unsigned(event.kind);}CHECK((loop.events().empty()?"-":events.str())==e.events);}loop.clear_events();};
@@ -40,5 +40,12 @@ int main(int argc,char**argv){
  // Contact selection keeps the current registered stream until a MOVE run
  // call, including while paused; reset removes the old borrowed sink.
  CHECK(field.prepare(resources.room(),resources.map(),links,flags,{80,80},{0,1},{400,240},error));CHECK(!field.run_audio().prepared());CHECK(field.finish_transition());CHECK(field.world.advance({1,0}));
- std::printf("World run audio: %u checks; live MOVE sink, held/tap/forced pause and resume, rejected binding, metadata-only area callback fixture; no DSP or original-scene pass\n",checks);
+ // These settled contact outcomes came from original callbacks and real
+ // Area2D/body physics, using the source Player-local collision polygon.
+ CHECK(field.prepare(resources.room(),resources.map(),links,flags,{80,80},{0,1},{400,240},error));CHECK(field.bind_steps(step,bank,"wood",error));CHECK(field.finish_transition());std::ifstream contacts(argv[4]);CHECK(bool(contacts));CHECK(bool(std::getline(contacts,line)));unsigned cases=0;
+ while(std::getline(contacts,line)){std::istringstream row(line);unsigned index,mask;float px,py,ox,oy;int enabled0,enabled1,inside0,inside1;std::string wanted,extra;CHECK(bool(row>>index>>px>>py>>ox>>oy>>enabled0>>enabled1>>mask>>wanted>>inside0>>inside1));CHECK(index==cases&&!(row>>extra));CHECK(field.run_audio().set_area_enabled(0,enabled0!=0,error)&&field.run_audio().set_area_enabled(1,enabled1!=0,error));CHECK(field.world.warp_same_scene({px,py},{0,1}));
+  for(unsigned tick=0;tick<5;++tick){WalkInput next;CHECK(field.before_physics(next));CHECK(field.run_audio().wanted_sound()==step.find_sound(wanted));CHECK(field.run_audio().events().empty());}
+  const auto previous=field.run_audio().wanted_sound();for(uint32_t area=0;area<step.area_count();++area)CHECK(field.run_audio().area_event(area,true,false,error));CHECK(field.run_audio().wanted_sound()==previous);++cases;
+ }CHECK(cases==20);
+ std::printf("World run audio: %u checks; live MOVE sink, held/tap/forced pause and resume, rejected binding, 20 native settled contacts in metadata-only fixture; no DSP or original-scene pass\n",checks);
 }

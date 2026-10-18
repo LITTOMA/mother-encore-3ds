@@ -1066,6 +1066,13 @@ if(BUILD_TESTING)
  set_tests_properties(mayor_scene_resources PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
 endif()
 
+if(BUILD_TESTING)
+ add_executable(encore_field_walk_plan tools/field_walk_plan.cpp)
+ target_link_libraries(encore_field_walk_plan PRIVATE encore_core)
+ add_test(NAME field_walk_plan_cli COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/field_walk_plan_cli.py $<TARGET_FILE:encore_field_walk_plan>)
+ set_tests_properties(field_walk_plan_cli PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
+endif()
+
 include(cmake/TestParallelism.cmake)
 
 # Resource writers finish before compilation or fixture preparers read packs.

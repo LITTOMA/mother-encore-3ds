@@ -36,6 +36,17 @@ int main(int argc,char**argv){
   for(unsigned tick=0;tick<120;++tick){WalkInput input;CHECK(scene.before_physics(input));CHECK(scene.world.advance(input));CHECK(scene.after_physics());CHECK(scene.world.idle_frame(1.0/60));CHECK(scene.idle_frame(1.0/60,false));CHECK(scene.world.end_scene_frame());}
   CHECK(scene.phase()==FieldPhase::Walking);CHECK(scene.world.stage()==OpeningStage::Walking);
  }
+ // Begin at the actual incoming door poses, then approach by ordinary physics.
+ // Direct placement inside an NPC interaction rectangle would miss a blocked desk.
+ for(uint32_t route_id:{3u,5u}){
+  const auto incoming=links.route(links.find_route(route_id));FieldScene scene;std::vector<bool>flags(metadata.room().flag_count(),false);
+  CHECK(scene.prepare(metadata.room(),metadata.map(),links,flags,incoming.destination,incoming.direction,{400,240},error));
+  for(uint32_t i=0;i<metadata.npc_count();++i)CHECK(scene.bind_npc(metadata.npc(i),host,error));
+  CHECK(scene.bind_story(metadata.story(),items.view(),host,error));CHECK(scene.finish_transition());
+  const float y=route_id==3?-20.f:-560.f;unsigned tick=0;
+  for(;tick<300&&scene.world.player().position.y>y;++tick){WalkInput input{0,-1};CHECK(scene.before_physics(input));CHECK(scene.world.advance(input));CHECK(scene.after_physics());CHECK(scene.world.idle_frame(1.0/60));CHECK(scene.idle_frame(1.0/60,false));CHECK(scene.world.end_scene_frame());}
+  CHECK(tick<300);CHECK(scene.phase()==FieldPhase::Walking);CHECK(scene.try_interaction(true,error));CHECK(scene.world.pending_dialogue_id()==(route_id==3?2000u:2001u));
+ }
  for(uint32_t id:{4u,5u,6u}){auto route=links.route(links.find_route(id));CHECK(route.from==3);CHECK(route.to==(id==4?2u:3u));if(id!=4)CHECK(route.music_fade==0);}
  std::printf("Published Mayor: %u checks; actual catalog/resources, source entry and internal routes, five actors, inherited run sound and repeated scene preparation; no emulator/hardware claim\n",checks);
 }

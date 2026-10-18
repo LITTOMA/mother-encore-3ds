@@ -276,7 +276,7 @@ ActorActionState FieldScene::actor_pose(uint32_t index)const{
 }
 void FieldScene::apply_npc_bodies(){
     for(uint32_t i=0;i<npcs_.size();++i){const auto& n=*npcs_[i];const auto a=n.motion.view().actor();const auto p=actor_pose(n.actor).position;
-        collision_.set_body({p.x+a.collision_center.x-a.position.x,p.y+a.collision_center.y-a.position.y},a.collision_extents,i+1,n.motion.view().collides()&&actor_visible(n.actor)&&!world.actor_bound(n.actor));}
+        collision_.set_body({p.x+a.collision_center.x-a.position.x,p.y+a.collision_center.y-a.position.y},a.collision_extents,i+1,actor_visible(n.actor)&&!world.actor_bound(n.actor));}
 }
 bool FieldScene::finish_transition(){
     if(phase_!=FieldPhase::Transition)return fail("Field transition finish outside its boundary");

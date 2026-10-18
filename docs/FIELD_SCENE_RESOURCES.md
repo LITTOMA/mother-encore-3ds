@@ -9,3 +9,5 @@ World Links 格式仍为 1，新增能力 2 的 SceneAssets（36 字节）和 Np
 测试旧夹具直接取自已构建提交 cbdd992 的目录与 World Links，没有改写其字节。新增第三场景仅为编解码夹具，不是原版地图。GCC9 ASan/UBSan 的新元数据 66 项检查、已有目录 5,426 项和桥头剧情回归通过；三个 Python 测试覆盖版本、身份、类型、缺失默认项、截断与能力不匹配。日志在 reports/field-scene-resources。此阶段未更改规则或游戏存档格式；交叉构建与模拟器结论另行记录。
 
 待完成：来源 Scene 编译与路由；平台按场景选择及原子资源所有权；原版市政厅图层、碰撞、内部门、音乐和初始 NPC 对话；实际输入路线及负向加载恢复。不能在旧 FieldScene 仍活跃时覆写其 Room／Map 数据。
+
+资源生命周期基础：新增不可重新加载的 FieldSceneResources，按类型／身份读入并验证目录长度与 CRC，拥有 Room／Map／Story／Mick／NPC 和区域音乐元数据；核对场景 ID／来源、共享旗标域、NPC 子类型和音乐／音频绑定。原目录与 Links 销毁后，已加载元数据仍保持独立有效。失败不发布半成品；已有场景的 view 不被下一次 load 覆写。新增 32 项 GCC ASan/UBSan 检查通过，平台接入仍在开发。

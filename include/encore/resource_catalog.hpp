@@ -37,6 +37,7 @@ public:
     std::vector<uint32_t> ids(ResourceRole)const;
     std::vector<std::string_view> paths(ResourceRole) const;
     std::string companion_path(std::string_view battle_path) const;
+    bool read(ResourceRole,uint32_t binding_id,const char*prefix,std::vector<uint8_t>&,std::string&)const;
     bool verify_files(const char* prefix, std::string& error) const;
 private:
     struct Binding { uint32_t id; ResourceRole role; std::string path; uint32_t size, crc; };

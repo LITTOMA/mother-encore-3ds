@@ -142,6 +142,15 @@ std::string ResourceCatalog::companion_path(std::string_view battle_path)const {
         if(battle&&round&&battle->path==battle_path)return round->path;}
     return {};
 }
+bool ResourceCatalog::read(ResourceRole role,uint32_t id,const char*prefix,std::vector<uint8_t>&out,std::string&error)const{
+    if(!valid_||!prefix){error="Invalid typed resource read";return false;}const Binding*binding=nullptr;
+    for(const auto&row:bindings_)if(row.role==role&&row.id==id)binding=&row;
+    if(!binding){error="Typed resource binding is absent";return false;}
+    std::string root(prefix);if(!root.empty()&&root.back()!='/'&&root.back()!='\\')root+='/';std::vector<uint8_t>bytes;
+    if(!encore::read_file((root+binding->path).c_str(),bytes,resource_limit,error))return false;
+    if(bytes.size()!=binding->size||encore::crc32(bytes.data(),bytes.size())!=binding->crc){error="Typed resource size/checksum rejected: "+binding->path;return false;}
+    out=std::move(bytes);error.clear();return true;
+}
 bool ResourceCatalog::verify_files(const char* prefix,std::string& error)const {
     if(!valid_||!prefix){error="Invalid resource catalog verification request";return false;}
     std::string root=prefix;if(!root.empty()&&root.back()!='/'&&root.back()!='\\')root+='/';

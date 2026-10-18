@@ -9,7 +9,7 @@ option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMak
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
     runtime/field_menus_data.cpp runtime/field_menus.cpp
-    runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_story.cpp
+    runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
     runtime/house_inspection_data.cpp
     runtime/field_equipment_data.cpp runtime/field_equipment_menu.cpp runtime/storage_data.cpp runtime/storage_menu.cpp runtime/item_details.cpp runtime/drawer_program.cpp
@@ -859,6 +859,10 @@ if(BUILD_TESTING)
     target_link_libraries(encore_field_interaction_tests PRIVATE encore_core)
     add_test(NAME field_interaction COMMAND encore_field_interaction_tests ${CMAKE_SOURCE_DIR}/romfs)
     set_tests_properties(field_interaction PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
+    add_executable(encore_field_scene_resources_tests tests/field_scene_resources_tests.cpp)
+    target_link_libraries(encore_field_scene_resources_tests PRIVATE encore_core)
+    add_test(NAME field_scene_resources COMMAND encore_field_scene_resources_tests ${CMAKE_SOURCE_DIR}/romfs)
+    set_tests_properties(field_scene_resources PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
     add_executable(encore_world_scene_resources_tests tests/world_scene_resources_tests.cpp)
     target_link_libraries(encore_world_scene_resources_tests PRIVATE encore_core)
     add_test(NAME world_scene_resources COMMAND encore_world_scene_resources_tests ${CMAKE_SOURCE_DIR}/tests/fixtures/catalog-cap8.encresources ${CMAKE_SOURCE_DIR}/tests/fixtures/world-links-cap1.enclinks)

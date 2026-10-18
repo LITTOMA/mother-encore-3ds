@@ -52,6 +52,18 @@ int main(int argc,char**argv){
  box.input(true,false);box.input(false,true);for(unsigned i=0;i<300&&!box.dialogue_finished();++i)CHECK(box.advance_dialogue(1.0/60));CHECK(box.dialogue_finished());bool colored=false;for(const auto&line:box.dialogue_pose().lines)for(auto color:line.colors)colored|=color!=0xffffffffu;CHECK(colored);
  const auto oldlines=box.dialogue_pose().lines.size();CHECK(box.present_external(rich,"voice"));CHECK(box.dialogue_pose().lines.size()>oldlines);box.close_story_dialogue();CHECK(box.advance_chrome(1));
  std::vector<bool>flags(room.view().flag_count(),false);for(uint32_t i=0;i<flags.size();++i){const auto id=room.view().string(room.view().flag(i).name_string);flags[i]=id=="beat_dog_bridge"||id=="pippis_mom_call";}
+ // The emulator route must face the talker after its lateral approach. At
+ // y283 the right-facing ray and foot hull do not reach the source-restored
+ // actor (640,304); ordinary downward movement must establish contact.
+ {
+  Admission route_host;MotionHost route_motion;FieldScene route;auto call_flags=flags;
+  for(uint32_t i=0;i<call_flags.size();++i)if(room.view().string(room.view().flag(i).name_string)=="pippis_mom_call")call_flags[i]=false;
+  CHECK(route.prepare(room.view(),map.view(),links,call_flags,{510,272},{1,0},{400,240},error));CHECK(route.bind_npc(npc.view(),route_motion,error));CHECK(route.bind_story(view,items.view(),route_host,error));CHECK(route.finish_transition());CHECK(route.world.begin_house_program(1));
+  unsigned tick=0;for(;tick<2400&&route.world.stage()!=OpeningStage::Walking;++tick){WalkInput input;CHECK(route.before_physics(input)&&route.world.advance(input)&&route.after_physics()&&route.world.idle_frame(1.0/60));if(route.world.story_input_allowed())CHECK(route.world.finish_story_dialogue());}
+  CHECK(tick<2400&&route.world.story_flag("pippis_mom_call"));WalkInput input;CHECK(route.before_physics(input));CHECK(route.actor_pose(1).position.x==640&&route.actor_pose(1).position.y==304);
+  CHECK(route.world.warp_same_scene({640,283},{1,0}));CHECK(route.try_interaction(true,error)&&route.world.stage()==OpeningStage::Walking&&route_host.selected==UINT32_MAX);
+  CHECK(route.world.warp_same_scene({640,288},{0,1}));CHECK(route.try_interaction(true,error)&&route.world.stage()==OpeningStage::ScriptRunning&&route_host.selected==2);
+ }
  Admission host;MotionHost motion;FieldScene field;CHECK(field.prepare(room.view(),map.view(),links,flags,{640,292},{0,-1},{400,240},error));CHECK(field.bind_npc(npc.view(),motion,error));CHECK(field.bind_story(view,items.view(),host,error));CHECK(field.finish_transition());field.world.attach_random(random);
  CHECK(!field.world.face_interaction({INFINITY,0}));CHECK(field.world.face_interaction({643,272}));CHECK(field.world.player().direction.x>0&&field.world.player().direction.y<0);CHECK(!field.world.set_house_direction({.2f,-.9f}));CHECK(field.world.warp_same_scene({640,292},{0,-1}));
  host.allowed=false;const auto before=random.state();const auto direction=field.actor_pose(1).direction;CHECK(field.try_interaction(true,error));CHECK(field.phase()==FieldPhase::Unsupported&&field.world.stage()==OpeningStage::Walking);CHECK(random.state()==before&&!field.world.story_flag("pippis_mom_help"));CHECK(field.actor_pose(1).direction.x==direction.x&&field.actor_pose(1).direction.y==direction.y);CHECK(field.idle_frame(1.0/60,true));host.allowed=true;

@@ -1,0 +1,10 @@
+{
+  "level": "GCC9 ASan/UBSan; 32 checks; metadata ownership only; not console/emulator",
+  "source_sha256": {
+    "include/encore/field_scene_resources.hpp": "fa7671ddf62e52dc301c34073ea9710285b41e0d594daae044b8b687a9122a3a",
+    "runtime/field_scene_resources.cpp": "39cb73b3c69766db221255aa787c487bf20650a1f7e865f975bfe94e9d0b93d2",
+    "include/encore/resource_catalog.hpp": "03896c1aa7fdde9fdc2bf265890aec4b013fe67c6e022811776e6ee824a60328",
+    "runtime/resource_catalog.cpp": "2b1e581edf40ebc9191576fbb34adecb6ebd769e8d7ea68c85a83ad8793c2b6c",
+    "tests/field_scene_resources_tests.cpp": "5254d87318d43b1390b71e9ba87b0680bdc9fd84b37032eb14189910bd6de7b5"
+  }
+}

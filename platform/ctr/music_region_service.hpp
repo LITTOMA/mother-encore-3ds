@@ -4,8 +4,8 @@
 #include <memory>
 namespace encore::ctr {
 enum class MusicRegionServicePhase:uint8_t {Dormant,Preparing,Prepared,Active,Draining};
-// App-lifetime service. It stays Dormant in the current House-only main: no
-// resource reads, buffers or region NDSP calls happen until explicit prepare.
+// Explicit scene music service. Dormant has no resource reads, buffers or
+// region NDSP calls. A retired owner retains its original source fade tails.
 // The scene factory owns real source-ordered Area callbacks and commit epochs.
 class MusicRegionService final {
 public:
@@ -18,6 +18,17 @@ public:
  uint64_t prepared_pcm_bytes()const;
  uint64_t total_pcm_bytes()const;
  bool cancel_preparation(std::string&);
+ // Move a fresh prepared candidate into this owner, keeping the prior source
+ // fades in an empty retirement owner. No IO, NDSP or implicit Area entry.
+ bool handoff_prepared(MusicRegionService&candidate,MusicRegionService&retiring,std::string&);
+ bool handoff_scene(MusicRegionService&candidate,MusicRegionService&retiring,uint64_t epoch,const AudioPlayer&,std::string&);
+ // Deliver every owned source tree-exit and commit atomically; a rejected
+ // candidate/epoch/external owner preserves the original active controller.
+ bool leave_and_handoff(MusicRegionService&,MusicRegionService&,uint64_t,const AudioPlayer&,std::string&);
+ bool transition_scene(uint64_t,const AudioPlayer&,std::string&);
+ bool leave_scene(uint64_t,std::string&);
+ bool finish_retired_for_battle(std::string&);
+ bool pump_streams(std::string&);
  bool commit_scene(uint64_t epoch,const AudioPlayer&,std::string&);
  bool area_enter(uint64_t,std::string_view,const upstream::MusicRegionContext&,const AudioPlayer&,std::string&);
  bool area_exit(uint64_t,std::string_view,const upstream::MusicRegionContext&,std::string&);
@@ -42,6 +53,9 @@ public:
 private:
  struct State;std::unique_ptr<State>state_;
  MusicRegionServicePhase phase_=MusicRegionServicePhase::Dormant;
+ bool prepare_source_exit(upstream::MusicRegionController&,std::string&)const;
+ bool can_handoff(const MusicRegionService&,const MusicRegionService&,std::string&)const;
+ void take_prepared(MusicRegionService&,MusicRegionService&);
  static bool observe(upstream::MusicRegionController&,uint64_t&known_generation,const MusicObservation&,std::string&);
 };
 // Explicit loading-loop cooperation. Only old streaming queues move; no world

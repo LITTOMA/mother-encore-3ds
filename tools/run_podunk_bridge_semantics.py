@@ -9,7 +9,7 @@ from tools import run_emulator_semantics as r
 from tools.native_content import parse_pack
 from tools.emulator_artifact import checked_resources
 import hashlib
-p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);p.add_argument('--fixture',type=Path,required=True);p.add_argument('--emulator',type=Path,required=True);p.add_argument('--dsp-component',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--clock',type=int,default=946681277);p.add_argument('--mom-help',action='store_true');p.add_argument('--locale-preference',type=Path);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);p.add_argument('--fixture',type=Path,required=True);p.add_argument('--emulator',type=Path,required=True);p.add_argument('--dsp-component',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--clock',type=int,default=946681277);p.add_argument('--mom-help',action='store_true');p.add_argument('--house-roundtrip',action='store_true');p.add_argument('--locale-preference',type=Path);a=p.parse_args()
 package=a.package.resolve();out=a.out.resolve();game=package/'3ds/encore-native/encore-native.3dsx'
 receipt=json.loads((package/'build-receipt.json').read_bytes());source=receipt['source_commit']
 if not re.fullmatch('[0-9a-f]{40}',source):raise ValueError('Exact package source required')
@@ -20,11 +20,19 @@ if not a.fixture.is_file()or not a.fixture.resolve().is_relative_to(ROOT/'build'
 if shutil.disk_usage(ROOT).free<2*1024**3:raise ValueError('Insufficient free disk')
 preference=a.locale_preference.resolve()if a.locale_preference else None
 if preference and(not preference.is_file()or not preference.is_relative_to(ROOT/'build')or not 0<preference.stat().st_size<=52):raise ValueError('Bounded core-validated locale preference required')
-source_metadata=checked_resources(game.read_bytes(),source,['romfs/world/podunk/podunk.encroom','romfs/system/native.encresources'],ROOT)
+metadata_paths=['romfs/world/podunk/podunk.encroom','romfs/system/native.encresources']
+if a.house_roundtrip:metadata_paths+=['romfs/session/opening.encrestore']
+source_metadata=checked_resources(game.read_bytes(),source,metadata_paths,ROOT)
+restore_recipe=None
+if a.house_roundtrip:
+ from tools.native_restore import encode as encode_restore
+ restore_recipe=json.loads(subprocess.check_output(['git','show',source+':content/native-restore.json'],cwd=ROOT))
+ if encode_restore(restore_recipe)!=source_metadata['romfs/session/opening.encrestore']:raise ValueError('House music expectations differ from artifact restore rules')
 driver_revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
 driver_sources={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest()for name in ['tools/run_podunk_bridge_semantics.py','tools/emulator_artifact.py','tools/ci_console_check.py','tools/run_emulator_semantics.py','tools/cdb_client.py','tools/semantic_probe.py']}
 room=parse_pack(source_metadata['romfs/world/podunk/podunk.encroom']);flags={room['strings'][f['name_string']]:i for i,f in enumerate(room['sections']['Flag'])}
 def flag(s,name):i=flags[name];return bool(s['story_flag_'+str(i//32)]&(1<<(i%32)))
+if a.house_roundtrip:driver_sources['tools/native_restore.py']=hashlib.sha256((ROOT/'tools/native_restore.py').read_bytes()).hexdigest()
 out.mkdir(parents=True);shutil.copyfile(__file__,out/'driver_snapshot.py');work=out/'temporary';work.mkdir();(work/'.owned-emulator-workspace').write_text('podunk-bridge-v1')
 r.CONFIG=r.CONFIG.replace('graphics_api=1','graphics_api=2')+'\n[System]\ninit_clock=1\ninit_clock\\default=false\ninit_time='+str(a.clock)+'\ninit_time\\default=false\ninit_ticks_type=1\ninit_ticks_type\\default=false\ninit_ticks_override=0\ninit_ticks_override\\default=false\n'
 exe=r.portable(a.emulator.resolve(),work/'emulator')
@@ -113,8 +121,30 @@ try:
  assert state()['frame']<2000,state()
  while state()['frame']<2000:advance(min(120,2000-state()['frame']))
  pulse('DOWN');pulse('A');wait(lambda s:s['title_phase']==3);pulse('A');wait(lambda s:s['title_phase']==4);pulse('A');wait(lambda s:s['title_phase']==0 and s['paused']==0)
- initial=record('loaded');assert not flag(initial,'beat_dog_bridge')and not flag(initial,'pippis_mom_call');assert any(initial['inventory_'+str(i)+'_definition']==3 and initial['inventory_'+str(i)+'_equipped']for i in range(initial['inventory_count']))
- travel('DOWN',lambda s:s['field_scene']!=0 and s['field_phase']==0 and s['paused']==0);record('outside');menu_smoke('goods_before_battle')
+ initial=record('loaded');assert initial['world_stage']==0 and initial['world_dialogue']==0xffffffff,'Checkpoint activates a source House cutscene; this route requires a walking checkpoint'
+ assert not flag(initial,'beat_dog_bridge')and not flag(initial,'pippis_mom_call');assert any(initial['inventory_'+str(i)+'_definition']==3 and initial['inventory_'+str(i)+'_equipped']for i in range(initial['inventory_count']))
+ travel('DOWN',lambda s:s['field_scene']!=0 and s['field_phase']==0 and s['paused']==0);record('outside')
+ if a.house_roundtrip:
+  advance(60);before=record('roundtrip_before')
+  stable_trip=['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','menu_uid_hash','menu_key_uid_hash','menu_inventory_hash','menu_key_hash','menu_settings_hash','menu_controls_hash',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+key for i in range(16)for key in ('definition','doses','equipped')]]
+  travel('UP',lambda s:s['field_scene']==0)
+  wait(lambda s:s['field_scene']==0 and not s['paused']and s['world_stage']==0,limit=2400)
+  house=record('roundtrip_house');capture('roundtrip-house')
+  assert {k:before[k]for k in stable_trip}=={k:house[k]for k in stable_trip},'House return mutated session'
+  expected=[m for m in restore_recipe['music_areas']if all(abs(house['player_'+axis]-m['center'][i])<=m['extents'][i]for i,axis in enumerate(('x','y')))and all(flag(house,c['flag_name'])==c['expected_value']for c in m['conditions'])]
+  assert len(expected)<=1 and all(m['supported']for m in expected),'House source music selection unsupported or ambiguous'
+  performance['house_source_music']=[{'source_path':m['source_path'],'resource_path':m['resource_path'],'conditions':m['conditions']}for m in expected]
+  samples=audio_window('roundtrip_house_audio')
+  if expected:
+   assert all(s['music_playing']and s['dsp_music_playing']for s in samples)and len({(s['dsp_music_sample_pos'],s['dsp_music_wave_seq'])for s in samples})>1,'Enabled source House music did not progress after return'
+  else:
+   assert all(not s['music_playing']and not s['dsp_music_playing']and not s['dsp_region_playing']for s in samples),'Source-disabled House music or retired field music kept playing'
+  travel('DOWN',lambda s:s['field_scene']!=0 and s['field_phase']==0 and not s['paused'])
+  outside=record('roundtrip_outside');capture('roundtrip-outside')
+  assert {k:before[k]for k in stable_trip}=={k:outside[k]for k in stable_trip},'Repeated field entry mutated session'
+  samples=audio_window('roundtrip_field_audio')
+  assert any(s['dsp_region_playing']for s in samples)and len({(s['dsp_region_sample_sum'],s['dsp_region_wave_sum'])for s in samples})>1,'Field music did not progress after reentry'
+ menu_smoke('goods_before_battle')
  travel('DOWN',lambda s:s['player_y']>=60);travel('LEFT',lambda s:s['player_x']<=-32);travel('DOWN',lambda s:s['player_y']>=190);travel('RIGHT',lambda s:s['player_x']>=314);travel('DOWN',lambda s:s['player_y']>=274)
  if state()['player_y']>278:travel('UP',lambda s:s['player_y']<=276)
  travel('RIGHT',lambda s:s['world_stage']!=0);record('bridge_trigger');capture('bridge-trigger')
@@ -148,6 +178,9 @@ try:
   # The source call restores the talker at (640,304). Approach from above
   # by ordinary walking; no guest warp or memory write is permitted.
   waypoint('RIGHT','player_x',584);waypoint('DOWN','player_y',282);waypoint('RIGHT','player_x',640)
+  # The lateral approach ends facing right. Face/walk toward the talker below
+  # us, rather than relying on a marginal body overlap at y283.
+  waypoint('DOWN','player_y',286);approach=record('help_approach');assert approach['direction_y']>0
   pulse('A');wait(lambda s:s['world_programme']==2 and s['world_stage']!=0)
   baseline=record('help_started');assert not flag(baseline,'pippis_mom_help')
   stable_help=['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count',*['inventory_'+str(i)+'_'+key for i in range(16)for key in ('definition','doses','equipped')]]
@@ -183,7 +216,7 @@ try:
  for button,axis,value in [('DOWN','player_y',480),('LEFT','player_x',408),('DOWN','player_y',488),('LEFT','player_x',400),('DOWN','player_y',512),('LEFT','player_x',344),('DOWN','player_y',520),('LEFT','player_x',336),('DOWN','player_y',528),('LEFT','player_x',184),('DOWN','player_y',536),('LEFT','player_x',176),('DOWN','player_y',560),('LEFT','player_x',-560),('UP','player_y',496)]:
   waypoint(button,axis,value)
  frontier=record('west_road');capture('west-road')
- result={'status':'passed','scope':'Artificial post-basement checkpoint, normal LOAD/door/walk/battle/dialogue input; no original pixel or whole-game claim','source_commit':receipt['source_commit'],'driver_revision':driver_revision,'driver_sources_sha256':driver_sources,'source_metadata_sha256':{path:hashlib.sha256(value).hexdigest()for path,value in source_metadata.items()},'clock_fixture':a.clock,'fixture_sha256':r.sha(a.fixture),'emulator_sha256':r.sha(a.emulator),'capabilities':{'memoryWriteEnabled':caps['memoryWriteEnabled'],'inputEnabled':caps['inputEnabled']},'idempotent_trigger_revisit':True,'mom_help_and_repeat':a.mom_help,'locale_preference_sha256':r.sha(a.locale_preference)if a.locale_preference else None,'menu_before_and_after_battle':True,'completion_projection':{k:frontier[k]for k in ['level','experience','cash','bank','earned_cash','key_count',*['story_flag_'+str(i)for i in range(6)]]},'projection':{k:frontier[k]for k in ['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','loot_selected',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+n for i in range(16)for n in ('definition','doses','equipped')]]}}
+ result={'status':'passed','scope':'Artificial post-basement checkpoint, normal LOAD/door/walk/battle/dialogue input; no original pixel or whole-game claim','source_commit':receipt['source_commit'],'driver_revision':driver_revision,'driver_sources_sha256':driver_sources,'source_metadata_sha256':{path:hashlib.sha256(value).hexdigest()for path,value in source_metadata.items()},'clock_fixture':a.clock,'fixture_sha256':r.sha(a.fixture),'emulator_sha256':r.sha(a.emulator),'capabilities':{'memoryWriteEnabled':caps['memoryWriteEnabled'],'inputEnabled':caps['inputEnabled']},'idempotent_trigger_revisit':True,'mom_help_and_repeat':a.mom_help,'house_roundtrip':a.house_roundtrip,'locale_preference_sha256':r.sha(a.locale_preference)if a.locale_preference else None,'menu_before_and_after_battle':True,'completion_projection':{k:frontier[k]for k in ['level','experience','cash','bank','earned_cash','key_count',*['story_flag_'+str(i)for i in range(6)]]},'projection':{k:frontier[k]for k in ['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','loot_selected',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+n for i in range(16)for n in ('definition','doses','equipped')]]}}
 except BaseException as exc:
  result['error']=repr(exc)
  if session:

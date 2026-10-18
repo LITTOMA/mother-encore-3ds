@@ -1,0 +1,14 @@
+{
+  "status": "failed",
+  "error": "AssertionError('House music did not progress after return')",
+  "performance": {
+    "roundtrip_house_audio": {
+      "emulationSpeed": 0.9969785065558812,
+      "gameFps": 59.65043651195265,
+      "gpuSeconds": 0.00027681,
+      "ipcSeconds": 9.833333333333335e-06,
+      "swapSeconds": 2.3860000000000002e-05,
+      "systemFps": 59.65043651195265
+    }
+  }
+}

@@ -31,7 +31,7 @@ bool field_basic_action(upstream::RoundView round,upstream::FieldStoryView story
 class FieldStoryEffects final:public upstream::FieldStoryHost {
 public:
  bool can_start(upstream::FieldStoryView story,uint32_t programme,std::string& error)override{
-  const auto room=field_room_data.view();if(programme>=room.program_count()){error="Field programme is not admitted";return false;}const auto program=room.program(programme);
+  const auto* scene=mick_host_field();if(!scene){error="Field story owner is unavailable";return false;}const auto room=scene->world.content();if(programme>=room.program_count()){error="Field programme is not admitted";return false;}const auto program=room.program(programme);
   for(uint32_t i=0;i<program.command_count;++i){const auto command=room.command(program.first_command+i);if(command.opcode==uint16_t(upstream::DialogueActionKind::ShowDialogue)){const auto text=story.dialogue(command.target_index,locale_selection.code());std::string speaker;upstream::LocalizedHouseSpan body;if(!text.id||!upstream::format_field_story_text(story.text(text.speaker),new_game_data,session_state,locale_selection,speaker,error)||!upstream::format_field_story_span(story.text(text.body),new_game_data,session_state,locale_selection,body,error)){if(error.empty())error="Field programme locale/name is not admitted";return false;}}}
   const auto binding=story.encounter_for_programme(programme);if(!binding.battle){error.clear();return true;}
   uint32_t index=UINT32_MAX;for(uint32_t i=0;i<room.battle_count();++i)if(room.battle(i).stable_id==binding.battle)index=i;
@@ -44,8 +44,8 @@ public:
   const auto loot=round.loot();return field_battle_loot.validate_sound(round.string(loot.sound),error)&&field_battle_loot.can_receive(round.string(loot.item),loot.doses,error);
  }
 }field_story_host;
-bool prepare_field_story_audio(std::string& error){
- const auto room=field_room_data.view();const auto story=field_story_data.view();std::set<std::string>sources;
+bool prepare_field_story_audio(const upstream::FieldSceneResources& resources,std::string& error){
+ const auto room=resources.room();const auto story=resources.story();std::set<std::string>sources;
  for(uint32_t i=0;i<room.resource_count();++i)if(room.resource(i).kind==2)sources.emplace(room.string(room.resource(i).path_string));
  for(uint32_t i=0;i<story.text_count();++i){const auto text=story.text_record(i);if(text.voice.length)sources.emplace(story.text(text.voice));}
  for(uint32_t i=0;i<room.battle_count();++i){const auto battle=room.battle(i);const auto binding=story.encounter(battle.stable_id);if(binding.battle){sources.emplace(story.text(binding.music));const auto path=companion_path("romfs:/"+std::string(room.string(room.resource(battle.battle_resource_index).path_string)));upstream::BattleRoundData round;if(path.empty()||!round.load_file(path.c_str(),error))return false;if(round.view().version()>=6)sources.emplace(round.view().string(round.view().loot().sound));}}

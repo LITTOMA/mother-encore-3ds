@@ -7,13 +7,20 @@
 #include <vector>
 
 namespace encore::upstream {
+class ResourceCatalog;
 // ENCLNK01: reviewed cross-scene door routes. A route only names checked scene
 // identities, destination pose and the original Door/SceneTransition values.
-enum class WorldLinkSection:uint32_t {Bytes=1,Scenes,Routes};
+enum class WorldLinkSection:uint32_t {Bytes=1,Scenes,Routes,SceneAssets,NpcBindings};
 constexpr uint32_t kWorldLinkSectionCount=3;
 enum class WorldTransitionKind:uint16_t {Fade=0,CircleFocus=1,CirclePop=2};
 enum class WorldRouteFlag:uint32_t {FadeMusic=1};
 struct WorldScene {uint32_t id=0;std::string_view source;uint32_t room_role=0,map_role=0;};
+// References are typed catalog binding IDs, not game/save identities. Capability
+// 1's singleton role IDs remain an admitted legacy representation.
+struct WorldSceneResources {
+    WorldScene scene{};uint32_t story=0,music=0,audio=0,zones=0,mick=0;
+    std::vector<uint32_t>npcs;
+};
 struct WorldRoute {
     uint32_t id=0,from=0,to=0;std::string_view door;Vec2 destination{},direction{};
     std::string_view sound,end_sound;uint16_t in_kind=0,out_kind=0;float in_speed=0,out_speed=0,music_fade=0;
@@ -27,7 +34,10 @@ public:
     bool load(const uint8_t*,size_t,std::string&);
     bool load_file(const char*,std::string&);
     bool valid()const{return !bytes_.empty();}
+    uint32_t capability()const;
     uint32_t scene_count()const;
+    bool resolve_scene(uint32_t,const ResourceCatalog&,WorldSceneResources&,std::string&)const;
+    bool bind_catalog(const ResourceCatalog&,std::string&)const;
     uint32_t route_count()const;
     WorldScene scene(uint32_t index)const;
     WorldRoute route(uint32_t index)const;

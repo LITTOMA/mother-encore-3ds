@@ -1,0 +1,14 @@
+{
+  "level": "GCC9 ASan/UBSan, production adapters under NDSP doubles; no real audio output, console or hardware claim",
+  "player_checks": 774,
+  "service_checks": 960,
+  "prepare_checks": 46894,
+  "source_sha256": {
+    "platform/ctr/music_region_player.cpp": "af238d49aca58833ef33b8ecbe106d982a993e68a82e142bd1f8b8214210aa80",
+    "platform/ctr/music_region_player.hpp": "9c33c64cec4bce0566ecb6cd9eda7e0dbd3d1e4dc93eb3fd798e4843769df660",
+    "platform/ctr/music_region_service.cpp": "5fa7b60c01f72f3ae63f6e9c3a9fdbefda2adcf9b7104e38b44624c32a920829",
+    "platform/ctr/music_region_service.hpp": "3bec60a833f60e3b00c161670c5fbffbce9a5a9feceefa2a2e6c19eba3ec125b",
+    "tests/music_region_player_tests.cpp": "d84d069a9da6bff0bbbbe5d43321c94243249b5e0b4ecfadb6aaed75adf195f1",
+    "tests/music_region_service_tests.cpp": "7f1204acfc36311fe97be70bdfc53e0b256080bf3054b729ee4dabac0b12b56d"
+  }
+}

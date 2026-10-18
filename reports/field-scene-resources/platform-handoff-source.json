@@ -1,0 +1,16 @@
+{
+  "host_level": "GCC9 ASan/UBSan; owner32, warp20, music-player774, music-service1034, music-prepare46894; NDSP doubles; no console/hardware claim for this revision",
+  "platform_level": "Actual main.cpp integration awaits cross-build and Azahar; synthetic route tests do not expand playable map scope",
+  "source_sha256": {
+    "platform/ctr/main.cpp": "f0169dfe07c32c08736a5dc4ee96c0d35161ecb9b46fdd498abfe5f01b8feeb8",
+    "platform/ctr/field_story.hpp": "5b9d8532f29652e59ddf7fb01ac16380280a182cab52736f033e9ce4454b6529",
+    "platform/ctr/music_region_service.hpp": "9889701be863a528620e478036432380b725e83efb310e13747e748641f58051",
+    "platform/ctr/music_region_service.cpp": "082520e9808cc5e1771adeca619fe084ba00158912a500ecec7c42494d325013",
+    "platform/ctr/music_region_player.hpp": "9c33c64cec4bce0566ecb6cd9eda7e0dbd3d1e4dc93eb3fd798e4843769df660",
+    "platform/ctr/music_region_player.cpp": "af238d49aca58833ef33b8ecbe106d982a993e68a82e142bd1f8b8214210aa80",
+    "runtime/field_scene.cpp": "234baff6dc8810fed23abfe95403f47ae69f1d62af2447418062013ee34c9330",
+    "include/encore/field_scene.hpp": "eb3a16ea3d9f0c854ba235720277c67f6c0bbef9394eb22c11d93bc36af51fce",
+    "tests/music_region_service_tests.cpp": "bda9b621e81b2652162e4788e82fdb6b15201fefb3dda6866505501f34fcacb6",
+    "tests/field_route_warp_tests.cpp": "de4b32b103df6821e32d6714d083aad9093fa2d2399c5eef7735873a3d30e174"
+  }
+}

@@ -120,6 +120,8 @@ public:
     uint32_t take_route(){const auto r=route_;route_=WorldLinksData::kNotFound;return r;}
     void begin_transition(){phase_=FieldPhase::Transition;}
     bool finish_transition();
+    // Checked same-scene door: keep NPCs, RNG, flags and music owners.
+    bool warp_route(uint32_t route_index,std::string& error);
     // Rejected destination: stay paused at an explicit stop; B returns to the last safe point.
     void abort_transition(std::string message){route_=WorldLinksData::kNotFound;phase_=FieldPhase::Unsupported;error_=std::move(message);}
     bool layer_active(uint32_t i)const{return i<layer_active_.size()&&layer_active_[i];}

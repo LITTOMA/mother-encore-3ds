@@ -342,3 +342,4 @@ cookies.json
 !/reports/pippi-mom-help/*.png
 !/reports/pippi-mom-help/*.py
 !/reports/pippi-mom-help/return-route.cpp
+!/reports/pippi-mom-help/approach-route.cpp

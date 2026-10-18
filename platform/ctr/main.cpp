@@ -1413,6 +1413,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     // The parked House binding is retired; its object progress stays available.
     candidate->world.attach_random(battle_random);
     cancel_battle_prewarm();field_story_text=UINT32_MAX;session_state=std::move(snapshot);field_run_audio.reset();field_scene.reset();field_resources=std::move(resources);field_scene=std::move(candidate);field_run_audio=std::move(run_candidate);field_status.clear();field_choice_shown=false;
+    gameplay_scene->presentation.set_text_value_callback(resolve_dialogue_value,&field_scene->world);
     dialogue_choices.close();save_menu.close();storage_menu=StorageMenu{};field_equipment_menu=FieldEquipmentMenu{};
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;
     error.clear();return true;

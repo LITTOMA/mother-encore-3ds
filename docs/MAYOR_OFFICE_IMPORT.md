@@ -174,3 +174,6 @@ GCC9 ASan/UBSan的玩家交接442项（含12种过期状态和House／Podunk／M
 历史Actor路线包不改，测试从当前配方显式投影回schema1，仅去除新可选steps字段，再核对旧cap2全部字节；当前cap3正负来源测试继续保留。Phone断言核对59条、末尾1701／1702的真实source，并用原AudioIR整体SHA核对前57条投影，未放宽旧声明。Phone报告由原report／write生成器重建，Linux原序列化器保持既有LF；逐项语义核对只增加wood／stone各source及import的4个记录，以及native-audio.json输出SHA，旧输入／来源／其他输出和机制说明全部不变。没有手改二进制包或更新原版轨迹预期。
 
 修正后相关Python41项通过，新增原57条整体SHA断言单独1项通过；hash seed 1／789的真正link_phone_content --check均由该41项覆盖。该结果不是GCC完整重跑通过，也不继承旧Clang184／184到新提交；最新完整矩阵和主程序真实模拟器验收仍待完成。
+
+
+野外共用HousePresentation的动态数值回调在换图提交后，现显式重绑至活动Field World，避免后续earned_cash数值消费仍尝试写入已退役House World。回屋候选原本就绑定自身World。此项只修正回调归属，不改文本、数值、资源或现有剧情覆盖；当前Mayor初次分支没有新增earned_cash对白，不声称该未来分支已实现。正常门／菜单模拟器检查使用精确b739c6a产物，其来源早于这项回调归属修正，后续构建独立记录。

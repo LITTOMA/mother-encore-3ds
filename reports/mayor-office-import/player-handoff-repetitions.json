@@ -1,0 +1,41 @@
+{
+  "source_commit": "b739c6ae2f88c98b113b8b188976a567302c0fd1",
+  "game_sha256": "062c29cac6c740aeec6946c72178756a50d25106aa3e8baa090a3c2f2af961ca",
+  "status": "two_cold_routes_passed_with_identical_completion_and_non_hp_projection",
+  "completion_projection": {
+    "level": 2,
+    "experience": 17,
+    "cash": 0,
+    "bank": 20,
+    "earned_cash": 20,
+    "key_count": 2,
+    "story_flag_0": 1064961,
+    "story_flag_1": 513327104,
+    "story_flag_2": 0,
+    "story_flag_3": 0,
+    "story_flag_4": 0,
+    "story_flag_5": 0
+  },
+  "random_outcome_differences": {
+    "hp": [
+      6,
+      33
+    ]
+  },
+  "load_rng_observations": [
+    {
+      "random_state_lo": 1131079908,
+      "random_state_hi": 1830251898,
+      "random_draws_lo": 13,
+      "random_draws_hi": 0
+    },
+    {
+      "random_state_lo": 249896716,
+      "random_state_hi": 3397125487,
+      "random_draws_lo": 13,
+      "random_draws_hi": 0
+    }
+  ],
+  "scope": "Artificial post-phone/basement checkpoint; normal input only; deterministic rewards/flags and repeat triggers, not equal RNG inputs or exact HP, natural opening, Mayor entry, perceptual audio, CIA install or hardware",
+  "temporary_profiles_removed": true
+}

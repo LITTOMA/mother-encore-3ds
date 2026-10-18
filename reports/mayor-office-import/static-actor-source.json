@@ -1,0 +1,14 @@
+{
+  "scope": "Map capability4 metadata and matching static actor rendering implementation; no playable Mayor scene or GPU/hardware result yet",
+  "verification": "GCC9 ASan/UBSan: 33 static-actor decoder checks, 3107 legacy field/scene checks; 12 Python methods; actual candidate now loads",
+  "earlier_failure": "Original capability3 candidate correctly failed static group admission; earlier raw log retained; no ignore rule or expectation weakening",
+  "fixture": "Frozen actual candidate generator output, no textures; Python regenerates and compares exact bytes",
+  "source_sha256": {
+    "runtime/field_data.cpp": "dc5228cca9552a329dfbe6ab7259286f2d4356357ca22113a49142421c12bf58",
+    "platform/ctr/field_renderer.hpp": "2cc738023f00b3169440e18d80d2f5254f21ce67beda882ac36e9726905ddb14",
+    "tools/podunk_field.py": "da6be70d14efc5ed96badf0fd3fa3492206ce210ddef0bf3163272c3838bdfc2",
+    "tests/field_static_actor_tests.cpp": "2cb36a2a57512fd9eabc6059a63665a4b7662e1766b6a2ab7c95a0ecf25d14b5",
+    "tests/test_mayor_field.py": "d43e676efd5310fbbb695100756dc0a61cc45f64bd3af87805921c3f5aaddd5e",
+    "tests/fixtures/mayor-static-actor.encmap": "dbee173b396da10e104523a25eb2f84f0671d687602233647c6eb84042e30bb0"
+  }
+}

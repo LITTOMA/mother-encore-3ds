@@ -51,7 +51,8 @@ public:
             if(group.kind==uint32_t(FieldGroupKind::Static)){
                 for(uint32_t k=0;k<group.count;++k){const auto index=group.first+k;if(!scene.item_active(index))continue;const auto item=map_.item(index);
                     if(item.kind==uint16_t(FieldItemKind::LayerCells))draw_layer(scene,item.first);
-                    else draw_sprites(scene,item.first,item.count);}
+                    else if(item.kind==uint16_t(FieldItemKind::Sprites))draw_sprites(scene,item.first,item.count);
+                    else if(item.kind==uint16_t(FieldItemKind::Actor)&&scene.actor_visible(item.first))actors.draw_actor(scene.actor_pose(item.first),cx_-ox_,cy_-oy_);}
                 continue;
             }
             entries_.clear();

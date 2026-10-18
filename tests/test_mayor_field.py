@@ -1,4 +1,4 @@
-import copy,json,tempfile,unittest
+import copy,json,struct,tempfile,unittest
 from pathlib import Path
 from tools import podunk_field as f
 from tools import field_scene_candidate as candidate
@@ -12,6 +12,13 @@ class MayorField(unittest.TestCase):
   self.assertEqual([d['route']for d in m.doors],[4,5,6]);self.assertEqual(set(m.npc_bindings.values()),{1,2,3,4,5})
   atlas=f.Atlases(m);self.assertEqual(len(atlas.pages),1)
   blob=f.encode_map(m,atlas,['graphics/world/mayor/atlas-00.t3x']);scene,_=f.unpack_container(blob,f.MAP_MAGIC,f.MAP_STRIDES,f.MAP_LIMIT);self.assertEqual(scene,3)
+  self.assertEqual(struct.unpack_from('<I',blob,20)[0],4)
+  self.assertEqual(blob,(f.ROOT/'tests/fixtures/mayor-static-actor.encmap').read_bytes())
+  for capability in (1,2,3,5):
+   bad=bytearray(blob);struct.pack_into('<I',bad,20,capability)
+   with self.assertRaises(f.FieldError):f.unpack_container(bad,f.MAP_MAGIC,f.MAP_STRIDES,f.MAP_LIMIT)
+  bad=bytearray((f.ROOT/'romfs/world/podunk/podunk.encmap').read_bytes());struct.pack_into('<I',bad,20,4)
+  with self.assertRaises(f.FieldError):f.unpack_container(bad,f.MAP_MAGIC,f.MAP_STRIDES,f.MAP_LIMIT)
  def test_original_podunk_outputs_unchanged(self):
   recipe=f.load_recipe();_,_,_,outputs=f.build_outputs(recipe)
   for name,data in outputs.items():self.assertEqual(data,(f.ROOT/'romfs'/name).read_bytes(),name)

@@ -1350,7 +1350,7 @@ def pack_container(magic, scene_id, sections, strides, limit, *, capability=1):
 def unpack_container(blob, magic, strides, limit, *, capability=None, header_flags_mask=0):
     require(isinstance(blob, (bytes, bytearray)) and HEADER.size <= len(blob) <= limit, 'Field resource size rejected')
     m, version, total, crc, actual_capability, scene_id, reserved, pin, count, r1, r2 = HEADER.unpack_from(blob)
-    allowed = (capability,) if capability is not None else ((1, 2, 3) if magic == MAP_MAGIC else (1,))
+    allowed = (capability,) if capability is not None else ((1, 2, 3, 4) if magic == MAP_MAGIC else (1,))
     require(m == magic and version == 1 and total == len(blob) and actual_capability in allowed and not (reserved & ~header_flags_mask) and not r1 and not r2,
             'Field resource header rejected')
     require(pin == bytes.fromhex(PIN), 'Field resource source pin rejected')
@@ -1374,8 +1374,15 @@ def unpack_container(blob, magic, strides, limit, *, capability=None, header_fla
         kinds = [struct.unpack_from('<H', sections[17], i)[0] for i in range(0, len(sections[17]), strides[17])]
         require(all(k in (1, 2) or (actual_capability >= 2 and k == 3) for k in kinds), 'Field boundary capability rejected')
         actors=[struct.unpack_from('<H',sections[13],i)[0] for i in range(0,len(sections[13]),strides[13])]
-        require(all(k in (1,2,3,4,5) or actual_capability==3 and k==6 for k in actors),'Field actor capability rejected')
-        require((actual_capability!=2 or 3 in kinds) and (actual_capability!=3 or 6 in actors),'Noncanonical field capability')
+        require(all(k in (1,2,3,4,5) or actual_capability>=3 and k==6 for k in actors),'Field actor capability rejected')
+        require((actual_capability!=2 or 3 in kinds) and (actual_capability<3 or 6 in actors),'Noncanonical field capability')
+        static_actor=False
+        for at in range(0,len(sections[14]),16):
+            kind,first,count,reserved=struct.unpack_from('<4I',sections[14],at)
+            require(first<=len(actors)and count<=len(actors)-first,'Field group item span rejected')
+            if kind==1 and 6 in actors[first:first+count]:static_actor=True
+        require(not static_actor or actual_capability>=4,'Static actor capability rejected')
+        require(actual_capability!=4 or static_actor,'Noncanonical static actor capability')
     return scene_id, sections
 
 
@@ -1509,8 +1516,9 @@ def encode_map(model, atlases, atlas_paths):
     for b in model.bodies:
         secs['Bodies'] += struct.pack('<4I', b['first'], b['count'], b['cond'][0], b['cond'][1])
     secs['Bytes'] = bytearray(model.strings)
+    static_actor=any(g['kind']==1 and any(item['kind']==6 for item in model.items[g['first']:g['first']+g['count']])for g in model.groups)
     return pack_container(MAP_MAGIC, model.recipe['scene']['id'], [secs[n] for n in MAP_SECTIONS], MAP_STRIDES, MAP_LIMIT,
-                          capability=3 if model.npc_bindings else 2 if any(b['kind'] == 3 for b in model.boundaries) else 1)
+                          capability=4 if static_actor else 3 if model.npc_bindings else 2 if any(b['kind'] == 3 for b in model.boundaries) else 1)
 
 
 def door_parameters(sources, recipe, scene_doc_nodes, door_path):

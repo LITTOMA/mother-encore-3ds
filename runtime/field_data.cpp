@@ -63,7 +63,7 @@ uint32_t FieldMapView::localized_picture(uint32_t index,std::string_view locale)
 bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kFieldMapSectionCount*16||n>max_bytes)return fail("Field map size rejected");
-    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)<1||u32(p+20)>3||u32(p+28)||u32(p+52)!=kFieldMapSectionCount||u32(p+56)||u32(p+60))
+    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)<1||u32(p+20)>4||u32(p+28)||u32(p+52)!=kFieldMapSectionCount||u32(p+56)||u32(p+60))
         return fail("Field map schema/capability/reserved rejected");
     if(!u32(p+24))return fail("Field map scene identity rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Field map source pin rejected");}
@@ -157,21 +157,22 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
         case FieldItemKind::Player:
             if(it.first||it.count)return fail("Field map player item rejected");++players;break;
         case FieldItemKind::Actor:
-            if(u32(p+20)!=3||!it.first||it.first>=64||it.count!=1||std::find(actors.begin(),actors.end(),it.first)!=actors.end())return fail("Field map actor item rejected");
+            if(u32(p+20)<3||!it.first||it.first>=64||it.count!=1||std::find(actors.begin(),actors.end(),it.first)!=actors.end())return fail("Field map actor item rejected");
             actors.push_back(it.first);break;
         default:return fail("Field map item kind rejected");}
     }
-    uint32_t item_cursor=0;bool player_sorted=false;
+    uint32_t item_cursor=0;bool player_sorted=false,static_actor=false;
     for(uint32_t i=0;i<groups;++i){const auto g=v.group(i);
         if((g.kind!=uint32_t(FieldGroupKind::Static)&&g.kind!=uint32_t(FieldGroupKind::YSort))||g.first!=item_cursor||!g.count||g.count>items-item_cursor||u32(v.record(S::Groups,i)+12))
             return fail("Field map group rejected");
         for(uint32_t k=0;k<g.count;++k){const auto kind=FieldItemKind(v.item(g.first+k).kind);
-            if(g.kind==uint32_t(FieldGroupKind::Static)&&kind!=FieldItemKind::LayerCells&&kind!=FieldItemKind::Sprites)return fail("Field map static group item rejected");
+            if(g.kind==uint32_t(FieldGroupKind::Static)){static_actor|=kind==FieldItemKind::Actor;if(kind!=FieldItemKind::LayerCells&&kind!=FieldItemKind::Sprites&&!(u32(p+20)>=4&&kind==FieldItemKind::Actor))return fail("Field map static group item rejected");}
             if(g.kind==uint32_t(FieldGroupKind::YSort)&&kind==FieldItemKind::LayerCells)return fail("Field map sort group item rejected");
             if(kind==FieldItemKind::Player)player_sorted=true;}
         item_cursor+=g.count;}
     if(item_cursor!=items||players!=1||!player_sorted)return fail("Field map draw program rejected");
-    if(u32(p+20)==3&&actors.empty())return fail("Field actor capability has no actors");
+    if(u32(p+20)>=3&&actors.empty())return fail("Field actor capability has no actors");
+    if(u32(p+20)==4&&!static_actor)return fail("Static actor capability has no static actors");
     for(uint32_t i=0;i<openables;++i){const auto o=v.openable(i);
         auto audio=[&](FieldText t){return text_ok(t,true,256)&&(!t.length||v.text(t).substr(0,6)=="res://");};
         if(!text_ok(o.path,false,512)||!finite(o.center)||!finite(o.extents)||o.extents.x<=0||o.extents.y<=0||!audio(o.sound)||!audio(o.end_sound)||

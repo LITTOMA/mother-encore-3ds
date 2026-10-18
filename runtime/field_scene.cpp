@@ -155,8 +155,19 @@ bool FieldScene::prepare(RoomView room,FieldMapView map,const WorldLinksData& li
     if(story_flags.size()!=room.flag_count())return reject("Field scene flag table mismatch");
     for(uint32_t i=0;i<map.count(FieldMapSection::Items);++i){const auto item=map.item(i);
         if(item.kind==uint16_t(FieldItemKind::Actor)&&(item.first>=room.actor_instance_count()||item.first==room.scene().player_instance_index))return reject("Field map actor is not a room NPC");}
+    if(map.count(FieldMapSection::Area)){
+        const auto a=map.area();
+        if(map.text(a.source)!=room.string(room.scene().source_scene_string))return reject("Field AreaRoom source differs from the room");
+        uint32_t visit=kRoomNoIndex,guard=kRoomNoIndex;
+        for(uint32_t i=0;i<room.flag_count();++i){const auto name=room.string(room.flag(i).name_string);if(name==map.text(a.visit_flag))visit=i;if(name==map.text(a.party_guard_flag))guard=i;}
+        if(visit==kRoomNoIndex||guard==kRoomNoIndex)return reject("Field AreaRoom ready flag is unregistered");
+        if(story_flags[guard])return reject("Field AreaRoom flying NPC party is not yet admitted");
+    }
     const std::vector<bool> reviewed(room.flag_count(),true);
     if(!world.initialize_restored(room,story_flags,reviewed,position,direction,viewport))return reject(std::string("Field world rejected: ")+world.error());
+    // A candidate world owns this Ready write; a failed scene publication cannot
+    // mutate the old owner. Source set_flag emits even when already true.
+    if(map.count(FieldMapSection::Area)&&!world.set_story_flag(map.text(map.area().visit_flag),true,true))return reject("Field AreaRoom visit flag write failed");
     map_=map;links_=&links;viewport_=viewport;
     const auto doors=map.count(FieldMapSection::Doors),boundaries=map.count(FieldMapSection::Boundaries),cameras=map.count(FieldMapSection::Cameras);
     const auto openables=map.count(FieldMapSection::Openables);

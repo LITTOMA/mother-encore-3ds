@@ -1350,11 +1350,13 @@ def pack_container(magic, scene_id, sections, strides, limit, *, capability=1):
 def unpack_container(blob, magic, strides, limit, *, capability=None, header_flags_mask=0):
     require(isinstance(blob, (bytes, bytearray)) and HEADER.size <= len(blob) <= limit, 'Field resource size rejected')
     m, version, total, crc, actual_capability, scene_id, reserved, pin, count, r1, r2 = HEADER.unpack_from(blob)
-    allowed = (capability,) if capability is not None else ((1, 2, 3, 4) if magic == MAP_MAGIC else (1,))
+    allowed = (capability,) if capability is not None else ((1, 2, 3, 4, 5) if magic == MAP_MAGIC else (1,))
     require(m == magic and version == 1 and total == len(blob) and actual_capability in allowed and not (reserved & ~header_flags_mask) and not r1 and not r2,
             'Field resource header rejected')
     require(pin == bytes.fromhex(PIN), 'Field resource source pin rejected')
     require(zlib.crc32(bytes(blob[32:])) == crc, 'Field resource checksum rejected')
+    if magic == MAP_MAGIC and actual_capability==5:
+        require(tuple(strides)==MAP_STRIDES, 'Field Area caller strides rejected');strides=(*strides,80)
     require(count == len(strides), 'Field resource section count rejected')
     sections = []
     cursor = HEADER.size + count * 16
@@ -1383,6 +1385,9 @@ def unpack_container(blob, magic, strides, limit, *, capability=None, header_fla
             if kind==1 and 6 in actors[first:first+count]:static_actor=True
         require(not static_actor or actual_capability>=4,'Static actor capability rejected')
         require(actual_capability!=4 or static_actor,'Noncanonical static actor capability')
+        if actual_capability==5:
+            from tools.field_area import decode as decode_area
+            require(len(sections[21])==80, 'Field Area record count');decode_area(sections[21],sections[0])
     return scene_id, sections
 
 
@@ -1454,7 +1459,7 @@ class Atlases:
         return hashlib.sha256(struct.pack('<2I', *page.size) + page.tobytes()).hexdigest()
 
 
-def encode_map(model, atlases, atlas_paths):
+def encode_map(model, atlases, atlas_paths, *, area=None):
     S = model.string
     secs = {name: bytearray() for name in MAP_SECTIONS}
     for path, page in zip(atlas_paths, atlases.pages):
@@ -1515,10 +1520,14 @@ def encode_map(model, atlases, atlas_paths):
                                        c['w'], c['h'], c['ox'], c['oy'], c['cond'][0], c['cond'][1], 1 if has_rect else 0, 0)
     for b in model.bodies:
         secs['Bodies'] += struct.pack('<4I', b['first'], b['count'], b['cond'][0], b['cond'][1])
+    names=MAP_SECTIONS;strides=MAP_STRIDES
+    if area is not None:
+        from tools.field_area import encode as encode_area
+        secs['Area']=encode_area(area,S);names=(*names,'Area');strides=(*strides,80)
     secs['Bytes'] = bytearray(model.strings)
     static_actor=any(g['kind']==1 and any(item['kind']==6 for item in model.items[g['first']:g['first']+g['count']])for g in model.groups)
-    return pack_container(MAP_MAGIC, model.recipe['scene']['id'], [secs[n] for n in MAP_SECTIONS], MAP_STRIDES, MAP_LIMIT,
-                          capability=4 if static_actor else 3 if model.npc_bindings else 2 if any(b['kind'] == 3 for b in model.boundaries) else 1)
+    return pack_container(MAP_MAGIC, model.recipe['scene']['id'], [secs[n] for n in names], strides, MAP_LIMIT,
+                          capability=5 if area is not None else 4 if static_actor else 3 if model.npc_bindings else 2 if any(b['kind'] == 3 for b in model.boundaries) else 1)
 
 
 def door_parameters(sources, recipe, scene_doc_nodes, door_path):

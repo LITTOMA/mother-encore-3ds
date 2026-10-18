@@ -45,6 +45,7 @@ public:
     bool draw(const encore::upstream::FieldScene& scene,const OpeningActorRenderer& actors,float camera_x,float camera_y,float width,float height,float offset_x,float offset_y,double time,void (*extra)(float,float,float,float)=nullptr){
         using namespace encore::upstream;
         if(!ready()||scene.map().bytes_identity()!=map_.bytes_identity())return false;
+        if(map_.count(FieldMapSection::Area)){const auto c=map_.area().background;C2D_DrawRectSolid(offset_x,offset_y,0,width,height,C2D_Color32(c>>24,(c>>16)&255,(c>>8)&255,c&255));}
         time_=time;cx_=camera_x;cy_=camera_y;w_=width;h_=height;ox_=offset_x;oy_=offset_y;deferred_.clear();
         for(uint32_t g=0;g<map_.count(FieldMapSection::Groups);++g){
             const auto group=map_.group(g);

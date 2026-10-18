@@ -68,3 +68,10 @@ Town Hall 音乐候选现从原 MusicChanger 类／实例默认值与真实矩�
 门口音乐已按固定来源重新核对：SceneTransition 在遮罩开始前遍历 audioManager.musicChangers，MusicChanger.stop_music 从同一个数组删除自己；Godot 实际遍历因此跳过交替项。原生基准执行未改的门处理前缀和停止方法，0至6个区域／跨场景／同场景／禁用淡出共21种注册结果。共享核心保持该顺序、门指定的淡出长度以及已注销区域在 tree_exiting 不重启默认淡出的行为；旧 first-player 描述不准确，已更正，固定上游未变。此局部基准注入空 attached_player，仅证明注册次序；音量／释放由独立核心与平台双件验证，不把注入服务称为整场景原生运行。
 
 共享核心259项、NDSP 双件播放器774／服务1,058／分步准备46,894项与9项 Python检查通过。坏时长不修改现场，旧场景 epoch 无害，停止回调不做文件读取或立即改变 NDSP 队列。平台在 begin 后、idle_frame 和 perform_scene_swap 前消费 FadeMusic，故使用的是原场景音乐身份；切换后的事件只有解锁与结束声音。1f53e91 的实际3DSX／CIA构建已通过（run39124130097），a8168a9 的编译失败日志保留。2ffd16b控制台任务亦成功，不能据此声明 Mayor 已可进入或真机通过。
+
+
+AreaRoom 候选现由来源元数据启用 ENCMAP01 格式1／能力5，新增单个80字节 Area 节；旧能力1至4的21节目录和实际资源保持原样。编译实例 (110,240)／sub-area=true、原背景 #1c1c1c、Podunk 对应 MapPodunk、拥有后覆盖为 Merrysville，以及 visited_podunk 和单人 NPC-party 边界。地图定位与 marker 共用核心坐标；同一室内移动不会移动地图上的位置，未知区域地图明确拒绝。背景在场景视口内按来源色绘制。准备中的世界先持有 Ready 写入，发布失败不修改旧世界；重复 Ready 仍按原版发出 flags_updated。飞人 NPC 队伍尚未移植，相关状态拒绝，不作静默删除。
+
+原引擎执行未改 AreaRoom Ready／定位和 globalData.set_flag，16组原生结果覆盖原有访问标记真假、子区域真假和四个位置；使用注入的空 NPC 队伍、当前地图身份与地图大小，不是整场景信号图。共享 GCC9 ASan/UBSan 场景663／菜单414／会话20,531／旧地图3,107／市政厅剧情3,735项通过，Python21项及最后来源／会话6项通过。首次测试调用了不存在的 FieldScene.advance、来源路径沿用纹理限制而拒绝空格，均保留失败并修正。早期原生适配器多次超时；诊断暴露注入 set_flag 的单行多语句语法错误，修正适配器后原文件方式通过，未改测试中的原版函数。
+
+Session 资源仍为v10，仅增加实际 visited_podunk 可变标记，编码多18字节；原默认状态、开局角色和游戏存档编码不变。经既有命名 re-admission 工具重建来源依赖，命名二进制不变。原生成器核对／重建旧 Podunk 后地图、Room和链接均逐字节不变；来源收据记录新的工具指纹。Mayor候选7,380字节仍未进入发行目录。对应来源、实际日志、未通过尝试与差异证明见 reports/mayor-office-import/area-*。

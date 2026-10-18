@@ -1,0 +1,19 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "changed_session_fields": [
+    "mutable_flags",
+    "sources",
+    "dependencies"
+  ],
+  "mutable_flag_added": [
+    "visited_podunk"
+  ],
+  "defaults_equal": true,
+  "startup_equal": true,
+  "unchanged_sha256": {
+    "romfs/ui/opening.encnewgame": "a532d8d0e64bb9b2828fadfd6f003bb6a34150a89b98b31db8563261ff11ecb7",
+    "romfs/world/podunk/podunk.encmap": "9749716944c38e147ec2ecf3d9829b8bca72dce963114a303d64aab08c6af06a",
+    "romfs/world/podunk/podunk.encroom": "6f6e6c9b7ee9129225eba5439c1a2d76ba76047656e3b435dce08b54191c9e60",
+    "romfs/world/world.enclinks": "b25f95e8a83740d29c25067dcf04b307690d1e366f87db768af4b9f68a44f8c1"
+  }
+}

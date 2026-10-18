@@ -75,6 +75,10 @@ int main(int argc,char**argv){
  // while the map centers on the actual field player, without migrating saves.
  const auto house_x=live.session.position_x,house_y=live.session.position_y;live.in_field=true;live.world_x=live.world_y=1600;
  CHECK(menu.initialize(data,settings,host,error));CHECK(menu.open(5,error));CHECK(menu.map_x()==std::clamp(data.map_offset_x+live.world_x/data.map_divisor-data.display_sizes[1][0]/2.f,0.f,float(data.images[0].width-data.display_sizes[1][0])));CHECK(menu.map_y()==std::clamp(data.map_offset_y+live.world_y/data.map_divisor-data.display_sizes[1][1]/2.f,0.f,float(data.images[0].height-data.display_sizes[1][1])));CHECK(live.session.position_x==house_x&&live.session.position_y==house_y);CHECK(input(0,0,false,true));menu.take_exit();
+ live.area_map=true;live.area_map_item=data.map_item;live.area_map_position={110,240};live.world_x=8;live.world_y=-63;
+ CHECK(menu.initialize(data,settings,host,error));CHECK(menu.open(5,error));const auto fixed_x=menu.map_x(),fixed_y=menu.map_y();CHECK(input(0,0,false,true));menu.take_exit();live.world_y=-600;
+ CHECK(menu.open(5,error));CHECK(menu.map_x()==fixed_x&&menu.map_y()==fixed_y);CHECK(input(0,0,false,true));menu.take_exit();
+ live.area_map_item="UnportedMap";CHECK(menu.initialize(data,settings,host,error));CHECK(!menu.open(5,error)&&!menu.active());live.area_map_item=data.map_item;live.area_map_position[0]=NAN;CHECK(!menu.initialize(data,settings,host,error));live.area_map=false;
  live.world_x=NAN;CHECK(!menu.initialize(data,settings,host,error));live.world_x=live.world_y=0;live.in_field=false;
  // A partially used source consumable remains storable without broadening
  // the legacy store contract or allowing unknown definition/dose ranges.

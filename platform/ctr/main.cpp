@@ -1046,7 +1046,16 @@ bool initialize_field_menus(std::string&error){
         FieldMenusState next;if(!collect_session_snapshot(next.session,e,&active_overworld()))return false;
         next.stats={{session_rewards.maxhp,session_rewards.maxpp,session_rewards.offense,session_rewards.defense,session_rewards.speed,session_rewards.iq,session_rewards.guts}};
         for(const auto&row:native_session_data.levels())if(row.level==session_rewards.level)next.next_exp=row.next_exp;
-        next.preferences=field_preferences;next.chinese=locale_selection.code()=="zh_Hans_CN";next.in_field=in_field();const auto position=active_overworld().player().position;next.world_x=position.x;next.world_y=position.y;out=std::move(next);return true;
+        next.preferences=field_preferences;next.chinese=locale_selection.code()=="zh_Hans_CN";next.in_field=in_field();const auto position=active_overworld().player().position;next.world_x=position.x;next.world_y=position.y;
+        if(in_field()&&field_scene->map().count(FieldMapSection::Area)){
+            const auto map=field_scene->map();const auto a=map.area();next.area_map=true;next.area_map_item=std::string(map.text(a.map_item));
+            const auto override=map.text(a.map_override_item);bool owned=false;
+            for(const auto&item:next.session.key_items)owned|=item.item_id==override;
+            for(const auto&member:next.session.characters)if(std::find(next.session.party.begin(),next.session.party.end(),member.character_id)!=next.session.party.end())for(const auto&item:member.inventory)owned|=item.item_id==override;
+            if(!override.empty()&&owned)next.area_map_item=std::string(override);
+            const auto point=field_area_map_position(a,position);next.area_map_position={point.x,point.y};
+        }
+        out=std::move(next);return true;
     };
     host.equip=[](uint32_t slot,bool none,uint32_t uid,std::string&e){PreparedFieldEquipment candidate;if(!prepare_field_equipment(slot,none,uid,candidate,e))return false;session_inventory=std::move(candidate.inventory);session_rewards=std::move(candidate.stats);return true;};
     host.locale=[](std::string_view code,std::string&e){if(!select_native_locale(code,true,e))return false;if(in_field())field_scene->mick().set_locale(locale_selection.code());return true;};

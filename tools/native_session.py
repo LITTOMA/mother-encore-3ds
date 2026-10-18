@@ -222,7 +222,10 @@ def extract():
         skills=character['learnedSkills']+([second['encounter']['learned_skill']]if level==second['encounter']['promoted_level']else [])
         levels.append(dict(level=level,minimum_exp=room['sections']['Experience'][level-1]['required_total_exp'],next_exp=room['sections']['Experience'][level]['required_total_exp'],stats=values,skills=skills))
     require(levels[0]['stats']==[effective[k]for k in stats] and levels[1]['stats']==[x['after']for x in second['growth']],'Derived stat contract disagrees with live battle resources')
-    mutable={saved_flag,first['victory']['earned_cash_flag']}
+    from tools.field_area import source as area_source
+    area,area_sources=area_source();ex.sources.update(area_sources)
+    required.extend(['content/mayor-area.json','content/mayor-field.json','tools/field_area.py'])
+    mutable={saved_flag,first['victory']['earned_cash_flag'],area['visit_flag']}
     from tools.field_story import read as field_story_policy
     field_story,_=field_story_policy();required.append('content/podunk-story.json')
     mutable.update(b['winflag']for b in field_story['encounters'])

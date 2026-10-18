@@ -1,0 +1,54 @@
+{
+  "scope": "Completed host executables only; retained compilation objects, genuine D33 game and reports",
+  "removed": [
+    {
+      "bytes": 41791304,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\door-music"
+    },
+    {
+      "bytes": 42319072,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\field-area"
+    },
+    {
+      "bytes": 43337480,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\field-menus"
+    },
+    {
+      "bytes": 43786536,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\native-session"
+    },
+    {
+      "bytes": 42422520,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\field_data_cap4_regression"
+    },
+    {
+      "bytes": 42675416,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\mayor-story"
+    },
+    {
+      "bytes": 41810976,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\mayor-music"
+    },
+    {
+      "bytes": 41771200,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\gameplay_audio"
+    },
+    {
+      "bytes": 41905792,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\music_regions"
+    },
+    {
+      "bytes": 42072920,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\music-player"
+    },
+    {
+      "bytes": 42678096,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\music-service"
+    },
+    {
+      "bytes": 42710488,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\music-prepare"
+    }
+  ],
+  "bytes": 509281800.0
+}

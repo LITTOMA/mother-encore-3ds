@@ -1,0 +1,256 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "results": [
+    {
+      "sub": false,
+      "old": false,
+      "position": [
+        8,
+        -63
+      ],
+      "map": [
+        110.5,
+        236.0625
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": false,
+      "old": false,
+      "position": [
+        8,
+        -519
+      ],
+      "map": [
+        110.5,
+        207.5625
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": false,
+      "old": false,
+      "position": [
+        -216,
+        -600
+      ],
+      "map": [
+        96.5,
+        202.5
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": false,
+      "old": false,
+      "position": [
+        0,
+        0
+      ],
+      "map": [
+        110,
+        240
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": false,
+      "old": true,
+      "position": [
+        8,
+        -63
+      ],
+      "map": [
+        110.5,
+        236.0625
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": false,
+      "old": true,
+      "position": [
+        8,
+        -519
+      ],
+      "map": [
+        110.5,
+        207.5625
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": false,
+      "old": true,
+      "position": [
+        -216,
+        -600
+      ],
+      "map": [
+        96.5,
+        202.5
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": false,
+      "old": true,
+      "position": [
+        0,
+        0
+      ],
+      "map": [
+        110,
+        240
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": true,
+      "old": false,
+      "position": [
+        8,
+        -63
+      ],
+      "map": [
+        110,
+        240
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": true,
+      "old": false,
+      "position": [
+        8,
+        -519
+      ],
+      "map": [
+        110,
+        240
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": true,
+      "old": false,
+      "position": [
+        -216,
+        -600
+      ],
+      "map": [
+        110,
+        240
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": true,
+      "old": false,
+      "position": [
+        0,
+        0
+      ],
+      "map": [
+        110,
+        240
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": true,
+      "old": true,
+      "position": [
+        8,
+        -63
+      ],
+      "map": [
+        110,
+        240
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": true,
+      "old": true,
+      "position": [
+        8,
+        -519
+      ],
+      "map": [
+        110,
+        240
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": true,
+      "old": true,
+      "position": [
+        -216,
+        -600
+      ],
+      "map": [
+        110,
+        240
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    },
+    {
+      "sub": true,
+      "old": true,
+      "position": [
+        0,
+        0
+      ],
+      "map": [
+        110,
+        240
+      ],
+      "visited": true,
+      "signals": 1,
+      "npc_party": 0
+    }
+  ]
+}

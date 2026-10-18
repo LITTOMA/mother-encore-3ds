@@ -2498,7 +2498,8 @@
     "pippis_mom_help",
     "poltergeist",
     "saved",
-    "talked_to_dad"
+    "talked_to_dad",
+    "visited_podunk"
   ],
   "camera_area_ids": [
     1,
@@ -2521,6 +2522,11 @@
     "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
     "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
     "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "Data/Items/MapMerrysville.yaml": "b728a934df42ddd76997761e48e8f9e87a4ab7161c4e727c262a0faa07358ebc",
+    "Data/Items/MapPodunk.yaml": "a0a9b41e46eef76044809dc698abc1afc1dab534b4dcb7e37563ea01e54afe43",
+    "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/UI/MapScreen/MapScreen.gd": "3d6bc422458e3bb8862522ce7d991ebef847618fe30dc5a0ac39c9e358c2f4d6",
     "Data/NamingSequences/intro.yaml": "cc6036576852edb7ff29bbd44f71dd50ae2e7ee51fdffd6322457d36d3719507",
     "Data/Items/KickMeNote.yaml": "3d1481a5d1eac9a119e804a1d7d4924bfca03a25c29376a01586596a46d43165",
     "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633",
@@ -2541,6 +2547,9 @@
     "content/native-storage.json": "15c7144c455736ed3aebc6c96c16f9959a3362f93aec26e688236cc88548ab88",
     "content/field-rewards.json": "ae5f4844457bff31732cebd05aa0c03a4cb35ef9bc7f09e4d577898c580754c3",
     "content/diary-story.json": "b9e93337b086ad2b951a8a6861d8020a70bd848b7ebd415d140b98d07b317409",
+    "content/mayor-area.json": "21bd23e8ff3c2523459376449f57cea29ef4266bb271adfbacbca36a9c6e556f",
+    "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
+    "tools/field_area.py": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
     "content/podunk-story.json": "47ebd1ddcb5c95c79e9bb4486438f04daa6d8c927046dcd6833f9f9e6c39f178"
   },
   "field_items": [

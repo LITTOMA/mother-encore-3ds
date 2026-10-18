@@ -1,0 +1,8 @@
+test_new_and_old_capability_mismatch_and_truncated_payload (tests.test_scene_resource_catalog.SceneCatalogCodec.test_new_and_old_capability_mismatch_and_truncated_payload) ... ok
+test_old_and_multiple_scene_binding_capabilities (tests.test_scene_resource_catalog.SceneCatalogCodec.test_old_and_multiple_scene_binding_capabilities) ... ok
+test_wrong_ids_types_and_missing_default_are_rejected (tests.test_scene_resource_catalog.SceneCatalogCodec.test_wrong_ids_types_and_missing_default_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.022s
+
+OK

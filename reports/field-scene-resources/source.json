@@ -1,0 +1,14 @@
+{
+  "level": "GCC9 ASan/UBSan and 3 Python schema tests; no console/emulator coverage for these new codecs yet",
+  "source_sha256": {
+    "include/encore/resource_catalog.hpp": "f31e629bccf1dd750b7850753f4642f8d30b57649490d7829c86f6a6d6bf6f77",
+    "include/encore/world_links.hpp": "6bfe8602bc28de3b1545aa082d42ecc94ff463f597dbb00ab0f2de6d4b6ffd1c",
+    "runtime/resource_catalog.cpp": "7e3d23b16d993cfb742f2a734db8267850218fe1fd6614bd4e2921643f20d39a",
+    "runtime/world_links.cpp": "8fbe0df0f85068562da5f296df1942d8c485537788a089fd9ef4936fb46cb21b",
+    "tools/resource_catalog.py": "f57a7670c38e58ce49cc975bd28e0c2c2c0722b8526e77a6a99c0c486f174159",
+    "tests/world_scene_resources_tests.cpp": "004726636cbe9e874fc9d1947e947638306ece9529c033b1600ed4dc73a58ffd",
+    "tests/test_scene_resource_catalog.py": "bfc3b0fd92c94d8adee03ebec2bccb7c2172e5b3b1add57bb391c2b600ea333e",
+    "tests/fixtures/catalog-cap8.encresources": "3670b24979d93347527f1437decaad2759cb5c1df7c085db67c6212318c579a2",
+    "tests/fixtures/world-links-cap1.enclinks": "b25f95e8a83740d29c25067dcf04b307690d1e366f87db768af4b9f68a44f8c1"
+  }
+}

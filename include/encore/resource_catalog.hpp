@@ -32,6 +32,9 @@ public:
     bool load_file(const char*, std::string&);
     bool valid() const { return valid_; }
     const std::string& path(ResourceRole) const;
+    // Capability 9 permits additional scene resources with independent binding IDs.
+    const std::string& path(ResourceRole,uint32_t binding_id)const;
+    std::vector<uint32_t> ids(ResourceRole)const;
     std::vector<std::string_view> paths(ResourceRole) const;
     std::string companion_path(std::string_view battle_path) const;
     bool verify_files(const char* prefix, std::string& error) const;

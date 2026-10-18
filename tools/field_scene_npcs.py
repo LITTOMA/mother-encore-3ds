@@ -32,6 +32,12 @@ def policy(path):
     return p
 
 
+def validate_sprite_policy(idle,talk_idle,connections,has_dialogue):
+    require(type(idle)is str and idle in ('Idle','Walk')and type(talk_idle)is str and talk_idle==idle,'NPC candidate unreviewed talk-idle policy')
+    require(connections==[["Talk","Idle",2]]and type(connections[0][2])is int,'NPC candidate unreviewed transition policy')
+    require(type(has_dialogue)is bool and (idle=='Idle'or not has_dialogue),'Animated idle dialogue requires separate source policy review')
+
+
 def build(path=ROOT/'content/mayor-npcs.json'):
     p=policy(path);ex=Extractor(ROOT);docs={}
     from tools.podunk_field import load_recipe
@@ -74,6 +80,7 @@ def build(path=ROOT/'content/mayor-npcs.json'):
         require(size[0]%columns==size[1]%rows==0,'NPC candidate sheet dimensions')
         sprite_at=at(path+'/CharacterSprite');offset=n.props.get('sprite_offset',Vec2(0,0));require(isinstance(offset,Vec2),'NPC sprite offset type')
         idle=effective('idle_animation',str);require(idle in ('Idle','Walk'),'NPC candidate idle state')
+        validate_sprite_policy(idle,effective('talk_idle_animation',str),n.props.get('connections',[["Talk","Idle",2]]),bool(n.props.get('dialog','')))
         clips=[];spans={}
         for role,name in enumerate((idle,'Walk','Talk')):
             source=anim['animations'][name];require(source['type']==0 and len(source['directions'])==directions,'NPC candidate directional animation')
@@ -126,14 +133,14 @@ def add_room(sections,strings,S,house,resource,*,asset_root,recipe=ROOT/'content
         file=target(asset_root,binding['texture']);require(file.is_file(),'NPC Room requires actual compiled source texture')
         primary=len(sections['Resource']);sections['Resource'].append(dict(stable_id=identity('Resource'),path_string=S(binding['texture']),width=texture['size'][0],height=texture['size'][1],columns=texture['columns'],rows=texture['rows'],kind=1,flags=0,sha256=hashlib.sha256(file.read_bytes()).hexdigest()))
         first=len(sections['AnimationBinding']);directions=len(sections['DirectionFrame']);idle_clips=[]
-        for motion,name in [(0,row['idle_animation']),(4,'Walk'),(5,'Talk')]:
+        for motion,name in [(0,'Idle'),(4,'Walk'),(5,'Talk')]:
             for direction,keys in enumerate(row['source_animations'][name]['directions']):
                 time=m.f32(keys[0]);start=len(sections['Key'])
                 for frame,duration in keys[1:]:sections['Key'].append(dict(time=time,frame=frame-1));time=m.f32(time+duration)
                 clip=len(sections['Clip']);sections['Clip'].append(dict(stable_id=identity('Clip'),length=time,first_key=start,key_count=len(keys)-1,flags=1|(16 if keys[0]else 0),visibility=0,frame_count=texture['columns']*texture['rows'],channel=0))
                 sections['AnimationBinding'].append(dict(actor_profile_index=index,motion_state=motion,direction=direction,clip_index=clip))
                 if motion==0:idle_clips.append(clip);sections['DirectionFrame'].append(dict(frame=keys[1][0]-1))
-        profile=dict(template,stable_id=binding['id'],execution_kind=4 if row['directions']==8 else 3,flags=int(row['shadow_visible']),primary_resource=primary,shadow_resource=resource(template['shadow_resource']),emote_resource=resource(template['emote_resource']),animation_binding_first=first,animation_binding_count=len(sections['AnimationBinding'])-first,direction_first=directions,direction_count=row['directions'],idle_clip=idle_clips[0],emote_clip=0xffffffff,initial_frame=a['frame'],sprite_position=[0,0],sprite_offset=[m.f32(a['sprite_position'][i]-a['position'][i])for i in range(2)])
+        profile=dict(template,stable_id=binding['id'],execution_kind=4 if row['directions']==8 else 3,flags=int(row['shadow_visible']),primary_resource=primary,shadow_resource=resource(template['shadow_resource']),emote_resource=resource(template['emote_resource']),animation_binding_first=first,animation_binding_count=len(sections['AnimationBinding'])-first,direction_first=directions,direction_count=row['directions'],idle_clip=idle_clips[0],emote_clip=0xffffffff,initial_frame=row['source_animations']['Idle']['directions'][0][1][0]-1,sprite_position=[0,0],sprite_offset=[m.f32(a['sprite_position'][i]-a['position'][i])for i in range(2)])
         sections['ActorProfile'].append(profile)
         sections['ActorInstance'].append(dict(stable_id=binding['id'],profile_index=index,binding_kind=2,flags=1,display_name_string=S(binding['alias']),position=a['position'],direction=a['initial_direction'],initial_clip=idle_clips[0]))
     return {**{'upstream/MOTHER-Encore/'+name:digest for name,digest in sources.items()},Path(recipe).resolve().relative_to(ROOT).as_posix():hashlib.sha256(Path(recipe).read_bytes()).hexdigest(),'tools/field_scene_npcs.py':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'tools/field_npc_motion.py':hashlib.sha256((ROOT/'tools/field_npc_motion.py').read_bytes()).hexdigest()}

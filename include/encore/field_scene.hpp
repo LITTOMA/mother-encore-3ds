@@ -150,7 +150,7 @@ private:
     StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;
     MickRuntime mick_;bool mick_bound_=false;
     uint32_t interaction_actor_=UINT32_MAX;
-    struct Npc {uint32_t actor=0,item=0;MickRuntime motion;StaticMotionSolver solver;};
+    struct Npc {uint32_t actor=0,item=0;MickRuntime motion;ActorActionState sprite;StaticMotionSolver solver;};
     std::vector<std::unique_ptr<Npc>> npcs_;
     Vec2 viewport_{400,240};
     // Suppress the same confirm pulse that started MickTalk from advancing text.

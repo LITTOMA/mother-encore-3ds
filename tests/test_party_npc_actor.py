@@ -15,7 +15,7 @@ class PartyActor(unittest.TestCase):
    self.assertEqual(p['flags'],int(row['shadow_visible']));self.assertEqual(r['strings'][t['path_string']],row['binding']['texture'])
    bindings=s['AnimationBinding'][p['animation_binding_first']:p['animation_binding_first']+p['animation_binding_count']]
    for binding in bindings:
-    name={0:row['idle_animation'],4:'Walk',5:'Talk'}[binding['motion_state']];keys=row['source_animations'][name]['directions'][binding['direction']];clip=s['Clip'][binding['clip_index']]
+    name={0:'Idle',4:'Walk',5:'Talk'}[binding['motion_state']];keys=row['source_animations'][name]['directions'][binding['direction']];clip=s['Clip'][binding['clip_index']]
     compiled=s['Key'][clip['first_key']:clip['first_key']+clip['key_count']];self.assertEqual([k['frame']for k in compiled],[k[0]-1 for k in keys[1:]])
     self.assertAlmostEqual(clip['length'],keys[0]+sum(k[1]for k in keys[1:]),places=5)
  def test_versions_and_profile_negative(self):

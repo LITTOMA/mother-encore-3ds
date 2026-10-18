@@ -45,7 +45,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     if(player_read_only_){error_="Retained player cannot be reset by New Game or LOAD initialization";return false;}
     healthy_=initialized_=false;error_="Invalid scene content";
     if(!content.valid())return false;
-    content_=content;story_skills_=nullptr;overlay_={};overlay_clip_=kRoomNoIndex;overlay_time_=0;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
+    content_=content;story_skills_=nullptr;overlay_={};overlay_clip_=kRoomNoIndex;overlay_time_=0;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};story_talking_=false;effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
     const auto scene=content.scene();
     if(!flags_.initialize(content))return false;
     if(story_flags){for(uint32_t i=0;i<story_flags->size();++i)if(!flags_.set_story_flag(i,(*story_flags)[i],false).applied)return false;}
@@ -114,7 +114,7 @@ bool OpeningWorld::begin_house_program(uint32_t program_index,uint32_t original_
     dialogue_=DialoguePlayer{};battle_=OpeningBattleRequest{};battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;
     cutscene_done_=restore_pending_=false;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;story_hides_.clear();pending_dialogue_id_=kRoomNoIndex;pending_actor_=talker_=kRoomNoActor;
     if(++generation_==0)++generation_;
-    story_talker_=original_npc==kRoomNoIndex?DialogueTalker{}:DialogueTalker{DialogueTalkerKind::OriginalNpc,original_npc};
+    story_talking_=false;story_talker_=original_npc==kRoomNoIndex?DialogueTalker{}:DialogueTalker{DialogueTalkerKind::OriginalNpc,original_npc};
     program_index_=program_index;persistent_player_.state_->house_paused_=false;
     if(!dialogue_.start(content_,program_index_,*this,generation_))return fail(dialogue_.error());
     return flush_deferred();
@@ -154,7 +154,8 @@ bool OpeningWorld::request_sound(uint32_t resource_index){
 }
 bool OpeningWorld::set_story_talking(bool talking){
     if(!healthy_)return false;
-    return story_talker_.kind!=DialogueTalkerKind::Actor||(story_talker_.index<actors_.size()&&actor_set_talking(actors_[story_talker_.index],talking));
+    if(story_talker_.kind==DialogueTalkerKind::Actor&&(story_talker_.index>=actors_.size()||!actor_set_talking(actors_[story_talker_.index],talking)))return false;
+    story_talking_=talking;return true;
 }
 bool OpeningWorld::branch_condition(const DialogueAction& action,bool& matched){
     if(action.kind==DialogueActionKind::BranchFlag){if(action.target_index>=content_.flag_count())return false;matched=flags_.story_flag(content_.string(content_.flag(action.target_index).name_string))==(action.value!=0);return true;}

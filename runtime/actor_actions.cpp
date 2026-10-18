@@ -203,6 +203,22 @@ bool actor_set_talking(ActorActionState& a,bool talking) {
     if(talking&&directional_clip(a,5,0)==kRoomNoIndex)return false;
     a.talking=talking;return true;
 }
+bool npc_sprite_blend(ActorActionState& a,Vec2 direction) {
+    if(!valid(a)||!finite(direction)||(direction.x==0&&direction.y==0))return false;
+    const auto profile=a.content.actor_profile(a.profile_index);
+    if(profile.execution_kind!=uint16_t(ActorExecution::NpcDirectionalProxy)&&profile.execution_kind!=uint16_t(ActorExecution::NpcPartyDirectionalProxy))return false;
+    const Vec2 unit[]={{0,1},{-1,0},{1,0},{0,-1},{-.70710678118f,.70710678118f},{.70710678118f,.70710678118f},{-.70710678118f,-.70710678118f},{.70710678118f,-.70710678118f}};
+    const Vec2 grid[]={{0,1},{-1,0},{1,0},{0,-1},{-1,1},{1,1},{-1,-1},{1,-1}};
+    unsigned best=0;float distance=INFINITY;
+    for(unsigned i=0;i<profile.direction_count;++i){const float x=direction.x-unit[i].x,y=direction.y-unit[i].y,d=x*x+y*y;if(d<distance){distance=d;best=i;}}
+    a.direction=direction;a.blend_direction=grid[best];return true;
+}
+bool npc_sprite_physics(ActorActionState& a,Vec2 direction,bool talking,bool animated_idle) {
+    auto next=a;if(!npc_sprite_blend(next,direction))return false;
+    const uint16_t motion=talking?5:(animated_idle?4:0);
+    if(directional_clip(next,motion,0)==kRoomNoIndex)return false;
+    next.animation_motion=motion;next.directional_animation=true;next.talking=talking;a=next;return true;
+}
 bool actor_turn(ActorActionState& a,Vec2 direction) {
     if(!valid(a)||!finite(direction)||a.rotating)return false;
     a.direction=direction;blend(a,direction);return true;

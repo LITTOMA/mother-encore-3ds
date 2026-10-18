@@ -74,6 +74,7 @@ public:
     uint32_t pending_dialogue_id()const{return pending_dialogue_id_;}
     uint32_t dialogue_talker()const{return talker_;}
     DialogueTalker story_talker()const{return story_talker_;}
+    bool story_talking()const{return story_talking_;}
     bool story_has_next_phrase()const{return dialogue_.has_next_phrase();}
     bool story_input_allowed()const{return dialogue_.input_allowed();}
     bool story_auto_advance_ready()const{return dialogue_.auto_advance_ready();}
@@ -149,7 +150,7 @@ private:
     PersistentPlayerOwner persistent_player_;
     bool player_read_only_=false;
     uint32_t area_music_resource_=kRoomNoIndex;
-    DialogueTalker story_talker_;
+    DialogueTalker story_talker_;bool story_talking_=false;
     std::vector<OpeningEffectRequest> effects_;
     std::vector<bool> story_hides_;
     std::vector<OpeningSceneCall>scene_calls_;

@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "whole_file_approved": false,
+  "symbols": {
+    "Scripts/Main/npc.gd": [
+      "_physics_process"
+    ],
+    "Scripts/Main/character_sprite.gd": [
+      "_create_animations",
+      "_create_tree",
+      "travel",
+      "blend_position"
+    ]
+  },
+  "sources": {
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498"
+  },
+  "function_sha256": {
+    "Scripts/Main/npc.gd": {
+      "_physics_process": "3a4628234ecd19b96b17e90446ae8401c6967ed4f0ba20ca125f7d0ebdda4dc2"
+    },
+    "Scripts/Main/character_sprite.gd": {
+      "_create_animations": "426005e609ca5d652aa14d43ebf432becdf565ff9067de3b0895ca8b4911571b",
+      "_create_tree": "b01939bb3aa0ea3504b00943097144d923fac3f7175eaa78b36e9f2b9ca21084",
+      "travel": "0bb4052328bb11f6feeb8fb71f7c2b877644adeb6c02194b021299ab78cef223",
+      "blend_position": "c80e4c337dd587bd13bbe93307ca94d4967b376d46d9df9f0b118f4fd01be004"
+    }
+  },
+  "scope": "Stationary NPC physics and CharacterSprite directional AnimationTree construction, travel and blend only",
+  "semantics": [
+    "NPC blends the old input before looking changes direction; interaction facing blends immediately",
+    "Talking and mute choose Talk, current-talker silent state or idle; empty UI clears talking/interaction pause",
+    "Native discrete nearest-direction blend and actual YAML initial key delays",
+    "Talk to Idle uses source AT_END connection; office Walk idle has no dialogue"
+  ]
+}

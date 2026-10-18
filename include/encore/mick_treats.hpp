@@ -114,6 +114,7 @@ public:
     void face_toward(Vec2 target);
     bool restore_motion_pose(Vec2 position,Vec2 direction,std::string&);
     bool begin_interaction(std::string&);
+    void set_dialogue_talking(bool talking){dialogue_talking_=talking;}
     bool end_interaction(std::string&);
     bool observe_player(bool in_view,std::string&);
     bool idle_frame(double delta,std::string&);
@@ -157,7 +158,7 @@ private:
     float turn_wait_=0,turn_interval_=0,move_left_=0,move_speed_=0,wait_left_=0,wander_left_=-1;
     Vec2 turn_target_{},move_target_{},shove_dir_{};
     bool wander_armed_=false,looking_=false,probing_=false;
-    bool interaction_paused_=false;
+    bool interaction_paused_=false,dialogue_talking_=false;
     std::vector<float> return_timers_;
     uint32_t anim_=0,choice_index_=0,choice_text_[2]{},choice_pc_[2]{};
 };

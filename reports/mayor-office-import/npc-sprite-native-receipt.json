@@ -1,0 +1,42 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "source_sha256": {
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00"
+  },
+  "methods_sha256": {
+    "Scripts/Main/npc.gd": {
+      "_physics_process": "3a4628234ecd19b96b17e90446ae8401c6967ed4f0ba20ca125f7d0ebdda4dc2"
+    },
+    "Scripts/Main/character_sprite.gd": {
+      "_create_animations": "426005e609ca5d652aa14d43ebf432becdf565ff9067de3b0895ca8b4911571b",
+      "_create_tree": "b01939bb3aa0ea3504b00943097144d923fac3f7175eaa78b36e9f2b9ca21084",
+      "travel": "0bb4052328bb11f6feeb8fb71f7c2b877644adeb6c02194b021299ab78cef223",
+      "blend_position": "c80e4c337dd587bd13bbe93307ca94d4967b376d46d9df9f0b118f4fd01be004"
+    }
+  },
+  "tool_sha256": "0599b89410764b5fd9d0b8c5de0f049e2db6bcd98d9f5626b355d2ec53a7bb2c",
+  "generated_sha256": {
+    "npc.gd": "571c12472364c0af8dc7d07651255f7cc0d217261bfc13715b2c00d82a6f5fdd",
+    "sprite.gd": "2b00582e620428c0b82f1b2495fa5198b8bc6a95aefd9bab73c7a97591f88269",
+    "probe.gd": "26c00278b241bce8cbadd912c944673e6f0529b179695a9d016869ff83487698",
+    "ui.gd": "5465aad63971abf4cfd3989a6a6064ca31deee2183750debcdedd0aec6f52a43",
+    "global.gd": "92799bb541d2872032c60edbca98e78f3787b61e10bad31d8787cafbd20de7db",
+    "project.godot": "c0a8ef03af299d51c7b720824bf9a579dace75c541753ea46b8b91a83d3ea669",
+    "cases.json": "4606d49e529583d2fb8fd81fcf0c1201009348f213f68a1b9916dec581a102b6",
+    "4dir.json": "4bbff7ec4a667c1b532e2b3c6b05ab32d8a14fce9aca37d2bf2c0fc6917a8b36",
+    "PartyMember.json": "e6109b2d8f60721ea65f8e97dd97da0eb67cb7470b0e56aad9f48bf53df4070e"
+  },
+  "reference_sha256": "2322b26d424d891e93c175564fbdf4bfa6090c1d8140b5a647373e421547baaf",
+  "adapters": [
+    "Player position/UI stack/talker/talking/mute are injected service inputs",
+    "Stationary source NPC physics unchanged; native AnimationTree and source CharacterSprite construction/travel/blend unchanged",
+    "Generated placeholder texture supplies only sheet dimensions; no image claim",
+    "Readiness wires source data directly, not original NPC scene lifecycle"
+  ],
+  "gameplay": false,
+  "hardware": false
+}

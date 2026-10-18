@@ -398,7 +398,7 @@ bool MickRuntime::simulate(float dt,Vec2 player,Vec2 camera,Vec2 view,bool pause
     const auto actor=view_.actor();
     const bool seen=view_.stares()&&world.player_in_view({position_.x+actor.view_offset.x,position_.y+actor.view_offset.y},actor.view_radius);
     if(!observe_player(seen,e))return fail(e,"NPC view return timer rejected");
-    const bool talking=state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion;
+    const bool talking=(view_.interaction_policy()&&dialogue_talking_)||state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion;
     if(seen&&!talking){const Vec2 aim{player.x-position_.x,player.y-position_.y};if(aim.x||aim.y)facing_=aim;}
     tick_motion(dt);
     if(move_left_>0){

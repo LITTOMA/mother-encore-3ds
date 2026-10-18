@@ -32,3 +32,10 @@ native_content 编译器来源 SHA 改变后，通过原生成流程刷新 House
 NPC 交互／朝向恢复现通过独立 ENCMIK01 能力 7 接入，旧 3／4／6 保留，5 继续拒绝。头部记录方向数、源计时毫秒和对白可用性；不把 1 秒写进 C++。新能力限已审查的驻足 NPC，漫步、动态空对白、未知功能／版本／坏时长／截断均拒绝。Source Stop 和视野退出登记独立计时器，按 float32 倒数，回调时检查正在交谈／仍在注视；不取消旧计时。FieldScene 在菜单暂停和替换演员期间也推进这些 SceneTreeTimer；交谈实际结束后解锁 NPC，原本没有对白的办公区 Abbott 不进入“未移植对白”停顿，碰撞仍按可见性生效。
 
 GCC9 ASan/UBSan 新目标 6,080 项通过，其中 1,260 条原引擎朝向状态逐帧相同，漫步案例的 180 行明确由能力准入拒绝而非宣称已执行。实际 Podunk help／repeat 使用受检策略夹具，交谈关闭→离开视野→第61次 tick 恢复原朝向共 2,419 项通过；旧交互 2,041 项和 Mick 26 个原版等待／49,382 项节奏回归通过，13 项 Python 来源与版本负向检查通过。--interaction-policy 明确生成五个能力7候选及真实纹理，仍只在 build 下；发行资源未改。NPC 对白时的动画状态、初始对白／选项、区域与菜单地图元数据、Town Hall 音乐／脚步和实际入场仍待整合，因此没有开放 Mayor 入口。
+
+
+未被剧情 Actor 替换的驻足 NPC 现使用 Room 的原版方向动画键和独立时钟；只由显式 ENCMIK 能力7启用，旧实际 NPC 资源保持原样。人物物理回调先把旧 input 混合到 Sprite，再更新注视朝向；交互时的立即转身单独应用。正在印字的 original NPC talker 通过现有 presenter 的 talking 状态驱动 Talk，停顿后依原版 Talk→Idle 结束切换，菜单暂停与隐藏替换期间仍推进其原 Sprite 时钟。四方向和八方向均使用最近单位方向；没有借 Actor 的圆整方向替代 NPC 的 Discrete BlendSpace。
+
+为保留办公区 Abbott 的 Walk 待机，候选 Room 的 motion0 改为真正 Idle、motion4 保持 Walk，由受检策略选择 Walk；不再把两个状态当成同一个别名。候选 Room 为16,104字节，只改候选，发行 Room 未动。未知 talk_idle_animation、非默认过渡和有对白的 Walk 待机先明确拒绝。原引擎实际执行未改的 NPC _physics_process 和 CharacterSprite 建树／travel／blend，8案例960条帧／动画状态与共享 C++ 一致，4,816项 GCC9 ASan/UBSan 通过；朝向恢复6,080、交互策略2,419、旧交互2,041及候选 Party Actor 750项回归通过，20项 Python 来源／负向检查通过。首次基准因注入的未归属玩家 Node 泄漏被验收器拒绝，改成服务自有子节点后通过，失败日志保留。此基准不运行原地图、漫步或完整对白服务，不能等同整场景通过。
+
+真实制品 d33d478（3DSX SHA256 3fd3ec1cae9fcd638c51c7f7f42aba3d9c06dcb52dbac2d27acb6a8e247aef9d）的 Azahar 正常输入回归已通过房屋往返与音乐、战前战后菜单、桥头战斗／奖励、Pippi 妈妈首次求助／重复交谈、重复触发幂等和西侧道路。人工地下室后存档含已完成电话／旋律标志；没有自然开局或真机声明，也不覆盖随后新增的能力7或 NPC Sprite 实现。原始结果、确切制品身份与模拟器日志已保留，私有运行目录自动清理。

@@ -254,6 +254,9 @@ bool FieldScene::bind_npc(MickView view,MickHost& host,std::string& error){
     if(room.string(texture.path_string)!=view.string(t.path)||texture.width!=t.width||texture.height!=t.height||texture.columns!=t.columns||texture.rows!=t.rows||instance.position.x!=a.position.x||instance.position.y!=a.position.y){error="Field NPC room/motion binding differs";return false;}
     auto candidate=std::make_unique<Npc>();candidate->actor=actor;candidate->item=item;
     if(!candidate->motion.initialize(view,host,error))return false;
+    if(view.interaction_policy()){
+        if(!initialize_actor(candidate->sprite,room,instance.profile_index,a.position,a.initial_direction)||!npc_sprite_blend(candidate->sprite,a.initial_direction)){error="Field NPC source sprite initialization rejected";return false;}
+    }
     const Vec2 o{a.collision_center.x-a.position.x,a.collision_center.y-a.position.y},e=a.collision_extents;
     ConvexPolygon foot;foot.vertices={{o.x-e.x,o.y-e.y},{o.x+e.x,o.y-e.y},{o.x+e.x,o.y+e.y},{o.x-e.x,o.y+e.y}};
     if(!candidate->solver.configure(foot,{},0.08f)){error="Field NPC collision solver rejected";return false;}
@@ -273,7 +276,7 @@ bool FieldScene::npcs_ready()const{
 ActorActionState FieldScene::actor_pose(uint32_t index)const{
     if(index>=world.actor_count())return {};
     auto pose=world.actor(index);if(world.actor_bound(index))return pose;
-    for(const auto& n:npcs_)if(n->actor==index){pose.position=n->motion.position();pose.direction=n->motion.facing();pose.frame=uint16_t(n->motion.sheet_frame());break;}
+    for(const auto& n:npcs_)if(n->actor==index){pose.position=n->motion.position();pose.direction=n->motion.facing();pose.frame=n->motion.view().interaction_policy()?n->sprite.frame:uint16_t(n->motion.sheet_frame());break;}
     return pose;
 }
 void FieldScene::apply_npc_bodies(){
@@ -340,7 +343,8 @@ bool FieldScene::try_interaction(bool accept,std::string& error){
             if(selected.turns&2)n.motion.face_toward(p.position);
             if(!world.sync_unbound_actor_pose(n.actor,at,n.motion.facing()))return fail("Field interaction pose handoff rejected");
             if((selected.turns&1)&&!world.face_interaction(at))return fail("Field interaction player turn rejected");
-            if(!world.begin_house_program(selected.programme))return fail("Field interaction programme start rejected");
+            if(n.motion.view().interaction_policy()&&(selected.turns&2)&&!npc_sprite_blend(n.sprite,n.motion.facing()))return fail("Field NPC interaction sprite facing rejected");
+            if(!world.begin_house_program(selected.programme,n.motion.view().interaction_policy()?n.actor:kRoomNoIndex))return fail("Field interaction programme start rejected");
             if(n.motion.view().interaction_policy()){
                 if(!n.motion.begin_interaction(error))return fail(error);
                 interaction_actor_=n.actor;
@@ -446,6 +450,12 @@ bool FieldScene::before_physics(WalkInput& input){
         if(world.actor_bound(n.actor)){apply_npc_bodies();continue;}
         FieldMickWorld motion{*this,i+1,&n.solver};const auto p=world.player().position;
         const bool paused=world.house_paused()||world.stage()!=OpeningStage::Walking;
+        if(n.motion.view().interaction_policy()){
+            const auto talker=world.story_talker();const bool talking=talker.kind==DialogueTalkerKind::OriginalNpc&&talker.index==n.actor&&world.story_talking();
+            n.motion.set_dialogue_talking(talking);
+            // Source NPC blends before its stare callback updates the input.
+            if(!npc_sprite_physics(n.sprite,n.motion.facing(),talking,n.motion.view().animated_idle()))return fail("Field NPC source sprite physics rejected");
+        }
         if(!n.motion.simulate(1.f/60.f,p,camera_origin(p,viewport_),viewport_,paused,motion,why))return fail(why);
         if(world.stage()==OpeningStage::Walking&&!world.sync_unbound_actor_pose(n.actor,n.motion.position(),n.motion.facing()))return fail("Field NPC live pose handoff rejected");
         apply_npc_bodies();
@@ -545,7 +555,10 @@ bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
     }
     // SceneTreeTimers run during player/menu pause and while an Actor hides its
     // replaced NPC. They are distinct from the NPC physics processing toggle.
-    for(auto& n:npcs_){std::string why;if(!n->motion.idle_frame(delta,why))return fail(why);}
+    for(auto& n:npcs_){std::string why;
+        if(n->motion.view().interaction_policy()&&!actor_idle_animations(n->sprite,delta))return fail("Field NPC source sprite idle rejected");
+        if(!n->motion.idle_frame(delta,why))return fail(why);
+    }
     const bool paused=world.house_paused();
     for(uint32_t i=0;i<openables_.size();++i){auto& s=openables_[i];if(s.timer<0)continue;s.timer-=delta;
         if(s.timer>0)continue;s.timer=-1;

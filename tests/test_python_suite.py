@@ -57,6 +57,17 @@ class Partition(unittest.TestCase):
         self.assertEqual(receipt['aggregate'], 1)
         self.assertEqual(receipt['dedicated'], 2)
         self.assertTrue(receipt['multiset_equal'])
+    def test_actual_area_and_run_sources_are_partitioned_once(self):
+        registry = {name: subject.DEDICATED[name] for name in ('field_area_source', 'field_steps_source')}
+        loader = Loader()
+        loader.full = ('test_field_area.Check.case', 'test_field_footsteps.Check.case',
+                       'test_run_footstep_reference.Check.case', 'test_new.Check.case')
+        metadata = [dict(name=name, command=['python', '-m', 'unittest'] +
+                        ['tests.' + module for module in modules]) for name, modules in registry.items()]
+        remaining, receipt = self.plan(metadata, loader, registry)
+        self.assertEqual([subject.identity(c) for c in subject.cases(remaining)], ['test_new.Check.case'])
+        self.assertEqual((receipt['discovered'], receipt['aggregate'], receipt['dedicated']), (4, 1, 3))
+        self.assertTrue(receipt['multiset_equal'])
     def test_missing_registration_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Missing dedicated'): self.plan([])
     def test_changed_module_list_rejected(self):

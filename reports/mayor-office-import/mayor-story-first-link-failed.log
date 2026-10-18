@@ -1,0 +1,7 @@
+tests/mayor_story_tests.cpp: In function ‘int main(int, char**)’:
+tests/mayor_story_tests.cpp:45:42: error: ‘read_file’ is not a member of ‘encore’
+   45 |  std::vector<uint8_t>bytes;CHECK(encore::read_file(file("mayor-initial.encstory").c_str(),bytes,128*1024,error));const auto at=get(bytes,64+5*16+4),choice=get(bytes,64+6*16+4);
+      |                                          ^~~~~~~~~
+tests/mayor_story_tests.cpp:11:29: note: in definition of macro ‘CHECK’
+   11 | #define CHECK(x) check(bool(x),#x)
+      |                             ^

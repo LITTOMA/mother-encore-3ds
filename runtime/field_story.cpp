@@ -47,10 +47,10 @@ bool format_field_story_span(std::string_view input,const NewGameSetupData&names
  if(color)return reject("Unclosed field hint color");push(false);if(result.segments.size()>128)return reject("Field dialogue segment capacity");out=std::move(result);error.clear();return true;
 }
 uint32_t FieldStoryView::count(uint32_t s)const{return bytes_&&s>=1&&s<=u32(bytes_+52)?u32(bytes_+64+(s-1)*16+8):0;}
-const uint8_t*FieldStoryView::record(uint32_t s,uint32_t i)const{return i<count(s)?bytes_+u32(bytes_+64+(s-1)*16+4)+i*strides[s-1]:nullptr;}
+const uint8_t*FieldStoryView::record(uint32_t s,uint32_t i)const{return i<count(s)?bytes_+u32(bytes_+64+(s-1)*16+4)+i*u32(bytes_+64+(s-1)*16+12):nullptr;}
 uint32_t FieldStoryView::scene_id()const{return bytes_?u32(bytes_+24):0;}
 uint32_t FieldStoryView::interaction_count()const{return count(6);}
-FieldInteraction FieldStoryView::interaction(uint32_t i)const{const auto*p=record(6,i);return p?FieldInteraction{u32(p),u32(p+4),ref(p+8),u32(p+16)}:FieldInteraction{};}
+FieldInteraction FieldStoryView::interaction(uint32_t i)const{const auto*p=record(6,i);return p?FieldInteraction{u32(p),u32(p+4),ref(p+8),u32(p+16),u32(p+20),u32(bytes_+20)==3?ref(p+24):FieldText{}}:FieldInteraction{};}
 uint32_t FieldStoryView::programme_count()const{return count(2);}uint32_t FieldStoryView::text_count()const{return count(3);}uint32_t FieldStoryView::encounter_count()const{return count(4);}uint32_t FieldStoryView::override_count()const{return count(5);}
 std::string_view FieldStoryView::text(FieldText t)const{return bytes_&&t.length&&t.offset<=count(1)&&t.length<=count(1)-t.offset?std::string_view(reinterpret_cast<const char*>(record(1,0)+t.offset),t.length):std::string_view{};}
 FieldStoryProgramme FieldStoryView::programme(uint32_t i)const{const auto*p=record(2,i);return p?FieldStoryProgramme{u32(p),ref(p+4),ref(p+12),u32(p+20)}:FieldStoryProgramme{};}
@@ -59,25 +59,25 @@ FieldStoryText FieldStoryView::dialogue(uint32_t id,std::string_view locale)cons
 FieldStoryEncounter FieldStoryView::encounter(uint32_t id)const{for(uint32_t i=0;i<count(4);++i){const auto*p=record(4,i);if(u32(p)==id)return {id,u32(p+4),ref(p+8),ref(p+16),u32(p+24),u32(p+28),f32(p+32),u32(p+36)};}return {};}
 FieldStoryEncounter FieldStoryView::encounter_for_programme(uint32_t programme)const{for(uint32_t i=0;i<count(4);++i){const auto row=encounter(u32(record(4,i)));if(row.programme==programme)return row;}return {};}
 FieldBasicOverride FieldStoryView::basic_override(uint32_t id)const{for(uint32_t i=0;i<count(5);++i){const auto*p=record(5,i);if(u32(p)==id)return {id,ref(p+4)};}return {};}
-FieldStoryView FieldStoryData::view()const{FieldStoryView v;if(!bytes_.empty()){v.bytes_=bytes_.data();v.size_=bytes_.size();}return v;}
+FieldStoryView FieldStoryData::view()const{FieldStoryView v;if(!bytes_.empty()){v.bytes_=bytes_.data();v.size_=bytes_.size();v.choices_=choices_.valid()?&choices_:nullptr;}return v;}
 bool FieldStoryData::load_file(const char*file,std::string&error){std::vector<uint8_t>b;return encore::read_file(file,b,128*1024,error)&&load(b.data(),b.size(),error);}
 bool FieldStoryData::load(const uint8_t*p,size_t n,std::string&error){
  auto fail=[&](const char*why){error=why;return false;};
  if(!p||n<144||n>128*1024)return fail("Field story size rejected");
- if(std::memcmp(p,"ENCFST01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)!=1&&u32(p+20)!=2)||!u32(p+24)||u32(p+28)||u32(p+52)!=(u32(p+20)==1?5u:6u)||u32(p+56)||u32(p+60))return fail("Field story schema/capability/reserved rejected");
+ if(std::memcmp(p,"ENCFST01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)<1||u32(p+20)>3)||!u32(p+24)||u32(p+28)||u32(p+52)!=(u32(p+20)==1?5u:(u32(p+20)==2?6u:7u))||u32(p+56)||u32(p+60))return fail("Field story schema/capability/reserved rejected");
  const char*pin="7d9246600fffe518408f5830d4848635019005a3";
  for(unsigned i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Field story source pin rejected");}
  if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Field story checksum rejected");
  const auto sections=u32(p+52);size_t cursor=64+sections*16;if(n<cursor)return fail("Field story truncated directory");
  for(uint32_t s=1;s<=sections;++s){const auto*d=p+64+(s-1)*16;const auto offset=u32(d+4),count=u32(d+8),stride=u32(d+12);
-  if(u32(d)!=s||stride!=strides[s-1])return fail("Field story directory rejected");
+  if(u32(d)!=s||stride!=(s==7?1u:(s==6&&u32(p+20)==3?32u:strides[s-1])))return fail("Field story directory rejected");
   if(!count){if(offset)return fail("Field story empty section rejected");continue;}
   if(offset%4||offset<cursor||offset>n||count>(n-offset)/stride)return fail("Field story span rejected");
   for(size_t i=cursor;i<offset;++i)if(p[i])return fail("Field story padding rejected");cursor=offset+count*stride;
  }
  if(cursor!=n)return fail("Field story trailing bytes rejected");
  FieldStoryView v;v.bytes_=p;v.size_=n;
- if(!v.count(1)||v.count(1)>64*1024||!v.count(2)||v.count(2)>64||!v.count(3)||v.count(3)>256||!v.count(4)||v.count(4)>32||v.count(5)>64||v.count(6)>256)return fail("Field story capacity rejected");
+ if(!v.count(1)||v.count(1)>64*1024||!v.count(2)||v.count(2)>64||!v.count(3)||v.count(3)>256||(u32(p+20)==3?(v.count(4)||v.count(5)||!v.count(6)||!v.count(7)||v.count(7)>16384):!v.count(4))||v.count(4)>32||v.count(5)>64||v.count(6)>256)return fail("Field story capacity rejected");
  auto valid_text=[&](FieldText t,bool empty,size_t maximum){if(!t.length)return empty&&!t.offset;if(t.offset>v.count(1)||t.length>v.count(1)-t.offset||t.length>maximum)return false;const auto value=v.text(t);size_t count=0;return value.find('\0')==value.npos&&encore::utf8_count(value,count);};
  std::set<uint32_t>programmes,battles,overrides;std::set<std::string_view>boundaries,sources;std::set<std::pair<uint32_t,std::string_view>>texts;
  std::set<std::string_view>locales;std::set<uint32_t>text_ids;
@@ -92,12 +92,20 @@ bool FieldStoryData::load(const uint8_t*p,size_t n,std::string&error){
  for(uint32_t i=0;i<v.count(5);++i){const auto*r=v.record(5,i);const auto id=u32(r);const auto value=ref(r+4);if(!id||!overrides.insert(id).second||!valid_text(value,false,512)||!path(v.text(value)))return fail("Field basic action override rejected");}
  std::set<std::pair<uint32_t,std::string_view>>rules;std::set<uint32_t>interaction_programmes,owners;
  for(uint32_t i=0;i<v.count(6);++i){const auto r=v.interaction(i);bool found=false;for(uint32_t j=0;j<v.programme_count();++j){const auto program=v.programme(j);found|=program.programme==r.programme&&program.flags==1;}
-  if(r.actor==0||r.actor>=64||!found||r.turns>3||u32(v.record(6,i)+20)||!valid_text(r.flag,true,128)||!rules.insert({r.actor,v.text(r.flag)}).second)return fail("Field story interaction rejected");
+  const bool peaceful=u32(p+20)==3;
+  if(r.actor==0||r.actor>=64||r.turns>3||r.status>(peaceful?1u:0u)||!valid_text(r.flag,true,128)||!rules.insert({r.actor,v.text(r.flag)}).second)return fail("Field story interaction rejected");
+  if(peaceful){
+   if(!valid_text(r.source,false,512)||!path(v.text(r.source)))return fail("Field interaction source rejected");
+   if(r.status){if(r.programme!=UINT32_MAX)return fail("Unavailable interaction has an executable programme");}
+   else{bool matching=false;for(uint32_t j=0;j<v.programme_count();++j){const auto program=v.programme(j);matching|=program.programme==r.programme&&v.text(program.source)==v.text(r.source);}if(!found||!matching)return fail("Field interaction source programme differs");}
+  }else if(!found)return fail("Field interaction programme missing");
   if(!owners.count(r.actor)){if(r.flag.length)return fail("Field interaction lacks unconditional source dialogue");owners.insert(r.actor);}
   interaction_programmes.insert(r.programme);
  }
  for(uint32_t i=0;i<v.programme_count();++i){const auto r=v.programme(i);if(r.flags&&!interaction_programmes.count(r.programme))return fail("Field interaction programme is unbound");}
- std::vector<uint8_t>owned(p,p+n);bytes_=std::move(owned);error.clear();return true;
+ DialogueChoicesData choices;
+ if(u32(p+20)==3&&!choices.load(v.record(7,0),v.count(7),error))return false;
+ std::vector<uint8_t>owned(p,p+n);bytes_=std::move(owned);choices_=std::move(choices);error.clear();return true;
 }
 bool FieldStoryView::bind(RoomView room,FieldMapView map,ItemView items,std::string&error)const{
  auto fail=[&](const char*why){error=why;return false;};
@@ -107,8 +115,10 @@ bool FieldStoryView::bind(RoomView room,FieldMapView map,ItemView items,std::str
   if(!row.flags&&found!=1)return fail("Field story source boundary is missing/ambiguous");
   const auto program=room.program(row.programme);
   for(uint32_t k=0;k<program.command_count;++k){const auto command=room.command(program.first_command+k);if(command.opcode==uint16_t(DialogueActionKind::ShowDialogue)){
-    bool present=false;for(uint32_t t=0;t<text_count();++t)present|=u32(record(3,t))==command.target_index;if(!present)return fail("Field story programme has an unbound dialogue");}}
+    bool present=false;for(uint32_t t=0;t<text_count();++t)present|=u32(record(3,t))==command.target_index;if(!present)return fail("Field story programme has an unbound dialogue");}
+   if(command.opcode==uint16_t(DialogueActionKind::AwaitChoices)&&(!choices_||!choices_->validate_program(command.target_index,room.string(program.source_path_string),program.command_count,error)))return fail("Field story choices are not bound to this programme");}
  }
+ if(choices_)for(uint32_t g=0;g<choices_->groups().size();++g){bool found=false;for(uint32_t i=0;i<programme_count();++i){const auto row=programme(i);const auto program=room.program(row.programme);for(uint32_t k=0;k<program.command_count;++k){const auto command=room.command(program.first_command+k);found|=command.opcode==uint16_t(DialogueActionKind::AwaitChoices)&&command.target_index==g;}}if(!found)return fail("Unused field story choice group");}
  for(uint32_t i=0;i<interaction_count();++i){const auto rule=interaction(i);if(rule.actor>=room.actor_instance_count())return fail("Field interaction actor missing");
   unsigned found=0;for(uint32_t j=0;j<map.count(FieldMapSection::Items);++j){const auto item=map.item(j);found+=item.kind==uint16_t(FieldItemKind::Actor)&&item.first==rule.actor;}if(found!=1)return fail("Field interaction NPC owner missing/ambiguous");
   if(rule.flag.length){found=0;for(uint32_t j=0;j<room.flag_count();++j)found+=room.string(room.flag(j).name_string)==text(rule.flag);if(found!=1)return fail("Field interaction flag missing/ambiguous");}

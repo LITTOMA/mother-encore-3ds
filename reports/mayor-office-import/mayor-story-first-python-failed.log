@@ -1,0 +1,14 @@
+F...
+======================================================================
+FAIL: test_actual_source_graph_and_candidate (tests.test_mayor_story.MayorStory.test_actual_source_graph_and_candidate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_mayor_story.py", line 14, in test_actual_source_graph_and_candidate
+    self.assertEqual(groups[0]['options'][0]['target_pc'],6);self.assertEqual(groups[0]['options'][1]['target_pc'],9);self.assertEqual(groups[0]['cancel_target_pc'],9)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 3 != 6
+
+----------------------------------------------------------------------
+Ran 4 tests in 4.097s
+
+FAILED (failures=1)

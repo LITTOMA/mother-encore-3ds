@@ -1,5 +1,7 @@
 # 市政厅导入（开发中）
 
+当前：草稿候选，尚未开放市政厅入口。已完成来源地图／人物与替换演员、驻足人物交谈／朝向／动画，以及首批普通对白、市长是／否／取消和 Pippi 徽章条件分支的共享核心接入。发行目录仍只有原先场景。完整场景生命周期、Town Hall 音乐／脚步、室内菜单地图、平台选项界面与实际入场回归待完成；后续剧情明确阻断。
+
 依赖 #66 的受检多场景引用和所有权切换，来源仍固定 7d9246600fffe518408f5830d4848635019005a3。目前完成候选路由、地图与 NPC 动作资源，没有把未完成的市政厅加入目录或发行包，也不声称可进入该建筑。
 
 独立 content/world-scene-routes.json 提供场景身份、资源绑定和门节点身份，tools/world_scene_routes.py 读取实际 Scene／Door／SceneTransition 来源。保留原房屋出入两条路由，加入 Podunk TownHall→市政厅、MayorLobby→Podunk 和两个内部门。跨场景采用 Door.change_scene 的 targetY−7；同场景采用 Position2D 全局变换减 (0,7)，并按原版省略音乐淡出。工具只允许候选输出到 build，缺失目的场景、错类型、未知字段、重复身份、越界参数或 source 行为变化都拒绝。
@@ -39,3 +41,12 @@ GCC9 ASan/UBSan 新目标 6,080 项通过，其中 1,260 条原引擎朝向状�
 为保留办公区 Abbott 的 Walk 待机，候选 Room 的 motion0 改为真正 Idle、motion4 保持 Walk，由受检策略选择 Walk；不再把两个状态当成同一个别名。候选 Room 为16,104字节，只改候选，发行 Room 未动。未知 talk_idle_animation、非默认过渡和有对白的 Walk 待机先明确拒绝。原引擎实际执行未改的 NPC _physics_process 和 CharacterSprite 建树／travel／blend，8案例960条帧／动画状态与共享 C++ 一致，4,816项 GCC9 ASan/UBSan 通过；朝向恢复6,080、交互策略2,419、旧交互2,041及候选 Party Actor 750项回归通过，20项 Python 来源／负向检查通过。首次基准因注入的未归属玩家 Node 泄漏被验收器拒绝，改成服务自有子节点后通过，失败日志保留。此基准不运行原地图、漫步或完整对白服务，不能等同整场景通过。
 
 真实制品 d33d478（3DSX SHA256 3fd3ec1cae9fcd638c51c7f7f42aba3d9c06dcb52dbac2d27acb6a8e247aef9d）的 Azahar 正常输入回归已通过房屋往返与音乐、战前战后菜单、桥头战斗／奖励、Pippi 妈妈首次求助／重复交谈、重复触发幂等和西侧道路。人工地下室后存档含已完成电话／旋律标志；没有自然开局或真机声明，也不覆盖随后新增的能力7或 NPC Sprite 实现。原始结果、确切制品身份与模拟器日志已保留，私有运行目录自动清理。
+
+
+初始四个来源文档 abbott／mayor_help／mayor_side_desk／pippi_town_hall 现有独立 mayor-story.json 与离线有界编译器。ENCFST01 格式1／能力3明确用于无遭遇的 NPC 场景：六个旧数据节保留含义，Interaction 扩为32字节，记录实际 source 与0可执行／1未实现状态，后者不得有 programme；第7节内嵌受检 ENCCHOIC。旧能力1／2的要求不放宽，未知版本、错误状态／源引用、嵌套 Choice CRC／能力／programme身份、截断均拒绝，失败保留旧资源。所有原 _all_dialog 覆盖按来源顺序记录；后续 pippi_rescued／pippi_delivered／zoo_freed 分支不再误用初见对白，未支持者显示实际路径并允许 B 返回。单条来源对话组不需要选取未读多条对白；该候选不声明全局 seen-dialogue 存档兼容。
+
+四个实际文本程序不替换 NPC，印字状态驱动原人物 Sprite，等待玩家确认后才关闭；市长 Yes→7、No／cancel→10，Pippi 在首句后依据 courage_badge_received=false 才转入第二句。共享核心已通过2,980项 GCC9 ASan/UBSan，包括五个原人物绑定、文字保持、是／否／取消、徽章两路、旗标守恒、明确后续边界和新增解析负向路径；14项 Python 来源／版本／图结构检查、旧野外交互2,041和策略2,419项通过。候选 Room18,256／Story3,694字节仅在 build 与测试夹具，未进入 RomFS。
+
+整合中实测发现旧 field face_interaction 使用任意角度单位向量，讲话完恢复 Walking 后被 movement 校验拒绝；这是旧移植错误，上游未改变。实际 Player._turn_to 覆盖 party_object 基类，按主轴选择正交方向、同幅时优先纵轴。已映射此覆盖并检查六种浅斜／主轴／同幅方向在结束后仍可 advance；原失效日志保留。其他失败分别为测试缺少 IO 声明、闭合路径没有独立内部 phrase entry，以及测试猜错 choice PC，均修复并保留实际记录，没有改上游或忽略准入。
+
+完整 Clang 普通与 ASan/UBSan 在 daef29a 源码各169项通过，真实3DSX/CIA也通过；对应原始 job 日志已留存。这覆盖较早的替换后端和 CTest 工作目录修复，不覆盖此后能力7／NPC Sprite／Mayor Story 新增；GCC 完整任务仍运行，不宣称全量绿色。最新切片的交叉构建／模拟器和真机状态仍分别待验证。

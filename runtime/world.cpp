@@ -202,7 +202,9 @@ bool OpeningWorld::face_interaction(Vec2 target){
     if(!healthy_||stage_!=OpeningStage::Walking||!std::isfinite(target.x)||!std::isfinite(target.y))return false;
     const auto position=persistent_player_.state_->player_.position;const Vec2 delta{target.x-position.x,target.y-position.y};
     const float length=std::hypot(delta.x,delta.y);if(!std::isfinite(length))return false;if(length==0)return true;
-    persistent_player_.state_->player_.direction={delta.x/length,delta.y/length};persistent_player_.state_->player_.animation=MotionAnimation::Idle;
+    // Player._turn_to overrides the unconstrained party_object method.
+    // Both source axes are enabled here; ties choose the vertical axis.
+    persistent_player_.state_->player_.direction=std::abs(delta.x)>std::abs(delta.y)?Vec2{delta.x>0?1.f:-1.f,0}:Vec2{0,delta.y>0?1.f:-1.f};persistent_player_.state_->player_.animation=MotionAnimation::Idle;
     persistent_player_.state_->clip_=walk_clip(MotionAnimation::Idle,persistent_player_.state_->player_.direction);FrameClip clip;
     return content_.frame_clip(persistent_player_.state_->clip_,clip)&&begin_clip(clip,content_.clip(persistent_player_.state_->clip_).frame_count,persistent_player_.state_->playback_);
 }

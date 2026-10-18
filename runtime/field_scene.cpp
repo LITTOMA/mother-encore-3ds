@@ -335,6 +335,10 @@ bool FieldScene::try_interaction(bool accept,std::string& error){
         const Vec2 center{at.x+a.interact_center.x-a.position.x,at.y+a.interact_center.y-a.position.y};float distance=0;
         if(!ray_rect(p.position,normalized(p.direction),a.ray_length,center,a.interact_extents,distance)&&!overlaps(center,a.interact_extents,p.position))continue;
         FieldInteraction selected;for(uint32_t i=0;i<story_.interaction_count();++i){const auto rule=story_.interaction(i);if(rule.actor==n.actor&&(!rule.flag.length||world.story_flag(story_.text(rule.flag))))selected=rule;}
+        if(selected.status){
+            if(!world.pause_for_house())return fail("Unavailable source dialogue pause rejected");
+            phase_=FieldPhase::Unsupported;boundary_=WorldLinksData::kNotFound;error_=std::string(story_.text(selected.source))+" not ported; B returns";error.clear();return true;
+        }
         if(selected.programme!=UINT32_MAX){
             if(!story_host_||!story_host_->can_start(story_,selected.programme,error)){
                 boundary_=WorldLinksData::kNotFound;phase_=FieldPhase::Unsupported;error_=error.empty()?"Field interaction admission rejected; B returns":error+"; B returns";

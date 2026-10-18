@@ -1,5 +1,9 @@
 {
-  "schema": 10,
+  "schema": 11,
+  "run_sounds": [
+    "wood",
+    "stone"
+  ],
   "field_encounters": [
     "straydog"
   ],
@@ -2530,6 +2534,23 @@
     "Data/NamingSequences/intro.yaml": "cc6036576852edb7ff29bbd44f71dd50ae2e7ee51fdffd6322457d36d3719507",
     "Data/Items/KickMeNote.yaml": "3d1481a5d1eac9a119e804a1d7d4924bfca03a25c29376a01586596a46d43165",
     "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633",
+    "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41",
+    "Audio/Sound effects/Footsteps/stone.mp3.import": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7",
+    "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+    "Audio/Sound effects/Footsteps/wood.mp3.import": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
     "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
     "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
     "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5"
@@ -2550,7 +2571,9 @@
     "content/mayor-area.json": "21bd23e8ff3c2523459376449f57cea29ef4266bb271adfbacbca36a9c6e556f",
     "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
     "tools/field_area.py": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
-    "content/podunk-story.json": "47ebd1ddcb5c95c79e9bb4486438f04daa6d8c927046dcd6833f9f9e6c39f178"
+    "content/podunk-story.json": "47ebd1ddcb5c95c79e9bb4486438f04daa6d8c927046dcd6833f9f9e6c39f178",
+    "content/mayor-footsteps.json": "4da1ef634d7519c24c6e59f393340987e26ceedf4e66d71de2d1ba690728749f",
+    "tools/field_footsteps.py": "4a2b83ef60c18a922de873a0654715142409fed547b74dac0713e626d655d74f"
   },
   "field_items": [
     {

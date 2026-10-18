@@ -122,3 +122,12 @@ e3e3af2 请求的完整 GCC 检查在普通 CTest191／192通过后失败：pyth
 暂停按原pause参数保留差异：默认暂停保留tap_run时的running，下一MOVE暂停回调才停止流；unpause对仍在running的状态恢复循环。主动Walking NPC交互对应原uiManager.open_dialogue_box的pause(true,true)，立即清除tap_run和run；未被Actor替换的剧情玩家仍执行暂停MOVE停止，替换后禁用原Player物理。新增原生基准执行未改Player.pause／unpause／_set_running／暂停_move_state，共16次操作；实际MP3导入，动画／计时器／碰撞／party与AreaRoom身份是显式注入服务，不等同整个引擎场景。UI入口、NPC.interact、Player物理分派与Actor.init只有来源审查，不冒称执行通过。共享World结果逐项对照相关原生状态／事件，GCC9 ASan/UBSan123项通过；开场World、旧Mayor Story3,735和MOVE2,308回归通过，Python13项通过。测试夹具的ifstream与WalkInput重名导致一次编译失败，修复并保留真实日志。
 
 尚未把此消费者绑定到主程序和实际Run音轨，也未实现跨场景run_sound保存准入。场景步区的原引擎接触时机、实际音频、正常市政厅进出仍待验证；不由局部核心通过推定完整游戏或真机通过。
+
+
+Session资源v11在完整v10之后仅追加21字节wood／stone身份表，来源为受检Player默认值和Mayor步区；旧v1至v10默认只准入其原run_sound。C++拒绝未知v12、空／超长／重复／坏语法／漏默认名表、CRC正确但缺尾、降级带尾及坏加载。游戏ENCSNAP1编码、compatibility、默认／startup模板和命名包逐字节不变，真实v10包保留独立夹具。扩展身份使原属性可以跨场景及Record／LOAD保持；目录只更新Session绑定的实际size／CRC。命名工具新增明确10→11来源重新准入，禁止跳版、改默认或菜单／物品范围；全量来源与生成器核对，不手改pack或manifest。
+
+主程序收集快照与回屋候选时，从已准备的FieldRunLoop读取wanted_sound名称，验证新Session准入后再提交候选；没有步区的场景保留原state。Session20,606／命名与新游戏965／六项菜单414项GCC9 ASan/UBSan通过，Python来源／版本／负向27项通过。实际音轨仍未由主程序调用，步区接触与真实入场尚待验收。
+
+本机WSL1的session_save文件故障测试22,823项检查中7项失败：内核4.4.0-26100-Microsoft／wslfs在报告RLIMIT_FSIZE=128后仍完成512字节真实写入，使预期写失败／回滚的分支不发生。独立微探针复现并清理临时文件，失败日志和环境保留；存档实现与测试均未改，也未关闭该用例。此项不能记为本地通过，须由本提交对应的真实Linux完整任务确认。更早5fe7491的Linux GCC／Clang完整通过只覆盖原确切源码，不继承到v11。
+
+补充旧六项菜单与地下室来源回归14项Python通过；历史7→8→9→10命名准入用例现明确构造v10投影，仍验证原菜单／物品前缀，并保留9→11跳版拒绝，不把新run-sound字段塞进旧格式。当前命名及目录的真实生成器verify再次通过。

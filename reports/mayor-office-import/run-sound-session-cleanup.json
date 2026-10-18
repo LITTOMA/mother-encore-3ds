@@ -1,0 +1,22 @@
+{
+  "reason": "Retained all pass/failure logs; removed completed diagnostic executables, including the WSL file-limit failure; shared objects and genuine emulator build retained",
+  "removed": [
+    {
+      "path": "build\\podunk-routes\\host\\run-sound-session",
+      "bytes": 44337248
+    },
+    {
+      "path": "build\\podunk-routes\\host\\run-sound-save",
+      "bytes": 43693464
+    },
+    {
+      "path": "build\\podunk-routes\\host\\run-sound-new-game",
+      "bytes": 43779200
+    },
+    {
+      "path": "build\\podunk-routes\\host\\run-sound-menus",
+      "bytes": 43837688
+    }
+  ],
+  "bytes": 175647600
+}

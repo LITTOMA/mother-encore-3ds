@@ -1,0 +1,8 @@
+307: !write_result
+308: error.find("write/flush/close failed") != std::string::npos
+309: read_raw(path) == old_primary
+309: read_raw(path + ".bak") == old_backup
+315: read_raw(path) == old_primary
+315: read_raw(path + ".bak") == old_backup
+319: read_raw(path) == old_primary
+Session save: 22823 checks, 7 failures

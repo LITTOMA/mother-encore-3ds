@@ -48,6 +48,8 @@ public:
     const std::vector<std::string>& menu_flavors()const{return menu_flavors_;}
     const std::vector<std::string>& button_prompts()const{return button_prompts_;}
     bool supports_settings(const SessionSettings&)const;
+    bool supports_run_sound(std::string_view)const;
+    const std::vector<std::string>&run_sounds()const{return run_sounds_;}
     const std::string& leader_id()const{return defaults_.party.at(0);}
     const std::string& saved_flag_id()const{return saved_flag_;}
     const std::string& earned_cash_flag_id()const{return earned_cash_flag_;}
@@ -74,6 +76,7 @@ private:
     std::string saved_flag_,earned_cash_flag_;
     std::vector<std::string>mutable_flags_;
     std::vector<std::string>field_encounters_;
+    std::vector<std::string>run_sounds_;
     std::vector<uint32_t>camera_area_ids_;
     std::vector<NativeSessionAcquisition>acquisitions_;
     uint32_t storage_capacity_=0;std::vector<NativeSessionStoragePolicy>storage_policies_;

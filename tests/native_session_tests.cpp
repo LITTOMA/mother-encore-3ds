@@ -70,14 +70,25 @@ int main(int argc,char**argv){
  for(size_t n=0;n<bytes.size();++n)CHECK(!data.load(bytes.data(),n,error));
  CHECK(data.valid()&&data.leader_id()=="ninten");
  for(size_t i=0;i<bytes.size();++i){auto mutation=bytes;mutation[i]^=1;CHECK(!data.load(mutation.data(),mutation.size(),error));}
- for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,11},{20,11},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,12},{20,12},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  CHECK(data.field_encounters()==std::vector<std::string>{"straydog"});
+ // v11 appends only admitted run-sound identities; saves and the entire real
+ // frozen v10 payload are unchanged. Older data admits only its own default.
+ CHECK(data.run_sounds()==std::vector<std::string>({"wood","stone"}));CHECK(data.supports_run_sound("wood")&&data.supports_run_sound("stone")&&!data.supports_run_sound("unknown"));
+ {auto stone=data.defaults();stone.run_sound="stone";CHECK(validate(stone));std::vector<uint8_t>saved;CHECK(encode_session_save(stone,data.compatibility(),saved,error));SessionSnapshot decoded;CHECK(decode_session_save(saved.data(),saved.size(),data.compatibility(),decoded,error));CHECK(decoded.run_sound=="stone"&&validate(decoded));}
+ std::vector<uint8_t>v10_bytes;CHECK(encore::read_file("tests/fixtures/session-v10.encsession",v10_bytes,1024*1024,error));const size_t run_at=v10_bytes.size();CHECK(bytes.size()==run_at+21&&std::equal(v10_bytes.begin()+24,v10_bytes.end(),bytes.begin()+24));NativeSessionData v10;CHECK(v10.load(v10_bytes.data(),v10_bytes.size(),error));CHECK(v10.run_sounds()==std::vector<std::string>{v10.defaults().run_sound});CHECK(!v10.supports_run_sound("stone"));{auto stone=v10.defaults();stone.run_sound="stone";CHECK(!validate_native_session_snapshot(v10,room.view(),house.view(),round.view(),items.view(),stone,error));}
+ for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{run_at,0},{run_at,1},{run_at,17},{run_at+4,0},{run_at+4,33},{8,10},{20,10}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));CHECK(data.supports_run_sound("stone"));}
+ {auto downgrade=bytes;put(downgrade,8,10);put(downgrade,20,10);fix(downgrade);CHECK(!data.load(downgrade.data(),downgrade.size(),error));}
+ {auto missing=v10_bytes;put(missing,8,11);put(missing,20,11);fix(missing);CHECK(!data.load(missing.data(),missing.size(),error));}
+ {auto missing_default=bytes;missing_default[run_at+8]='g';fix(missing_default);CHECK(!data.load(missing_default.data(),missing_default.size(),error));}
+ for(char c:{'W','/','!'}){auto mutation=bytes;mutation[run_at+8]=uint8_t(c);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto mutation=bytes;mutation.resize(run_at);const auto append=[&](uint32_t n){size_t at=mutation.size();mutation.resize(at+4);put(mutation,at,n);};append(2);append(4);mutation.insert(mutation.end(),{'w','o','o','d'});append(4);mutation.insert(mutation.end(),{'w','o','o','d'});fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  // v10 appends encounter admission after the complete mainline v9 prefix.
- {auto legacy=bytes;legacy.resize(legacy.size()-16);put(legacy,8,9);put(legacy,20,9);fix(legacy);NativeSessionData v9;CHECK(v9.load(legacy.data(),legacy.size(),error));CHECK(v9.field_encounters().empty());CHECK(v9.field_items().size()==data.field_items().size());CHECK(v9.supports_settings(data.defaults().settings));}
- const size_t field_count=bytes.size()-16;CHECK(std::string(bytes.begin()+field_count+8,bytes.end())=="straydog");
+ {auto legacy=v10_bytes;legacy.resize(legacy.size()-16);put(legacy,8,9);put(legacy,20,9);fix(legacy);NativeSessionData v9;CHECK(v9.load(legacy.data(),legacy.size(),error));CHECK(v9.field_encounters().empty());CHECK(v9.field_items().size()==data.field_items().size());CHECK(v9.supports_settings(data.defaults().settings));}
+ const size_t field_count=v10_bytes.size()-16;CHECK(std::string(v10_bytes.begin()+field_count+8,v10_bytes.end())=="straydog");
  for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{field_count,0},{field_count,65},{field_count+4,0},{field_count+4,65}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  {auto mutation=bytes;mutation[field_count+8]='/';fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
- {auto mutation=bytes;const std::vector<uint8_t>duplicate(mutation.begin()+field_count+4,mutation.end());mutation.insert(mutation.end(),duplicate.begin(),duplicate.end());put(mutation,field_count,2);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto mutation=bytes;const std::vector<uint8_t>duplicate(mutation.begin()+field_count+4,mutation.begin()+run_at);mutation.insert(mutation.begin()+run_at,duplicate.begin(),duplicate.end());put(mutation,field_count,2);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  {auto mutation=bytes;put(mutation,8,9);put(mutation,20,9);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  {auto snapshot=good;snapshot.encountered.push_back({"straydog",true});CHECK(validate(snapshot));snapshot.encountered.push_back({"invented_enemy",true});CHECK(!validate(snapshot));}
  auto trailing=bytes;trailing.push_back(0);fix(trailing);CHECK(!data.load(trailing.data(),trailing.size(),error));CHECK(data.load(bytes.data(),bytes.size(),error));CHECK(validate(good));

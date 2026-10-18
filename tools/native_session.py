@@ -257,7 +257,12 @@ def extract():
     known_skills={skill for row in levels for skill in row['skills']}|{p['skill_id'] for p in skill_acquisitions}
     skill_order=[skill for skill in diary['skill_order'] if skill in known_skills]
     require(set(skill_order)==known_skills,'Missing source skill sorting identity')
-    result=dict(schema=10,field_encounters=[b['enemy']for b in field_story['encounters']],skill_acquisitions=skill_acquisitions,skill_order=skill_order,storage_capacity=storage['parameters']['StorageCapacity'],storage_policies=storage_policies,acquisitions=acquisitions,key_acquisitions=key_acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; source normal/object/key acquisitions and story-learned skills; complete inactive startup naming roster; connected native house rooms and checked Podunk encounter rewards/flags; saves return through House authority; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
+    from tools.field_footsteps import source as steps_source
+    _,steps,steps_proof=steps_source();ex.sources.update(steps_proof['sources'])
+    required.extend(['content/mayor-footsteps.json','tools/field_footsteps.py'])
+    require(defaults['run_sound']==steps['default'],'Session/source Player initial run sound differs')
+    run_sounds=list(dict.fromkeys([defaults['run_sound']]+[sound['name']for sound in steps['sounds']]))
+    result=dict(schema=11,run_sounds=run_sounds,field_encounters=[b['enemy']for b in field_story['encounters']],skill_acquisitions=skill_acquisitions,skill_order=skill_order,storage_capacity=storage['parameters']['StorageCapacity'],storage_policies=storage_policies,acquisitions=acquisitions,key_acquisitions=key_acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; source normal/object/key acquisitions and story-learned skills; complete inactive startup naming roster; connected native house rooms and checked Podunk encounter rewards/flags; saves return through House authority; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
 
     field_items=[]
     inventory_source=ex.text('Scripts/global/Inventory.gd')
@@ -293,7 +298,7 @@ def encode_snapshot(s,c):
     return raw+struct.pack('<I',zlib.crc32(raw))
 
 def encode(r):
-    require(r['schema'] in (1,2,3,4,5,6,7,8,9,10),'Unsupported native session schema')
+    require(type(r['schema'])is int and r['schema'] in (1,2,3,4,5,6,7,8,9,10,11),'Unsupported native session schema')
     w=Writer();c=r['compatibility'];w.put('3I',c['content_family'],c['content_revision'],c['rules_revision']);template=encode_snapshot(r['defaults'],c);w.put('I',len(template));w.raw.extend(template)
     w.put('I',len(r['levels']))
     for level in r['levels']:w.put('3I7i',level['level'],level['minimum_exp'],level['next_exp'],*level['stats']);w.array(level['skills'],w.text)
@@ -325,6 +330,9 @@ def encode(r):
         for policy in r['field_items']:w.text(policy['item_id']);w.put('3I',policy['doses'],int(policy['drop']),int(policy['consume']))
         w.put('I',int(r['description_toggle']))
     if r['schema']>=10:w.array(r['field_encounters'],w.text)
+    if r['schema']>=11:
+        sounds=r['run_sounds'];require(type(sounds)is list and 2<=len(sounds)<=16 and all(type(s)is str and re.fullmatch('[a-z][a-z0-9_]{0,31}',s)for s in sounds)and len(set(sounds))==len(sounds)and r['defaults']['run_sound']in sounds,'Invalid source run-sound coverage')
+        w.array(sounds,w.text)
     return struct.pack('<8s4I',b'ENCNSESS',r['schema'],24+len(w.raw),zlib.crc32(w.raw),r['schema'])+w.raw
 
 def verify_recipe(r):

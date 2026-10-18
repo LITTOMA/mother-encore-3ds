@@ -964,9 +964,17 @@ upstream::SaveSlotMetadata slot_metadata(const upstream::SessionSnapshot&state){
 // The snapshot retains the real parked House position/identity. Equipment can
 // validate current field progress against the same session contract; this does
 // not serialize a field location or enable Record/LOAD outside the House.
+bool collect_field_run_sound(upstream::SessionSnapshot&state,std::string&error){
+ if(!in_field()||!field_scene->run_audio().prepared())return true;
+ const auto&loop=field_scene->run_audio();const auto steps=loop.content();
+ if(loop.wanted_sound()>=steps.sound_count()){error="Session run sound lacks a checked scene identity";return false;}
+ const auto name=steps.text(steps.sound(loop.wanted_sound()).name);
+ if(!native_session_data.supports_run_sound(name)){error="Session run sound is outside the admitted source scope";return false;}
+ state.run_sound=std::string(name);return true;
+}
 bool collect_session_snapshot(upstream::SessionSnapshot&result,std::string&error,const upstream::OpeningWorld*progress_world=nullptr){
     using namespace upstream;if(!session_state_ready||!session_rewards_valid){error="Session save lacks live battle state";return false;}
-    auto state=session_state;const auto player=gameplay_scene->world.player();state.position_x=player.position.x;state.position_y=player.position.y;state.direction_x=player.direction.x;state.direction_y=player.direction.y;
+    auto state=session_state;if(!collect_field_run_sound(state,error))return false;const auto player=gameplay_scene->world.player();state.position_x=player.position.x;state.position_y=player.position.y;state.direction_x=player.direction.x;state.direction_y=player.direction.y;
     const auto room=opening_data.view();const auto& progress=progress_world?*progress_world:gameplay_scene->world;
     if(!progress.healthy()){error="Session progress owner is invalid";return false;}
     state.object_flags=gameplay_scene->presents.object_flags();
@@ -1396,7 +1404,7 @@ bool enter_house_from_field(const upstream::WorldRoute& route,std::string& error
     using namespace upstream;
     LoadingScope loading("Entering house",2);
     const auto room=opening_data.view();
-    NativeSnapshotInput input;input.state=session_state;
+    NativeSnapshotInput input;input.state=session_state;if(!collect_field_run_sound(input.state,error))return false;
     input.state.position_x=route.destination.x;input.state.position_y=route.destination.y;input.state.direction_x=route.direction.x;input.state.direction_y=route.direction.y;
     input.state.flags.clear();
     for(uint32_t i=0;i<room.flag_count();++i){const std::string id(room.string(room.flag(i).name_string));input.state.flags.push_back({id,field_scene->world.story_flag(id)});}

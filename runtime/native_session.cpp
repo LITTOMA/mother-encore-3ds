@@ -84,7 +84,7 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
 bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>session_save_max_bytes)return fail(e,"Native session pack size rejected");
  const auto schema=integer(p+8),capability=integer(p+20);
- if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>10||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
+ if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>11||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
  if(crc(p+24,n-24)!=integer(p+16))return fail(e,"Native session CRC mismatch");
  NativeSessionData d;Reader r{p+24,n-24};d.compatibility_={r.u32(),r.u32(),r.u32()};
  const auto template_size=r.count(uint32_t(session_save_max_bytes));
@@ -183,6 +183,12 @@ bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
   for(uint32_t i=0;i<count;++i){auto id=r.text();if(id.empty()||id.size()>64||!unique.insert(id).second)return fail(e,"Native session field encounter identity rejected");for(char c:id)if(!((c>='a'&&c<='z')||(c>='A'&&c<='Z')||(c>='0'&&c<='9')||c=='_'))return fail(e,"Native session field encounter syntax rejected");d.field_encounters_.push_back(std::move(id));}
   if(!count)return fail(e,"Native session field encounter coverage rejected");
  }
+ d.run_sounds_={d.defaults_.run_sound};
+ if(schema>=11){
+  const auto count=r.count(16);std::set<std::string>unique;d.run_sounds_.clear();
+  for(uint32_t i=0;i<count;++i){auto id=r.text();if(id.empty()||id.size()>32||id.front()<'a'||id.front()>'z'||!unique.insert(id).second)return fail(e,"Native session run sound identity rejected");for(char c:id)if(!((c>='a'&&c<='z')||(c>='0'&&c<='9')||c=='_'))return fail(e,"Native session run sound syntax rejected");d.run_sounds_.push_back(std::move(id));}
+  if(count<2||!contains(d.run_sounds_,d.defaults_.run_sound))return fail(e,"Native session run sound coverage rejected");
+ }
  if(!r.ok||r.n||d.text_speeds_.empty()||d.menu_flavors_.empty()||d.button_prompts_.empty()||!d.supports_settings(d.defaults_.settings))return fail(e,"Native session malformed/trailing settings payload");
  const auto*initial=level_row(d,d.defaults_.characters[0].level);
  const auto&c=d.defaults_.characters[0];if(!initial||c.experience!=initial->minimum_exp||c.hp>initial->stats[0]||c.pp>initial->stats[1]||c.learned_skills!=initial->skills)return fail(e,"Native session initial character disagrees with source rows");
@@ -194,6 +200,9 @@ bool NativeSessionData::load_file(const char*path,std::string&e){
  FILE*f=std::fopen(path,"rb");if(!f)return fail(e,"Cannot open native session pack");std::vector<uint8_t>b;uint8_t block[4096];bool good=true;while(true){const auto n=std::fread(block,1,sizeof(block),f);if(b.size()+n>session_save_max_bytes){good=false;break;}b.insert(b.end(),block,block+n);if(n<sizeof(block)){good=!std::ferror(f);break;}}if(std::fclose(f))good=false;if(!good)return fail(e,"Native session bounded file read failed");return load(b.data(),b.size(),e);
 }
 
+bool NativeSessionData::supports_run_sound(std::string_view sound)const{
+ return valid_&&std::find(run_sounds_.begin(),run_sounds_.end(),sound)!=run_sounds_.end();
+}
 bool NativeSessionData::supports_settings(const SessionSettings&s)const{
  return std::find(text_speeds_.begin(),text_speeds_.end(),s.text_speed)!=text_speeds_.end()&&contains(menu_flavors_,s.menu_flavor)&&contains(button_prompts_,s.button_prompts)&&(description_toggle_||s.description==defaults_.settings.description);
 }
@@ -206,7 +215,7 @@ bool validate_native_session_snapshot(const NativeSessionData&data,RoomView room
  if(s.scene_id!=d.scene_id||s.scene_id!=room.string(scene.source_scene_string)||s.scene_label!=d.scene_label||s.scene_label!=room.string(scene.display_name_string)||s.source_version!=d.source_version||s.source_version!=room.string(scene.version_string))return fail(e,"Native session scene/version identity mismatch");
  if(!supported_roster(data,s))return fail(e,"Native session requires legacy singleton or complete frozen startup roster; party stays singleton");
  for(const auto&character:s.characters)if(character.nickname.size()>house.interaction().max_player_name_length)return fail(e,"Native session nickname exceeds source scope");
- if(s.run_sound!=d.run_sound||s.shadow_effect!=d.shadow_effect||!data.supports_settings(s.settings))return fail(e,"Native session unsupported movement/settings state");
+ if(!data.supports_run_sound(s.run_sound)||s.shadow_effect!=d.shadow_effect||!data.supports_settings(s.settings))return fail(e,"Native session unsupported movement/settings state");
  if(s.rng_policy!=SessionRngPolicy::NotSerialized)return fail(e,"Native session unsupported RNG policy");
  const auto&c=s.characters[0];const auto&initial=d.characters[0];
  if(!c.permanent_boosts.empty()||!c.status.empty()||!same_affinities(c.affinity_multipliers,initial.affinity_multipliers))return fail(e,"Native session unsupported permanent boost/status/affinity state");

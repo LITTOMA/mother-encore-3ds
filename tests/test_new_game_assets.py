@@ -31,17 +31,26 @@ class NamingSessionDependency(unittest.TestCase):
         for sha in ('','unknown','g'*64):
             with self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,self.previous,self.current,sha)
     def test_field_session_extension_preserves_startup_and_rejects_unreviewed_policy(self):
-        previous=copy.deepcopy(self.current);previous['schema']=9;previous.pop('field_encounters')
+        current=copy.deepcopy(self.current);current['schema']=10;current.pop('run_sounds')
+        previous=copy.deepcopy(current);previous['schema']=9;previous.pop('field_encounters')
         previous['acquisitions']=previous['acquisitions'][:-1];previous['storage_policies']=previous['storage_policies'][:-1];previous['field_items']=previous['field_items'][:-1]
         previous['mutable_flags']=[x for x in previous['mutable_flags']if x not in ('beat_dog_bridge','pippis_mom_call','pippis_mom_help')]
-        candidate=naming.rebound_session_dependency(self.recipe,previous,self.current,'b'*64)
+        candidate=naming.rebound_session_dependency(self.recipe,previous,current,'b'*64)
         self.assertEqual(naming.encode(candidate),naming.PACK.read_bytes())
         for key,value in [('field_encounters',['unknown']),('acquisitions',[]),('storage_policies',[]),('field_items',[]),('schema',11)]:
-            bad=copy.deepcopy(self.current);bad[key]=value
+            bad=copy.deepcopy(current);bad[key]=value
             with self.subTest(key=key),self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,previous,bad,'b'*64)
         # Merged mainline menus occupy v9. v8 -> v10 is an unreviewed skip,
         # and must never be admitted merely to make the historical fixture pass.
         skipped=copy.deepcopy(previous);skipped['schema']=8
+        with self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,skipped,current,'b'*64)
+    def test_source_run_extension_keeps_naming_content(self):
+        previous=copy.deepcopy(self.current);previous['schema']=10;previous.pop('run_sounds')
+        candidate=naming.rebound_session_dependency(self.recipe,previous,self.current,'b'*64);self.assertEqual(naming.encode(candidate),naming.PACK.read_bytes())
+        for key,value in [('run_sounds',['wood','unreviewed']),('run_sounds',['wood']),('run_sounds',['wood','wood']),('field_items',[]),('schema',12),('defaults',{})]:
+            bad=copy.deepcopy(self.current);bad[key]=value
+            with self.subTest(key=key),self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,previous,bad,'b'*64)
+        skipped=copy.deepcopy(previous);skipped['schema']=9
         with self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,skipped,self.current,'b'*64)
     def test_exact_baseline_required(self):
         for sha in (None,'main','1234','g'*40):

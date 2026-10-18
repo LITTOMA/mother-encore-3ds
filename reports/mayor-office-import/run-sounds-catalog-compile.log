@@ -1,0 +1,4 @@
+usage: resource_catalog.py [-h] [--source SOURCE] [--extension EXTENSION]
+                           [--out OUT] [--romfs ROMFS]
+                           {compile,verify}
+resource_catalog.py: error: the following arguments are required: command

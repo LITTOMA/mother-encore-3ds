@@ -34,7 +34,7 @@ class FieldMenuSourceTests(unittest.TestCase):
     def test_new_game_default_bytes_are_preserved(self):
         from tools import native_session as session
         r=session.read(session.IR)
-        self.assertEqual(r['schema'],10)
+        self.assertEqual(r['schema'],11)
         self.assertTrue(r['description_toggle'])
         self.assertEqual({i['item_id'] for i in r['field_items']},{i['item_id'] for i in r['storage_policies']})
 

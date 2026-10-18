@@ -1,0 +1,52 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original NPC stop/area callbacks and SceneTreeTimer return gate, isolated from sprite/movement/dialogue services. Reference only; NPC timer execution not yet integrated.",
+  "adapters": [
+    "global.get_player identity injected as a Node peer",
+    "UI begin supplies interaction pause/facing inputs",
+    "Sprite/wander physics excluded; callbacks and SceneTreeTimers unchanged"
+  ],
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "source_sha256": {
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86"
+  },
+  "methods_sha256": {
+    "stop_interaction": "2e1d18661e604963dd9b5328a46952a13a09bf4596e84982d0e7443b5b0885f0",
+    "_on_ViewArea_body_entered": "201f48e5d074a68d919c4ae17ceddd03f99dbfde5a5eaa1d1cdf35aa67b397de",
+    "_on_ViewArea_body_exited": "cd1f02f227d4880673090bf392628acb80fe88b2e874d695ef1b518fabb6ce19",
+    "return_to_init_dir": "5f9fa875d87fc6018270bb9b8078f7acfc9bec8cd0f610e03fb4eb851be727e8"
+  },
+  "tool_sha256": "5d4fa28ee1b834e48fa819f03c6cc91b833c194233b9b171f807b4898e71deb1",
+  "generated_sha256": {
+    ".owned-npc-reference": "1250456fecb42fda0412b4eb837f3c07c99b6c850c432c095c5549410097c149",
+    "cases.json": "82efcbc91c27acf09c4ab823adcdec347f976ec45a4a2c564b85dc968559a509",
+    "global.gd": "43450a054e183a6b564055023d7105feb29c378665d08e4d445b4da031b3caa8",
+    "npc.gd": "3b659ff8935e5a8054742c840ea6ca5bf7818c76436168c4784bba32ee5c35fb",
+    "probe.gd": "7b04a5df96c03c4f4fb8f562075486bd94d1a60587b8a8692510e590d60de5d6",
+    "project.godot": "3d6f2756ff46c6814fbed142e5e7471b7cb683d141b121f9652ccce0247fc2a4"
+  },
+  "reference_sha256": "c50409717a138d25c95f42820392daededcbfff380cd589bc16e17d544898dcf",
+  "return_frames": {
+    "ordinary_stop": [
+      60
+    ],
+    "timer_during_new_interaction": [
+      140
+    ],
+    "overlapping_returns": [
+      60,
+      90
+    ],
+    "staring_stop": [],
+    "staring_exit": [
+      70
+    ],
+    "reenter_blocks_old_return": [
+      160
+    ],
+    "wander_exit_no_return": [],
+    "other_body_ignored": []
+  },
+  "gameplay": false,
+  "hardware": false
+}

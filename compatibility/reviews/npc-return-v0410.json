@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "whole_file_approved": false,
+  "source": "Scripts/Main/npc.gd",
+  "source_sha256": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+  "symbols": [
+    "stop_interaction",
+    "_on_ViewArea_body_entered",
+    "_on_ViewArea_body_exited",
+    "return_to_init_dir"
+  ],
+  "function_sha256": {
+    "stop_interaction": "2e1d18661e604963dd9b5328a46952a13a09bf4596e84982d0e7443b5b0885f0",
+    "_on_ViewArea_body_entered": "201f48e5d074a68d919c4ae17ceddd03f99dbfde5a5eaa1d1cdf35aa67b397de",
+    "_on_ViewArea_body_exited": "cd1f02f227d4880673090bf392628acb80fe88b2e874d695ef1b518fabb6ce19",
+    "return_to_init_dir": "5f9fa875d87fc6018270bb9b8078f7acfc9bec8cd0f610e03fb4eb851be727e8"
+  },
+  "scope": "Original NPC stop/area callbacks and SceneTreeTimer return gate, isolated from sprite/movement/dialogue services. Reference only; NPC timer execution not yet integrated.",
+  "semantics": {
+    "stop": "Clears talking, interaction pause and mute; non-staring NPC adds a one-second timer",
+    "view_enter": "Only player identity and staring set looking true",
+    "view_exit": "Only matching player/staring clears looking; stationary NPC adds a one-second timer",
+    "return": "On callback, only not-looking and not-interacting restore initial direction. Timers are not cancelled by a later interaction or re-entry."
+  }
+}

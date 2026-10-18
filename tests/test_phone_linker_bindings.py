@@ -49,7 +49,13 @@ class PhoneLinkerBindingTests(unittest.TestCase):
   self.assertEqual([r['identity']['value']for r in rows],[1301,1302,1303,1304,1305])
   self.assertTrue(all(r['gain_db']==0 and r['conversion']is None for r in rows))
   linked=recipe.audio(self.root,self.room,self.c)['assets']
-  self.assertEqual(len(linked),57)
+  # The original 57 entries retain their order; the source run loops append.
+  self.assertEqual(len(linked),59)
+  legacy=copy.deepcopy(self.audio);legacy['assets']=legacy['assets'][:57]
+  review=recipe.read(self.root/'reports/mayor-office-import/phone-audio-report-extension-review.json')
+  self.assertEqual(hashlib.sha256((json.dumps(legacy,indent=2)+'\n').encode()).hexdigest(),review['old_audio_ir_sha256'])
+  self.assertEqual([r['stable_id']for r in linked[57:]],[1701,1702])
+  self.assertEqual([r['source_path']for r in linked[57:]],['res://Audio/Sound effects/Footsteps/wood.mp3','res://Audio/Sound effects/Footsteps/stone.mp3'])
   self.assertEqual([r['stable_id']for r in linked[16:21]],[1301,1302,1303,1304,1305])
  def test_intro_schema_pin_unknown_hash_paths_and_gain(self):
   def row(c):return next(iter(c['audio'].values()))

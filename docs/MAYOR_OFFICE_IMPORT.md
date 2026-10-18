@@ -167,3 +167,10 @@ Room原缓冲销毁后继续定位／震动，以及重绑真实Mayor候选后�
 House停放状态已改读出门前快照中的房屋位置，野外进度和输入owner检查则读取真实活动World，避免共享玩家后把野外坐标混入受限House存档或因旧World退役而丢失摇杆输入。零方向回屋先继承活动朝向再准备受检快照；新游戏／LOAD仍创建新的Player。此次不改游戏资源、Session编码、媒体或兼容版本，也不声称未支持的移动中camera／多人跟随换图已经完成。
 
 GCC9 ASan/UBSan的玩家交接442项（含12种过期状态和House／Podunk／Mayor候选资源循环交接）、旧移动5,499、camera866和旧持久owner42项通过；原World剧情／步区569项、真实House恢复／Dad Record18,140项、Session20,606项回归通过。测试中idle_frame(0)按原有核心约定完全不推进状态，第一次错误地期望其令凭据失效；改为真实非零帧作为负例，并保留零帧不变的正例和失败日志。实际主程序交叉构建、模拟器进出与可听性尚待该提交产物验收。
+
+
+4fc70e2的GCC完整作业已结束：普通197／199个CTest目标通过，聚合python_tools和phone_linker_bindings失败，未进入sanitizer。真实原因是3个过期验证假设：Actor历史路线夹具仍是能力2而当前生成器输出能力3；Phone引入音频的断言仍固定57而受检wood／stone使总数为59；生成的Phone链接报告仍引用追加前AudioIR。日志中的intentional worker failure是测试运行器的预期负例，不能混同这3个真实失败。
+
+历史Actor路线包不改，测试从当前配方显式投影回schema1，仅去除新可选steps字段，再核对旧cap2全部字节；当前cap3正负来源测试继续保留。Phone断言核对59条、末尾1701／1702的真实source，并用原AudioIR整体SHA核对前57条投影，未放宽旧声明。Phone报告由原report／write生成器重建，Linux原序列化器保持既有LF；逐项语义核对只增加wood／stone各source及import的4个记录，以及native-audio.json输出SHA，旧输入／来源／其他输出和机制说明全部不变。没有手改二进制包或更新原版轨迹预期。
+
+修正后相关Python41项通过，新增原57条整体SHA断言单独1项通过；hash seed 1／789的真正link_phone_content --check均由该41项覆盖。该结果不是GCC完整重跑通过，也不继承旧Clang184／184到新提交；最新完整矩阵和主程序真实模拟器验收仍待完成。

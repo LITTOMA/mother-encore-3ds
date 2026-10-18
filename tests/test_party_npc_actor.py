@@ -27,6 +27,12 @@ class PartyActor(unittest.TestCase):
    with self.assertRaises(ValueError):nc.validate_tables(self.room['strings'],s,3,7,10)
   old=nc.parse_pack((n.ROOT/'romfs/world/house/opening.encroom').read_bytes())
   with self.assertRaises(ValueError):nc.validate_tables(old['strings'],old['sections'],old['scene_id'],7,10)
- def test_source_route_fixture(self):self.assertEqual(w.build()[0],(n.ROOT/'tests/fixtures/mayor-actor-routes.enclinks').read_bytes())
+ def test_source_route_fixture(self):
+  # This frozen Actor fixture predates FieldSteps. Project only the documented
+  # optional schema2 field; retain every route, NPC and music binding byte.
+  legacy=copy.deepcopy(w.load());legacy['schema']=1
+  for scene in legacy['scenes']:
+   if scene['map']:del scene['assets']['steps']
+  self.assertEqual(w.build(legacy)[0],(n.ROOT/'tests/fixtures/mayor-actor-routes.enclinks').read_bytes())
 
 if __name__=='__main__':unittest.main()

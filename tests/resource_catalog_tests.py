@@ -50,7 +50,12 @@ class ResourceCatalogTests(unittest.TestCase):
 
     def test_field_extension_is_separate_and_fail_closed(self):
         self.assertFalse(any(row['role'] in catalog.EXTENSION_ROLES for row in self.base['bindings']))
-        self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.EXTENSION_ROLES|{'EncounterBattle','EncounterRound'})
+        # Allowed schema roles and shipped bindings are independent: FieldSteps
+        # remains a candidate until its scene is actually admitted for release.
+        shipped={row['role'] for row in self.fields['bindings']}
+        expected={'FieldRoom','FieldMap','WorldLinks','HousePresents','MickTreats','GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones','FieldMenus','FieldNpc','FieldStory','EncounterBattle','EncounterRound'}
+        self.assertEqual(shipped,expected)
+        self.assertTrue(shipped<=catalog.EXTENSION_ROLES|{'EncounterBattle','EncounterRound'})
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
         self.assertEqual(catalog.capability_for(self.ir['bindings']), 8)
         motion=[r for r in self.ir['bindings']if r['role']=='FieldNpc']

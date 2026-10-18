@@ -32,7 +32,7 @@ class FieldStoryEffects final:public upstream::FieldStoryHost {
 public:
  bool can_start(upstream::FieldStoryView story,uint32_t programme,std::string& error)override{
   const auto room=field_room_data.view();if(programme>=room.program_count()){error="Field programme is not admitted";return false;}const auto program=room.program(programme);
-  for(uint32_t i=0;i<program.command_count;++i){const auto command=room.command(program.first_command+i);if(command.opcode==uint16_t(upstream::DialogueActionKind::ShowDialogue)){const auto text=story.dialogue(command.target_index,locale_selection.code());std::string speaker,body;if(!text.id||!upstream::format_field_story_text(story.text(text.speaker),new_game_data,session_state,locale_selection,speaker,error)||!upstream::format_field_story_text(story.text(text.body),new_game_data,session_state,locale_selection,body,error)){if(error.empty())error="Field programme locale/name is not admitted";return false;}}}
+  for(uint32_t i=0;i<program.command_count;++i){const auto command=room.command(program.first_command+i);if(command.opcode==uint16_t(upstream::DialogueActionKind::ShowDialogue)){const auto text=story.dialogue(command.target_index,locale_selection.code());std::string speaker;upstream::LocalizedHouseSpan body;if(!text.id||!upstream::format_field_story_text(story.text(text.speaker),new_game_data,session_state,locale_selection,speaker,error)||!upstream::format_field_story_span(story.text(text.body),new_game_data,session_state,locale_selection,body,error)){if(error.empty())error="Field programme locale/name is not admitted";return false;}}}
   const auto binding=story.encounter_for_programme(programme);if(!binding.battle){error.clear();return true;}
   uint32_t index=UINT32_MAX;for(uint32_t i=0;i<room.battle_count();++i)if(room.battle(i).stable_id==binding.battle)index=i;
   if(index==UINT32_MAX||!session_rewards_valid){error="Field battle session is unavailable";return false;}
@@ -53,12 +53,13 @@ bool prepare_field_story_audio(std::string& error){
 }
 bool advance_field_story(double delta,bool accept,bool cancel,std::string& error){
  auto&world=field_scene->world;auto&box=gameplay_scene->presentation;const auto story=field_scene->story();const auto id=world.pending_dialogue_id();bool fresh=false;
- if(id!=UINT32_MAX&&id!=field_story_text){const auto text=story.dialogue(id,locale_selection.code());if(!text.id){error="Field story locale/text is missing";return false;}std::string speaker,body;if(!upstream::format_field_story_text(story.text(text.speaker),new_game_data,session_state,locale_selection,speaker,error)||!upstream::format_field_story_text(story.text(text.body),new_game_data,session_state,locale_selection,body,error))return false;if(!box.present_plain(speaker,body,story.text(text.voice))){error=box.error();return false;}field_story_text=id;fresh=true;}
+ if(id!=UINT32_MAX&&id!=field_story_text){const auto text=story.dialogue(id,locale_selection.code());if(!text.id){error="Field story locale/text is missing";return false;}std::string speaker;upstream::LocalizedHouseSpan body;if(!upstream::format_field_story_text(story.text(text.speaker),new_game_data,session_state,locale_selection,speaker,error)||!upstream::format_field_story_span(story.text(text.body),new_game_data,session_state,locale_selection,body,error))return false;body.speaker=speaker;if(!box.present_external(body,story.text(text.voice))){error=box.error();return false;}field_story_text=id;fresh=true;}
  if(id!=UINT32_MAX&&!fresh&&!box.dialogue_closing()){
   if(!box.dialogue_finished())box.input(accept,cancel);
   else if(world.story_input_allowed()){box.input(accept,cancel,true,true);if(box.take_dialogue_advance()&&!world.finish_story_dialogue()){error="Field story continuation rejected";return false;}}
  }
  for(bool sound:world.take_story_hides()){if(!sound){error="Silent field dialogue close is not admitted";return false;}if(box.dialogue_active()&&!box.dialogue_closing())box.close_story_dialogue();}
  if(world.stage()==upstream::OpeningStage::Walking){field_story_text=UINT32_MAX;if(box.dialogue_active()&&!box.dialogue_closing())box.close_story_dialogue();}
+ if(!world.set_story_talking(id!=UINT32_MAX&&box.talking())){error="Field story talking owner rejected";return false;}
  if(box.dialogue_active()&&!box.advance_chrome(delta)){error=box.error();return false;}error.clear();return true;
 }

@@ -1,12 +1,15 @@
 #pragma once
 #include "encore/field_data.hpp"
 #include "encore/items_data.hpp"
+#include "encore/house_presentation.hpp"
 #include <string>
 #include <vector>
 namespace encore::upstream {
 class NewGameSetupData;class LocaleSelection;struct SessionSnapshot;
 // Checked source character tags; literal nicknames never become templates.
 bool format_field_story_text(std::string_view,const NewGameSetupData&,const SessionSnapshot&,const LocaleSelection&,std::string&,std::string&);
+bool format_field_story_span(std::string_view,const NewGameSetupData&,const SessionSnapshot&,const LocaleSelection&,LocalizedHouseSpan&,std::string&);
+struct FieldInteraction {uint32_t actor=UINT32_MAX,programme=UINT32_MAX;FieldText flag{};uint32_t turns=0;};
 struct FieldStoryProgramme {uint32_t programme=UINT32_MAX;FieldText boundary{},source{};uint32_t flags=0;};
 struct FieldStoryText {uint32_t id=0;FieldText locale{},speaker{},body{},voice{};};
 struct FieldStoryEncounter {uint32_t battle=0,actor=UINT32_MAX;FieldText basic{},music{};uint32_t basic_slot=UINT32_MAX,programme=UINT32_MAX;float return_music_seconds=0;uint32_t return_music_curve=0;};
@@ -14,7 +17,8 @@ struct FieldBasicOverride {uint32_t definition=0;FieldText source{};};
 class FieldStoryView {
 public:
  bool valid()const{return bytes_!=nullptr;}
- uint32_t scene_id()const;
+ uint32_t scene_id()const;uint32_t interaction_count()const;
+ FieldInteraction interaction(uint32_t)const;
  uint32_t programme_count()const;uint32_t text_count()const;uint32_t encounter_count()const;uint32_t override_count()const;
  std::string_view text(FieldText)const;
  FieldStoryProgramme programme(uint32_t)const;

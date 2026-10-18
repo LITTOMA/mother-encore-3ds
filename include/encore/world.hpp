@@ -86,6 +86,8 @@ public:
     bool unpause_from_house();
     bool resize_field_viewport(Vec2 viewport);
     bool set_house_direction(Vec2 direction);
+    // A live NPC target supplies a direction independent of the door/grid API.
+    bool face_interaction(Vec2 target);
     bool warp_same_scene(Vec2 position,Vec2 direction);
     // Scripted step used by mick_bark. Restarts the walk clip only when the pose changes.
     bool script_move(Vec2 position,Vec2 direction,bool walking);

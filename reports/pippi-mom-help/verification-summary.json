@@ -1,0 +1,22 @@
+{
+  "full_verification": {
+    "run": 39105341883,
+    "source_commit": "d0bc92e255bc9e0c5a9e8d9c6653dd5d8c3b886f",
+    "gcc_normal_ctest": 178,
+    "gcc_asan_ubsan_ctest": 163,
+    "clang_normal_ctest": 163,
+    "clang_asan_ubsan_ctest": 163,
+    "clang_renderer_python_methods": 5,
+    "console_staged_files": 341,
+    "conclusion": "success"
+  },
+  "emulator": {
+    "source_commit": "cbdd992f32d82fd49fb6fadfd77d8e50c34c8bc5",
+    "english": "emulator-en-pass-3-result.json",
+    "chinese": "emulator-zh-pass-2-result.json",
+    "completion_projection_equal": true,
+    "full_projection_equal": false,
+    "scope": "Artificial checkpoint; within-run idempotent reward/flag revisit; HP and random drops differ between runs; no hardware claim"
+  },
+  "source_identity_note": "Runtime, platform, include, romfs and content are byte-identical at cbdd992, d0bc92e and c4bd035. Later changes are test, tool and evidence only."
+}

@@ -14,7 +14,7 @@ void put(std::vector<uint8_t>&b,size_t at,uint32_t v){for(unsigned i=0;i<4;++i)b
 void sign(std::vector<uint8_t>&b){put(b,16,encore::crc32(b.data()+32,b.size()-32));}
 }
 int main(int argc,char**argv){
- CHECK(argc==2);const std::string root=argv[1];std::vector<uint8_t>bytes;CHECK(encore::read_file((root+"/mayor.encsteps").c_str(),bytes,65536,error));FieldStepsData data;CHECK(data.load(bytes.data(),bytes.size(),error));const auto v=data.view();CHECK(v.scene_id()==3&&v.sound_count()==2&&v.area_count()==2);CHECK(v.text(v.policy().slot)=="run"&&v.text(v.policy().shadow)=="shadow"&&v.policy().default_sound==0);
+ CHECK(argc==3);const std::string root=argv[1];std::vector<uint8_t>bytes;CHECK(encore::read_file((root+"/mayor.encsteps").c_str(),bytes,65536,error));FieldStepsData data;CHECK(data.load(bytes.data(),bytes.size(),error));const auto v=data.view();CHECK(v.scene_id()==3&&v.sound_count()==2&&v.area_count()==2);CHECK(v.text(v.policy().slot)=="run"&&v.text(v.policy().shadow)=="shadow"&&v.policy().default_sound==0);
  CHECK(v.text(v.sound(0).name)=="wood"&&v.text(v.sound(1).name)=="stone");CHECK(v.sound(0).id==1701&&v.sound(1).id==1702);CHECK(v.find_sound("wood")==0&&v.find_sound("unknown")==kFieldNone);CHECK(v.text(v.area(0).path)=="Stepping Sounds/Wood"&&v.area(0).exit==kFieldNone&&v.area(1).exit==0&&v.area(1).enter==1);
  CHECK(v.area(0).center.x==8&&v.area(0).center.y==12&&v.area(0).extents.x==32&&v.area(0).extents.y==28);CHECK(v.area(1).center.x==8&&v.area(1).center.y==-581&&v.area(1).extents.x==41&&v.area(1).extents.y==25);CHECK(v.area(0).layer==2048&&v.area(0).mask==1&&v.area(0).enabled);
  AudioBank bank,wrong;CHECK(bank.load_file((root+"/mayor-steps.encaudio").c_str(),error));CHECK(v.matches(bank,error));CHECK(wrong.load_file((root+"/mayor.encaudio").c_str(),error));CHECK(!v.matches(wrong,error));CHECK(!FieldStepsView{}.matches(bank,error));
@@ -25,6 +25,7 @@ int main(int argc,char**argv){
  {auto bad=bytes;bad[sounds+16]^=1;sign(bad);FieldStepsData changed;CHECK(changed.load(bad.data(),bad.size(),error));CHECK(!changed.view().matches(bank,error));CHECK(v.matches(bank,error));}
  {auto bad=bytes;bad.back()^=1;CHECK(!data.load(bad.data(),bad.size(),error));CHECK(data.view().bytes_identity()==v.bytes_identity());}
  CHECK(!data.load(bytes.data(),65537,error));
+ AudioBank application;CHECK(application.load_file(argv[2],error));CHECK(v.matches(application,error));
  CHECK(!data.load(nullptr,bytes.size(),error));CHECK(data.view().bytes_identity()==v.bytes_identity());
  FieldRunLoop detached;CHECK(!detached.set_running(true,false,true,false,error));CHECK(!detached.stop_playback(error));CHECK(!detached.area_event(0,true,true,error));CHECK(!detached.set_area_enabled(0,true,error));CHECK(!detached.initialize({},"wood",error));CHECK(!detached.initialize(v,"unknown",error));CHECK(!detached.prepared());
  FieldRunLoop loop;CHECK(loop.initialize(v,v.text(v.sound(v.policy().default_sound).name),error));CHECK(!loop.initialize(v,"wood",error));CHECK(loop.wanted_sound()==0&&loop.registered_sound()==0&&!loop.playing()&&!loop.running());

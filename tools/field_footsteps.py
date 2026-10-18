@@ -30,8 +30,8 @@ def policy(file=RECIPE):
         fields(s,'name id pcm','sound binding');require(type(s['name'])is str and re.fullmatch('[a-z][a-z0-9_]{0,31}',s['name'])and s['name']not in names and type(s['id'])is int and 0<s['id']<2**32 and s['id']not in ids and safe(s['pcm'])and s['pcm'].startswith('sound/effects/')and s['pcm'].endswith('.pcm')and s['pcm']not in paths,'Footstep sound identity/path');names.add(s['name']);ids.add(s['id']);paths.add(s['pcm'])
     return p
 
-def source(file=RECIPE):
-    p=policy(file);files=f.Sources(ROOT);recipe=f.load_recipe(ROOT/p['field_recipe']);scene=f.Scene(files,recipe);ex=files.extractor
+def source(file=RECIPE,*,root=ROOT):
+    root=Path(root).resolve();p=policy(file);files=f.Sources(root);recipe=f.load_recipe(root/p['field_recipe']);scene=f.Scene(files,recipe);ex=files.extractor
     license=ex.text('LICENSE');require("purpose you're using them is related to the game"in license,'Footstep original game-related asset permission changed')
     doc=Document(p['area_scene'],ex.text(p['area_scene']));script=ex.text(p['area_script']);player=ex.text(p['player_script']);require(doc.ext_path(doc.nodes[0].props['script'],'Script')==p['area_script'],'Footstep source class script')
     defaults={}

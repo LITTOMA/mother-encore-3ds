@@ -164,7 +164,7 @@ try:
   wait(lambda s:s['world_stage']==0 and not s['paused'],limit=1200);called=record('help_repeat_complete')
   assert {k:first[k]for k in stable_help}=={k:called[k]for k in stable_help} and all(first['story_flag_'+str(i)]==called['story_flag_'+str(i)]for i in range(6)),'Repeated help mutated the session'
   # Re-enter the bridge's middle before walking west; the lower riverbank is solid.
-  waypoint('UP','player_y',264)
+  waypoint('LEFT','player_x',584);waypoint('UP','player_y',264)
  # Revisit both completed areas before continuing along the road. The host
  # test separately covers the full forest-corridor round trip. Reward and
  # dialogue idempotence use exactly the same state assertion in the emulator.

@@ -1,0 +1,12 @@
+{
+  "failure_run": 39103309033,
+  "failure_commit": "d1af180a49e7c9eb251f5fcfccf197201d9cbe6f",
+  "reason": "historical v8 fixture skips merged menu v9; field_items prefix not truncated; invalid schema negative used unchanged current v10",
+  "production_tool_changed": false,
+  "checks": "5 targeted Python methods passed; no full rerun claim",
+  "source_sha256": {
+    "tests/test_new_game_assets.py": "3aa480d325a665968d54fe0e2df31812fae7926e4b24710d36ba2074c3357b8d",
+    "tools/new_game_assets.py": "eea909932a4365f24dc2837ffaed4deaedc383146d45f41481bc3eb6158f790b",
+    "content/native-session.json": "64b67b2f35d685b430ca779cb263e6ece41ef2b9bddde53f1cd22be2f45f4ab7"
+  }
+}

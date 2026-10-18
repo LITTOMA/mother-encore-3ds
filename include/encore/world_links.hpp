@@ -18,7 +18,7 @@ struct WorldScene {uint32_t id=0;std::string_view source;uint32_t room_role=0,ma
 // References are typed catalog binding IDs, not game/save identities. Capability
 // 1's singleton role IDs remain an admitted legacy representation.
 struct WorldSceneResources {
-    WorldScene scene{};uint32_t story=0,music=0,audio=0,zones=0,mick=0;
+    WorldScene scene{};uint32_t story=0,music=0,audio=0,zones=0,mick=0,steps=0;
     std::vector<uint32_t>npcs;
 };
 struct WorldRoute {

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_step_resources.py", line 20, in <module>
+    a=argparse.ArgumentParser();a.add_argument('--out',type=Path,required=True);o=a.parse_args();build(o.out)
+                                                                                                 ^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_step_resources.py", line 18, in build
+    c.decode(blob);print('Step schema fixture:',len(blob),'catalog bytes; metadata only, artificial scene binding')
+    ^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\resource_catalog.py", line 238, in decode
+    require(role in names and role <= {1: 30, 2: 33, 3: 34, 4: 35, 5: 39, 6: 40, 7: 41, 8: 42, 9: 42}[capability] and 0 < size <= RESOURCE_LIMIT and 0 < length <= 256 and offset + length <= len(blob), 'Invalid catalog binding')
+                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 10

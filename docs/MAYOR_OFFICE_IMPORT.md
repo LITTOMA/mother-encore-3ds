@@ -99,3 +99,11 @@ e3e3af2 请求的完整 GCC 检查在普通 CTest191／192通过后失败：pyth
 
 
 追加器最终8项单测还覆盖发布验证失败的回滚、保留已存在文件、清理中断写入的局部PCM，以及拒绝从只读旧快照直接发布。最终生成器从5fe7491的57条原始输入在build重新生成候选，完整bank与已发布的59条bank逐字节一致；该重建没有覆盖现场或重新解码旧PCM。此前e3e3af2的Clang普通／sanitizer任务已通过，GCC仍是单独登记失败；新的完整重跑以5fe7491为独立身份，后续新增音源不能继承旧任务的完整通过结论。
+
+
+步区元数据现可由场景资源集独立选择：目录能力10增加FieldSteps=43且要求独立绑定ID≥1024；WorldLinks能力3使用原SceneAssets尾部保留字段绑定步区，必须实际使用新特性。旧目录能力1至9、链接1／2和现有发行资源字节保持原义，不把保留位偷偷改成新格式。每个步区资源必须有地图场景归属，类型／引用／scene身份不符均拒绝；资源所有者保持独立、不可变，失败不替换已准备场景。
+
+当前实际Mayor候选链接指向1030；尚未发布。专用元数据夹具将已审查步区的scene刻意改为2，以单独测试资源归属，不是原版Podunk步区或可玩市政厅。真实来源与schema测试13项、GCC9 ASan/UBSan新增77／旧场景所有者32／旧多场景66项通过。新增CMake夹具只复制目录绑定的元数据，不复制纹理或PCM；Windows配置及CTest收集1,037个Python方法（681聚合＋356单独）通过，这仍只是收集。第一次准备暴露Python后缀表和capability上限映射两处缺项，均修复并保留失败日志。实时步区、移动、循环声音和场景持久run_sound仍待接线，不据此声明新增场景可玩、可听或真机通过。
+
+
+5fe7491 full rerun: Clang normal and ASan/UBSan each passed all 180 CTest targets; real 3DSX/CIA packaging passed. Raw completed job logs are retained. GCC sanitizer status is checked independently; these results do not cover the subsequent audio append or scene-step binding changes.

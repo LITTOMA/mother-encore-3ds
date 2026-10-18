@@ -32,24 +32,25 @@ ROLES = {name: index + 1 for index, name in enumerate((
     'Choices', 'SaveMenu', 'Session', 'Settings', 'Prompts', 'Continue', 'Restore',
     'SessionMigration', 'NewGame', 'Localization', 'TitleLocale', 'SourceFonts',
     'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction', 'HouseInspections', 'DrawerProgram', 'Storage', 'ItemDetails', 'FieldEquipment',
-    'FieldRoom', 'FieldMap', 'WorldLinks', 'HousePresents', 'MickTreats', 'GameplayAudio', 'FieldMusic', 'FieldAudio', 'FieldMusicZones', 'FieldMenus', 'FieldNpc', 'FieldStory'))}
+    'FieldRoom', 'FieldMap', 'WorldLinks', 'HousePresents', 'MickTreats', 'GameplayAudio', 'FieldMusic', 'FieldAudio', 'FieldMusicZones', 'FieldMenus', 'FieldNpc', 'FieldStory', 'FieldSteps'))}
 SUFFIXES = dict(zip(ROLES, ('.encroom', '.encbars', '.encbattle', '.encround',
     '.enchouse', '.encitems', '.encaudio', '.encphone', '.encchoices', '.encsavemenu',
     '.encsession', '.encsettings', '.encprompts', '.enccontinue', '.encrestore',
     '.encmigration', '.encnewgame', '.enclocale', '.enctitlelocale', '.encfont',
     '.encinput', '.encload', '.encbattle', '.encround', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield',
-    '.encroom', '.encmap', '.enclinks', '.encpresent', '.encmick', '.enccues', '.encmusic', '.encaudio', '.enczones', '.encmenus', '.encmick', '.encstory')))
+    '.encroom', '.encmap', '.enclinks', '.encpresent', '.encmick', '.enccues', '.encmusic', '.encaudio', '.enczones', '.encmenus', '.encmick', '.encstory', '.encsteps')))
 # Capability 2 adds the linked exterior field roles; all three are then required.
 # Capability 3 additionally requires HousePresents; capability 4 requires MickTreats.
 FIELD_ROLES = {'FieldRoom', 'FieldMap', 'WorldLinks'}
-SCENE_ROLES = {'FieldRoom','FieldMap','FieldMusic','FieldAudio','FieldMusicZones','FieldStory'}
-EXTENSION_ROLES = FIELD_ROLES | {'HousePresents', 'MickTreats', 'GameplayAudio', 'FieldMusic', 'FieldAudio', 'FieldMusicZones', 'FieldMenus', 'FieldNpc', 'FieldStory'}
+SCENE_ROLES = {'FieldRoom','FieldMap','FieldMusic','FieldAudio','FieldMusicZones','FieldStory','FieldSteps'}
+EXTENSION_ROLES = FIELD_ROLES | {'HousePresents', 'MickTreats', 'GameplayAudio', 'FieldMusic', 'FieldAudio', 'FieldMusicZones', 'FieldMenus', 'FieldNpc', 'FieldStory', 'FieldSteps'}
 
 
 def capability_for(bindings):
     for row in bindings:
         fields(row,('id','role','path'),'binding');require(type(row['role'])is str and row['role']in ROLES and type(row['id'])is int,'Unknown binding role/stable ID')
     roles = {row['role'] for row in bindings}
+    if 'FieldSteps'in roles:return 10
     if any(row['role']in SCENE_ROLES and row['id']!=ROLES[row['role']]for row in bindings):return 9
     return 8 if 'FieldStory' in roles else 7 if 'FieldNpc' in roles else 6 if 'FieldMenus' in roles else 5 if 'GameplayAudio' in roles else 4 if 'MickTreats' in roles else 3 if 'HousePresents' in roles else 2 if roles & FIELD_ROLES else 1
 BATTLE_ROLES = {'Battle', 'EncounterBattle'}
@@ -137,13 +138,14 @@ def load_catalog(source=IR, extension_source=EXTENSION_IR):
 def validate_bindings(bindings, encounters):
     require(type(bindings)is list,'Catalog bindings must be a list')
     capability=capability_for(bindings)
-    require(22 <= len(bindings) <= (1024 if capability==9 else 128), 'Incomplete catalog role coverage')
+    require(22 <= len(bindings) <= (1024 if capability>=9 else 128), 'Incomplete catalog role coverage')
     names, ids, paths = set(), set(), set()
     for row in bindings:
         fields(row, ('id', 'role', 'path'), 'binding')
         role = row['role']
         require(type(role) is str and role in ROLES and type(row['id']) is int and
-                ((row['id']==ROLES[role]or 1024<=row['id']<=0xffffffff)if capability==9 and role in SCENE_ROLES else(row['id'] == ROLES[role] if ROLES[role] <= 22 or 25 <= ROLES[role] <= 40 or role=='FieldStory' else 256 <= row['id'] <= 0xffffffff)), 'Unknown binding role/stable ID')
+                ((row['id']==ROLES[role]or 1024<=row['id']<=0xffffffff)if capability>=9 and role in SCENE_ROLES else(row['id'] == ROLES[role] if ROLES[role] <= 22 or 25 <= ROLES[role] <= 40 or role=='FieldStory' else 256 <= row['id'] <= 0xffffffff)), 'Unknown binding role/stable ID')
+        require(role!='FieldSteps'or row['id']>=1024,'Field stepping binding requires an independent identity')
         require(canonical(row['path']) and row['path'].endswith(SUFFIXES[role]) and len(row['path']) > len(SUFFIXES[role]), 'Unsafe or wrong-type binding path')
         require((ROLES[role] > 22 or role not in names) and row['id'] not in ids and row['path'] not in paths, 'Duplicate binding role/ID/path')
         names.add(role); ids.add(row['id']); paths.add(row['path'])
@@ -158,10 +160,11 @@ def validate_bindings(bindings, encounters):
     require('FieldNpc' not in names or 'FieldMenus' in names, 'Field NPC motion requires capability 6 menus')
     require('FieldNpc' not in names or audio_roles <= names, 'Field NPC motion requires capability 5')
     require('FieldStory'not in names or 'FieldNpc'in names,'Field story requires motion owners')
-    for role in SCENE_ROLES & names:
+    require('FieldSteps'not in names or 'FieldStory'in names,'Field stepping requires checked scene story owners')
+    for role in (SCENE_ROLES-{'FieldSteps'}) & names:
         require(sum(r['role']==role and r['id']==ROLES[role]for r in bindings)==1,'Missing default scene role: '+role)
-    require(capability==9 or sum(r['role']=='FieldStory'for r in bindings)==int('FieldStory'in names),'Duplicate field story role')
-    require(type(encounters) is list and 1 <= len(encounters) <= (512 if capability==9 else 32), 'Incomplete encounter coverage')
+    require(capability>=9 or sum(r['role']=='FieldStory'for r in bindings)==int('FieldStory'in names),'Duplicate field story role')
+    require(type(encounters) is list and 1 <= len(encounters) <= (512 if capability>=9 else 32), 'Incomplete encounter coverage')
     binding_roles = {row['id']: row['role'] for row in bindings}
     battles, rounds = set(), set()
     for row in encounters:
@@ -213,26 +216,26 @@ def encode(ir, romfs_root=ROOT / 'romfs'):
         payload += struct.pack('<5I', row['id'], ROLES[row['role']], len(blob), zlib.crc32(blob), len(path)) + path
     for row in ir['encounters']:
         payload += struct.pack('<2I', row['battle_id'], row['round_id'])
-    require(HEADER.size + len(payload) <= (CATALOG_LIMIT if capability_for(ir['bindings'])==9 else 16384), 'Catalog exceeds format size bound')
+    require(HEADER.size + len(payload) <= (CATALOG_LIMIT if capability_for(ir['bindings'])>=9 else 16384), 'Catalog exceeds format size bound')
     return HEADER.pack(MAGIC, 1, HEADER.size + len(payload), zlib.crc32(payload), capability_for(ir['bindings']), 0, 0) + payload
 
 
 def decode(blob):
     require(type(blob) in (bytes, bytearray) and 60 <= len(blob) <= CATALOG_LIMIT, 'Catalog size rejected')
     magic, version, total, checksum, capability, reserved0, reserved1 = HEADER.unpack_from(blob)
-    require(magic == MAGIC and version == 1 and total == len(blob) and capability in (1, 2, 3, 4, 5, 6, 7, 8, 9) and not reserved0 and not reserved1, 'Catalog header rejected')
-    require(capability==9 or len(blob)<=16384,'Legacy catalog size rejected')
+    require(magic == MAGIC and version == 1 and total == len(blob) and capability in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10) and not reserved0 and not reserved1, 'Catalog header rejected')
+    require(capability>=9 or len(blob)<=16384,'Legacy catalog size rejected')
     require(zlib.crc32(blob[HEADER.size:]) == checksum, 'Catalog checksum mismatch')
     require(blob[32:52] == bytes.fromhex(PIN), 'Catalog source pin rejected')
     count, pairs = struct.unpack_from('<2I', blob, 52)
-    require(22 <= count <= (1024 if capability==9 else 128) and 1 <= pairs <= (512 if capability==9 else 32), 'Catalog role/encounter count rejected')
+    require(22 <= count <= (1024 if capability>=9 else 128) and 1 <= pairs <= (512 if capability>=9 else 32), 'Catalog role/encounter count rejected')
     offset = 60
     names = {v: k for k, v in ROLES.items()}
     bindings, encounters, fingerprints = [], [], {}
     for _ in range(count):
         require(offset + 20 <= len(blob), 'Truncated catalog binding')
         identity, role, size, crc, length = struct.unpack_from('<5I', blob, offset); offset += 20
-        require(role in names and role <= {1: 30, 2: 33, 3: 34, 4: 35, 5: 39, 6: 40, 7: 41, 8: 42, 9: 42}[capability] and 0 < size <= RESOURCE_LIMIT and 0 < length <= 256 and offset + length <= len(blob), 'Invalid catalog binding')
+        require(role in names and role <= {1: 30, 2: 33, 3: 34, 4: 35, 5: 39, 6: 40, 7: 41, 8: 42, 9: 42, 10: 43}[capability] and 0 < size <= RESOURCE_LIMIT and 0 < length <= 256 and offset + length <= len(blob), 'Invalid catalog binding')
         try:
             path = blob[offset:offset + length].decode('ascii')
         except UnicodeDecodeError as exc:

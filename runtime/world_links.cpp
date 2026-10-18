@@ -43,7 +43,7 @@ uint32_t WorldLinksData::find_route_from(uint32_t scene_id,std::string_view door
 bool WorldLinksData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kWorldLinkSectionCount*16||n>max_bytes)return fail("World links size rejected");
-    if(std::memcmp(p,"ENCLNK01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)!=1&&u32(p+20)!=2)||u32(p+24)||u32(p+28)||u32(p+52)!=(u32(p+20)==1?3u:5u)||u32(p+56)||u32(p+60))
+    if(std::memcmp(p,"ENCLNK01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)<1||u32(p+20)>3)||u32(p+24)||u32(p+28)||u32(p+52)!=(u32(p+20)==1?3u:5u)||u32(p+56)||u32(p+60))
         return fail("World links schema/capability/reserved rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("World links source pin rejected");}
     if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("World links checksum rejected");
@@ -74,14 +74,15 @@ bool WorldLinksData::load(const uint8_t*p,size_t n,std::string&error){
            u32(r+80)>1||(bool(u32(r+80)&1)!=(f32(r+64)>0)))return fail("World links route rejected");
         for(uint32_t k=0;k<i;++k){const auto*o=l.record(3,k);if(u32(o)==u32(r)||(u32(o+4)==u32(r+4)&&l.text(o+12)==l.text(r+12)))return fail("World links duplicate route rejected");}
     }
-    if(u32(p+20)==2){
+    if(u32(p+20)>=2){
         const auto assets=l.count(4),refs=l.count(5);if(assets>scenes||refs>4096)return fail("World scene resource capacity rejected");
-        std::vector<uint8_t>used(refs,0);std::set<uint32_t>owners;
+        std::vector<uint8_t>used(refs,0);std::set<uint32_t>owners;bool has_steps=false;
         for(uint32_t i=0;i<assets;++i){const auto*r=l.record(4,i);const auto id=u32(r),first=u32(r+24),count=u32(r+28);bool field=false;
             for(uint32_t j=0;j<scenes;++j){const auto*scene=l.record(2,j);field|=u32(scene)==id&&u32(scene+16)!=0;}
-            const bool music=u32(r+8)!=0;if(!field||!owners.insert(id).second||u32(r+32)||count>128||first>refs||count>refs-first||(!count&&first)||music!=(u32(r+12)!=0)||music!=(u32(r+16)!=0))return fail("World scene asset row rejected");
+            has_steps|=u32(r+32)!=0;const bool music=u32(r+8)!=0;if(!field||!owners.insert(id).second||(u32(p+20)==2&&u32(r+32))||count>128||first>refs||count>refs-first||(!count&&first)||music!=(u32(r+12)!=0)||music!=(u32(r+16)!=0))return fail("World scene asset row rejected");
             std::set<uint32_t>npc_ids;for(uint32_t j=0;j<count;++j){const auto at=first+j,id=u32(l.record(5,at));if(used[at]||!id||!npc_ids.insert(id).second)return fail("World scene NPC reference rejected");used[at]=1;}
         }
+        if((u32(p+20)==3)!=has_steps)return fail("World stepping capability must be used");
         for(auto value:used)if(!value)return fail("World scene NPC reference is unowned");
         for(uint32_t i=0;i<scenes;++i){const auto*r=l.record(2,i);if(u32(r+16)&&!owners.count(u32(r)))return fail("World field scene assets missing");}
     }
@@ -101,10 +102,10 @@ bool WorldLinksData::resolve_scene(uint32_t id,const ResourceCatalog&catalog,Wor
         if(ambiguous)return fail("Legacy scene asset role is ambiguous");
     }else{
         const Layout l{bytes_.data(),bytes_.size()};const uint8_t*row=nullptr;for(uint32_t i=0;i<l.count(4);++i)if(u32(l.record(4,i))==id)row=l.record(4,i);
-        if(!row)return fail("Scene asset owner is absent");next.story=u32(row+4);next.music=u32(row+8);next.audio=u32(row+12);next.zones=u32(row+16);next.mick=u32(row+20);
+        if(!row)return fail("Scene asset owner is absent");next.story=u32(row+4);next.music=u32(row+8);next.audio=u32(row+12);next.zones=u32(row+16);next.mick=u32(row+20);next.steps=u32(row+32);
         for(uint32_t i=0;i<u32(row+28);++i)next.npcs.push_back(u32(l.record(5,u32(row+24)+i)));
     }
-    const std::pair<uint32_t,ResourceRole>refs[]={{next.story,ResourceRole::FieldStory},{next.music,ResourceRole::FieldMusic},{next.audio,ResourceRole::FieldAudio},{next.zones,ResourceRole::FieldMusicZones},{next.mick,ResourceRole::MickTreats}};
+    const std::pair<uint32_t,ResourceRole>refs[]={{next.story,ResourceRole::FieldStory},{next.music,ResourceRole::FieldMusic},{next.audio,ResourceRole::FieldAudio},{next.zones,ResourceRole::FieldMusicZones},{next.mick,ResourceRole::MickTreats},{next.steps,ResourceRole::FieldSteps}};
     for(const auto&ref:refs)if(ref.first&&catalog.path(ref.second,ref.first).empty())return fail("Scene asset binding is missing or has wrong type");
     for(auto npc:next.npcs)if(catalog.path(ResourceRole::FieldNpc,npc).empty())return fail("Scene NPC binding is missing or has wrong type");
     if(bool(next.music)!=bool(next.audio)||bool(next.music)!=bool(next.zones))return fail("Scene music group is incomplete");
@@ -114,8 +115,8 @@ bool WorldLinksData::bind_catalog(const ResourceCatalog&catalog,std::string&erro
     if(!valid()){error="World links are not loaded";return false;}
     std::set<uint32_t>used;
     for(uint32_t i=0;i<scene_count();++i){WorldSceneResources r;if(!resolve_scene(scene(i).id,catalog,r,error))return false;used.insert(r.scene.room_role);if(r.scene.map_role)used.insert(r.scene.map_role);
-        for(auto id:{r.story,r.music,r.audio,r.zones,r.mick})if(id)used.insert(id);for(auto id:r.npcs)used.insert(id);}
-    for(auto role:{ResourceRole::FieldRoom,ResourceRole::FieldMap,ResourceRole::FieldStory,ResourceRole::FieldMusic,ResourceRole::FieldAudio,ResourceRole::FieldMusicZones,ResourceRole::FieldNpc})for(auto id:catalog.ids(role))if(!used.count(id)){error="Catalog scene resource has no world owner";return false;}
+        for(auto id:{r.story,r.music,r.audio,r.zones,r.mick,r.steps})if(id)used.insert(id);for(auto id:r.npcs)used.insert(id);}
+    for(auto role:{ResourceRole::FieldRoom,ResourceRole::FieldMap,ResourceRole::FieldStory,ResourceRole::FieldMusic,ResourceRole::FieldAudio,ResourceRole::FieldMusicZones,ResourceRole::FieldNpc,ResourceRole::FieldSteps})for(auto id:catalog.ids(role))if(!used.count(id)){error="Catalog scene resource has no world owner";return false;}
     error.clear();return true;
 }
 bool WorldLinksData::load_file(const char*path,std::string&error){

@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_step_resources.py", line 20, in <module>
+    a=argparse.ArgumentParser();a.add_argument('--out',type=Path,required=True);o=a.parse_args();build(o.out)
+                                                                                                 ^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_step_resources.py", line 17, in build
+    ir['bindings'].append(dict(id=1030,role='FieldSteps',path=path));blob=c.encode(ir,out);target=out/'system/native.encresources';target.write_bytes(blob)
+                                                                          ^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\resource_catalog.py", line 207, in encode
+    validate(ir)
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\resource_catalog.py", line 101, in validate
+    validate_bindings(ir['bindings'], ir['encounters'])
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\resource_catalog.py", line 149, in validate_bindings
+    require(canonical(row['path']) and row['path'].endswith(SUFFIXES[role]) and len(row['path']) > len(SUFFIXES[role]), 'Unsafe or wrong-type binding path')
+                                                            ~~~~~~~~^^^^^^
+KeyError: 'FieldSteps'

@@ -1,8 +1,8 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.world-scene-routes.recipe",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Candidate House/Podunk/Mayor Office route graph only; Mayor resources are not yet generated or staged. Internal door coordinates use source transforms, not hand-authored destinations.",
+  "scope": "Candidate source House/Podunk/Mayor route graph with independent Mayor step binding; no release entrance until the full scene is staged and verified.",
   "door": {
     "scene": "Nodes/Overworld/Door.tscn",
     "script": "Scripts/Main/Door.gd",
@@ -31,7 +31,8 @@
         "npcs": [
           320,
           321
-        ]
+        ],
+        "steps": 0
       }
     },
     {
@@ -51,7 +52,8 @@
           324,
           325,
           326
-        ]
+        ],
+        "steps": 1030
       }
     }
   ],

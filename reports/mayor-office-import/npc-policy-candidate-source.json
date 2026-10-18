@@ -1,0 +1,3584 @@
+{
+  "schema": 1,
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "producer_sha256": "f24c523c225f4a8a465081775c91a52cffc60dd518152c5fcf44215efae41e9c",
+  "sources": {
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Graphics/Character Sprites/Npcs/4dir/abbott.png": "befdb4626b1b8020177055209fa61384d0bc995ef4b561eab39be02bc84f0cbc",
+    "Graphics/Character Sprites/Npcs/4dir/abbott.png.import": "8dc282c2e6488000ff9eb4c4016d5a16890a21a0da1ff1d364510820d4e643da",
+    "Graphics/Character Sprites/Npcs/4dir/podunkmayorfront.png": "bcd4c14565350967d325a4c11bb107f49131336cf8c7346469ed648d785f049a",
+    "Graphics/Character Sprites/Npcs/4dir/podunkmayorfront.png.import": "1b4acd771404946b7b212c994d08c604596fef7375419ab2626ef0e237a82a67",
+    "Graphics/Character Sprites/Npcs/4dir/podunkmayorside.png": "d208624ab8d099f732e6de5f0032b2ced2fd0cbde6b32b922f7325c3747a71f2",
+    "Graphics/Character Sprites/Npcs/4dir/podunkmayorside.png.import": "52e9222c680758fcbc497e6fdc900f5e3973dbe0cd01f2fce6a416b368336fde",
+    "Graphics/Character Sprites/Pippi/main.png": "552eaf3a8fa668afe0d3a8bd12ac13b70cf4312fef57a14f8cc8ef254196164f",
+    "Graphics/Character Sprites/Pippi/main.png.import": "31e32c6978ae45aa04c9fe9df6db237a230b6d1c2ddee5da9b37d70c9eb8aa3b",
+    "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86"
+  },
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "textures": {
+    "graphics/world/mayor/abbott.t3x": {
+      "source": "Graphics/Character Sprites/Npcs/4dir/abbott.png",
+      "source_sha256": "befdb4626b1b8020177055209fa61384d0bc995ef4b561eab39be02bc84f0cbc",
+      "bytes": 131093,
+      "sha256": "1843b42301486d49e81d8efab3b2619df7d9d87c651fc49fca71c0d490e1c836"
+    },
+    "graphics/world/mayor/mayor-front.t3x": {
+      "source": "Graphics/Character Sprites/Npcs/4dir/podunkmayorfront.png",
+      "source_sha256": "bcd4c14565350967d325a4c11bb107f49131336cf8c7346469ed648d785f049a",
+      "bytes": 262165,
+      "sha256": "56f6ce983c4b25a12b26693146b78a02db5a29c21d9a09c588296d9a163b7a51"
+    },
+    "graphics/world/mayor/mayor-side.t3x": {
+      "source": "Graphics/Character Sprites/Npcs/4dir/podunkmayorside.png",
+      "source_sha256": "d208624ab8d099f732e6de5f0032b2ced2fd0cbde6b32b922f7325c3747a71f2",
+      "bytes": 262165,
+      "sha256": "4a4949a3821ddc97351c18ae00df122e300ade8b773a8b38d4a11e78420dce57"
+    },
+    "graphics/world/mayor/pippi.t3x": {
+      "source": "Graphics/Character Sprites/Pippi/main.png",
+      "source_sha256": "552eaf3a8fa668afe0d3a8bd12ac13b70cf4312fef57a14f8cc8ef254196164f",
+      "bytes": 1048597,
+      "sha256": "fe5d479069c44a200d3300ffe5be9ea7e579bc9519d15d60870d20da576ce375"
+    }
+  },
+  "dependencies": {
+    "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
+    "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
+    "tools/field_npc_motion.py": "ea42d3b1f97591748554fd136ce6682a0d2043942ec2d680b8ac8b49b4939177",
+    "tools/mick_treats.py": "20aea7153ae3ec73ec8eeb7bc26882e512107bcd3bc4968abff95b3fb13b9787",
+    "tools/podunk_field.py": "e97f7c92968c7b91c9411c9bee07f0447eb25bb219b4b3f70ffca4c3ea2d6829"
+  },
+  "actors": [
+    {
+      "binding": {
+        "id": 2,
+        "alias": "abbott_lobby",
+        "path": "npc4",
+        "texture": "graphics/world/mayor/abbott.t3x",
+        "motion": "world/mayor/abbott-lobby.encmick"
+      },
+      "ir": {
+        "texture": {
+          "source": "Graphics/Character Sprites/Npcs/4dir/abbott.png",
+          "size": [
+            95,
+            132
+          ],
+          "columns": 5,
+          "rows": 4,
+          "output": "graphics/world/mayor/abbott.t3x"
+        },
+        "actor": {
+          "source_path": "npc4",
+          "position": [
+            8.0,
+            -50.0
+          ],
+          "sprite_position": [
+            8.0,
+            -57.0
+          ],
+          "interact_center": [
+            7.5,
+            -45.0
+          ],
+          "interact_extents": [
+            12.300000190734863,
+            14.0
+          ],
+          "collision_center": [
+            7.5,
+            -44.0
+          ],
+          "collision_extents": [
+            7.5,
+            3.0
+          ],
+          "sort_y": -50.0,
+          "item": null,
+          "require_flag": null,
+          "consume_flag": null,
+          "ray_length": 16,
+          "frame": 1,
+          "speed": 64.0,
+          "walk_frequency": 2.0,
+          "wander_radius": 44.0,
+          "near_offset": [
+            -0.5,
+            6.0
+          ],
+          "near_extents": [
+            12.5,
+            8.0
+          ],
+          "view_offset": [
+            0.0,
+            9.0
+          ],
+          "view_radius": 44.0,
+          "ray_offset": [
+            0.0,
+            4.0
+          ],
+          "bark_center": [
+            0,
+            0
+          ],
+          "bark_extents": [
+            0,
+            0
+          ],
+          "bark_path": null,
+          "bark_programme": null,
+          "initial_direction": [
+            0,
+            1
+          ],
+          "rng_lo": 0,
+          "rng_hi": 0,
+          "idle_clip": 0,
+          "idle_clip_count": 4,
+          "walk_clip": 4,
+          "walk_clip_count": 16,
+          "talk_clip": 20,
+          "talk_clip_count": 8
+        },
+        "texts": [],
+        "commands": [],
+        "programmes": [],
+        "clips": [
+          {
+            "anim": 0,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 0,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 2,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 5,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 7,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 10,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 12,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 15,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 17,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 0,
+            "frame": 4,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 0,
+            "frame": 3,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 1,
+            "frame": 9,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 1,
+            "frame": 8,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 2,
+            "frame": 14,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 2,
+            "frame": 13,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 3,
+            "frame": 19,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 3,
+            "frame": 18,
+            "milliseconds": 100
+          }
+        ],
+        "rng": []
+      },
+      "directions": 4,
+      "idle_animation": "Idle",
+      "animation": "Data/Animations/4dir.yaml",
+      "source_animations": {
+        "Idle": {
+          "directions": [
+            [
+              0,
+              [
+                2,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                7,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                12,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                17,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Talk": {
+          "directions": [
+            [
+              0.1,
+              [
+                5,
+                0.2
+              ],
+              [
+                4,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                10,
+                0.2
+              ],
+              [
+                9,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                15,
+                0.2
+              ],
+              [
+                14,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                20,
+                0.2
+              ],
+              [
+                19,
+                0.1
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Walk": {
+          "directions": [
+            [
+              0,
+              [
+                1,
+                0.2
+              ],
+              [
+                2,
+                0.2
+              ],
+              [
+                3,
+                0.2
+              ],
+              [
+                2,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                6,
+                0.2
+              ],
+              [
+                7,
+                0.2
+              ],
+              [
+                8,
+                0.2
+              ],
+              [
+                7,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                11,
+                0.2
+              ],
+              [
+                12,
+                0.2
+              ],
+              [
+                13,
+                0.2
+              ],
+              [
+                12,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                16,
+                0.2
+              ],
+              [
+                17,
+                0.2
+              ],
+              [
+                18,
+                0.2
+              ],
+              [
+                17,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        }
+      },
+      "shadow_visible": false,
+      "declared_no_collision": true,
+      "effective_collision": "visible_in_tree",
+      "has_initial_dialogue": true,
+      "dialogue": "Podunk/abbott",
+      "alternatives": [
+        [
+          "zoo_freed",
+          "Podunk/abbott_2"
+        ]
+      ],
+      "return_after_interaction_seconds": 1,
+      "bytes": 696,
+      "sha256": "473825fe3b58a5f1a60593a25fe1c071cdb5ec81d48976f625a15563e951ae4a"
+    },
+    {
+      "binding": {
+        "id": 3,
+        "alias": "mayor_front",
+        "path": "Objects/npc",
+        "texture": "graphics/world/mayor/mayor-front.t3x",
+        "motion": "world/mayor/mayor-front.encmick"
+      },
+      "ir": {
+        "texture": {
+          "source": "Graphics/Character Sprites/Npcs/4dir/podunkmayorfront.png",
+          "size": [
+            190,
+            168
+          ],
+          "columns": 5,
+          "rows": 4,
+          "output": "graphics/world/mayor/mayor-front.t3x"
+        },
+        "actor": {
+          "source_path": "Objects/npc",
+          "position": [
+            8.0,
+            -608.0
+          ],
+          "sprite_position": [
+            8.0,
+            -620.0
+          ],
+          "interact_center": [
+            8.0,
+            -584.0
+          ],
+          "interact_extents": [
+            7.874639987945557,
+            17.008499145507812
+          ],
+          "collision_center": [
+            7.5,
+            -602.0
+          ],
+          "collision_extents": [
+            7.5,
+            3.0
+          ],
+          "sort_y": -608.0,
+          "item": null,
+          "require_flag": null,
+          "consume_flag": null,
+          "ray_length": 16,
+          "frame": 1,
+          "speed": 64.0,
+          "walk_frequency": 2.0,
+          "wander_radius": 44.0,
+          "near_offset": [
+            -0.5,
+            6.0
+          ],
+          "near_extents": [
+            12.5,
+            8.0
+          ],
+          "view_offset": [
+            0.0,
+            9.0
+          ],
+          "view_radius": 72.3395,
+          "ray_offset": [
+            0.0,
+            4.0
+          ],
+          "bark_center": [
+            0,
+            0
+          ],
+          "bark_extents": [
+            0,
+            0
+          ],
+          "bark_path": null,
+          "bark_programme": null,
+          "initial_direction": [
+            0,
+            1
+          ],
+          "rng_lo": 0,
+          "rng_hi": 0,
+          "idle_clip": 0,
+          "idle_clip_count": 4,
+          "walk_clip": 4,
+          "walk_clip_count": 16,
+          "talk_clip": 20,
+          "talk_clip_count": 8
+        },
+        "texts": [],
+        "commands": [],
+        "programmes": [],
+        "clips": [
+          {
+            "anim": 0,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 0,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 2,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 5,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 7,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 10,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 12,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 15,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 17,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 0,
+            "frame": 4,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 0,
+            "frame": 3,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 1,
+            "frame": 9,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 1,
+            "frame": 8,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 2,
+            "frame": 14,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 2,
+            "frame": 13,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 3,
+            "frame": 19,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 3,
+            "frame": 18,
+            "milliseconds": 100
+          }
+        ],
+        "rng": []
+      },
+      "directions": 4,
+      "idle_animation": "Idle",
+      "animation": "Data/Animations/4dir.yaml",
+      "source_animations": {
+        "Idle": {
+          "directions": [
+            [
+              0,
+              [
+                2,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                7,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                12,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                17,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Talk": {
+          "directions": [
+            [
+              0.1,
+              [
+                5,
+                0.2
+              ],
+              [
+                4,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                10,
+                0.2
+              ],
+              [
+                9,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                15,
+                0.2
+              ],
+              [
+                14,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                20,
+                0.2
+              ],
+              [
+                19,
+                0.1
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Walk": {
+          "directions": [
+            [
+              0,
+              [
+                1,
+                0.2
+              ],
+              [
+                2,
+                0.2
+              ],
+              [
+                3,
+                0.2
+              ],
+              [
+                2,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                6,
+                0.2
+              ],
+              [
+                7,
+                0.2
+              ],
+              [
+                8,
+                0.2
+              ],
+              [
+                7,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                11,
+                0.2
+              ],
+              [
+                12,
+                0.2
+              ],
+              [
+                13,
+                0.2
+              ],
+              [
+                12,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                16,
+                0.2
+              ],
+              [
+                17,
+                0.2
+              ],
+              [
+                18,
+                0.2
+              ],
+              [
+                17,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        }
+      },
+      "shadow_visible": false,
+      "declared_no_collision": true,
+      "effective_collision": "visible_in_tree",
+      "has_initial_dialogue": true,
+      "dialogue": "Podunk/mayor_help",
+      "alternatives": [
+        [
+          "pippi_rescued",
+          "Podunk/cutscenes/mayor_pippi_rescue"
+        ],
+        [
+          "pippi_delivered",
+          "Podunk/mayor_report"
+        ],
+        [
+          "zoo_freed",
+          "Podunk/mayor_zoo_freed"
+        ]
+      ],
+      "return_after_interaction_seconds": 0,
+      "bytes": 708,
+      "sha256": "438799fe4542f247162a7a6b9b11abd33b34894c8e7b6a2b5e3a444a0373dff4"
+    },
+    {
+      "binding": {
+        "id": 4,
+        "alias": "mayor_side",
+        "path": "Objects/npc2",
+        "texture": "graphics/world/mayor/mayor-side.t3x",
+        "motion": "world/mayor/mayor-side.encmick"
+      },
+      "ir": {
+        "texture": {
+          "source": "Graphics/Character Sprites/Npcs/4dir/podunkmayorside.png",
+          "size": [
+            190,
+            168
+          ],
+          "columns": 5,
+          "rows": 4,
+          "output": "graphics/world/mayor/mayor-side.t3x"
+        },
+        "actor": {
+          "source_path": "Objects/npc2",
+          "position": [
+            8.0,
+            -608.0
+          ],
+          "sprite_position": [
+            8.0,
+            -622.0
+          ],
+          "interact_center": [
+            7.999999046325684,
+            -612.0
+          ],
+          "interact_extents": [
+            31.49850082397461,
+            12.756400108337402
+          ],
+          "collision_center": [
+            7.5,
+            -602.0
+          ],
+          "collision_extents": [
+            7.5,
+            3.0
+          ],
+          "sort_y": -608.0,
+          "item": null,
+          "require_flag": null,
+          "consume_flag": null,
+          "ray_length": 16,
+          "frame": 1,
+          "speed": 64.0,
+          "walk_frequency": 2.0,
+          "wander_radius": 44.0,
+          "near_offset": [
+            -0.5,
+            6.0
+          ],
+          "near_extents": [
+            12.5,
+            8.0
+          ],
+          "view_offset": [
+            0.0,
+            9.0
+          ],
+          "view_radius": 72.3395,
+          "ray_offset": [
+            0.0,
+            4.0
+          ],
+          "bark_center": [
+            0,
+            0
+          ],
+          "bark_extents": [
+            0,
+            0
+          ],
+          "bark_path": null,
+          "bark_programme": null,
+          "initial_direction": [
+            0,
+            1
+          ],
+          "rng_lo": 0,
+          "rng_hi": 0,
+          "idle_clip": 0,
+          "idle_clip_count": 4,
+          "walk_clip": 4,
+          "walk_clip_count": 16,
+          "talk_clip": 20,
+          "talk_clip_count": 8
+        },
+        "texts": [],
+        "commands": [],
+        "programmes": [],
+        "clips": [
+          {
+            "anim": 0,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 0,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 2,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 5,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 7,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 10,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 12,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 15,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 17,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 0,
+            "frame": 4,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 0,
+            "frame": 3,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 1,
+            "frame": 9,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 1,
+            "frame": 8,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 2,
+            "frame": 14,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 2,
+            "frame": 13,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 3,
+            "frame": 19,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 3,
+            "frame": 18,
+            "milliseconds": 100
+          }
+        ],
+        "rng": []
+      },
+      "directions": 4,
+      "idle_animation": "Idle",
+      "animation": "Data/Animations/4dir.yaml",
+      "source_animations": {
+        "Idle": {
+          "directions": [
+            [
+              0,
+              [
+                2,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                7,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                12,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                17,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Talk": {
+          "directions": [
+            [
+              0.1,
+              [
+                5,
+                0.2
+              ],
+              [
+                4,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                10,
+                0.2
+              ],
+              [
+                9,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                15,
+                0.2
+              ],
+              [
+                14,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                20,
+                0.2
+              ],
+              [
+                19,
+                0.1
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Walk": {
+          "directions": [
+            [
+              0,
+              [
+                1,
+                0.2
+              ],
+              [
+                2,
+                0.2
+              ],
+              [
+                3,
+                0.2
+              ],
+              [
+                2,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                6,
+                0.2
+              ],
+              [
+                7,
+                0.2
+              ],
+              [
+                8,
+                0.2
+              ],
+              [
+                7,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                11,
+                0.2
+              ],
+              [
+                12,
+                0.2
+              ],
+              [
+                13,
+                0.2
+              ],
+              [
+                12,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                16,
+                0.2
+              ],
+              [
+                17,
+                0.2
+              ],
+              [
+                18,
+                0.2
+              ],
+              [
+                17,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        }
+      },
+      "shadow_visible": false,
+      "declared_no_collision": true,
+      "effective_collision": "visible_in_tree",
+      "has_initial_dialogue": true,
+      "dialogue": "Podunk/mayor_side_desk",
+      "alternatives": [
+        [
+          "pippi_delivered",
+          "Podunk/mayor_report"
+        ],
+        [
+          "zoo_freed",
+          "Podunk/mayor_side_desk"
+        ]
+      ],
+      "return_after_interaction_seconds": 0,
+      "bytes": 708,
+      "sha256": "45c81ff897e50f5d67b6df03bb381685e4e49ce97184a4f5590654f5804fc92b"
+    },
+    {
+      "binding": {
+        "id": 5,
+        "alias": "abbott_office",
+        "path": "Objects/npc3",
+        "texture": "graphics/world/mayor/abbott.t3x",
+        "motion": "world/mayor/abbott-office.encmick"
+      },
+      "ir": {
+        "texture": {
+          "source": "Graphics/Character Sprites/Npcs/4dir/abbott.png",
+          "size": [
+            95,
+            132
+          ],
+          "columns": 5,
+          "rows": 4,
+          "output": "graphics/world/mayor/abbott.t3x"
+        },
+        "actor": {
+          "source_path": "Objects/npc3",
+          "position": [
+            8.0,
+            -480.0
+          ],
+          "sprite_position": [
+            8.0,
+            -487.0
+          ],
+          "interact_center": [
+            7.5,
+            -475.0
+          ],
+          "interact_extents": [
+            12.300000190734863,
+            14.0
+          ],
+          "collision_center": [
+            7.5,
+            -474.0
+          ],
+          "collision_extents": [
+            7.5,
+            3.0
+          ],
+          "sort_y": -480.0,
+          "item": null,
+          "require_flag": null,
+          "consume_flag": null,
+          "ray_length": 16,
+          "frame": 0,
+          "speed": 64.0,
+          "walk_frequency": 2.0,
+          "wander_radius": 44.0,
+          "near_offset": [
+            -0.5,
+            6.0
+          ],
+          "near_extents": [
+            12.5,
+            8.0
+          ],
+          "view_offset": [
+            0.0,
+            9.0
+          ],
+          "view_radius": 44.0,
+          "ray_offset": [
+            0.0,
+            4.0
+          ],
+          "bark_center": [
+            0,
+            0
+          ],
+          "bark_extents": [
+            0,
+            0
+          ],
+          "bark_path": null,
+          "bark_programme": null,
+          "initial_direction": [
+            0,
+            1
+          ],
+          "rng_lo": 0,
+          "rng_hi": 0,
+          "idle_clip": 0,
+          "idle_clip_count": 16,
+          "walk_clip": 16,
+          "walk_clip_count": 16,
+          "talk_clip": 32,
+          "talk_clip_count": 8
+        },
+        "texts": [],
+        "commands": [],
+        "programmes": [],
+        "clips": [
+          {
+            "anim": 0,
+            "direction": 0,
+            "frame": 0,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 0,
+            "frame": 2,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 1,
+            "frame": 5,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 1,
+            "frame": 7,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 2,
+            "frame": 10,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 2,
+            "frame": 12,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 3,
+            "frame": 15,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 3,
+            "frame": 17,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 0,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 2,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 5,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 7,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 6,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 10,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 12,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 15,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 17,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 16,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 0,
+            "frame": 4,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 0,
+            "frame": 3,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 1,
+            "frame": 9,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 1,
+            "frame": 8,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 2,
+            "frame": 14,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 2,
+            "frame": 13,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 3,
+            "frame": 19,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 3,
+            "frame": 18,
+            "milliseconds": 100
+          }
+        ],
+        "rng": []
+      },
+      "directions": 4,
+      "idle_animation": "Walk",
+      "animation": "Data/Animations/4dir.yaml",
+      "source_animations": {
+        "Idle": {
+          "directions": [
+            [
+              0,
+              [
+                2,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                7,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                12,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                17,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Talk": {
+          "directions": [
+            [
+              0.1,
+              [
+                5,
+                0.2
+              ],
+              [
+                4,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                10,
+                0.2
+              ],
+              [
+                9,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                15,
+                0.2
+              ],
+              [
+                14,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                20,
+                0.2
+              ],
+              [
+                19,
+                0.1
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Walk": {
+          "directions": [
+            [
+              0,
+              [
+                1,
+                0.2
+              ],
+              [
+                2,
+                0.2
+              ],
+              [
+                3,
+                0.2
+              ],
+              [
+                2,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                6,
+                0.2
+              ],
+              [
+                7,
+                0.2
+              ],
+              [
+                8,
+                0.2
+              ],
+              [
+                7,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                11,
+                0.2
+              ],
+              [
+                12,
+                0.2
+              ],
+              [
+                13,
+                0.2
+              ],
+              [
+                12,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                16,
+                0.2
+              ],
+              [
+                17,
+                0.2
+              ],
+              [
+                18,
+                0.2
+              ],
+              [
+                17,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        }
+      },
+      "shadow_visible": true,
+      "declared_no_collision": false,
+      "effective_collision": "visible_in_tree",
+      "has_initial_dialogue": false,
+      "dialogue": "",
+      "alternatives": [],
+      "return_after_interaction_seconds": 1,
+      "bytes": 800,
+      "sha256": "d7eda29d80ec450ca2bff6d19c97bf64f831ba14d570d6a0bd6ccb4a33db34ce"
+    },
+    {
+      "binding": {
+        "id": 6,
+        "alias": "pippi",
+        "path": "Objects/npc4",
+        "texture": "graphics/world/mayor/pippi.t3x",
+        "motion": "world/mayor/pippi.encmick"
+      },
+      "ir": {
+        "texture": {
+          "source": "Graphics/Character Sprites/Pippi/main.png",
+          "size": [
+            250,
+            560
+          ],
+          "columns": 10,
+          "rows": 20,
+          "output": "graphics/world/mayor/pippi.t3x"
+        },
+        "actor": {
+          "source_path": "Objects/npc4",
+          "position": [
+            -216.0,
+            -600.0
+          ],
+          "sprite_position": [
+            -216.0,
+            -604.0
+          ],
+          "interact_center": [
+            -216.5,
+            -595.0
+          ],
+          "interact_extents": [
+            12.300000190734863,
+            14.0
+          ],
+          "collision_center": [
+            -216.5,
+            -594.0
+          ],
+          "collision_extents": [
+            7.5,
+            3.0
+          ],
+          "sort_y": -600.0,
+          "item": null,
+          "require_flag": null,
+          "consume_flag": null,
+          "ray_length": 16,
+          "frame": 1,
+          "speed": 64.0,
+          "walk_frequency": 2.0,
+          "wander_radius": 44.0,
+          "near_offset": [
+            -0.5,
+            6.0
+          ],
+          "near_extents": [
+            12.5,
+            8.0
+          ],
+          "view_offset": [
+            0.0,
+            9.0
+          ],
+          "view_radius": 44.0,
+          "ray_offset": [
+            0.0,
+            4.0
+          ],
+          "bark_center": [
+            0,
+            0
+          ],
+          "bark_extents": [
+            0,
+            0
+          ],
+          "bark_path": null,
+          "bark_programme": null,
+          "initial_direction": [
+            0,
+            1
+          ],
+          "rng_lo": 0,
+          "rng_hi": 0,
+          "idle_clip": 0,
+          "idle_clip_count": 8,
+          "walk_clip": 8,
+          "walk_clip_count": 32,
+          "talk_clip": 40,
+          "talk_clip_count": 16
+        },
+        "texts": [],
+        "commands": [],
+        "programmes": [],
+        "clips": [
+          {
+            "anim": 0,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 1,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 2,
+            "frame": 21,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 3,
+            "frame": 31,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 4,
+            "frame": 41,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 5,
+            "frame": 51,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 6,
+            "frame": 61,
+            "milliseconds": 200
+          },
+          {
+            "anim": 0,
+            "direction": 7,
+            "frame": 71,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 0,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 2,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 0,
+            "frame": 1,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 10,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 12,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 1,
+            "frame": 11,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 20,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 21,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 22,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 2,
+            "frame": 21,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 30,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 31,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 32,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 3,
+            "frame": 31,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 4,
+            "frame": 40,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 4,
+            "frame": 41,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 4,
+            "frame": 42,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 4,
+            "frame": 41,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 5,
+            "frame": 50,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 5,
+            "frame": 51,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 5,
+            "frame": 52,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 5,
+            "frame": 51,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 6,
+            "frame": 60,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 6,
+            "frame": 61,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 6,
+            "frame": 62,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 6,
+            "frame": 61,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 7,
+            "frame": 70,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 7,
+            "frame": 71,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 7,
+            "frame": 72,
+            "milliseconds": 200
+          },
+          {
+            "anim": 1,
+            "direction": 7,
+            "frame": 71,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 0,
+            "frame": 81,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 0,
+            "frame": 80,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 1,
+            "frame": 83,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 1,
+            "frame": 82,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 2,
+            "frame": 85,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 2,
+            "frame": 84,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 3,
+            "frame": 87,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 3,
+            "frame": 86,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 4,
+            "frame": 91,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 4,
+            "frame": 90,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 5,
+            "frame": 93,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 5,
+            "frame": 92,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 6,
+            "frame": 95,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 6,
+            "frame": 94,
+            "milliseconds": 100
+          },
+          {
+            "anim": 2,
+            "direction": 7,
+            "frame": 97,
+            "milliseconds": 200
+          },
+          {
+            "anim": 2,
+            "direction": 7,
+            "frame": 96,
+            "milliseconds": 100
+          }
+        ],
+        "rng": []
+      },
+      "directions": 8,
+      "idle_animation": "Idle",
+      "animation": "Data/Animations/PartyMember.yaml",
+      "source_animations": {
+        "Blink": {
+          "directions": [
+            [
+              0,
+              [
+                101,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                111,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                121,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                131,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                141,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                151,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                161,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                171,
+                0.1
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Crouch": {
+          "directions": [
+            [
+              0,
+              [
+                4,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                14,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                24,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                34,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                44,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                54,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                64,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                74,
+                0.1
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Fainted Idle": {
+          "directions": [
+            [
+              0,
+              [
+                103,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                113,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                123,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                133,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                143,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                153,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                163,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                173,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Fainted Walk": {
+          "directions": [
+            [
+              0,
+              [
+                102,
+                0.2
+              ],
+              [
+                103,
+                0.2
+              ],
+              [
+                104,
+                0.2
+              ],
+              [
+                103,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                112,
+                0.2
+              ],
+              [
+                113,
+                0.2
+              ],
+              [
+                114,
+                0.2
+              ],
+              [
+                113,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                122,
+                0.2
+              ],
+              [
+                123,
+                0.2
+              ],
+              [
+                124,
+                0.2
+              ],
+              [
+                123,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                132,
+                0.2
+              ],
+              [
+                133,
+                0.2
+              ],
+              [
+                134,
+                0.2
+              ],
+              [
+                133,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                142,
+                0.2
+              ],
+              [
+                143,
+                0.2
+              ],
+              [
+                144,
+                0.2
+              ],
+              [
+                143,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                152,
+                0.2
+              ],
+              [
+                153,
+                0.2
+              ],
+              [
+                154,
+                0.2
+              ],
+              [
+                153,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                162,
+                0.2
+              ],
+              [
+                163,
+                0.2
+              ],
+              [
+                164,
+                0.2
+              ],
+              [
+                163,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                172,
+                0.2
+              ],
+              [
+                173,
+                0.2
+              ],
+              [
+                174,
+                0.2
+              ],
+              [
+                173,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Idle": {
+          "directions": [
+            [
+              0,
+              [
+                2,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                12,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                22,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                32,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                42,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                52,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                62,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                72,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Jump": {
+          "directions": [
+            [
+              0,
+              [
+                181,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                182,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                183,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                184,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                191,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                192,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                193,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                194,
+                0.1
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Run": {
+          "directions": [
+            [
+              0,
+              [
+                5,
+                0.083
+              ],
+              [
+                6,
+                0.083
+              ],
+              [
+                7,
+                0.083
+              ],
+              [
+                8,
+                0.083
+              ],
+              [
+                9,
+                0.083
+              ],
+              [
+                10,
+                0.083
+              ]
+            ],
+            [
+              0,
+              [
+                15,
+                0.083
+              ],
+              [
+                16,
+                0.083
+              ],
+              [
+                17,
+                0.083
+              ],
+              [
+                18,
+                0.083
+              ],
+              [
+                19,
+                0.083
+              ],
+              [
+                20,
+                0.083
+              ]
+            ],
+            [
+              0,
+              [
+                25,
+                0.083
+              ],
+              [
+                26,
+                0.083
+              ],
+              [
+                27,
+                0.083
+              ],
+              [
+                28,
+                0.083
+              ],
+              [
+                29,
+                0.083
+              ],
+              [
+                30,
+                0.083
+              ]
+            ],
+            [
+              0,
+              [
+                35,
+                0.083
+              ],
+              [
+                36,
+                0.083
+              ],
+              [
+                37,
+                0.083
+              ],
+              [
+                38,
+                0.083
+              ],
+              [
+                39,
+                0.083
+              ],
+              [
+                40,
+                0.083
+              ]
+            ],
+            [
+              0,
+              [
+                45,
+                0.083
+              ],
+              [
+                46,
+                0.083
+              ],
+              [
+                47,
+                0.083
+              ],
+              [
+                48,
+                0.083
+              ],
+              [
+                49,
+                0.083
+              ],
+              [
+                50,
+                0.083
+              ]
+            ],
+            [
+              0,
+              [
+                55,
+                0.083
+              ],
+              [
+                56,
+                0.083
+              ],
+              [
+                57,
+                0.083
+              ],
+              [
+                58,
+                0.083
+              ],
+              [
+                59,
+                0.083
+              ],
+              [
+                60,
+                0.083
+              ]
+            ],
+            [
+              0,
+              [
+                65,
+                0.083
+              ],
+              [
+                66,
+                0.083
+              ],
+              [
+                67,
+                0.083
+              ],
+              [
+                68,
+                0.083
+              ],
+              [
+                69,
+                0.083
+              ],
+              [
+                70,
+                0.083
+              ]
+            ],
+            [
+              0,
+              [
+                75,
+                0.083
+              ],
+              [
+                76,
+                0.083
+              ],
+              [
+                77,
+                0.083
+              ],
+              [
+                78,
+                0.083
+              ],
+              [
+                79,
+                0.083
+              ],
+              [
+                80,
+                0.083
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Soot": {
+          "directions": [
+            [
+              0,
+              [
+                100,
+                0.1
+              ]
+            ]
+          ],
+          "type": 1
+        },
+        "Down": {
+          "directions": [
+            [
+              0,
+              [
+                196,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                197,
+                0.1
+              ]
+            ]
+          ],
+          "type": 1
+        },
+        "LookDown": {
+          "directions": [
+            [
+              0,
+              [
+                105,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                115,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                125,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                135,
+                0.1
+              ]
+            ]
+          ],
+          "type": 1
+        },
+        "LookLeft": {
+          "directions": [
+            [
+              0,
+              [
+                106,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                116,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                126,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                136,
+                0.1
+              ]
+            ]
+          ],
+          "type": 1
+        },
+        "LookRight": {
+          "directions": [
+            [
+              0,
+              [
+                107,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                117,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                127,
+                0.1
+              ]
+            ],
+            [
+              0,
+              [
+                137,
+                0.1
+              ]
+            ]
+          ],
+          "type": 1
+        },
+        "Laugh": {
+          "directions": [
+            [
+              0,
+              [
+                108,
+                0.15
+              ],
+              [
+                109,
+                0.15
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "GetUp": {
+          "directions": [
+            [
+              0,
+              [
+                4,
+                0.5
+              ],
+              [
+                2,
+                0.5
+              ]
+            ],
+            [
+              0,
+              [
+                14,
+                0.5
+              ],
+              [
+                12,
+                0.5
+              ]
+            ],
+            [
+              0,
+              [
+                24,
+                0.5
+              ],
+              [
+                22,
+                0.5
+              ]
+            ],
+            [
+              0,
+              [
+                34,
+                0.5
+              ],
+              [
+                32,
+                0.5
+              ]
+            ],
+            [
+              0,
+              [
+                44,
+                0.5
+              ],
+              [
+                42,
+                0.5
+              ]
+            ],
+            [
+              0,
+              [
+                54,
+                0.5
+              ],
+              [
+                52,
+                0.5
+              ]
+            ],
+            [
+              0,
+              [
+                64,
+                0.5
+              ],
+              [
+                62,
+                0.5
+              ]
+            ],
+            [
+              0,
+              [
+                74,
+                0.5
+              ],
+              [
+                72,
+                0.5
+              ]
+            ]
+          ],
+          "type": 1
+        },
+        "Talk": {
+          "directions": [
+            [
+              0.1,
+              [
+                82,
+                0.2
+              ],
+              [
+                81,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                84,
+                0.2
+              ],
+              [
+                83,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                86,
+                0.2
+              ],
+              [
+                85,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                88,
+                0.2
+              ],
+              [
+                87,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                92,
+                0.2
+              ],
+              [
+                91,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                94,
+                0.2
+              ],
+              [
+                93,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                96,
+                0.2
+              ],
+              [
+                95,
+                0.1
+              ]
+            ],
+            [
+              0.1,
+              [
+                98,
+                0.2
+              ],
+              [
+                97,
+                0.1
+              ]
+            ]
+          ],
+          "type": 0
+        },
+        "Walk": {
+          "directions": [
+            [
+              0,
+              [
+                1,
+                0.2
+              ],
+              [
+                2,
+                0.2
+              ],
+              [
+                3,
+                0.2
+              ],
+              [
+                2,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                11,
+                0.2
+              ],
+              [
+                12,
+                0.2
+              ],
+              [
+                13,
+                0.2
+              ],
+              [
+                12,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                21,
+                0.2
+              ],
+              [
+                22,
+                0.2
+              ],
+              [
+                23,
+                0.2
+              ],
+              [
+                22,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                31,
+                0.2
+              ],
+              [
+                32,
+                0.2
+              ],
+              [
+                33,
+                0.2
+              ],
+              [
+                32,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                41,
+                0.2
+              ],
+              [
+                42,
+                0.2
+              ],
+              [
+                43,
+                0.2
+              ],
+              [
+                42,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                51,
+                0.2
+              ],
+              [
+                52,
+                0.2
+              ],
+              [
+                53,
+                0.2
+              ],
+              [
+                52,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                61,
+                0.2
+              ],
+              [
+                62,
+                0.2
+              ],
+              [
+                63,
+                0.2
+              ],
+              [
+                62,
+                0.2
+              ]
+            ],
+            [
+              0,
+              [
+                71,
+                0.2
+              ],
+              [
+                72,
+                0.2
+              ],
+              [
+                73,
+                0.2
+              ],
+              [
+                72,
+                0.2
+              ]
+            ]
+          ],
+          "type": 0
+        }
+      },
+      "shadow_visible": true,
+      "declared_no_collision": false,
+      "effective_collision": "visible_in_tree",
+      "has_initial_dialogue": true,
+      "dialogue": "Podunk/pippi_town_hall",
+      "alternatives": [],
+      "return_after_interaction_seconds": 0,
+      "bytes": 928,
+      "sha256": "b8f8939fcaf7615dcd76d5a4be5fe100c3c8edd272755ff25b8c81e4770e5948"
+    }
+  ],
+  "interaction_policy": true,
+  "release_staged": false,
+  "unimplemented": [
+    "Dialogue selection and choices",
+    "Complete Scene Room and lifecycle",
+    "Source NPC dialogue animation integration"
+  ]
+}

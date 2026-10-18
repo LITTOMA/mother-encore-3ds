@@ -1,0 +1,53 @@
+{
+  "format": "ENCMIK01",
+  "new_capability": 7,
+  "header_policy": {
+    "offset_28": "feature bits: wander1, stare2, animated-idle4, dialogue8; this capability rejects unreviewed wandering",
+    "offset_56": "direction count4 or8",
+    "offset_60": "source return delay in milliseconds,1..30000"
+  },
+  "legacy_versions": [
+    3,
+    4,
+    6
+  ],
+  "withdrawn_5_rejected": true,
+  "game_save_format_changed": false,
+  "shipping_resources_changed": false,
+  "actual_source_timer": "Scripts/Main/npc.gd source-derived1 second",
+  "gcc9_asan_ubsan": {
+    "npc_policy": 6080,
+    "native_facing_rows_compared": 1260,
+    "unadmitted_wandering_rows": 180,
+    "field_interaction_policy": 2419,
+    "field_interaction_legacy": 2041,
+    "mick_source_waits": {
+      "checks": 49382,
+      "waits": 26
+    },
+    "legacy_mick_test_exit": 0
+  },
+  "python_methods": 13,
+  "scope": [
+    "Source return callbacks keep independent timers, float32 subtraction, callback-time looking/interaction gates",
+    "Field idle clocks run during player pause and Actor replacement",
+    "No-dialogue source NPC skips dialogue admission while retaining its body",
+    "Actual source Podunk help/repeat with policy fixture closes and restores facing after leaving view"
+  ],
+  "not_claimed": [
+    "Mayor scene playable",
+    "Source NPC dialogue sprite-state integration",
+    "Whole original game",
+    "Emulator validation of new capability7",
+    "Hardware"
+  ],
+  "source_sha256": {
+    "runtime/mick_treats.cpp": "e42efc59a6f74ff30ee40b35bf61d4b124536ffde708e127386495085b2a9661",
+    "runtime/field_scene.cpp": "3bb4600c724275a74034ac1d8c6d69c2a23d23e2401e57e72216328c80156798",
+    "include/encore/mick_treats.hpp": "d03de5456124143d1653d0876855d3e68bfe1ee35e1649c484e6f46b43d1be86",
+    "include/encore/field_scene.hpp": "4d80ed196b18cb6ec3a434ef5f67de17b51b2030b881481d5f8a4e2ad1920dce",
+    "tools/field_npc_motion.py": "ea42d3b1f97591748554fd136ce6682a0d2043942ec2d680b8ac8b49b4939177",
+    "tools/field_scene_npcs.py": "f24c523c225f4a8a465081775c91a52cffc60dd518152c5fcf44215efae41e9c",
+    "tests/npc_interaction_policy_tests.cpp": "73f5b56b1384702ab840937a20f0603baa08866800dbf8b34619ec0a2d8f02b8"
+  }
+}

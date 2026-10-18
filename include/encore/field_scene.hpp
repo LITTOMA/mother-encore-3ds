@@ -149,6 +149,7 @@ private:
     std::vector<bool>collision_layers_,collision_bodies_;bool collision_ready_=false;
     StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;
     MickRuntime mick_;bool mick_bound_=false;
+    uint32_t interaction_actor_=UINT32_MAX;
     struct Npc {uint32_t actor=0,item=0;MickRuntime motion;StaticMotionSolver solver;};
     std::vector<std::unique_ptr<Npc>> npcs_;
     Vec2 viewport_{400,240};

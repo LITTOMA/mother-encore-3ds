@@ -327,7 +327,7 @@ bool FieldScene::try_interaction(bool accept,std::string& error){
     if(world.stage()!=OpeningStage::Walking){error.clear();return true;}
     if(!try_mick(accept,error))return false;
     if(!accept||phase_!=FieldPhase::Walking||world.house_paused()||world.player().crouch)return true;
-    for(const auto& ptr:npcs_){auto& n=*ptr;if(!actor_visible(n.actor))continue;
+    for(const auto& ptr:npcs_){auto& n=*ptr;if(!actor_visible(n.actor)||!n.motion.view().has_dialogue())continue;
         const auto a=n.motion.view().actor();const auto p=world.player();const auto at=actor_pose(n.actor).position;
         const Vec2 center{at.x+a.interact_center.x-a.position.x,at.y+a.interact_center.y-a.position.y};float distance=0;
         if(!ray_rect(p.position,normalized(p.direction),a.ray_length,center,a.interact_extents,distance)&&!overlaps(center,a.interact_extents,p.position))continue;
@@ -341,6 +341,10 @@ bool FieldScene::try_interaction(bool accept,std::string& error){
             if(!world.sync_unbound_actor_pose(n.actor,at,n.motion.facing()))return fail("Field interaction pose handoff rejected");
             if((selected.turns&1)&&!world.face_interaction(at))return fail("Field interaction player turn rejected");
             if(!world.begin_house_program(selected.programme))return fail("Field interaction programme start rejected");
+            if(n.motion.view().interaction_policy()){
+                if(!n.motion.begin_interaction(error))return fail(error);
+                interaction_actor_=n.actor;
+            }
             error.clear();return true;
         }
         if(!world.pause_for_house())return fail("Field NPC interaction pause rejected");
@@ -429,7 +433,12 @@ bool FieldScene::before_physics(WalkInput& input){
             return fail(why.empty()?"Field Mick simulation rejected":why.c_str());
         apply_mick_body();
     }
-    for(uint32_t i=0;i<npcs_.size();++i){auto& n=*npcs_[i];if(!actor_visible(n.actor))continue;std::string why;
+    for(uint32_t i=0;i<npcs_.size();++i){auto& n=*npcs_[i];std::string why;
+        if(n.motion.view().interaction_policy()){
+            const auto a=n.motion.view().actor();const auto p=n.motion.position();
+            if(!n.motion.observe_player(circle_overlaps({p.x+a.view_offset.x,p.y+a.view_offset.y},a.view_radius),why))return fail(why);
+        }
+        if(!actor_visible(n.actor))continue;
         if(world.actor_restore_requested(n.actor)){
             const auto pose=world.actor(n.actor);
             if(!n.motion.restore_motion_pose(pose.position,pose.direction,why)||!world.complete_actor_restore(n.actor,world.actor_binding_revision(n.actor)))return fail("Field NPC restoration rejected");
@@ -528,6 +537,15 @@ bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
             if(!mick_.advance_text(why))return fail(why.empty()?"Field Mick text advance rejected":why.c_str());
         }
     }
+    if(interaction_actor_!=UINT32_MAX&&world.stage()==OpeningStage::Walking&&!world.house_paused()){
+        bool found=false;std::string why;
+        for(auto& n:npcs_)if(n->actor==interaction_actor_){found=true;if(!n->motion.end_interaction(why))return fail(why);break;}
+        if(!found)return fail("Field interaction owner missing at completion");
+        interaction_actor_=UINT32_MAX;
+    }
+    // SceneTreeTimers run during player/menu pause and while an Actor hides its
+    // replaced NPC. They are distinct from the NPC physics processing toggle.
+    for(auto& n:npcs_){std::string why;if(!n->motion.idle_frame(delta,why))return fail(why);}
     const bool paused=world.house_paused();
     for(uint32_t i=0;i<openables_.size();++i){auto& s=openables_[i];if(s.timer<0)continue;s.timer-=delta;
         if(s.timer>0)continue;s.timer=-1;

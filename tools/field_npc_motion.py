@@ -40,3 +40,35 @@ def parse(blob):
         require(all(c[0]==role and c[2]<frames and 0<c[3]<=10000 for c in selected),'NPC eight-direction clip')
         require([c[1]for c in selected]==sorted(c[1]for c in selected),'NPC eight-direction clip order')
     return rows
+
+
+def encode_policy(ir,owner,features,*,directions,has_dialogue,return_milliseconds):
+    """Capability 7: admitted stationary NPC interaction and return policy."""
+    require(type(directions)is int and directions in(4,8)and type(has_dialogue)is bool,'NPC interaction direction/dialogue policy')
+    require(type(return_milliseconds)is int and 1<=return_milliseconds<=30000,'NPC return duration policy')
+    require(type(features)is int and 0<=features<=7 and not(features&1),'NPC interaction wandering is outside reviewed scope')
+    rows=m.parse(m.lower(ir,motion_owner=owner,motion_flags=features),allow_motion=True)
+    blob=bytearray(pack_container(m.MAGIC,owner,[rows[n]for n in m.SECTIONS],m.STRIDES,m.LIMIT,capability=7))
+    struct.pack_into('<I',blob,28,features|int(has_dialogue)<<3)
+    struct.pack_into('<2I',blob,56,directions,return_milliseconds)
+    struct.pack_into('<I',blob,16,zlib.crc32(blob[32:]))
+    parse_policy(blob)
+    return bytes(blob)
+
+
+def parse_policy(blob):
+    require(isinstance(blob,(bytes,bytearray))and 64<=len(blob)<=m.LIMIT,'NPC interaction resource size')
+    capability=struct.unpack_from('<I',blob,20)[0];features=struct.unpack_from('<I',blob,28)[0];directions,delay=struct.unpack_from('<2I',blob,56)
+    require(capability==7 and features<=15 and not(features&1)and directions in(4,8)and 1<=delay<=30000,'NPC interaction header/policy')
+    require(zlib.crc32(blob[32:])==struct.unpack_from('<I',blob,16)[0],'NPC interaction checksum')
+    common=bytearray(blob);struct.pack_into('<I',common,20,4);struct.pack_into('<I',common,28,features&7);struct.pack_into('<2I',common,56,0,0)
+    struct.pack_into('<I',common,16,zlib.crc32(common[32:]))
+    rows=m.parse(common,allow_motion=True)
+    texture=struct.unpack('<I4H',rows['Texture']);frames=texture[3]*texture[4]
+    actor=rows['Actor'];clips=[struct.unpack_from('<4H',rows['Clips'],i)for i in range(0,len(rows['Clips']),8)];spans=struct.unpack_from('<6I',actor,172)
+    require(spans[0]==0 and spans[2]==spans[1]and spans[4]==spans[2]+spans[3]and spans[4]+spans[5]==len(clips),'NPC interaction clip ownership')
+    for role in range(3):
+        first,count=spans[role*2:role*2+2];selected=clips[first:first+count]
+        require(count>0 and {c[1]for c in selected}==set(range(directions))and [c[1]for c in selected]==sorted(c[1]for c in selected),'NPC interaction direction coverage/order')
+        require(all(c[0]==role and c[2]<frames and 0<c[3]<=10000 for c in selected),'NPC interaction clip')
+    return rows

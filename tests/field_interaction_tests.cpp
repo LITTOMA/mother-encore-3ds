@@ -28,9 +28,9 @@ void put(std::vector<uint8_t>&b,size_t at,uint32_t value){for(unsigned i=0;i<4;+
 void sign(std::vector<uint8_t>&b){put(b,16,encore::crc32(b.data()+32,b.size()-32));}
 }
 int main(int argc,char**argv){
- CHECK(argc==2);const std::string root=argv[1];RoomData room;FieldMapData map;WorldLinksData links;ItemData items;FieldStoryData story,legacy;MickData npc;HouseData house;BattleData font;LocaleCatalog catalog;NewGameSetupData names;NativeSessionData session;
+ CHECK(argc==2||argc==3);const std::string root=argv[1];RoomData room;FieldMapData map;WorldLinksData links;ItemData items;FieldStoryData story,legacy;MickData npc;HouseData house;BattleData font;LocaleCatalog catalog;NewGameSetupData names;NativeSessionData session;
  auto path=[&](const char*p){return root+"/"+p;};
- CHECK(room.load_file(path("world/podunk/podunk.encroom").c_str(),error));CHECK(map.load_file(path("world/podunk/podunk.encmap").c_str(),error));CHECK(links.load_file(path("world/world.enclinks").c_str(),error));CHECK(items.load_file(path("ui/opening.encitems").c_str(),error));CHECK(story.load_file(path("world/podunk/story.encstory").c_str(),error));CHECK(npc.load_file(path("world/podunk/npcs/lindgren.encmick").c_str(),error));CHECK(house.load_file(path("world/house/opening.enchouse").c_str(),error));CHECK(font.load_file(path("battle/lamp/opening.encbattle").c_str(),error));CHECK(catalog.load_file(path("localization/localization.enclocale").c_str(),error));CHECK(names.load_file(path("ui/opening.encnewgame").c_str(),error));CHECK(session.load_file(path("session/opening.encsession").c_str(),error));
+ CHECK(room.load_file(path("world/podunk/podunk.encroom").c_str(),error));CHECK(map.load_file(path("world/podunk/podunk.encmap").c_str(),error));CHECK(links.load_file(path("world/world.enclinks").c_str(),error));CHECK(items.load_file(path("ui/opening.encitems").c_str(),error));CHECK(story.load_file(path("world/podunk/story.encstory").c_str(),error));CHECK(npc.load_file(argc==3?argv[2]:path("world/podunk/npcs/lindgren.encmick").c_str(),error));CHECK(house.load_file(path("world/house/opening.enchouse").c_str(),error));CHECK(font.load_file(path("battle/lamp/opening.encbattle").c_str(),error));CHECK(catalog.load_file(path("localization/localization.enclocale").c_str(),error));CHECK(names.load_file(path("ui/opening.encnewgame").c_str(),error));CHECK(session.load_file(path("session/opening.encsession").c_str(),error));
  CHECK(legacy.load_file("tests/fixtures/field_story_v1.encstory",error));CHECK(legacy.view().interaction_count()==0&&legacy.view().programme_count()==2);CHECK(legacy.view().bind(room.view(),map.view(),items.view(),error));
  const auto view=story.view();CHECK(view.interaction_count()==2);CHECK(view.bind(room.view(),map.view(),items.view(),error));
  std::vector<uint8_t>bytes;CHECK(encore::read_file(path("world/podunk/story.encstory").c_str(),bytes,128*1024,error));const auto at=get(bytes,64+5*16+4);
@@ -70,8 +70,17 @@ int main(int argc,char**argv){
  for(unsigned round=0;round<2;++round){const bool started=field.try_interaction(true,error);if(!started)std::fprintf(stderr,"Interaction: %s / %s\n",field.error().c_str(),field.world.error());CHECK(started);CHECK(host.selected==uint32_t(round?3:2));CHECK(field.world.stage()==OpeningStage::ScriptRunning);unsigned lines=0;uint32_t previous=UINT32_MAX;
   for(unsigned tick=0;tick<2400&&field.world.stage()!=OpeningStage::Walking;++tick){WalkInput input;CHECK(field.before_physics(input));CHECK(field.world.advance(input));CHECK(field.after_physics());CHECK(field.world.idle_frame(1.0/60));const auto id=field.world.pending_dialogue_id();CHECK(field.world.set_story_talking(id!=UINT32_MAX));if(id!=UINT32_MAX&&id!=previous){previous=id;++lines;CHECK(view.dialogue(id,"en").id==id);for(unsigned idle=0;idle<20;++idle)CHECK(field.world.idle_frame(1.0/60));CHECK(field.world.pending_dialogue_id()==id);}
    if(field.world.story_input_allowed())CHECK(field.world.finish_story_dialogue());
+   CHECK(field.idle_frame(1.0/60,false));
   }
   CHECK(lines==unsigned(round?1:5));CHECK(field.world.stage()==OpeningStage::Walking&&field.world.story_flag("pippis_mom_help"));WalkInput input;CHECK(field.before_physics(input));CHECK(!field.world.actor_bound(1));CHECK(field.actor_pose(1).position.x==640&&field.actor_pose(1).position.y==272);CHECK(field.world.warp_same_scene({640,292},{0,-1}));
+ }
+ if(argc==3){
+  CHECK(npc.view().interaction_policy());
+  auto step=[&](){WalkInput input;CHECK(field.before_physics(input));CHECK(field.world.advance(input));CHECK(field.after_physics());CHECK(field.world.idle_frame(1.0/60));CHECK(field.idle_frame(1.0/60,false));CHECK(field.world.end_scene_frame());};
+  CHECK(field.world.warp_same_scene({660,272},{-1,0}));step();CHECK(field.actor_pose(1).direction.x>0&&field.actor_pose(1).direction.y==0);
+  CHECK(field.world.warp_same_scene({800,272},{0,1}));
+  for(unsigned i=0;i<60;++i)step();CHECK(field.actor_pose(1).direction.x>0&&field.actor_pose(1).direction.y==0);
+  step();CHECK(field.actor_pose(1).direction.x==0&&field.actor_pose(1).direction.y==1);
  }
  std::printf("Field interaction: %u checks; source help/repeat, rich WAIT/color/delay, old capability, malformed admission and actor restoration; host only\n",checks);
 }

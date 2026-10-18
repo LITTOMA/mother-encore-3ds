@@ -100,6 +100,22 @@ def build(path=ROOT/'content/mayor-npcs.json'):
     return p,records,dict(sorted(ex.sources.items()))
 
 
+def interaction_blob(row):
+    # Durations and gates are source data, not native defaults or tuning.
+    from tools.reference_movement import extract
+    from tools.run_npc_return_reference import validate_review
+    review=json.loads((ROOT/'compatibility/reviews/npc-return-v0410.json').read_bytes());ex=Extractor(ROOT);validate_review(review,ex.lock['commit'])
+    functions,hashes=extract(ex.data(review['source']),review['source_sha256'],review['symbols']);require(hashes==review['function_sha256'],'NPC return source methods changed')
+    values=re.findall(r'get_tree[(][)].create_timer[(]([0-9.]+)[)]',functions)
+    require(len(values)==2 and len(set(values))==1,'NPC return timer source durations differ')
+    milliseconds=float(values[0])*1000;require(milliseconds==int(milliseconds),'NPC return duration is not exact milliseconds')
+    choices=[row['dialogue']]+[value for group in row['alternatives']for value in group[1:]]
+    require(all(bool(value)==row['has_initial_dialogue']for value in choices),'Dynamic empty NPC dialogue is outside reviewed scope')
+    require(row['return_after_interaction_seconds']==(0 if int.from_bytes(row['blob'][28:32],'little')&2 else float(values[0])),'NPC return source policy differs')
+    features=int.from_bytes(row['blob'][28:32],'little')&7
+    return field_npc_motion.encode_policy(row['ir'],row['binding']['id'],features,directions=row['directions'],has_dialogue=row['has_initial_dialogue'],return_milliseconds=int(milliseconds))
+
+
 def add_room(sections,strings,S,house,resource,*,asset_root,recipe=ROOT/'content/mayor-npcs.json'):
     p,records,sources=build(recipe);hs=house['sections']
     template=next(row for row in hs['ActorProfile']if row['execution_kind']==3 and row['direction_count']==4)
@@ -128,7 +144,7 @@ def target(root,relative):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--recipe',type=Path,default=ROOT/'content/mayor-npcs.json');parser.add_argument('--out',type=Path,required=True);parser.add_argument('--tex3ds',type=Path);parser.add_argument('--tex3ds-command');a=parser.parse_args();out=a.out.resolve()
+    parser=argparse.ArgumentParser();parser.add_argument('--recipe',type=Path,default=ROOT/'content/mayor-npcs.json');parser.add_argument('--out',type=Path,required=True);parser.add_argument('--interaction-policy',action='store_true');parser.add_argument('--tex3ds',type=Path);parser.add_argument('--tex3ds-command');a=parser.parse_args();out=a.out.resolve()
     require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','NPC candidates must remain inside build')
     p,records,sources=build(a.recipe);out.mkdir(parents=True,exist_ok=True);report=[];textures={}
     require(not a.tex3ds_command or a.tex3ds is not None,'NPC texture command needs a fingerprinted real tool')
@@ -146,9 +162,10 @@ def main():
                 if temporary.exists():temporary.unlink()
             textures[relative]={'source':image['source'],'source_sha256':hashlib.sha256(ex_path.read_bytes()).hexdigest(),'bytes':file.stat().st_size,'sha256':hashlib.sha256(file.read_bytes()).hexdigest()}
     for row in records:
-        file=target(out,row['binding']['motion']);file.parent.mkdir(parents=True,exist_ok=True);file.write_bytes(row['blob'])
-        report.append({k:v for k,v in row.items()if k!='blob'}|{'bytes':len(row['blob']),'sha256':hashlib.sha256(row['blob']).hexdigest()})
-    (out/'candidate.json').write_text(json.dumps(dict(schema=1,source_commit=PIN,producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),sources=sources,tex3ds_sha256=hashlib.sha256(a.tex3ds.read_bytes()).hexdigest()if a.tex3ds else None,textures=textures,dependencies={str(v):hashlib.sha256((ROOT/v).read_bytes()).hexdigest()for v in [p['field_recipe'],'content/native-house.json','tools/field_npc_motion.py','tools/mick_treats.py','tools/podunk_field.py']},actors=report,release_staged=False,unimplemented=['Dialogue selection and choices','Return timer integration','PartyMember replacement Actor profile','Scene Room and lifecycle','Other source idle animation transitions']),ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+        blob=interaction_blob(row)if a.interaction_policy else row['blob']
+        file=target(out,row['binding']['motion']);file.parent.mkdir(parents=True,exist_ok=True);file.write_bytes(blob)
+        report.append({k:v for k,v in row.items()if k!='blob'}|{'bytes':len(blob),'sha256':hashlib.sha256(blob).hexdigest()})
+    (out/'candidate.json').write_text(json.dumps(dict(schema=1,source_commit=PIN,producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),sources=sources,tex3ds_sha256=hashlib.sha256(a.tex3ds.read_bytes()).hexdigest()if a.tex3ds else None,textures=textures,dependencies={str(v):hashlib.sha256((ROOT/v).read_bytes()).hexdigest()for v in [p['field_recipe'],'content/native-house.json','tools/field_npc_motion.py','tools/mick_treats.py','tools/podunk_field.py']},actors=report,interaction_policy=a.interaction_policy,release_staged=False,unimplemented=['Dialogue selection and choices','Complete Scene Room and lifecycle','Source NPC dialogue animation integration']+([]if a.interaction_policy else['NPC return policy data not selected'])),ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     print('NPC candidates:',len(records),'source owners; no scene/release staging')
 
 

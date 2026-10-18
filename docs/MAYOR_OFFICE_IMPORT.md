@@ -28,3 +28,7 @@ Pippi 的 PartyMember 动作使用 ENCMIK01 独立能力 6；原能力 3／4 不
 native_content 编译器来源 SHA 改变后，通过原生成流程刷新 House／Podunk Room、Restore 的来源记录与资源目录。逐字段对比两份旧 Room 的全部数据节、规则、身份、字符串完全相等，解码字段仅 build_input_sha256 改变；旧实际能力仍为 9。Restore 的音乐条件／时长／几何和库存规则相同；Session 兼容身份与默认存档未改。make content 在显式 UTF-8 环境通过，Windows 默认 GBK 的首次失败保留。新能力与候选室内场景尚待完整主机／真实控制台／模拟器整合验证，不把这个候选元数据测试写成 Mayor 可玩。
 
 原版 NPC 朝向恢复的 native Godot 3.6.2 基准已实际运行：原 stop_interaction／ViewArea 进入退出／return_to_init_dir 四个函数按原字节提取，8 个并行案例共 1,440 条帧状态，来源方法 SHA／引擎 SHA／生成脚本 SHA 和完整日志保留。普通结束在 frame60（从 frame0 算第61次 tick）恢复；重新交谈会让旧回调因暂停而无效，但不会取消回调；重叠两次计时在 frame60、90 各自恢复；注视者仅离开区域后计时，再次进入会阻止旧回调生效，漫步者退出不计时，其他 body 身份不会触发。这里注入的只有玩家身份及 UI 开始交谈状态，原 Timer 和四个函数不变；不是完整 NPC 场景／游戏或 3DS 运行。新 oracle 的 3 项 schema／domain／负向测试通过，两次探针准备失败（inline 赋值语法、主 SceneTree 脚本未注册 autoload）保留。私有工程每次 finally 清理。原生 C++ NPC 的延时行为尚待接入，不能把基准完成称为功能完成。
+
+NPC 交互／朝向恢复现通过独立 ENCMIK01 能力 7 接入，旧 3／4／6 保留，5 继续拒绝。头部记录方向数、源计时毫秒和对白可用性；不把 1 秒写进 C++。新能力限已审查的驻足 NPC，漫步、动态空对白、未知功能／版本／坏时长／截断均拒绝。Source Stop 和视野退出登记独立计时器，按 float32 倒数，回调时检查正在交谈／仍在注视；不取消旧计时。FieldScene 在菜单暂停和替换演员期间也推进这些 SceneTreeTimer；交谈实际结束后解锁 NPC，原本没有对白的办公区 Abbott 不进入“未移植对白”停顿，碰撞仍按可见性生效。
+
+GCC9 ASan/UBSan 新目标 6,080 项通过，其中 1,260 条原引擎朝向状态逐帧相同，漫步案例的 180 行明确由能力准入拒绝而非宣称已执行。实际 Podunk help／repeat 使用受检策略夹具，交谈关闭→离开视野→第61次 tick 恢复原朝向共 2,419 项通过；旧交互 2,041 项和 Mick 26 个原版等待／49,382 项节奏回归通过，13 项 Python 来源与版本负向检查通过。--interaction-policy 明确生成五个能力7候选及真实纹理，仍只在 build 下；发行资源未改。NPC 对白时的动画状态、初始对白／选项、区域与菜单地图元数据、Town Hall 音乐／脚步和实际入场仍待整合，因此没有开放 Mayor 入口。

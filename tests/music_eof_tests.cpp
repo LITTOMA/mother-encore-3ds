@@ -34,18 +34,27 @@ bool prepare(ctr::MusicBankTransports&service,uint64_t id,const char*metadata,co
  for(unsigned i=0;i<20000;++i){const auto step=service.prepare_step(id,8192,e);if(step==ctr::MusicPreparationStep::Ready)return true;if(step==ctr::MusicPreparationStep::Failed)return false;}
  check(false,"bounded real PCM preparation terminates");return false;
 }
+bool prepare_library(ctr::MusicBankTransports&service,uint64_t id,const upstream::MusicLibraryBindings&library,uint32_t track,const char*root,float master,std::string&e){
+ if(!service.begin_library(id,library,track,root,4,true,master,e))return false;
+ for(unsigned i=0;i<20000;++i){const auto step=service.prepare_step(id,8192,e);if(step==ctr::MusicPreparationStep::Ready)return true;if(step==ctr::MusicPreparationStep::Failed)return false;}
+ check(false,"bounded checked library preparation terminates");return false;
+}
 ctr::MusicBankFinished finish(ctr::MusicBankTransports&service,int lane,std::string&e){
  for(unsigned i=0;i<10000;++i){drain(lane);check(service.pump_streams(e),e.c_str());auto events=service.take_finished();if(!events.empty()){check(events.size()==1,"one source completed");return events[0];}}
  check(false,"source frames must complete within declared bound");return {};
 }
 int main(int argc,char**argv){
- check(argc==10,"opening bank/root, full library and three source metadata/bank pairs");std::string e;
+ check(argc==12,"opening bank/root, source metadata/banks and checked library descriptor/root");std::string e;
  upstream::MusicRegionData library;check(library.load_file(argv[3],e)&&library.library(),e.c_str());
  ctr::AudioPlayer owner;check(owner.initialize(argv[1],argv[2],e),e.c_str());
  ctr::MusicBankTransports service;upstream::MusicBankRoutes routes;upstream::MusicPlayers graph;
  check(service.initialize(4,0,e)&&graph.initialize({library.silence_db(),library.empty_player_gain_db(),library.fade_to_seconds(),16},e),"source library policy initialized");
+ upstream::AudioBank original;upstream::MusicLibraryBindings bindings;check(original.load_file(argv[1],e)&&bindings.load_file(argv[10],e)&&bindings.admit(argv[11],original,e),"checked source library file mappings admitted");
+ upstream::MusicRegionData im,hm,vm;check(im.load_file(argv[4],e)&&hm.load_file(argv[6],e)&&vm.load_file(argv[8],e),"three source track identities from their checked metadata");
+ const auto opens_before_bad=file_opens;upstream::MusicLibraryBindings absent;
+ check(!service.begin_library(1,absent,im.tracks()[0].id,argv[2],4,true,owner.observe_music().master_db,e)&&!service.begin_library(1,bindings,0,argv[2],4,true,owner.observe_music().master_db,e)&&!service.begin_library(1,bindings,im.tracks()[0].id,argv[2],0,true,owner.observe_music().master_db,e)&&file_opens==opens_before_bad&&service.provider_count()==0,"unadmitted/unknown/bad-capacity library requests reject before file or DSP mutation");
  const auto calls=mutations+owner_calls;
- check(prepare(service,1,argv[4],argv[5],argv[2],owner.observe_music().master_db,e)&&prepare(service,2,argv[6],argv[7],argv[2],owner.observe_music().master_db,e)&&prepare(service,3,argv[8],argv[9],argv[2],owner.observe_music().master_db,e),e.c_str());
+ check(prepare_library(service,1,bindings,im.tracks()[0].id,argv[2],owner.observe_music().master_db,e)&&prepare_library(service,2,bindings,hm.tracks()[0].id,argv[2],owner.observe_music().master_db,e)&&prepare_library(service,3,bindings,vm.tracks()[0].id,argv[2],owner.observe_music().master_db,e),e.c_str());
  check(mutations+owner_calls==calls,"three source preparations are zero NDSP");
  const auto intro=*service.data(1),house=*service.data(2),victory=*service.data(3);const auto ia=service.bank(1)->asset(0),ha=service.bank(2)->asset(0),va=service.bank(3)->asset(0);
  // Copy the URIs whose bank owners will be explicitly retired below.

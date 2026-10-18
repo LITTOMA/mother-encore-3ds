@@ -1,5 +1,6 @@
 #pragma once
 #include "music_region_player.hpp"
+#include "encore/music_library_bindings.hpp"
 #include <memory>
 namespace encore::ctr {
 // Physical providers for a checked global plan. The caller owns source scene
@@ -13,6 +14,7 @@ public:
     MusicBankTransports&operator=(const MusicBankTransports&)=delete;
     bool initialize(uint32_t maximum_providers,float user_music_db,std::string&);
     bool begin_prepare(uint64_t,const char*regions,const char*bank,const char*root,uint32_t voices,bool ndsp_available,float master_db,std::string&);
+    bool begin_library(uint64_t,const upstream::MusicLibraryBindings&,uint32_t track,const char*pcm_root,uint32_t voices,bool ndsp_available,float master_db,std::string&);
     MusicPreparationStep prepare_step(uint64_t,uint32_t byte_budget,std::string&);
     bool cancel(uint64_t,std::string&);
     bool publish(uint64_t,upstream::MusicBankRoutes&,std::string&);

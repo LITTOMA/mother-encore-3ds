@@ -14,9 +14,16 @@ bool MusicRegionPlayer::begin_prepare(const char*bank,const char*root,const upst
  if(prepared_||preparing_||capacity_)return fail(e,"Music region adapter already prepared; use a detached candidate");
  if(!available)return fail(e,"Music region audio unavailable: existing NDSP owner is not initialized");
  if(!root||!capacity||capacity>maximum_voices)return fail(e,"Invalid music region adapter capacity/root");
- if(!bank_.load_file(bank,e)||!regions.matches(bank_,e))return false;
- if(bank_.master_db()!=master||bank_.count()!=regions.tracks().size()||bank_.count()>tracks_.size())return fail(e,"Music region bank/master differs from existing audio owner");
- prepared_regions_=regions;capacity_=capacity;track_count_=bank_.count();asset_root_=root;
+ upstream::AudioBank checked;if(!checked.load_file(bank,e))return false;
+ return begin_prepare(checked,root,regions,capacity,available,master,e);
+}
+bool MusicRegionPlayer::begin_prepare(const upstream::AudioBank&bank,const char*root,const upstream::MusicRegionData&regions,uint32_t capacity,bool available,float master,std::string&e){
+ if(prepared_||preparing_||capacity_)return fail(e,"Music region adapter already prepared; use a detached candidate");
+ if(!available)return fail(e,"Music region audio unavailable: existing NDSP owner is not initialized");
+ if(!root||!capacity||capacity>maximum_voices)return fail(e,"Invalid music region adapter capacity/root");
+ if(!regions.matches(bank,e))return false;
+ if(bank.master_db()!=master||bank.count()!=regions.tracks().size()||bank.count()>tracks_.size())return fail(e,"Music region bank/master differs from existing audio owner");
+ bank_=bank;prepared_regions_=regions;capacity_=capacity;track_count_=bank_.count();asset_root_=root;
  for(uint32_t i=0;i<track_count_;++i){tracks_[i].asset=bank_.asset(i);total_bytes_+=tracks_[i].asset.pcm_bytes;}
  preparing_=true;e.clear();return true;
 }

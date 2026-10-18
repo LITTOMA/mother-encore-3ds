@@ -29,6 +29,12 @@ bool MusicBankTransports::begin_prepare(uint64_t id,const char*regions,const cha
     if(!candidate->data.load_file(regions,e)||!candidate->player.begin_prepare(bank_path,root,candidate->data,voices,available,master,e)||!candidate->player.set_user_music_db(user_music_db_))return false;
     providers_.push_back(std::move(candidate));last_provider_=id;e.clear();return true;
 }
+bool MusicBankTransports::begin_library(uint64_t id,const upstream::MusicLibraryBindings&library,uint32_t track,const char*root,uint32_t voices,bool available,float master,std::string&e){
+    if(!ready_||!available||!id||id==upstream::MusicLoopChoice::no_player||id<=last_provider_||preparing()||providers_.size()>=maximum_providers_||!library.admitted()||!library.find(track)||!root||!voices||voices>MusicRegionPlayer::maximum_voices)return fail(e,"Music library candidate identity/binding/capacity/owner is unavailable");
+    auto candidate=std::make_unique<Provider>();candidate->identity=id;upstream::AudioBank bank;
+    if(!library.read_track(track,candidate->data,bank,e)||!candidate->player.begin_prepare(bank,root,candidate->data,voices,available,master,e)||!candidate->player.set_user_music_db(user_music_db_))return false;
+    providers_.push_back(std::move(candidate));last_provider_=id;e.clear();return true;
+}
 MusicPreparationStep MusicBankTransports::prepare_step(uint64_t id,uint32_t budget,std::string&e){
     auto*p=find(id);if(!ready_||!p||p->published){e="Global music candidate is unavailable or already published";return MusicPreparationStep::Failed;}
     const auto step=p->player.prepare_step(budget,e);

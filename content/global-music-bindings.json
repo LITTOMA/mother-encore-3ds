@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "kind": "encore.music-library-bindings.candidate",
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "output": "sound/banks/global.enclib",
+  "index": "sound/banks/global.encmusic",
+  "tracks": [
+    {
+      "track": 21,
+      "metadata": "sound/banks/global/21.encmusic",
+      "audio": "sound/banks/global/21.encaudio"
+    },
+    {
+      "track": 1001,
+      "metadata": "sound/banks/global/1001.encmusic",
+      "audio": "sound/banks/global/1001.encaudio"
+    },
+    {
+      "track": 1002,
+      "metadata": "sound/banks/global/1002.encmusic",
+      "audio": "sound/banks/global/1002.encaudio"
+    },
+    {
+      "track": 32,
+      "metadata": "sound/banks/global/32.encmusic",
+      "audio": "sound/banks/global/32.encaudio"
+    },
+    {
+      "track": 34,
+      "metadata": "sound/banks/global/34.encmusic",
+      "audio": "sound/banks/global/34.encaudio"
+    },
+    {
+      "track": 1202,
+      "metadata": "sound/banks/global/1202.encmusic",
+      "audio": "sound/banks/global/1202.encaudio"
+    },
+    {
+      "track": 1301,
+      "metadata": "sound/banks/global/1301.encmusic",
+      "audio": "sound/banks/global/1301.encaudio"
+    },
+    {
+      "track": 4229387514,
+      "metadata": "sound/banks/global/4229387514.encmusic",
+      "audio": "sound/banks/global/4229387514.encaudio"
+    },
+    {
+      "track": 3080041499,
+      "metadata": "sound/banks/global/3080041499.encmusic",
+      "audio": "sound/banks/global/3080041499.encaudio"
+    },
+    {
+      "track": 3778949439,
+      "metadata": "sound/banks/global/3778949439.encmusic",
+      "audio": "sound/banks/global/3778949439.encaudio"
+    },
+    {
+      "track": 4107189403,
+      "metadata": "sound/banks/global/4107189403.encmusic",
+      "audio": "sound/banks/global/4107189403.encaudio"
+    },
+    {
+      "track": 4290136921,
+      "metadata": "sound/banks/global/4290136921.encmusic",
+      "audio": "sound/banks/global/4290136921.encaudio"
+    },
+    {
+      "track": 2742165164,
+      "metadata": "sound/banks/global/2742165164.encmusic",
+      "audio": "sound/banks/global/2742165164.encaudio"
+    }
+  ]
+}

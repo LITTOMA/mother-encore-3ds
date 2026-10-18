@@ -24,6 +24,8 @@ public:
  // reads at most one8KiB chunk and respects its smaller caller byte budget.
  // After CRC/length validation, each step reserves at most one24KiB buffer.
  // Begin/step/cancel do no NDSP work; a loading coordinator pumps the old owner.
+ bool begin_prepare(const upstream::AudioBank&,const char* asset_root,const upstream::MusicRegionData&,
+                    uint32_t capacity,bool ndsp_available,float existing_master_db,std::string&);
  bool begin_prepare(const char* bank,const char* asset_root,const upstream::MusicRegionData&,
                     uint32_t capacity,bool ndsp_available,float existing_master_db,std::string&);
  MusicPreparationStep prepare_step(uint32_t byte_budget,std::string&);

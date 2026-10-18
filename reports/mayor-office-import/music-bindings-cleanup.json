@@ -1,0 +1,41 @@
+{
+  "removed": [
+    {
+      "path": "build/full-port/music_library_bindings-lifetime-check",
+      "bytes": 45387624,
+      "sha256": "b34a339963f95cba64f7b655c8056f02d1b8d5abb265ba02c8863aa47699e13c"
+    },
+    {
+      "path": "build/full-port/music_eof-routes-dsp-check",
+      "bytes": 46966280,
+      "sha256": "27e0df6279fcc7def388b0091f0d98ea6c8c1f9110c637ca3f5a47a201bbf7d7"
+    },
+    {
+      "path": "build/full-port/music_region_player-routes-dsp-check",
+      "bytes": 46088832,
+      "sha256": "97ad25d7edf1a5e09e174ce7c0de231432772deea3d9e7d19bcb7546d117b713"
+    },
+    {
+      "path": "build/full-port/music_region_service-routes-dsp-check",
+      "bytes": 46538392,
+      "sha256": "5d8640d73d13a0100287095961208474a3d8da4d66f125d48dd61dd9923c99a5"
+    },
+    {
+      "path": "build/full-port/music_region_prepare-routes-dsp-check",
+      "bytes": 46566688,
+      "sha256": "67b589d693a010a97f0bf340817133338d835dff38c63e6f23af3317bb6530df"
+    },
+    {
+      "path": "build/full-port/run_audio_player-routes-dsp-check",
+      "bytes": 46432800,
+      "sha256": "7d16b96741280ea5e3cfa1b6352ba648b91c3c0177177d08ca42f1b0d1446c68"
+    },
+    {
+      "path": "build/full-port/music_bank_transports-routes-dsp-check",
+      "bytes": 47042080,
+      "sha256": "ff227978ec285e47492066de33243e98fd39d595cf5c387e10210934ccfda668"
+    }
+  ],
+  "total_bytes": 325022696,
+  "kept": "Source, raw logs, object cache, current validated b739c6a game and emulator; all listed executables completed before cleanup."
+}

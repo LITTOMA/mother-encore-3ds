@@ -80,7 +80,7 @@ bool HousePresentation::set_text_speed(double seconds){
 void HousePresentation::voice(HouseAudioKind kind,double pitch){audio_.push_back({kind,voice_,pitch});voice_playing_=kind==HouseAudioKind::VoiceStart;}
 bool HousePresentation::append_segment(uint32_t index){
  if(index>=segment_count_)return fail("Unknown world dialogue segment");
- auto s=content_.segment(first_segment_+(localized_.segments.empty()?index:0));if(!localized_.segments.empty()){s.flags=localized_.segments[index].flags;s.token_count=uint32_t(localized_.segments[index].tokens.size());}std::u32string text;std::vector<uint32_t>colors;uint32_t color=0xffffffffu;
+ auto s=localized_.segments.empty()?content_.segment(first_segment_+index):HouseSegment{};if(!localized_.segments.empty()){s.flags=localized_.segments[index].flags;s.token_count=uint32_t(localized_.segments[index].tokens.size());}std::u32string text;std::vector<uint32_t>colors;uint32_t color=0xffffffffu;
  const auto interaction=content_.interaction();
  // Bound expansion before allocating: delay tags are source timing cells,
  // not drawable spaces and not a timer independent of input acceleration.
@@ -313,19 +313,37 @@ bool HousePresentation::present_plain(std::string_view speaker,std::string_view 
  if(active_&&!external_)return fail("House dialogue owns the box");
   if(text.empty()||!plain_glyphs(speaker)||!plain_glyphs(text,true))return fail("Unsupported dialogue glyph");
  std::vector<Line> built;if(!wrap_plain(text,built)||built.empty())return fail("World dialogue line produced no text");
+ return present_lines(speaker,std::move(built),voice);
+}
+bool HousePresentation::present_external(const LocalizedHouseSpan&span,std::string_view voice){
+ if(!content_.valid()||closing_||(active_&&!external_)||span.segments.empty()||span.segments.size()>128||span.word_separator.empty()||!plain_glyphs(span.speaker)||!plain_glyphs(span.bullet))return fail("Invalid external dialogue span");
+ auto candidate=*this;candidate.localized_=span;candidate.segment_count_=uint32_t(span.segments.size());candidate.lines_.clear();
+ for(const auto&segment:span.segments){if(segment.flags&~7u||segment.tokens.size()>4096)return fail("Invalid external dialogue segment");
+  for(const auto&token:segment.tokens){if(token.kind!=1&&token.kind!=3&&token.kind!=4&&token.kind!=8&&token.kind!=9&&token.kind!=10)return fail("Unsupported external dialogue token");
+   if(token.kind==3&&(token.text.size()!=6||token.text.find_first_not_of("0123456789abcdefABCDEF")!=std::string::npos))return fail("Invalid external dialogue color");
+   if((token.kind==4||token.kind==9||token.kind==10)&&!token.text.empty())return fail("Unexpected external dialogue token value");
+  }
+ }
+ for(uint32_t i=0;i<candidate.segment_count_;++i)if(!candidate.append_segment(i))return fail(candidate.error());
+ if(candidate.lines_.empty())return fail("External dialogue produced no text");
+ auto built=std::move(candidate.lines_);candidate.lines_=lines_;
+ if(!candidate.present_lines(span.speaker,std::move(built),voice))return fail(candidate.error());
+ candidate.bullet_=span.bullet;*this=std::move(candidate);return true;
+}
+bool HousePresentation::present_lines(std::string_view speaker,std::vector<Line>built,std::string_view voice){
  const std::string speaker_text(speaker);const bool reuse=active_;const bool same=reuse&&!name_closing_&&speaker_==speaker_text;
  const auto old_box=box_time_,old_name=name_time_,old_size=name_size_time_,old_cursor=cursor_time_;const auto old_visible=visible_;
  if(same){
   const uint32_t offset=lines_.empty()?0:lines_.back().first+uint32_t(lines_.back().text.size())+(lines_.back().wait?1u:0u);
   const auto first_new=uint32_t(lines_.size());
   for(auto& row:built){row.first+=offset;lines_.push_back(std::move(row));}
-  loaded_line_=first_new;visible_=old_visible;const auto& row=lines_[loaded_line_];loaded_count_=row.first+uint32_t(row.text.size());
+  loaded_line_=first_new;visible_=old_visible;const auto& row=lines_[loaded_line_];loaded_count_=row.first+uint32_t(row.text.size())+(row.wait?1u:0u);
   box_time_=old_box;cursor_time_=old_cursor;name_time_=old_name;name_size_time_=old_size;
  }else{
   const bool had_name=!speaker_.empty()||name_closing_;lines_=std::move(built);speaker_=speaker_text;
   if(speaker_.empty()){if(reuse&&had_name){name_closing_=true;name_time_=0;}}
   else{name_closing_=false;name_time_=name_size_time_=0;const auto sizing=content_.parameter(HouseParameter::NameSizing);name_width_=std::max(width(speaker_),sizing.w)+sizing.x;}
-  loaded_line_=visible_=0;loaded_count_=uint32_t(lines_[0].text.size());
+  loaded_line_=visible_=0;loaded_count_=uint32_t(lines_[0].text.size())+(lines_[0].wait?1u:0u);
   if(!reuse){box_time_=name_time_=name_size_time_=cursor_time_=0;audio_.push_back({HouseAudioKind::MenuOpen,{},1});active_=true;done_=false;}
   else box_time_=old_box,cursor_time_=old_cursor;
  }

@@ -1,0 +1,10 @@
+test_defaults_startup_and_levels_cannot_be_rebound (tests.test_new_game_assets.NamingSessionDependency.test_defaults_startup_and_levels_cannot_be_rebound) ... ok
+test_exact_baseline_required (tests.test_new_game_assets.NamingSessionDependency.test_exact_baseline_required) ... ok
+test_field_session_extension_preserves_startup_and_rejects_unreviewed_policy (tests.test_new_game_assets.NamingSessionDependency.test_field_session_extension_preserves_startup_and_rejects_unreviewed_policy) ... ok
+test_only_session_fingerprint_changes_and_binary_stays_identical (tests.test_new_game_assets.NamingSessionDependency.test_only_session_fingerprint_changes_and_binary_stays_identical) ... ok
+test_removed_flags_acquisitions_unknown_fields_and_bad_hash_rejected (tests.test_new_game_assets.NamingSessionDependency.test_removed_flags_acquisitions_unknown_fields_and_bad_hash_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 12.307s
+
+OK

@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.field-story.reviewed-lowering",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene_id": 2,
@@ -17,7 +17,13 @@
     "Data/BattleSkills/attack_bat.yaml": "99a5757609a6fbf42358aba886f56cc18a00796a4b38eeef8e4fc59307a385a3",
     "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
     "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
-    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c"
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Data/Dialogue/Podunk/cutscenes/pippismom_help.yaml": "668454a05317df38b57b21a42e993dc5fb4dbb67aeb699873d0105c054906528",
+    "Data/Dialogue/Podunk/pippismom.yaml": "42969cbf46f4b724fc804df8f672efdca2e8438ce1fdfbeac114fc58847eb027",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34"
   },
   "documents": {
     "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml": {
@@ -240,6 +246,115 @@
         },
         "wait": 0.6,
         "autoadvance": true
+      }
+    },
+    "Data/Dialogue/Podunk/cutscenes/pippismom_help.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "lindgren": "talker"
+        },
+        "actorsemote": {
+          "lindgren": "exclamation"
+        },
+        "wait": 1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "1"
+      },
+      "1": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_HELP_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_HELP_1",
+        "goto": "2"
+      },
+      "2": {
+        "showbox": false,
+        "actorsemote": {
+          "lindgren": "dot"
+        },
+        "actorsturn": {
+          "lindgren": {
+            "x": 1,
+            "y": 0,
+            "speed": 0.05
+          }
+        },
+        "wait": 0.8,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "3"
+      },
+      "3": {
+        "showbox": false,
+        "actorsturn": {
+          "lindgren": {
+            "x": -1,
+            "y": 0,
+            "speed": 0.05
+          }
+        },
+        "wait": 1.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "4"
+      },
+      "4": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_HELP_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_HELP_4",
+        "actorsturn": {
+          "lindgren": {
+            "speed": 0.05,
+            "actor": "ninten"
+          }
+        },
+        "goto": "7"
+      },
+      "7": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_HELP_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_HELP_7",
+        "actorsemote": {
+          "ninten": "sweat"
+        },
+        "goto": "8"
+      },
+      "8": {
+        "showbox": false,
+        "actorsjump": {
+          "ninten": {
+            "height": 6,
+            "length": 0.2,
+            "times": 2
+          }
+        },
+        "wait": 0.6,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "9"
+      },
+      "9": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_HELP_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_HELP_9",
+        "goto": "10"
+      },
+      "10": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_HELP_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PIPPISMOM_HELP_10",
+        "actorsemote": {
+          "lindgren": "heart"
+        },
+        "setflags": "pippis_mom_help"
+      }
+    },
+    "Data/Dialogue/Podunk/pippismom.yaml": {
+      "0": {
+        "name": "DIALOGUE_PODUNK_PIPPISMOM_SPEAKER_Mrs._Lindgren",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_PIPPISMOM_0"
       }
     }
   },
@@ -789,6 +904,363 @@
           "phrase": 5
         }
       ]
+    },
+    {
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_help.yaml",
+      "boundary": "",
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "ninten",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "ninten",
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "lindgren",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "lindgren",
+          "phrase": 0
+        },
+        {
+          "kind": "SetTalker",
+          "actor": "lindgren",
+          "phrase": 0
+        },
+        {
+          "kind": "YieldIdle",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 0,
+          "duration": 1
+        },
+        {
+          "kind": "EmoteActor",
+          "actor": "lindgren",
+          "phrase": 0,
+          "emote": "exclamation"
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "phrase": 1,
+          "dialogue": 1010,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "phrase": 1,
+          "flags": 0
+        },
+        {
+          "kind": "HideDialogue",
+          "actor": null,
+          "phrase": 2,
+          "flags": 1
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 2,
+          "duration": 0.8
+        },
+        {
+          "kind": "EmoteActor",
+          "actor": "lindgren",
+          "phrase": 2,
+          "emote": "dot"
+        },
+        {
+          "kind": "TurnActor",
+          "actor": "lindgren",
+          "phrase": 2,
+          "vector": [
+            1,
+            0
+          ],
+          "duration": 0.05
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 2
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 3,
+          "duration": 1.5
+        },
+        {
+          "kind": "TurnActor",
+          "actor": "lindgren",
+          "phrase": 3,
+          "vector": [
+            -1,
+            0
+          ],
+          "duration": 0.05
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 3
+        },
+        {
+          "kind": "TurnActor",
+          "actor": "lindgren",
+          "phrase": 4,
+          "target": 0,
+          "flags": 2,
+          "duration": 0.05
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "phrase": 4,
+          "dialogue": 1011,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "phrase": 4,
+          "flags": 0
+        },
+        {
+          "kind": "EmoteActor",
+          "actor": "ninten",
+          "phrase": 5,
+          "emote": "sweat"
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "phrase": 5,
+          "dialogue": 1012,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "phrase": 5,
+          "flags": 0
+        },
+        {
+          "kind": "HideDialogue",
+          "actor": null,
+          "phrase": 6,
+          "flags": 1
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 6,
+          "duration": 0.6
+        },
+        {
+          "kind": "JumpActor",
+          "actor": "ninten",
+          "phrase": 6,
+          "value": 6,
+          "duration": 0.2,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 6
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "phrase": 7,
+          "dialogue": 1013,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "phrase": 7,
+          "flags": 0
+        },
+        {
+          "kind": "SetFlag",
+          "actor": null,
+          "phrase": 8,
+          "flag": "pippis_mom_help",
+          "value": 1
+        },
+        {
+          "kind": "EmoteActor",
+          "actor": "lindgren",
+          "phrase": 8,
+          "emote": "heart"
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "phrase": 8,
+          "dialogue": 1014,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "phrase": 8,
+          "flags": 0
+        },
+        {
+          "kind": "HideDialogue",
+          "actor": null,
+          "phrase": 9,
+          "flags": 1
+        },
+        {
+          "kind": "StopInteraction",
+          "actor": "lindgren",
+          "phrase": 9
+        },
+        {
+          "kind": "SetTalker",
+          "actor": null,
+          "phrase": 9
+        },
+        {
+          "kind": "RestoreActor",
+          "actor": "ninten",
+          "phrase": 9
+        },
+        {
+          "kind": "RestoreActor",
+          "actor": "lindgren",
+          "phrase": 9
+        },
+        {
+          "kind": "CutsceneEnded",
+          "actor": null,
+          "phrase": 9
+        },
+        {
+          "kind": "DialogueDone",
+          "actor": null,
+          "phrase": 9,
+          "duration": 0.5
+        }
+      ]
+    },
+    {
+      "source": "Data/Dialogue/Podunk/pippismom.yaml",
+      "boundary": "",
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "ninten",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "ninten",
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "lindgren",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "lindgren",
+          "phrase": 0
+        },
+        {
+          "kind": "SetTalker",
+          "actor": "lindgren",
+          "phrase": 0
+        },
+        {
+          "kind": "YieldIdle",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "actor": null,
+          "phrase": 0,
+          "dialogue": 1020,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "actor": null,
+          "phrase": 0,
+          "flags": 0
+        },
+        {
+          "kind": "HideDialogue",
+          "actor": null,
+          "phrase": 1,
+          "flags": 1
+        },
+        {
+          "kind": "StopInteraction",
+          "actor": "lindgren",
+          "phrase": 1
+        },
+        {
+          "kind": "SetTalker",
+          "actor": null,
+          "phrase": 1
+        },
+        {
+          "kind": "RestoreActor",
+          "actor": "ninten",
+          "phrase": 1
+        },
+        {
+          "kind": "RestoreActor",
+          "actor": "lindgren",
+          "phrase": 1
+        },
+        {
+          "kind": "CutsceneEnded",
+          "actor": null,
+          "phrase": 1
+        },
+        {
+          "kind": "DialogueDone",
+          "actor": null,
+          "phrase": 1,
+          "duration": 0.5
+        }
+      ]
     }
   ],
   "encounters": [
@@ -839,12 +1311,44 @@
       "id": 1004,
       "source": "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml",
       "label": "4"
+    },
+    {
+      "id": 1010,
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_help.yaml",
+      "label": "1"
+    },
+    {
+      "id": 1011,
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_help.yaml",
+      "label": "4"
+    },
+    {
+      "id": 1012,
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_help.yaml",
+      "label": "7"
+    },
+    {
+      "id": 1013,
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_help.yaml",
+      "label": "9"
+    },
+    {
+      "id": 1014,
+      "source": "Data/Dialogue/Podunk/cutscenes/pippismom_help.yaml",
+      "label": "10"
+    },
+    {
+      "id": 1020,
+      "source": "Data/Dialogue/Podunk/pippismom.yaml",
+      "label": "0"
     }
   ],
   "emotes": {
     "exclamation": 8,
     "sweat": 9,
-    "angry": 10
+    "angry": 10,
+    "dot": 1,
+    "heart": 2
   },
   "voice_root": "Audio/Sound effects/text/",
   "locales": [
@@ -854,6 +1358,24 @@
   "limitations": [
     "Angry/sweat emote offset and left-facing reflection are visual differences: this admitted executor retains source frame keys and duration only.",
     "Mom movecam time:2 is ignored by the actual source handler, which reads length and defaults to 1 second.",
-    "Ordinary NPC conversations and subsequent town scenes remain unsupported boundaries."
+    "NPC interaction currently admits Mrs. Lindgren before rescue only; other town conversations remain unsupported. Single-alternative seen-dialogue bookkeeping is not persisted yet; it cannot alter these two source selections."
+  ],
+  "interactions": [
+    {
+      "actor": "lindgren",
+      "path": "Objects/NPCS/npc20",
+      "programme": 2,
+      "flag": "",
+      "turn_player": true,
+      "turn_npc": true
+    },
+    {
+      "actor": "lindgren",
+      "path": "Objects/NPCS/npc20",
+      "programme": 3,
+      "flag": "pippis_mom_help",
+      "turn_player": true,
+      "turn_npc": true
+    }
   ]
 }

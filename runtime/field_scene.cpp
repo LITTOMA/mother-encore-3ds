@@ -315,10 +315,22 @@ bool FieldScene::try_interaction(bool accept,std::string& error){
     if(world.stage()!=OpeningStage::Walking){error.clear();return true;}
     if(!try_mick(accept,error))return false;
     if(!accept||phase_!=FieldPhase::Walking||world.house_paused()||world.player().crouch)return true;
-    for(const auto& ptr:npcs_){const auto& n=*ptr;if(!actor_visible(n.actor))continue;
+    for(const auto& ptr:npcs_){auto& n=*ptr;if(!actor_visible(n.actor))continue;
         const auto a=n.motion.view().actor();const auto p=world.player();const auto at=actor_pose(n.actor).position;
         const Vec2 center{at.x+a.interact_center.x-a.position.x,at.y+a.interact_center.y-a.position.y};float distance=0;
         if(!ray_rect(p.position,normalized(p.direction),a.ray_length,center,a.interact_extents,distance)&&!overlaps(center,a.interact_extents,p.position))continue;
+        FieldInteraction selected;for(uint32_t i=0;i<story_.interaction_count();++i){const auto rule=story_.interaction(i);if(rule.actor==n.actor&&(!rule.flag.length||world.story_flag(story_.text(rule.flag))))selected=rule;}
+        if(selected.programme!=UINT32_MAX){
+            if(!story_host_||!story_host_->can_start(story_,selected.programme,error)){
+                boundary_=WorldLinksData::kNotFound;phase_=FieldPhase::Unsupported;error_=error.empty()?"Field interaction admission rejected; B returns":error+"; B returns";
+                if(!world.pause_for_house())return fail("Field interaction admission pause rejected");error.clear();return true;
+            }
+            if(selected.turns&2)n.motion.face_toward(p.position);
+            if(!world.sync_unbound_actor_pose(n.actor,at,n.motion.facing()))return fail("Field interaction pose handoff rejected");
+            if((selected.turns&1)&&!world.face_interaction(at))return fail("Field interaction player turn rejected");
+            if(!world.begin_house_program(selected.programme))return fail("Field interaction programme start rejected");
+            error.clear();return true;
+        }
         if(!world.pause_for_house())return fail("Field NPC interaction pause rejected");
         phase_=FieldPhase::Unsupported;boundary_=WorldLinksData::kNotFound;error_="Field NPC dialogue not ported; B returns";error.clear();return true;
     }

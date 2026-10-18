@@ -52,6 +52,7 @@ public:
  // a new or missing name clears the text. An empty speaker closes the name tag.
  // Admitted body text may contain source CHAR_WAIT (U+2063). It has no glyph
  // or width and stops printing before the following line until fresh input.
+ bool present_external(const LocalizedHouseSpan&,std::string_view voice={});
  bool present_plain(std::string_view speaker,std::string_view text,std::string_view voice={});
  // Typewriter only. physics_frame also turns house NPCs; the field must not.
  bool advance_dialogue(double);
@@ -89,6 +90,7 @@ private:
  struct Line {std::u32string text;uint32_t first=0,segment=0;bool bullet=false,wait=false;std::vector<uint32_t>colors;};
  float font_line_height_=0;HouseLocaleResolver locale_resolver_=nullptr;void*locale_state_=nullptr;HouseGlyphAdvance glyph_advance_=nullptr;void*glyph_state_=nullptr;LocalizedHouseSpan localized_;std::string locale_error_;
  bool fail(const char*);bool append_segment(uint32_t);void close(bool sound=true);float width(std::string_view)const;float width(std::u32string_view)const;bool valid_text(std::string_view)const;
+ bool present_lines(std::string_view,std::vector<Line>,std::string_view);
  bool plain_glyphs(std::string_view,bool allow_wait=false)const;bool wrap_plain(std::string_view,std::vector<Line>&)const;
  HouseClip clip(HouseClipRole)const;void voice(HouseAudioKind,double=1);
  HouseView content_;BattleView font_;SourceRandom*random_=nullptr;std::vector<Npc>npcs_;std::vector<Line>lines_;std::vector<HouseAudioEvent>audio_;

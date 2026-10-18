@@ -197,6 +197,14 @@ bool OpeningWorld::set_house_direction(Vec2 direction){
     persistent_player_.state_->player_.direction=direction;persistent_player_.state_->player_.animation=MotionAnimation::Idle;persistent_player_.state_->clip_=walk_clip(persistent_player_.state_->player_.animation,persistent_player_.state_->player_.direction);FrameClip clip;
     return content_.frame_clip(persistent_player_.state_->clip_,clip)&&begin_clip(clip,content_.clip(persistent_player_.state_->clip_).frame_count,persistent_player_.state_->playback_);
 }
+bool OpeningWorld::face_interaction(Vec2 target){
+    if(!healthy_||stage_!=OpeningStage::Walking||!std::isfinite(target.x)||!std::isfinite(target.y))return false;
+    const auto position=persistent_player_.state_->player_.position;const Vec2 delta{target.x-position.x,target.y-position.y};
+    const float length=std::hypot(delta.x,delta.y);if(!std::isfinite(length))return false;if(length==0)return true;
+    persistent_player_.state_->player_.direction={delta.x/length,delta.y/length};persistent_player_.state_->player_.animation=MotionAnimation::Idle;
+    persistent_player_.state_->clip_=walk_clip(MotionAnimation::Idle,persistent_player_.state_->player_.direction);FrameClip clip;
+    return content_.frame_clip(persistent_player_.state_->clip_,clip)&&begin_clip(clip,content_.clip(persistent_player_.state_->clip_).frame_count,persistent_player_.state_->playback_);
+}
 bool OpeningWorld::warp_same_scene(Vec2 position,Vec2 direction){
     if(!healthy_||stage_!=OpeningStage::Walking||!std::isfinite(position.x)||!std::isfinite(position.y)||!set_house_direction(direction))return false;
     persistent_player_.state_->player_.position=position;persistent_player_.state_->player_.velocity={};

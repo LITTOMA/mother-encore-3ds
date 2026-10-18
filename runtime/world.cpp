@@ -82,6 +82,67 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
 bool OpeningWorld::bind_walk_audio(WalkAudioSink&sink){
  if(!healthy_||walk_audio_||!sink.walk_audio_ready())return false;walk_audio_=&sink;return true;
 }
+bool OpeningWorld::adopt_scene_player(OpeningWorld& source,Vec2 position,Vec2 direction,std::string& error){
+    const auto reject=[&](const char*why){error=why;return false;};
+    if(this==&source||!healthy_||!source.healthy_||player_read_only_||source.player_read_only_||
+       !persistent_player_||!source.persistent_player_||persistent_player_.state_->references_!=1||
+       stage_!=OpeningStage::Walking||source.stage_!=OpeningStage::Walking||
+       !house_paused()||!source.house_paused()||has_cutscene_actors()||source.has_cutscene_actors()||
+       restore_pending_||source.restore_pending_||battle_player_visible()||source.battle_player_visible())
+        return reject("Scene player handoff requires independent prepared and paused scene bindings");
+    const auto old=source.content_;const auto next=content_;
+    const auto a=old.scene(),b=next.scene();
+    const auto pa=old.actor_profile(old.actor_instance(a.player_instance_index).profile_index);
+    const auto pb=next.actor_profile(next.actor_instance(b.player_instance_index).profile_index);
+    const auto same_vector=[](Vec2 x,Vec2 y){return x.x==y.x&&x.y==y.y;};
+    const auto same_resource=[&](uint32_t x,uint32_t y){
+        if(x==kRoomNoIndex||y==kRoomNoIndex)return x==y;
+        const auto r=old.resource(x),s=next.resource(y);
+        return r.stable_id==s.stable_id&&old.string(r.path_string)==next.string(s.path_string)&&r.sha256==s.sha256&&
+            r.width==s.width&&r.height==s.height&&r.columns==s.columns&&r.rows==s.rows&&r.kind==s.kind&&r.flags==s.flags;
+    };
+    const auto same_clip=[&](uint32_t x,uint32_t y){
+        if(x==kRoomNoIndex||y==kRoomNoIndex)return x==y;
+        const auto r=old.clip(x),s=next.clip(y);
+        if(r.stable_id!=s.stable_id||r.length!=s.length||r.key_count!=s.key_count||r.flags!=s.flags||r.visibility!=s.visibility||r.frame_count!=s.frame_count||r.channel!=s.channel)return false;
+        for(uint32_t i=0;i<r.key_count;++i){const auto u=old.key(r.first_key+i),v=next.key(s.first_key+i);if(u.time!=v.time||u.frame!=v.frame)return false;}
+        return true;
+    };
+    if(a.rule_profile_id!=b.rule_profile_id||old.rule_count()!=next.rule_count()||a.actor_hull_count!=b.actor_hull_count||
+       pa.stable_id!=pb.stable_id||pa.execution_kind!=pb.execution_kind||pa.flags!=pb.flags||
+       pa.initial_frame!=pb.initial_frame||pa.emote_initial_frame!=pb.emote_initial_frame||
+       !same_vector(pa.sprite_position,pb.sprite_position)||!same_vector(pa.sprite_offset,pb.sprite_offset)||
+       !same_vector(pa.emote_offset,pb.emote_offset)||!same_vector(pa.shadow_offset,pb.shadow_offset)||
+       pa.direction_count!=pb.direction_count||pa.animation_binding_count!=pb.animation_binding_count||
+       !same_resource(pa.primary_resource,pb.primary_resource)||!same_resource(pa.shadow_resource,pb.shadow_resource)||!same_resource(pa.emote_resource,pb.emote_resource)||
+       !same_clip(pa.idle_clip,pb.idle_clip)||!same_clip(pa.emote_clip,pb.emote_clip)||
+       source.persistent_player_.state_->party_leader_!=persistent_player_.state_->party_leader_)
+        return reject("Scene player identity or profile differs from the persistent source");
+    for(uint32_t i=0;i<old.rule_count();++i){
+        const auto r=old.rule(i),s=next.rule(r.key);
+        if(r.scalar_type!=s.scalar_type||r.f32!=s.f32||r.f64!=s.f64||r.u32!=s.u32)return reject("Scene player rule parameters differ");
+    }
+    for(uint32_t i=0;i<a.actor_hull_count;++i)if(!same_vector(old.vec2(a.actor_hull_first+i),next.vec2(b.actor_hull_first+i)))return reject("Scene player local collider differs");
+    for(uint32_t i=0;i<pa.direction_count;++i)if(old.direction_frame(pa.direction_first+i)!=next.direction_frame(pb.direction_first+i))return reject("Scene player direction frames differ");
+    for(uint32_t i=0;i<pa.animation_binding_count;++i){
+        const auto r=old.animation_binding(pa.animation_binding_first+i);uint32_t match=kRoomNoIndex;
+        for(uint32_t j=0;j<pb.animation_binding_count;++j){const auto s=next.animation_binding(pb.animation_binding_first+j);if(r.motion_state==s.motion_state&&r.direction==s.direction){match=s.clip_index;break;}}
+        if(match==kRoomNoIndex||!same_clip(r.clip_index,match))return reject("Scene player animation bindings differ");
+    }
+    auto& owner=*source.persistent_player_.state_;WalkState player;
+    if(!relocate_walk(owner.player_,position,direction,player))return reject("Scene player transport pose rejected");
+    auto camera=owner.camera_;
+    if(!camera.rebind_scene(next,position,viewport_))return reject("Scene player camera binding rejected");
+    const auto selected=walk_clip(player.animation,player.direction);FrameClip clip;
+    auto playback=owner.playback_;
+    if(!next.frame_clip(selected,clip)||!sample_clip(clip,playback.position,next.clip(selected).frame_count,playback.sample))return reject("Scene player animation transport rejected");
+    // No fallible work remains. Ownership changes without moving the object.
+    auto retained=source.persistent_player_;
+    owner.player_=player;owner.camera_=std::move(camera);owner.playback_=playback;owner.clip_=selected;
+    persistent_player_=std::move(retained);
+    source.healthy_=false;source.player_read_only_=true;source.walk_audio_=nullptr;source.error_="Scene player binding retired";
+    error.clear();return true;
+}
 bool OpeningWorld::emit_walk_audio(const WalkAudioCalls&calls){
  if(!walk_audio_)return true;std::string why;
  return walk_audio_->apply_walk_calls(calls,why)||fail("Player run-loop rejected source calls");

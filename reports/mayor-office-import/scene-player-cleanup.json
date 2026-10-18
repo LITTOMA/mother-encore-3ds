@@ -1,0 +1,22 @@
+{
+  "removed": [
+    {
+      "path": "build\\full-port\\scene_player-check",
+      "bytes": 42763448
+    },
+    {
+      "path": "build\\full-port\\persistent_player-check",
+      "bytes": 43067080
+    },
+    {
+      "path": "build\\full-port\\camera_binding-check",
+      "bytes": 42611344
+    },
+    {
+      "path": "build\\full-port\\movement-check",
+      "bytes": 42519024
+    }
+  ],
+  "total_bytes": 170960896,
+  "preserved": "Compile cache, genuine emulator artifact, native results and raw logs"
+}

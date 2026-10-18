@@ -1,0 +1,38 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+Using GLES2 video driver
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+OpenGL ES 2D Batching: ON
+Batching Options:
+	max_join_item_commands 16
+	colored_vertex_format_threshold 0.25
+	batch_buffer_effective_size 16384
+	light_scissor_area_threshold 1
+	item_reordering_lookahead 4
+	light_max_join_items 32
+	single_rect_fallback False
+	debug_flash False
+	diagnose_frame False
+ 
+CORE API HASH: 1922975809339680405
+EDITOR API HASH: 1307865197627434137
+Loading resource: res://probe.gd
+Loaded builtin certs
+scene player probe started
+input open 0
+input parse 0
+loading world
+Loading resource: res://world.gd
+Loading resource: res://player.gd
+Loading resource: res://follower.gd
+
+Debugger Break, Reason: 'Parser Error: The assigned value doesn't have a set type; the variable type can't be inferred.'
+*Frame 0 - res://world.gd:27 in function ''
+Enter "help" for assistance.
+debug> world script loaded
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'new' in base 'GDScript'.'
+*Frame 0 - res://probe.gd:20 in function 'run'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Parse Error: The assigned value doesn't have a set type; the variable type can't be inferred.
+          at: GDScript::reload (res://world.gd:27)

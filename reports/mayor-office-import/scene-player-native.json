@@ -1,0 +1,550 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": {
+        "scene": 1,
+        "position": [
+          136,
+          809
+        ],
+        "direction": [
+          0,
+          1
+        ]
+      },
+      "before": {
+        "tap": true,
+        "running": false,
+        "speed": 64,
+        "velocity": [
+          0.25,
+          -0.5
+        ],
+        "substantial": false,
+        "previous_toggle": true,
+        "run_sound": "wood",
+        "camera_offset": [
+          1,
+          -2
+        ],
+        "shaker": 40
+      },
+      "after": {
+        "tap": true,
+        "running": false,
+        "speed": 64,
+        "velocity": [
+          0.25,
+          -0.5
+        ],
+        "substantial": false,
+        "previous_toggle": true,
+        "run_sound": "wood",
+        "camera_offset": [
+          1,
+          -2
+        ],
+        "shaker": 40
+      },
+      "same_player": true,
+      "same_camera": true,
+      "same_shaker": true,
+      "old_freed": true,
+      "disabled_during": true,
+      "enabled_after": true,
+      "local_position": [
+        136,
+        809
+      ],
+      "global_position": [
+        236,
+        759
+      ],
+      "direction": [
+        0,
+        1
+      ],
+      "expected_direction": [
+        0,
+        1
+      ],
+      "parent": "YSort",
+      "persistent_retained": true,
+      "params": 0,
+      "ui_updates": 1,
+      "left": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "case": {
+        "scene": 2,
+        "position": [
+          8,
+          9
+        ],
+        "direction": [
+          0,
+          -1
+        ]
+      },
+      "before": {
+        "tap": false,
+        "running": true,
+        "speed": 65,
+        "velocity": [
+          1.25,
+          -1.5
+        ],
+        "substantial": true,
+        "previous_toggle": false,
+        "run_sound": "stone",
+        "camera_offset": [
+          2,
+          -3
+        ],
+        "shaker": 41
+      },
+      "after": {
+        "tap": false,
+        "running": true,
+        "speed": 65,
+        "velocity": [
+          1.25,
+          -1.5
+        ],
+        "substantial": true,
+        "previous_toggle": false,
+        "run_sound": "stone",
+        "camera_offset": [
+          2,
+          -3
+        ],
+        "shaker": 41
+      },
+      "same_player": true,
+      "same_camera": true,
+      "same_shaker": true,
+      "old_freed": true,
+      "disabled_during": true,
+      "enabled_after": true,
+      "local_position": [
+        8,
+        9
+      ],
+      "global_position": [
+        8,
+        9
+      ],
+      "direction": [
+        0,
+        -1
+      ],
+      "expected_direction": [
+        0,
+        -1
+      ],
+      "parent": "Objects",
+      "persistent_retained": true,
+      "params": 1,
+      "ui_updates": 2,
+      "left": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "case": {
+        "scene": 0,
+        "position": [
+          520,
+          397
+        ],
+        "direction": [
+          0,
+          0
+        ]
+      },
+      "before": {
+        "tap": true,
+        "running": true,
+        "speed": 66,
+        "velocity": [
+          2.25,
+          -2.5
+        ],
+        "substantial": false,
+        "previous_toggle": false,
+        "run_sound": "wood",
+        "camera_offset": [
+          3,
+          -4
+        ],
+        "shaker": 42
+      },
+      "after": {
+        "tap": true,
+        "running": true,
+        "speed": 66,
+        "velocity": [
+          2.25,
+          -2.5
+        ],
+        "substantial": false,
+        "previous_toggle": false,
+        "run_sound": "wood",
+        "camera_offset": [
+          3,
+          -4
+        ],
+        "shaker": 42
+      },
+      "same_player": true,
+      "same_camera": true,
+      "same_shaker": true,
+      "old_freed": true,
+      "disabled_during": true,
+      "enabled_after": true,
+      "local_position": [
+        520,
+        397
+      ],
+      "global_position": [
+        520,
+        397
+      ],
+      "direction": [
+        0,
+        -1
+      ],
+      "expected_direction": [
+        0,
+        -1
+      ],
+      "parent": "Objects",
+      "persistent_retained": true,
+      "params": 2,
+      "ui_updates": 3,
+      "left": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "case": {
+        "scene": 1,
+        "position": [
+          1144,
+          263
+        ],
+        "direction": [
+          -1,
+          0
+        ]
+      },
+      "before": {
+        "tap": false,
+        "running": false,
+        "speed": 67,
+        "velocity": [
+          3.25,
+          -3.5
+        ],
+        "substantial": true,
+        "previous_toggle": true,
+        "run_sound": "stone",
+        "camera_offset": [
+          4,
+          -5
+        ],
+        "shaker": 43
+      },
+      "after": {
+        "tap": false,
+        "running": false,
+        "speed": 67,
+        "velocity": [
+          3.25,
+          -3.5
+        ],
+        "substantial": true,
+        "previous_toggle": true,
+        "run_sound": "stone",
+        "camera_offset": [
+          4,
+          -5
+        ],
+        "shaker": 43
+      },
+      "same_player": true,
+      "same_camera": true,
+      "same_shaker": true,
+      "old_freed": true,
+      "disabled_during": true,
+      "enabled_after": true,
+      "local_position": [
+        1144,
+        263
+      ],
+      "global_position": [
+        1244,
+        213
+      ],
+      "direction": [
+        -1,
+        0
+      ],
+      "expected_direction": [
+        -1,
+        0
+      ],
+      "parent": "YSort",
+      "persistent_retained": true,
+      "params": 3,
+      "ui_updates": 4,
+      "left": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "case": {
+        "scene": 2,
+        "position": [
+          8,
+          -39
+        ],
+        "direction": [
+          1,
+          0
+        ]
+      },
+      "before": {
+        "tap": true,
+        "running": true,
+        "speed": 68,
+        "velocity": [
+          4.25,
+          -4.5
+        ],
+        "substantial": false,
+        "previous_toggle": false,
+        "run_sound": "wood",
+        "camera_offset": [
+          5,
+          -6
+        ],
+        "shaker": 44
+      },
+      "after": {
+        "tap": true,
+        "running": true,
+        "speed": 68,
+        "velocity": [
+          4.25,
+          -4.5
+        ],
+        "substantial": false,
+        "previous_toggle": false,
+        "run_sound": "wood",
+        "camera_offset": [
+          5,
+          -6
+        ],
+        "shaker": 44
+      },
+      "same_player": true,
+      "same_camera": true,
+      "same_shaker": true,
+      "old_freed": true,
+      "disabled_during": true,
+      "enabled_after": true,
+      "local_position": [
+        8,
+        -39
+      ],
+      "global_position": [
+        8,
+        -39
+      ],
+      "direction": [
+        1,
+        0
+      ],
+      "expected_direction": [
+        1,
+        0
+      ],
+      "parent": "Objects",
+      "persistent_retained": true,
+      "params": 4,
+      "ui_updates": 5,
+      "left": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "case": {
+        "scene": 0,
+        "position": [
+          0,
+          0
+        ],
+        "direction": [
+          0,
+          0
+        ]
+      },
+      "before": {
+        "tap": false,
+        "running": true,
+        "speed": 69,
+        "velocity": [
+          5.25,
+          -5.5
+        ],
+        "substantial": true,
+        "previous_toggle": false,
+        "run_sound": "stone",
+        "camera_offset": [
+          6,
+          -7
+        ],
+        "shaker": 45
+      },
+      "after": {
+        "tap": false,
+        "running": true,
+        "speed": 69,
+        "velocity": [
+          5.25,
+          -5.5
+        ],
+        "substantial": true,
+        "previous_toggle": false,
+        "run_sound": "stone",
+        "camera_offset": [
+          6,
+          -7
+        ],
+        "shaker": 45
+      },
+      "same_player": true,
+      "same_camera": true,
+      "same_shaker": true,
+      "old_freed": true,
+      "disabled_during": true,
+      "enabled_after": true,
+      "local_position": [
+        0,
+        0
+      ],
+      "global_position": [
+        0,
+        0
+      ],
+      "direction": [
+        1,
+        0
+      ],
+      "expected_direction": [
+        1,
+        0
+      ],
+      "parent": "Objects",
+      "persistent_retained": true,
+      "params": 5,
+      "ui_updates": 6,
+      "left": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    }
+  ]
+}

@@ -43,6 +43,9 @@ public:
 // knockback, teleport, attacks, relay, interaction or presentation callbacks.
 // Invalid inputs/backend results leave state unchanged. This is not M0 motion.
 bool advance_walk(WalkState& state, WalkInput input, const MotionSolver& solver,const RoomView& content,WalkAudioCalls* audio=nullptr);
+// Transport an existing source Player: zero direction retains its facing.
+// This validates the transport domain only, not admission to a gameplay room.
+bool relocate_walk(const WalkState&,Vec2 position,Vec2 direction,WalkState& result);
 // controlsManager._get_vector_sign, including round-before-sign behavior.
 // Upstream `threshold := 0` infers an integer argument in Godot 3.6.
 bool controls_vector(Vec2 input, int32_t threshold, Vec2& result);

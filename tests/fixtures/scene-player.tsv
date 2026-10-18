@@ -1,0 +1,7 @@
+# case x y input_dir_x input_dir_y dir_x dir_y tap running speed vel_x vel_y substantial previous_toggle run_sound camera_x camera_y shaker
+0	136	809	0	1	0	1	1	0	64	0.25	-0.5	0	1	wood	1	-2	40
+1	8	9	0	-1	0	-1	0	1	65	1.25	-1.5	1	0	stone	2	-3	41
+2	520	397	0	0	0	-1	1	1	66	2.25	-2.5	0	0	wood	3	-4	42
+3	1144	263	-1	0	-1	0	0	0	67	3.25	-3.5	1	1	stone	4	-5	43
+4	8	-39	1	0	1	0	1	1	68	4.25	-4.5	0	0	wood	5	-6	44
+5	0	0	0	0	1	0	0	1	69	5.25	-5.5	1	0	stone	6	-7	45

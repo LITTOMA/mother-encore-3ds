@@ -50,6 +50,10 @@ public:
     bool initialize(const RoomView& content,Vec2 viewport={400,240});
     // Construct on a fresh owner; the caller commits that owner only after all initialization succeeds.
     bool initialize_restored(const RoomView&,const std::vector<bool>& story_flags,const std::vector<bool>&reviewed_mutations,Vec2 position,Vec2 direction,Vec2 viewport={400,240});
+    // A fully prepared paused destination adopts the same Player/camera only
+    // after copied camera data and source compatibility pass. Failure preserves
+    // both worlds; success retires old callbacks that could write the Player.
+    bool adopt_scene_player(OpeningWorld& source,Vec2 position,Vec2 direction,std::string& error);
     bool accept_battle_entry();
     bool begin_house_program(uint32_t program_index,uint32_t original_npc=kRoomNoIndex);
     bool begin_battle_continuation(std::string_view source_path);

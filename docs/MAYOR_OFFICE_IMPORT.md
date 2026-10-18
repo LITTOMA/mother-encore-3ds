@@ -151,3 +151,12 @@ AudioPlayer增加只读实际bank和配置generation；重新初始化、换播�
 持久玩家准备阶段先移除摄像机对旧Room缓冲的借用：当前只需的camera-area记录和6个参数在受检加载后由摄像机持有。所有数值仍来自二进制资源，不加入游戏调参常量。新rebind_scene只重绑场景边界；玩家自身Shaker／offset／恢复时钟保留，旧场景actor cameras清理。未准备、空Room、坏位置／视口、正在跟随Actor／移动或不同玩家摄像机参数均拒绝，失败保留原相机。
 
 Room原缓冲销毁后继续定位／震动，以及重绑真实Mayor候选后再次销毁来源缓冲，共866项GCC9 ASan/UBSan通过；原Camera原生轨迹7,246项、持久玩家基础42项、World与步区569、Mayor剧情3,735、MOVE2,308回归通过，未改原轨迹预期。仍只是持久交接的前置所有权修正，实际跨场景玩家激活／摄像机切换未接入主程序，不宣称完整生命周期已完成。
+
+
+真实SceneTransition._deferred_goto_scene和单人global辅助函数现有6次原引擎换场结果：Objects／YSort父节点选择、局部position、非零方向更新／零方向保留、相同Player／Camera2D／Shaker与额外persistent节点、碰撞关→开、旧场景释放、参数／UI／leave_for顺序，以及opaque tap_run／running／speed／velocity／substantial／run_sound值保留。真实House／Podunk／Mayor父变换均为单位变换；额外带(100,-50)的YSort只用于证明局部坐标规则。玩家方向、碰撞函数原文执行；blend_position只作参数更新语义审查，动画、Shaker脚本、门淡入／音乐与多人跟随没有在此探针中执行。
+
+初次注入global数组缺少原版的推断类型，使create_party_followers的:=无法推断；未开debug时工具只见超时，开启debug定位原错误。修正wrapper为来源一致的Array／Node类型，原函数不改；再修正外部scene_changed声明的精确unused_signal注解及在发射信号的调用栈退出后释放对象。没有全局关闭警告或放宽引擎错误门；原失败日志、最终原生结果和收据留存，所有临时原生项目均自动清理。
+
+共享核心新增显式受检交接：只有独立、健康、已暂停且无Actor／战斗接管的目标才能接收；逐项匹配资源路径／SHA／尺寸、Hull、Profile、全部规则、方向表和动作帧绑定，再复制／重绑摄像机边界，最后转移同一玩家对象。失败不写任一玩家或退役旧World；成功后旧World不可再执行移动／方向／pause／身份／camera回调，目标保留tap/run、速度、边沿和Shaker。新Scene Player 247项GCC9 ASan/UBSan通过，原移动5,499／持久所有者42／camera绑定866项通过，相关Python12项通过。第一次跑步夹具起点撞墙，导致tap_run按来源正确停止；改用明确无墙的机制夹具点，未改游戏规则或源结果。主程序换场尚未调用该交接，不能据此称正常游戏生命周期已修复。
+
+4fc70e2对应完整Clang普通与ASan/UBSan各184项全部通过，保留默认泄漏检查；console真实3DSX／CIA及包内核对也通过。76ae06d的真实console任务亦通过，原始日志已保存。以上精确提交不覆盖后续camera绑定和本次Player交接；记录时GCC完整任务仍运行。Mayor入口、跨bank音乐、模拟器与真机仍未验收，PR继续草稿。

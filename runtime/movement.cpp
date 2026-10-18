@@ -35,6 +35,15 @@ bool FreeMotionSolver::slide(Vec2 position,Vec2 velocity,SlideResult& result) co
     if(!finite(target)||!finite(velocity))return false;
     result={target,velocity};return true;
 }
+bool relocate_walk(const WalkState& state,Vec2 position,Vec2 direction,WalkState& result){
+    const auto facing=zero(direction)?state.direction:direction;
+    const float x=std::abs(facing.x),y=std::abs(facing.y);
+    const bool grid=(x==0||x==1)&&(y==0||y==1)&&!zero(facing);
+    const bool diagonal=x==y&&std::abs(x-std::sqrt(.5f))<1e-6f;
+    if(!finite(position)||!finite(facing)||!finite(state.position)||!finite(state.velocity)||!std::isfinite(state.speed)||state.speed<=0||
+       (!grid&&!diagonal)||uint8_t(state.animation)>uint8_t(MotionAnimation::Crouch))return false;
+    auto next=state;next.position=position;next.direction=facing;result=next;return true;
+}
 bool advance_walk(WalkState& state,WalkInput input,const MotionSolver& solver,const RoomView& content,WalkAudioCalls* audio) {
     if(!content.valid()||!valid(state,content)||input.x<-1||input.x>1||input.y<-1||input.y>1)return false;
     WalkState s=state;WalkAudioCalls calls;

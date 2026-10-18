@@ -32,6 +32,14 @@ class MayorField(unittest.TestCase):
   for mutate in [lambda p:p['static_sprites'].append('missing'),lambda p:p['actor_bindings'][0].update(path='missing'),lambda p:p['actor_bindings'][0].update(scene='Nodes/Overworld/Door.tscn'),lambda p:p['static_sprites'].append('Doors')]:
    recipe=copy.deepcopy(self.recipe);mutate(recipe)
    with self.assertRaises(f.FieldError):f.Model(recipe)
+ def test_effective_visible_collision_source_order(self):
+  source=f.Sources().text('Scripts/Main/npc.gd')
+  ready=source.split('func _ready():',1)[1].split('func _physics_process',1)[0]
+  self.assertLess(ready.index('$CollisionShape2D.disabled = true'),ready.rfind('update_visibility_changed()'))
+  self.assertTrue(ready.strip().endswith('update_visibility_changed()'))
+  visibility=source.split('func update_visibility_changed():',1)[1].split('func ',1)[0]
+  self.assertIn('collisions.disabled = !is_visible_in_tree()',visibility)
+  self.assertEqual(sum(bool(self.model.scene.by_path[a['path']].props.get('no_collision',False))for a in self.recipe['actor_bindings']),3)
  def test_candidate_paths_and_output_owner(self):
   root=f.ROOT/'build'/'candidate-path-test'
   for path in ['', '../escape', '/absolute', 'C:'+chr(92)+'outside', 'x'+chr(92)+'outside']:

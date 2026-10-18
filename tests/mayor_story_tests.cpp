@@ -2,6 +2,9 @@
 #include "encore/dialogue_choices.hpp"
 #include "encore/crc32.hpp"
 #include "encore/content.hpp"
+#include "encore/localization.hpp"
+#include "encore/new_game_setup.hpp"
+#include "encore/native_session.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <set>
@@ -50,6 +53,22 @@ int main(int argc,char**argv){
  for(bool badge:{false,true}){FieldScene s;auto v=badge?flags({"courage_badge_received"}):flags({});prepare(s,4,v);CHECK(s.try_interaction(true,error));CHECK(s.world.pending_dialogue_id()==2005);CHECK(s.world.finish_story_dialogue());if(!badge){CHECK(s.world.pending_dialogue_id()==2006);CHECK(s.world.finish_story_dialogue());}tick(s);CHECK(s.world.stage()==OpeningStage::Walking);unchanged(s,v);}
  for(unsigned owner:{0u,1u}){FieldScene s;auto v=owner?flags({"pippi_rescued"}):flags({"zoo_freed"});prepare(s,owner,v);CHECK(s.try_interaction(true,error));CHECK(s.phase()==FieldPhase::Unsupported&&s.world.house_paused()&&s.world.pending_dialogue_id()==UINT32_MAX);CHECK(s.error().find(owner?"mayor_pippi_rescue":"abbott_2")!=std::string::npos);unchanged(s,v);CHECK(s.idle_frame(1.0/60,true));CHECK(s.phase()==FieldPhase::Walking&&!s.world.house_paused());}
  {FieldScene s;auto v=flags({"pippi_delivered","zoo_freed"});prepare(s,2,v);CHECK(s.try_interaction(true,error));CHECK(s.world.pending_dialogue_id()==2004);CHECK(s.world.finish_story_dialogue());tick(s);unchanged(s,v);}
+ {
+  HouseData house;BattleData font;LocaleCatalog locales;NewGameSetupData names_data;NativeSessionData session;
+  CHECK(house.load_file((romfs+"/world/house/opening.enchouse").c_str(),error));CHECK(font.load_file((romfs+"/battle/lamp/opening.encbattle").c_str(),error));CHECK(locales.load_file((romfs+"/localization/localization.enclocale").c_str(),error));CHECK(names_data.load_file((romfs+"/ui/opening.encnewgame").c_str(),error));CHECK(session.load_file((romfs+"/session/opening.encsession").c_str(),error));
+  LocaleSelection locale;CHECK(locale.bind(locales,error)&&locale.select("en",error));SourceRandom random(991);HousePresentation box;CHECK(box.begin(house.view(),font.view(),random));
+  FieldScene s;auto v=flags({});prepare(s,1,v);CHECK(s.try_interaction(true,error));const auto text=story.dialogue(2001,"en");LocalizedHouseSpan body;
+  CHECK(format_field_story_span(story.text(text.body),names_data,session.defaults(),locale,body,error));body.speaker=std::string(story.text(text.speaker));CHECK(box.present_external(body,story.text(text.voice)));DialogueChoices choices;uint32_t generation=0;
+  CHECK(prepare_field_story_choices(s.world,story,choices,generation,error));CHECK(generation==s.world.story_generation());CHECK(!prepare_field_story_choices(s.world,story,choices,generation,error));
+  {DialogueChoices early;uint32_t early_generation=0;CHECK(prepare_field_story_choices(s.world,story,early,early_generation,error));CHECK(early.text_completed(error));CHECK(early.step(1.0/60,{0,0,true,false},error));DialogueChoicesEvent early_event;CHECK(early.poll_event(early_event));CHECK(!select_field_story_choice(s.world,story,box,early,early_event.target_pc,early_generation,error));CHECK(s.world.pending_dialogue_id()==2001&&!box.dialogue_finished());}
+  unsigned waits=0,ticks=0;
+  for(;ticks<6000&&!box.dialogue_finished();++ticks){CHECK(box.advance_chrome(1.0/60)&&box.advance_dialogue(1.0/60));CHECK(choices.phase()==DialogueChoicesPhase::WaitingText);
+   if(box.dialogue_stopped()){++waits;const auto visible=box.visible_characters();for(unsigned i=0;i<15;++i)CHECK(box.advance_dialogue(1.0/60));CHECK(box.visible_characters()==visible);box.input(true,false,true,true);}
+  }
+  CHECK(ticks<6000&&box.dialogue_finished()&&waits>0);CHECK(choices.text_completed(error));CHECK(choices.step(1.0/60,{1,0,false,false},error));CHECK(choices.step(1.0/60,{0,0,true,false},error));DialogueChoicesEvent event;bool selected=false;
+  while(choices.poll_event(event))if(event.kind==DialogueChoicesEventKind::Selected){const auto visible=box.visible_characters();CHECK(!select_field_story_choice(s.world,story,box,choices,event.target_pc,generation+1,error));CHECK(box.visible_characters()==visible&&s.world.pending_dialogue_id()==2001);CHECK(!select_field_story_choice(s.world,story,box,choices,UINT32_MAX,generation,error));CHECK(box.visible_characters()==visible);CHECK(select_field_story_choice(s.world,story,box,choices,event.target_pc,generation,error));selected=true;}
+  CHECK(selected&&choices.phase()==DialogueChoicesPhase::Closed&&s.world.pending_dialogue_id()==2003&&box.visible_characters()==0);CHECK(s.world.finish_story_dialogue());tick(s);unchanged(s,v);
+ }
  std::vector<uint8_t>bytes;CHECK(encore::read_file(file("mayor-initial.encstory").c_str(),bytes,128*1024,error));const auto at=get(bytes,64+5*16+4),choice=get(bytes,64+6*16+4);
  auto reject=[&](std::vector<uint8_t>b){sign(b);CHECK(!data.load(b.data(),b.size(),error));CHECK(data.view().choices()&&data.view().choices()->groups().size()==1);};
  for(unsigned cap:{1u,2u,4u}){auto b=bytes;put(b,20,cap);reject(b);}

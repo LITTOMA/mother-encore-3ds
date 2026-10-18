@@ -33,6 +33,7 @@ public:
  bool can_start(upstream::FieldStoryView story,uint32_t programme,std::string& error)override{
   const auto* scene=mick_host_field();if(!scene){error="Field story owner is unavailable";return false;}const auto room=scene->world.content();if(programme>=room.program_count()){error="Field programme is not admitted";return false;}const auto program=room.program(programme);
   for(uint32_t i=0;i<program.command_count;++i){const auto command=room.command(program.first_command+i);if(command.opcode==uint16_t(upstream::DialogueActionKind::ShowDialogue)){const auto text=story.dialogue(command.target_index,locale_selection.code());std::string speaker;upstream::LocalizedHouseSpan body;if(!text.id||!upstream::format_field_story_text(story.text(text.speaker),new_game_data,session_state,locale_selection,speaker,error)||!upstream::format_field_story_span(story.text(text.body),new_game_data,session_state,locale_selection,body,error)){if(error.empty())error="Field programme locale/name is not admitted";return false;}}}
+  if(story.choices()&&!choice_renderer.supports(*story.choices(),error))return false;
   const auto binding=story.encounter_for_programme(programme);if(!binding.battle){error.clear();return true;}
   uint32_t index=UINT32_MAX;for(uint32_t i=0;i<room.battle_count();++i)if(room.battle(i).stable_id==binding.battle)index=i;
   if(index==UINT32_MAX||!session_rewards_valid){error="Field battle session is unavailable";return false;}
@@ -46,20 +47,41 @@ public:
 }field_story_host;
 bool prepare_field_story_audio(const upstream::FieldSceneResources& resources,std::string& error){
  const auto room=resources.room();const auto story=resources.story();std::set<std::string>sources;
+ if(const auto*choices=story.choices()){
+  if(!choice_renderer.supports(*choices,error))return false;
+  for(const auto&group:choices->groups())for(const auto&option:group.options)if(locale_selection.text(option.translation_key).status==upstream::TranslationStatus::MissingKey){error="Field story option locale is missing";return false;}
+  for(const auto sound:{upstream::DialogueChoiceSound::Move,upstream::DialogueChoiceSound::Accept,upstream::DialogueChoiceSound::Cancel})sources.emplace(choices->sound(sound));
+ }
  for(uint32_t i=0;i<room.resource_count();++i)if(room.resource(i).kind==2)sources.emplace(room.string(room.resource(i).path_string));
  for(uint32_t i=0;i<story.text_count();++i){const auto text=story.text_record(i);if(text.voice.length)sources.emplace(story.text(text.voice));}
  for(uint32_t i=0;i<room.battle_count();++i){const auto battle=room.battle(i);const auto binding=story.encounter(battle.stable_id);if(binding.battle){sources.emplace(story.text(binding.music));const auto path=companion_path("romfs:/"+std::string(room.string(room.resource(battle.battle_resource_index).path_string)));upstream::BattleRoundData round;if(path.empty()||!round.load_file(path.c_str(),error))return false;if(round.view().version()>=6)sources.emplace(round.view().string(round.view().loot().sound));}}
  for(const auto& source:sources)if(!prepare_source_audio(source,error))return false;error.clear();return true;
 }
-bool advance_field_story(double delta,bool accept,bool cancel,std::string& error){
- auto&world=field_scene->world;auto&box=gameplay_scene->presentation;const auto story=field_scene->story();const auto id=world.pending_dialogue_id();bool fresh=false;
+bool advance_field_story(double delta,bool accept,bool cancel,int horizontal,bool choice_input,std::string& error){
+ auto&world=field_scene->world;auto&box=gameplay_scene->presentation;const auto story=field_scene->story();
+ std::vector<upstream::DialogueChoicesEvent>choice_events;const auto*choice_source=dialogue_choices.data();
+ if(dialogue_choices.active()){
+  if(!dialogue_choices.step(delta,{choice_input?horizontal:0,0,choice_input&&accept,choice_input&&cancel},error))return false;
+  upstream::DialogueChoicesEvent event;while(dialogue_choices.poll_event(event)){
+   if(event.kind==upstream::DialogueChoicesEventKind::Selected){
+    if(!upstream::select_field_story_choice(world,story,box,dialogue_choices,event.target_pc,field_story_choices_generation,error))return false;
+    field_story_text=UINT32_MAX;
+   }
+   choice_events.push_back(event);
+  }
+ }
+ const auto id=world.pending_dialogue_id();bool fresh=false;
  if(id!=UINT32_MAX&&id!=field_story_text){const auto text=story.dialogue(id,locale_selection.code());if(!text.id){error="Field story locale/text is missing";return false;}std::string speaker;upstream::LocalizedHouseSpan body;if(!upstream::format_field_story_text(story.text(text.speaker),new_game_data,session_state,locale_selection,speaker,error)||!upstream::format_field_story_span(story.text(text.body),new_game_data,session_state,locale_selection,body,error))return false;body.speaker=speaker;if(!box.present_external(body,story.text(text.voice))){error=box.error();return false;}field_story_text=id;fresh=true;}
+ if(world.story_choices_waiting()&&dialogue_choices.phase()==upstream::DialogueChoicesPhase::Closed&&!upstream::prepare_field_story_choices(world,story,dialogue_choices,field_story_choices_generation,error))return false;
  if(id!=UINT32_MAX&&!fresh&&!box.dialogue_closing()){
   if(!box.dialogue_finished())box.input(accept,cancel);
+  else if(world.story_choices_waiting()&&dialogue_choices.phase()==upstream::DialogueChoicesPhase::WaitingText){if(!dialogue_choices.text_completed(error))return false;box.set_choice_rows(story.choices()->trailing_blank_lines());}
   else if(world.story_input_allowed()){box.input(accept,cancel,true,true);if(box.take_dialogue_advance()&&!world.finish_story_dialogue()){error="Field story continuation rejected";return false;}}
  }
  for(bool sound:world.take_story_hides()){if(!sound){error="Silent field dialogue close is not admitted";return false;}if(box.dialogue_active()&&!box.dialogue_closing())box.close_story_dialogue();}
- if(world.stage()==upstream::OpeningStage::Walking){field_story_text=UINT32_MAX;if(box.dialogue_active()&&!box.dialogue_closing())box.close_story_dialogue();}
+ if(world.stage()==upstream::OpeningStage::Walking){field_story_text=UINT32_MAX;dialogue_choices.close();if(box.dialogue_active()&&!box.dialogue_closing())box.close_story_dialogue();}
  if(!world.set_story_talking(id!=UINT32_MAX&&box.talking())){error="Field story talking owner rejected";return false;}
- if(box.dialogue_active()&&!box.advance_chrome(delta)){error=box.error();return false;}error.clear();return true;
+ if(box.dialogue_active()&&!box.advance_chrome(delta)){error=box.error();return false;}
+ for(const auto&event:choice_events)if(choice_source&&!play_source_audio(choice_source->sound(event.sound))){error=audio_status;return false;}
+ error.clear();return true;
 }

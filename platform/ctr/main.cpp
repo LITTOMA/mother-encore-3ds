@@ -667,7 +667,7 @@ upstream::WorldLinksData world_links;
 // Declare metadata before the borrower so ordinary teardown destroys the scene first.
 std::unique_ptr<upstream::FieldSceneResources> field_resources;
 upstream::BattleLoot battle_loot;
-uint32_t field_story_text=UINT32_MAX;
+uint32_t field_story_text=UINT32_MAX,field_story_choices_generation=0;
 std::unique_ptr<upstream::FieldScene> field_scene;
 OpeningActorRenderer field_actor;
 FieldRenderer field_renderer;
@@ -1829,6 +1829,10 @@ void field_dialogue_overlay(){
     const auto canvas=house_data.view().parameter(upstream::HouseParameter::DisplayReference);
     const auto pose=gameplay_scene->presentation.dialogue_pose();
     if(!house_renderer.draw_dialogue(pose,battle_renderer,float(view_width)-canvas.x,float(view_height)-canvas.y,view_x(),view_y())){field_status="World dialogue renderer rejected checked pose";return;}
+    if(pose.visible&&dialogue_choices.active()){
+        const float x=view_x()+pose.box.x+pose.anchor.x*(float(view_width)-canvas.x),y=view_y()+pose.box.y+pose.anchor.y*(float(view_height)-canvas.y);
+        if(!choice_renderer.draw(dialogue_choices,battle_renderer,x,y))field_status="Field story choices renderer rejected pose";
+    }
     if(!pose.visible||field_scene->phase()!=upstream::FieldPhase::MickTalk||!field_scene->mick().waiting_choice()||!gameplay_scene->presentation.dialogue_finished()||gameplay_scene->presentation.dialogue_closing())return;
     if(choice_data.groups().empty()||choice_data.groups().front().options.size()<2){field_status="Dialogue choice layout is not loaded";return;}
     const double loop=choice_data.arrow_loop_seconds();uint32_t frame=0;const double anim=loop>0?std::fmod(field_choice_clock,loop):0;
@@ -1981,8 +1985,9 @@ int main(int argc,char** argv){
     // and issue a session token rather than hashing/packing arbitrary IDs.
     const auto field_choice_ready=[&]{
         const auto& box=gameplay_scene->presentation;
-        return in_field()&&field_scene->phase()==upstream::FieldPhase::MickTalk&&
-            field_scene->mick().waiting_choice()&&box.dialogue_finished()&&!box.dialogue_closing();
+        return in_field()&&box.dialogue_finished()&&!box.dialogue_closing()&&
+            ((field_scene->phase()==upstream::FieldPhase::MickTalk&&field_scene->mick().waiting_choice())||
+             (field_scene->world.story_choices_waiting()&&dialogue_choices.active()));
     };
     using InputOwner=std::array<uint32_t,14>;
     InputOwner prior_input_owner{};bool have_input_owner=false;uint32_t input_owner_token=0;
@@ -2092,7 +2097,7 @@ int main(int argc,char** argv){
             auto& box=gameplay_scene->presentation;
             bool text_accept=false;int choice_delta=0;
             const bool field_input_allowed=world_input&&input_context()==sampled_context;
-            if(field_scene->phase()!=upstream::FieldPhase::MickTalk&&(field_scene->world.cutscene_active()||field_story_text!=UINT32_MAX||box.dialogue_closing())){const bool accept=field_input_allowed&&((down&KEY_A)!=0||native_controls.confirm_pulse);if(!advance_field_story(dt,accept,field_input_allowed&&(down&KEY_B),field_status)){} }
+            if(field_scene->phase()!=upstream::FieldPhase::MickTalk&&(field_scene->world.cutscene_active()||field_story_text!=UINT32_MAX||box.dialogue_closing())){const bool accept=field_input_allowed&&((down&KEY_A)!=0||native_controls.confirm_pulse);if(!advance_field_story(dt,accept,field_input_allowed&&(down&KEY_B),field_navigation.x,field_choice_input,field_status)){} }
             const bool back=field_input_allowed&&(down&KEY_B)!=0;
             if(world_visible&&field_scene->phase()==upstream::FieldPhase::MickTalk){
                 const bool latched=field_scene->talk_accept_latched();
@@ -2102,7 +2107,7 @@ int main(int argc,char** argv){
                 if(box.dialogue_active()&&!box.dialogue_closing()&&!box.dialogue_finished())box.input(accept,!latched&&back);
                 else if(choosing){choice_delta=field_navigation.x;text_accept=accept;}
                 else if(field_scene->mick().state()==upstream::MickProgramState::WaitingText&&box.dialogue_finished()){box.input(accept,false,true,true);text_accept=box.take_dialogue_advance();}
-            }else box.set_choice_rows(0);
+            }else if(!field_scene->world.story_choices_waiting())box.set_choice_rows(0);
             const bool choice_typing=field_scene->phase()==upstream::FieldPhase::MickTalk&&field_scene->mick().waiting_choice()&&!box.dialogue_finished();
             if(world_visible&&field_scene->phase()!=upstream::FieldPhase::Error&&!field_scene->idle_frame(dt,back&&!choice_typing,text_accept,choice_delta))field_status=field_scene->error();
             if(field_scene->phase()==upstream::FieldPhase::MickTalk){
@@ -2251,7 +2256,7 @@ int main(int argc,char** argv){
                 if(introduction.complete()){wait_for_gpu_idle();introduction.close();introduction_renderer.free();native_input.reset();menu_navigation.reset();field_choice_navigation.reset();accumulator=0;}
             }
         }
-        if(dialogue_choices.active()){
+        if(!in_field()&&dialogue_choices.active()){
             const bool confirm=same_input_owner&&((down&KEY_A)!=0||native_controls.confirm_pulse),cancel=same_input_owner&&(down&KEY_B)!=0;
             if(!dialogue_choices.step(dt,{navigation.x,navigation.y,confirm,cancel},error))house_error=error;
             upstream::DialogueChoicesEvent event;

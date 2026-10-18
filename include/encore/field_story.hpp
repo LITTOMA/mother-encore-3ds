@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 namespace encore::upstream {
-class NewGameSetupData;class LocaleSelection;struct SessionSnapshot;
+class NewGameSetupData;class LocaleSelection;class OpeningWorld;class DialogueChoices;struct SessionSnapshot;
 // Checked source character tags; literal nicknames never become templates.
 bool format_field_story_text(std::string_view,const NewGameSetupData&,const SessionSnapshot&,const LocaleSelection&,std::string&,std::string&);
 bool format_field_story_span(std::string_view,const NewGameSetupData&,const SessionSnapshot&,const LocaleSelection&,LocalizedHouseSpan&,std::string&);
@@ -36,6 +36,10 @@ private:
  uint32_t count(uint32_t section)const;
  const uint8_t*bytes_=nullptr;size_t size_=0;const DialogueChoicesData* choices_=nullptr;
 };
+// Shared field UI handoff; the caller owns real text completion, fresh input,
+// rendering and audio. Selection clears old text before dispatching its target.
+bool prepare_field_story_choices(OpeningWorld&,FieldStoryView,DialogueChoices&,uint32_t&generation,std::string&);
+bool select_field_story_choice(OpeningWorld&,FieldStoryView,HousePresentation&,DialogueChoices&,uint32_t pc,uint32_t generation,std::string&);
 class FieldStoryData {
 public:
  bool load(const uint8_t*,size_t,std::string&);

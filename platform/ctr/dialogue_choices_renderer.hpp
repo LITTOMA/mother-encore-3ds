@@ -18,14 +18,21 @@ public:
   data_=&data;return true;
  }
  void free(){arrow_.free();data_=nullptr;}
+ bool supports(const encore::upstream::DialogueChoicesData&data,std::string&error)const{
+  if(!data_||!data.valid()){error="Dialogue choice renderer is not prepared";return false;}
+  const auto&a=data_->arrow_resource();const auto&b=data.arrow_resource();
+  if(a.path!=b.path||a.width!=b.width||a.height!=b.height||a.columns!=b.columns||a.rows!=b.rows||data_->font_path()!=data.font_path()){error="Field choices require unavailable UI textures";return false;}
+  error.clear();return true;
+ }
  bool draw(const encore::upstream::DialogueChoices&choices,const BattleRenderer&font,float box_x,float box_y)const{
   const auto pose=choices.pose();if(!pose.visible)return true;
-  if(!data_||choices.data()!=data_||!choices.group())return false;
-  const auto grid=data_->grid();const auto color=data_->text_color();
+  const auto*active=choices.data();std::string why;
+  if(!active||!choices.group()||!supports(*active,why))return false;
+  const auto grid=active->grid();const auto color=active->text_color();
   for(const auto&option:choices.group()->options){const auto r=option.rect;const auto text=locale_?std::string(locale_->text(option.translation_key).text):option.text;
-   if(!font.draw_text(text.c_str(),std::floor(box_x+grid.x+r.x+.5f),std::floor(box_y+grid.y+r.y+(r.h-data_->font_height())/2+.5f),1,1,color))return false;
+   if(!font.draw_text(text.c_str(),std::floor(box_x+grid.x+r.x+.5f),std::floor(box_y+grid.y+r.y+(r.h-active->font_height())/2+.5f),1,1,color))return false;
   }
-  const auto geometry=data_->arrow_geometry();return arrow_.draw_sprite(0,pose.arrow_frame,std::floor(box_x+pose.arrow_x-geometry.w/2+.5f),std::floor(box_y+pose.arrow_y-geometry.h/2+.5f),geometry.w,geometry.h,color);
+  const auto geometry=active->arrow_geometry();return arrow_.draw_sprite(0,pose.arrow_frame,std::floor(box_x+pose.arrow_x-geometry.w/2+.5f),std::floor(box_y+pose.arrow_y-geometry.h/2+.5f),geometry.w,geometry.h,color);
  }
  // The reviewed two-option Dialoguebox/Options cells. Every checked pair uses the same rects.
  bool draw_pair(std::string_view left,std::string_view right,float rect_x,float rect_y,uint32_t frame,const BattleRenderer& font,float box_x,float box_y)const{

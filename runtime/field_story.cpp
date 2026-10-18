@@ -3,6 +3,8 @@
 #include "encore/crc32.hpp"
 #include "encore/utf8.hpp"
 #include "encore/dialogue.hpp"
+#include "encore/world.hpp"
+#include "encore/dialogue_choices.hpp"
 #include "encore/new_game_setup.hpp"
 #include <cstring>
 #include <cmath>
@@ -45,6 +47,26 @@ bool format_field_story_span(std::string_view input,const NewGameSetupData&names
   at=close+1;
  }
  if(color)return reject("Unclosed field hint color");push(false);if(result.segments.size()>128)return reject("Field dialogue segment capacity");out=std::move(result);error.clear();return true;
+}
+bool prepare_field_story_choices(OpeningWorld&world,FieldStoryView story,DialogueChoices&choices,uint32_t&generation,std::string&error){
+ auto reject=[&](const char*why){error=why;return false;};
+ if(!world.healthy()||!story.valid()||story.scene_id()!=world.content().scene().stable_id||!world.story_choices_waiting()||!story.choices()||choices.phase()!=DialogueChoicesPhase::Closed)return reject("Field story choices owner is not ready");
+ const auto room=world.content();const auto programme=room.program(world.story_program_index());
+ DialogueChoices candidate;
+ if(!candidate.prepare(*story.choices(),world.pending_choice_group(),room.string(programme.source_path_string),programme.command_count,error))return false;
+ const auto*group=candidate.group();auto target=[&](uint32_t pc){return pc>=world.story_next_command_index()&&pc<programme.command_count&&(pc==0||room.command(programme.first_command+pc-1).phrase!=room.command(programme.first_command+pc).phrase);};
+ if(!group||!target(group->cancel_target_pc))return reject("Field choice cancel is not a forward phrase entry");
+ for(const auto&option:group->options)if(!target(option.target_pc))return reject("Field choice target is not a forward phrase entry");
+ choices=std::move(candidate);generation=world.story_generation();error.clear();return true;
+}
+bool select_field_story_choice(OpeningWorld&world,FieldStoryView story,HousePresentation&box,DialogueChoices&choices,uint32_t pc,uint32_t generation,std::string&error){
+ auto reject=[&](const char*why){error=why;return false;};
+ if(!world.healthy()||!story.valid()||story.scene_id()!=world.content().scene().stable_id||!world.story_choices_waiting()||!box.dialogue_finished()||box.dialogue_closing()||!story.choices()||choices.data()!=story.choices()||choices.phase()!=DialogueChoicesPhase::Resolved||generation!=world.story_generation())return reject("Stale field story choice owner");
+ const auto*group=choices.group();bool found=group&&group->cancel_target_pc==pc;if(group)for(const auto&o:group->options)found|=o.target_pc==pc;
+ if(!found)return reject("Field story choice target is not admitted");
+ box.clear_story_text();choices.close();
+ if(!world.choose_story_option(pc,generation))return reject("Field story choice continuation rejected");
+ error.clear();return true;
 }
 uint32_t FieldStoryView::count(uint32_t s)const{return bytes_&&s>=1&&s<=u32(bytes_+52)?u32(bytes_+64+(s-1)*16+8):0;}
 const uint8_t*FieldStoryView::record(uint32_t s,uint32_t i)const{return i<count(s)?bytes_+u32(bytes_+64+(s-1)*16+4)+i*u32(bytes_+64+(s-1)*16+12):nullptr;}

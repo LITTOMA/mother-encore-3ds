@@ -319,3 +319,12 @@ mayor_scene.py 现在把既有来源生成器组合为明确的 assets / compile
 初次暂存发现本地旧Present和Mick纹理收据缺失：完整内容DAG只编译其内容，真实3DS目标才会转换其纹理；本地已调用同一真实tex3ds补齐后暂存成功。初次新测试编译缺显式头/调用了不存在的RoomView方法，已修正；旧目录数量与capability断言和场景内门禁令按新发布范围更新，旧capability1同场景拒绝改用冻结旧fixture继续验证。人工steps fixture改用冻结cap8目录作为基线，避免与真实Mayor的1030重复身份；它仍明确是把Mayor steps故意绑定到Podunk的隔离格式测试，不算原版游戏。未改来源trace。失败、最终输出及语义差异记录分别保存。
 
 Root全局音乐程序 / 多库服务仍为未接线候选。Mayor初始场景暂用已有场景MusicRegionService，其跨场景共享节点、暂停清理等已知近似没有因此宣称修复。新地图与音频的实际主程序表现、正常入场/内部门/对话/START菜单/返回/重复触发仍须由新构建在Azahar验证；Old/New3DS硬件和可听性仍未验收。最新main再次核对为f20defb，唯一开放PR为本#67草稿。
+
+
+## 完整回归的隔离测试输入修复（2026-10-19）
+
+07ea6e8真实ARM/3DSX/CIA与361项包内资源通过（run39166886229，job117791586451）。完整Clang普通检查197/200通过，3项失败，因此sanitizer阶段未运行：field_route_warp把旧假路由3追加到已存在真实路由3的图；field_data新增冻结旧fixture的相对路径，但该CTest未指定源码工作目录；world_run_audio的人工两场景图复制了仍要求真实TownHall路由3的新Podunk地图。保留完整失败日志clang-07ea6e8-failure.log。
+
+修正：warp测试保留完整真实5段场景图，并为人工内部warp分配下一未使用ID；field_data显式使用源码工作目录，旧cap1负例仍保留；人工脚步fixture从原生成器重新编译旧两场景路由的地图，与其隔离图一致，仍故意把Mayor steps标为Podunk2。没有修改发货地图、关闭未知检查或改变trace期望。四项受影响目标的本地GCC9 ASan/UBSan已通过，原始输出分别保存；完整矩阵需新提交重跑。
+
+新07游戏已下载并核对3DSX SHA-256 b6140c82a9a4d5f9e6cec7f8c4047a9c641ab9cb679f1062a589c4ca2e8bb368，262,159,244字节。Git源元数据/ZIP成员CRC/构建收据一致，未下载整包计算ZIP摘要；已清理192,937,984字节分块。首次Azahar正常LOAD、House往返、Goods、桥头战斗/奖励和区域音乐暂停恢复完成后，观察脚本反复读取已暂停的奇数seqlock导致失败，未到Mayor。暂停线程无法靠墙钟等待完成写入；候选读取改用有界的一帧正常执行，第二轮正在运行，尚无Mayor通过声明。完整驱动快照、观察及失败结果保留在build/emulator-regression/mayor-initial-en-1。

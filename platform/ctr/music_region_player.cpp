@@ -8,7 +8,7 @@
 namespace encore::ctr {namespace {
 // Per-voice leases let old source fades outlive their scene while the next
 // scene starts. No adapter may reset or reuse another adapter's live channel.
-std::array<MusicRegionPlayer*,MusicRegionPlayer::maximum_voices>channel_owners{};
+auto&channel_owners=region_channel_pool::owners();
 bool fail(std::string&e,const char*m){e=m;return false;}}
 bool MusicRegionPlayer::begin_prepare(const char*bank,const char*root,const upstream::MusicRegionData&regions,uint32_t capacity,bool available,float master,std::string&e){
  if(prepared_||preparing_||capacity_)return fail(e,"Music region adapter already prepared; use a detached candidate");

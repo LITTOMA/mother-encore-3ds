@@ -1,12 +1,13 @@
 #pragma once
 #include "encore/audio_data.hpp"
 #include "encore/world.hpp"
+#include "region_channel_pool.hpp"
 #include <3ds.h>
 #include <array>
 #include <string>
 
 namespace encore::ctr {
-enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5, Text=6, Phone=7 };
+enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5, Text=6, Phone=7, Run=8 };
 // Read-only snapshot of the existing bounded Music owner, not a inferred
 // source-player graph. generation identifies a successful Music start and never
 // resets across scene stop/reset/reinitialize; inactive snapshots retain it.
@@ -60,18 +61,19 @@ public:
     uint32_t dropped_frames() const{return ready_?ndspGetDroppedFrames():0;}
     uint32_t queued_frames() const{return queued_frames_;}
 private:
-    static constexpr uint32_t lane_count=8,buffer_count=3,buffer_frames=2048;
+    static constexpr uint32_t lane_count=9,buffer_count=3,buffer_frames=2048;
     struct Voice {
         upstream::AudioAsset asset{};
         upstream::AudioFade fade;
         std::array<ndspWaveBuf,buffer_count> waves{};
         int16_t* samples=nullptr;
-        uint32_t asset_index=0;
+        uint32_t asset_index=0,channel=region_channel_pool::capacity;
         bool active=false,fading=false,stop_after_fade=false,repeat=false,paused=false;
     };
     bool prepare_index(uint32_t index,std::string& error);
     bool refill(uint32_t lane,std::string& error);
-    void stop(uint32_t lane);
+    void stop(uint32_t lane,bool release_channel=true);
+    int hardware_channel(uint32_t lane)const;
     void mix(uint32_t lane);
     upstream::AudioBank bank_;
     std::string asset_root_;

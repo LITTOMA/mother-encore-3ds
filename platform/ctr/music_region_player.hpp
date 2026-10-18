@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/music_regions.hpp"
+#include "region_channel_pool.hpp"
 #include <3ds.h>
 #include <array>
 #include <cmath>
@@ -7,11 +8,12 @@
 namespace encore::ctr {
 enum class MusicPreparationStep:uint8_t {Progress,Ready,Failed};
 // Existing AudioPlayer owns NDSP, channels0..3 and global master volume.
-// Regional voices lease distinct channels4..19 across active/draining scenes.
+// Regional voices lease distinct channels4..19 across active/draining scenes,
+// sharing that pool with the optional named run stream.
 // Prepared candidates own no channels. Shut down before the AudioPlayer owner.
 class MusicRegionPlayer {
 public:
- static constexpr uint32_t first_channel=4,maximum_voices=16;
+ static constexpr uint32_t first_channel=region_channel_pool::first_channel,maximum_voices=region_channel_pool::capacity;
  static constexpr uint32_t maximum_prepare_bytes=64*1024;
  MusicRegionPlayer()=default;~MusicRegionPlayer(){shutdown();}
  MusicRegionPlayer(const MusicRegionPlayer&)=delete;

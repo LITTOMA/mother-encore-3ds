@@ -1,0 +1,8 @@
+{
+  "status": "interrupted",
+  "cause": "doll_melody true with phone_ring false activates the original Cutscene Area4 / carol_call at the exit. Normal-input driver requires a walking checkpoint and cannot use this artificial variant. Interrupted before testing return.",
+  "game_source": "387885bd87861e829c9e436094d8dfe2ae012cf6",
+  "driver_revision": "2cbedc1",
+  "not_a_game_failure": true,
+  "next_fixture": "Separate --post-phone-melody variant sets both source flags, leaving original baseline checkpoint unchanged."
+}

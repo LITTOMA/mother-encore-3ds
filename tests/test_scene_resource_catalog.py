@@ -1,10 +1,15 @@
 """Schema fixtures only: no upstream scene or console build claims."""
 import copy,struct,unittest,zlib
+from pathlib import Path
 from unittest.mock import patch
 from tools import resource_catalog as c
 class SceneCatalogCodec(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.base=c.load_catalog()
+ def setUpClass(cls):
+  cls.base=copy.deepcopy(c.load_catalog())
+  # Freeze the pre-Mayor schema baseline: shipping now uses capability10 and
+  # owns the synthetic IDs that these independent capability tests append.
+  cls.base['bindings']=c.decode((Path(__file__).parent/'fixtures/catalog-cap8.encresources').read_bytes())['bindings']
  def extra(self):
   p=copy.deepcopy(self.base)
   for id,role,ext in [(1024,'FieldRoom','encroom'),(1025,'FieldMap','encmap'),(1026,'FieldStory','encstory')]:p['bindings'].append(dict(id=id,role=role,path='world/fixture/'+role+'.'+ext))

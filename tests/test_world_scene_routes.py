@@ -20,7 +20,8 @@ class Routes(unittest.TestCase):
   self.assertEqual(scene,0);self.assertEqual(len(sections[1])//24,3);self.assertEqual(len(sections[2])//84,6)
   self.assertEqual(len(sections[3])//36,2);self.assertEqual(len(sections[4])//4,7)
  def test_legacy_route_semantics_unchanged(self):
-  model=f.Model(f.load_recipe())
+  legacy=copy.deepcopy(f.load_recipe());legacy.pop('route_recipe');legacy['routes']=legacy['routes'][:2]
+  model=f.Model(legacy)
   self.assertEqual(self.proof['routes'][:2],model.route_rows)
  def test_legacy_schema1_retains_capability2(self):
   recipe=copy.deepcopy(self.recipe);recipe['schema']=1

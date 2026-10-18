@@ -1,0 +1,7 @@
+test_exact_source_and_unique_embedded_metadata (tests.test_emulator_artifact.ArtifactMetadata.test_exact_source_and_unique_embedded_metadata) ... ok
+test_unknown_source_paths_and_missing_duplicate_data_rejected (tests.test_emulator_artifact.ArtifactMetadata.test_unknown_source_paths_and_missing_duplicate_data_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+OK

@@ -190,3 +190,10 @@ b739c6a真实产物经实际ZIP成员CRC、build receipt及3DSX SHA核对，实�
 新的11组原生Godot结果执行未改的MusicChanger与22个必要AudioManager函数，并记录真实source streams／原导入loop-offset、停止／静音／最早匹配／旧Tween行为。音频字节从上游复制到临时项目后重新导入，仅在强引用Resource缓存中恢复并核对原循环参数；Pollyanna的8.771秒偏移不能当作默认0。首轮直接拷贝旧.import因缺缓存被拒绝；整份manager中未执行的便利函数有原版unused参数警告，缩为实际依赖闭包，函数原文哈希保持一致，没有关闭警告或放宽错误门。早期“最早匹配”夹具只有1个停止节点，该节点被front合法重用，未覆盖目标条件；改为保留两个真实节点并增加前置检查，失败输入／日志保留。
 
 共享选择／音量属性对照334项GCC9 ASan/UBSan，旧区域控制器／parser4,087项及Python来源／坏结果3项通过。独立sample_music_tween覆盖原线性／quartic属性；尚未改旧controller的计算或主程序音乐入口。这不包含跨bank物理流所有权、全局清理／finished信号和实际NDSP播放器接线；这些仍是Mayor入口发布之前的待完成工作。实际新文件的3DS编译与最新完整矩阵需分别记录，不能继承feaf887通过。
+
+
+全局loop播放器的属性／生命周期现由独立MusicPlayers持有源URI、节点身份、播放代次、属性Tween和延迟删除队列，不借用场景或bank数据。新12组真实AudioManager序列确认：最后一个显式remove在tree_exited后补空节点；clear_all_music本身不补；queue_free等待边界前节点仍可寻址；stop／直接音量写入／等值fadeto均保留Tween；不同目标fadeto替换；渐弱等全部共享Tween结束后统一删除已停／静音节点。保持帧末删除，且原空节点默认音量由实际初始观察传入。
+
+原探针发现同帧play后立刻stop，底层尚未开始的音频命令可能在后续帧显为playing；停止分支改为先等待两次idle让真实音频稳定，再执行原stop。该异步底层行为不属于纯逻辑播放器的已验收范围，原始输出留存。首轮共享Tween测试错误地假设完成信号恰在0.1秒；真实帧可跨过该时刻，且信号先于本帧其它Tween属性更新。探针在同帧结束冻结、下一idle观察，C++使用记录的真实Tween时钟输入，而非修改原输出或容差掩盖不同时间；旧失败日志和各次原始输出均保留。
+
+MusicPlayers的11组既有选择与12组生命周期、字符串所有权、容量／未准备／坏值／错误身份／策略不匹配、失败保留状态等1,255项GCC9 ASan/UBSan通过；旧选择334和旧区域4,087项通过，相关Python来源／结果负例6项通过。新类尚未接入实际NDSP／跨bank服务；finished、命名／bus、暂停和完整AudioManager API没有借此宣称完成。清理本轮3个已完成主机可执行文件，保留编译缓存和日志。7d09e45的真实3DSX／CIA console构建已通过；该结果先于本次生命周期类，不能作为新文件交叉构建证明。

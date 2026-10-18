@@ -1,0 +1,1461 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": {
+        "name": "remove_last_recreates_empty",
+        "actions": [
+          [
+            "remove",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "remove_two_in_order",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "remove",
+            1
+          ],
+          [
+            "flush"
+          ],
+          [
+            "remove",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 2,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "clear_does_not_recreate",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "clear"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "clear_then_add_before_deletion",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "clear"
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": true
+            },
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": true
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "queued_player_remains_addressable",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "remove",
+            0
+          ],
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "volume",
+            0,
+            6
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "stop_retains_stream_and_tween",
+        "actions": [
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "volume",
+            0,
+            6
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "stop",
+            0
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": false,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "volume_write_retains_tween",
+        "actions": [
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "volume",
+            0,
+            6
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "volume",
+            0,
+            0
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "equal_fadeto_retains_fadeout",
+        "actions": [
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "volume",
+            0,
+            6
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "fadeto",
+            0,
+            6,
+            0.2
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "changed_fadeto_replaces_fadeout",
+        "actions": [
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "volume",
+            0,
+            6
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "volume",
+            0,
+            0
+          ],
+          [
+            "fadeto",
+            0,
+            6,
+            0.2
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "fadeout_waits_for_other_player",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "volume",
+            1,
+            -6
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "fadeto",
+            1,
+            6,
+            0.3
+          ],
+          [
+            "first_complete"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -6,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -6,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -6,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -2,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "stopped_other_player_is_cleaned",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "stop",
+            1
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 1
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "remove_twice_and_clear",
+        "actions": [
+          [
+            "remove",
+            0
+          ],
+          [
+            "remove",
+            0
+          ],
+          [
+            "clear"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": true
+            }
+          ],
+          "waiting": 0
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "waiting": 0
+        }
+      ]
+    }
+  ]
+}

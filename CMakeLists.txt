@@ -8,7 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
-    runtime/field_menus_data.cpp runtime/field_menus.cpp
+    runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
     runtime/house_inspection_data.cpp
@@ -484,6 +484,11 @@ if(BUILD_TESTING)
  add_executable(encore_music_regions_tests tests/music_regions_tests.cpp)
  target_link_libraries(encore_music_regions_tests PRIVATE encore_core)
  add_test(NAME music_regions COMMAND encore_music_regions_tests ${CMAKE_SOURCE_DIR}/romfs/sound/banks/podunk.encmusic ${CMAKE_SOURCE_DIR}/romfs/sound/banks/podunk.encaudio)
+ add_executable(encore_field_steps_tests tests/field_steps_tests.cpp)
+ target_link_libraries(encore_field_steps_tests PRIVATE encore_core)
+ add_test(NAME field_steps COMMAND encore_field_steps_tests ${CMAKE_SOURCE_DIR}/tests/fixtures)
+ add_test(NAME field_steps_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_field_footsteps)
+ set_tests_properties(field_steps field_steps_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
  add_executable(encore_field_area_tests tests/field_area_tests.cpp)
  target_link_libraries(encore_field_area_tests PRIVATE encore_core)
  add_test(NAME field_area COMMAND encore_field_area_tests ${CMAKE_SOURCE_DIR}/tests/fixtures ${CMAKE_SOURCE_DIR}/romfs)

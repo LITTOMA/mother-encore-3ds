@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_footsteps.py", line 121, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_footsteps.py", line 106, in main
+    ap=argparse.ArgumentParser();ap.add_argument('--out',type=Path,required=True);ap.add_argument('--audio',action='store_true');ap.add_argument('--ffmpeg',default='ffmpeg');ap.add_argument('--ffprobe',default='ffprobe');o=ap.parse_args();out=o.out.resolve();require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Footstep candidates must stay under build');p,m,proof=source();blob=encode(m);parse(blob);out.mkdir(parents=True,exist_ok=True)
+                                                                                                                                                                                                                                                                                                                                                                                        ^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_footsteps.py", line 34, in source
+    p=policy(file);files=f.Sources(ROOT);recipe=f.load_recipe(ROOT/p['field_recipe']);scene=f.Scene(files,recipe);ex=files.extractor
+      ^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_footsteps.py", line 30, in policy
+    fields(s,'name id pcm','sound binding');require(type(s['name'])is str and re.fullmatch('[a-z][a-z0-9_]{0,31}',s['name'])and s['name']not in names and type(s['id'])is int and 0<s['id']<2**32 and s['id']not in ids and (packed or safe(s['pcm'])and s['pcm'].startswith('sound/effects/')and s['pcm'].endswith('.pcm'))and s['pcm']not in paths,'Footstep sound identity/path');names.add(s['name']);ids.add(s['id']);paths.add(s['pcm'])
+                                                                                                                                                                                                                             ^^^^^^
+NameError: name 'packed' is not defined

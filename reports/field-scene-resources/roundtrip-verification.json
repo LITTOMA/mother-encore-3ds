@@ -1,0 +1,42 @@
+{
+  "game_source": "387885bd87861e829c9e436094d8dfe2ae012cf6",
+  "latest_test_driver": "3a6f5f3e00f86c2bb748db975b44ebec8298822f",
+  "production_game_directories_unchanged": true,
+  "silent_original_checkpoint": {
+    "passed": true,
+    "expected_house_music": [],
+    "source_flags": {
+      "doll_melody": false,
+      "good_morning": false,
+      "poltergeist": false,
+      "doll_defeated": false
+    }
+  },
+  "post_phone_melody_checkpoint": {
+    "passed": true,
+    "expected_house_music": "res://Audio/Music/House.mp3",
+    "artificial_variant_adds_flags": [
+      "doll_melody",
+      "phone_ring"
+    ]
+  },
+  "both_routes": [
+    "Normal LOAD",
+    "Exit House",
+    "Return House",
+    "Source-conditional DSP music or silence",
+    "Re-enter field and DSP progress",
+    "Stable flags, inventory UID, equipment, stats and preferences",
+    "START Goods",
+    "Actual bridge battle and music pause/resume",
+    "Mom help and repeat",
+    "Idempotent revisit",
+    "West road"
+  ],
+  "profile_cleaned": true,
+  "new_game_natural_run": false,
+  "hardware": false,
+  "artificial_snapshots_core_checked": true,
+  "baseline_fixture_unchanged": true,
+  "game_3dsx_sha256": "009685154cef60213d82a7f264d340e8cc03de07129a4e64fd62d8d44b03608d"
+}

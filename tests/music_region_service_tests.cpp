@@ -131,6 +131,14 @@ int main(int argc,char**argv){
  check(service.handoff_prepared(empty,retiring,e)&&service.phase()==ctr::MusicRegionServicePhase::Dormant,"explicit silent destination retains old prepared owner for cleanup");retiring.shutdown();
  check(!empty.begin_prepare("not-a-pack",argv[4],argv[5],8,owner,e),"bad next metadata fails without replacing current owner");
  check(service.cancel_preparation(e)&&service.phase()==ctr::MusicRegionServicePhase::Dormant,"prepared cache can be discarded safely");
+ // Source door-stop metadata changes are silent until the normal audio update.
+ ctr::MusicRegionService door;
+ check(owner.stop_lane(ctr::AudioLane::Music,e)&&complete_prepare(door,argv[3],argv[4],argv[5],8,owner,e)&&door.commit_scene(9,owner,e)&&door.area_enter(9,"Music/MusicArea",ctx,owner,e)&&door.update(0,owner,e),"door source fixture starts actual regional voice");
+ const auto door_queues=queues;const auto door_calls=mutations+owner_calls,door_files=file_opens;
+ check(!door.stop_on_door(9,-1,e)&&door.stop_on_door(999,.8,e)&&door.stop_on_door(9,.8,e),"door stop rejects bad duration and ignores stale owner");
+ check(queues==door_queues&&mutations+owner_calls==door_calls&&file_opens==door_files&&door.live_voice_count()==1,"door metadata callback performs no NDSP/IO/restart");
+ check(door.update(.2,owner,e)&&door.tree_exit(9,"Music/MusicArea",e)&&door.finish_scene(9,e)&&door.update(.6,owner,e),"door-specific fade survives later tree exit without restart");
+ check(door.phase()==ctr::MusicRegionServicePhase::Prepared&&door.live_voice_count()==0&&queues[4].empty(),"door fade ends at its source duration, not a fresh tree-exit duration");door.shutdown();
  const auto previous=owner.observe_music().generation;owner.shutdown();check(!owner.observe_music().available&&!owner.observe_music().playing&&owner.observe_music().generation==previous,"shutdown observation truthful without identity reuse");
  check(owner.initialize(argv[1],argv[2],e)&&owner.play(34,ctr::AudioLane::Music,e)&&owner.observe_music().generation>previous,"reinitialize does not reuse identity");owner.shutdown();
  check(linear_bytes==0,"all owner and service buffers released");

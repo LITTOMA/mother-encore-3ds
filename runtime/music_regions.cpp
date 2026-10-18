@@ -100,6 +100,14 @@ bool MusicRegionController::tree_exit(uint64_t epoch,std::string_view p,std::str
  if(epoch!=epoch_){e.clear();return true;}int i=region(p);if(i<0)return fail(e,"Unbound music area tree exit");auto&s=states_[i];if(s.registered)stop(uint32_t(i),data_->regions()[i].fadeout_seconds);s.inside=false;s.pending_exit=false;pending_exits_.erase(std::remove(pending_exits_.begin(),pending_exits_.end(),uint32_t(i)),pending_exits_.end());e.clear();return true;}
 bool MusicRegionController::idle_frame(uint64_t epoch,std::string&e){if(!data_||!epoch_)return fail(e,"Music region controller has no scene");
  if(epoch!=epoch_){e.clear();return true;}auto pending=std::move(pending_exits_);pending_exits_.clear();for(auto i:pending){auto&s=states_[i];s.pending_exit=false;if(!s.inside)stop(i,data_->regions()[i].fadeout_seconds);}e.clear();return true;}
+bool MusicRegionController::stop_on_door(uint64_t epoch,double seconds,std::string&e){
+ if(!data_||!epoch_)return fail(e,"Door music requires an attached scene");
+ if(epoch!=epoch_){e.clear();return true;}
+ if(!std::isfinite(seconds)||seconds<0||seconds>60)return fail(e,"Door music fade duration rejected");
+ auto next=*this;
+ for(size_t cursor=0;cursor<next.registered_.size();++cursor){const auto region=next.registered_[cursor];next.stop(region,seconds);}
+ *this=std::move(next);e.clear();return true;
+}
 void MusicRegionController::detach_dead(int slot){for(auto&s:states_)if(s.voice==slot)s.voice=-1;voices_[slot]={};}
 bool MusicRegionController::advance(double delta,bool external_tween_active,std::string&e){
  if(!data_||!std::isfinite(delta)||delta<0)return fail(e,"Invalid music region delta/data");

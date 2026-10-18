@@ -56,6 +56,9 @@ public:
  bool enter(uint64_t,std::string_view,const MusicRegionContext&,std::string&);
  bool exit(uint64_t,std::string_view,const MusicRegionContext&,std::string&);
  bool tree_exit(uint64_t,std::string_view,std::string&);
+ // SceneTransition iterates the live registration array while stop_music erases
+ // its current member. Preserve the source skip/ordering, not a copied list.
+ bool stop_on_door(uint64_t,double seconds,std::string&);
  bool idle_frame(uint64_t,std::string&);
  // Main audio-manager tweens must be counted for source tween_all_completed.
  bool advance(double delta,bool external_tween_active,std::string&);

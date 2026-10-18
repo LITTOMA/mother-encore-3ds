@@ -1270,7 +1270,13 @@ void process_scene_door_events(){
             // Door._set_flag writes globaldata.flags directly; no flags_updated signal.
             auto& world=in_field()?field_scene->world:gameplay_scene->world;
             if(!world.set_story_flag(e.text,e.value,false))field_status="Door flag write rejected";
-        }else if(e.kind==K::FadeMusic){std::string error;if(audio_player.available()&&!audio_player.fade_music(e.seconds,error))audio_status=error;}
+        }else if(e.kind==K::FadeMusic){std::string error;
+            if(audio_player.available()){
+                if(in_field()){
+                    if(region_music.phase()==ctr::MusicRegionServicePhase::Active&&!region_music.stop_on_door(field_music_epoch,e.seconds,error))audio_status=error;
+                }else if(!audio_player.fade_music(e.seconds,error))audio_status=error;
+            }
+        }
         else if(e.kind==K::PlaySound){++door_sound_requests;if(!e.text.empty())play_source_audio(std::string(e.text));}
         else if(e.kind==K::Unpause){
             if(in_field()){if(!field_scene->finish_transition())field_status=field_scene->error();}

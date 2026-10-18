@@ -62,4 +62,9 @@ a8168a9 的真实控制台构建在 field_story.hpp 编译处失败：play_sourc
 
 Town Hall 音乐候选现从原 MusicChanger 类／实例默认值与真实矩形编译：MusicArea、Town Hall.mp3、+6dB、淡入1秒／淡出1.5秒；PCM自身增益0，保留原 import 循环。实际 FFmpeg 解码产生5,345,280字节 PCM，源／import／解码器与命令／输出 SHA 保留；配套 Audio225、Music246、Zones77字节。只有 build 下的候选与小型测试元数据夹具，原 Podunk producer 和发行音频未变。
 
-原 Zones v1 专限 Music/ 路径，真实 Mayor 根节点 MusicArea 触发共享 C++ 拒绝。新增 ENCZON01 v2 明确允许安全的通用场景路径且必须实际使用新特性，v1原限制保持，未知3、降级、伪升级、坏路径与截断均拒绝并保留旧对象；没有改名伪造来源节点。456项 GCC9 ASan/UBSan 检查包含真实音源绑定／空间、重复进入、原淡出与 all-tweens 完成后释放；6项 Python 来源／编码／负向检查、旧 MusicRegions4,087项和 GameplayAudio 回归通过。首次来源工具属性名错误、测试 loops accessor 错误、v1真实拒绝与淡出后测试误读已释放 voice 均保留记录。此处不宣称可听性；在开放 Mayor 前还须完成跨场景的区域音乐首播放器淡出／共享顺序、区域元数据与实际入场验证。
+原 Zones v1 专限 Music/ 路径，真实 Mayor 根节点 MusicArea 触发共享 C++ 拒绝。新增 ENCZON01 v2 明确允许安全的通用场景路径且必须实际使用新特性，v1原限制保持，未知3、降级、伪升级、坏路径与截断均拒绝并保留旧对象；没有改名伪造来源节点。456项 GCC9 ASan/UBSan 检查包含真实音源绑定／空间、重复进入、原淡出与 all-tweens 完成后释放；6项 Python 来源／编码／负向检查、旧 MusicRegions4,087项和 GameplayAudio 回归通过。首次来源工具属性名错误、测试 loops accessor 错误、v1真实拒绝与淡出后测试误读已释放 voice 均保留记录。此处不宣称可听性；在开放 Mayor 前还须完成跨场景的原 MusicChanger 注册列表停止顺序及全局音乐身份、区域元数据与实际入场验证。
+
+
+门口音乐已按固定来源重新核对：SceneTransition 在遮罩开始前遍历 audioManager.musicChangers，MusicChanger.stop_music 从同一个数组删除自己；Godot 实际遍历因此跳过交替项。原生基准执行未改的门处理前缀和停止方法，0至6个区域／跨场景／同场景／禁用淡出共21种注册结果。共享核心保持该顺序、门指定的淡出长度以及已注销区域在 tree_exiting 不重启默认淡出的行为；旧 first-player 描述不准确，已更正，固定上游未变。此局部基准注入空 attached_player，仅证明注册次序；音量／释放由独立核心与平台双件验证，不把注入服务称为整场景原生运行。
+
+共享核心259项、NDSP 双件播放器774／服务1,058／分步准备46,894项与9项 Python检查通过。坏时长不修改现场，旧场景 epoch 无害，停止回调不做文件读取或立即改变 NDSP 队列。平台在 begin 后、idle_frame 和 perform_scene_swap 前消费 FadeMusic，故使用的是原场景音乐身份；切换后的事件只有解锁与结束声音。1f53e91 的实际3DSX／CIA构建已通过（run39124130097），a8168a9 的编译失败日志保留。2ffd16b控制台任务亦成功，不能据此声明 Mayor 已可进入或真机通过。

@@ -32,6 +32,7 @@ public:
  bool commit_scene(uint64_t epoch,const AudioPlayer&,std::string&);
  bool area_enter(uint64_t,std::string_view,const upstream::MusicRegionContext&,const AudioPlayer&,std::string&);
  bool area_exit(uint64_t,std::string_view,const upstream::MusicRegionContext&,std::string&);
+ bool stop_on_door(uint64_t,double seconds,std::string&);
  bool idle_frame(uint64_t,std::string&);
  bool tree_exit(uint64_t,std::string_view,std::string&);
  bool finish_scene(uint64_t,std::string&);

@@ -74,7 +74,7 @@
     "Hardware audibility",
     "Pixel or Godot PCM byte equality",
     "Mayor scene entry or completed whole game",
-    "Cross-scene regional first-player fade and shared global music identity (still requires integration review)"
+    "Shared global cross-bank music identity remains under integration review; source Door MusicChanger stop loop is separately reviewed in door-music-stop-review.json"
   ],
   "source_sha256": {
     "tools/field_scene_music.py": "6bd84b7b74f6056992e1ca954aa0ed1a3a66f6d555e380133a73dfb84f3d9f10",

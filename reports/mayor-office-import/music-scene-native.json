@@ -1,0 +1,7325 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": {
+        "name": "podunk_to_mayor",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "MusicArea"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea13",
+            "Music/MusicArea12",
+            "Music/MusicArea11",
+            "Music/MusicArea10",
+            "Music/MusicArea6",
+            "Music/MusicArea4",
+            "Music/MusicArea2",
+            "Music/MusicArea9",
+            "Music/MusicArea8",
+            "Music/MusicArea7",
+            "Music/MusicArea5",
+            "Music/MusicArea3",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "rapid_podunk_mayor_podunk",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "MusicArea"
+          ],
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea13",
+            "Music/MusicArea12",
+            "Music/MusicArea11",
+            "Music/MusicArea10",
+            "Music/MusicArea6",
+            "Music/MusicArea4",
+            "Music/MusicArea2",
+            "Music/MusicArea9",
+            "Music/MusicArea8",
+            "Music/MusicArea7",
+            "Music/MusicArea5",
+            "Music/MusicArea3",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            },
+            {
+              "id": 2,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 2,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            },
+            {
+              "id": 2,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 2,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 2,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 2,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "stopped_latest_reused_across_banks",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "settle"
+          ],
+          [
+            "stop",
+            "Music/MusicArea",
+            0
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "MusicArea"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea13",
+            "Music/MusicArea12",
+            "Music/MusicArea11",
+            "Music/MusicArea10",
+            "Music/MusicArea6",
+            "Music/MusicArea4",
+            "Music/MusicArea2",
+            "Music/MusicArea9",
+            "Music/MusicArea8",
+            "Music/MusicArea7",
+            "Music/MusicArea5",
+            "Music/MusicArea3",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "shared_song_and_cancelled_exit",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "exit",
+            "Music/MusicArea"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "exit",
+            "Music/MusicArea3"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "MusicArea"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea",
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea",
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea13",
+            "Music/MusicArea12",
+            "Music/MusicArea11",
+            "Music/MusicArea10",
+            "Music/MusicArea6",
+            "Music/MusicArea4",
+            "Music/MusicArea2",
+            "Music/MusicArea9",
+            "Music/MusicArea8",
+            "Music/MusicArea7",
+            "Music/MusicArea5",
+            "Music/MusicArea3",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "door_live_array_skip",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "enter",
+            "Music/MusicArea6"
+          ],
+          [
+            "door",
+            1
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "MusicArea"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea",
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea",
+            "Music/MusicArea3",
+            "Music/MusicArea6"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": true,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea13",
+            "Music/MusicArea12",
+            "Music/MusicArea11",
+            "Music/MusicArea10",
+            "Music/MusicArea6",
+            "Music/MusicArea4",
+            "Music/MusicArea2",
+            "Music/MusicArea9",
+            "Music/MusicArea8",
+            "Music/MusicArea7",
+            "Music/MusicArea5",
+            "Music/MusicArea3",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            },
+            {
+              "id": 2,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 2,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "global_external_latest_same_song",
+        "actions": [
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "MusicArea"
+          ],
+          [
+            "external",
+            1,
+            true,
+            0
+          ],
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "global_external_latest_stopped",
+        "actions": [
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "MusicArea"
+          ],
+          [
+            "external",
+            1,
+            false,
+            0
+          ],
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "ui_and_collision_callbacks",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "context",
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "context",
+            true,
+            true,
+            false,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "context",
+            true,
+            false,
+            true,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "context",
+            true,
+            false,
+            false,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "context",
+            true,
+            true,
+            false,
+            true
+          ],
+          [
+            "exit",
+            "Music/MusicArea"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "context",
+            true,
+            false,
+            false,
+            false
+          ],
+          [
+            "exit",
+            "Music/MusicArea"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "context",
+            true,
+            false,
+            true,
+            true
+          ],
+          [
+            "exit",
+            "Music/MusicArea"
+          ],
+          [
+            "idle"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "source_appear_disappear_flags",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "flag",
+            "canary_melody",
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "enter",
+            "Music/MusicArea10"
+          ],
+          [
+            "flag",
+            "zoo_freed",
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea10"
+          ],
+          [
+            "enter",
+            "Music/MusicArea11"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Canary_Village.mp3",
+              "playing": true,
+              "gain": -6,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Canary_Village.mp3",
+              "playing": true,
+              "gain": -6,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Zoo.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea10"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Canary_Village.mp3",
+              "playing": true,
+              "gain": -6,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Zoo.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea10"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Canary_Village.mp3",
+              "playing": true,
+              "gain": -6,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Zoo.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea10"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Canary_Village.mp3",
+              "playing": true,
+              "gain": -6,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Zoo.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            },
+            {
+              "id": 2,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea10",
+            "Music/MusicArea11"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": true,
+              "attached": 2,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "all_source_areas_exit_before_rebind",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "enter",
+            "Music/MusicArea5"
+          ],
+          [
+            "enter",
+            "Music/MusicArea6"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "MusicArea"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea",
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea",
+            "Music/MusicArea3",
+            "Music/MusicArea5"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea",
+            "Music/MusicArea3",
+            "Music/MusicArea5",
+            "Music/MusicArea6"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea5",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea7",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea8",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea9",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea10",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea11",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea12",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea13",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea13",
+            "Music/MusicArea12",
+            "Music/MusicArea11",
+            "Music/MusicArea10",
+            "Music/MusicArea6",
+            "Music/MusicArea4",
+            "Music/MusicArea2",
+            "Music/MusicArea9",
+            "Music/MusicArea8",
+            "Music/MusicArea7",
+            "Music/MusicArea5",
+            "Music/MusicArea3",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            },
+            {
+              "id": 2,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 2,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Pollyanna.ogg",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            },
+            {
+              "id": 2,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 2,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 2,
+              "stream": "res://Audio/Music/Town Hall.mp3",
+              "playing": true,
+              "gain": 6,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "MusicArea",
+              "inside": true,
+              "attached": 2,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,6 +6,26 @@ namespace {
 bool finite(Vec2 p){return std::isfinite(p.x)&&std::isfinite(p.y);}
 bool valid_delta(double delta){return std::isfinite(delta)&&delta>=0&&delta<=1;}
 }
+bool CutsceneCamera::same_state(const CutsceneCamera&other)const{
+    const auto v=[](Vec2 a,Vec2 b){return a.x==b.x&&a.y==b.y;};
+    if(initialized_!=other.initialized_||current_index_!=other.current_index_||cameras_.size()!=other.cameras_.size()||
+       !v(min_center_,other.min_center_)||!v(max_center_,other.max_center_)||!v(viewport_,other.viewport_)||!v(player_,other.player_))return false;
+    const auto&a=binding_;const auto&b=other.binding_;
+    if(a.default_area!=b.default_area||a.return_seconds!=b.return_seconds||a.shake_step!=b.shake_step||a.minimum_magnitude!=b.minimum_magnitude||
+       a.zero_threshold!=b.zero_threshold||a.shake_weight!=b.shake_weight||a.recovery_seconds!=b.recovery_seconds||a.areas.size()!=b.areas.size())return false;
+    for(size_t i=0;i<a.areas.size();++i){const auto&x=a.areas[i];const auto&y=b.areas[i];if(x.stable_id!=y.stable_id||x.flags!=y.flags||!v(x.center,y.center)||!v(x.extents,y.extents))return false;}
+    for(size_t i=0;i<cameras_.size();++i){
+        const auto&x=cameras_[i];const auto&y=other.cameras_[i];
+        if(!v(x.global,y.global)||!v(x.local,y.local)||!v(x.move_from,y.move_from)||!v(x.move_target,y.move_target)||!v(x.shake,y.shake)||!v(x.offset,y.offset)||
+           !v(x.parent,y.parent)||!v(x.min_center,y.min_center)||!v(x.max_center,y.max_center)||x.actor_id!=y.actor_id||
+           x.move_time!=y.move_time||x.move_duration!=y.move_duration||x.moving!=y.moving||x.paused!=y.paused||x.returning!=y.returning||
+           x.shakes.size()!=y.shakes.size()||x.recoveries.size()!=y.recoveries.size())return false;
+        for(size_t j=0;j<x.shakes.size();++j){const auto&r=x.shakes[j];const auto&s=y.shakes[j];
+            if(r.timer!=s.timer||r.magnitude!=s.magnitude||r.reduction!=s.reduction||r.left!=s.left||r.side!=s.side||!v(r.old,s.old)||!v(r.direction,s.direction))return false;}
+        for(size_t j=0;j<x.recoveries.size();++j){const auto&r=x.recoveries[j];const auto&s=y.recoveries[j];if(r.time!=s.time||r.started!=s.started||!v(r.from,s.from))return false;}
+    }
+    return true;
+}
 bool CutsceneCamera::bind_content(const RoomView&content,bool same){
     if(!content.valid()||!content.camera_area_count()||content.scene().default_camera_area>=content.camera_area_count())return false;
     Binding next;next.default_area=content.scene().default_camera_area;

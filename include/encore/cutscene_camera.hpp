@@ -35,6 +35,8 @@ public:
     bool follows_actor() const { return current_index_!=0; }
     Vec2 global_position() const { return current().global; }
 private:
+    friend class OpeningWorld;
+    bool same_state(const CutsceneCamera&)const;
     struct Shake { double timer=0,magnitude=0,reduction=0; int left=0,side=1; Vec2 old{},direction{}; };
     struct Recovery { double time=0; Vec2 from{}; bool started=false; };
     struct Camera {

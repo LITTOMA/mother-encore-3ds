@@ -6,6 +6,7 @@
 #include "encore/dialogue.hpp"
 #include "encore/actor_actions.hpp"
 #include "encore/persistent_player.hpp"
+#include "encore/scene_player_transfer.hpp"
 #include "encore/room_data.hpp"
 #include "encore/source_random.hpp"
 #include <vector>
@@ -54,6 +55,10 @@ public:
     // after copied camera data and source compatibility pass. Failure preserves
     // both worlds; success retires old callbacks that could write the Player.
     bool adopt_scene_player(OpeningWorld& source,Vec2 position,Vec2 direction,std::string& error);
+    // Prepare before fallible media publication. Commit rejects any intervening
+    // player/camera/frame change and performs no allocation or format loading.
+    bool prepare_scene_player(OpeningWorld& source,Vec2 position,Vec2 direction,ScenePlayerTransfer&,std::string& error);
+    bool commit_scene_player(OpeningWorld& source,ScenePlayerTransfer&&,std::string& error);
     bool accept_battle_entry();
     bool begin_house_program(uint32_t program_index,uint32_t original_npc=kRoomNoIndex);
     bool begin_battle_continuation(std::string_view source_path);

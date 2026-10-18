@@ -82,7 +82,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
 bool OpeningWorld::bind_walk_audio(WalkAudioSink&sink){
  if(!healthy_||walk_audio_||!sink.walk_audio_ready())return false;walk_audio_=&sink;return true;
 }
-bool OpeningWorld::adopt_scene_player(OpeningWorld& source,Vec2 position,Vec2 direction,std::string& error){
+bool OpeningWorld::prepare_scene_player(OpeningWorld& source,Vec2 position,Vec2 direction,ScenePlayerTransfer& result,std::string& error){
     const auto reject=[&](const char*why){error=why;return false;};
     if(this==&source||!healthy_||!source.healthy_||player_read_only_||source.player_read_only_||
        !persistent_player_||!source.persistent_player_||persistent_player_.state_->references_!=1||
@@ -136,12 +136,50 @@ bool OpeningWorld::adopt_scene_player(OpeningWorld& source,Vec2 position,Vec2 di
     const auto selected=walk_clip(player.animation,player.direction);FrameClip clip;
     auto playback=owner.playback_;
     if(!next.frame_clip(selected,clip)||!sample_clip(clip,playback.position,next.clip(selected).frame_count,playback.sample))return reject("Scene player animation transport rejected");
-    // No fallible work remains. Ownership changes without moving the object.
-    auto retained=source.persistent_player_;
-    owner.player_=player;owner.camera_=std::move(camera);owner.playback_=playback;owner.clip_=selected;
-    persistent_player_=std::move(retained);
+    ScenePlayerTransfer prepared;
+    prepared.before_=owner.player_;prepared.player_=player;prepared.before_camera_=owner.camera_;prepared.camera_=std::move(camera);
+    prepared.before_playback_=owner.playback_;prepared.playback_=playback;prepared.before_clip_=owner.clip_;prepared.clip_=selected;
+    prepared.destination_before_=persistent_player_.state_->player_;prepared.destination_camera_=persistent_player_.state_->camera_;
+    prepared.destination_playback_=persistent_player_.state_->playback_;prepared.destination_clip_=persistent_player_.state_->clip_;
+    prepared.source_physics_=source.physics_tick_;prepared.source_idle_=source.idle_frame_;prepared.source_story_=source.story_revision_;
+    prepared.destination_physics_=physics_tick_;prepared.destination_idle_=idle_frame_;prepared.destination_story_=story_revision_;
+    prepared.source_content_=old.bytes();prepared.destination_content_=next.bytes();prepared.leader_=owner.party_leader_;
+    prepared.source_=source.persistent_player_;prepared.destination_=persistent_player_;
+    result=std::move(prepared);error.clear();return true;
+}
+namespace {
+bool same_walk(const WalkState&a,const WalkState&b){
+    return a.position.x==b.position.x&&a.position.y==b.position.y&&a.direction.x==b.direction.x&&a.direction.y==b.direction.y&&
+        a.velocity.x==b.velocity.x&&a.velocity.y==b.velocity.y&&a.speed==b.speed&&a.crouch==b.crouch&&a.tap_run==b.tap_run&&
+        a.running==b.running&&a.substantial==b.substantial&&a.walking==b.walking&&a.previous_toggle==b.previous_toggle&&a.animation==b.animation&&a.moved_signals==b.moved_signals;
+}
+bool same_playback(const AnimationPlayback&a,const AnimationPlayback&b){return a.position==b.position&&a.sample.frame==b.sample.frame&&a.sample.main_visible==b.sample.main_visible&&a.sample.special_visible==b.sample.special_visible;}
+}
+bool OpeningWorld::commit_scene_player(OpeningWorld&source,ScenePlayerTransfer&&prepared,std::string&error){
+    const auto reject=[&](){error="Prepared scene player transfer is absent, stale or belongs to another scene";return false;};
+    if(this==&source||!prepared.prepared()||!healthy_||!source.healthy_||player_read_only_||source.player_read_only_||
+       persistent_player_.get()!=prepared.destination_.get()||source.persistent_player_.get()!=prepared.source_.get()||
+       persistent_player_.state_->references_!=2||!house_paused()||!source.house_paused()||
+       stage_!=OpeningStage::Walking||source.stage_!=OpeningStage::Walking||has_cutscene_actors()||source.has_cutscene_actors()||
+       restore_pending_||source.restore_pending_||battle_player_visible()||source.battle_player_visible()||
+       content_.bytes()!=prepared.destination_content_||source.content_.bytes()!=prepared.source_content_||
+       physics_tick_!=prepared.destination_physics_||idle_frame_!=prepared.destination_idle_||story_revision_!=prepared.destination_story_||
+       source.physics_tick_!=prepared.source_physics_||source.idle_frame_!=prepared.source_idle_||source.story_revision_!=prepared.source_story_)return reject();
+    auto&owner=*source.persistent_player_.state_;auto&destination=*persistent_player_.state_;
+    if(owner.party_leader_!=prepared.leader_||destination.party_leader_!=prepared.leader_||
+       !same_walk(owner.player_,prepared.before_)||!same_walk(destination.player_,prepared.destination_before_)||
+       !same_playback(owner.playback_,prepared.before_playback_)||!same_playback(destination.playback_,prepared.destination_playback_)||
+       owner.clip_!=prepared.before_clip_||destination.clip_!=prepared.destination_clip_||
+       !owner.camera_.same_state(prepared.before_camera_)||!destination.camera_.same_state(prepared.destination_camera_))return reject();
+    // No allocation or other fallible work remains. Move the retained handle,
+    // never the Player object. An empty token cannot be published a second time.
+    owner.player_=prepared.player_;owner.camera_=std::move(prepared.camera_);owner.playback_=prepared.playback_;owner.clip_=prepared.clip_;
+    persistent_player_=std::move(prepared.source_);prepared.destination_={};
     source.healthy_=false;source.player_read_only_=true;source.walk_audio_=nullptr;source.error_="Scene player binding retired";
     error.clear();return true;
+}
+bool OpeningWorld::adopt_scene_player(OpeningWorld&source,Vec2 position,Vec2 direction,std::string&error){
+    ScenePlayerTransfer prepared;return prepare_scene_player(source,position,direction,prepared,error)&&commit_scene_player(source,std::move(prepared),error);
 }
 bool OpeningWorld::emit_walk_audio(const WalkAudioCalls&calls){
  if(!walk_audio_)return true;std::string why;

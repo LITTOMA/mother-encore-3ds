@@ -651,7 +651,7 @@ public:
  }
  bool learn_skill(std::string_view id,std::string&e)override{
   if(!session_rewards_valid||!gameplay_scene||!validate_skill(id,e))return false;
-  for(const auto&p:native_session_data.skill_acquisitions())if(p.skill_id==id&&!gameplay_scene->world.story_flag(p.flag_id)){e="Story skill grant flag is absent";return false;}
+  for(const auto&p:native_session_data.skill_acquisitions())if(p.skill_id==id&&!active_overworld().story_flag(p.flag_id)){e="Story skill grant flag is absent";return false;}
   return upstream::native_session_learn_skill(native_session_data,id,session_rewards.learned_skills,e);
  }
 } session_story_skills;
@@ -976,8 +976,11 @@ bool collect_field_run_sound(upstream::SessionSnapshot&state,std::string&error){
 }
 bool collect_session_snapshot(upstream::SessionSnapshot&result,std::string&error,const upstream::OpeningWorld*progress_world=nullptr){
     using namespace upstream;if(!session_state_ready||!session_rewards_valid){error="Session save lacks live battle state";return false;}
-    auto state=session_state;if(!collect_field_run_sound(state,error))return false;const auto player=gameplay_scene->world.player();state.position_x=player.position.x;state.position_y=player.position.y;state.direction_x=player.direction.x;state.direction_y=player.direction.y;
-    const auto room=opening_data.view();const auto& progress=progress_world?*progress_world:gameplay_scene->world;
+    auto state=session_state;if(!collect_field_run_sound(state,error))return false;
+    // The parked House shares the live Player identity after a door commit.
+    // Its save location stays the admitted House pose recorded before leaving.
+    if(!in_field()){const auto player=gameplay_scene->world.player();state.position_x=player.position.x;state.position_y=player.position.y;state.direction_x=player.direction.x;state.direction_y=player.direction.y;}
+    const auto room=opening_data.view();const auto& progress=progress_world?*progress_world:active_overworld();
     if(!progress.healthy()){error="Session progress owner is invalid";return false;}
     state.object_flags=gameplay_scene->presents.object_flags();
     state.flags.clear();for(uint32_t i=0;i<room.flag_count();++i){const std::string id(room.string(room.flag(i).name_string));
@@ -1370,7 +1373,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     SessionSnapshot snapshot;auto resources=std::make_unique<FieldSceneResources>();
     std::unique_ptr<ctr::MusicRegionService> music_candidate;
     std::unique_ptr<ctr::FieldRunAudioService> run_candidate;
-    const auto& source=active_overworld();
+    auto& source=active_overworld();
     const auto direction=(route.direction.x||route.direction.y)?route.direction:source.player().direction;
     if(!loading.step([&]{return collect_session_snapshot(snapshot,error,&source);},"source-state")||
        !loading.step([&]{return resources->load(resource_catalog,world_links,route.to,"romfs:/",opening_data.view(),items_data.view(),error)&&prepare_field_music(*resources,music_candidate,error)&&prepare_field_story_audio(*resources,error)&&prepare_field_run_audio(*resources,run_candidate,error);},"field-metadata"))return false;
@@ -1383,6 +1386,8 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     if(!loading.step([&]{return bind_field_mick(*candidate,*resources,error)&&bind_field_npcs(*candidate,*resources,error)&&(!resources->story().valid()||candidate->bind_story(resources->story(),items_data.view(),field_story_host,error))&&(!resources->steps().valid()||candidate->bind_steps(resources->steps(),audio_player.bank(),snapshot.run_sound,error));},"field-actors")){mick_bind_target=nullptr;return false;}
     mick_bind_target=nullptr;
     if(!candidate->world.set_party_leader(native_session_data.leader_id())){error="Field party leader binding rejected";return false;}
+    ScenePlayerTransfer player_transfer;
+    if(!candidate->world.prepare_scene_player(source,route.destination,route.direction,player_transfer,error))return false;
     const auto restore_graphics=[&]{
         release_field_graphics();std::string restore;
         if(in_field()){
@@ -1402,9 +1407,10 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
         restore_graphics();return false;}
     if(!loading.finish()){restore_graphics();return false;}
     if(!commit_field_music(*resources,music_candidate,error)){restore_graphics();return false;}
+    if(!candidate->world.commit_scene_player(source,std::move(player_transfer),error)){restore_graphics();return false;}
     audio_player.reset_scene();
     texture_owner_checkpoint("field-graphics-ready");
-    // Commit: the House owner stays parked (paused in SceneTransition) behind the field.
+    // The parked House binding is retired; its object progress stays available.
     candidate->world.attach_random(battle_random);
     cancel_battle_prewarm();field_story_text=UINT32_MAX;session_state=std::move(snapshot);field_run_audio.reset();field_scene.reset();field_resources=std::move(resources);field_scene=std::move(candidate);field_run_audio=std::move(run_candidate);field_status.clear();field_choice_shown=false;
     dialogue_choices.close();save_menu.close();storage_menu=StorageMenu{};field_equipment_menu=FieldEquipmentMenu{};
@@ -1416,7 +1422,8 @@ bool enter_house_from_field(const upstream::WorldRoute& route,std::string& error
     LoadingScope loading("Entering house",2);
     const auto room=opening_data.view();
     NativeSnapshotInput input;input.state=session_state;if(!collect_field_run_sound(input.state,error))return false;
-    input.state.position_x=route.destination.x;input.state.position_y=route.destination.y;input.state.direction_x=route.direction.x;input.state.direction_y=route.direction.y;
+    const auto direction=(route.direction.x||route.direction.y)?route.direction:field_scene->world.player().direction;
+    input.state.position_x=route.destination.x;input.state.position_y=route.destination.y;input.state.direction_x=direction.x;input.state.direction_y=direction.y;
     input.state.flags.clear();
     for(uint32_t i=0;i<room.flag_count();++i){const std::string id(room.string(room.flag(i).name_string));input.state.flags.push_back({id,field_scene->world.story_flag(id)});}
     input.stats=&session_rewards;input.inventory=&session_inventory;input.storage=&session_storage;
@@ -1433,14 +1440,17 @@ bool enter_house_from_field(const upstream::WorldRoute& route,std::string& error
     if(!candidate->finish_scene_ready()||!candidate->world.pause_for_house()){error="Returned House ready boundary rejected";return false;}
     auto ready_random=battle_random;
     if(!candidate->presents.scene_ready(ready_random,error))return false;
+    ScenePlayerTransfer player_transfer;
+    if(!candidate->world.prepare_scene_player(field_scene->world,route.destination,route.direction,player_transfer,error))return false;
     const auto restore_field=[&]{
         std::string restore;release_house_graphics();
         if(!field_actor.load(field_resources->room(),restore)||!field_renderer.load(field_resources->map(),std::string(locale_selection.code()),restore)||!load_mick_graphics(field_resources->mick(),restore))field_status="Field graphics restore failed: "+restore;
     };
     release_field_graphics();
     if(!loading.step([&]{return ensure_house_graphics(error)&&admit_encounter_scene(error);},"house-atlases")||!loading.finish()||!finish_field_music(error)){restore_field();return false;}
+    if(!candidate->world.commit_scene_player(field_scene->world,std::move(player_transfer),error)){restore_field();return false;}
     audio_player.reset_scene();
-    // Same owner commit as New Game / LOAD, without LOAD's source UID reallocation.
+    // Preserve the persistent Player; restore only scene/session bindings.
     battle_entry=BattleEntry{};battle_round=BattleRound{};battle_outcome=BattleOutcome{};round_presentation=BattleActionPresentation{};round_ready=false;round_error.clear();battle_loot=upstream::BattleLoot{};
     session_state=std::move(prepared.state);session_rewards=std::move(prepared.stats);session_inventory=std::move(prepared.inventory);session_storage=std::move(prepared.storage);session_state_ready=session_rewards_valid=true;
     battle_random=ready_random;candidate->world.attach_random(battle_random);candidate->presentation.rebind_random(battle_random);gameplay_scene.swap(candidate);field_run_audio.reset();field_scene.reset();field_resources.reset();
@@ -2026,7 +2036,7 @@ int main(int argc,char** argv){
     using InputOwner=std::array<uint32_t,14>;
     InputOwner prior_input_owner{};bool have_input_owner=false;uint32_t input_owner_token=0;
     const auto input_context=[&]()->uint32_t{
-        if(!gameplay_scene->world.healthy()||!house_error.empty()||!round_error.empty())return 0;
+        if(!active_overworld().healthy()||!house_error.empty()||!round_error.empty())return 0;
         const bool battle=in_battle();
         const InputOwner owner{{uint32_t(battle),uint32_t(active_overworld().stage()),uint32_t(gameplay_scene->house.phase())+(in_field()?64u+uint32_t(field_scene->phase()):0u),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,active_overworld().pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u),uint32_t(field_equipment_menu.phase())+32*field_menus.owner_token(),uint32_t(field_choice_ready())}};
         if(!have_input_owner||owner!=prior_input_owner){prior_input_owner=owner;have_input_owner=true;if(++input_owner_token==0)++input_owner_token;}

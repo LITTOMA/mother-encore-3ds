@@ -1,0 +1,38 @@
+{
+  "removed": [
+    {
+      "path": "build\\full-port\\scene_player-check",
+      "bytes": 43266752
+    },
+    {
+      "path": "build\\full-port\\persistent_player-check",
+      "bytes": 43411952
+    },
+    {
+      "path": "build\\full-port\\camera_binding-check",
+      "bytes": 42956440
+    },
+    {
+      "path": "build\\full-port\\movement-check",
+      "bytes": 42864112
+    },
+    {
+      "path": "build\\full-port\\world-handoff-check",
+      "bytes": 42962080
+    },
+    {
+      "path": "build\\full-port\\world_run_audio-handoff-check",
+      "bytes": 43311744
+    },
+    {
+      "path": "build\\full-port\\fresh_house_restore-handoff-check",
+      "bytes": 44261680
+    },
+    {
+      "path": "build\\full-port\\native_session-handoff-check",
+      "bytes": 44952264
+    }
+  ],
+  "total_bytes": 347987024,
+  "preserved": "Compile cache and actual emulator artifact"
+}

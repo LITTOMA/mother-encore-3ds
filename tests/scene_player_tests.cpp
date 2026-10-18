@@ -21,7 +21,7 @@ std::unique_ptr<OpeningWorld> prepared(RoomView room,Vec2 p={520,397},Vec2 d={0,
 }
 }
 int main(int argc,char**argv){
- CHECK(argc==4);RoomData house,mayor;CHECK(house.load_file(argv[1],error)&&mayor.load_file(argv[2],error));
+ CHECK(argc==5);RoomData house,mayor,field;CHECK(house.load_file(argv[1],error)&&mayor.load_file(argv[2],error)&&field.load_file(argv[4],error));
  // Independently generated native source outputs. Movement fields here are
  // opaque transport values, not a claim that arbitrary speeds are playable.
  std::ifstream stream(argv[3]);CHECK(bool(stream));std::string line;unsigned rows=0;Vec2 previous{0,1};
@@ -42,8 +42,8 @@ int main(int argc,char**argv){
  CHECK(active->pause_for_house());CHECK(active->shake_house_camera(2,4,{1,0}));CHECK(active->idle_frame(1.0/60));
  const auto*identity=active->persistent_player();const auto*camera=&active->cutscene_camera();const auto*walk=&active->player();
  for(unsigned i=0;i<6;++i){
-  auto next=prepared(i%2?house.view():mayor.view());const auto old=active->player();const auto offset=active->cutscene_camera().display_offset();
-  const Vec2 p=i%2?Vec2{520,397}:Vec2{8,9};const Vec2 direction=i%3?Vec2{1,0}:Vec2{};
+  const RoomView rooms[]={mayor.view(),field.view(),house.view()};auto next=prepared(rooms[i%3]);const auto old=active->player();const auto offset=active->cutscene_camera().display_offset();
+  const Vec2 p=rooms[i%3].scene().spawn;const Vec2 direction=i%3?Vec2{1,0}:Vec2{};
   CHECK(!next->adopt_scene_player(*next,p,direction,error));CHECK(active->healthy()&&next->healthy());
   CHECK(!next->adopt_scene_player(*active,{std::numeric_limits<float>::infinity(),0},direction,error));CHECK(active->healthy()&&next->healthy()&&active->persistent_player()==identity);
   CHECK(next->adopt_scene_player(*active,p,direction,error));
@@ -65,5 +65,41 @@ int main(int argc,char**argv){
  bytes[room.section_offset(RoomSection::Resource)+size_t(profile.primary_resource)*56+24]^=1;put(bytes,52,0);put(bytes,52,encore::crc32(bytes.data(),bytes.size()));RoomData changed;CHECK(changed.load(bytes.data(),bytes.size(),error));
  auto incompatible=prepared(changed.view());CHECK(!incompatible->adopt_scene_player(*active,{520,397},{},error));CHECK(active->persistent_player()==identity&&active->healthy()&&incompatible->healthy());
  OpeningWorld unprepared;CHECK(!unprepared.adopt_scene_player(*active,{520,397},{},error));
+ // A checked token may survive media preparation, but cannot hide intervening
+ // callbacks, a new Shaker, an unpause or a different player owner.
+ for(unsigned mutation=0;mutation<12;++mutation){
+  auto from=prepared(house.view(),{-100,-100});auto to=prepared(mayor.view(),{8,9});
+  const auto*from_id=from->persistent_player();const auto*to_id=to->persistent_player();
+  ScenePlayerTransfer transfer;CHECK(to->prepare_scene_player(*from,{8,9},{},transfer,error));CHECK(transfer.prepared());
+  CHECK(from->healthy()&&to->healthy()&&from->persistent_player()==from_id&&to->persistent_player()==to_id);
+  if(mutation==0)CHECK(from->advance({0,0,false,true}));
+  else if(mutation==1)CHECK(from->idle_frame(1.0/60));
+  else if(mutation==2)CHECK(from->warp_same_scene({-101,-100},{1,0}));
+  else if(mutation==3)CHECK(from->set_house_direction({-1,0}));
+  else if(mutation==4)CHECK(from->shake_house_camera(1,1,{1,0}));
+  else if(mutation==5)CHECK(to->shake_house_camera(1,1,{1,0}));
+  else if(mutation==6)CHECK(from->set_party_leader("other"));
+  else if(mutation==7)CHECK(to->set_party_leader("other"));
+  else if(mutation==8)CHECK(from->unpause_from_house());
+  else if(mutation==9)CHECK(to->unpause_from_house());
+  else if(mutation==10)CHECK(to->advance({0,0,true,true}));
+  else CHECK(to->idle_frame(1.0/60));
+  const auto after_from=from->player(),after_to=to->player();
+  CHECK(!to->commit_scene_player(*from,std::move(transfer),error));CHECK(transfer.prepared());
+  CHECK(from->healthy()&&to->healthy()&&from->persistent_player()==from_id&&to->persistent_player()==to_id);
+  CHECK(same(from->player().position,after_from.position)&&transients(from->player(),after_from)&&same(to->player().position,after_to.position)&&transients(to->player(),after_to));
+ }
+ {
+  auto from=prepared(house.view());auto to=prepared(mayor.view(),{8,9});ScenePlayerTransfer transfer;
+  CHECK(!to->commit_scene_player(*from,std::move(transfer),error));
+  CHECK(to->prepare_scene_player(*from,{8,9},{},transfer,error));
+  CHECK(!to->prepare_scene_player(*from,{std::numeric_limits<float>::infinity(),9},{},transfer,error)&&transfer.prepared());
+  auto wrong=prepared(house.view());CHECK(!to->commit_scene_player(*wrong,std::move(transfer),error));CHECK(!wrong->commit_scene_player(*from,std::move(transfer),error));
+  CHECK(from->idle_frame(0)&&to->idle_frame(0));
+  CHECK(to->commit_scene_player(*from,std::move(transfer),error));CHECK(!transfer.prepared());CHECK(!to->commit_scene_player(*from,std::move(transfer),error));
+ }
+ // Tokens pin player identities without retaining raw world addresses. Losing
+ // either world before cancellation must be safe, with no publication possible.
+ {ScenePlayerTransfer transfer;{auto from=prepared(house.view());auto to=prepared(mayor.view(),{8,9});CHECK(to->prepare_scene_player(*from,{8,9},{},transfer,error));}CHECK(transfer.prepared());transfer=ScenePlayerTransfer{};CHECK(!transfer.prepared());}
  std::printf("Scene player: %u checks; six native transport outcomes, same object/camera across prepared rooms, old callback rejection and failed handoff preservation; shared core only\n",checks);
 }

@@ -1,0 +1,34 @@
+{
+  "scope": "Completed focused host binaries; retained shared object cache and all actual evidence",
+  "removed": [
+    {
+      "path": "build\\podunk-routes\\host\\camera-binding",
+      "bytes": 42499048
+    },
+    {
+      "path": "build\\podunk-routes\\host\\cutscene-camera",
+      "bytes": 42539376
+    },
+    {
+      "path": "build\\podunk-routes\\host\\persistent-player",
+      "bytes": 42950768
+    },
+    {
+      "path": "build\\podunk-routes\\host\\world-run-audio",
+      "bytes": 42854352
+    },
+    {
+      "path": "build\\podunk-routes\\host\\opening-world",
+      "bytes": 42504688
+    },
+    {
+      "path": "build\\podunk-routes\\host\\mayor-story",
+      "bytes": 43353952
+    },
+    {
+      "path": "build\\podunk-routes\\host\\walk-audio",
+      "bytes": 42456488
+    }
+  ],
+  "bytes": 299158672
+}

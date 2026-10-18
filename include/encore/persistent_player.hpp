@@ -14,7 +14,8 @@ class PersistentPlayerOwner;
 
 // One player and camera object survive scene ownership changes. Runtime scene
 // bindings may retain this state while preparing, but only the active binding
-// may write it. Room/profile data borrowed by the camera must outlive this owner.
+// may write it. The camera owns copied checked limits/parameters; each world
+// still borrows its scene content while that world is active.
 class PersistentPlayerState final {
 public:
     PersistentPlayerState(const PersistentPlayerState&)=delete;

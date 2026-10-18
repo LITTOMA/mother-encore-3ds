@@ -5,6 +5,7 @@ namespace encore::ctr {
 // Physical providers for a checked global plan. The caller owns source scene
 // callbacks, clocks and publication; this class never infers a MusicChanger.
 // The existing AudioPlayer must own NDSP for this entire object's lifetime.
+struct MusicBankFinished{uint64_t provider=0,player=0,generation=0;};
 class MusicBankTransports final {
 public:
     MusicBankTransports();~MusicBankTransports();
@@ -19,6 +20,7 @@ public:
     bool sync_routes(const upstream::MusicBankRoutes&,std::string&);
     bool retire(uint64_t,upstream::MusicBankRoutes&,std::string&);
     bool pump_streams(std::string&);
+    std::vector<MusicBankFinished>take_finished();
     bool set_user_music_db(float,std::string&);
     bool set_paused(bool,std::string&);
     // Returned metadata is borrowed until that provider is cancelled/retired.

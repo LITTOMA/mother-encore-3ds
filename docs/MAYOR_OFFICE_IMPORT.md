@@ -237,3 +237,14 @@ MusicPlayers新增start=0的单曲／片头→循环注册、finished信号和�
 
 
 重复one-shot登记另外用原引擎实际执行两次原play_music核对，确认产生already connected错误；原错误日志／输入case／函数与生成项目指纹单独保留。移植在该明确不支持的错误序列中预先拒绝，不能把它称为原版成功播放。
+
+
+新增ENCMUS01格式2作为无区域的原曲库：region／shape数量必须为0，track数量1..64，保存观察到的空播放器gain、来源／import SHA和每曲原生builtin-loop布尔值；旧格式1区域包及其implicit builtin-loop=true保持原解码。格式2禁止绑定至SceneGraph或旧Controller，未知版本、坏计数／保留字／增益／布尔值、空／重复身份、损坏路径／hash／CRC和截断均拒绝并保留旧数据。原未知版本负例改为真正未定义的版本3，格式2的非法scene计数另行明确覆盖；不是移除原失败门。
+
+content/global-music.json和原生成器music_library.py核对当前原作范围的13首root音乐、原音频IR／manager／bus／原文件及import／既有PCM元数据，生成1份总索引和13组单曲元数据／bank共27个小文件。所有PCM继续引用既有受检路径，没有复制载荷；逐曲准备避免启动时预读整库。该曲库仍为build候选和测试夹具，未写入发布目录／目录索引或主程序。Source schema、资源能力和游戏存档版本不混用，本次不改存档。
+
+物理MusicRegionPlayer现区分内建循环和非循环流：允许最后一个不足2,048帧的缓冲，等全部实际排队尾包完成后才报告player／generation；完成的代次锁住，加载泵送／反复sync不会自行重新开始，只有核心发布下一代次才重播。全局调度按来源child插入顺序交付完成信息。原LoopOnly数据仍不可把一次性流送进旧Controller。新格式扩展track数组至64并先检查bank数量，避免库上限高于旧数组上限。
+
+GCC9 ASan/UBSan：新库／旧值回滚3,191项，真实已恢复PCM配合NDSP替身的EOF32,318项通过；包括完整源帧数与尾包、单次通知与完成锁、片头接House、House内建循环、Victory显式回调两轮、一次性节点删除、提供者逆序时按child排序，以及保留旧NDSP主人。实际硬件时钟／可听性未验证。既有结束回调1,808／bank176／Graph5,454／Players1,255／选择334／区域4,087与NDSP930／旧服务1,058／准备46,894／run983／调度142项均再次通过；Python相关18项与严格集合通过。13个完成的主机程序已清理，缓存／原始日志保留。
+
+EE5DB24的真实3DSX／CIA通过，覆盖上次完成回调；新库与EOF晚于该提交，待自己的ARM构建。d2ca5d1完整GCC和Clang现均成功，精确数量见保存的各自原始日志；它们均早于库／物理EOF。Root标题／House／对话／战斗音乐操作仍待迁入独立程序数据并接入主程序，不能把本轮底层验证称为Mayor已可进入或完整原版可玩。

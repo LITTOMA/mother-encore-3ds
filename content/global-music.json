@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "kind": "encore.music-library.candidate",
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "audio_recipe": "content/native-audio.json",
+  "audio_bank": "romfs/sound/banks/opening.encaudio",
+  "default_gain_db": 0,
+  "tracks": [
+    21,
+    1001,
+    1002,
+    32,
+    34,
+    1202,
+    1301,
+    4229387514,
+    3080041499,
+    3778949439,
+    4107189403,
+    4290136921,
+    2742165164
+  ]
+}

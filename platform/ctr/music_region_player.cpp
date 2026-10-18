@@ -15,7 +15,7 @@ bool MusicRegionPlayer::begin_prepare(const char*bank,const char*root,const upst
  if(!available)return fail(e,"Music region audio unavailable: existing NDSP owner is not initialized");
  if(!root||!capacity||capacity>maximum_voices)return fail(e,"Invalid music region adapter capacity/root");
  if(!bank_.load_file(bank,e)||!regions.matches(bank_,e))return false;
- if(bank_.master_db()!=master||bank_.count()!=regions.tracks().size())return fail(e,"Music region bank/master differs from existing audio owner");
+ if(bank_.master_db()!=master||bank_.count()!=regions.tracks().size()||bank_.count()>tracks_.size())return fail(e,"Music region bank/master differs from existing audio owner");
  prepared_regions_=regions;capacity_=capacity;track_count_=bank_.count();asset_root_=root;
  for(uint32_t i=0;i<track_count_;++i){tracks_[i].asset=bank_.asset(i);total_bytes_+=tracks_[i].asset.pcm_bytes;}
  preparing_=true;e.clear();return true;
@@ -56,20 +56,29 @@ bool MusicRegionPlayer::set_paused(bool paused,std::string&e){
  if(paused_!=paused){for(uint32_t i=0;i<capacity_;++i)if(voices_[i].active)ndspChnSetPaused(int(first_channel+voices_[i].channel),paused);paused_=paused;}
  e.clear();return true;
 }
-void MusicRegionPlayer::shutdown(){for(uint32_t i=0;i<capacity_;++i){stop(i);if(voices_[i].samples)linearFree(voices_[i].samples);voices_[i]={};}for(auto&t:tracks_){if(t.file)std::fclose(t.file);t={};}capacity_=track_count_=submitted_=0;owner_=nullptr;graph_owner_.reset();provider_identity_=0;prepared_regions_={};prepared_=preparing_=paused_=false;validation_track_=allocation_voice_=0;validation_crc_=0xffffffffu;track_bytes_=verified_bytes_=total_bytes_=0;asset_root_.clear();}
-bool MusicRegionPlayer::refill(uint32_t slot,std::string&e){auto&v=voices_[slot];if(!v.active)return true;auto&t=tracks_[v.track];const auto&a=t.asset;
- for(uint32_t b=0;b<buffer_count;++b){auto&wave=v.waves[b];if(wave.status==NDSP_WBUF_QUEUED||wave.status==NDSP_WBUF_PLAYING)continue;auto*samples=v.samples+size_t(b)*buffer_frames*2;uint32_t frames=0;
-  while(frames<buffer_frames){uint32_t first=0;auto n=v.cursor.take(buffer_frames-frames,first);if(!n){stop(slot);return fail(e,"Region source loop unexpectedly ended");}uint64_t offset=uint64_t(first)*a.channels*2;
+void MusicRegionPlayer::shutdown(){for(uint32_t i=0;i<capacity_;++i){stop(i);if(voices_[i].samples)linearFree(voices_[i].samples);voices_[i]={};}for(auto&t:tracks_){if(t.file)std::fclose(t.file);t={};}capacity_=track_count_=submitted_=0;owner_=nullptr;graph_owner_.reset();provider_identity_=0;prepared_regions_={};finished_.clear();prepared_=preparing_=paused_=false;validation_track_=allocation_voice_=0;validation_crc_=0xffffffffu;track_bytes_=verified_bytes_=total_bytes_=0;asset_root_.clear();}
+std::vector<MusicPlaybackFinished>MusicRegionPlayer::take_finished(){auto events=std::move(finished_);finished_.clear();return events;}
+bool MusicRegionPlayer::refill(uint32_t slot,std::string&e){auto&v=voices_[slot];if(!v.active)return true;auto&t=tracks_[v.track];const auto&a=t.asset;bool queued=false;
+ for(uint32_t b=0;b<buffer_count;++b){auto&wave=v.waves[b];if(wave.status==NDSP_WBUF_QUEUED||wave.status==NDSP_WBUF_PLAYING){queued=true;continue;}auto*samples=v.samples+size_t(b)*buffer_frames*2;uint32_t frames=0;
+  while(frames<buffer_frames){uint32_t first=0;auto n=v.cursor.take(buffer_frames-frames,first);
+   if(!n){if(a.loops()){stop(slot);return fail(e,"Region source loop unexpectedly ended");}break;}
+   uint64_t offset=uint64_t(first)*a.channels*2;
    if(offset>uint64_t(std::numeric_limits<long>::max())||std::fseek(t.file,long(offset),SEEK_SET)!=0||std::fread(samples+size_t(frames)*a.channels,a.channels*2,n,t.file)!=n){stop(slot);return fail(e,"Region PCM streaming read failed");}frames+=n;
   }
+  if(!frames){wave={};continue;}
   auto*bytes=reinterpret_cast<uint8_t*>(samples);for(size_t n=0;n<size_t(frames)*a.channels;++n){uint16_t value=uint16_t(bytes[n*2])|uint16_t(bytes[n*2+1])<<8;std::memcpy(samples+n,&value,2);}
   wave={};wave.data_pcm16=samples;wave.nsamples=frames;wave.looping=false;
   if(R_FAILED(DSP_FlushDataCache(samples,frames*a.channels*sizeof(int16_t)))){stop(slot);return fail(e,"Region DSP cache flush failed");}
-  ndspChnWaveBufAdd(int(first_channel+v.channel),&wave);
- }return true;
+  ndspChnWaveBufAdd(int(first_channel+v.channel),&wave);queued=true;
+ }
+ if(!a.loops()&&!queued&&v.cursor.position()==a.frames){
+  if(!prepared_regions_.library()||!graph_owner_){stop(slot);return fail(e,"One-shot completion has no checked global music owner");}
+  finished_.push_back({v.identity,v.generation});v.completed=true;stop(slot);
+ }
+ return true;
 }
 bool MusicRegionPlayer::sync(const upstream::MusicRegionController&controller,std::string&e){
- if(!prepared_||controller.capacity()!=capacity_||graph_owner_||(owner_&&owner_!=&controller))return fail(e,"Music region adapter/controller capacity unavailable");
+ if(!prepared_||prepared_regions_.library()||controller.capacity()!=capacity_||graph_owner_||(owner_&&owner_!=&controller))return fail(e,"Music region adapter/controller capacity unavailable");
  PlaybackFrame frame{};
  for(uint32_t i=0;i<capacity_;++i){const auto&voice=controller.voices()[i];if(voice.allocated&&voice.playing)frame[i]={0,voice.generation,voice.track_id,voice.gain_db,true};}
  return sync_frame(frame,&controller,{},0,e);
@@ -106,7 +115,11 @@ bool MusicRegionPlayer::release_routes(const upstream::MusicBankRoutes&routes,ui
  e.clear();return true;
 }
 bool MusicRegionPlayer::sync_routes(const upstream::MusicBankRoutes&routes,uint64_t provider,std::string&e){PlaybackFrame frame{};if(!route_frame(routes,provider,frame,e))return false;return sync_frame(frame,nullptr,routes.owner(),provider,e);}
-bool MusicRegionPlayer::sync_frame(const PlaybackFrame&frame,const upstream::MusicRegionController*legacy,std::shared_ptr<const upstream::MusicPlayersOwner>global,uint64_t provider,std::string&e){
+bool MusicRegionPlayer::sync_frame(const PlaybackFrame&input,const upstream::MusicRegionController*legacy,std::shared_ptr<const upstream::MusicPlayersOwner>global,uint64_t provider,std::string&e){
+ PlaybackFrame frame=input;
+ // A completed physical stream stays latched until the core publishes another
+ // playback generation. Pump/sync may run while the main process is loading.
+ for(uint32_t i=0;i<capacity_;++i){const auto&v=voices_[i];if(v.completed&&frame[i].identity==v.identity&&frame[i].generation==v.generation)frame[i].playing=false;}
  // Validate the complete snapshot before any old voice or other channel moves.
  std::array<uint32_t,maximum_voices>index{};
  for(uint32_t i=0;i<capacity_;++i){const auto&s=frame[i];if(!s.playing)continue;if(!s.generation||!std::isfinite(s.gain_db)||s.gain_db<-120||s.gain_db>24)return fail(e,"Invalid music region voice snapshot");uint32_t j=0;while(j<track_count_&&tracks_[j].asset.stable_id!=s.track_id)++j;if(j==track_count_)return fail(e,"Unbound music region track snapshot");index[i]=j;}
@@ -129,7 +142,7 @@ bool MusicRegionPlayer::sync_frame(const PlaybackFrame&frame,const upstream::Mus
  for(uint32_t i=0;i<capacity_;++i){const auto&s=frame[i];if(!s.playing||(voices_[i].generation!=s.generation||voices_[i].identity!=s.identity))stop(i);}
  owner_=legacy;graph_owner_=std::move(global);provider_identity_=provider;
  for(uint32_t i=0;i<capacity_;++i){const auto&s=frame[i];auto&v=voices_[i];bool newly_started=false;if(!s.playing){stop(i);continue;}
-  if(!v.active||(v.generation!=s.generation||v.identity!=s.identity)){stop(i);v.track=index[i];auto&a=tracks_[v.track].asset;if(!v.cursor.reset(a.frames,a.loop_start,a.loops()))return fail(e,"Invalid region cursor");v.identity=s.identity;v.generation=s.generation;v.channel=channels[i];channel_owners[v.channel]=this;v.active=true;
+  if(!v.active||(v.generation!=s.generation||v.identity!=s.identity)){stop(i);v.track=index[i];auto&a=tracks_[v.track].asset;if(!v.cursor.reset(a.frames,a.loop_start,a.loops()))return fail(e,"Invalid region cursor");v.identity=s.identity;v.generation=s.generation;v.completed=false;v.channel=channels[i];channel_owners[v.channel]=this;v.active=true;
    int channel=int(first_channel+v.channel);ndspChnReset(channel);ndspChnSetInterp(channel,NDSP_INTERP_POLYPHASE);ndspChnSetRate(channel,float(a.sample_rate));ndspChnSetFormat(channel,a.channels==2?NDSP_FORMAT_STEREO_PCM16:NDSP_FORMAT_MONO_PCM16);newly_started=true;
   }
   float volumes[12]{};volumes[0]=volumes[1]=upstream::audio_linear_gain(s.gain_db+tracks_[v.track].asset.gain_db+user_music_db_);ndspChnSetMix(int(first_channel+v.channel),volumes);if(!refill(i,e))return false;if(newly_started){if(paused_)ndspChnSetPaused(int(first_channel+v.channel),true);++submitted_;}

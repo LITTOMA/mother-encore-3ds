@@ -11,7 +11,7 @@ bool MusicSceneGraph::initialize(MusicPlayersPolicy policy,std::string&e){
     policy_=policy;return true;
 }
 bool MusicSceneGraph::attach_scene(uint64_t epoch,const MusicRegionData&data,std::string&e){
-    if(!players_.ready()||!data.valid()||!epoch||epoch<=epoch_||active_||
+    if(!players_.ready()||!data.valid()||data.library()||!epoch||epoch<=epoch_||active_||
        data.silence_db()!=policy_.silence_db||data.fade_to_seconds()!=policy_.fade_to_seconds)
         return fail(e,"Music graph scene/epoch/tuning is not admissible");
     auto retained=std::make_shared<const MusicRegionData>(data);std::vector<MusicSceneArea>areas(data.regions().size());

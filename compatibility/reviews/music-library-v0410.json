@@ -1,0 +1,164 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "release_staged": false,
+  "sources": {
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+    "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3": "8739f039b6b49aa984685c0d4d20b9a647256ca1436dab5cd30de6ff8d6a0918",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3.import": "27cf9d7f6a8b02fbe83d397c925a3b6679361c8b0e4718e06dbf7a844aabe663",
+    "Audio/Music/Battle Encounter/Encounter Boss.mp3": "248c9d3e342d9bf1f1223e2b018a6f00de22c54071b65469ab1912c434538a03",
+    "Audio/Music/Battle Encounter/Encounter Boss.mp3.import": "e07f81afe34f32ecd03fb1f65a88305b047e208004de2dbf662102c54591302a",
+    "Audio/Music/Melodies/melody1.mp3": "9e730603d3fb1426567672332f01bc2be0a21cae00f98bd3e95363ef4d7508c6",
+    "Audio/Music/Melodies/melody1.mp3.import": "3f7d52ded59d4efae922628f9716fd8c1ca7f7d88ba6774b2065095c83ac7f23",
+    "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "Audio/Music/House.mp3.import": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a",
+    "Audio/Music/Mother Earth.mp3": "89d44b28e944108bf285f1656950cba4cf5473764097a3b5138340fcf595fc5f",
+    "Audio/Music/Mother Earth.mp3.import": "dcc0a020300706b28f4c540a8922eb71f10c58b2bc8f1773efb140c285e18409",
+    "Audio/Music/Mother_Earth_Piano.mp3": "953256afe2ed7f56fc80f4dcf5d038456718acd6a9324c5fdd9952bb35fd539d",
+    "Audio/Music/Mother_Earth_Piano.mp3.import": "cb11b39c995aed4baa5c2149c5cebabbd96e496105c4a26559d6fa4aae5b55db",
+    "Audio/Music/Battle Themes/Flippant Foe.mp3": "aa17a9926a0774d8e55cead372bcc76eb43ef2f0210fd02c01b47b4448638c11",
+    "Audio/Music/Battle Themes/Flippant Foe.mp3.import": "888c7c77d3d1dff80fb6506d4e9d89eb5bc78f1432077106e67dc44091aba234",
+    "Audio/Music/You Win/LVLUP.mp3": "7ed8774a212f98a0ea416b0dfe1938069cac850a9793177d1f77e4ef976beffc",
+    "Audio/Music/You Win/LVLUP.mp3.import": "57a62b02d6a29b449198bfb5ca992da7439bdb1602fee0e1797af20625da21a5",
+    "Audio/Music/You Win/LVLUP_ninten.mp3": "ea0d7b059fb83f5b7f09cd5a47e9f495d7422f742176a51627188b609d9a9ac0",
+    "Audio/Music/You Win/LVLUP_ninten.mp3.import": "29b28d7214e784dca202ffa569e58abe40d0191b46836971121b269a81789eba",
+    "Audio/Music/You Win/Victory.mp3": "9611765d41f9185808fb942ec67b251d489774860fe39aecfec92e2b1b6e5c5b",
+    "Audio/Music/You Win/Victory.mp3.import": "95b4c5330d2c00643cce1c53ea89e7f1bd4fc7cbf3039dc18b414e9af0bad728",
+    "Audio/Music/You Win/YOUWON.mp3": "ae1f040b63cb9697ba2c0923bb8cdcb9767033cc177829215935cfe70aa81bc9",
+    "Audio/Music/You Win/YOUWON.mp3.import": "309234e4fcbab844a1c4dca040a99713419f6b691f977bf3fec34aa3f25e65d7",
+    "Audio/Music/You Win/YOUWONBOSS.mp3": "8c46468d1d0d6dc6d8750e762e7db5e33377e7137effbe03541a876bef013445",
+    "Audio/Music/You Win/YOUWONBOSS.mp3.import": "299b9c195cf7a0f11c41abf9bee48e798fbcf3bd0be5e64493a8cb0596e5870a"
+  },
+  "recipe_sha256": "4ee34de6bb2c137bc8f2ac9db9d8156cb7054cfb12cda304f91e68b44c61a879",
+  "native_audio_sha256": "0b9cf2197bb1b111fd9d6cab1e9540d85d1d56a813973baac0f5530687e31f8b",
+  "source_bank_sha256": "cb1a2ab57d6675a0e18a581b56fcabb43dc8ebd13206b76da0040efcb1e263a7",
+  "defaults_manager_methods": {
+    "_ready": "a2d97571c1adc4aae1f6f6987009bed7053676caf1319cc72ffcae44db474ff3",
+    "_get_audio_player_count": "6d13e742193187f19d5a8b7917b923b9e1fb5eaf4a3f33c3d7c5ab2f61d3c424",
+    "add_audio_player": "60723a89167fe436a6993b038061ddaaf5f6bfd0f7d3a0ad4f79ebba1f09c7ef",
+    "get_audio_player": "ac419fd8d21fc40688d25c08b82c79cad10a82c3f2cdd6b0bd281cbf52760e89",
+    "get_audio_player_from_song": "db498b4d4854b6ecddd49895f16beca907ee88d5f4042e7e561805c1a53e6111",
+    "get_audio_player_index": "3058b90611f818ff545dc8199390410d489a76aff74e38f5c40cf054dcd6bbfc",
+    "get_audio_player_list": "1f0ec6a9f2bc42552121165d1f8e27d0aa852dabe0385b7a76b3840e745d5345",
+    "_remove_audio_player_obj": "01678b6626fd1eb9a478b80660fbbe2afb2750c7f2aec9cb03731b0dfbed0e91",
+    "_add_at_zero": "cd4aec2fc4c2733e531e054d788bdeddf7d90d3dad2c200a971434488b727910",
+    "get_latest_audio_player_index": "d0210b21c481584331075fd8b9ba311b7ab9df6fd7029c920aa8ee230a2c88bd",
+    "play_music": "be7cb1705dbf119ca48fc239932f6af7a249c65135c527e4fec9b558fa6554fe",
+    "music_fadeout": "f6ea737e5b82db8f1f610de8a451bc4b321667c16d6c03d7039e78dc69abc533",
+    "music_fadeout_obj": "b74bcf4d7ccc7b80abb5a4d788a426bda34eb0e3df2d0df74dc277f0edec712a",
+    "music_fadein": "b9e8a42d1c73c41742bfbc88c8c47b67eb65061f1d0c46164303654ebd508ff2",
+    "_music_fadein_obj": "41c791a8cb69e0402030ab33f7685d598bf34ada4032b028ace74868116a6115",
+    "music_fadeto": "292f1baa9d8d9c57b46c231f6d776eb8a40b7e81979ee5bd70932017f4bcf918",
+    "set_audio_player_volume": "e9a28febf9938677c9e46113e0e4b66a3388e671373001f9ce177c924e0b69d2",
+    "_set_audio_player_volume_obj": "65b0a1f63e9c59a2329956dfa2ea7c28d8144ba6440276a401fdc778cc5c0a7b",
+    "stop_audio_player": "f231e2f506cd2e68fea2f11b4356afff2acdd224053308d3924b4b5115d8fa92",
+    "_stop_audio_player_obj": "026ce6df6e39aaa9733b19a494ef057d967d1c2e99113e768bd46342930ec634",
+    "_remove_all_unplaying": "123aa70f4e544950616032bfa230b5534f99c763af448cbe966e088e5a55e0c3",
+    "_remove_player_after_tween": "0de15b5aa0ae5b5cfb0c268835990e60eec2e85615bbce5704a6c03ff56a26a1"
+  },
+  "metadata": {
+    "silence_db": -80.0,
+    "fade_to_seconds": 1,
+    "empty_player_gain_db": 0,
+    "tracks": [
+      {
+        "id": 21,
+        "source_path": "res://Audio/Music/Poltergeist.ogg",
+        "source_sha256": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+        "import_sha256": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+        "builtin_loop": true
+      },
+      {
+        "id": 1001,
+        "source_path": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+        "source_sha256": "8739f039b6b49aa984685c0d4d20b9a647256ca1436dab5cd30de6ff8d6a0918",
+        "import_sha256": "27cf9d7f6a8b02fbe83d397c925a3b6679361c8b0e4718e06dbf7a844aabe663",
+        "builtin_loop": false
+      },
+      {
+        "id": 1002,
+        "source_path": "res://Audio/Music/Battle Encounter/Encounter Boss.mp3",
+        "source_sha256": "248c9d3e342d9bf1f1223e2b018a6f00de22c54071b65469ab1912c434538a03",
+        "import_sha256": "e07f81afe34f32ecd03fb1f65a88305b047e208004de2dbf662102c54591302a",
+        "builtin_loop": false
+      },
+      {
+        "id": 32,
+        "source_path": "res://Audio/Music/Melodies/melody1.mp3",
+        "source_sha256": "9e730603d3fb1426567672332f01bc2be0a21cae00f98bd3e95363ef4d7508c6",
+        "import_sha256": "3f7d52ded59d4efae922628f9716fd8c1ca7f7d88ba6774b2065095c83ac7f23",
+        "builtin_loop": false
+      },
+      {
+        "id": 34,
+        "source_path": "res://Audio/Music/House.mp3",
+        "source_sha256": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+        "import_sha256": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a",
+        "builtin_loop": true
+      },
+      {
+        "id": 1202,
+        "source_path": "res://Audio/Music/Mother Earth.mp3",
+        "source_sha256": "89d44b28e944108bf285f1656950cba4cf5473764097a3b5138340fcf595fc5f",
+        "import_sha256": "dcc0a020300706b28f4c540a8922eb71f10c58b2bc8f1773efb140c285e18409",
+        "builtin_loop": true
+      },
+      {
+        "id": 1301,
+        "source_path": "res://Audio/Music/Mother_Earth_Piano.mp3",
+        "source_sha256": "953256afe2ed7f56fc80f4dcf5d038456718acd6a9324c5fdd9952bb35fd539d",
+        "import_sha256": "cb11b39c995aed4baa5c2149c5cebabbd96e496105c4a26559d6fa4aae5b55db",
+        "builtin_loop": true
+      },
+      {
+        "id": 4229387514,
+        "source_path": "res://Audio/Music/Battle Themes/Flippant Foe.mp3",
+        "source_sha256": "aa17a9926a0774d8e55cead372bcc76eb43ef2f0210fd02c01b47b4448638c11",
+        "import_sha256": "888c7c77d3d1dff80fb6506d4e9d89eb5bc78f1432077106e67dc44091aba234",
+        "builtin_loop": true
+      },
+      {
+        "id": 3080041499,
+        "source_path": "res://Audio/Music/You Win/LVLUP.mp3",
+        "source_sha256": "7ed8774a212f98a0ea416b0dfe1938069cac850a9793177d1f77e4ef976beffc",
+        "import_sha256": "57a62b02d6a29b449198bfb5ca992da7439bdb1602fee0e1797af20625da21a5",
+        "builtin_loop": false
+      },
+      {
+        "id": 3778949439,
+        "source_path": "res://Audio/Music/You Win/LVLUP_ninten.mp3",
+        "source_sha256": "ea0d7b059fb83f5b7f09cd5a47e9f495d7422f742176a51627188b609d9a9ac0",
+        "import_sha256": "29b28d7214e784dca202ffa569e58abe40d0191b46836971121b269a81789eba",
+        "builtin_loop": false
+      },
+      {
+        "id": 4107189403,
+        "source_path": "res://Audio/Music/You Win/Victory.mp3",
+        "source_sha256": "9611765d41f9185808fb942ec67b251d489774860fe39aecfec92e2b1b6e5c5b",
+        "import_sha256": "95b4c5330d2c00643cce1c53ea89e7f1bd4fc7cbf3039dc18b414e9af0bad728",
+        "builtin_loop": false
+      },
+      {
+        "id": 4290136921,
+        "source_path": "res://Audio/Music/You Win/YOUWON.mp3",
+        "source_sha256": "ae1f040b63cb9697ba2c0923bb8cdcb9767033cc177829215935cfe70aa81bc9",
+        "import_sha256": "309234e4fcbab844a1c4dca040a99713419f6b691f977bf3fec34aa3f25e65d7",
+        "builtin_loop": false
+      },
+      {
+        "id": 2742165164,
+        "source_path": "res://Audio/Music/You Win/YOUWONBOSS.mp3",
+        "source_sha256": "8c46468d1d0d6dc6d8750e762e7db5e33377e7137effbe03541a876bef013445",
+        "import_sha256": "299b9c195cf7a0f11c41abf9bee48e798fbcf3bd0be5e64493a8cb0596e5870a",
+        "builtin_loop": false
+      }
+    ]
+  },
+  "mapped_implementation": {
+    "library_version_2": "runtime/music_regions.cpp:MusicRegionData::load",
+    "source_builtin_loop_match": "runtime/music_regions.cpp:MusicRegionData::matches"
+  },
+  "scope": "Current root music assets only; original builtin stream loop policy is distinct from manager finished-loop callbacks. Version 1 scene resources unchanged. Version 2 has no regions, stores the observed empty gain and explicit builtin flags. One-track banks reuse existing checked PCM paths without copying payloads. No source programs, natural EOF, live scene, emulator or hardware pass claim."
+}

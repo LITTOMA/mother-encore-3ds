@@ -70,6 +70,13 @@ bool MusicBankTransports::pump_streams(std::string&e){
     for(auto&p:providers_)if(p->bound&&!p->player.pump_streams(e))return false;
     e.clear();return true;
 }
+std::vector<MusicBankFinished>MusicBankTransports::take_finished(){
+    std::vector<MusicBankFinished>out;
+    for(auto&p:providers_)for(const auto&event:p->player.take_finished())out.push_back({p->identity,event.player,event.generation});
+    // Source AudioPlayers children retain insertion order when predecessors
+    // disappear; node IDs follow that order, rather than provider grouping.
+    std::stable_sort(out.begin(),out.end(),[](const auto&a,const auto&b){return a.player!=b.player?a.player<b.player:a.generation<b.generation;});return out;
+}
 bool MusicBankTransports::set_user_music_db(float db,std::string&e){
     if(!ready_||!gain(db))return fail(e,"Global music user volume is invalid");
     for(auto&p:providers_)if(!p->player.set_user_music_db(db))return fail(e,"Global music provider volume rejected");

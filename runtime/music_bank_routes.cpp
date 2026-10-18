@@ -52,7 +52,7 @@ bool MusicBankRoutes::reconcile(const MusicPlayers&players,const std::vector<Mus
             consumed[admission]=true;
         }
         const auto*owner=provider(route.provider);AudioAsset asset;
-        if(!owner||!owner->bank.find(route.track_id,asset)||asset.source_path!=node.stream||!asset.loops()||!std::isfinite(route.gain_db)||route.gain_db<-120||route.gain_db>24)return fail(e,"Music route no longer matches its source player/bank");
+        if(!owner||!owner->bank.find(route.track_id,asset)||asset.source_path!=node.stream||(!asset.loops()&&!owner->regions.library())||!std::isfinite(route.gain_db)||route.gain_db<-120||route.gain_db>24)return fail(e,"Music route no longer matches its source player/bank");
         if(old){if(old->slot>=slots.size()||slots[old->slot])return fail(e,"Music routed slot ownership is invalid");route.slot=old->slot;slots[route.slot]=true;}
         next.push_back(route);
     }

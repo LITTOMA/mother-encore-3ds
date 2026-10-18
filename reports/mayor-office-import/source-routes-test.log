@@ -1,0 +1,11 @@
+test_actual_transformed_routes (tests.test_world_scene_routes.Routes.test_actual_transformed_routes) ... ok
+test_duplicate_json_keys (tests.test_world_scene_routes.Routes.test_duplicate_json_keys) ... ok
+test_legacy_route_semantics_unchanged (tests.test_world_scene_routes.Routes.test_legacy_route_semantics_unchanged) ... ok
+test_lowered_tuning_rejection (tests.test_world_scene_routes.Routes.test_lowered_tuning_rejection) ... ok
+test_recipe_negative_paths (tests.test_world_scene_routes.Routes.test_recipe_negative_paths) ... ok
+test_source_semantic_rejection (tests.test_world_scene_routes.Routes.test_source_semantic_rejection) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 5.148s
+
+OK

@@ -345,3 +345,9 @@ cookies.json
 !/reports/field-scene-resources/*.log
 !/reports/field-scene-resources/*.json
 !/reports/pippi-mom-help/approach-route.cpp
+
+# Reviewed Mayor import candidates: evidence only, no emulator profiles or binaries.
+!/reports/mayor-office-import/
+!/reports/mayor-office-import/*.json
+!/reports/mayor-office-import/*.log
+!/reports/mayor-office-import/*.cpp

@@ -1,0 +1,10 @@
+{
+  "scope": "Candidate source routes only; no release staging, playable Mayor scene or emulator claim",
+  "base_dependency": "PR66, 387885bd87861e829c9e436094d8dfe2ae012cf6",
+  "validation": "6 Python methods and GCC9 ASan/UBSan actual candidate decoder; actual catalog correctly rejects absent Mayor resources",
+  "source_sha256": {
+    "tools\\world_scene_routes.py": "cf65c7deb1f87fc95cf1d2705828be8babc4a798b6b0dd838697cce8de436628",
+    "tests\\test_world_scene_routes.py": "f56986ca51a463a8bb87e170a12c9b9bfc1410e211d3770bcd1c57398123b3b1",
+    "content\\world-scene-routes.json": "aa72f187bacbb022cdcb1324dbccd575938b92fda2960568f65f7348ee1d9fe3"
+  }
+}

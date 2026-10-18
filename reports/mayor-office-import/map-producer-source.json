@@ -1,0 +1,10 @@
+{
+  "scope": "Actual candidate map + real tex3ds texture; not staged; no gameplay/emulator claim",
+  "python_methods": 12,
+  "source_sha256": {
+    "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
+    "tools/podunk_field.py": "95d73b7208b8a102bce730120fd76c7726a6eedb847a090d415f6debf3285b86",
+    "tools/field_scene_candidate.py": "9d1fc2b533035bc6eac3cc359ae9410bd8b9d1c966892970611ddcbd5c7b74dc",
+    "tests/test_mayor_field.py": "c0a6bc18ecc09697355ec198f23adfd73211dd5bc3e2ec3a1e8cedfd1faf924a"
+  }
+}

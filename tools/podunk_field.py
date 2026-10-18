@@ -189,6 +189,9 @@ class Scene:
         self.category = {}
         self.owner_instance = {}
         self._classify()
+        if recipe['schema']==2:
+            require(all(p in self.by_path and self.category[p]=='static_sprite'for p in recipe['static_sprites']),'Missing/unmatched declared static sprite')
+            require(all(a['path']in self.by_path and self.by_path[a['path']].scene==a['scene']for a in recipe['actor_bindings']),'Missing/wrong source actor class')
 
     def ancestors(self, path):
         chain = []
@@ -219,6 +222,9 @@ class Scene:
                 self.category[n.path] = 'root'
             elif self.instance_root(n):
                 self.category[n.path] = 'flag_landmark'
+            elif n.path in self.recipe.get('static_sprites', []):
+                require(n.type == 'Sprite', 'Static sprite policy names another node type')
+                self.category[n.path] = 'static_sprite'
             elif n.type == 'TileMap':
                 self.category[n.path] = 'tilemap'
             elif n.type in ('StaticBody2D', 'CollisionShape2D', 'CollisionPolygon2D'):
@@ -285,19 +291,35 @@ def load_recipe(path=RECIPE):
             result[key] = value
         return result
     recipe = json.loads(Path(path).read_text(encoding='utf-8'), object_pairs_hook=unique)
-    require(recipe.get('schema') == 1 and recipe.get('kind') == 'encore.podunk-field.recipe', 'Unsupported Podunk recipe')
+    legacy = type(recipe.get('schema')) is int and recipe.get('schema') == 1 and recipe.get('kind') == 'encore.podunk-field.recipe'
+    general = type(recipe.get('schema')) is int and recipe.get('schema') == 2 and recipe.get('kind') == 'encore.field-scene.recipe'
+    require(legacy or general, 'Unsupported field recipe')
     require(recipe.get('commit') == PIN, 'Podunk recipe source pin mismatch')
     expected = {'schema', 'kind', 'commit', 'scope', 'scene', 'house', 'player', 'tileset', 'door', 'routes', 'locales',
                 'ported_notices', 'action_boundaries', 'npc_recipe', 'categories', 'prop_sprites', 'labels', 'atlas_directory', 'outputs'}
-    require(set(recipe) == expected, 'Unknown/missing Podunk recipe fields')
-    require(recipe['npc_recipe']=='content/podunk-npcs.json','Unreviewed field NPC policy binding')
+    if general:
+        expected = (expected - {'npc_recipe'}) | {'route_recipe', 'static_sprites', 'actor_bindings'}
+    require(set(recipe) == expected, 'Unknown/missing field recipe fields')
+    if legacy:
+        require(recipe['npc_recipe']=='content/podunk-npcs.json','Unreviewed field NPC policy binding')
+    else:
+        from tools.world_scene_routes import load as route_policy
+        graph=route_policy(ROOT/recipe['route_recipe'])
+        matches=[scene for scene in graph['scenes']if scene['id']==recipe['scene']['id']]
+        require(type(recipe['scene']['id'])is int and len(matches)==1 and matches[0]['map']and matches[0]['source']==recipe['scene']['source']and recipe['routes']==graph['routes'],'Field scene route policy differs')
+        sprites=recipe['static_sprites'];actors=recipe['actor_bindings']
+        require(type(sprites)is list and len(sprites)==len(set(sprites))and all(type(p)is str and p and '..'not in p and not p.startswith('/')for p in sprites),'Static sprite policy rejected')
+        require(type(actors)is list and 0<=len(actors)<=64,'Field actor binding count')
+        require(all(type(a)is dict and set(a)=={'id','path','scene'}and type(a['scene'])is str and a['scene']in recipe['categories']and type(a['id'])is int and 2<=a['id']<=256 and type(a['path'])is str and a['path']and '..'not in a['path']for a in actors),'Field actor binding fields')
+        require(len({a['id']for a in actors})==len(actors)and len({a['path']for a in actors})==len(actors),'Duplicate field actor binding')
+        require([a['id']for a in actors]==list(range(2,len(actors)+2)),'Field actor append order changed')
     valid = {'door', 'openable_door', 'grass', 'prop', 'flag_landmark', 'camera_area', 'boundary', 'notice'}
     require(all(v in valid for v in recipe['categories'].values()), 'Unknown recipe category')
     require(set(recipe['prop_sprites']) == {k for k, v in recipe['categories'].items() if v == 'prop'}, 'Prop sprite policy coverage')
     require(isinstance(recipe['ported_notices'], list) and all(isinstance(p, str) and p for p in recipe['ported_notices']),
             'ported_notices must be scene-relative paths')
     actions = recipe['action_boundaries']
-    require(isinstance(actions, dict) and 0 < len(actions) <= 16, 'Missing action-boundary policies')
+    require(isinstance(actions, dict) and (0 if general else 1) <= len(actions) <= 16, 'Missing action-boundary policies')
     for scene, policy in actions.items():
         require(recipe['categories'].get(scene) == 'boundary' and isinstance(policy, dict) and set(policy) == {
             'script', 'control_script', 'shape', 'ability_flag', 'ability_function', 'initial_property', 'sync_property', 'source_facts', 'control_facts'}, 'Unknown action-boundary policy')
@@ -675,7 +697,8 @@ class Model:
         self.sources = sources or Sources()
         self.scene = Scene(self.sources, recipe)
         from tools.field_npcs import load_policy
-        self.npc_bindings={a['path']:a['id']-1 for a in load_policy(ROOT/recipe['npc_recipe'])['actors']}
+        bindings = recipe['actor_bindings'] if recipe['schema']==2 else load_policy(ROOT/recipe['npc_recipe'])['actors']
+        self.npc_bindings={a['path']:a['id']-1 for a in bindings}
         self.images = Images(self.sources)
         self.pictures = Pictures(self.images)
         self.textures = Textures(self.sources, recipe, self.images)
@@ -884,8 +907,12 @@ class Model:
         self._doors_and_areas()
         self._bodies()
         self._draw_program()
-        house = {n.path: n for n in instantiate(self.sources.doc, self.recipe['house']['source'])}
-        self.route_rows = route_rows(self.recipe, self.sources, {self.recipe['house']['id']: house, self.recipe['scene']['id']: sc.by_path})
+        if self.recipe['schema']==2:
+            from tools.world_scene_routes import load as route_policy,rows as source_routes
+            self.route_rows=source_routes(route_policy(ROOT/self.recipe['route_recipe']),self.sources)
+        else:
+            house = {n.path: n for n in instantiate(self.sources.doc, self.recipe['house']['source'])}
+            self.route_rows = route_rows(self.recipe, self.sources, {self.recipe['house']['id']: house, self.recipe['scene']['id']: sc.by_path})
 
     # collision bodies in world space (tile shapes stay in per-cell templates)
     def _body_shapes(self, body_path, cond):
@@ -1042,7 +1069,7 @@ class Model:
                                        route=route['id'] if route else 0, cx=f32(xf.ox), cy=f32(xf.oy),
                                        ex=f32(abs(extents.x * xf.xx)), ey=f32(abs(extents.y * xf.yy)), cond=cond))
                 if route:
-                    require(target, 'Routed door lacks targetScene ' + n.path)
+                    require(target or self.recipe['schema']==2 and route['from']==route['to'], 'Routed door lacks targetScene ' + n.path)
                 self.door_params[n.path] = n
             elif cat == 'boundary':
                 action = sc.action_boundaries.get(n.scene)
@@ -1153,6 +1180,9 @@ class Model:
             if sc.owner_instance[path] == path:
                 out.append(self._grass(node, cond))
             return out
+        if cat == 'static_sprite':
+            first=len(self.sprites);self.sprite(node,sc.global_xf[path],cond)
+            out.append(self._item(3,first,1,cond=cond));return out
         if cat == 'prop':
             owner = sc.owner_instance[path]
             if owner == path:
@@ -1669,6 +1699,7 @@ def sha(data):
 
 
 def build_outputs(recipe):
+    require(recipe['schema']==1, 'General field Room/story/assets are not admitted for release staging yet')
     model = Model(recipe)
     atlases = Atlases(model)
     directory = recipe['atlas_directory']

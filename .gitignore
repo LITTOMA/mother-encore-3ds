@@ -364,5 +364,9 @@ cookies.json
 !/reports/mayor-office-import/emulator/*/mayor-returned-to-podunk.png
 !/reports/mayor-office-import/emulator/*/mayor-help-choice-yes.png
 !/reports/mayor-office-import/emulator/*/mayor_office_map.png
+# Graveyard source/schema evidence only; no private profiles or executables.
+!/reports/graveyard-import/
+!/reports/graveyard-import/*.json
+!/reports/graveyard-import/*.log
 !/reports/field-scene-resources/*.png
 !/reports/field-scene-resources/*.py

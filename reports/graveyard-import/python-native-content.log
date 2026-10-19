@@ -1,0 +1,34 @@
+test_animation_modes_visibility_order_and_frame_range (tests.test_native_content.NativeContentTests.test_animation_modes_visibility_order_and_frame_range) ... ok
+test_checksum_and_unknown_directory_values (tests.test_native_content.NativeContentTests.test_checksum_and_unknown_directory_values) ... ok
+test_commands_unknown_target_extra_fields_and_terminal (tests.test_native_content.NativeContentTests.test_commands_unknown_target_extra_fields_and_terminal) ... ok
+test_confirmed_dialogue_loop_capability_roundtrip (tests.test_native_content.NativeContentTests.test_confirmed_dialogue_loop_capability_roundtrip) ... ok
+test_confirmed_loop_rejects_missing_gates_flags_versions_and_targets (tests.test_native_content.NativeContentTests.test_confirmed_loop_rejects_missing_gates_flags_versions_and_targets) ... ok
+test_current_extended_capability_is_valid (tests.test_native_content.NativeContentTests.test_current_extended_capability_is_valid) ... ok
+test_data_only_variants_and_no_cpp_toolchain (tests.test_native_content.NativeContentTests.test_data_only_variants_and_no_cpp_toolchain) ... ok
+test_every_truncation_and_trailing_byte_rejected (tests.test_native_content.NativeContentTests.test_every_truncation_and_trailing_byte_rejected) ... ok
+test_flags_conditions_and_actor_profile_bounds (tests.test_native_content.NativeContentTests.test_flags_conditions_and_actor_profile_bounds) ... ok
+test_geometry_bounds_degeneracy_and_convexity (tests.test_native_content.NativeContentTests.test_geometry_bounds_degeneracy_and_convexity) ... ok
+test_header_versions_capabilities_size_reserved_rejected (tests.test_native_content.NativeContentTests.test_header_versions_capabilities_size_reserved_rejected) ... ok
+test_nonfinite_and_signed_widths_rejected (tests.test_native_content.NativeContentTests.test_nonfinite_and_signed_widths_rejected) ... ok
+test_overlap_unaligned_section_and_nonzero_padding (tests.test_native_content.NativeContentTests.test_overlap_unaligned_section_and_nonzero_padding) ... ok
+test_periodic_room_shake_negative_bindings_and_rules (tests.test_native_content.NativeContentTests.test_periodic_room_shake_negative_bindings_and_rules) ... ok
+test_periodic_room_shake_source_contract (tests.test_native_content.NativeContentTests.test_periodic_room_shake_source_contract) ... ok
+test_production_exporters_no_longer_emit_content_headers (tests.test_native_content.NativeContentTests.test_production_exporters_no_longer_emit_content_headers) ... ok
+test_provenance_wrong_hash_path_and_source_change (tests.test_native_content.NativeContentTests.test_provenance_wrong_hash_path_and_source_change) ... ok
+test_reference_limits_duplicate_ids_and_range_overflow (tests.test_native_content.NativeContentTests.test_reference_limits_duplicate_ids_and_range_overflow) ... ok
+test_reserved_record_bytes_rejected (tests.test_native_content.NativeContentTests.test_reserved_record_bytes_rejected) ... ok
+test_revision6_branch_targets_and_operand_domains (tests.test_native_content.NativeContentTests.test_revision6_branch_targets_and_operand_domains) ... ok
+test_revision6_terminal_branches_and_legacy_compatibility (tests.test_native_content.NativeContentTests.test_revision6_terminal_branches_and_legacy_compatibility) ... ok
+test_revision7_actor_loop_repeat_and_stop_operands (tests.test_native_content.NativeContentTests.test_revision7_actor_loop_repeat_and_stop_operands) ... ok
+test_roundtrip_determinism_all_schema_widths (tests.test_native_content.NativeContentTests.test_roundtrip_determinism_all_schema_widths) ... ok
+test_rule_table_and_xp_contract (tests.test_native_content.NativeContentTests.test_rule_table_and_xp_contract) ... ok
+test_string_bounds_nul_and_utf8_rejected (tests.test_native_content.NativeContentTests.test_string_bounds_nul_and_utf8_rejected) ... ok
+test_texture_grid_resource_paths_and_rects (tests.test_native_content.NativeContentTests.test_texture_grid_resource_paths_and_rects) ... ok
+test_source_profiles_and_clips (tests.test_party_npc_actor.PartyActor.test_source_profiles_and_clips) ... ok
+test_source_route_fixture (tests.test_party_npc_actor.PartyActor.test_source_route_fixture) ... ok
+test_versions_and_profile_negative (tests.test_party_npc_actor.PartyActor.test_versions_and_profile_negative) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 133.223s
+
+OK

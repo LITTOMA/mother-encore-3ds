@@ -1,0 +1,30 @@
+{
+  "changed_fields": [
+    "dependencies",
+    "fingerprints"
+  ],
+  "changed_dependency": [
+    "romfs/world/house/opening.encroom"
+  ],
+  "old": {
+    "room": {
+      "bytes": 69096,
+      "sha256": "c39f5fae3bfa3025d8d1dc86abe5549141956c5f95d963a14fff025e7ef7502a"
+    },
+    "house": {
+      "bytes": 24400,
+      "sha256": "1bbd3ba9148fd37395d69947aee47b105c4c8df9c09bffd13e5fd5ba3bc0ba3f"
+    }
+  },
+  "new": {
+    "room": {
+      "bytes": 69096,
+      "sha256": "403b4422b736397e93f281b27a3031775ae5b89f56e1e96dbcd6739a60e2f9f6"
+    },
+    "house": {
+      "bytes": 24400,
+      "sha256": "1bbd3ba9148fd37395d69947aee47b105c4c8df9c09bffd13e5fd5ba3bc0ba3f"
+    }
+  },
+  "scope": "Only Room fingerprint after checked compiler capability extension; all Restore policies/source records identical"
+}

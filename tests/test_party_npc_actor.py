@@ -19,7 +19,7 @@ class PartyActor(unittest.TestCase):
     compiled=s['Key'][clip['first_key']:clip['first_key']+clip['key_count']];self.assertEqual([k['frame']for k in compiled],[k[0]-1 for k in keys[1:]])
     self.assertAlmostEqual(clip['length'],keys[0]+sum(k[1]for k in keys[1:]),places=5)
  def test_versions_and_profile_negative(self):
-  for cap in (7,8,9,11):
+  for cap in (7,8,9,11,12):
    r=copy.deepcopy(self.room);r.pop('build_input_sha256');r['capabilities']=cap;r['provenance']={'sources':{'test':'0'*64}}
    with self.assertRaises(ValueError):nc.validate_ir(r)
   for mutate in [lambda s:s['ActorProfile'][5].update(direction_count=4),lambda s:s['ActorProfile'][5].update(execution_kind=5),lambda s:s['ActorInstance'][5].update(binding_kind=1),lambda s:s['ActorProfile'][5].update(animation_binding_count=23)]:

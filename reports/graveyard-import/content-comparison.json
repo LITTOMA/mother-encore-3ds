@@ -1,0 +1,72 @@
+[
+  {
+    "path": "romfs/world/house/opening.encroom",
+    "difference": "only build_input_sha256/header CRC",
+    "old_sha256": "c39f5fae3bfa3025d8d1dc86abe5549141956c5f95d963a14fff025e7ef7502a",
+    "new_sha256": "403b4422b736397e93f281b27a3031775ae5b89f56e1e96dbcd6739a60e2f9f6",
+    "bytes": 69096
+  },
+  {
+    "path": "romfs/world/podunk/podunk.encroom",
+    "difference": "only build_input_sha256/header CRC",
+    "old_sha256": "2350c273c22fec1fba4698386b3a831ea5846374e27ca5be1ad0bef6c0b4b3d8",
+    "new_sha256": "a337471e74a6708c7767a63a74e4732dfb2c9168c2df251b1e58e132e4920c31",
+    "bytes": 20720
+  },
+  {
+    "path": "romfs/world/mayor/mayor.encroom",
+    "difference": "only build_input_sha256/header CRC",
+    "old_sha256": "a382233320e99342c3982c9b2bf79d17f65b18a976fd8e9a74ebba78d791d951",
+    "new_sha256": "50fcab40d79354fedaefd8d1d2e064adfaf64be41bfbbffaa71dccfc37197326",
+    "bytes": 18256
+  },
+  {
+    "path": "romfs/world/podunk/podunk.encmap",
+    "difference": "unchanged",
+    "old_sha256": "1b9682df5524c7d9291ea6ddc2ae9af78c4f6a6c698a908a20b9a8c9bc97be7a",
+    "new_sha256": "1b9682df5524c7d9291ea6ddc2ae9af78c4f6a6c698a908a20b9a8c9bc97be7a",
+    "bytes": 1619568
+  },
+  {
+    "path": "romfs/world/mayor/mayor.encmap",
+    "difference": "unchanged",
+    "old_sha256": "5306149a4bcc043f6a153cb57ef8362fb76a44190c595a0476192098be61cdb6",
+    "new_sha256": "5306149a4bcc043f6a153cb57ef8362fb76a44190c595a0476192098be61cdb6",
+    "bytes": 7380
+  },
+  {
+    "path": "romfs/world/world.enclinks",
+    "difference": "unchanged",
+    "old_sha256": "1bda27cde61ac6fde4e8afdfb9994d8c922a4eafb06c469d3ed07fbdc275c63a",
+    "new_sha256": "1bda27cde61ac6fde4e8afdfb9994d8c922a4eafb06c469d3ed07fbdc275c63a",
+    "bytes": 1128
+  },
+  {
+    "path": "romfs/session/opening.encsession",
+    "difference": "unchanged",
+    "old_sha256": "e48119794467648f5c43dc9a07afb86a8faff818eed51404f5070166c5d7e2f0",
+    "new_sha256": "e48119794467648f5c43dc9a07afb86a8faff818eed51404f5070166c5d7e2f0",
+    "bytes": 10173
+  },
+  {
+    "path": "romfs/session/opening.encrestore",
+    "difference": "checked House Room fingerprint only; all Restore policies compared against original extractor",
+    "old_sha256": "74b6847e3f3f00d9deae70a36706f3236e25baf087fb1fb2598b02a57b95a69f",
+    "new_sha256": "a2d1072be38f95f2be617f7693864addf8044fef7290b914bbb5840ee355d235",
+    "bytes": 1433
+  },
+  {
+    "path": "romfs/system/native.encresources",
+    "difference": "only exact CRC fingerprints for already-compared Room/Restore resources; identities/bindings/encounters unchanged",
+    "old_sha256": "ee361b2ea753a952cf779b2f6a208e1bf97b8961f890a059cdb4792166256439",
+    "new_sha256": "e2a1c5424073badb9b79935ea88bc31f4ea05f51f84a803304bc38b3ab056d19",
+    "bytes": 2849
+  },
+  {
+    "path": "content/native-opening.json",
+    "difference": "unchanged",
+    "old_sha256": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
+    "new_sha256": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
+    "bytes": 449635
+  }
+]

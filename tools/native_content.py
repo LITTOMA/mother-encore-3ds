@@ -331,6 +331,7 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
         op=c['opcode'];check(0<=op<(len(OPCODES)if capabilities>=9 else 44 if capabilities==8 else 43 if rules>=7 else 42 if rules>=6 else 36 if rules>=5 else 35),'Unknown command opcode')
         allowed_flags=({12:15,10:15,17:3,16:1,19:1,32:1,33:7,35:1}if rules>=7 else{10:15,17:3,16:1,19:1,32:1,33:7,35:1}if rules>=5 else{16:1,19:1,32:1,33:1}).get(op,0)
         if capabilities>=9 and op==13:allowed_flags=1
+        if capabilities>=11 and op==36:allowed_flags=1
         check(c['flags']&~allowed_flags==0 and (op in(37,38)or capabilities>=9 and op==13 and c['flags']==1 or c['auxiliary_index']==NONE),'Unknown command flags/auxiliary field')
         if op in(16,19,32)and c['flags']&1:
             check(c['actor_index']==NO_ACTOR,'Inherited or dialogue-owned command must not bind actor')
@@ -383,7 +384,7 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
         if op==29 and target['animation_motion']!=NO_ACTOR:
             profile=ref(actor['profile_index'],'ActorProfile','Command.path')
             check(profile['direction_count']>0 and all((actor['profile_index'],target['animation_motion'],d)in seen_animation for d in range(profile['direction_count'])),'Movement path lacks directional animation')
-    coverage=[0]*len(sections['Command']);program_paths=set()
+    coverage=[0]*len(sections['Command']);program_paths=set();confirmed_loops=0
     for p in sections['Program']:
         path=string(p['source_path_string'],'Program.source_path',False)
         check(not path.startswith('/')and ':'not in path and '\\'not in path and all(x not in ('','.','..')for x in path.split('/'))and path not in program_paths,'Invalid/duplicate program source path')
@@ -401,8 +402,12 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
             op=c['opcode']
             if op in(36,37,38):
                 target=c['target_index']if op==36 else c['auxiliary_index']
-                check(pc<target<len(cmds),'Branch must target a later command in the same program')
-                check(cmds[target-1]['phrase']!=cmds[target]['phrase'],'Branch must target a phrase entry')
+                check(0<=target<len(cmds),'Branch must stay in the same program')
+                check(target==0 or cmds[target-1]['phrase']!=cmds[target]['phrase'],'Branch must target a phrase entry')
+                if capabilities>=11 and op==36 and c['flags']==1:
+                    check(0<pc and target<pc and cmds[pc-1]['opcode']==33 and cmds[pc-1]['flags']==0 and cmds[pc-1]['phrase']==c['phrase'] and cmds[target]['opcode']==32,'Confirmed loop requires a preceding manual dialogue gate and a prior dialogue entry')
+                    confirmed_loops+=1
+                else:check(pc<target,'Branch must target a later command in the same program')
             if op in(40,43):check(pc+1<len(cmds)and cmds[pc+1]['opcode']==41,'OpenSave requires immediate submenu gate')
             if op==41:check(pc>0 and cmds[pc-1]['opcode']in(40,43),'Submenu gate requires a checked menu request')
             if (36<=op<=41 or op==43):check(not pending_timer,'Control transfer has unresolved phrase timer')
@@ -415,6 +420,7 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
         check(not pending_timer,'Unresolved phrase timer')
         for i in range(p['first_command'],p['first_command']+p['command_count']):coverage[i]+=1
     check(all(n==1 for n in coverage),'Command sections contain overlap or unreferenced commands')
+    check(capabilities!=11 or confirmed_loops>0,'Capability 11 requires a confirmed dialogue loop')
     params={r['key']:r for r in sections['Rule']}
     check(len(params)==len(sections['Rule'])and set(params)=={k for k in RULE_TYPES if k<=27 if rules>=7 or k<=25},'Missing/duplicate/unknown rule parameter')
     for key,rule in params.items():
@@ -448,7 +454,7 @@ def validate_ir(ir):
     fields(ir,ROOT_FIELDS,'root')
     check(ir['schema']==1 and type(ir['schema'])is int,'Unsupported IR schema')
     check(type(ir['family'])is int and ir['family']==FAMILY,'Unsupported family')
-    check(type(ir['rules'])is int and ir['rules']in(4,5,6,7)and type(ir['capabilities'])is int and (ir['capabilities']==ir['rules'] or (ir['rules']==7 and ir['capabilities']in(8,9,10))),'Unsupported rules/capabilities')
+    check(type(ir['rules'])is int and ir['rules']in(4,5,6,7)and type(ir['capabilities'])is int and (ir['capabilities']==ir['rules'] or (ir['rules']==7 and ir['capabilities']in(8,9,10,11))),'Unsupported rules/capabilities')
     integer(ir['scene_id'],1,NONE,'scene_id');integer(ir['exporter_version'],1,NONE,'exporter_version');integer(ir['adapter_revision'],1,NONE,'adapter_revision')
     digest_hex(ir['upstream_commit'],40,'upstream_commit')
     check(type(ir['provenance'])is dict and type(ir['provenance'].get('sources'))is dict and ir['provenance']['sources'],'Missing provenance sources')
@@ -518,7 +524,7 @@ def parse_pack(data):
     magic,major,minor,header_bytes,file_bytes,endian,target,family,rules,caps,scene_id,directory_offset,directory_count,entry_bytes,checksum,commit,input_sha,exporter_version,adapter_revision,flags,reserved=h
     check(magic==MAGIC and (major,minor)==(1,0),'Unsupported magic/format')
     check(header_bytes==HEADER_BYTES and file_bytes==len(data)and endian==0x01020304,'Header length/endian mismatch')
-    check((target,family)==(TARGET,FAMILY)and rules in(4,5,6,7)and (caps==rules or (rules==7 and caps in(8,9,10))),'Unsupported target/family/rules/capabilities')
+    check((target,family)==(TARGET,FAMILY)and rules in(4,5,6,7)and (caps==rules or (rules==7 and caps in(8,9,10,11))),'Unsupported target/family/rules/capabilities')
     check(any(commit)and any(input_sha),'Missing source fingerprint')
     check(scene_id>0 and exporter_version>0 and adapter_revision>0 and flags==0 and reserved==bytes(8),'Invalid header fields')
     check(directory_offset==HEADER_BYTES and directory_count==len(SCHEMAS)and entry_bytes==DIRECTORY_BYTES,'Invalid section directory')

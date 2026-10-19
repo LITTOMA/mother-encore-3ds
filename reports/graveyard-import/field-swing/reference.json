@@ -1,0 +1,5651 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "index": 0,
+      "action": {
+        "op": "play",
+        "name": "Attack Down"
+      },
+      "position": "0.00000000000000000",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "179.99986267089844000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 1,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 0,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 0,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 2,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.00000000999999990",
+      "frame": 0,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 0,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 3,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666669
+      },
+      "position": "0.06666669994592670",
+      "frame": 0,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 0,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 4,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.06666670739650730",
+      "frame": 1,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 1,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 5,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666629000000002
+      },
+      "position": "0.13333299756050110",
+      "frame": 1,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 1,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 6,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.13333301246166230",
+      "frame": 2,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 2,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 7,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666699000000001
+      },
+      "position": "0.20000000298023220",
+      "frame": 2,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 2,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 8,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.20000001788139340",
+      "frame": 3,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 3,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 9,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666698999999998
+      },
+      "position": "0.26666700839996340",
+      "frame": 3,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 3,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 10,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.26666700839996340",
+      "frame": 4,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 11,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666599000000001
+      },
+      "position": "0.33333298563957210",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 12,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.33333298563957210",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 13,
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "position": "0.33333298563957210",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 14,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 15,
+      "action": {
+        "op": "play",
+        "name": "Attack Down"
+      },
+      "position": "0.00000000000000000",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 16,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.01666666753590110",
+      "frame": 0,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 0,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 17,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.03333333507180210",
+      "frame": 0,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 0,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 18,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.05000000447034840",
+      "frame": 0,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 0,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 19,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.06666667014360430",
+      "frame": 0,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 0,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 20,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.08333333581686020",
+      "frame": 1,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 1,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 21,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.10000000149011610",
+      "frame": 1,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 1,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 22,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.11666666716337200",
+      "frame": 1,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 1,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 23,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.13333334028720860",
+      "frame": 2,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 2,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 24,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.15000000596046450",
+      "frame": 2,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 2,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 25,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.16666667163372040",
+      "frame": 2,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 2,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 26,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.18333333730697630",
+      "frame": 2,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 2,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 27,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.20000000298023220",
+      "frame": 2,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 2,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 28,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.21666666865348820",
+      "frame": 3,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 3,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 29,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.23333333432674410",
+      "frame": 3,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 3,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 30,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.25000000000000000",
+      "frame": 3,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 3,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 31,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.26666668057441710",
+      "frame": 3,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 3,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 32,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.28333336114883420",
+      "frame": 4,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 33,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.30000004172325130",
+      "frame": 4,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 34,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.31666672229766850",
+      "frame": 4,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 35,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 36,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 37,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 38,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 39,
+      "action": {
+        "op": "play",
+        "name": "Attack Up"
+      },
+      "position": "0.00000000000000000",
+      "frame": 4,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 4,
+      "pivot": "90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 40,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 30,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 30,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 41,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.00000000999999990",
+      "frame": 30,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 30,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 42,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666669
+      },
+      "position": "0.06666669994592670",
+      "frame": 30,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 30,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 43,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.06666670739650730",
+      "frame": 31,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 31,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 44,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666629000000002
+      },
+      "position": "0.13333299756050110",
+      "frame": 31,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 31,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 45,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.13333301246166230",
+      "frame": 32,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 32,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 46,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666699000000001
+      },
+      "position": "0.20000000298023220",
+      "frame": 32,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 32,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 47,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.20000001788139340",
+      "frame": 33,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 33,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 48,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666698999999998
+      },
+      "position": "0.26666700839996340",
+      "frame": 33,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 33,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 49,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.26666700839996340",
+      "frame": 34,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 50,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666599000000001
+      },
+      "position": "0.33333298563957210",
+      "frame": 34,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 51,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.33333298563957210",
+      "frame": 34,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 52,
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "position": "0.33333298563957210",
+      "frame": 34,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 53,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 34,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 54,
+      "action": {
+        "op": "play",
+        "name": "Attack Up"
+      },
+      "position": "0.00000000000000000",
+      "frame": 34,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 55,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.01666666753590110",
+      "frame": 30,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 30,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 56,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.03333333507180210",
+      "frame": 30,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 30,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 57,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.05000000447034840",
+      "frame": 30,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 30,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 58,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.06666667014360430",
+      "frame": 30,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 30,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 59,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.08333333581686020",
+      "frame": 31,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 31,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 60,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.10000000149011610",
+      "frame": 31,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 31,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 61,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.11666666716337200",
+      "frame": 31,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 31,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 62,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.13333334028720860",
+      "frame": 32,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 32,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 63,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.15000000596046450",
+      "frame": 32,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 32,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 64,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.16666667163372040",
+      "frame": 32,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 32,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 65,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.18333333730697630",
+      "frame": 32,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 32,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 66,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.20000000298023220",
+      "frame": 32,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 32,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 67,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.21666666865348820",
+      "frame": 33,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 33,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 68,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.23333333432674410",
+      "frame": 33,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 33,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 69,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.25000000000000000",
+      "frame": 33,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 33,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 70,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.26666668057441710",
+      "frame": 33,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 33,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 71,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.28333336114883420",
+      "frame": 34,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 72,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.30000004172325130",
+      "frame": 34,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 73,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.31666672229766850",
+      "frame": 34,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 74,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 34,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 75,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 34,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 76,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 34,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 77,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 34,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 78,
+      "action": {
+        "op": "play",
+        "name": "Attack Right"
+      },
+      "position": "0.00000000000000000",
+      "frame": 34,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 34,
+      "pivot": "-90.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 79,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 20,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 20,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 80,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.00000000999999990",
+      "frame": 20,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 20,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 81,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666669
+      },
+      "position": "0.06666669994592670",
+      "frame": 20,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 20,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 82,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.06666670739650730",
+      "frame": 20,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 20,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 83,
+      "action": {
+        "op": "advance",
+        "delta": 0.00033329000000001385
+      },
+      "position": "0.06699999421834950",
+      "frame": 20,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 20,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 84,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.06700000166893010",
+      "frame": 20,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 20,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 85,
+      "action": {
+        "op": "advance",
+        "delta": 0.06633299000000001
+      },
+      "position": "0.13333299756050110",
+      "frame": 21,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 21,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 86,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.13333301246166230",
+      "frame": 22,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 22,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 87,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666699000000001
+      },
+      "position": "0.20000000298023220",
+      "frame": 22,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 22,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 88,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.20000001788139340",
+      "frame": 23,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 23,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 89,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666698999999998
+      },
+      "position": "0.26666700839996340",
+      "frame": 23,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 23,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 90,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.26666700839996340",
+      "frame": 24,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 91,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666599000000001
+      },
+      "position": "0.33333298563957210",
+      "frame": 24,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 92,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.33333298563957210",
+      "frame": 24,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 93,
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "position": "0.33333298563957210",
+      "frame": 24,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 94,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 24,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 95,
+      "action": {
+        "op": "play",
+        "name": "Attack Right"
+      },
+      "position": "0.00000000000000000",
+      "frame": 24,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 96,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.01666666753590110",
+      "frame": 20,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 20,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 97,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.03333333507180210",
+      "frame": 20,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 20,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 98,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.05000000447034840",
+      "frame": 20,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 20,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 99,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.06666667014360430",
+      "frame": 20,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 20,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 100,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.08333333581686020",
+      "frame": 21,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 21,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 101,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.10000000149011610",
+      "frame": 21,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 21,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 102,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.11666666716337200",
+      "frame": 21,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 21,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 103,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.13333334028720860",
+      "frame": 22,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 22,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 104,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.15000000596046450",
+      "frame": 22,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 22,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 105,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.16666667163372040",
+      "frame": 22,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 22,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 106,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.18333333730697630",
+      "frame": 22,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 22,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 107,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.20000000298023220",
+      "frame": 22,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 22,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 108,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.21666666865348820",
+      "frame": 23,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 23,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 109,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.23333333432674410",
+      "frame": 23,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 23,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 110,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.25000000000000000",
+      "frame": 23,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 23,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 111,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.26666668057441710",
+      "frame": 23,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 23,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 112,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.28333336114883420",
+      "frame": 24,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 113,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.30000004172325130",
+      "frame": 24,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 114,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.31666672229766850",
+      "frame": 24,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 115,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 24,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 116,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 24,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 117,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 24,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 118,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 24,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 119,
+      "action": {
+        "op": "play",
+        "name": "Attack Left"
+      },
+      "position": "0.00000000000000000",
+      "frame": 24,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 24,
+      "pivot": "0.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 120,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 10,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 10,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 121,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.00000000999999990",
+      "frame": 10,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 10,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 122,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666669
+      },
+      "position": "0.06666669994592670",
+      "frame": 10,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 10,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 123,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.06666670739650730",
+      "frame": 11,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 11,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 124,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666629000000002
+      },
+      "position": "0.13333299756050110",
+      "frame": 11,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 11,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 125,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.13333301246166230",
+      "frame": 12,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 12,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 126,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666699000000001
+      },
+      "position": "0.20000000298023220",
+      "frame": 12,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 12,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 127,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.20000001788139340",
+      "frame": 13,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 13,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 128,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666698999999998
+      },
+      "position": "0.26666700839996340",
+      "frame": 13,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 13,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 129,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.26666700839996340",
+      "frame": 14,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 130,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666599000000001
+      },
+      "position": "0.33333298563957210",
+      "frame": 14,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 131,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.33333298563957210",
+      "frame": 14,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 132,
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "position": "0.33333298563957210",
+      "frame": 14,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 133,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 14,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 134,
+      "action": {
+        "op": "play",
+        "name": "Attack Left"
+      },
+      "position": "0.00000000000000000",
+      "frame": 14,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 135,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.01666666753590110",
+      "frame": 10,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 10,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 136,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.03333333507180210",
+      "frame": 10,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 10,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 137,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.05000000447034840",
+      "frame": 10,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 10,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 138,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.06666667014360430",
+      "frame": 10,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 10,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 139,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.08333333581686020",
+      "frame": 11,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 11,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 140,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.10000000149011610",
+      "frame": 11,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 11,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 141,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.11666666716337200",
+      "frame": 11,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 11,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 142,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.13333334028720860",
+      "frame": 12,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 12,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 143,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.15000000596046450",
+      "frame": 12,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 12,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 144,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.16666667163372040",
+      "frame": 12,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 12,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 145,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.18333333730697630",
+      "frame": 12,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 12,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 146,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.20000000298023220",
+      "frame": 12,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 12,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 147,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.21666666865348820",
+      "frame": 13,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 13,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 148,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.23333333432674410",
+      "frame": 13,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 13,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 149,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.25000000000000000",
+      "frame": 13,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 13,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 150,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.26666668057441710",
+      "frame": 13,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 13,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 151,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.28333336114883420",
+      "frame": 14,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 152,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.30000004172325130",
+      "frame": 14,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 153,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.31666672229766850",
+      "frame": 14,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 154,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 14,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 155,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 14,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 156,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 14,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 157,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 14,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 158,
+      "action": {
+        "op": "play",
+        "name": "Attack DownRight"
+      },
+      "position": "0.00000000000000000",
+      "frame": 14,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 14,
+      "pivot": "180.00000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 159,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 50,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 50,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 160,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.00000000999999990",
+      "frame": 50,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 50,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 161,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666669
+      },
+      "position": "0.06666669994592670",
+      "frame": 50,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 50,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 162,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.06666670739650730",
+      "frame": 51,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 51,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 163,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666629000000002
+      },
+      "position": "0.13333299756050110",
+      "frame": 51,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 51,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 164,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.13333301246166230",
+      "frame": 52,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 52,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 165,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666699000000001
+      },
+      "position": "0.20000000298023220",
+      "frame": 52,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 52,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 166,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.20000001788139340",
+      "frame": 53,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 53,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 167,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666698999999998
+      },
+      "position": "0.26666700839996340",
+      "frame": 53,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 53,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 168,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.26666700839996340",
+      "frame": 54,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 169,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666599000000001
+      },
+      "position": "0.33333298563957210",
+      "frame": 54,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 170,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.33333298563957210",
+      "frame": 54,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 171,
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "position": "0.33333298563957210",
+      "frame": 54,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 172,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 54,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 173,
+      "action": {
+        "op": "play",
+        "name": "Attack DownRight"
+      },
+      "position": "0.00000000000000000",
+      "frame": 54,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 174,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.01666666753590110",
+      "frame": 50,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 50,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 175,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.03333333507180210",
+      "frame": 50,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 50,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 176,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.05000000447034840",
+      "frame": 50,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 50,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 177,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.06666667014360430",
+      "frame": 50,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 50,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 178,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.08333333581686020",
+      "frame": 51,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 51,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 179,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.10000000149011610",
+      "frame": 51,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 51,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 180,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.11666666716337200",
+      "frame": 51,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 51,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 181,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.13333334028720860",
+      "frame": 52,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 52,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 182,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.15000000596046450",
+      "frame": 52,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 52,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 183,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.16666667163372040",
+      "frame": 52,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 52,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 184,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.18333333730697630",
+      "frame": 52,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 52,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 185,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.20000000298023220",
+      "frame": 52,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 52,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 186,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.21666666865348820",
+      "frame": 53,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 53,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 187,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.23333333432674410",
+      "frame": 53,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 53,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 188,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.25000000000000000",
+      "frame": 53,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 53,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 189,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.26666668057441710",
+      "frame": 53,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 53,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 190,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.28333336114883420",
+      "frame": 54,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 191,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.30000004172325130",
+      "frame": 54,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 192,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.31666672229766850",
+      "frame": 54,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 193,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 54,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 194,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 54,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 195,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 54,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 196,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 54,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 197,
+      "action": {
+        "op": "play",
+        "name": "Attack DownLeft"
+      },
+      "position": "0.00000000000000000",
+      "frame": 54,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 54,
+      "pivot": "63.50000381469726600",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 198,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 40,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 40,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 199,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.00000000999999990",
+      "frame": 40,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 40,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 200,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666669
+      },
+      "position": "0.06666669994592670",
+      "frame": 40,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 40,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 201,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.06666670739650730",
+      "frame": 41,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 41,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 202,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666629000000002
+      },
+      "position": "0.13333299756050110",
+      "frame": 41,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 41,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 203,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.13333301246166230",
+      "frame": 42,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 42,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 204,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666699000000001
+      },
+      "position": "0.20000000298023220",
+      "frame": 42,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 42,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 205,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.20000001788139340",
+      "frame": 43,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 43,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 206,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666698999999998
+      },
+      "position": "0.26666700839996340",
+      "frame": 43,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 43,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 207,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.26666700839996340",
+      "frame": 44,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 208,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666599000000001
+      },
+      "position": "0.33333298563957210",
+      "frame": 44,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 209,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.33333298563957210",
+      "frame": 44,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 210,
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "position": "0.33333298563957210",
+      "frame": 44,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 211,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 44,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 212,
+      "action": {
+        "op": "play",
+        "name": "Attack DownLeft"
+      },
+      "position": "0.00000000000000000",
+      "frame": 44,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 213,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.01666666753590110",
+      "frame": 40,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 40,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 214,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.03333333507180210",
+      "frame": 40,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 40,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 215,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.05000000447034840",
+      "frame": 40,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 40,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 216,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.06666667014360430",
+      "frame": 40,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 40,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 217,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.08333333581686020",
+      "frame": 41,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 41,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 218,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.10000000149011610",
+      "frame": 41,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 41,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 219,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.11666666716337200",
+      "frame": 41,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": true,
+      "bat_frame": 41,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 220,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.13333334028720860",
+      "frame": 42,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 42,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 221,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.15000000596046450",
+      "frame": 42,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 42,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 222,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.16666667163372040",
+      "frame": 42,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 42,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 223,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.18333333730697630",
+      "frame": 42,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 42,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 224,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.20000000298023220",
+      "frame": 42,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": false,
+      "bat_frame": 42,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 225,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.21666666865348820",
+      "frame": 43,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 43,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 226,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.23333333432674410",
+      "frame": 43,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 43,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 227,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.25000000000000000",
+      "frame": 43,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 43,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 228,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.26666668057441710",
+      "frame": 43,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 43,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 229,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.28333336114883420",
+      "frame": 44,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 230,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.30000004172325130",
+      "frame": 44,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 231,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.31666672229766850",
+      "frame": 44,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 232,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 44,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 233,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 44,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 234,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 44,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 235,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 44,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 236,
+      "action": {
+        "op": "play",
+        "name": "Attack UpRight"
+      },
+      "position": "0.00000000000000000",
+      "frame": 44,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 44,
+      "pivot": "116.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 237,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 70,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 70,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 238,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.00000000999999990",
+      "frame": 70,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 70,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 239,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666669
+      },
+      "position": "0.06666669994592670",
+      "frame": 70,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 70,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 240,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.06666670739650730",
+      "frame": 71,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 71,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 241,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666629000000002
+      },
+      "position": "0.13333299756050110",
+      "frame": 71,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 71,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 242,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.13333301246166230",
+      "frame": 72,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 72,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 243,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666699000000001
+      },
+      "position": "0.20000000298023220",
+      "frame": 72,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 72,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 244,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.20000001788139340",
+      "frame": 73,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 73,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 245,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666698999999998
+      },
+      "position": "0.26666700839996340",
+      "frame": 73,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 73,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 246,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.26666700839996340",
+      "frame": 74,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 247,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666599000000001
+      },
+      "position": "0.33333298563957210",
+      "frame": 74,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 248,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.33333298563957210",
+      "frame": 74,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 249,
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "position": "0.33333298563957210",
+      "frame": 74,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 250,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 74,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 251,
+      "action": {
+        "op": "play",
+        "name": "Attack UpRight"
+      },
+      "position": "0.00000000000000000",
+      "frame": 74,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 252,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.01666666753590110",
+      "frame": 70,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 70,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 253,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.03333333507180210",
+      "frame": 70,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 70,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 254,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.05000000447034840",
+      "frame": 70,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 70,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 255,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.06666667014360430",
+      "frame": 70,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 70,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 256,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.08333333581686020",
+      "frame": 71,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 71,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 257,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.10000000149011610",
+      "frame": 71,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 71,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 258,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.11666666716337200",
+      "frame": 71,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 71,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 259,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.13333334028720860",
+      "frame": 72,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 72,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 260,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.15000000596046450",
+      "frame": 72,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 72,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 261,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.16666667163372040",
+      "frame": 72,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 72,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 262,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.18333333730697630",
+      "frame": 72,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 72,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 263,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.20000000298023220",
+      "frame": 72,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 72,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 264,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.21666666865348820",
+      "frame": 73,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 73,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 265,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.23333333432674410",
+      "frame": 73,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 73,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 266,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.25000000000000000",
+      "frame": 73,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 73,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 267,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.26666668057441710",
+      "frame": 73,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 73,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 268,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.28333336114883420",
+      "frame": 74,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 269,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.30000004172325130",
+      "frame": 74,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 270,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.31666672229766850",
+      "frame": 74,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 271,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 74,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 272,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 74,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 273,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 74,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 274,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 74,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 275,
+      "action": {
+        "op": "play",
+        "name": "Attack UpLeft"
+      },
+      "position": "0.00000000000000000",
+      "frame": 74,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 74,
+      "pivot": "296.50000000000000000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 276,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 60,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 60,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 277,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.00000000999999990",
+      "frame": 60,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 60,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 278,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666669
+      },
+      "position": "0.06666669994592670",
+      "frame": 60,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 60,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 279,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.06666670739650730",
+      "frame": 61,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 61,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 280,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666629000000002
+      },
+      "position": "0.13333299756050110",
+      "frame": 61,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 61,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 281,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.13333301246166230",
+      "frame": 62,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 62,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 282,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666699000000001
+      },
+      "position": "0.20000000298023220",
+      "frame": 62,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 62,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 283,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.20000001788139340",
+      "frame": 63,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 63,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 284,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666698999999998
+      },
+      "position": "0.26666700839996340",
+      "frame": 63,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 63,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 285,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.26666700839996340",
+      "frame": 64,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 286,
+      "action": {
+        "op": "advance",
+        "delta": 0.06666599000000001
+      },
+      "position": "0.33333298563957210",
+      "frame": 64,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 287,
+      "action": {
+        "op": "advance",
+        "delta": 1e-08
+      },
+      "position": "0.33333298563957210",
+      "frame": 64,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 288,
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "position": "0.33333298563957210",
+      "frame": 64,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 289,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 64,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    },
+    {
+      "index": 290,
+      "action": {
+        "op": "play",
+        "name": "Attack UpLeft"
+      },
+      "position": "0.00000000000000000",
+      "frame": 64,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 291,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.01666666753590110",
+      "frame": 60,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 60,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 292,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.03333333507180210",
+      "frame": 60,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 60,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 293,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.05000000447034840",
+      "frame": 60,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 60,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 294,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.06666667014360430",
+      "frame": 60,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 60,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 295,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.08333333581686020",
+      "frame": 61,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 61,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 296,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.10000000149011610",
+      "frame": 61,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 61,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 297,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.11666666716337200",
+      "frame": 61,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 61,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 298,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.13333334028720860",
+      "frame": 62,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 62,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 299,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.15000000596046450",
+      "frame": 62,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 62,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 300,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.16666667163372040",
+      "frame": 62,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 62,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 301,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.18333333730697630",
+      "frame": 62,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 62,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 302,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.20000000298023220",
+      "frame": 62,
+      "main": false,
+      "special": true,
+      "hitbox": true,
+      "behind": true,
+      "bat_frame": 62,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 303,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.21666666865348820",
+      "frame": 63,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 63,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 304,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.23333333432674410",
+      "frame": 63,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 63,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 305,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.25000000000000000",
+      "frame": 63,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 63,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 306,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.26666668057441710",
+      "frame": 63,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 63,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 307,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.28333336114883420",
+      "frame": 64,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 308,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.30000004172325130",
+      "frame": 64,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 309,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.31666672229766850",
+      "frame": 64,
+      "main": false,
+      "special": true,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": true,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 310,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 64,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 311,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 64,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 312,
+      "action": {
+        "op": "advance",
+        "delta": 0.016666666666666666
+      },
+      "position": "0.33333298563957210",
+      "frame": 64,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": false,
+      "attack": true,
+      "tap_run": false
+    },
+    {
+      "index": 313,
+      "action": {
+        "op": "flush"
+      },
+      "position": "0.33333298563957210",
+      "frame": 64,
+      "main": true,
+      "special": false,
+      "hitbox": false,
+      "behind": false,
+      "bat_frame": 64,
+      "pivot": "243.49998474121094000",
+      "playing": false,
+      "attack": false,
+      "tap_run": false
+    }
+  ]
+}

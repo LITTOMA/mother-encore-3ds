@@ -9,7 +9,12 @@
     "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
     "Data/Dialogue/Podunk/woof_treats.yaml": "a64e5ca07dff6a39a702003d054944968fc8d87a42a2da1920818b85b9d46239",
     "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9",
-    "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e"
+    "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Dead Bush.png.import": "4ad90f6e9358c616d86e5eefcead4cb82e73b4c8cd8a543a5a98b44ddc993d48",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
   },
   "bindings": [
     {
@@ -146,6 +151,26 @@
       "id": 326,
       "role": "FieldNpc",
       "path": "world/mayor/pippi.encmick"
+    },
+    {
+      "id": 327,
+      "role": "FieldNpc",
+      "path": "world/podunk/npcs/iggy.encmick"
+    },
+    {
+      "id": 1031,
+      "role": "FieldProps",
+      "path": "world/podunk/podunk.encprops"
+    },
+    {
+      "id": 328,
+      "role": "FieldNpc",
+      "path": "world/podunk/npcs/zombie1.encmick"
+    },
+    {
+      "id": 329,
+      "role": "FieldNpc",
+      "path": "world/podunk/npcs/zombie2.encmick"
     }
   ],
   "encounters": [

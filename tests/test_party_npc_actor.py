@@ -19,7 +19,7 @@ class PartyActor(unittest.TestCase):
     compiled=s['Key'][clip['first_key']:clip['first_key']+clip['key_count']];self.assertEqual([k['frame']for k in compiled],[k[0]-1 for k in keys[1:]])
     self.assertAlmostEqual(clip['length'],keys[0]+sum(k[1]for k in keys[1:]),places=5)
  def test_versions_and_profile_negative(self):
-  for cap in (7,8,9,11):
+  for cap in (7,8,9,11,12):
    r=copy.deepcopy(self.room);r.pop('build_input_sha256');r['capabilities']=cap;r['provenance']={'sources':{'test':'0'*64}}
    with self.assertRaises(ValueError):nc.validate_ir(r)
   for mutate in [lambda s:s['ActorProfile'][5].update(direction_count=4),lambda s:s['ActorProfile'][5].update(execution_kind=5),lambda s:s['ActorInstance'][5].update(binding_kind=1),lambda s:s['ActorProfile'][5].update(animation_binding_count=23)]:
@@ -28,11 +28,14 @@ class PartyActor(unittest.TestCase):
   old=nc.parse_pack((n.ROOT/'romfs/world/house/opening.encroom').read_bytes())
   with self.assertRaises(ValueError):nc.validate_tables(old['strings'],old['sections'],old['scene_id'],7,10)
  def test_source_route_fixture(self):
-  # This frozen Actor fixture predates FieldSteps. Project only the documented
-  # optional schema2 field; retain every route, NPC and music binding byte.
+  # This frozen fixture predates FieldSteps, props, Iggy and both zombies.
+  # Check all current identities, then project the three appended owners. Keep
+  # every original route, Mayor NPC and music binding byte in the old fixture.
   legacy=copy.deepcopy(w.load());legacy['schema']=1
   for scene in legacy['scenes']:
-   if scene['map']:del scene['assets']['steps']
+   if scene['map']:del scene['assets']['steps'];del scene['assets']['props']
+   if scene['id']==2:
+    self.assertEqual(scene['assets']['npcs'],[320,321,327,328,329]);scene['assets']['npcs']=[identity for identity in scene['assets']['npcs']if identity not in(327,328,329)]
   self.assertEqual(w.build(legacy)[0],(n.ROOT/'tests/fixtures/mayor-actor-routes.enclinks').read_bytes())
 
 if __name__=='__main__':unittest.main()

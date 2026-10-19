@@ -1,0 +1,6 @@
+{
+  "source": "upstream/MOTHER-Encore/Scripts/global/global.gd",
+  "sha256": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+  "review": "Original save_game builds flags into the saved dictionary, synchronously calls save_from_dict, then set_respawn and only afterwards sets the live saved flag true. First persisted saved=false is therefore original ordering, not evidence that the successful Record failed. Port write_record_slot follows the same order. The diagnostic roots=1,saved=0,canonical=1 led to a source review; actual save bytes and game expectations were not edited.",
+  "correction": "Only the host verification assertion was wrong; require the source first-write saved=false and cemetery=true, preserve canonical file bytes. Actual recorded input file SHA remains2ec58ed5e5e9e03f9cf9832346fc31d6da77ccb80e21953f4c833c4ca67c1714."
+}

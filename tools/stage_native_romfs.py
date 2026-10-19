@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stage only checked native content and referenced textures, excluding M0 fixtures."""
-import hashlib,shutil,json
+import argparse,hashlib,shutil,json
 from pathlib import Path
 from native_content import parse_pack
 from audio_asset import stage_files as audio_files
@@ -10,6 +10,9 @@ from native_house import stage_files as house_files
 from native_items import stage_files as item_files
 ROOT=Path(__file__).resolve().parents[1]
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--verify-only',action='store_true',help='Validate all source files without writing a duplicate RomFS')
+    options=parser.parse_args()
     source=ROOT/'romfs';target=ROOT/'build/ctr/native-romfs'
     from resource_catalog import decode, stage_files as catalog_files
     catalog=decode((source/'system/native.encresources').read_bytes())
@@ -96,6 +99,8 @@ def main():
     files.update(introduction_asset_files(source))
     from podunk_field import stage_files as podunk_files
     files.update(podunk_files(source))
+    from field_props import stage_files as prop_files
+    files.update(prop_files(source))
     from mayor_scene import stage_files as mayor_files
     files.update(mayor_files(source))
     from house_presents import stage_files as present_files
@@ -118,6 +123,9 @@ def main():
     files.update(catalog_files(source, files))
     from romfs_layout import check_layout
     check_layout(files)
+    if options.verify_only:
+        print(f'Verified {len(files)} native RomFS source files without staging; no M0 fixture')
+        return
     temporary=target.with_name(target.name+'-pending')
     if temporary.exists():shutil.rmtree(temporary)
     temporary.mkdir(parents=True)

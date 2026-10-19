@@ -6,10 +6,10 @@
 #include <string>
 #include <vector>
 namespace encore::upstream {
-class NewGameSetupData;class LocaleSelection;class OpeningWorld;class DialogueChoices;struct SessionSnapshot;
+class NewGameSetupData;class LocaleSelection;class OpeningWorld;class DialogueChoices;struct SessionSnapshot;class FieldMenusData;struct FieldMenuPreferences;
 // Checked source character tags; literal nicknames never become templates.
 bool format_field_story_text(std::string_view,const NewGameSetupData&,const SessionSnapshot&,const LocaleSelection&,std::string&,std::string&);
-bool format_field_story_span(std::string_view,const NewGameSetupData&,const SessionSnapshot&,const LocaleSelection&,LocalizedHouseSpan&,std::string&);
+bool format_field_story_span(std::string_view,const NewGameSetupData&,const SessionSnapshot&,const LocaleSelection&,LocalizedHouseSpan&,std::string&,const FieldMenusData* =nullptr,const FieldMenuPreferences* =nullptr);
 struct FieldInteraction {uint32_t actor=UINT32_MAX,programme=UINT32_MAX;FieldText flag{};uint32_t turns=0,status=0;FieldText source{};};
 struct FieldStoryProgramme {uint32_t programme=UINT32_MAX;FieldText boundary{},source{};uint32_t flags=0;};
 struct FieldStoryText {uint32_t id=0;FieldText locale{},speaker{},body{},voice{};};

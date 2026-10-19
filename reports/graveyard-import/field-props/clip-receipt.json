@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "sources": {
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa"
+  },
+  "source_project_sha256": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+  "input_sha256": "a176518ce8a2cc4e56beb8e75092499c54e6b75093fe125b99da3633a11008d9",
+  "numeric_input": "TSV reuses exact input JSON reals; native row index/op verified, rounded Godot JSON.print echoes are diagnostics only",
+  "stubbed_source_scenes": {
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c"
+  },
+  "quarantine": {
+    "property": "interact/ButtonPrompt:material",
+    "resources": [
+      {
+        "id": 9,
+        "type": "Shader"
+      },
+      {
+        "id": 10,
+        "type": "ShaderMaterial"
+      }
+    ],
+    "scope": "Prompt rendering only; native GLES2 shader parameter lookup failed in isolated service stub. No graphics/shader equivalence claim."
+  },
+  "adapted_scene_sha256": "d717d1b7a11a37af770f11f3792f6ebd166540b70c1318f923a4b29ea7bcfd28",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "probe_sha256": "327820e8ca436b4458bb512cd129c5865832032ab55e0cf420356ec717859e9e",
+  "rows": 414,
+  "scope": "Source prop animations in official Godot; manual AnimationPlayer clock.\n\nButtonPrompt/autoload services are stubs. Its visual material is explicitly\nquarantined from a numeric scene copy; source animations, shapes and script\nremain exact. The original scene is retained alongside that copy.\nThis is not the original map, an audible test, or 3DS verification.\n"
+}

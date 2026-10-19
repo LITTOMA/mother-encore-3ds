@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "scope": "Artificial core-validated post-Mayor checkpoint; normal LOAD/House exit/walk and cemetery programme only; no original pixel, old battle rerun, actual Record, new-game opening, whole-game or hardware claim",
+  "source_commit": "391491d8a9b685107d4c4a9febc281cbc18cf04b",
+  "game_sha256": "4f90dc1f0d484063ce35be590cd71aed56a9aa58187e6f736845fed84554f46e",
+  "driver_revision": "391491d8a9b685107d4c4a9febc281cbc18cf04b",
+  "driver_sources_sha256": {
+    "tools/run_podunk_bridge_semantics.py": "9c5244798c3a3e8991f33840817c57d936d57648c56d5f41e7a1429d2934f1d8",
+    "tools/emulator_artifact.py": "e7932cab732da0c33fda4b230face337314ad8a052bf11ce337c330f67288003",
+    "tools/ci_console_check.py": "918eeb5fec73e40a9420dd7463eb082c1443038c4b3ae3c2898c49612c22ecbe",
+    "tools/run_emulator_semantics.py": "9f3674bfb2880436b6a8ccedd79a5d242fb672ffe4a99d772b763fc9657f8baf",
+    "tools/cdb_client.py": "22f2ee2c099be1c8b89be27e24fa0f1add899f95c3c77fee77cab634bbc9ba23",
+    "tools/semantic_probe.py": "81c226c48668842b7d1350c9f36ef945fbf142a25b42aa27285565475c21aa1f",
+    "build/full-port/run_cemetery_isolated.py": "a49378df7b53b14d77e9b4523fbaeb491ab03a66001fdd59741e639c99f23934",
+    "build/full-port/mayor-route-current-map.json": "4a3bbe7fdeea187e27d1745728a1140ee964b7390e69865119f940ca7477aff1",
+    "tools/emulator_walk_route.py": "593c8af0c3126817aaef4b874538fd9b5a4acb1ec5300f013d5bf0a2e17a4450",
+    "tools/field_area.py": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
+    "tools/podunk_field.py": "e3bc3be8b48287568c0f5f26a0a5c9349be6254eccc50ace74dfec3e47e06f23",
+    "tools/field_menus.py": "6cfb68f9d40ea0b07cd2ff5ba843a12411dfa2d2d711c36129b84175197c9ec5"
+  },
+  "source_metadata_sha256": {
+    "romfs/world/podunk/podunk.encroom": "18c7b884b0fc28f04685a8ee2eedb066d1cd03064ac13b1261f107f76e90451c",
+    "romfs/system/native.encresources": "4e9d8ba3464e56cc3f5eafaeea94501cfcf37e4602e538d737879f694cfaa926",
+    "romfs/world/podunk/podunk.encmap": "f76c5820df97d543b4c4f0ea72cfa45438031d21556729230fcbf1e781746d7f",
+    "romfs/world/mayor/mayor.encroom": "89887abb2a558bf9bfd1d5db233ff953418785cfda64ce23d72eaacaff45b4ec",
+    "romfs/world/mayor/mayor.encmap": "5306149a4bcc043f6a153cb57ef8362fb76a44190c595a0476192098be61cdb6",
+    "romfs/sound/banks/mayor.encmusic": "8ad2cbce64251586bd13e63c18c6047131874cb944affed4d4f8a39e872bb95f",
+    "romfs/world/world.enclinks": "7858d87e1e78503275662c4babc981a06f8143993f73a5aeac76c3da772e2f21",
+    "romfs/ui/field.encmenus": "848882c32617bf369a14fa0b3c68d1bc2aa77457d60449d856c88ec0180d30ee"
+  },
+  "clock_fixture": 946681277,
+  "fixture_sha256": "5068bdd2a8d2744da8a8bf10f6e207be9b7204b804c1526906761a01adfae688",
+  "emulator_sha256": "bd50cebf6427410df090855c4f5ba7cd1991b7fe1ff7f7f12f2ac49e187da525",
+  "capabilities": {
+    "memoryWriteEnabled": false,
+    "inputEnabled": true
+  },
+  "cemetery": {
+    "phases": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "flag": true,
+    "repeated": true,
+    "scope": "Normal-input source cutscene; no save validation or pixel equivalence"
+  },
+  "projection": {
+    "hp": 12,
+    "pp": 27,
+    "level": 2,
+    "experience": 17,
+    "cash": 0,
+    "bank": 20,
+    "earned_cash": 20,
+    "inventory_count": 2,
+    "key_count": 3,
+    "story_flag_0": 1064961,
+    "story_flag_1": 1587068928,
+    "story_flag_2": 0,
+    "story_flag_3": 0,
+    "story_flag_4": 0,
+    "story_flag_5": 0
+  },
+  "performance": {
+    "cemetery_roots": {
+      "phases": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "flag": true,
+      "repeated": true,
+      "scope": "Normal-input source cutscene; no save validation or pixel equivalence"
+    }
+  }
+}

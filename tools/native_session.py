@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.extract_battle_entry import Extractor, one, require
-from tools.native_content import OPCODES
+from tools.native_content import OPCODES,parse_pack
 from tools.source_settings import choices as settings_choices
 IR=ROOT/'content/native-session.json'
 PACK=ROOT/'romfs/session/opening.encsession'
@@ -229,7 +229,16 @@ def extract():
     from tools.field_story import read as field_story_policy
     field_story,_=field_story_policy();required.append('content/podunk-story.json')
     mutable.update(b['winflag']for b in field_story['encounters'])
-    mutable.update(c['flag']for p in field_story['programmes']for c in p['commands']if c['kind']=='SetFlag')
+    # Save admission follows the entire published Room, including merged
+    # supplements and later programmes. Recipe-prefix scans missed cemetery.
+    from tools.podunk_field import load_recipe as field_recipe
+    field_policy=field_recipe();field_path='romfs/'+field_policy['outputs']['room']
+    field_room=parse_pack((ROOT/field_path).read_bytes())
+    require(field_room['scene_id']==field_policy['scene']['id']==field_story['scene_id'] and field_room['upstream_commit']==room['upstream_commit'] and field_room['rules']==room['rules'],'Session field programme ownership differs')
+    required.extend(['content/podunk-field.json',field_path])
+    field_flags=[field_room['strings'][f['name_string']]for f in field_room['sections']['Flag']]
+    mutable.update(field_flags[c['target_index']]for c in field_room['sections']['Command']if c['opcode']==OPCODES.index('SetFlag'))
+    mutable.update(field_flags[b['win_flag_index']]for b in field_room['sections']['Battle']if b['win_flag_index']!=0xffffffff)
     mutable.update(command['a'] for command in drawer['commands'] if command['opcode']=='SetFlag')
     mutable.update(c['a'] for program in presents['programs'] if next(o for o in presents['objects'] if o['source_path']==program['source_path'])['policy']==1 for c in program['commands'] if c['op']=='SetFlag')
     mutable.update(c['a'] for c in mick['commands'] if c['op']=='SetFlag')

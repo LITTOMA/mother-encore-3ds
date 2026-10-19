@@ -1,0 +1,18 @@
+{
+  "removed": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\cemetery-save-host\\session",
+      "bytes": 50018600
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-walk-plan-wide",
+      "bytes": 48388480
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-walk-plan-candidate",
+      "bytes": 46544024
+    }
+  ],
+  "removed_bytes": 144951104,
+  "retained": "One current planner and .o cache; f3 and391genuine games retained until new cemetery validation finishes."
+}

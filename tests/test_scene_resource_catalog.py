@@ -30,6 +30,16 @@ class SceneCatalogCodec(unittest.TestCase):
   for mutate in (lambda p:p['bindings'][-1].update(id=43),lambda p:p['bindings'][-1].update(id=True),lambda p:p['bindings'][-1].update(id=1023),lambda p:p['bindings'][-1].update(path='world/fixture/steps.encstory'),lambda p:p['bindings'].pop(next(i for i,r in enumerate(p['bindings'])if r['role']=='FieldStory')),lambda p:p['bindings'].append(dict(p['bindings'][-1]))):
    p=self.steps();mutate(p)
    with self.assertRaises(ValueError):self.encode(p)
+ def test_props_extend_capability11_without_reusing_old_roles(self):
+  p=self.steps();p['bindings'].append(dict(id=1031,role='FieldProps',path='world/fixture/props.encprops'))
+  blob=self.encode(p);self.assertEqual(c.capability_for(p['bindings']),11);self.assertEqual(c.ROLES['FieldProps'],44);self.assertEqual(c.decode(blob)['bindings'][-1]['role'],'FieldProps')
+  for mutate in (lambda p:p['bindings'][-1].update(id=44),lambda p:p['bindings'][-1].update(id=True),lambda p:p['bindings'][-1].update(path='world/fixture/wrong.encsteps'),lambda p:p['bindings'].pop(next(i for i,r in enumerate(p['bindings'])if r['role']=='FieldSteps'))):
+   bad=copy.deepcopy(p);mutate(bad)
+   with self.assertRaises(ValueError):self.encode(bad)
+  for cap in (10,12):
+   bad=bytearray(blob);struct.pack_into('<I',bad,20,cap)
+   with self.assertRaises(ValueError):c.decode(bad)
+  old=(Path(__file__).parent/'fixtures/catalog-cap10.encresources').read_bytes();self.assertEqual(c.capability_for(c.decode(old)['bindings']),10)
  def test_wrong_ids_types_and_missing_default_are_rejected(self):
   for mutate in (lambda p:p['bindings'][-1].update(id=100),lambda p:p['bindings'][-1].update(role='FieldMenus'),lambda p:p['bindings'][-1].update(id=True),lambda p:p['bindings'][-1].update(path='world/fixture/wrong.encroom'),lambda p:p['bindings'].pop(next(i for i,r in enumerate(p['bindings'])if r['role']=='FieldRoom'and r['id']==31))):
    p=self.extra();mutate(p)

@@ -1,0 +1,10 @@
+Native prop animation: 414 observations; isolated source scene only
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_cemetery_reference.py", line 125, in <module>
+    a=argparse.ArgumentParser();a.add_argument('--out',type=Path,required=True);a.add_argument('--godot',type=Path,required=True);v=a.parse_args();run(v.out,v.godot)
+                                                                                                                                                   ^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_cemetery_reference.py", line 34, in run
+    invoke(Path(engine).resolve(),project,['--debug','--script',str(project/'cemetery-probe.gd')],out/'cemetery-godot.log')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_scene_reference.py", line 44, in invoke
+    raise ValueError('Engine reference failed; inspect ' + str(log))
+ValueError: Engine reference failed; inspect D:\GameDev\3DS\mother-encore-3ds\build\full-port\cemetery-native-1\cemetery-godot.log

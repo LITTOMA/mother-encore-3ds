@@ -61,7 +61,7 @@ SCHEMAS = {
 RULE_TYPES = {**{i:1 for i in (1,2,3,4,5,20)}, **{i:2 for i in list(range(6,20))+list(range(21,28))}}
 FORMATS = {'u8':'B','u16':'H','u32':'I','i32':'i','f32':'f','f64':'d','vec2':'2f','hash256':'32s','rule_value':'8s'}
 WIDTHS = {k:struct.calcsize('<'+v) for k,v in FORMATS.items()}
-OPCODES = ['BeginCutscene','BindActor','ActorPersistent','StartWait','MusicFadeOut','SetTalker','CallObjectDeferred','OverworldBattleMusic','PlaySound','MoveActor','TurnActor','ShakeActor','JumpActor','AnimateActor','EmoteActor','ShakeCamera','ChangeCamera','MoveCamera','QueueBattle','StopInteraction','RestoreActor','ReleaseBattleActor','CutsceneEnded','DialogueDone','RequestBattle','YieldIdle','AwaitTimer','SetActorDirection','TeleportActor','MoveActorPath','ReturnCamera','SetFlag','ShowDialogue','AwaitDialogue','PlayMusicImmediate','HideDialogue','Jump','BranchFlag','BranchLeader','AwaitChoices','OpenSave','AwaitSubmenu','StopActorLoop','OpenStorage','SetActorProfile','LearnSkill','ScreenOverlay']
+OPCODES = ['BeginCutscene','BindActor','ActorPersistent','StartWait','MusicFadeOut','SetTalker','CallObjectDeferred','OverworldBattleMusic','PlaySound','MoveActor','TurnActor','ShakeActor','JumpActor','AnimateActor','EmoteActor','ShakeCamera','ChangeCamera','MoveCamera','QueueBattle','StopInteraction','RestoreActor','ReleaseBattleActor','CutsceneEnded','DialogueDone','RequestBattle','YieldIdle','AwaitTimer','SetActorDirection','TeleportActor','MoveActorPath','ReturnCamera','SetFlag','ShowDialogue','AwaitDialogue','PlayMusicImmediate','HideDialogue','Jump','BranchFlag','BranchLeader','AwaitChoices','OpenSave','AwaitSubmenu','StopActorLoop','OpenStorage','SetActorProfile','LearnSkill','ScreenOverlay','EraseActor']
 ROOT_FIELDS = {'schema','family','rules','capabilities','scene_id','upstream_commit','exporter_version','adapter_revision','strings','sections','provenance'}
 
 class ContentError(ValueError):
@@ -146,7 +146,7 @@ def decode_record(name, data, offset):
 
 # Defensive limits are schema/runtime capacity contracts, not content counts.
 LIMITS = {'Resource':1024,'Vec2':65536,'Polygon':4096,'BodyRule':16384,'Overlay':16384,'MapDraw':4096,'Clip':4096,'Key':32768,'DirectionFrame':32768,'ActorProfile':64,'ActorInstance':64,'CameraArea':64,'Flag':4096,'InitialFlag':4096,'Condition':8192,'Trigger':64,'Program':1024,'Command':65535,'Binding':4096,'Battle':1024,'Rule':64,'Experience':10000,'Scene':1,'AnimationBinding':8192,'MovementPath':1024,'MovementEntry':8192}
-ACTOR_OPS = {1,2,9,10,11,12,13,14,16,18,19,20,21,24,27,28,29,32,42,44}
+ACTOR_OPS = {1,2,9,10,11,12,13,14,16,18,19,20,21,24,27,28,29,32,42,44,47}
 VECTOR_OPS = {9,10,11,15,17,27,28}
 VALUE_OPS = {7,9,12,15,31,37}
 DURATION_OPS = {3,4,10,11,12,15,17,23,30}
@@ -299,13 +299,14 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
         check(t['flags']==0,'Unsupported trigger flags');polygon(t['first_vertex'],t['vertex_count'],'Trigger')
         span(t['condition_first'],t['condition_count'],'Condition','Trigger');ref(t['program_index'],'Program','Trigger');ref(t['actor_instance_index'],'ActorInstance','Trigger')
     for b in sections['Binding']:
-        check(b['kind']in(range(1,10)if rules>=5 else range(1,8))and b['flags']==0 and(b['kind']==9 or b['auxiliary_index']==NONE),'Unsupported binding descriptor')
+        check(b['kind']in(range(1,11)if capabilities>=12 else range(1,10)if rules>=5 else range(1,8))and b['flags']==0 and(b['kind']==9 or b['auxiliary_index']==NONE),'Unsupported binding descriptor')
         if b['kind']==1:check(ref(b['target_index'],'Resource','Binding.music')['kind']==2 and b['value']==b['duration']==0,'Invalid music binding')
         elif b['kind']==2:check(b['target_index']==NONE and b['value']==0 and 0<b['duration']<=3600,'Invalid delayed-boundary binding')
         elif b['kind']==3:check(ref(b['target_index'],'Resource','Binding.periodic_shake')['kind']==2 and 0<b['value']<=1000000 and 0<b['duration']<=3600,'Invalid periodic camera shake binding')
         elif b['kind']==4:check(ref(b['target_index'],'Binding','Binding.stop_shake')['kind']==3 and b['value']==b['duration']==0,'Invalid stop camera shake binding')
         elif b['kind']==5:check(ref(b['target_index'],'Resource','Binding.stop_music')['kind']==2 and b['value']==b['duration']==0,'Invalid targeted stop music binding')
         elif b['kind']==8:check(0<=b['target_index']<64 and b['value']==b['duration']==0,'Invalid phone-ring binding')
+        elif b['kind']==10:check(capabilities>=12 and 0<b['target_index']<=65535 and b['value']==b['duration']==0,'Invalid field prop grow binding')
         elif b['kind']==9:
             ref(b['auxiliary_index'],'Flag','Binding.body_flag')
             check(any(r['body_id']==b['target_index']for r in sections['BodyRule'])and b['value']in(0,1)and b['duration']==0,'Invalid deferred flag-body binding')
@@ -328,9 +329,10 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
         check(e['kind']in(0,1),'Unknown movement entry')
         check(e['duration']==0 if e['kind']==0 else e['vector']==[0,0]and 0<e['duration']<=3600,'Invalid movement entry payload')
     for c in sections['Command']:
-        op=c['opcode'];check(0<=op<(len(OPCODES)if capabilities>=9 else 44 if capabilities==8 else 43 if rules>=7 else 42 if rules>=6 else 36 if rules>=5 else 35),'Unknown command opcode')
+        op=c['opcode'];check(0<=op<(len(OPCODES)if capabilities>=12 else 47 if capabilities>=9 else 44 if capabilities==8 else 43 if rules>=7 else 42 if rules>=6 else 36 if rules>=5 else 35),'Unknown command opcode')
         allowed_flags=({12:15,10:15,17:3,16:1,19:1,32:1,33:7,35:1}if rules>=7 else{10:15,17:3,16:1,19:1,32:1,33:7,35:1}if rules>=5 else{16:1,19:1,32:1,33:1}).get(op,0)
         if capabilities>=9 and op==13:allowed_flags=1
+        if capabilities>=11 and op==36:allowed_flags=1
         check(c['flags']&~allowed_flags==0 and (op in(37,38)or capabilities>=9 and op==13 and c['flags']==1 or c['auxiliary_index']==NONE),'Unknown command flags/auxiliary field')
         if op in(16,19,32)and c['flags']&1:
             check(c['actor_index']==NO_ACTOR,'Inherited or dialogue-owned command must not bind actor')
@@ -338,6 +340,7 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
         elif op==5:
             if c['actor_index']!=NO_ACTOR:ref(c['actor_index'],'ActorInstance','SetTalker.actor')
         else:check(c['actor_index']==NO_ACTOR,'Unexpected command actor')
+        if op==47:check(actor['binding_kind']==2,'Actor erasure requires an NPC')
         if op in TARGET_TABLE:target=ref(c['target_index'],TARGET_TABLE[op],'Command.target')
         elif op==10:
             if c['flags']&2:
@@ -383,7 +386,7 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
         if op==29 and target['animation_motion']!=NO_ACTOR:
             profile=ref(actor['profile_index'],'ActorProfile','Command.path')
             check(profile['direction_count']>0 and all((actor['profile_index'],target['animation_motion'],d)in seen_animation for d in range(profile['direction_count'])),'Movement path lacks directional animation')
-    coverage=[0]*len(sections['Command']);program_paths=set()
+    coverage=[0]*len(sections['Command']);program_paths=set();confirmed_loops=0
     for p in sections['Program']:
         path=string(p['source_path_string'],'Program.source_path',False)
         check(not path.startswith('/')and ':'not in path and '\\'not in path and all(x not in ('','.','..')for x in path.split('/'))and path not in program_paths,'Invalid/duplicate program source path')
@@ -401,8 +404,12 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
             op=c['opcode']
             if op in(36,37,38):
                 target=c['target_index']if op==36 else c['auxiliary_index']
-                check(pc<target<len(cmds),'Branch must target a later command in the same program')
-                check(cmds[target-1]['phrase']!=cmds[target]['phrase'],'Branch must target a phrase entry')
+                check(0<=target<len(cmds),'Branch must stay in the same program')
+                check(target==0 or cmds[target-1]['phrase']!=cmds[target]['phrase'],'Branch must target a phrase entry')
+                if capabilities>=11 and op==36 and c['flags']==1:
+                    check(0<pc and target<pc and cmds[pc-1]['opcode']==33 and cmds[pc-1]['flags']==0 and cmds[pc-1]['phrase']==c['phrase'] and cmds[target]['opcode']==32,'Confirmed loop requires a preceding manual dialogue gate and a prior dialogue entry')
+                    confirmed_loops+=1
+                else:check(pc<target,'Branch must target a later command in the same program')
             if op in(40,43):check(pc+1<len(cmds)and cmds[pc+1]['opcode']==41,'OpenSave requires immediate submenu gate')
             if op==41:check(pc>0 and cmds[pc-1]['opcode']in(40,43),'Submenu gate requires a checked menu request')
             if (36<=op<=41 or op==43):check(not pending_timer,'Control transfer has unresolved phrase timer')
@@ -415,6 +422,8 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
         check(not pending_timer,'Unresolved phrase timer')
         for i in range(p['first_command'],p['first_command']+p['command_count']):coverage[i]+=1
     check(all(n==1 for n in coverage),'Command sections contain overlap or unreferenced commands')
+    check(capabilities!=12 or any(c['opcode']==6 and sections['Binding'][c['target_index']]['kind']==10 for c in sections['Command']),'Capability 12 requires a deferred prop grow call')
+    check(capabilities!=11 or confirmed_loops>0,'Capability 11 requires a confirmed dialogue loop')
     params={r['key']:r for r in sections['Rule']}
     check(len(params)==len(sections['Rule'])and set(params)=={k for k in RULE_TYPES if k<=27 if rules>=7 or k<=25},'Missing/duplicate/unknown rule parameter')
     for key,rule in params.items():
@@ -448,7 +457,7 @@ def validate_ir(ir):
     fields(ir,ROOT_FIELDS,'root')
     check(ir['schema']==1 and type(ir['schema'])is int,'Unsupported IR schema')
     check(type(ir['family'])is int and ir['family']==FAMILY,'Unsupported family')
-    check(type(ir['rules'])is int and ir['rules']in(4,5,6,7)and type(ir['capabilities'])is int and (ir['capabilities']==ir['rules'] or (ir['rules']==7 and ir['capabilities']in(8,9,10))),'Unsupported rules/capabilities')
+    check(type(ir['rules'])is int and ir['rules']in(4,5,6,7)and type(ir['capabilities'])is int and (ir['capabilities']==ir['rules'] or (ir['rules']==7 and ir['capabilities']in(8,9,10,11,12))),'Unsupported rules/capabilities')
     integer(ir['scene_id'],1,NONE,'scene_id');integer(ir['exporter_version'],1,NONE,'exporter_version');integer(ir['adapter_revision'],1,NONE,'adapter_revision')
     digest_hex(ir['upstream_commit'],40,'upstream_commit')
     check(type(ir['provenance'])is dict and type(ir['provenance'].get('sources'))is dict and ir['provenance']['sources'],'Missing provenance sources')
@@ -518,7 +527,7 @@ def parse_pack(data):
     magic,major,minor,header_bytes,file_bytes,endian,target,family,rules,caps,scene_id,directory_offset,directory_count,entry_bytes,checksum,commit,input_sha,exporter_version,adapter_revision,flags,reserved=h
     check(magic==MAGIC and (major,minor)==(1,0),'Unsupported magic/format')
     check(header_bytes==HEADER_BYTES and file_bytes==len(data)and endian==0x01020304,'Header length/endian mismatch')
-    check((target,family)==(TARGET,FAMILY)and rules in(4,5,6,7)and (caps==rules or (rules==7 and caps in(8,9,10))),'Unsupported target/family/rules/capabilities')
+    check((target,family)==(TARGET,FAMILY)and rules in(4,5,6,7)and (caps==rules or (rules==7 and caps in(8,9,10,11,12))),'Unsupported target/family/rules/capabilities')
     check(any(commit)and any(input_sha),'Missing source fingerprint')
     check(scene_id>0 and exporter_version>0 and adapter_revision>0 and flags==0 and reserved==bytes(8),'Invalid header fields')
     check(directory_offset==HEADER_BYTES and directory_count==len(SCHEMAS)and entry_bytes==DIRECTORY_BYTES,'Invalid section directory')

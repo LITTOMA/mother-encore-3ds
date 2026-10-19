@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\prop_clips.py", line 100, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\prop_clips.py", line 97, in main
+    r=source(a.recipe);blob=encode(r);unpack_container(blob,MAGIC,STRIDES,LIMIT);out.mkdir(parents=True)
+      ^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\prop_clips.py", line 61, in source
+    reference=animator.props['anims/'+c['name']];require(isinstance(reference,SubRef),'Prop clip is not local');section=doc.sub[reference.id];require(section.attrs.get('type')=='Animation','Prop clip source class')
+                                                                                                                                                      ^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'attrs'

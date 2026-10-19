@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "kind": "encore.cemetery-roots.source-review",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "baseline": "f3c267b1a43e2ee39ea46f45b7b3e3d4c59e3a88",
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml": "92cc12c71968a6e732f763ad00c23515b2c5f46c751a5b2afe4d4906011d4ef3",
+    "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml": "3e094d0da71c2b79e1bd0f1c0bd75c25e30de44007b4ec43ad6ff2c87bb85947",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Data/Battlers/pippi.yaml": "bf318bfa87445a4284be7f0e5b2e91c09604b8bc598e0a1f553244ebeefc0ed0",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
+    "Data/BattleSkills/attack_bat.yaml": "99a5757609a6fbf42358aba886f56cc18a00796a4b38eeef8e4fc59307a385a3",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Data/Dialogue/Podunk/cutscenes/pippismom_help.yaml": "668454a05317df38b57b21a42e993dc5fb4dbb67aeb699873d0105c054906528",
+    "Data/Dialogue/Podunk/pippismom.yaml": "42969cbf46f4b724fc804df8f672efdca2e8438ce1fdfbeac114fc58847eb027",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Data/Dialogue/Podunk/cutscenes/graveyard_zombie_roots.yaml": "5a7b030a66ab44336bb7267fe03232498b83bf9c11a72a1d399ec706344761e1"
+  },
+  "implementation": {
+    "characters": "Actor5/6, catalog328/329, unchanged npc.gd 4dir lifecycle. Explicit texture alias schema3 verifies same source image/grid before one physical texture and one Room resource. Original 3 motion blobs and textures unchanged.",
+    "programme": "Original graveyard_zombie_roots 11 phrases appended after old five programmes; source x-only camera move, absolute/step movement, wait, turn, jump, two erase operations, small camera shake, five deferred Grow calls in source order IDs3,4,6,7,5, immediate cem flag, camera return and player restoration.",
+    "mechanisms": "Room format1/rules7 capability12; typed FieldPropGrow binding10 and NPC-only EraseActor opcode47. Old capability9..11 cannot accept opcode47; cap12 must actually use deferred Grow. Unknown capability13, bindings, targets, flags, owners reject. Scene preflights foreign owners before dialogue mutation; erasure invalidates Actor restoration revisions and removes ambient/cutscene visibility.",
+    "versions": "NPC recipe3, field story recipe4. FieldStory binary format1/cap4, NPC format/cap4 or7, catalogformat1/cap11, linksformat1/cap4, Propsformat1/cap2 and game save schema unchanged."
+  },
+  "verification": {
+    "content": "Original make content complete, verified368 native RomFS files without staging duplicate; 63 catalog bindings.",
+    "python": "51 focused source tests passed; strict partition1122=758aggregate+364dedicated. Not full make test result.",
+    "gcc": "GCC9 ASan/UBSan detect_leaks=1: cemetery6229, warp21, story11690, NPC1465, oldRoom71939, props6787/native86lifecycle observations, catalog7016, resourcejoins4347. Actual logs retained.",
+    "godot": "Official3.6.2 source Grow scene414 animation observations, exact source dialogue blocks and Actor erase helpers execute in real SceneTree. Native identity observer forwards to unchanged Grow; explicit UI/flag/persistent stubs and existing prompt-material quarantine. Does not certify full timeline/GPU/audio.",
+    "compatibility": "12 binary outputs unchanged; old House Room tables and five field programmes semantic-equal after resolving table references. Room header/compiler SHA and Restore content fingerprints changed through original producers; source data/save encoding did not.",
+    "cleanup": "387404528 finished test ELF bytes removed; preexisting untracked Mick/presents dirs untouched.",
+    "prior_ci": "f3 Clang207 normal: field_route_warp alone failed because synthetic test copied only5 Links sections while preserving cap4. Fixture now preserves actual sections6 including props; same test passes21 checks. f3 real3DSX/CIA passed, newer cemetery ARM/emulator/hardware not yet verified."
+  },
+  "limits": [
+    "Full graveyard bat/swing, break interaction, shovel, catacombs and Pippi rescue remain unavailable.",
+    "No complete-original, natural new-game chain, audible, GPU pixel, emulator or hardware pass is implied for this new content."
+  ],
+  "evidence": "reports/graveyard-import/cemetery-roots"
+}

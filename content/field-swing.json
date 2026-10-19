@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "kind": "encore.field-swing.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Reusables/Player.tscn",
+  "script": "Scripts/Main/party/Player.gd",
+  "skill": "Data/FieldSkills/swing.yaml",
+  "bat_script": "Scripts/misc/NintenBatSwing.gd",
+  "fetcher": "Scripts/Main/SpriteDataFetcher.gd",
+  "texture": "Graphics/Character Sprites/Ninten/special.png",
+  "bat_texture": "Graphics/Character Sprites/Ninten/bat_swing.png",
+  "sound": "Audio/Sound effects/Ninten Bat.mp3",
+  "clips": [
+    {
+      "id": 1,
+      "name": "Attack Down"
+    },
+    {
+      "id": 2,
+      "name": "Attack DownLeft"
+    },
+    {
+      "id": 3,
+      "name": "Attack DownRight"
+    },
+    {
+      "id": 4,
+      "name": "Attack Left"
+    },
+    {
+      "id": 5,
+      "name": "Attack Right"
+    },
+    {
+      "id": 6,
+      "name": "Attack Up"
+    },
+    {
+      "id": 7,
+      "name": "Attack UpLeft"
+    },
+    {
+      "id": 8,
+      "name": "Attack UpRight"
+    }
+  ],
+  "tracks": [
+    {
+      "kind": 1,
+      "path": "SpecialAnimations:frame"
+    },
+    {
+      "kind": 2,
+      "path": "HitboxPivot:rotation_degrees"
+    },
+    {
+      "kind": 3,
+      "path": "HitboxPivot/BatHitbox/CollisionShape2D:disabled"
+    },
+    {
+      "kind": 4,
+      "path": "Position/main:visible"
+    },
+    {
+      "kind": 5,
+      "path": "SpecialAnimations:visible"
+    },
+    {
+      "kind": 6,
+      "path": "SpecialAnimations:texture"
+    },
+    {
+      "kind": 7,
+      "path": "SpecialAnimations/NintenBat:show_behind_parent"
+    },
+    {
+      "kind": 8,
+      "path": "."
+    }
+  ],
+  "sources": {
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Data/FieldSkills/swing.yaml": "e3e770194ec22e76fe75a271f2cda85371cbb3c50277275067fd68d1539bf0aa",
+    "Scripts/misc/NintenBatSwing.gd": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Graphics/Character Sprites/Ninten/special.png": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9",
+    "Graphics/Character Sprites/Ninten/bat_swing.png": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+    "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
+    "Nodes/Reusables/Overlap/Hitbox.tscn": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "scope": "Ninten swing: eight source AnimationPlayer directions, sparse properties, source capsule and deferred finish callback, separate bat sprite and original sound/rumble bindings. Development candidate; input/field action ownership, audio, overlap dispatch, drawing and Iggy BatOld/shovel progression must be integrated before a playable claim."
+}

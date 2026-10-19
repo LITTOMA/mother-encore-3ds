@@ -1,0 +1,101 @@
+source-controlled-lifecycle-v1
+start ready_idle_and_interact 0 0 1 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step interact 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step enter 0 0 1 12 1 1 1 1 1 1 0 1 2 0 0 0 0 0
+step interact 0 0 1 12 1 1 1 1 1 1 0 1 2 0 0 0 1 0
+step flag 0 1 1 12 1 1 1 1 1 1 0 1 2 0 0 0 0 0
+step interact 0 0 1 12 1 1 1 1 1 1 0 1 2 0 0 0 2 0
+step exit 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step interact 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+start ready_hidden_grow 1 0 1 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 1 0 0 0 0 0
+step advance 0 0 1 0 0 0 1 0 0 1 0 1 1 0 0 0 0 0
+step enter 0 0 1 0 0 0 1 0 1 1 0 1 1 0 0 0 0 0
+step interact 0 0 1 0 0 0 1 0 1 1 0 1 1 0 0 0 1 0
+step grow 0 0 1 0 0 0 1 0 1 1 0 1 3 0 0 1 0 0
+step advance 0 0 1 2 1 1 1 1 1 1 0 1 3 0 0 0 0 0
+step advance 0.5 0 1 7 1 1 1 1 1 1 0 1 3 0 0 0 0 0
+step advance 0.5 0 1 12 1 1 1 1 1 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 1 1 0 1 2 0 0 0 0 0
+start ready_flag_true 1 0 1 0 1 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+start break_undefined_finish_flag 0 0 1 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step enter 0 0 1 12 1 1 1 1 1 1 0 1 2 0 0 0 0 0
+step hit 0 0 1 12 1 1 1 1 1 0 0 1 4 1 1 0 0 0
+step advance 0 0 1 13 1 0 0 0 1 0 0 1 4 1 1 0 0 0
+step advance 0.75 0 1 0 1 0 0 0 1 0 0 0 0 1 1 0 0 0
+step flush 0 0 1 0 1 0 0 0 1 0 0 0 0 1 1 0 0 0
+start hidden_hit_preserves_clone_visibility 1 0 1 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 1 0 0 0 0 0
+step advance 0 0 1 0 0 0 1 0 0 1 0 1 1 0 0 0 0 0
+step hit 0 0 1 0 0 0 1 0 0 0 0 1 4 1 0 0 0 0
+step advance 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+step flush 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+start double_hit_before_processing 0 0 1 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step hit 0 0 1 12 1 1 1 1 0 0 0 1 4 1 1 0 0 0
+step hit 0 0 1 12 1 1 1 1 0 0 0 1 4 2 3 0 0 0
+step advance 0 0 1 13 1 0 0 0 0 0 0 1 4 2 3 0 0 0
+step advance 1 0 1 0 1 0 0 0 0 0 0 0 0 2 3 0 0 0
+step flush 0 0 1 0 1 0 0 0 0 0 0 0 0 2 3 0 0 0
+start grow_interrupted_by_break 0 0 1 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step grow 0 0 1 12 1 1 1 1 0 1 0 1 3 0 0 1 0 0
+step advance 0.20000000000000001 0 1 4 1 1 1 1 0 1 0 1 3 0 0 0 0 0
+step hit 0 0 1 4 1 1 1 1 0 0 0 1 4 1 1 0 0 0
+step advance 1 0 1 0 1 0 0 0 0 0 0 1 2 1 1 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 0 0 1 2 1 1 0 0 0
+step flush 0 0 1 12 1 1 1 1 0 0 0 1 2 1 1 0 0 0
+start two_grow_waiters 0 0 1 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step grow 0 0 1 12 1 1 1 1 0 1 0 1 3 0 0 1 0 0
+step grow 0 0 1 12 1 1 1 1 0 1 0 1 3 0 0 1 0 0
+step advance 1 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+start deferred_then_delete 0 1 1 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step hit 0 0 1 12 1 1 1 1 0 0 0 1 4 1 1 0 0 0
+step advance 0.75 0 1 0 1 0 0 0 0 0 1 0 0 1 1 0 0 0
+step flush 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1
+start defined_true_still_delete 0 1 1 0 0 1
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step hit 0 0 1 12 1 1 1 1 0 0 0 1 4 1 1 0 0 0
+step advance 0.75 0 1 0 1 0 0 0 0 0 1 0 0 1 1 0 0 0
+step flush 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0
+start missing_target_still_delete 0 1 0 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step hit 0 0 1 12 1 1 1 1 0 0 0 1 4 1 1 0 0 0
+step advance 0.75 0 1 0 1 0 0 0 0 0 1 0 0 1 1 0 0 0
+step flush 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0
+start empty_function_still_delete 0 1 0 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step hit 0 0 1 12 1 1 1 1 0 0 0 1 4 1 1 0 0 0
+step advance 0.75 0 1 0 1 0 0 0 0 0 1 0 0 1 1 0 0 0
+step flush 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0
+start flag_checked_at_finish 0 1 1 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step hit 0 0 1 12 1 1 1 1 0 0 0 1 4 1 1 0 0 0
+step flag 2 1 1 12 1 1 1 1 0 0 0 1 4 1 1 0 0 0
+step advance 1 0 1 0 1 0 0 0 0 0 1 0 0 1 1 0 0 0
+step flush 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0
+start grow_waiter_before_deferred_delete 0 1 1 0 0 0
+step ready 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 1 0 1 2 0 0 0 0 0
+step grow 0 0 1 12 1 1 1 1 0 1 0 1 3 0 0 1 0 0
+step hit 0 0 1 12 1 1 1 1 0 0 0 1 4 1 1 0 0 0
+step advance 1 0 1 0 1 0 0 0 0 0 1 1 2 1 1 0 0 0
+step advance 0 0 1 12 1 1 1 1 0 0 1 1 2 1 1 0 0 0
+step flush 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1

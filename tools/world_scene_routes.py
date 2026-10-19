@@ -9,6 +9,10 @@ from tools.godot_text import instantiate,Transform2D
 from tools.resource_catalog import ROLES
 RECIPE=ROOT/'content/world-scene-routes.json'
 STRIDES=[1,24,84,36,4]
+PROP_STRIDES=[*STRIDES,8]
+
+def strides(recipe):return PROP_STRIDES if recipe['schema']==3 else STRIDES
+def capability(recipe):return {1:2,2:3,3:4}[recipe['schema']]
 
 def fields(value,names,what):
  f.require(type(value)is dict and set(value)==set(names),'Unknown/missing '+what+' fields')
@@ -18,12 +22,12 @@ def text(value,what):
  f.require(type(value)is str and value and '\x00'not in value and '\\'not in value and all(p not in ('','.','..')for p in value.split('/')),'Invalid '+what)
 def typed(value,role,optional=False):
  integer(value,0 if optional else 1,0xffffffff,'resource identity')
- f.require(role!='FieldSteps'or optional and value==0 or value>=1024,'Field step resource identity')
- f.require(optional and value==0 or value==ROLES[role] or role in ('FieldRoom','FieldMap','FieldStory','FieldMusic','FieldAudio','FieldMusicZones','FieldSteps')and value>=1024,'Wrong typed resource identity')
+ f.require(role not in ('FieldSteps','FieldProps')or optional and value==0 or value>=1024,'Field resource requires independent identity')
+ f.require(optional and value==0 or value==ROLES[role] or role in ('FieldRoom','FieldMap','FieldStory','FieldMusic','FieldAudio','FieldMusicZones','FieldSteps','FieldProps')and value>=1024,'Wrong typed resource identity')
 
 def validate(recipe):
  fields(recipe,['schema','kind','commit','scope','door','scenes','routes'],'route recipe')
- f.require(type(recipe['schema'])is int and recipe['schema']in(1,2) and recipe['kind']=='encore.world-scene-routes.recipe'and recipe['commit']==f.PIN,'Unsupported source route recipe')
+ f.require(type(recipe['schema'])is int and recipe['schema']in(1,2,3) and recipe['kind']=='encore.world-scene-routes.recipe'and recipe['commit']==f.PIN,'Unsupported source route recipe')
  f.require(type(recipe['scope'])is str and recipe['scope']and chr(0)not in recipe['scope'],'Missing/invalid scope')
  fields(recipe['door'],['scene','script','transition','destination_offset_y'],'door adapter')
  for key in ('scene','script','transition'):text(recipe['door'][key],'door source')
@@ -35,14 +39,18 @@ def validate(recipe):
   f.require(scene['source'].startswith('Maps/')and scene['source'].endswith('.tscn')and scene['id']not in ids and scene['source']not in sources,'Duplicate/invalid scene')
   ids.add(scene['id']);sources.add(scene['source'])
   if scene['map']:
-   typed(scene['room'],'FieldRoom');typed(scene['map'],'FieldMap');a=scene['assets'];fields(a,['story','music','audio','zones','mick','npcs']+(['steps']if recipe['schema']==2 else []),'scene assets')
+   typed(scene['room'],'FieldRoom');typed(scene['map'],'FieldMap');a=scene['assets'];fields(a,['story','music','audio','zones','mick','npcs']+(['steps']if recipe['schema']>=2 else [])+(['props']if recipe['schema']==3 else []),'scene assets')
    for key,role in [('story','FieldStory'),('music','FieldMusic'),('audio','FieldAudio'),('zones','FieldMusicZones'),('mick','MickTreats')]:typed(a[key],role,True)
-   if recipe['schema']==2:typed(a['steps'],'FieldSteps',True)
+   if recipe['schema']>=2:typed(a['steps'],'FieldSteps',True)
+   if recipe['schema']==3:typed(a['props'],'FieldProps',True)
    f.require(bool(a['music'])==bool(a['audio'])==bool(a['zones']),'Incomplete scene music group')
    f.require(type(a['npcs'])is list and len(a['npcs'])<=128 and len(set(a['npcs']))==len(a['npcs']),'NPC reference count/duplicates')
    for npc in a['npcs']:integer(npc,256,0xffffffff,'NPC resource identity')
   else:typed(scene['room'],'Room');f.require(type(scene['map'])is int and scene['assets']is None,'House cannot own field assets')
- f.require(recipe['schema']!=2 or any(scene['map']and scene['assets']['steps']for scene in recipe['scenes']),'Route schema2 requires actual stepping bindings')
+ f.require(recipe['schema']<2 or any(scene['map']and scene['assets']['steps']for scene in recipe['scenes']),'Route schema requires actual stepping bindings')
+ if recipe['schema']==3:
+  props=[s['assets']['props']for s in recipe['scenes']if s['map']and s['assets']['props']]
+  f.require(props and len(set(props))==len(props),'Route schema3 requires unique actual prop owners')
  f.require(sum(len(scene['assets']['npcs'])for scene in recipe['scenes']if scene['map'])<=4096,'NPC pool capacity')
  f.require(type(recipe['routes'])is list and 1<=len(recipe['routes'])<=256,'Route count')
  routes=set();doors=set()
@@ -99,11 +107,12 @@ def encode(recipe,routes):
   if not value:return 0,0
   if value not in index:raw=value.encode('utf-8');index[value]=len(strings),len(raw);strings.extend(raw)
   return index[value]
- scenes=bytearray();assets=bytearray();npcs=bytearray();routes_blob=bytearray()
+ scenes=bytearray();assets=bytearray();npcs=bytearray();routes_blob=bytearray();props=bytearray()
  for scene in recipe['scenes']:
   scenes.extend(struct.pack('<6I',scene['id'],*S('res://'+scene['source']),scene['room'],scene['map'],0))
   if scene['map']:
    a=scene['assets'];first=len(npcs)//4;assets.extend(struct.pack('<9I',scene['id'],a['story'],a['music'],a['audio'],a['zones'],a['mick'],first if a['npcs']else 0,len(a['npcs']),a.get('steps',0)))
+   if recipe['schema']==3 and a['props']:props.extend(struct.pack('<2I',scene['id'],a['props']))
    for npc in a['npcs']:npcs.extend(struct.pack('<I',npc))
  f.require(len(routes)==len(recipe['routes'])and [(r['id'],r['frm'],r['to'],r['door'])for r in routes]==[(r['id'],r['from'],r['to'],r['door'])for r in recipe['routes']],'Source route identity order differs')
  for r in routes:
@@ -115,7 +124,7 @@ def encode(recipe,routes):
   for key,limit,prefix in [('sound',256,'res://'),('end_sound',256,'res://'),('flag',64,'')]:f.require(type(r[key])is str and len(r[key].encode('utf-8'))<=limit and all(ord(c)>=32 for c in r[key])and (not r[key]or r[key].startswith(prefix)),'Invalid route '+key)
   routes_blob.extend(struct.pack('<3I2I4f4I2H3f2I2I',r['id'],r['frm'],r['to'],*S(r['door']),r['x'],r['y'],r['dx'],r['dy'],*S(r['sound']),*S(r['end_sound']),r['in_kind'],r['out_kind'],r['in_speed'],r['out_speed'],r['music_fade'],*S(r['flag']),int(r['flag_value']),int(r['music_fade']>0)))
  f.require(len(strings)<=32768,'World route text pool capacity')
- return f.pack_container(f.LINK_MAGIC,0,[strings,scenes,routes_blob,assets,npcs],STRIDES,f.LINK_LIMIT,capability=3 if recipe['schema']==2 else 2)
+ return f.pack_container(f.LINK_MAGIC,0,[strings,scenes,routes_blob,assets,npcs]+([props]if recipe['schema']==3 else []),strides(recipe),f.LINK_LIMIT,capability=capability(recipe))
 
 def build(recipe=None):
  recipe=load()if recipe is None else validate(recipe);sources=f.Sources();routes=rows(recipe,sources);blob=encode(recipe,routes)

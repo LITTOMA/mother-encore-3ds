@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_field_swing_reference.py", line 104, in <module>
+    a=argparse.ArgumentParser();a.add_argument('--out',type=Path,required=True);a.add_argument('--engine',type=Path,required=True);o=a.parse_args();run(o.out,o.engine)
+                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_field_swing_reference.py", line 87, in run
+    for now in sorted({k['time']for k in c['keys']}):
+                                         ~^^^^^^^^
+KeyError: 'keys'

@@ -8,7 +8,13 @@ from tools import resource_catalog as c,world_scene_routes as w,field_footsteps 
 
 def build(out):
     out=Path(out).resolve();c.require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Step fixture must stay under build');out.mkdir(parents=True,exist_ok=True)
-    ir=copy.deepcopy(c.load_catalog());ir['bindings']=c.decode((ROOT/'tests/fixtures/catalog-cap8.encresources').read_bytes())['bindings'];graph=copy.deepcopy(w.load());graph['scenes']=graph['scenes'][:2];graph['routes']=graph['routes'][:2];graph['scenes'][1]['assets']['steps']=1030
+    ir=copy.deepcopy(c.load_catalog());ir['bindings']=c.decode((ROOT/'tests/fixtures/catalog-cap8.encresources').read_bytes())['bindings'];graph=copy.deepcopy(w.load());graph['scenes']=graph['scenes'][:2];graph['routes']=graph['routes'][:2];graph['scenes'][1]['assets']['steps']=1030;graph['schema']=2;graph['scenes'][1]['assets'].pop('props')
+    # Preserve the frozen capability-8 prefix, then supply every actual NPC
+    # referenced by this two-scene graph. The fixture must not hide an owner.
+    current={row['id']:row for row in c.load_catalog()['bindings']};existing={row['id']for row in ir['bindings']}
+    for identity in graph['scenes'][1]['assets']['npcs']:
+        c.require(identity in current and current[identity]['role']=='FieldNpc','Step fixture NPC owner is not admitted')
+        if identity not in existing:ir['bindings'].append(copy.deepcopy(current[identity]));existing.add(identity)
     links,_=w.build(graph);_,metadata,_=s.source();metadata['scene']=2;packet=s.encode(metadata)
     for row in ir['bindings']:
         target=out/row['path'];target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/'romfs'/row['path'],target)

@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "baseline": "e4a7be1d25a0bbecd023259d04fa2216b8536d22",
+  "source_files_sha256": {
+    "tools/graveyard_story.py": "a06a5b20ef6bf8f6b19e93b7cfdf5e3ada59ca4ed8e48dd745c3bc3511e3797c",
+    "tools/field_npcs.py": "898d26c05049cf2cf11bec49a10b29e4e4b95080ead0429513799e61991f8eff",
+    "tools/field_story.py": "962e15999586f4b048b90dceb46ab0456057f76bfb6e8a0b484cdfece83be3f9",
+    "runtime/field_story.cpp": "2561213fb21d5d9afdd0a359fe3d6dd4faaeedf56c5d0139b9afffb1ce7af049",
+    "include/encore/field_story.hpp": "233c5ad44b6300320a51c03bb3880bf34db50b8f8ba862e437e9adb3ea062f94",
+    "tests/field_interaction_tests.cpp": "7a99e7c0cee591b991a72c4aaa47a730f59f64495241e364940fe45fd94cf201",
+    "tests/field_story_tests.cpp": "27ae94db9364f76e323d7b4993e176c7bfcfbb177d2862bdef2c30a17e4fb887"
+  },
+  "host": {
+    "compiler": "GCC 9, Ubuntu 20.04 WSL",
+    "sanitizers": [
+      "address",
+      "undefined"
+    ],
+    "checks": {
+      "field_interaction": 3305,
+      "field_story": 11690,
+      "field_scene_resources": 34,
+      "step_scene_resources": 77,
+      "world_run_audio": 569
+    },
+    "python_methods": 25,
+    "python_registration": {
+      "discovered": 1103,
+      "aggregate": 743,
+      "dedicated": 360
+    }
+  },
+  "not_verified": [
+    "current-content real 3DSX/CIA",
+    "current-content Azahar route",
+    "hardware",
+    "complete Iggy/swing/roots/shovel chain"
+  ],
+  "scope": "Initial conversation only; negative flags/unknown source/version and atomic rollback tested. Synthetic world stepping fixture is not original-scene or audio-output evidence."
+}

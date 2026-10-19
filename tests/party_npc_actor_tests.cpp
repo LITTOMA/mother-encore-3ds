@@ -41,7 +41,7 @@ int main(int argc,char**argv){
  std::set<uint16_t>walk_frames;for(unsigned i=0;i<50;++i){check(actor_physics_step(actor)&&actor_idle_step(actor),"walk progression");walk_frames.insert(actor.frame);}
  check(actor.position.x==-200&&actor.position.y==-584&&walk_frames.size()>1,"source Actor arrives and animates");
  auto reject=[&](std::vector<uint8_t>b,const char*why){sign(b);check(!data.load(b.data(),b.size(),error),why);check(data.view().actor_profile(5).execution_kind==4,"rejection keeps admitted Room");};
- for(unsigned cap:{7u,8u,9u,11u}){auto b=bytes;put(b,36,cap);reject(b,"new NPC cannot be downgraded or use unknown capability");}
+ for(unsigned cap:{7u,8u,9u,11u,12u}){auto b=bytes;put(b,36,cap);reject(b,"NPC downgrade, loop-less capability11, and unknown capability rejected");}
  const auto profile=section(bytes,12)+5*80,instance=section(bytes,13)+5*40;
  {auto b=bytes;b[profile+4]=5;reject(b,"unknown executor");}
  {auto b=bytes;b[profile+68]=4;reject(b,"wrong direction count");}

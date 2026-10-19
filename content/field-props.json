@@ -1,0 +1,72 @@
+{
+  "schema": 2,
+  "kind": "encore.field-props.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "field_recipe": "content/podunk-field.json",
+  "clip_recipe": "content/field-prop-clips.json",
+  "texture": "graphics/world/podunk/props/roots.t3x",
+  "instances": [
+    {
+      "id": 1,
+      "path": "Objects/Dead Bushes/Dead Bush"
+    },
+    {
+      "id": 2,
+      "path": "Objects/Dead Bushes/Dead Bush2"
+    },
+    {
+      "id": 3,
+      "path": "Objects/Dead Bushes/Dead Bush4"
+    },
+    {
+      "id": 4,
+      "path": "Objects/Dead Bushes/Dead Bush5"
+    },
+    {
+      "id": 5,
+      "path": "Objects/Dead Bushes/Dead Bush8"
+    },
+    {
+      "id": 6,
+      "path": "Objects/Dead Bushes/Dead Bush6"
+    },
+    {
+      "id": 7,
+      "path": "Objects/Dead Bushes/Dead Bush7"
+    },
+    {
+      "id": 8,
+      "path": "Objects/Dead Bushes/Dead Bush15"
+    },
+    {
+      "id": 9,
+      "path": "Objects/Dead Bushes/Dead Bush19"
+    },
+    {
+      "id": 10,
+      "path": "Objects/Dead Bushes/Dead Bush18"
+    },
+    {
+      "id": 11,
+      "path": "Objects/Dead Bushes/Dead Bush16"
+    },
+    {
+      "id": 12,
+      "path": "Objects/Dead Bushes/Dead Bush21"
+    },
+    {
+      "id": 13,
+      "path": "Objects/Dead Bushes/Dead Bush17"
+    }
+  ],
+  "callbacks": [
+    {
+      "path": "Cutscenes/Cutscene Area7",
+      "method": "check_start"
+    }
+  ],
+  "map_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "scope": "13 source Dead Bush instances with typed lifecycle, checked map/sprite/body and source clone-subtree drawing order. Ready/render integration only; Ninten swing and quest callback programmes remain explicitly unavailable until separately admitted.",
+  "output": "world/podunk/podunk.encprops",
+  "receipt": "content/asset-receipts/graphics/world/podunk/props/source.json"
+}

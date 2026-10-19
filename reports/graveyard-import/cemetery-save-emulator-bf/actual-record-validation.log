@@ -1,0 +1,2 @@
+Observed Record roots=1 saved=0 raw=4652 encoded=4652 canonical=1
+Actual bf normal-input telephone Record validated against its exact embedded resources; 4652 canonical bytes; cemetery flag true; first persisted saved flag false in source write-before-live-flag order;5 source characters, original UID/domain policies; no hardware claim

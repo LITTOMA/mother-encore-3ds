@@ -1,0 +1,1 @@
+Field owner 19: owner.npc(3).owner_id()==5&&owner.npc(4).owner_id()==6&&!owner.npc(3).interaction_policy()&&!owner.npc(4).interaction_policy()&&!owner.npc(3).has_dialogue()&&!owner.npc(4).has_dialogue() ()

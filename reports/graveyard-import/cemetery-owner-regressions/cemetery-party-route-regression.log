@@ -1,0 +1,26 @@
+test_source_profiles_and_clips (tests.test_party_npc_actor.PartyActor.test_source_profiles_and_clips) ... ok
+test_source_route_fixture (tests.test_party_npc_actor.PartyActor.test_source_route_fixture) ... FAIL
+test_versions_and_profile_negative (tests.test_party_npc_actor.PartyActor.test_versions_and_profile_negative) ... ok
+
+======================================================================
+FAIL: test_source_route_fixture (tests.test_party_npc_actor.PartyActor.test_source_route_fixture)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_party_npc_actor.py", line 38, in test_source_route_fixture
+    self.assertEqual(scene['assets']['npcs'],[320,321,327]);scene['assets']['npcs'].remove(327)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [320, 321, 327, 328, 329] != [320, 321, 327]
+
+First list contains 2 additional elements.
+First extra element 3:
+328
+
+- [320, 321, 327, 328, 329]
+?               ----------
+
++ [320, 321, 327]
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.283s
+
+FAILED (failures=1)

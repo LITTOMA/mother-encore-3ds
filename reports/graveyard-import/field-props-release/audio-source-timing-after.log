@@ -1,0 +1,79 @@
+test_actual_staged_resources (tests.test_field_equipment.FieldEquipmentFormat.test_actual_staged_resources) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_actual_staged_resources", "seconds": 0.2717001999844797}
+test_bad_texture_and_layout_bounds (tests.test_field_equipment.FieldEquipmentFormat.test_bad_texture_and_layout_bounds) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_bad_texture_and_layout_bounds", "seconds": 0.003392099984921515}
+test_corrupt_pin_reserved_crc_and_truncation (tests.test_field_equipment.FieldEquipmentFormat.test_corrupt_pin_reserved_crc_and_truncation) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_corrupt_pin_reserved_crc_and_truncation", "seconds": 7.840001489967108e-05}
+test_duplicate_identity_and_middle_string (tests.test_field_equipment.FieldEquipmentFormat.test_duplicate_identity_and_middle_string) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_duplicate_identity_and_middle_string", "seconds": 0.001705799950286746}
+test_expanded_backgrounds_and_title (tests.test_field_equipment.FieldEquipmentFormat.test_expanded_backgrounds_and_title) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_expanded_backgrounds_and_title", "seconds": 4.299997817724943e-05}
+test_field_psi_source_and_negative_policy (tests.test_field_equipment.FieldEquipmentFormat.test_field_psi_source_and_negative_policy) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_field_psi_source_and_negative_policy", "seconds": 0.006950100010726601}
+test_overlap_bad_stride_and_unknown_directory (tests.test_field_equipment.FieldEquipmentFormat.test_overlap_bad_stride_and_unknown_directory) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_overlap_bad_stride_and_unknown_directory", "seconds": 7.879995973780751e-05}
+test_owner_id_contract (tests.test_field_equipment.FieldEquipmentFormat.test_owner_id_contract) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_owner_id_contract", "seconds": 0.0016278999974019825}
+test_six_known_commands_equipment_and_field_psi (tests.test_field_equipment.FieldEquipmentFormat.test_six_known_commands_equipment_and_field_psi) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_six_known_commands_equipment_and_field_psi", "seconds": 0.0007035000016912818}
+test_source_and_actual_pack (tests.test_field_equipment.FieldEquipmentFormat.test_source_and_actual_pack) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_source_and_actual_pack", "seconds": 0.25450919999275357}
+test_source_slots_and_equipment (tests.test_field_equipment.FieldEquipmentFormat.test_source_slots_and_equipment) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_source_slots_and_equipment", "seconds": 0.0006692000315524638}
+test_title_backdrop_required_and_typed (tests.test_field_equipment.FieldEquipmentFormat.test_title_backdrop_required_and_typed) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_title_backdrop_required_and_typed", "seconds": 0.002558399981353432}
+test_unchanged_asset_reuse_guards (tests.test_field_equipment.FieldEquipmentFormat.test_unchanged_asset_reuse_guards) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_unchanged_asset_reuse_guards", "seconds": 0.03878560004523024}
+test_unknown_input_and_animation (tests.test_field_equipment.FieldEquipmentFormat.test_unknown_input_and_animation) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_unknown_input_and_animation", "seconds": 0.003361299983225763}
+test_unknown_style_operations_rejected (tests.test_field_equipment.FieldEquipmentFormat.test_unknown_style_operations_rejected) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_unknown_style_operations_rejected", "seconds": 0.0013217999949119985}
+test_unknown_versions_and_capabilities (tests.test_field_equipment.FieldEquipmentFormat.test_unknown_versions_and_capabilities) ... ok
+METHOD_TIME {"id": "tests.test_field_equipment.FieldEquipmentFormat.test_unknown_versions_and_capabilities", "seconds": 0.00012119999155402184}
+test_actual_reviewed_source_binding (tests.test_field_audio.FieldAudioBinding.test_actual_reviewed_source_binding) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_actual_reviewed_source_binding", "seconds": 6.539262300007977}
+test_coverage_and_asset_container (tests.test_field_audio.FieldAudioBinding.test_coverage_and_asset_container) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_coverage_and_asset_container", "seconds": 0.014764299965463579}
+test_detached_valid_binding (tests.test_field_audio.FieldAudioBinding.test_detached_valid_binding) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_detached_valid_binding", "seconds": 0.001414500002283603}
+test_extension_source_admission_failure_propagates (tests.test_field_audio.FieldAudioBinding.test_extension_source_admission_failure_propagates) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_extension_source_admission_failure_propagates", "seconds": 0.0006748999585397542}
+test_invalid_and_duplicate_pcm_paths (tests.test_field_audio.FieldAudioBinding.test_invalid_and_duplicate_pcm_paths) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_invalid_and_duplicate_pcm_paths", "seconds": 0.029175300034694374}
+test_invalid_and_duplicate_stable_ids (tests.test_field_audio.FieldAudioBinding.test_invalid_and_duplicate_stable_ids) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_invalid_and_duplicate_stable_ids", "seconds": 0.01648900000145659}
+test_license_review_required (tests.test_field_audio.FieldAudioBinding.test_license_review_required) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_license_review_required", "seconds": 0.01563109998824075}
+test_nonzero_nonfinite_and_unknown_gain (tests.test_field_audio.FieldAudioBinding.test_nonzero_nonfinite_and_unknown_gain) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_nonzero_nonfinite_and_unknown_gain", "seconds": 0.01999260002048686}
+test_source_admission_failure_propagates (tests.test_field_audio.FieldAudioBinding.test_source_admission_failure_propagates) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_source_admission_failure_propagates", "seconds": 0.00030010001501068473}
+test_source_and_import_provenance_required (tests.test_field_audio.FieldAudioBinding.test_source_and_import_provenance_required) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_source_and_import_provenance_required", "seconds": 0.0045764000387862325}
+test_source_coverage_matches_actual_pause_bindings (tests.test_field_audio.FieldAudioBinding.test_source_coverage_matches_actual_pause_bindings) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_source_coverage_matches_actual_pause_bindings", "seconds": 0.002089099958539009}
+test_stable_identity_shape (tests.test_field_audio.FieldAudioBinding.test_stable_identity_shape) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_stable_identity_shape", "seconds": 0.011876399978064}
+test_unknown_and_missing_row_fields (tests.test_field_audio.FieldAudioBinding.test_unknown_and_missing_row_fields) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_unknown_and_missing_row_fields", "seconds": 0.01274330000160262}
+test_unknown_and_missing_top_level_fields (tests.test_field_audio.FieldAudioBinding.test_unknown_and_missing_top_level_fields) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_unknown_and_missing_top_level_fields", "seconds": 0.012118500017095357}
+test_unknown_conversions (tests.test_field_audio.FieldAudioBinding.test_unknown_conversions) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_unknown_conversions", "seconds": 0.012787299987394363}
+test_unknown_duplicate_and_unsafe_source (tests.test_field_audio.FieldAudioBinding.test_unknown_duplicate_and_unsafe_source) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_unknown_duplicate_and_unsafe_source", "seconds": 0.0207127999747172}
+test_unknown_schema_kind_pin (tests.test_field_audio.FieldAudioBinding.test_unknown_schema_kind_pin) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_unknown_schema_kind_pin", "seconds": 0.018157799961045384}
+test_unsigned_stable_identity_boundary (tests.test_field_audio.FieldAudioBinding.test_unsigned_stable_identity_boundary) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.FieldAudioBinding.test_unsigned_stable_identity_boundary", "seconds": 0.0013139999937266111}
+test_failed_extract_restores_exact_previous_bytes (tests.test_field_audio.GameplayWorldCoverage.test_failed_extract_restores_exact_previous_bytes) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.GameplayWorldCoverage.test_failed_extract_restores_exact_previous_bytes", "seconds": 0.005921799980569631}
+test_key_received_source_reuses_existing_audio_identity (tests.test_field_audio.GameplayWorldCoverage.test_key_received_source_reuses_existing_audio_identity) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.GameplayWorldCoverage.test_key_received_source_reuses_existing_audio_identity", "seconds": 11.82158220000565}
+test_missing_duplicate_and_unbound_coverage_rejected (tests.test_field_audio.GameplayWorldCoverage.test_missing_duplicate_and_unbound_coverage_rejected) ... ok
+METHOD_TIME {"id": "tests.test_field_audio.GameplayWorldCoverage.test_missing_duplicate_and_unbound_coverage_rejected", "seconds": 6.219938699970953}
+
+----------------------------------------------------------------------
+Ran 37 tests in 32.212s
+
+OK

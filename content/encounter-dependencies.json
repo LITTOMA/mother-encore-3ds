@@ -27221,6 +27221,14 @@
       "bytes": 725,
       "sha256": "121a03722c037c835927b1a6aaf335ec738f379501fa5a31ccb6d0069a6a22a9"
     },
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": {
+      "bytes": 2317,
+      "sha256": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606"
+    },
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png.import": {
+      "bytes": 734,
+      "sha256": "4cd4f75316ae4a206236be1fd3f47ebe4a8a56b8b4157eee0bb7d0005299fae5"
+    },
     "Graphics/Character Sprites/Npcs/4dir/mick.png": {
       "bytes": 1671,
       "sha256": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9"
@@ -27232,6 +27240,14 @@
     "Graphics/Character Sprites/Npcs/4dir/pippismom.png.import": {
       "bytes": 728,
       "sha256": "b116f3891adc6b0c9564e8ce771cfa2b69c1d871e0461bff0fd8fc3afd572422"
+    },
+    "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png": {
+      "bytes": 4378,
+      "sha256": "f9d6c3784dab61bfdbcb509d78b3bda1ed805e02438cbcdc546f8d51e91d9d2c"
+    },
+    "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png.import": {
+      "bytes": 737,
+      "sha256": "11221fc7e9da71c9dab23cf5b768f8664584d7d15bbf3b8fa893f28160551bb7"
     },
     "Graphics/Character Sprites/Npcs/4dir/woman.png": {
       "bytes": 4382,

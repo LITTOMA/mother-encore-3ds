@@ -1,0 +1,341 @@
+{
+  "scene": "prop-probe.tscn",
+  "actions": [
+    {
+      "op": "play",
+      "name": "Hidden",
+      "id": 1
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 0.04166664928197861
+    },
+    {
+      "op": "advance",
+      "delta": 0.04166664928197861
+    },
+    {
+      "op": "advance",
+      "delta": 0.0010000000000000009
+    },
+    {
+      "op": "play",
+      "name": "Hidden",
+      "id": 1
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 0.09333329856395721
+    },
+    {
+      "op": "play",
+      "name": "Idle",
+      "id": 2
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 0.04166664928197861
+    },
+    {
+      "op": "advance",
+      "delta": 0.04166664928197861
+    },
+    {
+      "op": "advance",
+      "delta": 0.0010000000000000009
+    },
+    {
+      "op": "play",
+      "name": "Idle",
+      "id": 2
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 0.09333329856395721
+    },
+    {
+      "op": "play",
+      "name": "Grow",
+      "id": 3
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333229856395721
+    },
+    {
+      "op": "advance",
+      "delta": 2.000000000002e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333170089530945
+    },
+    {
+      "op": "advance",
+      "delta": 2.000000000002e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333100054073334
+    },
+    {
+      "op": "advance",
+      "delta": 1.9999999999742446e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.0833309856395722
+    },
+    {
+      "op": "advance",
+      "delta": 1.999999999946489e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333202872085577
+    },
+    {
+      "op": "advance",
+      "delta": 1.999999999946489e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.041664971279144314
+    },
+    {
+      "op": "advance",
+      "delta": 0.04166601436042788
+    },
+    {
+      "op": "advance",
+      "delta": 2.000000000002e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333101544189447
+    },
+    {
+      "op": "advance",
+      "delta": 2.0000000000575113e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333196911621088
+    },
+    {
+      "op": "advance",
+      "delta": 2.0000000000575113e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333101544189447
+    },
+    {
+      "op": "advance",
+      "delta": 2.0000000000575113e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333101544189447
+    },
+    {
+      "op": "advance",
+      "delta": 2.0000000000575113e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333195583724973
+    },
+    {
+      "op": "advance",
+      "delta": 0.0010000000000000009
+    },
+    {
+      "op": "play",
+      "name": "Grow",
+      "id": 3
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 0.9266659712791443
+    },
+    {
+      "op": "play",
+      "name": "Break",
+      "id": 4
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333229856395721
+    },
+    {
+      "op": "advance",
+      "delta": 2.000000000002e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333170089530945
+    },
+    {
+      "op": "advance",
+      "delta": 2.000000000002e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333100054073334
+    },
+    {
+      "op": "advance",
+      "delta": 1.9999999999742446e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.0833309856395722
+    },
+    {
+      "op": "advance",
+      "delta": 1.999999999946489e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.04166601436042788
+    },
+    {
+      "op": "advance",
+      "delta": 0.04166601436042788
+    },
+    {
+      "op": "advance",
+      "delta": 1.999999999946489e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.0833309856395722
+    },
+    {
+      "op": "advance",
+      "delta": 2.000000000002e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333101544189447
+    },
+    {
+      "op": "advance",
+      "delta": 2.0000000000575113e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.0833309558372497
+    },
+    {
+      "op": "advance",
+      "delta": 2.0000000000575113e-06
+    },
+    {
+      "op": "advance",
+      "delta": 0.08333302872085568
+    },
+    {
+      "op": "advance",
+      "delta": 0.0010000000000000009
+    },
+    {
+      "op": "play",
+      "name": "Break",
+      "id": 4
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 0.76
+    },
+    {
+      "op": "play",
+      "name": "RESET",
+      "id": 5
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 0.0005000000237487257
+    },
+    {
+      "op": "advance",
+      "delta": 0.0005000000237487257
+    },
+    {
+      "op": "advance",
+      "delta": 0.001
+    },
+    {
+      "op": "play",
+      "name": "RESET",
+      "id": 5
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 0.011000000047497452
+    },
+    {
+      "op": "play",
+      "name": "Grow",
+      "id": 3
+    },
+    {
+      "op": "advance",
+      "delta": 0.2
+    },
+    {
+      "op": "play",
+      "name": "Break",
+      "id": 4
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 1
+    }
+  ]
+}

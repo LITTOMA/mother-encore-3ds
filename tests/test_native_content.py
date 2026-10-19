@@ -54,7 +54,7 @@ class NativeContentTests(unittest.TestCase):
 
     def test_header_versions_capabilities_size_reserved_rejected(self):
         changes=[(0,'I',0),(8,'H',2),(10,'H',1),(12,'I',64),(16,'I',0xffffffff),
-                 (20,'I',0x04030201),(24,'I',2),(28,'I',0),(32,'I',1),(36,'I',1),(36,'I',10),
+                 (20,'I',0x04030201),(24,'I',2),(28,'I',0),(32,'I',1),(36,'I',1),(36,'I',10),(36,'I',11),(36,'I',12),
                  (40,'I',0),(44,'I',0xfffffff0),(48,'H',25),(50,'H',28),
                  (108,'I',0),(112,'I',0),(116,'I',1),(120,'I',1)]
         for offset,fmt,value in changes:
@@ -69,6 +69,35 @@ class NativeContentTests(unittest.TestCase):
         self.assertEqual(parsed['strings'][:len(legacy['strings'])],legacy['strings'])
         for name,rows in legacy['sections'].items():
             with self.subTest(section=name):self.assertEqual(parsed['sections'][name][:len(rows)],rows)
+
+    def confirmed_loop_ir(self):
+        # Synthetic format fixture, never a source-approved or shipped programme.
+        data=copy.deepcopy(self.ir);data['capabilities']=11
+        p=next(p for p in data['sections']['Program']if p['first_command']and p['command_count']>=40 and p['phrase_count']>=5)
+        def command(op,phrase,target=NONE,flags=0,duration=0):
+            return dict(opcode=op,actor_index=NO_ACTOR,phrase=phrase,target_index=target,flags=flags,vector=[0,0],value=0,duration=duration,auxiliary_index=NONE)
+        rows=[command(0,0),command(32,1,1,1),command(39,1,0),command(32,2,2,1),command(33,2),command(36,2,1,1),command(23,3,duration=.5)]
+        rows.extend(command(25,p['phrase_count']-1)for _ in range(p['command_count']-len(rows)))
+        rows[-1]=command(23,p['phrase_count']-1,duration=.5)
+        first=p['first_command'];data['sections']['Command'][first:first+p['command_count']]=rows
+        return data,first
+
+    def test_confirmed_dialogue_loop_capability_roundtrip(self):
+        data,first=self.confirmed_loop_ir();blob,_=compile_ir(data);parsed=parse_pack(blob)
+        self.assertEqual((parsed['rules'],parsed['capabilities']),(7,11))
+        self.assertEqual(parsed['sections']['Command'][first:first+7],data['sections']['Command'][first:first+7])
+        self.assertEqual(compile_ir(data)[0],blob)
+
+    def test_confirmed_loop_rejects_missing_gates_flags_versions_and_targets(self):
+        baseline,first=self.confirmed_loop_ir()
+        changes=[lambda d:d.update(capabilities=9),lambda d:d.update(capabilities=10),lambda d:d.update(capabilities=12)]
+        changes += [lambda d,flags=flags:d['sections']['Command'][first+5].update(flags=flags)for flags in (0,2)]
+        changes += [lambda d,flags=flags:d['sections']['Command'][first+4].update(flags=flags)for flags in (2,4,6)]
+        changes += [lambda d:d['sections']['Command'][first+4].update(opcode=25),lambda d:d['sections']['Command'][first+4].update(phrase=1)]
+        changes += [lambda d,target=target:d['sections']['Command'][first+5].update(target_index=target)for target in (0,2,5,6,100000)]
+        for edit in changes:
+            data=copy.deepcopy(baseline);edit(data)
+            with self.subTest(data=data['sections']['Command'][first:first+7]),self.assertRaises(ContentError):compile_ir(data)
 
     def test_checksum_and_unknown_directory_values(self):
         corrupt=bytearray(self.blob);corrupt[-1]^=1

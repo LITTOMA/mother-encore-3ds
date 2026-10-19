@@ -10,7 +10,7 @@ namespace encore::upstream {
 class ResourceCatalog;
 // ENCLNK01: reviewed cross-scene door routes. A route only names checked scene
 // identities, destination pose and the original Door/SceneTransition values.
-enum class WorldLinkSection:uint32_t {Bytes=1,Scenes,Routes,SceneAssets,NpcBindings};
+enum class WorldLinkSection:uint32_t {Bytes=1,Scenes,Routes,SceneAssets,NpcBindings,PropBindings};
 constexpr uint32_t kWorldLinkSectionCount=3;
 enum class WorldTransitionKind:uint16_t {Fade=0,CircleFocus=1,CirclePop=2};
 enum class WorldRouteFlag:uint32_t {FadeMusic=1};
@@ -18,7 +18,7 @@ struct WorldScene {uint32_t id=0;std::string_view source;uint32_t room_role=0,ma
 // References are typed catalog binding IDs, not game/save identities. Capability
 // 1's singleton role IDs remain an admitted legacy representation.
 struct WorldSceneResources {
-    WorldScene scene{};uint32_t story=0,music=0,audio=0,zones=0,mick=0,steps=0;
+    WorldScene scene{};uint32_t story=0,music=0,audio=0,zones=0,mick=0,steps=0,props=0;
     std::vector<uint32_t>npcs;
 };
 struct WorldRoute {

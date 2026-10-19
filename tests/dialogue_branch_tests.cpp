@@ -83,8 +83,8 @@ struct Fixtures {
     static void repair(std::vector<uint8_t>& bytes) {
         put32(bytes,52,0);put32(bytes,52,encore::crc32(bytes.data(),bytes.size()));
     }
-    RoomData load(const std::vector<RoomCommand>& commands) const {
-        const auto payload=bytes(commands);RoomData result;std::string error;
+    RoomData load(const std::vector<RoomCommand>& commands,uint32_t capability=0) const {
+        auto payload=bytes(commands);if(capability){put32(payload,36,capability);repair(payload);}RoomData result;std::string error;
         const bool loaded=result.load(payload.data(),payload.size(),error);
         require(loaded,error.c_str());return result;
     }
@@ -124,6 +124,13 @@ std::vector<RoomCommand> choice_program() {
             command(Kind::BranchFlag,1,0,8,1),command(Kind::Jump,1,10),
             command(Kind::YieldIdle,1),command(Kind::BeginCutscene,2),done(2),
             command(Kind::BeginCutscene,3),done(3)};
+}
+std::vector<RoomCommand> confirmed_choice_loop() {
+    auto question=command(Kind::ShowDialogue,1,1);question.flags=1;
+    auto reply=command(Kind::ShowDialogue,2,2);reply.flags=1;
+    auto repeat=command(Kind::Jump,2,1);repeat.flags=1;
+    return {command(Kind::BeginCutscene),question,command(Kind::AwaitChoices,1,0),
+            reply,command(Kind::AwaitDialogue,2),repeat,done(3)};
 }
 }
 
@@ -232,6 +239,40 @@ int main(int argc,char** argv) {
         put16(bad,fixture.command_offset+size_t(fixture.program.command_count-1)*48,uint16_t(Kind::BeginCutscene));
         putdouble(bad,fixture.command_offset+size_t(fixture.program.command_count-1)*48+32,0);
         check(fixture.rejects(bad),"program with no terminator rejected by checked loader");
+    }
+    {
+        // Synthetic mechanism fixture for source Iggy16 -> no17 -> confirmed16.
+        // The source presenter/choice binding is separately admitted by FieldStory.
+        auto data=fixture.load(confirmed_choice_loop(),11);DialoguePlayer player;Sink sink;
+        require(player.start(data.view(),fixture.program_index,sink,23),"confirmed loop starts at a checked choice");
+        for(unsigned round=0;round<20;++round){
+            check(player.status()==DialogueStatus::AwaitChoices&&player.phrase()==1,"loop returns to the question");
+            require(player.choices_selected(3,23,sink),"forward no target reaches its reply");
+            check(player.status()==DialogueStatus::AwaitDialogue&&player.phrase()==2,"reply requires manual confirmation");
+            const auto count=sink.actions.size();
+            for(unsigned idle=0;idle<8;++idle)require(player.idle_begin(sink)&&player.idle_process(.25,sink),"confirmed loop idle remains bounded");
+            check(player.status()==DialogueStatus::AwaitDialogue&&sink.actions.size()==count,"time cannot replay the question");
+            check(!player.dialogue_finished(sink,true)&&!player.choices_selected(3,22,sink),"automatic/stale callbacks cannot pass the manual gate");
+            require(player.dialogue_finished(sink),"fresh manual confirmation follows the prior dialogue entry");
+            check(sink.actions.size()==count+2&&sink.actions[count].kind==Kind::ShowDialogue&&sink.actions[count].target_index==1&&sink.actions.back().kind==Kind::AwaitChoices,"one confirmation emits one question and its choice gate");
+        }
+        require(player.choices_selected(6,23,sink),"yes exits the confirmed loop");
+        check(player.status()==DialogueStatus::Completed&&player.phrase()==3,"confirmed loop retains a normal terminal path");
+        check(!player.dialogue_finished(sink)&&!player.choices_selected(3,23,sink),"completed loop cannot restart through old callbacks");
+        auto payload=fixture.bytes(confirmed_choice_loop());put32(payload,36,11);Fixtures::repair(payload);
+        auto reject=[&](std::vector<uint8_t> bad,const char*label){
+            Fixtures::repair(bad);const auto*before=data.view().bytes();std::string error;
+            check(!data.load(bad.data(),bad.size(),error)&&!error.empty(),label);
+            check(data.view().bytes()==before,"bad loop preserves the previously loaded owner");
+        };
+        for(uint32_t cap:{9u,10u,12u}){auto bad=payload;put32(bad,36,cap);reject(bad,"old/unknown capabilities reject confirmed loops");}
+        const auto gate=fixture.command_offset+4*48,back=fixture.command_offset+5*48;
+        for(uint32_t flags:{0u,2u}){auto bad=payload;put32(bad,back+12,flags);reject(bad,"unmarked/unknown loop flags rejected");}
+        for(uint32_t flags:{2u,4u,6u}){auto bad=payload;put32(bad,gate+12,flags);reject(bad,"automatic/input-disabled dialogue cannot authorize a loop");}
+        {auto bad=payload;put16(bad,gate,uint16_t(Kind::YieldIdle));reject(bad,"loop without a manual dialogue gate rejected");}
+        {auto bad=payload;put32(bad,gate+4,1);reject(bad,"loop gate from a different phrase rejected");}
+        for(uint32_t target:{0u,2u,5u,6u,fixture.program.command_count}){auto bad=payload;put32(bad,back+8,target);reject(bad,"non-dialogue/self/forward/out-of-range loop target rejected");}
+        {auto bad=fixture.bytes(choice_program());put32(bad,36,11);reject(bad,"capability-only upgrade without a confirmed loop rejected");}
     }
     std::printf("Dialogue branch scheduler: %u checks, %s\n",checks,failures?"FAILED":"passed");
     return failures?1:0;

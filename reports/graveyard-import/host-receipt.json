@@ -1,0 +1,22 @@
+{
+  "base_main": "943636d5f4c427448b42aa362ebf2680320d9438",
+  "scope": "Room capability11 mechanism and old resource admission only, no original cemetery or hardware claim",
+  "compiler": "WSL Ubuntu20.04 GCC9, ASan+UBSan, O0, fno-omit-frame-pointer, fno-pie/no-pie, default leak checks",
+  "sources": {
+    "runtime/room_data.cpp": "8a46c98c1e729dfbb820096218354aeafa3d08db26064219108c7931d640ee18",
+    "tests/dialogue_branch_tests.cpp": "2ce64773e25cba26ddf5582be5602e332bab96a390c7d3b1c972963b63e86db8",
+    "tests/party_npc_actor_tests.cpp": "bece338761e514c7b340a41108b125d2b82acee61245e6a9e23ef66ce2d8948c",
+    "tools/native_content.py": "cf60b2f012500531c46806e1651e5fd202503632cb1194519e0e62f76913fa3a",
+    "tests/test_native_content.py": "0b349a7bb3e8f3f8dcf2022a5a9a5c24da1e55f9f8b575f021df3083aa7f53d8",
+    "tests/test_party_npc_actor.py": "232e6ab2cff6fff667a5ced5231896ddbdde0649b234d9bc14d84622d95820ba"
+  },
+  "checks": {
+    "dialogue_branch": 516,
+    "room_data": 71939,
+    "party_npc_actor": 752,
+    "python_methods": 29
+  },
+  "cross_build": "not yet run for this modification",
+  "original_engine_reference": "Source back edge and defaults reviewed; no new whole-dialogue engine run",
+  "emulator": "Not run for unconnected new loop capability; Mayor results belong to prior PR67"
+}

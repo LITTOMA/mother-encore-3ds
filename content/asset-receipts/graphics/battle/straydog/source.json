@@ -1185,7 +1185,7 @@
   "recipe": {
     "schema": 1,
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
-    "source_ir_sha256": "ff95198af5c495fe1d20698ecde918edc7b91e96b1c100783547b3ec63bdf720",
+    "source_ir_sha256": "a940a4525bdfba1b377435749c4e3fda74fa6efa47450aad32afb814cecb5c9a",
     "sources": {
       "Scripts/UI/Battle/EnemySpritesManager.gd": "663250716e71c14f91a9e723c8d8c9ae9ff4a60dd1f4a092a46b1cd1d4469e4f",
       "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
@@ -1293,9 +1293,13 @@
       "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
       "Graphics/Character Sprites/Npcs/4dir/dogstray.png": "12971c1bc182ce497f22f865e96a035335c45bbfb104c31d91570ce8b54e5f2f",
       "Graphics/Character Sprites/Npcs/4dir/dogstray.png.import": "121a03722c037c835927b1a6aaf335ec738f379501fa5a31ccb6d0069a6a22a9",
+      "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+      "Graphics/Character Sprites/Npcs/4dir/gravedigger.png.import": "4cd4f75316ae4a206236be1fd3f47ebe4a8a56b8b4157eee0bb7d0005299fae5",
       "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9",
       "Graphics/Character Sprites/Npcs/4dir/pippismom.png": "46fcad47e02f19dc92601d47a6bd702db1c71f38bf2422cf043f0fde91dc43e7",
       "Graphics/Character Sprites/Npcs/4dir/pippismom.png.import": "b116f3891adc6b0c9564e8ce771cfa2b69c1d871e0461bff0fd8fc3afd572422",
+      "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png": "f9d6c3784dab61bfdbcb509d78b3bda1ed805e02438cbcdc546f8d51e91d9d2c",
+      "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png.import": "11221fc7e9da71c9dab23cf5b768f8664584d7d15bbf3b8fa893f28160551bb7",
       "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
       "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
       "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",

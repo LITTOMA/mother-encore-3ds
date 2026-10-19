@@ -22,6 +22,21 @@ bool OpeningWorld::bind_story_skills(StorySkillHost&host){
   if(c.opcode==uint16_t(DialogueActionKind::LearnSkill)&&!host.validate_skill(content_.string(c.target_index),error))return false;}
  story_skills_=&host;return true;
 }
+bool OpeningWorld::bind_story_props(StoryPropHost&host,std::string&error){
+    if(!healthy_||story_props_){error="Story props need one initialized scene owner";return false;}
+    for(uint32_t i=0;i<content_.binding_count();++i){const auto b=content_.binding(i);if(b.kind==uint16_t(RoomBindingKind::FieldPropGrow)&&!host.validate_grow(b.target_index,error))return false;}
+    story_props_=&host;error.clear();return true;
+}
+bool OpeningWorld::validate_story_props(uint32_t programme,std::string&error)const{
+    if(!healthy_||programme>=content_.program_count()){error="Story programme unavailable";return false;}
+    const auto p=content_.program(programme);
+    for(uint32_t i=0;i<p.command_count;++i){const auto c=content_.command(p.first_command+i);if(c.opcode!=uint16_t(DialogueActionKind::CallObjectDeferred))continue;
+        const auto b=content_.binding(c.target_index);if(b.kind!=uint16_t(RoomBindingKind::FieldPropGrow))continue;
+        if(!story_props_){error="Story field prop owner is unbound";return false;}
+        if(!story_props_->validate_grow(b.target_index,error))return false;
+    }
+    error.clear();return true;
+}
 bool OpeningWorld::has_cutscene_actors() const {return std::find(actor_bound_.begin(),actor_bound_.end(),uint8_t(1))!=actor_bound_.end();}
 uint32_t OpeningWorld::walk_clip(MotionAnimation animation,Vec2 direction) const {
     const auto scene=content_.scene();const auto profile=content_.actor_profile(content_.actor_instance(scene.player_instance_index).profile_index);
@@ -45,7 +60,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     if(player_read_only_){error_="Retained player cannot be reset by New Game or LOAD initialization";return false;}
     healthy_=initialized_=false;error_="Invalid scene content";
     if(!content.valid())return false;
-    content_=content;story_skills_=nullptr;walk_audio_=nullptr;overlay_={};overlay_clip_=kRoomNoIndex;overlay_time_=0;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};story_talking_=false;effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
+    content_=content;story_props_=nullptr;story_skills_=nullptr;walk_audio_=nullptr;overlay_={};overlay_clip_=kRoomNoIndex;overlay_time_=0;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};story_talking_=false;effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
     const auto scene=content.scene();
     if(!flags_.initialize(content))return false;
     if(story_flags){for(uint32_t i=0;i<story_flags->size();++i)if(!flags_.set_story_flag(i,(*story_flags)[i],false).applied)return false;}
@@ -54,7 +69,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     actors_.assign(content.actor_instance_count(),ActorActionState{});
     actor_visible_.assign(actors_.size(),0);actor_restore_.assign(actors_.size(),0);
     actor_binding_revisions_.assign(actors_.size(),0);
-    actor_bound_.assign(actors_.size(),0);actor_persistent_.assign(actors_.size(),0);
+    actor_bound_.assign(actors_.size(),0);actor_erased_.assign(actors_.size(),0);actor_persistent_.assign(actors_.size(),0);
     inside_trigger_.assign(content.trigger_count(),0);trigger_pending_.assign(content.trigger_count(),0);
     stage_=OpeningStage::Walking;cutscene_done_=restore_pending_=overworld_music_=false;
     pending_actor_=talker_=kRoomNoActor;program_index_=follow_actor_=kRoomNoIndex;physics_tick_=idle_frame_=0;
@@ -221,6 +236,7 @@ bool OpeningWorld::advance(WalkInput input) {
 }
 bool OpeningWorld::begin_house_program(uint32_t program_index,uint32_t original_npc){
     if(!healthy_||stage_!=OpeningStage::Walking||program_index>=content_.program_count()||dialogue_.active())return false;
+    std::string admission;if(!validate_story_props(program_index,admission))return false;
     dialogue_=DialoguePlayer{};battle_=OpeningBattleRequest{};battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;
     cutscene_done_=restore_pending_=false;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;story_hides_.clear();pending_dialogue_id_=kRoomNoIndex;pending_actor_=talker_=kRoomNoActor;
     if(++generation_==0)++generation_;
@@ -434,11 +450,11 @@ bool OpeningWorld::idle_frame(double delta) {
     if(stage_==OpeningStage::Walking){
         for(uint32_t i=0;i<trigger_pending_.size();++i)if(trigger_pending_[i]){
             trigger_pending_[i]=0;
-            if(trigger_conditions(i)){program_index_=content_.trigger(i).program_index;if(!dialogue_.start(content_,program_index_,*this,generation_))return fail(dialogue_.error());break;}
+            if(trigger_conditions(i)){const auto target=content_.trigger(i).program_index;std::string admission;if(!validate_story_props(target,admission))return fail("Story object host admission rejected");program_index_=target;if(!dialogue_.start(content_,program_index_,*this,generation_))return fail(dialogue_.error());break;}
         }
     }
     const uint32_t controlled=content_.scene().player_instance_index;
-    for(uint32_t i=0;i<actors_.size();++i)if(i!=controlled||actor_bound_[i])if(!actor_idle_animations(actors_[i],delta))return fail("Actor animation rejected");
+    for(uint32_t i=0;i<actors_.size();++i)if(!actor_erased_[i]&&(i!=controlled||actor_bound_[i]))if(!actor_idle_animations(actors_[i],delta))return fail("Actor animation rejected");
     if(was_active&&!dialogue_.idle_process(delta,*this))return fail(dialogue_.error());
     if(!flush_deferred())return false;
     for(uint32_t i=0;i<actors_.size();++i)if(actor_bound_[i]&&!actor_scene_timers(actors_[i],delta))return fail("Actor timer rejected");
@@ -495,6 +511,7 @@ bool OpeningWorld::flush_deferred() {
         }
         else if(binding.kind==uint16_t(RoomBindingKind::StartPhoneRing)){if(scene_calls_.size()>=64)return fail("Scene call budget exceeded");scene_calls_.push_back({binding.target_index});}
         else if(binding.kind==uint16_t(RoomBindingKind::DelayedUnsupportedBoundary))boundaries_.push_back({action.target_index,binding.duration});
+        else if(binding.kind==uint16_t(RoomBindingKind::FieldPropGrow)){std::string why;if(!story_props_||!story_props_->grow(binding.target_index,why))return fail("Deferred field prop grow rejected");}
         else return fail("Unsupported object binding kind");
     }
     deferred_.clear();return true;
@@ -509,13 +526,17 @@ bool OpeningWorld::apply(const DialogueAction& a) {
         stage_=OpeningStage::ScriptRunning;persistent_player_.state_->player_.crouch=persistent_player_.state_->player_.walking=false;if(!persistent_player_.state_->player_.tap_run)persistent_player_.state_->player_.running=false;
         persistent_player_.state_->player_.animation=MotionAnimation::Idle;return true;
     case K::BindActor:{
-        if(!actor||pending_actor_!=kRoomNoActor||actor_binding_revisions_[a.actor]==std::numeric_limits<uint64_t>::max())return false;
+        if(!actor||actor_erased_[a.actor]||pending_actor_!=kRoomNoActor||actor_binding_revisions_[a.actor]==std::numeric_limits<uint64_t>::max())return false;
         const auto instance=content_.actor_instance(a.actor);const bool controlled=instance.binding_kind==1;
         const auto position=controlled?persistent_player_.state_->player_.position:actor->position,direction=controlled?persistent_player_.state_->player_.direction:actor->direction;
         if(!initialize_actor(*actor,content_,instance.profile_index,position,direction))return false;
         ++actor_binding_revisions_[a.actor];actor_restore_[a.actor]=0;
         if(controlled)restore_pending_=false;
         pending_actor_=a.actor;return true;}
+    case K::EraseActor:
+        if(!actor||a.actor==content_.scene().player_instance_index||!actor_bound_[a.actor]||actor_erased_[a.actor]||actor_binding_revisions_[a.actor]==std::numeric_limits<uint64_t>::max())return false;
+        ++actor_binding_revisions_[a.actor];actor_erased_[a.actor]=1;actor_bound_[a.actor]=actor_visible_[a.actor]=actor_persistent_[a.actor]=actor_restore_[a.actor]=0;
+        if(talker_==a.actor){talker_=kRoomNoActor;story_talker_={};}return true;
     case K::ActorPersistent:if(!actor)return false;actor_persistent_[a.actor]=1;return true;
     case K::StartWait:return true;
     case K::AwaitChoices:if(choice_group_!=kRoomNoIndex)return false;choice_group_=a.target_index;return true;

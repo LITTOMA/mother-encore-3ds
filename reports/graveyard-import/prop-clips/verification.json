@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "source_sha256": {
+    "runtime/prop_clips.cpp": "669f47ad7813dd97a6d9bf13d4add314f07c606c4587d49279f6e8eaadbc714f",
+    "include/encore/prop_clips.hpp": "8d07425822aba5555c054e39d998bd2cccbbcb319c62a31bf219ea0049db902e",
+    "tools/prop_clips.py": "9ba8497e8f68986e08bf8dc83aa5122644f4fa341ed7961fea8b287f7b5d2912",
+    "tools/run_prop_clip_reference.py": "eb3e9c57d60c9615c487443324c1dcfd5848fe91b31907a7bab7faeb03360dfb",
+    "tests/prop_clips_tests.cpp": "cc128c975cc83d14e189f4f9ad885a1c0f94cb594bdea96f6e0e94e4e672b95d",
+    "tests/test_prop_clips.py": "6450cfd2c0afa5f6ca0876ccb608f439ca1fb562c1f79e149213ab9d810bf3d2",
+    "content/field-prop-clips.json": "501d2a6318a62c92dc627e92971d7659d4ad6d84dd69d3f9e2ae97de12774259",
+    "CMakeLists.txt": "83a747ec648cfd5f9fb09fac643831b8c449e42cf28016cd331c3c324cc30d89"
+  },
+  "fixture_sha256": {
+    "prop-clips-v0410.encpcl": "15773131ca50a086989c93e43e8d542a1d587bc6d6a166da2d4e943448276283",
+    "prop-clips-v0410.tsv": "6492fb205a5fe72a6606404e64d559cd90a4092cce262663d0d8ca671e6ed059"
+  },
+  "scope": "No game save, Room rules, shipping catalog or release pack change; current resource is an offline checked fixture only.",
+  "verification": {
+    "native_observations": 81,
+    "gcc9_asan_ubsan_checks": 2632,
+    "python_methods": 6,
+    "registration": "1109=749+360; exact method IDs"
+  },
+  "scene_line_ending_audit": {
+    "earlier_reference": 4,
+    "current_reference": 5,
+    "same_native_observations": true,
+    "same_tsv_bytes": true,
+    "fix": "Write numeric scene bytes directly to preserve original LF subresource blocks; receipt hashes actual file bytes, avoiding Windows text-mode CRLF conversion."
+  },
+  "content_dag": "Original full DAG passed; no tracked shipping resource bytes changed"
+}

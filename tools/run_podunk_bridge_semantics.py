@@ -173,11 +173,12 @@ try:
   precise_axis('player_x',x);precise_axis('player_y',y)
   now=state();assert abs(now['player_x']-x)<=1.05 and abs(now['player_y']-y)<=1.05,'Corner alignment drifted'
  def waypoint(button,axis,value):
-  # The HID sample already in flight plus neutral settling advances two more
-  # source 2px movement ticks. Brake before the requested corner; never warp
-  # the guest or alter its original collision geometry.
+  # Coarse braking alone is insufficient: an in-flight HID sample and the
+  # normal catch-up clock can advance several source ticks. Align this axis
+  # before turning, as on the later planned route. Never warp the guest.
   positive=button in ('RIGHT','DOWN');threshold=value-4 if positive else value+4
   travel(button,lambda s:s[axis]>=threshold if positive else s[axis]<=threshold)
+  precise_axis(axis,value)
   s=state();print('waypoint',button,axis,value,s['player_x'],s['player_y'],flush=True)
  wait(lambda s:s['title_phase']==1);record('title_ready')
  # Align normal inputs at a deterministic emulated frame, never alter guest state.

@@ -1,0 +1,455 @@
+{
+  "cases": [
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "",
+      "callback_flag": "",
+      "callback": true,
+      "function": true,
+      "name": "ready_idle_and_interact",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "interact"
+        },
+        {
+          "op": "enter"
+        },
+        {
+          "op": "interact"
+        },
+        {
+          "op": "flag",
+          "id": "bat",
+          "value": true
+        },
+        {
+          "op": "interact"
+        },
+        {
+          "op": "exit"
+        },
+        {
+          "op": "interact"
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "cem_roots_grown",
+      "callback_flag": "",
+      "callback": true,
+      "function": true,
+      "name": "ready_hidden_grow",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "enter"
+        },
+        {
+          "op": "interact"
+        },
+        {
+          "op": "grow"
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": true,
+        "got_shovel": false
+      },
+      "flag": "cem_roots_grown",
+      "callback_flag": "",
+      "callback": true,
+      "function": true,
+      "name": "ready_flag_true",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "",
+      "callback_flag": "",
+      "callback": true,
+      "function": true,
+      "name": "break_undefined_finish_flag",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "enter"
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.75
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "cem_roots_grown",
+      "callback_flag": "",
+      "callback": true,
+      "function": true,
+      "name": "hidden_hit_preserves_clone_visibility",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "advance",
+          "delta": 1
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "",
+      "callback_flag": "",
+      "callback": true,
+      "function": true,
+      "name": "double_hit_before_processing",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 1
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "",
+      "callback_flag": "",
+      "callback": true,
+      "function": true,
+      "name": "grow_interrupted_by_break",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "grow"
+        },
+        {
+          "op": "advance",
+          "delta": 0.2
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "advance",
+          "delta": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "",
+      "callback_flag": "",
+      "callback": true,
+      "function": true,
+      "name": "two_grow_waiters",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "grow"
+        },
+        {
+          "op": "grow"
+        },
+        {
+          "op": "advance",
+          "delta": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "",
+      "callback_flag": "got_shovel",
+      "callback": true,
+      "function": true,
+      "name": "deferred_then_delete",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "advance",
+          "delta": 0.75
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": true
+      },
+      "flag": "",
+      "callback_flag": "got_shovel",
+      "callback": true,
+      "function": true,
+      "name": "defined_true_still_delete",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "advance",
+          "delta": 0.75
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "",
+      "callback_flag": "got_shovel",
+      "callback": false,
+      "function": true,
+      "name": "missing_target_still_delete",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "advance",
+          "delta": 0.75
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "",
+      "callback_flag": "got_shovel",
+      "callback": true,
+      "function": false,
+      "name": "empty_function_still_delete",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "advance",
+          "delta": 0.75
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "",
+      "callback_flag": "got_shovel",
+      "callback": true,
+      "function": true,
+      "name": "flag_checked_at_finish",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "flag",
+          "id": "got_shovel",
+          "value": true
+        },
+        {
+          "op": "advance",
+          "delta": 1
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "flags": {
+        "bat": false,
+        "cem_roots_grown": false,
+        "got_shovel": false
+      },
+      "flag": "",
+      "callback_flag": "got_shovel",
+      "callback": true,
+      "function": true,
+      "name": "grow_waiter_before_deferred_delete",
+      "actions": [
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "grow"
+        },
+        {
+          "op": "hit"
+        },
+        {
+          "op": "advance",
+          "delta": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    }
+  ]
+}

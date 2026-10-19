@@ -235,7 +235,7 @@
   "schema": 1,
   "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
   "map_path": "romfs/world/podunk/podunk.encmap",
-  "map_sha256": "1b9682df5524c7d9291ea6ddc2ae9af78c4f6a6c698a908a20b9a8c9bc97be7a",
+  "map_sha256": "dcc8433bc8465330422ec422142bbd59d16eb7b249b7a165c26c4aca21ebd89d",
   "planner_source_sha256": "b56e482de0b146f1371df999329b0c35a8116c8c4ce654bf619e8be74c1938f9",
   "destination_door": "Objects/Doors/TownHall",
   "route": 3

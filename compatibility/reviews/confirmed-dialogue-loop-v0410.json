@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "kind": "encore.review.confirmed-dialogue-loop",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml": "58f8f43036dbd833c92beb6e588881efeda5bce71c842907ad58612a781720ea",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8"
+  },
+  "scope": "Only the manual source back edge17->16 and its source defaults/confirmation dispatch. The rest of Iggy, item grant, actors, bushes and natural cemetery route remain unimplemented.",
+  "source": {
+    "document": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+    "loop_label": "17",
+    "loop_phrase": {
+      "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+      "sound": "Adult",
+      "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_17",
+      "goto": "16"
+    },
+    "question_label": "16",
+    "question_phrase": {
+      "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+      "sound": "Adult",
+      "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_16",
+      "options": {
+        "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_16-OPT_0": "18",
+        "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_16-OPT_1": "17",
+        "cancel": "17"
+      }
+    }
+  },
+  "mapping": {
+    "format": "ENCRMD01",
+    "format_major": 1,
+    "rules": 7,
+    "capability": 11,
+    "opcode": "Jump",
+    "opcode_id": 36,
+    "flags": 1,
+    "gate": "Immediately preceding AwaitDialogue with flags0 in the same phrase; prior target is a ShowDialogue at a phrase entry",
+    "old_rules": "Capabilities4..10 unchanged; unmarked backwards Jump and all backwards conditional branches remain rejected; cap11 without a confirmed loop rejected",
+    "execution": "DialoguePlayer existing32-instruction resume budget and explicit manual/choice suspension; no generic GDScript execution"
+  },
+  "implementation": [
+    "tools/native_content.py:validate_tables",
+    "runtime/room_data.cpp:RoomData validation",
+    "runtime/dialogue.cpp:DialoguePlayer::resume"
+  ],
+  "verification": {
+    "cpp": "GCC9 ASan/UBSan dialogue_branch516, RoomData71939 and existing PartyNPC752 passed; loop fixture is synthetic",
+    "python": "29 related native-content/party-NPC methods passed, including two new confirmed-loop methods and original negative paths",
+    "not_verified": [
+      "Full Iggy programme lowering/field UI",
+      "A fresh original-engine reference for this whole source dialogue",
+      "3DS cross-build of new cap11",
+      "New emulator cemetery route",
+      "Hardware"
+    ]
+  }
+}

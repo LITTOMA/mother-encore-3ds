@@ -3,6 +3,7 @@
 #include "encore/field_data.hpp"
 #include "encore/field_story.hpp"
 #include "encore/field_steps.hpp"
+#include "encore/field_props.hpp"
 #include "encore/introduction.hpp"
 #include "encore/mick_treats.hpp"
 #include "encore/world.hpp"
@@ -21,6 +22,9 @@ public:
     bool bind(FieldMapView map,const std::vector<bool>& layer_active,const std::vector<bool>& body_active,std::string& error);
     // Source-ordered moving foot bodies. Slot zero retains Mick's legacy API.
     void set_body(Vec2 center,Vec2 extents,uint32_t slot=0,bool enabled=true);
+    // One checked static owner changes its shape admission without rebuilding
+    // the TileMap cells/templates or changing collision collection order.
+    bool set_static_body_enabled(uint32_t,bool);
     void set_extra_enabled(bool enabled){set_excluded(enabled?UINT32_MAX:0);}
     void set_excluded(uint32_t slot){excluded_=slot;}
     bool collect(Vec2 minimum,Vec2 maximum,std::vector<MotionObstacle>& out)const override;
@@ -35,7 +39,7 @@ private:
     struct Chunk {Vec2 minimum,maximum;uint32_t first,count;};
     std::vector<Cell> cells_;
     std::vector<Chunk> chunks_;
-    std::vector<uint32_t> bodies_;
+    std::vector<bool> bodies_;
     struct Extra {bool enabled=false;Vec2 points[4]{},normals[4]{},minimum{},maximum{};};
     std::vector<Extra> extra_;uint32_t excluded_=UINT32_MAX;
 };
@@ -80,7 +84,7 @@ public:
 
 // AreaRoom field: TileMap world, routed and unported doors, explicit development
 // boundaries and unlocked openable doors. Rendering and scene swaps are platform owned.
-class FieldScene {
+class FieldScene : private StoryPropHost {
 public:
     FieldScene()=default;
     FieldScene(const FieldScene&)=delete;
@@ -98,6 +102,14 @@ public:
     bool bind_mick(MickView,MickHost&,std::string& error);
     bool bind_npc(MickView,MickHost&,std::string& error);
     bool bind_steps(FieldStepsView,const AudioBank&,std::string_view inherited_sound,std::string&);
+    bool bind_props(const FieldPropsData&,std::string&);
+    const FieldProps&props()const{return props_;}
+    std::vector<FieldPropEvent>take_prop_events(){return props_.take_events();}
+    bool grow_prop(uint32_t stable_id,std::string&);
+    bool hit_prop(uint32_t index,std::string&);
+    bool flush_props(FieldPropHost&,std::string&);
+    // Returns a checked dynamic pose only for an owned map Sprite.
+    bool prop_sprite(uint32_t sprite,PropPose&)const;
     FieldRunLoop&run_audio(){return run_audio_;}
     const FieldRunLoop&run_audio()const{return run_audio_;}
     void clear_run_events(){run_audio_.clear_events();}
@@ -142,6 +154,8 @@ public:
     FieldMapView map()const{return map_;}
     uint32_t scene_id()const{return map_.scene_id();}
 private:
+    bool validate_grow(uint32_t,std::string&)const override;
+    bool grow(uint32_t id,std::string&error)override{return grow_prop(id,error);}
     struct Openable {bool inside=false,open=false;double timer=-1;};
     friend struct FieldMickWorld;
     bool overlaps(Vec2 center,Vec2 extents,Vec2 player)const;
@@ -149,10 +163,14 @@ private:
     bool conditions(FieldSpan)const;
     void apply_mick_body();
     void apply_npc_bodies();
+    bool apply_prop_bodies(std::string&);
+    std::vector<bool>prop_flags()const;
     bool fail(std::string message){phase_=FieldPhase::Error;error_=std::move(message);return false;}
     FieldRunLoop run_audio_;std::vector<uint8_t>step_inside_;
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
+    FieldProps props_;
+    std::vector<uint32_t>prop_sprites_;
     std::vector<bool>collision_layers_,collision_bodies_;bool collision_ready_=false;
     StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;
     MickRuntime mick_;bool mick_bound_=false;

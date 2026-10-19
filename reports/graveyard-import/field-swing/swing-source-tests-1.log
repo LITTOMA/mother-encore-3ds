@@ -1,0 +1,9 @@
+test_actual_eight_bindings_and_frozen_candidate (tests.test_field_swing.FieldSwingTests.test_actual_eight_bindings_and_frozen_candidate) ... ok
+test_native_fixture_transport_and_scope (tests.test_field_swing.FieldSwingTests.test_native_fixture_transport_and_scope) ... ok
+test_recipe_schema_sources_and_identities_reject (tests.test_field_swing.FieldSwingTests.test_recipe_schema_sources_and_identities_reject) ... ok
+test_source_tracks_modes_callbacks_and_geometry_reject (tests.test_field_swing.FieldSwingTests.test_source_tracks_modes_callbacks_and_geometry_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.703s
+
+OK

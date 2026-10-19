@@ -1,0 +1,75 @@
+{
+  "baseline_e4": {
+    "commit": "e4a7be1d25a0bbecd023259d04fa2216b8536d22",
+    "full_run": 39182868430,
+    "gcc": {
+      "normal": 217,
+      "sanitize": 202,
+      "job": 117839168219
+    },
+    "clang": {
+      "normal": 202,
+      "sanitize": 202,
+      "job": 117839168286
+    },
+    "all_success": true
+  },
+  "current_8b89": {
+    "commit": "8b89a5e57d8ebf446fa12e38f4b738bc28f76c0f",
+    "console_run": 39186758905,
+    "job": 117850701827,
+    "staged_files": 363,
+    "host_full_pending": 39186841435,
+    "emulator_status": "English/Chinese actual88 observations each passed after driver corner correction; no cemetery/Iggy on-device proof",
+    "console_success": true,
+    "full_current_snapshot": {
+      "conclusion": "",
+      "jobs": [
+        {
+          "active": [],
+          "conclusion": "success",
+          "databaseId": 117850945262,
+          "status": "completed"
+        },
+        {
+          "active": [
+            "Regenerate checked resources and run the current shared-core tests"
+          ],
+          "conclusion": "",
+          "databaseId": 117850945566,
+          "status": "in_progress"
+        },
+        {
+          "active": [],
+          "conclusion": "failure",
+          "databaseId": 117850945570,
+          "status": "completed"
+        },
+        {
+          "active": [],
+          "conclusion": "skipped",
+          "databaseId": 117850946697,
+          "status": "completed"
+        }
+      ],
+      "status": "in_progress"
+    }
+  },
+  "local_raw_logs": {
+    "e4-gcc-full.log": {
+      "path": "build/full-port/e4-gcc-full.log",
+      "bytes": 1214232,
+      "sha256": "805204f996548e5c8ffed92731721aad1a20b0c7fae34a57f07be345c23f5dba"
+    },
+    "e4-clang-full.log": {
+      "path": "build/full-port/e4-clang-full.log",
+      "bytes": 940905,
+      "sha256": "3be5c4f57ede7b12f1f91af74d06ad4d96ef4444ab057eff81445025d965ad21"
+    },
+    "8b89-console-direct.log": {
+      "path": "build/full-port/8b89-console-direct.log",
+      "bytes": 654162,
+      "sha256": "c4d907602ba4bafdfa590bfd030053ab32d5c75cc9f614d2fa2eeed2b961dd81"
+    }
+  }
+}

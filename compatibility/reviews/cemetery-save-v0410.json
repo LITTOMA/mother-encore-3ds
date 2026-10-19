@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "kind": "encore.cemetery-save-admission-review",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "baseline": "391491d8a9b685107d4c4a9febc281cbc18cf04b",
+  "problem": "Snapshot validation rejected cem_roots_grown after the live cutscene. Old collector scanned only the field recipe prefix, omitting appended/merged programmes. Reproduced by actual NativeSession validation before fix.",
+  "implementation": "Derive mutable flag identities from SetFlag and battle win flags in the complete published, checked field Room. Verify scene/pin/rules ownership, record its fingerprint and recipe dependency, and make session wait for field-room. No arbitrary flag allowlist or runtime game constants.",
+  "proof": {
+    "base": "391491d8a9b685107d4c4a9febc281cbc18cf04b",
+    "changed_ir_fields": [
+      "mutable_flags",
+      "dependencies"
+    ],
+    "new_mutable_flags": [
+      "cem_roots_grown"
+    ],
+    "new_dependencies": [
+      "content/podunk-field.json",
+      "romfs/world/podunk/podunk.encroom"
+    ],
+    "session_schema": 11,
+    "save_schema_changed": false,
+    "defaults_unchanged": true,
+    "encoded_default_save_sha256": "a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f",
+    "unchanged_outputs": [
+      {
+        "path": "romfs/ui/opening.encnewgame",
+        "sha256": "a532d8d0e64bb9b2828fadfd6f003bb6a34150a89b98b31db8563261ff11ecb7"
+      },
+      {
+        "path": "romfs/world/podunk/podunk.encmap",
+        "sha256": "f76c5820df97d543b4c4f0ea72cfa45438031d21556729230fcbf1e781746d7f"
+      },
+      {
+        "path": "romfs/world/podunk/podunk.encroom",
+        "sha256": "18c7b884b0fc28f04685a8ee2eedb066d1cd03064ac13b1261f107f76e90451c"
+      },
+      {
+        "path": "romfs/world/podunk/story.encstory",
+        "sha256": "9aead181ee86912b747323ca07e2def7752e62d24b6fcd8ab234c82e1f62fd8f"
+      },
+      {
+        "path": "romfs/world/podunk/podunk.encprops",
+        "sha256": "72ef23603001024709bb7bbdb59f75071d1eba9ce75003071d46bc9ad8810eda"
+      },
+      {
+        "path": "romfs/session/opening.encrestore",
+        "sha256": "be73c388ea1b04745cf204ef17dd984e27b072dcb273895efb6a3402adb6ee14"
+      }
+    ]
+  },
+  "tests": {
+    "gcc9_asan_ubsan": "NativeSession20659, actual encode/decode of cemetery flag, default save byte equality to frozenv10, oldv10 still rejects cemetery state, malformed/truncation/failed load rollback and current v10/v11 layouts. Exact failure and final pass retained.",
+    "python": "28 source/dependency/legacy-route/Mayor checks passed; current strict partition1124=760aggregate+364dedicated.",
+    "content": "Original complete make content passed;368 RomFS source files verified without duplicate staging.",
+    "aggregate": "Local aggregate intentionally stopped when actual save bug was found; partial log has several additional failures and is NOT a full pass. Historical map and Mayor binding-count assumptions repaired; remaining Windows/local failures need separate diagnosis/CI.",
+    "emulator": "f3 baseline105points passed separately. 391 full candidate attempt lost the original random bridge battle, so cemetery not reached. No cemetery-emulator pass claimed; a source-validated artificial post-Mayor checkpoint is being used to isolate new content.",
+    "hardware": "not run",
+    "cleanup": "144951104 additional finished/obsolete tool ELF bytes removed; one current planner retained."
+  },
+  "evidence": "reports/graveyard-import/cemetery-save"
+}

@@ -1,0 +1,22 @@
+.E..
+======================================================================
+ERROR: test_source_and_all_route_points_match_checked_map (tests.test_emulator_walk_route.EmulatorWalkRoute.test_source_and_all_route_points_match_checked_map)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_emulator_walk_route.py", line 8, in test_source_and_all_route_points_match_checked_map
+    def test_source_and_all_route_points_match_checked_map(self):self.assertEqual(w.load(ROOT/'tests/fixtures/mayor-walk-route.json',self.map),self.plan)
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\emulator_walk_route.py", line 31, in load
+    return validate(json.loads(path.read_text(encoding='utf8'),object_pairs_hook=unique),map_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\emulator_walk_route.py", line 18, in validate
+    require(plan['map_sha256']==hashlib.sha256(map_bytes).hexdigest()and plan['source_commit']==map_bytes[32:52].hex(),'Walk-plan source/map mismatch')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\emulator_walk_route.py", line 6, in require
+    if not ok:raise ValueError(why)
+              ^^^^^^^^^^^^^^^^^^^^^
+ValueError: Walk-plan source/map mismatch
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.024s
+
+FAILED (errors=1)

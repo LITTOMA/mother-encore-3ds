@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_podunk_bridge_semantics.py", line 54, in <module>
+    if encode_restore(restore_recipe)!=source_metadata['romfs/session/opening.encrestore']:raise ValueError('House music expectations differ from artifact restore rules')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\native_restore.py", line 143, in encode
+    validate(r);w=Writer()
+    ^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\native_restore.py", line 106, in validate
+    fields(r['fingerprints'][name],['bytes','sha256'],'fingerprint');require(r['fingerprints'][name]==dict(bytes=(ROOT/path).stat().st_size,sha256=digest(ROOT/path)),'Restore dependency fingerprint changed')
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Restore dependency fingerprint changed

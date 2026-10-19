@@ -2481,6 +2481,7 @@
   "mutable_flags": [
     "beat_dog_bridge",
     "carol_ask_key",
+    "cem_roots_grown",
     "doll_attack",
     "doll_defeated",
     "doll_melody",
@@ -2571,7 +2572,9 @@
     "content/mayor-area.json": "21bd23e8ff3c2523459376449f57cea29ef4266bb271adfbacbca36a9c6e556f",
     "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
     "tools/field_area.py": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
-    "content/podunk-story.json": "47ebd1ddcb5c95c79e9bb4486438f04daa6d8c927046dcd6833f9f9e6c39f178",
+    "content/podunk-story.json": "d5e6065c2aee0eb170421d228e82b20e28fabec8949c7734b119d93cd76bd91d",
+    "content/podunk-field.json": "e4f414f58e9e04ac87f5fbb6fec4e8925ed90155b6df1baa0c258fa11ebe6d4c",
+    "romfs/world/podunk/podunk.encroom": "18c7b884b0fc28f04685a8ee2eedb066d1cd03064ac13b1261f107f76e90451c",
     "content/mayor-footsteps.json": "4da1ef634d7519c24c6e59f393340987e26ceedf4e66d71de2d1ba690728749f",
     "tools/field_footsteps.py": "4a2b83ef60c18a922de873a0654715142409fed547b74dac0713e626d655d74f"
   },

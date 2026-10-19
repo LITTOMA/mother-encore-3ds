@@ -1,0 +1,1485 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "index": 0,
+      "action": {
+        "op": "play",
+        "name": "Hidden",
+        "id": 1
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Hidden",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 1,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 0,
+      "visible": false,
+      "body": false,
+      "hitbox": true,
+      "interaction": false,
+      "playing": true,
+      "current": "Hidden",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 2,
+      "action": {
+        "op": "advance",
+        "delta": 0.041667
+      },
+      "position": "0.04166664928197860",
+      "frame": 0,
+      "visible": false,
+      "body": false,
+      "hitbox": true,
+      "interaction": false,
+      "playing": true,
+      "current": "Hidden",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 3,
+      "action": {
+        "op": "advance",
+        "delta": 0.041667
+      },
+      "position": "0.08333329856395720",
+      "frame": 0,
+      "visible": false,
+      "body": false,
+      "hitbox": true,
+      "interaction": false,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "Hidden"
+      ]
+    },
+    {
+      "index": 4,
+      "action": {
+        "op": "advance",
+        "delta": 0.001
+      },
+      "position": "0.08333329856395720",
+      "frame": 0,
+      "visible": false,
+      "body": false,
+      "hitbox": true,
+      "interaction": false,
+      "playing": false,
+      "current": "",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 5,
+      "action": {
+        "op": "play",
+        "name": "Hidden",
+        "id": 1
+      },
+      "position": "0.00000000000000000",
+      "frame": 0,
+      "visible": false,
+      "body": false,
+      "hitbox": true,
+      "interaction": false,
+      "playing": true,
+      "current": "Hidden",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 6,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 0,
+      "visible": false,
+      "body": false,
+      "hitbox": true,
+      "interaction": false,
+      "playing": true,
+      "current": "Hidden",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 7,
+      "action": {
+        "op": "advance",
+        "delta": 0.093333
+      },
+      "position": "0.08333329856395720",
+      "frame": 0,
+      "visible": false,
+      "body": false,
+      "hitbox": true,
+      "interaction": false,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "Hidden"
+      ]
+    },
+    {
+      "index": 8,
+      "action": {
+        "op": "play",
+        "name": "Idle",
+        "id": 2
+      },
+      "position": "0.00000000000000000",
+      "frame": 0,
+      "visible": false,
+      "body": false,
+      "hitbox": true,
+      "interaction": false,
+      "playing": true,
+      "current": "Idle",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 9,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": false,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Idle",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 10,
+      "action": {
+        "op": "advance",
+        "delta": 0.041667
+      },
+      "position": "0.04166664928197860",
+      "frame": 12,
+      "visible": false,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Idle",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 11,
+      "action": {
+        "op": "advance",
+        "delta": 0.041667
+      },
+      "position": "0.08333329856395720",
+      "frame": 12,
+      "visible": false,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "Idle"
+      ]
+    },
+    {
+      "index": 12,
+      "action": {
+        "op": "advance",
+        "delta": 0.001
+      },
+      "position": "0.08333329856395720",
+      "frame": 12,
+      "visible": false,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": false,
+      "current": "",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 13,
+      "action": {
+        "op": "play",
+        "name": "Idle",
+        "id": 2
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": false,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Idle",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 14,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": false,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Idle",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 15,
+      "action": {
+        "op": "advance",
+        "delta": 0.093333
+      },
+      "position": "0.08333329856395720",
+      "frame": 12,
+      "visible": false,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "Idle"
+      ]
+    },
+    {
+      "index": 16,
+      "action": {
+        "op": "play",
+        "name": "Grow",
+        "id": 3
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": false,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 17,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 2,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 18,
+      "action": {
+        "op": "advance",
+        "delta": 0.083332
+      },
+      "position": "0.08333230018615720",
+      "frame": 2,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 19,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.08333429694175720",
+      "frame": 3,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 20,
+      "action": {
+        "op": "advance",
+        "delta": 0.083332
+      },
+      "position": "0.16666600108146670",
+      "frame": 3,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 21,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.16666799783706670",
+      "frame": 4,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 22,
+      "action": {
+        "op": "advance",
+        "delta": 0.083331
+      },
+      "position": "0.24999900162220000",
+      "frame": 4,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 23,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.25000101327896120",
+      "frame": 5,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 24,
+      "action": {
+        "op": "advance",
+        "delta": 0.083331
+      },
+      "position": "0.33333200216293340",
+      "frame": 5,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 25,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.33333399891853330",
+      "frame": 6,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 26,
+      "action": {
+        "op": "advance",
+        "delta": 0.083332
+      },
+      "position": "0.41666603088378910",
+      "frame": 6,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 27,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.41666802763938900",
+      "frame": 7,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 28,
+      "action": {
+        "op": "advance",
+        "delta": 0.041665
+      },
+      "position": "0.45833301544189450",
+      "frame": 7,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 29,
+      "action": {
+        "op": "advance",
+        "delta": 0.041666
+      },
+      "position": "0.49999904632568360",
+      "frame": 7,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 30,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.50000107288360600",
+      "frame": 8,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 31,
+      "action": {
+        "op": "advance",
+        "delta": 0.083331
+      },
+      "position": "0.58333206176757810",
+      "frame": 8,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 32,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.58333408832550050",
+      "frame": 9,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 33,
+      "action": {
+        "op": "advance",
+        "delta": 0.083332
+      },
+      "position": "0.66666603088378910",
+      "frame": 9,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 34,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.66666805744171140",
+      "frame": 10,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 35,
+      "action": {
+        "op": "advance",
+        "delta": 0.083331
+      },
+      "position": "0.74999904632568360",
+      "frame": 10,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 36,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.75000107288360600",
+      "frame": 11,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 37,
+      "action": {
+        "op": "advance",
+        "delta": 0.083331
+      },
+      "position": "0.83333206176757810",
+      "frame": 11,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 38,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.83333408832550050",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 39,
+      "action": {
+        "op": "advance",
+        "delta": 0.083332
+      },
+      "position": "0.91666597127914430",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "Grow"
+      ]
+    },
+    {
+      "index": 40,
+      "action": {
+        "op": "advance",
+        "delta": 0.001
+      },
+      "position": "0.91666597127914430",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": false,
+      "current": "",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 41,
+      "action": {
+        "op": "play",
+        "name": "Grow",
+        "id": 3
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 42,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 2,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 43,
+      "action": {
+        "op": "advance",
+        "delta": 0.926666
+      },
+      "position": "0.91666597127914430",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "Grow"
+      ]
+    },
+    {
+      "index": 44,
+      "action": {
+        "op": "play",
+        "name": "Break",
+        "id": 4
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 45,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 13,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 46,
+      "action": {
+        "op": "advance",
+        "delta": 0.083332
+      },
+      "position": "0.08333230018615720",
+      "frame": 13,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 47,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.08333429694175720",
+      "frame": 14,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 48,
+      "action": {
+        "op": "advance",
+        "delta": 0.083332
+      },
+      "position": "0.16666600108146670",
+      "frame": 14,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 49,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.16666799783706670",
+      "frame": 15,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 50,
+      "action": {
+        "op": "advance",
+        "delta": 0.083331
+      },
+      "position": "0.24999900162220000",
+      "frame": 15,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 51,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.25000101327896120",
+      "frame": 16,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 52,
+      "action": {
+        "op": "advance",
+        "delta": 0.083331
+      },
+      "position": "0.33333200216293340",
+      "frame": 16,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 53,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.33333399891853330",
+      "frame": 17,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 54,
+      "action": {
+        "op": "advance",
+        "delta": 0.041666
+      },
+      "position": "0.37500000000000000",
+      "frame": 17,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 55,
+      "action": {
+        "op": "advance",
+        "delta": 0.041666
+      },
+      "position": "0.41666603088378910",
+      "frame": 17,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 56,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.41666802763938900",
+      "frame": 18,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 57,
+      "action": {
+        "op": "advance",
+        "delta": 0.083331
+      },
+      "position": "0.49999901652336120",
+      "frame": 18,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 58,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.50000101327896120",
+      "frame": 19,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 59,
+      "action": {
+        "op": "advance",
+        "delta": 0.083331
+      },
+      "position": "0.58333206176757810",
+      "frame": 19,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 60,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.58333408832550050",
+      "frame": 20,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 61,
+      "action": {
+        "op": "advance",
+        "delta": 0.083331
+      },
+      "position": "0.66666507720947270",
+      "frame": 20,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 62,
+      "action": {
+        "op": "advance",
+        "delta": 0.000002
+      },
+      "position": "0.66666710376739500",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 63,
+      "action": {
+        "op": "advance",
+        "delta": 0.083333
+      },
+      "position": "0.75000000000000000",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "Break"
+      ]
+    },
+    {
+      "index": 64,
+      "action": {
+        "op": "advance",
+        "delta": 0.001
+      },
+      "position": "0.75000000000000000",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": false,
+      "current": "",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 65,
+      "action": {
+        "op": "play",
+        "name": "Break",
+        "id": 4
+      },
+      "position": "0.00000000000000000",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 66,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 13,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 67,
+      "action": {
+        "op": "advance",
+        "delta": 0.76
+      },
+      "position": "0.75000000000000000",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "Break"
+      ]
+    },
+    {
+      "index": 68,
+      "action": {
+        "op": "play",
+        "name": "RESET",
+        "id": 5
+      },
+      "position": "0.00000000000000000",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "RESET",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 69,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "RESET",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 70,
+      "action": {
+        "op": "advance",
+        "delta": 0.0005
+      },
+      "position": "0.00050000002374870",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "RESET",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 71,
+      "action": {
+        "op": "advance",
+        "delta": 0.0005
+      },
+      "position": "0.00100000004749750",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "RESET"
+      ]
+    },
+    {
+      "index": 72,
+      "action": {
+        "op": "advance",
+        "delta": 0.001
+      },
+      "position": "0.00100000004749750",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": false,
+      "current": "",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 73,
+      "action": {
+        "op": "play",
+        "name": "RESET",
+        "id": 5
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "RESET",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 74,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "RESET",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 75,
+      "action": {
+        "op": "advance",
+        "delta": 0.011
+      },
+      "position": "0.00100000004749750",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "RESET"
+      ]
+    },
+    {
+      "index": 76,
+      "action": {
+        "op": "play",
+        "name": "Grow",
+        "id": 3
+      },
+      "position": "0.00000000000000000",
+      "frame": 12,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 77,
+      "action": {
+        "op": "advance",
+        "delta": 0.2
+      },
+      "position": "0.20000000298023220",
+      "frame": 4,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Grow",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 78,
+      "action": {
+        "op": "play",
+        "name": "Break",
+        "id": 4
+      },
+      "position": "0.00000000000000000",
+      "frame": 4,
+      "visible": true,
+      "body": true,
+      "hitbox": true,
+      "interaction": true,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 79,
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "position": "0.00000000000000000",
+      "frame": 13,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": true,
+      "current": "Break",
+      "completed": [
+
+      ]
+    },
+    {
+      "index": 80,
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "position": "0.75000000000000000",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "hitbox": false,
+      "interaction": false,
+      "playing": false,
+      "current": "",
+      "completed": [
+        "Break"
+      ]
+    }
+  ]
+}

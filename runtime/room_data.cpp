@@ -354,7 +354,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
     if(!bytes||size<kRoomHeaderBytes+kRoomSectionCount*kRoomDirectoryEntryBytes||size>kMaxRoomBytes) return fail("Room: invalid file size");
     if(std::memcmp(bytes,"ENCRMD01",8)!=0) return fail("Room: invalid magic");
     if(u16(bytes+8)!=1||u16(bytes+10)!=0||u32(bytes+12)!=kRoomHeaderBytes||u32(bytes+16)!=size||u32(bytes+20)!=0x01020304u) return fail("Room: unsupported format/header/endianness");
-    if(u32(bytes+24)!=1||u32(bytes+28)!=0x454e0002u||(u32(bytes+32)!=4&&u32(bytes+32)!=5&&u32(bytes+32)!=6&&u32(bytes+32)!=7)||(u32(bytes+36)!=u32(bytes+32)&&!(u32(bytes+32)==7&&(u32(bytes+36)==8||u32(bytes+36)==9||u32(bytes+36)==10)))) return fail("Room: incompatible target/content/rules/capabilities");
+    if(u32(bytes+24)!=1||u32(bytes+28)!=0x454e0002u||(u32(bytes+32)!=4&&u32(bytes+32)!=5&&u32(bytes+32)!=6&&u32(bytes+32)!=7)||(u32(bytes+36)!=u32(bytes+32)&&!(u32(bytes+32)==7&&(u32(bytes+36)==8||u32(bytes+36)==9||u32(bytes+36)==10||u32(bytes+36)==11||u32(bytes+36)==12)))) return fail("Room: incompatible target/content/rules/capabilities");
     if(!u32(bytes+40)||u32(bytes+44)!=kRoomHeaderBytes||u16(bytes+48)!=kRoomSectionCount||u16(bytes+50)!=kRoomDirectoryEntryBytes) return fail("Room: invalid scene identity/directory");
     if(!u32(bytes+108)||!u32(bytes+112)||u32(bytes+116)||!zero(bytes+120,8)||zero(bytes+56,20)||zero(bytes+76,32)) return fail("Room: invalid provenance/header reserved fields");
     if(room_crc(bytes,size)!=u32(bytes+52)) return fail("Room: CRC mismatch");
@@ -511,8 +511,10 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         else if(r.kind==uint16_t(RoomBindingKind::WorldEffectAppear)||r.kind==uint16_t(RoomBindingKind::WorldEffectDisappear)){if(!ref(r.target_index,v.resource_count())||v.resource(r.target_index).kind!=4||r.value||r.duration)return fail("Room: invalid world effect binding");}
         else if(r.kind==uint16_t(RoomBindingKind::StartPhoneRing)){if(u32(bytes+32)<5||r.target_index>=64||r.value||r.duration)return fail("Room: invalid phone-ring binding");}
         else if(r.kind==uint16_t(RoomBindingKind::DeferredFlagBodyDeletion)){if(u32(bytes+32)<5||!rule_bodies.count(r.target_index)||!ref(r.auxiliary_index,v.flag_count())||(r.value!=0&&r.value!=1)||r.duration)return fail("Room: invalid deferred flag-body binding");}
+        else if(r.kind==uint16_t(RoomBindingKind::FieldPropGrow)){if(u32(bytes+36)<12||!r.target_index||r.target_index>65535||r.value||r.duration)return fail("Room: invalid field prop grow binding");}
         else return fail("Room: unsupported binding kind");
     }
+    if(u32(bytes+36)==12){bool used=false;for(uint32_t i=0;i<v.command_count();++i){const auto c=v.command(i);used|=c.opcode==6&&c.target_index<v.binding_count()&&v.binding(c.target_index).kind==uint16_t(RoomBindingKind::FieldPropGrow);}if(!used)return fail("Room: capability 12 requires a deferred prop grow call");}
     for(uint32_t i=0;i<v.battle_count();++i) {
         const auto r=v.battle(i);
         if(!ref(r.enemy_string,v.string_count())||v.string(r.enemy_string).empty()||!ref(r.actor_instance_index,v.actor_instance_count())||!ref(r.win_flag_index,v.flag_count(),true)||(r.flags&~15u)||((r.flags&8)&&(r.flags&2))||r.advantage < -100||r.advantage>100||!ref(r.win_cutscene_string,v.string_count())||!ref(r.battle_resource_index,v.resource_count())||v.resource(r.battle_resource_index).kind!=uint16_t(RoomResourceKind::CheckedBattlePack))return fail("Room: invalid battle request");
@@ -561,14 +563,15 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
     for(uint32_t i=0;i<v.command_count();++i) {
         const auto c=v.command(i);const auto* p=v.record(RoomSection::Command,i);
         const bool extended=u32(bytes+32)>=5,branched=u32(bytes+32)>=6;
-        const uint32_t allowed_flags=(u32(bytes+36)>=9&&c.opcode==13)?1u:(u32(bytes+32)>=7&&c.opcode==12)?15u:extended?(c.opcode==10?15u:c.opcode==17?3u:c.opcode==33?7u:(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==35)?1u:0u):((c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==33)?1u:0u);
-        if(c.opcode>(u32(bytes+36)>=9?46:u32(bytes+36)==8?43:u32(bytes+32)>=7?42:branched?41:extended?35:34)||(c.flags&~allowed_flags)||((c.opcode!=37&&c.opcode!=38&&!(u32(bytes+36)>=9&&c.opcode==13&&c.flags==1))&&c.auxiliary_index!=kRoomNoIndex)||u32(p+44)||!finite(c.vector)||!std::isfinite(c.value)||!std::isfinite(c.duration))return fail("Room: unknown opcode/invalid command fields");
+        const uint32_t allowed_flags=(u32(bytes+36)>=11&&c.opcode==36)?1u:(u32(bytes+36)>=9&&c.opcode==13)?1u:(u32(bytes+32)>=7&&c.opcode==12)?15u:extended?(c.opcode==10?15u:c.opcode==17?3u:c.opcode==33?7u:(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==35)?1u:0u):((c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==33)?1u:0u);
+        if(c.opcode>(u32(bytes+36)>=12?47:u32(bytes+36)>=9?46:u32(bytes+36)==8?43:u32(bytes+32)>=7?42:branched?41:extended?35:34)||(c.flags&~allowed_flags)||((c.opcode!=37&&c.opcode!=38&&!(u32(bytes+36)>=9&&c.opcode==13&&c.flags==1))&&c.auxiliary_index!=kRoomNoIndex)||u32(p+44)||!finite(c.vector)||!std::isfinite(c.value)||!std::isfinite(c.duration))return fail("Room: unknown opcode/invalid command fields");
         const bool inherited_actor=(c.flags&1)&&(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==42);
-        const bool actor_used=!inherited_actor&&(c.opcode==1||c.opcode==2||(c.opcode>=9&&c.opcode<=14)||c.opcode==16||(c.opcode>=18&&c.opcode<=21)||c.opcode==24||(c.opcode>=27&&c.opcode<=29)||c.opcode==32||c.opcode==42||c.opcode==44);
+        const bool actor_used=!inherited_actor&&(c.opcode==1||c.opcode==2||(c.opcode>=9&&c.opcode<=14)||c.opcode==16||(c.opcode>=18&&c.opcode<=21)||c.opcode==24||(c.opcode>=27&&c.opcode<=29)||c.opcode==32||c.opcode==42||c.opcode==44||c.opcode==47);
         if(actor_used) { if(c.actor_index>=v.actor_instance_count())return fail("Room: invalid command actor reference"); }
         else if(c.opcode==5) { if(c.actor_index!=kRoomNoActor&&c.actor_index>=v.actor_instance_count())return fail("Room: invalid talker reference"); }
         else if(c.actor_index!=kRoomNoActor)return fail("Room: unused command actor");
         if(c.opcode==20&&v.actor_instance(c.actor_index).binding_kind!=1&&v.actor_profile(v.actor_instance(c.actor_index).profile_index).execution_kind!=3&&v.actor_profile(v.actor_instance(c.actor_index).profile_index).execution_kind!=4&&v.actor_profile(v.actor_instance(c.actor_index).profile_index).execution_kind!=2)return fail("Room: restore requires a supported NPC replacement");
+        if(c.opcode==47&&v.actor_instance(c.actor_index).binding_kind!=2)return fail("Room: actor erasure requires an NPC");
         bool target_used=true;
         switch(c.opcode) {
             case 6:if(!ref(c.target_index,v.binding_count()))return fail("Room: invalid command binding");break;
@@ -636,6 +639,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
     }
     std::vector<bool> command_used(v.command_count(),false);
     std::set<std::string_view> program_paths;
+    bool confirmed_loop=false;
     for(uint32_t i=0;i<v.program_count();++i) {
         const auto r=v.program(i);
         if(!r.command_count||!r.phrase_count||r.phrase_count>65536||!range(r.first_command,r.command_count,v.command_count())||(v.command(r.first_command+r.command_count-1).opcode!=24&&v.command(r.first_command+r.command_count-1).opcode!=23))return fail("Room: invalid program/termination");
@@ -651,7 +655,16 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
             if(operation.opcode==26){if(!pending_timer)return fail("Room: timer wait without timer");pending_timer=false;}
             if(operation.opcode==33){if(bool(operation.flags&1)!=pending_timer)return fail("Room: dialogue timer mode mismatch");pending_timer=false;}
             if((operation.opcode==36&&operation.target_index>=r.command_count)||((operation.opcode==37||operation.opcode==38)&&operation.auxiliary_index>=r.command_count))return fail("Room: branch target out of program");
-            if(operation.opcode>=36&&operation.opcode<=38){const uint32_t target=operation.opcode==36?operation.target_index:operation.auxiliary_index;if(target<=j||(target&&v.command(r.first_command+target-1).phrase==v.command(r.first_command+target).phrase))return fail("Room: branch must reach forward phrase entry");}
+            if(operation.opcode>=36&&operation.opcode<=38){
+                const uint32_t target=operation.opcode==36?operation.target_index:operation.auxiliary_index;
+                if(target&&v.command(r.first_command+target-1).phrase==v.command(r.first_command+target).phrase)return fail("Room: branch must reach a phrase entry");
+                if(u32(bytes+36)>=11&&operation.opcode==36&&operation.flags==1){
+                    if(!j||target>=j)return fail("Room: confirmed loop must reach a prior dialogue");
+                    const auto gate=v.command(index-1);
+                    if(gate.opcode!=33||gate.flags||gate.phrase!=operation.phrase||v.command(r.first_command+target).opcode!=32)return fail("Room: confirmed loop lacks a preceding manual dialogue gate");
+                    confirmed_loop=true;
+                }else if(target<=j)return fail("Room: branch must reach forward phrase entry");
+            }
             if((operation.opcode==40||operation.opcode==43)&&(j+1>=r.command_count||v.command(index+1).opcode!=41))return fail("Room: save request lacks submenu wait");
             if(operation.opcode==41&&(!j||(v.command(index-1).opcode!=40&&v.command(index-1).opcode!=43)))return fail("Room: submenu wait lacks save request");
             if(branch_program&&operation.opcode==23&&operation.duration<=0)return fail("Room: branch completion lacks camera timing");
@@ -662,6 +675,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         if(pending_timer)return fail("Room: unresolved phrase timer");
     }
     if(std::find(command_used.begin(),command_used.end(),false)!=command_used.end())return fail("Room: orphan commands");
+    if(u32(bytes+36)==11&&!confirmed_loop)return fail("Room: capability 11 requires a confirmed dialogue loop");
     error.clear();return true;
 }
 bool RoomData::load(const uint8_t* bytes,size_t size,std::string& error) {

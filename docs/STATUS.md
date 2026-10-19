@@ -1,5 +1,9 @@
 # 当前状态
 
+墓地入口已接通 Iggy 初次交谈 / 选项、11段僵尸退场和五根生长演出，以及13个树根的受检生命周期 / 绘制拥有者。完整 Field Room 剧情旗标已纳入电话 Record / LOAD。70460aa 的真实3DSX/CIA与368项打包资源通过；完整GCC普通224 / ASan+UBSan209、Clang普通209 / ASan+UBSan209均通过。
+
+Azahar 的 BF 构建已完成墓地演出、重复触发、电话 Record 和独立冷启动 LOAD；70460aa 的新真实构建与该游戏文件逐字相同，又通过普通LOAD / 出门 / Goods回归，角色、库存和墓地旗标投影一致。使用人工市政厅后检查点；不是自然开局或真机验收。八向挥棒离线组件保留来源对照，正式教学、挥棒 / 树根打断、铲子与Pippi救援仍未接通，后续在 #69 开发。完整原版尚不能全部游玩。证据见 [GRAVEYARD_IMPORT](GRAVEYARD_IMPORT.md) 和 reports/graveyard-import/root704-verification。
+
 2026-10-19：初始市政厅已纳入正式资源构建和正常门连接，361项资源经真实3DSX/CIA构建与打包核对。7bc73cb完整GCC普通216/sanitizer201、Clang普通201/sanitizer201通过。07ea6e8游戏的英文/中文独立冷启动各91个观察点通过：普通LOAD、桥头战斗/奖励、妈妈呼喊、步行进入市政厅、Abbott/市长是/否/取消、内部门、菜单与返回；完成/奖励/旗标投影一致。持有地图的独立人工检查点另89个观察点通过，室内地图定位为来源要求的(0,150)视口。均非自然开局全流程或真机验收，随机HP/掉落不要求逐字节一致。后续Pippi救援/动物园分支仍阻断，全局音乐候选尚未接入主程序。详情见[MAYOR_OFFICE_IMPORT](MAYOR_OFFICE_IMPORT.md)，完整原版尚不能全部游玩。
 
 Mother: Encore 的局部原生 Nintendo 3DS 移植。共享 C++17 核心运行受检内容，3DS 后端负责渲染、输入、音频和存储；不运行 Godot 或通用 GDScript 解释器。完整游戏尚未完成。

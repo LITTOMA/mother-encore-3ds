@@ -8,7 +8,7 @@ $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio gameplay-audio music-zones bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house house-presents mick-treats items-check items session migration restore \
- continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment field-menus bridge-entry bridge-round field-story field-room field-npcs mayor-scene
+ continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment field-menus bridge-entry bridge-round field-story field-room field-npcs mayor-scene field-props
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
@@ -33,12 +33,16 @@ storage: items
 item-details: items
 field-equipment: items item-details
 field-menus: session
-session: drawer items storage house-presents mick-treats
+session: drawer items storage house-presents mick-treats field-room
 bridge-entry: pillow-entry
 bridge-round: bridge-entry pillow-round
 field-story: bridge-entry items
 field-room: room field-story field-npcs mayor-scene
 field-npcs: mick-treats
+field-props: field-room
+
+field-props:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_props.py compile
 
 bridge-entry:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/bridge_entry.py compile

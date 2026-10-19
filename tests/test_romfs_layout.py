@@ -13,6 +13,7 @@ class RomFSLayoutTests(unittest.TestCase):
                       'fonts/source-fonts.encfont', 'fonts/page.t3x',
                       Path('world/house/opening.encroom'), 'system/native.encinput', 'story/melody.encfx',
                       'world/podunk/podunk.encmick', 'world/house/opening.encpresent',
+                      'world/podunk/podunk.encprops',
                       'licenses/license-sources.json'])
 
     def test_build_metadata_and_legacy_paths_rejected(self):

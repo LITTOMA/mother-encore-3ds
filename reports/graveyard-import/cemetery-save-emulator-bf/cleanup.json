@@ -1,0 +1,26 @@
+{
+  "removed": [
+    {
+      "path": "build/full-port/cemetery-current/verified-artifact/3ds/encore-native/encore-native.3dsx",
+      "bytes": 262686864
+    },
+    {
+      "path": "build/full-port/story-key-grant-tests",
+      "bytes": 48678840
+    },
+    {
+      "path": "build/full-port/field-swing-tests",
+      "bytes": 967712
+    },
+    {
+      "path": "build/full-port/loading-indicator-local",
+      "bytes": 267440
+    },
+    {
+      "path": "build/full-port/loading-texture-local",
+      "bytes": 133152
+    }
+  ],
+  "bytes": 312734008,
+  "retained": "Actual f3 old route baseline and bf current game; no preexisting Mick/presents touched. Related6ELFs295615016B and validationELF48697736B separately removed earlier."
+}

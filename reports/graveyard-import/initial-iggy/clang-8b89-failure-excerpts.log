@@ -1,0 +1,41 @@
+Actual job117850945570 failure excerpts; full raw log retained at build/full-port/8b89-clang-full.log SHA256=0f8f24510964061c1fef8fc321598f4fec5ed5fe770d55a444a38de4c74c0f00
+
+2026-10-19T02:01:30.0837213Z  35/202 Test #138: resource_catalog .................***Failed    0.02 sec
+2026-10-19T02:01:30.0867063Z repeatable field motion identities resolve independently
+2026-10-19T02:01:30.0867636Z 
+2026-10-19T02:01:30.0917030Z         Start 169: playable_opening
+2026-10-19T02:01:30.1877557Z  36/202 Test #169: playable_opening .................   Passed    0.10 sec
+2026-10-19T02:01:30.1886891Z         Start 170: original_introduction
+2026-10-19T02:01:30.2087617Z  37/202 Test #170: original_introduction ............   Passed    0.02 sec
+2026-10-19T02:01:30.6641636Z  38/202 Test  #72: native_session ...................   Passed    0.62 sec
+2026-10-19T02:01:30.6835356Z  39/202 Test  #31: room_data ........................   Passed    0.64 sec
+2026-10-19T02:01:30.7002413Z  40/202 Test  #33: audio_data .......................   Passed    0.66 sec
+2026-10-19T02:01:30.7003207Z         Start  32: data_only_runtime
+2026-10-19T02:01:30.7662121Z  41/202 Test  #32: data_only_runtime ................   Passed    0.07 sec
+2026-10-19T02:01:30.7663153Z         Start  34: audio_player_double
+2026-10-19T02:04:01.7216799Z 140/202 Test #139: resource_catalog_sources .........***Failed    1.22 sec
+2026-10-19T02:04:01.7217594Z ......F........
+2026-10-19T02:04:01.7218043Z ======================================================================
+2026-10-19T02:04:01.7219580Z FAIL: test_field_extension_is_separate_and_fail_closed (__main__.ResourceCatalogTests.test_field_extension_is_separate_and_fail_closed)
+2026-10-19T02:04:01.7220950Z ----------------------------------------------------------------------
+2026-10-19T02:04:01.7221428Z Traceback (most recent call last):
+2026-10-19T02:04:01.7231336Z   File "/home/runner/work/mother-encore-3ds/mother-encore-3ds/tests/resource_catalog_tests.py", line 62, in test_field_extension_is_separate_and_fail_closed
+2026-10-19T02:04:01.7232109Z     self.assertEqual(len(motion),7)
+2026-10-19T02:04:01.7232401Z AssertionError: 8 != 7
+2026-10-19T02:04:01.7232545Z 
+2026-10-19T02:04:01.7232700Z ----------------------------------------------------------------------
+2026-10-19T02:04:01.7233042Z Ran 15 tests in 1.137s
+2026-10-19T02:04:01.7233179Z 
+2026-10-19T02:16:59.0702247Z 187/202 Test #202: field_npc_motion .................***Failed    0.01 sec
+2026-10-19T02:16:59.0703698Z NPC check 1082: all map motion owners admitted
+2026-10-19T02:16:59.0704460Z 
+2026-10-19T02:16:59.0704935Z         Start 203: field_npc_source
+2026-10-19T02:17:11.8065507Z 188/202 Test #203: field_npc_source .................   Passed   12.74 sec
+2026-10-19T02:17:11.8068465Z         Start 204: mick_key_fixture
+2026-10-19T02:17:11.8110903Z 189/202 Test #204: mick_key_fixture .................   Passed    0.00 sec
+2026-10-19T02:17:11.8111745Z         Start 205: mick_treats
+2026-10-19T02:17:11.8138962Z 190/202 Test #205: mick_treats ......................   Passed    0.00 sec
+2026-10-19T02:17:11.8139814Z         Start 206: mick_dialogue_pacing
+2026-10-19T02:17:11.8167515Z 191/202 Test #206: mick_dialogue_pacing .............   Passed    0.00 sec
+2026-10-19T02:17:11.8168683Z         Start 207: mick_treats_source
+2026-10-19T02:17:15.9250339Z 192/202 Test #207: mick_treats_source ...............   Passed    4.11 sec

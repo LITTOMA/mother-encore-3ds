@@ -1,0 +1,22 @@
+{
+  "status": "failed",
+  "error": "TimeoutError(\"Blocked DOWN: {'version': 9, 'byte_size': 1300, 'sequence': 9072, 'frame': 4536, 'width': 400, 'height': 240, 'title_phase': 0, 'title_option': 1, 'naming_phase': 0, 'naming_field': 0, 'naming_selected': 0, 'intro_phase': 0, 'menu_phase': 0, 'menu_command': 0, 'menu_slot': 0, 'menu_candidate': 0, 'field_scene': 2, 'field_phase': 0, 'house_phase': 12, 'world_stage': 0, 'paused': 0, 'crouch': 0, 'session_ready': 1, 'battle_active': 0, 'level': 2, 'hp': 43, 'pp': 27, 'inventory_count': 3, 'key_count': 3, 'audio_available': 1, 'music_playing': 0, 'music_asset': 0, 'dsp_music_playing': 0, 'dsp_music_sample_pos': 1505, 'dsp_music_wave_seq': 547, 'psi_learned': 0, 'intro_scene': 0, 'intro_door': 0, 'overflow': 0, 'battle_entry_phase': 4, 'battle_round_phase': 5, 'battle_outcome_phase': 7, 'enemy_hp': 0, 'door_unlocked_mask': 13, 'world_phrase': 5, 'mick_phase': 0, 'choice_phase': 0, 'save_phase': 0, 'present_opened_mask': 14, 'object_flag_count': 2, 'experience': 17, 'dialogue_active': 0, 'dialogue_finished': 1, 'dialogue_stopped': 0, 'dialogue_visible': 0, 'player_x': 180.0, 'player_y': 543.0, 'direction_x': 0.0, 'direction_y': 1.0, 'mick_x': -101.0, 'mick_y': 2.399991035461426, 'house_error': '', 'field_error': '', 'menu_error': '', 'audio_error': '', 'world_programme': 1, 'world_dialogue': 4294967295, 'story_revision_lo': 2, 'story_revision_hi': 0, 'story_flag_count': 178, 'story_flag_0': 1064961, 'story_flag_1': 244891648, 'story_flag_2': 0, 'story_flag_3': 0, 'story_flag_4': 0, 'story_flag_5': 0, 'cash': 0, 'bank': 20, 'earned_cash': 20, 'loot_ready': 1, 'loot_selected': 1, 'loot_granted': 1, 'battle_current_hp': 0, 'battle_target_hp': 0, 'dialogue_music_playing': 0, 'dialogue_music_asset': 0, 'dsp_dialogue_playing': 0, 'dsp_dialogue_sample_pos': 2149, 'dsp_dialogue_wave_seq': 0, 'region_music_paused': 0, 'region_music_voices': 1, 'region_music_track': 582446421, 'dsp_region_playing': 1, 'dsp_region_sample_sum': 430, 'dsp_region_wave_sum': 1003, 'inventory_0_definition': 1, 'inventory_0_doses': 1, 'inventory_0_equipped': 1, 'inventory_1_definition': 3, 'inventory_1_doses': 1, 'inventory_1_equipped': 1, 'inventory_2_definition': 4, 'inventory_2_doses': 1, 'inventory_2_equipped': 0, 'inventory_3_definition': 0, 'inventory_3_doses': 0, 'inventory_3_equipped': 0, 'inventory_4_definition': 0, 'inventory_4_doses': 0, 'inventory_4_equipped': 0, 'inventory_5_definition': 0, 'inventory_5_doses': 0, 'inventory_5_equipped': 0, 'inventory_6_definition': 0, 'inventory_6_doses': 0, 'inventory_6_equipped': 0, 'inventory_7_definition': 0, 'inventory_7_doses': 0, 'inventory_7_equipped': 0, 'inventory_8_definition': 0, 'inventory_8_doses': 0, 'inventory_8_equipped': 0, 'inventory_9_definition': 0, 'inventory_9_doses': 0, 'inventory_9_equipped': 0, 'inventory_10_definition': 0, 'inventory_10_doses': 0, 'inventory_10_equipped': 0, 'inventory_11_definition': 0, 'inventory_11_doses': 0, 'inventory_11_equipped': 0, 'inventory_12_definition': 0, 'inventory_12_doses': 0, 'inventory_12_equipped': 0, 'inventory_13_definition': 0, 'inventory_13_doses': 0, 'inventory_13_equipped': 0, 'inventory_14_definition': 0, 'inventory_14_doses': 0, 'inventory_14_equipped': 0, 'inventory_15_definition': 0, 'inventory_15_doses': 0, 'inventory_15_equipped': 0, 'random_state_lo': 3694900508, 'random_state_hi': 3777212595, 'random_draws_lo': 269, 'random_draws_hi': 0, 'battle_error': '', 'submenu_phase': 0, 'submenu_selection': 0, 'submenu_keys': 0, 'submenu_count': 3, 'menu_inventory_hash': 531817731, 'menu_key_hash': 2480377710, 'menu_settings_hash': 174769501, 'menu_controls_hash': 1359649155, 'menu_master': 10, 'menu_music': 10, 'menu_sfx': 10, 'menu_display': 0, 'menu_maxhp': 65, 'menu_maxpp': 27, 'menu_offense': 15, 'menu_defense': 12, 'menu_map_x': 0, 'menu_map_y': 0, 'menu_uid_hash': 3441153422, 'menu_key_uid_hash': 1727906337}\")",
+  "performance": {
+    "battle_audio": {
+      "emulationSpeed": 1.0105158804335417,
+      "gameFps": 30.230498481773985,
+      "gpuSeconds": 0.0004453915254237288,
+      "ipcSeconds": 2.649322033898305e-05,
+      "swapSeconds": 0.00019621355932203388,
+      "systemFps": 59.45331368082217
+    },
+    "returned_audio": {
+      "emulationSpeed": 1.002675213699142,
+      "gameFps": 59.991337250900976,
+      "gpuSeconds": 0.00025870833333333334,
+      "ipcSeconds": 2.3298333333333334e-05,
+      "swapSeconds": 2.0605e-05,
+      "systemFps": 59.991337250900976
+    }
+  }
+}

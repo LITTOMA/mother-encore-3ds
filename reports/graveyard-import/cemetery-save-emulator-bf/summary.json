@@ -1,0 +1,15 @@
+{
+  "source_commit": "bf063a7d0af56ca0a56a198bd9c9a7a95d4dd253",
+  "scope": "Artificial post-Mayor source/core-validated initial checkpoint; ordinary LOAD/House exit/176 collision-constrained waypoints/cemetery11phases+repeat/return to House/actual telephone Record slot2/fresh emulator and normal LOAD slot2/House exit/Goods/close. No memory writes. Not natural new-game, byte/pixel/audio equivalence, whole-game or hardware.",
+  "recorded_save": {
+    "bytes": 4652,
+    "sha256": "2ec58ed5e5e9e03f9cf9832346fc31d6da77ccb80e21953f4c833c4ca67c1714",
+    "location": "Owned build test output only; no personal save committed"
+  },
+  "root_flag": true,
+  "source_first_persisted_saved_flag": false,
+  "saved_flag_review": "Actual source global.gd saves the dictionary before setting the live saved flag. The original host assertion was corrected only after this source review; recorded bytes/expected game behaviour unchanged.",
+  "host": "Exact embedded bf Session/Room/House/round/items resources, actual file decoded, full NativeSession scope validated, encode returns identical4652bytes, cemetery flag=true and preserved5 source characters. GCC9 ASan/UBSan.",
+  "ci": "bf ordinaryClang208/208 and sanitizer208/208 success, real3DSX/CIA success. GCCnormal222/223 sole aggregate old route-owner projection failure fixed in cea; new full39214836153 stillrunning.",
+  "first_attempt": "Game reached Dad normal dialogue; controller failed to confirm a source WAIT stop. Failure/screenshot retained. Corrected controller handles finished OR stopped text and reran the entire route."
+}

@@ -1,0 +1,4 @@
+{
+  "status": "incomplete-stopped-for-verified-fix",
+  "reason": "Actual NativeSession snapshot validation rejects cem_roots_grown; source resources must change. Partial aggregate log preserved; not a full-test pass. Historical walk fixture failure separately repaired. No remote CI or emulator stopped."
+}

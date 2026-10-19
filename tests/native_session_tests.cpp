@@ -17,6 +17,13 @@ int main(int argc,char**argv){
  CHECK(data.load_file((root+"/session/opening.encsession").c_str(),error));CHECK(room.load_file((root+"/world/house/opening.encroom").c_str(),error));CHECK(house.load_file((root+"/world/house/opening.enchouse").c_str(),error));CHECK(round.load_file((root+"/battle/doll/doll-entry.encround").c_str(),error));CHECK(items.load_file((root+"/ui/opening.encitems").c_str(),error));CHECK(inventory.initialize(items.view()));
  auto validate=[&](const SessionSnapshot&s){return validate_native_session_snapshot(data,room.view(),house.view(),round.view(),items.view(),s,error);};
  auto visited=data.defaults();for(auto&flag:visited.flags)if(flag.id=="visited_podunk")flag.value=true;CHECK(validate(visited));auto flying=data.defaults();for(auto&flag:flying.flags)if(flag.id=="flying_man_in_party")flag.value=true;CHECK(!validate(flying));
+ auto cemetery=data.defaults();bool found_cemetery=false;
+ for(auto&flag:cemetery.flags)if(flag.id=="cem_roots_grown"){flag.value=true;found_cemetery=true;}
+ CHECK(found_cemetery);CHECK(validate(cemetery));
+ std::vector<uint8_t>cemetery_bytes;SessionSnapshot cemetery_loaded;
+ CHECK(encode_session_save(cemetery,data.compatibility(),cemetery_bytes,error));
+ CHECK(decode_session_save(cemetery_bytes.data(),cemetery_bytes.size(),data.compatibility(),cemetery_loaded,error));
+ CHECK(validate(cemetery_loaded));bool preserved_cemetery=false;for(const auto&flag:cemetery_loaded.flags)if(flag.id=="cem_roots_grown")preserved_cemetery=flag.value;CHECK(preserved_cemetery);
  CHECK(data.leader_id()=="ninten");CHECK(data.saved_flag_id()=="saved");CHECK(data.earned_cash_flag_id()=="earned_cash");CHECK(data.defaults().flags.size()==178);CHECK(validate(data.defaults()));
  const auto&initial=data.defaults().characters[0];CHECK(initial.nickname=="Ninten");CHECK(initial.permanent_boosts.empty());CHECK(initial.affinity_multipliers.size()==1&&initial.affinity_multipliers[0].id=="asthma"&&initial.affinity_multipliers[0].value==1);CHECK(initial.inventory[0].item_id=="BaseballCap"&&initial.inventory[0].equipped&&initial.inventory[0].doses==1);CHECK(data.defaults().key_items[0].item_id=="CashCard"&&data.defaults().key_items[0].uid!=initial.inventory[0].uid);
  // Additive startup roster never broadens the playable party. Old singleton
@@ -72,11 +79,18 @@ int main(int argc,char**argv){
  for(size_t i=0;i<bytes.size();++i){auto mutation=bytes;mutation[i]^=1;CHECK(!data.load(mutation.data(),mutation.size(),error));}
  for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,12},{20,12},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  CHECK(data.field_encounters()==std::vector<std::string>{"straydog"});
- // v11 appends only admitted run-sound identities; saves and the entire real
- // frozen v10 payload are unchanged. Older data admits only its own default.
+ // v11 keeps its run-sound append and the old v10 reader. The cemetery
+ // content now adds one mutable flag; defaults/save encoding remain frozen.
  CHECK(data.run_sounds()==std::vector<std::string>({"wood","stone"}));CHECK(data.supports_run_sound("wood")&&data.supports_run_sound("stone")&&!data.supports_run_sound("unknown"));
  {auto stone=data.defaults();stone.run_sound="stone";CHECK(validate(stone));std::vector<uint8_t>saved;CHECK(encode_session_save(stone,data.compatibility(),saved,error));SessionSnapshot decoded;CHECK(decode_session_save(saved.data(),saved.size(),data.compatibility(),decoded,error));CHECK(decoded.run_sound=="stone"&&validate(decoded));}
- std::vector<uint8_t>v10_bytes;CHECK(encore::read_file("tests/fixtures/session-v10.encsession",v10_bytes,1024*1024,error));const size_t run_at=v10_bytes.size();CHECK(bytes.size()==run_at+21&&std::equal(v10_bytes.begin()+24,v10_bytes.end(),bytes.begin()+24));NativeSessionData v10;CHECK(v10.load(v10_bytes.data(),v10_bytes.size(),error));CHECK(v10.run_sounds()==std::vector<std::string>{v10.defaults().run_sound});CHECK(!v10.supports_run_sound("stone"));{auto stone=v10.defaults();stone.run_sound="stone";CHECK(!validate_native_session_snapshot(v10,room.view(),house.view(),round.view(),items.view(),stone,error));}
+ std::vector<uint8_t>v10_bytes;CHECK(encore::read_file("tests/fixtures/session-v10.encsession",v10_bytes,1024*1024,error));const size_t run_at=bytes.size()-21;CHECK(run_at>v10_bytes.size());
+ auto current_v10=bytes;current_v10.resize(run_at);put(current_v10,8,10);put(current_v10,20,10);fix(current_v10);NativeSessionData current_v10_data;
+ CHECK(current_v10_data.load(current_v10.data(),current_v10.size(),error));CHECK(current_v10_data.mutable_flags()==data.mutable_flags());
+ CHECK(validate_native_session_snapshot(current_v10_data,room.view(),house.view(),round.view(),items.view(),cemetery,error));
+ std::vector<uint8_t>prior_defaults,cemetery_current_defaults;NativeSessionData baseline_v10;CHECK(baseline_v10.load(v10_bytes.data(),v10_bytes.size(),error));
+ CHECK(encode_session_save(baseline_v10.defaults(),baseline_v10.compatibility(),prior_defaults,error));CHECK(encode_session_save(data.defaults(),data.compatibility(),cemetery_current_defaults,error));CHECK(prior_defaults==cemetery_current_defaults);
+ CHECK(!validate_native_session_snapshot(baseline_v10,room.view(),house.view(),round.view(),items.view(),cemetery,error));
+ NativeSessionData v10;CHECK(v10.load(v10_bytes.data(),v10_bytes.size(),error));CHECK(v10.run_sounds()==std::vector<std::string>{v10.defaults().run_sound});CHECK(!v10.supports_run_sound("stone"));{auto stone=v10.defaults();stone.run_sound="stone";CHECK(!validate_native_session_snapshot(v10,room.view(),house.view(),round.view(),items.view(),stone,error));}
  for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{run_at,0},{run_at,1},{run_at,17},{run_at+4,0},{run_at+4,33},{8,10},{20,10}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));CHECK(data.supports_run_sound("stone"));}
  {auto downgrade=bytes;put(downgrade,8,10);put(downgrade,20,10);fix(downgrade);CHECK(!data.load(downgrade.data(),downgrade.size(),error));}
  {auto missing=v10_bytes;put(missing,8,11);put(missing,20,11);fix(missing);CHECK(!data.load(missing.data(),missing.size(),error));}
@@ -85,7 +99,7 @@ int main(int argc,char**argv){
  {auto mutation=bytes;mutation.resize(run_at);const auto append=[&](uint32_t n){size_t at=mutation.size();mutation.resize(at+4);put(mutation,at,n);};append(2);append(4);mutation.insert(mutation.end(),{'w','o','o','d'});append(4);mutation.insert(mutation.end(),{'w','o','o','d'});fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  // v10 appends encounter admission after the complete mainline v9 prefix.
  {auto legacy=v10_bytes;legacy.resize(legacy.size()-16);put(legacy,8,9);put(legacy,20,9);fix(legacy);NativeSessionData v9;CHECK(v9.load(legacy.data(),legacy.size(),error));CHECK(v9.field_encounters().empty());CHECK(v9.field_items().size()==data.field_items().size());CHECK(v9.supports_settings(data.defaults().settings));}
- const size_t field_count=v10_bytes.size()-16;CHECK(std::string(v10_bytes.begin()+field_count+8,v10_bytes.end())=="straydog");
+ const size_t frozen_field_count=v10_bytes.size()-16;CHECK(std::string(v10_bytes.begin()+frozen_field_count+8,v10_bytes.end())=="straydog");const size_t field_count=run_at-16;CHECK(std::string(bytes.begin()+field_count+8,bytes.begin()+run_at)=="straydog");
  for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{field_count,0},{field_count,65},{field_count+4,0},{field_count+4,65}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  {auto mutation=bytes;mutation[field_count+8]='/';fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  {auto mutation=bytes;const std::vector<uint8_t>duplicate(mutation.begin()+field_count+4,mutation.begin()+run_at);mutation.insert(mutation.begin()+run_at,duplicate.begin(),duplicate.end());put(mutation,field_count,2);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}

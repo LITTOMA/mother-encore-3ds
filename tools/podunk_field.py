@@ -1713,7 +1713,7 @@ def build_room(recipe, model, house_ir_path, *, npc_adder=None, story_adder=None
     provenance = dict(sorted({**story_provenance,**npc_provenance,**{('upstream/MOTHER-Encore/' + k): v for k, v in model.sources.digests().items()},
                               house_ir_path: hashlib.sha256((ROOT / house_ir_path).read_bytes()).hexdigest(),
                               Path(recipe_path).resolve().relative_to(ROOT).as_posix(): hashlib.sha256(Path(recipe_path).read_bytes()).hexdigest()}.items()))
-    ir = dict(schema=1, family=native_content.FAMILY, rules=house['rules'], capabilities=10 if any(p['execution_kind']==4 for p in sections['ActorProfile'])else house['capabilities'],
+    ir = dict(schema=1, family=native_content.FAMILY, rules=house['rules'], capabilities=12 if any(b['kind']==10 for b in sections['Binding'])else 10 if any(p['execution_kind']==4 for p in sections['ActorProfile'])else house['capabilities'],
               scene_id=recipe['scene']['id'], upstream_commit=PIN, exporter_version=1, adapter_revision=1,
               strings=strings, sections=sections, provenance=dict(sources=provenance))
     blob, _ = native_content.compile_ir(ir)
@@ -1752,9 +1752,9 @@ def build_outputs(recipe):
 
 def check_links(blob, recipe):
     if 'route_recipe' in recipe:
-        from tools.world_scene_routes import STRIDES, load as route_policy
-        cap = 3 if route_policy(ROOT / recipe['route_recipe'])['schema'] == 2 else 2
-        return unpack_container(blob, LINK_MAGIC, STRIDES, LINK_LIMIT, capability=cap)
+        from tools.world_scene_routes import strides, capability, load as route_policy
+        policy=route_policy(ROOT / recipe['route_recipe'])
+        return unpack_container(blob, LINK_MAGIC, strides(policy), LINK_LIMIT, capability=capability(policy))
     return unpack_container(blob, LINK_MAGIC, LINK_STRIDES, LINK_LIMIT)
 
 

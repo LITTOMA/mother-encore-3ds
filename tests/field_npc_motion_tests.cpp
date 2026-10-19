@@ -60,19 +60,25 @@ int main(int argc,char**argv){
  check(original.load(legacy.data(),legacy.size(),error)&&!original.view().motion_only()&&original.view().wanders()&&original.view().stares(),"legacy Mick contract remains admitted");
  put(legacy,20,4);put(legacy,28,3);sign(legacy);check(!original.load(legacy.data(),legacy.size(),error),"programme-bearing pack cannot masquerade as motion-only");
  {
-  RoomData room;FieldMapData map;WorldLinksData links;MickData mom,dog;Host host;
+  RoomData room;FieldMapData map;WorldLinksData links;MickData mom,dog,iggy,z1,z2;Host host;
   check(room.load_file("romfs/world/podunk/podunk.encroom",error),error.c_str());
   check(map.load_file("romfs/world/podunk/podunk.encmap",error),error.c_str());
   check(links.load_file("romfs/world/world.enclinks",error),error.c_str());
   check(mom.load_file(argv[1],error)&&dog.load_file(argv[2],error),error.c_str());
+  check(iggy.load_file("romfs/world/podunk/npcs/iggy.encmick",error)&&iggy.view().owner_id()==4&&iggy.view().interaction_policy(),"independent Iggy source motion policy");
   FieldScene scene;std::vector<bool>flags(room.view().flag_count(),false);
   check(scene.prepare(room.view(),map.view(),links,flags,{560,260},{0,1},{400,240},error),error.c_str());
   check(!scene.npcs_ready(),"unbound source actor cannot be committed by the platform");
   check(scene.bind_npc(mom.view(),host,error)&&scene.bind_npc(dog.view(),host,error),error.c_str());
+  check(!scene.npcs_ready(),"new map actor must not be silently discarded by the legacy two-owner path");
+  check(scene.bind_npc(iggy.view(),host,error),error.c_str());
+  check(!scene.npcs_ready(),"cemetery source actors also require their independent owners");
+  check(z1.load_file("romfs/world/podunk/npcs/zombie1.encmick",error)&&z2.load_file("romfs/world/podunk/npcs/zombie2.encmick",error),error.c_str());
+  check(scene.bind_npc(z1.view(),host,error)&&scene.bind_npc(z2.view(),host,error),error.c_str());
   check(scene.npcs_ready(),"all map motion owners admitted");
   check(!scene.bind_npc(dog.view(),host,error),"duplicate live motion owner rejected");
   check(!scene.bind_npc(original.view(),host,error),"Mick programme cannot bind as a field motion owner");
-  check(scene.actor_visible(1)&&scene.actor_visible(2)&&!scene.actor_visible(0),"map conditions select admitted NPC actors only");
+  check(scene.actor_visible(1)&&scene.actor_visible(2)&&scene.actor_visible(3)&&!scene.actor_visible(0),"map conditions select all admitted NPC actors only");
   check(scene.finish_transition(),"start checked field owner");
   std::set<uint16_t>frames;
   for(unsigned tick=0;tick<120;++tick){WalkInput input;check(scene.before_physics(input),scene.error().c_str());check(scene.world.advance(input),scene.world.error());check(scene.after_physics(),scene.error().c_str());frames.insert(scene.actor_pose(2).frame);}
@@ -83,6 +89,8 @@ int main(int argc,char**argv){
   check(scene.idle_frame(1.0/60,true)&&scene.phase()==FieldPhase::Walking,"unmapped NPC conversation can return control");
   check(scene.world.set_story_flag("beat_dog_bridge",true,false)&&scene.refresh_conditions(error),error.c_str());
   check(!scene.actor_visible(2)&&scene.actor_visible(1),"source victory flag hides only the defeated source actor");
+  check(scene.actor_visible(3)&&scene.world.set_story_flag("returned_shovel",true,false)&&scene.refresh_conditions(error),"Iggy source visibility flag remains independent");
+  check(!scene.actor_visible(3)&&scene.actor_visible(1),"return flag hides Iggy without erasing the original conversation owner");
   // Multiple moving foot bodies coexist; excluding one's own foot must retain
   // every other actor obstacle for the same motion query.
   FieldCollision collision;std::vector<bool>layers(map.view().count(FieldMapSection::Layers),false),bodies(map.view().count(FieldMapSection::Bodies),false);

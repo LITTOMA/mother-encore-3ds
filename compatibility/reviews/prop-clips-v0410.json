@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "recipe_sha256": "501d2a6318a62c92dc627e92971d7659d4ad6d84dd69d3f9e2ae97de12774259",
+  "sources": {
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Dead Bush.png.import": "4ad90f6e9358c616d86e5eefcead4cb82e73b4c8cd8a543a5a98b44ddc993d48",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "mapped_implementation": {
+    "source_animation_records": "tools/prop_clips.py; exact named source animations and typed property targets; unknown tracks/modes/classes fail",
+    "binary": "ENCPCL01 format1/capability1; three checked sections; no node paths or scripts in executor",
+    "runtime": "runtime/prop_clips.cpp; exclusive property owner, sparse tracks preserve previous values, play waits for processing, interruption emits no replaced completion, one completion per finished clip",
+    "constant_tracks": "RESET has one constant key on continuous tracks; exact only under exclusive property ownership. Multiple keys/continuous curves reject.",
+    "oracle": "official Godot3.6.2 unchanged original animation resources and script; numeric scene quarantines only prompt visual Shader/ShaderMaterial and material property after isolated GLES2 lookup errors; service stubs explicit; no rendering equivalence claim"
+  },
+  "actual_verification": {
+    "native_observations": 81,
+    "gcc9_asan_ubsan_checks": 2632,
+    "python_methods": 6,
+    "registration": "1109=749+360; exact method IDs"
+  },
+  "not_implemented": [
+    "scene/map/render binding",
+    "root ready flags and viewport visibility",
+    "grow coroutine and hit callbacks",
+    "clone/reparent/audio/deferred callbacks",
+    "player swing and whole graveyard quest"
+  ],
+  "compatibility": "No game save, Room rules, shipping catalog or release pack change; current resource is an offline checked fixture only."
+}

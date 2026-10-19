@@ -1,0 +1,18 @@
+{
+  "baseline": "e4a7be1d25a0bbecd023259d04fa2216b8536d22",
+  "artifact_source": "8b89a5e57d8ebf446fa12e38f4b738bc28f76c0f",
+  "old_map_sha256": "1b9682df5524c7d9291ea6ddc2ae9af78c4f6a6c698a908a20b9a8c9bc97be7a",
+  "new_map_sha256": "dcc8433bc8465330422ec422142bbd59d16eb7b249b7a165c26c4aca21ebd89d",
+  "byte_identical_collision_sections": [
+    7,
+    8,
+    10,
+    11,
+    12,
+    21
+  ],
+  "resolved_conditions_identical": true,
+  "resolved_boundaries_identical": true,
+  "route_points_and_target_unchanged": true,
+  "reason": "npc18 changes from static unported rendering/notice to owned Iggy actor. Source string references shift; collision layers, shapes, points, chunks, cells, bodies, flag conditions and all cutscene boundaries remain identical. No original behavior change or new expectation."
+}

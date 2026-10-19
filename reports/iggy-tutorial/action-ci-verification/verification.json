@@ -1,0 +1,25 @@
+{
+  "scope": "Historical exact commits, not current WIP",
+  "runs": [
+    {
+      "commit": "ec48b48721d22c359545a7567ba48ca3d544325d",
+      "run": 39236389124,
+      "gcc": "230/231 ordinary passed; python_tools timeout 1800.09s; sanitizer not executed",
+      "clang": "success",
+      "console": "success"
+    },
+    {
+      "commit": "72f02ab46759e35884f50aa8fb0bd69858349ade",
+      "run": 39240618656,
+      "gcc": "231/232 ordinary passed; python_tools timeout 1800.01s; sanitizer not executed",
+      "clang": "217 ordinary and 217 ASan/UBSan passed",
+      "console": "success"
+    }
+  ],
+  "interpretation": "Intentional worker failure is an expected negative scheduler test, not the failing outcome.",
+  "logs": {
+    "iggy-ec-gcc-full.log": "948da21af84edff6648343889d632230538e708aa6aadce0db8c68d3aef4f0be",
+    "iggy72-clang-full.log": "594b10eebca0dcd1da5185f0c9b19501f1a130c969af241b2883c96b08cd473c",
+    "iggy72-gcc-full.log": "a3f62d1f7e7de2c8da9314e8113293f60f9f7e953a73367e464f620362da8fe2"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "kind": "encore.swing-entry.reviewed-bindings",
+  "source_recipe": "content/field-swing.json",
+  "action_recipe": "content/field-swing-action.json",
+  "idle": 1,
+  "attack": 8,
+  "states": [
+    {
+      "id": 1,
+      "name": "Idle"
+    },
+    {
+      "id": 2,
+      "name": "Walk"
+    },
+    {
+      "id": 3,
+      "name": "Run"
+    },
+    {
+      "id": 4,
+      "name": "Crouch"
+    },
+    {
+      "id": 5,
+      "name": "Blink"
+    },
+    {
+      "id": 6,
+      "name": "FaintedIdle"
+    },
+    {
+      "id": 7,
+      "name": "FaintedWalk"
+    },
+    {
+      "id": 8,
+      "name": "Bat"
+    }
+  ],
+  "paths": {
+    "Idle": [
+      "Bat"
+    ],
+    "Walk": [
+      "Idle",
+      "Bat"
+    ],
+    "Run": [
+      "Walk",
+      "Idle",
+      "Bat"
+    ],
+    "Crouch": [
+      "Idle",
+      "Bat"
+    ],
+    "Blink": [
+      "Idle",
+      "Bat"
+    ],
+    "FaintedIdle": [
+      "Idle",
+      "Bat"
+    ],
+    "FaintedWalk": [
+      "FaintedIdle",
+      "Idle",
+      "Bat"
+    ]
+  },
+  "motion_states": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "output": "world/player/swing.encentry"
+}

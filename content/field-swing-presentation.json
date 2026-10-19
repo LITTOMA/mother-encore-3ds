@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "kind": "encore.swing-graphics.binary-bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "atlas_recipe": "content/field-swing-graphics.json",
+  "texture_directory": "graphics/world/player/swing",
+  "output": "world/player/swing.encgraphics"
+}

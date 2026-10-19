@@ -1,0 +1,31 @@
+{
+  "scope": "Actual local GCC9 ASan/UBSan new metadata tests with both genuine tex3ds outputs; no rendering or gameplay admission.",
+  "compiler": "g++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0",
+  "flags": "-std=c++17 -O0 -fsanitize=address,undefined -fno-omit-frame-pointer -fno-pie -no-pie -fno-exceptions -fno-rtti; test TU -Wall -Wextra -Werror",
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+  },
+  "result": "Swing graphics: 2352 checks; source frame/layer binding, malformed schemas/spans, atomic rollback and texture integrity; genuine textures supplied=1; no draw claim\n",
+  "sources": {
+    "runtime/field_swing_graphics.cpp": "f8d92742d6495b8dc77b5092cd3577749fe3d15a6c27aab061448ccecf1833f6",
+    "include/encore/field_swing_graphics.hpp": "1ce91afb2e26ec3c4b22f5b09edf99157757d21af59d68c0872d171006052699",
+    "tests/field_swing_graphics_tests.cpp": "4410ed53af808de556fea22a25dff8209156c528d8d9f4820387af923b58f7ac",
+    "tests/fixtures/field-swing-graphics-v0410.encgraphics": "ca133fd28dd92b809991b4d929e5702a0ae82f85719ff2b4757de174d8af0bc1",
+    "tests/fixtures/field-swing-v0410.encswing": "04dd99e2e3cab351a3b3b45334b715729b98a241a0f5c4390f42358fea47d97d",
+    "tools/field_swing_presentation.py": "7fd59e2acc45d866cfda1ec17e385a8ba47cca086cfd6e533f688c868250a4e3",
+    "content/field-swing-presentation.json": "40b65affa8631fb2b1b6a8dbe1ef6654d1a528908f9c24df6bb9882fc0feb9c5",
+    "CMakeLists.txt": "2901ab030895c5271927dedea3c63f7252f6d9a2bba69b64c3f2f2608765cc60",
+    "platform/ctr/Makefile": "8eb313b2ce08947852b69ab26b18b3ea49dc01273d1f3f242141973448ecf333"
+  },
+  "genuine_texture_checks": {
+    "bat.t3x": {
+      "bytes": 1048597,
+      "sha256": "80f59fa4b484c1647373b048ee385b73af59e5ee295980177eb2f8d9ae28cd03"
+    },
+    "ninten.t3x": {
+      "bytes": 1048597,
+      "sha256": "2e75f362c0ed19cf764ec8bdd9e00aafa01d85d09eb726e930414bd64a113cf3"
+    }
+  }
+}

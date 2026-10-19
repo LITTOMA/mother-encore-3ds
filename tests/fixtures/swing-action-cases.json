@@ -1,0 +1,3154 @@
+{
+  "schema": 1,
+  "scope": "Fixture logical joypad events on the original ui_cancel map, single Ninten skill and selected Bat/Idle AnimationTree branch; no world physics/hardware input.",
+  "cases": [
+    {
+      "direction": [
+        0.0,
+        1.0
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0.0,
+        1.0
+      ],
+      "incapacitated": true,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "incapacitated": true,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "incapacitated": true,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        -1.0,
+        0.0
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        -1.0,
+        0.0
+      ],
+      "incapacitated": true,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0.6,
+        0.7
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0.6,
+        0.7
+      ],
+      "incapacitated": true,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        -0.6,
+        0.7
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        -0.6,
+        0.7
+      ],
+      "incapacitated": true,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0.6,
+        -0.7
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0.6,
+        -0.7
+      ],
+      "incapacitated": true,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        -0.6,
+        -0.7
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        -0.6,
+        -0.7
+      ],
+      "incapacitated": true,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.05
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "incapacitated": false,
+      "available": false,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "swing",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": true,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": true,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": true,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": true,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 3,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": false
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "",
+      "actions": [
+        {
+          "op": "input",
+          "button": 2,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "incapacitated": false,
+      "available": true,
+      "paused": false,
+      "door": false,
+      "climbing": false,
+      "spinning": false,
+      "state": 0,
+      "skill": "unknown",
+      "actions": [
+        {
+          "op": "input",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        }
+      ]
+    }
+  ]
+}

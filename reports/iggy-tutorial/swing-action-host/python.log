@@ -1,0 +1,11 @@
+test_checked_binary_is_the_frozen_source_model (tests.test_field_swing_action.SwingAction.test_checked_binary_is_the_frozen_source_model) ... ok
+test_model_masks_dimensions_roles_and_direction_bounds_reject (tests.test_field_swing_action.SwingAction.test_model_masks_dimensions_roles_and_direction_bounds_reject) ... ok
+test_native_source_methods_and_two_stable_projections (tests.test_field_swing_action.SwingAction.test_native_source_methods_and_two_stable_projections) ... ok
+test_recipe_versions_unknown_fields_and_source_bindings_reject (tests.test_field_swing_action.SwingAction.test_recipe_versions_unknown_fields_and_source_bindings_reject) ... ok
+test_reference_fixture_schema_and_unknown_operations_reject (tests.test_field_swing_action.SwingAction.test_reference_fixture_schema_and_unknown_operations_reject) ... ok
+test_unknown_idle_graph_tracks_and_semantics_reject (tests.test_field_swing_action.SwingAction.test_unknown_idle_graph_tracks_and_semantics_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 7.289s
+
+OK

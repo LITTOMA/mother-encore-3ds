@@ -31,6 +31,8 @@ public:
  // Caller must admit source input/skill before play. Changing the assigned
  // animation preserves sparse properties until its next processing pass.
  bool play(uint32_t,bool incapacitated,std::string&);bool advance(double,std::string&);
+ // Updating the source TimeScale preserves the current clip and key cursor.
+ bool set_incapacitated(bool,std::string&);
  // AnimationPlayer's default method mode is deferred. The original finish
  // method disables the hitbox and releases ATTACK only when that queue runs.
  bool flush(std::string&);

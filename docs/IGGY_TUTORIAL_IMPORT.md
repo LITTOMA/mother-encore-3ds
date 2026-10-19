@@ -44,3 +44,11 @@ GCC完整检查另暴露Windows生成凭据使用反斜杠的问题：ffb3b4f的
 接入实际World暂停时发现现有单一attacking标志不足以复现原版。原Player.pause立即把控制状态改回MOVE、停用自身音效/暂停其流与MiscTimer、清除移动字段并请求Idle，但Bat非循环动画仍可继续，命中形状也不因pause直接关闭；暂停前尚未进入Bat的请求则可能被Idle覆盖。很快unpause后再次按B会再发出声音/震动请求，若当前仍是Bat，其播放进度不归零。只把动画冻住或重建动作都会改变游戏结果。原版仅把Walk/Run/FaintedWalk当前节点的TimeScale设0，unpause恢复1；异常Idle等其他节点并非统一冻结。
 
 官方Godot两次各28组/3556个原函数观察的稳定投影逐字相同。分别查询完整18状态拓扑及8状态动画子图，8个来源状态到Idle/FaintedIdle的16条路径在两种拓扑中一致。原Player.pause/unpause及PartyObject的动画暂停、set_idle/set_anim_state/get_paused_anim_state原方法保持原字节；party服务、AreaRoom类型守卫、碰撞掩码/事件查询边界与MiscTimer由明确夹具提供。2项Python来源/方法指纹、双运行、实际控制/时钟结果和输出目录拒绝通过，分配1171=807+364。证据见swing-pause-reference-4、swing-pause-reference-5、swing-pause-audit；早期夹具失败未当成通过结果，音频playing异步字段只保留原始观察、不列入稳定投影。此为新发现的必要实现依赖，不能把现有动作组件或元数据拥有者据此记为已实现暂停或已接通实战。
+
+完整八状态转移现编译为 ENCSWE01 格式1/capability2：保留旧五段动画数据，新增64条受检路径、异常Idle角色、自动转移和逐状态暂停策略；旧capability1读取保留，未知3明确拒绝。两次真实Godot查询中，完整18状态图和八状态子图的全部64条路径一致且闭合；这只是拓扑查询，未据此宣称执行了全部玩家方法。来源生成器、绑定和原始查询见 field-player-tree.json、field_player_tree.py 与 player-state-paths-1/-2；正式RomFS仍未改变。
+
+共享FieldPlayerTree将控制ATTACK与当前动画独立保存：pause释放控制但保留已运行Bat及其命中形状，尚未进入的Bat请求可被Idle覆盖；unpause后再次输入同一Bat不会重置动画时钟，重复开始只更新来源速度和开始次数。Walk/Run/FaintedWalk冻结与恢复、正常/异常Idle路径、Bat自动结束和延迟回调均使用受检数据。原离散帧工具在循环边界保留length用于访问末尾键，新树在访问后把循环时钟归零，避免反复从length相加带来的浮点漂移；符合[Godot AnimationNodeAnimation](https://github.com/godotengine/godot/blob/3cd3caab/scene/animation/animation_blend_tree.cpp)与[StateMachine的剩余时长计算](https://github.com/godotengine/godot/blob/3cd3caab/scene/animation/animation_node_state_machine.cpp)，未改旧期望或旧帧工具。
+
+实际GCC9 ASan/UBSan（泄漏检查开启）42461项通过：28组/3556个原暂停、恢复、重复输入观察，以及未改变的80组/6560个进入挥棒观察；含全部截断、旧/新版本、角色/目录/路径循环/边/绑定负向准入。旧进入组件28186项、四资源拥有者111项和三个受影响核心单元严格编译通过；相关Python13项通过，方法分配1176=812+364；Windows仅重新配置CMake成功，没有据此宣称Windows编译或执行通过。原版可听音频、碰撞掩码、完整物理、World/GPU接线和模拟器仍待完成。证据见 player-tree-host；测试驱动末尾的Python3.8清理API错误与实际测试通过分开保留，没有把失败驱动记为通过。
+
+#70测试调度修复经用户逐项授权已于2026-10-19合入main，合并提交7163a65；#69保留草稿并同步该主线。#70的d81bfb3完整运行39251936650成功：GCC普通224/ASan+UBSan209、Clang普通209/ASan+UBSan209、真实3DSX/CIA；#69历史4d4bcc3完整运行39252074017也成功：GCC普通234/ASan+UBSan219、Clang普通219/ASan+UBSan219、真实3DSX/CIA。实际原始日志和完整运行身份保存在scheduling-full-verification；两者都不覆盖其后的资源组加载、暂停对照及新树改动。

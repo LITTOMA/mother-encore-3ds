@@ -1,0 +1,492 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "paths": [
+    {
+      "Idle->Idle": [],
+      "Idle->Walk": [
+        "Walk"
+      ],
+      "Idle->Run": [
+        "Walk",
+        "Run"
+      ],
+      "Idle->Crouch": [
+        "Crouch"
+      ],
+      "Idle->Blink": [
+        "Blink"
+      ],
+      "Idle->FaintedIdle": [
+        "FaintedIdle"
+      ],
+      "Idle->FaintedWalk": [
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Idle->Bat": [
+        "Bat"
+      ],
+      "Walk->Idle": [
+        "Idle"
+      ],
+      "Walk->Walk": [],
+      "Walk->Run": [
+        "Run"
+      ],
+      "Walk->Crouch": [
+        "Idle",
+        "Crouch"
+      ],
+      "Walk->Blink": [
+        "Idle",
+        "Blink"
+      ],
+      "Walk->FaintedIdle": [
+        "Idle",
+        "FaintedIdle"
+      ],
+      "Walk->FaintedWalk": [
+        "Idle",
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Walk->Bat": [
+        "Idle",
+        "Bat"
+      ],
+      "Run->Idle": [
+        "Walk",
+        "Idle"
+      ],
+      "Run->Walk": [
+        "Walk"
+      ],
+      "Run->Run": [],
+      "Run->Crouch": [
+        "Walk",
+        "Idle",
+        "Crouch"
+      ],
+      "Run->Blink": [
+        "Walk",
+        "Idle",
+        "Blink"
+      ],
+      "Run->FaintedIdle": [
+        "Walk",
+        "Idle",
+        "FaintedIdle"
+      ],
+      "Run->FaintedWalk": [
+        "Walk",
+        "Idle",
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Run->Bat": [
+        "Walk",
+        "Idle",
+        "Bat"
+      ],
+      "Crouch->Idle": [
+        "Idle"
+      ],
+      "Crouch->Walk": [
+        "Run",
+        "Walk"
+      ],
+      "Crouch->Run": [
+        "Run"
+      ],
+      "Crouch->Crouch": [],
+      "Crouch->Blink": [
+        "Idle",
+        "Blink"
+      ],
+      "Crouch->FaintedIdle": [
+        "Idle",
+        "FaintedIdle"
+      ],
+      "Crouch->FaintedWalk": [
+        "Idle",
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Crouch->Bat": [
+        "Idle",
+        "Bat"
+      ],
+      "Blink->Idle": [
+        "Idle"
+      ],
+      "Blink->Walk": [
+        "Idle",
+        "Walk"
+      ],
+      "Blink->Run": [
+        "Idle",
+        "Walk",
+        "Run"
+      ],
+      "Blink->Crouch": [
+        "Idle",
+        "Crouch"
+      ],
+      "Blink->Blink": [],
+      "Blink->FaintedIdle": [
+        "Idle",
+        "FaintedIdle"
+      ],
+      "Blink->FaintedWalk": [
+        "Idle",
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Blink->Bat": [
+        "Idle",
+        "Bat"
+      ],
+      "FaintedIdle->Idle": [
+        "Idle"
+      ],
+      "FaintedIdle->Walk": [
+        "Idle",
+        "Walk"
+      ],
+      "FaintedIdle->Run": [
+        "Idle",
+        "Walk",
+        "Run"
+      ],
+      "FaintedIdle->Crouch": [
+        "Idle",
+        "Crouch"
+      ],
+      "FaintedIdle->Blink": [
+        "Idle",
+        "Blink"
+      ],
+      "FaintedIdle->FaintedIdle": [],
+      "FaintedIdle->FaintedWalk": [
+        "FaintedWalk"
+      ],
+      "FaintedIdle->Bat": [
+        "Idle",
+        "Bat"
+      ],
+      "FaintedWalk->Idle": [
+        "FaintedIdle",
+        "Idle"
+      ],
+      "FaintedWalk->Walk": [
+        "FaintedIdle",
+        "Idle",
+        "Walk"
+      ],
+      "FaintedWalk->Run": [
+        "FaintedIdle",
+        "Idle",
+        "Walk",
+        "Run"
+      ],
+      "FaintedWalk->Crouch": [
+        "FaintedIdle",
+        "Idle",
+        "Crouch"
+      ],
+      "FaintedWalk->Blink": [
+        "FaintedIdle",
+        "Idle",
+        "Blink"
+      ],
+      "FaintedWalk->FaintedIdle": [
+        "FaintedIdle"
+      ],
+      "FaintedWalk->FaintedWalk": [],
+      "FaintedWalk->Bat": [
+        "FaintedIdle",
+        "Idle",
+        "Bat"
+      ],
+      "Bat->Idle": [
+        "Idle"
+      ],
+      "Bat->Walk": [
+        "Idle",
+        "Walk"
+      ],
+      "Bat->Run": [
+        "Idle",
+        "Walk",
+        "Run"
+      ],
+      "Bat->Crouch": [
+        "Idle",
+        "Crouch"
+      ],
+      "Bat->Blink": [
+        "Idle",
+        "Blink"
+      ],
+      "Bat->FaintedIdle": [
+        "Idle",
+        "FaintedIdle"
+      ],
+      "Bat->FaintedWalk": [
+        "Idle",
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Bat->Bat": []
+    },
+    {
+      "Idle->Idle": [],
+      "Idle->Walk": [
+        "Walk"
+      ],
+      "Idle->Run": [
+        "Walk",
+        "Run"
+      ],
+      "Idle->Crouch": [
+        "Crouch"
+      ],
+      "Idle->Blink": [
+        "Blink"
+      ],
+      "Idle->FaintedIdle": [
+        "FaintedIdle"
+      ],
+      "Idle->FaintedWalk": [
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Idle->Bat": [
+        "Bat"
+      ],
+      "Walk->Idle": [
+        "Idle"
+      ],
+      "Walk->Walk": [],
+      "Walk->Run": [
+        "Run"
+      ],
+      "Walk->Crouch": [
+        "Idle",
+        "Crouch"
+      ],
+      "Walk->Blink": [
+        "Idle",
+        "Blink"
+      ],
+      "Walk->FaintedIdle": [
+        "Idle",
+        "FaintedIdle"
+      ],
+      "Walk->FaintedWalk": [
+        "Idle",
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Walk->Bat": [
+        "Idle",
+        "Bat"
+      ],
+      "Run->Idle": [
+        "Walk",
+        "Idle"
+      ],
+      "Run->Walk": [
+        "Walk"
+      ],
+      "Run->Run": [],
+      "Run->Crouch": [
+        "Walk",
+        "Idle",
+        "Crouch"
+      ],
+      "Run->Blink": [
+        "Walk",
+        "Idle",
+        "Blink"
+      ],
+      "Run->FaintedIdle": [
+        "Walk",
+        "Idle",
+        "FaintedIdle"
+      ],
+      "Run->FaintedWalk": [
+        "Walk",
+        "Idle",
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Run->Bat": [
+        "Walk",
+        "Idle",
+        "Bat"
+      ],
+      "Crouch->Idle": [
+        "Idle"
+      ],
+      "Crouch->Walk": [
+        "Run",
+        "Walk"
+      ],
+      "Crouch->Run": [
+        "Run"
+      ],
+      "Crouch->Crouch": [],
+      "Crouch->Blink": [
+        "Idle",
+        "Blink"
+      ],
+      "Crouch->FaintedIdle": [
+        "Idle",
+        "FaintedIdle"
+      ],
+      "Crouch->FaintedWalk": [
+        "Idle",
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Crouch->Bat": [
+        "Idle",
+        "Bat"
+      ],
+      "Blink->Idle": [
+        "Idle"
+      ],
+      "Blink->Walk": [
+        "Idle",
+        "Walk"
+      ],
+      "Blink->Run": [
+        "Idle",
+        "Walk",
+        "Run"
+      ],
+      "Blink->Crouch": [
+        "Idle",
+        "Crouch"
+      ],
+      "Blink->Blink": [],
+      "Blink->FaintedIdle": [
+        "Idle",
+        "FaintedIdle"
+      ],
+      "Blink->FaintedWalk": [
+        "Idle",
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Blink->Bat": [
+        "Idle",
+        "Bat"
+      ],
+      "FaintedIdle->Idle": [
+        "Idle"
+      ],
+      "FaintedIdle->Walk": [
+        "Idle",
+        "Walk"
+      ],
+      "FaintedIdle->Run": [
+        "Idle",
+        "Walk",
+        "Run"
+      ],
+      "FaintedIdle->Crouch": [
+        "Idle",
+        "Crouch"
+      ],
+      "FaintedIdle->Blink": [
+        "Idle",
+        "Blink"
+      ],
+      "FaintedIdle->FaintedIdle": [],
+      "FaintedIdle->FaintedWalk": [
+        "FaintedWalk"
+      ],
+      "FaintedIdle->Bat": [
+        "Idle",
+        "Bat"
+      ],
+      "FaintedWalk->Idle": [
+        "FaintedIdle",
+        "Idle"
+      ],
+      "FaintedWalk->Walk": [
+        "FaintedIdle",
+        "Idle",
+        "Walk"
+      ],
+      "FaintedWalk->Run": [
+        "FaintedIdle",
+        "Idle",
+        "Walk",
+        "Run"
+      ],
+      "FaintedWalk->Crouch": [
+        "FaintedIdle",
+        "Idle",
+        "Crouch"
+      ],
+      "FaintedWalk->Blink": [
+        "FaintedIdle",
+        "Idle",
+        "Blink"
+      ],
+      "FaintedWalk->FaintedIdle": [
+        "FaintedIdle"
+      ],
+      "FaintedWalk->FaintedWalk": [],
+      "FaintedWalk->Bat": [
+        "FaintedIdle",
+        "Idle",
+        "Bat"
+      ],
+      "Bat->Idle": [
+        "Idle"
+      ],
+      "Bat->Walk": [
+        "Idle",
+        "Walk"
+      ],
+      "Bat->Run": [
+        "Idle",
+        "Walk",
+        "Run"
+      ],
+      "Bat->Crouch": [
+        "Idle",
+        "Crouch"
+      ],
+      "Bat->Blink": [
+        "Idle",
+        "Blink"
+      ],
+      "Bat->FaintedIdle": [
+        "Idle",
+        "FaintedIdle"
+      ],
+      "Bat->FaintedWalk": [
+        "Idle",
+        "FaintedIdle",
+        "FaintedWalk"
+      ],
+      "Bat->Bat": []
+    }
+  ],
+  "rows": []
+}

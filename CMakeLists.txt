@@ -8,7 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
-    runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
+    runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
     runtime/house_inspection_data.cpp
@@ -1009,6 +1009,12 @@ if(BUILD_TESTING)
     target_link_libraries(encore_field_swing_rebase_tests PRIVATE encore_core)
     add_test(NAME field_swing_rebase COMMAND encore_field_swing_rebase_tests ${CMAKE_SOURCE_DIR}/tests/fixtures/field-swing-entry-v0410.encentry ${CMAKE_SOURCE_DIR}/tests/fixtures/field-swing-v0410.encswing ${CMAKE_SOURCE_DIR}/tests/fixtures/field-swing-action-v0410.encaction ${CMAKE_SOURCE_DIR}/reports/iggy-tutorial/swing-rebase-reference-3/reference.tsv)
     set_tests_properties(field_swing_rebase PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
+    add_test(NAME prepare_player_tree COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_player_tree.py --out ${CMAKE_BINARY_DIR}/player-tree-fixture)
+    set_tests_properties(prepare_player_tree PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} FIXTURES_SETUP player_tree_metadata TIMEOUT 60)
+    add_executable(encore_field_player_tree_tests tests/field_player_tree_tests.cpp)
+    target_link_libraries(encore_field_player_tree_tests PRIVATE encore_core)
+    add_test(NAME field_player_tree COMMAND encore_field_player_tree_tests ${CMAKE_BINARY_DIR}/player-tree-fixture/swing.encentry ${CMAKE_SOURCE_DIR}/tests/fixtures/field-swing-v0410.encswing ${CMAKE_SOURCE_DIR}/tests/fixtures/field-swing-action-v0410.encaction ${CMAKE_BINARY_DIR}/player-tree-fixture/pause.tsv)
+    set_tests_properties(field_player_tree PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} FIXTURES_REQUIRED player_tree_metadata TIMEOUT 60)
     add_executable(encore_field_swing_entry_tests tests/field_swing_entry_tests.cpp)
     target_link_libraries(encore_field_swing_entry_tests PRIVATE encore_core)
     add_test(NAME field_swing_entry COMMAND encore_field_swing_entry_tests ${CMAKE_SOURCE_DIR}/tests/fixtures/field-swing-entry-v0410.encentry ${CMAKE_SOURCE_DIR}/tests/fixtures/field-swing-v0410.encswing ${CMAKE_SOURCE_DIR}/tests/fixtures/field-swing-action-v0410.encaction ${CMAKE_SOURCE_DIR}/reports/iggy-tutorial/swing-entry-reference-4/reference.tsv)

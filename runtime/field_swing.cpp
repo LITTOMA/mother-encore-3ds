@@ -58,6 +58,7 @@ bool FieldSwingData::load(const uint8_t*p,size_t n,std::string&e){
 }
 bool FieldSwingPlayer::initialize(const FieldSwingData&d,std::string&e){if(!d.valid())return fail(e,"Swing player needs checked data");FieldSwingPlayer v;v.data_=d;v.pose_=d.initial();*this=std::move(v);e.clear();return true;}
 bool FieldSwingPlayer::play(uint32_t id,bool incap,std::string&e){if(!data_.valid()||!data_.clip(id))return fail(e,"Swing animation is not bound");id_=id;time_=0;key_=0;rate_=data_.policy()[incap?1:0];playing_=attack_=true;e.clear();return true;}
+bool FieldSwingPlayer::set_incapacitated(bool incap,std::string&e){if(!data_.valid())return fail(e,"Swing rate owner unprepared");rate_=data_.policy()[incap?1:0];e.clear();return true;}
 bool FieldSwingPlayer::advance(double delta,std::string&e){
  if(!data_.valid()||!std::isfinite(delta)||delta<0||delta>60)return fail(e,"Swing delta rejected");
  if(!playing_){e.clear();return true;}

@@ -14,6 +14,7 @@ bool facing(Vec2 v){return std::isfinite(v.x)&&std::isfinite(v.y)&&std::abs(v.x)
 bool token(const std::string&s){if(s.empty()||s.size()>64)return false;for(size_t i=0;i<s.size();++i){char c=s[i];if(!(c=='_'||(c>='a'&&c<='z')||(c>='A'&&c<='Z')||(i&&c>='0'&&c<='9')))return false;}return true;}
 }
 const SwingEntryState*FieldSwingEntryData::state(uint32_t id)const{for(const auto&s:states_)if(s.id==id)return &s;return nullptr;}
+const SwingTreeRoute*FieldSwingEntryData::route(uint32_t from,uint32_t to)const{for(const auto&r:routes_)if(r.from==from&&r.to==to)return &r;return nullptr;}
 const SwingEntryClip*FieldSwingEntryData::select(uint32_t id,Vec2 v)const{
  const auto*s=state(id);if(!valid_||!s||!facing(v))return nullptr;const SwingEntryClip*result=nullptr;float best=INFINITY;
  for(uint32_t i=0;i<s->count;++i){const auto&c=clips_[s->first+i];const float x=c.direction.x-v.x,y=c.direction.y-v.y,d=x*x+y*y;if(d<best){best=d;result=&c;}}return result;
@@ -21,22 +22,24 @@ const SwingEntryClip*FieldSwingEntryData::select(uint32_t id,Vec2 v)const{
 bool FieldSwingEntryData::load_file(const char*p,std::string&e){std::vector<uint8_t>b;return encore::read_file(p,b,64*1024,e)&&load(b.data(),b.size(),e);}
 bool FieldSwingEntryData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<144||n>64*1024)return fail(e,"Swing entry size rejected");
- if(std::memcmp(p,"ENCSWE01",8)||word(p+8)!=1||word(p+12)!=n||word(p+20)!=1||word(p+24)||word(p+28)||word(p+52)!=5||word(p+56)||word(p+60))return fail(e,"Swing entry schema/capability/reserved rejected");
+ const auto capability=word(p+20);const unsigned sections=capability==2?6:5;
+ if(std::memcmp(p,"ENCSWE01",8)||word(p+8)!=1||word(p+12)!=n||(capability!=1&&capability!=2)||word(p+24)||word(p+28)||word(p+52)!=sections||word(p+56)||word(p+60)||n<64+sections*16)return fail(e,"Swing entry schema/capability/reserved rejected");
  const char*pin="7d9246600fffe518408f5830d4848635019005a3";auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};for(unsigned i=0;i<20;++i)if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail(e,"Swing entry source pin rejected");
  if(encore::crc32(p+32,n-32)!=word(p+16))return fail(e,"Swing entry checksum rejected");
- const uint32_t strides[]={48,32,40,8,1},limits[]={1,32,256,4096,2048};uint32_t offsets[5],counts[5];size_t end=144;
- for(unsigned i=0;i<5;++i){const auto*d=p+64+i*16;offsets[i]=word(d+4);counts[i]=word(d+8);
+ const uint32_t strides[]={48,32,40,8,1,16},limits[]={1,32,256,4096,2048,1024};uint32_t offsets[6]{},counts[6]{};size_t end=64+sections*16;
+ for(unsigned i=0;i<sections;++i){const auto*d=p+64+i*16;offsets[i]=word(d+4);counts[i]=word(d+8);
   if(word(d)!=i+1||word(d+12)!=strides[i]||!counts[i]||counts[i]>limits[i]||offsets[i]%4||offsets[i]<end||offsets[i]>n||counts[i]>(n-offsets[i])/strides[i])return fail(e,"Swing entry directory/span rejected");
   for(size_t j=end;j<offsets[i];++j)if(p[j])return fail(e,"Swing entry padding rejected");
   end=offsets[i]+counts[i]*strides[i];
  }
  if(end!=n||counts[1]<2)return fail(e,"Swing entry trailing bytes/states rejected");
- FieldSwingEntryData v;const auto*m=p+offsets[0];const auto frames=word(m);v.idle_=word(m+4);v.attack_=word(m+8);
- if(!frames||frames>65535||!v.idle_||!v.attack_||v.idle_==v.attack_||word(m+12)!=counts[1]||word(m+16)!=counts[2]||word(m+20)!=counts[3]||word(m+24)!=counts[1]||word(m+28))return fail(e,"Swing entry policy rejected");
+ FieldSwingEntryData v;v.capability_=capability;const auto*m=p+offsets[0];const auto frames=word(m);v.idle_=word(m+4);v.attack_=word(m+8);v.incap_idle_=word(m+28);
+ if(!frames||frames>65535||!v.idle_||!v.attack_||v.idle_==v.attack_||word(m+12)!=counts[1]||word(m+16)!=counts[2]||word(m+20)!=counts[3]||word(m+24)!=counts[1]||(capability==1?v.incap_idle_!=0:!v.incap_idle_))return fail(e,"Swing entry policy rejected");
  v.frames_=uint16_t(frames);
  std::set<uint32_t>ids;std::set<std::string>names;uint32_t pool_end=0,first=0;
  for(uint32_t i=0;i<counts[1];++i){const auto*r=p+offsets[1]+i*32;SwingEntryState s;s.id=word(r);const auto at=word(r+4),size=word(r+8);s.next=word(r+12);s.mode=word(r+16);s.first=word(r+20);s.count=word(r+24);
-  if(!s.id||s.id>65535||!ids.insert(s.id).second||at!=pool_end||!size||size>64||at>counts[4]||size>counts[4]-at||s.first!=first||s.count>8||s.count>counts[2]-first||(s.mode!=0&&s.mode!=2)||word(r+28))return fail(e,"Swing entry state ownership rejected");
+  const auto flags=word(r+28);s.automatic=flags&65535;s.pausable=bool(flags&65536);
+  if(!s.id||s.id>65535||!ids.insert(s.id).second||at!=pool_end||!size||size>64||at>counts[4]||size>counts[4]-at||s.first!=first||s.count>8||s.count>counts[2]-first||(s.mode!=0&&s.mode!=2)||(capability==1?flags!=0:(flags&~131071u)!=0))return fail(e,"Swing entry state ownership rejected");
   s.name.assign(reinterpret_cast<const char*>(p+offsets[4]+at),size);if(!token(s.name)||!names.insert(s.name).second)return fail(e,"Swing entry state name rejected");pool_end+=size;first+=s.count;v.states_.push_back(s);
  }
  if(pool_end!=counts[4]||first!=counts[2]||!v.state(v.idle_)||!v.state(v.attack_))return fail(e,"Swing entry unowned spans/roles rejected");
@@ -56,11 +59,25 @@ bool FieldSwingEntryData::load(const uint8_t*p,size_t n,std::string&e){
   }
  }
  if(key_end!=counts[3])return fail(e,"Swing entry unowned keys rejected");
+ if(capability==2){
+  if(!v.state(v.incap_idle_)||v.incap_idle_==v.idle_||v.incap_idle_==v.attack_||counts[5]!=counts[1]*counts[1])return fail(e,"Swing tree roles/route coverage rejected");
+  std::set<std::pair<uint32_t,uint32_t>>pairs;
+  for(uint32_t i=0;i<counts[5];++i){const auto*r=p+offsets[5]+i*16;SwingTreeRoute route{word(r),word(r+4),word(r+8),word(r+12)};
+   if(!v.state(route.from)||!v.state(route.to)||!pairs.insert({route.from,route.to}).second||(route.mode!=0&&route.mode!=2)||(route.from==route.to?(route.next||route.mode):(!v.state(route.next)||route.next==route.from)))return fail(e,"Swing tree route identity rejected");
+   v.routes_.push_back(route);
+  }
+  for(const auto&r:v.routes_){std::set<uint32_t>seen;auto at=r.from;while(at!=r.to){if(!seen.insert(at).second)return fail(e,"Swing tree route cycle rejected");const auto*step=v.route(at,r.to);if(!step)return fail(e,"Swing tree route missing");const auto*direct=v.route(at,step->next);if(!direct||direct->next!=step->next||direct->mode!=step->mode)return fail(e,"Swing tree inconsistent edge rejected");at=step->next;}}
+  for(const auto&s:v.states_){if(s.automatic&&(!v.state(s.automatic)||s.automatic==s.id||v.route(s.id,s.automatic)->next!=s.automatic))return fail(e,"Swing tree automatic edge rejected");
+   if(s.id!=v.attack_&&(v.route(s.id,v.attack_)->next!=s.next||v.route(s.id,v.attack_)->mode!=s.mode))return fail(e,"Swing tree legacy route differs");
+   if(s.pausable){if(!s.count)return fail(e,"Swing tree special node cannot freeze");for(uint32_t i=0;i<s.count;++i)if(!v.clips_[s.first+i].clip.loop)return fail(e,"Swing tree pausable nonloop rejected");}
+  }
+ }
  v.valid_=true;*this=std::move(v);e.clear();return true;
 }
 bool FieldSwingEntryData::bind(const FieldSwingActionData&a,const FieldSwingData&s,std::string&e)const{
  if(!valid_||!a.bind(s,e)||frames_!=a.policy()[7]||state(idle_)->name!=a.strings()[0]||state(attack_)->name!=a.strings()[1])return fail(e,"Swing entry/action identity differs");
  if(state(idle_)->next!=attack_||state(idle_)->mode)return fail(e,"Swing entry action handoff differs");
+ if(capability_==2&&(state(attack_)->automatic!=idle_||route(attack_,idle_)->next!=idle_||route(attack_,idle_)->mode!=2))return fail(e,"Swing tree action completion differs");
  for(const auto&r:states_)if(r.id!=idle_&&r.next==attack_)return fail(e,"Swing entry bypasses idle handoff");
  for(const auto&r:a.directions()){const auto*c=select(idle_,r.direction);if(!c||c->clip.keys[0].frame!=r.frame||c->clip.main_visibility!=int(bool(r.flags&1))||c->clip.special_visibility!=int(bool(r.flags&2)))return fail(e,"Swing entry/idle pose differs");}e.clear();return true;
 }

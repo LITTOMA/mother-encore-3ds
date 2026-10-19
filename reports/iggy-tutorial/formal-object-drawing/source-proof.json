@@ -1,0 +1,146 @@
+{
+  "baseline_head": "3b32208148cdceedfbf2980179b1ce68596264c3",
+  "scope": "Formal source ready/drawing/deletion resources only; Root contact, audio callback, full getshovel and manual pickup remain unavailable",
+  "changed_preexisting_tracked_resources": {
+    "content/asset-receipts/graphics/world/player/swing/resources.json": {
+      "before": "c7379348c63a5121e1594deeeb966c8d0ed809f3cdaf269e6d3e92490aaeb69b",
+      "after": "dba50704203c97ef8da288a149ab1963c8aa6773c12dcfd85a5980b5fb79e921"
+    },
+    "content/asset-receipts/graphics/world/podunk/props/source.json": {
+      "before": "6895da77a20d50b81d914fe44f3af089b1ba71d077c9d50325e5bbcc3de40ba3",
+      "after": "84f52f3cee3d7f43957b91db88cb2eabd79b466336906c958d11fea36615ca0d"
+    },
+    "content/asset-receipts/graphics/world/podunk/source.json": {
+      "before": "496e00cca4e74b9961c3bc7f854efa033ac05967791daff60664709d7d17469a",
+      "after": "f7219369bdf1243235ef866b64b1b67f5f63b0b5f0a358cb145feae1e0e5bd4a"
+    },
+    "content/extension-resource-catalog.json": {
+      "before": "9a6a99e553534d6f5809460118817ac550381952087146cc293b7ac0980af642",
+      "after": "4f3e1a6dbdb05378a694c6d5be2bc69db3189001274f0433031e95d176b1c635"
+    },
+    "content/native-new-game.json": {
+      "before": "40cba758bc42b98ef715dab6c4d6e7a48aae981675cd1604bfdbd596a5522901",
+      "after": "bb37898081cbd91273ead69c842ef92bedbd0b39e2cb2b3d0000bd28cf908d97"
+    },
+    "content/native-session.json": {
+      "before": "1bdc2e5ce2983e272cf42d32d070543a435550b32bbd3ebaa024b0c08c7734e6",
+      "after": "cb10d476b2607a676e29d1db41e318b87833d4e09a02561da8b86fe58119e0d5"
+    },
+    "content/podunk-field.json": {
+      "before": "e4f414f58e9e04ac87f5fbb6fec4e8925ed90155b6df1baa0c258fa11ebe6d4c",
+      "after": "2d0760a924c78b4a33a7a8b2053262f29c3a379f9d47ffca7869a09d42dcd5fc"
+    },
+    "content/world-scene-routes.json": {
+      "before": "ff7f3e611f3ca0b25f267b58fe1ef537c57310d9602acf8339e7dbe0b8d591e3",
+      "after": "f870d5b18b07662f7a3da1b84ceb9536030a90c1d90bd5c82cfc8bcf81bcabb7"
+    },
+    "romfs/system/native.encresources": {
+      "before": "9bb0fb25bcab94c95f82498a9dc6162ef963237e897b5975bc0105f57d7d2f8b",
+      "after": "239f89d26a0e18a9eae13cc6aedcd38a7c59a52e56410e0235b094491aad5356"
+    },
+    "romfs/world/podunk/podunk.encmap": {
+      "before": "f76c5820df97d543b4c4f0ea72cfa45438031d21556729230fcbf1e781746d7f",
+      "after": "77d3ececa941f4d156cace30b8a8c98e0128dc298b6ffb244a4b9c1a0f0dbc96"
+    },
+    "romfs/world/podunk/podunk.encroom": {
+      "before": "11e47c7f25a6f7935b6944578edda3caf42618a1a4d545494ec614c87a97c807",
+      "after": "2a5d8b54dc492cae476da9907077c93a2260e1de9a6615a96f1cac61cf0bd3be"
+    },
+    "romfs/world/world.enclinks": {
+      "before": "7858d87e1e78503275662c4babc981a06f8143993f73a5aeac76c3da772e2f21",
+      "after": "0ad046455880c93ed8ef4ff972d3be04213c05cfd0e8c9d594381fb8dbf5182e"
+    }
+  },
+  "unchanged_preexisting_tracked_resources": 444,
+  "rooms": {
+    "content/legacy-rules6/opening.encroom": {
+      "all_decoded_content_unchanged": true,
+      "canonical_sha256": "267d200b4d91a58b3d424af2b05863045bfb2837b2e0e00bebfbf26ea8182c42",
+      "new_build_input_sha256": "e39961a703b3e06ce5dac712cde8e05492eae007fe6ca0e697f74f33564f533e"
+    },
+    "romfs/world/house/opening.encroom": {
+      "all_decoded_content_unchanged": true,
+      "canonical_sha256": "5572b870cd48e24aa09ac70c1e46c874153f4d893f6f8b2b13febbb8b945bbbe",
+      "new_build_input_sha256": "678be9e3dc3b6012767956ce9fa1c129d711812cb906800d6b5013ee06ed8fad"
+    },
+    "romfs/world/mayor/mayor.encroom": {
+      "all_decoded_content_unchanged": true,
+      "canonical_sha256": "281cad9a1be7e851a97895f22fde0cdbc6e9b68b3936b8f4eb10261b6816b413",
+      "new_build_input_sha256": "0052b630c39bab55d8bf2ce9320a664486ff5a8696f53968e8705abb1121eddf"
+    },
+    "romfs/world/podunk/podunk.encroom": {
+      "all_decoded_content_unchanged": true,
+      "canonical_sha256": "2ff84466079bf6ff4a8f17493900ad090306bd01e3f4b93dd5cb933ea007f96a",
+      "new_build_input_sha256": "d9dd4d4568480009f41fa530e83ad25398f0450ed419b7c1ec9050a7b4c3bd9d"
+    }
+  },
+  "current_source_sha256": {
+    "CMakeLists.txt": "ed57cd95f482cdf259b882bde231b98fabadfd694b8603b39aec69b0994881df",
+    "content/asset-receipts/graphics/world/player/swing/resources.json": "dba50704203c97ef8da288a149ab1963c8aa6773c12dcfd85a5980b5fb79e921",
+    "content/asset-receipts/graphics/world/podunk/props/source.json": "84f52f3cee3d7f43957b91db88cb2eabd79b466336906c958d11fea36615ca0d",
+    "content/asset-receipts/graphics/world/podunk/source.json": "f7219369bdf1243235ef866b64b1b67f5f63b0b5f0a358cb145feae1e0e5bd4a",
+    "content/extension-resource-catalog.json": "4f3e1a6dbdb05378a694c6d5be2bc69db3189001274f0433031e95d176b1c635",
+    "content/native-new-game.json": "bb37898081cbd91273ead69c842ef92bedbd0b39e2cb2b3d0000bd28cf908d97",
+    "content/native-session.json": "cb10d476b2607a676e29d1db41e318b87833d4e09a02561da8b86fe58119e0d5",
+    "content/podunk-field.json": "2d0760a924c78b4a33a7a8b2053262f29c3a379f9d47ffca7869a09d42dcd5fc",
+    "content/world-scene-routes.json": "f870d5b18b07662f7a3da1b84ceb9536030a90c1d90bd5c82cfc8bcf81bcabb7",
+    "docs/FIELD_OBJECTS.md": "81607381ac68a0f8d770f947f5f93c08da67748a08cd06ed7fde956e95c75e4a",
+    "docs/FIELD_OBJECT_BINDINGS.md": "a39ec045d031401549ed63410be70c140997eda1ac9b77f7f414c6e2a853f855",
+    "docs/STATUS.md": "a7e880e6a4720f87bfb56046e8abe25af4a3c9b0cb91d9073fcc0f63b2c85fd7",
+    "include/encore/field_objects.hpp": "a46218f93a93e9c4d5406cb4d31cae88f077d3ca4e1c6d4311e43d0bb0c91fab",
+    "include/encore/field_scene.hpp": "29439141704746f53cb42f2d0b54ca2664c74aa96e9807eaa24d7ad10d0be73c",
+    "include/encore/field_scene_resources.hpp": "b077d4208465f3caf35c74f87b1eb4d344cc0c245c00ab548774b072e19f26aa",
+    "include/encore/resource_catalog.hpp": "7d5c3956ff6f8f69c267be3cf72bd90ea1ea9baf0a17e77b9cdbf9b664015110",
+    "include/encore/world_links.hpp": "429778edba11cacdea8297e36397a2aa6c9b988879e150db41d841010776055f",
+    "make/native-content.mk": "a7a0261b4b39bd0e0e8fc0c3ba159e8bcfbaf5c45082e502333f9b0b26adbf91",
+    "platform/ctr/field_renderer.hpp": "c9b39c3e164d9baa14a0bd1221a5d522434d257f8aa32dd22f72dc54f5642d99",
+    "platform/ctr/main.cpp": "ff65cd7dbfb3ca3493b45bc147594fc544ff21b7882a3267dce0f437b738408c",
+    "romfs/system/native.encresources": "239f89d26a0e18a9eae13cc6aedcd38a7c59a52e56410e0235b094491aad5356",
+    "romfs/world/podunk/podunk.encmap": "77d3ececa941f4d156cace30b8a8c98e0128dc298b6ffb244a4b9c1a0f0dbc96",
+    "romfs/world/podunk/podunk.encroom": "2a5d8b54dc492cae476da9907077c93a2260e1de9a6615a96f1cac61cf0bd3be",
+    "romfs/world/world.enclinks": "0ad046455880c93ed8ef4ff972d3be04213c05cfd0e8c9d594381fb8dbf5182e",
+    "runtime/field_objects.cpp": "7ee722fc9b6a235c4fcc807db828b8f24448f6749794e8de1ecac3126b7e5051",
+    "runtime/field_scene.cpp": "590562e933b55fbfcdb17842e898d9a9d3a77cffe6c067005c78505c08acb552",
+    "runtime/field_scene_resources.cpp": "4929a52dad7ad2d9d16966bc128442bd9914b2bc6e14b25f26dc06109a352211",
+    "runtime/resource_catalog.cpp": "133a5c59e741e6eee84e338917d46fa0f892c9762bec32e1c2071554612ece95",
+    "runtime/world_links.cpp": "1283e416a39c301d5a2adf26ceb52a01c3b1851de343c38b1222aaab092d7ad1",
+    "tests/field_data_tests.cpp": "013501887a6827fd00800524770aeef975366aa569920f082ef649268ef18adf",
+    "tests/field_objects_bound_tests.cpp": "249f71b62055aea675f220e82e08503ec9b62d64f2be6c7b3f08cc38a9f861ed",
+    "tests/field_props_tests.cpp": "52c02b6e95cfa4727f01e874e64b6db41a9dfb037a4d6c18087d3d83ea638fa5",
+    "tests/field_scene_resources_tests.cpp": "0b4370cb1877e8993782073fbd590879a02ceef700dcb03fd1e9c2cf89fb442d",
+    "tests/resource_catalog_tests.py": "db4aa5142a5eec566a5f25589a1b24c0aa659b2e085b7ca5834516dfb5347b3e",
+    "tests/test_content_parallelism.py": "97eed2ca41a590715212ffc2bc07b4c53adae8fcd75891f8d823b0be6faefa2b",
+    "tests/test_romfs_layout.py": "3818b20de340eb038e9435be23e1b63fbcb6e89db198c4302ab4489a1bc8fde9",
+    "tests/test_world_scene_routes.py": "bd23511a9380e225a34db0b3937ebf1c0bb3037608f76140c9385e6edbeb1ab5",
+    "tools/podunk_field.py": "5b35780a0864d77bf70bc19e57084d1fc99672f35ccf515d34450f5f73b31653",
+    "tools/resource_catalog.py": "90ab58ad6aa776e650eaa07ef54c98889480adea94b420c5310100e29b6e362d",
+    "tools/romfs_layout.py": "2823010373df3a3fa98a0e352aa73718621624227bb2e6b2bd7c541ea52ed814",
+    "tools/stage_native_romfs.py": "9211b8d5b9503019ff79bbd4b58bbe223494254d0a0ae6be10f24fae8e973afb",
+    "tools/world_scene_routes.py": "dfac4dd926990b1af504b24bc394e78fc44095fc8464a30e1848bc826f489915",
+    "content/asset-receipts/graphics/world/podunk/objects/source.json": "8dbf804609c4dad7492936f064b06e7eb038fae2cf1337f796ba06da0855a5b7",
+    "content/field-objects.json": "0946011d333be8b44a4c5e0dd6e753a648bde18db8bd39ada862f339c1164d52",
+    "content/podunk-area.json": "96e9b2ebb3eefcf12ba04888f0a603d3c336247cc2dc4b040644cbabfa72154c",
+    "docs/FIELD_OBJECT_DRAWING.md": "acd01ad597fc70247ab89a394cf8e079e2c946ab96198ffbdfe900cd1f7db412",
+    "romfs/graphics/world/podunk/objects/atlas-00.t3x": "843851626d26a227a69a84ab77d44a032a3f9c07ac171842377aa59e9ec2bf20",
+    "romfs/world/podunk/podunk.encobjects": "5b650b684b0788968ab3435d0da4b2d764075cbc5837a90e77da223b465e22c8",
+    "tests/field_object_links_tests.cpp": "b1433e52c12c6d31578d22b2a74d18183d19ab363d612ba6ed0615072da0d70c",
+    "tests/field_objects_art_tests.cpp": "4ab98ebdddc5fe45f49c860b0b569287e66a6c46d7be1d296ff0342fda2536de",
+    "tests/field_objects_scene_tests.cpp": "35e0d29973b3b8af3a9352f6768fae10c70d6a6a433d0ad36dac82b65f66edf7",
+    "tests/prepare_field_object_links.py": "c51384558efcad338fc526995332416984120a693dc983dd77233a4a833825d9",
+    "tests/prepare_legacy_field_map.py": "4de77f1af266b9263d3f0bf9d67f87c3b6e49bb0b89d5bdeb8817efabf7ef32c",
+    "tests/test_field_object_links.py": "9c7a3a2ee34d4a4151d4fa6f895f4060d185db8976986c7cb57b8fa03d96fc9c",
+    "tests/test_field_objects_assets.py": "0df2e7683fb485c9423334312e0c858bf1c1469e44e53082f0b3fdcaa2508dbd",
+    "tools/field_objects_assets.py": "dd8d8b7fcffa1ae3961aac05b6d3e8dfdb09b640bcd97031b95d62b9ad2301a8"
+  },
+  "actual_texture": {
+    "bytes": 4117,
+    "sha256": "843851626d26a227a69a84ab77d44a032a3f9c07ac171842377aa59e9ec2bf20"
+  },
+  "limits": [
+    "Host core logs are actual GCC9.4 ASan/UBSan with leak checking; Windows configure/collection only",
+    "Scene and loader test payloads are explicitly synthetic, not GPU images",
+    "Actual art test uses real converted T3X, not a GPU/emulator/hardware result",
+    "No current-slice cross-build, emulator, natural-opening, full-game or hardware acceptance yet",
+    "Initial map-converter stderr was overwritten by retry; driver returncode and observed error only, not retained original stderr"
+  ]
+}

@@ -10,7 +10,7 @@ constexpr size_t catalog_limit=128*1024;
 constexpr uint32_t resource_limit=16u*1024u*1024u;
 constexpr char pin[]="7d9246600fffe518408f5830d4848635019005a3";
 uint32_t u32(const uint8_t* p) { return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24; }
-bool scene_role(uint32_t r){return r==31||r==32||r==37||r==38||r==39||r==42||r==43||r==44;}
+bool scene_role(uint32_t r){return r==31||r==32||r==37||r==38||r==39||r==42||r==43||r==44||r==49;}
 bool battle_role(uint32_t role){return role==uint32_t(ResourceRole::Battle)||role==uint32_t(ResourceRole::EncounterBattle);}
 bool round_role(uint32_t role){return role==uint32_t(ResourceRole::Round)||role==uint32_t(ResourceRole::EncounterRound);}
 const char* suffix(uint32_t role) {
@@ -46,6 +46,7 @@ const char* suffix(uint32_t role) {
     case ResourceRole::FieldNpc:return ".encmick";
     case ResourceRole::FieldStory:return ".encstory";case ResourceRole::FieldSteps:return ".encsteps";
     case ResourceRole::FieldProps:return ".encprops";
+    case ResourceRole::FieldObjects:return ".encobjects";
     }return nullptr;
 }
 bool canonical(const std::string& path) {
@@ -71,9 +72,9 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     auto fail=[&](const char* message){error=message;return false;};
     if(!p||n<60||n>catalog_limit)return fail("Resource catalog size rejected");
     const auto capability=u32(p+20);
-    if(std::memcmp(p,"ENCRSC01",8)||u32(p+8)!=1||u32(p+12)!=n||capability<1||capability>12||u32(p+24)||u32(p+28)||(capability<9&&n>16384))
+    if(std::memcmp(p,"ENCRSC01",8)||u32(p+8)!=1||u32(p+12)!=n||capability<1||capability>13||u32(p+24)||u32(p+28)||(capability<9&&n>16384))
         return fail("Resource catalog schema/size/capability/reserved rejected");
-    const uint32_t max_role=capability==1?30:capability==2?33:capability==3?34:capability==4?35:capability==5?39:capability==6?40:capability==7?41:capability<10?42:capability==10?43:capability==11?44:48;
+    const uint32_t max_role=capability==1?30:capability==2?33:capability==3?34:capability==4?35:capability==5?39:capability==6?40:capability==7?41:capability<10?42:capability==10?43:capability==11?44:capability==12?48:49;
     if(~encore::crc32_update(~0u,p+32,n-32)!=u32(p+16))return fail("Resource catalog checksum rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};
         if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Resource catalog source pin rejected");}
@@ -82,7 +83,7 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     ResourceCatalog data;
     bool roots[22]={};
     for(uint32_t i=0;i<count;++i){const auto id=r.integer(),role=r.integer(),size=r.integer(),checksum=r.integer();auto path=r.path();
-        if(!r.ok||role<1||role>max_role||((capability>=9&&scene_role(role))?(id!=role&&id<1024):((role<=22||(role>=25&&role<=40)||role==42||role>=45)?id!=role:id<256))||((role==43||role==44)&&id<1024)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
+        if(!r.ok||role<1||role>max_role||((capability>=9&&scene_role(role))?(id!=role&&id<1024):((role<=22||(role>=25&&role<=40)||role==42||role>=45)?id!=role:id<256))||((role==43||role==44||role==49)&&id<1024)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
         const auto expected=suffix(role);const auto len=std::strlen(expected);
         if(path.size()<=len||path.compare(path.size()-len,len,expected))return fail("Resource catalog binding type rejected");
         for(const auto& prior:data.bindings_)if(prior.id==id||prior.path==path)return fail("Resource catalog duplicate ID/path rejected");
@@ -106,6 +107,8 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     if((capability>=11)!=props)return fail("Resource catalog prop capability mismatch");
     unsigned swing=0;for(const auto&row:data.bindings_)swing+=uint32_t(row.role)>=45&&uint32_t(row.role)<=48;
     if(swing!=(capability>=12?4u:0u))return fail("Resource catalog player action roles incomplete");
+    bool objects=false;for(const auto&row:data.bindings_)objects|=row.role==ResourceRole::FieldObjects;
+    if((capability>=13)!=objects)return fail("Resource catalog object capability mismatch");
     if((capability>=9)!=additional_scene)return fail("Resource catalog scene capability mismatch");
     auto binding=[&](uint32_t id)->const Binding*{for(const auto& row:data.bindings_)if(row.id==id)return &row;return nullptr;};
     for(uint32_t i=0;i<pairs;++i){const auto battle=r.integer(),round=r.integer();

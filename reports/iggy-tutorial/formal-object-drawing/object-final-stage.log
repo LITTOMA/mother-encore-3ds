@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 142, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 130, in main
+    check_layout(files)
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\romfs_layout.py", line 32, in check_layout
+    raise ValueError('Unclassified runtime resource: ' + name)
+ValueError: Unclassified runtime resource: world/podunk/podunk.encobjects

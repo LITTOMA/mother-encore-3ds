@@ -24,7 +24,7 @@ struct Host:FieldPropHost {
 };
 }
 int main(int argc,char**argv){
- CHECK(argc==4);std::vector<uint8_t>bytes;CHECK(encore::read_file(argv[1],bytes,128*1024,error));FieldPropsData data;CHECK(data.load(bytes.data(),bytes.size(),error));CHECK(data.props().size()==13&&data.flags().size()==3&&data.policy().width==48&&data.policy().height==48&&data.clips().frame_count()==21);
+ CHECK(argc==5);std::vector<uint8_t>bytes;CHECK(encore::read_file(argv[1],bytes,128*1024,error));FieldPropsData data;CHECK(data.load(bytes.data(),bytes.size(),error));CHECK(data.props().size()==13&&data.flags().size()==3&&data.policy().width==48&&data.policy().height==48&&data.clips().frame_count()==21);
  const auto policy=get(bytes,84),records=get(bytes,116),flags_offset=get(bytes,132);uint32_t bat=0,cem=0,shovel=0;
  for(uint32_t i=0;i<data.flags().size();++i){if(data.flags()[i]=="bat")bat=i;else if(data.flags()[i]=="cem_roots_grown")cem=i;else if(data.flags()[i]=="got_shovel")shovel=i;else CHECK(false);}
  const auto callback=data.props()[11].callback;CHECK(callback!=kFieldNone);
@@ -76,7 +76,7 @@ int main(int argc,char**argv){
  // Actual compiled source scene binding and dynamic bodies; not a release or
  // input-driven quest test. NPC/renderer/doors are outside this focused slice.
  const std::string root=argv[3];RoomData room;FieldMapData map;WorldLinksData links;
- CHECK(room.load_file((root+"/world/podunk/podunk.encroom").c_str(),error));CHECK(map.load_file((root+"/world/podunk/podunk.encmap").c_str(),error));CHECK(links.load_file((root+"/world/world.enclinks").c_str(),error));CHECK(data.bind(room.view(),map.view(),error));CHECK(!data.bind({},map.view(),error)&&!data.bind(room.view(),{},error));
+ CHECK(room.load_file((root+"/world/podunk/podunk.encroom").c_str(),error));CHECK(map.load_file(argv[4],error));CHECK(links.load_file((root+"/world/world.enclinks").c_str(),error));CHECK(data.bind(room.view(),map.view(),error));CHECK(!data.bind({},map.view(),error)&&!data.bind(room.view(),{},error));
  for(auto mutation:std::vector<std::pair<size_t,uint32_t>>{{policy,999},{records+4,UINT32_MAX},{records+8,UINT32_MAX},{records+12,UINT32_MAX},{records+12,0},{records+104*11+24,0}}){auto v=bytes;put(v,mutation.first,mutation.second);sign(v);FieldPropsData wrong;CHECK(wrong.load(v.data(),v.size(),error)&&!wrong.bind(room.view(),map.view(),error));}
  {auto v=bytes;const auto at=get(v,68)+get(v,flags_offset);v[at]='z';v[at+1]='z';v[at+2]='z';sign(v);FieldPropsData wrong;CHECK(wrong.load(v.data(),v.size(),error)&&!wrong.bind(room.view(),map.view(),error));}
  FieldScene scene;CHECK(!scene.bind_props(data,error));std::vector<bool>story(room.view().flag_count(),false);const auto&gated=data.props()[2];CHECK(scene.prepare(room.view(),map.view(),links,story,{gated.position.x-40,gated.position.y},{1,0},{400,240},error));CHECK(scene.bind_props(data,error));CHECK(!scene.bind_props(data,error));CHECK(scene.idle_frame(0,false));PropPose pose;CHECK(scene.prop_sprite(gated.sprite,pose)&&!pose.visible&&!pose.body&&pose.hitbox&&!pose.interaction);CHECK(!scene.sprite_visible(gated.sprite));

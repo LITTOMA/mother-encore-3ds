@@ -1,0 +1,78 @@
+{
+  "owned_files": [
+    {
+      "path": "build/full-port/scene-regression-field_area",
+      "bytes": 52888136,
+      "sha256": "3a49a8b8fcc4341a524b652e2c8f41e2ed6e4a16b9ae5a6815b40c51fb53c70e",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-field_area.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-field_data",
+      "bytes": 52792296,
+      "sha256": "5999e6075a81ea8ce3e0feae44daf431e2b8498a80a8b130719d16fa9986959d",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-field_data.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-field_object_links",
+      "bytes": 52294920,
+      "sha256": "0f344dd76537b0356bf52fd6bddceee0abc242f51dc87a71429278618ad7fbdb",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-field_object_links.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-field_objects",
+      "bytes": 52226744,
+      "sha256": "9bbba23e253e87c9127f9ebdeea41cd0b466f01059bce2c5d328c960c356071c",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-field_objects.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-field_objects_art",
+      "bytes": 52193048,
+      "sha256": "182b820e4f3d725e05aac53914ac2a78ba1d1b6f8c137536e18ffe98b4358617",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-field_objects_art.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-field_objects_bound",
+      "bytes": 52695544,
+      "sha256": "be69f59afd6e8a4ed1dfcdaa86bc61060e39034be20a2f2524850275c6fe5599",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-field_objects_bound.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-field_objects_data",
+      "bytes": 52334216,
+      "sha256": "e870180a10dc816b34c333e02b2db30f5fddbe8c2842a26dfb074a780f932fc1",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-field_objects_data.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-field_objects_scene",
+      "bytes": 52810352,
+      "sha256": "bb5842ad2903ff46b0bdc1080cdf970d0d44714a410b786dde268be76401888b",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-field_objects_scene.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-field_props",
+      "bytes": 52879888,
+      "sha256": "4bab86938648934c9660cc02a0222bc4c86fdcb82c7ddace9a2ce6bed52c35be",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-field_props.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-field_scene_resources",
+      "bytes": 52219296,
+      "sha256": "4424b1c8c307bb9ee3817ec7f10361574a0141a08ebed8bf9badcb53d9634753",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-field_scene_resources.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-shovel_programme",
+      "bytes": 52344264,
+      "sha256": "fdb4eb28efa5ab972150de71f8adb922539d4bebbebf194741b48f143cd851a5",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-shovel_programme.log"
+    },
+    {
+      "path": "build/full-port/scene-regression-story_object_delete",
+      "bytes": 52437144,
+      "sha256": "6d4bf1d9e10eafa6ce3eae78227e29f35f785988777558cdb3698b87f12e3bb7",
+      "retained_result": "reports/iggy-tutorial/formal-object-drawing/scene-result-story_object_delete.log"
+    }
+  ],
+  "total_bytes": 630115848,
+  "keep": "Exact core object cache, accepted f029 game, recorded save, converters and source/reference evidence remain"
+}

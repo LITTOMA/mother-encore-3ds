@@ -13,7 +13,7 @@ class RomFSLayoutTests(unittest.TestCase):
                       'fonts/source-fonts.encfont', 'fonts/page.t3x',
                       Path('world/house/opening.encroom'), 'system/native.encinput', 'story/melody.encfx',
                       'world/podunk/podunk.encmick', 'world/house/opening.encpresent',
-                      'world/podunk/podunk.encprops',
+                      'world/podunk/podunk.encprops', 'world/podunk/podunk.encobjects',
                       'world/player/swing.encswing', 'world/player/swing.encgraphics',
                       'world/player/swing.encaction', 'world/player/swing.encentry',
                       'licenses/license-sources.json'])
@@ -26,6 +26,9 @@ class RomFSLayoutTests(unittest.TestCase):
                      'sound/music/opening.encaudio'):
             with self.subTest(path=name), self.assertRaises(ValueError):
                 check_layout([name])
+    def test_object_format_stays_in_world_category(self):
+        for name in ('graphics/podunk.encobjects','data/podunk.encobjects','world/podunk.encobjects-extra'):
+            with self.subTest(path=name),self.assertRaises(ValueError):check_layout([name])
 
     def test_unsafe_paths_rejected(self):
         for name in ('../graphics/ninten.t3x', '/graphics/ninten.t3x',

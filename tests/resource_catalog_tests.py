@@ -54,10 +54,10 @@ class ResourceCatalogTests(unittest.TestCase):
         # is now published with the initial Mayor scene.
         shipped={row['role'] for row in self.fields['bindings']}
         expected={'FieldRoom','FieldMap','WorldLinks','HousePresents','MickTreats','GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones','FieldMenus','FieldNpc','FieldStory','EncounterBattle','EncounterRound','FieldSteps','FieldProps'}
-        self.assertEqual(shipped,expected|catalog.SWING_ROLES)
+        self.assertEqual(shipped,expected|catalog.SWING_ROLES|{'FieldObjects'})
         self.assertTrue(shipped<=catalog.EXTENSION_ROLES|{'EncounterBattle','EncounterRound'})
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
-        self.assertEqual(catalog.capability_for(self.ir['bindings']), 12)
+        self.assertEqual(catalog.capability_for(self.ir['bindings']), 13)
         motion=[r for r in self.ir['bindings']if r['role']=='FieldNpc']
         self.assertEqual({r['id']for r in motion},set(range(320,330)))
         self.assertEqual(next(r['path']for r in motion if r['id']==327),'world/podunk/npcs/iggy.encmick')

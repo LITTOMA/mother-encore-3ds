@@ -4,6 +4,7 @@
 #include "encore/field_story.hpp"
 #include "encore/field_steps.hpp"
 #include "encore/field_props.hpp"
+#include "encore/field_objects.hpp"
 #include "encore/introduction.hpp"
 #include "encore/mick_treats.hpp"
 #include "encore/world.hpp"
@@ -103,6 +104,8 @@ public:
     bool bind_npc(MickView,MickHost&,std::string& error);
     bool bind_steps(FieldStepsView,const AudioBank&,std::string_view inherited_sound,std::string&);
     bool bind_props(const FieldPropsData&,std::string&);
+    bool bind_objects(const FieldObjectsData&,std::string&);
+    const FieldObjects&objects()const{return objects_;}
     const FieldProps&props()const{return props_;}
     std::vector<FieldPropEvent>take_prop_events(){return props_.take_events();}
     bool grow_prop(uint32_t stable_id,std::string&);
@@ -143,7 +146,7 @@ public:
     // Rejected destination: stay paused at an explicit stop; B returns to the last safe point.
     void abort_transition(std::string message){route_=WorldLinksData::kNotFound;phase_=FieldPhase::Unsupported;error_=std::move(message);}
     bool layer_active(uint32_t i)const{return i<layer_active_.size()&&layer_active_[i];}
-    bool item_active(uint32_t i)const{return i<item_active_.size()&&item_active_[i];}
+    bool item_active(uint32_t i)const;
     bool sprite_visible(uint32_t i)const;
     bool openable_open(uint32_t i)const{return i<openables_.size()&&openables_[i].open;}
     Vec2 camera_origin(Vec2 player,Vec2 viewport)const;
@@ -164,12 +167,14 @@ private:
     void apply_mick_body();
     void apply_npc_bodies();
     bool apply_prop_bodies(std::string&);
+    bool apply_object_state(std::string&);
     std::vector<bool>prop_flags()const;
     bool fail(std::string message){phase_=FieldPhase::Error;error_=std::move(message);return false;}
     FieldRunLoop run_audio_;std::vector<uint8_t>step_inside_;
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
     FieldProps props_;
+    FieldObjects objects_;bool objects_first_idle_=false;
     std::vector<uint32_t>prop_sprites_;
     std::vector<bool>collision_layers_,collision_bodies_;bool collision_ready_=false;
     StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;

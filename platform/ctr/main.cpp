@@ -1404,7 +1404,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     if(!loading.step([&]{return candidate->prepare(room,resources->map(),world_links,flags,route.destination,direction,{float(view_width),float(view_height)},error);},"field-scene"))return false;
     // Mick bind needs the prepared world for flag validation before graphics commit.
     mick_bind_target=candidate.get();
-    if(!loading.step([&]{return candidate->world.bind_story_key_items(mick_effects,error)&&bind_field_mick(*candidate,*resources,error)&&bind_field_npcs(*candidate,*resources,error)&&(!resources->story().valid()||candidate->bind_story(resources->story(),items_data.view(),field_story_host,error))&&(!resources->steps().valid()||candidate->bind_steps(resources->steps(),audio_player.bank(),snapshot.run_sound,error))&&(!resources->props().valid()||candidate->bind_props(resources->props(),error));},"field-actors")){mick_bind_target=nullptr;return false;}
+    if(!loading.step([&]{return candidate->world.bind_story_key_items(mick_effects,error)&&bind_field_mick(*candidate,*resources,error)&&bind_field_npcs(*candidate,*resources,error)&&(!resources->story().valid()||candidate->bind_story(resources->story(),items_data.view(),field_story_host,error))&&(!resources->steps().valid()||candidate->bind_steps(resources->steps(),audio_player.bank(),snapshot.run_sound,error))&&(!resources->props().valid()||candidate->bind_props(resources->props(),error))&&(!resources->objects().valid()||candidate->bind_objects(resources->objects(),error));},"field-actors")){mick_bind_target=nullptr;return false;}
     mick_bind_target=nullptr;
     if(!candidate->world.set_party_leader(native_session_data.leader_id())){error="Field party leader binding rejected";return false;}
     ScenePlayerTransfer player_transfer;
@@ -1412,7 +1412,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     const auto restore_graphics=[&]{
         release_field_graphics();std::string restore;
         if(in_field()){
-            if(!field_actor.load(field_resources->room(),restore)||!field_renderer.load(field_resources->map(),std::string(locale_selection.code()),restore,&field_resources->props())||!load_mick_graphics(field_resources->mick(),restore))field_status="Field graphics restore failed: "+restore;
+            if(!field_actor.load(field_resources->room(),restore)||!field_renderer.load(field_resources->map(),std::string(locale_selection.code()),restore,&field_resources->props(),&field_resources->objects())||!load_mick_graphics(field_resources->mick(),restore))field_status="Field graphics restore failed: "+restore;
         }else if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;
     };
     texture_owner_checkpoint("field-before-source-release");
@@ -1423,7 +1423,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
         round_renderer.free();
         if(!load_ui_font_only(error))return false;
         texture_owner_checkpoint("field-battle-retired");
-        return field_actor.load(room,error)&&field_renderer.load(resources->map(),std::string(locale_selection.code()),error,&resources->props())&&load_mick_graphics(resources->mick(),error);
+        return field_actor.load(room,error)&&field_renderer.load(resources->map(),std::string(locale_selection.code()),error,&resources->props(),&resources->objects())&&load_mick_graphics(resources->mick(),error);
     },"field-atlases")){
         restore_graphics();return false;}
     if(!loading.finish()){restore_graphics();return false;}
@@ -1466,7 +1466,7 @@ bool enter_house_from_field(const upstream::WorldRoute& route,std::string& error
     if(!candidate->world.prepare_scene_player(field_scene->world,route.destination,route.direction,player_transfer,error))return false;
     const auto restore_field=[&]{
         std::string restore;release_house_graphics();
-        if(!field_actor.load(field_resources->room(),restore)||!field_renderer.load(field_resources->map(),std::string(locale_selection.code()),restore,&field_resources->props())||!load_mick_graphics(field_resources->mick(),restore))field_status="Field graphics restore failed: "+restore;
+        if(!field_actor.load(field_resources->room(),restore)||!field_renderer.load(field_resources->map(),std::string(locale_selection.code()),restore,&field_resources->props(),&field_resources->objects())||!load_mick_graphics(field_resources->mick(),restore))field_status="Field graphics restore failed: "+restore;
     };
     release_field_graphics();
     if(!loading.step([&]{return ensure_house_graphics(error)&&admit_encounter_scene(error);},"house-atlases")||!loading.finish()||!finish_field_music(error)){restore_field();return false;}

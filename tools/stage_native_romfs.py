@@ -103,6 +103,9 @@ def main():
     files.update(prop_files(source))
     from field_player_assets import stage_files as player_files
     files.update(player_files(source))
+    if any(row['role']=='FieldObjects'for row in catalog['bindings']):
+        from field_objects_assets import stage_files as object_files
+        files.update(object_files(source))
     from mayor_scene import stage_files as mayor_files
     files.update(mayor_files(source))
     from house_presents import stage_files as present_files

@@ -30,7 +30,9 @@ public:
  bool bind(RoomView,FieldMapView,std::string&)const;
  bool valid()const{return valid_;}uint32_t scene_id()const{return scene_;}
  uint32_t width()const{return width_;}uint32_t height()const{return height_;}
- uint32_t capabilities()const{return capability_;}bool rendering_bound()const{return valid_&&capability_==2;}
+ uint32_t capabilities()const{return capability_;}bool rendering_bound()const{return valid_&&capability_>=2;}
+ bool drawing_bound()const{return valid_&&capability_==3;}
+ bool texture_matches(const uint8_t*,size_t,std::string&)const;
  uint64_t ready_state()const{return ready_state_;}
  uint32_t player_layer()const{return player_layer_;}uint32_t player_mask()const{return player_mask_;}
  const std::string&texture()const{return texture_;}
@@ -41,6 +43,7 @@ public:
 private:
  bool valid_=false;uint32_t scene_=0,width_=0,height_=0,capability_=0;uint64_t ready_state_=0;std::string texture_;
  uint32_t player_layer_=0,player_mask_=0;
+ uint32_t texture_bytes_=0,texture_crc_=0;
  std::array<uint8_t,32>texture_sha256_{};
  std::vector<FieldObjectDefinition>objects_;std::vector<FieldObjectFrame>frames_;
  std::vector<uint32_t>animation_frames_;

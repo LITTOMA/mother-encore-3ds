@@ -4,6 +4,7 @@
 #include "encore/field_data.hpp"
 #include "encore/field_scene.hpp"
 #include "encore/load_progress.hpp"
+#include "encore/content.hpp"
 #include <3ds.h>
 #include <citro2d.h>
 #include <algorithm>
@@ -15,8 +16,9 @@
 // pictures and draw order come from the resource; see docs/PODUNK_FIELD.md.
 class FieldRenderer {
 public:
-    bool load(encore::upstream::FieldMapView map,const std::string& locale,std::string& error,const encore::upstream::FieldPropsData* props=nullptr){
+    bool load(encore::upstream::FieldMapView map,const std::string& locale,std::string& error,const encore::upstream::FieldPropsData* props=nullptr,const encore::upstream::FieldObjectsData* objects=nullptr){
         free();if(!map){error="Field map is not loaded";return false;}
+        if((map.capabilities()>=6)!=bool(objects&&objects->valid())||(objects&&objects->valid()&&(!objects->drawing_bound()||objects->scene_id()!=map.scene_id()))){error="Field object drawing companion is missing or incompatible";return false;}
         map_=map;using encore::upstream::FieldMapSection;
         const auto atlases=map.count(FieldMapSection::Atlases);
         for(uint32_t i=0;i<atlases;++i){
@@ -46,15 +48,26 @@ public:
             C3D_TexSetFilter(image.tex,GPU_NEAREST,GPU_NEAREST);props_=props;
         }
         entries_.reserve(4096);deferred_.reserve(64);
+        if(objects&&objects->valid()){
+            const std::string path="romfs:/"+objects->texture();std::vector<uint8_t>bytes;
+            if(!encore::read_file(path.c_str(),bytes,1024*1024,error)||!objects->texture_matches(bytes.data(),bytes.size(),error)){free();return false;}
+            std::string why;objects_sheet_=encore::ctr::loading_sprite_sheet_load(path.c_str(),&why);
+            if(!objects_sheet_){error=why.empty()?"Field object texture could not be loaded: "+path:why;free();return false;}
+            if(encore::ctr::loading_sprite_sheet_count(objects_sheet_)!=1){error="Field object texture must have one image";free();return false;}
+            const auto image=encore::ctr::loading_sprite_sheet_get_image(objects_sheet_,0);
+            if(!image.tex||!image.subtex||image.subtex->width!=objects->width()||image.subtex->height!=objects->height()||Tex3DS_SubTextureRotated(image.subtex)){error="Field object texture layout differs";free();return false;}
+            C3D_TexSetFilter(image.tex,GPU_NEAREST,GPU_NEAREST);objects_=objects;
+        }
         return true;
     }
-    void free(){for(auto sheet:sheets_)encore::ctr::loading_sprite_sheet_free(sheet);if(props_sheet_)encore::ctr::loading_sprite_sheet_free(props_sheet_);props_sheet_={};props_=nullptr;sheets_.clear();tile_pictures_.clear();sprite_pictures_.clear();entries_.clear();deferred_.clear();map_={};}
+    void free(){for(auto sheet:sheets_)encore::ctr::loading_sprite_sheet_free(sheet);if(props_sheet_)encore::ctr::loading_sprite_sheet_free(props_sheet_);if(objects_sheet_)encore::ctr::loading_sprite_sheet_free(objects_sheet_);objects_sheet_={};objects_=nullptr;props_sheet_={};props_=nullptr;sheets_.clear();tile_pictures_.clear();sprite_pictures_.clear();entries_.clear();deferred_.clear();map_={};}
     bool ready()const{return map_.valid()&&!sheets_.empty();}
     // camera: world top-left of the view; offset: screen position of the view.
     // Returns false if the scene and renderer disagree; the frame is then skipped.
     bool draw(const encore::upstream::FieldScene& scene,const OpeningActorRenderer& actors,float camera_x,float camera_y,float width,float height,float offset_x,float offset_y,double time,void (*extra)(float,float,float,float)=nullptr){
         using namespace encore::upstream;
-        if(!ready()||scene.map().bytes_identity()!=map_.bytes_identity()||bool(props_)!=scene.props().ready())return false;
+        if(!ready()||scene.map().bytes_identity()!=map_.bytes_identity()||bool(props_)!=scene.props().ready()||bool(objects_)!=scene.objects().prepared())return false;
+        if(objects_&&(objects_->texture_sha256()!=scene.objects().data().texture_sha256()||objects_->scene_id()!=scene.objects().data().scene_id()))return false;
         if(map_.count(FieldMapSection::Area)){const auto c=map_.area().background;C2D_DrawRectSolid(offset_x,offset_y,0,width,height,C2D_Color32(c>>24,(c>>16)&255,(c>>8)&255,c&255));}
         time_=time;cx_=camera_x;cy_=camera_y;w_=width;h_=height;ox_=offset_x;oy_=offset_y;deferred_.clear();
         for(uint32_t g=0;g<map_.count(FieldMapSection::Groups);++g){
@@ -64,6 +77,7 @@ public:
                     if(item.kind==uint16_t(FieldItemKind::LayerCells))draw_layer(scene,item.first);
                     else if(item.kind==uint16_t(FieldItemKind::Sprites))draw_sprites(scene,item.first,item.count);
                     else if(item.kind==uint16_t(FieldItemKind::Actor)&&scene.actor_visible(item.first))actors.draw_actor(scene.actor_pose(item.first),cx_-ox_,cy_-oy_);
+                    else if(item.kind==uint16_t(FieldItemKind::OwnedObject))draw_object(scene,item.first);
                     if(props_&&index==props_->policy().clone_after)draw_prop_clones(scene);}
                 continue;
             }
@@ -80,6 +94,7 @@ public:
                     entries_.push_back({scene.world.player().position.y,item.order,3,0,0});break;
                 case FieldItemKind::Actor:
                     if(scene.actor_visible(item.first))entries_.push_back({scene.actor_pose(item.first).position.y,item.order,5,item.first,0});break;
+                case FieldItemKind::OwnedObject:entries_.push_back({item.sort_y,item.order,6,item.first,0});break;
                 default:break;}
             }
             // VisualServer ItemPtrSort: approximately equal Y falls back to collection order.
@@ -92,6 +107,7 @@ public:
                 else if(e.kind==2)draw_sprites(scene,e.first,e.second);
                 else if(e.kind==4)extra(cx_,cy_,ox_,oy_);
                 else if(e.kind==5)actors.draw_actor(scene.actor_pose(e.first),cx_-ox_,cy_-oy_);
+                else if(e.kind==6)draw_object(scene,e.first);
                 else if(!actors.draw_player(scene.world.player().position,scene.world.animation(),cx_-ox_,cy_-oy_,&scene.world.player_action()))return false;
             }
         }
@@ -101,6 +117,16 @@ public:
         return true;
     }
 private:
+    void draw_object(const encore::upstream::FieldScene&scene,uint32_t id)const{
+        using namespace encore::upstream;if(!objects_)return;const auto*state=scene.objects().state(id);if(!state||!state->alive||!state->visible)return;
+        for(const auto&d:objects_->objects())if(d.id==id){
+            const auto image=encore::ctr::loading_sprite_sheet_get_image(objects_sheet_,0);
+            auto draw=[&](uint32_t frame,Vec2 offset,bool centered){const auto&r=objects_->frames()[frame];float x=d.position.x+offset.x,y=d.position.y+offset.y;if(centered){x-=r.width*.5f;y-=r.height*.5f;}if(!visible(x,y,r.width,r.height))return;auto sub=*image.subtex;const float du=(sub.right-sub.left)/objects_->width(),dv=(sub.bottom-sub.top)/objects_->height(),left=sub.left,top=sub.top;sub.left=left+r.x*du;sub.right=left+(r.x+r.width)*du;sub.top=top+r.y*dv;sub.bottom=top+(r.y+r.height)*dv;sub.width=r.width;sub.height=r.height;C2D_DrawImageAt({image.tex,&sub},std::floor(x-cx_+ox_+0.5f),std::floor(y-cy_+oy_+0.5f),0);};
+            draw(d.main_frame,d.main_offset,bool(d.flags&uint32_t(FieldObjectFlag::MainCentered)));
+            if(state->frame<d.count)draw(objects_->animation_frames()[d.first+state->frame],d.effect_offset,bool(d.flags&uint32_t(FieldObjectFlag::EffectCentered)));
+            return;
+        }
+    }
     struct Entry {float y;uint32_t order;uint32_t kind,first,second;};
     struct Deferred {int32_t z;uint32_t tile;float x,y;};
     bool visible(float x,float y,float w,float h)const{return x+w>cx_&&x<cx_+w_&&y+h>cy_&&y<cy_+h_;}
@@ -187,6 +213,7 @@ private:
     }
     encore::upstream::FieldMapView map_;
     const encore::upstream::FieldPropsData*props_=nullptr;encore::ctr::LoadingSpriteSheet props_sheet_{};
+    const encore::upstream::FieldObjectsData*objects_=nullptr;encore::ctr::LoadingSpriteSheet objects_sheet_{};
     std::vector<encore::ctr::LoadingSpriteSheet> sheets_;
     std::vector<uint32_t> tile_pictures_,sprite_pictures_;
     std::vector<Entry> entries_;

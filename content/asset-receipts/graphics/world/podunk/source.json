@@ -1,20 +1,20 @@
 {
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "compiler_sha256": "ef82cd921c02bc7c32f04aadd1308d5989bdaa95adf57de79db561cb16023e66",
+  "compiler_sha256": "5b35780a0864d77bf70bc19e57084d1fc99672f35ccf515d34450f5f73b31653",
   "compression": "none",
   "format": "rgba8",
   "outputs": {
     "world/podunk/podunk.encmap": {
-      "bytes": 1619480,
-      "sha256": "f76c5820df97d543b4c4f0ea72cfa45438031d21556729230fcbf1e781746d7f"
+      "bytes": 1619644,
+      "sha256": "77d3ececa941f4d156cace30b8a8c98e0128dc298b6ffb244a4b9c1a0f0dbc96"
     },
     "world/podunk/podunk.encroom": {
       "bytes": 31056,
-      "sha256": "11e47c7f25a6f7935b6944578edda3caf42618a1a4d545494ec614c87a97c807"
+      "sha256": "2a5d8b54dc492cae476da9907077c93a2260e1de9a6615a96f1cac61cf0bd3be"
     },
     "world/world.enclinks": {
-      "bytes": 1164,
-      "sha256": "7858d87e1e78503275662c4babc981a06f8143993f73a5aeac76c3da772e2f21"
+      "bytes": 1188,
+      "sha256": "0ad046455880c93ed8ef4ff972d3be04213c05cfd0e8c9d594381fb8dbf5182e"
     }
   },
   "pages": [
@@ -27,7 +27,7 @@
       "width": 1024
     }
   ],
-  "recipe_sha256": "e4f414f58e9e04ac87f5fbb6fec4e8925ed90155b6df1baa0c258fa11ebe6d4c",
+  "recipe_sha256": "2d0760a924c78b4a33a7a8b2053262f29c3a379f9d47ffca7869a09d42dcd5fc",
   "schema": 1,
   "sources": {
     "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",

@@ -19,7 +19,7 @@ int main(int argc,char**argv){
  CHECK(argc==5);std::vector<uint8_t>bytes,map_bytes;CHECK(encore::read_file(argv[1],bytes,1024*1024,error)&&encore::read_file(argv[2],map_bytes,8*1024*1024,error));
  FieldObjectsData data,old;FieldMapData map;RoomData room;CHECK(data.load(bytes.data(),bytes.size(),error)&&map.load(map_bytes.data(),map_bytes.size(),error)&&room.load_file(argv[3],error)&&old.load_file(argv[4],error));
  CHECK(data.capabilities()==2&&data.rendering_bound()&&map.view().capabilities()==6&&data.ready_state()==621950984495336987ULL);CHECK(data.bind(room.view(),map.view(),error));CHECK(!old.bind(room.view(),map.view(),error));
- {WorldLinksData links;CHECK(links.load_file("romfs/world/world.enclinks",error));FieldScene scene;CHECK(!scene.prepare(room.view(),map.view(),links,std::vector<bool>(room.view().flag_count(),false),{1432,4719},{0,-1},{400,240},error)&&error.find("not yet admitted")!=error.npos);}
+ {WorldLinksData links;CHECK(links.load_file("romfs/world/world.enclinks",error));FieldScene scene;CHECK(scene.prepare(room.view(),map.view(),links,std::vector<bool>(room.view().flag_count(),false),{1432,4719},{0,-1},{400,240},error)&&!scene.finish_transition()&&scene.error().find("unbound")!=error.npos);}
  const auto&d=data.objects()[0];CHECK(d.resolved==6&&d.initial==22&&d.flags==511&&d.body_extents.x==9&&d.body_extents.y==8&&d.body_center.x==1432&&d.body_center.y==4664);
  CHECK(d.body==kFieldNone&&d.body_layer==4&&d.body_mask==0&&data.player_layer()==1&&data.player_mask()==4353);
  CHECK(map.view().item(d.draw).first==d.id&&map.view().item(d.draw).kind==7&&map.view().text(map.view().notice(d.notice).path)==d.path);

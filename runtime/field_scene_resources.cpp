@@ -1,10 +1,11 @@
 #include "encore/field_scene_resources.hpp"
 #include "encore/resource_catalog.hpp"
 #include "encore/audio_data.hpp"
+#include "encore/content.hpp"
 namespace encore::upstream {
 struct FieldSceneResources::State {
  WorldSceneResources bindings;std::string source;
- RoomData room;FieldMapData map;FieldStoryData story;MickData mick;FieldStepsData steps;FieldPropsData props;
+ RoomData room;FieldMapData map;FieldStoryData story;MickData mick;FieldStepsData steps;FieldPropsData props;FieldObjectsData objects;
  std::vector<std::unique_ptr<MickData>>npcs;MusicRegionData music;MusicZones zones;
 };
 FieldSceneResources::FieldSceneResources()=default;
@@ -15,6 +16,7 @@ FieldMapView FieldSceneResources::map()const{return state_?state_->map.view():Fi
 FieldStoryView FieldSceneResources::story()const{return state_?state_->story.view():FieldStoryView{};}
 FieldStepsView FieldSceneResources::steps()const{return state_?state_->steps.view():FieldStepsView{};}
 const FieldPropsData&FieldSceneResources::props()const{static const FieldPropsData empty;return state_?state_->props:empty;}
+const FieldObjectsData&FieldSceneResources::objects()const{static const FieldObjectsData empty;return state_?state_->objects:empty;}
 MickView FieldSceneResources::mick()const{return state_?state_->mick.view():MickView{};}
 uint32_t FieldSceneResources::npc_count()const{return state_?uint32_t(state_->npcs.size()):0;}
 MickView FieldSceneResources::npc(uint32_t i)const{return state_&&i<state_->npcs.size()?state_->npcs[i]->view():MickView{};}
@@ -40,6 +42,14 @@ bool FieldSceneResources::load(const ResourceCatalog&catalog,const WorldLinksDat
  if(b.music){AudioBank bank;if(!read(ResourceRole::FieldMusic,b.music)||!next->music.load(bytes.data(),bytes.size(),error)||!read(ResourceRole::FieldMusicZones,b.zones)||!next->zones.load(bytes.data(),bytes.size(),error)||!next->zones.matches(next->music,error)||!read(ResourceRole::FieldAudio,b.audio)||!bank.load(bytes.data(),bytes.size(),error)||!next->music.matches(bank,error))return false;}
  if(b.steps){if(!read(ResourceRole::FieldSteps,b.steps)||!next->steps.load(bytes.data(),bytes.size(),error))return false;if(next->steps.view().scene_id()!=scene)return fail("Field stepping scene identity differs");}
  if(b.props){if(!read(ResourceRole::FieldProps,b.props)||!next->props.load(bytes.data(),bytes.size(),error)||!next->props.bind(room,next->map.view(),error))return false;if(!next->props.rendering_bound())return fail("Field props lack checked clone drawing order");}
+ if((next->map.view().capabilities()>=6)!=bool(b.objects))return fail("Field object drawing companion is missing or unused");
+ if(b.objects){
+  if(!read(ResourceRole::FieldObjects,b.objects)||!next->objects.load(bytes.data(),bytes.size(),error)||!next->objects.bind(room,next->map.view(),error))return false;
+  if(!next->objects.drawing_bound()||!next->mick.view().valid())return fail("Field object drawing/ready owner is unavailable");
+  const auto actor=next->mick.view().actor();if(next->objects.ready_state()!=(uint64_t(actor.rng_lo)|(uint64_t(actor.rng_hi)<<32)))return fail("Field object ready stream differs from scene source");
+  std::string path=root?root:"";if(!path.empty()&&path.back()!='/'&&path.back()!='\\')path+='/';path+=next->objects.texture();
+  if(!encore::read_file(path.c_str(),bytes,1024*1024,error)||!next->objects.texture_matches(bytes.data(),bytes.size(),error))return false;
+ }
  state_=std::move(next);error.clear();return true;
 }
 }

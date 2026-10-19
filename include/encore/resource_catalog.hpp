@@ -25,7 +25,8 @@ enum class ResourceRole : uint32_t {
     // Capabilities 7/8 extend mainline menus without reusing their role ID.
     FieldNpc=41, FieldStory=42, FieldSteps=43, FieldProps=44,
     // Capability 12: persistent player action resources, global singleton IDs.
-    FieldSwing=45, FieldSwingGraphics=46, FieldSwingAction=47, FieldSwingEntry=48
+    FieldSwing=45, FieldSwingGraphics=46, FieldSwingAction=47, FieldSwingEntry=48,
+    FieldObjects=49
 };
 
 class ResourceCatalog {

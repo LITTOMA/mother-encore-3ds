@@ -1,0 +1,52 @@
+[
+  {
+    "name": "map",
+    "returncode": 0,
+    "seconds": 17.745455503463745
+  },
+  {
+    "name": "props",
+    "returncode": 0,
+    "seconds": 2.295290231704712
+  },
+  {
+    "name": "player",
+    "returncode": 0,
+    "seconds": 2.609227180480957
+  },
+  {
+    "name": "session-extract",
+    "returncode": 0,
+    "seconds": 7.278674125671387
+  },
+  {
+    "name": "session-compile",
+    "returncode": 0,
+    "seconds": 7.289258003234863
+  },
+  {
+    "name": "restore-compile",
+    "returncode": 0,
+    "seconds": 0.3183295726776123
+  },
+  {
+    "name": "new-game",
+    "returncode": 0,
+    "seconds": 9.636041164398193
+  },
+  {
+    "name": "catalog",
+    "returncode": 0,
+    "seconds": 0.4462776184082031
+  },
+  {
+    "name": "objects-verify",
+    "returncode": 0,
+    "seconds": 1.91434645652771
+  },
+  {
+    "name": "stage",
+    "returncode": 0,
+    "seconds": 85.78032159805298
+  }
+]

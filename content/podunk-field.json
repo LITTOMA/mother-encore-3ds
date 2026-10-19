@@ -190,5 +190,6 @@
     "links": "world/world.enclinks"
   },
   "npc_recipe": "content/podunk-npcs.json",
-  "route_recipe": "content/world-scene-routes.json"
+  "route_recipe": "content/world-scene-routes.json",
+  "objects_recipe": "content/field-objects.json"
 }

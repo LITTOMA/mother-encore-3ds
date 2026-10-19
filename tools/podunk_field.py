@@ -301,6 +301,9 @@ def load_recipe(path=RECIPE):
         expected = (expected - {'npc_recipe'}) | {'route_recipe', 'static_sprites', 'actor_bindings'}
     elif 'route_recipe' in recipe:
         expected = expected | {'route_recipe'}
+    if 'objects_recipe'in recipe:
+        expected=expected|{'objects_recipe'}
+        value=recipe['objects_recipe'];require(type(value)is str and value.startswith('content/')and value.endswith('.json')and all(p not in('','.','..')for p in value.split('/'))and ':'not in value and '\\'not in value,'Unsafe field object recipe')
     require(set(recipe) == expected, 'Unknown/missing field recipe fields')
     if 'route_recipe' in recipe:
         path = recipe['route_recipe']
@@ -708,6 +711,9 @@ class Model:
         self.recipe = recipe
         self.sources = sources or Sources()
         self.scene = Scene(self.sources, recipe)
+        if object_bindings is None and 'objects_recipe'in recipe:
+            from tools.field_objects_assets import read as object_policy,bindings as object_bindings_for
+            object_bindings=object_bindings_for(object_policy(ROOT/recipe['objects_recipe']))
         require(object_bindings is None or type(object_bindings)is dict,'Field object binding type')
         self.object_bindings={}if object_bindings is None else dict(object_bindings)
         require(len(self.object_bindings)<=128 and all(type(k)is str and k in self.scene.by_path and self.scene.category[k]=='prop'and self.scene.owner_instance.get(k)==k and self.scene.visible(k)and type(v)is int and 0<v<2**32-1 for k,v in self.object_bindings.items())and len(set(self.object_bindings.values()))==len(self.object_bindings),'Field object source identities')
@@ -1754,8 +1760,13 @@ def build_outputs(recipe):
         links = encode_routes(route_policy(ROOT / recipe['route_recipe']), model.route_rows)
     else:
         links = encode_links(recipe, model.route_rows, ROOM_ROLES)
+    area=None
+    if 'objects_recipe'in recipe:
+        from tools.field_objects_assets import read as object_policy
+        from tools.field_area import source as area_source
+        area,_=area_source(ROOT/object_policy(ROOT/recipe['objects_recipe'])['area_recipe'])
     outputs = {
-        recipe['outputs']['map']: encode_map(model, atlases, atlas_paths),
+        recipe['outputs']['map']: encode_map(model, atlases, atlas_paths,area=area),
         recipe['outputs']['room']: build_room(recipe, model, recipe['house']['room_ir']),
         recipe['outputs']['links']: links,
     }

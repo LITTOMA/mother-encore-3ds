@@ -150,12 +150,9 @@ bool FieldScene::conditions(FieldSpan span)const{
     return true;
 }
 bool FieldScene::prepare(RoomView room,FieldMapView map,const WorldLinksData& links,const std::vector<bool>& story_flags,Vec2 position,Vec2 direction,Vec2 viewport,std::string& error){
-    if(props_.ready()){error="A field prop owner cannot be reused for another scene; prepare a new candidate";return false;}
+    if(props_.ready()||objects_.prepared()){error="A field object owner cannot be reused for another scene; prepare a new candidate";return false;}
     auto reject=[&](std::string message){error=message;phase_=FieldPhase::Error;error_=std::move(message);return false;};
     if(!room.valid()||!map.valid()||!links.valid()||room.scene().stable_id!=map.scene_id())return reject("Field scene resources do not match");
-    // The independent map/object binding candidate is not a playable scene
-    // until its lifecycle and renderer are admitted together.
-    if(map.capabilities()>=6)return reject("Field object scene lifecycle is not yet admitted");
     const auto scene_index=links.find_scene(map.scene_id());
     if(scene_index==WorldLinksData::kNotFound||!links.scene(scene_index).map_role||links.scene(scene_index).source!=room.string(room.scene().source_scene_string))
         return reject("Field scene is not a linked map scene");
@@ -225,6 +222,7 @@ bool FieldScene::refresh_conditions(std::string& error){
     if(mick_bound_)apply_mick_body();
     apply_npc_bodies();
     if(!apply_prop_bodies(error))return false;
+    if(!apply_object_state(error))return false;
     story_revision_=world.story_revision();error.clear();return true;
 }
 std::vector<bool>FieldScene::prop_flags()const{
@@ -239,11 +237,35 @@ bool FieldScene::apply_prop_bodies(std::string&error){
 bool FieldScene::bind_props(const FieldPropsData&data,std::string&error){
     if(phase_==FieldPhase::Error||props_.ready()){error="Field props need one prepared scene owner";return false;}
     if(!data.bind(world.content(),map_,error))return false;
+    if(objects_.prepared())for(const auto&o:objects_.data().objects())for(const auto&p:data.props())if(o.body!=kFieldNone&&o.body==p.body){error="Field prop and object body ownership overlap";return false;}
     std::vector<bool>flags;for(const auto&name:data.flags())flags.push_back(world.story_flag(name));
     FieldProps next;if(!next.initialize(data,flags,error))return false;
     std::vector<uint32_t>owners(map_.count(FieldMapSection::Sprites),kFieldNone);
     for(uint32_t i=0;i<data.props().size();++i)owners[data.props()[i].sprite]=i;
     props_=std::move(next);prop_sprites_=std::move(owners);return world.bind_story_props(*this,error)&&apply_prop_bodies(error);
+}
+bool FieldScene::apply_object_state(std::string&error){
+    if(!objects_.prepared()){error.clear();return true;}
+    for(uint32_t i=0;i<objects_.states().size();++i){const auto&s=objects_.states()[i];const auto&d=objects_.data().objects()[i];
+        if(d.notice>=notice_active_.size()){error="Field object notice owner lost";return false;}
+        notice_active_[d.notice]=conditions(map_.notice(d.notice).conditions)&&s.alive&&s.visible;
+        if(d.body!=kFieldNone&&!collision_.set_static_body_enabled(d.body,s.alive&&conditions(map_.body(d.body).conditions))){error="Field object collision owner lost";return false;}
+    }
+    error.clear();return true;
+}
+bool FieldScene::bind_objects(const FieldObjectsData&data,std::string&error){
+    if(phase_!=FieldPhase::Transition||objects_.prepared()||!mick_bound_||!data.drawing_bound()){error="Field objects need one prepared drawing and ready owner";return false;}
+    if(!data.bind(world.content(),map_,error))return false;
+    const auto ready=mick_.view().actor();if(data.ready_state()!=(uint64_t(ready.rng_lo)|(uint64_t(ready.rng_hi)<<32))){error="Field object offline ready stream differs from scene";return false;}
+    if(props_.ready())for(const auto&o:data.objects())for(const auto&p:props_.data().props())if(o.body!=kFieldNone&&o.body==p.body){error="Field object and prop body ownership overlap";return false;}
+    FieldObjects next;if(!next.prepare(data,world.content(),error))return false;
+    for(const auto&d:data.objects())if(!next.enter_ready(d.id,!d.ready_flag.empty()&&world.story_flag(d.ready_flag),error))return false;
+    // Ready-suppressed parents leave through the entry delete queue. A live
+    // flag write later never invokes ready again or hides a surviving object.
+    if(!next.flush_queued(error))return false;
+    objects_=std::move(next);
+    if(!world.bind_story_objects(objects_,error)){objects_=FieldObjects{};return false;}
+    objects_first_idle_=true;return apply_object_state(error);
 }
 bool FieldScene::validate_grow(uint32_t id,std::string&error)const{
     if(phase_==FieldPhase::Error||!props_.ready()){error="Field prop grow needs a bound scene";return false;}
@@ -349,6 +371,7 @@ void FieldScene::apply_npc_bodies(){
 }
 bool FieldScene::finish_transition(){
     if(phase_!=FieldPhase::Transition)return fail("Field transition finish outside its boundary");
+    if(map_.capabilities()>=6&&!objects_.prepared())return fail("Field object scene lifecycle is unbound");
     if(!world.unpause_from_house())return fail("Field player unpause rejected");
     phase_=FieldPhase::Walking;return true;
 }
@@ -363,7 +386,7 @@ bool FieldScene::warp_route(uint32_t index,std::string&error){
  route_=pending_door_=WorldLinksData::kNotFound;error.clear();return true;
 }
 bool FieldScene::bind_mick(MickView view,MickHost& host,std::string& error){
-    if(phase_==FieldPhase::Error||!map_.valid()){error="Field Mick bind requires a prepared scene";return false;}
+    if(phase_==FieldPhase::Error||!map_.valid()||objects_.prepared()){error="Field Mick bind requires a prepared scene without a ready object owner";return false;}
     if(!mick_.initialize(view,host,error))return false;
     const auto a=view.actor();const auto origin=mick_.position();const auto center=mick_.collision_center();
     const Vec2 o{center.x-origin.x,center.y-origin.y};const auto e=a.collision_extents;
@@ -604,6 +627,11 @@ bool FieldScene::finish_talk(){
 bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
     if(phase_==FieldPhase::Error)return false;
     if(!std::isfinite(delta)||delta<0||delta>1)return fail("Field idle time rejected");
+    if(map_.capabilities()>=6&&!objects_.prepared())return fail("Field object scene lifecycle is unbound");
+    if(objects_.prepared()){
+        std::string why;if(!objects_first_idle_&&!objects_.advance_idle(delta,why))return fail(why);
+        if(!objects_.idle_frame(why))return fail(why);objects_first_idle_=false;
+    }
     if(props_.ready()){
         std::string why;if(!props_.advance(delta,prop_flags(),why))return fail(why);
         const auto camera=camera_origin(world.player().position,viewport_);
@@ -647,7 +675,15 @@ bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
         if(s.timer>0)continue;s.timer=-1;
         if(s.inside)continue;
         s.open=false;const auto o=map_.openable(i);if(!paused&&!map_.text(o.end_sound).empty())sounds_.push_back(map_.text(o.end_sound));}
+    if(objects_.prepared()){
+        std::string why;if(!objects_.flush_queued(why)||!apply_object_state(why))return fail(why);
+    }
     return true;
+}
+bool FieldScene::item_active(uint32_t i)const{
+    if(i>=item_active_.size()||!item_active_[i])return false;const auto item=map_.item(i);
+    if(item.kind!=uint16_t(FieldItemKind::OwnedObject))return true;
+    const auto*s=objects_.state(item.first);return s&&s->ready&&s->alive&&s->visible;
 }
 bool FieldScene::sprite_visible(uint32_t i)const{
     if(i>=sprite_active_.size()||!sprite_active_[i])return false;

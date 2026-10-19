@@ -1,0 +1,1640 @@
+{"scope": "Unchanged serial partition, workers not invoked", "methods": 709}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_bad_frame", "elapsed": 0.030999999959021807}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_bad_frame", "seconds": 0.01600000000325963}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_changed_function", "elapsed": 0.046999999962281436}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_changed_function", "seconds": 0.0}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_changed_source", "elapsed": 0.046999999962281436}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_changed_source", "seconds": 0.01600000000325963}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_missing_case", "elapsed": 0.06299999996554106}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_missing_case", "seconds": 0.015000000013969839}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_missing_frame", "elapsed": 0.0779999999795109}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_missing_frame", "seconds": 0.0}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_nonfinite", "elapsed": 0.0779999999795109}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_nonfinite", "seconds": 0.01600000000325963}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_regeneration", "elapsed": 0.09399999998277053}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_regeneration", "seconds": 0.01600000000325963}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_unknown_command", "elapsed": 0.10999999998603016}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_unknown_command", "seconds": 0.0}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_unknown_property", "elapsed": 0.10999999998603016}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_unknown_property", "seconds": 0.015000000013969839}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_wrong_boolean_type", "elapsed": 0.125}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_wrong_boolean_type", "seconds": 0.01600000000325963}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_wrong_engine", "elapsed": 0.14100000000325963}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_wrong_engine", "seconds": 0.0}
+{"start": "test_actor_actions_reference.ActorActionReferenceTests.test_wrong_schema", "elapsed": 0.14100000000325963}
+{"end": "test_actor_actions_reference.ActorActionReferenceTests.test_wrong_schema", "seconds": 0.014999999955762178}
+{"start": "test_actor_asset.ActorAssetTests.test_changed_source_or_pin_rejected", "elapsed": 0.1559999999590218}
+{"end": "test_actor_asset.ActorAssetTests.test_changed_source_or_pin_rejected", "seconds": 0.01600000000325963}
+{"start": "test_actor_asset.ActorAssetTests.test_missing_bundle_rejected", "elapsed": 0.17199999996228144}
+{"end": "test_actor_asset.ActorAssetTests.test_missing_bundle_rejected", "seconds": 0.01600000000325963}
+{"start": "test_actor_asset.ActorAssetTests.test_permission_and_path_guard", "elapsed": 0.18799999996554106}
+{"end": "test_actor_asset.ActorAssetTests.test_permission_and_path_guard", "seconds": 0.015000000013969839}
+{"start": "test_actor_asset.ActorAssetTests.test_receipt_and_output_integrity", "elapsed": 0.2029999999795109}
+Verified pinned Ninten texture before embedding in RomFS.
+{"end": "test_actor_asset.ActorAssetTests.test_receipt_and_output_integrity", "seconds": 0.14100000000325963}
+{"start": "test_actor_asset.ActorAssetTests.test_reviewed_source", "elapsed": 0.34399999998277053}
+{"end": "test_actor_asset.ActorAssetTests.test_reviewed_source", "seconds": 0.031000000017229468}
+{"start": "test_actor_asset.ActorAssetTests.test_unknown_schema_version_layout_rejected", "elapsed": 0.375}
+{"end": "test_actor_asset.ActorAssetTests.test_unknown_schema_version_layout_rejected", "seconds": 0.0}
+{"start": "test_actor_conversion.AnimationConversionTests.test_actual_tracks_native_precision_and_visibility_are_preserved", "elapsed": 0.42199999996228144}
+{"end": "test_actor_conversion.AnimationConversionTests.test_actual_tracks_native_precision_and_visibility_are_preserved", "seconds": 0.25}
+{"start": "test_actor_conversion.AnimationConversionTests.test_clock_reference_engine_scope_samples_and_precision_rejected", "elapsed": 0.6719999999622814}
+{"end": "test_actor_conversion.AnimationConversionTests.test_clock_reference_engine_scope_samples_and_precision_rejected", "seconds": 0.18800000002374873}
+{"start": "test_actor_conversion.AnimationConversionTests.test_missing_duplicate_extra_track_and_changed_visibility_rejected", "elapsed": 0.8599999999860302}
+{"end": "test_actor_conversion.AnimationConversionTests.test_missing_duplicate_extra_track_and_changed_visibility_rejected", "seconds": 0.23399999999674037}
+{"start": "test_actor_conversion.AnimationConversionTests.test_new_key_modes_frame_range_and_out_of_duration_keys_rejected", "elapsed": 1.0939999999827705}
+{"end": "test_actor_conversion.AnimationConversionTests.test_new_key_modes_frame_range_and_out_of_duration_keys_rejected", "seconds": 0.2029999999795109}
+{"start": "test_actor_conversion.AnimationConversionTests.test_unknown_method_property_interpolation_import_and_script_rejected", "elapsed": 1.2969999999622814}
+{"end": "test_actor_conversion.AnimationConversionTests.test_unknown_method_property_interpolation_import_and_script_rejected", "seconds": 0.3440000000409782}
+{"start": "test_actor_conversion.AnimationConversionTests.test_unknown_version_grid_scope_and_scene_rejected", "elapsed": 1.6410000000032596}
+{"end": "test_actor_conversion.AnimationConversionTests.test_unknown_version_grid_scope_and_scene_rejected", "seconds": 0.25}
+{"start": "test_actor_conversion.MovementReferenceTests.test_actual_reference_generates_recorded_fixture", "elapsed": 1.9059999999590218}
+{"end": "test_actor_conversion.MovementReferenceTests.test_actual_reference_generates_recorded_fixture", "seconds": 0.0}
+{"start": "test_actor_conversion.MovementReferenceTests.test_missing_reordered_input_and_controls_domain_rejected", "elapsed": 1.9059999999590218}
+{"end": "test_actor_conversion.MovementReferenceTests.test_missing_reordered_input_and_controls_domain_rejected", "seconds": 0.0470000000204891}
+{"start": "test_actor_conversion.MovementReferenceTests.test_provenance_version_and_symbol_hashes_rejected", "elapsed": 1.952999999979511}
+{"end": "test_actor_conversion.MovementReferenceTests.test_provenance_version_and_symbol_hashes_rejected", "seconds": 0.0779999999795109}
+{"start": "test_actor_conversion.MovementReferenceTests.test_unchanged_function_body_and_missing_ambiguous_symbols", "elapsed": 2.030999999959022}
+{"end": "test_actor_conversion.MovementReferenceTests.test_unchanged_function_body_and_missing_ambiguous_symbols", "seconds": 0.0}
+{"start": "test_actor_conversion.MovementReferenceTests.test_unknown_animation_nonfinite_flags_and_state_domain_rejected", "elapsed": 2.030999999959022}
+{"end": "test_actor_conversion.MovementReferenceTests.test_unknown_animation_nonfinite_flags_and_state_domain_rejected", "seconds": 0.03200000000651926}
+{"start": "test_append_audio_assets.AppendAudio.test_append_boundary_and_decoder_negative", "elapsed": 2.062999999965541}
+{"end": "test_append_audio_assets.AppendAudio.test_append_boundary_and_decoder_negative", "seconds": 0.015000000013969839}
+{"start": "test_append_audio_assets.AppendAudio.test_declared_output_rate_uses_actual_decoded_rate", "elapsed": 2.077999999979511}
+{"end": "test_append_audio_assets.AppendAudio.test_declared_output_rate_uses_actual_decoded_rate", "seconds": 0.0}
+{"start": "test_append_audio_assets.AppendAudio.test_exact_append_and_existing_identity", "elapsed": 2.077999999979511}
+{"end": "test_append_audio_assets.AppendAudio.test_exact_append_and_existing_identity", "seconds": 0.0}
+{"start": "test_append_audio_assets.AppendAudio.test_existing_payload_is_never_overwritten_or_removed", "elapsed": 2.077999999979511}
+{"end": "test_append_audio_assets.AppendAudio.test_existing_payload_is_never_overwritten_or_removed", "seconds": 0.0}
+{"start": "test_append_audio_assets.AppendAudio.test_partial_payload_write_is_cleaned", "elapsed": 2.077999999979511}
+{"end": "test_append_audio_assets.AppendAudio.test_partial_payload_write_is_cleaned", "seconds": 0.01600000000325963}
+{"start": "test_append_audio_assets.AppendAudio.test_prior_recipe_receipt_and_bank_negative", "elapsed": 2.0939999999827705}
+{"end": "test_append_audio_assets.AppendAudio.test_prior_recipe_receipt_and_bank_negative", "seconds": 0.0}
+{"start": "test_append_audio_assets.AppendAudio.test_prior_snapshot_paths_cannot_publish", "elapsed": 2.0939999999827705}
+{"end": "test_append_audio_assets.AppendAudio.test_prior_snapshot_paths_cannot_publish", "seconds": 0.01600000000325963}
+{"start": "test_append_audio_assets.AppendAudio.test_publication_verification_failure_restores_metadata", "elapsed": 2.10999999998603}
+{"end": "test_append_audio_assets.AppendAudio.test_publication_verification_failure_restores_metadata", "seconds": 0.015000000013969839}
+{"start": "test_audio_asset.AudioAssetTests.test_actual_manifest_and_source_loop", "elapsed": 2.125}
+{"end": "test_audio_asset.AudioAssetTests.test_actual_manifest_and_source_loop", "seconds": 0.48499999998603016}
+{"start": "test_audio_asset.AudioAssetTests.test_all_bit_changes", "elapsed": 2.60999999998603}
+{"end": "test_audio_asset.AudioAssetTests.test_all_bit_changes", "seconds": 0.0}
+{"start": "test_audio_asset.AudioAssetTests.test_all_truncations", "elapsed": 2.60999999998603}
+{"end": "test_audio_asset.AudioAssetTests.test_all_truncations", "seconds": 0.0}
+{"start": "test_audio_asset.AudioAssetTests.test_bank_roundtrip", "elapsed": 2.60999999998603}
+{"end": "test_audio_asset.AudioAssetTests.test_bank_roundtrip", "seconds": 0.0}
+{"start": "test_audio_asset.AudioAssetTests.test_duplicate_identity_or_paths", "elapsed": 2.60999999998603}
+{"end": "test_audio_asset.AudioAssetTests.test_duplicate_identity_or_paths", "seconds": 0.0}
+{"start": "test_audio_asset.AudioAssetTests.test_importer_known", "elapsed": 2.60999999998603}
+{"end": "test_audio_asset.AudioAssetTests.test_importer_known", "seconds": 0.0}
+{"start": "test_audio_asset.AudioAssetTests.test_importer_unknown_fails", "elapsed": 2.60999999998603}
+{"end": "test_audio_asset.AudioAssetTests.test_importer_unknown_fails", "seconds": 0.0}
+{"start": "test_audio_asset.AudioAssetTests.test_path_rejection", "elapsed": 2.60999999998603}
+{"end": "test_audio_asset.AudioAssetTests.test_path_rejection", "seconds": 0.0}
+{"start": "test_audio_asset.AudioAssetTests.test_recipe_unknown_rejected_before_processes", "elapsed": 2.60999999998603}
+{"end": "test_audio_asset.AudioAssetTests.test_recipe_unknown_rejected_before_processes", "seconds": 0.0}
+{"start": "test_audio_asset.AudioAssetTests.test_reviewed_menu_wav_import_and_resample", "elapsed": 2.60999999998603}
+{"end": "test_audio_asset.AudioAssetTests.test_reviewed_menu_wav_import_and_resample", "seconds": 0.0}
+{"start": "test_audio_asset.AudioAssetTests.test_semantic_corruption", "elapsed": 2.60999999998603}
+{"end": "test_audio_asset.AudioAssetTests.test_semantic_corruption", "seconds": 0.015000000013969839}
+{"start": "test_audio_asset.AudioAssetTests.test_source_digest_rejected", "elapsed": 2.625}
+{"end": "test_audio_asset.AudioAssetTests.test_source_digest_rejected", "seconds": 0.0}
+{"start": "test_audio_asset.AudioAssetTests.test_stage_tamper", "elapsed": 2.625}
+{"end": "test_audio_asset.AudioAssetTests.test_stage_tamper", "seconds": 0.030999999959021807}
+{"start": "test_battle_assets.BattleAssetsTests.test_actual_renderer_expansion_repeat_and_reference_sampling", "elapsed": 2.655999999959022}
+{"end": "test_battle_assets.BattleAssetsTests.test_actual_renderer_expansion_repeat_and_reference_sampling", "seconds": 0.0940000000409782}
+{"start": "test_battle_assets.BattleAssetsTests.test_bad_version_magic_dimensions_and_crc", "elapsed": 2.75}
+{"end": "test_battle_assets.BattleAssetsTests.test_bad_version_magic_dimensions_and_crc", "seconds": 0.0}
+{"start": "test_battle_assets.BattleAssetsTests.test_compiled_source_receipt", "elapsed": 2.75}
+Verified source-pinned battle entry assets
+{"end": "test_battle_assets.BattleAssetsTests.test_compiled_source_receipt", "seconds": 0.17199999996228144}
+{"start": "test_battle_assets.BattleAssetsTests.test_crc_correct_invalid_palette_reference_rejected", "elapsed": 2.9219999999622814}
+{"end": "test_battle_assets.BattleAssetsTests.test_crc_correct_invalid_palette_reference_rejected", "seconds": 0.0}
+{"start": "test_battle_assets.BattleAssetsTests.test_every_truncation_rejected", "elapsed": 2.9219999999622814}
+{"end": "test_battle_assets.BattleAssetsTests.test_every_truncation_rejected", "seconds": 0.0}
+{"start": "test_battle_assets.BattleAssetsTests.test_invalid_grids", "elapsed": 2.9219999999622814}
+{"end": "test_battle_assets.BattleAssetsTests.test_invalid_grids", "seconds": 0.0}
+{"start": "test_battle_assets.BattleAssetsTests.test_lossless_frame_reordering_and_transparent_rgb", "elapsed": 2.9219999999622814}
+{"end": "test_battle_assets.BattleAssetsTests.test_lossless_frame_reordering_and_transparent_rgb", "seconds": 0.0}
+{"start": "test_battle_assets.BattleAssetsTests.test_palette_limit", "elapsed": 2.9219999999622814}
+{"end": "test_battle_assets.BattleAssetsTests.test_palette_limit", "seconds": 0.0}
+{"start": "test_battle_assets.BattleAssetsTests.test_shader_branch_order_and_unblended_color", "elapsed": 2.9219999999622814}
+{"end": "test_battle_assets.BattleAssetsTests.test_shader_branch_order_and_unblended_color", "seconds": 0.0}
+{"start": "test_battle_assets.BattleAssetsTests.test_source_pin_and_changes", "elapsed": 2.9219999999622814}
+{"end": "test_battle_assets.BattleAssetsTests.test_source_pin_and_changes", "seconds": 0.07800000003771856}
+{"start": "test_battle_assets.BattleAssetsTests.test_trailing_byte_rejected", "elapsed": 3.0}
+{"end": "test_battle_assets.BattleAssetsTests.test_trailing_byte_rejected", "seconds": 0.0}
+{"start": "test_battle_assets.BattleAssetsTests.test_unknown_recipe_fields_kinds_paths_crop", "elapsed": 3.0}
+{"end": "test_battle_assets.BattleAssetsTests.test_unknown_recipe_fields_kinds_paths_crop", "seconds": 0.046999999962281436}
+{"start": "test_battle_assets.BattleAssetsTests.test_unreviewed_version_commit_permission", "elapsed": 3.0469999999622814}
+{"end": "test_battle_assets.BattleAssetsTests.test_unreviewed_version_commit_permission", "seconds": 0.0}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_archive_empty_module_directory_restores_without_superproject", "elapsed": 3.0469999999622814}
+..................................................E............Cloning into 'C:\Users\litto\AppData\Local\Temp\tmpqxxrj1i8\native\upstream\.ci-restore-l78r0y4i\checkout'...
+warning: filtering not recognized by server, ignoring
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_archive_empty_module_directory_restores_without_superproject", "seconds": 1.9060000000172295}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_archive_restores_without_lock_or_inventory_changes", "elapsed": 4.952999999979511}
+.Cloning into 'C:\Users\litto\AppData\Local\Temp\tmpqp814a8d\native\upstream\.ci-restore-q07jgkbj\checkout'...
+warning: filtering not recognized by server, ignoring
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_archive_restores_without_lock_or_inventory_changes", "seconds": 2.625}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_broken_gitfile_and_parent_repository_impersonation_reject", "elapsed": 7.577999999979511}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_broken_gitfile_and_parent_repository_impersonation_reject", "seconds": 4.10999999998603}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_dirty_tracked_source_never_fetches_or_resets", "elapsed": 11.687999999965541}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_dirty_tracked_source_never_fetches_or_resets", "seconds": 3.875}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_inventory_git_environment_is_read_only_and_restored", "elapsed": 15.562999999965541}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_inventory_git_environment_is_read_only_and_restored", "seconds": 6.172000000020489}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_local_url_command_and_unknown_module_reject", "elapsed": 21.73499999998603}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_local_url_command_and_unknown_module_reject", "seconds": 1.7339999999967404}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_mismatched_gitlink_never_initializes", "elapsed": 23.46899999998277}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_mismatched_gitlink_never_initializes", "seconds": 1.047000000020489}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_mismatched_lock_and_inventory_reject", "elapsed": 24.51600000000326}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_mismatched_lock_and_inventory_reject", "seconds": 0.8899999999557622}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_missing_gitmodules_or_gitlink_reject", "elapsed": 25.405999999959022}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_missing_gitmodules_or_gitlink_reject", "seconds": 0.9070000000065193}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_modern_module_gitfile_and_verify_only_are_real_read_only", "elapsed": 26.31299999996554}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_modern_module_gitfile_and_verify_only_are_real_read_only", "seconds": 4.092999999993481}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_nonempty_uninitialized_source_is_not_overwritten", "elapsed": 30.405999999959022}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_nonempty_uninitialized_source_is_not_overwritten", "seconds": 1.1570000000065193}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_normal_clone_module_is_resolved_from_a_different_cwd", "elapsed": 31.56299999996554}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_normal_clone_module_is_resolved_from_a_different_cwd", "seconds": 3.9839999999967404}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_source_lock_inventory_schema_hash_and_coverage_reject", "elapsed": 35.54699999996228}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_source_lock_inventory_schema_hash_and_coverage_reject", "seconds": 0.75}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_uninitialized_empty_module_directory_can_initialize", "elapsed": 36.29699999996228}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_uninitialized_empty_module_directory_can_initialize", "seconds": 3.5}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_unknown_source_url_in_lock_rejects", "elapsed": 39.79699999996228}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_unknown_source_url_in_lock_rejects", "seconds": 0.75}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_untracked_and_ignored_source_never_cleaned", "elapsed": 40.54699999996228}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_untracked_and_ignored_source_never_cleaned", "seconds": 4.703000000037719}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_verify_only_uninitialized_does_not_create_files", "elapsed": 45.25}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_verify_only_uninitialized_does_not_create_files", "seconds": 1.1559999999590218}
+{"start": "test_ci_bootstrap.CiBootstrapTests.test_wrong_module_url_path_unknown_module_and_hook_reject", "elapsed": 46.40599999995902}
+{"end": "test_ci_bootstrap.CiBootstrapTests.test_wrong_module_url_path_unknown_module_and_hook_reject", "seconds": 1.5}
+{"start": "test_ci_console_check.ConsoleHeaderTests.test_rejected", "elapsed": 47.90599999995902}
+{"end": "test_ci_console_check.ConsoleHeaderTests.test_rejected", "seconds": 0.0}
+{"start": "test_ci_console_check.ConsoleHeaderTests.test_valid", "elapsed": 47.90599999995902}
+{"end": "test_ci_console_check.ConsoleHeaderTests.test_valid", "seconds": 0.0}
+{"start": "test_ci_python_environment.CiPythonEnvironmentTests.test_activation_is_explicit", "elapsed": 47.92199999996228}
+{"end": "test_ci_python_environment.CiPythonEnvironmentTests.test_activation_is_explicit", "seconds": 0.2190000000409782}
+{"start": "test_ci_python_environment.CiPythonEnvironmentTests.test_missing_or_wrong_parser_fails_before_script_execution", "elapsed": 48.14100000000326}
+{"end": "test_ci_python_environment.CiPythonEnvironmentTests.test_missing_or_wrong_parser_fails_before_script_execution", "seconds": 0.1559999999590218}
+{"start": "test_ci_python_environment.CiPythonEnvironmentTests.test_order_values_and_types_match", "elapsed": 48.29699999996228}
+{"end": "test_ci_python_environment.CiPythonEnvironmentTests.test_order_values_and_types_match", "seconds": 0.23399999999674037}
+{"start": "test_ci_python_environment.CiPythonEnvironmentTests.test_unknown_unsafe_and_malformed_inputs_rejected", "elapsed": 48.53099999995902}
+{"end": "test_ci_python_environment.CiPythonEnvironmentTests.test_unknown_unsafe_and_malformed_inputs_rejected", "seconds": 1.3440000000409782}
+{"start": "test_ci_quick.QuickSelectionTests.test_duplicate_registration_fails", "elapsed": 49.875}
+{"end": "test_ci_quick.QuickSelectionTests.test_duplicate_registration_fails", "seconds": 0.0}
+{"start": "test_ci_quick.QuickSelectionTests.test_every_missing_production_registration_fails", "elapsed": 49.875}
+{"end": "test_ci_quick.QuickSelectionTests.test_every_missing_production_registration_fails", "seconds": 0.0}
+{"start": "test_ci_quick.QuickSelectionTests.test_introduction_is_included_when_implemented", "elapsed": 49.875}
+{"end": "test_ci_quick.QuickSelectionTests.test_introduction_is_included_when_implemented", "seconds": 0.0}
+{"start": "test_ci_quick.QuickSelectionTests.test_invalid_metadata_fails", "elapsed": 49.875}
+{"end": "test_ci_quick.QuickSelectionTests.test_invalid_metadata_fails", "seconds": 0.0}
+{"start": "test_ci_quick.QuickSelectionTests.test_real_production_selection_excludes_fixture_and_source_suites", "elapsed": 49.875}
+{"end": "test_ci_quick.QuickSelectionTests.test_real_production_selection_excludes_fixture_and_source_suites", "seconds": 0.0}
+{"start": "test_ci_quick.QuickSelectionTests.test_regex_is_exact_and_empty_selection_fails", "elapsed": 49.875}
+{"end": "test_ci_quick.QuickSelectionTests.test_regex_is_exact_and_empty_selection_fails", "seconds": 0.0}
+{"start": "test_ci_test_parallelism.ParallelTests.test_changed_collection_cannot_reuse_stale_success", "elapsed": 49.875}
+PYTHON START test_native_content pid=4552
+PYTHON END test_native_content pid=4552 status=1
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 256, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 234, in main
+    return worker(args.project, args.worker_plan, args.worker_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 122, in worker
+    raise ValueError('Worker collection differs from admitted method IDs')
+ValueError: Worker collection differs from admitted method IDs
+
+{"end": "test_ci_test_parallelism.ParallelTests.test_changed_collection_cannot_reuse_stale_success", "seconds": 0.2029999999795109}
+{"start": "test_ci_test_parallelism.ParallelTests.test_ctest_defaults_and_four_slot_policy", "elapsed": 50.07799999997951}
+{"end": "test_ci_test_parallelism.ParallelTests.test_ctest_defaults_and_four_slot_policy", "seconds": 4.4689999999827705}
+{"start": "test_ci_test_parallelism.ParallelTests.test_failure_propagates_and_other_worker_still_runs", "elapsed": 54.54699999996228}
+PYTHON START test_native_content pid=54672
+PYTHON START test_native_house pid=57924
+PYTHON END test_native_content pid=54672 status=0
+PYTHON END test_native_house pid=57924 status=1
+test_run (tests.test_native_house.Case.test_run) ... FAIL
+
+======================================================================
+FAIL: test_run (tests.test_native_house.Case.test_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\litto\AppData\Local\Temp\tmpggst1wkt\tests\test_native_house.py", line 3, in test_run
+    def test_run(self): self.fail("intentional worker failure")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: intentional worker failure
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
+
+test_run (tests.test_native_content.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+{"end": "test_ci_test_parallelism.ParallelTests.test_failure_propagates_and_other_worker_still_runs", "seconds": 0.25}
+{"start": "test_ci_test_parallelism.ParallelTests.test_four_processes_overlap_and_isolate_module_mocks", "elapsed": 54.79699999996228}
+PYTHON START test_native_restore pid=29164
+PYTHON START test_native_content pid=56132
+PYTHON START test_native_house pid=53904
+PYTHON START test_native_round pid=43864
+PYTHON END test_native_round pid=43864 status=0
+PYTHON END test_native_content pid=56132 status=0
+test_run (tests.test_native_round.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+test_run (tests.test_native_content.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+PYTHON END test_native_restore pid=29164 status=0
+test_run (tests.test_native_restore.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+OK
+
+PYTHON END test_native_house pid=53904 status=0
+test_run (tests.test_native_house.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+OK
+
+{"end": "test_ci_test_parallelism.ParallelTests.test_four_processes_overlap_and_isolate_module_mocks", "seconds": 0.48399999999674037}
+{"start": "test_ci_test_parallelism.ParallelTests.test_invalid_job_count_and_unreviewed_modules_fail_closed", "elapsed": 55.28099999995902}
+{"end": "test_ci_test_parallelism.ParallelTests.test_invalid_job_count_and_unreviewed_modules_fail_closed", "seconds": 0.0}
+{"start": "test_ci_test_parallelism.ParallelTests.test_partition_preserves_unknown_modules_and_detects_missing_methods", "elapsed": 55.28099999995902}
+{"end": "test_ci_test_parallelism.ParallelTests.test_partition_preserves_unknown_modules_and_detects_missing_methods", "seconds": 0.01600000000325963}
+{"start": "test_ci_test_parallelism.ParallelTests.test_worker_rejects_unknown_or_duplicate_plan_before_execution", "elapsed": 55.29699999996228}
+{"end": "test_ci_test_parallelism.ParallelTests.test_worker_rejects_unknown_or_duplicate_plan_before_execution", "seconds": 0.8589999999967404}
+{"start": "test_ci_workflow_policy.WorkflowPolicyTests.test_downloadable_builds_enable_existing_pillow_texture_backend", "elapsed": 56.18799999996554}
+{"end": "test_ci_workflow_policy.WorkflowPolicyTests.test_downloadable_builds_enable_existing_pillow_texture_backend", "seconds": 0.0}
+{"start": "test_ci_workflow_policy.WorkflowPolicyTests.test_full_checks_remain_complete", "elapsed": 56.18799999996554}
+{"end": "test_ci_workflow_policy.WorkflowPolicyTests.test_full_checks_remain_complete", "seconds": 0.0}
+{"start": "test_ci_workflow_policy.WorkflowPolicyTests.test_main_build_and_manual_modes_are_registered", "elapsed": 56.18799999996554}
+{"end": "test_ci_workflow_policy.WorkflowPolicyTests.test_main_build_and_manual_modes_are_registered", "seconds": 0.0}
+{"start": "test_ci_workflow_policy.WorkflowPolicyTests.test_only_explicit_full_mode_admits_tests", "elapsed": 56.18799999996554}
+{"end": "test_ci_workflow_policy.WorkflowPolicyTests.test_only_explicit_full_mode_admits_tests", "seconds": 0.0}
+{"start": "test_ci_workflow_policy.WorkflowPolicyTests.test_successful_console_outputs_are_uploaded_without_canceling_other_commits", "elapsed": 56.18799999996554}
+{"end": "test_ci_workflow_policy.WorkflowPolicyTests.test_successful_console_outputs_are_uploaded_without_canceling_other_commits", "seconds": 0.0}
+{"start": "test_console_core_sources.ConsoleCoreSourcesTests.test_missing_core_and_fixture_substitutions_reject", "elapsed": 56.18799999996554}
+{"end": "test_console_core_sources.ConsoleCoreSourcesTests.test_missing_core_and_fixture_substitutions_reject", "seconds": 0.015000000013969839}
+{"start": "test_console_core_sources.ConsoleCoreSourcesTests.test_playable_sources_registered_in_both_builds", "elapsed": 56.20299999997951}
+{"end": "test_console_core_sources.ConsoleCoreSourcesTests.test_playable_sources_registered_in_both_builds", "seconds": 0.0}
+{"start": "test_console_core_sources.ConsoleCoreSourcesTests.test_unknown_and_duplicate_source_expressions_reject", "elapsed": 56.20299999997951}
+{"end": "test_console_core_sources.ConsoleCoreSourcesTests.test_unknown_and_duplicate_source_expressions_reject", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_bad_flag_type", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_bad_flag_type", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_bad_jump_rejected", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_bad_jump_rejected", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_blocked_spawn_rejected", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_blocked_spawn_rejected", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_deterministic", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_deterministic", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_duplicate_stable_id_rejected", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_duplicate_stable_id_rejected", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_missing_binding_rejected", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_missing_binding_rejected", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_partial_capability_manifest_rejected", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_partial_capability_manifest_rejected", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_ragged_map_rejected", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_ragged_map_rejected", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_source_map_retained", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_source_map_retained", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_text_change_only_changes_pack", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_text_change_only_changes_pack", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_unknown_fields_rejected", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_unknown_fields_rejected", "seconds": 0.0}
+{"start": "test_content.ContentTests.test_unknown_opcode_rejected", "elapsed": 56.20299999997951}
+{"end": "test_content.ContentTests.test_unknown_opcode_rejected", "seconds": 0.0}
+{"start": "test_content_parallelism.ContentParallelTests.test_failure_blocks_room_and_final_fingerprints", "elapsed": 56.20299999997951}
+{"end": "test_content_parallelism.ContentParallelTests.test_failure_blocks_room_and_final_fingerprints", "seconds": 0.6570000000065193}
+{"start": "test_content_parallelism.ContentParallelTests.test_four_process_overlap_dependencies_and_final_barrier", "elapsed": 56.85999999998603}
+{"end": "test_content_parallelism.ContentParallelTests.test_four_process_overlap_dependencies_and_final_barrier", "seconds": 2.3119999999762513}
+{"start": "test_content_parallelism.ContentParallelTests.test_invalid_task_does_not_launch_command", "elapsed": 59.17199999996228}
+{"end": "test_content_parallelism.ContentParallelTests.test_invalid_task_does_not_launch_command", "seconds": 0.375}
+{"start": "test_content_parallelism.ContentParallelTests.test_task_failure_replaces_stale_success_and_retains_log", "elapsed": 59.54699999996228}
+{"end": "test_content_parallelism.ContentParallelTests.test_task_failure_replaces_stale_success_and_retains_log", "seconds": 0.18800000002374873}
+{"start": "test_ctr_tools.SourceArchiveTests.test_corrupt_archive", "elapsed": 59.73499999998603}
+{"end": "test_ctr_tools.SourceArchiveTests.test_corrupt_archive", "seconds": 0.061999999976251274}
+{"start": "test_ctr_tools.SourceArchiveTests.test_duplicate_and_empty", "elapsed": 59.79699999996228}
+{"end": "test_ctr_tools.SourceArchiveTests.test_duplicate_and_empty", "seconds": 0.0}
+{"start": "test_ctr_tools.SourceArchiveTests.test_invalid_paths_write_nothing", "elapsed": 59.79699999996228}
+{"end": "test_ctr_tools.SourceArchiveTests.test_invalid_paths_write_nothing", "seconds": 0.01600000000325963}
+{"start": "test_ctr_tools.SourceArchiveTests.test_size_limit", "elapsed": 59.81299999996554}
+{"end": "test_ctr_tools.SourceArchiveTests.test_size_limit", "seconds": 0.015000000013969839}
+{"start": "test_ctr_tools.SourceArchiveTests.test_unsupported_types", "elapsed": 59.82799999997951}
+{"end": "test_ctr_tools.SourceArchiveTests.test_unsupported_types", "seconds": 0.01600000000325963}
+{"start": "test_ctr_tools.SourceArchiveTests.test_valid_source", "elapsed": 59.84399999998277}
+{"end": "test_ctr_tools.SourceArchiveTests.test_valid_source", "seconds": 0.0}
+{"start": "test_dialogue_choices_assets.ChoicesAssets.test_native_layout_and_source_semantics", "elapsed": 59.85999999998603}
+{"end": "test_dialogue_choices_assets.ChoicesAssets.test_native_layout_and_source_semantics", "seconds": 0.0}
+{"start": "test_dialogue_choices_assets.ChoicesAssets.test_recipe_drift_rejected", "elapsed": 59.85999999998603}
+{"end": "test_dialogue_choices_assets.ChoicesAssets.test_recipe_drift_rejected", "seconds": 20.14000000001397}
+{"start": "test_dialogue_choices_assets.ChoicesAssets.test_shared_resources_and_safe_staging", "elapsed": 80.0}
+{"end": "test_dialogue_choices_assets.ChoicesAssets.test_shared_resources_and_safe_staging", "seconds": 4.3439999999827705}
+{"start": "test_dialogue_choices_assets.ChoicesAssets.test_source_and_pack_reproduce", "elapsed": 84.34399999998277}
+{"end": "test_dialogue_choices_assets.ChoicesAssets.test_source_and_pack_reproduce", "seconds": 4.4060000000172295}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_bad_frame", "elapsed": 88.76600000000326}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_bad_frame", "seconds": 0.046999999962281436}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_boolean", "elapsed": 88.81299999996554}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_boolean", "seconds": 0.015000000013969839}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_domain", "elapsed": 88.82799999997951}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_domain", "seconds": 0.0}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_engine", "elapsed": 88.82799999997951}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_engine", "seconds": 0.01600000000325963}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_function", "elapsed": 88.84399999998277}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_function", "seconds": 0.01600000000325963}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_missing_frame", "elapsed": 88.85999999998603}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_missing_frame", "seconds": 0.015000000013969839}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_nan", "elapsed": 88.875}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_nan", "seconds": 0.01600000000325963}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_regeneration", "elapsed": 88.89100000000326}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_regeneration", "seconds": 0.014999999955762178}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_schema", "elapsed": 88.90599999995902}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_schema", "seconds": 0.01600000000325963}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_source", "elapsed": 88.92199999996228}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_source", "seconds": 0.01600000000325963}
+{"start": "test_doll_actor_actions_reference.DollActorReferenceTests.test_unknown", "elapsed": 88.93799999996554}
+{"end": "test_doll_actor_actions_reference.DollActorReferenceTests.test_unknown", "seconds": 0.015000000013969839}
+{"start": "test_doll_content.DollContentTests.test_battle_and_house_links_keep_original_followup_without_winflag", "elapsed": 89.18799999996554}
+{"end": "test_doll_content.DollContentTests.test_battle_and_house_links_keep_original_followup_without_winflag", "seconds": 0.0}
+{"start": "test_doll_content.DollContentTests.test_delayed_keys_and_motion_contract_fail_closed", "elapsed": 89.18799999996554}
+{"end": "test_doll_content.DollContentTests.test_delayed_keys_and_motion_contract_fail_closed", "seconds": 0.2970000000204891}
+{"start": "test_doll_content.DollContentTests.test_house_cross_pack_and_duplicate_mappings_reject", "elapsed": 89.48499999998603}
+{"end": "test_doll_content.DollContentTests.test_house_cross_pack_and_duplicate_mappings_reject", "seconds": 0.045999999972991645}
+{"start": "test_doll_content.DollContentTests.test_native_animation_floats_and_original_sheet_offsets", "elapsed": 89.53099999995902}
+{"end": "test_doll_content.DollContentTests.test_native_animation_floats_and_original_sheet_offsets", "seconds": 0.0}
+{"start": "test_doll_content.DollContentTests.test_native_receipt_fingerprint_rejects_forged_animation", "elapsed": 89.53099999995902}
+{"end": "test_doll_content.DollContentTests.test_native_receipt_fingerprint_rejects_forged_animation", "seconds": 0.01600000000325963}
+{"start": "test_doll_content.DollContentTests.test_new_opcodes_reject_wrong_targets_actors_and_extras", "elapsed": 89.54699999996228}
+{"end": "test_doll_content.DollContentTests.test_new_opcodes_reject_wrong_targets_actors_and_extras", "seconds": 0.5940000000409782}
+{"start": "test_doll_content.DollContentTests.test_new_schema_paths_reject_invalid_payload_and_ownership", "elapsed": 90.14100000000326}
+{"end": "test_doll_content.DollContentTests.test_new_schema_paths_reject_invalid_payload_and_ownership", "seconds": 1.0}
+{"start": "test_doll_content.DollContentTests.test_program_graph_and_original_handler_order", "elapsed": 91.14100000000326}
+{"end": "test_doll_content.DollContentTests.test_program_graph_and_original_handler_order", "seconds": 0.0}
+{"start": "test_doll_content.DollContentTests.test_source_paths_preserve_waits_modes_and_moonwalk", "elapsed": 91.14100000000326}
+{"end": "test_doll_content.DollContentTests.test_source_paths_preserve_waits_modes_and_moonwalk", "seconds": 0.0}
+{"start": "test_doll_content.DollContentTests.test_unknown_source_handlers_do_not_silently_drop", "elapsed": 91.14100000000326}
+{"end": "test_doll_content.DollContentTests.test_unknown_source_handlers_do_not_silently_drop", "seconds": 1.125}
+{"start": "test_doll_entry_asset.DollEntryAssetTests.test_deterministic_bundle_and_safe_staging", "elapsed": 93.29699999996228}
+{"end": "test_doll_entry_asset.DollEntryAssetTests.test_deterministic_bundle_and_safe_staging", "seconds": 0.48399999999674037}
+{"start": "test_doll_entry_asset.DollEntryAssetTests.test_every_truncated_binary_rejected", "elapsed": 93.78099999995902}
+{"end": "test_doll_entry_asset.DollEntryAssetTests.test_every_truncated_binary_rejected", "seconds": 0.07900000002700835}
+{"start": "test_doll_entry_asset.DollEntryAssetTests.test_exact_roster_audio_geometry_and_shader", "elapsed": 93.85999999998603}
+{"end": "test_doll_entry_asset.DollEntryAssetTests.test_exact_roster_audio_geometry_and_shader", "seconds": 0.0}
+{"start": "test_doll_entry_asset.DollEntryAssetTests.test_lossless_background_and_palette", "elapsed": 93.85999999998603}
+{"end": "test_doll_entry_asset.DollEntryAssetTests.test_lossless_background_and_palette", "seconds": 0.015000000013969839}
+{"start": "test_doll_entry_asset.DollEntryAssetTests.test_native_palette_review_is_bound", "elapsed": 93.875}
+{"end": "test_doll_entry_asset.DollEntryAssetTests.test_native_palette_review_is_bound", "seconds": 1.7969999999622814}
+{"start": "test_doll_entry_asset.DollEntryAssetTests.test_no_fake_reward_flag_or_combat", "elapsed": 95.67199999996228}
+{"end": "test_doll_entry_asset.DollEntryAssetTests.test_no_fake_reward_flag_or_combat", "seconds": 0.0}
+{"start": "test_doll_entry_asset.DollEntryAssetTests.test_portrait_inherits_parent_before_own_show", "elapsed": 95.67199999996228}
+{"end": "test_doll_entry_asset.DollEntryAssetTests.test_portrait_inherits_parent_before_own_show", "seconds": 0.0}
+{"start": "test_doll_entry_asset.DollEntryAssetTests.test_unknown_pin_or_combat_approval_rejected", "elapsed": 95.67199999996228}
+{"end": "test_doll_entry_asset.DollEntryAssetTests.test_unknown_pin_or_combat_approval_rejected", "seconds": 1.375}
+{"start": "test_doll_entry_asset.DollEntryAssetTests.test_unknown_shader_branch_cannot_be_silently_dropped", "elapsed": 97.04699999996228}
+{"end": "test_doll_entry_asset.DollEntryAssetTests.test_unknown_shader_branch_cannot_be_silently_dropped", "seconds": 2.797000000020489}
+{"start": "test_doll_postwin.DollPostwinTests.test_dot_exact_native_keys_and_sound_stable_id", "elapsed": 100.09399999998277}
+{"end": "test_doll_postwin.DollPostwinTests.test_dot_exact_native_keys_and_sound_stable_id", "seconds": 0.0}
+{"start": "test_doll_postwin.DollPostwinTests.test_forged_native_receipt_is_rejected", "elapsed": 100.09399999998277}
+{"end": "test_doll_postwin.DollPostwinTests.test_forged_native_receipt_is_rejected", "seconds": 0.031000000017229468}
+{"start": "test_doll_postwin.DollPostwinTests.test_manual_text_and_speed_alias", "elapsed": 100.125}
+{"end": "test_doll_postwin.DollPostwinTests.test_manual_text_and_speed_alias", "seconds": 0.0}
+{"start": "test_doll_postwin.DollPostwinTests.test_minnie_texture_profile_body_and_original_initial_position", "elapsed": 100.125}
+{"end": "test_doll_postwin.DollPostwinTests.test_minnie_texture_profile_body_and_original_initial_position", "seconds": 0.0}
+{"start": "test_doll_postwin.DollPostwinTests.test_native_parser_source_receipt", "elapsed": 100.125}
+{"end": "test_doll_postwin.DollPostwinTests.test_native_parser_source_receipt", "seconds": 0.2809999999590218}
+{"start": "test_doll_postwin.DollPostwinTests.test_original_handler_order_and_flag_notifications", "elapsed": 100.40599999995902}
+{"end": "test_doll_postwin.DollPostwinTests.test_original_handler_order_and_flag_notifications", "seconds": 0.0}
+{"start": "test_doll_postwin.DollPostwinTests.test_prior_content_prefixes_and_explicit_idle_semantic_correction", "elapsed": 100.40599999995902}
+{"end": "test_doll_postwin.DollPostwinTests.test_prior_content_prefixes_and_explicit_idle_semantic_correction", "seconds": 0.0470000000204891}
+{"start": "test_doll_postwin.DollPostwinTests.test_program_path_and_terminal_bindings", "elapsed": 100.45299999997951}
+{"end": "test_doll_postwin.DollPostwinTests.test_program_path_and_terminal_bindings", "seconds": 0.18800000002374873}
+{"start": "test_doll_postwin.DollPostwinTests.test_program_path_terminal_duration_and_key_capacity_rejection", "elapsed": 100.64100000000326}
+{"end": "test_doll_postwin.DollPostwinTests.test_program_path_terminal_duration_and_key_capacity_rejection", "seconds": 0.7969999999622814}
+{"start": "test_doll_postwin.DollPostwinTests.test_unknown_postwin_source_paths_fail_closed", "elapsed": 101.43799999996554}
+{"end": "test_doll_postwin.DollPostwinTests.test_unknown_postwin_source_paths_fail_closed", "seconds": 2.8429999999934807}
+{"start": "test_doll_postwin.DollPostwinTests.test_wait_segments_and_dynamic_name", "elapsed": 104.28099999995902}
+{"end": "test_doll_postwin.DollPostwinTests.test_wait_segments_and_dynamic_name", "seconds": 58.40700000000652}
+{"start": "test_doll_postwin_reference.DollPostwinReferenceTests.test_extended_cleanup_includes_equal_value_signals", "elapsed": 162.71899999998277}
+{"end": "test_doll_postwin_reference.DollPostwinReferenceTests.test_extended_cleanup_includes_equal_value_signals", "seconds": 0.0}
+{"start": "test_doll_postwin_reference.DollPostwinReferenceTests.test_fixture_and_recorded_pipeline_identity", "elapsed": 162.71899999998277}
+{"end": "test_doll_postwin_reference.DollPostwinReferenceTests.test_fixture_and_recorded_pipeline_identity", "seconds": 0.0470000000204891}
+{"start": "test_doll_postwin_reference.DollPostwinReferenceTests.test_fixture_rejects_incomplete_unknown_and_nonfinite_frames", "elapsed": 162.76600000000326}
+{"end": "test_doll_postwin_reference.DollPostwinReferenceTests.test_fixture_rejects_incomplete_unknown_and_nonfinite_frames", "seconds": 0.10899999999674037}
+{"start": "test_doll_postwin_reference.DollPostwinReferenceTests.test_original_sources_method_hashes_and_case_domain", "elapsed": 162.875}
+{"end": "test_doll_postwin_reference.DollPostwinReferenceTests.test_original_sources_method_hashes_and_case_domain", "seconds": 0.0}
+{"start": "test_doll_round.DollRoundTests.test_bad_encounter_policy_rejected", "elapsed": 162.89100000000326}
+{"end": "test_doll_round.DollRoundTests.test_bad_encounter_policy_rejected", "seconds": 0.046999999962281436}
+{"start": "test_doll_round.DollRoundTests.test_bad_growth_and_shake_rejected", "elapsed": 162.93799999996554}
+{"end": "test_doll_round.DollRoundTests.test_bad_growth_and_shake_rejected", "seconds": 0.0470000000204891}
+{"start": "test_doll_round.DollRoundTests.test_boss_callbacks_and_data_only_media", "elapsed": 162.98499999998603}
+{"end": "test_doll_round.DollRoundTests.test_boss_callbacks_and_data_only_media", "seconds": 0.015000000013969839}
+{"start": "test_doll_round.DollRoundTests.test_checked_sources_and_deterministic_binary", "elapsed": 163.0}
+{"end": "test_doll_round.DollRoundTests.test_checked_sources_and_deterministic_binary", "seconds": 0.6719999999622814}
+{"start": "test_doll_round.DollRoundTests.test_data_only_return_music_policy", "elapsed": 163.67199999996228}
+{"end": "test_doll_round.DollRoundTests.test_data_only_return_music_policy", "seconds": 0.01600000000325963}
+{"start": "test_doll_round.DollRoundTests.test_explicit_legacy_schema_and_unknown_rejection", "elapsed": 163.68799999996554}
+{"end": "test_doll_round.DollRoundTests.test_explicit_legacy_schema_and_unknown_rejection", "seconds": 0.015000000013969839}
+{"start": "test_doll_round.DollRoundTests.test_native_source_actions_oracle", "elapsed": 163.7029999999795}
+{"end": "test_doll_round.DollRoundTests.test_native_source_actions_oracle", "seconds": 0.01600000000325963}
+{"start": "test_doll_round.DollRoundTests.test_native_source_growth_oracle", "elapsed": 163.71899999998277}
+{"end": "test_doll_round.DollRoundTests.test_native_source_growth_oracle", "seconds": 0.0}
+{"start": "test_doll_round.DollRoundTests.test_source_encounter_and_progression", "elapsed": 163.71899999998277}
+{"end": "test_doll_round.DollRoundTests.test_source_encounter_and_progression", "seconds": 0.0}
+{"start": "test_doll_round.DollRoundTests.test_source_return_music_policy_and_order", "elapsed": 163.71899999998277}
+{"end": "test_doll_round.DollRoundTests.test_source_return_music_policy_and_order", "seconds": 0.01600000000325963}
+{"start": "test_doll_round.DollRoundTests.test_staging_uses_companion_pack", "elapsed": 163.73499999998603}
+{"end": "test_doll_round.DollRoundTests.test_staging_uses_companion_pack", "seconds": 0.031000000017229468}
+{"start": "test_doll_round.DollRoundTests.test_unknown_or_missing_sections_rejected", "elapsed": 163.76600000000326}
+{"end": "test_doll_round.DollRoundTests.test_unknown_or_missing_sections_rejected", "seconds": 0.0}
+{"start": "test_door_music_reference.DoorMusicReference.test_native_live_array_mutation_and_guards", "elapsed": 164.06299999996554}
+{"end": "test_door_music_reference.DoorMusicReference.test_native_live_array_mutation_and_guards", "seconds": 0.0}
+{"start": "test_door_music_reference.DoorMusicReference.test_native_output_domain_negative", "elapsed": 164.06299999996554}
+{"end": "test_door_music_reference.DoorMusicReference.test_native_output_domain_negative", "seconds": 0.015000000013969839}
+{"start": "test_door_music_reference.DoorMusicReference.test_review_scope_or_source_changes_reject", "elapsed": 164.0779999999795}
+{"end": "test_door_music_reference.DoorMusicReference.test_review_scope_or_source_changes_reject", "seconds": 0.0}
+{"start": "test_emulator_artifact.ArtifactMetadata.test_exact_source_and_unique_embedded_metadata", "elapsed": 164.0779999999795}
+{"end": "test_emulator_artifact.ArtifactMetadata.test_exact_source_and_unique_embedded_metadata", "seconds": 0.0}
+{"start": "test_emulator_artifact.ArtifactMetadata.test_unknown_source_paths_and_missing_duplicate_data_rejected", "elapsed": 164.0779999999795}
+{"end": "test_emulator_artifact.ArtifactMetadata.test_unknown_source_paths_and_missing_duplicate_data_rejected", "seconds": 0.0}
+{"start": "test_emulator_semantics.RpcBoundary.test_error_wrong_response_disconnection_and_invalid_envelope", "elapsed": 164.0779999999795}
+{"end": "test_emulator_semantics.RpcBoundary.test_error_wrong_response_disconnection_and_invalid_envelope", "seconds": 0.0}
+{"start": "test_emulator_semantics.RpcBoundary.test_event_before_result_is_preserved", "elapsed": 164.0779999999795}
+{"end": "test_emulator_semantics.RpcBoundary.test_event_before_result_is_preserved", "seconds": 0.0}
+{"start": "test_emulator_semantics.RpcBoundary.test_guest_memory_write_is_denied_locally", "elapsed": 164.0779999999795}
+{"end": "test_emulator_semantics.RpcBoundary.test_guest_memory_write_is_denied_locally", "seconds": 0.0}
+{"start": "test_emulator_semantics.RpcBoundary.test_line_and_event_budgets_fail_closed", "elapsed": 164.0779999999795}
+{"end": "test_emulator_semantics.RpcBoundary.test_line_and_event_budgets_fail_closed", "seconds": 0.0}
+{"start": "test_emulator_semantics.SaveFixtureBoundary.test_fixture_versions_identity_paths_hashes_and_resources", "elapsed": 164.0779999999795}
+{"end": "test_emulator_semantics.SaveFixtureBoundary.test_fixture_versions_identity_paths_hashes_and_resources", "seconds": 0.09399999998277053}
+{"start": "test_emulator_semantics.SaveFixtureBoundary.test_menu_comparison_rejects_inventory_uid_display_and_return_drift", "elapsed": 164.17199999996228}
+{"end": "test_emulator_semantics.SaveFixtureBoundary.test_menu_comparison_rejects_inventory_uid_display_and_return_drift", "seconds": 0.0}
+{"start": "test_emulator_semantics.SaveFixtureBoundary.test_menu_fixture_has_its_own_exact_resource_contract", "elapsed": 164.17199999996228}
+{"end": "test_emulator_semantics.SaveFixtureBoundary.test_menu_fixture_has_its_own_exact_resource_contract", "seconds": 0.0470000000204891}
+{"start": "test_emulator_semantics.SaveFixtureBoundary.test_present_comparison_requires_each_result_and_repeat_invariant", "elapsed": 164.21899999998277}
+{"end": "test_emulator_semantics.SaveFixtureBoundary.test_present_comparison_requires_each_result_and_repeat_invariant", "seconds": 0.0}
+{"start": "test_emulator_semantics.WireBoundary.test_bounded_intervals_and_input_repetition", "elapsed": 164.21899999998277}
+{"end": "test_emulator_semantics.WireBoundary.test_bounded_intervals_and_input_repetition", "seconds": 0.0}
+{"start": "test_emulator_semantics.WireBoundary.test_exact_wire_and_projection", "elapsed": 164.21899999998277}
+{"end": "test_emulator_semantics.WireBoundary.test_exact_wire_and_projection", "seconds": 0.0}
+{"start": "test_emulator_semantics.WireBoundary.test_frame_step_recovers_only_bounded_mid_commit_samples", "elapsed": 164.21899999998277}
+{"end": "test_emulator_semantics.WireBoundary.test_frame_step_recovers_only_bounded_mid_commit_samples", "seconds": 0.01600000000325963}
+{"start": "test_emulator_semantics.WireBoundary.test_menu_appendix_preserves_legacy_offsets", "elapsed": 164.23499999998603}
+{"end": "test_emulator_semantics.WireBoundary.test_menu_appendix_preserves_legacy_offsets", "seconds": 0.0}
+{"start": "test_emulator_semantics.WireBoundary.test_original_comparison_rejects_result_drift", "elapsed": 164.23499999998603}
+{"end": "test_emulator_semantics.WireBoundary.test_original_comparison_rejects_result_drift", "seconds": 0.0}
+{"start": "test_emulator_semantics.WireBoundary.test_pinned_original_and_missing_changed_unknown_source", "elapsed": 164.23499999998603}
+{"end": "test_emulator_semantics.WireBoundary.test_pinned_original_and_missing_changed_unknown_source", "seconds": 0.6709999999729916}
+{"start": "test_emulator_semantics.WireBoundary.test_projection_unknown_duplicate_empty", "elapsed": 164.90599999995902}
+{"end": "test_emulator_semantics.WireBoundary.test_projection_unknown_duplicate_empty", "seconds": 0.0}
+{"start": "test_emulator_semantics.WireBoundary.test_real_scenario_and_unknown_paths", "elapsed": 164.90599999995902}
+{"end": "test_emulator_semantics.WireBoundary.test_real_scenario_and_unknown_paths", "seconds": 0.01600000000325963}
+{"start": "test_emulator_semantics.WireBoundary.test_repetition_position_tolerance_is_explicit_and_bounded", "elapsed": 164.92199999996228}
+{"end": "test_emulator_semantics.WireBoundary.test_repetition_position_tolerance_is_explicit_and_bounded", "seconds": 0.01600000000325963}
+{"start": "test_emulator_semantics.WireBoundary.test_torn_overflow_boolean_utf8_and_nonfinite", "elapsed": 164.93799999996554}
+{"end": "test_emulator_semantics.WireBoundary.test_torn_overflow_boolean_utf8_and_nonfinite", "seconds": 0.0}
+{"start": "test_emulator_semantics.WireBoundary.test_truncated_extra_magic_and_versions", "elapsed": 164.93799999996554}
+{"end": "test_emulator_semantics.WireBoundary.test_truncated_extra_magic_and_versions", "seconds": 0.0}
+{"start": "test_emulator_semantics.WireBoundary.test_v8_typed_field_inventory_music_and_negative_bounds", "elapsed": 164.93799999996554}
+{"end": "test_emulator_semantics.WireBoundary.test_v8_typed_field_inventory_music_and_negative_bounds", "seconds": 0.015000000013969839}
+{"start": "test_emulator_semantics.WireBoundary.test_v9_combines_bridge_and_menu_appendices", "elapsed": 164.9529999999795}
+{"end": "test_emulator_semantics.WireBoundary.test_v9_combines_bridge_and_menu_appendices", "seconds": 0.0}
+{"start": "test_emulator_walk_route.EmulatorWalkRoute.test_bad_route_geometry_rejects", "elapsed": 170.875}
+{"end": "test_emulator_walk_route.EmulatorWalkRoute.test_bad_route_geometry_rejects", "seconds": 0.01600000000325963}
+{"start": "test_emulator_walk_route.EmulatorWalkRoute.test_cemetery_owners_preserve_existing_route_geometry", "elapsed": 170.89100000000326}
+{"end": "test_emulator_walk_route.EmulatorWalkRoute.test_cemetery_owners_preserve_existing_route_geometry", "seconds": 0.014999999955762178}
+{"start": "test_emulator_walk_route.EmulatorWalkRoute.test_source_and_all_route_points_match_checked_map", "elapsed": 170.90599999995902}
+{"end": "test_emulator_walk_route.EmulatorWalkRoute.test_source_and_all_route_points_match_checked_map", "seconds": 0.0}
+{"start": "test_emulator_walk_route.EmulatorWalkRoute.test_unknown_and_duplicate_envelopes_reject", "elapsed": 170.90599999995902}
+{"end": "test_emulator_walk_route.EmulatorWalkRoute.test_unknown_and_duplicate_envelopes_reject", "seconds": 0.0}
+{"start": "test_emulator_walk_route.EmulatorWalkRoute.test_wrong_map_and_unbounded_path_reject", "elapsed": 170.90599999995902}
+{"end": "test_emulator_walk_route.EmulatorWalkRoute.test_wrong_map_and_unbounded_path_reject", "seconds": 0.01600000000325963}
+{"start": "test_field_camera.FieldCameraTests.test_pinned_control_parent_contributes_to_area_world_position", "elapsed": 170.92199999996228}
+{"end": "test_field_camera.FieldCameraTests.test_pinned_control_parent_contributes_to_area_world_position", "seconds": 1.6560000000172295}
+{"start": "test_field_camera.FieldCameraTests.test_static_reference_rect_translation_composes_with_node2d", "elapsed": 172.5779999999795}
+{"end": "test_field_camera.FieldCameraTests.test_static_reference_rect_translation_composes_with_node2d", "seconds": 0.0}
+{"start": "test_field_camera.FieldCameraTests.test_unreviewed_control_layout_and_nonfinite_margins_rejected", "elapsed": 172.5779999999795}
+{"end": "test_field_camera.FieldCameraTests.test_unreviewed_control_layout_and_nonfinite_margins_rejected", "seconds": 0.0}
+{"start": "test_field_props.FieldProps.test_controlled_native_fixture_has_all_cases_and_preserves_input", "elapsed": 175.625}
+{"end": "test_field_props.FieldProps.test_controlled_native_fixture_has_all_cases_and_preserves_input", "seconds": 0.0}
+{"start": "test_field_props.FieldProps.test_incomplete_coverage_or_unreviewed_map_and_callback_reject", "elapsed": 175.625}
+{"end": "test_field_props.FieldProps.test_incomplete_coverage_or_unreviewed_map_and_callback_reject", "seconds": 12.655999999959022}
+{"start": "test_field_props.FieldProps.test_native_transport_rejects_unknown_callback_and_geometry", "elapsed": 188.28099999995902}
+{"end": "test_field_props.FieldProps.test_native_transport_rejects_unknown_callback_and_geometry", "seconds": 0.5470000000204891}
+{"start": "test_field_props.FieldProps.test_release_packets_texture_and_receipt_are_checked", "elapsed": 188.8279999999795}
+{"end": "test_field_props.FieldProps.test_release_packets_texture_and_receipt_are_checked", "seconds": 12.577999999979511}
+{"start": "test_field_props.FieldProps.test_release_receipt_unknown_versions_and_producers_reject", "elapsed": 201.40599999995902}
+{"end": "test_field_props.FieldProps.test_release_receipt_unknown_versions_and_producers_reject", "seconds": 0.03200000000651926}
+{"start": "test_field_props.FieldProps.test_source_instances_and_bytes_match_fixture", "elapsed": 201.43799999996554}
+{"end": "test_field_props.FieldProps.test_source_instances_and_bytes_match_fixture", "seconds": 0.031000000017229468}
+{"start": "test_field_props.FieldProps.test_unknown_recipe_fields_versions_paths_and_identities_reject", "elapsed": 201.46899999998277}
+{"end": "test_field_props.FieldProps.test_unknown_recipe_fields_versions_paths_and_identities_reject", "seconds": 0.031000000017229468}
+{"start": "test_field_scene_music.FieldSceneMusic.test_actual_source_values_and_geometry", "elapsed": 201.67199999996228}
+{"end": "test_field_scene_music.FieldSceneMusic.test_actual_source_values_and_geometry", "seconds": 0.0}
+{"start": "test_field_scene_music.FieldSceneMusic.test_existing_podunk_binding_remains_exact", "elapsed": 201.67199999996228}
+{"end": "test_field_scene_music.FieldSceneMusic.test_existing_podunk_binding_remains_exact", "seconds": 0.6560000000172295}
+{"start": "test_field_scene_music.FieldSceneMusic.test_frozen_metadata_and_independent_versions", "elapsed": 202.3279999999795}
+{"end": "test_field_scene_music.FieldSceneMusic.test_frozen_metadata_and_independent_versions", "seconds": 0.0}
+{"start": "test_field_scene_music.FieldSceneMusic.test_geometry_unknown_or_degenerate", "elapsed": 202.3279999999795}
+{"end": "test_field_scene_music.FieldSceneMusic.test_geometry_unknown_or_degenerate", "seconds": 0.0}
+{"start": "test_field_scene_music.FieldSceneMusic.test_metadata_unknown_and_numeric_paths", "elapsed": 202.3279999999795}
+{"end": "test_field_scene_music.FieldSceneMusic.test_metadata_unknown_and_numeric_paths", "seconds": 0.0}
+{"start": "test_field_scene_music.FieldSceneMusic.test_recipe_missing_source_version_and_owner", "elapsed": 202.3279999999795}
+{"end": "test_field_scene_music.FieldSceneMusic.test_recipe_missing_source_version_and_owner", "seconds": 0.5160000000032596}
+{"start": "test_field_scene_npcs.SceneNpcs.test_actual_source_owners", "elapsed": 203.09399999998277}
+{"end": "test_field_scene_npcs.SceneNpcs.test_actual_source_owners", "seconds": 0.0}
+{"start": "test_field_scene_npcs.SceneNpcs.test_candidate_output_owner", "elapsed": 203.09399999998277}
+{"end": "test_field_scene_npcs.SceneNpcs.test_candidate_output_owner", "seconds": 0.0}
+{"start": "test_field_scene_npcs.SceneNpcs.test_eight_direction_negative_paths", "elapsed": 203.09399999998277}
+{"end": "test_field_scene_npcs.SceneNpcs.test_eight_direction_negative_paths", "seconds": 0.0}
+{"start": "test_field_scene_npcs.SceneNpcs.test_generated_motion_versions_and_frozen_source", "elapsed": 203.09399999998277}
+{"end": "test_field_scene_npcs.SceneNpcs.test_generated_motion_versions_and_frozen_source", "seconds": 0.0}
+{"start": "test_field_scene_npcs.SceneNpcs.test_runtime_offsets_override_authored_children", "elapsed": 203.09399999998277}
+{"end": "test_field_scene_npcs.SceneNpcs.test_runtime_offsets_override_authored_children", "seconds": 0.0}
+{"start": "test_field_scene_npcs.SceneNpcs.test_strict_recipe", "elapsed": 203.09399999998277}
+{"end": "test_field_scene_npcs.SceneNpcs.test_strict_recipe", "seconds": 0.28100000001722947}
+{"start": "test_field_swing.FieldSwingTests.test_actual_eight_bindings_and_frozen_candidate", "elapsed": 203.78099999995902}
+{"end": "test_field_swing.FieldSwingTests.test_actual_eight_bindings_and_frozen_candidate", "seconds": 0.0}
+{"start": "test_field_swing.FieldSwingTests.test_native_fixture_transport_and_scope", "elapsed": 203.78099999995902}
+{"end": "test_field_swing.FieldSwingTests.test_native_fixture_transport_and_scope", "seconds": 0.01600000000325963}
+{"start": "test_field_swing.FieldSwingTests.test_recipe_schema_sources_and_identities_reject", "elapsed": 203.79699999996228}
+{"end": "test_field_swing.FieldSwingTests.test_recipe_schema_sources_and_identities_reject", "seconds": 0.15600000001722947}
+{"start": "test_field_swing.FieldSwingTests.test_source_tracks_modes_callbacks_and_geometry_reject", "elapsed": 203.96899999998277}
+{"end": "test_field_swing.FieldSwingTests.test_source_tracks_modes_callbacks_and_geometry_reject", "seconds": 2.75}
+{"start": "test_field_swing_action.SwingAction.test_checked_binary_is_the_frozen_source_model", "elapsed": 207.3279999999795}
+{"end": "test_field_swing_action.SwingAction.test_checked_binary_is_the_frozen_source_model", "seconds": 0.39100000000325963}
+{"start": "test_field_swing_action.SwingAction.test_model_masks_dimensions_roles_and_direction_bounds_reject", "elapsed": 207.71899999998277}
+{"end": "test_field_swing_action.SwingAction.test_model_masks_dimensions_roles_and_direction_bounds_reject", "seconds": 0.0}
+{"start": "test_field_swing_action.SwingAction.test_native_source_methods_and_two_stable_projections", "elapsed": 207.71899999998277}
+{"end": "test_field_swing_action.SwingAction.test_native_source_methods_and_two_stable_projections", "seconds": 0.031000000017229468}
+{"start": "test_field_swing_action.SwingAction.test_recipe_versions_unknown_fields_and_source_bindings_reject", "elapsed": 207.75}
+{"end": "test_field_swing_action.SwingAction.test_recipe_versions_unknown_fields_and_source_bindings_reject", "seconds": 1.1719999999622814}
+{"start": "test_field_swing_action.SwingAction.test_reference_fixture_schema_and_unknown_operations_reject", "elapsed": 208.92199999996228}
+{"end": "test_field_swing_action.SwingAction.test_reference_fixture_schema_and_unknown_operations_reject", "seconds": 0.0940000000409782}
+{"start": "test_field_swing_action.SwingAction.test_unknown_idle_graph_tracks_and_semantics_reject", "elapsed": 209.01600000000326}
+{"end": "test_field_swing_action.SwingAction.test_unknown_idle_graph_tracks_and_semantics_reject", "seconds": 5.639999999955762}
+{"start": "test_field_swing_entry.SwingEntry.test_compiled_original_clips_paths_and_frozen_binary", "elapsed": 215.46899999998277}
+{"end": "test_field_swing_entry.SwingEntry.test_compiled_original_clips_paths_and_frozen_binary", "seconds": 0.5939999999827705}
+{"start": "test_field_swing_entry.SwingEntry.test_complete_native_topology_and_repeated_motion_result", "elapsed": 216.06299999996554}
+{"end": "test_field_swing_entry.SwingEntry.test_complete_native_topology_and_repeated_motion_result", "seconds": 0.14000000001396984}
+{"start": "test_field_swing_entry.SwingEntry.test_model_corruption_graph_spans_clips_and_frames_reject", "elapsed": 216.2029999999795}
+{"end": "test_field_swing_entry.SwingEntry.test_model_corruption_graph_spans_clips_and_frames_reject", "seconds": 0.03200000000651926}
+{"start": "test_field_swing_entry.SwingEntry.test_recipe_schema_unknown_states_paths_and_cycles_reject", "elapsed": 216.23499999998603}
+{"end": "test_field_swing_entry.SwingEntry.test_recipe_schema_unknown_states_paths_and_cycles_reject", "seconds": 0.045999999972991645}
+{"start": "test_field_swing_entry.SwingEntry.test_unmapped_original_track_property_or_blend_node_rejects", "elapsed": 216.28099999995902}
+{"end": "test_field_swing_entry.SwingEntry.test_unmapped_original_track_property_or_blend_node_rejects", "seconds": 5.047000000020489}
+{"start": "test_field_swing_entry.SwingEntry.test_valid_graph_route_still_requires_the_actual_native_path", "elapsed": 221.3279999999795}
+{"end": "test_field_swing_entry.SwingEntry.test_valid_graph_route_still_requires_the_actual_native_path", "seconds": 0.01600000000325963}
+{"start": "test_field_swing_graphics.SwingGraphics.test_actual_texture_conversion_receipt_matches_current_pixels", "elapsed": 221.875}
+{"end": "test_field_swing_graphics.SwingGraphics.test_actual_texture_conversion_receipt_matches_current_pixels", "seconds": 0.01600000000325963}
+{"start": "test_field_swing_graphics.SwingGraphics.test_every_packed_frame_has_exact_original_pixels", "elapsed": 221.89100000000326}
+{"end": "test_field_swing_graphics.SwingGraphics.test_every_packed_frame_has_exact_original_pixels", "seconds": 0.014999999955762178}
+{"start": "test_field_swing_graphics.SwingGraphics.test_permission_and_candidate_boundaries", "elapsed": 221.90599999995902}
+{"end": "test_field_swing_graphics.SwingGraphics.test_permission_and_candidate_boundaries", "seconds": 0.0}
+{"start": "test_field_swing_graphics.SwingGraphics.test_repeat_conversion_is_byte_identical", "elapsed": 221.90599999995902}
+{"end": "test_field_swing_graphics.SwingGraphics.test_repeat_conversion_is_byte_identical", "seconds": 0.4220000000204891}
+{"start": "test_field_swing_graphics.SwingGraphics.test_source_sprite_origins_and_order_are_data", "elapsed": 222.3279999999795}
+{"end": "test_field_swing_graphics.SwingGraphics.test_source_sprite_origins_and_order_are_data", "seconds": 0.0}
+{"start": "test_field_swing_graphics.SwingGraphics.test_unknown_recipe_and_wrong_source_bindings_reject", "elapsed": 222.3279999999795}
+{"end": "test_field_swing_graphics.SwingGraphics.test_unknown_recipe_and_wrong_source_bindings_reject", "seconds": 1.702999999979511}
+{"start": "test_field_swing_presentation.SwingPresentation.test_assets_require_owned_outputs_and_matching_conversion_receipt", "elapsed": 224.04699999996228}
+{"end": "test_field_swing_presentation.SwingPresentation.test_assets_require_owned_outputs_and_matching_conversion_receipt", "seconds": 0.625}
+{"start": "test_field_swing_presentation.SwingPresentation.test_binary_model_rejects_unknown_and_malformed_content", "elapsed": 224.67199999996228}
+{"end": "test_field_swing_presentation.SwingPresentation.test_binary_model_rejects_unknown_and_malformed_content", "seconds": 0.01600000000325963}
+{"start": "test_field_swing_presentation.SwingPresentation.test_recipe_schema_versions_paths_and_duplicate_fields_reject", "elapsed": 224.68799999996554}
+{"end": "test_field_swing_presentation.SwingPresentation.test_recipe_schema_versions_paths_and_duplicate_fields_reject", "seconds": 0.015000000013969839}
+{"start": "test_field_swing_presentation.SwingPresentation.test_source_model_and_actual_conversion_receipt", "elapsed": 224.7029999999795}
+{"end": "test_field_swing_presentation.SwingPresentation.test_source_model_and_actual_conversion_receipt", "seconds": 0.4380000000237487}
+{"start": "test_frame_profile_build.FrameProfileBuildTests.test_default_remains_unprofiled", "elapsed": 225.14100000000326}
+{"end": "test_frame_profile_build.FrameProfileBuildTests.test_default_remains_unprofiled", "seconds": 0.0}
+{"start": "test_frame_profile_build.FrameProfileBuildTests.test_profile_is_separate_and_explicit", "elapsed": 225.14100000000326}
+{"end": "test_frame_profile_build.FrameProfileBuildTests.test_profile_is_separate_and_explicit", "seconds": 0.0}
+{"start": "test_frame_profile_build.FrameProfileBuildTests.test_source_instrumentation_preserves_input_and_game_code", "elapsed": 225.14100000000326}
+{"end": "test_frame_profile_build.FrameProfileBuildTests.test_source_instrumentation_preserves_input_and_game_code", "seconds": 0.0}
+{"start": "test_frame_profile_build.FrameProfileBuildTests.test_unreviewed_instrumentation_boundary_rejected", "elapsed": 225.14100000000326}
+{"end": "test_frame_profile_build.FrameProfileBuildTests.test_unreviewed_instrumentation_boundary_rejected", "seconds": 0.0}
+{"start": "test_godot_text.GodotTextTests.test_instancing_merges_overrides", "elapsed": 225.14100000000326}
+{"end": "test_godot_text.GodotTextTests.test_instancing_merges_overrides", "seconds": 0.0}
+{"start": "test_godot_text.GodotTextTests.test_project_value", "elapsed": 225.14100000000326}
+{"end": "test_godot_text.GodotTextTests.test_project_value", "seconds": 0.0}
+{"start": "test_godot_text.GodotTextTests.test_rejections", "elapsed": 225.14100000000326}
+{"end": "test_godot_text.GodotTextTests.test_rejections", "seconds": 0.0}
+{"start": "test_godot_text.GodotTextTests.test_values", "elapsed": 225.14100000000326}
+{"end": "test_godot_text.GodotTextTests.test_values", "seconds": 0.0}
+{"start": "test_graveyard_story.GraveyardStoryTests.test_reviewed_owner_graph_text_and_explicit_boundary", "elapsed": 225.14100000000326}
+{"end": "test_graveyard_story.GraveyardStoryTests.test_reviewed_owner_graph_text_and_explicit_boundary", "seconds": 12.296999999962281}
+{"start": "test_graveyard_story.GraveyardStoryTests.test_unknown_markup_and_conditional_fail_closed", "elapsed": 237.43799999996554}
+{"end": "test_graveyard_story.GraveyardStoryTests.test_unknown_markup_and_conditional_fail_closed", "seconds": 0.0}
+{"start": "test_graveyard_story.GraveyardStoryTests.test_unknown_schema_owner_source_and_document_fail_closed", "elapsed": 237.43799999996554}
+{"end": "test_graveyard_story.GraveyardStoryTests.test_unknown_schema_owner_source_and_document_fail_closed", "seconds": 7.937000000034459}
+{"start": "test_graveyard_tutorial_programme.TutorialProgramme.test_complete_source_graph_and_old_prefix", "elapsed": 276.280999999959}
+{"end": "test_graveyard_tutorial_programme.TutorialProgramme.test_complete_source_graph_and_old_prefix", "seconds": 0.03200000000651926}
+{"start": "test_graveyard_tutorial_programme.TutorialProgramme.test_every_branch_and_manual_loop_match_source", "elapsed": 276.31299999996554}
+{"end": "test_graveyard_tutorial_programme.TutorialProgramme.test_every_branch_and_manual_loop_match_source", "seconds": 0.0}
+{"start": "test_graveyard_tutorial_programme.TutorialProgramme.test_original_direction_observation_provenance", "elapsed": 276.31299999996554}
+{"end": "test_graveyard_tutorial_programme.TutorialProgramme.test_original_direction_observation_provenance", "seconds": 0.0470000000204891}
+{"start": "test_graveyard_tutorial_programme.TutorialProgramme.test_output_is_deterministic_and_source_identities_are_retained", "elapsed": 276.35999999998603}
+{"end": "test_graveyard_tutorial_programme.TutorialProgramme.test_output_is_deterministic_and_source_identities_are_retained", "seconds": 22.35899999999674}
+{"start": "test_graveyard_tutorial_programme.TutorialProgramme.test_two_locales_clear_narration_voice_and_keep_current_button_tags", "elapsed": 298.71899999998277}
+{"end": "test_graveyard_tutorial_programme.TutorialProgramme.test_two_locales_clear_narration_voice_and_keep_current_button_tags", "seconds": 0.0}
+{"start": "test_graveyard_tutorial_programme.TutorialProgramme.test_unknown_and_changed_source_lowering_reject", "elapsed": 298.71899999998277}
+{"end": "test_graveyard_tutorial_programme.TutorialProgramme.test_unknown_and_changed_source_lowering_reject", "seconds": 0.0779999999795109}
+{"start": "test_house_assets.HouseAssetsTests.test_invalid_geometry_and_duplicate_role_fail", "elapsed": 298.7969999999623}
+{"end": "test_house_assets.HouseAssetsTests.test_invalid_geometry_and_duplicate_role_fail", "seconds": 0.20300000003771856}
+{"start": "test_house_assets.HouseAssetsTests.test_missing_or_changed_texture_rejected", "elapsed": 299.0}
+{"end": "test_house_assets.HouseAssetsTests.test_missing_or_changed_texture_rejected", "seconds": 18.875}
+{"start": "test_house_assets.HouseAssetsTests.test_source_and_outputs_verified", "elapsed": 317.875}
+{"end": "test_house_assets.HouseAssetsTests.test_source_and_outputs_verified", "seconds": 18.67199999996228}
+{"start": "test_house_assets.HouseAssetsTests.test_source_changes_fail_closed", "elapsed": 336.5469999999623}
+{"end": "test_house_assets.HouseAssetsTests.test_source_changes_fail_closed", "seconds": 0.0}
+{"start": "test_house_assets.HouseAssetsTests.test_source_tracks_and_font_identity", "elapsed": 336.5469999999623}
+{"end": "test_house_assets.HouseAssetsTests.test_source_tracks_and_font_identity", "seconds": 19.14100000000326}
+{"start": "test_house_assets.HouseAssetsTests.test_unknown_schema_and_resource_fields_fail", "elapsed": 355.68799999996554}
+{"end": "test_house_assets.HouseAssetsTests.test_unknown_schema_and_resource_fields_fail", "seconds": 0.09299999999348074}
+{"start": "test_house_key_doors.KeyDoorBindings.test_font_catalogue_reuse_requires_identical_glyphs", "elapsed": 355.780999999959}
+{"end": "test_house_key_doors.KeyDoorBindings.test_font_catalogue_reuse_requires_identical_glyphs", "seconds": 0.01600000000325963}
+{"start": "test_house_key_doors.KeyDoorBindings.test_original_key_and_localized_text", "elapsed": 355.7969999999623}
+{"end": "test_house_key_doors.KeyDoorBindings.test_original_key_and_localized_text", "seconds": 0.2970000000204891}
+{"start": "test_house_key_doors.KeyDoorBindings.test_prompt_and_naming_dependency_reuse_rejects_semantic_changes", "elapsed": 356.09399999998277}
+{"end": "test_house_key_doors.KeyDoorBindings.test_prompt_and_naming_dependency_reuse_rejects_semantic_changes", "seconds": 0.0470000000204891}
+{"start": "test_house_key_doors.KeyDoorBindings.test_unknown_binding_and_source_rejected", "elapsed": 356.14100000000326}
+{"end": "test_house_key_doors.KeyDoorBindings.test_unknown_binding_and_source_rejected", "seconds": 1.625}
+{"start": "test_house_key_doors.KeyDoorBindings.test_unmapped_door_policy_and_item_rejected", "elapsed": 357.76600000000326}
+{"end": "test_house_key_doors.KeyDoorBindings.test_unmapped_door_policy_and_item_rejected", "seconds": 0.8439999999827705}
+{"start": "test_house_layers.HouseLayersTests.test_every_foreground_cell_matches_original_serialized_atlas", "elapsed": 358.7029999999795}
+{"end": "test_house_layers.HouseLayersTests.test_every_foreground_cell_matches_original_serialized_atlas", "seconds": 0.0}
+{"start": "test_house_layers.HouseLayersTests.test_foreground_ir_roundtrip_and_unknown_flag_rejected", "elapsed": 358.7029999999795}
+{"end": "test_house_layers.HouseLayersTests.test_foreground_ir_roundtrip_and_unknown_flag_rejected", "seconds": 0.3279999999795109}
+{"start": "test_house_layers.HouseLayersTests.test_foreground_resource_appends_after_existing_stable_identities", "elapsed": 359.030999999959}
+{"end": "test_house_layers.HouseLayersTests.test_foreground_resource_appends_after_existing_stable_identities", "seconds": 0.0}
+{"start": "test_house_layers.HouseLayersTests.test_new_and_old_output_tampering_rejected", "elapsed": 359.030999999959}
+{"end": "test_house_layers.HouseLayersTests.test_new_and_old_output_tampering_rejected", "seconds": 0.375}
+{"start": "test_house_layers.HouseLayersTests.test_original_corner_alpha_and_bedroom_floor_mask", "elapsed": 359.405999999959}
+{"end": "test_house_layers.HouseLayersTests.test_original_corner_alpha_and_bedroom_floor_mask", "seconds": 0.0}
+{"start": "test_house_layers.HouseLayersTests.test_original_layer_counts_order_and_resource_identity", "elapsed": 359.405999999959}
+Verified 14 original house Y-sorted overlays and 276 original foreground atlas cells
+{"end": "test_house_layers.HouseLayersTests.test_original_layer_counts_order_and_resource_identity", "seconds": 0.15700000000651926}
+{"start": "test_house_layers.HouseLayersTests.test_receipt_schema_source_resource_and_layout_tampering_rejected", "elapsed": 359.56299999996554}
+{"end": "test_house_layers.HouseLayersTests.test_receipt_schema_source_resource_and_layout_tampering_rejected", "seconds": 0.9839999999967404}
+{"start": "test_house_layers.HouseLayersTests.test_unknown_cell_flips_counts_positions_and_atlas_bounds_rejected", "elapsed": 360.5469999999623}
+{"end": "test_house_layers.HouseLayersTests.test_unknown_cell_flips_counts_positions_and_atlas_bounds_rejected", "seconds": 1.3440000000409782}
+{"start": "test_house_layers.HouseLayersTests.test_unknown_tile_modes_offsets_spacing_and_z_rejected", "elapsed": 361.89100000000326}
+{"end": "test_house_layers.HouseLayersTests.test_unknown_tile_modes_offsets_spacing_and_z_rejected", "seconds": 0.9839999999967404}
+{"start": "test_house_layers.HouseLayersTests.test_unreviewed_layer_modes_depth_and_appearance_rejected", "elapsed": 362.875}
+{"end": "test_house_layers.HouseLayersTests.test_unreviewed_layer_modes_depth_and_appearance_rejected", "seconds": 1.4849999999860302}
+{"start": "test_house_layers.HouseLayersTests.test_unreviewed_layer_order_and_transforms_rejected", "elapsed": 364.35999999998603}
+{"end": "test_house_layers.HouseLayersTests.test_unreviewed_layer_order_and_transforms_rejected", "seconds": 0.5310000000172295}
+{"start": "test_house_layers.HouseLayersTests.test_unreviewed_source_and_native_export_rejected", "elapsed": 364.89100000000326}
+{"end": "test_house_layers.HouseLayersTests.test_unreviewed_source_and_native_export_rejected", "seconds": 0.2649999999557622}
+{"start": "test_introduction_assets.IntroductionAssets.test_checked_stage_complete_files_and_no_receipts", "elapsed": 366.39100000000326}
+{"end": "test_introduction_assets.IntroductionAssets.test_checked_stage_complete_files_and_no_receipts", "seconds": 0.13999999995576218}
+{"start": "test_introduction_assets.IntroductionAssets.test_cloud_rejects_pixel_loss_grid_and_bool_size", "elapsed": 366.530999999959}
+{"end": "test_introduction_assets.IntroductionAssets.test_cloud_rejects_pixel_loss_grid_and_bool_size", "seconds": 0.5470000000204891}
+{"start": "test_introduction_assets.IntroductionAssets.test_duplicate_ids_roles_paths_and_traversal", "elapsed": 367.0779999999795}
+{"end": "test_introduction_assets.IntroductionAssets.test_duplicate_ids_roles_paths_and_traversal", "seconds": 0.5939999999827705}
+{"start": "test_introduction_assets.IntroductionAssets.test_duplicate_json_and_unsafe_paths", "elapsed": 367.6719999999623}
+{"end": "test_introduction_assets.IntroductionAssets.test_duplicate_json_and_unsafe_paths", "seconds": 0.0}
+{"start": "test_introduction_assets.IntroductionAssets.test_font_encoder_rejects_unknown_bounds_scalars_and_unbound_rows", "elapsed": 367.6719999999623}
+{"end": "test_introduction_assets.IntroductionAssets.test_font_encoder_rejects_unknown_bounds_scalars_and_unbound_rows", "seconds": 0.10899999999674037}
+{"start": "test_introduction_assets.IntroductionAssets.test_font_remap_fallback_and_actual_node", "elapsed": 367.780999999959}
+{"end": "test_introduction_assets.IntroductionAssets.test_font_remap_fallback_and_actual_node", "seconds": 0.9380000000237487}
+{"start": "test_introduction_assets.IntroductionAssets.test_original_nodes_fonts_text_and_cloud_pixels", "elapsed": 368.71899999998277}
+{"end": "test_introduction_assets.IntroductionAssets.test_original_nodes_fonts_text_and_cloud_pixels", "seconds": 0.0}
+{"start": "test_introduction_assets.IntroductionAssets.test_pin_missing_source_and_scene_binding", "elapsed": 368.71899999998277}
+{"end": "test_introduction_assets.IntroductionAssets.test_pin_missing_source_and_scene_binding", "seconds": 0.39100000000325963}
+{"start": "test_introduction_assets.IntroductionAssets.test_stage_fingerprint_missing_and_truncated_output", "elapsed": 369.10999999998603}
+{"end": "test_introduction_assets.IntroductionAssets.test_stage_fingerprint_missing_and_truncated_output", "seconds": 0.28100000001722947}
+{"start": "test_introduction_assets.IntroductionAssets.test_stage_receipt_unknown_geometry_and_stale_pin", "elapsed": 369.39100000000326}
+{"end": "test_introduction_assets.IntroductionAssets.test_stage_receipt_unknown_geometry_and_stale_pin", "seconds": 0.8589999999967404}
+{"start": "test_introduction_assets.IntroductionAssets.test_unknown_version_fields_and_bool_identity", "elapsed": 370.25}
+{"end": "test_introduction_assets.IntroductionAssets.test_unknown_version_fields_and_bool_identity", "seconds": 0.14100000000325963}
+{"start": "test_items_assets.ItemsAssetsTests.test_changed_source_is_rejected", "elapsed": 370.39100000000326}
+{"end": "test_items_assets.ItemsAssetsTests.test_changed_source_is_rejected", "seconds": 0.3279999999795109}
+{"start": "test_items_assets.ItemsAssetsTests.test_existing_font_box_cursor_are_checked_references", "elapsed": 370.71899999998277}
+{"end": "test_items_assets.ItemsAssetsTests.test_existing_font_box_cursor_are_checked_references", "seconds": 0.0}
+{"start": "test_items_assets.ItemsAssetsTests.test_manually_changed_ir_is_rejected", "elapsed": 370.71899999998277}
+{"end": "test_items_assets.ItemsAssetsTests.test_manually_changed_ir_is_rejected", "seconds": 1.9060000000172295}
+{"start": "test_items_assets.ItemsAssetsTests.test_native_container_layout_remains_unscaled", "elapsed": 372.625}
+{"end": "test_items_assets.ItemsAssetsTests.test_native_container_layout_remains_unscaled", "seconds": 0.0}
+{"start": "test_items_assets.ItemsAssetsTests.test_native_hint_uses_original_distinct_font", "elapsed": 372.625}
+{"end": "test_items_assets.ItemsAssetsTests.test_native_hint_uses_original_distinct_font", "seconds": 0.0}
+{"start": "test_items_assets.ItemsAssetsTests.test_native_reference_mutation_is_rejected", "elapsed": 372.625}
+{"end": "test_items_assets.ItemsAssetsTests.test_native_reference_mutation_is_rejected", "seconds": 0.42199999996228144}
+{"start": "test_items_assets.ItemsAssetsTests.test_original_inventory_and_resolved_description", "elapsed": 373.0469999999623}
+{"end": "test_items_assets.ItemsAssetsTests.test_original_inventory_and_resolved_description", "seconds": 0.0}
+{"start": "test_items_assets.ItemsAssetsTests.test_original_menu_clips_and_cursor_idle", "elapsed": 373.0469999999623}
+{"end": "test_items_assets.ItemsAssetsTests.test_original_menu_clips_and_cursor_idle", "seconds": 0.0}
+{"start": "test_items_assets.ItemsAssetsTests.test_pristine_sources_resources_and_ir_verify", "elapsed": 373.0469999999623}
+Verified source-pinned Items art, IR dependencies and native layout provenance
+{"end": "test_items_assets.ItemsAssetsTests.test_pristine_sources_resources_and_ir_verify", "seconds": 1.8130000000237487}
+{"start": "test_items_assets.ItemsAssetsTests.test_rotation_is_lossless_per_frame_including_transparent_rgb", "elapsed": 374.85999999998603}
+{"end": "test_items_assets.ItemsAssetsTests.test_rotation_is_lossless_per_frame_including_transparent_rgb", "seconds": 0.0}
+{"start": "test_items_assets.ItemsAssetsTests.test_source_one_based_disabled_palette_and_cursor_backplate", "elapsed": 374.85999999998603}
+{"end": "test_items_assets.ItemsAssetsTests.test_source_one_based_disabled_palette_and_cursor_backplate", "seconds": 0.0}
+{"start": "test_items_assets.ItemsAssetsTests.test_unknown_animation_track_rejected", "elapsed": 374.85999999998603}
+{"end": "test_items_assets.ItemsAssetsTests.test_unknown_animation_track_rejected", "seconds": 0.5619999999762513}
+{"start": "test_items_assets.ItemsAssetsTests.test_unknown_version_paths_fields_geometry_and_resource_fail", "elapsed": 375.4219999999623}
+{"end": "test_items_assets.ItemsAssetsTests.test_unknown_version_paths_fields_geometry_and_resource_fail", "seconds": 2.297000000020489}
+{"start": "test_items_fixture_resources.ItemFixtureResources.test_exact_checked_prefix_and_independent_copy", "elapsed": 377.71899999998277}
+{"end": "test_items_fixture_resources.ItemFixtureResources.test_exact_checked_prefix_and_independent_copy", "seconds": 0.8439999999827705}
+{"start": "test_items_fixture_resources.ItemFixtureResources.test_no_unknown_or_duplicate_extension_discarded", "elapsed": 378.56299999996554}
+{"end": "test_items_fixture_resources.ItemFixtureResources.test_no_unknown_or_duplicate_extension_discarded", "seconds": 2.125}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_changed_command_handler_parser_body_or_object_body_fails", "elapsed": 380.7029999999795}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_changed_command_handler_parser_body_or_object_body_fails", "seconds": 0.0779999999795109}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_changed_reference_timing_payload_or_scope_rejected", "elapsed": 380.780999999959}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_changed_reference_timing_payload_or_scope_rejected", "seconds": 0.01600000000325963}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_dispatch_order_is_handler_order_not_yaml_order", "elapsed": 380.7969999999623}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_dispatch_order_is_handler_order_not_yaml_order", "seconds": 6.297000000020489}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_final_handoff_is_after_wait_and_ordered_signals", "elapsed": 387.10999999998603}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_final_handoff_is_after_wait_and_ordered_signals", "seconds": 0.21799999999348074}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_mutated_original_dialogue_and_missing_phrases_rejected", "elapsed": 387.3279999999795}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_mutated_original_dialogue_and_missing_phrases_rejected", "seconds": 0.0}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_native_parser_receipt_matches_external_commands", "elapsed": 387.3279999999795}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_native_parser_receipt_matches_external_commands", "seconds": 0.6880000000237487}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_native_source_gate_when_checkout_present", "elapsed": 388.01600000000326}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_native_source_gate_when_checkout_present", "seconds": 0.0}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_receipt_wrong_engine_provenance_unknown_body_rejected", "elapsed": 388.01600000000326}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_receipt_wrong_engine_provenance_unknown_body_rejected", "seconds": 0.0}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_review_scope_version_and_missing_source_gate_rejected", "elapsed": 388.01600000000326}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_review_scope_version_and_missing_source_gate_rejected", "seconds": 0.0}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_source_block_extraction_rejects_missing_or_ambiguous", "elapsed": 388.01600000000326}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_source_block_extraction_rejects_missing_or_ambiguous", "seconds": 0.0}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_unknown_actor_target_method_and_body_fail_closed", "elapsed": 388.01600000000326}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_unknown_actor_target_method_and_body_fail_closed", "seconds": 3.6089999999967404}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_unknown_movement_modes_body_and_nonfinite_numbers_rejected", "elapsed": 391.625}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_unknown_movement_modes_body_and_nonfinite_numbers_rejected", "seconds": 1.312999999965541}
+{"start": "test_lamp_dialogue.LampDialogueTests.test_unsupported_commands_control_flow_and_wait_modes", "elapsed": 392.93799999996554}
+{"end": "test_lamp_dialogue.LampDialogueTests.test_unsupported_commands_control_flow_and_wait_modes", "seconds": 2.75}
+{"start": "test_legacy_resource_prefix.LegacyResourcePrefixTests.test_changed_string_or_resource_identity_rejected", "elapsed": 395.68799999996554}
+{"end": "test_legacy_resource_prefix.LegacyResourcePrefixTests.test_changed_string_or_resource_identity_rejected", "seconds": 0.062000000034458935}
+{"start": "test_legacy_resource_prefix.LegacyResourcePrefixTests.test_projection_keeps_source_unchanged", "elapsed": 395.75}
+{"end": "test_legacy_resource_prefix.LegacyResourcePrefixTests.test_projection_keeps_source_unchanged", "seconds": 0.030999999959021807}
+{"start": "test_legacy_resource_prefix.LegacyResourcePrefixTests.test_unknown_relocated_hash_rejected", "elapsed": 395.780999999959}
+{"end": "test_legacy_resource_prefix.LegacyResourcePrefixTests.test_unknown_relocated_hash_rejected", "seconds": 0.01600000000325963}
+{"start": "test_loading_indicator.LoadingIndicatorTests.test_invalid_external_content", "elapsed": 395.7969999999623}
+{"end": "test_loading_indicator.LoadingIndicatorTests.test_invalid_external_content", "seconds": 0.32800000003771856}
+{"start": "test_loading_indicator.LoadingIndicatorTests.test_invalid_feedback_authoring", "elapsed": 396.125}
+{"end": "test_loading_indicator.LoadingIndicatorTests.test_invalid_feedback_authoring", "seconds": 0.0}
+{"start": "test_loading_indicator.LoadingIndicatorTests.test_reader_and_renderer", "elapsed": 396.125}
+{"end": "test_loading_indicator.LoadingIndicatorTests.test_reader_and_renderer", "seconds": 0.14100000000325963}
+{"start": "test_loading_indicator.LoadingIndicatorTests.test_source_and_staged_pack", "elapsed": 396.26600000000326}
+{"end": "test_loading_indicator.LoadingIndicatorTests.test_source_and_staged_pack", "seconds": 0.2809999999590218}
+{"start": "test_loading_texture.LoadingTextureTests.test_progress_payload_ownership_and_failures", "elapsed": 396.5469999999623}
+{"end": "test_loading_texture.LoadingTextureTests.test_progress_payload_ownership_and_failures", "seconds": 0.14100000000325963}
+{"start": "test_map_asset.MapAssetTests.test_changed_source_or_pin_rejected", "elapsed": 396.68799999996554}
+{"end": "test_map_asset.MapAssetTests.test_changed_source_or_pin_rejected", "seconds": 0.015000000013969839}
+{"start": "test_map_asset.MapAssetTests.test_external_source_path_rejected", "elapsed": 396.7029999999795}
+{"end": "test_map_asset.MapAssetTests.test_external_source_path_rejected", "seconds": 0.01600000000325963}
+{"start": "test_map_asset.MapAssetTests.test_layout_preserves_entire_background", "elapsed": 396.71899999998277}
+{"end": "test_map_asset.MapAssetTests.test_layout_preserves_entire_background", "seconds": 0.01600000000325963}
+{"start": "test_map_asset.MapAssetTests.test_stale_or_partial_compiled_receipt_rejected", "elapsed": 396.73499999998603}
+{"end": "test_map_asset.MapAssetTests.test_stale_or_partial_compiled_receipt_rejected", "seconds": 0.015000000013969839}
+{"start": "test_map_asset.MapAssetTests.test_unknown_schema_version_layout_rejected", "elapsed": 396.75}
+{"end": "test_map_asset.MapAssetTests.test_unknown_schema_version_layout_rejected", "seconds": 0.0}
+{"start": "test_map_asset.MapAssetTests.test_unreviewed_asset_rights_rejected", "elapsed": 396.75}
+{"end": "test_map_asset.MapAssetTests.test_unreviewed_asset_rights_rejected", "seconds": 0.01600000000325963}
+{"start": "test_mayor_field.MayorField.test_candidate_paths_and_output_owner", "elapsed": 398.48499999998603}
+{"end": "test_mayor_field.MayorField.test_candidate_paths_and_output_owner", "seconds": 0.0}
+{"start": "test_mayor_field.MayorField.test_effective_visible_collision_source_order", "elapsed": 398.48499999998603}
+{"end": "test_mayor_field.MayorField.test_effective_visible_collision_source_order", "seconds": 0.125}
+{"start": "test_mayor_field.MayorField.test_incomplete_room_cannot_enter_release_builder", "elapsed": 398.60999999998603}
+{"end": "test_mayor_field.MayorField.test_incomplete_room_cannot_enter_release_builder", "seconds": 0.0}
+{"start": "test_mayor_field.MayorField.test_missing_sprite_actor_and_source_type_fail", "elapsed": 398.60999999998603}
+{"end": "test_mayor_field.MayorField.test_missing_sprite_actor_and_source_type_fail", "seconds": 0.5929999999934807}
+{"start": "test_mayor_field.MayorField.test_original_map_structure", "elapsed": 399.2029999999795}
+{"end": "test_mayor_field.MayorField.test_original_map_structure", "seconds": 0.03200000000651926}
+{"start": "test_mayor_field.MayorField.test_original_podunk_outputs_unchanged", "elapsed": 399.23499999998603}
+{"end": "test_mayor_field.MayorField.test_original_podunk_outputs_unchanged", "seconds": 11.28100000001723}
+{"start": "test_mayor_field.MayorField.test_recipe_versions_and_identities", "elapsed": 410.51600000000326}
+{"end": "test_mayor_field.MayorField.test_recipe_versions_and_identities", "seconds": 0.030999999959021807}
+{"start": "test_mayor_scene.MayorScenePublication.test_checked_paths_cannot_escape_or_accept_changed_bytes", "elapsed": 419.21899999998277}
+{"end": "test_mayor_scene.MayorScenePublication.test_checked_paths_cannot_escape_or_accept_changed_bytes", "seconds": 0.01600000000325963}
+{"start": "test_mayor_scene.MayorScenePublication.test_checked_release_outputs_and_source_fixtures", "elapsed": 419.23499999998603}
+{"end": "test_mayor_scene.MayorScenePublication.test_checked_release_outputs_and_source_fixtures", "seconds": 8.65600000001723}
+{"start": "test_mayor_scene.MayorScenePublication.test_missing_and_changed_receipts_reject", "elapsed": 427.89100000000326}
+{"end": "test_mayor_scene.MayorScenePublication.test_missing_and_changed_receipts_reject", "seconds": 20.75}
+{"start": "test_mayor_scene.MayorScenePublication.test_route_recipe_path_and_source_graph_rejected", "elapsed": 448.64100000000326}
+{"end": "test_mayor_scene.MayorScenePublication.test_route_recipe_path_and_source_graph_rejected", "seconds": 0.0}
+{"start": "test_mayor_scene.MayorScenePublication.test_texture_pcm_and_room_corruption_rejected", "elapsed": 448.64100000000326}
+{"end": "test_mayor_scene.MayorScenePublication.test_texture_pcm_and_room_corruption_rejected", "seconds": 21.57799999997951}
+{"start": "test_mayor_story.MayorStory.test_actual_source_graph_and_candidate", "elapsed": 470.60999999998603}
+{"end": "test_mayor_story.MayorStory.test_actual_source_graph_and_candidate", "seconds": 4.670999999972992}
+{"start": "test_mayor_story.MayorStory.test_pippi_flag_branch_is_after_first_text", "elapsed": 475.280999999959}
+{"end": "test_mayor_story.MayorStory.test_pippi_flag_branch_is_after_first_text", "seconds": 0.0}
+{"start": "test_mayor_story.MayorStory.test_recipe_negative", "elapsed": 475.280999999959}
+{"end": "test_mayor_story.MayorStory.test_recipe_negative", "seconds": 0.6880000000237487}
+{"start": "test_mayor_story.MayorStory.test_unknown_source_graph_mechanisms_fail", "elapsed": 475.96899999998277}
+{"end": "test_mayor_story.MayorStory.test_unknown_source_graph_mechanisms_fail", "seconds": 0.0}
+{"start": "test_melody_content.MelodyContentTests.test_exit_guard_and_phone_boundaries_preserve_source_geometry", "elapsed": 476.4219999999623}
+{"end": "test_melody_content.MelodyContentTests.test_exit_guard_and_phone_boundaries_preserve_source_geometry", "seconds": 0.0}
+{"start": "test_melody_content.MelodyContentTests.test_forged_native_parser_receipt_rejected", "elapsed": 476.4219999999623}
+{"end": "test_melody_content.MelodyContentTests.test_forged_native_parser_receipt_rejected", "seconds": 0.031000000017229468}
+{"start": "test_melody_content.MelodyContentTests.test_guard_preserves_camera_null_and_concurrent_source_movement", "elapsed": 476.4529999999795}
+{"end": "test_melody_content.MelodyContentTests.test_guard_preserves_camera_null_and_concurrent_source_movement", "seconds": 0.0}
+{"start": "test_melody_content.MelodyContentTests.test_house_crosspack_links_seen_keys_and_delay_rejected", "elapsed": 476.4529999999795}
+{"end": "test_melody_content.MelodyContentTests.test_house_crosspack_links_seen_keys_and_delay_rejected", "seconds": 0.0779999999795109}
+{"start": "test_melody_content.MelodyContentTests.test_new_runtime_schema_modes_reject_unknown_or_misbound_data", "elapsed": 476.530999999959}
+{"end": "test_melody_content.MelodyContentTests.test_new_runtime_schema_modes_reject_unknown_or_misbound_data", "seconds": 1.2350000000442378}
+{"start": "test_melody_content.MelodyContentTests.test_original_native_parser_and_receipt", "elapsed": 477.76600000000326}
+{"end": "test_melody_content.MelodyContentTests.test_original_native_parser_and_receipt", "seconds": 0.8119999999762513}
+{"start": "test_melody_content.MelodyContentTests.test_preserved_prefixes_and_only_documented_append_metadata", "elapsed": 478.5779999999795}
+{"end": "test_melody_content.MelodyContentTests.test_preserved_prefixes_and_only_documented_append_metadata", "seconds": 0.0470000000204891}
+{"start": "test_melody_content.MelodyContentTests.test_program_paths_source_labels_and_binary_roundtrip", "elapsed": 478.625}
+{"end": "test_melody_content.MelodyContentTests.test_program_paths_source_labels_and_binary_roundtrip", "seconds": 58.81299999996554}
+{"start": "test_melody_content.MelodyContentTests.test_resource_binding_and_audio_identity", "elapsed": 537.4379999999655}
+{"end": "test_melody_content.MelodyContentTests.test_resource_binding_and_audio_identity", "seconds": 0.0}
+{"start": "test_melody_content.MelodyContentTests.test_source_order_inherited_original_talker_and_synchronous_music", "elapsed": 537.4379999999655}
+{"end": "test_melody_content.MelodyContentTests.test_source_order_inherited_original_talker_and_synchronous_music", "seconds": 0.0}
+{"start": "test_melody_content.MelodyContentTests.test_text_voice_wait_tokens_and_override_seen_keys", "elapsed": 537.4379999999655}
+{"end": "test_melody_content.MelodyContentTests.test_text_voice_wait_tokens_and_override_seen_keys", "seconds": 0.0}
+{"start": "test_melody_content.MelodyContentTests.test_unknown_source_fields_graph_voice_and_objects_rejected", "elapsed": 537.4379999999655}
+{"end": "test_melody_content.MelodyContentTests.test_unknown_source_fields_graph_voice_and_objects_rejected", "seconds": 3.5310000000172295}
+{"start": "test_menu_audio_binding.MenuAudioBindingTests.test_compiled_resources_match_actual_bank_sources", "elapsed": 540.9689999999828}
+{"end": "test_menu_audio_binding.MenuAudioBindingTests.test_compiled_resources_match_actual_bank_sources", "seconds": 1.5160000000032596}
+{"start": "test_menu_audio_binding.MenuAudioBindingTests.test_unknown_and_unsafe_names_rejected", "elapsed": 542.484999999986}
+{"end": "test_menu_audio_binding.MenuAudioBindingTests.test_unknown_and_unsafe_names_rejected", "seconds": 0.14000000001396984}
+{"start": "test_move_audio_reference.MoveAudioReferenceTests.test_actual_native_result_and_fixture", "elapsed": 542.625}
+{"end": "test_move_audio_reference.MoveAudioReferenceTests.test_actual_native_result_and_fixture", "seconds": 0.01600000000325963}
+{"start": "test_move_audio_reference.MoveAudioReferenceTests.test_exact_source_review", "elapsed": 542.6410000000033}
+{"end": "test_move_audio_reference.MoveAudioReferenceTests.test_exact_source_review", "seconds": 0.125}
+{"start": "test_move_audio_reference.MoveAudioReferenceTests.test_reject_unknown_truncated_or_changed_reference", "elapsed": 542.7660000000033}
+{"end": "test_move_audio_reference.MoveAudioReferenceTests.test_reject_unknown_truncated_or_changed_reference", "seconds": 0.046999999962281436}
+{"start": "test_music_all_reference.MusicAllReferenceTests.test_corrupt_result_rejected", "elapsed": 544.2660000000033}
+{"end": "test_music_all_reference.MusicAllReferenceTests.test_corrupt_result_rejected", "seconds": 0.014999999955762178}
+{"start": "test_music_all_reference.MusicAllReferenceTests.test_reviewed_method_and_exact_fixture", "elapsed": 544.280999999959}
+{"end": "test_music_all_reference.MusicAllReferenceTests.test_reviewed_method_and_exact_fixture", "seconds": 0.0}
+{"start": "test_music_all_reference.MusicAllReferenceTests.test_source_completion_waiters_and_stopped_tracks", "elapsed": 544.280999999959}
+{"end": "test_music_all_reference.MusicAllReferenceTests.test_source_completion_waiters_and_stopped_tracks", "seconds": 0.0}
+{"start": "test_music_finished_reference.MusicFinishedReferenceTests.test_bad_results_reject", "elapsed": 545.5}
+{"end": "test_music_finished_reference.MusicFinishedReferenceTests.test_bad_results_reject", "seconds": 0.0}
+{"start": "test_music_finished_reference.MusicFinishedReferenceTests.test_source_callbacks_and_exact_fixture", "elapsed": 545.5}
+{"end": "test_music_finished_reference.MusicFinishedReferenceTests.test_source_callbacks_and_exact_fixture", "seconds": 0.0}
+{"start": "test_music_finished_reference.MusicFinishedReferenceTests.test_unchanged_source_and_bounded_mapping", "elapsed": 545.5}
+{"end": "test_music_finished_reference.MusicFinishedReferenceTests.test_unchanged_source_and_bounded_mapping", "seconds": 0.01600000000325963}
+{"start": "test_music_library.MusicLibraryTests.test_bad_metadata_encoder_paths", "elapsed": 546.8910000000033}
+{"end": "test_music_library.MusicLibraryTests.test_bad_metadata_encoder_paths", "seconds": 0.0}
+{"start": "test_music_library.MusicLibraryTests.test_exact_sources_and_generator_fixtures", "elapsed": 546.8910000000033}
+{"end": "test_music_library.MusicLibraryTests.test_exact_sources_and_generator_fixtures", "seconds": 0.0}
+{"start": "test_music_library.MusicLibraryTests.test_reject_changed_or_partial_scope_recipes", "elapsed": 546.8910000000033}
+{"end": "test_music_library.MusicLibraryTests.test_reject_changed_or_partial_scope_recipes", "seconds": 1.1719999999622814}
+{"start": "test_music_library_bindings.MusicLibraryBindingsTests.test_decoder_negative_versions_and_records", "elapsed": 549.484999999986}
+{"end": "test_music_library_bindings.MusicLibraryBindingsTests.test_decoder_negative_versions_and_records", "seconds": 0.015000000013969839}
+{"start": "test_music_library_bindings.MusicLibraryBindingsTests.test_encoder_schema_path_fingerprint_rejected", "elapsed": 549.5}
+{"end": "test_music_library_bindings.MusicLibraryBindingsTests.test_encoder_schema_path_fingerprint_rejected", "seconds": 0.0}
+{"start": "test_music_library_bindings.MusicLibraryBindingsTests.test_partial_changed_unknown_recipe_rejected", "elapsed": 549.5}
+{"end": "test_music_library_bindings.MusicLibraryBindingsTests.test_partial_changed_unknown_recipe_rejected", "seconds": 9.812999999965541}
+{"start": "test_music_library_bindings.MusicLibraryBindingsTests.test_source_proof_and_exact_generated_bundle", "elapsed": 559.3129999999655}
+{"end": "test_music_library_bindings.MusicLibraryBindingsTests.test_source_proof_and_exact_generated_bundle", "seconds": 0.015000000013969839}
+{"start": "test_music_lifetime_reference.MusicLifetimeReferenceTests.test_bad_results_are_rejected", "elapsed": 560.5469999999623}
+{"end": "test_music_lifetime_reference.MusicLifetimeReferenceTests.test_bad_results_are_rejected", "seconds": 0.01600000000325963}
+{"start": "test_music_lifetime_reference.MusicLifetimeReferenceTests.test_native_lifetimes_and_fixture", "elapsed": 560.5629999999655}
+{"end": "test_music_lifetime_reference.MusicLifetimeReferenceTests.test_native_lifetimes_and_fixture", "seconds": 0.0}
+{"start": "test_music_lifetime_reference.MusicLifetimeReferenceTests.test_unchanged_source_and_checked_scope", "elapsed": 560.5629999999655}
+{"end": "test_music_lifetime_reference.MusicLifetimeReferenceTests.test_unchanged_source_and_checked_scope", "seconds": 0.0}
+{"start": "test_music_pause_reference.MusicPauseReferenceTests.test_corrupt_result_rejects", "elapsed": 561.9219999999623}
+{"end": "test_music_pause_reference.MusicPauseReferenceTests.test_corrupt_result_rejects", "seconds": 0.01600000000325963}
+{"start": "test_music_pause_reference.MusicPauseReferenceTests.test_exact_native_fixture_and_source_edges", "elapsed": 561.9379999999655}
+{"end": "test_music_pause_reference.MusicPauseReferenceTests.test_exact_native_fixture_and_source_edges", "seconds": 0.0}
+{"start": "test_music_pause_reference.MusicPauseReferenceTests.test_reviewed_original_methods", "elapsed": 561.9379999999655}
+{"end": "test_music_pause_reference.MusicPauseReferenceTests.test_reviewed_original_methods", "seconds": 0.0}
+{"start": "test_music_player_reference.MusicPlayerReferenceTests.test_exact_original_source_and_mapped_scope", "elapsed": 562.984999999986}
+{"end": "test_music_player_reference.MusicPlayerReferenceTests.test_exact_original_source_and_mapped_scope", "seconds": 0.0}
+{"start": "test_music_player_reference.MusicPlayerReferenceTests.test_native_choices_and_generated_fixture", "elapsed": 562.984999999986}
+{"end": "test_music_player_reference.MusicPlayerReferenceTests.test_native_choices_and_generated_fixture", "seconds": 0.0}
+{"start": "test_music_player_reference.MusicPlayerReferenceTests.test_reject_changed_or_malformed_results", "elapsed": 562.984999999986}
+{"end": "test_music_player_reference.MusicPlayerReferenceTests.test_reject_changed_or_malformed_results", "seconds": 0.015000000013969839}
+{"start": "test_music_programs.MusicProgramsTests.test_opcode_signatures_fail_before_producing_pack", "elapsed": 563.1719999999623}
+{"end": "test_music_programs.MusicProgramsTests.test_opcode_signatures_fail_before_producing_pack", "seconds": 0.01600000000325963}
+{"start": "test_music_programs.MusicProgramsTests.test_source_mapping_and_exact_binary", "elapsed": 563.1879999999655}
+{"end": "test_music_programs.MusicProgramsTests.test_source_mapping_and_exact_binary", "seconds": 0.0}
+{"start": "test_music_programs.MusicProgramsTests.test_unknown_recipe_id_source_and_operand_types_reject", "elapsed": 563.1879999999655}
+{"end": "test_music_programs.MusicProgramsTests.test_unknown_recipe_id_source_and_operand_types_reject", "seconds": 0.015000000013969839}
+{"start": "test_music_scene_reference.MusicSceneReferenceTests.test_exact_source_and_bounded_scope", "elapsed": 565.1879999999655}
+{"end": "test_music_scene_reference.MusicSceneReferenceTests.test_exact_source_and_bounded_scope", "seconds": 0.0}
+{"start": "test_music_scene_reference.MusicSceneReferenceTests.test_native_scene_graph_and_fixture", "elapsed": 565.1879999999655}
+{"end": "test_music_scene_reference.MusicSceneReferenceTests.test_native_scene_graph_and_fixture", "seconds": 0.0}
+{"start": "test_music_scene_reference.MusicSceneReferenceTests.test_reject_unknown_and_malformed_results", "elapsed": 565.1879999999655}
+{"end": "test_music_scene_reference.MusicSceneReferenceTests.test_reject_unknown_and_malformed_results", "seconds": 0.062000000034458935}
+{"start": "test_music_seek_reference.MusicSeekReferenceTests.test_corrupt_reference_rejected", "elapsed": 566.625}
+{"end": "test_music_seek_reference.MusicSeekReferenceTests.test_corrupt_reference_rejected", "seconds": 0.0}
+{"start": "test_music_seek_reference.MusicSeekReferenceTests.test_exact_native_fixture_and_float_forwarding", "elapsed": 566.625}
+{"end": "test_music_seek_reference.MusicSeekReferenceTests.test_exact_native_fixture_and_float_forwarding", "seconds": 0.0}
+{"start": "test_music_seek_reference.MusicSeekReferenceTests.test_reviewed_manager_and_actual_media_dimensions", "elapsed": 566.625}
+{"end": "test_music_seek_reference.MusicSeekReferenceTests.test_reviewed_manager_and_actual_media_dimensions", "seconds": 0.0}
+{"start": "test_native_battle.BattleBinaryTests.test_all_truncations", "elapsed": 567.1879999999655}
+{"end": "test_native_battle.BattleBinaryTests.test_all_truncations", "seconds": 0.07800000003771856}
+{"start": "test_native_battle.BattleBinaryTests.test_changed_source_fails", "elapsed": 567.2660000000033}
+{"end": "test_native_battle.BattleBinaryTests.test_changed_source_fails", "seconds": 0.4369999999762513}
+{"start": "test_native_battle.BattleBinaryTests.test_crc_correct_header_directory_rejections", "elapsed": 567.7029999999795}
+{"end": "test_native_battle.BattleBinaryTests.test_crc_correct_header_directory_rejections", "seconds": 0.0}
+{"start": "test_native_battle.BattleBinaryTests.test_data_changes_do_not_require_cpp", "elapsed": 567.7029999999795}
+{"end": "test_native_battle.BattleBinaryTests.test_data_changes_do_not_require_cpp", "seconds": 0.5470000000204891}
+{"start": "test_native_battle.BattleBinaryTests.test_deterministic_external_binary", "elapsed": 568.25}
+{"end": "test_native_battle.BattleBinaryTests.test_deterministic_external_binary", "seconds": 0.5160000000032596}
+{"start": "test_native_battle.BattleBinaryTests.test_invalid_vector", "elapsed": 568.7660000000033}
+{"end": "test_native_battle.BattleBinaryTests.test_invalid_vector", "seconds": 0.0}
+{"start": "test_native_battle.BattleBinaryTests.test_real_source_stats_and_menu", "elapsed": 568.7660000000033}
+{"end": "test_native_battle.BattleBinaryTests.test_real_source_stats_and_menu", "seconds": 0.0}
+{"start": "test_native_battle.BattleBinaryTests.test_staging_exact_resources", "elapsed": 568.7660000000033}
+{"end": "test_native_battle.BattleBinaryTests.test_staging_exact_resources", "seconds": 0.030999999959021807}
+{"start": "test_native_input.NativeInputTests.test_checked_resource_roundtrip_and_external_tuning", "elapsed": 568.7969999999623}
+{"end": "test_native_input.NativeInputTests.test_checked_resource_roundtrip_and_external_tuning", "seconds": 0.01600000000325963}
+{"start": "test_native_input.NativeInputTests.test_compile_file_creates_checked_independent_resource", "elapsed": 568.8129999999655}
+{"end": "test_native_input.NativeInputTests.test_compile_file_creates_checked_independent_resource", "seconds": 0.015000000013969839}
+{"start": "test_native_input.NativeInputTests.test_invalid_radii_angle_duration_viewport_and_alpha", "elapsed": 568.8279999999795}
+{"end": "test_native_input.NativeInputTests.test_invalid_radii_angle_duration_viewport_and_alpha", "seconds": 0.0}
+{"start": "test_native_input.NativeInputTests.test_nonfinite_boolean_and_wrong_type_tuning", "elapsed": 568.8279999999795}
+{"end": "test_native_input.NativeInputTests.test_nonfinite_boolean_and_wrong_type_tuning", "seconds": 0.0}
+{"start": "test_native_input.NativeInputTests.test_resealed_invalid_payload_rejected", "elapsed": 568.8279999999795}
+{"end": "test_native_input.NativeInputTests.test_resealed_invalid_payload_rejected", "seconds": 0.0}
+{"start": "test_native_input.NativeInputTests.test_staging_rejects_stale_corrupt_and_escaping_resource", "elapsed": 568.8279999999795}
+{"end": "test_native_input.NativeInputTests.test_staging_rejects_stale_corrupt_and_escaping_resource", "seconds": 0.03200000000651926}
+{"start": "test_native_input.NativeInputTests.test_tuning_precision_collapse_rejected", "elapsed": 568.859999999986}
+{"end": "test_native_input.NativeInputTests.test_tuning_precision_collapse_rejected", "seconds": 0.015000000013969839}
+{"start": "test_native_input.NativeInputTests.test_unknown_header_and_corruption", "elapsed": 568.875}
+{"end": "test_native_input.NativeInputTests.test_unknown_header_and_corruption", "seconds": 0.0}
+{"start": "test_native_input.NativeInputTests.test_unknown_missing_schema_and_duplicate_fields", "elapsed": 568.875}
+{"end": "test_native_input.NativeInputTests.test_unknown_missing_schema_and_duplicate_fields", "seconds": 0.0}
+{"start": "test_native_introduction.NativeIntroductionTests.test_checked_asset_sources_and_pack_staging", "elapsed": 569.734999999986}
+{"end": "test_native_introduction.NativeIntroductionTests.test_checked_asset_sources_and_pack_staging", "seconds": 0.8119999999762513}
+{"start": "test_native_introduction.NativeIntroductionTests.test_no_unchecked_semantic_refresh", "elapsed": 570.5469999999623}
+{"end": "test_native_introduction.NativeIntroductionTests.test_no_unchecked_semantic_refresh", "seconds": 0.9690000000409782}
+{"start": "test_native_introduction.NativeIntroductionTests.test_schema_and_reference_negatives", "elapsed": 571.5160000000033}
+{"end": "test_native_introduction.NativeIntroductionTests.test_schema_and_reference_negatives", "seconds": 0.030999999959021807}
+{"start": "test_native_introduction.NativeIntroductionTests.test_source_binary_and_original_chain", "elapsed": 571.5469999999623}
+{"end": "test_native_introduction.NativeIntroductionTests.test_source_binary_and_original_chain", "seconds": 0.0}
+{"start": "test_native_introduction.NativeIntroductionTests.test_unknown_source_tracks_and_methods_fail_closed", "elapsed": 571.5469999999623}
+{"end": "test_native_introduction.NativeIntroductionTests.test_unknown_source_tracks_and_methods_fail_closed", "seconds": 0.8440000000409782}
+{"start": "test_native_items.ItemsBinaryTests.test_crc_correct_header_directory_and_pin_rejections", "elapsed": 572.3910000000033}
+{"end": "test_native_items.ItemsBinaryTests.test_crc_correct_header_directory_and_pin_rejections", "seconds": 0.014999999955762178}
+{"start": "test_native_items.ItemsBinaryTests.test_crc_correct_record_rejections", "elapsed": 572.405999999959}
+{"end": "test_native_items.ItemsBinaryTests.test_crc_correct_record_rejections", "seconds": 0.01600000000325963}
+{"start": "test_native_items.ItemsBinaryTests.test_deterministic_checked_external_resource", "elapsed": 572.4219999999623}
+{"end": "test_native_items.ItemsBinaryTests.test_deterministic_checked_external_resource", "seconds": 1.9690000000409782}
+{"start": "test_native_items.ItemsBinaryTests.test_every_truncation_and_checksum", "elapsed": 574.3910000000033}
+{"end": "test_native_items.ItemsBinaryTests.test_every_truncation_and_checksum", "seconds": 0.030999999959021807}
+{"start": "test_native_items.ItemsBinaryTests.test_exact_asset_staging_and_changed_hash", "elapsed": 574.4219999999623}
+{"end": "test_native_items.ItemsBinaryTests.test_exact_asset_staging_and_changed_hash", "seconds": 0.07800000003771856}
+{"start": "test_native_items.ItemsBinaryTests.test_explicit_rich_capability_and_legacy_plain_data", "elapsed": 574.5}
+{"end": "test_native_items.ItemsBinaryTests.test_explicit_rich_capability_and_legacy_plain_data", "seconds": 0.0}
+{"start": "test_native_items.ItemsBinaryTests.test_independent_data_edits_and_empty_inventory", "elapsed": 574.5}
+{"end": "test_native_items.ItemsBinaryTests.test_independent_data_edits_and_empty_inventory", "seconds": 0.0}
+{"start": "test_native_items.ItemsBinaryTests.test_ownership_duplicates_and_parent_cycle", "elapsed": 574.5}
+{"end": "test_native_items.ItemsBinaryTests.test_ownership_duplicates_and_parent_cycle", "seconds": 0.01600000000325963}
+{"start": "test_native_items.ItemsBinaryTests.test_required_bindings_parameter_rules_and_event_coverage", "elapsed": 574.5160000000033}
+{"end": "test_native_items.ItemsBinaryTests.test_required_bindings_parameter_rules_and_event_coverage", "seconds": 0.014999999955762178}
+{"start": "test_native_items.ItemsBinaryTests.test_rich_definition_cannot_claim_action_or_old_capability", "elapsed": 574.530999999959}
+{"end": "test_native_items.ItemsBinaryTests.test_rich_definition_cannot_claim_action_or_old_capability", "seconds": 0.0}
+{"start": "test_native_items.ItemsBinaryTests.test_source_unknown_fields_and_ranges_rejected", "elapsed": 574.530999999959}
+{"end": "test_native_items.ItemsBinaryTests.test_source_unknown_fields_and_ranges_rejected", "seconds": 0.03200000000651926}
+{"start": "test_native_items.ItemsBinaryTests.test_utf8_and_string_boundary_rejections", "elapsed": 574.5629999999655}
+{"end": "test_native_items.ItemsBinaryTests.test_utf8_and_string_boundary_rejections", "seconds": 0.0}
+{"start": "test_native_session.NativeSessionTests.test_acquisition_policy_is_source_derived_and_additive", "elapsed": 574.5629999999655}
+{"end": "test_native_session.NativeSessionTests.test_acquisition_policy_is_source_derived_and_additive", "seconds": 16.85899999999674}
+{"start": "test_native_session.NativeSessionTests.test_additive_startup_roster_and_legacy_bytes", "elapsed": 591.4219999999623}
+{"end": "test_native_session.NativeSessionTests.test_additive_startup_roster_and_legacy_bytes", "seconds": 0.0}
+{"start": "test_native_session.NativeSessionTests.test_checked_source_and_staging", "elapsed": 591.4219999999623}
+{"end": "test_native_session.NativeSessionTests.test_checked_source_and_staging", "seconds": 8.25}
+{"start": "test_native_session.NativeSessionTests.test_complete_field_programmes_admit_only_source_written_flags", "elapsed": 599.6719999999623}
+{"end": "test_native_session.NativeSessionTests.test_complete_field_programmes_admit_only_source_written_flags", "seconds": 7.828000000037719}
+{"start": "test_native_session.NativeSessionTests.test_field_scope_is_source_derived_and_defaults_stay_frozen", "elapsed": 607.5}
+{"end": "test_native_session.NativeSessionTests.test_field_scope_is_source_derived_and_defaults_stay_frozen", "seconds": 12.155999999959022}
+{"start": "test_native_session.NativeSessionTests.test_frozen_rules6_resource_encoding_is_unchanged", "elapsed": 619.655999999959}
+{"end": "test_native_session.NativeSessionTests.test_frozen_rules6_resource_encoding_is_unchanged", "seconds": 0.03200000000651926}
+{"start": "test_native_session.NativeSessionTests.test_map_object_policy_is_derived_from_present", "elapsed": 619.6879999999655}
+{"end": "test_native_session.NativeSessionTests.test_map_object_policy_is_derived_from_present", "seconds": 12.39000000001397}
+{"start": "test_native_session.NativeSessionTests.test_recipe_drift_fails_closed", "elapsed": 632.0779999999795}
+{"end": "test_native_session.NativeSessionTests.test_recipe_drift_fails_closed", "seconds": 45.70299999997951}
+{"start": "test_native_session.NativeSessionTests.test_source_defaults_and_derived_values", "elapsed": 677.780999999959}
+{"end": "test_native_session.NativeSessionTests.test_source_defaults_and_derived_values", "seconds": 0.0}
+{"start": "test_native_session.NativeSessionTests.test_stale_or_escaping_stage_rejected", "elapsed": 677.780999999959}
+{"end": "test_native_session.NativeSessionTests.test_stale_or_escaping_stage_rejected", "seconds": 8.329000000027008}
+{"start": "test_native_session.NativeSessionTests.test_startup_clamps_are_derived_from_serialized_hp_and_equipment", "elapsed": 686.109999999986}
+{"end": "test_native_session.NativeSessionTests.test_startup_clamps_are_derived_from_serialized_hp_and_equipment", "seconds": 0.15600000001722947}
+{"start": "test_native_session.NativeSessionTests.test_storage_conservation_policy_is_source_derived", "elapsed": 686.2660000000033}
+{"end": "test_native_session.NativeSessionTests.test_storage_conservation_policy_is_source_derived", "seconds": 20.60899999999674}
+{"start": "test_native_session.NativeSessionTests.test_v10_keeps_complete_v9_menu_prefix", "elapsed": 706.875}
+{"end": "test_native_session.NativeSessionTests.test_v10_keeps_complete_v9_menu_prefix", "seconds": 0.0}
+{"start": "test_native_session.NativeSessionTests.test_v11_run_sound_append_preserves_v10_and_defaults", "elapsed": 706.875}
+{"end": "test_native_session.NativeSessionTests.test_v11_run_sound_append_preserves_v10_and_defaults", "seconds": 32.56299999996554}
+{"start": "test_new_game_assets.NamingSessionDependency.test_defaults_startup_and_levels_cannot_be_rebound", "elapsed": 739.4689999999828}
+{"end": "test_new_game_assets.NamingSessionDependency.test_defaults_startup_and_levels_cannot_be_rebound", "seconds": 0.0}
+{"start": "test_new_game_assets.NamingSessionDependency.test_exact_baseline_required", "elapsed": 739.4689999999828}
+{"end": "test_new_game_assets.NamingSessionDependency.test_exact_baseline_required", "seconds": 0.0}
+{"start": "test_new_game_assets.NamingSessionDependency.test_field_session_extension_preserves_startup_and_rejects_unreviewed_policy", "elapsed": 739.4689999999828}
+{"end": "test_new_game_assets.NamingSessionDependency.test_field_session_extension_preserves_startup_and_rejects_unreviewed_policy", "seconds": 20.90600000001723}
+{"start": "test_new_game_assets.NamingSessionDependency.test_only_session_fingerprint_changes_and_binary_stays_identical", "elapsed": 760.375}
+{"end": "test_new_game_assets.NamingSessionDependency.test_only_session_fingerprint_changes_and_binary_stays_identical", "seconds": 0.39100000000325963}
+{"start": "test_new_game_assets.NamingSessionDependency.test_removed_flags_acquisitions_unknown_fields_and_bad_hash_rejected", "elapsed": 760.7660000000033}
+{"end": "test_new_game_assets.NamingSessionDependency.test_removed_flags_acquisitions_unknown_fields_and_bad_hash_rejected", "seconds": 0.6089999999967404}
+{"start": "test_new_game_assets.NamingSessionDependency.test_source_run_extension_keeps_naming_content", "elapsed": 761.375}
+{"end": "test_new_game_assets.NamingSessionDependency.test_source_run_extension_keeps_naming_content", "seconds": 20.57799999997951}
+{"start": "test_npc_interaction_policy.NpcPolicy.test_legacy_encoders_remain_distinct", "elapsed": 782.155999999959}
+{"end": "test_npc_interaction_policy.NpcPolicy.test_legacy_encoders_remain_distinct", "seconds": 0.125}
+{"start": "test_npc_interaction_policy.NpcPolicy.test_native_tsv_is_exact_projection", "elapsed": 782.280999999959}
+{"end": "test_npc_interaction_policy.NpcPolicy.test_native_tsv_is_exact_projection", "seconds": 0.03200000000651926}
+{"start": "test_npc_interaction_policy.NpcPolicy.test_policy_version_duration_and_feature_negative", "elapsed": 782.3129999999655}
+{"end": "test_npc_interaction_policy.NpcPolicy.test_policy_version_duration_and_feature_negative", "seconds": 0.0}
+{"start": "test_npc_interaction_policy.NpcPolicy.test_source_policy_resources", "elapsed": 782.3129999999655}
+{"end": "test_npc_interaction_policy.NpcPolicy.test_source_policy_resources", "seconds": 0.40600000001722947}
+{"start": "test_npc_return_reference.NpcReturnReference.test_actual_native_domain_and_timer_gates", "elapsed": 782.7189999999828}
+{"end": "test_npc_return_reference.NpcReturnReference.test_actual_native_domain_and_timer_gates", "seconds": 0.0}
+{"start": "test_npc_return_reference.NpcReturnReference.test_result_unknown_version_shape_and_domain_fail", "elapsed": 782.7189999999828}
+{"end": "test_npc_return_reference.NpcReturnReference.test_result_unknown_version_shape_and_domain_fail", "seconds": 0.0470000000204891}
+{"start": "test_npc_return_reference.NpcReturnReference.test_review_unknown_version_and_symbols_fail", "elapsed": 782.7660000000033}
+{"end": "test_npc_return_reference.NpcReturnReference.test_review_unknown_version_and_symbols_fail", "seconds": 0.0}
+{"start": "test_npc_sprite_reference.NpcSpriteReference.test_native_source_and_frozen_projection", "elapsed": 782.7660000000033}
+{"end": "test_npc_sprite_reference.NpcSpriteReference.test_native_source_and_frozen_projection", "seconds": 0.014999999955762178}
+{"start": "test_npc_sprite_reference.NpcSpriteReference.test_result_negative", "elapsed": 782.780999999959}
+{"end": "test_npc_sprite_reference.NpcSpriteReference.test_result_negative", "seconds": 0.03200000000651926}
+{"start": "test_npc_sprite_reference.NpcSpriteReference.test_review_negative", "elapsed": 782.8129999999655}
+{"end": "test_npc_sprite_reference.NpcSpriteReference.test_review_negative", "seconds": 0.0}
+{"start": "test_npc_sprite_reference.NpcSpriteReference.test_source_animation_policy_negative", "elapsed": 782.8129999999655}
+{"end": "test_npc_sprite_reference.NpcSpriteReference.test_source_animation_policy_negative", "seconds": 0.0}
+{"start": "test_party_npc_actor.PartyActor.test_source_profiles_and_clips", "elapsed": 783.0469999999623}
+{"end": "test_party_npc_actor.PartyActor.test_source_profiles_and_clips", "seconds": 0.0}
+{"start": "test_party_npc_actor.PartyActor.test_source_route_fixture", "elapsed": 783.0469999999623}
+{"end": "test_party_npc_actor.PartyActor.test_source_route_fixture", "seconds": 1.7810000000172295}
+{"start": "test_party_npc_actor.PartyActor.test_versions_and_profile_negative", "elapsed": 784.8279999999795}
+{"end": "test_party_npc_actor.PartyActor.test_versions_and_profile_negative", "seconds": 0.1720000000204891}
+{"start": "test_pause_audio_reference.PauseAudioReferenceTests.test_actual_result_and_generated_fixture", "elapsed": 785.0}
+{"end": "test_pause_audio_reference.PauseAudioReferenceTests.test_actual_result_and_generated_fixture", "seconds": 0.0}
+{"start": "test_pause_audio_reference.PauseAudioReferenceTests.test_exact_source_review", "elapsed": 785.0}
+{"end": "test_pause_audio_reference.PauseAudioReferenceTests.test_exact_source_review", "seconds": 0.42199999996228144}
+{"start": "test_pause_audio_reference.PauseAudioReferenceTests.test_reject_invalid_result", "elapsed": 785.4219999999623}
+{"end": "test_pause_audio_reference.PauseAudioReferenceTests.test_reject_invalid_result", "seconds": 0.0}
+{"start": "test_phone_assets.PhoneAssetsTests.test_free_phone_use_order_consumes_no_card_or_money", "elapsed": 785.7189999999828}
+{"end": "test_phone_assets.PhoneAssetsTests.test_free_phone_use_order_consumes_no_card_or_money", "seconds": 0.0}
+{"start": "test_phone_assets.PhoneAssetsTests.test_inherited_area_offsets_and_flags_are_preserved", "elapsed": 785.7189999999828}
+{"end": "test_phone_assets.PhoneAssetsTests.test_inherited_area_offsets_and_flags_are_preserved", "seconds": 0.0}
+{"start": "test_phone_assets.PhoneAssetsTests.test_last_matching_ordered_dispatch_and_no_seen", "elapsed": 785.7189999999828}
+{"end": "test_phone_assets.PhoneAssetsTests.test_last_matching_ordered_dispatch_and_no_seen", "seconds": 0.0}
+{"start": "test_phone_assets.PhoneAssetsTests.test_missing_mutated_or_extra_compiled_assets_rejected", "elapsed": 785.7189999999828}
+{"end": "test_phone_assets.PhoneAssetsTests.test_missing_mutated_or_extra_compiled_assets_rejected", "seconds": 1.827999999979511}
+{"start": "test_phone_assets.PhoneAssetsTests.test_native_animation_oracle_provenance_and_exact_keys", "elapsed": 787.5469999999623}
+{"end": "test_phone_assets.PhoneAssetsTests.test_native_animation_oracle_provenance_and_exact_keys", "seconds": 0.01600000000325963}
+{"start": "test_phone_assets.PhoneAssetsTests.test_original_atlas_output_and_recipe_verified", "elapsed": 787.5629999999655}
+{"end": "test_phone_assets.PhoneAssetsTests.test_original_atlas_output_and_recipe_verified", "seconds": 0.5780000000377186}
+{"start": "test_phone_assets.PhoneAssetsTests.test_phone_is_interactdialog_not_actor_npc_or_directional_sprite", "elapsed": 788.1410000000033}
+{"end": "test_phone_assets.PhoneAssetsTests.test_phone_is_interactdialog_not_actor_npc_or_directional_sprite", "seconds": 0.0}
+{"start": "test_phone_assets.PhoneAssetsTests.test_ring_retains_exact_source_frames_sound_times_and_idempotence", "elapsed": 788.1410000000033}
+{"end": "test_phone_assets.PhoneAssetsTests.test_ring_retains_exact_source_frames_sound_times_and_idempotence", "seconds": 0.0}
+{"start": "test_phone_assets.PhoneAssetsTests.test_root_override_inheritance_and_effective_collision", "elapsed": 788.1410000000033}
+{"end": "test_phone_assets.PhoneAssetsTests.test_root_override_inheritance_and_effective_collision", "seconds": 0.0}
+{"start": "test_phone_assets.PhoneAssetsTests.test_unknown_recipe_source_resources_or_version_rejected", "elapsed": 788.1410000000033}
+{"end": "test_phone_assets.PhoneAssetsTests.test_unknown_recipe_source_resources_or_version_rejected", "seconds": 1.4369999999762513}
+{"start": "test_phone_linker.PhoneLinkerTests.test_all_existing_room_rows_and_strings_are_preserved", "elapsed": 918.155999999959}
+{"end": "test_phone_linker.PhoneLinkerTests.test_all_existing_room_rows_and_strings_are_preserved", "seconds": 0.0}
+{"start": "test_phone_linker.PhoneLinkerTests.test_carol_phone_reminder_preserves_inherited_npc_talker", "elapsed": 918.155999999959}
+{"end": "test_phone_linker.PhoneLinkerTests.test_carol_phone_reminder_preserves_inherited_npc_talker", "seconds": 0.0}
+{"start": "test_phone_linker.PhoneLinkerTests.test_carol_uses_shared_verified_frames_but_own_source_geometry", "elapsed": 918.155999999959}
+{"end": "test_phone_linker.PhoneLinkerTests.test_carol_uses_shared_verified_frames_but_own_source_geometry", "seconds": 0.0}
+{"start": "test_phone_linker.PhoneLinkerTests.test_dad_append_preserves_first_call_rows_strings_and_all_text_tokens", "elapsed": 918.155999999959}
+{"end": "test_phone_linker.PhoneLinkerTests.test_dad_append_preserves_first_call_rows_strings_and_all_text_tokens", "seconds": 0.0}
+{"start": "test_phone_linker.PhoneLinkerTests.test_dad_normal_links_every_source_branch_choice_and_save_callback", "elapsed": 918.155999999959}
+{"end": "test_phone_linker.PhoneLinkerTests.test_dad_normal_links_every_source_branch_choice_and_save_callback", "seconds": 0.0}
+{"start": "test_phone_linker.PhoneLinkerTests.test_deferred_flag_listener_rejects_invalid_body_flag_and_payload", "elapsed": 918.155999999959}
+{"end": "test_phone_linker.PhoneLinkerTests.test_deferred_flag_listener_rejects_invalid_body_flag_and_payload", "seconds": 0.2970000000204891}
+{"start": "test_phone_linker.PhoneLinkerTests.test_entrance_listener_uses_original_descendant_body_and_flag", "elapsed": 918.4529999999795}
+{"end": "test_phone_linker.PhoneLinkerTests.test_entrance_listener_uses_original_descendant_body_and_flag", "seconds": 0.0}
+{"start": "test_phone_linker.PhoneLinkerTests.test_entrance_source_listener_cannot_become_visibility_only", "elapsed": 918.4529999999795}
+{"end": "test_phone_linker.PhoneLinkerTests.test_entrance_source_listener_cannot_become_visibility_only", "seconds": 0.3130000000237487}
+{"start": "test_phone_linker.PhoneLinkerTests.test_house_prefix_and_optional_story_state_preserved", "elapsed": 918.7660000000033}
+{"end": "test_phone_linker.PhoneLinkerTests.test_house_prefix_and_optional_story_state_preserved", "seconds": 0.0}
+{"start": "test_phone_linker.PhoneLinkerTests.test_independent_hash_seeds_reproduce_all_linked_files", "elapsed": 918.7660000000033}
+{"end": "test_phone_linker.PhoneLinkerTests.test_independent_hash_seeds_reproduce_all_linked_files", "seconds": 231.81199999997625}
+{"start": "test_phone_linker.PhoneLinkerTests.test_invalid_linked_commands_and_old_schema_fail_closed", "elapsed": 1150.5779999999795}
+{"end": "test_phone_linker.PhoneLinkerTests.test_invalid_linked_commands_and_old_schema_fail_closed", "seconds": 0.28200000000651926}
+{"start": "test_phone_linker.PhoneLinkerTests.test_linear_texts_have_stable_identity_and_typed_color", "elapsed": 1150.859999999986}
+{"end": "test_phone_linker.PhoneLinkerTests.test_linear_texts_have_stable_identity_and_typed_color", "seconds": 0.0}
+{"start": "test_phone_linker.PhoneLinkerTests.test_movement_waits_target_turn_camera_axis_and_phase_timing", "elapsed": 1150.859999999986}
+{"end": "test_phone_linker.PhoneLinkerTests.test_movement_waits_target_turn_camera_axis_and_phase_timing", "seconds": 0.0}
+{"start": "test_phone_linker.PhoneLinkerTests.test_only_reviewed_contact_boundaries_become_programs", "elapsed": 1150.859999999986}
+{"end": "test_phone_linker.PhoneLinkerTests.test_only_reviewed_contact_boundaries_become_programs", "seconds": 0.0}
+{"start": "test_phone_linker.PhoneLinkerTests.test_phone_audio_identity_binding_and_old_asset_prefix", "elapsed": 1150.859999999986}
+{"end": "test_phone_linker.PhoneLinkerTests.test_phone_audio_identity_binding_and_old_asset_prefix", "seconds": 20.21799999999348}
+{"start": "test_phone_linker.PhoneLinkerTests.test_room_and_house_roundtrip_with_new_schema", "elapsed": 1171.0779999999795}
+{"end": "test_phone_linker.PhoneLinkerTests.test_room_and_house_roundtrip_with_new_schema", "seconds": 0.2029999999795109}
+{"start": "test_phone_linker.PhoneLinkerTests.test_unknown_linear_text_token_and_changed_area_geometry_reject", "elapsed": 1171.280999999959}
+{"end": "test_phone_linker.PhoneLinkerTests.test_unknown_linear_text_token_and_changed_area_geometry_reject", "seconds": 21.79700000002049}
+{"start": "test_phone_pack.PhonePackTests.test_checked_binary_is_reproducible_and_independent", "elapsed": 1194.0629999999655}
+{"end": "test_phone_pack.PhonePackTests.test_checked_binary_is_reproducible_and_independent", "seconds": 0.015000000013969839}
+{"start": "test_phone_pack.PhonePackTests.test_header_directory_crc_truncation_rejected", "elapsed": 1194.0779999999795}
+{"end": "test_phone_pack.PhonePackTests.test_header_directory_crc_truncation_rejected", "seconds": 0.0}
+{"start": "test_phone_pack.PhonePackTests.test_staging_checks_exact_pack_and_referenced_texture", "elapsed": 1194.0779999999795}
+{"end": "test_phone_pack.PhonePackTests.test_staging_checks_exact_pack_and_referenced_texture", "seconds": 3.0630000000237487}
+{"start": "test_phone_pack.PhonePackTests.test_unknown_staging_fields_and_semantics_fail_before_pack", "elapsed": 1197.1410000000033}
+{"end": "test_phone_pack.PhonePackTests.test_unknown_staging_fields_and_semantics_fail_before_pack", "seconds": 2.014999999955762}
+{"start": "test_pillow_battle.PillowBattleTests.test_exact_enemy_rewards_and_normal_encounter", "elapsed": 1200.2189999999828}
+{"end": "test_pillow_battle.PillowBattleTests.test_exact_enemy_rewards_and_normal_encounter", "seconds": 0.0}
+{"start": "test_pillow_battle.PillowBattleTests.test_live_text_uses_pillow_identity", "elapsed": 1200.2189999999828}
+{"end": "test_pillow_battle.PillowBattleTests.test_live_text_uses_pillow_identity", "seconds": 0.0}
+{"start": "test_pillow_battle.PillowBattleTests.test_lossless_original_background", "elapsed": 1200.2189999999828}
+{"end": "test_pillow_battle.PillowBattleTests.test_lossless_original_background", "seconds": 0.0}
+{"start": "test_pillow_battle.PillowBattleTests.test_new_schema_negative_cases", "elapsed": 1200.2189999999828}
+{"end": "test_pillow_battle.PillowBattleTests.test_new_schema_negative_cases", "seconds": 0.061999999976251274}
+{"start": "test_pillow_battle.PillowBattleTests.test_original_postwin_and_absent_boss_effects", "elapsed": 1200.280999999959}
+{"end": "test_pillow_battle.PillowBattleTests.test_original_postwin_and_absent_boss_effects", "seconds": 0.0}
+{"start": "test_pillow_battle.PillowBattleTests.test_source_and_deterministic_compilation", "elapsed": 1200.280999999959}
+{"end": "test_pillow_battle.PillowBattleTests.test_source_and_deterministic_compilation", "seconds": 0.6570000000065193}
+{"start": "test_pillow_battle.PillowBattleTests.test_truncated_resources_rejected", "elapsed": 1200.9379999999655}
+{"end": "test_pillow_battle.PillowBattleTests.test_truncated_resources_rejected", "seconds": 0.0}
+{"start": "test_pillow_battle.PillowBattleTests.test_unreviewed_entry_mutations_fail_closed", "elapsed": 1200.9379999999655}
+{"end": "test_pillow_battle.PillowBattleTests.test_unreviewed_entry_mutations_fail_closed", "seconds": 4.60899999999674}
+{"start": "test_podunk_field.CommittedOutputTests.test_committed_outputs_match_pinned_sources", "elapsed": 1205.5469999999623}
+{"end": "test_podunk_field.CommittedOutputTests.test_committed_outputs_match_pinned_sources", "seconds": 11.297000000020489}
+{"start": "test_podunk_field.CommittedOutputTests.test_stage_files_are_receipt_checked", "elapsed": 1216.8439999999828}
+{"end": "test_podunk_field.CommittedOutputTests.test_stage_files_are_receipt_checked", "seconds": 0.031000000017229468}
+{"start": "test_podunk_field.ContainerTests.test_confirm_boundaries_require_their_capability", "elapsed": 1216.875}
+{"end": "test_podunk_field.ContainerTests.test_confirm_boundaries_require_their_capability", "seconds": 0.0}
+{"start": "test_podunk_field.ContainerTests.test_round_trip_and_rejections", "elapsed": 1216.875}
+{"end": "test_podunk_field.ContainerTests.test_round_trip_and_rejections", "seconds": 0.0}
+{"start": "test_podunk_field.DecompositionTests.test_convex_degenerate_and_orientation", "elapsed": 1216.875}
+{"end": "test_podunk_field.DecompositionTests.test_convex_degenerate_and_orientation", "seconds": 0.0}
+{"start": "test_podunk_field.DecompositionTests.test_godot_hertel_mehlhorn_parts", "elapsed": 1216.875}
+{"end": "test_podunk_field.DecompositionTests.test_godot_hertel_mehlhorn_parts", "seconds": 0.0}
+{"start": "test_podunk_field.DecompositionTests.test_source_hash_and_rng", "elapsed": 1216.875}
+{"end": "test_podunk_field.DecompositionTests.test_source_hash_and_rng", "seconds": 0.0}
+{"start": "test_podunk_field.RecipeTests.test_action_source_gate_is_not_replaceable", "elapsed": 1216.875}
+{"end": "test_podunk_field.RecipeTests.test_action_source_gate_is_not_replaceable", "seconds": 6.01600000000326}
+{"start": "test_podunk_field.RecipeTests.test_recipe_rejections", "elapsed": 1222.8910000000033}
+{"end": "test_podunk_field.RecipeTests.test_recipe_rejections", "seconds": 0.030999999959021807}
+{"start": "test_podunk_field.RecipeTests.test_unclassified_scene_class_fails_closed", "elapsed": 1222.9219999999623}
+{"end": "test_podunk_field.RecipeTests.test_unclassified_scene_class_fails_closed", "seconds": 1.6880000000237487}
+{"start": "test_podunk_music.TestPodunkMusic.test_audio_output_keeps_house_bank", "elapsed": 1224.609999999986}
+{"end": "test_podunk_music.TestPodunkMusic.test_audio_output_keeps_house_bank", "seconds": 0.045999999972991645}
+{"start": "test_podunk_music.TestPodunkMusic.test_audio_output_rejects_non_owned_file", "elapsed": 1224.655999999959}
+{"end": "test_podunk_music.TestPodunkMusic.test_audio_output_rejects_non_owned_file", "seconds": 0.0}
+{"start": "test_podunk_music.TestPodunkMusic.test_negative_recipe", "elapsed": 1224.655999999959}
+{"end": "test_podunk_music.TestPodunkMusic.test_negative_recipe", "seconds": 0.0}
+{"start": "test_podunk_music.TestPodunkMusic.test_pinned_source", "elapsed": 1224.655999999959}
+{"end": "test_podunk_music.TestPodunkMusic.test_pinned_source", "seconds": 0.6100000000442378}
+{"start": "test_podunk_music.TestPodunkMusic.test_source_changes_rejected", "elapsed": 1225.2660000000033}
+{"end": "test_podunk_music.TestPodunkMusic.test_source_changes_rejected", "seconds": 0.5939999999827705}
+{"start": "test_programme_operation.ProgrammeOperationTests.test_changed_source_is_rechecked_before_return", "elapsed": 1225.859999999986}
+{"end": "test_programme_operation.ProgrammeOperationTests.test_changed_source_is_rechecked_before_return", "seconds": 0.0}
+{"start": "test_programme_operation.ProgrammeOperationTests.test_failure_restores_context_and_next_call_checks_again", "elapsed": 1225.859999999986}
+{"end": "test_programme_operation.ProgrammeOperationTests.test_failure_restores_context_and_next_call_checks_again", "seconds": 0.0}
+{"start": "test_programme_operation.ProgrammeOperationTests.test_last_recipe_edit_is_rejected_before_return", "elapsed": 1225.859999999986}
+{"end": "test_programme_operation.ProgrammeOperationTests.test_last_recipe_edit_is_rejected_before_return", "seconds": 0.0}
+{"start": "test_programme_operation.ProgrammeOperationTests.test_nested_calls_reuse_admission_and_return_independent_values", "elapsed": 1225.859999999986}
+{"end": "test_programme_operation.ProgrammeOperationTests.test_nested_calls_reuse_admission_and_return_independent_values", "seconds": 0.015000000013969839}
+{"start": "test_programme_operation.ProgrammeOperationTests.test_nested_other_root_has_its_own_admission", "elapsed": 1225.875}
+{"end": "test_programme_operation.ProgrammeOperationTests.test_nested_other_root_has_its_own_admission", "seconds": 0.0}
+{"start": "test_programme_operation.ProgrammeOperationTests.test_receipt_failure_before_recipe_use_keeps_original_error", "elapsed": 1225.875}
+{"end": "test_programme_operation.ProgrammeOperationTests.test_receipt_failure_before_recipe_use_keeps_original_error", "seconds": 0.0}
+{"start": "test_programme_operation.ProgrammeOperationTests.test_recipe_edit_inside_operation_is_rejected_immediately", "elapsed": 1225.875}
+{"end": "test_programme_operation.ProgrammeOperationTests.test_recipe_edit_inside_operation_is_rejected_immediately", "seconds": 0.0}
+{"start": "test_progression_reference.ProgressionReferenceTests.test_changed_source_requires_review", "elapsed": 1225.8910000000033}
+{"end": "test_progression_reference.ProgressionReferenceTests.test_changed_source_requires_review", "seconds": 0.0}
+{"start": "test_progression_reference.ProgressionReferenceTests.test_extract_preserves_audited_functions", "elapsed": 1225.8910000000033}
+{"end": "test_progression_reference.ProgressionReferenceTests.test_extract_preserves_audited_functions", "seconds": 0.0}
+{"start": "test_progression_reference.ProgressionReferenceTests.test_incomplete_reference_domain_rejected", "elapsed": 1225.8910000000033}
+{"end": "test_progression_reference.ProgressionReferenceTests.test_incomplete_reference_domain_rejected", "seconds": 0.0}
+{"start": "test_progression_reference.ProgressionReferenceTests.test_missing_constant_rejected", "elapsed": 1225.8910000000033}
+{"end": "test_progression_reference.ProgressionReferenceTests.test_missing_constant_rejected", "seconds": 0.0}
+{"start": "test_progression_reference.ProgressionReferenceTests.test_missing_or_duplicate_symbol_rejected", "elapsed": 1225.8910000000033}
+{"end": "test_progression_reference.ProgressionReferenceTests.test_missing_or_duplicate_symbol_rejected", "seconds": 0.0}
+{"start": "test_progression_reference.ProgressionReferenceTests.test_unknown_schema_version_cap_symbol_rejected", "elapsed": 1225.8910000000033}
+{"end": "test_progression_reference.ProgressionReferenceTests.test_unknown_schema_version_cap_symbol_rejected", "seconds": 0.0}
+{"start": "test_progression_reference.ProgressionReferenceTests.test_wrong_reference_engine_or_provenance_rejected", "elapsed": 1225.8910000000033}
+{"end": "test_progression_reference.ProgressionReferenceTests.test_wrong_reference_engine_or_provenance_rejected", "seconds": 0.0}
+{"start": "test_prop_clips.PropClips.test_nonfinite_real_types_reject", "elapsed": 1226.1410000000033}
+{"end": "test_prop_clips.PropClips.test_nonfinite_real_types_reject", "seconds": 0.0}
+{"start": "test_prop_clips.PropClips.test_only_prompt_graphics_are_quarantined_in_numeric_reference", "elapsed": 1226.1410000000033}
+{"end": "test_prop_clips.PropClips.test_only_prompt_graphics_are_quarantined_in_numeric_reference", "seconds": 0.014999999955762178}
+{"start": "test_prop_clips.PropClips.test_source_clips_reproduce_checked_fixture", "elapsed": 1226.155999999959}
+{"end": "test_prop_clips.PropClips.test_source_clips_reproduce_checked_fixture", "seconds": 0.01600000000325963}
+{"start": "test_prop_clips.PropClips.test_target_role_grid_and_initial_state_reject", "elapsed": 1226.1719999999623}
+{"end": "test_prop_clips.PropClips.test_target_role_grid_and_initial_state_reject", "seconds": 0.8130000000237487}
+{"start": "test_prop_clips.PropClips.test_unknown_properties_tracks_modes_and_timing_reject", "elapsed": 1226.984999999986}
+{"end": "test_prop_clips.PropClips.test_unknown_properties_tracks_modes_and_timing_reject", "seconds": 1.827999999979511}
+{"start": "test_prop_clips.PropClips.test_unknown_recipe_fields_versions_ids_and_sources_reject", "elapsed": 1228.8129999999655}
+{"end": "test_prop_clips.PropClips.test_unknown_recipe_fields_versions_ids_and_sources_reject", "seconds": 0.14000000001396984}
+{"start": "test_python_suite.Partition.test_actual_area_and_run_sources_are_partitioned_once", "elapsed": 1228.9529999999795}
+{"end": "test_python_suite.Partition.test_actual_area_and_run_sources_are_partitioned_once", "seconds": 0.0}
+{"start": "test_python_suite.Partition.test_case_cannot_be_owned_by_two_registrations", "elapsed": 1228.9529999999795}
+{"end": "test_python_suite.Partition.test_case_cannot_be_owned_by_two_registrations", "seconds": 0.0}
+{"start": "test_python_suite.Partition.test_changed_module_list_rejected", "elapsed": 1228.9529999999795}
+{"end": "test_python_suite.Partition.test_changed_module_list_rejected", "seconds": 0.0}
+{"start": "test_python_suite.Partition.test_dedicated_case_loss_rejected", "elapsed": 1228.9529999999795}
+{"end": "test_python_suite.Partition.test_dedicated_case_loss_rejected", "seconds": 0.0}
+{"start": "test_python_suite.Partition.test_duplicate_discovery_case_rejected", "elapsed": 1228.9529999999795}
+{"end": "test_python_suite.Partition.test_duplicate_discovery_case_rejected", "seconds": 0.0}
+{"start": "test_python_suite.Partition.test_duplicate_registration_rejected", "elapsed": 1228.9529999999795}
+{"end": "test_python_suite.Partition.test_duplicate_registration_rejected", "seconds": 0.0}
+{"start": "test_python_suite.Partition.test_exact_partition_keeps_new_modules_in_aggregate", "elapsed": 1228.9529999999795}
+{"end": "test_python_suite.Partition.test_exact_partition_keeps_new_modules_in_aggregate", "seconds": 0.0}
+{"start": "test_python_suite.Partition.test_missing_registration_rejected", "elapsed": 1228.9529999999795}
+{"end": "test_python_suite.Partition.test_missing_registration_rejected", "seconds": 0.01600000000325963}
+{"start": "test_python_suite.Partition.test_unknown_registration_rejected", "elapsed": 1228.9689999999828}
+{"end": "test_python_suite.Partition.test_unknown_registration_rejected", "seconds": 0.0}
+{"start": "test_python_suite.Registration.test_direct_script", "elapsed": 1228.9689999999828}
+{"end": "test_python_suite.Registration.test_direct_script", "seconds": 0.0}
+{"start": "test_python_suite.Registration.test_direct_script_arguments_are_not_silently_ignored", "elapsed": 1228.9689999999828}
+{"end": "test_python_suite.Registration.test_direct_script_arguments_are_not_silently_ignored", "seconds": 0.0}
+{"start": "test_python_suite.Registration.test_explicit_single_and_multiple_modules", "elapsed": 1228.9689999999828}
+{"end": "test_python_suite.Registration.test_explicit_single_and_multiple_modules", "seconds": 0.0}
+{"start": "test_python_suite.Registration.test_unknown_or_ambiguous_unittest_selectors", "elapsed": 1228.9689999999828}
+{"end": "test_python_suite.Registration.test_unknown_or_ambiguous_unittest_selectors", "seconds": 0.0}
+{"start": "test_python_suite.Registration.test_unrelated_program_is_not_a_registration", "elapsed": 1228.9689999999828}
+{"end": "test_python_suite.Registration.test_unrelated_program_is_not_a_registration", "seconds": 0.0}
+{"start": "test_region_baseline.RegionBaseline.test_review_binds_current_exact_normalized_source", "elapsed": 1228.9689999999828}
+{"end": "test_region_baseline.RegionBaseline.test_review_binds_current_exact_normalized_source", "seconds": 0.01600000000325963}
+{"start": "test_region_baseline.RegionBaseline.test_unknown_header_rejected_before_compiler_even_optimized", "elapsed": 1228.984999999986}
+{"end": "test_region_baseline.RegionBaseline.test_unknown_header_rejected_before_compiler_even_optimized", "seconds": 0.34299999999348074}
+{"start": "test_release_notices.ReleaseNoticeTests.test_all_notices_are_staged_with_exact_bytes", "elapsed": 1229.3279999999795}
+{"end": "test_release_notices.ReleaseNoticeTests.test_all_notices_are_staged_with_exact_bytes", "seconds": 0.09399999998277053}
+{"start": "test_release_notices.ReleaseNoticeTests.test_changed_official_bytes", "elapsed": 1229.4219999999623}
+{"end": "test_release_notices.ReleaseNoticeTests.test_changed_official_bytes", "seconds": 0.07800000003771856}
+{"start": "test_release_notices.ReleaseNoticeTests.test_duplicate_and_unknown_fields_are_rejected", "elapsed": 1229.5}
+{"end": "test_release_notices.ReleaseNoticeTests.test_duplicate_and_unknown_fields_are_rejected", "seconds": 0.18799999996554106}
+{"start": "test_release_notices.ReleaseNoticeTests.test_empty_project_notice", "elapsed": 1229.6879999999655}
+{"end": "test_release_notices.ReleaseNoticeTests.test_empty_project_notice", "seconds": 0.07800000003771856}
+{"start": "test_release_notices.ReleaseNoticeTests.test_invalid_source_entries", "elapsed": 1229.7660000000033}
+{"end": "test_release_notices.ReleaseNoticeTests.test_invalid_source_entries", "seconds": 0.18699999997625127}
+{"start": "test_release_notices.ReleaseNoticeTests.test_linked_notice_is_rejected", "elapsed": 1229.9529999999795}
+{"end": "test_release_notices.ReleaseNoticeTests.test_linked_notice_is_rejected", "seconds": 0.0470000000204891}
+{"start": "test_release_notices.ReleaseNoticeTests.test_malformed_manifest", "elapsed": 1230.0}
+{"end": "test_release_notices.ReleaseNoticeTests.test_malformed_manifest", "seconds": 0.21899999998277053}
+{"start": "test_release_notices.ReleaseNoticeTests.test_missing_or_invalid_provenance_is_rejected", "elapsed": 1230.2189999999828}
+{"end": "test_release_notices.ReleaseNoticeTests.test_missing_or_invalid_provenance_is_rejected", "seconds": 0.1720000000204891}
+{"start": "test_release_notices.ReleaseNoticeTests.test_missing_or_unreviewed_files", "elapsed": 1230.3910000000033}
+{"end": "test_release_notices.ReleaseNoticeTests.test_missing_or_unreviewed_files", "seconds": 0.046999999962281436}
+{"start": "test_release_notices.ReleaseNoticeTests.test_unknown_schema", "elapsed": 1230.4379999999655}
+{"end": "test_release_notices.ReleaseNoticeTests.test_unknown_schema", "seconds": 0.09299999999348074}
+{"start": "test_restore_audio.RestoreAudioTests.test_changed_bank_is_rejected", "elapsed": 1230.530999999959}
+{"end": "test_restore_audio.RestoreAudioTests.test_changed_bank_is_rejected", "seconds": 0.0470000000204891}
+{"start": "test_restore_audio.RestoreAudioTests.test_changed_existing_pcm_is_not_overwritten", "elapsed": 1230.5779999999795}
+{"end": "test_restore_audio.RestoreAudioTests.test_changed_existing_pcm_is_not_overwritten", "seconds": 0.0779999999795109}
+{"start": "test_restore_audio.RestoreAudioTests.test_changed_recipe_is_rejected", "elapsed": 1230.655999999959}
+{"end": "test_restore_audio.RestoreAudioTests.test_changed_recipe_is_rejected", "seconds": 0.07900000002700835}
+{"start": "test_restore_audio.RestoreAudioTests.test_changed_source_is_rejected", "elapsed": 1230.734999999986}
+{"end": "test_restore_audio.RestoreAudioTests.test_changed_source_is_rejected", "seconds": 0.061999999976251274}
+{"start": "test_restore_audio.RestoreAudioTests.test_decoder_mismatch_is_never_published", "elapsed": 1230.7969999999623}
+{"end": "test_restore_audio.RestoreAudioTests.test_decoder_mismatch_is_never_published", "seconds": 0.07800000003771856}
+{"start": "test_restore_audio.RestoreAudioTests.test_existing_correct_pcm_never_invokes_decoder_or_git", "elapsed": 1230.875}
+{"end": "test_restore_audio.RestoreAudioTests.test_existing_correct_pcm_never_invokes_decoder_or_git", "seconds": 0.0779999999795109}
+{"start": "test_restore_audio.RestoreAudioTests.test_fingerprint_disagreement_is_rejected", "elapsed": 1230.9529999999795}
+{"end": "test_restore_audio.RestoreAudioTests.test_fingerprint_disagreement_is_rejected", "seconds": 0.0779999999795109}
+{"start": "test_restore_audio.RestoreAudioTests.test_missing_pcm_reproduces_reviewed_bytes", "elapsed": 1231.030999999959}
+{"end": "test_restore_audio.RestoreAudioTests.test_missing_pcm_reproduces_reviewed_bytes", "seconds": 2.360000000044238}
+{"start": "test_restore_audio.RestoreAudioTests.test_missing_tools_fail_without_creating_pcm", "elapsed": 1233.3910000000033}
+{"end": "test_restore_audio.RestoreAudioTests.test_missing_tools_fail_without_creating_pcm", "seconds": 0.5149999999557622}
+{"start": "test_restore_audio.RestoreAudioTests.test_output_symlink_escape_is_rejected", "elapsed": 1233.905999999959}
+{"end": "test_restore_audio.RestoreAudioTests.test_output_symlink_escape_is_rejected", "seconds": 0.0940000000409782}
+{"start": "test_restore_audio.RestoreAudioTests.test_wrong_pin_is_rejected", "elapsed": 1234.0}
+{"end": "test_restore_audio.RestoreAudioTests.test_wrong_pin_is_rejected", "seconds": 0.0779999999795109}
+{"start": "test_romfs_layout.RomFSLayoutTests.test_actual_inventory_rejects_added_metadata", "elapsed": 1234.0779999999795}
+{"end": "test_romfs_layout.RomFSLayoutTests.test_actual_inventory_rejects_added_metadata", "seconds": 0.01600000000325963}
+{"start": "test_romfs_layout.RomFSLayoutTests.test_build_metadata_and_legacy_paths_rejected", "elapsed": 1234.0939999999828}
+{"end": "test_romfs_layout.RomFSLayoutTests.test_build_metadata_and_legacy_paths_rejected", "seconds": 0.0}
+{"start": "test_romfs_layout.RomFSLayoutTests.test_missing_inventory_rejected", "elapsed": 1234.0939999999828}
+{"end": "test_romfs_layout.RomFSLayoutTests.test_missing_inventory_rejected", "seconds": 0.0}
+{"start": "test_romfs_layout.RomFSLayoutTests.test_receipt_separation_and_isolated_outputs", "elapsed": 1234.0939999999828}
+{"end": "test_romfs_layout.RomFSLayoutTests.test_receipt_separation_and_isolated_outputs", "seconds": 0.01600000000325963}
+{"start": "test_romfs_layout.RomFSLayoutTests.test_runtime_categories", "elapsed": 1234.109999999986}
+{"end": "test_romfs_layout.RomFSLayoutTests.test_runtime_categories", "seconds": 0.0}
+{"start": "test_romfs_layout.RomFSLayoutTests.test_symlink_inventory_rejected", "elapsed": 1234.109999999986}
+{"end": "test_romfs_layout.RomFSLayoutTests.test_symlink_inventory_rejected", "seconds": 0.015000000013969839}
+{"start": "test_romfs_layout.RomFSLayoutTests.test_unsafe_paths_rejected", "elapsed": 1234.125}
+{"end": "test_romfs_layout.RomFSLayoutTests.test_unsafe_paths_rejected", "seconds": 0.0}
+{"start": "test_round_assets.RoundAssetsTests.test_bound_methods_and_frames_are_source_backed", "elapsed": 1234.125}
+{"end": "test_round_assets.RoundAssetsTests.test_bound_methods_and_frames_are_source_backed", "seconds": 0.0}
+{"start": "test_round_assets.RoundAssetsTests.test_invalid_repack_rejected", "elapsed": 1234.125}
+{"end": "test_round_assets.RoundAssetsTests.test_invalid_repack_rejected", "seconds": 0.0}
+{"start": "test_round_assets.RoundAssetsTests.test_real_source_receipt_and_display_assumptions", "elapsed": 1234.125}
+Verified source-pinned round assets and presentation recipe
+{"end": "test_round_assets.RoundAssetsTests.test_real_source_receipt_and_display_assumptions", "seconds": 0.48499999998603016}
+{"start": "test_round_assets.RoundAssetsTests.test_repack_preserves_every_linear_frame_and_transparent_rgb", "elapsed": 1234.609999999986}
+{"end": "test_round_assets.RoundAssetsTests.test_repack_preserves_every_linear_frame_and_transparent_rgb", "seconds": 0.0}
+{"start": "test_round_assets.RoundAssetsTests.test_source_change_rejected", "elapsed": 1234.609999999986}
+{"end": "test_round_assets.RoundAssetsTests.test_source_change_rejected", "seconds": 0.015000000013969839}
+{"start": "test_round_assets.RoundAssetsTests.test_unknown_animation_target_is_rejected", "elapsed": 1234.625}
+{"end": "test_round_assets.RoundAssetsTests.test_unknown_animation_target_is_rejected", "seconds": 0.0}
+{"start": "test_round_assets.RoundAssetsTests.test_unknown_fields_paths_ids_and_dimensions_fail", "elapsed": 1234.625}
+{"end": "test_round_assets.RoundAssetsTests.test_unknown_fields_paths_ids_and_dimensions_fail", "seconds": 0.01600000000325963}
+{"start": "test_round_assets.RoundAssetsTests.test_victory_tracks_remain_source_data", "elapsed": 1234.6410000000033}
+{"end": "test_round_assets.RoundAssetsTests.test_victory_tracks_remain_source_data", "seconds": 0.014999999955762178}
+{"start": "test_scene_player_reference.ScenePlayerReferenceTests.test_native_results_generate_transport_fixture", "elapsed": 1234.655999999959}
+{"end": "test_scene_player_reference.ScenePlayerReferenceTests.test_native_results_generate_transport_fixture", "seconds": 0.0}
+{"start": "test_scene_player_reference.ScenePlayerReferenceTests.test_reject_corrupt_results_and_false_identity", "elapsed": 1234.655999999959}
+{"end": "test_scene_player_reference.ScenePlayerReferenceTests.test_reject_corrupt_results_and_false_identity", "seconds": 0.0}
+{"start": "test_scene_player_reference.ScenePlayerReferenceTests.test_review_matches_exact_source_and_parent_transforms", "elapsed": 1234.655999999959}
+{"end": "test_scene_player_reference.ScenePlayerReferenceTests.test_review_matches_exact_source_and_parent_transforms", "seconds": 1.875}
+{"start": "test_scene_reference.SceneDataValidationTests.test_collision_owners_and_flags_are_not_discarded", "elapsed": 1236.530999999959}
+{"end": "test_scene_reference.SceneDataValidationTests.test_collision_owners_and_flags_are_not_discarded", "seconds": 0.0}
+{"start": "test_scene_reference.SceneDataValidationTests.test_dangling_resources_and_duplicate_nodes_rejected", "elapsed": 1236.530999999959}
+{"end": "test_scene_reference.SceneDataValidationTests.test_dangling_resources_and_duplicate_nodes_rejected", "seconds": 0.0}
+{"start": "test_scene_reference.SceneDataValidationTests.test_integer_precision_is_explicit_and_checked", "elapsed": 1236.530999999959}
+{"end": "test_scene_reference.SceneDataValidationTests.test_integer_precision_is_explicit_and_checked", "seconds": 0.0}
+{"start": "test_scene_reference.SceneDataValidationTests.test_missing_and_unknown_tilemap_cell_data_rejected", "elapsed": 1236.530999999959}
+{"end": "test_scene_reference.SceneDataValidationTests.test_missing_and_unknown_tilemap_cell_data_rejected", "seconds": 0.0}
+{"start": "test_scene_reference.SceneDataValidationTests.test_schema_engine_and_approval_tampering_rejected", "elapsed": 1236.530999999959}
+{"end": "test_scene_reference.SceneDataValidationTests.test_schema_engine_and_approval_tampering_rejected", "seconds": 0.0}
+{"start": "test_scene_reference.SceneDataValidationTests.test_typed_arrays_and_node_references_checked", "elapsed": 1236.530999999959}
+{"end": "test_scene_reference.SceneDataValidationTests.test_typed_arrays_and_node_references_checked", "seconds": 0.0}
+{"start": "test_scene_reference.SceneDataValidationTests.test_unknown_variants_nonfinite_values_and_wrong_fields_rejected", "elapsed": 1236.530999999959}
+{"end": "test_scene_reference.SceneDataValidationTests.test_unknown_variants_nonfinite_values_and_wrong_fields_rejected", "seconds": 0.01600000000325963}
+{"start": "test_scene_reference.SceneDataValidationTests.test_valid_resource_graph_and_explicit_gameplay_rejection", "elapsed": 1236.5469999999623}
+{"end": "test_scene_reference.SceneDataValidationTests.test_valid_resource_graph_and_explicit_gameplay_rejection", "seconds": 0.0}
+{"start": "test_scene_reference.SceneQuarantineTests.test_ambiguous_duplicate_or_malformed_resources_rejected", "elapsed": 1236.5469999999623}
+{"end": "test_scene_reference.SceneQuarantineTests.test_ambiguous_duplicate_or_malformed_resources_rejected", "seconds": 0.0}
+{"start": "test_scene_reference.SceneQuarantineTests.test_embedded_script_preserved_and_never_loaded", "elapsed": 1236.5469999999623}
+{"end": "test_scene_reference.SceneQuarantineTests.test_embedded_script_preserved_and_never_loaded", "seconds": 0.0}
+{"start": "test_scene_reference.SceneQuarantineTests.test_path_escape_noncanonical_paths_and_unknown_escapes_rejected", "elapsed": 1236.5469999999623}
+{"end": "test_scene_reference.SceneQuarantineTests.test_path_escape_noncanonical_paths_and_unknown_escapes_rejected", "seconds": 0.0}
+{"start": "test_scene_reference.SceneQuarantineTests.test_quoted_space_apostrophe_and_reordered_attributes", "elapsed": 1236.5469999999623}
+{"end": "test_scene_reference.SceneQuarantineTests.test_quoted_space_apostrophe_and_reordered_attributes", "seconds": 0.0}
+{"start": "test_scene_reference.SceneQuarantineTests.test_retains_native_bytes_custom_overrides_and_source_locations", "elapsed": 1236.5469999999623}
+{"end": "test_scene_reference.SceneQuarantineTests.test_retains_native_bytes_custom_overrides_and_source_locations", "seconds": 0.01600000000325963}
+{"start": "test_scene_reference.SceneQuarantineTests.test_script_values_outside_attachment_are_rejected", "elapsed": 1236.5629999999655}
+{"end": "test_scene_reference.SceneQuarantineTests.test_script_values_outside_attachment_are_rejected", "seconds": 0.0}
+{"start": "test_scene_reference.SceneQuarantineTests.test_unattached_scripts_are_not_silently_discarded", "elapsed": 1236.5629999999655}
+{"end": "test_scene_reference.SceneQuarantineTests.test_unattached_scripts_are_not_silently_discarded", "seconds": 0.0}
+{"start": "test_scene_reference.SceneQuarantineTests.test_unknown_embedded_language_and_unterminated_strings_rejected", "elapsed": 1236.5629999999655}
+{"end": "test_scene_reference.SceneQuarantineTests.test_unknown_embedded_language_and_unterminated_strings_rejected", "seconds": 0.0}
+{"start": "test_scene_reference.SceneQuarantineTests.test_unknown_format_fields_language_utf8_are_rejected", "elapsed": 1236.5629999999655}
+{"end": "test_scene_reference.SceneQuarantineTests.test_unknown_format_fields_language_utf8_are_rejected", "seconds": 0.0}
+{"start": "test_scene_resource_catalog.SceneCatalogCodec.test_new_and_old_capability_mismatch_and_truncated_payload", "elapsed": 1236.609999999986}
+{"end": "test_scene_resource_catalog.SceneCatalogCodec.test_new_and_old_capability_mismatch_and_truncated_payload", "seconds": 0.0}
+{"start": "test_scene_resource_catalog.SceneCatalogCodec.test_old_and_multiple_scene_binding_capabilities", "elapsed": 1236.609999999986}
+{"end": "test_scene_resource_catalog.SceneCatalogCodec.test_old_and_multiple_scene_binding_capabilities", "seconds": 0.0}
+{"start": "test_scene_resource_catalog.SceneCatalogCodec.test_props_extend_capability11_without_reusing_old_roles", "elapsed": 1236.609999999986}
+{"end": "test_scene_resource_catalog.SceneCatalogCodec.test_props_extend_capability11_without_reusing_old_roles", "seconds": 0.015000000013969839}
+{"start": "test_scene_resource_catalog.SceneCatalogCodec.test_stepping_roles_and_paths_are_strict", "elapsed": 1236.625}
+{"end": "test_scene_resource_catalog.SceneCatalogCodec.test_stepping_roles_and_paths_are_strict", "seconds": 0.0}
+{"start": "test_scene_resource_catalog.SceneCatalogCodec.test_stepping_uses_independent_capability10_identity", "elapsed": 1236.625}
+{"end": "test_scene_resource_catalog.SceneCatalogCodec.test_stepping_uses_independent_capability10_identity", "seconds": 0.0}
+{"start": "test_scene_resource_catalog.SceneCatalogCodec.test_wrong_ids_types_and_missing_default_are_rejected", "elapsed": 1236.625}
+{"end": "test_scene_resource_catalog.SceneCatalogCodec.test_wrong_ids_types_and_missing_default_are_rejected", "seconds": 0.01600000000325963}
+{"start": "test_segment_reference.SegmentReference.test_known_envelope_and_complete_header", "elapsed": 1236.6410000000033}
+{"end": "test_segment_reference.SegmentReference.test_known_envelope_and_complete_header", "seconds": 0.0}
+{"start": "test_segment_reference.SegmentReference.test_missing_extra_or_wrong_frame_list", "elapsed": 1236.6410000000033}
+{"end": "test_segment_reference.SegmentReference.test_missing_extra_or_wrong_frame_list", "seconds": 0.0}
+{"start": "test_segment_reference.SegmentReference.test_nonfinite_boolean_text_and_invalid_vector", "elapsed": 1236.6410000000033}
+{"end": "test_segment_reference.SegmentReference.test_nonfinite_boolean_text_and_invalid_vector", "seconds": 0.0}
+{"start": "test_segment_reference.SegmentReference.test_unknown_envelope", "elapsed": 1236.6410000000033}
+{"end": "test_segment_reference.SegmentReference.test_unknown_envelope", "seconds": 0.0}
+{"start": "test_segment_reference.SegmentReference.test_unknown_missing_or_wrong_row", "elapsed": 1236.6410000000033}
+{"end": "test_segment_reference.SegmentReference.test_unknown_missing_or_wrong_row", "seconds": 0.0}
+{"start": "test_segment_reference.SegmentReference.test_unreviewed_engine_rejected_before_output", "elapsed": 1236.6410000000033}
+{"end": "test_segment_reference.SegmentReference.test_unreviewed_engine_rejected_before_output", "seconds": 0.0}
+{"start": "test_source_receipt.SourceReceiptTests.test_archive_extra_duplicate_or_missing_rejected", "elapsed": 1236.6410000000033}
+{"end": "test_source_receipt.SourceReceiptTests.test_archive_extra_duplicate_or_missing_rejected", "seconds": 0.014999999955762178}
+{"start": "test_source_receipt.SourceReceiptTests.test_archive_matches_complete_git_blob_inventory", "elapsed": 1236.655999999959}
+{"end": "test_source_receipt.SourceReceiptTests.test_archive_matches_complete_git_blob_inventory", "seconds": 0.0}
+{"start": "test_source_receipt.SourceReceiptTests.test_archive_mismatched_bytes_or_length_rejected", "elapsed": 1236.655999999959}
+{"end": "test_source_receipt.SourceReceiptTests.test_archive_mismatched_bytes_or_length_rejected", "seconds": 0.01600000000325963}
+{"start": "test_source_receipt.SourceReceiptTests.test_archive_symlink_and_unsafe_path_rejected", "elapsed": 1236.6719999999623}
+{"end": "test_source_receipt.SourceReceiptTests.test_archive_symlink_and_unsafe_path_rejected", "seconds": 0.0}
+{"start": "test_step_contact_reference.StepContactReferenceTests.test_native_outcomes_and_fixture", "elapsed": 1236.6719999999623}
+{"end": "test_step_contact_reference.StepContactReferenceTests.test_native_outcomes_and_fixture", "seconds": 0.5160000000032596}
+{"start": "test_step_contact_reference.StepContactReferenceTests.test_reject_invalid_or_changed_result", "elapsed": 1237.1879999999655}
+{"end": "test_step_contact_reference.StepContactReferenceTests.test_reject_invalid_or_changed_result", "seconds": 4.187000000034459}
+{"start": "test_step_contact_reference.StepContactReferenceTests.test_source_geometry_and_methods_review", "elapsed": 1241.375}
+{"end": "test_step_contact_reference.StepContactReferenceTests.test_source_geometry_and_methods_review", "seconds": 0.5160000000032596}
+{"start": "test_story_key_grant.KeyGrant.test_capability_downgrade_and_unknown_reject", "elapsed": 1244.8129999999655}
+{"end": "test_story_key_grant.KeyGrant.test_capability_downgrade_and_unknown_reject", "seconds": 0.15600000001722947}
+{"start": "test_story_key_grant.KeyGrant.test_source_grant_and_later_completion_are_separate", "elapsed": 1244.9689999999828}
+{"end": "test_story_key_grant.KeyGrant.test_source_grant_and_later_completion_are_separate", "seconds": 0.01600000000325963}
+{"start": "test_story_key_grant.KeyGrant.test_typed_operand_rejection", "elapsed": 1244.984999999986}
+{"end": "test_story_key_grant.KeyGrant.test_typed_operand_rejection", "seconds": 0.26500000001396984}
+{"start": "test_story_key_grant.KeyGrant.test_unknown_review_and_false_early_flag_reject", "elapsed": 1245.25}
+{"end": "test_story_key_grant.KeyGrant.test_unknown_review_and_false_early_flag_reject", "seconds": 10.26600000000326}
+{"start": "test_swing_contact.SwingContact.test_native_provenance_and_all_source_queries", "elapsed": 1255.5160000000033}
+{"end": "test_swing_contact.SwingContact.test_native_provenance_and_all_source_queries", "seconds": 0.061999999976251274}
+{"start": "test_swing_contact.SwingContact.test_source_geometry_is_the_same_checked_action_resource", "elapsed": 1255.5779999999795}
+{"end": "test_swing_contact.SwingContact.test_source_geometry_is_the_same_checked_action_resource", "seconds": 0.0}
+{"start": "test_upstream.UpstreamTests.test_content_update_is_automatic", "elapsed": 1255.5779999999795}
+{"end": "test_upstream.UpstreamTests.test_content_update_is_automatic", "seconds": 0.14100000000325963}
+{"start": "test_upstream.UpstreamTests.test_dependency_change_blocks", "elapsed": 1255.7189999999828}
+{"end": "test_upstream.UpstreamTests.test_dependency_change_blocks", "seconds": 0.125}
+{"start": "test_upstream.UpstreamTests.test_function_discovery_is_diagnostic", "elapsed": 1255.8439999999828}
+{"end": "test_upstream.UpstreamTests.test_function_discovery_is_diagnostic", "seconds": 0.061999999976251274}
+{"start": "test_upstream.UpstreamTests.test_missing_cpp_implementation_blocks", "elapsed": 1255.905999999959}
+{"end": "test_upstream.UpstreamTests.test_missing_cpp_implementation_blocks", "seconds": 0.0940000000409782}
+{"start": "test_upstream.UpstreamTests.test_native_change_blocks", "elapsed": 1256.0}
+{"end": "test_upstream.UpstreamTests.test_native_change_blocks", "seconds": 0.125}
+{"start": "test_upstream.UpstreamTests.test_new_script_blocks", "elapsed": 1256.125}
+{"end": "test_upstream.UpstreamTests.test_new_script_blocks", "seconds": 0.125}
+{"start": "test_upstream.UpstreamTests.test_path_traversal_rejected", "elapsed": 1256.25}
+{"end": "test_upstream.UpstreamTests.test_path_traversal_rejected", "seconds": 0.0779999999795109}
+{"start": "test_upstream.UpstreamTests.test_real_encore_adapter_not_faked", "elapsed": 1256.3279999999795}
+{"end": "test_upstream.UpstreamTests.test_real_encore_adapter_not_faked", "seconds": 0.14100000000325963}
+{"start": "test_upstream.UpstreamTests.test_removed_file_blocks", "elapsed": 1256.4689999999828}
+{"end": "test_upstream.UpstreamTests.test_removed_file_blocks", "seconds": 0.125}
+{"start": "test_upstream.UpstreamTests.test_snapshot_must_match_checkout", "elapsed": 1256.5939999999828}
+{"end": "test_upstream.UpstreamTests.test_snapshot_must_match_checkout", "seconds": 0.061999999976251274}
+{"start": "test_upstream.UpstreamTests.test_unchanged_passes", "elapsed": 1256.655999999959}
+{"end": "test_upstream.UpstreamTests.test_unchanged_passes", "seconds": 0.125}
+{"start": "test_upstream.UpstreamTests.test_unknown_opcode_blocks", "elapsed": 1256.780999999959}
+{"end": "test_upstream.UpstreamTests.test_unknown_opcode_blocks", "seconds": 0.125}
+{"start": "test_upstream_inventory.InventoryTests.test_all_tracked_blobs_and_spaces_and_binary", "elapsed": 1256.905999999959}
+{"end": "test_upstream_inventory.InventoryTests.test_all_tracked_blobs_and_spaces_and_binary", "seconds": 0.7820000000065193}
+{"start": "test_upstream_inventory.InventoryTests.test_audit_rejects_unpinned_version_path", "elapsed": 1257.6879999999655}
+{"end": "test_upstream_inventory.InventoryTests.test_audit_rejects_unpinned_version_path", "seconds": 0.7179999999934807}
+{"start": "test_upstream_inventory.InventoryTests.test_dirty_source_cannot_claim_commit", "elapsed": 1258.405999999959}
+{"end": "test_upstream_inventory.InventoryTests.test_dirty_source_cannot_claim_commit", "seconds": 0.6100000000442378}
+{"start": "test_upstream_inventory.InventoryTests.test_dynamic_diagnostics_keep_location_and_no_approval", "elapsed": 1259.0160000000033}
+{"end": "test_upstream_inventory.InventoryTests.test_dynamic_diagnostics_keep_location_and_no_approval", "seconds": 0.4369999999762513}
+{"start": "test_upstream_inventory.InventoryTests.test_existing_pin_matches_actual_version_and_commit", "elapsed": 1259.4529999999795}
+Pinned pristine source ef0547e5cc8734dcfa838c532c96951fa2d93f2c, declared game version 0.4.1.0; no compatibility approval.
+{"end": "test_upstream_inventory.InventoryTests.test_existing_pin_matches_actual_version_and_commit", "seconds": 1.172000000020489}
+{"start": "test_upstream_inventory.InventoryTests.test_git_symlink_mode_rejected", "elapsed": 1260.625}
+{"end": "test_upstream_inventory.InventoryTests.test_git_symlink_mode_rejected", "seconds": 0.7660000000032596}
+{"start": "test_upstream_inventory.InventoryTests.test_ignored_untracked_file_is_not_silently_dropped", "elapsed": 1261.3910000000033}
+{"end": "test_upstream_inventory.InventoryTests.test_ignored_untracked_file_is_not_silently_dropped", "seconds": 0.5939999999827705}
+{"start": "test_upstream_inventory.InventoryTests.test_invalid_utf8_source_rejected", "elapsed": 1261.984999999986}
+{"end": "test_upstream_inventory.InventoryTests.test_invalid_utf8_source_rejected", "seconds": 0.9679999999934807}
+{"start": "test_upstream_inventory.InventoryTests.test_pin_rejects_unknown_version_and_ref", "elapsed": 1262.9529999999795}
+{"end": "test_upstream_inventory.InventoryTests.test_pin_rejects_unknown_version_and_ref", "seconds": 1.1880000000237487}
+{"start": "test_world_flags_reference.WorldFlagReferenceTests.test_native_fixture_is_unchanged", "elapsed": 1264.1410000000033}
+{"end": "test_world_flags_reference.WorldFlagReferenceTests.test_native_fixture_is_unchanged", "seconds": 0.014999999955762178}
+{"start": "test_world_flags_reference.WorldFlagReferenceTests.test_reject_changed_source_before_writing_project", "elapsed": 1264.155999999959}
+{"end": "test_world_flags_reference.WorldFlagReferenceTests.test_reject_changed_source_before_writing_project", "seconds": 0.01600000000325963}
+{"start": "test_world_flags_reference.WorldFlagReferenceTests.test_reject_incomplete_and_unknown_reference_fields", "elapsed": 1264.1719999999623}
+{"end": "test_world_flags_reference.WorldFlagReferenceTests.test_reject_incomplete_and_unknown_reference_fields", "seconds": 0.0}
+{"start": "test_world_flags_reference.WorldFlagReferenceTests.test_reject_missing_reviewed_function", "elapsed": 1264.1719999999623}
+{"end": "test_world_flags_reference.WorldFlagReferenceTests.test_reject_missing_reviewed_function", "seconds": 0.0}
+{"start": "test_world_flags_reference.WorldFlagReferenceTests.test_reject_wrong_variant_types_and_ranges", "elapsed": 1264.1719999999623}
+{"end": "test_world_flags_reference.WorldFlagReferenceTests.test_reject_wrong_variant_types_and_ranges", "seconds": 0.0}
+{"start": "test_world_geometry.WorldGeometryTests.test_external_geometry_matches_native_export", "elapsed": 1264.359999999986}
+{"end": "test_world_geometry.WorldGeometryTests.test_external_geometry_matches_native_export", "seconds": 0.21799999999348074}
+{"start": "test_world_geometry.WorldGeometryTests.test_missing_geometry_rejected", "elapsed": 1264.5779999999795}
+{"end": "test_world_geometry.WorldGeometryTests.test_missing_geometry_rejected", "seconds": 0.10999999998603016}
+{"start": "test_world_geometry.WorldGeometryTests.test_rounded_value_rejected", "elapsed": 1264.6879999999655}
+{"end": "test_world_geometry.WorldGeometryTests.test_rounded_value_rejected", "seconds": 0.0}
+{"start": "test_world_geometry.WorldGeometryTests.test_unknown_shape_rejected", "elapsed": 1264.6879999999655}
+{"end": "test_world_geometry.WorldGeometryTests.test_unknown_shape_rejected", "seconds": 0.0470000000204891}
+{"start": "test_world_geometry.WorldGeometryTests.test_unknown_version_rejected", "elapsed": 1264.734999999986}
+{"end": "test_world_geometry.WorldGeometryTests.test_unknown_version_rejected", "seconds": 0.10899999999674037}
+{"start": "test_world_scene_routes.Routes.test_actual_transformed_routes", "elapsed": 1266.359999999986}
+{"end": "test_world_scene_routes.Routes.test_actual_transformed_routes", "seconds": 0.0}
+{"start": "test_world_scene_routes.Routes.test_duplicate_json_keys", "elapsed": 1266.359999999986}
+{"end": "test_world_scene_routes.Routes.test_duplicate_json_keys", "seconds": 0.0}
+{"start": "test_world_scene_routes.Routes.test_legacy_route_semantics_unchanged", "elapsed": 1266.359999999986}
+{"end": "test_world_scene_routes.Routes.test_legacy_route_semantics_unchanged", "seconds": 2.6560000000172295}
+{"start": "test_world_scene_routes.Routes.test_legacy_schema1_retains_capability2", "elapsed": 1269.0160000000033}
+{"end": "test_world_scene_routes.Routes.test_legacy_schema1_retains_capability2", "seconds": 0.0}
+{"start": "test_world_scene_routes.Routes.test_lowered_tuning_rejection", "elapsed": 1269.0160000000033}
+{"end": "test_world_scene_routes.Routes.test_lowered_tuning_rejection", "seconds": 0.014999999955762178}
+{"start": "test_world_scene_routes.Routes.test_props_missing_unknown_and_legacy_projection", "elapsed": 1269.030999999959}
+{"end": "test_world_scene_routes.Routes.test_props_missing_unknown_and_legacy_projection", "seconds": 0.0}
+{"start": "test_world_scene_routes.Routes.test_recipe_negative_paths", "elapsed": 1269.030999999959}
+{"end": "test_world_scene_routes.Routes.test_recipe_negative_paths", "seconds": 0.0}
+{"start": "test_world_scene_routes.Routes.test_source_semantic_rejection", "elapsed": 1269.030999999959}
+{"end": "test_world_scene_routes.Routes.test_source_semantic_rejection", "seconds": 5.204000000027008}
+{"start": "test_world_scene_routes.Routes.test_steps_missing_unknown_and_downgraded", "elapsed": 1274.234999999986}
+{"end": "test_world_scene_routes.Routes.test_steps_missing_unknown_and_downgraded", "seconds": 0.0}
+...................F.F..............................................F..........................................................................................................................................F..................................................................................E.E................................................................................................................................................................................................................................................................................................................................................................
+======================================================================
+ERROR: test_actual_renderer_expansion_repeat_and_reference_sampling (test_battle_assets.BattleAssetsTests.test_actual_renderer_expansion_repeat_and_reference_sampling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_battle_assets.py", line 251, in test_actual_renderer_expansion_repeat_and_reference_sampling
+    compiled=subprocess.run(command + (['-DENCORE_FRAME_PROFILE'] if profile else []),capture_output=True,text=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] 系统找不到指定的文件。
+
+======================================================================
+ERROR: test_reader_and_renderer (test_loading_indicator.LoadingIndicatorTests.test_reader_and_renderer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_loading_indicator.py", line 66, in test_reader_and_renderer
+    subprocess.run([os.environ.get('CXX','g++'),'-std=c++17','-Wall','-Wextra','-Werror','-fno-exceptions','-fno-rtti',
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] 系统找不到指定的文件。
+
+======================================================================
+ERROR: test_progress_payload_ownership_and_failures (test_loading_texture.LoadingTextureTests.test_progress_payload_ownership_and_failures)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_loading_texture.py", line 15, in test_progress_payload_ownership_and_failures
+    subprocess.run([
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] 系统找不到指定的文件。
+
+======================================================================
+FAIL: test_activation_is_explicit (test_ci_python_environment.CiPythonEnvironmentTests.test_activation_is_explicit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_ci_python_environment.py", line 29, in test_activation_is_explicit
+    self.assertEqual(fast.returncode, 0, fast.stderr)
+AssertionError: 1 != 0 : Fatal Python error: init_import_site: Failed to import the site module
+Python runtime state: initialized
+Traceback (most recent call last):
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 980, in exec_module
+  File "<frozen site>", line 616, in <module>
+  File "<frozen site>", line 609, in main
+  File "<frozen site>", line 548, in execsitecustomize
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\ci_python\sitecustomize.py", line 10, in <module>
+    raise SystemExit('CI safe parser requires pinned PyYAML 6.0.3 with LibYAML')
+SystemExit: CI safe parser requires pinned PyYAML 6.0.3 with LibYAML
+
+Extension modules: yaml._yaml (total: 1)
+
+
+======================================================================
+FAIL: test_order_values_and_types_match (test_ci_python_environment.CiPythonEnvironmentTests.test_order_values_and_types_match)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_ci_python_environment.py", line 40, in test_order_values_and_types_match
+    self.assertEqual(fast.returncode, 0, fast.stderr)
+AssertionError: 1 != 0 : Fatal Python error: init_import_site: Failed to import the site module
+Python runtime state: initialized
+Traceback (most recent call last):
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 980, in exec_module
+  File "<frozen site>", line 616, in <module>
+  File "<frozen site>", line 609, in main
+  File "<frozen site>", line 548, in execsitecustomize
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\ci_python\sitecustomize.py", line 10, in <module>
+    raise SystemExit('CI safe parser requires pinned PyYAML 6.0.3 with LibYAML')
+SystemExit: CI safe parser requires pinned PyYAML 6.0.3 with LibYAML
+
+Extension modules: yaml._yaml (total: 1)
+
+
+======================================================================
+FAIL: test_shared_resources_and_safe_staging (test_dialogue_choices_assets.ChoicesAssets.test_shared_resources_and_safe_staging)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_dialogue_choices_assets.py", line 41, in test_shared_resources_and_safe_staging
+    self.assertEqual(set(map(str, files)), {'ui/opening.encchoices', 'graphics/ui/house/cursor.t3x', 'graphics/battle/lamp/font.t3x'})
+AssertionError: Items in the first set but not the second:
+'ui\\opening.encchoices'
+'graphics\\ui\\house\\cursor.t3x'
+'graphics\\battle\\lamp\\font.t3x'
+Items in the second set but not the first:
+'graphics/ui/house/cursor.t3x'
+'ui/opening.encchoices'
+'graphics/battle/lamp/font.t3x'
+
+======================================================================
+FAIL: test_profile_is_separate_and_explicit (test_frame_profile_build.FrameProfileBuildTests.test_profile_is_separate_and_explicit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_frame_profile_build.py", line 27, in test_profile_is_separate_and_explicit
+    self.assertEqual(command[-4:], ['-c', '/output/main.cpp', '-o', '/output/main.o'])
+AssertionError: Lists differ: ['-c', '\\output\\main.cpp', '-o', '\\output\\main.o'] != ['-c', '/output/main.cpp', '-o', '/output/main.o']
+
+First differing element 1:
+'\\output\\main.cpp'
+'/output/main.cpp'
+
+- ['-c', '\\output\\main.cpp', '-o', '\\output\\main.o']
+?         ^^      ^^                  ^^      ^^
+
++ ['-c', '/output/main.cpp', '-o', '/output/main.o']
+?         ^      ^                  ^      ^
+
+
+----------------------------------------------------------------------
+Ran 709 tests in 1274.224s
+
+FAILED (failures=4, errors=3)
+{"success": false, "methods": 709, "elapsed": 1274.234999999986}

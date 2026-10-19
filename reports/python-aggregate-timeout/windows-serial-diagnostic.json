@@ -1,0 +1,535 @@
+{
+  "scope": "Diagnostic Windows serial partition only; not passing full make test; raw log contains 4 failures/3 errors",
+  "modules": {
+    "test_actor_actions_reference": {
+      "methods": 12,
+      "seconds": 0.125,
+      "setup_gap": 0.030999999959021807
+    },
+    "test_actor_asset": {
+      "methods": 6,
+      "seconds": 0.2190000000409782,
+      "setup_gap": 0
+    },
+    "test_actor_conversion": {
+      "methods": 11,
+      "seconds": 1.6260000000474975,
+      "setup_gap": 0.06199999991804361
+    },
+    "test_append_audio_assets": {
+      "methods": 8,
+      "seconds": 0.062000000034458935,
+      "setup_gap": 0
+    },
+    "test_audio_asset": {
+      "methods": 13,
+      "seconds": 0.5309999999590218,
+      "setup_gap": 0
+    },
+    "test_battle_assets": {
+      "methods": 13,
+      "seconds": 0.39100000000325963,
+      "setup_gap": 0
+    },
+    "test_ci_bootstrap": {
+      "methods": 18,
+      "seconds": 44.85899999999674,
+      "setup_gap": 0
+    },
+    "test_ci_console_check": {
+      "methods": 2,
+      "seconds": 0.0,
+      "setup_gap": 0
+    },
+    "test_ci_python_environment": {
+      "methods": 4,
+      "seconds": 1.9530000000377186,
+      "setup_gap": 0.01600000000325963
+    },
+    "test_ci_quick": {
+      "methods": 6,
+      "seconds": 0.0,
+      "setup_gap": 0
+    },
+    "test_ci_test_parallelism": {
+      "methods": 7,
+      "seconds": 6.280999999959022,
+      "setup_gap": 0
+    },
+    "test_ci_workflow_policy": {
+      "methods": 5,
+      "seconds": 0.0,
+      "setup_gap": 0.03200000000651926
+    },
+    "test_console_core_sources": {
+      "methods": 3,
+      "seconds": 0.015000000013969839,
+      "setup_gap": 0
+    },
+    "test_content": {
+      "methods": 12,
+      "seconds": 0.0,
+      "setup_gap": 0
+    },
+    "test_content_parallelism": {
+      "methods": 4,
+      "seconds": 3.5320000000065193,
+      "setup_gap": 0
+    },
+    "test_ctr_tools": {
+      "methods": 6,
+      "seconds": 0.10899999999674037,
+      "setup_gap": 0
+    },
+    "test_dialogue_choices_assets": {
+      "methods": 4,
+      "seconds": 28.89000000001397,
+      "setup_gap": 0.01600000000325963
+    },
+    "test_doll_actor_actions_reference": {
+      "methods": 11,
+      "seconds": 0.18699999997625127,
+      "setup_gap": 0.01600000000325963
+    },
+    "test_doll_content": {
+      "methods": 10,
+      "seconds": 3.0780000000377186,
+      "setup_gap": 0.23499999998603016
+    },
+    "test_doll_entry_asset": {
+      "methods": 9,
+      "seconds": 6.547000000020489,
+      "setup_gap": 1.0309999999590218
+    },
+    "test_doll_postwin": {
+      "methods": 11,
+      "seconds": 62.59399999998277,
+      "setup_gap": 0.25
+    },
+    "test_doll_postwin_reference": {
+      "methods": 4,
+      "seconds": 0.15600000001722947,
+      "setup_gap": 0.031000000017229468
+    },
+    "test_doll_round": {
+      "methods": 12,
+      "seconds": 0.875,
+      "setup_gap": 0.01600000000325963
+    },
+    "test_door_music_reference": {
+      "methods": 3,
+      "seconds": 0.015000000013969839,
+      "setup_gap": 0.29699999996228144
+    },
+    "test_emulator_artifact": {
+      "methods": 2,
+      "seconds": 0.0,
+      "setup_gap": 0
+    },
+    "test_emulator_semantics": {
+      "methods": 21,
+      "seconds": 0.875,
+      "setup_gap": 0
+    },
+    "test_emulator_walk_route": {
+      "methods": 5,
+      "seconds": 0.046999999962281436,
+      "setup_gap": 5.922000000020489
+    },
+    "test_field_camera": {
+      "methods": 3,
+      "seconds": 1.6560000000172295,
+      "setup_gap": 0
+    },
+    "test_field_props": {
+      "methods": 7,
+      "seconds": 25.875,
+      "setup_gap": 3.047000000020489
+    },
+    "test_field_scene_music": {
+      "methods": 6,
+      "seconds": 1.172000000020489,
+      "setup_gap": 0.17199999996228144
+    },
+    "test_field_scene_npcs": {
+      "methods": 6,
+      "seconds": 0.28100000001722947,
+      "setup_gap": 0.25
+    },
+    "test_field_swing": {
+      "methods": 4,
+      "seconds": 2.922000000020489,
+      "setup_gap": 0.42199999996228144
+    },
+    "test_field_swing_action": {
+      "methods": 6,
+      "seconds": 7.327999999979511,
+      "setup_gap": 0.6089999999967404
+    },
+    "test_field_swing_entry": {
+      "methods": 6,
+      "seconds": 5.875,
+      "setup_gap": 0.8130000000237487
+    },
+    "test_field_swing_graphics": {
+      "methods": 6,
+      "seconds": 2.155999999959022,
+      "setup_gap": 0.5310000000172295
+    },
+    "test_field_swing_presentation": {
+      "methods": 4,
+      "seconds": 1.0940000000409782,
+      "setup_gap": 0.01600000000325963
+    },
+    "test_frame_profile_build": {
+      "methods": 4,
+      "seconds": 0.0,
+      "setup_gap": 0
+    },
+    "test_godot_text": {
+      "methods": 4,
+      "seconds": 0.0,
+      "setup_gap": 0
+    },
+    "test_graveyard_story": {
+      "methods": 3,
+      "seconds": 20.23399999999674,
+      "setup_gap": 0
+    },
+    "test_graveyard_tutorial_programme": {
+      "methods": 6,
+      "seconds": 22.51600000000326,
+      "setup_gap": 30.905999999959022
+    },
+    "test_house_assets": {
+      "methods": 6,
+      "seconds": 56.98399999999674,
+      "setup_gap": 0
+    },
+    "test_house_key_doors": {
+      "methods": 5,
+      "seconds": 2.8290000000270084,
+      "setup_gap": 0
+    },
+    "test_house_layers": {
+      "methods": 12,
+      "seconds": 6.452999999979511,
+      "setup_gap": 0.09299999999348074
+    },
+    "test_introduction_assets": {
+      "methods": 11,
+      "seconds": 4.0,
+      "setup_gap": 1.2350000000442378
+    },
+    "test_items_assets": {
+      "methods": 13,
+      "seconds": 7.327999999979511,
+      "setup_gap": 0
+    },
+    "test_items_fixture_resources": {
+      "methods": 2,
+      "seconds": 2.9689999999827705,
+      "setup_gap": 0
+    },
+    "test_lamp_dialogue": {
+      "methods": 13,
+      "seconds": 14.96899999998277,
+      "setup_gap": 0.031000000017229468
+    },
+    "test_legacy_resource_prefix": {
+      "methods": 3,
+      "seconds": 0.10899999999674037,
+      "setup_gap": 0
+    },
+    "test_loading_indicator": {
+      "methods": 4,
+      "seconds": 0.75,
+      "setup_gap": 0
+    },
+    "test_loading_texture": {
+      "methods": 1,
+      "seconds": 0.14100000000325963,
+      "setup_gap": 0
+    },
+    "test_map_asset": {
+      "methods": 6,
+      "seconds": 0.07800000003771856,
+      "setup_gap": 0
+    },
+    "test_mayor_field": {
+      "methods": 7,
+      "seconds": 12.061999999976251,
+      "setup_gap": 1.7189999999827705
+    },
+    "test_mayor_scene": {
+      "methods": 5,
+      "seconds": 51.0,
+      "setup_gap": 8.672000000020489
+    },
+    "test_mayor_story": {
+      "methods": 4,
+      "seconds": 5.35899999999674,
+      "setup_gap": 0.39100000000325963
+    },
+    "test_melody_content": {
+      "methods": 12,
+      "seconds": 64.54700000002049,
+      "setup_gap": 0.4529999999795109
+    },
+    "test_menu_audio_binding": {
+      "methods": 2,
+      "seconds": 1.6560000000172295,
+      "setup_gap": 0
+    },
+    "test_move_audio_reference": {
+      "methods": 3,
+      "seconds": 0.18799999996554106,
+      "setup_gap": 0
+    },
+    "test_music_all_reference": {
+      "methods": 3,
+      "seconds": 0.014999999955762178,
+      "setup_gap": 1.4530000000377186
+    },
+    "test_music_finished_reference": {
+      "methods": 3,
+      "seconds": 0.01600000000325963,
+      "setup_gap": 1.2190000000409782
+    },
+    "test_music_library": {
+      "methods": 3,
+      "seconds": 1.1719999999622814,
+      "setup_gap": 1.375
+    },
+    "test_music_library_bindings": {
+      "methods": 4,
+      "seconds": 9.84299999999348,
+      "setup_gap": 1.422000000020489
+    },
+    "test_music_lifetime_reference": {
+      "methods": 3,
+      "seconds": 0.01600000000325963,
+      "setup_gap": 1.2189999999827705
+    },
+    "test_music_pause_reference": {
+      "methods": 3,
+      "seconds": 0.01600000000325963,
+      "setup_gap": 1.3589999999967404
+    },
+    "test_music_player_reference": {
+      "methods": 3,
+      "seconds": 0.015000000013969839,
+      "setup_gap": 1.047000000020489
+    },
+    "test_music_programs": {
+      "methods": 3,
+      "seconds": 0.031000000017229468,
+      "setup_gap": 0.17199999996228144
+    },
+    "test_music_scene_reference": {
+      "methods": 3,
+      "seconds": 0.062000000034458935,
+      "setup_gap": 1.9849999999860302
+    },
+    "test_music_seek_reference": {
+      "methods": 3,
+      "seconds": 0.0,
+      "setup_gap": 1.375
+    },
+    "test_native_battle": {
+      "methods": 8,
+      "seconds": 1.6089999999967404,
+      "setup_gap": 0.5629999999655411
+    },
+    "test_native_input": {
+      "methods": 9,
+      "seconds": 0.07800000003771856,
+      "setup_gap": 0
+    },
+    "test_native_introduction": {
+      "methods": 5,
+      "seconds": 2.6560000000172295,
+      "setup_gap": 0.8599999999860302
+    },
+    "test_native_items": {
+      "methods": 12,
+      "seconds": 2.1719999999622814,
+      "setup_gap": 0
+    },
+    "test_native_session": {
+      "methods": 14,
+      "seconds": 164.875,
+      "setup_gap": 0
+    },
+    "test_new_game_assets": {
+      "methods": 6,
+      "seconds": 42.48399999999674,
+      "setup_gap": 0.031000000017229468
+    },
+    "test_npc_interaction_policy": {
+      "methods": 4,
+      "seconds": 0.5630000000237487,
+      "setup_gap": 0.2029999999795109
+    },
+    "test_npc_return_reference": {
+      "methods": 3,
+      "seconds": 0.0470000000204891,
+      "setup_gap": 0
+    },
+    "test_npc_sprite_reference": {
+      "methods": 4,
+      "seconds": 0.046999999962281436,
+      "setup_gap": 0
+    },
+    "test_party_npc_actor": {
+      "methods": 3,
+      "seconds": 1.9530000000377186,
+      "setup_gap": 0.23399999999674037
+    },
+    "test_pause_audio_reference": {
+      "methods": 3,
+      "seconds": 0.42199999996228144,
+      "setup_gap": 0
+    },
+    "test_phone_assets": {
+      "methods": 10,
+      "seconds": 3.8589999999967404,
+      "setup_gap": 0.2970000000204891
+    },
+    "test_phone_linker": {
+      "methods": 17,
+      "seconds": 274.9220000000205,
+      "setup_gap": 128.5779999999795
+    },
+    "test_phone_pack": {
+      "methods": 4,
+      "seconds": 5.092999999993481,
+      "setup_gap": 0.9849999999860302
+    },
+    "test_pillow_battle": {
+      "methods": 8,
+      "seconds": 5.327999999979511,
+      "setup_gap": 1.0630000000237487
+    },
+    "test_podunk_field": {
+      "methods": 10,
+      "seconds": 19.06300000002375,
+      "setup_gap": 0
+    },
+    "test_podunk_music": {
+      "methods": 5,
+      "seconds": 1.25,
+      "setup_gap": 0
+    },
+    "test_programme_operation": {
+      "methods": 7,
+      "seconds": 0.015000000013969839,
+      "setup_gap": 0
+    },
+    "test_progression_reference": {
+      "methods": 7,
+      "seconds": 0.0,
+      "setup_gap": 0.01600000000325963
+    },
+    "test_prop_clips": {
+      "methods": 6,
+      "seconds": 2.8119999999762513,
+      "setup_gap": 0.25
+    },
+    "test_python_suite": {
+      "methods": 14,
+      "seconds": 0.01600000000325963,
+      "setup_gap": 0
+    },
+    "test_region_baseline": {
+      "methods": 2,
+      "seconds": 0.35899999999674037,
+      "setup_gap": 0
+    },
+    "test_release_notices": {
+      "methods": 10,
+      "seconds": 1.202999999979511,
+      "setup_gap": 0
+    },
+    "test_restore_audio": {
+      "methods": 11,
+      "seconds": 3.547000000020489,
+      "setup_gap": 0
+    },
+    "test_romfs_layout": {
+      "methods": 7,
+      "seconds": 0.0470000000204891,
+      "setup_gap": 0
+    },
+    "test_round_assets": {
+      "methods": 8,
+      "seconds": 0.5309999999590218,
+      "setup_gap": 0
+    },
+    "test_scene_player_reference": {
+      "methods": 3,
+      "seconds": 1.875,
+      "setup_gap": 0
+    },
+    "test_scene_reference": {
+      "methods": 17,
+      "seconds": 0.03200000000651926,
+      "setup_gap": 0
+    },
+    "test_scene_resource_catalog": {
+      "methods": 6,
+      "seconds": 0.031000000017229468,
+      "setup_gap": 0.0470000000204891
+    },
+    "test_segment_reference": {
+      "methods": 6,
+      "seconds": 0.0,
+      "setup_gap": 0
+    },
+    "test_source_receipt": {
+      "methods": 4,
+      "seconds": 0.030999999959021807,
+      "setup_gap": 0
+    },
+    "test_step_contact_reference": {
+      "methods": 3,
+      "seconds": 5.219000000040978,
+      "setup_gap": 0
+    },
+    "test_story_key_grant": {
+      "methods": 4,
+      "seconds": 10.703000000037719,
+      "setup_gap": 2.9219999999622814
+    },
+    "test_swing_contact": {
+      "methods": 2,
+      "seconds": 0.061999999976251274,
+      "setup_gap": 0
+    },
+    "test_upstream": {
+      "methods": 12,
+      "seconds": 1.327999999979511,
+      "setup_gap": 0
+    },
+    "test_upstream_inventory": {
+      "methods": 9,
+      "seconds": 7.235000000044238,
+      "setup_gap": 0
+    },
+    "test_world_flags_reference": {
+      "methods": 5,
+      "seconds": 0.030999999959021807,
+      "setup_gap": 0
+    },
+    "test_world_geometry": {
+      "methods": 5,
+      "seconds": 0.48399999999674037,
+      "setup_gap": 0.18800000002374873
+    },
+    "test_world_scene_routes": {
+      "methods": 9,
+      "seconds": 7.875,
+      "setup_gap": 1.5160000000032596
+    }
+  }
+}

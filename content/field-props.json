@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.field-props.reviewed-source",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "field_recipe": "content/podunk-field.json",
@@ -66,5 +66,7 @@
     }
   ],
   "map_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
-  "scope": "13 source Dead Bush instances, local lifecycle and checked map binding. Candidate until scene/release integration and actual swing/quest admission. Callback target remains the existing explicit unsupported boundary until its original programme is implemented."
+  "scope": "13 source Dead Bush instances with typed lifecycle, checked map/sprite/body and source clone-subtree drawing order. Ready/render integration only; Ninten swing and quest callback programmes remain explicitly unavailable until separately admitted.",
+  "output": "world/podunk/podunk.encprops",
+  "receipt": "content/asset-receipts/graphics/world/podunk/props/source.json"
 }

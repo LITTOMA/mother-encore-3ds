@@ -21,7 +21,7 @@ struct Host:FieldStoryHost,MickHost {
 int main(int argc,char**argv){
  CHECK(argc==2);const std::string root=argv[1];auto file=[&](const char*p){return root+"/"+p;};
  ResourceCatalog catalog;WorldLinksData links;RoomData opening;ItemData items;AudioBank audio;NativeSessionData session;
- CHECK(catalog.load_file(file("system/native.encresources").c_str(),error));CHECK(links.load_file(file("world/world.enclinks").c_str(),error));CHECK(links.bind_catalog(catalog,error));CHECK(links.capability()==3&&links.scene_count()==3&&links.route_count()==6);
+ CHECK(catalog.load_file(file("system/native.encresources").c_str(),error));CHECK(links.load_file(file("world/world.enclinks").c_str(),error));CHECK(links.bind_catalog(catalog,error));CHECK(links.capability()==4&&links.scene_count()==3&&links.route_count()==6);
  CHECK(opening.load_file(file("world/house/opening.encroom").c_str(),error));CHECK(items.load_file(file("ui/opening.encitems").c_str(),error));CHECK(audio.load_file(file("sound/banks/opening.encaudio").c_str(),error));
  CHECK(session.load_file(file("session/opening.encsession").c_str(),error));
  const auto entry=links.route(links.find_route(3));CHECK(entry.from==2&&entry.to==3);FieldSceneResources metadata;

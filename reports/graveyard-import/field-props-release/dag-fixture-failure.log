@@ -1,0 +1,65 @@
+...................F..
+======================================================================
+FAIL: test_four_process_overlap_dependencies_and_final_barrier (tests.test_content_parallelism.ContentParallelTests.test_four_process_overlap_dependencies_and_final_barrier)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_content_parallelism.py", line 23, in test_four_process_overlap_dependencies_and_final_barrier
+    self.run_graph(False)
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_content_parallelism.py", line 66, in run_graph
+    self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+AssertionError: 2 != 0 : CONTENT RUN e2ef72074faf44a9bedc69cd799d0a85
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" audio -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/restore_audio.py
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" gameplay-audio -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/gameplay_audio.py
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" music-zones -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/music_zones.py
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" bars -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/blackbars_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" input -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_input.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" phone -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_phone.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" effects -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/world_effect_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" doll-entry -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/doll_entry_asset.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" pillow-entry -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/pillow_entry_asset.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" round -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_round.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" doll-round -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/doll_round.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" pillow-round -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/pillow_round.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" house -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_house.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" mick-treats -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/mick_treats.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" items-check -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/items_assets.py verify
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" migration -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/session_migration.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" continue -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/continue_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" loading -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/loading_indicator_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" naming -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/new_game_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" settings -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/startup_settings_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" prompts -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/house_button_prompt_assets.py verify
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" bridge-entry -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/bridge_entry.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" introduction -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_introduction.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" settings-check -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/startup_settings_assets.py verify
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" inspections -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/house_inspection.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" field-npcs -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/field_npcs.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" room -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_content.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" house-presents -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/house_presents.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" items -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_items.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" drawer -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/drawer_program.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" bridge-round -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/bridge_round.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" mayor-scene -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/mayor_scene.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" battle -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_battle.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" storage -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_storage.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" restore -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_restore.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" locale -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/localization_assets.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" item-details -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/item_details.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" field-story -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/field_story.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" session -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/native_session.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" field-equipment -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/field_equipment.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" field-room -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/podunk_field.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" field-menus -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/field_menus.py compile
+"C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py" field-props -- "C:\Users\litto\AppData\Local\Programs\Python\Python311\python.exe" tools/field_props.py compile
+Traceback (most recent call last):
+  File "C:\Users\litto\AppData\Local\Temp\tmpshbfy2mx\task.py", line 8, in <module>
+    assert task in producers + ['catalog','encounters'], ('unknown content task',task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('unknown content task', 'field-props')
+make: *** [D:\GameDev\3DS\mother-encore-3ds\make\native-content.mk:45: field-props] Error 1
+
+
+----------------------------------------------------------------------
+Ran 22 tests in 18.855s
+
+FAILED (failures=1)

@@ -8,10 +8,12 @@ namespace encore::upstream {
 struct FieldPropPolicy {
  uint32_t scene=0,hidden=0,idle=0,grow=0,broken=0,clone_frame=0,bat_flag=kFieldNone;
  uint32_t width=0,height=0;std::string hard,easy,sound,texture,clone_parent;
+ uint32_t clone_after=kFieldNone;
  std::array<float,4>rumble{};
 };
 struct FieldProp {
  uint32_t id=0,sprite=0,body=0,clone_item=0,appear=kFieldNone,finish=kFieldNone,callback=kFieldNone;
+ std::string callback_path;
  Vec2 position{},sprite_center{},view_center{},view_extents{},hit_center{},hit_extents{},interact_center{},interact_extents{},body_extents{};
 };
 class FieldPropsData {
@@ -19,6 +21,7 @@ public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
  bool bind(RoomView,FieldMapView,std::string&)const;
  bool valid()const{return valid_;}
+ bool rendering_bound()const{return valid_&&policy_.clone_after!=kFieldNone;}
  const FieldPropPolicy&policy()const{return policy_;}
  const PropClipsData&clips()const{return clips_;}
  const std::vector<FieldProp>&props()const{return props_;}

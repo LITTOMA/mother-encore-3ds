@@ -100,6 +100,7 @@ introduction-assets:
 	$(PYTHON) tools/house_layers.py verify
 	$(PYTHON) tools/mayor_scene.py verify
 	$(PYTHON) tools/podunk_field.py verify
+	$(PYTHON) tools/field_props.py verify
 	$(PYTHON) tools/field_npcs.py verify
 	$(PYTHON) tools/house_presents.py compile --tex3ds "$(TEX3DS)"
 	$(PYTHON) tools/house_presents.py verify

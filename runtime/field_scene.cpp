@@ -237,7 +237,10 @@ bool FieldScene::bind_props(const FieldPropsData&data,std::string&error){
     if(phase_==FieldPhase::Error||props_.ready()){error="Field props need one prepared scene owner";return false;}
     if(!data.bind(world.content(),map_,error))return false;
     std::vector<bool>flags;for(const auto&name:data.flags())flags.push_back(world.story_flag(name));
-    FieldProps next;if(!next.initialize(data,flags,error))return false;props_=std::move(next);return apply_prop_bodies(error);
+    FieldProps next;if(!next.initialize(data,flags,error))return false;
+    std::vector<uint32_t>owners(map_.count(FieldMapSection::Sprites),kFieldNone);
+    for(uint32_t i=0;i<data.props().size();++i)owners[data.props()[i].sprite]=i;
+    props_=std::move(next);prop_sprites_=std::move(owners);return apply_prop_bodies(error);
 }
 bool FieldScene::grow_prop(uint32_t id,std::string&error){
     if(phase_==FieldPhase::Error||!props_.ready()){error="Field prop grow needs a bound scene";return false;}
@@ -251,7 +254,8 @@ bool FieldScene::flush_props(FieldPropHost&host,std::string&error){
     return props_.flush_deferred(host,error)&&apply_prop_bodies(error);
 }
 bool FieldScene::prop_sprite(uint32_t sprite,PropPose&out)const{
-    if(!props_.ready())return false;for(uint32_t i=0;i<props_.data().props().size();++i)if(props_.data().props()[i].sprite==sprite){out=props_.states()[i].animation.pose();return true;}return false;
+    if(sprite>=prop_sprites_.size()||prop_sprites_[sprite]==kFieldNone)return false;
+    out=props_.states()[prop_sprites_[sprite]].animation.pose();return true;
 }
 bool FieldScene::bind_steps(FieldStepsView view,const AudioBank&bank,std::string_view inherited,std::string&error){
  auto reject=[&](const char*why){error=why;return false;};
@@ -639,7 +643,7 @@ bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
 }
 bool FieldScene::sprite_visible(uint32_t i)const{
     if(i>=sprite_active_.size()||!sprite_active_[i])return false;
-    if(props_.ready())for(uint32_t k=0;k<props_.data().props().size();++k)if(props_.data().props()[k].sprite==i){const auto&s=props_.states()[k];return s.alive&&s.visible&&s.animation.pose().visible;}
+    if(i<prop_sprites_.size()&&prop_sprites_[i]!=kFieldNone){const auto&s=props_.states()[prop_sprites_[i]];return s.alive&&s.visible&&s.animation.pose().visible;}
     const auto openable=map_.sprite(i).openable;
     return openable==kFieldNoOpenable||!openable_open(openable);
 }

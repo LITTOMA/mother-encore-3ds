@@ -4,7 +4,7 @@
 namespace encore::upstream {
 struct FieldSceneResources::State {
  WorldSceneResources bindings;std::string source;
- RoomData room;FieldMapData map;FieldStoryData story;MickData mick;FieldStepsData steps;
+ RoomData room;FieldMapData map;FieldStoryData story;MickData mick;FieldStepsData steps;FieldPropsData props;
  std::vector<std::unique_ptr<MickData>>npcs;MusicRegionData music;MusicZones zones;
 };
 FieldSceneResources::FieldSceneResources()=default;
@@ -14,6 +14,7 @@ RoomView FieldSceneResources::room()const{return state_?state_->room.view():Room
 FieldMapView FieldSceneResources::map()const{return state_?state_->map.view():FieldMapView{};}
 FieldStoryView FieldSceneResources::story()const{return state_?state_->story.view():FieldStoryView{};}
 FieldStepsView FieldSceneResources::steps()const{return state_?state_->steps.view():FieldStepsView{};}
+const FieldPropsData&FieldSceneResources::props()const{static const FieldPropsData empty;return state_?state_->props:empty;}
 MickView FieldSceneResources::mick()const{return state_?state_->mick.view():MickView{};}
 uint32_t FieldSceneResources::npc_count()const{return state_?uint32_t(state_->npcs.size()):0;}
 MickView FieldSceneResources::npc(uint32_t i)const{return state_&&i<state_->npcs.size()?state_->npcs[i]->view():MickView{};}
@@ -23,6 +24,7 @@ bool FieldSceneResources::load(const ResourceCatalog&catalog,const WorldLinksDat
  auto fail=[&](const char*why){error=why;return false;};
  if(state_)return fail("Field resource owner is immutable; prepare a new owner");
  if(!flags.valid()||!items.valid())return fail("Field resource shared domain is unavailable");
+ if(!links.bind_catalog(catalog,error))return false;
  auto next=std::make_unique<State>();if(!links.resolve_scene(scene,catalog,next->bindings,error))return false;
  if(!next->bindings.scene.map_role)return fail("Requested resource set is not a field scene");
  next->source=std::string(next->bindings.scene.source);next->bindings.scene.source=next->source;
@@ -37,6 +39,7 @@ bool FieldSceneResources::load(const ResourceCatalog&catalog,const WorldLinksDat
  for(auto id:b.npcs){auto data=std::make_unique<MickData>();if(!read(ResourceRole::FieldNpc,id)||!data->load(bytes.data(),bytes.size(),error))return false;if(!data->view().motion_only())return fail("Field NPC resource has gameplay ownership");next->npcs.push_back(std::move(data));}
  if(b.music){AudioBank bank;if(!read(ResourceRole::FieldMusic,b.music)||!next->music.load(bytes.data(),bytes.size(),error)||!read(ResourceRole::FieldMusicZones,b.zones)||!next->zones.load(bytes.data(),bytes.size(),error)||!next->zones.matches(next->music,error)||!read(ResourceRole::FieldAudio,b.audio)||!bank.load(bytes.data(),bytes.size(),error)||!next->music.matches(bank,error))return false;}
  if(b.steps){if(!read(ResourceRole::FieldSteps,b.steps)||!next->steps.load(bytes.data(),bytes.size(),error))return false;if(next->steps.view().scene_id()!=scene)return fail("Field stepping scene identity differs");}
+ if(b.props){if(!read(ResourceRole::FieldProps,b.props)||!next->props.load(bytes.data(),bytes.size(),error)||!next->props.bind(room,next->map.view(),error))return false;if(!next->props.rendering_bound())return fail("Field props lack checked clone drawing order");}
  state_=std::move(next);error.clear();return true;
 }
 }

@@ -15,7 +15,7 @@
 // pictures and draw order come from the resource; see docs/PODUNK_FIELD.md.
 class FieldRenderer {
 public:
-    bool load(encore::upstream::FieldMapView map,const std::string& locale,std::string& error){
+    bool load(encore::upstream::FieldMapView map,const std::string& locale,std::string& error,const encore::upstream::FieldPropsData* props=nullptr){
         free();if(!map){error="Field map is not loaded";return false;}
         map_=map;using encore::upstream::FieldMapSection;
         const auto atlases=map.count(FieldMapSection::Atlases);
@@ -35,16 +35,26 @@ public:
         const auto tiles=map.count(FieldMapSection::Tiles),sprites=map.count(FieldMapSection::Sprites);
         tile_pictures_.resize(tiles);for(uint32_t i=0;i<tiles;++i)tile_pictures_[i]=map.localized_picture(map.tile(i).picture,locale);
         sprite_pictures_.resize(sprites);for(uint32_t i=0;i<sprites;++i)sprite_pictures_[i]=map.localized_picture(map.sprite(i).picture,locale);
+        if(props&&props->valid()){
+            if(!props->rendering_bound()||props->policy().scene!=map.scene_id()){error="Field props drawing owner differs";free();return false;}
+            const auto&p=props->policy();const std::string path="romfs:/"+p.texture;std::string why;
+            props_sheet_=encore::ctr::loading_sprite_sheet_load(path.c_str(),&why);
+            if(!props_sheet_){error=why.empty()?"Field props texture could not be loaded: "+path:why;free();return false;}
+            if(encore::ctr::loading_sprite_sheet_count(props_sheet_)!=1){error="Field props texture must have one image";free();return false;}
+            const auto image=encore::ctr::loading_sprite_sheet_get_image(props_sheet_,0);
+            if(!image.tex||!image.subtex||image.subtex->width!=p.width*props->clips().frame_count()||image.subtex->height!=p.height||Tex3DS_SubTextureRotated(image.subtex)){error="Field props texture frame grid differs";free();return false;}
+            C3D_TexSetFilter(image.tex,GPU_NEAREST,GPU_NEAREST);props_=props;
+        }
         entries_.reserve(4096);deferred_.reserve(64);
         return true;
     }
-    void free(){for(auto sheet:sheets_)encore::ctr::loading_sprite_sheet_free(sheet);sheets_.clear();tile_pictures_.clear();sprite_pictures_.clear();entries_.clear();deferred_.clear();map_={};}
+    void free(){for(auto sheet:sheets_)encore::ctr::loading_sprite_sheet_free(sheet);if(props_sheet_)encore::ctr::loading_sprite_sheet_free(props_sheet_);props_sheet_={};props_=nullptr;sheets_.clear();tile_pictures_.clear();sprite_pictures_.clear();entries_.clear();deferred_.clear();map_={};}
     bool ready()const{return map_.valid()&&!sheets_.empty();}
     // camera: world top-left of the view; offset: screen position of the view.
     // Returns false if the scene and renderer disagree; the frame is then skipped.
     bool draw(const encore::upstream::FieldScene& scene,const OpeningActorRenderer& actors,float camera_x,float camera_y,float width,float height,float offset_x,float offset_y,double time,void (*extra)(float,float,float,float)=nullptr){
         using namespace encore::upstream;
-        if(!ready()||scene.map().bytes_identity()!=map_.bytes_identity())return false;
+        if(!ready()||scene.map().bytes_identity()!=map_.bytes_identity()||bool(props_)!=scene.props().ready())return false;
         if(map_.count(FieldMapSection::Area)){const auto c=map_.area().background;C2D_DrawRectSolid(offset_x,offset_y,0,width,height,C2D_Color32(c>>24,(c>>16)&255,(c>>8)&255,c&255));}
         time_=time;cx_=camera_x;cy_=camera_y;w_=width;h_=height;ox_=offset_x;oy_=offset_y;deferred_.clear();
         for(uint32_t g=0;g<map_.count(FieldMapSection::Groups);++g){
@@ -53,7 +63,8 @@ public:
                 for(uint32_t k=0;k<group.count;++k){const auto index=group.first+k;if(!scene.item_active(index))continue;const auto item=map_.item(index);
                     if(item.kind==uint16_t(FieldItemKind::LayerCells))draw_layer(scene,item.first);
                     else if(item.kind==uint16_t(FieldItemKind::Sprites))draw_sprites(scene,item.first,item.count);
-                    else if(item.kind==uint16_t(FieldItemKind::Actor)&&scene.actor_visible(item.first))actors.draw_actor(scene.actor_pose(item.first),cx_-ox_,cy_-oy_);}
+                    else if(item.kind==uint16_t(FieldItemKind::Actor)&&scene.actor_visible(item.first))actors.draw_actor(scene.actor_pose(item.first),cx_-ox_,cy_-oy_);
+                    if(props_&&index==props_->policy().clone_after)draw_prop_clones(scene);}
                 continue;
             }
             entries_.clear();
@@ -158,10 +169,24 @@ private:
         for(uint32_t i=first;i<first+count;++i){
             if(!scene.sprite_visible(i))continue;
             const auto s=map_.sprite(i);if(!visible(s.position.x,s.position.y,s.w,s.h))continue;
-            blit(frame_of(sprite_pictures_[i]),s.position.x,s.position.y,s.flags&1,s.flags&2);
+            encore::upstream::PropPose pose;
+            if(props_&&scene.prop_sprite(i,pose))blit_prop(pose.frame,s.position.x,s.position.y);
+            else blit(frame_of(sprite_pictures_[i]),s.position.x,s.position.y,s.flags&1,s.flags&2);
         }
     }
+    void blit_prop(uint32_t frame,float x,float y)const{
+        const auto&p=props_->policy();const auto image=encore::ctr::loading_sprite_sheet_get_image(props_sheet_,0);auto sub=*image.subtex;
+        const float du=(sub.right-sub.left)/float(p.width*props_->clips().frame_count()),left=sub.left;
+        sub.left=left+float(frame*p.width)*du;sub.right=left+float((frame+1)*p.width)*du;sub.width=p.width;sub.height=p.height;
+        C2D_DrawImageAt({image.tex,&sub},std::floor(x-cx_+ox_+.5f),std::floor(y-cy_+oy_+.5f),0);
+    }
+    void draw_prop_clones(const encore::upstream::FieldScene&scene)const{
+        const auto&p=props_->policy();for(const auto&c:scene.props().clones()){
+            const float x=c.center.x-p.width*.5f,y=c.center.y-p.height*.5f;
+            if(c.visible&&visible(x,y,p.width,p.height))blit_prop(c.frame,x,y);}
+    }
     encore::upstream::FieldMapView map_;
+    const encore::upstream::FieldPropsData*props_=nullptr;encore::ctr::LoadingSpriteSheet props_sheet_{};
     std::vector<encore::ctr::LoadingSpriteSheet> sheets_;
     std::vector<uint32_t> tile_pictures_,sprite_pictures_;
     std::vector<Entry> entries_;

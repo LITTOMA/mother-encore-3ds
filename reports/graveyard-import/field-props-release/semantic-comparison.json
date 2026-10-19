@@ -1,0 +1,16 @@
+{
+  "links_old_sections_unchanged": true,
+  "prop_owner": [
+    2,
+    1031
+  ],
+  "unchanged": {
+    "romfs/world/podunk/podunk.encmap": "dcc8433bc8465330422ec422142bbd59d16eb7b249b7a165c26c4aca21ebd89d",
+    "romfs/world/podunk/podunk.encroom": "a66ab356bf7ffcea184d034c4b66e4505e9b9372dfa5b21127cc1cff9db178d4",
+    "romfs/world/mayor/mayor.encroom": "50fcab40d79354fedaefd8d1d2e064adfaf64be41bfbbffaa71dccfc37197326",
+    "romfs/world/house/opening.encroom": "403b4422b736397e93f281b27a3031775ae5b89f56e1e96dbcd6739a60e2f9f6",
+    "romfs/session/opening.encsession": "e48119794467648f5c43dc9a07afb86a8faff818eed51404f5070166c5d7e2f0"
+  },
+  "catalog_old_bindings_and_encounters_unchanged": true,
+  "old_fingerprints_unchanged_except_links33": true
+}

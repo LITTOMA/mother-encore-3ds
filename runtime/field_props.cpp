@@ -15,7 +15,7 @@ bool safe(const std::string&s){if(s.empty()||s.front()=='/'||s.find("..")!=std::
 bool FieldPropsData::load_file(const char*p,std::string&e){std::vector<uint8_t>b;return encore::read_file(p,b,128*1024,e)&&load(b.data(),b.size(),e);}
 bool FieldPropsData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<144||n>128*1024)return fail(e,"Field props size rejected");
- if(std::memcmp(p,"ENCPRP01",8)||word(p+8)!=1||word(p+12)!=n||word(p+20)!=1||word(p+24)||word(p+28)||word(p+52)!=5||word(p+56)||word(p+60))return fail(e,"Field props schema/capability/reserved rejected");
+ if(std::memcmp(p,"ENCPRP01",8)||word(p+8)!=1||word(p+12)!=n||(word(p+20)!=1&&word(p+20)!=2)||word(p+24)||word(p+28)||word(p+52)!=5||word(p+56)||word(p+60))return fail(e,"Field props schema/capability/reserved rejected");
  const char*pin="7d9246600fffe518408f5830d4848635019005a3";
  for(unsigned i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail(e,"Field props pin rejected");}
  if(encore::crc32(p+32,n-32)!=word(p+16))return fail(e,"Field props checksum rejected");
@@ -30,14 +30,20 @@ bool FieldPropsData::load(const uint8_t*p,size_t n,std::string&e){
  std::set<std::string>names;for(uint32_t i=0;i<count[4];++i){std::string name;if(!text(p+off[4]+i*8,name)||!names.insert(name).second||name.find('/')!=std::string::npos)return fail(e,"Field prop flag name rejected");v.flags_.push_back(std::move(name));}
  auto flag=[&](uint32_t i){return i==kFieldNone||i<v.flags_.size();};const auto*r=p+off[1];auto&policy=v.policy_;
  policy.scene=word(r);policy.hidden=word(r+4);policy.idle=word(r+8);policy.grow=word(r+12);policy.broken=word(r+16);policy.clone_frame=word(r+20);policy.bat_flag=word(r+24);policy.width=word(r+28);policy.height=word(r+32);
- if(!policy.scene||policy.bat_flag>=v.flags_.size()||!policy.width||policy.width>1024||!policy.height||policy.height>1024||!text(r+36,policy.hard)||!text(r+44,policy.easy)||!text(r+52,policy.sound)||!text(r+60,policy.texture)||!text(r+84,policy.clone_parent)||word(r+92))return fail(e,"Field prop policy rejected");
+ if(!policy.scene||policy.bat_flag>=v.flags_.size()||!policy.width||policy.width>1024||!policy.height||policy.height>1024||!text(r+36,policy.hard)||!text(r+44,policy.easy)||!text(r+52,policy.sound)||!text(r+60,policy.texture)||!text(r+84,policy.clone_parent)||(word(p+20)==1&&word(r+92)))return fail(e,"Field prop policy rejected");
+ if(word(p+20)==2)policy.clone_after=word(r+92);
  for(unsigned i=0;i<4;++i){policy.rumble[i]=real(r+68+i*4);if(!std::isfinite(policy.rumble[i])||policy.rumble[i]<0||policy.rumble[i]>(i==3?60.f:1.f))return fail(e,"Field prop rumble rejected");}
  if(!v.clips_.load(p+off[2],count[2],e))return false;
  std::set<uint32_t>clip_ids;for(auto id:{policy.hidden,policy.idle,policy.grow,policy.broken})if(!v.clips_.clip(id)||!clip_ids.insert(id).second)return fail(e,"Field prop animation binding rejected");
  if(policy.clone_frame>=v.clips_.frame_count())return fail(e,"Field prop clone frame rejected");
  std::set<uint32_t>ids,sprites,bodies;
  for(uint32_t i=0;i<count[3];++i){r=p+off[3]+i*104;FieldProp row;row.id=word(r);row.sprite=word(r+4);row.body=word(r+8);row.clone_item=word(r+12);row.appear=word(r+16);row.finish=word(r+20);row.callback=word(r+24);
-  if(!row.id||!ids.insert(row.id).second||!sprites.insert(row.sprite).second||!bodies.insert(row.body).second||!flag(row.appear)||!flag(row.finish)||word(r+28)||(row.callback!=kFieldNone&&row.finish==kFieldNone))return fail(e,"Field prop identity/flags/callback rejected");
+  if(!row.id||!ids.insert(row.id).second||!sprites.insert(row.sprite).second||!bodies.insert(row.body).second||!flag(row.appear)||!flag(row.finish)||(word(p+20)==1&&word(r+28))||(row.callback!=kFieldNone&&row.finish==kFieldNone)||(word(p+20)==2&&(policy.clone_after==kFieldNone||policy.clone_after<=row.clone_item)))return fail(e,"Field prop identity/flags/callback/order rejected");
+  if(word(p+20)==2){
+   const auto reference=word(r+28);if((row.callback==kFieldNone)!=(reference==0))return fail(e,"Field prop callback path binding rejected");
+   if(reference){const auto at=reference-1;if(at>=count[0])return fail(e,"Field prop callback path span rejected");size_t size=0;while(size<count[0]-at&&size<=512&&p[off[0]+at+size])++size;
+    if(!size||size>512||size==count[0]-at)return fail(e,"Field prop callback path termination rejected");row.callback_path.assign(reinterpret_cast<const char*>(p+off[0]+at),size);if(!safe(row.callback_path))return fail(e,"Field prop callback path rejected");}
+  }
   Vec2*coords[]={&row.position,&row.sprite_center,&row.view_center,&row.view_extents,&row.hit_center,&row.hit_extents,&row.interact_center,&row.interact_extents,&row.body_extents};
   for(unsigned j=0;j<9;++j){*coords[j]={real(r+32+j*8),real(r+36+j*8)};if(!std::isfinite(coords[j]->x)||!std::isfinite(coords[j]->y)||std::fabs(coords[j]->x)>1000000||std::fabs(coords[j]->y)>1000000)return fail(e,"Field prop geometry rejected");}
   for(auto ext:{row.view_extents,row.hit_extents,row.interact_extents,row.body_extents})if(ext.x<=0||ext.y<=0||ext.x>4096||ext.y>4096)return fail(e,"Field prop extents rejected");
@@ -48,6 +54,12 @@ bool FieldPropsData::load(const uint8_t*p,size_t n,std::string&e){
 bool FieldPropsData::bind(RoomView room,FieldMapView map,std::string&e)const{
  if(!valid_||!room.valid()||!map.valid()||policy_.scene!=map.scene_id()||policy_.scene!=room.scene().stable_id)return fail(e,"Field prop scene binding rejected");
  for(const auto&name:flags_){bool found=false;for(uint32_t i=0;i<room.flag_count();++i)found|=room.string(room.flag(i).name_string)==name;if(!found)return fail(e,"Field prop flag domain rejected");}
+ if(rendering_bound()){
+  if(policy_.clone_after>=map.count(FieldMapSection::Items))return fail(e,"Field prop clone insertion is outside map");
+  const auto tail=map.item(policy_.clone_after);bool in_static=false;
+  for(uint32_t i=0;i<map.count(FieldMapSection::Groups);++i){const auto g=map.group(i);if(policy_.clone_after>=g.first&&policy_.clone_after-g.first<g.count)in_static=g.kind==uint32_t(FieldGroupKind::Static);}
+  if(!in_static||tail.kind!=uint16_t(FieldItemKind::LayerCells)||tail.count!=1||tail.conditions.count||map.text(map.layer(tail.first).name).substr(0,policy_.clone_parent.size()+1)!=policy_.clone_parent+"/")return fail(e,"Field prop clone subtree insertion differs");
+ }
  for(const auto&r:props_){
   if(r.sprite>=map.count(FieldMapSection::Sprites)||r.body>=map.count(FieldMapSection::Bodies)||r.clone_item>=map.count(FieldMapSection::Items))return fail(e,"Field prop map owner rejected");
   const auto s=map.sprite(r.sprite);const auto b=map.body(r.body);const auto item=map.item(r.clone_item);
@@ -55,6 +67,7 @@ bool FieldPropsData::bind(RoomView room,FieldMapView map,std::string&e)const{
   const auto layer=map.layer(item.first);if(map.text(layer.name)!=policy_.clone_parent||!same(layer.position,{})||layer.flags&uint32_t(FieldLayerFlag::YSort))return fail(e,"Field prop clone parent identity/transform/order differs");
   const auto sh=map.shape(b.shape_first);if(sh.kind!=uint16_t(FieldShapeKind::Convex)||sh.count!=4||!same(sh.minimum,{r.position.x-r.body_extents.x,r.position.y-r.body_extents.y})||!same(sh.maximum,{r.position.x+r.body_extents.x,r.position.y+r.body_extents.y}))return fail(e,"Field prop body geometry differs");
   if(r.callback!=kFieldNone&&(r.callback>=map.count(FieldMapSection::Boundaries)||map.boundary(r.callback).kind!=uint16_t(FieldBoundaryKind::Area)))return fail(e,"Field prop deferred target rejected");
+  if(rendering_bound()&&r.callback!=kFieldNone&&map.text(map.boundary(r.callback).path)!=r.callback_path)return fail(e,"Field prop deferred source identity differs");
  }
  e.clear();return true;
 }

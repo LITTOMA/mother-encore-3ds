@@ -27,10 +27,16 @@ class FieldAudioBinding(unittest.TestCase):
         config = copy.deepcopy(self.config if config is None else config)
         ir = copy.deepcopy(self.ir if ir is None else ir)
         with mock.patch.object(field_audio, 'load', return_value=ir) as load, \
-                mock.patch.object(field_audio, 'read_json', return_value=config) as read:
+                mock.patch.object(field_audio, 'read_json', return_value=config) as read, \
+                mock.patch.object(extension_audio,'bindings',return_value=copy.deepcopy(self.extension)) as append:
+            # The detached parser tests already have the actual, source-audited
+            # extension from setUpClass. Re-running the complete world importer
+            # here is unrelated to the mutated Pause binding. The separate
+            # actual-source test below continues to use the real full chain.
             result = field_audio.bindings(ROOT)
             load.assert_called_once_with(ROOT)
             read.assert_called_once_with(ROOT / 'content/field-audio-binding.json')
+            append.assert_called_once_with(ROOT)
             return result
 
     def combined(self, pause=None):
@@ -59,6 +65,13 @@ class FieldAudioBinding(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'unreviewed field source'):
                 field_audio.bindings(ROOT)
             read.assert_not_called()
+
+    def test_extension_source_admission_failure_propagates(self):
+        with mock.patch.object(field_audio,'load',return_value=self.ir), \
+                mock.patch.object(field_audio,'read_json',return_value=self.config), \
+                mock.patch.object(extension_audio,'bindings',side_effect=ValueError('unreviewed extension source')):
+            with self.assertRaisesRegex(ValueError,'unreviewed extension source'):
+                field_audio.bindings(ROOT)
 
     def test_unknown_and_missing_top_level_fields(self):
         self.reject(lambda c: c.update(unknown=True))
@@ -166,12 +179,16 @@ class GameplayWorldCoverage(unittest.TestCase):
         self.assertEqual((ROOT/'romfs/sound/banks/gameplay.enccues').read_bytes(),gameplay_audio.encode(cues))
     def test_missing_duplicate_and_unbound_coverage_rejected(self):
         target=ROOT/'content/gameplay-audio-bindings.json';base=gameplay_audio.read_json(target);read=gameplay_audio.read_json
+        # Audit the actual source once, then test only the three detached
+        # coverage joins. The real load/bindings test above remains unmocked.
+        expected=gameplay_audio.world_sources(ROOT)
         for kind in ('missing','duplicate','unbound'):
             config=copy.deepcopy(base)
             if kind=='missing':config['extra_sources'].remove('Audio/Sound effects/Item Received.mp3')
             elif kind=='duplicate':config['extra_sources'].append(config['extra_sources'][0])
             else:config['extra_sources'].append('Audio/Sound effects/unreviewed.wav')
-            with mock.patch.object(gameplay_audio,'read_json',side_effect=lambda p: config if p==target else read(p)):
+            with mock.patch.object(gameplay_audio,'read_json',side_effect=lambda p: config if p==target else read(p)), \
+                    mock.patch.object(gameplay_audio,'world_sources',return_value=expected):
                 with self.subTest(kind=kind),self.assertRaisesRegex(ValueError,'World audio coverage mismatch'):gameplay_audio.load(ROOT)
     def test_failed_extract_restores_exact_previous_bytes(self):
         import tempfile

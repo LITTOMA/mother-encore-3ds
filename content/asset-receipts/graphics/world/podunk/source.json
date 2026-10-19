@@ -1,6 +1,6 @@
 {
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "compiler_sha256": "846b29312266b0f6e828c64add2daf8623e519d53d15f4f8108295a5e1565891",
+  "compiler_sha256": "3956ff38b8dd9eace80121e8f1d0825eecaf91c3d4062f4f7a5008cadbec0699",
   "compression": "none",
   "format": "rgba8",
   "outputs": {
@@ -13,8 +13,8 @@
       "sha256": "a66ab356bf7ffcea184d034c4b66e4505e9b9372dfa5b21127cc1cff9db178d4"
     },
     "world/world.enclinks": {
-      "bytes": 1132,
-      "sha256": "dcc866291f21c1f760a8c38830d12a490b3080a2313a548255963c555803aae7"
+      "bytes": 1156,
+      "sha256": "9b67e8d3dcdaf010671babe585106b184723c2546291995ba361dc717a93ebc6"
     }
   },
   "pages": [

@@ -167,6 +167,7 @@ private:
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
     FieldProps props_;
+    std::vector<uint32_t>prop_sprites_;
     std::vector<bool>collision_layers_,collision_bodies_;bool collision_ready_=false;
     StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;
     MickRuntime mick_;bool mick_bound_=false;

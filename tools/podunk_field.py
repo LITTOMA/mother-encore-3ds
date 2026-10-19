@@ -1752,9 +1752,9 @@ def build_outputs(recipe):
 
 def check_links(blob, recipe):
     if 'route_recipe' in recipe:
-        from tools.world_scene_routes import STRIDES, load as route_policy
-        cap = 3 if route_policy(ROOT / recipe['route_recipe'])['schema'] == 2 else 2
-        return unpack_container(blob, LINK_MAGIC, STRIDES, LINK_LIMIT, capability=cap)
+        from tools.world_scene_routes import strides, capability, load as route_policy
+        policy=route_policy(ROOT / recipe['route_recipe'])
+        return unpack_container(blob, LINK_MAGIC, strides(policy), LINK_LIMIT, capability=capability(policy))
     return unpack_container(blob, LINK_MAGIC, LINK_STRIDES, LINK_LIMIT)
 
 

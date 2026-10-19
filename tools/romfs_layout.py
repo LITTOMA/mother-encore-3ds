@@ -5,7 +5,7 @@ EXTENSIONS = {
     'graphics': {'.t3x', '.bpx'},
     'sound': {'.pcm', '.encaudio', '.encmusic', '.enccues', '.enczones'},
     'fonts': {'.t3x', '.encfont'},
-    'world': {'.encroom', '.enchouse', '.encinspect', '.encdrawer', '.encphone', '.encpresent', '.encmap', '.encmick', '.enclinks', '.encstory', '.encsteps'},
+    'world': {'.encroom', '.enchouse', '.encinspect', '.encdrawer', '.encphone', '.encpresent', '.encmap', '.encmick', '.enclinks', '.encstory', '.encsteps', '.encprops'},
     'battle': {'.encbattle', '.encround'},
     'story': {'.encintro', '.encfx'},
     'session': {'.encsession', '.encrestore', '.encmigration'},

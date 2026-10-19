@@ -1,0 +1,49 @@
+{
+  "commit_upstream": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Full Iggy source graph CANDIDATE, not staged/playable; isolated native source actor direction correction; no new emulator or hardware claim",
+  "source_review": {
+    "programme": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+    "actor": "Scripts/Main/actor.gd",
+    "cause": "Source set_direction writes immediately during suspended turn_to, which retains its target, angle and timer. Removed unsupported rotating admission rejection only. Actual native 92 observations preserved.",
+    "test_controller_correction": "Yes source path has 13 texts, skipping label17; no/cancel revisit label16 so15 visits. Controller now observes choice text before dispatch; counts follow source routes. Final delay asserted in 180 clock ticks to avoid double summation error."
+  },
+  "host": {
+    "compiler": "WSL Ubuntu20.04 GCC9",
+    "sanitizers": "ASan/UBSan, leak detection on; no PIE, no RTTI, no exceptions",
+    "tutorial_checks": 2177,
+    "actor_direction_checks": 298,
+    "original_observations": 92,
+    "related_targets": 12,
+    "python_methods": 6
+  },
+  "shipping": "No Room/Story/Session/catalog/resource regeneration or save schema change in this slice; first six candidate programme tables/strings retain frozen base exactly",
+  "remaining": [
+    "Production lowering and locale/session/menu/audio ownership",
+    "Persistent Player input, source swing timing/rendering and overlap",
+    "Root break/shovel continuation",
+    "Genuine new commit builds and emulator verification",
+    "Full source content/hardware validation"
+  ],
+  "logs": {
+    "actor-direction-result.log": "6a554f25848f86e29a87659a715c92058165e5192821ad4214060c6c680cd633",
+    "actor_actions-result.log": "f9dba3261a2e3800031dc7205143ceb9be995ae7b5f11238ebb2af1166169b6b",
+    "candidate-source.json": "db57d99355da6024149359e494a7b3ccc935c376d513d456bd721f3f803a4294",
+    "cemetery_roots-result.log": "d5eaa6dd7918995411415ef9c960d64421c5b8f782b150dc505bd49547aa23e1",
+    "doll_actor_actions-result.log": "6fd28c37d25ec6c1881c703f4376d32149a4d750f853cc5b7a1770994022aacd",
+    "doll_postwin_actions-result.log": "a8e5ae5f44903c0eaabf16521a1e585a109573e0c9f1897fbf2e5fb56f278e7a",
+    "field_route_warp-result.log": "d691d7a4a84b958cd3d0d3cb30e5f4b7b74dcd9123ce4df119cec0d64135e271",
+    "field_scene_resources-result.log": "dd007286bfdfdcf3c96e7e3eaa9b5aca7c86409468150457215581ef97500c75",
+    "field_story-result.log": "7e4868d12b69657b452bbc3e0dce518283a0aaf485170f753e728b1aba15a733",
+    "iggy-actor-related.log": "2a17b40ddab045d53befb285be2a5b4a49e420a096d0977a13bcdacf4f3ee8fc",
+    "iggy-old-actor-host.log": "d2a206be68187c9f0dcace236ba2a56b1aa89c01e330393b070c20688ec28d4c",
+    "iggy-programme-candidate-final.log": "64f7bfcdd0cda527770ef72d60a932611dc52dcaa44d951beda772c79720ac1d",
+    "iggy-programme-python-final.log": "ebfc3ad6e6265280c92cafd46b51cfed1db835b702fec032deba6cc0ec4f1e0e",
+    "iggy-programme-test-result.log": "4ee1a181b30ba9055c6aa35c77239dcd2611f1cf1361d31f98e492be42107ea4",
+    "iggy-python-partition.log": "87afdfc618f79719a55e0ea9d6737e13079af5de17a5ea816e5eb73b29029a7f",
+    "native_session-result.log": "cb5dbbf83aad78af32151e81c545d320370dbd2c5d9af9bfc4c16c3410703a40",
+    "party_npc_actor-result.log": "a7b4608ff327dd8a04873548c12b0babd34e0412e60bcd3717b2717bcf3edf1c",
+    "pillow_actor_actions-result.log": "4da8a31d24191839f38cc7b8961c4c0080807694d396df053ef859081638b46e",
+    "queued_actor_turn-result.log": "c7551e10041efae06b85a9851332b2875cb8a5e779a6cb7af6bab8967d0b7e20",
+    "room_data-result.log": "992526fea80915629a7c91372c39da3d58371197e9948f3a725713d991414cdb"
+  }
+}

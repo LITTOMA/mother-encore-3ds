@@ -1,0 +1,64 @@
+{
+  "scope": "Candidate only: full source tutorial graph; no action/render/contact or release binding",
+  "programme": 6,
+  "commands": 83,
+  "phrases": 16,
+  "dialogues": 14,
+  "choice_first": 1,
+  "base_sha256": "18c7b884b0fc28f04685a8ee2eedb066d1cd03064ac13b1261f107f76e90451c",
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml": "92cc12c71968a6e732f763ad00c23515b2c5f46c751a5b2afe4d4906011d4ef3",
+    "Data/Dialogue/Podunk/cutscenes/pippismom_call.yaml": "3e094d0da71c2b79e1bd0f1c0bd75c25e30de44007b4ec43ad6ff2c87bb85947",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Data/Battlers/pippi.yaml": "bf318bfa87445a4284be7f0e5b2e91c09604b8bc598e0a1f553244ebeefc0ed0",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
+    "Data/BattleSkills/attack_bat.yaml": "99a5757609a6fbf42358aba886f56cc18a00796a4b38eeef8e4fc59307a385a3",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Data/Dialogue/Podunk/cutscenes/pippismom_help.yaml": "668454a05317df38b57b21a42e993dc5fb4dbb67aeb699873d0105c054906528",
+    "Data/Dialogue/Podunk/pippismom.yaml": "42969cbf46f4b724fc804df8f672efdca2e8438ce1fdfbeac114fc58847eb027",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Data/Dialogue/Podunk/cutscenes/graveyard_zombie_roots.yaml": "5a7b030a66ab44336bb7267fe03232498b83bf9c11a72a1d399ec706344761e1",
+    "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Data/Dialogue/Podunk/iggy_forget.yaml": "4570f44bdf3299d9ece12fc6080f91567178b81b5a443d59c9eeb7c2df51c7d9",
+    "Data/Dialogue/Podunk/iggy_return_shovel.yaml": "07067dcb1bda1ff9de82e25f03d9320fdcbe06d1348f157fe9d98013cf9ee437",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc",
+    "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml": "58f8f43036dbd833c92beb6e588881efeda5bce71c842907ad58612a781720ea",
+    "Data/Items/BatOld.yaml": "a342301d21e930ca575d0b6f89bc47fe6a52fcdc94fa498782006dd74149c1e6",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96"
+  },
+  "dependencies": {
+    "content/podunk-story.json": "d5e6065c2aee0eb170421d228e82b20e28fabec8949c7734b119d93cd76bd91d",
+    "content/graveyard-story.json": "453ebd458cd4002b40f1eb1d1b20965bc3f581b5f7a928f0f5df38d9d573e173",
+    "content/graveyard-tutorial.json": "89323a1283ca996b6476e3f40c76652ad4909d5d85553aed32a42aac14c777ff",
+    "content/graveyard-swing-programme.json": "897edba9abeb6fc7a63cc2e88d7616b63bc1b65b5dd9434904ecc09b6e78d0be",
+    "tests/fixtures/pre-key-grant-room.encroom": "18c7b884b0fc28f04685a8ee2eedb066d1cd03064ac13b1261f107f76e90451c",
+    "tools/graveyard_tutorial.py": "63fd9db03a6c3ecb7188dddeff39b6acaf49aca3cbd4c4161fbaf71ea5b7335a",
+    "tools/graveyard_tutorial_programme.py": "1bf36ead824ae2e7afb1db0d452c980fdf3cbb18ba24dbb280e181a3a2c9120b",
+    "tools/field_story.py": "ace32e235eb9766ef92b44945b9608ba1ecc84172bf8d85b71325a0dd14f794c",
+    "tools/graveyard_story.py": "a06a5b20ef6bf8f6b19e93b7cfdf5e3ada59ca4ed8e48dd745c3bc3511e3797c",
+    "tools/mayor_story.py": "6d1755719a9fec4ab6155d88769d53cb3cb6a720396692f9730f592f565ea42e",
+    "tools/native_content.py": "ed20197d5cbe16da8254d87d603442d28e59930709291ea9739c7cd0e6c80d45"
+  },
+  "outputs": {
+    "podunk.encroom": {
+      "bytes": 31056,
+      "sha256": "68b81f07317d54745da77eb9d53b124d8042b3d4d1c9c5c6c19a06eb1fdf0fba"
+    },
+    "story.encstory": {
+      "bytes": 8369,
+      "sha256": "2465ffce695383ca3c0339162028c1a2899325b3cebc081da83229f6c9ad8c63"
+    }
+  }
+}

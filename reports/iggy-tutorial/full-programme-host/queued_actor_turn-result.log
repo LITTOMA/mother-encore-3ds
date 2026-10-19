@@ -1,0 +1,16 @@
+queued_idle_never_signals: 20 frames, 0 failures
+queued_idle_released_by_same_direction: 45 frames, 0 failures
+queued_while_moving: 45 frames, 0 failures
+queued_same_direction_after_movement: 45 frames, 0 failures
+path_before_turn_same_signal: 65 frames, 0 failures
+turn_before_path_same_signal: 65 frames, 0 failures
+nested_same_direction_then_path_turn: 65 frames, 0 failures
+nested_path_then_same_direction_turn: 65 frames, 0 failures
+nested_multiple_same_direction: 45 frames, 0 failures
+overlapping_queued_turns: 110 frames, 0 failures
+queued_during_overlapping_turn: 110 frames, 0 failures
+queued_resumes_from_live_fractional_direction: 60 frames, 0 failures
+queued_matches_rounded_live_direction: 60 frames, 0 failures
+queued_resumes_in_timer_phase: 60 frames, 0 failures
+source_per_step_timer_interval: 45 frames, 0 failures
+Queued Actor turns: 10036 checks, 0 failures

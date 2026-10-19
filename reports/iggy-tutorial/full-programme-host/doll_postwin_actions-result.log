@@ -1,0 +1,10 @@
+doll_postwin_concurrent_bounces: 100 samples, 0 failures
+mimmie_postwin_walk_jumps: 180 samples, 0 failures
+ninten_postwin_long_turns: 220 samples, 0 failures
+ninten_overlapping_turn_at_30: 300 samples, 0 failures
+ninten_overlapping_turn_at_59: 300 samples, 0 failures
+ninten_overlapping_turn_at_60: 300 samples, 0 failures
+ninten_overlapping_turn_at_61: 300 samples, 0 failures
+ninten_overlapping_turn_at_62: 300 samples, 0 failures
+ninten_same_target_overlap: 150 samples, 0 failures
+Doll post-win native actions: 27991 checks, 0 failures

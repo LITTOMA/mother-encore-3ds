@@ -10,7 +10,10 @@ class MayorScenePublication(unittest.TestCase):
   self.assertEqual(m.stage_files(),self.files)
   for name,fixture in [('world/mayor/mayor.encmap','mayor-area.encmap'),('world/mayor/mayor.encstory','mayor-initial.encstory')]:self.assertEqual(self.files[Path(name)],(m.ROOT/'tests/fixtures'/fixture).read_bytes())
   self.assertEqual(len([p for p in self.files if p.suffix=='.encmick']),5)
-  c=catalog.decode((m.ROOT/'romfs/system/native.encresources').read_bytes());self.assertEqual(len(c['bindings']),59)
+  # The source scope now also includes the independently appended Iggy owner;
+  # Mayor's own five NPC packets and frozen map/story fixtures stay exact.
+  c=catalog.decode((m.ROOT/'romfs/system/native.encresources').read_bytes());self.assertEqual(len(c['bindings']),60)
+  self.assertEqual(sorted(r['id']for r in c['bindings']if r['role']=='FieldNpc'),list(range(320,328)))
   graph=routes.load();self.assertEqual(len(graph['scenes']),3);self.assertEqual(len(graph['routes']),6)
   self.assertEqual(next(s for s in graph['scenes']if s['id']==3)['assets']['steps'],1030)
  def test_texture_pcm_and_room_corruption_rejected(self):

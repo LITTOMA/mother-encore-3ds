@@ -52,9 +52,12 @@ bool PropClipPlayer::advance(double delta,std::string&e){
  if(!data_.valid()||!std::isfinite(delta)||delta<0||delta>60)return fail(e,"Prop player delta rejected");
  if(!playing_){e.clear();return true;}
  const auto*c=data_.clip(id_);if(!c)return fail(e,"Prop player lost clip");
- const double next=std::min(double(c->duration),time_+delta);const bool done=next>=c->duration;
+ const float next=std::min(c->duration,time_+float(delta));const bool done=next>=c->duration;
  if(done&&completed_.size()>=64)return fail(e,"Prop completion queue capacity");
- for(;key_<c->count;++key_){const auto&key=data_.keys()[c->first+key_];if(key.time>next)break;
+ // Godot's discrete value tracks process [from,to), with inclusive clip end
+ // and a zero-delta seek exception. An exact interior key waits for the next
+ // advance; sampling last-key-at-or-before-time changes actual source frames.
+ for(;key_<c->count;++key_){const auto&key=data_.keys()[c->first+key_];if(key.time>next||(!done&&next!=time_&&key.time==next))break;
   switch(key.track){case PropTrack::Frame:pose_.frame=key.value;break;case PropTrack::Visible:pose_.visible=key.value!=0;break;case PropTrack::BodyDisabled:pose_.body=!key.value;break;case PropTrack::HitboxDisabled:pose_.hitbox=!key.value;break;case PropTrack::InteractionDisabled:pose_.interaction=!key.value;break;}
  }
  time_=next;if(done){playing_=false;completed_.push_back(id_);}e.clear();return true;

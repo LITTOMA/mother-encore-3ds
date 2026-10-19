@@ -37,7 +37,7 @@ public:
  std::vector<uint32_t>take_completed(){auto v=std::move(completed_);completed_.clear();return v;}
 private:
  PropClipsData data_;PropPose pose_;uint32_t id_=UINT32_MAX,key_=0;
- double time_=0;bool playing_=false;
+ float time_=0;bool playing_=false;
  std::vector<uint32_t>completed_;
 };
 }

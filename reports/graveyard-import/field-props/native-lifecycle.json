@@ -1,0 +1,2883 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": "ready_idle_and_interact",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_idle_and_interact",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_idle_and_interact",
+      "action": {
+        "op": "interact"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_idle_and_interact",
+      "action": {
+        "op": "enter"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_idle_and_interact",
+      "action": {
+        "op": "interact"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+        "Reusable/hardtobreak"
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_idle_and_interact",
+      "action": {
+        "op": "flag",
+        "id": "bat",
+        "value": true
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_idle_and_interact",
+      "action": {
+        "op": "interact"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+        "Reusable/easytobreak"
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_idle_and_interact",
+      "action": {
+        "op": "exit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_idle_and_interact",
+      "action": {
+        "op": "interact"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_hidden_grow",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Hidden"
+      }
+    },
+    {
+      "case": "ready_hidden_grow",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 0,
+        "visible": false,
+        "body": false,
+        "hitbox": true,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Hidden"
+      }
+    },
+    {
+      "case": "ready_hidden_grow",
+      "action": {
+        "op": "enter"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 0,
+        "visible": false,
+        "body": false,
+        "hitbox": true,
+        "interaction": false,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Hidden"
+      }
+    },
+    {
+      "case": "ready_hidden_grow",
+      "action": {
+        "op": "interact"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+        "Reusable/hardtobreak"
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 0,
+        "visible": false,
+        "body": false,
+        "hitbox": true,
+        "interaction": false,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Hidden"
+      }
+    },
+    {
+      "case": "ready_hidden_grow",
+      "action": {
+        "op": "grow"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+        [
+          0,
+          0.5,
+          0.7,
+          0.8
+        ]
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 0,
+        "visible": false,
+        "body": false,
+        "hitbox": true,
+        "interaction": false,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Grow"
+      }
+    },
+    {
+      "case": "ready_hidden_grow",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 2,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Grow"
+      }
+    },
+    {
+      "case": "ready_hidden_grow",
+      "action": {
+        "op": "advance",
+        "delta": 0.5
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 7,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Grow"
+      }
+    },
+    {
+      "case": "ready_hidden_grow",
+      "action": {
+        "op": "advance",
+        "delta": 0.5
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_hidden_grow",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_flag_true",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "ready_flag_true",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "break_undefined_finish_flag",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "break_undefined_finish_flag",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "break_undefined_finish_flag",
+      "action": {
+        "op": "enter"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": true,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "break_undefined_finish_flag",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": true,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "break_undefined_finish_flag",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 13,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": true,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "break_undefined_finish_flag",
+      "action": {
+        "op": "advance",
+        "delta": 0.75
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": true,
+        "prompt": false,
+        "queued": false,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "break_undefined_finish_flag",
+      "action": {
+        "op": "flush"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": true,
+        "prompt": false,
+        "queued": false,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "hidden_hit_preserves_clone_visibility",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Hidden"
+      }
+    },
+    {
+      "case": "hidden_hit_preserves_clone_visibility",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 0,
+        "visible": false,
+        "body": false,
+        "hitbox": true,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Hidden"
+      }
+    },
+    {
+      "case": "hidden_hit_preserves_clone_visibility",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": false,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": false,
+        "body": false,
+        "hitbox": true,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "hidden_hit_preserves_clone_visibility",
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": false,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": false,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "hidden_hit_preserves_clone_visibility",
+      "action": {
+        "op": "flush"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": false,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": false,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "double_hit_before_processing",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "double_hit_before_processing",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "double_hit_before_processing",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "double_hit_before_processing",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        },
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "double_hit_before_processing",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        },
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 13,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "double_hit_before_processing",
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        },
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "double_hit_before_processing",
+      "action": {
+        "op": "flush"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        },
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "grow_interrupted_by_break",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "grow_interrupted_by_break",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "grow_interrupted_by_break",
+      "action": {
+        "op": "grow"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+        [
+          0,
+          0.5,
+          0.7,
+          0.8
+        ]
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Grow"
+      }
+    },
+    {
+      "case": "grow_interrupted_by_break",
+      "action": {
+        "op": "advance",
+        "delta": 0.2
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 4,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Grow"
+      }
+    },
+    {
+      "case": "grow_interrupted_by_break",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 4,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "grow_interrupted_by_break",
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "grow_interrupted_by_break",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "grow_interrupted_by_break",
+      "action": {
+        "op": "flush"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "two_grow_waiters",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "two_grow_waiters",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "two_grow_waiters",
+      "action": {
+        "op": "grow"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+        [
+          0,
+          0.5,
+          0.7,
+          0.8
+        ]
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Grow"
+      }
+    },
+    {
+      "case": "two_grow_waiters",
+      "action": {
+        "op": "grow"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+        [
+          0,
+          0.5,
+          0.7,
+          0.8
+        ]
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Grow"
+      }
+    },
+    {
+      "case": "two_grow_waiters",
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "two_grow_waiters",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "deferred_then_delete",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "deferred_then_delete",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "deferred_then_delete",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "deferred_then_delete",
+      "action": {
+        "op": "advance",
+        "delta": 0.75
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": true,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "deferred_then_delete",
+      "action": {
+        "op": "flush"
+      },
+      "alive": false,
+      "calls": [
+        {
+          "alive": true,
+          "queued": true
+        }
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ]
+    },
+    {
+      "case": "defined_true_still_delete",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "defined_true_still_delete",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "defined_true_still_delete",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "defined_true_still_delete",
+      "action": {
+        "op": "advance",
+        "delta": 0.75
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": true,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "defined_true_still_delete",
+      "action": {
+        "op": "flush"
+      },
+      "alive": false,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ]
+    },
+    {
+      "case": "missing_target_still_delete",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "missing_target_still_delete",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "missing_target_still_delete",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "missing_target_still_delete",
+      "action": {
+        "op": "advance",
+        "delta": 0.75
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": true,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "missing_target_still_delete",
+      "action": {
+        "op": "flush"
+      },
+      "alive": false,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ]
+    },
+    {
+      "case": "empty_function_still_delete",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "empty_function_still_delete",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "empty_function_still_delete",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "empty_function_still_delete",
+      "action": {
+        "op": "advance",
+        "delta": 0.75
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": true,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "empty_function_still_delete",
+      "action": {
+        "op": "flush"
+      },
+      "alive": false,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ]
+    },
+    {
+      "case": "flag_checked_at_finish",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "flag_checked_at_finish",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "flag_checked_at_finish",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "flag_checked_at_finish",
+      "action": {
+        "op": "flag",
+        "id": "got_shovel",
+        "value": true
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "flag_checked_at_finish",
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": true,
+        "playing": false,
+        "current": ""
+      }
+    },
+    {
+      "case": "flag_checked_at_finish",
+      "action": {
+        "op": "flush"
+      },
+      "alive": false,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ]
+    },
+    {
+      "case": "grow_waiter_before_deferred_delete",
+      "action": {
+        "op": "ready"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "grow_waiter_before_deferred_delete",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "grow_waiter_before_deferred_delete",
+      "action": {
+        "op": "grow"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+        [
+          0,
+          0.5,
+          0.7,
+          0.8
+        ]
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": true,
+        "queued": false,
+        "playing": true,
+        "current": "Grow"
+      }
+    },
+    {
+      "case": "grow_waiter_before_deferred_delete",
+      "action": {
+        "op": "hit"
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": false,
+        "playing": true,
+        "current": "Break"
+      }
+    },
+    {
+      "case": "grow_waiter_before_deferred_delete",
+      "action": {
+        "op": "advance",
+        "delta": 1
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 0,
+        "visible": true,
+        "body": false,
+        "hitbox": false,
+        "interaction": false,
+        "node_visible": false,
+        "prompt": false,
+        "queued": true,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "grow_waiter_before_deferred_delete",
+      "action": {
+        "op": "advance",
+        "delta": 0
+      },
+      "alive": true,
+      "calls": [
+
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ],
+      "props": {
+        "frame": 12,
+        "visible": true,
+        "body": true,
+        "hitbox": true,
+        "interaction": true,
+        "node_visible": false,
+        "prompt": false,
+        "queued": true,
+        "playing": true,
+        "current": "Idle"
+      }
+    },
+    {
+      "case": "grow_waiter_before_deferred_delete",
+      "action": {
+        "op": "flush"
+      },
+      "alive": false,
+      "calls": [
+        {
+          "alive": true,
+          "queued": true
+        }
+      ],
+      "rumble": [
+
+      ],
+      "dialogue": [
+
+      ],
+      "clones": [
+        {
+          "frame": 1,
+          "visible": true,
+          "x": 32,
+          "y": 48
+        }
+      ]
+    }
+  ]
+}

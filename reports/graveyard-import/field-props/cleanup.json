@@ -1,0 +1,26 @@
+{
+  "bytes": 192186064,
+  "removed": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-props-host\\field-props-tests",
+      "bytes": 48226160
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-props-host\\prop-clips-tests",
+      "bytes": 807736
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-props-host\\collision-index",
+      "bytes": 47747304
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-props-host\\prop-clips-old",
+      "bytes": 47702432
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-props-host\\prop-clips-boundary",
+      "bytes": 47702432
+    }
+  ],
+  "scope": "Finished test ELFs only; raw logs and source objects retained"
+}

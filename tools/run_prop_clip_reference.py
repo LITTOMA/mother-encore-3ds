@@ -104,11 +104,16 @@ def run(out,engine):
   actions.append(dict(op='play',name=c['name'],id=c['id']))
   times={0,c['duration']/2,c['duration'],c['duration']+.001}
   for k in c['keys']:
-   if k['time']>0:times.update((max(0,k['time']-.000001),k['time']+.000001))
+   if k['time']>0:times.update((max(0,k['time']-.000001),k['time'],k['time']+.000001))
   previous=0
   for time in sorted(times):actions.append(dict(op='advance',delta=time-previous));previous=time
   # Restart leaves properties intact until the first manual processing pass.
   actions.extend([dict(op='play',name=c['name'],id=c['id']),dict(op='advance',delta=0),dict(op='advance',delta=c['duration']+.01)])
+  # Retain a normal 60 Hz clock as well as explicit key boundaries. Native
+  # AnimationPlayer accumulates float time; Python/double sampling is not its
+  # authoritative state at exact interior keys.
+  actions.append(dict(op='play',name=c['name'],id=c['id']))
+  actions.extend(dict(op='advance',delta=1/60)for _ in range(62))
  # Interruptions do not emit a completion for the replaced animation.
  actions.extend([dict(op='play',name=r['clips'][2]['name'],id=r['clips'][2]['id']),dict(op='advance',delta=.2),dict(op='play',name=r['clips'][3]['name'],id=r['clips'][3]['id']),dict(op='advance',delta=0),dict(op='advance',delta=1)])
  (project/'input.json').write_text(json.dumps({'scene':'prop-probe.tscn','actions':actions},indent=2)+'\n',encoding='utf8');(project/'probe.gd').write_text(PROBE,encoding='utf8')

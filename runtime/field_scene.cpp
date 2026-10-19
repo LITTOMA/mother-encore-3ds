@@ -49,7 +49,7 @@ bool FieldCollision::bind(FieldMapView map,const std::vector<bool>& layer_active
             if(count)chunks_.push_back({chunk.minimum,chunk.maximum,first,count});
         }
     }
-    for(uint32_t i=0;i<body_active.size();++i)if(body_active[i])bodies_.push_back(i);
+    bodies_=body_active;
     error.clear();return true;
 }
 bool FieldCollision::collect(Vec2 lo,Vec2 hi,std::vector<MotionObstacle>& out)const{
@@ -67,11 +67,14 @@ bool FieldCollision::collect(Vec2 lo,Vec2 hi,std::vector<MotionObstacle>& out)co
             for(uint32_t j=0;j<cell.count;++j)push(cell.first+j,cell.offset);
         }
     }
-    for(const auto bi:bodies_){const auto b=map_.body(bi);for(uint32_t s=0;s<b.shape_count;++s)push(b.shape_first+s,{});}
+    for(uint32_t bi=0;bi<bodies_.size();++bi)if(bodies_[bi]){const auto b=map_.body(bi);for(uint32_t s=0;s<b.shape_count;++s)push(b.shape_first+s,{});}
     for(uint32_t i=0;i<extra_.size();++i){const auto& b=extra_[i];if(i!=excluded_&&b.enabled&&intersects(lo,hi,b.minimum,b.maximum))
         out.push_back({b.points,b.normals,4,{},b.minimum,b.maximum,false});}
     if(out.size()>4096)return false;
     return true;
+}
+bool FieldCollision::set_static_body_enabled(uint32_t index,bool enabled){
+    if(!map_.valid()||index>=bodies_.size())return false;bodies_[index]=enabled;return true;
 }
 void FieldCollision::set_body(Vec2 center,Vec2 extents,uint32_t slot,bool enabled){
     if(slot>=65)return;
@@ -147,6 +150,7 @@ bool FieldScene::conditions(FieldSpan span)const{
     return true;
 }
 bool FieldScene::prepare(RoomView room,FieldMapView map,const WorldLinksData& links,const std::vector<bool>& story_flags,Vec2 position,Vec2 direction,Vec2 viewport,std::string& error){
+    if(props_.ready()){error="A field prop owner cannot be reused for another scene; prepare a new candidate";return false;}
     auto reject=[&](std::string message){error=message;phase_=FieldPhase::Error;error_=std::move(message);return false;};
     if(!room.valid()||!map.valid()||!links.valid()||room.scene().stable_id!=map.scene_id())return reject("Field scene resources do not match");
     const auto scene_index=links.find_scene(map.scene_id());
@@ -217,7 +221,37 @@ bool FieldScene::refresh_conditions(std::string& error){
     }
     if(mick_bound_)apply_mick_body();
     apply_npc_bodies();
+    if(!apply_prop_bodies(error))return false;
     story_revision_=world.story_revision();error.clear();return true;
+}
+std::vector<bool>FieldScene::prop_flags()const{
+    std::vector<bool>out;for(const auto&name:props_.data().flags())out.push_back(world.story_flag(name));return out;
+}
+bool FieldScene::apply_prop_bodies(std::string&error){
+    if(!props_.ready()){error.clear();return true;}
+    for(uint32_t i=0;i<props_.states().size();++i){const auto&s=props_.states()[i];const auto&r=props_.data().props()[i];
+        if(!collision_.set_static_body_enabled(r.body,s.alive&&s.animation.pose().body)){error="Field prop static body owner lost";return false;}}
+    error.clear();return true;
+}
+bool FieldScene::bind_props(const FieldPropsData&data,std::string&error){
+    if(phase_==FieldPhase::Error||props_.ready()){error="Field props need one prepared scene owner";return false;}
+    if(!data.bind(world.content(),map_,error))return false;
+    std::vector<bool>flags;for(const auto&name:data.flags())flags.push_back(world.story_flag(name));
+    FieldProps next;if(!next.initialize(data,flags,error))return false;props_=std::move(next);return apply_prop_bodies(error);
+}
+bool FieldScene::grow_prop(uint32_t id,std::string&error){
+    if(phase_==FieldPhase::Error||!props_.ready()){error="Field prop grow needs a bound scene";return false;}
+    for(uint32_t i=0;i<props_.data().props().size();++i)if(props_.data().props()[i].id==id)return props_.grow(i,error);
+    error="Field prop stable identity is unbound";return false;
+}
+bool FieldScene::hit_prop(uint32_t index,std::string&error){
+    if(phase_==FieldPhase::Error){error="Field prop hit needs a live scene";return false;}return props_.hit(index,error);
+}
+bool FieldScene::flush_props(FieldPropHost&host,std::string&error){
+    return props_.flush_deferred(host,error)&&apply_prop_bodies(error);
+}
+bool FieldScene::prop_sprite(uint32_t sprite,PropPose&out)const{
+    if(!props_.ready())return false;for(uint32_t i=0;i<props_.data().props().size();++i)if(props_.data().props()[i].sprite==sprite){out=props_.states()[i].animation.pose();return true;}return false;
 }
 bool FieldScene::bind_steps(FieldStepsView view,const AudioBank&bank,std::string_view inherited,std::string&error){
  auto reject=[&](const char*why){error=why;return false;};
@@ -558,6 +592,14 @@ bool FieldScene::finish_talk(){
 bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
     if(phase_==FieldPhase::Error)return false;
     if(!std::isfinite(delta)||delta<0||delta>1)return fail("Field idle time rejected");
+    if(props_.ready()){
+        std::string why;if(!props_.advance(delta,prop_flags(),why))return fail(why);
+        const auto camera=camera_origin(world.player().position,viewport_);
+        for(uint32_t i=0;i<props_.states().size();++i){if(!props_.states()[i].alive)continue;const auto&r=props_.data().props()[i];
+            const bool visible=intersects({r.view_center.x-r.view_extents.x,r.view_center.y-r.view_extents.y},{r.view_center.x+r.view_extents.x,r.view_center.y+r.view_extents.y},camera,{camera.x+viewport_.x,camera.y+viewport_.y});
+            if(!props_.set_visible(i,visible,why))return fail(why);}
+        if(!apply_prop_bodies(why))return fail(why);
+    }
     if(phase_==FieldPhase::DoorAwaitIdle){
         // Door body_entered pauses, then yields one idle frame before enter().
         route_=links_->find_route(map_.door(pending_door_).route);phase_=FieldPhase::Transition;
@@ -597,6 +639,7 @@ bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
 }
 bool FieldScene::sprite_visible(uint32_t i)const{
     if(i>=sprite_active_.size()||!sprite_active_[i])return false;
+    if(props_.ready())for(uint32_t k=0;k<props_.data().props().size();++k)if(props_.data().props()[k].sprite==i){const auto&s=props_.states()[k];return s.alive&&s.visible&&s.animation.pose().visible;}
     const auto openable=map_.sprite(i).openable;
     return openable==kFieldNoOpenable||!openable_open(openable);
 }

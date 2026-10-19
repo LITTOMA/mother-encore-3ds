@@ -1,0 +1,42 @@
+[
+  {
+    "step": "props-assets",
+    "returncode": 0,
+    "seconds": 2.4589383602142334
+  },
+  {
+    "step": "field",
+    "returncode": 0,
+    "seconds": 15.62793231010437
+  },
+  {
+    "step": "session-extract",
+    "returncode": 0,
+    "seconds": 7.286138534545898
+  },
+  {
+    "step": "session-compile",
+    "returncode": 0,
+    "seconds": 7.307103157043457
+  },
+  {
+    "step": "restore-extract",
+    "returncode": 0,
+    "seconds": 0.3086059093475342
+  },
+  {
+    "step": "restore-compile",
+    "returncode": 0,
+    "seconds": 0.29563426971435547
+  },
+  {
+    "step": "new-game",
+    "returncode": 0,
+    "seconds": 9.687210083007812
+  },
+  {
+    "step": "stage",
+    "returncode": 1,
+    "seconds": 48.59784817695618
+  }
+]

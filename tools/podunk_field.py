@@ -704,10 +704,15 @@ def decode_cells(node):
 
 # ---------------------------------------------------------------- compile model
 class Model:
-    def __init__(self, recipe, sources=None):
+    def __init__(self, recipe, sources=None, *, object_bindings=None):
         self.recipe = recipe
         self.sources = sources or Sources()
         self.scene = Scene(self.sources, recipe)
+        require(object_bindings is None or type(object_bindings)is dict,'Field object binding type')
+        self.object_bindings={}if object_bindings is None else dict(object_bindings)
+        require(len(self.object_bindings)<=128 and all(type(k)is str and k in self.scene.by_path and self.scene.category[k]=='prop'and self.scene.owner_instance.get(k)==k and self.scene.visible(k)and type(v)is int and 0<v<2**32-1 for k,v in self.object_bindings.items())and len(set(self.object_bindings.values()))==len(self.object_bindings),'Field object source identities')
+        self.object_body_paths={k+'/StaticBody2D'for k in self.object_bindings}
+        require(all(k in self.scene.by_path and self.scene.by_path[k].type=='StaticBody2D'for k in self.object_body_paths),'Field object source body absent')
         from tools.field_npcs import load_policy
         bindings = recipe['actor_bindings'] if recipe['schema']==2 else load_policy(ROOT/recipe['npc_recipe'])['actors']
         self.npc_bindings={a['path']:a['id']-1 for a in bindings}
@@ -735,6 +740,7 @@ class Model:
         self.notices = []
         self.cameras = []
         self.bodies = []
+        self.body_by_path = {}
         self.undefined_cells = 0
         player = recipe['player']
         self.player_layer, self.player_mask = player['collision_layer'], player['collision_mask']
@@ -973,7 +979,9 @@ class Model:
                 continue
             cat = sc.category[n.path]
             if cat in ('static_body', 'prop', 'openable_door'):
+                first=len(self.bodies)
                 self._body_shapes(n.path, self.condition_span(sc.conditions(n.path)))
+                if len(self.bodies)>first:self.body_by_path[n.path]=first
 
     # openable doors (unlocked only); locked variants become boundaries
     def _openables(self):
@@ -1184,6 +1192,8 @@ class Model:
             return out
         cat = sc.category[path]
         cond = self.condition_span(sc.conditions(path))
+        if path in self.object_bindings:
+            return [self._item(7,self.object_bindings[path],1,cond=cond)]
         if path in self.npc_bindings:
             return [self._item(6,self.npc_bindings[path],1,cond=cond)]
         if cat in ('notice', 'boundary', 'door', 'camera_area', 'camera_rect', 'static_body'):
@@ -1362,12 +1372,13 @@ def pack_container(magic, scene_id, sections, strides, limit, *, capability=1):
 def unpack_container(blob, magic, strides, limit, *, capability=None, header_flags_mask=0):
     require(isinstance(blob, (bytes, bytearray)) and HEADER.size <= len(blob) <= limit, 'Field resource size rejected')
     m, version, total, crc, actual_capability, scene_id, reserved, pin, count, r1, r2 = HEADER.unpack_from(blob)
-    allowed = (capability,) if capability is not None else ((1, 2, 3, 4, 5) if magic == MAP_MAGIC else (1,))
+    allowed = (capability,) if capability is not None else ((1, 2, 3, 4, 5, 6) if magic == MAP_MAGIC else (1,))
+    require(magic!=MAP_MAGIC or actual_capability in(1,2,3,4,5,6),'Unknown field map capability')
     require(m == magic and version == 1 and total == len(blob) and actual_capability in allowed and not (reserved & ~header_flags_mask) and not r1 and not r2,
             'Field resource header rejected')
     require(pin == bytes.fromhex(PIN), 'Field resource source pin rejected')
     require(zlib.crc32(bytes(blob[32:])) == crc, 'Field resource checksum rejected')
-    if magic == MAP_MAGIC and actual_capability==5:
+    if magic == MAP_MAGIC and actual_capability>=5:
         require(tuple(strides)==MAP_STRIDES, 'Field Area caller strides rejected');strides=(*strides,80)
     require(count == len(strides), 'Field resource section count rejected')
     sections = []
@@ -1388,7 +1399,9 @@ def unpack_container(blob, magic, strides, limit, *, capability=None, header_fla
         kinds = [struct.unpack_from('<H', sections[17], i)[0] for i in range(0, len(sections[17]), strides[17])]
         require(all(k in (1, 2) or (actual_capability >= 2 and k == 3) for k in kinds), 'Field boundary capability rejected')
         actors=[struct.unpack_from('<H',sections[13],i)[0] for i in range(0,len(sections[13]),strides[13])]
-        require(all(k in (1,2,3,4,5) or actual_capability>=3 and k==6 for k in actors),'Field actor capability rejected')
+        require(all(k in (1,2,3,4,5) or actual_capability>=3 and k==6 or actual_capability>=6 and k==7 for k in actors),'Field actor/object capability rejected')
+        owned=[struct.unpack_from('<II',sections[13],i+4)for i in range(0,len(sections[13]),strides[13])if struct.unpack_from('<H',sections[13],i)[0]==7]
+        require(all(0<identity<2**32-1 and count==1 for identity,count in owned)and len({v[0]for v in owned})==len(owned)and(actual_capability!=6 or bool(owned)),'Field object item identity/capability rejected')
         require((actual_capability!=2 or 3 in kinds) and (actual_capability<3 or 6 in actors),'Noncanonical field capability')
         static_actor=False
         for at in range(0,len(sections[14]),16):
@@ -1397,7 +1410,7 @@ def unpack_container(blob, magic, strides, limit, *, capability=None, header_fla
             if kind==1 and 6 in actors[first:first+count]:static_actor=True
         require(not static_actor or actual_capability>=4,'Static actor capability rejected')
         require(actual_capability!=4 or static_actor,'Noncanonical static actor capability')
-        if actual_capability==5:
+        if actual_capability>=5:
             from tools.field_area import decode as decode_area
             require(len(sections[21])==80, 'Field Area record count');decode_area(sections[21],sections[0])
     return scene_id, sections
@@ -1533,13 +1546,14 @@ def encode_map(model, atlases, atlas_paths, *, area=None):
     for b in model.bodies:
         secs['Bodies'] += struct.pack('<4I', b['first'], b['count'], b['cond'][0], b['cond'][1])
     names=MAP_SECTIONS;strides=MAP_STRIDES
+    require(not model.object_bindings or area is not None,'Field objects require checked AreaRoom metadata')
     if area is not None:
         from tools.field_area import encode as encode_area
         secs['Area']=encode_area(area,S);names=(*names,'Area');strides=(*strides,80)
     secs['Bytes'] = bytearray(model.strings)
     static_actor=any(g['kind']==1 and any(item['kind']==6 for item in model.items[g['first']:g['first']+g['count']])for g in model.groups)
     return pack_container(MAP_MAGIC, model.recipe['scene']['id'], [secs[n] for n in names], strides, MAP_LIMIT,
-                          capability=5 if area is not None else 4 if static_actor else 3 if model.npc_bindings else 2 if any(b['kind'] == 3 for b in model.boundaries) else 1)
+                          capability=6 if model.object_bindings else 5 if area is not None else 4 if static_actor else 3 if model.npc_bindings else 2 if any(b['kind'] == 3 for b in model.boundaries) else 1)
 
 
 def door_parameters(sources, recipe, scene_doc_nodes, door_path):

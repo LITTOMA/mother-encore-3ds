@@ -1,0 +1,46 @@
+{
+  "files": [
+    {
+      "sha256": "3bdd590e40c574306eef1fb034bcf0061bddfb9aebdb63722da767c1f6f5858b",
+      "bytes": 52487752,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\bound-regression-field_objects_bound"
+    },
+    {
+      "sha256": "b7eb5b49eacc9d824a7bf493caa95780bc4ce9226da2e8238f27cc8a96fc03e9",
+      "bytes": 52128416,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\bound-regression-field_objects_data"
+    },
+    {
+      "sha256": "a3a45c7592a1b7063fa141c4ff1076edc1213736475a45d96930dcfbed8a03c2",
+      "bytes": 52024960,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\bound-regression-field_objects"
+    },
+    {
+      "sha256": "24e7ff5d04c0f3814af5b1b2c1d22f5c5e1168ded57e09c15169b4820f454e61",
+      "bytes": 52231264,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\bound-regression-story_object_delete"
+    },
+    {
+      "sha256": "c337bbba298ad36a5edb6ce2cd5052f36601cfeb973a6dbb1ba14a29a2cae1ae",
+      "bytes": 52138376,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\bound-regression-shovel_programme"
+    },
+    {
+      "sha256": "d6905808e1aca5a2ad6ff5806e0c939b28ae504cf30c9f70a4afea0f869078aa",
+      "bytes": 52541472,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\bound-regression-field_data"
+    },
+    {
+      "sha256": "d7f1013f353d31b1bb12e64d9967a453441daac64b6cae082099a78cd9783c70",
+      "bytes": 52645992,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\bound-regression-field_area"
+    },
+    {
+      "sha256": "fcce084712711b8b6b21fd0b49e2bafa0b2c3367b3a979acf0e93fbc8d3f3345",
+      "bytes": 52637680,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\bound-regression-field_props"
+    }
+  ],
+  "bytes": 418835912.0,
+  "reason": "Owned native regression executables retired after eight successful runs and retained actual logs; core cache, accepted emulator game, actual Record save and tools kept"
+}

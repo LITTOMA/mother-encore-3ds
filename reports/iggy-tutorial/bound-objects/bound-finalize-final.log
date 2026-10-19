@@ -1,0 +1,3 @@
+player-assets 0
+stage-final 0
+{'scope': 'Unpublished Map6/Object2 component. All tracked game binaries, IR/defaults unchanged. Original generators refreshed three compiler provenance receipts; actual tex3ds invoked, player atlases reused with original conversion proof. Initial stale player producer receipt correctly rejected by stage; final stage passed.', 'changed': ['content/asset-receipts/graphics/world/player/swing/resources.json', 'content/asset-receipts/graphics/world/podunk/props/source.json', 'content/asset-receipts/graphics/world/podunk/source.json'], 'unchanged': 453, 'all_room_semantics_exact': True, 'all_tracked_romfs_exact': True}

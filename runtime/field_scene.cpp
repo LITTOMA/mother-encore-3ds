@@ -153,6 +153,9 @@ bool FieldScene::prepare(RoomView room,FieldMapView map,const WorldLinksData& li
     if(props_.ready()){error="A field prop owner cannot be reused for another scene; prepare a new candidate";return false;}
     auto reject=[&](std::string message){error=message;phase_=FieldPhase::Error;error_=std::move(message);return false;};
     if(!room.valid()||!map.valid()||!links.valid()||room.scene().stable_id!=map.scene_id())return reject("Field scene resources do not match");
+    // The independent map/object binding candidate is not a playable scene
+    // until its lifecycle and renderer are admitted together.
+    if(map.capabilities()>=6)return reject("Field object scene lifecycle is not yet admitted");
     const auto scene_index=links.find_scene(map.scene_id());
     if(scene_index==WorldLinksData::kNotFound||!links.scene(scene_index).map_role||links.scene(scene_index).source!=room.string(room.scene().source_scene_string))
         return reject("Field scene is not a linked map scene");

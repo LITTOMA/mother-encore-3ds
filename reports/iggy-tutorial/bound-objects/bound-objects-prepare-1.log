@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_bound_field_objects.py", line 28, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args();out=a.out.resolve();assert out!=ROOT/'build'and(ROOT/'build').resolve()in out.parents;out.mkdir(parents=True,exist_ok=True);blob,objects,proof=build(out);(out/'source.encmap').write_bytes(blob);(out/'source.encobjects').write_bytes(objects);(out/'source.json').write_text(json.dumps(proof,indent=2)+'\n',encoding='utf8');print('Unpublished bound object fixture:',len(blob),'map bytes;',len(objects),'object bytes; source ready frame',proof['resolved'],'body',proof['body_extents'])
+                                                                                                                                                                                                                                                ^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_bound_field_objects.py", line 13, in build
+    model=f.Model(f.load_recipe(),object_bindings={path:1});atlases=f.Atlases(model);paths=[model.recipe['atlas_directory']+'/atlas-%02d.t3x'%i for i in range(len(atlases.pages))]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\podunk_field.py", line 713, in __init__
+    require(len(self.object_bindings)<=128 and all(type(k)is str and k in self.scene.by_path and self.scene.category[k]=='notice'and self.scene.visible(k)and type(v)is int and 0<v<2**32-1 for k,v in self.object_bindings.items())and len(set(self.object_bindings.values()))==len(self.object_bindings),'Field object source identities')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\podunk_field.py", line 46, in require
+    raise FieldError(message)
+tools.podunk_field.FieldError: Field object source identities

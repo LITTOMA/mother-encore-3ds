@@ -1,0 +1,6 @@
+{
+  "scope": "Artificial core-validated House-authority checkpoint, scalar/flag outcome taken from actual passed f3 normal-input route; original inventory/key UIDs retained and observed hashes unchanged; not an actual in-game Record or a natural opening playthrough.",
+  "observation": "reports/graveyard-import/field-props-emulator-f3/observations.json:mayor_return_goods",
+  "source_commit": "f3c267b1a43e2ee39ea46f45b7b3e3d4c59e3a88",
+  "rng": "Not serialized by the original/native save contract; subsequent random battles are not byte-deterministic."
+}

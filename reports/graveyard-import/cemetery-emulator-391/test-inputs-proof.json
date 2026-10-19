@@ -1,0 +1,17 @@
+{
+  "scope": "Supplement to immutable actual-run result; ordinary controller input only, no memory writes; artificial checkpoint, no Record/new-game/save-fix/hardware claim",
+  "files": {
+    "build/full-port/post-mayor-checkpoint.encsave": {
+      "bytes": 4632,
+      "sha256": "5068bdd2a8d2744da8a8bf10f6e207be9b7204b804c1526906761a01adfae688"
+    },
+    "build/full-port/cemetery-from-house-plan.json": {
+      "bytes": 1992,
+      "sha256": "731c2ece62723a05d5930df7b1f98b8cf853fd804dda255c04623a5af7ac02ab"
+    },
+    "build/full-port/run_cemetery_isolated.py": {
+      "bytes": 21443,
+      "sha256": "a49378df7b53b14d77e9b4523fbaeb491ab03a66001fdd59741e639c99f23934"
+    }
+  }
+}

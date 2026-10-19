@@ -12,7 +12,7 @@
     "tools/field_player_audio.py": "be435a613298f61567601e6b9cf8ab4bdc9dc227651db046d2e80d89ac084d99",
     "tools/field_player_tree.py": "c8ecff10b4b1568c944b727677b916f11b01e92924f00e8e791b7e527fd90ceb",
     "tools/field_swing_entry.py": "0ae777e4079a87ccbb347246d4022ede81af6f423dd7eee6cdccb624e8fb3862",
-    "tools/podunk_field.py": "e3bc3be8b48287568c0f5f26a0a5c9349be6254eccc50ace74dfec3e47e06f23"
+    "tools/podunk_field.py": "e523338785b8e09d6dba9c7df605095db7f074151a756b04ee49e360854e571e"
   },
   "recipes": {
     "content/field-player-assets.json": "30f5232c5f3a909c1058c1f978cc8b3a7fbdba3e2a6b368671a5ccad77205cdb",

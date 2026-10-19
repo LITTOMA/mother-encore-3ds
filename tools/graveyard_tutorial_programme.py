@@ -25,10 +25,12 @@ def read(path=RECIPE):
  r,ex=review.read(ROOT/p['review']);doc=r['documents'][r['source']]
  require(p['source']==r['source']and p['boundary']==r['boundary'],'Tutorial programme source boundary')
  from tools import field_npcs
- policy,owners,_=field_npcs.build();owner=next(x for x in owners if x['binding']['path']==r['npc'])
+ # This consumer needs the stable actor binding, not rebuilt sprite sheets or
+ # movement clips. Room generation independently admits those NPC consumers.
+ policy=field_npcs.load_policy();owner=next(x for x in policy['actors']if x['path']==r['npc'])
  aliases=doc['0']['actors'];require(type(p['actors'])is dict and set(p['actors'])==set(aliases),'Tutorial actor alias coverage')
  for name,source in aliases.items():
-  expected=0 if source=='leader'else owner['binding']['id']-1 if source==r['npc']else None
+  expected=0 if source=='leader'else owner['id']-1 if source==r['npc']else None
   require(expected is not None and type(p['actors'][name])is int and p['actors'][name]==expected,'Tutorial actor source identity')
  require(type(p['dialogues'])is list and p['dialogues'],'Tutorial dialogue bindings')
  ids={};seen=set()

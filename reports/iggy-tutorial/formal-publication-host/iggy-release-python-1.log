@@ -1,0 +1,23 @@
+.F................F..........
+======================================================================
+FAIL: test_cemetery_source_mapping_and_runtime_version_negatives (tests.test_field_story.FieldStoryTests.test_cemetery_source_mapping_and_runtime_version_negatives)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_field_story.py", line 67, in test_cemetery_source_mapping_and_runtime_version_negatives
+    with self.assertRaises(ValueError):native_content.parse_pack(bytes(blob))
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_complete_field_programmes_admit_only_source_written_flags (tests.test_native_session.NativeSessionTests.test_complete_field_programmes_admit_only_source_written_flags)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_native_session.py", line 15, in test_complete_field_programmes_admit_only_source_written_flags
+    current=native.extract();self.assertEqual(set(current['mutable_flags'])-set(previous['mutable_flags']),{'cem_roots_grown'})
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the first set but not the second:
+'bat'
+
+----------------------------------------------------------------------
+Ran 29 tests in 586.029s
+
+FAILED (failures=2)

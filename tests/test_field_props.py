@@ -6,6 +6,13 @@ from tools.run_prop_lifecycle_reference import cases,write_tsv
 ROOT=Path(__file__).resolve().parents[1]
 
 class FieldProps(unittest.TestCase):
+ def test_metadata_only_adapter_readmission_is_bounded(self):
+  before=b'def build_room():\n return 12\nclass Model:\n value=3\n'
+  p.same_adapter_except(before,before.replace(b'return 12',b'return 13'),{'build_room'})
+  with self.assertRaises(ValueError):p.same_adapter_except(before,before.replace(b'value=3',b'value=4'),{'build_room'})
+  with self.assertRaises(ValueError):p.same_adapter_except(before,before+b'unknown=True\n',{'build_room'})
+  for base in (None,True,'main','0'*39,'g'*40):
+   with self.subTest(base=base),self.assertRaises(ValueError):p.readmit(base)
  @classmethod
  def setUpClass(cls):cls.policy=p.read();cls.data,cls.clips,cls.proof=p.source()
  def test_source_instances_and_bytes_match_fixture(self):

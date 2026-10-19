@@ -1,0 +1,1 @@
+Cemetery 20: !room.load(b.data(),b.size(),error)&&room.view().bytes()==identity ()

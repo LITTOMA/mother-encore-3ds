@@ -1,0 +1,15 @@
+1 title {'frame': 1, 'title_phase': 1, 'field_scene': 0, 'world_stage': 0, 'hp': 0, 'player_x': 520.0, 'player_y': 397.0}
+1 loaded {'frame': 2136, 'title_phase': 0, 'field_scene': 0, 'world_stage': 0, 'hp': 12, 'player_x': 143.0, 'player_y': 702.0}
+1 unlearned_B {'frame': 2155, 'title_phase': 0, 'field_scene': 0, 'world_stage': 0, 'hp': 12, 'player_x': 143.0, 'player_y': 702.0}
+1 house_goods_before {'frame': 2215, 'title_phase': 0, 'field_scene': 0, 'world_stage': 0, 'hp': 12, 'player_x': 143.0, 'player_y': 702.0}
+1 house_goods_shown {'frame': 2241, 'title_phase': 0, 'field_scene': 0, 'world_stage': 0, 'hp': 12, 'player_x': 143.0, 'player_y': 702.0}
+1 house_goods_closed {'frame': 2276, 'title_phase': 0, 'field_scene': 0, 'world_stage': 0, 'hp': 12, 'player_x': 143.0, 'player_y': 702.0}
+1 outside {'frame': 2461, 'title_phase': 0, 'field_scene': 2, 'world_stage': 0, 'hp': 12, 'player_x': 8.0, 'player_y': -39.0}
+1 field_goods_before {'frame': 2520, 'title_phase': 0, 'field_scene': 2, 'world_stage': 0, 'hp': 12, 'player_x': 8.0, 'player_y': -39.0}
+1 field_goods_shown {'frame': 2547, 'title_phase': 0, 'field_scene': 2, 'world_stage': 0, 'hp': 12, 'player_x': 8.0, 'player_y': -39.0}
+1 field_goods_closed {'frame': 2577, 'title_phase': 0, 'field_scene': 2, 'world_stage': 0, 'hp': 12, 'player_x': 8.0, 'player_y': -39.0}
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\run_player7d_baseline.py", line 62, in <module>
+    advance(60);outside=record('outside');capture('outside');assert projection(outside)==projection(after_house);after_field=goods('field_goods');projections.append(projection(after_field));assert after_field['audio_available']and after_field['music_playing']
+                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

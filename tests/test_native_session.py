@@ -12,7 +12,9 @@ class NativeSessionTests(unittest.TestCase):
     def test_complete_field_programmes_admit_only_source_written_flags(self):
         import json
         previous=json.loads((native.ROOT/'tests/fixtures/pre-cemetery-save-session.json').read_bytes())
-        current=native.extract();self.assertEqual(set(current['mutable_flags'])-set(previous['mutable_flags']),{'cem_roots_grown'})
+        current=native.extract();self.assertEqual(set(current['mutable_flags'])-set(previous['mutable_flags']),{'cem_roots_grown','bat'})
+        grant=next(row for row in current['key_acquisitions']if row['item_id']=='BatOld')
+        self.assertEqual(grant,dict(item_id='BatOld',doses=1,flag_id='bat',consumed_flag_id='',flag_policy=1))
         self.assertTrue(set(previous['mutable_flags'])<=set(current['mutable_flags']))
         self.assertEqual(current['defaults'],previous['defaults']);self.assertEqual(current['schema'],previous['schema'])
         self.assertIn('romfs/world/podunk/podunk.encroom',current['dependencies'])

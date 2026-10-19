@@ -115,8 +115,36 @@ def stage_files(root=ROOT/'romfs'):
  p=read();data,clips,proof=source();blob=encode(data,clips);texture=receipt(p,proof,root)
  require((Path(root)/p['output']).read_bytes()==blob,'Field prop resource is stale')
  return {Path(p['output']):blob,Path(p['texture']):texture}
+def same_adapter_except(previous,current,names):
+ import ast
+ def consumed(raw):
+  parsed=ast.parse(raw.decode('utf8'));parsed.body=[n for n in parsed.body if not(isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef))and n.name in names)];return ast.dump(parsed,include_attributes=False)
+ require(consumed(previous)==consumed(current),'Field prop consumed adapter changed outside reviewed metadata/CLI functions')
+
+def readmit(base):
+ """Retain a real conversion only when source, model and pixels are unchanged."""
+ require(type(base)is str and re.fullmatch('[0-9a-f]{40}',base),'Field prop readmission needs an exact baseline commit')
+ old=lambda path:subprocess.check_output(['git','show',base+':'+path],cwd=ROOT)
+ p=read();data,clips,proof=source();require(p['schema']==2,'Field prop release output binding required')
+ recipe_path=RECIPE.relative_to(ROOT).as_posix();raw_recipe=RECIPE.read_bytes();require(old(recipe_path)==raw_recipe,'Field prop readmission changed policy')
+ baseline=json.loads(old(p['receipt']),object_pairs_hook=unique);current=json.loads((ROOT/p['receipt']).read_bytes(),object_pairs_hook=unique);require(current==baseline,'Field prop readmission baseline receipt differs')
+ require(set(baseline)==set('schema commit policy_sha256 producers sources tex3ds_sha256 texture permission'.split())and baseline['schema']==1 and baseline['commit']==f.PIN and baseline['policy_sha256']==hashlib.sha256(raw_recipe).hexdigest()and baseline['sources']==proof['sources'],'Field prop readmission source/policy changed')
+ require(set(baseline['producers'])==set(producers()),'Field prop readmission producer coverage')
+ for path,digest in baseline['producers'].items():
+  before=old(path);after=(ROOT/path).read_bytes();require(hashlib.sha256(before).hexdigest()==digest,'Field prop original producer digest differs')
+  if path=='tools/podunk_field.py':same_adapter_except(before,after,{'build_room'})
+  elif path=='tools/field_props.py':same_adapter_except(before,after,{'main','readmit','same_adapter_except'})
+  else:require(before==after,'Field prop consumed clip producer changed')
+ require(encode(data,clips)==old('romfs/'+p['output'])==(ROOT/'romfs'/p['output']).read_bytes(),'Field prop readmission changes resource semantics')
+ texture_bytes(ROOT/'romfs',p,baseline['texture'])
+ require(type(baseline['tex3ds_sha256'])is str and re.fullmatch('[0-9a-f]{64}',baseline['tex3ds_sha256'])and baseline['permission']=='Pinned upstream LICENSE game-related port; original notices retained; no tool binary distributed','Field prop original conversion/permission changed')
+ updated=dict(baseline,producers=producers());(ROOT/p['receipt']).write_bytes((json.dumps(updated,indent=2)+'\n').encode());receipt(p,proof)
+ print('Field prop original texture retained; canonical resource, consumed adapter AST, source and actual texture unchanged; metadata/CLI provenance re-admitted')
+
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('action',nargs='?',default='candidate',choices=('candidate','assets','compile','verify'));ap.add_argument('--recipe',type=Path,default=RECIPE);ap.add_argument('--out',type=Path);ap.add_argument('--tex3ds',type=Path);ap.add_argument('--tex3ds-command');a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('action',nargs='?',default='candidate',choices=('candidate','assets','compile','verify','readmit'));ap.add_argument('--recipe',type=Path,default=RECIPE);ap.add_argument('--out',type=Path);ap.add_argument('--tex3ds',type=Path);ap.add_argument('--tex3ds-command');ap.add_argument('--base');a=ap.parse_args()
+ if a.action=='readmit':require(a.recipe.resolve()==RECIPE.resolve(),'Field prop readmission uses the release policy only');readmit(a.base);return
+ require(a.base is None,'Field prop baseline only applies to readmission')
  p=read(a.recipe);data,clips,proof=source(a.recipe);blob=encode(data,clips);f.unpack_container(blob,MAGIC,STRIDES,LIMIT,capability=2)
  if a.action=='candidate':
   require(a.out is not None,'Candidate output required');out=a.out.resolve();require(out.is_relative_to(ROOT/'build')and not out.exists(),'Fresh owned field prop candidate required');out.mkdir(parents=True);(out/'source.encprops').write_bytes(blob);(out/'source.json').write_bytes((json.dumps(dict(data=data,proof=proof),indent=2)+'\n').encode())

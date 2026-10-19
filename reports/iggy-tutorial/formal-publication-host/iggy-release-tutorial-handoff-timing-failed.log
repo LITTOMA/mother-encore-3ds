@@ -1,0 +1,2 @@
+Iggy 715: w.player_action_input(player.action().strings()[2],true,w.story_flag("bat"),false,false,accepted,error)&&accepted ()
+Iggy branch0: choices=1 text-visits=13 final-ticks=180

@@ -1,0 +1,4 @@
+Source commit: 7d2e552f86c9ef0c995c85c301e3a2f26a78f32a
+Run: https://github.com/LITTOMA/mother-encore-3ds/actions/runs/39288346484
+GPU configuration: background=1 certificates=1 texture_strips=1
+Scope: cross-build and extracted CIA package; emulator/hardware not run

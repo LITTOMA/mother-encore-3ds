@@ -1,0 +1,1 @@
+NativeSession check failed at 137: data.key_acquisitions().size()==4; Native session requires legacy singleton or complete frozen startup roster; party stays singleton

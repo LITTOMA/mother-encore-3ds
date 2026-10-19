@@ -132,6 +132,13 @@
       "flag_id": "mick_telepathy",
       "consumed_flag_id": "",
       "flag_policy": 1
+    },
+    {
+      "item_id": "BatOld",
+      "doses": 1,
+      "flag_id": "bat",
+      "consumed_flag_id": "",
+      "flag_policy": 1
     }
   ],
   "settings_choices": {
@@ -2479,6 +2486,7 @@
   "saved_flag": "saved",
   "earned_cash_flag": "earned_cash",
   "mutable_flags": [
+    "bat",
     "beat_dog_bridge",
     "carol_ask_key",
     "cem_roots_grown",
@@ -2524,6 +2532,11 @@
     "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
     "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
     "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml": "58f8f43036dbd833c92beb6e588881efeda5bce71c842907ad58612a781720ea",
+    "Data/Items/BatOld.yaml": "a342301d21e930ca575d0b6f89bc47fe6a52fcdc94fa498782006dd74149c1e6",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
     "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
     "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
     "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
@@ -2566,15 +2579,19 @@
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
     "content/house-presents.json": "332d984bc2332f2b43fa49d814a38a0c84ee4ed79a02eb46f80c4da38452831a",
     "content/mick-treats.json": "ddd908fbfd963a18cfb27978288bd7579e5cd9c8f2c34e7fa23722416bfc2931",
+    "content/graveyard-swing-programme.json": "897edba9abeb6fc7a63cc2e88d7616b63bc1b65b5dd9434904ecc09b6e78d0be",
+    "content/graveyard-tutorial.json": "89323a1283ca996b6476e3f40c76652ad4909d5d85553aed32a42aac14c777ff",
+    "tools/graveyard_tutorial.py": "63fd9db03a6c3ecb7188dddeff39b6acaf49aca3cbd4c4161fbaf71ea5b7335a",
+    "tools/graveyard_tutorial_programme.py": "8b076fa53722e00c7899665d92f62ebd8fc3b6eeadfa80b9649a338d5e938b86",
     "content/native-storage.json": "15c7144c455736ed3aebc6c96c16f9959a3362f93aec26e688236cc88548ab88",
     "content/field-rewards.json": "ae5f4844457bff31732cebd05aa0c03a4cb35ef9bc7f09e4d577898c580754c3",
     "content/diary-story.json": "b9e93337b086ad2b951a8a6861d8020a70bd848b7ebd415d140b98d07b317409",
     "content/mayor-area.json": "21bd23e8ff3c2523459376449f57cea29ef4266bb271adfbacbca36a9c6e556f",
     "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
     "tools/field_area.py": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
-    "content/podunk-story.json": "d5e6065c2aee0eb170421d228e82b20e28fabec8949c7734b119d93cd76bd91d",
+    "content/podunk-story.json": "704f40ca82a63d4f1fa1f96d34bfcd72e9830c305922a2db1cde9f18a7cc2e25",
     "content/podunk-field.json": "e4f414f58e9e04ac87f5fbb6fec4e8925ed90155b6df1baa0c258fa11ebe6d4c",
-    "romfs/world/podunk/podunk.encroom": "bcd9d8b8c4305552404d1840ec46d25b0fe11600fc079c80d01dc2c7fdaff365",
+    "romfs/world/podunk/podunk.encroom": "0d3f812e47214fbefe75818f25a96eb18fd48a150f3d6bff451c8f951c5a5ab2",
     "content/mayor-footsteps.json": "4da1ef634d7519c24c6e59f393340987e26ceedf4e66d71de2d1ba690728749f",
     "tools/field_footsteps.py": "4a2b83ef60c18a922de873a0654715142409fed547b74dac0713e626d655d74f"
   },

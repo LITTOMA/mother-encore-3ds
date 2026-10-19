@@ -134,7 +134,7 @@ int main(int argc,char**argv){
  std::vector<uint8_t>current_defaults,legacy_defaults;CHECK(encode_session_save(historical.defaults(),historical.compatibility(),current_defaults,error));CHECK(encode_session_save(legacy.defaults(),legacy.compatibility(),legacy_defaults,error));CHECK(current_defaults==legacy_defaults);
  CHECK(validate_native_session_snapshot(legacy,room.view(),house.view(),round.view(),items.view(),good,error));CHECK(!validate_native_session_snapshot(legacy,room.view(),house.view(),round.view(),items.view(),startup,error));
  CHECK(data.acquisitions().size()==3);const auto&policy=data.acquisitions()[0];CHECK(policy.max_count==1);
- CHECK(data.key_acquisitions().size()==4);const auto&key_policy=data.key_acquisitions()[0];CHECK(key_policy.item_id=="DogTreats"&&key_policy.flag_id=="got_dog_treats"&&key_policy.consumed_flag_id=="gave_treats"&&key_policy.doses==1);
+ CHECK(data.key_acquisitions().size()==5);const auto&key_policy=data.key_acquisitions()[0];CHECK(key_policy.item_id=="DogTreats"&&key_policy.flag_id=="got_dog_treats"&&key_policy.consumed_flag_id=="gave_treats"&&key_policy.doses==1);
  auto acquired=good;uint32_t uid=UINT32_MAX;auto used=[&](uint32_t value){for(const auto&c:acquired.characters)for(const auto&item:c.inventory)if(item.uid==value)return true;for(const auto&item:acquired.key_items)if(item.uid==value)return true;return false;};while(used(uid))--uid;
  {auto held=good;uint32_t key_uid=uid-1;while(used(key_uid))--key_uid;held.key_items.push_back({key_policy.item_id,false,key_policy.doses,key_uid});for(auto&f:held.flags)if(f.id==key_policy.flag_id)f.value=true;CHECK(validate(held));
   {auto s=held;s.key_items.pop_back();CHECK(!validate(s));}{auto s=held;for(auto&f:s.flags)if(f.id==key_policy.flag_id)f.value=false;CHECK(!validate(s));}
@@ -146,6 +146,12 @@ int main(int argc,char**argv){
    held.position_x=88;held.position_y=977;CHECK(validate(held));CHECK(encode_session_save(held,data.compatibility(),encoded,error));CHECK(decode_session_save(encoded.data(),encoded.size(),data.compatibility(),restored,error));CHECK(validate(restored)&&restored.key_items.back().uid==uid);
    for(const auto&f:restored.flags)if(f.id==house.view().string(house.view().openable_door(2).flag))CHECK(f.value);
   held.key_items.pop_back();CHECK(!validate(held));}
+ {const auto found=std::find_if(data.key_acquisitions().begin(),data.key_acquisitions().end(),[](const auto&k){return k.item_id=="BatOld";});CHECK(found!=data.key_acquisitions().end());const auto&bat=*found;
+  CHECK(bat.flag_id=="bat"&&bat.consumed_flag_id.empty()&&bat.doses==1&&bat.flag_policy==1);
+  auto held=good;held.key_items.push_back({bat.item_id,false,bat.doses,uid});CHECK(!validate(held));for(auto&f:held.flags)if(f.id==bat.flag_id)f.value=true;CHECK(validate(held));
+  CHECK(encode_session_save(held,data.compatibility(),encoded,error));CHECK(decode_session_save(encoded.data(),encoded.size(),data.compatibility(),restored,error));CHECK(validate(restored)&&restored.key_items.back().item_id==bat.item_id&&restored.key_items.back().uid==uid);
+  {auto bad=held;bad.key_items.pop_back();CHECK(!validate(bad));}{auto bad=held;bad.key_items.back().doses++;CHECK(!validate(bad));}{auto bad=held;auto duplicate=bad.key_items.back();duplicate.uid--;bad.key_items.push_back(duplicate);CHECK(!validate(bad));}
+  CHECK(!validate_native_session_snapshot(baseline_v10,room.view(),house.view(),round.view(),items.view(),held,error));}
  acquired.characters[0].inventory.push_back({policy.item_id,false,policy.doses,uid});for(auto&f:acquired.flags)if(f.id==policy.flag_id)f.value=true;CHECK(validate(acquired));
  CHECK(encode_session_save(acquired,data.compatibility(),encoded,error));CHECK(decode_session_save(encoded.data(),encoded.size(),data.compatibility(),restored,error));CHECK(validate(restored));CHECK(restored.characters[0].inventory.back().uid==uid);
  CHECK(!validate_native_session_snapshot(v3,room.view(),house.view(),round.view(),items.view(),acquired,error));

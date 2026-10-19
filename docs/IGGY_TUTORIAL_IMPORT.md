@@ -60,3 +60,11 @@ World在控制ATTACK期间保留位置、速度和步态快照，跳过MOVE/碰�
 原版set_direction/blend_position/_turn_to及PartyObject.blend_animation方法保持原字节。两次官方Godot各14组/2058个观察的稳定投影与TSV逐字相同；共享核心GCC9 ASan/UBSan（泄漏检查开启）6232项完全对齐。World626项覆盖实际移动、B逻辑输入、保留速度、延迟结束、暂停/重复按键、顺序事件、旧cap1拒绝、帧曲线不匹配、队列边界及持久换场；攻击中仍进入原Lamp区域剧情，完成原13段演出并请求战斗，音频请求仍为5次。旧静态树42461项、World原Lamp路线、持久拥有者42项、旧换场442项通过；相关Python16项通过，分配1179=815+364；Windows仅CMake配置。首次方向夹具的重复方法解析失败及55秒超时日志已无损归档，没有当成原版行为或通过结果。证据见player-motion-reference-2/-3和player-action-world-host。
 
 该组件尚未接入正式HID/START/A归属、GPU和玩家独立音效，树根接触/Break/取铲仍待完成；实际游戏仍无完整教学或新模拟器验收。UI菜单/A应按原MOVE控制状态分别门控，不能为方便接线而把所有强制剧情pause或Area事件禁止在攻击中。b0d550d的完整运行39266888939已成功：GCC普通239/ASan+UBSan224、Clang普通224/ASan+UBSan224及真实3DSX/CIA；原始日志见player-tree-b0-full-verification。这是本条World改动之前的来源，不能替代其完整CI或模拟器检查。
+
+## Persistent player sound backend (2026-10-20)
+
+ENCSWA01 capability 2 adds the actual Ninten Bat source SHA, SFX bus, gain, pitch and process pause policy; capability 1 remains readable. Defaults were reviewed against official Godot 3.6.2 AudioStreamPlayer (3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8). The source sound already exists in the opening bank; no PCM conversion or asset duplication is required.
+
+The persistent player voice reserves its own pooled channel and bounded buffers before input. Ordered World events start, stop or resume that voice, retaining failed events for retry and retaining identity across scene handoff. Ordinary repeated swings restart this voice. Pausing it and changing its SFX volume preserve BGM and run queues. Existing audio trace remains TRACE 529 71a30145b163903b.
+
+GCC9 ASan/UBSan with leak checking: data 979, new NDSP double 306, legacy regression 1096, old NDSP double 1445, run/region 983, World 626 checks; Python 4 tests passed. CMake configuration and exact Python partition 1183=819+364 passed (not a Windows build/test claim). Raw logs, source hashes and drivers are in reports/iggy-tutorial/player-audio-host. This is backend preparation: formal content, HID, GPU, temporal root contact and ordinary-input emulator acceptance are still pending. No audible output or hardware equivalence is claimed.

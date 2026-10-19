@@ -52,7 +52,7 @@ int main(int argc,char** argv){
     check(!player.prepare(12345,error)&&!player.prepared(12345),"unknown preparation identity rejected");
     check(!player.prepared(21)&&player.prepare(21,error)&&player.prepared(21),"full PCM admission is deferred until requested");
     check(player.prepare(21,error)&&player.submitted_voices()==0&&queues[0].empty(),"cached preparation has no playback side effects");
-    check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(9),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
+    check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(10),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
     upstream::RoomData room;check(room.load_file(argv[3],error),error.c_str());
     std::vector<upstream::OpeningAudioRequest> requests={{upstream::AudioRequestKind::FadeMusic,upstream::kRoomNoIndex,2,0},{upstream::AudioRequestKind::PlayMusic,20,0,2}};
     check(player.consume(room.view(),requests,error),error.c_str());check(player.consumed_requests()==2&&player.submitted_voices()==1&&queues[0].size()==3,"typed requests consumed and music queued");

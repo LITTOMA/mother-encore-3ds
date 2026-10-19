@@ -3,16 +3,18 @@
 #include <string_view>
 namespace encore::upstream {
 struct SwingIdleDirection {uint32_t clip=0;Vec2 direction{};uint32_t frame=0,flags=0;};
+struct SwingAudioBinding {std::array<uint8_t,32>source_sha256{};float gain_db=0,pitch=0;uint32_t bus=0,pause_mode=0;};
 class FieldSwingActionData {
 public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
  bool bind(const FieldSwingData&,std::string&)const;
  bool valid()const{return valid_;}const std::array<uint32_t,8>&policy()const{return policy_;}
+ uint32_t capability()const{return capability_;}const SwingAudioBinding&audio()const{return audio_;}
  const std::array<std::string,4>&strings()const{return strings_;}
  const std::vector<SwingIdleDirection>&directions()const{return directions_;}
  const SwingIdleDirection*direction(uint32_t clip)const;
 private:
- bool valid_=false;std::array<uint32_t,8>policy_{};std::array<std::string,4>strings_;
+ bool valid_=false;uint32_t capability_=0;SwingAudioBinding audio_;std::array<uint32_t,8>policy_{};std::array<std::string,4>strings_;
  std::vector<SwingIdleDirection>directions_;
 };
 struct SwingActionContext {

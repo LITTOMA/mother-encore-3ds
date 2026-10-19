@@ -17,18 +17,19 @@ const SwingIdleDirection*FieldSwingActionData::direction(uint32_t clip)const{for
 bool FieldSwingActionData::load_file(const char*p,std::string&e){std::vector<uint8_t>b;return encore::read_file(p,b,32*1024,e)&&load(b.data(),b.size(),e);}
 bool FieldSwingActionData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<112||n>32*1024)return fail(e,"Swing action size rejected");
- if(std::memcmp(p,"ENCSWA01",8)||word(p+8)!=1||word(p+12)!=n||word(p+20)!=1||word(p+24)||word(p+28)||word(p+52)!=3||word(p+56)||word(p+60))return fail(e,"Swing action schema/capability/reserved rejected");
+ const auto capability=word(p+20);const unsigned sections=capability==2?4:3;
+ if(std::memcmp(p,"ENCSWA01",8)||word(p+8)!=1||word(p+12)!=n||(capability!=1&&capability!=2)||word(p+24)||word(p+28)||word(p+52)!=sections||word(p+56)||word(p+60)||n<64+sections*16)return fail(e,"Swing action schema/capability/reserved rejected");
  const char*pin="7d9246600fffe518408f5830d4848635019005a3";auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};
  for(unsigned i=0;i<20;++i)if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail(e,"Swing action source pin rejected");
  if(encore::crc32(p+32,n-32)!=word(p+16))return fail(e,"Swing action checksum rejected");
- const uint32_t strides[]={64,24,1},limits[]={1,8,256};uint32_t offsets[3],counts[3];size_t end=112;
- for(unsigned i=0;i<3;++i){const auto*d=p+64+i*16;offsets[i]=word(d+4);counts[i]=word(d+8);
+ const uint32_t strides[]={64,24,1,48},limits[]={1,8,256,1};uint32_t offsets[4]{},counts[4]{};size_t end=64+sections*16;
+ for(unsigned i=0;i<sections;++i){const auto*d=p+64+i*16;offsets[i]=word(d+4);counts[i]=word(d+8);
   if(word(d)!=i+1||word(d+12)!=strides[i]||!counts[i]||counts[i]>limits[i]||offsets[i]%4||offsets[i]<end||offsets[i]>n||counts[i]>(n-offsets[i])/strides[i])return fail(e,"Swing action directory/span rejected");
   for(size_t j=end;j<offsets[i];++j)if(p[j])return fail(e,"Swing action padding rejected");
   end=offsets[i]+counts[i]*strides[i];
  }
  if(end!=n||counts[1]!=8)return fail(e,"Swing action trailing bytes/directions rejected");
- FieldSwingActionData v;const auto*b=p+offsets[0];for(unsigned i=0;i<8;++i)v.policy_[i]=word(b+i*4);const auto&q=v.policy_;
+ FieldSwingActionData v;v.capability_=capability;const auto*b=p+offsets[0];for(unsigned i=0;i<8;++i)v.policy_[i]=word(b+i*4);const auto&q=v.policy_;
  if(q[0]!=1||!q[1]||q[1]>63||q[2]>31||q[3]>31||q[4]||q[5]!=2||q[6]!=1||!q[7]||q[7]>65535)return fail(e,"Swing action execution policy rejected");
  uint32_t string_end=0;for(unsigned i=0;i<4;++i){const auto first=word(b+32+i*8),size=word(b+36+i*8);if(first!=string_end||!size||size>64||first>counts[2]||size>counts[2]-first)return fail(e,"Swing action string span rejected");v.strings_[i].assign(reinterpret_cast<const char*>(p+offsets[2]+first),size);if(!token(v.strings_[i]))return fail(e,"Swing action role identity rejected");string_end+=size;}
  if(string_end!=counts[2]||v.strings_[0]==v.strings_[1])return fail(e,"Swing action duplicate/unowned identities rejected");
@@ -36,6 +37,9 @@ bool FieldSwingActionData::load(const uint8_t*p,size_t n,std::string&e){
  for(uint32_t i=0;i<counts[1];++i){const auto*r=p+offsets[1]+i*24;SwingIdleDirection row{word(r),{real(r+4),real(r+8)},word(r+12),word(r+16)};
   if(!row.clip||row.clip>65535||!ids.insert(row.clip).second||!std::isfinite(row.direction.x)||!std::isfinite(row.direction.y)||std::abs(row.direction.x)>1||std::abs(row.direction.y)>1||(row.direction.x==0&&row.direction.y==0)||!positions.insert({row.direction.x,row.direction.y}).second||row.frame>=q[7]||row.flags>3||word(r+20))return fail(e,"Swing action direction/pose rejected");
   v.directions_.push_back(row);
+ }
+ if(capability==2){const auto*r=p+offsets[3];std::copy(r,r+32,v.audio_.source_sha256.begin());v.audio_.gain_db=real(r+32);v.audio_.pitch=real(r+36);v.audio_.bus=word(r+40);v.audio_.pause_mode=word(r+44);
+  if(std::all_of(r,r+32,[](uint8_t value){return value==0;})||!std::isfinite(v.audio_.gain_db)||v.audio_.gain_db<-120||v.audio_.gain_db>24||!std::isfinite(v.audio_.pitch)||v.audio_.pitch<=0||v.audio_.pitch>4||v.audio_.bus!=1||v.audio_.pause_mode!=2)return fail(e,"Swing action audio identity/policy rejected");
  }
  v.valid_=true;*this=std::move(v);e.clear();return true;
 }

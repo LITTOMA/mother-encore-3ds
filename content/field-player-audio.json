@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "kind": "encore.player-audio.reviewed-bindings",
+  "action_recipe": "content/field-swing-action.json",
+  "source_node": "AudioStreamPlayer",
+  "bus": "SFX",
+  "bus_kind": 1,
+  "pause_mode": 2,
+  "gain_db": 0,
+  "pitch": 1,
+  "autoplay": false,
+  "output": "world/player/swing.encaction"
+}

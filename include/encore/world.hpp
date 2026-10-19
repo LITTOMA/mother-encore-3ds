@@ -115,6 +115,7 @@ public:
     bool bind_player_action(const FieldSwingResources&,std::string&);
     bool player_action_input(std::string_view,bool,bool skill_available,bool incapacitated,bool entering_door,bool&accepted,std::string&);
     const FieldPlayerTree& player_action()const{static const FieldPlayerTree empty;return persistent_player_?persistent_player_.state_->action_:empty;}
+    const FieldSwingResources* player_action_resources()const{return persistent_player_?persistent_player_.state_->action_resources_:nullptr;}
     std::vector<PlayerActionEvent> take_player_action_events();
     bool unpause_from_house();
     bool resize_field_viewport(Vec2 viewport);

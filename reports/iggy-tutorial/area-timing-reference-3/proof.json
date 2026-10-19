@@ -1,0 +1,49 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "executable_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Data/FieldSkills/swing.yaml": "e3e770194ec22e76fe75a271f2cda85371cbb3c50277275067fd68d1539bf0aa",
+    "Scripts/misc/NintenBatSwing.gd": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Graphics/Character Sprites/Ninten/special.png": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9",
+    "Graphics/Character Sprites/Ninten/bat_swing.png": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+    "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
+    "Nodes/Reusables/Overlap/Hitbox.tscn": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "observations": 99,
+  "physics_samples": 41,
+  "events": {
+    "9": 1,
+    "13": 2,
+    "17": 1,
+    "24": 2,
+    "29": 1,
+    "32": 2,
+    "37": 1
+  },
+  "scope": "Actual Godot Area2D source-layer capsule and rectangle, transient/persistent enable, move out/back, source/target disable while inside and reenable. No full original scene, root quest or emulator claim.",
+  "reports_sha256": {
+    "driver.py": "958d898c8e5018ded0ffd48aadd363dc124d3e7aa85cfd883db7fa4bf8771524",
+    "godot.log": "775ddbb01e9860679e5bed51fc4f12503f2050b917e8fab5490df51e128f16a7",
+    "input.json": "4d8cab1c1c4bfa8b83015b462085cb87592dd91f4a0544d9c0e281f3ee02d719",
+    "probe.gd": "9a404bac48693032d535d1f412ca43e426a9e3c6ce65d61068675e9b70fe29ba",
+    "probe_node.gd": "189cca8458eb8984684cc82ae4f63c68ea1a29f4dbe30da3d136675ebb5ab9a8",
+    "project.godot": "d5185023250dca454ef2d3401073599b0eed7768a9d9be3055551db4e52eae5f",
+    "reference.tsv": "1801b83b879323d7143be6ab1bbd5d0123dfabe6163cf816e28883dcd1672ff2",
+    "result.json": "7c4c14cdcba5cf63898248dd0efcd106774b5199a6d58d9131b0075889ac6261"
+  }
+}

@@ -1,0 +1,906 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "tick": 0,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 1
+    },
+    {
+      "tick": 0,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 2
+    },
+    {
+      "tick": 1,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 2
+    },
+    {
+      "tick": 1,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 3
+    },
+    {
+      "tick": 2,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 3
+    },
+    {
+      "tick": 2,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 4
+    },
+    {
+      "tick": 3,
+      "phase": "enable-idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 4
+    },
+    {
+      "tick": 3,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 4
+    },
+    {
+      "tick": 3,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 5
+    },
+    {
+      "tick": 4,
+      "phase": "disable-idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 5
+    },
+    {
+      "tick": 4,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 5
+    },
+    {
+      "tick": 4,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 6
+    },
+    {
+      "tick": 5,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 6
+    },
+    {
+      "tick": 5,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 7
+    },
+    {
+      "tick": 6,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 7
+    },
+    {
+      "tick": 6,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 8
+    },
+    {
+      "tick": 7,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 8
+    },
+    {
+      "tick": 7,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 9
+    },
+    {
+      "tick": 8,
+      "phase": "enable-idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 9
+    },
+    {
+      "tick": 8,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 9
+    },
+    {
+      "tick": 8,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 10
+    },
+    {
+      "tick": 9,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 10
+    },
+    {
+      "tick": 9,
+      "phase": "entered",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 11
+    },
+    {
+      "tick": 9,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 11
+    },
+    {
+      "tick": 10,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 11
+    },
+    {
+      "tick": 10,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 12
+    },
+    {
+      "tick": 11,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 12
+    },
+    {
+      "tick": 11,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.7413,
+      "physics": 13
+    },
+    {
+      "tick": 12,
+      "phase": "move-idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.45337,
+      "attack_y": -214.741302,
+      "physics": 13
+    },
+    {
+      "tick": 12,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.45337,
+      "attack_y": -214.741302,
+      "physics": 13
+    },
+    {
+      "tick": 12,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.45337,
+      "attack_y": -214.741302,
+      "physics": 14
+    },
+    {
+      "tick": 13,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.45337,
+      "attack_y": -214.741302,
+      "physics": 14
+    },
+    {
+      "tick": 13,
+      "phase": "exited",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.45337,
+      "attack_y": -214.741302,
+      "physics": 15
+    },
+    {
+      "tick": 13,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.45337,
+      "attack_y": -214.741302,
+      "physics": 15
+    },
+    {
+      "tick": 14,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.45337,
+      "attack_y": -214.741302,
+      "physics": 15
+    },
+    {
+      "tick": 14,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.45337,
+      "attack_y": -214.741302,
+      "physics": 16
+    },
+    {
+      "tick": 15,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.45337,
+      "attack_y": -214.741302,
+      "physics": 16
+    },
+    {
+      "tick": 15,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.45337,
+      "attack_y": -214.741302,
+      "physics": 17
+    },
+    {
+      "tick": 16,
+      "phase": "return-idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 17
+    },
+    {
+      "tick": 16,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 17
+    },
+    {
+      "tick": 16,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 18
+    },
+    {
+      "tick": 17,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 18
+    },
+    {
+      "tick": 17,
+      "phase": "entered",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 19
+    },
+    {
+      "tick": 17,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 19
+    },
+    {
+      "tick": 18,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 19
+    },
+    {
+      "tick": 18,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 20
+    },
+    {
+      "tick": 19,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 20
+    },
+    {
+      "tick": 19,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 21
+    },
+    {
+      "tick": 20,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 21
+    },
+    {
+      "tick": 20,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 22
+    },
+    {
+      "tick": 21,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 22
+    },
+    {
+      "tick": 21,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 23
+    },
+    {
+      "tick": 22,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 23
+    },
+    {
+      "tick": 22,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 24
+    },
+    {
+      "tick": 23,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 24
+    },
+    {
+      "tick": 23,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 25
+    },
+    {
+      "tick": 24,
+      "phase": "disable-inside-idle",
+      "disabled": true,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 25
+    },
+    {
+      "tick": 24,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 25
+    },
+    {
+      "tick": 24,
+      "phase": "exited",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 26
+    },
+    {
+      "tick": 24,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 26
+    },
+    {
+      "tick": 25,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 26
+    },
+    {
+      "tick": 25,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 27
+    },
+    {
+      "tick": 26,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 27
+    },
+    {
+      "tick": 26,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 28
+    },
+    {
+      "tick": 27,
+      "phase": "idle",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 28
+    },
+    {
+      "tick": 27,
+      "phase": "physics",
+      "disabled": true,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 29
+    },
+    {
+      "tick": 28,
+      "phase": "reenable-idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 29
+    },
+    {
+      "tick": 28,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 29
+    },
+    {
+      "tick": 28,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 30
+    },
+    {
+      "tick": 29,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 30
+    },
+    {
+      "tick": 29,
+      "phase": "entered",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 31
+    },
+    {
+      "tick": 29,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 31
+    },
+    {
+      "tick": 30,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 31
+    },
+    {
+      "tick": 30,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 32
+    },
+    {
+      "tick": 31,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 32
+    },
+    {
+      "tick": 31,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 33
+    },
+    {
+      "tick": 32,
+      "phase": "disable-target-idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 33
+    },
+    {
+      "tick": 32,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 33
+    },
+    {
+      "tick": 32,
+      "phase": "exited",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 34
+    },
+    {
+      "tick": 32,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 34
+    },
+    {
+      "tick": 33,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 34
+    },
+    {
+      "tick": 33,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 35
+    },
+    {
+      "tick": 34,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 35
+    },
+    {
+      "tick": 34,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 36
+    },
+    {
+      "tick": 35,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 36
+    },
+    {
+      "tick": 35,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 37
+    },
+    {
+      "tick": 36,
+      "phase": "reenable-target-idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 37
+    },
+    {
+      "tick": 36,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 37
+    },
+    {
+      "tick": 36,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 38
+    },
+    {
+      "tick": 37,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 0,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 38
+    },
+    {
+      "tick": 37,
+      "phase": "entered",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 39
+    },
+    {
+      "tick": 37,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 39
+    },
+    {
+      "tick": 38,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 39
+    },
+    {
+      "tick": 38,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 40
+    },
+    {
+      "tick": 39,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 40
+    },
+    {
+      "tick": 39,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 41
+    },
+    {
+      "tick": 40,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 41
+    },
+    {
+      "tick": 40,
+      "phase": "physics",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 42
+    },
+    {
+      "tick": 41,
+      "phase": "idle",
+      "disabled": false,
+      "overlaps": 1,
+      "attack_x": 0.453378,
+      "attack_y": -14.741302,
+      "physics": 42
+    }
+  ]
+}

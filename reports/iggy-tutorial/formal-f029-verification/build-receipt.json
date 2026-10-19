@@ -1,0 +1,23 @@
+{
+  "source_commit": "f0296baf53d03285975c0fe9aa1639943a831911",
+  "staged_files": 374,
+  "artifacts": {
+    "encore-native.elf": {
+      "bytes": 71660892,
+      "sha256": "ea6ca05f557cc87b035407726cb2b8bcf051d894f91303fa402d5af02db77107"
+    },
+    "encore-native.3dsx": {
+      "bytes": 264875568,
+      "sha256": "9493fd99b80fd302e77a563395305b13fb75500ab364cedc3c12a60d885694d5"
+    },
+    "encore-native.cia": {
+      "bytes": 266212288,
+      "sha256": "12cb001f4f2f67f14106be76965ce64d2ed5643cc8ec637c038c5310871f7614"
+    },
+    "encore-native.smdh": {
+      "bytes": 14016,
+      "sha256": "ece8a6bb99d396700f25b669631498ef9c28f13a91b249be77e3e085eefd7bcf"
+    }
+  },
+  "scope": "Real ARM build and CIA extraction; emulator and hardware not run"
+}

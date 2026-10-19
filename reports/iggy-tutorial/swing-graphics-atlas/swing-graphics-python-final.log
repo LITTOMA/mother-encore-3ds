@@ -1,0 +1,11 @@
+test_actual_texture_conversion_receipt_matches_current_pixels (tests.test_field_swing_graphics.SwingGraphics.test_actual_texture_conversion_receipt_matches_current_pixels) ... ok
+test_every_packed_frame_has_exact_original_pixels (tests.test_field_swing_graphics.SwingGraphics.test_every_packed_frame_has_exact_original_pixels) ... ok
+test_permission_and_candidate_boundaries (tests.test_field_swing_graphics.SwingGraphics.test_permission_and_candidate_boundaries) ... ok
+test_repeat_conversion_is_byte_identical (tests.test_field_swing_graphics.SwingGraphics.test_repeat_conversion_is_byte_identical) ... ok
+test_source_sprite_origins_and_order_are_data (tests.test_field_swing_graphics.SwingGraphics.test_source_sprite_origins_and_order_are_data) ... ok
+test_unknown_recipe_and_wrong_source_bindings_reject (tests.test_field_swing_graphics.SwingGraphics.test_unknown_recipe_and_wrong_source_bindings_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.964s
+
+OK

@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "kind": "encore.swing-graphics.reviewed-atlas",
+  "source_recipe": "content/field-swing.json",
+  "atlas_columns": 5,
+  "layers": [
+    {
+      "role": 1,
+      "node": "SpecialAnimations",
+      "source_key": "texture",
+      "output": "ninten.t3x"
+    },
+    {
+      "role": 2,
+      "node": "SpecialAnimations/NintenBat",
+      "source_key": "bat_texture",
+      "output": "bat.t3x"
+    }
+  ],
+  "sources": {
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "scope": "Pixel-preserving 40-frame source swing atlas candidate; no rendering, game integration, emulator or hardware claim."
+}

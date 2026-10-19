@@ -1,0 +1,26 @@
+{
+  "scope": "Actual RGBA8/uncompressed Tex3DS file sizes; not a measured GPU/heap/emulator/hardware result",
+  "textures": [
+    {
+      "role": 1,
+      "source": "Graphics/Character Sprites/Ninten/special.png",
+      "full_bytes": 4194325,
+      "full_sha256": "d776a7f066996394d15a8b0cd7b14a2840f97311ad5d679a16317329fca8ecb1",
+      "packed_bytes": 1048597,
+      "packed_sha256": "2e75f362c0ed19cf764ec8bdd9e00aafa01d85d09eb726e930414bd64a113cf3"
+    },
+    {
+      "role": 2,
+      "source": "Graphics/Character Sprites/Ninten/bat_swing.png",
+      "full_bytes": 4194325,
+      "full_sha256": "28ae80e41c28153a6ba4dab2b924bdbf857861e35d42e6d7da81704af96c88fc",
+      "packed_bytes": 1048597,
+      "packed_sha256": "80f59fa4b484c1647373b048ee385b73af59e5ee295980177eb2f8d9ae28cd03"
+    }
+  ],
+  "full_bytes": 8388650,
+  "packed_bytes": 2097194,
+  "removed_full_baseline_bytes": 8388650,
+  "source_pixels": "All80usedsourceframecropsbit-identicalincludingtransparentpixels; noresampling/trimming",
+  "remaining": "Independent binary graphics resource and real3DS drawing consumer; original shader/material and live memory validation"
+}

@@ -257,8 +257,9 @@
     "shovel-programme-collection.log": "e426316ea63b9d43bd2a666dde0b51709d92b55bd220d5b5fe7f2cad2004d19f",
     "shovel-programme-compile-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "shovel-programme-compile-initial.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "shovel-programme-host-final.actual.log": "7b04ddc2adb0088bf30ea7c2b6025b367e7ba348a959680a0c948052eef45524",
     "shovel-programme-host-final.log": "73298f894cbb005e495fb95f7e1ede862bf225cab04822aaa35d42b9b6bcfdfb",
-    "shovel-programme-host-final.py": "7b04ddc2adb0088bf30ea7c2b6025b367e7ba348a959680a0c948052eef45524",
+    "shovel-programme-host-final.py": "7396c5bc15805eb7562aa70a3820d46868ddd1bbd8e07c053a08c0120bd5d702",
     "shovel-programme-host-initial.log": "73298f894cbb005e495fb95f7e1ede862bf225cab04822aaa35d42b9b6bcfdfb",
     "shovel-programme-host.py": "4e94b7d345aab6dfd5e3f3d2948f73d12c5296a678a766c26a3299f06358b134",
     "shovel-programme-prepare-1.log": "933b87a4e8232299bf4e9387e51808a6a5927b7b7f1af1a74c21f170683737fa",
@@ -268,5 +269,11 @@
     "shovel-programme-result-initial.log": "dcf51813f811226f2e100d1133b2265bca8917b921d50be4fdf4c7145db165ea",
     "shovel-programme-source-list.log": "41e6ab9078ba7aff324838af7874b68bdc5f3e187f616cb40e0a1110220d5afa",
     "shovel-review-extract-1.log": "51172b4f74955925de6e6d52208d2e746172be15b9ff2a0cad73aed06eb07142"
+  },
+  "execution_driver": {
+    "actual_file": "shovel-programme-host-final.actual.log",
+    "actual_sha256": "7b04ddc2adb0088bf30ea7c2b6025b367e7ba348a959680a0c948052eef45524",
+    "readable_script": "shovel-programme-host-final.py",
+    "note": "Readable copy removes only extra terminal blank line introduced by PowerShell Set-Content; original executed bytes retained verbatim, no code/test/data change"
   }
 }

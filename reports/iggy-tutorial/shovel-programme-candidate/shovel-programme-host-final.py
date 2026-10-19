@@ -7,4 +7,3 @@ with(r/'build/full-port/shovel-programme-compile-1.log').open('wb')as f:subproce
 with(r/'build/full-port/shovel-programme-result-1.log').open('wb')as f:p=subprocess.run(['build/full-port/shovel-programme-tests','build/full-port/shovel-programme-fixture-2/source.encroom','build/full-port/field-objects-data-fixture/source.encobjects'],cwd=r,stdout=f,stderr=subprocess.STDOUT,env=dict(os.environ,ASAN_OPTIONS='detect_leaks=1',UBSAN_OPTIONS='halt_on_error=1:print_stacktrace=1'))
 print('Actual full10label source candidate GCC9 ASan/UBSan:',p.returncode,flush=True)
 if p.returncode:raise SystemExit(p.returncode)
-

@@ -1,0 +1,23 @@
+{
+  "scope": "Source audit/asset preparation only; proposed migration design, no object opcode/lifecycle/frontend claimed. Exact admitted converter tested and genuine4117-byte texture generated. No thirdparty tool binary distributed.",
+  "reports_sha256": {
+    "area-preparation-cleanup.json": "bd337808affdf935481de4dee897c02f37d087833557523572ed40c63ce0c46f",
+    "fetch-pinned-tex3ds.py": "c4792ac005270b33cf340d06c9e253b995106a19705f0dc909147ebf171d8d7d",
+    "official-tool-proof.json": "ca58d69e8b7d6dd25b4acd94763110245e4a7793d892c804824927bd45d82237",
+    "pinned-tex3ds-fetch.log": "07ab7bd2b2170f3588ed7b30ffdf7f24b4143e69ff93087753e26903f812ed54",
+    "pinned-tex3ds-version.log": "ec503941ce9c1d51e6eb4d544f793b1c7c2d57121bde54bc81fcd1b18c31eb59",
+    "pinned-tex3ds-wrapper-syntax-failed.log": "d206bb3fbfa36330c78f9a95a8d1aa95ac078c351147f95e093e0c93fb6b28b8",
+    "pinned-tex3ds-wrapper-version.log": "ec503941ce9c1d51e6eb4d544f793b1c7c2d57121bde54bc81fcd1b18c31eb59",
+    "prepare-shovel-visual-candidate.py": "1fcc4da68538858a8935c020b612e82e597efacf17f91a4de9bfc09af242ac0e",
+    "root-object-implementation-plan.json": "ee6db16abf6437c5f2b437ba0cacdbffeffe5bc8304231821bc482900a77d710",
+    "run_tex3ds_wsl.py": "fab5557a5c7ef2aa121b8dce2271b715440f2951ebe08f6b4062e34a48087201",
+    "shovel-next-source-audit-2.log": "80764f55758ca6cd97bca36322504847417dbb5ed66e9449141c30768bd1157e",
+    "shovel-next-source-audit.json": "f7effae4744178a9c2ebb5ec6bbc0927ffb6e042f101f13a89449dff24984bed",
+    "shovel-next-source-audit.py": "f5a0eb2f0565d5c0b9660cdca04a454a6df3bf3cbd6db3cb5072e5cc94ffbec4",
+    "shovel-render-inspection.log": "d2dfe5b764f15c01298e4c2512feea1ebba5b4996bf800fc3b6553ba4c8ce292",
+    "shovel-visual-candidate-1.log": "a01009ba6f2edab042453858181934cb15d21cd8b9b7931e06ccb7b1cb98ee3c",
+    "visual-atlas-00.png": "0815c0dfdd0a0d780fa1f1e03f5382fd12c65f672ed34003ab32e80c3e353f02",
+    "visual-conversion.log": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "visual-source.json": "3cf7bfc71b01f578a602e93539e84efbeab74b5c6c21dc553e15527e072266dc"
+  }
+}

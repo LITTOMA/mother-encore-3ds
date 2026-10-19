@@ -1,0 +1,4 @@
+  File "D:\GameDev\3DS\mother-encore-3ds\build\tooling\run_tex3ds_wsl.py", line 10
+    raise SystemExit(subprocess.run(['wsl','-d','Ubuntu-20.04','--cd',translated(str(root)),'--',translated(str(tool)),*[translated(v)for v in sys.argv[1:]]).returncode)
+                                                                                                                                                            ^
+SyntaxError: closing parenthesis ')' does not match opening parenthesis '['

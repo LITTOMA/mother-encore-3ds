@@ -1,0 +1,39 @@
+{
+  "status": "Design for next implementation only; no new runtime resource, opcode, lifecycle or frontend claim",
+  "source_audit": "build/full-port/shovel-next-source-audit.json, shovel-render-inspection.log, original gravedigger_getshovel.yaml and existing FieldProps compiled source",
+  "source_rules": [
+    "getshovel has10labels and5text rows perlocale. Phrase0 sets got_shovel; phrase3 queues Objects/Items/Item deletion; phrase11 sets returned_shovel and erases Iggy. Do not invent a Shovel grant in this programme.",
+    "Only Ninten is restored at end: source eraseactors removes Iggy from the actor set. Do not emit RestoreActor for the erased Iggy.",
+    "DroppedItem ready tests got_shovel only at scene entry. A live flag change at phrase0 must NOT hide it before explicit deletion at phrase3.",
+    "Shovel image20x20 at1432,4664. Sparkles7x7,offset4,-4,40frames (5unique),12fps looping. Serialized22 is overwritten by int(rand_range(0,47)), then AnimatedSprite clamps to39. Child ready still runs before parent ready queues deletion on reentry; preserve actual RNG call and tree order.",
+    "Root12 is source Dead Bush21: node1432,4712,not4680. Read exact sprite/hit/body centers from audit. Callback is map boundary43 named Cutscenes/Cutscene Area7, not numeric7. Resolve programme by checked path, never bake root/boundary/programme IDs into C++.",
+    "Dead Bush._ready checks appear flag only. Root12 has no appear flag; do not hide it on reentry merely because got_shovel is true. Break .75sec queues deletion and skips callback when finish flag already true. Existing source lifecycle component handles this; verify before changing.",
+    "Source root AudioStreamPlayer has only stream and bus SFX; neutral engine defaults otherwise. Separate original nodes can sound simultaneously; current single Effect lane would replace a second root sound. Use source-admitted metadata and per-prop/scene voice owners sharing PCM if wiring this feature."
+  ],
+  "available": {
+    "area_contacts": "c95 FieldAreaContacts:776 ASAN checks,99actualengine observations/41physics samples. Not yet bound to FieldScene. begin publishes prior physics sample using currently enabled shapes; end samples after movement. Never sample from idle callbacks or only Walking state.",
+    "geometry": "8766 actual Godot overlap queries already agree; no need another geometry corpus. Bat direction angles63.5/116.5 etc already source-correct.",
+    "visual_candidate": "build/full-port/shovel-visual-candidate-1: real4117-byte T3X from actual tool,32x32 atlas,6rects,40sparkle indices, original RGBA verified. Candidate only, no shipped resource. Existing Podunk atlas has NO Shovel image.",
+    "converter": "build/tooling/pinned-tex3ds/tex3ds,5,418,504bytes,SHA58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e. Actual version2.3.0 runs in WSL Ubuntu20.04. Windows generator command: py -3.11 build/tooling/run_tex3ds_wsl.py; pass actual ELF as --tex3ds for provenance. Exact previously admitted tool, no SDK install.215133357B pinned layer verified and removed."
+  },
+  "proposed_versions_check_before_implementation": {
+    "field_objects": "New independent resource/cap1 for source-owned visuals, ready suppression and typed queue_free. Other pickup interactions must remain explicitly unsupported until mapped, not silently discarded.",
+    "map": "cap6 for source object draw item7; preserve cap5. Source ordering/position and exact owner binding; no C++ content tables.",
+    "catalog": "cap13, FieldObjects role49 if still free; keep cap12. Single metadata resource may own its texture; currently374files likely376 with2new files.",
+    "links": "cap5 with independently versioned scene object asset ref if existing fixed asset binding struct needs extension. Preserve4 read.",
+    "props": "cap3 only if new explicit audio metadata is required; preserve old2 rendering read but reject it for a new consumer that needs absent audio policy.",
+    "room": "cap14 actual typed QueueFreeStoryObject opcode49. Prefer mirroring GrantKeyItem48: target_index into checked Room string table is exact node path, neutral remaining fields, typed host resolves data-owned stable ID. A new Binding kind11 may be unnecessary. Old13 rejects new opcode; unknown15 and cap14 without actual operation negative tests.",
+    "story": "Existing FieldStory binarycap4 can append programme7 and10locale rows. Recipe5 needs explicit checked supplement extension. Preserve old7programmes/text semantics.",
+    "session": "Resourcev11,defaults,save schema and rules7 unchanged; derive got_shovel/returned_shovel from complete compiled Room. Add Shovel KEY acquisition only with mapped pickup mechanism; consumed_flag returned_shovel can distinguish alternate pickup/return from automatic cinematic (saving blocked during intermediate cutscene)."
+  },
+  "implementation_notes": [
+    "Separate pure object-policy binding read from full source(model=...). Model loads bindings but must not recursively call an object generator that constructs Model.",
+    "World typed object host validates exact stable identity/path/class before any programme flag/RNG mutation. Queue deletion, flush at source end-frame boundary; do not use a dynamic flag to emulate queue_free.",
+    "Root deferred callback resolves checked FieldStory programme for the boundary path and admits its object host; check_start callback is not a physical Area overlap.",
+    "Area processing must still run when a script pauses the player. Hidden original Player's bat stays at persistent Player position while replacement Actor moves; do not attach collision to visible Actor pose.",
+    "RNG ready must happen only on committed source-ready ordering, not dry scene prepare. Preserve child-ready random call even when parent is suppressed by flag; audit relation to NPC ready before implementation.",
+    "Adding a map draw item may shift prop clone item/tail indices. Regenerate canonical Props plus actual texture provenance through original assets tool. Old AST readmit intentionally rejects changed Model outside build_room; do not weaken it.",
+    "Regenerate original Room/Map/Story/Session/Restore/Menu/catalog dependencies and source receipts. Reuse-session only with actual unchanged naming/game/default proof. Negative tests for every new parser/version/opcode."
+  ],
+  "emulator_observation": "ABI9 frame counts publications, not60Hz physics. main increments p.frame when publishing; idle uses osGetTime elapsed milliseconds. Do not assert180 publication frames for a3s wait. Actual compiled StartWait at phase15 has duration3 and AwaitTimer duration0; core180/60Hz tests verify it. Corrected ordinary-input two-cold-run teaching test5 passed, including yes and no/cancel/yes plus Bat and MOVE."
+}

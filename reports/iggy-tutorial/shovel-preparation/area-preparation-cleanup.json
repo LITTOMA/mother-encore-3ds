@@ -1,0 +1,21 @@
+{
+  "reason": "Finished standalone native checks and offline route planning; source, logs, routes, real core cache, accepted/candidate game, actual Record and small original visual candidate remain. No live emulator or its profile is touched.",
+  "files": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\area-timing-tests",
+      "bytes": 51179056,
+      "sha256": "508e88f9fac808aa26ec9ed45d64b72f541fb4effe066a46d72517573f35519d"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\iggy-walk-planner",
+      "bytes": 51583632,
+      "sha256": "8a0c2e9ac763ef938b7a143c580491844177df647f06ee76be8e593d029929d4"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\iggy-walk-planner-3",
+      "bytes": 51623592,
+      "sha256": "c6e6460a479abe2559163e370c9a4fe6b201a13ce4fe48219d21001b9fd9a511"
+    }
+  ],
+  "bytes": 154386280
+}

@@ -54,16 +54,16 @@ class ResourceCatalogTests(unittest.TestCase):
         # is now published with the initial Mayor scene.
         shipped={row['role'] for row in self.fields['bindings']}
         expected={'FieldRoom','FieldMap','WorldLinks','HousePresents','MickTreats','GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones','FieldMenus','FieldNpc','FieldStory','EncounterBattle','EncounterRound','FieldSteps','FieldProps'}
-        self.assertEqual(shipped,expected)
+        self.assertEqual(shipped,expected|catalog.SWING_ROLES)
         self.assertTrue(shipped<=catalog.EXTENSION_ROLES|{'EncounterBattle','EncounterRound'})
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
-        self.assertEqual(catalog.capability_for(self.ir['bindings']), 11)
+        self.assertEqual(catalog.capability_for(self.ir['bindings']), 12)
         motion=[r for r in self.ir['bindings']if r['role']=='FieldNpc']
         self.assertEqual({r['id']for r in motion},set(range(320,330)))
         self.assertEqual(next(r['path']for r in motion if r['id']==327),'world/podunk/npcs/iggy.encmick')
         self.assertTrue(all(r['id']>=256 for r in motion))
         audio_roles={'GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones'}
-        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles|{'FieldMenus','FieldNpc','FieldStory','FieldSteps','FieldProps'} and row['id']==catalog.ROLES[row['role']]]
+        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles|catalog.SWING_ROLES|{'FieldMenus','FieldNpc','FieldStory','FieldSteps','FieldProps'} and row['id']==catalog.ROLES[row['role']]]
         self.assertEqual(catalog.capability_for(legacy), 4)
         for role in audio_roles:
             self.reject(lambda ir: ir.update(bindings=[row for row in ir['bindings'] if row['role']!=role]))

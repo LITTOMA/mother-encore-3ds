@@ -101,6 +101,8 @@ def main():
     files.update(podunk_files(source))
     from field_props import stage_files as prop_files
     files.update(prop_files(source))
+    from field_player_assets import stage_files as player_files
+    files.update(player_files(source))
     from mayor_scene import stage_files as mayor_files
     files.update(mayor_files(source))
     from house_presents import stage_files as present_files

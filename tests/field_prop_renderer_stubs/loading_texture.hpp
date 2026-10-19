@@ -3,7 +3,7 @@
 namespace encore::ctr {
 struct PropTestSheet {C3D_Tex tex;Tex3DS_SubTexture sub;};
 using LoadingSpriteSheet=PropTestSheet*;
-inline LoadingSpriteSheet loading_sprite_sheet_load(const char*path,std::string*error){
+inline LoadingSpriteSheet loading_sprite_sheet_load(const char*path,std::string*error=nullptr){
  auto i=draw_test::specs.find(path);if(i==draw_test::specs.end()||i->second.missing){if(error)*error="Explicit texture stub missing";return nullptr;}
  const auto s=i->second;auto*v=new PropTestSheet;v->tex.id=s.id;v->sub.width=s.width;v->sub.height=s.height;v->sub.rotated=s.rotated;
  // The fixture models a padded power-of-two root image's true subtexture.

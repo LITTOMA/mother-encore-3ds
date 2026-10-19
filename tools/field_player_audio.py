@@ -37,6 +37,7 @@ def encode(model):
  require(type(model)is dict and set(model)=={'action','audio'},'Player audio model fields');a=model['audio'];require(type(a)is dict and set(a)=={'source_sha256','gain_db','pitch','bus','pause_mode'},'Player audio record fields')
  require(type(a['source_sha256'])is str and re.fullmatch('[0-9a-f]{64}',a['source_sha256'])and a['source_sha256']!='0'*64,'Player audio source digest')
  require(type(a['gain_db'])in(int,float)and math.isfinite(a['gain_db'])and -120<=a['gain_db']<=24 and type(a['pitch'])in(int,float)and math.isfinite(a['pitch'])and 0<a['pitch']<=4 and type(a['bus'])is int and a['bus']==1 and type(a['pause_mode'])is int and a['pause_mode']==2,'Player audio record policy')
+ require(f.f32(a['pitch'])>0,'Player audio pitch underflows its binary field')
  _,parts=f.unpack_container(action.encode(model['action']),action.MAGIC,action.STRIDES,action.LIMIT);record=struct.pack('<32s2f2I',bytes.fromhex(a['source_sha256']),a['gain_db'],a['pitch'],a['bus'],a['pause_mode'])
  return f.pack_container(action.MAGIC,0,[*parts,record],STRIDES,action.LIMIT,capability=2)
 if __name__=='__main__':

@@ -1,0 +1,39 @@
+{
+  "head": "183f6b8215f6fc45d0f81a189d4784b8dafc20cd",
+  "run": 39277979484,
+  "status": "success",
+  "jobs": [
+    {
+      "job": 118146883724,
+      "name": "gcc",
+      "bytes": 760991,
+      "sha256": "abbaaddf09c011c0e82032a105633106eaf77b91c173fb40a54c04476a8aaaad",
+      "summaries": [
+        "100% tests passed, 0 tests failed out of 1",
+        "100% tests passed, 0 tests failed out of 1",
+        "100% tests passed, 0 tests failed out of 242",
+        "100% tests passed, 0 tests failed out of 227"
+      ]
+    },
+    {
+      "job": 118146883823,
+      "name": "clang",
+      "bytes": 542867,
+      "sha256": "1fdbb124cfd0b16162d6f1b1eb6d74d1f1a37b436a8dd76d39f4c9268c2b2f60",
+      "summaries": [
+        "100% tests passed, 0 tests failed out of 1",
+        "100% tests passed, 0 tests failed out of 1",
+        "100% tests passed, 0 tests failed out of 227",
+        "100% tests passed, 0 tests failed out of 227"
+      ]
+    },
+    {
+      "job": 118146883890,
+      "name": "console",
+      "bytes": 678763,
+      "sha256": "a72d2abcecef86903b0aec9f54e546651e0d710c956ad8d168f1a3b4927ea39f",
+      "summaries": []
+    }
+  ],
+  "scope": "Only committed 183f6b8; not later audio or frontend integration. Host, sanitizer, genuine 3DSX/CIA, no emulator or hardware claim."
+}

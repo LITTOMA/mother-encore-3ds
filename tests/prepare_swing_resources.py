@@ -10,9 +10,10 @@ from tools import resource_catalog as c
 
 def build(out):
  out=Path(out).resolve();c.require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Swing fixture must stay under build')
- ir=copy.deepcopy(c.load_catalog());out.mkdir(parents=True,exist_ok=True)
+ ir=copy.deepcopy(c.load_catalog());ir['bindings']=[r for r in ir['bindings']if r['role']not in c.SWING_ROLES];out.mkdir(parents=True,exist_ok=True)
  for row in ir['bindings']:
   target=out/row['path'];target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(c.checked_file(ROOT/'romfs',row['path']))
+ (out/'system/legacy.encresources').write_bytes(c.encode(ir,out))
  for role,fixture in [('FieldSwing','field-swing-v0410.encswing'),('FieldSwingGraphics','field-swing-graphics-v0410.encgraphics'),('FieldSwingAction','field-swing-action-v0410.encaction'),('FieldSwingEntry','field-swing-entry-v0410.encentry')]:
   path='world/fixture/'+role+c.SUFFIXES[role];target=out/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes((ROOT/'tests/fixtures'/fixture).read_bytes());ir['bindings'].append(dict(id=c.ROLES[role],role=role,path=path))
  blob=c.encode(ir,out);c.decode(blob);(out/'system/native.encresources').write_bytes(blob)

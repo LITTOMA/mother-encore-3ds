@@ -33,5 +33,8 @@ class PlayerAudio(unittest.TestCase):
   for edit in edits:
    m=copy.deepcopy(self.model);edit(m)
    with self.subTest(edit=edit),self.assertRaises(ValueError):a.encode(m)
+ def test_nonzero_pitch_must_remain_nonzero_in_the_binary_field(self):
+  m=copy.deepcopy(self.model);m['audio']['pitch']=1e-300
+  with self.assertRaises(ValueError):a.encode(m)
 
 if __name__=='__main__':unittest.main()

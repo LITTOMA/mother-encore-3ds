@@ -14,6 +14,8 @@ class RomFSLayoutTests(unittest.TestCase):
                       Path('world/house/opening.encroom'), 'system/native.encinput', 'story/melody.encfx',
                       'world/podunk/podunk.encmick', 'world/house/opening.encpresent',
                       'world/podunk/podunk.encprops',
+                      'world/player/swing.encswing', 'world/player/swing.encgraphics',
+                      'world/player/swing.encaction', 'world/player/swing.encentry',
                       'licenses/license-sources.json'])
 
     def test_build_metadata_and_legacy_paths_rejected(self):

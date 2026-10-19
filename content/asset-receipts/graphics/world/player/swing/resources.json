@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "permission": "Pinned upstream LICENSE game-related port; original notices retained; no tool binary distributed",
+  "atlas_receipt_sha256": "600896406e14f8c4f03d01fc8c4f6f8e6830cbe0fc3af2a9c0d779c3ef8e88ad",
+  "producers": {
+    "tools/field_player_assets.py": "69756cb62435667e872f7d3ae83c80e4fa619c3f2f008badc45097a67f3590cf",
+    "tools/field_swing.py": "ff3c087d43ec77ad4b8fa7a3af92f2f2e1af5dbf6aa27d3d3f0e20b7844056ff",
+    "tools/field_swing_action.py": "dc12205dddc324070da65002e77c9b147fe729216bc9e203e78ca7d4a6e5cb2e",
+    "tools/field_swing_graphics.py": "f8e1d81ee5f438f567e835bb4ac8ca2743e345e3a3484f3903bade87af14f3ac",
+    "tools/field_swing_presentation.py": "f516fbeee418ae5da4c8a7d3c1b8707ab212d637283573678d894f7f219fb0b8",
+    "tools/field_player_audio.py": "be435a613298f61567601e6b9cf8ab4bdc9dc227651db046d2e80d89ac084d99",
+    "tools/field_player_tree.py": "c8ecff10b4b1568c944b727677b916f11b01e92924f00e8e791b7e527fd90ceb",
+    "tools/field_swing_entry.py": "0ae777e4079a87ccbb347246d4022ede81af6f423dd7eee6cdccb624e8fb3862",
+    "tools/podunk_field.py": "e3bc3be8b48287568c0f5f26a0a5c9349be6254eccc50ace74dfec3e47e06f23"
+  },
+  "recipes": {
+    "content/field-player-assets.json": "30f5232c5f3a909c1058c1f978cc8b3a7fbdba3e2a6b368671a5ccad77205cdb",
+    "content/field-swing.json": "514a589d02267c3bd41882251c1e7cc2976938d48cf45ddd3db76c8a2e592650",
+    "content/field-swing-action.json": "fd619c7f7a3c07dcbb7130339024826c99f12800cb36d354ddd4c50ad2e3747b",
+    "content/field-player-audio.json": "8cc18e429780a4add1b7492fde7ca3652c5cfc71be5a46bced6096c535026355",
+    "content/field-swing-entry.json": "d64836777e7019f3e20ab2131189c288ec25c2d473f953655298236ef1157dd9",
+    "content/field-player-tree.json": "16c6ae08ac583498e7d68596bcdb9175d2b10c38955ddafa36675a3768bfee1a",
+    "content/field-swing-graphics.json": "10f399e2d8befd56709f604c70f634480c1ef9ea47091b93cafce6ce61c80a14",
+    "content/field-swing-presentation.json": "40b65affa8631fb2b1b6a8dbe1ef6654d1a528908f9c24df6bb9882fc0feb9c5"
+  },
+  "sources": {
+    "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+    "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
+    "Data/FieldSkills/swing.yaml": "e3e770194ec22e76fe75a271f2cda85371cbb3c50277275067fd68d1539bf0aa",
+    "Graphics/Character Sprites/Ninten/bat_swing.png": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Graphics/Character Sprites/Ninten/special.png": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Reusables/Overlap/Hitbox.tscn": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/misc/NintenBatSwing.gd": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "outputs": {
+    "graphics/world/player/swing/ninten.t3x": {
+      "bytes": 1048597,
+      "sha256": "2e75f362c0ed19cf764ec8bdd9e00aafa01d85d09eb726e930414bd64a113cf3"
+    },
+    "graphics/world/player/swing/bat.t3x": {
+      "bytes": 1048597,
+      "sha256": "80f59fa4b484c1647373b048ee385b73af59e5ee295980177eb2f8d9ae28cd03"
+    },
+    "world/player/swing.encswing": {
+      "bytes": 2785,
+      "sha256": "04dd99e2e3cab351a3b3b45334b715729b98a241a0f5c4390f42358fea47d97d"
+    },
+    "world/player/swing.encgraphics": {
+      "bytes": 1061,
+      "sha256": "ca133fd28dd92b809991b4d929e5702a0ae82f85719ff2b4757de174d8af0bc1"
+    },
+    "world/player/swing.encaction": {
+      "bytes": 456,
+      "sha256": "cafc7e4c8ebd305cc2508ded5e23ad1c624bbb2ecacaf389fd01c0689207a5c6"
+    },
+    "world/player/swing.encentry": {
+      "bytes": 5128,
+      "sha256": "3a836f9bf4c2d79ac8f5cae7f8eef09385f8d86e2ce8253b250e4c9854ad128e"
+    }
+  }
+}

@@ -92,7 +92,7 @@ public:
                 else if(e.kind==2)draw_sprites(scene,e.first,e.second);
                 else if(e.kind==4)extra(cx_,cy_,ox_,oy_);
                 else if(e.kind==5)actors.draw_actor(scene.actor_pose(e.first),cx_-ox_,cy_-oy_);
-                else actors.draw_player(scene.world.player().position,scene.world.animation(),cx_-ox_,cy_-oy_);
+                else if(!actors.draw_player(scene.world.player().position,scene.world.animation(),cx_-ox_,cy_-oy_,&scene.world.player_action()))return false;
             }
         }
         // Godot draws positive z_index canvas items after every z=0 item of the layer.

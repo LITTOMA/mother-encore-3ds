@@ -101,6 +101,7 @@ introduction-assets:
 	$(PYTHON) tools/mayor_scene.py verify
 	$(PYTHON) tools/podunk_field.py verify
 	$(PYTHON) tools/field_props.py verify
+	$(PYTHON) tools/field_player_assets.py verify
 	$(PYTHON) tools/field_npcs.py verify
 	$(PYTHON) tools/house_presents.py compile --tex3ds "$(TEX3DS)"
 	$(PYTHON) tools/house_presents.py verify

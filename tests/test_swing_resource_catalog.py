@@ -6,7 +6,8 @@ from tools import resource_catalog as c
 
 class SwingCatalog(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.base=c.load_catalog()
+ def setUpClass(cls):
+  cls.current=c.load_catalog();cls.base=copy.deepcopy(cls.current);cls.base['bindings']=[r for r in cls.base['bindings']if r['role']not in c.SWING_ROLES]
  def candidate(self):
   p=copy.deepcopy(self.base)
   for role in ('FieldSwing','FieldSwingGraphics','FieldSwingAction','FieldSwingEntry'):
@@ -19,7 +20,7 @@ class SwingCatalog(unittest.TestCase):
   p=self.candidate();blob=self.encode(p);self.assertEqual(struct.unpack_from('<I',blob,20)[0],12)
   self.assertEqual(blob,(Path(__file__).parent/'fixtures/catalog-cap12-swing.encresources').read_bytes())
   decoded=c.decode(blob);self.assertEqual({r['id']for r in decoded['bindings']if r['role']in c.SWING_ROLES},{45,46,47,48})
-  self.assertEqual(c.encode(self.base),c.OUT.read_bytes())
+  self.assertEqual(c.encode(self.current),c.OUT.read_bytes())
  def test_missing_duplicate_wrong_identity_or_type_rejects_before_publication(self):
   for role in c.SWING_ROLES:
    p=self.candidate();p['bindings']=[r for r in p['bindings']if r['role']!=role]
@@ -33,7 +34,7 @@ class SwingCatalog(unittest.TestCase):
   for cap in (0,1,10,11,13):
    bad=bytearray(blob);struct.pack_into('<I',bad,20,cap)
    with self.subTest(cap=cap),self.assertRaises(ValueError):c.decode(bad)
-  old=c.OUT.read_bytes();self.assertEqual(c.capability_for(c.decode(old)['bindings']),11)
+  old=(Path(__file__).parent/'fixtures/catalog-cap11.encresources').read_bytes();self.assertEqual(c.capability_for(c.decode(old)['bindings']),11)
   bad=bytearray(old);struct.pack_into('<I',bad,20,12)
   with self.assertRaises(ValueError):c.decode(bad)
   for n in range(len(blob)):

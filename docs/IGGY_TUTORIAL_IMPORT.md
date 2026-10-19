@@ -1,5 +1,7 @@
 # Iggy 挥棒教学移植
 
+2026-10-20 当前接线：四份玩家元数据和两张紧凑原版纹理已进入正式生成、来源校验和资源目录（374项）。房屋／室外共用持久动作、绘制和独立音效；B按原技能入口分发，移除B跑步别名及室外调试返回，START/A按MOVE状态门控。以下较早的“候选／未接线”段落属于对应历史组件；本次主机和资源检查见末节。当前接线的真实构建、普通输入模拟器、教学节目正式发布、树根Break/取铲及完整游戏仍未验收。
+
 墓地入口 PR #68 已经用户明确授权合入 main，本分支已更新到该主线，PR #69 继续保留草稿。完整游戏仍未完成。当前已输出完整教学图的独立候选资源，并修正原版演员直接改向机制；教学尚未加入正式游戏的触发、音频和玩家挥棒接线。
 
 来源为固定提交 7d9246600fffe518408f5830d4848635019005a3 的 gravedigger_swing.yaml、DialogueBox.gd、Actor.gd、BatOld、Podunk 场景及两种语言文本。16 段剧情编译为83条受检指令、14组双语文本和1组选项。是到18，否/取消到17，经玩家确认回16；现有初始 Iggy 选项保持组0，新教学使用组1。第22段先交付 KEY BatOld，再显示无说话人/无文字声音的领取提示；bat 旗标只在29段最后走位开始时写入。第8段的一秒最短等待与最终三秒自动等待分别保留，不能用一次确认跳过。
@@ -68,3 +70,15 @@ ENCSWA01 capability 2 adds the actual Ninten Bat source SHA, SFX bus, gain, pitc
 The persistent player voice reserves its own pooled channel and bounded buffers before input. Ordered World events start, stop or resume that voice, retaining failed events for retry and retaining identity across scene handoff. Ordinary repeated swings restart this voice. Pausing it and changing its SFX volume preserve BGM and run queues. Existing audio trace remains TRACE 529 71a30145b163903b.
 
 GCC9 ASan/UBSan with leak checking: data 979, new NDSP double 306, legacy regression 1096, old NDSP double 1445, run/region 983, World 626 checks; Python 4 tests passed. CMake configuration and exact Python partition 1183=819+364 passed (not a Windows build/test claim). Raw logs, source hashes and drivers are in reports/iggy-tutorial/player-audio-host. This is backend preparation: formal content, HID, GPU, temporal root contact and ordinary-input emulator acceptance are still pending. No audible output or hardware equivalence is claimed.
+
+## 正式玩家资源与前端接线（2026-10-20）
+
+生成器从实际tex3ds凭据重建独立SWG1、SGX1、SWA capability2和SWE capability2，四份元数据加两张纹理合计2,106,624字节，音效复用原bank。目录capability12使用45–48稳定角色；旧capability11通过迁移前原编译器生成的独立夹具保留读取，未手改pack。游戏规则和存档格式不变。正式构建任务新增独立field-player来源准入，最终目录等待它完成。
+
+来源SpecialAnimations的Outline.shader、材质width=0/inside=false/pattern=0与原版swing分支已审查；该零宽材质是纹理恒等采样，其他描边状态明确拒绝。纹理不预旋转，pivot只用于受检碰撞。绘制沿玩家原排序槽，球棒遵循show_behind_parent，子节点继承父位置但不继承Sprite绘制offset；主Sprite隐藏时独立Shadow仍绘制。持久纹理不借用临时场景Player；失败纹理准入清理已分配资源。3DS没有原版手柄震动的对应输出，未声称该功能等价。
+
+共享World保留MOVE/ATTACK与原速度，B只分发一次逻辑动作；X对应原toggle，菜单关闭的B不泄漏到技能。主程序不把ATTACK加入输入拥有者，因此持有方向在动作结束后可继续移动。强制剧情和Area暂停仍由既有世界生命周期处理。LOAD/新游戏重置玩家音效拥有者，普通换场保留持久身份；音频场景重置后在下一输入前重新保留原音效通道与已有缓冲。当前NativeSession仅接受空状态集合，其他角色/状态不以默认值假装支持。
+
+针对性GCC9 ASan/UBSan（泄漏检查开启）：绘制2450、实际FreshHouse/Record/LOAD 18155、既有Props绘制33、目录7419、旧目录6650、资源拥有者111；更新音效314及数据979通过。Python第一组40项、随后更新来源/音效10项通过；374项正式资源通过，方法分配1189=825+364保持完整，Windows仅配置/收集。首次绘制编译因测试替身缺少实际API默认参数与测试uint16转换失败，修复测试接口并保留失败日志，没有改玩法或图像期望。证据见reports/iggy-tutorial/player-presentation-host。主程序HID、真实GPU/声音、普通输入模拟器及真机不能由这些替身测试推定通过，PR仍为草稿。
+
+183f6b8完整检查39277979484已全部成功，实际GCC/Clang普通及ASan/UBSan和真实3DSX/CIA日志在player-world-183-full-verification；它仅验证前一World组件，不能代替本节后续接线。

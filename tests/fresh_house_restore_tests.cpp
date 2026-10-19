@@ -1,5 +1,7 @@
 #include "encore/fresh_house.hpp"
 #include "encore/save_menu.hpp"
+#include "encore/field_swing_resources.hpp"
+#include "encore/resource_catalog.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -118,6 +120,13 @@ void run(const Resources&r,Vec2 viewport,const std::filesystem::path&directory){
 }
 int main(int argc,char**argv){
  const Resources resources(argc>1?argv[1]:"romfs");std::filesystem::path directory;std::error_code ec;const char*tmp=std::getenv("TMPDIR");if(!tmp)tmp="/tmp";for(unsigned i=0;i<1000;++i){const auto candidate=std::filesystem::path(tmp)/("encore-fresh-house-restore-"+std::to_string(i));if(std::filesystem::create_directory(candidate,ec)){directory=candidate;break;}}CHECK(!directory.empty());
+ ResourceCatalog catalog;FieldSwingResources player;const std::string root=argc>1?argv[1]:"romfs";CHECK(catalog.load_file((root+"/system/native.encresources").c_str(),error)&&player.load(catalog,root.c_str(),error));
+ for(Vec2 viewport:{Vec2{400,240},Vec2{320,180}}){
+  PreparedSessionRestore prepared;CHECK(resources.prepare(resources.session.defaults(),prepared));SourceRandom random{98234};std::unique_ptr<FreshHouseState>fresh;CHECK(resources.fresh(prepared,random,viewport,fresh));
+  // This is the actual frontend LOAD/new-game construction boundary, after
+  // NPC poses, HouseRuntime and Phone were prepared, before deferred ready.
+  CHECK(fresh->world.bind_player_action(player,error)&&fresh->world.player_action_resources()==&player);CHECK(fresh->finish_scene_ready());CHECK(fresh->world.pause_for_house()&&fresh->world.unpause_from_house());bool accepted=false;CHECK(fresh->world.player_action_input(player.action().strings()[2],true,true,false,false,accepted,error)&&accepted);CHECK(fresh->world.player_action().attacking());
+ }
  for(Vec2 viewport:{Vec2{400,240},Vec2{320,180}}){run(resources,viewport,directory);collision_and_directions(resources,viewport);}
  std::filesystem::remove_all(directory,ec);CHECK(!ec);std::printf("FreshHouseRestore: %u checks; no GUI, renderer, original full-scene or hardware claim\n",checks);
 }

@@ -23,6 +23,9 @@ public:
  bool sync(upstream::OpeningWorld&world,AudioPlayer&player,std::string&error){
   if(!compatible(player,error))return false;
   if(!world.healthy()||world.player_action_resources()!=resources_||!world.player_action().ready()||(owner_&&owner_!=world.persistent_player())){error="Player audio persistent World/resource owner differs";return false;}
+  // Scene reset releases physical channels but retains the prepared buffers.
+  // Reacquire before the next input frame, including while its door is covered.
+  if(available_&&!player.prepare_player_voice(error))return false;
   owner_=world.persistent_player();
   if(!apply(player,error))return false;
   pending_=world.take_player_action_events();consumed_=0;

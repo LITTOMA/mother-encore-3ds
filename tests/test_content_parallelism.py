@@ -34,7 +34,7 @@ task = sys.argv[1]
 deps = {'room': ['audio', 'effects', 'doll-entry', 'pillow-entry'],
         'battle': ['room'], 'restore': ['room', 'house'],
         'items': ['items-check'], 'locale': ['migration'], 'settings-check': ['settings'], 'introduction': ['audio']}
-producers = 'audio gameplay-audio music-zones bars input phone effects doll-entry pillow-entry room battle round doll-round pillow-round house house-presents mick-treats items-check items session migration restore continue loading naming settings settings-check prompts locale introduction inspections drawer storage item-details field-equipment field-menus bridge-entry bridge-round field-story field-room field-npcs mayor-scene field-props'.split()
+producers = 'audio gameplay-audio music-zones bars input phone effects doll-entry pillow-entry room battle round doll-round pillow-round house house-presents mick-treats items-check items session migration restore continue loading naming settings settings-check prompts locale introduction inspections drawer storage item-details field-equipment field-menus bridge-entry bridge-round field-story field-room field-npcs mayor-scene field-props field-player'.split()
 assert task in producers + ['catalog','encounters'], ('unknown content task',task)
 deps.update({'locale':['migration','house-presents'],'inspections':['house'],'drawer':['house'],'house-presents':['house'],'storage':['items'],'item-details':['items'],'field-equipment':['items','item-details'],'session':['drawer','items','storage','house-presents','mick-treats','field-room']})
 deps['field-menus'] = ['session']
@@ -64,9 +64,9 @@ Path(task + '.done').write_text(json.dumps(sys.argv[3:]))
                 self.assertFalse((self.root / (task + '.started')).exists(), task)
         else:
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-            expected='audio gameplay-audio music-zones bars input phone effects doll-entry pillow-entry room battle round doll-round pillow-round house house-presents mick-treats items-check items session migration restore continue loading naming settings settings-check prompts locale introduction inspections drawer storage item-details field-equipment field-menus bridge-entry bridge-round field-story field-room field-npcs mayor-scene field-props catalog encounters'.split()
+            expected='audio gameplay-audio music-zones bars input phone effects doll-entry pillow-entry room battle round doll-round pillow-round house house-presents mick-treats items-check items session migration restore continue loading naming settings settings-check prompts locale introduction inspections drawer storage item-details field-equipment field-menus bridge-entry bridge-round field-story field-room field-npcs mayor-scene field-props field-player catalog encounters'.split()
             self.assertEqual({p.stem for p in self.root.glob('*.done')},set(expected))
-            self.assertEqual(len(expected),45)
+            self.assertEqual(len(expected),46)
             for task in ('catalog', 'encounters'):
                 self.assertTrue((self.root / (task + '.done')).exists())
         pids = [(self.root / (n + '.started')).read_text()

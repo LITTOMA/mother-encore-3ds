@@ -1,5 +1,6 @@
 #pragma once
 #include "loading_texture.hpp"
+#include "field_player_renderer.hpp"
 #include "encore/load_progress.hpp"
 #include <3ds.h>
 #include <citro2d.h>
@@ -17,6 +18,7 @@ class OpeningActorRenderer {
     struct Atlas { encore::ctr::LoadingSpriteSheet sheet=nullptr; unsigned width=0,height=0,columns=0,rows=0; };
     encore::upstream::RoomView room_;
     std::vector<Atlas> atlases_;
+    const FieldPlayerRenderer*player_renderer_=nullptr;
     static void region(const Atlas& atlas,unsigned u,unsigned v,unsigned w,unsigned h,float x,float y){
         if(!atlas.sheet||u+w>atlas.width||v+h>atlas.height)return;
         const auto image=encore::ctr::loading_sprite_sheet_get_image(atlas.sheet,0);auto sub=*image.subtex;
@@ -42,6 +44,7 @@ class OpeningActorRenderer {
         if(emote)centered(profile.emote_resource,emote_frame,position.x+sprite_position.x+emote_position.x-cx,position.y+sprite_position.y+emote_position.y-cy);
     }
 public:
+    void set_player_renderer(const FieldPlayerRenderer*renderer){player_renderer_=renderer;}
     bool load(const encore::upstream::RoomView& room,std::string& error){
         free();if(!room){error="Room data is not loaded";return false;}room_=room;
         atlases_.resize(room.resource_count());
@@ -71,11 +74,15 @@ public:
         const auto draw=room_.overlay(index);
         if(draw.resource_index<atlases_.size())region(atlases_[draw.resource_index],draw.u,draw.v,draw.w,draw.h,draw.x-cx,draw.y-cy);
     }
-    void draw_player(encore::upstream::Vec2 position,encore::upstream::AnimationSample sample,float cx,float cy)const{
-        if(!sample.main_visible)return;
+    bool draw_player(encore::upstream::Vec2 position,encore::upstream::AnimationSample sample,float cx,float cy,const encore::upstream::FieldPlayerTree*tree=nullptr)const{
+        if(tree&&tree->ready()&&(!player_renderer_||!player_renderer_->ready()))return false;
+        if(!sample.main_visible&&(!tree||!tree->ready()))return true;
         const auto instance=room_.actor_instance(room_.scene().player_instance_index);const auto profile=room_.actor_profile(instance.profile_index);
-        pose(instance.profile_index,position,profile.sprite_position,profile.sprite_offset,profile.emote_offset,
-             sample.frame,profile.emote_initial_frame,(profile.flags&1)!=0,false,cx,cy);
+        // Shadow is a sibling of the hidden main Sprite, so it remains visible
+        // during the special animation. Actor replacement still owns its slot.
+        if(profile.flags&1)centered(profile.shadow_resource,0,position.x+profile.shadow_offset.x-cx,position.y+profile.shadow_offset.y-cy);
+        if(sample.main_visible)centered(profile.primary_resource,sample.frame,position.x+profile.sprite_position.x+profile.sprite_offset.x-cx,position.y+profile.sprite_position.y+profile.sprite_offset.y-cy);
+        return !tree||!tree->ready()||player_renderer_->draw(*tree,position,cx,cy);
     }
     void draw_actor(const encore::upstream::ActorActionState& actor,float cx,float cy)const{
         if(!actor.initialized)return;

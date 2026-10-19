@@ -8,7 +8,7 @@ from tools import resource_catalog as c,world_scene_routes as w,field_footsteps 
 
 def build(out):
     out=Path(out).resolve();c.require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Step fixture must stay under build');out.mkdir(parents=True,exist_ok=True)
-    ir=copy.deepcopy(c.load_catalog());ir['bindings']=c.decode((ROOT/'tests/fixtures/catalog-cap8.encresources').read_bytes())['bindings'];graph=copy.deepcopy(w.load());graph['scenes']=graph['scenes'][:2];graph['routes']=graph['routes'][:2];graph['scenes'][1]['assets']['steps']=1030;graph['schema']=2;graph['scenes'][1]['assets'].pop('props')
+    ir=copy.deepcopy(c.load_catalog());ir['bindings']=c.decode((ROOT/'tests/fixtures/catalog-cap8.encresources').read_bytes())['bindings'];graph=copy.deepcopy(w.load());graph['scenes']=graph['scenes'][:2];graph['routes']=graph['routes'][:2];graph['scenes'][1]['assets']['steps']=1030;graph['schema']=2;graph['scenes'][1]['assets'].pop('props');graph['scenes'][1]['assets'].pop('objects')
     # Preserve the frozen capability-8 prefix, then supply every actual NPC
     # referenced by this two-scene graph. The fixture must not hide an owner.
     current={row['id']:row for row in c.load_catalog()['bindings']};existing={row['id']for row in ir['bindings']}
@@ -22,7 +22,7 @@ def build(out):
     # Rebuild the original two-scene map policy for this artificial graph.
     # A current shipping map would still require its real TownHall route3.
     policy=copy.deepcopy(f.load_recipe());policy.pop('route_recipe');policy['routes']=policy['routes'][:2]
-    model=f.Model(policy);atlases=f.Atlases(model);paths=[policy['atlas_directory']+'/atlas-%02d.t3x'%i for i in range(len(atlases.pages))]
+    model=f.Model(policy,object_bindings={});atlases=f.Atlases(model);paths=[policy['atlas_directory']+'/atlas-%02d.t3x'%i for i in range(len(atlases.pages))]
     (out/policy['outputs']['map']).write_bytes(f.encode_map(model,atlases,paths))
     path='world/fixture/source.encsteps';target=out/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(packet)
     ir['bindings'].append(dict(id=1030,role='FieldSteps',path=path));blob=c.encode(ir,out);target=out/'system/native.encresources';c.decode(blob);target.write_bytes(blob)

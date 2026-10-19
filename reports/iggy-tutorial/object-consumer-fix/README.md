@@ -1,0 +1,15 @@
+# Object activation consumer compatibility
+
+259b782 genuine console build and376 packaged resources passed. Its Clang ordinary run39340724744/job118361311855 failed231/247: thirteen failed checks and three dependent cases not run; no Clang sanitizer pass. Raw terminal Clang/console logs are retained here. GCC for259 remained in progress at this snapshot. This is not a completed full validation of259.
+
+The failures came from old fixture construction and consumers: obsolete catalog12/link4 assertions, a copied fixture retaining the new object role without its prerequisite action group, an old graph retaining the new object field, and pre-object scene tests trying to publish Map6 without its required lifecycle. Runtime fail-closed admission remains unchanged.
+
+The original generator still produces the pre-object legacy map byte-for-byte. Eight explicitly scoped old behavior tests consume that map through a required CTest fixture; formal scene, object art and loader tests continue to require the new owner. The route fixture preserves all seven real link sections. Metadata fixtures explicitly omit object ownership when exercising their earlier formats. The current Props loader fixture now copies the real object packet, texture and stepping companion, retaining every integrity and failed-load rollback rejection. Catalog13 and links5 receive both downgrade and unknown-future-version negatives.
+
+Actual GCC9.4 ASan/UBSan with leak checking passed all14 affected native cases across the two result folders. Counts: static actors33, route warp21, resource catalog7524, interaction3305/3683, swing loader111, cemetery6231, Props renderer34, Props resource owner4625, steps77, World run audio569, bridge/story11690, NPC1465 and Mayor2663. The first local batch stopped compiling World run audio because its standalone driver omitted the CMake-defined external room macro; the retained compiler failure is distinct from runtime failures. A second driver supplies that exact real House path and passes the remaining four. No game rules or trace expectations changed.
+
+Both source fixture generators passed. Windows CMake configuration and generated CTest metadata verify all eight explicit legacy arguments and required fixture dependencies. Windows native executables were not built, so CTest's JSON omits native commands; verification reads the actual generated CTest file and does not claim Windows native execution. Production content, receipt, binary and texture hashes remain exact259, with the proof retained separately.
+
+The previous3b32208 full run39332072532 passed GCC257ordinary/242sanitizer, Clang242/242 and genuine console. Its terminal GCC/status evidence is included, and covers that earlier commit only. New full verification of this consumer fix is pending.
+
+The259 genuine game was separately downloaded and verified by selected ZIP-member CRC and actual game SHA; temporary download blocks192937984bytes were removed. Its ordinary-input emulator controller was still running at this snapshot. Neither this report nor host test doubles claim GPU, audible output, complete natural opening, full-game or hardware acceptance.

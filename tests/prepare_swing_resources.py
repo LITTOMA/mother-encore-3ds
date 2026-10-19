@@ -10,7 +10,7 @@ from tools import resource_catalog as c
 
 def build(out):
  out=Path(out).resolve();c.require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Swing fixture must stay under build')
- ir=copy.deepcopy(c.load_catalog());ir['bindings']=[r for r in ir['bindings']if r['role']not in c.SWING_ROLES];out.mkdir(parents=True,exist_ok=True)
+ ir=copy.deepcopy(c.load_catalog());ir['bindings']=[r for r in ir['bindings']if r['role']not in c.SWING_ROLES|{'FieldObjects'}];out.mkdir(parents=True,exist_ok=True)
  for row in ir['bindings']:
   target=out/row['path'];target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(c.checked_file(ROOT/'romfs',row['path']))
  (out/'system/legacy.encresources').write_bytes(c.encode(ir,out))

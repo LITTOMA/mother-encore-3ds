@@ -25,10 +25,11 @@ struct Motion:MickHost {
  bool show_text(std::string_view,std::string_view,std::string&)override{return false;}bool play_sound(std::string_view,std::string&)override{return false;}
 };
 }
-int main(){
+int main(int argc,char**argv){
+ CHECK(argc==2);
  RoomData room;FieldMapData map;WorldLinksData links;FieldPropsData props;FieldStoryData story;ItemData items;std::vector<uint8_t>bytes;
  CHECK(encore::read_file("romfs/world/podunk/podunk.encroom",bytes,16*1024*1024,error)&&room.load(bytes.data(),bytes.size(),error));
- CHECK(map.load_file("romfs/world/podunk/podunk.encmap",error)&&links.load_file("romfs/world/world.enclinks",error));
+ CHECK(map.load_file(argv[1],error)&&links.load_file("romfs/world/world.enclinks",error));
  CHECK(props.load_file("romfs/world/podunk/podunk.encprops",error)&&story.load_file("romfs/world/podunk/story.encstory",error)&&items.load_file("romfs/ui/opening.encitems",error));
  CHECK(get(bytes,36)==13&&room.view().actor_instance_count()==6&&room.view().program_count()==7);
  uint32_t programme=UINT32_MAX;for(uint32_t i=0;i<room.view().program_count();++i)if(room.view().string(room.view().program(i).source_path_string)=="Podunk/cutscenes/graveyard_zombie_roots")programme=i;

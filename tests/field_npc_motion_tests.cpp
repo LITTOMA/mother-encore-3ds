@@ -34,7 +34,7 @@ struct World final:MickWorld {
 };
 }
 int main(int argc,char**argv){
- check(argc==4,"Lindgren, dog and legacy Mick resources required");std::string error;
+ check(argc==5,"Lindgren, dog, legacy Mick and legacy map resources required");std::string error;
  for(int arg=1;arg<=2;++arg){std::vector<uint8_t>bytes;check(encore::read_file(argv[arg],bytes,1024*1024,error),error.c_str());MickData data;
   check(data.load(bytes.data(),bytes.size(),error),error.c_str());auto view=data.view();
   check(view.motion_only()&&view.owner_id()==uint32_t(arg+1),"explicit checked motion owner identity");
@@ -62,7 +62,7 @@ int main(int argc,char**argv){
  {
   RoomData room;FieldMapData map;WorldLinksData links;MickData mom,dog,iggy,z1,z2;Host host;
   check(room.load_file("romfs/world/podunk/podunk.encroom",error),error.c_str());
-  check(map.load_file("romfs/world/podunk/podunk.encmap",error),error.c_str());
+  check(map.load_file(argv[4],error),error.c_str());
   check(links.load_file("romfs/world/world.enclinks",error),error.c_str());
   check(mom.load_file(argv[1],error)&&dog.load_file(argv[2],error),error.c_str());
   check(iggy.load_file("romfs/world/podunk/npcs/iggy.encmick",error)&&iggy.view().owner_id()==4&&iggy.view().interaction_policy(),"independent Iggy source motion policy");

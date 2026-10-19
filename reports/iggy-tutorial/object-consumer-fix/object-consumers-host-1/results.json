@@ -1,0 +1,94 @@
+[
+  {
+    "label": "00-field_static_actor",
+    "returncode": 0,
+    "args": [
+      "tests/fixtures/mayor-static-actor.encmap",
+      "build/full-port/object-legacy-map-1/legacy.encmap"
+    ],
+    "exe_sha256": "91b4519df50a37f0e8f35106620922604fc307a4307513feda8fa6b2731d830e"
+  },
+  {
+    "label": "01-field_route_warp",
+    "returncode": 0,
+    "args": [
+      "romfs/world/podunk/podunk.encroom",
+      "build/full-port/object-legacy-map-1/legacy.encmap",
+      "romfs/world/world.enclinks"
+    ],
+    "exe_sha256": "f611590a9ada56925c9c59e8659558e4bb9b27f21d32bea058c81c67cfc0d2f1"
+  },
+  {
+    "label": "02-resource_catalog",
+    "returncode": 0,
+    "args": [
+      "romfs/system/native.encresources",
+      "romfs",
+      "/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/object-consumers-host-1/catalog-fixture"
+    ],
+    "exe_sha256": "244aa9d66bd1f7c1a35608aad16db3393b3558546888ff52c07ddea51000bda3"
+  },
+  {
+    "label": "03-field_interaction",
+    "returncode": 0,
+    "args": [
+      "romfs",
+      "build/full-port/object-legacy-map-1/legacy.encmap"
+    ],
+    "exe_sha256": "a8344d02b2f076e7dfa773fa230236618fb61d80c5840475487731e87d563d59"
+  },
+  {
+    "label": "04-field_interaction",
+    "returncode": 0,
+    "args": [
+      "romfs",
+      "build/full-port/object-legacy-map-1/legacy.encmap",
+      "tests/fixtures/podunk-mom-interaction-policy.encmick"
+    ],
+    "exe_sha256": "a8344d02b2f076e7dfa773fa230236618fb61d80c5840475487731e87d563d59"
+  },
+  {
+    "label": "05-field_swing_resources",
+    "returncode": 0,
+    "args": [
+      "build/full-port/object-consumer-swing-1",
+      "build/full-port/object-consumer-swing-1/system/legacy.encresources"
+    ],
+    "exe_sha256": "b015435387b2228db530f57a5de1bab5807c760163b8dafb32d742d0bf553f3f"
+  },
+  {
+    "label": "06-cemetery_roots",
+    "returncode": 0,
+    "args": [
+      "build/full-port/object-legacy-map-1/legacy.encmap"
+    ],
+    "exe_sha256": "b4a122b1c516bf1422fc1051ca485b50d986d239837ee2d5fd4ea9e43e512793"
+  },
+  {
+    "label": "07-field_prop_renderer",
+    "returncode": 0,
+    "args": [
+      "romfs",
+      "build/full-port/object-legacy-map-1/legacy.encmap"
+    ],
+    "exe_sha256": "c4d0393119f39d35f88672daa1fde51fd3361ddbe655ff182ee8f89aa9a690e4"
+  },
+  {
+    "label": "08-prop_scene_resources",
+    "returncode": 0,
+    "args": [
+      "romfs",
+      "/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/object-consumers-host-1/prop-fixture"
+    ],
+    "exe_sha256": "ddfa3d1982dad99665af63d56ed9eb2469dc7bc926e3dc43d0386ffad950df3e"
+  },
+  {
+    "label": "09-step_scene_resources",
+    "returncode": 0,
+    "args": [
+      "build/full-port/object-consumer-step-1",
+      "romfs"
+    ],
+    "exe_sha256": "4bbbdfb1a6eac7c4815e9f3952ad31d4b01b0f758b4efdce25489a14cc4c365d"
+  }
+]

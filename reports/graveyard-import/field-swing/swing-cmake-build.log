@@ -1,0 +1,12 @@
+Warning: NMake does not support parallel builds. Ignoring parallel build command line option.
+[  4%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing.cpp.obj
+field_swing.cpp
+D:\GameDev\3DS\mother-encore-3ds\include\encore/movement.hpp(2): fatal error C1083: 鏃犳硶鎵撳紑鍖呮嫭鏂囦欢: 鈥渃stdint鈥? No such file or directory
+NMAKE : fatal error U1077: ��"C:\Program Files\CMake\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\encore_core.dir\runtime\field_swing.cpp.obj.d --working-dir=D:\GameDev\3DS\mother-encore-3ds\build\full-content-regressions\cmake --filter-prefix="注意: 包含文件:  " -- C:\PROGRA~1\MICROS~4\18\ENTERP~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\cl.exe @C:\Users\litto\AppData\Local\Temp\nm246C.tmp��: ���ش��롰0x2��
+Stop.
+NMAKE : fatal error U1077: ��C:\PROGRA~1\MICROS~4\18\ENTERP~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\nmake.exe -s -f CMakeFiles\encore_core.dir\build.make /nologo -SL                 CMakeFiles\encore_core.dir\build��: ���ش��롰0x2��
+Stop.
+NMAKE : fatal error U1077: ��C:\PROGRA~1\MICROS~4\18\ENTERP~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\nmake.exe -s -f CMakeFiles\Makefile2 /nologo -SL                 CMakeFiles\encore_field_swing_tests.dir\all��: ���ش��롰0x2��
+Stop.
+NMAKE : fatal error U1077: ��C:\PROGRA~1\MICROS~4\18\ENTERP~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\nmake.exe -s -f CMakeFiles\Makefile2 /nologo -LS                 encore_field_swing_tests��: ���ش��롰0x2��
+Stop.

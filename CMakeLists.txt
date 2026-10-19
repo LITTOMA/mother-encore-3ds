@@ -8,7 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
-    runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
+    runtime/field_swing.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
     runtime/house_inspection_data.cpp
@@ -975,6 +975,10 @@ if(BUILD_TESTING)
     set_tests_properties(field_interaction_policy PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
     set_tests_properties(field_interaction PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
     add_executable(encore_field_scene_resources_tests tests/field_scene_resources_tests.cpp)
+    add_executable(encore_field_swing_tests tests/field_swing_tests.cpp)
+    target_link_libraries(encore_field_swing_tests PRIVATE encore_core)
+    add_test(NAME field_swing COMMAND encore_field_swing_tests ${CMAKE_SOURCE_DIR}/tests/fixtures/field-swing-v0410.encswing ${CMAKE_SOURCE_DIR}/tests/fixtures/field-swing-v0410.tsv)
+    set_tests_properties(field_swing PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
     add_executable(encore_prop_clips_tests tests/prop_clips_tests.cpp)
     add_executable(encore_cemetery_roots_tests tests/cemetery_roots_tests.cpp)
     target_link_libraries(encore_cemetery_roots_tests PRIVATE encore_core)

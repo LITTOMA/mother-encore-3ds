@@ -1,0 +1,10 @@
+{
+  "scope": "Identical native314 observations/TSV after adding source project warning-profile verification and actual file hashes. No expectation change. New independent typed candidate only; no field input/audio/overlap/render claim.",
+  "candidate_sha256": "04dd99e2e3cab351a3b3b45334b715729b98a241a0f5c4390f42358fea47d97d",
+  "native_tsv_sha256": "b2994f93b46e783bbb0495c4516594a05c2f135adfff49932528f724664f5ef4",
+  "source_review": "Eight exact AnimationPlayer bindings including UpRight550; source discrete BlendSpace order preserved for nearest-direction ties; separate SpecialAnimations/NintenBat shares fetched frame, sparse behind-parent property preserved. Source callback deferred; ATTACK release is separate from reaching clip end. Constant pivot track equivalent only with exclusive action owner. Actual capsule radius10.4999,height17 retained; contact execution not implemented. Normal1/incapacitated.7 source rates, original sound and four rumble parameters retained.",
+  "host": "GCC9 -Wall -Wextra -Werror ASan/UBSan6499 checks,314 actual native observations; parser/schema/unknown kind/callback/CRC/truncation/order/rollback tested.",
+  "unverified": "Full Player AnimationTree transition/direction tie oracle, source input selection, physics overlap delivery, audio, rumble, GPU, shipping bind, Iggy grant, console and hardware.",
+  "python": "4 source test methods passed; strict discovery1128=764aggregate+364dedicated",
+  "local_cmake": "Windows NMake first lacked Visual Studio header environment; retry using actual VsDevCmd compiled swing but hit pre-existing POSIX unistd.h in locale_preference.cpp. Full local CMake/CTest NOT passed. GCC9 standalone sanitizer compilation/execution is the actual6499 result."
+}

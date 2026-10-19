@@ -1,0 +1,93 @@
+**********************************************************************
+** Visual Studio 2026 Developer Command Prompt v18.2.2
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[DEBUG:ext\vcvars.bat] Found potential v145 version file: 'Microsoft.VCToolsVersion.VC.14.50.18.0.txt'
+[DEBUG:ext\vcvars.bat] Testing v145 version file: 'Microsoft.VCToolsVersion.VC.14.50.18.0.txt'
+[  4%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing.cpp.obj
+field_swing.cpp
+[  4%] Building CXX object CMakeFiles/encore_core.dir/runtime/prop_clips.cpp.obj
+prop_clips.cpp
+[  4%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_props.cpp.obj
+field_props.cpp
+[  4%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_steps.cpp.obj
+field_steps.cpp
+[  9%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_menus_data.cpp.obj
+field_menus_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\field_menus_data.cpp(33): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GameDev\3DS\mother-encore-3ds\runtime\field_menus_data.cpp(34): warning C4996: 'open': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _open. See online help for details.
+[  9%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_menus.cpp.obj
+field_menus.cpp
+[  9%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_zones.cpp.obj
+music_zones.cpp
+[  9%] Building CXX object CMakeFiles/encore_core.dir/runtime/gameplay_audio.cpp.obj
+gameplay_audio.cpp
+?敞鎰? 鍖呭惈鏂囦欢:            C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.50.35717\include\nmmintrin.h
+[ 13%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_data.cpp.obj
+field_data.cpp
+[ 13%] Building CXX object CMakeFiles/encore_core.dir/runtime/world_links.cpp.obj
+world_links.cpp
+D:\GameDev\3DS\mother-encore-3ds\include\encore/resource_catalog.hpp(1): warning C4819: 璇ユ枃浠跺寘鍚笉鑳藉湪褰撳墠浠ｇ爜椤?936)涓〃绀虹殑瀛楃銆傝灏嗚鏂囦欢淇濆瓨涓?Unicode 鏍煎紡浠ラ槻姝㈡暟鎹涪澶?
+D:\GameDev\3DS\mother-encore-3ds\runtime\world_links.cpp(83): warning C4456: 鈥渋d鈥濈殑澹版槑闅愯棌浜嗕笂涓€涓湰鍦板０鏄?
+D:\GameDev\3DS\mother-encore-3ds\runtime\world_links.cpp(80): note: 鍙傝鈥渋d鈥濈殑澹版槑
+[ 13%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_scene.cpp.obj
+field_scene.cpp
+D:\GameDev\3DS\mother-encore-3ds\include\encore/blackbars.hpp(32): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+[ 13%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_scene_resources.cpp.obj
+field_scene_resources.cpp
+D:\GameDev\3DS\mother-encore-3ds\include\encore/resource_catalog.hpp(1): warning C4819: 璇ユ枃浠跺寘鍚笉鑳藉湪褰撳墠浠ｇ爜椤?936)涓〃绀虹殑瀛楃銆傝灏嗚鏂囦欢淇濆瓨涓?Unicode 鏍煎紡浠ラ槻姝㈡暟鎹涪澶?
+[ 13%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_story.cpp.obj
+field_story.cpp
+[ 18%] Building CXX object CMakeFiles/encore_core.dir/runtime/present_data.cpp.obj
+present_data.cpp
+[ 18%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_presents.cpp.obj
+house_presents.cpp
+[ 18%] Building CXX object CMakeFiles/encore_core.dir/runtime/mick_treats.cpp.obj
+mick_treats.cpp
+[ 18%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_inspection_data.cpp.obj
+house_inspection_data.cpp
+[ 22%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_equipment_data.cpp.obj
+field_equipment_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\field_equipment_data.cpp(44): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GameDev\3DS\mother-encore-3ds\runtime\field_equipment_data.cpp(80): warning C4457: 鈥減鈥濈殑澹版槑闅愯棌浜嗗嚱鏁板弬鏁?
+D:\GameDev\3DS\mother-encore-3ds\runtime\field_equipment_data.cpp(46): note: 鍙傝鈥減鈥濈殑澹版槑
+D:\GameDev\3DS\mother-encore-3ds\runtime\field_equipment_data.cpp(80): warning C4456: 鈥渆nd鈥濈殑澹版槑闅愯棌浜嗕笂涓€涓湰鍦板０鏄?
+D:\GameDev\3DS\mother-encore-3ds\runtime\field_equipment_data.cpp(49): note: 鍙傝鈥渆nd鈥濈殑澹版槑
+D:\GameDev\3DS\mother-encore-3ds\runtime\field_equipment_data.cpp(97): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+[ 22%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_equipment_menu.cpp.obj
+field_equipment_menu.cpp
+[ 22%] Building CXX object CMakeFiles/encore_core.dir/runtime/storage_data.cpp.obj
+storage_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\storage_data.cpp(55): warning C4457: 鈥渘鈥濈殑澹版槑闅愯棌浜嗗嚱鏁板弬鏁?
+D:\GameDev\3DS\mother-encore-3ds\runtime\storage_data.cpp(32): note: 鍙傝鈥渘鈥濈殑澹版槑
+D:\GameDev\3DS\mother-encore-3ds\runtime\storage_data.cpp(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+[ 22%] Building CXX object CMakeFiles/encore_core.dir/runtime/storage_menu.cpp.obj
+storage_menu.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\storage_menu.cpp(40): warning C4244: 鈥?鈥? 浠庘€渋nt鈥濊浆鎹㈠埌鈥渇loat鈥濓紝鍙兘涓㈠け鏁版嵁
+[ 22%] Building CXX object CMakeFiles/encore_core.dir/runtime/item_details.cpp.obj
+item_details.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\item_details.cpp(38): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GameDev\3DS\mother-encore-3ds\runtime\item_details.cpp(59): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+[ 27%] Building CXX object CMakeFiles/encore_core.dir/runtime/drawer_program.cpp.obj
+drawer_program.cpp
+[ 27%] Building CXX object CMakeFiles/encore_core.dir/runtime/resource_catalog.cpp.obj
+resource_catalog.cpp
+D:\GameDev\3DS\mother-encore-3ds\include\encore/resource_catalog.hpp(1): warning C4819: 璇ユ枃浠跺寘鍚笉鑳藉湪褰撳墠浠ｇ爜椤?936)涓〃绀虹殑瀛楃銆傝灏嗚鏂囦欢淇濆瓨涓?Unicode 鏍煎紡浠ラ槻姝㈡暟鎹涪澶?
+D:\GameDev\3DS\mother-encore-3ds\runtime\resource_catalog.cpp(162): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+[ 27%] Building CXX object CMakeFiles/encore_core.dir/runtime/localization.cpp.obj
+localization.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\localization.cpp(71): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+[ 27%] Building CXX object CMakeFiles/encore_core.dir/runtime/localized_presentation.cpp.obj
+localized_presentation.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\localized_presentation.cpp(1): warning C4819: 璇ユ枃浠跺寘鍚笉鑳藉湪褰撳墠浠ｇ爜椤?936)涓〃绀虹殑瀛楃銆傝灏嗚鏂囦欢淇濆瓨涓?Unicode 鏍煎紡浠ラ槻姝㈡暟鎹涪澶?
+[ 31%] Building CXX object CMakeFiles/encore_core.dir/runtime/locale_preference.cpp.obj
+locale_preference.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\locale_preference.cpp(5): fatal error C1083: 鏃犳硶鎵撳紑鍖呮嫭鏂囦欢: 鈥渦nistd.h鈥? No such file or directory
+NMAKE : fatal error U1077: ��"C:\Program Files\CMake\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\encore_core.dir\runtime\locale_preference.cpp.obj.d --working-dir=D:\GameDev\3DS\mother-encore-3ds\build\full-content-regressions\cmake --filter-prefix="注意: 包含文件:  " -- C:\PROGRA~1\MICROS~4\18\ENTERP~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\cl.exe @C:\Users\litto\AppData\Local\Temp\nmB1E.tmp��: ���ش��롰0x2��
+Stop.
+NMAKE : fatal error U1077: ��C:\PROGRA~1\MICROS~4\18\ENTERP~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\nmake.exe -s -f CMakeFiles\encore_core.dir\build.make /nologo -SL                 CMakeFiles\encore_core.dir\build��: ���ش��롰0x2��
+Stop.
+NMAKE : fatal error U1077: ��C:\PROGRA~1\MICROS~4\18\ENTERP~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\nmake.exe -s -f CMakeFiles\Makefile2 /nologo -SL                 CMakeFiles\encore_field_swing_tests.dir\all��: ���ش��롰0x2��
+Stop.
+NMAKE : fatal error U1077: ��C:\PROGRA~1\MICROS~4\18\ENTERP~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\nmake.exe -s -f CMakeFiles\Makefile2 /nologo -LS                 encore_field_swing_tests��: ���ش��롰0x2��
+Stop.

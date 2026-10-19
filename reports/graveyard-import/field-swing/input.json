@@ -1,0 +1,1244 @@
+{
+  "actions": [
+    {
+      "op": "play",
+      "name": "Attack Down"
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666669
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666629000000002
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666699000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666698999999998
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666599000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 1
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack Down"
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack Up"
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666669
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666629000000002
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666699000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666698999999998
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666599000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 1
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack Up"
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack Right"
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666669
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.00033329000000001385
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06633299000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666699000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666698999999998
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666599000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 1
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack Right"
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack Left"
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666669
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666629000000002
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666699000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666698999999998
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666599000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 1
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack Left"
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack DownRight"
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666669
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666629000000002
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666699000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666698999999998
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666599000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 1
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack DownRight"
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack DownLeft"
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666669
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666629000000002
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666699000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666698999999998
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666599000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 1
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack DownLeft"
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack UpRight"
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666669
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666629000000002
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666699000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666698999999998
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666599000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 1
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack UpRight"
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack UpLeft"
+    },
+    {
+      "op": "advance",
+      "delta": 0
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666669
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666629000000002
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666699000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666698999999998
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 0.06666599000000001
+    },
+    {
+      "op": "advance",
+      "delta": 1e-08
+    },
+    {
+      "op": "advance",
+      "delta": 1
+    },
+    {
+      "op": "flush"
+    },
+    {
+      "op": "play",
+      "name": "Attack UpLeft"
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "advance",
+      "delta": 0.016666666666666666
+    },
+    {
+      "op": "flush"
+    }
+  ]
+}

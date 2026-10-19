@@ -1,0 +1,24 @@
+{
+  "status": "failed",
+  "error": "AssertionError('Original Dad normal choice did not open')",
+  "performance": {
+    "cemetery_roots": {
+      "phases": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "flag": true,
+      "repeated": true,
+      "scope": "Normal-input source cutscene; no save validation or pixel equivalence"
+    }
+  }
+}

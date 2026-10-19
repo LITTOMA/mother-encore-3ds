@@ -138,3 +138,12 @@ GCC9 ASan/UBSan的NativeSession20659点通过，包含墓地旗标实际编解�
 
 
 bf063a7完整GCC普通223项中222项通过，唯一失败CTest为python_tools：实际聚合失败仅PartyActor旧路线夹具仍期望三名Podunk NPC。测试现在先检查五个真实稳定身份，再只投影Iggy及两名僵尸的追加身份；冻结的旧路线逐字比较和文件本身不变。三项定向来源检查通过。输出中的intentional worker failure及collection异常是已通过的调度器负测试，不误判成生产失败。该旧完整运行仍记失败，不能声称已跑GCC完整sanitizer。此前四项Windows本地聚合问题另已定位：两项路径分隔符假设，两项无法启动g++；后两项相同C++测试在WSL实际通过，没有给生产逻辑或CI增加跳过规则。原始日志与审查在reports/graveyard-import/cemetery-owner-regressions。
+
+
+## 墓地实际Record与新进程LOAD
+
+bf063a7真实3DSX完成普通LOAD、176个碰撞约束路点、全部11段墓地演出和重复接触，再沿路返回家并使用电话Record写入独立slot2。4652字节实际存档以该实包内的Session/Room/House/回合/物品资源通过共享核心GCC9 ASan/UBSan验证，重编码逐字相同。全新隔离模拟器从实际slot2普通LOAD，出门、打开并关闭Goods菜单后，墓地旗标及会话投影保留。初始进度仍为人工战后检查点，不宣称自然开局、像素、可听效果、完整原版或真机。
+
+首次电话控制器漏处理WAIT停顿，实际游戏正常停在Dad对白，失败记录保留；修正后重跑全部路线通过。独立存档检查曾误要求首次持久saved=true；审查原global.gd可见其先保存字典、后设置实时saved旗标，移植顺序相同，因此文件中的false正确。只修正检查器，原存档字节和游戏行为未改。证据见reports/graveyard-import/cemetery-save-emulator-bf。
+
+bf完整Clang普通208/208、ASan/UBSan208/208和真实3DSX/CIA均通过；GCC普通222/223的旧路线夹具失败仍保留，修复后的cea完整矩阵39214836153正在运行。未将不同提交或不同验证层次混称为整体通过。已删除被替代391游戏及明确完成的测试文件，当前只保留f3旧路线基线与bf实包。

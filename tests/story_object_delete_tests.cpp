@@ -14,10 +14,10 @@ uint32_t word(const std::vector<uint8_t>&b,size_t at){return uint32_t(b[at])|uin
 void put(std::vector<uint8_t>&b,size_t at,uint32_t x){for(unsigned i=0;i<4;++i)b[at+i]=uint8_t(x>>(8*i));}
 void seal(std::vector<uint8_t>&b){put(b,52,0);put(b,52,encore::crc32(b.data(),b.size()));}
 struct RejectWrite:StoryObjectHost {
- FieldObjects*objects=nullptr;unsigned calls=0;
+ FieldObjects*objects=nullptr;OpeningWorld*world=nullptr;unsigned calls=0,observed_pc=0;
  bool validate_story_object(uint32_t s,std::string_view p,std::string&e)const override{return objects&&objects->validate_story_object(s,p,e);}
  bool can_queue_free(std::string_view p,std::string&e)const override{return objects&&objects->can_queue_free(p,e);}
- bool queue_free(std::string_view,std::string&e)override{++calls;e="Injected object queue failure";return false;}
+ bool queue_free(std::string_view,std::string&e)override{++calls;if(world)observed_pc=world->story_next_command_index();e="Injected object queue failure";return false;}
 };
 }
 int main(int argc,char**argv){
@@ -39,7 +39,7 @@ int main(int argc,char**argv){
  for(unsigned i=0;i<90&&!world.story_completed();++i)CHECK(world.idle_frame(1.0/60));CHECK(world.story_completed()&&world.stage()==OpeningStage::Walking);
  CHECK(!world.begin_house_program(programme)&&world.healthy()&&world.story_flag("got_shovel"));
  {OpeningWorld again;CHECK(again.initialize(v)&&again.bind_story_objects(objects,error));CHECK(!again.begin_house_program(programme)&&again.healthy()&&!again.story_flag("got_shovel"));} // static metadata bind remains legal on a suppressed reentry
- {FieldObjects live;CHECK(live.prepare(metadata,v,error)&&live.enter_ready(1,false,random,error));OpeningWorld failed;CHECK(failed.initialize(v));RejectWrite host;host.objects=&live;CHECK(failed.bind_story_objects(host,error)&&failed.begin_house_program(programme));CHECK(!failed.idle_frame(1.0/60)&&!failed.healthy()&&host.calls==1&&live.state(1)->alive&&!live.state(1)->queued);}
+ {FieldObjects live;CHECK(live.prepare(metadata,v,error)&&live.enter_ready(1,false,random,error));OpeningWorld failed;CHECK(failed.initialize(v));RejectWrite host;host.objects=&live;host.world=&failed;CHECK(failed.bind_story_objects(host,error)&&failed.begin_house_program(programme));CHECK(!failed.idle_frame(1.0/60)&&!failed.healthy()&&host.calls==1&&live.state(1)->alive&&!live.state(1)->queued);CHECK(host.observed_pc==5);} // original call_deferred runs after following YieldIdle
  auto reject=[&](std::vector<uint8_t>b){seal(b);CHECK(!room.load(b.data(),b.size(),error));CHECK(room.view().program_count()==v.program_count());};
  for(uint32_t cap:{0u,7u,8u,9u,10u,11u,12u,13u,15u}){auto b=bytes;put(b,36,cap);reject(b);}
  {std::vector<uint8_t>b;CHECK(encore::read_file(argv[3],b,kMaxRoomBytes,error));put(b,36,14);reject(b);} // cap14 requires real49

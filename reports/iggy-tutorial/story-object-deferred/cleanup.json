@@ -1,0 +1,46 @@
+{
+  "scope": "Completed owned host test ELFs only; successful source/test logs retained; actual accepted f029 game, Record save, tool, core cache and protected preexisting dirs kept",
+  "files": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-object-delete-tests",
+      "bytes": 52145208,
+      "sha256": "b3ee05e66b88dbdb93398e1ab422b4f6859815f02b358943325a289900e71cb9"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-objects-data-tests",
+      "bytes": 52042360,
+      "sha256": "ea3b6cf05576883e5dd501e2e2c9b26bf5a692e523810102c1f669680fce6dc5"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-objects-lifecycle-tests",
+      "bytes": 51938912,
+      "sha256": "c48fdf013c7c05c2b2e02a7a4ca2c509408360c752187cb8322f83f510840afe"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-key-grant-tests",
+      "bytes": 52031720,
+      "sha256": "4c4fc8798b4934e738fc9d096362ed863ee0eccd93dff52a699f7eaf07c42754"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-object-production-tutorial-tests",
+      "bytes": 52170648,
+      "sha256": "d4637b917565598ff664415d0e0cc940732c123b03640f461d8bd70e7d2a2b74"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-object-production-session-tests",
+      "bytes": 54010792,
+      "sha256": "b92a87fd7ff5bca3b5a0ff8c9c653e36faeef642209b08a1ec21616252f51ddf"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-object-production-restore-tests",
+      "bytes": 53283472,
+      "sha256": "e08e14d5f7cde2a1767992663b5545d3b00322e8101903b93e4f0f7fb2ee253c"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-object-production-field-story-tests",
+      "bytes": 52819968,
+      "sha256": "29bb10216ac0ebda135fbc69c419e1261de04db44bced62adccf17d451c70e31"
+    }
+  ],
+  "retired_bytes": 420443080.0
+}

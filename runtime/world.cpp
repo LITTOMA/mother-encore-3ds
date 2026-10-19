@@ -617,6 +617,11 @@ bool OpeningWorld::flush_deferred() {
     }
     if(pending_actor_!=kRoomNoActor)return fail("Deferred actor binding budget exceeded");
     for(const auto& action:deferred_){
+        if(action.kind==DialogueActionKind::QueueFreeStoryObject){
+            std::string why;const auto path=content_.string(action.target_index);
+            if(!story_objects_||!story_objects_->validate_story_object(content_.scene().stable_id,path,why)||!story_objects_->can_queue_free(path,why)||!story_objects_->queue_free(path,why))return fail("Deferred story object deletion rejected");
+            continue;
+        }
         const auto binding=content_.binding(action.target_index);
         if(binding.kind==uint16_t(RoomBindingKind::PlayMusicRequest)){area_music_resource_=binding.target_index;audio_.push_back({AudioRequestKind::PlayMusic,binding.target_index,binding.duration,action.phrase});}
         else if(binding.kind==uint16_t(RoomBindingKind::PeriodicCameraShake))room_shakers_.push_back({action.target_index,binding.duration,0,true});
@@ -661,7 +666,7 @@ bool OpeningWorld::apply(const DialogueAction& a) {
     case K::OpenSave:if(save_requested_||storage_requested_)return false;save_requested_=true;return true;
     case K::OpenStorage:if(save_requested_||storage_requested_)return false;storage_requested_=true;return true;
     case K::GrantKeyItem:{std::string why;return story_key_items_&&story_key_items_->validate_key_item(content_.string(a.target_index),uint32_t(a.value),why)&&story_key_items_->grant_key_item(content_.string(a.target_index),uint32_t(a.value),why);}
-    case K::QueueFreeStoryObject:{std::string why;const auto path=content_.string(a.target_index);return story_objects_&&story_objects_->validate_story_object(content_.scene().stable_id,path,why)&&story_objects_->can_queue_free(path,why)&&story_objects_->queue_free(path,why);}
+    case K::QueueFreeStoryObject:{std::string why;const auto path=content_.string(a.target_index);if(deferred_.size()>=64||!story_objects_||!story_objects_->validate_story_object(content_.scene().stable_id,path,why)||!story_objects_->can_queue_free(path,why))return false;deferred_.push_back(a);return true;}
     case K::SetFlag:return write_story_flag(a.target_index,a.value!=0);
     case K::ShowDialogue:
         if(pending_dialogue_id_!=kRoomNoIndex||(!(a.flags&1)&&!actor))return false;

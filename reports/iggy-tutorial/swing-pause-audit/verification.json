@@ -1,0 +1,25 @@
+{
+  "scope": "Original-method evidence needed before live-world pause/battle integration. Native pause execution is not implemented by this commit. No physics/body masks, party timers, audible audio or hardware claim.",
+  "sources": {
+    "tools/run_swing_pause_reference.py": "9a5f60e21d08ea47335667b677f06bfc3e89eac886fcd60b7a5dfc9e05c21201",
+    "tests/test_swing_pause_reference.py": "ba1c50dfbc89a2c307d7f3ad4b58ef69a0ca027d1b0e29aca1ca81d1028558c5"
+  },
+  "engine_runs": [
+    4,
+    5
+  ],
+  "cases_each": 28,
+  "observations_each": 3556,
+  "stable_sha256": "3c7ccdf5409aa8c3e9e1b55cd6157092ea2224ce3cc31bd473ad8eef47f17a14",
+  "stable_bytes": 1314813,
+  "full_and_reduced_topology": "Both actual engine path tables for 8 origins to Idle/FaintedIdle agree in each accepted run.",
+  "unimplemented": "Separate control state from animation clock; cancellation before Bat entry, continued nonloop Bat during pause, repeated request without rewind, looped-node scale freezing and exact pause effects still need execution/data mapping.",
+  "fixture_repairs": [
+    "First fixture omitted _anim_player declaration; rejected engine errors/time limit, not accepted evidence.",
+    "Early in-engine comparison of independently created topology dictionaries did not complete; comparison moved to the host over actual JSON. Full/reduced path tables and original method bodies are unchanged."
+  ],
+  "logs": {
+    "python.log": "690849f59fed16caab16b14bcffc1df7f1a7512354ddc67284d0dc2c63d73c1c",
+    "partition.json": "47a0c53c482920493dad0b2b1a59a4d668a515b509c7b752fa6fdc4a790162fb"
+  }
+}

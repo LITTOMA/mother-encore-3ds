@@ -1,0 +1,45 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+Pause topology: topology.tscn Idle -> Idle
+Pause topology: topology.tscn Idle -> FaintedIdle
+Pause topology: topology.tscn Walk -> Idle
+Pause topology: topology.tscn Walk -> FaintedIdle
+Pause topology: topology.tscn Run -> Idle
+Pause topology: topology.tscn Run -> FaintedIdle
+Pause topology: topology.tscn Crouch -> Idle
+Pause topology: topology.tscn Crouch -> FaintedIdle
+Pause topology: topology.tscn Blink -> Idle
+Pause topology: topology.tscn Blink -> FaintedIdle
+Pause topology: topology.tscn FaintedIdle -> Idle
+Pause topology: topology.tscn FaintedIdle -> FaintedIdle
+Pause topology: topology.tscn FaintedWalk -> Idle
+Pause topology: topology.tscn FaintedWalk -> FaintedIdle
+Pause topology: topology.tscn Bat -> Idle
+Pause topology: topology.tscn Bat -> FaintedIdle
+Pause topology: topology-reduced.tscn Idle -> Idle
+Pause topology: topology-reduced.tscn Idle -> FaintedIdle
+Pause topology: topology-reduced.tscn Walk -> Idle
+Pause topology: topology-reduced.tscn Walk -> FaintedIdle
+Pause topology: topology-reduced.tscn Run -> Idle
+Pause topology: topology-reduced.tscn Run -> FaintedIdle
+Pause topology: topology-reduced.tscn Crouch -> Idle
+Pause topology: topology-reduced.tscn Crouch -> FaintedIdle
+Pause topology: topology-reduced.tscn Blink -> Idle
+Pause topology: topology-reduced.tscn Blink -> FaintedIdle
+Pause topology: topology-reduced.tscn FaintedIdle -> Idle
+Pause topology: topology-reduced.tscn FaintedIdle -> FaintedIdle
+Pause topology: topology-reduced.tscn FaintedWalk -> Idle
+Pause topology: topology-reduced.tscn FaintedWalk -> FaintedIdle
+Pause topology: topology-reduced.tscn Bat -> Idle
+Pause topology: topology-reduced.tscn Bat -> FaintedIdle
+Pause topology comparison recorded
+Pause case: 0 Idle steps 0
+Pause case: 1 Idle steps 1
+Pause case: 2 Idle steps 10
+Pause case: 3 Idle steps 23
+Pause case: 4 Idle steps 0
+Pause case: 5 Idle steps 1
+Pause case: 6 Idle steps 10
+Pause case: 7 Idle steps 23

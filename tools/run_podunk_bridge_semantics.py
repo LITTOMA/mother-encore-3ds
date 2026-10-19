@@ -9,7 +9,8 @@ from tools import run_emulator_semantics as r
 from tools.native_content import parse_pack
 from tools.emulator_artifact import checked_resources
 import hashlib
-p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);p.add_argument('--fixture',type=Path,required=True);p.add_argument('--emulator',type=Path,required=True);p.add_argument('--dsp-component',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--clock',type=int,default=946681277);p.add_argument('--mom-help',action='store_true');p.add_argument('--house-roundtrip',action='store_true');p.add_argument('--locale-preference',type=Path);p.add_argument('--mayor-route',type=Path);p.add_argument('--wsl-walk-planner',type=Path);p.add_argument('--walk-planner-source',type=Path,default=ROOT/'tools/field_walk_plan.cpp');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);p.add_argument('--fixture',type=Path,required=True);p.add_argument('--emulator',type=Path,required=True);p.add_argument('--dsp-component',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--clock',type=int,default=946681277);p.add_argument('--mom-help',action='store_true');p.add_argument('--house-roundtrip',action='store_true');p.add_argument('--locale-preference',type=Path);p.add_argument('--mayor-route',type=Path);p.add_argument('--wsl-walk-planner',type=Path);p.add_argument('--walk-planner-source',type=Path,default=ROOT/'tools/field_walk_plan.cpp');p.add_argument('--expect-map-owned',action='store_true');a=p.parse_args()
+if a.expect_map_owned and not a.mayor_route:raise ValueError('Map ownership expectation requires the Mayor route')
 package=a.package.resolve();out=a.out.resolve();game=package/'3ds/encore-native/encore-native.3dsx'
 receipt=json.loads((package/'build-receipt.json').read_bytes());source=receipt['source_commit']
 if not re.fullmatch('[0-9a-f]{40}',source):raise ValueError('Exact package source required')
@@ -31,11 +32,21 @@ if a.mayor_route:
  points=mayor_route.get('waypoints')
  if not isinstance(points,list)or not 2<=len(points)<=256 or any(not isinstance(p,list)or len(p)!=2 or any(type(v)not in(int,float)or not math.isfinite(v)or abs(v)>100000 for v in p)for p in points):raise ValueError('Mayor route points rejected')
  if any((x[0]==y[0])==(x[1]==y[1])for x,y in zip(points,points[1:])):raise ValueError('Mayor route must have nonempty cardinal segments')
- metadata_paths+=['romfs/world/podunk/podunk.encmap','romfs/world/mayor/mayor.encroom','romfs/world/mayor/mayor.encmap','romfs/sound/banks/mayor.encmusic','romfs/world/world.enclinks']
+ metadata_paths+=['romfs/world/podunk/podunk.encmap','romfs/world/mayor/mayor.encroom','romfs/world/mayor/mayor.encmap','romfs/sound/banks/mayor.encmusic','romfs/world/world.enclinks','romfs/ui/field.encmenus']
 source_metadata=checked_resources(game.read_bytes(),source,metadata_paths,ROOT)
 if mayor_route:
  from tools.emulator_walk_route import load as load_walk_route
  mayor_route=load_walk_route(a.mayor_route,source_metadata['romfs/world/podunk/podunk.encmap'])
+ from tools import field_area as area,podunk_field as field,field_menus as menus
+ from PIL import Image
+ _,sections=field.unpack_container(source_metadata['romfs/world/mayor/mayor.encmap'],field.MAP_MAGIC,field.MAP_STRIDES,field.MAP_LIMIT)
+ map_area=area.decode(sections[-1],sections[0]);assert map_area['sub_area']
+ menu_recipe=json.loads(subprocess.check_output(['git','show',source+':content/native-field-menus.json'],cwd=ROOT))
+ if menus.encode(menu_recipe)!=source_metadata['romfs/ui/field.encmenus']:raise ValueError('Map expectation differs from the exact artifact menu data')
+ assert map_area['map_item']==menu_recipe['map_item']
+ with Image.open(ROOT/'upstream/MOTHER-Encore'/menu_recipe['images'][0 if a.expect_map_owned else 1])as im:map_size=im.size
+ map_view=menu_recipe['display_sizes'][1]
+ expected_map=tuple(int(max(0,min(p-v/2,max(0,size-v))))for p,v,size in zip(map_area['map_offset'],map_view,map_size))
 restore_recipe=None
 if a.house_roundtrip:
  from tools.native_restore import encode as encode_restore
@@ -46,6 +57,7 @@ driver_sources={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest()for nam
 if a.mayor_route:
  driver_sources[a.mayor_route.resolve().relative_to(ROOT).as_posix()]=hashlib.sha256(a.mayor_route.read_bytes()).hexdigest()
  driver_sources['tools/emulator_walk_route.py']=hashlib.sha256((ROOT/'tools/emulator_walk_route.py').read_bytes()).hexdigest()
+ for name in ['tools/field_area.py','tools/podunk_field.py','tools/field_menus.py']:driver_sources[name]=hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
 room=parse_pack(source_metadata['romfs/world/podunk/podunk.encroom']);flags={room['strings'][f['name_string']]:i for i,f in enumerate(room['sections']['Flag'])}
 def flag(s,name):i=flags[name];return bool(s['story_flag_'+str(i//32)]&(1<<(i%32)))
 if a.house_roundtrip:driver_sources['tools/native_restore.py']=hashlib.sha256((ROOT/'tools/native_restore.py').read_bytes()).hexdigest()
@@ -306,7 +318,7 @@ try:
    # owns input. As with menu_smoke, let the ordinary transition finish first.
    advance(60)
    pulse('START');wait(lambda s:s['menu_phase']==2 and s['paused']);pulse('DOWN');pulse('DOWN');pulse('A');wait(lambda s:s['submenu_phase']==11)
-   shown=record(name);capture(name);point=shown['menu_map_x'],shown['menu_map_y'];pulse('B');wait(lambda s:s['submenu_phase']==0);pulse('B');wait(lambda s:s['menu_phase']==0 and not s['paused']);return point
+   shown=record(name);capture(name);point=shown['menu_map_x'],shown['menu_map_y'];assert point==expected_map,('Map viewport differs from source area/ownership',point,expected_map);performance['mayor_map']={'owned':a.expect_map_owned,'expected_viewport':expected_map,'source_area_offset':map_area['map_offset']};pulse('B');wait(lambda s:s['submenu_phase']==0);pulse('B');wait(lambda s:s['menu_phase']==0 and not s['paused']);return point
   fixed_map=mayor_map('mayor_lobby_map')
   def read_mayor(text,choice=False):
    pages=0
@@ -333,7 +345,7 @@ try:
   waypoint('DOWN','player_y',8);waypoint('RIGHT','player_x',8);travel('DOWN',lambda s:s['field_scene']==2 and s['field_phase']==0 and not s['paused'])
   frontier=record('mayor_returned_to_podunk');capture('mayor-returned-to-podunk');assert {k:baseline[k]for k in stable}=={k:frontier[k]for k in stable},'Initial Mayor visit changed rewards, inventory or flags'
   menu_smoke('mayor_return_goods');samples=audio_window('mayor_return_field_audio');assert any(s['dsp_region_playing']for s in samples)and len({(s['dsp_region_sample_sum'],s['dsp_region_wave_sum'])for s in samples})>1,'Podunk music did not progress after Mayor return'
- result={'status':'passed','scope':'Artificial post-basement checkpoint, normal LOAD/door/walk/battle/dialogue input; no original pixel or whole-game claim','source_commit':receipt['source_commit'],'driver_revision':driver_revision,'driver_sources_sha256':driver_sources,'source_metadata_sha256':{path:hashlib.sha256(value).hexdigest()for path,value in source_metadata.items()},'clock_fixture':a.clock,'fixture_sha256':r.sha(a.fixture),'emulator_sha256':r.sha(a.emulator),'capabilities':{'memoryWriteEnabled':caps['memoryWriteEnabled'],'inputEnabled':caps['inputEnabled']},'idempotent_trigger_revisit':True,'mayor_initial_route':bool(mayor_route),'mom_help_and_repeat':a.mom_help,'house_roundtrip':a.house_roundtrip,'locale_preference_sha256':r.sha(a.locale_preference)if a.locale_preference else None,'menu_before_and_after_battle':True,'completion_projection':{k:frontier[k]for k in ['level','experience','cash','bank','earned_cash','key_count',*['story_flag_'+str(i)for i in range(6)]]},'projection':{k:frontier[k]for k in ['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','loot_selected',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+n for i in range(16)for n in ('definition','doses','equipped')]]}}
+ result={'status':'passed','scope':'Artificial post-basement checkpoint, normal LOAD/door/walk/battle/dialogue input; no original pixel or whole-game claim','source_commit':receipt['source_commit'],'driver_revision':driver_revision,'driver_sources_sha256':driver_sources,'source_metadata_sha256':{path:hashlib.sha256(value).hexdigest()for path,value in source_metadata.items()},'clock_fixture':a.clock,'fixture_sha256':r.sha(a.fixture),'emulator_sha256':r.sha(a.emulator),'capabilities':{'memoryWriteEnabled':caps['memoryWriteEnabled'],'inputEnabled':caps['inputEnabled']},'idempotent_trigger_revisit':True,'mayor_initial_route':bool(mayor_route),'mayor_map_owned':a.expect_map_owned,'mom_help_and_repeat':a.mom_help,'house_roundtrip':a.house_roundtrip,'locale_preference_sha256':r.sha(a.locale_preference)if a.locale_preference else None,'menu_before_and_after_battle':True,'completion_projection':{k:frontier[k]for k in ['level','experience','cash','bank','earned_cash','key_count',*['story_flag_'+str(i)for i in range(6)]]},'projection':{k:frontier[k]for k in ['hp','pp','level','experience','cash','bank','earned_cash','inventory_count','key_count','loot_selected',*['story_flag_'+str(i)for i in range(6)],*['inventory_'+str(i)+'_'+n for i in range(16)for n in ('definition','doses','equipped')]]}}
 except BaseException as exc:
  result['error']=repr(exc)
  if session:

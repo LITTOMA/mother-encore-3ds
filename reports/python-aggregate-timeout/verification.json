@@ -1,0 +1,31 @@
+{
+  "scope": "Test scheduling only; main base f20863a; no game-content or pack/save change. No full-CI acceleration claim before the actual run.",
+  "source_sha256": {
+    "tests/python_suite.py": "1b7c7699402c3c3cf7f24fef59b195c86ee0082c21fbe39cfbd0389d192e229d",
+    "tests/test_ci_test_parallelism.py": "cb41f15f961af8b81608a0d40bd65b477c8b4daa816d48a9d1bbdb9c7977cd26",
+    "docs/TESTING.md": "e310c6b992e32d331371f0c68ad8e74ded8fef0bec069470a2f2e0d8649ac4ed"
+  },
+  "methods": {
+    "discovered": 1130,
+    "aggregate": 766,
+    "dedicated": 364,
+    "parallel": 0,
+    "serial": 766,
+    "modules": 0
+  },
+  "limits": "Unchanged: 4 workers; 1800 second aggregate timeout. Unknown modules remain serial after all admitted worker processes exit.",
+  "verification": {
+    "windows_scheduler": "9/9 passed",
+    "linux_scheduler": "8 passed, 1 skipped because this WSL environment has no CMake/CTest",
+    "windows_serial_profile": "709 methods in 1274.224 seconds, 4 failures and 3 errors. Diagnostic only, not a passing suite; run on Iggy pre-entry WIP. See raw log."
+  },
+  "outputs": {
+    "historical-ec48-gcc.log": "948da21af84edff6648343889d632230538e708aa6aadce0db8c68d3aef4f0be",
+    "historical-72-gcc.log": "a3f62d1f7e7de2c8da9314e8113293f60f9f7e953a73367e464f620362da8fe2",
+    "windows-serial-diagnostic.log": "3adb56ddd3366e6b7cc77058b8d0ac5e5deece28be69031ca43e8cbad624cc7a",
+    "windows-serial-diagnostic.json": "785b7a471e21c1c0674afe7191b83dddc9b3c1a49108c368248ec67c381a8200",
+    "linux-scheduler-unit.log": "c04c69fbfb90126b49df431e549dd3ceff382d62cae57865f2b2dee9e1297390",
+    "windows-scheduler-unit.log": "561bade17d14c30c733e066c46e04155249b91bf1cf8cd3796ba2ce1f5f67c63",
+    "method-partition.json": "134e2941cb1e1814bb6a8bffed1e0926ea5f109481102280e927bb90a3197c98"
+  }
+}

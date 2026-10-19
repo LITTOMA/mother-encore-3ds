@@ -28,9 +28,17 @@ class ParallelTests(unittest.TestCase):
         return name + '.Case.test_run'
 
     def test_four_processes_overlap_and_isolate_module_mocks(self):
+        self.overlap(['test_native_content', 'test_native_house', 'test_native_round', 'test_native_restore'])
+
+    def test_source_linker_workers_overlap_and_isolate_module_mocks(self):
+        self.overlap(['test_phone_linker', 'test_native_session', 'test_doll_postwin', 'test_melody_content'])
+
+    def test_source_asset_workers_overlap_and_isolate_module_mocks(self):
+        self.overlap(['test_mayor_scene', 'test_mayor_field', 'test_house_assets', 'test_new_game_assets'])
+
+    def overlap(self, names):
         (self.root / 'tests/shared.py').write_text('value = 0\n', encoding='utf-8')
         groups = {}
-        names = ['test_native_content', 'test_native_house', 'test_native_round', 'test_native_restore']
         for value, name in enumerate(names, 1):
             others = [other for other in names if other != name]
             body = '''import os, time, unittest

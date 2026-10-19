@@ -151,3 +151,7 @@ bf完整Clang普通208/208、ASan/UBSan208/208和真实3DSX/CIA均通过；GCC�
 ## CEA GCC build-source registration failure
 
 Full run 39214836153 passed genuine 3DSX/CIA packaging and Clang ordinary 209/209 plus ASan/UBSan 209/209. GCC ordinary 223/224 failed only `python_tools`: `test_console_core_sources.test_playable_sources_registered_in_both_builds` found `runtime/field_swing.cpp` in encore_core but absent from the console source list. GCC sanitizers did not run. Add the same typed module to the genuine console build; do not weaken the source-list check. Raw logs are retained in reports/graveyard-import/console-source-registration. New cross-build/full regression results remain pending.
+
+## 70460aa 全量验证与新构建读档
+
+真实3DSX/CIA与368项资源核对通过；run39223064275的GCC普通224/224、ASan/UBSan209/209，以及Clang普通209/209、ASan/UBSan209/209均通过。原缺失的console field_swing.cpp源清单已修复。704构建的262686880字节游戏与BF已验收游戏SHA256完全相同，又在新独立Azahar环境完成实际电话Record文件的正常标题LOAD、出门、Goods开关及库存/旗标投影核对。无内存写入，测试环境已清理。首次引用空的失败规划输出在启动模拟器前被拒绝，改用原176路点文件后通过。源构建回执、原始CI日志、观察与截图保留在 reports/graveyard-import/root704-verification。本提交只整理证据和文档，执行代码、内容、资源和构建定义均与704相同；此前BF完整墓地/Record验收保持其原来源与范围。完整教学、树根Break/铲子、全游戏及硬件仍未完成。

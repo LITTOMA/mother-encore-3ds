@@ -18,10 +18,42 @@
     "commit": "8b89a5e57d8ebf446fa12e38f4b738bc28f76c0f",
     "console_run": 39186758905,
     "job": 117850701827,
-    "all_success": true,
     "staged_files": 363,
     "host_full_pending": 39186841435,
-    "emulator_status": "running existing bridge/Mayor/Map route, no cemetery proof yet"
+    "emulator_status": "English/Chinese actual88 observations each passed after driver corner correction; no cemetery/Iggy on-device proof",
+    "console_success": true,
+    "full_current_snapshot": {
+      "conclusion": "",
+      "jobs": [
+        {
+          "active": [],
+          "conclusion": "success",
+          "databaseId": 117850945262,
+          "status": "completed"
+        },
+        {
+          "active": [
+            "Regenerate checked resources and run the current shared-core tests"
+          ],
+          "conclusion": "",
+          "databaseId": 117850945566,
+          "status": "in_progress"
+        },
+        {
+          "active": [],
+          "conclusion": "failure",
+          "databaseId": 117850945570,
+          "status": "completed"
+        },
+        {
+          "active": [],
+          "conclusion": "skipped",
+          "databaseId": 117850946697,
+          "status": "completed"
+        }
+      ],
+      "status": "in_progress"
+    }
   },
   "local_raw_logs": {
     "e4-gcc-full.log": {

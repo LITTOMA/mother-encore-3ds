@@ -1,0 +1,7 @@
+{
+  "same_native_state_rows": true,
+  "same_input_json_bytes": true,
+  "input_sha256": "29e342f027cdcae89cd2b5c1ee9137dcd363510b1a86f4cc680f4adc02db1003",
+  "rows": 81,
+  "correction": "The first TSV used Godot JSON.print rounded delta echoes, which changed C++ clock inputs. The corrected producer preserves exact input JSON values and verifies native index/op. Native source state observations and engine behavior did not change."
+}

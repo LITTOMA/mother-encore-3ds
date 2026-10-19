@@ -1,0 +1,25 @@
+{
+  "artifact": "8b89a5e57d8ebf446fa12e38f4b738bc28f76c0f",
+  "en_observations": 88,
+  "zh_observations": 88,
+  "completion_projection_identical": true,
+  "projection": {
+    "level": 2,
+    "experience": 17,
+    "cash": 0,
+    "bank": 20,
+    "earned_cash": 20,
+    "key_count": 3,
+    "story_flag_0": 1064961,
+    "story_flag_1": 244891648,
+    "story_flag_2": 0,
+    "story_flag_3": 0,
+    "story_flag_4": 0,
+    "story_flag_5": 0
+  },
+  "scope": "Artificial post-basement checkpoint with Map; normal LOAD/input/door/battle/Mayor/return. Not natural opening, cemetery/Iggy conversation, full byte/RNG state, audible or hardware verification.",
+  "variable_hp": [
+    9,
+    20
+  ]
+}

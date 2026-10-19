@@ -59,7 +59,8 @@ class ResourceCatalogTests(unittest.TestCase):
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
         self.assertEqual(catalog.capability_for(self.ir['bindings']), 10)
         motion=[r for r in self.ir['bindings']if r['role']=='FieldNpc']
-        self.assertEqual(len(motion),7)
+        self.assertEqual({r['id']for r in motion},set(range(320,328)))
+        self.assertEqual(next(r['path']for r in motion if r['id']==327),'world/podunk/npcs/iggy.encmick')
         self.assertTrue(all(r['id']>=256 for r in motion))
         audio_roles={'GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones'}
         legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles|{'FieldMenus','FieldNpc','FieldStory','FieldSteps'} and row['id']==catalog.ROLES[row['role']]]

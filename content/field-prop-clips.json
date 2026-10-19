@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "kind": "encore.prop-clips.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Overworld/Objects/Dead Bush.tscn",
+  "script": "Scripts/Main/Dead Bush.gd",
+  "texture": "Graphics/Objects/Podunk/Dead Bush.png",
+  "clips": [
+    {
+      "id": 1,
+      "name": "Hidden"
+    },
+    {
+      "id": 2,
+      "name": "Idle"
+    },
+    {
+      "id": 3,
+      "name": "Grow"
+    },
+    {
+      "id": 4,
+      "name": "Break"
+    },
+    {
+      "id": 5,
+      "name": "RESET"
+    }
+  ],
+  "tracks": [
+    {
+      "kind": 1,
+      "path": "Sprite:frame"
+    },
+    {
+      "kind": 2,
+      "path": "Sprite:visible"
+    },
+    {
+      "kind": 3,
+      "path": "StaticBody2D/CollisionShape2D:disabled"
+    },
+    {
+      "kind": 4,
+      "path": "Hitbox/CollisionShape2D:disabled"
+    },
+    {
+      "kind": 5,
+      "path": "interact/CollisionShape2D:disabled"
+    }
+  ],
+  "sources": {
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Dead Bush.png.import": "4ad90f6e9358c616d86e5eefcead4cb82e73b4c8cd8a543a5a98b44ddc993d48",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "scope": "Source-local Sprite/collision animation data only. Root visibility, flag policy, grow coroutine, hit/copy/sound/deferred callbacks, map/render binding and playable quest are not implemented by this candidate. RESET single constant continuous tracks are normalized under exclusive property ownership; arbitrary continuous curves reject."
+}

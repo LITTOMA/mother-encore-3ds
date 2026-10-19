@@ -115,7 +115,8 @@ int main(int argc,char** argv){
  bad=blob;path(bad,ResourceRole::FieldMap,"world/podunk/podunk.encroom");reject(bad,"field map requires its own binary type");
  bad=blob;path(bad,ResourceRole::HousePresents,"world/house/opening.encroom");reject(bad,"House presents require their own binary type");
  {const auto r=row(blob,ResourceRole::HousePresents);bad=blob;put(bad,r,40);put(bad,r+4,40);fix(bad);reject(bad,"invalid role/stable identity after HousePresents rejected");}
- check(catalog.paths(ResourceRole::FieldNpc).size()==7,"repeatable field motion identities resolve independently");
+ check(catalog.paths(ResourceRole::FieldNpc).size()==8,"repeatable field motion identities resolve independently");
+ check(catalog.path(ResourceRole::FieldNpc,327)=="world/podunk/npcs/iggy.encmick","new Iggy identity joins without replacing existing NPC bindings");
  check(catalog.paths(ResourceRole::FieldStory).size()==2,"independent Podunk and Mayor story owners");
  {const auto r=row(blob,ResourceRole::FieldNpc);bad=blob;put(bad,r,40);fix(bad);reject(bad,"field motion owners require independent stable IDs");}
  bad=blob;bad[32]^=1;fix(bad);reject(bad,"unreviewed upstream pin rejected");

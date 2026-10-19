@@ -36,3 +36,5 @@ GCC完整检查另暴露Windows生成凭据使用反斜杠的问题：ffb3b4f的
 历史CI的精确结果：ec48b48的GCC普通230/231通过，聚合python_tools在1800.09秒超时，GCC sanitizer未执行；72f02ab同样231/232通过，聚合在1800.01秒超时。72f02ab的Clang普通217项及ASan/UBSan217项、真实3DSX/CIA均通过。负面调度测试中有意触发的worker失败不是实际失败原因。原始日志保存在 action-ci-verification；当前逐项耗时诊断仍在进行，未删除测试、扩大超时或宣称完整CI全绿。
 
 持久动作交接现在提供受检的rebase接口：仅在未攻击且无延迟完成回调时采用实际移动快照，保留稀疏球棒帧、角度、前后图层、已选技能及累计启动次数；未知状态、坏方向/时钟、攻击中和结束回调未完成时原子拒绝。不会通过重建玩家重置这些值，也不在逐帧路径复制资源。原引擎两次各8组连续保留玩家、80次动作、6560个观察，稳定投影逐字相同；GCC9 ASan/UBSan 20044项通过，原进入动作28186项及直接动作3125项回归通过，14项相关Python通过，方法分配1164=800+364。证据见swing-rebase-reference-3、swing-rebase-reference-4与swing-rebase-host。该接口仍待实际PersistentPlayerState/主循环采用，未宣称正式教学、模拟器或真机通过。
+
+资源目录的下一步接线已加入capability12的严格准入：FieldSwing=45、FieldSwingGraphics=46、FieldSwingAction=47、FieldSwingEntry=48为四个全局单例角色，必须完整出现，ID固定且类型/路径各自校验，并要求已有FieldProps拥有者。目录格式仍1，旧1～11的读入分支保留；目录capability12与Room指令capability13、各动作资源格式及Session/存档独立。正式目录和全部正式资源均未改变；3288字节cap12测试fixture由实际编译器以明确的合成fingerprint生成，不能作为正式内容或文件通过证明。GCC9 ASan/UBSan新目录6650项、既有真实目录和原BattleRound重定位回归7016项通过；24项Python通过，含正式目录逐字再生成，以及旧8/10、坏新组、身份/类型/版本和全部截断；方法分配1169=805+364。证据见swing-catalog-host，完整CI与实际资源组加载仍待后续接线验证。

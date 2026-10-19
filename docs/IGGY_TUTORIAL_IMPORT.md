@@ -13,3 +13,5 @@ Room 格式仍1、规则7，capability13 的 GrantKeyItem 指令48由前一组�
 前一 KEY 组件：59项交付检查及 Room71939、Session20659、故事11690、墓地6229、场景37、门传送21通过；4项 Python 来源/编解码通过，原内容生成和368项来源验证通过。三个正式Room只更新编译来源指纹；Session、命名、地图、故事、Props、连接、桥头战斗八项输出逐字相同。Restore/Session通过原提取器更新必要依赖，命名通过原reuse-session处理。证据保留在 reports/iggy-tutorial/typed-key-grant。915daed真实3DSX/CIA构建已通过；其主机CI仍须检查最终结果。
 
 下一步接通正式来源编译、两种语言/Session/菜单/音频拥有者、持久玩家的正确输入与挥棒绘制/时序、原版胶囊接触、树根Break与取铲回调，再推进Pippi救援。未完成这些接线前，候选和组件检查均不代表教学或完整墓地已可游玩。
+
+挥棒几何组件：官方Godot3.6.2用原版胶囊及三层节点变换，对8×6树根矩形执行8766次查询，1775次重叠；共享核心GCC9 ASan/UBSan零差异。另测禁用接触、坏坐标/尺寸/角度和输出保持；原6499项/314观察仍通过，两项Python来源检查通过。原生JSON只改变小数拼写，real_t位完全相同，来源准入按float32位精确比较，未放宽碰撞期望。证据见 reports/iggy-tutorial/swing-contact-reference-2。这是几何组件，Area2D进入/退出的物理时序、正式挥棒与Break仍须接线。

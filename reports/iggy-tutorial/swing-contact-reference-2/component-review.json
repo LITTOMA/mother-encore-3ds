@@ -1,0 +1,26 @@
+{
+  "scope": "Geometry component only. Native Godot3.6.2 shape queries; no Area2D monitoring/callback timing or shipped action binding",
+  "source": "Pinned Player CapsuleShape2D80: radius10.4999, straight-section height17; full three Node2D offsets/rotations from independent Swing data. Root rectangles8x6 from13sourceprops; 9sourceangles x(31x31grid+13sourcepositions).",
+  "observations": 8766,
+  "overlaps": 1775,
+  "mismatches": 0,
+  "host": "Actual WSL GCC9 ASan/UBSan with leak checks; final contact negative cases and original6499/314 swing regression pass",
+  "first_admission_failure": "Native JSON rounds initial179.99984796050427 to179.999848. Actualallfloat32bits equal. Admission now requires identical real_t bits, no epsilon; neworiginal run in fresh directory, no observation expectation modified.",
+  "first_compile_failure": "-Werror misleading-indentation in test main, fixed line break only; unchanged core/results",
+  "remaining": [
+    "Source Area2D enter/exit ordering and monitoring",
+    "Persistent Player action input/time/render/audio",
+    "Root Break callback and shovel"
+  ],
+  "outputs": {
+    "godot.log": "775ddbb01e9860679e5bed51fc4f12503f2050b917e8fab5490df51e128f16a7",
+    "reference.tsv": "451b5bc8eb4e5bbee0c689b4c3c81a65016591634ca2f8a2155c59375f8536d6",
+    "source.json": "139a0282a960a09eb2b8363807603d6ee8371c909ef5ade4a71b8bf1982f86fd",
+    "swing-contact-python-partition.log": "0e780c49beb1953a9790c1720e310d9d2e19d77f7de79571d67bf441fa22b440",
+    "swing-contact-python.log": "01bd65448d89533bf4004488e5d859f19ea14f10c9e97580f2093c0936d6fa22",
+    "swing-contact-reference-1.log": "15973b735fdb8f5feede94844dbe0829e7e665ff908abb6dcfeadb7c5ff67a7d",
+    "swing-contact-reference-2.log": "9cc3f96dd5ecacdcfea3d2e117cbebe3fe8957c929ad32c168d64719110fa35e",
+    "swing-contact-result.log": "20e34db9dcac7b59e141e97f9b6f35610e443346694e4a85759f74a29fa5cbe2",
+    "swing-original-result.log": "aedb205b516e7c6d814591d024e2edbee86a558e9644e11ef7b76540982e97ec"
+  }
+}

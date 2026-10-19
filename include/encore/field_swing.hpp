@@ -41,4 +41,8 @@ private:
  FieldSwingData data_;SwingPose pose_;float time_=0,rate_=1;uint32_t id_=0,key_=0,pending_=0;
  bool playing_=false,attack_=false;
 };
+// Source capsule (straight section height plus round caps) against an axis-
+// aligned source rectangle. Node transforms come from the checked resource.
+// Disabled contact returns no overlap; invalid input preserves the output.
+bool swing_rectangle_overlap(const FieldSwingData&,const SwingPose&,Vec2 player,Vec2 center,Vec2 extents,bool&,std::string&);
 }

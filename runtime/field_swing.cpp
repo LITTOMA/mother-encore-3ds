@@ -69,4 +69,26 @@ bool FieldSwingPlayer::advance(double delta,std::string&e){
  time_=next;if(done)playing_=false;e.clear();return true;
 }
 bool FieldSwingPlayer::flush(std::string&e){if(!data_.valid())return fail(e,"Swing player is not initialized");if(pending_){pose_.hitbox=false;attack_=false;pending_=0;}e.clear();return true;}
+bool swing_rectangle_overlap(const FieldSwingData&d,const SwingPose&pose,Vec2 player,Vec2 center,Vec2 extents,bool&overlap,std::string&e){
+ auto finite=[](Vec2 v){return std::isfinite(v.x)&&std::isfinite(v.y)&&std::abs(v.x)<=1000000&&std::abs(v.y)<=1000000;};
+ if(!d.valid()||!finite(player)||!finite(center)||!finite(extents)||extents.x<=0||extents.y<=0||!std::isfinite(pose.pivot)||std::abs(pose.pivot)>360)return fail(e,"Swing rectangle contact input rejected");
+ if(!pose.hitbox){overlap=false;e.clear();return true;}
+ const auto&p=d.policy();const float angle=pose.pivot*float(3.14159265358979323846/180.0);
+ auto rotate=[](Vec2 v,float a){const float c=std::cos(a),s=std::sin(a);return Vec2{c*v.x-s*v.y,s*v.x+c*v.y};};
+ // Compose the three original Node2D transforms, including the shape offset.
+ const auto hit=rotate({p[7],p[8]},angle),shape=rotate(rotate({p[10],p[11]},p[9]),angle);
+ const Vec2 origin{player.x+p[4]+hit.x+shape.x-center.x,player.y+p[5]+hit.y+shape.y-center.y};
+ const auto axis=rotate(rotate(rotate({0,1},p[12]),p[9]),angle);
+ const Vec2 a{origin.x-axis.x*p[14]*.5f,origin.y-axis.y*p[14]*.5f},b{origin.x+axis.x*p[14]*.5f,origin.y+axis.y*p[14]*.5f};
+ auto point_rect=[&](Vec2 v){const double x=std::max(0.,double(std::abs(v.x)-extents.x)),y=std::max(0.,double(std::abs(v.y)-extents.y));return x*x+y*y;};
+ const double dx=double(b.x)-a.x,dy=double(b.y)-a.y,length=dx*dx+dy*dy;
+ double first=0,last=1;
+ auto slab=[&](double at,double delta,double extent){if(delta==0)return std::abs(at)<=extent;double x=(-extent-at)/delta,y=(extent-at)/delta;if(x>y)std::swap(x,y);first=std::max(first,x);last=std::min(last,y);return first<=last;};
+ double distance=0;
+ if(!(slab(a.x,dx,extents.x)&&slab(a.y,dy,extents.y))){
+  distance=std::min(point_rect(a),point_rect(b));
+  for(float x:{-extents.x,extents.x})for(float y:{-extents.y,extents.y}){const double t=length?std::max(0.,std::min(1.,((x-a.x)*dx+(y-a.y)*dy)/length)):0;const double vx=a.x+dx*t-x,vy=a.y+dy*t-y;distance=std::min(distance,vx*vx+vy*vy);}
+ }
+ overlap=distance<=double(p[13])*p[13];e.clear();return true;
+}
 }

@@ -1,0 +1,75 @@
+test_shared_resources_and_safe_staging (tests.test_dialogue_choices_assets.ChoicesAssets.test_shared_resources_and_safe_staging) ... FAIL
+test_profile_is_separate_and_explicit (tests.test_frame_profile_build.FrameProfileBuildTests.test_profile_is_separate_and_explicit) ... FAIL
+test_reader_and_renderer (tests.test_loading_indicator.LoadingIndicatorTests.test_reader_and_renderer) ... ERROR
+test_progress_payload_ownership_and_failures (tests.test_loading_texture.LoadingTextureTests.test_progress_payload_ownership_and_failures) ... ERROR
+
+======================================================================
+ERROR: test_reader_and_renderer (tests.test_loading_indicator.LoadingIndicatorTests.test_reader_and_renderer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_loading_indicator.py", line 66, in test_reader_and_renderer
+    subprocess.run([os.environ.get('CXX','g++'),'-std=c++17','-Wall','-Wextra','-Werror','-fno-exceptions','-fno-rtti',
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] ϵͳ�Ҳ���ָ�����ļ���
+
+======================================================================
+ERROR: test_progress_payload_ownership_and_failures (tests.test_loading_texture.LoadingTextureTests.test_progress_payload_ownership_and_failures)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_loading_texture.py", line 15, in test_progress_payload_ownership_and_failures
+    subprocess.run([
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] ϵͳ�Ҳ���ָ�����ļ���
+
+======================================================================
+FAIL: test_shared_resources_and_safe_staging (tests.test_dialogue_choices_assets.ChoicesAssets.test_shared_resources_and_safe_staging)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_dialogue_choices_assets.py", line 41, in test_shared_resources_and_safe_staging
+    self.assertEqual(set(map(str, files)), {'ui/opening.encchoices', 'graphics/ui/house/cursor.t3x', 'graphics/battle/lamp/font.t3x'})
+AssertionError: Items in the first set but not the second:
+'ui\\opening.encchoices'
+'graphics\\ui\\house\\cursor.t3x'
+'graphics\\battle\\lamp\\font.t3x'
+Items in the second set but not the first:
+'graphics/ui/house/cursor.t3x'
+'graphics/battle/lamp/font.t3x'
+'ui/opening.encchoices'
+
+======================================================================
+FAIL: test_profile_is_separate_and_explicit (tests.test_frame_profile_build.FrameProfileBuildTests.test_profile_is_separate_and_explicit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_frame_profile_build.py", line 27, in test_profile_is_separate_and_explicit
+    self.assertEqual(command[-4:], ['-c', '/output/main.cpp', '-o', '/output/main.o'])
+AssertionError: Lists differ: ['-c', '\\output\\main.cpp', '-o', '\\output\\main.o'] != ['-c', '/output/main.cpp', '-o', '/output/main.o']
+
+First differing element 1:
+'\\output\\main.cpp'
+'/output/main.cpp'
+
+- ['-c', '\\output\\main.cpp', '-o', '\\output\\main.o']
+?         ^^      ^^                  ^^      ^^
+
++ ['-c', '/output/main.cpp', '-o', '/output/main.o']
+?         ^      ^                  ^      ^
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.717s
+
+FAILED (failures=2, errors=2)

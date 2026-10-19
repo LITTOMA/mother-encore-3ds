@@ -1,0 +1,9 @@
+{
+  "full_run": 39209964385,
+  "gcc_job": 117920932837,
+  "source_commit": "bf063a7d0af56ca0a56a198bd9c9a7a95d4dd253",
+  "result": "Normal222/223 passed, sole failed CTest python_tools: actual aggregate failure is PartyActor.test_source_route_fixture retaining the old three-Podunk-owner list. The printed intentional worker failure and worker-collection exception belong to passing scheduler negative tests. No GCC full or sanitizer pass.",
+  "fix": "Assert exact current five stable NPC IDs, then project only appended Iggy and two zombie owners while comparing the frozen legacy route bytes unchanged. Three focused source methods pass.",
+  "fixture_sha256": "6bed8a2a6f6920713f367b9cbb0f946cd72e200004a38f389cac0ec43c6f87ea",
+  "local_four_diagnosis": "Windows two Python path assertions assumed slash separators; two loading tests could not start g++ (WinError2). Actual same loading C++ tests passed under WSL GCC. No implementation changes or skips added for these Windows environment assumptions."
+}

@@ -135,3 +135,6 @@ GCC9 ASan/UBSan的NativeSession20659点通过，包含墓地旗标实际编解�
 独立ENCSWG01格式1/capability1记录八个AnimationPlayer绑定、来源离散方向顺序、动作属性、胶囊形状和位移、两层精灵、原音源/震动及正常/受损速度。右上实际绑定550，右向第二帧实际0.067；不按连续子资源编号或等间隔帧猜测。运行时只执行八类受检属性/结束回调，不能执行任意节点方法。动画结束与延后方法释放ATTACK分别处理；稀疏的球棒前后层属性在重新播放前保留。C++不保留角色内容或帧表。当前未接正式场景/按键/音频/碰撞/绘制，不能宣称游戏里已经可以挥棒。
 
 官方Godot3.6.2执行逐字不变的八份Animation与结束方法，以及原独立球棒脚本；隔离场景只提供明确的节点和全局/帧读取边界。314个实际属性/回调观察与GCC9 ASan/UBSan逐项匹配，6499项解析/坏版本/坏轨道/截断/失败保留/速度/队列检查通过。4项Python来源方法通过；1128项严格分配为764聚合+364独立。补充实际文件摘要与原警告政策核对后，原生314点TSV逐字节相同。Windows本地完整CMake先缺VS环境，使用真实VsDevCmd后在既有locale_preference.cpp的POSIX unistd.h处失败，不能报完整主机通过；原始失败保留。数据只进入测试夹具，发货资源、既有格式和存档不变。证据见reports/graveyard-import/field-swing。
+
+
+bf063a7完整GCC普通223项中222项通过，唯一失败CTest为python_tools：实际聚合失败仅PartyActor旧路线夹具仍期望三名Podunk NPC。测试现在先检查五个真实稳定身份，再只投影Iggy及两名僵尸的追加身份；冻结的旧路线逐字比较和文件本身不变。三项定向来源检查通过。输出中的intentional worker failure及collection异常是已通过的调度器负测试，不误判成生产失败。该旧完整运行仍记失败，不能声称已跑GCC完整sanitizer。此前四项Windows本地聚合问题另已定位：两项路径分隔符假设，两项无法启动g++；后两项相同C++测试在WSL实际通过，没有给生产逻辑或CI增加跳过规则。原始日志与审查在reports/graveyard-import/cemetery-owner-regressions。

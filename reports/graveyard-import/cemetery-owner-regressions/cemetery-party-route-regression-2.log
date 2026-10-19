@@ -1,0 +1,8 @@
+test_source_profiles_and_clips (tests.test_party_npc_actor.PartyActor.test_source_profiles_and_clips) ... ok
+test_source_route_fixture (tests.test_party_npc_actor.PartyActor.test_source_route_fixture) ... ok
+test_versions_and_profile_negative (tests.test_party_npc_actor.PartyActor.test_versions_and_profile_negative) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.258s
+
+OK

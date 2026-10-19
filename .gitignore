@@ -346,5 +346,23 @@ cookies.json
 !/reports/field-scene-resources/*.json
 !/reports/pippi-mom-help/approach-route.cpp
 
+# Reviewed Mayor import candidates: evidence only, no emulator profiles or binaries.
+!/reports/mayor-office-import/
+!/reports/mayor-office-import/*.json
+!/reports/mayor-office-import/*.log
+!/reports/mayor-office-import/*.cpp
+!/reports/mayor-office-import/emulator/
+!/reports/mayor-office-import/emulator/repeat-projection.json
+!/reports/mayor-office-import/emulator/en/
+!/reports/mayor-office-import/emulator/zh/
+!/reports/mayor-office-import/emulator/map-owned/
+!/reports/mayor-office-import/emulator/*/result.json
+!/reports/mayor-office-import/emulator/*/observations.json
+!/reports/mayor-office-import/emulator/*/effective-walk-route.json
+!/reports/mayor-office-import/emulator/*/driver_snapshot.py
+!/reports/mayor-office-import/emulator/*/stdout.log
+!/reports/mayor-office-import/emulator/*/mayor-returned-to-podunk.png
+!/reports/mayor-office-import/emulator/*/mayor-help-choice-yes.png
+!/reports/mayor-office-import/emulator/*/mayor_office_map.png
 !/reports/field-scene-resources/*.png
 !/reports/field-scene-resources/*.py

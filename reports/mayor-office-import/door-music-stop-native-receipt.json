@@ -1,0 +1,36 @@
+{
+  "source": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "whole_handler_approved": false,
+    "source_sha256": {
+      "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506"
+    },
+    "methods_sha256": {
+      "start_door_transition": "e24aac8abccd255ba08d623a54da55f050974e4bcc212a40192786f4da4d3d74"
+    },
+    "changer_script_sha256": "3e1e637dfddbb3fc691a9d974e5be99be0130ba2a6d74a2de55c1858cd8862be",
+    "stop_method_sha256": {
+      "stop_music": "c6b6b2c1a049bec410e3b84e38112f238f028a6b93d5e7eb67fa527c9e99a260"
+    },
+    "prefix_sha256": "9aaedac3e0b90da29f82cfb5cb91b94ee1260cc95f8c304dbb74a64724407dbb"
+  },
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "producer_sha256": "fa266f1e9251776354b83c7cb71ebab835008e504fef938ea2919a9a4fb4a0af",
+  "generated_sha256": {
+    "door.gd": "148a8db6c8df149ae2652b90917872ed8719bd74d48ac61adfb72cedc5aa7774",
+    "manager.gd": "bb277848cf460c3003851a9c0dfcbae2bff88d340db0e3f156ea0bcf0223d2e5",
+    "global.gd": "a181b78ddc81696b7e81f05391b0589228258861788db07abedac8782c0987b1",
+    "transition.gd": "54f9d552a852375178e9d1e073bc80e4f58dbbb940113885c9215fd0cc147fda",
+    "region.gd": "f5e4591cf32d37beaa15711d2caedc85e5cb405bf5861404f6eb414139fe296a",
+    "project.godot": "df8d2ee766e38e26141807ee9d0cb070db0ba509ca41e990031d717c5076a1bf",
+    "probe.gd": "97c8cb12e049b7012902b70041ff163e40d174f25eb33ee11e9713ab02e439ea"
+  },
+  "adapters": [
+    "Door/player signature type annotations removed; unused player injected null; LF normalization",
+    "Global/currentScene and manager references injected as Nodes",
+    "Unattached source regions isolate registration mutation; metadata supplies stable test identity"
+  ],
+  "scope": "Source array-loop registration outcomes only; no fade/playback or scene/hardware claim",
+  "result_sha256": "b9a01a4d7c3e857d9d675c401f806a0aca7cce8b1a7ba86845e00fbd8e76ff81"
+}

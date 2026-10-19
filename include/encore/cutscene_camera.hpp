@@ -10,6 +10,8 @@ class CutsceneCamera {
 public:
     bool initialize(const RoomView& content,Vec2 player,Vec2 viewport={400,240});
     bool relocate_player(Vec2 player);
+    // Rebind only scene limits; a persistent player keeps its own camera/shakers.
+    bool rebind_scene(const RoomView&,Vec2 player,Vec2 viewport);
     bool resize_viewport(Vec2 viewport);
     bool is_shaking()const{return !current().shakes.empty()||!current().recoveries.empty();}
     bool change_to_dialogue(){return change_to_actor(kRoomNoIndex,{});}
@@ -33,6 +35,8 @@ public:
     bool follows_actor() const { return current_index_!=0; }
     Vec2 global_position() const { return current().global; }
 private:
+    friend class OpeningWorld;
+    bool same_state(const CutsceneCamera&)const;
     struct Shake { double timer=0,magnitude=0,reduction=0; int left=0,side=1; Vec2 old{},direction{}; };
     struct Recovery { double time=0; Vec2 from{}; bool started=false; };
     struct Camera {
@@ -43,7 +47,11 @@ private:
         std::vector<Recovery> recoveries;
         bool moving=false,paused=false,returning=false;
     };
-    RoomView content_;
+    struct Binding {
+        std::vector<RoomCameraArea> areas;uint32_t default_area=0;
+        double return_seconds=0,shake_step=0,minimum_magnitude=0,zero_threshold=0,shake_weight=0,recovery_seconds=0;
+    } binding_;
+    bool bind_content(const RoomView&,bool require_same_parameters);
     Vec2 min_center_{},max_center_{},viewport_{};
     std::vector<Camera> cameras_{Camera{}};
     size_t current_index_=0;

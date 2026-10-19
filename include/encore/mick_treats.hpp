@@ -48,9 +48,15 @@ public:
     MickClip clip(uint32_t)const;
     MickRngEvent rng_event(uint32_t)const;
     // Capability 4 is an independently bound NPC motion owner, without any
-    // dialogue or inventory programme. Legacy Mick keeps its existing contract.
+    // dialogue or inventory programme. Capability 6 adds stationary eight-
+    // direction NPC motion; capability 7 adds source interaction/return policy.
+    // Capability 5 remains unknown. Legacy Mick is intact.
     bool motion_only()const;
     uint32_t owner_id()const;
+    uint32_t direction_count()const;
+    bool interaction_policy()const;
+    bool has_dialogue()const;
+    float return_delay()const;
     bool wanders()const;
     bool stares()const;
     bool animated_idle()const;
@@ -107,6 +113,11 @@ public:
     bool start_thought(bool target,std::string&);
     void face_toward(Vec2 target);
     bool restore_motion_pose(Vec2 position,Vec2 direction,std::string&);
+    bool begin_interaction(std::string&);
+    void set_dialogue_talking(bool talking){dialogue_talking_=talking;}
+    bool end_interaction(std::string&);
+    bool observe_player(bool in_view,std::string&);
+    bool idle_frame(double delta,std::string&);
     bool start_bark(std::string&);
     bool advance_text(std::string&);
     bool move_choice(int delta);
@@ -135,6 +146,7 @@ private:
     void tick_wander(float dt,Vec2 player,bool paused,MickWorld&);
     void consume_rng(Vec2 camera,Vec2 view);
     void pick_destination();
+    bool arm_return(std::string&);
     uint32_t direction_index()const;
     MickView view_;MickHost* host_=nullptr;uint32_t pc_=0,programme_first_=0,programme_count_=0;
     MickProgramState state_=MickProgramState::Idle;bool ready_=false;std::string locale_="en";
@@ -146,6 +158,8 @@ private:
     float turn_wait_=0,turn_interval_=0,move_left_=0,move_speed_=0,wait_left_=0,wander_left_=-1;
     Vec2 turn_target_{},move_target_{},shove_dir_{};
     bool wander_armed_=false,looking_=false,probing_=false;
+    bool interaction_paused_=false,dialogue_talking_=false;
+    std::vector<float> return_timers_;
     uint32_t anim_=0,choice_index_=0,choice_text_[2]{},choice_pc_[2]{};
 };
 // text_tools.gd replaces [ui_*], [PartyLead] and [Ninten] before the box draws.

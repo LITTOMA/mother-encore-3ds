@@ -1,0 +1,21 @@
+{
+  "removed": [
+    {
+      "path": "build\\full-port\\music_region_player-routes-dsp-check",
+      "bytes": 45179408
+    },
+    {
+      "path": "build\\full-port\\music_region_service-routes-dsp-check",
+      "bytes": 45637856
+    },
+    {
+      "path": "build\\full-port\\music_region_prepare-routes-dsp-check",
+      "bytes": 45666176
+    },
+    {
+      "path": "build\\full-port\\run_audio_player-routes-dsp-check",
+      "bytes": 45543008
+    }
+  ],
+  "bytes": 182026448
+}

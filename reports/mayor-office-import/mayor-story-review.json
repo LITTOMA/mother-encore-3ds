@@ -1,0 +1,113 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "whole_handler_approved": false,
+  "scope": "Initial Mayor Office source conversations and guarded later source overrides; candidate only",
+  "mapped_source": {
+    "documents": [
+      "Data/Dialogue/Podunk/abbott.yaml",
+      "Data/Dialogue/Podunk/mayor_help.yaml",
+      "Data/Dialogue/Podunk/mayor_side_desk.yaml",
+      "Data/Dialogue/Podunk/pippi_town_hall.yaml"
+    ],
+    "next_phrase": "Render source text before post-text flags or explicit goto; no implicit numeric fallthrough",
+    "choices": "Two original option keys, initial0, yes7, no/cancel10, existing checked original GridContainer and cursor resource",
+    "end": "Original stop_interaction then clear talker, cutscene end, return camera/offset0.5; no replacement actors in these source documents",
+    "player_facing": "Actual Player.gd _turn_to override chooses cardinal dominant axis, tie vertical, both source axes enabled; previous unconstrained normalized field adapter was wrong"
+  },
+  "capability": {
+    "format": "ENCFST01",
+    "version": 1,
+    "capability": 3,
+    "sections": 7,
+    "interaction_stride": 32,
+    "interaction_status": "0 executable checked source;1 unavailable, programme must beUINT32_MAX; source path retained",
+    "section7": "Nested checked ENCCHOIC pack, mandatory for this peace-scene candidate",
+    "no_encounters_or_overrides": true,
+    "old_capabilities": [
+      1,
+      2
+    ],
+    "save_schema_changed": false,
+    "shipping_changed": false
+  },
+  "checks": {
+    "gcc9_asan_ubsan": 2980,
+    "python_methods": 14,
+    "legacy_field": 2041,
+    "policy_field": 2419
+  },
+  "failure_records": [
+    {
+      "kind": "Lowering admission",
+      "error": "Branch must target a phrase entry",
+      "fix": "Give the source close/end transition a distinct internal phrase entry; branch targets remain original labels",
+      "raw_log": "Initial command transcript only"
+    },
+    {
+      "kind": "Host test compile",
+      "error": "read_file is not a member of encore",
+      "fix": "Include the actual file IO declaration in test"
+    },
+    {
+      "kind": "Runtime integration",
+      "error": "world.advance rejected after unbound speech",
+      "fix": "Use source Player cardinal turn override; assert restored movement for six axial/tie input cases"
+    },
+    {
+      "kind": "Python test expectation",
+      "error": "Expected choice PC6 but actual PC3",
+      "fix": "Assert selected source dialogue ID and cancel-to-No semantics rather than guessing a command offset"
+    }
+  ],
+  "sources": {
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Data/Dialogue/Podunk/abbott.yaml": "196dd2ff1dda964f7816ffaf69bf8cd418ad232a14d337cd3b24320a85785c8b",
+    "Data/Dialogue/Podunk/abbott_2.yaml": "a3ab799ead0e31ab28ded4d11a59c7f7f52fcb3e1d2bc6bc32d64d60b09bf223",
+    "Data/Dialogue/Podunk/cutscenes/mayor_pippi_rescue.yaml": "78a5a2372c1fc1142fe84b9fe2458a6d529755c4652c0aeade944d5937b5a231",
+    "Data/Dialogue/Podunk/mayor_help.yaml": "1485a2f560f7a64338874386dd8ee2eefec2251815679a0e4aa3d4d9fce9dda5",
+    "Data/Dialogue/Podunk/mayor_report.yaml": "1f01dcec6d275f197fd4454a9cf1c0eb6bf1a78456e353020db2eb8ab75ef676",
+    "Data/Dialogue/Podunk/mayor_side_desk.yaml": "801b8d7536791dedb3327166309d8424e56f7344361be34f4fe7d634af7ee3e2",
+    "Data/Dialogue/Podunk/mayor_zoo_freed.yaml": "cb928e07ac313aa9ca54bc2eb93a6a7ae15f58d280adf62d71b88002cd98d341",
+    "Data/Dialogue/Podunk/pippi_town_hall.yaml": "3bf49e8e5c25b4655ff1d59a3ae441c70249459e709e83e43f1cb03dfed8cb6f",
+    "Graphics/Character Sprites/Npcs/4dir/abbott.png": "befdb4626b1b8020177055209fa61384d0bc995ef4b561eab39be02bc84f0cbc",
+    "Graphics/Character Sprites/Npcs/4dir/abbott.png.import": "8dc282c2e6488000ff9eb4c4016d5a16890a21a0da1ff1d364510820d4e643da",
+    "Graphics/Character Sprites/Npcs/4dir/podunkmayorfront.png": "bcd4c14565350967d325a4c11bb107f49131336cf8c7346469ed648d785f049a",
+    "Graphics/Character Sprites/Npcs/4dir/podunkmayorfront.png.import": "1b4acd771404946b7b212c994d08c604596fef7375419ab2626ef0e237a82a67",
+    "Graphics/Character Sprites/Npcs/4dir/podunkmayorside.png": "d208624ab8d099f732e6de5f0032b2ced2fd0cbde6b32b922f7325c3747a71f2",
+    "Graphics/Character Sprites/Npcs/4dir/podunkmayorside.png.import": "52e9222c680758fcbc497e6fdc900f5e3973dbe0cd01f2fce6a416b368336fde",
+    "Graphics/Character Sprites/Pippi/main.png": "552eaf3a8fa668afe0d3a8bd12ac13b70cf4312fef57a14f8cc8ef254196164f",
+    "Graphics/Character Sprites/Pippi/main.png.import": "31e32c6978ae45aa04c9fe9df6db237a230b6d1c2ddee5da9b37d70c9eb8aa3b",
+    "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe"
+  },
+  "source_sha256": {
+    "runtime/field_story.cpp": "843ac2ee4696f027379f24b33653ccfcd7f3189b084fd30d9b324da0083f8e80",
+    "runtime/field_scene.cpp": "8f5b67d3bca6275b6348a03c5c2cc9d2df78467e24a7a1773d7b357206a22612",
+    "runtime/world.cpp": "8b346755b301365d13011b3c43feb87a073248497b32c0a398ba44b6c655222c",
+    "include/encore/field_story.hpp": "1b221dcc480bbc0b847ee0f5f3f9d85e6e0925d6434443e2cc14d804fb9edd8c",
+    "tools/mayor_story.py": "6d1755719a9fec4ab6155d88769d53cb3cb6a720396692f9730f592f565ea42e",
+    "tests/fixtures/mayor-initial.encstory": "c74972794a0ad27908fd5168941b62c41ff8ff59356b82696d4f50053b24e27f",
+    "tests/fixtures/mayor-initial-story.encroom": "a382233320e99342c3982c9b2bf79d17f65b18a976fd8e9a74ebba78d791d951"
+  },
+  "remaining": [
+    "Platform choice presentation/input and full Mayor scene lifecycle",
+    "Town Hall music, footsteps and AreaRoom/menu map metadata",
+    "Real candidate 3DS build and emulator route",
+    "Later original content and physical hardware"
+  ]
+}

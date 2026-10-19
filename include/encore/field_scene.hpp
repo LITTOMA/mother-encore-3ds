@@ -2,6 +2,7 @@
 #include "encore/collision.hpp"
 #include "encore/field_data.hpp"
 #include "encore/field_story.hpp"
+#include "encore/field_steps.hpp"
 #include "encore/introduction.hpp"
 #include "encore/mick_treats.hpp"
 #include "encore/world.hpp"
@@ -24,6 +25,7 @@ public:
     void set_excluded(uint32_t slot){excluded_=slot;}
     bool collect(Vec2 minimum,Vec2 maximum,std::vector<MotionObstacle>& out)const override;
 private:
+    FieldRunLoop run_audio_;std::vector<uint8_t>step_inside_;
     FieldMapView map_;
     std::vector<Vec2> points_,normals_;
     std::vector<uint32_t> first_;
@@ -95,6 +97,10 @@ public:
     // Bind Mick after prepare; host effects stay platform-owned.
     bool bind_mick(MickView,MickHost&,std::string& error);
     bool bind_npc(MickView,MickHost&,std::string& error);
+    bool bind_steps(FieldStepsView,const AudioBank&,std::string_view inherited_sound,std::string&);
+    FieldRunLoop&run_audio(){return run_audio_;}
+    const FieldRunLoop&run_audio()const{return run_audio_;}
+    void clear_run_events(){run_audio_.clear_events();}
     bool npcs_ready()const;
     bool actor_visible(uint32_t index)const;
     ActorActionState actor_pose(uint32_t index)const;
@@ -144,12 +150,14 @@ private:
     void apply_mick_body();
     void apply_npc_bodies();
     bool fail(std::string message){phase_=FieldPhase::Error;error_=std::move(message);return false;}
+    FieldRunLoop run_audio_;std::vector<uint8_t>step_inside_;
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
     std::vector<bool>collision_layers_,collision_bodies_;bool collision_ready_=false;
     StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;
     MickRuntime mick_;bool mick_bound_=false;
-    struct Npc {uint32_t actor=0,item=0;MickRuntime motion;StaticMotionSolver solver;};
+    uint32_t interaction_actor_=UINT32_MAX;
+    struct Npc {uint32_t actor=0,item=0;MickRuntime motion;ActorActionState sprite;StaticMotionSolver solver;};
     std::vector<std::unique_ptr<Npc>> npcs_;
     Vec2 viewport_{400,240};
     // Suppress the same confirm pulse that started MickTalk from advancing text.

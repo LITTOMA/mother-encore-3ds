@@ -1,0 +1,188 @@
+{
+  "schema": 2,
+  "kind": "encore.field-scene.recipe",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Candidate original Mayor Office map only: static source sprites, TileMaps, collision, doors, cameras and actor identities. Room, NPC, story and music assets are not yet ready; do not stage this candidate.",
+  "scene": {
+    "id": 3,
+    "source": "Maps/podunk/Mayors Office.tscn",
+    "display_name": "Mayors Office",
+    "version": "Act2 v0.4.1.0",
+    "region": "Podunk"
+  },
+  "house": {
+    "id": 1,
+    "source": "Maps/podunk/Nintens House.tscn",
+    "room_ir": "content/native-opening.json"
+  },
+  "player": {
+    "scene": "Nodes/Reusables/Player.tscn",
+    "collision_layer": 1,
+    "collision_mask": 4353
+  },
+  "tileset": "Tilesets/MayorsOffice.tres",
+  "door": {
+    "scene": "Nodes/Overworld/Door.tscn",
+    "script": "Scripts/Main/Door.gd",
+    "transition": "Scripts/global/SceneTransition.gd",
+    "destination_offset_y": -7
+  },
+  "routes": [
+    {
+      "id": 1,
+      "from": 1,
+      "to": 2,
+      "door": "Doors/Podunk"
+    },
+    {
+      "id": 2,
+      "from": 2,
+      "to": 1,
+      "door": "Objects/Doors/NintensHouse"
+    },
+    {
+      "id": 3,
+      "from": 2,
+      "to": 3,
+      "door": "Objects/Doors/TownHall"
+    },
+    {
+      "id": 4,
+      "from": 3,
+      "to": 2,
+      "door": "Doors/MayorLobby"
+    },
+    {
+      "id": 5,
+      "from": 3,
+      "to": 3,
+      "door": "Doors/MayorLobby2"
+    },
+    {
+      "id": 6,
+      "from": 3,
+      "to": 3,
+      "door": "Doors/MayorLobby3"
+    }
+  ],
+  "locales": [
+    "en",
+    "zh_Hans_CN"
+  ],
+  "ported_notices": [],
+  "action_boundaries": {},
+  "categories": {
+    "Nodes/Overworld/Door.tscn": "door",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "openable_door",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "grass",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "prop",
+    "Nodes/Overworld/Objects/Present.tscn": "prop",
+    "Nodes/Reusables/exterior payphone.tscn": "prop",
+    "Nodes/Reusables/atm exterior.tscn": "prop",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "prop",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "prop",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "prop",
+    "Nodes/Reusables/flag landmarks.tscn": "flag_landmark",
+    "Nodes/Overworld/camarea.tscn": "camera_area",
+    "Nodes/Reusables/CutsceneArea.tscn": "boundary",
+    "Nodes/Overworld/jump area.tscn": "boundary",
+    "Nodes/Reusables/Reparenter.tscn": "boundary",
+    "Nodes/Reusables/event activator.tscn": "boundary",
+    "Nodes/Reusables/npc.tscn": "notice",
+    "Nodes/Reusables/door_npc.tscn": "notice",
+    "Nodes/Overworld/birds.tscn": "notice",
+    "Nodes/Overworld/butterfly.tscn": "notice",
+    "Nodes/Overworld/dandelion spawner.tscn": "notice",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "notice",
+    "Nodes/Reusables/interact_dialog.tscn": "notice",
+    "Nodes/Overworld/MusicChanger.tscn": "notice",
+    "Nodes/Reusables/stairs.tscn": "notice",
+    "Nodes/Reusables/stepping sounds.tscn": "notice",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "notice",
+    "Nodes/Ui/effects/melodyBG.tscn": "notice",
+    "Nodes/Reusables/DebugStartPos.tscn": "notice"
+  },
+  "prop_sprites": {
+    "Nodes/Overworld/Objects/Dead Bush.tscn": [
+      "Sprite"
+    ],
+    "Nodes/Overworld/Objects/Present.tscn": [
+      "Sprite"
+    ],
+    "Nodes/Reusables/exterior payphone.tscn": [
+      "main"
+    ],
+    "Nodes/Reusables/atm exterior.tscn": [
+      "main"
+    ],
+    "Nodes/Reusables/VendingMachineExterior.tscn": [
+      "main"
+    ],
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": [
+      "."
+    ],
+    "Nodes/Overworld/Objects/DroppedItem.tscn": [
+      "Sprite"
+    ]
+  },
+  "labels": {
+    "Nodes/Reusables/CutsceneArea.tscn": "Cutscene area",
+    "Nodes/Overworld/jump area.tscn": "Jump area",
+    "Nodes/Reusables/Reparenter.tscn": "Bridge layer switch",
+    "Nodes/Reusables/event activator.tscn": "Event activator",
+    "Nodes/Reusables/npc.tscn": "NPC",
+    "Nodes/Reusables/door_npc.tscn": "Door dialogue",
+    "Nodes/Overworld/birds.tscn": "Birds",
+    "Nodes/Overworld/butterfly.tscn": "Butterfly",
+    "Nodes/Overworld/dandelion spawner.tscn": "Dandelion",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "Enemy spawner",
+    "Nodes/Reusables/interact_dialog.tscn": "Inspectable",
+    "Nodes/Overworld/MusicChanger.tscn": "Music area",
+    "Nodes/Reusables/stairs.tscn": "Stairs",
+    "Nodes/Reusables/stepping sounds.tscn": "Stepping sounds",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "Sparkles",
+    "Nodes/Ui/effects/melodyBG.tscn": "Melody background",
+    "Nodes/Reusables/DebugStartPos.tscn": "Debug start",
+    "Nodes/Overworld/Door.tscn": "Door",
+    "prop": "Object interaction"
+  },
+  "atlas_directory": "graphics/world/mayor",
+  "outputs": {
+    "map": "world/mayor/mayor.encmap",
+    "room": "world/mayor/mayor.encroom",
+    "links": "world/world.enclinks"
+  },
+  "route_recipe": "content/world-scene-routes.json",
+  "static_sprites": [
+    "Mayor's Office",
+    "Mayor's Office2",
+    "MayorlobbyDesk"
+  ],
+  "actor_bindings": [
+    {
+      "id": 2,
+      "path": "npc4",
+      "scene": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "id": 3,
+      "path": "Objects/npc",
+      "scene": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "id": 4,
+      "path": "Objects/npc2",
+      "scene": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "id": 5,
+      "path": "Objects/npc3",
+      "scene": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "id": 6,
+      "path": "Objects/npc4",
+      "scene": "Nodes/Reusables/npc.tscn"
+    }
+  ]
+}

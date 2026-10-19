@@ -1,0 +1,57 @@
+{
+  "removed": [
+    {
+      "path": "build\\full-port\\music_library-lifetime-check",
+      "bytes": 44920288
+    },
+    {
+      "path": "build\\full-port\\music_finished-lifetime-check",
+      "bytes": 44832504
+    },
+    {
+      "path": "build\\full-port\\music_bank_routes-lifetime-check",
+      "bytes": 45266440
+    },
+    {
+      "path": "build\\full-port\\music_scene_graph-lifetime-check",
+      "bytes": 45272608
+    },
+    {
+      "path": "build\\full-port\\music_players-lifetime-check",
+      "bytes": 44941816
+    },
+    {
+      "path": "build\\full-port\\music_player_choice-lifetime-check",
+      "bytes": 44792072
+    },
+    {
+      "path": "build\\full-port\\music_regions-lifetime-check",
+      "bytes": 44840464
+    },
+    {
+      "path": "build\\full-port\\music_eof-routes-dsp-check",
+      "bytes": 46476952
+    },
+    {
+      "path": "build\\full-port\\music_region_player-routes-dsp-check",
+      "bytes": 45647848
+    },
+    {
+      "path": "build\\full-port\\music_region_service-routes-dsp-check",
+      "bytes": 46094312
+    },
+    {
+      "path": "build\\full-port\\music_region_prepare-routes-dsp-check",
+      "bytes": 46126728
+    },
+    {
+      "path": "build\\full-port\\run_audio_player-routes-dsp-check",
+      "bytes": 45992808
+    },
+    {
+      "path": "build\\full-port\\music_bank_transports-routes-dsp-check",
+      "bytes": 46587856
+    }
+  ],
+  "bytes": 591792696
+}

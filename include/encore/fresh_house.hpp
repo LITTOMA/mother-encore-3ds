@@ -12,7 +12,7 @@ namespace encore::upstream {
 struct FreshHouseState {
  FreshHouseState()=default;
  // Resource preparation can retain the exact player/camera owner. This binding
- // remains read-only until a future checked cross-scene commit is implemented;
+ // remains read-only; live handoff uses the separately prepared destination;
  // initialize/initialize_restored cannot reset the shared player.
  FreshHouseState(RetainPersistentPlayer tag,const OpeningWorld& active):world(tag,active){}
  FreshHouseState(const FreshHouseState&)=delete;

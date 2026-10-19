@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_move_audio_reference.py", line 94, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_move_audio_reference.py", line 89, in main
+    invoke(o.godot.resolve(),project,['--script',str(project/'probe.gd'),'--encore-out='+str(out/'reference.json')],out/'godot.log');r=validate_result(json.loads((out/'reference.json').read_bytes()));(out/'calls.tsv').write_bytes(fixture(r).encode())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_scene_reference.py", line 44, in invoke
+    raise ValueError('Engine reference failed; inspect ' + str(log))
+ValueError: Engine reference failed; inspect D:\GameDev\3DS\mother-encore-3ds\build\mayor-import\move-audio-reference-2\godot.log

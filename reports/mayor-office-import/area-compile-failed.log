@@ -1,0 +1,7 @@
+tests/field_area_tests.cpp: In function ‘int main(int, char**)’:
+tests/field_area_tests.cpp:26:363: error: ‘class encore::upstream::FieldScene’ has no member named ‘advance’
+   26 |  for(bool already:{false,true}){flags[visit]=already;FieldScene scene;CHECK(scene.prepare(r,v,links,flags,{8,-63},{0,1},{400,240},error));CHECK(scene.world.story_flag(v.text(a.visit_flag)));CHECK(!scene.world.story_flag(v.text(a.party_guard_flag)));CHECK(scene.world.story_revision()==1);CHECK(flags[visit]==already);CHECK(scene.finish_transition());CHECK(scene.advance(1./60,{},error));}
+      |                                                                                                                                                                                                                                                                                                                                                                           ^~~~~~~
+tests/field_area_tests.cpp:12:35: note: in definition of macro ‘CHECK’
+   12 | #define CHECK(x) do{++checks;if(!(x)){std::fprintf(stderr,"AreaRoom %d: %s (%s)\n",__LINE__,#x,error.c_str());std::exit(1);}}while(0)
+      |                                   ^

@@ -1,0 +1,7 @@
+platform/ctr/audio_player.cpp: In member function ‘bool encore::ctr::AudioPlayer::stop_lane(encore::ctr::AudioLane, std::string&)’:
+platform/ctr/audio_player.cpp:155:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  155 |     if(voices_[lane].samples)stop(lane);error.clear();return true;
+      |     ^~
+platform/ctr/audio_player.cpp:155:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  155 |     if(voices_[lane].samples)stop(lane);error.clear();return true;
+      |                                         ^~~~~

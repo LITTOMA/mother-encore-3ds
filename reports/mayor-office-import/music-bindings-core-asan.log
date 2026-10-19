@@ -1,0 +1,1 @@
+Music library bindings: 1397 checks; explicit 13-track metadata joins, lazy checked bank reads, source/import/PCM ownership, truncation/schema/path/CRC/identity rollback; no PCM validation or live frontend claim

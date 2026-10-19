@@ -1,0 +1,11 @@
+{
+  "scope": "Two consumers share a deliberately mutated generated negative-test fixture; no suite skipped",
+  "locks": {
+    "step_scene_resources": [
+      "step_scene_metadata_files"
+    ],
+    "world_run_audio": [
+      "step_scene_metadata_files"
+    ]
+  }
+}

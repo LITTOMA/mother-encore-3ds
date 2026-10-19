@@ -1,0 +1,166 @@
+{
+  "status": "passed",
+  "scope": "Artificial post-basement checkpoint, normal LOAD/door/walk/battle/dialogue input; no original pixel or whole-game claim",
+  "source_commit": "b739c6ae2f88c98b113b8b188976a567302c0fd1",
+  "driver_revision": "01aabe4241a8d7be88bf5d2ab9260234f295c262",
+  "driver_sources_sha256": {
+    "tools/run_podunk_bridge_semantics.py": "9b3b2ccabd0ad2837b9147852d3a8ee6322b0cc3999e8f3b2138dfbd71bca264",
+    "tools/emulator_artifact.py": "e7932cab732da0c33fda4b230face337314ad8a052bf11ce337c330f67288003",
+    "tools/ci_console_check.py": "918eeb5fec73e40a9420dd7463eb082c1443038c4b3ae3c2898c49612c22ecbe",
+    "tools/run_emulator_semantics.py": "9f3674bfb2880436b6a8ccedd79a5d242fb672ffe4a99d772b763fc9657f8baf",
+    "tools/cdb_client.py": "22f2ee2c099be1c8b89be27e24fa0f1add899f95c3c77fee77cab634bbc9ba23",
+    "tools/semantic_probe.py": "81c226c48668842b7d1350c9f36ef945fbf142a25b42aa27285565475c21aa1f",
+    "tools/native_restore.py": "8ce8d43c7923a84ccdb40c70b2e918e042f869fe6be5f03f123c38b7f230719d"
+  },
+  "source_metadata_sha256": {
+    "romfs/world/podunk/podunk.encroom": "6f6e6c9b7ee9129225eba5439c1a2d76ba76047656e3b435dce08b54191c9e60",
+    "romfs/system/native.encresources": "e8e7853e093be7c1e7c4a180ba1cb7736353fadba2a66447d5c29e909392e4bb",
+    "romfs/session/opening.encrestore": "74b6847e3f3f00d9deae70a36706f3236e25baf087fb1fb2598b02a57b95a69f"
+  },
+  "clock_fixture": 946681277,
+  "fixture_sha256": "b8c98da05bbde811300b33ab21818421ca7c2110708990d1287bdfb0e479ee62",
+  "emulator_sha256": "bd50cebf6427410df090855c4f5ba7cd1991b7fe1ff7f7f12f2ac49e187da525",
+  "capabilities": {
+    "memoryWriteEnabled": false,
+    "inputEnabled": true
+  },
+  "idempotent_trigger_revisit": true,
+  "mom_help_and_repeat": true,
+  "house_roundtrip": true,
+  "locale_preference_sha256": "53716b70288df8fa7131065141c8d92e64734fe77fbd01f1d63bc9b6f376fc7d",
+  "menu_before_and_after_battle": true,
+  "completion_projection": {
+    "level": 2,
+    "experience": 17,
+    "cash": 0,
+    "bank": 20,
+    "earned_cash": 20,
+    "key_count": 2,
+    "story_flag_0": 1064961,
+    "story_flag_1": 513327104,
+    "story_flag_2": 0,
+    "story_flag_3": 0,
+    "story_flag_4": 0,
+    "story_flag_5": 0
+  },
+  "projection": {
+    "hp": 33,
+    "pp": 27,
+    "level": 2,
+    "experience": 17,
+    "cash": 0,
+    "bank": 20,
+    "earned_cash": 20,
+    "inventory_count": 2,
+    "key_count": 2,
+    "loot_selected": 0,
+    "story_flag_0": 1064961,
+    "story_flag_1": 513327104,
+    "story_flag_2": 0,
+    "story_flag_3": 0,
+    "story_flag_4": 0,
+    "story_flag_5": 0,
+    "inventory_0_definition": 1,
+    "inventory_0_doses": 1,
+    "inventory_0_equipped": 1,
+    "inventory_1_definition": 3,
+    "inventory_1_doses": 1,
+    "inventory_1_equipped": 1,
+    "inventory_2_definition": 0,
+    "inventory_2_doses": 0,
+    "inventory_2_equipped": 0,
+    "inventory_3_definition": 0,
+    "inventory_3_doses": 0,
+    "inventory_3_equipped": 0,
+    "inventory_4_definition": 0,
+    "inventory_4_doses": 0,
+    "inventory_4_equipped": 0,
+    "inventory_5_definition": 0,
+    "inventory_5_doses": 0,
+    "inventory_5_equipped": 0,
+    "inventory_6_definition": 0,
+    "inventory_6_doses": 0,
+    "inventory_6_equipped": 0,
+    "inventory_7_definition": 0,
+    "inventory_7_doses": 0,
+    "inventory_7_equipped": 0,
+    "inventory_8_definition": 0,
+    "inventory_8_doses": 0,
+    "inventory_8_equipped": 0,
+    "inventory_9_definition": 0,
+    "inventory_9_doses": 0,
+    "inventory_9_equipped": 0,
+    "inventory_10_definition": 0,
+    "inventory_10_doses": 0,
+    "inventory_10_equipped": 0,
+    "inventory_11_definition": 0,
+    "inventory_11_doses": 0,
+    "inventory_11_equipped": 0,
+    "inventory_12_definition": 0,
+    "inventory_12_doses": 0,
+    "inventory_12_equipped": 0,
+    "inventory_13_definition": 0,
+    "inventory_13_doses": 0,
+    "inventory_13_equipped": 0,
+    "inventory_14_definition": 0,
+    "inventory_14_doses": 0,
+    "inventory_14_equipped": 0,
+    "inventory_15_definition": 0,
+    "inventory_15_doses": 0,
+    "inventory_15_equipped": 0
+  },
+  "performance": {
+    "house_source_music": [
+      {
+        "source_path": "MusicArea",
+        "resource_path": "res://Audio/Music/House.mp3",
+        "conditions": [
+          {
+            "flag_index": 0,
+            "flag_id": 1,
+            "flag_name": "doll_melody",
+            "expected_value": true
+          },
+          {
+            "flag_index": 15,
+            "flag_id": 16,
+            "flag_name": "good_morning",
+            "expected_value": false
+          }
+        ]
+      }
+    ],
+    "roundtrip_house_audio": {
+      "emulationSpeed": 0.991069691302537,
+      "gameFps": 59.29686381902356,
+      "gpuSeconds": 0.00027631355932203393,
+      "ipcSeconds": 2.6879661016949152e-05,
+      "swapSeconds": 2.3491525423728813e-05,
+      "systemFps": 59.29686381902356
+    },
+    "roundtrip_field_audio": {
+      "emulationSpeed": 0.9958145484187804,
+      "gameFps": 59.58079548107471,
+      "gpuSeconds": 0.00022350833333333335,
+      "ipcSeconds": 5.8276666666666664e-05,
+      "swapSeconds": 1.9263333333333332e-05,
+      "systemFps": 59.58079548107471
+    },
+    "battle_audio": {
+      "emulationSpeed": 1.002159975280305,
+      "gameFps": 29.980225043561266,
+      "gpuSeconds": 0.000381765,
+      "ipcSeconds": 3.3775e-05,
+      "swapSeconds": 0.00019140333333333333,
+      "systemFps": 59.96045008712253
+    },
+    "returned_audio": {
+      "emulationSpeed": 0.9956059770665946,
+      "gameFps": 59.56833553248185,
+      "gpuSeconds": 0.0002093491525423729,
+      "ipcSeconds": 2.245423728813559e-05,
+      "swapSeconds": 2.1728813559322032e-05,
+      "systemFps": 59.56833553248185
+    }
+  }
+}

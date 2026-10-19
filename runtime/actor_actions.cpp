@@ -14,7 +14,7 @@ bool valid(const ActorActionState& a) {
 void blend(ActorActionState& a,Vec2 direction) {
     direction={std::round(direction.x),std::round(direction.y)};
     const auto profile=a.content.actor_profile(a.profile_index);
-    if(profile.execution_kind!=uint16_t(ActorExecution::DirectionalProxy)&&std::abs(direction.x)==std::abs(direction.y))return;
+    if(profile.execution_kind!=uint16_t(ActorExecution::DirectionalProxy)&&profile.execution_kind!=uint16_t(ActorExecution::NpcPartyDirectionalProxy)&&std::abs(direction.x)==std::abs(direction.y))return;
     if(direction.x!=0||direction.y!=0)a.blend_direction=direction;
 }
 void finish_action(ActorActionState& a);
@@ -155,8 +155,8 @@ bool initialize_actor(ActorActionState& a,const RoomView& content,uint32_t profi
     }
     blend(next,next.direction);
     next.playing_direction=uint8_t(direction_index(next.blend_direction));
-    next.directional_animation=profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy);
-    if(profile.execution_kind==uint16_t(ActorExecution::DirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy))direction_frame(next);
+    next.directional_animation=profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcPartyDirectionalProxy);
+    if(profile.execution_kind==uint16_t(ActorExecution::DirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcPartyDirectionalProxy))direction_frame(next);
     a=next;return true;
 }
 bool actor_move_position(ActorActionState& a,Vec2 target,float speed) {
@@ -202,6 +202,22 @@ bool actor_set_talking(ActorActionState& a,bool talking) {
     if(!valid(a))return false;
     if(talking&&directional_clip(a,5,0)==kRoomNoIndex)return false;
     a.talking=talking;return true;
+}
+bool npc_sprite_blend(ActorActionState& a,Vec2 direction) {
+    if(!valid(a)||!finite(direction)||(direction.x==0&&direction.y==0))return false;
+    const auto profile=a.content.actor_profile(a.profile_index);
+    if(profile.execution_kind!=uint16_t(ActorExecution::NpcDirectionalProxy)&&profile.execution_kind!=uint16_t(ActorExecution::NpcPartyDirectionalProxy))return false;
+    const Vec2 unit[]={{0,1},{-1,0},{1,0},{0,-1},{-.70710678118f,.70710678118f},{.70710678118f,.70710678118f},{-.70710678118f,-.70710678118f},{.70710678118f,-.70710678118f}};
+    const Vec2 grid[]={{0,1},{-1,0},{1,0},{0,-1},{-1,1},{1,1},{-1,-1},{1,-1}};
+    unsigned best=0;float distance=INFINITY;
+    for(unsigned i=0;i<profile.direction_count;++i){const float x=direction.x-unit[i].x,y=direction.y-unit[i].y,d=x*x+y*y;if(d<distance){distance=d;best=i;}}
+    a.direction=direction;a.blend_direction=grid[best];return true;
+}
+bool npc_sprite_physics(ActorActionState& a,Vec2 direction,bool talking,bool animated_idle) {
+    auto next=a;if(!npc_sprite_blend(next,direction))return false;
+    const uint16_t motion=talking?5:(animated_idle?4:0);
+    if(directional_clip(next,motion,0)==kRoomNoIndex)return false;
+    next.animation_motion=motion;next.directional_animation=true;next.talking=talking;a=next;return true;
 }
 bool actor_turn(ActorActionState& a,Vec2 direction) {
     if(!valid(a)||!finite(direction)||a.rotating)return false;
@@ -327,7 +343,7 @@ bool actor_idle_animations(ActorActionState& a,double delta) {
     const float dt=float(delta);
     const auto profile=next.content.actor_profile(next.profile_index);
     if(next.directional_animation){if(!advance_directional(next,dt))return false;}
-    else if(profile.execution_kind==uint16_t(ActorExecution::DirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy))direction_frame(next);
+    else if(profile.execution_kind==uint16_t(ActorExecution::DirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcDirectionalProxy)||profile.execution_kind==uint16_t(ActorExecution::NpcPartyDirectionalProxy))direction_frame(next);
     else if(next.clip_index!=kRoomNoIndex) {
         const auto clip=next.content.clip(next.clip_index);
         if(clip.flags&2) {

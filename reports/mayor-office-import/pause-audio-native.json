@@ -1,0 +1,248 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "action": [
+        "run",
+        true
+      ],
+      "tap": false,
+      "running": true,
+      "playing": true,
+      "paused": false,
+      "events": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        "pause",
+        false
+      ],
+      "tap": false,
+      "running": false,
+      "playing": false,
+      "paused": true,
+      "events": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        "resume",
+        false
+      ],
+      "tap": false,
+      "running": false,
+      "playing": false,
+      "paused": false,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        "run",
+        true
+      ],
+      "tap": false,
+      "running": true,
+      "playing": true,
+      "paused": false,
+      "events": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        "tap",
+        true
+      ],
+      "tap": true,
+      "running": true,
+      "playing": true,
+      "paused": false,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        "pause",
+        false
+      ],
+      "tap": true,
+      "running": true,
+      "playing": true,
+      "paused": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        "physics",
+        false
+      ],
+      "tap": true,
+      "running": true,
+      "playing": false,
+      "paused": true,
+      "events": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        "resume",
+        false
+      ],
+      "tap": true,
+      "running": true,
+      "playing": true,
+      "paused": false,
+      "events": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        "pause",
+        true
+      ],
+      "tap": false,
+      "running": false,
+      "playing": false,
+      "paused": true,
+      "events": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        "resume",
+        false
+      ],
+      "tap": false,
+      "running": false,
+      "playing": false,
+      "paused": false,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        "run",
+        true
+      ],
+      "tap": false,
+      "running": true,
+      "playing": true,
+      "paused": false,
+      "events": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        "pause",
+        false
+      ],
+      "tap": false,
+      "running": false,
+      "playing": false,
+      "paused": true,
+      "events": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        "outside",
+        false
+      ],
+      "tap": false,
+      "running": false,
+      "playing": false,
+      "paused": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        "resume",
+        false
+      ],
+      "tap": false,
+      "running": false,
+      "playing": false,
+      "paused": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        "inside",
+        false
+      ],
+      "tap": false,
+      "running": false,
+      "playing": false,
+      "paused": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        "resume",
+        false
+      ],
+      "tap": false,
+      "running": false,
+      "playing": false,
+      "paused": false,
+      "events": [
+
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Source run-loop call state, source step callbacks and enable/disable only; not yet bound to live movement or NDSP",
+  "checks": {
+    "native_godot_cases": 29,
+    "gcc9_asan_ubsan": 1351,
+    "python_methods": 2
+  },
+  "mapped": [
+    "_set_running sets running even while paused/outside MOVE/climbing; those contexts gate starting, not the boolean",
+    "Matching stopped source calls play; differing wanted source calls play_sfx replacement; enabled false stops playing even if paused",
+    "Changing run_sound via step callback does not immediately replace an active stream",
+    "Disabled/non-player callbacks do not alter wanted sound; no exit sound leaves selection unchanged",
+    "Source paused/door _move_state stop leaves running boolean unchanged"
+  ],
+  "failure": "Copying original import metadata into a fresh native project referenced absent generated caches; first import correctly rejected. Fresh source MP3 import succeeded, native loop=true/offset=0 explicitly asserted against original settings. Source game files never modified.",
+  "not_claimed": [
+    "Full Player movement or area physics",
+    "Whole audioManager behavior, audible playback or NDSP queue ownership",
+    "Mayor scene entry or full original game/hardware"
+  ],
+  "sha256": {
+    "include/encore/field_steps.hpp": "ab8adce51480c32059e7554b92df59744f2fcfaaaaa49b299a95f77b653a0acf",
+    "runtime/field_steps.cpp": "39daa300560c0c32f5bf0a7415f5b68a925b30ad84ce07dc7e110b43fe0ab5c2",
+    "tools/run_footstep_reference.py": "98febe4a666288cba69e24ef7a877cb4ea2684b959f50354ca66af0643d57f5b",
+    "tests/field_steps_tests.cpp": "ace17ffd27389a1ce06944cb98866dd231e21bf29fad2e8c4284082d6f9521d3",
+    "tests/fixtures/run-loop.tsv": "cb427b6435746ef6df16129c69c788a276db700bdd39b436d0f982c94747ca48",
+    "tests/test_run_footstep_reference.py": "39f484dbeb32e7ff5abe69b30f20ba1550fa4e6abf80bb36e67571e2b3792141",
+    "platform/ctr/Makefile": "d64d345adf3b0b6d55385304e045a8a45b07cd7d64da42615be6ac17a2502f49"
+  }
+}

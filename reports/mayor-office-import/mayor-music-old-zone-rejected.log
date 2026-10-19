@@ -1,0 +1,1 @@
+Mayor music 4: zones.load_file((root+"/mayor.enczones").c_str(),error) (Music zone binding rejected)

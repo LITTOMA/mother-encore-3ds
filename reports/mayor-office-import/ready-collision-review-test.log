@@ -1,0 +1,24 @@
+test_candidate_paths_and_output_owner (tests.test_mayor_field.MayorField.test_candidate_paths_and_output_owner) ... ok
+test_effective_visible_collision_source_order (tests.test_mayor_field.MayorField.test_effective_visible_collision_source_order) ... ok
+test_incomplete_room_cannot_enter_release_builder (tests.test_mayor_field.MayorField.test_incomplete_room_cannot_enter_release_builder) ... ok
+test_missing_sprite_actor_and_source_type_fail (tests.test_mayor_field.MayorField.test_missing_sprite_actor_and_source_type_fail) ... ok
+test_original_map_structure (tests.test_mayor_field.MayorField.test_original_map_structure) ... ok
+test_original_podunk_outputs_unchanged (tests.test_mayor_field.MayorField.test_original_podunk_outputs_unchanged) ... ok
+test_recipe_versions_and_identities (tests.test_mayor_field.MayorField.test_recipe_versions_and_identities) ... ok
+test_motion_encoder_rejects_programmes (tests.test_field_npcs.FieldNpcTests.test_motion_encoder_rejects_programmes) ... ok
+test_policy_rejects_unknown_and_duplicate_bindings (tests.test_field_npcs.FieldNpcTests.test_policy_rejects_unknown_and_duplicate_bindings) ... ok
+test_source_owners_and_programme_separation (tests.test_field_npcs.FieldNpcTests.test_source_owners_and_programme_separation) ... ok
+test_unknown_source_actor_rejected (tests.test_field_npcs.FieldNpcTests.test_unknown_source_actor_rejected) ... ok
+test_actor_and_programme (tests.test_mick_treats.MickTreatsTests.test_actor_and_programme) ... ok
+test_favorite_food_and_unknown_runtime_tags (tests.test_mick_treats.MickTreatsTests.test_favorite_food_and_unknown_runtime_tags) ... ok
+test_new_opcode_and_programme_negative_cases (tests.test_mick_treats.MickTreatsTests.test_new_opcode_and_programme_negative_cases) ... ok
+test_pack_round_trip (tests.test_mick_treats.MickTreatsTests.test_pack_round_trip) ... ok
+test_reject_stale_ir (tests.test_mick_treats.MickTreatsTests.test_reject_stale_ir) ... ok
+test_reject_truncated_and_bad_magic (tests.test_mick_treats.MickTreatsTests.test_reject_truncated_and_bad_magic) ... ok
+test_source_wait_gates_are_not_plain_newlines (tests.test_mick_treats.MickTreatsTests.test_source_wait_gates_are_not_plain_newlines) ... ok
+test_thoughts_and_key_order (tests.test_mick_treats.MickTreatsTests.test_thoughts_and_key_order) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 11.555s
+
+OK

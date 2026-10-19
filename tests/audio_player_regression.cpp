@@ -27,14 +27,14 @@ uint32_t room_resource(const upstream::RoomView& room,uint32_t id){
 Result ndspInit(){trace(1,uint32_t(init_result));if(init_result>=0)ndsp_started=true;return init_result;}
 void ndspExit(){trace(2);for(size_t i=0;i<queues.size();++i)drain(int(i));ndsp_started=false;++exits;}
 void ndspSetMasterVol(float v){trace(3,bits(v));master=v;}
-void ndspChnReset(int lane){trace(4,uint32_t(lane));drain(lane);}
+void ndspChnReset(int lane){ndsp_test_reset_sequence(lane);trace(4,uint32_t(lane));drain(lane);}
 void* linearAlloc(size_t n){trace(5,uint32_t(n),uint32_t(fail_alloc));if(fail_alloc)return nullptr;auto*p=std::malloc(n);if(p){allocated+=n;allocations.emplace(p,n);}return p;}
 void linearFree(void* p){trace(6);check(!ndsp_started,"buffer freed only after NDSP exit");auto i=allocations.find(p);check(i!=allocations.end(),"freed buffer has a live allocation");allocated-=i->second;allocations.erase(i);std::free(p);}
 uint32_t ndspGetDroppedFrames(){return 7;}
 void ndspChnWaveBufClear(int lane){trace(7,uint32_t(lane));drain(lane);}
 void ndspChnSetMix(int lane,float* mix){trace(8,uint32_t(lane),bits(mix[0]));gains[channel(lane)]=mix[0];check(mix[0]==mix[1],"stereo equal gain");}
 Result DSP_FlushDataCache(const void* p,uint32_t size){trace(9,size,upstream::audio_crc32(static_cast<const uint8_t*>(p),size));check(p&&size>0&&size<=2048*4,"bounded flush");return flush_result;}
-void ndspChnWaveBufAdd(int lane,ndspWaveBuf* wave){trace(10,uint32_t(lane),wave->nsamples);auto& queue=queues[channel(lane)];check(ndsp_started&&wave->data_pcm16&&wave->nsamples>0&&wave->nsamples<=2048&&!wave->looping,"valid frame queue");wave->status=NDSP_WBUF_QUEUED;queue.push_back(wave);}
+void ndspChnWaveBufAdd(int lane,ndspWaveBuf* wave){ndsp_test_assign_sequence(lane,wave);trace(10,uint32_t(lane),wave->nsamples);auto& queue=queues[channel(lane)];check(ndsp_started&&wave->data_pcm16&&wave->nsamples>0&&wave->nsamples<=2048&&!wave->looping,"valid frame queue");wave->status=NDSP_WBUF_QUEUED;queue.push_back(wave);}
 void ndspChnSetPaused(int lane,bool){channel(lane);}
 void ndspChnSetInterp(int lane,int interpolation){trace(11,uint32_t(lane),uint32_t(interpolation));channel(lane);}void ndspChnSetRate(int lane,float rate){trace(12,uint32_t(lane),bits(rate));channel(lane);}void ndspChnSetFormat(int lane,int format){trace(13,uint32_t(lane),uint32_t(format));channel(lane);}
 int main(int argc,char** argv){
@@ -52,7 +52,7 @@ int main(int argc,char** argv){
     check(!player.prepare(12345,error)&&!player.prepared(12345),"unknown preparation identity rejected");
     check(!player.prepared(21)&&player.prepare(21,error)&&player.prepared(21),"full PCM admission is deferred until requested");
     check(player.prepare(21,error)&&player.submitted_voices()==0&&queues[0].empty(),"cached preparation has no playback side effects");
-    check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(8),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
+    check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(9),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
     upstream::RoomData room;check(room.load_file(argv[3],error),error.c_str());
     std::vector<upstream::OpeningAudioRequest> requests={{upstream::AudioRequestKind::FadeMusic,upstream::kRoomNoIndex,2,0},{upstream::AudioRequestKind::PlayMusic,20,0,2}};
     check(player.consume(room.view(),requests,error),error.c_str());check(player.consumed_requests()==2&&player.submitted_voices()==1&&queues[0].size()==3,"typed requests consumed and music queued");
@@ -132,3 +132,6 @@ int main(int argc,char** argv){
     std::cout<<"TRACE "<<trace_events<<" "<<std::hex<<audio_trace<<std::dec<<"\n";
     std::cout<<"Audio adapter: "<<checks<<" host-double checks passed; this is NOT NDSP audibility verification\n";
 }
+
+uint32_t ndspChnGetSamplePos(int){std::abort();}
+uint16_t ndspChnGetWaveBufSeq(int){std::abort();}

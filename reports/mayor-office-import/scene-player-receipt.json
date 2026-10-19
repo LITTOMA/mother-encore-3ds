@@ -1,0 +1,222 @@
+{
+  "source": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "whole_gameplay_approved": false,
+    "sources": {
+      "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+      "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+      "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+      "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+      "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e",
+      "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+      "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+      "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+      "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+      "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+      "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+      "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+      "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+      "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+      "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+      "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+      "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+      "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+      "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+      "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+      "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+      "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+      "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+      "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+      "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+      "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+      "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+      "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+      "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+      "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+      "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+      "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+      "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+      "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+      "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+      "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb"
+    },
+    "methods": {
+      "transition": {
+        "_deferred_goto_scene": "ac11368874abe1be9c047a6a382787867a8fc4b04ee989e2960cd66bbb8fe882"
+      },
+      "world": {
+        "get_current_scene_player_node": "3c8141939f3d2e47c36e403828fd6982b24f7f8ee67ec9ddda350d6663488d22",
+        "set_party_position": "5dc57bc0753389340b99bd341d4720f28b2548a0214fbbb125fb9755d909c3d3",
+        "create_party_followers": "b437095cbf83ba4719553ece17d7d7a00ee1f588acc29b76a2806c53c30e9997",
+        "get_player": "72fbdf57f698c6e1c6347a203ec6fcb2ac6e634af8771f17f78215936727614c",
+        "get_persistent": "6e323a26ecd471a3bd0b3b677b0d1bec3882703c256f386741b64bb3e8fa94cf",
+        "is_persistent": "a9da8b4830f4c053e7c14232a845430d6c79a7e958e4a3a7e030c7a6f5e6da01",
+        "remove_persistent": "5772a9bd3823204a036f7845a8ebe13d15ff4245f12d9e7953b7f11647cb25d0"
+      },
+      "player": {
+        "set_direction_and_input": "4bfdc0ebde805ab8aa7c0797c8185534f3287c7bef6f95e47032f7a5668e74db",
+        "set_direction": "8c48a368142ddcb1f947e5a9a0c0868105aaacda0b6f7a2d8399c050c0ff343f",
+        "get_direction": "196e36ef3ddbe39fbe10370ba37a41965592dc237afa52be84132f35f2666849"
+      },
+      "collision": {
+        "set_collisions": "1a52dfe84195e71d18679283ae561a017a7584ead57d197d814bb3770211a877",
+        "has_collisions": "ede5593b1aa28a7e4fdfa0a7a92a0dc801e82704b010f39903896141722f57a3"
+      },
+      "blend_position_reviewed_not_executed": {
+        "blend_position": "fa750ca9af66588913d1ed422ecd1c99e39e8b17e863b9ea7a130ffab9194b17"
+      }
+    },
+    "scene_parents": [
+      {
+        "id": 1,
+        "source": "Maps/podunk/Nintens House.tscn",
+        "parent": "Objects",
+        "transform": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 2,
+        "source": "Maps/podunk/podunk.tscn",
+        "parent": "Objects",
+        "transform": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 3,
+        "source": "Maps/podunk/Mayors Office.tscn",
+        "parent": "Objects",
+        "transform": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "source_declarations": [
+      "var party := []",
+      "var partyNpcs := []",
+      "var partySpace := []",
+      "var partyObjects := []",
+      "var _persist_array := []",
+      "var currentScene: Node = null"
+    ],
+    "cases": [
+      {
+        "scene": 1,
+        "position": [
+          136,
+          809
+        ],
+        "direction": [
+          0,
+          1
+        ]
+      },
+      {
+        "scene": 2,
+        "position": [
+          8,
+          9
+        ],
+        "direction": [
+          0,
+          -1
+        ]
+      },
+      {
+        "scene": 0,
+        "position": [
+          520,
+          397
+        ],
+        "direction": [
+          0,
+          0
+        ]
+      },
+      {
+        "scene": 1,
+        "position": [
+          1144,
+          263
+        ],
+        "direction": [
+          -1,
+          0
+        ]
+      },
+      {
+        "scene": 2,
+        "position": [
+          8,
+          -39
+        ],
+        "direction": [
+          1,
+          0
+        ]
+      },
+      {
+        "scene": 0,
+        "position": [
+          0,
+          0
+        ],
+        "direction": [
+          0,
+          0
+        ]
+      }
+    ],
+    "probe_sha256": "da9a6cb96430efcf4645d73b58956e9abeaa9522fc8d93a6f9be532af65a87fe",
+    "adapters_sha256": {
+      "transition": "29a854611fd758215c7dc8727c9079595fb0697690d1630bff4fa1c669cd769e",
+      "world": "e57c21605010a1e16e2a4cd7dea10083f982b2d3be33a6edf98410599d7b1a13",
+      "player": "792924a324b5101ec3ea9594d567b089f4136f3d7d1e0df61a0dde23eb2c8684",
+      "area": "8c729724ca36bcda1f33b44263d4665dad85b6abecba254405bf6708ba8d9aba"
+    },
+    "scope": "Player blend_position reviewed as direction blend parameters only, not executed; unchanged _deferred_goto_scene, single-party global helpers, Player direction and PartyObject collision methods; fixture scene roots and UI/AreaRoom leave_for adapters; opaque movement and Camera2D/Shaker identity retained, not their full scripts; driver triggers tree_changed after the original coroutine yields; no door fades, music, run playback, follower expansion, map physics, GPU or full gameplay claim"
+  },
+  "producer_sha256": "5ea5d0e85e9c109199c6b48ab9faed5a315b4dcf1264ea23a606ffb9924c9d44",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "generated_sha256": {
+    "transition.gd": "29a854611fd758215c7dc8727c9079595fb0697690d1630bff4fa1c669cd769e",
+    "world.gd": "e57c21605010a1e16e2a4cd7dea10083f982b2d3be33a6edf98410599d7b1a13",
+    "player.gd": "792924a324b5101ec3ea9594d567b089f4136f3d7d1e0df61a0dde23eb2c8684",
+    "area.gd": "8c729724ca36bcda1f33b44263d4665dad85b6abecba254405bf6708ba8d9aba",
+    "follower.gd": "9e2d1e0965b6bb7f9cf284139caf7c6d83c9e081671e2e9ac5cccfbc246678c5",
+    "ui.gd": "4670381baeb36e43736b3e4b6e45e96d8af07c9747eb4aebf4aea5583eefa310",
+    "probe.gd": "da9a6cb96430efcf4645d73b58956e9abeaa9522fc8d93a6f9be532af65a87fe",
+    "input.json": "045cff293add657605f93e2fa5a01e05b9c383a318ae5e5be9e571e3879d381b",
+    "project.godot": "45e6d6dd9fb2ea53ed6177fa2d920cf1f0c528031051a5882eabb55085562c87",
+    "scene0.tscn": "5e43c4c29eed4b763d3b7673f8653a44587874171dbc899c4ef01a5bac376ee2",
+    "scene1.tscn": "f68c68f43abfbf91155d8e539983099c727c28b61ebd29f98e5b6789079b6a01",
+    "scene2.tscn": "3579aabfa5933d0b043dccf5b5e01a4ba8c88f66488dffd1398f624a4be7a8ab"
+  },
+  "result_sha256": "91554c7600acc866986187abb9f482b24b88d5daa49382fae047031efc0fc00b",
+  "scope": "Player blend_position reviewed as direction blend parameters only, not executed; unchanged _deferred_goto_scene, single-party global helpers, Player direction and PartyObject collision methods; fixture scene roots and UI/AreaRoom leave_for adapters; opaque movement and Camera2D/Shaker identity retained, not their full scripts; driver triggers tree_changed after the original coroutine yields; no door fades, music, run playback, follower expansion, map physics, GPU or full gameplay claim"
+}

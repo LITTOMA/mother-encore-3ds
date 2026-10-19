@@ -1,0 +1,18 @@
+{
+  "assets": [
+    {
+      "gain_db": 0,
+      "import_sha256": "39e36be6e5e9f8a17d766da05d9318510252e525a8273b0470232546f588c244",
+      "pcm_path": "sound/music/mayor-2062928487.pcm",
+      "source_path": "res://Audio/Music/Town Hall.mp3",
+      "source_sha256": "64407ee9a7949c860dec8064d22c701fabe300d21a673575c1471ab77cc932cd",
+      "stable_id": 2062928487
+    }
+  ],
+  "bus_sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+  "bus_source": "Audio/Audio Buses/default_bus_layout.tres",
+  "manager_sha256": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+  "manager_source": "Scripts/global/audioManager.gd",
+  "schema": 1,
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3"
+}

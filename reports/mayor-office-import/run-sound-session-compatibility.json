@@ -1,0 +1,24 @@
+{
+  "base_commit": "76f2d127b72ec1557d3d5c0036ffcfea70a5602d",
+  "scope": "Native session resource11 run-sound admission; game snapshot/default/startup and naming bytes unchanged; no full-game or hardware claim",
+  "run_sounds": [
+    "wood",
+    "stone"
+  ],
+  "legacy_bytes": 10152,
+  "current_bytes": 10173,
+  "legacy_payload_prefix_unchanged": true,
+  "defaults_unchanged": true,
+  "startup_unchanged": true,
+  "compatibility_unchanged": true,
+  "default_snapshot_sha256": "a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f",
+  "naming_binary_sha256": "a532d8d0e64bb9b2828fadfd6f003bb6a34150a89b98b31db8563261ff11ecb7",
+  "catalog_changed_bindings": [
+    11
+  ],
+  "producers_sha256": {
+    "tools/native_session.py": "c264322c53eceed53d683d2a8b75d9e342a071af6973f42a02ddb09802e03f44",
+    "tools/new_game_assets.py": "4a6931ad444e9e792d6de7279523648e4c9071070e469f0cb5a34a60e2e0692a",
+    "tools/field_footsteps.py": "4a2b83ef60c18a922de873a0654715142409fed547b74dac0713e626d655d74f"
+  }
+}

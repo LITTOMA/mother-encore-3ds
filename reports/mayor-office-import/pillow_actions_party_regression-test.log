@@ -1,0 +1,9 @@
+pillow_orbit_stop_queued_retreat: 260 frames, 0 failures
+minnie_indefinite_shake_stop_turn: 175 frames, 0 failures
+minnie_repeated_jump: 50 frames, 0 failures
+repeat_final_wait_releases_queue: 150 frames, 0 failures
+minnie_leave_queued_path: 280 frames, 0 failures
+idle_queue_waits_for_signal: 35 frames, 0 failures
+movement_loop_extends_finite_shake: 110 frames, 0 failures
+shake_loop_repeats_nonloop_path_once: 65 frames, 0 failures
+Pillow actor actions: 15791 checks, 0 failures

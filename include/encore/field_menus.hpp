@@ -54,7 +54,8 @@ bool write_field_preferences(const FieldMenusData&,const char*,const FieldMenuPr
 
 // The save snapshot retains its admitted house checkpoint. Actual field map
 // coordinates are transient context, never an unsupported field-save migration.
-struct FieldMenusState {SessionSnapshot session;std::array<int32_t,7>stats{};uint32_t next_exp=0;FieldMenuPreferences preferences;bool chinese=false,in_field=false;float world_x=0,world_y=0;};
+struct FieldMenusState {SessionSnapshot session;std::array<int32_t,7>stats{};uint32_t next_exp=0;FieldMenuPreferences preferences;bool chinese=false,in_field=false;float world_x=0,world_y=0;bool area_map=false;std::string area_map_item;std::array<float,2>area_map_position{};};
+std::array<float,2>field_menu_map_position(const FieldMenusData&,const FieldMenusState&);
 struct FieldMenusChanges {std::vector<SessionItem>inventory,keys;SessionSettings settings;FieldMenuPreferences preferences;};
 bool merge_field_menu_session(const FieldMenusState&,const FieldMenusChanges&,const SessionSnapshot&,SessionSnapshot&,std::string&);
 // Every write stages the entire candidate and commits only after the host has
@@ -93,7 +94,7 @@ private:
  bool refresh(std::string&);bool commit(FieldMenusState,std::string&);bool apply_choice(std::string&);void back();
  const std::vector<SessionItem>&goods()const;std::vector<SessionItem>&goods(FieldMenusState&)const;
  const FieldMenuItem*selected_item()const;std::vector<uint32_t>actions()const;std::vector<const FieldMenuSkill*>skills()const;
- std::string text(FieldMenuText)const;void open_map(bool force);void clamp_map();
+ std::string text(FieldMenuText)const;bool open_map(bool force,std::string&);void clamp_map();
  const FieldMenusData*data_=nullptr;const StartupSettingsData*settings_=nullptr;FieldMenusHost host_;FieldMenusState state_;
  FieldMenusPhase phase_=FieldMenusPhase::Closed,parent_=FieldMenusPhase::Closed,map_parent_=FieldMenusPhase::Closed;
  FieldMenusExit exit_=FieldMenusExit::None;uint32_t selection_=0,item_selection_=0,action_selection_=0,sort_source_=0,skill_tab_=0,choice_=0,choice_kind_=0,choice_previous_=0;bool key_=false,missing_map_=true,markers_=true,changed_=false;

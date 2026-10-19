@@ -59,7 +59,7 @@ class AudioAssetTests(unittest.TestCase):
         prefix=[21,22,1001,1002,1101,1102,1103,1104,30,32,33,34,36,37,1201,1202]
         self.assertEqual([a['stable_id'] for a in bank['assets'][:16]],prefix)
         self.assertEqual([a['stable_id'] for a in bank['assets'][16:21]],[1301,1302,1303,1304,1305])
-        self.assertEqual(len(bank['assets']),57)
+        self.assertEqual(len(bank['assets']),59)
         self.assertTrue({'res://Audio/Sound effects/M3/Growl 2.mp3', 'res://Audio/Music/Battle Themes/Flippant Foe.mp3', 'res://Audio/Sound effects/EB/itemget1.wav'} <= {a['source_path'] for a in bank['assets']})
         heal=next(a for a in bank['assets'] if a['stable_id']==3334220389)
         self.assertEqual((heal['source_path'],heal['sample_rate'],heal['channels'],heal['frames']),('res://Audio/Sound effects/EB/heal 1.wav',44100,1,42562))

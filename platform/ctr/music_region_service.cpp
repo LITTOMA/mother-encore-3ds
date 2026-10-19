@@ -138,6 +138,12 @@ bool MusicRegionService::area_enter(uint64_t epoch,std::string_view path,const u
  state_->controller=std::move(next);state_->external_generation=generation;e.clear();return true;
 }
 bool MusicRegionService::area_exit(uint64_t epoch,std::string_view path,const upstream::MusicRegionContext&context,std::string&e){if(!state_)return fail(e,"Music region Area event has no prepared service");if(epoch!=scene_epoch()){e.clear();return true;}if(phase_!=MusicRegionServicePhase::Active)return fail(e,"Music region Area exit outside active scene");return state_->controller.exit(epoch,path,context,e);}
+bool MusicRegionService::stop_on_door(uint64_t epoch,double seconds,std::string&e){
+ if(!state_)return fail(e,"Door music has no prepared regional service");
+ if(epoch!=scene_epoch()){e.clear();return true;}
+ if(phase_!=MusicRegionServicePhase::Active||state_->paused)return fail(e,"Door music requires an unpaused active scene");
+ return state_->controller.stop_on_door(epoch,seconds,e);
+}
 bool MusicRegionService::idle_frame(uint64_t epoch,std::string&e){if(!state_)return fail(e,"Music region idle event has no prepared service");if(epoch!=scene_epoch()){e.clear();return true;}if(phase_!=MusicRegionServicePhase::Active)return fail(e,"Music region idle event outside active scene");if(state_->paused){e.clear();return true;}return state_->controller.idle_frame(epoch,e);}
 bool MusicRegionService::tree_exit(uint64_t epoch,std::string_view path,std::string&e){if(!state_)return fail(e,"Music region tree event has no prepared service");if(epoch!=scene_epoch()){e.clear();return true;}if(phase_!=MusicRegionServicePhase::Active||state_->paused)return fail(e,"Music region tree exit outside an unpaused active scene");return state_->controller.tree_exit(epoch,path,e);}
 bool MusicRegionService::finish_scene(uint64_t epoch,std::string&e){

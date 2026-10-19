@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\append_audio_assets.py", line 73, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\append_audio_assets.py", line 45, in main
+    base=checked_previous(old_recipe,old_manifest,old_blob,'sound/banks/opening.encaudio');tail=copy.deepcopy(new);tail['assets']=new['assets'][len(old_recipe['assets']):]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\append_audio_assets.py", line 22, in checked_previous
+    require(all(receipt.get(k)==v for k,v in record.items())and all(receipt.get(k)==v for k,v in declaration.items()),'Audio append prior declaration/decoded record changed')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Audio append prior declaration/decoded record changed

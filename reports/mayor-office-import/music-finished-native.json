@@ -1,0 +1,1184 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": {
+        "name": "one_shot",
+        "actions": [
+          [
+            "play",
+            0,
+            1,
+            0
+          ],
+          [
+            "settle"
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": true
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": true
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": true,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "intro_loop",
+        "actions": [
+          [
+            "play",
+            0,
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/House.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "saved_index_missing",
+        "actions": [
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "remove",
+            0
+          ],
+          [
+            "flush"
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          },
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": true,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "saved_index_now_other_node",
+        "actions": [
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "remove",
+            0
+          ],
+          [
+            "flush"
+          ],
+          [
+            "add"
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          },
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": true,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          },
+          {
+            "id": 2,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          },
+          {
+            "id": 2,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          },
+          {
+            "id": 2,
+            "stream": "res://Audio/Music/House.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 1,
+            "remove": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "stop_disconnects_loop",
+        "actions": [
+          [
+            "play",
+            0,
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "stop",
+            0
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "stop_after_queued_signal",
+        "actions": [
+          [
+            "play",
+            0,
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "stop",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/House.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "replace_after_queued_signal",
+        "actions": [
+          [
+            "play",
+            0,
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "play",
+            0,
+            3,
+            3
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/Victory.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/Victory.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/House.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "one_shot_then_loop_keeps_remove",
+        "actions": [
+          [
+            "play",
+            0,
+            1,
+            0
+          ],
+          [
+            "play",
+            0,
+            3,
+            3
+          ],
+          [
+            "settle"
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": true
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/Victory.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/Victory.mp3",
+            "index": 0,
+            "remove": true
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/Victory.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/Victory.mp3",
+            "index": 0,
+            "remove": true
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/Victory.mp3",
+            "playing": false,
+            "queued": true,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/Victory.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "queued_loop_then_remove",
+        "actions": [
+          [
+            "play",
+            0,
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "remove",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+            "playing": false,
+            "queued": true,
+            "gain": 0,
+            "loop": "res://Audio/Music/House.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "nonbuiltin_loop_callback",
+        "actions": [
+          [
+            "play",
+            0,
+            3,
+            3
+          ],
+          [
+            "settle"
+          ],
+          [
+            "emit",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "",
+            "index": -1,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/Victory.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/Victory.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/Victory.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/Victory.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/Victory.mp3",
+            "playing": false,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/Victory.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/You Win/Victory.mp3",
+            "playing": true,
+            "queued": false,
+            "gain": 0,
+            "loop": "res://Audio/Music/You Win/Victory.mp3",
+            "index": 0,
+            "remove": false
+          }
+        ]
+      ]
+    }
+  ],
+  "imports": [
+    {
+      "source": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+      "loop": false,
+      "offset": 0
+    },
+    {
+      "source": "res://Audio/Music/House.mp3",
+      "loop": true,
+      "offset": 2.035
+    },
+    {
+      "source": "res://Audio/Music/You Win/Victory.mp3",
+      "loop": false,
+      "offset": 0
+    }
+  ]
+}

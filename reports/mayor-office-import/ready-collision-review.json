@@ -1,0 +1,7 @@
+{
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "source_sha256": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+  "review": "_ready sets CollisionShape2D.disabled for no_collision, then ends in update_visibility_changed. That method sets disabled from visibility regardless of no_collision. Three visible Mayor NPCs therefore retain physical collision. Prototype cap5 is withdrawn and not used by original staged content.",
+  "python_methods": 19,
+  "test_sha256": "fe8871e0c8ba70bada0093e8b95e536c190669adeb2d36e249dba8fb7d137b06"
+}

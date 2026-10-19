@@ -35,14 +35,25 @@ bool FreeMotionSolver::slide(Vec2 position,Vec2 velocity,SlideResult& result) co
     if(!finite(target)||!finite(velocity))return false;
     result={target,velocity};return true;
 }
-bool advance_walk(WalkState& state,WalkInput input,const MotionSolver& solver,const RoomView& content) {
+bool relocate_walk(const WalkState& state,Vec2 position,Vec2 direction,WalkState& result){
+    const auto facing=zero(direction)?state.direction:direction;
+    const float x=std::abs(facing.x),y=std::abs(facing.y);
+    const bool grid=(x==0||x==1)&&(y==0||y==1)&&!zero(facing);
+    const bool diagonal=x==y&&std::abs(x-std::sqrt(.5f))<1e-6f;
+    if(!finite(position)||!finite(facing)||!finite(state.position)||!finite(state.velocity)||!std::isfinite(state.speed)||state.speed<=0||
+       (!grid&&!diagonal)||uint8_t(state.animation)>uint8_t(MotionAnimation::Crouch))return false;
+    auto next=state;next.position=position;next.direction=facing;result=next;return true;
+}
+bool advance_walk(WalkState& state,WalkInput input,const MotionSolver& solver,const RoomView& content,WalkAudioCalls* audio) {
     if(!content.valid()||!valid(state,content)||input.x<-1||input.x>1||input.y<-1||input.y>1)return false;
-    WalkState s=state;
+    WalkState s=state;WalkAudioCalls calls;
+    auto set_running=[&](bool enabled){s.running=enabled;calls.calls[calls.count++]=enabled?WalkAudioCall::SetRunningTrue:WalkAudioCall::SetRunningFalse;};
+    auto stop=[&]{calls.calls[calls.count++]=WalkAudioCall::StopIfPlaying;};
     const bool pressed=input.toggle&&!s.previous_toggle,released=!input.toggle&&s.previous_toggle;
     s.previous_toggle=input.toggle;
     // Player._move_state gates the entire movement function while paused or
     // entering a door. Input edges still expire in Godot's input service.
-    if(input.paused||input.entering_door){state=s;return true;}
+    if(input.paused||input.entering_door){stop();state=s;if(audio)*audio=calls;return true;}
     const Vec2 vector{float(input.x),float(input.y)};
     if(!zero(vector)||s.tap_run) {
         // _move precedes the speed selection in _movement: preserve the old
@@ -51,12 +62,13 @@ bool advance_walk(WalkState& state,WalkInput input,const MotionSolver& solver,co
         if(!zero(vector)){s.direction=vector;++s.moved_signals;}
         if(input.toggle||s.tap_run) {
             if(pressed&&!s.crouch&&!s.running)s.crouch=true;
-            if(pressed&&s.tap_run){s.tap_run=false;s.running=false;}
-            if(s.substantial)s.running=true;
+            if(pressed&&s.tap_run){s.tap_run=false;set_running(false);}
+            if(s.substantial)set_running(true);
             s.animation=MotionAnimation::Run;s.speed=content.rule_f32(RoomRuleKey::RunSpeed);
         } else {
             s.speed=content.rule_f32(RoomRuleKey::WalkSpeed);s.crouch=false;s.animation=MotionAnimation::Walk;
-            if(released&&!s.tap_run)s.running=false;
+            if(released&&!s.tap_run)set_running(false);
+            stop();
         }
     } else {
         s.velocity={};s.walking=false;
@@ -77,13 +89,13 @@ bool advance_walk(WalkState& state,WalkInput input,const MotionSolver& solver,co
     s.substantial=std::max(round_godot(std::abs(old.x-s.position.x)),round_godot(std::abs(old.y-s.position.y)))>0;
     if(s.substantial){s.walking=true;s.crouch=false;}
     else {
-        s.animation=MotionAnimation::Idle;s.walking=false;s.tap_run=false;s.running=false;
+        s.animation=MotionAnimation::Idle;s.walking=false;s.tap_run=false;set_running(false);
         if(pressed&&!s.crouch){++s.moved_signals;s.crouch=true;}
         else if(pressed&&s.crouch)s.crouch=false;
         if(s.crouch)s.animation=MotionAnimation::Crouch;
     }
     s.position={round_godot(s.position.x),round_godot(s.position.y)};
     if(!valid(s,content))return false;
-    state=s;return true;
+    state=s;if(audio)*audio=calls;return true;
 }
 }

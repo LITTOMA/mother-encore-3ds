@@ -4,7 +4,7 @@
 namespace encore::upstream {
 struct FieldSceneResources::State {
  WorldSceneResources bindings;std::string source;
- RoomData room;FieldMapData map;FieldStoryData story;MickData mick;
+ RoomData room;FieldMapData map;FieldStoryData story;MickData mick;FieldStepsData steps;
  std::vector<std::unique_ptr<MickData>>npcs;MusicRegionData music;MusicZones zones;
 };
 FieldSceneResources::FieldSceneResources()=default;
@@ -13,6 +13,7 @@ const WorldSceneResources&FieldSceneResources::bindings()const{static const Worl
 RoomView FieldSceneResources::room()const{return state_?state_->room.view():RoomView{};}
 FieldMapView FieldSceneResources::map()const{return state_?state_->map.view():FieldMapView{};}
 FieldStoryView FieldSceneResources::story()const{return state_?state_->story.view():FieldStoryView{};}
+FieldStepsView FieldSceneResources::steps()const{return state_?state_->steps.view():FieldStepsView{};}
 MickView FieldSceneResources::mick()const{return state_?state_->mick.view():MickView{};}
 uint32_t FieldSceneResources::npc_count()const{return state_?uint32_t(state_->npcs.size()):0;}
 MickView FieldSceneResources::npc(uint32_t i)const{return state_&&i<state_->npcs.size()?state_->npcs[i]->view():MickView{};}
@@ -35,6 +36,7 @@ bool FieldSceneResources::load(const ResourceCatalog&catalog,const WorldLinksDat
  if(b.mick){if(!read(ResourceRole::MickTreats,b.mick)||!next->mick.load(bytes.data(),bytes.size(),error))return false;if(next->mick.view().motion_only())return fail("Field gameplay motion owner has the wrong subtype");}
  for(auto id:b.npcs){auto data=std::make_unique<MickData>();if(!read(ResourceRole::FieldNpc,id)||!data->load(bytes.data(),bytes.size(),error))return false;if(!data->view().motion_only())return fail("Field NPC resource has gameplay ownership");next->npcs.push_back(std::move(data));}
  if(b.music){AudioBank bank;if(!read(ResourceRole::FieldMusic,b.music)||!next->music.load(bytes.data(),bytes.size(),error)||!read(ResourceRole::FieldMusicZones,b.zones)||!next->zones.load(bytes.data(),bytes.size(),error)||!next->zones.matches(next->music,error)||!read(ResourceRole::FieldAudio,b.audio)||!bank.load(bytes.data(),bytes.size(),error)||!next->music.matches(bank,error))return false;}
+ if(b.steps){if(!read(ResourceRole::FieldSteps,b.steps)||!next->steps.load(bytes.data(),bytes.size(),error))return false;if(next->steps.view().scene_id()!=scene)return fail("Field stepping scene identity differs");}
  state_=std::move(next);error.clear();return true;
 }
 }

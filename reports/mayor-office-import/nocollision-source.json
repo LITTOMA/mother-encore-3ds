@@ -1,0 +1,16 @@
+{
+  "level": "13 Python methods; GCC9 ASan/UBSan production NPC motion and actual player/map collision 1541 checks; no emulator claim",
+  "source_review": "npc.gd no_collision disables CollisionShape2D but retains interact area; capability5 is stationary-only; wandering no_collision fails closed",
+  "existing_content": "Current RomFS and reviewed Mick IR are byte-identical; new capability not yet used by a staged original NPC",
+  "source_sha256": {
+    "include/encore/mick_treats.hpp": "0283b2f718e65aa9f48993565b4e47498aa7203b0568fe82e3de0d4b60f1a093",
+    "runtime/mick_treats.cpp": "ff48c9fbc3adad2a8ae000286bd40a50e110eb141dacd3d319eaa923a9c1e8ba",
+    "runtime/field_scene.cpp": "d28f28295ade9dfb0efdfbbb3e5f0718155d2ae26f64d498d8816b921b148338",
+    "tools/mick_treats.py": "0781650613c62424e0bd42ad9b2d881d0bd6820a18c25cc045353445d61de55d",
+    "tests/field_npc_motion_tests.cpp": "473b165be4df5c327bf50c178ed341d982c76d9e8f881ac7881033cca1c8fce7",
+    "tests/test_field_npcs.py": "30f97e75c54d87d266553cbe92f51d028dcca05912bbe1b3313bf8b95c0134ef"
+  },
+  "withdrawn": true,
+  "withdrawal_reason": "Source _ready ends with update_visibility_changed, which overwrites disabled using visibility; the prototype capability was not used by original staged NPC data and is reverted. Prior unit success was mechanism-only, not original behavior.",
+  "historical_commit": "670d2c2"
+}

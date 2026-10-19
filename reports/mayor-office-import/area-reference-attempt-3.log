@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_area_reference.py", line 76, in <module>
+    receipt=dict(source=proof,engine_sha256=hashlib.sha256(a.godot.read_bytes()).hexdigest(),producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),generated_sha256={name:hashlib.sha256((project/name).read_bytes()).hexdigest()for name in files},adapters=['Inject original Mayor area property values and non-Magicant empty NPC party','Manual isolated Ready invocation; source visit set_flag counted, no complete signal graph','Inject current-map identity and 768x512 map dimensions; record absolute map location','Dungeon source branch is retained but not executed; class stubs only'],result_sha256=hashlib.sha256((out/'reference.json').read_bytes()).hexdigest(),scope='Sixteen actual source Ready/map results; no scene, collision, GPU, audible or hardware pass')
+                    ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_area_reference.py", line 71, in main
+    out.mkdir(parents=True);project=out/'temporary';project.mkdir();(project/'.owned-area-reference').write_text('source-area-v1')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_scene_reference.py", line 37, in invoke
+    result = subprocess.run(command + arguments, stdout=stream, stderr=subprocess.STDOUT,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1228, in communicate
+    sts = self.wait(timeout=self._remaining_time(endtime))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1591, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['D:\\GameDev\\3DS\\mother-encore-3ds\\build\\godot-reference\\Godot_v3.6.2-stable_win64.exe', '--path', 'D:\\GameDev\\3DS\\mother-encore-3ds\\build\\mayor-import\\area-native-3\\temporary', '--no-window', '--audio-driver', 'Dummy', '--video-driver', 'GLES2', '--script', 'D:\\GameDev\\3DS\\mother-encore-3ds\\build\\mayor-import\\area-native-3\\temporary\\probe.gd']' timed out after 55.0 seconds

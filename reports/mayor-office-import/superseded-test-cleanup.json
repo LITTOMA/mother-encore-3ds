@@ -1,0 +1,283 @@
+{
+  "removed": [
+    {
+      "path": "build/podunk-routes/host/actor_actions_party_regression",
+      "bytes": 41359392,
+      "sha256": "c1c8f3e8d2619c09f499c5dec9218904e13b32caa78fe504ae16eff17de30e6c",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/approach_route",
+      "bytes": 41208840,
+      "sha256": "3982ef228ad04700ee04b38658da8a48ebf48d4e3eb00edf26b55900c5532a7b",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/audio_data",
+      "bytes": 37726984,
+      "sha256": "f1c4005cba3e0d22d53c8f16a3461a6cfebc44cfd296535e0135b61a7aaf6c15",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/bridge-fixture",
+      "bytes": 41836080,
+      "sha256": "dcb959a3a7aab3541b2222bf4bd3b9d9fface92c4c21fbd6cd9aa28c6f885504",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/bridge_fixture",
+      "bytes": 40878160,
+      "sha256": "9b3d52ac6ee014fa9972fdf43a684111f43527a02054d21eec4849504a0d1eb6",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/bridge_localization",
+      "bytes": 41259064,
+      "sha256": "c96b4cfc3d5c324f4f59dc8b28fa5c158c3820551884646ec548938d59f715f2",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/bridge_round",
+      "bytes": 40617456,
+      "sha256": "5061b59f1951236c9eda1e712d79d6eb3b11672e7ff34be0fd2cc60dffe4b925",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/camera_fixture",
+      "bytes": 40620696,
+      "sha256": "434f53a6a0f2f3fc99005bd0205d88a7ac70ffe405a22a9e9ab68d3bc77249a6",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/doll_actions_party_regression",
+      "bytes": 41351976,
+      "sha256": "0ccc0091d885f234ce85d41971bc181fb7a1837beb4a191561cbcd28932b4219",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/field-npc-policy",
+      "bytes": 42871352,
+      "sha256": "20b18f6be4b62aca69f761f725206c4d5d873a0e0adcd935d3b82993540b0e64",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/field_approach",
+      "bytes": 42392240,
+      "sha256": "2d66e259994756af73fc2e74d23468fbdce7f1c35ba8945bcce0f42017ecc9c2",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/field_collision_index",
+      "bytes": 40491184,
+      "sha256": "35d29fa742bff54f93be00ccb95576b0666247e15b181f0a92d7bfe216238cc4",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/field_data",
+      "bytes": 40998672,
+      "sha256": "dcaf7be32895601ef15957db445d23311cf674fe5150397a11d3981c507f3239",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/field_interaction",
+      "bytes": 41862672,
+      "sha256": "9a3bbe6dee0b9f49a9049a8a84038416b1a68e9e2ce79fa033ee9a38f78e3254",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/field_npc_motion",
+      "bytes": 40696152,
+      "sha256": "4350a858315f6be137dd7094618551fc0e92c6cefed38c8f212d9d9e51042450",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/field_scene_owner",
+      "bytes": 41325824,
+      "sha256": "b837de90d6d27fbf620d64144f9a8308a28fd3f4acfba6308093a267c6dded2f",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/field_static_actors",
+      "bytes": 41304280,
+      "sha256": "e48d42c0330b892f46a479f9f2bdcdde020dd77f2480f252e81dd762c49ea30e",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/field_story",
+      "bytes": 41563912,
+      "sha256": "a9ae57f6824521d69fa4c2a12d0df6e88685e06ed90ebf3062ea37d885f527da",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/find_bridge_lane",
+      "bytes": 37522608,
+      "sha256": "63cd1e1536329ba18db5f7a7fcc511a91977ff7a792a46f86e343e5327741d12",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/find_route",
+      "bytes": 37163520,
+      "sha256": "41aece70f8ac8639dc059381e486583d0da553e187383fd8f1a289299c1fb3e7",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/house_presentation",
+      "bytes": 40933552,
+      "sha256": "0815fdc7139f53f9b67eaa3b90ad16b47f189a7dd8bb0aefb005aa944a911ccd",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/items_data",
+      "bytes": 37848504,
+      "sha256": "873ed7a7b73074d08d44b3a475fdfc182deddfd4466f6c7aa62a48968c8636fc",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/item_details",
+      "bytes": 37839728,
+      "sha256": "a1ccbd372e9ce4414eb64078e6cbad5acd76a66d7f00992502aa6264afb62b6d",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/legacy_npc_motion",
+      "bytes": 41659104,
+      "sha256": "954d506f9ebc9790e5a4659a14a29079d9543eb58243af5fb2828b9acf7447fe",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/locale_fixture",
+      "bytes": 40742824,
+      "sha256": "380a45c3a734c58a5e763101e2d42c00b8a2906d6810489f18d15049f071df50",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/mayor-map-check",
+      "bytes": 41210600,
+      "sha256": "95f264f353a2b00e87ad1b86bfbe1ddaab8793d1f7e20127773593ae6cbf1670",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/mayor-route-check",
+      "bytes": 41219760,
+      "sha256": "a65989e2a8b213909bbbe75d54fcac79911e53d6110ae08e78742d444224cb43",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/mick-policy-legacy",
+      "bytes": 41549656,
+      "sha256": "5449221f24a46ce1202479d83a5ed62718b6262db39021a9da41de651f4092ac",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/mick-policy-pacing",
+      "bytes": 41494656,
+      "sha256": "d1d4279d7d2f7ffa1825a3da75368b9f529196c8043afdb0d2b8bc4671def3e9",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/native_session",
+      "bytes": 42801584,
+      "sha256": "2ad95d3f395f54230cf4051d7a55f8662deeb84bd674c4029a0ace5c99dbd3df",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/party_npc_motion",
+      "bytes": 41585944,
+      "sha256": "9e133867f2bb1d51d4802a82bb055082afe4e4bd00bdd5423a53809558618a05",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/pillow_actions_party_regression",
+      "bytes": 41360968,
+      "sha256": "276d324f69ccf75aa66be3c19fe3463451b5961ef0226ceeaff31797bb48d37a",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/player",
+      "bytes": 40599080,
+      "sha256": "3c53675b456564573e79ec7b6fe2d2552ec366b68cf086f6d415335587b15f56",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/prepare",
+      "bytes": 41089888,
+      "sha256": "63505503545d48fb0d5c5c37832cbb3a2974d7d6a90073026b2c7ed0eeba7943",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/queued_turn_party_regression",
+      "bytes": 41339888,
+      "sha256": "7c67c625ab6bf79cb79765774247355f57ca9904a8c5b440f426efefe173ca99",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/resource_catalog",
+      "bytes": 40836288,
+      "sha256": "900a98ab099e81bcb3364e5df12ed0bea2b34ba5337d067bca5b9997c973d2c6",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/return_route",
+      "bytes": 41022216,
+      "sha256": "ad9d247c342acd1805cead67a4547d57370cb9e16011a60ac5114d5283811a37",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/room_data_party_regression",
+      "bytes": 41417784,
+      "sha256": "33dc0b8fa856fb52274fec5083071d2fb9e1d34c11eeed366233933429887bf7",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/service",
+      "bytes": 41035208,
+      "sha256": "3a56590e7d12a756a1bc7eb0ab083bfc775c6a4c2f9f987f645bbcf38ca5c848",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/static_actor_recheck",
+      "bytes": 41305376,
+      "sha256": "bfce0ad07812730c7c63def8fd9646ed95ea1045d69295f1e9e0954363dc6349",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/podunk-routes/host/world_scene_resources",
+      "bytes": 41180736,
+      "sha256": "434966837ce96e71f8c64b07cac5c2bc236f66dcf78bcded9359d6217d2c7613",
+      "kind": "completed reproducible host ELF; logs and object cache retained"
+    },
+    {
+      "path": "build/field-menus/verified-artifact/3ds/encore-native/encore-native.3dsx",
+      "bytes": 246426032,
+      "sha256": "98e3304044a2225868058256a7ab1beb121c2de82e7009bf5d89c38ca70732dc",
+      "kind": "superseded test artifact 64f88557859a995537dcae4d85778eb94ab9225b"
+    },
+    {
+      "path": "build/field-atlas/verified-artifact/3ds/encore-native/encore-native.3dsx",
+      "bytes": 245466516,
+      "sha256": "182ae8886b86df075c081c8a2712d80d63de604250cf958530cbb5bd399413f2",
+      "kind": "superseded test artifact ea7354a617f7ee3679f35e47c1fd4a84ca5fc5cc"
+    },
+    {
+      "path": "build/emulator-postwin-current/3ds/encore-native/encore-native.3dsx",
+      "bytes": 244272052,
+      "sha256": "76794f86ff802ede72c172a6f25a16651e8ab50b30287fc4555c18c3906e56aa",
+      "kind": "superseded test artifact 78d92612791ba734f742787b0f0cd1dc7c4249b0"
+    },
+    {
+      "path": "build/emulator-postwin-current/cias/encore-native.cia",
+      "bytes": 245625792,
+      "sha256": "dc7842a7be38a4553b5229dbd5b860e4eef8d9cad49acf300c360f6f85a78081",
+      "kind": "superseded test artifact 78d92612791ba734f742787b0f0cd1dc7c4249b0"
+    },
+    {
+      "path": "build/field-menus/validated-package.zip",
+      "bytes": 356021300,
+      "sha256": "c860683c36b93399600a0fc8baed7f04ee62c466491b073efd72d10bc04db0df",
+      "kind": "superseded local test download; artifact receipts retained"
+    }
+  ],
+  "bytes": 3012936100,
+  "retained_current": "build/full-port/handoff-current/verified-artifact",
+  "retained_emulator_and_compiler_caches": true
+}

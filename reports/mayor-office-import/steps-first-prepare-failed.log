@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_footsteps.py", line 105, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_footsteps.py", line 99, in main
+    temp=Path(temp);receipt=audio_asset.compile_assets(ex.upstream,recipe,temp)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\audio_asset.py", line 127, in compile_assets
+    exact(recipe,['schema','upstream_commit','bus_source','bus_sha256','manager_source','manager_sha256','assets'],'Audio recipe')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\audio_asset.py", line 41, in exact
+    check(type(value) is dict and set(value)==set(fields),label+': unknown/missing fields')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\audio_asset.py", line 38, in check
+    if not condition: raise AudioError(message)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+tools.audio_asset.AudioError: Audio recipe: unknown/missing fields

@@ -1,0 +1,41 @@
+{
+  "scope": "Optional named run stream shares physical channels4-19 with regional music; existing fixed lanes unchanged; not activated by gameplay yet",
+  "source_mapping": "Implements physical stream isolation needed by reviewed original Player run-loop calls; no new game rules or data values",
+  "checks": {
+    "gcc9_asan_ubsan": {
+      "run_region_isolation": 786,
+      "legacy_audio": 1096,
+      "regions": 774,
+      "service": 1058,
+      "incremental_prepare": 46894
+    }
+  },
+  "legacy_trace": {
+    "events": 529,
+    "sha": "71a30145b163903b",
+    "unchanged": true
+  },
+  "failure": "Old negative test designated lane8 unknown; lane8 is now the explicit Run API. Boundary moved to9; unknown255 still rejected. No trace expectations were changed.",
+  "preserved": [
+    "Fixed channels0-3 and20-23 retain exact roles",
+    "Run start, replacement, stop, capacity failure and reset cannot touch another region owner",
+    "Sixteen regional channels remain usable whenever Run is inactive",
+    "Failed allocation or unavailable channel leaves existing queues and music identity intact",
+    "Stopped/warm Run buffers can reacquire a released channel; shutdown releases only own lease"
+  ],
+  "not_claimed": [
+    "Actual footstep media in the shipping global bank",
+    "Live movement binding or Mayor scene traversal",
+    "Audible emulator or physical hardware output"
+  ],
+  "sha256": {
+    "platform/ctr/audio_player.hpp": "63f4f4f7ecdda4bb96fbc22763a461e70132c79dc29483fe33cf9ef24b26665f",
+    "platform/ctr/audio_player.cpp": "b115b8ca53bcfbdb9347a9268e4783501a1e12cf472fff2e2f33c1acbff4e34c",
+    "platform/ctr/music_region_player.hpp": "990a717283d3dfbf394945a9ddefbdba5a3b75165b2ebd51054650b77fa57d57",
+    "platform/ctr/music_region_player.cpp": "c10bbdc6b627e9fbb4db02ff9ab2be9e0ada289f937ef78d72f589dd42640519",
+    "platform/ctr/region_channel_pool.hpp": "787db13552b0ba7614ff399d301c6061c51f50acb2f83c228d00faf5efc660aa",
+    "tests/run_audio_player_tests.cpp": "31cc728139c5f958f157bf3f2a4ceb6d302843e6096aedcc7d30bc3c83d69ab1",
+    "tests/audio_player_tests.cpp": "b7daa4af07da6d59eedd4ca634e925c80188219bd5862dc9de776329cbd1b500",
+    "tests/audio_player_regression.cpp": "00ab2fbc9e7c6148d2e6291fd2b13eef06e9117ad5ee2285fca25001615b86fa"
+  }
+}

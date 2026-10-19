@@ -6,23 +6,54 @@ namespace {
 bool finite(Vec2 p){return std::isfinite(p.x)&&std::isfinite(p.y);}
 bool valid_delta(double delta){return std::isfinite(delta)&&delta>=0&&delta<=1;}
 }
+bool CutsceneCamera::same_state(const CutsceneCamera&other)const{
+    const auto v=[](Vec2 a,Vec2 b){return a.x==b.x&&a.y==b.y;};
+    if(initialized_!=other.initialized_||current_index_!=other.current_index_||cameras_.size()!=other.cameras_.size()||
+       !v(min_center_,other.min_center_)||!v(max_center_,other.max_center_)||!v(viewport_,other.viewport_)||!v(player_,other.player_))return false;
+    const auto&a=binding_;const auto&b=other.binding_;
+    if(a.default_area!=b.default_area||a.return_seconds!=b.return_seconds||a.shake_step!=b.shake_step||a.minimum_magnitude!=b.minimum_magnitude||
+       a.zero_threshold!=b.zero_threshold||a.shake_weight!=b.shake_weight||a.recovery_seconds!=b.recovery_seconds||a.areas.size()!=b.areas.size())return false;
+    for(size_t i=0;i<a.areas.size();++i){const auto&x=a.areas[i];const auto&y=b.areas[i];if(x.stable_id!=y.stable_id||x.flags!=y.flags||!v(x.center,y.center)||!v(x.extents,y.extents))return false;}
+    for(size_t i=0;i<cameras_.size();++i){
+        const auto&x=cameras_[i];const auto&y=other.cameras_[i];
+        if(!v(x.global,y.global)||!v(x.local,y.local)||!v(x.move_from,y.move_from)||!v(x.move_target,y.move_target)||!v(x.shake,y.shake)||!v(x.offset,y.offset)||
+           !v(x.parent,y.parent)||!v(x.min_center,y.min_center)||!v(x.max_center,y.max_center)||x.actor_id!=y.actor_id||
+           x.move_time!=y.move_time||x.move_duration!=y.move_duration||x.moving!=y.moving||x.paused!=y.paused||x.returning!=y.returning||
+           x.shakes.size()!=y.shakes.size()||x.recoveries.size()!=y.recoveries.size())return false;
+        for(size_t j=0;j<x.shakes.size();++j){const auto&r=x.shakes[j];const auto&s=y.shakes[j];
+            if(r.timer!=s.timer||r.magnitude!=s.magnitude||r.reduction!=s.reduction||r.left!=s.left||r.side!=s.side||!v(r.old,s.old)||!v(r.direction,s.direction))return false;}
+        for(size_t j=0;j<x.recoveries.size();++j){const auto&r=x.recoveries[j];const auto&s=y.recoveries[j];if(r.time!=s.time||r.started!=s.started||!v(r.from,s.from))return false;}
+    }
+    return true;
+}
+bool CutsceneCamera::bind_content(const RoomView&content,bool same){
+    if(!content.valid()||!content.camera_area_count()||content.scene().default_camera_area>=content.camera_area_count())return false;
+    Binding next;next.default_area=content.scene().default_camera_area;
+    next.return_seconds=content.rule_f64(RoomRuleKey::CameraReturnSeconds);next.shake_step=content.rule_f64(RoomRuleKey::CameraShakeStepSeconds);
+    next.minimum_magnitude=content.rule_f64(RoomRuleKey::CameraMinimumMagnitude);next.zero_threshold=content.rule_f64(RoomRuleKey::CameraZeroMagnitudeThreshold);
+    next.shake_weight=content.rule_f64(RoomRuleKey::CameraShakeWeight);next.recovery_seconds=content.rule_f64(RoomRuleKey::CameraRecoverySeconds);
+    const double values[]={next.return_seconds,next.shake_step,next.minimum_magnitude,next.zero_threshold,next.shake_weight,next.recovery_seconds};for(auto value:values)if(!std::isfinite(value))return false;
+    if(next.return_seconds<=0||next.shake_step<=0||next.minimum_magnitude<0||next.zero_threshold<0||next.shake_weight<0||next.shake_weight>1||next.recovery_seconds<=0)return false;
+    if(same&&(next.return_seconds!=binding_.return_seconds||next.shake_step!=binding_.shake_step||next.minimum_magnitude!=binding_.minimum_magnitude||next.zero_threshold!=binding_.zero_threshold||next.shake_weight!=binding_.shake_weight||next.recovery_seconds!=binding_.recovery_seconds))return false;
+    for(uint32_t i=0;i<content.camera_area_count();++i)next.areas.push_back(content.camera_area(i));
+    binding_=std::move(next);return true;
+}
 bool CutsceneCamera::initialize(const RoomView& content,Vec2 player,Vec2 viewport){
     if(!content.valid()||!finite(player)||!finite(viewport)||viewport.x<=0||viewport.y<=0)return false;
-    *this=CutsceneCamera{};content_=content;viewport_=viewport;player_=player;cameras_[0].global=player;cameras_[0].parent=player;
-    uint32_t selected=content.scene().default_camera_area;
-    for(uint32_t i=0;i<content.camera_area_count();++i){const auto a=content.camera_area(i);if(std::abs(player.x-a.center.x)<=a.extents.x&&std::abs(player.y-a.center.y)<=a.extents.y){selected=i;break;}}
-    const auto area=content.camera_area(selected);const Vec2 half{viewport.x*0.5f,viewport.y*0.5f};
-    const Vec2 extent{std::max(half.x,area.extents.x),std::max(half.y,area.extents.y)};
-    min_center_={area.center.x-extent.x+half.x,area.center.y-extent.y+half.y};
-    max_center_={area.center.x+extent.x-half.x,area.center.y+extent.y-half.y};
-    cameras_[0].min_center=min_center_;cameras_[0].max_center=max_center_;
-    initialized_=true;return true;
+    CutsceneCamera next;if(!next.bind_content(content,false))return false;next.viewport_=viewport;next.initialized_=true;
+    if(!next.relocate_player(player))return false;*this=std::move(next);return true;
+}
+bool CutsceneCamera::rebind_scene(const RoomView&content,Vec2 player,Vec2 viewport){
+    if(!initialized_||follows_actor()||is_moving()||!finite(player)||!finite(viewport)||viewport.x<=0||viewport.y<=0)return false;
+    CutsceneCamera next=*this;if(!next.bind_content(content,true))return false;next.viewport_=viewport;
+    // Actor cameras belong to the retired scene; the player's own Shakers do not.
+    next.cameras_.resize(1);if(!next.relocate_player(player))return false;*this=std::move(next);return true;
 }
 bool CutsceneCamera::relocate_player(Vec2 player){
     if(!initialized_||!finite(player))return false;
-    uint32_t selected=content_.scene().default_camera_area;
-    for(uint32_t i=0;i<content_.camera_area_count();++i){const auto a=content_.camera_area(i);if(std::abs(player.x-a.center.x)<=a.extents.x&&std::abs(player.y-a.center.y)<=a.extents.y){selected=i;break;}}
-    const auto area=content_.camera_area(selected);const Vec2 half{viewport_.x*.5f,viewport_.y*.5f};
+    uint32_t selected=binding_.default_area;
+    for(uint32_t i=0;i<binding_.areas.size();++i){const auto a=binding_.areas[i];if(std::abs(player.x-a.center.x)<=a.extents.x&&std::abs(player.y-a.center.y)<=a.extents.y){selected=i;break;}}
+    const auto area=binding_.areas[selected];const Vec2 half{viewport_.x*.5f,viewport_.y*.5f};
     const Vec2 extent{std::max(half.x,area.extents.x),std::max(half.y,area.extents.y)};
     min_center_={area.center.x-extent.x+half.x,area.center.y-extent.y+half.y};max_center_={area.center.x+extent.x-half.x,area.center.y+extent.y-half.y};
     // Same player camera survives the warp. Area enter/exit resets its local
@@ -66,7 +97,7 @@ bool CutsceneCamera::restore_player(Vec2 player){
     auto& c=current();c.parent=player;c.global=start;c.local={start.x-player.x,start.y-player.y};c.min_center=minimum;c.max_center=maximum;
     // actor.update_npcs restores a different camera, then return_camera(.5)
     // tweens LOCAL position to that player's _camarea_offset (zero here).
-    c.move_from=c.local;c.move_target={};c.move_time=0;c.move_duration=content_.rule_f64(RoomRuleKey::CameraReturnSeconds);
+    c.move_from=c.local;c.move_target={};c.move_time=0;c.move_duration=binding_.return_seconds;
     c.moving=true;c.paused=false;c.returning=true;return true;
 }
 bool CutsceneCamera::return_offset(Vec2 local_target,double duration){
@@ -82,7 +113,7 @@ bool CutsceneCamera::move_to(Vec2 target,double duration){
     return true;
 }
 bool CutsceneCamera::shake(double magnitude,double duration,Vec2 direction){
-    const double step=content_.rule_f64(RoomRuleKey::CameraShakeStepSeconds);
+    const double step=binding_.shake_step;
     if(!initialized_||!std::isfinite(duration)||duration<step||duration>60||!std::isfinite(magnitude)||magnitude<0||!finite(direction)||(direction.x==1&&direction.y==1))return false;
     auto& c=current();if(c.shakes.size()>=16)return false;
     Shake s;s.left=int(duration/step);s.magnitude=magnitude;s.reduction=magnitude/s.left;s.old=c.shake;s.direction=direction;c.shakes.push_back(s);return true;
@@ -107,13 +138,13 @@ bool CutsceneCamera::physics_frame(double delta){
             auto& s=c.shakes[i];
             if(s.left>0){
                 s.timer+=delta;
-                if(s.timer>=content_.rule_f64(RoomRuleKey::CameraShakeStepSeconds)){
-                    --s.left;s.side=-s.side;s.timer-=content_.rule_f64(RoomRuleKey::CameraShakeStepSeconds);
-                    double magnitude=std::max(s.magnitude,content_.rule_f64(RoomRuleKey::CameraMinimumMagnitude));
-                    if(s.magnitude<=content_.rule_f64(RoomRuleKey::CameraZeroMagnitudeThreshold)&&s.side==-1)magnitude=0;
+                if(s.timer>=binding_.shake_step){
+                    --s.left;s.side=-s.side;s.timer-=binding_.shake_step;
+                    double magnitude=std::max(s.magnitude,binding_.minimum_magnitude);
+                    if(s.magnitude<=binding_.zero_threshold&&s.side==-1)magnitude=0;
                     const Vec2 value=s.left>1?Vec2{s.old.x+s.direction.x*float(s.side*magnitude),s.old.y+s.direction.y*float(s.side*magnitude)}:s.old;
-                    if(s.magnitude<=content_.rule_f64(RoomRuleKey::CameraMinimumMagnitude))c.shake=value;
-                    else c.shake={c.shake.x+(value.x-c.shake.x)*float(content_.rule_f64(RoomRuleKey::CameraShakeWeight)),c.shake.y+(value.y-c.shake.y)*float(content_.rule_f64(RoomRuleKey::CameraShakeWeight))};
+                    if(s.magnitude<=binding_.minimum_magnitude)c.shake=value;
+                    else c.shake={c.shake.x+(value.x-c.shake.x)*float(binding_.shake_weight),c.shake.y+(value.y-c.shake.y)*float(binding_.shake_weight)};
                 }
                 // Original Shaker diminishes every physics frame, including
                 // frames that do not cross its interval.
@@ -134,9 +165,9 @@ bool CutsceneCamera::idle_frame(double delta){
             // PropertyTweener captures its start value when first processed,
             // after any other Shaker child writes during the same physics pass.
             if(!r.started){r.from=c.shake;r.started=true;}
-            r.time=std::min(r.time+delta,content_.rule_f64(RoomRuleKey::CameraRecoverySeconds));
-            const float left=float(1-r.time/content_.rule_f64(RoomRuleKey::CameraRecoverySeconds));c.shake={r.from.x*left,r.from.y*left};
-            if(r.time>=content_.rule_f64(RoomRuleKey::CameraRecoverySeconds))c.recoveries.erase(c.recoveries.begin()+i);else ++i;
+            r.time=std::min(r.time+delta,binding_.recovery_seconds);
+            const float left=float(1-r.time/binding_.recovery_seconds);c.shake={r.from.x*left,r.from.y*left};
+            if(r.time>=binding_.recovery_seconds)c.recoveries.erase(c.recoveries.begin()+i);else ++i;
         }
         if(c.moving&&!c.paused){
             c.move_time=std::min(c.move_time+delta,c.move_duration);

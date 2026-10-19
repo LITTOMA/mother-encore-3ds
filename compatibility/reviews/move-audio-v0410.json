@@ -1,0 +1,17 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "whole_gameplay_approved": false,
+  "sources": {
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b"
+  },
+  "methods": {
+    "_move": "3c26290f8b1cd88bb927dda1f4a5a83f92126b26dd90503a9d3b5c82318d2575",
+    "_movement": "96d3a15a91335d263b354cf08ba0edd887634bb9beaaacb7914c09df2ce19739",
+    "_move_state": "23a118d0c40c880a278d1b0b5f172a49e037002ab8cccf0d1e9f620a04d51130"
+  },
+  "base_movement_review_sha256": "ae2f17a05181c03c65a6406a44c91feee6db421ba40b0aca8f1b25f4b6a658e7",
+  "wrapper_sha256": "4fb00e4089e847751d80e05380a18e8fb094f16981294c74914b169dcc2200a0",
+  "probe_sha256": "9758c52f65248b815adfc22244b16ef01e7f0f634b369eb8dee7a747fa3d7bcd",
+  "manager_sha256": "b23b9a97cabce98329313dff85177fc4783ab9a42500127667b90e4da4573b5a",
+  "scope": "Original _move/_movement/_move_state; MOVE only, no climbing/knockback/teleport/party motion; source _set_running and SFX playing guard are call-capture adapters, not actual audio playback"
+}

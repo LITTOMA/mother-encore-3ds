@@ -50,14 +50,19 @@ class ResourceCatalogTests(unittest.TestCase):
 
     def test_field_extension_is_separate_and_fail_closed(self):
         self.assertFalse(any(row['role'] in catalog.EXTENSION_ROLES for row in self.base['bindings']))
-        self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.EXTENSION_ROLES|{'EncounterBattle','EncounterRound'})
+        # Allowed schema roles and shipped bindings are independent: FieldSteps
+        # is now published with the initial Mayor scene.
+        shipped={row['role'] for row in self.fields['bindings']}
+        expected={'FieldRoom','FieldMap','WorldLinks','HousePresents','MickTreats','GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones','FieldMenus','FieldNpc','FieldStory','EncounterBattle','EncounterRound','FieldSteps'}
+        self.assertEqual(shipped,expected)
+        self.assertTrue(shipped<=catalog.EXTENSION_ROLES|{'EncounterBattle','EncounterRound'})
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
-        self.assertEqual(catalog.capability_for(self.ir['bindings']), 8)
+        self.assertEqual(catalog.capability_for(self.ir['bindings']), 10)
         motion=[r for r in self.ir['bindings']if r['role']=='FieldNpc']
-        self.assertEqual(len(motion),2)
+        self.assertEqual(len(motion),7)
         self.assertTrue(all(r['id']>=256 for r in motion))
         audio_roles={'GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones'}
-        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles|{'FieldMenus','FieldNpc','FieldStory'}]
+        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles|{'FieldMenus','FieldNpc','FieldStory','FieldSteps'} and row['id']==catalog.ROLES[row['role']]]
         self.assertEqual(catalog.capability_for(legacy), 4)
         for role in audio_roles:
             self.reject(lambda ir: ir.update(bindings=[row for row in ir['bindings'] if row['role']!=role]))
@@ -102,7 +107,7 @@ class ResourceCatalogTests(unittest.TestCase):
     def test_mainline_menu_identity_and_new_capabilities(self):
         self.assertEqual((catalog.ROLES['FieldMenus'],catalog.ROLES['FieldNpc'],catalog.ROLES['FieldStory']),(40,41,42))
         for cap,remove in ((6,{'FieldNpc','FieldStory'}),(7,{'FieldStory'}),(8,set())):
-            ir=copy.deepcopy(self.ir);ir['bindings']=[r for r in ir['bindings'] if r['role'] not in remove]
+            ir=copy.deepcopy(self.ir);legacy=catalog.decode((ROOT/'tests/fixtures/catalog-cap8.encresources').read_bytes());ir['bindings']=[r for r in legacy['bindings'] if r['role'] not in remove]
             raw=catalog.encode(ir);self.assertEqual(struct.unpack_from('<I',raw,20)[0],cap)
             self.assertIn(dict(id=40,role='FieldMenus',path='ui/field.encmenus'),catalog.decode(raw)['bindings'])
         for role,identity in (('FieldMenus',41),('FieldNpc',40),('FieldStory',41)):

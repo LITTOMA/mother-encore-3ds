@@ -10,8 +10,9 @@ namespace encore::upstream {
 // ENCMAP01: one exterior field compiled from a pinned TileMap scene. Schema
 // constants and enums only; every coordinate, tile and texture is external data.
 enum class FieldMapSection:uint32_t {Bytes=1,Atlases,Frames,Pictures,Variants,Tiles,Shapes,Points,Conditions,Layers,
-    Chunks,Cells,Sprites,Items,Groups,Openables,Doors,Boundaries,Notices,Cameras,Bodies};
+    Chunks,Cells,Sprites,Items,Groups,Openables,Doors,Boundaries,Notices,Cameras,Bodies,Area};
 constexpr uint32_t kFieldMapSectionCount=21;
+constexpr uint32_t kFieldAreaMapSectionCount=22;
 constexpr uint32_t kFieldNone=0xffffffffu;
 constexpr uint16_t kFieldNoOpenable=0xffffu;
 struct FieldText {uint32_t offset=0,length=0;};
@@ -45,6 +46,11 @@ enum class FieldNoticeKind:uint16_t {NotPorted=1,Interaction=2};
 struct FieldNotice {uint16_t kind=0;FieldText path,label;Vec2 position{};FieldSpan conditions;};
 struct FieldCamera {Vec2 center{},extents{};float left=0,top=0,width=0,height=0;Vec2 offset{};FieldSpan conditions;bool has_rect=false;};
 struct FieldBody {uint32_t shape_first=0,shape_count=0;FieldSpan conditions;};
+// Capability 5: AreaRoom presentation and checked single-party ready policy.
+// Saved scene identities and map-content identities are independent.
+struct FieldArea {FieldText source,region,map_item,map_override,map_override_item,visit_flag,party_guard_flag;
+    Vec2 map_offset{};float map_divisor=0;uint32_t background=0;bool sub_area=false;};
+Vec2 field_area_map_position(const FieldArea&,Vec2 world_position);
 
 class FieldMapView {
 public:
@@ -76,6 +82,7 @@ public:
     FieldNotice notice(uint32_t)const;
     FieldCamera camera(uint32_t)const;
     FieldBody body(uint32_t)const;
+    FieldArea area()const;
     // Picture for a locale code: an exact reviewed variant, else the default.
     uint32_t localized_picture(uint32_t picture,std::string_view locale)const;
 private:

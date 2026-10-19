@@ -1,0 +1,513 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": false,
+      "running": false,
+      "events": [
+        [
+          3,
+          1
+        ]
+      ]
+    },
+    {
+      "action": [
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 1,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 1,
+      "playing": false,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "wanted": 0,
+      "registered": 1,
+      "playing": false,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "wanted": 0,
+      "registered": 1,
+      "playing": false,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        2,
+        1,
+        0,
+        0,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        2,
+        1,
+        1,
+        0,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "wanted": 1,
+      "registered": 0,
+      "playing": false,
+      "running": true,
+      "events": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 0,
+      "playing": false,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "action": [
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 1,
+      "playing": false,
+      "running": false,
+      "events": [
+        [
+          3,
+          1
+        ]
+      ]
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 1,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 1,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 1,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "wanted": 0,
+      "registered": 1,
+      "playing": false,
+      "running": true,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": false,
+      "running": true,
+      "events": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ]
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 0,
+      "registered": 0,
+      "playing": false,
+      "running": false,
+      "events": [
+        [
+          3,
+          0
+        ]
+      ]
+    }
+  ]
+}

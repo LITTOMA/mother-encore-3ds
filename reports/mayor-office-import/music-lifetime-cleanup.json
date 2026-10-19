@@ -1,0 +1,17 @@
+{
+  "removed": [
+    {
+      "path": "build\\full-port\\music_players-lifetime-check",
+      "bytes": 43541184
+    },
+    {
+      "path": "build\\full-port\\music_player_choice-lifetime-check",
+      "bytes": 43441232
+    },
+    {
+      "path": "build\\full-port\\music_regions-lifetime-check",
+      "bytes": 43494496
+    }
+  ],
+  "bytes": 130476912
+}

@@ -1,0 +1,22 @@
+{
+  "scope": "All native probe temporary projects removed by ownership-checked finally; completed host executables removed, object cache/logs/genuine emulator build retained",
+  "removed": [
+    {
+      "path": "build\\podunk-routes\\host\\world-run-audio",
+      "bytes": 42691352
+    },
+    {
+      "path": "build\\podunk-routes\\host\\opening-world",
+      "bytes": 42341680
+    },
+    {
+      "path": "build\\podunk-routes\\host\\mayor-story",
+      "bytes": 43190952
+    },
+    {
+      "path": "build\\podunk-routes\\host\\walk-audio",
+      "bytes": 42302952
+    }
+  ],
+  "bytes": 170526936
+}

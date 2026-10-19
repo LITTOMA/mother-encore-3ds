@@ -1,0 +1,33 @@
+{
+  "scope": "Field scene source choices UI handoff; new scene still not staged",
+  "shared_core": [
+    "Checked scene/programme/group identity and forward source phrase targets",
+    "Wait for actual typewriter completion and source WAIT acknowledgements before choices become active",
+    "Selection clears old text before target dispatch, rejects stale generation/unknown target/unfinished text without mutating it"
+  ],
+  "platform": [
+    "Field story uses existing global choice controller with distinct input owner and stick/D-pad repeat",
+    "First active frame cannot inherit confirmation or held movement from printing",
+    "House callback is gated to House; fields dispatch into their active world",
+    "Renderer may reuse only the same checked arrow/font texture identity; scene data supplies option rectangles, color, keys and localized labels",
+    "Choice sounds and locale keys preflight before scene publication; target text prepared before selection sound"
+  ],
+  "checks": {
+    "gcc9_asan_ubsan": 3735,
+    "field_policy": 2419,
+    "field_legacy": 2041
+  },
+  "verification_limits": [
+    "No new GPU/emulator/UI appearance result yet",
+    "Actual Mayor scene cannot be entered until lifecycle/music/menu-map integration",
+    "No physical hardware"
+  ],
+  "source_sha256": {
+    "runtime/field_story.cpp": "01feeb30d11024f61b4be323322ee9d31540190bea589216b957704b172e14e7",
+    "include/encore/field_story.hpp": "a04288d960e147a9925d7931b2d2ea8ae3c4010269093294c13e86ed554c63dd",
+    "platform/ctr/main.cpp": "f2138e4a6f34fa74fe1bab09910f080417d81ae2d4a9b7166bb65de65e7c2cf7",
+    "platform/ctr/field_story.hpp": "acaff3c31ebf421e43a97ad3a78abf29e665dfc1dca384763682e9f5083cfac8",
+    "platform/ctr/dialogue_choices_renderer.hpp": "d72af99297917701bd619a9fb671254780c1def415c4baee4784faa0934e5c73",
+    "tests/mayor_story_tests.cpp": "f424e0e130568501bca0eab0bac0e021c041061abede581d76a045c7f9be3e57"
+  }
+}

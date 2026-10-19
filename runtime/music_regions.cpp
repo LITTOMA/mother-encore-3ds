@@ -19,17 +19,18 @@ struct Reader{const uint8_t*p;size_t n,pos=64;bool ok=true;
 };}
 bool MusicRegionData::load(const uint8_t*b,size_t n,std::string&e){
  if(!b||n<64||n>65536)return fail(e,"Music region size out of bounds");
- if(std::memcmp(b,"ENCMUS01",8)||u32(b+8)!=1)return fail(e,"Unsupported music region version");
+ const auto format=u32(b+8);
+ if(std::memcmp(b,"ENCMUS01",8)||(format!=1&&format!=2))return fail(e,"Unsupported music source version");
  if(u32(b+12)!=n)return fail(e,"Music region size mismatch");
- for(size_t i=40;i<64;++i)if(b[i])return fail(e,"Music region reserved header");
+ for(size_t i=format==1?40:44;i<64;++i)if(b[i])return fail(e,"Music region reserved header");
  const auto rc=u32(b+20),tc=u32(b+24),sc=u32(b+28);
- if(!rc||rc>64||!tc||tc>16||sc<rc||sc>rc*16)return fail(e,"Music region counts out of bounds");
- if(!finite(f32(b+32),-120,-20)||!finite(f32(b+36),0,60))return fail(e,"Music region tuning invalid");
+ if(format==1?(!rc||rc>64||!tc||tc>16||sc<rc||sc>rc*16):(rc||sc||!tc||tc>64))return fail(e,"Music source counts out of bounds");
+ if(!finite(f32(b+32),-120,-20)||!finite(f32(b+36),0,60)||(format==2&&!finite(f32(b+40),-120,24)))return fail(e,"Music region tuning invalid");
  const uint8_t zero[4]{};uint32_t crc=crc32_update(0xffffffffu,b,16);crc=crc32_update(crc,zero,4);crc=crc32_update(crc,b+20,n-20)^0xffffffffu;
  if(crc!=u32(b+16))return fail(e,"Music region checksum mismatch");
- Reader r{b,n};MusicRegionData next;next.silence_db_=f32(b+32);next.fade_to_seconds_=f32(b+36);
+ Reader r{b,n};MusicRegionData next;next.format_=format;next.empty_player_gain_db_=format==2?f32(b+40):0;next.silence_db_=f32(b+32);next.fade_to_seconds_=f32(b+36);
  std::set<uint32_t>tracks,regions;std::set<std::string>paths,shape_paths;
- for(uint32_t i=0;i<tc;++i){MusicRegionTrack t;t.id=r.u();t.source_sha=r.hash();t.import_sha=r.hash();t.source_path=r.text();if(!r.ok||!t.id||!tracks.insert(t.id).second||t.source_path.substr(0,6)!="res://"||!path(std::string_view(t.source_path).substr(6))||!paths.insert(t.source_path).second)return fail(e,"Invalid music track identity");next.tracks_.push_back(std::move(t));}
+ for(uint32_t i=0;i<tc;++i){MusicRegionTrack t;t.id=r.u();t.source_sha=r.hash();t.import_sha=r.hash();t.source_path=r.text();if(!r.ok||!t.id||!tracks.insert(t.id).second||t.source_path.substr(0,6)!="res://"||!path(std::string_view(t.source_path).substr(6))||!paths.insert(t.source_path).second)return fail(e,"Invalid music track identity");const auto loop=format==2?r.u():1u;if(!r.ok||loop>1)return fail(e,"Invalid music source builtin loop policy");next.builtin_loops_.push_back(loop!=0);next.tracks_.push_back(std::move(t));}
  paths.clear();uint32_t shapes=0;
  for(uint32_t i=0;i<rc;++i){MusicRegionBinding v;v.id=r.u();v.track_id=r.u();auto disabled=r.u();v.disabled=disabled!=0;v.volume_db=r.f();v.fadein_seconds=r.f();v.fadeout_seconds=r.f();v.source_path=r.text();v.appear_flag=r.text();v.disappear_flag=r.text();const auto count=r.u();
   if(!r.ok||!v.id||!regions.insert(v.id).second||!tracks.count(v.track_id)||disabled>1||!finite(v.volume_db,-120,24)||!finite(v.fadein_seconds,0,60)||!finite(v.fadeout_seconds,0,60)||!path(v.source_path)||!paths.insert(v.source_path).second||!count||count>16)return fail(e,"Invalid music region binding");
@@ -41,9 +42,9 @@ bool MusicRegionData::load(const uint8_t*b,size_t n,std::string&e){
 bool MusicRegionData::load_file(const char*p,std::string&e){FILE*f=p?std::fopen(p,"rb"):nullptr;if(!f)return fail(e,"Cannot open music region pack");std::vector<uint8_t>b(65537);const auto n=std::fread(b.data(),1,b.size(),f);bool bad=std::ferror(f);std::fclose(f);if(bad)return fail(e,"Cannot read music region pack");return load(b.data(),n,e);}
 bool MusicRegionData::matches(const AudioBank&bank,std::string&e)const{
  if(!valid_||bank.silence_db()!=silence_db_)return fail(e,"Music region/audio bank tuning mismatch");
- for(const auto&t:tracks_){AudioAsset a;if(!bank.find(t.id,a)||a.source_sha256!=t.source_sha||a.source_path!=t.source_path||!a.loops())return fail(e,"Music region/audio source identity or loop mismatch");}e.clear();return true;
+ for(size_t i=0;i<tracks_.size();++i){const auto&t=tracks_[i];AudioAsset a;if(!bank.find(t.id,a)||a.source_sha256!=t.source_sha||a.source_path!=t.source_path||a.loops()!=builtin_loops_[i])return fail(e,"Music source/audio identity or builtin loop mismatch");}e.clear();return true;
 }
-bool MusicRegionController::initialize(const MusicRegionData&data,uint32_t capacity,std::string&e){if(!data.valid()||!capacity||capacity>maximum_voices)return fail(e,"Invalid music region controller capacity/data");MusicRegionController n;n.data_=&data;n.voices_.resize(capacity);n.states_.resize(data.regions().size());*this=std::move(n);e.clear();return true;}
+bool MusicRegionController::initialize(const MusicRegionData&data,uint32_t capacity,std::string&e){if(!data.valid()||data.library()||!capacity||capacity>maximum_voices)return fail(e,"Invalid music region controller capacity/data");MusicRegionController n;n.data_=&data;n.voices_.resize(capacity);n.states_.resize(data.regions().size());*this=std::move(n);e.clear();return true;}
 bool MusicRegionController::attach_scene(uint64_t epoch,std::string&e){if(!data_||!epoch||epoch<=epoch_)return fail(e,"Invalid music scene epoch");for(auto&s:states_)if(s.registered||s.inside||s.pending_exit)return fail(e,"Previous music scene has not exited");epoch_=epoch;states_.assign(states_.size(),{});registered_.clear();pending_exits_.clear();e.clear();return true;}
 int MusicRegionController::region(std::string_view p)const{if(data_)for(size_t i=0;i<data_->regions().size();++i)if(data_->regions()[i].source_path==p)return int(i);return-1;}
 int MusicRegionController::latest()const{int result=-1;uint64_t order=0;for(size_t i=0;i<voices_.size();++i)if(voices_[i].allocated&&voices_[i].order>order){result=int(i);order=voices_[i].order;}return result;}
@@ -100,6 +101,14 @@ bool MusicRegionController::tree_exit(uint64_t epoch,std::string_view p,std::str
  if(epoch!=epoch_){e.clear();return true;}int i=region(p);if(i<0)return fail(e,"Unbound music area tree exit");auto&s=states_[i];if(s.registered)stop(uint32_t(i),data_->regions()[i].fadeout_seconds);s.inside=false;s.pending_exit=false;pending_exits_.erase(std::remove(pending_exits_.begin(),pending_exits_.end(),uint32_t(i)),pending_exits_.end());e.clear();return true;}
 bool MusicRegionController::idle_frame(uint64_t epoch,std::string&e){if(!data_||!epoch_)return fail(e,"Music region controller has no scene");
  if(epoch!=epoch_){e.clear();return true;}auto pending=std::move(pending_exits_);pending_exits_.clear();for(auto i:pending){auto&s=states_[i];s.pending_exit=false;if(!s.inside)stop(i,data_->regions()[i].fadeout_seconds);}e.clear();return true;}
+bool MusicRegionController::stop_on_door(uint64_t epoch,double seconds,std::string&e){
+ if(!data_||!epoch_)return fail(e,"Door music requires an attached scene");
+ if(epoch!=epoch_){e.clear();return true;}
+ if(!std::isfinite(seconds)||seconds<0||seconds>60)return fail(e,"Door music fade duration rejected");
+ auto next=*this;
+ for(size_t cursor=0;cursor<next.registered_.size();++cursor){const auto region=next.registered_[cursor];next.stop(region,seconds);}
+ *this=std::move(next);e.clear();return true;
+}
 void MusicRegionController::detach_dead(int slot){for(auto&s:states_)if(s.voice==slot)s.voice=-1;voices_[slot]={};}
 bool MusicRegionController::advance(double delta,bool external_tween_active,std::string&e){
  if(!data_||!std::isfinite(delta)||delta<0)return fail(e,"Invalid music region delta/data");

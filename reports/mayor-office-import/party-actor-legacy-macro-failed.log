@@ -1,0 +1,8 @@
+In file included from tests/actor_actions_tests.cpp:2:
+tests/room_fixture.hpp:9:2: error: #error "Tests require an explicit ENCORE_TEST_ROOM_PATH external room pack"
+    9 | #error "Tests require an explicit ENCORE_TEST_ROOM_PATH external room pack"
+      |  ^~~~~
+tests/room_fixture.hpp: In lambda function:
+tests/room_fixture.hpp:17:28: error: ‘ENCORE_TEST_ROOM_PATH’ was not declared in this scope
+   17 |         if(!data.load_file(ENCORE_TEST_ROOM_PATH,error)) {
+      |                            ^~~~~~~~~~~~~~~~~~~~~

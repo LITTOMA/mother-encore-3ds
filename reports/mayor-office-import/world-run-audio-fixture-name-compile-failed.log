@@ -1,0 +1,19 @@
+tests/world_run_audio_tests.cpp: In function ‘int main(int, char**)’:
+tests/world_run_audio_tests.cpp:34:130: error: conflicting declaration ‘encore::upstream::WalkInput input’
+   34 |  const auto wood=step.find_sound("wood"),stone=step.find_sound("stone");CHECK(field.run_audio().wanted_sound()==stone);WalkInput input;CHECK(field.before_physics(input));CHECK(field.run_audio().wanted_sound()==stone);
+      |                                                                                                                                  ^~~~~
+tests/world_run_audio_tests.cpp:19:124: note: previous declaration as ‘std::ifstream input’
+   19 |  struct Expected {int tap=0,running=0,playing=0,paused=0;std::string events;};std::vector<Expected>reference;std::ifstream input(argv[3]);CHECK(bool(input));std::string line;CHECK(bool(std::getline(input,line)));
+      |                                                                                                                            ^~~~~
+tests/world_run_audio_tests.cpp:34:163: error: cannot convert ‘std::ifstream’ {aka ‘std::basic_ifstream<char>’} to ‘encore::upstream::WalkInput&’
+   34 |  const auto wood=step.find_sound("wood"),stone=step.find_sound("stone");CHECK(field.run_audio().wanted_sound()==stone);WalkInput input;CHECK(field.before_physics(input));CHECK(field.run_audio().wanted_sound()==stone);
+      |                                                                                                                                                                   ^~~~~
+      |                                                                                                                                                                   |
+      |                                                                                                                                                                   std::ifstream {aka std::basic_ifstream<char>}
+tests/world_run_audio_tests.cpp:13:29: note: in definition of macro ‘CHECK’
+   13 | #define CHECK(x) check(bool(x),#x)
+      |                             ^
+In file included from tests/world_run_audio_tests.cpp:2:
+include/encore/field_scene.hpp:109:36: note:   initializing argument 1 of ‘bool encore::upstream::FieldScene::before_physics(encore::upstream::WalkInput&)’
+  109 |     bool before_physics(WalkInput& input);
+      |                         ~~~~~~~~~~~^~~~~

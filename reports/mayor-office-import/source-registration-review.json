@@ -1,0 +1,17 @@
+{
+  "failed_run": 39128342270,
+  "failed_source": "e3e3af229a36457e0821221cde8acf3ce459f4b3",
+  "failed_job": 117678127884,
+  "failure": "GCC normal CTest191/192 passed; python_tools correctly rejected unmapped field_area_source registration. Sanitizer phase did not start in that job.",
+  "fix": "Register actual Area source and stepping/run reference modules in the existing strict DEDICATED registry; reject unknown/changed/duplicate/lost cases exactly as before",
+  "checks": {
+    "registration_unit_methods": 14,
+    "real_cmake_configure": "passed; no C++ build",
+    "actual_ctest_collection": "1025 discovered = 669 aggregate + 356 dedicated; exact method-ID multiset",
+    "full_rerun": "pending; do not infer aggregate execution or full pass from collect-only"
+  },
+  "sha256": {
+    "tests/python_suite.py": "5e3292ae70a42bb15f0e854acaec4096d4d0de2829af9e79fd0d54b61f066c48",
+    "tests/test_python_suite.py": "772b94f7d714ea1c87c5fb8e781fad47130bdb8e9ab031d1feb1b1b97ad86a55"
+  }
+}

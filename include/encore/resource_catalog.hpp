@@ -23,7 +23,7 @@ enum class ResourceRole : uint32_t {
     // Capability 5: original world/battle audio bindings.
     GameplayAudio=36, FieldMusic=37, FieldAudio=38, FieldMusicZones=39, FieldMenus=40,
     // Capabilities 7/8 extend mainline menus without reusing their role ID.
-    FieldNpc=41, FieldStory=42
+    FieldNpc=41, FieldStory=42, FieldSteps=43
 };
 
 class ResourceCatalog {

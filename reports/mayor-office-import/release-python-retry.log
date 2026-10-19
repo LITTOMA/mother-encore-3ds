@@ -1,0 +1,24 @@
+test_3ds_entry_uses_catalog_without_embedded_root_game_paths (tests.resource_catalog_tests.ResourceCatalogTests.test_3ds_entry_uses_catalog_without_embedded_root_game_paths) ... ok
+test_bad_paths_suffixes_and_source_declarations (tests.resource_catalog_tests.ResourceCatalogTests.test_bad_paths_suffixes_and_source_declarations) ... ok
+test_binary_unknown_versions_capabilities_crc_and_truncation (tests.resource_catalog_tests.ResourceCatalogTests.test_binary_unknown_versions_capabilities_crc_and_truncation) ... ok
+test_duplicate_json_fields_rejected (tests.resource_catalog_tests.ResourceCatalogTests.test_duplicate_json_fields_rejected) ... ok
+test_encounter_type_reference_uniqueness_and_complete_coverage (tests.resource_catalog_tests.ResourceCatalogTests.test_encounter_type_reference_uniqueness_and_complete_coverage) ... ok
+test_extra_encounters_use_external_stable_ids (tests.resource_catalog_tests.ResourceCatalogTests.test_extra_encounters_use_external_stable_ids) ... ok
+test_field_extension_is_separate_and_fail_closed (tests.resource_catalog_tests.ResourceCatalogTests.test_field_extension_is_separate_and_fail_closed) ... ok
+test_introduction_optional_singleton_and_typed_path (tests.resource_catalog_tests.ResourceCatalogTests.test_introduction_optional_singleton_and_typed_path) ... ok
+test_mainline_menu_identity_and_new_capabilities (tests.resource_catalog_tests.ResourceCatalogTests.test_mainline_menu_identity_and_new_capabilities) ... ok
+test_missing_empty_oversized_resources_and_symlink_escape (tests.resource_catalog_tests.ResourceCatalogTests.test_missing_empty_oversized_resources_and_symlink_escape) ... ok
+test_release_stage_requires_every_catalog_bound_file_and_fingerprint (tests.resource_catalog_tests.ResourceCatalogTests.test_release_stage_requires_every_catalog_bound_file_and_fingerprint) ... ok
+test_reproducible_checked_pack_and_compiler_cli (tests.resource_catalog_tests.ResourceCatalogTests.test_reproducible_checked_pack_and_compiler_cli) ... ok
+test_source_fingerprint_mismatch_never_compiles (tests.resource_catalog_tests.ResourceCatalogTests.test_source_fingerprint_mismatch_never_compiles) ... ok
+test_unknown_duplicate_or_reserved_ids_and_roles (tests.resource_catalog_tests.ResourceCatalogTests.test_unknown_duplicate_or_reserved_ids_and_roles) ... ok
+test_unknown_schema_fields_types_pin_and_empty_scope (tests.resource_catalog_tests.ResourceCatalogTests.test_unknown_schema_fields_types_pin_and_empty_scope) ... ok
+test_failure_blocks_room_and_final_fingerprints (tests.test_content_parallelism.ContentParallelTests.test_failure_blocks_room_and_final_fingerprints) ... ok
+test_four_process_overlap_dependencies_and_final_barrier (tests.test_content_parallelism.ContentParallelTests.test_four_process_overlap_dependencies_and_final_barrier) ... ok
+test_invalid_task_does_not_launch_command (tests.test_content_parallelism.ContentParallelTests.test_invalid_task_does_not_launch_command) ... ok
+test_task_failure_replaces_stale_success_and_retains_log (tests.test_content_parallelism.ContentParallelTests.test_task_failure_replaces_stale_success_and_retains_log) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 7.245s
+
+OK

@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "kind": "encore.field-music.candidate",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Mayors Office.tscn",
+  "field_recipe": "content/mayor-field.json",
+  "areas": ["MusicArea"],
+  "binding": "sound/banks/mayor.encmusic",
+  "audio": "sound/banks/mayor.encaudio",
+  "zones": "sound/banks/mayor.enczones",
+  "pcm_prefix": "mayor"
+}

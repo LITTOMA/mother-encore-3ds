@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_area_reference.py", line 75, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_area_reference.py", line 70, in main
+    invoke(a.godot.resolve(),project,['--script',str(project/'probe.gd')],out/'godot.log');result=validate_result(json.loads((out/'reference.json').read_bytes()))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_scene_reference.py", line 37, in invoke
+    result = subprocess.run(command + arguments, stdout=stream, stderr=subprocess.STDOUT,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1228, in communicate
+    sts = self.wait(timeout=self._remaining_time(endtime))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1591, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['D:\\GameDev\\3DS\\mother-encore-3ds\\build\\godot-reference\\Godot_v3.6.2-stable_win64.exe', '--path', 'D:\\GameDev\\3DS\\mother-encore-3ds\\build\\mayor-import\\area-native-1\\temporary', '--no-window', '--audio-driver', 'Dummy', '--script', 'D:\\GameDev\\3DS\\mother-encore-3ds\\build\\mayor-import\\area-native-1\\temporary\\probe.gd']' timed out after 55.0 seconds

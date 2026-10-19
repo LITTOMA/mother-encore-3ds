@@ -1,0 +1,13 @@
+.F....
+======================================================================
+FAIL: test_exact_native_fixture_and_float_forwarding (tests.test_music_seek_reference.MusicSeekReferenceTests.test_exact_native_fixture_and_float_forwarding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_music_seek_reference.py", line 18, in test_exact_native_fixture_and_float_forwarding
+    self.assertEqual(float(rows[2]['views'][-1][0]['position']),struct.unpack('<f',struct.pack('<f',.123456789))[0])
+AssertionError: 0.1234567910432816 != 0.12345679104328156
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.841s
+
+FAILED (failures=1)

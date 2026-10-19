@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BANKS = (
     ('content/native-audio.json', 'content/asset-receipts/audio/opening.json', 'sound/banks/opening.encaudio'),
     ('content/podunk-audio.json', 'content/asset-receipts/audio/podunk.json', 'sound/banks/podunk.encaudio'),
+    ('content/mayor-audio.json', 'content/asset-receipts/audio/mayor.json', 'sound/banks/mayor.encaudio'),
 )
 
 

@@ -1,0 +1,162 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "dependencies": {
+    "content/mayor-music.json": "4e4b8a8fd9dad3719a8f6e5f418094d91b025932685657b93cd4e7ee20f03d07",
+    "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
+    "tools/podunk_field.py": "e97f7c92968c7b91c9411c9bee07f0447eb25bb219b4b3f70ffca4c3ea2d6829",
+    "tools/audio_asset.py": "ef6ca55f7fabe2f908dc1391ead1be1144247c36a6f67e0a56efab1eb81226ee",
+    "content/native-audio.json": "67e516a79e287b264eb045d734080c5ee2cb374e6c2e9eb01013e6238e283c52"
+  },
+  "producer_sha256": "6bd84b7b74f6056992e1ca954aa0ed1a3a66f6d555e380133a73dfb84f3d9f10",
+  "sources": {
+    "Audio/Music/Town Hall.mp3": "64407ee9a7949c860dec8064d22c701fabe300d21a673575c1471ab77cc932cd",
+    "Audio/Music/Town Hall.mp3.import": "39e36be6e5e9f8a17d766da05d9318510252e525a8273b0470232546f588c244",
+    "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c"
+  },
+  "metadata": {
+    "silence_db": -80.0,
+    "fade_to_seconds": 1,
+    "tracks": [
+      {
+        "stable_id": 2062928487,
+        "source_path": "res://Audio/Music/Town Hall.mp3",
+        "source_sha256": "64407ee9a7949c860dec8064d22c701fabe300d21a673575c1471ab77cc932cd",
+        "import_sha256": "39e36be6e5e9f8a17d766da05d9318510252e525a8273b0470232546f588c244",
+        "pcm_path": "sound/music/mayor-2062928487.pcm",
+        "gain_db": 0
+      }
+    ],
+    "regions": [
+      {
+        "id": 4122496262,
+        "source_path": "MusicArea",
+        "track_id": 2062928487,
+        "volume_db": 6,
+        "fadein_seconds": 1,
+        "fadeout_seconds": 1.5,
+        "appear_flag": "",
+        "disappear_flag": "",
+        "disabled": false,
+        "shape_paths": [
+          "MusicArea/CollisionShape2D"
+        ]
+      }
+    ]
+  },
+  "polygons": [
+    {
+      "source": "MusicArea",
+      "polygons": [
+        [
+          [
+            -240.0,
+            -736.0
+          ],
+          [
+            240.0,
+            -736.0
+          ],
+          [
+            240.0,
+            40.0
+          ],
+          [
+            -240.0,
+            40.0
+          ]
+        ]
+      ]
+    }
+  ],
+  "release_staged": false,
+  "audio": {
+    "schema": 1,
+    "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "recipe_sha256": "063358d8377632065fd3d5c8a96306c3932c142b1a670e622c56cd2aa21e4f2f",
+    "ffmpeg_version": "ffmpeg version 7.0-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers\nbuilt with gcc 13.2.0 (Rev5, Built by MSYS2 project)\nconfiguration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libaribcaption --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libxevd --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxeve --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libcodec2 --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint\nlibavutil      59.  8.100 / 59.  8.100\nlibavcodec     61.  3.100 / 61.  3.100\nlibavformat    61.  1.100 / 61.  1.100\nlibavdevice    61.  1.100 / 61.  1.100\nlibavfilter    10.  1.100 / 10.  1.100\nlibswscale      8.  1.100 /  8.  1.100\nlibswresample   5.  1.100 /  5.  1.100\nlibpostproc    58.  1.100 / 58.  1.100\n",
+    "ffmpeg_sha256": "e8de88d0fc5993b76af6337a68f886abc8a052bbbe437b1d2c1b0fde0534582a",
+    "assets": [
+      {
+        "stable_id": 2062928487,
+        "source_sha256": "64407ee9a7949c860dec8064d22c701fabe300d21a673575c1471ab77cc932cd",
+        "sample_rate": 44100,
+        "channels": 2,
+        "loop": true,
+        "frames": 1336320,
+        "loop_start": 0,
+        "pcm_bytes": 5345280,
+        "pcm_crc32": 3871326990,
+        "pcm_path": "sound/music/mayor-2062928487.pcm",
+        "source_path": "res://Audio/Music/Town Hall.mp3",
+        "gain_db": 0,
+        "source_sample_rate": 44100,
+        "import_sha256": "39e36be6e5e9f8a17d766da05d9318510252e525a8273b0470232546f588c244",
+        "loop_offset_seconds": 0.0,
+        "pcm_sha256": "f4d73b04195020413768fd3c329c804a6ea03b7adfe2e5ce0ca66711bb92da3b",
+        "command": [
+          "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+          "-nostdin",
+          "-v",
+          "error",
+          "-i",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Audio\\Music\\Town Hall.mp3",
+          "-map",
+          "0:a:0",
+          "-vn",
+          "-sn",
+          "-dn",
+          "-c:a",
+          "pcm_s16le",
+          "-f",
+          "s16le",
+          "-bitexact",
+          "-threads",
+          "1",
+          "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-9cjf_xb7\\0.pcm"
+        ]
+      }
+    ],
+    "files": [
+      {
+        "path": "sound/banks/mayor.encaudio",
+        "size": 225,
+        "sha256": "27154136da321cd8ba2c3eb9fb6b9d592c55bb746572cee454fac79ad5e85b72"
+      },
+      {
+        "path": "sound/music/mayor-2062928487.pcm",
+        "size": 5345280,
+        "sha256": "f4d73b04195020413768fd3c329c804a6ea03b7adfe2e5ce0ca66711bb92da3b"
+      }
+    ],
+    "scope": "PCM decode and stream metadata only; no DSP firmware; no hardware audibility or Godot decoder bit-exactness claim"
+  },
+  "outputs": {
+    "sound/banks/mayor.encaudio": {
+      "bytes": 225,
+      "sha256": "27154136da321cd8ba2c3eb9fb6b9d592c55bb746572cee454fac79ad5e85b72"
+    },
+    "sound/banks/mayor.encmusic": {
+      "bytes": 246,
+      "sha256": "8ad2cbce64251586bd13e63c18c6047131874cb944affed4d4f8a39e872bb95f"
+    },
+    "sound/banks/mayor.enczones": {
+      "bytes": 77,
+      "sha256": "49c4953e41e1ba9fa6464e86ffb99340c5f9106a753afba337a0ba2e42af18cd"
+    },
+    "sound/music/mayor-2062928487.pcm": {
+      "bytes": 5345280,
+      "sha256": "f4d73b04195020413768fd3c329c804a6ea03b7adfe2e5ce0ca66711bb92da3b"
+    }
+  }
+}

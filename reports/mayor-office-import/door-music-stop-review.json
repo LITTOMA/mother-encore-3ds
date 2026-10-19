@@ -1,0 +1,24 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original live MusicChanger array erasure at door start; no whole scene, hardware or audible output claim",
+  "native_results": 21,
+  "host_asan_ubsan_checks": 259,
+  "ndsp_double_checks": {
+    "player": 774,
+    "service": 1058,
+    "prepare": 46894
+  },
+  "python_methods": 9,
+  "event_order": "begin enqueues FadeMusic; main consumes before idle_frame/perform_scene_swap and scene epoch change; swapped queues no FadeMusic",
+  "compatibility": "No shipping resources, save bytes, format or capability changes",
+  "remaining": "Shared global cross-bank music identities and actual Mayor scene traversal",
+  "sha256": {
+    "runtime/music_regions.cpp": "9b768faffadf25cdc590c325bf52cf3e6f005d79941928a7e249fa099aa08e22",
+    "platform/ctr/music_region_service.cpp": "78e9312e07195a456b60d940b5d898f713ba3749183d45a2bde24b725f986397",
+    "platform/ctr/main.cpp": "3f408beba202e493b6413b2d965f3821f2202131188efb3178d1cba510d49b03",
+    "tools/run_door_music_reference.py": "fa266f1e9251776354b83c7cb71ebab835008e504fef938ea2919a9a4fb4a0af",
+    "tests/door_music_tests.cpp": "4a67bb08d6054ee7f77e595d78c418617f95a94d33ed14d658327812882f46ac",
+    "tests/test_door_music_reference.py": "4c57e83029ad2dbcc6c9a4c4703089dd06302c33feea2720fb8c185f44e60136",
+    "tests/fixtures/door-music-stop.tsv": "2eb57793a33edb2fd5f083ad7ff5466d2e64c4f928e36bd850589f2875e3eb24"
+  }
+}

@@ -1,0 +1,1 @@
+Music players 980: node.identity==id&&node.stream==sources[source]&&node.playing==bool(playing)&&node.pending_delete==bool(queued)&&near(node.gain_db,value) ()

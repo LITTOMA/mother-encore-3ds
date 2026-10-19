@@ -105,6 +105,24 @@ bool AudioFrameCursor::reset(uint32_t frames,uint32_t loop_start,bool loops){
     if(!frames||(loops&&loop_start>=frames)||(!loops&&loop_start!=0))return false;
     frames_=frames;loop_start_=loop_start;loops_=loops;position_=0;return true;
 }
+bool AudioFrameCursor::seek(uint32_t frame){if(!frames_||frame>frames_)return false;position_=frame;return true;}
+bool music_start_frame(const AudioAsset&a,double seconds,uint32_t&frame,std::string&e){
+    if(!a.frames||!a.sample_rate||!std::isfinite(seconds)||seconds<0||seconds>std::numeric_limits<float>::max()){e="Music start dimensions/seconds are invalid";return false;}
+    if(seconds==0){frame=0;e.clear();return true;}
+    if(a.source_path.size()<4||a.source_path.compare(a.source_path.size()-4,4,".mp3")){e="Nonzero music start codec has not been audited";return false;}
+    const float time=float(seconds),rate=float(a.sample_rate),length=float(a.frames)/rate;
+    const float sample=time>=length?0.0f:rate*time;
+    if(!std::isfinite(sample)||double(sample)>a.frames){e="Music start sample conversion is invalid";return false;}
+    frame=uint32_t(sample);e.clear();return true;
+}
+bool music_position_frame(const AudioAsset&a,uint32_t first,uint32_t samples,uint32_t&frame,std::string&e){
+    if(!a.frames||first>a.frames||(a.loops()&&a.loop_start>=a.frames)||(!a.loops()&&a.loop_start)){e="Music position dimensions/source frame are invalid";return false;}
+    const uint64_t end=uint64_t(first)+samples;
+    if(a.loops()&&end>=a.frames)frame=a.loop_start+uint32_t((end-a.frames)%(a.frames-a.loop_start));
+    else if(end<=a.frames)frame=uint32_t(end);
+    else{e="Music position exceeds non-loop source length";return false;}
+    e.clear();return true;
+}
 uint32_t AudioFrameCursor::take(uint32_t maximum,uint32_t& first){
     if(position_==frames_&&loops_)position_=loop_start_;
     first=position_;const uint32_t n=std::min(maximum,frames_-position_);position_+=n;return n;

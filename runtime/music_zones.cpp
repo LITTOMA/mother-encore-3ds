@@ -12,17 +12,18 @@ bool convex(const std::vector<Vec2>&p){double sign=0;for(size_t i=0;i<p.size();+
 bool separated(const std::vector<Vec2>&a,const std::vector<Vec2>&b){for(size_t i=0;i<a.size();++i){auto p=a[i],q=a[(i+1)%a.size()];const Vec2 axis{q.y-p.y,p.x-q.x};auto dot=[&](Vec2 v){return double(v.x)*axis.x+double(v.y)*axis.y;};double amin=dot(a[0]),amax=amin,bmin=dot(b[0]),bmax=bmin;for(auto v:a){amin=std::min(amin,dot(v));amax=std::max(amax,dot(v));}for(auto v:b){bmin=std::min(bmin,dot(v));bmax=std::max(bmax,dot(v));}if(amax<bmin||bmax<amin)return true;}return false;}
 }
 bool MusicZones::load(const uint8_t*p,size_t n,std::string&e){auto fail=[&](const char*s){e=s;return false;};
- if(!p||n<24||n>262144||std::memcmp(p,"ENCZON01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)==0||u32(p+20)>64)return fail("Music zones header rejected");
+ if(!p||n<24||n>262144||std::memcmp(p,"ENCZON01",8)||(u32(p+8)!=1&&u32(p+8)!=2)||u32(p+12)!=n||u32(p+20)==0||u32(p+20)>64)return fail("Music zones header rejected");
  if(~encore::crc32_update(~0u,p+24,n-24)!=u32(p+16))return fail("Music zones checksum rejected");
- Reader r{p+24,n-24};std::vector<MusicZone>zones;
- for(uint32_t i=0;i<u32(p+20);++i){MusicZone zone;zone.path=r.text();auto count=r.u();if(!r.ok||count==0||count>128||zone.path.rfind("Music/",0)!=0)return fail("Music zone binding rejected");
+ Reader r{p+24,n-24};std::vector<MusicZone>zones;bool generic=false;
+ for(uint32_t i=0;i<u32(p+20);++i){MusicZone zone;zone.path=r.text();auto count=r.u();if(!r.ok||count==0||count>128||(u32(p+8)==1&&zone.path.rfind("Music/",0)!=0))return fail("Music zone binding rejected");
+  generic|=zone.path.rfind("Music/",0)!=0;
   for(unsigned char c:zone.path)if(c<32||c>126||c==':'||c=='\\')return fail("Music zone path rejected");
   size_t start=0;while(start<=zone.path.size()){auto end=zone.path.find('/',start);if(end==zone.path.npos)end=zone.path.size();auto part=zone.path.substr(start,end-start);if(part.empty()||part=="."||part=="..")return fail("Unsafe music zone path");if(end==zone.path.size())break;start=end+1;}
   for(const auto&old:zones)if(old.path==zone.path)return fail("Duplicate music zone");
   for(uint32_t j=0;j<count;++j){auto vertices=r.u();if(!r.ok||vertices<3||vertices>64||r.n<size_t(vertices)*8)return fail("Music zone polygon rejected");std::vector<Vec2>poly;for(uint32_t k=0;k<vertices;++k){auto x=r.f(),y=r.f();poly.push_back({x,y});}if(!r.ok||!convex(poly))return fail("Invalid music zone polygon");zone.polygons.push_back(std::move(poly));}
   zones.push_back(std::move(zone));
  }
- if(!r.ok||r.n)return fail("Trailing music zone bytes");zones_=std::move(zones);e.clear();return true;
+ if(!r.ok||r.n)return fail("Trailing music zone bytes");if(u32(p+8)==2&&!generic)return fail("Music zone version2 requires generic source paths");zones_=std::move(zones);e.clear();return true;
 }
 bool MusicZones::load_file(const char*p,std::string&e){std::vector<uint8_t>b;return encore::read_file(p,b,262144,e)&&load(b.data(),b.size(),e);}
 bool MusicZones::matches(const MusicRegionData&d,std::string&e)const{if(!d.valid()||d.regions().size()!=zones_.size()){e="Music zone coverage mismatch";return false;}for(size_t i=0;i<zones_.size();++i)if(zones_[i].path!=d.regions()[i].source_path){e="Music zone source order mismatch";return false;}e.clear();return true;}

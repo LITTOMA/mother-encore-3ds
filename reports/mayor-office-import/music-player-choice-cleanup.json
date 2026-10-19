@@ -1,0 +1,15 @@
+{
+  "removed": [
+    {
+      "path": "build\\full-port\\music_player_choice-choice-check",
+      "bytes": 43095368
+    },
+    {
+      "path": "build\\full-port\\music_regions-choice-check",
+      "bytes": 43118744
+    }
+  ],
+  "total_bytes": 86214112,
+  "native_temporary_projects_removed": true,
+  "preserved": "Compile cache, checked native output/receipts, current verified 3DSX"
+}

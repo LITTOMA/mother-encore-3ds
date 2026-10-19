@@ -1,0 +1,18 @@
+test_new_and_old_capability_mismatch_and_truncated_payload (tests.test_scene_resource_catalog.SceneCatalogCodec.test_new_and_old_capability_mismatch_and_truncated_payload) ... ok
+test_old_and_multiple_scene_binding_capabilities (tests.test_scene_resource_catalog.SceneCatalogCodec.test_old_and_multiple_scene_binding_capabilities) ... ok
+test_stepping_roles_and_paths_are_strict (tests.test_scene_resource_catalog.SceneCatalogCodec.test_stepping_roles_and_paths_are_strict) ... ok
+test_stepping_uses_independent_capability10_identity (tests.test_scene_resource_catalog.SceneCatalogCodec.test_stepping_uses_independent_capability10_identity) ... ok
+test_wrong_ids_types_and_missing_default_are_rejected (tests.test_scene_resource_catalog.SceneCatalogCodec.test_wrong_ids_types_and_missing_default_are_rejected) ... ok
+test_actual_transformed_routes (tests.test_world_scene_routes.Routes.test_actual_transformed_routes) ... ok
+test_duplicate_json_keys (tests.test_world_scene_routes.Routes.test_duplicate_json_keys) ... ok
+test_legacy_route_semantics_unchanged (tests.test_world_scene_routes.Routes.test_legacy_route_semantics_unchanged) ... ok
+test_legacy_schema1_retains_capability2 (tests.test_world_scene_routes.Routes.test_legacy_schema1_retains_capability2) ... ok
+test_lowered_tuning_rejection (tests.test_world_scene_routes.Routes.test_lowered_tuning_rejection) ... ok
+test_recipe_negative_paths (tests.test_world_scene_routes.Routes.test_recipe_negative_paths) ... ok
+test_source_semantic_rejection (tests.test_world_scene_routes.Routes.test_source_semantic_rejection) ... ok
+test_steps_missing_unknown_and_downgraded (tests.test_world_scene_routes.Routes.test_steps_missing_unknown_and_downgraded) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 7.466s
+
+OK

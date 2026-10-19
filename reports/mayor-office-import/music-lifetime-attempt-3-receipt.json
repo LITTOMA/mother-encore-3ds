@@ -1,0 +1,428 @@
+{
+  "source": {
+    "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "whole_gameplay_approved": false,
+    "sources": {
+      "Audio/Music/Town Hall.mp3": "64407ee9a7949c860dec8064d22c701fabe300d21a673575c1471ab77cc932cd",
+      "Audio/Music/Town Hall.mp3.import": "39e36be6e5e9f8a17d766da05d9318510252e525a8273b0470232546f588c244",
+      "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e",
+      "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+      "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+      "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+      "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+      "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+      "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+      "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+      "Audio/Music/Pollyanna.ogg": "2f1c880cfca68c41178f178c8f91ba651ff16f0acf6477363eb99d60a5a6ac1e",
+      "Audio/Music/Pollyanna.ogg.import": "fed99162c364459577272700329efb22d63ba8ac3c1bcd53eaa72b7c23cf2764"
+    },
+    "manager_methods": {
+      "_ready": "a2d97571c1adc4aae1f6f6987009bed7053676caf1319cc72ffcae44db474ff3",
+      "_get_audio_player_count": "6d13e742193187f19d5a8b7917b923b9e1fb5eaf4a3f33c3d7c5ab2f61d3c424",
+      "add_audio_player": "60723a89167fe436a6993b038061ddaaf5f6bfd0f7d3a0ad4f79ebba1f09c7ef",
+      "get_audio_player": "ac419fd8d21fc40688d25c08b82c79cad10a82c3f2cdd6b0bd281cbf52760e89",
+      "get_audio_player_from_song": "db498b4d4854b6ecddd49895f16beca907ee88d5f4042e7e561805c1a53e6111",
+      "get_audio_player_index": "3058b90611f818ff545dc8199390410d489a76aff74e38f5c40cf054dcd6bbfc",
+      "get_audio_player_list": "1f0ec6a9f2bc42552121165d1f8e27d0aa852dabe0385b7a76b3840e745d5345",
+      "_remove_audio_player_obj": "01678b6626fd1eb9a478b80660fbbe2afb2750c7f2aec9cb03731b0dfbed0e91",
+      "_add_at_zero": "cd4aec2fc4c2733e531e054d788bdeddf7d90d3dad2c200a971434488b727910",
+      "get_latest_audio_player_index": "d0210b21c481584331075fd8b9ba311b7ab9df6fd7029c920aa8ee230a2c88bd",
+      "play_music": "be7cb1705dbf119ca48fc239932f6af7a249c65135c527e4fec9b558fa6554fe",
+      "music_fadeout": "f6ea737e5b82db8f1f610de8a451bc4b321667c16d6c03d7039e78dc69abc533",
+      "music_fadeout_obj": "b74bcf4d7ccc7b80abb5a4d788a426bda34eb0e3df2d0df74dc277f0edec712a",
+      "music_fadein": "b9e8a42d1c73c41742bfbc88c8c47b67eb65061f1d0c46164303654ebd508ff2",
+      "_music_fadein_obj": "41c791a8cb69e0402030ab33f7685d598bf34ada4032b028ace74868116a6115",
+      "music_fadeto": "292f1baa9d8d9c57b46c231f6d776eb8a40b7e81979ee5bd70932017f4bcf918",
+      "set_audio_player_volume": "e9a28febf9938677c9e46113e0e4b66a3388e671373001f9ce177c924e0b69d2",
+      "_set_audio_player_volume_obj": "65b0a1f63e9c59a2329956dfa2ea7c28d8144ba6440276a401fdc778cc5c0a7b",
+      "stop_audio_player": "f231e2f506cd2e68fea2f11b4356afff2acdd224053308d3924b4b5115d8fa92",
+      "_stop_audio_player_obj": "026ce6df6e39aaa9733b19a494ef057d967d1c2e99113e768bd46342930ec634",
+      "_remove_all_unplaying": "123aa70f4e544950616032bfa230b5534f99c763af448cbe966e088e5a55e0c3",
+      "_remove_player_after_tween": "0de15b5aa0ae5b5cfb0c268835990e60eec2e85615bbce5704a6c03ff56a26a1",
+      "clear_all_music": "047c457bbfe75de0c79c7dd6c20c9656e703a9b2047b67c6ce72d489e9651d48"
+    },
+    "imports": [
+      {
+        "source": "res://Audio/Music/Pollyanna.ogg",
+        "loop": true,
+        "offset": 8.771
+      },
+      {
+        "source": "res://Audio/Music/Town Hall.mp3",
+        "loop": true,
+        "offset": 0.0
+      }
+    ],
+    "parameters": {
+      "silence_db": -80.0,
+      "fade_to_seconds": 1,
+      "requested_gain_db": 6,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5
+    },
+    "cases": [
+      {
+        "name": "remove_last_recreates_empty",
+        "actions": [
+          [
+            "remove",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "remove_two_in_order",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "remove",
+            1
+          ],
+          [
+            "flush"
+          ],
+          [
+            "remove",
+            0
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "clear_does_not_recreate",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "clear"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "clear_then_add_before_deletion",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "clear"
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "queued_player_remains_addressable",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "remove",
+            0
+          ],
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "volume",
+            0,
+            6
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "stop_retains_stream_and_tween",
+        "actions": [
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "volume",
+            0,
+            6
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "stop",
+            0
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "volume_write_retains_tween",
+        "actions": [
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "volume",
+            0,
+            6
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "volume",
+            0,
+            0
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "equal_fadeto_retains_fadeout",
+        "actions": [
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "volume",
+            0,
+            6
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "fadeto",
+            0,
+            6,
+            0.2
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "changed_fadeto_replaces_fadeout",
+        "actions": [
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "volume",
+            0,
+            6
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "volume",
+            0,
+            0
+          ],
+          [
+            "fadeto",
+            0,
+            6,
+            0.2
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "fadeout_waits_for_other_player",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "volume",
+            1,
+            -6
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "fadeto",
+            1,
+            6,
+            0.3
+          ],
+          [
+            "first_complete"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "stopped_other_player_is_cleaned",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "stop",
+            1
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "remove_twice_and_clear",
+        "actions": [
+          [
+            "remove",
+            0
+          ],
+          [
+            "remove",
+            0
+          ],
+          [
+            "clear"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      }
+    ],
+    "generated_sha256": {
+      "manager.gd": "8fa5e2de2b1b2cca82652b6abfcc6eebaddc8069b756704056f8bf0c3f042e99",
+      "probe.gd": "902362b614aa948bebe9040476c67c9bec6c5177bbdc58804314fc9ec72bd783",
+      "input.json": "65c87debedfdebd9ba1287d331bf605ef72671f6aa1f76a65e2d7b45bb3746cd",
+      "project.godot": "7f99867ab2617b26547fa879c23171c2774dc8063dddcce8ce4f0520c4d1d375"
+    },
+    "mapped_implementation": {
+      "loop_node_state": "runtime/music_players.cpp",
+      "choice": "runtime/music_player_choice.cpp"
+    },
+    "scope": "Unchanged selected AudioManager methods with real AudioStreamPlayer and Tween nodes. Ordered queue_free/tree_exited deletion, stopped streams, volume writes, replaced/preserved tweens, and shared tween_all_completed cleanup; explicit idle deletion boundaries and event-driven tween completion. No full music manager, finished callbacks, bus/pause behavior, physical bank ownership, NDSP, perceptual audio or live scene integration claim."
+  },
+  "producer_sha256": "968c85caf54be2f897f73403bd259a0adb284548484e39a61cbf39f1a6a8c574",
+  "result_sha256": "8b41db868303a11199723b3f758742b9d596147a6fc1e2e1c24512b138e5dd91",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd"
+}

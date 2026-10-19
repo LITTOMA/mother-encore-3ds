@@ -1,0 +1,26 @@
+{
+  "reason": "Replacement genuine d33 artifact passed recorded emulator regression; remove superseded game and completed host executables, retain logs, receipts, current game and warm objects",
+  "files": [
+    {
+      "path": "full-port/scene-current/verified-artifact/3ds/encore-native/encore-native.3dsx",
+      "bytes": 253822764
+    },
+    {
+      "path": "podunk-routes/host/npc-interaction-policy",
+      "bytes": 41850368
+    },
+    {
+      "path": "podunk-routes/host/npc-sprite",
+      "bytes": 41403224
+    },
+    {
+      "path": "podunk-routes/host/field-npc-policy",
+      "bytes": 42770648
+    },
+    {
+      "path": "podunk-routes/host/party_npc_actor",
+      "bytes": 41786512
+    }
+  ],
+  "total_bytes": 421633516
+}

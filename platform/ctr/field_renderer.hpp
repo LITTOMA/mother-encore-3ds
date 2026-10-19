@@ -45,13 +45,15 @@ public:
     bool draw(const encore::upstream::FieldScene& scene,const OpeningActorRenderer& actors,float camera_x,float camera_y,float width,float height,float offset_x,float offset_y,double time,void (*extra)(float,float,float,float)=nullptr){
         using namespace encore::upstream;
         if(!ready()||scene.map().bytes_identity()!=map_.bytes_identity())return false;
+        if(map_.count(FieldMapSection::Area)){const auto c=map_.area().background;C2D_DrawRectSolid(offset_x,offset_y,0,width,height,C2D_Color32(c>>24,(c>>16)&255,(c>>8)&255,c&255));}
         time_=time;cx_=camera_x;cy_=camera_y;w_=width;h_=height;ox_=offset_x;oy_=offset_y;deferred_.clear();
         for(uint32_t g=0;g<map_.count(FieldMapSection::Groups);++g){
             const auto group=map_.group(g);
             if(group.kind==uint32_t(FieldGroupKind::Static)){
                 for(uint32_t k=0;k<group.count;++k){const auto index=group.first+k;if(!scene.item_active(index))continue;const auto item=map_.item(index);
                     if(item.kind==uint16_t(FieldItemKind::LayerCells))draw_layer(scene,item.first);
-                    else draw_sprites(scene,item.first,item.count);}
+                    else if(item.kind==uint16_t(FieldItemKind::Sprites))draw_sprites(scene,item.first,item.count);
+                    else if(item.kind==uint16_t(FieldItemKind::Actor)&&scene.actor_visible(item.first))actors.draw_actor(scene.actor_pose(item.first),cx_-ox_,cy_-oy_);}
                 continue;
             }
             entries_.clear();

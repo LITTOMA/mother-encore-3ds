@@ -1,0 +1,908 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "release_staged": false,
+  "manager_and_callsite_methods": {
+    "Scripts/global/audioManager.gd": {
+      "play_music": "be7cb1705dbf119ca48fc239932f6af7a249c65135c527e4fec9b558fa6554fe",
+      "fadeout_all_music": "3c8b309f3c89329eb208778ce25c9c4d5888bca4d43efe881c062f248e7e7022",
+      "pause_all_music": "5b67982cbb1b8b50b6a5bb0875ec5f7422b85152b1cd7eb4cac22324e3a6ca29",
+      "resume_all_music": "5d9ba1033e4c92179a0567e02e8b05e62f6715e10d380981d4482791f6215fec",
+      "music_fadeto": "292f1baa9d8d9c57b46c231f6d776eb8a40b7e81979ee5bd70932017f4bcf918",
+      "music_fadeout": "f6ea737e5b82db8f1f610de8a451bc4b321667c16d6c03d7039e78dc69abc533",
+      "music_fadein": "b9e8a42d1c73c41742bfbc88c8c47b67eb65061f1d0c46164303654ebd508ff2",
+      "set_audio_player_volume": "e9a28febf9938677c9e46113e0e4b66a3388e671373001f9ce177c924e0b69d2",
+      "add_audio_player": "60723a89167fe436a6993b038061ddaaf5f6bfd0f7d3a0ad4f79ebba1f09c7ef",
+      "get_audio_player_from_song": "db498b4d4854b6ecddd49895f16beca907ee88d5f4042e7e561805c1a53e6111",
+      "is_playing": "b41e9774d191c5300088c9d733c9b9fefecc64c823cd4fad48dca2f72eff4e5e",
+      "stop_audio_player": "f231e2f506cd2e68fea2f11b4356afff2acdd224053308d3924b4b5115d8fa92",
+      "_stop_audio_player_obj": "026ce6df6e39aaa9733b19a494ef057d967d1c2e99113e768bd46342930ec634"
+    },
+    "Scripts/UI/Title screen.gd": {
+      "_ready": "b220d33c9b22fb81dcabdbb1b7bd4a23bd5a7e9967e394f6f3951d10ca50e40a",
+      "_physics_process": "789cdc3716b3a015ac1e701f4531a1824560368026317d1f3d853f79f2f921fc"
+    },
+    "Scripts/UI/NamingScreen/Naming screen.gd": {
+      "_ready": "5f189cfadcb8a16f84144bd8f53a3fb938cb87f5a3927a4af6e2bd9a59b183c0"
+    },
+    "Scripts/UI/Battle/BattleSystem.gd": {
+      "_ready": "589884f0fb8a8d9621fc42b7199b3761a82dadac90a192d966599e66fb534767",
+      "_battle_start": "18cea80156e1ac5aa49711a42d7a9b29c927e8fe4a7d44b040a523866ab7e5ea",
+      "_win": "01b84f1d8caa8f2c52009a849ed7fd7cede503408a2dda26d3aaf51395805c4f",
+      "_level_up_or_learn_skills": "bd609c59254efd32c577c45c175e758f7466009d2ca1d10a92130dcc1e66d417",
+      "_end_battle_to_overworld": "328fe13885658970500ed8c22dd959d5c78e563aefae6e4b845a72db215be2e3",
+      "_remove_battle_music": "699ef774f33b4492c67f43238f336b730ccba3b13232389fc400bb90c9d19652"
+    }
+  },
+  "sources": {
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401",
+    "Scripts/UI/NamingScreen/Naming screen.gd": "8e094a7d8db69cc90f70f11238a4c5b0231678ad7041dc537ce671e4284b570d",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
+    "Data/Battlers/doll.yaml": "89fff7a6f682152b66207601190e24d03eb273e6d79243d8f34a9b98e72a6a97",
+    "Data/Battlers/pillow.yaml": "61669b6bebdb287807b7dd3b0a87608598059cba83144dd2c8748a03de24d516",
+    "Data/Battlers/straydog.yaml": "424b46287cc6bbee0d8940230c4e8def36aff81cbdc3397a02f3880bfd9b5247"
+  },
+  "source_recipe": {
+    "schema": 1,
+    "kind": "encore.music-programs.candidate",
+    "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "sources": {
+      "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+      "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401",
+      "Scripts/UI/NamingScreen/Naming screen.gd": "8e094a7d8db69cc90f70f11238a4c5b0231678ad7041dc537ce671e4284b570d",
+      "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+      "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
+      "Data/Battlers/doll.yaml": "89fff7a6f682152b66207601190e24d03eb273e6d79243d8f34a9b98e72a6a97",
+      "Data/Battlers/pillow.yaml": "61669b6bebdb287807b7dd3b0a87608598059cba83144dd2c8748a03de24d516",
+      "Data/Battlers/straydog.yaml": "424b46287cc6bbee0d8940230c4e8def36aff81cbdc3397a02f3880bfd9b5247"
+    },
+    "programs": [
+      {
+        "id": 1,
+        "name": "title_ready",
+        "inputs": [],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "if_different",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {
+                "string": "res://Audio/Music/Mother Earth.mp3"
+              }
+            ],
+            "skip": 3
+          },
+          {
+            "op": "fade_all",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "number": 0.2
+              }
+            ],
+            "skip": 0
+          },
+          {
+            "op": "add",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "play",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {},
+              {
+                "string": "res://Audio/Music/Mother Earth.mp3"
+              },
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "title_new_game",
+        "inputs": [],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "fade_all",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "number": 0.5
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "naming_ready",
+        "inputs": [
+          "bgm:string",
+          "embedded:boolean"
+        ],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "argument": 1
+              }
+            ],
+            "skip": 1
+          },
+          {
+            "op": "pause",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "add",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "play",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {},
+              {
+                "argument": 0
+              },
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          },
+          {
+            "op": "volume",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {
+                "number": 8.0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "fade_all",
+        "inputs": [
+          "seconds:number"
+        ],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "fade_all",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "argument": 0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "dialogue_loop",
+        "inputs": [
+          "track:string",
+          "loop:string"
+        ],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "if_playing",
+            "target": {
+              "kind": "child",
+              "value": {
+                "number": 0
+              }
+            },
+            "args": [],
+            "skip": 1
+          },
+          {
+            "op": "add",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "play",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {
+                "argument": 0
+              },
+              {
+                "argument": 1
+              },
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "dialogue_one_shot",
+        "inputs": [
+          "track:string"
+        ],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "if_playing",
+            "target": {
+              "kind": "child",
+              "value": {
+                "number": 0
+              }
+            },
+            "args": [],
+            "skip": 1
+          },
+          {
+            "op": "add",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "play",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {
+                "argument": 0
+              },
+              {},
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "dialogue_fade",
+        "inputs": [],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "fade_out",
+            "target": {
+              "kind": "child",
+              "value": {
+                "number": 0
+              }
+            },
+            "args": [
+              {
+                "number": 2.0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "dialogue_volume",
+        "inputs": [
+          "volume:number"
+        ],
+        "delay_idle_frames": 1,
+        "instructions": [
+          {
+            "op": "fade_to",
+            "target": {
+              "kind": "child",
+              "value": {
+                "number": 0
+              }
+            },
+            "args": [
+              {
+                "argument": 0
+              },
+              {
+                "number": 1.0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "encounter",
+        "inputs": [
+          "sound:string",
+          "pause:boolean"
+        ],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "argument": 1
+              }
+            ],
+            "skip": 1
+          },
+          {
+            "op": "pause",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "add",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "play",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {
+                "argument": 0
+              },
+              {},
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "battle_music",
+        "inputs": [
+          "intro:string",
+          "loop:string",
+          "enabled:boolean"
+        ],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "argument": 2
+              }
+            ],
+            "skip": 2
+          },
+          {
+            "op": "add",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "play",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {
+                "argument": 0
+              },
+              {
+                "argument": 1
+              },
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "name": "victory",
+        "inputs": [
+          "enabled:boolean",
+          "boss:boolean"
+        ],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "argument": 0
+              }
+            ],
+            "skip": 6
+          },
+          {
+            "op": "pause",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "add",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "argument": 1
+              }
+            ],
+            "skip": 2
+          },
+          {
+            "op": "play",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {
+                "string": "res://Audio/Music/You Win/YOUWONBOSS.mp3"
+              },
+              {
+                "string": "res://Audio/Music/You Win/Victory.mp3"
+              },
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          },
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "boolean": false
+              }
+            ],
+            "skip": 1
+          },
+          {
+            "op": "play",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {
+                "string": "res://Audio/Music/You Win/YOUWON.mp3"
+              },
+              {
+                "string": "res://Audio/Music/You Win/Victory.mp3"
+              },
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "name": "level_up",
+        "inputs": [
+          "enabled:boolean",
+          "personal:string"
+        ],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "argument": 0
+              }
+            ],
+            "skip": 10
+          },
+          {
+            "op": "if_exists",
+            "target": {
+              "kind": "song",
+              "value": {
+                "string": "res://Audio/Music/You Win/LVLUP.mp3"
+              }
+            },
+            "args": [],
+            "skip": 1
+          },
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "boolean": false
+              }
+            ],
+            "skip": 3
+          },
+          {
+            "op": "pause",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "add",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "play",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {},
+              {
+                "string": "res://Audio/Music/You Win/LVLUP.mp3"
+              },
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          },
+          {
+            "op": "capture_position",
+            "target": {
+              "kind": "song",
+              "value": {
+                "string": "res://Audio/Music/You Win/LVLUP.mp3"
+              }
+            },
+            "args": [
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          },
+          {
+            "op": "if_exists",
+            "target": {
+              "kind": "song",
+              "value": {
+                "argument": 1
+              }
+            },
+            "args": [],
+            "skip": 1
+          },
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "boolean": false
+              }
+            ],
+            "skip": 2
+          },
+          {
+            "op": "add",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "play",
+            "target": {
+              "kind": "latest"
+            },
+            "args": [
+              {},
+              {
+                "argument": 1
+              },
+              {
+                "register": 0
+              }
+            ],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "name": "battle_return",
+        "inputs": [
+          "result_music:boolean",
+          "battle:string",
+          "intro:string",
+          "stop_areas:boolean"
+        ],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "argument": 0
+              }
+            ],
+            "skip": 8
+          },
+          {
+            "op": "remove",
+            "target": {
+              "kind": "contains",
+              "value": {
+                "string": "res://Audio/Music/You Win/"
+              }
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "if_boolean",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "argument": 3
+              }
+            ],
+            "skip": 1
+          },
+          {
+            "op": "stop_areas",
+            "target": {
+              "kind": "none"
+            },
+            "args": [
+              {
+                "number": 0
+              }
+            ],
+            "skip": 0
+          },
+          {
+            "op": "remove",
+            "target": {
+              "kind": "song",
+              "value": {
+                "argument": 1
+              }
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "remove",
+            "target": {
+              "kind": "song",
+              "value": {
+                "argument": 2
+              }
+            },
+            "args": [],
+            "skip": 0
+          },
+          {
+            "op": "if_exists",
+            "target": {
+              "kind": "child",
+              "value": {
+                "number": 0
+              }
+            },
+            "args": [],
+            "skip": 2
+          },
+          {
+            "op": "if_paused",
+            "target": {
+              "kind": "child",
+              "value": {
+                "number": 0
+              }
+            },
+            "args": [],
+            "skip": 1
+          },
+          {
+            "op": "fade_in",
+            "target": {
+              "kind": "child",
+              "value": {
+                "number": 0
+              }
+            },
+            "args": [
+              {
+                "gain": true
+              },
+              {
+                "number": 3.0
+              }
+            ],
+            "skip": 0
+          },
+          {
+            "op": "resume",
+            "target": {
+              "kind": "none"
+            },
+            "args": [],
+            "skip": 0
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "name": "stop_song",
+        "inputs": [
+          "song:string"
+        ],
+        "delay_idle_frames": 0,
+        "instructions": [
+          {
+            "op": "stop",
+            "target": {
+              "kind": "song",
+              "value": {
+                "argument": 0
+              }
+            },
+            "args": [],
+            "skip": 0
+          }
+        ]
+      }
+    ],
+    "encounters": [
+      {
+        "battle": 1,
+        "source": "Data/Battlers/lamp.yaml",
+        "round_recipe": "content/native-round.json",
+        "music": "",
+        "intro": ""
+      },
+      {
+        "battle": 2,
+        "source": "Data/Battlers/doll.yaml",
+        "round_recipe": "content/doll-round.json",
+        "music": "",
+        "intro": ""
+      },
+      {
+        "battle": 3,
+        "source": "Data/Battlers/pillow.yaml",
+        "round_recipe": "content/pillow-round.json",
+        "music": "",
+        "intro": ""
+      },
+      {
+        "battle": 4,
+        "source": "Data/Battlers/straydog.yaml",
+        "round_recipe": "content/bridge-round.json",
+        "music": "res://Audio/Music/Battle Themes/Flippant Foe.mp3",
+        "intro": ""
+      }
+    ]
+  },
+  "mapped_implementation": {
+    "binary_programs": "runtime/music_programs.cpp",
+    "manager_operations": "runtime/music_players.cpp",
+    "registered_area_callbacks": "runtime/music_scene_graph.cpp",
+    "position_query": "platform/ctr/music_bank_transports.cpp"
+  },
+  "scope": "Current title/naming/intro fade, dialogue music and four reviewed encounters; paths, gains, durations, conditions, URI selectors and one-idle volume delay remain data. Narrow forward-only manager operations, not a Godot interpreter. Parameters originate in checked callers. Independent metadata only; not catalog-bound, staged or connected to main yet."
+}

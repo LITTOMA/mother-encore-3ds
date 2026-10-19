@@ -1,0 +1,10 @@
+COMMAND ['py', '-3.11', 'tools/field_area.py', '--out', 'build/mayor-import/area-candidate']
+AreaRoom candidate: 7380 bytes; map capability5; not staged
+COMMAND ['py', '-3.11', 'tools/native_session.py', 'extract']
+Native session: 10152 bytes; checked source/defaults/stat rows; save-only bridge
+COMMAND ['py', '-3.11', 'tools/new_game_assets.py', 'reuse-session', '--base', '0046ba0ea147438716d6b284acd3cc0a64f85f89']
+Naming session dependency re-admitted; exact game/UI binary and actual textures retained
+COMMAND ['py', '-3.11', 'tools/resource_catalog.py', 'compile']
+Native resource catalog: 2279 checked bytes, 47 typed bindings
+COMMAND ['py', '-3.11', 'tools/new_game_assets.py', 'verify']
+Checked startup naming pack: 18660 bytes

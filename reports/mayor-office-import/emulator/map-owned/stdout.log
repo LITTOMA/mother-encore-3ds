@@ -1,0 +1,91 @@
+title_ready {'frame': 8, 'field_phase': 4294967295, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 4294967295, 'hp': 0, 'enemy_hp': 0, 'experience': 0, 'cash': 0, 'player_x': 520.0, 'player_y': 397.0}
+loaded {'frame': 2136, 'field_phase': 4294967295, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 4294967295, 'hp': 65, 'enemy_hp': 0, 'experience': 9, 'cash': 0, 'player_x': 136.0, 'player_y': 800.0}
+outside {'frame': 2159, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 4294967295, 'hp': 65, 'enemy_hp': 0, 'experience': 9, 'cash': 0, 'player_x': 8.0, 'player_y': -39.0}
+goods_before_battle {'frame': 2242, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 4294967295, 'hp': 65, 'enemy_hp': 0, 'experience': 9, 'cash': 0, 'player_x': 8.0, 'player_y': -39.0}
+bridge_trigger {'frame': 2461, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 4294967295, 'hp': 65, 'enemy_hp': 0, 'experience': 9, 'cash': 0, 'player_x': 450.0, 'player_y': 266.0}
+battle_commands {'frame': 2712, 'field_phase': 0, 'world_stage': 2, 'world_dialogue': 4294967295, 'battle_active': 1, 'battle_round_phase': 1, 'hp': 65, 'enemy_hp': 84, 'experience': 9, 'cash': 0, 'player_x': 442.0, 'player_y': 266.0}
+victory_return {'frame': 3733, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 442.0, 'player_y': 266.0}
+goods_after_battle {'frame': 3957, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 442.0, 'player_y': 266.0}
+mom_trigger {'frame': 4005, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 1000, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 506.0, 'player_y': 266.0}
+mom_1000 {'frame': 4012, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 1000, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 506.0, 'player_y': 266.0}
+mom_1001 {'frame': 4119, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 1001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 506.0, 'player_y': 266.0}
+mom_1002 {'frame': 4228, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 1002, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 506.0, 'player_y': 266.0}
+mom_1003 {'frame': 4337, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 1003, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 506.0, 'player_y': 266.0}
+mom_1004 {'frame': 4456, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 1004, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 506.0, 'player_y': 266.0}
+mom_complete {'frame': 4575, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 506.0, 'player_y': 266.0}
+completed_triggers_repeated {'frame': 4661, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 526.0, 'player_y': 266.0}
+waypoint RIGHT player_x 536 541.0 266.0
+waypoint DOWN player_y 480 541.0 482.0
+waypoint LEFT player_x 408 407.0 482.0
+waypoint DOWN player_y 488 407.0 488.0
+waypoint LEFT player_x 400 395.0 492.0
+waypoint DOWN player_y 512 395.0 515.0
+waypoint LEFT player_x 344 342.0 515.0
+waypoint DOWN player_y 520 342.0 524.0
+waypoint LEFT player_x 336 331.0 524.0
+waypoint DOWN player_y 528 331.0 529.0
+waypoint LEFT player_x 184 183.0 529.0
+waypoint DOWN player_y 536 183.0 540.0
+waypoint LEFT player_x 176 171.0 540.0
+waypoint DOWN player_y 560 171.0 561.0
+waypoint LEFT player_x -560 -562.0 561.0
+waypoint UP player_y 496 -562.0 491.0
+west_road {'frame': 5054, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': -562.0, 'player_y': 491.0}
+town_hall_walk_8 {'frame': 5453, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': -321.0, 'player_y': 539.0}
+town_hall_walk_16 {'frame': 5883, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 176.0, 'player_y': 569.0}
+town_hall_walk_24 {'frame': 6254, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 223.0, 'player_y': 689.0}
+town_hall_walk_32 {'frame': 6657, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 253.0, 'player_y': 1012.0}
+town_hall_walk_40 {'frame': 7056, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 175.0, 'player_y': 1211.0}
+town_hall_walk_48 {'frame': 7451, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 265.0, 'player_y': 1476.0}
+town_hall_walk_56 {'frame': 7895, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 332.0, 'player_y': 1786.0}
+town_hall_walk_64 {'frame': 8254, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 231.0, 'player_y': 1810.0}
+town_hall_approach {'frame': 8371, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 195.0, 'player_y': 1787.0}
+mayor_lobby_entered {'frame': 8395, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': 9.0}
+mayor_lobby_goods {'frame': 8623, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': 9.0}
+mayor_lobby_map {'frame': 8783, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': 9.0}
+waypoint UP player_y -20 8.0 -20.0
+abbott_lobby_talk {'frame': 8845, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2000, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -20.0}
+mayor_2000_page_1 {'frame': 8860, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2000, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -20.0}
+mayor_2000_page_2 {'frame': 9000, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2000, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -20.0}
+mayor_2000_page_3 {'frame': 9125, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2000, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -20.0}
+mayor_2000_page_4 {'frame': 9262, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2000, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -20.0}
+waypoint LEFT player_x -72 -73.0 -20.0
+mayor_office_entered {'frame': 9434, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -519.0}
+mayor_office_goods {'frame': 9522, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -519.0}
+mayor_office_map {'frame': 9684, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -519.0}
+waypoint UP player_y -560 8.0 -560.0
+mayor_2001_page_1 {'frame': 9768, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_2 {'frame': 9880, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_3 {'frame': 10015, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_4 {'frame': 10127, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_5 {'frame': 10246, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_6 {'frame': 10359, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_help_choice_yes {'frame': 10472, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2002_page_1 {'frame': 10502, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2002, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2002_page_2 {'frame': 10634, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2002, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2002_page_3 {'frame': 10760, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2002, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_help_yes_complete {'frame': 10873, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_1 {'frame': 10996, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_2 {'frame': 11109, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_3 {'frame': 11247, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_4 {'frame': 11358, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_5 {'frame': 11477, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_6 {'frame': 11590, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_help_choice_no {'frame': 11703, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2003_page_1 {'frame': 11753, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2003, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_help_no_complete {'frame': 11866, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_1 {'frame': 11988, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_2 {'frame': 12101, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_3 {'frame': 12238, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_4 {'frame': 12350, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_5 {'frame': 12469, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2001_page_6 {'frame': 12580, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_help_choice_cancel {'frame': 12692, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2001, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_2003_page_1 {'frame': 12721, 'field_phase': 0, 'world_stage': 1, 'world_dialogue': 2003, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_help_cancel_complete {'frame': 12834, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 8.0, 'player_y': -560.0}
+mayor_lobby_returned {'frame': 12957, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': -72.0, 'player_y': -63.0}
+mayor_return_map {'frame': 13083, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': -72.0, 'player_y': -63.0}
+waypoint DOWN player_y 8 -72.0 7.0
+waypoint RIGHT player_x 8 9.0 7.0
+mayor_returned_to_podunk {'frame': 13180, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 192.0, 'player_y': 1761.0}
+mayor_return_goods {'frame': 13265, 'field_phase': 0, 'world_stage': 0, 'world_dialogue': 4294967295, 'battle_active': 0, 'battle_round_phase': 5, 'hp': 3, 'enemy_hp': 0, 'experience': 17, 'cash': 0, 'player_x': 192.0, 'player_y': 1761.0}

@@ -1,0 +1,6733 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "sequences": [
+    {
+      "name": "walk_0_1",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 405,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 406,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 407,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 408,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 4
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 409,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 5
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 410,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 411,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 412,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 413,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 9
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 414,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 10
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 415,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 11
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 416,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 12
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 416,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 416,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 416,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "walk_-1_0",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 519,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 518,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 517,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 516,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 4
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 515,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 5
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 514,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 513,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 512,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 511,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 9
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 510,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 10
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 509,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 11
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": -40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 12
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 404,
+            "dx": -1,
+            "dy": 0,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "walk_1_0",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 521,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 522,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 523,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 524,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 4
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 525,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 5
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 526,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 527,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 528,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 529,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 9
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 530,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 10
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 531,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 11
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 12
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "walk_0_-1",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 403,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 402,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 401,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 400,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 4
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 399,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 5
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 398,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 397,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 396,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 395,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 9
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 394,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 10
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 393,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 11
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 392,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 12
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 392,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 392,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 392,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "walk_-1_1",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 519,
+            "y": 405,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 518,
+            "y": 406,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 517,
+            "y": 407,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 516,
+            "y": 408,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 4
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 515,
+            "y": 409,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 5
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 514,
+            "y": 410,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 513,
+            "y": 411,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 512,
+            "y": 412,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 511,
+            "y": 413,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 9
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 510,
+            "y": 414,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 10
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 509,
+            "y": 415,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 11
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 416,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 12
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 416,
+            "dx": -1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 416,
+            "dx": -1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 416,
+            "dx": -1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "walk_1_1",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 521,
+            "y": 405,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 522,
+            "y": 406,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 523,
+            "y": 407,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 524,
+            "y": 408,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 4
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 525,
+            "y": 409,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 5
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 526,
+            "y": 410,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 527,
+            "y": 411,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 528,
+            "y": 412,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 529,
+            "y": 413,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 9
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 530,
+            "y": 414,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 10
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 531,
+            "y": 415,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 11
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 416,
+            "dx": 1,
+            "dy": 1,
+            "vx": 40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 12
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 416,
+            "dx": 1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 416,
+            "dx": 1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 416,
+            "dx": 1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "walk_-1_-1",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 519,
+            "y": 403,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 518,
+            "y": 402,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 517,
+            "y": 401,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 516,
+            "y": 400,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 4
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 515,
+            "y": 399,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 5
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 514,
+            "y": 398,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 513,
+            "y": 397,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 512,
+            "y": 396,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 511,
+            "y": 395,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 9
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 510,
+            "y": 394,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 10
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 509,
+            "y": 393,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 11
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 392,
+            "dx": -1,
+            "dy": -1,
+            "vx": -40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 12
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 392,
+            "dx": -1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 392,
+            "dx": -1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 508,
+            "y": 392,
+            "dx": -1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "walk_1_-1",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 521,
+            "y": 403,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 522,
+            "y": 402,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 523,
+            "y": 401,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 524,
+            "y": 400,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 4
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 525,
+            "y": 399,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 5
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 526,
+            "y": 398,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 527,
+            "y": 397,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 528,
+            "y": 396,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 529,
+            "y": 395,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 9
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 530,
+            "y": 394,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 10
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 531,
+            "y": 393,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 11
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 392,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 12
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 392,
+            "dx": 1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 392,
+            "dx": 1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 532,
+            "y": 392,
+            "dx": 1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "run_transitions",
+      "initial": [
+        -100,
+        -100
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -99,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -98,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -97,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -96,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 4
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -95,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 60.235298,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 5
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -93,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 6
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -91,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 7
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -89,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 8
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -87,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 9
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -85,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 10
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -83,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 11
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -81,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 12
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -79,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 13
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -77,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 14
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -75,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 15
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -73,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 16
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -72,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 60.235302,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 17
+          },
+          "calls": [
+            1,
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -71,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 18
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -70,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 19
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -69,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 20
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -69,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 20
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -69,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 20
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -69,
+            "y": -100,
+            "dx": 1,
+            "dy": 0,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 20
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tap_run_crouch",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 404,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": true,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": true,
+            "animation": "Crouch",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 404,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": true,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": true,
+            "animation": "Crouch",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 406,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Crouch",
+            "moved": 1
+          },
+          "calls": [
+
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 408,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 410,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 412,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 414,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 416,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 418,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 420,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 422,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 424,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            1,
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 424,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 424,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tap_cancel_on_direction",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 404,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": true,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": true,
+            "animation": "Crouch",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 406,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Crouch",
+            "moved": 1
+          },
+          "calls": [
+
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 408,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 410,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 412,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": true,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 1
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 414,
+            "dx": 1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 2
+          },
+          "calls": [
+            1,
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 521,
+            "y": 413,
+            "dx": 1,
+            "dy": -1,
+            "vx": 60.235302,
+            "vy": -60.235302,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            1,
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 522,
+            "y": 412,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 4
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 523,
+            "y": 411,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 5
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 524,
+            "y": 410,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 525,
+            "y": 409,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": -1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 526,
+            "y": 408,
+            "dx": 1,
+            "dy": -1,
+            "vx": 40.156868,
+            "vy": -40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 526,
+            "y": 408,
+            "dx": 1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 8
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 526,
+            "y": 408,
+            "dx": 1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 8
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "crouch_second_press",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 404,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": true,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": true,
+            "animation": "Crouch",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": true,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 404,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": true,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Crouch",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 404,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": true,
+            "animation": "Idle",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 404,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 404,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 404,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 520,
+            "y": 404,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 1
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "paused_and_door_input_edges",
+      "initial": [
+        520,
+        404
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 521,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 522,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 523,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": true,
+            "entering_door": false
+          },
+          "state": {
+            "x": 523,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": true,
+            "entering_door": false
+          },
+          "state": {
+            "x": 523,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": true,
+            "entering_door": false
+          },
+          "state": {
+            "x": 523,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Walk",
+            "moved": 3
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 524,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 60.235298,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 4
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 526,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 5
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 528,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 6
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": true
+          },
+          "state": {
+            "x": 528,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": true
+          },
+          "state": {
+            "x": 528,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": true
+          },
+          "state": {
+            "x": 528,
+            "y": 404,
+            "dx": 1,
+            "dy": 0,
+            "vx": 90.352951,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Run",
+            "moved": 6
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 527,
+            "y": 405,
+            "dx": -1,
+            "dy": 1,
+            "vx": -60.235302,
+            "vy": 60.235302,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 526,
+            "y": 406,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 525,
+            "y": 407,
+            "dx": -1,
+            "dy": 1,
+            "vx": -40.156868,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 9
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 525,
+            "y": 407,
+            "dx": -1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 9
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": 525,
+            "y": 407,
+            "dx": -1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 9
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "alternate_directions",
+      "initial": [
+        -12,
+        13
+      ],
+      "frames": [
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 13,
+            "dx": 1,
+            "dy": 0,
+            "vx": 40.156868,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 1
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 14,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 2
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 14,
+            "dx": -1,
+            "dy": 0,
+            "vx": -60.235298,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 3
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 12,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 4
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 13,
+            "dx": 1,
+            "dy": 1,
+            "vx": 60.235302,
+            "vy": 60.235302,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 5
+          },
+          "calls": [
+            1,
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 13,
+            "dx": 1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 5
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 12,
+            "dx": -1,
+            "dy": -1,
+            "vx": -60.235298,
+            "vy": -60.235298,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 6
+          },
+          "calls": [
+
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 12,
+            "dx": -1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 6
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 12,
+            "dx": 1,
+            "dy": 0,
+            "vx": 60.235302,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 7
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 13,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 8
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 13,
+            "dx": -1,
+            "dy": 0,
+            "vx": -60.235298,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 9
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 11,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 10
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 12,
+            "dx": 1,
+            "dy": 1,
+            "vx": 60.235302,
+            "vy": 60.235302,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 11
+          },
+          "calls": [
+            1,
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 12,
+            "dx": 1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 11
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 11,
+            "dx": -1,
+            "dy": -1,
+            "vx": -60.235298,
+            "vy": -60.235298,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 12
+          },
+          "calls": [
+
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 11,
+            "dx": -1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 12
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 11,
+            "dx": 1,
+            "dy": 0,
+            "vx": 60.235302,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 13
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 12,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 14
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 12,
+            "dx": -1,
+            "dy": 0,
+            "vx": -60.235298,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 15
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 10,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 16
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 11,
+            "dx": 1,
+            "dy": 1,
+            "vx": 60.235302,
+            "vy": 60.235302,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 17
+          },
+          "calls": [
+            1,
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 11,
+            "dx": 1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 17
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 10,
+            "dx": -1,
+            "dy": -1,
+            "vx": -60.235298,
+            "vy": -60.235298,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 18
+          },
+          "calls": [
+
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 10,
+            "dx": -1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 18
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 10,
+            "dx": 1,
+            "dy": 0,
+            "vx": 60.235302,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 19
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 11,
+            "dx": 0,
+            "dy": 1,
+            "vx": 0,
+            "vy": 40.156868,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 20
+          },
+          "calls": [
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": 0,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 11,
+            "dx": -1,
+            "dy": 0,
+            "vx": -60.235298,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 21
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": -1,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 9,
+            "dx": 0,
+            "dy": -1,
+            "vx": 0,
+            "vy": -90.352951,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": true,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 22
+          },
+          "calls": [
+            2
+          ]
+        },
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 10,
+            "dx": 1,
+            "dy": 1,
+            "vx": 60.235302,
+            "vy": 60.235302,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": false,
+            "animation": "Walk",
+            "moved": 23
+          },
+          "calls": [
+            1,
+            3
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -11,
+            "y": 10,
+            "dx": 1,
+            "dy": 1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 64,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 23
+          },
+          "calls": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "x": -1,
+            "y": -1,
+            "toggle": true,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 9,
+            "dx": -1,
+            "dy": -1,
+            "vx": -60.235298,
+            "vy": -60.235298,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": true,
+            "walking": true,
+            "toggle": true,
+            "animation": "Run",
+            "moved": 24
+          },
+          "calls": [
+
+          ]
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "toggle": false,
+            "paused": false,
+            "entering_door": false
+          },
+          "state": {
+            "x": -12,
+            "y": 9,
+            "dx": -1,
+            "dy": -1,
+            "vx": 0,
+            "vy": 0,
+            "speed": 96,
+            "crouch": false,
+            "tap_run": false,
+            "running": false,
+            "substantial": false,
+            "walking": false,
+            "toggle": false,
+            "animation": "Idle",
+            "moved": 24
+          },
+          "calls": [
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

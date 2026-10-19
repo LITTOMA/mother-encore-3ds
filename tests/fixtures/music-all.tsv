@@ -1,0 +1,160 @@
+# original pause/resume: frozen Tween between explicit commands
+# stream 1 res://Audio/Music/Pollyanna.ogg
+# stream 2 res://Audio/Music/Town Hall.mp3
+# policy -80.0 1 0
+case 0 empty_fade_all
+op initial
+state 1 0 0 0 0 0 0
+op fadeall 0.2
+state 1 0 0 0 0 0 0
+op settle
+state 1 0 0 0 0 0 0
+op flush
+state 1 0 0 0 0 0 0
+case 1 all_playing_fade_all
+op initial
+state 1 0 0 0 0 0 0
+op play 0 1
+state 1 0 1 1 0 0 0
+op add
+state 2 0 1 1 0 0 0 1 0 0 0 0 0
+op play 1 2
+state 2 0 1 1 0 0 0 1 2 1 0 0 0
+op settle
+state 2 0 1 1 0 0 0 1 2 1 0 0 0
+op fadeall 0.2
+state 2 0 1 1 0 0 0 1 2 1 0 0 0
+op half
+state 2 0 1 1 -5 0 0 1 2 1 -5 0 0
+op finish
+state 2 0 1 1 -80 0 1 1 2 1 -80 0 1
+op flush
+state 1 2 0 0 0 0 0
+case 2 stopped_peer_tween_removed
+op initial
+state 1 0 0 0 0 0 0
+op play 0 1
+state 1 0 1 1 0 0 0
+op add
+state 2 0 1 1 0 0 0 1 0 0 0 0 0
+op play 1 2
+state 2 0 1 1 0 0 0 1 2 1 0 0 0
+op settle
+state 2 0 1 1 0 0 0 1 2 1 0 0 0
+op fadeto 1 6 0.5
+state 2 0 1 1 0 0 0 1 2 1 0 0 0
+op stop 1
+state 2 0 1 1 0 0 0 1 2 0 0 0 0
+op fadeall 0.2
+state 2 0 1 1 0 0 0 1 2 0 0 0 0
+op half
+state 2 0 1 1 -5 0 0 1 2 0 0 0 0
+op finish
+state 2 0 1 1 -80 0 1 1 2 0 0 0 1
+op flush
+state 1 2 0 0 0 0 0
+case 3 paused_fade_all
+op initial
+state 1 0 0 0 0 0 0
+op play 0 1
+state 1 0 1 1 0 0 0
+op settle
+state 1 0 1 1 0 0 0
+op fadeout 0 0.4
+state 1 0 1 1 0 0 0
+op pause
+state 1 0 1 1 -80 1 0
+op fadeall 0.2
+state 1 0 1 1 -80 1 0
+op half
+state 1 0 1 1 -80 1 0
+op finish
+state 1 0 1 1 -80 1 1
+op flush
+state 1 1 0 0 0 0 0
+case 4 paused_waiter_volume_change
+op initial
+state 1 0 0 0 0 0 0
+op play 0 1
+state 1 0 1 1 0 0 0
+op settle
+state 1 0 1 1 0 0 0
+op fadeout 0 0.4
+state 1 0 1 1 0 0 0
+op pause
+state 1 0 1 1 -80 1 0
+op volume 0 6
+state 1 0 1 1 6 1 0
+op fadeall 0.2
+state 1 0 1 1 6 1 0
+op half
+state 1 0 1 1 0.625 1 0
+op finish
+state 1 0 1 1 -80 1 1
+op flush
+state 1 1 0 0 0 0 0
+case 5 paused_with_new_player
+op initial
+state 1 0 0 0 0 0 0
+op play 0 1
+state 1 0 1 1 0 0 0
+op settle
+state 1 0 1 1 0 0 0
+op fadeto 0 -12 0.4
+state 1 0 1 1 0 0 0
+op pause
+state 1 0 1 1 -12 1 0
+op add
+state 2 0 1 1 -12 1 0 1 0 0 0 0 0
+op play 1 2
+state 2 0 1 1 -12 1 0 1 2 1 0 0 0
+op fadeall 0.2
+state 2 0 1 1 -12 1 0 1 2 1 0 0 0
+op half
+state 2 0 1 1 -16.25 1 0 1 2 1 -5 0 0
+op finish
+state 2 0 1 1 -80 1 1 1 2 1 -80 0 1
+op flush
+state 1 2 0 0 0 0 0
+case 6 no_active_fade_has_no_completion
+op initial
+state 1 0 0 0 0 0 0
+op play 0 1
+state 1 0 1 1 0 0 0
+op settle
+state 1 0 1 1 0 0 0
+op fadeout 0 0.2
+state 1 0 1 1 0 0 0
+op stop 0
+state 1 0 1 0 0 0 0
+op fadeall 0.2
+state 1 0 1 0 0 0 0
+op settle
+state 1 0 1 0 0 0 0
+op flush
+state 1 0 1 0 0 0 0
+case 7 later_tween_completes_old_waiter
+op initial
+state 1 0 0 0 0 0 0
+op play 0 1
+state 1 0 1 1 0 0 0
+op settle
+state 1 0 1 1 0 0 0
+op fadeout 0 0.2
+state 1 0 1 1 0 0 0
+op stop 0
+state 1 0 1 0 0 0 0
+op fadeall 0.2
+state 1 0 1 0 0 0 0
+op add
+state 2 0 1 0 0 0 0 1 0 0 0 0 0
+op play 1 2
+state 2 0 1 0 0 0 0 1 2 1 0 0 0
+op fadein 1 6 0.2
+state 2 0 1 0 0 0 0 1 2 1 0 0 0
+op half
+state 2 0 1 0 0 0 0 1 2 1 0.625 0 0
+op finish
+state 2 0 1 0 0 0 1 1 2 1 6 0 0
+op flush
+state 1 1 2 1 6 0 0

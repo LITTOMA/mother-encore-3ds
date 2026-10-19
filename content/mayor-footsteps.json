@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "kind": "encore.field-footsteps.candidate",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "field_recipe": "content/mayor-field.json",
+  "area_scene": "Nodes/Reusables/stepping sounds.tscn",
+  "area_script": "Scripts/Main/Stepping Sounds.gd",
+  "player_script": "Scripts/Main/party/Player.gd",
+  "areas": [
+    "Stepping Sounds/Wood",
+    "Stepping Sounds/Carpet"
+  ],
+  "sounds": [
+    {
+      "name": "wood",
+      "id": 1701,
+      "pcm": "sound/effects/mayor-step-wood.pcm"
+    },
+    {
+      "name": "stone",
+      "id": 1702,
+      "pcm": "sound/effects/mayor-step-stone.pcm"
+    }
+  ],
+  "output": "world/mayor/mayor.encsteps",
+  "audio": "sound/banks/mayor-steps.encaudio"
+}

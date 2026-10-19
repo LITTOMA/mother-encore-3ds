@@ -1,0 +1,61 @@
+{
+  "assets": [
+    {
+      "channels": 2,
+      "command": [
+        "C:\\Users\\litto\\AppData\\Local\\Programs\\Tools\\ffmpeg.EXE",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Audio\\Music\\Town Hall.mp3",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-0vsbu5yk\\0.pcm"
+      ],
+      "frames": 1336320,
+      "gain_db": 0,
+      "import_sha256": "39e36be6e5e9f8a17d766da05d9318510252e525a8273b0470232546f588c244",
+      "loop": true,
+      "loop_offset_seconds": 0.0,
+      "loop_start": 0,
+      "pcm_bytes": 5345280,
+      "pcm_crc32": 3871326990,
+      "pcm_path": "sound/music/mayor-2062928487.pcm",
+      "pcm_sha256": "f4d73b04195020413768fd3c329c804a6ea03b7adfe2e5ce0ca66711bb92da3b",
+      "sample_rate": 44100,
+      "source_path": "res://Audio/Music/Town Hall.mp3",
+      "source_sample_rate": 44100,
+      "source_sha256": "64407ee9a7949c860dec8064d22c701fabe300d21a673575c1471ab77cc932cd",
+      "stable_id": 2062928487
+    }
+  ],
+  "ffmpeg_sha256": "0fb10e2d3073ba643778d72c4e3766456d7849f41ca9fc9203b19b1172897c39",
+  "ffmpeg_version": "ffmpeg version 6.0-full_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers\nbuilt with gcc 12.2.0 (Rev10, Built by MSYS2 project)\nconfiguration: --enable-gpl --enable-version3 --enable-shared --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-ffnvcodec --enable-nvdec --enable-nvenc --enable-d3d11va --enable-dxva2 --enable-libvpl --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint\nlibavutil      58.  2.100 / 58.  2.100\nlibavcodec     60.  3.100 / 60.  3.100\nlibavformat    60.  3.100 / 60.  3.100\nlibavdevice    60.  1.100 / 60.  1.100\nlibavfilter     9.  3.100 /  9.  3.100\nlibswscale      7.  1.100 /  7.  1.100\nlibswresample   4. 10.100 /  4. 10.100\nlibpostproc    57.  1.100 / 57.  1.100\n",
+  "files": [
+    {
+      "path": "sound/banks/mayor.encaudio",
+      "sha256": "27154136da321cd8ba2c3eb9fb6b9d592c55bb746572cee454fac79ad5e85b72",
+      "size": 225
+    },
+    {
+      "path": "sound/music/mayor-2062928487.pcm",
+      "sha256": "f4d73b04195020413768fd3c329c804a6ea03b7adfe2e5ce0ca66711bb92da3b",
+      "size": 5345280
+    }
+  ],
+  "recipe_sha256": "063358d8377632065fd3d5c8a96306c3932c142b1a670e622c56cd2aa21e4f2f",
+  "schema": 1,
+  "scope": "PCM decode and stream metadata only; no DSP firmware; no hardware audibility or Godot decoder bit-exactness claim",
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3"
+}

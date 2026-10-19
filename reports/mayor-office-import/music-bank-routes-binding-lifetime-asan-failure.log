@@ -1,0 +1,85 @@
+=================================================================
+==15==ERROR: AddressSanitizer: heap-use-after-free on address 0x603000001e40 at pc 0x7fcfcc6ffe0d bp 0x7ffffc7ad0f0 sp 0x7ffffc7ac898
+READ of size 17 at 0x603000001e40 thread T0
+    #0 0x7fcfcc6ffe0c in __interceptor_memcmp ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:826
+    #1 0x416757 in std::char_traits<char>::compare(char const*, char const*, unsigned long) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x416757)
+    #2 0x42123a in std::basic_string_view<char, std::char_traits<char> >::compare(std::basic_string_view<char, std::char_traits<char> >) const (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x42123a)
+    #3 0x6ae87d in bool std::operator==<char, std::char_traits<char> >(std::common_type<std::basic_string_view<char, std::char_traits<char> > >::type, std::basic_string_view<char, std::char_traits<char> >) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x6ae87d)
+    #4 0xb02c7e in encore::upstream::MusicSceneGraph::area(std::basic_string_view<char, std::char_traits<char> >) const (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0xb02c7e)
+    #5 0xb037bb in encore::upstream::MusicSceneGraph::event(unsigned long, std::basic_string_view<char, std::char_traits<char> >, int&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) const (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0xb037bb)
+    #6 0xb080a7 in encore::upstream::MusicSceneGraph::tree_exit(unsigned long, std::basic_string_view<char, std::char_traits<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0xb080a7)
+    #7 0x408f1e in (anonymous namespace)::close(encore::upstream::MusicSceneGraph&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x408f1e)
+    #8 0x40b3dc in (anonymous namespace)::scenes(encore::upstream::MusicRegionData const&, encore::upstream::AudioBank const&, encore::upstream::MusicRegionData const&, encore::upstream::AudioBank const&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x40b3dc)
+    #9 0x4153c7 in main (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x4153c7)
+    #10 0x7fcfcb784082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #11 0x40697d in _start (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x40697d)
+
+0x603000001e40 is located 0 bytes inside of 18-byte region [0x603000001e40,0x603000001e52)
+freed by thread T0 here:
+    #0 0x7fcfcc73551f in operator delete(void*) ../../../../src/libsanitizer/asan/asan_new_delete.cc:165
+    #1 0x437f7c in encore::upstream::MusicRegionBinding::~MusicRegionBinding() (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x437f7c)
+    #2 0x437fe4 in void std::_Destroy<encore::upstream::MusicRegionBinding>(encore::upstream::MusicRegionBinding*) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x437fe4)
+    #3 0x43481b in void std::_Destroy_aux<false>::__destroy<encore::upstream::MusicRegionBinding*>(encore::upstream::MusicRegionBinding*, encore::upstream::MusicRegionBinding*) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x43481b)
+    #4 0x42ee24 in void std::_Destroy<encore::upstream::MusicRegionBinding*>(encore::upstream::MusicRegionBinding*, encore::upstream::MusicRegionBinding*) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x42ee24)
+    #5 0x427f34 in void std::_Destroy<encore::upstream::MusicRegionBinding*, encore::upstream::MusicRegionBinding>(encore::upstream::MusicRegionBinding*, encore::upstream::MusicRegionBinding*, std::allocator<encore::upstream::MusicRegionBinding>&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x427f34)
+    #6 0x420436 in std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> >::~vector() (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x420436)
+    #7 0xabbe3b in std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> >::_M_move_assign(std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> >&&, std::integral_constant<bool, true>) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0xabbe3b)
+    #8 0xab8ae3 in std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> >::operator=(std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> >&&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0xab8ae3)
+    #9 0xab5c13 in encore::upstream::MusicRegionData::operator=(encore::upstream::MusicRegionData&&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0xab5c13)
+    #10 0xb09762 in encore::upstream::MusicSceneGraph::operator=(encore::upstream::MusicSceneGraph&&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0xb09762)
+    #11 0xb08a81 in encore::upstream::MusicSceneGraph::tree_exit(unsigned long, std::basic_string_view<char, std::char_traits<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0xb08a81)
+    #12 0x408f1e in (anonymous namespace)::close(encore::upstream::MusicSceneGraph&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x408f1e)
+    #13 0x40b3dc in (anonymous namespace)::scenes(encore::upstream::MusicRegionData const&, encore::upstream::AudioBank const&, encore::upstream::MusicRegionData const&, encore::upstream::AudioBank const&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x40b3dc)
+    #14 0x4153c7 in main (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x4153c7)
+    #15 0x7fcfcb784082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+
+previously allocated by thread T0 here:
+    #0 0x7fcfcc734587 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cc:104
+    #1 0x72244d in void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x72244d)
+    #2 0x437a6a in encore::upstream::MusicRegionBinding::MusicRegionBinding(encore::upstream::MusicRegionBinding const&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x437a6a)
+    #3 0x437d99 in void std::_Construct<encore::upstream::MusicRegionBinding, encore::upstream::MusicRegionBinding const&>(encore::upstream::MusicRegionBinding*, encore::upstream::MusicRegionBinding const&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x437d99)
+    #4 0x434700 in encore::upstream::MusicRegionBinding* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<encore::upstream::MusicRegionBinding const*, std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> > >, encore::upstream::MusicRegionBinding*>(__gnu_cxx::__normal_iterator<encore::upstream::MusicRegionBinding const*, std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> > >, __gnu_cxx::__normal_iterator<encore::upstream::MusicRegionBinding const*, std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> > >, encore::upstream::MusicRegionBinding*) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x434700)
+    #5 0x42ed8a in encore::upstream::MusicRegionBinding* std::uninitialized_copy<__gnu_cxx::__normal_iterator<encore::upstream::MusicRegionBinding const*, std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> > >, encore::upstream::MusicRegionBinding*>(__gnu_cxx::__normal_iterator<encore::upstream::MusicRegionBinding const*, std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> > >, __gnu_cxx::__normal_iterator<encore::upstream::MusicRegionBinding const*, std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> > >, encore::upstream::MusicRegionBinding*) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x42ed8a)
+    #6 0x427e96 in encore::upstream::MusicRegionBinding* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<encore::upstream::MusicRegionBinding const*, std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> > >, encore::upstream::MusicRegionBinding*, encore::upstream::MusicRegionBinding>(__gnu_cxx::__normal_iterator<encore::upstream::MusicRegionBinding const*, std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> > >, __gnu_cxx::__normal_iterator<encore::upstream::MusicRegionBinding const*, std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> > >, encore::upstream::MusicRegionBinding*, std::allocator<encore::upstream::MusicRegionBinding>&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x427e96)
+    #7 0x420215 in std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> >::vector(std::vector<encore::upstream::MusicRegionBinding, std::allocator<encore::upstream::MusicRegionBinding> > const&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x420215)
+    #8 0x418eda in encore::upstream::MusicRegionData::MusicRegionData(encore::upstream::MusicRegionData const&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x418eda)
+    #9 0x41b619 in encore::upstream::MusicSceneGraph::MusicSceneGraph(encore::upstream::MusicSceneGraph const&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x41b619)
+    #10 0xb04870 in encore::upstream::MusicSceneGraph::enter(unsigned long, std::basic_string_view<char, std::char_traits<char> >, encore::upstream::MusicRegionContext const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0xb04870)
+    #11 0x40ab75 in (anonymous namespace)::scenes(encore::upstream::MusicRegionData const&, encore::upstream::AudioBank const&, encore::upstream::MusicRegionData const&, encore::upstream::AudioBank const&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x40ab75)
+    #12 0x4153c7 in main (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/music_bank_routes-lifetime-check+0x4153c7)
+    #13 0x7fcfcb784082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+
+SUMMARY: AddressSanitizer: heap-use-after-free ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:826 in __interceptor_memcmp
+Shadow bytes around the buggy address:
+  0x0c067fff8370: fd fd fa fa fd fd fd fa fa fa fd fd fd fd fa fa
+  0x0c067fff8380: fd fd fd fa fa fa fd fd fd fd fa fa fd fd fd fa
+  0x0c067fff8390: fa fa fd fd fd fd fa fa fd fd fd fa fa fa fd fd
+  0x0c067fff83a0: fd fd fa fa fd fd fd fa fa fa fd fd fd fd fa fa
+  0x0c067fff83b0: fd fd fd fa fa fa fd fd fd fd fa fa fd fd fd fa
+=>0x0c067fff83c0: fa fa fd fd fd fd fa fa[fd]fd fd fa fa fa fd fd
+  0x0c067fff83d0: fd fa fa fa fd fd fd fd fa fa fd fd fd fd fa fa
+  0x0c067fff83e0: fd fd fd fd fa fa fd fd fd fd fa fa fd fd fd fd
+  0x0c067fff83f0: fa fa fd fd fd fd fa fa fd fd fd fa fa fa 00 00
+  0x0c067fff8400: 00 00 fa fa 00 00 00 00 fa fa 00 00 01 fa fa fa
+  0x0c067fff8410: 00 00 00 00 fa fa 00 00 01 fa fa fa 00 00 01 fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==15==ABORTING

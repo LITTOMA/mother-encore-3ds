@@ -56,10 +56,10 @@ Result ndspInit(){++owner_calls;dsp=true;return 0;}void ndspExit(){++owner_calls
 void ndspSetMasterVol(float){++owner_calls;}uint32_t ndspGetDroppedFrames(){return 0;}
 void*linearAlloc(size_t n){if(alloc_remaining==0)return nullptr;if(alloc_remaining>0)--alloc_remaining;linear_bytes+=n;return std::malloc(n);}
 void linearFree(void*p){linear_bytes-=24576;std::free(p);}
-void ndspChnReset(int i){channel(i);drain(i);}void ndspChnWaveBufClear(int i){channel(i);drain(i);}
+void ndspChnReset(int i){ndsp_test_reset_sequence(i);channel(i);drain(i);}void ndspChnWaveBufClear(int i){channel(i);drain(i);}
 void ndspChnSetMix(int i,float*v){channel(i);++mix_writes;gain[size_t(i)]=v[0];check(v[0]==v[1],"stereo equal");}
 Result DSP_FlushDataCache(const void*p,uint32_t n){check(p&&n&&n<=8192,"bounded streaming payload");return 0;}
-void ndspChnWaveBufAdd(int i,ndspWaveBuf*p){check(dsp,"real owner lifetime");p->status=NDSP_WBUF_QUEUED;queues[channel(i)].push_back(p);}
+void ndspChnWaveBufAdd(int i,ndspWaveBuf*p){ndsp_test_assign_sequence(i,p);check(dsp,"real owner lifetime");p->status=NDSP_WBUF_QUEUED;queues[channel(i)].push_back(p);}
 void ndspChnSetPaused(int lane,bool){channel(lane);++mutations;}
 void ndspChnSetInterp(int i,int){channel(i);}void ndspChnSetRate(int i,float){channel(i);}void ndspChnSetFormat(int i,int){channel(i);}
 int main(int argc,char**argv){
@@ -117,3 +117,6 @@ int main(int argc,char**argv){
  service.shutdown();owner.shutdown();check(linear_bytes==0&&region_files.empty(),"all resources released before owner exit");
  std::cout<<"Incremental music preparation PASS "<<checks<<" checks; "<<steps<<" steps, modeled read ms="<<modeled_read_milliseconds<<", modeled underruns="<<underruns<<", maximum read request="<<max_read_request<<"; no hardware timing claim\n";
 }
+
+uint32_t ndspChnGetSamplePos(int){std::abort();}
+uint16_t ndspChnGetWaveBufSeq(int){std::abort();}

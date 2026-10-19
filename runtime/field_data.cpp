@@ -8,7 +8,7 @@
 namespace encore::upstream {
 namespace {
 constexpr size_t header_bytes=64,max_bytes=8u*1024u*1024u;
-constexpr uint32_t strides[kFieldMapSectionCount]={1,16,12,16,12,32,40,8,12,48,32,8,32,32,16,56,48,48,40,56,16};
+constexpr uint32_t strides[kFieldAreaMapSectionCount]={1,16,12,16,12,32,40,8,12,48,32,8,32,32,16,56,48,48,40,56,16,80};
 constexpr char pin[]="7d9246600fffe518408f5830d4848635019005a3";
 uint32_t u32(const uint8_t*p){return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24;}
 uint16_t u16(const uint8_t*p){return uint16_t(p[0]|p[1]<<8);}
@@ -22,15 +22,16 @@ bool utf8(const uint8_t*p,size_t n){for(size_t i=0;i<n;){uint32_t c=p[i++];if(!c
     if(c>=0xc2&&c<=0xdf){extra=1;low=0x80;c&=31;}else if(c>=0xe0&&c<=0xef){extra=2;low=0x800;c&=15;}else if(c>=0xf0&&c<=0xf4){extra=3;low=0x10000;c&=7;}else return false;
     if(extra>n-i)return false;while(extra--){const auto b=p[i++];if((b&0xc0)!=0x80)return false;c=(c<<6)|(b&63);}
     if(c<low||c>0x10ffff||(c>=0xd800&&c<=0xdfff))return false;}return true;}
-bool safe_path(std::string_view p){if(p.empty()||p.size()>256||p.front()=='/'||p.find(':')!=p.npos||p.find('\\')!=p.npos)return false;
+bool safe_path(std::string_view p,bool source=false){if(p.empty()||p.size()>256||p.front()=='/'||p.find(':')!=p.npos||p.find('\\')!=p.npos)return false;
     size_t a=0;while(a<=p.size()){auto b=p.find('/',a);if(b==p.npos)b=p.size();const auto s=p.substr(a,b-a);if(s.empty()||s=="."||s=="..")return false;
-    for(unsigned char ch:s)if(ch<33||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+    for(unsigned char ch:s)if(ch<(source?32:33)||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
 bool pow2(uint32_t v){return v>=8&&v<=1024&&(v&(v-1))==0;}
 }
+Vec2 field_area_map_position(const FieldArea&a,Vec2 p){return {a.map_offset.x+(a.sub_area?0:p.x/a.map_divisor),a.map_offset.y+(a.sub_area?0:p.y/a.map_divisor)};}
 uint32_t FieldMapView::scene_id()const{return bytes_?u32(bytes_+24):0;}
 uint32_t FieldMapView::capabilities()const{return bytes_?u32(bytes_+20):0;}
-uint32_t FieldMapView::count(FieldMapSection s)const{const auto k=uint32_t(s);return bytes_&&k>=1&&k<=kFieldMapSectionCount?u32(bytes_+header_bytes+(k-1)*16+8):0;}
-const uint8_t*FieldMapView::record(FieldMapSection s,uint32_t i)const{const auto k=uint32_t(s);if(!bytes_||k<1||k>kFieldMapSectionCount||i>=count(s))return nullptr;
+uint32_t FieldMapView::count(FieldMapSection s)const{const auto k=uint32_t(s);return bytes_&&k>=1&&k<=u32(bytes_+52)?u32(bytes_+header_bytes+(k-1)*16+8):0;}
+const uint8_t*FieldMapView::record(FieldMapSection s,uint32_t i)const{const auto k=uint32_t(s);if(!bytes_||k<1||k>u32(bytes_+52)||i>=count(s))return nullptr;
     return bytes_+u32(bytes_+header_bytes+(k-1)*16+4)+size_t(i)*strides[k-1];}
 std::string_view FieldMapView::text(FieldText t)const{const auto pool=count(FieldMapSection::Bytes);if(!t.length||t.offset>pool||t.length>pool-t.offset)return {};
     return std::string_view(reinterpret_cast<const char*>(record(FieldMapSection::Bytes,0))+t.offset,t.length);}
@@ -54,6 +55,7 @@ FieldBoundary FieldMapView::boundary(uint32_t i)const{auto*p=record(FieldMapSect
 FieldNotice FieldMapView::notice(uint32_t i)const{auto*p=record(FieldMapSection::Notices,i);return p?FieldNotice{u16(p),text_at(p+4),text_at(p+12),vec(p+20),span_at(p+28)}:FieldNotice{};}
 FieldCamera FieldMapView::camera(uint32_t i)const{auto*p=record(FieldMapSection::Cameras,i);return p?FieldCamera{vec(p),vec(p+8),f32(p+16),f32(p+20),f32(p+24),f32(p+28),vec(p+32),span_at(p+40),u32(p+48)!=0}:FieldCamera{};}
 FieldBody FieldMapView::body(uint32_t i)const{auto*p=record(FieldMapSection::Bodies,i);return p?FieldBody{u32(p),u32(p+4),span_at(p+8)}:FieldBody{};}
+FieldArea FieldMapView::area()const{auto*p=record(FieldMapSection::Area,0);return p?FieldArea{text_at(p),text_at(p+8),text_at(p+16),text_at(p+24),text_at(p+32),text_at(p+40),text_at(p+48),vec(p+56),f32(p+64),u32(p+68),u32(p+72)!=0}:FieldArea{};}
 uint32_t FieldMapView::localized_picture(uint32_t index,std::string_view locale)const{
     const auto pic=picture(index);
     for(uint32_t i=0;i<pic.variant_count;++i){const auto v=variant(pic.variant_first+i);if(text(v.locale)==locale)return v.picture;}
@@ -63,13 +65,14 @@ uint32_t FieldMapView::localized_picture(uint32_t index,std::string_view locale)
 bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kFieldMapSectionCount*16||n>max_bytes)return fail("Field map size rejected");
-    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)<1||u32(p+20)>3||u32(p+28)||u32(p+52)!=kFieldMapSectionCount||u32(p+56)||u32(p+60))
+    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)<1||u32(p+20)>5||u32(p+28)||u32(p+52)!=(u32(p+20)==5?kFieldAreaMapSectionCount:kFieldMapSectionCount)||u32(p+56)||u32(p+60))
         return fail("Field map schema/capability/reserved rejected");
     if(!u32(p+24))return fail("Field map scene identity rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Field map source pin rejected");}
     if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Field map checksum rejected");
-    size_t cursor=header_bytes+kFieldMapSectionCount*16;
-    for(uint32_t i=0;i<kFieldMapSectionCount;++i){const auto*d=p+header_bytes+i*16;const auto off=u32(d+4),count=u32(d+8);
+    const auto sections=u32(p+52);size_t cursor=header_bytes+sections*16;
+    if(n<cursor)return fail("Field map truncated directory");
+    for(uint32_t i=0;i<sections;++i){const auto*d=p+header_bytes+i*16;const auto off=u32(d+4),count=u32(d+8);
         if(u32(d)!=i+1||u32(d+12)!=strides[i])return fail("Field map directory rejected");
         if(!count){if(off)return fail("Field map empty section rejected");continue;}
         if(off%4||off<cursor||off>n||count>(n-off)/strides[i])return fail("Field map section span rejected");
@@ -83,6 +86,16 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
         return t.offset<=pool&&t.length<=pool-t.offset&&t.length<=limit&&utf8(v.record(S::Bytes,0)+t.offset,t.length);};
     auto span_ok=[&](FieldSpan s,S section){return s.first<=v.count(section)&&s.count<=v.count(section)-s.first;};
     auto cond_ok=[&](FieldSpan s){return s.count<=16&&span_ok(s,S::Conditions);};
+    if(v.capabilities()==5){
+        if(v.count(S::Area)!=1)return fail("Field AreaRoom record count rejected");
+        const auto a=v.area();const auto*raw=v.record(S::Area,0);
+        auto identity=[&](FieldText t,bool empty=false){if(!text_ok(t,empty,64))return false;for(unsigned char c:v.text(t))if(!((c>='a'&&c<='z')||(c>='A'&&c<='Z')||(c>='0'&&c<='9')||c=='_'||c==' '))return false;return true;};
+        if(!text_ok(a.source,false,256)||v.text(a.source).substr(0,6)!="res://"||!safe_path(v.text(a.source).substr(6),true)||
+           !identity(a.region)||!identity(a.map_item)||!identity(a.map_override,true)||!identity(a.map_override_item,true)||
+           bool(a.map_override.length)!=bool(a.map_override_item.length)||!identity(a.visit_flag)||!identity(a.party_guard_flag)||
+           !finite(a.map_offset)||!std::isfinite(a.map_divisor)||a.map_divisor<=0||a.map_divisor>4096||
+           (a.background&255)!=255||u32(raw+72)>1||u32(raw+76))return fail("Field AreaRoom metadata rejected");
+    }
     const auto atlases=v.count(S::Atlases),frames=v.count(S::Frames),pictures=v.count(S::Pictures),variants=v.count(S::Variants);
     const auto tiles=v.count(S::Tiles),shapes=v.count(S::Shapes),layers=v.count(S::Layers),chunks=v.count(S::Chunks),cells=v.count(S::Cells);
     const auto sprites=v.count(S::Sprites),items=v.count(S::Items),groups=v.count(S::Groups),openables=v.count(S::Openables);
@@ -157,21 +170,22 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
         case FieldItemKind::Player:
             if(it.first||it.count)return fail("Field map player item rejected");++players;break;
         case FieldItemKind::Actor:
-            if(u32(p+20)!=3||!it.first||it.first>=64||it.count!=1||std::find(actors.begin(),actors.end(),it.first)!=actors.end())return fail("Field map actor item rejected");
+            if(u32(p+20)<3||!it.first||it.first>=64||it.count!=1||std::find(actors.begin(),actors.end(),it.first)!=actors.end())return fail("Field map actor item rejected");
             actors.push_back(it.first);break;
         default:return fail("Field map item kind rejected");}
     }
-    uint32_t item_cursor=0;bool player_sorted=false;
+    uint32_t item_cursor=0;bool player_sorted=false,static_actor=false;
     for(uint32_t i=0;i<groups;++i){const auto g=v.group(i);
         if((g.kind!=uint32_t(FieldGroupKind::Static)&&g.kind!=uint32_t(FieldGroupKind::YSort))||g.first!=item_cursor||!g.count||g.count>items-item_cursor||u32(v.record(S::Groups,i)+12))
             return fail("Field map group rejected");
         for(uint32_t k=0;k<g.count;++k){const auto kind=FieldItemKind(v.item(g.first+k).kind);
-            if(g.kind==uint32_t(FieldGroupKind::Static)&&kind!=FieldItemKind::LayerCells&&kind!=FieldItemKind::Sprites)return fail("Field map static group item rejected");
+            if(g.kind==uint32_t(FieldGroupKind::Static)){static_actor|=kind==FieldItemKind::Actor;if(kind!=FieldItemKind::LayerCells&&kind!=FieldItemKind::Sprites&&!(u32(p+20)>=4&&kind==FieldItemKind::Actor))return fail("Field map static group item rejected");}
             if(g.kind==uint32_t(FieldGroupKind::YSort)&&kind==FieldItemKind::LayerCells)return fail("Field map sort group item rejected");
             if(kind==FieldItemKind::Player)player_sorted=true;}
         item_cursor+=g.count;}
     if(item_cursor!=items||players!=1||!player_sorted)return fail("Field map draw program rejected");
-    if(u32(p+20)==3&&actors.empty())return fail("Field actor capability has no actors");
+    if(u32(p+20)>=3&&actors.empty())return fail("Field actor capability has no actors");
+    if(u32(p+20)==4&&!static_actor)return fail("Static actor capability has no static actors");
     for(uint32_t i=0;i<openables;++i){const auto o=v.openable(i);
         auto audio=[&](FieldText t){return text_ok(t,true,256)&&(!t.length||v.text(t).substr(0,6)=="res://");};
         if(!text_ok(o.path,false,512)||!finite(o.center)||!finite(o.extents)||o.extents.x<=0||o.extents.y<=0||!audio(o.sound)||!audio(o.end_sound)||

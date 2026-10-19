@@ -1,0 +1,14 @@
+test_corrupt_result_rejected (tests.test_music_all_reference.MusicAllReferenceTests.test_corrupt_result_rejected) ... ok
+test_reviewed_method_and_exact_fixture (tests.test_music_all_reference.MusicAllReferenceTests.test_reviewed_method_and_exact_fixture) ... ok
+test_source_completion_waiters_and_stopped_tracks (tests.test_music_all_reference.MusicAllReferenceTests.test_source_completion_waiters_and_stopped_tracks) ... ok
+test_opcode_signatures_fail_before_producing_pack (tests.test_music_programs.MusicProgramsTests.test_opcode_signatures_fail_before_producing_pack) ... ok
+test_source_mapping_and_exact_binary (tests.test_music_programs.MusicProgramsTests.test_source_mapping_and_exact_binary) ... ok
+test_unknown_recipe_id_source_and_operand_types_reject (tests.test_music_programs.MusicProgramsTests.test_unknown_recipe_id_source_and_operand_types_reject) ... ok
+test_missing_core_and_fixture_substitutions_reject (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_missing_core_and_fixture_substitutions_reject) ... ok
+test_playable_sources_registered_in_both_builds (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_playable_sources_registered_in_both_builds) ... ok
+test_unknown_and_duplicate_source_expressions_reject (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_unknown_and_duplicate_source_expressions_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.981s
+
+OK

@@ -4,7 +4,7 @@
 #include <array>
 #include <cstdint>
 namespace encore::upstream {
-enum class ActorExecution : uint16_t { DirectionalProxy=1, TimelineProxy=2, NpcDirectionalProxy=3 };
+enum class ActorExecution : uint16_t { DirectionalProxy=1, TimelineProxy=2, NpcDirectionalProxy=3, NpcPartyDirectionalProxy=4 };
 struct ActorPositionMove { Vec2 target{}; float speed=0; };
 struct ActorTurn { Vec2 target{}; double interval=0,remaining=0; float angle=0; uint32_t timer_order=0,wait_order=0; bool active=false,waiting=false; };
 struct ActorJump {
@@ -66,6 +66,10 @@ bool actor_move_path(ActorActionState& actor,uint32_t path_index);
 // Source teleportactors leaves existing movement targets and waits intact.
 bool actor_teleport(ActorActionState& actor,Vec2 position);
 bool actor_set_talking(ActorActionState& actor,bool talking);
+// Unreplaced stationary NPC uses nearest discrete CharacterSprite blending,
+// unlike Actor.blend_position's rounded input. Clips remain checked Room data.
+bool npc_sprite_blend(ActorActionState& sprite,Vec2 direction);
+bool npc_sprite_physics(ActorActionState& sprite,Vec2 direction,bool talking,bool animated_idle);
 // Direct set_direction. Dialogue actorsturn must use actor_turn_to instead.
 bool actor_turn(ActorActionState& actor,Vec2 direction);
 // Source queue=true always waits for finished_action, including while idle.

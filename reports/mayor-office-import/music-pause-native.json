@@ -1,0 +1,2077 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": {
+        "name": "empty_pause_new_player",
+        "actions": [
+          [
+            "pause"
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "resume"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "playing_pause_new_battle",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "pause"
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "resume"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "replacement_keeps_pause",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "pause"
+          ],
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "resume"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "stop_and_replay_keeps_pause",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "pause"
+          ],
+          [
+            "stop",
+            0
+          ],
+          [
+            "play",
+            0,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "resume"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": false,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "remove_recreates_unpaused",
+        "actions": [
+          [
+            "pause"
+          ],
+          [
+            "remove",
+            0
+          ],
+          [
+            "flush"
+          ],
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": true,
+            "queued": true
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "pause_finishes_fadeout",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "fadeout",
+            0,
+            0.2
+          ],
+          [
+            "pause"
+          ],
+          [
+            "flush"
+          ],
+          [
+            "resume"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "pause_finishes_fadeto",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "fadeto",
+            0,
+            -12,
+            0.2
+          ],
+          [
+            "pause"
+          ],
+          [
+            "flush"
+          ],
+          [
+            "resume"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -12,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -12,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -12,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "pause_finishes_fadein",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "fadein",
+            0,
+            6,
+            0.2
+          ],
+          [
+            "pause"
+          ],
+          [
+            "flush"
+          ],
+          [
+            "resume"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 6,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 6,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 6,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "pause_finishes_all_durations",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "fadeout",
+            0,
+            0.1
+          ],
+          [
+            "fadeto",
+            1,
+            6,
+            0.4
+          ],
+          [
+            "pause"
+          ],
+          [
+            "flush"
+          ],
+          [
+            "resume"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 6,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 6,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 6,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "stopped_peer_cleanup_only_with_active_tween",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "settle"
+          ],
+          [
+            "stop",
+            1
+          ],
+          [
+            "pause"
+          ],
+          [
+            "resume"
+          ],
+          [
+            "fadeto",
+            0,
+            -6,
+            0.3
+          ],
+          [
+            "pause"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": false,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -6,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": false,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -6,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": false,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "resumed_tween_does_not_restart",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "fadeto",
+            0,
+            -12,
+            0.2
+          ],
+          [
+            "pause"
+          ],
+          [
+            "volume",
+            0,
+            3
+          ],
+          [
+            "resume"
+          ],
+          [
+            "settle"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -12,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 3,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 3,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 3,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "paused_fadeout_new_player_tween",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "fadeout",
+            0,
+            0.4
+          ],
+          [
+            "pause"
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "fadein",
+            1,
+            6,
+            0.2
+          ],
+          [
+            "half"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": -80,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -5,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 6,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": true,
+            "queued": true
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 6,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 6,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "paused_fadeto_peer_tween",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "fadeto",
+            0,
+            -12,
+            0.4
+          ],
+          [
+            "pause"
+          ],
+          [
+            "add"
+          ],
+          [
+            "play",
+            1,
+            2
+          ],
+          [
+            "fadein",
+            1,
+            6,
+            0.2
+          ],
+          [
+            "half"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -12,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -12,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -12,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": -80,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -6,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 6,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -12,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 6,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -12,
+            "paused": true,
+            "queued": false
+          },
+          {
+            "id": 1,
+            "stream": "res://Audio/Music/Town Hall.mp3",
+            "playing": true,
+            "gain": 6,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "paused_fade_replaced_waiter",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "fadeout",
+            0,
+            0.2
+          ],
+          [
+            "pause"
+          ],
+          [
+            "fadein",
+            0,
+            6,
+            0.2
+          ],
+          [
+            "half"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": -80,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0.625,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 6,
+            "paused": true,
+            "queued": true
+          }
+        ],
+        [
+          {
+            "id": 1,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    },
+    {
+      "case": {
+        "name": "idempotent_pause_resume",
+        "actions": [
+          [
+            "play",
+            0,
+            1
+          ],
+          [
+            "settle"
+          ],
+          [
+            "pause"
+          ],
+          [
+            "pause"
+          ],
+          [
+            "resume"
+          ],
+          [
+            "resume"
+          ]
+        ]
+      },
+      "views": [
+        [
+          {
+            "id": 0,
+            "stream": "",
+            "playing": false,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": true,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ],
+        [
+          {
+            "id": 0,
+            "stream": "res://Audio/Music/Pollyanna.ogg",
+            "playing": true,
+            "gain": 0,
+            "paused": false,
+            "queued": false
+          }
+        ]
+      ]
+    }
+  ]
+}

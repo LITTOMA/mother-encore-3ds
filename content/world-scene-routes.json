@@ -1,0 +1,98 @@
+{
+  "schema": 2,
+  "kind": "encore.world-scene-routes.recipe",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Candidate source House/Podunk/Mayor route graph with independent Mayor step binding; no release entrance until the full scene is staged and verified.",
+  "door": {
+    "scene": "Nodes/Overworld/Door.tscn",
+    "script": "Scripts/Main/Door.gd",
+    "transition": "Scripts/global/SceneTransition.gd",
+    "destination_offset_y": -7
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "source": "Maps/podunk/Nintens House.tscn",
+      "room": 1,
+      "map": 0,
+      "assets": null
+    },
+    {
+      "id": 2,
+      "source": "Maps/podunk/podunk.tscn",
+      "room": 31,
+      "map": 32,
+      "assets": {
+        "story": 42,
+        "music": 37,
+        "audio": 38,
+        "zones": 39,
+        "mick": 35,
+        "npcs": [
+          320,
+          321
+        ],
+        "steps": 0
+      }
+    },
+    {
+      "id": 3,
+      "source": "Maps/podunk/Mayors Office.tscn",
+      "room": 1024,
+      "map": 1025,
+      "assets": {
+        "story": 1026,
+        "music": 1027,
+        "audio": 1028,
+        "zones": 1029,
+        "mick": 0,
+        "npcs": [
+          322,
+          323,
+          324,
+          325,
+          326
+        ],
+        "steps": 1030
+      }
+    }
+  ],
+  "routes": [
+    {
+      "id": 1,
+      "from": 1,
+      "to": 2,
+      "door": "Doors/Podunk"
+    },
+    {
+      "id": 2,
+      "from": 2,
+      "to": 1,
+      "door": "Objects/Doors/NintensHouse"
+    },
+    {
+      "id": 3,
+      "from": 2,
+      "to": 3,
+      "door": "Objects/Doors/TownHall"
+    },
+    {
+      "id": 4,
+      "from": 3,
+      "to": 2,
+      "door": "Doors/MayorLobby"
+    },
+    {
+      "id": 5,
+      "from": 3,
+      "to": 3,
+      "door": "Doors/MayorLobby2"
+    },
+    {
+      "id": 6,
+      "from": 3,
+      "to": 3,
+      "door": "Doors/MayorLobby3"
+    }
+  ]
+}

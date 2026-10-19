@@ -1,0 +1,14 @@
+{
+  "scope": "Completed NDSP-double executables only; source/object cache, raw logs and genuine emulator artifact retained",
+  "removed": [
+    {
+      "path": "build\\podunk-routes\\host\\run-audio",
+      "bytes": 43145192
+    },
+    {
+      "path": "build\\podunk-routes\\host\\audio-regression",
+      "bytes": 42829056
+    }
+  ],
+  "bytes": 85974248
+}

@@ -1,0 +1,17 @@
+{
+  "removed": [
+    {
+      "path": "build\\full-port\\party-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+      "bytes": 253823596,
+      "sha256": "3fd3ec1cae9fcd638c51c7f7f42aba3d9c06dcb52dbac2d27acb6a8e247aef9d"
+    }
+  ],
+  "total_bytes": 253823596,
+  "replaced_by": {
+    "source": "b739c6ae2f88c98b113b8b188976a567302c0fd1",
+    "sha256": "062c29cac6c740aeec6946c72178756a50d25106aa3e8baa090a3c2f2af961ca"
+  },
+  "emulator_temporary_directory_absent": true,
+  "zip_member_blocks_already_removed_bytes": 184549376,
+  "scope": "Retire exact old verified emulator game only after the new genuine game passed one complete route; second cold run pending"
+}

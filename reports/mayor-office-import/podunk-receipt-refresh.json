@@ -1,0 +1,24 @@
+{
+  "old_compiler_sha256": "47cca29b2de6e6acaf5b88e0735eac1d5a59ca0d9dce122aed0bd78ad74b35c7",
+  "new_compiler_sha256": "da6be70d14efc5ed96badf0fd3fa3492206ce210ddef0bf3163272c3838bdfc2",
+  "only_changed_receipt_field": [
+    "compiler_sha256"
+  ],
+  "real_generator": "py -3.11 tools/podunk_field.py compile",
+  "existing_texture_reuse": "Source page image and t3x fingerprints checked by the original generator; no new tex3ds run for unchanged Podunk pages",
+  "romfs_byte_identical_to_previous": true,
+  "all_outputs_and_source_inputs_identical": true,
+  "semantic_review": "Schema1 retains original Podunk actor/path handling. Schema2 adds explicit static sprites and external route/actor recipes; Map cap4 is selected only for static Actor groups. Original Podunk remains cap3 and all three actual outputs match checked-in bytes.",
+  "checks": [
+    "tests.test_mayor_field source rebuild/default byte equality",
+    "tests.test_world_scene_routes",
+    "source no_collision override review; withdrawn capability5 not staged"
+  ],
+  "failed_ci": {
+    "run": 39114751392,
+    "job": 117638148780,
+    "step": "Confirm readonly upstream and tracked source remain unchanged",
+    "source": "fed5917ad40823c335154fcfb902a51fda0de39c"
+  },
+  "hardware": false
+}

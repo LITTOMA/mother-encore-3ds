@@ -38,7 +38,11 @@ Vec2 rounded_dir(Vec2 v){
 }
 }
 uint32_t MickView::count(MickSection s)const{const auto k=uint32_t(s);return bytes_&&k>=1&&k<=kMickSectionCount?u32(bytes_+header_bytes+(k-1)*16+8):0;}
-bool MickView::motion_only()const{return bytes_&&u32(bytes_+20)==4;}
+bool MickView::motion_only()const{return bytes_&&(u32(bytes_+20)==4||u32(bytes_+20)==6||u32(bytes_+20)==7);}
+uint32_t MickView::direction_count()const{return bytes_&&(u32(bytes_+20)==6||u32(bytes_+20)==7)?u32(bytes_+56):4;}
+bool MickView::interaction_policy()const{return bytes_&&u32(bytes_+20)==7;}
+bool MickView::has_dialogue()const{return bytes_&&(!interaction_policy()||(u32(bytes_+28)&8));}
+float MickView::return_delay()const{return interaction_policy()?u32(bytes_+60)*.001f:0.f;}
 uint32_t MickView::owner_id()const{return bytes_?u32(bytes_+24):0;}
 bool MickView::wanders()const{return bytes_&&(!motion_only()||(u32(bytes_+28)&1));}
 bool MickView::stares()const{return bytes_&&(!motion_only()||(u32(bytes_+28)&2));}
@@ -67,9 +71,12 @@ MickRngEvent MickView::rng_event(uint32_t i)const{auto*p=record(MickSection::Rng
 bool MickData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kMickSectionCount*16||n>max_bytes)return fail("Mick pack size rejected");
-    const bool motion_only=u32(p+20)==4;
+    const bool eight=u32(p+20)==6,policy=u32(p+20)==7;
+    const bool motion_only=u32(p+20)==4||eight||policy;
     if(std::memcmp(p,"ENCMIK01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)!=3&&!motion_only)||
-       (motion_only?(!u32(p+24)||u32(p+28)>7):(u32(p+24)!=1||u32(p+28)))||u32(p+52)!=kMickSectionCount||u32(p+56)||u32(p+60))
+       (motion_only?(!u32(p+24)||u32(p+28)>(policy?15u:7u)):(u32(p+24)!=1||u32(p+28)))||u32(p+52)!=kMickSectionCount||
+       (policy?((u32(p+56)!=4&&u32(p+56)!=8)||!u32(p+60)||u32(p+60)>30000||(u32(p+28)&1)):
+               ((eight?(u32(p+56)!=8||(u32(p+28)&1)):u32(p+56)!=0)||u32(p+60))))
         return fail("Mick pack schema/capability/scene/reserved rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Mick pack source pin rejected");}
     if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Mick pack checksum rejected");
@@ -114,8 +121,18 @@ bool MickData::load(const uint8_t*p,size_t n,std::string&error){
        a.talk_clip>v.count(S::Clips)||a.talk_clip_count>v.count(S::Clips)-a.talk_clip)
         return fail("Mick pack actor rejected");
     for(uint32_t i=0;i<v.count(S::Texts);++i){const auto tx=v.text(i);if(tx.en>=v.count(S::Strings)||tx.zh>=v.count(S::Strings))return fail("Mick pack text rejected");}
-    auto clip_ok=[&](uint32_t first,uint32_t count,uint16_t anim){for(uint32_t i=0;i<count;++i){const auto c=v.clip(first+i);if(c.anim!=anim||c.direction>3||c.frame>=frames||!c.milliseconds||c.milliseconds>10000)return false;}return true;};
+    auto clip_ok=[&](uint32_t first,uint32_t count,uint16_t anim){for(uint32_t i=0;i<count;++i){const auto c=v.clip(first+i);if(c.anim!=anim||c.direction>=v.direction_count()||c.frame>=frames||!c.milliseconds||c.milliseconds>10000)return false;}return true;};
     if(!clip_ok(a.idle_clip,a.idle_clip_count,0)||!clip_ok(a.walk_clip,a.walk_clip_count,1)||!clip_ok(a.talk_clip,a.talk_clip_count,2))return fail("Mick pack clip rejected");
+    if(eight||policy){
+        if(a.idle_clip||a.walk_clip!=a.idle_clip_count||a.talk_clip!=a.walk_clip+a.walk_clip_count||a.talk_clip+a.talk_clip_count!=v.count(S::Clips))return fail("NPC motion clip ownership rejected");
+        for(uint32_t role=0;role<3;++role){
+            const uint32_t first=role==0?a.idle_clip:role==1?a.walk_clip:a.talk_clip;
+            const uint32_t count=role==0?a.idle_clip_count:role==1?a.walk_clip_count:a.talk_clip_count;
+            uint32_t directions=0,last=0;
+            for(uint32_t i=0;i<count;++i){const auto c=v.clip(first+i);if(i&&c.direction<last)return fail("NPC motion clip order rejected");last=c.direction;directions|=1u<<c.direction;}
+            if(directions!=((1u<<v.direction_count())-1u))return fail("NPC motion direction coverage rejected");
+        }
+    }
     bool saw_bark=false,saw_talk=false,saw_thought=false,saw_fallback=false;
     for(uint32_t i=0;i<v.count(S::Programmes);++i){
         const auto g=v.programme(i);
@@ -203,6 +220,36 @@ bool MickRuntime::restore_motion_pose(Vec2 position,Vec2 direction,std::string&e
     if(!ready_||!view_.motion_only()||!finite(position)||!finite(direction)||(direction.x==0&&direction.y==0))return fail(e,"NPC motion restoration rejected");
     spawn_=position_=destination_=position;facing_=direction;anim_=0;anim_time_=0;probing_=false;e.clear();return true;
 }
+bool MickRuntime::arm_return(std::string&e){
+    if(return_timers_.size()>=64){e="NPC return timer capacity rejected";return false;}
+    return_timers_.push_back(view_.return_delay());e.clear();return true;
+}
+bool MickRuntime::begin_interaction(std::string&e){
+    if(!ready_||!view_.interaction_policy()||!view_.has_dialogue()){e="NPC interaction policy admission rejected";return false;}
+    interaction_paused_=true;e.clear();return true;
+}
+bool MickRuntime::end_interaction(std::string&e){
+    if(!ready_||!view_.interaction_policy()){e="NPC interaction completion policy rejected";return false;}
+    if(!view_.stares()&&!arm_return(e))return false;
+    interaction_paused_=false;e.clear();return true;
+}
+bool MickRuntime::observe_player(bool in_view,std::string&e){
+    if(!ready_||!view_.interaction_policy()){e.clear();return true;}
+    const bool next=view_.stares()&&in_view;
+    if(looking_&&!next&&!view_.wanders()&&!arm_return(e))return false;
+    looking_=next;e.clear();return true;
+}
+bool MickRuntime::idle_frame(double delta,std::string&e){
+    if(!std::isfinite(delta)||delta<0||delta>1){e="NPC return timer delta rejected";return false;}
+    if(!ready_||!view_.interaction_policy()){e.clear();return true;}
+    const float dt=float(delta);size_t remaining=0;
+    for(float value:return_timers_){
+        value=float(value-dt);
+        if(value<=0){if(!looking_&&!interaction_paused_)facing_=view_.actor().initial_direction;}
+        else return_timers_[remaining++]=value;
+    }
+    return_timers_.resize(remaining);e.clear();return true;
+}
 bool MickRuntime::start_bark(std::string&e){
     if(view_.motion_only())return fail(e,"NPC cutscene is outside this motion resource");
     if(!ready_||!host_||state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion)return fail(e,"Mick bark start rejected");
@@ -251,6 +298,19 @@ bool MickRuntime::step(std::string&e){
 }
 uint32_t MickRuntime::direction_index()const{
     const float ax=std::fabs(facing_.x),ay=std::fabs(facing_.y);
+    if(view_.direction_count()==8){
+        // Discrete BlendSpace2D selects the closest unit direction. Iteration
+        // retains the first source direction on an exact distance tie.
+        float best=-INFINITY;uint32_t selected=0;
+        for(uint32_t i=0;i<8;++i){
+            const float x=i==1?-1.f:i==2?1.f:i>=4?((i&1)?1.f:-1.f):0.f;
+            const float y=i==0?1.f:i==3?-1.f:i>=4?(i<6?1.f:-1.f):0.f;
+            const float norm=i>=4?std::sqrt(.5f):1.f;
+            const float dot=(facing_.x*x+facing_.y*y)*norm;
+            if(dot>best){best=dot;selected=i;}
+        }
+        return selected;
+    }
     if(ax>ay)return facing_.x<0?1u:2u;
     return facing_.y<0?3u:0u;
 }
@@ -337,7 +397,8 @@ bool MickRuntime::simulate(float dt,Vec2 player,Vec2 camera,Vec2 view,bool pause
     consume_rng(camera,view);
     const auto actor=view_.actor();
     const bool seen=view_.stares()&&world.player_in_view({position_.x+actor.view_offset.x,position_.y+actor.view_offset.y},actor.view_radius);
-    const bool talking=state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion;
+    if(!observe_player(seen,e))return fail(e,"NPC view return timer rejected");
+    const bool talking=(view_.interaction_policy()&&dialogue_talking_)||state_==MickProgramState::WaitingText||state_==MickProgramState::WaitingChoice||state_==MickProgramState::WaitingMotion;
     if(seen&&!talking){const Vec2 aim{player.x-position_.x,player.y-position_.y};if(aim.x||aim.y)facing_=aim;}
     tick_motion(dt);
     if(move_left_>0){

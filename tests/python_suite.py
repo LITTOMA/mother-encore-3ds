@@ -13,6 +13,8 @@ import unittest
 
 
 DEDICATED = {
+    'field_area_source': ('test_field_area',),
+    'field_steps_source': ('test_field_footsteps', 'test_run_footstep_reference'),
     'field_story_source': ('test_field_story',),
     'bridge_round_source': ('test_bridge_round',),
     'field_npc_source': ('test_field_npcs',),

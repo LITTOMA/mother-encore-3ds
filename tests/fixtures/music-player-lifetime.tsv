@@ -1,0 +1,178 @@
+# original loop-player lifecycle: snapshots after explicit commands
+# stream 1 res://Audio/Music/Pollyanna.ogg
+# stream 2 res://Audio/Music/Town Hall.mp3
+# policy -80.0 1 0
+case 0 remove_last_recreates_empty
+op initial
+state 1 0 0 0 0 0 0 0
+op remove 0
+state 1 0 0 0 0 0 0 1
+op flush
+state 1 0 0 1 0 0 0 0
+case 1 remove_two_in_order
+op initial
+state 1 0 0 0 0 0 0 0
+op play 0 1
+state 1 0 0 0 1 1 0 0
+op add
+state 2 0 0 0 1 1 0 0 1 0 0 0 0
+op play 1 2
+state 2 0 0 0 1 1 0 0 1 2 1 0 0
+op remove 1
+state 2 0 0 0 1 1 0 0 1 2 1 0 1
+op flush
+state 1 0 0 0 1 1 0 0
+op remove 0
+state 1 0 0 0 1 1 0 1
+op flush
+state 1 0 0 2 0 0 0 0
+case 2 clear_does_not_recreate
+op initial
+state 1 0 0 0 0 0 0 0
+op play 0 1
+state 1 0 0 0 1 1 0 0
+op clear
+state 1 0 0 0 1 1 0 1
+op flush
+state 0 0 0
+case 3 clear_then_add_before_deletion
+op initial
+state 1 0 0 0 0 0 0 0
+op play 0 1
+state 1 0 0 0 1 1 0 0
+op clear
+state 1 0 0 0 1 1 0 1
+op add
+state 2 0 0 0 1 1 0 1 1 0 0 0 0
+op play 1 2
+state 2 0 0 0 1 1 0 1 1 2 1 0 0
+op flush
+state 1 0 0 1 2 1 0 0
+case 4 queued_player_remains_addressable
+op initial
+state 1 0 0 0 0 0 0 0
+op play 0 1
+state 1 0 0 0 1 1 0 0
+op remove 0
+state 1 0 0 0 1 1 0 1
+op play 0 2
+state 1 0 0 0 2 1 0 1
+op volume 0 6
+state 1 0 0 0 2 1 6 1
+op flush
+state 1 0 0 1 0 0 0 0
+case 5 stop_retains_stream_and_tween
+op initial
+state 1 0 0 0 0 0 0 0
+op play 0 2
+state 1 0 0 0 2 1 0 0
+op settle
+state 1 0 0 0 2 1 0 0
+op volume 0 6
+state 1 0 0 0 2 1 6 0
+op fadeout 0 0.1
+state 1 1 0 0 2 1 6 0
+op stop 0
+state 1 1 0 0 2 0 6 0
+op finish
+state 1 0 0 0 2 0 -80 1
+op flush
+state 1 0 0 1 0 0 0 0
+case 6 volume_write_retains_tween
+op initial
+state 1 0 0 0 0 0 0 0
+op play 0 2
+state 1 0 0 0 2 1 0 0
+op volume 0 6
+state 1 0 0 0 2 1 6 0
+op fadeout 0 0.1
+state 1 1 0 0 2 1 6 0
+op volume 0 0
+state 1 1 0 0 2 1 0 0
+op finish
+state 1 0 0 0 2 1 -80 1
+op flush
+state 1 0 0 1 0 0 0 0
+case 7 equal_fadeto_retains_fadeout
+op initial
+state 1 0 0 0 0 0 0 0
+op play 0 2
+state 1 0 0 0 2 1 0 0
+op volume 0 6
+state 1 0 0 0 2 1 6 0
+op fadeout 0 0.1
+state 1 1 0 0 2 1 6 0
+op fadeto 0 6 0.2
+state 1 1 0 0 2 1 6 0
+op finish
+state 1 0 0 0 2 1 -80 1
+op flush
+state 1 0 0 1 0 0 0 0
+case 8 changed_fadeto_replaces_fadeout
+op initial
+state 1 0 0 0 0 0 0 0
+op play 0 2
+state 1 0 0 0 2 1 0 0
+op volume 0 6
+state 1 0 0 0 2 1 6 0
+op fadeout 0 0.1
+state 1 1 0 0 2 1 6 0
+op volume 0 0
+state 1 1 0 0 2 1 0 0
+op fadeto 0 6 0.2
+state 1 1 0 0 2 1 0 0
+op finish
+state 1 0 0 0 2 1 6 0
+op flush
+state 1 0 0 0 2 1 6 0
+case 9 fadeout_waits_for_other_player
+op initial
+state 1 0 0 0 0 0 0 0
+op play 0 1
+state 1 0 0 0 1 1 0 0
+op add
+state 2 0 0 0 1 1 0 0 1 0 0 0 0
+op play 1 2
+state 2 0 0 0 1 1 0 0 1 2 1 0 0
+op volume 1 -6
+state 2 0 0 0 1 1 0 0 1 2 1 -6 0
+op fadeout 0 0.1
+state 2 1 0 0 1 1 0 0 1 2 1 -6 0
+op fadeto 1 6 0.3
+state 2 1 0 0 1 1 0 0 1 2 1 -6 0
+op first_complete
+state 2 1 0.100355 0 1 1 -80 0 1 2 1 -1.985814 0
+op finish
+state 2 0 0 0 1 1 -80 1 1 2 1 6 0
+op flush
+state 1 0 0 1 2 1 6 0
+case 10 stopped_other_player_is_cleaned
+op initial
+state 1 0 0 0 0 0 0 0
+op play 0 1
+state 1 0 0 0 1 1 0 0
+op add
+state 2 0 0 0 1 1 0 0 1 0 0 0 0
+op play 1 2
+state 2 0 0 0 1 1 0 0 1 2 1 0 0
+op settle
+state 2 0 0 0 1 1 0 0 1 2 1 0 0
+op stop 1
+state 2 0 0 0 1 1 0 0 1 2 0 0 0
+op fadeout 0 0.1
+state 2 1 0 0 1 1 0 0 1 2 0 0 0
+op finish
+state 2 0 0 0 1 1 -80 1 1 2 0 0 1
+op flush
+state 1 0 0 2 0 0 0 0
+case 11 remove_twice_and_clear
+op initial
+state 1 0 0 0 0 0 0 0
+op remove 0
+state 1 0 0 0 0 0 0 1
+op remove 0
+state 1 0 0 0 0 0 0 1
+op clear
+state 1 0 0 0 0 0 0 1
+op flush
+state 1 0 0 1 0 0 0 0

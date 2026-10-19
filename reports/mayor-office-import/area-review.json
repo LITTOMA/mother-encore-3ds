@@ -1,0 +1,47 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "AreaRoom non-Magicant single-party Mayor metadata; candidate map not staged",
+  "formats": "ENCMAP01 format1 capability5 adds one 80-byte Area section; capabilities1-4 retain exact section directory; unknown6 rejected; save encoding and Session resource v10 unchanged",
+  "source_mapping": [
+    "AreaRoom root overrides/default background and map identity from actual map_for item YAML",
+    "Original Ready visit flag emits each time, even when already true; candidate world holds write until scene publication",
+    "Source globalData.set_flag and AreaRoom Ready/map functions execute unchanged in native Godot; inject current-map identity, map size and empty NPC party",
+    "Original map override ownership searches live party and key inventory, excludes storage/inactive characters",
+    "Unsupported flying NPC party state fails closed; Merrysville map image is not admitted"
+  ],
+  "checks": {
+    "gcc9_asan_ubsan": {
+      "area": 663,
+      "menus": 414,
+      "session": 20531,
+      "legacy_map": 3107,
+      "story": 3735
+    },
+    "python": 21,
+    "final_source_and_session_methods": 6,
+    "native_godot_results": 16
+  },
+  "failures": [
+    "First test compile called nonexistent FieldScene.advance; corrected to actual shared world.advance API",
+    "Texture safe-path policy incorrectly rejected original source filename containing a space; explicit source-path admission added without relaxing texture paths",
+    "Early reference harness attempts timed out. Diagnostic in-memory parser exposed an invalid injected inline set_flag containing two statements. Correct multiline adapter and ordinary file-backed harness completed; source methods were not changed. Original timeouts/logs retained."
+  ],
+  "not_claimed": [
+    "Full Godot signal graph or gameplay scene",
+    "Mayor entry/GPU/footsteps/audibility/emulator traversal",
+    "Complete game or physical hardware pass"
+  ],
+  "sha256": {
+    "tools/field_area.py": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
+    "tools/run_area_reference.py": "8a4106025928bf2ee2b92cada0ac22c73d96a69475deab97f3ac5d8eba977be5",
+    "tools/podunk_field.py": "31632116d0c1182ad910435cb2b894527d56133cf8e8fe574e99cdb5f9046727",
+    "runtime/field_data.cpp": "a13ca71415ed90903984a18185da1db774e24655a8cb31a3546f627d45741fff",
+    "runtime/field_scene.cpp": "e116457177e41a021ab45c0118fb3168731ae29f7bd6137b40cb0e96d98175dd",
+    "runtime/field_menus.cpp": "dcf1d06ff88e40a92be9ecd8c90ddbf9eb16d2c12e32c252387f5d1485842d61",
+    "platform/ctr/main.cpp": "269660cf6ef8226cb42e197c3dc80173c6af83c1f339331059f7e795b6f4ff9d",
+    "platform/ctr/field_map_renderer.hpp": "e625e7a503344f81ecc1a2b9905d60181b03ce7d8bc4c312dc43b843f7d18fb6",
+    "platform/ctr/field_renderer.hpp": "49d87affffafb2a2942abf4b64f87c67f062f3a06a0eeb610cbe26c7a1416419",
+    "tests/fixtures/mayor-area.encmap": "5306149a4bcc043f6a153cb57ef8362fb76a44190c595a0476192098be61cdb6",
+    "tests/fixtures/area-state.tsv": "0f5068675eea9644a36174a01e9302c90126802f0daea3103f5c5378835e3a32"
+  }
+}

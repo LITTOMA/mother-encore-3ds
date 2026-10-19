@@ -1,0 +1,87 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "whole_audio_graph_approved": false,
+  "scope": "Original Mayor MusicArea and Town Hall loop candidate; scene not staged",
+  "formats": {
+    "music": "ENCMUS01 version1 unchanged",
+    "audio": "ENCAUD01 unchanged",
+    "zones": "ENCZON01 version2 admits checked generic scene paths; version1 retains Music/ prefix, version2 must use its new path feature"
+  },
+  "source_values": {
+    "loop": "Town Hall.mp3",
+    "volume_db": 6,
+    "fadein_seconds": 1,
+    "fadeout_seconds": 1.5,
+    "pcm_gain_db": 0,
+    "zone": {
+      "center": [
+        0,
+        -348
+      ],
+      "extents": [
+        240,
+        388
+      ]
+    }
+  },
+  "actual_outputs": {
+    "sound/banks/mayor.encaudio": {
+      "bytes": 225,
+      "sha256": "27154136da321cd8ba2c3eb9fb6b9d592c55bb746572cee454fac79ad5e85b72"
+    },
+    "sound/banks/mayor.encmusic": {
+      "bytes": 246,
+      "sha256": "8ad2cbce64251586bd13e63c18c6047131874cb944affed4d4f8a39e872bb95f"
+    },
+    "sound/banks/mayor.enczones": {
+      "bytes": 77,
+      "sha256": "49c4953e41e1ba9fa6464e86ffb99340c5f9106a753afba337a0ba2e42af18cd"
+    },
+    "sound/music/mayor-2062928487.pcm": {
+      "bytes": 5345280,
+      "sha256": "f4d73b04195020413768fd3c329c804a6ea03b7adfe2e5ce0ca66711bb92da3b"
+    }
+  },
+  "checks": {
+    "gcc9_asan_ubsan": 456,
+    "python_methods": 6,
+    "existing_music_regions": 4087,
+    "existing_gameplay_audio_exit": 0
+  },
+  "failures": [
+    {
+      "kind": "Candidate tool preparation",
+      "error": "Node.parent / Document.path do not exist in reused parser",
+      "fix": "Use authoritative Node.path parent component and Document.source; preserve two original preparation failures"
+    },
+    {
+      "kind": "Test compile",
+      "error": "AudioAsset has loops(), not loop",
+      "fix": "Use actual public accessor"
+    },
+    {
+      "kind": "Old parser admission",
+      "error": "Music zone binding rejected",
+      "fix": "Add explicit geometry version2; do not fake the source node name or weaken version1"
+    },
+    {
+      "kind": "Fade test",
+      "error": "Test inspected silent gain after all-tweens cleanup detached the voice",
+      "fix": "Assert original controller removal at completion; no controller/golden behavior changed"
+    }
+  ],
+  "not_claimed": [
+    "Hardware audibility",
+    "Pixel or Godot PCM byte equality",
+    "Mayor scene entry or completed whole game",
+    "Shared global cross-bank music identity remains under integration review; source Door MusicChanger stop loop is separately reviewed in door-music-stop-review.json"
+  ],
+  "source_sha256": {
+    "tools/field_scene_music.py": "6bd84b7b74f6056992e1ca954aa0ed1a3a66f6d555e380133a73dfb84f3d9f10",
+    "runtime/music_zones.cpp": "cff9cc548118357c8b82bb888f9f5ade24daf33e2a5f293745429337d7d7e89d",
+    "content/mayor-music.json": "4e4b8a8fd9dad3719a8f6e5f418094d91b025932685657b93cd4e7ee20f03d07",
+    "tests/fixtures/mayor.encmusic": "8ad2cbce64251586bd13e63c18c6047131874cb944affed4d4f8a39e872bb95f",
+    "tests/fixtures/mayor.encaudio": "27154136da321cd8ba2c3eb9fb6b9d592c55bb746572cee454fac79ad5e85b72",
+    "tests/fixtures/mayor.enczones": "49c4953e41e1ba9fa6464e86ffb99340c5f9106a753afba337a0ba2e42af18cd"
+  }
+}

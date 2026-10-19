@@ -1,0 +1,42 @@
+[
+  {
+    "path": "build/full-port/help-current/verified-artifact/3ds/encore-native/encore-native.3dsx",
+    "bytes": 253803068
+  },
+  {
+    "path": "build/podunk-routes/host/npc-nocollision",
+    "bytes": 41709976
+  },
+  {
+    "path": "build/podunk-routes/host/field-warp",
+    "bytes": 41707280
+  },
+  {
+    "path": "build/podunk-routes/host/music-prepare",
+    "bytes": 42278760
+  },
+  {
+    "path": "build/podunk-routes/host/music-service",
+    "bytes": 42244512
+  },
+  {
+    "path": "build/podunk-routes/host/music-player",
+    "bytes": 41647464
+  },
+  {
+    "path": "build/podunk-routes/host/field_data_cap4_regression",
+    "bytes": 41960520
+  },
+  {
+    "path": "build/podunk-routes/host/scene_field_story",
+    "bytes": 41754624
+  },
+  {
+    "path": "build/podunk-routes/host/scene_resource_catalog",
+    "bytes": 41466696
+  },
+  {
+    "path": "build/podunk-routes/host/rich_color",
+    "bytes": 41333344
+  }
+]

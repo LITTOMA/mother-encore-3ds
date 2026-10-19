@@ -6,6 +6,7 @@
 #include "encore/dialogue.hpp"
 #include "encore/actor_actions.hpp"
 #include "encore/persistent_player.hpp"
+#include "encore/scene_player_transfer.hpp"
 #include "encore/room_data.hpp"
 #include "encore/source_random.hpp"
 #include <vector>
@@ -50,6 +51,14 @@ public:
     bool initialize(const RoomView& content,Vec2 viewport={400,240});
     // Construct on a fresh owner; the caller commits that owner only after all initialization succeeds.
     bool initialize_restored(const RoomView&,const std::vector<bool>& story_flags,const std::vector<bool>&reviewed_mutations,Vec2 position,Vec2 direction,Vec2 viewport={400,240});
+    // A fully prepared paused destination adopts the same Player/camera only
+    // after copied camera data and source compatibility pass. Failure preserves
+    // both worlds; success retires old callbacks that could write the Player.
+    bool adopt_scene_player(OpeningWorld& source,Vec2 position,Vec2 direction,std::string& error);
+    // Prepare before fallible media publication. Commit rejects any intervening
+    // player/camera/frame change and performs no allocation or format loading.
+    bool prepare_scene_player(OpeningWorld& source,Vec2 position,Vec2 direction,ScenePlayerTransfer&,std::string& error);
+    bool commit_scene_player(OpeningWorld& source,ScenePlayerTransfer&&,std::string& error);
     bool accept_battle_entry();
     bool begin_house_program(uint32_t program_index,uint32_t original_npc=kRoomNoIndex);
     bool begin_battle_continuation(std::string_view source_path);
@@ -74,6 +83,7 @@ public:
     uint32_t pending_dialogue_id()const{return pending_dialogue_id_;}
     uint32_t dialogue_talker()const{return talker_;}
     DialogueTalker story_talker()const{return story_talker_;}
+    bool story_talking()const{return story_talking_;}
     bool story_has_next_phrase()const{return dialogue_.has_next_phrase();}
     bool story_input_allowed()const{return dialogue_.input_allowed();}
     bool story_auto_advance_ready()const{return dialogue_.auto_advance_ready();}
@@ -82,7 +92,9 @@ public:
     bool bind_story_skills(StorySkillHost&);
     bool story_skills_ready()const{return story_skills_!=nullptr;}
     OpeningScreenOverlay screen_overlay()const{return overlay_;}
-    bool pause_for_house();
+    bool pause_for_house(bool stop_running=false);
+    // The checked scene owns this optional sink and outlives the world binding.
+    bool bind_walk_audio(WalkAudioSink&);
     bool unpause_from_house();
     bool resize_field_viewport(Vec2 viewport);
     bool set_house_direction(Vec2 direction);
@@ -149,7 +161,7 @@ private:
     PersistentPlayerOwner persistent_player_;
     bool player_read_only_=false;
     uint32_t area_music_resource_=kRoomNoIndex;
-    DialogueTalker story_talker_;
+    DialogueTalker story_talker_;bool story_talking_=false;
     std::vector<OpeningEffectRequest> effects_;
     std::vector<bool> story_hides_;
     std::vector<OpeningSceneCall>scene_calls_;
@@ -163,6 +175,8 @@ private:
     bool branch_condition(const DialogueAction&,bool&) override;
     uint32_t choice_group_=kRoomNoIndex;bool save_requested_=false,storage_requested_=false;
     bool fail(const char* message);
+    bool emit_walk_audio(const WalkAudioCalls&);
+    WalkAudioSink*walk_audio_=nullptr;
     bool flush_deferred();
     bool process_room_shakers(double delta);
     bool vibrate_room(uint32_t binding);

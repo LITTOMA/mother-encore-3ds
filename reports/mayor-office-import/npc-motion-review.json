@@ -1,0 +1,28 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "genuine_tex3ds": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "codec_capability": 6,
+  "withdrawn_capability_5_admitted": false,
+  "gcc9_asan_ubsan": {
+    "party_npc_motion": 1947,
+    "legacy_npc_motion": 1457,
+    "static_actor_recheck": 33
+  },
+  "python_methods_before_last_path_case": 30,
+  "final_candidate_python": 6,
+  "test_collection_failure": "A final added method was placed below __main__, causing IndentationError; raw failure retained; moved back inside the test class; six candidate methods now pass.",
+  "console_for_this_change": "not yet recorded",
+  "emulator_mayor": "not playable; not tested",
+  "release_resources_changed": false,
+  "save_schema_changed": false,
+  "source_sha256": {
+    "runtime/mick_treats.cpp": "17346dd53647a8ce13d3e07ce30e18e939e569245b5c8098dc43e68877426c49",
+    "runtime/field_scene.cpp": "e50ba1ff639a06347930edc549caa8c3730c5e1b08c0b7a06d4d68e7a1af1ac9",
+    "include/encore/mick_treats.hpp": "abad1e194c8342276b1ba60f8f17cff3b4bf88ea6ed8d5fce96bb22dd02169d6",
+    "tools/field_scene_npcs.py": "ea8b2fe0d90f6a92ecc9c35cef88b4901c1ff80cf5de1645c4ad4a9a12da1aea",
+    "tools/field_npc_motion.py": "4fe2ec169af752868b8c39538c39d97a5451f092f30d0dcd8304e2d4f10fef23",
+    "tests/field_party_npc_motion_tests.cpp": "f96440e1bb16b29919e3aef49331f9027e8e9fa33bb631af4803a7daf2913172",
+    "tests/test_field_scene_npcs.py": "0f31cfc3b62a7569e6c420b38af9e26f5ca32d7ca4370c0bf4880a1005e4397d",
+    "content/mayor-npcs.json": "4343204f297778e3b4bf59dfc78ff29ba23256003818ef1f877304b6c5fc14e3"
+  }
+}

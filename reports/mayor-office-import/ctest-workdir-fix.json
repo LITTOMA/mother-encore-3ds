@@ -1,0 +1,10 @@
+{
+  "full_run": 39117922908,
+  "source": "d33d47827ef44a0ded92829be9e38aabe65bb3c5",
+  "clang_result": "168 of 169 ordinary tests pass; new field_party_npc_motion cannot open relative Room from build cwd. Sanitizers not reached.",
+  "cause": "New CTest target lacked SOURCE_DIR working directory for its explicit real-file negative binding test.",
+  "fix": "Set field_party_npc_motion and party_npc_actor WORKING_DIRECTORY to CMAKE_SOURCE_DIR.",
+  "local_reproduction": "Same compiler-produced executable with identical absolute resource arguments: build cwd fails at1943; source cwd passes1947 checks.",
+  "game_code_changed": false,
+  "full_rerun": "pending"
+}

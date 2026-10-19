@@ -24,14 +24,14 @@ uint32_t room_resource(const upstream::RoomView& room,uint32_t id){
 Result ndspInit(){if(init_result>=0)ndsp_started=true;return init_result;}
 void ndspExit(){for(size_t i=0;i<queues.size();++i)drain(int(i));ndsp_started=false;++exits;}
 void ndspSetMasterVol(float v){master=v;}
-void ndspChnReset(int lane){drain(lane);}
+void ndspChnReset(int lane){ndsp_test_reset_sequence(lane);drain(lane);}
 void* linearAlloc(size_t n){if(fail_alloc)return nullptr;auto*p=std::malloc(n);if(p){allocated+=n;allocations.emplace(p,n);}return p;}
 void linearFree(void* p){check(!ndsp_started,"buffer freed only after NDSP exit");auto i=allocations.find(p);check(i!=allocations.end(),"freed buffer has a live allocation");allocated-=i->second;allocations.erase(i);std::free(p);}
 uint32_t ndspGetDroppedFrames(){return 7;}
 void ndspChnWaveBufClear(int lane){drain(lane);}
 void ndspChnSetMix(int lane,float* mix){gains[channel(lane)]=mix[0];check(mix[0]==mix[1],"stereo equal gain");}
 Result DSP_FlushDataCache(const void* p,uint32_t size){check(p&&size>0&&size<=2048*4,"bounded flush");return flush_result;}
-void ndspChnWaveBufAdd(int lane,ndspWaveBuf* wave){auto& queue=queues[channel(lane)];check(ndsp_started&&wave->data_pcm16&&wave->nsamples>0&&wave->nsamples<=2048&&!wave->looping,"valid frame queue");wave->status=NDSP_WBUF_QUEUED;queue.push_back(wave);}
+void ndspChnWaveBufAdd(int lane,ndspWaveBuf* wave){ndsp_test_assign_sequence(lane,wave);auto& queue=queues[channel(lane)];check(ndsp_started&&wave->data_pcm16&&wave->nsamples>0&&wave->nsamples<=2048&&!wave->looping,"valid frame queue");wave->status=NDSP_WBUF_QUEUED;queue.push_back(wave);}
 void ndspChnSetPaused(int lane,bool value){paused[channel(lane)]=value;++pause_calls;}
 void ndspChnSetInterp(int lane,int){channel(lane);}void ndspChnSetRate(int lane,float rate){rates[channel(lane)]=rate;}void ndspChnSetFormat(int lane,int){channel(lane);}
 int main(int argc,char** argv){
@@ -49,7 +49,7 @@ int main(int argc,char** argv){
     check(!player.prepare(12345,error)&&!player.prepared(12345),"unknown preparation identity rejected");
     check(!player.prepared(21)&&player.prepare(21,error)&&player.prepared(21),"full PCM admission is deferred until requested");
     check(player.prepare(21,error)&&player.submitted_voices()==0&&queues[0].empty(),"cached preparation has no playback side effects");
-    check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(8),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
+    check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(9),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
     upstream::RoomData room;check(room.load_file(argv[3],error),error.c_str());
     std::vector<upstream::OpeningAudioRequest> requests={{upstream::AudioRequestKind::FadeMusic,upstream::kRoomNoIndex,2,0},{upstream::AudioRequestKind::PlayMusic,20,0,2}};
     check(player.consume(room.view(),requests,error),error.c_str());check(player.consumed_requests()==2&&player.submitted_voices()==1&&queues[0].size()==3,"typed requests consumed and music queued");
@@ -182,3 +182,6 @@ int main(int argc,char** argv){
     for(const auto& queue:queues)check(queue.empty(),"shutdown drains all four channels before freeing buffers");
     std::cout<<"Audio adapter: "<<checks<<" host-double checks passed; this is NOT NDSP audibility verification\n";
 }
+
+uint32_t ndspChnGetSamplePos(int){std::abort();}
+uint16_t ndspChnGetWaveBufSeq(int){std::abort();}

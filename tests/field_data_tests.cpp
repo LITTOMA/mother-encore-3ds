@@ -110,7 +110,7 @@ int main(int argc,char**argv){
     {auto b=link_bytes;b.back()^=1;reject_links(b,"links CRC mismatch",false);}
     const size_t routes=section(link_bytes,3),scenes=section(link_bytes,2);
     {auto b=link_bytes;put(b,routes+8,999);reject_links(b,"route to an unknown scene rejected");}
-    {auto b=link_bytes;put(b,routes+8,get(b,routes+4));reject_links(b,"route into its own scene rejected");}
+    {std::vector<uint8_t>b;check(encore::read_file("tests/fixtures/world-links-cap1.enclinks",b,64*1024,error),"read frozen capability1 links");const auto first=section(b,3);put(b,first+8,get(b,first+4));reject_links(b,"legacy capability1 route into its own scene rejected");}
     {auto b=link_bytes;put_float(b,routes+28,0.5f);reject_links(b,"noncardinal route direction rejected");}
     {auto b=link_bytes;put16(b,routes+52,3);reject_links(b,"unported transition kind rejected");}
     {auto b=link_bytes;put_float(b,routes+56,0);reject_links(b,"zero fade speed rejected");}

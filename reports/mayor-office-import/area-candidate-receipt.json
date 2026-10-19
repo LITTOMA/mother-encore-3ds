@@ -1,0 +1,32 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "metadata": {
+    "source": "res://Maps/podunk/Mayors Office.tscn",
+    "region": "Podunk",
+    "map_item": "MapPodunk",
+    "map_override": "Merrysville",
+    "map_override_item": "MapMerrysville",
+    "visit_flag": "visited_podunk",
+    "party_guard_flag": "flying_man_in_party",
+    "map_offset": [
+      110.0,
+      240.0
+    ],
+    "map_divisor": 16,
+    "background": 471604479,
+    "sub_area": true
+  },
+  "sources": {
+    "Data/Items/MapMerrysville.yaml": "b728a934df42ddd76997761e48e8f9e87a4ab7161c4e727c262a0faa07358ebc",
+    "Data/Items/MapPodunk.yaml": "a0a9b41e46eef76044809dc698abc1afc1dab534b4dcb7e37563ea01e54afe43",
+    "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/UI/MapScreen/MapScreen.gd": "3d6bc422458e3bb8862522ce7d991ebef847618fe30dc5a0ac39c9e358c2f4d6",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+  },
+  "producer_sha256": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
+  "map_sha256": "5306149a4bcc043f6a153cb57ef8362fb76a44190c595a0476192098be61cdb6",
+  "bytes": 7380,
+  "scope": "AreaRoom ready/map/background admission; no scene staging or hardware pass"
+}

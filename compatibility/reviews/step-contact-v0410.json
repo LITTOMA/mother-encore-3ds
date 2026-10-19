@@ -1,0 +1,395 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "whole_gameplay_approved": false,
+  "sources": {
+    "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41",
+    "Audio/Sound effects/Footsteps/stone.mp3.import": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7",
+    "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+    "Audio/Sound effects/Footsteps/wood.mp3.import": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/podunk/Mayors Office.tscn": "162ecb9941be3466d0af1829acabf63586a607f089317ba73ba9d05b0570d17e",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Nodes/Reusables/Effects/AfterImageCreator.tscn": "6e7436316f5ced4d3d9ef8f1416cfa7b2cd860ca739e1534369c3a00fe10122e",
+    "Nodes/Reusables/Overlap/Hitbox.tscn": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+    "Nodes/Reusables/Sweatdrops.tscn": "770e43a7852e0896fee0c3ebdbd7d7204200495a5f0aa6a8dd426cbd6cd7275a",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e"
+  },
+  "base_run_review_sha256": "c0c5cdbe4f2178d546445af9149041065354bab72c7d15aeb1015de5fbba96ad",
+  "area_sha256": "8d25ffa2eb99159d92601acc950edd8f2ef82b12ffde865e32a1f53d06f745cd",
+  "probe_sha256": "3df701ff4ffaf6f0691d9d2c0aa6b5a7b03efc80fe6119e0e11c074c1f5dac8c",
+  "geometry": {
+    "layer": 1,
+    "mask": 4353,
+    "points": [
+      [
+        6.0,
+        7.0
+      ],
+      [
+        4.0,
+        9.0
+      ],
+      [
+        -5.0,
+        9.0
+      ],
+      [
+        -7.0,
+        7.0
+      ],
+      [
+        -7.0,
+        5.0
+      ],
+      [
+        -5.0,
+        3.0
+      ],
+      [
+        4.0,
+        3.0
+      ],
+      [
+        6.0,
+        5.0
+      ]
+    ]
+  },
+  "root_scene_position": [
+    0.0,
+    -3.0
+  ],
+  "compiled_hull_ir_sha256": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
+  "connections": [
+    {
+      "signal": "body_entered",
+      "from": ".",
+      "to": ".",
+      "method": "_on_Stepping_Sounds_body_entered"
+    },
+    {
+      "signal": "body_exited",
+      "from": ".",
+      "to": ".",
+      "method": "_on_Stepping_Sounds_body_exited"
+    }
+  ],
+  "cases": [
+    {
+      "player": [
+        80,
+        80
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        8.0,
+        12.0
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        8.0,
+        12.0
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        80,
+        80
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        8.0,
+        -581.0
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        8.0,
+        -581.0
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        80,
+        80
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        80,
+        80
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        false
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        8.0,
+        -581.0
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        false
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        8.0,
+        -581.0
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        8.0,
+        -581.0
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        80,
+        80
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        8.0,
+        -581.0
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        8.0,
+        -581.0
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 0
+    },
+    {
+      "player": [
+        80,
+        80
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 0
+    },
+    {
+      "player": [
+        8.0,
+        -581.0
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 0
+    },
+    {
+      "player": [
+        80,
+        80
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        80,
+        80
+      ],
+      "other": [
+        8.0,
+        -581.0
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        80,
+        80
+      ],
+      "other": [
+        8.0,
+        12.0
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    },
+    {
+      "player": [
+        80,
+        80
+      ],
+      "other": [
+        80,
+        80
+      ],
+      "enabled": [
+        true,
+        true
+      ],
+      "mask": 4353
+    }
+  ],
+  "scope": "Player-local source polygon (collider translation retained; teleports override root scene position), source step callbacks/signals/rectangles in native Area2D/KinematicBody2D; teleport inputs settle four subsequent physics ticks; injected PartyObject identity/shadow setter and global player pointer; no full map, movement, precise boundary timing, shader or audio claim"
+}

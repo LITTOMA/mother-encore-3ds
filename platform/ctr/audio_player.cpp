@@ -4,11 +4,9 @@
 #include <cstring>
 
 namespace encore::ctr {
-namespace {
-// Area-music streaming owns channels 4..19. Optional cutscene effects use two
-// otherwise unowned hardware channels; text and phone use channels 22 and 23.
-// 0..3 main voices, 4..19 regional music, 20..23 auxiliary/text/phone.
-int hardware_channel(uint32_t lane){return int(lane<4?lane:lane+16);}
+int AudioPlayer::hardware_channel(uint32_t lane)const{
+ if(lane!=uint32_t(AudioLane::Run))return int(lane<4?lane:lane+16);
+ const auto channel=voices_[lane].channel;return channel<region_channel_pool::capacity?int(region_channel_pool::first_channel+channel):-1;
 }
 MusicObservation AudioPlayer::observe_music() const {
     const auto& music=voices_[uint32_t(AudioLane::Music)];
@@ -25,6 +23,8 @@ bool AudioPlayer::initialize(const char* bank_path,const char* root,std::string&
     shutdown();consumed_=0;submitted_=completed_=queued_frames_=0;dsp_result_=0;
     if(!root){error="Audio asset root is missing";return false;}
     if(!bank_.load_file(bank_path,error))return false;
+    if(configuration_generation_==UINT64_MAX){error="Audio configuration generation exhausted";return false;}
+    ++configuration_generation_;
     // libctru loads a component already supplied by the launcher or from SD.
     // No firmware is included, downloaded, fabricated, or silently substituted.
     // Admit metadata and the DSP service here; prepare() validates each needed
@@ -42,7 +42,8 @@ bool AudioPlayer::initialize(const char* bank_path,const char* root,std::string&
     ready_=true;error.clear();return true;
 }
 void AudioPlayer::shutdown(){
-    if(ndsp_initialized_){for(uint32_t i=0;i<lane_count;++i)if(i<4||voices_[i].samples)ndspChnWaveBufClear(hardware_channel(i));ndspExit();}
+    if(ndsp_initialized_){for(uint32_t i=0;i<lane_count-1;++i)if(i<4||voices_[i].samples)ndspChnWaveBufClear(hardware_channel(i));stop(uint32_t(AudioLane::Run));ndspExit();}
+    auto&pool=region_channel_pool::owners();const auto channel=voices_[uint32_t(AudioLane::Run)].channel;if(channel<pool.size()&&pool[channel]==this)pool[channel]=nullptr;
     ndsp_initialized_=ready_=false;
     for(auto& v:voices_){if(v.samples)linearFree(v.samples);v=Voice{};}
     for(auto& stream:streams_)stream.close();
@@ -71,10 +72,11 @@ void AudioPlayer::reset_scene(){
     for(auto& voice:voices_){auto* samples=voice.samples;voice=Voice{};voice.samples=samples;}
     consumed_=0;submitted_=completed_=queued_frames_=0;
 }
-void AudioPlayer::stop(uint32_t lane){
-    auto& voice=voices_[lane];
-    ndspChnWaveBufClear(hardware_channel(lane));
-    if(voice.paused)ndspChnSetPaused(hardware_channel(lane),false);
+void AudioPlayer::stop(uint32_t lane,bool release_channel){
+    auto&voice=voices_[lane];const bool dynamic=lane==uint32_t(AudioLane::Run);auto&pool=region_channel_pool::owners();
+    const bool owned=!dynamic||(voice.channel<pool.size()&&pool[voice.channel]==this);
+    if(owned&&ndsp_initialized_){ndspChnWaveBufClear(hardware_channel(lane));if(voice.paused)ndspChnSetPaused(hardware_channel(lane),false);}
+    if(dynamic&&release_channel){if(owned)pool[voice.channel]=nullptr;voice.channel=region_channel_pool::capacity;}
     voice.active=voice.fading=voice.paused=false;
 }
 void AudioPlayer::mix(uint32_t lane){float volumes[12]{};const bool music=lane==uint32_t(AudioLane::Music)||lane==uint32_t(AudioLane::Jingle)||lane==uint32_t(AudioLane::DialogueMusic);const float gain=upstream::audio_linear_gain(voices_[lane].fade.db()+(music?user_music_db_:user_sfx_db_));volumes[0]=gain;volumes[1]=gain;ndspChnSetMix(hardware_channel(lane),volumes);}
@@ -105,15 +107,25 @@ bool AudioPlayer::play(uint32_t id,AudioLane which,std::string& error,float gain
     uint32_t index=0;while(index<bank_.count()&&bank_.asset(index).stable_id!=id)++index;
     if(index==bank_.count()){error="Audio resource is absent from bank";return false;}
     for(uint32_t i=0;i<lane_count;++i)if(i!=lane&&voices_[i].active&&voices_[i].asset_index==index){error="Concurrent playback of one PCM asset across lanes is outside audio slice";return false;}
+    const bool dynamic=which==AudioLane::Run;auto&voice=voices_[lane];auto&pool=region_channel_pool::owners();uint32_t channel=voice.channel;
+    if(dynamic){
+        if(!bank_.asset(index).loops()){error="Run stream must use checked loop metadata";return false;}
+        if(channel<pool.size()&&pool[channel]!=this){error="Run stream channel ownership rejected";return false;}
+        if(channel==pool.size()){channel=0;while(channel<pool.size()&&pool[channel])++channel;if(channel==pool.size()){error="Run stream channel capacity exhausted; existing audio preserved";return false;}}
+    }
     if(!prepare_index(index,error))return false; // Preserve a live voice when preparation fails.
-    auto& voice=voices_[lane];
     if(!voice.samples){
         voice.samples=static_cast<int16_t*>(linearAlloc(buffer_count*buffer_frames*2*sizeof(int16_t)));
         if(!voice.samples){error="Audio auxiliary streaming-buffer allocation failed";return false;}
-        ndspChnReset(hardware_channel(lane));
+        if(!dynamic)ndspChnReset(hardware_channel(lane));
     }
-    stop(lane);voice.waves={};voice.asset=bank_.asset(index);voice.asset_index=index;voice.repeat=repeat;
-    if(!streams_[index].rewind()){error="Cannot rewind audio stream";return false;}
+    if(dynamic&&!streams_[index].rewind()){error="Cannot rewind audio stream";return false;}
+    if(dynamic&&voice.channel==pool.size()){
+        if(pool[channel]){error="Run stream channel changed during preparation";return false;}
+        voice.channel=channel;pool[channel]=this;ndspChnReset(hardware_channel(lane));
+    }
+    stop(lane,false);voice.waves={};voice.asset=bank_.asset(index);voice.asset_index=index;voice.repeat=repeat;
+    if(!dynamic&&!streams_[index].rewind()){error="Cannot rewind audio stream";return false;}
     voice.fade.reset(fadein_seconds>0?bank_.silence_db():voice.asset.gain_db+gain_db);voice.active=true;voice.stop_after_fade=false;
     if(fadein_seconds>0){voice.fade.start(voice.asset.gain_db+gain_db,fadein_seconds,true);voice.fading=true;}
     ndspChnSetInterp(hardware_channel(lane),NDSP_INTERP_POLYPHASE);

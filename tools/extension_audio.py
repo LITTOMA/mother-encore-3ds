@@ -9,4 +9,5 @@ of editing it. Each module keeps its own source/coverage admission.
 def bindings(root):
     from tools.present_audio import bindings as present_audio
     from tools.gameplay_audio import bindings as gameplay_audio
-    return present_audio(root) + gameplay_audio(root)
+    from tools.footstep_audio import bindings as footstep_audio
+    return present_audio(root) + gameplay_audio(root) + footstep_audio(root)

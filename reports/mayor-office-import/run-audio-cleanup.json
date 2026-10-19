@@ -1,0 +1,34 @@
+{
+  "bytes": 298077160.0,
+  "scope": "Completed audio test executables; original current 3DSX, logs and compilation objects retained",
+  "files": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\field-steps",
+      "bytes": 42166648
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\appended-audio-data",
+      "bytes": 42103912
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\run-audio",
+      "bytes": 42733872
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\audio-regression",
+      "bytes": 42610368
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\music-player",
+      "bytes": 42392760
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\music-service",
+      "bytes": 43018608
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\podunk-routes\\host\\music-prepare",
+      "bytes": 43050992
+    }
+  ]
+}

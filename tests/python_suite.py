@@ -50,7 +50,12 @@ DEDICATED = {
 # New modules remain serial; changes to these modules require an IO re-review.
 READ_ONLY = frozenset(('test_native_content', 'test_native_house',
     'test_native_round', 'test_native_restore', 'test_phone_dialogue',
-    'test_dad_record_dialogue'))
+    'test_dad_record_dialogue',
+    # Reviewed after the aggregate exceeded its unchanged 1800-second bound.
+    # These suites write only copies/unique temporary directories; see TESTING.
+    'test_phone_linker', 'test_native_session', 'test_doll_postwin',
+    'test_melody_content', 'test_mayor_scene', 'test_mayor_field',
+    'test_house_assets', 'test_new_game_assets'))
 
 
 def cases(suite):
@@ -169,7 +174,8 @@ def run_parallel(project, groups, directory, jobs):
     with ThreadPoolExecutor(max_workers=jobs) as pool:
         # Threads only supervise independent interpreter processes; tests do
         # not share Python globals. Consume every result, including failures.
-        results = list(pool.map(run, sorted(groups.items())))
+        results = list(pool.map(run, sorted(groups.items(),
+            key=lambda item: (-len(item[1]), item[0]))))
     return all(results)
 
 

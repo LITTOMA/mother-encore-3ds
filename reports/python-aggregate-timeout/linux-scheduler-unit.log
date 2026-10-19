@@ -1,0 +1,150 @@
+PYTHON START test_native_content pid=12
+PYTHON END test_native_content pid=12 status=1
+Traceback (most recent call last):
+  File "/mnt/d/GameDev/3DS/mother-encore-3ds/tests/python_suite.py", line 262, in <module>
+    raise SystemExit(main())
+  File "/mnt/d/GameDev/3DS/mother-encore-3ds/tests/python_suite.py", line 240, in main
+    return worker(args.project, args.worker_plan, args.worker_result)
+  File "/mnt/d/GameDev/3DS/mother-encore-3ds/tests/python_suite.py", line 127, in worker
+    raise ValueError('Worker collection differs from admitted method IDs')
+ValueError: Worker collection differs from admitted method IDs
+
+.sPYTHON START test_native_house pid=15
+PYTHON START test_native_content pid=16
+PYTHON END test_native_house pid=15 status=1
+test_run (tests.test_native_house.Case) ... FAIL
+
+======================================================================
+FAIL: test_run (tests.test_native_house.Case)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpt06dr8de/tests/test_native_house.py", line 3, in test_run
+    def test_run(self): self.fail("intentional worker failure")
+AssertionError: intentional worker failure
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)
+
+PYTHON END test_native_content pid=16 status=0
+test_run (tests.test_native_content.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+.PYTHON START test_native_content pid=21
+PYTHON START test_native_house pid=22
+PYTHON START test_native_round pid=23
+PYTHON START test_native_restore pid=24
+PYTHON END test_native_restore pid=24 status=0
+PYTHON END test_native_content pid=21 status=0
+test_run (tests.test_native_restore.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+
+test_run (tests.test_native_content.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.066s
+
+OK
+
+PYTHON END test_native_house pid=22 status=0
+test_run (tests.test_native_house.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.033s
+
+OK
+
+PYTHON END test_native_round pid=23 status=0
+test_run (tests.test_native_round.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.023s
+
+OK
+
+...PYTHON START test_house_assets pid=29
+PYTHON START test_mayor_field pid=30
+PYTHON START test_new_game_assets pid=31
+PYTHON START test_mayor_scene pid=32
+PYTHON END test_mayor_scene pid=32 status=0
+test_run (tests.test_mayor_scene.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+
+PYTHON END test_house_assets pid=29 status=0
+test_run (tests.test_house_assets.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.054s
+
+OK
+
+PYTHON END test_mayor_field pid=30 status=0
+test_run (tests.test_mayor_field.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.044s
+
+OK
+
+PYTHON END test_new_game_assets pid=31 status=0
+test_run (tests.test_new_game_assets.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.022s
+
+OK
+
+.PYTHON START test_doll_postwin pid=37
+PYTHON START test_native_session pid=38
+PYTHON START test_melody_content pid=39
+PYTHON START test_phone_linker pid=40
+PYTHON END test_phone_linker pid=40 status=0
+test_run (tests.test_phone_linker.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+
+PYTHON END test_melody_content pid=39 status=0
+test_run (tests.test_melody_content.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.022s
+
+OK
+
+PYTHON END test_native_session pid=38 status=0
+test_run (tests.test_native_session.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.054s
+
+OK
+
+PYTHON END test_doll_postwin pid=37 status=0
+test_run (tests.test_doll_postwin.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.065s
+
+OK
+
+..
+----------------------------------------------------------------------
+Ran 9 tests in 2.434s
+
+OK (skipped=1)

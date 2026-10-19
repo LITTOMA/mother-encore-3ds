@@ -53,7 +53,7 @@ def build(path=RECIPE):
    images[row['role']]=packed
    origin=lambda k:[node.props.get(k,Vec2(0,0)).x,node.props.get(k,Vec2(0,0)).y]
    layers.append(dict(**row,source=source,source_sha256=hashlib.sha256(ex.data(source)).hexdigest(),width=packed.width,height=packed.height,position=origin('position'),offset=origin('offset'),centered=node.props.get('centered',True),flip_h=node.props.get('flip_h',False),flip_v=node.props.get('flip_v',False),initial_visible=node.props.get('visible',True),rgba_sha256=hashlib.sha256(packed.tobytes()).hexdigest(),frames=squares))
- proof=dict(commit=field_swing.PIN,scope=p['scope'],source_recipe=p['source_recipe'],sources=ex.sources,dependencies={str(Path(path).resolve().relative_to(ROOT)):hashlib.sha256(Path(path).read_bytes()).hexdigest(),'content/field-swing.json':hashlib.sha256((ROOT/p['source_recipe']).read_bytes()).hexdigest(),'tools/field_swing_graphics.py':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},atlas_columns=p['atlas_columns'],frame_count=len(frames),layers=layers,permission='Pinned upstream LICENSE game-related port; original notices retained; no tool binary distributed')
+ proof=dict(commit=field_swing.PIN,scope=p['scope'],source_recipe=p['source_recipe'],sources=ex.sources,dependencies={Path(path).resolve().relative_to(ROOT).as_posix():hashlib.sha256(Path(path).read_bytes()).hexdigest(),'content/field-swing.json':hashlib.sha256((ROOT/p['source_recipe']).read_bytes()).hexdigest(),'tools/field_swing_graphics.py':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},atlas_columns=p['atlas_columns'],frame_count=len(frames),layers=layers,permission='Pinned upstream LICENSE game-related port; original notices retained; no tool binary distributed')
  return images,proof
 
 def main():

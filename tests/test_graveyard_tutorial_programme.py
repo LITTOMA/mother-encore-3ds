@@ -42,11 +42,12 @@ class TutorialProgramme(unittest.TestCase):
   room,story,proof=t.build();self.assertEqual((room,story),(self.room,self.story));self.assertEqual(proof,self.proof)
   self.assertIn(self.p['source'],proof['sources']);self.assertIn('Scripts/UI/DialogueBox.gd',proof['sources']);self.assertIn('content/graveyard-swing-programme.json',proof['dependencies'])
  def test_original_direction_observation_provenance(self):
-  folder=t.ROOT/'reports/iggy-tutorial/actor-direction-reference-1';proof=json.loads((folder/'source.json').read_bytes());doc=json.loads((folder/'reference.json').read_bytes());cases=json.loads((t.ROOT/'tests/fixtures/actor-direction-cases.json').read_bytes())
+  folder=t.ROOT/'reports/iggy-tutorial/actor-direction-reference-2';proof=json.loads((folder/'source.json').read_bytes());doc=json.loads((folder/'reference.json').read_bytes());cases=json.loads((t.ROOT/'tests/fixtures/actor-direction-cases.json').read_bytes())
   sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
   self.assertEqual(proof['observations'],92);self.assertEqual(proof['source_cases_sha256'],sha(t.ROOT/'tests/fixtures/actor-direction-cases.json'));self.assertEqual([r['definition']for r in doc['cases']],cases['cases'])
   self.assertEqual(doc['godot']['string'],'3.6.2-stable (official)')
   for name,digest in proof['sources'].items():self.assertEqual(digest,sha(t.ROOT/'upstream/MOTHER-Encore'/name))
   for name,digest in proof['reports_sha256'].items():self.assertEqual(digest,sha(folder/name))
-  for name,digest in proof['tools_sha256'].items():self.assertEqual(digest,sha(t.ROOT/name))
+  for name,digest in proof['tools_sha256'].items():
+   self.assertNotIn('\\',name);self.assertEqual(digest,sha(t.ROOT/name))
 if __name__=='__main__':unittest.main()

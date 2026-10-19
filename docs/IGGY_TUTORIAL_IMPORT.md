@@ -23,3 +23,5 @@ Room 格式仍1、规则7，capability13 的 GrantKeyItem 指令48由前一组�
 本地GCC9 ASan/UBSan（泄漏检查开启）2352项通过，包含全部截断、坏版本/目录/路径/帧/图层与失败后保持、错误动作绑定，以及实际两份T3X的校验和损坏拒绝。14项相关Python通过，方法分配1150=786+364。完整生成的元数据测试fixture和凭据见 reports/iggy-tutorial/swing-graphics-metadata。此组件尚无正式GPU绘制、原材质、输入或接触事件拥有者，未据此宣称教学可玩。
 
 历史提交 af00c9c 的完整Clang普通及ASan/UBSan各215项、真实3DSX/CIA构建与打包通过，原始日志保留在 reports/iggy-tutorial/af-verification。其GCC作业在本条记录时仍运行；这些结果不代表其后的新图形元数据模块已通过完整CI。
+
+GCC完整检查另暴露Windows生成凭据使用反斜杠的问题：ffb3b4f的普通检查228/229通过，聚合Python中演员方向来源凭据在Linux无法定位四个工具路径，sanitizer未执行。三个相关生成器改为明确输出POSIX相对路径，再以真实Godot和tex3ds重新生成凭据；未手改旧凭据、原版源码或行为期望。新92行方向表、两份T3X、1061字节元数据与原结果逐字相同，Windows相关16项通过；实际Linux核对旧四路径缺失、新路径及来源SHA全部匹配。新凭据与审查见 actor-direction-reference-2、swing-graphics-atlas-2、swing-graphics-metadata-2；旧凭据和失败日志保留。完成的本地测试ELF与已证明相同的旧候选纹理共51,150,322字节已清理，当前纹理、游戏、存档和来源证据保留。

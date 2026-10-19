@@ -30,8 +30,8 @@ class SwingGraphics(unittest.TestCase):
   images,proof=g.build();self.assertEqual(proof,self.proof)
   for role,image in images.items():self.assertEqual(image.tobytes(),self.images[role].tobytes())
  def test_actual_texture_conversion_receipt_matches_current_pixels(self):
-  folder=g.ROOT/'reports/iggy-tutorial/swing-graphics-atlas';proof=json.loads((folder/'source.json').read_bytes());comparison=json.loads((folder/'comparison.json').read_bytes())
+  folder=g.ROOT/'reports/iggy-tutorial/swing-graphics-atlas-2';proof=json.loads((folder/'source.json').read_bytes());comparison=json.loads((g.ROOT/'reports/iggy-tutorial/swing-graphics-atlas/comparison.json').read_bytes())
   for row,current in zip(proof['layers'],self.proof['layers']):
    self.assertEqual({k:v for k,v in row.items()if k not in('t3x_bytes','t3x_sha256')},current);self.assertEqual(row['t3x_bytes'],1048597)
-  self.assertEqual(proof['dependencies'],self.proof['dependencies']);self.assertEqual(comparison['full_bytes'],8388650);self.assertEqual(comparison['packed_bytes'],2097194);self.assertEqual(comparison['removed_full_baseline_bytes'],comparison['full_bytes']);self.assertIn('not a measured GPU',comparison['scope'])
+  self.assertTrue(all('\\'not in name for name in proof['dependencies']));self.assertEqual(proof['dependencies'],self.proof['dependencies']);self.assertEqual(comparison['full_bytes'],8388650);self.assertEqual(comparison['packed_bytes'],2097194);self.assertEqual(comparison['removed_full_baseline_bytes'],comparison['full_bytes']);self.assertIn('not a measured GPU',comparison['scope'])
 if __name__=='__main__':unittest.main()

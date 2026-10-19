@@ -1,0 +1,30 @@
+{
+  "scope": "Fix only host-specific receipt path separators, regenerate using actual original Godot and tex3ds. No upstream/behavior/texture/frame/metadata binary changes. Retain original failing CI and original receipts.",
+  "ci_failure": "ffb3b4f run39225712445 GCC228/229: test_original_direction_observation_provenance cannot open Windows backslash tool paths on Linux; sanitizer not run.",
+  "byte_identical_outputs": [
+    {
+      "before": "build/iggy-tutorial/swing-graphics-candidate-1/ninten.t3x",
+      "after": "build/iggy-tutorial/swing-graphics-candidate-2/ninten.t3x",
+      "bytes": 1048597,
+      "sha256": "2e75f362c0ed19cf764ec8bdd9e00aafa01d85d09eb726e930414bd64a113cf3"
+    },
+    {
+      "before": "build/iggy-tutorial/swing-graphics-candidate-1/bat.t3x",
+      "after": "build/iggy-tutorial/swing-graphics-candidate-2/bat.t3x",
+      "bytes": 1048597,
+      "sha256": "80f59fa4b484c1647373b048ee385b73af59e5ee295980177eb2f8d9ae28cd03"
+    },
+    {
+      "before": "tests/fixtures/field-swing-graphics-v0410.encgraphics",
+      "after": "build/iggy-tutorial/swing-presentation-candidate-2/swing.encgraphics",
+      "bytes": 1061,
+      "sha256": "ca133fd28dd92b809991b4d929e5702a0ae82f85719ff2b4757de174d8af0bc1"
+    },
+    {
+      "before": "reports/iggy-tutorial/actor-direction-reference-1/reference.tsv",
+      "after": "reports/iggy-tutorial/actor-direction-reference-2/reference.tsv",
+      "bytes": 1302,
+      "sha256": "526294f86000c50abc0ff66c2f6bdf70cf1ae3894e272fa90be744039908194a"
+    }
+  ]
+}

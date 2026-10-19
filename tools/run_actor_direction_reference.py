@@ -21,7 +21,7 @@ def run(work,reports,engine):
   for tick,f in enumerate(c['frames']):rows.append('\t'.join(map(str,[i,tick,*f['direction'],int(f['rotating']),f['action_signals']])))
  (reports/'reference.tsv').write_text('\n'.join(rows)+'\n',encoding='utf8')
  sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
- proof=dict(scope=cases['scope'],engine_sha256=sha(engine),source_cases_sha256=sha(source),sources=doc['sources'],symbols=doc['symbols'],observations=len(rows),reports_sha256={p.name:sha(p)for p in reports.iterdir()if p.is_file()},tools_sha256={str(p.relative_to(ROOT)):sha(p)for p in[Path(__file__).resolve(),ROOT/'tools/reference_actor_actions.py',ROOT/'tools/godot_exporter/actor_actions_probe.gd',ROOT/'tools/godot_exporter/actor_actions_wrapper.gd']})
+ proof=dict(scope=cases['scope'],engine_sha256=sha(engine),source_cases_sha256=sha(source),sources=doc['sources'],symbols=doc['symbols'],observations=len(rows),reports_sha256={p.name:sha(p)for p in reports.iterdir()if p.is_file()},tools_sha256={p.relative_to(ROOT).as_posix():sha(p)for p in[Path(__file__).resolve(),ROOT/'tools/reference_actor_actions.py',ROOT/'tools/godot_exporter/actor_actions_probe.gd',ROOT/'tools/godot_exporter/actor_actions_wrapper.gd']})
  (reports/'source.json').write_text(json.dumps(proof,indent=2)+'\n',encoding='utf8');print('Original suspended Actor direction:',len(rows),'observations; isolated methods only')
 if __name__=='__main__':
  a=argparse.ArgumentParser();a.add_argument('--work',type=Path,required=True);a.add_argument('--reports',type=Path,required=True);a.add_argument('--godot',type=Path,required=True);o=a.parse_args();run(o.work,o.reports,o.godot)

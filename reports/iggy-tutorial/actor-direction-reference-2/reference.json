@@ -1,0 +1,2729 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "schema": 1,
+  "scope": "lamp_attack Actor replacement free position movement, timed turn_to, default jumps, finite x shakes, Lamp Idle/Open, Ninten idle direction and surprise emote; isolated engine functions, not full actors or game",
+  "sources": {
+    "Data/Animations/Lamp.yaml": "eb5043e8979cb5ed982ae75a5a95a89ebca765324d564da10759fa27736c66ed",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Graphics/Character Sprites/Npcs/1dir/lamp.png": "04d7add01ec6d7d4e665cdbf3a1260099ecdf02b8b3486eb1f2566544b2144c6",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7"
+  },
+  "symbols": {
+    "_move_to": "8860d771468bda3f2837de9deb054b0a1cea4bcfaafdbc4f24aeb0cdd153f32c",
+    "_physics_process": "0b837a0ec49f47ae2ab66ab38a7224f9f2ce9b4d0a6ef64ef29c4823d72a42c9",
+    "_set_special_sprite": "6c542e43aff946fb66dc76de3b5f88f1c2642e4b7dfa81d539e585d4e14a6796",
+    "blend_position": "29ed26068193c2a14543ab239889d947424b65e52308d2fd29a03c534abd5505",
+    "jump": "9aaa6e48c698001ae185bb9abff1308a4fe3b80b1cef9c52bc4a9ddfcdcaea27",
+    "move_queue": "e89ce2bf352eb4b86aee998a0c66f798cdba57b56e02fdfa05f590d0b3d1c54a",
+    "play_anim": "99de1d87308e40b40b16db6950a4d1d82b16d06ca663529c321e2e0248a53666",
+    "set_direction": "c7f3c738395ddf79bca51f5aad5c36992da326f69fcb60710297ffaccae255b5",
+    "set_shadow": "882b84b8800f9b5ff1f9af1e81763937b3df874e5df62509c69ca0184ca6ef6e",
+    "shake": "a21a52475053d386b8100a4a7057cc00def775ef57409daf7d23b45122cfd7bc",
+    "turn_to": "84f81de431c6eef3f96e6486d94818e6579687874a7a1d5e458819ecb6d6abb2"
+  },
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "cases": [
+    {
+      "definition": {
+        "name": "iggy_direct_up_during_left_turn",
+        "kind": "Ninten",
+        "start": [
+          432.25,
+          397.25
+        ],
+        "ticks": 45,
+        "actions": [
+          {
+            "tick": 0,
+            "op": "turn",
+            "x": 1,
+            "y": 0
+          },
+          {
+            "tick": 0,
+            "op": "turn_to",
+            "x": -1,
+            "y": 0,
+            "length": 0.1
+          },
+          {
+            "tick": 2,
+            "op": "turn",
+            "x": 0,
+            "y": -1
+          }
+        ]
+      },
+      "frames": [
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 31,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 31,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 31,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 31,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 31,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 71,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 71,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 71,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 71,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 71,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            -1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 71,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 71,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 21,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 21,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 21,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 21,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 21,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 21,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 21,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -0,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -0,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 1,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -0,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 1,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -0,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 1,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -0,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 1,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -0,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 1,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -0,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 1,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 1,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 41,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 41,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 41,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 41,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 41,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 41,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            -0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 41,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            -0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            -0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            -0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        }
+      ]
+    },
+    {
+      "definition": {
+        "name": "direct_target_completes_at_old_timeout",
+        "kind": "Ninten",
+        "start": [
+          432.25,
+          397.25
+        ],
+        "ticks": 25,
+        "actions": [
+          {
+            "tick": 0,
+            "op": "turn",
+            "x": 1,
+            "y": 0
+          },
+          {
+            "tick": 0,
+            "op": "turn_to",
+            "x": -1,
+            "y": 0,
+            "length": 0.1
+          },
+          {
+            "tick": 3,
+            "op": "turn",
+            "x": -1,
+            "y": 0
+          }
+        ]
+      },
+      "frames": [
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        },
+        {
+          "position": [
+            432,
+            397
+          ],
+          "direction": [
+            -1,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 11,
+          "emote": 64,
+          "moving": false,
+          "rotating": false,
+          "movement_signals": 0,
+          "action_signals": 1
+        }
+      ]
+    },
+    {
+      "definition": {
+        "name": "direct_zero_is_not_cancel",
+        "kind": "Ninten",
+        "start": [
+          432.25,
+          397.25
+        ],
+        "ticks": 22,
+        "actions": [
+          {
+            "tick": 0,
+            "op": "turn",
+            "x": 1,
+            "y": 0
+          },
+          {
+            "tick": 0,
+            "op": "turn_to",
+            "x": -1,
+            "y": 0,
+            "length": 0.1
+          },
+          {
+            "tick": 2,
+            "op": "turn",
+            "x": 0,
+            "y": 0
+          }
+        ]
+      },
+      "frames": [
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            1,
+            1
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        },
+        {
+          "position": [
+            432.25,
+            397.25
+          ],
+          "direction": [
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0
+          ],
+          "sprite_position": [
+            0,
+            9
+          ],
+          "sprite_offset": [
+            0,
+            -13
+          ],
+          "frame": 51,
+          "emote": 64,
+          "moving": false,
+          "rotating": true,
+          "movement_signals": 0,
+          "action_signals": 0
+        }
+      ]
+    }
+  ],
+  "physics_delta": "0.01666666753590110",
+  "idle_delta": "0.01666666753590110"
+}

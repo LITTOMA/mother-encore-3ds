@@ -9,6 +9,7 @@
 #include "encore/scene_player_transfer.hpp"
 #include "encore/room_data.hpp"
 #include "encore/source_random.hpp"
+#include "encore/story_object_host.hpp"
 #include <vector>
 namespace encore::upstream {
 enum class OpeningStage : uint8_t { Walking, ScriptRunning, BattleRequested, Error };
@@ -103,6 +104,7 @@ public:
     const std::vector<OpeningEffectRequest>& effect_requests()const{return effects_;}
     bool bind_story_skills(StorySkillHost&);
     bool bind_story_key_items(StoryKeyItemHost&,std::string&);
+    bool bind_story_objects(StoryObjectHost&,std::string&);
     bool bind_story_props(StoryPropHost&,std::string&);
     bool validate_story_props(uint32_t programme,std::string&)const;
     bool story_skills_ready()const{return story_skills_!=nullptr;}
@@ -209,6 +211,7 @@ private:
     uint32_t walk_clip(MotionAnimation animation,Vec2 direction) const;
     bool trigger_conditions(uint32_t index) const;
     StoryKeyItemHost*story_key_items_=nullptr;
+    StoryObjectHost*story_objects_=nullptr;
     StoryPropHost*story_props_=nullptr;
     StorySkillHost*story_skills_=nullptr;
     OpeningScreenOverlay overlay_{};uint32_t overlay_clip_=kRoomNoIndex;double overlay_time_=0;

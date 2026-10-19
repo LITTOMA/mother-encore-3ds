@@ -92,6 +92,11 @@ bool FieldObjects::advance_idle(double delta,std::string&e){
  }
  e.clear();return true;
 }
+bool FieldObjects::validate_story_object(uint32_t scene,std::string_view path,std::string&e)const{
+ if(!prepared()||scene!=data_.scene_id())return fail(e,"Field story object scene rejected");
+ for(const auto&d:data_.objects())if(d.path==path){e.clear();return true;}
+ return fail(e,"Field story object path is unregistered");
+}
 bool FieldObjects::can_queue_free(std::string_view path,std::string&e)const{
  if(!prepared())return fail(e,"Field objects have no delete owner");
  for(size_t i=0;i<states_.size();++i)if(data_.objects()[i].path==path){

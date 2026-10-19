@@ -61,7 +61,7 @@ SCHEMAS = {
 RULE_TYPES = {**{i:1 for i in (1,2,3,4,5,20)}, **{i:2 for i in list(range(6,20))+list(range(21,28))}}
 FORMATS = {'u8':'B','u16':'H','u32':'I','i32':'i','f32':'f','f64':'d','vec2':'2f','hash256':'32s','rule_value':'8s'}
 WIDTHS = {k:struct.calcsize('<'+v) for k,v in FORMATS.items()}
-OPCODES = ['BeginCutscene','BindActor','ActorPersistent','StartWait','MusicFadeOut','SetTalker','CallObjectDeferred','OverworldBattleMusic','PlaySound','MoveActor','TurnActor','ShakeActor','JumpActor','AnimateActor','EmoteActor','ShakeCamera','ChangeCamera','MoveCamera','QueueBattle','StopInteraction','RestoreActor','ReleaseBattleActor','CutsceneEnded','DialogueDone','RequestBattle','YieldIdle','AwaitTimer','SetActorDirection','TeleportActor','MoveActorPath','ReturnCamera','SetFlag','ShowDialogue','AwaitDialogue','PlayMusicImmediate','HideDialogue','Jump','BranchFlag','BranchLeader','AwaitChoices','OpenSave','AwaitSubmenu','StopActorLoop','OpenStorage','SetActorProfile','LearnSkill','ScreenOverlay','EraseActor','GrantKeyItem']
+OPCODES = ['BeginCutscene','BindActor','ActorPersistent','StartWait','MusicFadeOut','SetTalker','CallObjectDeferred','OverworldBattleMusic','PlaySound','MoveActor','TurnActor','ShakeActor','JumpActor','AnimateActor','EmoteActor','ShakeCamera','ChangeCamera','MoveCamera','QueueBattle','StopInteraction','RestoreActor','ReleaseBattleActor','CutsceneEnded','DialogueDone','RequestBattle','YieldIdle','AwaitTimer','SetActorDirection','TeleportActor','MoveActorPath','ReturnCamera','SetFlag','ShowDialogue','AwaitDialogue','PlayMusicImmediate','HideDialogue','Jump','BranchFlag','BranchLeader','AwaitChoices','OpenSave','AwaitSubmenu','StopActorLoop','OpenStorage','SetActorProfile','LearnSkill','ScreenOverlay','EraseActor','GrantKeyItem','QueueFreeStoryObject']
 ROOT_FIELDS = {'schema','family','rules','capabilities','scene_id','upstream_commit','exporter_version','adapter_revision','strings','sections','provenance'}
 
 class ContentError(ValueError):
@@ -329,7 +329,7 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
         check(e['kind']in(0,1),'Unknown movement entry')
         check(e['duration']==0 if e['kind']==0 else e['vector']==[0,0]and 0<e['duration']<=3600,'Invalid movement entry payload')
     for c in sections['Command']:
-        op=c['opcode'];check(0<=op<(len(OPCODES)if capabilities>=13 else 48 if capabilities>=12 else 47 if capabilities>=9 else 44 if capabilities==8 else 43 if rules>=7 else 42 if rules>=6 else 36 if rules>=5 else 35),'Unknown command opcode')
+        op=c['opcode'];check(0<=op<(len(OPCODES)if capabilities>=14 else 49 if capabilities>=13 else 48 if capabilities>=12 else 47 if capabilities>=9 else 44 if capabilities==8 else 43 if rules>=7 else 42 if rules>=6 else 36 if rules>=5 else 35),'Unknown command opcode')
         allowed_flags=({12:15,10:15,17:3,16:1,19:1,32:1,33:7,35:1}if rules>=7 else{10:15,17:3,16:1,19:1,32:1,33:7,35:1}if rules>=5 else{16:1,19:1,32:1,33:1}).get(op,0)
         if capabilities>=9 and op==13:allowed_flags=1
         if capabilities>=11 and op==36:allowed_flags=1
@@ -356,6 +356,9 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
             leader=string(c['target_index'],'BranchLeader.identity',False)
             check(re.fullmatch(r'[a-z][a-z0-9_]{0,63}',leader)is not None,'Invalid stable leader identity')
         elif op==44:ref(c['target_index'],'ActorProfile','Command.visual_profile')
+        elif op==49:
+            path=string(c['target_index'],'Command.object_path',False)
+            check(len(path)<=512 and all(32<=ord(ch)<127 and ch not in ':\\'for ch in path)and '..'not in path and all(part not in('','.','..')for part in path.split('/')),'Invalid story object path')
         elif op in(45,48):
             check(re.fullmatch(r'[a-zA-Z][a-zA-Z0-9_]{0,63}',string(c['target_index'],'Command.skill',False))is not None,'Invalid skill identity')
         elif op==46:
@@ -425,6 +428,7 @@ def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None)
     check(all(n==1 for n in coverage),'Command sections contain overlap or unreferenced commands')
     check(capabilities!=12 or any(c['opcode']==6 and sections['Binding'][c['target_index']]['kind']==10 for c in sections['Command']),'Capability 12 requires a deferred prop grow call')
     check(capabilities!=11 or confirmed_loops>0,'Capability 11 requires a confirmed dialogue loop')
+    check(capabilities!=14 or any(c['opcode']==49 for c in sections['Command']),'Capability 14 requires a typed object deletion')
     check(capabilities!=13 or any(c['opcode']==48 for c in sections['Command']),'Capability 13 requires a typed key item grant')
     params={r['key']:r for r in sections['Rule']}
     check(len(params)==len(sections['Rule'])and set(params)=={k for k in RULE_TYPES if k<=27 if rules>=7 or k<=25},'Missing/duplicate/unknown rule parameter')
@@ -459,7 +463,7 @@ def validate_ir(ir):
     fields(ir,ROOT_FIELDS,'root')
     check(ir['schema']==1 and type(ir['schema'])is int,'Unsupported IR schema')
     check(type(ir['family'])is int and ir['family']==FAMILY,'Unsupported family')
-    check(type(ir['rules'])is int and ir['rules']in(4,5,6,7)and type(ir['capabilities'])is int and (ir['capabilities']==ir['rules'] or (ir['rules']==7 and ir['capabilities']in(8,9,10,11,12,13))),'Unsupported rules/capabilities')
+    check(type(ir['rules'])is int and ir['rules']in(4,5,6,7)and type(ir['capabilities'])is int and (ir['capabilities']==ir['rules'] or (ir['rules']==7 and ir['capabilities']in(8,9,10,11,12,13,14))),'Unsupported rules/capabilities')
     integer(ir['scene_id'],1,NONE,'scene_id');integer(ir['exporter_version'],1,NONE,'exporter_version');integer(ir['adapter_revision'],1,NONE,'adapter_revision')
     digest_hex(ir['upstream_commit'],40,'upstream_commit')
     check(type(ir['provenance'])is dict and type(ir['provenance'].get('sources'))is dict and ir['provenance']['sources'],'Missing provenance sources')
@@ -529,7 +533,7 @@ def parse_pack(data):
     magic,major,minor,header_bytes,file_bytes,endian,target,family,rules,caps,scene_id,directory_offset,directory_count,entry_bytes,checksum,commit,input_sha,exporter_version,adapter_revision,flags,reserved=h
     check(magic==MAGIC and (major,minor)==(1,0),'Unsupported magic/format')
     check(header_bytes==HEADER_BYTES and file_bytes==len(data)and endian==0x01020304,'Header length/endian mismatch')
-    check((target,family)==(TARGET,FAMILY)and rules in(4,5,6,7)and (caps==rules or (rules==7 and caps in(8,9,10,11,12,13))),'Unsupported target/family/rules/capabilities')
+    check((target,family)==(TARGET,FAMILY)and rules in(4,5,6,7)and (caps==rules or (rules==7 and caps in(8,9,10,11,12,13,14))),'Unsupported target/family/rules/capabilities')
     check(any(commit)and any(input_sha),'Missing source fingerprint')
     check(scene_id>0 and exporter_version>0 and adapter_revision>0 and flags==0 and reserved==bytes(8),'Invalid header fields')
     check(directory_offset==HEADER_BYTES and directory_count==len(SCHEMAS)and entry_bytes==DIRECTORY_BYTES,'Invalid section directory')

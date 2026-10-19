@@ -1,0 +1,7 @@
+runtime/field_objects.cpp
+runtime/room_data.cpp
+runtime/room_data.cpp: In static member function ‘static bool encore::upstream::RoomData::validate(const uint8_t*, size_t, std::string&)’:
+runtime/room_data.cpp:657:37: error: suggest parentheses around ‘&&’ within ‘||’ [-Werror=parentheses]
+  657 |             if((operation.opcode>=36&&operation.opcode<=41||operation.opcode==43)&&pending_timer)return fail("Room: branch/submenu with active timer");
+      |                 ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+cc1plus: all warnings being treated as errors

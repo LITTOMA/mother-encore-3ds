@@ -1,0 +1,96 @@
+{
+  "session": {
+    "dependencies": {
+      "before": {
+        "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
+        "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
+        "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
+        "content/native-items.json": "e3e432d9292f1b74f565a7aca71f41a15cd7397ccd9323700e6a919aa5219986",
+        "content/native-round.json": "ab87e11454c423b38d251c8ab005935415daebfe22ef7ed441c09ed3e32228ea",
+        "content/doll-round.json": "f9332a1936a50ab813dc403ecae6834d569a7dd36f774c5c29112bfd6eb7e4f0",
+        "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
+        "content/house-presents.json": "332d984bc2332f2b43fa49d814a38a0c84ee4ed79a02eb46f80c4da38452831a",
+        "content/mick-treats.json": "ddd908fbfd963a18cfb27978288bd7579e5cd9c8f2c34e7fa23722416bfc2931",
+        "content/graveyard-swing-programme.json": "897edba9abeb6fc7a63cc2e88d7616b63bc1b65b5dd9434904ecc09b6e78d0be",
+        "content/graveyard-tutorial.json": "89323a1283ca996b6476e3f40c76652ad4909d5d85553aed32a42aac14c777ff",
+        "tools/graveyard_tutorial.py": "63fd9db03a6c3ecb7188dddeff39b6acaf49aca3cbd4c4161fbaf71ea5b7335a",
+        "tools/graveyard_tutorial_programme.py": "8b076fa53722e00c7899665d92f62ebd8fc3b6eeadfa80b9649a338d5e938b86",
+        "content/native-storage.json": "15c7144c455736ed3aebc6c96c16f9959a3362f93aec26e688236cc88548ab88",
+        "content/field-rewards.json": "ae5f4844457bff31732cebd05aa0c03a4cb35ef9bc7f09e4d577898c580754c3",
+        "content/diary-story.json": "b9e93337b086ad2b951a8a6861d8020a70bd848b7ebd415d140b98d07b317409",
+        "content/mayor-area.json": "21bd23e8ff3c2523459376449f57cea29ef4266bb271adfbacbca36a9c6e556f",
+        "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
+        "tools/field_area.py": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
+        "content/podunk-story.json": "704f40ca82a63d4f1fa1f96d34bfcd72e9830c305922a2db1cde9f18a7cc2e25",
+        "content/podunk-field.json": "e4f414f58e9e04ac87f5fbb6fec4e8925ed90155b6df1baa0c258fa11ebe6d4c",
+        "romfs/world/podunk/podunk.encroom": "0d3f812e47214fbefe75818f25a96eb18fd48a150f3d6bff451c8f951c5a5ab2",
+        "content/mayor-footsteps.json": "4da1ef634d7519c24c6e59f393340987e26ceedf4e66d71de2d1ba690728749f",
+        "tools/field_footsteps.py": "4a2b83ef60c18a922de873a0654715142409fed547b74dac0713e626d655d74f"
+      },
+      "after": {
+        "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
+        "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
+        "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
+        "content/native-items.json": "e3e432d9292f1b74f565a7aca71f41a15cd7397ccd9323700e6a919aa5219986",
+        "content/native-round.json": "ab87e11454c423b38d251c8ab005935415daebfe22ef7ed441c09ed3e32228ea",
+        "content/doll-round.json": "f9332a1936a50ab813dc403ecae6834d569a7dd36f774c5c29112bfd6eb7e4f0",
+        "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
+        "content/house-presents.json": "332d984bc2332f2b43fa49d814a38a0c84ee4ed79a02eb46f80c4da38452831a",
+        "content/mick-treats.json": "ddd908fbfd963a18cfb27978288bd7579e5cd9c8f2c34e7fa23722416bfc2931",
+        "content/graveyard-swing-programme.json": "897edba9abeb6fc7a63cc2e88d7616b63bc1b65b5dd9434904ecc09b6e78d0be",
+        "content/graveyard-tutorial.json": "89323a1283ca996b6476e3f40c76652ad4909d5d85553aed32a42aac14c777ff",
+        "tools/graveyard_tutorial.py": "63fd9db03a6c3ecb7188dddeff39b6acaf49aca3cbd4c4161fbaf71ea5b7335a",
+        "tools/graveyard_tutorial_programme.py": "8b076fa53722e00c7899665d92f62ebd8fc3b6eeadfa80b9649a338d5e938b86",
+        "content/native-storage.json": "15c7144c455736ed3aebc6c96c16f9959a3362f93aec26e688236cc88548ab88",
+        "content/field-rewards.json": "ae5f4844457bff31732cebd05aa0c03a4cb35ef9bc7f09e4d577898c580754c3",
+        "content/diary-story.json": "b9e93337b086ad2b951a8a6861d8020a70bd848b7ebd415d140b98d07b317409",
+        "content/mayor-area.json": "21bd23e8ff3c2523459376449f57cea29ef4266bb271adfbacbca36a9c6e556f",
+        "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
+        "tools/field_area.py": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
+        "content/podunk-story.json": "704f40ca82a63d4f1fa1f96d34bfcd72e9830c305922a2db1cde9f18a7cc2e25",
+        "content/podunk-field.json": "e4f414f58e9e04ac87f5fbb6fec4e8925ed90155b6df1baa0c258fa11ebe6d4c",
+        "romfs/world/podunk/podunk.encroom": "11e47c7f25a6f7935b6944578edda3caf42618a1a4d545494ec614c87a97c807",
+        "content/mayor-footsteps.json": "4da1ef634d7519c24c6e59f393340987e26ceedf4e66d71de2d1ba690728749f",
+        "tools/field_footsteps.py": "4a2b83ef60c18a922de873a0654715142409fed547b74dac0713e626d655d74f"
+      }
+    }
+  },
+  "restore": {
+    "fingerprints": {
+      "before": {
+        "room": {
+          "bytes": 69096,
+          "sha256": "9d5449eed04015950ed8061b7a98a9853782cf76c1a63df2ca8a7f94dd6d5d13"
+        },
+        "house": {
+          "bytes": 24400,
+          "sha256": "1bbd3ba9148fd37395d69947aee47b105c4c8df9c09bffd13e5fd5ba3bc0ba3f"
+        }
+      },
+      "after": {
+        "room": {
+          "bytes": 69096,
+          "sha256": "f060f4a4c2d5cef44b06285ff52a566f2999e753a882dcac8e03366c48d28e52"
+        },
+        "house": {
+          "bytes": 24400,
+          "sha256": "1bbd3ba9148fd37395d69947aee47b105c4c8df9c09bffd13e5fd5ba3bc0ba3f"
+        }
+      }
+    },
+    "dependencies": {
+      "before": {
+        "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
+        "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
+        "romfs/world/house/opening.encroom": "9d5449eed04015950ed8061b7a98a9853782cf76c1a63df2ca8a7f94dd6d5d13",
+        "romfs/world/house/opening.enchouse": "1bbd3ba9148fd37395d69947aee47b105c4c8df9c09bffd13e5fd5ba3bc0ba3f"
+      },
+      "after": {
+        "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
+        "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
+        "romfs/world/house/opening.encroom": "f060f4a4c2d5cef44b06285ff52a566f2999e753a882dcac8e03366c48d28e52",
+        "romfs/world/house/opening.enchouse": "1bbd3ba9148fd37395d69947aee47b105c4c8df9c09bffd13e5fd5ba3bc0ba3f"
+      }
+    }
+  }
+}

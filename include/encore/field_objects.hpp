@@ -2,6 +2,7 @@
 #include "encore/movement.hpp"
 #include "encore/room_data.hpp"
 #include "encore/source_random.hpp"
+#include "encore/story_object_host.hpp"
 #include <array>
 #include <cstddef>
 #include <cstdint>
@@ -42,13 +43,14 @@ struct FieldObjectState {
 // Source-owned DroppedItem ready/idle/delete subset. Preparation draws no RNG;
 // the caller dispatches ready in the original scene-tree order, interleaved
 // with other owners. Collection/tweening is a separate, unadmitted operation.
-class FieldObjects {
+class FieldObjects final:public StoryObjectHost {
 public:
  bool prepare(const FieldObjectsData&,RoomView,std::string&);
  bool enter_ready(uint32_t id,bool ready_flag,SourceRandom&,std::string&);
  bool idle_frame(std::string&);bool advance_idle(double,std::string&);
- bool can_queue_free(std::string_view,std::string&)const;
- bool queue_free(std::string_view,std::string&);bool flush_queued(std::string&);
+ bool validate_story_object(uint32_t,std::string_view,std::string&)const override;
+ bool can_queue_free(std::string_view,std::string&)const override;
+ bool queue_free(std::string_view,std::string&)override;bool flush_queued(std::string&);
  bool prepared()const{return data_.valid();}
  const FieldObjectsData&data()const{return data_;}
  const std::vector<FieldObjectState>&states()const{return states_;}

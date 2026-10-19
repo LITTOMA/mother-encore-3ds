@@ -1,0 +1,38 @@
+[
+  {
+    "step": "field-room",
+    "returncode": 0,
+    "seconds": 10.690396070480347,
+    "log": "build\\full-port\\story-object-rebind-field-room.log"
+  },
+  {
+    "step": "session-extract",
+    "returncode": 0,
+    "seconds": 5.96455454826355,
+    "log": "build\\full-port\\story-object-rebind-session-extract.log"
+  },
+  {
+    "step": "session-compile",
+    "returncode": 0,
+    "seconds": 5.830935478210449,
+    "log": "build\\full-port\\story-object-rebind-session-compile.log"
+  },
+  {
+    "step": "restore-extract",
+    "returncode": 0,
+    "seconds": 0.34494900703430176,
+    "log": "build\\full-port\\story-object-rebind-restore-extract.log"
+  },
+  {
+    "step": "restore-compile",
+    "returncode": 0,
+    "seconds": 0.33645176887512207,
+    "log": "build\\full-port\\story-object-rebind-restore-compile.log"
+  },
+  {
+    "step": "new-game",
+    "returncode": 0,
+    "seconds": 7.466531038284302,
+    "log": "build\\full-port\\story-object-rebind-new-game.log"
+  }
+]

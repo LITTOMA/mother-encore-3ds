@@ -30,6 +30,11 @@ bool OpeningWorld::bind_story_key_items(StoryKeyItemHost&host,std::string&error)
     for(uint32_t i=0;i<content_.command_count();++i){const auto c=content_.command(i);if(c.opcode==uint16_t(DialogueActionKind::GrantKeyItem)&&!host.validate_key_item(content_.string(c.target_index),uint32_t(c.value),error))return false;}
     story_key_items_=&host;error.clear();return true;
 }
+bool OpeningWorld::bind_story_objects(StoryObjectHost&host,std::string&error){
+    if(!healthy_||story_objects_){error="Story objects need one initialized scene owner";return false;}
+    for(uint32_t i=0;i<content_.command_count();++i){const auto c=content_.command(i);if(c.opcode==uint16_t(DialogueActionKind::QueueFreeStoryObject)&&!host.validate_story_object(content_.scene().stable_id,content_.string(c.target_index),error))return false;}
+    story_objects_=&host;error.clear();return true;
+}
 bool OpeningWorld::bind_story_props(StoryPropHost&host,std::string&error){
     if(!healthy_||story_props_){error="Story props need one initialized scene owner";return false;}
     for(uint32_t i=0;i<content_.binding_count();++i){const auto b=content_.binding(i);if(b.kind==uint16_t(RoomBindingKind::FieldPropGrow)&&!host.validate_grow(b.target_index,error))return false;}
@@ -39,6 +44,7 @@ bool OpeningWorld::validate_story_props(uint32_t programme,std::string&error)con
     if(!healthy_||programme>=content_.program_count()){error="Story programme unavailable";return false;}
     const auto p=content_.program(programme);
     for(uint32_t i=0;i<p.command_count;++i){const auto c=content_.command(p.first_command+i);
+        if(c.opcode==uint16_t(DialogueActionKind::QueueFreeStoryObject)){if(!story_objects_){error="Story object owner is unbound";return false;}const auto path=content_.string(c.target_index);if(!story_objects_->validate_story_object(content_.scene().stable_id,path,error)||!story_objects_->can_queue_free(path,error))return false;}
         if(c.opcode==uint16_t(DialogueActionKind::GrantKeyItem)){if(!story_key_items_){error="Story key item owner is unbound";return false;}if(!story_key_items_->validate_key_item(content_.string(c.target_index),uint32_t(c.value),error))return false;}
         if(c.opcode!=uint16_t(DialogueActionKind::CallObjectDeferred))continue;
         const auto b=content_.binding(c.target_index);if(b.kind!=uint16_t(RoomBindingKind::FieldPropGrow))continue;
@@ -70,7 +76,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     if(player_read_only_){error_="Retained player cannot be reset by New Game or LOAD initialization";return false;}
     healthy_=initialized_=false;error_="Invalid scene content";
     if(!content.valid())return false;
-    content_=content;story_key_items_=nullptr;story_props_=nullptr;story_skills_=nullptr;walk_audio_=nullptr;overlay_={};overlay_clip_=kRoomNoIndex;overlay_time_=0;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};story_talking_=false;effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
+    content_=content;story_objects_=nullptr;story_key_items_=nullptr;story_props_=nullptr;story_skills_=nullptr;walk_audio_=nullptr;overlay_={};overlay_clip_=kRoomNoIndex;overlay_time_=0;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};story_talking_=false;effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
     const auto scene=content.scene();
     if(!flags_.initialize(content))return false;
     if(story_flags){for(uint32_t i=0;i<story_flags->size();++i)if(!flags_.set_story_flag(i,(*story_flags)[i],false).applied)return false;}
@@ -655,6 +661,7 @@ bool OpeningWorld::apply(const DialogueAction& a) {
     case K::OpenSave:if(save_requested_||storage_requested_)return false;save_requested_=true;return true;
     case K::OpenStorage:if(save_requested_||storage_requested_)return false;storage_requested_=true;return true;
     case K::GrantKeyItem:{std::string why;return story_key_items_&&story_key_items_->validate_key_item(content_.string(a.target_index),uint32_t(a.value),why)&&story_key_items_->grant_key_item(content_.string(a.target_index),uint32_t(a.value),why);}
+    case K::QueueFreeStoryObject:{std::string why;const auto path=content_.string(a.target_index);return story_objects_&&story_objects_->validate_story_object(content_.scene().stable_id,path,why)&&story_objects_->can_queue_free(path,why)&&story_objects_->queue_free(path,why);}
     case K::SetFlag:return write_story_flag(a.target_index,a.value!=0);
     case K::ShowDialogue:
         if(pending_dialogue_id_!=kRoomNoIndex||(!(a.flags&1)&&!actor))return false;

@@ -1,0 +1,10 @@
+{
+  "scope": "Original getshovel flag/delete ordering fixture, NOT a playable programme.\n\nThe source sets got_shovel at0 and queues Objects/Items/Item at3. Only those\nmapped side effects are compiled here; no dialogue, actor route or grant is\ninferred. Shipped resources are unchanged.\n",
+  "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_getshovel.yaml",
+  "source_sha256": "35ed293f9b656f26c1011542849ca23b7ee0b0e7e09a5ba6bd1d403a054c0633",
+  "flag_label": "0",
+  "delete_label": "3",
+  "path": "Objects/Items/Item",
+  "programme": 7,
+  "base_sha256": "0d3f812e47214fbefe75818f25a96eb18fd48a150f3d6bff451c8f951c5a5ab2"
+}

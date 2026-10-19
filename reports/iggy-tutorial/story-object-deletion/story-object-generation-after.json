@@ -1,0 +1,53 @@
+{
+  "base": "a92547c4aa6355a224fa1c76823ca5c5daea80c2",
+  "scope": "Room schemas/strings/gameplay exactly unchanged after removing build input identity only. Session changes only dependencies; Restore only dependencies/fingerprints; new-game original reuse-session proves exact UI/game binary and textures. Map/Props/player/graphics/Session resource/defaults remain byte-identical. No formal programme49 or new object resource published.",
+  "changed": {
+    "content/asset-receipts/graphics/world/mayor/scene.json": {
+      "before": "db8e119701c0a37b96984f7e17ee14a466bee323fa17ca520596f1153bf4cb47",
+      "after": "de60c588e68249edb1bfc8b40b49bfdf5b99ecba26136a345e4029e95fa90c3a"
+    },
+    "content/asset-receipts/graphics/world/podunk/source.json": {
+      "before": "886f4cea858035d67ed6d04ad52b0dc3e475791d77b03ee7def0722fd9315db6",
+      "after": "4682dbc2eeb97e7bb06c406c44f00bd44587aecc2f9ba5e1300b242deb1a1f0c"
+    },
+    "content/native-new-game.json": {
+      "before": "3335e58d331fc0a90b7eb2d07bdb47f09fa006942170961b5d9ddf960b257931",
+      "after": "40cba758bc42b98ef715dab6c4d6e7a48aae981675cd1604bfdbd596a5522901"
+    },
+    "content/native-restore.json": {
+      "before": "289681a26c30d813495d99f5498d8585811dc44c98a02b7bf98a44c31bf437b3",
+      "after": "ec5deb97cc268234ea182e68d7b77e2fc12b5062465e3a462af48c34c9229c3d"
+    },
+    "content/native-session.json": {
+      "before": "fb8bc6325e37d1df58b0c332d5613069515ba9f1ef18aa3c3e64f6b87c0f4439",
+      "after": "1bdc2e5ce2983e272cf42d32d070543a435550b32bbd3ebaa024b0c08c7734e6"
+    },
+    "romfs/session/opening.encrestore": {
+      "before": "f1d24fdcd915bc66afaa134b8ad699de5404cb69e06fb1e9f6c2b6c0ac49eb23",
+      "after": "788b2a949b858892b70f40b6c627a36a2b55233f4b9520b88cac05c9be1a31ca"
+    },
+    "romfs/system/native.encresources": {
+      "before": "947069f0ea44478ee583120f4268faba5b9a342cb8568caccc8c800894a11c02",
+      "after": "9bb0fb25bcab94c95f82498a9dc6162ef963237e897b5975bc0105f57d7d2f8b"
+    },
+    "romfs/world/house/opening.encroom": {
+      "before": "9d5449eed04015950ed8061b7a98a9853782cf76c1a63df2ca8a7f94dd6d5d13",
+      "after": "f060f4a4c2d5cef44b06285ff52a566f2999e753a882dcac8e03366c48d28e52"
+    },
+    "romfs/world/mayor/mayor.encroom": {
+      "before": "9c73c0ea4e3498a964a452b7a05a3f7659e335cb2b54f84c0c9a1f3acab66adb",
+      "after": "92c478c47c83ffacac94a5504154165c681161b4dfd51e319fe07578724c9419"
+    },
+    "romfs/world/podunk/podunk.encroom": {
+      "before": "0d3f812e47214fbefe75818f25a96eb18fd48a150f3d6bff451c8f951c5a5ab2",
+      "after": "11e47c7f25a6f7935b6944578edda3caf42618a1a4d545494ec614c87a97c807"
+    }
+  },
+  "room_tables_exact": [
+    "romfs/world/house/opening.encroom",
+    "romfs/world/mayor/mayor.encroom",
+    "romfs/world/podunk/podunk.encroom"
+  ],
+  "unchanged_count": 445,
+  "tracked_count": 455
+}

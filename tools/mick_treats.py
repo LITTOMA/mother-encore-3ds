@@ -421,59 +421,9 @@ def build(root=ROOT):
     adopt('Data/Dialogue/Reusable/noproblem.yaml','','NoProblem')
     order = instantiate(load, SCENE)
     nodes = {n.path: n for n in order}
-    children = {n.path: [] for n in order}
-    for node in order:
-        parent = parent_path(node.path)
-        if parent is not None:
-            children[parent].append(node.path)
-    rand_pat = re.compile(r'\b(?:randi|randf|rand_range|randomize|seed)\s*\(')
-    func_pat = re.compile(r'^func ([A-Za-z0-9_]+)\(.*?(?=^func |\Z)', re.S | re.M)
-    draws = {}
-    for node in order:
-        script = node.script or ''
-        if script in draws or not script.endswith('.gd'):
-            continue
-        text = ex.text(script)
-        funcs = {match.group(1): match.group(0) for match in func_pat.finditer(text)}
-        ready = funcs.get('_ready', '')
-        called = re.findall(r'\b([A-Za-z_][A-Za-z0-9_]*)\(', ready)
-        draws[script] = bool(rand_pat.search(ready)) or any(rand_pat.search(funcs.get(name, '')) for name in called)
-    require({script for script, hit in draws.items() if hit} == READY_SCRIPTS, 'Unreviewed field _ready RNG')
-    from tools.podunk_field import SourceRandom, godot_string_hash
-
-    class FieldRandom(SourceRandom):
-        def randf(self):
-            self.randi()
-
-        def rand_range(self, _start, _end):
-            if self.randi() != 0:
-                self.randi()
-                self.randi()
-
-    rng = FieldRandom(0)
-
-    def replay(path):
-        script = nodes[path].script
-        if script == 'Scripts/misc/grass spawner.gd':
-            rng.seed(godot_string_hash(nodes[path].name))
-            rng.randi()
-            rng.randi()
-        elif script == 'Scripts/misc/birds.gd':
-            rng.randi()
-            rng.randf()
-            rng.randi()
-            rng.randi()
-        elif script == 'Scripts/misc/butterfly.gd':
-            rng.randi()
-        elif script == 'Scripts/misc/sparkles.gd':
-            rng.rand_range(0, 47)
-
-    def ready(path):
-        for child in children[path]:
-            ready(child)
-        replay(path)
-    ready('.')
-    state = rng.state
+    from tools.field_ready_rng import replay as replay_ready
+    _, ready_result = replay_ready(ex, order, READY_SCRIPTS)
+    state = ready_result['state']
     events = []
     for node in order:
         if node.script == 'Scripts/misc/butterfly.gd':

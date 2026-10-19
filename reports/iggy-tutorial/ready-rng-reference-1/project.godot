@@ -1,0 +1,3 @@
+config_version=4
+[logging]
+file_logging/enable_logging=false

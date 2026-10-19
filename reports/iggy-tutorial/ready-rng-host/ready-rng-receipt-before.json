@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "recipe": {
+    "schema": 1,
+    "kind": "encore.mick-treats.asset-recipe",
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "licence_review": "Pinned upstream LICENSE permits game-related forks/modifications; original Mick art is used by this Mother: Encore port under upstream terms, not relicensed as MIT.",
+    "sources": {
+      "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9"
+    },
+    "resources": {
+      "mick": {
+        "source": "Graphics/Character Sprites/Npcs/4dir/mick.png",
+        "size": [
+          75,
+          84
+        ],
+        "grid": [
+          5,
+          4
+        ],
+        "output": "graphics/world/mick/mick.t3x",
+        "format": "rgba8",
+        "compression": "none"
+      }
+    }
+  },
+  "ir_sha256": "ddd908fbfd963a18cfb27978288bd7579e5cd9c8f2c34e7fa23722416bfc2931",
+  "producer_sha256": "20aea7153ae3ec73ec8eeb7bc26882e512107bcd3bc4968abff95b3fb13b9787",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "outputs": {
+    "graphics/world/mick/mick.t3x": {
+      "bytes": 65557,
+      "sha256": "2d5d95295627ff56c17d0a72f64c5b6e6293ececce79138e4298cc062d859247"
+    }
+  },
+  "limits": "Pinned original lossless Mick sheet converted by real tex3ds; no hardware claim"
+}

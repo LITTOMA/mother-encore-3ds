@@ -1,0 +1,10 @@
+from pathlib import Path
+import hashlib,json,subprocess,sys
+r=Path(__file__).resolve().parents[2];sys.path.insert(0,str(r));from tools import mick_treats as m
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();before=json.loads((r/'build/full-port/ready-rng-before.json').read_bytes());path=r/m.RECEIPT;receipt=json.loads(path.read_bytes());assert receipt['producer_sha256']==before['producer_sha256'];assert receipt['recipe']==m.recipe(before['ir']);assert receipt['ir_sha256']==sha(r/m.IR)
+texture=r/'romfs'/m.OUTPUT;old_texture=sha(texture);assert receipt['outputs'][m.OUTPUT]==dict(bytes=texture.stat().st_size,sha256=old_texture)
+backup=r/'build/full-port/ready-rng-receipt-before.json';assert not backup.exists();backup.write_bytes(path.read_bytes());old_pack=sha(r/'romfs'/m.PACK)
+with(r/'build/full-port/ready-rng-mick-compile.log').open('wb')as f:subprocess.run([sys.executable,'tools/mick_treats.py','compile'],cwd=r,stdout=f,stderr=subprocess.STDOUT,check=True)
+after=json.loads(path.read_bytes());changed={k for k in receipt if receipt[k]!=after[k]};assert changed=={'producer_sha256'},changed;assert old_texture==sha(texture)and old_pack==sha(r/'romfs'/m.PACK);assert after['producer_sha256']==sha(r/'tools/mick_treats.py')
+with(r/'build/full-port/ready-rng-mick-verify-2.log').open('wb')as f:subprocess.run([sys.executable,'tools/mick_treats.py','verify'],cwd=r,stdout=f,stderr=subprocess.STDOUT,check=True)
+(r/'build/full-port/ready-rng-receipt-update-proof.json').write_text(json.dumps(dict(scope='Original generator updated one known generated receipt producer SHA only. Preexisting untracked dirs/textures not staged/deleted; original receipt bytes retained; actual texture, IR and pack exact.',receipt=m.RECEIPT,changed=sorted(changed),before_producer_sha256=receipt['producer_sha256'],after_producer_sha256=after['producer_sha256'],texture_sha256=old_texture,pack_sha256=old_pack),indent=2)+'\n',encoding='utf8');print('Actual originalMickcompile+verify succeeded; only knownreceiptproducer updated, texture/IR/pack EXACT unchanged; no preexisting dir staged/deleted')

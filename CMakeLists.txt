@@ -8,7 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
-    runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
+    runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
     runtime/house_inspection_data.cpp
@@ -1001,6 +1001,16 @@ if(BUILD_TESTING)
     target_link_libraries(encore_field_area_contacts_tests PRIVATE encore_core)
     add_test(NAME field_area_contacts COMMAND encore_field_area_contacts_tests ${CMAKE_SOURCE_DIR}/romfs/world/player/swing.encswing ${CMAKE_SOURCE_DIR}/reports/iggy-tutorial/area-timing-reference-3/reference.tsv)
     set_tests_properties(field_area_contacts PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
+    add_executable(encore_field_objects_data_tests tests/field_objects_data_tests.cpp)
+    target_link_libraries(encore_field_objects_data_tests PRIVATE encore_core)
+    add_test(NAME prepare_field_objects_data COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_field_objects.py --out ${CMAKE_BINARY_DIR}/field-objects-data)
+    set_tests_properties(prepare_field_objects_data PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} FIXTURES_SETUP field_objects_data_fixture TIMEOUT 60)
+    add_test(NAME field_objects_data COMMAND encore_field_objects_data_tests ${CMAKE_BINARY_DIR}/field-objects-data/source.encobjects ${CMAKE_SOURCE_DIR}/romfs/world/podunk/podunk.encroom)
+    set_tests_properties(field_objects_data PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} FIXTURES_REQUIRED field_objects_data_fixture TIMEOUT 60)
+    add_executable(encore_field_objects_tests tests/field_objects_tests.cpp)
+    target_link_libraries(encore_field_objects_tests PRIVATE encore_core)
+    add_test(NAME field_objects COMMAND encore_field_objects_tests ${CMAKE_BINARY_DIR}/field-objects-data/source.encobjects ${CMAKE_SOURCE_DIR}/romfs/world/podunk/podunk.encroom ${CMAKE_SOURCE_DIR}/reports/iggy-tutorial/field-objects-reference-1/reference.tsv)
+    set_tests_properties(field_objects PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} FIXTURES_REQUIRED field_objects_data_fixture TIMEOUT 60)
     add_test(NAME prepare_swing_resources COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_swing_resources.py --out ${CMAKE_BINARY_DIR}/swing-resources-fixture)
     set_tests_properties(prepare_swing_resources PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} FIXTURES_SETUP swing_resource_metadata TIMEOUT 60)
     add_executable(encore_field_swing_resources_tests tests/field_swing_resources_tests.cpp)

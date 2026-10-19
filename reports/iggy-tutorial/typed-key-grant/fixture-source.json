@@ -1,0 +1,15 @@
+{
+  "scope": "Typed key-grant execution fixture, NOT a playable Iggy programme.\n\nUses the exact source grant and its later completion flag. The published field\npacket remains the immutable fixture base; a separate compiler owns the new\ncandidate. No pack or manifest is modified by hand.\n",
+  "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+  "source_sha256": "58f8f43036dbd833c92beb6e588881efeda5bce71c842907ad58612a781720ea",
+  "grant": {
+    "label": "22",
+    "item": "BatOld",
+    "doses": 1,
+    "completion_label": "29",
+    "completion_flag": "bat"
+  },
+  "programme": 6,
+  "flag_index": 9,
+  "base_sha256": "18c7b884b0fc28f04685a8ee2eedb066d1cd03064ac13b1261f107f76e90451c"
+}

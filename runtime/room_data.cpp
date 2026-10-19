@@ -354,7 +354,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
     if(!bytes||size<kRoomHeaderBytes+kRoomSectionCount*kRoomDirectoryEntryBytes||size>kMaxRoomBytes) return fail("Room: invalid file size");
     if(std::memcmp(bytes,"ENCRMD01",8)!=0) return fail("Room: invalid magic");
     if(u16(bytes+8)!=1||u16(bytes+10)!=0||u32(bytes+12)!=kRoomHeaderBytes||u32(bytes+16)!=size||u32(bytes+20)!=0x01020304u) return fail("Room: unsupported format/header/endianness");
-    if(u32(bytes+24)!=1||u32(bytes+28)!=0x454e0002u||(u32(bytes+32)!=4&&u32(bytes+32)!=5&&u32(bytes+32)!=6&&u32(bytes+32)!=7)||(u32(bytes+36)!=u32(bytes+32)&&!(u32(bytes+32)==7&&(u32(bytes+36)==8||u32(bytes+36)==9||u32(bytes+36)==10||u32(bytes+36)==11||u32(bytes+36)==12)))) return fail("Room: incompatible target/content/rules/capabilities");
+    if(u32(bytes+24)!=1||u32(bytes+28)!=0x454e0002u||(u32(bytes+32)!=4&&u32(bytes+32)!=5&&u32(bytes+32)!=6&&u32(bytes+32)!=7)||(u32(bytes+36)!=u32(bytes+32)&&!(u32(bytes+32)==7&&(u32(bytes+36)==8||u32(bytes+36)==9||u32(bytes+36)==10||u32(bytes+36)==11||u32(bytes+36)==12||u32(bytes+36)==13)))) return fail("Room: incompatible target/content/rules/capabilities");
     if(!u32(bytes+40)||u32(bytes+44)!=kRoomHeaderBytes||u16(bytes+48)!=kRoomSectionCount||u16(bytes+50)!=kRoomDirectoryEntryBytes) return fail("Room: invalid scene identity/directory");
     if(!u32(bytes+108)||!u32(bytes+112)||u32(bytes+116)||!zero(bytes+120,8)||zero(bytes+56,20)||zero(bytes+76,32)) return fail("Room: invalid provenance/header reserved fields");
     if(room_crc(bytes,size)!=u32(bytes+52)) return fail("Room: CRC mismatch");
@@ -514,6 +514,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         else if(r.kind==uint16_t(RoomBindingKind::FieldPropGrow)){if(u32(bytes+36)<12||!r.target_index||r.target_index>65535||r.value||r.duration)return fail("Room: invalid field prop grow binding");}
         else return fail("Room: unsupported binding kind");
     }
+    if(u32(bytes+36)==13){bool used=false;for(uint32_t i=0;i<v.command_count();++i)used|=v.command(i).opcode==48;if(!used)return fail("Room: capability 13 requires a typed key item grant");}
     if(u32(bytes+36)==12){bool used=false;for(uint32_t i=0;i<v.command_count();++i){const auto c=v.command(i);used|=c.opcode==6&&c.target_index<v.binding_count()&&v.binding(c.target_index).kind==uint16_t(RoomBindingKind::FieldPropGrow);}if(!used)return fail("Room: capability 12 requires a deferred prop grow call");}
     for(uint32_t i=0;i<v.battle_count();++i) {
         const auto r=v.battle(i);
@@ -564,7 +565,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         const auto c=v.command(i);const auto* p=v.record(RoomSection::Command,i);
         const bool extended=u32(bytes+32)>=5,branched=u32(bytes+32)>=6;
         const uint32_t allowed_flags=(u32(bytes+36)>=11&&c.opcode==36)?1u:(u32(bytes+36)>=9&&c.opcode==13)?1u:(u32(bytes+32)>=7&&c.opcode==12)?15u:extended?(c.opcode==10?15u:c.opcode==17?3u:c.opcode==33?7u:(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==35)?1u:0u):((c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==33)?1u:0u);
-        if(c.opcode>(u32(bytes+36)>=12?47:u32(bytes+36)>=9?46:u32(bytes+36)==8?43:u32(bytes+32)>=7?42:branched?41:extended?35:34)||(c.flags&~allowed_flags)||((c.opcode!=37&&c.opcode!=38&&!(u32(bytes+36)>=9&&c.opcode==13&&c.flags==1))&&c.auxiliary_index!=kRoomNoIndex)||u32(p+44)||!finite(c.vector)||!std::isfinite(c.value)||!std::isfinite(c.duration))return fail("Room: unknown opcode/invalid command fields");
+        if(c.opcode>(u32(bytes+36)>=13?48:u32(bytes+36)>=12?47:u32(bytes+36)>=9?46:u32(bytes+36)==8?43:u32(bytes+32)>=7?42:branched?41:extended?35:34)||(c.flags&~allowed_flags)||((c.opcode!=37&&c.opcode!=38&&!(u32(bytes+36)>=9&&c.opcode==13&&c.flags==1))&&c.auxiliary_index!=kRoomNoIndex)||u32(p+44)||!finite(c.vector)||!std::isfinite(c.value)||!std::isfinite(c.duration))return fail("Room: unknown opcode/invalid command fields");
         const bool inherited_actor=(c.flags&1)&&(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==42);
         const bool actor_used=!inherited_actor&&(c.opcode==1||c.opcode==2||(c.opcode>=9&&c.opcode<=14)||c.opcode==16||(c.opcode>=18&&c.opcode<=21)||c.opcode==24||(c.opcode>=27&&c.opcode<=29)||c.opcode==32||c.opcode==42||c.opcode==44||c.opcode==47);
         if(actor_used) { if(c.actor_index>=v.actor_instance_count())return fail("Room: invalid command actor reference"); }
@@ -610,7 +611,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
             case 36:if(c.target_index==kRoomNoIndex)return fail("Room: missing branch target");break;
             case 38:{if(!ref(c.target_index,v.string_count()))return fail("Room: missing leader identity");const auto id=v.string(c.target_index);if(id.empty()||id.size()>64||id[0]<'a'||id[0]>'z')return fail("Room: leader identity");for(char ch:id)if(!((ch>='a'&&ch<='z')||(ch>='0'&&ch<='9')||ch=='_'))return fail("Room: leader identity");break;}
             case 44:if(!ref(c.target_index,v.actor_profile_count()))return fail("Room: invalid visual profile");break;
-            case 45:{if(!ref(c.target_index,v.string_count()))return fail("Room: missing skill identity");const auto id=v.string(c.target_index);if(id.empty()||id.size()>64)return fail("Room: invalid skill identity");for(char ch:id)if(!((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z')||(ch>='0'&&ch<='9')||ch=='_'))return fail("Room: invalid skill identity");break;}
+            case 48:case 45:{if(!ref(c.target_index,v.string_count()))return fail("Room: missing skill identity");const auto id=v.string(c.target_index);if(id.empty()||id.size()>64)return fail("Room: invalid skill identity");if(c.opcode==48&&!((id[0]>='a'&&id[0]<='z')||(id[0]>='A'&&id[0]<='Z')))return fail("Room: invalid key item identity");for(char ch:id)if(!((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z')||(ch>='0'&&ch<='9')||ch=='_'))return fail("Room: invalid skill identity");break;}
             case 46:if(!ref(c.target_index,v.clip_count())||v.clip(c.target_index).channel!=2||v.clip(c.target_index).frame_count!=65535||v.clip(c.target_index).flags||v.clip(c.target_index).visibility)return fail("Room: invalid overlay clip");break;
             case 39:if(c.target_index>=32)return fail("Room: invalid choice group");break;
             case 32:if(!c.target_index||c.target_index==kRoomNoIndex)return fail("Room: invalid dialogue stable identity");break;
@@ -624,6 +625,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
             case 7:case 31:case 37:if(c.value!=0&&c.value!=1)return fail("Room: invalid command boolean");break;
             case 9:if(c.value<=0||c.value>10000)return fail("Room: invalid command move speed");break;
             case 12:if(c.value<0||c.value>1024)return fail("Room: invalid command jump height");break;
+            case 48:if(c.value!=1)return fail("Room: invalid source key item quantity");break;
             case 46:if(c.value<0||c.value>16777215||c.value!=std::floor(c.value))return fail("Room: invalid overlay color");break;
             case 15:if(c.value<0)return fail("Room: invalid command shake magnitude");break;
             default:if(c.value)return fail("Room: unused command value");break;

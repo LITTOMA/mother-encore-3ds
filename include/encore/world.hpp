@@ -31,6 +31,12 @@ public:
  virtual bool validate_skill(std::string_view,std::string&)=0;
  virtual bool learn_skill(std::string_view,std::string&)=0;
 };
+class StoryKeyItemHost {
+public:
+ virtual ~StoryKeyItemHost()=default;
+ virtual bool validate_key_item(std::string_view,uint32_t,std::string&)=0;
+ virtual bool grant_key_item(std::string_view,uint32_t,std::string&)=0;
+};
 class StoryPropHost {
 public:
  virtual ~StoryPropHost()=default;
@@ -96,6 +102,7 @@ public:
     std::vector<bool> take_story_hides(){auto result=std::move(story_hides_);story_hides_.clear();return result;}
     const std::vector<OpeningEffectRequest>& effect_requests()const{return effects_;}
     bool bind_story_skills(StorySkillHost&);
+    bool bind_story_key_items(StoryKeyItemHost&,std::string&);
     bool bind_story_props(StoryPropHost&,std::string&);
     bool validate_story_props(uint32_t programme,std::string&)const;
     bool story_skills_ready()const{return story_skills_!=nullptr;}
@@ -190,6 +197,7 @@ private:
     bool vibrate_room(uint32_t binding);
     uint32_t walk_clip(MotionAnimation animation,Vec2 direction) const;
     bool trigger_conditions(uint32_t index) const;
+    StoryKeyItemHost*story_key_items_=nullptr;
     StoryPropHost*story_props_=nullptr;
     StorySkillHost*story_skills_=nullptr;
     OpeningScreenOverlay overlay_{};uint32_t overlay_clip_=kRoomNoIndex;double overlay_time_=0;

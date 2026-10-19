@@ -682,7 +682,7 @@ upstream::FieldScene* mick_host_field(){return mick_bind_target?mick_bind_target
 upstream::SceneDoorTransition scene_door;
 uint64_t door_sound_requests=0;
 std::vector<bool>field_music_contacts;uint64_t field_music_epoch=0;
-class MickEffects final:public upstream::MickHost {
+class MickEffects final:public upstream::MickHost,public upstream::StoryKeyItemHost {
 public:
  bool validate_flag(std::string_view name,std::string&e)override{
   auto*scene=mick_host_field();if(!scene){e="Mick flag validation requires a field scene";return false;}
@@ -709,6 +709,7 @@ public:
   if(it==keys.end()){e.clear();return true;}
   keys.erase(it);e.clear();return true;
  }
+ bool validate_key_item(std::string_view name,uint32_t doses,std::string&e)override{return present_effects.validate_item({0,doses,1},name,e);}
  bool grant_key_item(std::string_view name,uint32_t doses,std::string&e)override{
   // Use the same checked key inventory and Item.new UID transaction as Presents.
   // Item identity and doses come from the admitted Mick programme/session policy.
@@ -1383,7 +1384,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     if(!loading.step([&]{return candidate->prepare(room,resources->map(),world_links,flags,route.destination,direction,{float(view_width),float(view_height)},error);},"field-scene"))return false;
     // Mick bind needs the prepared world for flag validation before graphics commit.
     mick_bind_target=candidate.get();
-    if(!loading.step([&]{return bind_field_mick(*candidate,*resources,error)&&bind_field_npcs(*candidate,*resources,error)&&(!resources->story().valid()||candidate->bind_story(resources->story(),items_data.view(),field_story_host,error))&&(!resources->steps().valid()||candidate->bind_steps(resources->steps(),audio_player.bank(),snapshot.run_sound,error))&&(!resources->props().valid()||candidate->bind_props(resources->props(),error));},"field-actors")){mick_bind_target=nullptr;return false;}
+    if(!loading.step([&]{return candidate->world.bind_story_key_items(mick_effects,error)&&bind_field_mick(*candidate,*resources,error)&&bind_field_npcs(*candidate,*resources,error)&&(!resources->story().valid()||candidate->bind_story(resources->story(),items_data.view(),field_story_host,error))&&(!resources->steps().valid()||candidate->bind_steps(resources->steps(),audio_player.bank(),snapshot.run_sound,error))&&(!resources->props().valid()||candidate->bind_props(resources->props(),error));},"field-actors")){mick_bind_target=nullptr;return false;}
     mick_bind_target=nullptr;
     if(!candidate->world.set_party_leader(native_session_data.leader_id())){error="Field party leader binding rejected";return false;}
     ScenePlayerTransfer player_transfer;

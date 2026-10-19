@@ -1,0 +1,32 @@
+{
+  "scope": "Explicit four-job collection; earlier method-partition.json is the retained default serial-mode collection. No full-CI runtime claim.",
+  "source_sha256": {
+    "tests/python_suite.py": "1b7c7699402c3c3cf7f24fef59b195c86ee0082c21fbe39cfbd0389d192e229d",
+    "tests/test_ci_test_parallelism.py": "cb41f15f961af8b81608a0d40bd65b477c8b4daa816d48a9d1bbdb9c7977cd26",
+    "docs/TESTING.md": "e310c6b992e32d331371f0c68ad8e74ded8fef0bec069470a2f2e0d8649ac4ed",
+    "tests/test_dad_record_dialogue.py": "1007498906c374f77dbc4b22b8ee9c698f2ebb2d87589be030b0482da7513404",
+    "tests/test_doll_postwin.py": "dcf4b7ce11a18a0bc2636bbfb0942b274cbcc8054a9671cc2479005a00cd80fb",
+    "tests/test_house_assets.py": "700fb102219350209786d0b4f678c8e464beac1e7be9ab3beb8e8da35c1cd140",
+    "tests/test_mayor_field.py": "fe8871e0c8ba70bada0093e8b95e536c190669adeb2d36e249dba8fb7d137b06",
+    "tests/test_mayor_scene.py": "7483bcd62fe27c16690e609a03383f133cd4dee75c53c86b0ec6d4ea64ec85b2",
+    "tests/test_melody_content.py": "e8b4d9a1f91aecc3d4805aa552e342198db1409cdb5918eec49bff59f6558823",
+    "tests/test_native_content.py": "0b349a7bb3e8f3f8dcf2022a5a9a5c24da1e55f9f8b575f021df3083aa7f53d8",
+    "tests/test_native_house.py": "971d25bce961cc1ecfc978e869fe5ebd9d9d9287cdaa165510bc9eb67e50cb30",
+    "tests/test_native_restore.py": "7dada04748578b8f80a5d93790931bc3e6df256e3e87abdcbd69a9794cf182c4",
+    "tests/test_native_round.py": "56df73db79ffc5991f93a793d09ea3bb24d7d6e00da85fb6a94c1c7766048623",
+    "tests/test_native_session.py": "f9f94365426cac746b1c3a123b7b95b0dfebe184f5ea84f8e7da4e821c3d457e",
+    "tests/test_new_game_assets.py": "9f59260b1d314c34486cd0d1e1dd5f0630e25bef87c070b06cb9ade25d03674b",
+    "tests/test_phone_dialogue.py": "90d66d50f2ab4a50766a579809c3e562534adb90bb3ea9c5f94927a7e7ceb2c3",
+    "tests/test_phone_linker.py": "263f103beda145b898e5f8c86bd5c323ce167c4fce74506d814357da26bb936d"
+  },
+  "methods": {
+    "discovered": 1130,
+    "aggregate": 766,
+    "dedicated": 364,
+    "parallel": 167,
+    "serial": 599,
+    "modules": 14
+  },
+  "partition_sha256": "7ed03a515e6f1aefacd29cc42ec59249c74b7d87bffa4635d6bae1e8730e2f3c",
+  "limits": "4 workers; unchanged 1800-second timeout; all unreviewed modules remain serial."
+}

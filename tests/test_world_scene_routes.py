@@ -18,8 +18,8 @@ class Routes(unittest.TestCase):
   self.assertTrue(all(r['music_fade']>0 for r in rows[:4]))
   scene,sections=f.unpack_container(self.blob,f.LINK_MAGIC,w.PROP_STRIDES,f.LINK_LIMIT,capability=4)
   self.assertEqual(scene,0);self.assertEqual(len(sections[1])//24,3);self.assertEqual(len(sections[2])//84,6)
-  self.assertEqual(len(sections[3])//36,2);self.assertEqual(len(sections[4])//4,8)
-  self.assertEqual(self.recipe['scenes'][1]['assets']['npcs'],[320,321,327]);self.assertEqual(struct.unpack('<2I',sections[5]),(2,1031))
+  self.assertEqual(len(sections[3])//36,2);self.assertEqual(len(sections[4])//4,10)
+  self.assertEqual(self.recipe['scenes'][1]['assets']['npcs'],[320,321,327,328,329]);self.assertEqual(struct.unpack('<2I',sections[5]),(2,1031))
  def test_legacy_route_semantics_unchanged(self):
   legacy=copy.deepcopy(f.load_recipe());legacy.pop('route_recipe');legacy['routes']=legacy['routes'][:2]
   model=f.Model(legacy)
@@ -46,11 +46,13 @@ class Routes(unittest.TestCase):
   recipe=copy.deepcopy(self.recipe);recipe['scenes'][2]['assets']['props']=1031
   with self.assertRaises(f.FieldError):w.validate(recipe)
   legacy=copy.deepcopy(self.recipe);legacy['schema']=2
+  legacy['scenes'][1]['assets']['npcs']=[320,321,327]
   for scene in legacy['scenes']:
    if scene['map']:scene['assets'].pop('props')
   blob=w.encode(legacy,self.proof['routes']);self.assertEqual(blob,(f.ROOT/'tests/fixtures/world-links-cap3.enclinks').read_bytes())
   _,old=f.unpack_container(blob,f.LINK_MAGIC,w.STRIDES,f.LINK_LIMIT,capability=3)
-  _,new=f.unpack_container(self.blob,f.LINK_MAGIC,w.PROP_STRIDES,f.LINK_LIMIT,capability=4);self.assertEqual(old,new[:5])
+  previous=copy.deepcopy(self.recipe);previous['scenes'][1]['assets']['npcs']=[320,321,327]
+  _,new=f.unpack_container(w.encode(previous,self.proof['routes']),f.LINK_MAGIC,w.PROP_STRIDES,f.LINK_LIMIT,capability=4);self.assertEqual(old,new[:5])
  def test_recipe_negative_paths(self):
   bad=[]
   for value in [True,0,1,2,4]:

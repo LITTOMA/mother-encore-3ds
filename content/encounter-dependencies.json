@@ -27241,6 +27241,14 @@
       "bytes": 728,
       "sha256": "b116f3891adc6b0c9564e8ce771cfa2b69c1d871e0461bff0fd8fc3afd572422"
     },
+    "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png": {
+      "bytes": 4378,
+      "sha256": "f9d6c3784dab61bfdbcb509d78b3bda1ed805e02438cbcdc546f8d51e91d9d2c"
+    },
+    "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png.import": {
+      "bytes": 737,
+      "sha256": "11221fc7e9da71c9dab23cf5b768f8664584d7d15bbf3b8fa893f28160551bb7"
+    },
     "Graphics/Character Sprites/Npcs/4dir/woman.png": {
       "bytes": 4382,
       "sha256": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666"

@@ -17,8 +17,8 @@ class FieldNpcTests(unittest.TestCase):
             with self.assertRaises(ValueError):npc.load_policy(path)
     def test_source_owners_and_programme_separation(self):
         policy,records,sources=npc.build()
-        self.assertEqual([r['binding']['alias']for r in records],['lindgren','dog','iggy'])
-        self.assertEqual([r['features']for r in records],[2,5,2])
+        self.assertEqual([r['binding']['alias']for r in records],['lindgren','dog','iggy','zombie1','zombie2'])
+        self.assertEqual([r['features']for r in records],[2,5,2,0,0])
         for record in records:
             ir=record['ir'];self.assertEqual((ir['texts'],ir['commands'],ir['programmes']),([],[],[]))
             self.assertIsNone(ir['actor']['item'])
@@ -36,6 +36,12 @@ class FieldNpcTests(unittest.TestCase):
         self.assertEqual(records[2]['ir']['actor']['sprite_position'],[1432,4736])
         self.assertEqual(records[2]['ir']['rng'],[])
         self.assertEqual(records[2]['disappear'],'returned_shovel')
+        old=npc.load_policy(npc.ROOT/'tests/fixtures/pre-cemetery-npcs.json')
+        with patch.object(npc,'load_policy',return_value=old):_,previous,_=npc.build()
+        self.assertEqual([r['blob']for r in previous],[r['blob']for r in records[:3]])
+        self.assertEqual([r['ir']['actor']['sprite_position']for r in records[3:]],[[580,4530],[672,4530]])
+        self.assertEqual([r['disappear']for r in records[3:]],['cem_roots_grown']*2)
+        self.assertEqual(records[3]['ir']['texture'],records[4]['ir']['texture'])
     def test_motion_encoder_rejects_programmes(self):
         legacy=json.loads((npc.ROOT/'content/mick-treats.json').read_text(encoding='utf-8'))
         with self.assertRaises(ValueError):m.lower(legacy,motion_owner=2,motion_flags=2)
@@ -45,7 +51,7 @@ class FieldNpcTests(unittest.TestCase):
 
     def test_interaction_policy_versions_and_flags_reject(self):
         original=npc.load_policy()
-        mutations=[lambda p:p.update(schema=True),lambda p:p.update(schema=0),lambda p:p.update(schema=3),lambda p:p.update(schema=1),lambda p:p['actors'][2].update(interaction_policy=1),lambda p:p['actors'][2].update(interaction_policy='yes'),lambda p:[a.update(interaction_policy=False)for a in p['actors']]]
+        mutations=[lambda p:p.update(schema=True),lambda p:p.update(schema=0),lambda p:p.update(schema=4),lambda p:p.update(schema=1),lambda p:p['actors'][2].update(interaction_policy=1),lambda p:p['actors'][2].update(interaction_policy='yes'),lambda p:[a.update(interaction_policy=False)for a in p['actors']]]
         for mutate in mutations:
             p=copy.deepcopy(original);mutate(p)
             with tempfile.TemporaryDirectory()as folder:
@@ -68,5 +74,17 @@ class FieldNpcTests(unittest.TestCase):
         npc.validate_sprite_ready_source(code,sprite)
         for a,b in [(code.replace('_update_sprite_and_animations()','missing()',1),sprite),(code.replace('character_sprite.set_spritesheet()','missing()'),sprite),(code,sprite.replace('offset = _default_offset + sprite_offset','offset = sprite_offset')),(code,sprite.replace('show()','hide()'))]:
             with self.assertRaises(ValueError):npc.validate_sprite_ready_source(a,b)
+
+    def test_explicit_texture_aliases_are_required_and_source_checked(self):
+        policy,records,_=npc.build()
+        changes=[lambda p:p.update(texture_aliases=[]),lambda p:p.update(schema=2),lambda p:p['texture_aliases'][0].update(owner=6),lambda p:p['texture_aliases'][0].update(owner=999),lambda p:p['texture_aliases'][0].update(actor=5),lambda p:p['texture_aliases'].append(dict(owner=5,actor=6)),lambda p:p['texture_aliases'][0].update(extra=0),lambda p:p['actors'][4].update(texture='graphics/world/unused.t3x')]
+        for change in changes:
+            p=copy.deepcopy(policy);change(p)
+            with tempfile.TemporaryDirectory()as folder:
+                file=Path(folder)/'p.json';file.write_text(json.dumps(p))
+                with self.assertRaises(ValueError):npc.load_policy(file)
+        for key,value in [('source','other.png'),('size',[100,100]),('columns',1),('rows',1)]:
+            bad=copy.deepcopy(records);bad[4]['ir']['texture'][key]=value
+            with self.assertRaises(ValueError):npc.validate_texture_aliases(policy,bad)
 
 if __name__=='__main__':unittest.main()

@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "policy_sha256": "e0669806d32538e6c84d18b1daae917bd1479b835c26a2502bd7b1f9ec2e0b7d",
-  "producer_sha256": "898d26c05049cf2cf11bec49a10b29e4e4b95080ead0429513799e61991f8eff",
+  "policy_sha256": "cfd3badf0ec68e03bbcab9b2fefaa4e41a4344eefc7dbeb6220620768a921af6",
+  "producer_sha256": "36f0be8463b7e9442d22d17c864aef3043a0b7c435597acda5eb795e0a2856f5",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "sources": {
     "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
@@ -24,6 +24,8 @@
     "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9",
     "Graphics/Character Sprites/Npcs/4dir/pippismom.png": "46fcad47e02f19dc92601d47a6bd702db1c71f38bf2422cf043f0fde91dc43e7",
     "Graphics/Character Sprites/Npcs/4dir/pippismom.png.import": "b116f3891adc6b0c9564e8ce771cfa2b69c1d871e0461bff0fd8fc3afd572422",
+    "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png": "f9d6c3784dab61bfdbcb509d78b3bda1ed805e02438cbcdc546f8d51e91d9d2c",
+    "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png.import": "11221fc7e9da71c9dab23cf5b768f8664584d7d15bbf3b8fa893f28160551bb7",
     "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
     "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
     "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
@@ -114,6 +116,10 @@
     "graphics/world/podunk/iggy.t3x": {
       "bytes": 131093,
       "sha256": "d4a87c105ddd8c68aee8267a19462deb5b40217201f3be26c88e3b5ead335881"
+    },
+    "graphics/world/podunk/pseudozombie.t3x": {
+      "bytes": 65557,
+      "sha256": "164b8e2957ea8731712836dd58956245a1319d7f917fa93dc057a444bc651ff1"
     }
   },
   "scope": "Original source NPC images for this game-related port; no fonts or unrelated binaries; motion owners have no dialogue programmes.",

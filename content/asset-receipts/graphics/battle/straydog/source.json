@@ -1185,7 +1185,7 @@
   "recipe": {
     "schema": 1,
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
-    "source_ir_sha256": "dbd4a76b643b0058215b967c2912bdbc89ac2069b51a7699136b8cdaa08bb7b3",
+    "source_ir_sha256": "a940a4525bdfba1b377435749c4e3fda74fa6efa47450aad32afb814cecb5c9a",
     "sources": {
       "Scripts/UI/Battle/EnemySpritesManager.gd": "663250716e71c14f91a9e723c8d8c9ae9ff4a60dd1f4a092a46b1cd1d4469e4f",
       "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
@@ -1298,6 +1298,8 @@
       "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9",
       "Graphics/Character Sprites/Npcs/4dir/pippismom.png": "46fcad47e02f19dc92601d47a6bd702db1c71f38bf2422cf043f0fde91dc43e7",
       "Graphics/Character Sprites/Npcs/4dir/pippismom.png.import": "b116f3891adc6b0c9564e8ce771cfa2b69c1d871e0461bff0fd8fc3afd572422",
+      "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png": "f9d6c3784dab61bfdbcb509d78b3bda1ed805e02438cbcdc546f8d51e91d9d2c",
+      "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png.import": "11221fc7e9da71c9dab23cf5b768f8664584d7d15bbf3b8fa893f28160551bb7",
       "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
       "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
       "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",

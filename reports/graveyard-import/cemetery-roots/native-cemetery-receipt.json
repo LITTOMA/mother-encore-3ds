@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "source_blocks": {
+    "objectsfunction": "eb9dc7d9d1751aebab980b7b19b19316faa0a7df3e844bf043ebb531358e9b76",
+    "eraseactors": "703ba0053c526b09ca67d441ad570eb19a36c02f5159e817ad24c4b2b0bbcdea",
+    "setflags": "2768994572a8881dd631a90e9869fb95437fb765dc53f180f058000248cba254"
+  },
+  "source_methods": {
+    "erase": "49eb776187f2874525367b755c05f0f9481545e14e8d4fa68e4439bc7b621291",
+    "unmake_persistent": "250fbe19bfaaa2df2d9659d18f7576da171a133b9190325f78e925b9c9d98b25",
+    "_replaced_exists": "9eac2c756b233d9642faecf2c7e4188c38fa17a5a9d2030f26e38130ba424c1f",
+    "_change_flags": "1721fc78daf1bc7a624415c7b0ed54bbe171584334750a8787fece2a3318127c"
+  },
+  "result_sha256": "accb4478eb797e9a1a385da2591b7e4c2117534e44cd5e3afc816425d9379b5e",
+  "scope": "Unchanged source objectsfunction/eraseactors/setflags blocks and Actor erase helpers, actual native deferred calls, queue_free and five source prop Grow coroutines. UI, persistent registry and flag services are explicit stubs; an inherited Grow observer records identity then forwards to the unchanged source method. Does not validate the full cutscene timeline, rendering, audio, emulator or hardware."
+}

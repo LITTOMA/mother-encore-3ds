@@ -1,0 +1,9 @@
+cemetery_roots passed
+field_route_warp passed
+field_story passed
+field_npc_motion passed
+room_data passed
+field_props passed
+resource_catalog passed
+prop_scene_resources passed
+Removed finished test ELF bytes 387404528

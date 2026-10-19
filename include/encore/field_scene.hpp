@@ -84,7 +84,7 @@ public:
 
 // AreaRoom field: TileMap world, routed and unported doors, explicit development
 // boundaries and unlocked openable doors. Rendering and scene swaps are platform owned.
-class FieldScene {
+class FieldScene : private StoryPropHost {
 public:
     FieldScene()=default;
     FieldScene(const FieldScene&)=delete;
@@ -104,6 +104,7 @@ public:
     bool bind_steps(FieldStepsView,const AudioBank&,std::string_view inherited_sound,std::string&);
     bool bind_props(const FieldPropsData&,std::string&);
     const FieldProps&props()const{return props_;}
+    std::vector<FieldPropEvent>take_prop_events(){return props_.take_events();}
     bool grow_prop(uint32_t stable_id,std::string&);
     bool hit_prop(uint32_t index,std::string&);
     bool flush_props(FieldPropHost&,std::string&);
@@ -153,6 +154,8 @@ public:
     FieldMapView map()const{return map_;}
     uint32_t scene_id()const{return map_.scene_id();}
 private:
+    bool validate_grow(uint32_t,std::string&)const override;
+    bool grow(uint32_t id,std::string&error)override{return grow_prop(id,error);}
     struct Openable {bool inside=false,open=false;double timer=-1;};
     friend struct FieldMickWorld;
     bool overlaps(Vec2 center,Vec2 extents,Vec2 player)const;

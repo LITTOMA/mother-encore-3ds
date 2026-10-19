@@ -161,6 +161,16 @@
       "id": 1031,
       "role": "FieldProps",
       "path": "world/podunk/podunk.encprops"
+    },
+    {
+      "id": 328,
+      "role": "FieldNpc",
+      "path": "world/podunk/npcs/zombie1.encmick"
+    },
+    {
+      "id": 329,
+      "role": "FieldNpc",
+      "path": "world/podunk/npcs/zombie2.encmick"
     }
   ],
   "encounters": [

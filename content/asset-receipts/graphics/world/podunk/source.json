@@ -1,20 +1,20 @@
 {
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "compiler_sha256": "3956ff38b8dd9eace80121e8f1d0825eecaf91c3d4062f4f7a5008cadbec0699",
+  "compiler_sha256": "e3bc3be8b48287568c0f5f26a0a5c9349be6254eccc50ace74dfec3e47e06f23",
   "compression": "none",
   "format": "rgba8",
   "outputs": {
     "world/podunk/podunk.encmap": {
-      "bytes": 1619540,
-      "sha256": "dcc8433bc8465330422ec422142bbd59d16eb7b249b7a165c26c4aca21ebd89d"
+      "bytes": 1619480,
+      "sha256": "f76c5820df97d543b4c4f0ea72cfa45438031d21556729230fcbf1e781746d7f"
     },
     "world/podunk/podunk.encroom": {
-      "bytes": 22192,
-      "sha256": "a66ab356bf7ffcea184d034c4b66e4505e9b9372dfa5b21127cc1cff9db178d4"
+      "bytes": 26688,
+      "sha256": "18c7b884b0fc28f04685a8ee2eedb066d1cd03064ac13b1261f107f76e90451c"
     },
     "world/world.enclinks": {
-      "bytes": 1156,
-      "sha256": "9b67e8d3dcdaf010671babe585106b184723c2546291995ba361dc717a93ebc6"
+      "bytes": 1164,
+      "sha256": "7858d87e1e78503275662c4babc981a06f8143993f73a5aeac76c3da772e2f21"
     }
   },
   "pages": [

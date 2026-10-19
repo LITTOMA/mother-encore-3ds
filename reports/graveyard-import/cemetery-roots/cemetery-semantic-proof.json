@@ -1,0 +1,71 @@
+{
+  "base": "f3c267b1a43e2ee39ea46f45b7b3e3d4c59e3a88",
+  "unchanged_binary": [
+    {
+      "path": "romfs/world/podunk/npcs/lindgren.encmick",
+      "bytes": 10120,
+      "sha256": "0aeefd9d43537beff02e65f9af364c755f6e49e56281e899d063fb4d294ce41d"
+    },
+    {
+      "path": "romfs/world/podunk/npcs/bridge-dog.encmick",
+      "bytes": 10220,
+      "sha256": "0b450d4797b6aad92f7fabb565db155cc27b456552d0d371e8eab81b0cfba279"
+    },
+    {
+      "path": "romfs/world/podunk/npcs/iggy.encmick",
+      "bytes": 708,
+      "sha256": "a00a06eb05bdd78ecdfcaeda94db81e4f3e2d07baf267ab0df9eae7cf8de29b5"
+    },
+    {
+      "path": "romfs/graphics/world/podunk/lindgren.t3x",
+      "bytes": 65557,
+      "sha256": "2acb10f3342f7eeef6dcc09ff89cce817bed8fa639e79c2c033095e4fd28d8ce"
+    },
+    {
+      "path": "romfs/graphics/world/podunk/bridge-dog.t3x",
+      "bytes": 131093,
+      "sha256": "ab717967735a5fc6c9530350a1412d694e64375020e72eb67d87b1a780983fbe"
+    },
+    {
+      "path": "romfs/graphics/world/podunk/iggy.t3x",
+      "bytes": 131093,
+      "sha256": "d4a87c105ddd8c68aee8267a19462deb5b40217201f3be26c88e3b5ead335881"
+    },
+    {
+      "path": "romfs/graphics/world/podunk/props/roots.t3x",
+      "bytes": 262165,
+      "sha256": "46aeb68294cd8d884b8fadc23585788fe85f3f2a4b69de6d0939fde5f9ebd1f3"
+    },
+    {
+      "path": "romfs/session/opening.encsession",
+      "bytes": 10173,
+      "sha256": "e48119794467648f5c43dc9a07afb86a8faff818eed51404f5070166c5d7e2f0"
+    },
+    {
+      "path": "romfs/ui/opening.encnewgame",
+      "bytes": 18660,
+      "sha256": "a532d8d0e64bb9b2828fadfd6f003bb6a34150a89b98b31db8563261ff11ecb7"
+    },
+    {
+      "path": "romfs/battle/straydog/bridge.encbattle",
+      "bytes": 12452,
+      "sha256": "d3fac0b88ede5af03073cb620f17db3a8bc9b662c183d0a3f5552d04427458bc"
+    },
+    {
+      "path": "romfs/battle/straydog/bridge.encround",
+      "bytes": 21244,
+      "sha256": "af41cf11cceb6b90afd0ec4e438bcda4c1366f1ec1abe57f9d783e50c9820b78"
+    },
+    {
+      "path": "romfs/world/podunk/podunk.encprops",
+      "bytes": 2520,
+      "sha256": "72ef23603001024709bb7bbdb59f75071d1eba9ce75003071d46bc9ad8810eda"
+    }
+  ],
+  "unchanged_room_tables": [
+    "romfs/world/house/opening.encroom",
+    "romfs/world/mayor/mayor.encroom"
+  ],
+  "existing_programmes_semantically_equal": 5,
+  "scope": "Old five programmes compared after resolving resource, clip and movement table references; new zombie programme appended. Old House tables identical; its compiler fingerprint changes."
+}

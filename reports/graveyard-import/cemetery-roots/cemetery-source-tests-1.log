@@ -1,0 +1,28 @@
+.F...............F..................
+======================================================================
+FAIL: test_cemetery_source_mapping_and_runtime_version_negatives (tests.test_field_story.FieldStoryTests.test_cemetery_source_mapping_and_runtime_version_negatives) (cap=13)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_field_story.py", line 65, in test_cemetery_source_mapping_and_runtime_version_negatives
+    with self.subTest(cap=cap),self.assertRaises(ValueError):validate_tables(self.room['strings'],b,self.room['scene_id'],7,cap)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_props_missing_unknown_and_legacy_projection (tests.test_world_scene_routes.Routes.test_props_missing_unknown_and_legacy_projection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_world_scene_routes.py", line 54, in test_props_missing_unknown_and_legacy_projection
+    _,new=f.unpack_container(self.blob,f.LINK_MAGIC,w.PROP_STRIDES,f.LINK_LIMIT,capability=4);self.assertEqual(old,new[:5])
+                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [b're[2561 chars]00\x03\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00[238 chars]x00'] != [b're[2561 chars]00\x05\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00[264 chars]x00']
+
+First differing element 3:
+b"\x0[92 chars]00\x03\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00[128 chars]\x00"
+b"\x0[92 chars]00\x05\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00[128 chars]\x00"
+
+Diff is 3753 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 36 tests in 69.657s
+
+FAILED (failures=2)

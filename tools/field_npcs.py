@@ -25,14 +25,28 @@ def load_policy(path=POLICY):
             require(key not in result,'Duplicate NPC policy field '+key);result[key]=value
         return result
     p=json.loads(Path(path).read_text(encoding='utf-8'),object_pairs_hook=unique)
-    require(set(p)=={'schema','kind','commit','scene','npc_scene','npc_script','animation','receipt','actors'} and type(p['schema'])is int and p['schema']in(1,2) and p['kind']=='encore.field-npc.recipe' and p['commit']==m.PIN,'Unknown field NPC policy')
+    require(set(p)==({'schema','kind','commit','scene','npc_scene','npc_script','animation','receipt','actors'}|({'texture_aliases'}if p.get('schema')==3 else set())) and type(p['schema'])is int and p['schema']in(1,2,3) and p['kind']=='encore.field-npc.recipe' and p['commit']==m.PIN,'Unknown field NPC policy')
     require(isinstance(p['actors'],list) and 1<=len(p['actors'])<=16,'Field NPC count')
-    actor_fields={'id','alias','path','texture','motion'}|({'interaction_policy'}if p['schema']==2 else set())
+    actor_fields={'id','alias','path','texture','motion'}|({'interaction_policy'}if p['schema']>=2 else set())
     require(all(type(a)is dict and set(a)==actor_fields for a in p['actors']),'Unknown NPC actor fields')
-    if p['schema']==2:
+    if p['schema']>=2:
         require(all(type(a['interaction_policy'])is bool for a in p['actors'])and any(a['interaction_policy']for a in p['actors']),'Field NPC schema2 requires an explicit interaction policy')
-    for key in ('id','alias','path','texture','motion'):
+    for key in ('id','alias','path','motion'):
         require(len({a[key]for a in p['actors']})==len(p['actors']),'Duplicate NPC '+key)
+    aliases=p.get('texture_aliases',[])
+    require(type(aliases)is list and (bool(aliases)==(p['schema']==3)),'NPC texture alias schema coverage')
+    declared={}
+    for alias in aliases:
+        require(type(alias)is dict and set(alias)=={'owner','actor'} and all(type(alias[k])is int for k in alias),'NPC texture alias fields')
+        owner=next((a for a in p['actors']if a['id']==alias['owner']),None)
+        actor=next((a for a in p['actors']if a['id']==alias['actor']),None)
+        require(owner is not None and actor is not None and owner['id']<actor['id'] and actor['id']not in declared and owner['id']not in declared and owner['texture']==actor['texture'],'Invalid NPC texture alias owner')
+        declared[actor['id']]=owner['id']
+    seen={}
+    for a in p['actors']:
+        previous=seen.get(a['texture'])
+        require((previous is None and a['id']not in declared)or(previous is not None and declared.get(a['id'])==previous),'Undeclared or unused NPC texture alias')
+        if previous is None:seen[a['texture']]=a['id']
     for a in p['actors']:
         require(type(a['id'])is int and 2<=a['id']<=256,'Field NPC stable identity')
         require(all(type(a[k])is str and a[k]for k in ('alias','path','texture','motion')),'Field NPC binding')
@@ -150,13 +164,21 @@ def build():
             from tools.field_scene_npcs import interaction_blob
             blob=interaction_blob(dict(binding=binding,ir=ir,blob=blob,directions=4,dialogue=node.props.get('dialog',''),alternatives=node.props.get('_all_dialog',[]),has_initial_dialogue=bool(node.props.get('dialog','')),return_after_interaction_seconds=0 if staring else 1))
         results.append(dict(binding=binding,ir=ir,blob=blob,features=flags,appear=node.props.get('appear_flag',''),disappear=node.props.get('disappear_flag','')))
+    validate_texture_aliases(policy,results)
     sources=dict(base['sources']);sources.update(ex.sources)
     return policy,results,dict(sorted(sources.items()))
+
+def validate_texture_aliases(policy,results):
+    by_id={r['binding']['id']:r for r in results}
+    for alias in policy.get('texture_aliases',[]):
+        a=by_id[alias['owner']]['ir']['texture'];b=by_id[alias['actor']]['ir']['texture']
+        require(all(a[k]==b[k]for k in ('source','size','columns','rows','output')),'NPC texture aliases differ in actual source image/grid')
+
 
 def verify_receipt(policy,results,sources):
     receipt=json.loads((ROOT/policy['receipt']).read_text(encoding='utf-8'))
     require(receipt['commit']==policy['commit'] and receipt['policy_sha256']==sha(POLICY) and receipt['producer_sha256']==sha(__file__) and receipt['sources']==sources,'Stale NPC asset receipt')
-    if policy['schema']==2:require(receipt.get('interaction_producer_sha256')==sha(ROOT/'tools/field_scene_npcs.py'),'Stale NPC interaction policy producer')
+    if policy['schema']>=2:require(receipt.get('interaction_producer_sha256')==sha(ROOT/'tools/field_scene_npcs.py'),'Stale NPC interaction policy producer')
     require(set(receipt['textures'])=={r['binding']['texture']for r in results},'NPC texture receipt set')
     for path,item in receipt['textures'].items():
         p=ROOT/'romfs'/path;require(p.is_file() and p.stat().st_size==item['bytes'] and sha(p)==item['sha256'],'NPC texture bytes differ from receipt')
@@ -175,10 +197,14 @@ def add_room(sections,strings,S,house,resource):
     old=hs['Resource'][template['primary_resource']]
     bubble_extra=-template['emote_offset'][1]-old['height']/old['rows']
     def identity(table):return max((r['stable_id']for r in sections[table]),default=0)+1
+    texture_resources={}
     for record in records:
         binding=record['binding'];ir=record['ir'];a=ir['actor'];t=ir['texture'];index=len(sections['ActorProfile'])
         require(index==len(sections['ActorInstance']) and index+1==binding['id'],'NPC stable append order changed')
-        primary=len(sections['Resource']);sections['Resource'].append(dict(stable_id=identity('Resource'),path_string=S(t['output']),width=t['size'][0],height=t['size'][1],columns=t['columns'],rows=t['rows'],kind=1,flags=0,sha256=sha(ROOT/'romfs'/t['output'])))
+        primary=texture_resources.get(t['output'])
+        if primary is None:
+            primary=len(sections['Resource']);sections['Resource'].append(dict(stable_id=identity('Resource'),path_string=S(t['output']),width=t['size'][0],height=t['size'][1],columns=t['columns'],rows=t['rows'],kind=1,flags=0,sha256=sha(ROOT/'romfs'/t['output'])))
+            texture_resources[t['output']]=primary
         first=len(sections['AnimationBinding']);directions=len(sections['DirectionFrame']);idle_clips=[]
         for role,motion in ((0,0),(1,4),(2,5)):
             for direction in range(4):
@@ -214,13 +240,15 @@ def main():
         require(a.tex3ds and a.tex3ds.is_file(),'Real tex3ds required for NPC assets');textures={}
         command=shlex.split(a.tex3ds_command)if a.tex3ds_command else None
         for record in results:
-            ir=record['ir'];target=ROOT/'romfs'/ir['texture']['output'];target.parent.mkdir(parents=True,exist_ok=True);source=ROOT/'upstream/MOTHER-Encore'/ir['texture']['source']
+            ir=record['ir']
+            if ir['texture']['output']in textures:continue
+            target=ROOT/'romfs'/ir['texture']['output'];target.parent.mkdir(parents=True,exist_ok=True);source=ROOT/'upstream/MOTHER-Encore'/ir['texture']['source']
             rel=lambda v:v.resolve().relative_to(ROOT).as_posix()
             args=(command+['-f','rgba8','-z','none','-o',rel(target),rel(source)])if command else[str(a.tex3ds),'-f','rgba8','-z','none','-o',str(target),str(source)]
             subprocess.run(args,cwd=ROOT,check=True)
             textures[ir['texture']['output']]=dict(bytes=target.stat().st_size,sha256=sha(target))
         receipt=dict(schema=1,commit=policy['commit'],policy_sha256=sha(POLICY),producer_sha256=sha(__file__),tex3ds_sha256=sha(a.tex3ds),sources=sources,textures=textures,scope='Original source NPC images for this game-related port; no fonts or unrelated binaries; motion owners have no dialogue programmes.')
-        if policy['schema']==2:receipt['interaction_producer_sha256']=sha(ROOT/'tools/field_scene_npcs.py')
+        if policy['schema']>=2:receipt['interaction_producer_sha256']=sha(ROOT/'tools/field_scene_npcs.py')
         write(ROOT/policy['receipt'],receipt)
     else:verify_receipt(policy,results,sources)
     for record in results:

@@ -59,7 +59,7 @@ class ResourceCatalogTests(unittest.TestCase):
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
         self.assertEqual(catalog.capability_for(self.ir['bindings']), 11)
         motion=[r for r in self.ir['bindings']if r['role']=='FieldNpc']
-        self.assertEqual({r['id']for r in motion},set(range(320,328)))
+        self.assertEqual({r['id']for r in motion},set(range(320,330)))
         self.assertEqual(next(r['path']for r in motion if r['id']==327),'world/podunk/npcs/iggy.encmick')
         self.assertTrue(all(r['id']>=256 for r in motion))
         audio_roles={'GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones'}

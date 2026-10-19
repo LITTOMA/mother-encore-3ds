@@ -164,6 +164,8 @@
     "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9",
     "Graphics/Character Sprites/Npcs/4dir/pippismom.png": "46fcad47e02f19dc92601d47a6bd702db1c71f38bf2422cf043f0fde91dc43e7",
     "Graphics/Character Sprites/Npcs/4dir/pippismom.png.import": "b116f3891adc6b0c9564e8ce771cfa2b69c1d871e0461bff0fd8fc3afd572422",
+    "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png": "f9d6c3784dab61bfdbcb509d78b3bda1ed805e02438cbcdc546f8d51e91d9d2c",
+    "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png.import": "11221fc7e9da71c9dab23cf5b768f8664584d7d15bbf3b8fa893f28160551bb7",
     "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
     "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
     "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
@@ -245,9 +247,9 @@
   },
   "dependencies": {
     "content/pillow-round.json": "995ea8183dd9b15f291501e203d81329566cb9e56861ce0a0d8d4ce802c7f625",
-    "content/bridge-entry.json": "dbd4a76b643b0058215b967c2912bdbc89ac2069b51a7699136b8cdaa08bb7b3",
+    "content/bridge-entry.json": "a940a4525bdfba1b377435749c4e3fda74fa6efa47450aad32afb814cecb5c9a",
     "content/bridge-encounter.json": "5da939bdd9c2ebde0a50bc18f1369b93d034fa3473d7e7ecfbd90f6a3a171e84",
-    "content/podunk-npcs.json": "e0669806d32538e6c84d18b1daae917bd1479b835c26a2502bd7b1f9ec2e0b7d",
+    "content/podunk-npcs.json": "cfd3badf0ec68e03bbcab9b2fefaa4e41a4344eefc7dbeb6220620768a921af6",
     "content/asset-receipts/graphics/battle/straydog/pre-hit.json": "f71782c645596d25d2d84b0d2f517d4a57a13490accdb466daaf0f3f0ad8c6d8"
   },
   "skills": [

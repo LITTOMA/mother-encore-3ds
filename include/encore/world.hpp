@@ -31,6 +31,12 @@ public:
  virtual bool validate_skill(std::string_view,std::string&)=0;
  virtual bool learn_skill(std::string_view,std::string&)=0;
 };
+class StoryPropHost {
+public:
+ virtual ~StoryPropHost()=default;
+ virtual bool validate_grow(uint32_t stable_id,std::string&)const=0;
+ virtual bool grow(uint32_t stable_id,std::string&)=0;
+};
 struct OpeningScreenOverlay {uint32_t rgb=0;float alpha=0;};
 struct OpeningSceneCall {uint32_t object=0;};
 struct OpeningTraceEvent { DialogueAction action; uint64_t physics_tick,idle_frame; };
@@ -90,6 +96,8 @@ public:
     std::vector<bool> take_story_hides(){auto result=std::move(story_hides_);story_hides_.clear();return result;}
     const std::vector<OpeningEffectRequest>& effect_requests()const{return effects_;}
     bool bind_story_skills(StorySkillHost&);
+    bool bind_story_props(StoryPropHost&,std::string&);
+    bool validate_story_props(uint32_t programme,std::string&)const;
     bool story_skills_ready()const{return story_skills_!=nullptr;}
     OpeningScreenOverlay screen_overlay()const{return overlay_;}
     bool pause_for_house(bool stop_running=false);
@@ -182,6 +190,7 @@ private:
     bool vibrate_room(uint32_t binding);
     uint32_t walk_clip(MotionAnimation animation,Vec2 direction) const;
     bool trigger_conditions(uint32_t index) const;
+    StoryPropHost*story_props_=nullptr;
     StorySkillHost*story_skills_=nullptr;
     OpeningScreenOverlay overlay_{};uint32_t overlay_clip_=kRoomNoIndex;double overlay_time_=0;
     RoomView content_;
@@ -196,7 +205,7 @@ private:
     std::vector<OpeningAudioRequest> audio_;
     std::vector<OpeningTraceEvent> trace_;
     std::vector<DialogueAction> deferred_;
-    std::vector<uint8_t> actor_bound_,actor_persistent_,actor_visible_,actor_restore_,inside_trigger_,trigger_pending_;
+    std::vector<uint8_t> actor_bound_,actor_erased_,actor_persistent_,actor_visible_,actor_restore_,inside_trigger_,trigger_pending_;
     uint64_t story_revision_=0;
     Vec2 battle_original_direction_{};
     struct Boundary { uint32_t binding;double remaining; };

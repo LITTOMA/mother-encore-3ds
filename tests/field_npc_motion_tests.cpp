@@ -60,7 +60,7 @@ int main(int argc,char**argv){
  check(original.load(legacy.data(),legacy.size(),error)&&!original.view().motion_only()&&original.view().wanders()&&original.view().stares(),"legacy Mick contract remains admitted");
  put(legacy,20,4);put(legacy,28,3);sign(legacy);check(!original.load(legacy.data(),legacy.size(),error),"programme-bearing pack cannot masquerade as motion-only");
  {
-  RoomData room;FieldMapData map;WorldLinksData links;MickData mom,dog,iggy;Host host;
+  RoomData room;FieldMapData map;WorldLinksData links;MickData mom,dog,iggy,z1,z2;Host host;
   check(room.load_file("romfs/world/podunk/podunk.encroom",error),error.c_str());
   check(map.load_file("romfs/world/podunk/podunk.encmap",error),error.c_str());
   check(links.load_file("romfs/world/world.enclinks",error),error.c_str());
@@ -72,6 +72,9 @@ int main(int argc,char**argv){
   check(scene.bind_npc(mom.view(),host,error)&&scene.bind_npc(dog.view(),host,error),error.c_str());
   check(!scene.npcs_ready(),"new map actor must not be silently discarded by the legacy two-owner path");
   check(scene.bind_npc(iggy.view(),host,error),error.c_str());
+  check(!scene.npcs_ready(),"cemetery source actors also require their independent owners");
+  check(z1.load_file("romfs/world/podunk/npcs/zombie1.encmick",error)&&z2.load_file("romfs/world/podunk/npcs/zombie2.encmick",error),error.c_str());
+  check(scene.bind_npc(z1.view(),host,error)&&scene.bind_npc(z2.view(),host,error),error.c_str());
   check(scene.npcs_ready(),"all map motion owners admitted");
   check(!scene.bind_npc(dog.view(),host,error),"duplicate live motion owner rejected");
   check(!scene.bind_npc(original.view(),host,error),"Mick programme cannot bind as a field motion owner");

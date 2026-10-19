@@ -1,5 +1,5 @@
 {
-  "schema": 2,
+  "schema": 3,
   "kind": "encore.field-npc.recipe",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
@@ -31,6 +31,28 @@
       "texture": "graphics/world/podunk/iggy.t3x",
       "motion": "world/podunk/npcs/iggy.encmick",
       "interaction_policy": true
+    },
+    {
+      "id": 5,
+      "alias": "zombie1",
+      "path": "Objects/NPCS/npczombie1",
+      "texture": "graphics/world/podunk/pseudozombie.t3x",
+      "motion": "world/podunk/npcs/zombie1.encmick",
+      "interaction_policy": false
+    },
+    {
+      "id": 6,
+      "alias": "zombie2",
+      "path": "Objects/NPCS/npczombie2",
+      "texture": "graphics/world/podunk/pseudozombie.t3x",
+      "motion": "world/podunk/npcs/zombie2.encmick",
+      "interaction_policy": false
+    }
+  ],
+  "texture_aliases": [
+    {
+      "owner": 5,
+      "actor": 6
     }
   ]
 }

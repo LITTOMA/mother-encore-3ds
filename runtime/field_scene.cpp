@@ -240,7 +240,12 @@ bool FieldScene::bind_props(const FieldPropsData&data,std::string&error){
     FieldProps next;if(!next.initialize(data,flags,error))return false;
     std::vector<uint32_t>owners(map_.count(FieldMapSection::Sprites),kFieldNone);
     for(uint32_t i=0;i<data.props().size();++i)owners[data.props()[i].sprite]=i;
-    props_=std::move(next);prop_sprites_=std::move(owners);return apply_prop_bodies(error);
+    props_=std::move(next);prop_sprites_=std::move(owners);return world.bind_story_props(*this,error)&&apply_prop_bodies(error);
+}
+bool FieldScene::validate_grow(uint32_t id,std::string&error)const{
+    if(phase_==FieldPhase::Error||!props_.ready()){error="Field prop grow needs a bound scene";return false;}
+    for(uint32_t i=0;i<props_.data().props().size();++i)if(props_.data().props()[i].id==id){if(!props_.states()[i].alive){error="Field prop grow owner was deleted";return false;}error.clear();return true;}
+    error="Field prop stable identity is unbound";return false;
 }
 bool FieldScene::grow_prop(uint32_t id,std::string&error){
     if(phase_==FieldPhase::Error||!props_.ready()){error="Field prop grow needs a bound scene";return false;}
@@ -562,7 +567,7 @@ bool FieldScene::after_physics(){
         if(story_.valid())for(uint32_t k=0;k<story_.programme_count();++k){const auto p=story_.programme(k);
             if(story_.text(p.boundary)!=map_.text(b.path))continue;
             std::string why;
-            if(!story_host_||!story_host_->can_start(story_,p.programme,why)){
+            if(!world.validate_story_props(p.programme,why)||!story_host_||!story_host_->can_start(story_,p.programme,why)){
                 boundary_=0x80000000u|i;phase_=FieldPhase::Unsupported;error_=why.empty()?"Field story admission rejected; B returns":why+"; B returns";
                 if(!world.pause_for_house())return fail("Field story admission pause rejected");
             }else if(!world.begin_house_program(p.programme))return fail("Field story programme rejected");

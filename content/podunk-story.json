@@ -1,5 +1,5 @@
 {
-  "schema": 3,
+  "schema": 4,
   "kind": "encore.field-story.reviewed-lowering",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene_id": 2,
@@ -23,7 +23,8 @@
     "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
     "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
     "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
-    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34"
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Data/Dialogue/Podunk/cutscenes/graveyard_zombie_roots.yaml": "5a7b030a66ab44336bb7267fe03232498b83bf9c11a72a1d399ec706344761e1"
   },
   "documents": {
     "Data/Dialogue/Podunk/cutscenes/bridge_fight.yaml": {
@@ -356,13 +357,185 @@
         "sound": "Female",
         "text": "DIALOGUE_PODUNK_PIPPISMOM_0"
       }
+    },
+    "Data/Dialogue/Podunk/cutscenes/graveyard_zombie_roots.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "zombie1": "Objects/NPCS/npczombie1",
+          "zombie2": "Objects/NPCS/npczombie2"
+        },
+        "wait": 0.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "1"
+      },
+      "1": {
+        "actorsturn": {
+          "ninten": {
+            "x": 1,
+            "y": 0,
+            "speed": 0.1
+          }
+        },
+        "movecam": {
+          "x": 488,
+          "length": 2
+        },
+        "wait": 2.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "2"
+      },
+      "2": {
+        "actorsdir": {
+          "zombie1": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        "wait": 1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "3"
+      },
+      "3": {
+        "actorsmove": {
+          "zombie2": {
+            "movement": [
+              {
+                "x": 608,
+                "y": 4536
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "position"
+          }
+        },
+        "wait": 2.2,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "4"
+      },
+      "4": {
+        "actorsjump": {
+          "zombie1": {
+            "height": 8,
+            "length": 0.2
+          }
+        },
+        "wait": 1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "5"
+      },
+      "5": {
+        "actorsdir": {
+          "zombie1": {
+            "x": 0,
+            "y": 1
+          }
+        },
+        "actorsmove": {
+          "zombie1": {
+            "movement": [
+              {
+                "wait": 0.5
+              },
+              {
+                "x": 0,
+                "y": 8
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "wait": 1.2,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "6"
+      },
+      "6": {
+        "actorsmove": {
+          "zombie2": {
+            "movement": [
+              {
+                "wait": 0.2
+              },
+              {
+                "x": -28,
+                "y": 0
+              },
+              {
+                "x": 0,
+                "y": 8
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "wait": 1.8,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "7",
+        "eraseactors": {
+          "zombie1": true
+        }
+      },
+      "7": {
+        "wait": 0.8,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "8",
+        "eraseactors": {
+          "zombie2": true
+        }
+      },
+      "8": {
+        "wait": 1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "9",
+        "shakecam": {
+          "x": 1,
+          "y": 0,
+          "size": "small"
+        }
+      },
+      "9": {
+        "objectsfunction": {
+          "Objects/Dead Bushes/Dead Bush4": "grow",
+          "Objects/Dead Bushes/Dead Bush5": "grow",
+          "Objects/Dead Bushes/Dead Bush6": "grow",
+          "Objects/Dead Bushes/Dead Bush7": "grow",
+          "Objects/Dead Bushes/Dead Bush8": "grow"
+        },
+        "setflags": "cem_roots_grown",
+        "wait": 1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "10"
+      },
+      "10": {
+        "returncam": 1.5,
+        "wait": 1.6,
+        "autoadvance": true,
+        "caninput": false
+      }
     }
   },
   "actors": {
     "ninten": 0,
     "lindgren": 1,
     "dog": 2,
-    "iggy": 3
+    "iggy": 3,
+    "zombie1": 4,
+    "zombie2": 5
   },
   "programmes": [
     {
@@ -1379,5 +1552,423 @@
       "turn_npc": true
     }
   ],
-  "supplement": "content/graveyard-story.json"
+  "supplement": "content/graveyard-story.json",
+  "deferred_props": [
+    {
+      "path": "Objects/Dead Bushes/Dead Bush4",
+      "id": 3,
+      "method": "grow"
+    },
+    {
+      "path": "Objects/Dead Bushes/Dead Bush5",
+      "id": 4,
+      "method": "grow"
+    },
+    {
+      "path": "Objects/Dead Bushes/Dead Bush6",
+      "id": 6,
+      "method": "grow"
+    },
+    {
+      "path": "Objects/Dead Bushes/Dead Bush7",
+      "id": 7,
+      "method": "grow"
+    },
+    {
+      "path": "Objects/Dead Bushes/Dead Bush8",
+      "id": 5,
+      "method": "grow"
+    }
+  ],
+  "continuations": [
+    {
+      "source": "Data/Dialogue/Podunk/cutscenes/graveyard_zombie_roots.yaml",
+      "boundary": "Cutscenes/Cutscene Area8",
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "ninten",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "ninten",
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "zombie1",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "zombie1",
+          "phrase": 0
+        },
+        {
+          "kind": "BindActor",
+          "actor": "zombie2",
+          "phrase": 0
+        },
+        {
+          "kind": "ActorPersistent",
+          "actor": "zombie2",
+          "phrase": 0
+        },
+        {
+          "kind": "YieldIdle",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 0,
+          "duration": 0.5
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 0
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 1,
+          "duration": 2.5
+        },
+        {
+          "kind": "TurnActor",
+          "actor": "ninten",
+          "phrase": 1,
+          "vector": [
+            1,
+            0
+          ],
+          "duration": 0.1
+        },
+        {
+          "kind": "MoveCamera",
+          "actor": null,
+          "phrase": 1,
+          "vector": [
+            488,
+            0
+          ],
+          "flags": 1,
+          "target": 1,
+          "duration": 2
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 1
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 2,
+          "duration": 1
+        },
+        {
+          "kind": "SetActorDirection",
+          "actor": "zombie1",
+          "phrase": 2,
+          "vector": [
+            1,
+            0
+          ]
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 2
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 3,
+          "duration": 2.2
+        },
+        {
+          "kind": "MoveActorPath",
+          "actor": "zombie2",
+          "phrase": 3,
+          "path": {
+            "entries": [
+              {
+                "kind": 0,
+                "vector": [
+                  608,
+                  4536
+                ],
+                "duration": 0
+              }
+            ],
+            "speed": 32,
+            "flags": 0,
+            "animation": 4
+          }
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 3
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 4,
+          "duration": 1
+        },
+        {
+          "kind": "JumpActor",
+          "actor": "zombie1",
+          "phrase": 4,
+          "value": 8,
+          "duration": 0.2
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 4
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 5,
+          "duration": 1.2
+        },
+        {
+          "kind": "SetActorDirection",
+          "actor": "zombie1",
+          "phrase": 5,
+          "vector": [
+            0,
+            1
+          ]
+        },
+        {
+          "kind": "MoveActorPath",
+          "actor": "zombie1",
+          "phrase": 5,
+          "path": {
+            "entries": [
+              {
+                "kind": 1,
+                "vector": [
+                  0,
+                  0
+                ],
+                "duration": 0.5
+              },
+              {
+                "kind": 0,
+                "vector": [
+                  0,
+                  8
+                ],
+                "duration": 0
+              }
+            ],
+            "speed": 32,
+            "flags": 1,
+            "animation": 4
+          }
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 5
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 6,
+          "duration": 1.8
+        },
+        {
+          "kind": "MoveActorPath",
+          "actor": "zombie2",
+          "phrase": 6,
+          "path": {
+            "entries": [
+              {
+                "kind": 1,
+                "vector": [
+                  0,
+                  0
+                ],
+                "duration": 0.2
+              },
+              {
+                "kind": 0,
+                "vector": [
+                  -28,
+                  0
+                ],
+                "duration": 0
+              },
+              {
+                "kind": 0,
+                "vector": [
+                  0,
+                  8
+                ],
+                "duration": 0
+              }
+            ],
+            "speed": 32,
+            "flags": 1,
+            "animation": 4
+          }
+        },
+        {
+          "kind": "EraseActor",
+          "actor": "zombie1",
+          "phrase": 6
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 6
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 7,
+          "duration": 0.8
+        },
+        {
+          "kind": "EraseActor",
+          "actor": "zombie2",
+          "phrase": 7
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 7
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 8,
+          "duration": 1
+        },
+        {
+          "kind": "ShakeCamera",
+          "actor": null,
+          "phrase": 8,
+          "vector": [
+            1,
+            0
+          ],
+          "value": 4,
+          "duration": 0.2
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 8
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 9,
+          "duration": 1
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "actor": null,
+          "phrase": 9,
+          "prop": "Objects/Dead Bushes/Dead Bush4"
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "actor": null,
+          "phrase": 9,
+          "prop": "Objects/Dead Bushes/Dead Bush5"
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "actor": null,
+          "phrase": 9,
+          "prop": "Objects/Dead Bushes/Dead Bush6"
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "actor": null,
+          "phrase": 9,
+          "prop": "Objects/Dead Bushes/Dead Bush7"
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "actor": null,
+          "phrase": 9,
+          "prop": "Objects/Dead Bushes/Dead Bush8"
+        },
+        {
+          "kind": "SetFlag",
+          "actor": null,
+          "phrase": 9,
+          "flag": "cem_roots_grown",
+          "value": 1
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 9
+        },
+        {
+          "kind": "StartWait",
+          "actor": null,
+          "phrase": 10,
+          "duration": 1.6
+        },
+        {
+          "kind": "ReturnCamera",
+          "actor": null,
+          "phrase": 10,
+          "duration": 1.5
+        },
+        {
+          "kind": "AwaitTimer",
+          "actor": null,
+          "phrase": 10
+        },
+        {
+          "kind": "HideDialogue",
+          "actor": null,
+          "phrase": 10,
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "actor": null,
+          "phrase": 10
+        },
+        {
+          "kind": "RestoreActor",
+          "actor": "ninten",
+          "phrase": 10
+        },
+        {
+          "kind": "CutsceneEnded",
+          "actor": null,
+          "phrase": 10
+        },
+        {
+          "kind": "DialogueDone",
+          "actor": null,
+          "phrase": 10,
+          "duration": 0.5
+        }
+      ]
+    }
+  ]
 }

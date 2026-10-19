@@ -1,0 +1,1 @@
+Prop owner 2: encore::read_file(p.c_str(),b,16*1024*1024,error) (Cannot open: build/full-port/prop-catalog12-7d-source/system/native.encresources)

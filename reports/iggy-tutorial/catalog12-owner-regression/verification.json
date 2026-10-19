@@ -1,0 +1,20 @@
+{
+  "source": "7d2e552f86c9ef0c995c85c301e3a2f26a78f32a",
+  "failed_run": 39288346484,
+  "failed_clang_job": 118182178556,
+  "ordinary": "230/231; sole prop_scene_resources stale catalog11 assertion; no complete sanitizer",
+  "fixed_test_sha256": "cba8d695e79e7b045bc9fdb01b1cee8d2cde26ca0b0959663c1c617f8c7d416e",
+  "verification": "Exact genuine7d metadata: GCC9 ASan/UBSan with leak checking,4541 checks; runtime unchanged",
+  "logs": {
+    "catalog12-owner-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "catalog12-owner-host.py": "745d0d48a0125740330b0c206269257ca51bc9178701f79bbaf30d013ad9ff05",
+    "catalog12-owner-result-failed-1.log": "855186f16c40f18d754c2e4ab15a8a3d562da9da5dc681e7d12de4946536028c",
+    "catalog12-owner-result.log": "32273c84908bc7a72506be220bb7a57b2e2d414308859a38fb9cfd4a3a75d600",
+    "player7d-clang-full.log": "342d5f3ba7228a5237f0157de478566f8440278fb2ae9149f6ddc06db2c03ca7",
+    "prepare-catalog12-artifact-fixture.py": "413ed8247961bed475a4d38777c94d1f0cf8cdda5d7a46516578509a2a3edf77",
+    "prop-catalog12-artifact-source.json": "36355abec44f7928c645cb4ec83db439c622e13af4888f926f1efd7166bd0577",
+    "prop-catalog12-prepare-failed-1.log": "79c6e00dc1fdb6d473b4096b9057c0daebb7c9e7515d41fea765bb6e2d636af2",
+    "prop-catalog12-prepare-failed-2.log": "b58a4a6cdfab90a399765c5c8570e21397f41b7b8b5c255cae3c705e0f95cad1",
+    "prop-catalog12-prepare.log": "113fd8431e2985dbe78c77ee7fcf9ec10922dc0e5b5c89a232e54481115ead23"
+  }
+}

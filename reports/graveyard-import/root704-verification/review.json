@@ -1,0 +1,34 @@
+{
+  "source": "70460aa936042ab190b644950a45af778c8cd325",
+  "scope": "Root/Iggy initial conversation and zombie departure/five root growth, save/LOAD; not swing tutorial/full graveyard/game or hardware",
+  "ci": {
+    "run": 39223064275,
+    "gcc_job": 117962707261,
+    "gcc_ordinary": 224,
+    "gcc_sanitizers": 209,
+    "clang_job": 117962706957,
+    "clang_ordinary": 209,
+    "clang_sanitizers": 209,
+    "console_job": 117962707482,
+    "packaged_files": 368
+  },
+  "emulator": "Actual source704 build, titleordinaryLOAD of actual BF phoneRecordslot2, Houseexit andGoodsopen/close pass, same session projection. Memory writes disabled; owned profile removed. Full BF cemetery/Record tests remain earlier distinct scope; newgamebytes exactlyidentical SHA1f5d26d5...",
+  "preflight_failure": "First attempt used a known empty failed planner output; JSON admission rejected before emulator launch. Correct actual176waypoint plan reused; no game/content changed.",
+  "same_game": "262686880B SHA2561f5d26d58a3f96391d54b1e6802d5cadaa66a9fa68a2dea88cd2e4d19a94aaf9 identical to previously verified BF; real704buildreceipt independently checked",
+  "new_commit": "Evidence and docs only after validated704; runtime/include/platform/tools/content/romfs/tests/build definitions unchanged",
+  "logs": {
+    "bf-byte-equivalence.json": "af78b7097bd0e1645a30cb87134ffa6ecdac40587b1d6919dbd5e49e7798b64c",
+    "driver_snapshot.py": "98138d3c0b7c53f72d9f7df5a2cbb334e420ff518b1b8e0cf03f6be63c527e53",
+    "emulator.log": "d25599df767257f3d8980245b56cc2985d4b9b7de59f61d7f7365b38d2711f07",
+    "observations.json": "cf89e832561a06aff193bd7a486dfb89677cc4842014f9b01aa09a1ebcc9ba28",
+    "record-loaded-outside.png": "b4534eca46b993c2a8ffd16ae3f12b085832da80597004726bb3f4df6cd10234",
+    "record_loaded_goods.png": "c2a9c1c090bc8649c8ae90c10d79629bff48221f39530fde7b1586794643f653",
+    "result.json": "3963b7ae2c205e6fbd9dd9768578cf5bca02974bd79cfe30e143a5b4f358e4dc",
+    "root704-clang-full.log": "382f7710cbcad6e407dd20f91d2c7354e73f55262e97879c6caeeb7f8907fec4",
+    "root704-gcc-full.log": "e7ad199e3fd71dd3e48a8fdf3e225f08a4761c7162e5d19b604568d2a68f63c5",
+    "root704-record-load-en-1.log": "898e73d3a88b693e82f49229eb3fc15e15d744c60955b8899f5c640ff0673264",
+    "root704-record-load-en-2.log": "3eeb1f1912cd093a56e0f6f768bd857c66e86a61d5cdfee5a7c1b9052fe574a2",
+    "selected-proof.json": "66c109ccb7652f425a0941b5eda38876118c6e5860aaad0a81b00b55318fdb3c",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

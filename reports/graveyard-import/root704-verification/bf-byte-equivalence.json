@@ -1,0 +1,13 @@
+{
+  "game_identical_to_verified_bf": true,
+  "sha256": "1f5d26d58a3f96391d54b1e6802d5cadaa66a9fa68a2dea88cd2e4d19a94aaf9",
+  "bytes": 262686880,
+  "restoration_resources_identical": {
+    "romfs/session/opening.encsession": "e92eb8c79196dc8e55aac40c98e70ac531f51d033b6eb8a573bce6570268fdff",
+    "romfs/world/house/opening.encroom": "ce1d737e17fc30fcd00f2603e184f046ab9d3a114640a4c44fe7897310ef4fac",
+    "romfs/world/house/opening.enchouse": "1bbd3ba9148fd37395d69947aee47b105c4c8df9c09bffd13e5fd5ba3bc0ba3f",
+    "romfs/ui/opening.encitems": "0223a8296dd74b3ed0b245996611b78e52d414e1d5d6cafd16e96dc71ae0afe0",
+    "romfs/battle/doll/doll-entry.encround": "a93c005b5d0f117f82a1b65613314aa969f450d98a1f2196b958800fd52cdacf"
+  },
+  "scope": "Actual new console build game bytes identical to BF whose complete cemetery/Record/freshLOAD was verified. New704receipt source separately verified; no hardware claim"
+}

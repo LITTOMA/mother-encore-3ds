@@ -1,0 +1,7 @@
+tests/native_session_tests.cpp: In function ‘int main(int, char**)’:
+tests/native_session_tests.cpp:134:22: error: redeclaration of ‘std::vector<unsigned char> current_defaults’
+  134 |  std::vector<uint8_t>current_defaults,legacy_defaults;CHECK(encode_session_save(historical.defaults(),historical.compatibility(),current_defaults,error));CHECK(encode_session_save(legacy.defaults(),legacy.compatibility(),legacy_defaults,error));CHECK(current_defaults==legacy_defaults);
+      |                      ^~~~~~~~~~~~~~~~
+tests/native_session_tests.cpp:90:37: note: ‘std::vector<unsigned char> current_defaults’ previously declared here
+   90 |  std::vector<uint8_t>prior_defaults,current_defaults;NativeSessionData baseline_v10;CHECK(baseline_v10.load(v10_bytes.data(),v10_bytes.size(),error));
+      |                                     ^~~~~~~~~~~~~~~~

@@ -33,7 +33,7 @@ storage: items
 item-details: items
 field-equipment: items item-details
 field-menus: session
-session: drawer items storage house-presents mick-treats
+session: drawer items storage house-presents mick-treats field-room
 bridge-entry: pillow-entry
 bridge-round: bridge-entry pillow-round
 field-story: bridge-entry items

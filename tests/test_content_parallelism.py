@@ -36,7 +36,7 @@ deps = {'room': ['audio', 'effects', 'doll-entry', 'pillow-entry'],
         'items': ['items-check'], 'locale': ['migration'], 'settings-check': ['settings'], 'introduction': ['audio']}
 producers = 'audio gameplay-audio music-zones bars input phone effects doll-entry pillow-entry room battle round doll-round pillow-round house house-presents mick-treats items-check items session migration restore continue loading naming settings settings-check prompts locale introduction inspections drawer storage item-details field-equipment field-menus bridge-entry bridge-round field-story field-room field-npcs mayor-scene field-props'.split()
 assert task in producers + ['catalog','encounters'], ('unknown content task',task)
-deps.update({'locale':['migration','house-presents'],'inspections':['house'],'drawer':['house'],'house-presents':['house'],'storage':['items'],'item-details':['items'],'field-equipment':['items','item-details'],'session':['drawer','items','storage','house-presents','mick-treats']})
+deps.update({'locale':['migration','house-presents'],'inspections':['house'],'drawer':['house'],'house-presents':['house'],'storage':['items'],'item-details':['items'],'field-equipment':['items','item-details'],'session':['drawer','items','storage','house-presents','mick-treats','field-room']})
 deps['field-menus'] = ['session']
 deps.update({'bridge-entry':['pillow-entry'],'bridge-round':['bridge-entry','pillow-round'],'field-story':['bridge-entry','items'],'field-room':['room','field-story','field-npcs','mayor-scene'],'mayor-scene':['room'],'field-npcs':['mick-treats'],'field-props':['field-room'],'locale':['migration','house-presents','bridge-round']})
 if task in ('catalog', 'encounters'): deps[task] = producers

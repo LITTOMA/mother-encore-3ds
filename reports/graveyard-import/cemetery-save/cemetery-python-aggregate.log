@@ -1,0 +1,705 @@
+Python method partition: 1123 discovered = 759 aggregate + 364 dedicated; exact ID multiset preserved
+PYTHON START test_native_content pid=7036
+PYTHON START test_native_house pid=40532
+PYTHON START test_native_restore pid=56900
+PYTHON START test_dad_record_dialogue pid=39064
+PYTHON END test_native_restore pid=56900 status=0
+test_all_registered_characters_and_frozen_inactive_inventory (tests.test_native_restore.RestoreCompilerTests.test_all_registered_characters_and_frozen_inactive_inventory) ... ok
+test_all_source_music_areas_and_explicit_unsupported_area (tests.test_native_restore.RestoreCompilerTests.test_all_source_music_areas_and_explicit_unsupported_area) ... ok
+test_existing_flag_mechanisms_are_reused (tests.test_native_restore.RestoreCompilerTests.test_existing_flag_mechanisms_are_reused) ... ok
+test_only_missing_npc_event_data_and_last_match_order (tests.test_native_restore.RestoreCompilerTests.test_only_missing_npc_event_data_and_last_match_order) ... ok
+test_recipe_is_source_checked (tests.test_native_restore.RestoreCompilerTests.test_recipe_is_source_checked) ... ok
+test_semantic_and_cross_pack_rejection (tests.test_native_restore.RestoreCompilerTests.test_semantic_and_cross_pack_rejection) ... ok
+test_source_recipe_and_staged_binary (tests.test_native_restore.RestoreCompilerTests.test_source_recipe_and_staged_binary) ... ok
+test_unknown_fields (tests.test_native_restore.RestoreCompilerTests.test_unknown_fields) ... ok
+test_version_admission (tests.test_native_restore.RestoreCompilerTests.test_version_admission) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.859s
+
+OK
+
+PYTHON START test_native_round pid=31076
+PYTHON END test_native_round pid=31076 status=0
+test_actual_attack_not_similarly_named_bash (tests.test_native_round.RoundCompilerTests.test_actual_attack_not_similarly_named_bash) ... ok
+test_changed_source_and_missing_review_fail (tests.test_native_round.RoundCompilerTests.test_changed_source_and_missing_review_fail) ... ok
+test_data_only_victory_text_and_duration (tests.test_native_round.RoundCompilerTests.test_data_only_victory_text_and_duration) ... ok
+test_external_text_templates (tests.test_native_round.RoundCompilerTests.test_external_text_templates) ... ok
+test_invalid_rule_fail (tests.test_native_round.RoundCompilerTests.test_invalid_rule_fail) ... ok
+test_literal_precision (tests.test_native_round.RoundCompilerTests.test_literal_precision) ... ok
+test_media_ownership_and_parameter_divisors (tests.test_native_round.RoundCompilerTests.test_media_ownership_and_parameter_divisors) ... ok
+test_missing_victory_media_has_no_fallback (tests.test_native_round.RoundCompilerTests.test_missing_victory_media_has_no_fallback) ... ok
+test_negative_binary_headers_and_truncations (tests.test_native_round.RoundCompilerTests.test_negative_binary_headers_and_truncations) ... ok
+test_return_camera_source_and_rejection (tests.test_native_round.RoundCompilerTests.test_return_camera_source_and_rejection) ... ok
+test_source_victory_contract (tests.test_native_round.RoundCompilerTests.test_source_victory_contract) ... ok
+test_sources_and_deterministic_compile (tests.test_native_round.RoundCompilerTests.test_sources_and_deterministic_compile) ... ok
+test_staging_hashes_and_escape (tests.test_native_round.RoundCompilerTests.test_staging_hashes_and_escape) ... ok
+test_unknown_ir_fields_fail (tests.test_native_round.RoundCompilerTests.test_unknown_ir_fields_fail) ... ok
+test_unknown_media_opcodes_and_nan (tests.test_native_round.RoundCompilerTests.test_unknown_media_opcodes_and_nan) ... ok
+test_unsupported_skill_paths_fail (tests.test_native_round.RoundCompilerTests.test_unsupported_skill_paths_fail) ... ok
+test_unsupported_victory_state_and_policy (tests.test_native_round.RoundCompilerTests.test_unsupported_victory_state_and_policy) ... ok
+test_victory_callback_contract_and_parameters (tests.test_native_round.RoundCompilerTests.test_victory_callback_contract_and_parameters) ... ok
+test_victory_missing_section_and_wrong_stride (tests.test_native_round.RoundCompilerTests.test_victory_missing_section_and_wrong_stride) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 1.288s
+
+OK
+
+PYTHON START test_phone_dialogue pid=27568
+PYTHON END test_dad_record_dialogue pid=39064 status=0
+test_alternate_leader_delays_and_newlines_preserved (tests.test_dad_record_dialogue.DadRecord.test_alternate_leader_delays_and_newlines_preserved) ... ok
+test_choice_wait_is_final_print_completion (tests.test_dad_record_dialogue.DadRecord.test_choice_wait_is_final_print_completion) ... ok
+test_every_leader_money_option_and_save_branch (tests.test_dad_record_dialogue.DadRecord.test_every_leader_money_option_and_save_branch) ... ok
+test_graph_must_use_reviewed_source_binding (tests.test_dad_record_dialogue.DadRecord.test_graph_must_use_reviewed_source_binding) ... ok
+test_hidden_save_source_order_and_no_text_gate (tests.test_dad_record_dialogue.DadRecord.test_hidden_save_source_order_and_no_text_gate) ... ok
+test_money_tokens_are_effectful_only_at_source_phrase (tests.test_dad_record_dialogue.DadRecord.test_money_tokens_are_effectful_only_at_source_phrase) ... ok
+test_stage_is_reproducible (tests.test_dad_record_dialogue.DadRecord.test_stage_is_reproducible) ... ok
+test_unknown_and_out_of_bounds_branches_rejected (tests.test_dad_record_dialogue.DadRecord.test_unknown_and_out_of_bounds_branches_rejected) ... ok
+test_unknown_source_field_or_changed_option_fails_closed (tests.test_dad_record_dialogue.DadRecord.test_unknown_source_field_or_changed_option_fails_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 4.995s
+
+OK
+
+PYTHON END test_phone_dialogue pid=27568 status=0
+test_area_call_preserves_wait_steps_and_enqueue_time_target (tests.test_phone_dialogue.PhoneDialogueTests.test_area_call_preserves_wait_steps_and_enqueue_time_target) ... ok
+test_changed_receipt_source_hash_version_and_extra_fields_reject (tests.test_phone_dialogue.PhoneDialogueTests.test_changed_receipt_source_hash_version_and_extra_fields_reject) ... ok
+test_direct_carol_flag_timing_and_restoration (tests.test_phone_dialogue.PhoneDialogueTests.test_direct_carol_flag_timing_and_restoration) ... ok
+test_first_dad_has_no_proxy_actor_and_only_final_flag (tests.test_phone_dialogue.PhoneDialogueTests.test_first_dad_has_no_proxy_actor_and_only_final_flag) ... ok
+test_hints_preserve_source_tokens_and_color (tests.test_phone_dialogue.PhoneDialogueTests.test_hints_preserve_source_tokens_and_color) ... ok
+test_native_parser_source_gate_and_reproducible_output (tests.test_phone_dialogue.PhoneDialogueTests.test_native_parser_source_gate_and_reproducible_output) ... ok
+test_no_answer_and_carol_reminder_are_literal_programs (tests.test_phone_dialogue.PhoneDialogueTests.test_no_answer_and_carol_reminder_are_literal_programs) ... ok
+test_normal_graph_preserves_leaders_money_and_record_suspend (tests.test_phone_dialogue.PhoneDialogueTests.test_normal_graph_preserves_leaders_money_and_record_suspend) ... ok
+test_normal_options_and_noop_cannot_be_silently_changed (tests.test_phone_dialogue.PhoneDialogueTests.test_normal_options_and_noop_cannot_be_silently_changed) ... ok
+test_reminder_has_no_ring_or_flags_and_original_motion (tests.test_phone_dialogue.PhoneDialogueTests.test_reminder_has_no_ring_or_flags_and_original_motion) ... ok
+test_source_phrase_key_order_cannot_change_handler_order (tests.test_phone_dialogue.PhoneDialogueTests.test_source_phrase_key_order_cannot_change_handler_order) ... ok
+test_unknown_document_fields_labels_targets_and_types_reject (tests.test_phone_dialogue.PhoneDialogueTests.test_unknown_document_fields_labels_targets_and_types_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 9.026s
+
+OK
+
+PYTHON END test_native_house pid=40532 status=0
+test_authored_transform_and_wait_semantics (tests.test_native_house.HouseCompilerTests.test_authored_transform_and_wait_semantics) ... ok
+test_data_only_and_staging (tests.test_native_house.HouseCompilerTests.test_data_only_and_staging) ... ok
+test_deterministic_source_and_binary (tests.test_native_house.HouseCompilerTests.test_deterministic_source_and_binary) ... ok
+test_doll_boundary_and_initial_npc_profiles (tests.test_native_house.HouseCompilerTests.test_doll_boundary_and_initial_npc_profiles) ... ok
+test_fingerprint_mismatch_rejected (tests.test_native_house.HouseCompilerTests.test_fingerprint_mismatch_rejected) ... ok
+test_missing_duplicated_and_misbound_profile_clips (tests.test_native_house.HouseCompilerTests.test_missing_duplicated_and_misbound_profile_clips) ... ok
+test_negative_headers (tests.test_native_house.HouseCompilerTests.test_negative_headers) ... ok
+test_negative_presentation_geometry_and_divisors (tests.test_native_house.HouseCompilerTests.test_negative_presentation_geometry_and_divisors) ... ok
+test_revision4_and5_remain_accepted_without_new_tokens (tests.test_native_house.HouseCompilerTests.test_revision4_and5_remain_accepted_without_new_tokens) ... ok
+test_revision6_delay_newline_tokens_and_legacy_bounds (tests.test_native_house.HouseCompilerTests.test_revision6_delay_newline_tokens_and_legacy_bounds) ... ok
+test_revision7_capacity_and_unknown_revision_fail_closed (tests.test_native_house.HouseCompilerTests.test_revision7_capacity_and_unknown_revision_fail_closed) ... ok
+test_semantic_rejections (tests.test_native_house.HouseCompilerTests.test_semantic_rejections) ... ok
+test_source_openable_policy_and_standalone_dialogue (tests.test_native_house.HouseCompilerTests.test_source_openable_policy_and_standalone_dialogue) ... ok
+test_unknown_fields_rejected (tests.test_native_house.HouseCompilerTests.test_unknown_fields_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 98.032s
+
+OK
+
+PYTHON END test_native_content pid=7036 status=0
+test_animation_modes_visibility_order_and_frame_range (tests.test_native_content.NativeContentTests.test_animation_modes_visibility_order_and_frame_range) ... ok
+test_checksum_and_unknown_directory_values (tests.test_native_content.NativeContentTests.test_checksum_and_unknown_directory_values) ... ok
+test_commands_unknown_target_extra_fields_and_terminal (tests.test_native_content.NativeContentTests.test_commands_unknown_target_extra_fields_and_terminal) ... ok
+test_confirmed_dialogue_loop_capability_roundtrip (tests.test_native_content.NativeContentTests.test_confirmed_dialogue_loop_capability_roundtrip) ... ok
+test_confirmed_loop_rejects_missing_gates_flags_versions_and_targets (tests.test_native_content.NativeContentTests.test_confirmed_loop_rejects_missing_gates_flags_versions_and_targets) ... ok
+test_current_extended_capability_is_valid (tests.test_native_content.NativeContentTests.test_current_extended_capability_is_valid) ... ok
+test_data_only_variants_and_no_cpp_toolchain (tests.test_native_content.NativeContentTests.test_data_only_variants_and_no_cpp_toolchain) ... ok
+test_every_truncation_and_trailing_byte_rejected (tests.test_native_content.NativeContentTests.test_every_truncation_and_trailing_byte_rejected) ... ok
+test_flags_conditions_and_actor_profile_bounds (tests.test_native_content.NativeContentTests.test_flags_conditions_and_actor_profile_bounds) ... ok
+test_geometry_bounds_degeneracy_and_convexity (tests.test_native_content.NativeContentTests.test_geometry_bounds_degeneracy_and_convexity) ... ok
+test_header_versions_capabilities_size_reserved_rejected (tests.test_native_content.NativeContentTests.test_header_versions_capabilities_size_reserved_rejected) ... ok
+test_nonfinite_and_signed_widths_rejected (tests.test_native_content.NativeContentTests.test_nonfinite_and_signed_widths_rejected) ... ok
+test_overlap_unaligned_section_and_nonzero_padding (tests.test_native_content.NativeContentTests.test_overlap_unaligned_section_and_nonzero_padding) ... ok
+test_periodic_room_shake_negative_bindings_and_rules (tests.test_native_content.NativeContentTests.test_periodic_room_shake_negative_bindings_and_rules) ... ok
+test_periodic_room_shake_source_contract (tests.test_native_content.NativeContentTests.test_periodic_room_shake_source_contract) ... ok
+test_production_exporters_no_longer_emit_content_headers (tests.test_native_content.NativeContentTests.test_production_exporters_no_longer_emit_content_headers) ... ok
+test_provenance_wrong_hash_path_and_source_change (tests.test_native_content.NativeContentTests.test_provenance_wrong_hash_path_and_source_change) ... ok
+test_reference_limits_duplicate_ids_and_range_overflow (tests.test_native_content.NativeContentTests.test_reference_limits_duplicate_ids_and_range_overflow) ... ok
+test_reserved_record_bytes_rejected (tests.test_native_content.NativeContentTests.test_reserved_record_bytes_rejected) ... ok
+test_revision6_branch_targets_and_operand_domains (tests.test_native_content.NativeContentTests.test_revision6_branch_targets_and_operand_domains) ... ok
+test_revision6_terminal_branches_and_legacy_compatibility (tests.test_native_content.NativeContentTests.test_revision6_terminal_branches_and_legacy_compatibility) ... ok
+test_revision7_actor_loop_repeat_and_stop_operands (tests.test_native_content.NativeContentTests.test_revision7_actor_loop_repeat_and_stop_operands) ... ok
+test_roundtrip_determinism_all_schema_widths (tests.test_native_content.NativeContentTests.test_roundtrip_determinism_all_schema_widths) ... ok
+test_rule_table_and_xp_contract (tests.test_native_content.NativeContentTests.test_rule_table_and_xp_contract) ... ok
+test_string_bounds_nul_and_utf8_rejected (tests.test_native_content.NativeContentTests.test_string_bounds_nul_and_utf8_rejected) ... ok
+test_texture_grid_resource_paths_and_rects (tests.test_native_content.NativeContentTests.test_texture_grid_resource_paths_and_rects) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 136.573s
+
+OK
+
+test_bad_frame (test_actor_actions_reference.ActorActionReferenceTests.test_bad_frame) ... ok
+test_changed_function (test_actor_actions_reference.ActorActionReferenceTests.test_changed_function) ... ok
+test_changed_source (test_actor_actions_reference.ActorActionReferenceTests.test_changed_source) ... ok
+test_missing_case (test_actor_actions_reference.ActorActionReferenceTests.test_missing_case) ... ok
+test_missing_frame (test_actor_actions_reference.ActorActionReferenceTests.test_missing_frame) ... ok
+test_nonfinite (test_actor_actions_reference.ActorActionReferenceTests.test_nonfinite) ... ok
+test_regeneration (test_actor_actions_reference.ActorActionReferenceTests.test_regeneration) ... ok
+test_unknown_command (test_actor_actions_reference.ActorActionReferenceTests.test_unknown_command) ... ok
+test_unknown_property (test_actor_actions_reference.ActorActionReferenceTests.test_unknown_property) ... ok
+test_wrong_boolean_type (test_actor_actions_reference.ActorActionReferenceTests.test_wrong_boolean_type) ... ok
+test_wrong_engine (test_actor_actions_reference.ActorActionReferenceTests.test_wrong_engine) ... ok
+test_wrong_schema (test_actor_actions_reference.ActorActionReferenceTests.test_wrong_schema) ... ok
+test_changed_source_or_pin_rejected (test_actor_asset.ActorAssetTests.test_changed_source_or_pin_rejected) ... ok
+test_missing_bundle_rejected (test_actor_asset.ActorAssetTests.test_missing_bundle_rejected) ... ok
+test_permission_and_path_guard (test_actor_asset.ActorAssetTests.test_permission_and_path_guard) ... ok
+test_receipt_and_output_integrity (test_actor_asset.ActorAssetTests.test_receipt_and_output_integrity) ... ok
+test_reviewed_source (test_actor_asset.ActorAssetTests.test_reviewed_source) ... ok
+test_unknown_schema_version_layout_rejected (test_actor_asset.ActorAssetTests.test_unknown_schema_version_layout_rejected) ... ok
+test_actual_tracks_native_precision_and_visibility_are_preserved (test_actor_conversion.AnimationConversionTests.test_actual_tracks_native_precision_and_visibility_are_preserved) ... ok
+test_clock_reference_engine_scope_samples_and_precision_rejected (test_actor_conversion.AnimationConversionTests.test_clock_reference_engine_scope_samples_and_precision_rejected) ... ok
+test_missing_duplicate_extra_track_and_changed_visibility_rejected (test_actor_conversion.AnimationConversionTests.test_missing_duplicate_extra_track_and_changed_visibility_rejected) ... ok
+test_new_key_modes_frame_range_and_out_of_duration_keys_rejected (test_actor_conversion.AnimationConversionTests.test_new_key_modes_frame_range_and_out_of_duration_keys_rejected) ... ok
+test_unknown_method_property_interpolation_import_and_script_rejected (test_actor_conversion.AnimationConversionTests.test_unknown_method_property_interpolation_import_and_script_rejected) ... ok
+test_unknown_version_grid_scope_and_scene_rejected (test_actor_conversion.AnimationConversionTests.test_unknown_version_grid_scope_and_scene_rejected) ... ok
+test_actual_reference_generates_recorded_fixture (test_actor_conversion.MovementReferenceTests.test_actual_reference_generates_recorded_fixture) ... ok
+test_missing_reordered_input_and_controls_domain_rejected (test_actor_conversion.MovementReferenceTests.test_missing_reordered_input_and_controls_domain_rejected) ... ok
+test_provenance_version_and_symbol_hashes_rejected (test_actor_conversion.MovementReferenceTests.test_provenance_version_and_symbol_hashes_rejected) ... ok
+test_unchanged_function_body_and_missing_ambiguous_symbols (test_actor_conversion.MovementReferenceTests.test_unchanged_function_body_and_missing_ambiguous_symbols) ... ok
+test_unknown_animation_nonfinite_flags_and_state_domain_rejected (test_actor_conversion.MovementReferenceTests.test_unknown_animation_nonfinite_flags_and_state_domain_rejected) ... ok
+test_append_boundary_and_decoder_negative (test_append_audio_assets.AppendAudio.test_append_boundary_and_decoder_negative) ... ok
+test_declared_output_rate_uses_actual_decoded_rate (test_append_audio_assets.AppendAudio.test_declared_output_rate_uses_actual_decoded_rate) ... ok
+test_exact_append_and_existing_identity (test_append_audio_assets.AppendAudio.test_exact_append_and_existing_identity) ... ok
+test_existing_payload_is_never_overwritten_or_removed (test_append_audio_assets.AppendAudio.test_existing_payload_is_never_overwritten_or_removed) ... ok
+test_partial_payload_write_is_cleaned (test_append_audio_assets.AppendAudio.test_partial_payload_write_is_cleaned) ... ok
+test_prior_recipe_receipt_and_bank_negative (test_append_audio_assets.AppendAudio.test_prior_recipe_receipt_and_bank_negative) ... ok
+test_prior_snapshot_paths_cannot_publish (test_append_audio_assets.AppendAudio.test_prior_snapshot_paths_cannot_publish) ... ok
+test_publication_verification_failure_restores_metadata (test_append_audio_assets.AppendAudio.test_publication_verification_failure_restores_metadata) ... ok
+test_actual_manifest_and_source_loop (test_audio_asset.AudioAssetTests.test_actual_manifest_and_source_loop) ... ok
+test_all_bit_changes (test_audio_asset.AudioAssetTests.test_all_bit_changes) ... ok
+test_all_truncations (test_audio_asset.AudioAssetTests.test_all_truncations) ... ok
+test_bank_roundtrip (test_audio_asset.AudioAssetTests.test_bank_roundtrip) ... ok
+test_duplicate_identity_or_paths (test_audio_asset.AudioAssetTests.test_duplicate_identity_or_paths) ... ok
+test_importer_known (test_audio_asset.AudioAssetTests.test_importer_known) ... ok
+test_importer_unknown_fails (test_audio_asset.AudioAssetTests.test_importer_unknown_fails) ... ok
+test_path_rejection (test_audio_asset.AudioAssetTests.test_path_rejection) ... ok
+test_recipe_unknown_rejected_before_processes (test_audio_asset.AudioAssetTests.test_recipe_unknown_rejected_before_processes) ... ok
+test_reviewed_menu_wav_import_and_resample (test_audio_asset.AudioAssetTests.test_reviewed_menu_wav_import_and_resample) ... ok
+test_semantic_corruption (test_audio_asset.AudioAssetTests.test_semantic_corruption) ... ok
+test_source_digest_rejected (test_audio_asset.AudioAssetTests.test_source_digest_rejected) ... ok
+test_stage_tamper (test_audio_asset.AudioAssetTests.test_stage_tamper) ... ok
+test_actual_renderer_expansion_repeat_and_reference_sampling (test_battle_assets.BattleAssetsTests.test_actual_renderer_expansion_repeat_and_reference_sampling) ... ERROR
+test_bad_version_magic_dimensions_and_crc (test_battle_assets.BattleAssetsTests.test_bad_version_magic_dimensions_and_crc) ... ok
+test_compiled_source_receipt (test_battle_assets.BattleAssetsTests.test_compiled_source_receipt) ... ok
+test_crc_correct_invalid_palette_reference_rejected (test_battle_assets.BattleAssetsTests.test_crc_correct_invalid_palette_reference_rejected) ... ok
+test_every_truncation_rejected (test_battle_assets.BattleAssetsTests.test_every_truncation_rejected) ... ok
+test_invalid_grids (test_battle_assets.BattleAssetsTests.test_invalid_grids) ... ok
+test_lossless_frame_reordering_and_transparent_rgb (test_battle_assets.BattleAssetsTests.test_lossless_frame_reordering_and_transparent_rgb) ... ok
+test_palette_limit (test_battle_assets.BattleAssetsTests.test_palette_limit) ... ok
+test_shader_branch_order_and_unblended_color (test_battle_assets.BattleAssetsTests.test_shader_branch_order_and_unblended_color) ... ok
+test_source_pin_and_changes (test_battle_assets.BattleAssetsTests.test_source_pin_and_changes) ... ok
+test_trailing_byte_rejected (test_battle_assets.BattleAssetsTests.test_trailing_byte_rejected) ... ok
+test_unknown_recipe_fields_kinds_paths_crop (test_battle_assets.BattleAssetsTests.test_unknown_recipe_fields_kinds_paths_crop) ... ok
+test_unreviewed_version_commit_permission (test_battle_assets.BattleAssetsTests.test_unreviewed_version_commit_permission) ... ok
+test_archive_empty_module_directory_restores_without_superproject (test_ci_bootstrap.CiBootstrapTests.test_archive_empty_module_directory_restores_without_superproject) ... Cloning into 'C:\Users\litto\AppData\Local\Temp\tmphtfa9gxc\native\upstream\.ci-restore-7x2tlzrj\checkout'...
+warning: filtering not recognized by server, ignoring
+ok
+test_archive_restores_without_lock_or_inventory_changes (test_ci_bootstrap.CiBootstrapTests.test_archive_restores_without_lock_or_inventory_changes) ... Cloning into 'C:\Users\litto\AppData\Local\Temp\tmpog922keg\native\upstream\.ci-restore-mtjwceq8\checkout'...
+warning: filtering not recognized by server, ignoring
+ok
+test_broken_gitfile_and_parent_repository_impersonation_reject (test_ci_bootstrap.CiBootstrapTests.test_broken_gitfile_and_parent_repository_impersonation_reject) ... ok
+test_dirty_tracked_source_never_fetches_or_resets (test_ci_bootstrap.CiBootstrapTests.test_dirty_tracked_source_never_fetches_or_resets) ... ok
+test_inventory_git_environment_is_read_only_and_restored (test_ci_bootstrap.CiBootstrapTests.test_inventory_git_environment_is_read_only_and_restored) ... ok
+test_local_url_command_and_unknown_module_reject (test_ci_bootstrap.CiBootstrapTests.test_local_url_command_and_unknown_module_reject) ... ok
+test_mismatched_gitlink_never_initializes (test_ci_bootstrap.CiBootstrapTests.test_mismatched_gitlink_never_initializes) ... ok
+test_mismatched_lock_and_inventory_reject (test_ci_bootstrap.CiBootstrapTests.test_mismatched_lock_and_inventory_reject) ... ok
+test_missing_gitmodules_or_gitlink_reject (test_ci_bootstrap.CiBootstrapTests.test_missing_gitmodules_or_gitlink_reject) ... ok
+test_modern_module_gitfile_and_verify_only_are_real_read_only (test_ci_bootstrap.CiBootstrapTests.test_modern_module_gitfile_and_verify_only_are_real_read_only) ... ok
+test_nonempty_uninitialized_source_is_not_overwritten (test_ci_bootstrap.CiBootstrapTests.test_nonempty_uninitialized_source_is_not_overwritten) ... ok
+test_normal_clone_module_is_resolved_from_a_different_cwd (test_ci_bootstrap.CiBootstrapTests.test_normal_clone_module_is_resolved_from_a_different_cwd) ... ok
+test_source_lock_inventory_schema_hash_and_coverage_reject (test_ci_bootstrap.CiBootstrapTests.test_source_lock_inventory_schema_hash_and_coverage_reject) ... ok
+test_uninitialized_empty_module_directory_can_initialize (test_ci_bootstrap.CiBootstrapTests.test_uninitialized_empty_module_directory_can_initialize) ... ok
+test_unknown_source_url_in_lock_rejects (test_ci_bootstrap.CiBootstrapTests.test_unknown_source_url_in_lock_rejects) ... ok
+test_untracked_and_ignored_source_never_cleaned (test_ci_bootstrap.CiBootstrapTests.test_untracked_and_ignored_source_never_cleaned) ... ok
+test_verify_only_uninitialized_does_not_create_files (test_ci_bootstrap.CiBootstrapTests.test_verify_only_uninitialized_does_not_create_files) ... ok
+test_wrong_module_url_path_unknown_module_and_hook_reject (test_ci_bootstrap.CiBootstrapTests.test_wrong_module_url_path_unknown_module_and_hook_reject) ... ok
+test_rejected (test_ci_console_check.ConsoleHeaderTests.test_rejected) ... ok
+test_valid (test_ci_console_check.ConsoleHeaderTests.test_valid) ... ok
+test_activation_is_explicit (test_ci_python_environment.CiPythonEnvironmentTests.test_activation_is_explicit) ... FAIL
+test_missing_or_wrong_parser_fails_before_script_execution (test_ci_python_environment.CiPythonEnvironmentTests.test_missing_or_wrong_parser_fails_before_script_execution) ... ok
+test_order_values_and_types_match (test_ci_python_environment.CiPythonEnvironmentTests.test_order_values_and_types_match) ... FAIL
+test_unknown_unsafe_and_malformed_inputs_rejected (test_ci_python_environment.CiPythonEnvironmentTests.test_unknown_unsafe_and_malformed_inputs_rejected) ... ok
+test_duplicate_registration_fails (test_ci_quick.QuickSelectionTests.test_duplicate_registration_fails) ... ok
+test_every_missing_production_registration_fails (test_ci_quick.QuickSelectionTests.test_every_missing_production_registration_fails) ... ok
+test_introduction_is_included_when_implemented (test_ci_quick.QuickSelectionTests.test_introduction_is_included_when_implemented) ... ok
+test_invalid_metadata_fails (test_ci_quick.QuickSelectionTests.test_invalid_metadata_fails) ... ok
+test_real_production_selection_excludes_fixture_and_source_suites (test_ci_quick.QuickSelectionTests.test_real_production_selection_excludes_fixture_and_source_suites) ... ok
+test_regex_is_exact_and_empty_selection_fails (test_ci_quick.QuickSelectionTests.test_regex_is_exact_and_empty_selection_fails) ... ok
+Verified pinned Ninten texture before embedding in RomFS.
+Verified source-pinned battle entry assets
+PYTHON START test_native_content pid=24504
+PYTHON END test_native_content pid=24504 status=1
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 256, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 234, in main
+    return worker(args.project, args.worker_plan, args.worker_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 122, in worker
+    raise ValueError('Worker collection differs from admitted method IDs')
+ValueError: Worker collection differs from admitted method IDs
+
+test_changed_collection_cannot_reuse_stale_success (test_ci_test_parallelism.ParallelTests.test_changed_collection_cannot_reuse_stale_success) ... ok
+test_ctest_defaults_and_four_slot_policy (test_ci_test_parallelism.ParallelTests.test_ctest_defaults_and_four_slot_policy) ... ok
+PYTHON START test_native_content pid=45100
+PYTHON START test_native_house pid=17488
+PYTHON END test_native_content pid=45100 status=0
+test_run (tests.test_native_content.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+PYTHON END test_native_house pid=17488 status=1
+test_run (tests.test_native_house.Case.test_run) ... FAIL
+
+======================================================================
+FAIL: test_run (tests.test_native_house.Case.test_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\litto\AppData\Local\Temp\tmpsnmn_r6s\tests\test_native_house.py", line 3, in test_run
+    def test_run(self): self.fail("intentional worker failure")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: intentional worker failure
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
+
+test_failure_propagates_and_other_worker_still_runs (test_ci_test_parallelism.ParallelTests.test_failure_propagates_and_other_worker_still_runs) ... ok
+PYTHON START test_native_content pid=25120
+PYTHON START test_native_restore pid=22688
+PYTHON START test_native_house pid=52480
+PYTHON START test_native_round pid=54360
+PYTHON END test_native_house pid=52480 status=0
+PYTHON END test_native_restore pid=22688 status=0
+test_run (tests.test_native_house.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+OK
+
+test_run (tests.test_native_restore.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+PYTHON END test_native_round pid=54360 status=0
+test_run (tests.test_native_round.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.014s
+
+OK
+
+PYTHON END test_native_content pid=25120 status=0
+test_run (tests.test_native_content.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.014s
+
+OK
+
+test_four_processes_overlap_and_isolate_module_mocks (test_ci_test_parallelism.ParallelTests.test_four_processes_overlap_and_isolate_module_mocks) ... ok
+test_invalid_job_count_and_unreviewed_modules_fail_closed (test_ci_test_parallelism.ParallelTests.test_invalid_job_count_and_unreviewed_modules_fail_closed) ... ok
+test_partition_preserves_unknown_modules_and_detects_missing_methods (test_ci_test_parallelism.ParallelTests.test_partition_preserves_unknown_modules_and_detects_missing_methods) ... ok
+test_worker_rejects_unknown_or_duplicate_plan_before_execution (test_ci_test_parallelism.ParallelTests.test_worker_rejects_unknown_or_duplicate_plan_before_execution) ... ok
+test_downloadable_builds_enable_existing_pillow_texture_backend (test_ci_workflow_policy.WorkflowPolicyTests.test_downloadable_builds_enable_existing_pillow_texture_backend) ... ok
+test_full_checks_remain_complete (test_ci_workflow_policy.WorkflowPolicyTests.test_full_checks_remain_complete) ... ok
+test_main_build_and_manual_modes_are_registered (test_ci_workflow_policy.WorkflowPolicyTests.test_main_build_and_manual_modes_are_registered) ... ok
+test_only_explicit_full_mode_admits_tests (test_ci_workflow_policy.WorkflowPolicyTests.test_only_explicit_full_mode_admits_tests) ... ok
+test_successful_console_outputs_are_uploaded_without_canceling_other_commits (test_ci_workflow_policy.WorkflowPolicyTests.test_successful_console_outputs_are_uploaded_without_canceling_other_commits) ... ok
+test_missing_core_and_fixture_substitutions_reject (test_console_core_sources.ConsoleCoreSourcesTests.test_missing_core_and_fixture_substitutions_reject) ... ok
+test_playable_sources_registered_in_both_builds (test_console_core_sources.ConsoleCoreSourcesTests.test_playable_sources_registered_in_both_builds) ... ok
+test_unknown_and_duplicate_source_expressions_reject (test_console_core_sources.ConsoleCoreSourcesTests.test_unknown_and_duplicate_source_expressions_reject) ... ok
+test_bad_flag_type (test_content.ContentTests.test_bad_flag_type) ... ok
+test_bad_jump_rejected (test_content.ContentTests.test_bad_jump_rejected) ... ok
+test_blocked_spawn_rejected (test_content.ContentTests.test_blocked_spawn_rejected) ... ok
+test_deterministic (test_content.ContentTests.test_deterministic) ... ok
+test_duplicate_stable_id_rejected (test_content.ContentTests.test_duplicate_stable_id_rejected) ... ok
+test_missing_binding_rejected (test_content.ContentTests.test_missing_binding_rejected) ... ok
+test_partial_capability_manifest_rejected (test_content.ContentTests.test_partial_capability_manifest_rejected) ... ok
+test_ragged_map_rejected (test_content.ContentTests.test_ragged_map_rejected) ... ok
+test_source_map_retained (test_content.ContentTests.test_source_map_retained) ... ok
+test_text_change_only_changes_pack (test_content.ContentTests.test_text_change_only_changes_pack) ... ok
+test_unknown_fields_rejected (test_content.ContentTests.test_unknown_fields_rejected) ... ok
+test_unknown_opcode_rejected (test_content.ContentTests.test_unknown_opcode_rejected) ... ok
+test_failure_blocks_room_and_final_fingerprints (test_content_parallelism.ContentParallelTests.test_failure_blocks_room_and_final_fingerprints) ... ok
+test_four_process_overlap_dependencies_and_final_barrier (test_content_parallelism.ContentParallelTests.test_four_process_overlap_dependencies_and_final_barrier) ... ok
+test_invalid_task_does_not_launch_command (test_content_parallelism.ContentParallelTests.test_invalid_task_does_not_launch_command) ... ok
+test_task_failure_replaces_stale_success_and_retains_log (test_content_parallelism.ContentParallelTests.test_task_failure_replaces_stale_success_and_retains_log) ... ok
+test_corrupt_archive (test_ctr_tools.SourceArchiveTests.test_corrupt_archive) ... ok
+test_duplicate_and_empty (test_ctr_tools.SourceArchiveTests.test_duplicate_and_empty) ... ok
+test_invalid_paths_write_nothing (test_ctr_tools.SourceArchiveTests.test_invalid_paths_write_nothing) ... ok
+test_size_limit (test_ctr_tools.SourceArchiveTests.test_size_limit) ... ok
+test_unsupported_types (test_ctr_tools.SourceArchiveTests.test_unsupported_types) ... ok
+test_valid_source (test_ctr_tools.SourceArchiveTests.test_valid_source) ... ok
+test_native_layout_and_source_semantics (test_dialogue_choices_assets.ChoicesAssets.test_native_layout_and_source_semantics) ... ok
+test_recipe_drift_rejected (test_dialogue_choices_assets.ChoicesAssets.test_recipe_drift_rejected) ... ok
+test_shared_resources_and_safe_staging (test_dialogue_choices_assets.ChoicesAssets.test_shared_resources_and_safe_staging) ... FAIL
+test_source_and_pack_reproduce (test_dialogue_choices_assets.ChoicesAssets.test_source_and_pack_reproduce) ... ok
+test_bad_frame (test_doll_actor_actions_reference.DollActorReferenceTests.test_bad_frame) ... ok
+test_boolean (test_doll_actor_actions_reference.DollActorReferenceTests.test_boolean) ... ok
+test_domain (test_doll_actor_actions_reference.DollActorReferenceTests.test_domain) ... ok
+test_engine (test_doll_actor_actions_reference.DollActorReferenceTests.test_engine) ... ok
+test_function (test_doll_actor_actions_reference.DollActorReferenceTests.test_function) ... ok
+test_missing_frame (test_doll_actor_actions_reference.DollActorReferenceTests.test_missing_frame) ... ok
+test_nan (test_doll_actor_actions_reference.DollActorReferenceTests.test_nan) ... ok
+test_regeneration (test_doll_actor_actions_reference.DollActorReferenceTests.test_regeneration) ... ok
+test_schema (test_doll_actor_actions_reference.DollActorReferenceTests.test_schema) ... ok
+test_source (test_doll_actor_actions_reference.DollActorReferenceTests.test_source) ... ok
+test_unknown (test_doll_actor_actions_reference.DollActorReferenceTests.test_unknown) ... ok
+test_battle_and_house_links_keep_original_followup_without_winflag (test_doll_content.DollContentTests.test_battle_and_house_links_keep_original_followup_without_winflag) ... ok
+test_delayed_keys_and_motion_contract_fail_closed (test_doll_content.DollContentTests.test_delayed_keys_and_motion_contract_fail_closed) ... ok
+test_house_cross_pack_and_duplicate_mappings_reject (test_doll_content.DollContentTests.test_house_cross_pack_and_duplicate_mappings_reject) ... ok
+test_native_animation_floats_and_original_sheet_offsets (test_doll_content.DollContentTests.test_native_animation_floats_and_original_sheet_offsets) ... ok
+test_native_receipt_fingerprint_rejects_forged_animation (test_doll_content.DollContentTests.test_native_receipt_fingerprint_rejects_forged_animation) ... ok
+test_new_opcodes_reject_wrong_targets_actors_and_extras (test_doll_content.DollContentTests.test_new_opcodes_reject_wrong_targets_actors_and_extras) ... ok
+test_new_schema_paths_reject_invalid_payload_and_ownership (test_doll_content.DollContentTests.test_new_schema_paths_reject_invalid_payload_and_ownership) ... ok
+test_program_graph_and_original_handler_order (test_doll_content.DollContentTests.test_program_graph_and_original_handler_order) ... ok
+test_source_paths_preserve_waits_modes_and_moonwalk (test_doll_content.DollContentTests.test_source_paths_preserve_waits_modes_and_moonwalk) ... ok
+test_unknown_source_handlers_do_not_silently_drop (test_doll_content.DollContentTests.test_unknown_source_handlers_do_not_silently_drop) ... ok
+test_deterministic_bundle_and_safe_staging (test_doll_entry_asset.DollEntryAssetTests.test_deterministic_bundle_and_safe_staging) ... ok
+test_every_truncated_binary_rejected (test_doll_entry_asset.DollEntryAssetTests.test_every_truncated_binary_rejected) ... ok
+test_exact_roster_audio_geometry_and_shader (test_doll_entry_asset.DollEntryAssetTests.test_exact_roster_audio_geometry_and_shader) ... ok
+test_lossless_background_and_palette (test_doll_entry_asset.DollEntryAssetTests.test_lossless_background_and_palette) ... ok
+test_native_palette_review_is_bound (test_doll_entry_asset.DollEntryAssetTests.test_native_palette_review_is_bound) ... ok
+test_no_fake_reward_flag_or_combat (test_doll_entry_asset.DollEntryAssetTests.test_no_fake_reward_flag_or_combat) ... ok
+test_portrait_inherits_parent_before_own_show (test_doll_entry_asset.DollEntryAssetTests.test_portrait_inherits_parent_before_own_show) ... ok
+test_unknown_pin_or_combat_approval_rejected (test_doll_entry_asset.DollEntryAssetTests.test_unknown_pin_or_combat_approval_rejected) ... ok
+test_unknown_shader_branch_cannot_be_silently_dropped (test_doll_entry_asset.DollEntryAssetTests.test_unknown_shader_branch_cannot_be_silently_dropped) ... ok
+test_dot_exact_native_keys_and_sound_stable_id (test_doll_postwin.DollPostwinTests.test_dot_exact_native_keys_and_sound_stable_id) ... ok
+test_forged_native_receipt_is_rejected (test_doll_postwin.DollPostwinTests.test_forged_native_receipt_is_rejected) ... ok
+test_manual_text_and_speed_alias (test_doll_postwin.DollPostwinTests.test_manual_text_and_speed_alias) ... ok
+test_minnie_texture_profile_body_and_original_initial_position (test_doll_postwin.DollPostwinTests.test_minnie_texture_profile_body_and_original_initial_position) ... ok
+test_native_parser_source_receipt (test_doll_postwin.DollPostwinTests.test_native_parser_source_receipt) ... ok
+test_original_handler_order_and_flag_notifications (test_doll_postwin.DollPostwinTests.test_original_handler_order_and_flag_notifications) ... ok
+test_prior_content_prefixes_and_explicit_idle_semantic_correction (test_doll_postwin.DollPostwinTests.test_prior_content_prefixes_and_explicit_idle_semantic_correction) ... ok
+test_program_path_and_terminal_bindings (test_doll_postwin.DollPostwinTests.test_program_path_and_terminal_bindings) ... ok
+test_program_path_terminal_duration_and_key_capacity_rejection (test_doll_postwin.DollPostwinTests.test_program_path_terminal_duration_and_key_capacity_rejection) ... ok
+test_unknown_postwin_source_paths_fail_closed (test_doll_postwin.DollPostwinTests.test_unknown_postwin_source_paths_fail_closed) ... ok
+test_wait_segments_and_dynamic_name (test_doll_postwin.DollPostwinTests.test_wait_segments_and_dynamic_name) ... ok
+test_extended_cleanup_includes_equal_value_signals (test_doll_postwin_reference.DollPostwinReferenceTests.test_extended_cleanup_includes_equal_value_signals) ... ok
+test_fixture_and_recorded_pipeline_identity (test_doll_postwin_reference.DollPostwinReferenceTests.test_fixture_and_recorded_pipeline_identity) ... ok
+test_fixture_rejects_incomplete_unknown_and_nonfinite_frames (test_doll_postwin_reference.DollPostwinReferenceTests.test_fixture_rejects_incomplete_unknown_and_nonfinite_frames) ... ok
+test_original_sources_method_hashes_and_case_domain (test_doll_postwin_reference.DollPostwinReferenceTests.test_original_sources_method_hashes_and_case_domain) ... ok
+test_bad_encounter_policy_rejected (test_doll_round.DollRoundTests.test_bad_encounter_policy_rejected) ... ok
+test_bad_growth_and_shake_rejected (test_doll_round.DollRoundTests.test_bad_growth_and_shake_rejected) ... ok
+test_boss_callbacks_and_data_only_media (test_doll_round.DollRoundTests.test_boss_callbacks_and_data_only_media) ... ok
+test_checked_sources_and_deterministic_binary (test_doll_round.DollRoundTests.test_checked_sources_and_deterministic_binary) ... ok
+test_data_only_return_music_policy (test_doll_round.DollRoundTests.test_data_only_return_music_policy) ... ok
+test_explicit_legacy_schema_and_unknown_rejection (test_doll_round.DollRoundTests.test_explicit_legacy_schema_and_unknown_rejection) ... ok
+test_native_source_actions_oracle (test_doll_round.DollRoundTests.test_native_source_actions_oracle) ... ok
+test_native_source_growth_oracle (test_doll_round.DollRoundTests.test_native_source_growth_oracle) ... ok
+test_source_encounter_and_progression (test_doll_round.DollRoundTests.test_source_encounter_and_progression) ... ok
+test_source_return_music_policy_and_order (test_doll_round.DollRoundTests.test_source_return_music_policy_and_order) ... ok
+test_staging_uses_companion_pack (test_doll_round.DollRoundTests.test_staging_uses_companion_pack) ... ok
+test_unknown_or_missing_sections_rejected (test_doll_round.DollRoundTests.test_unknown_or_missing_sections_rejected) ... ok
+test_native_live_array_mutation_and_guards (test_door_music_reference.DoorMusicReference.test_native_live_array_mutation_and_guards) ... ok
+test_native_output_domain_negative (test_door_music_reference.DoorMusicReference.test_native_output_domain_negative) ... ok
+test_review_scope_or_source_changes_reject (test_door_music_reference.DoorMusicReference.test_review_scope_or_source_changes_reject) ... ok
+test_exact_source_and_unique_embedded_metadata (test_emulator_artifact.ArtifactMetadata.test_exact_source_and_unique_embedded_metadata) ... ok
+test_unknown_source_paths_and_missing_duplicate_data_rejected (test_emulator_artifact.ArtifactMetadata.test_unknown_source_paths_and_missing_duplicate_data_rejected) ... ok
+test_error_wrong_response_disconnection_and_invalid_envelope (test_emulator_semantics.RpcBoundary.test_error_wrong_response_disconnection_and_invalid_envelope) ... ok
+test_event_before_result_is_preserved (test_emulator_semantics.RpcBoundary.test_event_before_result_is_preserved) ... ok
+test_guest_memory_write_is_denied_locally (test_emulator_semantics.RpcBoundary.test_guest_memory_write_is_denied_locally) ... ok
+test_line_and_event_budgets_fail_closed (test_emulator_semantics.RpcBoundary.test_line_and_event_budgets_fail_closed) ... ok
+test_fixture_versions_identity_paths_hashes_and_resources (test_emulator_semantics.SaveFixtureBoundary.test_fixture_versions_identity_paths_hashes_and_resources) ... ok
+test_menu_comparison_rejects_inventory_uid_display_and_return_drift (test_emulator_semantics.SaveFixtureBoundary.test_menu_comparison_rejects_inventory_uid_display_and_return_drift) ... ok
+test_menu_fixture_has_its_own_exact_resource_contract (test_emulator_semantics.SaveFixtureBoundary.test_menu_fixture_has_its_own_exact_resource_contract) ... ok
+test_present_comparison_requires_each_result_and_repeat_invariant (test_emulator_semantics.SaveFixtureBoundary.test_present_comparison_requires_each_result_and_repeat_invariant) ... ok
+test_bounded_intervals_and_input_repetition (test_emulator_semantics.WireBoundary.test_bounded_intervals_and_input_repetition) ... ok
+test_exact_wire_and_projection (test_emulator_semantics.WireBoundary.test_exact_wire_and_projection) ... ok
+test_frame_step_recovers_only_bounded_mid_commit_samples (test_emulator_semantics.WireBoundary.test_frame_step_recovers_only_bounded_mid_commit_samples) ... ok
+test_menu_appendix_preserves_legacy_offsets (test_emulator_semantics.WireBoundary.test_menu_appendix_preserves_legacy_offsets) ... ok
+test_original_comparison_rejects_result_drift (test_emulator_semantics.WireBoundary.test_original_comparison_rejects_result_drift) ... ok
+test_pinned_original_and_missing_changed_unknown_source (test_emulator_semantics.WireBoundary.test_pinned_original_and_missing_changed_unknown_source) ... ok
+test_projection_unknown_duplicate_empty (test_emulator_semantics.WireBoundary.test_projection_unknown_duplicate_empty) ... ok
+test_real_scenario_and_unknown_paths (test_emulator_semantics.WireBoundary.test_real_scenario_and_unknown_paths) ... ok
+test_repetition_position_tolerance_is_explicit_and_bounded (test_emulator_semantics.WireBoundary.test_repetition_position_tolerance_is_explicit_and_bounded) ... ok
+test_torn_overflow_boolean_utf8_and_nonfinite (test_emulator_semantics.WireBoundary.test_torn_overflow_boolean_utf8_and_nonfinite) ... ok
+test_truncated_extra_magic_and_versions (test_emulator_semantics.WireBoundary.test_truncated_extra_magic_and_versions) ... ok
+test_v8_typed_field_inventory_music_and_negative_bounds (test_emulator_semantics.WireBoundary.test_v8_typed_field_inventory_music_and_negative_bounds) ... ok
+test_v9_combines_bridge_and_menu_appendices (test_emulator_semantics.WireBoundary.test_v9_combines_bridge_and_menu_appendices) ... ok
+test_bad_route_geometry_rejects (test_emulator_walk_route.EmulatorWalkRoute.test_bad_route_geometry_rejects) ... ok
+test_cemetery_owners_preserve_existing_route_geometry (test_emulator_walk_route.EmulatorWalkRoute.test_cemetery_owners_preserve_existing_route_geometry) ... ok
+test_source_and_all_route_points_match_checked_map (test_emulator_walk_route.EmulatorWalkRoute.test_source_and_all_route_points_match_checked_map) ... ok
+test_unknown_and_duplicate_envelopes_reject (test_emulator_walk_route.EmulatorWalkRoute.test_unknown_and_duplicate_envelopes_reject) ... ok
+test_wrong_map_and_unbounded_path_reject (test_emulator_walk_route.EmulatorWalkRoute.test_wrong_map_and_unbounded_path_reject) ... ok
+test_pinned_control_parent_contributes_to_area_world_position (test_field_camera.FieldCameraTests.test_pinned_control_parent_contributes_to_area_world_position) ... ok
+test_static_reference_rect_translation_composes_with_node2d (test_field_camera.FieldCameraTests.test_static_reference_rect_translation_composes_with_node2d) ... ok
+test_unreviewed_control_layout_and_nonfinite_margins_rejected (test_field_camera.FieldCameraTests.test_unreviewed_control_layout_and_nonfinite_margins_rejected) ... ok
+test_controlled_native_fixture_has_all_cases_and_preserves_input (test_field_props.FieldProps.test_controlled_native_fixture_has_all_cases_and_preserves_input) ... ok
+test_incomplete_coverage_or_unreviewed_map_and_callback_reject (test_field_props.FieldProps.test_incomplete_coverage_or_unreviewed_map_and_callback_reject) ... ok
+test_native_transport_rejects_unknown_callback_and_geometry (test_field_props.FieldProps.test_native_transport_rejects_unknown_callback_and_geometry) ... ok
+test_release_packets_texture_and_receipt_are_checked (test_field_props.FieldProps.test_release_packets_texture_and_receipt_are_checked) ... ok
+test_release_receipt_unknown_versions_and_producers_reject (test_field_props.FieldProps.test_release_receipt_unknown_versions_and_producers_reject) ... ok
+test_source_instances_and_bytes_match_fixture (test_field_props.FieldProps.test_source_instances_and_bytes_match_fixture) ... ok
+test_unknown_recipe_fields_versions_paths_and_identities_reject (test_field_props.FieldProps.test_unknown_recipe_fields_versions_paths_and_identities_reject) ... ok
+test_actual_source_values_and_geometry (test_field_scene_music.FieldSceneMusic.test_actual_source_values_and_geometry) ... ok
+test_existing_podunk_binding_remains_exact (test_field_scene_music.FieldSceneMusic.test_existing_podunk_binding_remains_exact) ... ok
+test_frozen_metadata_and_independent_versions (test_field_scene_music.FieldSceneMusic.test_frozen_metadata_and_independent_versions) ... ok
+test_geometry_unknown_or_degenerate (test_field_scene_music.FieldSceneMusic.test_geometry_unknown_or_degenerate) ... ok
+test_metadata_unknown_and_numeric_paths (test_field_scene_music.FieldSceneMusic.test_metadata_unknown_and_numeric_paths) ... ok
+test_recipe_missing_source_version_and_owner (test_field_scene_music.FieldSceneMusic.test_recipe_missing_source_version_and_owner) ... ok
+test_actual_source_owners (test_field_scene_npcs.SceneNpcs.test_actual_source_owners) ... ok
+test_candidate_output_owner (test_field_scene_npcs.SceneNpcs.test_candidate_output_owner) ... ok
+test_eight_direction_negative_paths (test_field_scene_npcs.SceneNpcs.test_eight_direction_negative_paths) ... ok
+test_generated_motion_versions_and_frozen_source (test_field_scene_npcs.SceneNpcs.test_generated_motion_versions_and_frozen_source) ... ok
+test_runtime_offsets_override_authored_children (test_field_scene_npcs.SceneNpcs.test_runtime_offsets_override_authored_children) ... ok
+test_strict_recipe (test_field_scene_npcs.SceneNpcs.test_strict_recipe) ... ok
+test_default_remains_unprofiled (test_frame_profile_build.FrameProfileBuildTests.test_default_remains_unprofiled) ... ok
+test_profile_is_separate_and_explicit (test_frame_profile_build.FrameProfileBuildTests.test_profile_is_separate_and_explicit) ... FAIL
+test_source_instrumentation_preserves_input_and_game_code (test_frame_profile_build.FrameProfileBuildTests.test_source_instrumentation_preserves_input_and_game_code) ... ok
+test_unreviewed_instrumentation_boundary_rejected (test_frame_profile_build.FrameProfileBuildTests.test_unreviewed_instrumentation_boundary_rejected) ... ok
+test_instancing_merges_overrides (test_godot_text.GodotTextTests.test_instancing_merges_overrides) ... ok
+test_project_value (test_godot_text.GodotTextTests.test_project_value) ... ok
+test_rejections (test_godot_text.GodotTextTests.test_rejections) ... ok
+test_values (test_godot_text.GodotTextTests.test_values) ... ok
+test_reviewed_owner_graph_text_and_explicit_boundary (test_graveyard_story.GraveyardStoryTests.test_reviewed_owner_graph_text_and_explicit_boundary) ... ok
+test_unknown_markup_and_conditional_fail_closed (test_graveyard_story.GraveyardStoryTests.test_unknown_markup_and_conditional_fail_closed) ... ok
+test_unknown_schema_owner_source_and_document_fail_closed (test_graveyard_story.GraveyardStoryTests.test_unknown_schema_owner_source_and_document_fail_closed) ... ok
+test_invalid_geometry_and_duplicate_role_fail (test_house_assets.HouseAssetsTests.test_invalid_geometry_and_duplicate_role_fail) ... ok
+test_missing_or_changed_texture_rejected (test_house_assets.HouseAssetsTests.test_missing_or_changed_texture_rejected) ... ok
+test_source_and_outputs_verified (test_house_assets.HouseAssetsTests.test_source_and_outputs_verified) ... ok
+test_source_changes_fail_closed (test_house_assets.HouseAssetsTests.test_source_changes_fail_closed) ... ok
+test_source_tracks_and_font_identity (test_house_assets.HouseAssetsTests.test_source_tracks_and_font_identity) ... ok
+test_unknown_schema_and_resource_fields_fail (test_house_assets.HouseAssetsTests.test_unknown_schema_and_resource_fields_fail) ... ok
+test_font_catalogue_reuse_requires_identical_glyphs (test_house_key_doors.KeyDoorBindings.test_font_catalogue_reuse_requires_identical_glyphs) ... ok
+test_original_key_and_localized_text (test_house_key_doors.KeyDoorBindings.test_original_key_and_localized_text) ... ok
+test_prompt_and_naming_dependency_reuse_rejects_semantic_changes (test_house_key_doors.KeyDoorBindings.test_prompt_and_naming_dependency_reuse_rejects_semantic_changes) ... ok
+test_unknown_binding_and_source_rejected (test_house_key_doors.KeyDoorBindings.test_unknown_binding_and_source_rejected) ... ok
+test_unmapped_door_policy_and_item_rejected (test_house_key_doors.KeyDoorBindings.test_unmapped_door_policy_and_item_rejected) ... ok
+test_every_foreground_cell_matches_original_serialized_atlas (test_house_layers.HouseLayersTests.test_every_foreground_cell_matches_original_serialized_atlas) ... ok
+test_foreground_ir_roundtrip_and_unknown_flag_rejected (test_house_layers.HouseLayersTests.test_foreground_ir_roundtrip_and_unknown_flag_rejected) ... ok
+test_foreground_resource_appends_after_existing_stable_identities (test_house_layers.HouseLayersTests.test_foreground_resource_appends_after_existing_stable_identities) ... ok
+test_new_and_old_output_tampering_rejected (test_house_layers.HouseLayersTests.test_new_and_old_output_tampering_rejected) ... ok
+test_original_corner_alpha_and_bedroom_floor_mask (test_house_layers.HouseLayersTests.test_original_corner_alpha_and_bedroom_floor_mask) ... ok
+test_original_layer_counts_order_and_resource_identity (test_house_layers.HouseLayersTests.test_original_layer_counts_order_and_resource_identity) ... ok
+test_receipt_schema_source_resource_and_layout_tampering_rejected (test_house_layers.HouseLayersTests.test_receipt_schema_source_resource_and_layout_tampering_rejected) ... ok
+test_unknown_cell_flips_counts_positions_and_atlas_bounds_rejected (test_house_layers.HouseLayersTests.test_unknown_cell_flips_counts_positions_and_atlas_bounds_rejected) ... ok
+test_unknown_tile_modes_offsets_spacing_and_z_rejected (test_house_layers.HouseLayersTests.test_unknown_tile_modes_offsets_spacing_and_z_rejected) ... ok
+test_unreviewed_layer_modes_depth_and_appearance_rejected (test_house_layers.HouseLayersTests.test_unreviewed_layer_modes_depth_and_appearance_rejected) ... ok
+test_unreviewed_layer_order_and_transforms_rejected (test_house_layers.HouseLayersTests.test_unreviewed_layer_order_and_transforms_rejected) ... ok
+test_unreviewed_source_and_native_export_rejected (test_house_layers.HouseLayersTests.test_unreviewed_source_and_native_export_rejected) ... ok
+test_checked_stage_complete_files_and_no_receipts (test_introduction_assets.IntroductionAssets.test_checked_stage_complete_files_and_no_receipts) ... ok
+test_cloud_rejects_pixel_loss_grid_and_bool_size (test_introduction_assets.IntroductionAssets.test_cloud_rejects_pixel_loss_grid_and_bool_size) ... ok
+test_duplicate_ids_roles_paths_and_traversal (test_introduction_assets.IntroductionAssets.test_duplicate_ids_roles_paths_and_traversal) ... ok
+test_duplicate_json_and_unsafe_paths (test_introduction_assets.IntroductionAssets.test_duplicate_json_and_unsafe_paths) ... ok
+test_font_encoder_rejects_unknown_bounds_scalars_and_unbound_rows (test_introduction_assets.IntroductionAssets.test_font_encoder_rejects_unknown_bounds_scalars_and_unbound_rows) ... ok
+test_font_remap_fallback_and_actual_node (test_introduction_assets.IntroductionAssets.test_font_remap_fallback_and_actual_node) ... ok
+test_original_nodes_fonts_text_and_cloud_pixels (test_introduction_assets.IntroductionAssets.test_original_nodes_fonts_text_and_cloud_pixels) ... ok
+test_pin_missing_source_and_scene_binding (test_introduction_assets.IntroductionAssets.test_pin_missing_source_and_scene_binding) ... ok
+test_stage_fingerprint_missing_and_truncated_output (test_introduction_assets.IntroductionAssets.test_stage_fingerprint_missing_and_truncated_output) ... ok
+test_stage_receipt_unknown_geometry_and_stale_pin (test_introduction_assets.IntroductionAssets.test_stage_receipt_unknown_geometry_and_stale_pin) ... ok
+test_unknown_version_fields_and_bool_identity (test_introduction_assets.IntroductionAssets.test_unknown_version_fields_and_bool_identity) ... ok
+test_changed_source_is_rejected (test_items_assets.ItemsAssetsTests.test_changed_source_is_rejected) ... ok
+test_existing_font_box_cursor_are_checked_references (test_items_assets.ItemsAssetsTests.test_existing_font_box_cursor_are_checked_references) ... ok
+test_manually_changed_ir_is_rejected (test_items_assets.ItemsAssetsTests.test_manually_changed_ir_is_rejected) ... ok
+test_native_container_layout_remains_unscaled (test_items_assets.ItemsAssetsTests.test_native_container_layout_remains_unscaled) ... ok
+test_native_hint_uses_original_distinct_font (test_items_assets.ItemsAssetsTests.test_native_hint_uses_original_distinct_font) ... ok
+test_native_reference_mutation_is_rejected (test_items_assets.ItemsAssetsTests.test_native_reference_mutation_is_rejected) ... ok
+test_original_inventory_and_resolved_description (test_items_assets.ItemsAssetsTests.test_original_inventory_and_resolved_description) ... ok
+test_original_menu_clips_and_cursor_idle (test_items_assets.ItemsAssetsTests.test_original_menu_clips_and_cursor_idle) ... ok
+test_pristine_sources_resources_and_ir_verify (test_items_assets.ItemsAssetsTests.test_pristine_sources_resources_and_ir_verify) ... ok
+test_rotation_is_lossless_per_frame_including_transparent_rgb (test_items_assets.ItemsAssetsTests.test_rotation_is_lossless_per_frame_including_transparent_rgb) ... ok
+test_source_one_based_disabled_palette_and_cursor_backplate (test_items_assets.ItemsAssetsTests.test_source_one_based_disabled_palette_and_cursor_backplate) ... ok
+test_unknown_animation_track_rejected (test_items_assets.ItemsAssetsTests.test_unknown_animation_track_rejected) ... ok
+test_unknown_version_paths_fields_geometry_and_resource_fail (test_items_assets.ItemsAssetsTests.test_unknown_version_paths_fields_geometry_and_resource_fail) ... ok
+test_exact_checked_prefix_and_independent_copy (test_items_fixture_resources.ItemFixtureResources.test_exact_checked_prefix_and_independent_copy) ... ok
+test_no_unknown_or_duplicate_extension_discarded (test_items_fixture_resources.ItemFixtureResources.test_no_unknown_or_duplicate_extension_discarded) ... ok
+test_changed_command_handler_parser_body_or_object_body_fails (test_lamp_dialogue.LampDialogueTests.test_changed_command_handler_parser_body_or_object_body_fails) ... ok
+test_changed_reference_timing_payload_or_scope_rejected (test_lamp_dialogue.LampDialogueTests.test_changed_reference_timing_payload_or_scope_rejected) ... ok
+test_dispatch_order_is_handler_order_not_yaml_order (test_lamp_dialogue.LampDialogueTests.test_dispatch_order_is_handler_order_not_yaml_order) ... ok
+test_final_handoff_is_after_wait_and_ordered_signals (test_lamp_dialogue.LampDialogueTests.test_final_handoff_is_after_wait_and_ordered_signals) ... ok
+test_mutated_original_dialogue_and_missing_phrases_rejected (test_lamp_dialogue.LampDialogueTests.test_mutated_original_dialogue_and_missing_phrases_rejected) ... ok
+test_native_parser_receipt_matches_external_commands (test_lamp_dialogue.LampDialogueTests.test_native_parser_receipt_matches_external_commands) ... ok
+test_native_source_gate_when_checkout_present (test_lamp_dialogue.LampDialogueTests.test_native_source_gate_when_checkout_present) ... ok
+test_receipt_wrong_engine_provenance_unknown_body_rejected (test_lamp_dialogue.LampDialogueTests.test_receipt_wrong_engine_provenance_unknown_body_rejected) ... ok
+test_review_scope_version_and_missing_source_gate_rejected (test_lamp_dialogue.LampDialogueTests.test_review_scope_version_and_missing_source_gate_rejected) ... ok
+test_source_block_extraction_rejects_missing_or_ambiguous (test_lamp_dialogue.LampDialogueTests.test_source_block_extraction_rejects_missing_or_ambiguous) ... ok
+test_unknown_actor_target_method_and_body_fail_closed (test_lamp_dialogue.LampDialogueTests.test_unknown_actor_target_method_and_body_fail_closed) ... ok
+test_unknown_movement_modes_body_and_nonfinite_numbers_rejected (test_lamp_dialogue.LampDialogueTests.test_unknown_movement_modes_body_and_nonfinite_numbers_rejected) ... ok
+test_unsupported_commands_control_flow_and_wait_modes (test_lamp_dialogue.LampDialogueTests.test_unsupported_commands_control_flow_and_wait_modes) ... ok
+test_changed_string_or_resource_identity_rejected (test_legacy_resource_prefix.LegacyResourcePrefixTests.test_changed_string_or_resource_identity_rejected) ... ok
+test_projection_keeps_source_unchanged (test_legacy_resource_prefix.LegacyResourcePrefixTests.test_projection_keeps_source_unchanged) ... ok
+test_unknown_relocated_hash_rejected (test_legacy_resource_prefix.LegacyResourcePrefixTests.test_unknown_relocated_hash_rejected) ... ok
+test_invalid_external_content (test_loading_indicator.LoadingIndicatorTests.test_invalid_external_content) ... ok
+test_invalid_feedback_authoring (test_loading_indicator.LoadingIndicatorTests.test_invalid_feedback_authoring) ... ok
+test_reader_and_renderer (test_loading_indicator.LoadingIndicatorTests.test_reader_and_renderer) ... ERROR
+test_source_and_staged_pack (test_loading_indicator.LoadingIndicatorTests.test_source_and_staged_pack) ... ok
+test_progress_payload_ownership_and_failures (test_loading_texture.LoadingTextureTests.test_progress_payload_ownership_and_failures) ... ERROR
+test_changed_source_or_pin_rejected (test_map_asset.MapAssetTests.test_changed_source_or_pin_rejected) ... ok
+test_external_source_path_rejected (test_map_asset.MapAssetTests.test_external_source_path_rejected) ... ok
+test_layout_preserves_entire_background (test_map_asset.MapAssetTests.test_layout_preserves_entire_background) ... ok
+test_stale_or_partial_compiled_receipt_rejected (test_map_asset.MapAssetTests.test_stale_or_partial_compiled_receipt_rejected) ... ok
+test_unknown_schema_version_layout_rejected (test_map_asset.MapAssetTests.test_unknown_schema_version_layout_rejected) ... ok
+test_unreviewed_asset_rights_rejected (test_map_asset.MapAssetTests.test_unreviewed_asset_rights_rejected) ... ok
+test_candidate_paths_and_output_owner (test_mayor_field.MayorField.test_candidate_paths_and_output_owner) ... ok
+test_effective_visible_collision_source_order (test_mayor_field.MayorField.test_effective_visible_collision_source_order) ... ok
+test_incomplete_room_cannot_enter_release_builder (test_mayor_field.MayorField.test_incomplete_room_cannot_enter_release_builder) ... ok
+test_missing_sprite_actor_and_source_type_fail (test_mayor_field.MayorField.test_missing_sprite_actor_and_source_type_fail) ... ok
+test_original_map_structure (test_mayor_field.MayorField.test_original_map_structure) ... ok
+test_original_podunk_outputs_unchanged (test_mayor_field.MayorField.test_original_podunk_outputs_unchanged) ... ok
+test_recipe_versions_and_identities (test_mayor_field.MayorField.test_recipe_versions_and_identities) ... ok
+test_checked_paths_cannot_escape_or_accept_changed_bytes (test_mayor_scene.MayorScenePublication.test_checked_paths_cannot_escape_or_accept_changed_bytes) ... ok
+test_checked_release_outputs_and_source_fixtures (test_mayor_scene.MayorScenePublication.test_checked_release_outputs_and_source_fixtures) ... FAIL
+test_missing_and_changed_receipts_reject (test_mayor_scene.MayorScenePublication.test_missing_and_changed_receipts_reject) ... ok
+test_route_recipe_path_and_source_graph_rejected (test_mayor_scene.MayorScenePublication.test_route_recipe_path_and_source_graph_rejected) ... ok
+test_texture_pcm_and_room_corruption_rejected (test_mayor_scene.MayorScenePublication.test_texture_pcm_and_room_corruption_rejected) ... ok
+test_actual_source_graph_and_candidate (test_mayor_story.MayorStory.test_actual_source_graph_and_candidate) ... ok
+test_pippi_flag_branch_is_after_first_text (test_mayor_story.MayorStory.test_pippi_flag_branch_is_after_first_text) ... ok
+test_recipe_negative (test_mayor_story.MayorStory.test_recipe_negative) ... ok
+test_unknown_source_graph_mechanisms_fail (test_mayor_story.MayorStory.test_unknown_source_graph_mechanisms_fail) ... ok
+test_exit_guard_and_phone_boundaries_preserve_source_geometry (test_melody_content.MelodyContentTests.test_exit_guard_and_phone_boundaries_preserve_source_geometry) ... ok
+test_forged_native_parser_receipt_rejected (test_melody_content.MelodyContentTests.test_forged_native_parser_receipt_rejected) ... ok
+test_guard_preserves_camera_null_and_concurrent_source_movement (test_melody_content.MelodyContentTests.test_guard_preserves_camera_null_and_concurrent_source_movement) ... ok
+test_house_crosspack_links_seen_keys_and_delay_rejected (test_melody_content.MelodyContentTests.test_house_crosspack_links_seen_keys_and_delay_rejected) ... ok
+test_new_runtime_schema_modes_reject_unknown_or_misbound_data (test_melody_content.MelodyContentTests.test_new_runtime_schema_modes_reject_unknown_or_misbound_data) ... ok
+test_original_native_parser_and_receipt (test_melody_content.MelodyContentTests.test_original_native_parser_and_receipt) ... ok
+test_preserved_prefixes_and_only_documented_append_metadata (test_melody_content.MelodyContentTests.test_preserved_prefixes_and_only_documented_append_metadata) ... ok
+test_program_paths_source_labels_and_binary_roundtrip (test_melody_content.MelodyContentTests.test_program_paths_source_labels_and_binary_roundtrip) ... ok
+test_resource_binding_and_audio_identity (test_melody_content.MelodyContentTests.test_resource_binding_and_audio_identity) ... ok
+test_source_order_inherited_original_talker_and_synchronous_music (test_melody_content.MelodyContentTests.test_source_order_inherited_original_talker_and_synchronous_music) ... ok
+test_text_voice_wait_tokens_and_override_seen_keys (test_melody_content.MelodyContentTests.test_text_voice_wait_tokens_and_override_seen_keys) ... ok
+test_unknown_source_fields_graph_voice_and_objects_rejected (test_melody_content.MelodyContentTests.test_unknown_source_fields_graph_voice_and_objects_rejected) ... ok
+test_compiled_resources_match_actual_bank_sources (test_menu_audio_binding.MenuAudioBindingTests.test_compiled_resources_match_actual_bank_sources) ... ok
+test_unknown_and_unsafe_names_rejected (test_menu_audio_binding.MenuAudioBindingTests.test_unknown_and_unsafe_names_rejected) ... ok
+test_actual_native_result_and_fixture (test_move_audio_reference.MoveAudioReferenceTests.test_actual_native_result_and_fixture) ... ok
+test_exact_source_review (test_move_audio_reference.MoveAudioReferenceTests.test_exact_source_review) ... ok
+test_reject_unknown_truncated_or_changed_reference (test_move_audio_reference.MoveAudioReferenceTests.test_reject_unknown_truncated_or_changed_reference) ... ok
+test_corrupt_result_rejected (test_music_all_reference.MusicAllReferenceTests.test_corrupt_result_rejected) ... ok
+test_reviewed_method_and_exact_fixture (test_music_all_reference.MusicAllReferenceTests.test_reviewed_method_and_exact_fixture) ... ok
+test_source_completion_waiters_and_stopped_tracks (test_music_all_reference.MusicAllReferenceTests.test_source_completion_waiters_and_stopped_tracks) ... ok
+test_bad_results_reject (test_music_finished_reference.MusicFinishedReferenceTests.test_bad_results_reject) ... ok
+test_source_callbacks_and_exact_fixture (test_music_finished_reference.MusicFinishedReferenceTests.test_source_callbacks_and_exact_fixture) ... ok
+test_unchanged_source_and_bounded_mapping (test_music_finished_reference.MusicFinishedReferenceTests.test_unchanged_source_and_bounded_mapping) ... ok
+test_bad_metadata_encoder_paths (test_music_library.MusicLibraryTests.test_bad_metadata_encoder_paths) ... ok
+test_exact_sources_and_generator_fixtures (test_music_library.MusicLibraryTests.test_exact_sources_and_generator_fixtures) ... ok
+test_reject_changed_or_partial_scope_recipes (test_music_library.MusicLibraryTests.test_reject_changed_or_partial_scope_recipes) ... ok
+test_decoder_negative_versions_and_records (test_music_library_bindings.MusicLibraryBindingsTests.test_decoder_negative_versions_and_records) ... ok
+test_encoder_schema_path_fingerprint_rejected (test_music_library_bindings.MusicLibraryBindingsTests.test_encoder_schema_path_fingerprint_rejected) ... ok
+test_partial_changed_unknown_recipe_rejected (test_music_library_bindings.MusicLibraryBindingsTests.test_partial_changed_unknown_recipe_rejected) ... ok
+test_source_proof_and_exact_generated_bundle (test_music_library_bindings.MusicLibraryBindingsTests.test_source_proof_and_exact_generated_bundle) ... ok
+test_bad_results_are_rejected (test_music_lifetime_reference.MusicLifetimeReferenceTests.test_bad_results_are_rejected) ... ok
+test_native_lifetimes_and_fixture (test_music_lifetime_reference.MusicLifetimeReferenceTests.test_native_lifetimes_and_fixture) ... ok
+test_unchanged_source_and_checked_scope (test_music_lifetime_reference.MusicLifetimeReferenceTests.test_unchanged_source_and_checked_scope) ... ok
+test_corrupt_result_rejects (test_music_pause_reference.MusicPauseReferenceTests.test_corrupt_result_rejects) ... ok
+test_exact_native_fixture_and_source_edges (test_music_pause_reference.MusicPauseReferenceTests.test_exact_native_fixture_and_source_edges) ... ok
+test_reviewed_original_methods (test_music_pause_reference.MusicPauseReferenceTests.test_reviewed_original_methods) ... ok
+test_exact_original_source_and_mapped_scope (test_music_player_reference.MusicPlayerReferenceTests.test_exact_original_source_and_mapped_scope) ... ok
+test_native_choices_and_generated_fixture (test_music_player_reference.MusicPlayerReferenceTests.test_native_choices_and_generated_fixture) ... ok
+test_reject_changed_or_malformed_results (test_music_player_reference.MusicPlayerReferenceTests.test_reject_changed_or_malformed_results) ... ok
+test_opcode_signatures_fail_before_producing_pack (test_music_programs.MusicProgramsTests.test_opcode_signatures_fail_before_producing_pack) ... ok
+test_source_mapping_and_exact_binary (test_music_programs.MusicProgramsTests.test_source_mapping_and_exact_binary) ... ok
+test_unknown_recipe_id_source_and_operand_types_reject (test_music_programs.MusicProgramsTests.test_unknown_recipe_id_source_and_operand_types_reject) ... ok
+test_exact_source_and_bounded_scope (test_music_scene_reference.MusicSceneReferenceTests.test_exact_source_and_bounded_scope) ... ok
+test_native_scene_graph_and_fixture (test_music_scene_reference.MusicSceneReferenceTests.test_native_scene_graph_and_fixture) ... ok
+test_reject_unknown_and_malformed_results (test_music_scene_reference.MusicSceneReferenceTests.test_reject_unknown_and_malformed_results) ... ok
+test_corrupt_reference_rejected (test_music_seek_reference.MusicSeekReferenceTests.test_corrupt_reference_rejected) ... ok
+test_exact_native_fixture_and_float_forwarding (test_music_seek_reference.MusicSeekReferenceTests.test_exact_native_fixture_and_float_forwarding) ... ok
+test_reviewed_manager_and_actual_media_dimensions (test_music_seek_reference.MusicSeekReferenceTests.test_reviewed_manager_and_actual_media_dimensions) ... ok
+test_all_truncations (test_native_battle.BattleBinaryTests.test_all_truncations) ... ok
+test_changed_source_fails (test_native_battle.BattleBinaryTests.test_changed_source_fails) ... ok
+test_crc_correct_header_directory_rejections (test_native_battle.BattleBinaryTests.test_crc_correct_header_directory_rejections) ... ok
+test_data_changes_do_not_require_cpp (test_native_battle.BattleBinaryTests.test_data_changes_do_not_require_cpp) ... ok
+test_deterministic_external_binary (test_native_battle.BattleBinaryTests.test_deterministic_external_binary) ... ok
+test_invalid_vector (test_native_battle.BattleBinaryTests.test_invalid_vector) ... ok
+test_real_source_stats_and_menu (test_native_battle.BattleBinaryTests.test_real_source_stats_and_menu) ... ok
+test_staging_exact_resources (test_native_battle.BattleBinaryTests.test_staging_exact_resources) ... ok
+test_checked_resource_roundtrip_and_external_tuning (test_native_input.NativeInputTests.test_checked_resource_roundtrip_and_external_tuning) ... ok
+test_compile_file_creates_checked_independent_resource (test_native_input.NativeInputTests.test_compile_file_creates_checked_independent_resource) ... ok
+test_invalid_radii_angle_duration_viewport_and_alpha (test_native_input.NativeInputTests.test_invalid_radii_angle_duration_viewport_and_alpha) ... ok
+test_nonfinite_boolean_and_wrong_type_tuning (test_native_input.NativeInputTests.test_nonfinite_boolean_and_wrong_type_tuning) ... ok
+test_resealed_invalid_payload_rejected (test_native_input.NativeInputTests.test_resealed_invalid_payload_rejected) ... ok
+test_staging_rejects_stale_corrupt_and_escaping_resource (test_native_input.NativeInputTests.test_staging_rejects_stale_corrupt_and_escaping_resource) ... ok
+test_tuning_precision_collapse_rejected (test_native_input.NativeInputTests.test_tuning_precision_collapse_rejected) ... ok
+test_unknown_header_and_corruption (test_native_input.NativeInputTests.test_unknown_header_and_corruption) ... ok
+test_unknown_missing_schema_and_duplicate_fields (test_native_input.NativeInputTests.test_unknown_missing_schema_and_duplicate_fields) ... ok
+test_checked_asset_sources_and_pack_staging (test_native_introduction.NativeIntroductionTests.test_checked_asset_sources_and_pack_staging) ... ok
+test_no_unchecked_semantic_refresh (test_native_introduction.NativeIntroductionTests.test_no_unchecked_semantic_refresh) ... ok
+test_schema_and_reference_negatives (test_native_introduction.NativeIntroductionTests.test_schema_and_reference_negatives) ... ok
+test_source_binary_and_original_chain (test_native_introduction.NativeIntroductionTests.test_source_binary_and_original_chain) ... ok
+test_unknown_source_tracks_and_methods_fail_closed (test_native_introduction.NativeIntroductionTests.test_unknown_source_tracks_and_methods_fail_closed) ... ok
+test_crc_correct_header_directory_and_pin_rejections (test_native_items.ItemsBinaryTests.test_crc_correct_header_directory_and_pin_rejections) ... ok
+test_crc_correct_record_rejections (test_native_items.ItemsBinaryTests.test_crc_correct_record_rejections) ... ok
+test_deterministic_checked_external_resource (test_native_items.ItemsBinaryTests.test_deterministic_checked_external_resource) ... ok
+test_every_truncation_and_checksum (test_native_items.ItemsBinaryTests.test_every_truncation_and_checksum) ... ok
+test_exact_asset_staging_and_changed_hash (test_native_items.ItemsBinaryTests.test_exact_asset_staging_and_changed_hash) ... ok
+test_explicit_rich_capability_and_legacy_plain_data (test_native_items.ItemsBinaryTests.test_explicit_rich_capability_and_legacy_plain_data) ... ok
+test_independent_data_edits_and_empty_inventory (test_native_items.ItemsBinaryTests.test_independent_data_edits_and_empty_inventory) ... ok
+test_ownership_duplicates_and_parent_cycle (test_native_items.ItemsBinaryTests.test_ownership_duplicates_and_parent_cycle) ... ok
+test_required_bindings_parameter_rules_and_event_coverage (test_native_items.ItemsBinaryTests.test_required_bindings_parameter_rules_and_event_coverage) ... ok
+test_rich_definition_cannot_claim_action_or_old_capability (test_native_items.ItemsBinaryTests.test_rich_definition_cannot_claim_action_or_old_capability) ... ok
+test_source_unknown_fields_and_ranges_rejected (test_native_items.ItemsBinaryTests.test_source_unknown_fields_and_ranges_rejected) ... ok
+test_utf8_and_string_boundary_rejections (test_native_items.ItemsBinaryTests.test_utf8_and_string_boundary_rejections) ... ok
+test_acquisition_policy_is_source_derived_and_additive (test_native_session.NativeSessionTests.test_acquisition_policy_is_source_derived_and_additive) ... ok
+test_additive_startup_roster_and_legacy_bytes (test_native_session.NativeSessionTests.test_additive_startup_roster_and_legacy_bytes) ... ok
+test_checked_source_and_staging (test_native_session.NativeSessionTests.test_checked_source_and_staging) ... ok
+test_field_scope_is_source_derived_and_defaults_stay_frozen (test_native_session.NativeSessionTests.test_field_scope_is_source_derived_and_defaults_stay_frozen) ... ok
+test_frozen_rules6_resource_encoding_is_unchanged (test_native_session.NativeSessionTests.test_frozen_rules6_resource_encoding_is_unchanged) ... ok
+test_map_object_policy_is_derived_from_present (test_native_session.NativeSessionTests.test_map_object_policy_is_derived_from_present) ... ok
+test_recipe_drift_fails_closed (test_native_session.NativeSessionTests.test_recipe_drift_fails_closed) ... ok
+test_source_defaults_and_derived_values (test_native_session.NativeSessionTests.test_source_defaults_and_derived_values) ... ok
+test_stale_or_escaping_stage_rejected (test_native_session.NativeSessionTests.test_stale_or_escaping_stage_rejected) ... ok
+test_startup_clamps_are_derived_from_serialized_hp_and_equipment (test_native_session.NativeSessionTests.test_startup_clamps_are_derived_from_serialized_hp_and_equipment) ... ok
+test_storage_conservation_policy_is_source_derived (test_native_session.NativeSessionTests.test_storage_conservation_policy_is_source_derived) ... ok
+test_v10_keeps_complete_v9_menu_prefix (test_native_session.NativeSessionTests.test_v10_keeps_complete_v9_menu_prefix) ... ok
+test_v11_run_sound_append_preserves_v10_and_defaults (test_native_session.NativeSessionTests.test_v11_run_sound_append_preserves_v10_and_defaults) ... ok
+test_defaults_startup_and_levels_cannot_be_rebound (test_new_game_assets.NamingSessionDependency.test_defaults_startup_and_levels_cannot_be_rebound) ... ok
+test_exact_baseline_required (test_new_game_assets.NamingSessionDependency.test_exact_baseline_required) ... ok
+test_field_session_extension_preserves_startup_and_rejects_unreviewed_policy (test_new_game_assets.NamingSessionDependency.test_field_session_extension_preserves_startup_and_rejects_unreviewed_policy) ... ok
+test_only_session_fingerprint_changes_and_binary_stays_identical (test_new_game_assets.NamingSessionDependency.test_only_session_fingerprint_changes_and_binary_stays_identical) ... ok
+test_removed_flags_acquisitions_unknown_fields_and_bad_hash_rejected (test_new_game_assets.NamingSessionDependency.test_removed_flags_acquisitions_unknown_fields_and_bad_hash_rejected) ... ok
+test_source_run_extension_keeps_naming_content (test_new_game_assets.NamingSessionDependency.test_source_run_extension_keeps_naming_content) ... ok
+test_legacy_encoders_remain_distinct (test_npc_interaction_policy.NpcPolicy.test_legacy_encoders_remain_distinct) ... ok
+test_native_tsv_is_exact_projection (test_npc_interaction_policy.NpcPolicy.test_native_tsv_is_exact_projection) ... ok
+test_policy_version_duration_and_feature_negative (test_npc_interaction_policy.NpcPolicy.test_policy_version_duration_and_feature_negative) ... ok
+test_source_policy_resources (test_npc_interaction_policy.NpcPolicy.test_source_policy_resources) ... ok
+test_actual_native_domain_and_timer_gates (test_npc_return_reference.NpcReturnReference.test_actual_native_domain_and_timer_gates) ... ok
+test_result_unknown_version_shape_and_domain_fail (test_npc_return_reference.NpcReturnReference.test_result_unknown_version_shape_and_domain_fail) ... ok
+test_review_unknown_version_and_symbols_fail (test_npc_return_reference.NpcReturnReference.test_review_unknown_version_and_symbols_fail) ... ok
+test_native_source_and_frozen_projection (test_npc_sprite_reference.NpcSpriteReference.test_native_source_and_frozen_projection) ... ok
+test_result_negative (test_npc_sprite_reference.NpcSpriteReference.test_result_negative) ... ok
+test_review_negative (test_npc_sprite_reference.NpcSpriteReference.test_review_negative) ... ok
+test_source_animation_policy_negative (test_npc_sprite_reference.NpcSpriteReference.test_source_animation_policy_negative) ... ok
+test_source_profiles_and_clips (test_party_npc_actor.PartyActor.test_source_profiles_and_clips) ... ok
+test_source_route_fixture (test_party_npc_actor.PartyActor.test_source_route_fixture) ... FAIL
+test_versions_and_profile_negative (test_party_npc_actor.PartyActor.test_versions_and_profile_negative) ... ok
+test_actual_result_and_generated_fixture (test_pause_audio_reference.PauseAudioReferenceTests.test_actual_result_and_generated_fixture) ... ok
+test_exact_source_review (test_pause_audio_reference.PauseAudioReferenceTests.test_exact_source_review) ... ok
+test_reject_invalid_result (test_pause_audio_reference.PauseAudioReferenceTests.test_reject_invalid_result) ... ok
+test_free_phone_use_order_consumes_no_card_or_money (test_phone_assets.PhoneAssetsTests.test_free_phone_use_order_consumes_no_card_or_money) ... ok
+test_inherited_area_offsets_and_flags_are_preserved (test_phone_assets.PhoneAssetsTests.test_inherited_area_offsets_and_flags_are_preserved) ... ok
+test_last_matching_ordered_dispatch_and_no_seen (test_phone_assets.PhoneAssetsTests.test_last_matching_ordered_dispatch_and_no_seen) ... ok
+test_missing_mutated_or_extra_compiled_assets_rejected (test_phone_assets.PhoneAssetsTests.test_missing_mutated_or_extra_compiled_assets_rejected) ... ok
+test_native_animation_oracle_provenance_and_exact_keys (test_phone_assets.PhoneAssetsTests.test_native_animation_oracle_provenance_and_exact_keys) ... ok
+test_original_atlas_output_and_recipe_verified (test_phone_assets.PhoneAssetsTests.test_original_atlas_output_and_recipe_verified) ... ok
+test_phone_is_interactdialog_not_actor_npc_or_directional_sprite (test_phone_assets.PhoneAssetsTests.test_phone_is_interactdialog_not_actor_npc_or_directional_sprite) ... ok
+test_ring_retains_exact_source_frames_sound_times_and_idempotence (test_phone_assets.PhoneAssetsTests.test_ring_retains_exact_source_frames_sound_times_and_idempotence) ... ok
+test_root_override_inheritance_and_effective_collision (test_phone_assets.PhoneAssetsTests.test_root_override_inheritance_and_effective_collision) ... ok
+test_unknown_recipe_source_resources_or_version_rejected (test_phone_assets.PhoneAssetsTests.test_unknown_recipe_source_resources_or_version_rejected) ... ok
+test_all_existing_room_rows_and_strings_are_preserved (test_phone_linker.PhoneLinkerTests.test_all_existing_room_rows_and_strings_are_preserved) ... ok
+test_carol_phone_reminder_preserves_inherited_npc_talker (test_phone_linker.PhoneLinkerTests.test_carol_phone_reminder_preserves_inherited_npc_talker) ... ok
+test_carol_uses_shared_verified_frames_but_own_source_geometry (test_phone_linker.PhoneLinkerTests.test_carol_uses_shared_verified_frames_but_own_source_geometry) ... ok
+test_dad_append_preserves_first_call_rows_strings_and_all_text_tokens (test_phone_linker.PhoneLinkerTests.test_dad_append_preserves_first_call_rows_strings_and_all_text_tokens) ... ok
+test_dad_normal_links_every_source_branch_choice_and_save_callback (test_phone_linker.PhoneLinkerTests.test_dad_normal_links_every_source_branch_choice_and_save_callback) ... ok
+test_deferred_flag_listener_rejects_invalid_body_flag_and_payload (test_phone_linker.PhoneLinkerTests.test_deferred_flag_listener_rejects_invalid_body_flag_and_payload) ... ok
+test_entrance_listener_uses_original_descendant_body_and_flag (test_phone_linker.PhoneLinkerTests.test_entrance_listener_uses_original_descendant_body_and_flag) ... ok
+test_entrance_source_listener_cannot_become_visibility_only (test_phone_linker.PhoneLinkerTests.test_entrance_source_listener_cannot_become_visibility_only) ... ok
+test_house_prefix_and_optional_story_state_preserved (test_phone_linker.PhoneLinkerTests.test_house_prefix_and_optional_story_state_preserved) ... ok
+test_independent_hash_seeds_reproduce_all_linked_files (test_phone_linker.PhoneLinkerTests.test_independent_hash_seeds_reproduce_all_linked_files) ... 

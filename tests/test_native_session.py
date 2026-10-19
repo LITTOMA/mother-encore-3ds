@@ -9,6 +9,16 @@ from tools import native_session as native
 class NativeSessionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):cls.recipe=native.read(native.IR)
+    def test_complete_field_programmes_admit_only_source_written_flags(self):
+        import json
+        previous=json.loads((native.ROOT/'tests/fixtures/pre-cemetery-save-session.json').read_bytes())
+        current=native.extract();self.assertEqual(set(current['mutable_flags'])-set(previous['mutable_flags']),{'cem_roots_grown'})
+        self.assertTrue(set(previous['mutable_flags'])<=set(current['mutable_flags']))
+        self.assertEqual(current['defaults'],previous['defaults']);self.assertEqual(current['schema'],previous['schema'])
+        self.assertIn('romfs/world/podunk/podunk.encroom',current['dependencies'])
+        from unittest.mock import patch
+        with patch.object(native,'parse_pack',side_effect=ValueError('Corrupt compiled field programme')):
+            with self.assertRaisesRegex(ValueError,'Corrupt compiled'):native.extract()
     def test_checked_source_and_staging(self):
         native.verify_recipe(self.recipe)
         self.assertEqual(native.PACK.read_bytes(),native.encode(self.recipe))
@@ -60,7 +70,9 @@ class NativeSessionTests(unittest.TestCase):
     def test_v11_run_sound_append_preserves_v10_and_defaults(self):
         r=self.recipe;self.assertEqual(r['run_sounds'],['wood','stone'])
         older=copy.deepcopy(r);older['schema']=10;older.pop('run_sounds');old=native.encode(older);new=native.encode(r)
-        self.assertEqual(old,(native.ROOT/'tests/fixtures/session-v10.encsession').read_bytes());self.assertEqual(new[24:len(old)],old[24:])
+        import json
+        previous=json.loads((native.ROOT/'tests/fixtures/pre-cemetery-save-session.json').read_bytes());previous['schema']=10;previous.pop('run_sounds')
+        self.assertEqual(native.encode(previous),(native.ROOT/'tests/fixtures/session-v10.encsession').read_bytes());self.assertEqual(new[24:len(old)],old[24:])
         self.assertEqual(new[len(old):],struct.pack('<II',2,4)+b'wood'+struct.pack('<I',5)+b'stone')
         for sounds in ([],['wood'],['stone','stone'],['wood','unknown'],['wood',True],['wood','Stone'],['wood','bad/path'],['stone','other']):
             bad=copy.deepcopy(r);bad['run_sounds']=sounds

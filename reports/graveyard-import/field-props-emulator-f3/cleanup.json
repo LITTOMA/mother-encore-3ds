@@ -1,0 +1,14 @@
+{
+  "removed": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\iggy-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+      "bytes": 262297588
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\cemetery-host\\cemetery",
+      "bytes": 48569040
+    }
+  ],
+  "prior_finished_test_elf_bytes": 387404528,
+  "selected_zip_parts_removed_bytes": 192937984
+}

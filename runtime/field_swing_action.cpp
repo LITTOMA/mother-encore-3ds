@@ -48,6 +48,12 @@ bool FieldSwingAction::initialize(const FieldSwingActionData&data,const FieldSwi
  const auto*c=swing.direction(facing);if(!c||!skill(selected))return fail(e,"Swing action initial facing/selection rejected");
  FieldSwingAction v;v.data_=data;v.swing_=swing;if(!v.player_.initialize(swing,e))return false;v.clip_=c->id;const auto*r=data.direction(c->id);v.main_frame_=r->frame;v.pose_=swing.initial();v.pose_.main=bool(r->flags&1);v.pose_.special=bool(r->flags&2);v.selected_=std::string(selected);*this=std::move(v);e.clear();return true;
 }
+bool FieldSwingAction::rebase(Vec2 facing,std::string&e){
+ if(!data_.valid()||player_.attacking()||travel_||bat_node_)return fail(e,"Swing action motion handoff rejected");
+ const auto*c=swing_.direction(facing);if(!c)return fail(e,"Swing action motion facing rejected");
+ const auto*r=data_.direction(c->id);if(!r)return fail(e,"Swing action idle binding lost");
+ clip_=c->id;main_frame_=r->frame;pose_.main=bool(r->flags&1);pose_.special=bool(r->flags&2);e.clear();return true;
+}
 bool FieldSwingAction::input(std::string_view action,bool pressed,const SwingActionContext&context,SwingMotionFlags&motion,bool&accepted,std::string&e){
  if(!data_.valid())return fail(e,"Swing action owner unprepared");
  const auto mask=data_.policy()[1];const bool blocked=((mask&1)&&context.paused)||((mask&2)&&(!context.moving||player_.attacking()))||((mask&4)&&context.entering_door)||((mask&8)&&context.climbing)||((mask&16)&&context.spinning);

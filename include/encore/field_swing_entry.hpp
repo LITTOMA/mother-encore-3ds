@@ -24,6 +24,7 @@ private:
 class FieldSwingEntry {
 public:
  bool initialize(const FieldSwingEntryData&,const FieldSwingActionData&,const FieldSwingData&,uint32_t state,Vec2 facing,float position,std::string_view selected,std::string&);
+ bool rebase(uint32_t state,Vec2 facing,float position,std::string&);
  bool input(std::string_view,bool,const SwingActionContext&,SwingMotionFlags&,bool&,std::string&);
  bool advance(double,std::string&);bool flush(SwingMotionFlags&,std::string&);
  bool attacking()const{return action_.attacking();}bool ready()const{return data_.valid();}

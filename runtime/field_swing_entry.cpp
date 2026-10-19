@@ -71,6 +71,16 @@ bool FieldSwingEntry::initialize(const FieldSwingEntryData&d,const FieldSwingAct
  if(!begin_clip(c->clip,d.frames(),v.playback_)||!advance_clip(c->clip,position,d.frames(),v.playback_))return fail(e,"Swing entry initial frame rejected");
  v.handed_=state==d.idle();*this=std::move(v);e.clear();return true;
 }
+bool FieldSwingEntry::rebase(uint32_t state,Vec2 direction,float position,std::string&e){
+ if(!data_.valid()||action_.attacking())return fail(e,"Swing entry active motion handoff rejected");
+ const auto*c=data_.select(state,direction);
+ if(!c||!std::isfinite(position)||position<0||position>c->clip.length)return fail(e,"Swing entry motion snapshot rejected");
+ auto playback=playback_;playback.sample={uint16_t(action_.main_frame()),action_.pose().main,action_.pose().special};
+ if(!begin_clip(c->clip,data_.frames(),playback)||!advance_clip(c->clip,position,data_.frames(),playback))return fail(e,"Swing entry motion clip rejected");
+ if(!action_.rebase(direction,e))return false;
+ state_=state;facing_=direction;clip_=uint32_t(c-data_.clips().data());playback_=playback;
+ requested_=pending_=false;handed_=state==data_.idle();e.clear();return true;
+}
 bool FieldSwingEntry::input(std::string_view action,bool pressed,const SwingActionContext&context,SwingMotionFlags&motion,bool&accepted,std::string&e){
  if(!data_.valid())return fail(e,"Swing entry owner unprepared");
  auto candidate=action_;auto flags=motion;bool result=accepted;if(!candidate.input(action,pressed,context,flags,result,e))return false;

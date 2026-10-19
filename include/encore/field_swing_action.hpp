@@ -26,6 +26,9 @@ struct SwingMotionFlags {bool crouch=false,idle=false,tap_run=false,running=fals
 class FieldSwingAction {
 public:
  bool initialize(const FieldSwingActionData&,const FieldSwingData&,Vec2,std::string_view selected,std::string&);
+ // Adopt an inactive motion owner's facing without recreating the player.
+ // Sparse Bat properties, selected skill and start count survive this handoff.
+ bool rebase(Vec2,std::string&);
  // accepted is false for a normal gated/irrelevant input. Errors preserve the
  // controller, external motion flags and output. A true acceptance emits one
  // sound/rumble start, obtained from the unchanged action resource.

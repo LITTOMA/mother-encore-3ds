@@ -34,3 +34,5 @@ GCC完整检查另暴露Windows生成凭据使用反斜杠的问题：ffb3b4f的
 官方Godot3.6.2两次独立运行各80组、6560个观察，稳定结果逐字相同；完整18节点原拓扑单独求路径，动画夹具保留8个相关原分支，未替代完整Player物理循环。共享核心GCC9 ASan/UBSan共28186项通过，包含全部截断、未知版本、坏图跨度/循环/目标、动画帧与原子快照拒绝；6项Python通过，分配1162=798+364，新模块Wall/Wextra/Wpedantic编译无诊断。证据见 swing-entry-reference-4、swing-entry-reference-5、swing-entry-host。资源、主循环、持久动作拥有者、GPU、声音后端和接触事件仍未接通，完整教学与真机仍未验证。
 
 历史CI的精确结果：ec48b48的GCC普通230/231通过，聚合python_tools在1800.09秒超时，GCC sanitizer未执行；72f02ab同样231/232通过，聚合在1800.01秒超时。72f02ab的Clang普通217项及ASan/UBSan217项、真实3DSX/CIA均通过。负面调度测试中有意触发的worker失败不是实际失败原因。原始日志保存在 action-ci-verification；当前逐项耗时诊断仍在进行，未删除测试、扩大超时或宣称完整CI全绿。
+
+持久动作交接现在提供受检的rebase接口：仅在未攻击且无延迟完成回调时采用实际移动快照，保留稀疏球棒帧、角度、前后图层、已选技能及累计启动次数；未知状态、坏方向/时钟、攻击中和结束回调未完成时原子拒绝。不会通过重建玩家重置这些值，也不在逐帧路径复制资源。原引擎两次各8组连续保留玩家、80次动作、6560个观察，稳定投影逐字相同；GCC9 ASan/UBSan 20044项通过，原进入动作28186项及直接动作3125项回归通过，14项相关Python通过，方法分配1164=800+364。证据见swing-rebase-reference-3、swing-rebase-reference-4与swing-rebase-host。该接口仍待实际PersistentPlayerState/主循环采用，未宣称正式教学、模拟器或真机通过。

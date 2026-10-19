@@ -110,6 +110,12 @@ public:
     bool pause_for_house(bool stop_running=false);
     // The checked scene owns this optional sink and outlives the world binding.
     bool bind_walk_audio(WalkAudioSink&);
+    // Optional until the complete source resource group is prepared. Once
+    // bound, the same immutable owner must outlive all retained scene players.
+    bool bind_player_action(const FieldSwingResources&,std::string&);
+    bool player_action_input(std::string_view,bool,bool skill_available,bool incapacitated,bool entering_door,bool&accepted,std::string&);
+    const FieldPlayerTree& player_action()const{static const FieldPlayerTree empty;return persistent_player_?persistent_player_.state_->action_:empty;}
+    std::vector<PlayerActionEvent> take_player_action_events();
     bool unpause_from_house();
     bool resize_field_viewport(Vec2 viewport);
     bool set_house_direction(Vec2 direction);
@@ -150,7 +156,7 @@ public:
     bool idle_frame(double delta);
     const RoomView& content() const { return content_; }
     const WalkState& player() const { static const WalkState unavailable{};return persistent_player_?persistent_player_.state_->player_:unavailable; }
-    AnimationSample animation() const { return persistent_player_?persistent_player_.state_->playback_.sample:AnimationSample{0,true,false}; }
+    AnimationSample animation() const { return persistent_player_?persistent_player_.state_->animation():AnimationSample{0,true,false}; }
     bool healthy() const { return healthy_; }
     const char* error() const { return error_; }
     OpeningStage stage() const { return stage_; }
@@ -173,6 +179,10 @@ public:
     const std::vector<OpeningAudioRequest>& audio_requests() const { return audio_; }
     const std::vector<OpeningTraceEvent>& action_trace() const { return trace_; }
 private:
+    bool player_action_pause(bool stop_running,bool start_idle);
+    bool player_action_resume();
+    bool player_action_direction(bool idle=false);
+    bool player_action_event(PlayerActionEvent);
     PersistentPlayerOwner persistent_player_;
     bool player_read_only_=false;
     uint32_t area_music_resource_=kRoomNoIndex;

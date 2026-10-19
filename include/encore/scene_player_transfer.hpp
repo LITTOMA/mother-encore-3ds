@@ -19,6 +19,8 @@ private:
     uint32_t before_clip_=0,destination_clip_=0,clip_=0;
     uint64_t source_physics_=0,source_idle_=0,destination_physics_=0,destination_idle_=0;
     uint64_t source_story_=0,destination_story_=0;
+    uint64_t source_action_=0,destination_action_=0;
+    FieldPlayerTree action_;
     const uint8_t*source_content_=nullptr,*destination_content_=nullptr;
     std::string leader_;
     friend class OpeningWorld;

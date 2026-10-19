@@ -1,0 +1,135 @@
+{
+  "scope": "Shared live OpeningWorld core only. Immutable borrowed metadata must outlive every persistent player. No formal assets, HID/START routing, GPU/voice backend, root contacts, new emulator or hardware acceptance yet.",
+  "base_commit": "b0d550da15e75e3bc21f644f61aecda0e065a1c4",
+  "checks": {
+    "world": 626,
+    "direction": 6232,
+    "legacy_static_tree": 42461,
+    "persistent_owner": 42,
+    "scene_transfer": 442,
+    "python": 16
+  },
+  "native_reference": {
+    "cases": 14,
+    "rows": 2058,
+    "stable_sha256": "54529dc85126eca3bf03d3d55c377b6bb86b8ea4eba9e6256fd5d9143b58e986"
+  },
+  "compatibility": "No codec, resource capability, Session, save or rule change in this unit. Existing cap1 metadata owner loads; the live full-tree binding explicitly rejects it.",
+  "semantic_review": [
+    "Original set_direction updates all directional blend parameters; Player._turn_to only updates normal Idle and travels to normal/incapacitated Idle. Discrete closest changes seek to zero; StateMachine sees the decreasing clock as end_loop, including nonloop Bat. Preserve the outgoing pose until the next destination pass when that early exit happens.",
+    "World skips MOVE and recovery queries during control ATTACK, retains velocity/speed, continues independent Area callbacks and idle animation. Forced pause may interrupt ATTACK; menu/A input must be gated separately in the future frontend.",
+    "Scene transport retains the same persistent object and animation state. A rejected stale token still pins both owners until explicitly released; new source/destination action revisions prevent a control-only callback from publishing a stale snapshot.",
+    "Room role4 is separately checked cutscene Actor walk. Player roles0..3 bind complete reachable curves; six typed source Idle Right frame keys beyond its loop length are explicitly unreachable, as previously recorded by the Entry producer. Changed reachable frames reject; changed unreachable values cannot affect execution."
+  ],
+  "fixture_failure": "First directional fixture duplicated its existing blend_animation adapter while appending the real original method: parse failure and 55-second bounded timeout. Replaced that fixture adapter with the actual unchanged method. The failed raw logs are losslessly archived; accepted independent runs2/3 did not change source methods or expected rows.",
+  "rejected_fixture": {
+    "cases.json": {
+      "bytes": 22234,
+      "sha256": "e7875dcd7c8d3bcf7a95d7db05950657bd112712f61d588d33aeff8b05e5568d"
+    },
+    "godot-0.log": {
+      "bytes": 551440,
+      "sha256": "17f67533d7f21ffecc02542ff8c301b828395c110e7bf5a39c1436386a8cec45"
+    },
+    "import.log": {
+      "bytes": 148,
+      "sha256": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60"
+    },
+    "input-0.json": {
+      "bytes": 2433,
+      "sha256": "662d9eda2491a988c9ede42413e7400a4c8404fc112c0e39681196a08ab320b8"
+    }
+  },
+  "fixture_packets": {
+    "system/legacy.encresources": {
+      "bytes": 3279,
+      "sha256": "8f286210e7485a2a09d13d24d3ee7805984fb9e1fc2f89606ef81be55edaeaa1"
+    },
+    "system/native.encresources": {
+      "bytes": 3288,
+      "sha256": "caf6f026f48a4e9538b0974aef8facf170a1595b084d6a7e2d2cbdc8ac768a29"
+    },
+    "world/fixture/FieldSwing.encswing": {
+      "bytes": 2785,
+      "sha256": "04dd99e2e3cab351a3b3b45334b715729b98a241a0f5c4390f42358fea47d97d"
+    },
+    "world/fixture/FieldSwingAction.encaction": {
+      "bytes": 389,
+      "sha256": "08ddca4f3d1667f31f4a181803f9e53a16853fc59286fd3df96b5a98c46d9968"
+    },
+    "world/fixture/FieldSwingEntry.encentry": {
+      "bytes": 5128,
+      "sha256": "3a836f9bf4c2d79ac8f5cae7f8eef09385f8d86e2ce8253b250e4c9854ad128e"
+    },
+    "world/fixture/FieldSwingGraphics.encgraphics": {
+      "bytes": 1061,
+      "sha256": "ca133fd28dd92b809991b4d929e5702a0ae82f85719ff2b4757de174d8af0bc1"
+    },
+    "world/fixture/legacy.encentry": {
+      "bytes": 4087,
+      "sha256": "c10cc5ebbb30762e9447ef49614ede49f9c3106de248d8878e8b73193f1902d4"
+    }
+  },
+  "files": {
+    "compiled-core.json": {
+      "bytes": 21868,
+      "sha256": "a3a5173c32bcce09334b03e78c9a15b4111cc121bbdd3b516d689572fec67775"
+    },
+    "player-action-world-cmake.log": {
+      "bytes": 163,
+      "sha256": "9a90dc58e9afa39759f68cc9fbadd4f5a8010ea5f2490edb478b64f912bbbe75"
+    },
+    "player-action-world-host.py": {
+      "bytes": 1346,
+      "sha256": "1b980020d1beebbf066e7a9cd91b2c28b4fed650583561240c5c79f57c8ec239"
+    },
+    "player-action-world-prepare.log": {
+      "bytes": 160,
+      "sha256": "056493d7823749e11b35c5766261804a73f39872b532d83b4ae1ac5627f44108"
+    },
+    "player-action-world-python-partition.json": {
+      "bytes": 293112,
+      "sha256": "3d80b9f5f29da6f316b32cbdaa407c1c992c12cbd6bd5ae9941cb283ae1518eb"
+    },
+    "player-action-world-python-partition.log": {
+      "bytes": 103,
+      "sha256": "6c7087572e569d147ce66b4ecd27373a2e40f24d32782892813a7bc96e334336"
+    },
+    "player-action-world-python.log": {
+      "bytes": 120,
+      "sha256": "39e14ad90a39f54f9753320ddd1847262ae9bc7f4768d89c89860be86ffdc013"
+    },
+    "player-action-world-regressions.log": {
+      "bytes": 2011,
+      "sha256": "e143ebd4e017490519ce125f83f5d7507bb1e616f871ecd3ac4ee60b3f2a8a01"
+    },
+    "player-action-world-regressions.py": {
+      "bytes": 1709,
+      "sha256": "f6dfd2864c87b1652bf6806301de4d81cf390463cbc71bdbbb5163da09639ea2"
+    },
+    "player-action-world-result.log": {
+      "bytes": 212,
+      "sha256": "7140972372c5eb157c332a02215b9107acfeaf5b33301f53224bbad15a2d9dce"
+    },
+    "player-motion-host.py": {
+      "bytes": 1490,
+      "sha256": "a56726ea44d7db0d13e87e0498f76a4bb09f9974e146daa76ea9ce8ea13d76aa"
+    },
+    "player-motion-result.log": {
+      "bytes": 192,
+      "sha256": "ffca6114ce5cecbf610b41dd50951cb0fc84d7dd6c72c704800d61e5a1fb59a3"
+    },
+    "player-tree-result.log": {
+      "bytes": 240,
+      "sha256": "fe6137abcb22f192267ffb5d1f2e661c85a5509a895900b38eeba3da2cbbf407"
+    },
+    "rejected-fixture-logs.zip": {
+      "bytes": 3837,
+      "sha256": "9feb558465dec17f91f129521e917304db2a70b06747e1feed5b13cc0f092455"
+    },
+    "resource-source.json": {
+      "bytes": 4959,
+      "sha256": "052b420ab37600ae69d75bfe46f82c45c470dcea50b92baa84ba8239eb8dedfc"
+    }
+  }
+}

@@ -52,3 +52,11 @@ GCC完整检查另暴露Windows生成凭据使用反斜杠的问题：ffb3b4f的
 实际GCC9 ASan/UBSan（泄漏检查开启）42461项通过：28组/3556个原暂停、恢复、重复输入观察，以及未改变的80组/6560个进入挥棒观察；含全部截断、旧/新版本、角色/目录/路径循环/边/绑定负向准入。旧进入组件28186项、四资源拥有者111项和三个受影响核心单元严格编译通过；相关Python13项通过，方法分配1176=812+364；Windows仅重新配置CMake成功，没有据此宣称Windows编译或执行通过。原版可听音频、碰撞掩码、完整物理、World/GPU接线和模拟器仍待完成。证据见 player-tree-host；测试驱动末尾的Python3.8清理API错误与实际测试通过分开保留，没有把失败驱动记为通过。
 
 #70测试调度修复经用户逐项授权已于2026-10-19合入main，合并提交7163a65；#69保留草稿并同步该主线。#70的d81bfb3完整运行39251936650成功：GCC普通224/ASan+UBSan209、Clang普通209/ASan+UBSan209、真实3DSX/CIA；#69历史4d4bcc3完整运行39252074017也成功：GCC普通234/ASan+UBSan219、Clang普通219/ASan+UBSan219、真实3DSX/CIA。实际原始日志和完整运行身份保存在scheduling-full-verification；两者都不覆盖其后的资源组加载、暂停对照及新树改动。
+
+持久玩家已加入可选的实际World动作绑定：四资源拥有者必须先发布完整cap2图，Room的32个普通移动绑定与可执行帧曲线逐项相符后才绑定；旧cap1拥有者可读但在此处明确拒绝。Room的角色4是独立的Cutscene Actor walk，仍由原Room/Actor校验；Idle Right的六个越过循环长度的已知帧键显式不可达，比较完整可达曲线而非截取前缀。改动可达帧会拒绝绑定，失败保持原玩家。正式目录与资源尚未启用该绑定。
+
+World在控制ATTACK期间保留位置、速度和步态快照，跳过MOVE/碰撞恢复查询，继续独立区域信号与idle动画；强制剧情pause可以打断攻击。音效开始/暂停/恢复通过有界事件队列按原顺序交付，尚无新DSP播放。ScenePlayerTransfer携带持久图状态并校验双方动作修订号，拒绝没有物理/idle帧变化的过期动作快照；旧场景不能再消耗或写动作事件。交互朝向只更新Idle混合参数，正常set_direction更新全部参数。原引擎还证明，离散方向切换把Bat时钟移回零时，StateMachine将其视作end_loop并可立即走AtEnd边，即使非循环片段尚未播完；该过渡保留旧可见性直到下一次目的节点处理，不能直接套用普通结束姿态。
+
+原版set_direction/blend_position/_turn_to及PartyObject.blend_animation方法保持原字节。两次官方Godot各14组/2058个观察的稳定投影与TSV逐字相同；共享核心GCC9 ASan/UBSan（泄漏检查开启）6232项完全对齐。World626项覆盖实际移动、B逻辑输入、保留速度、延迟结束、暂停/重复按键、顺序事件、旧cap1拒绝、帧曲线不匹配、队列边界及持久换场；攻击中仍进入原Lamp区域剧情，完成原13段演出并请求战斗，音频请求仍为5次。旧静态树42461项、World原Lamp路线、持久拥有者42项、旧换场442项通过；相关Python16项通过，分配1179=815+364；Windows仅CMake配置。首次方向夹具的重复方法解析失败及55秒超时日志已无损归档，没有当成原版行为或通过结果。证据见player-motion-reference-2/-3和player-action-world-host。
+
+该组件尚未接入正式HID/START/A归属、GPU和玩家独立音效，树根接触/Break/取铲仍待完成；实际游戏仍无完整教学或新模拟器验收。UI菜单/A应按原MOVE控制状态分别门控，不能为方便接线而把所有强制剧情pause或Area事件禁止在攻击中。b0d550d的完整运行39266888939已成功：GCC普通239/ASan+UBSan224、Clang普通224/ASan+UBSan224及真实3DSX/CIA；原始日志见player-tree-b0-full-verification。这是本条World改动之前的来源，不能替代其完整CI或模拟器检查。

@@ -147,3 +147,7 @@ bf063a7真实3DSX完成普通LOAD、176个碰撞约束路点、全部11段墓地
 首次电话控制器漏处理WAIT停顿，实际游戏正常停在Dad对白，失败记录保留；修正后重跑全部路线通过。独立存档检查曾误要求首次持久saved=true；审查原global.gd可见其先保存字典、后设置实时saved旗标，移植顺序相同，因此文件中的false正确。只修正检查器，原存档字节和游戏行为未改。证据见reports/graveyard-import/cemetery-save-emulator-bf。
 
 bf完整Clang普通208/208、ASan/UBSan208/208和真实3DSX/CIA均通过；GCC普通222/223的旧路线夹具失败仍保留，修复后的cea完整矩阵39214836153正在运行。未将不同提交或不同验证层次混称为整体通过。已删除被替代391游戏及明确完成的测试文件，当前只保留f3旧路线基线与bf实包。
+
+## CEA GCC build-source registration failure
+
+Full run 39214836153 passed genuine 3DSX/CIA packaging and Clang ordinary 209/209 plus ASan/UBSan 209/209. GCC ordinary 223/224 failed only `python_tools`: `test_console_core_sources.test_playable_sources_registered_in_both_builds` found `runtime/field_swing.cpp` in encore_core but absent from the console source list. GCC sanitizers did not run. Add the same typed module to the genuine console build; do not weaken the source-list check. Raw logs are retained in reports/graveyard-import/console-source-registration. New cross-build/full regression results remain pending.

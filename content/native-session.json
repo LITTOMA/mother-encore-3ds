@@ -2571,7 +2571,7 @@
     "content/mayor-area.json": "21bd23e8ff3c2523459376449f57cea29ef4266bb271adfbacbca36a9c6e556f",
     "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
     "tools/field_area.py": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
-    "content/podunk-story.json": "47ebd1ddcb5c95c79e9bb4486438f04daa6d8c927046dcd6833f9f9e6c39f178",
+    "content/podunk-story.json": "994bacb95252685b9aef86cd534aaa928cdcef9f85e90542a980718ed7020f6a",
     "content/mayor-footsteps.json": "4da1ef634d7519c24c6e59f393340987e26ceedf4e66d71de2d1ba690728749f",
     "tools/field_footsteps.py": "4a2b83ef60c18a922de873a0654715142409fed547b74dac0713e626d655d74f"
   },

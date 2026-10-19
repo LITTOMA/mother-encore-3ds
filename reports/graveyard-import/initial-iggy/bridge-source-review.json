@@ -1,0 +1,10 @@
+{
+  "kind": "bridge-sources-only-refresh",
+  "old_ir_sha256": "ff95198af5c495fe1d20698ecde918edc7b91e96b1c100783547b3ec63bdf720",
+  "unchanged_gameplay": true,
+  "added_sources": {
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png.import": "4cd4f75316ae4a206236be1fd3f47ebe4a8a56b8b4157eee0bb7d0005299fae5"
+  },
+  "original_producer": "tools/bridge_entry.py extract/assets"
+}

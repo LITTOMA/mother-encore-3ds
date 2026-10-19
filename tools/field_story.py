@@ -10,8 +10,12 @@ POLICY=ROOT/'content/podunk-story.json';OUTPUT='world/podunk/story.encstory'
 MAGIC=b'ENCFST01';STRIDES=(1,24,36,40,12,24);NIL=0xffffffff
 def read():
  p=bridge_entry.read(POLICY)
- require(set(p)==set('schema kind commit scene_id sources documents actors programmes interactions encounters basic_overrides dialogues emotes voice_root locales limitations'.split()),'Field story recipe fields')
- require(type(p['schema'])is int and p['schema']==2 and p['kind']=='encore.field-story.reviewed-lowering'and p['commit']==PIN,'Field story recipe schema/pin')
+ expected=set('schema kind commit scene_id sources documents actors programmes interactions encounters basic_overrides dialogues emotes voice_root locales limitations'.split())|({'supplement'}if p.get('schema')==3 else set())
+ require(set(p)==expected,'Field story recipe fields')
+ require(type(p['schema'])is int and p['schema']in(2,3)and p['kind']=='encore.field-story.reviewed-lowering'and p['commit']==PIN,'Field story recipe schema/pin')
+ if p['schema']==3:
+  name=p['supplement'];require(type(name)is str and name.startswith('content/')and name.endswith('.json')and ':'not in name and '\\'not in name and all(x not in ('','.','..')for x in name.split('/')),'Field story supplement path')
+  require(not any(c['kind']=='AwaitChoices'for prog in p['programmes']for c in prog['commands']),'Base field choices require an explicit merged choice namespace')
  ex=Extractor(ROOT)
  for source,digest in p['sources'].items():require(hashlib.sha256(ex.data(source)).hexdigest()==digest,'Field story source review changed: '+source)
  from tools.programme_lowering_recipe import document
@@ -59,6 +63,11 @@ def audio_sources():
  p,ex=read();rows=dialogues(p,ex);values={r['voice']for r in rows}
  values.update(c['audio']for prog in p['programmes']for c in prog['commands']if 'audio'in c)
  values.update(b['music']for b in p['encounters'])
+ if p['schema']==3:
+  from tools import graveyard_story
+  room=nc.parse_pack((ROOT/'romfs/world/house/opening.encroom').read_bytes());flags={room['strings'][r['name_string']]:i for i,r in enumerate(room['sections']['Flag'])}
+  _,_,texts,_,_=graveyard_story.payload(ROOT/p['supplement'],flags,len(p['programmes']))
+  values.update(r['voice']for r in texts)
  return sorted(values)
 def emote(ex,name,number,sections,frame_count):
  source=ex.text('Nodes/Ui/emotes.tscn');pattern=r'^\[sub_resource type="Animation" id='+str(number)+r'\]\n(.*?)(?=^\[|\Z)';match=re.search(pattern,source,re.M|re.S)
@@ -109,7 +118,11 @@ def add_room(sections,strings,S):
     path=source['path'];require(set(path)=={'entries','speed','flags','animation'},'Field movement recipe fields');start=len(sections['MovementEntry']);sections['MovementEntry'].extend(path['entries']);c['target_index']=len(sections['MovementPath']);sections['MovementPath'].append(dict(stable_id=c['target_index']+1,first_entry=start,entry_count=len(path['entries']),flags=path['flags'],animation_motion=path['animation'],speed=path['speed']))
    sections['Command'].append(c)
   sections['Program'].append(dict(stable_id=number+1,first_command=first,command_count=len(prog['commands']),phrase_count=max(len(p['documents'][prog['source']]),1+max(c['phrase']for c in prog['commands'])),source_path_string=S(prog['source'].removeprefix('Data/Dialogue/').removesuffix('.yaml'))))
- return {**{'upstream/MOTHER-Encore/'+s:h for s,h in ex.sources.items()},'content/podunk-story.json':bridge_entry.sha(POLICY),'tools/field_story.py':bridge_entry.sha(__file__)}
+ extra={}
+ if p['schema']==3:
+  from tools import graveyard_story
+  extra=graveyard_story.add_room(ROOT/p['supplement'],sections,strings,S)
+ return {**extra,**{'upstream/MOTHER-Encore/'+s:h for s,h in ex.sources.items()},'content/podunk-story.json':bridge_entry.sha(POLICY),'tools/field_story.py':bridge_entry.sha(__file__)}
 def build():
  from tools.podunk_field import pack_container,unpack_container
  p,ex=read();pool=bytearray();cache={}
@@ -117,13 +130,26 @@ def build():
   if not value:return (0,0)
   if value not in cache:cache[value]=(len(pool),len(value.encode()));pool.extend(value.encode())
   return cache[value]
- programmes=[struct.pack('<5I I',i,*ref(row['boundary']),*ref(row['source'].removeprefix('Data/Dialogue/').removesuffix('.yaml')),0 if row['boundary']else 1)for i,row in enumerate(p['programmes'])]
- texts=[struct.pack('<9I',r['id'],*ref(r['locale']),*ref(r['speaker']),*ref(r['body']),*ref(r['voice']))for r in dialogues(p,ex)]
+ programme_rows=[dict(programme=i,boundary=row['boundary'],source=row['source'].removeprefix('Data/Dialogue/').removesuffix('.yaml'),flags=0 if row['boundary']else 1)for i,row in enumerate(p['programmes'])]
+ text_rows=dialogues(p,ex)
+ interaction_rows=[dict(actor=p['actors'][r['actor']],programme=r['programme'],flag=r['flag'],turns=int(r['turn_player'])|int(r['turn_npc'])<<1,status=0,source=p['programmes'][r['programme']]['source'].removeprefix('Data/Dialogue/').removesuffix('.yaml'))for r in p['interactions']]
+ choice=None
+ if p['schema']==3:
+  from tools import graveyard_story
+  room=nc.parse_pack((ROOT/'romfs/world/house/opening.encroom').read_bytes());flags={room['strings'][r['name_string']]:i for i,r in enumerate(room['sections']['Flag'])}
+  supplement,extra,texts,interactions,choice=graveyard_story.payload(ROOT/p['supplement'],flags,len(programme_rows))
+  require(supplement['scene_id']==p['scene_id'],'Field story supplement scene differs')
+  first=len(programme_rows);programme_rows.extend(dict(programme=first+i,boundary='',source=r['source'].removeprefix('Data/Dialogue/').removesuffix('.yaml'),flags=1)for i,r in enumerate(extra));text_rows.extend(texts);interaction_rows.extend(interactions)
+ require(len({(r['id'],r['locale'])for r in text_rows})==len(text_rows),'Duplicate field dialogue identity/locale')
+ programmes=[struct.pack('<6I',r['programme'],*ref(r['boundary']),*ref(r['source']),r['flags'])for r in programme_rows]
+ texts=[struct.pack('<9I',r['id'],*ref(r['locale']),*ref(r['speaker']),*ref(r['body']),*ref(r['voice']))for r in text_rows]
  encounters=[struct.pack('<8IfI',b['id'],b['actor'],*ref(b['basic']),*ref(b['music']),b['basic_slot'],b['programme'],b['return_music_seconds'],{'Linear':1,'QuartIn':2,'QuartOut':3}[b['return_music_curve']])for b in p['encounters']]
  overrides=[struct.pack('<3I',r['definition'],*ref(r['source']))for r in p['basic_overrides']]
- interactions=[struct.pack('<6I',p['actors'][r['actor']],r['programme'],*ref(r['flag']),int(r['turn_player'])|int(r['turn_npc'])<<1,0)for r in p['interactions']]
- blob=pack_container(MAGIC,p['scene_id'],[bytes(pool),b''.join(programmes),b''.join(texts),b''.join(encounters),b''.join(overrides),b''.join(interactions)],STRIDES,128*1024,capability=2)
- unpack_container(blob,MAGIC,STRIDES,128*1024,capability=2);return blob
+ interactions=[struct.pack('<8I',r['actor'],r['programme'],*ref(r['flag']),r['turns'],r['status'],*ref(r['source']))if choice else struct.pack('<6I',r['actor'],r['programme'],*ref(r['flag']),r['turns'],r['status'])for r in interaction_rows]
+ sections=[bytes(pool),b''.join(programmes),b''.join(texts),b''.join(encounters),b''.join(overrides),b''.join(interactions)]+([choice]if choice else[])
+ strides=(1,24,36,40,12,32,1)if choice else STRIDES;capability=(4 if encounters else 3)if choice else 2
+ blob=pack_container(MAGIC,p['scene_id'],sections,strides,128*1024,capability=capability)
+ unpack_container(blob,MAGIC,strides,128*1024,capability=capability);return blob
 def stage_files(source_root=ROOT/'romfs'):
  blob=build();require((source_root/OUTPUT).read_bytes()==blob,'Stale field story pack');return {Path(OUTPUT):blob}
 def main():

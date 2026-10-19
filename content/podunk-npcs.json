@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.field-npc.recipe",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
@@ -13,14 +13,24 @@
       "alias": "lindgren",
       "path": "Objects/NPCS/npc20",
       "texture": "graphics/world/podunk/lindgren.t3x",
-      "motion": "world/podunk/npcs/lindgren.encmick"
+      "motion": "world/podunk/npcs/lindgren.encmick",
+      "interaction_policy": false
     },
     {
       "id": 3,
       "alias": "dog",
       "path": "Objects/NPCS/npc41",
       "texture": "graphics/world/podunk/bridge-dog.t3x",
-      "motion": "world/podunk/npcs/bridge-dog.encmick"
+      "motion": "world/podunk/npcs/bridge-dog.encmick",
+      "interaction_policy": false
+    },
+    {
+      "id": 4,
+      "alias": "iggy",
+      "path": "Objects/NPCS/npc18",
+      "texture": "graphics/world/podunk/iggy.t3x",
+      "motion": "world/podunk/npcs/iggy.encmick",
+      "interaction_policy": true
     }
   ]
 }

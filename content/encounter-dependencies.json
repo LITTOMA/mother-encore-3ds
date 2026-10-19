@@ -27221,6 +27221,14 @@
       "bytes": 725,
       "sha256": "121a03722c037c835927b1a6aaf335ec738f379501fa5a31ccb6d0069a6a22a9"
     },
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": {
+      "bytes": 2317,
+      "sha256": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606"
+    },
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png.import": {
+      "bytes": 734,
+      "sha256": "4cd4f75316ae4a206236be1fd3f47ebe4a8a56b8b4157eee0bb7d0005299fae5"
+    },
     "Graphics/Character Sprites/Npcs/4dir/mick.png": {
       "bytes": 1671,
       "sha256": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9"

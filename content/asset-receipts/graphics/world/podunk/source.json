@@ -5,16 +5,16 @@
   "format": "rgba8",
   "outputs": {
     "world/podunk/podunk.encmap": {
-      "bytes": 1619568,
-      "sha256": "1b9682df5524c7d9291ea6ddc2ae9af78c4f6a6c698a908a20b9a8c9bc97be7a"
+      "bytes": 1619540,
+      "sha256": "dcc8433bc8465330422ec422142bbd59d16eb7b249b7a165c26c4aca21ebd89d"
     },
     "world/podunk/podunk.encroom": {
-      "bytes": 20720,
-      "sha256": "a337471e74a6708c7767a63a74e4732dfb2c9168c2df251b1e58e132e4920c31"
+      "bytes": 22192,
+      "sha256": "a66ab356bf7ffcea184d034c4b66e4505e9b9372dfa5b21127cc1cff9db178d4"
     },
     "world/world.enclinks": {
-      "bytes": 1128,
-      "sha256": "1bda27cde61ac6fde4e8afdfb9994d8c922a4eafb06c469d3ed07fbdc275c63a"
+      "bytes": 1132,
+      "sha256": "dcc866291f21c1f760a8c38830d12a490b3080a2313a548255963c555803aae7"
     }
   },
   "pages": [

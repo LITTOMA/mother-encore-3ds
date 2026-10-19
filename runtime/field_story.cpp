@@ -6,6 +6,8 @@
 #include "encore/world.hpp"
 #include "encore/dialogue_choices.hpp"
 #include "encore/new_game_setup.hpp"
+#include "encore/field_menus.hpp"
+#include <algorithm>
 #include <cstring>
 #include <cmath>
 #include <set>
@@ -29,7 +31,7 @@ bool format_field_story_text(std::string_view input,const NewGameSetupData&names
  }
  out=std::move(result);error.clear();return true;
 }
-bool format_field_story_span(std::string_view input,const NewGameSetupData&names,const SessionSnapshot&snapshot,const LocaleSelection&locale,LocalizedHouseSpan&out,std::string&error){
+bool format_field_story_span(std::string_view input,const NewGameSetupData&names,const SessionSnapshot&snapshot,const LocaleSelection&locale,LocalizedHouseSpan&out,std::string&error,const FieldMenusData*inputs,const FieldMenuPreferences*preferences){
  auto reject=[&](const char*why){error=why;return false;};
  if(!names.valid()||!locale.catalog()||input.empty()||input.size()>16384)return reject("Invalid field dialogue context");
  LocalizedHouseSpan result;result.word_separator=std::string(locale.text("WORD_SEPARATOR").text);result.bullet=std::string(locale.text("SYMBOL_BULLET_MAIN").text);
@@ -43,6 +45,20 @@ bool format_field_story_span(std::string_view input,const NewGameSetupData&names
   else if(tag=="color"){if(color)return reject("Nested field hint color");const auto*b=locale.catalog()->binding("text.hint_color");if(!b)return reject("Missing field hint color");token(3,std::string(b->expected));color=true;}
   else if(tag=="/color"){if(!color)return reject("Unmatched field hint color");token(4);color=false;}
   else if(tag=="delay"){const auto*b=locale.catalog()->binding("text.default_delay");if(!b)return reject("Missing field source delay");token(8,std::string(b->expected));}
+  else if(tag=="ui_cancel"){
+   if(!inputs||!inputs->valid()||!preferences||!inputs->supports(*preferences))return reject("Missing checked field dialogue input binding");
+   const auto button=std::find(inputs->logical_buttons.begin(),inputs->logical_buttons.end(),preferences->buttons[1]);
+   if(button==inputs->logical_buttons.end()||size_t(button-inputs->logical_buttons.begin())>=inputs->button_names.size())return reject("Unmapped field dialogue input label");
+   token(1,inputs->button_names[size_t(button-inputs->logical_buttons.begin())]);
+  }else if(tag=="if input:gamepad"){
+   // Only the reviewed literal gamepad/key alternative is admitted. Neither
+   // branch can contain nested behavior or hidden unsupported markup.
+   const auto alternate=input.find("[else]",close+1),end=input.find("[/if]",close+1);
+   if(alternate==input.npos||end==input.npos||alternate>=end)return reject("Malformed field input conditional");
+   const auto gamepad=input.substr(close+1,alternate-close-1),keyboard=input.substr(alternate+6,end-alternate-6);
+   if(gamepad.empty()||keyboard.empty()||gamepad.find_first_of("[]")!=gamepad.npos||keyboard.find_first_of("[]")!=keyboard.npos)return reject("Unreviewed field input conditional body");
+   token(1,std::string(gamepad));at=end+5;continue;
+  }
   else {std::string value;if(!format_field_story_text(input.substr(open,close-open+1),names,snapshot,locale,value,error))return false;token(1,std::move(value));}
   at=close+1;
  }
@@ -72,7 +88,7 @@ uint32_t FieldStoryView::count(uint32_t s)const{return bytes_&&s>=1&&s<=u32(byte
 const uint8_t*FieldStoryView::record(uint32_t s,uint32_t i)const{return i<count(s)?bytes_+u32(bytes_+64+(s-1)*16+4)+i*u32(bytes_+64+(s-1)*16+12):nullptr;}
 uint32_t FieldStoryView::scene_id()const{return bytes_?u32(bytes_+24):0;}
 uint32_t FieldStoryView::interaction_count()const{return count(6);}
-FieldInteraction FieldStoryView::interaction(uint32_t i)const{const auto*p=record(6,i);return p?FieldInteraction{u32(p),u32(p+4),ref(p+8),u32(p+16),u32(p+20),u32(bytes_+20)==3?ref(p+24):FieldText{}}:FieldInteraction{};}
+FieldInteraction FieldStoryView::interaction(uint32_t i)const{const auto*p=record(6,i);return p?FieldInteraction{u32(p),u32(p+4),ref(p+8),u32(p+16),u32(p+20),u32(bytes_+20)>=3?ref(p+24):FieldText{}}:FieldInteraction{};}
 uint32_t FieldStoryView::programme_count()const{return count(2);}uint32_t FieldStoryView::text_count()const{return count(3);}uint32_t FieldStoryView::encounter_count()const{return count(4);}uint32_t FieldStoryView::override_count()const{return count(5);}
 std::string_view FieldStoryView::text(FieldText t)const{return bytes_&&t.length&&t.offset<=count(1)&&t.length<=count(1)-t.offset?std::string_view(reinterpret_cast<const char*>(record(1,0)+t.offset),t.length):std::string_view{};}
 FieldStoryProgramme FieldStoryView::programme(uint32_t i)const{const auto*p=record(2,i);return p?FieldStoryProgramme{u32(p),ref(p+4),ref(p+12),u32(p+20)}:FieldStoryProgramme{};}
@@ -86,20 +102,22 @@ bool FieldStoryData::load_file(const char*file,std::string&error){std::vector<ui
 bool FieldStoryData::load(const uint8_t*p,size_t n,std::string&error){
  auto fail=[&](const char*why){error=why;return false;};
  if(!p||n<144||n>128*1024)return fail("Field story size rejected");
- if(std::memcmp(p,"ENCFST01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)<1||u32(p+20)>3)||!u32(p+24)||u32(p+28)||u32(p+52)!=(u32(p+20)==1?5u:(u32(p+20)==2?6u:7u))||u32(p+56)||u32(p+60))return fail("Field story schema/capability/reserved rejected");
+ if(std::memcmp(p,"ENCFST01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)<1||u32(p+20)>4)||!u32(p+24)||u32(p+28)||u32(p+52)!=(u32(p+20)==1?5u:(u32(p+20)==2?6u:7u))||u32(p+56)||u32(p+60))return fail("Field story schema/capability/reserved rejected");
  const char*pin="7d9246600fffe518408f5830d4848635019005a3";
  for(unsigned i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Field story source pin rejected");}
  if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Field story checksum rejected");
  const auto sections=u32(p+52);size_t cursor=64+sections*16;if(n<cursor)return fail("Field story truncated directory");
  for(uint32_t s=1;s<=sections;++s){const auto*d=p+64+(s-1)*16;const auto offset=u32(d+4),count=u32(d+8),stride=u32(d+12);
-  if(u32(d)!=s||stride!=(s==7?1u:(s==6&&u32(p+20)==3?32u:strides[s-1])))return fail("Field story directory rejected");
+  if(u32(d)!=s||stride!=(s==7?1u:(s==6&&u32(p+20)>=3?32u:strides[s-1])))return fail("Field story directory rejected");
   if(!count){if(offset)return fail("Field story empty section rejected");continue;}
   if(offset%4||offset<cursor||offset>n||count>(n-offset)/stride)return fail("Field story span rejected");
   for(size_t i=cursor;i<offset;++i)if(p[i])return fail("Field story padding rejected");cursor=offset+count*stride;
  }
  if(cursor!=n)return fail("Field story trailing bytes rejected");
  FieldStoryView v;v.bytes_=p;v.size_=n;
- if(!v.count(1)||v.count(1)>64*1024||!v.count(2)||v.count(2)>64||!v.count(3)||v.count(3)>256||(u32(p+20)==3?(v.count(4)||v.count(5)||!v.count(6)||!v.count(7)||v.count(7)>16384):!v.count(4))||v.count(4)>32||v.count(5)>64||v.count(6)>256)return fail("Field story capacity rejected");
+ const bool choices_schema=u32(p+20)>=3;
+ const bool invalid_mode=u32(p+20)==3?(v.count(4)||v.count(5)):!v.count(4);
+ if(!v.count(1)||v.count(1)>64*1024||!v.count(2)||v.count(2)>64||!v.count(3)||v.count(3)>256||invalid_mode||(choices_schema&&(!v.count(6)||!v.count(7)||v.count(7)>16384))||v.count(4)>32||v.count(5)>64||v.count(6)>256)return fail("Field story capacity rejected");
  auto valid_text=[&](FieldText t,bool empty,size_t maximum){if(!t.length)return empty&&!t.offset;if(t.offset>v.count(1)||t.length>v.count(1)-t.offset||t.length>maximum)return false;const auto value=v.text(t);size_t count=0;return value.find('\0')==value.npos&&encore::utf8_count(value,count);};
  std::set<uint32_t>programmes,battles,overrides;std::set<std::string_view>boundaries,sources;std::set<std::pair<uint32_t,std::string_view>>texts;
  std::set<std::string_view>locales;std::set<uint32_t>text_ids;
@@ -114,9 +132,8 @@ bool FieldStoryData::load(const uint8_t*p,size_t n,std::string&error){
  for(uint32_t i=0;i<v.count(5);++i){const auto*r=v.record(5,i);const auto id=u32(r);const auto value=ref(r+4);if(!id||!overrides.insert(id).second||!valid_text(value,false,512)||!path(v.text(value)))return fail("Field basic action override rejected");}
  std::set<std::pair<uint32_t,std::string_view>>rules;std::set<uint32_t>interaction_programmes,owners;
  for(uint32_t i=0;i<v.count(6);++i){const auto r=v.interaction(i);bool found=false;for(uint32_t j=0;j<v.programme_count();++j){const auto program=v.programme(j);found|=program.programme==r.programme&&program.flags==1;}
-  const bool peaceful=u32(p+20)==3;
-  if(r.actor==0||r.actor>=64||r.turns>3||r.status>(peaceful?1u:0u)||!valid_text(r.flag,true,128)||!rules.insert({r.actor,v.text(r.flag)}).second)return fail("Field story interaction rejected");
-  if(peaceful){
+  if(r.actor==0||r.actor>=64||r.turns>3||r.status>(choices_schema?1u:0u)||!valid_text(r.flag,true,128)||!rules.insert({r.actor,v.text(r.flag)}).second)return fail("Field story interaction rejected");
+  if(choices_schema){
    if(!valid_text(r.source,false,512)||!path(v.text(r.source)))return fail("Field interaction source rejected");
    if(r.status){if(r.programme!=UINT32_MAX)return fail("Unavailable interaction has an executable programme");}
    else{bool matching=false;for(uint32_t j=0;j<v.programme_count();++j){const auto program=v.programme(j);matching|=program.programme==r.programme&&v.text(program.source)==v.text(r.source);}if(!found||!matching)return fail("Field interaction source programme differs");}
@@ -126,7 +143,7 @@ bool FieldStoryData::load(const uint8_t*p,size_t n,std::string&error){
  }
  for(uint32_t i=0;i<v.programme_count();++i){const auto r=v.programme(i);if(r.flags&&!interaction_programmes.count(r.programme))return fail("Field interaction programme is unbound");}
  DialogueChoicesData choices;
- if(u32(p+20)==3&&!choices.load(v.record(7,0),v.count(7),error))return false;
+ if(choices_schema&&!choices.load(v.record(7,0),v.count(7),error))return false;
  std::vector<uint8_t>owned(p,p+n);bytes_=std::move(owned);choices_=std::move(choices);error.clear();return true;
 }
 bool FieldStoryView::bind(RoomView room,FieldMapView map,ItemView items,std::string&error)const{

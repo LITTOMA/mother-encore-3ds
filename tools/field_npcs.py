@@ -6,7 +6,7 @@ executor are reused after verifying effective source instances. Programmes
 remain independently compiled by the field story adapter.
 """
 from __future__ import annotations
-import argparse,copy,hashlib,json,re,shlex,subprocess,sys
+import argparse,copy,hashlib,json,math,re,shlex,subprocess,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from tools import mick_treats as m
@@ -25,16 +25,39 @@ def load_policy(path=POLICY):
             require(key not in result,'Duplicate NPC policy field '+key);result[key]=value
         return result
     p=json.loads(Path(path).read_text(encoding='utf-8'),object_pairs_hook=unique)
-    require(set(p)=={'schema','kind','commit','scene','npc_scene','npc_script','animation','receipt','actors'} and p['schema']==1 and p['kind']=='encore.field-npc.recipe' and p['commit']==m.PIN,'Unknown field NPC policy')
+    require(set(p)=={'schema','kind','commit','scene','npc_scene','npc_script','animation','receipt','actors'} and type(p['schema'])is int and p['schema']in(1,2) and p['kind']=='encore.field-npc.recipe' and p['commit']==m.PIN,'Unknown field NPC policy')
     require(isinstance(p['actors'],list) and 1<=len(p['actors'])<=16,'Field NPC count')
-    require(all(type(a)is dict and set(a)=={'id','alias','path','texture','motion'}for a in p['actors']),'Unknown NPC actor fields')
+    actor_fields={'id','alias','path','texture','motion'}|({'interaction_policy'}if p['schema']==2 else set())
+    require(all(type(a)is dict and set(a)==actor_fields for a in p['actors']),'Unknown NPC actor fields')
+    if p['schema']==2:
+        require(all(type(a['interaction_policy'])is bool for a in p['actors'])and any(a['interaction_policy']for a in p['actors']),'Field NPC schema2 requires an explicit interaction policy')
     for key in ('id','alias','path','texture','motion'):
         require(len({a[key]for a in p['actors']})==len(p['actors']),'Duplicate NPC '+key)
     for a in p['actors']:
-        require(set(a)=={'id','alias','path','texture','motion'} and type(a['id'])is int and 2<=a['id']<=256,'Field NPC stable identity')
+        require(type(a['id'])is int and 2<=a['id']<=256,'Field NPC stable identity')
         require(all(type(a[k])is str and a[k]for k in ('alias','path','texture','motion')),'Field NPC binding')
         require(a['texture'].startswith('graphics/world/') and a['texture'].endswith('.t3x') and a['motion'].startswith('world/') and a['motion'].endswith('.encmick') and '..'not in a['texture'] and '..'not in a['motion'],'NPC output path')
     return p
+
+def validate_sprite_overrides(actual,template,image,animation,texture):
+    """Only source-ready-overwritten editor values may differ from npc.tscn."""
+    allowed={'texture','offset','visible','yaml','sprite'}
+    require(all(actual.get(k)==template.get(k)for k in (set(actual)|set(template))-allowed),'Unreviewed NPC sprite geometry/property override')
+    require(actual.get('_auto_offset',True)is True and type(actual.get('visible'))is bool,'NPC automatic offset/visibility policy')
+    require(actual.get('sprite')=='res://'+image and actual.get('yaml')=='res://'+animation and texture==image,'NPC editor sprite does not match its actual source binding')
+    offset=actual.get('offset');require(isinstance(offset,Vec2)and offset.x==0 and math.isfinite(offset.y),'NPC editor offset outside overwritten source axes')
+
+def validate_sprite_ready_source(script,sprite_script):
+    def method(code,name):
+        found=re.search(r'^func '+name+r'[(].*?(?=^func |\Z)',code,re.M|re.S);require(found is not None,'Missing NPC sprite source method '+name);return found[0]
+    update=method(script,'_update_sprite_and_animations')
+    ordered=['character_sprite.set_sprite(', 'character_sprite.set_animation(', 'character_sprite.set_spritesheet()', 'character_sprite.set_sprite_offset(']
+    offsets=[update.index(value)if value in update else -1 for value in ordered]
+    require(all(x>=0 for x in offsets)and offsets==sorted(offsets),'NPC runtime sprite setup order changed')
+    require('_update_sprite_and_animations()'in method(script,'_ready'),'NPC runtime sprite setup is not called at ready')
+    sheet=method(sprite_script,'set_spritesheet')
+    require('texture = load(sprite)'in sheet and 'if _auto_offset:'in sheet and 'offset.y = -int(texture.get_height()/float(vframes*2))'in sheet and '_default_offset = offset'in sheet and 'show()'in sheet,'NPC runtime sheet offset/visibility policy changed')
+    require('offset = _default_offset + sprite_offset'in method(sprite_script,'set_sprite_offset'),'NPC final sprite offset policy changed')
 
 def build():
     policy=load_policy();ex=Extractor(ROOT)
@@ -55,6 +78,7 @@ def build():
         return float(raw)
     results=[]
     for binding in policy['actors']:
+        interaction_policy=binding.get('interaction_policy',False)
         path=binding['path'];require(path in nodes,'Missing source NPC '+path);node=nodes[path]
         require(node.scene==policy['npc_scene'] and node.script==policy['npc_script'],'Unreviewed NPC class/script')
         require(node.props.get('no_collision',False)is False and node.props.get('no_shadow',False)is False,'Unreviewed NPC collision/shadow mode')
@@ -63,7 +87,7 @@ def build():
         require(all(node.props.get(k)==nodes[m.ACTOR_PATH].props.get(k)for k in ('collision_layer','collision_mask')),'Unreviewed NPC collision filter')
         # All geometry must be the shared npc.tscn geometry, including instance
         # overrides. New source variants require an explicit adapter review.
-        children=('CollisionShape2D','interact/CollisionShape2D','NearPlayerArea/CollisionShape2D','ViewArea/CollisionShape2D2','WanderRadius/CollisionShape2D2','RayCast2D','CharacterSprite')
+        children=('CollisionShape2D','interact/CollisionShape2D','NearPlayerArea/CollisionShape2D','ViewArea/CollisionShape2D2','WanderRadius/CollisionShape2D2','RayCast2D')+(()if interaction_policy else('CharacterSprite',))
         for child in children:
             require(nodes[path+'/'+child].props==nodes[m.ACTOR_PATH+'/'+child].props,'Unreviewed NPC child override '+path+'/'+child)
         def origin(child):
@@ -78,12 +102,22 @@ def build():
         position=origin(path);initial=node.props.get('initial_dir')
         require(isinstance(initial,Vec2) and (initial.x or initial.y),'Missing NPC initial direction')
         source='Graphics/Character Sprites/'+node.props['sprite']+'.png';size=ex.png_size(source);ex.data(source+'.import')
+        if interaction_policy:
+            require('Npcs'in node.props['sprite']or'Enemies'in node.props['sprite'],'Unreviewed field NPC directional class')
+            sprite=nodes[path+'/CharacterSprite'];owner=sprite.overrides.get('texture',sprite.resolve)
+            require(owner is not None and sprite.script=='Scripts/Main/character_sprite.gd' and sprite.scene==nodes[m.ACTOR_PATH+'/CharacterSprite'].scene,'NPC editor texture/script owner is not reviewed')
+            validate_sprite_overrides(sprite.props,nodes[m.ACTOR_PATH+'/CharacterSprite'].props,source,policy['animation'],owner.ext_path(sprite.props['texture'],'Texture'))
+            validate_sprite_ready_source(script,ex.text('Scripts/Main/character_sprite.gd'))
         columns,rows=anim['size'];require(not(size[0]%columns or size[1]%rows),'NPC texture grid')
         def effective(name,kind):return node.props[name]if name in node.props else default(name,kind)
         idle=effective('idle_animation',str)
         require(idle in ('Idle','Walk'),'NPC idle animation is not admitted')
         wander=effective('wander',bool);staring=effective('staring',bool)
         require(type(wander)is bool and type(staring)is bool,'NPC motion flags')
+        if interaction_policy:
+            from tools.field_scene_npcs import validate_sprite_policy
+            require(not wander,'NPC interaction policy is limited to stationary source actors')
+            validate_sprite_policy(idle,effective('talk_idle_animation',str),node.props.get('connections',[["Talk","Idle",2]]),bool(node.props.get('dialog','')))
         ir=copy.deepcopy(base);actor=ir['actor'];before=actor['position'];delta=[position[i]-before[i]for i in range(2)]
         for name in ('sprite_position','interact_center','collision_center'):
             actor[name]=[m.f32(actor[name][i]+delta[i])for i in range(2)]
@@ -109,8 +143,12 @@ def build():
             require(len(candidates)==1,'Ambiguous NPC source screen-entered wander draw')
             candidates[0]['kind']='ArmWander'
         ir['rng']=events
+        if interaction_policy:ir['rng']=[]
         flags=int(wander)|int(staring)<<1|int(idle=='Walk')<<2
         blob=m.lower(ir,motion_owner=binding['id'],motion_flags=flags);m.parse(blob,allow_motion=True)
+        if interaction_policy:
+            from tools.field_scene_npcs import interaction_blob
+            blob=interaction_blob(dict(binding=binding,ir=ir,blob=blob,directions=4,dialogue=node.props.get('dialog',''),alternatives=node.props.get('_all_dialog',[]),has_initial_dialogue=bool(node.props.get('dialog','')),return_after_interaction_seconds=0 if staring else 1))
         results.append(dict(binding=binding,ir=ir,blob=blob,features=flags,appear=node.props.get('appear_flag',''),disappear=node.props.get('disappear_flag','')))
     sources=dict(base['sources']);sources.update(ex.sources)
     return policy,results,dict(sorted(sources.items()))
@@ -118,6 +156,7 @@ def build():
 def verify_receipt(policy,results,sources):
     receipt=json.loads((ROOT/policy['receipt']).read_text(encoding='utf-8'))
     require(receipt['commit']==policy['commit'] and receipt['policy_sha256']==sha(POLICY) and receipt['producer_sha256']==sha(__file__) and receipt['sources']==sources,'Stale NPC asset receipt')
+    if policy['schema']==2:require(receipt.get('interaction_producer_sha256')==sha(ROOT/'tools/field_scene_npcs.py'),'Stale NPC interaction policy producer')
     require(set(receipt['textures'])=={r['binding']['texture']for r in results},'NPC texture receipt set')
     for path,item in receipt['textures'].items():
         p=ROOT/'romfs'/path;require(p.is_file() and p.stat().st_size==item['bytes'] and sha(p)==item['sha256'],'NPC texture bytes differ from receipt')
@@ -180,13 +219,15 @@ def main():
             args=(command+['-f','rgba8','-z','none','-o',rel(target),rel(source)])if command else[str(a.tex3ds),'-f','rgba8','-z','none','-o',str(target),str(source)]
             subprocess.run(args,cwd=ROOT,check=True)
             textures[ir['texture']['output']]=dict(bytes=target.stat().st_size,sha256=sha(target))
-        write(ROOT/policy['receipt'],dict(schema=1,commit=policy['commit'],policy_sha256=sha(POLICY),producer_sha256=sha(__file__),tex3ds_sha256=sha(a.tex3ds),sources=sources,textures=textures,scope='Original source NPC images for this game-related port; no fonts or unrelated binaries; motion owners have no dialogue programmes.'))
+        receipt=dict(schema=1,commit=policy['commit'],policy_sha256=sha(POLICY),producer_sha256=sha(__file__),tex3ds_sha256=sha(a.tex3ds),sources=sources,textures=textures,scope='Original source NPC images for this game-related port; no fonts or unrelated binaries; motion owners have no dialogue programmes.')
+        if policy['schema']==2:receipt['interaction_producer_sha256']=sha(ROOT/'tools/field_scene_npcs.py')
+        write(ROOT/policy['receipt'],receipt)
     else:verify_receipt(policy,results,sources)
     for record in results:
         target=ROOT/'romfs'/record['binding']['motion']
         if a.action=='verify':require(target.read_bytes()==record['blob'],'Stale NPC motion resource')
         else:target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(record['blob'])
-    print('Field NPC motion:',len(results),'checked owners; ENCMIK01 capability 4')
+    print('Field NPC motion:',len(results),'checked owners; legacy motion and explicitly admitted interaction policies')
     return 0
 
 if __name__=='__main__':

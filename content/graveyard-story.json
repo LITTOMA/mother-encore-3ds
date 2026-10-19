@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "kind": "encore.graveyard-story.reviewed-lowering",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene_id": 2,
+  "npc_path": "Objects/NPCS/npc18",
+  "documents": {
+    "Data/Dialogue/Podunk/iggy_forget.yaml": {
+      "0": {
+        "name": "DIALOGUE_PODUNK_IGGY_FORGET_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_IGGY_FORGET_0",
+        "options": {
+          "DIALOGUE_PODUNK_IGGY_FORGET_0-OPT_0": "2",
+          "DIALOGUE_PODUNK_IGGY_FORGET_0-OPT_1": "1",
+          "cancel": "1"
+        }
+      },
+      "1": {
+        "name": "DIALOGUE_PODUNK_IGGY_FORGET_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_IGGY_FORGET_1"
+      },
+      "2": {
+        "name": "DIALOGUE_PODUNK_IGGY_FORGET_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_IGGY_FORGET_2"
+      }
+    }
+  },
+  "programmes": [
+    "Data/Dialogue/Podunk/iggy_forget.yaml"
+  ],
+  "unavailable": [
+    "Data/Dialogue/Podunk/iggy_return_shovel.yaml"
+  ],
+  "dialogue_first_id": 3000,
+  "locales": [
+    "en",
+    "zh_CN"
+  ],
+  "sources": {
+    "Data/Dialogue/Podunk/iggy_forget.yaml": "4570f44bdf3299d9ece12fc6080f91567178b81b5a443d59c9eeb7c2df51c7d9",
+    "Data/Dialogue/Podunk/iggy_return_shovel.yaml": "07067dcb1bda1ff9de82e25f03d9320fdcbe06d1348f157fe9d98013cf9ee437",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc"
+  },
+  "limitations": [
+    "Initial Iggy forget conversation and yes/no/cancel only; source actions for returnShovel remain explicitly unavailable",
+    "Gravedigger swing/roots/item grants and natural graveyard progression remain unimplemented; do not substitute the isolated loop fixture"
+  ]
+}

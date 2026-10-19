@@ -1,0 +1,9 @@
+{
+  "unchanged_session_data": true,
+  "changed_dependencies": {
+    "content/podunk-story.json": {
+      "old": "47ebd1ddcb5c95c79e9bb4486438f04daa6d8c927046dcd6833f9f9e6c39f178",
+      "new": "994bacb95252685b9aef86cd534aaa928cdcef9f85e90542a980718ed7020f6a"
+    }
+  }
+}

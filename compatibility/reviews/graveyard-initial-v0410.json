@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Only initial Iggy forget dialogue and stationary NPC binding; later return-shovel override explicitly unavailable. No full cemetery, swing or rescue claim.",
+  "sources": {
+    "Data/Dialogue/Podunk/iggy_forget.yaml": "4570f44bdf3299d9ece12fc6080f91567178b81b5a443d59c9eeb7c2df51c7d9",
+    "Data/Dialogue/Podunk/iggy_return_shovel.yaml": "07067dcb1bda1ff9de82e25f03d9320fdcbe06d1348f157fe9d98013cf9ee437",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc"
+  },
+  "source_recipe_sha256": "453ebd458cd4002b40f1eb1d1b20965bc3f581b5f7a928f0f5df38d9d573e173",
+  "mapped_implementation": {
+    "source_npc": "tools/field_npcs.py schema2 -> existing ENCMIK01 capability7 and source-ready automatic sprite offset",
+    "plain_conversation": "tools/graveyard_story.py reuses checked named-text/options/goto lowering; sources immutable and exact-order reviewed",
+    "mixed_scene": "tools/field_story.py schema3 -> ENCFST01 format1 capability4; old1/2 and peaceful-only3 preserved",
+    "input_hint": "runtime/field_story.cpp uses checked field-menu preferences for ui_cancel; only nonnested literal gamepad/key condition admitted; unknown forms reject",
+    "platform": "platform/ctr/field_story.hpp passes live input preferences during preflight and presentation"
+  },
+  "tests": [
+    "tests.test_graveyard_story",
+    "tests.test_field_npcs",
+    "tests.test_field_story",
+    "tests/field_interaction_tests.cpp",
+    "tests/field_story_tests.cpp"
+  ],
+  "compatibility": {
+    "room_format": 1,
+    "room_rules": 7,
+    "field_story_format": 1,
+    "field_story_new_capability": 4,
+    "new_actor_stable_id": 4,
+    "new_catalog_id": 327,
+    "game_save_encoding": "unchanged",
+    "menu_role": 40,
+    "npc_role": 41,
+    "story_role": 42
+  }
+}

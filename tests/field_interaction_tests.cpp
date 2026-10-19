@@ -4,9 +4,13 @@
 #include "encore/battle_round_data.hpp"
 #include "encore/content.hpp"
 #include "encore/crc32.hpp"
+#include "encore/field_menus.hpp"
+#include "encore/dialogue_choices.hpp"
+#include "encore/source_font.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>
+#include <algorithm>
 using namespace encore::upstream;
 namespace {
 unsigned checks=0;std::string error;
@@ -23,6 +27,10 @@ struct MotionHost:MickHost {
  bool show_text(std::string_view,std::string_view,std::string&)override{return false;}
  bool play_sound(std::string_view,std::string&)override{return false;}
 };
+struct FontContext {
+ encore::SourceFontCatalog*source;BattleView legacy;
+ static bool advance(void*state,uint32_t cp,float&value){auto&c=*static_cast<FontContext*>(state);if(!c.source->legacy_ascii()||cp>=128)return c.source->advance(cp,value,error);for(uint32_t i=0;i<c.legacy.count(BattleSection::Glyphs);++i){const auto g=c.legacy.glyph(i);if(g.codepoint==cp&&g.advance>0){value=g.advance;return true;}}return false;}
+};
 uint32_t get(const std::vector<uint8_t>&b,size_t at){return uint32_t(b[at])|uint32_t(b[at+1])<<8|uint32_t(b[at+2])<<16|uint32_t(b[at+3])<<24;}
 void put(std::vector<uint8_t>&b,size_t at,uint32_t value){for(unsigned i=0;i<4;++i)b[at+i]=uint8_t(value>>(8*i));}
 void sign(std::vector<uint8_t>&b){put(b,16,encore::crc32(b.data()+32,b.size()-32));}
@@ -32,17 +40,28 @@ int main(int argc,char**argv){
  auto path=[&](const char*p){return root+"/"+p;};
  CHECK(room.load_file(path("world/podunk/podunk.encroom").c_str(),error));CHECK(map.load_file(path("world/podunk/podunk.encmap").c_str(),error));CHECK(links.load_file(path("world/world.enclinks").c_str(),error));CHECK(items.load_file(path("ui/opening.encitems").c_str(),error));CHECK(story.load_file(path("world/podunk/story.encstory").c_str(),error));CHECK(npc.load_file(argc==3?argv[2]:path("world/podunk/npcs/lindgren.encmick").c_str(),error));CHECK(house.load_file(path("world/house/opening.enchouse").c_str(),error));CHECK(font.load_file(path("battle/lamp/opening.encbattle").c_str(),error));CHECK(catalog.load_file(path("localization/localization.enclocale").c_str(),error));CHECK(names.load_file(path("ui/opening.encnewgame").c_str(),error));CHECK(session.load_file(path("session/opening.encsession").c_str(),error));
  CHECK(legacy.load_file("tests/fixtures/field_story_v1.encstory",error));CHECK(legacy.view().interaction_count()==0&&legacy.view().programme_count()==2);CHECK(legacy.view().bind(room.view(),map.view(),items.view(),error));
- const auto view=story.view();CHECK(view.interaction_count()==2);CHECK(view.bind(room.view(),map.view(),items.view(),error));
+ const auto view=story.view();CHECK(view.interaction_count()==4);CHECK(view.bind(room.view(),map.view(),items.view(),error));
+ {FieldStoryData previous;CHECK(previous.load_file("tests/fixtures/field_story_v2.encstory",error));CHECK(previous.view().interaction_count()==2&&!previous.view().choices());CHECK(previous.view().bind(room.view(),map.view(),items.view(),error));}
  std::vector<uint8_t>bytes;CHECK(encore::read_file(path("world/podunk/story.encstory").c_str(),bytes,128*1024,error));const auto at=get(bytes,64+5*16+4);
- for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{20,1},{20,3},{at,0},{at,63},{at+4,0},{at+16,4},{at+20,1},{at+8,UINT32_MAX},{at+24+4,0}}){auto bad=bytes;put(bad,edit.first,edit.second);sign(bad);FieldStoryData candidate;const bool loaded=candidate.load(bad.data(),bad.size(),error);CHECK(!loaded||!candidate.view().bind(room.view(),map.view(),items.view(),error));}
+ for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{20,1},{20,3},{20,5},{at,0},{at,63},{at+4,0},{at+16,4},{at+20,1},{at+8,UINT32_MAX},{at+32+4,0},{at+24,UINT32_MAX},{at+3*32+4,4}}){auto bad=bytes;put(bad,edit.first,edit.second);sign(bad);FieldStoryData candidate;const bool loaded=candidate.load(bad.data(),bad.size(),error);CHECK(!loaded||!candidate.view().bind(room.view(),map.view(),items.view(),error));}
  for(size_t n:{size_t(63),size_t(145),bytes.size()-1}){FieldStoryData candidate;CHECK(!candidate.load(bytes.data(),n,error));}
  RoomData home;BattleRoundData lamp;CHECK(home.load_file(path("world/house/opening.encroom").c_str(),error));CHECK(lamp.load_file(path("battle/lamp/opening.encround").c_str(),error));auto saved=session.defaults();bool help_found=false;
  for(auto&flag:saved.flags)if(flag.id=="pippis_mom_help"){help_found=true;flag.value=true;}CHECK(help_found);CHECK(validate_native_session_snapshot(session,home.view(),house.view(),lamp.view(),items.view(),saved,error));std::vector<uint8_t>save_bytes;CHECK(encode_session_save(saved,session.compatibility(),save_bytes,error));SessionSnapshot restored;CHECK(decode_session_save(save_bytes.data(),save_bytes.size(),session.compatibility(),restored,error));CHECK(validate_native_session_snapshot(session,home.view(),house.view(),lamp.view(),items.view(),restored,error));help_found=false;for(const auto&flag:restored.flags)if(flag.id=="pippis_mom_help")help_found=flag.value;CHECK(help_found);
+ FieldMenusData menus;CHECK(menus.load_file(path("ui/field.encmenus").c_str(),error));
+ encore::SourceFontCatalog source_fonts;CHECK(source_fonts.load(path("fonts/source-fonts.encfont").c_str(),error));FontContext glyphs{&source_fonts,font.view()};
  LocaleSelection locale;CHECK(locale.bind(catalog,error));auto snapshot=session.defaults();snapshot.characters[0].nickname="Alex[Pippi]";auto pippi=session.startup_characters()[3];pippi.nickname="Peep";snapshot.characters.push_back(pippi);
  for(const auto code:{"en","zh_Hans_CN"}){
   CHECK(locale.select(code,error));for(uint32_t id:{1010u,1011u,1012u,1013u,1014u,1020u}){const auto text=view.dialogue(id,code);LocalizedHouseSpan span;CHECK(format_field_story_span(view.text(text.body),names,snapshot,locale,span,error));CHECK(!span.segments.empty());}
   LocalizedHouseSpan rich;CHECK(format_field_story_span("[@][color][Ninten][/color][WAIT@][DELAY][Pippi]",names,snapshot,locale,rich,error));CHECK(rich.segments.size()==2&&rich.segments[0].flags==3);CHECK(rich.segments[0].tokens[1].text=="Alex[Pippi]");CHECK(rich.segments[1].tokens[0].kind==8&&rich.segments[1].tokens[1].text=="Peep");
   for(const auto bad:{"[Unknown]","[WAIT@][","[color]x","[/color]","[color][color]x","[color]x[WAIT@]y[/color]"}){const auto prior=rich.segments.size();CHECK(!format_field_story_span(bad,names,snapshot,locale,rich,error));CHECK(rich.segments.size()==prior);}
+  auto preferences=menus.defaults;const auto body=view.text(view.dialogue(3002,code).body);CHECK(body.find("[ui_cancel]")!=body.npos);
+  CHECK(!format_field_story_span(body,names,snapshot,locale,rich,error));
+  for(bool remapped:{false,true}){if(remapped)std::swap(preferences.buttons[0],preferences.buttons[1]);CHECK(format_field_story_span(body,names,snapshot,locale,rich,error,&menus,&preferences));CHECK(rich.segments.size()==4);bool found=false;const auto at=std::find(menus.logical_buttons.begin(),menus.logical_buttons.end(),preferences.buttons[1]);CHECK(at!=menus.logical_buttons.end());for(const auto&t:rich.segments[0].tokens)found|=t.kind==1&&t.text.find(menus.button_names[size_t(at-menus.logical_buttons.begin())])!=t.text.npos;CHECK(found);}
+  for(const auto bad:{"[if input:keyboard]x[else]y[/if]","[if input:gamepad]x[/if]","[if input:gamepad]x[else][Pippi][/if]","[else]","[/if]","[ui_accept]"}){const auto prior=rich.segments.size();CHECK(!format_field_story_span(bad,names,snapshot,locale,rich,error,&menus,&preferences));CHECK(rich.segments.size()==prior);}
+  preferences.buttons.clear();CHECK(!format_field_story_span(body,names,snapshot,locale,rich,error,&menus,&preferences));
+  CHECK(source_fonts.select_font(catalog.locales()[size_t(catalog.locale_index(code))].font,error));
+  HousePresentation localized;SourceRandom language_clock(991);CHECK(localized.begin(house.view(),font.view(),language_clock));localized.set_glyph_advance(FontContext::advance,&glyphs);localized.set_font_line_height(source_fonts.legacy_ascii()?0:source_fonts.selected()->height);
+  for(uint32_t id:{3000u,3001u,3002u}){const auto text=view.dialogue(id,code);CHECK(format_field_story_span(view.text(text.body),names,snapshot,locale,rich,error,&menus,&menus.defaults));rich.speaker=std::string(view.text(text.speaker));const bool accepted=localized.present_external(rich,view.text(text.voice));if(!accepted)error=localized.error();CHECK(accepted);}
  }
  CHECK(locale.select("en",error));snapshot.characters[0].nickname="Alex";
  SourceRandom random(991);HousePresentation box;CHECK(box.begin(house.view(),font.view(),random));
@@ -74,6 +93,28 @@ int main(int argc,char**argv){
   }
   CHECK(lines==unsigned(round?1:5));CHECK(field.world.stage()==OpeningStage::Walking&&field.world.story_flag("pippis_mom_help"));WalkInput input;CHECK(field.before_physics(input));CHECK(!field.world.actor_bound(1));CHECK(field.actor_pose(1).position.x==640&&field.actor_pose(1).position.y==272);CHECK(field.world.warp_same_scene({640,292},{0,-1}));
  }
+ {
+  MickData iggy;CHECK(iggy.load_file(path("world/podunk/npcs/iggy.encmick").c_str(),error));CHECK(iggy.view().interaction_policy());
+  auto tick=[&](FieldScene&s){WalkInput input;CHECK(s.before_physics(input)&&s.world.advance(input)&&s.after_physics()&&s.world.idle_frame(1.0/60)&&s.idle_frame(1.0/60,false));};
+  for(unsigned route=0;route<3;++route){
+   FieldScene s;Admission admission;MotionHost mh;CHECK(s.prepare(room.view(),map.view(),links,flags,{1432,4758},{0,-1},{400,240},error));CHECK(s.bind_npc(iggy.view(),mh,error)&&s.bind_story(view,items.view(),admission,error)&&s.finish_transition());
+   WalkInput neutral;CHECK(s.before_physics(neutral));CHECK(s.try_interaction(true,error));CHECK(admission.selected==4&&s.world.pending_dialogue_id()==3000);
+   DialogueChoices choices;uint32_t generation=0;CHECK(prepare_field_story_choices(s.world,view,choices,generation,error));
+   HousePresentation dialogue;SourceRandom clock(991);CHECK(dialogue.begin(house.view(),font.view(),clock));LocalizedHouseSpan body;
+   auto present=[&](uint32_t id){const auto text=view.dialogue(id,"en");CHECK(text.id==id);CHECK(format_field_story_span(view.text(text.body),names,snapshot,locale,body,error,&menus,&menus.defaults));body.speaker=std::string(view.text(text.speaker));CHECK(dialogue.present_external(body,view.text(text.voice)));unsigned t=0;for(;t<9000&&!dialogue.dialogue_finished();++t){CHECK(dialogue.advance_chrome(1.0/60)&&dialogue.advance_dialogue(1.0/60));if(dialogue.dialogue_stopped())dialogue.input(true,false,true,true);}CHECK(t<9000&&dialogue.dialogue_finished());};
+   present(3000);CHECK(choices.text_completed(error));
+   if(route==1)CHECK(choices.step(1.0/60,{1,0,false,false},error));
+   CHECK(choices.step(1.0/60,{0,0,route!=2,route==2},error));DialogueChoicesEvent event;bool selected=false;
+   while(choices.poll_event(event))if(event.kind==DialogueChoicesEventKind::Selected){CHECK(!select_field_story_choice(s.world,view,dialogue,choices,event.target_pc,generation+1,error));CHECK(select_field_story_choice(s.world,view,dialogue,choices,event.target_pc,generation,error));selected=true;}
+   const auto id=route==0?3002u:3001u;CHECK(selected&&s.world.pending_dialogue_id()==id);
+   for(unsigned i=0;i<30;++i){tick(s);CHECK(s.world.pending_dialogue_id()==id);}
+   present(id);CHECK(s.world.finish_story_dialogue());unsigned t=0;for(;t<600&&s.world.stage()!=OpeningStage::Walking;++t)tick(s);CHECK(t<600);
+   for(uint32_t i=0;i<flags.size();++i)CHECK(s.world.story_flag(room.view().string(room.view().flag(i).name_string))==flags[i]);
+   CHECK(s.world.warp_same_scene({1432,4758},{0,-1}));CHECK(s.before_physics(neutral));CHECK(s.try_interaction(true,error)&&s.world.pending_dialogue_id()==3000);
+  }
+  FieldScene blocked;Admission admission;MotionHost mh;auto later=flags;bool found=false;for(uint32_t i=0;i<later.size();++i)if(room.view().string(room.view().flag(i).name_string)=="got_shovel"){later[i]=true;found=true;}CHECK(found);
+  CHECK(blocked.prepare(room.view(),map.view(),links,later,{1432,4758},{0,-1},{400,240},error));CHECK(blocked.bind_npc(iggy.view(),mh,error)&&blocked.bind_story(view,items.view(),admission,error)&&blocked.finish_transition());WalkInput neutral;CHECK(blocked.before_physics(neutral));CHECK(blocked.try_interaction(true,error));CHECK(blocked.phase()==FieldPhase::Unsupported&&blocked.error().find("iggy_return_shovel")!=std::string::npos);CHECK(blocked.idle_frame(1.0/60,true)&&blocked.phase()==FieldPhase::Walking);
+ }
  if(argc==3){
   CHECK(npc.view().interaction_policy());
   auto step=[&](){WalkInput input;CHECK(field.before_physics(input));CHECK(field.world.advance(input));CHECK(field.after_physics());CHECK(field.world.idle_frame(1.0/60));CHECK(field.idle_frame(1.0/60,false));CHECK(field.world.end_scene_frame());};
@@ -82,5 +123,5 @@ int main(int argc,char**argv){
   for(unsigned i=0;i<60;++i)step();CHECK(field.actor_pose(1).direction.x>0&&field.actor_pose(1).direction.y==0);
   step();CHECK(field.actor_pose(1).direction.x==0&&field.actor_pose(1).direction.y==1);
  }
- std::printf("Field interaction: %u checks; source help/repeat, rich WAIT/color/delay, old capability, malformed admission and actor restoration; host only\n",checks);
+ std::printf("Field interaction: %u checks; original help/repeat, Iggy yes/no/cancel, current input labels, manual waits, old capabilities and atomic rejection; host only\n",checks);
 }

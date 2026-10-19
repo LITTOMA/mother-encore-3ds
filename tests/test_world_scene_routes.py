@@ -18,7 +18,8 @@ class Routes(unittest.TestCase):
   self.assertTrue(all(r['music_fade']>0 for r in rows[:4]))
   scene,sections=f.unpack_container(self.blob,f.LINK_MAGIC,w.STRIDES,f.LINK_LIMIT,capability=3)
   self.assertEqual(scene,0);self.assertEqual(len(sections[1])//24,3);self.assertEqual(len(sections[2])//84,6)
-  self.assertEqual(len(sections[3])//36,2);self.assertEqual(len(sections[4])//4,7)
+  self.assertEqual(len(sections[3])//36,2);self.assertEqual(len(sections[4])//4,8)
+  self.assertEqual(self.recipe['scenes'][1]['assets']['npcs'],[320,321,327])
  def test_legacy_route_semantics_unchanged(self):
   legacy=copy.deepcopy(f.load_recipe());legacy.pop('route_recipe');legacy['routes']=legacy['routes'][:2]
   model=f.Model(legacy)

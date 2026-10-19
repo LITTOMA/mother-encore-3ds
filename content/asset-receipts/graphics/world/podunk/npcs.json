@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "policy_sha256": "b2d276de1a49caededbd3c02a87b0cf0c0177b57083f72e9980fc8fc6ec0b41e",
-  "producer_sha256": "0b0bb6ef657dc9c9eb3bee0a0cc6aa58d1b97d5ad1daa6f341bc6de72f0f6d6e",
+  "policy_sha256": "e0669806d32538e6c84d18b1daae917bd1479b835c26a2502bd7b1f9ec2e0b7d",
+  "producer_sha256": "898d26c05049cf2cf11bec49a10b29e4e4b95080ead0429513799e61991f8eff",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "sources": {
     "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
@@ -19,6 +19,8 @@
     "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
     "Graphics/Character Sprites/Npcs/4dir/dogstray.png": "12971c1bc182ce497f22f865e96a035335c45bbfb104c31d91570ce8b54e5f2f",
     "Graphics/Character Sprites/Npcs/4dir/dogstray.png.import": "121a03722c037c835927b1a6aaf335ec738f379501fa5a31ccb6d0069a6a22a9",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png.import": "4cd4f75316ae4a206236be1fd3f47ebe4a8a56b8b4157eee0bb7d0005299fae5",
     "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9",
     "Graphics/Character Sprites/Npcs/4dir/pippismom.png": "46fcad47e02f19dc92601d47a6bd702db1c71f38bf2422cf043f0fde91dc43e7",
     "Graphics/Character Sprites/Npcs/4dir/pippismom.png.import": "b116f3891adc6b0c9564e8ce771cfa2b69c1d871e0461bff0fd8fc3afd572422",
@@ -108,7 +110,12 @@
     "graphics/world/podunk/bridge-dog.t3x": {
       "bytes": 131093,
       "sha256": "ab717967735a5fc6c9530350a1412d694e64375020e72eb67d87b1a780983fbe"
+    },
+    "graphics/world/podunk/iggy.t3x": {
+      "bytes": 131093,
+      "sha256": "d4a87c105ddd8c68aee8267a19462deb5b40217201f3be26c88e3b5ead335881"
     }
   },
-  "scope": "Original source NPC images for this game-related port; no fonts or unrelated binaries; motion owners have no dialogue programmes."
+  "scope": "Original source NPC images for this game-related port; no fonts or unrelated binaries; motion owners have no dialogue programmes.",
+  "interaction_producer_sha256": "29c400890f7083b7c0c602a8ef35000a8329cd06ecb96d09732668d2c62b88cb"
 }

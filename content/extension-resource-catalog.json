@@ -146,6 +146,11 @@
       "id": 326,
       "role": "FieldNpc",
       "path": "world/mayor/pippi.encmick"
+    },
+    {
+      "id": 327,
+      "role": "FieldNpc",
+      "path": "world/podunk/npcs/iggy.encmick"
     }
   ],
   "encounters": [

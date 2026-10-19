@@ -1,5 +1,5 @@
 {
-  "schema": 2,
+  "schema": 3,
   "kind": "encore.field-story.reviewed-lowering",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene_id": 2,
@@ -361,7 +361,8 @@
   "actors": {
     "ninten": 0,
     "lindgren": 1,
-    "dog": 2
+    "dog": 2,
+    "iggy": 3
   },
   "programmes": [
     {
@@ -1377,5 +1378,6 @@
       "turn_player": true,
       "turn_npc": true
     }
-  ]
+  ],
+  "supplement": "content/graveyard-story.json"
 }

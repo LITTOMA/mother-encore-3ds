@@ -1,0 +1,10 @@
+{
+  "failed_head": "bc8fcd604eb894132007ddfbe97392694e07b867",
+  "run": 39443521540,
+  "console_job": 118699304586,
+  "failure": "runtime/dungeon_mechanism_presentation.cpp:48: inconsistent deduction for auto: const long unsigned int then const unsigned int",
+  "cause": "On devkitARM uint32_t is unsigned long; a single auto declaration mixed the u32 return and unsigned-int literals. Host GCC9.4 tests passed with a different uint32_t underlying type.",
+  "change": "Declare both schema-width variables as uint32_t explicitly; no data, format, bounds, gameplay or save change.",
+  "verification": "Original real cross-build failure retained. Automatic genuine3DSX/CIA rebuild required for the new commit; no current cross success claim.",
+  "raw_sha256": "340e2cac091d384888b6f0ea78692de646566a9234202932a84e8d28d3aeee11"
+}

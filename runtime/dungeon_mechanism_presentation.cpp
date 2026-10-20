@@ -45,7 +45,7 @@ bool DungeonMechanismPresentationData::load_file(const char*path,std::string&e){
 }
 bool DungeonMechanismPresentationData::load(const uint8_t*p,size_t n,std::string&e){
  if(state_||!p||n<144||n>512*1024)return bad(e,"Mechanism presentation size/owner rejected");
- const auto capability=u32(p+20),sections=capability==2?7u:5u;
+ const uint32_t capability=u32(p+20),sections=capability==2?7u:5u;
  if(std::memcmp(p,"ENCDMP01",8)||u32(p+8)!=1||u32(p+12)!=n||(capability!=1&&capability!=2)||!u32(p+24)||u32(p+24)>65535||u32(p+28)||u32(p+52)!=sections||u32(p+56)||u32(p+60)||n<64+sections*16)return bad(e,"Mechanism presentation schema/capability/reserved rejected");
  const char*pin="7d9246600fffe518408f5830d4848635019005a3";
  for(unsigned i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return bad(e,"Mechanism presentation source pin rejected");}

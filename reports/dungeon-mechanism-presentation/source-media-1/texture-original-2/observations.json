@@ -1,0 +1,67 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "textures": [
+    {
+      "id": 1,
+      "path": "Graphics/Objects/Catacombs/Lever.png",
+      "width": 32,
+      "height": 16,
+      "flags": 0,
+      "format": 5,
+      "source_rgba_sha256": "889eae950e9985f55baba17b07c7ca00a6306c4e3ac9a86ae3a8ff7994f35e9b",
+      "imported_rgba_sha256": "806e83b070d025e13f61870c1010be41a2fa2b91ce72d3b5890da6330cf623f9",
+      "changed_visible_pixels": 0,
+      "changed_alpha_pixels": 0,
+      "changed_transparent_rgb_pixels": 198
+    },
+    {
+      "id": 2,
+      "path": "Graphics/Objects/Catacombs/Plate.png",
+      "width": 32,
+      "height": 16,
+      "flags": 0,
+      "format": 5,
+      "source_rgba_sha256": "864df717e9f6a9c9ff6d83c52af114ef240e9ed79a0b5019776be81ad1392751",
+      "imported_rgba_sha256": "04fcf9ee2d3d77745823ff1b5059d4fd73af03df85252cce8bf67ab6bde6a963",
+      "changed_visible_pixels": 0,
+      "changed_alpha_pixels": 0,
+      "changed_transparent_rgb_pixels": 48
+    },
+    {
+      "id": 3,
+      "path": "Graphics/Objects/Catacombs/Gate.png",
+      "width": 288,
+      "height": 48,
+      "flags": 0,
+      "format": 5,
+      "source_rgba_sha256": "f92f1dea096ab520727ac7d2159dce7061600d4443c4bc6b598439663d91ab74",
+      "imported_rgba_sha256": "ecbf205fb0676192bd4a33fa5d2c1e532c4c46fe23cf86e1bdcc0bfcc1ada628",
+      "changed_visible_pixels": 0,
+      "changed_alpha_pixels": 0,
+      "changed_transparent_rgb_pixels": 4709
+    },
+    {
+      "id": 4,
+      "path": "Graphics/Objects/Catacombs/Wall Door.png",
+      "width": 1680,
+      "height": 96,
+      "flags": 0,
+      "format": 5,
+      "source_rgba_sha256": "b85f0ec657d32da69daaf1f6782c31d08deadd00ed24693fc1d5a770b18c48c9",
+      "imported_rgba_sha256": "bc914eb27774d1846dacf2d613a2ee5f615ba79e39b7d6bb16926b4b0cd1ef44",
+      "changed_visible_pixels": 0,
+      "changed_alpha_pixels": 0,
+      "changed_transparent_rgb_pixels": 20123
+    }
+  ]
+}

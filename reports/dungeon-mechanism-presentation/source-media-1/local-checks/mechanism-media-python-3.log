@@ -1,0 +1,20 @@
+test_actual_graphics_compiler_receipt_and_review_identities (tests.test_dungeon_mechanism_media.MechanismMedia.test_actual_graphics_compiler_receipt_and_review_identities) ... ok
+test_actual_native_texture_import_keeps_visible_pixels_and_alpha (tests.test_dungeon_mechanism_media.MechanismMedia.test_actual_native_texture_import_keeps_visible_pixels_and_alpha) ... ok
+test_audio_four_sources_six_independent_node_owners_and_denial_channel (tests.test_dungeon_mechanism_media.MechanismMedia.test_audio_four_sources_six_independent_node_owners_and_denial_channel) ... ok
+test_audio_review_schema_dependency_source_id_and_conversion_reject (tests.test_dungeon_mechanism_media.MechanismMedia.test_audio_review_schema_dependency_source_id_and_conversion_reject) ... ok
+test_duplicate_profile_and_string_alias_reject (tests.test_dungeon_mechanism_media.MechanismMedia.test_duplicate_profile_and_string_alias_reject) ... ok
+test_every_truncation_schema_nested_version_and_section_spans_reject (tests.test_dungeon_mechanism_media.MechanismMedia.test_every_truncation_schema_nested_version_and_section_spans_reject) ... ok
+test_fixture_changed_hash_producer_engine_or_missing_owner_reject (tests.test_dungeon_mechanism_media.MechanismMedia.test_fixture_changed_hash_producer_engine_or_missing_owner_reject) ... ok
+test_fixture_exact_projection_and_duplicate_json_reject (tests.test_dungeon_mechanism_media.MechanismMedia.test_fixture_exact_projection_and_duplicate_json_reject) ... ok
+test_graphics_review_schema_pin_source_and_owner_mismatch_reject (tests.test_dungeon_mechanism_media.MechanismMedia.test_graphics_review_schema_pin_source_and_owner_mismatch_reject) ... ok
+test_presentation_review_unknown_schema_types_defaults_and_coverage_reject (tests.test_dungeon_mechanism_media.MechanismMedia.test_presentation_review_unknown_schema_types_defaults_and_coverage_reject) ... ok
+test_source_geometry_sprite_frames_and_independent_resource (tests.test_dungeon_mechanism_media.MechanismMedia.test_source_geometry_sprite_frames_and_independent_resource) ... ok
+test_source_profile_shape_and_texture_binding_mismatches_reject (tests.test_dungeon_mechanism_media.MechanismMedia.test_source_profile_shape_and_texture_binding_mismatches_reject) ... ok
+test_texture_import_unknown_fields_filters_loops_and_operations_reject (tests.test_dungeon_mechanism_media.MechanismMedia.test_texture_import_unknown_fields_filters_loops_and_operations_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 31.811s
+
+OK
+Mechanism presentation: 7356 bytes, 14 owners, 17 rectangles; no scene/physics/renderer admission
+Native geometry fixture:2 runs,14 owners/17 rectangles each; immutable expectations

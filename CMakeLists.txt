@@ -10,6 +10,7 @@ option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
     runtime/dungeon_mechanism_bindings.cpp
     runtime/dungeon_mechanism_state.cpp
+    runtime/dungeon_mechanism_presentation.cpp
     runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/dungeon_keys.cpp runtime/dungeon_key_state.cpp runtime/dungeon_switches.cpp runtime/dungeon_switch_state.cpp runtime/dungeon_wall_timeline.cpp runtime/dungeon_wall_state.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
@@ -1253,6 +1254,14 @@ if(BUILD_TESTING)
     target_link_libraries(encore_dungeon_mechanism_state_tests PRIVATE encore_core)
     add_test(NAME dungeon_mechanism_state COMMAND encore_dungeon_mechanism_state_tests ${CMAKE_BINARY_DIR}/dungeon-mechanism-bindings/source.encdma ${CMAKE_BINARY_DIR}/dungeon-mechanism-bindings/reference.tsv)
     set_tests_properties(dungeon_mechanism_state PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED dungeon_mechanism_data)
+    add_test(NAME dungeon_mechanism_presentation_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_dungeon_mechanism_presentation.py --out ${CMAKE_BINARY_DIR}/dungeon-mechanism-presentation)
+    set_tests_properties(dungeon_mechanism_presentation_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_SETUP dungeon_mechanism_presentation_data)
+    add_executable(encore_dungeon_mechanism_presentation_tests tests/dungeon_mechanism_presentation_tests.cpp)
+    target_link_libraries(encore_dungeon_mechanism_presentation_tests PRIVATE encore_core)
+    add_test(NAME dungeon_mechanism_presentation COMMAND encore_dungeon_mechanism_presentation_tests ${CMAKE_BINARY_DIR}/dungeon-mechanism-presentation/source.encdmp ${CMAKE_BINARY_DIR}/dungeon-mechanism-presentation/reference.tsv)
+    set_tests_properties(dungeon_mechanism_presentation PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED dungeon_mechanism_presentation_data)
+    add_test(NAME dungeon_mechanism_presentation_state COMMAND encore_dungeon_mechanism_state_tests ${CMAKE_BINARY_DIR}/dungeon-mechanism-bindings/source.encdma ${CMAKE_BINARY_DIR}/dungeon-mechanism-bindings/reference.tsv ${CMAKE_BINARY_DIR}/dungeon-mechanism-presentation/source.encdmp)
+    set_tests_properties(dungeon_mechanism_presentation_state PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED "dungeon_mechanism_data;dungeon_mechanism_presentation_data")
     add_executable(encore_world_run_audio_tests tests/world_run_audio_tests.cpp)
     target_link_libraries(encore_world_run_audio_tests PRIVATE encore_core)
     add_test(NAME world_run_audio COMMAND encore_world_run_audio_tests ${CMAKE_BINARY_DIR}/step-scene-fixture ${CMAKE_SOURCE_DIR}/tests/fixtures/mayor.encsteps ${CMAKE_SOURCE_DIR}/tests/fixtures/pause-audio.tsv ${CMAKE_SOURCE_DIR}/tests/fixtures/step-contacts.tsv)

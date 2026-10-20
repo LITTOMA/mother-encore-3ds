@@ -1,4 +1,5 @@
 #include "encore/dungeon_mechanism_state.hpp"
+#include "encore/dungeon_mechanism_presentation.hpp"
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
@@ -49,7 +50,9 @@ struct Projection {
 };
 }
 int main(int argc,char**argv){
- CHECK(argc==3);DungeonMechanismBindingsData data;CHECK(data.load_file(argv[1],error));const auto graph=data.graph();std::vector<DungeonSwitchFlag>flags;for(uint32_t i=0;i<graph.switch_count();++i)flags.push_back({graph.switch_node(i).id,false});
+ CHECK(argc==3||argc==4);DungeonMechanismBindingsData data;CHECK(data.load_file(argv[1],error));DungeonMechanismPresentationData presentation;
+ if(argc==4){CHECK(presentation.load_file(argv[3],error));CHECK(presentation.bindings().graph().scene_id()==data.graph().scene_id()&&presentation.bindings().bindings().size()==data.bindings().size());data=presentation.bindings();}
+ const auto graph=data.graph();std::vector<DungeonSwitchFlag>flags;for(uint32_t i=0;i<graph.switch_count();++i)flags.push_back({graph.switch_node(i).id,false});
  std::vector<std::string>first;uint32_t other_owner=0;
  for(unsigned pass=0;pass<2;++pass){
   DungeonMechanismState state;CHECK(state.prepare(data,42,flags,error));Projection actual;std::ifstream input(argv[2]);CHECK(bool(input));std::string line;unsigned rows=0;
@@ -85,6 +88,10 @@ int main(int argc,char**argv){
     DungeonMechanismPose pose;CHECK(state.inspect(owner,pose,error));const bool match=pose.owner==owner&&pose.pose.frame==frame&&pose.pose.body==bool(body)&&pose.clip==clip&&pose.playing==bool(playing)&&std::abs(pose.position-position)<.0000003&&pose.on==bool(on);
     if(!match)std::fprintf(stderr,"Pose mismatch %s owner%u: actual frame%u body%u clip%u playing%u pos%.17g on%u; expected frame%u body%u clip%u playing%u pos%.17g on%u\n",label.c_str(),owner,pose.pose.frame,pose.pose.body,pose.clip,pose.playing,pose.position,pose.on,frame,body,clip,playing,position,on);
     CHECK(match);projection.push_back(std::to_string(owner)+':'+std::to_string(pose.pose.frame)+':'+std::to_string(pose.pose.body)+':'+std::to_string(pose.clip)+':'+std::to_string(pose.playing)+':'+scalar(pose.position)+':'+std::to_string(pose.on));
+    if(presentation.valid()){
+     DungeonMechanismDraw draw;CHECK(presentation.draw(owner,pose.pose.frame,draw,error));const auto*sprite=presentation.sprite(binding.profile);CHECK(sprite&&draw.profile==binding.profile&&draw.owner==owner&&draw.x==frame%sprite->columns*sprite->cell_width&&draw.y==frame/sprite->columns*sprite->cell_height);
+     for(size_t i=0;i<presentation.shapes().size();++i)if(presentation.shapes()[i].owner==owner){DungeonMechanismRectangle rectangle;CHECK(presentation.rectangle(i,rectangle,error));CHECK(rectangle.extents.x>0&&rectangle.extents.y>0);}
+    }
    }
    ++rows;
   }

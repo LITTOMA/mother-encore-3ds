@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "path": "Graphics/Objects/Catacombs/Lever.png"
+  },
+  {
+    "id": 2,
+    "path": "Graphics/Objects/Catacombs/Plate.png"
+  },
+  {
+    "id": 3,
+    "path": "Graphics/Objects/Catacombs/Gate.png"
+  },
+  {
+    "id": 4,
+    "path": "Graphics/Objects/Catacombs/Wall Door.png"
+  }
+]

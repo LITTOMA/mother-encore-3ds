@@ -1,0 +1,387 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Untrimmed original RGBA frame packing for4 audited mechanism profiles. Source grid/position/offset/flags preserved; no pixel painting,resampling,scene/draw/physics admission or source shader interpretation.",
+  "permission": "Pinned upstream LICENSE explicitly permits game-related use; derived port data and notices retained; no environment fonts or third-party binaries distributed.",
+  "whole_scene_approved": false,
+  "review_sha256": "d8d20510e98b24e487e938393ec0603e08bcb4efb08071564ca7b77497ff01fc",
+  "bindings_review_sha256": "bcd1d22edbffec2aef191d21c33c3e6725ad2b7fd39f15d7fc3162efb231a69e",
+  "sources": {
+    "Graphics/Objects/Catacombs/Gate.png": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f",
+    "Graphics/Objects/Catacombs/Gate.png.import": "289c2958fa2dd0dc99d7ba71b6d449c0fd955b0d8469497f642e954d45560e58",
+    "Graphics/Objects/Catacombs/Lever.png": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859",
+    "Graphics/Objects/Catacombs/Lever.png.import": "c17b98be68b994233e0077af847eaca164e4fb7e8db2430865ff0aadcba575e0",
+    "Graphics/Objects/Catacombs/Plate.png": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af",
+    "Graphics/Objects/Catacombs/Plate.png.import": "fd42906c1558857f70ec4832303d4d62541b3811b327f9b2af31d4da617a3a42",
+    "Graphics/Objects/Catacombs/Wall Door.png": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100",
+    "Graphics/Objects/Catacombs/Wall Door.png.import": "e0dae549e293eb2b512f56a7050983fb2e513822f1e48173ece074e22a93fad0",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+    "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2"
+  },
+  "profiles": [
+    {
+      "id": 1,
+      "name": "lever",
+      "scene": "Nodes/Overworld/switches/Lever.tscn",
+      "sprite": "main",
+      "texture": "Graphics/Objects/Catacombs/Lever.png",
+      "atlas_columns": 2,
+      "output": "graphics/world/catacombs/mechanisms/lever.t3x",
+      "source_columns": 2,
+      "source_rows": 1,
+      "source_sha256": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859",
+      "atlas_width": 32,
+      "atlas_height": 16,
+      "frame_width": 16,
+      "frame_height": 16,
+      "atlas_rows": 1,
+      "frames": [
+        {
+          "source_frame": 0,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 16,
+          "rgba_sha256": "e11f6ad8f3c09c489f1528851efec7b14bfb4f4efea849dc862d9a984f5ceeb2"
+        },
+        {
+          "source_frame": 1,
+          "x": 16,
+          "y": 0,
+          "width": 16,
+          "height": 16,
+          "rgba_sha256": "121684f8189d83e5396dc3b93783baa38eb99c131d13607d330822a9d8f55390"
+        }
+      ],
+      "origins": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "flags": {
+        "centered": true,
+        "visible": true,
+        "flip_h": false,
+        "flip_v": false,
+        "z_as_relative": true
+      },
+      "z_index": 0,
+      "rgba_sha256": "889eae950e9985f55baba17b07c7ca00a6306c4e3ac9a86ae3a8ff7994f35e9b",
+      "t3x_bytes": 2069,
+      "t3x_sha256": "cb3036092f89fb2e2cb6327f396325ffe44e2c453e1a8ca3f887c32ce50cd7ae"
+    },
+    {
+      "id": 2,
+      "name": "plate",
+      "scene": "Nodes/Overworld/switches/plate.tscn",
+      "sprite": "Sprite",
+      "texture": "Graphics/Objects/Catacombs/Plate.png",
+      "atlas_columns": 2,
+      "output": "graphics/world/catacombs/mechanisms/plate.t3x",
+      "source_columns": 2,
+      "source_rows": 1,
+      "source_sha256": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af",
+      "atlas_width": 32,
+      "atlas_height": 16,
+      "frame_width": 16,
+      "frame_height": 16,
+      "atlas_rows": 1,
+      "frames": [
+        {
+          "source_frame": 0,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 16,
+          "rgba_sha256": "2eb9d3277b199484aa657c62e7d48cd5cb25c08a6919750ba738e68a559affb2"
+        },
+        {
+          "source_frame": 1,
+          "x": 16,
+          "y": 0,
+          "width": 16,
+          "height": 16,
+          "rgba_sha256": "3849daa0f2502457f1ee38615c46c0fd4318d4d6db02eff79d46974e41325f6a"
+        }
+      ],
+      "origins": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "flags": {
+        "centered": true,
+        "visible": true,
+        "flip_h": false,
+        "flip_v": false,
+        "z_as_relative": true
+      },
+      "z_index": 0,
+      "rgba_sha256": "864df717e9f6a9c9ff6d83c52af114ef240e9ed79a0b5019776be81ad1392751",
+      "t3x_bytes": 2069,
+      "t3x_sha256": "89356304b2c78317285fba88847b2eeb513a5d31c2a6cf979c7b14712cb9fdf3"
+    },
+    {
+      "id": 3,
+      "name": "gate",
+      "scene": "Nodes/Overworld/switches/Gate.tscn",
+      "sprite": "main",
+      "texture": "Graphics/Objects/Catacombs/Gate.png",
+      "atlas_columns": 3,
+      "output": "graphics/world/catacombs/mechanisms/gate.t3x",
+      "source_columns": 6,
+      "source_rows": 1,
+      "source_sha256": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f",
+      "atlas_width": 144,
+      "atlas_height": 96,
+      "frame_width": 48,
+      "frame_height": 48,
+      "atlas_rows": 2,
+      "frames": [
+        {
+          "source_frame": 0,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 48,
+          "rgba_sha256": "9a3fd6f8cdf7a7654069d3ea6e80d64c36ec4c5c8d052b8df7bfa20a7dc42965"
+        },
+        {
+          "source_frame": 1,
+          "x": 48,
+          "y": 0,
+          "width": 48,
+          "height": 48,
+          "rgba_sha256": "d494d8c749aeca4e4276cfd631e6c616e95eff64fbc892d855f3c6f5b2b9fd31"
+        },
+        {
+          "source_frame": 2,
+          "x": 96,
+          "y": 0,
+          "width": 48,
+          "height": 48,
+          "rgba_sha256": "8172bd034eb3c273c0ffa4fd660c14a7b5572ca318ebbcf64ccd76e8e29a8ba6"
+        },
+        {
+          "source_frame": 3,
+          "x": 0,
+          "y": 48,
+          "width": 48,
+          "height": 48,
+          "rgba_sha256": "5da6ec77f68a3e1082d6f12261badcb03e57d845aebd406cf0fd9b6a037d15df"
+        },
+        {
+          "source_frame": 4,
+          "x": 48,
+          "y": 48,
+          "width": 48,
+          "height": 48,
+          "rgba_sha256": "9fa78a98ba156aefec44d5ace829fc887c866e0cfa15dece11670896c1288621"
+        },
+        {
+          "source_frame": 5,
+          "x": 96,
+          "y": 48,
+          "width": 48,
+          "height": 48,
+          "rgba_sha256": "2d07a41ae992770085117e9815300bfd0730745883e60b24aaad5e69dfc087ae"
+        }
+      ],
+      "origins": {
+        "position": [
+          0.0,
+          -8.0
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "flags": {
+        "centered": true,
+        "visible": true,
+        "flip_h": false,
+        "flip_v": false,
+        "z_as_relative": true
+      },
+      "z_index": 0,
+      "rgba_sha256": "3c78c1b56466a516fcbadcf9c20af638627fb49f56ac1bb42a672860b3ad736d",
+      "t3x_bytes": 131093,
+      "t3x_sha256": "46c6984782381bafcdb14f26f98b9411724dfc010ec26616667409a532cc0723"
+    },
+    {
+      "id": 4,
+      "name": "wall",
+      "scene": "Nodes/Overworld/switches/Wall Door.tscn",
+      "sprite": "main",
+      "texture": "Graphics/Objects/Catacombs/Wall Door.png",
+      "atlas_columns": 4,
+      "output": "graphics/world/catacombs/mechanisms/wall.t3x",
+      "source_columns": 15,
+      "source_rows": 1,
+      "source_sha256": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100",
+      "atlas_width": 448,
+      "atlas_height": 384,
+      "frame_width": 112,
+      "frame_height": 96,
+      "atlas_rows": 4,
+      "frames": [
+        {
+          "source_frame": 0,
+          "x": 0,
+          "y": 0,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "6d2a8e2577cbe6aed70f2da47c0ebbd9e795826747d4929493f7129430537250"
+        },
+        {
+          "source_frame": 1,
+          "x": 112,
+          "y": 0,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "406570d16af1e5f1a0e20929b05bae85696e575df14f7841eef50782621cbc67"
+        },
+        {
+          "source_frame": 2,
+          "x": 224,
+          "y": 0,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "c0fa7b40064180259fdfd99c74fc63e1763f9c81a0a027cc8e8e00bda055c503"
+        },
+        {
+          "source_frame": 3,
+          "x": 336,
+          "y": 0,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "7bcb9e417725403a407a9b40844765803cfb19460482dce6651a5c9b0d92e436"
+        },
+        {
+          "source_frame": 4,
+          "x": 0,
+          "y": 96,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "464fc01c627c9546e4f6c2caef1ac490f34d58d7044868a94477d835e70e49fa"
+        },
+        {
+          "source_frame": 5,
+          "x": 112,
+          "y": 96,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "ca0be733380bf491e9f4b925567e07918dbbeeb214a0285dd964c8d622cacf64"
+        },
+        {
+          "source_frame": 6,
+          "x": 224,
+          "y": 96,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "1524417e8db7ec94b4b1f7ec223bf64f42f9ae644a1ba56ec42a11e0eda44a16"
+        },
+        {
+          "source_frame": 7,
+          "x": 336,
+          "y": 96,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "fc7e37989134d8813f7f07cece71015c422632591eed93e51dff275c2b7a45b6"
+        },
+        {
+          "source_frame": 8,
+          "x": 0,
+          "y": 192,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "580fd20da36807216130684b4fbf9f8599f399695f3089d1243e32a7cf3c43a4"
+        },
+        {
+          "source_frame": 9,
+          "x": 112,
+          "y": 192,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "1edb4f967d89e87d5b55a16554d3139140dfb9cc2d360cbdf12823656bab0f14"
+        },
+        {
+          "source_frame": 10,
+          "x": 224,
+          "y": 192,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "b924ddfd8f74e77f92027b17496c49fbf109cc6acd5ba527664d6661b09518f9"
+        },
+        {
+          "source_frame": 11,
+          "x": 336,
+          "y": 192,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "c0bdc1942d49bbba7c83a70672570a4925f346d800a772967e2de7d19317b12c"
+        },
+        {
+          "source_frame": 12,
+          "x": 0,
+          "y": 288,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "35c0d43685537c88dbc838d3264b5da9c3c75328c411e78d24da1f72c5707c08"
+        },
+        {
+          "source_frame": 13,
+          "x": 112,
+          "y": 288,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "eba9a426d849646d757348050b3d2f838dd0860c488d6cafca6eace5fe85e624"
+        },
+        {
+          "source_frame": 14,
+          "x": 224,
+          "y": 288,
+          "width": 112,
+          "height": 96,
+          "rgba_sha256": "e4221b57681a7e5dfca28d381ca3b0844d6a17b3ffcd3712738748f08153b5fa"
+        }
+      ],
+      "origins": {
+        "position": [
+          0.0,
+          -8.0
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "flags": {
+        "centered": true,
+        "visible": true,
+        "flip_h": false,
+        "flip_v": false,
+        "z_as_relative": true
+      },
+      "z_index": 0,
+      "rgba_sha256": "d51e8d89aed4c70801fc8f6d8e229a5326afb40ce03b2ee13dea6678de2fac67",
+      "t3x_bytes": 1048597,
+      "t3x_sha256": "889a44bb828c0678a4988fcdb07a598d778e8e12defd53ccd226c07757998fff"
+    }
+  ],
+  "producer_sha256": "f8796460f9b6eb63aaeea4bb1b17159f7efe1496b270d3675542d48445da3f7c",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+}

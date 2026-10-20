@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_mechanism_audio.py", line 60, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();compile_assets(a.out)
+                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_mechanism_audio.py", line 50, in compile_assets
+    out=Path(out).resolve();require(out.is_relative_to((ROOT/'build').resolve())and out!=ROOT/'build'and not out.exists(),'Fresh owned mechanism audio candidate required');recipe,proof=extract(file);out.mkdir(parents=True)
+                                                                                                                                                                                         ^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_mechanism_audio.py", line 42, in extract
+    if old['stable_id']==r['stable_id']or old['source_path']==r['source_path']:require(all(old[k]==r[k]for k in('stable_id','source_path','source_sha256','import_sha256','gain_db','pcm_path')),'Mechanism audio root-bank identity collision')
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Mechanism audio root-bank identity collision

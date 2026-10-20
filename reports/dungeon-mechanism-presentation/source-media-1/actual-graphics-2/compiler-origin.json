@@ -1,0 +1,19 @@
+{
+  "official_image": "devkitpro/devkitarm",
+  "manifest_sha256": "15b79ce75822c289538d8153da5fa7aafe5e6adc32ad8a575a197beca0f0761b",
+  "layer": {
+    "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+    "digest": "sha256:3c5026e520aeec9e208399f6d0a62098d5ee4c13d8cca97cdb9adbc6bb56a1c0",
+    "size": 215133357
+  },
+  "verified_layer_bytes": 215133357,
+  "converter_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "kept": [
+    {
+      "member": "opt/devkitpro/tools/bin/tex3ds",
+      "bytes": 5418504,
+      "sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+    }
+  ],
+  "scope": "Only the existing source-admitted converter and its package metadata retained locally. Full layer checksum verified; no SDK installation, root filesystem mutation, release binary or game asset created."
+}

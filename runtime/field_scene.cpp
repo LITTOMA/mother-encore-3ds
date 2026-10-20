@@ -241,7 +241,7 @@ bool FieldScene::bind_props(const FieldPropsData&data,std::string&error){
 }
 bool FieldScene::bind_props_owner(const FieldPropsData&data,std::string&error){
     if(phase_==FieldPhase::Error||props_.ready()){error="Field props need one prepared scene owner";return false;}
-    if(!data.bind(world.content(),map_,error))return false;
+    if(!data.bind(world.content(),map_,error)||!story_.bind_props(data,error))return false;
     if(objects_.prepared())for(const auto&o:objects_.data().objects())for(const auto&p:data.props())if(o.body!=kFieldNone&&o.body==p.body){error="Field prop and object body ownership overlap";return false;}
     std::vector<bool>flags;for(const auto&name:data.flags())flags.push_back(world.story_flag(name));
     FieldProps next;if(!next.initialize(data,flags,error))return false;
@@ -430,6 +430,7 @@ void FieldScene::apply_npc_bodies(){
 bool FieldScene::finish_transition(){
     if(phase_!=FieldPhase::Transition)return fail("Field transition finish outside its boundary");
     if(map_.capabilities()>=6&&!objects_.prepared())return fail("Field object scene lifecycle is unbound");
+    if(story_.prop_dialogue().when_false!=UINT32_MAX&&(!props_.ready()||!prop_contacts_.ready()))return fail("Field investigation scene owners are unbound");
     if(!world.unpause_from_house())return fail("Field player unpause rejected");
     phase_=FieldPhase::Walking;return true;
 }
@@ -472,7 +473,8 @@ bool FieldScene::try_mick(bool accept,std::string& error){
     error.clear();return true;
 }
 bool FieldScene::try_interaction(bool accept,std::string& error){
-    if(world.stage()!=OpeningStage::Walking){error.clear();return true;}
+    if(world.stage()!=OpeningStage::Walking||world.player_action().attacking()||world.actor_bound(world.content().scene().player_instance_index)){error.clear();return true;}
+    bool prop_handled=false;if(!try_prop_interaction(accept,prop_handled,error))return false;if(prop_handled)return true;
     if(!try_mick(accept,error))return false;
     if(!accept||phase_!=FieldPhase::Walking||world.house_paused()||world.player().crouch)return true;
     for(const auto& ptr:npcs_){auto& n=*ptr;if(!actor_visible(n.actor)||!n.motion.view().has_dialogue())continue;
@@ -512,6 +514,31 @@ bool FieldScene::try_interaction(bool accept,std::string& error){
         return true;
     }
     error.clear();return true;
+}
+bool FieldScene::try_prop_interaction(bool accept,bool&handled,std::string&error){
+    handled=false;const auto policy=story_.prop_dialogue();
+    if(!accept||phase_!=FieldPhase::Walking||world.house_paused()||world.player().crouch||!props_.ready()||policy.when_false==UINT32_MAX){error.clear();return true;}
+    const auto player=world.player();const Vec2 origin{player.position.x+policy.ray_origin.x,player.position.y+policy.ray_origin.y};const auto direction=normalized(player.direction);
+    float nearest=INFINITY,distance=0;uint32_t selected=UINT32_MAX;
+    for(uint32_t i=0;i<props_.states().size();++i){const auto&state=props_.states()[i];const auto&row=props_.data().props()[i];if(!state.alive||!state.animation.pose().interaction)continue;
+        if(ray_rect(origin,direction,policy.ray_length,row.interact_center,row.interact_extents,distance)&&distance<nearest){nearest=distance;selected=i;}}
+    if(selected==UINT32_MAX){error.clear();return true;}
+    auto npc_before=[&](MickView view,Vec2 at){const auto actor=view.actor();const Vec2 center{at.x+actor.interact_center.x-actor.position.x,at.y+actor.interact_center.y-actor.position.y};return ray_rect(origin,direction,policy.ray_length,center,actor.interact_extents,distance)&&distance<=nearest;};
+    if(mick_bound_&&npc_before(mick_.view(),mick_.position())){error.clear();return true;}
+    for(const auto&ptr:npcs_)if(actor_visible(ptr->actor)&&npc_before(ptr->motion.view(),actor_pose(ptr->actor).position)){error.clear();return true;}
+    const Vec2 end{origin.x+direction.x*policy.ray_length,origin.y+direction.y*policy.ray_length};std::vector<MotionObstacle>obstacles;
+    if(!collision_.collect({std::min(origin.x,end.x),std::min(origin.y,end.y)},{std::max(origin.x,end.x),std::max(origin.y,end.y)},obstacles))return fail("Field investigation collision query rejected");
+    auto cross=[](Vec2 a,Vec2 b){return a.x*b.y-a.y*b.x;};
+    for(const auto&obstacle:obstacles)for(uint32_t i=0;i<(obstacle.segment?1u:obstacle.count);++i){const auto p=obstacle.points[i],q=obstacle.points[(i+1)%obstacle.count];const Vec2 a{p.x+obstacle.offset.x-origin.x,p.y+obstacle.offset.y-origin.y},edge{q.x-p.x,q.y-p.y};const auto denominator=cross(direction,edge);if(denominator==0)continue;const float hit=cross(a,edge)/denominator,u=cross(a,direction)/denominator;
+        if(hit>=0&&hit<=nearest&&u>=0&&u<=1){error.clear();return true;}}
+    // The source ray still picks an enabled invisible object, but its method
+    // itself refuses to open UI. Breaking disables the area independently.
+    handled=true;if(!props_.states()[selected].visible){error.clear();return true;}
+    const auto programme=world.story_flag(story_.text(policy.flag))?policy.when_true:policy.when_false;
+    if(!story_host_||!world.validate_story_props(programme,error)||!story_host_->can_start(story_,programme,error)){
+        boundary_=WorldLinksData::kNotFound;phase_=FieldPhase::Unsupported;error_=error.empty()?"Field investigation programme is unavailable; B returns":error+"; B returns";
+        if(!world.pause_for_house(true))return fail("Field investigation admission pause rejected");error.clear();return true;}
+    if(!world.begin_house_program(programme,kRoomNoIndex,policy.stop_running!=0))return fail("Field investigation programme start rejected");error.clear();return true;
 }
 bool FieldScene::try_telepathy(Vec2 offset,float length,std::string& error){
     if(!mick_bound_||phase_!=FieldPhase::Walking||world.house_paused()||!std::isfinite(offset.x)||!std::isfinite(offset.y)||!std::isfinite(length)||length<=0){error="Field Telepathy state/ray rejected";return false;}

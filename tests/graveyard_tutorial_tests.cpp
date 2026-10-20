@@ -21,7 +21,7 @@ int main(int argc,char**argv){
  CHECK(argc==6||(argc==7&&std::string(argv[6])=="formal-source"));const bool formal=argc==7;RoomData room;FieldStoryData story;FieldMapData map;ItemData items;ResourceCatalog catalog;FieldSwingResources player;
  CHECK(catalog.load_file((std::string(argv[5])+"/system/native.encresources").c_str(),error)&&player.load(catalog,argv[5],error));
  CHECK(room.load_file(argv[1],error)&&story.load_file(argv[2],error)&&map.load_file(argv[3],error)&&items.load_file(argv[4],error));
- const auto r=room.view();const auto s=story.view();CHECK(r.program_count()==(formal?8u:7u)&&s.programme_count()==(formal?8u:7u)&&s.text_count()==(formal?66u:56u)&&s.bind(r,map.view(),items.view(),error));
+ const auto r=room.view();const auto s=story.view();CHECK(r.program_count()==(formal?10u:7u)&&s.programme_count()==(formal?10u:7u)&&s.text_count()==(formal?70u:56u)&&s.bind(r,map.view(),items.view(),error));
  if(formal)CHECK(s.text(s.programme(7).source)=="Podunk/cutscenes/gravedigger_getshovel");
  const auto programme=s.programme(6);CHECK(s.text(programme.boundary)=="Cutscenes/Cutscene Area5"&&s.text(programme.source)=="Podunk/cutscenes/gravedigger_swing");
  CHECK(s.choices()&&s.choices()->groups().size()==2);const auto&g=s.choices()->groups()[1];CHECK(g.cancel_target_pc==g.options[1].target_pc&&g.options[0].target_pc!=g.cancel_target_pc&&g.program_command_count==87);

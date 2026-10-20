@@ -162,6 +162,7 @@ public:
     uint32_t scene_id()const{return map_.scene_id();}
 private:
     bool bind_props_owner(const FieldPropsData&,std::string&);
+    bool try_prop_interaction(bool,bool&,std::string&);
     bool can_call(uint32_t,std::string&)override;
     bool call(uint32_t,uint32_t,std::string&)override;
     uint32_t prop_programme(uint32_t)const;

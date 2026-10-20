@@ -1,0 +1,2 @@
+investigation debug opened=1 phase=0 stage=0 programme=4294967295 dialogue=4294967295 position=1414,4706 direction=1,0 policy=8,9 ray=0,6,16 root=1432,4712 extents=16,16
+Prop investigation scene 41: opened&&scene.world.story_program_index()==(bat?9u:8u)&&scene.world.pending_dialogue_id()==(bat?3301u:3300u) ()

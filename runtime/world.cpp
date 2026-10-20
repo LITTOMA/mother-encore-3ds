@@ -87,7 +87,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     actor_binding_revisions_.assign(actors_.size(),0);
     actor_bound_.assign(actors_.size(),0);actor_erased_.assign(actors_.size(),0);actor_persistent_.assign(actors_.size(),0);
     inside_trigger_.assign(content.trigger_count(),0);trigger_pending_.assign(content.trigger_count(),0);
-    stage_=OpeningStage::Walking;cutscene_done_=restore_pending_=overworld_music_=false;
+    stage_=OpeningStage::Walking;cutscene_done_=restore_pending_=overworld_music_=story_stop_running_=false;
     pending_actor_=talker_=kRoomNoActor;program_index_=follow_actor_=kRoomNoIndex;physics_tick_=idle_frame_=0;
     if(++generation_==0)++generation_;
     std::vector<uint32_t> active;active.reserve(content.polygon_count());
@@ -336,14 +336,14 @@ bool OpeningWorld::advance(WalkInput input) {
     }
     persistent_player_.state_->camera_.update_player_position(persistent_player_.state_->player_.position);return persistent_player_.state_->camera_.physics_frame(1.0/60.0);
 }
-bool OpeningWorld::begin_house_program(uint32_t program_index,uint32_t original_npc){
+bool OpeningWorld::begin_house_program(uint32_t program_index,uint32_t original_npc,bool stop_running){
     if(!healthy_||stage_!=OpeningStage::Walking||program_index>=content_.program_count()||dialogue_.active())return false;
     std::string admission;if(!validate_story_props(program_index,admission))return false;
     dialogue_=DialoguePlayer{};battle_=OpeningBattleRequest{};battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;
     cutscene_done_=restore_pending_=false;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;story_hides_.clear();pending_dialogue_id_=kRoomNoIndex;pending_actor_=talker_=kRoomNoActor;
     if(++generation_==0)++generation_;
     story_talking_=false;story_talker_=original_npc==kRoomNoIndex?DialogueTalker{}:DialogueTalker{DialogueTalkerKind::OriginalNpc,original_npc};
-    program_index_=program_index;persistent_player_.state_->house_paused_=false;
+    program_index_=program_index;story_stop_running_=stop_running;persistent_player_.state_->house_paused_=false;
     if(!dialogue_.start(content_,program_index_,*this,generation_))return fail(dialogue_.error());
     return flush_deferred();
 }
@@ -645,7 +645,7 @@ bool OpeningWorld::apply(const DialogueAction& a) {
     using K=DialogueActionKind;
     switch(a.kind){
     case K::BeginCutscene:
-        if(!player_action_pause(false,true))return false;
+        {const bool stop=story_stop_running_;story_stop_running_=false;if(!player_action_pause(stop,true))return false;}
         stage_=OpeningStage::ScriptRunning;persistent_player_.state_->player_.crouch=persistent_player_.state_->player_.walking=false;if(!persistent_player_.state_->player_.tap_run)persistent_player_.state_->player_.running=false;
         persistent_player_.state_->player_.animation=MotionAnimation::Idle;return true;
     case K::BindActor:{

@@ -1,0 +1,30 @@
+test_actual_source_no_voice_name_actors_or_grants (tests.test_field_prop_dialogues.PropDialogueSource.test_actual_source_no_voice_name_actors_or_grants) ... ok
+test_bounded_candidate_only_appends_two_actorless_programmes (tests.test_field_prop_dialogues.PropDialogueSource.test_bounded_candidate_only_appends_two_actorless_programmes) ... ok
+test_branch_order_source_and_identity_reject (tests.test_field_prop_dialogues.PropDialogueSource.test_branch_order_source_and_identity_reject) ... ok
+test_composition_rejects_scene_and_existing_dialogue_ids (tests.test_field_prop_dialogues.PropDialogueSource.test_composition_rejects_scene_and_existing_dialogue_ids) ... ok
+test_unknown_schema_and_malformed_paths_fail_closed (tests.test_field_prop_dialogues.PropDialogueSource.test_unknown_schema_and_malformed_paths_fail_closed) ... ok
+test_unmapped_source_document_fields_and_changed_text_reject (tests.test_field_prop_dialogues.PropDialogueSource.test_unmapped_source_document_fields_and_changed_text_reject) ... ok
+test_cemetery_binding_order_and_unknown_calls_reject (tests.test_field_story.FieldStoryTests.test_cemetery_binding_order_and_unknown_calls_reject) ... ok
+test_cemetery_source_mapping_and_runtime_version_negatives (tests.test_field_story.FieldStoryTests.test_cemetery_source_mapping_and_runtime_version_negatives) ... ok
+test_checked_source_dialogues (tests.test_field_story.FieldStoryTests.test_checked_source_dialogues) ... ok
+test_formal_tutorial_preserves_old_room_tables_and_recipe_v4 (tests.test_field_story.FieldStoryTests.test_formal_tutorial_preserves_old_room_tables_and_recipe_v4) ... ok
+test_previous_schema_two_remains_byte_identical (tests.test_field_story.FieldStoryTests.test_previous_schema_two_remains_byte_identical) ... ok
+test_prop_source_policy_and_previous_schema_six_remain_explicit (tests.test_field_story.FieldStoryTests.test_prop_source_policy_and_previous_schema_six_remain_explicit) ... ok
+test_source_npc_selection_and_rich_controls (tests.test_field_story.FieldStoryTests.test_source_npc_selection_and_rich_controls) ... ok
+test_source_programmes_and_metadata_reproduce (tests.test_field_story.FieldStoryTests.test_source_programmes_and_metadata_reproduce) ... ok
+test_unknown_command_is_not_ignored (tests.test_field_story.FieldStoryTests.test_unknown_command_is_not_ignored) ... ok
+test_unknown_versions_fields_and_source_changes_fail_closed (tests.test_field_story.FieldStoryTests.test_unknown_versions_fields_and_source_changes_fail_closed) ... ok
+test_unread_text_and_timer_modes_are_explicit (tests.test_field_story.FieldStoryTests.test_unread_text_and_timer_modes_are_explicit) ... ok
+test_complete_formal_room_has_real_delete_and_source_actor_domain (tests.test_shovel_formal_source.FormalShovelSource.test_complete_formal_room_has_real_delete_and_source_actor_domain) ... ok
+test_composition_rejects_wrong_scene_or_duplicate_dialogue_namespace (tests.test_shovel_formal_source.FormalShovelSource.test_composition_rejects_wrong_scene_or_duplicate_dialogue_namespace) ... ok
+test_formal_metadata_contains_source_boundary_and_both_locales (tests.test_shovel_formal_source.FormalShovelSource.test_formal_metadata_contains_source_boundary_and_both_locales) ... ok
+test_v5_source_reader_preserved_without_shovel_and_unknown_paths_reject (tests.test_shovel_formal_source.FormalShovelSource.test_v5_source_reader_preserved_without_shovel_and_unknown_paths_reject) ... ok
+test_object_path_rejected (tests.test_story_object_delete.StoryObjectDeleteTests.test_object_path_rejected) ... ok
+test_old_unknown_or_unused_capability_rejected (tests.test_story_object_delete.StoryObjectDeleteTests.test_old_unknown_or_unused_capability_rejected) ... ok
+test_source_ordering_and_codec (tests.test_story_object_delete.StoryObjectDeleteTests.test_source_ordering_and_codec) ... ok
+test_unknown_operation_or_operand_rejected (tests.test_story_object_delete.StoryObjectDeleteTests.test_unknown_operation_or_operand_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 156.988s
+
+OK

@@ -26,12 +26,12 @@ struct Motion:MickHost {
 };
 }
 int main(int argc,char**argv){
- CHECK(argc==3);
+ CHECK(argc==4);
  RoomData room;FieldMapData map;WorldLinksData links;FieldPropsData props;FieldStoryData story;ItemData items;std::vector<uint8_t>bytes;
  CHECK(encore::read_file("romfs/world/podunk/podunk.encroom",bytes,16*1024*1024,error)&&room.load(bytes.data(),bytes.size(),error));
  CHECK(map.load_file(argv[1],error)&&links.load_file("romfs/world/world.enclinks",error));
- CHECK(props.load_file(argv[2],error)&&props.capability()==2&&story.load_file("romfs/world/podunk/story.encstory",error)&&items.load_file("romfs/ui/opening.encitems",error));
- CHECK(get(bytes,36)==14&&room.view().actor_instance_count()==6&&room.view().program_count()==8);
+ CHECK(props.load_file(argv[2],error)&&props.capability()==2&&story.load_file(argv[3],error)&&items.load_file("romfs/ui/opening.encitems",error));
+ CHECK(get(bytes,36)==14&&room.view().actor_instance_count()==6&&room.view().program_count()==10);
  uint32_t programme=UINT32_MAX;for(uint32_t i=0;i<room.view().program_count();++i)if(room.view().string(room.view().program(i).source_path_string)=="Podunk/cutscenes/graveyard_zombie_roots")programme=i;
  CHECK(programme==5);const auto p=room.view().program(programme);uint32_t erase=UINT32_MAX,grow=UINT32_MAX;
  for(uint32_t i=0;i<p.command_count;++i){const auto c=room.view().command(p.first_command+i);if(c.opcode==47)erase=p.first_command+i;if(c.opcode==6)grow=c.target_index;}

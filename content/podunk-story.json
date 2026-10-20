@@ -1,5 +1,5 @@
 {
-  "schema": 6,
+  "schema": 7,
   "kind": "encore.field-story.reviewed-lowering",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene_id": 2,
@@ -1972,5 +1972,6 @@
     }
   ],
   "tutorial": "content/graveyard-swing-programme.json",
-  "shovel": "content/graveyard-shovel.json"
+  "shovel": "content/graveyard-shovel.json",
+  "prop_dialogues": "content/field-prop-dialogues.json"
 }

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "kind": "encore.field-prop-dialogues.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene_id": 2,
+  "flag": "bat",
+  "branches": [
+    {
+      "expected": false,
+      "source": "Data/Dialogue/Reusable/hardtobreak.yaml",
+      "dialogue_id": 3300
+    },
+    {
+      "expected": true,
+      "source": "Data/Dialogue/Reusable/easytobreak.yaml",
+      "dialogue_id": 3301
+    }
+  ],
+  "documents": {
+    "Data/Dialogue/Reusable/hardtobreak.yaml": {
+      "0": {
+        "text": "DIALOGUE_REUSABLE_HARDTOBREAK_0"
+      }
+    },
+    "Data/Dialogue/Reusable/easytobreak.yaml": {
+      "0": {
+        "text": "DIALOGUE_REUSABLE_EASYTOBREAK_0"
+      }
+    }
+  },
+  "sources": {
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Data/Dialogue/Reusable/hardtobreak.yaml": "d6a45611cb64dc94fbaaf70321ed2d1dfdcce16ed2206079fa32b384b0132bd3",
+    "Data/Dialogue/Reusable/easytobreak.yaml": "4a02b5ca34c085ea6a33fcbf81b9da699babe4588689640985502d80c9312043",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+  },
+  "locales": [
+    "en",
+    "zh_CN"
+  ],
+  "scope": "Source reviewed two one-phrase reusable Root hints. UI owns pause/ready, bars, manual completion and unpause. No actors/name/voice/item/flag writes. Checked field ray, collision set and exact prop owner required. CLI candidate is private; genuine current cross-build, ordinary frontend input and hardware must be verified separately.",
+  "base_fixture": "tests/fixtures/pre-prop-dialogue-room.encroom",
+  "base_sha256": "f4a61d5b1a14d671904add0e6adee1c6bfd8cff1c9f4fc60159748d9088b8982",
+  "story_fixture": "tests/fixtures/pre-prop-dialogue-story.encstory",
+  "story_sha256": "bce979b403c922aec19290fe2962bea9fb1cc55fae1c78c4c10373a7f5c7ee56"
+}

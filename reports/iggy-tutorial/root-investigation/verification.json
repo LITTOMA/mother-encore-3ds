@@ -1,0 +1,37 @@
+{
+  "scope": "Current formal Root A resources, exact source-owned selectors and source pause flag. No current cross-build/emulator/hardware claim yet.",
+  "room_capability": 14,
+  "story_capability": 5,
+  "policy_stride": 52,
+  "programmes": 10,
+  "localized_rows": 70,
+  "audio_assets": 60,
+  "session_resource": 11,
+  "default_save_sha256": "a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f",
+  "native_content_run": "accb85f6227a4f4f96b45ad364cfb783",
+  "native_content_tasks": 47,
+  "native_checks": {
+    "programme": 1897,
+    "data": 60,
+    "scene": 1440
+  },
+  "python_cases": 25,
+  "parent73ae": {
+    "clang_job": 118429682527,
+    "ordinary": 255,
+    "sanitizer": 255,
+    "success": true,
+    "gcc": "pending"
+  },
+  "original_runtime_oracle": false,
+  "current_emulator": false,
+  "hardware": false,
+  "ctest_metadata_names": 272,
+  "python_methods": {
+    "discovered": 1255,
+    "aggregate": 889,
+    "dedicated": 366,
+    "multiset_equal": true
+  },
+  "private_fixture_scope": "Exact old metadata4/props2 component and current metadata5/contact3 fixtures independently regenerated and checked; see actual logs."
+}

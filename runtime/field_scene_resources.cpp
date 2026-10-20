@@ -42,6 +42,7 @@ bool FieldSceneResources::load(const ResourceCatalog&catalog,const WorldLinksDat
  if(b.music){AudioBank bank;if(!read(ResourceRole::FieldMusic,b.music)||!next->music.load(bytes.data(),bytes.size(),error)||!read(ResourceRole::FieldMusicZones,b.zones)||!next->zones.load(bytes.data(),bytes.size(),error)||!next->zones.matches(next->music,error)||!read(ResourceRole::FieldAudio,b.audio)||!bank.load(bytes.data(),bytes.size(),error)||!next->music.matches(bank,error))return false;}
  if(b.steps){if(!read(ResourceRole::FieldSteps,b.steps)||!next->steps.load(bytes.data(),bytes.size(),error))return false;if(next->steps.view().scene_id()!=scene)return fail("Field stepping scene identity differs");}
  if(b.props){if(!read(ResourceRole::FieldProps,b.props)||!next->props.load(bytes.data(),bytes.size(),error)||!next->props.bind(room,next->map.view(),error))return false;if(!next->props.rendering_bound())return fail("Field props lack checked clone drawing order");}
+ if(next->story.view().valid()&&!next->story.view().bind_props(next->props,error))return false;
  if((next->map.view().capabilities()>=6)!=bool(b.objects))return fail("Field object drawing companion is missing or unused");
  if(b.objects){
   if(!read(ResourceRole::FieldObjects,b.objects)||!next->objects.load(bytes.data(),bytes.size(),error)||!next->objects.bind(room,next->map.view(),error))return false;

@@ -11,8 +11,8 @@ class FieldStoryTests(unittest.TestCase):
   from tools import graveyard_tutorial_programme,graveyard_shovel
   cls.checked_dependencies=[(graveyard_tutorial_programme,ROOT/cls.policy['tutorial'],graveyard_tutorial_programme.read(ROOT/cls.policy['tutorial'])),(graveyard_shovel,ROOT/cls.policy['shovel'],graveyard_shovel.read(ROOT/cls.policy['shovel']))]
  def test_source_programmes_and_metadata_reproduce(self):
-  self.assertEqual(story.build(),(ROOT/'romfs'/story.OUTPUT).read_bytes());self.assertEqual(len(self.room['sections']['Program']),8)
-  self.assertEqual([self.room['strings'][p['source_path_string']]for p in self.room['sections']['Program']],['Podunk/cutscenes/bridge_fight','Podunk/cutscenes/pippismom_call','Podunk/cutscenes/pippismom_help','Podunk/pippismom','Podunk/iggy_forget','Podunk/cutscenes/graveyard_zombie_roots','Podunk/cutscenes/gravedigger_swing','Podunk/cutscenes/gravedigger_getshovel'])
+  self.assertEqual(story.build(),(ROOT/'romfs'/story.OUTPUT).read_bytes());self.assertEqual(len(self.room['sections']['Program']),10)
+  self.assertEqual([self.room['strings'][p['source_path_string']]for p in self.room['sections']['Program']],['Podunk/cutscenes/bridge_fight','Podunk/cutscenes/pippismom_call','Podunk/cutscenes/pippismom_help','Podunk/pippismom','Podunk/iggy_forget','Podunk/cutscenes/graveyard_zombie_roots','Podunk/cutscenes/gravedigger_swing','Podunk/cutscenes/gravedigger_getshovel','Reusable/hardtobreak','Reusable/easytobreak'])
   self.assertEqual(self.room['sections']['Battle'][0]['stable_id'],4)
   self.assertEqual(self.room['sections']['Battle'][0]['actor_instance_index'],2)
  def test_checked_source_dialogues(self):
@@ -23,7 +23,7 @@ class FieldStoryTests(unittest.TestCase):
   old=native_content.parse_pack((ROOT/'tests/fixtures/pre-key-grant-room.encroom').read_bytes())
   self.assertEqual(self.room['strings'][:len(old['strings'])],old['strings'])
   for key,rows in old['sections'].items():self.assertEqual(self.room['sections'][key][:len(rows)],rows,key)
-  legacy=copy.deepcopy(self.policy);legacy['schema']=4;legacy.pop('tutorial');legacy.pop('shovel')
+  legacy=copy.deepcopy(self.policy);legacy['schema']=4;legacy.pop('tutorial');legacy.pop('shovel');legacy.pop('prop_dialogues')
   with tempfile.TemporaryDirectory()as folder:
    target=Path(folder)/'legacy.json';bridge_entry.write(target,legacy)
    with patch.object(story,'POLICY',target):self.assertEqual(story.read()[0],legacy)
@@ -47,7 +47,7 @@ class FieldStoryTests(unittest.TestCase):
       recipe=podunk_field.load_recipe();podunk_field.build_room(recipe,podunk_field.Model(recipe),recipe['house']['room_ir'])
      else:story.read()
  def test_unknown_versions_fields_and_source_changes_fail_closed(self):
-  for mutate in (lambda p:p.update(schema=7),lambda p:p.update(schema=True),lambda p:p.update(schema=5),lambda p:p.update(ignore_unknown=True),lambda p:p.update(supplement='../outside.json'),lambda p:p.update(supplement='content/../outside.json'),lambda p:p.update(supplement=True),lambda p:p.update(tutorial='../outside.json'),lambda p:p.update(tutorial=True),lambda p:p.pop('tutorial'),lambda p:p.update(shovel='../outside.json'),lambda p:p.update(shovel=True),lambda p:p.pop('shovel'),lambda p:p['documents'][p['programmes'][0]['source']]['0'].update(wait=.01),lambda p:p['encounters'][0].update(basic_slot=False),lambda p:p['basic_overrides'][0].update(source='Data/BattleSkills/attack.yaml')):
+  for mutate in (lambda p:p.update(schema=8),lambda p:p.update(schema=True),lambda p:p.update(schema=5),lambda p:p.update(ignore_unknown=True),lambda p:p.update(supplement='../outside.json'),lambda p:p.update(supplement='content/../outside.json'),lambda p:p.update(supplement=True),lambda p:p.update(tutorial='../outside.json'),lambda p:p.update(tutorial=True),lambda p:p.pop('tutorial'),lambda p:p.update(shovel='../outside.json'),lambda p:p.update(shovel=True),lambda p:p.pop('shovel'),lambda p:p['documents'][p['programmes'][0]['source']]['0'].update(wait=.01),lambda p:p['encounters'][0].update(basic_slot=False),lambda p:p['basic_overrides'][0].update(source='Data/BattleSkills/attack.yaml')):
    self.reject_policy(mutate)
  def test_unknown_command_is_not_ignored(self):self.reject_policy(lambda p:p['programmes'][0]['commands'][0].update(kind='Ignore'),True)
  def test_unread_text_and_timer_modes_are_explicit(self):
@@ -65,6 +65,19 @@ class FieldStoryTests(unittest.TestCase):
  def test_previous_schema_two_remains_byte_identical(self):
   with patch.object(story,'POLICY',ROOT/'tests/fixtures/pre-graveyard-story.json'):
    self.assertEqual(story.build(),(ROOT/'tests/fixtures/field_story_v2.encstory').read_bytes())
+ def test_prop_source_policy_and_previous_schema_six_remain_explicit(self):
+  from tools import field_prop_dialogues
+  blob=story.build();_,sections=podunk_field.unpack_container(blob,story.MAGIC,(1,24,36,40,12,32,1,52),128*1024,capability=5)
+  self.assertEqual((len(sections[1])//24,len(sections[2])//36,len(sections[7])),(10,70,52))
+  self.assertEqual([struct.unpack_from('<I',sections[1],i*24+20)[0]for i in (8,9)],[2,2]);self.assertEqual(struct.unpack_from('<I',sections[7],48)[0],1)
+  previous=copy.deepcopy(self.policy);previous['schema']=6;previous.pop('prop_dialogues')
+  with tempfile.TemporaryDirectory(dir=ROOT/'build')as folder:
+   path=Path(folder)/'previous.json';bridge_entry.write(path,previous)
+   with patch.object(story,'POLICY',path):
+    self.assertEqual(story.read()[0],previous)
+    self.assertEqual(story.build(),(ROOT/'tests/fixtures/pre-prop-dialogue-story.encstory').read_bytes())
+  for mutation in (lambda p:p.update(prop_dialogues=True),lambda p:p.update(prop_dialogues='../outside.json'),lambda p:p.update(prop_dialogues='content/podunk-story.json'),lambda p:p.pop('prop_dialogues'),lambda p:p.update(schema=6)):
+   self.reject_policy(mutation)
  def test_cemetery_source_mapping_and_runtime_version_negatives(self):
   from tools.native_content import validate_tables,OPCODES
   s=self.room['sections'];p=s['Program'][5];commands=s['Command'][p['first_command']:p['first_command']+p['command_count']]

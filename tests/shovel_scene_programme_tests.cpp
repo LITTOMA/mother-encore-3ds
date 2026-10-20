@@ -31,7 +31,7 @@ struct Host:MickHost,FieldStoryHost,StoryKeyItemHost,FieldPropHost {
 int main(int argc,char**argv){
  CHECK(argc==2);const std::string root=argv[1];auto file=[&](const char*n){return root+"/"+n;};ResourceCatalog catalog;WorldLinksData links;RoomData house;ItemData items;FieldSceneResources data;FieldSwingResources action;
  CHECK(catalog.load_file(file("system/native.encresources").c_str(),error)&&links.load_file(file("world/world.enclinks").c_str(),error));CHECK(house.load_file(file("world/house/opening.encroom").c_str(),error)&&items.load_file(file("ui/opening.encitems").c_str(),error));CHECK(data.load(catalog,links,2,root.c_str(),house.view(),items.view(),error)&&action.load(catalog,root.c_str(),error));
- const auto r=data.room();CHECK(r.bytes()[36]==14&&r.program_count()==8&&data.story().programme_count()==8&&data.objects().drawing_bound());uint32_t programme=UINT32_MAX;
+ const auto r=data.room();CHECK(r.bytes()[36]==14&&r.program_count()==10&&data.story().programme_count()==8&&data.objects().drawing_bound());uint32_t programme=UINT32_MAX;
  for(uint32_t i=0;i<data.story().programme_count();++i){const auto p=data.story().programme(i);if(data.story().text(p.source)=="Podunk/cutscenes/gravedigger_getshovel")programme=p.programme;}CHECK(programme==7);
  std::vector<bool>flags(r.flag_count(),false);for(uint32_t i=0;i<flags.size();++i){const auto name=r.string(r.flag(i).name_string);flags[i]=name=="bat"||name=="cem_roots_grown";}
  auto bind=[&](FieldScene&scene,Host&host,const std::vector<bool>&bits){

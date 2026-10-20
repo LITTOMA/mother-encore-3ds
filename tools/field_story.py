@@ -10,9 +10,9 @@ POLICY=ROOT/'content/podunk-story.json';OUTPUT='world/podunk/story.encstory'
 MAGIC=b'ENCFST01';STRIDES=(1,24,36,40,12,24);NIL=0xffffffff
 def read():
  p=bridge_entry.read(POLICY)
- expected=set('schema kind commit scene_id sources documents actors programmes interactions encounters basic_overrides dialogues emotes voice_root locales limitations'.split())|({'supplement'}if p.get('schema')in(3,4,5,6)else set())|({'continuations','deferred_props'}if p.get('schema')in(4,5,6)else set())|({'tutorial'}if p.get('schema')in(5,6)else set())|({'shovel'}if p.get('schema')==6 else set())
+ expected=set('schema kind commit scene_id sources documents actors programmes interactions encounters basic_overrides dialogues emotes voice_root locales limitations'.split())|({'supplement'}if p.get('schema')in(3,4,5,6,7)else set())|({'continuations','deferred_props'}if p.get('schema')in(4,5,6,7)else set())|({'tutorial'}if p.get('schema')in(5,6,7)else set())|({'shovel'}if p.get('schema')in(6,7)else set())|({'prop_dialogues'}if p.get('schema')==7 else set())
  require(set(p)==expected,'Field story recipe fields')
- require(type(p['schema'])is int and p['schema']in(2,3,4,5,6)and p['kind']=='encore.field-story.reviewed-lowering'and p['commit']==PIN,'Field story recipe schema/pin')
+ require(type(p['schema'])is int and p['schema']in(2,3,4,5,6,7)and p['kind']=='encore.field-story.reviewed-lowering'and p['commit']==PIN,'Field story recipe schema/pin')
  if p['schema']>=3:
   name=p['supplement'];require(type(name)is str and name.startswith('content/')and name.endswith('.json')and ':'not in name and '\\'not in name and all(x not in ('','.','..')for x in name.split('/')),'Field story supplement path')
   require(not any(c['kind']=='AwaitChoices'for prog in p['programmes']for c in prog['commands']),'Base field choices require an explicit merged choice namespace')
@@ -59,11 +59,16 @@ def read():
   from tools import graveyard_tutorial_programme as tutorial
   _,review,source=tutorial.read(ROOT/name);require(review['scene']==p['scene_id'],'Field tutorial scene differs')
   for path,digest in source.sources.items():require(path not in ex.sources or ex.sources[path]==digest,'Field tutorial source conflict');ex.sources[path]=digest
- if p['schema']==6:
+ if p['schema']>=6:
   name=p['shovel'];require(type(name)is str and name.startswith('content/')and name.endswith('.json')and ':'not in name and '\\'not in name and all(x not in ('','.','..')for x in name.split('/')),'Field shovel recipe path')
   from tools import graveyard_shovel
   review,source=graveyard_shovel.read(ROOT/name);require(review['scene']==p['scene_id'],'Field shovel scene differs')
   for path,digest in source.sources.items():require(path not in ex.sources or ex.sources[path]==digest,'Field shovel source conflict');ex.sources[path]=digest
+ if p['schema']==7:
+  name=p['prop_dialogues'];require(type(name)is str and name.startswith('content/')and name.endswith('.json')and ':'not in name and '\\'not in name and all(x not in ('','.','..')for x in name.split('/')),'Field prop dialogue recipe path')
+  from tools import field_prop_dialogues
+  review,source=field_prop_dialogues.read(ROOT/name);require(review['scene_id']==p['scene_id'],'Field prop dialogue scene differs')
+  for path,digest in source.sources.items():require(path not in ex.sources or ex.sources[path]==digest,'Field prop dialogue source conflict');ex.sources[path]=digest
  return p,ex
 def table(ex,path):return {r['key']:r for r in csv.DictReader(io.StringIO(ex.text(path)))}
 def dialogues(p,ex):
@@ -92,9 +97,12 @@ def audio_sources():
  if p['schema']>=5:
   from tools import graveyard_tutorial_programme as tutorial
   tp,tr,te=tutorial.read(ROOT/p['tutorial']);values.update(row['voice']for row in tutorial.texts(tp,tr,te)if row['voice']);values.update(c['audio']for c in tp['commands']if 'audio'in c)
- if p['schema']==6:
+ if p['schema']>=6:
   from tools import graveyard_shovel_programme as shovel
   values.update(row['voice']for row in shovel.source_texts(ROOT/p['shovel'])if row['voice'])
+ if p['schema']==7:
+  from tools import field_prop_dialogues as props
+  review,source=props.read(ROOT/p['prop_dialogues']);values.update(row['voice']for row in props.texts(review,source)if row['voice'])
  return sorted(values)
 def emote(ex,name,number,sections,frame_count):
  source=ex.text('Nodes/Ui/emotes.tscn');pattern=r'^\[sub_resource type="Animation" id='+str(number)+r'\]\n(.*?)(?=^\[|\Z)';match=re.search(pattern,source,re.M|re.S)
@@ -163,9 +171,12 @@ def add_room(sections,strings,S):
   tutorial.lower(tp,tr,te,dict(sections=sections,strings=strings),len(groups))
   extra.update({'upstream/MOTHER-Encore/'+path:digest for path,digest in te.sources.items()})
   for path in (p['tutorial'],tp['review'],'tools/graveyard_tutorial.py','tools/graveyard_tutorial_programme.py'):extra[path]=bridge_entry.sha(ROOT/path)
- if p['schema']==6:
+ if p['schema']>=6:
   from tools import graveyard_shovel_programme as shovel
   _,dependencies=shovel.add_room(ROOT/p['shovel'],p['scene_id'],sections,strings,S);extra.update(dependencies)
+ if p['schema']==7:
+  from tools import field_prop_dialogues as props
+  _,dependencies=props.add_room(ROOT/p['prop_dialogues'],p['scene_id'],sections,strings,S);extra.update(dependencies)
  return {**extra,**{'upstream/MOTHER-Encore/'+s:h for s,h in ex.sources.items()},'content/podunk-story.json':bridge_entry.sha(POLICY),'tools/field_story.py':bridge_entry.sha(__file__)}
 def build():
  from tools.podunk_field import pack_container,unpack_container
@@ -189,7 +200,7 @@ def build():
   from tools import graveyard_tutorial_programme as tutorial,graveyard_story
   tp,tr,te=tutorial.read(ROOT/p['tutorial']);*_,groups=graveyard_story.lowered(ROOT/p['supplement'],flags)
   programme_rows.append(dict(programme=len(programme_rows),boundary=tp['boundary'],source=tp['source'].removeprefix('Data/Dialogue/').removesuffix('.yaml'),flags=0));text_rows.extend(tutorial.texts(tp,tr,te));choice=tutorial.choices(groups+tp['groups'],te)
- if p['schema']==6:
+ if p['schema']>=6:
   from tools import graveyard_shovel,graveyard_shovel_programme as shovel
   sp,se=graveyard_shovel.read(ROOT/p['shovel']);programme_rows.append(dict(programme=len(programme_rows),boundary=sp['boundary'],source=sp['source'].removeprefix('Data/Dialogue/').removesuffix('.yaml'),flags=0));text_rows.extend(shovel.source_texts(ROOT/p['shovel']))
  require(len({(r['id'],r['locale'])for r in text_rows})==len(text_rows),'Duplicate field dialogue identity/locale')
@@ -198,8 +209,14 @@ def build():
  encounters=[struct.pack('<8IfI',b['id'],b['actor'],*ref(b['basic']),*ref(b['music']),b['basic_slot'],b['programme'],b['return_music_seconds'],{'Linear':1,'QuartIn':2,'QuartOut':3}[b['return_music_curve']])for b in p['encounters']]
  overrides=[struct.pack('<3I',r['definition'],*ref(r['source']))for r in p['basic_overrides']]
  interactions=[struct.pack('<8I',r['actor'],r['programme'],*ref(r['flag']),r['turns'],r['status'],*ref(r['source']))if choice else struct.pack('<6I',r['actor'],r['programme'],*ref(r['flag']),r['turns'],r['status'])for r in interaction_rows]
+ prop_binding=None
+ if p['schema']==7:
+  from tools import field_prop_dialogues as props
+  review,_=props.read(ROOT/p['prop_dialogues']);require({r['id']for r in text_rows}.isdisjoint(r['dialogue_id']for r in review['branches']),'Prop dialogue text identity overlaps field story')
+  appended,localized,prop_binding=props.metadata(ROOT/p['prop_dialogues'],len(programme_rows),ref);programmes.extend(appended);texts.extend(localized)
  sections=[bytes(pool),b''.join(programmes),b''.join(texts),b''.join(encounters),b''.join(overrides),b''.join(interactions)]+([choice]if choice else[])
  strides=(1,24,36,40,12,32,1)if choice else STRIDES;capability=(4 if encounters else 3)if choice else 2
+ if prop_binding is not None:sections.append(prop_binding);strides=(*strides,52);capability=5
  blob=pack_container(MAGIC,p['scene_id'],sections,strides,128*1024,capability=capability)
  unpack_container(blob,MAGIC,strides,128*1024,capability=capability);return blob
 def stage_files(source_root=ROOT/'romfs'):

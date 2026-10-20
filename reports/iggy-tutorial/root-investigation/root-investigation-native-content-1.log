@@ -1,0 +1,194 @@
+CONTENT RUN accb85f6227a4f4f96b45ad364cfb783
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py audio -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/restore_audio.py
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py gameplay-audio -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/gameplay_audio.py
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py music-zones -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/music_zones.py
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py bars -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/blackbars_assets.py compile
+CONTENT START music-zones pid=22720 at=2026-10-20T03:32:08.023068+00:00
+CONTENT START audio pid=59064 at=2026-10-20T03:32:08.023068+00:00
+CONTENT START bars pid=38760 at=2026-10-20T03:32:08.023068+00:00
+CONTENT START gameplay-audio pid=56332 at=2026-10-20T03:32:08.023068+00:00
+Blackbar compile: source-owned animation and layer verified
+CONTENT END bars pid=38760 status=0 seconds=0.403
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py input -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_input.py compile
+CONTENT START input pid=57364 at=2026-10-20T03:32:08.585577+00:00
+Native input tuning: 88 checked bytes
+CONTENT END input pid=57364 status=0 seconds=0.154
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py phone -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_phone.py compile
+{
+  "status": "verified",
+  "assets": 66,
+  "restored": 0,
+  "converted_bytes": 0
+}
+CONTENT END audio pid=59064 status=0 seconds=0.762
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py effects -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/world_effect_assets.py compile
+CONTENT START phone pid=51076 at=2026-10-20T03:32:08.915566+00:00
+CONTENT START effects pid=19292 at=2026-10-20T03:32:08.959568+00:00
+D:\GameDev\3DS\mother-encore-3ds\romfs\story\melody.encfx: 532 checked bytes
+CONTENT END effects pid=19292 status=0 seconds=0.547
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py doll-entry -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/doll_entry_asset.py compile
+CONTENT START doll-entry pid=58188 at=2026-10-20T03:32:09.667909+00:00
+Compiled music region geometry: 1755 bytes
+CONTENT END music-zones pid=22720 status=0 seconds=1.775
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py pillow-entry -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/pillow_entry_asset.py compile
+CONTENT START pillow-entry pid=56680 at=2026-10-20T03:32:09.971290+00:00
+Native phone compile complete: 864 bytes
+CONTENT END phone pid=51076 status=0 seconds=1.592
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py round -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_round.py compile
+CONTENT START round pid=55504 at=2026-10-20T03:32:10.664217+00:00
+Doll entry compile: 12516 bytes; no combat or fabricated palette period
+CONTENT END doll-entry pid=58188 status=0 seconds=1.273
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py doll-round -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/doll_round.py compile
+CONTENT START doll-round pid=18520 at=2026-10-20T03:32:11.103769+00:00
+Pillow entry compile: 12444 bytes
+CONTENT END pillow-entry pid=56680 status=0 seconds=1.356
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py pillow-round -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/pillow_round.py compile
+CONTENT START pillow-round pid=52460 at=2026-10-20T03:32:11.488068+00:00
+Battle round content: 17764 bytes; checked independent ENCRND01
+CONTENT END round pid=55504 status=0 seconds=0.901
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py house -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_house.py compile
+CONTENT START house pid=26944 at=2026-10-20T03:32:11.736069+00:00
+Doll round: 19932 bytes; checked source ENCRND01 v5
+CONTENT END doll-round pid=18520 status=0 seconds=1.019
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py mick-treats -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/mick_treats.py compile
+CONTENT START mick-treats pid=49100 at=2026-10-20T03:32:12.288648+00:00
+Pillow round: 18764 bytes; checked ENCRND01 v5
+CONTENT END pillow-round pid=52460 status=0 seconds=0.908
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py items-check -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/items_assets.py verify
+CONTENT START items-check pid=62684 at=2026-10-20T03:32:12.546180+00:00
+Verified source-pinned Items art, IR dependencies and native layout provenance
+CONTENT END items-check pid=62684 status=0 seconds=2.188
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py bridge-entry -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/bridge_entry.py compile
+CONTENT START bridge-entry pid=29968 at=2026-10-20T03:32:14.894079+00:00
+Mick treats pack: 15444 bytes; checked ENCMIK01
+CONTENT END mick-treats pid=49100 status=0 seconds=3.210
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py migration -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/session_migration.py compile
+CONTENT START migration pid=60720 at=2026-10-20T03:32:15.658536+00:00
+Session migration: 98666 bytes; frozen rules6 validation; unchanged snapshot payload
+CONTENT END migration pid=60720 status=0 seconds=0.241
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py continue -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/continue_assets.py compile
+CONTENT START continue pid=49304 at=2026-10-20T03:32:16.060236+00:00
+CONTENT END continue pid=49304 status=0 seconds=2.662
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py loading -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/loading_indicator_assets.py compile
+CONTENT START loading pid=24324 at=2026-10-20T03:32:18.875473+00:00
+Bridge entrance compile 12452 bytes; battle/loot execution remains independent
+CONTENT END bridge-entry pid=29968 status=0 seconds=4.353
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py naming -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/new_game_assets.py compile
+CONTENT START naming pid=24956 at=2026-10-20T03:32:19.417750+00:00
+Verified loading indicator source, texture and checked data
+CONTENT END loading pid=24324 status=0 seconds=0.715
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py settings -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/startup_settings_assets.py compile
+CONTENT START settings pid=46468 at=2026-10-20T03:32:19.753613+00:00
+Compiled gameplay sound cues: 24
+CONTENT END gameplay-audio pid=56332 status=0 seconds=12.369
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py prompts -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/house_button_prompt_assets.py verify
+CONTENT START prompts pid=58680 at=2026-10-20T03:32:20.561731+00:00
+Settings UI pack compiled 2597 bytes
+CONTENT END settings pid=46468 status=0 seconds=1.325
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py settings-check -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/startup_settings_assets.py verify
+CONTENT START settings-check pid=17784 at=2026-10-20T03:32:21.243994+00:00
+Checked startup naming pack: 18660 bytes
+CONTENT END naming pid=24956 status=0 seconds=2.217
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py bridge-round -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/bridge_round.py compile
+CONTENT START bridge-round pid=54824 at=2026-10-20T03:32:21.804620+00:00
+House prompts: 1452 bytes
+CONTENT END prompts pid=58680 status=0 seconds=1.423
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py introduction -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_introduction.py compile
+CONTENT START introduction pid=33448 at=2026-10-20T03:32:22.154400+00:00
+Settings source/pack/assets verified
+CONTENT END settings-check pid=17784 status=0 seconds=1.234
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py field-player -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/field_player_assets.py compile
+CONTENT START field-player pid=52452 at=2026-10-20T03:32:22.645214+00:00
+Original two-scene Introduction: 11409 checked bytes
+CONTENT END introduction pid=33448 status=0 seconds=1.368
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py room -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_content.py compile
+CONTENT START room pid=3780 at=2026-10-20T03:32:23.678353+00:00
+Player resources: 6 checked files; 2106624 bytes; compile ; input/GPU integration verified separately
+CONTENT END field-player pid=52452 status=0 seconds=2.839
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py items -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_items.py compile
+CONTENT START items pid=36788 at=2026-10-20T03:32:25.654624+00:00
+Original bridge round compile 21244 bytes; v6 source admission only, integration requires live inventory/world consumers
+CONTENT END bridge-round pid=54824 status=0 seconds=4.361
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py field-npcs -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/field_npcs.py compile
+CONTENT START field-npcs pid=61012 at=2026-10-20T03:32:26.323538+00:00
+Items resource: 6316 bytes; 4 definitions; 1 initial instances
+CONTENT END items pid=36788 status=0 seconds=2.259
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py storage -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_storage.py compile
+CONTENT START storage pid=56716 at=2026-10-20T03:32:28.072140+00:00
+Storage binary: 5592 bytes; UID transfer and equipment data
+CONTENT END storage pid=56716 status=0 seconds=0.590
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py field-story -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/field_story.py compile
+CONTENT START field-story pid=49100 at=2026-10-20T03:32:28.822399+00:00
+Field NPC motion: 5 checked owners; legacy motion and explicitly admitted interaction policies
+CONTENT END field-npcs pid=61012 status=0 seconds=3.282
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py item-details -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/item_details.py compile
+CONTENT START item-details pid=48516 at=2026-10-20T03:32:29.765757+00:00
+Item details compile: 1968 checked bytes; independent ENCITD01, descriptions only
+CONTENT END item-details pid=48516 status=0 seconds=0.391
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py field-equipment -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/field_equipment.py compile
+CONTENT START field-equipment pid=61716 at=2026-10-20T03:32:30.312219+00:00
+Field equipment compile: 8000 checked bytes; six known commands / Equip and field PSI
+CONTENT END field-equipment pid=61716 status=0 seconds=0.954
+Field story: compile 9912 bytes; checked source programmes and text only
+CONTENT END field-story pid=49100 status=0 seconds=23.579
+Native data: 69096 bytes, 28 sections; no C++ generation or compilation
+CONTENT END room pid=3780 status=0 seconds=37.030
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py battle -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_battle.py compile
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py mayor-scene -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/mayor_scene.py compile
+CONTENT START battle pid=63312 at=2026-10-20T03:33:00.868654+00:00
+CONTENT START mayor-scene pid=58792 at=2026-10-20T03:33:00.874653+00:00
+Battle content: 12296 bytes; external data only
+CONTENT END battle pid=63312 status=0 seconds=0.991
+House content: 24400 bytes; checked independent ENCHSE01
+CONTENT END house pid=26944 status=0 seconds=50.363
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py house-presents -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/house_presents.py compile
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py drawer -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/drawer_program.py compile
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py restore -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_restore.py compile
+CONTENT START house-presents pid=13744 at=2026-10-20T03:33:02.272595+00:00
+CONTENT START drawer pid=27636 at=2026-10-20T03:33:02.274595+00:00
+CONTENT START restore pid=25464 at=2026-10-20T03:33:02.284418+00:00
+Drawer programme: 720 bytes; checked ENCDRP01
+CONTENT END drawer pid=27636 status=0 seconds=0.435
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py inspections -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/house_inspection.py compile
+Restore content: 1433 bytes; source NPC event order, music areas, inventory allocation metadata
+CONTENT END restore pid=25464 status=0 seconds=0.461
+CONTENT START inspections pid=46664 at=2026-10-20T03:33:02.870075+00:00
+House presents pack: 2980 bytes; checked ENCPRS01
+CONTENT END house-presents pid=13744 status=0 seconds=1.003
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py locale -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/localization_assets.py compile
+House inspections: 1748 bytes; checked ENCHIN01
+CONTENT END inspections pid=46664 status=0 seconds=0.547
+CONTENT START locale pid=19464 at=2026-10-20T03:33:03.425657+00:00
+Locale catalog: 13 locales; 3994 keys; 491 bindings; 3338145 bytes
+CONTENT END locale pid=19464 status=0 seconds=3.914
+Mayor initial scene: 21 checked files; later rescue/zoo interactions remain explicit boundaries
+CONTENT END mayor-scene pid=58792 status=0 seconds=7.617
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py field-room -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/podunk_field.py compile
+CONTENT START field-room pid=21572 at=2026-10-20T03:33:08.614788+00:00
+Podunk field: 44 layers, 169977 cells, 1 atlas pages, world/podunk/podunk.encmap 1619644 bytes, world/podunk/podunk.encroom 35704 bytes, world/world.enclinks 1188 bytes
+CONTENT END field-room pid=21572 status=0 seconds=14.095
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py session -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/native_session.py compile
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py field-props -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/field_props.py compile
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py field-objects -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/field_objects_assets.py compile
+CONTENT START session pid=65252 at=2026-10-20T03:33:22.901397+00:00
+CONTENT START field-props pid=52296 at=2026-10-20T03:33:22.902613+00:00
+CONTENT START field-objects pid=33280 at=2026-10-20T03:33:22.909383+00:00
+Source objects: 1 rows; 672 metadata bytes; 4117 actual texture bytes; compile
+CONTENT END field-objects pid=33280 status=0 seconds=2.478
+Field props: 13 source objects, 3152 bytes; action compile
+CONTENT END field-props pid=52296 status=0 seconds=2.739
+Native session: 10261 bytes; checked source/defaults/stat rows; save-only bridge
+CONTENT END session pid=65252 status=0 seconds=8.380
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py field-menus -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/field_menus.py compile
+CONTENT START field-menus pid=59664 at=2026-10-20T03:33:31.401351+00:00
+Field menus: checked pinned source and 817237 bytes
+CONTENT END field-menus pid=59664 status=0 seconds=0.602
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py catalog -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/resource_catalog.py compile
+"C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/run_content_task.py encounters -- "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe" tools/encounter_dependencies.py compile
+CONTENT START encounters pid=37048 at=2026-10-20T03:33:32.150294+00:00
+CONTENT START catalog pid=48732 at=2026-10-20T03:33:32.150294+00:00
+Native resource catalog: 3295 checked bytes, 68 typed bindings
+CONTENT END catalog pid=48732 status=0 seconds=0.561
+{"bytes": 1184080, "checked_pairs": 4, "enemy_profiles": 45, "formations": 20, "manifest": "D:\\GameDev\\3DS\\mother-encore-3ds\\content\\encounter-dependencies.json", "multi_enemy_formations": 1, "reinforcement_tables": 6, "rng_samples_consumed": 0, "scenes": 13, "sha256": "0d3ce568504996dded1c8f2647ea55089b7eeddc59590145c3c61d4830ee2689", "source_candidates": 196, "spawners": 192}
+CONTENT END encounters pid=37048 status=0 seconds=3.297
+"CONTENT RUN accb85f6227a4f4f96b45ad364cfb783 complete"

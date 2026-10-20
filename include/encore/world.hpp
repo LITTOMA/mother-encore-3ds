@@ -73,7 +73,7 @@ public:
     bool prepare_scene_player(OpeningWorld& source,Vec2 position,Vec2 direction,ScenePlayerTransfer&,std::string& error);
     bool commit_scene_player(OpeningWorld& source,ScenePlayerTransfer&&,std::string& error);
     bool accept_battle_entry();
-    bool begin_house_program(uint32_t program_index,uint32_t original_npc=kRoomNoIndex);
+    bool begin_house_program(uint32_t program_index,uint32_t original_npc=kRoomNoIndex,bool stop_running=false);
     bool begin_battle_continuation(std::string_view source_path);
     bool story_completed()const{return dialogue_.status()==DialogueStatus::Completed;}
     bool finish_story_dialogue(bool automatic=false);
@@ -238,6 +238,7 @@ private:
     OpeningStage stage_=OpeningStage::Walking;
     uint64_t physics_tick_=0,idle_frame_=0;
     uint32_t generation_=0,program_index_=kRoomNoIndex,follow_actor_=kRoomNoIndex;
+    bool story_stop_running_=false;
     bool healthy_=false,initialized_=false,cutscene_done_=false,restore_pending_=false,overworld_music_=false;
     uint32_t pending_dialogue_id_=kRoomNoIndex;
     const char* error_="World not initialized";

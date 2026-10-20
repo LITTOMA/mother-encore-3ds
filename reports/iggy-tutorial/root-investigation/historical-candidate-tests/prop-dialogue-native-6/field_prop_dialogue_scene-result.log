@@ -1,0 +1,8 @@
+before A dir=0,-1
+NPC 1 at 640,272 interact-offset -0.5,5 extents 12.3,14 visible=1
+NPC 2 at 512,272 interact-offset -0.5,5 extents 12.3,14 visible=1
+NPC 3 at 1432,4744 interact-offset -0.5,5 extents 12.3,14 visible=1
+NPC 4 at 580,4536 interact-offset -0.5,5 extents 12.3,14 visible=0
+NPC 5 at 672,4536 interact-offset -0.5,5 extents 12.3,14 visible=0
+investigation debug opened=1 phase=0 stage=1 programme=4 dialogue=3000 position=1432,4730 direction=0,1 policy=8,9 ray=0,6,16 root=1432,4712 extents=16,16
+Prop investigation scene 41: opened&&scene.world.story_program_index()==(bat?9u:8u)&&scene.world.pending_dialogue_id()==(bat?3301u:3300u) ()

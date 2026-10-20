@@ -9,6 +9,7 @@ from tools import resource_catalog as catalog
 def build(out):
  out=Path(out).resolve();scene(out);contacts(out/'contact-metadata')
  (out/'world/podunk/podunk.encprops').write_bytes((out/'contact-metadata/source.encprops').read_bytes())
+ (out/'world/podunk/story.encstory').write_bytes((ROOT/'romfs/world/podunk/story.encstory').read_bytes())
  # Regenerate the private catalog through its real encoder after replacing
  # the complete packet; never mutate a catalog fingerprint by hand.
  (out/'system/native.encresources').write_bytes(catalog.encode(catalog.load_catalog(),out))

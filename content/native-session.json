@@ -2591,9 +2591,9 @@
     "content/mayor-area.json": "21bd23e8ff3c2523459376449f57cea29ef4266bb271adfbacbca36a9c6e556f",
     "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
     "tools/field_area.py": "17fa34d184d62fb05a1b5ef670d86084b3b0109ebef40f6e36e36d5fffb53580",
-    "content/podunk-story.json": "6d48be66b7914e93f67a7e3e03f179e975e031d7659d669e06cf5a965f4508f1",
+    "content/podunk-story.json": "1a7a22bdda3102e60a6b46e9b697f6da086ce5222eaf47056df46aa8ae6185d6",
     "content/podunk-field.json": "2d0760a924c78b4a33a7a8b2053262f29c3a379f9d47ffca7869a09d42dcd5fc",
-    "romfs/world/podunk/podunk.encroom": "f4a61d5b1a14d671904add0e6adee1c6bfd8cff1c9f4fc60159748d9088b8982",
+    "romfs/world/podunk/podunk.encroom": "25240f51d9347a094ad068ff62221ccc99fef669ee84beafc398c6c8dc3eadcc",
     "content/mayor-footsteps.json": "4da1ef634d7519c24c6e59f393340987e26ceedf4e66d71de2d1ba690728749f",
     "tools/field_footsteps.py": "4a2b83ef60c18a922de873a0654715142409fed547b74dac0713e626d655d74f"
   },

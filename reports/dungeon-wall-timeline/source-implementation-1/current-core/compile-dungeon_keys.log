@@ -1,0 +1,14 @@
+runtime/dungeon_keys.cpp: In function ‘bool encore::upstream::{anonymous}::safe_path(std::string_view)’:
+runtime/dungeon_keys.cpp:19:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |   if(end==s.size())break;begin=end+1;
+      |   ^~
+runtime/dungeon_keys.cpp:19:26: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |   if(end==s.size())break;begin=end+1;
+      |                          ^~~~~
+runtime/dungeon_keys.cpp: In lambda function:
+runtime/dungeon_keys.cpp:59:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   59 |   if(t.offset!=owned)return false;owned+=t.length;strings.push_back({value,t});return true;
+      |   ^~
+runtime/dungeon_keys.cpp:59:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   59 |   if(t.offset!=owned)return false;owned+=t.length;strings.push_back({value,t});return true;
+      |                                   ^~~~~

@@ -1,0 +1,20 @@
+runtime/localized_presentation.cpp: In member function ‘bool encore::upstream::LocalizedPresentation::plain_tags(std::string_view, std::string_view, std::string&, std::string&) const’:
+runtime/localized_presentation.cpp:19:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |   if(!selection_||!selection_->catalog())return fail(e,"Missing source affix catalog");const auto*rule=selection_->catalog()->affix(elision?LocaleAffix::Elision:LocaleAffix::Genitive);if(!rule)return fail(e,"Missing source affix profile");
+      |   ^~
+runtime/localized_presentation.cpp:19:88: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |   if(!selection_||!selection_->catalog())return fail(e,"Missing source affix catalog");const auto*rule=selection_->catalog()->affix(elision?LocaleAffix::Elision:LocaleAffix::Genitive);if(!rule)return fail(e,"Missing source affix profile");
+      |                                                                                        ^~~~~
+runtime/localized_presentation.cpp: In member function ‘bool encore::upstream::LocalizedPresentation::battle(encore::upstream::RoundView, uint32_t, std::string_view, std::string&, std::string&) const’:
+runtime/localized_presentation.cpp:31:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   31 |  if(!view.valid()||index>=view.count(RoundSection::Texts))return fail(e,"Invalid battle localized record");const auto row=view.text(index);if(row.role==0){out.clear();return true;}
+      |  ^~
+runtime/localized_presentation.cpp:31:108: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   31 |  if(!view.valid()||index>=view.count(RoundSection::Texts))return fail(e,"Invalid battle localized record");const auto row=view.text(index);if(row.role==0){out.clear();return true;}
+      |                                                                                                            ^~~~~
+runtime/localized_presentation.cpp:35:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   35 |   if(!guard||guard->expected!=expected||!display)return fail(e,"Dynamic battle locale source binding differs from loaded content");expected=display->expected;}
+      |   ^~
+runtime/localized_presentation.cpp:35:132: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   35 |   if(!guard||guard->expected!=expected||!display)return fail(e,"Dynamic battle locale source binding differs from loaded content");expected=display->expected;}
+      |                                                                                                                                    ^~~~~~~~

@@ -1,0 +1,7 @@
+runtime/music_zones.cpp: In member function ‘bool encore::upstream::MusicZones::load(const uint8_t*, size_t, std::string&)’:
+runtime/music_zones.cpp:26:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   26 |  if(!r.ok||r.n)return fail("Trailing music zone bytes");if(u32(p+8)==2&&!generic)return fail("Music zone version2 requires generic source paths");zones_=std::move(zones);e.clear();return true;
+      |  ^~
+runtime/music_zones.cpp:26:57: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   26 |  if(!r.ok||r.n)return fail("Trailing music zone bytes");if(u32(p+8)==2&&!generic)return fail("Music zone version2 requires generic source paths");zones_=std::move(zones);e.clear();return true;
+      |                                                         ^~

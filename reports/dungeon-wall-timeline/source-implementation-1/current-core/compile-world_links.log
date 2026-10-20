@@ -1,0 +1,42 @@
+runtime/world_links.cpp: In member function ‘std::string_view encore::upstream::{anonymous}::Layout::text(const uint8_t*) const’:
+runtime/world_links.cpp:21:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |         if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(1,0))+off,len);}
+      |         ^~
+runtime/world_links.cpp:21:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |         if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(1,0))+off,len);}
+      |                                                   ^~~~~~
+runtime/world_links.cpp: In member function ‘encore::upstream::WorldScene encore::upstream::WorldLinksData::scene(uint32_t) const’:
+runtime/world_links.cpp:29:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   29 |     if(i>=scene_count())return {};const Layout l{bytes_.data(),bytes_.size()};const auto*r=l.record(2,i);
+      |     ^~
+runtime/world_links.cpp:29:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   29 |     if(i>=scene_count())return {};const Layout l{bytes_.data(),bytes_.size()};const auto*r=l.record(2,i);
+      |                                   ^~~~~
+runtime/world_links.cpp: In member function ‘encore::upstream::WorldRoute encore::upstream::WorldLinksData::route(uint32_t) const’:
+runtime/world_links.cpp:33:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   33 |     if(i>=route_count())return {};const Layout l{bytes_.data(),bytes_.size()};const auto*r=l.record(3,i);
+      |     ^~
+runtime/world_links.cpp:33:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   33 |     if(i>=route_count())return {};const Layout l{bytes_.data(),bytes_.size()};const auto*r=l.record(3,i);
+      |                                   ^~~~~
+runtime/world_links.cpp: In lambda function:
+runtime/world_links.cpp:62:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   62 |         if(!len)return empty&&!off;return off<=pool&&len<=pool-off&&len<=limit&&printable(l.text(r));};
+      |         ^~
+runtime/world_links.cpp:62:36: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   62 |         if(!len)return empty&&!off;return off<=pool&&len<=pool-off&&len<=limit&&printable(l.text(r));};
+      |                                    ^~~~~~
+runtime/world_links.cpp: In member function ‘bool encore::upstream::WorldLinksData::resolve_scene(uint32_t, const encore::upstream::ResourceCatalog&, encore::upstream::WorldSceneResources&, std::string&) const’:
+runtime/world_links.cpp:114:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  114 |         if(!row)return fail("Scene asset owner is absent");next.story=u32(row+4);next.music=u32(row+8);next.audio=u32(row+12);next.zones=u32(row+16);next.mick=u32(row+20);next.steps=u32(row+32);
+      |         ^~
+runtime/world_links.cpp:114:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  114 |         if(!row)return fail("Scene asset owner is absent");next.story=u32(row+4);next.music=u32(row+8);next.audio=u32(row+12);next.zones=u32(row+16);next.mick=u32(row+20);next.steps=u32(row+32);
+      |                                                            ^~~~
+runtime/world_links.cpp: In member function ‘bool encore::upstream::WorldLinksData::bind_catalog(const encore::upstream::ResourceCatalog&, std::string&) const’:
+runtime/world_links.cpp:129:9: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+  129 |         for(auto id:{r.story,r.music,r.audio,r.zones,r.mick,r.steps,r.props,r.objects})if(id)used.insert(id);for(auto id:r.npcs)used.insert(id);}
+      |         ^~~
+runtime/world_links.cpp:129:110: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+  129 |         for(auto id:{r.story,r.music,r.audio,r.zones,r.mick,r.steps,r.props,r.objects})if(id)used.insert(id);for(auto id:r.npcs)used.insert(id);}
+      |                                                                                                              ^~~

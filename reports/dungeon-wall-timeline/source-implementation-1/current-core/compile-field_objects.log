@@ -1,0 +1,48 @@
+runtime/field_objects.cpp: In member function ‘bool encore::upstream::FieldObjectsData::load(const uint8_t*, size_t, std::string&)’:
+runtime/field_objects.cpp:25:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   25 |   for(size_t at=cursor;at<off[i];++at)if(p[at])return fail(e,"Field object padding rejected");cursor=off[i]+count[i]*strides[i];
+      |   ^~~
+runtime/field_objects.cpp:25:95: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   25 |   for(size_t at=cursor;at<off[i];++at)if(p[at])return fail(e,"Field object padding rejected");cursor=off[i]+count[i]*strides[i];
+      |                                                                                               ^~~~~~
+runtime/field_objects.cpp:40:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   40 |   if(!f.width||!f.height||f.x>=v.width_||f.y>=v.height_||f.width>v.width_-f.x||f.height>v.height_-f.y)return fail(e,"Field object frame rectangle rejected");v.frames_.push_back(f);
+      |   ^~
+runtime/field_objects.cpp:40:158: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   40 |   if(!f.width||!f.height||f.x>=v.width_||f.y>=v.height_||f.width>v.width_-f.x||f.height>v.height_-f.y)return fail(e,"Field object frame rectangle rejected");v.frames_.push_back(f);
+      |                                                                                                                                                              ^
+runtime/field_objects.cpp: In member function ‘bool encore::upstream::FieldObjectsData::texture_matches(const uint8_t*, size_t, std::string&) const’:
+runtime/field_objects.cpp:68:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   68 |  if(!drawing_bound()||!p||n!=texture_bytes_||encore::crc32(p,n)!=texture_crc_)return fail(e,"Field object drawing texture receipt differs");e.clear();return true;
+      |  ^~
+runtime/field_objects.cpp:68:141: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   68 |  if(!drawing_bound()||!p||n!=texture_bytes_||encore::crc32(p,n)!=texture_crc_)return fail(e,"Field object drawing texture receipt differs");e.clear();return true;
+      |                                                                                                                                             ^
+runtime/field_objects.cpp: In member function ‘bool encore::upstream::FieldObjects::prepare(const encore::upstream::FieldObjectsData&, encore::upstream::RoomView, std::string&)’:
+runtime/field_objects.cpp:90:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   90 |  if(!d.bind(room,e))return false;FieldObjects v;v.data_=d;v.states_.resize(d.objects().size());
+      |  ^~
+runtime/field_objects.cpp:90:34: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   90 |  if(!d.bind(room,e))return false;FieldObjects v;v.data_=d;v.states_.resize(d.objects().size());
+      |                                  ^~~~~~~~~~~~
+runtime/field_objects.cpp: In member function ‘size_t encore::upstream::FieldObjects::index(uint32_t) const’:
+runtime/field_objects.cpp:94:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   94 |  for(size_t i=0;i<data_.objects().size();++i)if(data_.objects()[i].id==id)return i;return states_.size();
+      |  ^~~
+runtime/field_objects.cpp:94:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   94 |  for(size_t i=0;i<data_.objects().size();++i)if(data_.objects()[i].id==id)return i;return states_.size();
+      |                                                                                    ^~~~~~
+runtime/field_objects.cpp: In member function ‘virtual bool encore::upstream::FieldObjects::can_queue_free(std::string_view, std::string&) const’:
+runtime/field_objects.cpp:141:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  141 |   if(!states_[i].ready||!states_[i].alive)return fail(e,"Field object delete target is unavailable");e.clear();return true;
+      |   ^~
+runtime/field_objects.cpp:141:102: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  141 |   if(!states_[i].ready||!states_[i].alive)return fail(e,"Field object delete target is unavailable");e.clear();return true;
+      |                                                                                                      ^
+runtime/field_objects.cpp: In member function ‘virtual bool encore::upstream::FieldObjects::queue_free(std::string_view, std::string&)’:
+runtime/field_objects.cpp:147:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+  147 |  for(size_t i=0;i<states_.size();++i)if(data_.objects()[i].path==path){states_[i].queued=true;break;}e.clear();return true;
+      |  ^~~
+runtime/field_objects.cpp:147:102: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+  147 |  for(size_t i=0;i<states_.size();++i)if(data_.objects()[i].path==path){states_[i].queued=true;break;}e.clear();return true;
+      |                                                                                                      ^

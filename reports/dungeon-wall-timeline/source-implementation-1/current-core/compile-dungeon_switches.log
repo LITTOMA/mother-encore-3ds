@@ -1,0 +1,7 @@
+runtime/dungeon_switches.cpp: In member function ‘bool encore::upstream::DungeonSwitchesData::load(const uint8_t*, size_t, std::string&)’:
+runtime/dungeon_switches.cpp:43:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   43 |   for(size_t at=cursor;at<aligned;++at)if(p[at])return fail("Dungeon switch padding rejected");cursor=offset+size_t(count)*strides[i];
+      |   ^~~
+runtime/dungeon_switches.cpp:43:96: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   43 |   for(size_t at=cursor;at<aligned;++at)if(p[at])return fail("Dungeon switch padding rejected");cursor=offset+size_t(count)*strides[i];
+      |                                                                                                ^~~~~~

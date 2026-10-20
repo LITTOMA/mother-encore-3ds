@@ -1,0 +1,13 @@
+runtime/gameplay_audio.cpp: In member function ‘bool encore::upstream::GameplayAudioData::load(const uint8_t*, size_t, std::string&)’:
+runtime/gameplay_audio.cpp:14:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   14 |   if(n-off<4)return fail("Truncated gameplay cue");const auto len=u32(p+off);off+=4;
+      |   ^~
+runtime/gameplay_audio.cpp:14:52: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   14 |   if(n-off<4)return fail("Truncated gameplay cue");const auto len=u32(p+off);off+=4;
+      |                                                    ^~~~~
+runtime/gameplay_audio.cpp:22:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   22 |  if(off!=n)return fail("Trailing gameplay cue bytes");paths_=std::move(paths);e.clear();return true;
+      |  ^~
+runtime/gameplay_audio.cpp:22:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   22 |  if(off!=n)return fail("Trailing gameplay cue bytes");paths_=std::move(paths);e.clear();return true;
+      |                                                       ^~~~~~

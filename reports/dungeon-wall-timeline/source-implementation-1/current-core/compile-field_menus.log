@@ -1,0 +1,32 @@
+runtime/field_menus.cpp: In member function ‘bool encore::upstream::FieldMenus::apply_choice(std::string&)’:
+runtime/field_menus.cpp:57:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   57 |  if(!commit(std::move(next),e))return false;phase_=parent_;selection_=choice_previous_;return true;
+      |  ^~
+runtime/field_menus.cpp:57:45: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   57 |  if(!commit(std::move(next),e))return false;phase_=parent_;selection_=choice_previous_;return true;
+      |                                             ^~~~~~
+runtime/field_menus.cpp: In member function ‘bool encore::upstream::FieldMenus::input(int, int, bool, bool, bool, int, uint32_t, std::string&)’:
+runtime/field_menus.cpp:60:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   60 |  if(x<-1||x>1||y<-1||y>1||tab<-1||tab>1)return fail(e,"Field menu direction rejected");if(!active())return true;
+      |  ^~
+runtime/field_menus.cpp:60:88: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   60 |  if(x<-1||x>1||y<-1||y>1||tab<-1||tab>1)return fail(e,"Field menu direction rejected");if(!active())return true;
+      |                                                                                        ^~
+runtime/field_menus.cpp:64:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   64 |   if(choice_previous_>=state_.preferences.buttons.size())return fail(e,"Field control action out of range");auto next=state_;auto at=std::find(next.preferences.buttons.begin(),next.preferences.buttons.end(),mask);if(at==next.preferences.buttons.end())return fail(e,"Field physical button rejected");std::swap(next.preferences.buttons[choice_previous_],*at);if(!commit(std::move(next),e))return false;phase_=Phase::Controls;selection_=choice_previous_;sounds_.push_back(6);return true;
+      |   ^~
+runtime/field_menus.cpp:64:109: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   64 |   if(choice_previous_>=state_.preferences.buttons.size())return fail(e,"Field control action out of range");auto next=state_;auto at=std::find(next.preferences.buttons.begin(),next.preferences.buttons.end(),mask);if(at==next.preferences.buttons.end())return fail(e,"Field physical button rejected");std::swap(next.preferences.buttons[choice_previous_],*at);if(!commit(std::move(next),e))return false;phase_=Phase::Controls;selection_=choice_previous_;sounds_.push_back(6);return true;
+      |                                                                                                             ^~~~
+runtime/field_menus.cpp:82:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   82 |  if(!confirm)return true;sounds_.push_back(6);
+      |  ^~
+runtime/field_menus.cpp:82:26: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   82 |  if(!confirm)return true;sounds_.push_back(6);
+      |                          ^~~~~~~
+runtime/field_menus.cpp:88:3: warning: this ‘else’ clause does not guard... [-Wmisleading-indentation]
+   88 |   else if(action==5){phase_=Phase::Drop;selection_=1;}else return fail(e,"Field item opcode rejected");return true;
+      |   ^~~~
+runtime/field_menus.cpp:88:104: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘else’
+   88 |   else if(action==5){phase_=Phase::Drop;selection_=1;}else return fail(e,"Field item opcode rejected");return true;
+      |                                                                                                        ^~~~~~

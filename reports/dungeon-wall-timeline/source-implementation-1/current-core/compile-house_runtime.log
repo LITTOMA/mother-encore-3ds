@@ -1,0 +1,43 @@
+runtime/house_runtime.cpp: In member function ‘bool encore::upstream::HouseRuntime::set_player_nickname(std::string_view)’:
+runtime/house_runtime.cpp:71:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   71 |  for(unsigned char ch:name)if(ch<32||ch>126)return false;nickname_=std::string(name);return true;
+      |  ^~~
+runtime/house_runtime.cpp:71:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   71 |  for(unsigned char ch:name)if(ch<32||ch>126)return false;nickname_=std::string(name);return true;
+      |                                                          ^~~~~~~~~
+runtime/house_runtime.cpp: In member function ‘std::string_view encore::upstream::HouseRuntime::player_nickname() const’:
+runtime/house_runtime.cpp:74:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   74 |  if(!nickname_.empty())return nickname_;const auto room=world_->content();return room.string(room.actor_instance(room.scene().player_instance_index).display_name_string);
+      |  ^~
+runtime/house_runtime.cpp:74:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   74 |  if(!nickname_.empty())return nickname_;const auto room=world_->content();return room.string(room.actor_instance(room.scene().player_instance_index).display_name_string);
+      |                                         ^~~~~
+runtime/house_runtime.cpp: In member function ‘virtual bool encore::upstream::HouseRuntime::PresentAdapter::start_story(std::string_view, std::string&)’:
+runtime/house_runtime.cpp:341:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  341 |  if(!validate_story(path,e))return false;owner->present_story_=owner->program_for_path(path.substr(14,path.size()-19));return true;
+      |  ^~
+runtime/house_runtime.cpp:341:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  341 |  if(!validate_story(path,e))return false;owner->present_story_=owner->program_for_path(path.substr(14,path.size()-19));return true;
+      |                                          ^~~~~
+runtime/house_runtime.cpp: In member function ‘bool encore::upstream::HouseRuntime::door_interaction_supported(uint32_t) const’:
+runtime/house_runtime.cpp:447:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  447 |  if(!content_.valid()||i>=openables_.size())return false;const auto&state=openables_[i];const auto d=content_.openable_door(i);
+      |  ^~
+runtime/house_runtime.cpp:447:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  447 |  if(!content_.valid()||i>=openables_.size())return false;const auto&state=openables_[i];const auto d=content_.openable_door(i);
+      |                                                          ^~~~~
+runtime/house_runtime.cpp: In member function ‘std::string_view encore::upstream::HouseRuntime::inspection_path(uint32_t) const’:
+runtime/house_runtime.cpp:464:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  464 |  if(!inspection_visible(i))return {};const auto o=inspections_.object(i);auto path=inspections_.string(o.default_dialogue);
+      |  ^~
+runtime/house_runtime.cpp:464:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  464 |  if(!inspection_visible(i))return {};const auto o=inspections_.object(i);auto path=inspections_.string(o.default_dialogue);
+      |                                      ^~~~~
+runtime/house_runtime.cpp: In member function ‘bool encore::upstream::HouseRuntime::interact()’:
+runtime/house_runtime.cpp:517:47: warning: variable ‘player’ set but not used [-Wunused-but-set-variable]
+  517 |  const auto room=world_->content();const auto player=room.actor_instance(room.scene().player_instance_index);
+      |                                               ^~~~~~
+runtime/house_runtime.cpp: In member function ‘bool encore::upstream::HouseRuntime::sync_story_dialogue()’:
+runtime/house_runtime.cpp:542:91: warning: variable ‘player’ set but not used [-Wunused-but-set-variable]
+  542 |  const auto text=content_.dialogue(selected);const auto room=world_->content();const auto player=room.actor_instance(room.scene().player_instance_index);
+      |                                                                                           ^~~~~~

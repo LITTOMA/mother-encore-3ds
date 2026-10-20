@@ -1,0 +1,27 @@
+runtime/field_story.cpp: In function ‘bool encore::upstream::format_field_story_text(std::string_view, const encore::upstream::NewGameSetupData&, const encore::upstream::SessionSnapshot&, const encore::upstream::LocaleSelection&, std::string&, std::string&)’:
+runtime/field_story.cpp:25:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   25 |  if(!names.valid()||!locale.catalog()||input.size()>16384)return reject();std::string result;size_t at=0;
+      |  ^~
+runtime/field_story.cpp:25:75: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   25 |  if(!names.valid()||!locale.catalog()||input.size()>16384)return reject();std::string result;size_t at=0;
+      |                                                                           ^~~
+runtime/field_story.cpp:31:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   31 |   if(value.empty()||value.size()>128)return reject();result+=value;if(result.size()>65536)return reject();at=close+1;
+      |   ^~
+runtime/field_story.cpp:31:54: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   31 |   if(value.empty()||value.size()>128)return reject();result+=value;if(result.size()>65536)return reject();at=close+1;
+      |                                                      ^~~~~~
+runtime/field_story.cpp: In function ‘bool encore::upstream::format_field_story_span(std::string_view, const encore::upstream::NewGameSetupData&, const encore::upstream::SessionSnapshot&, const encore::upstream::LocaleSelection&, encore::upstream::LocalizedHouseSpan&, std::string&, const encore::upstream::FieldMenusData*, const encore::upstream::FieldMenuPreferences*)’:
+runtime/field_story.cpp:66:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   66 |  if(color)return reject("Unclosed field hint color");push(false);if(result.segments.size()>128)return reject("Field dialogue segment capacity");out=std::move(result);error.clear();return true;
+      |  ^~
+runtime/field_story.cpp:66:54: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   66 |  if(color)return reject("Unclosed field hint color");push(false);if(result.segments.size()>128)return reject("Field dialogue segment capacity");out=std::move(result);error.clear();return true;
+      |                                                      ^~~~
+runtime/field_story.cpp: In member function ‘bool encore::upstream::FieldStoryData::load(const uint8_t*, size_t, std::string&)’:
+runtime/field_story.cpp:122:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+  122 |   for(size_t i=cursor;i<offset;++i)if(p[i])return fail("Field story padding rejected");cursor=offset+count*stride;
+      |   ^~~
+runtime/field_story.cpp:122:88: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+  122 |   for(size_t i=cursor;i<offset;++i)if(p[i])return fail("Field story padding rejected");cursor=offset+count*stride;
+      |                                                                                        ^~~~~~

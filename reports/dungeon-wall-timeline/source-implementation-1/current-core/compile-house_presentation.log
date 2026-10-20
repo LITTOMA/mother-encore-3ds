@@ -1,0 +1,27 @@
+runtime/house_presentation.cpp: In member function ‘bool encore::upstream::HousePresentation::begin_npc_dialogue(uint32_t, uint32_t, uint32_t, std::string_view, encore::upstream::Vec2)’:
+runtime/house_presentation.cpp:196:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  196 |  if(i>=npcs_.size()||!begin_dialogue(first,count,name)||!begin_npc_interaction(i,player))return false;npc_=i;return true;
+      |  ^~
+runtime/house_presentation.cpp:196:103: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  196 |  if(i>=npcs_.size()||!begin_dialogue(first,count,name)||!begin_npc_interaction(i,player))return false;npc_=i;return true;
+      |                                                                                                       ^~~~
+runtime/house_presentation.cpp: In member function ‘bool encore::upstream::HousePresentation::stop_npc_interaction(uint32_t)’:
+runtime/house_presentation.cpp:204:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  204 |  if(i>=npcs_.size())return fail("Unknown stopped NPC");auto&s=npcs_[i];s.story_talking=false;
+      |  ^~
+runtime/house_presentation.cpp:204:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  204 |  if(i>=npcs_.size())return fail("Unknown stopped NPC");auto&s=npcs_[i];s.story_talking=false;
+      |                                                        ^~~~
+runtime/house_presentation.cpp: In member function ‘bool encore::upstream::HousePresentation::wrap_plain(std::string_view, std::vector<encore::upstream::HousePresentation::Line>&) const’:
+runtime/house_presentation.cpp:306:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  306 |    if(stop==limit)break;start=end+separator.size();}
+      |    ^~
+runtime/house_presentation.cpp:306:25: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  306 |    if(stop==limit)break;start=end+separator.size();}
+      |                         ^~~~~
+runtime/house_presentation.cpp:307:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  307 |   if(!line.empty())push();if(newline==std::u32string::npos)break;paragraph=newline+1;}
+      |   ^~
+runtime/house_presentation.cpp:307:27: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  307 |   if(!line.empty())push();if(newline==std::u32string::npos)break;paragraph=newline+1;}
+      |                           ^~

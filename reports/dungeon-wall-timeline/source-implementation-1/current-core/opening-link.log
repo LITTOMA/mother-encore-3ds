@@ -1,0 +1,4 @@
+tests/playable_opening_tests.cpp: In function ‘void lamp_to_doll_entry(encore::upstream::FreshHouseState&, encore::upstream::HouseView, encore::upstream::SourceRandom&, encore::upstream::BattleSessionStats&, char**)’:
+tests/playable_opening_tests.cpp:21:6: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
+   21 | void lamp_to_doll_entry(FreshHouseState&fresh,HouseView house,SourceRandom&random,BattleSessionStats&live,char**argv){
+      |      ^~~~~~~~~~~~~~~~~~

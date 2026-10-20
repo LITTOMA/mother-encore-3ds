@@ -3,9 +3,12 @@
 The Catacombs wall's `_shake(duration)` requests magnitude5, random direction,
 interval0.02, weight1 and no diminution. Its On animation calls it with0.5 and
 1.0seconds. The previous native camera subset accepted a zero vector but never
-drew a random direction. Existing formal House/Podunk commands all use the
-fixed `(1,0)` direction; Mayor has no shake command. RoomShaker's admitted
-axis and all formal resource bytes remain unchanged.
+drew a random direction. Formal House/Podunk RoomShaker commands use `(1,0)`;
+the separate house-door ram policy uses source direction `(2,0)`. Mayor has no
+shake command. The initial random-camera component bound incorrectly rejected
+that existing door policy; the [wall timeline follow-up](DUNGEON_WALL_TIMELINE.md)
+documents the failed full checks and source-based correction. RoomShaker's
+admitted axis and all formal resource bytes remain unchanged.
 
 `CutsceneCamera` now accepts explicit interval, weight and diminution parameters.
 The explicit random physics overload uses the caller's shared `SourceRandom`.

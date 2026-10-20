@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-wall-timeline.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Source Wall Door frame/body properties, synchronous playing-property writes and deferred _shake calls only. Independent candidate metadata; no scene, texture, PCM or save admission.",
+  "graph_recipe": "content/catacombs-switches.json",
+  "graph_review_sha256": "9252882df47ec04c0354f01589dd0bb97730f4cf93f6ed58b73848228d97bfbf",
+  "owner": {
+    "scene_id": 4,
+    "id": 3761819854,
+    "path": "Bottom2/Wall Door"
+  },
+  "paths": {
+    "scene": "Nodes/Overworld/switches/Wall Door.tscn",
+    "script": "Scripts/misc/wall door.gd",
+    "texture": "Graphics/Objects/Catacombs/Wall Door.png",
+    "audio": "Audio/Sound effects/Stone_move.mp3",
+    "audio_import": "Audio/Sound effects/Stone_move.mp3.import",
+    "camera": "Scripts/Main/Camera2D.gd",
+    "shaker": "Scripts/misc/Shaker.gd",
+    "license": "LICENSE"
+  },
+  "roles": [
+    {
+      "role": "On",
+      "id": 4,
+      "name": "On"
+    },
+    {
+      "role": "RESET",
+      "id": 7,
+      "name": "RESET"
+    },
+    {
+      "role": "StayOff",
+      "id": 5,
+      "name": "StayOff"
+    },
+    {
+      "role": "StayOn",
+      "id": 6,
+      "name": "StayOn"
+    }
+  ],
+  "audio_identity": {
+    "kind": "stable",
+    "value": 90211837,
+    "assignment": "Port-owned existing identity if present; otherwise first32 little-endian bits of SHA256(encore.audio: + source path), collision-checked against current root bank. Not an upstream identity."
+  },
+  "sources": {
+    "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+    "Scripts/misc/wall door.gd": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a",
+    "Graphics/Objects/Catacombs/Wall Door.png": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100",
+    "Audio/Sound effects/Stone_move.mp3": "51e63dc9c9b13527966e22c9dd3377a9ab883368af092e2292f95d9b9e532d16",
+    "Audio/Sound effects/Stone_move.mp3.import": "b7b636713631a319a1c733b182bc7d9e5cb17f1571a0ee81ba72878124645dfb",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "license_review": "Pinned upstream LICENSE permits game-related use. Candidate carries checked identities only; no source audio, decoder binary, DSP firmware or PCM is staged by this resource compiler."
+}

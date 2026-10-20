@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+g++ --version > build/full-port/wall-current-final-1/compiler.txt
+g++ -std=c++17 -O1 -g -Wall -Wextra -Wpedantic -fno-exceptions -fno-rtti -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude -Itests '-DENCORE_TEST_ROOM_PATH="romfs/world/house/opening.encroom"' tests/door_camera_tests.cpp build/full-port/wall-host-current-1/libencore-current.a -o build/full-port/wall-current-final-1/door-check > build/full-port/wall-current-final-1/door-compile.log 2>&1
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/wall-current-final-1/door-check tests/fixtures/door-camera.tsv > build/full-port/wall-current-final-1/door-run.log 2>&1
+cat build/full-port/wall-current-final-1/door-run.log
+g++ -std=c++17 -O1 -g -Wall -Wextra -Wpedantic -fno-exceptions -fno-rtti -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude -Itests '-DENCORE_TEST_ROOM_PATH="romfs/world/house/opening.encroom"' tests/camera_random_shake_tests.cpp build/full-port/wall-host-current-1/libencore-current.a -o build/full-port/wall-current-final-1/random-check > build/full-port/wall-current-final-1/random-compile.log 2>&1
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/wall-current-final-1/random-check tests/fixtures/camera-random-shake.tsv > build/full-port/wall-current-final-1/random-run.log 2>&1
+cat build/full-port/wall-current-final-1/random-run.log
+g++ -std=c++17 -O1 -g -Wall -Wextra -Wpedantic -fno-exceptions -fno-rtti -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude -Itests '-DENCORE_TEST_ROOM_PATH="romfs/world/house/opening.encroom"' tests/cutscene_camera_tests.cpp build/full-port/wall-host-current-1/libencore-current.a -o build/full-port/wall-current-final-1/legacy-camera-check > build/full-port/wall-current-final-1/legacy-camera-compile.log 2>&1
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/wall-current-final-1/legacy-camera-check  > build/full-port/wall-current-final-1/legacy-camera-run.log 2>&1
+cat build/full-port/wall-current-final-1/legacy-camera-run.log
+g++ -std=c++17 -O1 -g -Wall -Wextra -Wpedantic -fno-exceptions -fno-rtti -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude -Itests '-DENCORE_TEST_ROOM_PATH="romfs/world/house/opening.encroom"' tests/dungeon_wall_timeline_tests.cpp build/full-port/wall-host-current-1/libencore-current.a -o build/full-port/wall-current-final-1/metadata-check > build/full-port/wall-current-final-1/metadata-compile.log 2>&1
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/wall-current-final-1/metadata-check build/full-port/wall-current-final-1 romfs/sound/banks/opening.encaudio > build/full-port/wall-current-final-1/metadata-run.log 2>&1
+cat build/full-port/wall-current-final-1/metadata-run.log
+g++ -std=c++17 -O1 -g -Wall -Wextra -Wpedantic -fno-exceptions -fno-rtti -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude -Itests '-DENCORE_TEST_ROOM_PATH="romfs/world/house/opening.encroom"' tests/dungeon_wall_state_tests.cpp build/full-port/wall-host-current-1/libencore-current.a -o build/full-port/wall-current-final-1/state-check > build/full-port/wall-current-final-1/state-compile.log 2>&1
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/wall-current-final-1/state-check build/full-port/wall-current-final-1/source.encwall build/full-port/wall-current-final-1/reference.tsv > build/full-port/wall-current-final-1/state-run.log 2>&1
+cat build/full-port/wall-current-final-1/state-run.log

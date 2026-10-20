@@ -1,0 +1,28 @@
+runtime/music_players.cpp: In member function ‘std::vector<encore::upstream::MusicPlayerSnapshot> encore::upstream::MusicPlayers::snapshot() const’:
+runtime/music_players.cpp:14:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   14 |     for(const auto&n:nodes_)out.push_back({n.identity,n.stream,n.playing,n.gain_db});return out;
+      |     ^~~
+runtime/music_players.cpp:14:86: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   14 |     for(const auto&n:nodes_)out.push_back({n.identity,n.stream,n.playing,n.gain_db});return out;
+      |                                                                                      ^~~~~~
+runtime/music_players.cpp: In member function ‘bool encore::upstream::MusicPlayers::initialize(encore::upstream::MusicPlayersPolicy, std::string&)’:
+runtime/music_players.cpp:21:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |     if(!next.add_player(empty,e))return false;*this=std::move(next);e.clear();return true;
+      |     ^~
+runtime/music_players.cpp:21:47: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |     if(!next.add_player(empty,e))return false;*this=std::move(next);e.clear();return true;
+      |                                               ^
+runtime/music_players.cpp: In member function ‘bool encore::upstream::MusicPlayers::resume_all(std::string&)’:
+runtime/music_players.cpp:87:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   87 |     for(auto&node:nodes_)node.stream_paused=false;e.clear();return true;
+      |     ^~~
+runtime/music_players.cpp:87:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   87 |     for(auto&node:nodes_)node.stream_paused=false;e.clear();return true;
+      |                                                   ^
+runtime/music_players.cpp: In member function ‘bool encore::upstream::MusicPlayers::flush_deletions(std::string&)’:
+runtime/music_players.cpp:157:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  157 |     if(!ready_)return bad(e,"Loop players are not initialized");MusicPlayers next=*this;
+      |     ^~
+runtime/music_players.cpp:157:65: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  157 |     if(!ready_)return bad(e,"Loop players are not initialized");MusicPlayers next=*this;
+      |                                                                 ^~~~~~~~~~~~

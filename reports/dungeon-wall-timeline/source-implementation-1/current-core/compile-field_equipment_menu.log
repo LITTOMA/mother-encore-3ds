@@ -1,0 +1,26 @@
+runtime/field_equipment_menu.cpp: In member function ‘bool encore::upstream::FieldEquipmentMenu::enter_candidates()’:
+runtime/field_equipment_menu.cpp:69:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   69 |  if(!read_snapshot())return false;bool suitable=false;candidates_.clear();for(const auto&i:snapshot_.inventory.instances())for(uint32_t j=0;j<data_.count(FieldSection::Equipment);++j){auto e=data_.equipment(j);if(e.definition==i.definition&&e.slot==slot_){suitable=true;if(!i.equipped)candidates_.push_back(FieldEquipmentCandidate{false,i});break;}}
+      |  ^~
+runtime/field_equipment_menu.cpp:69:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   69 |  if(!read_snapshot())return false;bool suitable=false;candidates_.clear();for(const auto&i:snapshot_.inventory.instances())for(uint32_t j=0;j<data_.count(FieldSection::Equipment);++j){auto e=data_.equipment(j);if(e.definition==i.definition&&e.slot==slot_){suitable=true;if(!i.equipped)candidates_.push_back(FieldEquipmentCandidate{false,i});break;}}
+      |                                   ^~~~
+runtime/field_equipment_menu.cpp:72:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   72 |  if(candidates_.empty())return fail("Field equipment empty candidate set rejected");phase_=FieldEquipmentPhase::Candidates;candidate_=offset_=0;retarget_cursor(true);sounds_.push_back(FieldEquipmentSound::Confirm);return update_preview();
+      |  ^~
+runtime/field_equipment_menu.cpp:72:85: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   72 |  if(candidates_.empty())return fail("Field equipment empty candidate set rejected");phase_=FieldEquipmentPhase::Candidates;candidate_=offset_=0;retarget_cursor(true);sounds_.push_back(FieldEquipmentSound::Confirm);return update_preview();
+      |                                                                                     ^~~~~~
+runtime/field_equipment_menu.cpp: In member function ‘bool encore::upstream::FieldEquipmentMenu::input(int, int, bool, bool, bool, bool)’:
+runtime/field_equipment_menu.cpp:75:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   75 |  if(x<-1||x>1||y<-1||y>1)return fail("Field equipment direction rejected");if(!active())return true;
+      |  ^~
+runtime/field_equipment_menu.cpp:75:76: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   75 |  if(x<-1||x>1||y<-1||y>1)return fail("Field equipment direction rejected");if(!active())return true;
+      |                                                                            ^~
+runtime/field_equipment_menu.cpp:90:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   90 |     if(!read_snapshot())return false;phase_=FieldEquipmentPhase::PsiResult;}
+      |     ^~
+runtime/field_equipment_menu.cpp:90:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   90 |     if(!read_snapshot())return false;phase_=FieldEquipmentPhase::PsiResult;}
+      |                                      ^~~~~~

@@ -120,7 +120,7 @@ bool CutsceneCamera::shake(double magnitude,double duration,Vec2 direction){
     return shake(magnitude,duration,direction,binding_.shake_step,binding_.shake_weight,true);
 }
 bool CutsceneCamera::shake(double magnitude,double duration,Vec2 direction,double interval,double weight,bool diminish){
-    if(!initialized_||!std::isfinite(interval)||interval<=0||!std::isfinite(duration)||duration<interval||duration>60||duration/interval>1000000||!std::isfinite(magnitude)||magnitude<0||magnitude>1000000||!finite(direction)||std::abs(direction.x)>1||std::abs(direction.y)>1||!std::isfinite(weight)||weight<0||weight>1)return false;
+    if(!initialized_||!std::isfinite(interval)||interval<=0||!std::isfinite(duration)||duration<interval||duration>60||duration/interval>1000000||!std::isfinite(magnitude)||magnitude<0||magnitude>1000000||!finite(direction)||std::abs(direction.x)>1000000||std::abs(direction.y)>1000000||!std::isfinite(weight)||weight<0||weight>1)return false;
     auto& c=current();if(c.shakes.size()>=16)return false;
     Shake s;s.left=int(duration/interval);s.magnitude=magnitude;s.reduction=diminish?magnitude/s.left:0;s.old=c.shake;s.direction=direction;s.sampled=direction;s.interval=interval;s.weight=weight;c.shakes.push_back(s);return true;
 }

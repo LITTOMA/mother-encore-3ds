@@ -41,7 +41,7 @@ int main(int argc,char**argv){
  check(camera.initialize(room,{432,397}),"negative setup");
  check(!camera.shake(5,.5,{}),"legacy random request rejects without owner");
  struct Bad{double magnitude,duration,interval,weight;Vec2 direction;};
- const Bad bad[]={{5,.5,0,1,{}},{5,.5,-1,1,{}},{5,.5,nan,1,{}},{5,.5,.02,nan,{}},{5,.5,.02,-1,{}},{5,.5,.02,2,{}},{5,.001,.02,1,{}},{5,61,.02,1,{}},{5,nan,.02,1,{}},{-1,.5,.02,1,{}},{nan,.5,.02,1,{}},{1000001,.5,.02,1,{}},{5,1,.00000001,1,{}},{5,.5,.02,1,{2,0}},{5,.5,.02,1,{0,float(nan)}}};
+ const Bad bad[]={{5,.5,0,1,{}},{5,.5,-1,1,{}},{5,.5,nan,1,{}},{5,.5,.02,nan,{}},{5,.5,.02,-1,{}},{5,.5,.02,2,{}},{5,.001,.02,1,{}},{5,61,.02,1,{}},{5,nan,.02,1,{}},{-1,.5,.02,1,{}},{nan,.5,.02,1,{}},{1000001,.5,.02,1,{}},{5,1,.00000001,1,{}},{5,.5,.02,1,{1000001,0}},{5,.5,.02,1,{0,float(nan)}}};
  for(const auto&v:bad){check(!camera.shake(v.magnitude,v.duration,v.direction,v.interval,v.weight,false),"invalid explicit parameters rejected");check(!camera.is_shaking(),"invalid request has no partial shake");}
  check(camera.shake(5,.5,{},.02,1,false),"explicit stochastic request accepted");const auto before=camera.center(),offset=camera.display_offset();
  check(!camera.physics_frame(),"random update without stream rejects");check(!camera.physics_frame({900,900}),"target update without stream rejects");

@@ -1,0 +1,21 @@
+runtime/mick_treats.cpp: In function ‘bool encore::upstream::{anonymous}::safe_path(std::string_view)’:
+runtime/mick_treats.cpp:23:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   23 |     for(unsigned char ch:s)if(ch<32||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |     ^~~
+runtime/mick_treats.cpp:23:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   23 |     for(unsigned char ch:s)if(ch<32||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |                                                          ^~
+runtime/mick_treats.cpp: In member function ‘std::string_view encore::upstream::MickView::string(uint32_t) const’:
+runtime/mick_treats.cpp:53:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   53 |     if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(MickSection::Bytes,0))+off,len);}
+      |     ^~
+runtime/mick_treats.cpp:53:47: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   53 |     if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(MickSection::Bytes,0))+off,len);}
+      |                                               ^~~~~~
+runtime/mick_treats.cpp: In member function ‘bool encore::upstream::MickRuntime::step(std::string&)’:
+runtime/mick_treats.cpp:278:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  278 |             if(!host_->show_text(speaker,body,e))return rejected();++pc_;break;}
+      |             ^~
+runtime/mick_treats.cpp:278:68: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  278 |             if(!host_->show_text(speaker,body,e))return rejected();++pc_;break;}
+      |                                                                    ^~

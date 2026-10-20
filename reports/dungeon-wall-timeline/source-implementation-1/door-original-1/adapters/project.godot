@@ -1,0 +1,9 @@
+config_version=4
+_global_script_classes=[{"base":"Node","class":"Shaker","language":"GDScript","path":"res://shaker.gd"}]
+_global_script_class_icons={"Shaker":""}
+[application]
+config/name="Source nonunit door camera"
+[rendering]
+quality/driver/driver_name="GLES2"
+[logging]
+file_logging/enable_logging=false

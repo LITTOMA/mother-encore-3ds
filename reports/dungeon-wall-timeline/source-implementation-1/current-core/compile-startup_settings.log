@@ -1,0 +1,14 @@
+runtime/startup_settings.cpp: In member function ‘bool encore::upstream::StartupSettingsData::load(const uint8_t*, size_t, std::string&)’:
+runtime/startup_settings.cpp:38:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   38 |  for(const auto&f:d.confirmation_fields)if(f.resource>=d.resources.size())return fail(e,"Startup confirmation resource rejected");for(auto p:d.patch)if(p>64)return fail(e,"Startup skin margin rejected");if(!unique(d.skin_paths))return fail(e,"Startup duplicate UI skin identity");for(const auto&s:d.skin_paths)if(!path(s))return fail(e,"Startup UI skin path rejected");
+      |  ^~~
+runtime/startup_settings.cpp:38:131: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   38 |  for(const auto&f:d.confirmation_fields)if(f.resource>=d.resources.size())return fail(e,"Startup confirmation resource rejected");for(auto p:d.patch)if(p>64)return fail(e,"Startup skin margin rejected");if(!unique(d.skin_paths))return fail(e,"Startup duplicate UI skin identity");for(const auto&s:d.skin_paths)if(!path(s))return fail(e,"Startup UI skin path rejected");
+      |                                                                                                                                   ^~~
+runtime/startup_settings.cpp: In member function ‘bool encore::upstream::StartupSettingsData::load_file(const char*, std::string&)’:
+runtime/startup_settings.cpp:42:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   42 |  if(!path)return fail(e,"Missing startup settings path");FILE*f=std::fopen(path,"rb");if(!f)return fail(e,"Cannot open startup settings pack");std::vector<uint8_t>b;uint8_t chunk[4096];bool ok=true;while(true){size_t n=std::fread(chunk,1,sizeof(chunk),f);if(b.size()+n>1024*1024){ok=false;break;}b.insert(b.end(),chunk,chunk+n);if(n<sizeof(chunk)){ok=!std::ferror(f);break;}}if(std::fclose(f))ok=false;return ok?load(b.data(),b.size(),e):fail(e,"Startup settings bounded read failed");
+      |  ^~
+runtime/startup_settings.cpp:42:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   42 |  if(!path)return fail(e,"Missing startup settings path");FILE*f=std::fopen(path,"rb");if(!f)return fail(e,"Cannot open startup settings pack");std::vector<uint8_t>b;uint8_t chunk[4096];bool ok=true;while(true){size_t n=std::fread(chunk,1,sizeof(chunk),f);if(b.size()+n>1024*1024){ok=false;break;}b.insert(b.end(),chunk,chunk+n);if(n<sizeof(chunk)){ok=!std::ferror(f);break;}}if(std::fclose(f))ok=false;return ok?load(b.data(),b.size(),e):fail(e,"Startup settings bounded read failed");
+      |                                                          ^~~~

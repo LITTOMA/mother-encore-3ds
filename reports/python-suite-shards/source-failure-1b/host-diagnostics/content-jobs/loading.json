@@ -1,0 +1,14 @@
+{
+  "task": "loading",
+  "pid": 5213,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498450.5262659,
+  "finished": 1792498451.6565647,
+  "seconds": 1.1302988529205322,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/loading_indicator_assets.py",
+    "compile"
+  ]
+}

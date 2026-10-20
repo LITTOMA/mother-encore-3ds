@@ -1,0 +1,14 @@
+{
+  "task": "items-check",
+  "pid": 4500,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498433.3593686,
+  "finished": 1792498441.9925246,
+  "seconds": 8.633156061172485,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/items_assets.py",
+    "verify"
+  ]
+}

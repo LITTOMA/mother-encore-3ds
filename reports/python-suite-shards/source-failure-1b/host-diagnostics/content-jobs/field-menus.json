@@ -1,0 +1,14 @@
+{
+  "task": "field-menus",
+  "pid": 14208,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498679.7572236,
+  "finished": 1792498680.4184113,
+  "seconds": 0.6611876487731934,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/field_menus.py",
+    "compile"
+  ]
+}

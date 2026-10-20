@@ -1,0 +1,35 @@
+{
+  "module": "test_melody_content",
+  "expected_ids": [
+    "test_melody_content.MelodyContentTests.test_exit_guard_and_phone_boundaries_preserve_source_geometry",
+    "test_melody_content.MelodyContentTests.test_forged_native_parser_receipt_rejected",
+    "test_melody_content.MelodyContentTests.test_guard_preserves_camera_null_and_concurrent_source_movement",
+    "test_melody_content.MelodyContentTests.test_house_crosspack_links_seen_keys_and_delay_rejected",
+    "test_melody_content.MelodyContentTests.test_new_runtime_schema_modes_reject_unknown_or_misbound_data",
+    "test_melody_content.MelodyContentTests.test_original_native_parser_and_receipt",
+    "test_melody_content.MelodyContentTests.test_preserved_prefixes_and_only_documented_append_metadata",
+    "test_melody_content.MelodyContentTests.test_program_paths_source_labels_and_binary_roundtrip",
+    "test_melody_content.MelodyContentTests.test_resource_binding_and_audio_identity",
+    "test_melody_content.MelodyContentTests.test_source_order_inherited_original_talker_and_synchronous_music",
+    "test_melody_content.MelodyContentTests.test_text_voice_wait_tokens_and_override_seen_keys",
+    "test_melody_content.MelodyContentTests.test_unknown_source_fields_graph_voice_and_objects_rejected"
+  ],
+  "executed_ids": [
+    "test_melody_content.MelodyContentTests.test_exit_guard_and_phone_boundaries_preserve_source_geometry",
+    "test_melody_content.MelodyContentTests.test_forged_native_parser_receipt_rejected",
+    "test_melody_content.MelodyContentTests.test_guard_preserves_camera_null_and_concurrent_source_movement",
+    "test_melody_content.MelodyContentTests.test_house_crosspack_links_seen_keys_and_delay_rejected",
+    "test_melody_content.MelodyContentTests.test_new_runtime_schema_modes_reject_unknown_or_misbound_data",
+    "test_melody_content.MelodyContentTests.test_original_native_parser_and_receipt",
+    "test_melody_content.MelodyContentTests.test_preserved_prefixes_and_only_documented_append_metadata",
+    "test_melody_content.MelodyContentTests.test_program_paths_source_labels_and_binary_roundtrip",
+    "test_melody_content.MelodyContentTests.test_resource_binding_and_audio_identity",
+    "test_melody_content.MelodyContentTests.test_source_order_inherited_original_talker_and_synchronous_music",
+    "test_melody_content.MelodyContentTests.test_text_voice_wait_tokens_and_override_seen_keys",
+    "test_melody_content.MelodyContentTests.test_unknown_source_fields_graph_voice_and_objects_rejected"
+  ],
+  "success": true,
+  "pid": 34951,
+  "started": 1204.194275624,
+  "seconds": 295.09894272999986
+}

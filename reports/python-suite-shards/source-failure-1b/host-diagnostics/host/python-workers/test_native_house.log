@@ -1,0 +1,19 @@
+test_authored_transform_and_wait_semantics (tests.test_native_house.HouseCompilerTests.test_authored_transform_and_wait_semantics) ... ok
+test_data_only_and_staging (tests.test_native_house.HouseCompilerTests.test_data_only_and_staging) ... ok
+test_deterministic_source_and_binary (tests.test_native_house.HouseCompilerTests.test_deterministic_source_and_binary) ... ok
+test_doll_boundary_and_initial_npc_profiles (tests.test_native_house.HouseCompilerTests.test_doll_boundary_and_initial_npc_profiles) ... ok
+test_fingerprint_mismatch_rejected (tests.test_native_house.HouseCompilerTests.test_fingerprint_mismatch_rejected) ... ok
+test_missing_duplicated_and_misbound_profile_clips (tests.test_native_house.HouseCompilerTests.test_missing_duplicated_and_misbound_profile_clips) ... ok
+test_negative_headers (tests.test_native_house.HouseCompilerTests.test_negative_headers) ... ok
+test_negative_presentation_geometry_and_divisors (tests.test_native_house.HouseCompilerTests.test_negative_presentation_geometry_and_divisors) ... ok
+test_revision4_and5_remain_accepted_without_new_tokens (tests.test_native_house.HouseCompilerTests.test_revision4_and5_remain_accepted_without_new_tokens) ... ok
+test_revision6_delay_newline_tokens_and_legacy_bounds (tests.test_native_house.HouseCompilerTests.test_revision6_delay_newline_tokens_and_legacy_bounds) ... ok
+test_revision7_capacity_and_unknown_revision_fail_closed (tests.test_native_house.HouseCompilerTests.test_revision7_capacity_and_unknown_revision_fail_closed) ... ok
+test_semantic_rejections (tests.test_native_house.HouseCompilerTests.test_semantic_rejections) ... ok
+test_source_openable_policy_and_standalone_dialogue (tests.test_native_house.HouseCompilerTests.test_source_openable_policy_and_standalone_dialogue) ... ok
+test_unknown_fields_rejected (tests.test_native_house.HouseCompilerTests.test_unknown_fields_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 457.261s
+
+OK

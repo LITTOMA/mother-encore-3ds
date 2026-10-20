@@ -1,0 +1,14 @@
+{
+  "task": "item-details",
+  "pid": 6907,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498486.9224818,
+  "finished": 1792498488.0151594,
+  "seconds": 1.0926775932312012,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/item_details.py",
+    "compile"
+  ]
+}

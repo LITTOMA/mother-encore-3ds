@@ -1,0 +1,14 @@
+{
+  "task": "doll-round",
+  "pid": 4192,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498426.6838598,
+  "finished": 1792498428.3845549,
+  "seconds": 1.7006950378417969,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/doll_round.py",
+    "compile"
+  ]
+}

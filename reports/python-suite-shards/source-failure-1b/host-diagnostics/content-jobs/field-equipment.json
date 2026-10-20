@@ -1,0 +1,14 @@
+{
+  "task": "field-equipment",
+  "pid": 6950,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498488.0937152,
+  "finished": 1792498489.5612392,
+  "seconds": 1.4675240516662598,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/field_equipment.py",
+    "compile"
+  ]
+}

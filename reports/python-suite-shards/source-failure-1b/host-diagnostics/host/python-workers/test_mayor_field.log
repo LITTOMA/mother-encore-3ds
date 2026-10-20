@@ -1,0 +1,12 @@
+test_candidate_paths_and_output_owner (tests.test_mayor_field.MayorField.test_candidate_paths_and_output_owner) ... ok
+test_effective_visible_collision_source_order (tests.test_mayor_field.MayorField.test_effective_visible_collision_source_order) ... ok
+test_incomplete_room_cannot_enter_release_builder (tests.test_mayor_field.MayorField.test_incomplete_room_cannot_enter_release_builder) ... ok
+test_missing_sprite_actor_and_source_type_fail (tests.test_mayor_field.MayorField.test_missing_sprite_actor_and_source_type_fail) ... ok
+test_original_map_structure (tests.test_mayor_field.MayorField.test_original_map_structure) ... ok
+test_original_podunk_outputs_unchanged (tests.test_mayor_field.MayorField.test_original_podunk_outputs_unchanged) ... ok
+test_recipe_versions_and_identities (tests.test_mayor_field.MayorField.test_recipe_versions_and_identities) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 59.994s
+
+OK

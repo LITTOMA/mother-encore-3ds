@@ -1,0 +1,1036 @@
+[  0%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_mechanism_bindings.cpp.o
+[  0%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_mechanism_state.cpp.o
+[  0%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing_graphics.cpp.o
+[  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp: In member function ‘bool encore::upstream::FieldSwingGraphicsData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp:30:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   30 |   for(size_t j=end;j<offsets[i];++j)if(p[j])return fail(e,"Swing graphics padding rejected");end=offsets[i]+counts[i]*strides[i];
+      |   ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp:30:94: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   30 |   for(size_t j=end;j<offsets[i];++j)if(p[j])return fail(e,"Swing graphics padding rejected");end=offsets[i]+counts[i]*strides[i];
+      |                                                                                              ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp:54:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   54 |  if(!initial)return fail(e,"Swing graphics initial frame missing");v.valid_=true;*this=std::move(v);e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp:54:68: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   54 |  if(!initial)return fail(e,"Swing graphics initial frame missing");v.valid_=true;*this=std::move(v);e.clear();return true;
+      |                                                                    ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp: In member function ‘bool encore::upstream::FieldSwingGraphicsData::bind(const encore::upstream::FieldSwingData&, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp:61:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   61 |  if(required.size()!=frames_.size())return fail(e,"Swing graphics/action frame coverage differs");for(auto id:required)if(!frame(id))return fail(e,"Swing graphics/action frame missing");e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp:61:99: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   61 |  if(required.size()!=frames_.size())return fail(e,"Swing graphics/action frame coverage differs");for(auto id:required)if(!frame(id))return fail(e,"Swing graphics/action frame missing");e.clear();return true;
+      |                                                                                                   ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp: In member function ‘bool encore::upstream::FieldSwingGraphicsData::texture_matches(uint32_t, const uint8_t*, size_t, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp:64:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   64 |  if(!valid_||role<1||role>layers_.size()||!p)return fail(e,"Swing graphics texture owner rejected");const auto&l=layers_[role-1];if(n!=l.bytes||encore::crc32(p,n)!=l.crc)return fail(e,"Swing graphics texture bytes differ");e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_swing_graphics.cpp:64:101: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   64 |  if(!valid_||role<1||role>layers_.size()||!p)return fail(e,"Swing graphics texture owner rejected");const auto&l=layers_[role-1];if(n!=l.bytes||encore::crc32(p,n)!=l.crc)return fail(e,"Swing graphics texture bytes differ");e.clear();return true;
+      |                                                                                                     ^~~~~
+[  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing_action.cpp.o
+[  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing_entry.cpp.o
+[  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing_resources.cpp.o
+[  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_player_tree.cpp.o
+[ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_area_contacts.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_area_contacts.cpp: In member function ‘bool encore::upstream::FieldAreaContacts::initialize(const std::vector<unsigned int>&, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_area_contacts.cpp:9:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+    9 |  for(size_t i=0;i<owners.size();++i)owners_[i]=owners[i];count_=owners.size();e.clear();return true;
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_area_contacts.cpp:9:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+    9 |  for(size_t i=0;i<owners.size();++i)owners_[i]=owners[i];count_=owners.size();e.clear();return true;
+      |                                                          ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_area_contacts.cpp: In member function ‘bool encore::upstream::FieldAreaContacts::begin(const uint8_t*, size_t, encore::upstream::FieldAreaEvents&, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_area_contacts.cpp:15:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   15 |  for(size_t i=0;i<n;++i)inside_[i]=uint8_t(pending_[i]&&enabled[i]);sampling_=true;events=next;e.clear();return true;
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_area_contacts.cpp:15:69: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   15 |  for(size_t i=0;i<n;++i)inside_[i]=uint8_t(pending_[i]&&enabled[i]);sampling_=true;events=next;e.clear();return true;
+      |                                                                     ^~~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_area_contacts.cpp: In member function ‘bool encore::upstream::FieldAreaContacts::end(const uint8_t*, const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_area_contacts.cpp:19:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   19 |  for(size_t i=0;i<n;++i)pending_[i]=uint8_t(enabled[i]&&overlap[i]);sampling_=false;e.clear();return true;
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_area_contacts.cpp:19:69: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   19 |  for(size_t i=0;i<n;++i)pending_[i]=uint8_t(enabled[i]&&overlap[i]);sampling_=false;e.clear();return true;
+      |                                                                     ^~~~~~~~~
+[ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_objects.cpp.o
+[ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/prop_clips.cpp.o
+[ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_props.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp: In member function ‘bool encore::upstream::FieldObjectsData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:25:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   25 |   for(size_t at=cursor;at<off[i];++at)if(p[at])return fail(e,"Field object padding rejected");cursor=off[i]+count[i]*strides[i];
+      |   ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:25:95: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   25 |   for(size_t at=cursor;at<off[i];++at)if(p[at])return fail(e,"Field object padding rejected");cursor=off[i]+count[i]*strides[i];
+      |                                                                                               ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:40:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   40 |   if(!f.width||!f.height||f.x>=v.width_||f.y>=v.height_||f.width>v.width_-f.x||f.height>v.height_-f.y)return fail(e,"Field object frame rectangle rejected");v.frames_.push_back(f);
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:40:158: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   40 |   if(!f.width||!f.height||f.x>=v.width_||f.y>=v.height_||f.width>v.width_-f.x||f.height>v.height_-f.y)return fail(e,"Field object frame rectangle rejected");v.frames_.push_back(f);
+      |                                                                                                                                                              ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp: In member function ‘bool encore::upstream::FieldObjectsData::texture_matches(const uint8_t*, size_t, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:68:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   68 |  if(!drawing_bound()||!p||n!=texture_bytes_||encore::crc32(p,n)!=texture_crc_)return fail(e,"Field object drawing texture receipt differs");e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:68:141: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   68 |  if(!drawing_bound()||!p||n!=texture_bytes_||encore::crc32(p,n)!=texture_crc_)return fail(e,"Field object drawing texture receipt differs");e.clear();return true;
+      |                                                                                                                                             ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp: In member function ‘bool encore::upstream::FieldObjects::prepare(const encore::upstream::FieldObjectsData&, encore::upstream::RoomView, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:90:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   90 |  if(!d.bind(room,e))return false;FieldObjects v;v.data_=d;v.states_.resize(d.objects().size());
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:90:34: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   90 |  if(!d.bind(room,e))return false;FieldObjects v;v.data_=d;v.states_.resize(d.objects().size());
+      |                                  ^~~~~~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp: In member function ‘size_t encore::upstream::FieldObjects::index(uint32_t) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:94:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   94 |  for(size_t i=0;i<data_.objects().size();++i)if(data_.objects()[i].id==id)return i;return states_.size();
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:94:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   94 |  for(size_t i=0;i<data_.objects().size();++i)if(data_.objects()[i].id==id)return i;return states_.size();
+      |                                                                                    ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp: In member function ‘virtual bool encore::upstream::FieldObjects::can_queue_free(std::string_view, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:141:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  141 |   if(!states_[i].ready||!states_[i].alive)return fail(e,"Field object delete target is unavailable");e.clear();return true;
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:141:102: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  141 |   if(!states_[i].ready||!states_[i].alive)return fail(e,"Field object delete target is unavailable");e.clear();return true;
+      |                                                                                                      ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp: In member function ‘virtual bool encore::upstream::FieldObjects::queue_free(std::string_view, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:147:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+  147 |  for(size_t i=0;i<states_.size();++i)if(data_.objects()[i].path==path){states_[i].queued=true;break;}e.clear();return true;
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_objects.cpp:147:102: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+  147 |  for(size_t i=0;i<states_.size();++i)if(data_.objects()[i].path==path){states_[i].queued=true;break;}e.clear();return true;
+      |                                                                                                      ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldPropsData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:27:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   27 |   for(size_t k=cursor;k<off[i];++k)if(p[k])return fail(e,"Field props padding rejected");cursor=off[i]+count[i]*strides[i];
+      |   ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:27:90: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   27 |   for(size_t k=cursor;k<off[i];++k)if(p[k])return fail(e,"Field props padding rejected");cursor=off[i]+count[i]*strides[i];
+      |                                                                                          ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:50:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   50 |     if(!size||size>512||size==count[0]-at)return fail(e,"Field prop callback path termination rejected");row.callback_path.assign(reinterpret_cast<const char*>(p+off[0]+at),size);if(!safe(row.callback_path))return fail(e,"Field prop callback path rejected");}
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:50:106: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   50 |     if(!size||size>512||size==count[0]-at)return fail(e,"Field prop callback path termination rejected");row.callback_path.assign(reinterpret_cast<const char*>(p+off[0]+at),size);if(!safe(row.callback_path))return fail(e,"Field prop callback path rejected");}
+      |                                                                                                          ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldPropsData::matches_action(const encore::upstream::FieldSwingData&, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:82:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   82 |  if(!contact_bound()||!data.valid()||data.encoded_bytes()!=policy_.contact.swing_bytes||data.encoded_crc()!=policy_.contact.swing_crc)return fail(e,"Field prop contact action companion differs");e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:82:196: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   82 |  if(!contact_bound()||!data.valid()||data.encoded_bytes()!=policy_.contact.swing_bytes||data.encoded_crc()!=policy_.contact.swing_crc)return fail(e,"Field prop contact action companion differs");e.clear();return true;
+      |                                                                                                                                                                                                    ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldProps::initialize(const encore::upstream::FieldPropsData&, const std::vector<bool>&, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:88:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   88 |  if(!d.valid()||flags.size()!=d.flags().size())return fail(e,"Field props initial flags rejected");FieldProps v;v.data_=d;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:88:100: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   88 |  if(!d.valid()||flags.size()!=d.flags().size())return fail(e,"Field props initial flags rejected");FieldProps v;v.data_=d;
+      |                                                                                                    ^~~~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldProps::grow(uint32_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:95:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   95 |  if(!available(i,e)||states_[i].grow_waiters>=64||events_.size()>=512)return fail(e,"Field prop grow capacity/owner rejected");auto&s=states_[i];if(!s.animation.play(data_.policy().grow,e))return false;++s.grow_waiters;events_.push_back({FieldPropEventKind::Rumble,i});e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:95:128: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   95 |  if(!available(i,e)||states_[i].grow_waiters>=64||events_.size()>=512)return fail(e,"Field prop grow capacity/owner rejected");auto&s=states_[i];if(!s.animation.play(data_.policy().grow,e))return false;++s.grow_waiters;events_.push_back({FieldPropEventKind::Rumble,i});e.clear();return true;
+      |                                                                                                                                ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldProps::hit(uint32_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:98:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   98 |  if(!available(i,e)||clones_.size()>=512||events_.size()>=512)return fail(e,"Field prop hit capacity/owner rejected");auto&s=states_[i];const auto&r=data_.props()[i];const bool visible=s.animation.pose().visible;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:98:119: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   98 |  if(!available(i,e)||clones_.size()>=512||events_.size()>=512)return fail(e,"Field prop hit capacity/owner rejected");auto&s=states_[i];const auto&r=data_.props()[i];const bool visible=s.animation.pose().visible;
+      |                                                                                                                       ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:99:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   99 |  if(!s.animation.play(data_.policy().broken,e))return false;clones_.push_back({i,data_.policy().clone_frame,r.sprite_center,visible});s.prompt=false;events_.push_back({FieldPropEventKind::Sound,i});e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:99:61: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   99 |  if(!s.animation.play(data_.policy().broken,e))return false;clones_.push_back({i,data_.policy().clone_frame,r.sprite_center,visible});s.prompt=false;events_.push_back({FieldPropEventKind::Sound,i});e.clear();return true;
+      |                                                             ^~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldProps::interact(uint32_t, const std::vector<bool>&, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:107:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  107 |  if(states_[i].visible)events_.push_back({flags[data_.policy().bat_flag]?FieldPropEventKind::EasyDialogue:FieldPropEventKind::HardDialogue,i});e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_props.cpp:107:144: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  107 |  if(states_[i].visible)events_.push_back({flags[data_.policy().bat_flag]?FieldPropEventKind::EasyDialogue:FieldPropEventKind::HardDialogue,i});e.clear();return true;
+      |                                                                                                                                                ^
+[ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_steps.cpp.o
+[ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_keys.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_steps.cpp: In member function ‘bool encore::upstream::FieldStepsData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_steps.cpp:35:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   35 |  if(cursor!=n)return fail("Footstep trailing bytes rejected");FieldStepsView v;v.p_=p;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_steps.cpp:35:63: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   35 |  if(cursor!=n)return fail("Footstep trailing bytes rejected");FieldStepsView v;v.p_=p;
+      |                                                               ^~~~~~~~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_keys.cpp: In function ‘bool encore::upstream::{anonymous}::safe_path(std::string_view)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_keys.cpp:19:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |   if(end==s.size())break;begin=end+1;
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_keys.cpp:19:26: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |   if(end==s.size())break;begin=end+1;
+      |                          ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_keys.cpp: In lambda function:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_keys.cpp:59:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   59 |   if(t.offset!=owned)return false;owned+=t.length;strings.push_back({value,t});return true;
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_keys.cpp:59:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   59 |   if(t.offset!=owned)return false;owned+=t.length;strings.push_back({value,t});return true;
+      |                                   ^~~~~
+[ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_key_state.cpp.o
+[ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_switches.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp: In member function ‘bool encore::upstream::DungeonKeyRuntime::queue_delete(uint32_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp:27:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   27 |  if(states_[i].queued)return true;states_[i].queued=true;return emit(DungeonKeyEventKind::DeleteQueued,i,e);
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp:27:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   27 |  if(states_[i].queued)return true;states_[i].queued=true;return emit(DungeonKeyEventKind::DeleteQueued,i,e);
+      |                                   ^~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp: In member function ‘bool encore::upstream::DungeonKeyRuntime::pickup_finished(encore::upstream::DungeonKeyHandle, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp:59:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   59 |  if(!next.queue_delete(i,e))return false;*this=std::move(next);e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp:59:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   59 |  if(!next.queue_delete(i,e))return false;*this=std::move(next);e.clear();return true;
+      |                                          ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp: In member function ‘bool encore::upstream::DungeonKeyRuntime::lock_open_method(encore::upstream::DungeonKeyHandle, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp:76:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   76 |  if(!next.open(i,e))return false;*this=std::move(next);e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp:76:34: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   76 |  if(!next.open(i,e))return false;*this=std::move(next);e.clear();return true;
+      |                                  ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp: In member function ‘bool encore::upstream::DungeonKeyRuntime::end_scene_frame(std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp:79:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   79 |  if(!ready())return reject(e,"Dungeon key frame has no source owner");DungeonKeyRuntime next=*this;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_key_state.cpp:79:71: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   79 |  if(!ready())return reject(e,"Dungeon key frame has no source owner");DungeonKeyRuntime next=*this;
+      |                                                                       ^~~~~~~~~~~~~~~~~
+[ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_switch_state.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switches.cpp: In member function ‘bool encore::upstream::DungeonSwitchesData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switches.cpp:43:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   43 |   for(size_t at=cursor;at<aligned;++at)if(p[at])return fail("Dungeon switch padding rejected");cursor=offset+size_t(count)*strides[i];
+      |   ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switches.cpp:43:96: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   43 |   for(size_t at=cursor;at<aligned;++at)if(p[at])return fail("Dungeon switch padding rejected");cursor=offset+size_t(count)*strides[i];
+      |                                                                                                ^~~~~~
+[ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_wall_timeline.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::emit(encore::upstream::DungeonSwitchEventKind, uint32_t, encore::upstream::DungeonSwitchToken, bool, bool, float, float, float, encore::upstream::DungeonSwitchAnimation, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:14:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   14 |  if(events_.size()>=2048)return reject(e,"Dungeon switch event capacity exceeded");auto i=find_switch(id);events_.push_back({kind,{id,generation_},token,value,silent,x,y,duration,animation,i==kFieldNone?DungeonSwitchState{}:switches_[i]});return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:14:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   14 |  if(events_.size()>=2048)return reject(e,"Dungeon switch event capacity exceeded");auto i=find_switch(id);events_.push_back({kind,{id,generation_},token,value,silent,x,y,duration,animation,i==kFieldNone?DungeonSwitchState{}:switches_[i]});return true;
+      |                                                                                    ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::timer(uint32_t, bool, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:18:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   18 |  if(timers_.size()>=256||next_token_==std::numeric_limits<uint64_t>::max())return reject(e,"Dungeon switch timer capacity exceeded");auto token=++next_token_;timers_.push_back({token,i,wall});auto policy=data_.policy();return emit(wall?DungeonSwitchEventKind::WallTimer:DungeonSwitchEventKind::ReadyTimer,wall?data_.object(i).id:data_.switch_node(i).id,{token,generation_},false,false,0,0,wall?policy.post_delay:policy.ready_delay,DungeonSwitchAnimation::None,e);
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:18:134: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   18 |  if(timers_.size()>=256||next_token_==std::numeric_limits<uint64_t>::max())return reject(e,"Dungeon switch timer capacity exceeded");auto token=++next_token_;timers_.push_back({token,i,wall});auto policy=data_.policy();return emit(wall?DungeonSwitchEventKind::WallTimer:DungeonSwitchEventKind::ReadyTimer,wall?data_.object(i).id:data_.switch_node(i).id,{token,generation_},false,false,0,0,wall?policy.post_delay:policy.ready_delay,DungeonSwitchAnimation::None,e);
+      |                                                                                                                                      ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::request_object(uint32_t, uint64_t, bool, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:26:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   26 |  if(waiters_.size()>=512)return reject(e,"Dungeon switch animation waiter capacity exceeded");bool on=object_on(i);auto animation=silent?(on?DungeonSwitchAnimation::StayOn:DungeonSwitchAnimation::StayOff):(on?DungeonSwitchAnimation::On:DungeonSwitchAnimation::Off);
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:26:95: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   26 |  if(waiters_.size()>=512)return reject(e,"Dungeon switch animation waiter capacity exceeded");bool on=object_on(i);auto animation=silent?(on?DungeonSwitchAnimation::StayOn:DungeonSwitchAnimation::StayOff):(on?DungeonSwitchAnimation::On:DungeonSwitchAnimation::Off);
+      |                                                                                               ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::begin_control(uint32_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:47:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   47 |  if(operations_.size()>=128||next_token_==std::numeric_limits<uint64_t>::max())return reject(e,"Dungeon switch operation capacity exceeded");auto row=data_.switch_node(i);Operation op;op.token=++next_token_;op.source=i;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:47:142: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   47 |  if(operations_.size()>=128||next_token_==std::numeric_limits<uint64_t>::max())return reject(e,"Dungeon switch operation capacity exceeded");auto row=data_.switch_node(i);Operation op;op.token=++next_token_;op.source=i;
+      |                                                                                                                                              ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::operate(encore::upstream::DungeonSwitchHandle, encore::upstream::DungeonSwitchMethod, bool, bool, bool, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:63:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   63 |   if(!next.flag(i,!switches_[i].on,e))return false;auto&v=next.switches_[i];v.animation=v.on?DungeonSwitchAnimation::TurnOn:DungeonSwitchAnimation::TurnOff;
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:63:52: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   63 |   if(!next.flag(i,!switches_[i].on,e))return false;auto&v=next.switches_[i];v.animation=v.on?DungeonSwitchAnimation::TurnOn:DungeonSwitchAnimation::TurnOff;
+      |                                                    ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:64:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   64 |   if(!next.emit(DungeonSwitchEventKind::SwitchAnimation,h.id,{},v.on,false,0,0,0,v.animation,e))return false;if(v.on&&(data_.switch_node(i).bits&16))v.disabled=true;
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:64:110: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   64 |   if(!next.emit(DungeonSwitchEventKind::SwitchAnimation,h.id,{},v.on,false,0,0,0,v.animation,e))return false;if(v.on&&(data_.switch_node(i).bits&16))v.disabled=true;
+      |                                                                                                              ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::timer_finished(encore::upstream::DungeonSwitchToken, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:70:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   70 |  if(!ready()||token.generation!=generation_||!token.value)return reject(e,"Dungeon switch timer has no current owner");auto at=std::find_if(timers_.begin(),timers_.end(),[&](const Timer&t){return t.token==token.value;});if(at==timers_.end())return reject(e,"Dungeon switch timer identity rejected");auto index=size_t(at-timers_.begin());auto item=*at;DungeonSwitchRuntime next=*this;next.timers_.erase(next.timers_.begin()+index);
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:70:120: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   70 |  if(!ready()||token.generation!=generation_||!token.value)return reject(e,"Dungeon switch timer has no current owner");auto at=std::find_if(timers_.begin(),timers_.end(),[&](const Timer&t){return t.token==token.value;});if(at==timers_.end())return reject(e,"Dungeon switch timer identity rejected");auto index=size_t(at-timers_.begin());auto item=*at;DungeonSwitchRuntime next=*this;next.timers_.erase(next.timers_.begin()+index);
+      |                                                                                                                        ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::camera_finished(encore::upstream::DungeonSwitchToken, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:88:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   88 |  if(!ready()||token.generation!=generation_||!token.value)return reject(e,"Dungeon switch camera has no current owner");auto at=std::find_if(operations_.begin(),operations_.end(),[&](const Operation&v){return v.token==token.value;});if(at==operations_.end()||(at->phase!=Phase::FocusCamera&&at->phase!=Phase::ReturnCamera))return reject(e,"Dungeon switch camera phase rejected");size_t i=at-operations_.begin();DungeonSwitchRuntime next=*this;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:88:121: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   88 |  if(!ready()||token.generation!=generation_||!token.value)return reject(e,"Dungeon switch camera has no current owner");auto at=std::find_if(operations_.begin(),operations_.end(),[&](const Operation&v){return v.token==token.value;});if(at==operations_.end()||(at->phase!=Phase::FocusCamera&&at->phase!=Phase::ReturnCamera))return reject(e,"Dungeon switch camera phase rejected");size_t i=at-operations_.begin();DungeonSwitchRuntime next=*this;
+      |                                                                                                                         ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::idle_frame(std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:94:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   94 |  if(!ready())return reject(e,"Dungeon switch idle has no scene owner");DungeonSwitchRuntime next=*this;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:94:72: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   94 |  if(!ready())return reject(e,"Dungeon switch idle has no scene owner");DungeonSwitchRuntime next=*this;
+      |                                                                        ^~~~~~~~~~~~~~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::leave_area(bool, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:99:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   99 |  if(!ready())return reject(e,"Dungeon switch leave has no scene owner");DungeonSwitchRuntime next=*this;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_switch_state.cpp:99:73: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   99 |  if(!ready())return reject(e,"Dungeon switch leave has no scene owner");DungeonSwitchRuntime next=*this;
+      |                                                                         ^~~~~~~~~~~~~~~~~~~~
+[ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_wall_state.cpp.o
+[ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_menus_data.cpp.o
+[ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_menus.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp: In function ‘bool encore::upstream::expand_field_menu_text(std::string_view, std::string_view, const std::vector<std::__cxx11::basic_string<char> >&, std::string&, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp:38:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   38 |  if(buttons.size()!=8||pattern.find_first_of("[]")!=pattern.npos)return fail(e,"Field menu text context rejected");std::string next;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp:38:116: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   38 |  if(buttons.size()!=8||pattern.find_first_of("[]")!=pattern.npos)return fail(e,"Field menu text context rejected");std::string next;
+      |                                                                                                                    ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp:40:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   40 |  if(next.size()>8192)return fail(e,"Expanded field menu text exceeds bounds");out=std::move(next);e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp:40:79: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   40 |  if(next.size()>8192)return fail(e,"Expanded field menu text exceeds bounds");out=std::move(next);e.clear();return true;
+      |                                                                               ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp: In member function ‘bool encore::upstream::FieldMenusData::bind_items(encore::upstream::ItemView, encore::upstream::ItemDetailsView, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp:43:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   43 |  if(!valid_||!details.bind_items(view,e))return false;std::set<uint32_t>definitions;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp:43:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   43 |  if(!valid_||!details.bind_items(view,e))return false;std::set<uint32_t>definitions;
+      |                                                       ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp:45:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   45 |  if(definitions.size()!=view.count(ItemSection::Definitions))return fail(e,"Field item description coverage mismatch");e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp:45:120: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   45 |  if(definitions.size()!=view.count(ItemSection::Definitions))return fail(e,"Field item description coverage mismatch");e.clear();return true;
+      |                                                                                                                        ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp: In function ‘bool encore::upstream::write_field_preferences(const FieldMenusData&, const char*, const FieldMenuPreferences&, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp:85:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   85 |  if(!path_ok(path))return fail(e,"Invalid field preference path");std::vector<uint8_t>next,prior,check;bool missing=false,absent=false;FieldMenuPreferences old;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus_data.cpp:85:67: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   85 |  if(!path_ok(path))return fail(e,"Invalid field preference path");std::vector<uint8_t>next,prior,check;bool missing=false,absent=false;FieldMenuPreferences old;
+      |                                                                   ^~~
+[ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_zones.cpp.o
+[ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/gameplay_audio.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp: In member function ‘bool encore::upstream::FieldMenus::apply_choice(std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp:57:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   57 |  if(!commit(std::move(next),e))return false;phase_=parent_;selection_=choice_previous_;return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp:57:45: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   57 |  if(!commit(std::move(next),e))return false;phase_=parent_;selection_=choice_previous_;return true;
+      |                                             ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp: In member function ‘bool encore::upstream::FieldMenus::input(int, int, bool, bool, bool, int, uint32_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp:60:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   60 |  if(x<-1||x>1||y<-1||y>1||tab<-1||tab>1)return fail(e,"Field menu direction rejected");if(!active())return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp:60:88: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   60 |  if(x<-1||x>1||y<-1||y>1||tab<-1||tab>1)return fail(e,"Field menu direction rejected");if(!active())return true;
+      |                                                                                        ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp:64:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   64 |   if(choice_previous_>=state_.preferences.buttons.size())return fail(e,"Field control action out of range");auto next=state_;auto at=std::find(next.preferences.buttons.begin(),next.preferences.buttons.end(),mask);if(at==next.preferences.buttons.end())return fail(e,"Field physical button rejected");std::swap(next.preferences.buttons[choice_previous_],*at);if(!commit(std::move(next),e))return false;phase_=Phase::Controls;selection_=choice_previous_;sounds_.push_back(6);return true;
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp:64:109: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   64 |   if(choice_previous_>=state_.preferences.buttons.size())return fail(e,"Field control action out of range");auto next=state_;auto at=std::find(next.preferences.buttons.begin(),next.preferences.buttons.end(),mask);if(at==next.preferences.buttons.end())return fail(e,"Field physical button rejected");std::swap(next.preferences.buttons[choice_previous_],*at);if(!commit(std::move(next),e))return false;phase_=Phase::Controls;selection_=choice_previous_;sounds_.push_back(6);return true;
+      |                                                                                                             ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp:82:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   82 |  if(!confirm)return true;sounds_.push_back(6);
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp:82:26: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   82 |  if(!confirm)return true;sounds_.push_back(6);
+      |                          ^~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp:88:3: warning: this ‘else’ clause does not guard... [-Wmisleading-indentation]
+   88 |   else if(action==5){phase_=Phase::Drop;selection_=1;}else return fail(e,"Field item opcode rejected");return true;
+      |   ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_menus.cpp:88:104: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘else’
+   88 |   else if(action==5){phase_=Phase::Drop;selection_=1;}else return fail(e,"Field item opcode rejected");return true;
+      |                                                                                                        ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/gameplay_audio.cpp: In member function ‘bool encore::upstream::GameplayAudioData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/gameplay_audio.cpp:14:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   14 |   if(n-off<4)return fail("Truncated gameplay cue");const auto len=u32(p+off);off+=4;
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/gameplay_audio.cpp:14:52: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   14 |   if(n-off<4)return fail("Truncated gameplay cue");const auto len=u32(p+off);off+=4;
+      |                                                    ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/gameplay_audio.cpp:22:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   22 |  if(off!=n)return fail("Trailing gameplay cue bytes");paths_=std::move(paths);e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/gameplay_audio.cpp:22:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   22 |  if(off!=n)return fail("Trailing gameplay cue bytes");paths_=std::move(paths);e.clear();return true;
+      |                                                       ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_zones.cpp: In member function ‘bool encore::upstream::MusicZones::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_zones.cpp:26:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   26 |  if(!r.ok||r.n)return fail("Trailing music zone bytes");if(u32(p+8)==2&&!generic)return fail("Music zone version2 requires generic source paths");zones_=std::move(zones);e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_zones.cpp:26:57: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   26 |  if(!r.ok||r.n)return fail("Trailing music zone bytes");if(u32(p+8)==2&&!generic)return fail("Music zone version2 requires generic source paths");zones_=std::move(zones);e.clear();return true;
+      |                                                         ^~
+[ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_data.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp: In function ‘bool encore::upstream::{anonymous}::utf8(const uint8_t*, size_t)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:23:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   23 |     if(extra>n-i)return false;while(extra--){const auto b=p[i++];if((b&0xc0)!=0x80)return false;c=(c<<6)|(b&63);}
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:23:31: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   23 |     if(extra>n-i)return false;while(extra--){const auto b=p[i++];if((b&0xc0)!=0x80)return false;c=(c<<6)|(b&63);}
+      |                               ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp: In function ‘bool encore::upstream::{anonymous}::safe_path(std::string_view, bool)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:27:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   27 |     for(unsigned char ch:s)if(ch<(source?32:33)||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |     ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:27:70: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   27 |     for(unsigned char ch:s)if(ch<(source?32:33)||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |                                                                      ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp: In member function ‘bool encore::upstream::FieldMapData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:165:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  165 |             if(it.first>=layers||it.count!=1||(v.layer(it.first).flags&uint32_t(FieldLayerFlag::YSort)))return fail("Field map layer item rejected");break;
+      |             ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:165:150: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  165 |             if(it.first>=layers||it.count!=1||(v.layer(it.first).flags&uint32_t(FieldLayerFlag::YSort)))return fail("Field map layer item rejected");break;
+      |                                                                                                                                                      ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:167:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  167 |             if(it.first>=layers||it.count!=1||!(v.layer(it.first).flags&uint32_t(FieldLayerFlag::YSort)))return fail("Field map sorted layer item rejected");break;
+      |             ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:167:158: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  167 |             if(it.first>=layers||it.count!=1||!(v.layer(it.first).flags&uint32_t(FieldLayerFlag::YSort)))return fail("Field map sorted layer item rejected");break;
+      |                                                                                                                                                              ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:169:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  169 |             if(!it.count||it.first>sprites||it.count>sprites-it.first)return fail("Field map sprite item rejected");break;
+      |             ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:169:117: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  169 |             if(!it.count||it.first>sprites||it.count>sprites-it.first)return fail("Field map sprite item rejected");break;
+      |                                                                                                                     ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:171:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  171 |             if(it.first||it.count)return fail("Field map player item rejected");++players;break;
+      |             ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_data.cpp:171:81: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  171 |             if(it.first||it.count)return fail("Field map player item rejected");++players;break;
+      |                                                                                 ^~
+[ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/world_links.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp: In member function ‘std::string_view encore::upstream::{anonymous}::Layout::text(const uint8_t*) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:21:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |         if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(1,0))+off,len);}
+      |         ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:21:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |         if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(1,0))+off,len);}
+      |                                                   ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp: In member function ‘encore::upstream::WorldScene encore::upstream::WorldLinksData::scene(uint32_t) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:29:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   29 |     if(i>=scene_count())return {};const Layout l{bytes_.data(),bytes_.size()};const auto*r=l.record(2,i);
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:29:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   29 |     if(i>=scene_count())return {};const Layout l{bytes_.data(),bytes_.size()};const auto*r=l.record(2,i);
+      |                                   ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp: In member function ‘encore::upstream::WorldRoute encore::upstream::WorldLinksData::route(uint32_t) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:33:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   33 |     if(i>=route_count())return {};const Layout l{bytes_.data(),bytes_.size()};const auto*r=l.record(3,i);
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:33:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   33 |     if(i>=route_count())return {};const Layout l{bytes_.data(),bytes_.size()};const auto*r=l.record(3,i);
+      |                                   ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp: In lambda function:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:62:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   62 |         if(!len)return empty&&!off;return off<=pool&&len<=pool-off&&len<=limit&&printable(l.text(r));};
+      |         ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:62:36: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   62 |         if(!len)return empty&&!off;return off<=pool&&len<=pool-off&&len<=limit&&printable(l.text(r));};
+      |                                    ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp: In member function ‘bool encore::upstream::WorldLinksData::resolve_scene(uint32_t, const encore::upstream::ResourceCatalog&, encore::upstream::WorldSceneResources&, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:114:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  114 |         if(!row)return fail("Scene asset owner is absent");next.story=u32(row+4);next.music=u32(row+8);next.audio=u32(row+12);next.zones=u32(row+16);next.mick=u32(row+20);next.steps=u32(row+32);
+      |         ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:114:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  114 |         if(!row)return fail("Scene asset owner is absent");next.story=u32(row+4);next.music=u32(row+8);next.audio=u32(row+12);next.zones=u32(row+16);next.mick=u32(row+20);next.steps=u32(row+32);
+      |                                                            ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp: In member function ‘bool encore::upstream::WorldLinksData::bind_catalog(const encore::upstream::ResourceCatalog&, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:129:9: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+  129 |         for(auto id:{r.story,r.music,r.audio,r.zones,r.mick,r.steps,r.props,r.objects})if(id)used.insert(id);for(auto id:r.npcs)used.insert(id);}
+      |         ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world_links.cpp:129:110: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+  129 |         for(auto id:{r.story,r.music,r.audio,r.zones,r.mick,r.steps,r.props,r.objects})if(id)used.insert(id);for(auto id:r.npcs)used.insert(id);}
+      |                                                                                                              ^~~
+[ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_scene.cpp.o
+[ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_scene_resources.cpp.o
+[ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_story.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldCollision::set_static_body_enabled(uint32_t, bool)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:78:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   78 |     if(!map_.valid()||index>=bodies_.size())return false;bodies_[index]=enabled;return true;
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:78:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   78 |     if(!map_.valid()||index>=bodies_.size())return false;bodies_[index]=enabled;return true;
+      |                                                          ^~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::prop_callback_area(uint32_t) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:257:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  257 |     if(!prop_contacts_.ready())return false;for(const auto&r:props_.data().props())if(r.callback==boundary)return true;return false;
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:257:45: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  257 |     if(!prop_contacts_.ready())return false;for(const auto&r:props_.data().props())if(r.callback==boundary)return true;return false;
+      |                                             ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::begin_prop_contacts(std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:287:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  287 |     if(!prop_contacts_.ready())return true;std::array<uint8_t,128>enabled{};FieldAreaEvents events;
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:287:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  287 |     if(!prop_contacts_.ready())return true;std::array<uint8_t,128>enabled{};FieldAreaEvents events;
+      |                                            ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::sample_prop_contacts(std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:293:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  293 |     if(!prop_contacts_.ready())return true;std::array<uint8_t,128>enabled{},overlap{};if(!prop_contact_enabled(enabled,error))return false;
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:293:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  293 |     if(!prop_contacts_.ready())return true;std::array<uint8_t,128>enabled{},overlap{};if(!prop_contact_enabled(enabled,error))return false;
+      |                                            ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::bind_steps(encore::upstream::FieldStepsView, const encore::upstream::AudioBank&, std::string_view, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:351:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  351 |  if(!view.matches(bank,error))return false;FieldRunLoop candidate;if(!candidate.initialize(view,inherited,error))return false;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:351:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  351 |  if(!view.matches(bank,error))return false;FieldRunLoop candidate;if(!candidate.initialize(view,inherited,error))return false;
+      |                                            ^~~~~~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp: In member function ‘virtual bool encore::upstream::FieldMickWorld::slide(encore::upstream::Vec2, encore::upstream::Vec2, encore::upstream::Vec2&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:382:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  382 |         if(!ok)return false;out=result.position;return true;
+      |         ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:382:29: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  382 |         if(!ok)return false;out=result.position;return true;
+      |                             ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::try_interaction(bool, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:492:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  492 |                 if(!world.pause_for_house(true))return fail("Field interaction admission pause rejected");error.clear();return true;
+      |                 ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:492:107: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  492 |                 if(!world.pause_for_house(true))return fail("Field interaction admission pause rejected");error.clear();return true;
+      |                                                                                                           ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::try_prop_interaction(bool, bool&, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:540:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  540 |         if(!world.pause_for_house(true))return fail("Field investigation admission pause rejected");error.clear();return true;}
+      |         ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:540:101: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  540 |         if(!world.pause_for_house(true))return fail("Field investigation admission pause rejected");error.clear();return true;}
+      |                                                                                                     ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:541:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  541 |     if(!world.begin_house_program(programme,kRoomNoIndex,policy.stop_running!=0))return fail("Field investigation programme start rejected");error.clear();return true;
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:541:142: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  541 |     if(!world.begin_house_program(programme,kRoomNoIndex,policy.stop_running!=0))return fail("Field investigation programme start rejected");error.clear();return true;
+      |                                                                                                                                              ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::idle_frame(double, bool, bool, int)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:724:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  724 |         if(!objects_.idle_frame(why))return fail(why);objects_first_idle_=false;
+      |         ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:724:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  724 |         if(!objects_.idle_frame(why))return fail(why);objects_first_idle_=false;
+      |                                                       ^~~~~~~~~~~~~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:766:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  766 |         if(s.timer>0)continue;s.timer=-1;
+      |         ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:766:31: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  766 |         if(s.timer>0)continue;s.timer=-1;
+      |                               ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::item_active(uint32_t) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:780:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  780 |     if(i>=item_active_.size()||!item_active_[i])return false;const auto item=map_.item(i);
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:780:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  780 |     if(i>=item_active_.size()||!item_active_[i])return false;const auto item=map_.item(i);
+      |                                                              ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp: In function ‘bool encore::upstream::format_field_story_text(std::string_view, const NewGameSetupData&, const SessionSnapshot&, const LocaleSelection&, std::string&, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp:25:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   25 |  if(!names.valid()||!locale.catalog()||input.size()>16384)return reject();std::string result;size_t at=0;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp:25:75: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   25 |  if(!names.valid()||!locale.catalog()||input.size()>16384)return reject();std::string result;size_t at=0;
+      |                                                                           ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp:31:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   31 |   if(value.empty()||value.size()>128)return reject();result+=value;if(result.size()>65536)return reject();at=close+1;
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp:31:54: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   31 |   if(value.empty()||value.size()>128)return reject();result+=value;if(result.size()>65536)return reject();at=close+1;
+      |                                                      ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp: In function ‘bool encore::upstream::format_field_story_span(std::string_view, const NewGameSetupData&, const SessionSnapshot&, const LocaleSelection&, LocalizedHouseSpan&, std::string&, const FieldMenusData*, const FieldMenuPreferences*)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp:66:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   66 |  if(color)return reject("Unclosed field hint color");push(false);if(result.segments.size()>128)return reject("Field dialogue segment capacity");out=std::move(result);error.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp:66:54: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   66 |  if(color)return reject("Unclosed field hint color");push(false);if(result.segments.size()>128)return reject("Field dialogue segment capacity");out=std::move(result);error.clear();return true;
+      |                                                      ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp: In member function ‘bool encore::upstream::FieldStoryData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp:122:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+  122 |   for(size_t i=cursor;i<offset;++i)if(p[i])return fail("Field story padding rejected");cursor=offset+count*stride;
+      |   ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_story.cpp:122:88: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+  122 |   for(size_t i=cursor;i<offset;++i)if(p[i])return fail("Field story padding rejected");cursor=offset+count*stride;
+      |                                                                                        ^~~~~~
+[ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/present_data.cpp.o
+[ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_presents.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/present_data.cpp: In function ‘bool encore::upstream::{anonymous}::safe_path(std::string_view)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/present_data.cpp:21:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   21 |     for(unsigned char ch:s)if(ch<32||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |     ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/present_data.cpp:21:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   21 |     for(unsigned char ch:s)if(ch<32||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |                                                          ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/present_data.cpp: In member function ‘std::string_view encore::upstream::PresentView::string(uint32_t) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/present_data.cpp:29:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   29 |     if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(PresentSection::Bytes,0))+off,len);}
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/present_data.cpp:29:47: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   29 |     if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(PresentSection::Bytes,0))+off,len);}
+      |                                               ^~~~~~
+[ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/mick_treats.cpp.o
+[ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_inspection_data.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/mick_treats.cpp: In function ‘bool encore::upstream::{anonymous}::safe_path(std::string_view)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/mick_treats.cpp:23:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   23 |     for(unsigned char ch:s)if(ch<32||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |     ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/mick_treats.cpp:23:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   23 |     for(unsigned char ch:s)if(ch<32||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |                                                          ^~
+[ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_equipment_data.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/mick_treats.cpp: In member function ‘std::string_view encore::upstream::MickView::string(uint32_t) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/mick_treats.cpp:53:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   53 |     if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(MickSection::Bytes,0))+off,len);}
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/mick_treats.cpp:53:47: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   53 |     if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(MickSection::Bytes,0))+off,len);}
+      |                                               ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/mick_treats.cpp: In member function ‘bool encore::upstream::MickRuntime::step(std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/mick_treats.cpp:278:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  278 |             if(!host_->show_text(speaker,body,e))return rejected();++pc_;break;}
+      |             ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/mick_treats.cpp:278:68: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  278 |             if(!host_->show_text(speaker,body,e))return rejected();++pc_;break;}
+      |                                                                    ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_inspection_data.cpp: In member function ‘bool encore::upstream::HouseInspectionData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_inspection_data.cpp:37:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   37 |   for(size_t j=end;j<off;++j)if(input[j])return fail("House inspection padding rejected");end=size_t(off)+bytes;
+      |   ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_inspection_data.cpp:37:91: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   37 |   for(size_t j=end;j<off;++j)if(input[j])return fail("House inspection padding rejected");end=size_t(off)+bytes;
+      |                                                                                           ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_data.cpp: In member function ‘bool encore::upstream::FieldEquipmentView::bind_items(encore::upstream::ItemView, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_data.cpp:40:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   40 |  for(uint32_t i=0;i<items.count(ItemSection::Definitions);++i)if((items.definition(i).flags&uint32_t(ItemDefinitionFlag::Equipment))&&!mapped.count(i))return reject(e,"Field equipment unmapped equipment rejected");e.clear();return true;
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_data.cpp:40:215: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   40 |  for(uint32_t i=0;i<items.count(ItemSection::Definitions);++i)if((items.definition(i).flags&uint32_t(ItemDefinitionFlag::Equipment))&&!mapped.count(i))return reject(e,"Field equipment unmapped equipment rejected");e.clear();return true;
+      |                                                                                                                                                                                                                       ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_data.cpp: In member function ‘bool encore::upstream::FieldEquipmentData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_data.cpp:48:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   48 |  for(size_t i=52;i<64;++i)if(p[i])return reject(e,"Field equipment reserved header rejected");if(!std::any_of(p+32,p+52,[](uint8_t b){return b!=0;}))return reject(e,"Field equipment source pin missing");
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_data.cpp:48:95: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   48 |  for(size_t i=52;i<64;++i)if(p[i])return reject(e,"Field equipment reserved header rejected");if(!std::any_of(p+32,p+52,[](uint8_t b){return b!=0;}))return reject(e,"Field equipment source pin missing");
+      |                                                                                               ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_data.cpp:63:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   63 |  if(v.parameter(FieldParameter::CursorMoveSeconds)<=0||v.parameter(FieldParameter::CursorMoveSeconds)>10||v.parameter(FieldParameter::CursorFps)<=0||v.parameter(FieldParameter::CursorFps)>120)return reject(e,"Field equipment cursor timing rejected");for(uint32_t k=uint32_t(FieldParameter::CursorFrame0);k<=uint32_t(FieldParameter::CursorFrame3);++k)if(!integer(FieldParameter(k),0,255))return reject(e,"Field equipment cursor frame rejected");
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_data.cpp:63:251: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   63 |  if(v.parameter(FieldParameter::CursorMoveSeconds)<=0||v.parameter(FieldParameter::CursorMoveSeconds)>10||v.parameter(FieldParameter::CursorFps)<=0||v.parameter(FieldParameter::CursorFps)>120)return reject(e,"Field equipment cursor timing rejected");for(uint32_t k=uint32_t(FieldParameter::CursorFrame0);k<=uint32_t(FieldParameter::CursorFrame3);++k)if(!integer(FieldParameter(k),0,255))return reject(e,"Field equipment cursor frame rejected");
+      |                                                                                                                                                                                                                                                           ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_data.cpp:94:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   94 |  if(v.count(FieldSection::Clips)!=8)return reject(e,"Field equipment clip count rejected");uint32_t first=0;for(uint32_t i=0;i<8;++i){auto a=v.clip(FieldClipRole(i+1));if(a.role!=i+1||a.first_key!=first||a.key_count<2||a.key_count>256||a.key_count>v.count(FieldSection::Keys)-std::min(first,v.count(FieldSection::Keys))||!std::isfinite(a.duration)||a.duration<=0||a.duration>10)return reject(e,"Field equipment clip keys/timing rejected");float time=-1;for(uint32_t j=0;j<a.key_count;++j){auto k=v.key(first+j);if(!std::isfinite(k.time)||k.time<0||k.time>a.duration||k.time<=time||!std::isfinite(k.value)||std::abs(k.value)>8192||!std::isfinite(k.ease)||k.ease<=0||k.ease>4)return reject(e,"Field equipment animation key rejected");if(!j&&k.time!=0)return reject(e,"Field equipment animation origin missing");time=k.time;}if(time!=a.duration)return reject(e,"Field equipment animation endpoint missing");first+=a.key_count;}if(first!=v.count(FieldSection::Keys))return reject(e,"Field equipment unused animation keys rejected");
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_data.cpp:94:92: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   94 |  if(v.count(FieldSection::Clips)!=8)return reject(e,"Field equipment clip count rejected");uint32_t first=0;for(uint32_t i=0;i<8;++i){auto a=v.clip(FieldClipRole(i+1));if(a.role!=i+1||a.first_key!=first||a.key_count<2||a.key_count>256||a.key_count>v.count(FieldSection::Keys)-std::min(first,v.count(FieldSection::Keys))||!std::isfinite(a.duration)||a.duration<=0||a.duration>10)return reject(e,"Field equipment clip keys/timing rejected");float time=-1;for(uint32_t j=0;j<a.key_count;++j){auto k=v.key(first+j);if(!std::isfinite(k.time)||k.time<0||k.time>a.duration||k.time<=time||!std::isfinite(k.value)||std::abs(k.value)>8192||!std::isfinite(k.ease)||k.ease<=0||k.ease>4)return reject(e,"Field equipment animation key rejected");if(!j&&k.time!=0)return reject(e,"Field equipment animation origin missing");time=k.time;}if(time!=a.duration)return reject(e,"Field equipment animation endpoint missing");first+=a.key_count;}if(first!=v.count(FieldSection::Keys))return reject(e,"Field equipment unused animation keys rejected");
+      |                                                                                            ^~~~~~~~
+[ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_equipment_menu.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_menu.cpp: In member function ‘bool encore::upstream::FieldEquipmentMenu::enter_candidates()’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_menu.cpp:69:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   69 |  if(!read_snapshot())return false;bool suitable=false;candidates_.clear();for(const auto&i:snapshot_.inventory.instances())for(uint32_t j=0;j<data_.count(FieldSection::Equipment);++j){auto e=data_.equipment(j);if(e.definition==i.definition&&e.slot==slot_){suitable=true;if(!i.equipped)candidates_.push_back(FieldEquipmentCandidate{false,i});break;}}
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_menu.cpp:69:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   69 |  if(!read_snapshot())return false;bool suitable=false;candidates_.clear();for(const auto&i:snapshot_.inventory.instances())for(uint32_t j=0;j<data_.count(FieldSection::Equipment);++j){auto e=data_.equipment(j);if(e.definition==i.definition&&e.slot==slot_){suitable=true;if(!i.equipped)candidates_.push_back(FieldEquipmentCandidate{false,i});break;}}
+      |                                   ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_menu.cpp:72:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   72 |  if(candidates_.empty())return fail("Field equipment empty candidate set rejected");phase_=FieldEquipmentPhase::Candidates;candidate_=offset_=0;retarget_cursor(true);sounds_.push_back(FieldEquipmentSound::Confirm);return update_preview();
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_menu.cpp:72:85: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   72 |  if(candidates_.empty())return fail("Field equipment empty candidate set rejected");phase_=FieldEquipmentPhase::Candidates;candidate_=offset_=0;retarget_cursor(true);sounds_.push_back(FieldEquipmentSound::Confirm);return update_preview();
+      |                                                                                     ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_menu.cpp: In member function ‘bool encore::upstream::FieldEquipmentMenu::input(int, int, bool, bool, bool, bool)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_menu.cpp:75:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   75 |  if(x<-1||x>1||y<-1||y>1)return fail("Field equipment direction rejected");if(!active())return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_menu.cpp:75:76: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   75 |  if(x<-1||x>1||y<-1||y>1)return fail("Field equipment direction rejected");if(!active())return true;
+      |                                                                            ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_menu.cpp:90:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   90 |     if(!read_snapshot())return false;phase_=FieldEquipmentPhase::PsiResult;}
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_equipment_menu.cpp:90:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   90 |     if(!read_snapshot())return false;phase_=FieldEquipmentPhase::PsiResult;}
+      |                                      ^~~~~~
+[ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/storage_data.cpp.o
+[ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/storage_menu.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_data.cpp: In member function ‘bool encore::upstream::StorageData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_data.cpp:34:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   34 |  for(size_t i=52;i<64;++i)if(p[i])return reject(e,"Storage reserved header rejected");bool pin=false;for(size_t i=32;i<52;++i)pin|=p[i]!=0;if(!pin)return reject(e,"Storage missing reviewed source pin");
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_data.cpp:34:87: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   34 |  for(size_t i=52;i<64;++i)if(p[i])return reject(e,"Storage reserved header rejected");bool pin=false;for(size_t i=32;i<52;++i)pin|=p[i]!=0;if(!pin)return reject(e,"Storage missing reviewed source pin");
+      |                                                                                       ^~~~
+[ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/item_details.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_menu.cpp: In lambda function:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_menu.cpp:18:87: warning: suggest parentheses around ‘&&’ within ‘||’ [-Wparentheses]
+   18 |  auto check=[&](const ItemInstance&i,bool stored){if(!uids.insert(i.id).second||stored&&i.equipped)return false;for(uint32_t j=0;j<data_.count(StorageSection::Policies);++j){auto p=data_.policy(j);if(p.definition!=i.definition)continue;if((i.doses!=p.doses&&(!dose_admission_||!dose_admission_(i,p.doses)))||++counts[j]>p.max_count)return false;if(i.equipped){bool found=false;for(uint32_t k=0;k<data_.count(StorageSection::Equipment);++k)if(data_.equipment(k).definition==i.definition&&(inventory_->content().definition(i.definition).flags&uint32_t(ItemDefinitionFlag::Equipment)))found=true;if(!found)return false;}return true;}return false;};
+      |                                                                                 ~~~~~~^~~~~~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_menu.cpp: In member function ‘bool encore::upstream::StorageMenu::checked_state()’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_menu.cpp:19:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   19 |  for(auto&i:inventory_->instances())if(!check(i,false))return reject("Storage unsupported on-hand item");for(auto&i:storage_->instances())if(!check(i,true))return reject("Storage unsupported stored item");return true;
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_menu.cpp:19:106: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   19 |  for(auto&i:inventory_->instances())if(!check(i,false))return reject("Storage unsupported on-hand item");for(auto&i:storage_->instances())if(!check(i,true))return reject("Storage unsupported stored item");return true;
+      |                                                                                                          ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_menu.cpp: In member function ‘bool encore::upstream::StorageMenu::input(int, int, bool, bool)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_menu.cpp:38:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   38 |  if(x<-1||x>1||y<-1||y>1)return reject("Storage input direction rejected");if(!active())return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_menu.cpp:38:76: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   38 |  if(x<-1||x>1||y<-1||y>1)return reject("Storage input direction rejected");if(!active())return true;
+      |                                                                            ^~
+[ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/drawer_program.cpp.o
+[ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/resource_catalog.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/drawer_program.cpp: In member function ‘bool encore::upstream::DrawerProgramData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/drawer_program.cpp:34:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   34 |   for(size_t j=end;j<off;++j)if(input[j])return fail("Drawer program padding rejected");end=size_t(off)+bytes;
+      |   ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/drawer_program.cpp:34:89: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   34 |   for(size_t j=end;j<off;++j)if(input[j])return fail("Drawer program padding rejected");end=size_t(off)+bytes;
+      |                                                                                         ^~~
+[ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/localization.cpp.o
+[ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/localized_presentation.cpp.o
+[ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/locale_preference.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localization.cpp: In member function ‘bool encore::upstream::LocaleCatalog::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localization.cpp:66:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   66 |  if(!grammar.ok||grammar.n)return fail(e,"Malformed locale affix block");r.p+=grammar_size;r.n-=grammar_size;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localization.cpp:66:74: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   66 |  if(!grammar.ok||grammar.n)return fail(e,"Malformed locale affix block");r.p+=grammar_size;r.n-=grammar_size;
+      |                                                                          ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localized_presentation.cpp: In member function ‘bool encore::upstream::LocalizedPresentation::plain_tags(std::string_view, std::string_view, std::string&, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localized_presentation.cpp:19:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |   if(!selection_||!selection_->catalog())return fail(e,"Missing source affix catalog");const auto*rule=selection_->catalog()->affix(elision?LocaleAffix::Elision:LocaleAffix::Genitive);if(!rule)return fail(e,"Missing source affix profile");
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localized_presentation.cpp:19:88: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |   if(!selection_||!selection_->catalog())return fail(e,"Missing source affix catalog");const auto*rule=selection_->catalog()->affix(elision?LocaleAffix::Elision:LocaleAffix::Genitive);if(!rule)return fail(e,"Missing source affix profile");
+      |                                                                                        ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localized_presentation.cpp: In member function ‘bool encore::upstream::LocalizedPresentation::battle(encore::upstream::RoundView, uint32_t, std::string_view, std::string&, std::string&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localized_presentation.cpp:31:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   31 |  if(!view.valid()||index>=view.count(RoundSection::Texts))return fail(e,"Invalid battle localized record");const auto row=view.text(index);if(row.role==0){out.clear();return true;}
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localized_presentation.cpp:31:108: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   31 |  if(!view.valid()||index>=view.count(RoundSection::Texts))return fail(e,"Invalid battle localized record");const auto row=view.text(index);if(row.role==0){out.clear();return true;}
+      |                                                                                                            ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localized_presentation.cpp:35:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   35 |   if(!guard||guard->expected!=expected||!display)return fail(e,"Dynamic battle locale source binding differs from loaded content");expected=display->expected;}
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/localized_presentation.cpp:35:132: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   35 |   if(!guard||guard->expected!=expected||!display)return fail(e,"Dynamic battle locale source binding differs from loaded content");expected=display->expected;}
+      |                                                                                                                                    ^~~~~~~~
+[ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/source_font.cpp.o
+[ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/title_locale_data.cpp.o
+[ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_programs.cpp.o
+[ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_library_bindings.cpp.o
+[ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_bank_routes.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_programs.cpp: In member function ‘bool encore::upstream::MusicPrograms::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_programs.cpp:79:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   79 |  if(!r.okay||r.n)return bad(e,"Music program truncated/trailing payload rejected");next.valid_=true;*this=std::move(next);e.clear();return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_programs.cpp:79:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   79 |  if(!r.okay||r.n)return bad(e,"Music program truncated/trailing payload rejected");next.valid_=true;*this=std::move(next);e.clear();return true;
+      |                                                                                    ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_programs.cpp: In member function ‘encore::upstream::MusicProgramStep encore::upstream::MusicPrograms::evaluate(uint32_t, const std::vector<encore::upstream::MusicArgument>&, const encore::upstream::MusicSceneGraph&, const encore::upstream::MusicPositionQuery&, encore::upstream::MusicProgramResult&, std::string&, uint32_t) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_programs.cpp:100:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  100 |    if(!passes)pc+=i.skip;continue;
+      |    ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_programs.cpp:100:26: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  100 |    if(!passes)pc+=i.skip;continue;
+      |                          ^~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_programs.cpp:130:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  130 |   if(!okay)return MusicProgramStep::Failed;++result.changes;
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_programs.cpp:130:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  130 |   if(!okay)return MusicProgramStep::Failed;++result.changes;
+      |                                            ^~
+[ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_scene_graph.cpp.o
+[ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_players.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp: In member function ‘std::vector<encore::upstream::MusicPlayerSnapshot> encore::upstream::MusicPlayers::snapshot() const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp:14:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   14 |     for(const auto&n:nodes_)out.push_back({n.identity,n.stream,n.playing,n.gain_db});return out;
+      |     ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp:14:86: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   14 |     for(const auto&n:nodes_)out.push_back({n.identity,n.stream,n.playing,n.gain_db});return out;
+      |                                                                                      ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp: In member function ‘bool encore::upstream::MusicPlayers::initialize(encore::upstream::MusicPlayersPolicy, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp:21:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |     if(!next.add_player(empty,e))return false;*this=std::move(next);e.clear();return true;
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp:21:47: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |     if(!next.add_player(empty,e))return false;*this=std::move(next);e.clear();return true;
+      |                                               ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp: In member function ‘bool encore::upstream::MusicPlayers::resume_all(std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp:87:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   87 |     for(auto&node:nodes_)node.stream_paused=false;e.clear();return true;
+      |     ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp:87:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   87 |     for(auto&node:nodes_)node.stream_paused=false;e.clear();return true;
+      |                                                   ^
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp: In member function ‘bool encore::upstream::MusicPlayers::flush_deletions(std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp:157:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  157 |     if(!ready_)return bad(e,"Loop players are not initialized");MusicPlayers next=*this;
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_players.cpp:157:65: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  157 |     if(!ready_)return bad(e,"Loop players are not initialized");MusicPlayers next=*this;
+      |                                                                 ^~~~~~~~~~~~
+[ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_player_choice.cpp.o
+[ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_regions.cpp.o
+[ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/introduction.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_player_choice.cpp: In function ‘bool encore::upstream::{anonymous}::stream(std::string_view, bool)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_player_choice.cpp:17:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   17 |         if(end==path.npos)break;at=end+1;
+      |         ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/music_player_choice.cpp:17:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   17 |         if(end==path.npos)break;at=end+1;
+      |                                 ^~
+[ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/new_game_setup.cpp.o
+[ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/startup_settings.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/startup_settings.cpp: In member function ‘bool encore::upstream::StartupSettingsData::load(const uint8_t*, size_t, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/startup_settings.cpp:38:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   38 |  for(const auto&f:d.confirmation_fields)if(f.resource>=d.resources.size())return fail(e,"Startup confirmation resource rejected");for(auto p:d.patch)if(p>64)return fail(e,"Startup skin margin rejected");if(!unique(d.skin_paths))return fail(e,"Startup duplicate UI skin identity");for(const auto&s:d.skin_paths)if(!path(s))return fail(e,"Startup UI skin path rejected");
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/startup_settings.cpp:38:131: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   38 |  for(const auto&f:d.confirmation_fields)if(f.resource>=d.resources.size())return fail(e,"Startup confirmation resource rejected");for(auto p:d.patch)if(p>64)return fail(e,"Startup skin margin rejected");if(!unique(d.skin_paths))return fail(e,"Startup duplicate UI skin identity");for(const auto&s:d.skin_paths)if(!path(s))return fail(e,"Startup UI skin path rejected");
+      |                                                                                                                                   ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/startup_settings.cpp: In member function ‘bool encore::upstream::StartupSettingsData::load_file(const char*, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/startup_settings.cpp:42:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   42 |  if(!path)return fail(e,"Missing startup settings path");FILE*f=std::fopen(path,"rb");if(!f)return fail(e,"Cannot open startup settings pack");std::vector<uint8_t>b;uint8_t chunk[4096];bool ok=true;while(true){size_t n=std::fread(chunk,1,sizeof(chunk),f);if(b.size()+n>1024*1024){ok=false;break;}b.insert(b.end(),chunk,chunk+n);if(n<sizeof(chunk)){ok=!std::ferror(f);break;}}if(std::fclose(f))ok=false;return ok?load(b.data(),b.size(),e):fail(e,"Startup settings bounded read failed");
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/startup_settings.cpp:42:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   42 |  if(!path)return fail(e,"Missing startup settings path");FILE*f=std::fopen(path,"rb");if(!f)return fail(e,"Cannot open startup settings pack");std::vector<uint8_t>b;uint8_t chunk[4096];bool ok=true;while(true){size_t n=std::fread(chunk,1,sizeof(chunk),f);if(b.size()+n>1024*1024){ok=false;break;}b.insert(b.end(),chunk,chunk+n);if(n<sizeof(chunk)){ok=!std::ferror(f);break;}}if(std::fclose(f))ok=false;return ok?load(b.data(),b.size(),e):fail(e,"Startup settings bounded read failed");
+      |                                                          ^~~~
+[ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_button_prompts.cpp.o
+[ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/loading_indicator_data.cpp.o
+[ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/continue_menu_data.cpp.o
+[ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/continue_menu.cpp.o
+[ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/slot_preference.cpp.o
+[ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/restore_data.cpp.o
+[ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/session_restore.cpp.o
+[ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/session_migration.cpp.o
+[ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/load_rng.cpp.o
+[ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/fresh_house.cpp.o
+[ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/dialogue_choices_data.cpp.o
+[ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/dialogue_choices.cpp.o
+[ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/phone_data.cpp.o
+[ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/phone_runtime.cpp.o
+[ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/native_session.cpp.o
+[ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/session_save.cpp.o
+[ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/save_menu_data.cpp.o
+[ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/save_menu.cpp.o
+[ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/native_input.cpp.o
+[ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/world_effect_data.cpp.o
+[ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/world_effect.cpp.o
+[ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/items_data.cpp.o
+[ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/items_menu.cpp.o
+[ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_audio.cpp.o
+[ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_runtime.cpp.o
+[ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_data.cpp.o
+[ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_presentation.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp: In member function ‘bool encore::upstream::HouseRuntime::set_player_nickname(std::string_view)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:71:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   71 |  for(unsigned char ch:name)if(ch<32||ch>126)return false;nickname_=std::string(name);return true;
+      |  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:71:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   71 |  for(unsigned char ch:name)if(ch<32||ch>126)return false;nickname_=std::string(name);return true;
+      |                                                          ^~~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp: In member function ‘std::string_view encore::upstream::HouseRuntime::player_nickname() const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:74:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   74 |  if(!nickname_.empty())return nickname_;const auto room=world_->content();return room.string(room.actor_instance(room.scene().player_instance_index).display_name_string);
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:74:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   74 |  if(!nickname_.empty())return nickname_;const auto room=world_->content();return room.string(room.actor_instance(room.scene().player_instance_index).display_name_string);
+      |                                         ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp: In member function ‘virtual bool encore::upstream::HouseRuntime::PresentAdapter::start_story(std::string_view, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:341:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  341 |  if(!validate_story(path,e))return false;owner->present_story_=owner->program_for_path(path.substr(14,path.size()-19));return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:341:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  341 |  if(!validate_story(path,e))return false;owner->present_story_=owner->program_for_path(path.substr(14,path.size()-19));return true;
+      |                                          ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp: In member function ‘bool encore::upstream::HouseRuntime::door_interaction_supported(uint32_t) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:447:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  447 |  if(!content_.valid()||i>=openables_.size())return false;const auto&state=openables_[i];const auto d=content_.openable_door(i);
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:447:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  447 |  if(!content_.valid()||i>=openables_.size())return false;const auto&state=openables_[i];const auto d=content_.openable_door(i);
+      |                                                          ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp: In member function ‘std::string_view encore::upstream::HouseRuntime::inspection_path(uint32_t) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:464:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  464 |  if(!inspection_visible(i))return {};const auto o=inspections_.object(i);auto path=inspections_.string(o.default_dialogue);
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:464:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  464 |  if(!inspection_visible(i))return {};const auto o=inspections_.object(i);auto path=inspections_.string(o.default_dialogue);
+      |                                      ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp: In member function ‘bool encore::upstream::HouseRuntime::interact()’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:517:47: warning: variable ‘player’ set but not used [-Wunused-but-set-variable]
+  517 |  const auto room=world_->content();const auto player=room.actor_instance(room.scene().player_instance_index);
+      |                                               ^~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp: In member function ‘bool encore::upstream::HouseRuntime::sync_story_dialogue()’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:542:91: warning: variable ‘player’ set but not used [-Wunused-but-set-variable]
+  542 |  const auto text=content_.dialogue(selected);const auto room=world_->content();const auto player=room.actor_instance(room.scene().player_instance_index);
+      |                                                                                           ^~~~~~
+[ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_loot.cpp.o
+[ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_outcome.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp: In member function ‘bool encore::upstream::HousePresentation::begin_npc_dialogue(uint32_t, uint32_t, uint32_t, std::string_view, encore::upstream::Vec2)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp:196:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  196 |  if(i>=npcs_.size()||!begin_dialogue(first,count,name)||!begin_npc_interaction(i,player))return false;npc_=i;return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp:196:103: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  196 |  if(i>=npcs_.size()||!begin_dialogue(first,count,name)||!begin_npc_interaction(i,player))return false;npc_=i;return true;
+      |                                                                                                       ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp: In member function ‘bool encore::upstream::HousePresentation::stop_npc_interaction(uint32_t)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp:204:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  204 |  if(i>=npcs_.size())return fail("Unknown stopped NPC");auto&s=npcs_[i];s.story_talking=false;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp:204:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  204 |  if(i>=npcs_.size())return fail("Unknown stopped NPC");auto&s=npcs_[i];s.story_talking=false;
+      |                                                        ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp: In member function ‘bool encore::upstream::HousePresentation::wrap_plain(std::string_view, std::vector<Line>&) const’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp:306:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  306 |    if(stop==limit)break;start=end+separator.size();}
+      |    ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp:306:25: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  306 |    if(stop==limit)break;start=end+separator.size();}
+      |                         ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp:307:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  307 |   if(!line.empty())push();if(newline==std::u32string::npos)break;paragraph=newline+1;}
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_presentation.cpp:307:27: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  307 |   if(!line.empty())push();if(newline==std::u32string::npos)break;paragraph=newline+1;}
+      |                           ^~
+[ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_round.cpp.o
+[ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_round_data.cpp.o
+[ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_action_presentation.cpp.o
+[ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/source_random.cpp.o
+[ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/audio_data.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/battle_action_presentation.cpp: In member function ‘virtual bool encore::upstream::BattleActionPresentation::emit(const encore::upstream::BattleRoundCue&, encore::upstream::SourceRandom&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/battle_action_presentation.cpp:401:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  401 |  if(content_.action_media(cue.skill).use_sound!=1)return fail("Unreviewed skill sound");audio_.push_back(GameplayCue::Swing);break;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/battle_action_presentation.cpp:401:89: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  401 |  if(content_.action_media(cue.skill).use_sound!=1)return fail("Unreviewed skill sound");audio_.push_back(GameplayCue::Swing);break;
+      |                                                                                         ^~~~~~
+[ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_data.cpp.o
+[ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_entry.cpp.o
+[ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/room_data.cpp.o
+[ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/content.cpp.o
+[ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/file_io.cpp.o
+[ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/story.cpp.o
+[ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/game.cpp.o
+[ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/save.cpp.o
+[ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/progression.cpp.o
+[ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/movement.cpp.o
+[ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/animation.cpp.o
+[ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/collision.cpp.o
+[ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/world_flags.cpp.o
+[ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/world.cpp.o
+[ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/opening_trigger.cpp.o
+[ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/dialogue.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::bind_story_skills(encore::upstream::StorySkillHost&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:23:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   23 |  if(!content_)return false;std::string error;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:23:28: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   23 |  if(!content_)return false;std::string error;
+      |                            ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::initialize(const encore::upstream::RoomView&, encore::upstream::Vec2)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:64:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   64 |     if(!content.valid())return false;const auto scene=content.scene();
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:64:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   64 |     if(!content.valid())return false;const auto scene=content.scene();
+      |                                      ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::bind_walk_audio(encore::upstream::WalkAudioSink&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:115:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  115 |  if(!healthy_||walk_audio_||!sink.walk_audio_ready())return false;walk_audio_=&sink;return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:115:67: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  115 |  if(!healthy_||walk_audio_||!sink.walk_audio_ready())return false;walk_audio_=&sink;return true;
+      |                                                                   ^~~~~~~~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::bind_player_action(const encore::upstream::FieldSwingResources&, std::string&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:131:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  131 |   if(binding.motion_state>=data.motion_states().size())return reject("Player room motion role is unsupported");++normal_bindings;
+      |   ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:131:112: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  131 |   if(binding.motion_state>=data.motion_states().size())return reject("Player room motion role is unsupported");++normal_bindings;
+      |                                                                                                                ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::player_action_direction(bool)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:179:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  179 |  if(!(idle?owner.action_.set_idle_direction(owner.player_.direction,why):owner.action_.set_direction(owner.player_.direction,why))||(idle&&!owner.action_.travel(target,why)))return fail("Player action direction rejected");++owner.action_revision_;return true;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:179:223: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  179 |  if(!(idle?owner.action_.set_idle_direction(owner.player_.direction,why):owner.action_.set_direction(owner.player_.direction,why))||(idle&&!owner.action_.travel(target,why)))return fail("Player action direction rejected");++owner.action_revision_;return true;
+      |                                                                                                                                                                                                                               ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::emit_walk_audio(const encore::upstream::WalkAudioCalls&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:288:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  288 |  if(!walk_audio_)return true;std::string why;
+      |  ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:288:30: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  288 |  if(!walk_audio_)return true;std::string why;
+      |                              ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::advance(encore::upstream::WalkInput)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:334:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  334 |         if(update_blend&&!player_action_direction())return false;std::string why;
+      |         ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:334:66: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  334 |         if(update_blend&&!player_action_direction())return false;std::string why;
+      |                                                                  ^~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::write_story_flag(uint32_t, bool, bool)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:381:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  381 |     if(!healthy_)return false;const auto result=flags_.set_story_flag(index,value,emit);if(result.flags_updated)++story_revision_;
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:381:31: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  381 |     if(!healthy_)return false;const auto result=flags_.set_story_flag(index,value,emit);if(result.flags_updated)++story_revision_;
+      |                               ^~~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp: In member function ‘virtual bool encore::upstream::OpeningWorld::apply(const encore::upstream::DialogueAction&)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:690:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  690 |         if(!actor)return false;Vec2 direction=a.vector;
+      |         ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:690:32: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  690 |         if(!actor)return false;Vec2 direction=a.vector;
+      |                                ^~~~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:696:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  696 |             if(a.flags&4)direction.x=a.vector.x;if(a.flags&8)direction.y=a.vector.y;
+      |             ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:696:49: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  696 |             if(a.flags&4)direction.x=a.vector.x;if(a.flags&8)direction.y=a.vector.y;
+      |                                                 ^~
+[ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/actor_actions.cpp.o
+[ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/cutscene_camera.cpp.o
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/cutscene_camera.cpp: In member function ‘bool encore::upstream::CutsceneCamera::initialize(const encore::upstream::RoomView&, encore::upstream::Vec2, encore::upstream::Vec2)’:
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/cutscene_camera.cpp:45:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   45 |     if(!next.relocate_player(player))return false;*this=std::move(next);return true;
+      |     ^~
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/cutscene_camera.cpp:45:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   45 |     if(!next.relocate_player(player))return false;*this=std::move(next);return true;
+      |                                                   ^
+[ 95%] Linking CXX static library libencore_core.a
+[ 95%] Built target encore_core
+[100%] Building CXX object CMakeFiles/encore_field_collision_index_tests.dir/tests/field_collision_index_tests.cpp.o
+[100%] Linking CXX executable encore_field_collision_index_tests
+[100%] Built target encore_field_collision_index_tests

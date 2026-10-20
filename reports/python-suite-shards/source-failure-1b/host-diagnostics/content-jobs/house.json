@@ -1,0 +1,14 @@
+{
+  "task": "house",
+  "pid": 4279,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498428.4642441,
+  "finished": 1792498625.1335247,
+  "seconds": 196.66928052902222,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/native_house.py",
+    "compile"
+  ]
+}

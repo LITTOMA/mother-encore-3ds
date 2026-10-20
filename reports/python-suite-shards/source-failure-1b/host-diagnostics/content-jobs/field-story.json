@@ -1,0 +1,14 @@
+{
+  "task": "field-story",
+  "pid": 6799,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498484.773481,
+  "finished": 1792498560.901252,
+  "seconds": 76.1277711391449,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/field_story.py",
+    "compile"
+  ]
+}

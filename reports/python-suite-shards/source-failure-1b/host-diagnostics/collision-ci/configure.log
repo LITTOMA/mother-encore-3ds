@@ -1,0 +1,15 @@
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python3: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python3.12 (found suitable version "3.12.15", minimum required is "3.9") found components: Interpreter
+-- Performing Test ENCORE_LIBC_HAS_FREAD_CHK
+-- Performing Test ENCORE_LIBC_HAS_FREAD_CHK - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.8s)
+-- Generating done (0.3s)
+-- Build files have been written to: /home/runner/work/mother-encore-3ds/mother-encore-3ds/build/host

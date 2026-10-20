@@ -1,0 +1,24 @@
+test_actual_attack_not_similarly_named_bash (tests.test_native_round.RoundCompilerTests.test_actual_attack_not_similarly_named_bash) ... ok
+test_changed_source_and_missing_review_fail (tests.test_native_round.RoundCompilerTests.test_changed_source_and_missing_review_fail) ... ok
+test_data_only_victory_text_and_duration (tests.test_native_round.RoundCompilerTests.test_data_only_victory_text_and_duration) ... ok
+test_external_text_templates (tests.test_native_round.RoundCompilerTests.test_external_text_templates) ... ok
+test_invalid_rule_fail (tests.test_native_round.RoundCompilerTests.test_invalid_rule_fail) ... ok
+test_literal_precision (tests.test_native_round.RoundCompilerTests.test_literal_precision) ... ok
+test_media_ownership_and_parameter_divisors (tests.test_native_round.RoundCompilerTests.test_media_ownership_and_parameter_divisors) ... ok
+test_missing_victory_media_has_no_fallback (tests.test_native_round.RoundCompilerTests.test_missing_victory_media_has_no_fallback) ... ok
+test_negative_binary_headers_and_truncations (tests.test_native_round.RoundCompilerTests.test_negative_binary_headers_and_truncations) ... ok
+test_return_camera_source_and_rejection (tests.test_native_round.RoundCompilerTests.test_return_camera_source_and_rejection) ... ok
+test_source_victory_contract (tests.test_native_round.RoundCompilerTests.test_source_victory_contract) ... ok
+test_sources_and_deterministic_compile (tests.test_native_round.RoundCompilerTests.test_sources_and_deterministic_compile) ... ok
+test_staging_hashes_and_escape (tests.test_native_round.RoundCompilerTests.test_staging_hashes_and_escape) ... ok
+test_unknown_ir_fields_fail (tests.test_native_round.RoundCompilerTests.test_unknown_ir_fields_fail) ... ok
+test_unknown_media_opcodes_and_nan (tests.test_native_round.RoundCompilerTests.test_unknown_media_opcodes_and_nan) ... ok
+test_unsupported_skill_paths_fail (tests.test_native_round.RoundCompilerTests.test_unsupported_skill_paths_fail) ... ok
+test_unsupported_victory_state_and_policy (tests.test_native_round.RoundCompilerTests.test_unsupported_victory_state_and_policy) ... ok
+test_victory_callback_contract_and_parameters (tests.test_native_round.RoundCompilerTests.test_victory_callback_contract_and_parameters) ... ok
+test_victory_missing_section_and_wrong_stride (tests.test_native_round.RoundCompilerTests.test_victory_missing_section_and_wrong_stride) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 3.595s
+
+OK

@@ -1,0 +1,14 @@
+{
+  "task": "house-presents",
+  "pid": 13225,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498625.2146542,
+  "finished": 1792498626.9380662,
+  "seconds": 1.723412036895752,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/house_presents.py",
+    "compile"
+  ]
+}

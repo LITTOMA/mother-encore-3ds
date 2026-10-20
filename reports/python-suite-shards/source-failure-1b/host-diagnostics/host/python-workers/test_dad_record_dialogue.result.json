@@ -1,0 +1,29 @@
+{
+  "module": "test_dad_record_dialogue",
+  "expected_ids": [
+    "test_dad_record_dialogue.DadRecord.test_alternate_leader_delays_and_newlines_preserved",
+    "test_dad_record_dialogue.DadRecord.test_choice_wait_is_final_print_completion",
+    "test_dad_record_dialogue.DadRecord.test_every_leader_money_option_and_save_branch",
+    "test_dad_record_dialogue.DadRecord.test_graph_must_use_reviewed_source_binding",
+    "test_dad_record_dialogue.DadRecord.test_hidden_save_source_order_and_no_text_gate",
+    "test_dad_record_dialogue.DadRecord.test_money_tokens_are_effectful_only_at_source_phrase",
+    "test_dad_record_dialogue.DadRecord.test_stage_is_reproducible",
+    "test_dad_record_dialogue.DadRecord.test_unknown_and_out_of_bounds_branches_rejected",
+    "test_dad_record_dialogue.DadRecord.test_unknown_source_field_or_changed_option_fails_closed"
+  ],
+  "executed_ids": [
+    "test_dad_record_dialogue.DadRecord.test_alternate_leader_delays_and_newlines_preserved",
+    "test_dad_record_dialogue.DadRecord.test_choice_wait_is_final_print_completion",
+    "test_dad_record_dialogue.DadRecord.test_every_leader_money_option_and_save_branch",
+    "test_dad_record_dialogue.DadRecord.test_graph_must_use_reviewed_source_binding",
+    "test_dad_record_dialogue.DadRecord.test_hidden_save_source_order_and_no_text_gate",
+    "test_dad_record_dialogue.DadRecord.test_money_tokens_are_effectful_only_at_source_phrase",
+    "test_dad_record_dialogue.DadRecord.test_stage_is_reproducible",
+    "test_dad_record_dialogue.DadRecord.test_unknown_and_out_of_bounds_branches_rejected",
+    "test_dad_record_dialogue.DadRecord.test_unknown_source_field_or_changed_option_fails_closed"
+  ],
+  "success": true,
+  "pid": 48932,
+  "started": 1499.440034003,
+  "seconds": 22.756785057000116
+}

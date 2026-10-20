@@ -1,0 +1,21 @@
+setUpClass (test_dungeon_key_clocks.KeyClockTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_dungeon_key_clocks.KeyClockTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_dungeon_key_clocks.py", line 9, in setUpClass
+    def setUpClass(cls):cls.data,cls.blob,cls.proof=d.extract()
+                                                    ^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_key_clocks.py", line 79, in extract
+    require(kind==1 and function(script,handler).strip()=='queue_free()','Key clock unmapped completion method');diagnostics=4
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Key clock unmapped completion method
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.459s
+
+FAILED (errors=1)

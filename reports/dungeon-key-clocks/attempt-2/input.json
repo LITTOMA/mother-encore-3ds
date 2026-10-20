@@ -1,0 +1,1697 @@
+{
+  "profiles": [
+    {
+      "id": 1,
+      "kind": 1,
+      "frames": 4,
+      "node_name": "Key1",
+      "script": "Scripts/Main/Small Key.gd",
+      "clips": [
+        {
+          "id": 1,
+          "name": "RESET"
+        },
+        {
+          "id": 2,
+          "name": "Use Key"
+        }
+      ],
+      "connections": [
+        {
+          "signal": "body_entered",
+          "from": "Area2D",
+          "to": ".",
+          "method": "_on_Area2D_body_entered"
+        },
+        {
+          "signal": "finished",
+          "from": "AudioStreamPlayer",
+          "to": ".",
+          "method": "_on_AudioStreamPlayer_finished"
+        },
+        {
+          "signal": "animation_finished",
+          "from": "AnimationPlayer",
+          "to": ".",
+          "method": "_on_AnimationPlayer_animation_finished"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "kind": 2,
+      "frames": 10,
+      "node_name": "Locked Door3",
+      "script": "Scripts/Main/Lock.gd",
+      "clips": [
+        {
+          "id": 3,
+          "name": "Open"
+        },
+        {
+          "id": 4,
+          "name": "Opened"
+        },
+        {
+          "id": 5,
+          "name": "RESET"
+        }
+      ],
+      "connections": [
+        {
+          "signal": "animation_finished",
+          "from": "AnimationPlayer",
+          "to": ".",
+          "method": "_on_AnimationPlayer_animation_finished"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "kind": 3,
+      "frames": 9,
+      "node_name": "Lock",
+      "script": "Scripts/Cutscenes/CutsceneObject.gd",
+      "clips": [
+        {
+          "id": 6,
+          "name": "Open"
+        },
+        {
+          "id": 7,
+          "name": "RESET"
+        }
+      ],
+      "connections": [
+        {
+          "signal": "animation_finished",
+          "from": "AnimationPlayer",
+          "to": ".",
+          "method": "_on_AnimationPlayer_animation_finished"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "profile": 1,
+      "actions": [
+        {
+          "op": "play",
+          "name": "RESET",
+          "clip": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0.0
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0005000000237487257
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0005000000237487257
+        },
+        {
+          "op": "flush"
+        }
+      ],
+      "scope": "Direct original AnimationPlayer clip service, not a normal pickup request"
+    },
+    {
+      "profile": 1,
+      "actions": [
+        {
+          "op": "play",
+          "name": "Use Key",
+          "clip": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0.0
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.16666599945926666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.16666549281978607
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333252208137515
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0833309856395722
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333101544189447
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333296911621091
+        },
+        {
+          "op": "flush"
+        }
+      ],
+      "scope": "Direct original AnimationPlayer clip service, not a normal pickup request"
+    },
+    {
+      "profile": 2,
+      "actions": [
+        {
+          "op": "play",
+          "name": "Open",
+          "clip": 3
+        },
+        {
+          "op": "advance",
+          "delta": 0.0
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333229856395721
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333170089530945
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333100054073334
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0833309856395722
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333202872085577
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0833309856395722
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333101544189447
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0833309558372497
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 4.6325683622505665e-08
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.5367431640625e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.327896115288496e-08
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.867210388758707e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.327896115288496e-08
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333101544189447
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333101544189447
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0833309558372497
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333202872085566
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08332803520965593
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333792958068864
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08332803520965593
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08332903520965584
+        },
+        {
+          "op": "flush"
+        }
+      ],
+      "scope": "Direct original AnimationPlayer clip service, not a normal pickup request"
+    },
+    {
+      "profile": 2,
+      "actions": [
+        {
+          "op": "play",
+          "name": "Opened",
+          "clip": 4
+        },
+        {
+          "op": "advance",
+          "delta": 0.0
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "flush"
+        }
+      ],
+      "scope": "Direct original AnimationPlayer clip service, not a normal pickup request"
+    },
+    {
+      "profile": 2,
+      "actions": [
+        {
+          "op": "play",
+          "name": "RESET",
+          "clip": 5
+        },
+        {
+          "op": "advance",
+          "delta": 0.0
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0005000000237487257
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0005000000237487257
+        },
+        {
+          "op": "flush"
+        }
+      ],
+      "scope": "Direct original AnimationPlayer clip service, not a normal pickup request"
+    },
+    {
+      "profile": 3,
+      "actions": [
+        {
+          "op": "play",
+          "name": "Open",
+          "clip": 6
+        },
+        {
+          "op": "advance",
+          "delta": 0.0
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08299899684095383
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.00033130172300338545
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08266469511795044
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0006650057773590068
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08233099851417541
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.000000000001e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08433098766613009
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333202872085577
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0833309856395722
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999732445e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333101544189447
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.04166598455810544
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.04166598455810544
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333101544189447
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333101544189447
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333196911621088
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333101544189447
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.0000000000287557e-06
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08332803520965593
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08333792958068864
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.08332803520965593
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 9.999999999177334e-07
+        },
+        {
+          "op": "flush"
+        }
+      ],
+      "scope": "Direct original AnimationPlayer clip service, not a normal pickup request"
+    },
+    {
+      "profile": 3,
+      "actions": [
+        {
+          "op": "play",
+          "name": "RESET",
+          "clip": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0.0
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0005000000237487257
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.0005000000237487257
+        },
+        {
+          "op": "flush"
+        }
+      ],
+      "scope": "Direct original AnimationPlayer clip service, not a normal pickup request"
+    },
+    {
+      "profile": 2,
+      "actions": [
+        {
+          "op": "interact"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 0.016666666666666666
+        },
+        {
+          "op": "flush"
+        }
+      ],
+      "scope": "Original interact->parent and child native clocks with explicit idle flush"
+    },
+    {
+      "profile": 2,
+      "actions": [
+        {
+          "op": "interact"
+        },
+        {
+          "op": "advance",
+          "delta": 1.5
+        },
+        {
+          "op": "flush"
+        },
+        {
+          "op": "advance",
+          "delta": 1.5
+        },
+        {
+          "op": "flush"
+        }
+      ],
+      "scope": "Original interact->parent and child native clocks with explicit idle flush"
+    }
+  ]
+}

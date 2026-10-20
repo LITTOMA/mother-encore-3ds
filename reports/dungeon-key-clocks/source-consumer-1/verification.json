@@ -1,0 +1,162 @@
+{
+  "parent": "b427a6959e37fee6dd95e7910af854c8ed615d11",
+  "scope": "Source key/door/child clocks and six-owner bridge, not live dungeon or audio playback. No source/asset/save/catalog changes.",
+  "native": {
+    "runs": [
+      6,
+      7
+    ],
+    "rows_each": 461,
+    "identical": true,
+    "diagnostics_each": 13,
+    "automatic_stopped_player_six_idle_writes": []
+  },
+  "GCC_direct_ASAN_UBSAN": {
+    "checks": 22131,
+    "process_exit": 0,
+    "normal_leaks": true,
+    "full_make_test": false,
+    "proof": "key-clocks-host-6-proof.json"
+  },
+  "python": {
+    "tests": 8,
+    "seconds": 2.732,
+    "actual_log": "key-clocks-python-3.log"
+  },
+  "metadata_only": {
+    "ctest": 305,
+    "python": 1383,
+    "aggregate": 1000,
+    "dedicated": 383,
+    "multiset_equal": true,
+    "VisualStudio_config": "Debug"
+  },
+  "pending": [
+    "full GCC/Clang and sanitizers",
+    "genuine 3DSX/CIA of this new code",
+    "live map/media/save consumers",
+    "emulator new map",
+    "Old/New3DS hardware"
+  ],
+  "failure_classification": {
+    "native1": "Probe omitted the actual original unused_signal=false setting. Original setting now source checked; no original script edit.",
+    "host1": "Invocation listed nonexistent runtime/crc32.cpp (header only).",
+    "host2": "Invocation omitted runtime/file_io.cpp; actual linker failure.",
+    "host3": "Over-forced native stopped-player advance emitted extra False writes; source automatic IDLE scheduler verified separately, probe dispatch corrected. Original tracks/game/core unchanged.",
+    "host-proof-preflight": "Collector else1 syntax error stopped before process launch; retained exact bad producer.",
+    "metadata-first": "Visual Studio without Debug reports zero tests; exact Debug CTest metadata command used, no tests run.",
+    "python2": "The new completion lowering initially compared the full function to a body-only string. The existing helper includes the signature; corrected extraction and all8 tests passed. No upstream/resource/native expected change."
+  },
+  "sources_sha256": {
+    "content/catacombs-key-clocks.json": "3f4bc6add3a52c42a948a5dd4589608ed4b394fa5dac8a45b7f2543b15dfecb8",
+    "tools/dungeon_key_clocks.py": "bb03c98f9a9f075a5e8ef588e5547f50d4efc2ab9251e28e050cc73157321eb3",
+    "tools/run_dungeon_key_clocks_reference.py": "0450e1a74527972b2b7d8f09746eb8950eab7dd1bf3f23cda241f0d8b949a5b4",
+    "include/encore/dungeon_key_clocks.hpp": "75c2b8a3127599e5e061c867a42aeaccc9720effe0a59b7bfc93127984053f66",
+    "runtime/dungeon_key_clocks.cpp": "b39f833f50c46632cd43752111db0f84d8776c23eb6f58f758286010303bd331",
+    "tests/dungeon_key_clocks_tests.cpp": "572eb0424d1f4d0a1447b9696c8fd98801ecdc4fba85299eda2e301e5b767e6b",
+    "tests/prepare_dungeon_key_clocks.py": "c89c3ebe6b491e7d8a04cb71d2aec9bcf30e149669701ae18427265c04abac24",
+    "tests/test_dungeon_key_clocks.py": "1a7282de6bc98ba57c68d72e440724a2d7756bad9b44cfe110ec9b859878daf4",
+    "CMakeLists.txt": "7913a881152da6b0fe29eca109b1d64edd061bc52a9af73a52a008ae887a872b",
+    "platform/ctr/Makefile": "b2d4aada7acf876b0a246b25e7ec1f6466f687a2b1281b84d23268c7cc061d32"
+  },
+  "evidence_sha256": {
+    "failed-host-proof-syntax.py": "91aa9c2e8393359a48acda682fe6b8ef11aa229fda2364d5b718dc28fb74dcfc",
+    "key-clocks-cmake-1.log": "2c96487d846252a8cb898eb7cd5fc0393f7f945833cda2501e78b414e22e222b",
+    "key-clocks-collection-1.log": "ed4315a0d2b38b576c770fc6edde2e25f447647a312658c8cd2650ef855df610",
+    "key-clocks-ctest-1.json": "655b4edf543a99640d87b7cec2509f8071db3e631f77a63bd8b28f1533babfc4",
+    "key-clocks-ctest-debug-1.json": "9c579e46a6debaee6d09d85026fe1754b24637f3703405234087d19295cb4abf",
+    "key-clocks-fixture-1.log": "a84ae305a76d5ffd8f9d099301c6d6e44c821febd7271257eb6a6e8eaea3de5b",
+    "key-clocks-fixture-2.log": "a84ae305a76d5ffd8f9d099301c6d6e44c821febd7271257eb6a6e8eaea3de5b",
+    "key-clocks-fixture-3.log": "a84ae305a76d5ffd8f9d099301c6d6e44c821febd7271257eb6a6e8eaea3de5b",
+    "key-clocks-host-1.log": "c67af3a8bb9b6369ddb69a6724dd7469067cf084a0c5c15ed8202ed3861f9e97",
+    "key-clocks-host-1.sh": "d8b1492c91e31b46047bf0900cc02b7a299b5e20462792b34d218bc4b0972ccc",
+    "key-clocks-host-2.log": "7cc9497fc4a6a1ac0b4855feb3ff139549f3ecbc84181271b33d3af4edbc6945",
+    "key-clocks-host-2.sh": "cc88a9cacd0cc9040167514eacad0b0929336a3b0b8ce53afb76f3e23f2ed6fc",
+    "key-clocks-host-3.log": "5bbbdb0217d233d8f46e429c08a6395c2f0cae44755ba54007bcf158b01b9253",
+    "key-clocks-host-3.sh": "e6fd40bcbcc1749a75629caf1cbd9f9426ed373c224728c8c7d14462787512d5",
+    "key-clocks-host-4.log": "39f8954bdc7ab95cb564e8171fbb82dd6a251ca9155247bc4e1e3e86a636c512",
+    "key-clocks-host-4.sh": "6c1db2ae4ea76a5d9a3bab8b57c034845c3af6e8c44e363f3fcfb2a28f1c4db0",
+    "key-clocks-host-5-proof.json": "b81acf589bbae08f04218da03806a57133a09b410c6f29ccd0f6422380631f77",
+    "key-clocks-host-5.log": "adc259bf240fca526d9b94af1957995b5a83ba2610cdfadb329d725bb4989e09",
+    "key-clocks-host-5.stderr.raw.log": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "key-clocks-host-5.stdout.log": "f09ba225d04a4016bfd360403dc2938ffbf73554a86c8b290946040432544617",
+    "key-clocks-host-6-proof.json": "19deb4699eae0bcd38392a2437992d004ec4c4af248e84dd928700b755a0b292",
+    "key-clocks-host-6.log": "64dfabbe751f786d96a96f9db9fcad37d8d7caf8ea5df7701735c1923d966c7d",
+    "key-clocks-host-6.stderr.raw.log": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "key-clocks-host-6.stdout.log": "431b93e6dea13fb58b5794e45b103caf2ce222cace6e44faeed3c6cc149d3217",
+    "key-clocks-method-plan-2.json": "f1e0f710d777d9c3c5f04ab349ded453ffe7e8e1943914a0667239959eff7e12",
+    "key-clocks-native-1.log": "519a43a4ad0ca54e2f8c11b60e4956da9e73c10f65ae002915d7444b685462f6",
+    "key-clocks-native-2.log": "eee35ecee0ee79f984929c7c70d30bf820d705347a3ca0a0d561f3bd66f48fdb",
+    "key-clocks-native-3.log": "74058917efcb3ede741fedc96abddcd705fbd1bbf8b37c3c293c7b84a97f248e",
+    "key-clocks-native-4.log": "74058917efcb3ede741fedc96abddcd705fbd1bbf8b37c3c293c7b84a97f248e",
+    "key-clocks-native-5.log": "111d15d578e73c95b57dd7da51dfef4dae95d4b1a95b3c681ccfafab85f5d2e3",
+    "key-clocks-native-6.log": "c92cb167d307863b43de91768293d3ed8f32a4b4c4335c573093eefe22ecb2b2",
+    "key-clocks-native-7.log": "c92cb167d307863b43de91768293d3ed8f32a4b4c4335c573093eefe22ecb2b2",
+    "key-clocks-python-1.log": "836b3de16ffd50b88be748a4582ee35a4e07184de67d6fd4d54a7d4be1d8998a",
+    "key-clocks-python-2.log": "ba2d753fb2d0833e10276482677f6f47a3d99caec53119360ba3ef1261ef3195",
+    "key-clocks-python-3.log": "0add69eae54d0fc8ec2f099183409da13ab13969e806d06f9cf9f9f229c7301c",
+    "key-clocks-retirement-plan.json": "49f4d6e51c4e8ba44c13d52ef08a33caca6211b6485b6f6e07cc903483945078",
+    "key-clocks-retirement-result.json": "393e478093782069a12cc887622e0b03cb6ed78540b64a5fd350a33995e5bebc",
+    "key-clocks-retirement-verification.json": "ed004e4a34a494db0d31641e5ca5ab6170111cfdfe75f6ac6e1897057b06ee77",
+    "key-clocks-source-1.log": "ce8ff9e8f4e69ab81b122683be9c7e139c6e6fa33db8061f6c1bbad3a845af7e",
+    "run_key_clocks_host_proof.py": "745067eb36b0adce049c951ab01c7e57e3daae85dd8a5ec3fe614b555e3a6944",
+    "run_key_clocks_host_proof6.py": "effc044a56b43c7928fba43135822fe515dbee59e8192c8730d8c5e3cc4e4f1a",
+    "verification-initial.json": "418a55ed89c7e76095e5d5c4e1cf0060a32eee2f2e9eb90210790c177d6cd29c"
+  },
+  "binding_review": "Decoder accepts known data-driven initial attributes and completion flags; current source generator derives callbacks from reviewed actual methods. Current3812-byte resource and all native observations unchanged. Unsupported flags/targets remain rejected; callbacks are not fixed per source profile in C++.",
+  "cleanup": {
+    "source_plan_sha256": "49f4d6e51c4e8ba44c13d52ef08a33caca6211b6485b6f6e07cc903483945078",
+    "raw_result_sha256": "393e478093782069a12cc887622e0b03cb6ed78540b64a5fd350a33995e5bebc",
+    "removed_bytes": 480492,
+    "entries": [
+      {
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-1\\project",
+        "files": 31,
+        "bytes": 63710,
+        "verified_absent": true
+      },
+      {
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-2\\project",
+        "files": 32,
+        "bytes": 66916,
+        "verified_absent": true
+      },
+      {
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-3\\project",
+        "files": 32,
+        "bytes": 68204,
+        "verified_absent": true
+      },
+      {
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-4\\project",
+        "files": 32,
+        "bytes": 68204,
+        "verified_absent": true
+      },
+      {
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-5\\project",
+        "files": 32,
+        "bytes": 70084,
+        "verified_absent": true
+      },
+      {
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-6\\project",
+        "files": 32,
+        "bytes": 71687,
+        "verified_absent": true
+      },
+      {
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-7\\project",
+        "files": 32,
+        "bytes": 71687,
+        "verified_absent": true
+      }
+    ],
+    "raw_count_note": "PowerShell emitted one Count per property; the unchanged raw output is retained. Correct counts are derived from the exact checked file manifest.",
+    "scope": "Only seven completed, marked native reference project directories. Actual observations/scripts/clips/logs retained; source/SDK/game files/private DSP and protected asset directories untouched."
+  },
+  "frozen_fixture_equivalent_to_executed": {
+    "source.encklc": "c9e86393652c3b6c3b6d93ecad6cee4d833eb969c2648f1ece15140aace17ee7",
+    "reference.tsv": "29d8a5f071fb167107891f8a08c39129415ea3e76c185ccf286c2170351b4f04"
+  }
+}

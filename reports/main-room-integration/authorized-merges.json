@@ -1,0 +1,39 @@
+{
+  "authorization": "Human explicitly authorized the ordered ready/merge of PR #71 (b427a6959e37fee6dd95e7910af854c8ed615d11) then PR #73 (59b7fbdbf394daa204841d14c12b3893061e4057): \u6388\u6743\u6309\u987a\u5e8f\u5408\u5e76 #71 \u548c #73.",
+  "merges": [
+    {
+      "pr": 71,
+      "head": "b427a6959e37fee6dd95e7910af854c8ed615d11",
+      "merge": {
+        "mergeCommit": {
+          "oid": "a6792111ee00bbe5bc96a538f4ece69692d3c452"
+        },
+        "mergedAt": "2026-10-20T22:48:30Z",
+        "state": "MERGED"
+      },
+      "tree_verified": true
+    },
+    {
+      "pr": 73,
+      "head": "59b7fbdbf394daa204841d14c12b3893061e4057",
+      "merge": {
+        "mergeCommit": {
+          "oid": "29faf20f396844f3ad70c7c30b81329d3305c72e"
+        },
+        "mergedAt": "2026-10-20T22:49:41Z",
+        "state": "MERGED"
+      },
+      "tree_verified": true
+    }
+  ],
+  "integration": {
+    "main": "29faf20f396844f3ad70c7c30b81329d3305c72e",
+    "first_branch": "codex/catacombs-key-lock-clocks",
+    "conflicts": [
+      "CMakeLists.txt",
+      "docs/STATUS.md"
+    ],
+    "resolution": "Retain both independent core source registrations and both historical status records. Room/camera implementation and tests copied by normal Git merge, no gameplay resource regeneration or saved identity changes.",
+    "current_combined_checks": "Not yet executed; historical source results remain scoped to their original commits."
+  }
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4",
+    "files": [
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\camera.gd",
+        "sha256": "0e3a4c99afb3a43a381196391a0510ac597acdf85a36c81ddaa10465a85c8f2a",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\camera.gd",
+        "bytes": 235
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\data.gd",
+        "sha256": "7d3f32f93f11cfb4c17d3f72c303f52a60e1a0f9c2cca35598c952d1ccafd41c",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\data.gd",
+        "bytes": 285
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\dungeon.gd",
+        "sha256": "62bd8f2e533e5612afec2053095c3ff2868df2a7201faa2efa662731cdb5311e",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\dungeon.gd",
+        "bytes": 342
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\engine.log",
+        "sha256": "6d3bff0fde56bd7de4b7472ee2d77134ff0dfc3af51c2c9ee363857c2ab956df",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\engine.log",
+        "bytes": 214
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\global.gd",
+        "sha256": "35034bc49313a6b8668cb0d4ec95f2f27d2cebe284a3b13b5d955588b9f17a5f",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\global.gd",
+        "bytes": 379
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\import.log",
+        "sha256": "775ddbb01e9860679e5bed51fc4f12503f2050b917e8fab5490df51e128f16a7",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\import.log",
+        "bytes": 180
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\input.json",
+        "sha256": "4f4735b7b05da60e508bb8d8b20c1d5002dc842d3777df7b5621239716144405",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\input.json",
+        "bytes": 18188
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\observations.json",
+        "sha256": "b38a957a1d489f80109874334d8c98bb2986c9260665c1e8bcb451c68ce0cc6f",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\observations.json",
+        "bytes": 169213
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\probe.gd",
+        "sha256": "04849a46f239c140cd1434c9c301765fc0f3039f4205ced33bbd9b1593271b6a",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\probe.gd",
+        "bytes": 4994
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\producer.py",
+        "sha256": "88e75d4e0460ad3c7455e70361263ab3cf549b3416699f45370e1ad4634b0878",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\producer.py",
+        "bytes": 10125
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\receipt.json",
+        "sha256": "6066426b34b731d4f71baa7be5aefaccd5a4be30ddd704d260149a35a507a800",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-4\\receipt.json",
+        "bytes": 12138
+      }
+    ],
+    "bytes": 216293.0
+  },
+  {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5",
+    "files": [
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\camera.gd",
+        "sha256": "0e3a4c99afb3a43a381196391a0510ac597acdf85a36c81ddaa10465a85c8f2a",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\camera.gd",
+        "bytes": 235
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\data.gd",
+        "sha256": "7d3f32f93f11cfb4c17d3f72c303f52a60e1a0f9c2cca35598c952d1ccafd41c",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\data.gd",
+        "bytes": 285
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\dungeon.gd",
+        "sha256": "62bd8f2e533e5612afec2053095c3ff2868df2a7201faa2efa662731cdb5311e",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\dungeon.gd",
+        "bytes": 342
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\engine.log",
+        "sha256": "6d3bff0fde56bd7de4b7472ee2d77134ff0dfc3af51c2c9ee363857c2ab956df",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\engine.log",
+        "bytes": 214
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\global.gd",
+        "sha256": "35034bc49313a6b8668cb0d4ec95f2f27d2cebe284a3b13b5d955588b9f17a5f",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\global.gd",
+        "bytes": 379
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\import.log",
+        "sha256": "775ddbb01e9860679e5bed51fc4f12503f2050b917e8fab5490df51e128f16a7",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\import.log",
+        "bytes": 180
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\input.json",
+        "sha256": "4f4735b7b05da60e508bb8d8b20c1d5002dc842d3777df7b5621239716144405",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\input.json",
+        "bytes": 18188
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\observations.json",
+        "sha256": "b38a957a1d489f80109874334d8c98bb2986c9260665c1e8bcb451c68ce0cc6f",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\observations.json",
+        "bytes": 169213
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\probe.gd",
+        "sha256": "04849a46f239c140cd1434c9c301765fc0f3039f4205ced33bbd9b1593271b6a",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\probe.gd",
+        "bytes": 4994
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\producer.py",
+        "sha256": "88e75d4e0460ad3c7455e70361263ab3cf549b3416699f45370e1ad4634b0878",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\producer.py",
+        "bytes": 10125
+      },
+      {
+        "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\receipt.json",
+        "sha256": "6066426b34b731d4f71baa7be5aefaccd5a4be30ddd704d260149a35a507a800",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dungeon-rooms\\native-5\\receipt.json",
+        "bytes": 12138
+      }
+    ],
+    "bytes": 216293.0
+  }
+]

@@ -1,0 +1,9 @@
+test_changed_frozen_outputs_and_source_commit_are_rejected (tests.test_dungeon_mechanism_contacts.DungeonMechanismContacts.test_changed_frozen_outputs_and_source_commit_are_rejected) ... ok
+test_native_replays_are_identical_and_sources_remain_fixed (tests.test_dungeon_mechanism_contacts.DungeonMechanismContacts.test_native_replays_are_identical_and_sources_remain_fixed) ... ok
+test_shape_filter_and_contact_outcomes_are_retained (tests.test_dungeon_mechanism_contacts.DungeonMechanismContacts.test_shape_filter_and_contact_outcomes_are_retained) ... ok
+test_source_body_matches_existing_shared_core_hull (tests.test_dungeon_mechanism_contacts.DungeonMechanismContacts.test_source_body_matches_existing_shared_core_hull) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.036s
+
+OK

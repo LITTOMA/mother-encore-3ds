@@ -1,0 +1,55 @@
+{
+  "base_commit": "d1bd1e1f88ddbc929deec3c53cfac97a74ca252b",
+  "scope": "Typed contact dispatch against two identical native source settled replays; shared mechanism and sound routing. Not live scene, exact physics latency, emulator, audible or hardware acceptance.",
+  "native_engine": "Godot3.6.2 stable 3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "native_runs": [
+    2,
+    3
+  ],
+  "cases": 22,
+  "observations": 49,
+  "core_checks": 2932,
+  "python_checks": 4,
+  "python_checks_including_shard_regression": 9,
+  "compiler": "WSL GCC9.4 direct current-source ASan+UBSan,detect_leaks=1,halt_on_error=1,nonPIE,noexceptions/noRTTI",
+  "core_units": 109,
+  "archived_unchanged_source_headers": 224,
+  "source_sha256": {
+    "include/encore/dungeon_mechanism_contacts.hpp": "f4372cfb20ba5cc9b48cc81e13fb52f5b8bfe7aee857286c65599e25166aff6f",
+    "runtime/dungeon_mechanism_contacts.cpp": "871dc41ff738aa9b2a0838ee521eee8653193c8c8d50fb9230c9e23394dbfe48",
+    "tests/dungeon_mechanism_contacts_tests.cpp": "3a55b79aa8d9e58c5019d9f875eebf179cf4d879f68f8424cf1bb554f9f41ae1",
+    "tests/prepare_dungeon_mechanism_contacts.py": "34477114ce29de07e47d8c1451ccc7c11823afaaad1be18facef1fb7e670b9cc",
+    "tests/test_dungeon_mechanism_contacts.py": "3ef66739811bc1e962803b415a83bcac5a0a5c2c2b19f0bf25725313f3f8c0c3",
+    "tools/run_dungeon_contact_reference.py": "219022c3efd53b5b060096c430d4b00496e898319120113f6f17c4a938ae6793",
+    "CMakeLists.txt": "b31fd0d5e9d2c8eb5c00e88b28e2511e9191213b97cebee0eb7104f87e00e953",
+    "platform/ctr/Makefile": "bc7e6be727824ce12d8c135ad216963611a8f6f510f9f49a3201ca9fb3212a4e"
+  },
+  "test_metadata_only": {
+    "ctest": 303,
+    "python_discovered": 1375,
+    "aggregate": 992,
+    "dedicated": 383
+  },
+  "failed_invocations": [
+    "First shell helper used CRLF; no compiler ran. Rewritten with LF.",
+    "First actual fixture omitted mandatory five saved-flag identities; strict source state admission rejected it. Added actual all-false source initial flags; native expectations unchanged."
+  ],
+  "retired_project_bytes": 4327945,
+  "formal_game_resources": "unchanged",
+  "save_schema": "unchanged",
+  "new_commit_full_check": "pending",
+  "evidence_sha256": {
+    "mechanism-contact-cleanup.json": "0a7ff3b1a3be9f183c94cca0f6301c79be486325cd659e830bdeea5c7ac01cd7",
+    "mechanism-contact-cmake.log": "f9368f946feec94d95ffaa0f527db3bf9050bf41c5e5fb4c0b85495474c2ca81",
+    "mechanism-contact-collection.log": "33d7b53cf0c2c94b366f941e4b7f80fe2e05f7b974ecc728828b12380d808bba",
+    "mechanism-contact-compile-1.log": "e26e96b3987416759c588448330d66a0ebf188011f768912c077792aa0733206",
+    "mechanism-contact-host-1.sh": "cfed872a213bad9632553e186266ad3f2f05d98c4c89de04a6b3ecf1ff17f229",
+    "mechanism-contact-native-1.log": "3697c5d8d50b0801df7492167193eae585b22651e713fbf6bc7f33ea99852bab",
+    "mechanism-contact-native-2.log": "668f0d7be48a2af311c15dbde70b4c66a89d502f3add3cdf3d4f9f45171fd4e5",
+    "mechanism-contact-native-3.log": "2ec48993133efc30e980cb5f292b88635f610172f32eca923225a57fdfd2e29e",
+    "mechanism-contact-native-4.log": "98f0180eb13473e7d0d83b60080fc575cebfdc7bcb2638473c8b902af3e66b2a",
+    "mechanism-contact-python-1.log": "06f03b4b316a69d72e5b98447c291820d87c95a167d28fcd49480989539f481d",
+    "mechanism-contact-python-2.log": "8bdc6c5be4940700f94a2f497b547468e1b88e2543d6e5d251afb0ba12fa0cf3",
+    "mechanism-media-test-plan.json": "b52495404acf33f4a2bfca45de2d9d34bb6a143201e3a8ee369333cf7bf39fa9"
+  }
+}

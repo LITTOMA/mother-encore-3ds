@@ -1,0 +1,96 @@
+runtime/dungeon_mechanism_presentation.cpp: In member function ‘bool encore::upstream::DungeonMechanismPresentationData::load(const uint8_t*, size_t, std::string&)’:
+runtime/dungeon_mechanism_presentation.cpp:56:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   56 |   for(size_t j=cursor;j<off[i];++j)if(p[j])return bad(e,"Mechanism presentation noncanonical padding");cursor=off[i]+count[i]*strides[i];
+      |   ^~~
+runtime/dungeon_mechanism_presentation.cpp:56:104: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   56 |   for(size_t j=cursor;j<off[i];++j)if(p[j])return bad(e,"Mechanism presentation noncanonical padding");cursor=off[i]+count[i]*strides[i];
+      |                                                                                                        ^~~~~~
+runtime/dungeon_mechanism_presentation.cpp:74:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   74 |   if(props.frame_count()!=s.frames)return bad(e,"Mechanism presentation sprite frames differ from clock");v->sprites.push_back(std::move(s));
+      |   ^~
+runtime/dungeon_mechanism_presentation.cpp:74:107: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   74 |   if(props.frame_count()!=s.frames)return bad(e,"Mechanism presentation sprite frames differ from clock");v->sprites.push_back(std::move(s));
+      |                                                                                                           ^
+runtime/dungeon_mechanism_presentation.cpp:83:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   83 |   if(!found||expected!=o.path||point.x!=o.position.x||point.y!=o.position.y)return bad(e,"Mechanism presentation source owner placement rejected");used.insert(o.profile);v->owners.push_back(std::move(o));
+      |   ^~
+runtime/dungeon_mechanism_presentation.cpp:83:148: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   83 |   if(!found||expected!=o.path||point.x!=o.position.x||point.y!=o.position.y)return bad(e,"Mechanism presentation source owner placement rejected");used.insert(o.profile);v->owners.push_back(std::move(o));
+      |                                                                                                                                                    ^~~~
+runtime/dungeon_mechanism_presentation.cpp:94:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   94 |   if(!v->audio.load(p+off[6],count[6],e))return false;std::set<uint32_t>sound_owners,assets;unsigned denied=0;
+      |   ^~
+runtime/dungeon_mechanism_presentation.cpp:94:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   94 |   if(!v->audio.load(p+off[6],count[6],e))return false;std::set<uint32_t>sound_owners,assets;unsigned denied=0;
+      |                                                       ^~~
+runtime/dungeon_mechanism_presentation.cpp:98:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   98 |    if(!v->audio.find(s.stable_id,asset)||asset.source_path!=uri||asset.source_sha256!=s.source_sha256||asset.loops())return bad(e,"Mechanism sound PCM bank/source binding rejected");assets.insert(s.stable_id);
+      |    ^~
+runtime/dungeon_mechanism_presentation.cpp:98:183: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   98 |    if(!v->audio.find(s.stable_id,asset)||asset.source_path!=uri||asset.source_sha256!=s.source_sha256||asset.loops())return bad(e,"Mechanism sound PCM bank/source binding rejected");assets.insert(s.stable_id);
+      |                                                                                                                                                                                       ^~~~~~
+runtime/dungeon_mechanism_presentation.cpp:102:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  102 |     if(!owner||s.path.find_last_of('/')==std::string::npos||s.path.substr(0,s.path.find_last_of('/'))!=owner->path||!s.channel.empty())return bad(e,"Mechanism source-node audio path rejected");const auto*profile=v->bindings.profile(owner->profile);
+      |     ^~
+runtime/dungeon_mechanism_presentation.cpp:102:194: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  102 |     if(!owner||s.path.find_last_of('/')==std::string::npos||s.path.substr(0,s.path.find_last_of('/'))!=owner->path||!s.channel.empty())return bad(e,"Mechanism source-node audio path rejected");const auto*profile=v->bindings.profile(owner->profile);
+      |                                                                                                                                                                                                  ^~~~~
+runtime/dungeon_mechanism_presentation.cpp: In member function ‘bool encore::upstream::DungeonMechanismPresentationData::rectangle(size_t, encore::upstream::DungeonMechanismRectangle&, std::string&) const’:
+runtime/dungeon_mechanism_presentation.cpp:125:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  125 |  if(index>=shapes().size())return bad(e,"Mechanism rectangle index rejected");const auto&s=shapes()[index];
+      |  ^~
+runtime/dungeon_mechanism_presentation.cpp:125:79: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  125 |  if(index>=shapes().size())return bad(e,"Mechanism rectangle index rejected");const auto&s=shapes()[index];
+      |                                                                               ^~~~~
+runtime/dungeon_mechanism_audio.cpp: In member function ‘bool encore::upstream::DungeonMechanismAudioRouter::prepare(const encore::upstream::DungeonMechanismPresentationData&, uint64_t, std::string&)’:
+runtime/dungeon_mechanism_audio.cpp:4:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    4 |  if(data_.valid()||!data.media_bound()||!epoch)return bad(e,"Mechanism sound routing needs a fresh prepared media owner and scene epoch");data_=data;epoch_=epoch;e.clear();return true;
+      |  ^~
+runtime/dungeon_mechanism_audio.cpp:4:139: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+    4 |  if(data_.valid()||!data.media_bound()||!epoch)return bad(e,"Mechanism sound routing needs a fresh prepared media owner and scene epoch");data_=data;epoch_=epoch;e.clear();return true;
+      |                                                                                                                                           ^~~~~
+runtime/dungeon_mechanism_audio.cpp: In member function ‘bool encore::upstream::DungeonMechanismAudioRouter::command(uint32_t, bool, bool, uint32_t, encore::upstream::DungeonMechanismSoundCommand&, std::string&) const’:
+runtime/dungeon_mechanism_audio.cpp:10:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   10 |    if(!placement)return bad(e,"Mechanism sound source placement missing");const auto*profile=data_.bindings().profile(placement->profile);
+      |    ^~
+runtime/dungeon_mechanism_audio.cpp:10:75: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   10 |    if(!placement)return bad(e,"Mechanism sound source placement missing");const auto*profile=data_.bindings().profile(placement->profile);
+      |                                                                           ^~~~~
+runtime/dungeon_mechanism_audio.cpp: In member function ‘bool encore::upstream::DungeonMechanismAudioRouter::plan(const std::vector<encore::upstream::DungeonMechanismEvent>&, std::vector<encore::upstream::DungeonMechanismSoundCommand>&, std::string&) const’:
+runtime/dungeon_mechanism_audio.cpp:17:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   17 |  if(!valid()||events.size()>4096)return bad(e,"Mechanism sound routing owner/batch rejected");std::vector<DungeonMechanismSoundCommand>next;next.reserve(events.size());
+      |  ^~
+runtime/dungeon_mechanism_audio.cpp:17:95: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   17 |  if(!valid()||events.size()>4096)return bad(e,"Mechanism sound routing owner/batch rejected");std::vector<DungeonMechanismSoundCommand>next;next.reserve(events.size());
+      |                                                                                               ^~~
+runtime/dungeon_mechanism_audio.cpp:19:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |   if(event.epoch!=epoch_)return bad(e,"Mechanism sound scene epoch differs");DungeonMechanismSoundCommand sound;
+      |   ^~
+runtime/dungeon_mechanism_audio.cpp:19:78: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |   if(event.epoch!=epoch_)return bad(e,"Mechanism sound scene epoch differs");DungeonMechanismSoundCommand sound;
+      |                                                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+runtime/dungeon_mechanism_audio.cpp:22:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   22 |     if(!event.owner)return bad(e,"Mechanism wall sound owner missing");if(!command(event.owner,true,event.playing,event.owner,sound,e))return false;next.push_back(sound);break;
+      |     ^~
+runtime/dungeon_mechanism_audio.cpp:22:72: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   22 |     if(!event.owner)return bad(e,"Mechanism wall sound owner missing");if(!command(event.owner,true,event.playing,event.owner,sound,e))return false;next.push_back(sound);break;
+      |                                                                        ^~
+runtime/dungeon_mechanism_audio.cpp:28:7: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   28 |       if(!r.target.id||event.owner!=r.target.id||!r.target.generation)return bad(e,"Mechanism switch sound request identity rejected");bool found=false;const auto g=data_.bindings().graph();for(uint32_t i=0;i<g.switch_count();++i)if(g.switch_node(i).id==r.target.id)found=true;if(!found)return bad(e,"Mechanism switch sound source unknown");
+      |       ^~
+runtime/dungeon_mechanism_audio.cpp:28:136: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   28 |       if(!r.target.id||event.owner!=r.target.id||!r.target.generation)return bad(e,"Mechanism switch sound request identity rejected");bool found=false;const auto g=data_.bindings().graph();for(uint32_t i=0;i<g.switch_count();++i)if(g.switch_node(i).id==r.target.id)found=true;if(!found)return bad(e,"Mechanism switch sound source unknown");
+      |                                                                                                                                        ^~~~
+runtime/dungeon_mechanism_audio.cpp:29:7: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   29 |       if(!command(r.kind==DungeonSwitchEventKind::DeniedAudio?0:r.target.id,false,true,r.target.id,sound,e))return false;next.push_back(sound);break;
+      |       ^~
+runtime/dungeon_mechanism_audio.cpp:29:122: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   29 |       if(!command(r.kind==DungeonSwitchEventKind::DeniedAudio?0:r.target.id,false,true,r.target.id,sound,e))return false;next.push_back(sound);break;
+      |                                                                                                                          ^~~~
+runtime/dungeon_mechanism_audio.cpp: In member function ‘bool encore::upstream::DungeonMechanismAudioRouter::retire(std::vector<encore::upstream::DungeonMechanismSoundCommand>&, std::string&)’:
+runtime/dungeon_mechanism_audio.cpp:45:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   45 |  if(!valid())return bad(e,"Mechanism sound scene already retired");std::vector<DungeonMechanismSoundCommand>next;
+      |  ^~
+runtime/dungeon_mechanism_audio.cpp:45:68: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   45 |  if(!valid())return bad(e,"Mechanism sound scene already retired");std::vector<DungeonMechanismSoundCommand>next;
+      |                                                                    ^~~

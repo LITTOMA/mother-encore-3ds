@@ -1,0 +1,1415 @@
+{
+  "data": {
+    "scene": 4,
+    "region": "Catacombs",
+    "ready": 0.20000000298023224,
+    "main": 241544216,
+    "wall": 3761819854,
+    "post_delay": 0.5,
+    "fade": 0.0,
+    "denied": "Audio/Sound effects/M3/bump.wav",
+    "channel": "switch",
+    "switches": [
+      {
+        "id": 241544216,
+        "path": "Bottom2/switch",
+        "flag": "hidden_entrance_opened",
+        "bits": 112,
+        "camera": 1.0,
+        "x": -1368.0,
+        "y": 472.0,
+        "first": 0,
+        "count": 1,
+        "audio": "Audio/Sound effects/Lever.mp3",
+        "kind": 1
+      },
+      {
+        "id": 2428375629,
+        "path": "Bottom2/switch1",
+        "flag": "Catacombs/switch1",
+        "bits": 5,
+        "camera": 1.0,
+        "x": -1528.0,
+        "y": -1064.0,
+        "first": 1,
+        "count": 4,
+        "audio": "Audio/Sound effects/Lever.mp3",
+        "kind": 1
+      },
+      {
+        "id": 163005431,
+        "path": "Bottom2/switch2",
+        "flag": "Catacombs/switch2",
+        "bits": 97,
+        "camera": 1.0,
+        "x": -528.0,
+        "y": -616.0,
+        "first": 5,
+        "count": 2,
+        "audio": "Audio/Sound effects/Lever.mp3",
+        "kind": 1
+      },
+      {
+        "id": 422845226,
+        "path": "Bottom2/Plate1",
+        "flag": "Catacombs/Plate1",
+        "bits": 17,
+        "camera": 1.0,
+        "x": -1160.0,
+        "y": -184.0,
+        "first": 7,
+        "count": 1,
+        "audio": "Audio/Sound effects/M3/door_close.wav",
+        "kind": 2
+      },
+      {
+        "id": 1767829413,
+        "path": "Bottom2/Plate4",
+        "flag": "Catacombs/Plate4",
+        "bits": 17,
+        "camera": 1.0,
+        "x": -2488.0,
+        "y": -232.0,
+        "first": 8,
+        "count": 1,
+        "audio": "Audio/Sound effects/M3/door_close.wav",
+        "kind": 2
+      }
+    ],
+    "objects": [
+      {
+        "id": 3761819854,
+        "path": "Bottom2/Wall Door",
+        "kind": 2,
+        "order": 0,
+        "bits": 2,
+        "x": -648.0,
+        "y": 120.0,
+        "offset_x": 0.0,
+        "offset_y": 44.0
+      },
+      {
+        "id": 1181235545,
+        "path": "Objects/Gate6",
+        "kind": 1,
+        "order": 0,
+        "bits": 0,
+        "x": -1192.0,
+        "y": -208.0,
+        "offset_x": 0.0,
+        "offset_y": 0.0
+      },
+      {
+        "id": 906153430,
+        "path": "Objects/Gate3",
+        "kind": 1,
+        "order": 0,
+        "bits": 1,
+        "x": -1352.0,
+        "y": -1088.0,
+        "offset_x": 0.0,
+        "offset_y": 0.0
+      },
+      {
+        "id": 2714768478,
+        "path": "Objects/Gate8",
+        "kind": 1,
+        "order": 0,
+        "bits": 1,
+        "x": -1720.0,
+        "y": -1088.0,
+        "offset_x": 0.0,
+        "offset_y": 0.0
+      },
+      {
+        "id": 2825279605,
+        "path": "Objects/Gate4",
+        "kind": 1,
+        "order": 0,
+        "bits": 0,
+        "x": -1608.0,
+        "y": -1088.0,
+        "offset_x": 0.0,
+        "offset_y": 0.0
+      },
+      {
+        "id": 3747703011,
+        "path": "Objects/Gate5",
+        "kind": 1,
+        "order": 0,
+        "bits": 0,
+        "x": -1240.0,
+        "y": -1088.0,
+        "offset_x": 0.0,
+        "offset_y": 0.0
+      },
+      {
+        "id": 3604423880,
+        "path": "Objects/Gate9",
+        "kind": 1,
+        "order": 0,
+        "bits": 0,
+        "x": -648.0,
+        "y": -736.0,
+        "offset_x": 0.0,
+        "offset_y": 0.0
+      },
+      {
+        "id": 2842413199,
+        "path": "Objects/Gate10",
+        "kind": 1,
+        "order": 0,
+        "bits": 2,
+        "x": -600.0,
+        "y": -736.0,
+        "offset_x": 0.0,
+        "offset_y": 0.0
+      },
+      {
+        "id": 3731683353,
+        "path": "Objects/Gate11",
+        "kind": 1,
+        "order": 0,
+        "bits": 0,
+        "x": -2344.0,
+        "y": -208.0,
+        "offset_x": 0.0,
+        "offset_y": 0.0
+      }
+    ],
+    "edges": [
+      [
+        241544216,
+        3761819854
+      ],
+      [
+        2428375629,
+        906153430
+      ],
+      [
+        2428375629,
+        2825279605
+      ],
+      [
+        2428375629,
+        3747703011
+      ],
+      [
+        2428375629,
+        2714768478
+      ],
+      [
+        163005431,
+        3604423880
+      ],
+      [
+        163005431,
+        2842413199
+      ],
+      [
+        422845226,
+        1181235545
+      ],
+      [
+        1767829413,
+        3731683353
+      ]
+    ]
+  },
+  "paths": {
+    "scene": "Maps/podunk/Catacombs.tscn",
+    "lever": "Nodes/Overworld/switches/Lever.tscn",
+    "plate": "Nodes/Overworld/switches/plate.tscn",
+    "gate": "Nodes/Overworld/switches/Gate.tscn",
+    "wall": "Nodes/Overworld/switches/Wall Door.tscn",
+    "switch_script": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+    "list_script": "Scripts/Main/Switches/ObjectsListSwitch.gd",
+    "abstract_script": "Scripts/Main/Switches/AbstractSwitch.gd",
+    "flag_script": "Scripts/Main/FlaggableObject.gd",
+    "object_script": "Scripts/Main/Switches/ControlledObject.gd",
+    "two_state_script": "Scripts/Main/Switches/ControlledTwoStatesObject.gd",
+    "gate_script": "Scripts/Main/Switches/ControlledDoor.gd",
+    "wall_script": "Scripts/misc/wall door.gd",
+    "scene_script": "Scripts/Dungeons/Catacombs.gd",
+    "area_script": "Scripts/Main/RoomTypes/AreaRoom.gd",
+    "globaldata_script": "Scripts/global/globalData.gd"
+  },
+  "nodes": [
+    {
+      "id": 241544216,
+      "path": "Bottom2/switch",
+      "kind": "lever"
+    },
+    {
+      "id": 2428375629,
+      "path": "Bottom2/switch1",
+      "kind": "lever"
+    },
+    {
+      "id": 163005431,
+      "path": "Bottom2/switch2",
+      "kind": "lever"
+    },
+    {
+      "id": 422845226,
+      "path": "Bottom2/Plate1",
+      "kind": "plate"
+    },
+    {
+      "id": 1767829413,
+      "path": "Bottom2/Plate4",
+      "kind": "plate"
+    },
+    {
+      "id": 3761819854,
+      "path": "Bottom2/Wall Door",
+      "kind": "wall"
+    },
+    {
+      "id": 1181235545,
+      "path": "Objects/Gate6",
+      "kind": "gate"
+    },
+    {
+      "id": 906153430,
+      "path": "Objects/Gate3",
+      "kind": "gate"
+    },
+    {
+      "id": 2714768478,
+      "path": "Objects/Gate8",
+      "kind": "gate"
+    },
+    {
+      "id": 2825279605,
+      "path": "Objects/Gate4",
+      "kind": "gate"
+    },
+    {
+      "id": 3747703011,
+      "path": "Objects/Gate5",
+      "kind": "gate"
+    },
+    {
+      "id": 3604423880,
+      "path": "Objects/Gate9",
+      "kind": "gate"
+    },
+    {
+      "id": 2842413199,
+      "path": "Objects/Gate10",
+      "kind": "gate"
+    },
+    {
+      "id": 3731683353,
+      "path": "Objects/Gate11",
+      "kind": "gate"
+    }
+  ],
+  "switches": {
+    "Bottom2/switch": {
+      "id": 241544216,
+      "path": "Bottom2/switch",
+      "flag": "hidden_entrance_opened",
+      "bits": 112,
+      "camera": 1.0,
+      "x": -1368.0,
+      "y": 472.0,
+      "first": 0,
+      "count": 1,
+      "audio": "Audio/Sound effects/Lever.mp3",
+      "kind": 1
+    },
+    "Bottom2/switch1": {
+      "id": 2428375629,
+      "path": "Bottom2/switch1",
+      "flag": "Catacombs/switch1",
+      "bits": 5,
+      "camera": 1.0,
+      "x": -1528.0,
+      "y": -1064.0,
+      "first": 1,
+      "count": 4,
+      "audio": "Audio/Sound effects/Lever.mp3",
+      "kind": 1
+    },
+    "Bottom2/switch2": {
+      "id": 163005431,
+      "path": "Bottom2/switch2",
+      "flag": "Catacombs/switch2",
+      "bits": 97,
+      "camera": 1.0,
+      "x": -528.0,
+      "y": -616.0,
+      "first": 5,
+      "count": 2,
+      "audio": "Audio/Sound effects/Lever.mp3",
+      "kind": 1
+    },
+    "Bottom2/Plate1": {
+      "id": 422845226,
+      "path": "Bottom2/Plate1",
+      "flag": "Catacombs/Plate1",
+      "bits": 17,
+      "camera": 1.0,
+      "x": -1160.0,
+      "y": -184.0,
+      "first": 7,
+      "count": 1,
+      "audio": "Audio/Sound effects/M3/door_close.wav",
+      "kind": 2
+    },
+    "Bottom2/Plate4": {
+      "id": 1767829413,
+      "path": "Bottom2/Plate4",
+      "flag": "Catacombs/Plate4",
+      "bits": 17,
+      "camera": 1.0,
+      "x": -2488.0,
+      "y": -232.0,
+      "first": 8,
+      "count": 1,
+      "audio": "Audio/Sound effects/M3/door_close.wav",
+      "kind": 2
+    }
+  },
+  "objects": {
+    "Bottom2/Wall Door": {
+      "id": 3761819854,
+      "path": "Bottom2/Wall Door",
+      "kind": 2,
+      "order": 0,
+      "bits": 2,
+      "x": -648.0,
+      "y": 120.0,
+      "offset_x": 0.0,
+      "offset_y": 44.0
+    },
+    "Objects/Gate6": {
+      "id": 1181235545,
+      "path": "Objects/Gate6",
+      "kind": 1,
+      "order": 0,
+      "bits": 0,
+      "x": -1192.0,
+      "y": -208.0,
+      "offset_x": 0.0,
+      "offset_y": 0.0
+    },
+    "Objects/Gate3": {
+      "id": 906153430,
+      "path": "Objects/Gate3",
+      "kind": 1,
+      "order": 0,
+      "bits": 1,
+      "x": -1352.0,
+      "y": -1088.0,
+      "offset_x": 0.0,
+      "offset_y": 0.0
+    },
+    "Objects/Gate8": {
+      "id": 2714768478,
+      "path": "Objects/Gate8",
+      "kind": 1,
+      "order": 0,
+      "bits": 1,
+      "x": -1720.0,
+      "y": -1088.0,
+      "offset_x": 0.0,
+      "offset_y": 0.0
+    },
+    "Objects/Gate4": {
+      "id": 2825279605,
+      "path": "Objects/Gate4",
+      "kind": 1,
+      "order": 0,
+      "bits": 0,
+      "x": -1608.0,
+      "y": -1088.0,
+      "offset_x": 0.0,
+      "offset_y": 0.0
+    },
+    "Objects/Gate5": {
+      "id": 3747703011,
+      "path": "Objects/Gate5",
+      "kind": 1,
+      "order": 0,
+      "bits": 0,
+      "x": -1240.0,
+      "y": -1088.0,
+      "offset_x": 0.0,
+      "offset_y": 0.0
+    },
+    "Objects/Gate9": {
+      "id": 3604423880,
+      "path": "Objects/Gate9",
+      "kind": 1,
+      "order": 0,
+      "bits": 0,
+      "x": -648.0,
+      "y": -736.0,
+      "offset_x": 0.0,
+      "offset_y": 0.0
+    },
+    "Objects/Gate10": {
+      "id": 2842413199,
+      "path": "Objects/Gate10",
+      "kind": 1,
+      "order": 0,
+      "bits": 2,
+      "x": -600.0,
+      "y": -736.0,
+      "offset_x": 0.0,
+      "offset_y": 0.0
+    },
+    "Objects/Gate11": {
+      "id": 3731683353,
+      "path": "Objects/Gate11",
+      "kind": 1,
+      "order": 0,
+      "bits": 0,
+      "x": -2344.0,
+      "y": -208.0,
+      "offset_x": 0.0,
+      "offset_y": 0.0
+    }
+  },
+  "audio": {
+    "res://Audio/Sound effects/Lever.mp3": {
+      "loop": false,
+      "offset": 0.0
+    },
+    "res://Audio/Sound effects/M3/door_close.wav": {
+      "loop": false,
+      "offset": 0.0
+    },
+    "res://Audio/Sound effects/Stone_move.mp3": {
+      "loop": false,
+      "offset": 0.0
+    }
+  },
+  "main": "Bottom2/switch",
+  "wall": "Bottom2/Wall Door",
+  "references": {
+    "Bottom2/switch": [
+      "../Wall Door"
+    ],
+    "Bottom2/switch1": [
+      "../../Objects/Gate3",
+      "../../Objects/Gate4",
+      "../../Objects/Gate5",
+      "../../Objects/Gate8"
+    ],
+    "Bottom2/switch2": [
+      "../../Objects/Gate9",
+      "../../Objects/Gate10"
+    ],
+    "Bottom2/Plate1": [
+      "../../Objects/Gate6"
+    ],
+    "Bottom2/Plate4": [
+      "../../Objects/Gate11"
+    ]
+  },
+  "contact_player": {
+    "layer": 1,
+    "mask": 4353,
+    "position": [
+      0.0,
+      3.0
+    ],
+    "points": [
+      [
+        6.0,
+        4.0
+      ],
+      [
+        4.0,
+        6.0
+      ],
+      [
+        -5.0,
+        6.0
+      ],
+      [
+        -7.0,
+        4.0
+      ],
+      [
+        -7.0,
+        2.0
+      ],
+      [
+        -5.0,
+        0.0
+      ],
+      [
+        4.0,
+        0.0
+      ],
+      [
+        6.0,
+        2.0
+      ]
+    ]
+  },
+  "contact_swing": [
+    1.0,
+    0.7,
+    0.0,
+    -4.0,
+    -0.5,
+    -2.0,
+    3.14159,
+    12.7413,
+    0.953379,
+    1.5708,
+    -3.8147e-06,
+    -1.5,
+    1.5708,
+    10.4999,
+    17.0,
+    0.0,
+    0.35,
+    0.0,
+    0.2
+  ],
+  "contact_hitbox": "Nodes/Reusables/Overlap/Hitbox.tscn",
+  "contact_cases": [
+    {
+      "name": "bat_enter_stay_reenter",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "stay",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "bat_paused",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter_paused",
+          "inside": true,
+          "paused": true,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "unpause_stay",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "bat_not_ready",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "early_enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "ready_stay",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0.25
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": false,
+      "can_switch": true
+    },
+    {
+      "name": "bat_denied",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "stay",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": false
+    },
+    {
+      "name": "body_enter_stay_reenter",
+      "kind": "body",
+      "target": "Bottom2/Plate1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "stay",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "body_paused",
+      "kind": "body",
+      "target": "Bottom2/Plate1",
+      "phases": [
+        {
+          "name": "enter_paused",
+          "inside": true,
+          "paused": true,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "unpause_stay",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "body_not_ready",
+      "kind": "body",
+      "target": "Bottom2/Plate1",
+      "phases": [
+        {
+          "name": "early_enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "ready_stay",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0.25
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": false,
+      "can_switch": true
+    },
+    {
+      "name": "body_denied",
+      "kind": "body",
+      "target": "Bottom2/Plate1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "stay",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": false
+    },
+    {
+      "name": "bat_layer_0",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 0,
+          "mask": 0,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "bat_layer_1",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 0,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "bat_layer_2",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 0,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "bat_layer_64",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 64,
+          "mask": 0,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "bat_layer_128",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 128,
+          "mask": 0,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "bat_reverse_mask",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 0,
+          "mask": 1,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "bat_unmonitorable",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": false,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "bat_disabled",
+      "kind": "bat",
+      "target": "Bottom2/switch1",
+      "phases": [
+        {
+          "name": "enter_disabled",
+          "inside": true,
+          "paused": false,
+          "enabled": false,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "enable_inside",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        },
+        {
+          "name": "stay",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "body_filter_0_4353",
+      "kind": "body",
+      "target": "Bottom2/Plate1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 0,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "body_filter_1_0",
+      "kind": "body",
+      "target": "Bottom2/Plate1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 0,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "body_filter_2_4353",
+      "kind": "body",
+      "target": "Bottom2/Plate1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 2,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "body_filter_0_0",
+      "kind": "body",
+      "target": "Bottom2/Plate1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 0,
+          "body_mask": 0,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "body_filter_2_0",
+      "kind": "body",
+      "target": "Bottom2/Plate1",
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 2,
+          "body_mask": 0,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    },
+    {
+      "name": "other_body",
+      "kind": "body",
+      "target": "Bottom2/Plate1",
+      "phases": [
+        {
+          "name": "other_enters",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": true,
+          "delay": 0
+        },
+        {
+          "name": "player_enters",
+          "inside": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 2,
+          "body_layer": 1,
+          "body_mask": 4353,
+          "monitorable": true,
+          "other": false,
+          "delay": 0
+        }
+      ],
+      "wait_ready": true,
+      "can_switch": true
+    }
+  ]
+}

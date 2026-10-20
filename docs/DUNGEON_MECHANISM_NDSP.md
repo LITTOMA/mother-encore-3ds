@@ -8,6 +8,6 @@
 
 381 项 GCC 9.4 ASan+UBSan 检查通过，使用真实四份 PCM、生产 `AudioPlayer` 和明确的主机 NDSP 替身。检查覆盖缓存大小、独立队列、重播、停止后重播、取消、资源耗尽、音量、离场／再次进入、自然结束与旧句柄。准备后删除测试副本仍可播放，验证没有播放阶段文件读取；BGM 队列、资源身份及播放代次保持不变。初次本地调用缺少原播放器要求的资源根路径末尾斜杠，未通过；修正调用参数后通过，失败日志保留。
 
-此前 bc8fcd6 的真实 3DS 编译暴露 `uint32_t` 在 devkitARM 中为 `unsigned long`，与同一 `auto` 声明中的 `unsigned int` 字面量类型不同；现已改为显式 `uint32_t`，错误原始记录见 `reports/dungeon-mechanism-audio-binding/arm-width-build-fix`。该修复及新生产头文件仍需新提交真实交叉构建验收。
+此前 bc8fcd6 的真实 3DS 编译暴露 `uint32_t` 在 devkitARM 中为 `unsigned long`，与同一 `auto` 声明中的 `unsigned int` 字面量类型不同；现已改为显式 `uint32_t`，错误原始记录见 `reports/dungeon-mechanism-audio-binding/arm-width-build-fix`。9abfc1d 的真实 3DSX／CIA 构建通过；包含新生产头文件的 d1bd1e1 真实构建也通过，完整主机／消毒器检查仍在运行。后续接触分派变更须按自己的提交验收。
 
 主程序仅包含新头文件以让真实工具链检查；正式场景尚未创建或调用此服务。以上不是模拟器、可听性或真机通过，墓穴及 Pippi 支持范围尚未扩大。证据见 `reports/dungeon-mechanism-ndsp/source-service-1`。

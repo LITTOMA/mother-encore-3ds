@@ -29,6 +29,7 @@ SOURCES += runtime/dungeon_key_clocks.cpp
 SOURCES += runtime/dungeon_key_media.cpp
 SOURCES += runtime/dungeon_key_contacts.cpp
 SOURCES += runtime/dungeon_key_indicator.cpp
+SOURCES += runtime/dungeon_key_hud_graphics.cpp platform/ctr/dungeon_key_hud_renderer.cpp
 SOURCES += platform/ctr/dungeon_key_audio.cpp
 SOURCES += platform/ctr/dungeon_key_renderer.cpp
 SOURCES += runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp

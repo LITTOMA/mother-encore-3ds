@@ -1,0 +1,40 @@
+{
+  "recipe_sha256": "81ca903fadb246ace6b4f929e4b86bdbe5bdaf363cd428ad3f3e3f0a46b7f5a8",
+  "sources": {
+    "Nodes/Ui/KeyCount.tscn": {
+      "sha256": "5cedc188b29b381cbfbfe187ca22abc0439ffcf95519608c5d0a70e4229eb427",
+      "bytes": 866
+    },
+    "Scripts/UI/KeyNumber.gd": {
+      "sha256": "7e022d5cb6b1ee5c709b5f413efc2237d27f5bf5e27a045fa9082b4dacfb243a",
+      "bytes": 1096
+    },
+    "Fonts/BottleRocket.tres": {
+      "sha256": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+      "bytes": 727
+    },
+    "Graphics/UI/Misc/key_icon.png": {
+      "sha256": "00225160a0e692b0765f33a4a6021ed2849edd0a25566a0641ffc6d6b5072033",
+      "bytes": 202
+    },
+    "Fonts/BottleRocket_ja.ttf": {
+      "sha256": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+      "bytes": 21876
+    },
+    "Fonts/BottleRocket_ko.ttf": {
+      "sha256": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+      "bytes": 787288
+    },
+    "Fonts/BottleRocket_zh_cn.otf": {
+      "sha256": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+      "bytes": 2954512
+    },
+    "Fonts/BottleRocket.ttf": {
+      "sha256": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+      "bytes": 41176
+    }
+  },
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "rendering_backend": "GLES2; native layout/metrics only, no pixel observation",
+  "scope": "Unchanged original scene/script/font/icon; label text is set by the observer, original script methods and tweens are not invoked. Native geometry and metrics only, no pixel/gameplay/emulator claim."
+}

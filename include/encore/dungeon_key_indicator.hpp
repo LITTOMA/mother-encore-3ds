@@ -15,6 +15,7 @@ public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
  bool valid()const{return bool(state_);}const KeyIndicatorConfig&config()const;
  DungeonKeysView keys()const;
+ bool same_contract(const DungeonKeyIndicatorData&)const;
 private:struct State;std::shared_ptr<const State>state_;
 };
 enum class KeyIndicatorDiagnosticKind:uint32_t {AppendAfterStarted=1};
@@ -25,6 +26,7 @@ public:
  bool prepare(const DungeonKeyIndicatorData&,uint64_t,std::string&);
  bool update_counter(uint64_t,int32_t,std::string&);bool close(uint64_t,std::string&);
  bool advance(uint64_t,double,std::string&);bool retire(uint64_t,std::string&);
+ const DungeonKeyIndicatorData&data()const{return data_;}
  uint64_t epoch()const{return epoch_;}const KeyIndicatorView&view()const{return view_;}
  const std::vector<KeyIndicatorDiagnostic>&diagnostics()const{return diagnostics_;}
  void clear_diagnostics(){diagnostics_.clear();}

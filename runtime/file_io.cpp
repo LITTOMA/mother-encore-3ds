@@ -5,6 +5,7 @@
 #include <utility>
 namespace encore {
 bool read_file(const char* path,std::vector<uint8_t>& out,size_t limit,std::string& error) {
+    if(!path||!*path){error="Missing file path";return false;}
     FILE* f=std::fopen(path,"rb");if(!f){error=std::string("Cannot open: ")+path;return false;}
     if(std::fseek(f,0,SEEK_END)!=0) {std::fclose(f);error="Cannot seek file";return false;}
     long size=std::ftell(f);

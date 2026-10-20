@@ -1,0 +1,9 @@
+config_version=4
+[application]
+config/name="Original key HUD layout"
+run/main_scene="res://probe.tscn"
+[autoload]
+uiManager="*res://ui.gd"
+[display]
+window/size/width=320
+window/size/height=180

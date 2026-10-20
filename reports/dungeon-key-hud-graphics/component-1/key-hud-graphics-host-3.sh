@@ -1,0 +1,7 @@
+#!/bin/bash
+set -eu
+cd /mnt/d/GameDev/3DS/mother-encore-3ds
+g++ --version
+g++ -std=c++17 -O1 -g -Wall -Wextra -Wpedantic -Wno-misleading-indentation -fno-rtti -fno-exceptions -fno-pie -no-pie -fno-omit-frame-pointer -fsanitize=address,undefined -Itests/dungeon_key_renderer_stubs -Iplatform/ctr -Iinclude tests/dungeon_key_hud_graphics_tests.cpp runtime/dungeon_key_hud_graphics.cpp runtime/dungeon_key_indicator.cpp runtime/save_menu_data.cpp runtime/dungeon_keys.cpp runtime/content.cpp runtime/file_io.cpp -o build/full-port/key-hud-graphics-host-3/check
+ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=print_stacktrace=1:halt_on_error=1 build/full-port/key-hud-graphics-host-3/check build/full-port/key-hud-fixture-1/source.enckgx build/full-port/key-hud-fixture-1 build/full-port/key-hud-fixture-1/scratch-3 build/full-port/key-hud-fixture-1/layout.tsv romfs/ui/opening.encsavemenu
+ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=print_stacktrace=1:halt_on_error=1 build/full-port/key-hud-graphics-host-3/check build/full-port/key-hud-graphics-candidate-1/source.enckgx build/full-port/key-hud-graphics-candidate-1 build/full-port/key-hud-graphics-candidate-1/scratch-3 build/full-port/key-hud-fixture-1/layout.tsv romfs/ui/opening.encsavemenu

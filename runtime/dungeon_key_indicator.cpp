@@ -10,7 +10,8 @@ uint32_t word(const uint8_t*p){return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(
 double real(const uint8_t*p){const uint64_t u=uint64_t(word(p))|uint64_t(word(p+4))<<32;double f;std::memcpy(&f,&u,8);return f;}
 bool bad(std::string&e,const char*why){e=why;return false;}
 }
-struct DungeonKeyIndicatorData::State {KeyIndicatorConfig config;DungeonKeysData keys;};
+struct DungeonKeyIndicatorData::State {KeyIndicatorConfig config;DungeonKeysData keys;std::vector<uint8_t>bytes;};
+bool DungeonKeyIndicatorData::same_contract(const DungeonKeyIndicatorData&other)const{return state_&&other.state_&&state_->bytes==other.state_->bytes;}
 const KeyIndicatorConfig&DungeonKeyIndicatorData::config()const{static const KeyIndicatorConfig empty;return state_?state_->config:empty;}
 DungeonKeysView DungeonKeyIndicatorData::keys()const{return state_?state_->keys.view():DungeonKeysView{};}
 bool DungeonKeyIndicatorData::load_file(const char*path,std::string&e){std::vector<uint8_t>bytes;return encore::read_file(path,bytes,512*1024,e)&&load(bytes.data(),bytes.size(),e);}
@@ -24,7 +25,7 @@ bool DungeonKeyIndicatorData::load(const uint8_t*p,size_t n,std::string&e){
  if(c.parameters[2]==c.parameters[3])return bad(e,"Key indicator open/close positions coincide");
  uint32_t cursor=0;std::array<std::string*,3>strings{{&c.initial_text,&c.prefix,&c.suffix}};
  for(size_t i=0;i<strings.size();++i){const uint32_t at=word(p+136+i*8),length=word(p+140+i*8);if(at!=cursor||cursor>size||length>256||length>size-cursor)return bad(e,"Key indicator text ownership rejected");for(uint32_t j=0;j<length;++j)if(p[text+at+j]<32||p[text+at+j]>=127)return bad(e,"Key indicator text encoding rejected");strings[i]->assign(reinterpret_cast<const char*>(p+text+at),length);cursor+=length;}
- if(cursor!=size)return bad(e,"Key indicator unowned text rejected");state_=std::move(next);e.clear();return true;
+ if(cursor!=size)return bad(e,"Key indicator unowned text rejected");next->bytes.assign(p,p+n);state_=std::move(next);e.clear();return true;
 }
 bool DungeonKeyIndicator::validate(uint64_t epoch,std::string&e)const{return epoch_&&epoch==epoch_&&data_.valid()?true:bad(e,"Key indicator scene epoch/resource rejected");}
 bool DungeonKeyIndicator::prepare(const DungeonKeyIndicatorData&d,uint64_t epoch,std::string&e){

@@ -2,6 +2,7 @@
 #include "battle_renderer.hpp"
 #include "encore/save_menu.hpp"
 #include <iomanip>
+#include <limits>
 #include <sstream>
 // Draw only into the caller's active upper game target. No input, filesystem
 // save operations, lower-screen widgets or management actions live here.
@@ -9,6 +10,7 @@ class SaveMenuRenderer {
  friend class ContinueRenderer; // Reuses checked card art without duplicating texture allocations.
  using Data=encore::upstream::SaveMenuData;using Layout=encore::upstream::SaveMenuLayout;using Text=encore::upstream::SaveMenuText;using Rect=encore::upstream::SaveMenuRect;
  BattleRenderer art_;const Data*data_=nullptr;
+ uint64_t bottle_generation_=0;uint32_t bottle_bytes_=0,bottle_crc_=0;
  static float pixel(float x){return std::floor(x+.5f);}
  float width(const std::string&s)const{return art_.text_width(s.c_str())-(s.empty()||s.back()==' '?0:data_->bottle_spacing());}
  bool bottle(const std::string&s,float x,float y,uint32_t color)const{
@@ -41,15 +43,20 @@ class SaveMenuRenderer {
  }
 public:
  bool load(const Data&d,const char*prefix,std::string&e){
-  free();if(!d.valid()||!prefix){e="Save renderer requires checked menu data";return false;}
+  free();if(bottle_generation_==std::numeric_limits<uint64_t>::max()||!d.valid()||!prefix){e="Save renderer requires checked menu data";return false;}
   std::vector<std::string>paths;std::vector<BattleRenderer::Resource>resources;paths.reserve(d.resources().size());for(const auto&r:d.resources())paths.emplace_back(std::string(prefix)+r.path);
   for(size_t i=0;i<paths.size();++i){const auto&r=d.resources()[i];resources.push_back({paths[i].c_str(),1,r.width,r.height,r.columns,r.rows});}
   // Texture-only adapter needs no full-screen software surface.
   if(!art_.load(resources,1,1,e))return false;
   std::vector<BattleRenderer::Glyph>glyphs;for(const auto&g:d.glyphs())glyphs.push_back({g.codepoint,d.font_resource(),g.u,g.v,g.width,g.height,g.advance,g.offset_x,g.offset_y});
-  if(!art_.set_glyphs(std::move(glyphs),e)){free();return false;}data_=&d;return true;
+  if(!art_.set_glyphs(std::move(glyphs),e)){free();return false;}data_=&d;bottle_bytes_=d.bytes_size();bottle_crc_=d.bytes_crc();return true;
  }
- void free(){art_.free();data_=nullptr;}
+ // Borrow only the already prepared BottleRocket font. A reload/free or a
+ // mutation of its checked data invalidates every outstanding font snapshot.
+ bool bottle_matches(uint32_t bytes,uint32_t crc)const{return data_&&data_->valid()&&bytes==bottle_bytes_&&crc==bottle_crc_&&data_->bytes_size()==bytes&&data_->bytes_crc()==crc;}
+ uint64_t bottle_generation()const{return bottle_matches(bottle_bytes_,bottle_crc_)?bottle_generation_:0;}
+ bool draw_bottle(const std::string&s,float x,float y,uint32_t color,uint64_t generation)const{return generation&&generation==bottle_generation()&&std::isfinite(x)&&std::isfinite(y)&&data_->supports_text(s,true)&&bottle(s,x,y,color);}
+ void free(){if(bottle_generation_!=std::numeric_limits<uint64_t>::max())++bottle_generation_;art_.free();data_=nullptr;bottle_bytes_=bottle_crc_=0;}
  bool draw(const encore::upstream::SaveMenu&menu,const BattleRenderer&eb,uint32_t current_flavor=0,float viewport_width=0,float viewport_height=0)const{
   using namespace encore::upstream;if(!menu.is_open())return true;if(!data_||menu.data()!=data_||current_flavor>=data_->flavors().size())return false;
   const auto&d=*data_;auto p=menu.pose();const auto reference=d.layout(Layout::Reference);if(viewport_width<=0)viewport_width=reference.w;if(viewport_height<=0)viewport_height=reference.h;

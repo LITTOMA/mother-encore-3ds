@@ -17,6 +17,7 @@ struct SaveMenuArrowKey {double time=0;uint32_t frame=0;};
 class SaveMenuData {
 public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
+ uint32_t bytes_size()const{return blob_bytes_;}uint32_t bytes_crc()const{return blob_crc_;}
  bool valid()const{return valid_;}uint32_t slot_count()const{return slots_;}
  double activation_seconds()const{return activation_;}double scroll_seconds()const{return scroll_;}
  double cursor_seconds()const{return cursor_loop_;}double arrow_seconds()const{return arrow_loop_;}
@@ -38,6 +39,7 @@ public:
  int flavor_index(const std::string&)const;int icon_index(const std::string&)const;
  bool supports_text(const std::string&,bool bottle)const;
 private:
+ uint32_t blob_bytes_=0,blob_crc_=0;
  bool valid_=false;uint32_t slots_=0,font_=0,outline_=0,cursor_=0,arrow_=0,text_color_=0,time_color_=0,outline_color_=0;
  double activation_=0,scroll_=0,cursor_loop_=0,arrow_loop_=0,arrow_move_=0;
  float spacing_=0,bottle_spacing_=0,bottle_height_=0,ebmain_height_=0;

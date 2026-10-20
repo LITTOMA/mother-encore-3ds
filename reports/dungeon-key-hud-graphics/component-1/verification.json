@@ -1,0 +1,74 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "native_final": [
+    5,
+    6
+  ],
+  "native_rows_each": 5,
+  "native_glyph_advances_each": 7,
+  "native_repetitions_identical": true,
+  "gcc_asan_ubsan_each_mode": 3357,
+  "modes": [
+    "explicit synthetic decoder payload",
+    "actual converted icon bytes"
+  ],
+  "python_methods": 8,
+  "candidate_bytes": 909,
+  "windows_configuration_and_discovery_only": {
+    "ctest": 319,
+    "python": 1420,
+    "aggregate": 1037,
+    "dedicated": 383
+  },
+  "failed_attempts": {
+    "native_1_and_2": "Editor with full scripted scene installed exceeded actual 55-second invocation deadline;raw logs retained. Native2 runtime after the partial import succeeded. Final5/6 import only the image before installing unchanged scene/font/script resources;both import/runtime calls succeeded. No timeout treated as passing.",
+    "host_1": "Generated shell script had CRLF and test omitted explicit cstring include;compilation failed,no C++ runtime result. Fresh host2 uses LF and the required include;passed with normal leaks.",
+    "host_3": "Meaningful new load_file(nullptr) regression caught actual UBSan undefined behavior in runtime/file_io.cpp:8,concatenating a null path. Shared reader now rejects null/empty paths before fopen/concat;fresh host4 repeats both modes with those cases passing. No expected result changed or sanitizer suppressed."
+  },
+  "not_verified": [
+    "Full current GCC/Clang CMake suites",
+    "Current real 3DSX/CIA build and packaging",
+    "Formal game scene/HUD integration",
+    "GPU decoding/font pixels",
+    "Emulator execution of this component",
+    "Physical 3DS hardware"
+  ],
+  "artifacts": {
+    "key-hud-graphics-python-1.log": "f09946f256d680eb27f4491476099c99b070bcf957444e8108768f11a41ed058",
+    "key-hud-graphics-compile-1.log": "585c5518038b2b5f4163b51f682770f847d75862f3b5e0b05b29cefdaaa65d29",
+    "key-hud-graphics-cli-positive-1.log": "abd7980ef1cbc0927f0f57e4f2e4fb60f659098444c3444fed05aa206915b914",
+    "key-hud-graphics-cli-negative-1.log": "c4bac0c3becd262973cc0e02f40ffb37278406c11541713d8487182aaf1f9a93",
+    "key-hud-graphics-cli-verification.json": "39fe530af4d1fe8404af5a1aad0cb87c92df9fb2315417a6f5c2f3bea4acc308",
+    "key-hud-graphics-collection-1.log": "55ed90a0279f587717de7e1493da737239baafa56acf31bcaf9800a2bd6a24f8",
+    "key-hud-graphics-cmake-config-1.log": "20f1ad9b27b2ebfc2ffb8aa8f6d714bb8b39f5a694e10fdcd338374f7eb703a5",
+    "key-hud-graphics-ctest-debug-1.json": "21accee51a4603c38f05090fdba7c3577bdf653eb9c5dc6c3d705bd73d883ec8",
+    "key-hud-graphics-ctest-debug-1.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "key-hud-graphics-method-plan-1.json": "0e7bbec39080d286b3e4a8123570339904f8d74af580ef918b88d8682f17b1a5",
+    "key-hud-graphics-host-1.sh": "5509562fb858ff8331c8508f74bffa846eb35c68f4798218b8faee044330879a",
+    "key-hud-graphics-host-1.inputs.json": "9f42d27da9e6a76e8c250bf43b9a1ed620976f3653442ae4e3a249d771bed9e8",
+    "key-hud-graphics-host-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "key-hud-graphics-host-1.stderr.log": "379fd058ced1436a84fe8baa0c178f0998a4726168e0e1d2a8a890c78e221dd2",
+    "key-hud-graphics-host-2.sh": "8417f4ec0e140ad5588d8a2aaec12b8bee2ce1a95b6271628f26454abd781958",
+    "key-hud-graphics-host-2.inputs.json": "0c3402804f9672fcd465ebf7cc2bc22c6998bb644c20faf8b9ad461f78aae356",
+    "key-hud-graphics-host-2.log": "732cbcf73ee552de0e233cbff812e47da5b76f69c97faac2c2427ed2bfd57ce9",
+    "key-hud-graphics-host-2.stderr.log": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98",
+    "key-hud-graphics-host-2.proof.json": "d8d41edf21558b257fc5bd742ee40aee34bcfec0b8d7f0b504aedfed8cd59db4",
+    "key-hud-graphics-project-retirement.json": "0a1dad041fd2d1874c9b28cf9a952a52da03fc971881b849314cf524e66b2bd4",
+    "key-hud-graphics-project-retirement-aggregate-null.json": "0bbf425cd8b57915cdf2763279634397312c016b6c0c8eb691f366c2e74f9bc0",
+    "key-hud-graphics-host-3.inputs.json": "b5d23ea8e8b804a001d00e35fea7b525d1e7e00b27729d41ae591cd8aff9a8ab",
+    "key-hud-graphics-host-3.log": "c4b8cb27259b52465715c83277ca12c1fe007119e3add12623dd7a6ef0c959f6",
+    "key-hud-graphics-host-3.sh": "b2910d28714086a6c31439093a2a204ca11cd11acba4231809f9e50a32073e09",
+    "key-hud-graphics-host-3.stderr.log": "e4376b4738cc5cd911a86b03d8b3fed3681a7739e72141cc1fdb246ca34ee1d6",
+    "key-hud-graphics-host-4.inputs.json": "96d5730a896aefcdfc0116a43193e0bbe84c66da0b79b054be0b1fda72228396",
+    "key-hud-graphics-host-4.log": "3ee3bfbb525d8f1d630f0c6d19d169f9ffcc0f54a7d8e7ceafff0c20f126b040",
+    "key-hud-graphics-host-4.proof.json": "ed8c129b4ab2de5a3c2565fc7432cdccd8863c8f0d5e06c57db79742ab521eb6",
+    "key-hud-graphics-host-4.sh": "1b588ebc73bd9d5f9b0214a89fe81c2e51d7cf25207135cb653b37b67c762e6b",
+    "key-hud-graphics-host-4.stderr.log": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98",
+    "source.source.json": "7df2c5194d820402c272f592f17f6d825b113e1ecf19867d25e9725b35fd9765",
+    "tex3ds.log": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "key-hud-graphics-check-retirement.json": "bfa4344ebdcb7b93582fc8a51a37024ec402a23623fbdb25de8b66b57bf5f015"
+  },
+  "retired_project_bytes": 22921785,
+  "successful_host_attempt": 4,
+  "retired_check_bytes": 17727864.0
+}

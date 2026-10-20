@@ -1,0 +1,12 @@
+test_bad_metadata_encoder_paths (tests.test_music_library.MusicLibraryTests.test_bad_metadata_encoder_paths) ... ok
+test_exact_sources_and_generator_fixtures (tests.test_music_library.MusicLibraryTests.test_exact_sources_and_generator_fixtures) ... ok
+test_reject_changed_or_partial_scope_recipes (tests.test_music_library.MusicLibraryTests.test_reject_changed_or_partial_scope_recipes) ... ok
+test_decoder_negative_versions_and_records (tests.test_music_library_bindings.MusicLibraryBindingsTests.test_decoder_negative_versions_and_records) ... ok
+test_encoder_schema_path_fingerprint_rejected (tests.test_music_library_bindings.MusicLibraryBindingsTests.test_encoder_schema_path_fingerprint_rejected) ... ok
+test_partial_changed_unknown_recipe_rejected (tests.test_music_library_bindings.MusicLibraryBindingsTests.test_partial_changed_unknown_recipe_rejected) ... ok
+test_source_proof_and_exact_generated_bundle (tests.test_music_library_bindings.MusicLibraryBindingsTests.test_source_proof_and_exact_generated_bundle) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 9.140s
+
+OK

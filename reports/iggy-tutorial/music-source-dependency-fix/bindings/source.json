@@ -1,0 +1,306 @@
+{
+  "source": {
+    "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "release_staged": false,
+    "source_library_review_sha256": "288e5c0a093e706ce1b91be1b2bd48fd3aa1a71ac7150f07f9df06668317f652",
+    "recipe_sha256": "db3e33610c3e637d0a939ab86ca0fccd6c353f6b3a402570803e89812be4d395",
+    "bindings": {
+      "index": {
+        "path": "sound/banks/global.encmusic",
+        "bytes": 1569,
+        "crc": 757178488
+      },
+      "bindings": [
+        {
+          "track": 21,
+          "metadata": {
+            "path": "sound/banks/global/21.encmusic",
+            "bytes": 173,
+            "crc": 1140304026
+          },
+          "audio": {
+            "path": "sound/banks/global/21.encaudio",
+            "bytes": 222,
+            "crc": 3584330797
+          }
+        },
+        {
+          "track": 1001,
+          "metadata": {
+            "path": "sound/banks/global/1001.encmusic",
+            "bytes": 194,
+            "crc": 3176596799
+          },
+          "audio": {
+            "path": "sound/banks/global/1001.encaudio",
+            "bytes": 247,
+            "crc": 3118500866
+          }
+        },
+        {
+          "track": 1002,
+          "metadata": {
+            "path": "sound/banks/global/1002.encmusic",
+            "bytes": 193,
+            "crc": 587416100
+          },
+          "audio": {
+            "path": "sound/banks/global/1002.encaudio",
+            "bytes": 245,
+            "crc": 176367139
+          }
+        },
+        {
+          "track": 32,
+          "metadata": {
+            "path": "sound/banks/global/32.encmusic",
+            "bytes": 178,
+            "crc": 3033344865
+          },
+          "audio": {
+            "path": "sound/banks/global/32.encaudio",
+            "bytes": 227,
+            "crc": 3106819373
+          }
+        },
+        {
+          "track": 34,
+          "metadata": {
+            "path": "sound/banks/global/34.encmusic",
+            "bytes": 167,
+            "crc": 259915003
+          },
+          "audio": {
+            "path": "sound/banks/global/34.encaudio",
+            "bytes": 216,
+            "crc": 3696984490
+          }
+        },
+        {
+          "track": 1202,
+          "metadata": {
+            "path": "sound/banks/global/1202.encmusic",
+            "bytes": 174,
+            "crc": 952542107
+          },
+          "audio": {
+            "path": "sound/banks/global/1202.encaudio",
+            "bytes": 230,
+            "crc": 927103056
+          }
+        },
+        {
+          "track": 1301,
+          "metadata": {
+            "path": "sound/banks/global/1301.encmusic",
+            "bytes": 180,
+            "crc": 3201773657
+          },
+          "audio": {
+            "path": "sound/banks/global/1301.encaudio",
+            "bytes": 243,
+            "crc": 2673644672
+          }
+        },
+        {
+          "track": 4229387514,
+          "metadata": {
+            "path": "sound/banks/global/4229387514.encmusic",
+            "bytes": 188,
+            "crc": 2462356436
+          },
+          "audio": {
+            "path": "sound/banks/global/4229387514.encaudio",
+            "bytes": 245,
+            "crc": 916752618
+          }
+        },
+        {
+          "track": 3080041499,
+          "metadata": {
+            "path": "sound/banks/global/3080041499.encmusic",
+            "bytes": 175,
+            "crc": 483547344
+          },
+          "audio": {
+            "path": "sound/banks/global/3080041499.encaudio",
+            "bytes": 232,
+            "crc": 3809130696
+          }
+        },
+        {
+          "track": 3778949439,
+          "metadata": {
+            "path": "sound/banks/global/3778949439.encmusic",
+            "bytes": 182,
+            "crc": 4017001716
+          },
+          "audio": {
+            "path": "sound/banks/global/3778949439.encaudio",
+            "bytes": 239,
+            "crc": 1881583127
+          }
+        },
+        {
+          "track": 4107189403,
+          "metadata": {
+            "path": "sound/banks/global/4107189403.encmusic",
+            "bytes": 177,
+            "crc": 1273300715
+          },
+          "audio": {
+            "path": "sound/banks/global/4107189403.encaudio",
+            "bytes": 234,
+            "crc": 2238123590
+          }
+        },
+        {
+          "track": 4290136921,
+          "metadata": {
+            "path": "sound/banks/global/4290136921.encmusic",
+            "bytes": 176,
+            "crc": 1609280326
+          },
+          "audio": {
+            "path": "sound/banks/global/4290136921.encaudio",
+            "bytes": 233,
+            "crc": 3955111243
+          }
+        },
+        {
+          "track": 2742165164,
+          "metadata": {
+            "path": "sound/banks/global/2742165164.encmusic",
+            "bytes": 180,
+            "crc": 1893491870
+          },
+          "audio": {
+            "path": "sound/banks/global/2742165164.encaudio",
+            "bytes": 237,
+            "crc": 3149211436
+          }
+        }
+      ]
+    },
+    "outputs": {
+      "sound/banks/global.encmusic": {
+        "bytes": 1569,
+        "sha256": "b0433c7d19c91a61349a223b3e241b14ddef7f9c1970552b51231acfda6f8593"
+      },
+      "sound/banks/global/21.encmusic": {
+        "bytes": 173,
+        "sha256": "8d63ea8ec6246829e88723b1687b93f0731863e30cb66bca9a745ac51cf78fea"
+      },
+      "sound/banks/global/21.encaudio": {
+        "bytes": 222,
+        "sha256": "3b605de8ec5a0058d888ede6b05983a69606e15b544b48cc90fe61b5fedd787c"
+      },
+      "sound/banks/global/1001.encmusic": {
+        "bytes": 194,
+        "sha256": "136f58c9bd0dd0978e0b33eef300f7fd5a222434a596a7f12711b5192ed8037f"
+      },
+      "sound/banks/global/1001.encaudio": {
+        "bytes": 247,
+        "sha256": "a49a787cce630fd234c3df612273396a0b720cff7ed6ac88a54d62a2c23709d8"
+      },
+      "sound/banks/global/1002.encmusic": {
+        "bytes": 193,
+        "sha256": "b8e9be4d783a8d1011912046c22e3448a2086f84b4c7a80ac4d17f8e55b18b36"
+      },
+      "sound/banks/global/1002.encaudio": {
+        "bytes": 245,
+        "sha256": "b9f024767e1d9f97518fa41e6d07daeb8ad19b5cbafd3eb2755cde9b0051c8d3"
+      },
+      "sound/banks/global/32.encmusic": {
+        "bytes": 178,
+        "sha256": "b2b1a558263c8526190a7bef06e2f923b8e5d352517fbad58cfa2e6643169dcc"
+      },
+      "sound/banks/global/32.encaudio": {
+        "bytes": 227,
+        "sha256": "3501ad2937d41599701937ae1ac16a2cb63b0767cbf6fc38ac478651fdae9846"
+      },
+      "sound/banks/global/34.encmusic": {
+        "bytes": 167,
+        "sha256": "1baefe4aba5c53daa6cab8de95d395a5dbc61d4d515db6c96402639542da2303"
+      },
+      "sound/banks/global/34.encaudio": {
+        "bytes": 216,
+        "sha256": "2fbb7d9afc04960d3d4f531af606e6bc4f959ed10c205d734990f1db55e43938"
+      },
+      "sound/banks/global/1202.encmusic": {
+        "bytes": 174,
+        "sha256": "9a50a2ea5d857405d5bc788c5b4f27911eabc004a7c06c5c5e3fcafb1bcef66c"
+      },
+      "sound/banks/global/1202.encaudio": {
+        "bytes": 230,
+        "sha256": "2f51530aa1960c8a507cc6ee6abeaaa5da9e4253c3015e5feca6aceb7437c509"
+      },
+      "sound/banks/global/1301.encmusic": {
+        "bytes": 180,
+        "sha256": "999e02e8866bb4490a85096964760f4eb5d2acdd49db4f7092485f71f0a732f3"
+      },
+      "sound/banks/global/1301.encaudio": {
+        "bytes": 243,
+        "sha256": "44a2e7eccca9b73d2185d7d91ee5d1176b0f3b37fb419edf5400af0ef1bf95d0"
+      },
+      "sound/banks/global/4229387514.encmusic": {
+        "bytes": 188,
+        "sha256": "271b445908906ebd8aa50d5a57ada90896fb4654b584a5902038f9043319488e"
+      },
+      "sound/banks/global/4229387514.encaudio": {
+        "bytes": 245,
+        "sha256": "0883f44cf5beb3643c5ff2c714b28924839ce8047c4e8fbd6b282bd5430a250c"
+      },
+      "sound/banks/global/3080041499.encmusic": {
+        "bytes": 175,
+        "sha256": "e63df2da52004829f6f0c9702b1fc78f55f854cd4008cfb544486d1824870daa"
+      },
+      "sound/banks/global/3080041499.encaudio": {
+        "bytes": 232,
+        "sha256": "253bd02a493cadb6805480bf1a729418139cd33c72f23379fa54e06c6ff9938d"
+      },
+      "sound/banks/global/3778949439.encmusic": {
+        "bytes": 182,
+        "sha256": "ec214e18f6bc4c7b762edda4e5bea459a76a83bbd1a8a9c1f704c5caaffbf5bd"
+      },
+      "sound/banks/global/3778949439.encaudio": {
+        "bytes": 239,
+        "sha256": "109d3a63987bfc652fc49e52fe27bdffbda6f297c31ed20e03fc374c23f10262"
+      },
+      "sound/banks/global/4107189403.encmusic": {
+        "bytes": 177,
+        "sha256": "c9dcb23759b0c22f7e6b4079e1be6b97a683ba32eae5c522b093e49e4745fa39"
+      },
+      "sound/banks/global/4107189403.encaudio": {
+        "bytes": 234,
+        "sha256": "d775e277710d78c77f764970e340ecd42f78810254c33731f95420a24ad7c121"
+      },
+      "sound/banks/global/4290136921.encmusic": {
+        "bytes": 176,
+        "sha256": "0ff421d95f3d0beb43c6cd9b80a33f2cde651038b00c47399f4ec7ef9222ebcd"
+      },
+      "sound/banks/global/4290136921.encaudio": {
+        "bytes": 233,
+        "sha256": "21c6ceace5486a4fecf25f4b284da674c476fddc79e26bbaf1e41dd67829af4e"
+      },
+      "sound/banks/global/2742165164.encmusic": {
+        "bytes": 180,
+        "sha256": "6bf2b4eea523ccaed3162758048ca5c01161ccf8734dda9559bd10158900978e"
+      },
+      "sound/banks/global/2742165164.encaudio": {
+        "bytes": 237,
+        "sha256": "314d29710ee09433b7fd56dd8668f5869f7c038cbfa27903c64e7104ad742a61"
+      },
+      "sound/banks/global.enclib": {
+        "bytes": 1327,
+        "sha256": "f24854d5003fdc0dfbf878c2d081de2cc257b9f2f2aafd027daac50aac3e7b00"
+      }
+    },
+    "mapped_implementation": {
+      "descriptor_parser_and_admission": "runtime/music_library_bindings.cpp",
+      "existing_library_source_and_policy": "runtime/music_regions.cpp"
+    },
+    "scope": "Explicit checked index and one-track metadata/bank file bindings for existing 13-song root library; all 27 prior metadata files retain identical producer bytes, no PCM copied. Source library review and original root AudioBank remain required. Candidate only, no catalog/root program integration or device pass."
+  },
+  "producer_sha256": "d4298ca32d8134a482b5385cf20485e16f2be5638ad3457838dd09485c334b35"
+}

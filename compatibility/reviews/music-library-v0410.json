@@ -32,8 +32,8 @@
     "Audio/Music/You Win/YOUWONBOSS.mp3.import": "299b9c195cf7a0f11c41abf9bee48e798fbcf3bd0be5e64493a8cb0596e5870a"
   },
   "recipe_sha256": "4ee34de6bb2c137bc8f2ac9db9d8156cb7054cfb12cda304f91e68b44c61a879",
-  "native_audio_sha256": "0b9cf2197bb1b111fd9d6cab1e9540d85d1d56a813973baac0f5530687e31f8b",
-  "source_bank_sha256": "cb1a2ab57d6675a0e18a581b56fcabb43dc8ebd13206b76da0040efcb1e263a7",
+  "native_audio_sha256": "e9cd55bc095416b0faa579ebc7828835e0015282ed8880aafcf82a780f838ae8",
+  "source_bank_sha256": "8b3a469a02429ddc18dfef72c528fec423aa874203fcd3c9675d3ee81ca20181",
   "defaults_manager_methods": {
     "_ready": "a2d97571c1adc4aae1f6f6987009bed7053676caf1319cc72ffcae44db474ff3",
     "_get_audio_player_count": "6d13e742193187f19d5a8b7917b923b9e1fb5eaf4a3f33c3d7c5ab2f61d3c424",

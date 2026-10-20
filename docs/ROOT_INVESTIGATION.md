@@ -80,3 +80,33 @@ console/ordinary-input results. The component repairs and the new complete CI
 are tracked independently; no complete current CI pass is claimed here.
 Audibility, a natural-opening playthrough, an original Godot runtime oracle,
 physical hardware and the complete original game remain unverified.
+
+The later6e245cd full run39378374503 completed with Clang259 ordinary and259
+ASan/UBSan checks and genuine3DSX/CIA passing. GCC passed274/275 ordinary
+checks; its sole failing CTest was the aggregate Python suite, with a music
+library proof mismatch and the dependent binding setup error. It completed
+in974.70seconds; GCC sanitizers did not execute after the ordinary failure.
+The phone source partition no longer timed out.
+
+The existing music proof was generated against the59-entry root bank at
+00cb71d (also8956037's parent). Comparing both historical recipe and parsed
+bank to the current60-entry versions preserves every previous record and all
+bank tuning. The only addition is the independently played Root sound,
+`res://Audio/Sound effects/Barrel Coffin Explode.mp3`, ID3176391583. All13
+music records, original/import identities, loop policy, default gain, fade,
+master bus and source implementation mappings remain unchanged. Current
+`MusicRegionData::load/matches` and `MusicLibraryBindings::admit/read_track`
+were reviewed; they still check those same identities and PCM/loop bindings.
+
+The original `music_library.source` and `music_library_bindings.source`
+producers regenerated their complete review records. Only the former's root
+recipe/bank fingerprints and the latter's review dependency fingerprint
+changed. Both candidate CLIs ran successfully; all28 generated files match
+the existing frozen global-library bundle byte for byte. All7 existing
+source, coverage, encoder and negative decoder tests pass (9.140seconds).
+No fixture expectation, code, PCM, formal game resource or save changed, and
+the candidate global music library remains unstaged. Raw prior CI logs,
+historical comparisons, producer invocations and current checks are retained
+in reports/iggy-tutorial/music-source-dependency-fix. A new full run must
+independently accept the current commit; this is not a hardware or complete
+game verification claim.

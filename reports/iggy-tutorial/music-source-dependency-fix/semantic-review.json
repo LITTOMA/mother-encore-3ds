@@ -1,0 +1,219 @@
+{
+  "head": "6e245cdd5b7c89cd7db047bdfb035abdded4666b",
+  "changed_proof_fields": {
+    "native_audio_sha256": {
+      "old": "0b9cf2197bb1b111fd9d6cab1e9540d85d1d56a813973baac0f5530687e31f8b",
+      "new": "e9cd55bc095416b0faa579ebc7828835e0015282ed8880aafcf82a780f838ae8"
+    },
+    "source_bank_sha256": {
+      "old": "cb1a2ab57d6675a0e18a581b56fcabb43dc8ebd13206b76da0040efcb1e263a7",
+      "new": "8b3a469a02429ddc18dfef72c528fec423aa874203fcd3c9675d3ee81ca20181"
+    }
+  },
+  "metadata_equal": true,
+  "source_records_equal": true,
+  "history": [
+    {
+      "ref": "8956037^",
+      "native_audio_sha256": "0b9cf2197bb1b111fd9d6cab1e9540d85d1d56a813973baac0f5530687e31f8b",
+      "source_bank_sha256": "cb1a2ab57d6675a0e18a581b56fcabb43dc8ebd13206b76da0040efcb1e263a7",
+      "assets": 59,
+      "recipe_assets": 59,
+      "all_prior_bank_records_unchanged": true,
+      "all_prior_recipe_records_unchanged": true,
+      "appended_bank_records": [
+        {
+          "stable_id": 3176391583,
+          "source_sha256": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+          "sample_rate": 44100,
+          "channels": 1,
+          "loop": false,
+          "frames": 15309,
+          "loop_start": 0,
+          "pcm_bytes": 30618,
+          "pcm_crc32": 2928106176,
+          "gain_db": 0.0,
+          "pcm_path": "sound/effects/field-prop-3176391583.pcm",
+          "source_path": "res://Audio/Sound effects/Barrel Coffin Explode.mp3"
+        }
+      ],
+      "appended_recipe_records": [
+        {
+          "stable_id": 3176391583,
+          "source_path": "res://Audio/Sound effects/Barrel Coffin Explode.mp3",
+          "source_sha256": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+          "import_sha256": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d",
+          "pcm_path": "sound/effects/field-prop-3176391583.pcm",
+          "gain_db": 0
+        }
+      ]
+    },
+    {
+      "ref": "00cb71d",
+      "native_audio_sha256": "0b9cf2197bb1b111fd9d6cab1e9540d85d1d56a813973baac0f5530687e31f8b",
+      "source_bank_sha256": "cb1a2ab57d6675a0e18a581b56fcabb43dc8ebd13206b76da0040efcb1e263a7",
+      "assets": 59,
+      "recipe_assets": 59,
+      "all_prior_bank_records_unchanged": true,
+      "all_prior_recipe_records_unchanged": true,
+      "appended_bank_records": [
+        {
+          "stable_id": 3176391583,
+          "source_sha256": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+          "sample_rate": 44100,
+          "channels": 1,
+          "loop": false,
+          "frames": 15309,
+          "loop_start": 0,
+          "pcm_bytes": 30618,
+          "pcm_crc32": 2928106176,
+          "gain_db": 0.0,
+          "pcm_path": "sound/effects/field-prop-3176391583.pcm",
+          "source_path": "res://Audio/Sound effects/Barrel Coffin Explode.mp3"
+        }
+      ],
+      "appended_recipe_records": [
+        {
+          "stable_id": 3176391583,
+          "source_path": "res://Audio/Sound effects/Barrel Coffin Explode.mp3",
+          "source_sha256": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+          "import_sha256": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d",
+          "pcm_path": "sound/effects/field-prop-3176391583.pcm",
+          "gain_db": 0
+        }
+      ]
+    },
+    {
+      "ref": "00cb71d^",
+      "native_audio_sha256": "67e516a79e287b264eb045d734080c5ee2cb374e6c2e9eb01013e6238e283c52",
+      "source_bank_sha256": "431affa918b13fbf782b740d63b1349730fd1bf96542dd8dc68df69b87a8b748",
+      "assets": 57,
+      "recipe_assets": 57
+    },
+    {
+      "ref": "d33d0b9",
+      "native_audio_sha256": "67e516a79e287b264eb045d734080c5ee2cb374e6c2e9eb01013e6238e283c52",
+      "source_bank_sha256": "431affa918b13fbf782b740d63b1349730fd1bf96542dd8dc68df69b87a8b748",
+      "assets": 57,
+      "recipe_assets": 57
+    },
+    {
+      "ref": "8fc8466",
+      "native_audio_sha256": "67e516a79e287b264eb045d734080c5ee2cb374e6c2e9eb01013e6238e283c52",
+      "source_bank_sha256": "d94c05e37db4579337ef87d2de984d7e15b41950bc62a3b3806a6a0ea883cfa3",
+      "assets": 57,
+      "recipe_assets": 57
+    }
+  ],
+  "frozen_metadata_files": {
+    "global-music.encmusic": {
+      "bytes": 1569,
+      "sha256": "b0433c7d19c91a61349a223b3e241b14ddef7f9c1970552b51231acfda6f8593"
+    },
+    "sound/banks/global/21.encmusic": {
+      "bytes": 173,
+      "sha256": "8d63ea8ec6246829e88723b1687b93f0731863e30cb66bca9a745ac51cf78fea"
+    },
+    "sound/banks/global/21.encaudio": {
+      "bytes": 222,
+      "sha256": "3b605de8ec5a0058d888ede6b05983a69606e15b544b48cc90fe61b5fedd787c"
+    },
+    "sound/banks/global/1001.encmusic": {
+      "bytes": 194,
+      "sha256": "136f58c9bd0dd0978e0b33eef300f7fd5a222434a596a7f12711b5192ed8037f"
+    },
+    "sound/banks/global/1001.encaudio": {
+      "bytes": 247,
+      "sha256": "a49a787cce630fd234c3df612273396a0b720cff7ed6ac88a54d62a2c23709d8"
+    },
+    "sound/banks/global/1002.encmusic": {
+      "bytes": 193,
+      "sha256": "b8e9be4d783a8d1011912046c22e3448a2086f84b4c7a80ac4d17f8e55b18b36"
+    },
+    "sound/banks/global/1002.encaudio": {
+      "bytes": 245,
+      "sha256": "b9f024767e1d9f97518fa41e6d07daeb8ad19b5cbafd3eb2755cde9b0051c8d3"
+    },
+    "sound/banks/global/32.encmusic": {
+      "bytes": 178,
+      "sha256": "b2b1a558263c8526190a7bef06e2f923b8e5d352517fbad58cfa2e6643169dcc"
+    },
+    "sound/banks/global/32.encaudio": {
+      "bytes": 227,
+      "sha256": "3501ad2937d41599701937ae1ac16a2cb63b0767cbf6fc38ac478651fdae9846"
+    },
+    "sound/banks/global/34.encmusic": {
+      "bytes": 167,
+      "sha256": "1baefe4aba5c53daa6cab8de95d395a5dbc61d4d515db6c96402639542da2303"
+    },
+    "sound/banks/global/34.encaudio": {
+      "bytes": 216,
+      "sha256": "2fbb7d9afc04960d3d4f531af606e6bc4f959ed10c205d734990f1db55e43938"
+    },
+    "sound/banks/global/1202.encmusic": {
+      "bytes": 174,
+      "sha256": "9a50a2ea5d857405d5bc788c5b4f27911eabc004a7c06c5c5e3fcafb1bcef66c"
+    },
+    "sound/banks/global/1202.encaudio": {
+      "bytes": 230,
+      "sha256": "2f51530aa1960c8a507cc6ee6abeaaa5da9e4253c3015e5feca6aceb7437c509"
+    },
+    "sound/banks/global/1301.encmusic": {
+      "bytes": 180,
+      "sha256": "999e02e8866bb4490a85096964760f4eb5d2acdd49db4f7092485f71f0a732f3"
+    },
+    "sound/banks/global/1301.encaudio": {
+      "bytes": 243,
+      "sha256": "44a2e7eccca9b73d2185d7d91ee5d1176b0f3b37fb419edf5400af0ef1bf95d0"
+    },
+    "sound/banks/global/4229387514.encmusic": {
+      "bytes": 188,
+      "sha256": "271b445908906ebd8aa50d5a57ada90896fb4654b584a5902038f9043319488e"
+    },
+    "sound/banks/global/4229387514.encaudio": {
+      "bytes": 245,
+      "sha256": "0883f44cf5beb3643c5ff2c714b28924839ce8047c4e8fbd6b282bd5430a250c"
+    },
+    "sound/banks/global/3080041499.encmusic": {
+      "bytes": 175,
+      "sha256": "e63df2da52004829f6f0c9702b1fc78f55f854cd4008cfb544486d1824870daa"
+    },
+    "sound/banks/global/3080041499.encaudio": {
+      "bytes": 232,
+      "sha256": "253bd02a493cadb6805480bf1a729418139cd33c72f23379fa54e06c6ff9938d"
+    },
+    "sound/banks/global/3778949439.encmusic": {
+      "bytes": 182,
+      "sha256": "ec214e18f6bc4c7b762edda4e5bea459a76a83bbd1a8a9c1f704c5caaffbf5bd"
+    },
+    "sound/banks/global/3778949439.encaudio": {
+      "bytes": 239,
+      "sha256": "109d3a63987bfc652fc49e52fe27bdffbda6f297c31ed20e03fc374c23f10262"
+    },
+    "sound/banks/global/4107189403.encmusic": {
+      "bytes": 177,
+      "sha256": "c9dcb23759b0c22f7e6b4079e1be6b97a683ba32eae5c522b093e49e4745fa39"
+    },
+    "sound/banks/global/4107189403.encaudio": {
+      "bytes": 234,
+      "sha256": "d775e277710d78c77f764970e340ecd42f78810254c33731f95420a24ad7c121"
+    },
+    "sound/banks/global/4290136921.encmusic": {
+      "bytes": 176,
+      "sha256": "0ff421d95f3d0beb43c6cd9b80a33f2cde651038b00c47399f4ec7ef9222ebcd"
+    },
+    "sound/banks/global/4290136921.encaudio": {
+      "bytes": 233,
+      "sha256": "21c6ceace5486a4fecf25f4b284da674c476fddc79e26bbaf1e41dd67829af4e"
+    },
+    "sound/banks/global/2742165164.encmusic": {
+      "bytes": 180,
+      "sha256": "6bf2b4eea523ccaed3162758048ca5c01161ccf8734dda9559bd10158900978e"
+    },
+    "sound/banks/global/2742165164.encaudio": {
+      "bytes": 237,
+      "sha256": "314d29710ee09433b7fd56dd8668f5869f7c038cbfa27903c64e7104ad742a61"
+    }
+  },
+  "no_release_or_pcm_changes": true
+}

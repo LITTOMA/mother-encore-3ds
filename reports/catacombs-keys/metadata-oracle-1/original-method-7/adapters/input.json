@@ -1,0 +1,12 @@
+{
+  "key_script": "Scripts/Main/Small Key.gd",
+  "lock_script": "Scripts/Main/Lock.gd",
+  "key_name": "Key1",
+  "lock_name": "Locked Door3",
+  "connection": {
+    "signal": "animation_finished",
+    "from": "AnimationPlayer",
+    "to": ".",
+    "method": "_on_AnimationPlayer_animation_finished"
+  }
+}

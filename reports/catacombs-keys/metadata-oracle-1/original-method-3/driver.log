@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_keys_reference.py", line 209, in <module>
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',type=Path,required=True);parser.add_argument('--godot',type=Path,required=True);args=parser.parse_args();run(args.out,args.godot)
+                                                                                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_keys_reference.py", line 199, in run
+    invoke(engine,project,['--debug','--script',str(project/'probe.gd')],out/'engine.log',expected_error=missing)
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_scene_reference.py", line 42, in invoke
+    raise ValueError('Expected negative reference was not rejected: ' + log.name)
+ValueError: Expected negative reference was not rejected: engine.log

@@ -8,7 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
-    runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
+    runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/dungeon_keys.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
     runtime/house_inspection_data.cpp
@@ -1182,6 +1182,12 @@ if(BUILD_TESTING)
     set_tests_properties(step_scene_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP step_scene_metadata)
     add_test(NAME step_scene_resources COMMAND encore_step_scene_resources_tests ${CMAKE_BINARY_DIR}/step-scene-fixture ${CMAKE_SOURCE_DIR}/romfs)
     set_tests_properties(step_scene_resources PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED step_scene_metadata)
+    add_test(NAME dungeon_keys_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_dungeon_keys.py --out ${CMAKE_BINARY_DIR}/dungeon-keys-fixture)
+    set_tests_properties(dungeon_keys_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_SETUP dungeon_keys_metadata)
+    add_executable(encore_dungeon_keys_tests tests/dungeon_keys_tests.cpp)
+    target_link_libraries(encore_dungeon_keys_tests PRIVATE encore_core)
+    add_test(NAME dungeon_keys_data COMMAND encore_dungeon_keys_tests ${CMAKE_BINARY_DIR}/dungeon-keys-fixture/catacombs.encdkeys ${CMAKE_BINARY_DIR}/dungeon-keys-fixture/alignment-fixture.encdkeys)
+    set_tests_properties(dungeon_keys_data PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED dungeon_keys_metadata)
     add_executable(encore_world_run_audio_tests tests/world_run_audio_tests.cpp)
     target_link_libraries(encore_world_run_audio_tests PRIVATE encore_core)
     add_test(NAME world_run_audio COMMAND encore_world_run_audio_tests ${CMAKE_BINARY_DIR}/step-scene-fixture ${CMAKE_SOURCE_DIR}/tests/fixtures/mayor.encsteps ${CMAKE_SOURCE_DIR}/tests/fixtures/pause-audio.tsv ${CMAKE_SOURCE_DIR}/tests/fixtures/step-contacts.tsv)

@@ -1,0 +1,9 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 3.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+Async. shader compilation: OFF
+ 
+ERROR: 'The argument 'anim_name' is never used in the function '_on_AnimationPlayer_animation_finished'. If this is intended, prefix it with an underscore: '_anim_name''
+ERROR: 'The argument 'anim_name' is never used in the function '_on_AnimationPlayer_animation_finished'. If this is intended, prefix it with an underscore: '_anim_name''
+ERROR: Error calling method from signal 'animation_finished': 'Sprite(Lock.gd)::_on_AnimationPlayer_animation_finished': Method not found..
+   at: emit_signal (core/object.cpp:1247)

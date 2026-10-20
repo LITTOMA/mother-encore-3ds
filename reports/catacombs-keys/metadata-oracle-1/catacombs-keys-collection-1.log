@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\collect-catacombs-key-metadata.py", line 14, in <module>
+    assert (len(metadata['tests']),receipt['discovered'],receipt['aggregate'],receipt['dedicated'])==(274,1268,903,366)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

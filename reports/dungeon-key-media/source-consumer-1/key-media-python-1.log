@@ -1,0 +1,23 @@
+test_all_truncations_rejected (tests.test_dungeon_key_media.KeyMediaTests.test_all_truncations_rejected) ... ok
+test_binding_semantics_are_data_unknowns_rejected (tests.test_dungeon_key_media.KeyMediaTests.test_binding_semantics_are_data_unknowns_rejected) ... ok
+test_codec_and_exact_nested_clocks (tests.test_dungeon_key_media.KeyMediaTests.test_codec_and_exact_nested_clocks) ... ok
+test_corrupt_headers_directory_typed_records (tests.test_dungeon_key_media.KeyMediaTests.test_corrupt_headers_directory_typed_records) ... FAIL
+test_native_geometry_repetitions_and_provenance (tests.test_dungeon_key_media.KeyMediaTests.test_native_geometry_repetitions_and_provenance) ... ok
+test_native_mismatch_fails_closed (tests.test_dungeon_key_media.KeyMediaTests.test_native_mismatch_fails_closed) ... ok
+test_review_and_unreviewed_source_rejected (tests.test_dungeon_key_media.KeyMediaTests.test_review_and_unreviewed_source_rejected) ... ok
+test_shared_core_build_lists (tests.test_dungeon_key_media.KeyMediaTests.test_shared_core_build_lists) ... ok
+
+======================================================================
+FAIL: test_corrupt_headers_directory_typed_records (tests.test_dungeon_key_media.KeyMediaTests.test_corrupt_headers_directory_typed_records)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_dungeon_key_media.py", line 29, in test_corrupt_headers_directory_typed_records
+    with self.assertRaises(ValueError,msg=str(at)):d.parse(b)
+AssertionError: ValueError not raised : 4732
+
+----------------------------------------------------------------------
+Ran 8 tests in 12.027s
+
+FAILED (failures=1)
+Actual key media audio: 2 PCM assets, 22828 bytes
+Key media fixture: 6628 bytes;69 native frame rectangles,9 shapes,6 stream lengths;2 real decoded PCM,retained T3X metadata only

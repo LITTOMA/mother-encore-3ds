@@ -1,0 +1,63 @@
+{
+  "projects": [
+    {
+      "bytes": 73859,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-media-native-1\\project",
+      "sha256_verified": true,
+      "files": 47,
+      "reparse_free": true,
+      "marker_verified": true
+    },
+    {
+      "bytes": 49173,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-media-native-2\\project",
+      "sha256_verified": true,
+      "files": 30,
+      "reparse_free": true,
+      "marker_verified": true
+    },
+    {
+      "bytes": 75487,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-media-native-3\\project",
+      "sha256_verified": true,
+      "files": 50,
+      "reparse_free": true,
+      "marker_verified": true
+    },
+    {
+      "bytes": 75487,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-media-native-4\\project",
+      "sha256_verified": true,
+      "files": 50,
+      "reparse_free": true,
+      "marker_verified": true
+    },
+    {
+      "bytes": 75487,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-media-native-5\\project",
+      "sha256_verified": true,
+      "files": 50,
+      "reparse_free": true,
+      "marker_verified": true
+    },
+    {
+      "bytes": 75487,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-media-native-6\\project",
+      "sha256_verified": true,
+      "files": 50,
+      "reparse_free": true,
+      "marker_verified": true
+    },
+    {
+      "bytes": 75487,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-media-native-7\\project",
+      "sha256_verified": true,
+      "files": 50,
+      "reparse_free": true,
+      "marker_verified": true
+    }
+  ],
+  "utc": "2026-10-20T19:32:35.6289660Z",
+  "scope": "Only seven owned completed source-reference project directories; evidence/SDK/upstream/DSP/games/protected assets retained",
+  "bytes": 500467.0
+}

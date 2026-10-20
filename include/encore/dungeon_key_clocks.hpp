@@ -67,6 +67,9 @@ public:
  bool interact(uint64_t,uint32_t,std::string&);
  bool play_animation(uint64_t,uint32_t,KeyClockRole,std::string&);
  bool audio_finished(uint64_t,uint32_t,std::string&);
+ // Native audio occupancy changes even when the source node has no script
+ // listener. Media owns completion bindings; this method executes no script.
+ bool node_audio_finished(uint64_t,uint32_t,uint32_t profile,std::string&);
  bool advance(uint64_t,double,std::string&);bool idle_frame(uint64_t,std::string&);bool retire(uint64_t,std::string&);
  const std::vector<DungeonKeyClockEvent>&events()const{return events_;}void clear_events(){events_.clear();}
  size_t pending()const{return pending_.size();}const DungeonKeyClocksData&data()const{return data_;}

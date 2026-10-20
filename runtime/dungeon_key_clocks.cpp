@@ -183,6 +183,9 @@ bool DungeonKeyClocks::play_animation(uint64_t epoch,uint32_t id,KeyClockRole ro
 bool DungeonKeyClocks::audio_finished(uint64_t epoch,uint32_t id,std::string&e){
  size_t i;if(!owner(epoch,id,i,true,e))return false;auto next=*this;if(!next.owners_[i].root.audio_finished(e)||!next.core_.pickup_finished(next.core_.handle(id),e)||!next.methods(e))return false;*this=std::move(next);e.clear();return true;
 }
+bool DungeonKeyClocks::node_audio_finished(uint64_t epoch,uint32_t id,uint32_t profile,std::string&e){
+ size_t i;if(!owner(epoch,id,i,true,e))return false;auto&node=owners_[i];DungeonKeyClockPlayer*player=nullptr;if(node.root.profile_id()==profile)player=&node.root;else if(node.has_child&&node.child.profile_id()==profile)player=&node.child;if(!player)return reject(e,"Key clocks audio node profile rejected");return player->audio_finished(e);
+}
 bool DungeonKeyClocks::advance(uint64_t epoch,double delta,std::string&e){
  if(!validate(epoch,e)||!std::isfinite(delta)||delta<0||delta>60)return reject(e,"Key clocks scene delta/epoch rejected");auto next=*this;
  for(size_t i=0;i<next.owners_.size();++i){auto&node=next.owners_[i];DungeonKeyState s;if(!next.core_.state(next.core_.handle(node.id),s,e))return false;if(!s.alive)continue;

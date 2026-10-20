@@ -1,0 +1,211 @@
+{
+  "base": "61ea4eaff4f1e803c6089e37525d618051ba31d9",
+  "source_methods_preserved": {
+    "tests/test_native_session.py": [
+      [
+        "NativeSessionTests",
+        "test_acquisition_policy_is_source_derived_and_additive"
+      ],
+      [
+        "NativeSessionTests",
+        "test_additive_startup_roster_and_legacy_bytes"
+      ],
+      [
+        "NativeSessionTests",
+        "test_checked_source_and_staging"
+      ],
+      [
+        "NativeSessionTests",
+        "test_complete_field_programmes_admit_only_source_written_flags"
+      ],
+      [
+        "NativeSessionTests",
+        "test_field_scope_is_source_derived_and_defaults_stay_frozen"
+      ],
+      [
+        "NativeSessionTests",
+        "test_frozen_rules6_resource_encoding_is_unchanged"
+      ],
+      [
+        "NativeSessionTests",
+        "test_map_object_policy_is_derived_from_present"
+      ],
+      [
+        "NativeSessionTests",
+        "test_recipe_drift_fails_closed"
+      ],
+      [
+        "NativeSessionTests",
+        "test_source_defaults_and_derived_values"
+      ],
+      [
+        "NativeSessionTests",
+        "test_stale_or_escaping_stage_rejected"
+      ],
+      [
+        "NativeSessionTests",
+        "test_startup_clamps_are_derived_from_serialized_hp_and_equipment"
+      ],
+      [
+        "NativeSessionTests",
+        "test_storage_conservation_policy_is_source_derived"
+      ],
+      [
+        "NativeSessionTests",
+        "test_v10_keeps_complete_v9_menu_prefix"
+      ],
+      [
+        "NativeSessionTests",
+        "test_v11_run_sound_append_preserves_v10_and_defaults"
+      ]
+    ],
+    "tests/test_phone_linker_bindings.py": [
+      [
+        "PhoneLinkerBindingTests",
+        "test_actual_room_append_and_commands_exact"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_audio_ids_must_match_actual_room_sources"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_audio_ir_and_existing_binary_exact"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_bad_actor_and_stable_identity"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_duplicate_and_unsafe_audio"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_intro_author_rows_and_actual_linked_prefix"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_intro_cross_phone_id_pcm_and_source_conflict"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_intro_duplicate_id_pcm_and_source"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_intro_schema_pin_unknown_hash_paths_and_gain"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_ordinary_audio_compile_gate"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_source_rate_and_unknown_conversion"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_stale_source"
+      ],
+      [
+        "PhoneLinkerBindingTests",
+        "test_unknown_schema_fields_and_paths"
+      ]
+    ],
+    "tests/test_phone_linker.py": [
+      [
+        "PhoneLinkerTests",
+        "test_all_existing_room_rows_and_strings_are_preserved"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_carol_phone_reminder_preserves_inherited_npc_talker"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_carol_uses_shared_verified_frames_but_own_source_geometry"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_dad_append_preserves_first_call_rows_strings_and_all_text_tokens"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_dad_normal_links_every_source_branch_choice_and_save_callback"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_deferred_flag_listener_rejects_invalid_body_flag_and_payload"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_entrance_listener_uses_original_descendant_body_and_flag"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_entrance_source_listener_cannot_become_visibility_only"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_house_prefix_and_optional_story_state_preserved"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_independent_hash_seeds_reproduce_all_linked_files"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_invalid_linked_commands_and_old_schema_fail_closed"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_linear_texts_have_stable_identity_and_typed_color"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_movement_waits_target_turn_camera_axis_and_phase_timing"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_only_reviewed_contact_boundaries_become_programs"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_phone_audio_identity_binding_and_old_asset_prefix"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_room_and_house_roundtrip_with_new_schema"
+      ],
+      [
+        "PhoneLinkerTests",
+        "test_unknown_linear_text_token_and_changed_area_geometry_reject"
+      ]
+    ]
+  },
+  "local_python_passed": 44,
+  "changes": "Old57 frozen AudioIR checksum retained; two footstep rows stay57:59; actual Root asset appends at59, total60. Original producer adds exactly two source hashes and AudioIR output fingerprint to phone report. Session negative cases call real verify with a detached copy of class-level actual source admission; positive/source-corruption/staging checks remain unmocked.",
+  "source_and_game_resources": "Runtime, headers, platform, tools, authored IR, binary resources and default save unchanged from61ea. Production source checks and1800s aggregate timeout unchanged.",
+  "verification": "Local14 Session57.508s and30 Phone617.648s PASS, preserving every method. Full61ea CI still pending except genuine3DSX/CIA377resources success118441977833. Selected artifact12239383418 actual game CRC/receipt SHA checked. Ordinary61ea RootA route running; not claimed passed here. No new complete CI/sanitizer/hardware/fullgame claim.",
+  "previous_failure": "895 GCC262/269 ordinary: aggregate1800s, phone count60vs59, stale phone report, older fixture and field source budgets. No GCC sanitizer for895.",
+  "cleanup": "14 published exact test ELFs745493192B retired; download parts192937984B removed. Actual895 and61ea games retained pending new route acceptance.",
+  "evidence_sha256": {
+    "build-receipt61ea.json": "3506b7a0bf5c2deb74cb3446ad2bcca5b2c6281fe70c16827ba01759cf5fbc03",
+    "phone-root-canonical-regenerate.log": "87baa5ed920b7994e9f4ec10afafbcc85887d6afa10ddd3fca76f3d4df89fa9f",
+    "phone-root-regenerate.log": "87baa5ed920b7994e9f4ec10afafbcc85887d6afa10ddd3fca76f3d4df89fa9f",
+    "phone-root-report-difference.json": "77d7878b8bbb24d62570e16a751fb70d2abce3c55c5a5128a9eac5b514da2a7a",
+    "phone-root-review.log": "df1c00e3e68db194b8a459adc1ab269d6ec52dd73fc16809877701fe0311a85d",
+    "regenerate-phone-canonical.py": "bfc9bc11489551f0b6906643afc00ea6505f5264cd16f42dc6d0dc09c761966e",
+    "retired-root-investigation-elfs-1.json": "5092b01d94eb70421f3357e2b3f4ebeef46a04b10f7aacacb856deffeefbb3c6",
+    "review-phone-root-extension.py": "8ae55b79d36be7d959e2642bba34dd18f79012595383aa3bdeb41e0df60e06c0",
+    "root-ci-phone-python-1.log": "d3c0b2777f6fefb3a2f1964aee9793fb28072737a2f18c3ab6719a37e8dbe22b",
+    "root-ci-session-python-1.log": "2476202c92256188858ba2c97746939b45c7c133ac01f56a82306423d1e73dc7",
+    "root61ea-console-api.log": "789da3a7e9113f4b18b28b756b111239d1412091973f26467378703b0c37fa59",
+    "root895-gcc.log": "232c3aeee0446a9839f9510196abebcdfac9bf8b844af904afd93fbafee0bb60",
+    "selected-proof61ea.json": "d0890be819f7a2471021e0d6fa55b91f8329da5438f66a15bce22e256ff005d9",
+    "source/tests/test_native_session.py": "a33d7f104b3d0e6845f0810355b5127b981ab344e90c28c7f807719d178c67c6",
+    "source/tests/test_phone_linker.py": "263f103beda145b898e5f8c86bd5c323ce167c4fce74506d814357da26bb936d",
+    "source/tests/test_phone_linker_bindings.py": "b442f599e57eb6b59cea53da4417a3601c432e9af35fa9685016486de9c7ddcd"
+  }
+}

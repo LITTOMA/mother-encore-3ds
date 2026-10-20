@@ -1,0 +1,52 @@
+         264845166 function calls (252781501 primitive calls) in 158.636 seconds
+
+   Ordered by: cumulative time
+   List reduced from 2268 to 22 due to restriction <22>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        8    0.033    0.004   87.051   10.881 D:\GameDev\3DS\mother-encore-3ds\tools\house_source_bindings.py:29(load)
+      949    0.228    0.000   80.714    0.085 D:\GameDev\3DS\mother-encore-3ds\tools\programme_lowering_recipe.py:184(load)
+      277    0.388    0.001   75.703    0.273 D:\GameDev\3DS\mother-encore-3ds\tools\programme_lowering_recipe.py:78(checked)
+       11    0.002    0.000   68.115    6.192 D:\GameDev\3DS\mother-encore-3ds\tools\link_phone_content.py:66(load_dad)
+       22    0.027    0.001   58.785    2.672 D:\GameDev\3DS\mother-encore-3ds\tools\link_pillow_content.py:11(texts)
+       12    0.009    0.001   57.123    4.760 D:\GameDev\3DS\mother-encore-3ds\tools\dialogue_choice_assets.py:194(verify_recipe)
+       12    0.005    0.000   57.108    4.759 D:\GameDev\3DS\mother-encore-3ds\tools\dialogue_choice_assets.py:45(extract)
+        5    0.010    0.002   55.586   11.117 D:\GameDev\3DS\mother-encore-3ds\tools\phone_linker_bindings.py:18(load)
+     1086    0.019    0.000   54.822    0.050 C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:417(check_output)
+     1128    0.032    0.000   54.790    0.049 D:\GameDev\3DS\mother-encore-3ds\tools\phone_dialogue.py:169(text_segments)
+     1086    0.021    0.000   54.747    0.050 C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:506(run)
+     4654   50.496    0.011   50.733    0.011 {method 'read' of '_io.TextIOWrapper' objects}
+     1086    0.013    0.000   50.004    0.046 C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1165(communicate)
+     6421    0.011    0.000   49.061    0.008 C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\site-packages\yaml\__init__.py:117(safe_load)
+        1    0.003    0.003   49.056   49.056 D:\GameDev\3DS\mother-encore-3ds\tools\extract_native_content.py:164(run)
+     6421    0.078    0.000   49.051    0.008 C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\site-packages\yaml\__init__.py:74(load)
+     6421    0.009    0.000   48.841    0.008 C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\site-packages\yaml\constructor.py:47(get_single_data)
+     6135    0.008    0.000   47.280    0.008 D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py:113(yaml)
+        1    0.003    0.003   46.473   46.473 D:\GameDev\3DS\mother-encore-3ds\tools\extract_house.py:10(build)
+     6421    0.016    0.000   46.046    0.007 C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\site-packages\yaml\composer.py:29(get_single_node)
+     6421    0.009    0.000   45.593    0.007 C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\site-packages\yaml\composer.py:50(compose_document)
+757100/6421    1.374    0.000   45.557    0.007 C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\site-packages\yaml\composer.py:63(compose_node)
+
+
+{
+  "seconds": 159.70300000003772,
+  "changes": {
+    "sources": {
+      "Audio/Sound effects/Barrel Coffin Explode.mp3": {
+        "old": null,
+        "new": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db"
+      },
+      "Audio/Sound effects/Barrel Coffin Explode.mp3.import": {
+        "old": null,
+        "new": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d"
+      }
+    },
+    "outputs": {
+      "content/native-audio.json": {
+        "old": "0b9cf2197bb1b111fd9d6cab1e9540d85d1d56a813973baac0f5530687e31f8b",
+        "new": "e9cd55bc095416b0faa579ebc7828835e0015282ed8880aafcf82a780f838ae8"
+      }
+    }
+  },
+  "audio_rows": 60
+}

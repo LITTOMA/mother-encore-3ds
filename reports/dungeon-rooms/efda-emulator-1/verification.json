@@ -1,0 +1,70 @@
+{
+  "source_commit": "efda3fba8e72922f86f7d7dbfabb68d4e0bae91d",
+  "current_head": "642d4aac7180cd139790fc8de3924de4246d5eae",
+  "head_changes_only": [
+    "docs/PYTHON_TEST_SHARDS.md",
+    "docs/STATUS.md",
+    "reports/python-suite-shards/full6fe-acceptance/clang.log",
+    "reports/python-suite-shards/full6fe-acceptance/console.log",
+    "reports/python-suite-shards/full6fe-acceptance/gcc.log",
+    "reports/python-suite-shards/full6fe-acceptance/verification.json"
+  ],
+  "scope": "Two ordinary-input cold newgames with declared intro skip, existing ABI9 runner, DSP consumption required. Source-contract/Pause/PSI oracle only, not full parallel original playthrough or live dungeon. No memory or save injection, CIA install, perceptual audio quality or hardware claim.",
+  "console": {
+    "run": 39462781455,
+    "job": 118766274067,
+    "status": "success",
+    "resources": 377
+  },
+  "full_host_status_at_collection": "GCC308 ordinary/291 sanitizer and genuine3DSX/CIA passed; Clang sanitizer still running. No full current acceptance claim.",
+  "emulator": {
+    "repetitions": 2,
+    "checkpoints_each": 90,
+    "stable_projection_equal": true,
+    "audio_required": true,
+    "temporary_profiles_removed": true,
+    "temporary_bytes_removed": 193055974,
+    "game_sha256": "d679f8e97cb2069fd021e5de33fa3a10efaf1b0ee9bcc04a7b73eee966a53563",
+    "profile_directory_checked": "run-{1,2}/temporary; neither exists, no child directories remain",
+    "temporary_profile_cleanup_note": "Runner cleanup follows owned process stop and marker/parent path check; observed both actual temporary directories absent."
+  },
+  "artifact_verification": "Selected ZIP members checked against CRC and genuine receipt SHA/size; archive digest recorded from API, not recomputed from a full archive. No CIA or whole ZIP downloaded.",
+  "visual": "Actual run1 Doll victory and first field-walk screenshots viewed for scene/character continuity; no pixel comparison.",
+  "unverified": [
+    "CIA installation",
+    "Old/New 3DS hardware",
+    "perceptual audio quality",
+    "live Catacombs scene",
+    "full original playthrough"
+  ],
+  "evidence_sha256": {
+    "build-receipt.json": "3522649ba7e546a8d3661493b23b104808ee494d9b6f2a6ac97872eb3d4b00a3",
+    "console.log": "69afc18c8ea37cf21d376e737b13cdefbae4b347b4a366eb687e5b489f15d1c1",
+    "emulator-runner.log": "3a15ab2532a8b012e59813e23462f3c7cf02be399f246618e1ce79fef3fb4cf9",
+    "opening-field-exit.json": "02d282370fb6b9e36f5b2fe1121f3c2fbcc00588e5799e5e00bfbe8e4039a8fa",
+    "ordinary-input/receipt.json": "7cbc263480e3a385e2b8fb4cb487b13983b172cf69907954b793c19d703aba85",
+    "ordinary-input/run-1/dad_first_finished.png": "43036a14efcb6c8ffcc9864d0e6b21461f3d44077ce74fde90e3811160684327",
+    "ordinary-input/run-1/doll_victory.png": "f4dca391089f6bfff26091234768301334cfff8b31955099e35fc589f3e6c562",
+    "ordinary-input/run-1/emulator-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ordinary-input/run-1/emulator.log": "b61e69554242343adc38e790e2a32ce216814d66aba162435a05700171e9218c",
+    "ordinary-input/run-1/first_field_walk.png": "2a5f10481fd8739fe15c73e79f77c1031ee3ef9c61bcb5651bcac33c1eefef65",
+    "ordinary-input/run-1/lamp_victory.png": "a4ad98e7d9c42c9707212e1dd3bbe9c9ac0ca779c00e2c55846193111962f64c",
+    "ordinary-input/run-1/result.json": "c9a4ddfd9e300cb0d84ea87de9bf26bba32a93d49cdbe2dc418a93dc53467493",
+    "ordinary-input/run-1/return_house.png": "a46bbe63c2df42b4dedbb2db42162431d5ab0e69c2d7f01723c152d29becd59b",
+    "ordinary-input/run-1/second_field_walk.png": "440ba8df32abe53c692341e0fb3cb12a239cf86bceb2822ba74fda80b8801b9f",
+    "ordinary-input/run-2/dad_first_finished.png": "062144941223e678a6a32d4ff2d1e23ab2b2be7b7b355b80dee77706750c71e9",
+    "ordinary-input/run-2/doll_victory.png": "4f20a3f964c4878ca0b15f20a4e06470b4dd4217072d6b47c14bc32ba74f0401",
+    "ordinary-input/run-2/emulator-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ordinary-input/run-2/emulator.log": "7858b9155ce268357b5a0feea1810c24d71fcc0c65f54f6174727f5350bb0f2c",
+    "ordinary-input/run-2/first_field_walk.png": "b189636e415525386a612bd685dad219f1d6e16367044c3f6ac5008d2f00db7f",
+    "ordinary-input/run-2/lamp_victory.png": "7a7ea81a2a811adef92e57900a14fc830dc37a0273c6cb79493d2e249f9eee82",
+    "ordinary-input/run-2/result.json": "331014375207bfac1a23c26ba468b78dc6e501ae3dad1cfb4a1e58354b0a4ee7",
+    "ordinary-input/run-2/return_house.png": "1e82861882ee199d7b6ce761c76877c3ebab624cf1434aefb3ce0217425fc1a9",
+    "ordinary-input/run-2/second_field_walk.png": "af9011a3e9f1143df7e891dd08cb7f888582f7735e6d43b919cd894741cdfe54",
+    "retained-run_current_opening.py": "ac9dad1d3c5e93f26eb9743ccd49802053c2362c32d4085a41b01d30f4e9989c",
+    "selected-artifact-proof.json": "e151ebd1a79d2f74ecfe93833b3dd8aa52398dc9d11aad29bf283522356db80f"
+  },
+  "command": "python build/full-port/run_current_opening.py --emulator build/azahar-cdb/bin/Release/azahar.exe --game build/full-port/rooms-efda-current/verified-artifact/3ds/encore-native/encore-native.3dsx --receipt build/full-port/rooms-efda-current/verified-artifact/build-receipt.json --scenario tests/emulator/opening-field-exit.json --original-reference reports/field-atlas-residency/original-menu/reference.json --out build/emulator-regression/rooms-efda-opening-1 --repetitions 2 --dsp-component <existing-private-dsp> --require-audio",
+  "audio_scope": "Scenario-declared title/battle DSP consumption checks only. Field first-walk observes music_asset=0 in both runs; no assertion of outdoor BGM or perceptual audio quality.",
+  "upstream_pin": "7d9246600fffe518408f5830d4848635019005a3"
+}

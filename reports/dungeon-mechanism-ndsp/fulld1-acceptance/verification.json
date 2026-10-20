@@ -1,0 +1,26 @@
+{
+  "commit": "d1bd1e1f88ddbc929deec3c53cfac97a74ca252b",
+  "run": 39448552971,
+  "status": "success",
+  "jobs": {
+    "gcc": 118716892748,
+    "clang": 118716893129,
+    "console": 118716893549
+  },
+  "counts": {
+    "gcc": [
+      303,
+      286
+    ],
+    "clang": [
+      286,
+      286
+    ]
+  },
+  "raw_logs_sha256": {
+    "gcc": "e6452fdb3cb7387de6453c7e1362aa85ab5ac3b9ecb0900637cd5e6f6b4c64fd",
+    "clang": "a74e975277cfa34686ee15ac3ab63ef778bf310e66b3c92009927374aaeed003",
+    "console": "135c5239b15255b2be134f34e712d5175efbb12ee07cb897569456c1054bb55d"
+  },
+  "scope": "Completed exact source host, ASan/UBSan with normal leak checking, genuine 3DSX/CIA and 377 staged resources. Detached mechanism service only; no live dungeon, emulator, audible or hardware claim."
+}

@@ -11,3 +11,5 @@
 此前 bc8fcd6 的真实 3DS 编译暴露 `uint32_t` 在 devkitARM 中为 `unsigned long`，与同一 `auto` 声明中的 `unsigned int` 字面量类型不同；现已改为显式 `uint32_t`，错误原始记录见 `reports/dungeon-mechanism-audio-binding/arm-width-build-fix`。9abfc1d 的真实 3DSX／CIA 构建通过；包含新生产头文件的 d1bd1e1 真实构建也通过，完整主机／消毒器检查仍在运行。后续接触分派变更须按自己的提交验收。
 
 主程序仅包含新头文件以让真实工具链检查；正式场景尚未创建或调用此服务。以上不是模拟器、可听性或真机通过，墓穴及 Pippi 支持范围尚未扩大。证据见 `reports/dungeon-mechanism-ndsp/source-service-1`。
+
+d1bd1e1 的完整检查 39448552971 已全部通过：GCC 普通303／ASan+UBSan286、Clang 各286，以及真实3DSX／CIA与377项包内资源。原始日志保存在 `reports/dungeon-mechanism-ndsp/fulld1-acceptance`。后续接触分派 b90af3b 的完整检查也已通过，详见机关接触文档；以上仍不代表正式场景可听性或真机通过。

@@ -11,3 +11,5 @@
 实际 Windows Debug 元数据：274 项 CTest，1261 个 Python 方法 = 878 个汇总 + 383 个专用，两个汇总组各 439 个。Windows 仅完成配置和发现；29 项调度／分配检查通过，包含真实两组执行、新模块保留、顺序和多重集、遗漏／重复／错误命令拒绝、worker 隔离及失败传播。完整 GCC／Clang、消毒器与真实构建仍待新提交检查。
 
 原始失败、成功及本地检查记录在 `reports/python-suite-shards/source-failure-1b`。分组属于测试组织，程序、游戏资源、规则和存档格式均不变。
+
+完整检查 `39440740886` 已在 `6fe2ab2e2645a563e5c501dbd6244c70d89f55e4` 全部通过：GCC 普通 276 项／ASan+UBSan 259 项，Clang 普通与 ASan+UBSan 各 259 项；真实 3DSX／CIA 及 377 项包内资源核对通过。完整原始日志见 `reports/python-suite-shards/full6fe-acceptance`。此前 Windows 元数据不包含 CI 的额外 GCC 专用检查，不能与完整运行计数混同。本次只追加验收记录；测试、构建与游戏文件和该已验证提交相同，未据此宣称模拟器或真机通过。

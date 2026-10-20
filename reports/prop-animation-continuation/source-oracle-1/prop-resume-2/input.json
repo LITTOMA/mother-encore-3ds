@@ -1,0 +1,1057 @@
+{
+  "profiles": [
+    {
+      "scene": "numeric-lever.tscn",
+      "file": "lever.encpcl",
+      "frame_owner": "main",
+      "body_owner": "collision/CollisionShape2D",
+      "actions": [
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "advance",
+          "delta": 0.0010000000474974513
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0004000000189989805
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0.0010000000474974513
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "advance",
+          "delta": 1.0
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.4
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 1.0
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "advance",
+          "delta": 1.0
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.4
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 1.0
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        }
+      ],
+      "ids": {
+        "RESET": 7,
+        "TurnOff": 1,
+        "TurnOn": 2
+      }
+    },
+    {
+      "scene": "numeric-plate.tscn",
+      "file": "plate.encpcl",
+      "frame_owner": "Sprite",
+      "body_owner": null,
+      "actions": [
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "advance",
+          "delta": 0.0010000000474974513
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0004000000189989805
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0.0010000000474974513
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "advance",
+          "delta": 1.0
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.4
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 1.0
+        },
+        {
+          "op": "play",
+          "name": "TurnOff",
+          "id": 1
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "advance",
+          "delta": 1.0
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.4
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.25
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 1.0
+        },
+        {
+          "op": "play",
+          "name": "TurnOn",
+          "id": 2
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        }
+      ],
+      "ids": {
+        "RESET": 7,
+        "TurnOff": 1,
+        "TurnOn": 2
+      }
+    },
+    {
+      "scene": "numeric-gate.tscn",
+      "file": "gate.encpcl",
+      "frame_owner": "main",
+      "body_owner": "collision/CollisionShape2D",
+      "actions": [
+        {
+          "op": "play",
+          "name": "Off",
+          "id": 3
+        },
+        {
+          "op": "advance",
+          "delta": 0.125
+        },
+        {
+          "op": "play",
+          "name": "Off",
+          "id": 3
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.125
+        },
+        {
+          "op": "play",
+          "name": "Off",
+          "id": 3
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.125
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "play",
+          "name": "Off",
+          "id": 3
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.2
+        },
+        {
+          "op": "play",
+          "name": "On",
+          "id": 4
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "Off",
+          "id": 3
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.125
+        },
+        {
+          "op": "play",
+          "name": "Off",
+          "id": 3
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "play",
+          "name": "Off",
+          "id": 3
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "On",
+          "id": 4
+        },
+        {
+          "op": "advance",
+          "delta": 0.125
+        },
+        {
+          "op": "play",
+          "name": "On",
+          "id": 4
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.125
+        },
+        {
+          "op": "play",
+          "name": "On",
+          "id": 4
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.125
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "play",
+          "name": "On",
+          "id": 4
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.2
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "On",
+          "id": 4
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.125
+        },
+        {
+          "op": "play",
+          "name": "On",
+          "id": 4
+        },
+        {
+          "op": "advance",
+          "delta": 0.5
+        },
+        {
+          "op": "play",
+          "name": "On",
+          "id": 4
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "advance",
+          "delta": 0.0010000000474974513
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0004000000189989805
+        },
+        {
+          "op": "play",
+          "name": "StayOff",
+          "id": 5
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0.0010000000474974513
+        },
+        {
+          "op": "play",
+          "name": "RESET",
+          "id": 7
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "StayOff",
+          "id": 5
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "StayOff",
+          "id": 5
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "StayOff",
+          "id": 5
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "advance",
+          "delta": 0.0010000000474974513
+        },
+        {
+          "op": "play",
+          "name": "StayOff",
+          "id": 5
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0004000000189989805
+        },
+        {
+          "op": "play",
+          "name": "StayOn",
+          "id": 6
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "StayOff",
+          "id": 5
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "StayOff",
+          "id": 5
+        },
+        {
+          "op": "advance",
+          "delta": 0.0010000000474974513
+        },
+        {
+          "op": "play",
+          "name": "StayOff",
+          "id": 5
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "StayOn",
+          "id": 6
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "StayOn",
+          "id": 6
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "StayOn",
+          "id": 6
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "advance",
+          "delta": 0.0010000000474974513
+        },
+        {
+          "op": "play",
+          "name": "StayOn",
+          "id": 6
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0004000000189989805
+        },
+        {
+          "op": "play",
+          "name": "Off",
+          "id": 3
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "play",
+          "name": "StayOn",
+          "id": 6
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        },
+        {
+          "op": "advance",
+          "delta": 0.0002500000118743628
+        },
+        {
+          "op": "play",
+          "name": "StayOn",
+          "id": 6
+        },
+        {
+          "op": "advance",
+          "delta": 0.0010000000474974513
+        },
+        {
+          "op": "play",
+          "name": "StayOn",
+          "id": 6
+        },
+        {
+          "op": "advance",
+          "delta": 0
+        }
+      ],
+      "ids": {
+        "Off": 3,
+        "On": 4,
+        "RESET": 7,
+        "StayOff": 5,
+        "StayOn": 6
+      }
+    }
+  ]
+}

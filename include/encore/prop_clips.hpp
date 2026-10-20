@@ -29,6 +29,7 @@ private:
 class PropClipPlayer {
 public:
  bool initialize(const PropClipsData&,std::string&);
+ // Same assigned clip continues its position; a finished endpoint restarts.
  bool play(uint32_t,std::string&);bool advance(double,std::string&);
  const PropPose&pose()const{return pose_;}
  bool playing()const{return playing_;}

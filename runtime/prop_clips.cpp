@@ -47,7 +47,13 @@ bool PropClipsData::load(const uint8_t*p,size_t n,std::string&e){
  v.valid_=true;*this=std::move(v);e.clear();return true;
 }
 bool PropClipPlayer::initialize(const PropClipsData&d,std::string&e){if(!d.valid())return fail(e,"Prop player needs checked data");PropClipPlayer v;v.data_=d;v.pose_=d.initial();*this=std::move(v);e.clear();return true;}
-bool PropClipPlayer::play(uint32_t id,std::string&e){if(!data_.valid()||!data_.clip(id))return fail(e,"Prop player clip is unbound");id_=id;time_=0;key_=0;playing_=true;e.clear();return true;}
+bool PropClipPlayer::play(uint32_t id,std::string&e){
+ const auto*c=data_.clip(id);if(!data_.valid()||!c)return fail(e,"Prop player clip is unbound");
+ // AnimationPlayer::play retains a same-assigned animation's current time.
+ // A different animation or an exact finished endpoint starts at the front.
+ if(id_!=id||time_==c->duration){time_=0;key_=0;}
+ id_=id;playing_=true;e.clear();return true;
+}
 bool PropClipPlayer::advance(double delta,std::string&e){
  if(!data_.valid()||!std::isfinite(delta)||delta<0||delta>60)return fail(e,"Prop player delta rejected");
  if(!playing_){e.clear();return true;}

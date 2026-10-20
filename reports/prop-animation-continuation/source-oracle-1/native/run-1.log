@@ -1,0 +1,31 @@
+Original row2 lever.encpcl play 7: time actual0 expected0.00025000001187440001
+Prop play continuation: original play/advance position
+Original row3 lever.encpcl advance 0: time actual0 expected0.00025000001187440001
+Prop play continuation: original play/advance position
+Original row4 lever.encpcl advance 0.00025000001187436283: time actual0.00025000001187436283 expected0.00050000002374869996
+Prop play continuation: original play/advance position
+Original row5 lever.encpcl play 7: time actual0 expected0.00050000002374869996
+Prop play continuation: original play/advance position
+Original row6 lever.encpcl advance 0: time actual0 expected0.00050000002374869996
+Prop play continuation: original play/advance position
+Original row7 lever.encpcl advance 0.00025000001187436283: time actual0.00025000001187436283 expected0.00075000000651929998
+Prop play continuation: original play/advance position
+Original row17 lever.encpcl play 7: time actual0 expected0.00025000001187440001
+Prop play continuation: original play/advance position
+Original row23 lever.encpcl play 1: time actual0 expected0.25
+Prop play continuation: original play/advance position
+Original row24 lever.encpcl advance 0: time actual0 expected0.25
+Prop play continuation: original play/advance position
+Original row25 lever.encpcl advance 0.25: time actual0.25 expected0.5
+Prop play continuation: original play/advance position
+Original row26 lever.encpcl play 1: time actual0 expected0.5
+Prop play continuation: original play/advance position
+Original row27 lever.encpcl advance 0: time actual0 expected0.5
+Prop play continuation: original play/advance position
+Original row28 lever.encpcl advance 0.25: time actual0.25 expected0.75
+Prop play continuation: original play/advance position
+Original row38 lever.encpcl play 1: time actual0 expected0.25
+Prop play continuation: original play/advance position
+Original row44 lever.encpcl play 2: time actual0 expected0.25
+Prop play continuation: original play/advance position
+Prop same-animation play: 2775 checks,174 failures;231 original observations replayed twice; exact source position and properties

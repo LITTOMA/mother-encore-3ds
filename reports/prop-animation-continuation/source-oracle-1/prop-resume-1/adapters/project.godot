@@ -1,0 +1,7 @@
+config_version=4
+[application]
+config/name="Original same-animation play"
+[rendering]
+quality/driver/driver_name="GLES2"
+[logging]
+file_logging/enable_logging=false

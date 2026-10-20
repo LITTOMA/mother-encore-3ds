@@ -1,0 +1,33 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+    "Scripts/misc/wall door.gd": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a",
+    "Graphics/Objects/Catacombs/Wall Door.png": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100",
+    "Audio/Sound effects/Stone_move.mp3": "51e63dc9c9b13527966e22c9dd3377a9ab883368af092e2292f95d9b9e532d16",
+    "Audio/Sound effects/Stone_move.mp3.import": "b7b636713631a319a1c733b182bc7d9e5cb17f1571a0ee81ba72878124645dfb"
+  },
+  "scope": "Wall frame/body, audio property writes and deferred method dispatch slice.\n\nNative AnimationPlayer and AudioStreamPlayer run against the original resources.\nOnly playing-property writes are forwarded through a logging setter. The wall's\noriginal _shake body targets a camera-call recorder. Controlled-object scripts,\nscene flags, physical contact, camera execution and audibility are not tested.\n",
+  "whole_scripts_approved": false,
+  "cases": 6,
+  "rows": 309,
+  "adapters": [
+    "Original wall scene keeps all subresources/node properties except the two declared playing-property selectors; original script attachment targets isolated _shake-only bridge.",
+    "Original _shake method body unchanged, global service only records camera call. No controlled base scripts run.",
+    "Fresh native MP3 import, then apply original checked loop=false/offset=0 parameters directly to native resource; do not copy upstream .mp3str cache. Logging requested_playing setter forwards every write to native playing. Records commands only, not PCM clock or audibility.",
+    "Native manual AnimationPlayer default DEFERRED method mode; flush barrier queued behind pending calls. All other scene callbacks excluded."
+  ],
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "producer_sha256": "c9554639f018255022a94a4755552ee3ae07d4a15eb608b5ca31ccb64c418f76",
+  "files": {
+    "observations.json": "9c25cdbe37e578a5277f4cb0cf35bb1318a6f50ffd5419cc7ec5d8e9bd92858c",
+    "input.json": "4b2af5546693665431811a9e90b3536e246649ee5ef07dc3107214c94f4b8648",
+    "source-wall.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+    "source-wall.gd": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a",
+    "wall.tscn": "994592a7e094eeff7823ef54adcf2120ce78a2d42f750444c1e84e70da46c961",
+    "wall_slice.gd": "14eafe4aa98b7963a15ba1cfa5b71ddbd07b5cd12c43b8578c66ad95e58abe01",
+    "audio.gd": "01301eea447e1221d26221bab5aa3e91da377a6c63d51bf419c126181908d533",
+    "service.gd": "9ce65f6d38a4200bf86e889e8e4dd054e028966a58e569239aa5f36779688616",
+    "probe.gd": "1a22efb50f1d3d13747f03b85ca0f47a5f02e86add1cdbf282defb212082536f"
+  }
+}

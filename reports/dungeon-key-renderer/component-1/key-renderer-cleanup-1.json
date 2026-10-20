@@ -1,0 +1,61 @@
+{
+  "verified_source": 5,
+  "removed_empty_scratch": [
+    {
+      "directories": [
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch\\graphics\\world\\catacombs\\keys",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch\\graphics\\world\\catacombs",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch\\graphics\\world",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch\\graphics"
+      ],
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch"
+    },
+    {
+      "directories": [
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-3\\graphics\\world\\catacombs\\keys",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-3\\graphics\\world\\catacombs",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-3\\graphics\\world",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-3\\graphics"
+      ],
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-3"
+    },
+    {
+      "directories": [
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-4\\graphics\\world\\catacombs\\keys",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-4\\graphics\\world\\catacombs",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-4\\graphics\\world",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-4\\graphics"
+      ],
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-4"
+    }
+  ],
+  "latest_host_executable_retained": true,
+  "removed_executables": [
+    {
+      "kind": "superseded owned host test executable",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-host-1\\check",
+      "bytes": 14895248,
+      "sha256": "323f43147e61f5e307c92c15c1a8bdc6ec105d87862857dea9302f3e0928d36c"
+    },
+    {
+      "kind": "superseded owned host test executable",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-host-2\\check",
+      "bytes": 14896816,
+      "sha256": "de04129d16ede5016f9c0f418d285b9680e442da8e21223f5043316853951bb9"
+    },
+    {
+      "kind": "superseded owned host test executable",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-host-3\\check",
+      "bytes": 15129624,
+      "sha256": "8eed8910727d699b3361bf893c9b355359d62748c32be3b6d487e8de78802a61"
+    },
+    {
+      "kind": "superseded owned host test executable",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-host-4\\check",
+      "bytes": 15216368,
+      "sha256": "f95243f136026e5ed71c5337d2f24a1b160919e9995a6a2140c4d921ee435830"
+    }
+  ],
+  "raw_failure_logs_retained": true,
+  "removed_bytes": 60138056.0
+}

@@ -1,0 +1,20 @@
+test_missing_core_and_fixture_substitutions_reject (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_missing_core_and_fixture_substitutions_reject) ... ok
+test_playable_sources_registered_in_both_builds (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_playable_sources_registered_in_both_builds) ... ERROR
+test_unknown_and_duplicate_source_expressions_reject (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_unknown_and_duplicate_source_expressions_reject) ... ok
+
+======================================================================
+ERROR: test_playable_sources_registered_in_both_builds (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_playable_sources_registered_in_both_builds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_console_core_sources.py", line 18, in test_playable_sources_registered_in_both_builds
+    _,console=checked(self.cmake,self.make)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_console_core_sources.py", line 11, in checked
+    if set(core)-set(console)!=FIXTURE_ONLY:raise ValueError('Playable shared-core source omitted from console build')
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Playable shared-core source omitted from console build
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.008s
+
+FAILED (errors=1)

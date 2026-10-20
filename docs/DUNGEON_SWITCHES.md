@@ -57,4 +57,8 @@ checks with leak checking, compiling all native inputs from source. CMake
 collection has278 tests and1282 Python methods (916 aggregate,366 dedicated).
 Windows native executables were not built. Full current CI and console builds
 are checked separately; no emulator dungeon, hardware or complete-game pass.
+Inspection and the existing source-list test found the three new dungeon
+components absent from the console source list. The list is corrected; three
+checks pass after the retained failure. This is source registration validation,
+not a successful ARM compile; the next genuine console job must verify it.
 Evidence is in reports/catacombs-switches/metadata-oracle-1.

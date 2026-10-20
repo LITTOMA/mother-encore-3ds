@@ -61,5 +61,8 @@ explicitly artificial and separate from the actual568-byte candidate. Windows
 CMake configuration and method collection are metadata checks only; no native
 Windows execution, complete current CI, emulator, hardware or complete dungeon
 pass is claimed here. The metadata-only b9befdc console job118467297475 built
-genuine3DSX/CIA and checked packaged resources; that does not verify the later
-method-state component or playable Catacombs.
+genuine3DSX/CIA and checked packaged resources, but its console source list
+omitted the new metadata component. It verifies existing game packaging, not
+the new component's cross-compilation. The key parser, method-state component
+and switch parser are now registered in both builds; the three source-list
+checks pass. A new real console build is required. No playable Catacombs claim.

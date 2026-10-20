@@ -1,0 +1,16 @@
+{
+  "parent": "c802539",
+  "failure": "Existing console-core source test failed because dungeon_keys, dungeon_key_state and dungeon_switches were in CMake core but absent from platform/ctr/Makefile. No source ignore/exemption added.",
+  "fix": "Register all3 unchanged components in actual console SOURCES.",
+  "verification": "Existing3 Python source-registration checks pass, including omission/duplicate/unknown-expression negatives. No ARM build pass inferred.",
+  "remaining": "New genuine ARM/3DSX/CIA build and complete host/sanitizer jobs pending.",
+  "source_sha256": {
+    "platform/ctr/Makefile": "7a393f238dcf97ba66dad47ae0ddc1b7da176efb69bc2ea00750a81b90abe36b",
+    "CMakeLists.txt": "15647dd15d0bff2e550e02367b4d455df90edbc9c589fdfecc22ea7cb7f38201",
+    "tests/test_console_core_sources.py": "d34a7c07e19143d407adbf18ae5d1f0df9b25dfc9dfdb44f4877b968e6d65f81"
+  },
+  "evidence_sha256": {
+    "catacombs-console-sources-after-1.log": "4666b0e379e10f4a57f3aba2158f4c30c2777fa253f3f208c1594066c9ac8a06",
+    "catacombs-console-sources-before-1.log": "a46a7477669779f2ad105d7d39ccd0a447acac7e57de65c9657f1cf474f32b01"
+  }
+}

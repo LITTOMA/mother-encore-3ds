@@ -1,0 +1,10 @@
+test_checked_paths_cannot_escape_or_accept_changed_bytes (tests.test_mayor_scene.MayorScenePublication.test_checked_paths_cannot_escape_or_accept_changed_bytes) ... ok
+test_checked_release_outputs_and_source_fixtures (tests.test_mayor_scene.MayorScenePublication.test_checked_release_outputs_and_source_fixtures) ... ok
+test_missing_and_changed_receipts_reject (tests.test_mayor_scene.MayorScenePublication.test_missing_and_changed_receipts_reject) ... ok
+test_route_recipe_path_and_source_graph_rejected (tests.test_mayor_scene.MayorScenePublication.test_route_recipe_path_and_source_graph_rejected) ... ok
+test_texture_pcm_and_room_corruption_rejected (tests.test_mayor_scene.MayorScenePublication.test_texture_pcm_and_room_corruption_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 152.320s
+
+OK

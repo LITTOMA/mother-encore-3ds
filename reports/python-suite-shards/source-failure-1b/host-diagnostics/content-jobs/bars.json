@@ -1,0 +1,14 @@
+{
+  "task": "bars",
+  "pid": 3739,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498416.3765726,
+  "finished": 1792498417.4424798,
+  "seconds": 1.0659072399139404,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/blackbars_assets.py",
+    "compile"
+  ]
+}

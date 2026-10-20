@@ -1,0 +1,14 @@
+{
+  "task": "prompts",
+  "pid": 5705,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498460.3778782,
+  "finished": 1792498465.668445,
+  "seconds": 5.290566921234131,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/house_button_prompt_assets.py",
+    "verify"
+  ]
+}

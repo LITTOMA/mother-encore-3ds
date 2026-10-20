@@ -1,0 +1,21 @@
+{
+  "module": "test_mayor_scene",
+  "expected_ids": [
+    "test_mayor_scene.MayorScenePublication.test_checked_paths_cannot_escape_or_accept_changed_bytes",
+    "test_mayor_scene.MayorScenePublication.test_checked_release_outputs_and_source_fixtures",
+    "test_mayor_scene.MayorScenePublication.test_missing_and_changed_receipts_reject",
+    "test_mayor_scene.MayorScenePublication.test_route_recipe_path_and_source_graph_rejected",
+    "test_mayor_scene.MayorScenePublication.test_texture_pcm_and_room_corruption_rejected"
+  ],
+  "executed_ids": [
+    "test_mayor_scene.MayorScenePublication.test_checked_paths_cannot_escape_or_accept_changed_bytes",
+    "test_mayor_scene.MayorScenePublication.test_checked_release_outputs_and_source_fixtures",
+    "test_mayor_scene.MayorScenePublication.test_missing_and_changed_receipts_reject",
+    "test_mayor_scene.MayorScenePublication.test_route_recipe_path_and_source_graph_rejected",
+    "test_mayor_scene.MayorScenePublication.test_texture_pcm_and_room_corruption_rejected"
+  ],
+  "success": true,
+  "pid": 61947,
+  "started": 1770.15874804,
+  "seconds": 152.32010689899994
+}

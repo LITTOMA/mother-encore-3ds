@@ -1,0 +1,14 @@
+{
+  "task": "settings",
+  "pid": 5704,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498460.295157,
+  "finished": 1792498463.1825614,
+  "seconds": 2.887404441833496,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/startup_settings_assets.py",
+    "compile"
+  ]
+}

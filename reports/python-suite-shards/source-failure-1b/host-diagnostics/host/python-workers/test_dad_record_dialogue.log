@@ -1,0 +1,14 @@
+test_alternate_leader_delays_and_newlines_preserved (tests.test_dad_record_dialogue.DadRecord.test_alternate_leader_delays_and_newlines_preserved) ... ok
+test_choice_wait_is_final_print_completion (tests.test_dad_record_dialogue.DadRecord.test_choice_wait_is_final_print_completion) ... ok
+test_every_leader_money_option_and_save_branch (tests.test_dad_record_dialogue.DadRecord.test_every_leader_money_option_and_save_branch) ... ok
+test_graph_must_use_reviewed_source_binding (tests.test_dad_record_dialogue.DadRecord.test_graph_must_use_reviewed_source_binding) ... ok
+test_hidden_save_source_order_and_no_text_gate (tests.test_dad_record_dialogue.DadRecord.test_hidden_save_source_order_and_no_text_gate) ... ok
+test_money_tokens_are_effectful_only_at_source_phrase (tests.test_dad_record_dialogue.DadRecord.test_money_tokens_are_effectful_only_at_source_phrase) ... ok
+test_stage_is_reproducible (tests.test_dad_record_dialogue.DadRecord.test_stage_is_reproducible) ... ok
+test_unknown_and_out_of_bounds_branches_rejected (tests.test_dad_record_dialogue.DadRecord.test_unknown_and_out_of_bounds_branches_rejected) ... ok
+test_unknown_source_field_or_changed_option_fails_closed (tests.test_dad_record_dialogue.DadRecord.test_unknown_source_field_or_changed_option_fails_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 22.757s
+
+OK

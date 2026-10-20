@@ -1,0 +1,9 @@
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/field_swing_graphics.py:28: SyntaxWarning: invalid escape sequence '\.'
+  require(type(row)is dict and set(row)=={'role','node','source_key','output'}and type(row['role'])is int and row['role']in(1,2)and row['source_key']in('texture','bat_texture')and type(row['node'])is str and row['node']and all(re.fullmatch('[A-Za-z_][A-Za-z0-9_]*',x)for x in row['node'].split('/'))and type(row['output'])is str and re.fullmatch('[a-z][a-z0-9_-]*\.t3x',row['output']),'Swing graphics layer fields')
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/field_player_audio.py:25: SyntaxWarning: invalid escape sequence '\.'
+  require(type(p['output'])is str and re.fullmatch('world/[a-z0-9_/-]+\.encaction',p['output'])and '..'not in p['output']and '//'not in p['output'],'Player audio output binding')
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/field_swing_action.py:20: SyntaxWarning: invalid escape sequence '\.'
+  require(type(p['output'])is str and re.fullmatch('world/[a-z0-9_/-]+\.encaction',p['output'])and '..'not in p['output']and '//'not in p['output'],'Swing action output identity')
+/home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/field_swing_entry.py:31: SyntaxWarning: invalid escape sequence '\.'
+  require(type(p['output'])is str and re.fullmatch('world/[a-z0-9_/-]+\.encentry',p['output'])and '..'not in p['output']and '//'not in p['output'],'Swing entry output identity')
+Player resources: 6 checked files; 2106624 bytes; compile ; input/GPU integration verified separately

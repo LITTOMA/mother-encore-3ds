@@ -1,0 +1,14 @@
+{
+  "task": "field-objects",
+  "pid": 13839,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498660.3068998,
+  "finished": 1792498665.129819,
+  "seconds": 4.822919130325317,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/field_objects_assets.py",
+    "compile"
+  ]
+}

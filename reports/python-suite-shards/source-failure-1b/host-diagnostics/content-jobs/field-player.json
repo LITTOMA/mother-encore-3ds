@@ -1,0 +1,14 @@
+{
+  "task": "field-player",
+  "pid": 5965,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498466.2508774,
+  "finished": 1792498479.3290257,
+  "seconds": 13.078148365020752,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/field_player_assets.py",
+    "compile"
+  ]
+}

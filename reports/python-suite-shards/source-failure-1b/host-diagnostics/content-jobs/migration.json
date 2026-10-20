@@ -1,0 +1,14 @@
+{
+  "task": "migration",
+  "pid": 5090,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498447.67585,
+  "finished": 1792498447.78535,
+  "seconds": 0.10950016975402832,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/session_migration.py",
+    "compile"
+  ]
+}

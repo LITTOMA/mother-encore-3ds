@@ -1,0 +1,14 @@
+{
+  "task": "introduction",
+  "pid": 5936,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498465.751895,
+  "finished": 1792498469.098288,
+  "seconds": 3.34639310836792,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/native_introduction.py",
+    "compile"
+  ]
+}

@@ -27,7 +27,10 @@ jobs:
     name: Host and sanitizers (${{ matrix.compiler }})
     if: github.event_name == 'workflow_dispatch' && inputs.mode == 'full'
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    # Source361 passed all 310 ordinary GCC tests, then reached 99% of the
+    # sanitizer build before the 120-minute job limit canceled it. Keep a
+    # bounded full-run budget which includes both fresh builds and all tests.
+    timeout-minutes: 180
     strategy:
       fail-fast: false
       matrix:

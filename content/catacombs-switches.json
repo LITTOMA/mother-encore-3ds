@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-switches.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene_id": 4,
+  "scope": "Candidate graph metadata for5 switches and9 controlled objects. Source flag identity, reset, XOR state, manual gates and asynchronous request order reviewed. No live dungeon, animation timeline, audio, camera, save admission or generic script approval.",
+  "paths": {
+    "scene": "Maps/podunk/Catacombs.tscn",
+    "lever": "Nodes/Overworld/switches/Lever.tscn",
+    "plate": "Nodes/Overworld/switches/plate.tscn",
+    "gate": "Nodes/Overworld/switches/Gate.tscn",
+    "wall": "Nodes/Overworld/switches/Wall Door.tscn",
+    "switch_script": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+    "list_script": "Scripts/Main/Switches/ObjectsListSwitch.gd",
+    "abstract_script": "Scripts/Main/Switches/AbstractSwitch.gd",
+    "flag_script": "Scripts/Main/FlaggableObject.gd",
+    "object_script": "Scripts/Main/Switches/ControlledObject.gd",
+    "two_state_script": "Scripts/Main/Switches/ControlledTwoStatesObject.gd",
+    "gate_script": "Scripts/Main/Switches/ControlledDoor.gd",
+    "wall_script": "Scripts/misc/wall door.gd",
+    "scene_script": "Scripts/Dungeons/Catacombs.gd",
+    "area_script": "Scripts/Main/RoomTypes/AreaRoom.gd",
+    "globaldata_script": "Scripts/global/globalData.gd"
+  },
+  "sources": {
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+    "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+    "Scripts/Main/Switches/TwoStatesSwitch.gd": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148",
+    "Scripts/Main/Switches/ObjectsListSwitch.gd": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1",
+    "Scripts/Main/Switches/AbstractSwitch.gd": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/Main/Switches/ControlledObject.gd": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d",
+    "Scripts/Main/Switches/ControlledTwoStatesObject.gd": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee",
+    "Scripts/Main/Switches/ControlledDoor.gd": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776",
+    "Scripts/misc/wall door.gd": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a",
+    "Scripts/Dungeons/Catacombs.gd": "130c26ae81ac925088071f508a434f100a271be3476ad39fe7df9216d4052c12",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+  },
+  "nodes": [
+    {
+      "id": 241544216,
+      "path": "Bottom2/switch",
+      "kind": "lever"
+    },
+    {
+      "id": 2428375629,
+      "path": "Bottom2/switch1",
+      "kind": "lever"
+    },
+    {
+      "id": 163005431,
+      "path": "Bottom2/switch2",
+      "kind": "lever"
+    },
+    {
+      "id": 422845226,
+      "path": "Bottom2/Plate1",
+      "kind": "plate"
+    },
+    {
+      "id": 1767829413,
+      "path": "Bottom2/Plate4",
+      "kind": "plate"
+    },
+    {
+      "id": 3761819854,
+      "path": "Bottom2/Wall Door",
+      "kind": "wall"
+    },
+    {
+      "id": 1181235545,
+      "path": "Objects/Gate6",
+      "kind": "gate"
+    },
+    {
+      "id": 906153430,
+      "path": "Objects/Gate3",
+      "kind": "gate"
+    },
+    {
+      "id": 2714768478,
+      "path": "Objects/Gate8",
+      "kind": "gate"
+    },
+    {
+      "id": 2825279605,
+      "path": "Objects/Gate4",
+      "kind": "gate"
+    },
+    {
+      "id": 3747703011,
+      "path": "Objects/Gate5",
+      "kind": "gate"
+    },
+    {
+      "id": 3604423880,
+      "path": "Objects/Gate9",
+      "kind": "gate"
+    },
+    {
+      "id": 2842413199,
+      "path": "Objects/Gate10",
+      "kind": "gate"
+    },
+    {
+      "id": 3731683353,
+      "path": "Objects/Gate11",
+      "kind": "gate"
+    }
+  ]
+}

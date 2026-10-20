@@ -1,0 +1,60 @@
+Bottom2/switch Nodes/Overworld/switches/Lever.tscn Scripts/Main/Switches/TwoStatesSwitch.gd
+{'_controlled_objects': [NodePathValue(path='../Wall Door')],
+ '_focus_objects_when_changed': True,
+ '_is_one_way': True,
+ '_pause_when_changed': True,
+ 'flag': 'hidden_entrance_opened',
+ 'position': Vec2(x=-1368.0, y=472.0),
+ 'script': ExtRef(id=2)}
+Bottom2/switch1 Nodes/Overworld/switches/Lever.tscn Scripts/Main/Switches/TwoStatesSwitch.gd
+{'_controlled_objects': [NodePathValue(path='../../Objects/Gate3'),
+                         NodePathValue(path='../../Objects/Gate4'),
+                         NodePathValue(path='../../Objects/Gate5'),
+                         NodePathValue(path='../../Objects/Gate8')],
+ 'position': Vec2(x=-1528.0, y=-1064.0),
+ 'reset_when_leaving_area': True,
+ 'script': ExtRef(id=2)}
+Bottom2/switch2 Nodes/Overworld/switches/Lever.tscn Scripts/Main/Switches/TwoStatesSwitch.gd
+{'_controlled_objects': [NodePathValue(path='../../Objects/Gate9'),
+                         NodePathValue(path='../../Objects/Gate10')],
+ '_focus_objects_when_changed': True,
+ '_pause_when_changed': True,
+ 'position': Vec2(x=-528.0, y=-616.0),
+ 'script': ExtRef(id=2)}
+Bottom2/Plate1 Nodes/Overworld/switches/plate.tscn Scripts/Main/Switches/TwoStatesSwitch.gd
+{'_controlled_objects': [NodePathValue(path='../../Objects/Gate6')],
+ '_is_one_way': True,
+ 'position': Vec2(x=-1160.0, y=-184.0),
+ 'script': ExtRef(id=1)}
+Bottom2/Plate4 Nodes/Overworld/switches/plate.tscn Scripts/Main/Switches/TwoStatesSwitch.gd
+{'_controlled_objects': [NodePathValue(path='../../Objects/Gate11')],
+ '_is_one_way': True,
+ 'position': Vec2(x=-2488.0, y=-232.0),
+ 'script': ExtRef(id=1)}
+Bottom2/Wall Door Nodes/Overworld/switches/Wall Door.tscn Scripts/misc/wall door.gd
+{'_move_cam_offset': Vec2(x=0.0, y=44.0),
+ '_move_cam_when_changed': True,
+ 'position': Vec2(x=-648.0, y=120.0),
+ 'script': ExtRef(id=3)}
+Objects/Gate6 Nodes/Overworld/switches/Gate.tscn Scripts/Main/Switches/ControlledDoor.gd
+{'position': Vec2(x=-1192.0, y=-208.0), 'script': ExtRef(id=2)}
+Objects/Gate3 Nodes/Overworld/switches/Gate.tscn Scripts/Main/Switches/ControlledDoor.gd
+{'_initially_on': True,
+ 'position': Vec2(x=-1352.0, y=-1088.0),
+ 'script': ExtRef(id=2)}
+Objects/Gate8 Nodes/Overworld/switches/Gate.tscn Scripts/Main/Switches/ControlledDoor.gd
+{'_initially_on': True,
+ 'position': Vec2(x=-1720.0, y=-1088.0),
+ 'script': ExtRef(id=2)}
+Objects/Gate4 Nodes/Overworld/switches/Gate.tscn Scripts/Main/Switches/ControlledDoor.gd
+{'position': Vec2(x=-1608.0, y=-1088.0), 'script': ExtRef(id=2)}
+Objects/Gate5 Nodes/Overworld/switches/Gate.tscn Scripts/Main/Switches/ControlledDoor.gd
+{'position': Vec2(x=-1240.0, y=-1088.0), 'script': ExtRef(id=2)}
+Objects/Gate9 Nodes/Overworld/switches/Gate.tscn Scripts/Main/Switches/ControlledDoor.gd
+{'position': Vec2(x=-648.0, y=-736.0), 'script': ExtRef(id=2)}
+Objects/Gate10 Nodes/Overworld/switches/Gate.tscn Scripts/Main/Switches/ControlledDoor.gd
+{'_move_cam_when_changed': True,
+ 'position': Vec2(x=-600.0, y=-736.0),
+ 'script': ExtRef(id=2)}
+Objects/Gate11 Nodes/Overworld/switches/Gate.tscn Scripts/Main/Switches/ControlledDoor.gd
+{'position': Vec2(x=-2344.0, y=-208.0), 'script': ExtRef(id=2)}

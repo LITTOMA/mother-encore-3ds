@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_switches.py", line 156, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_switches.py", line 153, in main
+    data,proof=extract(args.recipe);blob=encode(data);out.parent.mkdir(parents=True,exist_ok=True);out.write_bytes(blob)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_switches.py", line 81, in extract
+    require(target in ids and any(v['path']==target and v['kind']in('gate','wall')for v in p['nodes']),'Dungeon switch missing/wrong-kind target');edges.append([row['id'],ids[target]])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Dungeon switch missing/wrong-kind target

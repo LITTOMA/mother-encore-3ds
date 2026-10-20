@@ -1,0 +1,5 @@
+Sister relative frames: warp=41 openable_exit=42 request=44 done=57
+Doll integration stage=2 phrase=6 acks=2 p2=1 p4=1 text=0 finished=1 request=4294967295
+Sister relative physics ticks: warp=41 openable_exit=43 request=44 done=57
+Source-aligned sister frames: warp=41 openable_exit=43 request=44 done=57
+Source house round trip, Carol dialogue, Mimmie door and Doll seven-phrase scene passed; 20906 integrated victory checks: source rewards, delayed acknowledgment, world return, no RNG, no retrigger

@@ -1,0 +1,11 @@
+test_exact_upstream_producer_engine_and_shared_probe (tests.test_prop_animation_continuation.PropContinuationReference.test_exact_upstream_producer_engine_and_shared_probe) ... ok
+test_nonfresh_or_unsafe_reference_outputs_reject (tests.test_prop_animation_continuation.PropContinuationReference.test_nonfresh_or_unsafe_reference_outputs_reject) ... ok
+test_repeated_resume_observations_and_unchanged_projection (tests.test_prop_animation_continuation.PropContinuationReference.test_repeated_resume_observations_and_unchanged_projection) ... ok
+test_wall_original_method_and_logged_audio_forwarding (tests.test_prop_animation_continuation.PropContinuationReference.test_wall_original_method_and_logged_audio_forwarding) ... ok
+test_wall_repeated_observations_preserve_native_subresources (tests.test_prop_animation_continuation.PropContinuationReference.test_wall_repeated_observations_preserve_native_subresources) ... ok
+test_zero_delta_audio_and_deferred_methods_are_distinct (tests.test_prop_animation_continuation.PropContinuationReference.test_zero_delta_audio_and_deferred_methods_are_distinct) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.022s
+
+OK

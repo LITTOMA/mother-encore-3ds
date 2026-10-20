@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+g++ -std=c++17 -O1 -g -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude tests/prop_clips_tests.cpp runtime/prop_clips.cpp runtime/file_io.cpp -o build/full-port/prop-play-resume-native/root-check 2> build/full-port/prop-play-resume-native/root-compile.log
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/prop-play-resume-native/root-check tests/fixtures/prop-clips-v0410.encpcl tests/fixtures/prop-clips-v0410.tsv > build/full-port/prop-play-resume-native/root-observations.log 2>&1
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/prop-play-resume-native/root-check tests/fixtures/prop-clips-v0410.encpcl tests/fixtures/prop-key-boundaries.tsv > build/full-port/prop-play-resume-native/root-boundaries.log 2>&1
+g++ -std=c++17 -O1 -g -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude tests/dungeon_switch_clips_tests.cpp runtime/prop_clips.cpp runtime/file_io.cpp -o build/full-port/prop-play-resume-native/dungeon-check 2> build/full-port/prop-play-resume-native/dungeon-compile.log
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/prop-play-resume-native/dungeon-check build/full-port/prop-resume-data-1 reports/catacombs-switch-clips/reference-oracle-1/original-2/states.tsv > build/full-port/prop-play-resume-native/dungeon-observations.log 2>&1
+cat build/full-port/prop-play-resume-native/root-observations.log build/full-port/prop-play-resume-native/root-boundaries.log build/full-port/prop-play-resume-native/dungeon-observations.log

@@ -1,0 +1,67 @@
+{
+  "schema": 2,
+  "kind": "encore.dungeon-mechanism-audio.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original switch-node and wall-node AudioStreamPlayer sources plus the denied-operation audioManager channel. Independent candidate bank; no live output or audible-equivalence claim.",
+  "bindings_recipe": "content/catacombs-mechanism-bindings.json",
+  "bindings_review_sha256": "bcd1d22edbffec2aef191d21c33c3e6725ad2b7fd39f15d7fc3162efb231a69e",
+  "permission": "Pinned upstream LICENSE permits game-related use; source notices retained. No decoder binaries, environment assets or DSP firmware distributed.",
+  "recipe": {
+    "schema": 1,
+    "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "bus_source": "Audio/Audio Buses/default_bus_layout.tres",
+    "bus_sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "manager_source": "Scripts/global/audioManager.gd",
+    "manager_sha256": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "assets": [
+      {
+        "stable_id": 3776086932,
+        "source_path": "res://Audio/Sound effects/Lever.mp3",
+        "source_sha256": "0c155a6512c3c856265302171c54df6bfcb1215022e147c84b513a482ae6e4a7",
+        "import_sha256": "76d2d379f242909cff7e639f99d218e55da6641fb307518f641b8abb839ea8e2",
+        "pcm_path": "sound/effects/catacombs-lever.pcm",
+        "gain_db": 0
+      },
+      {
+        "stable_id": 447080587,
+        "source_path": "res://Audio/Sound effects/M3/door_close.wav",
+        "source_sha256": "089890ee7381adb8f9b169df6b66377798eb0d90f1fd38c748c7a2c2c291cfa5",
+        "import_sha256": "ced94dfd9bc64be09cb7da2c4488670c7090cad8dd53f1681bc79eff48ff4d8f",
+        "pcm_path": "sound/effects/catacombs-plate.pcm",
+        "gain_db": 0
+      },
+      {
+        "stable_id": 90211837,
+        "source_path": "res://Audio/Sound effects/Stone_move.mp3",
+        "source_sha256": "51e63dc9c9b13527966e22c9dd3377a9ab883368af092e2292f95d9b9e532d16",
+        "import_sha256": "b7b636713631a319a1c733b182bc7d9e5cb17f1571a0ee81ba72878124645dfb",
+        "pcm_path": "sound/effects/catacombs-wall.pcm",
+        "gain_db": 0
+      },
+      {
+        "stable_id": 1104,
+        "source_path": "res://Audio/Sound effects/M3/bump.wav",
+        "source_sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
+        "import_sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
+        "pcm_path": "sound/effects/cursor-restricted.pcm",
+        "gain_db": 0,
+        "output_sample_rate": 48000
+      }
+    ]
+  },
+  "identities": "All IDs are port-owned resource identities; 90211837 preserves the reviewed wall-timeline binding and 1104 reuses the exact existing bump source.",
+  "source_profiles": [
+    {
+      "profile": 1,
+      "node": "AudioStreamPlayer"
+    },
+    {
+      "profile": 2,
+      "node": "AudioStreamPlayer"
+    },
+    {
+      "profile": 4,
+      "node": "AudioStreamPlayer"
+    }
+  ]
+}

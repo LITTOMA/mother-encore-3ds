@@ -1,0 +1,26 @@
+{
+  "commit": "0f203b24694b127e4643c4e27e719bd65601ea22",
+  "run": 39410861702,
+  "conclusion": "success",
+  "gcc": {
+    "job": 118587999677,
+    "ordinary": 292,
+    "sanitizers": 276
+  },
+  "clang": {
+    "job": 118587999817,
+    "ordinary": 276,
+    "sanitizers": 276
+  },
+  "console": {
+    "job": 118587999367,
+    "conclusion": "success",
+    "artifact": 12260126937
+  },
+  "scope": "Actual full104-unit0f code acceptance, before the later106-unit1b mechanism consumer. No hardware or full-game claim.",
+  "logs_sha256": {
+    "clang.log": "18350c220a9add2c9a0127c23eebe213085f9e3259727dd7f0668f182ddf9c0b",
+    "console.log": "c1b7bc60ddc739fd029699bce4b43f31d7c1fdb0a8a465e3ac735d91e03730ae",
+    "gcc.log": "7d03aa8aa5c0a6f608689e943b816ed3c06135ad1a1d70a6260fdf975da60459"
+  }
+}

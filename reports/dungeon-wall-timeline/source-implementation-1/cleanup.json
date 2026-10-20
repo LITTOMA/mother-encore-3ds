@@ -1,0 +1,160 @@
+{
+  "scope": "Only two marked private door-reference projects and five superseded native executables. Frozen source outputs, exact raw test logs, final native executables, current core archive and kept emulator game/save remain.",
+  "targets": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-1\\project",
+      "directory": true,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-1\\project\\.owned-door-camera-reference",
+          "bytes": 31,
+          "sha256": "01b06fa15ff97f2de827d19b2ee9f6943cd37ec97b1cd6f5ca7a990be3a32823"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-1\\project\\input.json",
+          "bytes": 6279,
+          "sha256": "da443e8d2b986b547946e10a31ec15b6b3692fc60def9ee82172f3e04b57f325"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-1\\project\\observations.json",
+          "bytes": 49893,
+          "sha256": "b89c823fc2cdc4e169a8e31badac5ba0b2bf06cbdfbc452a20eab7d3c7ecec76"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-1\\project\\probe.gd",
+          "bytes": 2675,
+          "sha256": "a00c7bcd3e8fea439b542c677eab135f03b4f9e37e66e6658ce36f4371877aea"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-1\\project\\project.godot",
+          "bytes": 318,
+          "sha256": "caf981e023a346bbc339130f9987b16f322102599d2927549e3c22e67a9f73b7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-1\\project\\shaker.gd",
+          "bytes": 4729,
+          "sha256": "add513c09d85ee12d344286ea2fc0996777304786e7ff5b940a514d0be90c0c5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-1\\project\\target.gd",
+          "bytes": 46,
+          "sha256": "dc3ce01e886ceef443ba0d320895fc44275ecdfa5f4f02e622c2d51541cf8f97"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-1\\project\\user-roaming\\Godot\\app_userdata\\Source nonunit door camera\\logs\\godot.log",
+          "bytes": 176,
+          "sha256": "468079ac715db0dd0437616a5192979af09261a42665fad592cdbeb0cd98f38f"
+        }
+      ],
+      "bytes": 64147
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-2\\project",
+      "directory": true,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-2\\project\\.owned-door-camera-reference",
+          "bytes": 31,
+          "sha256": "01b06fa15ff97f2de827d19b2ee9f6943cd37ec97b1cd6f5ca7a990be3a32823"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-2\\project\\input.json",
+          "bytes": 6279,
+          "sha256": "da443e8d2b986b547946e10a31ec15b6b3692fc60def9ee82172f3e04b57f325"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-2\\project\\observations.json",
+          "bytes": 49893,
+          "sha256": "b89c823fc2cdc4e169a8e31badac5ba0b2bf06cbdfbc452a20eab7d3c7ecec76"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-2\\project\\probe.gd",
+          "bytes": 2675,
+          "sha256": "a00c7bcd3e8fea439b542c677eab135f03b4f9e37e66e6658ce36f4371877aea"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-2\\project\\project.godot",
+          "bytes": 318,
+          "sha256": "caf981e023a346bbc339130f9987b16f322102599d2927549e3c22e67a9f73b7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-2\\project\\shaker.gd",
+          "bytes": 4729,
+          "sha256": "add513c09d85ee12d344286ea2fc0996777304786e7ff5b940a514d0be90c0c5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-2\\project\\target.gd",
+          "bytes": 46,
+          "sha256": "dc3ce01e886ceef443ba0d320895fc44275ecdfa5f4f02e622c2d51541cf8f97"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-original-2\\project\\user-roaming\\Godot\\app_userdata\\Source nonunit door camera\\logs\\godot.log",
+          "bytes": 176,
+          "sha256": "468079ac715db0dd0437616a5192979af09261a42665fad592cdbeb0cd98f38f"
+        }
+      ],
+      "bytes": 64147
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\wall-timeline-native-1\\metadata-check",
+      "directory": false,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\wall-timeline-native-1\\metadata-check",
+          "bytes": 3666272,
+          "sha256": "f91ea4f91c6512f218a04e71cc348a2ee8bf127ba98e658221899004ef981537"
+        }
+      ],
+      "bytes": 3666272
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\wall-timeline-native-1\\metadata-check-2",
+      "directory": false,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\wall-timeline-native-1\\metadata-check-2",
+          "bytes": 3668144,
+          "sha256": "d1ed8ec0505b29c0239c1c4ba8b6209b04962403e2665e6df4defed014fbd3ae"
+        }
+      ],
+      "bytes": 3668144
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\wall-timeline-native-1\\state-check",
+      "directory": false,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\wall-timeline-native-1\\state-check",
+          "bytes": 5532848,
+          "sha256": "91c71416a9d06190089ca1e1c36e4646a6f259b4fde722375abdc1b6d5106f96"
+        }
+      ],
+      "bytes": 5532848
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-native-1\\check",
+      "directory": false,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-native-1\\check",
+          "bytes": 3907008,
+          "sha256": "4671c5b423efbef45b0058ff8b8d6f1389f0a1f95f49dab8a0854a8cd07a15ab"
+        }
+      ],
+      "bytes": 3907008
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-native-1\\random-check",
+      "directory": false,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\door-camera-native-1\\random-check",
+          "bytes": 4218000,
+          "sha256": "0b1968011fe06fcf14a33fe2840a85128670c87d9bf7f585242193a41eea230b"
+        }
+      ],
+      "bytes": 4218000
+    }
+  ],
+  "total_bytes": 21120566
+}

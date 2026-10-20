@@ -1,0 +1,7 @@
+runtime/cutscene_camera.cpp: In member function ‘bool encore::upstream::CutsceneCamera::initialize(const encore::upstream::RoomView&, encore::upstream::Vec2, encore::upstream::Vec2)’:
+runtime/cutscene_camera.cpp:45:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   45 |     if(!next.relocate_player(player))return false;*this=std::move(next);return true;
+      |     ^~
+runtime/cutscene_camera.cpp:45:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   45 |     if(!next.relocate_player(player))return false;*this=std::move(next);return true;
+      |                                                   ^

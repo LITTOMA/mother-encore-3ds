@@ -1,0 +1,349 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Frame/body property clips for source Lever,Plate,Gate only. Reuses existing ENCPCL01; no script/scene/texture binding, physical contact or release admission. Continuous multi-key curves, methods, audio and other properties reject.",
+  "whole_scripts_approved": false,
+  "sources": {
+    "Graphics/Objects/Catacombs/Gate.png": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f",
+    "Graphics/Objects/Catacombs/Lever.png": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859",
+    "Graphics/Objects/Catacombs/Plate.png": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af",
+    "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+    "Scripts/Main/Switches/ControlledDoor.gd": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776",
+    "Scripts/Main/Switches/TwoStatesSwitch.gd": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+  },
+  "profiles": [
+    {
+      "profile": {
+        "id": 1,
+        "name": "lever",
+        "scene": "Nodes/Overworld/switches/Lever.tscn",
+        "script": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+        "texture": "Graphics/Objects/Catacombs/Lever.png",
+        "frame_owner": "main",
+        "body_owner": "collision/CollisionShape2D",
+        "clips": [
+          {
+            "id": 7,
+            "name": "RESET"
+          },
+          {
+            "id": 1,
+            "name": "TurnOff"
+          },
+          {
+            "id": 2,
+            "name": "TurnOn"
+          }
+        ]
+      },
+      "model": {
+        "frames": 2,
+        "initial_frame": 0,
+        "initial_mask": 3,
+        "clips": [
+          {
+            "id": 7,
+            "name": "RESET",
+            "duration": 0.0010000000474974513,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 0
+              }
+            ],
+            "constant_tracks": [
+              0
+            ]
+          },
+          {
+            "id": 1,
+            "name": "TurnOff",
+            "duration": 1.0,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 0
+              }
+            ],
+            "constant_tracks": []
+          },
+          {
+            "id": 2,
+            "name": "TurnOn",
+            "duration": 1.0,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 1
+              }
+            ],
+            "constant_tracks": []
+          }
+        ]
+      },
+      "file": "lever.encpcl",
+      "bytes": 236,
+      "sha256": "776b75f34c62b5b71b950b391b915739b8ef19db2bfc777cdfd346193e8269be"
+    },
+    {
+      "profile": {
+        "id": 2,
+        "name": "plate",
+        "scene": "Nodes/Overworld/switches/plate.tscn",
+        "script": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+        "texture": "Graphics/Objects/Catacombs/Plate.png",
+        "frame_owner": "Sprite",
+        "body_owner": null,
+        "clips": [
+          {
+            "id": 7,
+            "name": "RESET"
+          },
+          {
+            "id": 1,
+            "name": "TurnOff"
+          },
+          {
+            "id": 2,
+            "name": "TurnOn"
+          }
+        ]
+      },
+      "model": {
+        "frames": 2,
+        "initial_frame": 0,
+        "initial_mask": 1,
+        "clips": [
+          {
+            "id": 7,
+            "name": "RESET",
+            "duration": 0.0010000000474974513,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 0
+              }
+            ],
+            "constant_tracks": [
+              0
+            ]
+          },
+          {
+            "id": 1,
+            "name": "TurnOff",
+            "duration": 1.0,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 0
+              }
+            ],
+            "constant_tracks": []
+          },
+          {
+            "id": 2,
+            "name": "TurnOn",
+            "duration": 1.0,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 1
+              }
+            ],
+            "constant_tracks": []
+          }
+        ]
+      },
+      "file": "plate.encpcl",
+      "bytes": 236,
+      "sha256": "b09c258fbae25ae389d678bb18f2a9627b651a0b951ed4a4cf905fd44e00a403"
+    },
+    {
+      "profile": {
+        "id": 3,
+        "name": "gate",
+        "scene": "Nodes/Overworld/switches/Gate.tscn",
+        "script": "Scripts/Main/Switches/ControlledDoor.gd",
+        "texture": "Graphics/Objects/Catacombs/Gate.png",
+        "frame_owner": "main",
+        "body_owner": "collision/CollisionShape2D",
+        "clips": [
+          {
+            "id": 3,
+            "name": "Off"
+          },
+          {
+            "id": 4,
+            "name": "On"
+          },
+          {
+            "id": 7,
+            "name": "RESET"
+          },
+          {
+            "id": 5,
+            "name": "StayOff"
+          },
+          {
+            "id": 6,
+            "name": "StayOn"
+          }
+        ]
+      },
+      "model": {
+        "frames": 6,
+        "initial_frame": 0,
+        "initial_mask": 3,
+        "clips": [
+          {
+            "id": 3,
+            "name": "Off",
+            "duration": 0.5,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 5
+              },
+              {
+                "time": 0.08333329856395721,
+                "kind": 1,
+                "value": 4
+              },
+              {
+                "time": 0.16666699945926666,
+                "kind": 1,
+                "value": 3
+              },
+              {
+                "time": 0.16666699945926666,
+                "kind": 3,
+                "value": 0
+              },
+              {
+                "time": 0.25,
+                "kind": 1,
+                "value": 2
+              },
+              {
+                "time": 0.33333298563957214,
+                "kind": 1,
+                "value": 1
+              },
+              {
+                "time": 0.41666701436042786,
+                "kind": 1,
+                "value": 0
+              }
+            ],
+            "constant_tracks": []
+          },
+          {
+            "id": 4,
+            "name": "On",
+            "duration": 0.5,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 0
+              },
+              {
+                "time": 0.08333329856395721,
+                "kind": 1,
+                "value": 1
+              },
+              {
+                "time": 0.16666699945926666,
+                "kind": 1,
+                "value": 2
+              },
+              {
+                "time": 0.25,
+                "kind": 1,
+                "value": 3
+              },
+              {
+                "time": 0.33333298563957214,
+                "kind": 1,
+                "value": 4
+              },
+              {
+                "time": 0.33333298563957214,
+                "kind": 3,
+                "value": 1
+              },
+              {
+                "time": 0.41666701436042786,
+                "kind": 1,
+                "value": 5
+              }
+            ],
+            "constant_tracks": []
+          },
+          {
+            "id": 7,
+            "name": "RESET",
+            "duration": 0.0010000000474974513,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 0
+              }
+            ],
+            "constant_tracks": []
+          },
+          {
+            "id": 5,
+            "name": "StayOff",
+            "duration": 0.0010000000474974513,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 0
+              },
+              {
+                "time": 0.0,
+                "kind": 3,
+                "value": 0
+              }
+            ],
+            "constant_tracks": []
+          },
+          {
+            "id": 6,
+            "name": "StayOn",
+            "duration": 0.0010000000474974513,
+            "keys": [
+              {
+                "time": 0.0,
+                "kind": 1,
+                "value": 5
+              },
+              {
+                "time": 0.0,
+                "kind": 3,
+                "value": 1
+              }
+            ],
+            "constant_tracks": []
+          }
+        ]
+      },
+      "file": "gate.encpcl",
+      "bytes": 476,
+      "sha256": "fe10fc64dfb320f4457b233273eb2681162f77d6fed8b46bfcb77af917611ff6"
+    }
+  ],
+  "converter_sha256": "df9580f594efb716ce2ad2c6c2c47070dfb1cd089a6cdb47c020ae7d0fde5022",
+  "review_sha256": "9b91c5a4cf38760151a0b9194d81a8160217a5e0d60271b10fa617ef5f7092b5"
+}

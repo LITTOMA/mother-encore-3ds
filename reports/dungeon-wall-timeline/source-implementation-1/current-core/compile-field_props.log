@@ -1,0 +1,54 @@
+runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldPropsData::load(const uint8_t*, size_t, std::string&)’:
+runtime/field_props.cpp:27:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   27 |   for(size_t k=cursor;k<off[i];++k)if(p[k])return fail(e,"Field props padding rejected");cursor=off[i]+count[i]*strides[i];
+      |   ^~~
+runtime/field_props.cpp:27:90: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   27 |   for(size_t k=cursor;k<off[i];++k)if(p[k])return fail(e,"Field props padding rejected");cursor=off[i]+count[i]*strides[i];
+      |                                                                                          ^~~~~~
+runtime/field_props.cpp:50:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   50 |     if(!size||size>512||size==count[0]-at)return fail(e,"Field prop callback path termination rejected");row.callback_path.assign(reinterpret_cast<const char*>(p+off[0]+at),size);if(!safe(row.callback_path))return fail(e,"Field prop callback path rejected");}
+      |     ^~
+runtime/field_props.cpp:50:106: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   50 |     if(!size||size>512||size==count[0]-at)return fail(e,"Field prop callback path termination rejected");row.callback_path.assign(reinterpret_cast<const char*>(p+off[0]+at),size);if(!safe(row.callback_path))return fail(e,"Field prop callback path rejected");}
+      |                                                                                                          ^~~
+runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldPropsData::matches_action(const encore::upstream::FieldSwingData&, std::string&) const’:
+runtime/field_props.cpp:82:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   82 |  if(!contact_bound()||!data.valid()||data.encoded_bytes()!=policy_.contact.swing_bytes||data.encoded_crc()!=policy_.contact.swing_crc)return fail(e,"Field prop contact action companion differs");e.clear();return true;
+      |  ^~
+runtime/field_props.cpp:82:196: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   82 |  if(!contact_bound()||!data.valid()||data.encoded_bytes()!=policy_.contact.swing_bytes||data.encoded_crc()!=policy_.contact.swing_crc)return fail(e,"Field prop contact action companion differs");e.clear();return true;
+      |                                                                                                                                                                                                    ^
+runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldProps::initialize(const encore::upstream::FieldPropsData&, const std::vector<bool>&, std::string&)’:
+runtime/field_props.cpp:88:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   88 |  if(!d.valid()||flags.size()!=d.flags().size())return fail(e,"Field props initial flags rejected");FieldProps v;v.data_=d;
+      |  ^~
+runtime/field_props.cpp:88:100: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   88 |  if(!d.valid()||flags.size()!=d.flags().size())return fail(e,"Field props initial flags rejected");FieldProps v;v.data_=d;
+      |                                                                                                    ^~~~~~~~~~
+runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldProps::grow(uint32_t, std::string&)’:
+runtime/field_props.cpp:95:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   95 |  if(!available(i,e)||states_[i].grow_waiters>=64||events_.size()>=512)return fail(e,"Field prop grow capacity/owner rejected");auto&s=states_[i];if(!s.animation.play(data_.policy().grow,e))return false;++s.grow_waiters;events_.push_back({FieldPropEventKind::Rumble,i});e.clear();return true;
+      |  ^~
+runtime/field_props.cpp:95:128: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   95 |  if(!available(i,e)||states_[i].grow_waiters>=64||events_.size()>=512)return fail(e,"Field prop grow capacity/owner rejected");auto&s=states_[i];if(!s.animation.play(data_.policy().grow,e))return false;++s.grow_waiters;events_.push_back({FieldPropEventKind::Rumble,i});e.clear();return true;
+      |                                                                                                                                ^~~~
+runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldProps::hit(uint32_t, std::string&)’:
+runtime/field_props.cpp:98:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   98 |  if(!available(i,e)||clones_.size()>=512||events_.size()>=512)return fail(e,"Field prop hit capacity/owner rejected");auto&s=states_[i];const auto&r=data_.props()[i];const bool visible=s.animation.pose().visible;
+      |  ^~
+runtime/field_props.cpp:98:119: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   98 |  if(!available(i,e)||clones_.size()>=512||events_.size()>=512)return fail(e,"Field prop hit capacity/owner rejected");auto&s=states_[i];const auto&r=data_.props()[i];const bool visible=s.animation.pose().visible;
+      |                                                                                                                       ^~~~
+runtime/field_props.cpp:99:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   99 |  if(!s.animation.play(data_.policy().broken,e))return false;clones_.push_back({i,data_.policy().clone_frame,r.sprite_center,visible});s.prompt=false;events_.push_back({FieldPropEventKind::Sound,i});e.clear();return true;
+      |  ^~
+runtime/field_props.cpp:99:61: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   99 |  if(!s.animation.play(data_.policy().broken,e))return false;clones_.push_back({i,data_.policy().clone_frame,r.sprite_center,visible});s.prompt=false;events_.push_back({FieldPropEventKind::Sound,i});e.clear();return true;
+      |                                                             ^~~~~~~
+runtime/field_props.cpp: In member function ‘bool encore::upstream::FieldProps::interact(uint32_t, const std::vector<bool>&, std::string&)’:
+runtime/field_props.cpp:107:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  107 |  if(states_[i].visible)events_.push_back({flags[data_.policy().bat_flag]?FieldPropEventKind::EasyDialogue:FieldPropEventKind::HardDialogue,i});e.clear();return true;
+      |  ^~
+runtime/field_props.cpp:107:144: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  107 |  if(states_[i].visible)events_.push_back({flags[data_.policy().bat_flag]?FieldPropEventKind::EasyDialogue:FieldPropEventKind::HardDialogue,i});e.clear();return true;
+      |                                                                                                                                                ^

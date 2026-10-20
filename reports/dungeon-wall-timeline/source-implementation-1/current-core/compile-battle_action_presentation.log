@@ -1,0 +1,7 @@
+runtime/battle_action_presentation.cpp: In member function ‘virtual bool encore::upstream::BattleActionPresentation::emit(const encore::upstream::BattleRoundCue&, encore::upstream::SourceRandom&)’:
+runtime/battle_action_presentation.cpp:401:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  401 |  if(content_.action_media(cue.skill).use_sound!=1)return fail("Unreviewed skill sound");audio_.push_back(GameplayCue::Swing);break;
+      |  ^~
+runtime/battle_action_presentation.cpp:401:89: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  401 |  if(content_.action_media(cue.skill).use_sound!=1)return fail("Unreviewed skill sound");audio_.push_back(GameplayCue::Swing);break;
+      |                                                                                         ^~~~~~

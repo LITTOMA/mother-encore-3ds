@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_keys_reference.py", line 207, in <module>
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',type=Path,required=True);parser.add_argument('--godot',type=Path,required=True);args=parser.parse_args();run(args.out,args.godot)
+                                                                                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_keys_reference.py", line 196, in run
+    invoke(engine,project,['--debug','--editor','--quit'],out/'import.log')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_scene_reference.py", line 44, in invoke
+    raise ValueError('Engine reference failed; inspect ' + str(log))
+ValueError: Engine reference failed; inspect D:\GameDev\3DS\mother-encore-3ds\build\full-port\catacombs-key-method-reference-2\import.log

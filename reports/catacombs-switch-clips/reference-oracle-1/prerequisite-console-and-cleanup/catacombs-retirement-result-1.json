@@ -1,0 +1,7 @@
+{
+  "removed_targets": 17,
+  "removed_bytes": 4753626,
+  "all_absent": true,
+  "plan_sha256": "29FD08A287720DE1A8D33828210B3527194C41618ED891B6AFAABA0D144BC7D2",
+  "scope": "Only superseded owned native probes and private original-engine project copies. Published raw logs/observations/adapters/source fingerprints retained. Current native state/graph executables,61ea game, SDK/runtime caches, real Record, upstream and4original untracked dirs retained."
+}

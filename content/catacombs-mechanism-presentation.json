@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-mechanism-presentation.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Static native source sprite/shape/parent-sort metadata bound to checked mechanism clocks; no terrain, automatic contacts, live drawing or save admission.",
+  "graphics_recipe": "content/catacombs-mechanism-graphics.json",
+  "graphics_review_sha256": "d8d20510e98b24e487e938393ec0603e08bcb4efb08071564ca7b77497ff01fc",
+  "engine_defaults": {
+    "sprite": {
+      "centered": true,
+      "flip_h": false,
+      "flip_v": false,
+      "visible": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "z_index": 0,
+      "z_relative": true
+    },
+    "area": {
+      "layer": 1,
+      "mask": 1,
+      "monitoring": true,
+      "monitorable": true
+    },
+    "body": {
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.08
+    },
+    "shape": {
+      "disabled": false,
+      "one_way": false,
+      "one_way_margin": 1
+    },
+    "tile": {
+      "cell_y_sort": false
+    }
+  },
+  "shape_profiles": [
+    {
+      "profile": 1,
+      "shapes": [
+        {
+          "path": "collision/CollisionShape2D",
+          "role": "body"
+        },
+        {
+          "path": "interact/CollisionShape2D2",
+          "role": "interaction"
+        }
+      ]
+    },
+    {
+      "profile": 2,
+      "shapes": [
+        {
+          "path": "Area2D/CollisionShape2D",
+          "role": "pressure"
+        }
+      ]
+    },
+    {
+      "profile": 3,
+      "shapes": [
+        {
+          "path": "collision/CollisionShape2D",
+          "role": "body"
+        }
+      ]
+    },
+    {
+      "profile": 4,
+      "shapes": [
+        {
+          "path": "collision/CollisionShape2D",
+          "role": "body"
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "profile": 1,
+      "path": "graphics/world/catacombs/mechanisms/lever.t3x",
+      "bytes": 2069,
+      "crc32": 2039030110,
+      "sha256": "cb3036092f89fb2e2cb6327f396325ffe44e2c453e1a8ca3f887c32ce50cd7ae"
+    },
+    {
+      "profile": 2,
+      "path": "graphics/world/catacombs/mechanisms/plate.t3x",
+      "bytes": 2069,
+      "crc32": 4145224210,
+      "sha256": "89356304b2c78317285fba88847b2eeb513a5d31c2a6cf979c7b14712cb9fdf3"
+    },
+    {
+      "profile": 3,
+      "path": "graphics/world/catacombs/mechanisms/gate.t3x",
+      "bytes": 131093,
+      "crc32": 4222228886,
+      "sha256": "46c6984782381bafcdb14f26f98b9411724dfc010ec26616667409a532cc0723"
+    },
+    {
+      "profile": 4,
+      "path": "graphics/world/catacombs/mechanisms/wall.t3x",
+      "bytes": 1048597,
+      "crc32": 2393197744,
+      "sha256": "889a44bb828c0678a4988fcdb07a598d778e8e12defd53ccd226c07757998fff"
+    }
+  ]
+}

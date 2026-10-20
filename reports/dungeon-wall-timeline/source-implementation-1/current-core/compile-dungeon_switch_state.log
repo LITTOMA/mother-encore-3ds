@@ -1,0 +1,69 @@
+runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::emit(encore::upstream::DungeonSwitchEventKind, uint32_t, encore::upstream::DungeonSwitchToken, bool, bool, float, float, float, encore::upstream::DungeonSwitchAnimation, std::string&)’:
+runtime/dungeon_switch_state.cpp:14:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   14 |  if(events_.size()>=2048)return reject(e,"Dungeon switch event capacity exceeded");auto i=find_switch(id);events_.push_back({kind,{id,generation_},token,value,silent,x,y,duration,animation,i==kFieldNone?DungeonSwitchState{}:switches_[i]});return true;
+      |  ^~
+runtime/dungeon_switch_state.cpp:14:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   14 |  if(events_.size()>=2048)return reject(e,"Dungeon switch event capacity exceeded");auto i=find_switch(id);events_.push_back({kind,{id,generation_},token,value,silent,x,y,duration,animation,i==kFieldNone?DungeonSwitchState{}:switches_[i]});return true;
+      |                                                                                    ^~~~
+runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::timer(uint32_t, bool, std::string&)’:
+runtime/dungeon_switch_state.cpp:18:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   18 |  if(timers_.size()>=256||next_token_==std::numeric_limits<uint64_t>::max())return reject(e,"Dungeon switch timer capacity exceeded");auto token=++next_token_;timers_.push_back({token,i,wall});auto policy=data_.policy();return emit(wall?DungeonSwitchEventKind::WallTimer:DungeonSwitchEventKind::ReadyTimer,wall?data_.object(i).id:data_.switch_node(i).id,{token,generation_},false,false,0,0,wall?policy.post_delay:policy.ready_delay,DungeonSwitchAnimation::None,e);
+      |  ^~
+runtime/dungeon_switch_state.cpp:18:134: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   18 |  if(timers_.size()>=256||next_token_==std::numeric_limits<uint64_t>::max())return reject(e,"Dungeon switch timer capacity exceeded");auto token=++next_token_;timers_.push_back({token,i,wall});auto policy=data_.policy();return emit(wall?DungeonSwitchEventKind::WallTimer:DungeonSwitchEventKind::ReadyTimer,wall?data_.object(i).id:data_.switch_node(i).id,{token,generation_},false,false,0,0,wall?policy.post_delay:policy.ready_delay,DungeonSwitchAnimation::None,e);
+      |                                                                                                                                      ^~~~
+runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::request_object(uint32_t, uint64_t, bool, std::string&)’:
+runtime/dungeon_switch_state.cpp:26:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   26 |  if(waiters_.size()>=512)return reject(e,"Dungeon switch animation waiter capacity exceeded");bool on=object_on(i);auto animation=silent?(on?DungeonSwitchAnimation::StayOn:DungeonSwitchAnimation::StayOff):(on?DungeonSwitchAnimation::On:DungeonSwitchAnimation::Off);
+      |  ^~
+runtime/dungeon_switch_state.cpp:26:95: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   26 |  if(waiters_.size()>=512)return reject(e,"Dungeon switch animation waiter capacity exceeded");bool on=object_on(i);auto animation=silent?(on?DungeonSwitchAnimation::StayOn:DungeonSwitchAnimation::StayOff):(on?DungeonSwitchAnimation::On:DungeonSwitchAnimation::Off);
+      |                                                                                               ^~~~
+runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::begin_control(uint32_t, std::string&)’:
+runtime/dungeon_switch_state.cpp:47:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   47 |  if(operations_.size()>=128||next_token_==std::numeric_limits<uint64_t>::max())return reject(e,"Dungeon switch operation capacity exceeded");auto row=data_.switch_node(i);Operation op;op.token=++next_token_;op.source=i;
+      |  ^~
+runtime/dungeon_switch_state.cpp:47:142: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   47 |  if(operations_.size()>=128||next_token_==std::numeric_limits<uint64_t>::max())return reject(e,"Dungeon switch operation capacity exceeded");auto row=data_.switch_node(i);Operation op;op.token=++next_token_;op.source=i;
+      |                                                                                                                                              ^~~~
+runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::operate(encore::upstream::DungeonSwitchHandle, encore::upstream::DungeonSwitchMethod, bool, bool, bool, std::string&)’:
+runtime/dungeon_switch_state.cpp:63:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   63 |   if(!next.flag(i,!switches_[i].on,e))return false;auto&v=next.switches_[i];v.animation=v.on?DungeonSwitchAnimation::TurnOn:DungeonSwitchAnimation::TurnOff;
+      |   ^~
+runtime/dungeon_switch_state.cpp:63:52: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   63 |   if(!next.flag(i,!switches_[i].on,e))return false;auto&v=next.switches_[i];v.animation=v.on?DungeonSwitchAnimation::TurnOn:DungeonSwitchAnimation::TurnOff;
+      |                                                    ^~~~
+runtime/dungeon_switch_state.cpp:64:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   64 |   if(!next.emit(DungeonSwitchEventKind::SwitchAnimation,h.id,{},v.on,false,0,0,0,v.animation,e))return false;if(v.on&&(data_.switch_node(i).bits&16))v.disabled=true;
+      |   ^~
+runtime/dungeon_switch_state.cpp:64:110: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   64 |   if(!next.emit(DungeonSwitchEventKind::SwitchAnimation,h.id,{},v.on,false,0,0,0,v.animation,e))return false;if(v.on&&(data_.switch_node(i).bits&16))v.disabled=true;
+      |                                                                                                              ^~
+runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::timer_finished(encore::upstream::DungeonSwitchToken, std::string&)’:
+runtime/dungeon_switch_state.cpp:70:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   70 |  if(!ready()||token.generation!=generation_||!token.value)return reject(e,"Dungeon switch timer has no current owner");auto at=std::find_if(timers_.begin(),timers_.end(),[&](const Timer&t){return t.token==token.value;});if(at==timers_.end())return reject(e,"Dungeon switch timer identity rejected");auto index=size_t(at-timers_.begin());auto item=*at;DungeonSwitchRuntime next=*this;next.timers_.erase(next.timers_.begin()+index);
+      |  ^~
+runtime/dungeon_switch_state.cpp:70:120: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   70 |  if(!ready()||token.generation!=generation_||!token.value)return reject(e,"Dungeon switch timer has no current owner");auto at=std::find_if(timers_.begin(),timers_.end(),[&](const Timer&t){return t.token==token.value;});if(at==timers_.end())return reject(e,"Dungeon switch timer identity rejected");auto index=size_t(at-timers_.begin());auto item=*at;DungeonSwitchRuntime next=*this;next.timers_.erase(next.timers_.begin()+index);
+      |                                                                                                                        ^~~~
+runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::camera_finished(encore::upstream::DungeonSwitchToken, std::string&)’:
+runtime/dungeon_switch_state.cpp:88:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   88 |  if(!ready()||token.generation!=generation_||!token.value)return reject(e,"Dungeon switch camera has no current owner");auto at=std::find_if(operations_.begin(),operations_.end(),[&](const Operation&v){return v.token==token.value;});if(at==operations_.end()||(at->phase!=Phase::FocusCamera&&at->phase!=Phase::ReturnCamera))return reject(e,"Dungeon switch camera phase rejected");size_t i=at-operations_.begin();DungeonSwitchRuntime next=*this;
+      |  ^~
+runtime/dungeon_switch_state.cpp:88:121: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   88 |  if(!ready()||token.generation!=generation_||!token.value)return reject(e,"Dungeon switch camera has no current owner");auto at=std::find_if(operations_.begin(),operations_.end(),[&](const Operation&v){return v.token==token.value;});if(at==operations_.end()||(at->phase!=Phase::FocusCamera&&at->phase!=Phase::ReturnCamera))return reject(e,"Dungeon switch camera phase rejected");size_t i=at-operations_.begin();DungeonSwitchRuntime next=*this;
+      |                                                                                                                         ^~~~
+runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::idle_frame(std::string&)’:
+runtime/dungeon_switch_state.cpp:94:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   94 |  if(!ready())return reject(e,"Dungeon switch idle has no scene owner");DungeonSwitchRuntime next=*this;
+      |  ^~
+runtime/dungeon_switch_state.cpp:94:72: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   94 |  if(!ready())return reject(e,"Dungeon switch idle has no scene owner");DungeonSwitchRuntime next=*this;
+      |                                                                        ^~~~~~~~~~~~~~~~~~~~
+runtime/dungeon_switch_state.cpp: In member function ‘bool encore::upstream::DungeonSwitchRuntime::leave_area(bool, std::string&)’:
+runtime/dungeon_switch_state.cpp:99:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   99 |  if(!ready())return reject(e,"Dungeon switch leave has no scene owner");DungeonSwitchRuntime next=*this;
+      |  ^~
+runtime/dungeon_switch_state.cpp:99:73: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   99 |  if(!ready())return reject(e,"Dungeon switch leave has no scene owner");DungeonSwitchRuntime next=*this;
+      |                                                                         ^~~~~~~~~~~~~~~~~~~~

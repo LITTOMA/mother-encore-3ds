@@ -1,0 +1,7 @@
+runtime/house_inspection_data.cpp: In member function ‘bool encore::upstream::HouseInspectionData::load(const uint8_t*, size_t, std::string&)’:
+runtime/house_inspection_data.cpp:37:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   37 |   for(size_t j=end;j<off;++j)if(input[j])return fail("House inspection padding rejected");end=size_t(off)+bytes;
+      |   ^~~
+runtime/house_inspection_data.cpp:37:91: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   37 |   for(size_t j=end;j<off;++j)if(input[j])return fail("House inspection padding rejected");end=size_t(off)+bytes;
+      |                                                                                           ^~~

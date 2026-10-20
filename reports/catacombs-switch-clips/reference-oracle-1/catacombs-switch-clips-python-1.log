@@ -1,0 +1,17 @@
+test_actual_three_profiles_eleven_existing_format_clips (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_actual_three_profiles_eleven_existing_format_clips) ... ok
+test_candidate_outputs_only_and_repeated_bytes (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_candidate_outputs_only_and_repeated_bytes) ... ok
+test_clip_identity_and_source_animation_coverage (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_clip_identity_and_source_animation_coverage) ... ok
+test_collision_owner_and_disabled_type (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_collision_owner_and_disabled_type) ... ok
+test_continuous_curve_transition_and_key_mode_rejected (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_continuous_curve_transition_and_key_mode_rejected) ... ok
+test_duplicate_json_rejected (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_duplicate_json_rejected) ... ok
+test_invalid_times_frame_values_and_loop (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_invalid_times_frame_values_and_loop) ... ok
+test_profile_id_name_path_and_selector_types (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_profile_id_name_path_and_selector_types) ... ok
+test_review_versions_pin_fields_and_sources (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_review_versions_pin_fields_and_sources) ... ok
+test_sprite_geometry_grid_and_unknown_properties (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_sprite_geometry_grid_and_unknown_properties) ... ok
+test_unknown_audio_method_and_transform_track_rejected (tests.test_dungeon_switch_clips.DungeonSwitchClipsTests.test_unknown_audio_method_and_transform_track_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 3.073s
+
+OK
+Dungeon property clips: 3 profiles, 11 clips, 948 bytes; no scene/texture binding

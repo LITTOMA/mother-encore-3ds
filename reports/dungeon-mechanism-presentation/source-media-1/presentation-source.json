@@ -1,0 +1,433 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Static native source sprite/shape/parent-sort metadata bound to checked mechanism clocks; no terrain, automatic contacts, live drawing or save admission.",
+  "review_sha256": "e7ed74b3930b1955b61fdf41aa3a2593b3aca602eb2acb754e7f630590989301",
+  "graphics": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "scope": "Untrimmed original RGBA frame packing for4 audited mechanism profiles. Source grid/position/offset/flags preserved; no pixel painting,resampling,scene/draw/physics admission or source shader interpretation.",
+    "permission": "Pinned upstream LICENSE explicitly permits game-related use; derived port data and notices retained; no environment fonts or third-party binaries distributed.",
+    "whole_scene_approved": false,
+    "review_sha256": "d8d20510e98b24e487e938393ec0603e08bcb4efb08071564ca7b77497ff01fc",
+    "bindings_review_sha256": "bcd1d22edbffec2aef191d21c33c3e6725ad2b7fd39f15d7fc3162efb231a69e",
+    "sources": {
+      "Graphics/Objects/Catacombs/Gate.png": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f",
+      "Graphics/Objects/Catacombs/Gate.png.import": "289c2958fa2dd0dc99d7ba71b6d449c0fd955b0d8469497f642e954d45560e58",
+      "Graphics/Objects/Catacombs/Lever.png": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859",
+      "Graphics/Objects/Catacombs/Lever.png.import": "c17b98be68b994233e0077af847eaca164e4fb7e8db2430865ff0aadcba575e0",
+      "Graphics/Objects/Catacombs/Plate.png": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af",
+      "Graphics/Objects/Catacombs/Plate.png.import": "fd42906c1558857f70ec4832303d4d62541b3811b327f9b2af31d4da617a3a42",
+      "Graphics/Objects/Catacombs/Wall Door.png": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100",
+      "Graphics/Objects/Catacombs/Wall Door.png.import": "e0dae549e293eb2b512f56a7050983fb2e513822f1e48173ece074e22a93fad0",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+      "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+      "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+      "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2"
+    },
+    "profiles": [
+      {
+        "id": 1,
+        "name": "lever",
+        "scene": "Nodes/Overworld/switches/Lever.tscn",
+        "sprite": "main",
+        "texture": "Graphics/Objects/Catacombs/Lever.png",
+        "atlas_columns": 2,
+        "output": "graphics/world/catacombs/mechanisms/lever.t3x",
+        "source_columns": 2,
+        "source_rows": 1,
+        "source_sha256": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859",
+        "atlas_width": 32,
+        "atlas_height": 16,
+        "frame_width": 16,
+        "frame_height": 16,
+        "atlas_rows": 1,
+        "frames": [
+          {
+            "source_frame": 0,
+            "x": 0,
+            "y": 0,
+            "width": 16,
+            "height": 16,
+            "rgba_sha256": "e11f6ad8f3c09c489f1528851efec7b14bfb4f4efea849dc862d9a984f5ceeb2"
+          },
+          {
+            "source_frame": 1,
+            "x": 16,
+            "y": 0,
+            "width": 16,
+            "height": 16,
+            "rgba_sha256": "121684f8189d83e5396dc3b93783baa38eb99c131d13607d330822a9d8f55390"
+          }
+        ],
+        "origins": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "offset": [
+            0.0,
+            0.0
+          ]
+        },
+        "flags": {
+          "centered": true,
+          "visible": true,
+          "flip_h": false,
+          "flip_v": false,
+          "z_as_relative": true
+        },
+        "z_index": 0,
+        "rgba_sha256": "889eae950e9985f55baba17b07c7ca00a6306c4e3ac9a86ae3a8ff7994f35e9b"
+      },
+      {
+        "id": 2,
+        "name": "plate",
+        "scene": "Nodes/Overworld/switches/plate.tscn",
+        "sprite": "Sprite",
+        "texture": "Graphics/Objects/Catacombs/Plate.png",
+        "atlas_columns": 2,
+        "output": "graphics/world/catacombs/mechanisms/plate.t3x",
+        "source_columns": 2,
+        "source_rows": 1,
+        "source_sha256": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af",
+        "atlas_width": 32,
+        "atlas_height": 16,
+        "frame_width": 16,
+        "frame_height": 16,
+        "atlas_rows": 1,
+        "frames": [
+          {
+            "source_frame": 0,
+            "x": 0,
+            "y": 0,
+            "width": 16,
+            "height": 16,
+            "rgba_sha256": "2eb9d3277b199484aa657c62e7d48cd5cb25c08a6919750ba738e68a559affb2"
+          },
+          {
+            "source_frame": 1,
+            "x": 16,
+            "y": 0,
+            "width": 16,
+            "height": 16,
+            "rgba_sha256": "3849daa0f2502457f1ee38615c46c0fd4318d4d6db02eff79d46974e41325f6a"
+          }
+        ],
+        "origins": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "offset": [
+            0.0,
+            0.0
+          ]
+        },
+        "flags": {
+          "centered": true,
+          "visible": true,
+          "flip_h": false,
+          "flip_v": false,
+          "z_as_relative": true
+        },
+        "z_index": 0,
+        "rgba_sha256": "864df717e9f6a9c9ff6d83c52af114ef240e9ed79a0b5019776be81ad1392751"
+      },
+      {
+        "id": 3,
+        "name": "gate",
+        "scene": "Nodes/Overworld/switches/Gate.tscn",
+        "sprite": "main",
+        "texture": "Graphics/Objects/Catacombs/Gate.png",
+        "atlas_columns": 3,
+        "output": "graphics/world/catacombs/mechanisms/gate.t3x",
+        "source_columns": 6,
+        "source_rows": 1,
+        "source_sha256": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f",
+        "atlas_width": 144,
+        "atlas_height": 96,
+        "frame_width": 48,
+        "frame_height": 48,
+        "atlas_rows": 2,
+        "frames": [
+          {
+            "source_frame": 0,
+            "x": 0,
+            "y": 0,
+            "width": 48,
+            "height": 48,
+            "rgba_sha256": "9a3fd6f8cdf7a7654069d3ea6e80d64c36ec4c5c8d052b8df7bfa20a7dc42965"
+          },
+          {
+            "source_frame": 1,
+            "x": 48,
+            "y": 0,
+            "width": 48,
+            "height": 48,
+            "rgba_sha256": "d494d8c749aeca4e4276cfd631e6c616e95eff64fbc892d855f3c6f5b2b9fd31"
+          },
+          {
+            "source_frame": 2,
+            "x": 96,
+            "y": 0,
+            "width": 48,
+            "height": 48,
+            "rgba_sha256": "8172bd034eb3c273c0ffa4fd660c14a7b5572ca318ebbcf64ccd76e8e29a8ba6"
+          },
+          {
+            "source_frame": 3,
+            "x": 0,
+            "y": 48,
+            "width": 48,
+            "height": 48,
+            "rgba_sha256": "5da6ec77f68a3e1082d6f12261badcb03e57d845aebd406cf0fd9b6a037d15df"
+          },
+          {
+            "source_frame": 4,
+            "x": 48,
+            "y": 48,
+            "width": 48,
+            "height": 48,
+            "rgba_sha256": "9fa78a98ba156aefec44d5ace829fc887c866e0cfa15dece11670896c1288621"
+          },
+          {
+            "source_frame": 5,
+            "x": 96,
+            "y": 48,
+            "width": 48,
+            "height": 48,
+            "rgba_sha256": "2d07a41ae992770085117e9815300bfd0730745883e60b24aaad5e69dfc087ae"
+          }
+        ],
+        "origins": {
+          "position": [
+            0.0,
+            -8.0
+          ],
+          "offset": [
+            0.0,
+            0.0
+          ]
+        },
+        "flags": {
+          "centered": true,
+          "visible": true,
+          "flip_h": false,
+          "flip_v": false,
+          "z_as_relative": true
+        },
+        "z_index": 0,
+        "rgba_sha256": "3c78c1b56466a516fcbadcf9c20af638627fb49f56ac1bb42a672860b3ad736d"
+      },
+      {
+        "id": 4,
+        "name": "wall",
+        "scene": "Nodes/Overworld/switches/Wall Door.tscn",
+        "sprite": "main",
+        "texture": "Graphics/Objects/Catacombs/Wall Door.png",
+        "atlas_columns": 4,
+        "output": "graphics/world/catacombs/mechanisms/wall.t3x",
+        "source_columns": 15,
+        "source_rows": 1,
+        "source_sha256": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100",
+        "atlas_width": 448,
+        "atlas_height": 384,
+        "frame_width": 112,
+        "frame_height": 96,
+        "atlas_rows": 4,
+        "frames": [
+          {
+            "source_frame": 0,
+            "x": 0,
+            "y": 0,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "6d2a8e2577cbe6aed70f2da47c0ebbd9e795826747d4929493f7129430537250"
+          },
+          {
+            "source_frame": 1,
+            "x": 112,
+            "y": 0,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "406570d16af1e5f1a0e20929b05bae85696e575df14f7841eef50782621cbc67"
+          },
+          {
+            "source_frame": 2,
+            "x": 224,
+            "y": 0,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "c0fa7b40064180259fdfd99c74fc63e1763f9c81a0a027cc8e8e00bda055c503"
+          },
+          {
+            "source_frame": 3,
+            "x": 336,
+            "y": 0,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "7bcb9e417725403a407a9b40844765803cfb19460482dce6651a5c9b0d92e436"
+          },
+          {
+            "source_frame": 4,
+            "x": 0,
+            "y": 96,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "464fc01c627c9546e4f6c2caef1ac490f34d58d7044868a94477d835e70e49fa"
+          },
+          {
+            "source_frame": 5,
+            "x": 112,
+            "y": 96,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "ca0be733380bf491e9f4b925567e07918dbbeeb214a0285dd964c8d622cacf64"
+          },
+          {
+            "source_frame": 6,
+            "x": 224,
+            "y": 96,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "1524417e8db7ec94b4b1f7ec223bf64f42f9ae644a1ba56ec42a11e0eda44a16"
+          },
+          {
+            "source_frame": 7,
+            "x": 336,
+            "y": 96,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "fc7e37989134d8813f7f07cece71015c422632591eed93e51dff275c2b7a45b6"
+          },
+          {
+            "source_frame": 8,
+            "x": 0,
+            "y": 192,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "580fd20da36807216130684b4fbf9f8599f399695f3089d1243e32a7cf3c43a4"
+          },
+          {
+            "source_frame": 9,
+            "x": 112,
+            "y": 192,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "1edb4f967d89e87d5b55a16554d3139140dfb9cc2d360cbdf12823656bab0f14"
+          },
+          {
+            "source_frame": 10,
+            "x": 224,
+            "y": 192,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "b924ddfd8f74e77f92027b17496c49fbf109cc6acd5ba527664d6661b09518f9"
+          },
+          {
+            "source_frame": 11,
+            "x": 336,
+            "y": 192,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "c0bdc1942d49bbba7c83a70672570a4925f346d800a772967e2de7d19317b12c"
+          },
+          {
+            "source_frame": 12,
+            "x": 0,
+            "y": 288,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "35c0d43685537c88dbc838d3264b5da9c3c75328c411e78d24da1f72c5707c08"
+          },
+          {
+            "source_frame": 13,
+            "x": 112,
+            "y": 288,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "eba9a426d849646d757348050b3d2f838dd0860c488d6cafca6eace5fe85e624"
+          },
+          {
+            "source_frame": 14,
+            "x": 224,
+            "y": 288,
+            "width": 112,
+            "height": 96,
+            "rgba_sha256": "e4221b57681a7e5dfca28d381ca3b0844d6a17b3ffcd3712738748f08153b5fa"
+          }
+        ],
+        "origins": {
+          "position": [
+            0.0,
+            -8.0
+          ],
+          "offset": [
+            0.0,
+            0.0
+          ]
+        },
+        "flags": {
+          "centered": true,
+          "visible": true,
+          "flip_h": false,
+          "flip_v": false,
+          "z_as_relative": true
+        },
+        "z_index": 0,
+        "rgba_sha256": "d51e8d89aed4c70801fc8f6d8e229a5326afb40ce03b2ee13dea6678de2fac67"
+      }
+    ],
+    "producer_sha256": "f8796460f9b6eb63aaeea4bb1b17159f7efe1496b270d3675542d48445da3f7c"
+  },
+  "bindings_sha256": "b115f18608929203ff55cfff277d0a6bdbc72ef9b63c6be2c4119be87fc7201b",
+  "sources": {
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Basic Enemy.tscn": "5f554fc4ad1fa00da90727bdbc1270db0cc496f1b0ab8d56726bde73593112b5",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Barrel.tscn": "0dce64a9a381963247163ecc86e777d5d9a8d67d6d709ec4278d4a02f4a5cee4",
+    "Nodes/Overworld/Objects/Coffin.tscn": "da4f55517e682bf86c0303baea4206d08c2d129d52d4b80237f04795ad4bcd0b",
+    "Nodes/Overworld/Objects/CoinSpawner.tscn": "f6ad3a3dcd0fac1cdc9f0cc8b98b3429cc11d74559edc95ee0df9d02cb9bd641",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Lock.tscn": "8f7028b4669e0ef2f5d1020cedaca6fe9ded747eed4c091a0d2b98104912ae0e",
+    "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": "0455c5e6b85221a05f68e7827d6d7791797a0c62343e14c50c9b0542c980c83a",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Rat Hole.tscn": "1715cefdbff746fb4a4bcd041914d04453fe1b40246141c5e2634cbdcbecd5da",
+    "Nodes/Overworld/Objects/Small Key.tscn": "b111c74715225473607948b2004404dd9dfc631046d53a6f569f0c5fb637a989",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/poison geyser hole.tscn": "fb8228717dc045a169206181d81597e408659713c7478fcaf648df246e1d5755",
+    "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+    "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Effects/Weather/Vignette.tscn": "3c57caf0ba3453b89014325aff196dee2b4f46bdf542bc3d385992b8f89c54cf",
+    "Nodes/Reusables/Overlap/Hurtbox.tscn": "8a96ac2d8f50541708a8305985651d2e7dde25b8c198f820a922a7550d1d26aa",
+    "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+    "Nodes/Reusables/VendingMachine.tscn": "7916b1d5c8e6d0ec7fa47e060daf1f2ea753b796098629794912b6310c15b431",
+    "Nodes/Reusables/atm.tscn": "d25d9da76f9bce3b0fc3448338ff0b20c0da553bb322d8c11f9470d89ff3de23",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/payphone.tscn": "80f1e9f9d8a43fde707475631c747553e1827c5d7ecc8f00175b2dd6b2438450",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Reusables/tea kettle.tscn": "f3004d3399e5a7030a95fa69abee332d06903104ca41d73bde4bffb71cfc277d",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb"
+  },
+  "owners": 14,
+  "shapes": 17,
+  "bytes": 7356,
+  "sha256": "2d1307f705ec57e7a0812651a21c5b89103ff558087641544bee2b74bacd216d",
+  "whole_scene_approved": false,
+  "physics_admission": false,
+  "renderer_admission": false,
+  "producer_sha256": "20e69910bd53f97dfb55f35454ad9abb2a863a33507ab4da6b121c48fc790fcb"
+}

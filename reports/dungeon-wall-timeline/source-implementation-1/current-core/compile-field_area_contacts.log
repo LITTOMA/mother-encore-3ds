@@ -1,0 +1,21 @@
+runtime/field_area_contacts.cpp: In member function ‘bool encore::upstream::FieldAreaContacts::initialize(const std::vector<unsigned int>&, std::string&)’:
+runtime/field_area_contacts.cpp:9:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+    9 |  for(size_t i=0;i<owners.size();++i)owners_[i]=owners[i];count_=owners.size();e.clear();return true;
+      |  ^~~
+runtime/field_area_contacts.cpp:9:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+    9 |  for(size_t i=0;i<owners.size();++i)owners_[i]=owners[i];count_=owners.size();e.clear();return true;
+      |                                                          ^~~~~~
+runtime/field_area_contacts.cpp: In member function ‘bool encore::upstream::FieldAreaContacts::begin(const uint8_t*, size_t, encore::upstream::FieldAreaEvents&, std::string&)’:
+runtime/field_area_contacts.cpp:15:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   15 |  for(size_t i=0;i<n;++i)inside_[i]=uint8_t(pending_[i]&&enabled[i]);sampling_=true;events=next;e.clear();return true;
+      |  ^~~
+runtime/field_area_contacts.cpp:15:69: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   15 |  for(size_t i=0;i<n;++i)inside_[i]=uint8_t(pending_[i]&&enabled[i]);sampling_=true;events=next;e.clear();return true;
+      |                                                                     ^~~~~~~~~
+runtime/field_area_contacts.cpp: In member function ‘bool encore::upstream::FieldAreaContacts::end(const uint8_t*, const uint8_t*, size_t, std::string&)’:
+runtime/field_area_contacts.cpp:19:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   19 |  for(size_t i=0;i<n;++i)pending_[i]=uint8_t(enabled[i]&&overlap[i]);sampling_=false;e.clear();return true;
+      |  ^~~
+runtime/field_area_contacts.cpp:19:69: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   19 |  for(size_t i=0;i<n;++i)pending_[i]=uint8_t(enabled[i]&&overlap[i]);sampling_=false;e.clear();return true;
+      |                                                                     ^~~~~~~~~

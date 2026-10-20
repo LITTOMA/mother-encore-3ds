@@ -1,0 +1,35 @@
+{
+  "commit": "0b40395d147f4dec6e3012db3b9f2cf147ab9a2c",
+  "run": 39385434986,
+  "gcc": {
+    "job": 118504027248,
+    "ordinary": 286,
+    "asan_ubsan": 270
+  },
+  "clang": {
+    "job": 118504027493,
+    "ordinary": 270,
+    "asan_ubsan": 270
+  },
+  "console": {
+    "job": 118504027561,
+    "resources": 377,
+    "artifact": 12247731750
+  },
+  "scope": "Metadata, method state and property slices with source-derived music dependency fix; before random camera changes. No playable dungeon, emulator or hardware claim.",
+  "result": "all observed full jobs successful",
+  "files": {
+    "catacombs0b403-gcc.log": {
+      "bytes": 905406,
+      "sha256": "4e32cabb6e3eb04cb361bb386d9f9ee6115eee4887a312807f6ba4737375dff3"
+    },
+    "catacombs0b403-clang.log": {
+      "bytes": 605187,
+      "sha256": "c57bcca165f2afb0cd265b5dec5f7ab73c1ce83aefc352212ec0437f42fa498b"
+    },
+    "catacombs0b403-console.log": {
+      "bytes": 724758,
+      "sha256": "a5d10141b3b2ae4e00dea6ce5ea6342c8303c409dd67687f098fed58debbab16"
+    }
+  }
+}

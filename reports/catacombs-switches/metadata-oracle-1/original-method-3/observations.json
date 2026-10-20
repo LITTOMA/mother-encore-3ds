@@ -1,0 +1,3514 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "action": "ready_timer_pending",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "early_interact_ignored",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "ready_timer_complete",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "paused_interact_ignored",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": true,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "scene_switch_denied",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+        {
+          "kind": "sfx",
+          "source": "res://Audio/Sound effects/M3/bump.wav",
+          "channel": "switch"
+        }
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "four_gates_requested",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "four_gates_complete",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "hit_toggles_back",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "nonplayer_plate_ignored",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "plate_turns_on_once",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "plate_repeat_ignored",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "plate_gate_complete",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "second_focus_pending",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": true,
+      "cutscene": true,
+      "player_events": [
+        "pause"
+      ],
+      "ui_events": [
+        true
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+        {
+          "kind": "move",
+          "x": -600,
+          "y": -736,
+          "duration": 1
+        }
+      ]
+    },
+    {
+      "action": "second_focus_animations_complete",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": true,
+      "cutscene": true,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "second_focus_return_pending",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": true,
+      "cutscene": true,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+        {
+          "kind": "return",
+          "duration": 1
+        }
+      ]
+    },
+    {
+      "action": "second_focus_complete",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+        "unpause"
+      ],
+      "ui_events": [
+        false
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "second_plate_on",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "second_plate_repeat_ignored",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "main_switch_camera_pending",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": true,
+      "cutscene": true,
+      "player_events": [
+        "pause",
+        "pause"
+      ],
+      "ui_events": [
+        true,
+        true
+      ],
+      "audio_events": [
+        {
+          "kind": "fade",
+          "value": 0
+        }
+      ],
+      "camera_events": [
+        {
+          "kind": "move",
+          "x": -648,
+          "y": 164,
+          "duration": 1
+        }
+      ]
+    },
+    {
+      "action": "wall_animation_complete_camera_pending",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": true,
+      "cutscene": true,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "wall_callback_delay_complete",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+        "unpause"
+      ],
+      "ui_events": [
+        false
+      ],
+      "audio_events": [
+        {
+          "kind": "resume"
+        }
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "camera_return_pending",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+        {
+          "kind": "return",
+          "duration": 1
+        }
+      ]
+    },
+    {
+      "action": "main_control_complete",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+        "unpause"
+      ],
+      "ui_events": [
+        false
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "main_repeat_ignored",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "reset_switch_on_before_leave",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": false,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "area_reset_flag_only",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": true
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "Off",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "On",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "saved_flags_ready_timer_pending",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": true,
+          "disabled": true,
+          "ready": false,
+          "animation": "TurnOn",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": false,
+          "animation": "TurnOn",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": false,
+          "animation": "TurnOn",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": false,
+          "animation": "TurnOn",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    },
+    {
+      "action": "saved_flags_ready_timer_complete",
+      "switches": [
+        {
+          "path": "Bottom2/switch",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOff",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": true,
+          "disabled": false,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": true,
+          "disabled": true,
+          "ready": true,
+          "animation": "TurnOn",
+          "audio": false
+        }
+      ],
+      "objects": [
+        {
+          "path": "Bottom2/Wall Door",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate6",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate3",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate8",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate4",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate5",
+          "on": false,
+          "animation": "StayOff",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate9",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate10",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        },
+        {
+          "path": "Objects/Gate11",
+          "on": true,
+          "animation": "StayOn",
+          "order": 0,
+          "registrations": 1
+        }
+      ],
+      "paused": false,
+      "cutscene": false,
+      "player_events": [
+
+      ],
+      "ui_events": [
+
+      ],
+      "audio_events": [
+
+      ],
+      "camera_events": [
+
+      ]
+    }
+  ]
+}

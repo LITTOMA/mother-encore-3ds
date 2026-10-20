@@ -1,0 +1,9 @@
+test_all_preexisting_outcomes_and_targets_remain_exact (tests.test_emulator_opening_controls.OpeningControlContract.test_all_preexisting_outcomes_and_targets_remain_exact) ... ok
+test_ordinary_runup_precedes_source_enter_contact (tests.test_emulator_opening_controls.OpeningControlContract.test_ordinary_runup_precedes_source_enter_contact) ... ok
+test_original_contact_condition_and_reviewed_identity (tests.test_emulator_opening_controls.OpeningControlContract.test_original_contact_condition_and_reviewed_identity) ... ok
+test_scenarios_validate_and_use_checked_factory_run (tests.test_emulator_opening_controls.OpeningControlContract.test_scenarios_validate_and_use_checked_factory_run) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.568s
+
+OK

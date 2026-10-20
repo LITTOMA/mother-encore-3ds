@@ -1,0 +1,27 @@
+runtime/field_swing_graphics.cpp: In member function ‘bool encore::upstream::FieldSwingGraphicsData::load(const uint8_t*, size_t, std::string&)’:
+runtime/field_swing_graphics.cpp:30:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   30 |   for(size_t j=end;j<offsets[i];++j)if(p[j])return fail(e,"Swing graphics padding rejected");end=offsets[i]+counts[i]*strides[i];
+      |   ^~~
+runtime/field_swing_graphics.cpp:30:94: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   30 |   for(size_t j=end;j<offsets[i];++j)if(p[j])return fail(e,"Swing graphics padding rejected");end=offsets[i]+counts[i]*strides[i];
+      |                                                                                              ^~~
+runtime/field_swing_graphics.cpp:54:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   54 |  if(!initial)return fail(e,"Swing graphics initial frame missing");v.valid_=true;*this=std::move(v);e.clear();return true;
+      |  ^~
+runtime/field_swing_graphics.cpp:54:68: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   54 |  if(!initial)return fail(e,"Swing graphics initial frame missing");v.valid_=true;*this=std::move(v);e.clear();return true;
+      |                                                                    ^
+runtime/field_swing_graphics.cpp: In member function ‘bool encore::upstream::FieldSwingGraphicsData::bind(const encore::upstream::FieldSwingData&, std::string&) const’:
+runtime/field_swing_graphics.cpp:61:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   61 |  if(required.size()!=frames_.size())return fail(e,"Swing graphics/action frame coverage differs");for(auto id:required)if(!frame(id))return fail(e,"Swing graphics/action frame missing");e.clear();return true;
+      |  ^~
+runtime/field_swing_graphics.cpp:61:99: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   61 |  if(required.size()!=frames_.size())return fail(e,"Swing graphics/action frame coverage differs");for(auto id:required)if(!frame(id))return fail(e,"Swing graphics/action frame missing");e.clear();return true;
+      |                                                                                                   ^~~
+runtime/field_swing_graphics.cpp: In member function ‘bool encore::upstream::FieldSwingGraphicsData::texture_matches(uint32_t, const uint8_t*, size_t, std::string&) const’:
+runtime/field_swing_graphics.cpp:64:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   64 |  if(!valid_||role<1||role>layers_.size()||!p)return fail(e,"Swing graphics texture owner rejected");const auto&l=layers_[role-1];if(n!=l.bytes||encore::crc32(p,n)!=l.crc)return fail(e,"Swing graphics texture bytes differ");e.clear();return true;
+      |  ^~
+runtime/field_swing_graphics.cpp:64:101: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   64 |  if(!valid_||role<1||role>layers_.size()||!p)return fail(e,"Swing graphics texture owner rejected");const auto&l=layers_[role-1];if(n!=l.bytes||encore::crc32(p,n)!=l.crc)return fail(e,"Swing graphics texture bytes differ");e.clear();return true;
+      |                                                                                                     ^~~~~

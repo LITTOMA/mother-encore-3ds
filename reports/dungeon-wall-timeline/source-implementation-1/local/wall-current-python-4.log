@@ -1,0 +1,24 @@
+test_invalid_output_and_engine_rejected_before_invocation (tests.test_door_camera_reference.DoorCameraReference.test_invalid_output_and_engine_rejected_before_invocation) ... ok
+test_repeated_exact_original_projection (tests.test_door_camera_reference.DoorCameraReference.test_repeated_exact_original_projection) ... ok
+test_source_tool_and_engine_identity (tests.test_door_camera_reference.DoorCameraReference.test_source_tool_and_engine_identity) ... ok
+test_unmodified_shaker_control_flow_and_typed_delta (tests.test_door_camera_reference.DoorCameraReference.test_unmodified_shaker_control_flow_and_typed_delta) ... ok
+test_encoder_audio_camera_and_cue_domains (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_encoder_audio_camera_and_cue_domains) ... ok
+test_encoder_rejects_schema_role_and_nested_scope (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_encoder_rejects_schema_role_and_nested_scope) ... ok
+test_exact_source_four_roles_and_typed_cues (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_exact_source_four_roles_and_typed_cues) ... ok
+test_parser_all_truncations_wrong_version_capability_and_spans (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_parser_all_truncations_wrong_version_capability_and_spans) ... ok
+test_parser_nested_properties_and_cue_coverage (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_parser_nested_properties_and_cue_coverage) ... ok
+test_parser_policy_identity_float_and_reserved_fields (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_parser_policy_identity_float_and_reserved_fields) ... ok
+test_review_owner_role_and_audio_identity_rejected (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_review_owner_role_and_audio_identity_rejected) ... ok
+test_review_paths_sources_and_duplicate_json_rejected (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_review_paths_sources_and_duplicate_json_rejected) ... ok
+test_review_schema_pin_fields_and_dependency_rejected (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_review_schema_pin_fields_and_dependency_rejected) ... ok
+test_source_animation_coverage_and_unrecognized_track_rejected (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_source_animation_coverage_and_unrecognized_track_rejected) ... ok
+test_source_grid_audio_and_body_owner_rejected (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_source_grid_audio_and_body_owner_rejected) ... ok
+test_source_unknown_method_arity_and_curve_rejected (tests.test_dungeon_wall_timeline.DungeonWallTimeline.test_source_unknown_method_arity_and_curve_rejected) ... ok
+test_missing_core_and_fixture_substitutions_reject (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_missing_core_and_fixture_substitutions_reject) ... ok
+test_playable_sources_registered_in_both_builds (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_playable_sources_registered_in_both_builds) ... ok
+test_unknown_and_duplicate_source_expressions_reject (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_unknown_and_duplicate_source_expressions_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 10.605s
+
+OK

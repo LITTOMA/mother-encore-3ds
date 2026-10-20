@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+g++ --version > build/full-port/mechanism-state-native-1/compiler.txt
+g++ -std=c++17 -O1 -g -Wall -Wextra -Wpedantic -fno-exceptions -fno-rtti -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude tests/dungeon_mechanism_state_tests.cpp runtime/dungeon_mechanism_bindings.cpp runtime/dungeon_mechanism_state.cpp build/full-port/wall-host-current-1/libencore-current.a -o build/full-port/mechanism-state-native-1/check > build/full-port/mechanism-state-native-1/compile.log 2>&1
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/mechanism-state-native-1/check build/full-port/mechanism-state-native-1/source.encdma build/full-port/mechanism-state-native-1/reference.tsv > build/full-port/mechanism-state-native-1/run.log 2>&1
+cat build/full-port/mechanism-state-native-1/run.log

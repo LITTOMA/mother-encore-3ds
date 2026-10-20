@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-mechanism-media.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Source-node audio ownership joined to checked mechanism presentation and original PCM metadata. Candidate capability2; no terrain, key/actor audio, live scene, platform output or save admission.",
+  "dependencies": {
+    "presentation": {
+      "path": "content/catacombs-mechanism-presentation.json",
+      "sha256": "e7ed74b3930b1955b61fdf41aa3a2593b3aca602eb2acb754e7f630590989301"
+    },
+    "audio": {
+      "path": "content/catacombs-mechanism-audio.json",
+      "sha256": "b09b005a350131f3fdf2a9855e6755b44484582ffa80b0e8102d9649aee9fca8"
+    }
+  },
+  "denied_owner_path": "audioManager/Sfx",
+  "engine": {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "source": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/audio/audio_stream_player.cpp",
+    "source_sha256": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+    "functions": {
+      "void AudioStreamPlayer::play(": "826431b1b1ae5d0b8b79b948eb216ef98efdd77440b90dd35c2048443619b1c7",
+      "void AudioStreamPlayer::stop(": "90716fb25e4454dd408e58aa6c1aa7321fc1d03b55fdbe702e37b129718df530",
+      "void AudioStreamPlayer::_set_playing(": "f91d9ee7bc56219225774c697abb44184b1e8a1b0bec0a6cb596deb60f905e7b"
+    },
+    "review": "playing=true calls play(default0) even if already active; play clears stop priority but does not clear pending stop; audio mixing consumes pending stop before a non-priority seek. Repeated assignments are requests, not proof of separate audible starts. Scene exit removes only its source player mixer callback. This compiler records owner/data joins only.",
+    "header_source": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/audio/audio_stream_player.h",
+    "header_sha256": "1465843e77369e84bfb18cf06c9d4224aae6a72a0b5b4e88f55956cd19898b57"
+  },
+  "manager": {
+    "autoload": "audioManager",
+    "scene": "Nodes/Ui/audioManager.tscn",
+    "channels": "Sfx"
+  }
+}

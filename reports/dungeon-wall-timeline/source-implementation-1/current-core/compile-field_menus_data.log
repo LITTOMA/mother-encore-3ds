@@ -1,0 +1,33 @@
+runtime/field_menus_data.cpp: In function ‘bool encore::upstream::expand_field_menu_text(std::string_view, std::string_view, const std::vector<std::__cxx11::basic_string<char> >&, std::string&, std::string&)’:
+runtime/field_menus_data.cpp:38:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   38 |  if(buttons.size()!=8||pattern.find_first_of("[]")!=pattern.npos)return fail(e,"Field menu text context rejected");std::string next;
+      |  ^~
+runtime/field_menus_data.cpp:38:116: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   38 |  if(buttons.size()!=8||pattern.find_first_of("[]")!=pattern.npos)return fail(e,"Field menu text context rejected");std::string next;
+      |                                                                                                                    ^~~
+runtime/field_menus_data.cpp:40:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   40 |  if(next.size()>8192)return fail(e,"Expanded field menu text exceeds bounds");out=std::move(next);e.clear();return true;
+      |  ^~
+runtime/field_menus_data.cpp:40:79: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   40 |  if(next.size()>8192)return fail(e,"Expanded field menu text exceeds bounds");out=std::move(next);e.clear();return true;
+      |                                                                               ^~~
+runtime/field_menus_data.cpp: In member function ‘bool encore::upstream::FieldMenusData::bind_items(encore::upstream::ItemView, encore::upstream::ItemDetailsView, std::string&) const’:
+runtime/field_menus_data.cpp:43:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   43 |  if(!valid_||!details.bind_items(view,e))return false;std::set<uint32_t>definitions;
+      |  ^~
+runtime/field_menus_data.cpp:43:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   43 |  if(!valid_||!details.bind_items(view,e))return false;std::set<uint32_t>definitions;
+      |                                                       ^~~
+runtime/field_menus_data.cpp:45:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   45 |  if(definitions.size()!=view.count(ItemSection::Definitions))return fail(e,"Field item description coverage mismatch");e.clear();return true;
+      |  ^~
+runtime/field_menus_data.cpp:45:120: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   45 |  if(definitions.size()!=view.count(ItemSection::Definitions))return fail(e,"Field item description coverage mismatch");e.clear();return true;
+      |                                                                                                                        ^
+runtime/field_menus_data.cpp: In function ‘bool encore::upstream::write_field_preferences(const encore::upstream::FieldMenusData&, const char*, const encore::upstream::FieldMenuPreferences&, std::string&)’:
+runtime/field_menus_data.cpp:85:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   85 |  if(!path_ok(path))return fail(e,"Invalid field preference path");std::vector<uint8_t>next,prior,check;bool missing=false,absent=false;FieldMenuPreferences old;
+      |  ^~
+runtime/field_menus_data.cpp:85:67: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   85 |  if(!path_ok(path))return fail(e,"Invalid field preference path");std::vector<uint8_t>next,prior,check;bool missing=false,absent=false;FieldMenuPreferences old;
+      |                                                                   ^~~

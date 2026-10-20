@@ -1,0 +1,7 @@
+runtime/localization.cpp: In member function ‘bool encore::upstream::LocaleCatalog::load(const uint8_t*, size_t, std::string&)’:
+runtime/localization.cpp:66:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   66 |  if(!grammar.ok||grammar.n)return fail(e,"Malformed locale affix block");r.p+=grammar_size;r.n-=grammar_size;
+      |  ^~
+runtime/localization.cpp:66:74: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   66 |  if(!grammar.ok||grammar.n)return fail(e,"Malformed locale affix block");r.p+=grammar_size;r.n-=grammar_size;
+      |                                                                          ^

@@ -1,0 +1,60 @@
+run 1: title accepted
+run 1: choose_chinese accepted
+run 1: select_guard accepted
+run 1: naming accepted
+run 1: naming_cancel_guard_elapsed accepted
+run 1: cancel_naming accepted
+run 1: new_game accepted
+run 1: default_key_0 accepted
+run 1: default_name_0 accepted
+run 1: next_field_0 accepted
+run 1: default_key_1 accepted
+run 1: default_name_1 accepted
+run 1: next_field_1 accepted
+run 1: default_key_2 accepted
+run 1: default_name_2 accepted
+run 1: next_field_2 accepted
+run 1: default_key_3 accepted
+run 1: default_name_3 accepted
+run 1: next_field_3 accepted
+run 1: default_key_4 accepted
+run 1: default_name_4 accepted
+run 1: next_field_4 accepted
+run 1: default_key_5 accepted
+run 1: default_name_5 accepted
+run 1: next_field_5 accepted
+run 1: settings_row_1 accepted
+run 1: settings_row_2 accepted
+run 1: settings_row_3 accepted
+run 1: confirmation accepted
+run 1: introduction accepted
+run 1: itoi accepted
+run 1: house accepted
+run 1: pause accepted
+run 1: psi_stick accepted
+run 1: psi_empty accepted
+run 1: psi_unlearned_confirm accepted
+run 1: psi_back accepted
+run 1: close_pause accepted
+run 1: house_select_guard accepted
+run 1: pause_again accepted
+run 1: cancel_pause accepted
+run 1: lamp_trigger accepted
+run 1: lamp_music accepted
+run 1: lamp_battle accepted
+run 1: lamp_victory accepted
+run 1: bedroom_exit accepted
+run 1: sister_hallway_north accepted
+run 1: sister_approach_x accepted
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\run_current_opening.py", line 6, in <module>
+    test.main()
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_emulator_semantics.py", line 505, in main
+    baseline = run_once(args, scenario, 1)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_emulator_semantics.py", line 379, in run_once
+    session.repeat_input(params,step.get('frames',4),step['repeat_until'],step['max_attempts'])
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_emulator_semantics.py", line 312, in repeat_input
+    if not matches(state, expected):raise TimeoutError('Bounded input repetition did not reach expected state')
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: Bounded input repetition did not reach expected state

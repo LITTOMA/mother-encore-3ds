@@ -1,0 +1,83 @@
+{
+  "parent": "fdb02c9052de9589a0b10150cf50eb5fcfa5b67e",
+  "scope": "Detached source-method state component; no production scene, timer/animation clocks, camera/audio/UI consumers, save admission or full-map gameplay.",
+  "native": {
+    "checks": 6123,
+    "compiler": "GCC9.4",
+    "sanitizers": "ASan+UBSan detect_leaks=1 halt_on_error=1 non-PIE",
+    "inputs": "All direct source: dungeon_switches,dungeon_switch_state,file_io,test; not whole-core build."
+  },
+  "original": {
+    "frozen_rows": 28,
+    "native_replays": 2,
+    "projection_fields": 71,
+    "source": "Committed metadata-oracle-1/original-method-5/observations.json SHA checked; expectations unchanged.",
+    "additional_restart": "Official3.6.2 confirms8 callbacks from4objects after2requests restart before1completion; captured first/second states survive and remain ordered. Source scripts byte-exact, explicit services only."
+  },
+  "admission": "Only source zero update-order choreography; format-valid nonzero tiers explicitly reject atomically. No unsupported Off wall animation is silently discarded.",
+  "targeted_python": {
+    "passed": 17,
+    "graph": 14,
+    "console_sources": 3,
+    "seconds": 7.02
+  },
+  "collection": {
+    "ctest": 281,
+    "python": 1283,
+    "aggregate": 900,
+    "dedicated": 383,
+    "scope": "Actual Windows CMake metadata only; native executables not built."
+  },
+  "source_sha256": {
+    "CMakeLists.txt": "86918015a10178b30bd57f294dd37928c44fd2649be1ca76ae0e0b31143a6d04",
+    "platform/ctr/Makefile": "e37f183449996f0fe2990483ab469d64e8665ff84f436675f95d7565e7470b3e",
+    "include/encore/dungeon_switch_state.hpp": "dad0aae087c643ba379291e5be3deca4270e09b7b85b707f81200b6a983529da",
+    "runtime/dungeon_switch_state.cpp": "469c3c24ea89f4d583c15c0de4b78607a85fad19ed67624bde7d95d570a45cb9",
+    "runtime/dungeon_switches.cpp": "f518c71a8d291f0544139e6d76cbce15d20bfcf242aab11198d9e85a43b326a4",
+    "runtime/file_io.cpp": "05f4812e7e98bd9ecb0c5bd2c6543be71c7bfb3dce6c29766dabed5eaeabd2bb",
+    "tests/dungeon_switch_state_tests.cpp": "7960c621e32f877b107144f82c5c1f0506fcde738b7daffd71a51a980c85ab1c",
+    "tests/prepare_dungeon_switch_reference.py": "b88af0cc1cf40c1b4aa8dc9418e7fe11f13de03cb17c8bbcfbc14ffd87cc25b3",
+    "tools/run_dungeon_switch_restart_reference.py": "2dccdeae1d319f2e48ee430a693a69a9df8e7a5479d1260ef463e6261223d828",
+    "content/catacombs-switches.json": "9252882df47ec04c0354f01589dd0bb97730f4cf93f6ed58b73848228d97bfbf"
+  },
+  "executable": {
+    "path": "build/full-port/catacombs-switch-state-1/dungeon_switch_state_tests",
+    "bytes": 4621768,
+    "sha256": "5528e17046ad1961a625ff679afe2639aac78da1ecf631aecce7c0a81b05e7a7"
+  },
+  "resource_sha256": "a0faa49b7932eaddd3aa9f472653fd31c9106b1f7a5799b119719c5cf4a1a6ed",
+  "resource_unchanged": true,
+  "evidence_sha256": {
+    "candidate-source.json": "7b6b94fe4e7ae78c28abd8549c8908c94e079287eb8bcd21785cb21e7a737ad2",
+    "catacombs-switch-state-1-compile.log": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98",
+    "catacombs-switch-state-1-result.log": "eecfe330b7fa0d27ab97d0ac4150ecd83fe5da754a8b986b5d1c3c5c12b95b2d",
+    "catacombs-switch-state-2-compile.log": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98",
+    "catacombs-switch-state-2-result.log": "ed717d10a09f15ee08cbecb254f65d880b04babe972d07039a50b731ff1017c9",
+    "catacombs-switch-state-cmake-1.log": "b06106f602e02196cc45857b6d747f6de8ef2699946fef376b66908be1283ec1",
+    "catacombs-switch-state-collection-1.log": "d1ae799123da6e0c69a488a96649a3fd941b00af24fba27edf92a1ac2eb4ef51",
+    "catacombs-switch-state-ctest-1.json": "e9fe2534b4305a06a54b026e4b9c0049c9077d1aafa499031bc807220ff398a1",
+    "catacombs-switch-state-plan-1.json": "5b3099cabde44bf78b5a3e60c808d5221f16767c62dc290ff3c74860a37e1b3f",
+    "catacombs-switch-state-python-1.log": "4acb4e4fc77d1572a7cede76a4815bfc0abb82ba735e3f6d3ae769c59f1c2d80",
+    "catacombs-switch-state-reference-1.log": "385d01028eb798a315c555016d69c41f5fce35e09424f72e9a7bb5a78ff15409",
+    "collect-catacombs-switch-state.py": "e0f48d44f3a0fbd8b825798f576f4b5fac50fd7e447f0e62cae15b64f93fae71",
+    "original-method-projection.tsv": "b62024572d494dd296e940a7125f11995394bfa1cd324114672cf7325781d36d",
+    "retain-catacombs-switch-state.py": "5645516b2e705c902b769c37374480f6e1660ca39621022765e6f826138a9561",
+    "original-restart/audio.gd": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729",
+    "original-restart/base_probe.gd": "fc83c7d476a393709ce734170816550651789c5d2d0a6928391ee09577d6350c",
+    "original-restart/data.gd": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7",
+    "original-restart/driver.log": "f13e914d35a2f058980c1b8e3873b828fa838a0d37bdb1e41f6a41de83305351",
+    "original-restart/engine.log": "775ddbb01e9860679e5bed51fc4f12503f2050b917e8fab5490df51e128f16a7",
+    "original-restart/global.gd": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd",
+    "original-restart/import.log": "775ddbb01e9860679e5bed51fc4f12503f2050b917e8fab5490df51e128f16a7",
+    "original-restart/input.json": "ded3504d68d7d0aabffe6a5175761651dccb72309e727f94850811c44c13e180",
+    "original-restart/music.gd": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558",
+    "original-restart/observations.json": "6b02bde52c473143b65d14877b10e1da0c0b308bed3ab010b1accbf9a1fb0623",
+    "original-restart/probe.gd": "54849b1324ca532b4d5b809fc93fcb3b433491d756ac2a4c86f9705fb47b7564",
+    "original-restart/receipt.json": "a901a0d8cd2dc58ee55dc81474e719f2f28bfcb5a90d12f6db1a7e445c6d16f9",
+    "original-restart/restart-engine.log": "775ddbb01e9860679e5bed51fc4f12503f2050b917e8fab5490df51e128f16a7",
+    "original-restart/restart-receipt.json": "e51cf6e0093e3241758e5338466646feb0758168534a225d1e11df4f1895f847",
+    "original-restart/restart.json": "0d67056e1688337dd0a296acc02891eb61b83667caaa76012a22d981346709c7",
+    "original-restart/scene.gd": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9",
+    "original-restart/ui.gd": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+  }
+}

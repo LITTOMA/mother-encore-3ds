@@ -1,4 +1,5 @@
 #include "encore/cutscene_camera.hpp"
+#include "encore/source_random.hpp"
 #include <algorithm>
 #include <cmath>
 namespace encore::upstream {
@@ -21,7 +22,7 @@ bool CutsceneCamera::same_state(const CutsceneCamera&other)const{
            x.move_time!=y.move_time||x.move_duration!=y.move_duration||x.moving!=y.moving||x.paused!=y.paused||x.returning!=y.returning||
            x.shakes.size()!=y.shakes.size()||x.recoveries.size()!=y.recoveries.size())return false;
         for(size_t j=0;j<x.shakes.size();++j){const auto&r=x.shakes[j];const auto&s=y.shakes[j];
-            if(r.timer!=s.timer||r.magnitude!=s.magnitude||r.reduction!=s.reduction||r.left!=s.left||r.side!=s.side||!v(r.old,s.old)||!v(r.direction,s.direction))return false;}
+            if(r.timer!=s.timer||r.magnitude!=s.magnitude||r.reduction!=s.reduction||r.interval!=s.interval||r.weight!=s.weight||r.left!=s.left||r.side!=s.side||!v(r.old,s.old)||!v(r.direction,s.direction)||!v(r.sampled,s.sampled))return false;}
         for(size_t j=0;j<x.recoveries.size();++j){const auto&r=x.recoveries[j];const auto&s=y.recoveries[j];if(r.time!=s.time||r.started!=s.started||!v(r.from,s.from))return false;}
     }
     return true;
@@ -113,18 +114,39 @@ bool CutsceneCamera::move_to(Vec2 target,double duration){
     return true;
 }
 bool CutsceneCamera::shake(double magnitude,double duration,Vec2 direction){
-    const double step=binding_.shake_step;
-    if(!initialized_||!std::isfinite(duration)||duration<step||duration>60||!std::isfinite(magnitude)||magnitude<0||!finite(direction)||(direction.x==1&&direction.y==1))return false;
+    // Legacy room commands have no random stream owner. Their admitted axis
+    // calls remain unchanged; a random request must use the explicit API.
+    if(direction.x==0&&direction.y==0)return false;
+    return shake(magnitude,duration,direction,binding_.shake_step,binding_.shake_weight,true);
+}
+bool CutsceneCamera::shake(double magnitude,double duration,Vec2 direction,double interval,double weight,bool diminish){
+    if(!initialized_||!std::isfinite(interval)||interval<=0||!std::isfinite(duration)||duration<interval||duration>60||duration/interval>1000000||!std::isfinite(magnitude)||magnitude<0||magnitude>1000000||!finite(direction)||std::abs(direction.x)>1000000||std::abs(direction.y)>1000000||!std::isfinite(weight)||weight<0||weight>1)return false;
     auto& c=current();if(c.shakes.size()>=16)return false;
-    Shake s;s.left=int(duration/step);s.magnitude=magnitude;s.reduction=magnitude/s.left;s.old=c.shake;s.direction=direction;c.shakes.push_back(s);return true;
+    Shake s;s.left=int(duration/interval);s.magnitude=magnitude;s.reduction=diminish?magnitude/s.left:0;s.old=c.shake;s.direction=direction;s.sampled=direction;s.interval=interval;s.weight=weight;c.shakes.push_back(s);return true;
+}
+bool CutsceneCamera::needs_random()const{
+    for(const auto& c:cameras_)for(const auto& s:c.shakes)if(s.left>0&&s.direction.x==0&&s.direction.y==0)return true;
+    return false;
 }
 bool CutsceneCamera::physics_frame(Vec2 target,double delta){
-    if(!initialized_||!finite(target)||!valid_delta(delta))return false;
+    if(!initialized_||!finite(target)||!valid_delta(delta)||needs_random())return false;
     if(current_index_!=0)current().parent=target;
     return physics_frame(delta);
 }
 bool CutsceneCamera::physics_frame(double delta){
+    if(!initialized_||!valid_delta(delta)||needs_random())return false;
+    return physics_step(delta,nullptr);
+}
+bool CutsceneCamera::physics_frame(SourceRandom& random,double delta){
     if(!initialized_||!valid_delta(delta))return false;
+    if(!needs_random())return physics_step(delta,nullptr);
+    // A rejected stochastic step commits neither camera state nor RNG. Keep
+    // ordinary movement allocation-free; copy only while random Shakers live.
+    auto next=*this;auto next_random=random;
+    if(!next.physics_step(delta,&next_random))return false;
+    *this=std::move(next);random=next_random;return true;
+}
+bool CutsceneCamera::physics_step(double delta,SourceRandom* random){
     // Godot3 dispatches Node callbacks with its float real_t delta; retaining
     // double 1/60 instead shifts exact .02-interval crossings and diminution.
     delta=double(float(delta));
@@ -138,13 +160,27 @@ bool CutsceneCamera::physics_frame(double delta){
             auto& s=c.shakes[i];
             if(s.left>0){
                 s.timer+=delta;
-                if(s.timer>=binding_.shake_step){
-                    --s.left;s.side=-s.side;s.timer-=binding_.shake_step;
+                if(s.timer>=s.interval){
+                    --s.left;s.side=-s.side;s.timer-=s.interval;
                     double magnitude=std::max(s.magnitude,binding_.minimum_magnitude);
                     if(s.magnitude<=binding_.zero_threshold&&s.side==-1)magnitude=0;
-                    const Vec2 value=s.left>1?Vec2{s.old.x+s.direction.x*float(s.side*magnitude),s.old.y+s.direction.y*float(s.side*magnitude)}:s.old;
+                    const bool stochastic=s.direction.x==0&&s.direction.y==0;
+                    if(stochastic){
+                        if(!random)return false;
+                        const auto old=s.sampled;unsigned attempts=0;
+                        do{
+                            // Execution bound only; reject atomically rather
+                            // than silently inventing a direction or a draw.
+                            if(++attempts>4096)return false;
+                            const double x=random->rand_range(-1,1);
+                            const double y=random->rand_range(-1,1);
+                            s.sampled={float(std::round(x)),float(std::round(y))};
+                        }while(s.sampled.x==old.x&&s.sampled.y==old.y);
+                    }
+                    const float side=stochastic?1.0f:float(s.side);
+                    const Vec2 value=s.left>1?Vec2{s.old.x+(s.sampled.x*side)*float(magnitude),s.old.y+(s.sampled.y*side)*float(magnitude)}:s.old;
                     if(s.magnitude<=binding_.minimum_magnitude)c.shake=value;
-                    else c.shake={c.shake.x+(value.x-c.shake.x)*float(binding_.shake_weight),c.shake.y+(value.y-c.shake.y)*float(binding_.shake_weight)};
+                    else c.shake={c.shake.x+(value.x-c.shake.x)*float(s.weight),c.shake.y+(value.y-c.shake.y)*float(s.weight)};
                 }
                 // Original Shaker diminishes every physics frame, including
                 // frames that do not cross its interval.

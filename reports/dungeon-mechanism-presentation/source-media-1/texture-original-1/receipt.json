@@ -1,0 +1,25 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "producer_sha256": "5e671d95221584eaa6df61dd6052dadbb6607755214a1e41ec9fe49047259a1e",
+  "graphics_review_sha256": "d8d20510e98b24e487e938393ec0603e08bcb4efb08071564ca7b77497ff01fc",
+  "sources": {
+    "Graphics/Objects/Catacombs/Gate.png": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f",
+    "Graphics/Objects/Catacombs/Gate.png.import": "289c2958fa2dd0dc99d7ba71b6d449c0fd955b0d8469497f642e954d45560e58",
+    "Graphics/Objects/Catacombs/Lever.png": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859",
+    "Graphics/Objects/Catacombs/Lever.png.import": "c17b98be68b994233e0077af847eaca164e4fb7e8db2430865ff0aadcba575e0",
+    "Graphics/Objects/Catacombs/Plate.png": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af",
+    "Graphics/Objects/Catacombs/Plate.png.import": "fd42906c1558857f70ec4832303d4d62541b3811b327f9b2af31d4da617a3a42",
+    "Graphics/Objects/Catacombs/Wall Door.png": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100",
+    "Graphics/Objects/Catacombs/Wall Door.png.import": "e0dae549e293eb2b512f56a7050983fb2e513822f1e48173ece074e22a93fad0",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+    "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2"
+  },
+  "adapter_sha256": "9dbdf4698c3c3e7a576c3ef2a56ec4b855cabb918808209bc0ad2cab57d34d65",
+  "observations_sha256": "242f64e499dce2ee82f5dc523c2d3e5b971addffedb9777b98d72c60c455574e",
+  "scope": "Observe actual imported source textures; no full scene or pixel-match claim.",
+  "whole_scene_approved": false
+}

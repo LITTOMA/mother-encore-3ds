@@ -1,0 +1,7 @@
+runtime/music_player_choice.cpp: In function ‘bool encore::upstream::{anonymous}::stream(std::string_view, bool)’:
+runtime/music_player_choice.cpp:17:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   17 |         if(end==path.npos)break;at=end+1;
+      |         ^~
+runtime/music_player_choice.cpp:17:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   17 |         if(end==path.npos)break;at=end+1;
+      |                                 ^~

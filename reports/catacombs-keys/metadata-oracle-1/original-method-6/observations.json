@@ -1,0 +1,486 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "action": "key_ready",
+      "count": 0,
+      "flags": {
+
+      },
+      "key": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "audio": false,
+        "disabled": false
+      },
+      "lock": {
+        "alive": false
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "nonplayer_ignored",
+      "count": 0,
+      "flags": {
+
+      },
+      "key": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "audio": false,
+        "disabled": false
+      },
+      "lock": {
+        "alive": false
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "paused_ignored",
+      "count": 0,
+      "flags": {
+
+      },
+      "key": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "audio": false,
+        "disabled": false
+      },
+      "lock": {
+        "alive": false
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "key_pickup_before_deferred",
+      "count": 1,
+      "flags": {
+        "Catacombs/Key1": true
+      },
+      "key": {
+        "alive": true,
+        "queued": false,
+        "visible": false,
+        "audio": true,
+        "disabled": false
+      },
+      "lock": {
+        "alive": false
+      },
+      "notifications": [
+        {
+          "count": 1,
+          "flags": {
+            "Catacombs/Key1": true
+          },
+          "key": {
+            "alive": true,
+            "queued": false,
+            "visible": true,
+            "audio": false,
+            "disabled": false
+          },
+          "lock": {
+            "alive": false
+          }
+        }
+      ],
+      "ui": [
+        {
+          "kind": "indicator",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "action": "duplicate_audio_busy_ignored",
+      "count": 1,
+      "flags": {
+        "Catacombs/Key1": true
+      },
+      "key": {
+        "alive": true,
+        "queued": false,
+        "visible": false,
+        "audio": true,
+        "disabled": false
+      },
+      "lock": {
+        "alive": false
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "key_collision_deferred",
+      "count": 1,
+      "flags": {
+        "Catacombs/Key1": true
+      },
+      "key": {
+        "alive": true,
+        "queued": false,
+        "visible": false,
+        "audio": true,
+        "disabled": true
+      },
+      "lock": {
+        "alive": false
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "key_audio_finish_queued",
+      "count": 1,
+      "flags": {
+        "Catacombs/Key1": true
+      },
+      "key": {
+        "alive": true,
+        "queued": true,
+        "visible": false,
+        "audio": true,
+        "disabled": true
+      },
+      "lock": {
+        "alive": false
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "key_deleted",
+      "count": 1,
+      "flags": {
+        "Catacombs/Key1": true
+      },
+      "key": {
+        "alive": false
+      },
+      "lock": {
+        "alive": false
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "saved_key_ready_queued",
+      "count": 1,
+      "flags": {
+        "Catacombs/Key1": true
+      },
+      "key": {
+        "alive": true,
+        "queued": true,
+        "visible": true,
+        "audio": false,
+        "disabled": false
+      },
+      "lock": {
+        "alive": false
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "saved_key_deleted",
+      "count": 1,
+      "flags": {
+        "Catacombs/Key1": true
+      },
+      "key": {
+        "alive": false
+      },
+      "lock": {
+        "alive": false
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "lock_ready",
+      "count": 0,
+      "flags": {
+        "Catacombs/Key1": true
+      },
+      "key": {
+        "alive": false
+      },
+      "lock": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "opened": false,
+        "disabled": false,
+        "prompt": true,
+        "animation": ""
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "lock_no_key",
+      "count": 0,
+      "flags": {
+        "Catacombs/Key1": true
+      },
+      "key": {
+        "alive": false
+      },
+      "lock": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "opened": false,
+        "disabled": false,
+        "prompt": true,
+        "animation": ""
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+        {
+          "kind": "text",
+          "path": "Reusable/locklocked"
+        }
+      ]
+    },
+    {
+      "action": "lock_open_requested",
+      "count": 0,
+      "flags": {
+        "Catacombs/Key1": true,
+        "Catacombs/Locked Door3": true
+      },
+      "key": {
+        "alive": false
+      },
+      "lock": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "opened": true,
+        "disabled": false,
+        "prompt": true,
+        "animation": "Open"
+      },
+      "notifications": [
+        {
+          "count": 0,
+          "flags": {
+            "Catacombs/Key1": true,
+            "Catacombs/Locked Door3": true
+          },
+          "key": {
+            "alive": false
+          },
+          "lock": {
+            "alive": true,
+            "queued": false,
+            "visible": true,
+            "opened": true,
+            "disabled": false,
+            "prompt": true,
+            "animation": "Open"
+          }
+        }
+      ],
+      "ui": [
+        {
+          "kind": "indicator",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "action": "lock_open_method",
+      "count": 0,
+      "flags": {
+        "Catacombs/Key1": true,
+        "Catacombs/Locked Door3": true
+      },
+      "key": {
+        "alive": false
+      },
+      "lock": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "opened": true,
+        "disabled": true,
+        "prompt": false,
+        "animation": "Open"
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "opened_lock_repeat_ignored",
+      "count": 0,
+      "flags": {
+        "Catacombs/Key1": true,
+        "Catacombs/Locked Door3": true
+      },
+      "key": {
+        "alive": false
+      },
+      "lock": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "opened": true,
+        "disabled": true,
+        "prompt": false,
+        "animation": "Open"
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "negative_missing_handler_connected",
+      "count": 0,
+      "flags": {
+        "Catacombs/Key1": true,
+        "Catacombs/Locked Door3": true
+      },
+      "key": {
+        "alive": false
+      },
+      "lock": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "opened": true,
+        "disabled": true,
+        "prompt": false,
+        "animation": "Open"
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "negative_missing_handler_after_emit",
+      "count": 0,
+      "flags": {
+        "Catacombs/Key1": true,
+        "Catacombs/Locked Door3": true
+      },
+      "key": {
+        "alive": false
+      },
+      "lock": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "opened": true,
+        "disabled": true,
+        "prompt": false,
+        "animation": "Open"
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    },
+    {
+      "action": "saved_lock_ready",
+      "count": 0,
+      "flags": {
+        "Catacombs/Key1": true,
+        "Catacombs/Locked Door3": true
+      },
+      "key": {
+        "alive": false
+      },
+      "lock": {
+        "alive": true,
+        "queued": false,
+        "visible": true,
+        "opened": true,
+        "disabled": true,
+        "prompt": false,
+        "animation": "Opened"
+      },
+      "notifications": [
+
+      ],
+      "ui": [
+
+      ]
+    }
+  ],
+  "connection_return": 0
+}

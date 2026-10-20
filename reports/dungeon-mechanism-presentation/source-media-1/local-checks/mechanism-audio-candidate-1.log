@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_mechanism_audio.py", line 60, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();compile_assets(a.out)
+                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_mechanism_audio.py", line 50, in compile_assets
+    out=Path(out).resolve();require(out.is_relative_to((ROOT/'build').resolve())and out!=ROOT/'build'and not out.exists(),'Fresh owned mechanism audio candidate required');recipe,proof=extract(file);out.mkdir(parents=True)
+                                                                                                                                                                                         ^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_mechanism_audio.py", line 36, in extract
+    denied='res://'+model['graph']['policy']['denied_audio'];expected.add(denied);assets={};ids=set();root=json.loads((ROOT/'content/native-audio.json').read_bytes())
+                    ~~~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'policy'

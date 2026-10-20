@@ -1,0 +1,199 @@
+{
+  "parent": "578e456cafc60aafe08d953f5aa274da1f80150f",
+  "source_review": {
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/animation/animation_player.cpp#L1183",
+    "engine_source_sha256": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+    "behavior": "Same assigned clip keeps current position; different clip or exact endpoint resets. Deferred methods use MessageQueue and skip zero delta."
+  },
+  "native_before": {
+    "checks": 2775,
+    "failures": 174,
+    "first_mismatch": "row2 lever RESET same play: actual0 expected0.0002500000118744",
+    "runtime_sha256": "90640f0f4f0b8642ad1af3853ad063e89066f2792201a802bf3991b727a16a15"
+  },
+  "native_after": {
+    "checks": 2775,
+    "failures": 0,
+    "source_observations": 231,
+    "replays": 2,
+    "compiler": "GCC9.4 ASan/UBSan,detect_leaks=1:halt_on_error=1,non-PIE; direct current-source compile"
+  },
+  "legacy": [
+    {
+      "observations": 81,
+      "checks": 2632
+    },
+    {
+      "observations": 414,
+      "checks": 3959
+    },
+    {
+      "observations": 809,
+      "checks": 4873
+    }
+  ],
+  "python": {
+    "tests": 6,
+    "seconds": 0.022
+  },
+  "wall": {
+    "cases": 6,
+    "observations": 309,
+    "replays": 2,
+    "scope": "Native manual AnimationPlayer, logged property setter forwarding to native AudioStreamPlayer and original _shake-only body; controlled scene/camera/audio audibility excluded"
+  },
+  "collection": {
+    "ctest": 286,
+    "python": 1305,
+    "aggregate": 922,
+    "dedicated": 383,
+    "scope": "Windows Debug metadata/discovery only"
+  },
+  "cleanup": {
+    "projects": 5,
+    "bytes": 1654057,
+    "native_executables_and_source_results_retained": true
+  },
+  "private_raw_assets_checked_against_pinned_source": {
+    "Audio/Sound effects/Stone_move.mp3": {
+      "bytes": 132480,
+      "sha256": "51e63dc9c9b13527966e22c9dd3377a9ab883368af092e2292f95d9b9e532d16"
+    },
+    "Graphics/Objects/Catacombs/Wall Door.png": {
+      "bytes": 6663,
+      "sha256": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100"
+    },
+    "Audio/Sound effects/Lever.mp3": {
+      "bytes": 12537,
+      "sha256": "0c155a6512c3c856265302171c54df6bfcb1215022e147c84b513a482ae6e4a7"
+    },
+    "Audio/Sound effects/M3/door_close.wav": {
+      "bytes": 61784,
+      "sha256": "089890ee7381adb8f9b169df6b66377798eb0d90f1fd38c748c7a2c2c291cfa5"
+    },
+    "Graphics/Objects/Catacombs/Gate.png": {
+      "bytes": 950,
+      "sha256": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f"
+    },
+    "Graphics/Objects/Catacombs/Lever.png": {
+      "bytes": 374,
+      "sha256": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859"
+    },
+    "Graphics/Objects/Catacombs/Plate.png": {
+      "bytes": 299,
+      "sha256": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af"
+    }
+  },
+  "source_sha256": {
+    "runtime/prop_clips.cpp": "75255e0a6b779918737a700a3a0fee0c0395fa3961cdbf0370988f6cf2803495",
+    "include/encore/prop_clips.hpp": "26c3b3d4190f61ce78ffa8156c131a0a3b434f33a77949099001bb566e8f2985",
+    "tests/prop_play_resume_tests.cpp": "8b5b23860f60515e94a462a80e9bf24e3dbfe773255c3d8d4fb824200eb49b92",
+    "tests/test_prop_animation_continuation.py": "8aae173d677263cd42eda66906ebdc2524c6ced5646effece53c5d81b319f285",
+    "tests/fixtures/prop-play-resume.tsv": "f404e5cce294d9a2508e7d97a5cbcb8e0825f798ead1a43779141e6abae07b47",
+    "tools/run_prop_resume_reference.py": "51d1c8d3bbf2062ffc602959e0de306c8da555b4bdaa341620107633f00777c3",
+    "tools/run_dungeon_wall_timeline_reference.py": "c9554639f018255022a94a4755552ee3ae07d4a15eb608b5ca31ccb64c418f76",
+    "CMakeLists.txt": "88c03cfc4f160addcfcd3011b065ac0116ec07a43a1438a8e81141ecca0eed3f",
+    "docs/PROP_ANIMATION_CONTINUATION.md": "cf6705e5b8456df3f881665e31d5718b1cb8591745690ea92b8d18af3a4286aa"
+  },
+  "executables": {
+    "check": {
+      "bytes": 2416136,
+      "sha256": "884c4743032221f0749b08c60e703984036f3afc3cfab6ce5ac63a1b324d0e4b"
+    },
+    "check-2": {
+      "bytes": 2417264,
+      "sha256": "6bec98c9719f0680298b279eb8e318ba0570cb805ea244a7164582240d59e67b"
+    },
+    "root-check": {
+      "bytes": 2011944,
+      "sha256": "6e298c43a3b5311ccd00fd123ba1f065615365ecd80c217f1a0c5b9afdbb5712"
+    },
+    "dungeon-check": {
+      "bytes": 2917016,
+      "sha256": "da6e43d0bd01ebf9ad6e5aee1e7e35edfc51ee3c7c2cbf455bcf58a3028ed217"
+    }
+  },
+  "scope": "Same-animation property continuation fix and independent wall timeline source observations. No format/catalog/formal resource/save change or playable dungeon, emulator/hardware claim.",
+  "evidence_sha256": {
+    "native/cmake-collection.log": "f76a7d826ccaef19fe3ade07d38d567c12fc2be63869dd4a28caba08e48bd3a8",
+    "native/collection.log": "93286f93dc2b75f8c9188ea60950ee0b37378edad775f76e7476c37ee0b46de2",
+    "native/compile-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native/compile-2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native/compiler.txt": "c4b8cb27259b52465715c83277ca12c1fe007119e3add12623dd7a6ef0c959f6",
+    "native/dungeon-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native/dungeon-observations.log": "6f1d25682e5a77518cdaa57016818dbbec94124f288d54c5584d33a91164a963",
+    "native/prop-play-resume-fixed.sh": "1b7982e7e6c978e17c2d5487527139bb66cb4261c5b68d73ec29da2fb25ab70f",
+    "native/prop-play-resume-native.sh": "c0bb71e0a66efcb91b26836ac2fb6401df583b98a5800b1a52f06135e7041477",
+    "native/prop-play-resume-regressions.sh": "21916bbd409478c4af102ae6f563f08f4e24879a1a185cabd03c5a4a70fa827c",
+    "native/python.log": "442b5b9a17592140ebe7b4f59f00aa1a9873868a96b8809009be7b9ff0408cfc",
+    "native/retirement.json": "15d9f1e2ef2b112fa0e6547230b670a9c6a1837b474ce4b06cc2f23a9ec4c8e6",
+    "native/root-boundaries.log": "43eab0c9cd9014518da1cc0f9017af090787f295be540f3ddfd9728c21ccce8a",
+    "native/root-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native/root-observations.log": "c669de57374fffb8743cd57040501137b314fb1939fcc38b82386e06d7def3f9",
+    "native/run-1.log": "cc08475d502170181a9b1b719adcce07d82955ee2907bdb7bdef6fe4edaaee36",
+    "native/run-2.log": "db54f5e8e2bc9dbdb38a2be252fd58bad8516c6e075f5d918fe055a92dd33524",
+    "native/test-plan.json": "723afa6573169851659d5d26b2a4946ae604929e792067708d8dfd46f33795f0",
+    "prop-resume-1/engine.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "prop-resume-1/import.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "prop-resume-1/input.json": "ade0bd8e9c820f5e641b4e0eadddaddfea006d00ba273da0643959748666c656",
+    "prop-resume-1/observations.json": "7bb77738ff8cf2579694394697ba97e38453cb1171b01a4729e7df181bd81fc9",
+    "prop-resume-1/receipt.json": "50ed5279ba2cce8af0acec8c003f877ad6f69bb71031cb7b5eac9be34a5ee6f0",
+    "prop-resume-1/states.tsv": "f404e5cce294d9a2508e7d97a5cbcb8e0825f798ead1a43779141e6abae07b47",
+    "prop-resume-1/adapters/numeric-gate.tscn": "fccf48583edd96fc38adcf57dbee719f12278c4333c793699604e747f7b333bf",
+    "prop-resume-1/adapters/numeric-lever.tscn": "54a76074dce0e9b09d19b1b694dc146d5e085af7b19549934d8b3f01eb23ef05",
+    "prop-resume-1/adapters/numeric-plate.tscn": "a151119081875bb906ff7c19554d07a460eb96f7798a04b2bcd3c57e396a570a",
+    "prop-resume-1/adapters/probe.gd": "7ddabcaca594655dd2cbf6a7b34dca2aa5ce0ac4d74ecdce5411448c092fdb51",
+    "prop-resume-1/adapters/project.godot": "0bc8b5e356eae16eab64a109258ddea3ccdad60f2c3aeb75ad75e62c8f36f32c",
+    "prop-resume-1/source-scenes/gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "prop-resume-1/source-scenes/lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "prop-resume-1/source-scenes/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+    "prop-resume-2/engine.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "prop-resume-2/import.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "prop-resume-2/input.json": "ade0bd8e9c820f5e641b4e0eadddaddfea006d00ba273da0643959748666c656",
+    "prop-resume-2/observations.json": "7bb77738ff8cf2579694394697ba97e38453cb1171b01a4729e7df181bd81fc9",
+    "prop-resume-2/receipt.json": "50ed5279ba2cce8af0acec8c003f877ad6f69bb71031cb7b5eac9be34a5ee6f0",
+    "prop-resume-2/states.tsv": "f404e5cce294d9a2508e7d97a5cbcb8e0825f798ead1a43779141e6abae07b47",
+    "prop-resume-2/adapters/numeric-gate.tscn": "fccf48583edd96fc38adcf57dbee719f12278c4333c793699604e747f7b333bf",
+    "prop-resume-2/adapters/numeric-lever.tscn": "54a76074dce0e9b09d19b1b694dc146d5e085af7b19549934d8b3f01eb23ef05",
+    "prop-resume-2/adapters/numeric-plate.tscn": "a151119081875bb906ff7c19554d07a460eb96f7798a04b2bcd3c57e396a570a",
+    "prop-resume-2/adapters/probe.gd": "7ddabcaca594655dd2cbf6a7b34dca2aa5ce0ac4d74ecdce5411448c092fdb51",
+    "prop-resume-2/adapters/project.godot": "0bc8b5e356eae16eab64a109258ddea3ccdad60f2c3aeb75ad75e62c8f36f32c",
+    "prop-resume-2/source-scenes/gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "prop-resume-2/source-scenes/lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "prop-resume-2/source-scenes/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+    "wall-import-failure-1/import.log": "08b6384036a7cc11a1bc14835831bbc5f5192922ca0319821c35b8cbedee748f",
+    "wall-timeline-2/engine.log": "ff193c551903c7c9d9abcd37b5044c2b7ad47c91ba342f67d37a8ff2a18ae465",
+    "wall-timeline-2/import.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "wall-timeline-2/input.json": "4b2af5546693665431811a9e90b3536e246649ee5ef07dc3107214c94f4b8648",
+    "wall-timeline-2/observations.json": "9c25cdbe37e578a5277f4cb0cf35bb1318a6f50ffd5419cc7ec5d8e9bd92858c",
+    "wall-timeline-2/receipt.json": "69522fb551b0c660e952abc8d3767a050cb45cca4a52ebecae85b2300958a230",
+    "wall-timeline-2/source-audio-import.txt": "b7b636713631a319a1c733b182bc7d9e5cb17f1571a0ee81ba72878124645dfb",
+    "wall-timeline-2/source-wall.gd": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a",
+    "wall-timeline-2/source-wall.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+    "wall-timeline-2/adapters/audio-policy.json": "fc1f83ea8bb404e61e48474b6040727971b3bbe2b3d791876aa8a1f271e97593",
+    "wall-timeline-2/adapters/audio.gd": "01301eea447e1221d26221bab5aa3e91da377a6c63d51bf419c126181908d533",
+    "wall-timeline-2/adapters/probe.gd": "1a22efb50f1d3d13747f03b85ca0f47a5f02e86add1cdbf282defb212082536f",
+    "wall-timeline-2/adapters/project.godot": "165847498ac434a0efba118a1107d2b1154c1095f2305f1836bbee6630b1e6d2",
+    "wall-timeline-2/adapters/service.gd": "9ce65f6d38a4200bf86e889e8e4dd054e028966a58e569239aa5f36779688616",
+    "wall-timeline-2/adapters/wall.tscn": "994592a7e094eeff7823ef54adcf2120ce78a2d42f750444c1e84e70da46c961",
+    "wall-timeline-2/adapters/wall_slice.gd": "14eafe4aa98b7963a15ba1cfa5b71ddbd07b5cd12c43b8578c66ad95e58abe01",
+    "wall-timeline-3/engine.log": "ff193c551903c7c9d9abcd37b5044c2b7ad47c91ba342f67d37a8ff2a18ae465",
+    "wall-timeline-3/import.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "wall-timeline-3/input.json": "4b2af5546693665431811a9e90b3536e246649ee5ef07dc3107214c94f4b8648",
+    "wall-timeline-3/observations.json": "9c25cdbe37e578a5277f4cb0cf35bb1318a6f50ffd5419cc7ec5d8e9bd92858c",
+    "wall-timeline-3/receipt.json": "69522fb551b0c660e952abc8d3767a050cb45cca4a52ebecae85b2300958a230",
+    "wall-timeline-3/source-audio-import.txt": "b7b636713631a319a1c733b182bc7d9e5cb17f1571a0ee81ba72878124645dfb",
+    "wall-timeline-3/source-wall.gd": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a",
+    "wall-timeline-3/source-wall.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+    "wall-timeline-3/adapters/audio-policy.json": "fc1f83ea8bb404e61e48474b6040727971b3bbe2b3d791876aa8a1f271e97593",
+    "wall-timeline-3/adapters/audio.gd": "01301eea447e1221d26221bab5aa3e91da377a6c63d51bf419c126181908d533",
+    "wall-timeline-3/adapters/probe.gd": "1a22efb50f1d3d13747f03b85ca0f47a5f02e86add1cdbf282defb212082536f",
+    "wall-timeline-3/adapters/project.godot": "165847498ac434a0efba118a1107d2b1154c1095f2305f1836bbee6630b1e6d2",
+    "wall-timeline-3/adapters/service.gd": "9ce65f6d38a4200bf86e889e8e4dd054e028966a58e569239aa5f36779688616",
+    "wall-timeline-3/adapters/wall.tscn": "994592a7e094eeff7823ef54adcf2120ce78a2d42f750444c1e84e70da46c961",
+    "wall-timeline-3/adapters/wall_slice.gd": "14eafe4aa98b7963a15ba1cfa5b71ddbd07b5cd12c43b8578c66ad95e58abe01",
+    "prior578-console.log": "65653370efca1c863897ad369405d167e2079b85d4998b573b205ccae7cd7e06",
+    "prior578-console.json": "c5c1b7063dd6063d39b0e0257cf94a9814369f6170c941a1a4af2ed6d2ea3c25"
+  },
+  "prior_console": "prior578-console.json"
+}

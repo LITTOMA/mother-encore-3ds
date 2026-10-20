@@ -1,0 +1,113 @@
+{
+  "parent": "0b40395d147f4dec6e3012db3b9f2cf147ab9a2c",
+  "scope": "Camera Shaker property/global RNG slice only; no full camera recovery, wall scene, audio, save, emulator or hardware admission.",
+  "original": {
+    "cases": 10,
+    "observations": 845,
+    "replays": 2,
+    "frames_with_multiple_direction_attempts": 45,
+    "following_raw_randi_values": "three per case; exact native/engine stream"
+  },
+  "native": {
+    "compiler": "GCC9.4",
+    "asan_ubsan": "detect_leaks=1 halt_on_error=1, non-PIE",
+    "checks": 10590,
+    "failures": 0,
+    "source": "Current camera, SourceRandom, RoomData and file IO directly compiled; no common core cache reused"
+  },
+  "legacy": {
+    "checks": 7246,
+    "lamp": 3007,
+    "doll_mimmie": 4212,
+    "negative_and_lifetime": 27,
+    "fixtures": "unchanged frozen camera headers; current formal House Room"
+  },
+  "python": {
+    "tests": 5,
+    "seconds": 0.012
+  },
+  "collection": {
+    "ctest": 285,
+    "python": 1299,
+    "aggregate": 916,
+    "dedicated": 383,
+    "scope": "Actual Windows Debug metadata/discovery only; three prior collection failures retained; no Windows executable built"
+  },
+  "initial_transport": "Initial manual oracle passed binary64 deltas; corrected to native binary32 callback transport before freezing and any native comparison. Source Shaker math/expectations not changed.",
+  "rounding_review": {
+    "source": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/core/math/math_funcs.h#L263",
+    "sha256": "32e8a5a998235947996119bed349cbd57233a9080b556a6b57d438ac40821e13",
+    "behavior": "Math::round delegates to ::round and ::roundf; local header only under build, no release copy"
+  },
+  "cleanup": {
+    "projects": 3,
+    "bytes": 1164343,
+    "proof": "native/retirement.json",
+    "source_results_and_native_executables_retained": true
+  },
+  "source_sha256": {
+    "CMakeLists.txt": "b848990d9fc94ec7e9afa0b0206b38f3d84f7f99d1b8e08dadaea5bbe6ef7056",
+    "include/encore/cutscene_camera.hpp": "2dcf4594b59a7cf369be4e82db3216ecd97ddaea3d0299f370928ed63bfe4951",
+    "runtime/cutscene_camera.cpp": "99de61bcb80cb783dd8eb6bf331c0b1ce54a116027df9bbf421748914f83db99",
+    "tests/camera_random_shake_tests.cpp": "599e2524b77d42bfac5fde073630daeb73dba392fe60c336f393c82da3e77c91",
+    "tests/test_camera_shaker_reference.py": "26b58162eab08e1f6099ba22bb20211d1b5ae505f08d8aaded2584bf1a66ba1a",
+    "tests/fixtures/camera-random-shake.tsv": "f8cc386ec09a136e2d95fe7f2afeacc4f88400f398c9f77be25c2d07c6e0e9e4",
+    "tools/run_camera_shaker_reference.py": "90726ffc92c607bbed348c7dccc08ff727a754fa4b27aae6d33f452c8a656f55",
+    "docs/CAMERA_RANDOM_SHAKE.md": "8d94966502a63a32cf381fce441bb4b20e7c5c9c17fe118d56af127531ad3109"
+  },
+  "executables": {
+    "check": {
+      "bytes": 4218000,
+      "sha256": "7609ba10c2e2f3cd8105ba0ee3ef66107f87d4f88ddd0033ad371d52035a9259"
+    },
+    "legacy-check": {
+      "bytes": 3976696,
+      "sha256": "98516bc6fc23a770cb34c9b5c77496fb7225bf34ba7feb4098462286d12893fe"
+    }
+  },
+  "evidence_sha256": {
+    "native/camera-random-shake-native.sh": "ccba1ddab168aaca0b5a7120b8ae8bdb8e4faddc08af8c4bb0914143767d13fe",
+    "native/camera-shake-regression.sh": "07859e11eca954bf12e5f504dbffc205c5084687e5d0d6e9fc0dec7b1cf20f21",
+    "native/cmake-collect-2.log": "b7b3982116e9f93474528ba8c0f981d4aac6ab863c822bb4053026779408cf2c",
+    "native/cmake-collect.log": "ecd1f5d4a03726a118e16657784c0b48c4a961373c6d7f120757516ed74db3da",
+    "native/collect-camera-shaker-tests.py": "c1c6b5ea42e9c37e2229e6f074aa7893eafb7ddeb6d288bb6ee09c9e8097a794",
+    "native/collection-2.log": "76b91cd3b94eb97799c5c95b2cbb202806e446b04f9b28beef0f839f7bf846a7",
+    "native/collection-3.log": "9f439d1c7ac8f06c9b739dba060c71cc46d7cd5725b064589365d0a17780cfcb",
+    "native/collection-4.log": "617a734bdee8c0e3dd4cf164fe937eddaef352e1f2f79f6cc8bf929f827c5b8b",
+    "native/collection.log": "76b91cd3b94eb97799c5c95b2cbb202806e446b04f9b28beef0f839f7bf846a7",
+    "native/compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native/compiler.txt": "c4b8cb27259b52465715c83277ca12c1fe007119e3add12623dd7a6ef0c959f6",
+    "native/legacy-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native/legacy-run.log": "24191dc1e6dc4783100079b7aa914a577d0a03a2962b94c3daea462c25fc1f9f",
+    "native/python.log": "2924dcd2c5920c431428709f65883c1eb5cbc94204c1062eceb4b260eeb8016d",
+    "native/retirement.json": "27a622c0814e80418dbf4fbae6107132d49cff2a70f6b0c39100bdf51e4c6648",
+    "native/run-1.log": "5684f2ac15b3ae04e4b41442320aaa10fa4d8b905721b47c02c494b2dcba9c27",
+    "native/test-plan.json": "6aa9c3e2da7b60a88794dd8314c87f4107b55ee5f43165d96e7750afae0de887",
+    "original-2/engine.log": "24a186fcca5fa4607764daaea851bb23576236380dd42638788dcedc957f543e",
+    "original-2/input.json": "2931efcc77f3362890a7f1fa0f2ba480de2422d11b7fe0e2a04142e3826f3ab7",
+    "original-2/observations.json": "87d774865a8984fb64f682607e919c94e2ba5d7b66337adf34698682843487c6",
+    "original-2/receipt.json": "ab9e3922c1b71e47866c309e7c960b7999e29eac651d935d97bb57c9ebeab348",
+    "original-2/source-shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "original-2/states.tsv": "f8cc386ec09a136e2d95fe7f2afeacc4f88400f398c9f77be25c2d07c6e0e9e4",
+    "original-2/adapters/probe.gd": "a00c7bcd3e8fea439b542c677eab135f03b4f9e37e66e6658ce36f4371877aea",
+    "original-2/adapters/project.godot": "37b3953ef1b650ff7c751b095934ce83cc5c5dc30459c82cc8e7885b64ce32a3",
+    "original-2/adapters/shaker.gd": "add513c09d85ee12d344286ea2fc0996777304786e7ff5b940a514d0be90c0c5",
+    "original-2/adapters/target.gd": "dc3ce01e886ceef443ba0d320895fc44275ecdfa5f4f02e622c2d51541cf8f97",
+    "original-3/engine.log": "24a186fcca5fa4607764daaea851bb23576236380dd42638788dcedc957f543e",
+    "original-3/input.json": "2931efcc77f3362890a7f1fa0f2ba480de2422d11b7fe0e2a04142e3826f3ab7",
+    "original-3/observations.json": "87d774865a8984fb64f682607e919c94e2ba5d7b66337adf34698682843487c6",
+    "original-3/receipt.json": "ab9e3922c1b71e47866c309e7c960b7999e29eac651d935d97bb57c9ebeab348",
+    "original-3/source-shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "original-3/states.tsv": "f8cc386ec09a136e2d95fe7f2afeacc4f88400f398c9f77be25c2d07c6e0e9e4",
+    "original-3/adapters/probe.gd": "a00c7bcd3e8fea439b542c677eab135f03b4f9e37e66e6658ce36f4371877aea",
+    "original-3/adapters/project.godot": "37b3953ef1b650ff7c751b095934ce83cc5c5dc30459c82cc8e7885b64ce32a3",
+    "original-3/adapters/shaker.gd": "add513c09d85ee12d344286ea2fc0996777304786e7ff5b940a514d0be90c0c5",
+    "original-3/adapters/target.gd": "dc3ce01e886ceef443ba0d320895fc44275ecdfa5f4f02e622c2d51541cf8f97",
+    "transport-audit-1/engine.log": "24a186fcca5fa4607764daaea851bb23576236380dd42638788dcedc957f543e",
+    "transport-audit-1/input.json": "2931efcc77f3362890a7f1fa0f2ba480de2422d11b7fe0e2a04142e3826f3ab7",
+    "transport-audit-1/observations.json": "19aed2fe6bbd26eea4e766b8cde9e453a59490b8d8c060920a5de42c11e2c2b8",
+    "transport-audit-1/receipt.json": "4c27cecb66ec684a2510b4568dfa91cd64ac439edeaec381ded61fa0927bb174",
+    "transport-audit-1/source-shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "transport-audit-1/states.tsv": "cdfa69e063b89e26082ae3b6fb6698f673d11cdec192599ad6fa417da54fc12e"
+  }
+}

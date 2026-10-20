@@ -1,0 +1,36 @@
+{
+  "destination_before": "f7566d733e16e5be846ed7fde973636a571b1c25",
+  "source": "2a9a340be8602dbd610d5a66da2f707c3afc2bf1",
+  "main_untouched": true,
+  "only_conflict": "docs/STATUS.md; retained both progress records",
+  "review_hashes": {
+    "music-library-v0410.json": "288e5c0a093e706ce1b91be1b2bd48fd3aa1a71ac7150f07f9df06668317f652",
+    "music-library-bindings-v0410.json": "8414983f769fd9b79d245027a590f9ef027de2c2caaf966a7bc166072a26c906"
+  },
+  "f756_console": {
+    "run": 39382551794,
+    "job": 118494748458,
+    "result": "success",
+    "packaged_files": 377,
+    "artifact": 12246926273,
+    "scope": "Actual ARM compile/link includes all four dungeon source files plus the prop sampler fix; no playable dungeon or hardware claim"
+  },
+  "7910_gcc": {
+    "run": 39379758376,
+    "job": 118485934062,
+    "ordinary": "282/283; sole python_tools failure",
+    "reason": "same root music proof mismatch and dependent bindings setup error",
+    "sanitizers": "not executed after ordinary failure"
+  },
+  "targeted_root_checks": "7 tests passed on identical source and review records; see inherited reports/iggy-tutorial/music-source-dependency-fix",
+  "files": {
+    "catacombs-f756-console-job.log": {
+      "bytes": 723360,
+      "sha256": "0d7a8d1e3c73b52e70bbc5cc069ab34f4f47eb2999803b072461ace46aa9b623"
+    },
+    "catacombs-7910-gcc.log": {
+      "bytes": 844019,
+      "sha256": "6b4d050e23576d39bdf1539b6a97b669b936bb9311081c29983d7635e921dc46"
+    }
+  }
+}

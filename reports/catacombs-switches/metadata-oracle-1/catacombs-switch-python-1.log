@@ -1,0 +1,19 @@
+test_actual_graph_and_roundtrip (tests.test_dungeon_switches.DungeonSwitchesTests.test_actual_graph_and_roundtrip) ... ok
+test_canonical_strings_and_encoded_types (tests.test_dungeon_switches.DungeonSwitchesTests.test_canonical_strings_and_encoded_types) ... ok
+test_cli_rejects_release_destination (tests.test_dungeon_switches.DungeonSwitchesTests.test_cli_rejects_release_destination) ... ok
+test_duplicate_json_rejected (tests.test_dungeon_switches.DungeonSwitchesTests.test_duplicate_json_rejected) ... ok
+test_edges_duplicate_missing_wrong_kind_and_owner (tests.test_dungeon_switches.DungeonSwitchesTests.test_edges_duplicate_missing_wrong_kind_and_owner) ... ok
+test_header_versions_capability_pin_and_crc (tests.test_dungeon_switches.DungeonSwitchesTests.test_header_versions_capability_pin_and_crc) ... ok
+test_object_record_reserved_order_state_and_kind (tests.test_dungeon_switches.DungeonSwitchesTests.test_object_record_reserved_order_state_and_kind) ... ok
+test_original_dispatch_order_and_inheritance (tests.test_dungeon_switches.DungeonSwitchesTests.test_original_dispatch_order_and_inheritance) ... ok
+test_policy_floats_and_callback_identity (tests.test_dungeon_switches.DungeonSwitchesTests.test_policy_floats_and_callback_identity) ... ok
+test_review_identity_kind_and_coverage (tests.test_dungeon_switches.DungeonSwitchesTests.test_review_identity_kind_and_coverage) ... ok
+test_schema_pin_fields_types_source_coverage (tests.test_dungeon_switches.DungeonSwitchesTests.test_schema_pin_fields_types_source_coverage) ... ok
+test_switch_record_flag_text_counter_and_kind (tests.test_dungeon_switches.DungeonSwitchesTests.test_switch_record_flag_text_counter_and_kind) ... ok
+test_unknown_override_boolean_flag_and_target (tests.test_dungeon_switches.DungeonSwitchesTests.test_unknown_override_boolean_flag_and_target) ... ok
+test_unknown_synced_object_order_and_position (tests.test_dungeon_switches.DungeonSwitchesTests.test_unknown_synced_object_order_and_position) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 6.802s
+
+OK

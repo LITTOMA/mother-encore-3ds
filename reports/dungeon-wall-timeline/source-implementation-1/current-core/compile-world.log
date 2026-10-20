@@ -1,0 +1,69 @@
+runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::bind_story_skills(encore::upstream::StorySkillHost&)’:
+runtime/world.cpp:23:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   23 |  if(!content_)return false;std::string error;
+      |  ^~
+runtime/world.cpp:23:28: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   23 |  if(!content_)return false;std::string error;
+      |                            ^~~
+runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::initialize(const encore::upstream::RoomView&, encore::upstream::Vec2)’:
+runtime/world.cpp:64:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   64 |     if(!content.valid())return false;const auto scene=content.scene();
+      |     ^~
+runtime/world.cpp:64:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   64 |     if(!content.valid())return false;const auto scene=content.scene();
+      |                                      ^~~~~
+runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::bind_walk_audio(encore::upstream::WalkAudioSink&)’:
+runtime/world.cpp:115:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  115 |  if(!healthy_||walk_audio_||!sink.walk_audio_ready())return false;walk_audio_=&sink;return true;
+      |  ^~
+runtime/world.cpp:115:67: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  115 |  if(!healthy_||walk_audio_||!sink.walk_audio_ready())return false;walk_audio_=&sink;return true;
+      |                                                                   ^~~~~~~~~~~
+runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::bind_player_action(const encore::upstream::FieldSwingResources&, std::string&)’:
+runtime/world.cpp:131:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  131 |   if(binding.motion_state>=data.motion_states().size())return reject("Player room motion role is unsupported");++normal_bindings;
+      |   ^~
+runtime/world.cpp:131:112: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  131 |   if(binding.motion_state>=data.motion_states().size())return reject("Player room motion role is unsupported");++normal_bindings;
+      |                                                                                                                ^~
+runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::player_action_direction(bool)’:
+runtime/world.cpp:179:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  179 |  if(!(idle?owner.action_.set_idle_direction(owner.player_.direction,why):owner.action_.set_direction(owner.player_.direction,why))||(idle&&!owner.action_.travel(target,why)))return fail("Player action direction rejected");++owner.action_revision_;return true;
+      |  ^~
+runtime/world.cpp:179:223: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  179 |  if(!(idle?owner.action_.set_idle_direction(owner.player_.direction,why):owner.action_.set_direction(owner.player_.direction,why))||(idle&&!owner.action_.travel(target,why)))return fail("Player action direction rejected");++owner.action_revision_;return true;
+      |                                                                                                                                                                                                                               ^~
+runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::emit_walk_audio(const encore::upstream::WalkAudioCalls&)’:
+runtime/world.cpp:288:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  288 |  if(!walk_audio_)return true;std::string why;
+      |  ^~
+runtime/world.cpp:288:30: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  288 |  if(!walk_audio_)return true;std::string why;
+      |                              ^~~
+runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::advance(encore::upstream::WalkInput)’:
+runtime/world.cpp:334:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  334 |         if(update_blend&&!player_action_direction())return false;std::string why;
+      |         ^~
+runtime/world.cpp:334:66: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  334 |         if(update_blend&&!player_action_direction())return false;std::string why;
+      |                                                                  ^~~
+runtime/world.cpp: In member function ‘bool encore::upstream::OpeningWorld::write_story_flag(uint32_t, bool, bool)’:
+runtime/world.cpp:381:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  381 |     if(!healthy_)return false;const auto result=flags_.set_story_flag(index,value,emit);if(result.flags_updated)++story_revision_;
+      |     ^~
+runtime/world.cpp:381:31: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  381 |     if(!healthy_)return false;const auto result=flags_.set_story_flag(index,value,emit);if(result.flags_updated)++story_revision_;
+      |                               ^~~~~
+runtime/world.cpp: In member function ‘virtual bool encore::upstream::OpeningWorld::apply(const encore::upstream::DialogueAction&)’:
+runtime/world.cpp:690:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  690 |         if(!actor)return false;Vec2 direction=a.vector;
+      |         ^~
+runtime/world.cpp:690:32: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  690 |         if(!actor)return false;Vec2 direction=a.vector;
+      |                                ^~~~
+runtime/world.cpp:696:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  696 |             if(a.flags&4)direction.x=a.vector.x;if(a.flags&8)direction.y=a.vector.y;
+      |             ^~
+runtime/world.cpp:696:49: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  696 |             if(a.flags&4)direction.x=a.vector.x;if(a.flags&8)direction.y=a.vector.y;
+      |                                                 ^~

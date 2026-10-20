@@ -1,0 +1,2280 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": "bat_enter_stay_reenter",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_enter_stay_reenter",
+      "phase": "stay",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_enter_stay_reenter",
+      "phase": "leave",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_enter_stay_reenter",
+      "phase": "reenter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_paused",
+      "phase": "enter_paused",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": true,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_paused",
+      "phase": "unpause_stay",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_paused",
+      "phase": "leave",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_paused",
+      "phase": "reenter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_not_ready",
+      "phase": "early_enter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": false,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": false,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": false,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": false,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": false,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_not_ready",
+      "phase": "ready_stay",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_not_ready",
+      "phase": "leave",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_not_ready",
+      "phase": "reenter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_denied",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+        {
+          "kind": "sfx",
+          "source": "res://Audio/Sound effects/M3/bump.wav",
+          "channel": "switch"
+        }
+      ]
+    },
+    {
+      "case": "bat_denied",
+      "phase": "stay",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_denied",
+      "phase": "leave",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_denied",
+      "phase": "reenter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+        {
+          "kind": "sfx",
+          "source": "res://Audio/Sound effects/M3/bump.wav",
+          "channel": "switch"
+        }
+      ]
+    },
+    {
+      "case": "body_enter_stay_reenter",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "ready": true,
+          "disabled": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_enter_stay_reenter",
+      "phase": "stay",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "ready": true,
+          "disabled": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_enter_stay_reenter",
+      "phase": "leave",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "ready": true,
+          "disabled": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_enter_stay_reenter",
+      "phase": "reenter",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "ready": true,
+          "disabled": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_paused",
+      "phase": "enter_paused",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": true,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_paused",
+      "phase": "unpause_stay",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_paused",
+      "phase": "leave",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_paused",
+      "phase": "reenter",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "ready": true,
+          "disabled": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_not_ready",
+      "phase": "early_enter",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": false,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": false,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": false,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": false,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": false,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_not_ready",
+      "phase": "ready_stay",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_not_ready",
+      "phase": "leave",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_not_ready",
+      "phase": "reenter",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "ready": true,
+          "disabled": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_denied",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+        {
+          "kind": "sfx",
+          "source": "res://Audio/Sound effects/M3/bump.wav",
+          "channel": "switch"
+        }
+      ]
+    },
+    {
+      "case": "body_denied",
+      "phase": "stay",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_denied",
+      "phase": "leave",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_denied",
+      "phase": "reenter",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+        {
+          "kind": "sfx",
+          "source": "res://Audio/Sound effects/M3/bump.wav",
+          "channel": "switch"
+        }
+      ]
+    },
+    {
+      "case": "bat_layer_0",
+      "phase": "enter",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_layer_1",
+      "phase": "enter",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_layer_2",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_layer_64",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_layer_128",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_reverse_mask",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_unmonitorable",
+      "phase": "enter",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_disabled",
+      "phase": "enter_disabled",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_disabled",
+      "phase": "enable_inside",
+      "events": [
+        {
+          "kind": "area_entered",
+          "path": "Bottom2/switch1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/switch1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "bat_disabled",
+      "phase": "stay",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": true,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_filter_0_4353",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "ready": true,
+          "disabled": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_filter_1_0",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "ready": true,
+          "disabled": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_filter_2_4353",
+      "phase": "enter",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "ready": true,
+          "disabled": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_filter_0_0",
+      "phase": "enter",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "body_filter_2_0",
+      "phase": "enter",
+      "events": [
+
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "other_body",
+      "phase": "other_enters",
+      "events": [
+        {
+          "kind": "other_entered",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    },
+    {
+      "case": "other_body",
+      "phase": "player_enters",
+      "events": [
+        {
+          "kind": "player_entered",
+          "path": "Bottom2/Plate1"
+        },
+        {
+          "kind": "switch_hit",
+          "path": "Bottom2/Plate1"
+        }
+      ],
+      "states": [
+        {
+          "path": "Bottom2/switch",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch1",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/switch2",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        },
+        {
+          "path": "Bottom2/Plate1",
+          "on": true,
+          "ready": true,
+          "disabled": true
+        },
+        {
+          "path": "Bottom2/Plate4",
+          "on": false,
+          "ready": true,
+          "disabled": false
+        }
+      ],
+      "paused": false,
+      "denied": [
+
+      ]
+    }
+  ]
+}

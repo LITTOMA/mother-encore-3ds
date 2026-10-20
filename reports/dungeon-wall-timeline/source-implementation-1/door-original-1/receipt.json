@@ -1,0 +1,29 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
+  },
+  "scope": "Original non-unit Shaker direction slice; no whole door, camera tween or scene.",
+  "source_call": {
+    "magnitude": 1.0,
+    "duration": 0.2,
+    "direction": [
+      2.0,
+      0.0
+    ]
+  },
+  "house_ir_sha256": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
+  "rows": 180,
+  "cases": 3,
+  "fixture_scope": "First case from actual door call; remaining two explicitly synthetic parameters on unchanged original Shaker. No full door state, Camera2D wrapper, audible output, viewport or hardware claim.",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "producer_sha256": "f056084e58f32653040dde06612a41063514931bd1f174a55a7048d4a9849ce3",
+  "shared_probe_sha256": "10d73c4c35d1f45aef9e152e1ecc9696b709435451eca9a9e01f1ba5de7e604a",
+  "outputs": {
+    "states.tsv": "40c55cae8a1e2d1e1805083d97694075bee2ad3b4adb2286bbe71b34204648a3",
+    "observations.json": "b89c823fc2cdc4e169a8e31badac5ba0b2bf06cbdfbc452a20eab7d3c7ecec76",
+    "input.json": "da443e8d2b986b547946e10a31ec15b6b3692fc60def9ee82172f3e04b57f325"
+  }
+}

@@ -1,0 +1,20 @@
+runtime/music_programs.cpp: In member function ‘bool encore::upstream::MusicPrograms::load(const uint8_t*, size_t, std::string&)’:
+runtime/music_programs.cpp:79:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   79 |  if(!r.okay||r.n)return bad(e,"Music program truncated/trailing payload rejected");next.valid_=true;*this=std::move(next);e.clear();return true;
+      |  ^~
+runtime/music_programs.cpp:79:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   79 |  if(!r.okay||r.n)return bad(e,"Music program truncated/trailing payload rejected");next.valid_=true;*this=std::move(next);e.clear();return true;
+      |                                                                                    ^~~~
+runtime/music_programs.cpp: In member function ‘encore::upstream::MusicProgramStep encore::upstream::MusicPrograms::evaluate(uint32_t, const std::vector<encore::upstream::MusicArgument>&, const encore::upstream::MusicSceneGraph&, const MusicPositionQuery&, encore::upstream::MusicProgramResult&, std::string&, uint32_t) const’:
+runtime/music_programs.cpp:100:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  100 |    if(!passes)pc+=i.skip;continue;
+      |    ^~
+runtime/music_programs.cpp:100:26: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  100 |    if(!passes)pc+=i.skip;continue;
+      |                          ^~~~~~~~
+runtime/music_programs.cpp:130:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  130 |   if(!okay)return MusicProgramStep::Failed;++result.changes;
+      |   ^~
+runtime/music_programs.cpp:130:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  130 |   if(!okay)return MusicProgramStep::Failed;++result.changes;
+      |                                            ^~

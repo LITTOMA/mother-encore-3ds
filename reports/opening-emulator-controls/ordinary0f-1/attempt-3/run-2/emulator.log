@@ -1,0 +1,216 @@
+[   0.205852] Service.FS <Error> core\file_sys\savedata_archive.cpp:FileSys::SaveDataArchive::OpenFile:76: Non-existing file D:\GameDev\3DS\mother-encore-3ds\build\emulator-regression\wall0f-opening-3\run-2\temporary\emulator/user/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config can't be open without mode create.
+[   0.205934] Service.FS <Error> core\file_sys\savedata_archive.cpp:FileSys::SaveDataArchive::DeleteFile:117: File not found D:\GameDev\3DS\mother-encore-3ds\build\emulator-regression\wall0f-opening-3\run-2\temporary\emulator/user/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config
+[   0.207603] Service.CFG <Error> core\hle\service\cfg\cfg.cpp:Service::CFG::Module::SaveMacAddress:1134: Cannot open mac address file for write
+[   1.784615] Service.FS <Error> core\file_sys\savedata_archive.cpp:FileSys::SaveDataArchive::OpenFile:76: Non-existing file D:\GameDev\3DS\mother-encore-3ds\build\emulator-regression\wall0f-opening-3\run-2\temporary\emulator/user/nand/data/00000000000000000000000000000000/sysdata/00010035/00000000/news.db can't be open without mode create.
+[   1.791432] Service.HTTP <Error> core\hle\service\http\http_c.cpp:Service::HTTP::HTTP_C::DecryptClCertA:2127: ClCertA file missing, using default
+[   1.865945] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateDevice::<lambda_1>::operator ():440: Extension VK_EXT_shader_stencil_export unavailable.
+[   1.865954] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateDevice::<lambda_1>::operator ():440: Extension VK_KHR_portability_subset unavailable.
+[   1.865956] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateDevice::<lambda_1>::operator ():436: Extension VK_EXT_fragment_shader_interlock has been blacklisted because it is broken on Nvidia drivers
+[   1.865957] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateDevice::<lambda_1>::operator ():436: Extension VK_EXT_pipeline_creation_cache_control has been blacklisted because it is broken on Nvidia drivers
+[   1.906593] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateFormatTable:303: Format B8G8R8Unorm unsupported, falling back unconditionally to R8G8B8A8Unorm
+[   1.906612] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateFormatTable:303: Format R5G5B5A1UnormPack16 unsupported, falling back unconditionally to R8G8B8A8Unorm
+[   1.906614] Render.Vulkan <Warning> video_core\renderer_vulkan\vk_instance.cpp:Vulkan::Instance::CreateFormatTable:303: Format R4G4B4A4UnormPack16 unsupported, falling back unconditionally to R8G8B8A8Unorm
+[   2.414280] Service.FS <Warning> core\file_sys\archive_selfncch.cpp:FileSys::ArchiveFactory_SelfNCCH::Register:255: Could not read program id when registering with SelfNCCH, this might be a 3dsx file
+[   2.424163] Core <Error> core\core.cpp:Core::System::Load:461: Failed to find title id for ROM (Error 0)
+[   3.593417] Service.SRV <Warning> core\hle\service\sm\srv.cpp:Service::SM::SRV::RegisterClient:64: (STUBBED) called. Caller PID=11
+[   3.766393] Service.APT <Warning> core\hle\service\apt\apt.cpp:Service::APT::Module::APTInterface::NotifyToWait:362: (STUBBED) app_id=768
+[   3.767400] Service <Error> core\hle\service\service.cpp:Service::ServiceFrameworkBase::ReportUnimplementedFunction:170: unknown / unimplemented function 'ConfigureNew3DSCPU': port='ptm:sysm' cmd_buf={[0]=0x8180040 (0x0818, 1, 0), [1]=0x0}
+[   3.767675] Service.APT <Warning> core\hle\service\apt\apt.cpp:Service::APT::Module::APTInterface::AppletUtility:735: (STUBBED) called command=0X00000007, input_size=0X00000004, output_size=0X00000001
+[   3.767807] Service.APT <Warning> core\hle\service\apt\apt.cpp:Service::APT::Module::APTInterface::AppletUtility:735: (STUBBED) called command=0X00000004, input_size=0X00000001, output_size=0X00000001
+[   3.802345] Service.FS <Error> core/file_sys/archive_backend.h:FileSys::ArchiveBackend::GetOpenDelayNs:221: Delay generator was not initalized. Using default
+[   3.837467] Service.FS <Warning> core\file_sys\archive_ncch.cpp:FileSys::NCCHArchive::OpenFile:187: Shared Font file missing. Loading open source replacement from memory
+[   7.791249] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=0 resource=room-metadata elapsed_ms=66.790 ok=1
+
+[   7.801955] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=1 resource=font-metadata elapsed_ms=22.808 ok=1
+
+[   7.854431] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=2 resource=battle-metadata elapsed_ms=75.891 ok=1
+
+[   7.971305] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=ui-font-only linear_free=30565120 locale_font_bytes=0
+
+[   7.971614] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=3 resource=ui-font-textures elapsed_ms=110.309 ok=1
+
+[   7.992529] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=4 resource=round-metadata elapsed_ms=16.787 ok=1
+
+[   8.072620] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=5 resource=house-metadata elapsed_ms=79.584 ok=1
+
+[   8.085183] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=6 resource=item-metadata elapsed_ms=3.922 ok=1
+
+[   8.095274] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=7 resource=item-details-metadata elapsed_ms=1.666 ok=1
+
+[   8.276899] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=8 resource=field-equipment-metadata elapsed_ms=202.968 ok=1
+
+[  11.666538] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=locale-admitted linear_free=30434048 locale_font_bytes=131072
+
+[  12.312638] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=9 resource=menus-localization-session elapsed_ms=3934.682 ok=1
+
+[  12.313674] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=10 resource=inventory elapsed_ms=0.005 ok=1
+
+[  12.314316] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=11 resource=item-menu elapsed_ms=0.032 ok=1
+
+[  12.324981] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=12 resource=storage-metadata elapsed_ms=4.530 ok=1
+
+[  12.325775] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=13 resource=storage-state elapsed_ms=0.002 ok=1
+
+[  12.327189] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=14 resource=input-metadata elapsed_ms=0.730 ok=1
+
+[  12.327829] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=15 resource=input-adapter elapsed_ms=0.002 ok=1
+
+[  12.424208] Service.DSP <Warning> core\hle\service\dsp\dsp_dsp.cpp:Service::DSP::DSP_DSP::GetSemaphoreEventHandle:275: (STUBBED) called
+[  12.424293] Service.DSP <Warning> core\hle\service\dsp\dsp_dsp.cpp:Service::DSP::DSP_DSP::SetSemaphoreMask:285: (STUBBED) called mask=0x2000
+[  12.458968] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=16 resource=audio-stream-backend elapsed_ms=159.070 ok=1
+
+[  12.470113] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=17 resource=task elapsed_ms=1.597 ok=1
+
+[  12.726581] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=18 resource=task elapsed_ms=266.969 ok=1
+
+[  12.751619] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=19 resource=task elapsed_ms=22.926 ok=1
+
+[  12.975688] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=20 resource=task elapsed_ms=217.275 ok=1
+
+[  12.996589] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=21 resource=task elapsed_ms=0.032 ok=1
+
+[  23.673278] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting game task=22 resource=title-audio elapsed_ms=10681.919 ok=1
+
+[  23.674041] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_STARTUP_READY elapsed_ms=19785.481
+
+[  24.992866] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=locale-admitted linear_free=27440896 locale_font_bytes=655360
+
+[  26.941461] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=before-title-release linear_free=27440896 locale_font_bytes=655360
+
+[  26.941724] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=title-released linear_free=28104704 locale_font_bytes=655360
+
+[  27.082649] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=ui-font-only linear_free=28104704 locale_font_bytes=655360
+
+[  30.526709] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing naming task=0 resource=task elapsed_ms=3436.988 ok=1
+
+[  30.527309] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=naming-loaded linear_free=18625536 locale_font_bytes=655360
+
+[  40.975121] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing sound task=0 resource=pcm-validation elapsed_ms=10445.264 ok=1
+
+[  42.712890] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing title task=0 resource=task elapsed_ms=309.525 ok=1
+
+[  42.945409] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing title task=1 resource=task elapsed_ms=217.277 ok=1
+
+[  42.962446] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing title task=2 resource=task elapsed_ms=0.032 ok=1
+
+[  43.080032] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=before-title-release linear_free=27440896 locale_font_bytes=655360
+
+[  43.080081] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=title-released linear_free=28104704 locale_font_bytes=655360
+
+[  43.245816] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=ui-font-only linear_free=28104704 locale_font_bytes=655360
+
+[  46.688869] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing naming task=0 resource=task elapsed_ms=3435.137 ok=1
+
+[  46.688887] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=naming-loaded linear_free=18625536 locale_font_bytes=655360
+
+[  56.431149] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing introduction audio task=0 resource=introduction-pcm-admission elapsed_ms=1.131 ok=1
+
+[  56.431495] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing introduction audio task=1 resource=introduction-pcm-admission elapsed_ms=3.651 ok=1
+
+[  56.467595] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing introduction audio task=2 resource=introduction-pcm-admission elapsed_ms=47.852 ok=1
+
+[  56.617421] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing introduction audio task=3 resource=introduction-pcm-admission elapsed_ms=152.313 ok=1
+
+[  59.143269] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=naming-released linear_free=23779328 locale_font_bytes=655360
+
+[  66.551237] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting named game task=0 resource=task elapsed_ms=15.411 ok=1
+
+[  66.580581] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Starting named game task=1 resource=task elapsed_ms=33.449 ok=1
+
+[  67.650620] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing house graphics task=0 resource=player-atlases elapsed_ms=1065.056 ok=1
+
+[  71.142824] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing house graphics task=1 resource=room-atlases elapsed_ms=3500.484 ok=1
+
+[  71.293335] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing house graphics task=2 resource=house-atlases elapsed_ms=151.643 ok=1
+
+[  71.510416] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing house graphics task=3 resource=item-atlases elapsed_ms=205.705 ok=1
+
+[  80.720146] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing house graphics task=4 resource=house-audio elapsed_ms=9224.464 ok=1
+
+[  91.605461] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_BATTLE_PREWARM phase=ready path=romfs:/battle/lamp/opening.encbattle elapsed_ms=10880 pack_ms=19.485 resource_ms=3942.225 background_ms=1704.681 max_gpu_ms=1.696 gpu_steps=153 commit_ms=0.000 linear_free=7793024 late=0 max_frame_gap_ms=0 cpu_retained=6393420 cpu_peak=13877244
+
+[  95.078516] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_BATTLE_PREWARM phase=ready path=romfs:/battle/doll/doll-entry.encbattle elapsed_ms=3458 pack_ms=71.635 resource_ms=36.070 background_ms=2631.315 max_gpu_ms=16.823 gpu_steps=4 commit_ms=0.000 linear_free=5133056 late=0 max_frame_gap_ms=0 cpu_retained=10973580 cpu_peak=12933119
+
+[  95.863539] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_BATTLE_PREWARM phase=ready path=romfs:/battle/pillow/pillow-entry.encbattle elapsed_ms=756 pack_ms=70.488 resource_ms=35.060 background_ms=500.423 max_gpu_ms=19.981 gpu_steps=4 commit_ms=0.000 linear_free=3521664 late=0 max_frame_gap_ms=0 cpu_retained=6403609 cpu_peak=6894335
+
+[  95.930956] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_ENCOUNTER_SCENE_READY epoch=1 candidates=3 heap_used=26071664 heap_total=93900800 linear_free=3521664 elapsed_ms=15197
+
+[  97.453640] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing equipment menu task=0 resource=equipment-textures elapsed_ms=34.477 ok=1
+
+[  97.601918] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing equipment menu task=1 resource=equipment-number-font elapsed_ms=158.794 ok=1
+
+[  97.602197] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing equipment menu task=2 resource=item-details-texture elapsed_ms=0.001 ok=1
+
+[  97.752048] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing equipment menu task=3 resource=equipment-sounds elapsed_ms=151.673 ok=1
+
+[ 108.739425] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_BATTLE_ENTRY path=romfs:/battle/lamp/opening.encbattle commit_ms=0.237 retained=2 linear_free=3369856 load_activity=0
+
+[ 114.284420] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing sound task=0 resource=pcm-validation elapsed_ms=6.754 ok=1
+
+[ 116.542004] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing sound task=0 resource=pcm-validation elapsed_ms=8.235 ok=1
+
+[ 118.464142] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing sound task=0 resource=pcm-validation elapsed_ms=10.008 ok=1
+
+[ 124.779802] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing sound task=0 resource=pcm-validation elapsed_ms=18.654 ok=1
+
+[ 134.189614] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing sound task=0 resource=pcm-validation elapsed_ms=16.847 ok=1
+
+[ 135.244330] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing sound task=0 resource=pcm-validation elapsed_ms=12.028 ok=1
+
+[ 149.285068] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_BATTLE_ENTRY path=romfs:/battle/doll/doll-entry.encbattle commit_ms=0.318 retained=2 linear_free=3320704 load_activity=0
+
+[ 248.501618] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing sound task=0 resource=pcm-validation elapsed_ms=73.059 ok=1
+
+[ 308.793799] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering field task=0 resource=source-state elapsed_ms=27.044 ok=1
+
+[ 336.369282] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering field task=1 resource=field-metadata elapsed_ms=27575.586 ok=1
+
+[ 336.538508] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering field task=2 resource=field-scene elapsed_ms=150.210 ok=1
+
+[ 336.575288] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering field task=3 resource=field-actors elapsed_ms=8.343 ok=1
+
+[ 336.585337] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=field-before-source-release linear_free=2847616 locale_font_bytes=655360
+
+[ 336.588595] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=ui-font-only linear_free=25054208 locale_font_bytes=655360
+
+[ 336.588632] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=field-battle-retired linear_free=25054208 locale_font_bytes=655360
+
+[ 339.529016] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering field task=4 resource=field-atlases elapsed_ms=2965.863 ok=1
+
+[ 339.535923] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=field-graphics-ready linear_free=16988672 locale_font_bytes=655360
+
+[ 342.804652] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering house task=0 resource=house-scene elapsed_ms=112.464 ok=1
+
+[ 342.808759] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing house graphics task=0 resource=player-atlases elapsed_ms=0.001 ok=1
+
+[ 346.266037] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing house graphics task=1 resource=room-atlases elapsed_ms=3468.364 ok=1
+
+[ 346.364680] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing house graphics task=2 resource=house-atlases elapsed_ms=86.970 ok=1
+
+[ 346.665647] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing house graphics task=3 resource=item-atlases elapsed_ms=297.508 ok=1
+
+[ 346.666611] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Preparing house graphics task=4 resource=house-audio elapsed_ms=8.690 ok=1
+
+[ 346.668089] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_BATTLE_PREWARM phase=cancel path=romfs:/battle/straydog/bridge.encbattle elapsed_ms=6356 pack_ms=141.397 resource_ms=5528.868 background_ms=0.000 max_gpu_ms=0.000 gpu_steps=0 commit_ms=0.000 linear_free=14746112 late=0 max_frame_gap_ms=285 cpu_retained=0 cpu_peak=14228463
+
+[ 357.012031] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_BATTLE_PREWARM phase=ready path=romfs:/battle/lamp/opening.encbattle elapsed_ms=10332 pack_ms=19.433 resource_ms=3940.577 background_ms=1705.478 max_gpu_ms=1.694 gpu_steps=153 commit_ms=0.000 linear_free=7118720 late=0 max_frame_gap_ms=0 cpu_retained=6393420 cpu_peak=13878087
+
+[ 360.037923] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_BATTLE_PREWARM phase=ready path=romfs:/battle/doll/doll-entry.encbattle elapsed_ms=2959 pack_ms=20.696 resource_ms=86.909 background_ms=2634.792 max_gpu_ms=16.713 gpu_steps=4 commit_ms=0.000 linear_free=4459008 late=0 max_frame_gap_ms=0 cpu_retained=10973580 cpu_peak=12933962
+
+[ 360.823407] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_BATTLE_PREWARM phase=ready path=romfs:/battle/pillow/pillow-entry.encbattle elapsed_ms=756 pack_ms=20.121 resource_ms=86.076 background_ms=447.127 max_gpu_ms=19.982 gpu_steps=4 commit_ms=0.000 linear_free=2847616 late=0 max_frame_gap_ms=0 cpu_retained=6403609 cpu_peak=6895178
+
+[ 360.856688] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_ENCOUNTER_SCENE_READY epoch=3 candidates=3 heap_used=28400304 heap_total=93900800 linear_free=2847616 elapsed_ms=14176
+
+[ 360.856955] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering house task=1 resource=house-atlases elapsed_ms=18043.229 ok=1
+
+[ 362.209741] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering field task=0 resource=source-state elapsed_ms=27.092 ok=1
+
+[ 363.095150] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering field task=1 resource=field-metadata elapsed_ms=885.401 ok=1
+
+[ 363.214116] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering field task=2 resource=field-scene elapsed_ms=99.188 ok=1
+
+[ 363.297638] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_LOAD_TASK scope=Entering field task=3 resource=field-actors elapsed_ms=8.341 ok=1
+
+[ 363.297883] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=field-before-source-release linear_free=2847616 locale_font_bytes=655360
+
+[ 363.298358] Debug.Emulated <Debug> core\hle\kernel\svc.cpp:Kernel::SVC::OutputDebugString:1189: ENCORE_TEXTURE_OWNER phase=ui

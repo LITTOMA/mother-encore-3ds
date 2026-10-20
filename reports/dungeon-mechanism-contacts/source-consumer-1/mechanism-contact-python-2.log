@@ -1,0 +1,30 @@
+test_changed_frozen_outputs_and_source_commit_are_rejected (tests.test_dungeon_mechanism_contacts.DungeonMechanismContacts.test_changed_frozen_outputs_and_source_commit_are_rejected) ... ok
+test_native_replays_are_identical_and_sources_remain_fixed (tests.test_dungeon_mechanism_contacts.DungeonMechanismContacts.test_native_replays_are_identical_and_sources_remain_fixed) ... ok
+test_shape_filter_and_contact_outcomes_are_retained (tests.test_dungeon_mechanism_contacts.DungeonMechanismContacts.test_shape_filter_and_contact_outcomes_are_retained) ... ok
+test_source_body_matches_existing_shared_core_hull (tests.test_dungeon_mechanism_contacts.DungeonMechanismContacts.test_source_body_matches_existing_shared_core_hull) ... ok
+Python method partition: 2 discovered = 2 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 1/2: 1 methods; whole modules and every original assertion retained
+test_actual_two_shard_execution_includes_unreviewed_module_once (tests.test_python_shards.PythonShards.test_actual_two_shard_execution_includes_unreviewed_module_once) ... test_run (test_shard_demo_alpha.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+Python method partition: 2 discovered = 2 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 2/2: 1 methods; whole modules and every original assertion retained
+test_run (test_shard_demo_future_writer.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+ok
+test_exact_actual_ctest_registration_and_legacy_command (tests.test_python_shards.PythonShards.test_exact_actual_ctest_registration_and_legacy_command) ... ok
+test_exact_multiset_whole_modules_order_and_determinism (tests.test_python_shards.PythonShards.test_exact_multiset_whole_modules_order_and_determinism) ... ok
+test_legacy_one_empty_and_invalid_counts_or_duplicate_ids (tests.test_python_shards.PythonShards.test_legacy_one_empty_and_invalid_counts_or_duplicate_ids) ... ok
+test_missing_duplicate_unknown_changed_shards_and_arguments_reject (tests.test_python_shards.PythonShards.test_missing_duplicate_unknown_changed_shards_and_arguments_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.028s
+
+OK

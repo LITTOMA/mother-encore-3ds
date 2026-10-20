@@ -3,7 +3,7 @@
   "name": "opening_rewards_and_continuous_movement",
   "reference": {
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
-    "scope": "Pinned source contracts and independently executed Godot Pause/PSI methods; START/SELECT mapping is the declared 3DS adaptation. Covers normal startup/menu safety, excludes full game and learned PSI target effects.; Normal Lamp victory inputs and physical route to locked basement door. RNG remains original clock-seeded; HP and walking coordinates are recorded with source-route intervals, not equated across runs.; natural Doll room entry, battle and learned level-2 Telepathy; no injected flags, inventory or RNG.",
+    "scope": "Pinned source contracts and independently executed Godot Pause/PSI methods; START/SELECT mapping is the declared 3DS adaptation. Covers normal startup/menu safety, excludes full game and learned PSI target effects.; Normal Lamp victory inputs and physical route to locked basement door. RNG remains original clock-seeded; HP and walking coordinates are recorded with source-route intervals, not equated across runs.; natural Doll room entry, battle and learned level-2 Telepathy; no injected flags, inventory or RNG.; Current 3DS factory Run/Crouch binding is X in the checked FieldMenus resource. Walk back outside the trigger before running north: original ram checks on body_entered. Progression targets and all existing expected outcomes are unchanged.",
     "sources": {
       "Scripts/UI/PSIMenuUI.gd": "988484bff6163bd514de96cf231163939d1a35b7c6d1ebb08dd9cc5c259fac29",
       "Scripts/UI/PSISelect.gd": "f9214e3146d03d71f1f73442e22d04d167703ef5530bbbc9f68f5a937e89aeb2",
@@ -16,7 +16,8 @@
       "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
       "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
       "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
-      "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": "50ed3ecac93141f5ddbd1c3928dc8e5a1cb9ed8c34ce294f6a94a972720f2cba"
+      "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": "50ed3ecac93141f5ddbd1c3928dc8e5a1cb9ed8c34ce294f6a94a972720f2cba",
+      "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
     }
   },
   "projection": [
@@ -544,10 +545,26 @@
       }
     },
     {
+      "name": "sister_runup_space",
+      "buttons": [
+        "DOWN"
+      ],
+      "wait": {
+        "world_stage": 0,
+        "paused": 0
+      },
+      "hold_until": {
+        "player_y": {
+          "min": 389,
+          "max": 393
+        }
+      }
+    },
+    {
       "name": "sister_ram",
       "buttons": [
         "UP",
-        "B"
+        "X"
       ],
       "wait": {
         "world_stage": 1

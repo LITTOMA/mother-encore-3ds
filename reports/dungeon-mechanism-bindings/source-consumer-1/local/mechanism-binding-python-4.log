@@ -1,0 +1,26 @@
+test_all_truncations_version_capability_pin_and_spans_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_all_truncations_version_capability_pin_and_spans_reject) ... ok
+test_binary_binding_identity_role_coverage_and_alias_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_binary_binding_identity_role_coverage_and_alias_reject) ... ok
+test_binary_profile_kind_span_and_nested_versions_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_binary_profile_kind_span_and_nested_versions_reject) ... ok
+test_duplicate_json_and_unsafe_candidate_output_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_duplicate_json_and_unsafe_candidate_output_reject) ... ok
+test_exact_source_join_and_independent_resource (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_exact_source_join_and_independent_resource) ... ok
+test_original_effective_child_order_and_duplicate_owner_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_original_effective_child_order_and_duplicate_owner_reject) ... ok
+test_review_dependency_and_structural_types_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_review_dependency_and_structural_types_reject) ... ok
+test_review_schema_pin_and_fields_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_review_schema_pin_and_fields_reject) ... ok
+test_review_source_roles_profile_and_owner_mismatches_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_review_source_roles_profile_and_owner_mismatches_reject) ... ok
+test_changed_frozen_bytes_reject_before_candidate_write (tests.test_dungeon_mechanism_fixture.MechanismFixture.test_changed_frozen_bytes_reject_before_candidate_write) ... ok
+test_exact_frozen_projection_and_binary (tests.test_dungeon_mechanism_fixture.MechanismFixture.test_exact_frozen_projection_and_binary) ... ok
+test_unknown_frame_action_with_valid_test_digests_rejects (tests.test_dungeon_mechanism_fixture.MechanismFixture.test_unknown_frame_action_with_valid_test_digests_rejects) ... ok
+test_unsafe_fixture_root_rejected (tests.test_dungeon_mechanism_fixture.MechanismFixture.test_unsafe_fixture_root_rejected) ... ok
+test_wrong_original_engine_with_valid_test_digests_rejects (tests.test_dungeon_mechanism_fixture.MechanismFixture.test_wrong_original_engine_with_valid_test_digests_rejects) ... ok
+test_wrong_producer_with_valid_test_digest_rejects (tests.test_dungeon_mechanism_fixture.MechanismFixture.test_wrong_producer_with_valid_test_digest_rejects) ... ok
+test_missing_core_and_fixture_substitutions_reject (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_missing_core_and_fixture_substitutions_reject) ... ok
+test_playable_sources_registered_in_both_builds (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_playable_sources_registered_in_both_builds) ... ok
+test_unknown_and_duplicate_source_expressions_reject (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_unknown_and_duplicate_source_expressions_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 12.763s
+
+OK
+Mechanism binding candidate: 4060 bytes; 14 source-ordered owners; 4 profiles; no scene/media/save admission
+Combined reference projected:232 steps,14 source owners,explicit native idle/timer boundary; no synthesized animation completion.
+Mechanism binding candidate: 4060 bytes; 14 source-ordered owners; 4 profiles; no scene/media/save admission

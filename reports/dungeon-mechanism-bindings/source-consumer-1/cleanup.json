@@ -1,0 +1,16 @@
+{
+  "scope": "Only two superseded first-pass native test executables; exact raw compile/run logs and final two executables retained.",
+  "files": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-binding-native-1\\check",
+      "bytes": 4820016,
+      "sha256": "a86b93930d0a96e35d683fce54f3b467404a45dd17e82a5343bdc1dd6234ceb7"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-state-native-1\\check",
+      "bytes": 12921648,
+      "sha256": "4ebc0ba4dd7ded846a5cea79d05a2f398a8e3411804c987f9e1683f50ec47704"
+    }
+  ],
+  "total_bytes": 17741664
+}

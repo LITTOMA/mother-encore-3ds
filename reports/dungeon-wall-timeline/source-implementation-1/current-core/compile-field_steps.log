@@ -1,0 +1,7 @@
+runtime/field_steps.cpp: In member function ‘bool encore::upstream::FieldStepsData::load(const uint8_t*, size_t, std::string&)’:
+runtime/field_steps.cpp:35:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   35 |  if(cursor!=n)return fail("Footstep trailing bytes rejected");FieldStepsView v;v.p_=p;
+      |  ^~
+runtime/field_steps.cpp:35:63: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   35 |  if(cursor!=n)return fail("Footstep trailing bytes rejected");FieldStepsView v;v.p_=p;
+      |                                                               ^~~~~~~~~~~~~~

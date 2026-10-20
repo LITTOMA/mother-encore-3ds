@@ -110,3 +110,12 @@ historical comparisons, producer invocations and current checks are retained
 in reports/iggy-tutorial/music-source-dependency-fix. A new full run must
 independently accept the current commit; this is not a hardware or complete
 game verification claim.
+
+That follow-up acceptance is now complete:2a9a340's full run39385216938 passes
+GCC275 ordinary/259 ASan+UBSan, Clang259 ordinary/259 ASan+UBSan, genuine3DSX/CIA
+and377 packaged resources (artifact12247222836). Its runtime/include/platform/
+content/romfs diff from the61ea ordinary-input game is empty. With separate user
+authorization, PR69 was marked ready and merged with history preserved as
+main431545c58d14b8586bbaffd84d48a29b9762bba7. Current acceptance logs are retained
+under reports/iggy-tutorial/root2a9-full-acceptance. This does not extend the
+recorded emulator scope to natural opening, hard hint, audibility or hardware.

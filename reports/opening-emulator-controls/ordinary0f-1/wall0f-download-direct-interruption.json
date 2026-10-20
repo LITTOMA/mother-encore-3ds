@@ -1,0 +1,6 @@
+{
+  "reason": "Owned artifact download has produced no destination or output after repeated waits; retry through the local proxy already used for repository networking.",
+  "pid": 43724,
+  "interrupted_at": "2026-10-20T11:32:46.3180735Z",
+  "destination_created": false
+}

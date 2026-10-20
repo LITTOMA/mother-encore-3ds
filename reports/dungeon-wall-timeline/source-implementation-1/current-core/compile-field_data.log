@@ -1,0 +1,39 @@
+runtime/field_data.cpp: In function ‘bool encore::upstream::{anonymous}::utf8(const uint8_t*, size_t)’:
+runtime/field_data.cpp:23:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   23 |     if(extra>n-i)return false;while(extra--){const auto b=p[i++];if((b&0xc0)!=0x80)return false;c=(c<<6)|(b&63);}
+      |     ^~
+runtime/field_data.cpp:23:31: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   23 |     if(extra>n-i)return false;while(extra--){const auto b=p[i++];if((b&0xc0)!=0x80)return false;c=(c<<6)|(b&63);}
+      |                               ^~~~~
+runtime/field_data.cpp: In function ‘bool encore::upstream::{anonymous}::safe_path(std::string_view, bool)’:
+runtime/field_data.cpp:27:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   27 |     for(unsigned char ch:s)if(ch<(source?32:33)||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |     ^~~
+runtime/field_data.cpp:27:70: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   27 |     for(unsigned char ch:s)if(ch<(source?32:33)||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |                                                                      ^~
+runtime/field_data.cpp: In member function ‘bool encore::upstream::FieldMapData::load(const uint8_t*, size_t, std::string&)’:
+runtime/field_data.cpp:165:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  165 |             if(it.first>=layers||it.count!=1||(v.layer(it.first).flags&uint32_t(FieldLayerFlag::YSort)))return fail("Field map layer item rejected");break;
+      |             ^~
+runtime/field_data.cpp:165:150: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  165 |             if(it.first>=layers||it.count!=1||(v.layer(it.first).flags&uint32_t(FieldLayerFlag::YSort)))return fail("Field map layer item rejected");break;
+      |                                                                                                                                                      ^~~~~
+runtime/field_data.cpp:167:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  167 |             if(it.first>=layers||it.count!=1||!(v.layer(it.first).flags&uint32_t(FieldLayerFlag::YSort)))return fail("Field map sorted layer item rejected");break;
+      |             ^~
+runtime/field_data.cpp:167:158: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  167 |             if(it.first>=layers||it.count!=1||!(v.layer(it.first).flags&uint32_t(FieldLayerFlag::YSort)))return fail("Field map sorted layer item rejected");break;
+      |                                                                                                                                                              ^~~~~
+runtime/field_data.cpp:169:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  169 |             if(!it.count||it.first>sprites||it.count>sprites-it.first)return fail("Field map sprite item rejected");break;
+      |             ^~
+runtime/field_data.cpp:169:117: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  169 |             if(!it.count||it.first>sprites||it.count>sprites-it.first)return fail("Field map sprite item rejected");break;
+      |                                                                                                                     ^~~~~
+runtime/field_data.cpp:171:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  171 |             if(it.first||it.count)return fail("Field map player item rejected");++players;break;
+      |             ^~
+runtime/field_data.cpp:171:81: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  171 |             if(it.first||it.count)return fail("Field map player item rejected");++players;break;
+      |                                                                                 ^~

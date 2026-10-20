@@ -1,0 +1,29 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/misc/wall door.gd": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a",
+    "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3"
+  },
+  "scope": "Original Shaker math/RNG slice, manually stepped; not a scene or camera tween oracle.",
+  "cases": 10,
+  "rows": 845,
+  "frames_with_multiple_direction_attempts": 45,
+  "source_unchanged_except": "Two exact rand_range call sites forward to GLOBAL builtin with raw-stream mirror; add runner reference. All Shaker methods otherwise unchanged.",
+  "boundaries": [
+    "Explicit manual Shaker physics, no automatic physics/timer dispatch",
+    "Node2D property adapter; no full Camera2D script, recovery tween or idle completion signal",
+    "No live scene, audio, viewport, release integration or hardware claim"
+  ],
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "tool_sha256": "a10222a21f0b481c8d6df68af09ba96134aae41e07d238f232dc258ab85f26d4",
+  "files": {
+    "states.tsv": "cdfa69e063b89e26082ae3b6fb6698f673d11cdec192599ad6fa417da54fc12e",
+    "observations.json": "19aed2fe6bbd26eea4e766b8cde9e453a59490b8d8c060920a5de42c11e2c2b8",
+    "input.json": "2931efcc77f3362890a7f1fa0f2ba480de2422d11b7fe0e2a04142e3826f3ab7",
+    "source-shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "shaker.gd": "add513c09d85ee12d344286ea2fc0996777304786e7ff5b940a514d0be90c0c5",
+    "probe.gd": "8b4999c0d950fff07e0cd693aabaa0ecdd2adb4d2aa45cad30b3bc519bce057c"
+  }
+}

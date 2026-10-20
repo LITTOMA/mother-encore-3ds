@@ -1,0 +1,7 @@
+runtime/storage_data.cpp: In member function ‘bool encore::upstream::StorageData::load(const uint8_t*, size_t, std::string&)’:
+runtime/storage_data.cpp:34:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   34 |  for(size_t i=52;i<64;++i)if(p[i])return reject(e,"Storage reserved header rejected");bool pin=false;for(size_t i=32;i<52;++i)pin|=p[i]!=0;if(!pin)return reject(e,"Storage missing reviewed source pin");
+      |  ^~~
+runtime/storage_data.cpp:34:87: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   34 |  for(size_t i=52;i<64;++i)if(p[i])return reject(e,"Storage reserved header rejected");bool pin=false;for(size_t i=32;i<52;++i)pin|=p[i]!=0;if(!pin)return reject(e,"Storage missing reviewed source pin");
+      |                                                                                       ^~~~

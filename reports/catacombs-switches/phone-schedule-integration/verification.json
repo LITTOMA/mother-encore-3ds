@@ -1,0 +1,17 @@
+{
+  "parents": [
+    "fbbc25ed98e86d85a9f8d687127d053e46a40957",
+    "6e245cdd5b7c89cd7db047bdfb035abdded4666b"
+  ],
+  "scope": "Feature-to-feature integration of PR69 test schedule repair into dependent PR71; main/origin-main untouched. No game source/resource change versus fbbc25e.",
+  "conflicts": "Only docs/STATUS.md overlapping progress entries; preserved both.",
+  "verification": "Actual Windows CMake configuration and279CTest metadata.1283Python=900aggregate383dedicated; exact17phone methods moved,1partition regression added, all dungeon methods retained. No Windows native execution or complete merged CI pass inferred.",
+  "evidence_sha256": {
+    "catacombs-phone-merge-cmake-1.log": "ddae78c05f10849104b8dff307668ba3a48934c2d00760e2a581cc17e22a0762",
+    "catacombs-phone-merge-collection-1.log": "a99ea5d6c449531141e19c15fc353f68047624494e6b9921ded223ae2bf1c409",
+    "catacombs-phone-merge-ctest-1.json": "c46e5a957a1e7e6f3579ead25bde5f0c09f11cd0e40aa4c235f3aac9957a6359",
+    "catacombs-phone-merge-plan-1.json": "5b3099cabde44bf78b5a3e60c808d5221f16767c62dc290ff3c74860a37e1b3f",
+    "collect-catacombs-phone-merge.py": "fde2633ac86d95cfafac2dd17ea31190a17c842b4750435466396ba9857a432f",
+    "retain-catacombs-phone-merge.py": "aad413acba608bdf7ddc8490448c885de2573d2a51dd29bb90af4a459536baea"
+  }
+}

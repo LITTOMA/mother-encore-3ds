@@ -1,0 +1,11 @@
+test_exact_source_scripts_and_explicit_adapters (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_exact_source_scripts_and_explicit_adapters) ... ok
+test_native_timeline_requests_and_flag_only_reset (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_native_timeline_requests_and_flag_only_reset) ... ok
+test_original_independent_camera_and_wall_continuations (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_original_independent_camera_and_wall_continuations) ... ok
+test_pinned_source_producer_and_engine (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_pinned_source_producer_and_engine) ... ok
+test_two_runs_have_exact_complete_projection (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_two_runs_have_exact_complete_projection) ... ok
+test_unsafe_existing_output_or_missing_engine_rejected (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_unsafe_existing_output_or_missing_engine_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.016s
+
+OK

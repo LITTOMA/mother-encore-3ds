@@ -1,0 +1,40 @@
+{
+  "commit": "2a9a340be8602dbd610d5a66da2f707c3afc2bf1",
+  "run": 39385216938,
+  "gcc": {
+    "job": 118503325314,
+    "ordinary": 275,
+    "asan_ubsan": 259
+  },
+  "clang": {
+    "job": 118503325103,
+    "ordinary": 259,
+    "asan_ubsan": 259
+  },
+  "console": {
+    "job": 118503324646,
+    "resources": 377,
+    "artifact": 12247222836
+  },
+  "merge": {
+    "pr": 69,
+    "user_separate_authorization": true,
+    "commit": "431545c58d14b8586bbaffd84d48a29b9762bba7"
+  },
+  "game_diff_61ea_to_2a9": "runtime/include/platform/content/romfs empty; historical ordinary-input game remains explicitly61ea",
+  "result": "all observed full jobs successful",
+  "files": {
+    "root2a9-gcc.log": {
+      "bytes": 848135,
+      "sha256": "3039b707701e49550213a1a67dcace2b0430fbeda94356772585efa304afd33d"
+    },
+    "root2a9-clang.log": {
+      "bytes": 593294,
+      "sha256": "54fc031fbdf15c99a54b2d690fc1ba5e5abcbaec4a09dfb1417faf16c4eb1440"
+    },
+    "root2a9-console.log": {
+      "bytes": 702704,
+      "sha256": "37e31b8e0599cd6b7c71b92ca843541449bfddf0bd6da673fbef7916584bbdf7"
+    }
+  }
+}

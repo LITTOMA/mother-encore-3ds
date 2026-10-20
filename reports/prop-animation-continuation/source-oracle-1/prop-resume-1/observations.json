@@ -1,0 +1,3249 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "file": "lever.encpcl",
+      "index": 0,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 1,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 2,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 3,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 4,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 5,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 6,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 7,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00075000000651930",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 8,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "0.00100000004749750",
+      "completed": [
+        "RESET"
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 9,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 10,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 11,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00040000001899900",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 12,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 13,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 14,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 15,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 16,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 17,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 18,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "0.00100000004749750",
+      "completed": [
+        "RESET"
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 19,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 20,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 21,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 22,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 23,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 24,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 25,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 26,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 27,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 28,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.75000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 29,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "1.00000000000000000",
+      "completed": [
+        "TurnOff"
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 30,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 31,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 32,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.40000000596046450",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 33,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 34,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 35,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 36,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 37,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 38,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 39,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "1.00000000000000000",
+      "completed": [
+        "TurnOff"
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 40,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 41,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 42,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 43,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 44,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 45,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 46,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 47,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 48,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 49,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.75000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 50,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "1.00000000000000000",
+      "completed": [
+        "TurnOn"
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 51,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 52,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 53,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.40000000596046450",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 54,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 55,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 56,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 57,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 58,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 59,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 60,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "1.00000000000000000",
+      "completed": [
+        "TurnOn"
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 61,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "lever.encpcl",
+      "index": 62,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 0,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 1,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 2,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 3,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 4,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 5,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 6,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 7,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00075000000651930",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 8,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "0.00100000004749750",
+      "completed": [
+        "RESET"
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 9,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 10,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 11,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00040000001899900",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 12,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 13,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 14,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 15,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 16,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 17,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 18,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "0.00100000004749750",
+      "completed": [
+        "RESET"
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 19,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 20,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 21,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 22,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 23,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 24,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 25,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 26,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 27,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 28,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.75000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 29,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "1.00000000000000000",
+      "completed": [
+        "TurnOff"
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 30,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 31,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 32,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.40000000596046450",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 33,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 34,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 35,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 36,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 37,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 38,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 39,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "1.00000000000000000",
+      "completed": [
+        "TurnOff"
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 40,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 41,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 42,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 43,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 44,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 45,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 46,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 47,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 48,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.50000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 49,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.75000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 50,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "1.00000000000000000",
+      "completed": [
+        "TurnOn"
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 51,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 52,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 53,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.40000000596046450",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 54,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 55,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 56,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 57,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 58,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 59,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 60,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "1.00000000000000000",
+      "completed": [
+        "TurnOn"
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 61,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "plate.encpcl",
+      "index": 62,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "TurnOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 0,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 1,
+      "op": "advance",
+      "frame": 4,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.12500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 2,
+      "op": "play",
+      "frame": 4,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.12500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 3,
+      "op": "advance",
+      "frame": 4,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.12500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 4,
+      "op": "advance",
+      "frame": 3,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 5,
+      "op": "play",
+      "frame": 3,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 6,
+      "op": "advance",
+      "frame": 2,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 7,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.37500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 8,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "0.50000000000000000",
+      "completed": [
+        "Off"
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 9,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 10,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 11,
+      "op": "advance",
+      "frame": 3,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.20000000298023220",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 12,
+      "op": "play",
+      "frame": 3,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "On",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 13,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 14,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "Off",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 15,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 16,
+      "op": "advance",
+      "frame": 4,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.12500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 17,
+      "op": "play",
+      "frame": 4,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.12500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 18,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "0.50000000000000000",
+      "completed": [
+        "Off"
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 19,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 20,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 21,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "On",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 22,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "On",
+      "position": "0.12500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 23,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "On",
+      "position": "0.12500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 24,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.12500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 25,
+      "op": "advance",
+      "frame": 2,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 26,
+      "op": "play",
+      "frame": 2,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 27,
+      "op": "advance",
+      "frame": 3,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.25000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 28,
+      "op": "advance",
+      "frame": 4,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.37500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 29,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "0.50000000000000000",
+      "completed": [
+        "On"
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 30,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 31,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 32,
+      "op": "advance",
+      "frame": 2,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.20000000298023220",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 33,
+      "op": "play",
+      "frame": 2,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 34,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 35,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 36,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 37,
+      "op": "advance",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.12500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 38,
+      "op": "play",
+      "frame": 1,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.12500000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 39,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "0.50000000000000000",
+      "completed": [
+        "On"
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 40,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 41,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "On",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 42,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 43,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 44,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 45,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 46,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 47,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 48,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 49,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00075000000651930",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 50,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "0.00100000004749750",
+      "completed": [
+        "RESET"
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 51,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 52,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 53,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00040000001899900",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 54,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 55,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 56,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 57,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 58,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 59,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 60,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "0.00100000004749750",
+      "completed": [
+        "RESET"
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 61,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 62,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "RESET",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 63,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 64,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 65,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 66,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 67,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 68,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 69,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 70,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00075000000651930",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 71,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "0.00100000004749750",
+      "completed": [
+        "StayOff"
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 72,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 73,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 74,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00040000001899900",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 75,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 76,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 77,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 78,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 79,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 80,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 81,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": false,
+      "current": "",
+      "position": "0.00100000004749750",
+      "completed": [
+        "StayOff"
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 82,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 83,
+      "op": "advance",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOff",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 84,
+      "op": "play",
+      "frame": 0,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 85,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 86,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 87,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 88,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 89,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 90,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00050000002374870",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 91,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00075000000651930",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 92,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "0.00100000004749750",
+      "completed": [
+        "StayOn"
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 93,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 94,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 95,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00040000001899900",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 96,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "Off",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 97,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "Off",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 98,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": true,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 99,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 100,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 101,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00025000001187440",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 102,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": false,
+      "current": "",
+      "position": "0.00100000004749750",
+      "completed": [
+        "StayOn"
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 103,
+      "op": "play",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    },
+    {
+      "file": "gate.encpcl",
+      "index": 104,
+      "op": "advance",
+      "frame": 5,
+      "visible": true,
+      "body": false,
+      "playing": true,
+      "current": "StayOn",
+      "position": "0.00000000000000000",
+      "completed": [
+
+      ]
+    }
+  ]
+}

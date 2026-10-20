@@ -1,0 +1,10 @@
+test_adapter_preserves_all_original_shaker_control_flow (tests.test_camera_shaker_reference.CameraShakerReference.test_adapter_preserves_all_original_shaker_control_flow) ... ok
+test_repeat_observations_and_exact_frozen_projection (tests.test_camera_shaker_reference.CameraShakerReference.test_repeat_observations_and_exact_frozen_projection) ... ok
+test_retries_and_final_invisible_steps_still_advance_rng (tests.test_camera_shaker_reference.CameraShakerReference.test_retries_and_final_invisible_steps_still_advance_rng) ... ok
+test_source_tool_and_engine_scope_remain_exact (tests.test_camera_shaker_reference.CameraShakerReference.test_source_tool_and_engine_scope_remain_exact) ... ok
+test_unsafe_or_nonfresh_output_rejected_before_engine_use (tests.test_camera_shaker_reference.CameraShakerReference.test_unsafe_or_nonfresh_output_rejected_before_engine_use) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.012s
+
+OK

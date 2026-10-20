@@ -1,0 +1,110 @@
+{
+  "parent": "60a3fb9dd9375d385d83f9aa8fa191c48d245ae0",
+  "scope": "Checked independent binding/profile/graph data and source-ordered clock consumer; source232 observations twice. No live Room/graphics/contact/audio/camera/save or hardware admission.",
+  "whole_scripts_approved": false,
+  "resource": {
+    "format": 1,
+    "capability": 1,
+    "bytes": 4060,
+    "sha256": "b115f18608929203ff55cfff277d0a6bdbc72ef9b63c6be2c4119be87fc7201b",
+    "published_to_romfs": false
+  },
+  "native": {
+    "compiler": "GCC9.4 ASan+UBSan detect_leaks=1 halt_on_error=1 non-PIE; exact104 current compiled archive plus2 new source units;224 old source/header digests unchanged; no local full-CMake-suite claim",
+    "metadata_checks": 8331,
+    "state_checks": 37358,
+    "observations": 232,
+    "replays": 2,
+    "owners": 14,
+    "callback_identity": "Caller scene epoch and distinct per-request ticket; lower graph operation token reused between focus and return is not exposed as a sufficient completion identity.",
+    "capacity_failures": "Both graph waiter and public event queue exhaustion preserve all14 poses/state, event count and callback count."
+  },
+  "python": {
+    "tests": 18,
+    "seconds": 12.763
+  },
+  "collection": {
+    "ctest": 293,
+    "python": 1342,
+    "aggregate": 959,
+    "dedicated": 383,
+    "metadata_only": true,
+    "multiset_equal": true
+  },
+  "old_core_ci": {
+    "commit": "0f203b24694b127e4643c4e27e719bd65601ea22",
+    "full_run": 39410861702,
+    "clang_job": 118587999817,
+    "clang_ordinary": 276,
+    "clang_sanitizers": 276,
+    "console_job": 118587999367,
+    "console": "success; raw retained in prior source-integration-1 report",
+    "gcc": "pending at this checkpoint",
+    "scope": "Earlier104-unit code only; does not cover new2classes."
+  },
+  "source_projection": "Exact existing original5/6 combined traces from reports/dungeon-mechanism-timelines/source-integration-1; old golden observations unchanged. Stricter fixture/proof changes preserve exact binary and TSV bytes used by passing native runs.",
+  "sources_sha256": {
+    "CMakeLists.txt": "467613e1def135ac094dae36a8e93b9f7f243dabe8889e1e1eaf51908b19a0cb",
+    "platform/ctr/Makefile": "3d73385eebe3ae5bb54895ba0fd253bf01a661dc174f6494b3fbe8897d7aca95",
+    "content/catacombs-mechanism-bindings.json": "bcd1d22edbffec2aef191d21c33c3e6725ad2b7fd39f15d7fc3162efb231a69e",
+    "tools/dungeon_mechanism_bindings.py": "1a91ca6edcb025667b5217bee4a7a68eb84094d29dcd32f40d4c85f5978c826d",
+    "include/encore/dungeon_mechanism_bindings.hpp": "ad02e8570ccd4767aad60f392d8d3ff93a20f375c4e8c49aebde76e65f3d12de",
+    "runtime/dungeon_mechanism_bindings.cpp": "624e33939791912315b76ac342372f086b65e7530452c09bd21ef4ed7acf1c4b",
+    "include/encore/dungeon_mechanism_state.hpp": "69c550fb22189466c58810c4f3f38519eec6aafced308887bb8bbafe09d24623",
+    "runtime/dungeon_mechanism_state.cpp": "8e46f2af60493e5ef0c3504c2f6d81edf7efc52b72acfb055bae1c902b7aae3f",
+    "tests/prepare_dungeon_mechanism_bindings.py": "544e63da635a16f0040cca4dfe14ae32b1c5c2c6f822323e4e761d553575cce3",
+    "tests/test_dungeon_mechanism_bindings.py": "d280aad9a5a60cc26688d13498eb091d3ab2f8857b342db7cbe2d01be2cc1a83",
+    "tests/test_dungeon_mechanism_fixture.py": "72381985387410bb48d9878cff8a87b149a0ddc386ab453baaaa98b304eed38e",
+    "tests/dungeon_mechanism_bindings_tests.cpp": "7cbf4edc1e13db83dcd69666dff394a24eea32574d33092fbaedcf6223d044de",
+    "tests/dungeon_mechanism_state_tests.cpp": "93c1024c2d82ce14b631826cc8bed8acdfcf5ffacf773cf793034e6226eaf3a5",
+    "docs/DUNGEON_MECHANISM_BINDINGS.md": "ee93de29256dfb099a48459e162056146a23de147a26208ca4873b29e32f5e27",
+    "docs/STATUS.md": "002f249a38e200575e20fc5ca63d93d465e306f6cbbd8d93e304493392c5b0d1"
+  },
+  "native_executables": [
+    {
+      "path": "build/full-port/mechanism-binding-native-2/check",
+      "bytes": 4841592,
+      "sha256": "d70baa1c81f8af16aa80e5a0a464eda272641895c4b4c1d093b3410c7177feeb"
+    },
+    {
+      "path": "build/full-port/mechanism-state-native-2/check",
+      "bytes": 13178776,
+      "sha256": "91bf8d1b3f9b98a9866c07d0605325b63785e5e978eb8ee3bcafd9e488ce2a19"
+    }
+  ],
+  "evidence_sha256": {
+    "cleanup.json": "2c0098055c17b29ca039aa71f091107a0e88de28e89ff9257f5cd588b06331c3",
+    "final-candidate/reference.tsv": "33a8a134c16ba5aca1a16033320e34591b7aadc069e752598a37bdff403b5f78",
+    "final-candidate/source.json": "9c9e1faa109e38593ea6da817b2afceb8951edaf7bbfbec5688088b0b5e3feac",
+    "local/mechanism-binding-native-1.sh": "82b33a13a35ba7b7841e5610b7b7e1081e4191259f8cba6b75e7c2c8e7adfaef",
+    "local/mechanism-binding-native-2.sh": "4a7c87042c0b72285d605cf8d81a6da3be0a1a5b4bcac04997f5dc19bd5f1e9d",
+    "local/mechanism-binding-python-1.log": "c0ed8ecec5102687f234f58d0966ac12819c3287a7e99d3e1af861a851ce4510",
+    "local/mechanism-binding-python-2.log": "46cee70e5c33a19618bc7a1d4731df85b8238f267e927cf45cdce53ec1f960b9",
+    "local/mechanism-binding-python-3.log": "89bf8390910f01e7e584c8db0563de63084a31f493018636250af197f9ce8aa4",
+    "local/mechanism-binding-python-4.log": "2d617b477504125363dee2b1e22c61c77cbfd69c3ca4b631ebfd21817b70ca9e",
+    "local/mechanism-bindings-cmake-1.log": "5f8552d5154854feb7762df4e1087bf9bb49403c02b3bb2c6c239e38214c9139",
+    "local/mechanism-bindings-collection-1.log": "cb4cf6903423e37683b8527d69c2c6f7d4407b98075b4a0e71aa4919f91dda51",
+    "local/mechanism-bindings-ctest-1.json": "9f108c2635ac9b05f7db343e95b77129c3689ed8360fe4c700c071427d68abd3",
+    "local/mechanism-bindings-final-fixture-1.log": "80f96c7540c451f1b9e6d844bbc50e6d835aa200036efb6d750763689bacf9a0",
+    "local/mechanism-bindings-method-plan-1.json": "155ec705479edb0c121d74fec5b17f2ab4029f9863071e299148a43952792327",
+    "local/mechanism-current-compile-proof.json": "485e1f96c4770befa28b7ff5400051b4ab97eaccfbf99457b097ed4cbeff04f3",
+    "local/mechanism-state-native-1.sh": "cb1712adde50f0258268b42fec4126161285146f3e9378fede085908116c28fc",
+    "local/mechanism-state-native-2.sh": "89170cc7024ae0a584a1ae9b2e617dc4162dcdc96bb798ddefb59e49e554dd38",
+    "local/mechanism-state-syntax-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "local/wall0f-clang.log": "18350c220a9add2c9a0127c23eebe213085f9e3259727dd7f0668f182ddf9c0b",
+    "mechanism-binding-native-1/compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mechanism-binding-native-1/run.log": "79b418a54d6170b06c71da01831febe240c0dd36fdd82da812d92abf5cb1df8d",
+    "mechanism-binding-native-2/compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mechanism-binding-native-2/run.log": "3e5cc7884970bc31ef77fc9c231221b8565745d31d800ca22b95177b0988d812",
+    "mechanism-state-native-1/compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mechanism-state-native-1/compiler.txt": "c4b8cb27259b52465715c83277ca12c1fe007119e3add12623dd7a6ef0c959f6",
+    "mechanism-state-native-1/run.log": "2e23f7982774dff4f119cb439ad0f02597c07145a7834924dc8134c316774e42",
+    "mechanism-state-native-2/compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mechanism-state-native-2/compiler.txt": "c4b8cb27259b52465715c83277ca12c1fe007119e3add12623dd7a6ef0c959f6",
+    "mechanism-state-native-2/run.log": "b5a024cc57909fe594cb059a68928740f35788451c74e98076742c7bafc0ab93"
+  },
+  "cleanup": {
+    "bytes": 17741664,
+    "scope": "Only two superseded first-pass native test executables; exact raw compile/run logs and final two executables retained."
+  }
+}

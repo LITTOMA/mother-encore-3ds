@@ -1,0 +1,28 @@
+runtime/dungeon_key_state.cpp: In member function ‘bool encore::upstream::DungeonKeyRuntime::queue_delete(uint32_t, std::string&)’:
+runtime/dungeon_key_state.cpp:27:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   27 |  if(states_[i].queued)return true;states_[i].queued=true;return emit(DungeonKeyEventKind::DeleteQueued,i,e);
+      |  ^~
+runtime/dungeon_key_state.cpp:27:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   27 |  if(states_[i].queued)return true;states_[i].queued=true;return emit(DungeonKeyEventKind::DeleteQueued,i,e);
+      |                                   ^~~~~~~
+runtime/dungeon_key_state.cpp: In member function ‘bool encore::upstream::DungeonKeyRuntime::pickup_finished(encore::upstream::DungeonKeyHandle, std::string&)’:
+runtime/dungeon_key_state.cpp:59:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   59 |  if(!next.queue_delete(i,e))return false;*this=std::move(next);e.clear();return true;
+      |  ^~
+runtime/dungeon_key_state.cpp:59:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   59 |  if(!next.queue_delete(i,e))return false;*this=std::move(next);e.clear();return true;
+      |                                          ^
+runtime/dungeon_key_state.cpp: In member function ‘bool encore::upstream::DungeonKeyRuntime::lock_open_method(encore::upstream::DungeonKeyHandle, std::string&)’:
+runtime/dungeon_key_state.cpp:76:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   76 |  if(!next.open(i,e))return false;*this=std::move(next);e.clear();return true;
+      |  ^~
+runtime/dungeon_key_state.cpp:76:34: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   76 |  if(!next.open(i,e))return false;*this=std::move(next);e.clear();return true;
+      |                                  ^
+runtime/dungeon_key_state.cpp: In member function ‘bool encore::upstream::DungeonKeyRuntime::end_scene_frame(std::string&)’:
+runtime/dungeon_key_state.cpp:79:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   79 |  if(!ready())return reject(e,"Dungeon key frame has no source owner");DungeonKeyRuntime next=*this;
+      |  ^~
+runtime/dungeon_key_state.cpp:79:71: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   79 |  if(!ready())return reject(e,"Dungeon key frame has no source owner");DungeonKeyRuntime next=*this;
+      |                                                                       ^~~~~~~~~~~~~~~~~

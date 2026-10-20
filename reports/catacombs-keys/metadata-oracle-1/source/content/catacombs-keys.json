@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-keys.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Candidate Catacombs key/lock state bindings only. Counter, flag, call order and deferred-lifecycle source have been reviewed; execution, presentation/animations, map ownership, save admission and live dungeon integration are not implemented. Never stage or enable this metadata as a playable scene.",
+  "scene_id": 4,
+  "paths": {
+    "scene": "Maps/podunk/Catacombs.tscn",
+    "key_scene": "Nodes/Overworld/Objects/Small Key.tscn",
+    "key_script": "Scripts/Main/Small Key.gd",
+    "door_scene": "Nodes/Overworld/Objects/Locked Door Catacombs.tscn",
+    "door_script": "Scripts/Main/Lock.gd",
+    "flag_script": "Scripts/Main/FlaggableObject.gd",
+    "ui_script": "Scripts/global/uiManager.gd",
+    "globaldata_script": "Scripts/global/globalData.gd",
+    "save": "Data/save_new_game.yaml",
+    "locked_dialogue": "Data/Dialogue/Reusable/locklocked.yaml"
+  },
+  "sources": {
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "Nodes/Overworld/Objects/Small Key.tscn": "b111c74715225473607948b2004404dd9dfc631046d53a6f569f0c5fb637a989",
+    "Scripts/Main/Small Key.gd": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4",
+    "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": "0455c5e6b85221a05f68e7827d6d7791797a0c62343e14c50c9b0542c980c83a",
+    "Scripts/Main/Lock.gd": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Data/Dialogue/Reusable/locklocked.yaml": "7f5e8898ab912ad126367e1dda1c3f58a19872a5a6f969f4570d73d52cb5f462"
+  },
+  "nodes": [
+    {
+      "id": 3211839847,
+      "path": "Bottom1/Locked Door3",
+      "kind": "lock"
+    },
+    {
+      "id": 1367255115,
+      "path": "Bottom1/Locked Door1",
+      "kind": "lock"
+    },
+    {
+      "id": 3363305969,
+      "path": "Bottom1/Locked Door2",
+      "kind": "lock"
+    },
+    {
+      "id": 2496629665,
+      "path": "Bottom2/Key1",
+      "kind": "key"
+    },
+    {
+      "id": 231135771,
+      "path": "Bottom2/Key2",
+      "kind": "key"
+    },
+    {
+      "id": 2059528845,
+      "path": "Bottom2/Key3",
+      "kind": "key"
+    }
+  ],
+  "reviewed_source_boundary": "Locked Door Catacombs animation_finished names a handler absent from Lock/FlaggableObject. Godot3.6.2 component probes 6/7 confirm connect returns0; emit logs the one missing-method error and leaves live state unchanged. Original-method observations repeat identically. Full source scene, animation timeline and presentation remain unadmitted by this state-metadata-only component."
+}

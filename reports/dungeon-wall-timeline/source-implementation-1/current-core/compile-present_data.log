@@ -1,0 +1,14 @@
+runtime/present_data.cpp: In function ‘bool encore::upstream::{anonymous}::safe_path(std::string_view)’:
+runtime/present_data.cpp:21:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   21 |     for(unsigned char ch:s)if(ch<32||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |     ^~~
+runtime/present_data.cpp:21:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   21 |     for(unsigned char ch:s)if(ch<32||ch>126)return false;if(b==p.size())break;a=b+1;}return true;}
+      |                                                          ^~
+runtime/present_data.cpp: In member function ‘std::string_view encore::upstream::PresentView::string(uint32_t) const’:
+runtime/present_data.cpp:29:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   29 |     if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(PresentSection::Bytes,0))+off,len);}
+      |     ^~
+runtime/present_data.cpp:29:47: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   29 |     if(!len||off>pool||len>pool-off)return {};return std::string_view(reinterpret_cast<const char*>(record(PresentSection::Bytes,0))+off,len);}
+      |                                               ^~~~~~

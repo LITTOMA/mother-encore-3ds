@@ -1,0 +1,62 @@
+{
+  "parent": "b9befdca75bf84f3d2a2f6b6f034d1408fe8f5b1",
+  "scope": "Detached source-method state component; not playable Catacombs, production scene/audio/UI/timeline/save admission or complete game.",
+  "native_sanitizer_checks": 1713,
+  "native": "GCC9.4 actual direct compile of dungeon_keys/dungeon_key_state/file_io and test; ASan+UBSan detect_leaks=1, halt_on_error=1, non-PIE. Not a whole-core build.",
+  "failures_retained": {
+    "native1": "C++ heterogeneous auto declaration compile failure; split declarations fixed.",
+    "native3": "Driver omitted non-PIE flags for prior non-PIE cached file_io.o; linker rejected relocation. Native4 compiled all inputs directly from source with non-PIE flags.",
+    "clang1": "Local WSL clang++ unavailable (127); no local Clang pass claimed. Full CI provides independent Clang."
+  },
+  "original_reference": "Committed metadata-oracle-1/original-method-7/observations.json frozen at original verification SHA.16 valid method projections twice;2 source missing-method signal dispatch negatives preserved separately, not implemented by state kernel.",
+  "python": {
+    "passed": 13,
+    "seconds": 5.497
+  },
+  "collection": {
+    "ctest": 276,
+    "python": 1268,
+    "aggregate": 902,
+    "dedicated": 366,
+    "scope": "Actual Windows MSVC CMake metadata and method collection only; executables not built."
+  },
+  "game_data_sha256": "cf7a61e38f6078525101e24a25edc0d299f9524d10ff58e7e3bb20aa393e44ac",
+  "game_data_unchanged": true,
+  "source_sha256": {
+    "include/encore/dungeon_key_state.hpp": "2f9de7bb050f3b200342793ccac69d1348fda620809a55021fc88f043f8aca10",
+    "runtime/dungeon_key_state.cpp": "5dfdb1bcaf12d5ec385f0e28b6ff68297e6cad95028a8d6b5e762dd7b5d57297",
+    "runtime/file_io.cpp": "05f4812e7e98bd9ecb0c5bd2c6543be71c7bfb3dce6c29766dabed5eaeabd2bb",
+    "runtime/dungeon_keys.cpp": "c216a8603e33c492aa552597f7cea26f93caca2a03e5ca0297e3faeabc106700",
+    "tests/dungeon_key_state_tests.cpp": "3a55845b4590c788d536446956157b882188264719a4c8c3fe878b83a4bd2ca2",
+    "tests/prepare_dungeon_key_reference.py": "99d2cc8ae21b89f79961943a5612678d3030189ced6a47a82e086b19ac9e820c",
+    "tools/dungeon_keys.py": "4ced6beaa1c150eb3e7a018f9841b970100c21f7727d41b3275970deae623087",
+    "tests/test_dungeon_keys.py": "97c4a04754592a7f758c791d36ef1c967068b31f388f76a42e044852442f7686",
+    "content/catacombs-keys.json": "67044b811263d2924de366e4d3925d57b1641768a6bfe3168840ff7441439a3f",
+    "CMakeLists.txt": "48ba609a1cb031861a428689b1bcfb234dbae952e2cc0492c87da38e3bf102d3"
+  },
+  "executable": {
+    "path": "build/full-port/catacombs-key-state-1/dungeon_key_state_tests",
+    "bytes": 3493512,
+    "sha256": "c37bb4ec954885ed36897055c9e9e53de043e0e22b54e70331679aa139b2a8ba"
+  },
+  "evidence_sha256": {
+    "catacombs-key-state-1-compile.log": "9e945b7be2009c909563369669646697b37c45b4f2cae60af64fc13c188b82f1",
+    "catacombs-key-state-2-compile.log": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98",
+    "catacombs-key-state-2-result.log": "199fec2c19c4e46d1796d08c411994854679c220e6061419666bf9cbe27caed0",
+    "catacombs-key-state-3-compile.log": "f237898bb363146f1f1ad1103d1e700d099f60721f14064926bee366744ec1a8",
+    "catacombs-key-state-4-compile.log": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98",
+    "catacombs-key-state-4-result.log": "2add94535806d51d0529e9caa3d7089a41f4feded7b34198193ad0549e15fa24",
+    "catacombs-key-state-clang-1-compile.log": "047a4ef290f97818ebf22617bfc5449c6d31007961d34a66187652f977f57547",
+    "catacombs-key-state-cmake-1.log": "c6f574db564c7610aa27873904011546d2424d204de7a78d8c396776bfe79030",
+    "catacombs-key-state-collection-1.log": "c22d56d50cb2b6535ab0f7aa898bfc7c4f76cee01de9f2a1813d55a934170a8d",
+    "catacombs-key-state-ctest-1.json": "7219f303e37889016dcda262bf4212fcc3af81a5e13ec235122a6d7a61555026",
+    "catacombs-key-state-method-plan-1.json": "da3bd864b79a321bb467049b0ca2a3ea78f508618f730e1e840297f3cf836370",
+    "catacombs-key-state-python-1.log": "a23da27586b62352a22f8a8537bd043023075e2edc1dcb5057f0f874ec212a89",
+    "catacombs-key-state-reference-1.log": "3da647253c939af01b0c33419abe7721fdd435c36289a2dbc83f9683d1c1e8e4",
+    "catacombs-key-state-reference-2.log": "3da647253c939af01b0c33419abe7721fdd435c36289a2dbc83f9683d1c1e8e4",
+    "collect-catacombs-key-state.py": "e857ce3214abc9efd95a56b2823133ba2d5b1f8291d146bcf078b3286878072f",
+    "fixture-source.json": "cd38094fc88727628b709544ee3a2bfb4ff3c469d591c80a6325050c7dfe158e",
+    "original-method-projection.tsv": "2570104b89cf0cf1704d55a313035a4ff9089975ad24b43030809643f95c6856",
+    "retain-catacombs-key-state.py": "3edd4063d91064d1cc1c00043357ee70718132919ff307586c12be1e611909bb"
+  }
+}

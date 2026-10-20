@@ -42,7 +42,7 @@ class DungeonKeysTests(unittest.TestCase):
    with self.subTest(edit=edit):self.candidate(edit,True)
  def test_effective_node_unknown_override_and_flag_notification(self):
   original=d.instantiate
-  for edit in (lambda n:n.props.update(ignore=True),lambda n:n.props.update(emit_flag_updated_signal=False),lambda n:n.props.update(reset_when_leaving_area=True),lambda n:n.props.update(reset_when_leaving_area=0),lambda n:n.props.update(reset_when_leaving_region=None),lambda n:n.props.update(flag='Catacombs/Key1')):
+  for edit in (lambda n:n.props.update(ignore=True),lambda n:n.props.update(emit_flag_updated_signal=False),lambda n:n.props.update(reset_when_leaving_area=True),lambda n:n.props.update(reset_when_leaving_area=0),lambda n:n.props.update(reset_when_leaving_region=None),lambda n:n.props.update(flag=False),lambda n:n.props.update(flag='Catacombs/Key1')):
    def changed(load,source,edit=edit):
     nodes=copy.deepcopy(original(load,source));edit(next(n for n in nodes if n.path==self.review['nodes'][0]['path']));return nodes
    with self.subTest(edit=edit),patch.object(d,'instantiate',side_effect=changed),self.assertRaises(ValueError):d.extract()

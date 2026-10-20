@@ -2,7 +2,7 @@
   "schema": 1,
   "kind": "encore.dungeon-keys.reviewed-source",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Candidate Catacombs key/lock state bindings only. Counter, flag, call order and deferred-lifecycle source have been reviewed; execution, presentation/animations, map ownership, save admission and live dungeon integration are not implemented. Never stage or enable this metadata as a playable scene.",
+  "scope": "Candidate Catacombs key/lock state bindings with a detached shared-core original-method state machine. Counter, flag, call order and deferred lifecycle are mapped and compared with original-engine observations; presentation/timelines, map ownership, save admission and live dungeon integration remain unimplemented. Never stage or enable this metadata as a playable scene.",
   "scene_id": 4,
   "paths": {
     "scene": "Maps/podunk/Catacombs.tscn",

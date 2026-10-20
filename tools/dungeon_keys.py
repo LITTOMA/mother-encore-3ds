@@ -1,8 +1,9 @@
 """Candidate source-owned dungeon key/lock state metadata; never stages a map.
 
 The compiler checks source counter/flag/call ordering; output describes state
-bindings only. Execution, animation, signal connections, rendering, audio and
-save integration remain unimplemented and cannot activate a scene.
+bindings only. The detached shared-core method state machine consumes them;
+scene admission, timelines, rendering, audible output and save integration
+remain unimplemented. This compiler cannot activate a scene.
 """
 from __future__ import annotations
 import argparse, hashlib, json, re, struct, sys
@@ -83,7 +84,8 @@ def extract(file=RECIPE):
   require(row['kind']==('key'if kind==1 else'lock')and n.script==s['key_script'if kind==1 else'door_script'],'Dungeon key node script/kind')
   require(set(n.props)<=set('position script hframes flag is_object_flag emit_flag_updated_signal reset_when_leaving_region reset_when_leaving_area'.split()),'Dungeon key unreviewed node override')
   require(n.props.get('is_object_flag',False)is True and n.props.get('emit_flag_updated_signal',False)is True and n.props.get('reset_when_leaving_region',False)is False and n.props.get('reset_when_leaving_area',False)is False,'Dungeon key source flag lifetime/notification')
-  identity=n.props.get('flag','')or scene_name+'/'+n.path.rsplit('/',1)[-1];path(identity)
+  flag_value=n.props.get('flag','');require(flag_value is None or type(flag_value)is str,'Dungeon key flag value type')
+  identity=flag_value or scene_name+'/'+n.path.rsplit('/',1)[-1];path(identity)
   rows.append(dict(id=row['id'],kind=kind,path=n.path,flag=identity,delta=deltas[kind-1],flags=3))
  require(len({r['flag']for r in rows})==len(rows),'Dungeon key saved identity collision')
  save=ex.yaml(s['save']);require(type(save.get('keys'))is dict and type(save['keys'].get(region))is int,'Dungeon key source initial counter')

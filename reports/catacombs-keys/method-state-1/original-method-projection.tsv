@@ -1,0 +1,17 @@
+index action counter key_flag lock_flag alive queued visible disabled prompt opened animation audio notifications notice_visible notice_disabled notice_opened notice_audio indicators indicator_value locked_text
+0 key_ready 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 -1 0
+1 nonplayer_ignored 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 -1 0
+2 paused_ignored 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 -1 0
+3 key_pickup_before_deferred 1 1 0 1 0 0 0 0 0 0 1 1 1 0 0 0 1 1 0
+4 duplicate_audio_busy_ignored 1 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 -1 0
+5 key_collision_deferred 1 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 -1 0
+6 key_audio_finish_queued 1 1 0 1 1 0 1 0 0 0 1 0 0 0 0 0 0 -1 0
+7 key_deleted 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0
+8 saved_key_ready_queued 1 1 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 -1 0
+9 saved_key_deleted 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0
+10 lock_ready 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 -1 0
+11 lock_no_key 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 -1 1
+12 lock_open_requested 0 1 1 1 0 1 0 1 1 1 0 1 1 0 1 0 1 0 0
+13 lock_open_method 0 1 1 1 0 1 1 0 1 1 0 0 0 0 0 0 0 -1 0
+14 opened_lock_repeat_ignored 0 1 1 1 0 1 1 0 1 1 0 0 0 0 0 0 0 -1 0
+17 saved_lock_ready 0 1 1 1 0 1 1 0 1 2 0 0 0 0 0 0 0 -1 0

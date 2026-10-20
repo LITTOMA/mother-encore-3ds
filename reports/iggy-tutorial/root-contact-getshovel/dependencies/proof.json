@@ -1,0 +1,48 @@
+{
+  "source": "Original generators only",
+  "default_save_sha256": "a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f",
+  "session_resource_version": 11,
+  "unchanged_key_policies": [
+    {
+      "item_id": "DogTreats",
+      "doses": 1,
+      "flag_id": "got_dog_treats",
+      "consumed_flag_id": "gave_treats",
+      "flag_policy": 1
+    },
+    {
+      "item_id": "MapPodunk",
+      "doses": 1,
+      "flag_id": "Ninten's House/Present3",
+      "consumed_flag_id": "",
+      "flag_policy": 2
+    },
+    {
+      "item_id": "GGFDiary",
+      "doses": 1,
+      "flag_id": "got_diary",
+      "consumed_flag_id": "",
+      "flag_policy": 1
+    },
+    {
+      "item_id": "KeyBasement",
+      "doses": 1,
+      "flag_id": "mick_telepathy",
+      "consumed_flag_id": "",
+      "flag_policy": 1
+    },
+    {
+      "item_id": "BatOld",
+      "doses": 1,
+      "flag_id": "bat",
+      "consumed_flag_id": "",
+      "flag_policy": 1
+    }
+  ],
+  "new_mutable_flags": [
+    "got_shovel",
+    "returned_shovel"
+  ],
+  "restore_recipe_exact": true,
+  "naming_game_ui_binary_exact": true
+}

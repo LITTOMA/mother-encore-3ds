@@ -53,6 +53,7 @@ public:
     const upstream::AudioBank&bank()const{return bank_;}
     uint64_t configuration_generation()const{return configuration_generation_;}
     bool set_user_volume(float master_db,float music_db,float sfx_db,std::string&);
+    float user_sfx_db()const{return user_sfx_db_;}
     MusicObservation observe_music() const;
     uint32_t lane_asset_id(AudioLane lane)const{const auto i=uint32_t(lane);return i<voices_.size()&&voices_[i].active?voices_[i].asset.stable_id:0;}
     // Loading cooperation only: feed existing queues and observe natural ends.

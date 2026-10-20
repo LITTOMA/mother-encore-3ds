@@ -69,7 +69,7 @@ def lowered(p,ex,base):
 def candidate(path=review.RECIPE):
  from tools import graveyard_tutorial_programme as existing
  review_path=Path(path).resolve();require(review_path.is_relative_to(ROOT),'Shovel review must have a checked workspace identity');review_name=review_path.relative_to(ROOT).as_posix()
- p,ex=review.read(path);base_path=ROOT/'romfs/world/podunk/podunk.encroom';ir=copy.deepcopy(nc.parse_pack(base_path.read_bytes()));programme=lowered(p,ex,ir)
+ p,ex=review.read(path);base,_,base_proof=existing.build();ir=copy.deepcopy(nc.parse_pack(base));programme=lowered(p,ex,ir)
  existing_ids={row['target_index']for row in ir['sections']['Command']if row['opcode']==nc.OPCODES.index('ShowDialogue')};require(existing_ids.isdisjoint(v['id']for v in programme['dialogues']),'Shovel dialogue identity overlaps existing content')
  flags={ir['strings'][row['name_string']]for row in ir['sections']['Flag']};require({'got_shovel','returned_shovel'}<=flags,'Shovel source flags are not admitted')
  # The existing closed serializer owns typed actor/path/timer encoding. This
@@ -83,7 +83,7 @@ def candidate(path=review.RECIPE):
  index=existing.lower(programme,p,ex,ir,0);require(index==len(ir['sections']['Program'])-1 and sections['Command'][first+programme['labels']['3']]['opcode']==49,'Shovel candidate programme/delete ownership')
  texts(programme,p,ex) # Admit every locale/voice before freezing provenance.
  ir.pop('build_input_sha256');ir['capabilities']=14
- ir['provenance']={'sources':{**{'upstream/MOTHER-Encore/'+n:h for n,h in ex.sources.items()},**{n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest()for n in [review_name,'content/podunk-npcs.json','tools/graveyard_shovel.py','tools/graveyard_shovel_programme.py','tools/graveyard_tutorial_programme.py','tools/native_content.py','romfs/world/podunk/podunk.encroom']}}}
+ ir['provenance']={'sources':{**{'upstream/MOTHER-Encore/'+n:h for n,h in {**base_proof['sources'],**ex.sources}.items()},**base_proof['dependencies'],**{n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest()for n in [review_name,'content/podunk-npcs.json','tools/graveyard_shovel.py','tools/graveyard_shovel_programme.py','tools/graveyard_tutorial_programme.py','tools/native_content.py']}}}
  blob,_=nc.compile_ir(ir);nc.parse_pack(blob)
  return blob,programme,p,ex
 
@@ -98,3 +98,22 @@ def texts(programme,p,ex):
    if voice:ex.data(voice)
    out.append(dict(id=binding['id'],locale='zh_Hans_CN'if locale=='zh_CN'else locale,speaker=text(source['name'])if 'name'in source else'',body=text(source['text']),voice=voice))
  return out
+
+def source_texts(path=review.RECIPE):
+ p,ex=review.read(path);bindings=[dict(id=p['dialogue_first_id']+i,source=p['source'],label=label)for i,(label,row)in enumerate((v for v in p['documents'][p['source']].items()if 'text'in v[1]))]
+ require(len(bindings)==5,'Shovel complete dialogue domain')
+ return texts(dict(dialogues=bindings),p,ex)
+
+def add_room(path,scene,sections,strings,S):
+ """Append the reviewed programme through the existing typed serializer."""
+ from tools import graveyard_tutorial_programme as existing
+ p,ex=review.read(path);programme=lowered(p,ex,dict(scene_id=scene,sections=sections,strings=strings))
+ existing_ids={row['target_index']for row in sections['Command']if row['opcode']==nc.OPCODES.index('ShowDialogue')}
+ require(existing_ids.isdisjoint(v['id']for v in programme['dialogues']),'Shovel dialogue identity overlaps existing content')
+ for command in programme['commands']:
+  if 'object_path'in command:command['target']=S(command['object_path'])
+ index=existing.lower(programme,p,ex,dict(sections=sections,strings=strings),0)
+ texts(programme,p,ex)
+ name=Path(path).resolve().relative_to(ROOT).as_posix()
+ dependencies={n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest()for n in(name,'content/podunk-npcs.json','tools/graveyard_shovel.py','tools/graveyard_shovel_programme.py','tools/graveyard_tutorial_programme.py')}
+ return index,{**{'upstream/MOTHER-Encore/'+n:h for n,h in ex.sources.items()},**dependencies}

@@ -5,6 +5,7 @@
 #include "encore/field_steps.hpp"
 #include "encore/field_props.hpp"
 #include "encore/field_objects.hpp"
+#include "encore/field_area_contacts.hpp"
 #include "encore/introduction.hpp"
 #include "encore/mick_treats.hpp"
 #include "encore/world.hpp"
@@ -85,7 +86,7 @@ public:
 
 // AreaRoom field: TileMap world, routed and unported doors, explicit development
 // boundaries and unlocked openable doors. Rendering and scene swaps are platform owned.
-class FieldScene : private StoryPropHost {
+class FieldScene : private StoryPropHost,private FieldPropHost {
 public:
     FieldScene()=default;
     FieldScene(const FieldScene&)=delete;
@@ -104,6 +105,7 @@ public:
     bool bind_npc(MickView,MickHost&,std::string& error);
     bool bind_steps(FieldStepsView,const AudioBank&,std::string_view inherited_sound,std::string&);
     bool bind_props(const FieldPropsData&,std::string&);
+    bool bind_prop_contacts(const FieldPropsData&,const FieldSwingData&,FieldPropContactEffects&,std::string&);
     bool bind_objects(const FieldObjectsData&,std::string&);
     const FieldObjects&objects()const{return objects_;}
     const FieldProps&props()const{return props_;}
@@ -125,6 +127,8 @@ public:
     bool before_physics(WalkInput& input);
     bool after_physics();
     bool idle_frame(double delta,bool back,bool accept=false,int choice=0);
+    // Source uiManager.battle_to_ov -> CutsceneArea._stop_process.
+    void battle_to_overworld();
     // The dialogue box close finishes the pause. Complete alone keeps MickTalk.
     bool finish_talk();
     bool talk_accept_latched()const{return mick_ignore_accept_;}
@@ -157,6 +161,16 @@ public:
     FieldMapView map()const{return map_;}
     uint32_t scene_id()const{return map_.scene_id();}
 private:
+    bool bind_props_owner(const FieldPropsData&,std::string&);
+    bool can_call(uint32_t,std::string&)override;
+    bool call(uint32_t,uint32_t,std::string&)override;
+    uint32_t prop_programme(uint32_t)const;
+    bool prop_callback_area(uint32_t)const;
+    bool prop_contact_enabled(std::array<uint8_t,128>&,std::string&)const;
+    bool begin_prop_contacts(std::string&);
+    bool sample_prop_contacts(std::string&);
+    bool commit_prop_hits(const std::vector<uint32_t>&,std::string&);
+    bool process_prop_areas(std::string&);
     bool validate_grow(uint32_t,std::string&)const override;
     bool grow(uint32_t id,std::string&error)override{return grow_prop(id,error);}
     struct Openable {bool inside=false,open=false;double timer=-1;};
@@ -174,6 +188,8 @@ private:
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
     FieldProps props_;
+    FieldAreaContacts prop_contacts_;const FieldSwingData*prop_action_=nullptr;FieldPropContactEffects*prop_effects_=nullptr;
+    std::vector<uint8_t>prop_area_pending_;
     FieldObjects objects_;bool objects_first_idle_=false;
     std::vector<uint32_t>prop_sprites_;
     std::vector<bool>collision_layers_,collision_bodies_;bool collision_ready_=false;

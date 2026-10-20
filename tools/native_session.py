@@ -173,7 +173,7 @@ def extract():
         key_acquisitions.append(dict(item_id=grant['a'],doses=grant['b'],flag_id=effects[0]['a'],consumed_flag_id='',flag_policy=1))
     from tools.field_story import read as read_field_story
     field_policy,_=read_field_story()
-    if field_policy['schema']==5:
+    if field_policy['schema']>=5:
         from tools import graveyard_tutorial_programme as tutorial
         tp,review,source=tutorial.read(ROOT/field_policy['tutorial'])
         for grant in review['item_grants']:

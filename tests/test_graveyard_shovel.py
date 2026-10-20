@@ -1,6 +1,6 @@
 import copy,json,tempfile,unittest
 from pathlib import Path
-from tools import graveyard_shovel as review,graveyard_shovel_programme as g,native_content as nc
+from tools import graveyard_shovel as review,graveyard_shovel_programme as g,graveyard_tutorial_programme as tutorial,native_content as nc
 ROOT=Path(__file__).resolve().parents[1]
 class ShovelSourceTests(unittest.TestCase):
  @classmethod
@@ -20,7 +20,7 @@ class ShovelSourceTests(unittest.TestCase):
   for c in p['commands']:
    if c['kind']=='ChangeCamera':self.assertEqual(p['commands'][p['commands'].index(c)+1]['kind'],'YieldIdle')
   wait=[c for c in p['commands']if c['kind']=='MoveActorPath'and c['actor']=='ninten'][0]['path']['entries'][0];self.assertEqual(wait,dict(kind=1,vector=[0,0],duration=.5))
-  base=nc.parse_pack((ROOT/'romfs/world/podunk/podunk.encroom').read_bytes())
+  base=nc.parse_pack(tutorial.build()[0])
   for name,rows in base['sections'].items():self.assertEqual(v['sections'][name][:len(rows)],rows,name)
   self.assertEqual(v['strings'][:len(base['strings'])],base['strings'])
  def test_actual_bilingual_texts_and_voice(self):

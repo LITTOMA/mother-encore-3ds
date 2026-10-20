@@ -35,6 +35,11 @@
       "phrase": 0
     },
     {
+      "kind": "YieldIdle",
+      "actor": null,
+      "phrase": 0
+    },
+    {
       "kind": "SetTalker",
       "actor": "iggy",
       "phrase": 0
@@ -57,13 +62,18 @@
       "actor": null,
       "phrase": 0,
       "flags": 0,
-      "target": 9
+      "target": 10
     },
     {
       "kind": "ChangeCamera",
       "actor": "iggy",
       "phrase": 1,
       "flags": 0
+    },
+    {
+      "kind": "YieldIdle",
+      "actor": null,
+      "phrase": 1
     },
     {
       "kind": "ReturnCamera",
@@ -89,7 +99,7 @@
       "actor": null,
       "phrase": 1,
       "flags": 0,
-      "target": 14
+      "target": 16
     },
     {
       "kind": "StartWait",
@@ -141,7 +151,7 @@
       "actor": null,
       "phrase": 2,
       "flags": 0,
-      "target": 19
+      "target": 21
     },
     {
       "kind": "SetActorDirection",
@@ -181,7 +191,7 @@
       "actor": null,
       "phrase": 3,
       "flags": 0,
-      "target": 24
+      "target": 26
     },
     {
       "kind": "TurnActor",
@@ -212,7 +222,7 @@
       "actor": null,
       "phrase": 4,
       "flags": 0,
-      "target": 28
+      "target": 30
     },
     {
       "kind": "StartWait",
@@ -238,7 +248,7 @@
       "actor": null,
       "phrase": 5,
       "flags": 0,
-      "target": 32
+      "target": 34
     },
     {
       "kind": "TurnActor",
@@ -269,7 +279,7 @@
       "actor": null,
       "phrase": 6,
       "flags": 0,
-      "target": 36
+      "target": 38
     },
     {
       "kind": "SetActorDirection",
@@ -285,6 +295,11 @@
       "actor": null,
       "phrase": 7,
       "flags": 1
+    },
+    {
+      "kind": "YieldIdle",
+      "actor": null,
+      "phrase": 7
     },
     {
       "kind": "MoveCamera",
@@ -315,7 +330,7 @@
       "actor": null,
       "phrase": 7,
       "flags": 0,
-      "target": 42
+      "target": 45
     },
     {
       "kind": "SetActorDirection",
@@ -355,7 +370,7 @@
       "actor": null,
       "phrase": 8,
       "flags": 0,
-      "target": 47
+      "target": 50
     },
     {
       "kind": "ShowDialogue",
@@ -388,7 +403,7 @@
       "actor": null,
       "phrase": 10,
       "flags": 1,
-      "target": 47
+      "target": 50
     },
     {
       "kind": "ShowDialogue",
@@ -408,7 +423,7 @@
       "actor": null,
       "phrase": 11,
       "flags": 0,
-      "target": 55
+      "target": 58
     },
     {
       "kind": "GrantKeyItem",
@@ -446,7 +461,7 @@
       "actor": null,
       "phrase": 12,
       "flags": 0,
-      "target": 61
+      "target": 64
     },
     {
       "kind": "SetTalker",
@@ -471,7 +486,7 @@
       "actor": null,
       "phrase": 13,
       "flags": 0,
-      "target": 65
+      "target": 68
     },
     {
       "kind": "ShowDialogue",
@@ -491,7 +506,7 @@
       "actor": null,
       "phrase": 14,
       "flags": 0,
-      "target": 68
+      "target": 71
     },
     {
       "kind": "StartWait",
@@ -569,6 +584,11 @@
       "actor": "ninten",
       "phrase": 15,
       "flags": 0
+    },
+    {
+      "kind": "YieldIdle",
+      "actor": null,
+      "phrase": 15
     },
     {
       "kind": "ReturnCamera",
@@ -698,41 +718,41 @@
       "id": "iggy-swing-choice-0",
       "program_identity": "Podunk/cutscenes/gravedigger_swing",
       "source_label": "16",
-      "program_command_count": 83,
+      "program_command_count": 87,
       "initial_selection": 0,
-      "cancel_target_pc": 49,
+      "cancel_target_pc": 52,
       "options": [
         {
           "translation_key": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_16-OPT_0",
           "text": "",
-          "target_pc": 52
+          "target_pc": 55
         },
         {
           "translation_key": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_16-OPT_1",
           "text": "",
-          "target_pc": 49
+          "target_pc": 52
         }
       ]
     }
   ],
   "labels": {
-    "0": 5,
-    "1": 9,
-    "2": 14,
-    "3": 19,
-    "7": 24,
-    "8": 28,
-    "9": 32,
-    "12": 36,
-    "14": 42,
-    "16": 47,
-    "17": 49,
-    "18": 52,
-    "22": 55,
-    "23": 61,
-    "24": 65,
-    "29": 68
+    "0": 6,
+    "1": 10,
+    "2": 16,
+    "3": 21,
+    "7": 26,
+    "8": 30,
+    "9": 34,
+    "12": 38,
+    "14": 45,
+    "16": 50,
+    "17": 52,
+    "18": 55,
+    "22": 58,
+    "23": 64,
+    "24": 68,
+    "29": 71
   },
-  "terminal": 77,
+  "terminal": 81,
   "scope": "Full16-phrase source graph candidate. No shipping binding, action input/SE/render/contact or shovel/rescue claim. Source movecam default1s SineOut, missing voice clearsstream, showboxfalse closeswithsource default sound; values reviewed from pinned DialogueBox.gd."
 }

@@ -42,6 +42,7 @@ def read(path=RECIPE):
  def emit(kind,phrase,actor=None,**kw):cs.append(dict(kind=kind,actor=actor,phrase=phrase,**kw));return len(cs)-1
  emit('BeginCutscene',0)
  for actor in aliases:emit('BindActor',0,actor);emit('ActorPersistent',0,actor)
+ emit('YieldIdle',0) # DialogueBox actors clause yields after actor_ready.
  for phrase,(label,row)in enumerate(doc.items()):
   require(not(set(row)-set('actors talker name sound text goto changecam returncam showbox actorsmove wait autoadvance caninput actorsdir movecam actorsturn options item soundeffect setflags'.split())),'Unreviewed tutorial phrase mechanism')
   require('actors'not in row or label=='0','Tutorial actor rebinding unsupported')
@@ -66,7 +67,7 @@ def read(path=RECIPE):
    require(actor in aliases and set(v)in({'x','y','speed'},{'x','y','speed','queue'})and type(v.get('queue',False))is bool,'Tutorial source turn')
    emit('TurnActor',phrase,actor,vector=[v['x'],v['y']],duration=v['speed'],flags=int(v.get('queue',False)))
   if 'changecam'in row:
-   camera=row['changecam'];require(camera is None or camera in aliases,'Tutorial camera owner');emit('ChangeCamera',phrase,camera,flags=int(camera is None))
+   camera=row['changecam'];require(camera is None or camera in aliases,'Tutorial camera owner');emit('ChangeCamera',phrase,camera,flags=int(camera is None));emit('YieldIdle',phrase)
   if 'movecam'in row:
    camera=row['movecam'];require(set(camera)=={'x','y'},'Unreviewed tutorial camera movement')
    source=ex.text('Scripts/UI/DialogueBox.gd');require('var time = 1.0'in source and '_curr_phrase["movecam"].get("trans", "sine")'in source and '_curr_phrase["movecam"].get("ease", "out")'in source,'Tutorial camera source default changed')

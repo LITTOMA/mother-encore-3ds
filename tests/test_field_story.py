@@ -8,8 +8,8 @@ class FieldStoryTests(unittest.TestCase):
  def setUpClass(cls):
   cls.policy,_=story.read();recipe=podunk_field.load_recipe();model=podunk_field.Model(recipe);cls.room=native_content.parse_pack(podunk_field.build_room(recipe,model,recipe['house']['room_ir']))
  def test_source_programmes_and_metadata_reproduce(self):
-  self.assertEqual(story.build(),(ROOT/'romfs'/story.OUTPUT).read_bytes());self.assertEqual(len(self.room['sections']['Program']),7)
-  self.assertEqual([self.room['strings'][p['source_path_string']]for p in self.room['sections']['Program']],['Podunk/cutscenes/bridge_fight','Podunk/cutscenes/pippismom_call','Podunk/cutscenes/pippismom_help','Podunk/pippismom','Podunk/iggy_forget','Podunk/cutscenes/graveyard_zombie_roots','Podunk/cutscenes/gravedigger_swing'])
+  self.assertEqual(story.build(),(ROOT/'romfs'/story.OUTPUT).read_bytes());self.assertEqual(len(self.room['sections']['Program']),8)
+  self.assertEqual([self.room['strings'][p['source_path_string']]for p in self.room['sections']['Program']],['Podunk/cutscenes/bridge_fight','Podunk/cutscenes/pippismom_call','Podunk/cutscenes/pippismom_help','Podunk/pippismom','Podunk/iggy_forget','Podunk/cutscenes/graveyard_zombie_roots','Podunk/cutscenes/gravedigger_swing','Podunk/cutscenes/gravedigger_getshovel'])
   self.assertEqual(self.room['sections']['Battle'][0]['stable_id'],4)
   self.assertEqual(self.room['sections']['Battle'][0]['actor_instance_index'],2)
  def test_checked_source_dialogues(self):
@@ -20,7 +20,7 @@ class FieldStoryTests(unittest.TestCase):
   old=native_content.parse_pack((ROOT/'tests/fixtures/pre-key-grant-room.encroom').read_bytes())
   self.assertEqual(self.room['strings'][:len(old['strings'])],old['strings'])
   for key,rows in old['sections'].items():self.assertEqual(self.room['sections'][key][:len(rows)],rows,key)
-  legacy=copy.deepcopy(self.policy);legacy['schema']=4;legacy.pop('tutorial')
+  legacy=copy.deepcopy(self.policy);legacy['schema']=4;legacy.pop('tutorial');legacy.pop('shovel')
   with tempfile.TemporaryDirectory()as folder:
    target=Path(folder)/'legacy.json';bridge_entry.write(target,legacy)
    with patch.object(story,'POLICY',target):self.assertEqual(story.read()[0],legacy)
@@ -34,7 +34,7 @@ class FieldStoryTests(unittest.TestCase):
      recipe=podunk_field.load_recipe();podunk_field.build_room(recipe,podunk_field.Model(recipe),recipe['house']['room_ir'])
     else:story.read()
  def test_unknown_versions_fields_and_source_changes_fail_closed(self):
-  for mutate in (lambda p:p.update(schema=6),lambda p:p.update(schema=True),lambda p:p.update(ignore_unknown=True),lambda p:p.update(supplement='../outside.json'),lambda p:p.update(supplement='content/../outside.json'),lambda p:p.update(supplement=True),lambda p:p.update(tutorial='../outside.json'),lambda p:p.update(tutorial=True),lambda p:p.pop('tutorial'),lambda p:p['documents'][p['programmes'][0]['source']]['0'].update(wait=.01),lambda p:p['encounters'][0].update(basic_slot=False),lambda p:p['basic_overrides'][0].update(source='Data/BattleSkills/attack.yaml')):
+  for mutate in (lambda p:p.update(schema=7),lambda p:p.update(schema=True),lambda p:p.update(schema=5),lambda p:p.update(ignore_unknown=True),lambda p:p.update(supplement='../outside.json'),lambda p:p.update(supplement='content/../outside.json'),lambda p:p.update(supplement=True),lambda p:p.update(tutorial='../outside.json'),lambda p:p.update(tutorial=True),lambda p:p.pop('tutorial'),lambda p:p.update(shovel='../outside.json'),lambda p:p.update(shovel=True),lambda p:p.pop('shovel'),lambda p:p['documents'][p['programmes'][0]['source']]['0'].update(wait=.01),lambda p:p['encounters'][0].update(basic_slot=False),lambda p:p['basic_overrides'][0].update(source='Data/BattleSkills/attack.yaml')):
    self.reject_policy(mutate)
  def test_unknown_command_is_not_ignored(self):self.reject_policy(lambda p:p['programmes'][0]['commands'][0].update(kind='Ignore'),True)
  def test_unread_text_and_timer_modes_are_explicit(self):
@@ -55,7 +55,7 @@ class FieldStoryTests(unittest.TestCase):
  def test_cemetery_source_mapping_and_runtime_version_negatives(self):
   from tools.native_content import validate_tables,OPCODES
   s=self.room['sections'];p=s['Program'][5];commands=s['Command'][p['first_command']:p['first_command']+p['command_count']]
-  self.assertEqual(self.room['capabilities'],13)
+  self.assertEqual(self.room['capabilities'],14)
   self.assertEqual([c['duration']for c in commands if c['opcode']==3],[.5,2.5,1,2.2,1,1.2,1.8,.8,1,1,1.6])
   calls=[s['Binding'][c['target_index']]['target_index']for c in commands if c['opcode']==6]
   self.assertEqual(calls,[3,4,6,7,5]);self.assertEqual([(c['actor_index'],c['phrase'])for c in commands if c['opcode']==OPCODES.index('EraseActor')],[(4,6),(5,7)])
@@ -69,7 +69,7 @@ class FieldStoryTests(unittest.TestCase):
   for c in b['Command']:
    if c['opcode']==6:c.update(opcode=25,target_index=0xffffffff)
   bad.append((12,b))
-  blob=bytearray((ROOT/'romfs/world/podunk/podunk.encroom').read_bytes());struct.pack_into('<I',blob,36,14);struct.pack_into('<I',blob,52,0)
+  blob=bytearray((ROOT/'romfs/world/podunk/podunk.encroom').read_bytes());struct.pack_into('<I',blob,36,15);struct.pack_into('<I',blob,52,0)
   import zlib
   struct.pack_into('<I',blob,52,zlib.crc32(blob))
   with self.assertRaises(ValueError):native_content.parse_pack(bytes(blob))

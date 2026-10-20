@@ -1,0 +1,16 @@
+..usage: append [-h] [--stage] [--scope {run-loop,prop-nodes}] [--base BASE]
+              --out OUT [--ffmpeg FFMPEG] [--ffprobe FFPROBE]
+append: error: argument --scope: invalid choice: 'unknown' (choose from 'run-loop', 'prop-nodes')
+...F..........
+======================================================================
+FAIL: test_source_filters_sound_and_owner_identities (tests.test_prop_contact_data.PropContactData.test_source_filters_sound_and_owner_identities)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_prop_contact_data.py", line 23, in test_source_filters_sound_and_owner_identities
+    self.assertTrue(set(p.producers(self.policy))>set(p.producers()))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 16 tests in 10.243s
+
+FAILED (failures=1)

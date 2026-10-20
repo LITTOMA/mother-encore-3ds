@@ -1,0 +1,78 @@
+{
+  "removed": [
+    {
+      "path": "build\\full-port\\root-published-native-1\\prop_contact_scene",
+      "bytes": 53117344,
+      "sha256": "c4e1dde218c083b8b5c251f4a8fc4d93ce897d046d4c870d1a83f59e84045339",
+      "proof": "native-first/proof.json"
+    },
+    {
+      "path": "build\\full-port\\root-published-native-1\\prop_contact_data",
+      "bytes": 53005328,
+      "sha256": "700076c25ec5817439afa50556b9201001f4b9f141dc4e2e874fdaac93a52490",
+      "proof": "native-first/proof.json"
+    },
+    {
+      "path": "build\\full-port\\root-published-native-1\\field_prop_audio",
+      "bytes": 53342240,
+      "sha256": "e67a5f77b5c6a78295af9bcf4bc68375a645867447a99f03ffdc7e33d3885a89",
+      "proof": "native-first/proof.json"
+    },
+    {
+      "path": "build\\full-port\\root-published-native-1\\field_story",
+      "bytes": 53429272,
+      "sha256": "cc45aa7824cc86202f8dffe4a38a410cba95e150a0a411831f309c92995ed58e",
+      "proof": "native-first/proof.json"
+    },
+    {
+      "path": "build\\full-port\\root-published-native-1\\cemetery_roots",
+      "bytes": 53159600,
+      "sha256": "6a707174352d37f4f4e760f4bbdd25837f71b93c0b07c110c287b8f7aa7894bf",
+      "proof": "native-first/proof.json"
+    },
+    {
+      "path": "build\\full-port\\root-published-native-2\\cemetery_roots",
+      "bytes": 53160280,
+      "sha256": "99eef388a366613a562db8241e249c1cba470eb897fbe08c011ef4e572a13590",
+      "proof": "native-rest/proof.json"
+    },
+    {
+      "path": "build\\full-port\\root-published-native-2\\graveyard_tutorial",
+      "bytes": 52726056,
+      "sha256": "078b8da55d8da347cdda433d5418ef4821f44e52472c4a838dbab113c7b518ca",
+      "proof": "native-rest/proof.json"
+    },
+    {
+      "path": "build\\full-port\\root-published-native-2\\field_prop_renderer",
+      "bytes": 53789832,
+      "sha256": "62035d1f24bbc328384e264c94362701a8ee768459a4a5d0d5c251f320db7330",
+      "proof": "native-rest/proof.json"
+    },
+    {
+      "path": "build\\full-port\\root-published-native-2\\prop_scene_resources",
+      "bytes": 52693744,
+      "sha256": "50072c64ac16e90d9125b8b2dade7168bc906a1695d12c01c1d9bc982388c6cc",
+      "proof": "native-rest/proof.json"
+    },
+    {
+      "path": "build\\full-port\\root-published-native-2\\native_session",
+      "bytes": 54564544,
+      "sha256": "8e2f1a4452289d1173f078779e160179bd53d8315c6f94fda6beeaa87436bcc2",
+      "proof": "native-rest/proof.json"
+    },
+    {
+      "path": "build\\full-port\\prop-node-audio-native-1\\field-prop-audio",
+      "bytes": 53340752,
+      "sha256": "36edaa5c2f8480a68fbd6a4b2d38326a0096217c312201ddf9045372c73d9879",
+      "proof": "audio-first/proof.json"
+    },
+    {
+      "path": "build\\full-port\\prop-node-audio-native-2\\field-prop-audio",
+      "bytes": 53340752,
+      "sha256": "36edaa5c2f8480a68fbd6a4b2d38326a0096217c312201ddf9045372c73d9879",
+      "proof": "audio-corrected/proof.json"
+    }
+  ],
+  "bytes": 639669744,
+  "kept": "All source/cache/tools/actual game/recorded save/protected directories and raw logs; only exact owned completed ELF files removed"
+}

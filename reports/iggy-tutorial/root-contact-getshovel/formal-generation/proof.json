@@ -1,0 +1,21 @@
+{
+  "scope": "Actual source generators; Room14 getshovel append and four tutorial idle yields. House/Mayor Room bytes, full field map, ready object packet and both object/Root textures unchanged. Session/restore candidates only, pending semantic review.",
+  "changed": [
+    "content/asset-receipts/graphics/world/player/swing/resources.json",
+    "content/asset-receipts/graphics/world/podunk/objects/source.json",
+    "content/asset-receipts/graphics/world/podunk/props/source.json",
+    "content/asset-receipts/graphics/world/podunk/source.json",
+    "romfs/world/podunk/podunk.encprops",
+    "romfs/world/podunk/podunk.encroom",
+    "romfs/world/podunk/story.encstory"
+  ],
+  "dependent_keys": {
+    "session": [
+      "key_acquisitions",
+      "dependencies",
+      "mutable_flags",
+      "sources"
+    ],
+    "restore": []
+  }
+}

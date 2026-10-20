@@ -1,0 +1,66 @@
+[
+  {
+    "step": "audio",
+    "args": [
+      "tools/append_audio_assets.py",
+      "--scope",
+      "prop-nodes",
+      "--stage",
+      "--out",
+      "build/full-port/prop-audio-append-publication-1",
+      "--ffmpeg",
+      "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+      "--ffprobe",
+      "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffprobe.exe"
+    ],
+    "returncode": 0,
+    "seconds": 42.64100000000326
+  },
+  {
+    "step": "session",
+    "args": [
+      "tools/native_session.py",
+      "extract"
+    ],
+    "returncode": 0,
+    "seconds": 7.625
+  },
+  {
+    "step": "restore",
+    "args": [
+      "tools/native_restore.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 0.31299999996554106
+  },
+  {
+    "step": "naming",
+    "args": [
+      "tools/new_game_assets.py",
+      "reuse-session",
+      "--base",
+      "2fb5484928f655375e62864a62c159ee8343fcf2"
+    ],
+    "returncode": 0,
+    "seconds": 9.34299999999348
+  },
+  {
+    "step": "catalog",
+    "args": [
+      "tools/resource_catalog.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 0.5
+  },
+  {
+    "step": "stage",
+    "args": [
+      "tools/stage_native_romfs.py",
+      "--verify-only"
+    ],
+    "returncode": 0,
+    "seconds": 68.03200000000652
+  }
+]

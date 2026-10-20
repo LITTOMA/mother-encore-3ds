@@ -35,7 +35,7 @@ int main(int argc,char**argv){
  const auto object_texture=owner.objects().texture();write(root/object_texture,read(source+"/"+object_texture));created.push_back(root/object_texture);
  const auto pp=root/catalog.path(ResourceRole::FieldProps,1031);const auto packet=read(pp.string());FieldSceneResources candidate;CHECK(candidate.load(catalog,world,2,out.c_str(),domain.view(),items.view(),error));
  {auto b=packet;b.back()^=1;write(pp,b);FieldSceneResources bad;CHECK(!bad.load(catalog,world,2,out.c_str(),domain.view(),items.view(),error)&&!bad.valid());write(pp,packet);CHECK(owner.props().props().data()==identity);}
- for(unsigned mode=0;mode<7;++mode){auto b=packet;const auto callback_row=get(b,116)+11*104;
+ for(unsigned mode=0;mode<7;++mode){auto b=packet;const auto callback_row=get(b,116)+11*get(b,124);
   if(mode==0)b=read("tests/fixtures/source-field-props.encprops");
   else if(mode==1){const auto policy=get(b,84);put(b,policy,3);sign(b);}
   else if(mode==2){const auto policy=get(b,84);put(b,policy+92,8);sign(b);}
@@ -45,5 +45,5 @@ int main(int argc,char**argv){
   else{auto at=get(b,68)+get(b,callback_row+28)-1;while(b.at(at))++at;b.at(at)='x';sign(b);}
   auto changed=cat;put(changed,cr+8,uint32_t(b.size()));put(changed,cr+12,encore::crc32(b.data(),b.size()));sign(changed);ResourceCatalog checked;CHECK(checked.load(changed.data(),changed.size(),error));write(pp,b);FieldSceneResources bad;CHECK(!bad.load(checked,world,2,out.c_str(),domain.view(),items.view(),error)&&!bad.valid());write(pp,packet);}
  for(const auto&p:created)CHECK(std::filesystem::remove(p));
- std::printf("Prop scene ownership: %u checks; catalog13/links5/props2 with checked object companion, legacy readers, required joins, wrong identities, truncation and failed candidate rollback; metadata only, no quest/audio/hardware claim\n",checks);
+ std::printf("Prop scene ownership: %u checks; catalog13/links5/props3 with checked object companion, legacy readers, required joins, wrong identities, truncation and failed candidate rollback; metadata only, no quest/audio/hardware claim\n",checks);
 }

@@ -18,11 +18,12 @@ def unique(pairs):
 
 def read(path=RECIPE):
  p=json.loads(Path(path).read_text(encoding='utf8'),object_pairs_hook=unique)
- require(type(p)is dict and set(p)==set('schema kind commit field_recipe clip_recipe texture instances callbacks map_sha256 scope'.split())|({'output','receipt'}if p.get('schema')==2 else set()),'Field prop recipe fields')
- require(type(p['schema'])is int and p['schema']in(1,2) and p['kind']=='encore.field-props.reviewed-source'and p['commit']==f.PIN,'Field prop recipe schema/pin')
- for key in ('field_recipe','clip_recipe','texture')+(('output','receipt')if p['schema']==2 else ()):require(type(p[key])is str and p[key] and not p[key].startswith('/') and all(v not in ('','.','..')for v in p[key].split('/'))and ':'not in p[key]and '\\'not in p[key],'Field prop recipe path')
+ require(type(p)is dict and set(p)==set('schema kind commit field_recipe clip_recipe texture instances callbacks map_sha256 scope'.split())|({'output','receipt'}if p.get('schema')in(2,3)else set())|({'contact_recipe'}if p.get('schema')==3 else set()),'Field prop recipe fields')
+ require(type(p['schema'])is int and p['schema']in(1,2,3) and p['kind']=='encore.field-props.reviewed-source'and p['commit']==f.PIN,'Field prop recipe schema/pin')
+ for key in ('field_recipe','clip_recipe','texture')+(('output','receipt')if p['schema']>=2 else ())+(('contact_recipe',)if p['schema']==3 else ()):require(type(p[key])is str and p[key] and not p[key].startswith('/') and all(v not in ('','.','..')for v in p[key].split('/'))and ':'not in p[key]and '\\'not in p[key],'Field prop recipe path')
  require(p['texture'].startswith('graphics/')and p['texture'].endswith('.t3x'),'Field prop texture destination')
- if p['schema']==2:require(p['output'].startswith('world/')and p['output'].endswith('.encprops')and p['receipt'].startswith('content/asset-receipts/')and p['receipt'].endswith('.json'),'Field prop output paths')
+ if p['schema']>=2:require(p['output'].startswith('world/')and p['output'].endswith('.encprops')and p['receipt'].startswith('content/asset-receipts/')and p['receipt'].endswith('.json'),'Field prop output paths')
+ if p['schema']==3:require(p['contact_recipe'].startswith('content/')and p['contact_recipe'].endswith('.json'),'Field prop contact recipe identity')
  require(type(p['instances'])is list and 0<len(p['instances'])<=128,'Field prop instance capacity')
  ids=set();paths=set()
  for row in p['instances']:
@@ -71,7 +72,8 @@ def source(path=RECIPE):
    target=n.props['called_object'];require(isinstance(target,NodePathValue),'Field prop callback path type');target=posixpath.normpath(path+'/'+target.path);entry={'path':target,'method':n.props.get('call_object_function','')};require(entry in p['callbacks'],'Field prop unreviewed callback');used_callbacks.add(target)
    callback=exactly([i for i,r in enumerate(m.boundaries)if text(r['path'])==target and r['kind']==2],'callback target')
    callback_path=target
-  row=dict(id=binding['id'],sprite=sprite_index,body=body_index,clone_item=clone_item,appear=flag(n.props.get('flag','')),finish=flag(n.props.get('object_function_disappear_flag','')),callback=callback,callback_path=callback_path,position=position,sprite_center=center,view_center=view_center,view_extents=view_extents,hit_center=hit_center,hit_extents=hit_extents,interact_center=interaction_center,interact_extents=interaction_extents,body_extents=body_extents)
+  notice=exactly([i for i,r in enumerate(m.notices)if text(r['path'])==path],'interaction notice')
+  row=dict(id=binding['id'],sprite=sprite_index,body=body_index,clone_item=clone_item,appear=flag(n.props.get('flag','')),finish=flag(n.props.get('object_function_disappear_flag','')),callback=callback,callback_path=callback_path,position=position,sprite_center=center,view_center=view_center,view_extents=view_extents,hit_center=hit_center,hit_extents=hit_extents,interact_center=interaction_center,interact_extents=interaction_extents,body_extents=body_extents,notice=notice,path=path)
   rows.append(row)
  require(used_callbacks=={c['path']for c in p['callbacks']},'Field prop unowned callback policy')
  audio=sc.by_path[p['instances'][0]['path']+'/AudioStreamPlayer'];sound=owner_of(audio,'stream').ext_path(audio.props['stream'],'AudioStream');ex.data(sound)
@@ -81,7 +83,30 @@ def source(path=RECIPE):
  clone_after=exactly([i for i,r in enumerate(m.items)if r['kind']==1 and r['first']==m.layer_by_path[tail]],'clone subtree tail')
  require(any(g['kind']==1 and g['first']<=clone_after<g['first']+g['count']for g in m.groups),'Field prop clone tail is sorted')
  policy=dict(scene=recipe['scene']['id'],hidden=clipids['Hidden'],idle=clipids['Idle'],grow=clipids['Grow'],broken=clipids['Break'],clone_frame=int(frame[1]),bat_flag=flags.index('bat'),width=width,height=height,hard=calls[1],easy=calls[0],sound=sound,texture=p['texture'],clone_parent=parent,clone_after=clone_after,rumble=[float(v.strip())for v in rumble[1].split(',')])
+ if p['schema']==3:
+  contact,more=contact_source(p,m,sound);policy['contact']=contact;ex.sources.update(more)
  return dict(policy=policy,flags=flags,props=rows),prop_clips.encode(clips),dict(commit=f.PIN,sources=dict(sorted({**m.sources.extractor.sources,**ex.sources}.items())),scope=p['scope'])
+
+def contact_source(p,model,sound):
+ from tools import field_swing as swing
+ from tools.godot_text import Document
+ import math,zlib
+ source,ex=swing.read(ROOT/p['contact_recipe']);action=swing.source(ROOT/p['contact_recipe']);blob=swing.encode(action);doc=Document(source['scene'],ex.text(source['scene']));hit=next(n for n in doc.nodes if n.attrs.get('parent')=='HitboxPivot'and n.attrs['name']=='BatHitbox');base=Document('emitter',ex.text(doc.ext_path(hit.attrs['instance'],'PackedScene')))
+ def area(props):
+  require(set(props)<=set('position collision_layer collision_mask monitoring monitorable'.split()),'Field prop unreviewed Area override');layer=props.get('collision_layer',1);mask=props.get('collision_mask',1);monitoring=props.get('monitoring',True);monitorable=props.get('monitorable',True)
+  require(type(layer)is type(mask)is int and 0<=layer<2**20 and 0<=mask<2**20 and type(monitoring)is type(monitorable)is bool,'Field prop contact filter domain')
+  return [layer,mask,int(monitoring)|int(monitorable)<<1]
+ emitter=area(base.nodes[0].props);filters=[];audios=[]
+ for binding in p['instances']:
+  filters.append(area(model.scene.by_path[binding['path']+'/Hitbox'].props));node=model.scene.by_path[binding['path']+'/AudioStreamPlayer'];props=node.props
+  require(node.type=='AudioStreamPlayer'and set(props)<=set('stream bus volume_db pitch_scale pause_mode autoplay stream_paused mix_target'.split()),'Field prop unreviewed sound node/override')
+  require(props.get('bus','Master')=='SFX'and type(props.get('pause_mode',0))is int and props.get('pause_mode',0)==0 and props.get('autoplay',False)is False and props.get('stream_paused',False)is False and type(props.get('mix_target',0))is int and props.get('mix_target',0)==0,'Field prop unsupported sound bus/pause/automatic playback')
+  require(owner_of(node,'stream').ext_path(props['stream'],'AudioStream')==sound,'Field prop inconsistent per-node sound source');gain=props.get('volume_db',0);pitch=props.get('pitch_scale',1)
+  require(type(gain)in(int,float)and math.isfinite(gain)and -256<=gain<=128 and type(pitch)in(int,float)and math.isfinite(pitch)and 0<pitch<=16,'Field prop source gain/pitch domain');audios.append([float(gain),float(pitch)])
+ require(all(v==filters[0]for v in filters)and all(v==audios[0]for v in audios)and filters[0][2]&1 and emitter[2]&2 and filters[0][1]&emitter[0],'Field prop common monitored source pair')
+ return dict(target=filters[0],emitter=emitter,gain_db=audios[0][0],pitch=audios[0][1],bus=1,pause_mode=0,swing_bytes=len(blob),swing_crc=zlib.crc32(blob),sound_sha256=hashlib.sha256(model.sources.data(sound)).hexdigest()),ex.sources
+
+def strides(capability):return (1,176,1,116,8)if capability==3 else STRIDES
 
 def encode(data,clips,*,capability=2):
  strings=bytearray();spans={}
@@ -90,29 +115,37 @@ def encode(data,clips,*,capability=2):
   return spans[v]
  p=data['policy'];policy=struct.pack('<9I',*(p[k]for k in 'scene hidden idle grow broken clone_frame bat_flag width height'.split()))
  for k in ('hard','easy','sound','texture'):policy+=struct.pack('<2I',*text(p[k]))
- require(type(capability)is int and capability in(1,2),'Field prop encoding capability')
- policy+=struct.pack('<4f3I',*p['rumble'],*text(p['clone_parent']),p['clone_after']if capability==2 else 0);props=bytearray()
+ require(type(capability)is int and capability in(1,2,3),'Field prop encoding capability')
+ policy+=struct.pack('<4f3I',*p['rumble'],*text(p['clone_parent']),p['clone_after']if capability>=2 else 0);props=bytearray()
+ if capability==3:
+  require(type(p.get('contact'))is dict,'Field prop contact policy is missing')
+  c=p['contact'];policy+=struct.pack('<6I2f4I',*c['target'],*c['emitter'],c['gain_db'],c['pitch'],c['bus'],c['pause_mode'],c['swing_bytes'],c['swing_crc'])+bytes.fromhex(c['sound_sha256']);require(len(policy)==176,'Field prop contact policy layout')
  for r in data['props']:
   path=0
-  if capability==2 and r['callback_path']:path=len(strings)+1;strings.extend(r['callback_path'].encode()+b'\0')
+  if capability>=2 and r['callback_path']:path=len(strings)+1;strings.extend(r['callback_path'].encode()+b'\0')
   props+=struct.pack('<8I',*(r[k]for k in 'id sprite body clone_item appear finish callback'.split()),path)
   for k in 'position sprite_center view_center view_extents hit_center hit_extents interact_center interact_extents body_extents'.split():props+=struct.pack('<2f',*r[k])
+  if capability==3:props+=struct.pack('<3I',r['notice'],*text(r['path']))
  flags=b''.join(struct.pack('<2I',*text(s))for s in data['flags'])
- return f.pack_container(MAGIC,0,[strings,policy,clips,props,flags],STRIDES,LIMIT,capability=capability)
+ return f.pack_container(MAGIC,0,[strings,policy,clips,props,flags],strides(capability),LIMIT,capability=capability)
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
-def producers():return {n:sha(ROOT/n)for n in ('tools/field_props.py','tools/prop_clips.py','tools/podunk_field.py')}
+def producers(p=None):
+ p=read()if p is None else p;names=['tools/field_props.py','tools/prop_clips.py','tools/podunk_field.py']
+ if p['schema']==3:names+=['tools/field_swing.py','tools/godot_text.py','tools/extract_battle_entry.py',p['contact_recipe']]
+ return {n:sha(ROOT/n)for n in names}
+def capability(p):return 3 if p['schema']==3 else 2
 def texture_bytes(root,p,expected):
  root=Path(root).resolve();target=(root/p['texture']).resolve();require(target.is_relative_to(root)and target.is_file(),'Missing/unsafe field prop texture');blob=target.read_bytes()
  require(type(expected)is dict and set(expected)=={'bytes','sha256'}and type(expected['bytes'])is int and expected['bytes']==len(blob)and hashlib.sha256(blob).hexdigest()==expected['sha256'],'Field prop texture fingerprint differs');return blob
 def receipt(p,proof,root=ROOT/'romfs'):
- require(p['schema']==2,'Field props release requires schema2 output bindings')
+ require(p['schema']in(2,3),'Field props release requires bound output recipe')
  r=json.loads((ROOT/p['receipt']).read_text(encoding='utf8'),object_pairs_hook=unique)
- require(type(r)is dict and set(r)==set('schema commit policy_sha256 producers sources tex3ds_sha256 texture permission'.split())and type(r['schema'])is int and r['schema']==1 and r['commit']==f.PIN and r['policy_sha256']==sha(RECIPE)and r['producers']==producers()and r['sources']==proof['sources'],'Field prop receipt/source changed')
+ require(type(r)is dict and set(r)==set('schema commit policy_sha256 producers sources tex3ds_sha256 texture permission'.split())and type(r['schema'])is int and r['schema']==1 and r['commit']==f.PIN and r['policy_sha256']==sha(RECIPE)and r['producers']==producers(p)and r['sources']==proof['sources'],'Field prop receipt/source changed')
  require(type(r['tex3ds_sha256'])is str and re.fullmatch('[0-9a-f]{64}',r['tex3ds_sha256'])and r['permission']=='Pinned upstream LICENSE game-related port; original notices retained; no tool binary distributed','Field prop tool/permission record differs')
  return texture_bytes(root,p,r['texture'])
 def stage_files(root=ROOT/'romfs'):
- p=read();data,clips,proof=source();blob=encode(data,clips);texture=receipt(p,proof,root)
+ p=read();data,clips,proof=source();blob=encode(data,clips,capability=capability(p));texture=receipt(p,proof,root)
  require((Path(root)/p['output']).read_bytes()==blob,'Field prop resource is stale')
  return {Path(p['output']):blob,Path(p['texture']):texture}
 def same_adapter_except(previous,current,names):
@@ -125,7 +158,7 @@ def readmit(base):
  """Retain a real conversion only when source, model and pixels are unchanged."""
  require(type(base)is str and re.fullmatch('[0-9a-f]{40}',base),'Field prop readmission needs an exact baseline commit')
  old=lambda path:subprocess.check_output(['git','show',base+':'+path],cwd=ROOT)
- p=read();data,clips,proof=source();require(p['schema']==2,'Field prop release output binding required')
+ p=read();data,clips,proof=source();require(p['schema']in(2,3),'Field prop release output binding required')
  recipe_path=RECIPE.relative_to(ROOT).as_posix();raw_recipe=RECIPE.read_bytes();require(old(recipe_path)==raw_recipe,'Field prop readmission changed policy')
  baseline=json.loads(old(p['receipt']),object_pairs_hook=unique);current=json.loads((ROOT/p['receipt']).read_bytes(),object_pairs_hook=unique);require(current==baseline,'Field prop readmission baseline receipt differs')
  require(set(baseline)==set('schema commit policy_sha256 producers sources tex3ds_sha256 texture permission'.split())and baseline['schema']==1 and baseline['commit']==f.PIN and baseline['policy_sha256']==hashlib.sha256(raw_recipe).hexdigest()and baseline['sources']==proof['sources'],'Field prop readmission source/policy changed')
@@ -135,7 +168,7 @@ def readmit(base):
   if path=='tools/podunk_field.py':same_adapter_except(before,after,{'build_room'})
   elif path=='tools/field_props.py':same_adapter_except(before,after,{'main','readmit','same_adapter_except'})
   else:require(before==after,'Field prop consumed clip producer changed')
- require(encode(data,clips)==old('romfs/'+p['output'])==(ROOT/'romfs'/p['output']).read_bytes(),'Field prop readmission changes resource semantics')
+ require(encode(data,clips,capability=capability(p))==old('romfs/'+p['output'])==(ROOT/'romfs'/p['output']).read_bytes(),'Field prop readmission changes resource semantics')
  texture_bytes(ROOT/'romfs',p,baseline['texture'])
  require(type(baseline['tex3ds_sha256'])is str and re.fullmatch('[0-9a-f]{64}',baseline['tex3ds_sha256'])and baseline['permission']=='Pinned upstream LICENSE game-related port; original notices retained; no tool binary distributed','Field prop original conversion/permission changed')
  updated=dict(baseline,producers=producers());(ROOT/p['receipt']).write_bytes((json.dumps(updated,indent=2)+'\n').encode());receipt(p,proof)
@@ -145,11 +178,11 @@ def main():
  ap=argparse.ArgumentParser();ap.add_argument('action',nargs='?',default='candidate',choices=('candidate','assets','compile','verify','readmit'));ap.add_argument('--recipe',type=Path,default=RECIPE);ap.add_argument('--out',type=Path);ap.add_argument('--tex3ds',type=Path);ap.add_argument('--tex3ds-command');ap.add_argument('--base');a=ap.parse_args()
  if a.action=='readmit':require(a.recipe.resolve()==RECIPE.resolve(),'Field prop readmission uses the release policy only');readmit(a.base);return
  require(a.base is None,'Field prop baseline only applies to readmission')
- p=read(a.recipe);data,clips,proof=source(a.recipe);blob=encode(data,clips);f.unpack_container(blob,MAGIC,STRIDES,LIMIT,capability=2)
+ p=read(a.recipe);data,clips,proof=source(a.recipe);cap=capability(p);blob=encode(data,clips,capability=cap);f.unpack_container(blob,MAGIC,strides(cap),LIMIT,capability=cap)
  if a.action=='candidate':
   require(a.out is not None,'Candidate output required');out=a.out.resolve();require(out.is_relative_to(ROOT/'build')and not out.exists(),'Fresh owned field prop candidate required');out.mkdir(parents=True);(out/'source.encprops').write_bytes(blob);(out/'source.json').write_bytes((json.dumps(dict(data=data,proof=proof),indent=2)+'\n').encode())
  else:
-  require(a.recipe.resolve()==RECIPE.resolve()and p['schema']==2,'Release props require the reviewed output recipe')
+  require(a.recipe.resolve()==RECIPE.resolve()and p['schema']in(2,3),'Release props require the reviewed output recipe')
   if a.action=='assets':
    require(a.tex3ds and a.tex3ds.is_file(),'Actual tex3ds required');cp,ex=prop_clips.read(ROOT/p['clip_recipe']);require("purpose you're using them is related to the game"in ex.text('LICENSE'),'Field prop asset permission changed')
    target=ROOT/'romfs'/p['texture'];target.parent.mkdir(parents=True,exist_ok=True);image=ROOT/'upstream/MOTHER-Encore'/cp['texture'];command=shlex.split(a.tex3ds_command)if a.tex3ds_command else None;rel=lambda v:v.resolve().relative_to(ROOT).as_posix()

@@ -26,12 +26,12 @@ struct Motion:MickHost {
 };
 }
 int main(int argc,char**argv){
- CHECK(argc==2);
+ CHECK(argc==3);
  RoomData room;FieldMapData map;WorldLinksData links;FieldPropsData props;FieldStoryData story;ItemData items;std::vector<uint8_t>bytes;
  CHECK(encore::read_file("romfs/world/podunk/podunk.encroom",bytes,16*1024*1024,error)&&room.load(bytes.data(),bytes.size(),error));
  CHECK(map.load_file(argv[1],error)&&links.load_file("romfs/world/world.enclinks",error));
- CHECK(props.load_file("romfs/world/podunk/podunk.encprops",error)&&story.load_file("romfs/world/podunk/story.encstory",error)&&items.load_file("romfs/ui/opening.encitems",error));
- CHECK(get(bytes,36)==13&&room.view().actor_instance_count()==6&&room.view().program_count()==7);
+ CHECK(props.load_file(argv[2],error)&&props.capability()==2&&story.load_file("romfs/world/podunk/story.encstory",error)&&items.load_file("romfs/ui/opening.encitems",error));
+ CHECK(get(bytes,36)==14&&room.view().actor_instance_count()==6&&room.view().program_count()==8);
  uint32_t programme=UINT32_MAX;for(uint32_t i=0;i<room.view().program_count();++i)if(room.view().string(room.view().program(i).source_path_string)=="Podunk/cutscenes/graveyard_zombie_roots")programme=i;
  CHECK(programme==5);const auto p=room.view().program(programme);uint32_t erase=UINT32_MAX,grow=UINT32_MAX;
  for(uint32_t i=0;i<p.command_count;++i){const auto c=room.view().command(p.first_command+i);if(c.opcode==47)erase=p.first_command+i;if(c.opcode==6)grow=c.target_index;}
@@ -39,9 +39,9 @@ int main(int argc,char**argv){
  const auto identity=room.view().bytes();const auto binding=room.view().section_offset(RoomSection::Binding)+grow*32;
  const auto command=room.view().section_offset(RoomSection::Command)+erase*48;
  auto reject=[&](std::vector<uint8_t>b){sign(b);CHECK(!room.load(b.data(),b.size(),error)&&room.view().bytes()==identity);};
- // The appended tutorial now requires GrantKeyItem; legacy 12 cannot admit
- // that opcode, while 14 remains unknown. Cemetery programme 5 is preserved.
- for(uint32_t cap:{11u,12u,14u}){auto b=bytes;put(b,36,cap);reject(b);}
+ // Tutorial requires GrantKeyItem and getshovel requires object deletion;
+ // capabilities 11..13 cannot admit both, while 15 remains unknown.
+ for(uint32_t cap:{11u,12u,13u,15u}){auto b=bytes;put(b,36,cap);reject(b);}
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{binding+4,11},{binding+8,0},{binding+8,65536},{binding+12,0},{binding+16,1},{binding+24,1},{command+2,0},{command+8,0},{command+12,1},{command+24,1}}){auto b=bytes;put(b,edit.first,edit.second);reject(b);}
  {auto b=bytes;const auto first=room.view().section_offset(RoomSection::Command);for(uint32_t i=0;i<room.view().command_count();++i){const auto c=room.view().command(i);if(c.opcode==6||c.opcode==48){put(b,first+i*48,0xffff0019);put(b,first+i*48+8,UINT32_MAX);put(b,first+i*48+12,0);}}reject(b);}
  OpeningWorld unbound;CHECK(unbound.initialize(room.view()));SourceRandom random(17);unbound.attach_random(random);const auto initial=random.state();

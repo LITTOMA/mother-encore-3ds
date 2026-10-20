@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "recipe_sha256": "dfb84211c7e3e045c878252fb58187750f5769020c769f80b671252b88bc18e3",
+  "recipe_sha256": "0d20df3e8885e402cde20aff5e4acbb671575420df6d76b1bebd80f0e8f2a53a",
   "ffmpeg_version": "ffmpeg version 7.0-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers\nbuilt with gcc 13.2.0 (Rev5, Built by MSYS2 project)\nconfiguration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libaribcaption --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libxevd --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxeve --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libcodec2 --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint\nlibavutil      59.  8.100 / 59.  8.100\nlibavcodec     61.  3.100 / 61.  3.100\nlibavformat    61.  1.100 / 61.  1.100\nlibavdevice    61.  1.100 / 61.  1.100\nlibavfilter    10.  1.100 / 10.  1.100\nlibswscale      8.  1.100 /  8.  1.100\nlibswresample   5.  1.100 /  5.  1.100\nlibpostproc    58.  1.100 / 58.  1.100\n",
   "ffmpeg_sha256": "e8de88d0fc5993b76af6337a68f886abc8a052bbbe437b1d2c1b0fde0534582a",
   "assets": [
@@ -2309,13 +2309,52 @@
         "1",
         "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-85q6xciz\\1.pcm"
       ]
+    },
+    {
+      "stable_id": 3176391583,
+      "source_sha256": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+      "sample_rate": 44100,
+      "channels": 1,
+      "loop": false,
+      "frames": 15309,
+      "loop_start": 0,
+      "pcm_bytes": 30618,
+      "pcm_crc32": 2928106176,
+      "pcm_path": "sound/effects/field-prop-3176391583.pcm",
+      "source_path": "res://Audio/Sound effects/Barrel Coffin Explode.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "083b5b698f4b567160aa4e4e395060016964d74625e927bbb3cc70ace6c607ea",
+      "command": [
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Audio\\Sound effects\\Barrel Coffin Explode.mp3",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-jt8aj73v\\0.pcm"
+      ]
     }
   ],
   "files": [
     {
       "path": "sound/banks/opening.encaudio",
-      "size": 10243,
-      "sha256": "cb1a2ab57d6675a0e18a581b56fcabb43dc8ebd13206b76da0040efcb1e263a7"
+      "size": 10431,
+      "sha256": "8b3a469a02429ddc18dfef72c528fec423aa874203fcd3c9675d3ee81ca20181"
     },
     {
       "path": "sound/effects/bash.pcm",
@@ -2356,6 +2395,11 @@
       "path": "sound/effects/field-menu-open.pcm",
       "size": 35280,
       "sha256": "a707c5761a3369847577a5dd23ef5d8c28c9bb3eacb90620fe07a282583ad74e"
+    },
+    {
+      "path": "sound/effects/field-prop-3176391583.pcm",
+      "size": 30618,
+      "sha256": "083b5b698f4b567160aa4e4e395060016964d74625e927bbb3cc70ace6c607ea"
     },
     {
       "path": "sound/effects/gameplay-2170301168.pcm",

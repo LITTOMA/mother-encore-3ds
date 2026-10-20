@@ -1,4 +1,5 @@
 #include "encore/field_scene.hpp"
+#include "encore/field_swing_resources.hpp"
 #include <algorithm>
 #include <cmath>
 
@@ -235,6 +236,10 @@ bool FieldScene::apply_prop_bodies(std::string&error){
     error.clear();return true;
 }
 bool FieldScene::bind_props(const FieldPropsData&data,std::string&error){
+    if(data.contact_bound()){error="Field prop contacts require prepared action, object and audio owners";return false;}
+    return bind_props_owner(data,error);
+}
+bool FieldScene::bind_props_owner(const FieldPropsData&data,std::string&error){
     if(phase_==FieldPhase::Error||props_.ready()){error="Field props need one prepared scene owner";return false;}
     if(!data.bind(world.content(),map_,error))return false;
     if(objects_.prepared())for(const auto&o:objects_.data().objects())for(const auto&p:data.props())if(o.body!=kFieldNone&&o.body==p.body){error="Field prop and object body ownership overlap";return false;}
@@ -244,6 +249,59 @@ bool FieldScene::bind_props(const FieldPropsData&data,std::string&error){
     for(uint32_t i=0;i<data.props().size();++i)owners[data.props()[i].sprite]=i;
     props_=std::move(next);prop_sprites_=std::move(owners);return world.bind_story_props(*this,error)&&apply_prop_bodies(error);
 }
+uint32_t FieldScene::prop_programme(uint32_t boundary)const{
+    if(!story_.valid()||boundary>=map_.count(FieldMapSection::Boundaries)||map_.boundary(boundary).kind!=uint16_t(FieldBoundaryKind::Area))return kFieldNone;
+    const auto path=map_.text(map_.boundary(boundary).path);for(uint32_t i=0;i<story_.programme_count();++i){const auto p=story_.programme(i);if(!p.flags&&story_.text(p.boundary)==path)return p.programme;}return kFieldNone;
+}
+bool FieldScene::prop_callback_area(uint32_t boundary)const{
+    if(!prop_contacts_.ready())return false;for(const auto&r:props_.data().props())if(r.callback==boundary)return true;return false;
+}
+bool FieldScene::can_call(uint32_t boundary,std::string&error){
+    const auto programme=prop_programme(boundary);if(programme==kFieldNone||!story_host_){error="Field prop callback programme is unbound";return false;}
+    return world.validate_story_props(programme,error)&&story_host_->can_start(story_,programme,error);
+}
+bool FieldScene::call(uint32_t boundary,uint32_t prop,std::string&error){
+    if(!prop_callback_area(boundary)||boundary>=prop_area_pending_.size()||prop>=props_.states().size()||!props_.states()[prop].alive||props_.data().props()[prop].callback!=boundary){error="Field prop deferred callback owner rejected";return false;}
+    // check_start only enables the area's next idle processing pass. It is
+    // independent of body overlap; a later body exit can cancel processing.
+    prop_area_pending_[boundary]=1;error.clear();return true;
+}
+bool FieldScene::bind_prop_contacts(const FieldPropsData&data,const FieldSwingData&action,FieldPropContactEffects&effects,std::string&error){
+    if(phase_!=FieldPhase::Transition||props_.ready()||prop_contacts_.ready()||!data.contact_bound()||!objects_.prepared()||!story_.valid()||!npcs_ready()){error="Field prop contacts need complete unpublished scene owners";return false;}
+    if(!data.bind(world.content(),map_,error)||!data.matches_action(action,error)||!effects.matches(data,error))return false;
+    std::vector<uint32_t>owners;for(const auto&r:data.props()){if(r.callback!=kFieldNone&&prop_programme(r.callback)==kFieldNone){error="Field prop source callback is unbound";return false;}owners.push_back(r.id);}
+    FieldAreaContacts next;if(!next.initialize(owners,error)||!bind_props_owner(data,error))return false;
+    prop_contacts_=std::move(next);prop_action_=&action;prop_effects_=&effects;prop_area_pending_.assign(boundary_inside_.size(),0);error.clear();return true;
+}
+bool FieldScene::prop_contact_enabled(std::array<uint8_t,128>&enabled,std::string&error)const{
+    const auto*resources=world.player_action_resources();if(!prop_action_||!resources||!world.player_action().ready()||!props_.data().matches_action(resources->swing(),error)){if(error.empty())error="Field prop persistent action owner is unavailable";return false;}
+    const bool emitter=world.player_action().pose().hitbox;for(uint32_t i=0;i<props_.states().size();++i){const auto&s=props_.states()[i];enabled[i]=s.alive&&s.animation.pose().hitbox&&emitter;}error.clear();return true;
+}
+bool FieldScene::commit_prop_hits(const std::vector<uint32_t>&indices,std::string&error){
+    if(!prop_effects_||!props_.can_hit(indices,error))return false;
+    for(auto i:indices){const auto&r=props_.data().props()[i];if(r.callback!=kFieldNone&&r.finish!=kFieldNone&&!world.story_flag(props_.data().flags()[r.finish])&&!can_call(r.callback,error))return false;}
+    if(!prop_effects_->prepare_hits(props_.data(),indices,error))return false;
+    for(auto i:indices){if(!props_.hit(i,error))return false;prop_effects_->commit_hit(i);}error.clear();return true;
+}
+bool FieldScene::begin_prop_contacts(std::string&error){
+    if(!prop_contacts_.ready())return true;std::array<uint8_t,128>enabled{};FieldAreaEvents events;
+    if(!prop_contact_enabled(enabled,error)||!prop_contacts_.begin(enabled.data(),props_.states().size(),events,error))return false;
+    std::vector<uint32_t>hits;for(size_t i=0;i<events.count;++i)if(events.values[i].entered)hits.push_back(events.values[i].index);
+    return hits.empty()||commit_prop_hits(hits,error);
+}
+bool FieldScene::sample_prop_contacts(std::string&error){
+    if(!prop_contacts_.ready())return true;std::array<uint8_t,128>enabled{},overlap{};if(!prop_contact_enabled(enabled,error))return false;
+    const auto player=world.player().position;const auto&pose=world.player_action().pose();for(uint32_t i=0;i<props_.states().size();++i)if(enabled[i]){const auto&r=props_.data().props()[i];bool hit=false;if(!swing_rectangle_overlap(*prop_action_,pose,player,r.hit_center,r.hit_extents,hit,error))return false;overlap[i]=hit;}
+    return prop_contacts_.end(enabled.data(),overlap.data(),props_.states().size(),error);
+}
+bool FieldScene::process_prop_areas(std::string&error){
+    if(world.stage()!=OpeningStage::Walking||world.house_paused()||phase_!=FieldPhase::Walking)return true;
+    for(uint32_t i=0;i<prop_area_pending_.size();++i)if(prop_area_pending_[i]){
+        if(conditions(map_.boundary(i).conditions)){if(!can_call(i,error)||!world.begin_house_program(prop_programme(i)))return false;prop_area_pending_[i]=0;break;}
+        prop_area_pending_[i]=0;
+    }return true;
+}
+void FieldScene::battle_to_overworld(){std::fill(prop_area_pending_.begin(),prop_area_pending_.end(),0);}
 bool FieldScene::apply_object_state(std::string&error){
     if(!objects_.prepared()){error.clear();return true;}
     for(uint32_t i=0;i<objects_.states().size();++i){const auto&s=objects_.states()[i];const auto&d=objects_.data().objects()[i];
@@ -278,7 +336,7 @@ bool FieldScene::grow_prop(uint32_t id,std::string&error){
     error="Field prop stable identity is unbound";return false;
 }
 bool FieldScene::hit_prop(uint32_t index,std::string&error){
-    if(phase_==FieldPhase::Error){error="Field prop hit needs a live scene";return false;}return props_.hit(index,error);
+    if(phase_==FieldPhase::Error){error="Field prop hit needs a live scene";return false;}return prop_contacts_.ready()?commit_prop_hits({index},error):props_.hit(index,error);
 }
 bool FieldScene::flush_props(FieldPropHost&host,std::string&error){
     return props_.flush_deferred(host,error)&&apply_prop_bodies(error);
@@ -521,6 +579,7 @@ bool FieldScene::overlaps(Vec2 center,Vec2 extents,Vec2 player)const{
 }
 bool FieldScene::before_physics(WalkInput& input){
     if(phase_==FieldPhase::Error)return false;
+    {std::string why;if(!begin_prop_contacts(why))return fail(why);}
     if(run_audio_.prepared()){
         // Source Area callbacks observe the previous completed physics motion,
         // before the next Player callback. Source compilation filters these
@@ -565,6 +624,7 @@ bool FieldScene::before_physics(WalkInput& input){
 bool FieldScene::after_physics(){
     if(phase_==FieldPhase::Error)return false;
     if(!world.healthy())return fail(std::string("Field world: ")+world.error());
+    {std::string why;if(!sample_prop_contacts(why))return fail(why);}
     if(world.stage()!=OpeningStage::Walking)return true;
     const auto position=world.player().position;bool any=false;
     const bool paused=world.house_paused();
@@ -579,8 +639,11 @@ bool FieldScene::after_physics(){
     for(uint32_t i=0;i<boundary_inside_.size();++i){
         const auto b=map_.boundary(i);
         if(b.kind==uint16_t(FieldBoundaryKind::Confirm))continue;
-        const bool inside=boundary_active_[i]&&overlaps(b.center,b.extents,position);
+        const bool callback_area=prop_callback_area(i);
+        const bool inside=(callback_area||boundary_active_[i])&&overlaps(b.center,b.extents,position);
+        if(callback_area&&!inside&&boundary_inside_[i])prop_area_pending_[i]=0;
         const bool entered=inside&&!boundary_inside_[i];boundary_inside_[i]=inside;any|=inside;
+        if(callback_area&&entered){prop_area_pending_[i]=1;continue;}
         if(!entered||phase_!=FieldPhase::Walking)continue;
         const auto bark=mick_bound_?mick_.view().string(mick_.view().actor().bark_path):std::string_view{};
         if(!bark.empty()&&map_.text(b.path)==bark){
@@ -627,6 +690,7 @@ bool FieldScene::finish_talk(){
 bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
     if(phase_==FieldPhase::Error)return false;
     if(!std::isfinite(delta)||delta<0||delta>1)return fail("Field idle time rejected");
+    {std::string why;if(!process_prop_areas(why))return fail(why);}
     if(map_.capabilities()>=6&&!objects_.prepared())return fail("Field object scene lifecycle is unbound");
     if(objects_.prepared()){
         std::string why;if(!objects_first_idle_&&!objects_.advance_idle(delta,why))return fail(why);
@@ -677,6 +741,11 @@ bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
         s.open=false;const auto o=map_.openable(i);if(!paused&&!map_.text(o.end_sound).empty())sounds_.push_back(map_.text(o.end_sound));}
     if(objects_.prepared()){
         std::string why;if(!objects_.flush_queued(why)||!apply_object_state(why))return fail(why);
+    }
+    if(prop_contacts_.ready()){
+        std::array<uint8_t,128>alive{};for(uint32_t i=0;i<props_.states().size();++i)alive[i]=props_.states()[i].alive;
+        std::string why;if(!props_.flush_deferred(*this,why)||!apply_prop_bodies(why))return fail(why);
+        for(uint32_t i=0;i<props_.states().size();++i)if(alive[i]&&!props_.states()[i].alive)prop_effects_->stop_deleted(i);
     }
     return true;
 }

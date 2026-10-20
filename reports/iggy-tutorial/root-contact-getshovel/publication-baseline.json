@@ -1,0 +1,8 @@
+{
+  "content/field-props.json": "42f311720b31846e0a11559b3402706c601f180faf6408891ffb88796ebcf0cd",
+  "content/native-audio.json": "0b9cf2197bb1b111fd9d6cab1e9540d85d1d56a813973baac0f5530687e31f8b",
+  "content/asset-receipts/audio/opening.json": "3faf197e472a70c907e31f16cb7e80f45a413d08d3ead691509420ccc522f85b",
+  "romfs/sound/banks/opening.encaudio": "cb1a2ab57d6675a0e18a581b56fcabb43dc8ebd13206b76da0040efcb1e263a7",
+  "romfs/world/podunk/podunk.encprops": "72ef23603001024709bb7bbdb59f75071d1eba9ce75003071d46bc9ad8810eda",
+  "content/asset-receipts/graphics/world/podunk/props/source.json": "84f52f3cee3d7f43957b91db88cb2eabd79b466336906c958d11fea36615ca0d"
+}

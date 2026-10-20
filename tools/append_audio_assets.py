@@ -59,7 +59,7 @@ def publish(metadata,payloads,validate):
         raise
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--stage',action='store_true');ap.add_argument('--base',type=Path,help='Read-only prior generated inputs under build; candidate-only reproduction');ap.add_argument('--out',type=Path,required=True);ap.add_argument('--ffmpeg',default='ffmpeg');ap.add_argument('--ffprobe',default='ffprobe');o=ap.parse_args();out=o.out.resolve();require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Audio append candidate must stay under build');out.mkdir(parents=True,exist_ok=True)
+    ap=argparse.ArgumentParser();ap.add_argument('--stage',action='store_true');ap.add_argument('--scope',choices=('run-loop','prop-nodes'),default='run-loop');ap.add_argument('--base',type=Path,help='Read-only prior generated inputs under build; candidate-only reproduction');ap.add_argument('--out',type=Path,required=True);ap.add_argument('--ffmpeg',default='ffmpeg');ap.add_argument('--ffprobe',default='ffprobe');o=ap.parse_args();out=o.out.resolve();require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Audio append candidate must stay under build');out.mkdir(parents=True,exist_ok=True)
     from tools.phone_linker_bindings import audio,verify_audio
     from tools.footstep_audio import bindings
     recipe_path=ROOT/'content/native-audio.json';manifest_path=ROOT/'content/asset-receipts/audio/opening.json';bank_path=ROOT/'romfs/sound/banks/opening.encaudio';prior=o.base.resolve()if o.base else None
@@ -69,7 +69,9 @@ def main():
         from tools.restore_audio import validated_plan
         plan,*_=validated_plan(ROOT,ROOT/'romfs');require(all(not p['missing']for p in plan),'Audio current metadata has missing PCM');print('Audio append: already current; no files changed');return
     base=checked_previous(old_recipe,old_manifest,old_blob,'sound/banks/opening.encaudio');tail=copy.deepcopy(new);tail['assets']=new['assets'][len(old_recipe['assets']):]
-    expected=bindings(ROOT);require([v['stable_id']for v in tail['assets']]==[v['identity']['value']for v in expected],'Audio append scope must be exactly source run-loop bindings')
+    if o.scope=='prop-nodes':
+        from tools.field_prop_audio import bindings
+    expected=bindings(ROOT);require([v['stable_id']for v in tail['assets']]==[v['identity']['value']for v in expected],'Audio append scope must be exactly reviewed '+o.scope+' bindings')
     from tools.restore_audio import safe_target
     for record in old_manifest['files']:
         if record['path']=='sound/banks/opening.encaudio':continue
@@ -81,7 +83,7 @@ def main():
             dest=out/row['path'];dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(temporary/row['path'],dest)
     files={'native-audio.json':(json.dumps(new,indent=2)+'\n').encode(),'opening.json':(json.dumps(manifest,indent=2)+'\n').encode(),'opening.encaudio':blob}
     for name,raw in files.items():(out/name).write_bytes(raw)
-    proof=dict(scope='Append exact reviewed run-loop bindings only',old_asset_count=len(base['assets']),new_asset_count=len(new['assets']),old_records_unchanged=a.parse_bank(blob)['assets'][:len(base['assets'])]==base['assets'],unchanged_pcm={f['path']:f['sha256']for f in old_manifest['files']if f['path']!='sound/banks/opening.encaudio'},source_producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),new_files={name:file_record(name,raw)for name,raw in files.items()},staged=False)
+    proof=dict(scope='Append exact reviewed '+o.scope+' bindings only',old_asset_count=len(base['assets']),new_asset_count=len(new['assets']),old_records_unchanged=a.parse_bank(blob)['assets'][:len(base['assets'])]==base['assets'],unchanged_pcm={f['path']:f['sha256']for f in old_manifest['files']if f['path']!='sound/banks/opening.encaudio'},source_producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),new_files={name:file_record(name,raw)for name,raw in files.items()},staged=False)
     if o.stage:
         metadata={recipe_path:files['native-audio.json'],manifest_path:files['opening.json'],bank_path:blob};payloads={safe_target(ROOT/'romfs',row['path']):(out/row['path']).read_bytes()for row in added['files']if row['path']!='sound/banks/opening.encaudio'}
         def validate_publication():

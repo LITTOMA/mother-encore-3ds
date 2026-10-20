@@ -16,13 +16,14 @@ class FieldSwingData {
 public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
  bool valid()const{return valid_;}const SwingPose&initial()const{return initial_;}
+ uint32_t encoded_bytes()const{return encoded_bytes_;}uint32_t encoded_crc()const{return encoded_crc_;}
  const std::array<float,19>&policy()const{return policy_;}
  const std::array<std::string,4>&strings()const{return strings_;}
  const std::vector<SwingClip>&clips()const{return clips_;}
  const std::vector<SwingKey>&keys()const{return keys_;}
  const SwingClip*clip(uint32_t)const;const SwingClip*direction(Vec2)const;
 private:
- bool valid_=false;SwingPose initial_;std::array<float,19>policy_{};
+ bool valid_=false;uint32_t encoded_bytes_=0,encoded_crc_=0;SwingPose initial_;std::array<float,19>policy_{};
  std::array<std::string,4>strings_;std::vector<SwingClip>clips_;std::vector<SwingKey>keys_;
 };
 class FieldSwingPlayer {

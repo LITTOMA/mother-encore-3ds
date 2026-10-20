@@ -54,7 +54,7 @@ bool FieldSwingData::load(const uint8_t*p,size_t n,std::string&e){
   first+=row.count;v.clips_.push_back(row);
  }
  if(first!=count[2])return fail(e,"Swing unowned keys rejected");
- v.valid_=true;*this=std::move(v);e.clear();return true;
+ v.encoded_bytes_=uint32_t(n);v.encoded_crc_=encore::crc32(p,n);v.valid_=true;*this=std::move(v);e.clear();return true;
 }
 bool FieldSwingPlayer::initialize(const FieldSwingData&d,std::string&e){if(!d.valid())return fail(e,"Swing player needs checked data");FieldSwingPlayer v;v.data_=d;v.pose_=d.initial();*this=std::move(v);e.clear();return true;}
 bool FieldSwingPlayer::play(uint32_t id,bool incap,std::string&e){if(!data_.valid()||!data_.clip(id))return fail(e,"Swing animation is not bound");id_=id;time_=0;key_=0;rate_=data_.policy()[incap?1:0];playing_=attack_=true;e.clear();return true;}

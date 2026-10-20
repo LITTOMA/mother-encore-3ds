@@ -1,0 +1,1 @@
+Field prop source audio: 233 checks; actual source PCM/cache CRC, independent node cursors/restart/deletion, bounded tagged channels, no hit/refill file IO, transactional failures and unchanged BGM; explicit NDSP double, no audibility/emulator/hardware claim

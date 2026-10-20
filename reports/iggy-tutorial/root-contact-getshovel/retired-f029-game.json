@@ -1,0 +1,7 @@
+{
+  "bytes": 264875568,
+  "reason": "Original f029 evidence retained; newer 259 game and two actual cold-run acceptance records retained and pushed in 2fb5484",
+  "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\iggy-f029-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+  "kept": "259 actual game, recorded-slot2.encsave, tools, core cache and protected four directories",
+  "sha256": "9493fd99b80fd302e77a563395305b13fb75500ab364cedc3c12a60d885694d5"
+}

@@ -1,0 +1,14 @@
+{
+  "retired": {
+    "sha256": "95122aca7161e2a6293fd8c937f68e42cf46c8c32ec49a55c62a6a4029312d7a",
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-candidate-1\\old-field-projection-check",
+    "bytes": 70648136
+  },
+  "retained": {
+    "sha256": "e983b516b72fa5e7918dae469d44a7a58b673edac4a37775b12188c73b87c2d9",
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-candidate-1\\field-projection-check",
+    "bytes": 70654128
+  },
+  "active_processes": 0,
+  "reason": "Deliberate old-consumer regression failure retained as raw log; new consumer passes same36 native projections"
+}

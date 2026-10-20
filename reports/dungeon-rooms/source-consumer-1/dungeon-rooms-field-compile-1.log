@@ -1,0 +1,82 @@
+runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldCollision::set_static_body_enabled(uint32_t, bool)’:
+runtime/field_scene.cpp:79:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   79 |     if(!map_.valid()||index>=bodies_.size())return false;bodies_[index]=enabled;return true;
+      |     ^~
+runtime/field_scene.cpp:79:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   79 |     if(!map_.valid()||index>=bodies_.size())return false;bodies_[index]=enabled;return true;
+      |                                                          ^~~~~~~
+runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::prop_callback_area(uint32_t) const’:
+runtime/field_scene.cpp:258:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  258 |     if(!prop_contacts_.ready())return false;for(const auto&r:props_.data().props())if(r.callback==boundary)return true;return false;
+      |     ^~
+runtime/field_scene.cpp:258:45: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  258 |     if(!prop_contacts_.ready())return false;for(const auto&r:props_.data().props())if(r.callback==boundary)return true;return false;
+      |                                             ^~~
+runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::begin_prop_contacts(std::string&)’:
+runtime/field_scene.cpp:288:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  288 |     if(!prop_contacts_.ready())return true;std::array<uint8_t,128>enabled{};FieldAreaEvents events;
+      |     ^~
+runtime/field_scene.cpp:288:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  288 |     if(!prop_contacts_.ready())return true;std::array<uint8_t,128>enabled{};FieldAreaEvents events;
+      |                                            ^~~
+runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::sample_prop_contacts(std::string&)’:
+runtime/field_scene.cpp:294:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  294 |     if(!prop_contacts_.ready())return true;std::array<uint8_t,128>enabled{},overlap{};if(!prop_contact_enabled(enabled,error))return false;
+      |     ^~
+runtime/field_scene.cpp:294:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  294 |     if(!prop_contacts_.ready())return true;std::array<uint8_t,128>enabled{},overlap{};if(!prop_contact_enabled(enabled,error))return false;
+      |                                            ^~~
+runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::bind_steps(encore::upstream::FieldStepsView, const encore::upstream::AudioBank&, std::string_view, std::string&)’:
+runtime/field_scene.cpp:352:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  352 |  if(!view.matches(bank,error))return false;FieldRunLoop candidate;if(!candidate.initialize(view,inherited,error))return false;
+      |  ^~
+runtime/field_scene.cpp:352:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  352 |  if(!view.matches(bank,error))return false;FieldRunLoop candidate;if(!candidate.initialize(view,inherited,error))return false;
+      |                                            ^~~~~~~~~~~~
+runtime/field_scene.cpp: In member function ‘virtual bool encore::upstream::FieldMickWorld::slide(encore::upstream::Vec2, encore::upstream::Vec2, encore::upstream::Vec2&)’:
+runtime/field_scene.cpp:383:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  383 |         if(!ok)return false;out=result.position;return true;
+      |         ^~
+runtime/field_scene.cpp:383:29: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  383 |         if(!ok)return false;out=result.position;return true;
+      |                             ^~~
+runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::try_interaction(bool, std::string&)’:
+runtime/field_scene.cpp:493:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  493 |                 if(!world.pause_for_house(true))return fail("Field interaction admission pause rejected");error.clear();return true;
+      |                 ^~
+runtime/field_scene.cpp:493:107: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  493 |                 if(!world.pause_for_house(true))return fail("Field interaction admission pause rejected");error.clear();return true;
+      |                                                                                                           ^~~~~
+runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::try_prop_interaction(bool, bool&, std::string&)’:
+runtime/field_scene.cpp:541:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  541 |         if(!world.pause_for_house(true))return fail("Field investigation admission pause rejected");error.clear();return true;}
+      |         ^~
+runtime/field_scene.cpp:541:101: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  541 |         if(!world.pause_for_house(true))return fail("Field investigation admission pause rejected");error.clear();return true;}
+      |                                                                                                     ^~~~~
+runtime/field_scene.cpp:542:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  542 |     if(!world.begin_house_program(programme,kRoomNoIndex,policy.stop_running!=0))return fail("Field investigation programme start rejected");error.clear();return true;
+      |     ^~
+runtime/field_scene.cpp:542:142: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  542 |     if(!world.begin_house_program(programme,kRoomNoIndex,policy.stop_running!=0))return fail("Field investigation programme start rejected");error.clear();return true;
+      |                                                                                                                                              ^~~~~
+runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::idle_frame(double, bool, bool, int)’:
+runtime/field_scene.cpp:725:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  725 |         if(!objects_.idle_frame(why))return fail(why);objects_first_idle_=false;
+      |         ^~
+runtime/field_scene.cpp:725:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  725 |         if(!objects_.idle_frame(why))return fail(why);objects_first_idle_=false;
+      |                                                       ^~~~~~~~~~~~~~~~~~~
+runtime/field_scene.cpp:767:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  767 |         if(s.timer>0)continue;s.timer=-1;
+      |         ^~
+runtime/field_scene.cpp:767:31: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  767 |         if(s.timer>0)continue;s.timer=-1;
+      |                               ^
+runtime/field_scene.cpp: In member function ‘bool encore::upstream::FieldScene::item_active(uint32_t) const’:
+runtime/field_scene.cpp:781:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  781 |     if(i>=item_active_.size()||!item_active_[i])return false;const auto item=map_.item(i);
+      |     ^~
+runtime/field_scene.cpp:781:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  781 |     if(i>=item_active_.size()||!item_active_[i])return false;const auto item=map_.item(i);
+      |                                                              ^~~~~

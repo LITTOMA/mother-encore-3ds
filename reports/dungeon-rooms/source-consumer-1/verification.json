@@ -1,0 +1,116 @@
+{
+  "base_commit": "b90af3bf5e116f9d274ac1b607d80aff927101ae",
+  "branch": "codex/dungeon-room-camera",
+  "scope": "Shared checked dungeon-room methods/camera requests and live FieldScene spatial projection fix only. No dungeon scene, physical contact delivery, map-menu/save admission, emulator, audible or hardware claim.",
+  "format": {
+    "magic": "ENCDRM01",
+    "version": 1,
+    "capability": 1,
+    "bytes": 2092,
+    "rooms": 18
+  },
+  "source_review": {
+    "files": 8,
+    "methods": 18,
+    "additional_actual_root_dependency": "Scripts/Dungeons/Catacombs.gd",
+    "unknown_root_and_properties_rejected": true
+  },
+  "native": {
+    "runs": [
+      6,
+      7
+    ],
+    "observations": 140,
+    "geometry": 36,
+    "viewports": [
+      [
+        320,
+        180
+      ],
+      [
+        400,
+        240
+      ]
+    ],
+    "original_body_delivery": "explicit identity-checked method service",
+    "container_visible": false,
+    "dependency_only_update": "Native6/7 bytes and all140 observations exactly equal native4; all3 C++ fixture files unchanged"
+  },
+  "gcc_direct": {
+    "compiler": "GCC9.4 WSL Ubuntu20.04",
+    "flags": "ASan+UBSan,detect_leaks=1,halt_on_error=1,nonPIE,noexceptions/noRTTI",
+    "room_checks": 5465,
+    "prepared_field_projection_checks": 290,
+    "legacy_area_checks": 663,
+    "old_projection_expected_exit": 1,
+    "old_projection_actual": [
+      -848,
+      64
+    ],
+    "native_and_new_projection": [
+      -848,
+      56
+    ],
+    "unchanged_archive_source_headers": 223,
+    "old_archive_changed_source": [
+      "runtime/field_scene.cpp"
+    ],
+    "fresh_field_scene_object_sha256": "6156a0d018c4856a57600bb80e9f017f7484bf3f7f69a13ec89a1bd3719d7016"
+  },
+  "python_checks": 7,
+  "metadata_only": {
+    "ctest": 306,
+    "python": 1382,
+    "aggregate": 999,
+    "dedicated": 383
+  },
+  "retired_bytes": 72328893.0,
+  "source_sha256": {
+    "content/catacombs-rooms.json": "2de97a7b4a0471322d1bb178d91acccf65de141cc97cce506566053c44849a69",
+    "tools/dungeon_rooms.py": "fd764abad81da8d11b2059b1977f55ec7049f56e81312bed45e8e1a1fa0f85fc",
+    "tools/run_dungeon_rooms_reference.py": "dd853d46b1a39c45db67228ba6e1918d52745df8b5a5de9375b37c5204301572",
+    "include/encore/dungeon_rooms.hpp": "f6da4aca442779341e315bd975f2016200546d664596e40d5709d68a62e81ee2",
+    "include/encore/field_camera.hpp": "d8f57d9438954af222d9b3544af55fa81cd6c472efbd77684d6c100ad9a3c61b",
+    "runtime/dungeon_rooms.cpp": "637ca51cf4972717576a760e6740cb2d0702543cc2e52d210dcff8b8049ff108",
+    "runtime/field_scene.cpp": "e6e174df3f628d3ad2a64086a4ac8e7b787a4adc99815560cd8caadb0488ad26",
+    "tests/prepare_dungeon_rooms.py": "4d040cb293332bd6fa2a8e374f7cf383d6205eb2e5a6b66dc1eb4869fd6dd545",
+    "tests/dungeon_rooms_tests.cpp": "a6d7c613d4b56bd2f723f0828d241a62487a9d82d5ab6fb0c2248b6c614f9321",
+    "tests/field_camera_projection_tests.cpp": "99f156e28a3c8cb7dfa737393bb6eaa88147df13f7b18c7b789b302bdb3f33c7",
+    "tests/test_dungeon_rooms.py": "d74b5cabecf14fae556233df0d0eacf923333b8e9c60f233a83c69b78d621dd5",
+    "CMakeLists.txt": "cf9eaec91164d6983fa6a9426bc30a800f0d857bd52bbee00eff238890ea2a53",
+    "platform/ctr/Makefile": "dab13e2ee7ff3e6a01d244ce90df1f25bc1b123259da4176c24d3b5ee104b952"
+  },
+  "full_new_commit_check": "pending",
+  "formal_resources_rules_save": "unchanged",
+  "evidence_sha256": {
+    "dungeon-rooms-area-compile-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "dungeon-rooms-before-after-host.sh": "1b4ffba1fdbb289c7e57bb238dd53687cd4352db41f8a4b1cc4c79fc4f30cb23",
+    "dungeon-rooms-before-after-native.log": "9b2bb7b6d78c2652b71b864578efb736fb26451cd20d20fe9a62a78d4e0baa37",
+    "dungeon-rooms-cmake.log": "b40089c6cc68f403d439fd7d0974fac43b881406b9ee069421e190cbf6bfef50",
+    "dungeon-rooms-collection.log": "cc91df9be2585295aefb74cc048ec50597cd9a1ca49c9fed9ac2e9394c0e92b2",
+    "dungeon-rooms-compile-1.log": "513b24fda855596f50ff073216cb20fc1b98f28ea53ff6dd8e452382ef48a87c",
+    "dungeon-rooms-extract-1.log": "c29e291e052494b683a31f88d7152bfb58f0ae283afee7f4910aaa8e6ef65868",
+    "dungeon-rooms-field-compile-1.log": "5650c27857ca21e28136008a78c633cb09c0b57b58c053b808faeba897d885ce",
+    "dungeon-rooms-field-host-1.sh": "0b3dfa193670500d2485d77f4eb3411c045c6a679ff15b03e41369f22e7038f9",
+    "dungeon-rooms-field-native-1.log": "3f694dce8bac9dc0d4cc3995259b62af7949d8774e0980763f3197fa2892a5b1",
+    "dungeon-rooms-host-1.sh": "81212ce91e2f337fa41d29a2ed1df5ed2fe62a0979bc1dc180f51aed7da4b04a",
+    "dungeon-rooms-intermediate-report-retirement.json": "cdb9a892994d036131775e9dac0a45606b3990b1f6c28fd347192a26ca2da291",
+    "dungeon-rooms-native-1.log": "e2893d40af5aea5fe1a086f2a2012671061e0aec27456f22dfcbf0f3ffac7da7",
+    "dungeon-rooms-old-projection-compile.log": "513b24fda855596f50ff073216cb20fc1b98f28ea53ff6dd8e452382ef48a87c",
+    "dungeon-rooms-old-projection-retirement.json": "37a2bc6b9166f7a5cc13922b8abd716427d99de6b0ce789be95783ff7d28ed74",
+    "dungeon-rooms-old-projection.log": "6b7bb0a7ceb0c413941e34c44532115cdafc90ae38e0a1d78f0ecd27ce77e53a",
+    "dungeon-rooms-project-retirement.json": "b62a0d713108250c2410ec5fb278df7c3967ef3c543dce3274afc99011d608de",
+    "dungeon-rooms-projection-compile-1.log": "513b24fda855596f50ff073216cb20fc1b98f28ea53ff6dd8e452382ef48a87c",
+    "dungeon-rooms-projection-compile-2.log": "513b24fda855596f50ff073216cb20fc1b98f28ea53ff6dd8e452382ef48a87c",
+    "dungeon-rooms-python-1.log": "c60dff87ec878e90812d14a39b6d1c4a2fdc40561b82ef879bf75e43fae7675e",
+    "dungeon-rooms-python-2.log": "4d088df20f4d8c9546a670a1232ec0e0643ff884fc1f53e8151e728e3305b0c5",
+    "dungeon-rooms-reference-1.log": "034a285fb9bdc8566e14605ebad7008f84189d949a6b1401c2c4816adb13f085",
+    "dungeon-rooms-test-plan.json": "5890fd033794b32024456b8f87040640381b2b9ee983c2e46a9ffe9672febf2d",
+    "failed-reference-1-import.log": "08c6abcb3bec094f90aef31cf2e4d297f76909b75faee925931e89cb4feabef7",
+    "failed-reference-1-retained-camera.gd": "6f5f02c183ff81bf4a153f9c00b4b62b017ef4638394d89f8ec4af55ecdab8b7",
+    "failed-reference-1-retained-global.gd": "48b7b127806232b901f47c726e1a317fe0a9d78d90319b0b0d9f6ca25f8bd63a",
+    "failed-reference-1-retained-input.json": "0be24f5ca5e4488908fd29a11855d7acca56a29f0315443757e7ea8029736588",
+    "failed-reference-1-retained-probe.gd": "86e25893acbe9663c00abf5be1ed72c51c5301829558a773b491bad97e277008",
+    "failed-reference-1-retained-project.godot": "9880324f82249d5798bd63243406d7a1af2925b056604f91ced45ab14e030c14"
+  }
+}

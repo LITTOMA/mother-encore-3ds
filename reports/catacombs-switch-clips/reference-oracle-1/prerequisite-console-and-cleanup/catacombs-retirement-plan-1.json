@@ -1,0 +1,1974 @@
+{
+  "scope": "Only superseded owned native probes and private original-engine project copies. Published raw logs/observations/adapters/source fingerprints retained. Current native state/graph executables,61ea game, SDK/runtime caches, real Record, upstream and4original untracked dirs retained.",
+  "rows": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-keys-candidate-2\\dungeon_keys_tests",
+      "kind": "file",
+      "bytes": 547024,
+      "sha256": "02ef0437bfc0d1781348a4eaf412d5cdde3b90d72e94eb1fc82a348d19f805dc",
+      "evidence": "Published key parser metadata-oracle-1 executable fingerprint"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-keys-candidate-3\\dungeon_keys_tests",
+      "kind": "file",
+      "bytes": 567672,
+      "sha256": "2b107d307704c52a2f4a7b35b95ffd9912db58750ce54207c6f56b1e94a657fc",
+      "evidence": "Published key parser metadata-oracle-1 executable fingerprint"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-keys-candidate-4\\dungeon_keys_tests",
+      "kind": "file",
+      "bytes": 572920,
+      "sha256": "bdb10343032f2693d9193f9d5ba8002033e4e2e33c383535b9b017409031a5c1",
+      "evidence": "Published key parser metadata-oracle-1 executable fingerprint"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-switch-candidate-2\\dungeon_switches_tests",
+      "kind": "file",
+      "bytes": 1865296,
+      "sha256": "a6521e101bb77da38defed464f3f676ba9289776418bcee8c47d50d0a20be02e",
+      "evidence": "Retired1360-byte development prototype; current graph1412 and newer parser/state executables retained."
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-key-method-reference-1\\project",
+      "kind": "directory",
+      "bytes": 2633,
+      "marker": ".owned-key-reference",
+      "marker_value": "source-key-method-reference-v1",
+      "files": [
+        {
+          "path": ".owned-key-reference",
+          "bytes": 30,
+          "sha256": "220f232cff3ec24bf3bf96ffd40169ec77fc0880d47428284f3a03a96e3bf7f0"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Lock.gd",
+          "bytes": 784,
+          "sha256": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc"
+        },
+        {
+          "path": "Scripts/Main/Small Key.gd",
+          "bytes": 582,
+          "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+        }
+      ],
+      "evidence": "reports/catacombs-keys/metadata-oracle-1/original-method-1"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-key-method-reference-2\\project",
+      "kind": "directory",
+      "bytes": 21811,
+      "marker": ".owned-key-reference",
+      "marker_value": "source-key-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".owned-key-reference",
+          "bytes": 30,
+          "sha256": "220f232cff3ec24bf3bf96ffd40169ec77fc0880d47428284f3a03a96e3bf7f0"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 506,
+          "sha256": "2d01d58e9fa2bea47ccd1c22628cf01638eddfe6b7d08bb67321cb8b9f0799e1"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 488,
+          "sha256": "82b5a3be0361c48b6b65c7c926ed5d985b7aaf7004028360bdef5ced2d6b0897"
+        },
+        {
+          "path": "input.json",
+          "bytes": 312,
+          "sha256": "e6ed9ffdd300d814b725b1d325c4a86cff588bbd4239349bcf3e63436ab101f1"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 5751,
+          "sha256": "ff6fc59d3cf91d492f87a42364962cf864a8be89811f859932721af657a9222e"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 603,
+          "sha256": "a432564e8afd13dc0f816a22c0115fce19dd9c49f4f4079f25d7efdae3095cfe"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Lock.gd",
+          "bytes": 784,
+          "sha256": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc"
+        },
+        {
+          "path": "Scripts/Main/Small Key.gd",
+          "bytes": 582,
+          "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+        },
+        {
+          "path": "state.gd",
+          "bytes": 71,
+          "sha256": "0b3728da0664c290a44efa99c2f49dc1e301ec73ffe2cb968457ad09f295ba2a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 861,
+          "sha256": "335e6a8ae034ed64129aa8a9f854d0de8e1ba3b5ec758b2e857fd272b5aa2fd8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-aca9224272e1255dd5f429c75287f874.png",
+          "bytes": 1161,
+          "sha256": "916938ad9f26b7da6559090a09f17706177e78f5de1ad74d5d441dd458fb13ae"
+        },
+        {
+          "path": "user-local/Godot/resthumb-aca9224272e1255dd5f429c75287f874.txt",
+          "bytes": 49,
+          "sha256": "c6a451fd75d0625bcf4c7e489c2a8ac53ef02e122ff10d3baed4ab3a07b55d7a"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1469,
+          "sha256": "ce0a4d53dcdc11c92c98497c6a8dc9334005e010bc8870aefbd08883d268ef99"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-keys/metadata-oracle-1/original-method-2"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-key-method-reference-3\\project",
+      "kind": "directory",
+      "bytes": 22296,
+      "marker": ".owned-key-reference",
+      "marker_value": "source-key-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".owned-key-reference",
+          "bytes": 30,
+          "sha256": "220f232cff3ec24bf3bf96ffd40169ec77fc0880d47428284f3a03a96e3bf7f0"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 506,
+          "sha256": "2d01d58e9fa2bea47ccd1c22628cf01638eddfe6b7d08bb67321cb8b9f0799e1"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 621,
+          "sha256": "4e4b4e3539632c13eacd7270ac6d3d94238f6293dbc641e1d3b1a4da53f54dd0"
+        },
+        {
+          "path": "input.json",
+          "bytes": 312,
+          "sha256": "e6ed9ffdd300d814b725b1d325c4a86cff588bbd4239349bcf3e63436ab101f1"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 5751,
+          "sha256": "ff6fc59d3cf91d492f87a42364962cf864a8be89811f859932721af657a9222e"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 603,
+          "sha256": "a432564e8afd13dc0f816a22c0115fce19dd9c49f4f4079f25d7efdae3095cfe"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Lock.gd",
+          "bytes": 784,
+          "sha256": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc"
+        },
+        {
+          "path": "Scripts/Main/Small Key.gd",
+          "bytes": 582,
+          "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+        },
+        {
+          "path": "state.gd",
+          "bytes": 71,
+          "sha256": "0b3728da0664c290a44efa99c2f49dc1e301ec73ffe2cb968457ad09f295ba2a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 861,
+          "sha256": "335e6a8ae034ed64129aa8a9f854d0de8e1ba3b5ec758b2e857fd272b5aa2fd8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-c3633beffb9223e77b6370ebb1576bca.png",
+          "bytes": 1161,
+          "sha256": "916938ad9f26b7da6559090a09f17706177e78f5de1ad74d5d441dd458fb13ae"
+        },
+        {
+          "path": "user-local/Godot/resthumb-c3633beffb9223e77b6370ebb1576bca.txt",
+          "bytes": 49,
+          "sha256": "4daa9dd93f60ca072d0716f8805ce6588c3f3881a1a44e0d511c93878b58f399"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source key methods/logs/godot.log",
+          "bytes": 352,
+          "sha256": "f468258ef97c0c6e454926a293d3f027aa8b171261e6d2c4d8db59fc8b4d884d"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1469,
+          "sha256": "cb083f86d58f0124b51b2d4fd63278f29957d3d179266c68ef3546dc2c341832"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-keys/metadata-oracle-1/original-method-3"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-key-method-reference-4\\project",
+      "kind": "directory",
+      "bytes": 31454,
+      "marker": ".owned-key-reference",
+      "marker_value": "source-key-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".owned-key-reference",
+          "bytes": 30,
+          "sha256": "220f232cff3ec24bf3bf96ffd40169ec77fc0880d47428284f3a03a96e3bf7f0"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 506,
+          "sha256": "2d01d58e9fa2bea47ccd1c22628cf01638eddfe6b7d08bb67321cb8b9f0799e1"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 621,
+          "sha256": "4e4b4e3539632c13eacd7270ac6d3d94238f6293dbc641e1d3b1a4da53f54dd0"
+        },
+        {
+          "path": "input.json",
+          "bytes": 312,
+          "sha256": "e6ed9ffdd300d814b725b1d325c4a86cff588bbd4239349bcf3e63436ab101f1"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 8533,
+          "sha256": "4cec4f7b2501573e1befff002374708bdcd47f9b62cbd6e181f08dd6e560828b"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 5290,
+          "sha256": "da3acac38075ff13822488794e6af24fd0059ab9633d31301c247a3a7f235da8"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 637,
+          "sha256": "b4ccec367033342b238e1f42c804dfc7509589145f4fb3535ce315ad74e91b40"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Lock.gd",
+          "bytes": 784,
+          "sha256": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc"
+        },
+        {
+          "path": "Scripts/Main/Small Key.gd",
+          "bytes": 582,
+          "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+        },
+        {
+          "path": "state.gd",
+          "bytes": 71,
+          "sha256": "0b3728da0664c290a44efa99c2f49dc1e301ec73ffe2cb968457ad09f295ba2a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 861,
+          "sha256": "335e6a8ae034ed64129aa8a9f854d0de8e1ba3b5ec758b2e857fd272b5aa2fd8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-d62688351981b529d3cd5ebc16ff15c8.png",
+          "bytes": 1161,
+          "sha256": "916938ad9f26b7da6559090a09f17706177e78f5de1ad74d5d441dd458fb13ae"
+        },
+        {
+          "path": "user-local/Godot/resthumb-d62688351981b529d3cd5ebc16ff15c8.txt",
+          "bytes": 49,
+          "sha256": "bcf52051f2aef42bd365522a4974a92e75fd06c701f1fd1587cc99e91d8bb073"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source key methods/logs/godot.log",
+          "bytes": 831,
+          "sha256": "9342c10a0dbd42753c4d8253a59ac0712e49b9cc20d534c87286679e069290da"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1530,
+          "sha256": "2a17df11fb0424c21785954988c54d582c526e913a81843acce5394dcf3a5c7d"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-keys/metadata-oracle-1/original-method-4"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-key-method-reference-5\\project",
+      "kind": "directory",
+      "bytes": 31164,
+      "marker": ".owned-key-reference",
+      "marker_value": "source-key-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".owned-key-reference",
+          "bytes": 30,
+          "sha256": "220f232cff3ec24bf3bf96ffd40169ec77fc0880d47428284f3a03a96e3bf7f0"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 506,
+          "sha256": "2d01d58e9fa2bea47ccd1c22628cf01638eddfe6b7d08bb67321cb8b9f0799e1"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 621,
+          "sha256": "4e4b4e3539632c13eacd7270ac6d3d94238f6293dbc641e1d3b1a4da53f54dd0"
+        },
+        {
+          "path": "input.json",
+          "bytes": 312,
+          "sha256": "e6ed9ffdd300d814b725b1d325c4a86cff588bbd4239349bcf3e63436ab101f1"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 8533,
+          "sha256": "4cec4f7b2501573e1befff002374708bdcd47f9b62cbd6e181f08dd6e560828b"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 5290,
+          "sha256": "da3acac38075ff13822488794e6af24fd0059ab9633d31301c247a3a7f235da8"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 687,
+          "sha256": "8fcb07fd0a11df83fa8fed5b01d2222adc7d8f5e6b1450f62d3987b59209c84a"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Lock.gd",
+          "bytes": 784,
+          "sha256": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc"
+        },
+        {
+          "path": "Scripts/Main/Small Key.gd",
+          "bytes": 582,
+          "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+        },
+        {
+          "path": "state.gd",
+          "bytes": 71,
+          "sha256": "0b3728da0664c290a44efa99c2f49dc1e301ec73ffe2cb968457ad09f295ba2a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 861,
+          "sha256": "335e6a8ae034ed64129aa8a9f854d0de8e1ba3b5ec758b2e857fd272b5aa2fd8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-c75421323857857a30ae1986cef6b24c.png",
+          "bytes": 1161,
+          "sha256": "916938ad9f26b7da6559090a09f17706177e78f5de1ad74d5d441dd458fb13ae"
+        },
+        {
+          "path": "user-local/Godot/resthumb-c75421323857857a30ae1986cef6b24c.txt",
+          "bytes": 49,
+          "sha256": "88d87f9988a06170148c4aaac0cc1608371776ade82414d62e729926fd9ff02b"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source key methods/logs/godot.log",
+          "bytes": 491,
+          "sha256": "b9a360f56064dcf29d87d3155bff3ec3398548dd14c2a28d0fe69c06fea881dd"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1530,
+          "sha256": "d760c37e9ae6d67f0502f173345a2c037d0e865e30b1d90133b7ec8bff961184"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-keys/metadata-oracle-1/original-method-5"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-key-method-reference-6\\project",
+      "kind": "directory",
+      "bytes": 31164,
+      "marker": ".owned-key-reference",
+      "marker_value": "source-key-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".owned-key-reference",
+          "bytes": 30,
+          "sha256": "220f232cff3ec24bf3bf96ffd40169ec77fc0880d47428284f3a03a96e3bf7f0"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 506,
+          "sha256": "2d01d58e9fa2bea47ccd1c22628cf01638eddfe6b7d08bb67321cb8b9f0799e1"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 621,
+          "sha256": "4e4b4e3539632c13eacd7270ac6d3d94238f6293dbc641e1d3b1a4da53f54dd0"
+        },
+        {
+          "path": "input.json",
+          "bytes": 312,
+          "sha256": "e6ed9ffdd300d814b725b1d325c4a86cff588bbd4239349bcf3e63436ab101f1"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 8533,
+          "sha256": "4cec4f7b2501573e1befff002374708bdcd47f9b62cbd6e181f08dd6e560828b"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 5290,
+          "sha256": "da3acac38075ff13822488794e6af24fd0059ab9633d31301c247a3a7f235da8"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 687,
+          "sha256": "8fcb07fd0a11df83fa8fed5b01d2222adc7d8f5e6b1450f62d3987b59209c84a"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Lock.gd",
+          "bytes": 784,
+          "sha256": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc"
+        },
+        {
+          "path": "Scripts/Main/Small Key.gd",
+          "bytes": 582,
+          "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+        },
+        {
+          "path": "state.gd",
+          "bytes": 71,
+          "sha256": "0b3728da0664c290a44efa99c2f49dc1e301ec73ffe2cb968457ad09f295ba2a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 861,
+          "sha256": "335e6a8ae034ed64129aa8a9f854d0de8e1ba3b5ec758b2e857fd272b5aa2fd8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-90b83ae1d95866cba92bb1b85bc08719.png",
+          "bytes": 1161,
+          "sha256": "916938ad9f26b7da6559090a09f17706177e78f5de1ad74d5d441dd458fb13ae"
+        },
+        {
+          "path": "user-local/Godot/resthumb-90b83ae1d95866cba92bb1b85bc08719.txt",
+          "bytes": 49,
+          "sha256": "eb00f2039e73b0b534ebc7d5f75f252031ad5e4430df9edff0a8da7a403f90aa"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source key methods/logs/godot.log",
+          "bytes": 491,
+          "sha256": "b9a360f56064dcf29d87d3155bff3ec3398548dd14c2a28d0fe69c06fea881dd"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1530,
+          "sha256": "aaab572e29d3216dd5b6eb4048299cee3f1ce634651196132725d84a3ebb9a7e"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-keys/metadata-oracle-1/original-method-6"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-key-method-reference-7\\project",
+      "kind": "directory",
+      "bytes": 31164,
+      "marker": ".owned-key-reference",
+      "marker_value": "source-key-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".owned-key-reference",
+          "bytes": 30,
+          "sha256": "220f232cff3ec24bf3bf96ffd40169ec77fc0880d47428284f3a03a96e3bf7f0"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 506,
+          "sha256": "2d01d58e9fa2bea47ccd1c22628cf01638eddfe6b7d08bb67321cb8b9f0799e1"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 621,
+          "sha256": "4e4b4e3539632c13eacd7270ac6d3d94238f6293dbc641e1d3b1a4da53f54dd0"
+        },
+        {
+          "path": "input.json",
+          "bytes": 312,
+          "sha256": "e6ed9ffdd300d814b725b1d325c4a86cff588bbd4239349bcf3e63436ab101f1"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 8533,
+          "sha256": "4cec4f7b2501573e1befff002374708bdcd47f9b62cbd6e181f08dd6e560828b"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 5290,
+          "sha256": "da3acac38075ff13822488794e6af24fd0059ab9633d31301c247a3a7f235da8"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 687,
+          "sha256": "8fcb07fd0a11df83fa8fed5b01d2222adc7d8f5e6b1450f62d3987b59209c84a"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Lock.gd",
+          "bytes": 784,
+          "sha256": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc"
+        },
+        {
+          "path": "Scripts/Main/Small Key.gd",
+          "bytes": 582,
+          "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+        },
+        {
+          "path": "state.gd",
+          "bytes": 71,
+          "sha256": "0b3728da0664c290a44efa99c2f49dc1e301ec73ffe2cb968457ad09f295ba2a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 861,
+          "sha256": "335e6a8ae034ed64129aa8a9f854d0de8e1ba3b5ec758b2e857fd272b5aa2fd8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-f9db8622b50d731cb1d33fafc9154d5d.png",
+          "bytes": 1161,
+          "sha256": "916938ad9f26b7da6559090a09f17706177e78f5de1ad74d5d441dd458fb13ae"
+        },
+        {
+          "path": "user-local/Godot/resthumb-f9db8622b50d731cb1d33fafc9154d5d.txt",
+          "bytes": 49,
+          "sha256": "fea0d2c1b75741ebe016948984212434df087d953c3f03009e5e09d2cc812f6f"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source key methods/logs/godot.log",
+          "bytes": 491,
+          "sha256": "b9a360f56064dcf29d87d3155bff3ec3398548dd14c2a28d0fe69c06fea881dd"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1530,
+          "sha256": "e9e9dd17d152116ce795053f40f99d0b97abc1eadf56ff2f1c283ad5a371c971"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-keys/metadata-oracle-1/original-method-7"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-switch-reference-1\\project",
+      "kind": "directory",
+      "bytes": 108233,
+      "marker": ".owned-switch-reference",
+      "marker_value": "source-switch-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": ".owned-switch-reference",
+          "bytes": 33,
+          "sha256": "dc873fbf19a06600aea0fa68806fc609e88cd0025f31c8790540b6e5a9434aa4"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 1043,
+          "sha256": "b93f7ab2a4d456172b37a1d43c95f234a1f596068d907fb5269a4e0ab57d86b5"
+        },
+        {
+          "path": "input.json",
+          "bytes": 11110,
+          "sha256": "5a6b1fae385848355a36cfacddb063ce1c90c013654dbca43937f9e278d638f3"
+        },
+        {
+          "path": "music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 6976,
+          "sha256": "68f995e048e6195c664a9b42631b1cbac1a9af4f0e464a030c36062449618bef"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 1751,
+          "sha256": "ec82aeaae1d195b7fa8eccd561e678f95c508d1932cee155eb1942fd80a7a58a"
+        },
+        {
+          "path": "scene.gd",
+          "bytes": 524,
+          "sha256": "74d7e1906cfd9adecd17e98ee7122e11665a8a35b99481b67cdbf5388dc7da64"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Switches/AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "Scripts/Main/Switches/ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "Scripts/misc/wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "user-local/Godot/resthumb-c891eee4ef11ba936ff4ec2e5aacfa07.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "user-local/Godot/resthumb-c891eee4ef11ba936ff4ec2e5aacfa07.txt",
+          "bytes": 49,
+          "sha256": "9ff5b5cb62d31c4f680463ecc015f7ffa11635e3ea68180e6dba5adf59d0ab06"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/projects/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2443,
+          "sha256": "5c480d4471909eee7afa42844b71436e9bf43c263054c69cb166df577a88199a"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-switches/metadata-oracle-1/original-method-1"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-switch-reference-2\\project",
+      "kind": "directory",
+      "bytes": 169210,
+      "marker": ".owned-switch-reference",
+      "marker_value": "source-switch-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": ".owned-switch-reference",
+          "bytes": 33,
+          "sha256": "dc873fbf19a06600aea0fa68806fc609e88cd0025f31c8790540b6e5a9434aa4"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 1148,
+          "sha256": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd"
+        },
+        {
+          "path": "input.json",
+          "bytes": 11110,
+          "sha256": "5a6b1fae385848355a36cfacddb063ce1c90c013654dbca43937f9e278d638f3"
+        },
+        {
+          "path": "music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 60584,
+          "sha256": "16512b46c66d76c71e56680e7efaf157cf0e8313288ef2a95cb87745b2f4a4aa"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 6934,
+          "sha256": "73cdc65896900cadb82411ec5f56c8468adef0928f317b604a41a74ff031911c"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 1751,
+          "sha256": "ec82aeaae1d195b7fa8eccd561e678f95c508d1932cee155eb1942fd80a7a58a"
+        },
+        {
+          "path": "scene.gd",
+          "bytes": 680,
+          "sha256": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Switches/AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "Scripts/Main/Switches/ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "Scripts/misc/wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "user-local/Godot/resthumb-1acaffc84c4bd0950059784523767155.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "user-local/Godot/resthumb-1acaffc84c4bd0950059784523767155.txt",
+          "bytes": 49,
+          "sha256": "86181e9e207bac7a081725f7ba8adfdee05e28919f3eafa9169caa09f1f07df1"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source switch methods/logs/godot.log",
+          "bytes": 174,
+          "sha256": "6cec79d04e403d71cd7e120b7b4f98959dc5418dc17d49609afa1474a22c0237"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/projects/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2443,
+          "sha256": "eea8bc758fa01d7ee02ec55b23af077def6b2a49536ccbf5c5169918e5489911"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-switches/metadata-oracle-1/original-method-2"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-switch-reference-3\\project",
+      "kind": "directory",
+      "bytes": 185941,
+      "marker": ".owned-switch-reference",
+      "marker_value": "source-switch-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": ".owned-switch-reference",
+          "bytes": 33,
+          "sha256": "dc873fbf19a06600aea0fa68806fc609e88cd0025f31c8790540b6e5a9434aa4"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 1148,
+          "sha256": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd"
+        },
+        {
+          "path": "input.json",
+          "bytes": 11110,
+          "sha256": "5a6b1fae385848355a36cfacddb063ce1c90c013654dbca43937f9e278d638f3"
+        },
+        {
+          "path": "music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 76755,
+          "sha256": "6b02bde52c473143b65d14877b10e1da0c0b308bed3ab010b1accbf9a1fb0623"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 7494,
+          "sha256": "fc83c7d476a393709ce734170816550651789c5d2d0a6928391ee09577d6350c"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 1751,
+          "sha256": "ec82aeaae1d195b7fa8eccd561e678f95c508d1932cee155eb1942fd80a7a58a"
+        },
+        {
+          "path": "scene.gd",
+          "bytes": 680,
+          "sha256": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Switches/AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "Scripts/Main/Switches/ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "Scripts/misc/wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "user-local/Godot/resthumb-e6172ccb17f9e3d5b4867cb208244061.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "user-local/Godot/resthumb-e6172ccb17f9e3d5b4867cb208244061.txt",
+          "bytes": 49,
+          "sha256": "613b7c88e4c807f3b16953132017dac62f7ac22aa3fd29073a628bed75339421"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source switch methods/logs/godot.log",
+          "bytes": 174,
+          "sha256": "6cec79d04e403d71cd7e120b7b4f98959dc5418dc17d49609afa1474a22c0237"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/projects/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2443,
+          "sha256": "6de681d849107211b0dfe88f8fef9b744dbf62e5ea08b95441dd46a732be7845"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-switches/metadata-oracle-1/original-method-3"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-switch-reference-4\\project",
+      "kind": "directory",
+      "bytes": 186017,
+      "marker": ".owned-switch-reference",
+      "marker_value": "source-switch-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": ".owned-switch-reference",
+          "bytes": 33,
+          "sha256": "dc873fbf19a06600aea0fa68806fc609e88cd0025f31c8790540b6e5a9434aa4"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 1148,
+          "sha256": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd"
+        },
+        {
+          "path": "input.json",
+          "bytes": 11186,
+          "sha256": "ded3504d68d7d0aabffe6a5175761651dccb72309e727f94850811c44c13e180"
+        },
+        {
+          "path": "music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 76755,
+          "sha256": "6b02bde52c473143b65d14877b10e1da0c0b308bed3ab010b1accbf9a1fb0623"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 7494,
+          "sha256": "fc83c7d476a393709ce734170816550651789c5d2d0a6928391ee09577d6350c"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 1751,
+          "sha256": "ec82aeaae1d195b7fa8eccd561e678f95c508d1932cee155eb1942fd80a7a58a"
+        },
+        {
+          "path": "scene.gd",
+          "bytes": 680,
+          "sha256": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Switches/AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "Scripts/Main/Switches/ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "Scripts/misc/wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "user-local/Godot/resthumb-a230cf250b1a3b1a5e5fff8dff02ae6a.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "user-local/Godot/resthumb-a230cf250b1a3b1a5e5fff8dff02ae6a.txt",
+          "bytes": 49,
+          "sha256": "cf620d8b2dafce529802c9ef81f7016bf0d6a3f1e127a72391ebabc0f9146e84"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source switch methods/logs/godot.log",
+          "bytes": 174,
+          "sha256": "6cec79d04e403d71cd7e120b7b4f98959dc5418dc17d49609afa1474a22c0237"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/projects/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2443,
+          "sha256": "35dd7a96679f4d285534649c96370b3e4711eaf0da7a87a9142a20028b1a7270"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-switches/metadata-oracle-1/original-method-4"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-switch-reference-5\\project",
+      "kind": "directory",
+      "bytes": 186017,
+      "marker": ".owned-switch-reference",
+      "marker_value": "source-switch-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": ".owned-switch-reference",
+          "bytes": 33,
+          "sha256": "dc873fbf19a06600aea0fa68806fc609e88cd0025f31c8790540b6e5a9434aa4"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 1148,
+          "sha256": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd"
+        },
+        {
+          "path": "input.json",
+          "bytes": 11186,
+          "sha256": "ded3504d68d7d0aabffe6a5175761651dccb72309e727f94850811c44c13e180"
+        },
+        {
+          "path": "music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 76755,
+          "sha256": "6b02bde52c473143b65d14877b10e1da0c0b308bed3ab010b1accbf9a1fb0623"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 7494,
+          "sha256": "fc83c7d476a393709ce734170816550651789c5d2d0a6928391ee09577d6350c"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 1751,
+          "sha256": "ec82aeaae1d195b7fa8eccd561e678f95c508d1932cee155eb1942fd80a7a58a"
+        },
+        {
+          "path": "scene.gd",
+          "bytes": 680,
+          "sha256": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Switches/AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "Scripts/Main/Switches/ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "Scripts/misc/wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "user-local/Godot/resthumb-ef364830c705d2a1913d538136587472.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "user-local/Godot/resthumb-ef364830c705d2a1913d538136587472.txt",
+          "bytes": 49,
+          "sha256": "5afb9417352955c4e438248c7c8953ffea0f91cd5f47bad16839301b9d6d02f1"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source switch methods/logs/godot.log",
+          "bytes": 174,
+          "sha256": "6cec79d04e403d71cd7e120b7b4f98959dc5418dc17d49609afa1474a22c0237"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/projects/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2443,
+          "sha256": "7d7e3a648f44a9ef6218c344c6c731d20a305392dd18ff076dc95abe240d1e47"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-switches/metadata-oracle-1/original-method-5"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-switch-restart-1\\project",
+      "kind": "directory",
+      "bytes": 193610,
+      "marker": ".owned-switch-reference",
+      "marker_value": "source-switch-method-reference-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": ".import/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": ".owned-switch-reference",
+          "bytes": 33,
+          "sha256": "dc873fbf19a06600aea0fa68806fc609e88cd0025f31c8790540b6e5a9434aa4"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "Audio/Sound effects/M3/bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "base_probe.gd",
+          "bytes": 7494,
+          "sha256": "fc83c7d476a393709ce734170816550651789c5d2d0a6928391ee09577d6350c"
+        },
+        {
+          "path": "data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 1148,
+          "sha256": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd"
+        },
+        {
+          "path": "input.json",
+          "bytes": 11186,
+          "sha256": "ded3504d68d7d0aabffe6a5175761651dccb72309e727f94850811c44c13e180"
+        },
+        {
+          "path": "music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 76755,
+          "sha256": "6b02bde52c473143b65d14877b10e1da0c0b308bed3ab010b1accbf9a1fb0623"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 985,
+          "sha256": "54849b1324ca532b4d5b809fc93fcb3b433491d756ac2a4c86f9705fb47b7564"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 1751,
+          "sha256": "ec82aeaae1d195b7fa8eccd561e678f95c508d1932cee155eb1942fd80a7a58a"
+        },
+        {
+          "path": "restart.json",
+          "bytes": 6434,
+          "sha256": "0d67056e1688337dd0a296acc02891eb61b83667caaa76012a22d981346709c7"
+        },
+        {
+          "path": "scene.gd",
+          "bytes": 680,
+          "sha256": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9"
+        },
+        {
+          "path": "Scripts/Main/FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "Scripts/Main/Switches/AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "Scripts/Main/Switches/ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "Scripts/Main/Switches/ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "Scripts/Main/Switches/TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "Scripts/misc/wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "user-local/Godot/resthumb-3c9c19dd063daf4b9e88662275c5b6eb.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "user-local/Godot/resthumb-3c9c19dd063daf4b9e88662275c5b6eb.txt",
+          "bytes": 49,
+          "sha256": "00e14e185cc88e73afde274935c4572b46dbd2c4b3decb44f3287ccf687027dd"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source switch methods/logs/godot.log",
+          "bytes": 174,
+          "sha256": "6cec79d04e403d71cd7e120b7b4f98959dc5418dc17d49609afa1474a22c0237"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Source switch methods/logs/godot2026-10-20T14.16.40.log",
+          "bytes": 174,
+          "sha256": "6cec79d04e403d71cd7e120b7b4f98959dc5418dc17d49609afa1474a22c0237"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/projects/bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2443,
+          "sha256": "fadfe0eef825deb33a486360cc93ea4a9fcb45339160256ba0292f3e674bfb27"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "evidence": "reports/catacombs-switches/method-state-1/original-restart"
+    }
+  ],
+  "bytes": 4753626
+}

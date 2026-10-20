@@ -1,0 +1,129 @@
+{
+  "parent": "7910c94447511a894f5aa8939eb812158d57e07f",
+  "scope": "Candidate frame/body-only source clips and existing property-player zero-delta correction; not scene/texture/contact/audio or full game.",
+  "python": {
+    "passed": 11,
+    "seconds": 3.073
+  },
+  "native": {
+    "checks": 4873,
+    "source_observations": 809,
+    "replays": 2,
+    "compiler": "GCC9.4 ASan+UBSan detect_leaks=1 halt_on_error=1 non-PIE; all inputs direct source, not whole-core build."
+  },
+  "root_regressions": [
+    {
+      "checks": 2632,
+      "observations": 81
+    },
+    {
+      "checks": 3959,
+      "observations": 414
+    }
+  ],
+  "failure": "Native1 row512 Gate On advance0: old bodytrue vs originalfalse. Source expectations unchanged. Correct zero-effective-delta per-track sampling; future one-key track extends, multi-key pre-first does not. Native2/3pass; native2 old print wording corrected in3.",
+  "engine_source_review": {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "player_url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/animation/animation_player.cpp#L457",
+    "animation_url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/resources/animation.cpp#L1604",
+    "player_source_sha256": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+    "animation_source_sha256": "0c49f1f325d040c645b35b0f39d0972ccd7812e0a575b6ad97ba5d9f3de0dd1b"
+  },
+  "resource": {
+    "format": "Existing ENCPCL01 v1/cap1 unchanged",
+    "profiles": 3,
+    "clips": 11,
+    "bytes": 948,
+    "sha256": {
+      "lever": "776b75f34c62b5b71b950b391b915739b8ef19db2bfc777cdfd346193e8269be",
+      "plate": "b09c258fbae25ae389d678bb18f2a9627b651a0b951ed4a4cf905fd44e00a403",
+      "gate": "fe10fc64dfb320f4457b233273eb2681162f77d6fed8b46bfcb77af917611ff6"
+    }
+  },
+  "collection": {
+    "ctest": 284,
+    "python": 1294,
+    "aggregate": 911,
+    "dedicated": 383,
+    "scope": "Actual Windows metadata only; native executables not built."
+  },
+  "source_sha256": {
+    "runtime/prop_clips.cpp": "90640f0f4f0b8642ad1af3853ad063e89066f2792201a802bf3991b727a16a15",
+    "tests/dungeon_switch_clips_tests.cpp": "8a9b35cd1639a78c484b4e5b4bf8547f591d4764a901e090d75217e402b254c8",
+    "tools/dungeon_switch_clips.py": "df9580f594efb716ce2ad2c6c2c47070dfb1cd089a6cdb47c020ae7d0fde5022",
+    "tools/run_dungeon_switch_clips_reference.py": "1c9a62f2dc91cdafae7705f0a4e28127a29cfde3e4c670ffb4665bb7bcb5aa12",
+    "tests/test_dungeon_switch_clips.py": "6ded9aa09cec7a2e064f08bee7a9b6c5e798f1e699ccdd2401227450f75824c0",
+    "tests/prepare_dungeon_switch_clips.py": "a402962d6ef534f0e2e4b4e4707a8b287917b92d3f4611c223a8b7e54e22b9a4",
+    "tests/prepare_dungeon_switch_clip_reference.py": "ce7d5b5b3af7ee4191125a80e0b6e517f11ac4acba68feafeab9f97721bed8ab",
+    "content/catacombs-switch-clips.json": "9b91c5a4cf38760151a0b9194d81a8160217a5e0d60271b10fa617ef5f7092b5",
+    "CMakeLists.txt": "fd54a3fb365c2e59869a4d6300364b6b5f194d841733c2b7ded14eaac335a1fd"
+  },
+  "executable": {
+    "path": "build/full-port/catacombs-switch-clips-candidate-2/dungeon_switch_clips_tests",
+    "bytes": 2915920,
+    "sha256": "44e5530264676d532ab0efb3f1737fa56b02423367015e0996dd11b430b329b6"
+  },
+  "prerequisite_console": {
+    "commit": "fbbc25ed98e86d85a9f8d687127d053e46a40957",
+    "run": 39377590127,
+    "job": 118479107077,
+    "artifact": 12245185861,
+    "status": "Real3DSX/CIA and377packagedresources passed; actual ARM command lines include3new earlier source components. Not current new switch-state or property-fix coverage."
+  },
+  "evidence_sha256": {
+    "author-catacombs-switch-clips.py": "d7148b50ce7f829820fe4d1904774a403ca500ba6b3c056a15dcbad57e2c7adb",
+    "candidate-source.json": "34314fc31ab6b859b0a4fd6c722c80853068eccb0e7b420689deda4947ad2d08",
+    "catacombs-original-prop-native-1-compile.log": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98",
+    "catacombs-original-prop-native-1-result.log": "b357109ece17d552792727d787d2be5d6d136c45645fd04ab4d30f12ed2c75a6",
+    "catacombs-original-prop-native-2-result.log": "72e7f767e22a3333df049337c70c9f3ba5b3e425a95c6a3c3a5e94f9c857c8d4",
+    "catacombs-switch-clips-author-1.log": "6f7b685fbaaf0c29005ee487aaaa7fc8ec2cd14e3a21f31ee123a335bd835f36",
+    "catacombs-switch-clips-candidate-1.log": "fc3a39c506870c445184310d62ec7a3e3bf6dd0994661a4e3bf3b362136e44e2",
+    "catacombs-switch-clips-candidate-2.log": "fc3a39c506870c445184310d62ec7a3e3bf6dd0994661a4e3bf3b362136e44e2",
+    "catacombs-switch-clips-cmake-1.log": "4e6c4722ccf2f8262df19bddc774003498b4bf8bf2ce234d96c077e75e4e7fd6",
+    "catacombs-switch-clips-collection-1.log": "51e5d99a2aff68493c06dfc7696d11b003aea56492cecfdefdf5c0911988f877",
+    "catacombs-switch-clips-ctest-1.json": "51bdae31bbced8ff9e998fe36a2fbb8d08a490c4d48bf43ff7ea451a889f27f0",
+    "catacombs-switch-clips-frozen-1.log": "5785cd05e09c47518b0240db675ed95a65249e53b065ebae6b148007fed7058a",
+    "catacombs-switch-clips-native-1-compile.log": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98",
+    "catacombs-switch-clips-native-1-result.log": "26b6f1f9f363c64d0ed9990bc0e2ed32aa4012ee0b46ef35639e3c2bab5e45cb",
+    "catacombs-switch-clips-native-2-compile.log": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98",
+    "catacombs-switch-clips-native-2-result.log": "1c5bc0f0a67fc574950e01464f5158c725063742c5b6f9b71b8e1194101d513f",
+    "catacombs-switch-clips-native-3-compile.log": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98",
+    "catacombs-switch-clips-native-3-result.log": "713a2482de4b43bfbf11851d94ddb3ec03ada14287d261cd16ce8d86847a6c34",
+    "catacombs-switch-clips-plan-1.json": "741c82e7456d1703117a58d6577beea80aed7747335283a0f5d7b7b72d224a0c",
+    "catacombs-switch-clips-python-1.log": "83c47d1153870add7cebdb60dd1ee1c0b892c912e9b42d75d42d769bd4596b80",
+    "collect-catacombs-switch-clips.py": "9b15289e327fbfebab7996494b0749000a97cbdac27914f22015e2983e43ae6b",
+    "retain-catacombs-switch-clips.py": "0206f25dc6e5858bb78ec89a977dc7b94f82de20983b5334a14d147c32664e59",
+    "original-1/driver.log": "ac8be2a9c705cdbe9fa4715697d75ca9124b7485398be3b72d7d45abe91b8de0",
+    "original-1/engine.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "original-1/import.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "original-1/input.json": "ca0df0ba9e6d0903befdbe7f8c887bafdd27b267bd7353ed87748aa1546c5073",
+    "original-1/numeric-gate.tscn": "fccf48583edd96fc38adcf57dbee719f12278c4333c793699604e747f7b333bf",
+    "original-1/numeric-lever.tscn": "54a76074dce0e9b09d19b1b694dc146d5e085af7b19549934d8b3f01eb23ef05",
+    "original-1/numeric-plate.tscn": "a151119081875bb906ff7c19554d07a460eb96f7798a04b2bcd3c57e396a570a",
+    "original-1/observations.json": "35b138da775655c8e7e98b01e0bb1a3cec4e7745da27a76a7eea59da608d64da",
+    "original-1/probe.gd": "7ddabcaca594655dd2cbf6a7b34dca2aa5ce0ac4d74ecdce5411448c092fdb51",
+    "original-1/receipt.json": "34638be65f299f353fa0f55c6ad89b164aadd70f94ba4eac5824e57ce61fca89",
+    "original-1/states.tsv": "8b9365ea290403dfeff85afffa1d10b2dde8e5518455826e5ebbdb3e86aa1c1d",
+    "original-1/source-scenes/gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "original-1/source-scenes/lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "original-1/source-scenes/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+    "original-2/driver.log": "ac8be2a9c705cdbe9fa4715697d75ca9124b7485398be3b72d7d45abe91b8de0",
+    "original-2/engine.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "original-2/import.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "original-2/input.json": "ca0df0ba9e6d0903befdbe7f8c887bafdd27b267bd7353ed87748aa1546c5073",
+    "original-2/numeric-gate.tscn": "fccf48583edd96fc38adcf57dbee719f12278c4333c793699604e747f7b333bf",
+    "original-2/numeric-lever.tscn": "54a76074dce0e9b09d19b1b694dc146d5e085af7b19549934d8b3f01eb23ef05",
+    "original-2/numeric-plate.tscn": "a151119081875bb906ff7c19554d07a460eb96f7798a04b2bcd3c57e396a570a",
+    "original-2/observations.json": "35b138da775655c8e7e98b01e0bb1a3cec4e7745da27a76a7eea59da608d64da",
+    "original-2/probe.gd": "7ddabcaca594655dd2cbf6a7b34dca2aa5ce0ac4d74ecdce5411448c092fdb51",
+    "original-2/receipt.json": "34638be65f299f353fa0f55c6ad89b164aadd70f94ba4eac5824e57ce61fca89",
+    "original-2/states.tsv": "8b9365ea290403dfeff85afffa1d10b2dde8e5518455826e5ebbdb3e86aa1c1d",
+    "original-2/source-scenes/gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "original-2/source-scenes/lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "original-2/source-scenes/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+    "prerequisite-console-and-cleanup/catacombs-fbbc-console-job.log": "40e2527218361177aa6e2f6c6ab3ea1eeb1bcbe25dd6e97f604388db84ff9c0b",
+    "prerequisite-console-and-cleanup/catacombs-retirement-plan-1.json": "29fd08a287720de1a8d33828210b3527194c41618ed891b6afaaba0d144bc7d2",
+    "prerequisite-console-and-cleanup/catacombs-retirement-result-1.json": "975743e2ad19b345da1a4edec2a735ed14f904af67c80e24d5566c4eff433eb6",
+    "prerequisite-console-and-cleanup/plan-catacombs-retirement.py": "35b7e7ad704e5e5da38c91188f5e585965cc7c4de80e25be66df922b9ad72ce3"
+  }
+}

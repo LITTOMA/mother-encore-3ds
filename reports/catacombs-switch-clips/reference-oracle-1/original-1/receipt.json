@@ -1,0 +1,62 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original numeric frame/body animations with script/signals quarantined.\n\nSource resources, tracks and initial properties are exact. Numeric copies\nexclude script execution and signal dispatch; this is not scene/gameplay,\ntexture binding, actual contact, audio or hardware verification.\n",
+  "whole_scripts_approved": false,
+  "sources": {
+    "Graphics/Objects/Catacombs/Gate.png": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f",
+    "Graphics/Objects/Catacombs/Lever.png": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859",
+    "Graphics/Objects/Catacombs/Plate.png": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af",
+    "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+    "Scripts/Main/Switches/ControlledDoor.gd": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776",
+    "Scripts/Main/Switches/TwoStatesSwitch.gd": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+  },
+  "rows": 809,
+  "quarantine": {
+    "Nodes/Overworld/switches/Lever.tscn": {
+      "script": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+      "connections": [
+        {
+          "signal": "area_entered",
+          "from": "interact",
+          "to": ".",
+          "method": "_on_hit"
+        }
+      ],
+      "scope": "All script/signals excluded from numeric property-only fixture; source subresources/node properties exact."
+    },
+    "Nodes/Overworld/switches/plate.tscn": {
+      "script": "Scripts/Main/Switches/TwoStatesSwitch.gd",
+      "connections": [
+        {
+          "signal": "body_entered",
+          "from": "Area2D",
+          "to": ".",
+          "method": "_on_player_entered"
+        }
+      ],
+      "scope": "All script/signals excluded from numeric property-only fixture; source subresources/node properties exact."
+    },
+    "Nodes/Overworld/switches/Gate.tscn": {
+      "script": "Scripts/Main/Switches/ControlledDoor.gd",
+      "connections": [],
+      "scope": "All script/signals excluded from numeric property-only fixture; source subresources/node properties exact."
+    }
+  },
+  "copied_assets": {
+    "Graphics/Objects/Catacombs/Lever.png": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859",
+    "Audio/Sound effects/Lever.mp3": "0c155a6512c3c856265302171c54df6bfcb1215022e147c84b513a482ae6e4a7",
+    "Graphics/Objects/Catacombs/Plate.png": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af",
+    "Audio/Sound effects/M3/door_close.wav": "089890ee7381adb8f9b169df6b66377798eb0d90f1fd38c748c7a2c2c291cfa5",
+    "Graphics/Objects/Catacombs/Gate.png": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f"
+  },
+  "source_scenes": {
+    "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+    "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455"
+  },
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "numeric_input": "Exact original input JSON reals used in TSV, not rounded diagnostic echoes.",
+  "probe_sha256": "cb31ce4fd767611efc7e467cd0ba8e4fd1ed4f761908db3c851646a50a68092a"
+}

@@ -1,0 +1,60 @@
+{
+  "bytes": 818520.0,
+  "scope": "Only two explicitly owned host-test copies of four source PCM retired after final381 checks. Original/final candidate PCM, genuine game builds and current executable retained.",
+  "directories": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-ndsp-pcm-1",
+      "removed": true,
+      "bytes": 409260.0,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-ndsp-pcm-1\\sound\\effects\\catacombs-lever.pcm",
+          "sha256": "4549996a4cca2f8c57b5d2cee8cbb0cedc94ad3beb5d15971567390562770235",
+          "bytes": 20992
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-ndsp-pcm-1\\sound\\effects\\catacombs-plate.pcm",
+          "sha256": "e38acfd31ac487063f3193adabb86f208e49de01b30b186a2d37ab09ee060c94",
+          "bytes": 61740
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-ndsp-pcm-1\\sound\\effects\\catacombs-wall.pcm",
+          "sha256": "5f5fa4e56422465d655668788cb8699efab84f983d53a9d549596302955f3a72",
+          "bytes": 311562
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-ndsp-pcm-1\\sound\\effects\\cursor-restricted.pcm",
+          "sha256": "5e289724e9f37d2eb8155f5ad6781e33a753ec50c69cdb9f922ac2772d43926f",
+          "bytes": 14966
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-ndsp-pcm-2",
+      "removed": true,
+      "bytes": 409260.0,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-ndsp-pcm-2\\sound\\effects\\catacombs-lever.pcm",
+          "sha256": "4549996a4cca2f8c57b5d2cee8cbb0cedc94ad3beb5d15971567390562770235",
+          "bytes": 20992
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-ndsp-pcm-2\\sound\\effects\\catacombs-plate.pcm",
+          "sha256": "e38acfd31ac487063f3193adabb86f208e49de01b30b186a2d37ab09ee060c94",
+          "bytes": 61740
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-ndsp-pcm-2\\sound\\effects\\catacombs-wall.pcm",
+          "sha256": "5f5fa4e56422465d655668788cb8699efab84f983d53a9d549596302955f3a72",
+          "bytes": 311562
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-ndsp-pcm-2\\sound\\effects\\cursor-restricted.pcm",
+          "sha256": "5e289724e9f37d2eb8155f5ad6781e33a753ec50c69cdb9f922ac2772d43926f",
+          "bytes": 14966
+        }
+      ]
+    }
+  ]
+}

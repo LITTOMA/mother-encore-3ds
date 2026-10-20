@@ -1,0 +1,32 @@
+{
+  "base_commit": "9abfc1d3f06e83dd8bb5d9d154b1ac335149b28f",
+  "scope": "Production NDSP queue service exercised through the explicit host SDK double with actual4PCM. Headless API/ownership verification only; not audible/emulator/hardware or live map acceptance.",
+  "checks": 381,
+  "compiler": "GCC9.4 WSL Ubuntu20.04 direct current-source ASan+UBSan,detect_leaks=1,halt_on_error=1,nonPIE,noexceptions/noRTTI",
+  "core_unchanged_files": 224,
+  "original_invocation_failure": "Root PCM directory argument lacked required trailing slash; source file existed. Retried with romfs/; no game/asset/test expectation changed.",
+  "cache_pcm_bytes": 409260,
+  "source_sha256": {
+    "platform/ctr/dungeon_mechanism_audio.hpp": "feb2c17c394716e8870af1aef17879fbf628e3f21a48c2977943af473ee0be11",
+    "platform/ctr/audio_player.cpp": "27f83125be9da5ccdb9c090fb4cb24d78b7b606376d6e29342281601acde4b10",
+    "platform/ctr/audio_player.hpp": "d3b8eb40801cf62b898b8c81e14c41fb67323ef25107b1d5966512225ea970be",
+    "platform/ctr/region_channel_pool.hpp": "a473adf22ae6a3a618295936492b66b95e7c37bb8291715a4bcdecac6bd7cea1",
+    "runtime/dungeon_mechanism_presentation.cpp": "dcde693d6c840d2b888580f325c165269060e8c71f851cddced04f85c09e4cd4",
+    "runtime/dungeon_mechanism_bindings.cpp": "624e33939791912315b76ac342372f086b65e7530452c09bd21ef4ed7acf1c4b",
+    "tests/dungeon_mechanism_ndsp_tests.cpp": "a9875a7f576001d2489d10694a380aa49786c58119659f489e541be75c842cd2",
+    "tests/fixtures/audio_ndsp/3ds.h": "8b06bb154a2b31e7fa6d9c2afca1a2599ddec2e3b687e5e9fcf78dd135d0e73e"
+  },
+  "full_new_cross_build": "pending; main includes production header for actual toolchain compilation",
+  "evidence_sha256": {
+    "actual-media-provenance.json": "43d98e0570412e1c40c9da62f1782bb49e8adc7bd01e3c2a882e0ff5f6caa8f1",
+    "mechanism-media-test-plan.json": "33d1785a0d5c92bdec81ae17d647365325a7fbc74be89b9827fd8026051bec96",
+    "mechanism-ndsp-cmake-1.log": "b06106f602e02196cc45857b6d747f6de8ef2699946fef376b66908be1283ec1",
+    "mechanism-ndsp-native-1.log": "30a9bb3d739e7b1ac72f222255053d5a32cc1e202dcf10118146513bc43d7b6f",
+    "mechanism-ndsp-native-2.log": "8de2b88a47e27cd83d4138fbce122b8fa2f54f101bccbf16d2d0a8347a090ab3",
+    "mechanism-ndsp-native-3.log": "7ebdd906d9650dbcbddfe3b1ae82e9301dd25b26d94e154bfc99942e31b1f59a",
+    "mechanism-ndsp-plan-1.log": "aab362121c1cc00bfad716cfa9fd1596d3e31f8c8f5d933573ed61aac166d303",
+    "temporary-pcm-retirement.json": "adf0e99ae094a2cbd711df66247f9e9c4ff07b478432a9d3093f08484247ed7a",
+    "temporary-pcm-retirement.log": "01568a8327564f89cb0287b19dd5835de85a991a5b56e799826a588cf40704ec"
+  },
+  "temporary_pcm_retired_bytes": 818520
+}

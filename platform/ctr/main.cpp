@@ -55,6 +55,7 @@ extern "C" { EncoreSemanticProbe encore_semantic_probe; }
 #include "audio_player.hpp"
 #include "field_run_audio.hpp"
 #include "field_prop_audio.hpp"
+#include "dungeon_mechanism_audio.hpp"
 #include "player_action_audio.hpp"
 #include "music_region_service.hpp"
 #include "encore/battle_entry.hpp"

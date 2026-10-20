@@ -1,0 +1,46 @@
+{
+  "source": "b954fd7eb83c8b27d42955bd10b43f05f56cf557",
+  "run": 39476547057,
+  "scope": "Full host/sanitizer and genuine console build only; no new emulator or hardware claim",
+  "jobs": {
+    "gcc": {
+      "id": 118813886683,
+      "success": true,
+      "ordinary": 307,
+      "sanitizer": 290
+    },
+    "clang": {
+      "id": 118813887301,
+      "success": true,
+      "ordinary": 290,
+      "sanitizer": 290
+    },
+    "console": {
+      "id": 118813887116,
+      "success": true,
+      "ordinary": null,
+      "sanitizer": null
+    }
+  },
+  "files": {
+    "gcc.log": "df37aac61c514bee2506cf648cd49a95c92e6bc13b30d77fd890ffd5a77195d3",
+    "clang.log": "c222ff08b161ab6b6b6f8725931a4c3aa8738a90562d3f280fab31bf39456f1d",
+    "console.log": "2514b34776813aa65bb6b407f2114a8cbf629b29f59511906efff194ef243f74",
+    "artifact-receipt/.owned-receipt": "58079c9e87b74377295db4752febd95ff2c1d7c3049c3f93eb943368bdead28d",
+    "artifact-receipt/artifact.json": "ea1240daf101c6c9d4d105bd7f3968aa279a7d7bb7a79800abbcc0815150701d",
+    "artifact-receipt/build-receipt.json": "1ed6cbe8de8028d11eb6661b5e910cb1de25516758351b249f49f18aee0a2eb2",
+    "artifact-receipt/BUILD_INFO.txt": "464450311ffa05e06f78d8fea6e6301858772c37935f833ab08ec704583e2164",
+    "artifact-receipt/SHA256SUMS": "09439a5f67e978177222050f920e3b6d006ce6ffe9792a02ba4548f31565f33c",
+    "artifact-receipt/verification.json": "a1f5f085846ce7670638c90543e24734abd44d7d5fdb0965be58a97994fdbdb8",
+    "status.json": "7e1281d7250a084f00aba7a8ac8726af9e69c28a40a6318667445ee31270e0b7"
+  },
+  "console": {
+    "staged_files": 377,
+    "game": {
+      "bytes": 264975208,
+      "sha256": "c180fbda6fffd52cffbb59bae07e7f93050a49899957747c9ed67ec3ac8e3fa3"
+    },
+    "artifact_payload_downloaded": false,
+    "archive_digest_not_computed": true
+  }
+}

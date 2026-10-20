@@ -1,0 +1,293 @@
+{
+  "run": 39488422954,
+  "source": "4d873f9e09bdfd1ca47130aca7acea2e96d9cefb",
+  "artifact_id": 12294884319,
+  "api_archive_digest_not_computed": "sha256:c059aa57ebe43e561dc7150e47a178db538a618572da54225a85ed1cc0e58e3e",
+  "scope": "Only small genuine ZIP metadata fetched; archive member CRC verified by zipfile,not whole archive SHA",
+  "members": [
+    {
+      "path": "3ds/encore-native/encore-native.3dsx",
+      "bytes": 264975208,
+      "crc32": 1450921292
+    },
+    {
+      "path": "3ds/encore-native/encore-native.smdh",
+      "bytes": 14016,
+      "crc32": 3917040338
+    },
+    {
+      "path": "AUDIO_BACKEND.md",
+      "bytes": 7496,
+      "crc32": 3247484297
+    },
+    {
+      "path": "BATTLE_ENTRY.md",
+      "bytes": 3663,
+      "crc32": 3236492024
+    },
+    {
+      "path": "BATTLE_ROUND.md",
+      "bytes": 3904,
+      "crc32": 328553323
+    },
+    {
+      "path": "BATTLE_VICTORY.md",
+      "bytes": 4494,
+      "crc32": 3946756668
+    },
+    {
+      "path": "BUILD_INFO.txt",
+      "bytes": 267,
+      "crc32": 3501865047
+    },
+    {
+      "path": "CAROL_PHONE_RECORD.md",
+      "bytes": 6193,
+      "crc32": 2708966984
+    },
+    {
+      "path": "CONTINUE_LOAD.md",
+      "bytes": 6030,
+      "crc32": 2619943118
+    },
+    {
+      "path": "DOLL_ENTRY.md",
+      "bytes": 8009,
+      "crc32": 2220519750
+    },
+    {
+      "path": "DOLL_MELODY.md",
+      "bytes": 3301,
+      "crc32": 1332471020
+    },
+    {
+      "path": "DOLL_ROUND.md",
+      "bytes": 5304,
+      "crc32": 1697142452
+    },
+    {
+      "path": "DOLL_SCENE.md",
+      "bytes": 2890,
+      "crc32": 2559214706
+    },
+    {
+      "path": "FOREGROUND_FIX.md",
+      "bytes": 1923,
+      "crc32": 247042122
+    },
+    {
+      "path": "HOUSE_INTERACTIONS.md",
+      "bytes": 2296,
+      "crc32": 1351201003
+    },
+    {
+      "path": "ITEMS_MENU.md",
+      "bytes": 3171,
+      "crc32": 167006011
+    },
+    {
+      "path": "LAMP_SEQUENCE.md",
+      "bytes": 3735,
+      "crc32": 3686761972
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1083,
+      "crc32": 2641175861
+    },
+    {
+      "path": "NATIVE_INPUT.md",
+      "bytes": 6581,
+      "crc32": 2300571989
+    },
+    {
+      "path": "NATIVE_SESSION_SAVE.md",
+      "bytes": 11421,
+      "crc32": 4021698528
+    },
+    {
+      "path": "READ_ME_FIRST.md",
+      "bytes": 2388,
+      "crc32": 227397556
+    },
+    {
+      "path": "SHA256SUMS",
+      "bytes": 295,
+      "crc32": 85132459
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 4141,
+      "crc32": 862985620
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 66975,
+      "crc32": 1194874769
+    },
+    {
+      "path": "cias/encore-native.cia",
+      "bytes": 266290112,
+      "crc32": 1126590233
+    },
+    {
+      "path": "build-receipt.json",
+      "bytes": 758,
+      "crc32": 348214772
+    },
+    {
+      "path": "licenses/CMake-3.31.10-Copyright.txt",
+      "bytes": 5477,
+      "crc32": 3371155269
+    },
+    {
+      "path": "licenses/COPYING.NEWLIB",
+      "bytes": 76870,
+      "crc32": 2695140234
+    },
+    {
+      "path": "licenses/COPYING.RUNTIME",
+      "bytes": 3324,
+      "crc32": 3326521415
+    },
+    {
+      "path": "licenses/COPYING3",
+      "bytes": 35147,
+      "crc32": 1719137660
+    },
+    {
+      "path": "licenses/Fusion-Pixel-LICENSE-OFL.txt",
+      "bytes": 4418,
+      "crc32": 4186449997
+    },
+    {
+      "path": "licenses/Galmuri-LICENSE-OFL.md",
+      "bytes": 4266,
+      "crc32": 3647418480
+    },
+    {
+      "path": "licenses/Godot-3.6.2-LICENSE.txt",
+      "bytes": 1149,
+      "crc32": 2966356864
+    },
+    {
+      "path": "licenses/LICENSE",
+      "bytes": 1083,
+      "crc32": 2641175861
+    },
+    {
+      "path": "licenses/MOTHER-Encore-0.4.1.0-LICENSE.txt",
+      "bytes": 1058,
+      "crc32": 2583591008
+    },
+    {
+      "path": "licenses/PCG-APACHE-2.0.txt",
+      "bytes": 11358,
+      "crc32": 2263004340
+    },
+    {
+      "path": "licenses/PCG-NOTICE.txt",
+      "bytes": 780,
+      "crc32": 3153075488
+    },
+    {
+      "path": "licenses/README.md",
+      "bytes": 2012,
+      "crc32": 4102353971
+    },
+    {
+      "path": "licenses/SOURCE_FONT_NOTICES.md",
+      "bytes": 5954,
+      "crc32": 2323641336
+    },
+    {
+      "path": "licenses/THIRD_PARTY_NOTICES.md",
+      "bytes": 4141,
+      "crc32": 862985620
+    },
+    {
+      "path": "licenses/citro2d-1.7.0-LICENSE.txt",
+      "bytes": 853,
+      "crc32": 3696607297
+    },
+    {
+      "path": "licenses/citro3d-1.7.1-LICENSE.txt",
+      "bytes": 853,
+      "crc32": 1697506849
+    },
+    {
+      "path": "licenses/libctru-2.7.0-README.txt",
+      "bytes": 2727,
+      "crc32": 3066176573
+    },
+    {
+      "path": "licenses/license-sources.json",
+      "bytes": 5581,
+      "crc32": 2217333941
+    }
+  ],
+  "requests": [
+    {
+      "start": 377926137,
+      "bytes": 22,
+      "sha256": "3663566985b8ac89bdf8304d9f2e7ac624fe12df31a646c447d4e03d004ce129"
+    },
+    {
+      "start": 377926117,
+      "bytes": 20,
+      "sha256": "9ae8a2783743c6cab46002dde1320866683d6e075cbf91632cb83b39bcf400ff"
+    },
+    {
+      "start": 377923148,
+      "bytes": 2989,
+      "sha256": "f7e5e6c8604e42cda88eb562ad75dde0675a1bd0fe8c670ee42aef7209dd5e1b"
+    },
+    {
+      "start": 187930994,
+      "bytes": 30,
+      "sha256": "09636357e734f8cdc1e6658e3cef02fe429394c0d5ff228a69daf965c3e9caae"
+    },
+    {
+      "start": 187931024,
+      "bytes": 14,
+      "sha256": "57790fc8efc776f3dcce7b8455a07b22d260776f621fe4be4838a61e02afe5be"
+    },
+    {
+      "start": 187931038,
+      "bytes": 215,
+      "sha256": "e912867c0dd6c59f03a38c5d14f6bdf8e602f234273988450a1efff3e0e3da6d"
+    },
+    {
+      "start": 187965277,
+      "bytes": 30,
+      "sha256": "29cd4a9693f51679bddb04b9d92a28516cd60688b98ed91db22aca37ca22aa87"
+    },
+    {
+      "start": 187965307,
+      "bytes": 10,
+      "sha256": "e6351d3766186d2b4d187ee3c1613bf7516a35fd9b3207d9bf72fc7c2576e076"
+    },
+    {
+      "start": 187965317,
+      "bytes": 170,
+      "sha256": "32c05ae8af41289e10e48493630f9580d65a655ceece94fdda007bec747722b9"
+    },
+    {
+      "start": 377871680,
+      "bytes": 30,
+      "sha256": "f7f5b80962c98dec79a6ac36895a006f2976cd540884ec2c09a70208cd254f2d"
+    },
+    {
+      "start": 377871710,
+      "bytes": 18,
+      "sha256": "dc66f752d8f0b21f5f1bbf5f7fafb7e6c5c692e986684476087407570234397a"
+    },
+    {
+      "start": 377871728,
+      "bytes": 397,
+      "sha256": "24cdd538f3df3720174dfcf33fa9003514d97e14baa8d854a9d96fe95b52c9e8"
+    }
+  ],
+  "total_downloaded_bytes": 3945,
+  "retained_identical_games": []
+}

@@ -1,0 +1,14 @@
+{
+  "task": "mayor-scene",
+  "pid": 12497,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498609.1069977,
+  "finished": 1792498632.2140667,
+  "seconds": 23.10706901550293,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/mayor_scene.py",
+    "compile"
+  ]
+}

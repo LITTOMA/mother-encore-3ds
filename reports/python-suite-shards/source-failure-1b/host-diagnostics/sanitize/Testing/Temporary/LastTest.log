@@ -1,0 +1,19 @@
+Start testing: Oct 20 12:19 UTC
+----------------------------------------------------------
+115/295 Testing: field_collision_index
+115/295 Test: field_collision_index
+Command: "/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize/encore_field_collision_index_tests" "/home/runner/work/mother-encore-3ds/mother-encore-3ds/romfs/world/podunk/podunk.encmap"
+Directory: /home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize
+"field_collision_index" start time: Oct 20 12:19 UTC
+Output:
+----------------------------------------------------------
+Collision cache PASS: 220251 checks; reference decorative/collision cell visits 924204; source order, geometry, conditions, actor and budget preserved
+<end of output>
+Test time =   1.76 sec
+----------------------------------------------------------
+Test Passed.
+"field_collision_index" end time: Oct 20 12:19 UTC
+"field_collision_index" time elapsed: 00:00:01
+----------------------------------------------------------
+
+End testing: Oct 20 12:19 UTC

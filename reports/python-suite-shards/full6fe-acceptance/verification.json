@@ -1,0 +1,32 @@
+{
+  "tested_commit": "6fe2ab2e2645a563e5c501dbd6244c70d89f55e4",
+  "run": 39440740886,
+  "conclusion": "success",
+  "jobs": {
+    "gcc": 118689581562,
+    "clang": 118689581690,
+    "console": 118689581218
+  },
+  "gcc": {
+    "ordinary": 276,
+    "sanitizer": 259
+  },
+  "clang": {
+    "ordinary": 259,
+    "sanitizer": 259
+  },
+  "actual_console": {
+    "formats": [
+      "3DSX",
+      "CIA"
+    ],
+    "staged_files": 377,
+    "artifact": 12274902039
+  },
+  "scope": "Full source acceptance of the exclusive two-module-group test fix. No game code/data change, emulator run, audible or hardware claim.",
+  "logs_sha256": {
+    "clang.log": "743f0fb0e4b0d76573fe11d7662ad2aa299596632b27847095f3c131ac602f00",
+    "console.log": "98ff35f4b3fbe7572b716db81d4f18461769282442924d1a17c19a9fbc9bed27",
+    "gcc.log": "9a55e7873eb494fbcd48dc03fb209467c777995a601aff8d0fa218ae10fc431f"
+  }
+}

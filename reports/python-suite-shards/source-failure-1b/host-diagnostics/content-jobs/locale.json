@@ -1,0 +1,14 @@
+{
+  "task": "locale",
+  "pid": 13325,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498626.994795,
+  "finished": 1792498634.350661,
+  "seconds": 7.355865955352783,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/localization_assets.py",
+    "compile"
+  ]
+}

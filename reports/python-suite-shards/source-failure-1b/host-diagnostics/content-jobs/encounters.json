@@ -1,0 +1,14 @@
+{
+  "task": "encounters",
+  "pid": 14226,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498680.4765673,
+  "finished": 1792498685.3332548,
+  "seconds": 4.856687545776367,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/encounter_dependencies.py",
+    "compile"
+  ]
+}

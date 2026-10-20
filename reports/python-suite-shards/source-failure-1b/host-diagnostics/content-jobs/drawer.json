@@ -1,0 +1,14 @@
+{
+  "task": "drawer",
+  "pid": 13226,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498625.2166967,
+  "finished": 1792498626.2658942,
+  "seconds": 1.0491974353790283,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/drawer_program.py",
+    "compile"
+  ]
+}

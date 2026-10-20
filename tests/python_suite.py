@@ -115,6 +115,54 @@ def parallel_partition(suite):
     return unittest.TestSuite(serial), groups
 
 
+def shard_partition(suite, count):
+    """Keep whole modules together; preserve every method exactly once."""
+    if type(count) is not int or count not in (1, 2):
+        raise ValueError('Unsupported aggregate shard count')
+    original = list(cases(suite))
+    full_ids = Counter(identity(c) for c in original)
+    if any(n != 1 for n in full_ids.values()):
+        raise ValueError('Duplicate aggregate shard method IDs')
+    modules = {}
+    for case in original:
+        modules.setdefault(identity(case).split('.')[0], []).append(case)
+    assigned, loads = {}, [0] * count
+    for module, methods in sorted(modules.items(), key=lambda item: (-len(item[1]), item[0])):
+        selected = min(range(count), key=lambda i: (loads[i], i))
+        assigned[module] = selected
+        loads[selected] += len(methods)
+    shards = [unittest.TestSuite(c for c in original
+        if assigned[identity(c).split('.')[0]] == i) for i in range(count)]
+    ids = [sorted(identity(c) for c in cases(part)) for part in shards]
+    if sum((Counter(part) for part in ids), Counter()) != full_ids:
+        raise ValueError('Aggregate sharding loses or duplicates methods')
+    return shards, ids
+
+
+def validate_shard_registrations(commands, project, directory, count):
+    """An omitted, duplicate or changed CTest shard cannot silently pass."""
+    if type(count) is not int or count not in (1, 2):
+        raise ValueError('Unsupported aggregate shard registration count')
+    if type(commands) is not list or any(type(row) is not dict
+        or set(row) != {'name', 'command'} or type(row['name']) is not str
+        or type(row['command']) is not list
+        or any(type(arg) is not str or not arg for arg in row['command']) for row in commands):
+        raise ValueError('Malformed aggregate CTest shard registration')
+    expected = ['python_tools'] if count == 1 else ['python_tools', 'python_tools_part2']
+    if len(commands) != count or sorted(c['name'] for c in commands) != sorted(expected):
+        raise ValueError('Missing/duplicate aggregate CTest shard registration')
+    for row in commands:
+        index = expected.index(row['name'])
+        command = row['command']
+        suffix = [] if count == 1 else ['--shard-index', str(index), '--shard-count', str(count)]
+        if (len(command) != 4 + len(suffix)
+            or Path(command[0]).resolve() != Path(sys.executable).resolve()
+            or Path(command[1]).resolve() != Path(project).resolve() / 'tests/python_suite.py'
+            or command[2] != '--ctest-dir' or Path(command[3]).resolve() != Path(directory).resolve()
+            or command[4:] != suffix):
+            raise ValueError('Changed aggregate CTest shard command: ' + row['name'])
+
+
 def worker(project, expected, result_path):
     sys.path.insert(0, str(Path(project).resolve()))
     value = json.loads(Path(expected).read_text(encoding='utf-8'))
@@ -188,9 +236,12 @@ def plan(project, ctest_dir):
     metadata = json.loads(subprocess.check_output(
         ['ctest', '--test-dir', str(ctest_dir), '--show-only=json-v1'], text=True))
     observed = {}
+    aggregate_commands = []
     for test in metadata['tests']:
         name = test['name']
         command = test.get('command', [])
+        if len(command) >= 2 and Path(command[1]).resolve() == project / 'tests/python_suite.py':
+            aggregate_commands.append(dict(name=name, command=command))
         registered = registered_modules(command, project)
         if name in DEDICATED:
             if name in observed or registered != DEDICATED[name]:
@@ -221,7 +272,7 @@ def plan(project, ctest_dir):
         raise ValueError('Python test partition loses or duplicates methods')
     receipt = dict(discovered=len(full), aggregate=len(remaining), dedicated=len(full) - len(remaining),
                    discovery_ids=sorted(full_ids.elements()), aggregate_ids=sorted(remaining_ids.elements()),
-                   dedicated_ids=groups, multiset_equal=True,
+                   dedicated_ids=groups, multiset_equal=True, aggregate_commands=aggregate_commands,
                    policy='New unregistered modules stay in discovery; dedicated commands and the complete discovered method multiset are preserved. Assertions remain owned by their suites.')
     return unittest.TestSuite(remaining), receipt
 
@@ -235,6 +286,8 @@ def main():
     parser.add_argument('--worker-result', type=Path)
     parser.add_argument('--collect-only', action='store_true')
     parser.add_argument('--report', type=Path)
+    parser.add_argument('--shard-index', type=int, default=0)
+    parser.add_argument('--shard-count', type=int, choices=(1, 2), default=1)
     args = parser.parse_args()
     if args.worker_plan or args.worker_result:
         if not args.worker_plan or not args.worker_result:
@@ -245,17 +298,31 @@ def main():
     if not (args.jobs == 1 or 4 <= args.jobs <= 64):
         parser.error('Python test jobs must be 1 (serial) or between 4 and 64')
     suite, receipt = plan(args.project, args.ctest_dir)
+    if not 0 <= args.shard_index < args.shard_count:
+        parser.error('Aggregate shard index is outside its count')
+    # Collection-only remains a global accounting operation. Actual execution
+    # also checks that CTest registered every shard with its exact command.
+    if not args.collect_only:
+        validate_shard_registrations(receipt['aggregate_commands'], args.project,
+                                     args.ctest_dir, args.shard_count)
+    shards, shard_ids = shard_partition(suite, args.shard_count)
+    suite = shards[args.shard_index]
+    receipt.update(shard_count=args.shard_count, shard_index=args.shard_index,
+                   shard_ids=shard_ids, selected_ids=shard_ids[args.shard_index])
     serial, groups = parallel_partition(suite) if args.jobs >= 4 else (suite, {})
     receipt['parallel_modules'] = groups
     receipt['serial_ids'] = sorted(identity(c) for c in cases(serial))
     print('Python method partition: {discovered} discovered = {aggregate} aggregate + {dedicated} dedicated; exact ID multiset preserved'.format(**receipt), flush=True)
+    print('Aggregate shard {}/{}: {} methods; whole modules and every original assertion retained'.format(
+        args.shard_index + 1, args.shard_count, len(receipt['selected_ids'])), flush=True)
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf8')
     if args.collect_only:
         return 0
     # Writers/unreviewed modules run only after every read-only worker exits.
-    parallel_ok = run_parallel(args.project.resolve(), groups, args.ctest_dir.resolve() / 'python-workers', args.jobs) if groups else True
+    parallel_ok = run_parallel(args.project.resolve(), groups,
+        args.ctest_dir.resolve() / 'python-workers' / ('shard-' + str(args.shard_index)), args.jobs) if groups else True
     serial_ok = unittest.TextTestRunner(verbosity=2).run(serial).wasSuccessful()
     return 0 if parallel_ok and serial_ok else 1
 

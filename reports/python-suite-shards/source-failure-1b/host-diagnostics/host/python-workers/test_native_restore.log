@@ -1,0 +1,14 @@
+test_all_registered_characters_and_frozen_inactive_inventory (tests.test_native_restore.RestoreCompilerTests.test_all_registered_characters_and_frozen_inactive_inventory) ... ok
+test_all_source_music_areas_and_explicit_unsupported_area (tests.test_native_restore.RestoreCompilerTests.test_all_source_music_areas_and_explicit_unsupported_area) ... ok
+test_existing_flag_mechanisms_are_reused (tests.test_native_restore.RestoreCompilerTests.test_existing_flag_mechanisms_are_reused) ... ok
+test_only_missing_npc_event_data_and_last_match_order (tests.test_native_restore.RestoreCompilerTests.test_only_missing_npc_event_data_and_last_match_order) ... ok
+test_recipe_is_source_checked (tests.test_native_restore.RestoreCompilerTests.test_recipe_is_source_checked) ... ok
+test_semantic_and_cross_pack_rejection (tests.test_native_restore.RestoreCompilerTests.test_semantic_and_cross_pack_rejection) ... ok
+test_source_recipe_and_staged_binary (tests.test_native_restore.RestoreCompilerTests.test_source_recipe_and_staged_binary) ... ok
+test_unknown_fields (tests.test_native_restore.RestoreCompilerTests.test_unknown_fields) ... ok
+test_version_admission (tests.test_native_restore.RestoreCompilerTests.test_version_admission) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 4.304s
+
+OK

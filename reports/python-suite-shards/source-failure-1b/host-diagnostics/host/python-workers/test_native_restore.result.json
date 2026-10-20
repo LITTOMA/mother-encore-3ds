@@ -1,0 +1,29 @@
+{
+  "module": "test_native_restore",
+  "expected_ids": [
+    "test_native_restore.RestoreCompilerTests.test_all_registered_characters_and_frozen_inactive_inventory",
+    "test_native_restore.RestoreCompilerTests.test_all_source_music_areas_and_explicit_unsupported_area",
+    "test_native_restore.RestoreCompilerTests.test_existing_flag_mechanisms_are_reused",
+    "test_native_restore.RestoreCompilerTests.test_only_missing_npc_event_data_and_last_match_order",
+    "test_native_restore.RestoreCompilerTests.test_recipe_is_source_checked",
+    "test_native_restore.RestoreCompilerTests.test_semantic_and_cross_pack_rejection",
+    "test_native_restore.RestoreCompilerTests.test_source_recipe_and_staged_binary",
+    "test_native_restore.RestoreCompilerTests.test_unknown_fields",
+    "test_native_restore.RestoreCompilerTests.test_version_admission"
+  ],
+  "executed_ids": [
+    "test_native_restore.RestoreCompilerTests.test_all_registered_characters_and_frozen_inactive_inventory",
+    "test_native_restore.RestoreCompilerTests.test_all_source_music_areas_and_explicit_unsupported_area",
+    "test_native_restore.RestoreCompilerTests.test_existing_flag_mechanisms_are_reused",
+    "test_native_restore.RestoreCompilerTests.test_only_missing_npc_event_data_and_last_match_order",
+    "test_native_restore.RestoreCompilerTests.test_recipe_is_source_checked",
+    "test_native_restore.RestoreCompilerTests.test_semantic_and_cross_pack_rejection",
+    "test_native_restore.RestoreCompilerTests.test_source_recipe_and_staged_binary",
+    "test_native_restore.RestoreCompilerTests.test_unknown_fields",
+    "test_native_restore.RestoreCompilerTests.test_version_admission"
+  ],
+  "success": true,
+  "pid": 50134,
+  "started": 1522.340311887,
+  "seconds": 4.303942473000006
+}

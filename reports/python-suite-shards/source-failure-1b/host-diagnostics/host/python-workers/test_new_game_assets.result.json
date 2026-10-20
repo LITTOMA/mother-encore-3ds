@@ -1,0 +1,23 @@
+{
+  "module": "test_new_game_assets",
+  "expected_ids": [
+    "test_new_game_assets.NamingSessionDependency.test_defaults_startup_and_levels_cannot_be_rebound",
+    "test_new_game_assets.NamingSessionDependency.test_exact_baseline_required",
+    "test_new_game_assets.NamingSessionDependency.test_field_session_extension_preserves_startup_and_rejects_unreviewed_policy",
+    "test_new_game_assets.NamingSessionDependency.test_only_session_fingerprint_changes_and_binary_stays_identical",
+    "test_new_game_assets.NamingSessionDependency.test_removed_flags_acquisitions_unknown_fields_and_bad_hash_rejected",
+    "test_new_game_assets.NamingSessionDependency.test_source_run_extension_keeps_naming_content"
+  ],
+  "executed_ids": [
+    "test_new_game_assets.NamingSessionDependency.test_defaults_startup_and_levels_cannot_be_rebound",
+    "test_new_game_assets.NamingSessionDependency.test_exact_baseline_required",
+    "test_new_game_assets.NamingSessionDependency.test_field_session_extension_preserves_startup_and_rejects_unreviewed_policy",
+    "test_new_game_assets.NamingSessionDependency.test_only_session_fingerprint_changes_and_binary_stays_identical",
+    "test_new_game_assets.NamingSessionDependency.test_removed_flags_acquisitions_unknown_fields_and_bad_hash_rejected",
+    "test_new_game_assets.NamingSessionDependency.test_source_run_extension_keeps_naming_content"
+  ],
+  "success": true,
+  "pid": 56724,
+  "started": 1657.845656605,
+  "seconds": 264.7814423
+}

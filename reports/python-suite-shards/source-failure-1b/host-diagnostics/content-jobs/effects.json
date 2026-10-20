@@ -1,0 +1,14 @@
+{
+  "task": "effects",
+  "pid": 3895,
+  "run_id": "3fbf036c980b489d805bb74972c5d7e9",
+  "started": 1792498421.0194988,
+  "finished": 1792498421.1848722,
+  "seconds": 0.1653733253479004,
+  "returncode": 0,
+  "command": [
+    "python3",
+    "tools/world_effect_assets.py",
+    "compile"
+  ]
+}

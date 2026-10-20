@@ -1,0 +1,25 @@
+{
+  "module": "test_mayor_field",
+  "expected_ids": [
+    "test_mayor_field.MayorField.test_candidate_paths_and_output_owner",
+    "test_mayor_field.MayorField.test_effective_visible_collision_source_order",
+    "test_mayor_field.MayorField.test_incomplete_room_cannot_enter_release_builder",
+    "test_mayor_field.MayorField.test_missing_sprite_actor_and_source_type_fail",
+    "test_mayor_field.MayorField.test_original_map_structure",
+    "test_mayor_field.MayorField.test_original_podunk_outputs_unchanged",
+    "test_mayor_field.MayorField.test_recipe_versions_and_identities"
+  ],
+  "executed_ids": [
+    "test_mayor_field.MayorField.test_candidate_paths_and_output_owner",
+    "test_mayor_field.MayorField.test_effective_visible_collision_source_order",
+    "test_mayor_field.MayorField.test_incomplete_room_cannot_enter_release_builder",
+    "test_mayor_field.MayorField.test_missing_sprite_actor_and_source_type_fail",
+    "test_mayor_field.MayorField.test_original_map_structure",
+    "test_mayor_field.MayorField.test_original_podunk_outputs_unchanged",
+    "test_mayor_field.MayorField.test_recipe_versions_and_identities"
+  ],
+  "success": true,
+  "pid": 50382,
+  "started": 1526.788734046,
+  "seconds": 59.99466308800015
+}

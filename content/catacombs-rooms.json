@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-rooms.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original eighteen CamareaDunroom identities, geometry, visited flags and methods with checked actual Catacombs root inheritance. The root switch/wall methods remain mapped by the parent mechanism implementation; this resource admits only detached room/camera state, not terrain, full scene, save, map menu, renderer or hardware.",
+  "scene_id": 4,
+  "container": "Rooms",
+  "paths": {
+    "scene": "Maps/podunk/Catacombs.tscn",
+    "area": "Nodes/Overworld/camarea.tscn",
+    "base_script": "Scripts/Main/camarea.gd",
+    "room_script": "Scripts/Main/camarea_dunroom.gd",
+    "dungeon_script": "Scripts/Main/RoomTypes/DungeonAreaRoom.gd",
+    "camera_script": "Scripts/Main/Camera2D.gd",
+    "data_script": "Scripts/global/globalData.gd",
+    "scene_script": "Scripts/Dungeons/Catacombs.gd"
+  },
+  "sources": {
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/camarea_dunroom.gd": "b0773862e7a800a852cb3128425d282c1733c59babf6cd691528336392980011",
+    "Scripts/Main/RoomTypes/DungeonAreaRoom.gd": "1c40224ee5395e68493c9e3d10f47a0fd5ac676cb7dec3abd1941fda2db34798",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/Dungeons/Catacombs.gd": "130c26ae81ac925088071f508a434f100a271be3476ad39fe7df9216d4052c12"
+  },
+  "symbols": {
+    "base_script": {
+      "_on_enter": "967796e1ab60b34f80e27a93030f7a2a1834c8fe4657b5b11750d8ec9189a26f",
+      "get_size": "d43dd9e65013291ce090dd685a49ca47d608a3a5ac958921a5f06e23cc5b1036",
+      "get_area_global_position": "62df60e475c00c5363d47a683f4aeab66b38ca7bd5d16c4629faab349afbc240",
+      "_on_exit": "ecc749f8b37306d79b0668edf955f1ac2e1f16d1ee2ae1845c1ca57e2bb5fa10",
+      "_reset_camera_limits": "9fa32f87ab81f025f69ffd4f209adf15202782281fceb650c9a48fe2230ffc5c",
+      "_on_camarea_body_exited": "1f76b6244dae7ba98c309e98c8beb92e83e224bbac250155096eace2ea8d2375",
+      "_on_camarea_body_entered": "9477e00afe2be5d18f911758e56e4405bd4b8629ba675360d1c9ea4974918b49"
+    },
+    "room_script": {
+      "_ready": "a68d0a66a0fea4f79a6386f55a45fa628e99886203315ef04927013f1cde70df",
+      "_on_enter": "f20dcc67a0295a727924a81c9050486991320020addea39920f3187bcbc04c0e",
+      "_get_flag_status": "ba4bba1b6b6926fa83344b5d8f5f16a30f4015502448ff0474443c370b64dc11",
+      "_set_flag_status": "be7c58ce925e10c1fcedbeb49ab1540493d9680fe4f32def1668e7949c99ee49"
+    },
+    "dungeon_script": {
+      "set_current_room": "e652ce01699561e972fe686ea110d5d379b95e73cda926ea344efc271233d53b",
+      "get_current_room_id": "c006d44a9dbb7692c4250248781c24765df5590fd7f45c97f5179cd1443b56a1",
+      "get_player_position_relative_to_current_room": "9bf8c3965887aa9de71ee9462ff606af9690c0d2c1b82815bd420c328d187c98"
+    },
+    "camera_script": {
+      "set_camarea_offset": "8134ec8e9433b2013271ecdb8b62b90fee47215c6b9ecda020b7e65ca8a46145"
+    },
+    "data_script": {
+      "set_object_flag": "1b07ed4dcd258ad1ca77e8b4f0b9cf6f726f823a86d4e49ba5ec71ae0916b1a9"
+    },
+    "scene_script": {
+      "_on_main_switch_hit": "5e492ffe2bc55abbf94a49fc4960a16e213201fdcb92b8af749e86d5d8dd69e4",
+      "_on_wall_door_state_changed": "31999c155188583accb0dd4b3277a18582c54183c1c9095630a9f3ad48de2828"
+    }
+  },
+  "rooms": [
+    {
+      "id": 2634717168,
+      "path": "Rooms/0"
+    },
+    {
+      "id": 2634717169,
+      "path": "Rooms/1"
+    },
+    {
+      "id": 2634717170,
+      "path": "Rooms/2"
+    },
+    {
+      "id": 2634717171,
+      "path": "Rooms/3"
+    },
+    {
+      "id": 2634717172,
+      "path": "Rooms/4"
+    },
+    {
+      "id": 2634717173,
+      "path": "Rooms/5"
+    },
+    {
+      "id": 2634717174,
+      "path": "Rooms/6"
+    },
+    {
+      "id": 2634717175,
+      "path": "Rooms/7"
+    },
+    {
+      "id": 2634717176,
+      "path": "Rooms/8"
+    },
+    {
+      "id": 2634717177,
+      "path": "Rooms/9"
+    },
+    {
+      "id": 1046320705,
+      "path": "Rooms/10"
+    },
+    {
+      "id": 1046320706,
+      "path": "Rooms/11"
+    },
+    {
+      "id": 1046320707,
+      "path": "Rooms/12"
+    },
+    {
+      "id": 1046320708,
+      "path": "Rooms/13"
+    },
+    {
+      "id": 1046320709,
+      "path": "Rooms/14"
+    },
+    {
+      "id": 1046320710,
+      "path": "Rooms/15"
+    },
+    {
+      "id": 1046320711,
+      "path": "Rooms/16"
+    },
+    {
+      "id": 1046320712,
+      "path": "Rooms/17"
+    }
+  ]
+}

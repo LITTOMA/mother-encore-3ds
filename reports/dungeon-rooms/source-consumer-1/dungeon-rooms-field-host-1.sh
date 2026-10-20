@@ -1,0 +1,8 @@
+set -eu
+cd /mnt/d/GameDev/3DS/mother-encore-3ds
+g++ --version | head -1
+g++ -std=c++17 -O1 -g -Wall -Wextra -Wpedantic -fno-exceptions -fno-rtti -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude -Itests -c runtime/field_scene.cpp -o build/full-port/dungeon-rooms-candidate-1/field-scene.o > build/full-port/dungeon-rooms-field-compile-1.log 2>&1
+g++ -std=c++17 -O1 -g -Wall -Wextra -Wpedantic -fno-exceptions -fno-rtti -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude -Itests tests/field_camera_projection_tests.cpp runtime/dungeon_rooms.cpp build/full-port/dungeon-rooms-candidate-1/field-scene.o build/full-port/wall-host-current-1/libencore-current.a -o build/full-port/dungeon-rooms-candidate-1/field-projection-check > build/full-port/dungeon-rooms-projection-compile-1.log 2>&1
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/dungeon-rooms-candidate-1/field-projection-check tests/fixtures build/full-port/dungeon-rooms-fixture-1/source.encdrooms build/full-port/dungeon-rooms-fixture-1/reference.tsv
+g++ -std=c++17 -O1 -g -Wall -Wextra -Wpedantic -fno-exceptions -fno-rtti -fno-omit-frame-pointer -fno-pie -no-pie -fsanitize=address,undefined -Iinclude -Itests tests/field_area_tests.cpp build/full-port/dungeon-rooms-candidate-1/field-scene.o build/full-port/wall-host-current-1/libencore-current.a -o build/full-port/dungeon-rooms-candidate-1/field-area-check > build/full-port/dungeon-rooms-area-compile-1.log 2>&1
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/full-port/dungeon-rooms-candidate-1/field-area-check tests/fixtures romfs

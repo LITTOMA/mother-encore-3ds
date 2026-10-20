@@ -3,7 +3,7 @@
   "kind": "encore.dungeon-switches.reviewed-source",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene_id": 4,
-  "scope": "Candidate graph metadata for5 switches and9 controlled objects. Source flag identity, reset, XOR state, manual gates and asynchronous request order reviewed. No live dungeon, animation timeline, audio, camera, save admission or generic script approval.",
+  "scope": "Candidate graph metadata for5 switches and9 controlled objects with a detached shared-core method owner for the source zero update-order choreography. Source flag identity, reset, XOR state, manual gates and asynchronous requests are mapped and tested. No live dungeon, animation timeline, audio/camera consumer, save admission or generic script approval.",
   "paths": {
     "scene": "Maps/podunk/Catacombs.tscn",
     "lever": "Nodes/Overworld/switches/Lever.tscn",

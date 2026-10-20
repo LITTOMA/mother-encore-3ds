@@ -5,6 +5,16 @@ fixed original Catacombs. It does not open a playable scene. PR71 depends on
 PR69; production maps, catalogs, audio, session admission and saved bytes remain
 unchanged. The C++ loader admits metadata only, not GDScript execution.
 
+The detached `DungeonSwitchRuntime` now executes the source method states and
+ordered requests. Source values remain in the binary graph. It accepts complete
+stable-ID flag input and owns generation-tagged timer/camera callbacks,
+one-way/manual gates, XOR state, saved Ready, flag-only area reset, individual
+animation waiters and separate wall/music and focus/return continuations.
+Actual timer clocks, animation timelines, player/UI/audio/camera consumers and
+production scene/save admission are still absent. The source's zero update-order
+choreography is supported; nonzero multi-tier ordering is explicitly rejected
+before replacing the old owner. Failed callbacks/capacity checks are atomic.
+
 The source compiler follows effective instances and script inheritance. It
 checks stable IDs, explicit or leaf-name flags, flag storage and reset policy,
 one-way controls, initial object state, signed update order, positions/camera
@@ -58,6 +68,16 @@ collection has278 tests and1282 Python methods (916 aggregate,366 dedicated).
 After importing PR69's phone schedule fix, collection has279 tests and1283
 Python methods (900 aggregate,383 dedicated): the original17 phone methods
 moved to an exclusive dedicated test and one partition regression was added.
+An additional6123 GCC ASan/UBSan method-state checks replay all28 frozen
+original projections twice and exercise stale/invalid callbacks, restart
+waiters and capacity failures after tentative mutations. The original engine
+separately confirms8 captured state callbacks when two requests restart each
+of four object animations before one completion. Timers and camera completion
+remain explicit service inputs, not invented source timeline timing.
+With the two method-state fixtures registered, the current collection has281
+CTest names and the same1283 Python methods; both graph and frozen-reference
+fixtures are required. The console source list also includes the new method
+component, verified by the existing source-list checks.
 Windows native executables were not built. Full current CI and console builds
 are checked separately; no emulator dungeon, hardware or complete-game pass.
 Inspection and the existing source-list test found the three new dungeon

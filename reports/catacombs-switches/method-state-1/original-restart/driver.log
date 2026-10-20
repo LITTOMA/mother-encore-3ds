@@ -1,0 +1,2 @@
+Original switch/control methods: 28 observations; source scripts exact, explicit animation/camera/player services
+Original restart: one animation finish resumes both pending state snapshots on each of4controlled objects,8events

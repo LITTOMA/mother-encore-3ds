@@ -1,0 +1,9 @@
+test_capability_downgrade_and_unknown_reject (tests.test_story_key_grant.KeyGrant.test_capability_downgrade_and_unknown_reject) ... ok
+test_source_grant_and_later_completion_are_separate (tests.test_story_key_grant.KeyGrant.test_source_grant_and_later_completion_are_separate) ... ok
+test_typed_operand_rejection (tests.test_story_key_grant.KeyGrant.test_typed_operand_rejection) ... ok
+test_unknown_review_and_false_early_flag_reject (tests.test_story_key_grant.KeyGrant.test_unknown_review_and_false_early_flag_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 11.039s
+
+OK

@@ -1,0 +1,43 @@
+{
+  "retired": [
+    {
+      "path": "build/full-port/player-action-world-tests",
+      "bytes": 51494832
+    },
+    {
+      "path": "build/full-port/player-motion-tests",
+      "bytes": 51117360
+    },
+    {
+      "path": "build/full-port/player-tree-tests",
+      "bytes": 51225408
+    },
+    {
+      "path": "build/full-port/player-action-world-fixture",
+      "bytes": 6493670
+    },
+    {
+      "path": "build/full-port/player-tree-fixture",
+      "bytes": 303755
+    },
+    {
+      "path": "build/iggy-tutorial/player-motion-reference-1",
+      "bytes": 1186128
+    },
+    {
+      "path": "build/iggy-tutorial/player-motion-reference-2",
+      "bytes": 482179
+    },
+    {
+      "path": "build/iggy-tutorial/player-motion-reference-3",
+      "bytes": 482179
+    },
+    {
+      "path": "reports/iggy-tutorial/player-motion-reference-1",
+      "bytes": 576255,
+      "reason": "failed fixture logs preserved losslessly in checked archive"
+    }
+  ],
+  "total_bytes": 163361766,
+  "preserved": "Current genuine verified game/save, actual raw logs, accepted source reports and compact GPU candidates"
+}

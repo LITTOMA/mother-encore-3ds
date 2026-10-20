@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "encore.story-key-grant-typed-review",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "base": "d078a9a80c93dc71118616fbfc0753e2ea56159c",
+  "implementation": "Room format1/rules7 capability13 adds opcode48 GrantKeyItem with an admitted stable item identity and quantity1. Oldcap12 still rejects48, unknown14 and13-without-grant reject. Typed scene host validates before programme/flags/RNG/inventory mutation; actual platform reuses existing Present KEY inventory and source UID transaction. No early source completion flag.",
+  "source": "Original Iggy gravedigger_swing label22 grants KEY BatOld; only label29 sets bat. Reviewed complete original document and source map NPC/boundary bindings, item kind and original DialogueBox/Inventory routines; component fixture only.",
+  "tests": {
+    "gcc9_asan_ubsan": "59 typed grant/preflight/rejection checks; related Room71939/Session20659/story11690/cemetery6229/owner37/warp21 pass with exact all-source/header core cache",
+    "python": "4 source/codec methods, unknown review/version/operands/identity/source-node rejection; strict1132=768aggregate+364dedicated",
+    "content": "Actual original full makecontent4 passed with explicit UTF8Python environment,368source files verify-only. Earlier GBK default decoding, Restore and Session dependency refusals retained; no skip or blanket ignore added.",
+    "data": "House/Podunk/Mayor tables and strings exactly equal base; only compiler input hashes change. NativeSessionv11, naming, fieldmap/story/props/links and original bridge entry/round8outputs byte-identical. Restore originalextract changes only room fingerprint/dependency; Sessionextract onlyfieldRoomdependency; naming originalreuse-session used. Save encoding unchanged.",
+    "console_emulator": "New codec/platform binding not yet genuine console/emulator verified; prior Root bf Record/LOAD is separately recorded and does not test GrantKeyItem",
+    "hardware": "not run"
+  },
+  "limitations": "No shipping gravedigger_swing programme or actual BatOld grant, action input/render/SE/overlap or shovel/Pippi implemented in this component. Continue this draft to complete the real tutorial.",
+  "cleanup": "6completed relatedELFs295615016B removed.59-check component executable removed after current run below.",
+  "removed_component_elf_bytes": 48678840
+}

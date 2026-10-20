@@ -1,0 +1,9 @@
+runtime/house_runtime.cpp: In member function ‘bool encore::upstream::HouseRuntime::interact()’:
+runtime/house_runtime.cpp:517:47: error: variable ‘player’ set but not used [-Werror=unused-but-set-variable]
+  517 |  const auto room=world_->content();const auto player=room.actor_instance(room.scene().player_instance_index);
+      |                                               ^~~~~~
+runtime/house_runtime.cpp: In member function ‘bool encore::upstream::HouseRuntime::sync_story_dialogue()’:
+runtime/house_runtime.cpp:542:91: error: variable ‘player’ set but not used [-Werror=unused-but-set-variable]
+  542 |  const auto text=content_.dialogue(selected);const auto room=world_->content();const auto player=room.actor_instance(room.scene().player_instance_index);
+      |                                                                                           ^~~~~~
+cc1plus: all warnings being treated as errors

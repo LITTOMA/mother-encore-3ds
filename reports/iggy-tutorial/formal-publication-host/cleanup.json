@@ -1,0 +1,41 @@
+{
+  "reason": "Completed targeted checks retained; replaced actual704game only after real7dgame hash and two cold boots retained. Keep actual Record save, accepted7dgame, reusable core cache and compact source atlas. No recursive deletion.",
+  "files": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catalog12-owner-tests",
+      "bytes": 51346632,
+      "sha256": "f787b4fe73ee5d3ea88920c8d70e2903edeb47e7117e39197bb576ff8e8cc277"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\iggy-release-tutorial-tests",
+      "bytes": 51396472,
+      "sha256": "832a4c496c230772989da3be3fe42993f090ef9bb1cc6f9447b2ec65d0704fd3"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\iggy-release-story-tests",
+      "bytes": 52045800,
+      "sha256": "3dfb94a7245810d0bfe99def9e4e663c137e3ff47220f97279ccfcf15843ddc5"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\iggy-release-session-tests",
+      "bytes": 53236776,
+      "sha256": "748379d07e9667059816e3f855711ad285eda7afdea9de63989b85cdf248ac75"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\iggy-release-restore-tests",
+      "bytes": 52513400,
+      "sha256": "a0dbc7f226e504bd0d002f4c3f1bfd25021b7b7e9da95d70adacbeed697253ae"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\iggy-release-cemetery-tests",
+      "bytes": 51779832,
+      "sha256": "b749bf47399580b4765647bcd402e86c1d75268bc7fcb96e5b979f731556eaa8"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\root704-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+      "bytes": 262686880,
+      "sha256": "1f5d26d58a3f96391d54b1e6802d5cadaa66a9fa68a2dea88cd2e4d19a94aaf9"
+    }
+  ],
+  "bytes": 575005792
+}

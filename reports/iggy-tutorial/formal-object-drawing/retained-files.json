@@ -1,0 +1,418 @@
+{
+  "check-field-diagnostic.py": {
+    "bytes": 916,
+    "sha256": "cf7672bcb53589db2f822944843e0702d790e12d5523aaca817e4be28e6cbf1a"
+  },
+  "finalize-field-object-release.py": {
+    "bytes": 1862,
+    "sha256": "32a5fb28f2eec9c88baba7a5ddaaba5323391533f9e0f3932227f7b4205b63ec"
+  },
+  "generate-field-object-release.py": {
+    "bytes": 1951,
+    "sha256": "1883e338f2657ae00f36d83ac9cffb83dd2b35d28fd8b76f47d8c67818c690b7"
+  },
+  "host-core-source.json": {
+    "bytes": 22410,
+    "sha256": "0639374a579ad5c614c15131882d4576ce281bb067ec5f30ff168aa4aa1b4935"
+  },
+  "local-tex3ds-transport-before.py": {
+    "bytes": 757,
+    "sha256": "fab5557a5c7ef2aa121b8dce2271b715440f2951ebe08f6b4062e34a48087201"
+  },
+  "local-tex3ds-transport.py": {
+    "bytes": 1661,
+    "sha256": "b5a4f0f842be36982698f35da329dd43e577da478bc9694f00a2600e190c35ff"
+  },
+  "object-activation-1.log": {
+    "bytes": 176,
+    "sha256": "c1169600e8e0d2cb5edf2b8a94881b70667a744bdc51bb729d2609c98ba61a61"
+  },
+  "object-art-host-1.log": {
+    "bytes": 174,
+    "sha256": "efe7684f9a7208a997e2f0f96dc04d046ff0885b4d38ae60ba416c199fd293d5"
+  },
+  "object-art-host.py": {
+    "bytes": 1777,
+    "sha256": "420f9a96f4ea1e40b5efb4a4a5e0a310bd0eaa431b62a5ca332ebb575b605711"
+  },
+  "object-assets-candidate-1.log": {
+    "bytes": 94,
+    "sha256": "dec8a260e320785bb8998b15818c02e074b9fcce5216eea13a4ec8451581fa84"
+  },
+  "object-assets-candidate-2.log": {
+    "bytes": 82,
+    "sha256": "0a04d8e42f69c8678de93bf9a22650a4f12701821fa399e198836668abd9e55c"
+  },
+  "object-assets-python-1.log": {
+    "bytes": 112,
+    "sha256": "9e37f919e523c54518f1690d58d99852030ffa15f87cd082eaf7d8fa91ceecf0"
+  },
+  "object-assets-python-2.log": {
+    "bytes": 113,
+    "sha256": "67fb5f8a113383c42ce34db35bc5d3d9f6ac9e848c950b43b2a5988e23afe3ff"
+  },
+  "object-cmake-final.log": {
+    "bytes": 163,
+    "sha256": "4a9c99f23ff3d52a113b8648c3288742c547f2e03a3ca40e57cc7463a7f1abf4"
+  },
+  "object-dag-python-1.log": {
+    "bytes": 110,
+    "sha256": "6d88b01094a83039c16bc3cd469aa3565d576645112fea48e3c116ff234f9afe"
+  },
+  "object-field-data-failure-1.log": {
+    "bytes": 4035,
+    "sha256": "66b75564fa3966d01599c4107bb9325ab3a92f1030ed38b85c3412be145022d7"
+  },
+  "object-field-diagnostic-1.log": {
+    "bytes": 259,
+    "sha256": "f032f522435dc67de912ebca3fbdac710bae0d59e9e32d34ceffca95481453ec"
+  },
+  "object-field-diagnostic-missing.log": {
+    "bytes": 87,
+    "sha256": "0f64df6a3883bb9029578d51d03f437ecdab6fd80428d5683ed8b573b49b30b9"
+  },
+  "object-field-props-failure-1.log": {
+    "bytes": 88,
+    "sha256": "e8201a6b9bf97ada5d95ada1c11cceb28cb95381eaaae2755db2bf72b6841c03"
+  },
+  "object-final-catalog.log": {
+    "bytes": 64,
+    "sha256": "0bd0da18471ee6774104362ebd7b1954365908370ab3122fbb8a7515d2da448d"
+  },
+  "object-final-driver-1.log": {
+    "bytes": 106,
+    "sha256": "bb66f70444bd52d935ed6841cd0d440acd1d3bc416a4beb61f720fdbb8f8d7f4"
+  },
+  "object-final-new-game.log": {
+    "bytes": 90,
+    "sha256": "1a219202ea43e828e949e3247e3f1ef53f882202f5797b708164150c99ec4523"
+  },
+  "object-final-object-verify.log": {
+    "bytes": 79,
+    "sha256": "fb64f67e8128404b5473e9242af55a4939d7cd3faf4bf3a2fcca3756ad7952bb"
+  },
+  "object-final-restore-comparison.json": {
+    "bytes": 23,
+    "sha256": "c9b56c6c70685732d08593b5d2f61eb6a310cdde6a73cedc1ffd373856a424d8"
+  },
+  "object-final-restore-compile.log": {
+    "bytes": 97,
+    "sha256": "ad332aac5065ac473a2428ac023ca49edfac828def460cc17c71e1be51edb93e"
+  },
+  "object-final-session-compile.log": {
+    "bytes": 82,
+    "sha256": "4160993a3e2014c22cd02f82e7c61960deadb4fa307ccf4ba371d4429cddbe0c"
+  },
+  "object-final-session-extract.log": {
+    "bytes": 82,
+    "sha256": "4160993a3e2014c22cd02f82e7c61960deadb4fa307ccf4ba371d4429cddbe0c"
+  },
+  "object-final-stage.log": {
+    "bytes": 547,
+    "sha256": "d5c4312e2a9db222de54f164af80a53ca51912dacc36689d5da708c7a93e5a0b"
+  },
+  "object-integrated-host-1.log": {
+    "bytes": 295,
+    "sha256": "ba1ae92951196e53bf390a6eb89c8cc6d006b570991f437fe536e040a4fcb0c0"
+  },
+  "object-integrated-host-2.log": {
+    "bytes": 196,
+    "sha256": "46beca1e4a2d674421fc301ffd6a8210441a5ead87acb3968460ece54c30d6de"
+  },
+  "object-integrated-host-3.log": {
+    "bytes": 236,
+    "sha256": "598776b3ece3cc63c73ba71ea9333e53a0b990f1b06e6b55cbe8114c52f9b5e5"
+  },
+  "object-integrated-host-final-3.py": {
+    "bytes": 2073,
+    "sha256": "6513d7dd987dbb3eb795fcf22b1258a39a618ccd4912d555df5d18f7f8bb6ecf"
+  },
+  "object-integrated-host-final.py": {
+    "bytes": 2272,
+    "sha256": "2f0fcc84bc6f1b2a210e37b08f23736f0cb448d380cd0881283aa25fbaeecb65"
+  },
+  "object-integrated-host.py": {
+    "bytes": 3336,
+    "sha256": "6b64e034daa76751fd81991393870465e0b2239be4516009eb3f9c4d43725126"
+  },
+  "object-integrated-python-1.log": {
+    "bytes": 144,
+    "sha256": "2acba3002765a613923a9f3be5b5548fd150022d895287e3c3decd892046780c"
+  },
+  "object-layout-python-1.log": {
+    "bytes": 111,
+    "sha256": "a746b14dc56986cc824d11f2f568dc29931a23e46d2db8bb0cae57819a79b6a3"
+  },
+  "object-legacy-map-1.log": {
+    "bytes": 57,
+    "sha256": "7dba2a062ff12796b19993781ee33e972949ac2783a34bd21e6592629f0d766e"
+  },
+  "object-lf-catalog.log": {
+    "bytes": 64,
+    "sha256": "0bd0da18471ee6774104362ebd7b1954365908370ab3122fbb8a7515d2da448d"
+  },
+  "object-lf-generation.json": {
+    "bytes": 940,
+    "sha256": "f3ac8d1ec6d0cb6dd569bd4eb581b40e39b74f7da085e35291d62be35e2bd65e"
+  },
+  "object-lf-map.log": {
+    "bytes": 302,
+    "sha256": "60a55d58a7364789190109db4f7b1f13abbdf7f29d286efdcb27305482aec293"
+  },
+  "object-lf-new-game.log": {
+    "bytes": 90,
+    "sha256": "1a219202ea43e828e949e3247e3f1ef53f882202f5797b708164150c99ec4523"
+  },
+  "object-lf-objects-verify.log": {
+    "bytes": 79,
+    "sha256": "fb64f67e8128404b5473e9242af55a4939d7cd3faf4bf3a2fcca3756ad7952bb"
+  },
+  "object-lf-player.log": {
+    "bytes": 102,
+    "sha256": "6c5f2ca8a293de40997531e2c9698bba203de67aa48a0c93fe284cd87c2c3572"
+  },
+  "object-lf-props.log": {
+    "bytes": 191,
+    "sha256": "7ccb57153661fddcd5e2a77cbeb74223e2814e2370518c6167c8145082caadc5"
+  },
+  "object-lf-restore-compile.log": {
+    "bytes": 97,
+    "sha256": "ad332aac5065ac473a2428ac023ca49edfac828def460cc17c71e1be51edb93e"
+  },
+  "object-lf-session-compile.log": {
+    "bytes": 82,
+    "sha256": "4160993a3e2014c22cd02f82e7c61960deadb4fa307ccf4ba371d4429cddbe0c"
+  },
+  "object-lf-session-extract.log": {
+    "bytes": 82,
+    "sha256": "4160993a3e2014c22cd02f82e7c61960deadb4fa307ccf4ba371d4429cddbe0c"
+  },
+  "object-lf-stage.log": {
+    "bytes": 71,
+    "sha256": "188b68021c5c4f910e2191317053acaf1a518ea1959494a22a8d867332333ae9"
+  },
+  "object-links-compile-core-1.log": {
+    "bytes": 153,
+    "sha256": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98"
+  },
+  "object-links-host-1.log": {
+    "bytes": 175,
+    "sha256": "ee0152c4628b349296d61348daccb608e6d3e87263ba1942dd02eae1ca92c045"
+  },
+  "object-links-host.py": {
+    "bytes": 1673,
+    "sha256": "ec30674d29beff98b81373566ef4dcf7e51e0b05e34fd775e81e51aa5f344d0d"
+  },
+  "object-links-legacy-python-1.log": {
+    "bytes": 725,
+    "sha256": "dbe07d46b6d502a927c175cf0705c7cae64677819daf1698ddb7ffe7ccf32089"
+  },
+  "object-links-legacy-python-2.log": {
+    "bytes": 129,
+    "sha256": "c79287b07b1f2c022c02cabed4cd0fb06a622c30e840cea831c8099f45c924de"
+  },
+  "object-links-prepare-1.log": {
+    "bytes": 12293,
+    "sha256": "e1e11d27a1af8093af6926bdd9a9f7060ebedaad734f449f1689d890ce0ce6ba"
+  },
+  "object-links-prepare-2.log": {
+    "bytes": 81,
+    "sha256": "e1b4627c2a71d822d27ada559133bfcbedbef515f0b4a2f5f950ded387ebab82"
+  },
+  "object-links-python-1.log": {
+    "bytes": 109,
+    "sha256": "0411971d8e3a9064ed0527cc224db6f6e887ba9789bfe708635e47c2a1248526"
+  },
+  "object-methods-final.json": {
+    "bytes": 307923,
+    "sha256": "9080485bcfb68f6dc05db926612199775645b64bf2963c762789436436e6c320"
+  },
+  "object-methods-final.log": {
+    "bytes": 103,
+    "sha256": "fdf37959f00a1db19095d733c842d9257c8add39b765510dfc3f982d2558f716"
+  },
+  "object-native-content-1.log": {
+    "bytes": 19275,
+    "sha256": "4a2d31eaa4a3cdcdc74da31882fa9ed6ef999efcffa995a07a4efa3425d65c1c"
+  },
+  "object-release-assets-1.log": {
+    "bytes": 79,
+    "sha256": "529540b23ec656c2d126e207e52c05c2fee2a489411dcdc620b14d5c15e40d0c"
+  },
+  "object-release-dependent-candidates.json": {
+    "bytes": 5311,
+    "sha256": "28bd502ca3805a86d6b316ff1642e15ceefbf318ff234e710b57fd5ca4b1bdcb"
+  },
+  "object-release-generation-driver-1.log": {
+    "bytes": 7,
+    "sha256": "c32263caa3e32343e9359d9cdc0c9d7bae8fdae9f4f339644f6ba3c4ec9426cf"
+  },
+  "object-release-generation-driver-2.log": {
+    "bytes": 201,
+    "sha256": "1f873e914a5439afabb203cbf1273188ebcb06bf04e1e445ade3c84abca8db22"
+  },
+  "object-release-map.log": {
+    "bytes": 302,
+    "sha256": "60a55d58a7364789190109db4f7b1f13abbdf7f29d286efdcb27305482aec293"
+  },
+  "object-release-player.log": {
+    "bytes": 102,
+    "sha256": "6c5f2ca8a293de40997531e2c9698bba203de67aa48a0c93fe284cd87c2c3572"
+  },
+  "object-release-props.log": {
+    "bytes": 191,
+    "sha256": "7ccb57153661fddcd5e2a77cbeb74223e2814e2370518c6167c8145082caadc5"
+  },
+  "object-scene-compile-core-1.log": {
+    "bytes": 153,
+    "sha256": "e816706cd44ce0c6c65a7a7938be8103514f7c899694c8240d844f74319b7f98"
+  },
+  "object-scene-host-1.log": {
+    "bytes": 324,
+    "sha256": "2f4563bffd648ab0706a2c13545ba683da6d925e67170e8a0ed5563b884f7918"
+  },
+  "object-scene-host.py": {
+    "bytes": 2364,
+    "sha256": "d62444ae5442fca2f88b73ef845db9d9184ce3a46bd81545e10cc85ac20906a8"
+  },
+  "object-stage-final-2.log": {
+    "bytes": 71,
+    "sha256": "188b68021c5c4f910e2191317053acaf1a518ea1959494a22a8d867332333ae9"
+  },
+  "object-stage-layout-failure-1.log": {
+    "bytes": 547,
+    "sha256": "d5c4312e2a9db222de54f164af80a53ca51912dacc36689d5da708c7a93e5a0b"
+  },
+  "owned-elf-retirement.json": {
+    "bytes": 3779,
+    "sha256": "383c77bdeae8db787471ae7bdb37e3acbde1c9dbee00886cfb96f3fa4a66fb9e"
+  },
+  "README.md": {
+    "bytes": 4048,
+    "sha256": "2106b5915747d3996322a8b59be18ccecbe1e204b208b84a96c13ff3fe586cda"
+  },
+  "regenerate-object-source-endings.py": {
+    "bytes": 2329,
+    "sha256": "c456842e467d69c7b8aacff013ca0e3830f027249fd825c9cec9b5de6f9ac3a0"
+  },
+  "retain-object-drawing-evidence.py": {
+    "bytes": 4975,
+    "sha256": "cf3149616189ef919bf08958610bbf359e76246fa540bc67fb9c0494955d8940"
+  },
+  "scene-compile-field_area.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-field_data.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-field_objects.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-field_objects_art.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-field_objects_bound.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-field_objects_data.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-field_objects_scene.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-field_object_links.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-field_props.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-field_scene_resources.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-shovel_programme.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-compile-story_object_delete.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scene-result-field_area.log": {
+    "bytes": 144,
+    "sha256": "af741dfe221b0699bdd1e38a041a68b1757a42a227b7e4c8df4d2e0ae236f943"
+  },
+  "scene-result-field_data.log": {
+    "bytes": 30,
+    "sha256": "0290f3129159c74de0e492c2b05274966d1132ba3687235900ee6397c976177a"
+  },
+  "scene-result-field_objects.log": {
+    "bytes": 184,
+    "sha256": "359fb12f79116a3c382127ff75079b0b0956f6a2ada8dbfd4900f442427aec33"
+  },
+  "scene-result-field_objects_art.log": {
+    "bytes": 164,
+    "sha256": "a4212ac2913b0e5def309f7d42d3b5122de7deca71039beffd4f60056698542a"
+  },
+  "scene-result-field_objects_bound.log": {
+    "bytes": 209,
+    "sha256": "0fea0bafec269bb04966388e612fbc5f6023976b9ff4f125815ebd8b23e35170"
+  },
+  "scene-result-field_objects_data.log": {
+    "bytes": 203,
+    "sha256": "0bd358b6b061ddb94efee9efd88efd946bbf48502a8bc36839ae8ceea42bfbbd"
+  },
+  "scene-result-field_objects_scene.log": {
+    "bytes": 210,
+    "sha256": "0be7c531742d08331522bd1fe5c913b20be649b0ad58960616d55e1bcb797443"
+  },
+  "scene-result-field_object_links.log": {
+    "bytes": 192,
+    "sha256": "42bd3bd7e09ba35ca39ffe57a06f0df375e93efce965ee65c7eeaa1bfcf1df4a"
+  },
+  "scene-result-field_props.log": {
+    "bytes": 209,
+    "sha256": "25a9adda09e91a17db636e9557ae2cc5b886d84e8618bbfa5dc9da536f1b5c25"
+  },
+  "scene-result-field_scene_resources.log": {
+    "bytes": 127,
+    "sha256": "0326a8f9c1c736f40bfb2b10e3daa45293c358a4b3733c97d0ac1e1eebe4b462"
+  },
+  "scene-result-shovel_programme.log": {
+    "bytes": 385,
+    "sha256": "dcf51813f811226f2e100d1133b2265bca8917b921d50be4fdf4c7145db165ea"
+  },
+  "scene-result-story_object_delete.log": {
+    "bytes": 205,
+    "sha256": "8616ce4eb0c83d618178ba84a18a1d5ed87854f597c894686f9d6713c3f95689"
+  },
+  "source-proof.json": {
+    "bytes": 10985,
+    "sha256": "55339b37aa66ff9933cf1217814c295d3c5ffe234699f94eb895806936ed677c"
+  },
+  "older-ci\\3b-clang.api.log": {
+    "bytes": 565075,
+    "sha256": "675a5c3c836a0573a1ad470d628c665fa654d6d4208b1d942ec607c4cd518c94"
+  },
+  "older-ci\\3b-console.api.log": {
+    "bytes": 691904,
+    "sha256": "a23b0b47514041cc6cec6785b383955e54cc9b0bf45347c9768f61ab488dc29a"
+  },
+  "older-ci\\a5b-gcc.api.log": {
+    "bytes": 750728,
+    "sha256": "24594440cbaeb645715f910a9906e19e8f54c55c12cb56bb37ea1abe97574a90"
+  },
+  "older-ci\\aaff-gcc.log": {
+    "bytes": 1171594,
+    "sha256": "f6e1d17a99cb7ffd95b1f2913618b93fd1f897b186fb9b02518d79ee03ed43a7"
+  }
+}

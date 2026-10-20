@@ -1,0 +1,115 @@
+{
+  "sources": {
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Data/FieldSkills/swing.yaml": "e3e770194ec22e76fe75a271f2cda85371cbb3c50277275067fd68d1539bf0aa",
+    "Scripts/misc/NintenBatSwing.gd": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Graphics/Character Sprites/Ninten/special.png": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9",
+    "Graphics/Character Sprites/Ninten/bat_swing.png": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+    "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
+    "Nodes/Reusables/Overlap/Hitbox.tscn": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+  },
+  "symbols": {
+    "_input": "60408033f8862ac66ec9c52a55124ae89e4dd09b9d8e85d94c2bfdce89810d88",
+    "_do_attack": "c10d2a9af8350eebb3650bb5c9209d397c4250266ad0ebde6e04724b944b305d",
+    "_get_skills_button_actions": "a978b6da438cb6a4c2702898d90692b6fbb0856dec967eeefa5213434c310deb",
+    "_attack_unleash": "d27d7961900c8b34c21713f7341f10e0aa3cca7ce287d324db9ede9e3f27bf8b",
+    "_attack_animation_finished": "7553eb60a5200993bae55e050b7044e3470a2f5b158e0afef31b327a0271f5f0",
+    "_set_running": "1dcbae67d2e84b957eced78ab941dc9447a8adfced76f2ad5d92fcd0162e117b",
+    "get_current_skill_action": "6c5cf287b034e602ac50f14bc9f1c74dab73c39017712cb6f2241c1cf16c8b71",
+    "get_frames": "c4eca0e27414ecb84848184861c031d5ed9efc3b23d8b4b2bc9202d1f2ebb89f"
+  },
+  "resources": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    51,
+    80,
+    350,
+    351,
+    352,
+    353,
+    357,
+    454,
+    455,
+    456,
+    457,
+    458,
+    459,
+    460,
+    461,
+    462,
+    463,
+    464,
+    465,
+    466,
+    481,
+    482,
+    483,
+    550
+  ],
+  "edges": [
+    [
+      "Idle",
+      "Bat",
+      465
+    ],
+    [
+      "Bat",
+      "Idle",
+      466
+    ]
+  ],
+  "scope": "Run original logical input methods and the Bat/Idle AnimationTree branch.\n\nFixture singletons supply one Ninten skill and a run audio player. This is not\nthe full Player physics loop, hardware input, rendering or Area2D dispatch.\nAudio playback flags are asynchronous observations, not the stable projection.\n",
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "case_sha256": "00400fb47f3560049a82134de33174edd328fcdf7d20f10526ecbd20fa8181df",
+  "observations": 683,
+  "tools": {
+    "tools/run_swing_action_reference.py": "75ad7ec21b6441c6068590b8c3881ec3ab3fc4becbdf899535e45816a7b8098f"
+  },
+  "fixture_sources": {
+    "audio.gd": "7e50523065089f8a615f111a91cb974b8da5d9179d82656f40a1dff801285f3b",
+    "fetch.gd": "b4f786baa852371cd15eafa9b43296f0ad9f4206643df1c9fba638e9385d4a50",
+    "global.gd": "4ceb9f08d97da4da1471493f306000e07d1ece9d6cb646d4d1800a8301d05175",
+    "globaldata.gd": "1f2dccb39036d94d40d2f29e63a1aefdc80f590941bc4cf83ec4e7d065055d92",
+    "input.json": "c8c29e062e4f9d8afe163457b9ea9c09123ba4b125e4c4d48f2fac1733b7dfe2",
+    "native.json": "ac70bceacd6961a4138954c7387ff4afa02617d67f74db46a594e73cea372764",
+    "player.gd": "962540eb2501362145921153f6436b8b44d5c11317112f211438eb8e00ba1375",
+    "probe.gd": "6e8cc640c15e8298e69ef16812ab18b756e401f086d0c269a794235edd9e5ecc",
+    "probe.tscn": "f468ffe8388bd5f7c8bdb53fe6af4c2a4d26d8c0492824b7dd047d9b8d01cc4c",
+    "project.godot": "fb7df7150a51a709d9616304a127859f30a9bb5f818b782d1c111bf11bc3c32e"
+  },
+  "outputs": {
+    "godot.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "import.log": "e3e1fd76dbfb6e432b9e70f1fa0948d0db35d9213b16802dce8ff53f8b81bd60",
+    "reference.json": "2178f48daa6ca51722d2bfd3885c7aea97c6a2c2c4ddb5bf3a59a49c75884953",
+    "reference.tsv": "0702dd8bb5865269a58cd360e0b0900328938121791f932a433109a2db6b782c"
+  }
+}

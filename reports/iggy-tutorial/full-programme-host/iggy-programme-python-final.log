@@ -1,0 +1,11 @@
+test_complete_source_graph_and_old_prefix (tests.test_graveyard_tutorial_programme.TutorialProgramme.test_complete_source_graph_and_old_prefix) ... ok
+test_every_branch_and_manual_loop_match_source (tests.test_graveyard_tutorial_programme.TutorialProgramme.test_every_branch_and_manual_loop_match_source) ... ok
+test_original_direction_observation_provenance (tests.test_graveyard_tutorial_programme.TutorialProgramme.test_original_direction_observation_provenance) ... ok
+test_output_is_deterministic_and_source_identities_are_retained (tests.test_graveyard_tutorial_programme.TutorialProgramme.test_output_is_deterministic_and_source_identities_are_retained) ... ok
+test_two_locales_clear_narration_voice_and_keep_current_button_tags (tests.test_graveyard_tutorial_programme.TutorialProgramme.test_two_locales_clear_narration_voice_and_keep_current_button_tags) ... ok
+test_unknown_and_changed_source_lowering_reject (tests.test_graveyard_tutorial_programme.TutorialProgramme.test_unknown_and_changed_source_lowering_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 48.888s
+
+OK

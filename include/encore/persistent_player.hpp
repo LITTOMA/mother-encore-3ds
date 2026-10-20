@@ -2,6 +2,7 @@
 #include "encore/animation.hpp"
 #include "encore/cutscene_camera.hpp"
 #include "encore/movement.hpp"
+#include "encore/field_player_tree.hpp"
 #include <cstddef>
 #include <new>
 #include <string>
@@ -11,6 +12,8 @@
 namespace encore::upstream {
 class OpeningWorld;
 class PersistentPlayerOwner;
+class FieldSwingResources;
+enum class PlayerActionEvent:uint8_t {Start=1,Pause,Resume};
 
 // One player and camera object survive scene ownership changes. Runtime scene
 // bindings may retain this state while preparing, but only the active binding
@@ -23,7 +26,8 @@ public:
     PersistentPlayerState(PersistentPlayerState&&)=delete;
     PersistentPlayerState& operator=(PersistentPlayerState&&)=delete;
     const WalkState& player()const{return player_;}
-    AnimationSample animation()const{return playback_.sample;}
+    AnimationSample animation()const{return action_.ready()?AnimationSample{uint16_t(action_.main_frame()),action_.pose().main,action_.pose().special}:playback_.sample;}
+    const FieldPlayerTree& action()const{return action_;}
     const CutsceneCamera& camera()const{return camera_;}
     std::string_view party_leader()const{return party_leader_;}
     bool paused()const{return house_paused_;}
@@ -34,6 +38,9 @@ private:
     size_t references_=1;
     WalkState player_{};
     AnimationPlayback playback_{0,{0,true,false}};
+    FieldPlayerTree action_;const FieldSwingResources*action_resources_=nullptr;
+    std::array<PlayerActionEvent,64>action_events_{};uint32_t action_event_count_=0;
+    uint64_t action_revision_=0;
     CutsceneCamera camera_;
     std::string party_leader_;
     uint32_t clip_=kRoomNoIndex;

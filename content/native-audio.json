@@ -479,6 +479,14 @@
       "import_sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7",
       "pcm_path": "sound/effects/mayor-step-stone.pcm",
       "gain_db": 0
+    },
+    {
+      "stable_id": 3176391583,
+      "source_path": "res://Audio/Sound effects/Barrel Coffin Explode.mp3",
+      "source_sha256": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+      "import_sha256": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d",
+      "pcm_path": "sound/effects/field-prop-3176391583.pcm",
+      "gain_db": 0
     }
   ]
 }

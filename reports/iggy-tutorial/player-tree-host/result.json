@@ -1,0 +1,64 @@
+{
+  "scope": "GCC9 shared core ASan/UBSan with leak checking; strict changed-unit compile; Python13 and exact collection; Windows CMake configure only. No current complete CI, GPU, live World, audible audio, emulator or hardware claim.",
+  "checks": 42461,
+  "pause_cases": 28,
+  "pause_rows": 3556,
+  "incoming_cases": 80,
+  "incoming_rows": 6560,
+  "regressions": {
+    "legacy_entry": 28186,
+    "resource_owner": 111
+  },
+  "schema": "ENCSWE01 format1 capability2; capability1 reader retained; no save/session/rules update",
+  "cleanup_driver_failure": "After all native tests and strict compiles passed, initial Ubuntu Python3.8 driver cleanup called unavailable Path.is_relative_to. Replaced by checked relative_to; native logs preserved; cleanup performed separately with Python3.11. No expected observations changed.",
+  "files": {
+    "cleanup-driver-initial.log": {
+      "bytes": 406,
+      "sha256": "59f32f4cbb58c22d63451e86c11f3e2069a12778470b0d57aa3b4f5535ce0ddc"
+    },
+    "cleanup.json": {
+      "bytes": 1474,
+      "sha256": "3fa7b83b0a2fd5230bfa30d09c666d103abbcab0d0ab1d6e571fa9173b7ca731"
+    },
+    "compiled-core.json": {
+      "bytes": 21868,
+      "sha256": "80f3646e84fbc5092e3c45c6a484a50ff658bc9f0505894f26b1f9203075cae3"
+    },
+    "host-driver.py": {
+      "bytes": 1470,
+      "sha256": "735227f834ae632f34336ec6676a37475422b314fc6e24fe40966adb18eedfc6"
+    },
+    "player-tree-cmake-configure.log": {
+      "bytes": 163,
+      "sha256": "886cff0d6fd38675a54c37961f1019e93b68b9e54b048f957ece631bf5d7c37a"
+    },
+    "player-tree-python-partition.json": {
+      "bytes": 292092,
+      "sha256": "0e41a65bf3d1e759223aea80b573cc467b6894439fabf7747721753b01abc61e"
+    },
+    "player-tree-python-partition.log": {
+      "bytes": 103,
+      "sha256": "5996473531276375e2d40aab1101085b1affebaf9cf5e54618e0b89c812b3730"
+    },
+    "player-tree-python.log": {
+      "bytes": 117,
+      "sha256": "c0d528cd0d30c923d03c99d24a24c958dde22feb86e9bee6595d1c0a4b4fcf6f"
+    },
+    "player-tree-regressions.log": {
+      "bytes": 333,
+      "sha256": "a5a401b71314f7a4570d10515ba8ce85348dfb2a26f984a0d77b2a6cef36ef19"
+    },
+    "player-tree-result.log": {
+      "bytes": 240,
+      "sha256": "fe6137abcb22f192267ffb5d1f2e661c85a5509a895900b38eeba3da2cbbf407"
+    },
+    "regression-driver.py": {
+      "bytes": 2057,
+      "sha256": "3669650585057e682007501da115a26bac1a6726590aa026497cbb534bbfbce4"
+    },
+    "resource-source.json": {
+      "bytes": 4959,
+      "sha256": "052b420ab37600ae69d75bfe46f82c45c470dcea50b92baa84ba8239eb8dedfc"
+    }
+  }
+}

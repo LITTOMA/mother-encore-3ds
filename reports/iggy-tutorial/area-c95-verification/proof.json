@@ -1,0 +1,21 @@
+{
+  "source_commit": "c95ade5a0ba689d1ffcdaf835ad806431e844080",
+  "run": 39305476368,
+  "gcc_job": 118241290410,
+  "console_job": 118241290351,
+  "clang_job": 118241290059,
+  "results": "GCC ordinary248 andASAN/UBSAN233 allpassed; genuine3DSX/CIA succeeded. Clang stillrunning at collection; no whole-run success claim.",
+  "emulator": "f029 actual game passed2cold normal-input teaching/Bat outcomes. c95 receipt292fe7ff... differs from9493fd99...; no c95game download or direct c95emulator claim.",
+  "reports_sha256": {
+    "build-receipt.json": "709adf78463171080f5c501deb5b515b8191f7e5463977c01ec74657d3ce2f86",
+    "BUILD_INFO.txt": "73071d780f74a71815eb28ee6dc3151c57574315d46a6de11ab4fe1adaa8f539",
+    "c95-console-full.log": "84ac74494a84187ba693ebcb86c9c15c06d2e3106d7292d34c2e173f08c8e326",
+    "c95-console-metadata.log": "00787d8da1f11f7d6dd685bb8b463357ebbd524ed1f4df14fd96cd0651379e4a",
+    "c95-gcc-full.log": "3afa253e21de3344adca67271a05fb8beeb52ff78e91bcd70502e6a9e009f8b8",
+    "c95-terminal-jobs.log": "cd20d815358966ba2008c74916a06a32a3ad3ca5eb798f92c01cca98dd8f8ea2",
+    "fetch-c95-metadata.py": "e476d9fb6fb5762b73ffba2bd73c9ef1ae82549ffa73b8399546a0b0515fb75e",
+    "identity.json": "2c47b61ee3964cbe77a98ceed41cd76686d3ad2f5edf943164d86c09750db172",
+    "retain-c95-terminal.py": "ae32fb9a990458d79aa6c2bed0133b2f978e091a22dac5370d40e8fec576a9a6",
+    "SHA256SUMS": "4652bd5afb8eb70f9ebe0191ebdb5012e466236931cdde240983825e23481d23"
+  }
+}

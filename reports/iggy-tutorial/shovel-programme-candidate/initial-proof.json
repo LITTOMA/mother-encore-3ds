@@ -1,0 +1,35 @@
+{
+  "scope": "Unpublished full10labelcandidate with actualsource idle handoffs, movementWaitAction, deferredobject49andactorerasure. NoMap/renderer/rootcontact/pickup/actualquestclaim.",
+  "base_sha256": "11e47c7f25a6f7935b6944578edda3caf42618a1a4d545494ec614c87a97c807",
+  "room_sha256": "d44a1f87dc57739916f46470cfc591983663dee92ef77d1f24c703cdf903d77f",
+  "programme": 7,
+  "commands": 68,
+  "labels": {
+    "0": 6,
+    "1": 12,
+    "2": 19,
+    "3": 26,
+    "4": 30,
+    "5": 37,
+    "7": 40,
+    "8": 46,
+    "10": 52,
+    "11": 61
+  },
+  "terminal": 63,
+  "dialogues": 10,
+  "source_sha256": {
+    "Data/Dialogue/Podunk/cutscenes/gravedigger_getshovel.yaml": "35ed293f9b656f26c1011542849ca23b7ee0b0e7e09a5ba6bd1d403a054c0633",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc"
+  }
+}

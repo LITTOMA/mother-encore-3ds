@@ -1,0 +1,22 @@
+{
+  "scope": "Current consumer test fix changes no authored content, receipt, pack or game texture from published259",
+  "files": {
+    "content/asset-receipts/graphics/world/player/swing/resources.json": "dba50704203c97ef8da288a149ab1963c8aa6773c12dcfd85a5980b5fb79e921",
+    "content/asset-receipts/graphics/world/podunk/props/source.json": "84f52f3cee3d7f43957b91db88cb2eabd79b466336906c958d11fea36615ca0d",
+    "content/asset-receipts/graphics/world/podunk/source.json": "f7219369bdf1243235ef866b64b1b67f5f63b0b5f0a358cb145feae1e0e5bd4a",
+    "content/extension-resource-catalog.json": "4f3e1a6dbdb05378a694c6d5be2bc69db3189001274f0433031e95d176b1c635",
+    "content/native-new-game.json": "bb37898081cbd91273ead69c842ef92bedbd0b39e2cb2b3d0000bd28cf908d97",
+    "content/native-session.json": "cb10d476b2607a676e29d1db41e318b87833d4e09a02561da8b86fe58119e0d5",
+    "content/podunk-field.json": "2d0760a924c78b4a33a7a8b2053262f29c3a379f9d47ffca7869a09d42dcd5fc",
+    "content/world-scene-routes.json": "f870d5b18b07662f7a3da1b84ceb9536030a90c1d90bd5c82cfc8bcf81bcabb7",
+    "romfs/system/native.encresources": "239f89d26a0e18a9eae13cc6aedcd38a7c59a52e56410e0235b094491aad5356",
+    "romfs/world/podunk/podunk.encmap": "77d3ececa941f4d156cace30b8a8c98e0128dc298b6ffb244a4b9c1a0f0dbc96",
+    "romfs/world/podunk/podunk.encroom": "2a5d8b54dc492cae476da9907077c93a2260e1de9a6615a96f1cac61cf0bd3be",
+    "romfs/world/world.enclinks": "0ad046455880c93ed8ef4ff972d3be04213c05cfd0e8c9d594381fb8dbf5182e",
+    "content/asset-receipts/graphics/world/podunk/objects/source.json": "8dbf804609c4dad7492936f064b06e7eb038fae2cf1337f796ba06da0855a5b7",
+    "content/field-objects.json": "0946011d333be8b44a4c5e0dd6e753a648bde18db8bd39ada862f339c1164d52",
+    "content/podunk-area.json": "96e9b2ebb3eefcf12ba04888f0a603d3c336247cc2dc4b040644cbabfa72154c",
+    "romfs/graphics/world/podunk/objects/atlas-00.t3x": "843851626d26a227a69a84ab77d44a032a3f9c07ac171842377aa59e9ec2bf20",
+    "romfs/world/podunk/podunk.encobjects": "5b650b684b0788968ab3435d0da4b2d764075cbc5837a90e77da223b465e22c8"
+  }
+}

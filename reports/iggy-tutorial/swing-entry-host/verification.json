@@ -1,0 +1,47 @@
+{
+  "scope": "Checked incoming motion paths and original animation clips only. No release, live Player, graphics/audio/physics, emulator, full-game or hardware claim.",
+  "sources": {
+    "runtime/field_swing_entry.cpp": "8b733be14dc6b2edbd1b4396ebdc840972d6c4fd248edbca957d777f351d9ae4",
+    "include/encore/field_swing_entry.hpp": "44688ca5df128ab35b1ad0865f7af44f1936e51af4f540bb664623a9d21ea901",
+    "tools/field_swing_entry.py": "0ae777e4079a87ccbb347246d4022ede81af6f423dd7eee6cdccb624e8fb3862",
+    "tools/run_swing_entry_reference.py": "de63aa2168a5176a80043f8511586b17c680be635241942803fa1118c292e25a",
+    "tests/test_field_swing_entry.py": "8b6f48ae1bb2d078612be06e87cd86a078e4794960003e8b4eb8a038075488c9",
+    "tests/field_swing_entry_tests.cpp": "76c21110d01ee1b3379509a16e59d0e1b7995e05799e284c2b7999e6ff5fb3d4",
+    "tests/fixtures/field-swing-entry-v0410.encentry": "c10cc5ebbb30762e9447ef49614ede49f9c3106de248d8878e8b73193f1902d4",
+    "content/field-swing-entry.json": "d64836777e7019f3e20ab2131189c288ec25c2d473f953655298236ef1157dd9",
+    "CMakeLists.txt": "05b3e863a75dce5843c4442fad32e8afaf7173aa47b588130b6ef0c6e12590d7",
+    "platform/ctr/Makefile": "dbf19167ea832925045b0d7181028dad5191f51750d1ff8092860633f4203c16"
+  },
+  "compiler": "g++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0",
+  "flags": "-std=c++17 -O0 -fsanitize=address,undefined -fno-omit-frame-pointer -fno-pie -no-pie -fno-exceptions -fno-rtti; test TU -Wall -Wextra -Werror",
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+  },
+  "core": "Every current runtime source/header matches compiled-core.json; final actual test uses reference-4.",
+  "native_idempotence": {
+    "runs": [
+      4,
+      5
+    ],
+    "cases_each": 80,
+    "observations_each": 6560,
+    "bytes": 676512,
+    "sha256": "b41a926061cfa99a4f698897b4951ad82f16357afd021d34461f502fccd804fe"
+  },
+  "result": "Swing entry: 28186 checks; 6560 original motion-to-Bat observations across 80 cases; topology/clip corruption and atomic snapshot admission; no game-loop or hardware claim\n",
+  "logs": {
+    "candidate-source.json": "319bac93fdbe37caec5344cfb214e350c8bb2f92eab3331911003afb554a4652",
+    "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result.log": "5036a072b13d8fd550cd60737db89053f57f7f10e193ff9ab444c3c07dcc04bd",
+    "warnings.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "python.log": "1f0d3776e8519a210631a69953e5d6c790c9d538d9629eb5309af9940bc3b170",
+    "partition.json": "1f22f09258c16d0aa2e1d0d0c22f4f9c9edf3d21da8b7cb2355603eb7b92f5c8",
+    "compiled-core.json": "3017cb3cbf9ca003eb4eac20fc8a79066c5c8c6cf09c0312635f886371d351ed"
+  },
+  "notes": [
+    "Full 18-state source topology queried with inert children; 8 animated branches retain original clips and transitions. No full Player physics loop.",
+    "Earlier fixture probes 1/2 timed out, not accepted. Returned paths cloned and fixture trees stopped before disposal; original methods unchanged.",
+    "An initial negative mutation wrote an unchanged key time. Corrected to NaN; source expectations unchanged."
+  ]
+}

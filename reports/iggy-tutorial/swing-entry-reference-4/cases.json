@@ -1,0 +1,802 @@
+[
+  {
+    "state": "Idle",
+    "id": 1,
+    "direction": [
+      0,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "id": 1,
+    "direction": [
+      0,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "id": 1,
+    "direction": [
+      1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "id": 1,
+    "direction": [
+      -1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "id": 1,
+    "direction": [
+      1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "id": 1,
+    "direction": [
+      -1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "id": 1,
+    "direction": [
+      1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "id": 1,
+    "direction": [
+      -1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Walk",
+    "id": 2,
+    "direction": [
+      0,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Walk",
+    "id": 2,
+    "direction": [
+      0,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Walk",
+    "id": 2,
+    "direction": [
+      1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Walk",
+    "id": 2,
+    "direction": [
+      -1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Walk",
+    "id": 2,
+    "direction": [
+      1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Walk",
+    "id": 2,
+    "direction": [
+      -1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Walk",
+    "id": 2,
+    "direction": [
+      1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Walk",
+    "id": 2,
+    "direction": [
+      -1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "id": 3,
+    "direction": [
+      0,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "id": 3,
+    "direction": [
+      0,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "id": 3,
+    "direction": [
+      1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "id": 3,
+    "direction": [
+      -1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "id": 3,
+    "direction": [
+      1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "id": 3,
+    "direction": [
+      -1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "id": 3,
+    "direction": [
+      1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "id": 3,
+    "direction": [
+      -1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      0,
+      1
+    ],
+    "warmup": 0,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      0,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      0,
+      1
+    ],
+    "warmup": 0.08,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      0,
+      1
+    ],
+    "warmup": 0.2,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      0,
+      -1
+    ],
+    "warmup": 0,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      0,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      0,
+      -1
+    ],
+    "warmup": 0.08,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      0,
+      -1
+    ],
+    "warmup": 0.2,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      0
+    ],
+    "warmup": 0,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      0
+    ],
+    "warmup": 0.08,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      0
+    ],
+    "warmup": 0.2,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      0
+    ],
+    "warmup": 0,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      0
+    ],
+    "warmup": 0.08,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      0
+    ],
+    "warmup": 0.2,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      1
+    ],
+    "warmup": 0,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      1
+    ],
+    "warmup": 0.08,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      1
+    ],
+    "warmup": 0.2,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      1
+    ],
+    "warmup": 0,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      1
+    ],
+    "warmup": 0.08,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      1
+    ],
+    "warmup": 0.2,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      -1
+    ],
+    "warmup": 0,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      -1
+    ],
+    "warmup": 0.08,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      1,
+      -1
+    ],
+    "warmup": 0.2,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      -1
+    ],
+    "warmup": 0,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      -1
+    ],
+    "warmup": 0.08,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "id": 4,
+    "direction": [
+      -1,
+      -1
+    ],
+    "warmup": 0.2,
+    "incapacitated": false
+  },
+  {
+    "state": "Blink",
+    "id": 5,
+    "direction": [
+      0,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Blink",
+    "id": 5,
+    "direction": [
+      0,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Blink",
+    "id": 5,
+    "direction": [
+      1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Blink",
+    "id": 5,
+    "direction": [
+      -1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Blink",
+    "id": 5,
+    "direction": [
+      1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Blink",
+    "id": 5,
+    "direction": [
+      -1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Blink",
+    "id": 5,
+    "direction": [
+      1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "Blink",
+    "id": 5,
+    "direction": [
+      -1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": false
+  },
+  {
+    "state": "FaintedIdle",
+    "id": 6,
+    "direction": [
+      0,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedIdle",
+    "id": 6,
+    "direction": [
+      0,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedIdle",
+    "id": 6,
+    "direction": [
+      1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedIdle",
+    "id": 6,
+    "direction": [
+      -1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedIdle",
+    "id": 6,
+    "direction": [
+      1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedIdle",
+    "id": 6,
+    "direction": [
+      -1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedIdle",
+    "id": 6,
+    "direction": [
+      1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedIdle",
+    "id": 6,
+    "direction": [
+      -1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedWalk",
+    "id": 7,
+    "direction": [
+      0,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedWalk",
+    "id": 7,
+    "direction": [
+      0,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedWalk",
+    "id": 7,
+    "direction": [
+      1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedWalk",
+    "id": 7,
+    "direction": [
+      -1,
+      0
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedWalk",
+    "id": 7,
+    "direction": [
+      1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedWalk",
+    "id": 7,
+    "direction": [
+      -1,
+      1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedWalk",
+    "id": 7,
+    "direction": [
+      1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedWalk",
+    "id": 7,
+    "direction": [
+      -1,
+      -1
+    ],
+    "warmup": 0.04,
+    "incapacitated": true
+  }
+]

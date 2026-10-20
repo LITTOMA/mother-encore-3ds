@@ -1,0 +1,224 @@
+{
+  "baseline": "259b782747932ddf92e60a52d5adf6166487aa29",
+  "source_sha256": {
+    "CMakeLists.txt": "d7827e5d0e185c6ceebcb495719b149f6ffb136abf76858db4f2a11839c02ad5",
+    "tests/cemetery_roots_tests.cpp": "9abc0710bfe444dd4f70eb2e751736646a24686eabd995230911429150f8d54c",
+    "tests/field_interaction_tests.cpp": "b9d5a5b64c35a2c2211822afe30755f03103f6c56bf950c837dd1a22bc14a438",
+    "tests/field_npc_motion_tests.cpp": "cac89b50457488692626e5a4a9a7009daa98765014b079bd3c9cf161f82f2bca",
+    "tests/field_prop_renderer_tests.cpp": "352b3615bbc6fcdf1196ebd40aa4d905cac709f78e2c6c22391b1423a64bc839",
+    "tests/field_route_warp_tests.cpp": "9f1dd58a631f287f8f04c6b897ab151b0d77ffd1f4ecf8367e0006a839817be6",
+    "tests/mayor_scene_resources_tests.cpp": "d0a3082d015f3e95e6d3acc8019f4673a0d62f3dfbd1622b95098474fea06685",
+    "tests/prepare_step_resources.py": "054e352056459d1ef3eed5d00b92eddece64bcb5100867226f6f1b8c34d0d36d",
+    "tests/prepare_swing_resources.py": "a2be074ee100ba891ddf6071bc84765350dcb77ce262ef3e569e30cc38cb9ed2",
+    "tests/prop_scene_resources_tests.cpp": "0b8a2d597e52820ddd0515a2068c9595e7a4ecdb459b78d233631da6c9f0b394",
+    "tests/resource_catalog_tests.cpp": "da4cc86cfc59353449a3ff7f690070d3b4ae4575ea0908ad600ae03d86ca98c2"
+  },
+  "native_cases": [
+    {
+      "label": "00-field_static_actor",
+      "returncode": 0,
+      "args": [
+        "tests/fixtures/mayor-static-actor.encmap",
+        "build/full-port/object-legacy-map-1/legacy.encmap"
+      ],
+      "exe_sha256": "91b4519df50a37f0e8f35106620922604fc307a4307513feda8fa6b2731d830e"
+    },
+    {
+      "label": "01-field_route_warp",
+      "returncode": 0,
+      "args": [
+        "romfs/world/podunk/podunk.encroom",
+        "build/full-port/object-legacy-map-1/legacy.encmap",
+        "romfs/world/world.enclinks"
+      ],
+      "exe_sha256": "f611590a9ada56925c9c59e8659558e4bb9b27f21d32bea058c81c67cfc0d2f1"
+    },
+    {
+      "label": "02-resource_catalog",
+      "returncode": 0,
+      "args": [
+        "romfs/system/native.encresources",
+        "romfs",
+        "/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/object-consumers-host-1/catalog-fixture"
+      ],
+      "exe_sha256": "244aa9d66bd1f7c1a35608aad16db3393b3558546888ff52c07ddea51000bda3"
+    },
+    {
+      "label": "03-field_interaction",
+      "returncode": 0,
+      "args": [
+        "romfs",
+        "build/full-port/object-legacy-map-1/legacy.encmap"
+      ],
+      "exe_sha256": "a8344d02b2f076e7dfa773fa230236618fb61d80c5840475487731e87d563d59"
+    },
+    {
+      "label": "04-field_interaction",
+      "returncode": 0,
+      "args": [
+        "romfs",
+        "build/full-port/object-legacy-map-1/legacy.encmap",
+        "tests/fixtures/podunk-mom-interaction-policy.encmick"
+      ],
+      "exe_sha256": "a8344d02b2f076e7dfa773fa230236618fb61d80c5840475487731e87d563d59"
+    },
+    {
+      "label": "05-field_swing_resources",
+      "returncode": 0,
+      "args": [
+        "build/full-port/object-consumer-swing-1",
+        "build/full-port/object-consumer-swing-1/system/legacy.encresources"
+      ],
+      "exe_sha256": "b015435387b2228db530f57a5de1bab5807c760163b8dafb32d742d0bf553f3f"
+    },
+    {
+      "label": "06-cemetery_roots",
+      "returncode": 0,
+      "args": [
+        "build/full-port/object-legacy-map-1/legacy.encmap"
+      ],
+      "exe_sha256": "b4a122b1c516bf1422fc1051ca485b50d986d239837ee2d5fd4ea9e43e512793"
+    },
+    {
+      "label": "07-field_prop_renderer",
+      "returncode": 0,
+      "args": [
+        "romfs",
+        "build/full-port/object-legacy-map-1/legacy.encmap"
+      ],
+      "exe_sha256": "c4d0393119f39d35f88672daa1fde51fd3361ddbe655ff182ee8f89aa9a690e4"
+    },
+    {
+      "label": "08-prop_scene_resources",
+      "returncode": 0,
+      "args": [
+        "romfs",
+        "/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/object-consumers-host-1/prop-fixture"
+      ],
+      "exe_sha256": "ddfa3d1982dad99665af63d56ed9eb2469dc7bc926e3dc43d0386ffad950df3e"
+    },
+    {
+      "label": "09-step_scene_resources",
+      "returncode": 0,
+      "args": [
+        "build/full-port/object-consumer-step-1",
+        "romfs"
+      ],
+      "exe_sha256": "4bbbdfb1a6eac7c4815e9f3952ad31d4b01b0f758b4efdce25489a14cc4c365d"
+    },
+    {
+      "label": "10-world_run_audio",
+      "returncode": 0,
+      "args": [
+        "build/full-port/object-consumer-step-1",
+        "tests/fixtures/mayor.encsteps",
+        "tests/fixtures/pause-audio.tsv",
+        "tests/fixtures/step-contacts.tsv"
+      ],
+      "exe_sha256": "cb8c5b30cf39e71e31df21a01601e227819e1a573840f8fe2add017f51a651ab"
+    },
+    {
+      "label": "11-field_story",
+      "returncode": 0,
+      "args": [
+        "romfs/world/podunk/story.encstory",
+        "romfs/world/podunk/podunk.encroom",
+        "build/full-port/object-legacy-map-1/legacy.encmap",
+        "romfs/world/world.enclinks",
+        "romfs/ui/opening.encitems",
+        "romfs/story/opening.encintro",
+        "romfs/battle/straydog/bridge.encround",
+        "romfs/battle/straydog/bridge.encbattle"
+      ],
+      "exe_sha256": "93a1faf89911203e3e4ed832f074b8f93ec97a469684f66947534e592399a49b"
+    },
+    {
+      "label": "12-field_npc_motion",
+      "returncode": 0,
+      "args": [
+        "romfs/world/podunk/npcs/lindgren.encmick",
+        "romfs/world/podunk/npcs/bridge-dog.encmick",
+        "romfs/world/podunk/podunk.encmick",
+        "build/full-port/object-legacy-map-1/legacy.encmap"
+      ],
+      "exe_sha256": "9d359386539a9cd61cd7ceeb0bfa524ad94b8ed04cde263c3d4b296866c94b8c"
+    },
+    {
+      "label": "13-mayor_scene_resources",
+      "returncode": 0,
+      "args": [
+        "romfs"
+      ],
+      "exe_sha256": "d5be41add1507403024bffe85545498d65c3b5ea78e50381567050f259ae5f93"
+    }
+  ],
+  "retired": [
+    {
+      "path": "build/full-port/object-consumers-host-1/cemetery_roots-regression",
+      "bytes": 52877040,
+      "sha256": "b4a122b1c516bf1422fc1051ca485b50d986d239837ee2d5fd4ea9e43e512793"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-1/field_interaction-regression",
+      "bytes": 53704544,
+      "sha256": "a8344d02b2f076e7dfa773fa230236618fb61d80c5840475487731e87d563d59"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-1/field_prop_renderer-regression",
+      "bytes": 53506760,
+      "sha256": "c4d0393119f39d35f88672daa1fde51fd3361ddbe655ff182ee8f89aa9a690e4"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-1/field_route_warp-regression",
+      "bytes": 52752728,
+      "sha256": "f611590a9ada56925c9c59e8659558e4bb9b27f21d32bea058c81c67cfc0d2f1"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-1/field_static_actor-regression",
+      "bytes": 52186392,
+      "sha256": "91b4519df50a37f0e8f35106620922604fc307a4307513feda8fa6b2731d830e"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-1/field_swing_resources-regression",
+      "bytes": 52305440,
+      "sha256": "b015435387b2228db530f57a5de1bab5807c760163b8dafb32d742d0bf553f3f"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-1/prop_scene_resources-regression",
+      "bytes": 52429976,
+      "sha256": "ddfa3d1982dad99665af63d56ed9eb2469dc7bc926e3dc43d0386ffad950df3e"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-1/resource_catalog-regression",
+      "bytes": 52671360,
+      "sha256": "244aa9d66bd1f7c1a35608aad16db3393b3558546888ff52c07ddea51000bda3"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-1/step_scene_resources-regression",
+      "bytes": 52304112,
+      "sha256": "4bbbdfb1a6eac7c4815e9f3952ad31d4b01b0f758b4efdce25489a14cc4c365d"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-2/field_npc_motion-regression",
+      "bytes": 52700008,
+      "sha256": "9d359386539a9cd61cd7ceeb0bfa524ad94b8ed04cde263c3d4b296866c94b8c"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-2/field_story-regression",
+      "bytes": 53146720,
+      "sha256": "93a1faf89911203e3e4ed832f074b8f93ec97a469684f66947534e592399a49b"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-2/mayor_scene_resources-regression",
+      "bytes": 52780368,
+      "sha256": "d5be41add1507403024bffe85545498d65c3b5ea78e50381567050f259ae5f93"
+    },
+    {
+      "path": "build/full-port/object-consumers-host-2/world_run_audio-regression",
+      "bytes": 52753880,
+      "sha256": "cb8c5b30cf39e71e31df21a01601e227819e1a573840f8fe2add017f51a651ab"
+    }
+  ],
+  "retired_bytes": 686119328,
+  "scope": "Test/fixture/CMake compatibility only; production content and runtime remain exact259; Windows configure/collection, actual GCC9.4 ASan/UBSan14 affected native cases; no full-CI/emulator/hardware completion claim"
+}

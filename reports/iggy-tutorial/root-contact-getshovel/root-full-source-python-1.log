@@ -1,0 +1,16 @@
+.F...........................................usage: append [-h] [--stage] [--scope {run-loop,prop-nodes}] [--base BASE]
+              --out OUT [--ffmpeg FFMPEG] [--ffprobe FFPROBE]
+append: error: argument --scope: invalid choice: 'unknown' (choose from 'run-loop', 'prop-nodes')
+............................
+======================================================================
+FAIL: test_cemetery_source_mapping_and_runtime_version_negatives (tests.test_field_story.FieldStoryTests.test_cemetery_source_mapping_and_runtime_version_negatives)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_field_story.py", line 75, in test_cemetery_source_mapping_and_runtime_version_negatives
+    with self.assertRaises(ValueError):native_content.parse_pack(bytes(blob))
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 73 tests in 525.699s
+
+FAILED (failures=1)

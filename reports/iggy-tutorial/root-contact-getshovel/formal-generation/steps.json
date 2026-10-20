@@ -1,0 +1,61 @@
+[
+  {
+    "step": "props",
+    "args": [
+      "tools/field_props.py",
+      "assets",
+      "--tex3ds",
+      "build/tooling/pinned-tex3ds/tex3ds",
+      "--tex3ds-command",
+      "py -3.11 build/tooling/run_tex3ds_wsl.py"
+    ],
+    "returncode": 0,
+    "seconds": 2.9380000000237487
+  },
+  {
+    "step": "objects",
+    "args": [
+      "tools/field_objects_assets.py",
+      "assets",
+      "--tex3ds",
+      "build/tooling/pinned-tex3ds/tex3ds",
+      "--tex3ds-command",
+      "py -3.11 build/tooling/run_tex3ds_wsl.py"
+    ],
+    "returncode": 0,
+    "seconds": 2.530999999959022
+  },
+  {
+    "step": "player",
+    "args": [
+      "tools/field_player_assets.py",
+      "assets",
+      "--from-atlases",
+      "build/iggy-tutorial/swing-graphics-candidate-2"
+    ],
+    "returncode": 0,
+    "seconds": 2.672000000020489
+  },
+  {
+    "step": "field",
+    "args": [
+      "tools/podunk_field.py",
+      "compile",
+      "--tex3ds",
+      "build/tooling/pinned-tex3ds/tex3ds",
+      "--tex3ds-command",
+      "py -3.11 build/tooling/run_tex3ds_wsl.py"
+    ],
+    "returncode": 0,
+    "seconds": 14.89100000000326
+  },
+  {
+    "step": "story",
+    "args": [
+      "tools/field_story.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 16.17099999997299
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "source": "7d2e552f86c9ef0c995c85c301e3a2f26a78f32a",
+  "game_sha256": "c64e76044f4fe2a5fcfc353b8e86b7d467e1a089b140327268b6df2ee39491a5",
+  "files": {
+    "romfs/world/house/opening.encroom": "9d5449eed04015950ed8061b7a98a9853782cf76c1a63df2ca8a7f94dd6d5d13",
+    "romfs/ui/opening.encitems": "0223a8296dd74b3ed0b245996611b78e52d414e1d5d6cafd16e96dc71ae0afe0",
+    "romfs/world/podunk/podunk.encroom": "bcd9d8b8c4305552404d1840ec46d25b0fe11600fc079c80d01dc2c7fdaff365",
+    "romfs/world/podunk/podunk.encmap": "f76c5820df97d543b4c4f0ea72cfa45438031d21556729230fcbf1e781746d7f",
+    "romfs/world/world.enclinks": "7858d87e1e78503275662c4babc981a06f8143993f73a5aeac76c3da772e2f21",
+    "romfs/world/podunk/podunk.encmick": "a7c50629baf53e2fb303ea5bc9f5cff4dd4eaa2a01f8583227640e6b36301e2c",
+    "romfs/sound/banks/podunk.encmusic": "66e4979f9c96dd628daabea77ff803201c3eb8d99c169286637b878f4b47a039",
+    "romfs/sound/banks/podunk.encaudio": "1973c1e63a2365e56aac6fcca0d01db22768a4bc2f5eb53ab5c26f2ebdc4e8f8",
+    "romfs/sound/banks/podunk.enczones": "8db73d7e77ba7387d1c99463e0747e855cf5ba9995ee9a3cd2db1cec52e394c3",
+    "romfs/world/podunk/story.encstory": "9aead181ee86912b747323ca07e2def7752e62d24b6fcd8ab234c82e1f62fd8f",
+    "romfs/world/podunk/npcs/lindgren.encmick": "0aeefd9d43537beff02e65f9af364c755f6e49e56281e899d063fb4d294ce41d",
+    "romfs/world/podunk/npcs/bridge-dog.encmick": "0b450d4797b6aad92f7fabb565db155cc27b456552d0d371e8eab81b0cfba279",
+    "romfs/world/podunk/npcs/iggy.encmick": "a00a06eb05bdd78ecdfcaeda94db81e4f3e2d07baf267ab0df9eae7cf8de29b5",
+    "romfs/world/podunk/npcs/zombie1.encmick": "8bcc616bf2f289ab2c1d559941275270b18bba20b19caeb507995a5f6f07dd3b",
+    "romfs/world/podunk/npcs/zombie2.encmick": "cb26bf758d2973075697aab17243b40894ac965555baa010c2b1536197a98b9a",
+    "romfs/world/podunk/podunk.encprops": "72ef23603001024709bb7bbdb59f75071d1eba9ce75003071d46bc9ad8810eda",
+    "romfs/system/native.encresources": "7274cfea7e540beeb19092a27b66a6c5ac1e9208a908ffd158e640996282682f"
+  },
+  "scope": "Exact genuine7d artifact metadata, checked against committed source. No current tutorial WIP is substituted."
+}

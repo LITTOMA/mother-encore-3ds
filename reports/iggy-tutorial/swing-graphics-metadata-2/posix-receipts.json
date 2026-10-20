@@ -1,0 +1,78 @@
+{
+  "scope": "Actual Linux POSIX-path source-byte lookup; four legacy tool paths absent, all regenerated paths present with exact source bytes. Not a full Linux suite.",
+  "results": {
+    "actor-direction-reference-1": [
+      {
+        "path": "tools\\run_actor_direction_reference.py",
+        "exists": false,
+        "hash_matches": false
+      },
+      {
+        "path": "tools\\reference_actor_actions.py",
+        "exists": false,
+        "hash_matches": false
+      },
+      {
+        "path": "tools\\godot_exporter\\actor_actions_probe.gd",
+        "exists": false,
+        "hash_matches": false
+      },
+      {
+        "path": "tools\\godot_exporter\\actor_actions_wrapper.gd",
+        "exists": false,
+        "hash_matches": false
+      }
+    ],
+    "actor-direction-reference-2": [
+      {
+        "path": "tools/run_actor_direction_reference.py",
+        "exists": true,
+        "hash_matches": true
+      },
+      {
+        "path": "tools/reference_actor_actions.py",
+        "exists": true,
+        "hash_matches": true
+      },
+      {
+        "path": "tools/godot_exporter/actor_actions_probe.gd",
+        "exists": true,
+        "hash_matches": true
+      },
+      {
+        "path": "tools/godot_exporter/actor_actions_wrapper.gd",
+        "exists": true,
+        "hash_matches": true
+      }
+    ],
+    "swing-graphics-atlas-2": [
+      {
+        "path": "content/field-swing-graphics.json",
+        "exists": true,
+        "hash_matches": true
+      },
+      {
+        "path": "content/field-swing.json",
+        "exists": true,
+        "hash_matches": true
+      },
+      {
+        "path": "tools/field_swing_graphics.py",
+        "exists": true,
+        "hash_matches": true
+      }
+    ],
+    "swing-graphics-metadata-2": [
+      {
+        "path": "content/field-swing-presentation.json",
+        "exists": true,
+        "hash_matches": true
+      },
+      {
+        "path": "tools/field_swing_presentation.py",
+        "exists": true,
+        "hash_matches": true
+      }
+    ]
+  }
+}

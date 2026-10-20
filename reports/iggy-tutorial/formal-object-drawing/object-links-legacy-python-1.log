@@ -1,0 +1,16 @@
+.........E
+======================================================================
+ERROR: test_resource_catalog (unittest.loader._FailedTest.test_resource_catalog)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_resource_catalog
+Traceback (most recent call last):
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'tests.test_resource_catalog'
+
+
+----------------------------------------------------------------------
+Ran 10 tests in 6.801s
+
+FAILED (errors=1)

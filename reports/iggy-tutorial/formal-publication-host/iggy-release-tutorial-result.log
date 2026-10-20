@@ -1,0 +1,4 @@
+Iggy branch0: choices=1 text-visits=13 final-ticks=180
+Iggy branch1: choices=2 text-visits=15 final-ticks=180
+Iggy branch2: choices=2 text-visits=15 final-ticks=180
+Iggy tutorial: 2334 checks; full 16-phrase graph, yes/no/cancel, minimum wait, grant before later flag, two-actor paths, persistent control restoration and newly unlocked Bat; shared core, no GPU/contact claim

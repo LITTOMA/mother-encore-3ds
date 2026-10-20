@@ -1,0 +1,138 @@
+{
+  "scope": "Only exact owned test executables; compile/result logs, proofs, current core cache and real games retained",
+  "bytes": 1170256280,
+  "files": [
+    {
+      "path": "build/full-port/prop-dialogue-programme-native-1/field_prop_dialogue_programme",
+      "bytes": 52602104,
+      "sha256": "e082f4cda07275e1fe62b164902202b0e97b0193465f64ca881f826336e9767b",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-2/field_prop_dialogue_programme",
+      "bytes": 52682704,
+      "sha256": "70209b1aa2891f0d5d06945ab72139a4da3c1c974d186b094c86794b7f6cb83a",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-2/field_prop_dialogue_data",
+      "bytes": 52629808,
+      "sha256": "17569ea9a9ec3347a318a0ddb015b9373482708582c034222343c6a63f9f59e1",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-2/field_prop_dialogue_scene",
+      "bytes": 53164960,
+      "sha256": "565e8d4e7b9ff1450a98a0aac3e1ba4fbd2e472678751739721e9af9b666d91a",
+      "result": 1
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-3/field_prop_dialogue_scene",
+      "bytes": 53170336,
+      "sha256": "2a072e6cf469d5c916f6637139c4b9f369b9f4a47f2835605f041ee44d779d35",
+      "result": 1
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-4/field_prop_dialogue_scene",
+      "bytes": 53170336,
+      "sha256": "1f7e29ff8497bc7c475ea78343a3fdd312f8f1b3df4053a6d2fefee90dec0a8b",
+      "result": 1
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-5/field_prop_dialogue_scene",
+      "bytes": 53171232,
+      "sha256": "1fc130487705db7cfb903b71dccf86ed26ec6d69054396e63d315c4ec9614659",
+      "result": 1
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-6/field_prop_dialogue_scene",
+      "bytes": 53176736,
+      "sha256": "f23dcd811e3f90b4f101f7edecc857a1669bcbcab7e0aec7d78d30e770221109",
+      "result": 1
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-7/field_prop_dialogue_scene",
+      "bytes": 53176096,
+      "sha256": "292fbdccfdf635075bb48fff9ee397b4bfe803135b63592346507cdab8b3cfa8",
+      "result": 1
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-8/field_prop_dialogue_scene",
+      "bytes": 53175584,
+      "sha256": "95090e9efb527ccf3e1ad5498054ebee3797867e88ba52f793f2a2d7ed8975ac",
+      "result": 1
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-9/field_prop_dialogue_scene",
+      "bytes": 53180832,
+      "sha256": "d73d53bab2e85171368d6f3e04bb8f4380bad19cb2a91c79624fa5dd65fbea60",
+      "result": 1
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-10/field_prop_dialogue_scene",
+      "bytes": 53181216,
+      "sha256": "33224bcab3b2f137d73e3c60435f852e5254e702366df081709ab68157af48a1",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-regression-2/prop_contact_scene",
+      "bytes": 53193848,
+      "sha256": "16f5cb013d215e6d93f84fe635add499acf51ab3de65c5605a78ff87d73b22ab",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-regression-2/prop_contact_data",
+      "bytes": 53085928,
+      "sha256": "b251d6dffa295548705360852d0f12e172391913cdef9d79cd8be52d5cdaf5c5",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-regression-2/field_prop_audio",
+      "bytes": 53422688,
+      "sha256": "04aa641bb7c84aa596b744b7b21a79cff7f7cc3fbce5ee202e5b00210f80d092",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-regression-2/field_story",
+      "bytes": 53505784,
+      "sha256": "bd588ba22f3b51726d5de4893fa841dabb3eec1219f8c1b9ba0f50338c89bd75",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-regression-2/cemetery_roots",
+      "bytes": 53240888,
+      "sha256": "40a95472c163dddddbdb1c299d0a9c59852bff656d304125543001246c44d05d",
+      "result": 1
+    },
+    {
+      "path": "build/full-port/prop-dialogue-regression-3/cemetery_roots",
+      "bytes": 53240888,
+      "sha256": "40a95472c163dddddbdb1c299d0a9c59852bff656d304125543001246c44d05d",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-regression-3/graveyard_tutorial",
+      "bytes": 52806664,
+      "sha256": "8735dd46e1c46d88fcb8b77f6f3df368d2ec1aa8184a98fd26d9e6c89347116e",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-regression-3/field_prop_renderer",
+      "bytes": 53866336,
+      "sha256": "365fc25c71406d83dae8d0405804412fae96648229c56f412646f36da8a5766e",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-regression-3/prop_scene_resources",
+      "bytes": 52770256,
+      "sha256": "69f6cc48bfd276af5344c1ef86687ba2f1ad9d3628fb64b654f2a82df3df990e",
+      "result": 0
+    },
+    {
+      "path": "build/full-port/prop-dialogue-regression-3/native_session",
+      "bytes": 54641056,
+      "sha256": "edeaa2641280612e2e97bef79e0ef62388a53b2a8e9f128308f0cfb45ce2a4ea",
+      "result": 0
+    }
+  ]
+}

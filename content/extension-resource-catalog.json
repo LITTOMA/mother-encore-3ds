@@ -2,7 +2,7 @@
   "schema": 1,
   "kind": "encore.extension-resource-catalog.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Roles added after the reviewed opening catalog: linked exterior field scene bindings (capability 2), House present objects (capability 3) and Mick wander, reviewed woof trees and mick_bark (capability 4). Kept apart from native-resource-catalog.json so the reviewed opening room provenance does not depend on later scenes or objects; merged into the same data/native.encresources. Capability 6 adds independent source NPC motion owners, with no borrowed Mick dialogue. Initial Mayor Office scene, stationary source NPCs, reviewed initial help choices, music and run-sound areas; later rescue/zoo branches fail closed.",
+  "scope": "Roles added after the reviewed opening catalog: linked exterior field scene bindings (capability 2), House present objects (capability 3) and Mick wander, reviewed woof trees and mick_bark (capability 4). Kept apart from native-resource-catalog.json so the reviewed opening room provenance does not depend on later scenes or objects; merged into the same data/native.encresources. Capability 6 adds independent source NPC motion owners, with no borrowed Mick dialogue. Initial Mayor Office scene, stationary source NPCs, reviewed initial help choices, music and run-sound areas; later rescue/zoo branches fail closed. Capability 12 publishes the complete independently checked persistent player action, compact graphics, audio binding and graph group; executable input/GPU integration is separately verified. Capability13 adds independent scene FieldObjects49/1032 for source ready, checked drawing and deletion; manual pickup remains unavailable.",
   "sources": {
     "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
     "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
@@ -14,7 +14,33 @@
     "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
     "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
     "Graphics/Objects/Podunk/Dead Bush.png.import": "4ad90f6e9358c616d86e5eefcead4cb82e73b4c8cd8a543a5a98b44ddc993d48",
-    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+    "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
+    "Data/FieldSkills/swing.yaml": "e3e770194ec22e76fe75a271f2cda85371cbb3c50277275067fd68d1539bf0aa",
+    "Graphics/Character Sprites/Ninten/bat_swing.png": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Graphics/Character Sprites/Ninten/special.png": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9",
+    "Nodes/Reusables/Overlap/Hitbox.tscn": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/misc/NintenBatSwing.gd": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "Data/Dialogue/Podunk/cutscenes/gravedigger_getshovel.yaml": "35ed293f9b656f26c1011542849ca23b7ee0b0e7e09a5ba6bd1d403a054c0633",
+    "Data/Dialogue/Podunk/cutscenes/gravedigger_trytoleave.yaml": "0e19bcd5ab7570b5521ab531b9db142ccc377af8bd4e7a385c9a109b725d94b2",
+    "Data/Dialogue/Podunk/iggy_return_shovel.yaml": "07067dcb1bda1ff9de82e25f03d9320fdcbe06d1348f157fe9d98013cf9ee437",
+    "Data/Items/Shovel.yaml": "b7548e3bd6a67cff62741fd6ed839e611620aac9e1197b089fa8cdee5ac8aef0",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Graphics/Objects/Items/Shovel.png": "1139cb42931979e3c1198860e1488c5c31489db9580623e26da53e04cf89ff4d",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a"
   },
   "bindings": [
     {
@@ -171,6 +197,31 @@
       "id": 329,
       "role": "FieldNpc",
       "path": "world/podunk/npcs/zombie2.encmick"
+    },
+    {
+      "id": 45,
+      "role": "FieldSwing",
+      "path": "world/player/swing.encswing"
+    },
+    {
+      "id": 46,
+      "role": "FieldSwingGraphics",
+      "path": "world/player/swing.encgraphics"
+    },
+    {
+      "id": 47,
+      "role": "FieldSwingAction",
+      "path": "world/player/swing.encaction"
+    },
+    {
+      "id": 48,
+      "role": "FieldSwingEntry",
+      "path": "world/player/swing.encentry"
+    },
+    {
+      "id": 1032,
+      "role": "FieldObjects",
+      "path": "world/podunk/podunk.encobjects"
     }
   ],
   "encounters": [

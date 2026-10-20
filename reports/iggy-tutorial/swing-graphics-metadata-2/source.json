@@ -1,0 +1,361 @@
+{
+  "scope": "Checked ENCSGX01 metadata for separately compiled source swing atlases.\n\nNo release staging or renderer binding. Legacy ENCSWG01 remains independent.\n",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "output": "world/player/swing.encgraphics",
+  "model": {
+    "meta": {
+      "initial_frame": 4,
+      "frame_width": 64,
+      "frame_height": 64,
+      "source_columns": 10,
+      "source_rows": 10,
+      "atlas_columns": 5
+    },
+    "layers": [
+      {
+        "role": 1,
+        "width": 320,
+        "height": 512,
+        "parent": 0,
+        "flags": 1,
+        "position": [
+          0.0,
+          -4.0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "path": "graphics/world/player/swing/ninten.t3x",
+        "source": "Graphics/Character Sprites/Ninten/special.png",
+        "sha256": "2e75f362c0ed19cf764ec8bdd9e00aafa01d85d09eb726e930414bd64a113cf3",
+        "source_sha256": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9",
+        "bytes": 1048597,
+        "crc32": 613603177
+      },
+      {
+        "role": 2,
+        "width": 320,
+        "height": 512,
+        "parent": 1,
+        "flags": 9,
+        "position": [
+          0,
+          0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "path": "graphics/world/player/swing/bat.t3x",
+        "source": "Graphics/Character Sprites/Ninten/bat_swing.png",
+        "sha256": "80f59fa4b484c1647373b048ee385b73af59e5ee295980177eb2f8d9ae28cd03",
+        "source_sha256": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+        "bytes": 1048597,
+        "crc32": 2360109046
+      }
+    ],
+    "frames": [
+      {
+        "source_frame": 0,
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 1,
+        "x": 64,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 2,
+        "x": 128,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 3,
+        "x": 192,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 4,
+        "x": 256,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 10,
+        "x": 0,
+        "y": 64,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 11,
+        "x": 64,
+        "y": 64,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 12,
+        "x": 128,
+        "y": 64,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 13,
+        "x": 192,
+        "y": 64,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 14,
+        "x": 256,
+        "y": 64,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 20,
+        "x": 0,
+        "y": 128,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 21,
+        "x": 64,
+        "y": 128,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 22,
+        "x": 128,
+        "y": 128,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 23,
+        "x": 192,
+        "y": 128,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 24,
+        "x": 256,
+        "y": 128,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 30,
+        "x": 0,
+        "y": 192,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 31,
+        "x": 64,
+        "y": 192,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 32,
+        "x": 128,
+        "y": 192,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 33,
+        "x": 192,
+        "y": 192,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 34,
+        "x": 256,
+        "y": 192,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 40,
+        "x": 0,
+        "y": 256,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 41,
+        "x": 64,
+        "y": 256,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 42,
+        "x": 128,
+        "y": 256,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 43,
+        "x": 192,
+        "y": 256,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 44,
+        "x": 256,
+        "y": 256,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 50,
+        "x": 0,
+        "y": 320,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 51,
+        "x": 64,
+        "y": 320,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 52,
+        "x": 128,
+        "y": 320,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 53,
+        "x": 192,
+        "y": 320,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 54,
+        "x": 256,
+        "y": 320,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 60,
+        "x": 0,
+        "y": 384,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 61,
+        "x": 64,
+        "y": 384,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 62,
+        "x": 128,
+        "y": 384,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 63,
+        "x": 192,
+        "y": 384,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 64,
+        "x": 256,
+        "y": 384,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 70,
+        "x": 0,
+        "y": 448,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 71,
+        "x": 64,
+        "y": 448,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 72,
+        "x": 128,
+        "y": 448,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 73,
+        "x": 192,
+        "y": 448,
+        "width": 64,
+        "height": 64
+      },
+      {
+        "source_frame": 74,
+        "x": 256,
+        "y": 448,
+        "width": 64,
+        "height": 64
+      }
+    ]
+  },
+  "sources": {
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Data/FieldSkills/swing.yaml": "e3e770194ec22e76fe75a271f2cda85371cbb3c50277275067fd68d1539bf0aa",
+    "Scripts/misc/NintenBatSwing.gd": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Graphics/Character Sprites/Ninten/special.png": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9",
+    "Graphics/Character Sprites/Ninten/bat_swing.png": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+    "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
+    "Nodes/Reusables/Overlap/Hitbox.tscn": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "atlas_receipt_sha256": "dffd0925b40abf0fcf205b668e1fb5a8ab296fc30d15049e9e4a0096d7104c82",
+  "dependencies": {
+    "content/field-swing-presentation.json": "40b65affa8631fb2b1b6a8dbe1ef6654d1a528908f9c24df6bb9882fc0feb9c5",
+    "tools/field_swing_presentation.py": "f516fbeee418ae5da4c8a7d3c1b8707ab212d637283573678d894f7f219fb0b8"
+  },
+  "bytes": 1061,
+  "sha256": "ca133fd28dd92b809991b4d929e5702a0ae82f85719ff2b4757de174d8af0bc1"
+}

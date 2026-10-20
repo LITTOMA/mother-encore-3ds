@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 namespace encore::upstream {
-class NewGameSetupData;class LocaleSelection;class OpeningWorld;class DialogueChoices;struct SessionSnapshot;class FieldMenusData;struct FieldMenuPreferences;
+class NewGameSetupData;class LocaleSelection;class OpeningWorld;class DialogueChoices;struct SessionSnapshot;class FieldMenusData;struct FieldMenuPreferences;class FieldPropsData;
 // Checked source character tags; literal nicknames never become templates.
 bool format_field_story_text(std::string_view,const NewGameSetupData&,const SessionSnapshot&,const LocaleSelection&,std::string&,std::string&);
 bool format_field_story_span(std::string_view,const NewGameSetupData&,const SessionSnapshot&,const LocaleSelection&,LocalizedHouseSpan&,std::string&,const FieldMenusData* =nullptr,const FieldMenuPreferences* =nullptr);
@@ -15,6 +15,7 @@ struct FieldStoryProgramme {uint32_t programme=UINT32_MAX;FieldText boundary{},s
 struct FieldStoryText {uint32_t id=0;FieldText locale{},speaker{},body{},voice{};};
 struct FieldStoryEncounter {uint32_t battle=0,actor=UINT32_MAX;FieldText basic{},music{};uint32_t basic_slot=UINT32_MAX,programme=UINT32_MAX;float return_music_seconds=0;uint32_t return_music_curve=0;};
 struct FieldBasicOverride {uint32_t definition=0;FieldText source{};};
+struct FieldStoryPropDialogue {FieldText flag{};uint32_t when_false=UINT32_MAX,when_true=UINT32_MAX;Vec2 ray_origin{};float ray_length=0;uint32_t ray_mask=0,area_layer=0,area_flags=0,props_bytes=0,props_crc=0,stop_running=0;};
 class FieldStoryView {
 public:
  bool valid()const{return bytes_!=nullptr;}
@@ -29,6 +30,8 @@ public:
  FieldStoryEncounter encounter(uint32_t battle)const;
  FieldStoryEncounter encounter_for_programme(uint32_t programme)const;
  FieldBasicOverride basic_override(uint32_t stable_definition)const;
+ FieldStoryPropDialogue prop_dialogue()const;
+ bool bind_props(const FieldPropsData&,std::string& error)const;
  bool bind(RoomView,FieldMapView,ItemView,std::string& error)const;
 private:
  friend class FieldStoryData;

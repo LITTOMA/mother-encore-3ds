@@ -1,0 +1,6 @@
+{
+  "bytes": 1619480,
+  "sha256": "f76c5820df97d543b4c4f0ea72cfa45438031d21556729230fcbf1e781746d7f",
+  "matches_exact_pre_object_publication": true,
+  "original_generator": "tests/prepare_legacy_field_map.py"
+}

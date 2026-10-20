@@ -1,0 +1,77 @@
+{
+  "base": "d078a9a80c93dc71118616fbfc0753e2ea56159c",
+  "scope": "Typed key grant codec/host addition; no shipping tutorial or item grant yet",
+  "rooms": {
+    "romfs/world/house/opening.encroom": {
+      "changed": [
+        "build_input_sha256"
+      ],
+      "tables_and_strings_equal": true,
+      "sha256": "9d5449eed04015950ed8061b7a98a9853782cf76c1a63df2ca8a7f94dd6d5d13"
+    },
+    "romfs/world/podunk/podunk.encroom": {
+      "changed": [
+        "build_input_sha256"
+      ],
+      "tables_and_strings_equal": true,
+      "sha256": "bcd9d8b8c4305552404d1840ec46d25b0fe11600fc079c80d01dc2c7fdaff365"
+    },
+    "romfs/world/mayor/mayor.encroom": {
+      "changed": [
+        "build_input_sha256"
+      ],
+      "tables_and_strings_equal": true,
+      "sha256": "9c73c0ea4e3498a964a452b7a05a3f7659e335cb2b54f84c0c9a1f3acab66adb"
+    }
+  },
+  "unchanged_outputs": [
+    {
+      "path": "romfs/session/opening.encsession",
+      "sha256": "e92eb8c79196dc8e55aac40c98e70ac531f51d033b6eb8a573bce6570268fdff"
+    },
+    {
+      "path": "romfs/ui/opening.encnewgame",
+      "sha256": "a532d8d0e64bb9b2828fadfd6f003bb6a34150a89b98b31db8563261ff11ecb7"
+    },
+    {
+      "path": "romfs/world/podunk/podunk.encmap",
+      "sha256": "f76c5820df97d543b4c4f0ea72cfa45438031d21556729230fcbf1e781746d7f"
+    },
+    {
+      "path": "romfs/world/podunk/story.encstory",
+      "sha256": "9aead181ee86912b747323ca07e2def7752e62d24b6fcd8ab234c82e1f62fd8f"
+    },
+    {
+      "path": "romfs/world/podunk/podunk.encprops",
+      "sha256": "72ef23603001024709bb7bbdb59f75071d1eba9ce75003071d46bc9ad8810eda"
+    },
+    {
+      "path": "romfs/world/world.enclinks",
+      "sha256": "7858d87e1e78503275662c4babc981a06f8143993f73a5aeac76c3da772e2f21"
+    },
+    {
+      "path": "romfs/battle/straydog/bridge.encbattle",
+      "sha256": "d3fac0b88ede5af03073cb620f17db3a8bc9b662c183d0a3f5552d04427458bc"
+    },
+    {
+      "path": "romfs/battle/straydog/bridge.encround",
+      "sha256": "af41cf11cceb6b90afd0ec4e438bcda4c1366f1ec1abe57f9d783e50c9820b78"
+    }
+  ],
+  "content/native-session.json": {
+    "changed": [
+      "dependencies"
+    ]
+  },
+  "content/native-restore.json": {
+    "changed": [
+      "dependencies",
+      "fingerprints"
+    ]
+  },
+  "content/native-new-game.json": {
+    "changed": [
+      "dependencies"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+Session changed fields: ['dependencies']
+Session dependencies: ['romfs/world/podunk/podunk.encroom']
+Field parsed changes: ['build_input_sha256']
+Native session: 10192 bytes; checked source/defaults/stat rows; save-only bridge
+Naming session dependency re-admitted; exact game/UI binary and actual textures retained

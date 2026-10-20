@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_swing_contact_reference.py", line 70, in <module>
+    a=argparse.ArgumentParser();a.add_argument('--work',type=Path,required=True);a.add_argument('--reports',type=Path,required=True);a.add_argument('--godot',type=Path,required=True);o=a.parse_args();run(o.work,o.reports,o.godot)
+                                                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_swing_contact_reference.py", line 64, in run
+    if doc['engine']['string']!='3.6.2-stable (official)'or len(doc['rows'])!=len(queries)or any(q!=row[0]or type(row[1])is not bool for q,row in zip(queries,doc['rows'])):raise ValueError('Contact reference engine/domain/coverage differs')
+                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Contact reference engine/domain/coverage differs

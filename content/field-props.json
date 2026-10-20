@@ -1,9 +1,10 @@
 {
-  "schema": 2,
+  "schema": 3,
   "kind": "encore.field-props.reviewed-source",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "field_recipe": "content/podunk-field.json",
   "clip_recipe": "content/field-prop-clips.json",
+  "contact_recipe": "content/field-swing.json",
   "texture": "graphics/world/podunk/props/roots.t3x",
   "instances": [
     {
@@ -66,7 +67,7 @@
     }
   ],
   "map_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
-  "scope": "13 source Dead Bush instances with typed lifecycle, checked map/sprite/body and source clone-subtree drawing order. Ready/render integration only; Ninten swing and quest callback programmes remain explicitly unavailable until separately admitted.",
+  "scope": "13 source Dead Bush instances with typed lifecycle, checked map/sprite/body and source clone-subtree drawing order. Contact and deferred quest callback admission require the checked action, object, programme and per-node audio owners; investigation dialogue and hardware remain unverified.",
   "output": "world/podunk/podunk.encprops",
   "receipt": "content/asset-receipts/graphics/world/podunk/props/source.json"
 }

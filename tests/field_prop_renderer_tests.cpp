@@ -13,9 +13,9 @@ void check(bool v,const char*s){++checks;if(!v){std::fprintf(stderr,"Prop render
 bool near(float a,float b){return std::fabs(a-b)<.00001f;}
 }
 int main(int argc,char**argv){
- CHECK(argc==2);const std::string root=argv[1];auto path=[&](const char*p){return root+"/"+p;};ResourceCatalog catalog;WorldLinksData links;RoomData domain;ItemData items;FieldSceneResources resources;
+ CHECK(argc==4);const std::string root=argv[1];auto path=[&](const char*p){return root+"/"+p;};ResourceCatalog catalog;WorldLinksData links;RoomData domain;ItemData items;FieldSceneResources resources;
  CHECK(catalog.load_file(path("system/native.encresources").c_str(),error)&&links.load_file(path("world/world.enclinks").c_str(),error));CHECK(domain.load_file(path("world/house/opening.encroom").c_str(),error)&&items.load_file(path("ui/opening.encitems").c_str(),error));CHECK(resources.load(catalog,links,2,root.c_str(),domain.view(),items.view(),error));CHECK(resources.props().rendering_bound());
- const auto map=resources.map();const auto&props=resources.props();const auto&p=props.policy();const auto&r=props.props()[0];const Vec2 player{r.position.x-40,r.position.y};std::vector<bool>flags(resources.room().flag_count(),false);FieldScene scene;
+ FieldMapData legacy;FieldPropsData props;CHECK(legacy.load_file(argv[2],error)&&props.load_file(argv[3],error)&&props.capability()==2);const auto map=legacy.view();const auto&p=props.policy();const auto&r=props.props()[0];const Vec2 player{r.position.x-40,r.position.y};std::vector<bool>flags(resources.room().flag_count(),false);FieldScene scene;
  CHECK(scene.prepare(resources.room(),map,links,flags,player,{1,0},{400,240},error)&&scene.bind_props(props,error)&&scene.idle_frame(0,false));
  for(uint32_t i=0;i<map.count(FieldMapSection::Atlases);++i){const auto a=map.atlas(i);draw_test::specs["romfs:/"+std::string(map.text(a.path))]={i+1,a.width,a.height,false,false};}
  const auto texture="romfs:/"+p.texture;draw_test::specs[texture]={8000,p.width*props.clips().frame_count(),p.height,false,false};FieldRenderer renderer;OpeningActorRenderer actors;CHECK(renderer.load(map,"en",error,&props));

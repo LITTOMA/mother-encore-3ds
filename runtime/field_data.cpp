@@ -65,7 +65,7 @@ uint32_t FieldMapView::localized_picture(uint32_t index,std::string_view locale)
 bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kFieldMapSectionCount*16||n>max_bytes)return fail("Field map size rejected");
-    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)<1||u32(p+20)>5||u32(p+28)||u32(p+52)!=(u32(p+20)==5?kFieldAreaMapSectionCount:kFieldMapSectionCount)||u32(p+56)||u32(p+60))
+    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)<1||u32(p+20)>6||u32(p+28)||u32(p+52)!=(u32(p+20)>=5?kFieldAreaMapSectionCount:kFieldMapSectionCount)||u32(p+56)||u32(p+60))
         return fail("Field map schema/capability/reserved rejected");
     if(!u32(p+24))return fail("Field map scene identity rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Field map source pin rejected");}
@@ -86,7 +86,7 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
         return t.offset<=pool&&t.length<=pool-t.offset&&t.length<=limit&&utf8(v.record(S::Bytes,0)+t.offset,t.length);};
     auto span_ok=[&](FieldSpan s,S section){return s.first<=v.count(section)&&s.count<=v.count(section)-s.first;};
     auto cond_ok=[&](FieldSpan s){return s.count<=16&&span_ok(s,S::Conditions);};
-    if(v.capabilities()==5){
+    if(v.capabilities()>=5){
         if(v.count(S::Area)!=1)return fail("Field AreaRoom record count rejected");
         const auto a=v.area();const auto*raw=v.record(S::Area,0);
         auto identity=[&](FieldText t,bool empty=false){if(!text_ok(t,empty,64))return false;for(unsigned char c:v.text(t))if(!((c>='a'&&c<='z')||(c>='A'&&c<='Z')||(c>='0'&&c<='9')||c=='_'||c==' '))return false;return true;};
@@ -157,7 +157,7 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     for(uint32_t i=0;i<sprites;++i){const auto s=v.sprite(i);const auto pic=v.picture(s.picture);const auto f=v.frame(pic.first_frame);
         if(s.picture>=pictures||f.w!=s.w||f.h!=s.h||!finite(s.position)||s.flags>3||(s.openable!=kFieldNoOpenable&&s.openable>=openables)||!cond_ok(s.conditions)||u32(v.record(S::Sprites,i)+28))
             return fail("Field map sprite rejected");}
-    uint32_t players=0;std::vector<uint32_t> actors;
+    uint32_t players=0;std::vector<uint32_t> actors,objects;
     for(uint32_t i=0;i<items;++i){const auto it=v.item(i);const auto*raw=v.record(S::Items,i);
         if(u16(raw+2)||u32(raw+28)||!std::isfinite(it.sort_y)||std::fabs(it.sort_y)>1000000||!cond_ok(it.conditions))return fail("Field map item rejected");
         switch(FieldItemKind(it.kind)){
@@ -172,6 +172,9 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
         case FieldItemKind::Actor:
             if(u32(p+20)<3||!it.first||it.first>=64||it.count!=1||std::find(actors.begin(),actors.end(),it.first)!=actors.end())return fail("Field map actor item rejected");
             actors.push_back(it.first);break;
+        case FieldItemKind::OwnedObject:
+            if(v.capabilities()<6||!it.first||it.first==kFieldNone||it.count!=1||std::find(objects.begin(),objects.end(),it.first)!=objects.end())return fail("Field map object item rejected");
+            objects.push_back(it.first);break;
         default:return fail("Field map item kind rejected");}
     }
     uint32_t item_cursor=0;bool player_sorted=false,static_actor=false;
@@ -179,13 +182,14 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
         if((g.kind!=uint32_t(FieldGroupKind::Static)&&g.kind!=uint32_t(FieldGroupKind::YSort))||g.first!=item_cursor||!g.count||g.count>items-item_cursor||u32(v.record(S::Groups,i)+12))
             return fail("Field map group rejected");
         for(uint32_t k=0;k<g.count;++k){const auto kind=FieldItemKind(v.item(g.first+k).kind);
-            if(g.kind==uint32_t(FieldGroupKind::Static)){static_actor|=kind==FieldItemKind::Actor;if(kind!=FieldItemKind::LayerCells&&kind!=FieldItemKind::Sprites&&!(u32(p+20)>=4&&kind==FieldItemKind::Actor))return fail("Field map static group item rejected");}
+            if(g.kind==uint32_t(FieldGroupKind::Static)){static_actor|=kind==FieldItemKind::Actor;if(kind!=FieldItemKind::LayerCells&&kind!=FieldItemKind::Sprites&&!(u32(p+20)>=4&&kind==FieldItemKind::Actor)&&kind!=FieldItemKind::OwnedObject)return fail("Field map static group item rejected");}
             if(g.kind==uint32_t(FieldGroupKind::YSort)&&kind==FieldItemKind::LayerCells)return fail("Field map sort group item rejected");
             if(kind==FieldItemKind::Player)player_sorted=true;}
         item_cursor+=g.count;}
     if(item_cursor!=items||players!=1||!player_sorted)return fail("Field map draw program rejected");
     if(u32(p+20)>=3&&actors.empty())return fail("Field actor capability has no actors");
     if(u32(p+20)==4&&!static_actor)return fail("Static actor capability has no static actors");
+    if(v.capabilities()==6&&objects.empty())return fail("Field object capability has no objects");
     for(uint32_t i=0;i<openables;++i){const auto o=v.openable(i);
         auto audio=[&](FieldText t){return text_ok(t,true,256)&&(!t.length||v.text(t).substr(0,6)=="res://");};
         if(!text_ok(o.path,false,512)||!finite(o.center)||!finite(o.extents)||o.extents.x<=0||o.extents.y<=0||!audio(o.sound)||!audio(o.end_sound)||

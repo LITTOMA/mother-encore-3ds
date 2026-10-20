@@ -1,0 +1,58 @@
+{
+  "retired": [
+    {
+      "path": "build/full-port/swing-resource-tests",
+      "bytes": 50355936
+    },
+    {
+      "path": "build/full-port/player-tree-tests",
+      "bytes": 50774976
+    },
+    {
+      "path": "build/full-port/player-tree-regression-tests",
+      "bytes": 50762984
+    },
+    {
+      "path": "build/full-port/player-tree-regression-tests.o",
+      "bytes": 1345672
+    },
+    {
+      "path": "build/full-port/swing-resource-fixture",
+      "bytes": 6480304
+    },
+    {
+      "path": "build/iggy-tutorial/player-tree-candidate-1",
+      "bytes": 49937
+    },
+    {
+      "path": "build/iggy-tutorial/swing-pause-reference-1",
+      "bytes": 1177812
+    },
+    {
+      "path": "build/iggy-tutorial/swing-pause-reference-2",
+      "bytes": 364446
+    },
+    {
+      "path": "build/iggy-tutorial/swing-pause-reference-3",
+      "bytes": 366282
+    },
+    {
+      "path": "build/iggy-tutorial/swing-pause-reference-4",
+      "bytes": 576505
+    },
+    {
+      "path": "build/iggy-tutorial/swing-pause-reference-5",
+      "bytes": 576505
+    },
+    {
+      "path": "build/iggy-tutorial/player-state-paths-1",
+      "bytes": 374889
+    },
+    {
+      "path": "build/iggy-tutorial/player-state-paths-2",
+      "bytes": 374889
+    }
+  ],
+  "total_bytes": 163581137,
+  "preserved": "Current verified genuine root704 game, recorded save, compact GPU candidates, actual logs and frozen source reports"
+}

@@ -1,0 +1,8 @@
+..usage: append [-h] [--stage] [--scope {run-loop,prop-nodes}] [--base BASE]
+              --out OUT [--ffmpeg FFMPEG] [--ffprobe FFPROBE]
+append: error: argument --scope: invalid choice: 'unknown' (choose from 'run-loop', 'prop-nodes')
+..............
+----------------------------------------------------------------------
+Ran 16 tests in 9.980s
+
+OK

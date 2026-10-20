@@ -10,9 +10,11 @@ class MayorScenePublication(unittest.TestCase):
   self.assertEqual(m.stage_files(),self.files)
   for name,fixture in [('world/mayor/mayor.encmap','mayor-area.encmap'),('world/mayor/mayor.encstory','mayor-initial.encstory')]:self.assertEqual(self.files[Path(name)],(m.ROOT/'tests/fixtures'/fixture).read_bytes())
   self.assertEqual(len([p for p in self.files if p.suffix=='.encmick']),5)
-  # The source scope now also includes the independently appended Iggy owner;
-  # Mayor's own five NPC packets and frozen map/story fixtures stay exact.
-  c=catalog.decode((m.ROOT/'romfs/system/native.encresources').read_bytes());self.assertEqual(len(c['bindings']),63)
+  # The global catalog adds four player action owners and Podunk's object
+  # owner; Mayor's five NPCs and frozen map/story fixtures remain exact.
+  c=catalog.decode((m.ROOT/'romfs/system/native.encresources').read_bytes());self.assertEqual(len(c['bindings']),68)
+  self.assertEqual([(r['id'],r['path'])for r in c['bindings']if r['role']=='FieldObjects'],[(1032,'world/podunk/podunk.encobjects')])
+  self.assertEqual({r['role']for r in c['bindings']if r['role']in catalog.SWING_ROLES},catalog.SWING_ROLES)
   self.assertEqual(sorted(r['id']for r in c['bindings']if r['role']=='FieldNpc'),list(range(320,330)))
   graph=routes.load();self.assertEqual(len(graph['scenes']),3);self.assertEqual(len(graph['routes']),6)
   self.assertEqual(next(s for s in graph['scenes']if s['id']==3)['assets']['steps'],1030)

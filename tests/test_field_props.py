@@ -6,6 +6,13 @@ from tools.run_prop_lifecycle_reference import cases,write_tsv
 ROOT=Path(__file__).resolve().parents[1]
 
 class FieldProps(unittest.TestCase):
+ def test_metadata_only_adapter_readmission_is_bounded(self):
+  before=b'def build_room():\n return 12\nclass Model:\n value=3\n'
+  p.same_adapter_except(before,before.replace(b'return 12',b'return 13'),{'build_room'})
+  with self.assertRaises(ValueError):p.same_adapter_except(before,before.replace(b'value=3',b'value=4'),{'build_room'})
+  with self.assertRaises(ValueError):p.same_adapter_except(before,before+b'unknown=True\n',{'build_room'})
+  for base in (None,True,'main','0'*39,'g'*40):
+   with self.subTest(base=base),self.assertRaises(ValueError):p.readmit(base)
  @classmethod
  def setUpClass(cls):cls.policy=p.read();cls.data,cls.clips,cls.proof=p.source()
  def test_source_instances_and_bytes_match_fixture(self):
@@ -17,7 +24,7 @@ class FieldProps(unittest.TestCase):
   self.assertEqual((r['policy']['width'],r['policy']['height']),(48,48));self.assertEqual(r['policy']['rumble'],[0,.5,.7,.8])
   self.assertEqual({r['clone_item']for r in r['props']},{8});self.assertEqual(self.proof['commit'],p.f.PIN)
  def test_unknown_recipe_fields_versions_paths_and_identities_reject(self):
-  mutations=[lambda v:v.update(schema=True),lambda v:v.update(schema=3),lambda v:v.update(unknown=True),lambda v:v.update(commit='0'*40),lambda v:v.update(scope=False),lambda v:v.update(texture='../bad.t3x'),lambda v:v.update(texture='C:/bad.t3x'),lambda v:v.update(texture='sound/bad.t3x'),lambda v:v.update(map_sha256='x'*64),lambda v:v['instances'][0].update(id=0),lambda v:v['instances'][0].update(id=True),lambda v:v['instances'][1].update(id=1),lambda v:v['instances'][1].update(path=v['instances'][0]['path']),lambda v:v['callbacks'][0].update(method='unknown')]
+  mutations=[lambda v:v.update(schema=True),lambda v:v.update(schema=4),lambda v:v.update(schema=2),lambda v:v.update(unknown=True),lambda v:v.update(commit='0'*40),lambda v:v.update(scope=False),lambda v:v.update(texture='../bad.t3x'),lambda v:v.update(texture='C:/bad.t3x'),lambda v:v.update(texture='sound/bad.t3x'),lambda v:v.update(map_sha256='x'*64),lambda v:v['instances'][0].update(id=0),lambda v:v['instances'][0].update(id=True),lambda v:v['instances'][1].update(id=1),lambda v:v['instances'][1].update(path=v['instances'][0]['path']),lambda v:v['callbacks'][0].update(method='unknown')]
   with tempfile.TemporaryDirectory()as folder:
    path=Path(folder)/'recipe.json'
    for mutate in mutations:
@@ -34,7 +41,7 @@ class FieldProps(unittest.TestCase):
   self.assertEqual(len(cases()),14);self.assertIn('step advance 0.5 0 1 7 ', '\n'.join(lines))
  def test_release_packets_texture_and_receipt_are_checked(self):
   files=p.stage_files();self.assertEqual(set(files),{Path(self.policy['output']),Path(self.policy['texture'])})
-  self.assertEqual(files[Path(self.policy['output'])],p.encode(self.data,self.clips))
+  self.assertEqual(files[Path(self.policy['output'])],p.encode(self.data,self.clips,capability=p.capability(self.policy)))
   with tempfile.TemporaryDirectory(dir=ROOT/'build')as tmp:
    root=Path(tmp)
    for name,data in files.items():target=root/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)

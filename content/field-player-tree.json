@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "kind": "encore.player-tree.reviewed-bindings",
+  "entry_recipe": "content/field-swing-entry.json",
+  "incapacitated_idle": 6,
+  "path_reference": "reports/iggy-tutorial/player-state-paths-1",
+  "pause_reference": "reports/iggy-tutorial/swing-pause-reference-4"
+}

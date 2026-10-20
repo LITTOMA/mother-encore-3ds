@@ -1,0 +1,21 @@
+{
+  "scope": "Completed metadata test ELF and proven byte-identical older owned candidate textures only; current textures, game, source pixels, receipts and saves retained.",
+  "files": [
+    {
+      "path": "build/full-port/swing-presentation-tests",
+      "bytes": 49053128,
+      "sha256": "ccadab596ebc11cb367b9e59c895d52747fe751ac8a90219e81367623b16f000"
+    },
+    {
+      "path": "build/iggy-tutorial/swing-graphics-candidate-1/ninten.t3x",
+      "bytes": 1048597,
+      "sha256": "2e75f362c0ed19cf764ec8bdd9e00aafa01d85d09eb726e930414bd64a113cf3"
+    },
+    {
+      "path": "build/iggy-tutorial/swing-graphics-candidate-1/bat.t3x",
+      "bytes": 1048597,
+      "sha256": "80f59fa4b484c1647373b048ee385b73af59e5ee295980177eb2f8d9ae28cd03"
+    }
+  ],
+  "removed_bytes": 51150322
+}

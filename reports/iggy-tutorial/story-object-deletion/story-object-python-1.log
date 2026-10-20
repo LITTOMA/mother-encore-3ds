@@ -1,0 +1,53 @@
+EEEE.....
+======================================================================
+ERROR: test_object_path_rejected (tests.test_story_object_delete.StoryObjectDeleteTests.test_object_path_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_story_object_delete.py", line 28, in test_object_path_rejected
+    v=self.ir();v['strings'].append(path);self.command(v)['target_index']=len(v['strings'])-1
+      ^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_story_object_delete.py", line 8, in ir
+    v=copy.deepcopy(self.decoded);v.pop('build_input_sha256');v['provenance']={'sources':{'tests/prepare_story_object_delete.py':c.sha256(c.ROOT/'tests/prepare_story_object_delete.py')}};return v
+                                                                                                                                 ^^^^^^^^
+AttributeError: module 'tools.native_content' has no attribute 'sha256'
+
+======================================================================
+ERROR: test_old_unknown_or_unused_capability_rejected (tests.test_story_object_delete.StoryObjectDeleteTests.test_old_unknown_or_unused_capability_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_story_object_delete.py", line 18, in test_old_unknown_or_unused_capability_rejected
+    v=self.ir();v['capabilities']=cap
+      ^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_story_object_delete.py", line 8, in ir
+    v=copy.deepcopy(self.decoded);v.pop('build_input_sha256');v['provenance']={'sources':{'tests/prepare_story_object_delete.py':c.sha256(c.ROOT/'tests/prepare_story_object_delete.py')}};return v
+                                                                                                                                 ^^^^^^^^
+AttributeError: module 'tools.native_content' has no attribute 'sha256'
+
+======================================================================
+ERROR: test_source_ordering_and_codec (tests.test_story_object_delete.StoryObjectDeleteTests.test_source_ordering_and_codec)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_story_object_delete.py", line 15, in test_source_ordering_and_codec
+    self.assertEqual(v['strings'][commands[3]['target_index']],'Objects/Items/Item');self.assertEqual(commands[3]['phrase'],3);c.validate_ir(self.ir())
+                                                                                                                                             ^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_story_object_delete.py", line 8, in ir
+    v=copy.deepcopy(self.decoded);v.pop('build_input_sha256');v['provenance']={'sources':{'tests/prepare_story_object_delete.py':c.sha256(c.ROOT/'tests/prepare_story_object_delete.py')}};return v
+                                                                                                                                 ^^^^^^^^
+AttributeError: module 'tools.native_content' has no attribute 'sha256'
+
+======================================================================
+ERROR: test_unknown_operation_or_operand_rejected (tests.test_story_object_delete.StoryObjectDeleteTests.test_unknown_operation_or_operand_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_story_object_delete.py", line 24, in test_unknown_operation_or_operand_rejected
+    v=self.ir();self.command(v).update(edit)
+      ^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_story_object_delete.py", line 8, in ir
+    v=copy.deepcopy(self.decoded);v.pop('build_input_sha256');v['provenance']={'sources':{'tests/prepare_story_object_delete.py':c.sha256(c.ROOT/'tests/prepare_story_object_delete.py')}};return v
+                                                                                                                                 ^^^^^^^^
+AttributeError: module 'tools.native_content' has no attribute 'sha256'
+
+----------------------------------------------------------------------
+Ran 9 tests in 8.209s
+
+FAILED (errors=4)

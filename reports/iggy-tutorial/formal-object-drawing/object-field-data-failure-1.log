@@ -1,0 +1,56 @@
+Field data check 3095: =================================================================
+==57==ERROR: AddressSanitizer: heap-use-after-free on address 0x606000000020 at pc 0x7f2980ce6a7d bp 0x7ffffddf75a0 sp 0x7ffffddf6d48
+READ of size 2 at 0x606000000020 thread T0
+    #0 0x7f2980ce6a7c in __interceptor_strlen ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:354
+    #1 0x7f2980bc3bfd in std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (/lib/x86_64-linux-gnu/libstdc++.so.6+0x133bfd)
+    #2 0x4069ad in (anonymous namespace)::check(bool, char const*) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/scene-regression-field_data+0x4069ad)
+    #3 0x414c50 in main (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/scene-regression-field_data+0x414c50)
+    #4 0x7f297fdd4082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #5 0x40683d in _start (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/scene-regression-field_data+0x40683d)
+
+0x606000000020 is located 0 bytes inside of 61-byte region [0x606000000020,0x60600000005d)
+freed by thread T0 here:
+    #0 0x7f2980d8f51f in operator delete(void*) ../../../../src/libsanitizer/asan/asan_new_delete.cc:165
+    #1 0x92da8b in encore::read_file(char const*, std::vector<unsigned char, std::allocator<unsigned char> >&, unsigned long, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/scene-regression-field_data+0x92da8b)
+    #2 0xb80f60 in encore::upstream::MickData::load_file(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/scene-regression-field_data+0xb80f60)
+    #3 0x414c43 in main (/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/scene-regression-field_data+0x414c43)
+    #4 0x7f297fdd4082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+
+previously allocated by thread T0 here:
+    #0 0x7f2980d8e587 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cc:104
+    #1 0x7f2980bd338d in std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (/lib/x86_64-linux-gnu/libstdc++.so.6+0x14338d)
+
+SUMMARY: AddressSanitizer: heap-use-after-free ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:354 in __interceptor_strlen
+Shadow bytes around the buggy address:
+  0x0c0c7fff7fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c0c7fff7fc0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c0c7fff7fd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c0c7fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c0c7fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c0c7fff8000: fa fa fa fa[fd]fd fd fd fd fd fd fd fa fa fa fa
+  0x0c0c7fff8010: fd fd fd fd fd fd fd fd fa fa fa fa fd fd fd fd
+  0x0c0c7fff8020: fd fd fd fd fa fa fa fa fd fd fd fd fd fd fd fd
+  0x0c0c7fff8030: fa fa fa fa fd fd fd fd fd fd fd fd fa fa fa fa
+  0x0c0c7fff8040: fd fd fd fd fd fd fd fd fa fa fa fa fd fd fd fd
+  0x0c0c7fff8050: fd fd fd fd fa fa fa fa fd fd fd fd fd fd fd fd
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==57==ABORTING

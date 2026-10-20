@@ -1,0 +1,22 @@
+{
+  "seconds": 159.70300000003772,
+  "changes": {
+    "sources": {
+      "Audio/Sound effects/Barrel Coffin Explode.mp3": {
+        "old": null,
+        "new": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db"
+      },
+      "Audio/Sound effects/Barrel Coffin Explode.mp3.import": {
+        "old": null,
+        "new": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d"
+      }
+    },
+    "outputs": {
+      "content/native-audio.json": {
+        "old": "0b9cf2197bb1b111fd9d6cab1e9540d85d1d56a813973baac0f5530687e31f8b",
+        "new": "e9cd55bc095416b0faa579ebc7828835e0015282ed8880aafcf82a780f838ae8"
+      }
+    }
+  },
+  "audio_rows": 60
+}

@@ -1,0 +1,1 @@
+Prop investigation scene 46: scene.try_interaction(true,error)&&scene.world.story_program_index()!=8&&scene.world.story_program_index()!=9 ()

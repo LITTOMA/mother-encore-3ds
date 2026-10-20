@@ -1,0 +1,87 @@
+[
+  {
+    "step": "props",
+    "args": [
+      "tools/field_props.py",
+      "assets",
+      "--tex3ds",
+      "build/tooling/pinned-tex3ds/tex3ds",
+      "--tex3ds-command",
+      "py -3.11 build/tooling/run_tex3ds_wsl.py"
+    ],
+    "returncode": 0,
+    "seconds": 3.0619999999762513
+  },
+  {
+    "step": "objects",
+    "args": [
+      "tools/field_objects_assets.py",
+      "assets",
+      "--tex3ds",
+      "build/tooling/pinned-tex3ds/tex3ds",
+      "--tex3ds-command",
+      "py -3.11 build/tooling/run_tex3ds_wsl.py"
+    ],
+    "returncode": 0,
+    "seconds": 2.4380000000237487
+  },
+  {
+    "step": "player",
+    "args": [
+      "tools/field_player_assets.py",
+      "assets",
+      "--from-atlases",
+      "build/iggy-tutorial/swing-graphics-candidate-2"
+    ],
+    "returncode": 0,
+    "seconds": 2.6719999999622814
+  },
+  {
+    "step": "field",
+    "args": [
+      "tools/podunk_field.py",
+      "compile",
+      "--tex3ds",
+      "build/tooling/pinned-tex3ds/tex3ds",
+      "--tex3ds-command",
+      "py -3.11 build/tooling/run_tex3ds_wsl.py"
+    ],
+    "returncode": 0,
+    "seconds": 14.60899999999674
+  },
+  {
+    "step": "story",
+    "args": [
+      "tools/field_story.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 20.51600000000326
+  },
+  {
+    "step": "audio",
+    "args": [
+      "tools/append_audio_assets.py",
+      "--scope",
+      "prop-nodes",
+      "--stage",
+      "--out",
+      "build/full-port/root-investigation-audio-current-1",
+      "--ffmpeg",
+      "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+      "--ffprobe",
+      "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffprobe.exe"
+    ],
+    "returncode": 0,
+    "seconds": 41.15600000001723
+  },
+  {
+    "step": "session",
+    "args": [
+      "tools/native_session.py",
+      "extract"
+    ],
+    "returncode": 0,
+    "seconds": 8.03100000001723
+  }
+]

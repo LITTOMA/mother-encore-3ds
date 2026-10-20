@@ -1,0 +1,9 @@
+config_version=4
+[application]
+config/name="Source-owned object ready and AnimatedSprite probe"
+[autoload]
+global="*res://global.gd"
+[logging]
+file_logging/enable_logging=false
+[physics]
+common/physics_fps=60

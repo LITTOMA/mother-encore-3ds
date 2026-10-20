@@ -1,0 +1,14 @@
+{
+  "scope": "Windows configuration/collection only; native executables not built on Windows so CTest JSON omits their command. Verify exact generated CTest arguments instead.",
+  "fixture": "legacy_field_map_fixture",
+  "checked": [
+    "cemetery_roots",
+    "field_interaction",
+    "field_interaction_policy",
+    "field_npc_motion",
+    "field_prop_renderer",
+    "field_route_warp",
+    "field_static_actors",
+    "field_story"
+  ]
+}

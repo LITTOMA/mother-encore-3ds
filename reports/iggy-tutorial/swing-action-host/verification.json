@@ -1,0 +1,34 @@
+{
+  "scope": "Actual GCC9 ASan/UBSan whole current core linked into new source action test. No game-loop/render/physics/audio-audibility/hardware claim.",
+  "sources": {
+    "runtime/field_swing_action.cpp": "05897d688c685905116aa6de2d2803bfce2199c68d2480a86bf03d92cc4e760d",
+    "include/encore/field_swing_action.hpp": "5243bcf77ba2e2e38cfb4f40615a9db61becfa690644dc3dcbfe4df3fad8a4bc",
+    "tests/field_swing_action_tests.cpp": "73097edee9abd513290c9e45acf28b8df4c80b752dceb533d788f68c2762cbc5",
+    "tests/fixtures/field-swing-action-v0410.encaction": "08ddca4f3d1667f31f4a181803f9e53a16853fc59286fd3df96b5a98c46d9968",
+    "tests/fixtures/field-swing-v0410.encswing": "04dd99e2e3cab351a3b3b45334b715729b98a241a0f5c4390f42358fea47d97d",
+    "content/field-swing-action.json": "fd619c7f7a3c07dcbb7130339024826c99f12800cb36d354ddd4c50ad2e3747b",
+    "tools/field_swing_action.py": "dc12205dddc324070da65002e77c9b147fe729216bc9e203e78ca7d4a6e5cb2e",
+    "tools/run_swing_action_reference.py": "75ad7ec21b6441c6068590b8c3881ec3ab3fc4becbdf899535e45816a7b8098f",
+    "tests/fixtures/swing-action-cases.json": "00400fb47f3560049a82134de33174edd328fcdf7d20f10526ecbd20fa8181df",
+    "CMakeLists.txt": "17badfe1b8dfa5c9c0f0e389a10e2e1a30ac0e7efd4df1a552da995b26837625",
+    "platform/ctr/Makefile": "7d77ff114524ec5981ed89def21b7aadd0088d9b58791c5ace272eb87769bcf0"
+  },
+  "compiler": "g++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0",
+  "flags": "-std=c++17 -O0 -fsanitize=address,undefined -fno-omit-frame-pointer -fno-pie -no-pie -fno-exceptions -fno-rtti; test TU -Wall -Wextra -Werror",
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+  },
+  "core_fingerprints": "All current runtime sources and headers exactly match the actual compiled cache.",
+  "native_idempotence": {
+    "runs": [
+      5,
+      6
+    ],
+    "observations_each": 683,
+    "bytes": 82786,
+    "sha256": "0702dd8bb5865269a58cd360e0b0900328938121791f932a433109a2db6b782c"
+  },
+  "result": "Swing action: 3125 checks; 683 original logical-input/AnimationTree observations in 25 cases; typed data/parser rollback and deferred control; no live game/physics/audio audibility claim\n",
+  "fixture_notes": "Initial harness ext-resource tuple mismatch and SceneTree autoload parse failure were fixed before accepted actual runs. Original method bodies and old source expectations unchanged. Async native audio-playing flags are outside stable projection; source stream binding/start count still recorded."
+}

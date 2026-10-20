@@ -1,0 +1,30 @@
+{
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "scope": "Original sparkles.gd unchanged; original DroppedItem._ready verbatim with isolated Flag/Player/sprite assignment stubs. Actual engine ready ordering, clamp, hidden clock, idle show and deferred deletion only; not full scene, collection, texture assignment or gameplay.",
+  "sources": {
+    "Scripts\\Main\\DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts\\misc\\sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
+  },
+  "ready_function_sha256": "8097e9aab74eb16d68fdbfce0fbcd5548a0221c91872629b759fc6dbc95ab6e9",
+  "files_sha256": {
+    "global.gd": "7415aa521785e8fabfcfbd5dbb122c8dd71b4194d917abcc8dbf098f4dac01e7",
+    "godot.log": "775ddbb01e9860679e5bed51fc4f12503f2050b917e8fab5490df51e128f16a7",
+    "life.gd": "847edb6aa1b7c78fcffd8f30b63474d478c6c5981c868e7a1bcf50660c760097",
+    "probe.gd": "5fce47f4c4357e03941422491bf55c7805f6e1772883ad41a7e0696fee674edb",
+    "project.godot": "a239f92ad4bb1565383b65a6e9fddbc1ad6a0eec384846a84ff8e1aa8c48558c",
+    "reference.tsv": "2952e369d52bd1a2e1e6b96eeb1599f2783d527a4bf46e690e12776f464b1845",
+    "result.json": "a605877f73c463af7ee8749b418fd457fa75dcdd667894fc9614bc9cb086395d",
+    "sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
+  }
+}

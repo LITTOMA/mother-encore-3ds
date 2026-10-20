@@ -1,0 +1,62 @@
+{
+  "scope": "Historical complete runs only; not current player tree validation",
+  "pr70": {
+    "commit": "d81bfb399300ab1f6a7a6c7eddda706e792f4309",
+    "run": 39251936650,
+    "gcc_normal": 224,
+    "gcc_sanitizer": 209,
+    "clang_normal": 209,
+    "clang_sanitizer": 209,
+    "console": "genuine 3DSX/CIA success"
+  },
+  "pr69": {
+    "commit": "4d4bcc36ff005230417ab2c702072ec103d75d9d",
+    "run": 39252074017,
+    "gcc_normal": 234,
+    "gcc_sanitizer": 219,
+    "clang_normal": 219,
+    "clang_sanitizer": 219,
+    "console": "genuine 3DSX/CIA success"
+  },
+  "merge70": {
+    "mergeCommit": {
+      "oid": "7163a654aaa790a9a19e05be7ad664182048b5ee"
+    },
+    "mergedAt": "2026-10-19T13:45:02Z",
+    "state": "MERGED"
+  },
+  "files": {
+    "iggy4d-clang-full.log": {
+      "bytes": 533109,
+      "sha256": "90f0ce7ab1c7f04140fd21f025ac4cd7b2c7854c06bb2fcd69b3c666afd1b475"
+    },
+    "iggy4d-gcc-full.log": {
+      "bytes": 742364,
+      "sha256": "68f97ce16d00097ea0df8ae125d846b6c054b7fe7717c618486ee6f22b951cc7"
+    },
+    "iggy4d-run-complete.json": {
+      "bytes": 7701,
+      "sha256": "b8bcd9ec94df56d0652b0cd012c7d2e7df034dc0a28a816166ecded693dac14c"
+    },
+    "python-timeout-clang-full.log": {
+      "bytes": 516018,
+      "sha256": "edcb51f9de6756f1ab7c11176be3b8d72f9cddcb416f350a8ecf13adc4d14f24"
+    },
+    "python-timeout-console-full.log": {
+      "bytes": 667312,
+      "sha256": "2057d8d00eeef6b456fe9072fae277e791516e9d396e3449fd61527314a2bafe"
+    },
+    "python-timeout-gcc-full.log": {
+      "bytes": 715569,
+      "sha256": "c0a505cc438cc803ad028a1f848e178e6188a3ce85494f381161252135065d29"
+    },
+    "python-timeout-merge-complete.json": {
+      "bytes": 118,
+      "sha256": "cca64d6357d587e4257f7adc26c241871d999f14918a8ff19fdae267c21e4d6e"
+    },
+    "python-timeout-run-complete.json": {
+      "bytes": 7701,
+      "sha256": "4d5336a2c0e79af63b617730074dd3988926bee5b7f1e1f13c32bffe2c5acc06"
+    }
+  }
+}

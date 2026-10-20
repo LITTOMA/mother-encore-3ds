@@ -1,0 +1,242 @@
+{
+  "schema": 1,
+  "kind": "encore.graveyard-tutorial.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": 2,
+  "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+  "npc": "Objects/NPCS/npc18",
+  "boundary": "Cutscenes/Cutscene Area5",
+  "documents": {
+    "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "iggy": "Objects/NPCS/npc18"
+        },
+        "talker": "iggy",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_0",
+        "goto": "1"
+      },
+      "1": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_1",
+        "changecam": "iggy",
+        "returncam": 1,
+        "goto": "2"
+      },
+      "2": {
+        "showbox": false,
+        "actorsmove": {
+          "ninten": {
+            "movement": [
+              {
+                "x": 1336,
+                "y": 4744
+              },
+              {
+                "x": 1376,
+                "y": 4744
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "position"
+          }
+        },
+        "wait": 3.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "3"
+      },
+      "3": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_3",
+        "actorsdir": {
+          "iggy": {
+            "x": -1,
+            "y": 0
+          }
+        },
+        "movecam": {
+          "x": 1404,
+          "y": 4744
+        },
+        "goto": "7"
+      },
+      "7": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_7",
+        "actorsturn": {
+          "iggy": {
+            "x": 1,
+            "y": 0,
+            "speed": 0.1
+          }
+        },
+        "goto": "8"
+      },
+      "8": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_8",
+        "wait": 1,
+        "goto": "9"
+      },
+      "9": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_9",
+        "actorsturn": {
+          "iggy": {
+            "x": -1,
+            "y": 0,
+            "speed": 0.1
+          }
+        },
+        "goto": "12"
+      },
+      "12": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_12",
+        "actorsdir": {
+          "iggy": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "movecam": {
+          "x": 1432,
+          "y": 4712
+        },
+        "changecam": null,
+        "goto": "14"
+      },
+      "14": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_14",
+        "actorsdir": {
+          "iggy": {
+            "x": -1,
+            "y": 0
+          }
+        },
+        "movecam": {
+          "x": 1404,
+          "y": 4744
+        },
+        "goto": "16"
+      },
+      "16": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_16",
+        "options": {
+          "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_16-OPT_0": "18",
+          "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_16-OPT_1": "17",
+          "cancel": "17"
+        }
+      },
+      "17": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_17",
+        "goto": "16"
+      },
+      "18": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_18",
+        "goto": "22"
+      },
+      "22": {
+        "talker": null,
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_22",
+        "item": "BatOld",
+        "soundeffect": "Item Received.mp3",
+        "goto": "23"
+      },
+      "23": {
+        "talker": "iggy",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_23",
+        "goto": "24"
+      },
+      "24": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_SPEAKER_Iggy",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_24",
+        "goto": "29"
+      },
+      "29": {
+        "showbox": false,
+        "actorsmove": {
+          "ninten": {
+            "movement": [
+              {
+                "x": 1432,
+                "y": 4744
+              },
+              {
+                "x": 1432,
+                "y": 4719
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "position"
+          },
+          "iggy": {
+            "movement": [
+              {
+                "x": 1456,
+                "y": 4744
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "position"
+          }
+        },
+        "actorsturn": {
+          "iggy": {
+            "x": 0,
+            "y": -1,
+            "speed": 0.1,
+            "queue": true
+          }
+        },
+        "changecam": "ninten",
+        "returncam": 1,
+        "setflags": "bat",
+        "wait": 3,
+        "autoadvance": true,
+        "caninput": false
+      }
+    }
+  },
+  "item_grants": [
+    {
+      "label": "22",
+      "item": "BatOld",
+      "doses": 1,
+      "completion_label": "29",
+      "completion_flag": "bat"
+    }
+  ],
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml": "58f8f43036dbd833c92beb6e588881efeda5bce71c842907ad58612a781720ea",
+    "Data/Items/BatOld.yaml": "a342301d21e930ca575d0b6f89bc47fe6a52fcdc94fa498782006dd74149c1e6",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501"
+  },
+  "scope": "Source review for the real Iggy swing tutorial. Initial implementation covers typed KEY grant at22 before completion flag at29; it does not execute the rest of this document or claim the tutorial/playable swing is complete."
+}

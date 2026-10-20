@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 139, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 105, in main
+    files.update(player_files(source))
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_player_assets.py", line 56, in stage_files
+    receipt=json.loads((ROOT/p['receipt']).read_text(encoding='utf8'),object_pairs_hook=audio.unique);require(receipt==expected,'Player resource receipt/source differs')
+                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Player resource receipt/source differs

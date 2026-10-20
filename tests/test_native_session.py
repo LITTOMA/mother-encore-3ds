@@ -4,15 +4,32 @@ import struct
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 from tools import native_session as native
 
 class NativeSessionTests(unittest.TestCase):
     @classmethod
-    def setUpClass(cls):cls.recipe=native.read(native.IR)
+    def setUpClass(cls):
+        cls.recipe=native.read(native.IR)
+        cls.checked_source=native.extract()
+        if cls.checked_source!=cls.recipe:
+            raise AssertionError('Shipping Session differs from actual source extraction')
+    def reject_recipe(self, candidate):
+        # These cases mutate the candidate Session, not its source dependencies.
+        # Reuse a detached copy of this class's real extraction. Positive
+        # verify/stage and the corrupt-source propagation test remain unmocked.
+        with patch.object(native,'extract',return_value=copy.deepcopy(self.checked_source))as extract:
+            with self.assertRaises(ValueError):native.verify_recipe(candidate)
+            extract.assert_called_once_with()
     def test_complete_field_programmes_admit_only_source_written_flags(self):
         import json
         previous=json.loads((native.ROOT/'tests/fixtures/pre-cemetery-save-session.json').read_bytes())
-        current=native.extract();self.assertEqual(set(current['mutable_flags'])-set(previous['mutable_flags']),{'cem_roots_grown'})
+        current=native.extract();self.assertEqual(set(current['mutable_flags'])-set(previous['mutable_flags']),{'cem_roots_grown','bat','got_shovel','returned_shovel'})
+        grant=next(row for row in current['key_acquisitions']if row['item_id']=='BatOld')
+        self.assertEqual(grant,dict(item_id='BatOld',doses=1,flag_id='bat',consumed_flag_id='',flag_policy=1))
+        for flag in ('got_shovel','returned_shovel'):
+            bad=copy.deepcopy(current);bad['mutable_flags'].remove(flag)
+            with self.subTest(flag=flag):self.reject_recipe(bad)
         self.assertTrue(set(previous['mutable_flags'])<=set(current['mutable_flags']))
         self.assertEqual(current['defaults'],previous['defaults']);self.assertEqual(current['schema'],previous['schema'])
         self.assertIn('romfs/world/podunk/podunk.encroom',current['dependencies'])
@@ -76,7 +93,7 @@ class NativeSessionTests(unittest.TestCase):
         self.assertEqual(new[len(old):],struct.pack('<II',2,4)+b'wood'+struct.pack('<I',5)+b'stone')
         for sounds in ([],['wood'],['stone','stone'],['wood','unknown'],['wood',True],['wood','Stone'],['wood','bad/path'],['stone','other']):
             bad=copy.deepcopy(r);bad['run_sounds']=sounds
-            with self.subTest(sounds=sounds),self.assertRaises(ValueError):native.verify_recipe(bad)
+            with self.subTest(sounds=sounds):self.reject_recipe(bad)
         for sounds in ([],['wood'],['stone','stone'],['wood',True],['wood','Stone'],['wood','bad/path'],['stone','other']):
             bad=copy.deepcopy(r);bad['run_sounds']=sounds
             with self.subTest(sounds=sounds),self.assertRaises(ValueError):native.encode(bad)
@@ -121,7 +138,7 @@ class NativeSessionTests(unittest.TestCase):
         self.assertEqual(old[24:],current[24:len(old)])
         for field,value in [('item_id','unknown'),('doses',0),('max_count',2),('flag_id','unknown')]:
             bad=copy.deepcopy(r);bad['acquisitions'][0][field]=value
-            with self.assertRaises(ValueError):native.verify_recipe(bad)
+            self.reject_recipe(bad)
     def test_field_scope_is_source_derived_and_defaults_stay_frozen(self):
         r=self.recipe
         self.assertEqual(r['field_encounters'],['straydog'])
@@ -130,7 +147,7 @@ class NativeSessionTests(unittest.TestCase):
         for flag in ('beat_dog_bridge','pippis_mom_call'):self.assertIn(flag,r['mutable_flags'])
         for mutate in (lambda x:x['field_encounters'].append('unknown'),lambda x:x['acquisitions'][-1].update(max_count=2),lambda x:x['mutable_flags'].remove('beat_dog_bridge')):
             bad=copy.deepcopy(r);mutate(bad)
-            with self.assertRaises(ValueError):native.verify_recipe(bad)
+            self.reject_recipe(bad)
     def test_storage_conservation_policy_is_source_derived(self):
         from tools.storage_assets import load, IR
         storage=load(native.ROOT);r=self.recipe
@@ -143,7 +160,7 @@ class NativeSessionTests(unittest.TestCase):
         self.assertFalse(by_id['AsthmaSpray']['required'])
         for edit in [lambda r:r.update(storage_capacity=99),lambda r:r['storage_policies'].pop(),lambda r:r['storage_policies'][0].update(required=False),lambda r:r['storage_policies'][0]['boosts'].__setitem__(3,6),lambda r:r['storage_policies'][1].update(total_count=2)]:
             bad=copy.deepcopy(r);edit(bad)
-            with self.assertRaises(ValueError):native.verify_recipe(bad)
+            self.reject_recipe(bad)
     def test_map_object_policy_is_derived_from_present(self):
         from tools.house_presents import load
         ir=load(native.ROOT);obj=next(o for o in ir['objects'] if o['source_path']=='Objects/Present3')
@@ -154,12 +171,12 @@ class NativeSessionTests(unittest.TestCase):
         self.assertFalse(self.recipe['defaults']['object_flags'])
         for field,value in [('flag_policy',3),('flag_id','wrong/Present3'),('consumed_flag_id','gave_treats')]:
             bad=copy.deepcopy(self.recipe);next(k for k in bad['key_acquisitions'] if k['item_id']=='MapPodunk')[field]=value
-            with self.assertRaises(ValueError):native.verify_recipe(bad)
+            self.reject_recipe(bad)
 
     def test_recipe_drift_fails_closed(self):
         for edit in [lambda r:r.update(unknown=1),lambda r:r['defaults']['settings'].update(text_speed=.1),lambda r:r['levels'][1]['stats'].__setitem__(3,17),lambda r:r['defaults']['characters'][0]['affinity_multipliers'].clear(),lambda r:r.update(saved_flag='unknown'),lambda r:r['sources'].clear(),lambda r:r['camera_area_ids'].append(2),lambda r:r['startup']['characters'].pop(),lambda r:r['startup']['characters'][1].update(hp=43),lambda r:r['startup']['characters'][2]['inventory'].reverse(),lambda r:r['startup_derivation'][2]['equipment_boosts'].update(defense=3)]:
             bad=copy.deepcopy(self.recipe);edit(bad)
-            with self.assertRaises(ValueError):native.verify_recipe(bad)
+            self.reject_recipe(bad)
     def test_stale_or_escaping_stage_rejected(self):
         with tempfile.TemporaryDirectory()as name:
             root=Path(name);(root/'session').mkdir();target=root/'session/opening.encsession';target.write_bytes(b'stale')

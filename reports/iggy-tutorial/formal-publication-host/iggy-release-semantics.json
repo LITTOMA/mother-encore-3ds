@@ -1,0 +1,21 @@
+{
+  "base": "7d2e552f86c9ef0c995c85c301e3a2f26a78f32a",
+  "room": "All old table rows and strings preserved as prefixes; rules7 unchanged, cap12->13 only for actual GrantKeyItem48",
+  "story": "Old six programmes,28 locale rows,encounters,overrides,NPC interactions semantically unchanged; append programme6 and28locale rows",
+  "session": "Resource v11/save schema and defaults unchanged; only bat added to mutable flags and BatOld completion policy appended",
+  "unchanged": "Actual map, props, naming and restore bytes equal baseline",
+  "outputs": {
+    "romfs\\world\\podunk\\podunk.encroom": {
+      "bytes": 31056,
+      "sha256": "0d3f812e47214fbefe75818f25a96eb18fd48a150f3d6bff451c8f951c5a5ab2"
+    },
+    "romfs\\world\\podunk\\story.encstory": {
+      "bytes": 8369,
+      "sha256": "2465ffce695383ca3c0339162028c1a2899325b3cebc081da83229f6c9ad8c63"
+    },
+    "romfs\\session\\opening.encsession": {
+      "bytes": 10228,
+      "sha256": "3677deaec7706697e022eece1fa458694a4a46e6c8bebc69fff352b4b1bf125a"
+    }
+  }
+}

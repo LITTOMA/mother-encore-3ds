@@ -1,0 +1,31 @@
+{
+  "scope": "Catalog schema admission only; cap12 fixture uses synthetic fingerprints and is not shipping data. Shipping catalog remains byte-identical; no live Player/game/emulator/hardware claim.",
+  "sources": {
+    "include/encore/resource_catalog.hpp": "a87e5910c3b36e32c21a9a592c21f3944f93d06e7f9d07387386b9aaaaab2a34",
+    "runtime/resource_catalog.cpp": "9a135d7aa32d5b05b2879297938c316a6bf0eda5a4e81b28dcdb7589dd0e7891",
+    "tools/resource_catalog.py": "a07db6461fabbc79bac4c3297b6831aca390d3caa2c94b79be6c1987fa4e4e38",
+    "tests/test_swing_resource_catalog.py": "415f5dd22814657ba1c6f52cef636e711decc3ec1bc0a02a213d9a06aafe00b9",
+    "tests/swing_catalog_tests.cpp": "6990206a08654872fec69a97d68296eac80644ffb9ccfe743fbe635bdf268ec0",
+    "tests/fixtures/catalog-cap12-swing.encresources": "810cab6861fabff04696b23cbd3e35d102a2b004896b1e5b142c51284b4a02d3",
+    "CMakeLists.txt": "2ed5703ffa36d6a6c0b489e88b1c1c154f52aa5b7f233f760cd55277141413d6"
+  },
+  "shipping_catalog_sha256": "4c6d0c42918fc93ddc29816999b57cd541b3169d56dc96bcb17e655b0001fc7b",
+  "compiler": "GCC9.4 WSL Ubuntu20.04",
+  "flags": "-std=c++17 -O0 -fsanitize=address,undefined -fno-omit-frame-pointer -fno-pie -no-pie -fno-exceptions -fno-rtti; test TU -Wall -Wextra -Werror",
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+  },
+  "core": "All current runtime/header fingerprints match actual compiled cache.",
+  "result": "Swing catalog: 6650 checks; capability12 singleton group, legacy capability11, all truncations and rejected partial/unknown/identity/type paths; fixture only\n",
+  "legacy_result": "ResourceCatalog: 7016 checks; fail-closed bindings, file fingerprints, rollback and original BattleRound A/B relocation\n",
+  "logs": {
+    "core.json": "24ea9d1eb5d1314e3fb3e4cbe32595c0a80f8747644e1ec63733f25ccad77945",
+    "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result.log": "8a06448f77e4d57b337d3d4784565c24da2f774fbb66ba7d0700f81027f6cf16",
+    "legacy-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "legacy-result.log": "ded45bc095eda74289d6a81953c9ea4a1282878e10f577e8e3d35e505528036f",
+    "python.log": "83eb30c3022065957d1f66b3b1bd55e94f560184d37ace46a7149535cc5bfe50",
+    "partition.json": "166f1a1359672182b0e395671065014815dbfbdf65ae6ced97f07a19f2b05dbc"
+  }
+}

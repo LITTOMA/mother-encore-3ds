@@ -4,6 +4,8 @@
 #include "encore/field_story.hpp"
 #include "encore/field_steps.hpp"
 #include "encore/field_props.hpp"
+#include "encore/field_objects.hpp"
+#include "encore/field_area_contacts.hpp"
 #include "encore/introduction.hpp"
 #include "encore/mick_treats.hpp"
 #include "encore/world.hpp"
@@ -84,7 +86,7 @@ public:
 
 // AreaRoom field: TileMap world, routed and unported doors, explicit development
 // boundaries and unlocked openable doors. Rendering and scene swaps are platform owned.
-class FieldScene : private StoryPropHost {
+class FieldScene : private StoryPropHost,private FieldPropHost {
 public:
     FieldScene()=default;
     FieldScene(const FieldScene&)=delete;
@@ -103,6 +105,9 @@ public:
     bool bind_npc(MickView,MickHost&,std::string& error);
     bool bind_steps(FieldStepsView,const AudioBank&,std::string_view inherited_sound,std::string&);
     bool bind_props(const FieldPropsData&,std::string&);
+    bool bind_prop_contacts(const FieldPropsData&,const FieldSwingData&,FieldPropContactEffects&,std::string&);
+    bool bind_objects(const FieldObjectsData&,std::string&);
+    const FieldObjects&objects()const{return objects_;}
     const FieldProps&props()const{return props_;}
     std::vector<FieldPropEvent>take_prop_events(){return props_.take_events();}
     bool grow_prop(uint32_t stable_id,std::string&);
@@ -122,6 +127,8 @@ public:
     bool before_physics(WalkInput& input);
     bool after_physics();
     bool idle_frame(double delta,bool back,bool accept=false,int choice=0);
+    // Source uiManager.battle_to_ov -> CutsceneArea._stop_process.
+    void battle_to_overworld();
     // The dialogue box close finishes the pause. Complete alone keeps MickTalk.
     bool finish_talk();
     bool talk_accept_latched()const{return mick_ignore_accept_;}
@@ -143,7 +150,7 @@ public:
     // Rejected destination: stay paused at an explicit stop; B returns to the last safe point.
     void abort_transition(std::string message){route_=WorldLinksData::kNotFound;phase_=FieldPhase::Unsupported;error_=std::move(message);}
     bool layer_active(uint32_t i)const{return i<layer_active_.size()&&layer_active_[i];}
-    bool item_active(uint32_t i)const{return i<item_active_.size()&&item_active_[i];}
+    bool item_active(uint32_t i)const;
     bool sprite_visible(uint32_t i)const;
     bool openable_open(uint32_t i)const{return i<openables_.size()&&openables_[i].open;}
     Vec2 camera_origin(Vec2 player,Vec2 viewport)const;
@@ -154,6 +161,17 @@ public:
     FieldMapView map()const{return map_;}
     uint32_t scene_id()const{return map_.scene_id();}
 private:
+    bool bind_props_owner(const FieldPropsData&,std::string&);
+    bool try_prop_interaction(bool,bool&,std::string&);
+    bool can_call(uint32_t,std::string&)override;
+    bool call(uint32_t,uint32_t,std::string&)override;
+    uint32_t prop_programme(uint32_t)const;
+    bool prop_callback_area(uint32_t)const;
+    bool prop_contact_enabled(std::array<uint8_t,128>&,std::string&)const;
+    bool begin_prop_contacts(std::string&);
+    bool sample_prop_contacts(std::string&);
+    bool commit_prop_hits(const std::vector<uint32_t>&,std::string&);
+    bool process_prop_areas(std::string&);
     bool validate_grow(uint32_t,std::string&)const override;
     bool grow(uint32_t id,std::string&error)override{return grow_prop(id,error);}
     struct Openable {bool inside=false,open=false;double timer=-1;};
@@ -164,12 +182,16 @@ private:
     void apply_mick_body();
     void apply_npc_bodies();
     bool apply_prop_bodies(std::string&);
+    bool apply_object_state(std::string&);
     std::vector<bool>prop_flags()const;
     bool fail(std::string message){phase_=FieldPhase::Error;error_=std::move(message);return false;}
     FieldRunLoop run_audio_;std::vector<uint8_t>step_inside_;
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
     FieldProps props_;
+    FieldAreaContacts prop_contacts_;const FieldSwingData*prop_action_=nullptr;FieldPropContactEffects*prop_effects_=nullptr;
+    std::vector<uint8_t>prop_area_pending_;
+    FieldObjects objects_;bool objects_first_idle_=false;
     std::vector<uint32_t>prop_sprites_;
     std::vector<bool>collision_layers_,collision_bodies_;bool collision_ready_=false;
     StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;

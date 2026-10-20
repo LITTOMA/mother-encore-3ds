@@ -1,0 +1,10 @@
+field-room 0
+ALL3 Room decoded game tables/strings exact; only build input identity may change
+session changed keys: ['dependencies']
+session-extract 0
+session-compile 0
+restore changed keys: ['fingerprints', 'dependencies']
+restore-extract 0
+restore-compile 0
+new-game 0
+Original source extractors rebound only validated dependency identities; defaults/game data unchanged

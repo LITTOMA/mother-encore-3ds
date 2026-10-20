@@ -1,0 +1,10 @@
+from pathlib import Path
+import hashlib,json,subprocess,os
+r=Path('/mnt/d/GameDev/3DS/mother-encore-3ds');cache=r/'build/podunk-routes/host';state=json.loads((cache/'source.json').read_text())['source_sha256'];sources=sorted((r/'runtime').glob('*.cpp'));headers=sorted((r/'include/encore').glob('*.hpp'))
+for p in sources+headers:assert state[str(p.relative_to(r))]==hashlib.sha256(p.read_bytes()).hexdigest(),p
+out=r/'build/full-port/prop-node-audio-native-1';assert not out.exists();out.mkdir();exe=out/'field-prop-audio'
+flags=['g++','-std=c++17','-Wall','-Wextra','-Werror','-Wno-misleading-indentation','-O0','-fsanitize=address,undefined','-fno-omit-frame-pointer','-fno-pie','-no-pie','-fno-exceptions','-fno-rtti','-Itests/fixtures/audio_ndsp','-Iplatform/ctr','-Iinclude']
+with(out/'compile.log').open('wb')as log:subprocess.run(flags+['tests/field_prop_audio_tests.cpp','platform/ctr/audio_player.cpp']+[str(cache/(p.stem+'.o'))for p in sources]+['-o',str(exe)],cwd=r,stdout=log,stderr=subprocess.STDOUT,check=True)
+args=['build/full-port/prop-audio-append-candidate-1/opening.encaudio','romfs','build/full-port/prop-contact-data-fixture-1/source.encprops','build/full-port/prop-audio-append-candidate-1',str(out/'owned-pcm')]
+with(out/'result.log').open('wb')as log:p=subprocess.run([str(exe),*args],cwd=r,stdout=log,stderr=subprocess.STDOUT,env=dict(os.environ,ASAN_OPTIONS='detect_leaks=1',UBSAN_OPTIONS='halt_on_error=1:print_stacktrace=1'))
+(out/'proof.json').write_text(json.dumps(dict(returncode=p.returncode,args=args,exe_sha256=hashlib.sha256(exe.read_bytes()).hexdigest(),exe_bytes=exe.stat().st_size,source_sha256=state,platform_source_sha256={n:hashlib.sha256((r/n).read_bytes()).hexdigest()for n in ['platform/ctr/audio_player.hpp','platform/ctr/audio_player.cpp','platform/ctr/field_prop_audio.hpp','tests/field_prop_audio_tests.cpp']}),indent=2)+'\n');print('Actual source node audio, NDSP double, GCC9.4 ASan/UBSan result',p.returncode,flush=True);raise SystemExit(p.returncode)

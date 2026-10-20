@@ -1,0 +1,41 @@
+{
+  "scope": "Completed owned host test ELFs only; successful source/test logs retained; actual accepted f029 game, Record save, tool, core cache and protected preexisting dirs kept",
+  "files": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-object-delete-tests",
+      "bytes": 52134200,
+      "sha256": "5826871d173922945ff5195d26ae34297c9e2e764c01c6a2a96d28c5cbc1c9b0"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-objects-data-tests",
+      "bytes": 52033208,
+      "sha256": "a2187586379b74305aebfdb411eafd74bb60f015d503e7d0df1c99c0f549f5de"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\field-objects-lifecycle-tests",
+      "bytes": 51925664,
+      "sha256": "dd9d5d228bb74c7f5c8e1f7c7b3ed954e80ca0797b872f999ac1077dc3273758"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-key-grant-tests",
+      "bytes": 52022568,
+      "sha256": "c837ebad2dec89aeda6d8ce6791c64f7fe047ed9f1fc6630c9d1fe2e6e0eaba3"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-object-production-tutorial-tests",
+      "bytes": 52157400,
+      "sha256": "c1e688f593a80e9d4846f726f258382de9fd2a99c6bdadbaf33836f738f1cfae"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-object-production-session-tests",
+      "bytes": 53997544,
+      "sha256": "a2e7a55a47c61c768d88bd3b43f9bceb72d5676d8745a0159c99a88a9b2e8c79"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\story-object-production-restore-tests",
+      "bytes": 53278416,
+      "sha256": "03995d30e505668780d320e1b8950182f9e1eac2efd1f10a8b2a618d305ca62d"
+    }
+  ],
+  "retired_bytes": 367549000.0
+}

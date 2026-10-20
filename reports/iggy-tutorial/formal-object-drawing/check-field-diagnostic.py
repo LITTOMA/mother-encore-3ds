@@ -1,0 +1,4 @@
+from pathlib import Path
+import subprocess,os
+r=Path('/mnt/d/GameDev/3DS/mother-encore-3ds');args=['build/full-port/scene-regression-field_data','build/full-port/object-legacy-map-1/legacy.encmap','romfs/world/world.enclinks','romfs/world/podunk/podunk.encroom','romfs/story/opening.encintro','build/full-port/intentionally-missing-mick.encmick'];assert not(r/args[-1]).exists()
+result=subprocess.run(args,cwd=r,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,env=dict(os.environ,ASAN_OPTIONS='detect_leaks=1',UBSAN_OPTIONS='halt_on_error=1:print_stacktrace=1'));(r/'build/full-port/object-field-diagnostic-missing.log').write_bytes(result.stdout);assert result.returncode==1 and b'Field data check'in result.stdout and b'AddressSanitizer'not in result.stdout and b'runtime error:'not in result.stdout;print('Intentional missing independent Mick asset: expected failure1, readable diagnostic, no sanitizer finding')

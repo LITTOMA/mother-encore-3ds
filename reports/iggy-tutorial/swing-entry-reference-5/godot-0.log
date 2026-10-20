@@ -1,0 +1,35 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+Topology path: Idle
+Topology path: Walk
+Topology path: Run
+Topology path: Crouch
+Topology path: Blink
+Topology path: FaintedIdle
+Topology path: FaintedWalk
+Entry case: 0 Idle
+Entry case: 1 Idle
+Entry case: 2 Idle
+Entry case: 3 Idle
+Entry case: 4 Idle
+Entry case: 5 Idle
+Entry case: 6 Idle
+Entry case: 7 Idle
+Entry case: 8 Walk
+Entry case: 9 Walk
+Entry case: 10 Walk
+Entry case: 11 Walk
+Entry case: 12 Walk
+Entry case: 13 Walk
+Entry case: 14 Walk
+Entry case: 15 Walk
+Entry case: 16 Run
+Entry case: 17 Run
+Entry case: 18 Run
+Entry case: 19 Run
+Entry case: 20 Run
+Entry case: 21 Run
+Entry case: 22 Run
+Entry case: 23 Run

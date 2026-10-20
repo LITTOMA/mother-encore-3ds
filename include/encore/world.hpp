@@ -9,6 +9,7 @@
 #include "encore/scene_player_transfer.hpp"
 #include "encore/room_data.hpp"
 #include "encore/source_random.hpp"
+#include "encore/story_object_host.hpp"
 #include <vector>
 namespace encore::upstream {
 enum class OpeningStage : uint8_t { Walking, ScriptRunning, BattleRequested, Error };
@@ -30,6 +31,12 @@ public:
  virtual ~StorySkillHost()=default;
  virtual bool validate_skill(std::string_view,std::string&)=0;
  virtual bool learn_skill(std::string_view,std::string&)=0;
+};
+class StoryKeyItemHost {
+public:
+ virtual ~StoryKeyItemHost()=default;
+ virtual bool validate_key_item(std::string_view,uint32_t,std::string&)=0;
+ virtual bool grant_key_item(std::string_view,uint32_t,std::string&)=0;
 };
 class StoryPropHost {
 public:
@@ -66,7 +73,7 @@ public:
     bool prepare_scene_player(OpeningWorld& source,Vec2 position,Vec2 direction,ScenePlayerTransfer&,std::string& error);
     bool commit_scene_player(OpeningWorld& source,ScenePlayerTransfer&&,std::string& error);
     bool accept_battle_entry();
-    bool begin_house_program(uint32_t program_index,uint32_t original_npc=kRoomNoIndex);
+    bool begin_house_program(uint32_t program_index,uint32_t original_npc=kRoomNoIndex,bool stop_running=false);
     bool begin_battle_continuation(std::string_view source_path);
     bool story_completed()const{return dialogue_.status()==DialogueStatus::Completed;}
     bool finish_story_dialogue(bool automatic=false);
@@ -96,6 +103,8 @@ public:
     std::vector<bool> take_story_hides(){auto result=std::move(story_hides_);story_hides_.clear();return result;}
     const std::vector<OpeningEffectRequest>& effect_requests()const{return effects_;}
     bool bind_story_skills(StorySkillHost&);
+    bool bind_story_key_items(StoryKeyItemHost&,std::string&);
+    bool bind_story_objects(StoryObjectHost&,std::string&);
     bool bind_story_props(StoryPropHost&,std::string&);
     bool validate_story_props(uint32_t programme,std::string&)const;
     bool story_skills_ready()const{return story_skills_!=nullptr;}
@@ -103,6 +112,13 @@ public:
     bool pause_for_house(bool stop_running=false);
     // The checked scene owns this optional sink and outlives the world binding.
     bool bind_walk_audio(WalkAudioSink&);
+    // Optional until the complete source resource group is prepared. Once
+    // bound, the same immutable owner must outlive all retained scene players.
+    bool bind_player_action(const FieldSwingResources&,std::string&);
+    bool player_action_input(std::string_view,bool,bool skill_available,bool incapacitated,bool entering_door,bool&accepted,std::string&);
+    const FieldPlayerTree& player_action()const{static const FieldPlayerTree empty;return persistent_player_?persistent_player_.state_->action_:empty;}
+    const FieldSwingResources* player_action_resources()const{return persistent_player_?persistent_player_.state_->action_resources_:nullptr;}
+    std::vector<PlayerActionEvent> take_player_action_events();
     bool unpause_from_house();
     bool resize_field_viewport(Vec2 viewport);
     bool set_house_direction(Vec2 direction);
@@ -143,7 +159,7 @@ public:
     bool idle_frame(double delta);
     const RoomView& content() const { return content_; }
     const WalkState& player() const { static const WalkState unavailable{};return persistent_player_?persistent_player_.state_->player_:unavailable; }
-    AnimationSample animation() const { return persistent_player_?persistent_player_.state_->playback_.sample:AnimationSample{0,true,false}; }
+    AnimationSample animation() const { return persistent_player_?persistent_player_.state_->animation():AnimationSample{0,true,false}; }
     bool healthy() const { return healthy_; }
     const char* error() const { return error_; }
     OpeningStage stage() const { return stage_; }
@@ -166,6 +182,10 @@ public:
     const std::vector<OpeningAudioRequest>& audio_requests() const { return audio_; }
     const std::vector<OpeningTraceEvent>& action_trace() const { return trace_; }
 private:
+    bool player_action_pause(bool stop_running,bool start_idle);
+    bool player_action_resume();
+    bool player_action_direction(bool idle=false);
+    bool player_action_event(PlayerActionEvent);
     PersistentPlayerOwner persistent_player_;
     bool player_read_only_=false;
     uint32_t area_music_resource_=kRoomNoIndex;
@@ -190,6 +210,8 @@ private:
     bool vibrate_room(uint32_t binding);
     uint32_t walk_clip(MotionAnimation animation,Vec2 direction) const;
     bool trigger_conditions(uint32_t index) const;
+    StoryKeyItemHost*story_key_items_=nullptr;
+    StoryObjectHost*story_objects_=nullptr;
     StoryPropHost*story_props_=nullptr;
     StorySkillHost*story_skills_=nullptr;
     OpeningScreenOverlay overlay_{};uint32_t overlay_clip_=kRoomNoIndex;double overlay_time_=0;
@@ -216,6 +238,7 @@ private:
     OpeningStage stage_=OpeningStage::Walking;
     uint64_t physics_tick_=0,idle_frame_=0;
     uint32_t generation_=0,program_index_=kRoomNoIndex,follow_actor_=kRoomNoIndex;
+    bool story_stop_running_=false;
     bool healthy_=false,initialized_=false,cutscene_done_=false,restore_pending_=false,overworld_music_=false;
     uint32_t pending_dialogue_id_=kRoomNoIndex;
     const char* error_="World not initialized";

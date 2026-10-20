@@ -1,0 +1,26 @@
+In file included from /mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/player-presentation-headers/opening_renderer.hpp:3,
+                 from tests/player_renderer_tests.cpp:3:
+/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/player-presentation-headers/field_player_renderer.hpp: In member function ‘bool FieldPlayerRenderer::load(const encore::upstream::FieldSwingResources&, const char*, std::string&)’:
+/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/player-presentation-headers/field_player_renderer.hpp:23:68: error: too few arguments to function ‘encore::ctr::PropTestSheet* encore::ctr::loading_sprite_sheet_load(const char*, std::string*)’
+   23 |    candidate[i]=encore::ctr::loading_sprite_sheet_load(path.c_str());if(!candidate[i]||encore::ctr::loading_sprite_sheet_count(candidate[i])!=1)return fail("Player texture missing or invalid: "+path);
+      |                                                                    ^
+In file included from /mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/player-presentation-headers/opening_renderer.hpp:2,
+                 from tests/player_renderer_tests.cpp:3:
+tests/field_prop_renderer_stubs/loading_texture.hpp:6:27: note: declared here
+    6 | inline LoadingSpriteSheet loading_sprite_sheet_load(const char*path,std::string*error){
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from tests/player_renderer_tests.cpp:3:
+/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/player-presentation-headers/opening_renderer.hpp: In member function ‘bool OpeningActorRenderer::load(const encore::upstream::RoomView&, std::string&)’:
+/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/player-presentation-headers/opening_renderer.hpp:57:76: error: too few arguments to function ‘encore::ctr::PropTestSheet* encore::ctr::loading_sprite_sheet_load(const char*, std::string*)’
+   57 |             atlas.sheet=encore::ctr::loading_sprite_sheet_load(path.c_str());
+      |                                                                            ^
+In file included from /mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/player-presentation-headers/opening_renderer.hpp:2,
+                 from tests/player_renderer_tests.cpp:3:
+tests/field_prop_renderer_stubs/loading_texture.hpp:6:27: note: declared here
+    6 | inline LoadingSpriteSheet loading_sprite_sheet_load(const char*path,std::string*error){
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~
+tests/player_renderer_tests.cpp: In function ‘int main(int, char**)’:
+tests/player_renderer_tests.cpp:25:145: error: narrowing conversion of ‘tree.encore::upstream::FieldPlayerTree::main_frame()’ from ‘uint32_t’ {aka ‘unsigned int’} to ‘uint16_t’ {aka ‘short unsigned int’} [-Werror=narrowing]
+   25 |   for(unsigned tick=0;tick<50;++tick){CHECK(tree.advance(1.0/60,error));const auto&pose=tree.pose();const AnimationSample sample{tree.main_frame(),pose.main,pose.special};draw_test::calls.clear();
+      |                                                                                                                                  ~~~~~~~~~~~~~~~^~
+cc1plus: all warnings being treated as errors

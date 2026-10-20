@@ -1,0 +1,5 @@
+{
+  "reason": "Whole archive stream too slow; reuse the previously validated bounded selected-member range downloader",
+  "bytes": 24641536,
+  "sha256": "6fd4048b4a7e385188ddbf6f0f8121cac497f57a5ada463972a9faca775c1190"
+}

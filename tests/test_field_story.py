@@ -1,4 +1,5 @@
 import copy,json,struct,tempfile,unittest
+from contextlib import ExitStack
 from pathlib import Path
 from unittest.mock import patch
 from tools import field_story as story,bridge_entry,podunk_field,native_content
@@ -7,33 +8,54 @@ class FieldStoryTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
   cls.policy,_=story.read();recipe=podunk_field.load_recipe();model=podunk_field.Model(recipe);cls.room=native_content.parse_pack(podunk_field.build_room(recipe,model,recipe['house']['room_ir']))
+  from tools import graveyard_tutorial_programme,graveyard_shovel,field_prop_dialogues
+  cls.metadata=story.build()
+  cls.checked_dependencies=[(graveyard_tutorial_programme,ROOT/cls.policy['tutorial'],graveyard_tutorial_programme.read(ROOT/cls.policy['tutorial'])),(graveyard_shovel,ROOT/cls.policy['shovel'],graveyard_shovel.read(ROOT/cls.policy['shovel'])),(field_prop_dialogues,ROOT/cls.policy['prop_dialogues'],field_prop_dialogues.read(ROOT/cls.policy['prop_dialogues']))]
  def test_source_programmes_and_metadata_reproduce(self):
-  self.assertEqual(story.build(),(ROOT/'romfs'/story.OUTPUT).read_bytes());self.assertEqual(len(self.room['sections']['Program']),6)
-  self.assertEqual([self.room['strings'][p['source_path_string']]for p in self.room['sections']['Program']],['Podunk/cutscenes/bridge_fight','Podunk/cutscenes/pippismom_call','Podunk/cutscenes/pippismom_help','Podunk/pippismom','Podunk/iggy_forget','Podunk/cutscenes/graveyard_zombie_roots'])
+  self.assertEqual(self.metadata,(ROOT/'romfs'/story.OUTPUT).read_bytes());self.assertEqual(len(self.room['sections']['Program']),10)
+  self.assertEqual([self.room['strings'][p['source_path_string']]for p in self.room['sections']['Program']],['Podunk/cutscenes/bridge_fight','Podunk/cutscenes/pippismom_call','Podunk/cutscenes/pippismom_help','Podunk/pippismom','Podunk/iggy_forget','Podunk/cutscenes/graveyard_zombie_roots','Podunk/cutscenes/gravedigger_swing','Podunk/cutscenes/gravedigger_getshovel','Reusable/hardtobreak','Reusable/easytobreak'])
   self.assertEqual(self.room['sections']['Battle'][0]['stable_id'],4)
   self.assertEqual(self.room['sections']['Battle'][0]['actor_instance_index'],2)
  def test_checked_source_dialogues(self):
   policy,ex=story.read();texts=story.dialogues(policy,ex);self.assertEqual(len(texts),22);self.assertEqual({r['locale']for r in texts},{'en','zh_Hans_CN'})
   self.assertTrue(all(r['speaker']and r['body']and r['voice'].endswith('/Female.mp3')for r in texts))
   self.assertTrue(any('[Pippi]'in r['body']for r in texts));self.assertTrue(all('[@]'in r['body']for r in texts))
+ def test_formal_tutorial_preserves_old_room_tables_and_recipe_v4(self):
+  old=native_content.parse_pack((ROOT/'tests/fixtures/pre-key-grant-room.encroom').read_bytes())
+  self.assertEqual(self.room['strings'][:len(old['strings'])],old['strings'])
+  for key,rows in old['sections'].items():self.assertEqual(self.room['sections'][key][:len(rows)],rows,key)
+  legacy=copy.deepcopy(self.policy);legacy['schema']=4;legacy.pop('tutorial');legacy.pop('shovel');legacy.pop('prop_dialogues')
+  with tempfile.TemporaryDirectory()as folder:
+   target=Path(folder)/'legacy.json';bridge_entry.write(target,legacy)
+   with patch.object(story,'POLICY',target):self.assertEqual(story.read()[0],legacy)
  def reject_policy(self,mutation,lower=False):
   candidate=copy.deepcopy(self.policy);mutation(candidate)
   folder=ROOT/'build/podunk-routes';folder.mkdir(parents=True,exist_ok=True)
   with tempfile.TemporaryDirectory(dir=folder)as temporary:
    target=Path(temporary)/'candidate.json';bridge_entry.write(target,candidate)
-   with patch.object(story,'POLICY',target),self.assertRaises((ValueError,KeyError,StopIteration)):
-    if lower:
-     recipe=podunk_field.load_recipe();podunk_field.build_room(recipe,podunk_field.Model(recipe),recipe['house']['room_ir'])
-    else:story.read()
+   # These negatives mutate the field policy, not the already source-audited
+   # tutorial/shovel documents. Reuse detached copies only for their exact
+   # unchanged paths; altered paths still take the real rejection path. The
+   # positive formal composition above/below runs the complete real chain.
+   with ExitStack()as stack:
+    for module,path,checked in self.checked_dependencies:
+     original=module.read
+     def admitted(name,original=original,path=path,checked=checked):return copy.deepcopy(checked)if Path(name).resolve()==path.resolve()else original(name)
+     stack.enter_context(patch.object(module,'read',side_effect=admitted))
+    stack.enter_context(patch.object(story,'POLICY',target))
+    with self.assertRaises((ValueError,KeyError,StopIteration)):
+     if lower:
+      recipe=podunk_field.load_recipe();podunk_field.build_room(recipe,podunk_field.Model(recipe),recipe['house']['room_ir'])
+     else:story.read()
  def test_unknown_versions_fields_and_source_changes_fail_closed(self):
-  for mutate in (lambda p:p.update(schema=5),lambda p:p.update(schema=True),lambda p:p.update(ignore_unknown=True),lambda p:p.update(supplement='../outside.json'),lambda p:p.update(supplement='content/../outside.json'),lambda p:p.update(supplement=True),lambda p:p['documents'][p['programmes'][0]['source']]['0'].update(wait=.01),lambda p:p['encounters'][0].update(basic_slot=False),lambda p:p['basic_overrides'][0].update(source='Data/BattleSkills/attack.yaml')):
+  for mutate in (lambda p:p.update(schema=8),lambda p:p.update(schema=True),lambda p:p.update(schema=5),lambda p:p.update(ignore_unknown=True),lambda p:p.update(supplement='../outside.json'),lambda p:p.update(supplement='content/../outside.json'),lambda p:p.update(supplement=True),lambda p:p.update(tutorial='../outside.json'),lambda p:p.update(tutorial=True),lambda p:p.pop('tutorial'),lambda p:p.update(shovel='../outside.json'),lambda p:p.update(shovel=True),lambda p:p.pop('shovel'),lambda p:p['documents'][p['programmes'][0]['source']]['0'].update(wait=.01),lambda p:p['encounters'][0].update(basic_slot=False),lambda p:p['basic_overrides'][0].update(source='Data/BattleSkills/attack.yaml')):
    self.reject_policy(mutate)
  def test_unknown_command_is_not_ignored(self):self.reject_policy(lambda p:p['programmes'][0]['commands'][0].update(kind='Ignore'),True)
  def test_unread_text_and_timer_modes_are_explicit(self):
   s=self.room['sections'];names=native_content.OPCODES
   base_end=s['Program'][4]['first_command'];waits=[c for c in s['Command'][:base_end]if names[c['opcode']]=='AwaitDialogue'];self.assertEqual([c['flags']for c in waits],[0,1,1,1,1]+[0]*6)
   self.assertEqual(sum(names[c['opcode']]=='ShowDialogue'for c in s['Command'][:base_end]),11)
-  moves=[c for c in s['Command']if names[c['opcode']]=='MoveCamera'];self.assertEqual([c['duration']for c in moves],[1,1,2])
+  moves=[c for c in s['Command'][:s['Program'][6]['first_command']]if names[c['opcode']]=='MoveCamera'];self.assertEqual([c['duration']for c in moves],[1,1,2])
  def test_source_npc_selection_and_rich_controls(self):
   self.assertEqual([(r['programme'],r['flag'])for r in self.policy['interactions']],[(2,''),(3,'pippis_mom_help')])
   rows=story.dialogues(*story.read());help_text=next(r['body']for r in rows if r['id']==1011 and r['locale']=='en')
@@ -44,10 +66,23 @@ class FieldStoryTests(unittest.TestCase):
  def test_previous_schema_two_remains_byte_identical(self):
   with patch.object(story,'POLICY',ROOT/'tests/fixtures/pre-graveyard-story.json'):
    self.assertEqual(story.build(),(ROOT/'tests/fixtures/field_story_v2.encstory').read_bytes())
+ def test_prop_source_policy_and_previous_schema_six_remain_explicit(self):
+  from tools import field_prop_dialogues
+  blob=self.metadata;_,sections=podunk_field.unpack_container(blob,story.MAGIC,(1,24,36,40,12,32,1,52),128*1024,capability=5)
+  self.assertEqual((len(sections[1])//24,len(sections[2])//36,len(sections[7])),(10,70,52))
+  self.assertEqual([struct.unpack_from('<I',sections[1],i*24+20)[0]for i in (8,9)],[2,2]);self.assertEqual(struct.unpack_from('<I',sections[7],48)[0],1)
+  previous=copy.deepcopy(self.policy);previous['schema']=6;previous.pop('prop_dialogues')
+  with tempfile.TemporaryDirectory(dir=ROOT/'build')as folder:
+   path=Path(folder)/'previous.json';bridge_entry.write(path,previous)
+   with patch.object(story,'POLICY',path):
+    self.assertEqual(story.read()[0],previous)
+    self.assertEqual(story.build(),(ROOT/'tests/fixtures/pre-prop-dialogue-story.encstory').read_bytes())
+  for mutation in (lambda p:p.update(prop_dialogues=True),lambda p:p.update(prop_dialogues='../outside.json'),lambda p:p.update(prop_dialogues='content/podunk-story.json'),lambda p:p.pop('prop_dialogues'),lambda p:p.update(schema=6)):
+   self.reject_policy(mutation)
  def test_cemetery_source_mapping_and_runtime_version_negatives(self):
   from tools.native_content import validate_tables,OPCODES
   s=self.room['sections'];p=s['Program'][5];commands=s['Command'][p['first_command']:p['first_command']+p['command_count']]
-  self.assertEqual(self.room['capabilities'],12)
+  self.assertEqual(self.room['capabilities'],14)
   self.assertEqual([c['duration']for c in commands if c['opcode']==3],[.5,2.5,1,2.2,1,1.2,1.8,.8,1,1,1.6])
   calls=[s['Binding'][c['target_index']]['target_index']for c in commands if c['opcode']==6]
   self.assertEqual(calls,[3,4,6,7,5]);self.assertEqual([(c['actor_index'],c['phrase'])for c in commands if c['opcode']==OPCODES.index('EraseActor')],[(4,6),(5,7)])
@@ -61,7 +96,7 @@ class FieldStoryTests(unittest.TestCase):
   for c in b['Command']:
    if c['opcode']==6:c.update(opcode=25,target_index=0xffffffff)
   bad.append((12,b))
-  blob=bytearray((ROOT/'romfs/world/podunk/podunk.encroom').read_bytes());struct.pack_into('<I',blob,36,13);struct.pack_into('<I',blob,52,0)
+  blob=bytearray((ROOT/'romfs/world/podunk/podunk.encroom').read_bytes());struct.pack_into('<I',blob,36,15);struct.pack_into('<I',blob,52,0)
   import zlib
   struct.pack_into('<I',blob,52,zlib.crc32(blob))
   with self.assertRaises(ValueError):native_content.parse_pack(bytes(blob))

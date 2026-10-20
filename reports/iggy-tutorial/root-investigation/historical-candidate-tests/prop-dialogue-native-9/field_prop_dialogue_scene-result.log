@@ -1,0 +1,1 @@
+Prop investigation scene 49: !scene.props().states()[target].animation.pose().interaction ()

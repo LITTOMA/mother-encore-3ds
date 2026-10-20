@@ -16,10 +16,11 @@ class Routes(unittest.TestCase):
   self.assertEqual([r['music_fade']for r in rows[4:]],[0,0])
   self.assertEqual((rows[2]['x'],rows[2]['y']),(8,9));self.assertEqual((rows[3]['x'],rows[3]['y']),(192,1761))
   self.assertTrue(all(r['music_fade']>0 for r in rows[:4]))
-  scene,sections=f.unpack_container(self.blob,f.LINK_MAGIC,w.PROP_STRIDES,f.LINK_LIMIT,capability=4)
+  scene,sections=f.unpack_container(self.blob,f.LINK_MAGIC,w.OBJECT_STRIDES,f.LINK_LIMIT,capability=5)
   self.assertEqual(scene,0);self.assertEqual(len(sections[1])//24,3);self.assertEqual(len(sections[2])//84,6)
   self.assertEqual(len(sections[3])//36,2);self.assertEqual(len(sections[4])//4,10)
   self.assertEqual(self.recipe['scenes'][1]['assets']['npcs'],[320,321,327,328,329]);self.assertEqual(struct.unpack('<2I',sections[5]),(2,1031))
+  self.assertEqual(struct.unpack('<2I',sections[6]),(2,1032))
  def test_legacy_route_semantics_unchanged(self):
   legacy=copy.deepcopy(f.load_recipe());legacy.pop('route_recipe');legacy['routes']=legacy['routes'][:2]
   model=f.Model(legacy)
@@ -27,9 +28,9 @@ class Routes(unittest.TestCase):
  def test_legacy_schema1_retains_capability2(self):
   recipe=copy.deepcopy(self.recipe);recipe['schema']=1
   for scene in recipe['scenes']:
-   if scene['map']:del scene['assets']['steps'];del scene['assets']['props']
+   if scene['map']:del scene['assets']['steps'];del scene['assets']['props'];del scene['assets']['objects']
   blob=w.encode(recipe,self.proof['routes']);_,sections=f.unpack_container(blob,f.LINK_MAGIC,w.STRIDES,f.LINK_LIMIT,capability=2)
-  _,current=f.unpack_container(self.blob,f.LINK_MAGIC,w.PROP_STRIDES,f.LINK_LIMIT,capability=4)
+  _,current=f.unpack_container(self.blob,f.LINK_MAGIC,w.OBJECT_STRIDES,f.LINK_LIMIT,capability=5)
   self.assertEqual(sections[:3],current[:3]);self.assertEqual(sections[4],current[4])
   self.assertTrue(all(struct.unpack_from('<I',sections[3],at+32)[0]==0 for at in range(0,len(sections[3]),36)))
  def test_steps_missing_unknown_and_downgraded(self):
@@ -48,14 +49,16 @@ class Routes(unittest.TestCase):
   legacy=copy.deepcopy(self.recipe);legacy['schema']=2
   legacy['scenes'][1]['assets']['npcs']=[320,321,327]
   for scene in legacy['scenes']:
-   if scene['map']:scene['assets'].pop('props')
+   if scene['map']:scene['assets'].pop('props');scene['assets'].pop('objects')
   blob=w.encode(legacy,self.proof['routes']);self.assertEqual(blob,(f.ROOT/'tests/fixtures/world-links-cap3.enclinks').read_bytes())
   _,old=f.unpack_container(blob,f.LINK_MAGIC,w.STRIDES,f.LINK_LIMIT,capability=3)
-  previous=copy.deepcopy(self.recipe);previous['scenes'][1]['assets']['npcs']=[320,321,327]
+  previous=copy.deepcopy(self.recipe);previous['schema']=3;previous['scenes'][1]['assets']['npcs']=[320,321,327]
+  for scene in previous['scenes']:
+   if scene['map']:scene['assets'].pop('objects')
   _,new=f.unpack_container(w.encode(previous,self.proof['routes']),f.LINK_MAGIC,w.PROP_STRIDES,f.LINK_LIMIT,capability=4);self.assertEqual(old,new[:5])
  def test_recipe_negative_paths(self):
   bad=[]
-  for value in [True,0,1,2,4]:
+  for value in [True,0,1,2,3,5]:
    p=copy.deepcopy(self.recipe);p['schema']=value;bad.append(p)
   p=copy.deepcopy(self.recipe);p['extra']=0;bad.append(p)
   p=copy.deepcopy(self.recipe);p['scenes'][2]['room']=32;bad.append(p)

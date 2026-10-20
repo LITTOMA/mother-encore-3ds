@@ -1,0 +1,21 @@
+{
+  "scope": "Continuation after successful session extraction: the pre-generation dependency snapshot necessarily differed after Room/meta generation. Actual semantic comparison excludes only dependency fingerprints; old/default/key/mutable values exact. No generated resource patched.",
+  "default_save_sha256": "a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f",
+  "session_resource": 11,
+  "session_changes": [
+    "dependencies"
+  ],
+  "unchanged": [
+    "romfs/world/podunk/podunk.encmap",
+    "romfs/world/house/opening.encroom",
+    "romfs/sound/banks/opening.encaudio",
+    "romfs/graphics/world/podunk/objects/atlas-00.t3x",
+    "romfs/world/podunk/podunk.encprops"
+  ],
+  "changed": [
+    "content/asset-receipts/graphics/world/podunk/source.json",
+    "romfs/system/native.encresources",
+    "romfs/world/podunk/podunk.encroom",
+    "romfs/world/podunk/story.encstory"
+  ]
+}

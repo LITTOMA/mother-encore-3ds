@@ -1,0 +1,90 @@
+{
+  "scope": "Only 14 exact owned host test ELFs, after their complete successful logs and matching proofs were pushed in 61ea4ea; actual games, core cache, source, saves and protected directories retained.",
+  "bytes": 745493192,
+  "files": [
+    {
+      "path": "build/full-port/prop-dialogue-native-12/field_prop_dialogue_programme",
+      "bytes": 52691728,
+      "sha256": "722c0797e511efc04b04c0aa368bde963cac41a9e46a521a12c285f1c86547f0",
+      "published_proof": "prop-dialogue-native-12/proof.json"
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-12/field_prop_dialogue_data",
+      "bytes": 52643312,
+      "sha256": "abb72b4af105d06ddf895f201ec8d785ad9e055ccb4ca4410a16fb9bcdde0147",
+      "published_proof": "prop-dialogue-native-12/proof.json"
+    },
+    {
+      "path": "build/full-port/prop-dialogue-native-12/field_prop_dialogue_scene",
+      "bytes": 53249920,
+      "sha256": "bff1471e30ea024c19f842c9be0b45ef9db044c165a3aec5f6b94075082d80fe",
+      "published_proof": "prop-dialogue-native-12/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-formal-native-1/prop_contact_scene",
+      "bytes": 53202872,
+      "sha256": "d3e5eac9bd7c3d0d1880cde1f765ee1d58e01d587ceecdc72d1baca82eef4c51",
+      "published_proof": "root-investigation-formal-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-formal-native-1/prop_contact_data",
+      "bytes": 53094952,
+      "sha256": "fd49c49e709485f24345a7556d71a67043b886c32bb3d5984b9217b8598968bd",
+      "published_proof": "root-investigation-formal-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-formal-native-1/field_prop_audio",
+      "bytes": 53427616,
+      "sha256": "85e751189bd9fe1db568dd045bd891b41633bf4a5b281a5e7bd825dcd228dbeb",
+      "published_proof": "root-investigation-formal-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-formal-native-1/field_story",
+      "bytes": 53515064,
+      "sha256": "529beed681b1d026c2118557f7dd404450dba69ec5ac2e43f91d29e17994ba9e",
+      "published_proof": "root-investigation-formal-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-formal-native-1/cemetery_roots",
+      "bytes": 53246008,
+      "sha256": "7e22cd4513417c3634015234f1ccf38bfb3e7904f4d6cf1f3d3bf6ca939aaaed",
+      "published_proof": "root-investigation-formal-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-formal-native-1/graveyard_tutorial",
+      "bytes": 52815688,
+      "sha256": "9e07bf9f22d75b4b209dc15cacbe318a36831313d485b82b3caa6b4bb02c5097",
+      "published_proof": "root-investigation-formal-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-formal-native-1/field_prop_renderer",
+      "bytes": 53879464,
+      "sha256": "fae36cca738a145684b0caaf43e997b4e50243d8f68d6669852a5af8f84e6fe8",
+      "published_proof": "root-investigation-formal-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-formal-native-1/prop_scene_resources",
+      "bytes": 52783376,
+      "sha256": "2579f61a1a8ca41270d9c8ea0bc78ec3e3c2b23277e0edd74f8646d3f8ce5dd8",
+      "published_proof": "root-investigation-formal-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-formal-native-1/native_session",
+      "bytes": 54650080,
+      "sha256": "f320e7593c7ab5081fb6001df3b57494726aaee1f16e65dac73faba02f2b3ebc",
+      "published_proof": "root-investigation-formal-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-private-native-1/shovel_scene_programme",
+      "bytes": 53090240,
+      "sha256": "bccc781cdb947f734ffc426fe553b3a725c03d0b769ddde0704a16720775b29f",
+      "published_proof": "root-investigation-private-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-investigation-private-native-1/prop_contact_scene",
+      "bytes": 53202872,
+      "sha256": "d3e5eac9bd7c3d0d1880cde1f765ee1d58e01d587ceecdc72d1baca82eef4c51",
+      "published_proof": "root-investigation-private-native-1/proof.json"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "source_commit": "f0296baf53d03285975c0fe9aa1639943a831911",
+  "run": 39300111489,
+  "clang_job": 118222788686,
+  "console_job": 118222788022,
+  "artifact": 12210851909,
+  "clang": "232 ordinary and232ASAN/UBSAN success",
+  "console": "Genuine ARM3DSX/CIA and374source files; actual selected3DSX9493fd99... checked byreceipt and ZIPmemberCRC, notfullarchivehash verification",
+  "gcc": "118222788705 stillrunning; notdeclaredpassed",
+  "emulator": "OrdinaryLOAD/Goods/door/walk approaches ran; first2routes couldnotenterteaching because colliders stop the approach. Not gameplay or tutorial acceptance. Thirdrun uses checked4px destination corridor and stops onlyonactualprogramme6. Do notclaimteachingverified.",
+  "reports_sha256": {
+    "build-receipt.json": "4c5ffd658bca7e82ed5a0cdb94c96702a63e7621033d18ecac1384d03b3e3fa7",
+    "BUILD_INFO.txt": "976220a7953de86fd817cb307e99905f3610a1d7067ccee810f490706e7c3ac9",
+    "f029-clang-full.log": "5c0bb917c923f88b2054ad7fd35a0ab4aa11681954e248200c2069b5c99d50ee",
+    "f029-console-full.log": "94d4d2255cacbc4e52c4bd171230573651edaded1a9e52024e678943d88c5d11",
+    "f029-terminal-jobs.log": "9e03a7afb3a0154a27356261e94b166cdab6c77395f699b6b58aa64beaf92e50",
+    "iggy-f029-download.log": "531378535a0c24200257af7e5471d129c6415dbc5a137f56c3373ffa4f288055",
+    "retain-f029-jobs.py": "d04e3f33c7d0c14883ba18ce51221f2de4aeda4a84c3b246073c90225122825e",
+    "selected-proof.json": "089447b1a9dd3defd2c75d9f81b7261ef9e942792d2fba93dc9a8ac48609dc8b",
+    "SHA256SUMS": "90b74367964c510449f1dc724795e74b1857c3e9d382c85a1df834d48a30970b"
+  }
+}

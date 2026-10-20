@@ -171,6 +171,18 @@ def extract():
         grant=commands[grants[0]];effects=[c for c in commands[grants[0]+1:] if c['op']=='SetFlag']
         require(len(effects)==1 and effects[0]['b']==1 and not any(k['item_id']==grant['a'] for k in key_acquisitions),'Unreviewed/duplicate thought completion policy')
         key_acquisitions.append(dict(item_id=grant['a'],doses=grant['b'],flag_id=effects[0]['a'],consumed_flag_id='',flag_policy=1))
+    from tools.field_story import read as read_field_story
+    field_policy,_=read_field_story()
+    if field_policy['schema']>=5:
+        from tools import graveyard_tutorial_programme as tutorial
+        tp,review,source=tutorial.read(ROOT/field_policy['tutorial'])
+        for grant in review['item_grants']:
+            require(not any(k['item_id']==grant['item']for k in key_acquisitions),'Duplicate tutorial key acquisition')
+            # The full reviewed graph grants before its final completion flag;
+            # World input/save ownership cannot expose an intermediate save.
+            key_acquisitions.append(dict(item_id=grant['item'],doses=grant['doses'],flag_id=grant['completion_flag'],consumed_flag_id='',flag_policy=1))
+        for path,source_digest in source.sources.items():require(path not in ex.sources or ex.sources[path]==source_digest,'Tutorial session source conflict');ex.sources[path]=source_digest
+        required.extend([field_policy['tutorial'],tp['review'],'tools/graveyard_tutorial.py','tools/graveyard_tutorial_programme.py'])
     from tools.storage_assets import load as load_storage, IR as storage_ir
     storage=load_storage(ROOT);required.append(storage_ir)
     storage_policies=[]

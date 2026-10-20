@@ -1,0 +1,53 @@
+{
+  "scope": "GCC9 ASan+UBSan with default leak checking; API double, not audibility/hardware/emulator. Actual source PCM. No shipping/input/GPU binding yet.",
+  "source_sha256": {
+    "include/encore/field_swing_action.hpp": "53b4f20596f398ff2590d6bb498b1ad3acf82dc2c63fd0274e8d41cd9cc92792",
+    "runtime/field_swing_action.cpp": "e3cfc45e710e8f85410a5c0e6c614232df5edc78abbaeeaf0c83cae9d6b39476",
+    "include/encore/world.hpp": "530c2bfab4a0cfd859a4b511a2ca1e93dfff92dbe8e09ad03fa3a0a98f9e6696",
+    "platform/ctr/audio_player.hpp": "716cfacc79e161b1a2b3fad59a7553488d00973eb978283007b6b6d5ae36ab79",
+    "platform/ctr/audio_player.cpp": "27f83125be9da5ccdb9c090fb4cb24d78b7b606376d6e29342281601acde4b10",
+    "platform/ctr/player_action_audio.hpp": "0431df9d6f3ba14f891c1ea1b009b737dc0f2714911e23153a2113bb09545d6b",
+    "platform/ctr/region_channel_pool.hpp": "a473adf22ae6a3a618295936492b66b95e7c37bb8291715a4bcdecac6bd7cea1",
+    "tests/player_audio_data_tests.cpp": "cc4ad1b7721520a4d742f2a5753ed7e6a7412b5193eb419e9c04835745763f72",
+    "tests/player_action_audio_tests.cpp": "2e8a790451887fe7077ce6e82cd67c5b6aaea2f3856d66120a03959f243672af",
+    "tests/audio_player_tests.cpp": "7929779b154b7e29916452f2c6ce2bc2a9779fc1783afad68614364461f89f29",
+    "tests/audio_player_regression.cpp": "b2ff31d7c886e34e460f243ae4a4a2074b98a588eb207246e6557380c31d72af",
+    "tests/prepare_player_action_world.py": "e63d9d2a300e9cd81fa9ec3323d7f18f39a8cc1ad6f5416f1e2df7813e7c73e6",
+    "tests/test_field_player_audio.py": "9fa66368d7640cf99a66739261e68b97358d26c5183bae1cb850ced4da38aec7",
+    "tools/field_player_audio.py": "36baa3ced4519527e953888da0f545fe37eeac36e29c32f5cf27dda681cbc2e5",
+    "content/field-player-audio.json": "8cc18e429780a4add1b7492fde7ca3652c5cfc71be5a46bced6096c535026355",
+    "CMakeLists.txt": "a0026143b361270bc1b3cdf4e3463a59ac8b58ffec3cd7b342156931d7305bec"
+  },
+  "logs": {
+    "actual-source.json": "55d5868b3838868a24bb969f1b23189dc14287170a620d36e855471fb8133cf6",
+    "player-action-audio-data-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "player-action-audio-data-result.log": "1848c6493f20c19121f7ff13088a351fff16ff5a697acbeeca8f71ff11607a56",
+    "player-action-audio-host.py": "45b2434feb6dfbacf60ed193a35b9bc68e6725ea9a714db9b42981fee9dd5805",
+    "player-action-audio-ndsp-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "player-action-audio-ndsp-result.log": "df1f2cc68c9ec990dc4a1ce50f83d03e421f8931dec4127a9f50cd174de053bd",
+    "player-audio-cmake.log": "30f6bcecf3e5dc19bada9eda0adfcc67b196c917c11d52967c47865c428acf6f",
+    "player-audio-collection.log": "91037178f09cd95206d7109baf94f9d03e8e894c856b8ae674ff7d669c5214df",
+    "player-audio-python-collection.json": "033344937a3098fb94ba5edca77d2a02153a095f4b9e54b38343e774373a34a6",
+    "player-audio-python.log": "4ddcf51b7fbd0f1e50cc837152d0eb6499088efe3c421fe9dc3e62c7f35871d9",
+    "player-audio-regression-host.py": "19f288117e37d58f6b14b8cc0e98eba51decf2b0a45e96084d96164cf643c971",
+    "player-audio-regression-legacy-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "player-audio-regression-legacy-result.log": "9a82f6d58cea059623f49eee6e6bc1f0b40b3d520ddcdd9c87841919d613b0bd",
+    "player-audio-regression-ndsp-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "player-audio-regression-ndsp-result.log": "9d3218e778ff77cca71b606f2936984cabd460306ae27dd575c2e6cb264bd440",
+    "player-audio-regression-run-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "player-audio-regression-run-result.log": "9db3241514954bc2de77309f98ca239c44c0c962a772f5530120db62bacc0ef3",
+    "player-audio-regression-world-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "player-audio-regression-world-result.log": "7140972372c5eb157c332a02215b9107acfeaf5b33301f53224bbad15a2d9dce"
+  },
+  "results": {
+    "data": 979,
+    "player_ndsp": 306,
+    "legacy": 1096,
+    "legacy_trace": "TRACE 529 71a30145b163903b",
+    "old_ndsp": 1445,
+    "run_region": 983,
+    "world": 626,
+    "python": 4,
+    "collection": "1183 = 819 aggregate + 364 dedicated; configure and collect only"
+  }
+}

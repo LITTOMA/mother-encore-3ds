@@ -1,0 +1,16 @@
+{
+  "scope": "Completed owned test ELF and diagnostic object only; original project, current game, textures, saves and proof retained.",
+  "files": [
+    {
+      "path": "build/full-port/swing-action-tests",
+      "bytes": 49527624,
+      "sha256": "b6942f63e81be7467ab3e1bc18dc5366c43660713f630fb5fae6d34861596d94"
+    },
+    {
+      "path": "build/iggy-tutorial/swing-action-warning.o",
+      "bytes": 325432,
+      "sha256": "8187277136b8b8cf4eae41edc0f32dc0d77ab030d86496f02b2eb144b4e78452"
+    }
+  ],
+  "removed_bytes": 49853056
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "label": "10-world_run_audio",
+    "returncode": 0,
+    "args": [
+      "build/full-port/object-consumer-step-1",
+      "tests/fixtures/mayor.encsteps",
+      "tests/fixtures/pause-audio.tsv",
+      "tests/fixtures/step-contacts.tsv"
+    ],
+    "exe_sha256": "cb8c5b30cf39e71e31df21a01601e227819e1a573840f8fe2add017f51a651ab"
+  },
+  {
+    "label": "11-field_story",
+    "returncode": 0,
+    "args": [
+      "romfs/world/podunk/story.encstory",
+      "romfs/world/podunk/podunk.encroom",
+      "build/full-port/object-legacy-map-1/legacy.encmap",
+      "romfs/world/world.enclinks",
+      "romfs/ui/opening.encitems",
+      "romfs/story/opening.encintro",
+      "romfs/battle/straydog/bridge.encround",
+      "romfs/battle/straydog/bridge.encbattle"
+    ],
+    "exe_sha256": "93a1faf89911203e3e4ed832f074b8f93ec97a469684f66947534e592399a49b"
+  },
+  {
+    "label": "12-field_npc_motion",
+    "returncode": 0,
+    "args": [
+      "romfs/world/podunk/npcs/lindgren.encmick",
+      "romfs/world/podunk/npcs/bridge-dog.encmick",
+      "romfs/world/podunk/podunk.encmick",
+      "build/full-port/object-legacy-map-1/legacy.encmap"
+    ],
+    "exe_sha256": "9d359386539a9cd61cd7ceeb0bfa524ad94b8ed04cde263c3d4b296866c94b8c"
+  },
+  {
+    "label": "13-mayor_scene_resources",
+    "returncode": 0,
+    "args": [
+      "romfs"
+    ],
+    "exe_sha256": "d5be41add1507403024bffe85545498d65c3b5ea78e50381567050f259ae5f93"
+  }
+]

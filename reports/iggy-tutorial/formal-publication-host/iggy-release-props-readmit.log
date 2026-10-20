@@ -1,0 +1,20 @@
+fatal: path 'world/podunk/podunk.encprops' does not exist in '7d2e552f86c9ef0c995c85c301e3a2f26a78f32a'
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_props.py", line 165, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_props.py", line 146, in main
+    if a.action=='readmit':require(a.recipe.resolve()==RECIPE.resolve(),'Field prop readmission uses the release policy only');readmit(a.base);return
+                                                                                                                               ^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_props.py", line 138, in readmit
+    require(encode(data,clips)==old(p['output'])==(ROOT/'romfs'/p['output']).read_bytes(),'Field prop readmission changes resource semantics')
+                                ^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_props.py", line 127, in <lambda>
+    old=lambda path:subprocess.check_output(['git','show',base+':'+path],cwd=ROOT)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'show', '7d2e552f86c9ef0c995c85c301e3a2f26a78f32a:world/podunk/podunk.encprops']' returned non-zero exit status 128.

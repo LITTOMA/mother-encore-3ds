@@ -16,13 +16,14 @@ class FieldSwingData {
 public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
  bool valid()const{return valid_;}const SwingPose&initial()const{return initial_;}
+ uint32_t encoded_bytes()const{return encoded_bytes_;}uint32_t encoded_crc()const{return encoded_crc_;}
  const std::array<float,19>&policy()const{return policy_;}
  const std::array<std::string,4>&strings()const{return strings_;}
  const std::vector<SwingClip>&clips()const{return clips_;}
  const std::vector<SwingKey>&keys()const{return keys_;}
  const SwingClip*clip(uint32_t)const;const SwingClip*direction(Vec2)const;
 private:
- bool valid_=false;SwingPose initial_;std::array<float,19>policy_{};
+ bool valid_=false;uint32_t encoded_bytes_=0,encoded_crc_=0;SwingPose initial_;std::array<float,19>policy_{};
  std::array<std::string,4>strings_;std::vector<SwingClip>clips_;std::vector<SwingKey>keys_;
 };
 class FieldSwingPlayer {
@@ -31,6 +32,8 @@ public:
  // Caller must admit source input/skill before play. Changing the assigned
  // animation preserves sparse properties until its next processing pass.
  bool play(uint32_t,bool incapacitated,std::string&);bool advance(double,std::string&);
+ // Updating the source TimeScale preserves the current clip and key cursor.
+ bool set_incapacitated(bool,std::string&);
  // AnimationPlayer's default method mode is deferred. The original finish
  // method disables the hitbox and releases ATTACK only when that queue runs.
  bool flush(std::string&);
@@ -41,4 +44,8 @@ private:
  FieldSwingData data_;SwingPose pose_;float time_=0,rate_=1;uint32_t id_=0,key_=0,pending_=0;
  bool playing_=false,attack_=false;
 };
+// Source capsule (straight section height plus round caps) against an axis-
+// aligned source rectangle. Node transforms come from the checked resource.
+// Disabled contact returns no overlap; invalid input preserves the output.
+bool swing_rectangle_overlap(const FieldSwingData&,const SwingPose&,Vec2 player,Vec2 center,Vec2 extents,bool&,std::string&);
 }

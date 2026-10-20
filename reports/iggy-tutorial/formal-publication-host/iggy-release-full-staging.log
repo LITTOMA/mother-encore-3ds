@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 139, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 45, in main
+    files.update(field_menu_files(source))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_menus.py", line 166, in stage_files
+    raw=(Path(source)/PACK).read_bytes();require(raw==encode(load()),'Stale staged field menu data');return {PACK:raw}
+                                                             ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_menus.py", line 164, in load
+    ir=json.loads((Path(root)/'content/native-field-menus.json').read_text(encoding='utf8'));require(canonical(ir)==canonical(build(root)),'Field menus IR differs from reviewed source/adapter');return ir
+                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Field menus IR differs from reviewed source/adapter

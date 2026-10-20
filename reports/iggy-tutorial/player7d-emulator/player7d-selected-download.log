@@ -1,0 +1,26 @@
+Selected members: [('3ds/encore-native/encore-native.3dsx', 264867012, 187850076), ('BUILD_INFO.txt', 267, 216), ('SHA256SUMS', 295, 170), ('build-receipt.json', 758, 398)]
+Selected block 0 ready
+Selected block 5 ready
+Selected block 3 ready
+Selected block 4 ready
+Selected block 2 ready
+Selected block 1 ready
+Selected block 7 ready
+Selected block 10 ready
+Selected block 6 ready
+Selected block 9 ready
+Selected block 11 ready
+Selected block 8 ready
+Selected block 12 ready
+Selected block 13 ready
+Selected block 14 ready
+Selected block 15 ready
+Selected block 17 ready
+Selected block 16 ready
+Selected block 18 ready
+Selected block 19 ready
+Selected block 22 ready
+Selected block 21 ready
+Selected block 20 ready
+{'source_commit': '7d2e552f86c9ef0c995c85c301e3a2f26a78f32a', 'game_sha256': 'c64e76044f4fe2a5fcfc353b8e86b7d467e1a089b140327268b6df2ee39491a5', 'game_size': 264867012}
+Partial download bytes removed: 192937984

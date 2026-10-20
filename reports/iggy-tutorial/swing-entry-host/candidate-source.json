@@ -1,0 +1,1640 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Compile checked source motion clips and requested paths into the Bat action.\n\nThis bounded entry graph has frame/visibility tracks only. It neither runs\narbitrary AnimationTree resources nor replaces the original movement audit.\n",
+  "sources": {
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Data/FieldSkills/swing.yaml": "e3e770194ec22e76fe75a271f2cda85371cbb3c50277275067fd68d1539bf0aa",
+    "Scripts/misc/NintenBatSwing.gd": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Graphics/Character Sprites/Ninten/special.png": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9",
+    "Graphics/Character Sprites/Ninten/bat_swing.png": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+    "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
+    "Nodes/Reusables/Overlap/Hitbox.tscn": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+  },
+  "excluded_unreachable_keys": [
+    {
+      "animation": "Idle Right",
+      "target": "Position/main:frame",
+      "time": 8.0,
+      "value": 120,
+      "reason": "Beyond source clip length; loop cannot reach this key"
+    },
+    {
+      "animation": "Idle Right",
+      "target": "Position/main:frame",
+      "time": 8.1,
+      "value": 21,
+      "reason": "Beyond source clip length; loop cannot reach this key"
+    },
+    {
+      "animation": "Idle Right",
+      "target": "Position/main:frame",
+      "time": 12.6,
+      "value": 120,
+      "reason": "Beyond source clip length; loop cannot reach this key"
+    },
+    {
+      "animation": "Idle Right",
+      "target": "Position/main:frame",
+      "time": 12.7,
+      "value": 21,
+      "reason": "Beyond source clip length; loop cannot reach this key"
+    },
+    {
+      "animation": "Idle Right",
+      "target": "Position/main:frame",
+      "time": 12.8,
+      "value": 120,
+      "reason": "Beyond source clip length; loop cannot reach this key"
+    },
+    {
+      "animation": "Idle Right",
+      "target": "Position/main:frame",
+      "time": 12.9,
+      "value": 21,
+      "reason": "Beyond source clip length; loop cannot reach this key"
+    }
+  ],
+  "paths": {
+    "Idle": [
+      "Bat"
+    ],
+    "Walk": [
+      "Idle",
+      "Bat"
+    ],
+    "Run": [
+      "Walk",
+      "Idle",
+      "Bat"
+    ],
+    "Crouch": [
+      "Idle",
+      "Bat"
+    ],
+    "Blink": [
+      "Idle",
+      "Bat"
+    ],
+    "FaintedIdle": [
+      "Idle",
+      "Bat"
+    ],
+    "FaintedWalk": [
+      "FaintedIdle",
+      "Idle",
+      "Bat"
+    ]
+  },
+  "reference_sha256": "8f2e8f03f9f2b867f710c82c641c8a3b22f008951de6f6d01872803bdacf8cca",
+  "dependencies": {
+    "content/field-swing-entry.json": "d64836777e7019f3e20ab2131189c288ec25c2d473f953655298236ef1157dd9",
+    "tools/field_swing_entry.py": "0ae777e4079a87ccbb347246d4022ede81af6f423dd7eee6cdccb624e8fb3862",
+    "tools/field_swing_action.py": "dc12205dddc324070da65002e77c9b147fe729216bc9e203e78ca7d4a6e5cb2e"
+  },
+  "model": {
+    "policy": [
+      200,
+      1,
+      8,
+      1,
+      2,
+      3,
+      4
+    ],
+    "states": [
+      {
+        "id": 1,
+        "name": "Idle",
+        "next": 8,
+        "switch": 0,
+        "first": 0,
+        "count": 8
+      },
+      {
+        "id": 2,
+        "name": "Walk",
+        "next": 1,
+        "switch": 0,
+        "first": 8,
+        "count": 8
+      },
+      {
+        "id": 3,
+        "name": "Run",
+        "next": 2,
+        "switch": 0,
+        "first": 16,
+        "count": 8
+      },
+      {
+        "id": 4,
+        "name": "Crouch",
+        "next": 1,
+        "switch": 2,
+        "first": 24,
+        "count": 8
+      },
+      {
+        "id": 5,
+        "name": "Blink",
+        "next": 1,
+        "switch": 0,
+        "first": 32,
+        "count": 8
+      },
+      {
+        "id": 6,
+        "name": "FaintedIdle",
+        "next": 1,
+        "switch": 0,
+        "first": 40,
+        "count": 8
+      },
+      {
+        "id": 7,
+        "name": "FaintedWalk",
+        "next": 6,
+        "switch": 0,
+        "first": 48,
+        "count": 8
+      },
+      {
+        "id": 8,
+        "name": "Bat",
+        "next": 0,
+        "switch": 0,
+        "first": 56,
+        "count": 0
+      }
+    ],
+    "clips": [
+      {
+        "state": 1,
+        "ordinal": 0,
+        "direction": [
+          0.0,
+          1.0
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 1
+          }
+        ]
+      },
+      {
+        "state": 1,
+        "ordinal": 1,
+        "direction": [
+          -1.0,
+          0.0
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 11
+          }
+        ]
+      },
+      {
+        "state": 1,
+        "ordinal": 2,
+        "direction": [
+          1.0,
+          0.0
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 21
+          }
+        ]
+      },
+      {
+        "state": 1,
+        "ordinal": 3,
+        "direction": [
+          0.0,
+          -1.0
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 31
+          }
+        ]
+      },
+      {
+        "state": 1,
+        "ordinal": 4,
+        "direction": [
+          0.6,
+          -0.7
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 71
+          }
+        ]
+      },
+      {
+        "state": 1,
+        "ordinal": 5,
+        "direction": [
+          -0.6,
+          -0.7
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 61
+          }
+        ]
+      },
+      {
+        "state": 1,
+        "ordinal": 6,
+        "direction": [
+          -0.6,
+          0.7
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 41
+          }
+        ]
+      },
+      {
+        "state": 1,
+        "ordinal": 7,
+        "direction": [
+          0.6,
+          0.7
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 51
+          }
+        ]
+      },
+      {
+        "state": 2,
+        "ordinal": 0,
+        "direction": [
+          -0.7,
+          0.7
+        ],
+        "length": 0.8,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 40
+          },
+          {
+            "time": 0.2,
+            "frame": 41
+          },
+          {
+            "time": 0.4,
+            "frame": 42
+          },
+          {
+            "time": 0.6,
+            "frame": 41
+          }
+        ]
+      },
+      {
+        "state": 2,
+        "ordinal": 1,
+        "direction": [
+          -0.7,
+          -0.7
+        ],
+        "length": 0.8,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 60
+          },
+          {
+            "time": 0.2,
+            "frame": 61
+          },
+          {
+            "time": 0.4,
+            "frame": 62
+          },
+          {
+            "time": 0.6,
+            "frame": 61
+          }
+        ]
+      },
+      {
+        "state": 2,
+        "ordinal": 2,
+        "direction": [
+          0.7,
+          -0.7
+        ],
+        "length": 0.8,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 70
+          },
+          {
+            "time": 0.2,
+            "frame": 71
+          },
+          {
+            "time": 0.4,
+            "frame": 72
+          },
+          {
+            "time": 0.6,
+            "frame": 71
+          }
+        ]
+      },
+      {
+        "state": 2,
+        "ordinal": 3,
+        "direction": [
+          0.7,
+          0.7
+        ],
+        "length": 0.8,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 50
+          },
+          {
+            "time": 0.2,
+            "frame": 51
+          },
+          {
+            "time": 0.4,
+            "frame": 52
+          },
+          {
+            "time": 0.6,
+            "frame": 51
+          }
+        ]
+      },
+      {
+        "state": 2,
+        "ordinal": 4,
+        "direction": [
+          0.0,
+          1.0
+        ],
+        "length": 0.8,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 0
+          },
+          {
+            "time": 0.2,
+            "frame": 1
+          },
+          {
+            "time": 0.4,
+            "frame": 2
+          },
+          {
+            "time": 0.6,
+            "frame": 1
+          }
+        ]
+      },
+      {
+        "state": 2,
+        "ordinal": 5,
+        "direction": [
+          -1.0,
+          0.0
+        ],
+        "length": 0.8,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 10
+          },
+          {
+            "time": 0.2,
+            "frame": 11
+          },
+          {
+            "time": 0.4,
+            "frame": 12
+          },
+          {
+            "time": 0.6,
+            "frame": 11
+          }
+        ]
+      },
+      {
+        "state": 2,
+        "ordinal": 6,
+        "direction": [
+          0.0,
+          -1.0
+        ],
+        "length": 0.8,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 30
+          },
+          {
+            "time": 0.2,
+            "frame": 31
+          },
+          {
+            "time": 0.4,
+            "frame": 32
+          },
+          {
+            "time": 0.6,
+            "frame": 31
+          }
+        ]
+      },
+      {
+        "state": 2,
+        "ordinal": 7,
+        "direction": [
+          1.0,
+          0.0
+        ],
+        "length": 0.8,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 20
+          },
+          {
+            "time": 0.2,
+            "frame": 21
+          },
+          {
+            "time": 0.4,
+            "frame": 22
+          },
+          {
+            "time": 0.6,
+            "frame": 21
+          }
+        ]
+      },
+      {
+        "state": 3,
+        "ordinal": 0,
+        "direction": [
+          0.0,
+          1.0
+        ],
+        "length": 0.5,
+        "loop": true,
+        "main": -1,
+        "special": -1,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 4
+          },
+          {
+            "time": 0.0833333,
+            "frame": 5
+          },
+          {
+            "time": 0.166667,
+            "frame": 6
+          },
+          {
+            "time": 0.25,
+            "frame": 7
+          },
+          {
+            "time": 0.333333,
+            "frame": 8
+          },
+          {
+            "time": 0.416667,
+            "frame": 9
+          }
+        ]
+      },
+      {
+        "state": 3,
+        "ordinal": 1,
+        "direction": [
+          0.0,
+          -1.0
+        ],
+        "length": 0.5,
+        "loop": true,
+        "main": -1,
+        "special": -1,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 34
+          },
+          {
+            "time": 0.0833333,
+            "frame": 35
+          },
+          {
+            "time": 0.166667,
+            "frame": 36
+          },
+          {
+            "time": 0.25,
+            "frame": 37
+          },
+          {
+            "time": 0.333333,
+            "frame": 38
+          },
+          {
+            "time": 0.416667,
+            "frame": 39
+          }
+        ]
+      },
+      {
+        "state": 3,
+        "ordinal": 2,
+        "direction": [
+          1.0,
+          0.0
+        ],
+        "length": 0.5,
+        "loop": true,
+        "main": -1,
+        "special": -1,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 24
+          },
+          {
+            "time": 0.0833333,
+            "frame": 25
+          },
+          {
+            "time": 0.166667,
+            "frame": 26
+          },
+          {
+            "time": 0.25,
+            "frame": 27
+          },
+          {
+            "time": 0.333333,
+            "frame": 28
+          },
+          {
+            "time": 0.416667,
+            "frame": 29
+          }
+        ]
+      },
+      {
+        "state": 3,
+        "ordinal": 3,
+        "direction": [
+          -1.0,
+          0.0
+        ],
+        "length": 0.5,
+        "loop": true,
+        "main": -1,
+        "special": -1,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 14
+          },
+          {
+            "time": 0.0833333,
+            "frame": 15
+          },
+          {
+            "time": 0.166667,
+            "frame": 16
+          },
+          {
+            "time": 0.25,
+            "frame": 17
+          },
+          {
+            "time": 0.333333,
+            "frame": 18
+          },
+          {
+            "time": 0.416667,
+            "frame": 19
+          }
+        ]
+      },
+      {
+        "state": 3,
+        "ordinal": 4,
+        "direction": [
+          0.6,
+          0.7
+        ],
+        "length": 0.5,
+        "loop": true,
+        "main": -1,
+        "special": -1,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 54
+          },
+          {
+            "time": 0.0833333,
+            "frame": 55
+          },
+          {
+            "time": 0.166667,
+            "frame": 56
+          },
+          {
+            "time": 0.25,
+            "frame": 57
+          },
+          {
+            "time": 0.333333,
+            "frame": 58
+          },
+          {
+            "time": 0.416667,
+            "frame": 59
+          }
+        ]
+      },
+      {
+        "state": 3,
+        "ordinal": 5,
+        "direction": [
+          -0.6,
+          0.7
+        ],
+        "length": 0.5,
+        "loop": true,
+        "main": -1,
+        "special": -1,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 44
+          },
+          {
+            "time": 0.0833333,
+            "frame": 45
+          },
+          {
+            "time": 0.166667,
+            "frame": 46
+          },
+          {
+            "time": 0.25,
+            "frame": 47
+          },
+          {
+            "time": 0.333333,
+            "frame": 48
+          },
+          {
+            "time": 0.416667,
+            "frame": 49
+          }
+        ]
+      },
+      {
+        "state": 3,
+        "ordinal": 6,
+        "direction": [
+          -0.6,
+          -0.7
+        ],
+        "length": 0.5,
+        "loop": true,
+        "main": -1,
+        "special": -1,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 64
+          },
+          {
+            "time": 0.0833333,
+            "frame": 65
+          },
+          {
+            "time": 0.166667,
+            "frame": 66
+          },
+          {
+            "time": 0.25,
+            "frame": 67
+          },
+          {
+            "time": 0.333333,
+            "frame": 68
+          },
+          {
+            "time": 0.416667,
+            "frame": 69
+          }
+        ]
+      },
+      {
+        "state": 3,
+        "ordinal": 7,
+        "direction": [
+          0.6,
+          -0.7
+        ],
+        "length": 0.5,
+        "loop": true,
+        "main": -1,
+        "special": -1,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 74
+          },
+          {
+            "time": 0.0833333,
+            "frame": 75
+          },
+          {
+            "time": 0.166667,
+            "frame": 76
+          },
+          {
+            "time": 0.25,
+            "frame": 77
+          },
+          {
+            "time": 0.333333,
+            "frame": 78
+          },
+          {
+            "time": 0.416667,
+            "frame": 79
+          }
+        ]
+      },
+      {
+        "state": 4,
+        "ordinal": 0,
+        "direction": [
+          0.0,
+          1.0
+        ],
+        "length": 0.0833333,
+        "loop": false,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 3
+          }
+        ]
+      },
+      {
+        "state": 4,
+        "ordinal": 1,
+        "direction": [
+          0.0,
+          -1.0
+        ],
+        "length": 0.0833333,
+        "loop": false,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 33
+          }
+        ]
+      },
+      {
+        "state": 4,
+        "ordinal": 2,
+        "direction": [
+          1.0,
+          0.0
+        ],
+        "length": 0.0833333,
+        "loop": false,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 23
+          }
+        ]
+      },
+      {
+        "state": 4,
+        "ordinal": 3,
+        "direction": [
+          -1.0,
+          0.0
+        ],
+        "length": 0.0833333,
+        "loop": false,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 13
+          }
+        ]
+      },
+      {
+        "state": 4,
+        "ordinal": 4,
+        "direction": [
+          0.6,
+          0.7
+        ],
+        "length": 0.0833333,
+        "loop": false,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 53
+          }
+        ]
+      },
+      {
+        "state": 4,
+        "ordinal": 5,
+        "direction": [
+          -0.6,
+          0.7
+        ],
+        "length": 0.0833333,
+        "loop": false,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 43
+          }
+        ]
+      },
+      {
+        "state": 4,
+        "ordinal": 6,
+        "direction": [
+          -0.6,
+          -0.7
+        ],
+        "length": 0.0833333,
+        "loop": false,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 63
+          }
+        ]
+      },
+      {
+        "state": 4,
+        "ordinal": 7,
+        "direction": [
+          0.6,
+          -0.7
+        ],
+        "length": 0.0833333,
+        "loop": false,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 73
+          }
+        ]
+      },
+      {
+        "state": 5,
+        "ordinal": 0,
+        "direction": [
+          0.0,
+          1.0
+        ],
+        "length": 20.0,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 100
+          },
+          {
+            "time": 0.1,
+            "frame": 1
+          },
+          {
+            "time": 4.6,
+            "frame": 100
+          },
+          {
+            "time": 4.7,
+            "frame": 1
+          },
+          {
+            "time": 4.8,
+            "frame": 100
+          },
+          {
+            "time": 4.9,
+            "frame": 1
+          }
+        ]
+      },
+      {
+        "state": 5,
+        "ordinal": 1,
+        "direction": [
+          1.0,
+          0.0
+        ],
+        "length": 20.0,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 120
+          },
+          {
+            "time": 0.1,
+            "frame": 21
+          },
+          {
+            "time": 4.6,
+            "frame": 120
+          },
+          {
+            "time": 4.7,
+            "frame": 21
+          },
+          {
+            "time": 4.8,
+            "frame": 120
+          },
+          {
+            "time": 4.9,
+            "frame": 21
+          }
+        ]
+      },
+      {
+        "state": 5,
+        "ordinal": 2,
+        "direction": [
+          -1.0,
+          0.0
+        ],
+        "length": 20.0,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 110
+          },
+          {
+            "time": 0.1,
+            "frame": 11
+          },
+          {
+            "time": 4.6,
+            "frame": 110
+          },
+          {
+            "time": 4.7,
+            "frame": 11
+          },
+          {
+            "time": 4.8,
+            "frame": 110
+          },
+          {
+            "time": 4.9,
+            "frame": 11
+          }
+        ]
+      },
+      {
+        "state": 5,
+        "ordinal": 3,
+        "direction": [
+          -0.6,
+          0.7
+        ],
+        "length": 20.0,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 140
+          },
+          {
+            "time": 0.1,
+            "frame": 41
+          },
+          {
+            "time": 4.6,
+            "frame": 140
+          },
+          {
+            "time": 4.7,
+            "frame": 41
+          },
+          {
+            "time": 4.8,
+            "frame": 140
+          },
+          {
+            "time": 4.9,
+            "frame": 41
+          }
+        ]
+      },
+      {
+        "state": 5,
+        "ordinal": 4,
+        "direction": [
+          0.6,
+          0.7
+        ],
+        "length": 20.0,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 150
+          },
+          {
+            "time": 0.1,
+            "frame": 51
+          },
+          {
+            "time": 4.6,
+            "frame": 150
+          },
+          {
+            "time": 4.7,
+            "frame": 51
+          },
+          {
+            "time": 4.8,
+            "frame": 150
+          },
+          {
+            "time": 4.9,
+            "frame": 51
+          }
+        ]
+      },
+      {
+        "state": 5,
+        "ordinal": 5,
+        "direction": [
+          0.0,
+          -1.0
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 31
+          }
+        ]
+      },
+      {
+        "state": 5,
+        "ordinal": 6,
+        "direction": [
+          0.6,
+          -0.7
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 71
+          }
+        ]
+      },
+      {
+        "state": 5,
+        "ordinal": 7,
+        "direction": [
+          -0.6,
+          -0.7
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 61
+          }
+        ]
+      },
+      {
+        "state": 6,
+        "ordinal": 0,
+        "direction": [
+          0.0,
+          1.0
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 102
+          }
+        ]
+      },
+      {
+        "state": 6,
+        "ordinal": 1,
+        "direction": [
+          1.0,
+          0.0
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 122
+          }
+        ]
+      },
+      {
+        "state": 6,
+        "ordinal": 2,
+        "direction": [
+          -1.0,
+          0.0
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 112
+          }
+        ]
+      },
+      {
+        "state": 6,
+        "ordinal": 3,
+        "direction": [
+          0.0,
+          -1.0
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 132
+          }
+        ]
+      },
+      {
+        "state": 6,
+        "ordinal": 4,
+        "direction": [
+          0.6,
+          -0.7
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 172
+          }
+        ]
+      },
+      {
+        "state": 6,
+        "ordinal": 5,
+        "direction": [
+          -0.6,
+          -0.7
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 162
+          }
+        ]
+      },
+      {
+        "state": 6,
+        "ordinal": 6,
+        "direction": [
+          0.6,
+          0.7
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 152
+          }
+        ]
+      },
+      {
+        "state": 6,
+        "ordinal": 7,
+        "direction": [
+          -0.6,
+          0.7
+        ],
+        "length": 0.1,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 142
+          }
+        ]
+      },
+      {
+        "state": 7,
+        "ordinal": 0,
+        "direction": [
+          0.0,
+          1.0
+        ],
+        "length": 1.2,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 101
+          },
+          {
+            "time": 0.3,
+            "frame": 102
+          },
+          {
+            "time": 0.6,
+            "frame": 103
+          },
+          {
+            "time": 0.9,
+            "frame": 102
+          }
+        ]
+      },
+      {
+        "state": 7,
+        "ordinal": 1,
+        "direction": [
+          0.0,
+          -1.0
+        ],
+        "length": 1.2,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 131
+          },
+          {
+            "time": 0.3,
+            "frame": 132
+          },
+          {
+            "time": 0.6,
+            "frame": 133
+          },
+          {
+            "time": 0.9,
+            "frame": 132
+          }
+        ]
+      },
+      {
+        "state": 7,
+        "ordinal": 2,
+        "direction": [
+          1.0,
+          0.0
+        ],
+        "length": 1.2,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 121
+          },
+          {
+            "time": 0.3,
+            "frame": 122
+          },
+          {
+            "time": 0.6,
+            "frame": 123
+          },
+          {
+            "time": 0.9,
+            "frame": 122
+          }
+        ]
+      },
+      {
+        "state": 7,
+        "ordinal": 3,
+        "direction": [
+          -1.0,
+          0.0
+        ],
+        "length": 1.2,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 111
+          },
+          {
+            "time": 0.3,
+            "frame": 112
+          },
+          {
+            "time": 0.6,
+            "frame": 113
+          },
+          {
+            "time": 0.9,
+            "frame": 112
+          }
+        ]
+      },
+      {
+        "state": 7,
+        "ordinal": 4,
+        "direction": [
+          0.6,
+          0.7
+        ],
+        "length": 1.2,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 151
+          },
+          {
+            "time": 0.3,
+            "frame": 152
+          },
+          {
+            "time": 0.6,
+            "frame": 153
+          },
+          {
+            "time": 0.9,
+            "frame": 152
+          }
+        ]
+      },
+      {
+        "state": 7,
+        "ordinal": 5,
+        "direction": [
+          -0.6,
+          0.7
+        ],
+        "length": 1.2,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 141
+          },
+          {
+            "time": 0.3,
+            "frame": 142
+          },
+          {
+            "time": 0.6,
+            "frame": 143
+          },
+          {
+            "time": 0.9,
+            "frame": 142
+          }
+        ]
+      },
+      {
+        "state": 7,
+        "ordinal": 6,
+        "direction": [
+          0.6,
+          -0.7
+        ],
+        "length": 1.2,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 171
+          },
+          {
+            "time": 0.3,
+            "frame": 172
+          },
+          {
+            "time": 0.6,
+            "frame": 173
+          },
+          {
+            "time": 0.9,
+            "frame": 172
+          }
+        ]
+      },
+      {
+        "state": 7,
+        "ordinal": 7,
+        "direction": [
+          -0.6,
+          -0.7
+        ],
+        "length": 1.2,
+        "loop": true,
+        "main": 1,
+        "special": 0,
+        "keys": [
+          {
+            "time": 0.0,
+            "frame": 161
+          },
+          {
+            "time": 0.3,
+            "frame": 162
+          },
+          {
+            "time": 0.6,
+            "frame": 163
+          },
+          {
+            "time": 0.9,
+            "frame": 162
+          }
+        ]
+      }
+    ]
+  },
+  "bytes": 4087,
+  "sha256": "c10cc5ebbb30762e9447ef49614ede49f9c3106de248d8878e8b73193f1902d4"
+}

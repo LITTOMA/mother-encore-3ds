@@ -1,0 +1,33 @@
+{
+  "scope": "Atomic immutable metadata group loaded through real typed catalog and four frozen original packets; fixtures contain no new textures/audio. No live-world/render/audio/physics/hardware claim.",
+  "sources": {
+    "runtime/field_swing_resources.cpp": "fb1b470547d65f412451e1467cf3a02c84173cde2e9144dee3db35ead9a86ea5",
+    "include/encore/field_swing_resources.hpp": "3ccedccb18dad3273cc9b82b357c2d41941b0504acd39192f9de421b1c40a3f8",
+    "tests/prepare_swing_resources.py": "489cfa26a8020b01b5a7d83ae74ac53ef491faaaa01e3f761795dae5b9b8bdfd",
+    "tests/field_swing_resources_tests.cpp": "dd72ab3f2a03a70ff5eb6e4a184fdcbabbf9b451ba28f82169140f74b8a334ea",
+    "CMakeLists.txt": "1492b9831734ec2b7e74cf08109edab8ef24d30d817a4dd60637c9107df3369c",
+    "platform/ctr/Makefile": "666bfd5871ea5519ba880eecc81e94cfceeb489042a2bc16814fc83469041bca"
+  },
+  "fixture_catalog_sha256": "18940d61a619b7f8bf9aa4ce2db19c0a7b18716cd8a244d7816950eb8d2f7591",
+  "packets": {
+    "world/fixture/FieldSwing.encswing": "04dd99e2e3cab351a3b3b45334b715729b98a241a0f5c4390f42358fea47d97d",
+    "world/fixture/FieldSwingGraphics.encgraphics": "ca133fd28dd92b809991b4d929e5702a0ae82f85719ff2b4757de174d8af0bc1",
+    "world/fixture/FieldSwingAction.encaction": "08ddca4f3d1667f31f4a181803f9e53a16853fc59286fd3df96b5a98c46d9968",
+    "world/fixture/FieldSwingEntry.encentry": "c10cc5ebbb30762e9447ef49614ede49f9c3106de248d8878e8b73193f1902d4"
+  },
+  "compiler": "GCC9.4 WSL Ubuntu20.04",
+  "flags": "-std=c++17 -O0 -fsanitize=address,undefined -fno-omit-frame-pointer -fno-pie -no-pie -fno-exceptions -fno-rtti; test TU -Wall -Wextra -Werror",
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+  },
+  "result": "Swing resource owner: 111 checks; four real packets, typed catalog integrity, cross-binding rejection, immutable publication and action execution; metadata only\n",
+  "logs": {
+    "core.json": "defdcadf57db9e03746b0f73610775554e59a88be5940fc57cd941c7f508e9ca",
+    "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result.log": "87aed32c7ae78ac38d9333c3ad2d212eb01eddf3df56e7b33f34b7cd49c78c91",
+    "prepare.log": "884c84fa0cec8277503a0cc17fb1a06fc4519b6dd0baae326df5095dddd1afa5",
+    "python.log": "75c0bf94ef8518d5f977eb10fbcf50aef41a8596d2d4866610f2188be09a193d",
+    "partition.json": "166f1a1359672182b0e395671065014815dbfbdf65ae6ced97f07a19f2b05dbc"
+  }
+}

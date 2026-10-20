@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "kind": "encore.field-prop-audio.source-binding",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "props_recipe": "content/field-props.json",
+  "identity": {"kind": "stable", "value": 3176391583},
+  "pcm": "sound/effects/field-prop-3176391583.pcm",
+  "gain_db": 0,
+  "conversion": null,
+  "license_review": "Pinned upstream LICENSE permits use related to this game; original notices retained. Only source-derived PCM is distributed, no decoder binary or DSP firmware."
+}

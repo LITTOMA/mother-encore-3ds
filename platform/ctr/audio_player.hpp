@@ -7,7 +7,7 @@
 #include <string>
 
 namespace encore::ctr {
-enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5, Text=6, Phone=7, Run=8 };
+enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5, Text=6, Phone=7, Run=8, Player=9 };
 // Read-only snapshot of the existing bounded Music owner, not a inferred
 // source-player graph. generation identifies a successful Music start and never
 // resets across scene stop/reset/reinitialize; inactive snapshots retain it.
@@ -32,6 +32,9 @@ public:
     // admission and NDSP initialization do not read unused PCM payloads.
     bool prepare(uint32_t stable_audio_id,std::string& error);
     bool prepared(uint32_t stable_audio_id) const;
+    // Reserve the persistent player's independent pooled channel and bounded
+    // buffers before accepting input. No PCM read/start or BGM change occurs.
+    bool prepare_player_voice(std::string&);
     void shutdown();
     // Stop all voices/history while preserving checked streams and buffers.
     // Also safe when NDSP was unavailable; does not retry initialization.
@@ -50,6 +53,7 @@ public:
     const upstream::AudioBank&bank()const{return bank_;}
     uint64_t configuration_generation()const{return configuration_generation_;}
     bool set_user_volume(float master_db,float music_db,float sfx_db,std::string&);
+    float user_sfx_db()const{return user_sfx_db_;}
     MusicObservation observe_music() const;
     uint32_t lane_asset_id(AudioLane lane)const{const auto i=uint32_t(lane);return i<voices_.size()&&voices_[i].active?voices_[i].asset.stable_id:0;}
     // Loading cooperation only: feed existing queues and observe natural ends.
@@ -63,7 +67,7 @@ public:
     uint32_t dropped_frames() const{return ready_?ndspGetDroppedFrames():0;}
     uint32_t queued_frames() const{return queued_frames_;}
 private:
-    static constexpr uint32_t lane_count=9,buffer_count=3,buffer_frames=2048;
+    static constexpr uint32_t lane_count=10,buffer_count=3,buffer_frames=2048;
     struct Voice {
         upstream::AudioAsset asset{};
         upstream::AudioFade fade;
@@ -76,6 +80,8 @@ private:
     bool refill(uint32_t lane,std::string& error);
     void stop(uint32_t lane,bool release_channel=true);
     int hardware_channel(uint32_t lane)const;
+    static bool dynamic_lane(uint32_t lane){return lane==uint32_t(AudioLane::Run)||lane==uint32_t(AudioLane::Player);}
+    const void* channel_owner(uint32_t lane)const{return lane==uint32_t(AudioLane::Run)?static_cast<const void*>(this):static_cast<const void*>(&voices_[lane]);}
     void mix(uint32_t lane);
     upstream::AudioBank bank_;
     std::string asset_root_;

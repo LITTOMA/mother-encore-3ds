@@ -1,0 +1,16 @@
+Objects/Items/Item Sprite category prop owner Objects/Items/Item props {'show_behind_parent': True, 'script': ExtRef(id=1), 'button_prompt': NodePathValue(path='interact/ButtonPrompt'), 'position': Vec2(x=1432.0, y=4664.0), 'flag': 'got_shovel', 'item': 'Shovel'}
+Objects/Items/Item/Sprite Sprite category prop owner Objects/Items/Item props {'texture': ExtRef(id=2)}
+Objects/Items/Item/Sparkles AnimatedSprite category prop owner Objects/Items/Item props {'frames': SubRef(id=14), 'animation': 'Sparkle On', 'frame': 22, 'playing': True, 'script': ExtRef(id=2), 'position': Vec2(x=4.0, y=-4.0)}
+Objects/Items/Item/StaticBody2D StaticBody2D category prop owner Objects/Items/Item props {'visible': False, 'collision_layer': 4, 'collision_mask': 0}
+Objects/Items/Item/StaticBody2D/CollisionShape2D CollisionShape2D category prop owner Objects/Items/Item props {'shape': SubRef(id=2)}
+Objects/Items/Item/interact Area2D category prop owner Objects/Items/Item props {'z_index': 1, 'monitoring': False}
+Objects/Items/Item/interact/CollisionShape2D CollisionShape2D category prop owner Objects/Items/Item props {'visible': False, 'modulate': Color(r=0.0, g=1.0, b=0.717647, a=1.0), 'position': Vec2(x=-4.76837e-07, y=4.76837e-07), 'shape': SubRef(id=6)}
+Objects/Items/Item/interact/ButtonPrompt Node2D category prop owner Objects/Items/Item props {'material': SubRef(id=9), 'z_index': 1, 'script': ExtRef(id=3), 'position': Vec2(x=0.0, y=-8.0), 'offset': Vec2(x=0.0, y=-8.0)}
+Objects/Items/Item/interact/ButtonPrompt/HBoxContainer HBoxContainer category prop owner Objects/Items/Item props {'margin_left': -64.0, 'margin_top': -23.0, 'margin_right': 64.0, 'margin_bottom': -6.0, 'rect_pivot_offset': Vec2(x=64.0, y=23.0), 'alignment': 1}
+Objects/Items/Item/interact/ButtonPrompt/HBoxContainer/Label Label category prop owner Objects/Items/Item props {'margin_left': -4.0, 'margin_top': -19.0, 'margin_right': 3.0, 'margin_bottom': -8.0, 'custom_fonts/font': ExtRef(id=1), 'text': 'A', 'align': 1}
+Objects/Items/Item/interact/ButtonPrompt/Arrow TextureRect category prop owner Objects/Items/Item props {'use_parent_material': True, 'margin_left': 7.0, 'margin_top': -6.0, 'margin_right': 13.0, 'margin_bottom': 5.0, 'rect_rotation': 90.0, 'texture': ExtRef(id=2), 'stretch_mode': 3}
+Objects/Items/Item/interact/ButtonPrompt/AnimationPlayer AnimationPlayer category prop owner Objects/Items/Item props {'anims/Float': SubRef(id=1), 'anims/Hide': SubRef(id=4), 'anims/Press': SubRef(id=5), 'anims/RESET': SubRef(id=2), 'anims/Show': SubRef(id=3)}
+Objects/Items/Item/Tween Tween category prop owner Objects/Items/Item props {}
+Objects/Items/Item/Timer Timer category prop owner Objects/Items/Item props {'wait_time': 5.0}
+Objects/Items/Item/AnimationPlayer AnimationPlayer category prop owner Objects/Items/Item props {'playback_speed': 0.0, 'anims/RESET': SubRef(id=7), 'anims/blink': SubRef(id=8)}
+Shovel atlas source images []

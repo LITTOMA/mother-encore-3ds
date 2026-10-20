@@ -1,0 +1,80 @@
+[
+  {
+    "step": "story",
+    "returncode": 0,
+    "seconds": 13.271992921829224,
+    "log": "build\\full-port\\iggy-release-final-story.log"
+  },
+  {
+    "step": "room",
+    "returncode": 0,
+    "seconds": 10.831761598587036,
+    "log": "build\\full-port\\iggy-release-final-room.log"
+  },
+  {
+    "step": "session-extract",
+    "returncode": 0,
+    "seconds": 5.9836835861206055,
+    "log": "build\\full-port\\iggy-release-final-session-extract.log"
+  },
+  {
+    "step": "session-compile",
+    "returncode": 0,
+    "seconds": 5.895929574966431,
+    "log": "build\\full-port\\iggy-release-final-session-compile.log"
+  },
+  {
+    "step": "restore-extract",
+    "returncode": 0,
+    "seconds": 0.3541374206542969,
+    "log": "build\\full-port\\iggy-release-final-restore-extract.log"
+  },
+  {
+    "step": "restore-compile",
+    "returncode": 0,
+    "seconds": 0.31238484382629395,
+    "log": "build\\full-port\\iggy-release-final-restore-compile.log"
+  },
+  {
+    "step": "new-game",
+    "returncode": 0,
+    "seconds": 7.521572589874268,
+    "log": "build\\full-port\\iggy-release-final-new-game.log"
+  },
+  {
+    "step": "player-assets",
+    "returncode": 0,
+    "seconds": 2.6832997798919678,
+    "log": "build\\full-port\\iggy-release-final-player-assets.log"
+  },
+  {
+    "step": "audio",
+    "returncode": 0,
+    "seconds": 8.257548332214355,
+    "log": "build\\full-port\\iggy-release-final-audio.log"
+  },
+  {
+    "step": "localization",
+    "returncode": 0,
+    "seconds": 2.5477356910705566,
+    "log": "build\\full-port\\iggy-release-final-localization.log"
+  },
+  {
+    "step": "menus",
+    "returncode": 0,
+    "seconds": 0.5734708309173584,
+    "log": "build\\full-port\\iggy-release-final-menus.log"
+  },
+  {
+    "step": "catalog",
+    "returncode": 0,
+    "seconds": 0.44818973541259766,
+    "log": "build\\full-port\\iggy-release-final-catalog.log"
+  },
+  {
+    "step": "stage",
+    "returncode": 0,
+    "seconds": 59.36401557922363,
+    "log": "build\\full-port\\iggy-release-final-stage.log"
+  }
+]

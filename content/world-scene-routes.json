@@ -1,8 +1,8 @@
 {
-  "schema": 3,
+  "schema": 4,
   "kind": "encore.world-scene-routes.recipe",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Reviewed House/Podunk/Mayor route graph with independent Mayor steps and Podunk breakable-prop Ready/render ownership. Full graveyard interaction programmes remain separately gated.",
+  "scope": "Reviewed House/Podunk/Mayor route graph with independent Mayor steps and Podunk breakable-prop Ready/render ownership. Full graveyard interaction programmes remain separately gated. Source-owned DroppedItem ready/draw/delete companion; manual pickup and later quest callbacks remain separately gated.",
   "door": {
     "scene": "Nodes/Overworld/Door.tscn",
     "script": "Scripts/Main/Door.gd",
@@ -36,7 +36,8 @@
           329
         ],
         "steps": 0,
-        "props": 1031
+        "props": 1031,
+        "objects": 1032
       }
     },
     {
@@ -58,7 +59,8 @@
           326
         ],
         "steps": 1030,
-        "props": 0
+        "props": 0,
+        "objects": 0
       }
     }
   ],

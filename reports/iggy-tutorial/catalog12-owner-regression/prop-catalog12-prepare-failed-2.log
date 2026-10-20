@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\prepare-catalog12-artifact-fixture.py", line 6, in <module>
+    for first in range(0,len(paths),64):files.update(checked_resources(raw,source,paths[first:first+64],r))
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\emulator_artifact.py", line 19, in checked_resources
+    if not expected or len(expected)>4*1024*1024 or romfs.count(expected)!=1:raise ValueError('Artifact resource differs from exact source: '+relative)
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Artifact resource differs from exact source: romfs/ui/opening.encbars

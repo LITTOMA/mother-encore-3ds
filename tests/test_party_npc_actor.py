@@ -33,7 +33,7 @@ class PartyActor(unittest.TestCase):
   # every original route, Mayor NPC and music binding byte in the old fixture.
   legacy=copy.deepcopy(w.load());legacy['schema']=1
   for scene in legacy['scenes']:
-   if scene['map']:del scene['assets']['steps'];del scene['assets']['props']
+   if scene['map']:del scene['assets']['steps'];del scene['assets']['props'];del scene['assets']['objects']
    if scene['id']==2:
     self.assertEqual(scene['assets']['npcs'],[320,321,327,328,329]);scene['assets']['npcs']=[identity for identity in scene['assets']['npcs']if identity not in(327,328,329)]
   self.assertEqual(w.build(legacy)[0],(n.ROOT/'tests/fixtures/mayor-actor-routes.enclinks').read_bytes())

@@ -1,0 +1,15 @@
+{
+  "source_commit": "c95ade5a0ba689d1ffcdaf835ad806431e844080",
+  "run": 39305476368,
+  "artifact": 12214386780,
+  "selected_metadata_zip_crc_verified": true,
+  "full_archive_downloaded": false,
+  "archive_digest_declared_by_github": "sha256:7ca819295f2a31e1f786371a94fb19f0c30749c51231617e452da11f00949229",
+  "actual_f029_game_sha256": "9493fd99b80fd302e77a563395305b13fb75500ab364cedc3c12a60d885694d5",
+  "c95_declared_game": {
+    "bytes": 264875568,
+    "sha256": "292fe7ffe9f6a6cb009ee05631993c10e82e39a76bd5d9903ab4fb8517ef02a0"
+  },
+  "identical_actual_game": false,
+  "scope": "Only official build receipt/BUILD_INFO/SHA256SUMS fetched. Actual accepted f029 game compared to c95 receipt; no separate c95game download or fullarchivehash claim."
+}

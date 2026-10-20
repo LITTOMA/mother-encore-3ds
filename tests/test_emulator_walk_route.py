@@ -11,12 +11,18 @@ class EmulatorWalkRoute(unittest.TestCase):
   recipe=f.load_recipe();previous=json.loads((ROOT/'tests/fixtures/pre-cemetery-npcs.json').read_bytes())
   # The original route remains frozen against its actual three-NPC map.
   # Reconstruct that map from the same source using only its frozen owner list.
-  with patch.object(n,'load_policy',return_value=previous):c.previous_model=f.Model(recipe)
-  c.current_model=f.Model(recipe)
-  def encode(model):
+  with patch.object(n,'load_policy',return_value=previous):c.previous_model=f.Model(recipe,object_bindings={})
+  c.current_model=f.Model(recipe,object_bindings={})
+  def encode(model,area=None):
    atlases=f.Atlases(model);paths=[recipe['atlas_directory']+'/atlas-%02d.t3x'%i for i in range(len(atlases.pages))]
-   return f.encode_map(model,atlases,paths)
-  c.map=encode(c.previous_model);c.regenerated=encode(c.current_model)
+   return f.encode_map(model,atlases,paths,area=area)
+  c.map=encode(c.previous_model)
+  # Current publication also has the independently reviewed object and
+  # AreaRoom owners. The old walking fixture retains its original geometry.
+  from tools import field_objects_assets,field_area
+  policy=field_objects_assets.read(ROOT/recipe['objects_recipe'])
+  area,_=field_area.source(ROOT/policy['area_recipe'])
+  c.regenerated=encode(f.Model(recipe),area)
  def test_cemetery_owners_preserve_existing_route_geometry(self):
   import hashlib
   a,b=self.previous_model,self.current_model

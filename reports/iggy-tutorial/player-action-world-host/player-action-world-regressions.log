@@ -1,0 +1,61 @@
+Target world
+90,90,phrase0,BeginCutscene
+90,90,phrase0,BindActor
+90,90,phrase0,ActorPersistent
+90,90,phrase0,BindActor
+90,90,phrase0,ActorPersistent
+91,91,phrase0,StartWait
+91,91,phrase0,MusicFadeOut
+91,91,phrase0,SetTalker
+91,91,phrase0,AnimateActor
+150,150,phrase1,StartWait
+150,150,phrase1,TurnActor
+150,150,phrase1,ShakeActor
+150,150,phrase1,AnimateActor
+150,150,phrase1,ChangeCamera
+151,151,phrase1,MoveCamera
+240,240,phrase2,StartWait
+240,240,phrase2,CallObjectDeferred
+240,240,phrase2,EmoteActor
+300,300,phrase3,StartWait
+300,300,phrase3,ShakeActor
+330,330,phrase4,StartWait
+330,330,phrase4,MoveActor
+342,342,phrase5,StartWait
+342,342,phrase5,PlaySound
+342,342,phrase5,JumpActor
+342,342,phrase5,ShakeCamera
+372,372,phrase6,StartWait
+372,372,phrase6,MoveActor
+378,378,phrase7,StartWait
+378,378,phrase7,PlaySound
+378,378,phrase7,JumpActor
+378,378,phrase7,ShakeCamera
+381,381,phrase8,StartWait
+381,381,phrase8,MoveActor
+387,387,phrase9,StartWait
+387,387,phrase9,PlaySound
+387,387,phrase9,JumpActor
+387,387,phrase9,ShakeCamera
+393,393,phrase10,StartWait
+393,393,phrase10,MoveActor
+423,423,phrase11,StartWait
+423,423,phrase11,ShakeActor
+453,453,phrase12,StartWait
+453,453,phrase12,CallObjectDeferred
+453,453,phrase12,OverworldBattleMusic
+453,453,phrase12,MoveActor
+453,453,phrase12,JumpActor
+453,453,phrase12,QueueBattle
+474,474,phrase12,StopInteraction
+474,474,phrase12,SetTalker
+474,474,phrase12,RestoreActor
+474,474,phrase12,ReleaseBattleActor
+474,474,phrase12,CutsceneEnded
+474,474,phrase12,DialogueDone
+474,474,phrase12,RequestBattle
+13-phrase lamp_attack dispatched to real battle request: queue frame 362, request frame 383; audio5 typed requests (no playback)
+Target persistent_player
+Persistent player owner: 42 focused checks passed; current-house path and staged lifetime, no cross-scene activation claim.
+Target scene_player
+Scene player: 442 checks; six native transport outcomes, same object/camera across prepared rooms, old callback rejection and failed handoff preservation; shared core only

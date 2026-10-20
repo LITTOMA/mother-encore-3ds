@@ -34,7 +34,7 @@ struct FieldSprite {uint32_t picture=0;Vec2 position{};uint16_t w=0,h=0,flags=0,
 // LayerCells: a whole non-y-sorted layer in quadrant order. SortedLayerCells:
 // every cell of a y-sorted layer becomes its own sort entry. SortedLayer: a
 // non-y-sorted layer drawn whole at one sort key inside a y-sort group.
-enum class FieldItemKind:uint16_t {LayerCells=1,SortedLayerCells=2,Sprites=3,Player=4,SortedLayer=5,Actor=6};
+enum class FieldItemKind:uint16_t {LayerCells=1,SortedLayerCells=2,Sprites=3,Player=4,SortedLayer=5,Actor=6,OwnedObject=7};
 struct FieldItem {uint16_t kind=0;uint32_t first=0,count=0;float sort_y=0;uint32_t order=0;FieldSpan conditions;};
 enum class FieldGroupKind:uint32_t {Static=1,YSort=2};
 struct FieldGroup {uint32_t kind=0,first=0,count=0;};

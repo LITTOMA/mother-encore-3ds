@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\extend-room-object-opcode.py", line 6, in <module>
+    replace('include/encore/dialogue.hpp','EraseActor, GrantKeyItem\r\n','EraseActor, GrantKeyItem, QueueFreeStoryObject\r\n')
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\extend-room-object-opcode.py", line 4, in replace
+    p=r/name;s=p.read_bytes().decode('utf8');assert s.count(old)==1,(name,old,s.count(old));p.write_bytes(s.replace(old,new).encode('utf8'))
+                                                    ^^^^^^^^^^^^^^^
+AssertionError: ('include/encore/dialogue.hpp', 'EraseActor, GrantKeyItem\r\n', 0)

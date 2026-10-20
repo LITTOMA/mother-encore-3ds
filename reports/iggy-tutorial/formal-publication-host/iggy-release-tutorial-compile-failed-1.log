@@ -1,0 +1,7 @@
+tests/graveyard_tutorial_tests.cpp: In function ‘int main(int, char**)’:
+tests/graveyard_tutorial_tests.cpp:32:9: error: ‘tick’ cannot be used as a function
+   32 |    tick();
+      |         ^
+tests/graveyard_tutorial_tests.cpp:38:73: error: ‘tick’ cannot be used as a function
+   38 |     if(id!=last){last=id;++seen;for(unsigned hold=0;hold<6;++hold){tick();CHECK(w.pending_dialogue_id()==id);}}
+      |                                                                         ^

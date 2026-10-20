@@ -1,0 +1,19 @@
+test_assets_require_owned_outputs_and_matching_conversion_receipt (tests.test_field_swing_presentation.SwingPresentation.test_assets_require_owned_outputs_and_matching_conversion_receipt) ... ok
+test_binary_model_rejects_unknown_and_malformed_content (tests.test_field_swing_presentation.SwingPresentation.test_binary_model_rejects_unknown_and_malformed_content) ... ok
+test_recipe_schema_versions_paths_and_duplicate_fields_reject (tests.test_field_swing_presentation.SwingPresentation.test_recipe_schema_versions_paths_and_duplicate_fields_reject) ... ok
+test_source_model_and_actual_conversion_receipt (tests.test_field_swing_presentation.SwingPresentation.test_source_model_and_actual_conversion_receipt) ... ok
+test_actual_texture_conversion_receipt_matches_current_pixels (tests.test_field_swing_graphics.SwingGraphics.test_actual_texture_conversion_receipt_matches_current_pixels) ... ok
+test_every_packed_frame_has_exact_original_pixels (tests.test_field_swing_graphics.SwingGraphics.test_every_packed_frame_has_exact_original_pixels) ... ok
+test_permission_and_candidate_boundaries (tests.test_field_swing_graphics.SwingGraphics.test_permission_and_candidate_boundaries) ... ok
+test_repeat_conversion_is_byte_identical (tests.test_field_swing_graphics.SwingGraphics.test_repeat_conversion_is_byte_identical) ... ok
+test_source_sprite_origins_and_order_are_data (tests.test_field_swing_graphics.SwingGraphics.test_source_sprite_origins_and_order_are_data) ... ok
+test_unknown_recipe_and_wrong_source_bindings_reject (tests.test_field_swing_graphics.SwingGraphics.test_unknown_recipe_and_wrong_source_bindings_reject) ... ok
+test_actual_eight_bindings_and_frozen_candidate (tests.test_field_swing.FieldSwingTests.test_actual_eight_bindings_and_frozen_candidate) ... ok
+test_native_fixture_transport_and_scope (tests.test_field_swing.FieldSwingTests.test_native_fixture_transport_and_scope) ... ok
+test_recipe_schema_sources_and_identities_reject (tests.test_field_swing.FieldSwingTests.test_recipe_schema_sources_and_identities_reject) ... ok
+test_source_tracks_modes_callbacks_and_geometry_reject (tests.test_field_swing.FieldSwingTests.test_source_tracks_modes_callbacks_and_geometry_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 5.183s
+
+OK

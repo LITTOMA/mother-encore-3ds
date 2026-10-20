@@ -1,0 +1,54 @@
+{
+  "base": "aafff212c26cda42f32acebe871989e8b6fb7e7c",
+  "scope": "Python offline ready replay factoring only. No native changes, no formal object resource, no runtime redraw, no new emulator or hardware claim.",
+  "correction": "Supersedes the viewport Sparkles explanation in historical shovel candidate proof: Sparkles is consumed by offline ready replay, not the subsequent viewport ledger. Original raw records retained.",
+  "checks": {
+    "engine_operations": 3506,
+    "all_intermediate_values_and_states_exact": true,
+    "sparkles": 22,
+    "source_negative_python": 7,
+    "legacy_python": 16,
+    "stage_files": 374,
+    "method_collection": "1211=846+365",
+    "mick_ir_exact": true,
+    "mick_binary_exact": true,
+    "viewport_rows": 294
+  },
+  "ci_failure": {
+    "commit": "a92547c4aa6355a224fa1c76823ca5c5daea80c2",
+    "job": 118274569834,
+    "result": "GCC ordinary250/251: python_tools timeout1800.01; no full GCC sanitizer claim. This is not a source mismatch; intentional worker failures in runner self-tests are unrelated. Clang236/236 and console passed separately."
+  },
+  "sources": {
+    "tools/field_ready_rng.py": "b4449330a71f510c12892ba856f2cd3168d1ad0f38ae9d16c4a1648cd5d0197d",
+    "tools/mick_treats.py": "b19cb9acd77fef14c2133aa2ce3796a5ffb92375a6126adb11ebeb7e7a5f06b1",
+    "tests/test_field_ready_rng.py": "c418be2d4be6c13125ef9fed746519b81f03761795d2e63452449f789414a82b"
+  },
+  "reports": {
+    "a925-gcc-full.log": "4b69ec52814eeaab0df7d85e381f6eebeb432d2cd413b282600d0b6c0d2680ef",
+    "factor-ready-rng.py": "2b78fd2e3df137684bbc618e4d62554a9b751ed89311f6f2c26fd9fcf324f4a7",
+    "probe-ready-rng-1.py": "e8ba9dd6800747095c895a13a7b6d327109a918e28746eff891fa8cba7a4473b",
+    "readmit-ready-rng-receipt.py": "014bf7e76aa22a0283e92014366a8f012f931ff0f794ea1e13f406a35293147d",
+    "ready-rng-before.json": "e998e2dea738cf34f25526e92d30bf6fb0ddc782c4f1d704952e252c8663e5c3",
+    "ready-rng-before.log": "2cf16e524c6653ebd3c70217e6baa2fea87f89d7411f0f2d543e6b0c64526b6e",
+    "ready-rng-before.py": "8f1978dc308d12693fd95a8d187c36e5442739fe63a0fccc420208991c300afc",
+    "ready-rng-collection.json": "6820f064fe4f012089edfdaceae378ac0e00015e9251d46cef4ba67c5c1271f1",
+    "ready-rng-collection.log": "db6bca8be527cc5e681d153e7ddb4e259dc26db335b17a13f71ba60431d447b0",
+    "ready-rng-factor-change.log": "ca7829059bc3440129d461352bc295e98c52df45eb244c37d4076a15dbba74c4",
+    "ready-rng-factor-proof.json": "8aad70661d469cec7adeb54fb33a2933484a2e07b1a7d42908a75fd352b0e5fe",
+    "ready-rng-factor-verify-1.log": "d082d53d6bd9cf6cba49fded7e166af10aac3a2413a6c5b47e7bf76382d06b0a",
+    "ready-rng-factor-verify.py": "3989bee063df9bef7af19fe67c4dedcb386d840628c76ed8b0a276b1eb95f2fc",
+    "ready-rng-helper-1.log": "7680aa73556ebbdc4705870b5b2a6614a89ead63d76d3104575f9775a805ff7a",
+    "ready-rng-helper-1.py": "6e068ea370d02f75cf1ac2e8f12c99c0dc0cf135f4f85e8d9701c5391d4f68c6",
+    "ready-rng-legacy-python-1.log": "2f976937c6861b79a4d7261cf2a58ecfc1cb97f959c22cc7df4b106d9558f529",
+    "ready-rng-mick-compile.log": "62be3b390b160e8810ed30a4eb5a31c096b209c2522d06949016128e9f9426a2",
+    "ready-rng-mick-verify-1.log": "3285f7f747106dee142cd7a3f4663529bb9a89f5092ce2b7595091bb03fee0fc",
+    "ready-rng-mick-verify-2.log": "27fa7689fb49b5a3af6516059aca6d296ba5829a7691b1dc4e2f578f3a91a948",
+    "ready-rng-python-1.log": "99763965d05ac0b5294566b6b54d299357868673cb699aceccd98f3147be68ab",
+    "ready-rng-receipt-before.json": "db7fe4edad4a7bebadf54f65d8f470a01d165cb44af7b10312c622f94d754e47",
+    "ready-rng-receipt-update-proof.json": "81c314a9710c5dcdf62428cf120850910fc88317dfcd89cef78ae38abc2f8e96",
+    "ready-rng-receipt-update.log": "6f232c5a5f9189401cb495d852e17b86bab9d2f24c88d5ad926782b289c7995b",
+    "ready-rng-reference-driver-1.log": "24a72767af7ac833e170765f775037098e5a4d1681b4aa34d1c6bc5bd63dc45d",
+    "ready-rng-stage-1.log": "b51ed1262405d01a0758d7b8486a0f90bdf462d1ad712e16e3861182f502351c"
+  }
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 3200,
+    "locale": "en",
+    "speaker": "Iggy",
+    "body": "[@]Wow! You're a natural!",
+    "voice": "Audio/Sound effects/text/Adult.mp3"
+  },
+  {
+    "id": 3200,
+    "locale": "zh_Hans_CN",
+    "speaker": "伊基",
+    "body": "[@]哇！行啊你小子，你真是个天生的好手！",
+    "voice": "Audio/Sound effects/text/Adult.mp3"
+  },
+  {
+    "id": 3201,
+    "locale": "en",
+    "speaker": "Iggy",
+    "body": "[@]It took me years to master that skill.",
+    "voice": "Audio/Sound effects/text/Adult.mp3"
+  },
+  {
+    "id": 3201,
+    "locale": "zh_Hans_CN",
+    "speaker": "伊基",
+    "body": "[@]我可是花了好多年才学会那一招的。[WAIT@]你还蛮有天赋的嘛。",
+    "voice": "Audio/Sound effects/text/Adult.mp3"
+  },
+  {
+    "id": 3202,
+    "locale": "en",
+    "speaker": "Iggy",
+    "body": "[@]Oh thank heavens, it's okay.",
+    "voice": "Audio/Sound effects/text/Adult.mp3"
+  },
+  {
+    "id": 3202,
+    "locale": "zh_Hans_CN",
+    "speaker": "伊基",
+    "body": "[@]哦，谢天谢地，没问题了。",
+    "voice": "Audio/Sound effects/text/Adult.mp3"
+  },
+  {
+    "id": 3203,
+    "locale": "en",
+    "speaker": "Iggy",
+    "body": "[@]You have my gratitude, boy.[WAIT@]Now if you'll excuse me, I have some zombies to put down.",
+    "voice": "Audio/Sound effects/text/Adult.mp3"
+  },
+  {
+    "id": 3203,
+    "locale": "zh_Hans_CN",
+    "speaker": "伊基",
+    "body": "[@]小子，多谢你了。[WAIT@]那么先失陪了，那边还有几只丧尸要我去解决，不去可不行啊。",
+    "voice": "Audio/Sound effects/text/Adult.mp3"
+  },
+  {
+    "id": 3204,
+    "locale": "en",
+    "speaker": "Iggy",
+    "body": "[@]Oh, and you can keep the bat.[WAIT@]I don't need it anymore.",
+    "voice": "Audio/Sound effects/text/Adult.mp3"
+  },
+  {
+    "id": 3204,
+    "locale": "zh_Hans_CN",
+    "speaker": "伊基",
+    "body": "[@]对了，你可以留着这支球棒。[WAIT@]我已经不再需要它了。",
+    "voice": "Audio/Sound effects/text/Adult.mp3"
+  }
+]

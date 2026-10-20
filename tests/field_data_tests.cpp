@@ -15,7 +15,7 @@
 using namespace encore::upstream;
 namespace {
 unsigned checks=0;
-void check(bool ok,const char*why){++checks;if(!ok){std::cerr<<"Field data check "<<checks<<": "<<why<<'\n';std::exit(1);}}
+void check(bool ok,const std::string&why){++checks;if(!ok){std::cerr<<"Field data check "<<checks<<": "<<why<<'\n';std::exit(1);}}
 uint32_t get(const std::vector<uint8_t>&b,size_t p){return uint32_t(b[p])|(uint32_t(b[p+1])<<8)|(uint32_t(b[p+2])<<16)|(uint32_t(b[p+3])<<24);}
 void put(std::vector<uint8_t>&b,size_t p,uint32_t n){for(unsigned i=0;i<4;++i)b[p+i]=uint8_t(n>>(i*8));}
 void put16(std::vector<uint8_t>&b,size_t p,uint16_t n){b[p]=uint8_t(n);b[p+1]=uint8_t(n>>8);}
@@ -31,14 +31,14 @@ struct WallSource final:MotionObstacleSource {
 };
 }
 int main(int argc,char**argv){
-    check(argc==5,"podunk.encmap, world.enclinks, podunk.encroom and opening.encintro paths required");
+    check(argc==6,"map, links, room, introduction and independent Mick paths required");
     std::string error;
     std::vector<uint8_t> map_bytes,link_bytes;
-    check(encore::read_file(argv[1],map_bytes,8u*1024u*1024u,error),error.c_str());
-    check(encore::read_file(argv[2],link_bytes,64*1024,error),error.c_str());
+    check(encore::read_file(argv[1],map_bytes,8u*1024u*1024u,error),error);
+    check(encore::read_file(argv[2],link_bytes,64*1024,error),error);
 
     // ENCMAP01 admission and transactional rejection.
-    FieldMapData map;check(map.load(map_bytes.data(),map_bytes.size(),error),error.c_str());
+    FieldMapData map;check(map.load(map_bytes.data(),map_bytes.size(),error),error);
     const auto view=map.view();const auto layers=view.count(FieldMapSection::Layers),cells=view.count(FieldMapSection::Cells);
     check(view.capabilities()==3,"field actor and confirm boundary capabilities admitted");
     check(view.scene_id()!=0&&layers>0&&cells>0&&view.count(FieldMapSection::Groups)>0,"checked field map content");
@@ -101,7 +101,7 @@ int main(int argc,char**argv){
     }
 
     // ENCLNK01 admission and rejection.
-    WorldLinksData links;check(links.load(link_bytes.data(),link_bytes.size(),error),error.c_str());
+    WorldLinksData links;check(links.load(link_bytes.data(),link_bytes.size(),error),error);
     check(links.scene_count()>=2&&links.route_count()>=2,"checked world links content");
     const auto route_count=links.route_count();
     auto reject_links=[&](std::vector<uint8_t>b,const char*why,bool fix=true){if(fix)rehash(b);check(!links.load(b.data(),b.size(),error),why);check(links.route_count()==route_count,"failed links admission preserves previous bytes");};
@@ -140,15 +140,15 @@ int main(int argc,char**argv){
 
     // Live scene: spawn from the House route, walk, stop at a boundary, return home.
     {
-        RoomData room;check(room.load_file(argv[3],error),error.c_str());
-        IntroductionData fades;check(fades.load_file(argv[4],error),error.c_str());
+        RoomData room;check(room.load_file(argv[3],error),error);
+        IntroductionData fades;check(fades.load_file(argv[4],error),error);
         const auto house_route=links.find_route_from(1,"Doors/Podunk");check(house_route!=WorldLinksData::kNotFound,"House front door route");
         const auto route=links.route(house_route);
         auto scene=std::make_unique<FieldScene>();
         std::vector<bool> flags(room.view().flag_count(),false);
         check(!scene->prepare(room.view(),view,links,std::vector<bool>(1,false),route.destination,route.direction,{400,240},error),"flag table size mismatch rejected");
         scene=std::make_unique<FieldScene>();
-        check(scene->prepare(room.view(),view,links,flags,route.destination,route.direction,{400,240},error),error.c_str());
+        check(scene->prepare(room.view(),view,links,flags,route.destination,route.direction,{400,240},error),error);
         check(scene->world.house_paused()&&scene->phase()==FieldPhase::Transition,"field waits for the door fade-out");
         check(scene->finish_transition()&&scene->phase()==FieldPhase::Walking,"unpause at the fade-out boundary");
         auto step=[&](int x,int y){WalkInput in;in.x=int8_t(x);in.y=int8_t(y);
@@ -164,9 +164,9 @@ int main(int argc,char**argv){
         frames=0;uint32_t requested=WorldLinksData::kNotFound;
         while(requested==WorldLinksData::kNotFound&&frames++<600){const float dx=scene->world.player().position.x-route.destination.x;step(std::fabs(dx)>1?(dx<0?1:-1):0,std::fabs(dx)>1?0:-1);requested=scene->take_route();}
         check(requested!=WorldLinksData::kNotFound&&links.route(requested).to==1,"walking into the House door requests the return route");
-        SceneDoorTransition door;check(door.begin(links,requested,fades,error),error.c_str());
+        SceneDoorTransition door;check(door.begin(links,requested,fades,error),error);
         check(!door.swapped(error),"swap outside its boundary rejected");
-        door.cancel();check(door.begin(links,requested,fades,error),error.c_str());
+        door.cancel();check(door.begin(links,requested,fades,error),error);
         frames=0;while(door.phase()==SceneDoorPhase::FadeIn&&frames++<600)check(door.idle_frame(1.0/60,error),"fade-in");
         check(door.phase()==SceneDoorPhase::SwapRequested&&door.swapped(error),"swap at the end of the fade-in");
         bool unpause=false;frames=0;
@@ -177,13 +177,13 @@ int main(int argc,char**argv){
     // Confirm-only areas never act as proximity walls. A is guarded by the
     // source ability flag; the actual jump remains an explicit unsupported action.
     {
-        RoomData room;check(room.load_file(argv[3],error),error.c_str());
+        RoomData room;check(room.load_file(argv[3],error),error);
         std::vector<bool> flags(room.view().flag_count(),false);
         for(uint32_t i=0;i<room.view().flag_count();++i)if(room.view().string(room.view().flag(i).name_string)=="gave_treats")flags[i]=true;
         for(uint32_t i=0;i<view.count(FieldMapSection::Boundaries);++i){const auto b=view.boundary(i);
             if(b.kind!=uint16_t(FieldBoundaryKind::Confirm))continue;
             auto scene=std::make_unique<FieldScene>();
-            check(scene->prepare(room.view(),view,links,flags,b.center,{1,0},{400,240},error),error.c_str());
+            check(scene->prepare(room.view(),view,links,flags,b.center,{1,0},{400,240},error),error);
             check(scene->finish_transition()&&scene->after_physics(),"enter passive action area without a contact stop");
             check(scene->try_interaction(true,error)&&scene->phase()==FieldPhase::Walking,"no feather means no jump action or pause");
             check(scene->world.set_story_flag("eagle_feather",true,false)&&scene->refresh_conditions(error),"enable reviewed source ability");
@@ -196,7 +196,7 @@ int main(int argc,char**argv){
         }
         for(const Vec2 viewport:{Vec2{400,240},Vec2{320,180}}){
             auto scene=std::make_unique<FieldScene>();
-            check(scene->prepare(room.view(),view,links,flags,{-392,480},{-1,0},viewport,error),error.c_str());
+            check(scene->prepare(room.view(),view,links,flags,{-392,480},{-1,0},viewport,error),error);
             check(scene->finish_transition(),"west road checkpoint starts walking");
             for(unsigned frame=0;frame<160;++frame){WalkInput input;input.x=-1;
                 check(scene->before_physics(input)&&scene->world.advance(input)&&scene->after_physics(),"normal west road movement");
@@ -213,11 +213,11 @@ int main(int argc,char**argv){
         const auto camera=view.camera(0);
         check(camera.center.x==2390&&camera.center.y==1308&&camera.extents.x==98&&camera.extents.y==188,"camera trigger includes ReferenceRect parent translation");
         check(camera.has_rect&&camera.left==1952&&camera.top==1064&&camera.width==520&&camera.height==456,"original ReferenceRect camera limits retained");
-        RoomData room;check(room.load_file(argv[3],error),error.c_str());
+        RoomData room;check(room.load_file(argv[3],error),error);
         std::vector<bool> flags(room.view().flag_count(),false);
         for(const Vec2 viewport:{Vec2{400,240},Vec2{320,180}}){
             auto scene=std::make_unique<FieldScene>();
-            check(scene->prepare(room.view(),view,links,flags,{314,279},{1,0},viewport,error),error.c_str());
+            check(scene->prepare(room.view(),view,links,flags,{314,279},{1,0},viewport,error),error);
             check(scene->finish_transition()&&scene->after_physics(),"camera bridge fixture initialized");
             auto follows=[&]{const auto p=scene->world.player().position;const auto o=scene->camera_origin(p,viewport);
                 check(o.x==std::floor(p.x-viewport.x*.5f)&&o.y==std::floor(p.y-viewport.y*.5f),"bridge camera follows player without distant limits");};
@@ -236,8 +236,8 @@ int main(int argc,char**argv){
     }
     // Telepathy follows the source facing ray; adjacency alone cannot select Mick.
     {
-        RoomData room;check(room.load_file(argv[3],error),error.c_str());MickData data;
-        std::string mick_path(argv[1]);const auto suffix=mick_path.rfind(".encmap");check(suffix!=std::string::npos,"map suffix");mick_path.replace(suffix,7,".encmick");check(data.load_file(mick_path.c_str(),error),error.c_str());
+        RoomData room;check(room.load_file(argv[3],error),error);MickData data;
+        check(data.load_file(argv[5],error),error);
         struct Host:MickHost {
             bool grant_key_item(std::string_view,uint32_t,std::string&e)override{e="Ray-only test host cannot grant keys";return false;}
             std::string body;bool validate_flag(std::string_view,std::string&)override{return true;}bool validate_item(std::string_view,std::string&)override{return true;}
@@ -245,10 +245,10 @@ int main(int argc,char**argv){
             bool show_text(std::string_view,std::string_view v,std::string&)override{body=std::string(v);return true;}bool play_sound(std::string_view,std::string&)override{return true;}
         }host;
         const auto actor=data.view().actor();const Vec2 position{actor.position.x,actor.position.y+14};std::vector<bool>flags(room.view().flag_count(),false);
-        auto scene=std::make_unique<FieldScene>();check(scene->prepare(room.view(),view,links,flags,position,{0,-1},{400,240},error),error.c_str());check(scene->finish_transition(),scene->error().c_str());check(!scene->try_telepathy({0,6},16,error),"unbound thoughts rejected");check(scene->bind_mick(data.view(),host,error),error.c_str());
+        auto scene=std::make_unique<FieldScene>();check(scene->prepare(room.view(),view,links,flags,position,{0,-1},{400,240},error),error);check(scene->finish_transition(),scene->error());check(!scene->try_telepathy({0,6},16,error),"unbound thoughts rejected");check(scene->bind_mick(data.view(),host,error),error);
         check(!scene->try_telepathy({NAN,6},16,error)&&scene->phase()==FieldPhase::Walking&&!scene->world.house_paused(),"invalid ray fails without pause");
-        check(scene->try_telepathy({0,6},16,error),error.c_str());const auto thoughts=host.body;check(scene->phase()==FieldPhase::MickTalk&&scene->world.house_paused(),"thought dialogue owns pause");check(!scene->try_telepathy({0,6},16,error),"cannot restart active thought dialogue");check(scene->mick().advance_text(error)&&scene->finish_talk(),"thought completion resumes world");
-        check(scene->world.set_house_direction({0,1}),"face away");check(scene->try_telepathy({0,6},16,error),error.c_str());check(host.body!=thoughts,"facing away uses source no-problem, not proximity thoughts");check(scene->mick().advance_text(error)&&scene->finish_talk(),"empty-ray dialogue resumes world");
+        check(scene->try_telepathy({0,6},16,error),error);const auto thoughts=host.body;check(scene->phase()==FieldPhase::MickTalk&&scene->world.house_paused(),"thought dialogue owns pause");check(!scene->try_telepathy({0,6},16,error),"cannot restart active thought dialogue");check(scene->mick().advance_text(error)&&scene->finish_talk(),"thought completion resumes world");
+        check(scene->world.set_house_direction({0,1}),"face away");check(scene->try_telepathy({0,6},16,error),error);check(host.body!=thoughts,"facing away uses source no-problem, not proximity thoughts");check(scene->mick().advance_text(error)&&scene->finish_talk(),"empty-ray dialogue resumes world");
     }
     std::cout<<"Field data/scene checks: "<<checks<<'\n';
     return 0;

@@ -220,7 +220,9 @@ bool npc_sprite_physics(ActorActionState& a,Vec2 direction,bool talking,bool ani
     next.animation_motion=motion;next.directional_animation=true;next.talking=talking;a=next;return true;
 }
 bool actor_turn(ActorActionState& a,Vec2 direction) {
-    if(!valid(a)||!finite(direction)||a.rotating)return false;
+    // Source Actor.set_direction writes immediately. A suspended turn_to keeps
+    // its captured angle/target and resumes from this newly written direction.
+    if(!valid(a)||!finite(direction))return false;
     a.direction=direction;blend(a,direction);return true;
 }
 bool actor_turn_to(ActorActionState& a,Vec2 direction,double interval,bool queue) {

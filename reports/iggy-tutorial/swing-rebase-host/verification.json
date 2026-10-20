@@ -1,0 +1,45 @@
+{
+  "scope": "Persistent inactive motion rebase only, preserving sparse properties/skill/counter. No live scene, physics, graphics/audio backend or hardware claim.",
+  "sources": {
+    "runtime/field_swing_entry.cpp": "4b53182a4b8a76e2e25c4f41bbb7b4ca5072db298b6280c07e0fe5d8e34c6bbd",
+    "runtime/field_swing_action.cpp": "b96b197c2c686c27078914f9988cfb049dddd7ceb30144068a1a1029b9e0af66",
+    "include/encore/field_swing_entry.hpp": "b4e75874905b52794fe5d39290e00f5437b9c159f71fe529089a3a348794ff6f",
+    "include/encore/field_swing_action.hpp": "81887a7faba0cfac9762a787a01ec3c82efcdfc5d17b7068d4e5cb5df9669cc5",
+    "tests/field_swing_rebase_tests.cpp": "03ebd04cbd752296002b5435cbbf7dbff2a51a675974ac340e5308bc0ae1b5fd",
+    "tests/test_field_swing_rebase.py": "1cf5b719fa2d4277ed386a3f4ec9facfe7eae378bc2dcf27a184b5b87e687a3c",
+    "tools/run_swing_rebase_reference.py": "0675f55373919114a01afad5f02cfa8506c84d09d314b72c639281f830bff522",
+    "CMakeLists.txt": "45b1f5e247da94c081b9c6c9b88196199c57120fd2ef248c8dccdc80a2906084"
+  },
+  "compiler": "GCC 9.4.0 WSL Ubuntu 20.04",
+  "flags": "-std=c++17 -O0 -fsanitize=address,undefined -fno-omit-frame-pointer -fno-pie -no-pie -fno-exceptions -fno-rtti; test TU -Wall -Wextra -Werror",
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+  },
+  "core": "All runtime sources and headers match actual compiled cache.",
+  "source_repeat": {
+    "runs": [
+      3,
+      4
+    ],
+    "observations_each": 6560,
+    "persistent_sequences_each": 8,
+    "sha256": "ec4a9fcd88279ccc8a1d922b8e10438138305f60e69554d5526a404c9a66d432",
+    "bytes": 669026
+  },
+  "result": "Swing rebase: 20044 checks; 6560 source observations in 8 persistent-player sequences; atomic motion handoff and sparse pose/selection/counter retention\n",
+  "logs": {
+    "core.json": "fb90f7549b0769daec87b67c3b837f3d4c0dd0f22f7577b0f010ee381f874977",
+    "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result.log": "26500e6158857dfbcb6423444d16750e6b4385c1d37084c5ffdcaeb2e0a5e079",
+    "entry-regression.log": "5036a072b13d8fd550cd60737db89053f57f7f10e193ff9ab444c3c07dcc04bd",
+    "action-regression.log": "b27e2115f3785b9c371fbfda7b4fd34737c3278d4c2168678cbe5161ed3b1e47",
+    "warnings.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "python.log": "f568f56af8a64e6db408883e26aa0a5736d96e432c883d6a9351dfef9d4de93e",
+    "partition.json": "74d1d6c298857a9f3ad0ba6d3cb525493d05bee87668bb9a5af91a234c32104f"
+  },
+  "notes": [
+    "First harness had an incorrect Python import and second a standalone SceneTree autoload identifier error; neither is accepted source evidence.",
+    "As in the prior action reference, the unchanged original Bat child _process(0) is called at capture to sample selected-skill visibility/frame deterministically. No full idle/physics scheduler claim."
+  ]
+}

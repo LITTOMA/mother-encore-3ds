@@ -1,0 +1,18 @@
+{
+  "f029": {
+    "source": "f0296baf53d03285975c0fe9aa1639943a831911",
+    "run": 39300111489,
+    "gcc_job": 118222788705,
+    "result": "GCC ordinary247/ASan+UBSan232 SUCCESS; Clang232/232 and genuine3DSX/CIA already retained in formal-f029-verification"
+  },
+  "c95": {
+    "source": "c95ade5a0ba689d1ffcdaf835ad806431e844080",
+    "run": 39305476368,
+    "clang_job": 118241290059,
+    "result": "Clang ordinary233/ASan+UBSan233 SUCCESS; GCC248/233 and genuine3DSX/CIA already retained in area-c95-verification"
+  },
+  "files_sha256": {
+    "c95-clang-full.log": "0160fe7661ce933b5febef5608b4601912f6092720066f6cf63c388e229a53de",
+    "f029-gcc-full.log": "7cd3359449e5051d60bfd235f1759b690d04d31a62dca9fcab6f46f5b95684dd"
+  }
+}

@@ -1,0 +1,758 @@
+{
+  "schema": 1,
+  "kind": "encore.graveyard-tutorial.lowered-candidate",
+  "review": "content/graveyard-tutorial.json",
+  "actors": {
+    "ninten": 0,
+    "iggy": 3
+  },
+  "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+  "boundary": "Cutscenes/Cutscene Area5",
+  "commands": [
+    {
+      "kind": "BeginCutscene",
+      "actor": null,
+      "phrase": 0
+    },
+    {
+      "kind": "BindActor",
+      "actor": "ninten",
+      "phrase": 0
+    },
+    {
+      "kind": "ActorPersistent",
+      "actor": "ninten",
+      "phrase": 0
+    },
+    {
+      "kind": "BindActor",
+      "actor": "iggy",
+      "phrase": 0
+    },
+    {
+      "kind": "ActorPersistent",
+      "actor": "iggy",
+      "phrase": 0
+    },
+    {
+      "kind": "YieldIdle",
+      "actor": null,
+      "phrase": 0
+    },
+    {
+      "kind": "SetTalker",
+      "actor": "iggy",
+      "phrase": 0
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 0,
+      "dialogue": 3100,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 0,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 0,
+      "flags": 0,
+      "target": 10
+    },
+    {
+      "kind": "ChangeCamera",
+      "actor": "iggy",
+      "phrase": 1,
+      "flags": 0
+    },
+    {
+      "kind": "YieldIdle",
+      "actor": null,
+      "phrase": 1
+    },
+    {
+      "kind": "ReturnCamera",
+      "actor": null,
+      "phrase": 1,
+      "duration": 1
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 1,
+      "dialogue": 3101,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 1,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 1,
+      "flags": 0,
+      "target": 16
+    },
+    {
+      "kind": "StartWait",
+      "actor": null,
+      "phrase": 2,
+      "duration": 3.5
+    },
+    {
+      "kind": "HideDialogue",
+      "actor": null,
+      "phrase": 2,
+      "flags": 1
+    },
+    {
+      "kind": "MoveActorPath",
+      "actor": "ninten",
+      "phrase": 2,
+      "path": {
+        "entries": [
+          {
+            "kind": 0,
+            "vector": [
+              1336,
+              4744
+            ],
+            "duration": 0
+          },
+          {
+            "kind": 0,
+            "vector": [
+              1376,
+              4744
+            ],
+            "duration": 0
+          }
+        ],
+        "speed": 32,
+        "flags": 0,
+        "animation": 4
+      }
+    },
+    {
+      "kind": "AwaitTimer",
+      "actor": null,
+      "phrase": 2
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 2,
+      "flags": 0,
+      "target": 21
+    },
+    {
+      "kind": "SetActorDirection",
+      "actor": "iggy",
+      "phrase": 3,
+      "vector": [
+        -1,
+        0
+      ]
+    },
+    {
+      "kind": "MoveCamera",
+      "actor": null,
+      "phrase": 3,
+      "vector": [
+        1404,
+        4744
+      ],
+      "duration": 1,
+      "target": 1
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 3,
+      "dialogue": 3102,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 3,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 3,
+      "flags": 0,
+      "target": 26
+    },
+    {
+      "kind": "TurnActor",
+      "actor": "iggy",
+      "phrase": 4,
+      "vector": [
+        1,
+        0
+      ],
+      "duration": 0.1,
+      "flags": 0
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 4,
+      "dialogue": 3103,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 4,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 4,
+      "flags": 0,
+      "target": 30
+    },
+    {
+      "kind": "StartWait",
+      "actor": null,
+      "phrase": 5,
+      "duration": 1
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 5,
+      "dialogue": 3104,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 5,
+      "flags": 1
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 5,
+      "flags": 0,
+      "target": 34
+    },
+    {
+      "kind": "TurnActor",
+      "actor": "iggy",
+      "phrase": 6,
+      "vector": [
+        -1,
+        0
+      ],
+      "duration": 0.1,
+      "flags": 0
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 6,
+      "dialogue": 3105,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 6,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 6,
+      "flags": 0,
+      "target": 38
+    },
+    {
+      "kind": "SetActorDirection",
+      "actor": "iggy",
+      "phrase": 7,
+      "vector": [
+        0,
+        -1
+      ]
+    },
+    {
+      "kind": "ChangeCamera",
+      "actor": null,
+      "phrase": 7,
+      "flags": 1
+    },
+    {
+      "kind": "YieldIdle",
+      "actor": null,
+      "phrase": 7
+    },
+    {
+      "kind": "MoveCamera",
+      "actor": null,
+      "phrase": 7,
+      "vector": [
+        1432,
+        4712
+      ],
+      "duration": 1,
+      "target": 1
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 7,
+      "dialogue": 3106,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 7,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 7,
+      "flags": 0,
+      "target": 45
+    },
+    {
+      "kind": "SetActorDirection",
+      "actor": "iggy",
+      "phrase": 8,
+      "vector": [
+        -1,
+        0
+      ]
+    },
+    {
+      "kind": "MoveCamera",
+      "actor": null,
+      "phrase": 8,
+      "vector": [
+        1404,
+        4744
+      ],
+      "duration": 1,
+      "target": 1
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 8,
+      "dialogue": 3107,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 8,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 8,
+      "flags": 0,
+      "target": 50
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 9,
+      "dialogue": 3108,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitChoices",
+      "actor": null,
+      "phrase": 9,
+      "choices": 0
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 10,
+      "dialogue": 3109,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 10,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 10,
+      "flags": 1,
+      "target": 50
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 11,
+      "dialogue": 3110,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 11,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 11,
+      "flags": 0,
+      "target": 58
+    },
+    {
+      "kind": "GrantKeyItem",
+      "actor": null,
+      "phrase": 12,
+      "item": "BatOld",
+      "value": 1
+    },
+    {
+      "kind": "SetTalker",
+      "actor": null,
+      "phrase": 12
+    },
+    {
+      "kind": "PlaySound",
+      "actor": null,
+      "phrase": 12,
+      "audio": "Audio/Sound effects/Item Received.mp3"
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": null,
+      "phrase": 12,
+      "dialogue": 3111,
+      "flags": 1
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 12,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 12,
+      "flags": 0,
+      "target": 64
+    },
+    {
+      "kind": "SetTalker",
+      "actor": "iggy",
+      "phrase": 13
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 13,
+      "dialogue": 3112,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 13,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 13,
+      "flags": 0,
+      "target": 68
+    },
+    {
+      "kind": "ShowDialogue",
+      "actor": "iggy",
+      "phrase": 14,
+      "dialogue": 3113,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "actor": null,
+      "phrase": 14,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "actor": null,
+      "phrase": 14,
+      "flags": 0,
+      "target": 71
+    },
+    {
+      "kind": "StartWait",
+      "actor": null,
+      "phrase": 15,
+      "duration": 3
+    },
+    {
+      "kind": "HideDialogue",
+      "actor": null,
+      "phrase": 15,
+      "flags": 1
+    },
+    {
+      "kind": "MoveActorPath",
+      "actor": "ninten",
+      "phrase": 15,
+      "path": {
+        "entries": [
+          {
+            "kind": 0,
+            "vector": [
+              1432,
+              4744
+            ],
+            "duration": 0
+          },
+          {
+            "kind": 0,
+            "vector": [
+              1432,
+              4719
+            ],
+            "duration": 0
+          }
+        ],
+        "speed": 32,
+        "flags": 0,
+        "animation": 4
+      }
+    },
+    {
+      "kind": "MoveActorPath",
+      "actor": "iggy",
+      "phrase": 15,
+      "path": {
+        "entries": [
+          {
+            "kind": 0,
+            "vector": [
+              1456,
+              4744
+            ],
+            "duration": 0
+          }
+        ],
+        "speed": 32,
+        "flags": 0,
+        "animation": 4
+      }
+    },
+    {
+      "kind": "TurnActor",
+      "actor": "iggy",
+      "phrase": 15,
+      "vector": [
+        0,
+        -1
+      ],
+      "duration": 0.1,
+      "flags": 1
+    },
+    {
+      "kind": "ChangeCamera",
+      "actor": "ninten",
+      "phrase": 15,
+      "flags": 0
+    },
+    {
+      "kind": "YieldIdle",
+      "actor": null,
+      "phrase": 15
+    },
+    {
+      "kind": "ReturnCamera",
+      "actor": null,
+      "phrase": 15,
+      "duration": 1
+    },
+    {
+      "kind": "SetFlag",
+      "actor": null,
+      "phrase": 15,
+      "flag": "bat",
+      "value": 1
+    },
+    {
+      "kind": "AwaitTimer",
+      "actor": null,
+      "phrase": 15
+    },
+    {
+      "kind": "HideDialogue",
+      "actor": null,
+      "phrase": 15,
+      "flags": 1
+    },
+    {
+      "kind": "SetTalker",
+      "actor": null,
+      "phrase": 15
+    },
+    {
+      "kind": "RestoreActor",
+      "actor": "ninten",
+      "phrase": 15
+    },
+    {
+      "kind": "RestoreActor",
+      "actor": "iggy",
+      "phrase": 15
+    },
+    {
+      "kind": "CutsceneEnded",
+      "actor": null,
+      "phrase": 15
+    },
+    {
+      "kind": "DialogueDone",
+      "actor": null,
+      "phrase": 15,
+      "duration": 0.5
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 3100,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "0"
+    },
+    {
+      "id": 3101,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "1"
+    },
+    {
+      "id": 3102,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "3"
+    },
+    {
+      "id": 3103,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "7"
+    },
+    {
+      "id": 3104,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "8"
+    },
+    {
+      "id": 3105,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "9"
+    },
+    {
+      "id": 3106,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "12"
+    },
+    {
+      "id": 3107,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "14"
+    },
+    {
+      "id": 3108,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "16"
+    },
+    {
+      "id": 3109,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "17"
+    },
+    {
+      "id": 3110,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "18"
+    },
+    {
+      "id": 3111,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "22"
+    },
+    {
+      "id": 3112,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "23"
+    },
+    {
+      "id": 3113,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_swing.yaml",
+      "label": "24"
+    }
+  ],
+  "groups": [
+    {
+      "id": "iggy-swing-choice-0",
+      "program_identity": "Podunk/cutscenes/gravedigger_swing",
+      "source_label": "16",
+      "program_command_count": 87,
+      "initial_selection": 0,
+      "cancel_target_pc": 52,
+      "options": [
+        {
+          "translation_key": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_16-OPT_0",
+          "text": "",
+          "target_pc": 55
+        },
+        {
+          "translation_key": "DIALOGUE_PODUNK_CUTSCENES_GRAVEDIGGER_SWING_16-OPT_1",
+          "text": "",
+          "target_pc": 52
+        }
+      ]
+    }
+  ],
+  "labels": {
+    "0": 6,
+    "1": 10,
+    "2": 16,
+    "3": 21,
+    "7": 26,
+    "8": 30,
+    "9": 34,
+    "12": 38,
+    "14": 45,
+    "16": 50,
+    "17": 52,
+    "18": 55,
+    "22": 58,
+    "23": 64,
+    "24": 68,
+    "29": 71
+  },
+  "terminal": 81,
+  "scope": "Full16-phrase source graph candidate. No shipping binding, action input/SE/render/contact or shovel/rescue claim. Source movecam default1s SineOut, missing voice clearsstream, showboxfalse closeswithsource default sound; values reviewed from pinned DialogueBox.gd."
+}

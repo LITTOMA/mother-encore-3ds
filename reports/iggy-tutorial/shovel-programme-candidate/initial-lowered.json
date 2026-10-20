@@ -1,0 +1,587 @@
+{
+  "actors": {
+    "ninten": 0,
+    "iggy": 3
+  },
+  "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_getshovel.yaml",
+  "boundary": "Cutscenes/Cutscene Area7",
+  "commands": [
+    {
+      "kind": "BeginCutscene",
+      "phrase": 0,
+      "actor": null
+    },
+    {
+      "kind": "BindActor",
+      "phrase": 0,
+      "actor": "ninten"
+    },
+    {
+      "kind": "ActorPersistent",
+      "phrase": 0,
+      "actor": "ninten"
+    },
+    {
+      "kind": "BindActor",
+      "phrase": 0,
+      "actor": "iggy"
+    },
+    {
+      "kind": "ActorPersistent",
+      "phrase": 0,
+      "actor": "iggy"
+    },
+    {
+      "kind": "YieldIdle",
+      "phrase": 0,
+      "actor": null
+    },
+    {
+      "kind": "SetTalker",
+      "phrase": 0,
+      "actor": "iggy"
+    },
+    {
+      "kind": "SetActorDirection",
+      "phrase": 0,
+      "actor": "iggy",
+      "vector": [
+        0,
+        -1
+      ]
+    },
+    {
+      "kind": "SetFlag",
+      "phrase": 0,
+      "actor": null,
+      "flag": "got_shovel",
+      "value": 1
+    },
+    {
+      "kind": "ShowDialogue",
+      "phrase": 0,
+      "actor": "iggy",
+      "dialogue": 3200,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "phrase": 0,
+      "actor": null,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "phrase": 0,
+      "actor": null,
+      "target": 12
+    },
+    {
+      "kind": "TurnActor",
+      "phrase": 1,
+      "actor": "ninten",
+      "vector": [
+        1,
+        1
+      ],
+      "duration": 0.1,
+      "flags": 0
+    },
+    {
+      "kind": "ChangeCamera",
+      "phrase": 1,
+      "actor": "iggy",
+      "flags": 0
+    },
+    {
+      "kind": "YieldIdle",
+      "phrase": 1,
+      "actor": null
+    },
+    {
+      "kind": "ReturnCamera",
+      "phrase": 1,
+      "actor": null,
+      "duration": 1
+    },
+    {
+      "kind": "ShowDialogue",
+      "phrase": 1,
+      "actor": "iggy",
+      "dialogue": 3201,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "phrase": 1,
+      "actor": null,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "phrase": 1,
+      "actor": null,
+      "target": 19
+    },
+    {
+      "kind": "StartWait",
+      "phrase": 2,
+      "actor": null,
+      "duration": 3
+    },
+    {
+      "kind": "HideDialogue",
+      "phrase": 2,
+      "actor": null,
+      "flags": 1
+    },
+    {
+      "kind": "MoveActorPath",
+      "phrase": 2,
+      "actor": "ninten",
+      "path": {
+        "entries": [
+          {
+            "kind": 1,
+            "vector": [
+              0,
+              0
+            ],
+            "duration": 0.5
+          },
+          {
+            "kind": 0,
+            "vector": [
+              1408,
+              4720
+            ],
+            "duration": 0
+          }
+        ],
+        "speed": 32,
+        "flags": 0,
+        "animation": 4
+      }
+    },
+    {
+      "kind": "MoveActorPath",
+      "phrase": 2,
+      "actor": "iggy",
+      "path": {
+        "entries": [
+          {
+            "kind": 0,
+            "vector": [
+              1432,
+              4744
+            ],
+            "duration": 0
+          },
+          {
+            "kind": 0,
+            "vector": [
+              1432,
+              4680
+            ],
+            "duration": 0
+          }
+        ],
+        "speed": 32,
+        "flags": 0,
+        "animation": 4
+      }
+    },
+    {
+      "kind": "TurnActor",
+      "phrase": 2,
+      "actor": "ninten",
+      "vector": [
+        0,
+        -1
+      ],
+      "duration": 0.1,
+      "flags": 1
+    },
+    {
+      "kind": "AwaitTimer",
+      "phrase": 2,
+      "actor": null
+    },
+    {
+      "kind": "Jump",
+      "phrase": 2,
+      "actor": null,
+      "target": 26
+    },
+    {
+      "kind": "QueueFreeStoryObject",
+      "phrase": 3,
+      "actor": null,
+      "object_path": "Objects/Items/Item",
+      "target": 208
+    },
+    {
+      "kind": "ShowDialogue",
+      "phrase": 3,
+      "actor": "iggy",
+      "dialogue": 3202,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "phrase": 3,
+      "actor": null,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "phrase": 3,
+      "actor": null,
+      "target": 30
+    },
+    {
+      "kind": "StartWait",
+      "phrase": 4,
+      "actor": null,
+      "duration": 2
+    },
+    {
+      "kind": "HideDialogue",
+      "phrase": 4,
+      "actor": null,
+      "flags": 1
+    },
+    {
+      "kind": "MoveActorPath",
+      "phrase": 4,
+      "actor": "iggy",
+      "path": {
+        "entries": [
+          {
+            "kind": 0,
+            "vector": [
+              1432,
+              4720
+            ],
+            "duration": 0
+          }
+        ],
+        "speed": 32,
+        "flags": 0,
+        "animation": 4
+      }
+    },
+    {
+      "kind": "TurnActor",
+      "phrase": 4,
+      "actor": "ninten",
+      "vector": [
+        1,
+        0
+      ],
+      "duration": 0.3,
+      "flags": 0
+    },
+    {
+      "kind": "TurnActor",
+      "phrase": 4,
+      "actor": "iggy",
+      "vector": [
+        -1,
+        0
+      ],
+      "duration": 0.1,
+      "flags": 1
+    },
+    {
+      "kind": "AwaitTimer",
+      "phrase": 4,
+      "actor": null
+    },
+    {
+      "kind": "Jump",
+      "phrase": 4,
+      "actor": null,
+      "target": 37
+    },
+    {
+      "kind": "ShowDialogue",
+      "phrase": 5,
+      "actor": "iggy",
+      "dialogue": 3203,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "phrase": 5,
+      "actor": null,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "phrase": 5,
+      "actor": null,
+      "target": 40
+    },
+    {
+      "kind": "StartWait",
+      "phrase": 6,
+      "actor": null,
+      "duration": 4
+    },
+    {
+      "kind": "HideDialogue",
+      "phrase": 6,
+      "actor": null,
+      "flags": 1
+    },
+    {
+      "kind": "MoveActorPath",
+      "phrase": 6,
+      "actor": "iggy",
+      "path": {
+        "entries": [
+          {
+            "kind": 0,
+            "vector": [
+              1432,
+              4744
+            ],
+            "duration": 0
+          },
+          {
+            "kind": 0,
+            "vector": [
+              1360,
+              4744
+            ],
+            "duration": 0
+          }
+        ],
+        "speed": 32,
+        "flags": 0,
+        "animation": 4
+      }
+    },
+    {
+      "kind": "TurnActor",
+      "phrase": 6,
+      "actor": "ninten",
+      "vector": [
+        -1,
+        1
+      ],
+      "duration": 0.5,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitTimer",
+      "phrase": 6,
+      "actor": null
+    },
+    {
+      "kind": "Jump",
+      "phrase": 6,
+      "actor": null,
+      "target": 46
+    },
+    {
+      "kind": "TurnActor",
+      "phrase": 7,
+      "actor": "iggy",
+      "vector": [
+        1,
+        0
+      ],
+      "duration": 0.1,
+      "flags": 0
+    },
+    {
+      "kind": "ChangeCamera",
+      "phrase": 7,
+      "actor": null,
+      "flags": 1
+    },
+    {
+      "kind": "YieldIdle",
+      "phrase": 7,
+      "actor": null
+    },
+    {
+      "kind": "ShowDialogue",
+      "phrase": 7,
+      "actor": "iggy",
+      "dialogue": 3204,
+      "flags": 0
+    },
+    {
+      "kind": "AwaitDialogue",
+      "phrase": 7,
+      "actor": null,
+      "flags": 0
+    },
+    {
+      "kind": "Jump",
+      "phrase": 7,
+      "actor": null,
+      "target": 52
+    },
+    {
+      "kind": "StartWait",
+      "phrase": 8,
+      "actor": null,
+      "duration": 4.5
+    },
+    {
+      "kind": "HideDialogue",
+      "phrase": 8,
+      "actor": null,
+      "flags": 1
+    },
+    {
+      "kind": "SetActorDirection",
+      "phrase": 8,
+      "actor": "ninten",
+      "vector": [
+        -1,
+        0
+      ]
+    },
+    {
+      "kind": "MoveActorPath",
+      "phrase": 8,
+      "actor": "iggy",
+      "path": {
+        "entries": [
+          {
+            "kind": 0,
+            "vector": [
+              1280,
+              4744
+            ],
+            "duration": 0
+          },
+          {
+            "kind": 0,
+            "vector": [
+              1280,
+              4600
+            ],
+            "duration": 0
+          }
+        ],
+        "speed": 48,
+        "flags": 0,
+        "animation": 4
+      }
+    },
+    {
+      "kind": "ChangeCamera",
+      "phrase": 8,
+      "actor": "ninten",
+      "flags": 0
+    },
+    {
+      "kind": "YieldIdle",
+      "phrase": 8,
+      "actor": null
+    },
+    {
+      "kind": "ReturnCamera",
+      "phrase": 8,
+      "actor": null,
+      "duration": 1
+    },
+    {
+      "kind": "AwaitTimer",
+      "phrase": 8,
+      "actor": null
+    },
+    {
+      "kind": "Jump",
+      "phrase": 8,
+      "actor": null,
+      "target": 61
+    },
+    {
+      "kind": "EraseActor",
+      "phrase": 9,
+      "actor": "iggy"
+    },
+    {
+      "kind": "SetFlag",
+      "phrase": 9,
+      "actor": null,
+      "flag": "returned_shovel",
+      "value": 1
+    },
+    {
+      "kind": "HideDialogue",
+      "phrase": 9,
+      "actor": null,
+      "flags": 1
+    },
+    {
+      "kind": "SetTalker",
+      "phrase": 9,
+      "actor": null
+    },
+    {
+      "kind": "RestoreActor",
+      "phrase": 9,
+      "actor": "ninten"
+    },
+    {
+      "kind": "CutsceneEnded",
+      "phrase": 9,
+      "actor": null
+    },
+    {
+      "kind": "DialogueDone",
+      "phrase": 9,
+      "actor": null,
+      "duration": 0.5
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 3200,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_getshovel.yaml",
+      "label": "0"
+    },
+    {
+      "id": 3201,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_getshovel.yaml",
+      "label": "1"
+    },
+    {
+      "id": 3202,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_getshovel.yaml",
+      "label": "3"
+    },
+    {
+      "id": 3203,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_getshovel.yaml",
+      "label": "5"
+    },
+    {
+      "id": 3204,
+      "source": "Data/Dialogue/Podunk/cutscenes/gravedigger_getshovel.yaml",
+      "label": "8"
+    }
+  ],
+  "labels": {
+    "0": 6,
+    "1": 12,
+    "2": 19,
+    "3": 26,
+    "4": 30,
+    "5": 37,
+    "7": 40,
+    "8": 46,
+    "10": 52,
+    "11": 61
+  },
+  "terminal": 63,
+  "groups": []
+}

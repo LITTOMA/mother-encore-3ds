@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "kind": "encore.player-assets.release-bindings",
+  "swing_output": "world/player/swing.encswing",
+  "atlas_receipt": "content/asset-receipts/graphics/world/player/swing/atlas.json",
+  "receipt": "content/asset-receipts/graphics/world/player/swing/resources.json",
+  "outline_shader": {
+    "path": "Shaders/Outline.shader",
+    "sha256": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999"
+  }
+}

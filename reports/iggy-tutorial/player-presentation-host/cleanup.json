@@ -1,0 +1,91 @@
+{
+  "scope": "Owned completed test binaries/fixtures only; raw logs, current accepted game/save, core object cache and compact atlas conversion retained",
+  "total_bytes": 640652537.0,
+  "records": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-action-audio-data-tests",
+      "bytes": 51198968.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-action-audio-ndsp-tests",
+      "bytes": 52015440.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-audio-regression-legacy",
+      "bytes": 51716448.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-audio-regression-ndsp",
+      "bytes": 51625560.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-audio-regression-run",
+      "bytes": 52567856.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-audio-regression-world",
+      "bytes": 51525528.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-presentation-fresh",
+      "bytes": 52584032.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-presentation-renderer",
+      "bytes": 51531216.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-presentation-props",
+      "bytes": 52438384.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-presentation-catalog",
+      "bytes": 51607208.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-presentation-legacy-catalog",
+      "bytes": 51126064.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-presentation-resources",
+      "bytes": 51241288.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-action-audio-fixture",
+      "bytes": 6501102.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-swing-resources-fixture",
+      "bytes": 6483357.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\player-catalog-fixture",
+      "bytes": 6478124.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\iggy-tutorial\\player-audio-candidate-1",
+      "bytes": 5981.0,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\iggy-tutorial\\player-audio-candidate-2",
+      "bytes": 5981.0,
+      "removed": true
+    }
+  ]
+}

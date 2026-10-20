@@ -5,7 +5,7 @@
 
 namespace encore::ctr {
 int AudioPlayer::hardware_channel(uint32_t lane)const{
- if(lane!=uint32_t(AudioLane::Run))return int(lane<4?lane:lane+16);
+ if(!dynamic_lane(lane))return int(lane<4?lane:lane+16);
  const auto channel=voices_[lane].channel;return channel<region_channel_pool::capacity?int(region_channel_pool::first_channel+channel):-1;
 }
 MusicObservation AudioPlayer::observe_music() const {
@@ -42,8 +42,9 @@ bool AudioPlayer::initialize(const char* bank_path,const char* root,std::string&
     ready_=true;error.clear();return true;
 }
 void AudioPlayer::shutdown(){
-    if(ndsp_initialized_){for(uint32_t i=0;i<lane_count-1;++i)if(i<4||voices_[i].samples)ndspChnWaveBufClear(hardware_channel(i));stop(uint32_t(AudioLane::Run));ndspExit();}
+    if(ndsp_initialized_){for(uint32_t i=0;i<uint32_t(AudioLane::Run);++i)if(i<4||voices_[i].samples)ndspChnWaveBufClear(hardware_channel(i));stop(uint32_t(AudioLane::Run));stop(uint32_t(AudioLane::Player));ndspExit();}
     auto&pool=region_channel_pool::owners();const auto channel=voices_[uint32_t(AudioLane::Run)].channel;if(channel<pool.size()&&pool[channel]==this)pool[channel]=nullptr;
+    const auto player_channel=voices_[uint32_t(AudioLane::Player)].channel;if(player_channel<pool.size()&&pool[player_channel]==channel_owner(uint32_t(AudioLane::Player)))pool[player_channel]=nullptr;
     ndsp_initialized_=ready_=false;
     for(auto& v:voices_){if(v.samples)linearFree(v.samples);v=Voice{};}
     for(auto& stream:streams_)stream.close();
@@ -65,6 +66,15 @@ bool AudioPlayer::prepared(uint32_t id)const{
     if(ready_)for(uint32_t i=0;i<bank_.count();++i)if(bank_.asset(i).stable_id==id)return streams_[i].is_open();
     return false;
 }
+bool AudioPlayer::prepare_player_voice(std::string&error){
+    if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
+    const auto lane=uint32_t(AudioLane::Player);auto&voice=voices_[lane];auto&pool=region_channel_pool::owners();auto channel=voice.channel;const auto*owner=channel_owner(lane);
+    if(channel<pool.size()&&pool[channel]!=owner){error="Player stream channel ownership rejected";return false;}
+    if(channel==pool.size()){channel=0;while(channel<pool.size()&&pool[channel])++channel;if(channel==pool.size()){error="Player stream channel capacity exhausted; existing audio preserved";return false;}}
+    if(!voice.samples){voice.samples=static_cast<int16_t*>(linearAlloc(buffer_count*buffer_frames*2*sizeof(int16_t)));if(!voice.samples){error="Player streaming-buffer allocation failed";return false;}}
+    if(voice.channel==pool.size()){if(pool[channel]){error="Player channel changed during preparation";return false;}voice.channel=channel;pool[channel]=owner;ndspChnReset(hardware_channel(lane));}
+    error.clear();return true;
+}
 void AudioPlayer::reset_scene(){
     // The immutable checked bank and open streams belong to the application,
     // not a gameplay scene. Stop NDSP before clearing its wave-buffer objects.
@@ -73,8 +83,8 @@ void AudioPlayer::reset_scene(){
     consumed_=0;submitted_=completed_=queued_frames_=0;
 }
 void AudioPlayer::stop(uint32_t lane,bool release_channel){
-    auto&voice=voices_[lane];const bool dynamic=lane==uint32_t(AudioLane::Run);auto&pool=region_channel_pool::owners();
-    const bool owned=!dynamic||(voice.channel<pool.size()&&pool[voice.channel]==this);
+    auto&voice=voices_[lane];const bool dynamic=dynamic_lane(lane);auto&pool=region_channel_pool::owners();
+    const bool owned=!dynamic||(voice.channel<pool.size()&&pool[voice.channel]==channel_owner(lane));
     if(owned&&ndsp_initialized_){ndspChnWaveBufClear(hardware_channel(lane));if(voice.paused)ndspChnSetPaused(hardware_channel(lane),false);}
     if(dynamic&&release_channel){if(owned)pool[voice.channel]=nullptr;voice.channel=region_channel_pool::capacity;}
     voice.active=voice.fading=voice.paused=false;
@@ -107,11 +117,11 @@ bool AudioPlayer::play(uint32_t id,AudioLane which,std::string& error,float gain
     uint32_t index=0;while(index<bank_.count()&&bank_.asset(index).stable_id!=id)++index;
     if(index==bank_.count()){error="Audio resource is absent from bank";return false;}
     for(uint32_t i=0;i<lane_count;++i)if(i!=lane&&voices_[i].active&&voices_[i].asset_index==index){error="Concurrent playback of one PCM asset across lanes is outside audio slice";return false;}
-    const bool dynamic=which==AudioLane::Run;auto&voice=voices_[lane];auto&pool=region_channel_pool::owners();uint32_t channel=voice.channel;
+    const bool dynamic=dynamic_lane(lane);auto&voice=voices_[lane];auto&pool=region_channel_pool::owners();uint32_t channel=voice.channel;const auto*owner=channel_owner(lane);
     if(dynamic){
-        if(!bank_.asset(index).loops()){error="Run stream must use checked loop metadata";return false;}
-        if(channel<pool.size()&&pool[channel]!=this){error="Run stream channel ownership rejected";return false;}
-        if(channel==pool.size()){channel=0;while(channel<pool.size()&&pool[channel])++channel;if(channel==pool.size()){error="Run stream channel capacity exhausted; existing audio preserved";return false;}}
+        if(which==AudioLane::Run&&!bank_.asset(index).loops()){error="Run stream must use checked loop metadata";return false;}
+        if(channel<pool.size()&&pool[channel]!=owner){error="Dynamic stream channel ownership rejected";return false;}
+        if(channel==pool.size()){channel=0;while(channel<pool.size()&&pool[channel])++channel;if(channel==pool.size()){error="Dynamic stream channel capacity exhausted; existing audio preserved";return false;}}
     }
     if(!prepare_index(index,error))return false; // Preserve a live voice when preparation fails.
     if(!voice.samples){
@@ -121,8 +131,8 @@ bool AudioPlayer::play(uint32_t id,AudioLane which,std::string& error,float gain
     }
     if(dynamic&&!streams_[index].rewind()){error="Cannot rewind audio stream";return false;}
     if(dynamic&&voice.channel==pool.size()){
-        if(pool[channel]){error="Run stream channel changed during preparation";return false;}
-        voice.channel=channel;pool[channel]=this;ndspChnReset(hardware_channel(lane));
+        if(pool[channel]){error="Dynamic stream channel changed during preparation";return false;}
+        voice.channel=channel;pool[channel]=owner;ndspChnReset(hardware_channel(lane));
     }
     stop(lane,false);voice.waves={};voice.asset=bank_.asset(index);voice.asset_index=index;voice.repeat=repeat;
     if(!dynamic&&!streams_[index].rewind()){error="Cannot rewind audio stream";return false;}
@@ -152,7 +162,7 @@ bool AudioPlayer::fade_all_music(double duration,std::string& error){
 bool AudioPlayer::stop_lane(AudioLane which,std::string& error){
     const auto lane=uint32_t(which);if(lane>=lane_count){error="Unsupported audio stop lane";return false;}
     if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
-    if(voices_[lane].samples)stop(lane);error.clear();return true;
+    if(voices_[lane].samples)stop(lane,which!=AudioLane::Player);error.clear();return true;
 }
 bool AudioPlayer::pause_lane(AudioLane lane,bool paused,std::string& error){
  if(uint32_t(lane)>=lane_count){error="Unsupported pause lane";return false;}

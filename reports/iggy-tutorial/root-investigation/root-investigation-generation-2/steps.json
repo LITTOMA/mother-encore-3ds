@@ -1,0 +1,40 @@
+[
+  {
+    "step": "restore",
+    "args": [
+      "tools/native_restore.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 0.3279999999795109
+  },
+  {
+    "step": "naming",
+    "args": [
+      "tools/new_game_assets.py",
+      "reuse-session",
+      "--base",
+      "73ae2c25549b6aba1bd580d0de07b6945f78a9d9"
+    ],
+    "returncode": 0,
+    "seconds": 9.579000000027008
+  },
+  {
+    "step": "catalog",
+    "args": [
+      "tools/resource_catalog.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 0.5150000000139698
+  },
+  {
+    "step": "stage",
+    "args": [
+      "tools/stage_native_romfs.py",
+      "--verify-only"
+    ],
+    "returncode": 0,
+    "seconds": 71.90599999995902
+  }
+]

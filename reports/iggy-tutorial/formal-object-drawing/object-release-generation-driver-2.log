@@ -1,0 +1,6 @@
+map 0
+props 0
+player 0
+session changed keys ['dependencies']
+restore changed keys []
+Actual map/props/player generation done; dependent candidates retained for semantic review before extraction.

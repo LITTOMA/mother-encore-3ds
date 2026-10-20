@@ -2,6 +2,7 @@
 #include "encore/field_story.hpp"
 #include "encore/field_steps.hpp"
 #include "encore/field_props.hpp"
+#include "encore/field_objects.hpp"
 #include "encore/mick_treats.hpp"
 #include "encore/music_zones.hpp"
 #include "encore/world_links.hpp"
@@ -19,6 +20,7 @@ public:
  const WorldSceneResources&bindings()const;
  RoomView room()const;FieldMapView map()const;FieldStoryView story()const;FieldStepsView steps()const;
  const FieldPropsData&props()const;
+ const FieldObjectsData&objects()const;
  MickView mick()const;uint32_t npc_count()const;MickView npc(uint32_t)const;
  const MusicRegionData&music()const;const MusicZones&zones()const;
 private:

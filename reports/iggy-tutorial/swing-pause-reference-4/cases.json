@@ -1,0 +1,282 @@
+[
+  {
+    "state": "Idle",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 0,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 1,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 10,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 23,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "direction": [
+      0,
+      -1
+    ],
+    "steps": 0,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "direction": [
+      0,
+      -1
+    ],
+    "steps": 1,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "direction": [
+      0,
+      -1
+    ],
+    "steps": 10,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Idle",
+    "direction": [
+      0,
+      -1
+    ],
+    "steps": 23,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 0,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 1,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 10,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 23,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      0,
+      -1
+    ],
+    "steps": 0,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      0,
+      -1
+    ],
+    "steps": 1,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      0,
+      -1
+    ],
+    "steps": 10,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      0,
+      -1
+    ],
+    "steps": 23,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Walk",
+    "direction": [
+      1,
+      0
+    ],
+    "steps": 0,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Walk",
+    "direction": [
+      1,
+      0
+    ],
+    "steps": 10,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "direction": [
+      1,
+      0
+    ],
+    "steps": 0,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "Crouch",
+    "direction": [
+      1,
+      0
+    ],
+    "steps": 10,
+    "start_idle": true,
+    "incapacitated": false
+  },
+  {
+    "state": "FaintedIdle",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 0,
+    "start_idle": true,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedIdle",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 10,
+    "start_idle": true,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedWalk",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 0,
+    "start_idle": true,
+    "incapacitated": true
+  },
+  {
+    "state": "FaintedWalk",
+    "direction": [
+      0,
+      1
+    ],
+    "steps": 10,
+    "start_idle": true,
+    "incapacitated": true
+  },
+  {
+    "state": "Run",
+    "direction": [
+      -1,
+      0
+    ],
+    "steps": 0,
+    "start_idle": false,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      -1,
+      0
+    ],
+    "steps": 1,
+    "start_idle": false,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      -1,
+      0
+    ],
+    "steps": 10,
+    "start_idle": false,
+    "incapacitated": false
+  },
+  {
+    "state": "Run",
+    "direction": [
+      -1,
+      0
+    ],
+    "steps": 23,
+    "start_idle": false,
+    "incapacitated": false
+  }
+]

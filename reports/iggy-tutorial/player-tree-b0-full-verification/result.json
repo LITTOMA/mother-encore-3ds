@@ -1,0 +1,34 @@
+{
+  "scope": "Historical b0 only; does not cover the new World/direction changes.",
+  "run": 39266888939,
+  "commit": "b0d550da15e75e3bc21f644f61aecda0e065a1c4",
+  "counts": {
+    "gcc": [
+      239,
+      224
+    ],
+    "clang": [
+      224,
+      224
+    ]
+  },
+  "console": "genuine 3DSX/CIA job118108686425 success",
+  "files": {
+    "player-tree-b0-clang-full.log": {
+      "bytes": 540178,
+      "sha256": "2f18c47fe29bad41389fbb64d396e678d67652631f09f9fb947f95f022f75fb5"
+    },
+    "player-tree-b0-console-full.log": {
+      "bytes": 675630,
+      "sha256": "2af7c8eda1993985504d9964a60e27745d6389de3fc9329f910d85489f650860"
+    },
+    "player-tree-b0-gcc-full.log": {
+      "bytes": 749430,
+      "sha256": "c1e38f87426e99e6ca3e62f29980bb8821fcd3d97cca58869660b7544374363a"
+    },
+    "player-tree-b0-run-complete.json": {
+      "bytes": 7701,
+      "sha256": "f82b7f70f06eb9e89e4525f4b0f2080939e888f001db0763e0e0b33deeb1d75a"
+    }
+  }
+}

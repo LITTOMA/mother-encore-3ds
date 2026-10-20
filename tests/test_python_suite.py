@@ -70,6 +70,17 @@ class Partition(unittest.TestCase):
         self.assertTrue(receipt['multiset_equal'])
     def test_missing_registration_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Missing dedicated'): self.plan([])
+    def test_phone_source_registration_owns_every_method_once(self):
+        registry = {'phone_linker_source': subject.DEDICATED['phone_linker_source']}
+        self.assertEqual(registry['phone_linker_source'], ('test_phone_linker',))
+        loader = Loader()
+        loader.full = ('test_phone_linker.Check.first', 'test_phone_linker.Check.last', 'test_new.Check.case')
+        metadata = [dict(name='phone_linker_source', command=['python', '-m', 'unittest', 'tests.test_phone_linker'])]
+        remaining, receipt = self.plan(metadata, loader, registry)
+        self.assertEqual([subject.identity(c) for c in subject.cases(remaining)], ['test_new.Check.case'])
+        self.assertEqual((receipt['discovered'], receipt['aggregate'], receipt['dedicated']), (3, 1, 2))
+        self.assertEqual(receipt['dedicated_ids']['phone_linker_source'], sorted(loader.full[:2]))
+        self.assertTrue(receipt['multiset_equal'])
     def test_changed_module_list_rejected(self):
         data=self.metadata(); data[0]['command'].pop()
         with self.assertRaisesRegex(ValueError, 'changed dedicated'): self.plan(data)

@@ -1,0 +1,523 @@
+{
+  "player": {
+    "layer": 1,
+    "mask": 4353,
+    "position": [
+      0.0,
+      3.0
+    ],
+    "points": [
+      [
+        6.0,
+        4.0
+      ],
+      [
+        4.0,
+        6.0
+      ],
+      [
+        -5.0,
+        6.0
+      ],
+      [
+        -7.0,
+        4.0
+      ],
+      [
+        -7.0,
+        2.0
+      ],
+      [
+        -5.0,
+        0.0
+      ],
+      [
+        4.0,
+        0.0
+      ],
+      [
+        6.0,
+        2.0
+      ]
+    ],
+    "center": [
+      -0.5,
+      6.0
+    ]
+  },
+  "keys": [
+    {
+      "owner": 2496629665,
+      "name": "Key1",
+      "flag": "Catacombs/Key1",
+      "position": [
+        -1472.0,
+        304.0
+      ],
+      "center": [
+        -1472.0,
+        306.0
+      ],
+      "extents": [
+        4.0,
+        4.0
+      ],
+      "layer": 1,
+      "mask": 1,
+      "bits": 6,
+      "margin": 1.0,
+      "hframes": 4,
+      "emit_flags": true
+    },
+    {
+      "owner": 231135771,
+      "name": "Key2",
+      "flag": "Catacombs/Key2",
+      "position": [
+        -1568.0,
+        304.0
+      ],
+      "center": [
+        -1568.0,
+        306.0
+      ],
+      "extents": [
+        4.0,
+        4.0
+      ],
+      "layer": 1,
+      "mask": 1,
+      "bits": 6,
+      "margin": 1.0,
+      "hframes": 4,
+      "emit_flags": true
+    },
+    {
+      "owner": 2059528845,
+      "name": "Key3",
+      "flag": "Catacombs/Key3",
+      "position": [
+        -1520.0,
+        304.0
+      ],
+      "center": [
+        -1520.0,
+        306.0
+      ],
+      "extents": [
+        4.0,
+        4.0
+      ],
+      "layer": 1,
+      "mask": 1,
+      "bits": 6,
+      "margin": 1.0,
+      "hframes": 4,
+      "emit_flags": true
+    }
+  ],
+  "parent": "Bottom2",
+  "cell_size": [
+    16.0,
+    16.0
+  ],
+  "key_script": "Scripts/Main/Small Key.gd",
+  "cases": [
+    {
+      "name": "enter_stay_leave_reenter_finish",
+      "target": 0,
+      "initial_inside": false,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "stay",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "finish",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": true
+        }
+      ]
+    },
+    {
+      "name": "paused_entry_consumed",
+      "target": 0,
+      "initial_inside": false,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "enter_paused",
+          "inside": true,
+          "other": false,
+          "paused": true,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "unpause_stay",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "finish",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": true
+        }
+      ]
+    },
+    {
+      "name": "other_body_ignored",
+      "target": 0,
+      "initial_inside": false,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "other",
+          "inside": true,
+          "other": true,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "player",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "filter_0_4353",
+      "target": 0,
+      "initial_inside": false,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 0,
+          "mask": 4353,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "filter_1_0",
+      "target": 0,
+      "initial_inside": false,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 0,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "filter_2_4353",
+      "target": 0,
+      "initial_inside": false,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 4353,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "filter_0_0",
+      "target": 0,
+      "initial_inside": false,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 0,
+          "mask": 0,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "filter_2_0",
+      "target": 0,
+      "initial_inside": false,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "enter",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 2,
+          "mask": 0,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "disabled_body",
+      "target": 0,
+      "initial_inside": false,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "disabled_inside",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": false,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "enable_inside",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "stay",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "initial_overlap_0",
+      "target": 0,
+      "initial_inside": true,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "inside",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "initial_overlap_1",
+      "target": 1,
+      "initial_inside": true,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "inside",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "initial_overlap_2",
+      "target": 2,
+      "initial_inside": true,
+      "initial_paused": false,
+      "saved": false,
+      "phases": [
+        {
+          "name": "inside",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "saved_initial_overlap",
+      "target": 0,
+      "initial_inside": true,
+      "initial_paused": false,
+      "saved": true,
+      "phases": [
+        {
+          "name": "inside",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        }
+      ]
+    },
+    {
+      "name": "initial_paused_overlap",
+      "target": 0,
+      "initial_inside": true,
+      "initial_paused": true,
+      "saved": false,
+      "phases": [
+        {
+          "name": "unpause_stay",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "leave",
+          "inside": false,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        },
+        {
+          "name": "reenter",
+          "inside": true,
+          "other": false,
+          "paused": false,
+          "enabled": true,
+          "layer": 1,
+          "mask": 4353,
+          "finish": false
+        }
+      ]
+    }
+  ]
+}

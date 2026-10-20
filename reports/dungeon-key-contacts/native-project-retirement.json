@@ -1,0 +1,39 @@
+{
+  "scope": "Only four owned completed source-reference project directories; evidence/SDK/upstream/DSP/games/protected assets retained",
+  "bytes": 130490.0,
+  "projects": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-contact-native-1\\project",
+      "bytes": 32482,
+      "reparse_free": true,
+      "marker_verified": true,
+      "files": 22,
+      "sha256_verified": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-contact-native-2\\project",
+      "bytes": 32482,
+      "reparse_free": true,
+      "marker_verified": true,
+      "files": 22,
+      "sha256_verified": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-contact-native-3\\project",
+      "bytes": 32763,
+      "reparse_free": true,
+      "marker_verified": true,
+      "files": 22,
+      "sha256_verified": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-contact-native-4\\project",
+      "bytes": 32763,
+      "reparse_free": true,
+      "marker_verified": true,
+      "files": 22,
+      "sha256_verified": true
+    }
+  ],
+  "utc": "2026-10-20T21:00:25.5236884Z"
+}

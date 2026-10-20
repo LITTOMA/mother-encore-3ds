@@ -8,6 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
+    runtime/dungeon_key_contacts.cpp
     runtime/dungeon_key_media.cpp
     runtime/dungeon_mechanism_bindings.cpp
     runtime/dungeon_mechanism_state.cpp
@@ -1233,6 +1234,12 @@ if(BUILD_TESTING)
     target_link_libraries(encore_dungeon_key_ndsp_tests PRIVATE encore_core)
     add_test(NAME dungeon_key_ndsp COMMAND encore_dungeon_key_ndsp_tests ${CMAKE_SOURCE_DIR}/romfs/sound/banks/opening.encaudio ${CMAKE_SOURCE_DIR}/romfs/ ${CMAKE_BINARY_DIR}/dungeon-key-media-fixture/source.enckmp ${CMAKE_BINARY_DIR}/dungeon-key-media-fixture ${CMAKE_BINARY_DIR}/dungeon-key-ndsp-pcm)
     set_tests_properties(dungeon_key_ndsp PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED dungeon_key_media_source)
+    add_test(NAME dungeon_key_contact_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_dungeon_key_contacts.py --out ${CMAKE_BINARY_DIR}/dungeon-key-contact-fixture)
+    set_tests_properties(dungeon_key_contact_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_SETUP dungeon_key_contact_source)
+    add_executable(encore_dungeon_key_contacts_tests tests/dungeon_key_contacts_tests.cpp)
+    target_link_libraries(encore_dungeon_key_contacts_tests PRIVATE encore_core)
+    add_test(NAME dungeon_key_contacts COMMAND encore_dungeon_key_contacts_tests ${CMAKE_BINARY_DIR}/dungeon-key-media-fixture/source.enckmp ${CMAKE_BINARY_DIR}/dungeon-key-contact-fixture/reference.tsv)
+    set_tests_properties(dungeon_key_contacts PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED "dungeon_key_media_source;dungeon_key_contact_source")
     add_test(NAME dungeon_switches_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_dungeon_switches.py --out ${CMAKE_BINARY_DIR}/dungeon-switches-fixture)
     set_tests_properties(dungeon_switches_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_SETUP dungeon_switch_metadata)
     add_executable(encore_dungeon_switches_tests tests/dungeon_switches_tests.cpp)

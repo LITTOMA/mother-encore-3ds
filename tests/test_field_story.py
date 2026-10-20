@@ -8,10 +8,11 @@ class FieldStoryTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
   cls.policy,_=story.read();recipe=podunk_field.load_recipe();model=podunk_field.Model(recipe);cls.room=native_content.parse_pack(podunk_field.build_room(recipe,model,recipe['house']['room_ir']))
-  from tools import graveyard_tutorial_programme,graveyard_shovel
-  cls.checked_dependencies=[(graveyard_tutorial_programme,ROOT/cls.policy['tutorial'],graveyard_tutorial_programme.read(ROOT/cls.policy['tutorial'])),(graveyard_shovel,ROOT/cls.policy['shovel'],graveyard_shovel.read(ROOT/cls.policy['shovel']))]
+  from tools import graveyard_tutorial_programme,graveyard_shovel,field_prop_dialogues
+  cls.metadata=story.build()
+  cls.checked_dependencies=[(graveyard_tutorial_programme,ROOT/cls.policy['tutorial'],graveyard_tutorial_programme.read(ROOT/cls.policy['tutorial'])),(graveyard_shovel,ROOT/cls.policy['shovel'],graveyard_shovel.read(ROOT/cls.policy['shovel'])),(field_prop_dialogues,ROOT/cls.policy['prop_dialogues'],field_prop_dialogues.read(ROOT/cls.policy['prop_dialogues']))]
  def test_source_programmes_and_metadata_reproduce(self):
-  self.assertEqual(story.build(),(ROOT/'romfs'/story.OUTPUT).read_bytes());self.assertEqual(len(self.room['sections']['Program']),10)
+  self.assertEqual(self.metadata,(ROOT/'romfs'/story.OUTPUT).read_bytes());self.assertEqual(len(self.room['sections']['Program']),10)
   self.assertEqual([self.room['strings'][p['source_path_string']]for p in self.room['sections']['Program']],['Podunk/cutscenes/bridge_fight','Podunk/cutscenes/pippismom_call','Podunk/cutscenes/pippismom_help','Podunk/pippismom','Podunk/iggy_forget','Podunk/cutscenes/graveyard_zombie_roots','Podunk/cutscenes/gravedigger_swing','Podunk/cutscenes/gravedigger_getshovel','Reusable/hardtobreak','Reusable/easytobreak'])
   self.assertEqual(self.room['sections']['Battle'][0]['stable_id'],4)
   self.assertEqual(self.room['sections']['Battle'][0]['actor_instance_index'],2)
@@ -67,7 +68,7 @@ class FieldStoryTests(unittest.TestCase):
    self.assertEqual(story.build(),(ROOT/'tests/fixtures/field_story_v2.encstory').read_bytes())
  def test_prop_source_policy_and_previous_schema_six_remain_explicit(self):
   from tools import field_prop_dialogues
-  blob=story.build();_,sections=podunk_field.unpack_container(blob,story.MAGIC,(1,24,36,40,12,32,1,52),128*1024,capability=5)
+  blob=self.metadata;_,sections=podunk_field.unpack_container(blob,story.MAGIC,(1,24,36,40,12,32,1,52),128*1024,capability=5)
   self.assertEqual((len(sections[1])//24,len(sections[2])//36,len(sections[7])),(10,70,52))
   self.assertEqual([struct.unpack_from('<I',sections[1],i*24+20)[0]for i in (8,9)],[2,2]);self.assertEqual(struct.unpack_from('<I',sections[7],48)[0],1)
   previous=copy.deepcopy(self.policy);previous['schema']=6;previous.pop('prop_dialogues')

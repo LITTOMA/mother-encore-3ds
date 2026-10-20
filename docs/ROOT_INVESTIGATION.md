@@ -62,8 +62,21 @@ recovery and tap-run cancellation.25 Python source/composition/legacy cases
 pass, including exact old metadata4 from recipe6. Earlier fixture failures
 and their source-geometry/timing explanations are retained separately.
 
-8956037's two ordinary simulator routes cover teaching, Bat/Root contact and
-complete getshovel. They do not cover these new A messages. Current full CI,
-genuine current3DSX/CIA and ordinary A-message verification are pending.
+61ea4ea's genuine3DSX/CIA and377 packaged resources passed. Its3DSX SHA256 is
+`fc6199d192be2ca55dcf64dcfa0bd13b427b41b6591ba61b340eae24ca5f596f`.
+Two ordinary-input cold boots now complete LOAD, House/field Goods, the full
+walk, different Iggy choice branches, the A/easy message3301, manual holds of
+5/18 published frames, closing UI, B/Root and all five getshovel texts. Hint
+inspection preserves flags, inventory and position. Both final gameplay
+projections match, with the original1408,4720 left-facing return and resumed
+movement. Memory writes were disabled and owned profiles were removed.
+The initial slot is the previously recorded artificial post-Mayor checkpoint;
+the false/hard hint branch is covered by native tests only. Screenshots, driver,
+observations and limits are retained under reports/iggy-tutorial.
+
+61ea's fullClang ordinary checks are254/259; its five fixture/source-budget
+failures are recorded separately and do not negate or replace the actual
+console/ordinary-input results. The component repairs and the new complete CI
+are tracked independently; no complete current CI pass is claimed here.
 Audibility, a natural-opening playthrough, an original Godot runtime oracle,
 physical hardware and the complete original game remain unverified.

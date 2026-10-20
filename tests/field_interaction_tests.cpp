@@ -36,13 +36,16 @@ void put(std::vector<uint8_t>&b,size_t at,uint32_t value){for(unsigned i=0;i<4;+
 void sign(std::vector<uint8_t>&b){put(b,16,encore::crc32(b.data()+32,b.size()-32));}
 }
 int main(int argc,char**argv){
- CHECK(argc==3||argc==4);const std::string root=argv[1];RoomData room;FieldMapData map;WorldLinksData links;ItemData items;FieldStoryData story,legacy;MickData npc;HouseData house;BattleData font;LocaleCatalog catalog;NewGameSetupData names;NativeSessionData session;
+ // This NPC/choice component uses the explicit pre-Root-A metadata fixture;
+ // its legacy map deliberately has no prop/contact owners. Current Root A
+ // admission, ray and missing-owner failures have their own scene suite.
+ CHECK(argc==4||argc==5);const std::string root=argv[1];RoomData room;FieldMapData map;WorldLinksData links;ItemData items;FieldStoryData story,legacy;MickData npc;HouseData house;BattleData font;LocaleCatalog catalog;NewGameSetupData names;NativeSessionData session;
  auto path=[&](const char*p){return root+"/"+p;};
- CHECK(room.load_file(path("world/podunk/podunk.encroom").c_str(),error));CHECK(map.load_file(argv[2],error));CHECK(links.load_file(path("world/world.enclinks").c_str(),error));CHECK(items.load_file(path("ui/opening.encitems").c_str(),error));CHECK(story.load_file(path("world/podunk/story.encstory").c_str(),error));CHECK(npc.load_file(argc==4?argv[3]:path("world/podunk/npcs/lindgren.encmick").c_str(),error));CHECK(house.load_file(path("world/house/opening.enchouse").c_str(),error));CHECK(font.load_file(path("battle/lamp/opening.encbattle").c_str(),error));CHECK(catalog.load_file(path("localization/localization.enclocale").c_str(),error));CHECK(names.load_file(path("ui/opening.encnewgame").c_str(),error));CHECK(session.load_file(path("session/opening.encsession").c_str(),error));
+ CHECK(room.load_file(path("world/podunk/podunk.encroom").c_str(),error));CHECK(map.load_file(argv[2],error));CHECK(links.load_file(path("world/world.enclinks").c_str(),error));CHECK(items.load_file(path("ui/opening.encitems").c_str(),error));CHECK(story.load_file(argv[3],error));CHECK(npc.load_file(argc==5?argv[4]:path("world/podunk/npcs/lindgren.encmick").c_str(),error));CHECK(house.load_file(path("world/house/opening.enchouse").c_str(),error));CHECK(font.load_file(path("battle/lamp/opening.encbattle").c_str(),error));CHECK(catalog.load_file(path("localization/localization.enclocale").c_str(),error));CHECK(names.load_file(path("ui/opening.encnewgame").c_str(),error));CHECK(session.load_file(path("session/opening.encsession").c_str(),error));
  CHECK(legacy.load_file("tests/fixtures/field_story_v1.encstory",error));CHECK(legacy.view().interaction_count()==0&&legacy.view().programme_count()==2);CHECK(legacy.view().bind(room.view(),map.view(),items.view(),error));
  const auto view=story.view();CHECK(view.interaction_count()==4);CHECK(view.bind(room.view(),map.view(),items.view(),error));
  {FieldStoryData previous;CHECK(previous.load_file("tests/fixtures/field_story_v2.encstory",error));CHECK(previous.view().interaction_count()==2&&!previous.view().choices());CHECK(previous.view().bind(room.view(),map.view(),items.view(),error));}
- std::vector<uint8_t>bytes;CHECK(encore::read_file(path("world/podunk/story.encstory").c_str(),bytes,128*1024,error));const auto at=get(bytes,64+5*16+4);
+ std::vector<uint8_t>bytes;CHECK(encore::read_file(argv[3],bytes,128*1024,error));CHECK(get(bytes,20)==4);const auto at=get(bytes,64+5*16+4);
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{20,1},{20,3},{20,5},{at,0},{at,63},{at+4,0},{at+16,4},{at+20,1},{at+8,UINT32_MAX},{at+32+4,0},{at+24,UINT32_MAX},{at+3*32+4,4}}){auto bad=bytes;put(bad,edit.first,edit.second);sign(bad);FieldStoryData candidate;const bool loaded=candidate.load(bad.data(),bad.size(),error);CHECK(!loaded||!candidate.view().bind(room.view(),map.view(),items.view(),error));}
  for(size_t n:{size_t(63),size_t(145),bytes.size()-1}){FieldStoryData candidate;CHECK(!candidate.load(bytes.data(),n,error));}
  RoomData home;BattleRoundData lamp;CHECK(home.load_file(path("world/house/opening.encroom").c_str(),error));CHECK(lamp.load_file(path("battle/lamp/opening.encround").c_str(),error));auto saved=session.defaults();bool help_found=false;
@@ -79,7 +82,11 @@ int main(int argc,char**argv){
   for(uint32_t i=0;i<call_flags.size();++i)if(room.view().string(room.view().flag(i).name_string)=="pippis_mom_call")call_flags[i]=false;
   CHECK(route.prepare(room.view(),map.view(),links,call_flags,{510,272},{1,0},{400,240},error));CHECK(route.bind_npc(npc.view(),route_motion,error));CHECK(route.bind_story(view,items.view(),route_host,error));CHECK(route.finish_transition());CHECK(route.world.begin_house_program(1));
   unsigned tick=0;for(;tick<2400&&route.world.stage()!=OpeningStage::Walking;++tick){WalkInput input;CHECK(route.before_physics(input)&&route.world.advance(input)&&route.after_physics()&&route.world.idle_frame(1.0/60));if(route.world.story_input_allowed())CHECK(route.world.finish_story_dialogue());}
-  CHECK(tick<2400&&route.world.story_flag("pippis_mom_call"));WalkInput input;CHECK(route.before_physics(input));CHECK(route.actor_pose(1).position.x==640&&route.actor_pose(1).position.y==304);
+  CHECK(tick<2400&&route.world.story_flag("pippis_mom_call"));
+  // RestoreActor releases the replaced Player on the following idle pass;
+  // a Walking stage alone does not yet admit another input in that frame.
+  CHECK(route.world.idle_frame(1.0/60));CHECK(!route.world.actor_bound(room.view().scene().player_instance_index));
+  WalkInput input;CHECK(route.before_physics(input));CHECK(route.actor_pose(1).position.x==640&&route.actor_pose(1).position.y==304);
   CHECK(route.world.warp_same_scene({640,283},{1,0}));CHECK(route.try_interaction(true,error)&&route.world.stage()==OpeningStage::Walking&&route_host.selected==UINT32_MAX);
   CHECK(route.world.warp_same_scene({640,288},{0,1}));CHECK(route.try_interaction(true,error)&&route.world.stage()==OpeningStage::ScriptRunning&&route_host.selected==2);
  }
@@ -91,7 +98,7 @@ int main(int argc,char**argv){
    if(field.world.story_input_allowed())CHECK(field.world.finish_story_dialogue());
    CHECK(field.idle_frame(1.0/60,false));
   }
-  CHECK(lines==unsigned(round?1:5));CHECK(field.world.stage()==OpeningStage::Walking&&field.world.story_flag("pippis_mom_help"));WalkInput input;CHECK(field.before_physics(input));CHECK(!field.world.actor_bound(1));CHECK(field.actor_pose(1).position.x==640&&field.actor_pose(1).position.y==272);CHECK(field.world.warp_same_scene({640,292},{0,-1}));
+  CHECK(lines==unsigned(round?1:5));CHECK(field.world.stage()==OpeningStage::Walking&&field.world.story_flag("pippis_mom_help"));CHECK(field.world.idle_frame(1.0/60));CHECK(!field.world.actor_bound(room.view().scene().player_instance_index));WalkInput input;CHECK(field.before_physics(input));CHECK(!field.world.actor_bound(1));CHECK(field.actor_pose(1).position.x==640&&field.actor_pose(1).position.y==272);CHECK(field.world.warp_same_scene({640,292},{0,-1}));
  }
  {
   MickData iggy;CHECK(iggy.load_file(path("world/podunk/npcs/iggy.encmick").c_str(),error));CHECK(iggy.view().interaction_policy());
@@ -108,14 +115,14 @@ int main(int argc,char**argv){
    while(choices.poll_event(event))if(event.kind==DialogueChoicesEventKind::Selected){CHECK(!select_field_story_choice(s.world,view,dialogue,choices,event.target_pc,generation+1,error));CHECK(select_field_story_choice(s.world,view,dialogue,choices,event.target_pc,generation,error));selected=true;}
    const auto id=route==0?3002u:3001u;CHECK(selected&&s.world.pending_dialogue_id()==id);
    for(unsigned i=0;i<30;++i){tick(s);CHECK(s.world.pending_dialogue_id()==id);}
-   present(id);CHECK(s.world.finish_story_dialogue());unsigned t=0;for(;t<600&&s.world.stage()!=OpeningStage::Walking;++t)tick(s);CHECK(t<600);
+   present(id);CHECK(s.world.finish_story_dialogue());unsigned t=0;for(;t<600&&s.world.stage()!=OpeningStage::Walking;++t)tick(s);CHECK(t<600);tick(s);CHECK(!s.world.actor_bound(room.view().scene().player_instance_index));
    for(uint32_t i=0;i<flags.size();++i)CHECK(s.world.story_flag(room.view().string(room.view().flag(i).name_string))==flags[i]);
    CHECK(s.world.warp_same_scene({1432,4758},{0,-1}));CHECK(s.before_physics(neutral));CHECK(s.try_interaction(true,error)&&s.world.pending_dialogue_id()==3000);
   }
   FieldScene blocked;Admission admission;MotionHost mh;auto later=flags;bool found=false;for(uint32_t i=0;i<later.size();++i)if(room.view().string(room.view().flag(i).name_string)=="got_shovel"){later[i]=true;found=true;}CHECK(found);
   CHECK(blocked.prepare(room.view(),map.view(),links,later,{1432,4758},{0,-1},{400,240},error));CHECK(blocked.bind_npc(iggy.view(),mh,error)&&blocked.bind_story(view,items.view(),admission,error)&&blocked.finish_transition());WalkInput neutral;CHECK(blocked.before_physics(neutral));CHECK(blocked.try_interaction(true,error));CHECK(blocked.phase()==FieldPhase::Unsupported&&blocked.error().find("iggy_return_shovel")!=std::string::npos);CHECK(blocked.idle_frame(1.0/60,true)&&blocked.phase()==FieldPhase::Walking);
  }
- if(argc==4){
+ if(argc==5){
   CHECK(npc.view().interaction_policy());
   auto step=[&](){WalkInput input;CHECK(field.before_physics(input));CHECK(field.world.advance(input));CHECK(field.after_physics());CHECK(field.world.idle_frame(1.0/60));CHECK(field.idle_frame(1.0/60,false));CHECK(field.world.end_scene_frame());};
   CHECK(field.world.warp_same_scene({660,272},{-1,0}));step();CHECK(field.actor_pose(1).direction.x>0&&field.actor_pose(1).direction.y==0);

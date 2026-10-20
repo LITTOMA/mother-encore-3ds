@@ -1,0 +1,121 @@
+{
+  "base": "90686d02db21e8ee8f37b817c6bee71586ac8d84",
+  "native_passed": [
+    {
+      "name": "field_interaction",
+      "source": "field_interaction",
+      "returncode": 0,
+      "args": [
+        "romfs",
+        "build/full-port/object-legacy-map-1/legacy.encmap",
+        "tests/fixtures/pre-prop-dialogue-story.encstory"
+      ],
+      "exe_bytes": 54077528,
+      "exe_sha256": "292e55958229bbb308e666e7a2227b98a087e94102e28efceb4b8440ec1af6fb"
+    },
+    {
+      "name": "field_interaction_policy",
+      "source": "field_interaction",
+      "returncode": 0,
+      "args": [
+        "romfs",
+        "build/full-port/object-legacy-map-1/legacy.encmap",
+        "tests/fixtures/pre-prop-dialogue-story.encstory",
+        "tests/fixtures/podunk-mom-interaction-policy.encmick"
+      ],
+      "exe_bytes": 54077528,
+      "exe_sha256": "292e55958229bbb308e666e7a2227b98a087e94102e28efceb4b8440ec1af6fb"
+    },
+    {
+      "name": "step_scene_resources",
+      "source": "step_scene_resources",
+      "returncode": 0,
+      "args": [
+        "build/full-port/root-step-fixture-compat-1",
+        "romfs"
+      ],
+      "exe_bytes": 52653408,
+      "exe_sha256": "8aff4fc06044f58ba2133317836e716b377048583f646f1669460def62401dd2"
+    },
+    {
+      "name": "world_run_audio",
+      "source": "world_run_audio",
+      "returncode": 0,
+      "args": [
+        "build/full-port/root-step-fixture-compat-1",
+        "tests/fixtures/mayor.encsteps",
+        "tests/fixtures/pause-audio.tsv",
+        "tests/fixtures/step-contacts.tsv"
+      ],
+      "exe_bytes": 53121968,
+      "exe_sha256": "32936450a5b77a426d10c9f71e3d4f8cb6360f217a10bf680bb8d4b9eae36906"
+    }
+  ],
+  "python_methods_preserved": [
+    "test_cemetery_binding_order_and_unknown_calls_reject",
+    "test_cemetery_source_mapping_and_runtime_version_negatives",
+    "test_checked_source_dialogues",
+    "test_formal_tutorial_preserves_old_room_tables_and_recipe_v4",
+    "test_previous_schema_two_remains_byte_identical",
+    "test_prop_source_policy_and_previous_schema_six_remain_explicit",
+    "test_source_npc_selection_and_rich_controls",
+    "test_source_programmes_and_metadata_reproduce",
+    "test_unknown_command_is_not_ignored",
+    "test_unknown_versions_fields_and_source_changes_fail_closed",
+    "test_unread_text_and_timer_modes_are_explicit"
+  ],
+  "python_passed": 11,
+  "python_seconds": 79.078,
+  "metadata": "Actual Windows CMake configuration/272CTest names and1255Python methods=889aggregate+366dedicated, exact unchanged identities. No native Windows build; native commands checked in actual generated CTestTestfile. Collector failures preserved, no invented commands.",
+  "scope": "NPC and schema2 stepping components explicitly use frozen original-generated Metadata4. Current Metadata5 admission and production resources unchanged. Next-idle replaced-Player release is observed before new NPC input; no engine guard bypass. Current metadata generation occurs once/class; old schema2/6 still actually generated.180s source budget unchanged.",
+  "failures": "61ea Clang254/259ordinary: four fixture mismatches and field_story_source180timeout, no full sanitizer. Native1 reached source guard with Player cleanup missing; fixed fixture idle boundary and asserted release. Native2 first3pass; last compile driver omitted actual CMake ENCORE_TEST_ROOM_PATH; Native3 fixes only that invocation and passes569. Collectors first attempted missing Windows native commands, then counted4vs5 generated branches; corrected by checking actual4configs+knownNOT_AVAILABLE else. All original logs retained.",
+  "old73ae": "GCC268/270ordinary; aggregate1800timeout andphone59countfail. Clang255ordinary+255sanitizer andconsole success recorded separately. Not a new complete pass.",
+  "source_sha256": {
+    "CMakeLists.txt": "5ac636b22f76530fe27357fdc05a51a0da6669aa8b51a61297f5c7cea4520c96",
+    "tests/field_interaction_tests.cpp": "f321bb0dc344f316800dd1430a4e37670c8d8b938341e1a243a8faaad6c25ea4",
+    "tests/prepare_step_resources.py": "46ed16004f1ce4d5973fb511c972b3b54ae701be1364d691f4989bbd7f033501",
+    "tests/test_field_story.py": "6e3d6e0b8807f4ee0e1ec9b3e7250a9ba4c7dee4057388dd2378535bd7b9c9d2"
+  },
+  "evidence_sha256": {
+    "collect-root-fixture-compat.py": "ab5cbeb71fe0b7a80d67b89dfa216891592b7d46bc331d9800e920df14a1299b",
+    "generated-CTestTestfile.cmake": "aa452d5252da8072dac5d60ac0e6c6f6cdc839e1904514daa64050b621370a84",
+    "root-fixture-compat-cmake-1.log": "c6f574db564c7610aa27873904011546d2424d204de7a78d8c396776bfe79030",
+    "root-fixture-compat-collection-2.log": "cca453e5446e03124332a3bc18cf78b1ff64d369751d7317c36e0a17944ad3af",
+    "root-fixture-compat-collection-3.log": "7feb883d003c3537dc65f9b83e55091a11f09e23f60260149997c8712e512acf",
+    "root-fixture-compat-collection.log": "eb038c957eaba650a5c75555a49babfe842141877d983c5eeb77ae73cdeed7f1",
+    "root-fixture-compat-ctest-debug.json": "bd9439c789b968f92ffb47bd41b596c08887168cb836234ab78b1fba4383ccc2",
+    "root-fixture-compat-native-1/field_interaction-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "root-fixture-compat-native-1/field_interaction-result.log": "1069bcfc209d724b95b7cb3e3e05826446582fb03ac96cdf66272a490dadbcce",
+    "root-fixture-compat-native-1/field_interaction_tests.cpp": "5b8e4fe5dbcc9081a8601a4b84136eb9b3111124f727bc732d70821b7694f8a9",
+    "root-fixture-compat-native-1/proof.json": "bb7211720d5a84ee2af3c35526afe6c9c8b31196f6fe0722f69f6eab35d2a7a8",
+    "root-fixture-compat-native-1.log": "7bb26eb8bb074f8b6da2e961b902f88896627d0881cfb573f56d46648042f8e7",
+    "root-fixture-compat-native-1.py": "b8bd4efc72680c37f46efe23f793df8259b716f7c596fb96dc9b8355fb82af39",
+    "root-fixture-compat-native-2/field_interaction-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "root-fixture-compat-native-2/field_interaction-result.log": "3adddcf9368eba186d2ef312a0c6ff07e087834a5839c28310f05a98a7e4e73a",
+    "root-fixture-compat-native-2/field_interaction_policy-result.log": "cedbf33bb00f99593fd0abfd415252e49c0fe39c5bd376d3a9dffc01e9c1042f",
+    "root-fixture-compat-native-2/field_interaction_tests.cpp": "f321bb0dc344f316800dd1430a4e37670c8d8b938341e1a243a8faaad6c25ea4",
+    "root-fixture-compat-native-2/proof.json": "5b4a2fc72e424fb58da37bbe3b703be872493b031c0f8cfdbb103620ac642526",
+    "root-fixture-compat-native-2/step_scene_resources-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "root-fixture-compat-native-2/step_scene_resources-result.log": "29937af2439a07086eed00aeef71d729cc0cb917c2978b91d5d82acbbfed2d78",
+    "root-fixture-compat-native-2/step_scene_resources_tests.cpp": "13c40923e69cd2863f308066429834ddc4630a6000d63062883dee85680b80dd",
+    "root-fixture-compat-native-2/world_run_audio-compile.log": "0fcc7c2b0c1d6b1b2d756f33e94104cbc949f521c3e4d94b224b6dbe2cde42f0",
+    "root-fixture-compat-native-2/world_run_audio_tests.cpp": "82f41d7c2212073fbeeaf9873c66918d981cf5d8807766d4051b97c5e2150bb4",
+    "root-fixture-compat-native-2.log": "8513420317137a34d7e8a1b6a16cf065681d8f3a560653d8c4eab8df1f4f45dc",
+    "root-fixture-compat-native-2.py": "45800b283261c6177905457cdd5f049a2a8926c8471579b46e8cc4f37c04e74a",
+    "root-fixture-compat-native-3/proof.json": "c3efdc2837c850ff62c76e09e17a79c7d87b9574c597d23ecb0a9e0295a49337",
+    "root-fixture-compat-native-3/world_run_audio-compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "root-fixture-compat-native-3/world_run_audio-result.log": "03b8a2cc8f8cb594550ea45c4acb0dfaa19efcfc9666c8d5e2845117cb9dfff3",
+    "root-fixture-compat-native-3/world_run_audio_tests.cpp": "82f41d7c2212073fbeeaf9873c66918d981cf5d8807766d4051b97c5e2150bb4",
+    "root-fixture-compat-native-3.log": "ef45e83c41b17781276296ddc810cbf31111054c4333ebb819146ce2f4e2ed7a",
+    "root-fixture-compat-native-3.py": "f1feeaaa8584f11ce1529a8fee5dbc59d53fd8fe57d30fca7a557199902a45e6",
+    "root-fixture-compat-plan.json": "f3ec416a3bb8d47e423db2dccb616a41fa5602deec7e25d4d70cfca26c1b3d04",
+    "root-step-fixture-compat-1.log": "c0bd4441123221c0130e3d4988cef9de1c4d520d2b4ffdf9ad19248e3eb126c0",
+    "root-story-source-dedup-1.log": "aaf112841b76a845f69d7010d840e6399f0a468f7576bde0c4fba45f3cb3f246",
+    "root61ea-clang.log": "d00de762e349a0b6cc8312a49ae5e2f6542c101236aa1e353c4b3ae21b3240dd",
+    "root73ae-gcc.log": "a4db0d8733dbe7ed5d612e3deae13484eb64e23ab0373f55adcd48bdfc3924f5",
+    "source/CMakeLists.txt": "5ac636b22f76530fe27357fdc05a51a0da6669aa8b51a61297f5c7cea4520c96",
+    "source/tests/field_interaction_tests.cpp": "f321bb0dc344f316800dd1430a4e37670c8d8b938341e1a243a8faaad6c25ea4",
+    "source/tests/prepare_step_resources.py": "46ed16004f1ce4d5973fb511c972b3b54ae701be1364d691f4989bbd7f033501",
+    "source/tests/test_field_story.py": "6e3d6e0b8807f4ee0e1ec9b3e7250a9ba4c7dee4057388dd2378535bd7b9c9d2"
+  }
+}

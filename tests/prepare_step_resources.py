@@ -18,6 +18,11 @@ def build(out):
     links,_=w.build(graph);_,metadata,_=s.source();metadata['scene']=2;packet=s.encode(metadata)
     for row in ir['bindings']:
         target=out/row['path'];target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/'romfs'/row['path'],target)
+    # This explicit schema2 graph has neither prop nor contact ownership. Use
+    # the original generated pre-Root-A metadata4 fixture, not current metadata5
+    # whose ray policy requires the exact live Props3 companion. Never trim a
+    # production packet or weaken the current scene admission to fit this test.
+    shutil.copyfile(ROOT/'tests/fixtures/pre-prop-dialogue-story.encstory',out/'world/podunk/story.encstory')
     target=out/'world/world.enclinks';target.write_bytes(links)
     # Rebuild the original two-scene map policy for this artificial graph.
     # A current shipping map would still require its real TownHall route3.

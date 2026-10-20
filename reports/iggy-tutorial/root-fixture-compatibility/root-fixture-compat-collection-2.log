@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\collect-root-fixture-compat.py", line 25, in <module>
+    assert len(lines)==4 and all('/tests/fixtures/pre-prop-dialogue-story.encstory"'in line for line in lines)
+           ^^^^^^^^^^^^^
+AssertionError

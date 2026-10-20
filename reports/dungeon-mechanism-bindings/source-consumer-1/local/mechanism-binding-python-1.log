@@ -1,0 +1,14 @@
+test_all_truncations_version_capability_pin_and_spans_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_all_truncations_version_capability_pin_and_spans_reject) ... ok
+test_binary_binding_identity_role_coverage_and_alias_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_binary_binding_identity_role_coverage_and_alias_reject) ... ok
+test_binary_profile_kind_span_and_nested_versions_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_binary_profile_kind_span_and_nested_versions_reject) ... ok
+test_duplicate_json_and_unsafe_candidate_output_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_duplicate_json_and_unsafe_candidate_output_reject) ... ok
+test_exact_source_join_and_independent_resource (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_exact_source_join_and_independent_resource) ... ok
+test_original_effective_child_order_and_duplicate_owner_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_original_effective_child_order_and_duplicate_owner_reject) ... ok
+test_review_dependency_and_structural_types_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_review_dependency_and_structural_types_reject) ... ok
+test_review_schema_pin_and_fields_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_review_schema_pin_and_fields_reject) ... ok
+test_review_source_roles_profile_and_owner_mismatches_reject (tests.test_dungeon_mechanism_bindings.MechanismBindings.test_review_source_roles_profile_and_owner_mismatches_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 9.022s
+
+OK

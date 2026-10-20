@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-mechanism-bindings.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Checked candidate bindings of existing audited graph owners to source animation profiles/roles in original effective child order. Source script methods and timelines already reviewed independently and combined against native source prefabs. No new scene, prepared media, physical contact, game-save or full-script admission.",
+  "dependencies": {
+    "graph": {
+      "path": "content/catacombs-switches.json",
+      "sha256": "9252882df47ec04c0354f01589dd0bb97730f4cf93f6ed58b73848228d97bfbf"
+    },
+    "property_clips": {
+      "path": "content/catacombs-switch-clips.json",
+      "sha256": "9b91c5a4cf38760151a0b9194d81a8160217a5e0d60271b10fa617ef5f7092b5"
+    },
+    "wall_timeline": {
+      "path": "content/catacombs-wall-timeline.json",
+      "sha256": "772018cc78bda100b8aafc71cc9d8595c25684f174dc754d45582af3c40ca348"
+    }
+  },
+  "profiles": [
+    {
+      "id": 1,
+      "kind": "properties",
+      "source_profile": 1,
+      "name": "lever",
+      "roles": {
+        "TurnOff": 1,
+        "TurnOn": 2
+      }
+    },
+    {
+      "id": 2,
+      "kind": "properties",
+      "source_profile": 2,
+      "name": "plate",
+      "roles": {
+        "TurnOff": 1,
+        "TurnOn": 2
+      }
+    },
+    {
+      "id": 3,
+      "kind": "properties",
+      "source_profile": 3,
+      "name": "gate",
+      "roles": {
+        "Off": 3,
+        "On": 4,
+        "StayOff": 5,
+        "StayOn": 6
+      }
+    },
+    {
+      "id": 4,
+      "kind": "wall",
+      "source_profile": 0,
+      "name": "wall",
+      "roles": {
+        "On": 4,
+        "StayOff": 5,
+        "StayOn": 6
+      }
+    }
+  ],
+  "bindings": [
+    {
+      "owner": 241544216,
+      "path": "Bottom2/switch",
+      "kind": "switch",
+      "profile": 1
+    },
+    {
+      "owner": 2428375629,
+      "path": "Bottom2/switch1",
+      "kind": "switch",
+      "profile": 1
+    },
+    {
+      "owner": 163005431,
+      "path": "Bottom2/switch2",
+      "kind": "switch",
+      "profile": 1
+    },
+    {
+      "owner": 422845226,
+      "path": "Bottom2/Plate1",
+      "kind": "switch",
+      "profile": 2
+    },
+    {
+      "owner": 1767829413,
+      "path": "Bottom2/Plate4",
+      "kind": "switch",
+      "profile": 2
+    },
+    {
+      "owner": 3761819854,
+      "path": "Bottom2/Wall Door",
+      "kind": "controlled",
+      "profile": 4
+    },
+    {
+      "owner": 1181235545,
+      "path": "Objects/Gate6",
+      "kind": "controlled",
+      "profile": 3
+    },
+    {
+      "owner": 906153430,
+      "path": "Objects/Gate3",
+      "kind": "controlled",
+      "profile": 3
+    },
+    {
+      "owner": 2714768478,
+      "path": "Objects/Gate8",
+      "kind": "controlled",
+      "profile": 3
+    },
+    {
+      "owner": 2825279605,
+      "path": "Objects/Gate4",
+      "kind": "controlled",
+      "profile": 3
+    },
+    {
+      "owner": 3747703011,
+      "path": "Objects/Gate5",
+      "kind": "controlled",
+      "profile": 3
+    },
+    {
+      "owner": 3604423880,
+      "path": "Objects/Gate9",
+      "kind": "controlled",
+      "profile": 3
+    },
+    {
+      "owner": 2842413199,
+      "path": "Objects/Gate10",
+      "kind": "controlled",
+      "profile": 3
+    },
+    {
+      "owner": 3731683353,
+      "path": "Objects/Gate11",
+      "kind": "controlled",
+      "profile": 3
+    }
+  ]
+}

@@ -1,0 +1,1927 @@
+{
+  "scope": "Six marked private source mechanism reference projects only. Original output, source adapters, actual logs and fingerprints retained. No release/media/game/save deletion.",
+  "targets": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\.owned-mechanism-timeline-reference",
+          "bytes": 28,
+          "sha256": "d8e729af35b1ca69a78bd914c3e7b53c300a6d5d8d7e1c03bf80390ff337544f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Audio\\Sound effects\\M3\\bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Nodes\\Overworld\\switches\\Lever.tscn",
+          "bytes": 2365,
+          "sha256": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Scripts\\Main\\FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Scripts\\Main\\Switches\\AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Scripts\\Main\\Switches\\ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Scripts\\Main\\Switches\\ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Scripts\\Main\\Switches\\ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Scripts\\Main\\Switches\\ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Scripts\\Main\\Switches\\TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Scripts\\Main\\Switches\\TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-1\\project\\Scripts\\misc\\wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        }
+      ],
+      "bytes": 41081
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.owned-mechanism-timeline-reference",
+          "bytes": 28,
+          "sha256": "d8e729af35b1ca69a78bd914c3e7b53c300a6d5d8d7e1c03bf80390ff337544f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\global.gd",
+          "bytes": 1148,
+          "sha256": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\input.json",
+          "bytes": 11509,
+          "sha256": "dfe8553d5f40443c0b0047a343eb751278c4848eb680eebc877dc199f07e4595"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\logged-audio.gd",
+          "bytes": 209,
+          "sha256": "01301eea447e1221d26221bab5aa3e91da377a6c63d51bf419c126181908d533"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\observations.json",
+          "bytes": 818297,
+          "sha256": "2613d6b2818ea48ad29c66a677393c4ac5e86c3d6980ce824f6e056068f2c18d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\probe.gd",
+          "bytes": 6144,
+          "sha256": "ec31443dc315d2243411ed000659555ce3596c18c82a87cc95632ed92ed9f928"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\project.godot",
+          "bytes": 1756,
+          "sha256": "5464ab20dbcc4dffefb173da5bc44adb4cfd901b5298a38be6473978ddd87f80"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\scene.gd",
+          "bytes": 680,
+          "sha256": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.md5",
+          "bytes": 91,
+          "sha256": "36a0c3ce0bb604a9705a24a2864daef974d36b8f73a441af1ef3e4251c3d729e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.sample",
+          "bytes": 62093,
+          "sha256": "9d3831003aaecc27a21bcb23719383084d6695ae59cb13ac92524072875f6313"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Gate.png-7c6678a3c6fe81c4e99f60b3f00868b7.md5",
+          "bytes": 91,
+          "sha256": "fc7a2b466064783b7e81c6b4fc62ae685f8b72f1e752d58822a69a19617dbb7c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Gate.png-7c6678a3c6fe81c4e99f60b3f00868b7.stex",
+          "bytes": 494,
+          "sha256": "1da1629add21c65e00e0f2eefaca2953cb4a0602d059c35b13058ab4b409aa8e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.md5",
+          "bytes": 91,
+          "sha256": "6781526756e9b1d6bd813f8140e2ad73e9b14538b4f1c067ece4b01209b34279"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.mp3str",
+          "bytes": 12823,
+          "sha256": "fec00e2568ea335a88cbba88eb8209b5c5d2c1580f948ec73c9dd121db4a66a3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Lever.png-ff35e74e81a09ce5703ea1b4ee4cca78.md5",
+          "bytes": 91,
+          "sha256": "a95c0c01b47528881590f69470aa508984faa74a9c16d994ffb6200888c52026"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Lever.png-ff35e74e81a09ce5703ea1b4ee4cca78.stex",
+          "bytes": 220,
+          "sha256": "f5f9ff51f2d54ab6463cccc7cae3106be58dfc95f6691c97c2ce690c66d3f0d2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Plate.png-60ac674a5a0128bcdaa1ba8cd961d241.md5",
+          "bytes": 91,
+          "sha256": "d191ef652696ab5218bb7d82f20152048abf0e2fb4a888d6694f289f276e3e3d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Plate.png-60ac674a5a0128bcdaa1ba8cd961d241.stex",
+          "bytes": 210,
+          "sha256": "9a275316939e1dd4924312eebb2eb29c5d8d8ec19e3b6139cb80565cdead2ec9"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.md5",
+          "bytes": 91,
+          "sha256": "910a82515d93625bd470cf38b69c06ab2c49a38fec4e82b9dbb24227639c7eb7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.mp3str",
+          "bytes": 132763,
+          "sha256": "45547a8799f569cf7dd1f0a8692abbd94a17ad8ef8e5569ab34fee03510bf48e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Wall Door.png-d17b2e851573cb1436ff3ec40df7c650.md5",
+          "bytes": 91,
+          "sha256": "d4105ab54ceeec1f914608ff6eef7efa0c5d5e9564a0e008de9249594b06517a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\.import\\Wall Door.png-d17b2e851573cb1436ff3ec40df7c650.stex",
+          "bytes": 3332,
+          "sha256": "eec4b8995d2ecdca1b4d8f542c3bb8f9542fb537902b9ab6ee2f7377ad43d176"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Audio\\Sound effects\\Lever.mp3",
+          "bytes": 12537,
+          "sha256": "0c155a6512c3c856265302171c54df6bfcb1215022e147c84b513a482ae6e4a7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Audio\\Sound effects\\Lever.mp3.import",
+          "bytes": 292,
+          "sha256": "5e8cd34e0d606416db14c34a3dc53c3dd108e8493b58940231dd6589ea1ea356"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Audio\\Sound effects\\Stone_move.mp3",
+          "bytes": 132480,
+          "sha256": "51e63dc9c9b13527966e22c9dd3377a9ab883368af092e2292f95d9b9e532d16"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Audio\\Sound effects\\Stone_move.mp3.import",
+          "bytes": 307,
+          "sha256": "df353269fdf51b027f3b57d1d7d52113249b56aad7412a479dbc6069216aaf5f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Audio\\Sound effects\\M3\\bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Audio\\Sound effects\\M3\\bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Audio\\Sound effects\\M3\\door_close.wav",
+          "bytes": 61784,
+          "sha256": "089890ee7381adb8f9b169df6b66377798eb0d90f1fd38c748c7a2c2c291cfa5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Audio\\Sound effects\\M3\\door_close.wav.import",
+          "bytes": 474,
+          "sha256": "ced94dfd9bc64be09cb7da2c4488670c7090cad8dd53f1681bc79eff48ff4d8f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Graphics\\Objects\\Catacombs\\Gate.png",
+          "bytes": 950,
+          "sha256": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Graphics\\Objects\\Catacombs\\Gate.png.import",
+          "bytes": 701,
+          "sha256": "d47737621dff451afc1e87e3ed61c52a8541fa53f60118c869038ba688ea0544"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Graphics\\Objects\\Catacombs\\Lever.png",
+          "bytes": 374,
+          "sha256": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Graphics\\Objects\\Catacombs\\Lever.png.import",
+          "bytes": 704,
+          "sha256": "b57918205e1687c68b74adb501ee0b3c0fe0c2c19959dc0969630b5b6ae51214"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Graphics\\Objects\\Catacombs\\Plate.png",
+          "bytes": 299,
+          "sha256": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Graphics\\Objects\\Catacombs\\Plate.png.import",
+          "bytes": 704,
+          "sha256": "f7fa3cbd2133c1d3f286f601cf2243e5b80ddac7f4affe94bb120378bc54f7ca"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Graphics\\Objects\\Catacombs\\Wall Door.png",
+          "bytes": 6663,
+          "sha256": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Graphics\\Objects\\Catacombs\\Wall Door.png.import",
+          "bytes": 716,
+          "sha256": "69b8487057ae3a23eda1486e3e34cf94e695766aee9046cb256d33f0296d6485"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Nodes\\Overworld\\switches\\Gate.tscn",
+          "bytes": 4061,
+          "sha256": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Nodes\\Overworld\\switches\\Lever.tscn",
+          "bytes": 2365,
+          "sha256": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Nodes\\Overworld\\switches\\plate.tscn",
+          "bytes": 2062,
+          "sha256": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Nodes\\Overworld\\switches\\Wall Door.tscn",
+          "bytes": 5066,
+          "sha256": "afe2b193ac538e56e0969640c3eeebec48246a5bc532533c2fd7af8ffcf2ab58"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Scripts\\Main\\FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Scripts\\Main\\Switches\\AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Scripts\\Main\\Switches\\ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Scripts\\Main\\Switches\\ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Scripts\\Main\\Switches\\ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Scripts\\Main\\Switches\\ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Scripts\\Main\\Switches\\TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Scripts\\Main\\Switches\\TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\Scripts\\misc\\wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-local\\Godot\\resthumb-84da0a4a27ead62ab95bf263945e450f.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-local\\Godot\\resthumb-84da0a4a27ead62ab95bf263945e450f.txt",
+          "bytes": 49,
+          "sha256": "9107473b332a47edc403fe606a68fd680928ccd6a4edd456d0320bf48ce98986"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\app_userdata\\Source mechanism timelines\\logs\\godot.log",
+          "bytes": 357,
+          "sha256": "d582bffc47e8edbd511c4fda1a7379ab5391018913f3fe53011ff327d169efd5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\projects\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\projects\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.sample-folding-d767ef0025fb6a72db871aeacb6f2ef0.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 3880,
+          "sha256": "8c48cb64b59c3d4baa86f1dc5aed473580d2b77ac8128d1e5b75eb2370f7c710"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\projects\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.mp3str-folding-abf9a300e76928edc883d3b1f0d9a800.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\projects\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.mp3str-folding-b810838cfd9e1df60144f5dcaba51243.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-2\\project\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 1373619
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.owned-mechanism-timeline-reference",
+          "bytes": 28,
+          "sha256": "d8e729af35b1ca69a78bd914c3e7b53c300a6d5d8d7e1c03bf80390ff337544f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\global.gd",
+          "bytes": 1148,
+          "sha256": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\input.json",
+          "bytes": 11509,
+          "sha256": "dfe8553d5f40443c0b0047a343eb751278c4848eb680eebc877dc199f07e4595"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\logged-audio.gd",
+          "bytes": 209,
+          "sha256": "01301eea447e1221d26221bab5aa3e91da377a6c63d51bf419c126181908d533"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\observations.json",
+          "bytes": 817352,
+          "sha256": "2cbf4e6fcf1e73c4f2cd115953b7dab954ee40b27b83a61d67882a32d857bb5e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\probe.gd",
+          "bytes": 6170,
+          "sha256": "6306d7633e755b06c32787bd7d67afdbb4e18d58b18b00b474ae396a95c80b20"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\project.godot",
+          "bytes": 1756,
+          "sha256": "5464ab20dbcc4dffefb173da5bc44adb4cfd901b5298a38be6473978ddd87f80"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\scene.gd",
+          "bytes": 680,
+          "sha256": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.md5",
+          "bytes": 91,
+          "sha256": "36a0c3ce0bb604a9705a24a2864daef974d36b8f73a441af1ef3e4251c3d729e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.sample",
+          "bytes": 62093,
+          "sha256": "9d3831003aaecc27a21bcb23719383084d6695ae59cb13ac92524072875f6313"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Gate.png-7c6678a3c6fe81c4e99f60b3f00868b7.md5",
+          "bytes": 91,
+          "sha256": "fc7a2b466064783b7e81c6b4fc62ae685f8b72f1e752d58822a69a19617dbb7c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Gate.png-7c6678a3c6fe81c4e99f60b3f00868b7.stex",
+          "bytes": 494,
+          "sha256": "1da1629add21c65e00e0f2eefaca2953cb4a0602d059c35b13058ab4b409aa8e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.md5",
+          "bytes": 91,
+          "sha256": "6781526756e9b1d6bd813f8140e2ad73e9b14538b4f1c067ece4b01209b34279"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.mp3str",
+          "bytes": 12823,
+          "sha256": "fec00e2568ea335a88cbba88eb8209b5c5d2c1580f948ec73c9dd121db4a66a3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Lever.png-ff35e74e81a09ce5703ea1b4ee4cca78.md5",
+          "bytes": 91,
+          "sha256": "a95c0c01b47528881590f69470aa508984faa74a9c16d994ffb6200888c52026"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Lever.png-ff35e74e81a09ce5703ea1b4ee4cca78.stex",
+          "bytes": 220,
+          "sha256": "f5f9ff51f2d54ab6463cccc7cae3106be58dfc95f6691c97c2ce690c66d3f0d2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Plate.png-60ac674a5a0128bcdaa1ba8cd961d241.md5",
+          "bytes": 91,
+          "sha256": "d191ef652696ab5218bb7d82f20152048abf0e2fb4a888d6694f289f276e3e3d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Plate.png-60ac674a5a0128bcdaa1ba8cd961d241.stex",
+          "bytes": 210,
+          "sha256": "9a275316939e1dd4924312eebb2eb29c5d8d8ec19e3b6139cb80565cdead2ec9"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.md5",
+          "bytes": 91,
+          "sha256": "910a82515d93625bd470cf38b69c06ab2c49a38fec4e82b9dbb24227639c7eb7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.mp3str",
+          "bytes": 132763,
+          "sha256": "45547a8799f569cf7dd1f0a8692abbd94a17ad8ef8e5569ab34fee03510bf48e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Wall Door.png-d17b2e851573cb1436ff3ec40df7c650.md5",
+          "bytes": 91,
+          "sha256": "d4105ab54ceeec1f914608ff6eef7efa0c5d5e9564a0e008de9249594b06517a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\.import\\Wall Door.png-d17b2e851573cb1436ff3ec40df7c650.stex",
+          "bytes": 3332,
+          "sha256": "eec4b8995d2ecdca1b4d8f542c3bb8f9542fb537902b9ab6ee2f7377ad43d176"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Audio\\Sound effects\\Lever.mp3",
+          "bytes": 12537,
+          "sha256": "0c155a6512c3c856265302171c54df6bfcb1215022e147c84b513a482ae6e4a7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Audio\\Sound effects\\Lever.mp3.import",
+          "bytes": 292,
+          "sha256": "5e8cd34e0d606416db14c34a3dc53c3dd108e8493b58940231dd6589ea1ea356"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Audio\\Sound effects\\Stone_move.mp3",
+          "bytes": 132480,
+          "sha256": "51e63dc9c9b13527966e22c9dd3377a9ab883368af092e2292f95d9b9e532d16"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Audio\\Sound effects\\Stone_move.mp3.import",
+          "bytes": 307,
+          "sha256": "df353269fdf51b027f3b57d1d7d52113249b56aad7412a479dbc6069216aaf5f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Audio\\Sound effects\\M3\\bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Audio\\Sound effects\\M3\\bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Audio\\Sound effects\\M3\\door_close.wav",
+          "bytes": 61784,
+          "sha256": "089890ee7381adb8f9b169df6b66377798eb0d90f1fd38c748c7a2c2c291cfa5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Audio\\Sound effects\\M3\\door_close.wav.import",
+          "bytes": 474,
+          "sha256": "ced94dfd9bc64be09cb7da2c4488670c7090cad8dd53f1681bc79eff48ff4d8f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Graphics\\Objects\\Catacombs\\Gate.png",
+          "bytes": 950,
+          "sha256": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Graphics\\Objects\\Catacombs\\Gate.png.import",
+          "bytes": 701,
+          "sha256": "d47737621dff451afc1e87e3ed61c52a8541fa53f60118c869038ba688ea0544"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Graphics\\Objects\\Catacombs\\Lever.png",
+          "bytes": 374,
+          "sha256": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Graphics\\Objects\\Catacombs\\Lever.png.import",
+          "bytes": 704,
+          "sha256": "b57918205e1687c68b74adb501ee0b3c0fe0c2c19959dc0969630b5b6ae51214"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Graphics\\Objects\\Catacombs\\Plate.png",
+          "bytes": 299,
+          "sha256": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Graphics\\Objects\\Catacombs\\Plate.png.import",
+          "bytes": 704,
+          "sha256": "f7fa3cbd2133c1d3f286f601cf2243e5b80ddac7f4affe94bb120378bc54f7ca"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Graphics\\Objects\\Catacombs\\Wall Door.png",
+          "bytes": 6663,
+          "sha256": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Graphics\\Objects\\Catacombs\\Wall Door.png.import",
+          "bytes": 716,
+          "sha256": "69b8487057ae3a23eda1486e3e34cf94e695766aee9046cb256d33f0296d6485"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Nodes\\Overworld\\switches\\Gate.tscn",
+          "bytes": 4061,
+          "sha256": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Nodes\\Overworld\\switches\\Lever.tscn",
+          "bytes": 2365,
+          "sha256": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Nodes\\Overworld\\switches\\plate.tscn",
+          "bytes": 2062,
+          "sha256": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Nodes\\Overworld\\switches\\Wall Door.tscn",
+          "bytes": 5066,
+          "sha256": "afe2b193ac538e56e0969640c3eeebec48246a5bc532533c2fd7af8ffcf2ab58"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Scripts\\Main\\FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Scripts\\Main\\Switches\\AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Scripts\\Main\\Switches\\ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Scripts\\Main\\Switches\\ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Scripts\\Main\\Switches\\ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Scripts\\Main\\Switches\\ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Scripts\\Main\\Switches\\TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Scripts\\Main\\Switches\\TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\Scripts\\misc\\wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-local\\Godot\\resthumb-281bfb9995294a167785089e4cd6e2cd.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-local\\Godot\\resthumb-281bfb9995294a167785089e4cd6e2cd.txt",
+          "bytes": 49,
+          "sha256": "dd06c604731e70775e99ea29db45e67080fec859626ab2d465604570d285c692"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\app_userdata\\Source mechanism timelines\\logs\\godot.log",
+          "bytes": 220,
+          "sha256": "05bf18af2d1d249b68853e6d45feed668a47f5172b5d7c3d831cb587879c6b19"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\projects\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\projects\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.sample-folding-d767ef0025fb6a72db871aeacb6f2ef0.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 3880,
+          "sha256": "cb1c9463d0fbe82a3c38e7b9c17859fe531cf46d44ab7716659c44e5b4c6d775"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\projects\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.mp3str-folding-abf9a300e76928edc883d3b1f0d9a800.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\projects\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.mp3str-folding-b810838cfd9e1df60144f5dcaba51243.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-3\\project\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 1372563
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.owned-mechanism-timeline-reference",
+          "bytes": 28,
+          "sha256": "d8e729af35b1ca69a78bd914c3e7b53c300a6d5d8d7e1c03bf80390ff337544f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\global.gd",
+          "bytes": 1148,
+          "sha256": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\input.json",
+          "bytes": 11509,
+          "sha256": "dfe8553d5f40443c0b0047a343eb751278c4848eb680eebc877dc199f07e4595"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\logged-audio.gd",
+          "bytes": 209,
+          "sha256": "01301eea447e1221d26221bab5aa3e91da377a6c63d51bf419c126181908d533"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\observations.json",
+          "bytes": 817352,
+          "sha256": "2cbf4e6fcf1e73c4f2cd115953b7dab954ee40b27b83a61d67882a32d857bb5e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\probe.gd",
+          "bytes": 6170,
+          "sha256": "6306d7633e755b06c32787bd7d67afdbb4e18d58b18b00b474ae396a95c80b20"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\project.godot",
+          "bytes": 1756,
+          "sha256": "5464ab20dbcc4dffefb173da5bc44adb4cfd901b5298a38be6473978ddd87f80"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\scene.gd",
+          "bytes": 680,
+          "sha256": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.md5",
+          "bytes": 91,
+          "sha256": "36a0c3ce0bb604a9705a24a2864daef974d36b8f73a441af1ef3e4251c3d729e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.sample",
+          "bytes": 62093,
+          "sha256": "9d3831003aaecc27a21bcb23719383084d6695ae59cb13ac92524072875f6313"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Gate.png-7c6678a3c6fe81c4e99f60b3f00868b7.md5",
+          "bytes": 91,
+          "sha256": "fc7a2b466064783b7e81c6b4fc62ae685f8b72f1e752d58822a69a19617dbb7c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Gate.png-7c6678a3c6fe81c4e99f60b3f00868b7.stex",
+          "bytes": 494,
+          "sha256": "1da1629add21c65e00e0f2eefaca2953cb4a0602d059c35b13058ab4b409aa8e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.md5",
+          "bytes": 91,
+          "sha256": "6781526756e9b1d6bd813f8140e2ad73e9b14538b4f1c067ece4b01209b34279"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.mp3str",
+          "bytes": 12823,
+          "sha256": "fec00e2568ea335a88cbba88eb8209b5c5d2c1580f948ec73c9dd121db4a66a3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Lever.png-ff35e74e81a09ce5703ea1b4ee4cca78.md5",
+          "bytes": 91,
+          "sha256": "a95c0c01b47528881590f69470aa508984faa74a9c16d994ffb6200888c52026"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Lever.png-ff35e74e81a09ce5703ea1b4ee4cca78.stex",
+          "bytes": 220,
+          "sha256": "f5f9ff51f2d54ab6463cccc7cae3106be58dfc95f6691c97c2ce690c66d3f0d2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Plate.png-60ac674a5a0128bcdaa1ba8cd961d241.md5",
+          "bytes": 91,
+          "sha256": "d191ef652696ab5218bb7d82f20152048abf0e2fb4a888d6694f289f276e3e3d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Plate.png-60ac674a5a0128bcdaa1ba8cd961d241.stex",
+          "bytes": 210,
+          "sha256": "9a275316939e1dd4924312eebb2eb29c5d8d8ec19e3b6139cb80565cdead2ec9"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.md5",
+          "bytes": 91,
+          "sha256": "910a82515d93625bd470cf38b69c06ab2c49a38fec4e82b9dbb24227639c7eb7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.mp3str",
+          "bytes": 132763,
+          "sha256": "45547a8799f569cf7dd1f0a8692abbd94a17ad8ef8e5569ab34fee03510bf48e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Wall Door.png-d17b2e851573cb1436ff3ec40df7c650.md5",
+          "bytes": 91,
+          "sha256": "d4105ab54ceeec1f914608ff6eef7efa0c5d5e9564a0e008de9249594b06517a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\.import\\Wall Door.png-d17b2e851573cb1436ff3ec40df7c650.stex",
+          "bytes": 3332,
+          "sha256": "eec4b8995d2ecdca1b4d8f542c3bb8f9542fb537902b9ab6ee2f7377ad43d176"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Audio\\Sound effects\\Lever.mp3",
+          "bytes": 12537,
+          "sha256": "0c155a6512c3c856265302171c54df6bfcb1215022e147c84b513a482ae6e4a7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Audio\\Sound effects\\Lever.mp3.import",
+          "bytes": 292,
+          "sha256": "5e8cd34e0d606416db14c34a3dc53c3dd108e8493b58940231dd6589ea1ea356"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Audio\\Sound effects\\Stone_move.mp3",
+          "bytes": 132480,
+          "sha256": "51e63dc9c9b13527966e22c9dd3377a9ab883368af092e2292f95d9b9e532d16"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Audio\\Sound effects\\Stone_move.mp3.import",
+          "bytes": 307,
+          "sha256": "df353269fdf51b027f3b57d1d7d52113249b56aad7412a479dbc6069216aaf5f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Audio\\Sound effects\\M3\\bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Audio\\Sound effects\\M3\\bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Audio\\Sound effects\\M3\\door_close.wav",
+          "bytes": 61784,
+          "sha256": "089890ee7381adb8f9b169df6b66377798eb0d90f1fd38c748c7a2c2c291cfa5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Audio\\Sound effects\\M3\\door_close.wav.import",
+          "bytes": 474,
+          "sha256": "ced94dfd9bc64be09cb7da2c4488670c7090cad8dd53f1681bc79eff48ff4d8f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Graphics\\Objects\\Catacombs\\Gate.png",
+          "bytes": 950,
+          "sha256": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Graphics\\Objects\\Catacombs\\Gate.png.import",
+          "bytes": 701,
+          "sha256": "d47737621dff451afc1e87e3ed61c52a8541fa53f60118c869038ba688ea0544"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Graphics\\Objects\\Catacombs\\Lever.png",
+          "bytes": 374,
+          "sha256": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Graphics\\Objects\\Catacombs\\Lever.png.import",
+          "bytes": 704,
+          "sha256": "b57918205e1687c68b74adb501ee0b3c0fe0c2c19959dc0969630b5b6ae51214"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Graphics\\Objects\\Catacombs\\Plate.png",
+          "bytes": 299,
+          "sha256": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Graphics\\Objects\\Catacombs\\Plate.png.import",
+          "bytes": 704,
+          "sha256": "f7fa3cbd2133c1d3f286f601cf2243e5b80ddac7f4affe94bb120378bc54f7ca"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Graphics\\Objects\\Catacombs\\Wall Door.png",
+          "bytes": 6663,
+          "sha256": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Graphics\\Objects\\Catacombs\\Wall Door.png.import",
+          "bytes": 716,
+          "sha256": "69b8487057ae3a23eda1486e3e34cf94e695766aee9046cb256d33f0296d6485"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Nodes\\Overworld\\switches\\Gate.tscn",
+          "bytes": 4061,
+          "sha256": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Nodes\\Overworld\\switches\\Lever.tscn",
+          "bytes": 2365,
+          "sha256": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Nodes\\Overworld\\switches\\plate.tscn",
+          "bytes": 2062,
+          "sha256": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Nodes\\Overworld\\switches\\Wall Door.tscn",
+          "bytes": 5066,
+          "sha256": "afe2b193ac538e56e0969640c3eeebec48246a5bc532533c2fd7af8ffcf2ab58"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Scripts\\Main\\FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Scripts\\Main\\Switches\\AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Scripts\\Main\\Switches\\ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Scripts\\Main\\Switches\\ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Scripts\\Main\\Switches\\ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Scripts\\Main\\Switches\\ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Scripts\\Main\\Switches\\TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Scripts\\Main\\Switches\\TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\Scripts\\misc\\wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-local\\Godot\\resthumb-e190a9a65fcc7a1ead6d9f9507c634f0.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-local\\Godot\\resthumb-e190a9a65fcc7a1ead6d9f9507c634f0.txt",
+          "bytes": 49,
+          "sha256": "887fc4d265b2e9cfeab2542f2de68325c9c1baf8f63d6d56ec7937f5b6408389"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\app_userdata\\Source mechanism timelines\\logs\\godot.log",
+          "bytes": 220,
+          "sha256": "05bf18af2d1d249b68853e6d45feed668a47f5172b5d7c3d831cb587879c6b19"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\projects\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\projects\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.sample-folding-d767ef0025fb6a72db871aeacb6f2ef0.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 3880,
+          "sha256": "a4b319374a2244bf910f0243db8543994c252dad0c712d420eebbe5f5a5ed073"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\projects\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.mp3str-folding-abf9a300e76928edc883d3b1f0d9a800.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\projects\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.mp3str-folding-b810838cfd9e1df60144f5dcaba51243.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-4\\project\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 1372563
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.owned-mechanism-timeline-reference",
+          "bytes": 28,
+          "sha256": "d8e729af35b1ca69a78bd914c3e7b53c300a6d5d8d7e1c03bf80390ff337544f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\global.gd",
+          "bytes": 1148,
+          "sha256": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\input.json",
+          "bytes": 11509,
+          "sha256": "dfe8553d5f40443c0b0047a343eb751278c4848eb680eebc877dc199f07e4595"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\logged-audio.gd",
+          "bytes": 209,
+          "sha256": "01301eea447e1221d26221bab5aa3e91da377a6c63d51bf419c126181908d533"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\observations.json",
+          "bytes": 817352,
+          "sha256": "2cbf4e6fcf1e73c4f2cd115953b7dab954ee40b27b83a61d67882a32d857bb5e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\probe.gd",
+          "bytes": 6949,
+          "sha256": "2e61e3d614a96e61c9f5e788d4a7cd3fa8c4a076763c88836dc9c048ba80a25a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\project.godot",
+          "bytes": 1756,
+          "sha256": "5464ab20dbcc4dffefb173da5bc44adb4cfd901b5298a38be6473978ddd87f80"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\scene.gd",
+          "bytes": 680,
+          "sha256": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.md5",
+          "bytes": 91,
+          "sha256": "36a0c3ce0bb604a9705a24a2864daef974d36b8f73a441af1ef3e4251c3d729e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.sample",
+          "bytes": 62093,
+          "sha256": "9d3831003aaecc27a21bcb23719383084d6695ae59cb13ac92524072875f6313"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Gate.png-7c6678a3c6fe81c4e99f60b3f00868b7.md5",
+          "bytes": 91,
+          "sha256": "fc7a2b466064783b7e81c6b4fc62ae685f8b72f1e752d58822a69a19617dbb7c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Gate.png-7c6678a3c6fe81c4e99f60b3f00868b7.stex",
+          "bytes": 494,
+          "sha256": "1da1629add21c65e00e0f2eefaca2953cb4a0602d059c35b13058ab4b409aa8e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.md5",
+          "bytes": 91,
+          "sha256": "6781526756e9b1d6bd813f8140e2ad73e9b14538b4f1c067ece4b01209b34279"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.mp3str",
+          "bytes": 12823,
+          "sha256": "fec00e2568ea335a88cbba88eb8209b5c5d2c1580f948ec73c9dd121db4a66a3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Lever.png-ff35e74e81a09ce5703ea1b4ee4cca78.md5",
+          "bytes": 91,
+          "sha256": "a95c0c01b47528881590f69470aa508984faa74a9c16d994ffb6200888c52026"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Lever.png-ff35e74e81a09ce5703ea1b4ee4cca78.stex",
+          "bytes": 220,
+          "sha256": "f5f9ff51f2d54ab6463cccc7cae3106be58dfc95f6691c97c2ce690c66d3f0d2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Plate.png-60ac674a5a0128bcdaa1ba8cd961d241.md5",
+          "bytes": 91,
+          "sha256": "d191ef652696ab5218bb7d82f20152048abf0e2fb4a888d6694f289f276e3e3d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Plate.png-60ac674a5a0128bcdaa1ba8cd961d241.stex",
+          "bytes": 210,
+          "sha256": "9a275316939e1dd4924312eebb2eb29c5d8d8ec19e3b6139cb80565cdead2ec9"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.md5",
+          "bytes": 91,
+          "sha256": "910a82515d93625bd470cf38b69c06ab2c49a38fec4e82b9dbb24227639c7eb7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.mp3str",
+          "bytes": 132763,
+          "sha256": "45547a8799f569cf7dd1f0a8692abbd94a17ad8ef8e5569ab34fee03510bf48e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Wall Door.png-d17b2e851573cb1436ff3ec40df7c650.md5",
+          "bytes": 91,
+          "sha256": "d4105ab54ceeec1f914608ff6eef7efa0c5d5e9564a0e008de9249594b06517a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\.import\\Wall Door.png-d17b2e851573cb1436ff3ec40df7c650.stex",
+          "bytes": 3332,
+          "sha256": "eec4b8995d2ecdca1b4d8f542c3bb8f9542fb537902b9ab6ee2f7377ad43d176"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Audio\\Sound effects\\Lever.mp3",
+          "bytes": 12537,
+          "sha256": "0c155a6512c3c856265302171c54df6bfcb1215022e147c84b513a482ae6e4a7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Audio\\Sound effects\\Lever.mp3.import",
+          "bytes": 292,
+          "sha256": "5e8cd34e0d606416db14c34a3dc53c3dd108e8493b58940231dd6589ea1ea356"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Audio\\Sound effects\\Stone_move.mp3",
+          "bytes": 132480,
+          "sha256": "51e63dc9c9b13527966e22c9dd3377a9ab883368af092e2292f95d9b9e532d16"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Audio\\Sound effects\\Stone_move.mp3.import",
+          "bytes": 307,
+          "sha256": "df353269fdf51b027f3b57d1d7d52113249b56aad7412a479dbc6069216aaf5f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Audio\\Sound effects\\M3\\bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Audio\\Sound effects\\M3\\bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Audio\\Sound effects\\M3\\door_close.wav",
+          "bytes": 61784,
+          "sha256": "089890ee7381adb8f9b169df6b66377798eb0d90f1fd38c748c7a2c2c291cfa5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Audio\\Sound effects\\M3\\door_close.wav.import",
+          "bytes": 474,
+          "sha256": "ced94dfd9bc64be09cb7da2c4488670c7090cad8dd53f1681bc79eff48ff4d8f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Graphics\\Objects\\Catacombs\\Gate.png",
+          "bytes": 950,
+          "sha256": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Graphics\\Objects\\Catacombs\\Gate.png.import",
+          "bytes": 701,
+          "sha256": "d47737621dff451afc1e87e3ed61c52a8541fa53f60118c869038ba688ea0544"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Graphics\\Objects\\Catacombs\\Lever.png",
+          "bytes": 374,
+          "sha256": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Graphics\\Objects\\Catacombs\\Lever.png.import",
+          "bytes": 704,
+          "sha256": "b57918205e1687c68b74adb501ee0b3c0fe0c2c19959dc0969630b5b6ae51214"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Graphics\\Objects\\Catacombs\\Plate.png",
+          "bytes": 299,
+          "sha256": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Graphics\\Objects\\Catacombs\\Plate.png.import",
+          "bytes": 704,
+          "sha256": "f7fa3cbd2133c1d3f286f601cf2243e5b80ddac7f4affe94bb120378bc54f7ca"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Graphics\\Objects\\Catacombs\\Wall Door.png",
+          "bytes": 6663,
+          "sha256": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Graphics\\Objects\\Catacombs\\Wall Door.png.import",
+          "bytes": 716,
+          "sha256": "69b8487057ae3a23eda1486e3e34cf94e695766aee9046cb256d33f0296d6485"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Nodes\\Overworld\\switches\\Gate.tscn",
+          "bytes": 4061,
+          "sha256": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Nodes\\Overworld\\switches\\Lever.tscn",
+          "bytes": 2365,
+          "sha256": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Nodes\\Overworld\\switches\\plate.tscn",
+          "bytes": 2062,
+          "sha256": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Nodes\\Overworld\\switches\\Wall Door.tscn",
+          "bytes": 5066,
+          "sha256": "afe2b193ac538e56e0969640c3eeebec48246a5bc532533c2fd7af8ffcf2ab58"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Scripts\\Main\\FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Scripts\\Main\\Switches\\AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Scripts\\Main\\Switches\\ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Scripts\\Main\\Switches\\ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Scripts\\Main\\Switches\\ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Scripts\\Main\\Switches\\ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Scripts\\Main\\Switches\\TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Scripts\\Main\\Switches\\TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\Scripts\\misc\\wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-local\\Godot\\resthumb-aab29d7764540810645083c9254e4ff6.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-local\\Godot\\resthumb-aab29d7764540810645083c9254e4ff6.txt",
+          "bytes": 49,
+          "sha256": "05a072c6fd43d3b3114bdd97d92df4180556ba91993f325168d15c4969d32db0"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\app_userdata\\Source mechanism timelines\\logs\\godot.log",
+          "bytes": 220,
+          "sha256": "05bf18af2d1d249b68853e6d45feed668a47f5172b5d7c3d831cb587879c6b19"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\projects\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\projects\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.sample-folding-d767ef0025fb6a72db871aeacb6f2ef0.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 3880,
+          "sha256": "4a178ccf05ea57fac16b434768cb90e14c87a5e8db6f88be584863684d7368e0"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\projects\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.mp3str-folding-abf9a300e76928edc883d3b1f0d9a800.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\projects\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.mp3str-folding-b810838cfd9e1df60144f5dcaba51243.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-5\\project\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 1373342
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.owned-mechanism-timeline-reference",
+          "bytes": 28,
+          "sha256": "d8e729af35b1ca69a78bd914c3e7b53c300a6d5d8d7e1c03bf80390ff337544f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\audio.gd",
+          "bytes": 210,
+          "sha256": "2f2b376bfdcc3d2bf0a7bf958735663e9a0c570b31ce56d2ca7ec77a23506729"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\data.gd",
+          "bytes": 5323,
+          "sha256": "f66743fe12fd8962f8b6cf94efee54f8ac2f695945fd70b876cff80bf37c3fc7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\global.gd",
+          "bytes": 1148,
+          "sha256": "4b39cdf00d62bfef30b5fb34cf46dc071cf30f89e1ea2d3a0740354af1a8c7dd"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\input.json",
+          "bytes": 11509,
+          "sha256": "dfe8553d5f40443c0b0047a343eb751278c4848eb680eebc877dc199f07e4595"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\logged-audio.gd",
+          "bytes": 209,
+          "sha256": "01301eea447e1221d26221bab5aa3e91da377a6c63d51bf419c126181908d533"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\music.gd",
+          "bytes": 79,
+          "sha256": "32543a4b5187e92ca422121f480698f9130ff97aada9fbacbdc94113bf6e7558"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\observations.json",
+          "bytes": 817352,
+          "sha256": "2cbf4e6fcf1e73c4f2cd115953b7dab954ee40b27b83a61d67882a32d857bb5e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\probe.gd",
+          "bytes": 6949,
+          "sha256": "2e61e3d614a96e61c9f5e788d4a7cd3fa8c4a076763c88836dc9c048ba80a25a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\probe.tscn",
+          "bytes": 151,
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\project.godot",
+          "bytes": 1756,
+          "sha256": "5464ab20dbcc4dffefb173da5bc44adb4cfd901b5298a38be6473978ddd87f80"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\scene.gd",
+          "bytes": 680,
+          "sha256": "5dd8f457298ce9931aa5fa4e3f553cd0b48310cd2c5e8d73faf0801810311fd9"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\ui.gd",
+          "bytes": 122,
+          "sha256": "f404d5636fffbfcc3ca9429b6b6cfbe9c6bb8d5727a518827812954ff5d75b2d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.md5",
+          "bytes": 91,
+          "sha256": "acdf4b144c7b348e3a40810a0fece2b6b56d79b13b90a8f6d3738b4bf64e9577"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample",
+          "bytes": 30285,
+          "sha256": "4832754d6f95a253efebce4f55f65529ea471dfd879c1ada5fd71bc20d307708"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.md5",
+          "bytes": 91,
+          "sha256": "36a0c3ce0bb604a9705a24a2864daef974d36b8f73a441af1ef3e4251c3d729e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.sample",
+          "bytes": 62093,
+          "sha256": "9d3831003aaecc27a21bcb23719383084d6695ae59cb13ac92524072875f6313"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Gate.png-7c6678a3c6fe81c4e99f60b3f00868b7.md5",
+          "bytes": 91,
+          "sha256": "fc7a2b466064783b7e81c6b4fc62ae685f8b72f1e752d58822a69a19617dbb7c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Gate.png-7c6678a3c6fe81c4e99f60b3f00868b7.stex",
+          "bytes": 494,
+          "sha256": "1da1629add21c65e00e0f2eefaca2953cb4a0602d059c35b13058ab4b409aa8e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.md5",
+          "bytes": 91,
+          "sha256": "6781526756e9b1d6bd813f8140e2ad73e9b14538b4f1c067ece4b01209b34279"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.mp3str",
+          "bytes": 12823,
+          "sha256": "fec00e2568ea335a88cbba88eb8209b5c5d2c1580f948ec73c9dd121db4a66a3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Lever.png-ff35e74e81a09ce5703ea1b4ee4cca78.md5",
+          "bytes": 91,
+          "sha256": "a95c0c01b47528881590f69470aa508984faa74a9c16d994ffb6200888c52026"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Lever.png-ff35e74e81a09ce5703ea1b4ee4cca78.stex",
+          "bytes": 220,
+          "sha256": "f5f9ff51f2d54ab6463cccc7cae3106be58dfc95f6691c97c2ce690c66d3f0d2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Plate.png-60ac674a5a0128bcdaa1ba8cd961d241.md5",
+          "bytes": 91,
+          "sha256": "d191ef652696ab5218bb7d82f20152048abf0e2fb4a888d6694f289f276e3e3d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Plate.png-60ac674a5a0128bcdaa1ba8cd961d241.stex",
+          "bytes": 210,
+          "sha256": "9a275316939e1dd4924312eebb2eb29c5d8d8ec19e3b6139cb80565cdead2ec9"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.md5",
+          "bytes": 91,
+          "sha256": "910a82515d93625bd470cf38b69c06ab2c49a38fec4e82b9dbb24227639c7eb7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.mp3str",
+          "bytes": 132763,
+          "sha256": "45547a8799f569cf7dd1f0a8692abbd94a17ad8ef8e5569ab34fee03510bf48e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Wall Door.png-d17b2e851573cb1436ff3ec40df7c650.md5",
+          "bytes": 91,
+          "sha256": "d4105ab54ceeec1f914608ff6eef7efa0c5d5e9564a0e008de9249594b06517a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\.import\\Wall Door.png-d17b2e851573cb1436ff3ec40df7c650.stex",
+          "bytes": 3332,
+          "sha256": "eec4b8995d2ecdca1b4d8f542c3bb8f9542fb537902b9ab6ee2f7377ad43d176"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Audio\\Sound effects\\Lever.mp3",
+          "bytes": 12537,
+          "sha256": "0c155a6512c3c856265302171c54df6bfcb1215022e147c84b513a482ae6e4a7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Audio\\Sound effects\\Lever.mp3.import",
+          "bytes": 292,
+          "sha256": "5e8cd34e0d606416db14c34a3dc53c3dd108e8493b58940231dd6589ea1ea356"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Audio\\Sound effects\\Stone_move.mp3",
+          "bytes": 132480,
+          "sha256": "51e63dc9c9b13527966e22c9dd3377a9ab883368af092e2292f95d9b9e532d16"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Audio\\Sound effects\\Stone_move.mp3.import",
+          "bytes": 307,
+          "sha256": "df353269fdf51b027f3b57d1d7d52113249b56aad7412a479dbc6069216aaf5f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Audio\\Sound effects\\M3\\bump.wav",
+          "bytes": 29986,
+          "sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Audio\\Sound effects\\M3\\bump.wav.import",
+          "bytes": 456,
+          "sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Audio\\Sound effects\\M3\\door_close.wav",
+          "bytes": 61784,
+          "sha256": "089890ee7381adb8f9b169df6b66377798eb0d90f1fd38c748c7a2c2c291cfa5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Audio\\Sound effects\\M3\\door_close.wav.import",
+          "bytes": 474,
+          "sha256": "ced94dfd9bc64be09cb7da2c4488670c7090cad8dd53f1681bc79eff48ff4d8f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Graphics\\Objects\\Catacombs\\Gate.png",
+          "bytes": 950,
+          "sha256": "684003939a5067fcf5fa4a93c0f10ba15b5948ba6bd78636e920b814f27c297f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Graphics\\Objects\\Catacombs\\Gate.png.import",
+          "bytes": 701,
+          "sha256": "d47737621dff451afc1e87e3ed61c52a8541fa53f60118c869038ba688ea0544"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Graphics\\Objects\\Catacombs\\Lever.png",
+          "bytes": 374,
+          "sha256": "3fcd3a5422cbda60c6c4d068381a1b5722b8a919e7cc04d81c5d901ca44b9859"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Graphics\\Objects\\Catacombs\\Lever.png.import",
+          "bytes": 704,
+          "sha256": "b57918205e1687c68b74adb501ee0b3c0fe0c2c19959dc0969630b5b6ae51214"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Graphics\\Objects\\Catacombs\\Plate.png",
+          "bytes": 299,
+          "sha256": "296aee3bb640538f45f0e3f3c8aae6fed73afdcd78a56933da288ea89c9f78af"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Graphics\\Objects\\Catacombs\\Plate.png.import",
+          "bytes": 704,
+          "sha256": "f7fa3cbd2133c1d3f286f601cf2243e5b80ddac7f4affe94bb120378bc54f7ca"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Graphics\\Objects\\Catacombs\\Wall Door.png",
+          "bytes": 6663,
+          "sha256": "4c76e9d0a1e0461529adc8f875f95f590011cc896b593c4c777f61d2b561b100"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Graphics\\Objects\\Catacombs\\Wall Door.png.import",
+          "bytes": 716,
+          "sha256": "69b8487057ae3a23eda1486e3e34cf94e695766aee9046cb256d33f0296d6485"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Nodes\\Overworld\\switches\\Gate.tscn",
+          "bytes": 4061,
+          "sha256": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Nodes\\Overworld\\switches\\Lever.tscn",
+          "bytes": 2365,
+          "sha256": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Nodes\\Overworld\\switches\\plate.tscn",
+          "bytes": 2062,
+          "sha256": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Nodes\\Overworld\\switches\\Wall Door.tscn",
+          "bytes": 5066,
+          "sha256": "afe2b193ac538e56e0969640c3eeebec48246a5bc532533c2fd7af8ffcf2ab58"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Scripts\\Main\\FlaggableObject.gd",
+          "bytes": 1237,
+          "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Scripts\\Main\\Switches\\AbstractSwitch.gd",
+          "bytes": 1049,
+          "sha256": "7cbce38417528d1cb6464b0e9c6f3de09129bbc7e207b5c86cc1c1e428f85541"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Scripts\\Main\\Switches\\ControlledDoor.gd",
+          "bytes": 89,
+          "sha256": "86f0f463c5908c7edb6112402c8f72292de35942cc532e74fae1fceb1f7a1776"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Scripts\\Main\\Switches\\ControlledObject.gd",
+          "bytes": 641,
+          "sha256": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Scripts\\Main\\Switches\\ControlledTwoStatesObject.gd",
+          "bytes": 1395,
+          "sha256": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Scripts\\Main\\Switches\\ObjectsListSwitch.gd",
+          "bytes": 2511,
+          "sha256": "979990d7932a4f2541a92f054334680096070bb660f6b8365687f72595a2c3c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Scripts\\Main\\Switches\\TwoStatesSwitch.gd",
+          "bytes": 723,
+          "sha256": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Scripts\\Main\\Switches\\TwoStatesSyncedSwitch.gd",
+          "bytes": 859,
+          "sha256": "009f3470651b7c8f0301fce177063ad566dee8b9a7b1d1afab03231261ef27e4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\Scripts\\misc\\wall door.gd",
+          "bytes": 198,
+          "sha256": "9a5045903ff8ffcdb306876f3534fe6fc46164a39f37d85d6119d157e69c4a5a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-local\\Godot\\resthumb-25abd1a75e43c50a77e4db5f775a6bdb.png",
+          "bytes": 582,
+          "sha256": "8c6641da0d0921c8803fac46ca8a01816bb2b57eaafdc58a68c41225a79c6c6a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-local\\Godot\\resthumb-25abd1a75e43c50a77e4db5f775a6bdb.txt",
+          "bytes": 49,
+          "sha256": "8d89d968af90e0660e70ece02ee84f420c24e40d3b0a6f491e560af79a5fa1cd"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\app_userdata\\Source mechanism timelines\\logs\\godot.log",
+          "bytes": 220,
+          "sha256": "05bf18af2d1d249b68853e6d45feed668a47f5172b5d7c3d831cb587879c6b19"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\projects\\bump.wav-bfe6a7fab26b3e9dc2cfc94350025585.sample-folding-065785c3a34f78dbdf932576bc6b7a16.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\projects\\door_close.wav-bad815325c8dd336c498ca93fcbeb983.sample-folding-d767ef0025fb6a72db871aeacb6f2ef0.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 3880,
+          "sha256": "2bed2103423fd3a48d49b40e514593f065c1cde396b0fb597ab832d7c8f914ae"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\projects\\Lever.mp3-6d371f78134cf63c6c0a61781d5b1e14.mp3str-folding-abf9a300e76928edc883d3b1f0d9a800.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\projects\\Stone_move.mp3-329b06afbbffab4e6242f013831f1d18.mp3str-folding-b810838cfd9e1df60144f5dcaba51243.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-timeline-original-6\\project\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 1373342
+    }
+  ],
+  "total_bytes": 6906510
+}

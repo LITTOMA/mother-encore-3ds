@@ -1,0 +1,531 @@
+{
+  "scope": "Exact104 owned direct-build object files duplicated byte-for-byte inside kept current archive; archive, raw logs, source fingerprints, all native executables kept.",
+  "archive": {
+    "path": "build/full-port/wall-host-current-1/libencore-current.a",
+    "bytes": 417657684,
+    "sha256": "726321165c1ffa341e4f3615b2d4c4fc2cd0d4f895aec873587632f5a1c7814e"
+  },
+  "files": [
+    {
+      "name": "actor_actions.o",
+      "bytes": 1294888,
+      "sha256": "868f3448a89eec5ebe8a5f6748e41fb07743151408905b033100c8d6dd92a085"
+    },
+    {
+      "name": "animation.o",
+      "bytes": 239800,
+      "sha256": "71e1ffb8ddcf2a25d50e22b1b60947c803387837e28bc8851956f942466ce93d"
+    },
+    {
+      "name": "audio_data.o",
+      "bytes": 940072,
+      "sha256": "1cdd78b88d1786a7b6dbcf351d68775be01f78c38e040838f957d5ba47e55830"
+    },
+    {
+      "name": "battle_action_presentation.o",
+      "bytes": 8692424,
+      "sha256": "7e47a6e52d817a63ba25215aeebf71e7f36bd1ffe5d4817b1f96ad58b5edd176"
+    },
+    {
+      "name": "battle_data.o",
+      "bytes": 944248,
+      "sha256": "9a5749321199dde68f6a1b0ba7ed937425e1bd7ae7c83ee7c77915622f535b33"
+    },
+    {
+      "name": "battle_entry.o",
+      "bytes": 542008,
+      "sha256": "c2a7e8fbeb3685484415c30d07f724089043aa6a6da62e6ee5af3fdd7865f5d4"
+    },
+    {
+      "name": "battle_loot.o",
+      "bytes": 296072,
+      "sha256": "641b962b6a9f0ee487c74b6c7f9ca7f6474cca2fe876ccd78a3f38e278fb2283"
+    },
+    {
+      "name": "battle_outcome.o",
+      "bytes": 2459376,
+      "sha256": "95b04d4c41b83908f4db76633d3b0515e8ee34bc85e9fd641c6ac62f2e0c6ad0"
+    },
+    {
+      "name": "battle_round.o",
+      "bytes": 2381192,
+      "sha256": "6cefe8b61d1d63c7432ace1da37659ce6c211ded38170465a41b55d91d15b6b6"
+    },
+    {
+      "name": "battle_round_data.o",
+      "bytes": 1313848,
+      "sha256": "c603085ec3589a1438a1474d28658894ee2c36343fc47902a655eac743d60caa"
+    },
+    {
+      "name": "collision.o",
+      "bytes": 3021032,
+      "sha256": "c48f94960372da3748c26778897e9a9f91dfbb2eac25dcde9a4294b00b3ad801"
+    },
+    {
+      "name": "content.o",
+      "bytes": 3538832,
+      "sha256": "b65394f76febba8cb4868ff24d16e8652684bbefe417ca1583372b5bf1247ce2"
+    },
+    {
+      "name": "continue_menu.o",
+      "bytes": 3868032,
+      "sha256": "af829fb4248c5dcda237739fdeabc037478de45f7ef771c527f1e8669209ed6f"
+    },
+    {
+      "name": "continue_menu_data.o",
+      "bytes": 4157544,
+      "sha256": "c8d3e4c55ba764ca3196504d6825c326189ef8cfa7e726a9ce30b69372e3701c"
+    },
+    {
+      "name": "cutscene_camera.o",
+      "bytes": 3737464,
+      "sha256": "7b96925a1e56b2e60520f1017afd2298eadf39561752adc578d8735ec63adc00"
+    },
+    {
+      "name": "dialogue.o",
+      "bytes": 376784,
+      "sha256": "9b176186e41180b4881bb13d9ce759c915981a13607726cf274616005c500827"
+    },
+    {
+      "name": "dialogue_choices.o",
+      "bytes": 915792,
+      "sha256": "f32c84774b31202220b4215be15dc560f7545f15206428f13c3cd5f23b1425e3"
+    },
+    {
+      "name": "dialogue_choices_data.o",
+      "bytes": 4789120,
+      "sha256": "08dbc254cf62270045a8c8178a9ecf5c49a958e2b53ccf4f99fd7b32bc2a0deb"
+    },
+    {
+      "name": "drawer_program.o",
+      "bytes": 1692256,
+      "sha256": "e0b9df94e1687905ef72ed5b9413b4d49f8ef54f1640234af7d15e41a4fcabdb"
+    },
+    {
+      "name": "dungeon_key_state.o",
+      "bytes": 3457704,
+      "sha256": "974bf9021690a06598b202fcd316e0768c4b72f46390c4a3f27aba427a8c2d72"
+    },
+    {
+      "name": "dungeon_keys.o",
+      "bytes": 1176848,
+      "sha256": "3968cadcc4668a703222c8908a67f9f51fd34d549a2258de36b79a5085c83218"
+    },
+    {
+      "name": "dungeon_switch_state.o",
+      "bytes": 3959808,
+      "sha256": "c9e14205f08ab6f93750381010e0b8d3c878295cec50842a274ab02c11957de2"
+    },
+    {
+      "name": "dungeon_switches.o",
+      "bytes": 1506368,
+      "sha256": "2a0561dfd59c8e5d04e5bc6d4cbc95383be05ee145b881961127d82620e8084a"
+    },
+    {
+      "name": "dungeon_wall_state.o",
+      "bytes": 2192680,
+      "sha256": "83acb5987b8375d37211238099aa10dac432ee96fa7547d9ebab09f46ccf5cbf"
+    },
+    {
+      "name": "dungeon_wall_timeline.o",
+      "bytes": 1645624,
+      "sha256": "0593aaf1e1a8b00c11f013b72238e82fc3d635f45b7ea574ddb7a7753760709a"
+    },
+    {
+      "name": "field_area_contacts.o",
+      "bytes": 362536,
+      "sha256": "749e52daa820a574f69971733bddba6e93744c8928e72ad908e57746cfb1a046"
+    },
+    {
+      "name": "field_data.o",
+      "bytes": 1270288,
+      "sha256": "64fb2896d0437609b07507667201dbdf98fa6998c24b30ba2d4d5f6d566a6c3b"
+    },
+    {
+      "name": "field_equipment_data.o",
+      "bytes": 1811800,
+      "sha256": "ef11ae7af46038178030c4df5588f8aafc877730da315dd2424bea2354e2592a"
+    },
+    {
+      "name": "field_equipment_menu.o",
+      "bytes": 3773928,
+      "sha256": "4683701781efb02c8d019b20eabf6d4e2e46b39b90024be3a7c71b05f40e6e3e"
+    },
+    {
+      "name": "field_menus.o",
+      "bytes": 16842808,
+      "sha256": "c0588892e1276a2301598afe68422cc817c5eb6df8fd10ea4f17c5db31365c3c"
+    },
+    {
+      "name": "field_menus_data.o",
+      "bytes": 13618616,
+      "sha256": "6d52f54a78b9f4e69751fdf4bec5db2f070f47742fbe44f7bc157f18094ed140"
+    },
+    {
+      "name": "field_objects.o",
+      "bytes": 4701096,
+      "sha256": "db2583d881f7e27288e7ebfe366e2242ff2995876a071b587736749c1a03e92a"
+    },
+    {
+      "name": "field_player_tree.o",
+      "bytes": 1367632,
+      "sha256": "38b3f8a6807ae7432dcb9e73287bf8070a13435dd66c6eaeec53c683f039f212"
+    },
+    {
+      "name": "field_props.o",
+      "bytes": 6614272,
+      "sha256": "cea859ef920b095148627eacbf2b8749cd111428a24f6f490699a1c2d893fef7"
+    },
+    {
+      "name": "field_scene.o",
+      "bytes": 20874368,
+      "sha256": "18398e0c53883fa52486af8b891fbf62a729c6d006c2a2e232575a06d27cfab7"
+    },
+    {
+      "name": "field_scene_resources.o",
+      "bytes": 4361720,
+      "sha256": "cf9fd79ca3ee2c786bfb283b2edd7562d88878b6082e1c6192f366c9bc119541"
+    },
+    {
+      "name": "field_steps.o",
+      "bytes": 2208576,
+      "sha256": "071d8355ffa174bc33326fd8575ec9481bcf243a01d36b784bb7ed8ab58e6417"
+    },
+    {
+      "name": "field_story.o",
+      "bytes": 6411488,
+      "sha256": "154071394e62886a1b1c91c1288c2ddee64c088fd095e5e8d48384d628596ac9"
+    },
+    {
+      "name": "field_swing.o",
+      "bytes": 2880448,
+      "sha256": "cf147e14de1e0b3e9d57d912ef64322d7e0c1021a5b7221743e00a5877b2080d"
+    },
+    {
+      "name": "field_swing_action.o",
+      "bytes": 2878632,
+      "sha256": "7e2cb77c8e25bf030959b24df29d57ea23f50ca18b8477e2db35ba9c8c6f08e8"
+    },
+    {
+      "name": "field_swing_entry.o",
+      "bytes": 4774096,
+      "sha256": "24dcde71701821fe0caf76bda26dad86ea8c118b8fdaa53942b2835d56e9dff1"
+    },
+    {
+      "name": "field_swing_graphics.o",
+      "bytes": 1717360,
+      "sha256": "adf73f5386b10524d0fa0c65e576673781274fd3c2ddee67f7d2e78f0838fd4c"
+    },
+    {
+      "name": "field_swing_resources.o",
+      "bytes": 2100880,
+      "sha256": "dd32c45f04d1acedc6e2274e1ae646a0e92cb42978a366ee8929fc47433b94a0"
+    },
+    {
+      "name": "file_io.o",
+      "bytes": 618160,
+      "sha256": "42035fe6a90aedd1fdc4440fbbb901aa3deb8a4dc880ce383a1e7300cccebe67"
+    },
+    {
+      "name": "fresh_house.o",
+      "bytes": 5018592,
+      "sha256": "7a15bc53f6726828ec473b332de0118a59c163b9a5ec7c99dc94aca3fb8e35be"
+    },
+    {
+      "name": "game.o",
+      "bytes": 909144,
+      "sha256": "ff1126248572980c306561382b5082db7ac04a401fa59a6fd65363f3640bb351"
+    },
+    {
+      "name": "gameplay_audio.o",
+      "bytes": 981496,
+      "sha256": "f4d3fda3339202defb6b032d0a4bbbd6a28dc6ae536e52825aa3d9c0fc5427ff"
+    },
+    {
+      "name": "house_audio.o",
+      "bytes": 1182800,
+      "sha256": "bf216d3d189fdcaaed1c40b9381328e64575a0720234de974de904369bc64df3"
+    },
+    {
+      "name": "house_button_prompts.o",
+      "bytes": 2741760,
+      "sha256": "a4bd5c50ff51ecd6b08c9dba39dd50791daf8422317b17a7f299f887a036269e"
+    },
+    {
+      "name": "house_data.o",
+      "bytes": 1501296,
+      "sha256": "4b744495780cf3f6b7b7890baaf2d90327185c12d7d01631739ea35ed3b798e2"
+    },
+    {
+      "name": "house_inspection_data.o",
+      "bytes": 1000504,
+      "sha256": "f1ec70128964eebc3eac7921422c4d73b75d8692393495fdf01e245ee06c6808"
+    },
+    {
+      "name": "house_presentation.o",
+      "bytes": 11835528,
+      "sha256": "a435540c84380859fd65d30066a0b3a4ae7f011a5983fc4e69fba66901b95701"
+    },
+    {
+      "name": "house_presents.o",
+      "bytes": 2051648,
+      "sha256": "8c76f67c1d6d4e026a34524b849f3bf2ab71cedfc90ab080b8c37f9e273db34b"
+    },
+    {
+      "name": "house_runtime.o",
+      "bytes": 10524368,
+      "sha256": "c864497306085ef6678d40234ff55d2df419e8e2f88279515fd67713a6b88107"
+    },
+    {
+      "name": "introduction.o",
+      "bytes": 16093992,
+      "sha256": "894826cd62baa0c8446fb47be2642f2340165311754edfa19982af8a4a2daf89"
+    },
+    {
+      "name": "item_details.o",
+      "bytes": 5725104,
+      "sha256": "1a32c03e62037cbd4e4ef75ae85529c9eb05690b44f52b70844ed84be706e842"
+    },
+    {
+      "name": "items_data.o",
+      "bytes": 1573016,
+      "sha256": "0d8d4e0c5c44dcd4eb07c665a6e2c6cf7f265ed398ebad9c178112be2e998e06"
+    },
+    {
+      "name": "items_menu.o",
+      "bytes": 1663736,
+      "sha256": "cbb474d0328ffc632f0508a2e5a77a892eafa05bffd6a51ed84a9859d1b492ee"
+    },
+    {
+      "name": "load_rng.o",
+      "bytes": 911088,
+      "sha256": "a8b4c5d832087b89f742d08de1c933c1b877bde2468f09f1a663c1dc61b53a29"
+    },
+    {
+      "name": "loading_indicator_data.o",
+      "bytes": 924304,
+      "sha256": "7b52b3b4d4d8d34395d58c7a653b618f340a26bebf458f6dda8b23e18dfa4a50"
+    },
+    {
+      "name": "locale_preference.o",
+      "bytes": 829552,
+      "sha256": "0942b7515888f90f926b65fc953dbb36e41d54edc3b3857ed75cadf1d0461e5d"
+    },
+    {
+      "name": "localization.o",
+      "bytes": 4009272,
+      "sha256": "510ee432ac25b612d5b65888367d35c3625259396fdfd5d49f85ac1b92e12c25"
+    },
+    {
+      "name": "localized_presentation.o",
+      "bytes": 5223200,
+      "sha256": "298596b8e14c8c60e8e54c3a0250993bfdaaf91eba0ecb0a62ece6c70efc4833"
+    },
+    {
+      "name": "mick_treats.o",
+      "bytes": 2227168,
+      "sha256": "41098006f551d26cf693b370c9b26fa36680a340a7adbe103db5750c7cf6f1dd"
+    },
+    {
+      "name": "movement.o",
+      "bytes": 363928,
+      "sha256": "b6c8e017fa340a24988e07b331123cd8d30bf271d2dcac94b75f0487f1a52f6e"
+    },
+    {
+      "name": "music_bank_routes.o",
+      "bytes": 3935504,
+      "sha256": "b910f5b8e10f31494b747914d997f62446d9224262ac225b4dd108f9f4eba5ed"
+    },
+    {
+      "name": "music_library_bindings.o",
+      "bytes": 3360368,
+      "sha256": "7e105a3173cc76648041a86656a257a08cf93783aa15b99b7224ce4a3e59f3d4"
+    },
+    {
+      "name": "music_player_choice.o",
+      "bytes": 640952,
+      "sha256": "2f12899274753e3ec7833d3abf4afe4541ae3f618aaea8409454bf226a776cdb"
+    },
+    {
+      "name": "music_players.o",
+      "bytes": 5100104,
+      "sha256": "68c6761b1b2102a80cd8552d684f4af9063862ff67201ed27e3b95c58cad67cf"
+    },
+    {
+      "name": "music_programs.o",
+      "bytes": 6327360,
+      "sha256": "f411d5766162905bbc440d5d3a1b5435a23c33361de27716ab009ef9e7370d64"
+    },
+    {
+      "name": "music_regions.o",
+      "bytes": 6400872,
+      "sha256": "8cb99a7273adb7b1ae18ef1b2e24fbaa60c58dc7748ab318d0f0379e2befdbeb"
+    },
+    {
+      "name": "music_scene_graph.o",
+      "bytes": 4032392,
+      "sha256": "ba00d7ea42500ffab3d9f847fe0079893f4ab4297946d2a80085d3b1f10b052f"
+    },
+    {
+      "name": "music_zones.o",
+      "bytes": 2274592,
+      "sha256": "184ad9e5b737ccbfb4d35640f16b3043a2d7df459441c0f93b1f622803430cfa"
+    },
+    {
+      "name": "native_input.o",
+      "bytes": 430768,
+      "sha256": "d7f69e50acc98f58de2b10fffcbb105c31d1d5d2077efd9de078c8a1035a19a5"
+    },
+    {
+      "name": "native_session.o",
+      "bytes": 24004696,
+      "sha256": "0ef8bfd7b9914ff006d36196d7634a587cd1827a6b653d6665e71e6b9f4c47e5"
+    },
+    {
+      "name": "new_game_setup.o",
+      "bytes": 20904328,
+      "sha256": "1dcb269b4e9f07dff88c3fb78b5653152c3c3d74f39c731becece2959c2f8b2e"
+    },
+    {
+      "name": "opening_trigger.o",
+      "bytes": 239440,
+      "sha256": "2466ab4e925147032256972c92ea663541801ab301fed189ca8640f9104a33c4"
+    },
+    {
+      "name": "phone_data.o",
+      "bytes": 1203640,
+      "sha256": "14a5e115d6ab75056649d1f6dc68a369b8aaf44cc98eeaea71de83887b2a63ab"
+    },
+    {
+      "name": "phone_runtime.o",
+      "bytes": 578784,
+      "sha256": "aaffbc6147c96f0a2a39fb1f06f83e5cbb81a748c2e3b6b464b03b2cb8bca8e6"
+    },
+    {
+      "name": "present_data.o",
+      "bytes": 2160384,
+      "sha256": "d61f6ca287c3f70aaa097dc7a58e0d71024850a05e5a137a9bf7c5647e2603ea"
+    },
+    {
+      "name": "progression.o",
+      "bytes": 187352,
+      "sha256": "27439d66bfba33543a6fde7470c8ad2376f02269eb0b190ad65b4121be1989e5"
+    },
+    {
+      "name": "prop_clips.o",
+      "bytes": 1729976,
+      "sha256": "bbfe073fd7d4d831612ffd5e19a1ea8be76d413799190be79e405090c9ce81fd"
+    },
+    {
+      "name": "resource_catalog.o",
+      "bytes": 2275504,
+      "sha256": "2810b1c88e95e82077844fad8678b399f5af3a5f45117013786f8d09a1a9306a"
+    },
+    {
+      "name": "restore_data.o",
+      "bytes": 5878152,
+      "sha256": "17b091627742ef4ff9e2939429c77a3ae134004ca740f75649036d16ac1d2337"
+    },
+    {
+      "name": "room_data.o",
+      "bytes": 2647776,
+      "sha256": "3c4fb6193cc4de7acfa94390e414a18c30ac0a57d47711088da0c9bb6ed93d68"
+    },
+    {
+      "name": "save.o",
+      "bytes": 959240,
+      "sha256": "49ca076179c1225c88881077274c12b78f6a3782d080fa09145ed28e90361f44"
+    },
+    {
+      "name": "save_menu.o",
+      "bytes": 2486256,
+      "sha256": "4bd33cbbb170692e3569efc127ba11f63561d5063bf618eb63c35f33b7e4b811"
+    },
+    {
+      "name": "save_menu_data.o",
+      "bytes": 5952848,
+      "sha256": "900135cc1100f1c248eefcaea0cc352a208a8bc4fe738b24471471b8b1745f13"
+    },
+    {
+      "name": "session_migration.o",
+      "bytes": 12562552,
+      "sha256": "45619d8b8e6ed26b85a92e9700fe9b9611e5b206d0594324295f8e1a4167d529"
+    },
+    {
+      "name": "session_restore.o",
+      "bytes": 8176776,
+      "sha256": "18ce971e9a0129770cc9e6d4ef93ce197c4c9feb0fa8aeeb7c3b30ee6ffbbb2d"
+    },
+    {
+      "name": "session_save.o",
+      "bytes": 15949800,
+      "sha256": "aec885fc81df4f1657dc1a9490d4ce8fd7f15157dbaaafabae28921babae0acc"
+    },
+    {
+      "name": "slot_preference.o",
+      "bytes": 1140880,
+      "sha256": "366b335d1e50643123955a9b2ddbc05afac72accea2638730926b1aaeede2834"
+    },
+    {
+      "name": "source_font.o",
+      "bytes": 2974984,
+      "sha256": "b2a9265ccc2b44d52e8cbdfebca93bb5fa25e851e1af7a5abe04ddcfc439e17c"
+    },
+    {
+      "name": "source_random.o",
+      "bytes": 98608,
+      "sha256": "4298cd8c11bc766ac9443548fda37c8d0b84b52d7d86ef30aeeb765993d16df2"
+    },
+    {
+      "name": "startup_settings.o",
+      "bytes": 6903472,
+      "sha256": "a1486d09a57e598d1658e565233549b9e60ad5b7992168128dd5662bed912b24"
+    },
+    {
+      "name": "storage_data.o",
+      "bytes": 1450472,
+      "sha256": "e41704e6239af8da4a6b01ad244f3daac719e0475d9d65c7701e1b90c9006a63"
+    },
+    {
+      "name": "storage_menu.o",
+      "bytes": 3798512,
+      "sha256": "9db0de5deb3128082358277c54baed04fbcb625250e3981d25a1a9a8bc6ab719"
+    },
+    {
+      "name": "story.o",
+      "bytes": 232104,
+      "sha256": "bb56ae6ad988bf2f0dbc89f1fe8a19e66362235d56b1dd86dc5a33450966666f"
+    },
+    {
+      "name": "title_locale_data.o",
+      "bytes": 4171640,
+      "sha256": "0972fd4a3c156b6b1415fe8fe371341b256e34cf7fec5f16acc7c447da0ad5ff"
+    },
+    {
+      "name": "world.o",
+      "bytes": 15330992,
+      "sha256": "d8880fe2c7b869b0891251d25c17e19b3759f8d1772b795e48c9456f3c77359e"
+    },
+    {
+      "name": "world_effect.o",
+      "bytes": 1066072,
+      "sha256": "8929a6c6c90dc1935428b25195108e4e1a4ad5a1eb075ece6f08e17eef15914f"
+    },
+    {
+      "name": "world_effect_data.o",
+      "bytes": 479656,
+      "sha256": "d4dcfb7f8e6e58454f5a65f31a2e85bf1a1493a1b33b570d9e0071463fbda4a8"
+    },
+    {
+      "name": "world_flags.o",
+      "bytes": 1928008,
+      "sha256": "005a9961466a576b379eef730ae6ead0376cf4f97284d4b2a2a224d034399f72"
+    },
+    {
+      "name": "world_links.o",
+      "bytes": 1784560,
+      "sha256": "e85edb14edd31c44fe4edf83bfa27646e762f077d63fec0902a08a849898da00"
+    }
+  ],
+  "total_bytes": 417380392
+}

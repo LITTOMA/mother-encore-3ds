@@ -1,0 +1,20 @@
+test_exact_source_scripts_and_explicit_adapters (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_exact_source_scripts_and_explicit_adapters) ... FAIL
+test_native_timeline_requests_and_flag_only_reset (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_native_timeline_requests_and_flag_only_reset) ... ok
+test_original_independent_camera_and_wall_continuations (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_original_independent_camera_and_wall_continuations) ... ok
+test_pinned_source_producer_and_engine (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_pinned_source_producer_and_engine) ... ok
+test_two_runs_have_exact_complete_projection (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_two_runs_have_exact_complete_projection) ... ok
+test_unsafe_existing_output_or_missing_engine_rejected (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_unsafe_existing_output_or_missing_engine_rejected) ... ok
+
+======================================================================
+FAIL: test_exact_source_scripts_and_explicit_adapters (tests.test_dungeon_mechanism_timeline_reference.MechanismTimelineReference.test_exact_source_scripts_and_explicit_adapters)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_dungeon_mechanism_timeline_reference.py", line 28, in test_exact_source_scripts_and_explicit_adapters
+    self.assertEqual((self.second/'adapters/probe.gd').read_text(encoding='utf8'),r.probe())
+AssertionError: 'exte[131 chars]():\n\tvar file=File.new()\n\tassert(file.open[6349 chars]()\n' != 'exte[131 chars]():\n    var file=File.new()\n    assert(file.[6765 chars]()\n'
+Diff is 14800 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.050s
+
+FAILED (failures=1)

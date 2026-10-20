@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_mechanism_timeline_reference.py", line 146, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--godot',type=Path,required=True);a=p.parse_args();run(a.out,a.godot)
+                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_mechanism_timeline_reference.py", line 122, in run
+    source=resource['path'][6:]
+           ~~~~~~~~^^^^^^^^
+TypeError: tuple indices must be integers or slices, not str

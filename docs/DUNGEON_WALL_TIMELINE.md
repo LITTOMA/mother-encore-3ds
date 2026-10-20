@@ -86,8 +86,10 @@ Evidence: `reports/dungeon-wall-timeline/source-implementation-1`.
   failure and subsequent passing logs are retained. Local WSL has no CMake;
   its failed configure is retained and the actual direct build is identified.
 
-Both new core units are registered for desktop and real 3DS builds. Full checks
-and cross-builds for this new slice remain pending until its published commit.
+Both new core units are registered for desktop and real 3DS builds. Published
+0f203b2 passed the genuine 3DSX/CIA job 118587999367 in full run 39410861702;
+its raw console log is retained with the subsequent mechanism-reference report.
+The full host/sanitizer jobs are still pending at that report's checkpoint.
 The wall still needs live audio/camera consumers, scene collision and controlled
 switch ownership, textures, map admission and save integration. Catacombs and
 Pippi rescue are not yet playable; emulator and hardware acceptance of this

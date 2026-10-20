@@ -1,4 +1,5 @@
 import copy,json,struct,tempfile,unittest
+from contextlib import ExitStack
 from pathlib import Path
 from unittest.mock import patch
 from tools import field_story as story,bridge_entry,podunk_field,native_content
@@ -7,6 +8,8 @@ class FieldStoryTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
   cls.policy,_=story.read();recipe=podunk_field.load_recipe();model=podunk_field.Model(recipe);cls.room=native_content.parse_pack(podunk_field.build_room(recipe,model,recipe['house']['room_ir']))
+  from tools import graveyard_tutorial_programme,graveyard_shovel
+  cls.checked_dependencies=[(graveyard_tutorial_programme,ROOT/cls.policy['tutorial'],graveyard_tutorial_programme.read(ROOT/cls.policy['tutorial'])),(graveyard_shovel,ROOT/cls.policy['shovel'],graveyard_shovel.read(ROOT/cls.policy['shovel']))]
  def test_source_programmes_and_metadata_reproduce(self):
   self.assertEqual(story.build(),(ROOT/'romfs'/story.OUTPUT).read_bytes());self.assertEqual(len(self.room['sections']['Program']),8)
   self.assertEqual([self.room['strings'][p['source_path_string']]for p in self.room['sections']['Program']],['Podunk/cutscenes/bridge_fight','Podunk/cutscenes/pippismom_call','Podunk/cutscenes/pippismom_help','Podunk/pippismom','Podunk/iggy_forget','Podunk/cutscenes/graveyard_zombie_roots','Podunk/cutscenes/gravedigger_swing','Podunk/cutscenes/gravedigger_getshovel'])
@@ -29,10 +32,20 @@ class FieldStoryTests(unittest.TestCase):
   folder=ROOT/'build/podunk-routes';folder.mkdir(parents=True,exist_ok=True)
   with tempfile.TemporaryDirectory(dir=folder)as temporary:
    target=Path(temporary)/'candidate.json';bridge_entry.write(target,candidate)
-   with patch.object(story,'POLICY',target),self.assertRaises((ValueError,KeyError,StopIteration)):
-    if lower:
-     recipe=podunk_field.load_recipe();podunk_field.build_room(recipe,podunk_field.Model(recipe),recipe['house']['room_ir'])
-    else:story.read()
+   # These negatives mutate the field policy, not the already source-audited
+   # tutorial/shovel documents. Reuse detached copies only for their exact
+   # unchanged paths; altered paths still take the real rejection path. The
+   # positive formal composition above/below runs the complete real chain.
+   with ExitStack()as stack:
+    for module,path,checked in self.checked_dependencies:
+     original=module.read
+     def admitted(name,original=original,path=path,checked=checked):return copy.deepcopy(checked)if Path(name).resolve()==path.resolve()else original(name)
+     stack.enter_context(patch.object(module,'read',side_effect=admitted))
+    stack.enter_context(patch.object(story,'POLICY',target))
+    with self.assertRaises((ValueError,KeyError,StopIteration)):
+     if lower:
+      recipe=podunk_field.load_recipe();podunk_field.build_room(recipe,podunk_field.Model(recipe),recipe['house']['room_ir'])
+     else:story.read()
  def test_unknown_versions_fields_and_source_changes_fail_closed(self):
   for mutate in (lambda p:p.update(schema=7),lambda p:p.update(schema=True),lambda p:p.update(schema=5),lambda p:p.update(ignore_unknown=True),lambda p:p.update(supplement='../outside.json'),lambda p:p.update(supplement='content/../outside.json'),lambda p:p.update(supplement=True),lambda p:p.update(tutorial='../outside.json'),lambda p:p.update(tutorial=True),lambda p:p.pop('tutorial'),lambda p:p.update(shovel='../outside.json'),lambda p:p.update(shovel=True),lambda p:p.pop('shovel'),lambda p:p['documents'][p['programmes'][0]['source']]['0'].update(wait=.01),lambda p:p['encounters'][0].update(basic_slot=False),lambda p:p['basic_overrides'][0].update(source='Data/BattleSkills/attack.yaml')):
    self.reject_policy(mutate)

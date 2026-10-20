@@ -169,19 +169,28 @@ class FieldAudioBinding(unittest.TestCase):
 
 
 class GameplayWorldCoverage(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # Audit the complete unchanged world once. These cases then mutate
+        # only the coverage dictionary/binding join; the other class's actual
+        # source-admission test still runs the complete live audio chain.
+        cls.expected=gameplay_audio.world_sources(ROOT)
+
     def test_key_received_source_reuses_existing_audio_identity(self):
-        cues,extra,_=gameplay_audio.load(ROOT)
+        with mock.patch.object(gameplay_audio,'world_sources',return_value=set(self.expected)):
+            cues,extra,_=gameplay_audio.load(ROOT)
+            bindings=gameplay_audio.bindings(ROOT)
         source='Audio/Sound effects/Item Received.mp3'
         self.assertIn(source,extra)
         native=json.loads((ROOT/'content/native-audio.json').read_text(encoding='utf8'))
         self.assertEqual(sum(a['source_path']=='res://'+source for a in native['assets']),1)
-        self.assertNotIn(source,[b['source'] for b in gameplay_audio.bindings(ROOT)])
+        self.assertNotIn(source,[b['source'] for b in bindings])
         self.assertEqual((ROOT/'romfs/sound/banks/gameplay.enccues').read_bytes(),gameplay_audio.encode(cues))
     def test_missing_duplicate_and_unbound_coverage_rejected(self):
         target=ROOT/'content/gameplay-audio-bindings.json';base=gameplay_audio.read_json(target);read=gameplay_audio.read_json
         # Audit the actual source once, then test only the three detached
         # coverage joins. The real load/bindings test above remains unmocked.
-        expected=gameplay_audio.world_sources(ROOT)
+        expected=set(self.expected)
         for kind in ('missing','duplicate','unbound'):
             config=copy.deepcopy(base)
             if kind=='missing':config['extra_sources'].remove('Audio/Sound effects/Item Received.mp3')

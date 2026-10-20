@@ -10,7 +10,12 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from tools import native_content as c
 from tools.extract_battle_entry import Extractor,require
 
-def build():
+def legacy_room():
+ from tools import graveyard_tutorial_programme as tutorial
+ blob,_,proof=tutorial.build()
+ return blob,{**{'upstream/MOTHER-Encore/'+n:h for n,h in proof['sources'].items()},**proof['dependencies']}
+
+def build(legacy=None):
  ex=Extractor();audit=json.loads((ROOT/'reports/iggy-tutorial/shovel-preparation/shovel-next-source-audit.json').read_bytes());source='Data/Dialogue/Podunk/cutscenes/gravedigger_getshovel.yaml'
  for name in [source,'Scripts/Main/DroppedItem.gd','Scripts/misc/sparkles.gd']:
   require(hashlib.sha256(ex.data(name)).hexdigest()==audit['sources'][name],'Source object deletion changed: '+name)
@@ -18,7 +23,7 @@ def build():
  require(hashlib.sha256(ex.data(handler)).hexdigest()==lowering['sources'][handler]and 'object.call_deferred(objects[i])'in raw_handler,'Original object method is deferred')
  doc=ex.yaml(source);require(len(doc)==10 and doc['0']['setflags']=='got_shovel'and doc['3']['objectsfunction']=={'Objects/Items/Item':'queue_free'},'Original object/flag ordering differs')
  require(not any('item'in row for row in doc.values()),'No item grant is mapped in getshovel')
- base=ROOT/'romfs/world/podunk/podunk.encroom';ir=copy.deepcopy(c.parse_pack(base.read_bytes()));require(ir['scene_id']==2 and ir['capabilities']==13,'Expected published scene base');ir.pop('build_input_sha256');ir['capabilities']=14;strings=ir['strings'];s=ir['sections']
+ base,base_sources=legacy_room()if legacy is None else legacy;ir=copy.deepcopy(c.parse_pack(base));require(ir['scene_id']==2 and ir['capabilities']==13,'Expected reviewed pre-getshovel scene base');ir.pop('build_input_sha256');ir['capabilities']=14;strings=ir['strings'];s=ir['sections']
  def text(value):
   if value not in strings:strings.append(value)
   return strings.index(value)
@@ -27,8 +32,8 @@ def build():
  def emit(op,phrase=0,target=c.NONE,value=0,duration=0):commands.append(dict(opcode=c.OPCODES.index(op),actor_index=c.NO_ACTOR,phrase=phrase,target_index=target,auxiliary_index=c.NONE,flags=0,vector=[0,0],value=value,duration=duration))
  emit('BeginCutscene');emit('SetFlag',target=flags['got_shovel'],value=1);emit('YieldIdle');emit('QueueFreeStoryObject',phrase=3,target=text('Objects/Items/Item'));emit('YieldIdle',phrase=3);emit('CutsceneEnded',phrase=3);emit('DialogueDone',phrase=3,duration=.5)
  programme=len(s['Program']);s['Command'].extend(commands);s['Program'].append(dict(stable_id=max(x['stable_id']for x in s['Program'])+1,first_command=first,command_count=len(commands),phrase_count=4,source_path_string=text('fixture/ordered-source-object-deletion')))
- ir['provenance']={'sources':{**{'upstream/MOTHER-Encore/'+n:h for n,h in ex.sources.items()},**{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest()for name in ['romfs/world/podunk/podunk.encroom','reports/iggy-tutorial/shovel-preparation/shovel-next-source-audit.json','content/podunk-story.json','tests/prepare_story_object_delete.py','tools/native_content.py']}}}
+ ir['provenance']={'sources':{**base_sources,**{'upstream/MOTHER-Encore/'+n:h for n,h in ex.sources.items()},**{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest()for name in ['reports/iggy-tutorial/shovel-preparation/shovel-next-source-audit.json','content/podunk-story.json','tests/prepare_story_object_delete.py','tools/native_content.py']}}}
  blob,_=c.compile_ir(ir);c.parse_pack(blob)
- return blob,dict(scope=__doc__,source=source,source_sha256=ex.sources[source],flag_label='0',delete_label='3',path='Objects/Items/Item',programme=programme,base_sha256=hashlib.sha256(base.read_bytes()).hexdigest())
+ return blob,dict(scope=__doc__,source=source,source_sha256=ex.sources[source],flag_label='0',delete_label='3',path='Objects/Items/Item',programme=programme,base_sha256=hashlib.sha256(base).hexdigest())
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args();out=a.out.resolve();require(out!=ROOT/'build'and(ROOT/'build').resolve()in out.parents,'Owned fixture directory required');out.mkdir(parents=True,exist_ok=True);blob,proof=build();(out/'source.encroom').write_bytes(blob);(out/'source.json').write_text(json.dumps(proof,indent=2)+'\n',encoding='utf8');print('Source object-delete component fixture:',len(blob),'bytes; not full getshovel')
+ p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args();out=a.out.resolve();require(out!=ROOT/'build'and(ROOT/'build').resolve()in out.parents,'Owned fixture directory required');out.mkdir(parents=True,exist_ok=True);legacy=legacy_room();blob,proof=build(legacy);(out/'legacy.encroom').write_bytes(legacy[0]);(out/'source.encroom').write_bytes(blob);(out/'source.json').write_text(json.dumps(proof,indent=2)+'\n',encoding='utf8');print('Source object-delete component fixture:',len(blob),'bytes; generated pre-getshovel base; not full getshovel')

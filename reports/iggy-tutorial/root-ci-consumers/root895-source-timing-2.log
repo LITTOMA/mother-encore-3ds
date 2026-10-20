@@ -1,0 +1,3 @@
+{'module': 'test_field_equipment', 'returncode': 0, 'elapsed': 1.3339162}
+{'module': 'test_field_audio', 'returncode': 0, 'elapsed': 42.7472285}
+{'module': 'test_field_story', 'returncode': 0, 'elapsed': 56.9009373}

@@ -1,0 +1,15 @@
+test_cemetery_binding_order_and_unknown_calls_reject (tests.test_field_story.FieldStoryTests) ... ok
+test_cemetery_source_mapping_and_runtime_version_negatives (tests.test_field_story.FieldStoryTests) ... ok
+test_checked_source_dialogues (tests.test_field_story.FieldStoryTests) ... ok
+test_formal_tutorial_preserves_old_room_tables_and_recipe_v4 (tests.test_field_story.FieldStoryTests) ... ok
+test_previous_schema_two_remains_byte_identical (tests.test_field_story.FieldStoryTests) ... ok
+test_source_npc_selection_and_rich_controls (tests.test_field_story.FieldStoryTests) ... ok
+test_source_programmes_and_metadata_reproduce (tests.test_field_story.FieldStoryTests) ... ok
+test_unknown_command_is_not_ignored (tests.test_field_story.FieldStoryTests) ... ok
+test_unknown_versions_fields_and_source_changes_fail_closed (tests.test_field_story.FieldStoryTests) ... ok
+test_unread_text_and_timer_modes_are_explicit (tests.test_field_story.FieldStoryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 61.765s
+
+OK

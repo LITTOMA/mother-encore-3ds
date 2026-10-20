@@ -1,0 +1,37 @@
+{
+  "scope": "Actual895 3DSX ordinary inputs only, two controlled cold boots from previously recorded slot2; source-script endpoint comparison and native-to-native idempotence, not an original Godot execution oracle",
+  "source": "89560379b011b75f0eab3ad289a5ebb75203f632",
+  "game_sha256": "620a04da5f2874851ef8da40c032ccf7c0bc75af28caf4da0b621b20f865dedb",
+  "ordinary_repetitions": 2,
+  "source_text_ids": [
+    3200,
+    3201,
+    3202,
+    3203,
+    3204
+  ],
+  "final_position": [
+    1408,
+    4720
+  ],
+  "final_direction": [
+    -1,
+    0
+  ],
+  "manual_holds": [
+    5,
+    18
+  ],
+  "flags": [
+    "got_shovel",
+    "returned_shovel",
+    "bat"
+  ],
+  "no_extra_key": true,
+  "movement_resumed": true,
+  "private_profiles_removed": true,
+  "full_ci": "39355668516 console passed; Clang249/254 ordinary (source fixture failure,2dependency blocks,2source timeouts), noClang sanitizer; GCC still pending",
+  "hardware": false,
+  "audibility": false,
+  "natural_opening": false
+}

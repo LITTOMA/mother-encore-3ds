@@ -1,0 +1,159 @@
+PYTHON START test_native_content pid=64420
+PYTHON END test_native_content pid=64420 status=1
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 263, in <module>
+    raise SystemExit(main())
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 241, in main
+    return worker(args.project, args.worker_plan, args.worker_result)
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 128, in worker
+    raise ValueError('Worker collection differs from admitted method IDs')
+ValueError: Worker collection differs from admitted method IDs
+
+test_changed_collection_cannot_reuse_stale_success (tests.test_ci_test_parallelism.ParallelTests) ... ok
+test_ctest_defaults_and_four_slot_policy (tests.test_ci_test_parallelism.ParallelTests) ... ok
+PYTHON START test_native_house pid=64736
+PYTHON START test_native_content pid=49240
+PYTHON END test_native_content pid=49240 status=0
+test_run (tests.test_native_content.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+PYTHON END test_native_house pid=64736 status=1
+test_run (tests.test_native_house.Case) ... FAIL
+
+======================================================================
+FAIL: test_run (tests.test_native_house.Case)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\litto\AppData\Local\Temp\tmphoczbz9_\tests\test_native_house.py", line 3, in test_run
+    def test_run(self): self.fail("intentional worker failure")
+AssertionError: intentional worker failure
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
+
+test_failure_propagates_and_other_worker_still_runs (tests.test_ci_test_parallelism.ParallelTests) ... ok
+PYTHON START test_native_content pid=63204
+PYTHON START test_native_house pid=65400
+PYTHON START test_native_restore pid=6512
+PYTHON START test_native_round pid=12680
+PYTHON END test_native_round pid=12680 status=0
+test_run (tests.test_native_round.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+PYTHON END test_native_content pid=63204 status=0
+PYTHON END test_native_house pid=65400 status=0
+PYTHON END test_native_restore pid=6512 status=0
+test_run (tests.test_native_content.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.024s
+
+OK
+
+test_run (tests.test_native_house.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.027s
+
+OK
+
+test_run (tests.test_native_restore.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.021s
+
+OK
+
+test_four_processes_overlap_and_isolate_module_mocks (tests.test_ci_test_parallelism.ParallelTests) ... ok
+test_invalid_job_count_and_unreviewed_modules_fail_closed (tests.test_ci_test_parallelism.ParallelTests) ... ok
+test_partition_preserves_unknown_modules_and_detects_missing_methods (tests.test_ci_test_parallelism.ParallelTests) ... ok
+PYTHON START test_mayor_field pid=60196
+PYTHON START test_mayor_scene pid=61256
+PYTHON START test_house_assets pid=49608
+PYTHON START test_new_game_assets pid=54260
+PYTHON END test_mayor_field pid=60196 status=0
+test_run (tests.test_mayor_field.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+PYTHON END test_mayor_scene pid=61256 status=0
+PYTHON END test_new_game_assets pid=54260 status=0
+PYTHON END test_house_assets pid=49608 status=0
+test_run (tests.test_mayor_scene.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.017s
+
+OK
+
+test_run (tests.test_new_game_assets.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.016s
+
+OK
+
+test_run (tests.test_house_assets.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.024s
+
+OK
+
+test_source_asset_workers_overlap_and_isolate_module_mocks (tests.test_ci_test_parallelism.ParallelTests) ... ok
+PYTHON START test_doll_postwin pid=55152
+PYTHON START test_melody_content pid=48780
+PYTHON START test_native_session pid=7052
+PYTHON START test_phone_linker pid=46536
+PYTHON END test_melody_content pid=48780 status=0
+PYTHON END test_native_session pid=7052 status=0
+test_run (tests.test_melody_content.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+test_run (tests.test_native_session.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+PYTHON END test_phone_linker pid=46536 status=0
+PYTHON END test_doll_postwin pid=55152 status=0
+test_run (tests.test_phone_linker.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.019s
+
+OK
+
+test_run (tests.test_doll_postwin.Case) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.037s
+
+OK
+
+test_source_linker_workers_overlap_and_isolate_module_mocks (tests.test_ci_test_parallelism.ParallelTests) ... ok
+test_worker_rejects_unknown_or_duplicate_plan_before_execution (tests.test_ci_test_parallelism.ParallelTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 6.016s
+
+OK

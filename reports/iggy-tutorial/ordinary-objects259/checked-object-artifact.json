@@ -1,0 +1,7 @@
+{
+  "source": "259b782747932ddf92e60a52d5adf6166487aa29",
+  "object_bytes": 672,
+  "texture_bytes": 4117,
+  "texture_sha256": "843851626d26a227a69a84ab77d44a032a3f9c07ac171842377aa59e9ec2bf20",
+  "scope": "Actual packaged source companions; ordinary read-only observations cannot expose private object state, so screenshots are visually inspected separately"
+}

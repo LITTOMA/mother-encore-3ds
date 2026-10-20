@@ -1,0 +1,11 @@
+{
+  "base": "b00b34ea14bf4a1d8e97a2b48c065a61684a91e8",
+  "source_sha256": {
+    "tests/test_emulator_walk_route.py": "e7e6cd1d28f4d968847e89d1f6fbdae1df13070747ba0c299000988eccd0139c",
+    "tests/test_mayor_scene.py": "f507557bb2fac5c1643c15c2c216a0057833aff7cf7230edb2036f3d31d2df2c",
+    "tests/test_party_npc_actor.py": "193f2b535a608e72dff233ce3da3461102a282ae8406644a7d4ed93db8c79ec8",
+    "tests/test_swing_resource_catalog.py": "c048cb12d3170aedb6f1c1a307d78c856f47399d88d5d669120361758c31f2f7"
+  },
+  "result": "16 focused Python tests passed; frozen catalog12, map3 and route1 bytes unchanged. No game/runtime/resource changes included in this fix commit.",
+  "previous_ci": "39344316596: GCC261/262 ordinary, aggregate failed five assertions/errors in four modules; no GCC sanitizer. Clang247 ordinary+247 sanitizer, genuine console376 success. Intentional worker failures in scheduler self-tests are expected, not additional game failures."
+}

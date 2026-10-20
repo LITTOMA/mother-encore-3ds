@@ -7,7 +7,10 @@ from tools import resource_catalog as c
 class SwingCatalog(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.current=c.load_catalog();cls.base=copy.deepcopy(cls.current);cls.base['bindings']=[r for r in cls.base['bindings']if r['role']not in c.SWING_ROLES]
+  cls.current=c.load_catalog();cls.base=copy.deepcopy(cls.current)
+  # This capability-12 fixture predates the separately bound field objects.
+  # Keep its bytes frozen while current packets continue to require that owner.
+  cls.base['bindings']=[r for r in cls.base['bindings']if r['role']not in c.SWING_ROLES|{'FieldObjects'}]
  def candidate(self):
   p=copy.deepcopy(self.base)
   for role in ('FieldSwing','FieldSwingGraphics','FieldSwingAction','FieldSwingEntry'):
@@ -31,7 +34,7 @@ class SwingCatalog(unittest.TestCase):
    with self.subTest(edit=edit),self.assertRaises(ValueError):self.encode(p)
  def test_version_mismatch_unknown_capability_truncation_and_legacy_are_strict(self):
   blob=self.encode(self.candidate())
-  for cap in (0,1,10,11,13):
+  for cap in (0,1,10,11,13,14):
    bad=bytearray(blob);struct.pack_into('<I',bad,20,cap)
    with self.subTest(cap=cap),self.assertRaises(ValueError):c.decode(bad)
   old=(Path(__file__).parent/'fixtures/catalog-cap11.encresources').read_bytes();self.assertEqual(c.capability_for(c.decode(old)['bindings']),11)

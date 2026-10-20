@@ -1,0 +1,42 @@
+{
+  "parent": "7fe19a7034c36ac7d21ebefe0c71901781bacee7",
+  "run": 39369841616,
+  "gcc_job": 118455003153,
+  "gcc": {
+    "ordinary_passed": 273,
+    "ordinary_total": 274,
+    "failure": "python_tools Timeout1800.02s",
+    "sanitizer": "not run after ordinary failure",
+    "phone_worker": "All17 original methods passed1259.489s; serial tail exceeded remaining aggregate time."
+  },
+  "clang_job": 118455003044,
+  "clang": {
+    "ordinary": 259,
+    "sanitizer": 259,
+    "status": "success; raw log retained"
+  },
+  "console_job": 118455003126,
+  "console": "success; existing packaging build does not imply later components covered",
+  "fix": "Move exact unchanged17-method PhoneLinker suite from aggregate worker to dedicated exclusive phone_linker_source. Keep aggregate1800s and explicit dedicated1800s; all assertions/hash-seed CLI/source audit unchanged.",
+  "targeted": "24 actual Python partition/worker/scheduler regressions pass6.684s. Actual273WindowsCTest1256Python873aggregate+383dedicated;17moved+1newpartitionmethod. Metadata only, no Windows native execution. Complete new CI pending.",
+  "compatibility": "No production source, game resources, source review identity, rule compatibility or save changes.",
+  "source_sha256": {
+    "CMakeLists.txt": "cba47fa31ac184ab7558dca29b688527e5d5dbbfebcf2a69db828b6f78852737",
+    "tests/python_suite.py": "12d42cea6cb7ba627fc867e97f4d39a1f9865deaceda4a58e2c442f2357b239c",
+    "tests/test_python_suite.py": "80864cd369f1c5eb9aec69b26faa8cc647920c135bbda142a5714688b04bfcf7",
+    "tests/test_phone_linker.py": "263f103beda145b898e5f8c86bd5c323ce167c4fce74506d814357da26bb936d",
+    "cmake/TestParallelism.cmake": "26a1943d810745be88a35407afa0061a9e4a932526eb4c16471211d0aa9ec662"
+  },
+  "evidence_sha256": {
+    "collect-root-phone-schedule.py": "65c6b6a3da62008599016497f3b0630e6384d7779991657308adb59bb5d2df59",
+    "retain-root-phone-schedule.py": "50c0ff56f8fab5fd1ab24b6a42921d259621754aa030930671b1d4ffaa3599ef",
+    "retired-root-accepted-old-files-1.json": "b0dfcca78a259b4cd806d427b3ad8d72d222424c44202bbc7512722c7660b1f1",
+    "root-phone-schedule-cmake-1.log": "63e84a215be8f0d70c037cb87f546dc6f9e45c80a8e8608107924769cb168abf",
+    "root-phone-schedule-collection-1.log": "69b144248c318f530fc3fa198f7c29b7c3ac59daa66d23767457b07f930be211",
+    "root-phone-schedule-ctest-1.json": "4cd7a6aced9d3c97c5c095fa7f47522fc08ea8eb2afef6f96c0331689459824f",
+    "root-phone-schedule-plan-1.json": "1ad8e3e35a7d41515156ce53870294dc26149b490487fd685951a01b8cea06b2",
+    "root-phone-schedule-unit-1.log": "0d7870f3dee27bde4f2a58f697103e043535c6f0d2375687950a788ac207f0df",
+    "root7fe-clang.log": "ef6e6e74769b028f48b85f6378477cafc0e6288e4eb35cdaa298b5dd3187b7df",
+    "root7fe-gcc.log": "c2883762535c930455d062a47a5a35b867e90581fae6f185bb308c917a2e84b7"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "scope": "Exact four owned obsolete host ELFs and prior895 game only, after61ea two-cold acceptance and matching evidence pushed7fe19a7. Keep current61ea game, core cache, tools, saves and protected assets.",
+  "bytes": 478889332,
+  "files": [
+    {
+      "path": "build/full-port/root-fixture-compat-native-1/field_interaction",
+      "bytes": 54068696,
+      "sha256": "c7c199778da0a420ca27231d4365df4787097562a2be148c35e4b3f625394a3d",
+      "published_proof": "reports/iggy-tutorial/root-fixture-compatibility/root-fixture-compat-native-1/proof.json"
+    },
+    {
+      "path": "build/full-port/root-fixture-compat-native-2/field_interaction",
+      "bytes": 54077528,
+      "sha256": "292e55958229bbb308e666e7a2227b98a087e94102e28efceb4b8440ec1af6fb",
+      "published_proof": "reports/iggy-tutorial/root-fixture-compatibility/root-fixture-compat-native-2/proof.json"
+    },
+    {
+      "path": "build/full-port/root-fixture-compat-native-2/step_scene_resources",
+      "bytes": 52653408,
+      "sha256": "8aff4fc06044f58ba2133317836e716b377048583f646f1669460def62401dd2",
+      "published_proof": "reports/iggy-tutorial/root-fixture-compatibility/root-fixture-compat-native-2/proof.json"
+    },
+    {
+      "path": "build/full-port/root-fixture-compat-native-3/world_run_audio",
+      "bytes": 53121968,
+      "sha256": "32936450a5b77a426d10c9f71e3d4f8cb6360f217a10bf680bb8d4b9eae36906",
+      "published_proof": "reports/iggy-tutorial/root-fixture-compatibility/root-fixture-compat-native-3/proof.json"
+    },
+    {
+      "path": "build/full-port/root895-current/verified-artifact/3ds/encore-native/encore-native.3dsx",
+      "bytes": 264967732,
+      "sha256": "620a04da5f2874851ef8da40c032ccf7c0bc75af28caf4da0b621b20f865dedb",
+      "published_proof": "reports/iggy-tutorial/ordinary-root61ea/idempotence.json; replaced by accepted actual61ea game"
+    }
+  ]
+}

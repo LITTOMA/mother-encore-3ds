@@ -1,0 +1,12 @@
+test_fixture_rejects_unknown_observation (tests.test_dungeon_rooms.DungeonRooms.test_fixture_rejects_unknown_observation) ... ok
+test_hidden_parent_indices_flags_and_roundtrip (tests.test_dungeon_rooms.DungeonRooms.test_hidden_parent_indices_flags_and_roundtrip) ... ok
+test_invalid_model_ownership_geometry_and_filter_are_rejected (tests.test_dungeon_rooms.DungeonRooms.test_invalid_model_ownership_geometry_and_filter_are_rejected) ... ok
+test_native_runs_match_and_reviewed_sources_remain_fixed (tests.test_dungeon_rooms.DungeonRooms.test_native_runs_match_and_reviewed_sources_remain_fixed) ... ok
+test_source_idle_order_cancellation_and_scalar_truncation_are_preserved (tests.test_dungeon_rooms.DungeonRooms.test_source_idle_order_cancellation_and_scalar_truncation_are_preserved) ... ok
+test_unknown_review_and_source_overrides_fail_closed (tests.test_dungeon_rooms.DungeonRooms.test_unknown_review_and_source_overrides_fail_closed) ... ok
+test_unknown_version_capability_reserved_and_truncation_fail_closed (tests.test_dungeon_rooms.DungeonRooms.test_unknown_version_capability_reserved_and_truncation_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.612s
+
+OK

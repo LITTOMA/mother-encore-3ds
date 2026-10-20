@@ -69,8 +69,9 @@ unknown-action rejection. Adversarial test copies update only their private
 checksums; published original observations and expectations are unchanged.
 
 Desktop and real 3DS source lists include both units. Full checks and cross-build
-of this new consumer await its published commit. The earlier 0f203b2 has actual
-Clang ordinary/sanitizer results of 276/276 each and a genuine 3DSX/CIA pass;
+of published 1b72953 are running separately in full run 39420570328.
+The earlier 0f203b2 passed GCC ordinary 292/sanitizers 276,
+Clang ordinary/sanitizers 276 each and genuine 3DSX/CIA;
 those do not verify these subsequently added classes.
 
 The new binary remains under `build/`. Live scene admission, actual textures,

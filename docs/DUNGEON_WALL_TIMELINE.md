@@ -89,7 +89,10 @@ Evidence: `reports/dungeon-wall-timeline/source-implementation-1`.
 Both new core units are registered for desktop and real 3DS builds. Published
 0f203b2 passed the genuine 3DSX/CIA job 118587999367 in full run 39410861702;
 its raw console log is retained with the subsequent mechanism-reference report.
-The full host/sanitizer jobs are still pending at that report's checkpoint.
+The subsequently completed run passed GCC ordinary 292/sanitizers 276 and
+Clang ordinary/sanitizers 276 each. Raw logs are retained in
+`reports/dungeon-wall-timeline/full0f-acceptance`. These cover 0f203b2,
+before the later joined mechanism consumer.
 The wall still needs live audio/camera consumers, scene collision and controlled
 switch ownership, textures, map admission and save integration. Catacombs and
 Pippi rescue are not yet playable; emulator and hardware acceptance of this

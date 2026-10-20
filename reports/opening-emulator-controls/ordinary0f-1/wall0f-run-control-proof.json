@@ -1,0 +1,12 @@
+{
+  "source_commit": "0f203b24694b127e4643c4e27e719bd65601ea22",
+  "field_menu_resource": "romfs/ui/field.encmenus",
+  "bytes": 817237,
+  "sha256": "15de6a154c38b0075337d1843a6bbe7a4a94d6efdb67b7db27e530b4b6436870",
+  "source_platform_sha256": "f512f7a3fbaa763ac5c776015f3fd0ca8a1847a8e589f97dd0a789591d38de45",
+  "run_logical_index": 4,
+  "run_physical_mask": 1024,
+  "run_button": "X",
+  "old_scenario_button": "B",
+  "scope": "Read-only exact artifact/source verification of fresh-profile defaults; no rebinding or game state mutation."
+}

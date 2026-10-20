@@ -3,7 +3,7 @@
   "name": "Natural opening battles and Dad call, then repeated field/house graphics handoff (Simplified Chinese)",
   "reference": {
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
-    "scope": "Pinned source contracts and independently executed Godot Pause/PSI methods; START/SELECT mapping is the declared 3DS adaptation. Covers normal startup/menu safety, excludes full game and learned PSI target effects.; Normal Lamp victory inputs and physical route to locked basement door. RNG remains original clock-seeded; HP and walking coordinates are recorded with source-route intervals, not equated across runs.; natural Doll room entry, battle and learned level-2 Telepathy; no injected flags, inventory or RNG. Extended ordinary-input route: Doll melody, Carol phone ring, first Dad call, stick selection of Nothing then Record, SaveSelect open/cancel and return; no actual Record write/LOAD claim.; Physical postwin route through Doll melody, hallway/stairs, Carol and Dad; repeated normal call uses Circle Pad choice and opens/cancels SaveSelect. No emulator save write or LOAD; original postwin motion verified separately with official Godot, phone source contracts are pinned rather than a full parallel original playthrough.; Extended normal-input house/Podunk/house/Podunk route without checkpoint or injected items/flags; checks graphics admission and session control, not a complete original playthrough.",
+    "scope": "Pinned source contracts and independently executed Godot Pause/PSI methods; START/SELECT mapping is the declared 3DS adaptation. Covers normal startup/menu safety, excludes full game and learned PSI target effects.; Normal Lamp victory inputs and physical route to locked basement door. RNG remains original clock-seeded; HP and walking coordinates are recorded with source-route intervals, not equated across runs.; natural Doll room entry, battle and learned level-2 Telepathy; no injected flags, inventory or RNG. Extended ordinary-input route: Doll melody, Carol phone ring, first Dad call, stick selection of Nothing then Record, SaveSelect open/cancel and return; no actual Record write/LOAD claim.; Physical postwin route through Doll melody, hallway/stairs, Carol and Dad; repeated normal call uses Circle Pad choice and opens/cancels SaveSelect. No emulator save write or LOAD; original postwin motion verified separately with official Godot, phone source contracts are pinned rather than a full parallel original playthrough.; Extended normal-input house/Podunk/house/Podunk route without checkpoint or injected items/flags; checks graphics admission and session control, not a complete original playthrough.; Current 3DS factory Run/Crouch binding is X in the checked FieldMenus resource. Walk back outside the trigger before running north: original ram checks on body_entered. Progression targets and all existing expected outcomes are unchanged.",
     "sources": {
       "Scripts/UI/PSIMenuUI.gd": "988484bff6163bd514de96cf231163939d1a35b7c6d1ebb08dd9cc5c259fac29",
       "Scripts/UI/PSISelect.gd": "f9214e3146d03d71f1f73442e22d04d167703ef5530bbbc9f68f5a937e89aeb2",
@@ -31,7 +31,8 @@
       "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
       "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
       "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
-      "Data/Dialogue/Podunk/doll.yaml": "0efec152a3748a064d671e154428acb251995dac5a569f810b8e4c05e4a5ff5a"
+      "Data/Dialogue/Podunk/doll.yaml": "0efec152a3748a064d671e154428acb251995dac5a569f810b8e4c05e4a5ff5a",
+      "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
     }
   },
   "projection": [
@@ -568,10 +569,26 @@
       }
     },
     {
+      "name": "sister_runup_space",
+      "buttons": [
+        "DOWN"
+      ],
+      "wait": {
+        "world_stage": 0,
+        "paused": 0
+      },
+      "hold_until": {
+        "player_y": {
+          "min": 389,
+          "max": 393
+        }
+      }
+    },
+    {
       "name": "sister_ram",
       "buttons": [
         "UP",
-        "B"
+        "X"
       ],
       "wait": {
         "world_stage": 1

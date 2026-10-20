@@ -1,0 +1,81 @@
+{
+  "source": "4d873f9e09bdfd1ca47130aca7acea2e96d9cefb",
+  "run": 39488422954,
+  "scope": "Full corrected-reference host/sanitizer and genuine console build only;no new emulator or hardware claim",
+  "jobs": {
+    "gcc": {
+      "id": 118854823873,
+      "success": true,
+      "ordinary": 310,
+      "sanitizer": 293
+    },
+    "clang": {
+      "id": 118854823841,
+      "success": true,
+      "ordinary": 293,
+      "sanitizer": 293
+    },
+    "console": {
+      "id": 118854823420,
+      "success": true,
+      "ordinary": null,
+      "sanitizer": null
+    }
+  },
+  "files": {
+    "gcc.log": "1b14d9c852bf06f2bccf21fcb8a804ec4a498ad6acae4f5875538437943eedb4",
+    "clang.log": "019ebae04cf9dfff5322288d9acdd2f15eac493368fe3005f64bf02db5153e07",
+    "console.log": "3c88d0a04cd2be861d459aea755e634522f58cb0eb587c9fd3065ef3d59e0e94",
+    "artifact-receipt/.owned-receipt": "58079c9e87b74377295db4752febd95ff2c1d7c3049c3f93eb943368bdead28d",
+    "artifact-receipt/artifact.json": "c15230af44f4ef565fe22cc95a4f5b49fd04a981919b33bd0ef0f7158942ddbd",
+    "artifact-receipt/build-receipt.json": "c8976d70b2512e91abacfc4d295121b09f95eac0c1da361debd96dd20cce2c41",
+    "artifact-receipt/BUILD_INFO.txt": "d6ab2756ecb43058324d0077c4a13c08f9488ccdd409d4d7d079583a313136f3",
+    "artifact-receipt/SHA256SUMS": "ded75b6d77ecae8c08ce5df6484469ab7dbeb4123f7e4bd6456b207c60f3c670",
+    "artifact-receipt/verification.json": "4d7708ba84acad363a894ec4d098948d5bbde537c9721520dc96859b0dfb3bd2",
+    "status.json": "0dd2acd610c47397046215c16890fe3ec6c28944323d325552b985b4afa33d46"
+  },
+  "current_head_changes_only": [
+    "docs/DUNGEON_KEY_NDSP.md",
+    "docs/STATUS.md",
+    "reports/dungeon-key-ndsp/361-emulator-1/build-receipt.json",
+    "reports/dungeon-key-ndsp/361-emulator-1/clang.log",
+    "reports/dungeon-key-ndsp/361-emulator-1/console.log",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/receipt.json",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-1/dad_first_finished.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-1/doll_victory.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-1/emulator-stdout.log",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-1/emulator.log",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-1/first_field_walk.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-1/lamp_victory.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-1/result.json",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-1/return_house.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-1/second_field_walk.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-2/dad_first_finished.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-2/doll_victory.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-2/emulator-stdout.log",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-2/emulator.log",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-2/first_field_walk.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-2/lamp_victory.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-2/result.json",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-2/return_house.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/ordinary-input/run-2/second_field_walk.png",
+    "reports/dungeon-key-ndsp/361-emulator-1/retained-runner.py",
+    "reports/dungeon-key-ndsp/361-emulator-1/retire-old0f-game.ps1",
+    "reports/dungeon-key-ndsp/361-emulator-1/retired-source0f-receipt.json",
+    "reports/dungeon-key-ndsp/361-emulator-1/runner.log",
+    "reports/dungeon-key-ndsp/361-emulator-1/same-game-source50afd-receipt.json",
+    "reports/dungeon-key-ndsp/361-emulator-1/scenario.json",
+    "reports/dungeon-key-ndsp/361-emulator-1/selected-artifact-proof.json",
+    "reports/dungeon-key-ndsp/361-emulator-1/superseded-game-retirement.json",
+    "reports/dungeon-key-ndsp/361-emulator-1/verification.json"
+  ],
+  "console": {
+    "staged_files": 377,
+    "game": {
+      "bytes": 264975208,
+      "sha256": "c180fbda6fffd52cffbb59bae07e7f93050a49899957747c9ed67ec3ac8e3fa3"
+    },
+    "game_payload_downloaded": false,
+    "whole_zip_digest_not_computed": true
+  }
+}

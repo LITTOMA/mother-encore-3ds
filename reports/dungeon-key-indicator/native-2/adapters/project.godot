@@ -1,0 +1,7 @@
+config_version=4
+[application]
+config/name="Original key indicator state"
+[autoload]
+global="*res://global.gd"
+globaldata="*res://data.gd"
+uiManager="*res://ui.gd"

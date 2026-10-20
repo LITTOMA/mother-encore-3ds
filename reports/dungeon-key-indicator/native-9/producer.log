@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_key_indicator_reference.py", line 105, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--godot',type=Path,required=True);a=p.parse_args();run(a.out,a.godot)
+                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_key_indicator_reference.py", line 99, in run
+    d.require(engine_errors==["ERROR: Can't append to a SceneTreeTween that has started. Use stop() first."]and script_errors==["SCRIPT ERROR: Attempt to call function 'from' in base 'null instance' on a null instance."]and'WARNING:'not in log,'Key HUD unexpected original diagnostic')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Key HUD unexpected original diagnostic

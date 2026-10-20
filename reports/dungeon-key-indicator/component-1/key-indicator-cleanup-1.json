@@ -1,0 +1,103 @@
+{
+  "scope": "Only SHA/marker-verified owned reference projects and two old host binaries;all outer logs and receipts retained",
+  "latest_executable_retained": true,
+  "removed_bytes": 8752225.0,
+  "projects": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-2\\project",
+      "manifest_sha256": "04a8d462e54e0faaa54e9cbe431067b0e1d581e961720507a4bdfcd3d98f65b7",
+      "files": 9,
+      "bytes": 8866
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-3\\project",
+      "manifest_sha256": "889ae3a6df62b495010f83e070640033f8a37dbe88ec3c548e863477b8629a30",
+      "files": 17,
+      "bytes": 18447
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-4\\project",
+      "manifest_sha256": "656c9e8c08bb302efd2baa62e6dfc8555aa9ab02263b93dc53f62adb111833c7",
+      "files": 19,
+      "bytes": 18477
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-5\\project",
+      "manifest_sha256": "2eda85ff9b609bf2bc5deaa712b9b09ce7dd6b0e5ba42931ffa3faff417150ae",
+      "files": 20,
+      "bytes": 19086
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-6\\project",
+      "manifest_sha256": "42a306cf13bddd30025afea3644b2d93cf9d8ca009aa39e5dbabf081ee59e7fc",
+      "files": 20,
+      "bytes": 22577
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-7\\project",
+      "manifest_sha256": "a9b17263c6a8888687b079d19520d2428189217a850710733466e7ff9218dcac",
+      "files": 20,
+      "bytes": 22955
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-8\\project",
+      "manifest_sha256": "603aa07db1ee1aaff3601a01170d4b068b709e8a3c7381847160e6dd6a463dfa",
+      "files": 20,
+      "bytes": 22955
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-9\\project",
+      "manifest_sha256": "2ff7cb4915c4a6f0a5801d49297450d92d6f148003d8c3f878cb279da5bbab02",
+      "files": 20,
+      "bytes": 25178
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-10\\project",
+      "manifest_sha256": "23f214680060b2d59d5d5d4baa050f834821a21fa8a5fff7cb678e580506d196",
+      "files": 20,
+      "bytes": 25157
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-11\\project",
+      "manifest_sha256": "9d98ad72dced8560ab2b26847ffe10574a1b2bda407b2e135491f56e1a3bc5f3",
+      "files": 20,
+      "bytes": 25157
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-12\\project",
+      "manifest_sha256": "95bcb63695ccccf1c42809c91d7b4323e239316a7e2853bc3b6ba570b5ac7ece",
+      "files": 20,
+      "bytes": 25149
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-13\\project",
+      "manifest_sha256": "e6c18cf730d78750f1dd97c4b009e0a00396e1c3d05245c0e10c88e7e126e4ea",
+      "files": 20,
+      "bytes": 25149
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-14\\project",
+      "manifest_sha256": "2be0b7451282a6dd177bc8cffb3a3ca9585278ff87035669d13387d62e785322",
+      "files": 20,
+      "bytes": 26228
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-native-15\\project",
+      "manifest_sha256": "9584c3a97755342685e1a07bf4e4966519f8a99c532141d501fba5fbe67a789e",
+      "files": 20,
+      "bytes": 26228
+    }
+  ],
+  "superseded_executables": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-host-1\\check",
+      "sha256": "fe0af174fe1d7f9f1af51fcde914f5cda262b706438a1f850274a12300178a4f",
+      "bytes": 4208968
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-indicator-host-2\\check",
+      "sha256": "0aeee8bf93f89c770b89fd4e6535fd6529bf3c4ad182fda5dcf6b6d2a5575098",
+      "bytes": 4231648
+    }
+  ]
+}

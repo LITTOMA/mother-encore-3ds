@@ -1,0 +1,12 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 3.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+Async. shader compilation: OFF
+ 
+
+Debugger Break, Reason: 'Attempt to call function 'from' in base 'null instance' on a null instance.'
+*Frame 0 - res://source.gd:32 in function 'update'
+Enter "help" for assistance.
+debug> KEY_INDICATOR_NATIVE_COMPLETE rows=67
+ERROR: Can't append to a SceneTreeTween that has started. Use stop() first.
+   at: (scene/animation/scene_tree_tween.cpp:66)

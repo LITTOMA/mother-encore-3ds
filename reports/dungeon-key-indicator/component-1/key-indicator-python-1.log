@@ -1,0 +1,15 @@
+test_actual_native_repetitions_and_exact_provenance (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_actual_native_repetitions_and_exact_provenance) ... ok
+test_all_truncations_and_typed_binary_corruption_rejected (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_all_truncations_and_typed_binary_corruption_rejected) ... ok
+test_binary_roundtrip_independent_keys_and_source_parameters (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_binary_roundtrip_independent_keys_and_source_parameters) ... ok
+test_duplicate_nonfinite_json_and_unmapped_source_method_rejected (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_duplicate_nonfinite_json_and_unmapped_source_method_rejected) ... ok
+test_fixture_rebuild_is_identical_and_matches_current_inputs (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_fixture_rebuild_is_identical_and_matches_current_inputs) ... ok
+test_model_numeric_text_identity_and_known_signed_threshold (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_model_numeric_text_identity_and_known_signed_threshold) ... ok
+test_review_unknown_missing_changed_source_and_engine_identity_rejected (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_review_unknown_missing_changed_source_and_engine_identity_rejected) ... ok
+test_shared_core_lists_and_platform_independence (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_shared_core_lists_and_platform_independence) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.910s
+
+OK
+Key HUD fixture: 749 bytes; 8 cases; 91 native observations;3 typed original diagnostic pairs
+Key HUD fixture: 749 bytes; 8 cases; 91 native observations;3 typed original diagnostic pairs

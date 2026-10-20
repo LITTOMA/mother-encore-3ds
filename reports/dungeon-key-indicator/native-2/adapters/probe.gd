@@ -1,0 +1,44 @@
+extends SceneTree
+var config
+var hud
+var rows=[]
+func capture(ci,pi):
+    var panel=hud.get_node("HBoxContainer")
+    rows.append({"case":ci,"phase":pi,"x":panel.rect_position.x,"y":panel.rect_position.y,"visible":panel.visible,"open":hud._is_open,"text":panel.get_node("Money").text,"running":hud._tween.is_running() if hud._tween else false})
+func _init():call_deferred("run")
+func run():
+    var f=File.new()
+    if f.open("res://input.json",File.READ)!=OK:quit(2);return
+    config=JSON.parse(f.get_as_text()).result
+    f.close()
+    for ci in config.cases.size():
+        hud=load("res://source.gd").new()
+        var panel=HBoxContainer.new()
+        panel.name="HBoxContainer"
+        panel.rect_position=Vector2(config.parameters[0],config.parameters[1])
+        var label=Label.new()
+        label.name="Money"
+        label.text=config.initial_text
+        panel.add_child(label)
+        hud.add_child(panel)
+        root.add_child(hud)
+        uiManager._key=hud
+        globaldata.keys={}
+        capture(ci,-1)
+        for pi in config.cases[ci].size():
+            var operation=config.cases[ci][pi]
+            if operation.op=="update":
+                globaldata.keys[config.region]=operation.count
+                uiManager.update_key_indicator()
+            elif operation.op=="close":uiManager.close_key_indicator()
+            elif operation.op=="step":
+                if hud._tween:hud._tween.custom_step(operation.delta)
+            else:push_error("Unknown key HUD reference action");quit(3);return
+            capture(ci,pi)
+        if hud._tween:hud._tween.kill()
+        hud.free()
+    f.open("res://../indicator.json",File.WRITE)
+    f.store_string(JSON.print({"engine":Engine.get_version_info(),"rows":rows},"  "))
+    f.close()
+    print("KEY_INDICATOR_NATIVE_COMPLETE rows=",rows.size())
+    quit()

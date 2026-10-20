@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_key_indicator_reference.py", line 84, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--godot',type=Path,required=True);a=p.parse_args();run(a.out,a.godot)
+                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_key_indicator_reference.py", line 74, in run
+    review,source=d.read();model,proof=d.source_model();policy=d.keys.parse(model['keys']);config={k:v for k,v in model.items()if k!='keys'};config.update(region=policy['region'],cases=cases())
+                                       ^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_key_indicator.py", line 36, in source_model
+    p,source=read(file);script=source.text(p['paths']['script']);scene=Document(p['paths']['scene'],source.text(p['paths']['scene']));nodes={n.path:n for n in scene.nodes}
+                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_key_indicator.py", line 36, in <dictcomp>
+    p,source=read(file);script=source.text(p['paths']['script']);scene=Document(p['paths']['scene'],source.text(p['paths']['scene']));nodes={n.path:n for n in scene.nodes}
+                                                                                                                                             ^^^^^^
+AttributeError: 'Section' object has no attribute 'path'

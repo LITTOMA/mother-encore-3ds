@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-key-indicator.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original KeyNumber open/close/update state and SceneTreeTween sequence, including count bounces queued before the tween starts and killed close yields. A count update during an already started bounce has a reviewed native append failure and null-from script error; these are explicit diagnostics, not a successfully queued animation. Region/counter identity is the separately reviewed dungeon key policy. No complete UI scene, fonts, icon rendering, full dungeon, persistent counter/save or generic tween VM is admitted.",
+  "keys_recipe": "content/catacombs-keys.json",
+  "keys_review_sha256": "67044b811263d2924de366e4d3925d57b1641768a6bfe3168840ff7441439a3f",
+  "engine": {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "native_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+    "scope": "Source float32 property duration, elapsed time, incoming delta and remainder order; start also occurs at zero delta. Original unconfigured SceneTreeTween defaults to LINEAR/IN_OUT, while the KeyNumber update-created tween sets SINE/OUT. Bounded HUD sequence only, not an engine or tween VM port.",
+    "sources": {
+      "reports/dungeon-key-indicator/engine/scene_tree_tween.cpp": "c0272f420342bf8606602c31ea935d9d05b6093190a77128889ec362483693a4",
+      "reports/dungeon-key-indicator/engine/scene_tree_tween.h": "5b83aae7581d3ad61e723904ac3dba65054d6da48f66edc6a1cdb6391218a2f5"
+    }
+  },
+  "paths": {
+    "scene": "Nodes/Ui/KeyCount.tscn",
+    "script": "Scripts/UI/KeyNumber.gd"
+  },
+  "sources": {
+    "Nodes/Ui/KeyCount.tscn": "5cedc188b29b381cbfbfe187ca22abc0439ffcf95519608c5d0a70e4229eb427",
+    "Scripts/UI/KeyNumber.gd": "7e022d5cb6b1ee5c709b5f413efc2237d27f5bf5e27a045fa9082b4dacfb243a"
+  }
+}

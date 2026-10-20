@@ -1,0 +1,2 @@
+case4/phase14 actual x280 y160 running0 expected 280 160 1
+Key HUD line34: near(v.position.x,x)&&near(v.position.y,y)&&v.visible==bool(visible)&&v.open==bool(open)&&v.running==bool(running)&&v.count==count&&v.text==text ()

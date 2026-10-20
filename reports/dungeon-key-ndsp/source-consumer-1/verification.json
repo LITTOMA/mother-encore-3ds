@@ -1,0 +1,28 @@
+{
+  "parent": "50afd3bd03afa7a19a0030468c49ab9db5aec45f",
+  "scope": "Production key audio queue owner with explicit host SDK double; not live dungeon or actual NDSP output",
+  "host": {
+    "checks": 457,
+    "exit": 0,
+    "input_unchanged": true,
+    "asan_ubsan": true,
+    "normal_leaks": true,
+    "proof_sha256": "978eca7b3caac1c2fdeef6c9670e8e15e562a0a42908586599a064e8afd8ccec"
+  },
+  "windows_config_only": {
+    "ctest": 308
+  },
+  "test_pcm_copies_removed": true,
+  "sources": {
+    "platform/ctr/dungeon_key_audio.hpp": "cab8b32dbd510cb9eb81ef28741e9c2684fd34e2a72a5ead33ed168b0ffdf92c",
+    "platform/ctr/dungeon_key_audio.cpp": "011f72f002475dd5fbe30feac83693f786614b586a07f7f45d257526f80235fe",
+    "platform/ctr/Makefile": "b154b39b23cab29d5ed2cfdc9c056ece1883f574fba515a0c4e407a4340c3fd0",
+    "CMakeLists.txt": "4cd5f5abae74903894ec2f4458f80ea191a7921c6ed7b2337a93fb48a2b0c0d2",
+    "tests/dungeon_key_ndsp_tests.cpp": "165d6a18632853a100d9b72f743fb3c6e0c6ba96df47a45dd42309de23083fb4"
+  },
+  "pending": [
+    "Full current GCC/Clang and real 3DSX/CIA",
+    "formal scene/renderer/contact/save/UI/Pippi",
+    "audible/emulator/hardware"
+  ]
+}

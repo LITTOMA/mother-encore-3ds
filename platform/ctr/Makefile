@@ -23,6 +23,7 @@ SOURCES += runtime/dungeon_mechanism_state.cpp
 SOURCES += runtime/dungeon_mechanism_presentation.cpp
 SOURCES += runtime/dungeon_mechanism_audio.cpp
 SOURCES += runtime/dungeon_mechanism_contacts.cpp
+SOURCES += runtime/dungeon_rooms.cpp
 SOURCES += runtime/dungeon_keys.cpp runtime/dungeon_key_state.cpp runtime/dungeon_switches.cpp runtime/dungeon_switch_state.cpp runtime/dungeon_wall_timeline.cpp runtime/dungeon_wall_state.cpp
 SOURCES += runtime/dungeon_key_clocks.cpp
 SOURCES += runtime/dungeon_key_media.cpp

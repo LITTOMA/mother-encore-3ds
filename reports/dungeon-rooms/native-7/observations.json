@@ -1,0 +1,10041 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "geometry": [
+    {
+      "viewport": 0,
+      "index": 0,
+      "flag": "Catacombs/room_0",
+      "center": [
+        "-112.00000000000000000",
+        "112.00000000000000000"
+      ],
+      "size": [
+        "512.00000000000000000",
+        "288.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 1,
+      "flag": "Catacombs/room_1",
+      "center": [
+        "-648.00000000000000000",
+        "176.00000000000000000"
+      ],
+      "size": [
+        "400.00000000000000000",
+        "224.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 2,
+      "flag": "Catacombs/room_2",
+      "center": [
+        "-648.00000000000000000",
+        "-144.00000000000000000"
+      ],
+      "size": [
+        "400.00000000000000000",
+        "416.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 3,
+      "flag": "Catacombs/room_3",
+      "center": [
+        "-208.00000000000000000",
+        "-232.00000000000000000"
+      ],
+      "size": [
+        "448.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 4,
+      "flag": "Catacombs/room_4",
+      "center": [
+        "-1080.00000000000000000",
+        "-232.00000000000000000"
+      ],
+      "size": [
+        "432.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 5,
+      "flag": "Catacombs/room_5",
+      "center": [
+        "-1088.00000000000000000",
+        "-480.00000000000000000"
+      ],
+      "size": [
+        "416.00000000000000000",
+        "224.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 6,
+      "flag": "Catacombs/room_6",
+      "center": [
+        "-1488.00000000000000000",
+        "-352.00000000000000000"
+      ],
+      "size": [
+        "352.00000000000000000",
+        "480.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 7,
+      "flag": "Catacombs/room_7",
+      "center": [
+        "-1944.00000000000000000",
+        "-224.00000000000000000"
+      ],
+      "size": [
+        "528.00000000000000000",
+        "224.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 8,
+      "flag": "Catacombs/room_8",
+      "center": [
+        "-2016.00000000000000000",
+        "-471.99996948242187000"
+      ],
+      "size": [
+        "416.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 9,
+      "flag": "Catacombs/room_9",
+      "center": [
+        "-2440.00000000000000000",
+        "-472.00000000000000000"
+      ],
+      "size": [
+        "400.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 10,
+      "flag": "Catacombs/room_10",
+      "center": [
+        "-2440.00000000000000000",
+        "-216.00000000000000000"
+      ],
+      "size": [
+        "400.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 11,
+      "flag": "Catacombs/room_11",
+      "center": [
+        "-1928.00000000000000000",
+        "-728.00000000000000000"
+      ],
+      "size": [
+        "368.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 12,
+      "flag": "Catacombs/room_12",
+      "center": [
+        "-1256.00000000000000000",
+        "-728.00000000000000000"
+      ],
+      "size": [
+        "752.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 13,
+      "flag": "Catacombs/room_13",
+      "center": [
+        "-648.00000000000000000",
+        "-608.00000000000000000"
+      ],
+      "size": [
+        "400.00000000000000000",
+        "480.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 14,
+      "flag": "Catacombs/room_14",
+      "center": [
+        "-616.00000000000000000",
+        "-1032.00000000000000000"
+      ],
+      "size": [
+        "496.00000000000000000",
+        "272.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 15,
+      "flag": "Catacombs/room_15",
+      "center": [
+        "-1480.00000000000000000",
+        "-1096.00000000000000000"
+      ],
+      "size": [
+        "752.00000000000000000",
+        "400.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 16,
+      "flag": "Catacombs/room_16",
+      "center": [
+        "-1480.00000000000000000",
+        "-1536.00000000000000000"
+      ],
+      "size": [
+        "560.00000000000000000",
+        "416.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 0,
+      "index": 17,
+      "flag": "Catacombs/room_17",
+      "center": [
+        "-2048.00000000000000000",
+        "-1712.00000000000000000"
+      ],
+      "size": [
+        "512.00000000000000000",
+        "288.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 0,
+      "flag": "Catacombs/room_0",
+      "center": [
+        "-112.00000000000000000",
+        "112.00000000000000000"
+      ],
+      "size": [
+        "512.00000000000000000",
+        "288.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 1,
+      "flag": "Catacombs/room_1",
+      "center": [
+        "-648.00000000000000000",
+        "176.00000000000000000"
+      ],
+      "size": [
+        "400.00000000000000000",
+        "224.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 2,
+      "flag": "Catacombs/room_2",
+      "center": [
+        "-648.00000000000000000",
+        "-144.00000000000000000"
+      ],
+      "size": [
+        "400.00000000000000000",
+        "416.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 3,
+      "flag": "Catacombs/room_3",
+      "center": [
+        "-208.00000000000000000",
+        "-232.00000000000000000"
+      ],
+      "size": [
+        "448.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 4,
+      "flag": "Catacombs/room_4",
+      "center": [
+        "-1080.00000000000000000",
+        "-232.00000000000000000"
+      ],
+      "size": [
+        "432.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 5,
+      "flag": "Catacombs/room_5",
+      "center": [
+        "-1088.00000000000000000",
+        "-480.00000000000000000"
+      ],
+      "size": [
+        "416.00000000000000000",
+        "224.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 6,
+      "flag": "Catacombs/room_6",
+      "center": [
+        "-1488.00000000000000000",
+        "-352.00000000000000000"
+      ],
+      "size": [
+        "352.00000000000000000",
+        "480.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 7,
+      "flag": "Catacombs/room_7",
+      "center": [
+        "-1944.00000000000000000",
+        "-224.00000000000000000"
+      ],
+      "size": [
+        "528.00000000000000000",
+        "224.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 8,
+      "flag": "Catacombs/room_8",
+      "center": [
+        "-2016.00000000000000000",
+        "-471.99996948242187000"
+      ],
+      "size": [
+        "416.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 9,
+      "flag": "Catacombs/room_9",
+      "center": [
+        "-2440.00000000000000000",
+        "-472.00000000000000000"
+      ],
+      "size": [
+        "400.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 10,
+      "flag": "Catacombs/room_10",
+      "center": [
+        "-2440.00000000000000000",
+        "-216.00000000000000000"
+      ],
+      "size": [
+        "400.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 11,
+      "flag": "Catacombs/room_11",
+      "center": [
+        "-1928.00000000000000000",
+        "-728.00000000000000000"
+      ],
+      "size": [
+        "368.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 12,
+      "flag": "Catacombs/room_12",
+      "center": [
+        "-1256.00000000000000000",
+        "-728.00000000000000000"
+      ],
+      "size": [
+        "752.00000000000000000",
+        "240.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 13,
+      "flag": "Catacombs/room_13",
+      "center": [
+        "-648.00000000000000000",
+        "-608.00000000000000000"
+      ],
+      "size": [
+        "400.00000000000000000",
+        "480.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 14,
+      "flag": "Catacombs/room_14",
+      "center": [
+        "-616.00000000000000000",
+        "-1032.00000000000000000"
+      ],
+      "size": [
+        "496.00000000000000000",
+        "272.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 15,
+      "flag": "Catacombs/room_15",
+      "center": [
+        "-1480.00000000000000000",
+        "-1096.00000000000000000"
+      ],
+      "size": [
+        "752.00000000000000000",
+        "400.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 16,
+      "flag": "Catacombs/room_16",
+      "center": [
+        "-1480.00000000000000000",
+        "-1536.00000000000000000"
+      ],
+      "size": [
+        "560.00000000000000000",
+        "416.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    },
+    {
+      "viewport": 1,
+      "index": 17,
+      "flag": "Catacombs/room_17",
+      "center": [
+        "-2048.00000000000000000",
+        "-1712.00000000000000000"
+      ],
+      "size": [
+        "512.00000000000000000",
+        "288.00000000000000000"
+      ],
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible": false
+    }
+  ],
+  "rows": [
+    {
+      "viewport": 0,
+      "action": "ready",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+
+      ],
+      "room": -1,
+      "relative": null
+    },
+    {
+      "viewport": 0,
+      "action": "other_body_ignored",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+
+      ],
+      "room": -1,
+      "relative": null
+    },
+    {
+      "viewport": 0,
+      "action": "enter/0",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/0",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -368,
+        -32,
+        144,
+        256
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/0",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/1",
+      "inside": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/1",
+      "inside": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -848,
+        64,
+        -448,
+        288
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/1",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/2",
+      "inside": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/2",
+      "inside": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -848,
+        -352,
+        -448,
+        64
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/2",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/3",
+      "inside": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 3,
+      "relative": [
+        "215.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/3",
+      "inside": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -432,
+        -352,
+        16,
+        -112
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 3,
+      "relative": [
+        "215.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/3",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 3,
+      "relative": [
+        "215.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/4",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 4,
+      "relative": [
+        "1087.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/4",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1296,
+        -352,
+        -864,
+        -112
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 4,
+      "relative": [
+        "1087.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/4",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 4,
+      "relative": [
+        "1087.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/5",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 5,
+      "relative": [
+        "1095.00000000000000000",
+        "491.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/5",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1296,
+        -592,
+        -880,
+        -368
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 5,
+      "relative": [
+        "1095.00000000000000000",
+        "491.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/5",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 5,
+      "relative": [
+        "1095.00000000000000000",
+        "491.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/6",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 6,
+      "relative": [
+        "1495.00000000000000000",
+        "363.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/6",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1664,
+        -592,
+        -1312,
+        -112
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 6,
+      "relative": [
+        "1495.00000000000000000",
+        "363.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/6",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 6,
+      "relative": [
+        "1495.00000000000000000",
+        "363.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/7",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 7,
+      "relative": [
+        "1951.00000000000000000",
+        "235.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/7",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2208,
+        -336,
+        -1680,
+        -112
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 7,
+      "relative": [
+        "1951.00000000000000000",
+        "235.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/7",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 7,
+      "relative": [
+        "1951.00000000000000000",
+        "235.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/8",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 8,
+      "relative": [
+        "2023.00000000000000000",
+        "482.99996948242187000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/8",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2224,
+        -591,
+        -1808,
+        -351
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 8,
+      "relative": [
+        "2023.00000000000000000",
+        "482.99996948242187000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/8",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 8,
+      "relative": [
+        "2023.00000000000000000",
+        "482.99996948242187000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/9",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 9,
+      "relative": [
+        "2447.00000000000000000",
+        "483.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/9",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2640,
+        -592,
+        -2240,
+        -352
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 9,
+      "relative": [
+        "2447.00000000000000000",
+        "483.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/9",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 9,
+      "relative": [
+        "2447.00000000000000000",
+        "483.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/10",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 10,
+      "relative": [
+        "2447.00000000000000000",
+        "227.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/10",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2640,
+        -336,
+        -2240,
+        -96
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 10,
+      "relative": [
+        "2447.00000000000000000",
+        "227.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/10",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 10,
+      "relative": [
+        "2447.00000000000000000",
+        "227.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/11",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 11,
+      "relative": [
+        "1935.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/11",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2112,
+        -848,
+        -1744,
+        -608
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 11,
+      "relative": [
+        "1935.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/11",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 11,
+      "relative": [
+        "1935.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/12",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 12,
+      "relative": [
+        "1263.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/12",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1632,
+        -848,
+        -880,
+        -608
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 12,
+      "relative": [
+        "1263.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/12",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 12,
+      "relative": [
+        "1263.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/13",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 13,
+      "relative": [
+        "655.00000000000000000",
+        "619.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/13",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -848,
+        -848,
+        -448,
+        -368
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 13,
+      "relative": [
+        "655.00000000000000000",
+        "619.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/13",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 13,
+      "relative": [
+        "655.00000000000000000",
+        "619.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/14",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 14,
+      "relative": [
+        "623.00000000000000000",
+        "1043.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/14",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -864,
+        -1168,
+        -368,
+        -896
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 14,
+      "relative": [
+        "623.00000000000000000",
+        "1043.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/14",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 14,
+      "relative": [
+        "623.00000000000000000",
+        "1043.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/15",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 15,
+      "relative": [
+        "1487.00000000000000000",
+        "1107.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/15",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1856,
+        -1296,
+        -1104,
+        -896
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 15,
+      "relative": [
+        "1487.00000000000000000",
+        "1107.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/15",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 15,
+      "relative": [
+        "1487.00000000000000000",
+        "1107.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/16",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 16,
+      "relative": [
+        "1487.00000000000000000",
+        "1547.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/16",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1760,
+        -1744,
+        -1200,
+        -1328
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 16,
+      "relative": [
+        "1487.00000000000000000",
+        "1547.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/16",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 16,
+      "relative": [
+        "1487.00000000000000000",
+        "1547.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "enter/17",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 17,
+      "relative": [
+        "2055.00000000000000000",
+        "1723.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "idle/17",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2304,
+        -1856,
+        -1792,
+        -1568
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 17,
+      "relative": [
+        "2055.00000000000000000",
+        "1723.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "exit/17",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 17,
+      "relative": [
+        "2055.00000000000000000",
+        "1723.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "overlap_enter0",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "overlap_enter1",
+      "inside": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 2,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "overlap_idle",
+      "inside": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 2,
+      "limits": [
+        -848,
+        64,
+        -448,
+        288
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ],
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "overlap_exit1_keeps_last_limits",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -848,
+        64,
+        -448,
+        288
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "overlap_exit0_resets_limits",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "cancel_enter",
+      "inside": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "cancel_exit",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "cancel_idle",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "reenter_visited",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "reenter_idle",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -368,
+        -32,
+        144,
+        256
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "reenter_exit",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "same_frame_reenter",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ],
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ],
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "same_frame_reenter_idle_twice",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -368,
+        -32,
+        144,
+        256
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ],
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 0,
+      "action": "same_frame_reenter_exit",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "ready",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+
+      ],
+      "room": -1,
+      "relative": null
+    },
+    {
+      "viewport": 1,
+      "action": "other_body_ignored",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+
+      ],
+      "room": -1,
+      "relative": null
+    },
+    {
+      "viewport": 1,
+      "action": "enter/0",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/0",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -368,
+        -32,
+        144,
+        256
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/0",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/1",
+      "inside": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/1",
+      "inside": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -848,
+        56,
+        -448,
+        296
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/1",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/2",
+      "inside": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/2",
+      "inside": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -848,
+        -352,
+        -448,
+        64
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/2",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/3",
+      "inside": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 3,
+      "relative": [
+        "215.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/3",
+      "inside": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -432,
+        -352,
+        16,
+        -112
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 3,
+      "relative": [
+        "215.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/3",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 3,
+      "relative": [
+        "215.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/4",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 4,
+      "relative": [
+        "1087.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/4",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1296,
+        -352,
+        -864,
+        -112
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 4,
+      "relative": [
+        "1087.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/4",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 4,
+      "relative": [
+        "1087.00000000000000000",
+        "243.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/5",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 5,
+      "relative": [
+        "1095.00000000000000000",
+        "491.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/5",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1296,
+        -600,
+        -880,
+        -360
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 5,
+      "relative": [
+        "1095.00000000000000000",
+        "491.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/5",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 5,
+      "relative": [
+        "1095.00000000000000000",
+        "491.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/6",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 6,
+      "relative": [
+        "1495.00000000000000000",
+        "363.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/6",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1688,
+        -592,
+        -1288,
+        -112
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 6,
+      "relative": [
+        "1495.00000000000000000",
+        "363.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/6",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 6,
+      "relative": [
+        "1495.00000000000000000",
+        "363.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/7",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 7,
+      "relative": [
+        "1951.00000000000000000",
+        "235.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/7",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2208,
+        -344,
+        -1680,
+        -104
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 7,
+      "relative": [
+        "1951.00000000000000000",
+        "235.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/7",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 7,
+      "relative": [
+        "1951.00000000000000000",
+        "235.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/8",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 8,
+      "relative": [
+        "2023.00000000000000000",
+        "482.99996948242187000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/8",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2224,
+        -591,
+        -1808,
+        -351
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 8,
+      "relative": [
+        "2023.00000000000000000",
+        "482.99996948242187000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/8",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 8,
+      "relative": [
+        "2023.00000000000000000",
+        "482.99996948242187000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/9",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 9,
+      "relative": [
+        "2447.00000000000000000",
+        "483.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/9",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2640,
+        -592,
+        -2240,
+        -352
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 9,
+      "relative": [
+        "2447.00000000000000000",
+        "483.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/9",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 9,
+      "relative": [
+        "2447.00000000000000000",
+        "483.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/10",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 10,
+      "relative": [
+        "2447.00000000000000000",
+        "227.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/10",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2640,
+        -336,
+        -2240,
+        -96
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 10,
+      "relative": [
+        "2447.00000000000000000",
+        "227.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/10",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 10,
+      "relative": [
+        "2447.00000000000000000",
+        "227.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/11",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 11,
+      "relative": [
+        "1935.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/11",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2128,
+        -848,
+        -1728,
+        -608
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 11,
+      "relative": [
+        "1935.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/11",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 11,
+      "relative": [
+        "1935.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/12",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 12,
+      "relative": [
+        "1263.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/12",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1632,
+        -848,
+        -880,
+        -608
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 12,
+      "relative": [
+        "1263.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/12",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 12,
+      "relative": [
+        "1263.00000000000000000",
+        "739.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/13",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 13,
+      "relative": [
+        "655.00000000000000000",
+        "619.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/13",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -848,
+        -848,
+        -448,
+        -368
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 13,
+      "relative": [
+        "655.00000000000000000",
+        "619.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/13",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 13,
+      "relative": [
+        "655.00000000000000000",
+        "619.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/14",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 14,
+      "relative": [
+        "623.00000000000000000",
+        "1043.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/14",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -864,
+        -1168,
+        -368,
+        -896
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 14,
+      "relative": [
+        "623.00000000000000000",
+        "1043.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/14",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 14,
+      "relative": [
+        "623.00000000000000000",
+        "1043.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/15",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 15,
+      "relative": [
+        "1487.00000000000000000",
+        "1107.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/15",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1856,
+        -1296,
+        -1104,
+        -896
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 15,
+      "relative": [
+        "1487.00000000000000000",
+        "1107.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/15",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 15,
+      "relative": [
+        "1487.00000000000000000",
+        "1107.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/16",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 16,
+      "relative": [
+        "1487.00000000000000000",
+        "1547.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/16",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -1760,
+        -1744,
+        -1200,
+        -1328
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 16,
+      "relative": [
+        "1487.00000000000000000",
+        "1547.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/16",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 16,
+      "relative": [
+        "1487.00000000000000000",
+        "1547.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "enter/17",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 1,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 17,
+      "relative": [
+        "2055.00000000000000000",
+        "1723.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "idle/17",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -2304,
+        -1856,
+        -1792,
+        -1568
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 17,
+      "relative": [
+        "2055.00000000000000000",
+        "1723.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "exit/17",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 17,
+      "relative": [
+        "2055.00000000000000000",
+        "1723.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "overlap_enter0",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "overlap_enter1",
+      "inside": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 2,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "overlap_idle",
+      "inside": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 2,
+      "limits": [
+        -848,
+        56,
+        -448,
+        296
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ],
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "overlap_exit1_keeps_last_limits",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -848,
+        56,
+        -448,
+        296
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "overlap_exit0_resets_limits",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 1,
+      "relative": [
+        "655.00000000000000000",
+        "-165.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "cancel_enter",
+      "inside": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "cancel_exit",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "cancel_idle",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+
+      ],
+      "room": 2,
+      "relative": [
+        "655.00000000000000000",
+        "155.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "reenter_visited",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "reenter_idle",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -368,
+        -32,
+        144,
+        256
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "reenter_exit",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "same_frame_reenter",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ],
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ],
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "same_frame_reenter_idle_twice",
+      "inside": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 1,
+      "limits": [
+        -368,
+        -32,
+        144,
+        256
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ],
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    },
+    {
+      "viewport": 1,
+      "action": "same_frame_reenter_exit",
+      "inside": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "flag_signals": 0,
+      "camareas": 0,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "camera_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "offset_calls": [
+        [
+          "0.00000000000000000",
+          "0.00000000000000000"
+        ]
+      ],
+      "room": 0,
+      "relative": [
+        "119.00000000000000000",
+        "-101.00000000000000000"
+      ]
+    }
+  ]
+}

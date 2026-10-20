@@ -1,0 +1,20 @@
+{
+  "head": "c9af560accdd0764d28cfcf36f0bf61ed8ce7933",
+  "run": 39430606015,
+  "clang": {
+    "job": 118654374024,
+    "ordinary": 282,
+    "sanitizers": 282,
+    "conclusion": "success"
+  },
+  "console": {
+    "job": 118654373684,
+    "conclusion": "success"
+  },
+  "gcc": "still pending at retention; not accepted",
+  "scope": "Historical107-unit source geometry head only; does not cover later audio capability2/router. No full-current or hardware claim.",
+  "sha256": {
+    "fullc9-clang.log": "788dff87f7f926678c283ab31c1c17465c6d579e939ace93e7f490b08707a8ab",
+    "fullc9-console.log": "0b83e426f0dbc004cbb51a5a29132fdda6d6cf9e32f6aee57f0552b4c8c5ba87"
+  }
+}

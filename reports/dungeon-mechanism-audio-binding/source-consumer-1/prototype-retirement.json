@@ -1,0 +1,30 @@
+{
+  "scope": "Only four owned superseded real native ELF test executables retired. Final current binaries, all raw logs, both candidate metadata/PCM, source, SDK/emulator/game builds and user data retained.",
+  "files": [
+    {
+      "sha256": "8d9551e652f30296ed6cfae05212940a15cedb85dec11c483772f5a44f0eee06",
+      "bytes": 8048648,
+      "removed": true,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-media-candidate-1\\check"
+    },
+    {
+      "sha256": "33c36ba14f5509cdc7fa12e8fbe3cd61a61faa92c5f41121bed49fc70cc8a692",
+      "bytes": 8789696,
+      "removed": true,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-media-candidate-1\\check-2"
+    },
+    {
+      "sha256": "319e085fd9f8059e6738f28e16e6cdb9d09e2873c58dbaa8ee46df3fb11118c8",
+      "bytes": 16687840,
+      "removed": true,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-media-candidate-1\\state-check"
+    },
+    {
+      "sha256": "3e0c3f6cda28c8608a53a2eb95bee827e5781193660ddd06b6c0a00582ddf323",
+      "bytes": 8015928,
+      "removed": true,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\mechanism-media-candidate-1\\legacy-check"
+    }
+  ],
+  "bytes": 41542112.0
+}

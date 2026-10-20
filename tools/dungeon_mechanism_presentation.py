@@ -13,6 +13,7 @@ from tools.podunk_field import pack_container,unpack_container
 from tools.extract_battle_entry import require,PIN
 RECIPE=ROOT/'content/catacombs-mechanism-presentation.json'
 MAGIC=b'ENCDMP01';STRIDES=(1,112,40,64,1);LIMIT=512*1024
+MEDIA_STRIDES=(*STRIDES,88,1)
 ROLES={'body':1,'interaction':2,'pressure':3}
 
 def fields(p,s):require(type(p)is dict and set(p)==set(s.split()),'Mechanism presentation fields')
@@ -93,7 +94,8 @@ def encode(model):
  return pack_container(MAGIC,model['scene'],[strings,profiles,owners,shapes,model['bindings_bytes']],STRIDES,LIMIT)
 
 def parse(blob):
- scene,parts=unpack_container(blob,MAGIC,STRIDES,LIMIT);nested=bindings.parse(parts[4]);require(nested['scene']==scene,'Mechanism presentation nested scene');require(0<len(parts[0])<=65536 and 0<len(parts[1])<=64*112 and 0<len(parts[2])<=256*40 and 0<len(parts[3])<=1024*64,'Mechanism presentation section count')
+ require(isinstance(blob,(bytes,bytearray))and len(blob)>=64,'Mechanism presentation header size');cap=struct.unpack_from('<I',blob,20)[0];require(cap in(1,2),'Mechanism presentation unknown capability')
+ scene,parts=unpack_container(blob,MAGIC,MEDIA_STRIDES if cap==2 else STRIDES,LIMIT,capability=cap);nested=bindings.parse(parts[4]);require(nested['scene']==scene,'Mechanism presentation nested scene');require(0<len(parts[0])<=65536 and 0<len(parts[1])<=64*112 and 0<len(parts[2])<=256*40 and 0<len(parts[3])<=1024*64,'Mechanism presentation section count')
  used=bytearray(len(parts[0]))
  def text(at,size):
   require(size and at<=len(used)and size<=len(used)-at and not any(used[at:at+size]),'Mechanism presentation text span/alias');used[at:at+size]=b'\1'*size
@@ -121,7 +123,11 @@ def parse(blob):
   shapes.append(dict(owner=ident,role=role,path=path,body_position=list(v[4:6]),shape_position=list(v[6:8]),extents=list(v[8:10]),layer=v[10],mask=v[11],bits=v[12],safe_margin=v[13],one_way_margin=v[14]))
  families={p['id']:p['family']for p in nested['profiles']}
  for o in owners:require(sorted(coverage[o['owner']])==([1,2]if families[o['profile']]==1 else[3]if families[o['profile']]==2 else[1]),'Mechanism shape family coverage')
- require(all(used),'Mechanism presentation unowned strings');return dict(scene=scene,profiles=profiles,owners=owners,shapes=shapes,bindings_bytes=parts[4])
+ model=dict(scene=scene,profiles=profiles,owners=owners,shapes=shapes,bindings_bytes=parts[4])
+ if cap==2:
+  from tools import dungeon_mechanism_media as media
+  model.update(media.parse_sounds(parts[5],parts[6],nested,owners,text))
+ require(all(used),'Mechanism presentation unowned strings');return model
 
 def build(out,file=RECIPE):
  out=Path(out).resolve();require(out.is_relative_to((ROOT/'build').resolve())and out!=ROOT/'build','Mechanism presentation candidate ownership');m,b,p=extract(file);out.mkdir(parents=True,exist_ok=True);(out/'source.encdmp').write_bytes(b);p['producer_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest();(out/'source.json').write_text(json.dumps(p,indent=2)+'\n',encoding='utf8');print('Mechanism presentation:',len(b),'bytes,',len(m['owners']),'owners,',len(m['shapes']),'rectangles; no scene/physics/renderer admission')

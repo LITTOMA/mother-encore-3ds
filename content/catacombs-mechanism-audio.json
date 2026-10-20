@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.dungeon-mechanism-audio.reviewed-source",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scope": "Original switch-node and wall-node AudioStreamPlayer sources plus the denied-operation audioManager channel. Independent candidate bank; no live output or audible-equivalence claim.",
@@ -49,5 +49,19 @@
       }
     ]
   },
-  "identities": "All IDs are port-owned resource identities; 90211837 preserves the reviewed wall-timeline binding and 1104 reuses the exact existing bump source."
+  "identities": "All IDs are port-owned resource identities; 90211837 preserves the reviewed wall-timeline binding and 1104 reuses the exact existing bump source.",
+  "source_profiles": [
+    {
+      "profile": 1,
+      "node": "AudioStreamPlayer"
+    },
+    {
+      "profile": 2,
+      "node": "AudioStreamPlayer"
+    },
+    {
+      "profile": 4,
+      "node": "AudioStreamPlayer"
+    }
+  ]
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/dungeon_mechanism_bindings.hpp"
+#include "encore/audio_data.hpp"
 #include <array>
 #include <memory>
 
@@ -24,16 +25,27 @@ struct DungeonMechanismDraw {
  int32_t z_index=0;Vec2 top_left{};float sort_y=0;bool parent_y_sort=false;
 };
 struct DungeonMechanismRectangle {Vec2 center{},extents{},minimum{},maximum{};};
-// ENCDMP01 format1/capability1. Prepared geometry and drawing commands only;
+enum class DungeonMechanismSoundKind:uint32_t {Node=1,ManagerChannel=2};
+struct DungeonMechanismSound {
+ uint32_t owner=0,stable_id=0,bus=0,pause_mode=0;DungeonMechanismSoundKind kind=DungeonMechanismSoundKind::Node;
+ std::string path,source,channel;std::array<uint8_t,32>source_sha256{};float gain_db=0,pitch_scale=0;
+};
+// ENCDMP01 format1, capabilities1/2. Prepared geometry/drawing and optional
+// source-node sound ownership plus checked PCM metadata only;
 // this owner creates no Room, texture, physics world, sound, callback or save.
 class DungeonMechanismPresentationData {
 public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
  bool valid()const{return bool(state_);}
+ uint32_t capability()const;bool media_bound()const{return capability()==2;}
+ uint32_t encoded_bytes()const;uint32_t encoded_crc()const;
  const DungeonMechanismBindingsData&bindings()const;
  const std::vector<DungeonMechanismSprite>&sprites()const;
  const std::vector<DungeonMechanismPlacement>&owners()const;
  const std::vector<DungeonMechanismShape>&shapes()const;
+ const std::vector<DungeonMechanismSound>&sounds()const;
+ const AudioBank&audio_bank()const;
+ const DungeonMechanismSound*sound(uint32_t owner)const;
  const DungeonMechanismSprite*sprite(uint32_t)const;
  bool texture_matches(uint32_t,const uint8_t*,size_t,std::string&)const;
  bool draw(uint32_t owner,uint32_t frame,DungeonMechanismDraw&,std::string&)const;

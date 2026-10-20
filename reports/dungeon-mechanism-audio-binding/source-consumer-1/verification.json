@@ -1,0 +1,77 @@
+{
+  "base_commit": "c9af560accdd0764d28cfcf36f0bf61ed8ce7933",
+  "scope": "Checked media ownership/PCM metadata and typed request routing only. No live map/NDSP/GPU/scene/save admission. Source selectors moved into independent review data without game binary changes.",
+  "native": {
+    "compiler": "GCC9.4 WSL Ubuntu20.04",
+    "asan": "detect_leaks=1:halt_on_error=1",
+    "ubsan": "halt_on_error=1",
+    "non_pie": true,
+    "loading_and_router": 18792,
+    "source_clock_and_sound_requests": 67996,
+    "source_observations": 232,
+    "repeats": 2,
+    "old_capability_loading": 15486,
+    "old_capability_clock": 66128
+  },
+  "python": {
+    "passed": 20,
+    "seconds": 66.008
+  },
+  "windows_metadata": {
+    "ctest": 299,
+    "discovered": 1366,
+    "aggregate": 983,
+    "dedicated": 383,
+    "executed_native": false
+  },
+  "old_core_input_files_unchanged": 224,
+  "independent_test_fix": {
+    "pr": 72,
+    "head": "6fe2ab2e2645a563e5c501dbd6244c70d89f55e4",
+    "full_run": 39440740886,
+    "status": "running"
+  },
+  "full_current_acceptance": "pending after integration of known aggregate scheduling fix; no hardware/actual audio claim",
+  "source_sha256": {
+    "include/encore/dungeon_mechanism_presentation.hpp": "61261bb8e7e338ad98b6f2b7259afe02c7f6f24cdc3e8f3bc6b76f6fc8b012b2",
+    "include/encore/dungeon_mechanism_audio.hpp": "c7169de75f7759ab4e59970c71d98ad5f4107b12d159ad9d3933b3960dca2e1b",
+    "runtime/dungeon_mechanism_presentation.cpp": "f1b64b3a0dd5b50ee2b6e94806a04510aba02333a4b17d95a1170720b97cbcb6",
+    "runtime/dungeon_mechanism_audio.cpp": "e58a020091c61bd2bf506b526515863ed136500d1bcc2037e094ed3e2b41271b",
+    "runtime/dungeon_mechanism_bindings.cpp": "624e33939791912315b76ac342372f086b65e7530452c09bd21ef4ed7acf1c4b",
+    "runtime/dungeon_mechanism_state.cpp": "8e46f2af60493e5ef0c3504c2f6d81edf7efc52b72acfb055bae1c902b7aae3f",
+    "tests/dungeon_mechanism_media_tests.cpp": "1c4a894011631d4df207a8758ec3b2b187dce6899345fcb7292c047eb23db8f4",
+    "tests/dungeon_mechanism_state_tests.cpp": "712bb9f139c30e34cea6b17a9f28802deda6bbcc50668ae744122fbcf25e4a78",
+    "tests/prepare_dungeon_mechanism_media.py": "3d04c4db94ad7c27f52de042868d82fd2cf7efd523e5ad6353b4089b5a958100",
+    "tests/test_dungeon_mechanism_media.py": "aec65510c4c0de207f7d488dd764b1862a8525e8c2990e2980607e8f49c66acf",
+    "tests/test_dungeon_mechanism_media_binding.py": "9f7534dfb66b1fa91e25407d2237deceebc180b9471d8be65f00706b8cf8db5b",
+    "tools/dungeon_mechanism_presentation.py": "df8c2de06063c9c7a1ee5efee92be3061d69f850212a5062808b2148e62e0b26",
+    "tools/dungeon_mechanism_media.py": "26b518cc5a7258612649d8d7fdd7a1f40d0a20da7c7657f612ac678ebc93ab3c",
+    "tools/dungeon_mechanism_audio.py": "ba7ac22e2ef3b62c7f2eed249ebbb4827b622f265a0bee52a160f7fd64113f86",
+    "content/catacombs-mechanism-audio.json": "b09b005a350131f3fdf2a9855e6755b44484582ffa80b0e8102d9649aee9fca8",
+    "content/catacombs-mechanism-media.json": "14ea9226fb5bcd34e162153e25fe0fdbaab931e57e007cba781be1ea20dc983d"
+  },
+  "evidence_sha256": {
+    "actual-media-source.json": "43d98e0570412e1c40c9da62f1782bb49e8adc7bd01e3c2a882e0ff5f6caa8f1",
+    "binary-equivalence.json": "96032389a0b07ba07783ec0e96fc128be88f8f262ad57aaf4221db1acbba8b2f",
+    "mechanism-media-binding-python-1.log": "7c738bacf65850400a23a6f7d2b71f81c8fc5c01e90f0546d90714fa09d775ba",
+    "mechanism-media-candidate-1.log": "d05599456de9d3f82c5e481a884b6bcf81898a11b09d8f5b820b9cab51f87aaa",
+    "mechanism-media-candidate-2.log": "d05599456de9d3f82c5e481a884b6bcf81898a11b09d8f5b820b9cab51f87aaa",
+    "mechanism-media-legacy-native-1.log": "e439e7b64698be7f3f837441c6fb877a85c89d362558daa79781d1cea60d7c9d",
+    "mechanism-media-legacy-python-1.log": "3c206a6b2c7d88f376201e7a18fb2376015712cffb309f82878bd6e5aa2cf706",
+    "mechanism-media-native-1.log": "3cafc483ad022f47c55b57d4ae432bd83390bc62457b62f5227665b7f0bad5a3",
+    "mechanism-media-native-2.log": "920ae14966bdb000a08177fccb33bf3b157a84f543f6de3b9263f2165634ce89",
+    "mechanism-media-native-final.log": "cd8e4d80d62f19ceafe7f9df9ef641e82ae9722e345a23752cbce2bdba87da17",
+    "mechanism-media-python-final.log": "f0c6db9290c9693f053eb341fc3fe6e7b4d1699859274c7824d4a3cd6ebd6304",
+    "mechanism-media-state-1.log": "82b847c341da6f4abd7cad275b506d7b2bc3dd555d5b2aec6c2ebd108d014bd9",
+    "mechanism-media-test-plan.json": "268b6169e65b7aaf1966bc790cf707aaf129ddf78d891bcca8156ca0c5356b98",
+    "media-binding-cmake-1.log": "cd86f34d512a0abb91858b16cf582a736140186f0afb066fb885f91f125c5950",
+    "media-binding-plan-1.log": "5b5442307e78baf828f3a9fb9843b2c3ff1d4635b1197a53b4f0dc04d441b79d",
+    "prototype-media-source.json": "b60a6afe53e9c6e8a4f6ebbd340f5eb0d5ed8485e03a30a0a64351f4f073f927",
+    "prototype-retirement.json": "77fde6d50b69b9fa274b37748eb04928bd45e54b65877e0efb3491d66e016a55",
+    "prototype-retirement.log": "b52c9f2ff00a5c69ded53583e9a1ac0b51b6053af1f8dbe8071787818106306e",
+    "producers/dungeon_mechanism_audio.py": "ba7ac22e2ef3b62c7f2eed249ebbb4827b622f265a0bee52a160f7fd64113f86",
+    "producers/dungeon_mechanism_media.py": "26b518cc5a7258612649d8d7fdd7a1f40d0a20da7c7657f612ac678ebc93ab3c",
+    "producers/dungeon_mechanism_presentation.py": "df8c2de06063c9c7a1ee5efee92be3061d69f850212a5062808b2148e62e0b26"
+  },
+  "retired_prototype_bytes": 41542112
+}

@@ -1,0 +1,35 @@
+{
+  "scope": "Source-selector/schema migration moves binding names to independent review data. Final candidate and pre-migration prototype binary pack plus four PCM and bank are byte-identical; no current acceptance claim for prototype source.",
+  "files": [
+    {
+      "path": "source.encdmp",
+      "bytes": 9192,
+      "sha256": "3f278a18f2a29b79150183545d2401754a44a76a9852799c789bd3f999ad9122"
+    },
+    {
+      "path": "sound/effects/catacombs-lever.pcm",
+      "bytes": 20992,
+      "sha256": "4549996a4cca2f8c57b5d2cee8cbb0cedc94ad3beb5d15971567390562770235"
+    },
+    {
+      "path": "sound/effects/catacombs-plate.pcm",
+      "bytes": 61740,
+      "sha256": "e38acfd31ac487063f3193adabb86f208e49de01b30b186a2d37ab09ee060c94"
+    },
+    {
+      "path": "sound/effects/catacombs-wall.pcm",
+      "bytes": 311562,
+      "sha256": "5f5fa4e56422465d655668788cb8699efab84f983d53a9d549596302955f3a72"
+    },
+    {
+      "path": "sound/effects/cursor-restricted.pcm",
+      "bytes": 14966,
+      "sha256": "5e289724e9f37d2eb8155f5ad6781e33a753ec50c69cdb9f922ac2772d43926f"
+    },
+    {
+      "path": "sound/banks/catacombs-mechanisms.encaudio",
+      "bytes": 744,
+      "sha256": "bfbc099d3b23db411a420bbeca072b5846548619404d2df8b53cb3a1fd067678"
+    }
+  ]
+}

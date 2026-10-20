@@ -1,0 +1,14 @@
+test_actual_shared_autoload_owner_mismatch_and_output_escape_reject (tests.test_dungeon_mechanism_media_binding.MechanismMediaBinding.test_actual_shared_autoload_owner_mismatch_and_output_escape_reject) ... ok
+test_all_truncations_and_capability_section_paths_reject (tests.test_dungeon_mechanism_media_binding.MechanismMediaBinding.test_all_truncations_and_capability_section_paths_reject) ... ok
+test_copied_original_pcm_and_temporary_decoder_cleanup (tests.test_dungeon_mechanism_media_binding.MechanismMediaBinding.test_copied_original_pcm_and_temporary_decoder_cleanup) ... ok
+test_schema_review_dependency_engine_and_json_reject (tests.test_dungeon_mechanism_media_binding.MechanismMediaBinding.test_schema_review_dependency_engine_and_json_reject) ... ok
+test_sound_owner_source_identity_flags_and_wall_binding_reject (tests.test_dungeon_mechanism_media_binding.MechanismMediaBinding.test_sound_owner_source_identity_flags_and_wall_binding_reject) ... ok
+test_sound_owners_bank_and_old_capability_geometry (tests.test_dungeon_mechanism_media_binding.MechanismMediaBinding.test_sound_owners_bank_and_old_capability_geometry) ... ok
+test_unowned_bank_asset_missing_owner_and_channel_reject (tests.test_dungeon_mechanism_media_binding.MechanismMediaBinding.test_unowned_bank_asset_missing_owner_and_channel_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 24.211s
+
+OK
+Actual mechanism audio: 4 PCM sources, 409260 bytes, 6 independent source nodes; no live audio admission
+Mechanism media capability2: 9192 bytes, 7 sound owners; source-node requests distinct from actual audio mixing/output

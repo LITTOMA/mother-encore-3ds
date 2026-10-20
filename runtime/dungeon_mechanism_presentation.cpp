@@ -26,11 +26,18 @@ bool ends(const std::string&s,const char*t){const size_t n=std::strlen(t);return
 struct DungeonMechanismPresentationData::State {
  DungeonMechanismBindingsData bindings;std::vector<DungeonMechanismSprite>sprites;
  std::vector<DungeonMechanismPlacement>owners;std::vector<DungeonMechanismShape>shapes;
+ uint32_t capability=0,bytes=0,crc=0;AudioBank audio;std::vector<DungeonMechanismSound>sounds;
 };
+uint32_t DungeonMechanismPresentationData::capability()const{return state_?state_->capability:0;}
+uint32_t DungeonMechanismPresentationData::encoded_bytes()const{return state_?state_->bytes:0;}
+uint32_t DungeonMechanismPresentationData::encoded_crc()const{return state_?state_->crc:0;}
 const DungeonMechanismBindingsData&DungeonMechanismPresentationData::bindings()const{static const DungeonMechanismBindingsData empty;return state_?state_->bindings:empty;}
 const std::vector<DungeonMechanismSprite>&DungeonMechanismPresentationData::sprites()const{static const std::vector<DungeonMechanismSprite>empty;return state_?state_->sprites:empty;}
 const std::vector<DungeonMechanismPlacement>&DungeonMechanismPresentationData::owners()const{static const std::vector<DungeonMechanismPlacement>empty;return state_?state_->owners:empty;}
 const std::vector<DungeonMechanismShape>&DungeonMechanismPresentationData::shapes()const{static const std::vector<DungeonMechanismShape>empty;return state_?state_->shapes:empty;}
+const std::vector<DungeonMechanismSound>&DungeonMechanismPresentationData::sounds()const{static const std::vector<DungeonMechanismSound>empty;return state_?state_->sounds:empty;}
+const AudioBank&DungeonMechanismPresentationData::audio_bank()const{static const AudioBank empty;return state_?state_->audio:empty;}
+const DungeonMechanismSound*DungeonMechanismPresentationData::sound(uint32_t id)const{for(const auto&s:sounds())if(s.owner==id)return &s;return nullptr;}
 const DungeonMechanismSprite*DungeonMechanismPresentationData::sprite(uint32_t id)const{for(const auto&s:sprites())if(s.id==id)return &s;return nullptr;}
 bool DungeonMechanismPresentationData::load_file(const char*path,std::string&e){
  if(state_||!path)return bad(e,"Mechanism presentation requires a fresh owner and file path");
@@ -38,17 +45,18 @@ bool DungeonMechanismPresentationData::load_file(const char*path,std::string&e){
 }
 bool DungeonMechanismPresentationData::load(const uint8_t*p,size_t n,std::string&e){
  if(state_||!p||n<144||n>512*1024)return bad(e,"Mechanism presentation size/owner rejected");
- if(std::memcmp(p,"ENCDMP01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=1||!u32(p+24)||u32(p+24)>65535||u32(p+28)||u32(p+52)!=5||u32(p+56)||u32(p+60))return bad(e,"Mechanism presentation schema/capability/reserved rejected");
+ const auto capability=u32(p+20),sections=capability==2?7u:5u;
+ if(std::memcmp(p,"ENCDMP01",8)||u32(p+8)!=1||u32(p+12)!=n||(capability!=1&&capability!=2)||!u32(p+24)||u32(p+24)>65535||u32(p+28)||u32(p+52)!=sections||u32(p+56)||u32(p+60)||n<64+sections*16)return bad(e,"Mechanism presentation schema/capability/reserved rejected");
  const char*pin="7d9246600fffe518408f5830d4848635019005a3";
  for(unsigned i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return bad(e,"Mechanism presentation source pin rejected");}
  if(encore::crc32(p+32,n-32)!=u32(p+16))return bad(e,"Mechanism presentation checksum rejected");
- const uint32_t strides[]={1,112,40,64,1},limits[]={65536,64,256,1024,256*1024};uint32_t off[5],count[5];size_t cursor=144;
- for(unsigned i=0;i<5;++i){const auto*d=p+64+i*16;off[i]=u32(d+4);count[i]=u32(d+8);
+ const uint32_t strides[]={1,112,40,64,1,88,1},limits[]={65536,64,256,1024,256*1024,257,65536};uint32_t off[7]{},count[7]{};size_t cursor=64+sections*16;
+ for(unsigned i=0;i<sections;++i){const auto*d=p+64+i*16;off[i]=u32(d+4);count[i]=u32(d+8);
   if(u32(d)!=i+1||u32(d+12)!=strides[i]||!count[i]||count[i]>limits[i]||off[i]%4||off[i]<cursor||off[i]>n||count[i]>(n-off[i])/strides[i])return bad(e,"Mechanism presentation section span rejected");
   for(size_t j=cursor;j<off[i];++j)if(p[j])return bad(e,"Mechanism presentation noncanonical padding");cursor=off[i]+count[i]*strides[i];
  }
  if(cursor!=n)return bad(e,"Mechanism presentation trailing bytes rejected");
- auto v=std::make_shared<State>();if(!v->bindings.load(p+off[4],count[4],e))return false;
+ auto v=std::make_shared<State>();v->capability=capability;v->bytes=uint32_t(n);v->crc=u32(p+16);if(!v->bindings.load(p+off[4],count[4],e))return false;
  const auto g=v->bindings.graph();if(g.scene_id()!=u32(p+24)||count[2]!=v->bindings.bindings().size())return bad(e,"Mechanism presentation nested scene/owner coverage rejected");
  std::vector<uint8_t>owned(count[0],0);
  auto text=[&](const uint8_t*q,std::string&out){const auto first=u32(q),size=u32(q+4);if(!size||first>count[0]||size>count[0]-first)return false;
@@ -82,6 +90,23 @@ bool DungeonMechanismPresentationData::load(const uint8_t*p,size_t n,std::string
   coverage[owner].push_back(role);v->shapes.push_back(std::move(s));
  }
  for(size_t i=0;i<v->owners.size();++i){auto roles=coverage[i];std::sort(roles.begin(),roles.end());const auto family=v->bindings.profile(v->owners[i].profile)->family;const auto expected=family==DungeonMechanismFamily::Lever?std::vector<uint32_t>{1,2}:family==DungeonMechanismFamily::Plate?std::vector<uint32_t>{3}:std::vector<uint32_t>{1};if(roles!=expected)return bad(e,"Mechanism presentation shape family coverage rejected");}
+ if(capability==2){
+  if(!v->audio.load(p+off[6],count[6],e))return false;std::set<uint32_t>sound_owners,assets;unsigned denied=0;
+  for(uint32_t i=0;i<count[5];++i){const auto*q=p+off[5]+i*88;DungeonMechanismSound s;s.owner=u32(q);const auto kind=u32(q+4);s.kind=DungeonMechanismSoundKind(kind);std::copy(q+24,q+56,s.source_sha256.begin());s.stable_id=u32(q+56);s.gain_db=real(q+60);s.pitch_scale=real(q+64);s.bus=u32(q+68);s.pause_mode=u32(q+72);const auto channel_first=u32(q+76),channel_size=u32(q+80);
+   if(!sound_owners.insert(s.owner).second||kind<1||kind>2||!text(q+8,s.path)||!text(q+16,s.source)||s.source.compare(0,6,"Audio/")||std::none_of(s.source_sha256.begin(),s.source_sha256.end(),[](uint8_t c){return c!=0;})||!std::isfinite(s.gain_db)||s.gain_db< -120||s.gain_db>24||!std::isfinite(s.pitch_scale)||s.pitch_scale<.01f||s.pitch_scale>4||s.bus!=1||s.pause_mode!=0||u32(q+84)||(channel_size?!text(q+76,s.channel):channel_first!=0))return bad(e,"Mechanism sound owner/source/policy rejected");
+   AudioAsset asset;const std::string uri="res://"+s.source;
+   if(!v->audio.find(s.stable_id,asset)||asset.source_path!=uri||asset.source_sha256!=s.source_sha256||asset.loops())return bad(e,"Mechanism sound PCM bank/source binding rejected");assets.insert(s.stable_id);
+   if(kind==2){const auto policy=g.policy();if(s.owner!=0||s.source!=g.text(policy.denied_audio)||s.channel!=g.text(policy.denied_channel))return bad(e,"Mechanism denied-operation source/channel rejected");++denied;}
+   else {
+    const DungeonMechanismPlacement*owner=nullptr;for(const auto&o:v->owners)if(o.owner==s.owner)owner=&o;
+    if(!owner||s.path.find_last_of('/')==std::string::npos||s.path.substr(0,s.path.find_last_of('/'))!=owner->path||!s.channel.empty())return bad(e,"Mechanism source-node audio path rejected");const auto*profile=v->bindings.profile(owner->profile);
+    if(profile->family==DungeonMechanismFamily::Wall){const auto&w=profile->wall.audio();if(s.stable_id!=w.id||uri!=w.source||s.source_sha256!=w.sha||s.gain_db!=w.gain_db||s.pitch_scale!=w.pitch||s.bus!=w.bus)return bad(e,"Mechanism wall clock/audio source binding rejected");}
+    else {bool matched=false;for(uint32_t j=0;j<g.switch_count();++j){const auto node=g.switch_node(j);if(node.id==s.owner&&g.text(node.audio)==s.source)matched=true;}if(!matched)return bad(e,"Mechanism switch clock/audio source binding rejected");}
+   }v->sounds.push_back(std::move(s));
+  }
+  std::set<uint32_t>expected{0};for(const auto&o:v->owners)if(v->bindings.profile(o.profile)->family!=DungeonMechanismFamily::Gate)expected.insert(o.owner);
+  if(sound_owners!=expected||denied!=1||assets.size()!=v->audio.count())return bad(e,"Mechanism sound missing/unowned source/owner rejected");
+ }
  if(std::find(owned.begin(),owned.end(),0)!=owned.end())return bad(e,"Mechanism presentation unowned text rejected");
  state_=std::move(v);e.clear();return true;
 }

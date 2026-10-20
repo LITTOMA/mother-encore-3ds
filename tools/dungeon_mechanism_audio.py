@@ -19,20 +19,23 @@ def extract(file=RECIPE):
   for k,v in rows:require(k not in out,'Duplicate mechanism audio review field');out[k]=v
   return out
  def invalid(v):raise ValueError('Nonfinite mechanism audio review')
- p=json.loads(Path(file).read_text(encoding='utf8'),object_pairs_hook=unique,parse_constant=invalid);fields(p,'schema kind commit scope bindings_recipe bindings_review_sha256 permission recipe identities')
- require(type(p['schema'])is int and p['schema']==1 and p['kind']=='encore.dungeon-mechanism-audio.reviewed-source'and p['commit']==PIN,'Mechanism audio schema/pin')
+ p=json.loads(Path(file).read_text(encoding='utf8'),object_pairs_hook=unique,parse_constant=invalid);fields(p,'schema kind commit scope bindings_recipe bindings_review_sha256 permission recipe identities source_profiles')
+ require(type(p['schema'])is int and p['schema']==2 and p['kind']=='encore.dungeon-mechanism-audio.reviewed-source'and p['commit']==PIN,'Mechanism audio schema/pin')
  require(all(type(p[k])is str and 0<len(p[k])<=2048 for k in('scope','permission','identities'))and p['bindings_recipe']=='content/catacombs-mechanism-bindings.json'and p['bindings_review_sha256']==hashlib.sha256(bindings.RECIPE.read_bytes()).hexdigest(),'Mechanism audio dependency/scope')
  recipe=p['recipe'];fields(recipe,'schema upstream_commit bus_source bus_sha256 manager_source manager_sha256 assets');require(type(recipe['schema'])is int and recipe['schema']==1 and recipe['upstream_commit']==PIN and type(recipe['assets'])is list and 0<len(recipe['assets'])<=64,'Mechanism audio recipe identity')
  root=json.loads((ROOT/'content/native-audio.json').read_bytes());require(all(recipe[k]==root[k]for k in('bus_source','bus_sha256','manager_source','manager_sha256')),'Mechanism audio reviewed root bus/manager binding differs')
  model,_,_=bindings.extract();review=bindings.read();ex=Extractor(ROOT);source=bindings.graph.Sources(ROOT);greview,_=bindings.graph.read();nodes={n.path:n for n in bindings.graph.instantiate(source.doc,greview['paths']['scene'])};profiles={p['id']:p for p in model['profiles']};owners=[];expected=set();wall_sound=None
+ require(type(p['source_profiles'])is list and 0<len(p['source_profiles'])<=64,'Mechanism sound source selectors');selectors={}
+ for row in p['source_profiles']:
+  fields(row,'profile node');bindings.integer(row['profile'],1,65535);bindings.wall.path(row['node']);require(row['profile']not in selectors and'/'not in row['node'],'Mechanism sound source selector identity/path');selectors[row['profile']]=row['node']
+ require(set(selectors)=={r['id']for r in model['profiles']if r['family']!=3},'Mechanism sound source selector coverage')
  for row in review['bindings']:
-  node=nodes.get(row['path']+'/AudioStreamPlayer')
-  if node is None:
-   require(profiles[row['profile']]['family']==3,'Mechanism source audio owner absent');continue
+  if row['profile']not in selectors:require(profiles[row['profile']]['family']==3,'Mechanism source audio owner absent');continue
+  node=nodes.get(row['path']+'/'+selectors[row['profile']]);require(node is not None,'Mechanism selected source audio node missing')
   require(node.type=='AudioStreamPlayer'and not node.overrides and set(node.props)<=set('stream bus volume_db pitch_scale'.split()),'Unreviewed mechanism AudioStreamPlayer property/override')
   path=node.resolve.ext_path(node.props.get('stream'),'AudioStream');gain=node.props.get('volume_db',0);pitch=node.props.get('pitch_scale',1)
   require(node.props.get('bus','Master')=='SFX'and type(gain)in(int,float)and gain==0 and type(pitch)in(int,float)and pitch==1,'Unreviewed mechanism audio bus/gain/pitch')
-  expected.add('res://'+path);owners.append(dict(owner=row['owner'],path=row['path']+'/AudioStreamPlayer',source_path='res://'+path,gain_db=gain,pitch_scale=pitch,bus=1,pause_mode=0))
+  expected.add('res://'+path);owners.append(dict(owner=row['owner'],path=row['path']+'/'+selectors[row['profile']],source_path='res://'+path,gain_db=gain,pitch_scale=pitch,bus=1,pause_mode=0))
   if profiles[row['profile']]['family']==4:wall_sound='res://'+path
  denied='res://'+model['graph']['denied'];expected.add(denied);assets={};ids=set()
  for r in recipe['assets']:

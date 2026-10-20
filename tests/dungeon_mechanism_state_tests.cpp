@@ -1,5 +1,6 @@
 #include "encore/dungeon_mechanism_state.hpp"
 #include "encore/dungeon_mechanism_presentation.hpp"
+#include "encore/dungeon_mechanism_audio.hpp"
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
@@ -15,17 +16,19 @@ void check(bool v,const char*s){++checks;if(!v){std::fprintf(stderr,"Mechanism s
 std::string scalar(double v){std::ostringstream out;out<<std::setprecision(12)<<v;return out.str();}
 std::string joined(const std::vector<std::string>&v){std::string s;for(const auto&r:v){if(!s.empty())s+=',';s+=r;}return s.empty()?"-":s;}
 struct Projection {
+ DungeonMechanismAudioRouter*router=nullptr;
  std::vector<std::string>player,ui,music,camera,timeline;
  std::deque<DungeonMechanismCallback>ready,wall,cameras;DungeonMechanismCallback used_focus;
- void collect(DungeonMechanismState&state){for(const auto&event:state.take_events()){
+ void collect(DungeonMechanismState&state){const auto events=state.take_events();std::vector<DungeonMechanismSoundCommand>sounds;size_t consumed=0;if(router)CHECK(router->plan(events,sounds,error));for(const auto&event:events){
   CHECK(event.epoch==state.epoch());
   if(event.kind==DungeonMechanismEventKind::AnimationFinished){timeline.push_back("finished:"+std::to_string(event.owner)+':'+std::to_string(event.clip));continue;}
-  if(event.kind==DungeonMechanismEventKind::WallAudio){timeline.push_back("audio:"+std::to_string(event.playing));continue;}
+  if(event.kind==DungeonMechanismEventKind::WallAudio){bool playing=event.playing;if(router){CHECK(consumed<sounds.size());const auto&s=sounds[consumed++];CHECK(s.owner==event.owner&&s.kind==DungeonMechanismSoundKind::Node&&s.playing==event.playing);playing=s.playing;}timeline.push_back("audio:"+std::to_string(playing));continue;}
   if(event.kind==DungeonMechanismEventKind::WallCamera){
    const DungeonMechanismBinding*b=nullptr;for(const auto&row:state.data().bindings())if(row.owner==event.owner)b=&row;CHECK(b);const auto*p=state.data().profile(b->profile);CHECK(p&&p->wall.valid());const auto&v=p->wall.camera();
    camera.push_back("shake:"+scalar(v.magnitude)+':'+scalar(event.duration)+':'+scalar(v.direction.x)+':'+scalar(v.direction.y)+':'+scalar(v.interval)+':'+scalar(v.weight)+':'+scalar(v.diminish));continue;
   }
   CHECK(event.kind==DungeonMechanismEventKind::Request);const auto&r=event.request;const DungeonMechanismCallback callback{event.epoch,event.callback_ticket};
+  if(router&&(r.kind==DungeonSwitchEventKind::SwitchAudio||r.kind==DungeonSwitchEventKind::DeniedAudio)){CHECK(consumed<sounds.size());const auto&s=sounds[consumed++];CHECK(s.playing&&s.request_owner==event.owner&&s.owner==(r.kind==DungeonSwitchEventKind::SwitchAudio?event.owner:0));}
   switch(r.kind){
    case DungeonSwitchEventKind::ReadyTimer:CHECK(callback.ticket);ready.push_back(callback);break;
    case DungeonSwitchEventKind::WallTimer:CHECK(callback.ticket);wall.push_back(callback);break;
@@ -45,7 +48,7 @@ struct Projection {
    case DungeonSwitchEventKind::DeniedAudio:CHECK(false);break; // absent in this source scenario
    default:CHECK(false);
   }
- }}
+ }if(router)CHECK(consumed==sounds.size());}
  void clear_projection(){player.clear();ui.clear();music.clear();camera.clear();timeline.clear();}
 };
 }
@@ -55,7 +58,7 @@ int main(int argc,char**argv){
  const auto graph=data.graph();std::vector<DungeonSwitchFlag>flags;for(uint32_t i=0;i<graph.switch_count();++i)flags.push_back({graph.switch_node(i).id,false});
  std::vector<std::string>first;uint32_t other_owner=0;
  for(unsigned pass=0;pass<2;++pass){
-  DungeonMechanismState state;CHECK(state.prepare(data,42,flags,error));Projection actual;std::ifstream input(argv[2]);CHECK(bool(input));std::string line;unsigned rows=0;
+  DungeonMechanismState state;CHECK(state.prepare(data,42,flags,error));Projection actual;DungeonMechanismAudioRouter audio;if(presentation.media_bound()){CHECK(audio.prepare(presentation,42,error));actual.router=&audio;}std::ifstream input(argv[2]);CHECK(bool(input));std::string line;unsigned rows=0;
   std::vector<std::string>projection;
   while(std::getline(input,line)){
    if(line.empty()||line[0]=='#')continue;
@@ -101,6 +104,7 @@ int main(int argc,char**argv){
   CHECK(!state.prepare(data,43,flags,error)&&!state.operate(0,DungeonSwitchMethod::Interact,true,false,true,error));
   CHECK(!state.timer_finished({42,0},error)&&!state.camera_finished({42,UINT64_MAX},error));
   CHECK(state.inspect(owner,after,error)&&before.pose.frame==after.pose.frame&&before.position==after.position&&before.on==after.on&&state.take_events().empty());
+  if(audio.valid()){std::vector<DungeonMechanismSoundCommand>stops;CHECK(audio.retire(stops,error)&&stops.size()==6);for(const auto&s:stops)CHECK(s.kind==DungeonMechanismSoundKind::Node&&!s.playing&&s.owner);}
  }
  CHECK(other_owner);
  auto prepared=[&](){DungeonMechanismState state;CHECK(state.prepare(data,42,flags,error));const auto initial=state.take_events();for(const auto&e:initial)if(e.kind==DungeonMechanismEventKind::Request&&e.request.kind==DungeonSwitchEventKind::ReadyTimer)CHECK(state.timer_finished({e.epoch,e.callback_ticket},error));state.take_events();CHECK(state.advance(2,error)&&state.flush_deferred(error));state.take_events();return state;};

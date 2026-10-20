@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 264, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 247, in main
+    suite, receipt = plan(args.project, args.ctest_dir)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 202, in plan
+    raise ValueError('Missing dedicated CTest registration: ' + ', '.join(sorted(set(DEDICATED) - set(observed))))
+ValueError: Missing dedicated CTest registration: basement_presents_source, battle_entry_bindings, battle_round_source_bindings, boss_presentation_bindings, bridge_round_source, drawer_program_source, encounter_dependency_manifest, family_followup_source, field_area_source, field_audio_source, field_equipment_source, field_menus_source, field_npc_source, field_steps_source, field_story_source, house_inspection_source, house_source_bindings, item_details_source, items_presentation_bindings, mick_treats_source, naming_presentation_bindings, phone_linker_bindings, phone_linker_source, phone_presentation_bindings, pillow_source_bindings, present_data_source, programme_lowering_recipe, round_recipe_source, runtime_layout, storage_source, ui_presentation_bindings, world_program_bindings

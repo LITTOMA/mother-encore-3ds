@@ -1,0 +1,50 @@
+ImportError: Failed to import test module: test_menu_audio_binding
+Traceback (most recent call last):
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 407, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 350, in _get_module_from_name
+    __import__(name)
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_menu_audio_binding.py", line 5, in <module>
+    from tools import dialogue_choice_assets,save_menu_assets
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\save_menu_assets.py", line 16, in <module>
+    b=checked_bindings()
+      ^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\save_menu_assets.py", line 14, in checked_bindings
+    def checked_bindings():return load_ui_bindings('save-presentation-bindings.json',BINDING_SCHEMA,ROOT,expected_checks=44,expected_contracts=123)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\ui_presentation_bindings.py", line 85, in load
+    ex=Extractor(project);require(d['commit']==ex.lock['commit'],'UI binding source pin mismatch');shape(d['bindings'],spec)
+       ^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 99, in __init__
+    head = subprocess.check_output(['git', '-C', str(self.upstream), 'rev-parse', 'HEAD'], text=True).strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1124, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1128, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\litto\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1189, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\collect-camera-shaker-tests.py", line 10, in configured
+    assert command[0]=='ctest' and command[-1]=='--show-only=json-v1',command
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ['git', '-C', 'D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore', 'rev-parse', 'HEAD']
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\collect-camera-shaker-tests.py", line 15, in <module>
+    _,receipt=module.plan(root,directory)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 203, in plan
+    full = list(cases(unittest.defaultTestLoader.discover(str(project / 'tests'), pattern='test_*.py')))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 66, in cases
+    yield from cases(item)
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 69, in cases
+    raise ValueError('Test collection import failed: ' + item.id()) from item._exception
+ValueError: Test collection import failed: unittest.loader._FailedTest.test_menu_audio_binding

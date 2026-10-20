@@ -3,6 +3,7 @@
 #include "encore/room_data.hpp"
 #include <vector>
 namespace encore::upstream {
+class SourceRandom;
 // Source-bound Camera2D/Shaker subset; limits come from the external room.
 // Call physics_frame after actor physics and idle_frame after dialogue timers.
 // New dialogue commands are idle-born, as in the audited lamp sequence.
@@ -25,8 +26,12 @@ public:
     void resume(){current().paused=false;} // Original reset() only assigns loop locals and changes no fields.
     bool move_to(Vec2 target,double duration);
     bool shake(double magnitude,double duration,Vec2 direction);
+    // Explicit source parameters; a zero direction requires the RNG-taking
+    // physics overload. All gameplay values are supplied by checked resources.
+    bool shake(double magnitude,double duration,Vec2 direction,double interval,double weight,bool diminish);
     bool physics_frame(Vec2 target,double delta=1.0/60.0);
     bool physics_frame(double delta=1.0/60.0);
+    bool physics_frame(SourceRandom&,double delta=1.0/60.0);
     bool idle_frame(double delta);
     Vec2 center() const;
     Vec2 display_offset()const{return current().offset;}
@@ -37,7 +42,7 @@ public:
 private:
     friend class OpeningWorld;
     bool same_state(const CutsceneCamera&)const;
-    struct Shake { double timer=0,magnitude=0,reduction=0; int left=0,side=1; Vec2 old{},direction{}; };
+    struct Shake { double timer=0,magnitude=0,reduction=0,interval=0,weight=0; int left=0,side=1; Vec2 old{},direction{},sampled{}; };
     struct Recovery { double time=0; Vec2 from{}; bool started=false; };
     struct Camera {
         Vec2 global{},local{},move_from{},move_target{},shake{},offset{},parent{},min_center{},max_center{};
@@ -52,6 +57,8 @@ private:
         double return_seconds=0,shake_step=0,minimum_magnitude=0,zero_threshold=0,shake_weight=0,recovery_seconds=0;
     } binding_;
     bool bind_content(const RoomView&,bool require_same_parameters);
+    bool needs_random()const;
+    bool physics_step(double,SourceRandom*);
     Vec2 min_center_{},max_center_{},viewport_{};
     std::vector<Camera> cameras_{Camera{}};
     size_t current_index_=0;

@@ -1,0 +1,3001 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "sprites": [
+    {
+      "owner": 3211839847,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 0,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 1,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 2,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 3,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 4,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 5,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 6,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 7,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 8,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 9,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 0,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-800.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 1,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-800.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 2,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-800.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 3,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-800.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 4,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-800.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 5,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-800.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 6,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-800.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 7,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-800.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3211839847,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 8,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1480.00000000000000000",
+        "-800.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 0,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 1,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 2,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 3,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 4,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 5,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 6,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 7,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 8,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 9,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 0,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-272.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 1,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-272.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 2,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-272.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 3,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-272.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 4,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-272.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 5,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-272.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 6,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-272.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 7,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-272.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 1367255115,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 8,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-272.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 0,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 1,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 2,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 3,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 4,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 5,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 6,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 7,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 8,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 2,
+      "path": "Sprite",
+      "frame": 9,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-16.00000000000000000",
+          "-24.00000000000000000"
+        ],
+        "size": [
+          "32.00000000000000000",
+          "48.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 0,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-544.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 1,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-544.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 2,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-544.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 3,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-544.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 4,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-544.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 5,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-544.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 6,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-544.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 7,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-544.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 3363305969,
+      "profile": 3,
+      "path": "Lock/Sprite",
+      "frame": 8,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-2024.00000000000000000",
+        "-544.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-17.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "34.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 2496629665,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 0,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1472.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 2496629665,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 1,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1472.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 2496629665,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 2,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1472.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 2496629665,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 3,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1472.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 231135771,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 0,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1568.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 231135771,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 1,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1568.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 231135771,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 2,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1568.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 231135771,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 3,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1568.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 2059528845,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 0,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1520.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 2059528845,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 1,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1520.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 2059528845,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 2,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1520.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    },
+    {
+      "owner": 2059528845,
+      "profile": 1,
+      "path": "Sprite",
+      "frame": 3,
+      "local_position": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "global_position": [
+        "-1520.00000000000000000",
+        "304.00000000000000000"
+      ],
+      "rect": {
+        "position": [
+          "-8.00000000000000000",
+          "-8.00000000000000000"
+        ],
+        "size": [
+          "16.00000000000000000",
+          "16.00000000000000000"
+        ]
+      },
+      "tree_visible": true,
+      "centered": true,
+      "offset": [
+        "0.00000000000000000",
+        "0.00000000000000000"
+      ],
+      "flip_h": false,
+      "flip_v": false,
+      "z": 0,
+      "z_relative": true,
+      "parent_type": "TileMap",
+      "parent_sort": false
+    }
+  ],
+  "shapes": [
+    {
+      "owner": 3211839847,
+      "path": "StaticBody2D/CollisionShape2D",
+      "role": 2,
+      "type": "StaticBody2D",
+      "center": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "extents": [
+        "16.00000000000000000",
+        "4.00000000000000000"
+      ],
+      "scale": [
+        "1.00000000000000000",
+        "6.00000000000000000"
+      ],
+      "corners": [
+        [
+          "-1496.00000000000000000",
+          "-832.00000000000000000"
+        ],
+        [
+          "-1464.00000000000000000",
+          "-832.00000000000000000"
+        ],
+        [
+          "-1464.00000000000000000",
+          "-784.00000000000000000"
+        ],
+        [
+          "-1496.00000000000000000",
+          "-784.00000000000000000"
+        ]
+      ],
+      "layer": 1597,
+      "mask": 0,
+      "disabled": false,
+      "one_way": false,
+      "margin": 1,
+      "monitoring": false,
+      "monitorable": false
+    },
+    {
+      "owner": 3211839847,
+      "path": "interact/CollisionShape2D2",
+      "role": 3,
+      "type": "Area2D",
+      "center": [
+        "-1480.00000000000000000",
+        "-808.00000000000000000"
+      ],
+      "extents": [
+        "16.00000000000000000",
+        "4.00000000000000000"
+      ],
+      "scale": [
+        "1.00000000000000000",
+        "8.00000000000000000"
+      ],
+      "corners": [
+        [
+          "-1496.00000000000000000",
+          "-840.00000000000000000"
+        ],
+        [
+          "-1464.00000000000000000",
+          "-840.00000000000000000"
+        ],
+        [
+          "-1464.00000000000000000",
+          "-776.00000000000000000"
+        ],
+        [
+          "-1496.00000000000000000",
+          "-776.00000000000000000"
+        ]
+      ],
+      "layer": 1,
+      "mask": 1,
+      "disabled": false,
+      "one_way": false,
+      "margin": 1,
+      "monitoring": true,
+      "monitorable": true
+    },
+    {
+      "owner": 1367255115,
+      "path": "StaticBody2D/CollisionShape2D",
+      "role": 2,
+      "type": "StaticBody2D",
+      "center": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "extents": [
+        "16.00000000000000000",
+        "4.00000000000000000"
+      ],
+      "scale": [
+        "1.00000000000000000",
+        "6.00000000000000000"
+      ],
+      "corners": [
+        [
+          "-2040.00000000000000000",
+          "-304.00000000000000000"
+        ],
+        [
+          "-2008.00000000000000000",
+          "-304.00000000000000000"
+        ],
+        [
+          "-2008.00000000000000000",
+          "-256.00000000000000000"
+        ],
+        [
+          "-2040.00000000000000000",
+          "-256.00000000000000000"
+        ]
+      ],
+      "layer": 1597,
+      "mask": 0,
+      "disabled": false,
+      "one_way": false,
+      "margin": 1,
+      "monitoring": false,
+      "monitorable": false
+    },
+    {
+      "owner": 1367255115,
+      "path": "interact/CollisionShape2D2",
+      "role": 3,
+      "type": "Area2D",
+      "center": [
+        "-2024.00000000000000000",
+        "-280.00000000000000000"
+      ],
+      "extents": [
+        "16.00000000000000000",
+        "4.00000000000000000"
+      ],
+      "scale": [
+        "1.00000000000000000",
+        "8.00000000000000000"
+      ],
+      "corners": [
+        [
+          "-2040.00000000000000000",
+          "-312.00000000000000000"
+        ],
+        [
+          "-2008.00000000000000000",
+          "-312.00000000000000000"
+        ],
+        [
+          "-2008.00000000000000000",
+          "-248.00000000000000000"
+        ],
+        [
+          "-2040.00000000000000000",
+          "-248.00000000000000000"
+        ]
+      ],
+      "layer": 1,
+      "mask": 1,
+      "disabled": false,
+      "one_way": false,
+      "margin": 1,
+      "monitoring": true,
+      "monitorable": true
+    },
+    {
+      "owner": 3363305969,
+      "path": "StaticBody2D/CollisionShape2D",
+      "role": 2,
+      "type": "StaticBody2D",
+      "center": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "extents": [
+        "16.00000000000000000",
+        "4.00000000000000000"
+      ],
+      "scale": [
+        "1.00000000000000000",
+        "6.00000000000000000"
+      ],
+      "corners": [
+        [
+          "-2040.00000000000000000",
+          "-576.00000000000000000"
+        ],
+        [
+          "-2008.00000000000000000",
+          "-576.00000000000000000"
+        ],
+        [
+          "-2008.00000000000000000",
+          "-528.00000000000000000"
+        ],
+        [
+          "-2040.00000000000000000",
+          "-528.00000000000000000"
+        ]
+      ],
+      "layer": 1597,
+      "mask": 0,
+      "disabled": false,
+      "one_way": false,
+      "margin": 1,
+      "monitoring": false,
+      "monitorable": false
+    },
+    {
+      "owner": 3363305969,
+      "path": "interact/CollisionShape2D2",
+      "role": 3,
+      "type": "Area2D",
+      "center": [
+        "-2024.00000000000000000",
+        "-552.00000000000000000"
+      ],
+      "extents": [
+        "16.00000000000000000",
+        "4.00000000000000000"
+      ],
+      "scale": [
+        "1.00000000000000000",
+        "8.00000000000000000"
+      ],
+      "corners": [
+        [
+          "-2040.00000000000000000",
+          "-584.00000000000000000"
+        ],
+        [
+          "-2008.00000000000000000",
+          "-584.00000000000000000"
+        ],
+        [
+          "-2008.00000000000000000",
+          "-520.00000000000000000"
+        ],
+        [
+          "-2040.00000000000000000",
+          "-520.00000000000000000"
+        ]
+      ],
+      "layer": 1,
+      "mask": 1,
+      "disabled": false,
+      "one_way": false,
+      "margin": 1,
+      "monitoring": true,
+      "monitorable": true
+    },
+    {
+      "owner": 2496629665,
+      "path": "Area2D/CollisionShape2D",
+      "role": 1,
+      "type": "Area2D",
+      "center": [
+        "-1472.00000000000000000",
+        "306.00000000000000000"
+      ],
+      "extents": [
+        "4.00000000000000000",
+        "4.00000000000000000"
+      ],
+      "scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "corners": [
+        [
+          "-1476.00000000000000000",
+          "302.00000000000000000"
+        ],
+        [
+          "-1468.00000000000000000",
+          "302.00000000000000000"
+        ],
+        [
+          "-1468.00000000000000000",
+          "310.00000000000000000"
+        ],
+        [
+          "-1476.00000000000000000",
+          "310.00000000000000000"
+        ]
+      ],
+      "layer": 1,
+      "mask": 1,
+      "disabled": false,
+      "one_way": false,
+      "margin": 1,
+      "monitoring": true,
+      "monitorable": true
+    },
+    {
+      "owner": 231135771,
+      "path": "Area2D/CollisionShape2D",
+      "role": 1,
+      "type": "Area2D",
+      "center": [
+        "-1568.00000000000000000",
+        "306.00000000000000000"
+      ],
+      "extents": [
+        "4.00000000000000000",
+        "4.00000000000000000"
+      ],
+      "scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "corners": [
+        [
+          "-1572.00000000000000000",
+          "302.00000000000000000"
+        ],
+        [
+          "-1564.00000000000000000",
+          "302.00000000000000000"
+        ],
+        [
+          "-1564.00000000000000000",
+          "310.00000000000000000"
+        ],
+        [
+          "-1572.00000000000000000",
+          "310.00000000000000000"
+        ]
+      ],
+      "layer": 1,
+      "mask": 1,
+      "disabled": false,
+      "one_way": false,
+      "margin": 1,
+      "monitoring": true,
+      "monitorable": true
+    },
+    {
+      "owner": 2059528845,
+      "path": "Area2D/CollisionShape2D",
+      "role": 1,
+      "type": "Area2D",
+      "center": [
+        "-1520.00000000000000000",
+        "306.00000000000000000"
+      ],
+      "extents": [
+        "4.00000000000000000",
+        "4.00000000000000000"
+      ],
+      "scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "corners": [
+        [
+          "-1524.00000000000000000",
+          "302.00000000000000000"
+        ],
+        [
+          "-1516.00000000000000000",
+          "302.00000000000000000"
+        ],
+        [
+          "-1516.00000000000000000",
+          "310.00000000000000000"
+        ],
+        [
+          "-1524.00000000000000000",
+          "310.00000000000000000"
+        ]
+      ],
+      "layer": 1,
+      "mask": 1,
+      "disabled": false,
+      "one_way": false,
+      "margin": 1,
+      "monitoring": true,
+      "monitorable": true
+    }
+  ],
+  "sounds": [
+    {
+      "owner": 3211839847,
+      "path": "Lock/AudioStreamPlayer",
+      "bus": "SFX",
+      "gain": "0.00000000000000000",
+      "pitch": "1.00000000000000000",
+      "pause": 0,
+      "stream_type": "AudioStreamSample",
+      "length": "0.04984126985073090"
+    },
+    {
+      "owner": 1367255115,
+      "path": "Lock/AudioStreamPlayer",
+      "bus": "SFX",
+      "gain": "0.00000000000000000",
+      "pitch": "1.00000000000000000",
+      "pause": 0,
+      "stream_type": "AudioStreamSample",
+      "length": "0.04984126985073090"
+    },
+    {
+      "owner": 3363305969,
+      "path": "Lock/AudioStreamPlayer",
+      "bus": "SFX",
+      "gain": "0.00000000000000000",
+      "pitch": "1.00000000000000000",
+      "pause": 0,
+      "stream_type": "AudioStreamSample",
+      "length": "0.04984126985073090"
+    },
+    {
+      "owner": 2496629665,
+      "path": "AudioStreamPlayer",
+      "bus": "SFX",
+      "gain": "0.00000000000000000",
+      "pitch": "1.00000000000000000",
+      "pause": 0,
+      "stream_type": "AudioStreamMP3",
+      "length": "0.20897959172725680"
+    },
+    {
+      "owner": 231135771,
+      "path": "AudioStreamPlayer",
+      "bus": "SFX",
+      "gain": "0.00000000000000000",
+      "pitch": "1.00000000000000000",
+      "pause": 0,
+      "stream_type": "AudioStreamMP3",
+      "length": "0.20897959172725680"
+    },
+    {
+      "owner": 2059528845,
+      "path": "AudioStreamPlayer",
+      "bus": "SFX",
+      "gain": "0.00000000000000000",
+      "pitch": "1.00000000000000000",
+      "pause": 0,
+      "stream_type": "AudioStreamMP3",
+      "length": "0.20897959172725680"
+    }
+  ],
+  "player_turn": {
+    "y": true,
+    "x": false
+  },
+  "buses": [
+    {
+      "name": "Master",
+      "send": "",
+      "gain": "-5.93074989318847660",
+      "mute": false,
+      "solo": false,
+      "bypass": false,
+      "effects": 0
+    },
+    {
+      "name": "Music",
+      "send": "Music",
+      "gain": "0.00000000000000000",
+      "mute": false,
+      "solo": false,
+      "bypass": false,
+      "effects": 0
+    },
+    {
+      "name": "Filter",
+      "send": "Music",
+      "gain": "-0.65933299064636230",
+      "mute": false,
+      "solo": false,
+      "bypass": false,
+      "effects": 1
+    },
+    {
+      "name": "More Filter",
+      "send": "Filter",
+      "gain": "-1.18816995620727540",
+      "mute": false,
+      "solo": false,
+      "bypass": false,
+      "effects": 1
+    },
+    {
+      "name": "SFX",
+      "send": "Master",
+      "gain": "0.00000000000000000",
+      "mute": false,
+      "solo": false,
+      "bypass": false,
+      "effects": 0
+    }
+  ]
+}

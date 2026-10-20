@@ -71,7 +71,10 @@ func run():
     var turn=reflected.player_turn.duplicate()
     reflected.free()
     assert(file.open("res://../geometry.json",File.WRITE)==OK)
-    file.store_string(JSON.print({"engine":Engine.get_version_info(),"sprites":sprites,"shapes":shapes,"sounds":sounds,"player_turn":turn},"  "))
+    var buses=[]
+    for index in AudioServer.bus_count:
+        buses.append({"name":AudioServer.get_bus_name(index),"send":AudioServer.get_bus_send(index),"gain":"%.17f"%AudioServer.get_bus_volume_db(index),"mute":AudioServer.is_bus_mute(index),"solo":AudioServer.is_bus_solo(index),"bypass":AudioServer.is_bus_bypassing_effects(index),"effects":AudioServer.get_bus_effect_count(index)})
+    file.store_string(JSON.print({"engine":Engine.get_version_info(),"sprites":sprites,"shapes":shapes,"sounds":sounds,"player_turn":turn,"buses":buses},"  "))
     file.close()
     scene.queue_free()
     yield(get_tree(),"idle_frame")
@@ -111,6 +114,7 @@ def run(out,engine):
  invoke(engine,project,['--debug','--editor','--quit'],out/'assets-import.log')
  for name,raw in staged.items():
   dest=project/name;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw)
+ bus=review['audio_recipe']['bus_source'];raw=source.data(bus);d.require(hashlib.sha256(raw).hexdigest()==review['audio_recipe']['bus_sha256'],'Key geometry original audio bus changed');dest=project/bus;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw);copied[bus]=hashlib.sha256(raw).hexdigest()
  prompt=project/'Nodes/Ui/ButtonPrompt.tscn';prompt.parent.mkdir(parents=True,exist_ok=True);prompt.write_text('[gd_scene load_steps=2 format=2]\n[ext_resource path="res://prompt.gd" type="Script" id=1]\n[node name="ButtonPrompt" type="Node2D"]\nscript = ExtResource( 1 )\n',encoding='utf8');(project/'prompt.gd').write_text('extends Node2D\nexport var offset=Vector2.ZERO\nexport var enabled=true\n',encoding='utf8')
  config=dict(root_position=d.vector(nodes['.'].props.get('position',d.Vec2(0,0))),parents=[],owners=[]);parents={o['parent']for o in model['owners']}
  for name in sorted(parents):
@@ -119,7 +123,7 @@ def run(out,engine):
  for o in model['owners']:
   p=by[o['profile']];n=nodes[o['path']];sprites=[dict(profile=p['id'],path='Sprite')]+([dict(profile=p['child'],path='Lock/Sprite')]if p['child']else[]);shapes=[dict(path=s['path'],role=s['role'])for s in model['shapes']if s['owner']==o['owner']];config['owners'].append(dict(id=o['owner'],parent=o['parent'],name=o['path'].rsplit('/',1)[-1],position=d.vector(n.props.get('position',d.Vec2(0,0))),scene=rp[p['id']]['scene'],child=bool(p['child']),sprites=sprites,shapes=shapes,sound_path=('Lock/'if p['child']else'')+'AudioStreamPlayer'))
  (project/'input.json').write_text(json.dumps(config,indent=2)+'\n',encoding='utf8');(project/'probe.gd').write_text(PROBE,encoding='utf8');(project/'probe.tscn').write_text('[gd_scene load_steps=2 format=2]\n[ext_resource path="res://probe.gd" type="Script" id=1]\n[node name="Probe" type="Node"]\nscript = ExtResource( 1 )\n',encoding='utf8');(project/'global.gd').write_text(GLOBAL,encoding='utf8');(project/'data.gd').write_text('extends Node\nvar flags={}\nvar object_flags={}\nfunc set_flag(_a,_b,_c):pass\nfunc set_object_flag(_a,_b,_c):pass\n',encoding='utf8');(project/'ui.gd').write_text('extends Node\nfunc try_alter_key_count(_v):return false\nfunc open_dialogue_box(_p):pass\nfunc update_key_indicator():pass\n',encoding='utf8')
- (project/'project.godot').write_text('config_version=4\n[application]\nconfig/name="Original key media geometry"\nrun/main_scene="res://probe.tscn"\n[autoload]\nglobal="*res://global.gd"\nglobaldata="*res://data.gd"\nuiManager="*res://ui.gd"\n[debug]\ngdscript/warnings/unused_argument=false\ngdscript/warnings/unused_signal=false\n',encoding='utf8')
+ (project/'project.godot').write_text('config_version=4\n[application]\nconfig/name="Original key media geometry"\nrun/main_scene="res://probe.tscn"\n[audio]\ndefault_bus_layout="res://'+bus+'"\n[autoload]\nglobal="*res://global.gd"\nglobaldata="*res://data.gd"\nuiManager="*res://ui.gd"\n[debug]\ngdscript/warnings/unused_argument=false\ngdscript/warnings/unused_signal=false\n',encoding='utf8')
  invoke(engine,project,['--debug','--editor','--quit'],out/'import.log');invoke(engine,project,['--debug'],out/'engine.log');observed=json.loads((out/'geometry.json').read_text('utf8'));d.require(observed['engine']['string']=='3.6.2-stable (official)'and len(observed['sprites'])==69 and len(observed['shapes'])==9 and len(observed['sounds'])==6,'Key media original engine/coverage')
  for name,h in copied.items():
   if not name.endswith('.import'):d.require(hashlib.sha256((project/name).read_bytes()).hexdigest()==h,'Key geometry original bytes changed')

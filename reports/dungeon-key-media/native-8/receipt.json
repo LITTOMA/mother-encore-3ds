@@ -1,0 +1,160 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Native original key/door prefab geometry and stream metadata.\n\nOriginal subresources and relevant Sprite/body properties are retained. Scripts\nand their admitted signals are quarantined; ButtonPrompt is an explicit UI\nservice, and terrain is not instantiated. This is not gameplay or audibility.\n",
+  "review_sha256": "5aa6e6e648fb25ef4e275ef8a7327b014bbce89e02f7d2cc1d4937fc81974d21",
+  "clock_sha256": "c9e86393652c3b6c3b6d93ecad6cee4d833eb969c2648f1ece15140aace17ee7",
+  "sources": {
+    "Data/Dialogue/Reusable/locklocked.yaml": "7f5e8898ab912ad126367e1dda1c3f58a19872a5a6f969f4570d73d52cb5f462",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Basic Enemy.tscn": "5f554fc4ad1fa00da90727bdbc1270db0cc496f1b0ab8d56726bde73593112b5",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Barrel.tscn": "0dce64a9a381963247163ecc86e777d5d9a8d67d6d709ec4278d4a02f4a5cee4",
+    "Nodes/Overworld/Objects/Coffin.tscn": "da4f55517e682bf86c0303baea4206d08c2d129d52d4b80237f04795ad4bcd0b",
+    "Nodes/Overworld/Objects/CoinSpawner.tscn": "f6ad3a3dcd0fac1cdc9f0cc8b98b3429cc11d74559edc95ee0df9d02cb9bd641",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Lock.tscn": "8f7028b4669e0ef2f5d1020cedaca6fe9ded747eed4c091a0d2b98104912ae0e",
+    "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": "0455c5e6b85221a05f68e7827d6d7791797a0c62343e14c50c9b0542c980c83a",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Rat Hole.tscn": "1715cefdbff746fb4a4bcd041914d04453fe1b40246141c5e2634cbdcbecd5da",
+    "Nodes/Overworld/Objects/Small Key.tscn": "b111c74715225473607948b2004404dd9dfc631046d53a6f569f0c5fb637a989",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/poison geyser hole.tscn": "fb8228717dc045a169206181d81597e408659713c7478fcaf648df246e1d5755",
+    "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+    "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+    "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+    "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Effects/Weather/Vignette.tscn": "3c57caf0ba3453b89014325aff196dee2b4f46bdf542bc3d385992b8f89c54cf",
+    "Nodes/Reusables/Overlap/Hurtbox.tscn": "8a96ac2d8f50541708a8305985651d2e7dde25b8c198f820a922a7550d1d26aa",
+    "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+    "Nodes/Reusables/VendingMachine.tscn": "7916b1d5c8e6d0ec7fa47e060daf1f2ea753b796098629794912b6310c15b431",
+    "Nodes/Reusables/atm.tscn": "d25d9da76f9bce3b0fc3448338ff0b20c0da553bb322d8c11f9470d89ff3de23",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/payphone.tscn": "80f1e9f9d8a43fde707475631c747553e1827c5d7ecc8f00175b2dd6b2438450",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Reusables/tea kettle.tscn": "f3004d3399e5a7030a95fa69abee332d06903104ca41d73bde4bffb71cfc277d",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/Main/Lock.gd": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc",
+    "Scripts/Main/Small Key.gd": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Audio/Sound effects/EB/dooropen1.wav": "bb79764de9e8cb104dbe56712f86c028ffb0b6746078843e60d973b485722f66",
+    "Audio/Sound effects/EB/dooropen1.wav.import": "88995bdad26e037dd72de7603c2374e728b5850c5c4daaef5db2c4cf12aea690",
+    "Audio/Sound effects/Key Get.mp3": "0392d3cdc0ecee8a1f41c051d5273c9280b250f87ed94547677fafad31f35447",
+    "Audio/Sound effects/Key Get.mp3.import": "37e412968857a899eced8edee4105f1c90d0cbad3c10d98325f0a8478e7ab6e0",
+    "Graphics/Objects/Catacombs/Catacombs Locked Door.png": "810c1671efa5781eba3689be0ccbf865a8616b5ab57a8a655812de3f333f02c8",
+    "Graphics/Objects/Common/Lock.png": "5444669b91684d53dc3db5a4d7ef60f983d785a6cbbacfa53b1d06f30a8472d6",
+    "Graphics/Objects/Common/Small Key.png": "a70b47f3a3ab2f8f0a66556a39ca264b145b87834cdf9674e1895c1ba618709c",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Scripts/Cutscenes/CutsceneObject.gd": "5bb7b71aeba89556d1b8216b168f9f9aaa41dcabb3bf1c9cd1545aaf417af963",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "Graphics/Objects/Catacombs/Catacombs Locked Door.png.import": "50349676dbd1eac1ea52c2769b9aacf1a5941ed916fbfe8370a59cab07e001bd",
+    "Graphics/Objects/Common/Lock.png.import": "482a6a5fd90de5f09a7d5db29f32ccc56e15c503f53b172678688a2ca36e0130",
+    "Graphics/Objects/Common/Small Key.png.import": "28765e2a475b697e3c13b4170734202d802b850e318bf759525c13404a3c037d",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c"
+  },
+  "whole_scene_approved": false,
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "quarantine": {
+    "Nodes/Overworld/Objects/Small Key.tscn": {
+      "script": "Scripts/Main/Small Key.gd",
+      "removed_properties": [
+        "script",
+        "emit_flag_updated_signal",
+        "anim_name",
+        "anim_player"
+      ],
+      "connections": [
+        {
+          "signal": "body_entered",
+          "from": "Area2D",
+          "to": ".",
+          "method": "_on_Area2D_body_entered"
+        },
+        {
+          "signal": "finished",
+          "from": "AudioStreamPlayer",
+          "to": ".",
+          "method": "_on_AudioStreamPlayer_finished"
+        },
+        {
+          "signal": "animation_finished",
+          "from": "AnimationPlayer",
+          "to": ".",
+          "method": "_on_AnimationPlayer_animation_finished"
+        }
+      ],
+      "scope": "Script/signals only; exact Sprite/body/subresources retained. ButtonPrompt dependency is a separate declared UI service."
+    },
+    "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": {
+      "script": "Scripts/Main/Lock.gd",
+      "removed_properties": [
+        "script",
+        "emit_flag_updated_signal",
+        "anim_name",
+        "anim_player"
+      ],
+      "connections": [
+        {
+          "signal": "animation_finished",
+          "from": "AnimationPlayer",
+          "to": ".",
+          "method": "_on_AnimationPlayer_animation_finished"
+        }
+      ],
+      "scope": "Script/signals only; exact Sprite/body/subresources retained. ButtonPrompt dependency is a separate declared UI service."
+    },
+    "Nodes/Overworld/Objects/Lock.tscn": {
+      "script": "Scripts/Cutscenes/CutsceneObject.gd",
+      "removed_properties": [
+        "script",
+        "emit_flag_updated_signal",
+        "anim_name",
+        "anim_player"
+      ],
+      "connections": [
+        {
+          "signal": "animation_finished",
+          "from": "AnimationPlayer",
+          "to": ".",
+          "method": "_on_AnimationPlayer_animation_finished"
+        }
+      ],
+      "scope": "Script/signals only; exact Sprite/body/subresources retained. ButtonPrompt dependency is a separate declared UI service."
+    }
+  },
+  "ui_service": "ButtonPrompt subtree only; no font/UI rendering admission",
+  "copied_sources": {
+    "Graphics/Objects/Common/Small Key.png": "a70b47f3a3ab2f8f0a66556a39ca264b145b87834cdf9674e1895c1ba618709c",
+    "Graphics/Objects/Common/Small Key.png.import": "28765e2a475b697e3c13b4170734202d802b850e318bf759525c13404a3c037d",
+    "Audio/Sound effects/Key Get.mp3": "0392d3cdc0ecee8a1f41c051d5273c9280b250f87ed94547677fafad31f35447",
+    "Audio/Sound effects/Key Get.mp3.import": "37e412968857a899eced8edee4105f1c90d0cbad3c10d98325f0a8478e7ab6e0",
+    "Graphics/Objects/Catacombs/Catacombs Locked Door.png": "810c1671efa5781eba3689be0ccbf865a8616b5ab57a8a655812de3f333f02c8",
+    "Graphics/Objects/Catacombs/Catacombs Locked Door.png.import": "50349676dbd1eac1ea52c2769b9aacf1a5941ed916fbfe8370a59cab07e001bd",
+    "Graphics/Objects/Common/Lock.png": "5444669b91684d53dc3db5a4d7ef60f983d785a6cbbacfa53b1d06f30a8472d6",
+    "Graphics/Objects/Common/Lock.png.import": "482a6a5fd90de5f09a7d5db29f32ccc56e15c503f53b172678688a2ca36e0130",
+    "Audio/Sound effects/EB/dooropen1.wav": "bb79764de9e8cb104dbe56712f86c028ffb0b6746078843e60d973b485722f66",
+    "Audio/Sound effects/EB/dooropen1.wav.import": "88995bdad26e037dd72de7603c2374e728b5850c5c4daaef5db2c4cf12aea690",
+    "Scripts/Main/Lock.gd": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+  },
+  "geometry_sha256": "72394d10a517c0f4e294ec03716a3c787307cffdb75faa3ab496e103e215a485",
+  "probe_sha256": "c2e9af29ca219ed9fef0d5148143fba11ebaec20ea13151657c6f091966ac60e",
+  "sprites": 69,
+  "shapes": 9,
+  "sounds": 6
+}

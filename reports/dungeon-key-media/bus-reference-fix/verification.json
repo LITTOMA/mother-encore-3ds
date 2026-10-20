@@ -1,0 +1,90 @@
+{
+  "reason": "Native6/7 reference omitted original AudioBusLayout; Godot getter fell back to Master. Source and runtime remained SFX. Supersede audio-bus equality claim,retain original evidence.",
+  "native_runs": [
+    8,
+    9
+  ],
+  "identical": true,
+  "geometry_sha256": "72394d10a517c0f4e294ec03716a3c787307cffdb75faa3ab496e103e215a485",
+  "changed_sound_bus_owners": [
+    3211839847,
+    1367255115,
+    3363305969,
+    2496629665,
+    231135771,
+    2059528845
+  ],
+  "retained_original_sprite_shapes_turn_and_nonbus_sound_metadata": true,
+  "original_buses": [
+    {
+      "name": "Master",
+      "send": "",
+      "gain": "-5.93074989318847660",
+      "mute": false,
+      "solo": false,
+      "bypass": false,
+      "effects": 0
+    },
+    {
+      "name": "Music",
+      "send": "Music",
+      "gain": "0.00000000000000000",
+      "mute": false,
+      "solo": false,
+      "bypass": false,
+      "effects": 0
+    },
+    {
+      "name": "Filter",
+      "send": "Music",
+      "gain": "-0.65933299064636230",
+      "mute": false,
+      "solo": false,
+      "bypass": false,
+      "effects": 1
+    },
+    {
+      "name": "More Filter",
+      "send": "Filter",
+      "gain": "-1.18816995620727540",
+      "mute": false,
+      "solo": false,
+      "bypass": false,
+      "effects": 1
+    },
+    {
+      "name": "SFX",
+      "send": "Master",
+      "gain": "0.00000000000000000",
+      "mute": false,
+      "solo": false,
+      "bypass": false,
+      "effects": 0
+    }
+  ],
+  "fixture_bytes_unchanged": {
+    "reference.tsv": "c97bbfac1833a74c4399d85cbab4a3ad7aa30e6f8425c255c9474a76ab86c7e2",
+    "source.enckmp": "6f426a8ce4205831a83b6669de682c35774fb1263aaa17b39bdaa6670a44ee82",
+    "sound/effects/catacombs-keys-get.pcm": "22e4b635269e206e46b13a522068aa6aa5312fecb4cebafcc00c265e3f34fd7f",
+    "sound/effects/catacombs-keys-open.pcm": "5d8ac39a218e7c24022262a09ab057f2ffbc3669b565758b2b3c60cd9a6f23ff"
+  },
+  "previous_actual_CPP_proofs": {
+    "key-media-host-2.proof.json": {
+      "sha256": "ee814b260e2fc88f0328930d659508a9a7dbcfe37b2d1bdd03bf9899e6b0c15d",
+      "current_inputs_still_identical": true
+    },
+    "key-ndsp-host-2.proof.json": {
+      "sha256": "978eca7b3caac1c2fdeef6c9670e8e15e562a0a42908586599a064e8afd8ccec",
+      "current_inputs_still_identical": true
+    }
+  },
+  "python": {
+    "methods": 8,
+    "passed": true,
+    "added_negative_checks": [
+      "old missing-bus native6 rejected",
+      "changed SFX send rejected"
+    ]
+  },
+  "scope": "Reference/provenance correction only; no runtime/C++/formats/RomFS/PCM/texture/save/source changes; no audible or fullgame claim"
+}

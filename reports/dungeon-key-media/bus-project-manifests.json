@@ -1,0 +1,420 @@
+{
+  "build/full-port/key-media-native-8/project": {
+    "marker": "source-key-media-reference-v1",
+    "files": {
+      ".owned-key-media-reference": {
+        "bytes": 29,
+        "sha256": "4cf2fdf774cf05a0bb6785edd0753dee952e373f1d31f480cdb73156aa470c5d"
+      },
+      "data.gd": {
+        "bytes": 116,
+        "sha256": "e7d7237ebda97688a2428305f03aa627b8829eb8dd0d2b51bb89b07ca0da9854"
+      },
+      "global.gd": {
+        "bytes": 621,
+        "sha256": "4e4b4e3539632c13eacd7270ac6d3d94238f6293dbc641e1d3b1a4da53f54dd0"
+      },
+      "input.json": {
+        "bytes": 4201,
+        "sha256": "6a1282503fccb92799e8f2e8f0c86b7ac0a98bcdb9cc1295a1516b152985f0bd"
+      },
+      "probe.gd": {
+        "bytes": 4110,
+        "sha256": "177a4790bdb49f57f67f4a631b3c1f3e51dee9d1fe827f1a190ffcbb40e95ef1"
+      },
+      "probe.tscn": {
+        "bytes": 151,
+        "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+      },
+      "project.godot": {
+        "bytes": 813,
+        "sha256": "89baa7eebdd69e73ea5fc65829fc6d32ce586c2b68f2785020aea2d41aebbbe5"
+      },
+      "prompt.gd": {
+        "bytes": 73,
+        "sha256": "b93d8a7751edbb075f90ff3c07fce54cb9d0f789c2fdf5629fed8d5ef6a20083"
+      },
+      "ui.gd": {
+        "bytes": 124,
+        "sha256": "ea680d129eb61def1d6d531e72b406d4d006f9558a35d1d4c0a5ee9bc263c1c3"
+      },
+      ".import/.gdignore": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      ".import/Catacombs Locked Door.png-53de61f28e26bea2391ac631b1c74735.md5": {
+        "bytes": 91,
+        "sha256": "f59c1512d687d86040f90e72af1584865a61ccadf6b20d2e44c83ef7178e227b"
+      },
+      ".import/Catacombs Locked Door.png-53de61f28e26bea2391ac631b1c74735.stex": {
+        "bytes": 1220,
+        "sha256": "32e71d1cf6c74b3d12dc27992cc2a85cc0f58cc7340ffe064b47acdb9c9013d5"
+      },
+      ".import/dooropen1.wav-575eb5b5ae0a5a9dad3bfd0705252afb.md5": {
+        "bytes": 91,
+        "sha256": "38d7edaa18d0bdf9873fc011ff37bf155654cd3229877814f483a19a6017c558"
+      },
+      ".import/dooropen1.wav-575eb5b5ae0a5a9dad3bfd0705252afb.sample": {
+        "bytes": 4737,
+        "sha256": "666cf2c6ce11b53fc089704ea87e5f6f728f2974befe1ad1244cfd708ed90493"
+      },
+      ".import/Key Get.mp3-7c96d95a7799d4101bfab59adbbbf9fa.md5": {
+        "bytes": 91,
+        "sha256": "e42610946f7f98922c89d749ec248c95f7a52be723dc82a2c9aa4959e7992c1c"
+      },
+      ".import/Key Get.mp3-7c96d95a7799d4101bfab59adbbbf9fa.mp3str": {
+        "bytes": 10731,
+        "sha256": "a8b4f55ff3a7ff727012980558bc724d00bd7f97ebb3e42affc0ace358e8a471"
+      },
+      ".import/Lock.png-1dc8542000c33ccd4370f8159ac03299.md5": {
+        "bytes": 91,
+        "sha256": "54a795232bc9ce8ecd80d0695496153c4b17c4fa68944bd59f092bed5fd47e10"
+      },
+      ".import/Lock.png-1dc8542000c33ccd4370f8159ac03299.stex": {
+        "bytes": 476,
+        "sha256": "c5592cce80728c02654a85cc8082c0db58f7b10ca7603591c61c3d05bf732704"
+      },
+      ".import/Small Key.png-64e0ff88991e7cfebb556a5c561e3237.md5": {
+        "bytes": 91,
+        "sha256": "32ecb4dd1249b89d7dcdb605442c147b2752ab5c9f80ef262349b17a0179b730"
+      },
+      ".import/Small Key.png-64e0ff88991e7cfebb556a5c561e3237.stex": {
+        "bytes": 286,
+        "sha256": "c42b56da28115adf592cef02c9499019dd6eafa150803ee0bc5c9b7530b91764"
+      },
+      "Audio/Audio Buses/default_bus_layout.tres": {
+        "bytes": 867,
+        "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+      },
+      "Audio/Sound effects/Key Get.mp3": {
+        "bytes": 10448,
+        "sha256": "0392d3cdc0ecee8a1f41c051d5273c9280b250f87ed94547677fafad31f35447"
+      },
+      "Audio/Sound effects/Key Get.mp3.import": {
+        "bytes": 299,
+        "sha256": "37e412968857a899eced8edee4105f1c90d0cbad3c10d98325f0a8478e7ab6e0"
+      },
+      "Audio/Sound effects/EB/dooropen1.wav": {
+        "bytes": 4452,
+        "sha256": "bb79764de9e8cb104dbe56712f86c028ffb0b6746078843e60d973b485722f66"
+      },
+      "Audio/Sound effects/EB/dooropen1.wav.import": {
+        "bytes": 471,
+        "sha256": "88995bdad26e037dd72de7603c2374e728b5850c5c4daaef5db2c4cf12aea690"
+      },
+      "Graphics/Objects/Catacombs/Catacombs Locked Door.png": {
+        "bytes": 2468,
+        "sha256": "810c1671efa5781eba3689be0ccbf865a8616b5ab57a8a655812de3f333f02c8"
+      },
+      "Graphics/Objects/Catacombs/Catacombs Locked Door.png.import": {
+        "bytes": 754,
+        "sha256": "50349676dbd1eac1ea52c2769b9aacf1a5941ed916fbfe8370a59cab07e001bd"
+      },
+      "Graphics/Objects/Common/Lock.png": {
+        "bytes": 908,
+        "sha256": "5444669b91684d53dc3db5a4d7ef60f983d785a6cbbacfa53b1d06f30a8472d6"
+      },
+      "Graphics/Objects/Common/Lock.png.import": {
+        "bytes": 700,
+        "sha256": "482a6a5fd90de5f09a7d5db29f32ccc56e15c503f53b172678688a2ca36e0130"
+      },
+      "Graphics/Objects/Common/Small Key.png": {
+        "bytes": 419,
+        "sha256": "a70b47f3a3ab2f8f0a66556a39ca264b145b87834cdf9674e1895c1ba618709c"
+      },
+      "Graphics/Objects/Common/Small Key.png.import": {
+        "bytes": 715,
+        "sha256": "28765e2a475b697e3c13b4170734202d802b850e318bf759525c13404a3c037d"
+      },
+      "Nodes/Overworld/Objects/Lock.tscn": {
+        "bytes": 3268,
+        "sha256": "08364851f809e7684c92fe7220504954402e6a998a5e340e67c8c7068b8d15f9"
+      },
+      "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": {
+        "bytes": 4753,
+        "sha256": "2e5397f76f388ac84f76f446dfdf807afc344ae42791f615546ce97fdad132a9"
+      },
+      "Nodes/Overworld/Objects/Small Key.tscn": {
+        "bytes": 2194,
+        "sha256": "e51ed00cb7ec7995dd5f78f1fdb4b03d795fbc16ff33826deea8612138739ff8"
+      },
+      "Nodes/Ui/ButtonPrompt.tscn": {
+        "bytes": 161,
+        "sha256": "e78e12939d4222c72fbdbd8520197f047fa1b67f726096247e64bdf9f86fbd71"
+      },
+      "Scripts/Main/FlaggableObject.gd": {
+        "bytes": 1237,
+        "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+      },
+      "Scripts/Main/Lock.gd": {
+        "bytes": 784,
+        "sha256": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc"
+      },
+      "user-local/Godot/resthumb-c2ef93b1b9d7ddd99369d9f0e5e8c787.png": {
+        "bytes": 620,
+        "sha256": "db4c3ef74f7df66ca49d62fdcadf303c082a3ed2a50328838559d1ba52cd6375"
+      },
+      "user-local/Godot/resthumb-c2ef93b1b9d7ddd99369d9f0e5e8c787.txt": {
+        "bytes": 49,
+        "sha256": "c9febf146c3fb69a9a814b4c73f42e02d4fe9f953de72034efb2402a9bd414fe"
+      },
+      "user-roaming/Godot/editor_settings-3.tres": {
+        "bytes": 7819,
+        "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+      },
+      "user-roaming/Godot/app_userdata/Original key media geometry/logs/godot.log": {
+        "bytes": 202,
+        "sha256": "a4ee53408c36f424fb1254b3922c9c7527643bd58450e7c62cd5baec95734c61"
+      },
+      "user-roaming/Godot/projects/dooropen1.wav-575eb5b5ae0a5a9dad3bfd0705252afb.sample-folding-6598b1f20c7a15b2aaf4f2c60df53e72.cfg": {
+        "bytes": 49,
+        "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+      },
+      "user-roaming/Godot/projects/filesystem_cache6": {
+        "bytes": 1537,
+        "sha256": "c9fefe4081e1b628d5fb48d8cea914a0024f299fc27a0a59b8afba3918677c90"
+      },
+      "user-roaming/Godot/projects/Key Get.mp3-7c96d95a7799d4101bfab59adbbbf9fa.mp3str-folding-bfc30a37dccea0d93c6f3b128442f885.cfg": {
+        "bytes": 49,
+        "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+      },
+      "user-roaming/Godot/projects/project_metadata.cfg": {
+        "bytes": 184,
+        "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+      },
+      "user-roaming/Godot/projects/project-9dae3cf7ced123566a3a514097a09e43/filesystem_cache6": {
+        "bytes": 2933,
+        "sha256": "cde54fb5a4a904f7971e3bf26e1fd9ff6e3029c2adc9d5d0392a13fc60e6e812"
+      },
+      "user-roaming/Godot/projects/project-9dae3cf7ced123566a3a514097a09e43/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg": {
+        "bytes": 49,
+        "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+      },
+      "user-roaming/Godot/projects/project-9dae3cf7ced123566a3a514097a09e43/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg": {
+        "bytes": 69,
+        "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+      },
+      "user-roaming/Godot/projects/project-9dae3cf7ced123566a3a514097a09e43/project_metadata.cfg": {
+        "bytes": 260,
+        "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+      },
+      "user-roaming/Godot/script_templates/empty.gd": {
+        "bytes": 16,
+        "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+      },
+      "user-roaming/Godot/script_templates/no_comments.gd": {
+        "bytes": 54,
+        "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+      }
+    }
+  },
+  "build/full-port/key-media-native-9/project": {
+    "marker": "source-key-media-reference-v1",
+    "files": {
+      ".owned-key-media-reference": {
+        "bytes": 29,
+        "sha256": "4cf2fdf774cf05a0bb6785edd0753dee952e373f1d31f480cdb73156aa470c5d"
+      },
+      "data.gd": {
+        "bytes": 116,
+        "sha256": "e7d7237ebda97688a2428305f03aa627b8829eb8dd0d2b51bb89b07ca0da9854"
+      },
+      "global.gd": {
+        "bytes": 621,
+        "sha256": "4e4b4e3539632c13eacd7270ac6d3d94238f6293dbc641e1d3b1a4da53f54dd0"
+      },
+      "input.json": {
+        "bytes": 4201,
+        "sha256": "6a1282503fccb92799e8f2e8f0c86b7ac0a98bcdb9cc1295a1516b152985f0bd"
+      },
+      "probe.gd": {
+        "bytes": 4110,
+        "sha256": "177a4790bdb49f57f67f4a631b3c1f3e51dee9d1fe827f1a190ffcbb40e95ef1"
+      },
+      "probe.tscn": {
+        "bytes": 151,
+        "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+      },
+      "project.godot": {
+        "bytes": 813,
+        "sha256": "89baa7eebdd69e73ea5fc65829fc6d32ce586c2b68f2785020aea2d41aebbbe5"
+      },
+      "prompt.gd": {
+        "bytes": 73,
+        "sha256": "b93d8a7751edbb075f90ff3c07fce54cb9d0f789c2fdf5629fed8d5ef6a20083"
+      },
+      "ui.gd": {
+        "bytes": 124,
+        "sha256": "ea680d129eb61def1d6d531e72b406d4d006f9558a35d1d4c0a5ee9bc263c1c3"
+      },
+      ".import/.gdignore": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      ".import/Catacombs Locked Door.png-53de61f28e26bea2391ac631b1c74735.md5": {
+        "bytes": 91,
+        "sha256": "f59c1512d687d86040f90e72af1584865a61ccadf6b20d2e44c83ef7178e227b"
+      },
+      ".import/Catacombs Locked Door.png-53de61f28e26bea2391ac631b1c74735.stex": {
+        "bytes": 1220,
+        "sha256": "32e71d1cf6c74b3d12dc27992cc2a85cc0f58cc7340ffe064b47acdb9c9013d5"
+      },
+      ".import/dooropen1.wav-575eb5b5ae0a5a9dad3bfd0705252afb.md5": {
+        "bytes": 91,
+        "sha256": "38d7edaa18d0bdf9873fc011ff37bf155654cd3229877814f483a19a6017c558"
+      },
+      ".import/dooropen1.wav-575eb5b5ae0a5a9dad3bfd0705252afb.sample": {
+        "bytes": 4737,
+        "sha256": "666cf2c6ce11b53fc089704ea87e5f6f728f2974befe1ad1244cfd708ed90493"
+      },
+      ".import/Key Get.mp3-7c96d95a7799d4101bfab59adbbbf9fa.md5": {
+        "bytes": 91,
+        "sha256": "e42610946f7f98922c89d749ec248c95f7a52be723dc82a2c9aa4959e7992c1c"
+      },
+      ".import/Key Get.mp3-7c96d95a7799d4101bfab59adbbbf9fa.mp3str": {
+        "bytes": 10731,
+        "sha256": "a8b4f55ff3a7ff727012980558bc724d00bd7f97ebb3e42affc0ace358e8a471"
+      },
+      ".import/Lock.png-1dc8542000c33ccd4370f8159ac03299.md5": {
+        "bytes": 91,
+        "sha256": "54a795232bc9ce8ecd80d0695496153c4b17c4fa68944bd59f092bed5fd47e10"
+      },
+      ".import/Lock.png-1dc8542000c33ccd4370f8159ac03299.stex": {
+        "bytes": 476,
+        "sha256": "c5592cce80728c02654a85cc8082c0db58f7b10ca7603591c61c3d05bf732704"
+      },
+      ".import/Small Key.png-64e0ff88991e7cfebb556a5c561e3237.md5": {
+        "bytes": 91,
+        "sha256": "32ecb4dd1249b89d7dcdb605442c147b2752ab5c9f80ef262349b17a0179b730"
+      },
+      ".import/Small Key.png-64e0ff88991e7cfebb556a5c561e3237.stex": {
+        "bytes": 286,
+        "sha256": "c42b56da28115adf592cef02c9499019dd6eafa150803ee0bc5c9b7530b91764"
+      },
+      "Audio/Audio Buses/default_bus_layout.tres": {
+        "bytes": 867,
+        "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+      },
+      "Audio/Sound effects/Key Get.mp3": {
+        "bytes": 10448,
+        "sha256": "0392d3cdc0ecee8a1f41c051d5273c9280b250f87ed94547677fafad31f35447"
+      },
+      "Audio/Sound effects/Key Get.mp3.import": {
+        "bytes": 299,
+        "sha256": "37e412968857a899eced8edee4105f1c90d0cbad3c10d98325f0a8478e7ab6e0"
+      },
+      "Audio/Sound effects/EB/dooropen1.wav": {
+        "bytes": 4452,
+        "sha256": "bb79764de9e8cb104dbe56712f86c028ffb0b6746078843e60d973b485722f66"
+      },
+      "Audio/Sound effects/EB/dooropen1.wav.import": {
+        "bytes": 471,
+        "sha256": "88995bdad26e037dd72de7603c2374e728b5850c5c4daaef5db2c4cf12aea690"
+      },
+      "Graphics/Objects/Catacombs/Catacombs Locked Door.png": {
+        "bytes": 2468,
+        "sha256": "810c1671efa5781eba3689be0ccbf865a8616b5ab57a8a655812de3f333f02c8"
+      },
+      "Graphics/Objects/Catacombs/Catacombs Locked Door.png.import": {
+        "bytes": 754,
+        "sha256": "50349676dbd1eac1ea52c2769b9aacf1a5941ed916fbfe8370a59cab07e001bd"
+      },
+      "Graphics/Objects/Common/Lock.png": {
+        "bytes": 908,
+        "sha256": "5444669b91684d53dc3db5a4d7ef60f983d785a6cbbacfa53b1d06f30a8472d6"
+      },
+      "Graphics/Objects/Common/Lock.png.import": {
+        "bytes": 700,
+        "sha256": "482a6a5fd90de5f09a7d5db29f32ccc56e15c503f53b172678688a2ca36e0130"
+      },
+      "Graphics/Objects/Common/Small Key.png": {
+        "bytes": 419,
+        "sha256": "a70b47f3a3ab2f8f0a66556a39ca264b145b87834cdf9674e1895c1ba618709c"
+      },
+      "Graphics/Objects/Common/Small Key.png.import": {
+        "bytes": 715,
+        "sha256": "28765e2a475b697e3c13b4170734202d802b850e318bf759525c13404a3c037d"
+      },
+      "Nodes/Overworld/Objects/Lock.tscn": {
+        "bytes": 3268,
+        "sha256": "08364851f809e7684c92fe7220504954402e6a998a5e340e67c8c7068b8d15f9"
+      },
+      "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": {
+        "bytes": 4753,
+        "sha256": "2e5397f76f388ac84f76f446dfdf807afc344ae42791f615546ce97fdad132a9"
+      },
+      "Nodes/Overworld/Objects/Small Key.tscn": {
+        "bytes": 2194,
+        "sha256": "e51ed00cb7ec7995dd5f78f1fdb4b03d795fbc16ff33826deea8612138739ff8"
+      },
+      "Nodes/Ui/ButtonPrompt.tscn": {
+        "bytes": 161,
+        "sha256": "e78e12939d4222c72fbdbd8520197f047fa1b67f726096247e64bdf9f86fbd71"
+      },
+      "Scripts/Main/FlaggableObject.gd": {
+        "bytes": 1237,
+        "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+      },
+      "Scripts/Main/Lock.gd": {
+        "bytes": 784,
+        "sha256": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc"
+      },
+      "user-local/Godot/resthumb-6ca6e2cd1674f44a325aec0f424f6434.png": {
+        "bytes": 620,
+        "sha256": "db4c3ef74f7df66ca49d62fdcadf303c082a3ed2a50328838559d1ba52cd6375"
+      },
+      "user-local/Godot/resthumb-6ca6e2cd1674f44a325aec0f424f6434.txt": {
+        "bytes": 49,
+        "sha256": "8447bd26a45793c8599b39a9531c11ed0479168595bc561b94d4dd7895c37114"
+      },
+      "user-roaming/Godot/editor_settings-3.tres": {
+        "bytes": 7819,
+        "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+      },
+      "user-roaming/Godot/app_userdata/Original key media geometry/logs/godot.log": {
+        "bytes": 202,
+        "sha256": "a4ee53408c36f424fb1254b3922c9c7527643bd58450e7c62cd5baec95734c61"
+      },
+      "user-roaming/Godot/projects/dooropen1.wav-575eb5b5ae0a5a9dad3bfd0705252afb.sample-folding-6598b1f20c7a15b2aaf4f2c60df53e72.cfg": {
+        "bytes": 49,
+        "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+      },
+      "user-roaming/Godot/projects/filesystem_cache6": {
+        "bytes": 1537,
+        "sha256": "320f11e459279fbf8bb3a0ebc85ea84b463187c36cc70532b131caec3f952e3a"
+      },
+      "user-roaming/Godot/projects/Key Get.mp3-7c96d95a7799d4101bfab59adbbbf9fa.mp3str-folding-bfc30a37dccea0d93c6f3b128442f885.cfg": {
+        "bytes": 49,
+        "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+      },
+      "user-roaming/Godot/projects/project_metadata.cfg": {
+        "bytes": 184,
+        "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+      },
+      "user-roaming/Godot/projects/project-b6ad0447ed6bdf080e87dd55215b78a5/filesystem_cache6": {
+        "bytes": 2933,
+        "sha256": "554b05a502f9e88483c315a362c7dfd0e20a45ae21d296e7483c5824ede3ec2e"
+      },
+      "user-roaming/Godot/projects/project-b6ad0447ed6bdf080e87dd55215b78a5/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg": {
+        "bytes": 49,
+        "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+      },
+      "user-roaming/Godot/projects/project-b6ad0447ed6bdf080e87dd55215b78a5/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg": {
+        "bytes": 69,
+        "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+      },
+      "user-roaming/Godot/projects/project-b6ad0447ed6bdf080e87dd55215b78a5/project_metadata.cfg": {
+        "bytes": 260,
+        "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+      },
+      "user-roaming/Godot/script_templates/empty.gd": {
+        "bytes": 16,
+        "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+      },
+      "user-roaming/Godot/script_templates/no_comments.gd": {
+        "bytes": 54,
+        "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+      }
+    }
+  }
+}

@@ -8,14 +8,18 @@ from tests.prepare_dungeon_key_media import build,REFERENCE
 class KeyMediaTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.temp=tempfile.TemporaryDirectory(prefix='key-media-python-',dir=ROOT/'build');cls.addClassCleanup(cls.temp.cleanup);cls.blob=build(Path(cls.temp.name));cls.data=d.parse(cls.blob);cls.native=json.loads((REFERENCE/'native-6/geometry.json').read_text('utf8'))
+  cls.temp=tempfile.TemporaryDirectory(prefix='key-media-python-',dir=ROOT/'build');cls.addClassCleanup(cls.temp.cleanup);cls.blob=build(Path(cls.temp.name));cls.data=d.parse(cls.blob);cls.native=json.loads((REFERENCE/'native-8/geometry.json').read_text('utf8'))
  def test_codec_and_exact_nested_clocks(self):
   self.assertEqual(d.encode(self.data,self.data['bank']),self.blob);self.assertEqual(len(self.data['owners']),6);self.assertEqual(len(self.data['profiles']),3);self.assertEqual(len(self.data['shapes']),9);self.assertEqual(len(self.data['sounds']),6);self.assertEqual(len(d.audio.parse_bank(self.data['bank'])['assets']),2);self.assertEqual(self.data['clocks'],d.clocks.extract()[1])
  def test_native_geometry_repetitions_and_provenance(self):
-  self.assertEqual(self.native,json.loads((REFERENCE/'native-7/geometry.json').read_text('utf8')));d.validate_native(self.native)
-  for n in [6,7]:
+  self.assertEqual(self.native,json.loads((REFERENCE/'native-9/geometry.json').read_text('utf8')));d.validate_native(self.native)
+  for n in [8,9]:
    p=REFERENCE/f'native-{n}';r=json.loads((p/'receipt.json').read_text('utf8'));self.assertEqual(r['geometry_sha256'],hashlib.sha256((p/'geometry.json').read_bytes()).hexdigest());self.assertEqual(r['sprites'],69);self.assertEqual(r['shapes'],9);self.assertEqual(r['sounds'],6)
  def test_native_mismatch_fails_closed(self):
+  old=json.loads((REFERENCE/'native-6/geometry.json').read_text('utf8'))
+  with self.assertRaises(ValueError):d.validate_native(old)
+  a=copy.deepcopy(self.native);a['buses'][-1]['send']='Music'
+  with self.assertRaises(ValueError):d.validate_native(a)
   for section,field,value in [('sprites','frame',99),('sprites','flip_h',True),('sprites','tree_visible',False),('shapes','mask',999),('shapes','center',['0','0']),('sounds','pitch','2')]:
    a=copy.deepcopy(self.native);a[section][0][field]=value
    with self.assertRaises(ValueError):d.validate_native(a)

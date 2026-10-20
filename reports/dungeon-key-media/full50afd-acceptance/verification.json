@@ -1,0 +1,61 @@
+{
+  "source": "50afd3bd03afa7a19a0030468c49ab9db5aec45f",
+  "run": 39484605541,
+  "scope": "Full source50 media host/sanitizer and genuine console build only;no new emulator or hardware claim",
+  "jobs": {
+    "gcc": {
+      "id": 118841662286,
+      "success": true,
+      "ordinary": 309,
+      "sanitizer": 292
+    },
+    "clang": {
+      "id": 118841661658,
+      "success": true,
+      "ordinary": 292,
+      "sanitizer": 292
+    },
+    "console": {
+      "id": 118841661584,
+      "success": true,
+      "ordinary": null,
+      "sanitizer": null
+    }
+  },
+  "files": {
+    "gcc.log": "e136bca2458c04a91c24ab24ff53beb83b8e269e1c769a2f39433243356e20a1",
+    "clang.log": "f37ef3e59b6a5a35e799b253aa9abb7a24b82b7c3b165026cc42b5a15bca6b95",
+    "console.log": "fb21da95d255b12b90e93f70589a3fd4f410fb53ccdb87b57b6b527fcbbd0313",
+    "artifact-receipt/.owned-receipt": "58079c9e87b74377295db4752febd95ff2c1d7c3049c3f93eb943368bdead28d",
+    "artifact-receipt/artifact.json": "39b5837c51e2e0b48ca5267d47f0487d28e159706a7a382be9165522e5dee66c",
+    "artifact-receipt/build-receipt.json": "dacc5a2be13f6c39780ec9dd794c94db27c8b175580b8c1fbabb933ba49bf3c8",
+    "artifact-receipt/BUILD_INFO.txt": "605fb561da1b3e53dd08aa72487ee5a7c3680d1c512636c498bb18f71ece422e",
+    "artifact-receipt/SHA256SUMS": "3039a24f906d8302a5dfb1b06cafb7ac9bf2f109086c6a27d2c3a8973ce4ab4a",
+    "artifact-receipt/verification.json": "0613a9070b9e10cdc6e9439776c1e8146289cc17ff7623b384543e6fa7b62956",
+    "status.json": "5b5dd5131149e66e46f18d16c6e982fdf1378f6e34cd35fb91d330a04e13846c"
+  },
+  "current_head_changes_only": [
+    "docs/DUNGEON_KEY_CLOCKS.md",
+    "docs/STATUS.md",
+    "reports/dungeon-key-clocks/fullb954-acceptance/artifact-receipt/.owned-receipt",
+    "reports/dungeon-key-clocks/fullb954-acceptance/artifact-receipt/BUILD_INFO.txt",
+    "reports/dungeon-key-clocks/fullb954-acceptance/artifact-receipt/SHA256SUMS",
+    "reports/dungeon-key-clocks/fullb954-acceptance/artifact-receipt/artifact.json",
+    "reports/dungeon-key-clocks/fullb954-acceptance/artifact-receipt/build-receipt.json",
+    "reports/dungeon-key-clocks/fullb954-acceptance/artifact-receipt/verification.json",
+    "reports/dungeon-key-clocks/fullb954-acceptance/clang.log",
+    "reports/dungeon-key-clocks/fullb954-acceptance/console.log",
+    "reports/dungeon-key-clocks/fullb954-acceptance/gcc.log",
+    "reports/dungeon-key-clocks/fullb954-acceptance/status.json",
+    "reports/dungeon-key-clocks/fullb954-acceptance/verification.json"
+  ],
+  "console": {
+    "staged_files": 377,
+    "game": {
+      "bytes": 264975208,
+      "sha256": "d78b4dbe78c9a424eb1b96ea829bdf382573c46b1945f88a40e7b4388d2fb83b"
+    },
+    "game_payload_downloaded": false,
+    "whole_zip_digest_not_computed": true
+  }
+}

@@ -1,5 +1,6 @@
 #include "encore/field_scene.hpp"
 #include "encore/field_swing_resources.hpp"
+#include "encore/field_camera.hpp"
 #include <algorithm>
 #include <cmath>
 
@@ -794,10 +795,9 @@ Vec2 FieldScene::camera_origin(Vec2 player,Vec2 viewport)const{
         if(!camera_inside_[i])continue;
         const auto c=map_.camera(i);
         // camarea.gd: limits from the ReferenceRect (or shape), never smaller than the view.
-        const float left=c.has_rect?c.left:c.center.x-c.width*.5f,top=c.has_rect?c.top:c.center.y-c.height*.5f;
-        const float w=std::max(c.width,viewport.x),h=std::max(c.height,viewport.y);
-        x=std::floor(std::clamp(player.x-viewport.x*.5f,left,left+w-viewport.x))+c.offset.x;
-        y=std::floor(std::clamp(player.y-viewport.y*.5f,top,top+h-viewport.y))+c.offset.y;
+        const auto bounds=field_camera_limits(c,viewport);
+        x=std::floor(std::clamp(player.x-viewport.x*.5f,float(bounds[0]),float(bounds[2])-viewport.x))+c.offset.x;
+        y=std::floor(std::clamp(player.y-viewport.y*.5f,float(bounds[1]),float(bounds[3])-viewport.y))+c.offset.y;
         break;
     }
     return {x,y};

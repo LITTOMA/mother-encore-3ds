@@ -1,0 +1,2 @@
+viewport1 room1 actual(-848,64),native(-848,56)
+Live field camera 40: actual.x==expected.x&&actual.y==expected.y ()

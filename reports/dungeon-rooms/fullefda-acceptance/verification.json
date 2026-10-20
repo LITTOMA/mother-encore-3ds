@@ -1,0 +1,26 @@
+{
+  "source_commit": "efda3fba8e72922f86f7d7dbfabb68d4e0bae91d",
+  "run": 39462781455,
+  "status": "success",
+  "jobs": {
+    "gcc": 118766274345,
+    "clang": 118766274470,
+    "console": 118766274067
+  },
+  "ordinary": {
+    "gcc": 308,
+    "clang": 291
+  },
+  "ASan_UBSan_normal_leak_checking": {
+    "gcc": 291,
+    "clang": 291
+  },
+  "staged_resources": 377,
+  "raw_logs_sha256": {
+    "gcc": "18eac654bacaafc9f03c59bfce6019cbfe77a4307189f2f9f1387e4d1b05db34",
+    "clang": "f7fa468edac2a7afad6d709b3175df5c8bd5629bad5332a771e80e6a8f63077f",
+    "console": "69afc18c8ea37cf21d376e737b13cdefbae4b347b4a366eb687e5b489f15d1c1"
+  },
+  "scope": "Exact source host and genuine 3DSX/CIA acceptance, with two ordinary cold-newgame emulator runs separately retained. Detached dungeon rooms plus live field geometry correction; not a playable dungeon, full original playthrough, audible or hardware pass.",
+  "current_head_only_docs_and_reports": true
+}

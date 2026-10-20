@@ -1,0 +1,885 @@
+{
+  "projects": [
+    {
+      "active_processes": 0,
+      "files": [
+        {
+          "bytes": 23,
+          "path": ".owned-dungeon-rooms-reference",
+          "sha256": "b3e43f9ef05329445d5eedfd98c63a18a0f2ba2796f9ae19bb50738b73e7a06e"
+        },
+        {
+          "bytes": 161,
+          "path": "camera.gd",
+          "sha256": "6f5f02c183ff81bf4a153f9c00b4b62b017ef4638394d89f8ec4af55ecdab8b7"
+        },
+        {
+          "bytes": 285,
+          "path": "data.gd",
+          "sha256": "7d3f32f93f11cfb4c17d3f72c303f52a60e1a0f9c2cca35598c952d1ccafd41c"
+        },
+        {
+          "bytes": 342,
+          "path": "dungeon.gd",
+          "sha256": "62bd8f2e533e5612afec2053095c3ff2868df2a7201faa2efa662731cdb5311e"
+        },
+        {
+          "bytes": 318,
+          "path": "global.gd",
+          "sha256": "48b7b127806232b901f47c726e1a317fe0a9d78d90319b0b0d9f6ca25f8bd63a"
+        },
+        {
+          "bytes": 18188,
+          "path": "input.json",
+          "sha256": "0be24f5ca5e4488908fd29a11855d7acca56a29f0315443757e7ea8029736588"
+        },
+        {
+          "bytes": 4072,
+          "path": "probe.gd",
+          "sha256": "86e25893acbe9663c00abf5be1ed72c51c5301829558a773b491bad97e277008"
+        },
+        {
+          "bytes": 151,
+          "path": "probe.tscn",
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "bytes": 917,
+          "path": "project.godot",
+          "sha256": "9880324f82249d5798bd63243406d7a1af2925b056604f91ced45ab14e030c14"
+        },
+        {
+          "bytes": 1,
+          "path": ".import\\.gdignore",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "bytes": 466,
+          "path": "Nodes\\Overworld\\camarea.tscn",
+          "sha256": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f"
+        },
+        {
+          "bytes": 477,
+          "path": "Scripts\\Main\\camarea_dunroom.gd",
+          "sha256": "b0773862e7a800a852cb3128425d282c1733c59babf6cd691528336392980011"
+        },
+        {
+          "bytes": 2130,
+          "path": "Scripts\\Main\\camarea.gd",
+          "sha256": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799"
+        },
+        {
+          "bytes": 1138,
+          "path": "user-local\\Godot\\resthumb-d7e5eb006816f35b4edac94f7f35b57f.png",
+          "sha256": "3bd2c80e12b8cae6c0e7cb5026bc3c4d2c80b489f824cfdd7fb7e69bb44b06b1"
+        },
+        {
+          "bytes": 49,
+          "path": "user-local\\Godot\\resthumb-d7e5eb006816f35b4edac94f7f35b57f.txt",
+          "sha256": "d12187ec5dfebca9f72e50757bd1b1921aced41a0badd9ea50549d683d2a36a8"
+        },
+        {
+          "bytes": 7819,
+          "path": "user-roaming\\Godot\\editor_settings-3.tres",
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "bytes": 1620,
+          "path": "user-roaming\\Godot\\projects\\filesystem_cache6",
+          "sha256": "82680f57653979f8c5e34099a613c26a6d4450a6de5dbff71e66e5ef8bdde344"
+        },
+        {
+          "bytes": 49,
+          "path": "user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "bytes": 69,
+          "path": "user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "bytes": 260,
+          "path": "user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "bytes": 16,
+          "path": "user-roaming\\Godot\\script_templates\\empty.gd",
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "bytes": 54,
+          "path": "user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-1\\project",
+      "bytes": 38605.0
+    },
+    {
+      "active_processes": 0,
+      "files": [
+        {
+          "bytes": 23,
+          "path": ".owned-dungeon-rooms-reference",
+          "sha256": "b3e43f9ef05329445d5eedfd98c63a18a0f2ba2796f9ae19bb50738b73e7a06e"
+        },
+        {
+          "bytes": 161,
+          "path": "camera.gd",
+          "sha256": "6f5f02c183ff81bf4a153f9c00b4b62b017ef4638394d89f8ec4af55ecdab8b7"
+        },
+        {
+          "bytes": 285,
+          "path": "data.gd",
+          "sha256": "7d3f32f93f11cfb4c17d3f72c303f52a60e1a0f9c2cca35598c952d1ccafd41c"
+        },
+        {
+          "bytes": 342,
+          "path": "dungeon.gd",
+          "sha256": "62bd8f2e533e5612afec2053095c3ff2868df2a7201faa2efa662731cdb5311e"
+        },
+        {
+          "bytes": 379,
+          "path": "global.gd",
+          "sha256": "35034bc49313a6b8668cb0d4ec95f2f27d2cebe284a3b13b5d955588b9f17a5f"
+        },
+        {
+          "bytes": 18188,
+          "path": "input.json",
+          "sha256": "0be24f5ca5e4488908fd29a11855d7acca56a29f0315443757e7ea8029736588"
+        },
+        {
+          "bytes": 146697,
+          "path": "observations.json",
+          "sha256": "e43716528aa28d7c1328bca4aad5650be086883b531edb169adf1ebbdeb8e619"
+        },
+        {
+          "bytes": 4665,
+          "path": "probe.gd",
+          "sha256": "9ed6b2f3d875952ea4581543308be6376bba4756cd68e93179085308eb680c50"
+        },
+        {
+          "bytes": 151,
+          "path": "probe.tscn",
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "bytes": 917,
+          "path": "project.godot",
+          "sha256": "9880324f82249d5798bd63243406d7a1af2925b056604f91ced45ab14e030c14"
+        },
+        {
+          "bytes": 1,
+          "path": ".import\\.gdignore",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "bytes": 466,
+          "path": "Nodes\\Overworld\\camarea.tscn",
+          "sha256": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f"
+        },
+        {
+          "bytes": 477,
+          "path": "Scripts\\Main\\camarea_dunroom.gd",
+          "sha256": "b0773862e7a800a852cb3128425d282c1733c59babf6cd691528336392980011"
+        },
+        {
+          "bytes": 2130,
+          "path": "Scripts\\Main\\camarea.gd",
+          "sha256": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799"
+        },
+        {
+          "bytes": 1138,
+          "path": "user-local\\Godot\\resthumb-fb5adf3866b7d3679e9886b8a1e9ab01.png",
+          "sha256": "3bd2c80e12b8cae6c0e7cb5026bc3c4d2c80b489f824cfdd7fb7e69bb44b06b1"
+        },
+        {
+          "bytes": 49,
+          "path": "user-local\\Godot\\resthumb-fb5adf3866b7d3679e9886b8a1e9ab01.txt",
+          "sha256": "30f8fb77c615d144b53f1d5ae1598282c497db974c9dba4e01567fb801926f83"
+        },
+        {
+          "bytes": 7819,
+          "path": "user-roaming\\Godot\\editor_settings-3.tres",
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "bytes": 207,
+          "path": "user-roaming\\Godot\\app_userdata\\Source dungeon camera rooms\\logs\\godot.log",
+          "sha256": "8e9c3930f36adca4e4d738b4ac5aa7cda0099a542388d13c9896c84f5cafe3a1"
+        },
+        {
+          "bytes": 1620,
+          "path": "user-roaming\\Godot\\projects\\filesystem_cache6",
+          "sha256": "b3f2b6ee0df06f3aa85f276c3b13488142e33ab6f19f5fa0c305b39774e0bdd2"
+        },
+        {
+          "bytes": 49,
+          "path": "user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "bytes": 69,
+          "path": "user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "bytes": 260,
+          "path": "user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "bytes": 16,
+          "path": "user-roaming\\Godot\\script_templates\\empty.gd",
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "bytes": 54,
+          "path": "user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-2\\project",
+      "bytes": 186163.0
+    },
+    {
+      "active_processes": 0,
+      "files": [
+        {
+          "bytes": 23,
+          "path": ".owned-dungeon-rooms-reference",
+          "sha256": "b3e43f9ef05329445d5eedfd98c63a18a0f2ba2796f9ae19bb50738b73e7a06e"
+        },
+        {
+          "bytes": 161,
+          "path": "camera.gd",
+          "sha256": "6f5f02c183ff81bf4a153f9c00b4b62b017ef4638394d89f8ec4af55ecdab8b7"
+        },
+        {
+          "bytes": 285,
+          "path": "data.gd",
+          "sha256": "7d3f32f93f11cfb4c17d3f72c303f52a60e1a0f9c2cca35598c952d1ccafd41c"
+        },
+        {
+          "bytes": 342,
+          "path": "dungeon.gd",
+          "sha256": "62bd8f2e533e5612afec2053095c3ff2868df2a7201faa2efa662731cdb5311e"
+        },
+        {
+          "bytes": 379,
+          "path": "global.gd",
+          "sha256": "35034bc49313a6b8668cb0d4ec95f2f27d2cebe284a3b13b5d955588b9f17a5f"
+        },
+        {
+          "bytes": 18188,
+          "path": "input.json",
+          "sha256": "0be24f5ca5e4488908fd29a11855d7acca56a29f0315443757e7ea8029736588"
+        },
+        {
+          "bytes": 146697,
+          "path": "observations.json",
+          "sha256": "e43716528aa28d7c1328bca4aad5650be086883b531edb169adf1ebbdeb8e619"
+        },
+        {
+          "bytes": 4665,
+          "path": "probe.gd",
+          "sha256": "9ed6b2f3d875952ea4581543308be6376bba4756cd68e93179085308eb680c50"
+        },
+        {
+          "bytes": 151,
+          "path": "probe.tscn",
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "bytes": 917,
+          "path": "project.godot",
+          "sha256": "9880324f82249d5798bd63243406d7a1af2925b056604f91ced45ab14e030c14"
+        },
+        {
+          "bytes": 1,
+          "path": ".import\\.gdignore",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "bytes": 466,
+          "path": "Nodes\\Overworld\\camarea.tscn",
+          "sha256": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f"
+        },
+        {
+          "bytes": 477,
+          "path": "Scripts\\Main\\camarea_dunroom.gd",
+          "sha256": "b0773862e7a800a852cb3128425d282c1733c59babf6cd691528336392980011"
+        },
+        {
+          "bytes": 2130,
+          "path": "Scripts\\Main\\camarea.gd",
+          "sha256": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799"
+        },
+        {
+          "bytes": 1138,
+          "path": "user-local\\Godot\\resthumb-a3e5d01ca9bdc2eb4019a1c22becd162.png",
+          "sha256": "3bd2c80e12b8cae6c0e7cb5026bc3c4d2c80b489f824cfdd7fb7e69bb44b06b1"
+        },
+        {
+          "bytes": 49,
+          "path": "user-local\\Godot\\resthumb-a3e5d01ca9bdc2eb4019a1c22becd162.txt",
+          "sha256": "e52a1fd96699c025721acce4dfc8a6eabfe76dac19ab769262a4325961662265"
+        },
+        {
+          "bytes": 7819,
+          "path": "user-roaming\\Godot\\editor_settings-3.tres",
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "bytes": 207,
+          "path": "user-roaming\\Godot\\app_userdata\\Source dungeon camera rooms\\logs\\godot.log",
+          "sha256": "8e9c3930f36adca4e4d738b4ac5aa7cda0099a542388d13c9896c84f5cafe3a1"
+        },
+        {
+          "bytes": 1620,
+          "path": "user-roaming\\Godot\\projects\\filesystem_cache6",
+          "sha256": "183de476bae9cca4b647e91203a15b0d8a08a0f43557a17f9c3794b13a7649d1"
+        },
+        {
+          "bytes": 49,
+          "path": "user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "bytes": 69,
+          "path": "user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "bytes": 260,
+          "path": "user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "bytes": 16,
+          "path": "user-roaming\\Godot\\script_templates\\empty.gd",
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "bytes": 54,
+          "path": "user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-3\\project",
+      "bytes": 186163.0
+    },
+    {
+      "active_processes": 0,
+      "files": [
+        {
+          "bytes": 23,
+          "path": ".owned-dungeon-rooms-reference",
+          "sha256": "b3e43f9ef05329445d5eedfd98c63a18a0f2ba2796f9ae19bb50738b73e7a06e"
+        },
+        {
+          "bytes": 235,
+          "path": "camera.gd",
+          "sha256": "0e3a4c99afb3a43a381196391a0510ac597acdf85a36c81ddaa10465a85c8f2a"
+        },
+        {
+          "bytes": 285,
+          "path": "data.gd",
+          "sha256": "7d3f32f93f11cfb4c17d3f72c303f52a60e1a0f9c2cca35598c952d1ccafd41c"
+        },
+        {
+          "bytes": 342,
+          "path": "dungeon.gd",
+          "sha256": "62bd8f2e533e5612afec2053095c3ff2868df2a7201faa2efa662731cdb5311e"
+        },
+        {
+          "bytes": 379,
+          "path": "global.gd",
+          "sha256": "35034bc49313a6b8668cb0d4ec95f2f27d2cebe284a3b13b5d955588b9f17a5f"
+        },
+        {
+          "bytes": 18188,
+          "path": "input.json",
+          "sha256": "4f4735b7b05da60e508bb8d8b20c1d5002dc842d3777df7b5621239716144405"
+        },
+        {
+          "bytes": 169213,
+          "path": "observations.json",
+          "sha256": "b38a957a1d489f80109874334d8c98bb2986c9260665c1e8bcb451c68ce0cc6f"
+        },
+        {
+          "bytes": 4994,
+          "path": "probe.gd",
+          "sha256": "04849a46f239c140cd1434c9c301765fc0f3039f4205ced33bbd9b1593271b6a"
+        },
+        {
+          "bytes": 151,
+          "path": "probe.tscn",
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "bytes": 917,
+          "path": "project.godot",
+          "sha256": "9880324f82249d5798bd63243406d7a1af2925b056604f91ced45ab14e030c14"
+        },
+        {
+          "bytes": 1,
+          "path": ".import\\.gdignore",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "bytes": 466,
+          "path": "Nodes\\Overworld\\camarea.tscn",
+          "sha256": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f"
+        },
+        {
+          "bytes": 477,
+          "path": "Scripts\\Main\\camarea_dunroom.gd",
+          "sha256": "b0773862e7a800a852cb3128425d282c1733c59babf6cd691528336392980011"
+        },
+        {
+          "bytes": 2130,
+          "path": "Scripts\\Main\\camarea.gd",
+          "sha256": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799"
+        },
+        {
+          "bytes": 1138,
+          "path": "user-local\\Godot\\resthumb-8642a776361079d0e4583886d5ec4b7a.png",
+          "sha256": "3bd2c80e12b8cae6c0e7cb5026bc3c4d2c80b489f824cfdd7fb7e69bb44b06b1"
+        },
+        {
+          "bytes": 49,
+          "path": "user-local\\Godot\\resthumb-8642a776361079d0e4583886d5ec4b7a.txt",
+          "sha256": "5ec9dbb49b3463559fed367f432499954429c5362dc97eb6c028bdf6968d2299"
+        },
+        {
+          "bytes": 7819,
+          "path": "user-roaming\\Godot\\editor_settings-3.tres",
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "bytes": 207,
+          "path": "user-roaming\\Godot\\app_userdata\\Source dungeon camera rooms\\logs\\godot.log",
+          "sha256": "8e9c3930f36adca4e4d738b4ac5aa7cda0099a542388d13c9896c84f5cafe3a1"
+        },
+        {
+          "bytes": 1620,
+          "path": "user-roaming\\Godot\\projects\\filesystem_cache6",
+          "sha256": "9414f4f1af3533c88750b0bca42357d924fb3d469f648d49c07ed9666536206b"
+        },
+        {
+          "bytes": 49,
+          "path": "user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "bytes": 69,
+          "path": "user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "bytes": 260,
+          "path": "user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "bytes": 16,
+          "path": "user-roaming\\Godot\\script_templates\\empty.gd",
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "bytes": 54,
+          "path": "user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-4\\project",
+      "bytes": 209082.0
+    },
+    {
+      "active_processes": 0,
+      "files": [
+        {
+          "bytes": 23,
+          "path": ".owned-dungeon-rooms-reference",
+          "sha256": "b3e43f9ef05329445d5eedfd98c63a18a0f2ba2796f9ae19bb50738b73e7a06e"
+        },
+        {
+          "bytes": 235,
+          "path": "camera.gd",
+          "sha256": "0e3a4c99afb3a43a381196391a0510ac597acdf85a36c81ddaa10465a85c8f2a"
+        },
+        {
+          "bytes": 285,
+          "path": "data.gd",
+          "sha256": "7d3f32f93f11cfb4c17d3f72c303f52a60e1a0f9c2cca35598c952d1ccafd41c"
+        },
+        {
+          "bytes": 342,
+          "path": "dungeon.gd",
+          "sha256": "62bd8f2e533e5612afec2053095c3ff2868df2a7201faa2efa662731cdb5311e"
+        },
+        {
+          "bytes": 379,
+          "path": "global.gd",
+          "sha256": "35034bc49313a6b8668cb0d4ec95f2f27d2cebe284a3b13b5d955588b9f17a5f"
+        },
+        {
+          "bytes": 18188,
+          "path": "input.json",
+          "sha256": "4f4735b7b05da60e508bb8d8b20c1d5002dc842d3777df7b5621239716144405"
+        },
+        {
+          "bytes": 169213,
+          "path": "observations.json",
+          "sha256": "b38a957a1d489f80109874334d8c98bb2986c9260665c1e8bcb451c68ce0cc6f"
+        },
+        {
+          "bytes": 4994,
+          "path": "probe.gd",
+          "sha256": "04849a46f239c140cd1434c9c301765fc0f3039f4205ced33bbd9b1593271b6a"
+        },
+        {
+          "bytes": 151,
+          "path": "probe.tscn",
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "bytes": 917,
+          "path": "project.godot",
+          "sha256": "9880324f82249d5798bd63243406d7a1af2925b056604f91ced45ab14e030c14"
+        },
+        {
+          "bytes": 1,
+          "path": ".import\\.gdignore",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "bytes": 466,
+          "path": "Nodes\\Overworld\\camarea.tscn",
+          "sha256": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f"
+        },
+        {
+          "bytes": 477,
+          "path": "Scripts\\Main\\camarea_dunroom.gd",
+          "sha256": "b0773862e7a800a852cb3128425d282c1733c59babf6cd691528336392980011"
+        },
+        {
+          "bytes": 2130,
+          "path": "Scripts\\Main\\camarea.gd",
+          "sha256": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799"
+        },
+        {
+          "bytes": 1138,
+          "path": "user-local\\Godot\\resthumb-99d103a8bfb906789a0f57a0ac39e44c.png",
+          "sha256": "3bd2c80e12b8cae6c0e7cb5026bc3c4d2c80b489f824cfdd7fb7e69bb44b06b1"
+        },
+        {
+          "bytes": 49,
+          "path": "user-local\\Godot\\resthumb-99d103a8bfb906789a0f57a0ac39e44c.txt",
+          "sha256": "9866fdcc9f843185ae6b70262d4cdd170444f3eff2de6e719ca89a543756952d"
+        },
+        {
+          "bytes": 7819,
+          "path": "user-roaming\\Godot\\editor_settings-3.tres",
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "bytes": 207,
+          "path": "user-roaming\\Godot\\app_userdata\\Source dungeon camera rooms\\logs\\godot.log",
+          "sha256": "8e9c3930f36adca4e4d738b4ac5aa7cda0099a542388d13c9896c84f5cafe3a1"
+        },
+        {
+          "bytes": 1620,
+          "path": "user-roaming\\Godot\\projects\\filesystem_cache6",
+          "sha256": "938416f29e3a823d85e4e7b634e0af6ae15a5c620cd40498e04416aa81c20b5a"
+        },
+        {
+          "bytes": 49,
+          "path": "user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "bytes": 69,
+          "path": "user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "bytes": 260,
+          "path": "user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "bytes": 16,
+          "path": "user-roaming\\Godot\\script_templates\\empty.gd",
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "bytes": 54,
+          "path": "user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-5\\project",
+      "bytes": 209082.0
+    },
+    {
+      "active_processes": 0,
+      "files": [
+        {
+          "bytes": 23,
+          "path": ".owned-dungeon-rooms-reference",
+          "sha256": "b3e43f9ef05329445d5eedfd98c63a18a0f2ba2796f9ae19bb50738b73e7a06e"
+        },
+        {
+          "bytes": 235,
+          "path": "camera.gd",
+          "sha256": "0e3a4c99afb3a43a381196391a0510ac597acdf85a36c81ddaa10465a85c8f2a"
+        },
+        {
+          "bytes": 285,
+          "path": "data.gd",
+          "sha256": "7d3f32f93f11cfb4c17d3f72c303f52a60e1a0f9c2cca35598c952d1ccafd41c"
+        },
+        {
+          "bytes": 342,
+          "path": "dungeon.gd",
+          "sha256": "62bd8f2e533e5612afec2053095c3ff2868df2a7201faa2efa662731cdb5311e"
+        },
+        {
+          "bytes": 379,
+          "path": "global.gd",
+          "sha256": "35034bc49313a6b8668cb0d4ec95f2f27d2cebe284a3b13b5d955588b9f17a5f"
+        },
+        {
+          "bytes": 18471,
+          "path": "input.json",
+          "sha256": "eed6902ec4db305d5484742ebae25e4e03009d54641f41e1f7f62f004fb06e18"
+        },
+        {
+          "bytes": 169213,
+          "path": "observations.json",
+          "sha256": "b38a957a1d489f80109874334d8c98bb2986c9260665c1e8bcb451c68ce0cc6f"
+        },
+        {
+          "bytes": 5167,
+          "path": "probe.gd",
+          "sha256": "0f915475fa82133d27874bbaeadb4a1c084b52fcf86b3bbb3c8443a35cb98691"
+        },
+        {
+          "bytes": 151,
+          "path": "probe.tscn",
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "bytes": 917,
+          "path": "project.godot",
+          "sha256": "9880324f82249d5798bd63243406d7a1af2925b056604f91ced45ab14e030c14"
+        },
+        {
+          "bytes": 1,
+          "path": ".import\\.gdignore",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "bytes": 466,
+          "path": "Nodes\\Overworld\\camarea.tscn",
+          "sha256": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f"
+        },
+        {
+          "bytes": 477,
+          "path": "Scripts\\Main\\camarea_dunroom.gd",
+          "sha256": "b0773862e7a800a852cb3128425d282c1733c59babf6cd691528336392980011"
+        },
+        {
+          "bytes": 2130,
+          "path": "Scripts\\Main\\camarea.gd",
+          "sha256": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799"
+        },
+        {
+          "bytes": 1138,
+          "path": "user-local\\Godot\\resthumb-95d72cbaf347743ce5f8276e1c112197.png",
+          "sha256": "3bd2c80e12b8cae6c0e7cb5026bc3c4d2c80b489f824cfdd7fb7e69bb44b06b1"
+        },
+        {
+          "bytes": 49,
+          "path": "user-local\\Godot\\resthumb-95d72cbaf347743ce5f8276e1c112197.txt",
+          "sha256": "0b3db3e1757c0eb5adb0c0de976401e14c50b38e704d7bdba00eb5837b67b908"
+        },
+        {
+          "bytes": 7819,
+          "path": "user-roaming\\Godot\\editor_settings-3.tres",
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "bytes": 207,
+          "path": "user-roaming\\Godot\\app_userdata\\Source dungeon camera rooms\\logs\\godot.log",
+          "sha256": "8e9c3930f36adca4e4d738b4ac5aa7cda0099a542388d13c9896c84f5cafe3a1"
+        },
+        {
+          "bytes": 1620,
+          "path": "user-roaming\\Godot\\projects\\filesystem_cache6",
+          "sha256": "227dcc249cfaa3fb0feeed0c354445db2efab38ed6f3ec9f3f093af508cdba03"
+        },
+        {
+          "bytes": 49,
+          "path": "user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "bytes": 69,
+          "path": "user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "bytes": 260,
+          "path": "user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "bytes": 16,
+          "path": "user-roaming\\Godot\\script_templates\\empty.gd",
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "bytes": 54,
+          "path": "user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-6\\project",
+      "bytes": 209538.0
+    },
+    {
+      "active_processes": 0,
+      "files": [
+        {
+          "bytes": 23,
+          "path": ".owned-dungeon-rooms-reference",
+          "sha256": "b3e43f9ef05329445d5eedfd98c63a18a0f2ba2796f9ae19bb50738b73e7a06e"
+        },
+        {
+          "bytes": 235,
+          "path": "camera.gd",
+          "sha256": "0e3a4c99afb3a43a381196391a0510ac597acdf85a36c81ddaa10465a85c8f2a"
+        },
+        {
+          "bytes": 285,
+          "path": "data.gd",
+          "sha256": "7d3f32f93f11cfb4c17d3f72c303f52a60e1a0f9c2cca35598c952d1ccafd41c"
+        },
+        {
+          "bytes": 342,
+          "path": "dungeon.gd",
+          "sha256": "62bd8f2e533e5612afec2053095c3ff2868df2a7201faa2efa662731cdb5311e"
+        },
+        {
+          "bytes": 379,
+          "path": "global.gd",
+          "sha256": "35034bc49313a6b8668cb0d4ec95f2f27d2cebe284a3b13b5d955588b9f17a5f"
+        },
+        {
+          "bytes": 18471,
+          "path": "input.json",
+          "sha256": "eed6902ec4db305d5484742ebae25e4e03009d54641f41e1f7f62f004fb06e18"
+        },
+        {
+          "bytes": 169213,
+          "path": "observations.json",
+          "sha256": "b38a957a1d489f80109874334d8c98bb2986c9260665c1e8bcb451c68ce0cc6f"
+        },
+        {
+          "bytes": 5167,
+          "path": "probe.gd",
+          "sha256": "0f915475fa82133d27874bbaeadb4a1c084b52fcf86b3bbb3c8443a35cb98691"
+        },
+        {
+          "bytes": 151,
+          "path": "probe.tscn",
+          "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+        },
+        {
+          "bytes": 917,
+          "path": "project.godot",
+          "sha256": "9880324f82249d5798bd63243406d7a1af2925b056604f91ced45ab14e030c14"
+        },
+        {
+          "bytes": 1,
+          "path": ".import\\.gdignore",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "bytes": 466,
+          "path": "Nodes\\Overworld\\camarea.tscn",
+          "sha256": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f"
+        },
+        {
+          "bytes": 477,
+          "path": "Scripts\\Main\\camarea_dunroom.gd",
+          "sha256": "b0773862e7a800a852cb3128425d282c1733c59babf6cd691528336392980011"
+        },
+        {
+          "bytes": 2130,
+          "path": "Scripts\\Main\\camarea.gd",
+          "sha256": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799"
+        },
+        {
+          "bytes": 1138,
+          "path": "user-local\\Godot\\resthumb-29b90ef235267f52904000234e0c015d.png",
+          "sha256": "3bd2c80e12b8cae6c0e7cb5026bc3c4d2c80b489f824cfdd7fb7e69bb44b06b1"
+        },
+        {
+          "bytes": 49,
+          "path": "user-local\\Godot\\resthumb-29b90ef235267f52904000234e0c015d.txt",
+          "sha256": "6830473fa7a4ac2731331a6a2abd56c1b0f836c35b5d26d2d9fe6ae70dcf34b0"
+        },
+        {
+          "bytes": 7819,
+          "path": "user-roaming\\Godot\\editor_settings-3.tres",
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "bytes": 207,
+          "path": "user-roaming\\Godot\\app_userdata\\Source dungeon camera rooms\\logs\\godot.log",
+          "sha256": "8e9c3930f36adca4e4d738b4ac5aa7cda0099a542388d13c9896c84f5cafe3a1"
+        },
+        {
+          "bytes": 1620,
+          "path": "user-roaming\\Godot\\projects\\filesystem_cache6",
+          "sha256": "bdb978217c760bdd42f4f44bb5282873e5c89add7720395039bfa8c4e8b5b411"
+        },
+        {
+          "bytes": 49,
+          "path": "user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "bytes": 69,
+          "path": "user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "bytes": 260,
+          "path": "user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "bytes": 16,
+          "path": "user-roaming\\Godot\\script_templates\\empty.gd",
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "bytes": 54,
+          "path": "user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dungeon-rooms-reference-7\\project",
+      "bytes": 209538.0
+    }
+  ],
+  "scope": "Only seven owned completed source-reference projects, including first import failure. Actual inputs, adapters, observations and logs retained outside projects; final native6/7 source and method evidence retained in reports",
+  "bytes": 1248171.0
+}

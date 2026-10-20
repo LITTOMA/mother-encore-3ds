@@ -1,0 +1,88 @@
+runtime/dungeon_rooms.cpp: In function ‘bool encore::upstream::{anonymous}::path(const string&)’:
+runtime/dungeon_rooms.cpp:17:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   17 |  if(s.empty()||s.size()>512||s.front()=='/'||s.back()=='/')return false;size_t start=0;
+      |  ^~
+runtime/dungeon_rooms.cpp:17:73: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   17 |  if(s.empty()||s.size()>512||s.front()=='/'||s.back()=='/')return false;size_t start=0;
+      |                                                                         ^~~~~~
+runtime/dungeon_rooms.cpp: In member function ‘bool encore::upstream::DungeonRoomsData::load_file(const char*, std::string&)’:
+runtime/dungeon_rooms.cpp:37:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   37 |  if(valid()||!path||!*path)return fail(e,"Dungeon rooms require fresh owner and path");std::vector<uint8_t>bytes;return encore::read_file(path,bytes,65536,e)&&load(bytes.data(),bytes.size(),e);
+      |  ^~
+runtime/dungeon_rooms.cpp:37:88: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   37 |  if(valid()||!path||!*path)return fail(e,"Dungeon rooms require fresh owner and path");std::vector<uint8_t>bytes;return encore::read_file(path,bytes,65536,e)&&load(bytes.data(),bytes.size(),e);
+      |                                                                                        ^~~
+runtime/dungeon_rooms.cpp: In member function ‘bool encore::upstream::DungeonRoomsData::load(const uint8_t*, size_t, std::string&)’:
+runtime/dungeon_rooms.cpp:48:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   48 |   for(size_t at=cursor;at<off[i];++at)if(p[at])return fail(e,"Dungeon room nonzero padding rejected");cursor=off[i]+size_t(count[i])*strides[i];
+      |   ^~~
+runtime/dungeon_rooms.cpp:48:103: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   48 |   for(size_t at=cursor;at<off[i];++at)if(p[at])return fail(e,"Dungeon room nonzero padding rejected");cursor=off[i]+size_t(count[i])*strides[i];
+      |                                                                                                       ^~~~~~
+runtime/dungeon_rooms.cpp:50:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   50 |  if(cursor!=size)return fail(e,"Dungeon room trailing data rejected");auto next=std::make_shared<State>();std::vector<uint8_t>used(count[0]);
+      |  ^~
+runtime/dungeon_rooms.cpp:50:71: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   50 |  if(cursor!=size)return fail(e,"Dungeon room trailing data rejected");auto next=std::make_shared<State>();std::vector<uint8_t>used(count[0]);
+      |                                                                       ^~~~
+runtime/dungeon_rooms.cpp: In lambda function:
+runtime/dungeon_rooms.cpp:52:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   52 |   for(uint32_t i=first;i<first+n;++i)if(used[i])return false;out.assign(reinterpret_cast<const char*>(p+off[0]+first),n);if(!path(out))return false;
+      |   ^~~
+runtime/dungeon_rooms.cpp:52:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   52 |   for(uint32_t i=first;i<first+n;++i)if(used[i])return false;out.assign(reinterpret_cast<const char*>(p+off[0]+first),n);if(!path(out))return false;
+      |                                                              ^~~
+runtime/dungeon_rooms.cpp: In member function ‘bool encore::upstream::DungeonRoomsData::load(const uint8_t*, size_t, std::string&)’:
+runtime/dungeon_rooms.cpp:62:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   62 |   if(!finite(row.center)||!finite(row.extents)||!finite(row.size)||!finite(row.offset)||row.extents.x<=0||row.extents.y<=0||row.size.x<=0||row.size.y<=0||row.size.x!=std::floor(double(row.extents.x)*2+0.5)||row.size.y!=std::floor(double(row.extents.y)*2+0.5)||row.layer>0xfffff||row.mask>0xfffff||row.bits>3||u(r+68)||u(r+72)||u(r+76))return fail(e,"Dungeon room geometry/filter/reserved rejected");next->rooms.push_back(std::move(row));
+      |   ^~
+runtime/dungeon_rooms.cpp:62:400: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   62 |   if(!finite(row.center)||!finite(row.extents)||!finite(row.size)||!finite(row.offset)||row.extents.x<=0||row.extents.y<=0||row.size.x<=0||row.size.y<=0||row.size.x!=std::floor(double(row.extents.x)*2+0.5)||row.size.y!=std::floor(double(row.extents.y)*2+0.5)||row.layer>0xfffff||row.mask>0xfffff||row.bits>3||u(r+68)||u(r+72)||u(r+76))return fail(e,"Dungeon room geometry/filter/reserved rejected");next->rooms.push_back(std::move(row));
+      |                                                                                                                                                                                                                                                                                                                                                                                                                ^~~~
+runtime/dungeon_rooms.cpp:64:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   64 |  if(std::find(used.begin(),used.end(),uint8_t(0))!=used.end())return fail(e,"Dungeon room unowned text rejected");state_=std::move(next);e.clear();return true;
+      |  ^~
+runtime/dungeon_rooms.cpp:64:115: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   64 |  if(std::find(used.begin(),used.end(),uint8_t(0))!=used.end())return fail(e,"Dungeon room unowned text rejected");state_=std::move(next);e.clear();return true;
+      |                                                                                                                   ^~~~~~
+runtime/dungeon_rooms.cpp: In member function ‘bool encore::upstream::DungeonRoomState::prepare(const encore::upstream::DungeonRoomsData&, uint64_t, const std::vector<encore::upstream::DungeonRoomFlag>&, std::string&)’:
+runtime/dungeon_rooms.cpp:69:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   69 |  if(valid()||!data.valid()||!epoch||epoch<=last_epoch_||flags.size()!=data.rooms().size())return fail(e,"Dungeon room prepare/flag coverage rejected");DungeonRoomState next;next.data_=data;next.epoch_=next.last_epoch_=epoch;next.inside_.resize(flags.size());next.visited_.resize(flags.size());std::vector<uint8_t>seen(flags.size());
+      |  ^~
+runtime/dungeon_rooms.cpp:69:152: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   69 |  if(valid()||!data.valid()||!epoch||epoch<=last_epoch_||flags.size()!=data.rooms().size())return fail(e,"Dungeon room prepare/flag coverage rejected");DungeonRoomState next;next.data_=data;next.epoch_=next.last_epoch_=epoch;next.inside_.resize(flags.size());next.visited_.resize(flags.size());std::vector<uint8_t>seen(flags.size());
+      |                                                                                                                                                        ^~~~~~~~~~~~~~~~
+runtime/dungeon_rooms.cpp: In member function ‘bool encore::upstream::DungeonRoomState::enter(uint64_t, uint32_t, bool, std::string&)’:
+runtime/dungeon_rooms.cpp:79:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   79 |  if(!next.reset(id,e))return false;next.pending_.push_back(i);*this=std::move(next);e.clear();return true;
+      |  ^~
+runtime/dungeon_rooms.cpp:79:36: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   79 |  if(!next.reset(id,e))return false;next.pending_.push_back(i);*this=std::move(next);e.clear();return true;
+      |                                    ^~~~
+runtime/dungeon_rooms.cpp: In member function ‘bool encore::upstream::DungeonRoomState::exit(uint64_t, uint32_t, bool, std::string&)’:
+runtime/dungeon_rooms.cpp:83:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   83 |  if(!next.active_&&!next.reset(id,e))return false;*this=std::move(next);e.clear();return true;
+      |  ^~
+runtime/dungeon_rooms.cpp:83:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   83 |  if(!next.active_&&!next.reset(id,e))return false;*this=std::move(next);e.clear();return true;
+      |                                                   ^
+runtime/dungeon_rooms.cpp: In member function ‘bool encore::upstream::DungeonRoomState::idle_frame(uint64_t, encore::upstream::Vec2, std::string&)’:
+runtime/dungeon_rooms.cpp:86:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   86 |  if(!valid()||epoch!=epoch_||!finite(viewport)||viewport.x<=0||viewport.y<=0)return fail(e,"Dungeon room idle epoch/viewport rejected");auto next=*this;
+      |  ^~
+runtime/dungeon_rooms.cpp:86:137: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   86 |  if(!valid()||epoch!=epoch_||!finite(viewport)||viewport.x<=0||viewport.y<=0)return fail(e,"Dungeon room idle epoch/viewport rejected");auto next=*this;
+      |                                                                                                                                         ^~~~
+runtime/dungeon_rooms.cpp:89:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   89 |   if(!next.emit(DungeonRoomEventKind::Limits,r.id,e))return false;next.offset_=r.offset;if(!next.emit(DungeonRoomEventKind::Offset,r.id,e))return false;
+      |   ^~
+runtime/dungeon_rooms.cpp:89:67: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   89 |   if(!next.emit(DungeonRoomEventKind::Limits,r.id,e))return false;next.offset_=r.offset;if(!next.emit(DungeonRoomEventKind::Offset,r.id,e))return false;
+      |                                                                   ^~~~
+runtime/dungeon_rooms.cpp: In member function ‘bool encore::upstream::DungeonRoomState::retire(uint64_t, std::string&)’:
+runtime/dungeon_rooms.cpp:95:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   95 |  if(!valid()||epoch!=epoch_)return fail(e,"Dungeon room retirement epoch rejected");epoch_=0;current_=active_=0;std::fill(inside_.begin(),inside_.end(),uint8_t(0));pending_.clear();events_.clear();e.clear();return true;
+      |  ^~
+runtime/dungeon_rooms.cpp:95:85: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   95 |  if(!valid()||epoch!=epoch_)return fail(e,"Dungeon room retirement epoch rejected");epoch_=0;current_=active_=0;std::fill(inside_.begin(),inside_.end(),uint8_t(0));pending_.clear();events_.clear();e.clear();return true;
+      |                                                                                     ^~~~~~

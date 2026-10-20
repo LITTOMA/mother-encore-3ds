@@ -38,3 +38,5 @@ CTR 服务只拥有一张图标，从长度／CRC核验后的同一份字节导�
 python tools/dungeon_key_hud_graphics.py --out build/key-hud/source.enckgx --tex3ds /path/to/tex3ds
 python tests/prepare_dungeon_key_hud_graphics.py --out build/key-hud-fixture
 ```
+
+5ff4f9e的真实交叉构建39515177094／118945499701确实失败：新字体适配编译单元尚未声明生成的`gpu_region_shader.hpp`依赖。现将两个实际BattleRenderer使用者共同纳入GPU模式戳、region／row／mapped着色器头依赖及既有浮点设置；没有改着色器、游戏内容、生成器或测试。原始错误及修复范围见`reports/dungeon-key-hud-graphics/failed5ff4-console`。本地make图检查仍在缺少devkitPro的守卫停止，没有声称本地构建或图检查通过；新提交将由自动真实构建验证。5ff4的完整主机检查继续运行，其输入与修复提交相同，不取消或重复启动。

@@ -1,0 +1,279 @@
+{
+  "parent_head": "6e245cdd5b7c89cd7db047bdfb035abdded4666b",
+  "prior_full_run": 39378374503,
+  "prior_gcc_ordinary": "274/275; python_tools failed; no sanitizer run",
+  "prior_clang": "259 ordinary +259 ASan/UBSan passed",
+  "prior_console": "genuine 3DSX/CIA passed",
+  "current_targeted": "7 existing Python tests passed; 28 frozen generated files identical",
+  "no_fixture_or_production_changes": true,
+  "files": {
+    "music-library-bindings-v0410.json.before": {
+      "bytes": 9433,
+      "sha256": "8d86b292ce6b0141551c15ca6595f1ed9a93062a4dfcdbc006fb211611291cef"
+    },
+    "music-library-v0410.json.before": {
+      "bytes": 10582,
+      "sha256": "4be1173a43d5d983a81bf2c6f7cd71cd7f194189640ea6ba4f5a400cf7a65550"
+    },
+    "python-tests.log": {
+      "bytes": 1138,
+      "sha256": "e49eef0637b32b21fdb6b79f89029d17efb45f72d605d645b80ff223157ca09e"
+    },
+    "regenerate-root-music-reviews.py": {
+      "bytes": 2130,
+      "sha256": "58c540a9dd9e14f592234e90246de4025b8a87b3b088fa62eca14f98c7eed0a6"
+    },
+    "regeneration.json": {
+      "bytes": 5881,
+      "sha256": "a7a733cad9c84ed7dc3788012fcf2e5d5bc15c1a15d5b15e5161f03f6d38bc46"
+    },
+    "review-root-music-dependency.py": {
+      "bytes": 3734,
+      "sha256": "9c587ef94d02250aa16000255b2033c86c020a734f84c48a22c7e2ceafba8436"
+    },
+    "root6e-clang.log": {
+      "bytes": 593290,
+      "sha256": "ff127627be23cdb3f4ad39b22989397ddf9d0e05941d1d5556d535017c7f0015"
+    },
+    "root6e-console.log": {
+      "bytes": 702707,
+      "sha256": "3c614693b6ca1a72c7cef482ef68cdb22c3cc6061d1ed5f53e0d256312441ac8"
+    },
+    "root6e-gcc.log": {
+      "bytes": 789648,
+      "sha256": "b2c635310bc9943fdab6cb77a83a73481d3a5f9bca243821f25e16267b4eb0b5"
+    },
+    "semantic-review.json": {
+      "bytes": 8620,
+      "sha256": "aa9e89a427f0e088c2d794aa639d40f6bcaba14454c0a1865f03efe2f2f0845b"
+    },
+    "bindings/source.json": {
+      "bytes": 10142,
+      "sha256": "6c587a53f8951252a744ea7f9974f399aa344023b48e8ce1845e2924252a14f8"
+    },
+    "bindings/sound/banks/global.enclib": {
+      "bytes": 1327,
+      "sha256": "f24854d5003fdc0dfbf878c2d081de2cc257b9f2f2aafd027daac50aac3e7b00"
+    },
+    "bindings/sound/banks/global.encmusic": {
+      "bytes": 1569,
+      "sha256": "b0433c7d19c91a61349a223b3e241b14ddef7f9c1970552b51231acfda6f8593"
+    },
+    "bindings/sound/banks/global/1001.encaudio": {
+      "bytes": 247,
+      "sha256": "a49a787cce630fd234c3df612273396a0b720cff7ed6ac88a54d62a2c23709d8"
+    },
+    "bindings/sound/banks/global/1001.encmusic": {
+      "bytes": 194,
+      "sha256": "136f58c9bd0dd0978e0b33eef300f7fd5a222434a596a7f12711b5192ed8037f"
+    },
+    "bindings/sound/banks/global/1002.encaudio": {
+      "bytes": 245,
+      "sha256": "b9f024767e1d9f97518fa41e6d07daeb8ad19b5cbafd3eb2755cde9b0051c8d3"
+    },
+    "bindings/sound/banks/global/1002.encmusic": {
+      "bytes": 193,
+      "sha256": "b8e9be4d783a8d1011912046c22e3448a2086f84b4c7a80ac4d17f8e55b18b36"
+    },
+    "bindings/sound/banks/global/1202.encaudio": {
+      "bytes": 230,
+      "sha256": "2f51530aa1960c8a507cc6ee6abeaaa5da9e4253c3015e5feca6aceb7437c509"
+    },
+    "bindings/sound/banks/global/1202.encmusic": {
+      "bytes": 174,
+      "sha256": "9a50a2ea5d857405d5bc788c5b4f27911eabc004a7c06c5c5e3fcafb1bcef66c"
+    },
+    "bindings/sound/banks/global/1301.encaudio": {
+      "bytes": 243,
+      "sha256": "44a2e7eccca9b73d2185d7d91ee5d1176b0f3b37fb419edf5400af0ef1bf95d0"
+    },
+    "bindings/sound/banks/global/1301.encmusic": {
+      "bytes": 180,
+      "sha256": "999e02e8866bb4490a85096964760f4eb5d2acdd49db4f7092485f71f0a732f3"
+    },
+    "bindings/sound/banks/global/21.encaudio": {
+      "bytes": 222,
+      "sha256": "3b605de8ec5a0058d888ede6b05983a69606e15b544b48cc90fe61b5fedd787c"
+    },
+    "bindings/sound/banks/global/21.encmusic": {
+      "bytes": 173,
+      "sha256": "8d63ea8ec6246829e88723b1687b93f0731863e30cb66bca9a745ac51cf78fea"
+    },
+    "bindings/sound/banks/global/2742165164.encaudio": {
+      "bytes": 237,
+      "sha256": "314d29710ee09433b7fd56dd8668f5869f7c038cbfa27903c64e7104ad742a61"
+    },
+    "bindings/sound/banks/global/2742165164.encmusic": {
+      "bytes": 180,
+      "sha256": "6bf2b4eea523ccaed3162758048ca5c01161ccf8734dda9559bd10158900978e"
+    },
+    "bindings/sound/banks/global/3080041499.encaudio": {
+      "bytes": 232,
+      "sha256": "253bd02a493cadb6805480bf1a729418139cd33c72f23379fa54e06c6ff9938d"
+    },
+    "bindings/sound/banks/global/3080041499.encmusic": {
+      "bytes": 175,
+      "sha256": "e63df2da52004829f6f0c9702b1fc78f55f854cd4008cfb544486d1824870daa"
+    },
+    "bindings/sound/banks/global/32.encaudio": {
+      "bytes": 227,
+      "sha256": "3501ad2937d41599701937ae1ac16a2cb63b0767cbf6fc38ac478651fdae9846"
+    },
+    "bindings/sound/banks/global/32.encmusic": {
+      "bytes": 178,
+      "sha256": "b2b1a558263c8526190a7bef06e2f923b8e5d352517fbad58cfa2e6643169dcc"
+    },
+    "bindings/sound/banks/global/34.encaudio": {
+      "bytes": 216,
+      "sha256": "2fbb7d9afc04960d3d4f531af606e6bc4f959ed10c205d734990f1db55e43938"
+    },
+    "bindings/sound/banks/global/34.encmusic": {
+      "bytes": 167,
+      "sha256": "1baefe4aba5c53daa6cab8de95d395a5dbc61d4d515db6c96402639542da2303"
+    },
+    "bindings/sound/banks/global/3778949439.encaudio": {
+      "bytes": 239,
+      "sha256": "109d3a63987bfc652fc49e52fe27bdffbda6f297c31ed20e03fc374c23f10262"
+    },
+    "bindings/sound/banks/global/3778949439.encmusic": {
+      "bytes": 182,
+      "sha256": "ec214e18f6bc4c7b762edda4e5bea459a76a83bbd1a8a9c1f704c5caaffbf5bd"
+    },
+    "bindings/sound/banks/global/4107189403.encaudio": {
+      "bytes": 234,
+      "sha256": "d775e277710d78c77f764970e340ecd42f78810254c33731f95420a24ad7c121"
+    },
+    "bindings/sound/banks/global/4107189403.encmusic": {
+      "bytes": 177,
+      "sha256": "c9dcb23759b0c22f7e6b4079e1be6b97a683ba32eae5c522b093e49e4745fa39"
+    },
+    "bindings/sound/banks/global/4229387514.encaudio": {
+      "bytes": 245,
+      "sha256": "0883f44cf5beb3643c5ff2c714b28924839ce8047c4e8fbd6b282bd5430a250c"
+    },
+    "bindings/sound/banks/global/4229387514.encmusic": {
+      "bytes": 188,
+      "sha256": "271b445908906ebd8aa50d5a57ada90896fb4654b584a5902038f9043319488e"
+    },
+    "bindings/sound/banks/global/4290136921.encaudio": {
+      "bytes": 233,
+      "sha256": "21c6ceace5486a4fecf25f4b284da674c476fddc79e26bbaf1e41dd67829af4e"
+    },
+    "bindings/sound/banks/global/4290136921.encmusic": {
+      "bytes": 176,
+      "sha256": "0ff421d95f3d0beb43c6cd9b80a33f2cde651038b00c47399f4ec7ef9222ebcd"
+    },
+    "library/source.json": {
+      "bytes": 15192,
+      "sha256": "527b5154242c2e5b858361c5d4cebaae11c36a2d8a11e8d05047e8c0479d3643"
+    },
+    "library/sound/banks/global.encmusic": {
+      "bytes": 1569,
+      "sha256": "b0433c7d19c91a61349a223b3e241b14ddef7f9c1970552b51231acfda6f8593"
+    },
+    "library/sound/banks/global/1001.encaudio": {
+      "bytes": 247,
+      "sha256": "a49a787cce630fd234c3df612273396a0b720cff7ed6ac88a54d62a2c23709d8"
+    },
+    "library/sound/banks/global/1001.encmusic": {
+      "bytes": 194,
+      "sha256": "136f58c9bd0dd0978e0b33eef300f7fd5a222434a596a7f12711b5192ed8037f"
+    },
+    "library/sound/banks/global/1002.encaudio": {
+      "bytes": 245,
+      "sha256": "b9f024767e1d9f97518fa41e6d07daeb8ad19b5cbafd3eb2755cde9b0051c8d3"
+    },
+    "library/sound/banks/global/1002.encmusic": {
+      "bytes": 193,
+      "sha256": "b8e9be4d783a8d1011912046c22e3448a2086f84b4c7a80ac4d17f8e55b18b36"
+    },
+    "library/sound/banks/global/1202.encaudio": {
+      "bytes": 230,
+      "sha256": "2f51530aa1960c8a507cc6ee6abeaaa5da9e4253c3015e5feca6aceb7437c509"
+    },
+    "library/sound/banks/global/1202.encmusic": {
+      "bytes": 174,
+      "sha256": "9a50a2ea5d857405d5bc788c5b4f27911eabc004a7c06c5c5e3fcafb1bcef66c"
+    },
+    "library/sound/banks/global/1301.encaudio": {
+      "bytes": 243,
+      "sha256": "44a2e7eccca9b73d2185d7d91ee5d1176b0f3b37fb419edf5400af0ef1bf95d0"
+    },
+    "library/sound/banks/global/1301.encmusic": {
+      "bytes": 180,
+      "sha256": "999e02e8866bb4490a85096964760f4eb5d2acdd49db4f7092485f71f0a732f3"
+    },
+    "library/sound/banks/global/21.encaudio": {
+      "bytes": 222,
+      "sha256": "3b605de8ec5a0058d888ede6b05983a69606e15b544b48cc90fe61b5fedd787c"
+    },
+    "library/sound/banks/global/21.encmusic": {
+      "bytes": 173,
+      "sha256": "8d63ea8ec6246829e88723b1687b93f0731863e30cb66bca9a745ac51cf78fea"
+    },
+    "library/sound/banks/global/2742165164.encaudio": {
+      "bytes": 237,
+      "sha256": "314d29710ee09433b7fd56dd8668f5869f7c038cbfa27903c64e7104ad742a61"
+    },
+    "library/sound/banks/global/2742165164.encmusic": {
+      "bytes": 180,
+      "sha256": "6bf2b4eea523ccaed3162758048ca5c01161ccf8734dda9559bd10158900978e"
+    },
+    "library/sound/banks/global/3080041499.encaudio": {
+      "bytes": 232,
+      "sha256": "253bd02a493cadb6805480bf1a729418139cd33c72f23379fa54e06c6ff9938d"
+    },
+    "library/sound/banks/global/3080041499.encmusic": {
+      "bytes": 175,
+      "sha256": "e63df2da52004829f6f0c9702b1fc78f55f854cd4008cfb544486d1824870daa"
+    },
+    "library/sound/banks/global/32.encaudio": {
+      "bytes": 227,
+      "sha256": "3501ad2937d41599701937ae1ac16a2cb63b0767cbf6fc38ac478651fdae9846"
+    },
+    "library/sound/banks/global/32.encmusic": {
+      "bytes": 178,
+      "sha256": "b2b1a558263c8526190a7bef06e2f923b8e5d352517fbad58cfa2e6643169dcc"
+    },
+    "library/sound/banks/global/34.encaudio": {
+      "bytes": 216,
+      "sha256": "2fbb7d9afc04960d3d4f531af606e6bc4f959ed10c205d734990f1db55e43938"
+    },
+    "library/sound/banks/global/34.encmusic": {
+      "bytes": 167,
+      "sha256": "1baefe4aba5c53daa6cab8de95d395a5dbc61d4d515db6c96402639542da2303"
+    },
+    "library/sound/banks/global/3778949439.encaudio": {
+      "bytes": 239,
+      "sha256": "109d3a63987bfc652fc49e52fe27bdffbda6f297c31ed20e03fc374c23f10262"
+    },
+    "library/sound/banks/global/3778949439.encmusic": {
+      "bytes": 182,
+      "sha256": "ec214e18f6bc4c7b762edda4e5bea459a76a83bbd1a8a9c1f704c5caaffbf5bd"
+    },
+    "library/sound/banks/global/4107189403.encaudio": {
+      "bytes": 234,
+      "sha256": "d775e277710d78c77f764970e340ecd42f78810254c33731f95420a24ad7c121"
+    },
+    "library/sound/banks/global/4107189403.encmusic": {
+      "bytes": 177,
+      "sha256": "c9dcb23759b0c22f7e6b4079e1be6b97a683ba32eae5c522b093e49e4745fa39"
+    },
+    "library/sound/banks/global/4229387514.encaudio": {
+      "bytes": 245,
+      "sha256": "0883f44cf5beb3643c5ff2c714b28924839ce8047c4e8fbd6b282bd5430a250c"
+    },
+    "library/sound/banks/global/4229387514.encmusic": {
+      "bytes": 188,
+      "sha256": "271b445908906ebd8aa50d5a57ada90896fb4654b584a5902038f9043319488e"
+    },
+    "library/sound/banks/global/4290136921.encaudio": {
+      "bytes": 233,
+      "sha256": "21c6ceace5486a4fecf25f4b284da674c476fddc79e26bbaf1e41dd67829af4e"
+    },
+    "library/sound/banks/global/4290136921.encmusic": {
+      "bytes": 176,
+      "sha256": "0ff421d95f3d0beb43c6cd9b80a33f2cde651038b00c47399f4ec7ef9222ebcd"
+    }
+  }
+}

@@ -55,6 +55,9 @@ source continuations or invent a common completion time.
 Targeted checks:14 Python source/codec methods and209 GCC ASan/UBSan loader
 checks with leak checking, compiling all native inputs from source. CMake
 collection has278 tests and1282 Python methods (916 aggregate,366 dedicated).
+After importing PR69's phone schedule fix, collection has279 tests and1283
+Python methods (900 aggregate,383 dedicated): the original17 phone methods
+moved to an exclusive dedicated test and one partition regression was added.
 Windows native executables were not built. Full current CI and console builds
 are checked separately; no emulator dungeon, hardware or complete-game pass.
 Inspection and the existing source-list test found the three new dungeon

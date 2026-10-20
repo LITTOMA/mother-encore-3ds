@@ -862,6 +862,11 @@ endif()
 if(BUILD_TESTING)
  add_test(NAME phone_linker_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_phone_linker_bindings)
  set_tests_properties(phone_linker_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+ # The unchanged17-method suite passed in1259.489s in GCC's aggregate worker,
+ # leaving insufficient time for the serial tail under its1800s bound.
+ # Give that exact suite its own bounded, exclusive CTest registration.
+ add_test(NAME phone_linker_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_phone_linker)
+ set_tests_properties(phone_linker_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 1800 LABELS python_unit)
 endif()
 
 if(BUILD_TESTING)

@@ -31,6 +31,7 @@ DEDICATED = {
     'house_source_bindings': ('test_house_source_bindings',),
     'naming_presentation_bindings': ('test_naming_presentation_bindings',),
     'phone_linker_bindings': ('test_phone_linker_bindings',),
+    'phone_linker_source': ('test_phone_linker',),
     'pillow_source_bindings': ('test_pillow_source_bindings',),
     'house_inspection_source': ('test_house_inspections',),
     'family_followup_source': ('test_family_followup',),

@@ -7,6 +7,11 @@ ROOT=Path(__file__).resolve().parents[1]
 class FieldStoryTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
+  # Repeated source admission parses the same full Podunk text hundreds of
+  # times. Reuse only the pure parse result, by exact text, with detached
+  # copies; every real source read, SHA and semantic check still executes.
+  from tests.source_parse_cache import cached_source_parser
+  parser=cached_source_parser();parser.__enter__();cls.addClassCleanup(parser.__exit__,None,None,None)
   cls.policy,_=story.read();recipe=podunk_field.load_recipe();model=podunk_field.Model(recipe);cls.room=native_content.parse_pack(podunk_field.build_room(recipe,model,recipe['house']['room_ir']))
   from tools import graveyard_tutorial_programme,graveyard_shovel,field_prop_dialogues
   cls.metadata=story.build()

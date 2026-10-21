@@ -1,0 +1,488 @@
+{
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "meta": {
+    "res://Audio/Sound effects/shreksplash.mp3": {
+      "length": 1078391510,
+      "loop": false,
+      "offset": 0
+    },
+    "res://Audio/Sound effects/shrekblast.mp3": {
+      "length": 1078391510,
+      "loop": false,
+      "offset": 0
+    },
+    "res://Audio/Sound effects/shrekrumble.mp3": {
+      "length": 1078391510,
+      "loop": false,
+      "offset": 0
+    }
+  },
+  "rows": [
+    {
+      "index": -1,
+      "phase": "ready",
+      "time": 0,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 0,
+      "phase": "before_deferred",
+      "time": 0,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 0,
+      "phase": "after_deferred",
+      "time": 0,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 1,
+      "phase": "before_deferred",
+      "time": 1061997773,
+      "frame": 11,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+        [
+          "stream",
+          "res://Audio/Sound effects/shreksplash.mp3"
+        ],
+        [
+          "play",
+          1028443341
+        ]
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 1,
+      "phase": "after_deferred",
+      "time": 1061997773,
+      "frame": 11,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 2,
+      "phase": "before_deferred",
+      "time": 1063116260,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+        [
+          "stream",
+          "res://Audio/Sound effects/shrekblast.mp3"
+        ],
+        [
+          "play",
+          0
+        ]
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 2,
+      "phase": "after_deferred",
+      "time": 1063116260,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 3,
+      "phase": "before_deferred",
+      "time": 1063116260,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 3,
+      "phase": "after_deferred",
+      "time": 1063116260,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 4,
+      "phase": "before_deferred",
+      "time": 1065912460,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 4,
+      "phase": "after_deferred",
+      "time": 1065912460,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 5,
+      "phase": "before_deferred",
+      "time": 1065912485,
+      "frame": 12,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": false
+    },
+    {
+      "index": 5,
+      "phase": "after_deferred",
+      "time": 1065912485,
+      "frame": 12,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": true
+    },
+    {
+      "index": 6,
+      "phase": "before_deferred",
+      "time": 1066471670,
+      "frame": 13,
+      "monitoring": true,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": true
+    },
+    {
+      "index": 6,
+      "phase": "after_deferred",
+      "time": 1066471670,
+      "frame": 13,
+      "monitoring": true,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": true
+    },
+    {
+      "index": 7,
+      "phase": "before_deferred",
+      "time": 1074021459,
+      "frame": 19,
+      "monitoring": true,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": true
+    },
+    {
+      "index": 7,
+      "phase": "after_deferred",
+      "time": 1074021459,
+      "frame": 19,
+      "monitoring": true,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": true
+    },
+    {
+      "index": 8,
+      "phase": "before_deferred",
+      "time": 1075699181,
+      "frame": 25,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": true
+    },
+    {
+      "index": 8,
+      "phase": "after_deferred",
+      "time": 1075699181,
+      "frame": 25,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": true
+    },
+    {
+      "index": 9,
+      "phase": "before_deferred",
+      "time": 1077796333,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+        [
+          "stop"
+        ]
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": true
+    },
+    {
+      "index": 9,
+      "phase": "after_deferred",
+      "time": 1077796333,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+
+      ],
+      "queued": false,
+      "on_screen": true,
+      "rumble": true
+    },
+    {
+      "index": 10,
+      "phase": "before_deferred",
+      "time": 1077936128,
+      "frame": 0,
+      "monitoring": false,
+      "disabled": false,
+      "active": false,
+      "paused": false,
+      "gain": 0,
+      "commands": [
+
+      ],
+      "finished": [
+        "Spewing"
+      ],
+      "queued": true,
+      "on_screen": true,
+      "rumble": true
+    }
+  ]
+}

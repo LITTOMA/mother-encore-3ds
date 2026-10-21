@@ -1,0 +1,15 @@
+{
+  "source_sha256": "ec67f651cb7c723652d2968738633b0d4f3c01fb813437aec812cdec3db6f7be",
+  "source_bytes": 10656,
+  "notice": {
+    "file": "Penner-easing-MIT.txt",
+    "sha256": "776d60e07569fd9627ddf6cfaad8c84752f3b111ea5d7f480fdcc16b68438f84",
+    "source_url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/animation/easing_equations.h",
+    "source_revision": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "scope": "Robert Penner MIT copyright and full permission/warranty for the Godot-derived cubic-out and bounce-out equations",
+    "verification": "Complete Penner notice extracted from the Git-blob-verified pinned Godot header; comment delimiters stripped, trailing spaces removed, CRLF line endings. Existing Godot MIT notice is retained separately."
+  },
+  "full_notice_text_equal_to_extracted_source": true,
+  "implementation": "runtime/breakables.cpp:cubic/bounce",
+  "actual_verification": "reports/breakables/host4;two282-state originals"
+}

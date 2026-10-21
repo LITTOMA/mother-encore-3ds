@@ -1,6 +1,6 @@
 # 第三方许可材料
 
-本目录保存第三方许可原文、字体来源与转换说明。官方原文保持原始字节；来源、版本和 SHA-256 见 [license-sources.json](license-sources.json)。根目录 MIT 不重新授权这些内容。
+本目录保存第三方完整许可文本、字体来源与转换说明。原文归档保持原始字节；从源代码头部提取的声明在来源记录中注明转换。来源、版本和 SHA-256 见 [license-sources.json](license-sources.json)。根目录 MIT 不重新授权这些内容。
 
 | 文件 | 来源与范围 |
 |---|---|
@@ -9,6 +9,7 @@
 | `Galmuri-LICENSE-OFL.md` | Quiple 官方完整 SIL OFL 1.1 与版权 |
 | `SOURCE_FONT_NOTICES.md` | 固定字体的版权、来源、转换范围及未确认权利 |
 | `Godot-3.6.2-LICENSE.txt` | Godot 3.6.2 MIT，适用于派生机制 |
+| `Penner-easing-MIT.txt` | 从固定 Godot 头部提取的完整 Robert Penner MIT 声明，适用于派生补间方程；提取转换见来源记录 |
 | `PCG-APACHE-2.0.txt`、`PCG-NOTICE.txt` | Apache 2.0、PCG / Godot 来源及本项目派生说明 |
 | `libctru-2.7.0-README.txt` | 官方 v2.7.0 README，含 zlib 许可 |
 | `citro2d-1.7.0-LICENSE.txt` | 官方 v1.7.0 zlib 许可 |

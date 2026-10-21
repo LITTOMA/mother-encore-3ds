@@ -1,0 +1,172 @@
+{
+  "id": 119226560809,
+  "run_id": 39601406420,
+  "workflow_name": "3DS artifacts and manual full verification",
+  "head_branch": "codex/catacombs-continuous-damage",
+  "run_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/runs/39601406420",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOU6Uass8AAAAbwnTxKQ",
+  "head_sha": "57de1c1cc7d3ec964ab169ab394c821e6265d80b",
+  "url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/jobs/119226560809",
+  "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/39601406420/job/119226560809",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-10-21T12:39:58Z",
+  "started_at": "2026-10-21T12:40:01Z",
+  "completed_at": "2026-10-21T14:02:11Z",
+  "name": "Host and sanitizers (clang)",
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-10-21T12:40:02Z",
+      "completed_at": "2026-10-21T12:40:03Z"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-10-21T12:40:03Z",
+      "completed_at": "2026-10-21T12:40:08Z"
+    },
+    {
+      "name": "Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-10-21T12:40:08Z",
+      "completed_at": "2026-10-21T12:40:08Z"
+    },
+    {
+      "name": "Install pinned host data-tool dependencies",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4,
+      "started_at": "2026-10-21T12:40:08Z",
+      "completed_at": "2026-10-21T12:40:13Z"
+    },
+    {
+      "name": "Install audio restoration tools from Ubuntu packages",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-10-21T12:40:13Z",
+      "completed_at": "2026-10-21T12:40:31Z"
+    },
+    {
+      "name": "Enable the validated LibYAML safe parser after installing dependencies",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6,
+      "started_at": "2026-10-21T12:40:31Z",
+      "completed_at": "2026-10-21T12:40:31Z"
+    },
+    {
+      "name": "Initialize the pinned official submodule and verify every reviewed source byte",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 7,
+      "started_at": "2026-10-21T12:40:31Z",
+      "completed_at": "2026-10-21T12:40:41Z"
+    },
+    {
+      "name": "Regenerate checked resources before focused collision validation",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8,
+      "started_at": "2026-10-21T12:40:41Z",
+      "completed_at": "2026-10-21T12:45:38Z"
+    },
+    {
+      "name": "Check ordered field collision results before unrelated fixture preparation",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-10-21T12:45:38Z",
+      "completed_at": "2026-10-21T12:46:43Z"
+    },
+    {
+      "name": "Check field collision with ASan UBSan and normal leak checking",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 10,
+      "started_at": "2026-10-21T12:46:43Z",
+      "completed_at": "2026-10-21T12:47:35Z"
+    },
+    {
+      "name": "Regenerate checked resources and run the current shared-core tests",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11,
+      "started_at": "2026-10-21T12:47:35Z",
+      "completed_at": "2026-10-21T13:23:42Z"
+    },
+    {
+      "name": "Retain Clang coverage for Python suites that compile renderer doubles",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 12,
+      "started_at": "2026-10-21T13:23:42Z",
+      "completed_at": "2026-10-21T13:23:47Z"
+    },
+    {
+      "name": "Run ASan and UBSan with the hosted runner's normal leak checking",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 13,
+      "started_at": "2026-10-21T13:23:47Z",
+      "completed_at": "2026-10-21T14:02:06Z"
+    },
+    {
+      "name": "Confirm regeneration did not change tracked source or resources",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 14,
+      "started_at": "2026-10-21T14:02:06Z",
+      "completed_at": "2026-10-21T14:02:06Z"
+    },
+    {
+      "name": "Retain failure logs and current build diagnostics",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 15,
+      "started_at": "2026-10-21T14:02:06Z",
+      "completed_at": "2026-10-21T14:02:08Z"
+    },
+    {
+      "name": "Post Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 29,
+      "started_at": "2026-10-21T14:02:08Z",
+      "completed_at": "2026-10-21T14:02:08Z"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 30,
+      "started_at": "2026-10-21T14:02:08Z",
+      "completed_at": "2026-10-21T14:02:08Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 31,
+      "started_at": "2026-10-21T14:02:08Z",
+      "completed_at": "2026-10-21T14:02:08Z"
+    }
+  ],
+  "check_run_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/check-runs/119226560809",
+  "labels": [
+    "ubuntu-24.04"
+  ],
+  "runner_id": 1000003677,
+  "runner_name": "GitHub Actions 1000003677",
+  "runner_group_id": 0,
+  "runner_group_name": "GitHub Actions"
+}

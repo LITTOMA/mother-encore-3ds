@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "id": 12347360915,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM0NzM2MDkxNQ==",
+      "name": "encore-3ds-57de1c1cc7d3ec964ab169ab394c821e6265d80b-39601406420",
+      "size_in_bytes": 377933443,
+      "url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12347360915",
+      "archive_download_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12347360915/zip",
+      "expired": false,
+      "digest": "sha256:bbfe004d351b8f82e904c24c4b71023b23cee767edc209bd3b9a7463085b8718",
+      "created_at": "2026-10-21T12:49:38Z",
+      "updated_at": "2026-10-21T12:49:38Z",
+      "expires_at": "2026-11-20T12:49:22Z",
+      "workflow_run": {
+        "id": 39601406420,
+        "repository_id": 1403329202,
+        "head_repository_id": 1403329202,
+        "head_branch": "codex/catacombs-continuous-damage",
+        "head_sha": "57de1c1cc7d3ec964ab169ab394c821e6265d80b"
+      }
+    }
+  ]
+}

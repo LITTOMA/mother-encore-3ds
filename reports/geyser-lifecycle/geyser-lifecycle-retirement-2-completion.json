@@ -1,0 +1,6 @@
+{
+  "bytes": 54507544,
+  "targets": 9,
+  "scope": "Actual owned cleanup;raw logs and current fixture/core/latest executables retained",
+  "audit_sha256": "4602a26bde299a1da7676697c372dff0656c315de462b940407e676e1562869f"
+}

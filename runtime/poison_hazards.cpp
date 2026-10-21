@@ -102,15 +102,22 @@ bool PoisonHoleTimers::inspect(uint64_t epoch,uint32_t id,PoisonHoleClock&out,st
 bool PoisonHoleTimers::advance_idle(uint64_t epoch,double delta,bool process,std::string&e){
  if(!valid()||epoch!=epoch_||!std::isfinite(delta)||delta<0||delta>3600)return bad(e,"Poison hole clock epoch/delta rejected");if(!process){e.clear();return true;}
  auto next=*this;
- for(size_t n=0;n<next.clocks_.size();++n){auto&clock=next.clocks_[n];if(clock.paused)continue;clock.remaining-=delta;if(!std::isfinite(clock.remaining)||clock.remaining< -1e9)return bad(e,"Poison hole remaining clock capacity rejected");
+ for(size_t n=0;n<next.clocks_.size();++n)if(!next.advance_one(n,delta,e))return false;
+ *this=std::move(next);e.clear();return true;
+}
+bool PoisonHoleTimers::advance_one(size_t n,double delta,std::string&e){
+ auto&clock=clocks_[n];if(clock.paused)return true;clock.remaining-=delta;if(!std::isfinite(clock.remaining)||clock.remaining< -1e9)return bad(e,"Poison hole remaining clock capacity rejected");
   if(clock.remaining<0){
-   if(next.requests_.size()>=4096||next.ticket_==UINT64_MAX)return bad(e,"Poison spawn queue/ticket capacity rejected");
+   if(requests_.size()>=4096||ticket_==UINT64_MAX)return bad(e,"Poison spawn queue/ticket capacity rejected");
    // Native Timer rearms using its OLD binary32 wait before emitting timeout.
    // The original handler changes wait_time only after that rearm.
-   clock.remaining+=clock.wait;clock.wait=float(next.data_.holes()[n].interval);const auto&hole=next.data_.holes()[n];const auto offset=next.data_.policy().spawn_offset;
-   next.requests_.push_back({epoch,++next.ticket_,hole.id,{hole.position.x+offset.x,hole.position.y+offset.y}});
+   clock.remaining+=clock.wait;clock.wait=float(data_.holes()[n].interval);const auto&hole=data_.holes()[n];const auto offset=data_.policy().spawn_offset;
+   requests_.push_back({epoch_,++ticket_,hole.id,{hole.position.x+offset.x,hole.position.y+offset.y}});
   }
- }*this=std::move(next);e.clear();return true;
+ return true;
+}
+bool PoisonHoleTimers::advance_hole_idle(uint64_t epoch,uint32_t id,double delta,bool process,std::string&e){
+ const auto n=find(id);if(!valid()||epoch!=epoch_||n==SIZE_MAX||!std::isfinite(delta)||delta<0||delta>3600)return bad(e,"Poison selected Timer owner/epoch/delta rejected");if(!process){e.clear();return true;}auto next=*this;if(!next.advance_one(n,delta,e))return false;*this=std::move(next);e.clear();return true;
 }
 bool PoisonHoleTimers::retire(uint64_t epoch,std::string&e){if(!valid()||epoch!=epoch_)return bad(e,"Poison hole retirement epoch rejected");data_={};epoch_=0;clocks_.clear();requests_.clear();e.clear();return true;}
 }

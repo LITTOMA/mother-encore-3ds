@@ -23,7 +23,7 @@ add_library(encore_core
     runtime/field_step_contacts.cpp
     runtime/poison_hazards.cpp
     runtime/geyser_timeline.cpp
-    runtime/geyser_media.cpp runtime/geyser_mixer.cpp runtime/geyser_graphics.cpp runtime/world_damage.cpp runtime/poison_damage.cpp
+    runtime/geyser_media.cpp runtime/geyser_mixer.cpp runtime/geyser_graphics.cpp runtime/world_damage.cpp runtime/poison_damage.cpp runtime/geyser_lifecycle.cpp
     runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/dungeon_keys.cpp runtime/dungeon_key_state.cpp runtime/dungeon_key_clocks.cpp runtime/dungeon_switches.cpp runtime/dungeon_switch_state.cpp runtime/dungeon_wall_timeline.cpp runtime/dungeon_wall_state.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
@@ -1549,6 +1549,15 @@ if(BUILD_TESTING AND Python3_Interpreter_FOUND)
  target_link_libraries(encore_poison_damage_tests PRIVATE encore_core)
  add_test(NAME poison_damage COMMAND encore_poison_damage_tests ${CMAKE_BINARY_DIR}/poison-damage-fixture/damage.encwdm ${CMAKE_BINARY_DIR}/poison-damage-fixture/poison.encpoison ${CMAKE_BINARY_DIR}/poison-damage-fixture/steps.encsteps ${CMAKE_BINARY_DIR}/poison-damage-fixture/native.tsv)
  set_tests_properties(poison_damage PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED poison_damage_source)
+endif()
+
+if(BUILD_TESTING AND Python3_Interpreter_FOUND)
+ add_test(NAME geyser_lifecycle_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_geyser_lifecycle.py --out ${CMAKE_BINARY_DIR}/geyser-lifecycle-fixture)
+ set_tests_properties(geyser_lifecycle_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP geyser_lifecycle_source)
+ add_executable(encore_geyser_lifecycle_tests tests/geyser_lifecycle_tests.cpp)
+ target_link_libraries(encore_geyser_lifecycle_tests PRIVATE encore_core)
+ add_test(NAME geyser_lifecycle COMMAND encore_geyser_lifecycle_tests ${CMAKE_BINARY_DIR}/geyser-lifecycle-fixture/family.encglf ${CMAKE_BINARY_DIR}/geyser-lifecycle-fixture/native.tsv)
+ set_tests_properties(geyser_lifecycle PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED geyser_lifecycle_source)
 endif()
 
 include(cmake/TestParallelism.cmake)

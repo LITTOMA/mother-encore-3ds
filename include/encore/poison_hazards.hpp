@@ -16,6 +16,7 @@ class PoisonHazardsData {
 public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
  bool valid()const{return bool(state_);}const PoisonPolicy&policy()const;
+ bool same_owner(const PoisonHazardsData&other)const{return valid()&&state_==other.state_;}
  const std::vector<PoisonHole>&holes()const;const std::vector<PoisonArea>&areas()const;
  const std::vector<PoisonShape>&shapes()const;const std::vector<Vec2>&points()const;
  bool matches(FieldStepsView,std::string&)const;
@@ -41,13 +42,17 @@ public:
  bool prepare(const PoisonHazardsData&,uint64_t epoch,std::string&);
  bool pause(uint64_t,uint32_t hole,bool,std::string&);
  bool advance_idle(uint64_t,double delta,bool process_enabled,std::string&);
+ // Selected native Timer phase, for a caller that delivers synchronous pause
+ // signals between source-ordered Timer callbacks. The batch API is unchanged.
+ bool advance_hole_idle(uint64_t,uint32_t hole,double delta,bool process_enabled,std::string&);
  bool retire(uint64_t,std::string&);
  bool valid()const{return data_.valid()&&epoch_!=0;}uint64_t epoch()const{return epoch_;}
+ const PoisonHazardsData&content()const{return data_;}
  bool inspect(uint64_t,uint32_t,PoisonHoleClock&,std::string&)const;
  const std::vector<PoisonSpawnRequest>&requests()const{return requests_;}
  std::vector<PoisonSpawnRequest>take_requests(){auto result=std::move(requests_);requests_.clear();return result;}
 private:
- size_t find(uint32_t)const;PoisonHazardsData data_;uint64_t epoch_=0,last_epoch_=0,ticket_=0;
+ size_t find(uint32_t)const;bool advance_one(size_t,double,std::string&);PoisonHazardsData data_;uint64_t epoch_=0,last_epoch_=0,ticket_=0;
  std::vector<PoisonHoleClock>clocks_;std::vector<PoisonSpawnRequest>requests_;
 };
 }

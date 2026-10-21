@@ -1,0 +1,6 @@
+{
+  "exit_code": 0,
+  "normal_leak_checks": true,
+  "scope": "Actual GCC ASan+UBSan,normal leak checks;two original tree-order profiles720 frames each,negative parser/version/lifetime/capacity/rollback/command checks;unchanged117-core archive plus freshly compiled three affected modules,not full rebuild/GPU/audio/full room/hardware",
+  "checks": 2946170
+}

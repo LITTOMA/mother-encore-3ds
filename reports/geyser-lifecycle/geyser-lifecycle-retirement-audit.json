@@ -1,0 +1,1540 @@
+{
+  "workspace": "D:\\GameDev\\3DS\\mother-encore-3ds",
+  "targets": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-factory",
+      "owner": "geyser-factory-v1",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.owned-geyser-factory",
+          "bytes": 17,
+          "sha256": "9a60af66129200a24162a16409d20db70da2ce974077d72f30380213b8c04156"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\audio.gd",
+          "bytes": 406,
+          "sha256": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\geyser.tscn",
+          "bytes": 4460,
+          "sha256": "b23b8ed6b19199b5e996622be3de786157fdce95e28675a4fbd18739aa3498eb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\global.gd",
+          "bytes": 73,
+          "sha256": "dfab9d3a810f9130bfcec57ff3b2631f8a6dd71675a806a0d49cdc20ac0c2be8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\hole.gd",
+          "bytes": 562,
+          "sha256": "eae51df029debae41d13a5b5236e414e33d0cf0fc2c72b1da64a6776bbd4788b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\input.json",
+          "bytes": 6542,
+          "sha256": "3e401cd51e400689b4a0188e34e5f9467953e9bdae2c6406009570500ff92318"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\manager.gd",
+          "bytes": 742,
+          "sha256": "f41ec72579645f3e6d98e0670a7e6df530607510709c6c7e66bfd5d3fc7f0b11"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\observed_geyser.gd",
+          "bytes": 533,
+          "sha256": "8fad1ba1e116599914aa668f783d649e0b71da0799f573fadbf8ad9dc6e81d03"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\party.gd",
+          "bytes": 342,
+          "sha256": "78d98108e44cc1e336b38f8ce1861c55734d7965c89e3dde5958e35e9be99e67"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\probe.gd",
+          "bytes": 4779,
+          "sha256": "c294631dd012b29b2d8af464dea89659363be5e1cf49f2b5f2c75e43081cc2e7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\project.godot",
+          "bytes": 612,
+          "sha256": "f156e68ed807a0361d70bc097722311b7cafa1a08a8d73a01cc53d7f8178d5a2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\resthumb-12d41e84c09de3d0dfcd1a3fa116b993.png-313af27df82e7342f8b81a17f66779a0.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\resthumb-12d41e84c09de3d0dfcd1a3fa116b993.png-313af27df82e7342f8b81a17f66779a0.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\.import\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\Audio\\Audio Buses\\default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\Audio\\Sound effects\\shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\Audio\\Sound effects\\shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\Audio\\Sound effects\\shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\Audio\\Sound effects\\shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\Audio\\Sound effects\\shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\Audio\\Sound effects\\shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\Graphics\\Objects\\Catacombs\\Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\Graphics\\Objects\\Catacombs\\Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\Scripts\\Main\\Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-local\\Godot\\resthumb-12d41e84c09de3d0dfcd1a3fa116b993.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-local\\Godot\\resthumb-12d41e84c09de3d0dfcd1a3fa116b993.png.import",
+          "bytes": 802,
+          "sha256": "92b65578309d6f57fef0326bbfa2f1517e69504f64d658a13e206c6653257df5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-local\\Godot\\resthumb-12d41e84c09de3d0dfcd1a3fa116b993.txt",
+          "bytes": 49,
+          "sha256": "4690e901c4248f32010764a7797e7d6434ddc2e5e96352cda2bee72061556d3d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-local\\Godot\\resthumb-82dbb612f3e3213ee0fc98017050a3f4.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-local\\Godot\\resthumb-82dbb612f3e3213ee0fc98017050a3f4.txt",
+          "bytes": 49,
+          "sha256": "8fc817abd3cc6badee042e2d77decaef84c3a7f4215f7b5faac887e8394e47e0"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\app_userdata\\Original Geyser timeline\\logs\\godot.log",
+          "bytes": 1512,
+          "sha256": "fdff6261670af9600631112941241f140f08c74b237cf9b630b850ae3434bfb4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 2462,
+          "sha256": "c0c66792f0bc9cf9043778879e69023b6915c8a798e97b496ad595db0ae7b9b2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\temporary-1d0f304298129d3dff39010a107c6ea6\\filesystem_cache6",
+          "bytes": 2560,
+          "sha256": "015a69952e0ed1b234a142fac4eccee2b4bdf4fa1ebc0f98f25b7bdba33f72ef"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\temporary-1d0f304298129d3dff39010a107c6ea6\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\temporary-1d0f304298129d3dff39010a107c6ea6\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\temporary-1d0f304298129d3dff39010a107c6ea6\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\temporary-1d0f304298129d3dff39010a107c6ea6\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\projects\\temporary-1d0f304298129d3dff39010a107c6ea6\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-1\\temporary\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-factory",
+      "owner": "geyser-factory-v1",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.owned-geyser-factory",
+          "bytes": 17,
+          "sha256": "9a60af66129200a24162a16409d20db70da2ce974077d72f30380213b8c04156"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\audio.gd",
+          "bytes": 406,
+          "sha256": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\geyser.tscn",
+          "bytes": 4460,
+          "sha256": "b23b8ed6b19199b5e996622be3de786157fdce95e28675a4fbd18739aa3498eb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\global.gd",
+          "bytes": 73,
+          "sha256": "dfab9d3a810f9130bfcec57ff3b2631f8a6dd71675a806a0d49cdc20ac0c2be8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\hole.gd",
+          "bytes": 562,
+          "sha256": "eae51df029debae41d13a5b5236e414e33d0cf0fc2c72b1da64a6776bbd4788b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\input.json",
+          "bytes": 6542,
+          "sha256": "3e401cd51e400689b4a0188e34e5f9467953e9bdae2c6406009570500ff92318"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\manager.gd",
+          "bytes": 742,
+          "sha256": "f41ec72579645f3e6d98e0670a7e6df530607510709c6c7e66bfd5d3fc7f0b11"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\observed_geyser.gd",
+          "bytes": 462,
+          "sha256": "53908dbaf089e5abf8b78ab3439747363c92426d540566758f975a62775e936f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\party.gd",
+          "bytes": 342,
+          "sha256": "78d98108e44cc1e336b38f8ce1861c55734d7965c89e3dde5958e35e9be99e67"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\probe.gd",
+          "bytes": 4861,
+          "sha256": "c93e5a733092dec6c9a3e38524ad4ed8230639c0c99f4a36662993d7c9e5d04d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\project.godot",
+          "bytes": 612,
+          "sha256": "f156e68ed807a0361d70bc097722311b7cafa1a08a8d73a01cc53d7f8178d5a2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\record_factory.gd",
+          "bytes": 161,
+          "sha256": "16b6475bdac5883c859deb7b8522470787a4c520feec239bf3fc4ee4ffb26b35"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\resthumb-735087a062cf871fe9cf8e6780c82779.png-403edfb41e197aba5a9b479632691a63.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\resthumb-735087a062cf871fe9cf8e6780c82779.png-403edfb41e197aba5a9b479632691a63.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\.import\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\Audio\\Audio Buses\\default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\Audio\\Sound effects\\shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\Audio\\Sound effects\\shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\Audio\\Sound effects\\shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\Audio\\Sound effects\\shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\Audio\\Sound effects\\shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\Audio\\Sound effects\\shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\Graphics\\Objects\\Catacombs\\Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\Graphics\\Objects\\Catacombs\\Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\Scripts\\Main\\Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-local\\Godot\\resthumb-735087a062cf871fe9cf8e6780c82779.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-local\\Godot\\resthumb-735087a062cf871fe9cf8e6780c82779.png.import",
+          "bytes": 802,
+          "sha256": "29734682d02593e17a2df68d8e63d6d9a6a002e70babc9780f0b32c8a3d7befb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-local\\Godot\\resthumb-735087a062cf871fe9cf8e6780c82779.txt",
+          "bytes": 49,
+          "sha256": "cd2b687ac37bf5c9804354e5af0651650f0e01a43fbfe5ede0fba49285bb2335"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-local\\Godot\\resthumb-c7012b5354f2feadcb2e4f3ef0a80f95.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-local\\Godot\\resthumb-c7012b5354f2feadcb2e4f3ef0a80f95.txt",
+          "bytes": 49,
+          "sha256": "523df7630bfb8e5e29a1472d35940f2c817adcfb64741f77541d26d5a58320ad"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\app_userdata\\Original Geyser timeline\\logs\\godot.log",
+          "bytes": 600,
+          "sha256": "faa282226c0628cac4365af8f41a33bbb42e34b77dd43749271d657d6decca9d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 2527,
+          "sha256": "0f5103966b36b6d5d9f51a34a0e530f3b37d4205225c6c0558698f4934f70fd3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\temporary-346af94d8544c2868d170e4debd92071\\filesystem_cache6",
+          "bytes": 2625,
+          "sha256": "ba4a9b0654049258c394a73ac549ddaeca240f061922702e2edb71bb590a20a0"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\temporary-346af94d8544c2868d170e4debd92071\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\temporary-346af94d8544c2868d170e4debd92071\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\temporary-346af94d8544c2868d170e4debd92071\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\temporary-346af94d8544c2868d170e4debd92071\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\projects\\temporary-346af94d8544c2868d170e4debd92071\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-2\\temporary\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-factory",
+      "owner": "geyser-factory-v1",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.owned-geyser-factory",
+          "bytes": 17,
+          "sha256": "9a60af66129200a24162a16409d20db70da2ce974077d72f30380213b8c04156"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\audio.gd",
+          "bytes": 406,
+          "sha256": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\geyser.tscn",
+          "bytes": 4460,
+          "sha256": "b23b8ed6b19199b5e996622be3de786157fdce95e28675a4fbd18739aa3498eb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\global.gd",
+          "bytes": 73,
+          "sha256": "dfab9d3a810f9130bfcec57ff3b2631f8a6dd71675a806a0d49cdc20ac0c2be8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\hole.gd",
+          "bytes": 562,
+          "sha256": "eae51df029debae41d13a5b5236e414e33d0cf0fc2c72b1da64a6776bbd4788b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\input.json",
+          "bytes": 6542,
+          "sha256": "3e401cd51e400689b4a0188e34e5f9467953e9bdae2c6406009570500ff92318"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\manager.gd",
+          "bytes": 742,
+          "sha256": "f41ec72579645f3e6d98e0670a7e6df530607510709c6c7e66bfd5d3fc7f0b11"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\observed_geyser.gd",
+          "bytes": 462,
+          "sha256": "53908dbaf089e5abf8b78ab3439747363c92426d540566758f975a62775e936f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\observed_hole.gd",
+          "bytes": 142,
+          "sha256": "03a1d83f125844cc0fb6ac1cc163334a7ed435f0836b871e29e17a3a80011b18"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\party.gd",
+          "bytes": 342,
+          "sha256": "78d98108e44cc1e336b38f8ce1861c55734d7965c89e3dde5958e35e9be99e67"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\probe.gd",
+          "bytes": 4835,
+          "sha256": "c7c7b36c2f2b4160017805b587b9cc971820fc2fc05be4a9370dbb9a42678c08"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\project.godot",
+          "bytes": 612,
+          "sha256": "f156e68ed807a0361d70bc097722311b7cafa1a08a8d73a01cc53d7f8178d5a2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\record_factory.gd",
+          "bytes": 161,
+          "sha256": "16b6475bdac5883c859deb7b8522470787a4c520feec239bf3fc4ee4ffb26b35"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\resthumb-1015801a1cfad7a6a9e4f868992b6463.png-ddd6ac584dde27ce726ede75faa72bf4.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\resthumb-1015801a1cfad7a6a9e4f868992b6463.png-ddd6ac584dde27ce726ede75faa72bf4.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\.import\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\Audio\\Audio Buses\\default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\Audio\\Sound effects\\shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\Audio\\Sound effects\\shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\Audio\\Sound effects\\shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\Audio\\Sound effects\\shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\Audio\\Sound effects\\shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\Audio\\Sound effects\\shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\Graphics\\Objects\\Catacombs\\Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\Graphics\\Objects\\Catacombs\\Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\Scripts\\Main\\Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-local\\Godot\\resthumb-1015801a1cfad7a6a9e4f868992b6463.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-local\\Godot\\resthumb-1015801a1cfad7a6a9e4f868992b6463.png.import",
+          "bytes": 802,
+          "sha256": "f732d7e4b306e45a658a0540ff881cf017e4de3c177d4babbc21887d86a8bceb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-local\\Godot\\resthumb-1015801a1cfad7a6a9e4f868992b6463.txt",
+          "bytes": 49,
+          "sha256": "d4c1cc9532b12c3340af956f487016ce0c08a355f30f0b65fdc3e27d6028cf8f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-local\\Godot\\resthumb-cb9f0d2162b6847a588e0693fcaddb00.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-local\\Godot\\resthumb-cb9f0d2162b6847a588e0693fcaddb00.txt",
+          "bytes": 49,
+          "sha256": "b335985da2e4adb7e6d863bf84c49782dcda8602328f28c465c61d514c78ea7c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\app_userdata\\Original Geyser timeline\\logs\\godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 2601,
+          "sha256": "fd779964c2cb14d1ea7ced03b642c28910012f9bd8558c7ad1e07ae58d81a289"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\temporary-43ff950e276c4a5a52947881abe3119f\\filesystem_cache6",
+          "bytes": 2699,
+          "sha256": "3e6de4722a011b7c09abc3ca0196901fa77cbc0a73c8db2e5c6767afae0e96b0"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\temporary-43ff950e276c4a5a52947881abe3119f\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\temporary-43ff950e276c4a5a52947881abe3119f\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\temporary-43ff950e276c4a5a52947881abe3119f\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\temporary-43ff950e276c4a5a52947881abe3119f\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\projects\\temporary-43ff950e276c4a5a52947881abe3119f\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\temporary\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\reference.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-3\\reference.json",
+          "bytes": 10359417,
+          "sha256": "a0cc90773c3edccb32b4fe3a0c509cffdadce0da7df9a5e22c79836e623e6844"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-factory",
+      "owner": "geyser-factory-v1",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.owned-geyser-factory",
+          "bytes": 17,
+          "sha256": "9a60af66129200a24162a16409d20db70da2ce974077d72f30380213b8c04156"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\audio.gd",
+          "bytes": 406,
+          "sha256": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\geyser.tscn",
+          "bytes": 4460,
+          "sha256": "b23b8ed6b19199b5e996622be3de786157fdce95e28675a4fbd18739aa3498eb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\global.gd",
+          "bytes": 73,
+          "sha256": "dfab9d3a810f9130bfcec57ff3b2631f8a6dd71675a806a0d49cdc20ac0c2be8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\hole.gd",
+          "bytes": 562,
+          "sha256": "eae51df029debae41d13a5b5236e414e33d0cf0fc2c72b1da64a6776bbd4788b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\input.json",
+          "bytes": 6542,
+          "sha256": "3e401cd51e400689b4a0188e34e5f9467953e9bdae2c6406009570500ff92318"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\manager.gd",
+          "bytes": 742,
+          "sha256": "f41ec72579645f3e6d98e0670a7e6df530607510709c6c7e66bfd5d3fc7f0b11"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\observed_geyser.gd",
+          "bytes": 462,
+          "sha256": "53908dbaf089e5abf8b78ab3439747363c92426d540566758f975a62775e936f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\observed_hole.gd",
+          "bytes": 142,
+          "sha256": "03a1d83f125844cc0fb6ac1cc163334a7ed435f0836b871e29e17a3a80011b18"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\party.gd",
+          "bytes": 342,
+          "sha256": "78d98108e44cc1e336b38f8ce1861c55734d7965c89e3dde5958e35e9be99e67"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\probe.gd",
+          "bytes": 4835,
+          "sha256": "c7c7b36c2f2b4160017805b587b9cc971820fc2fc05be4a9370dbb9a42678c08"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\project.godot",
+          "bytes": 612,
+          "sha256": "f156e68ed807a0361d70bc097722311b7cafa1a08a8d73a01cc53d7f8178d5a2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\record_factory.gd",
+          "bytes": 161,
+          "sha256": "16b6475bdac5883c859deb7b8522470787a4c520feec239bf3fc4ee4ffb26b35"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\resthumb-c1948b6e85e1115797b45c3f2163f855.png-fab12db6fb4e1de97ff98cd97d2071ef.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\resthumb-c1948b6e85e1115797b45c3f2163f855.png-fab12db6fb4e1de97ff98cd97d2071ef.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\.import\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\Audio\\Audio Buses\\default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\Audio\\Sound effects\\shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\Audio\\Sound effects\\shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\Audio\\Sound effects\\shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\Audio\\Sound effects\\shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\Audio\\Sound effects\\shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\Audio\\Sound effects\\shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\Graphics\\Objects\\Catacombs\\Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\Graphics\\Objects\\Catacombs\\Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\Scripts\\Main\\Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-local\\Godot\\resthumb-4ed6cd589b879ae9271de3929fc2b73d.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-local\\Godot\\resthumb-4ed6cd589b879ae9271de3929fc2b73d.txt",
+          "bytes": 49,
+          "sha256": "637ab1662c8b6202f2f7f17a44b5098103fd5d8a6eda75cd2b8d8774a581b0c4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-local\\Godot\\resthumb-c1948b6e85e1115797b45c3f2163f855.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-local\\Godot\\resthumb-c1948b6e85e1115797b45c3f2163f855.png.import",
+          "bytes": 802,
+          "sha256": "6b50d47e230abf2c1ddb80e1689105a6a27849928685604baf8d8c8fac0edb54"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-local\\Godot\\resthumb-c1948b6e85e1115797b45c3f2163f855.txt",
+          "bytes": 49,
+          "sha256": "afff26849f782eec2e35c174e0f831df94d7926abcc1a8a4968a2330a4ef7054"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\app_userdata\\Original Geyser timeline\\logs\\godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 2601,
+          "sha256": "e7690dc70f8f6bc728de500f4f1a08a94d79aa242a8c8b21f57b454d3dc20d4a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\temporary-dac0cbd80770d55ba9a12e5b76920259\\filesystem_cache6",
+          "bytes": 2699,
+          "sha256": "afb71adb061c01e5db52c9db71d4997bd7d7f23b9a0d41ea7f8ab68b5bc5babd"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\temporary-dac0cbd80770d55ba9a12e5b76920259\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\temporary-dac0cbd80770d55ba9a12e5b76920259\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\temporary-dac0cbd80770d55ba9a12e5b76920259\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\temporary-dac0cbd80770d55ba9a12e5b76920259\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\projects\\temporary-dac0cbd80770d55ba9a12e5b76920259\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\temporary\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\reference.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-4\\reference.json",
+          "bytes": 10359417,
+          "sha256": "a0cc90773c3edccb32b4fe3a0c509cffdadce0da7df9a5e22c79836e623e6844"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-factory",
+      "owner": "geyser-factory-v1",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.owned-geyser-factory",
+          "bytes": 17,
+          "sha256": "9a60af66129200a24162a16409d20db70da2ce974077d72f30380213b8c04156"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\audio.gd",
+          "bytes": 406,
+          "sha256": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\geyser.tscn",
+          "bytes": 4460,
+          "sha256": "b23b8ed6b19199b5e996622be3de786157fdce95e28675a4fbd18739aa3498eb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\global.gd",
+          "bytes": 73,
+          "sha256": "dfab9d3a810f9130bfcec57ff3b2631f8a6dd71675a806a0d49cdc20ac0c2be8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\hole.gd",
+          "bytes": 562,
+          "sha256": "eae51df029debae41d13a5b5236e414e33d0cf0fc2c72b1da64a6776bbd4788b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\input.json",
+          "bytes": 6542,
+          "sha256": "3e401cd51e400689b4a0188e34e5f9467953e9bdae2c6406009570500ff92318"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\manager.gd",
+          "bytes": 742,
+          "sha256": "f41ec72579645f3e6d98e0670a7e6df530607510709c6c7e66bfd5d3fc7f0b11"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\observed_geyser.gd",
+          "bytes": 462,
+          "sha256": "53908dbaf089e5abf8b78ab3439747363c92426d540566758f975a62775e936f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\observed_hole.gd",
+          "bytes": 142,
+          "sha256": "03a1d83f125844cc0fb6ac1cc163334a7ed435f0836b871e29e17a3a80011b18"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\party.gd",
+          "bytes": 342,
+          "sha256": "78d98108e44cc1e336b38f8ce1861c55734d7965c89e3dde5958e35e9be99e67"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\probe.gd",
+          "bytes": 4835,
+          "sha256": "c7c7b36c2f2b4160017805b587b9cc971820fc2fc05be4a9370dbb9a42678c08"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\project.godot",
+          "bytes": 612,
+          "sha256": "f156e68ed807a0361d70bc097722311b7cafa1a08a8d73a01cc53d7f8178d5a2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\record_factory.gd",
+          "bytes": 161,
+          "sha256": "16b6475bdac5883c859deb7b8522470787a4c520feec239bf3fc4ee4ffb26b35"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\resthumb-345c2d5c80a1960fa857ad12b237d146.png-caf44cfc23e26cb3f0e1f176952453dc.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\resthumb-345c2d5c80a1960fa857ad12b237d146.png-caf44cfc23e26cb3f0e1f176952453dc.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\.import\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\Audio\\Audio Buses\\default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\Audio\\Sound effects\\shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\Audio\\Sound effects\\shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\Audio\\Sound effects\\shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\Audio\\Sound effects\\shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\Audio\\Sound effects\\shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\Audio\\Sound effects\\shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\Graphics\\Objects\\Catacombs\\Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\Graphics\\Objects\\Catacombs\\Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\Scripts\\Main\\Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-local\\Godot\\resthumb-345c2d5c80a1960fa857ad12b237d146.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-local\\Godot\\resthumb-345c2d5c80a1960fa857ad12b237d146.png.import",
+          "bytes": 802,
+          "sha256": "096e255ff4b29a9c2de807e443211ed8dd70c9478bed0fd2f3c201d8287df890"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-local\\Godot\\resthumb-345c2d5c80a1960fa857ad12b237d146.txt",
+          "bytes": 49,
+          "sha256": "745e7ba51f14dccd8e3fcf0c1b49126c92809324dea3dc7eab970d38d7841048"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-local\\Godot\\resthumb-9b2a3487ff88bf938e9b6e723c5149b8.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-local\\Godot\\resthumb-9b2a3487ff88bf938e9b6e723c5149b8.txt",
+          "bytes": 49,
+          "sha256": "b6783d566109ab14029529b99b24e133deb25cd721cdfe50c6f8c7fb4bb25296"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\app_userdata\\Original Geyser timeline\\logs\\godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 2601,
+          "sha256": "75f6eb19952f9738cad67688e7ef91f8e225f8c926438a4464a56e7aeaa42218"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\temporary-9c9819b67a6fdba2dfd47e491d2af688\\filesystem_cache6",
+          "bytes": 2699,
+          "sha256": "1208b0607b3a8131b08c8bc5b5c60695fb2c94d95c40c9d0b6410232ec194c97"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\temporary-9c9819b67a6fdba2dfd47e491d2af688\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\temporary-9c9819b67a6fdba2dfd47e491d2af688\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\temporary-9c9819b67a6fdba2dfd47e491d2af688\\shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\temporary-9c9819b67a6fdba2dfd47e491d2af688\\shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\projects\\temporary-9c9819b67a6fdba2dfd47e491d2af688\\shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\temporary\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\reference.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-factory-native-5\\reference.json",
+          "bytes": 10359417,
+          "sha256": "a0cc90773c3edccb32b4fe3a0c509cffdadce0da7df9a5e22c79836e623e6844"
+        }
+      ]
+    }
+  ],
+  "bytes": 35052912,
+  "scope": "Actual final two720-frame original results and all generated source/logs retained in reports;preliminary3 result losslessly gzip retained;only five owned temporary projects and three verified duplicate raw result files."
+}

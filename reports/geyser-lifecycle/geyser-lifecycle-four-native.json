@@ -1,0 +1,22 @@
+[
+  {
+    "name": "geyser-factory-native-6",
+    "sha256": "a0cc90773c3edccb32b4fe3a0c509cffdadce0da7df9a5e22c79836e623e6844",
+    "bytes": 10359417
+  },
+  {
+    "name": "geyser-factory-native-7",
+    "sha256": "a0cc90773c3edccb32b4fe3a0c509cffdadce0da7df9a5e22c79836e623e6844",
+    "bytes": 10359417
+  },
+  {
+    "name": "geyser-map-factory-native-1",
+    "sha256": "9a376423e27d89b975b476b27350e2e0f133a9f044d334cb805db5da2b4ff405",
+    "bytes": 10369754
+  },
+  {
+    "name": "geyser-map-factory-native-2",
+    "sha256": "9a376423e27d89b975b476b27350e2e0f133a9f044d334cb805db5da2b4ff405",
+    "bytes": 10369754
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "source_commit": "fa99ad0df67f4dc912bde7cb9501652ce1710c5c",
+  "run_id": 39511431071,
+  "conclusion": "success",
+  "host": {
+    "gcc": {
+      "normal": 319,
+      "asan_ubsan": 302,
+      "normal_leak_check": true
+    },
+    "clang": {
+      "normal": 302,
+      "asan_ubsan": 302,
+      "normal_leak_check": true
+    }
+  },
+  "console": {
+    "genuine_3dsx_cia": true,
+    "packaged_resource_files": 377,
+    "receipt": "console-check.json"
+  },
+  "chain": [
+    {
+      "pr": 74,
+      "head": "f45e67febbd753750b179ffe0e93bda0b82a0cb1",
+      "ancestor_of_verified_combination": true
+    },
+    {
+      "pr": 75,
+      "head": "5d43cb300ac3d1eedb798e476f90407c335f5e75",
+      "ancestor_of_verified_combination": true
+    },
+    {
+      "pr": 76,
+      "head": "ea66fcc03a36a0dbccfdcb8435a5dde6f492086e",
+      "ancestor_of_verified_combination": true
+    },
+    {
+      "pr": 77,
+      "head": "3660f116ad28726cc318cd8183f5442c7af74454",
+      "ancestor_of_verified_combination": true
+    },
+    {
+      "pr": 78,
+      "head": "93fe6c79fd164acff5372f6a8c85ac37480d8478",
+      "ancestor_of_verified_combination": true
+    },
+    {
+      "pr": 79,
+      "head": "a7915ad70887ddcc8ffa409be5f315cd07632d37",
+      "ancestor_of_verified_combination": true
+    },
+    {
+      "pr": 80,
+      "head": "c216cc1abb2ec4140cb79095ef778be525f0996c",
+      "ancestor_of_verified_combination": true
+    },
+    {
+      "pr": 81,
+      "head": "fa99ad0df67f4dc912bde7cb9501652ce1710c5c",
+      "ancestor_of_verified_combination": true
+    }
+  ],
+  "scope": "Full actual CI of the latest main-room integration and key components through81;not Catacombs gameplay/GPU/audio perception/emulator/hardware"
+}

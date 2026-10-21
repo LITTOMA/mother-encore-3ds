@@ -1,0 +1,11 @@
+{
+  "removed_path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\rooms-efda-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+  "removed_bytes": 264975480,
+  "source_commit": "efda3fba8e72922f86f7d7dbfabb68d4e0bae91d",
+  "sha256": "d679f8e97cb2069fd021e5de33fa3a10efaf1b0ee9bcc04a7b73eee966a53563",
+  "replacement_source": "8857733284db2e6ee522f03e5522c5f755d78dc6",
+  "replacement_sha256": "13e4775efa88f0d6b48119ea56053fd1bc651d52535f8e3579ed01a539924baa",
+  "replacement_repetitions": 2,
+  "old_metadata_and_logs_retained": true,
+  "root61ea_and_hud_e645_retained": true
+}

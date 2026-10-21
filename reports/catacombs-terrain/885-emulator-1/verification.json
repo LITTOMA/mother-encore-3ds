@@ -1,0 +1,46 @@
+{
+  "source": "8857733284db2e6ee522f03e5522c5f755d78dc6",
+  "game": {
+    "bytes": 264977580,
+    "sha256": "13e4775efa88f0d6b48119ea56053fd1bc651d52535f8e3579ed01a539924baa"
+  },
+  "console": {
+    "run": 39523598526,
+    "job": 118973003271,
+    "real_3dsx_cia_and_377_files": true
+  },
+  "clang": {
+    "job": 118973003092,
+    "normal": 307,
+    "asan_ubsan": 307,
+    "normal_leak_check": true
+  },
+  "gcc": "Full current job still running at acceptance;not counted passed",
+  "repetitions": 2,
+  "checkpoints_each": 90,
+  "semantic_equal": true,
+  "position_differences": [],
+  "visual_reviewed": [
+    "ordinary-input/run-1/lamp_victory.png",
+    "ordinary-input/run-1/second_field_walk.png"
+  ],
+  "audio": "Required DSP consumption for declared title/battle routes;not field BGM,perceptual quality or detached terrain/HUD services",
+  "scope": "Ordinary cold newgames and declared intro skip;no save/RNG/flag/inventory/memory injection. Four independent Pause/PSI cases and source contracts,not a full parallel original playthrough. Verifies legacy shared-loader/FieldScene routes,not activated Catacombs terrain. Current stepping source edits are not this artifact.",
+  "temporary_profiles_removed": true,
+  "temporary_profile_bytes_removed": 193055986,
+  "download_block_bytes_removed": 192937984.0,
+  "superseded_game_bytes_removed": 264975480,
+  "combined_removed_bytes": 650969450.0,
+  "not_downloaded": [
+    "CIA",
+    "Complete artifact ZIP",
+    "Full archive SHA verification"
+  ],
+  "unverified": [
+    "Full current GCC job",
+    "Activated Catacombs terrain/actors/graphics/solver/gameplay",
+    "Perceptual audio",
+    "CIA installation",
+    "Hardware"
+  ]
+}

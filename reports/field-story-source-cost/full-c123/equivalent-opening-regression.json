@@ -1,0 +1,16 @@
+{
+  "source": "c123a111a9d4ee59c2a4f3ef615f1b329e262806",
+  "actual_game_source": "e9607da8b47e8d3c5e8725ea3ff0b3692c7fc420",
+  "actual_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "byte_identical": true,
+  "actual_cold_runs": 2,
+  "checkpoints_each": 90,
+  "comparison": [
+    {
+      "run": 2,
+      "differences": []
+    }
+  ],
+  "evidence": "reports/geyser-media/e960-emulator-1 in PR92;actual source92 binary,not separate91execution",
+  "scope": "Equivalent ordinary opening regression only;no fullgame/detached scene/GPU/hardware claim"
+}

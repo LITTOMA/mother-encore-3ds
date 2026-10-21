@@ -1,0 +1,7 @@
+{
+  "source": "4ebdb2cdc7bb77fa767487c848ebaa16d17338ed",
+  "official_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "actual92_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "byte_identical_to_actual92_two_cold90": true,
+  "scope": "Official96 small receipt matches actual retained92 game;reuse only two existing opening routes;no independent96 launch/formal room/GPU/NDSP/hardware"
+}

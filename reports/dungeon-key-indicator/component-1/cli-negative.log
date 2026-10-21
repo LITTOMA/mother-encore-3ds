@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_key_indicator.py", line 94, in <module>
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--recipe',type=Path,default=RECIPE);parser.add_argument('--out',type=Path,required=True);args=parser.parse_args();out=args.out.resolve();require(out.is_relative_to(ROOT/'build')and out.suffix=='.enckui','Key HUD candidate stays under build with .enckui suffix');model,proof=source_model(args.recipe);blob=encode(model);out.parent.mkdir(parents=True,exist_ok=True);out.write_bytes(blob);proof.update(bytes=len(blob),sha256=hashlib.sha256(blob).hexdigest());out.with_suffix('.source.json').write_text(json.dumps(proof,indent=2)+'\n',encoding='utf8');print('Compiled key HUD state:',len(blob),'bytes;no scene,fonts/icon or save admission')
+                                                                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Key HUD candidate stays under build with .enckui suffix

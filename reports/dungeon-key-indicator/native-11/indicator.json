@@ -1,0 +1,839 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": 0,
+      "phase": -1,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 0,
+      "phase": 0,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 0,
+      "phase": 1,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 2,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 3,
+      "x": 291.715729,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 4,
+      "x": 291.715729,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 5,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": false
+    },
+    {
+      "case": 0,
+      "phase": 6,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": false
+    },
+    {
+      "case": 0,
+      "phase": 7,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 8,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 9,
+      "x": 280,
+      "y": 160.949753,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 10,
+      "x": 280,
+      "y": 163,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 11,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": false
+    },
+    {
+      "case": 0,
+      "phase": 12,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 13,
+      "x": 308.284271,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 14,
+      "x": 308.284271,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 15,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": false
+    },
+    {
+      "case": 0,
+      "phase": 16,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 0,
+      "phase": 17,
+      "x": 320,
+      "y": 160,
+      "visible": false,
+      "open": false,
+      "text": "x 2",
+      "running": false
+    },
+    {
+      "case": 0,
+      "phase": 18,
+      "x": 320,
+      "y": 160,
+      "visible": false,
+      "open": false,
+      "text": "x 2",
+      "running": false
+    },
+    {
+      "case": 1,
+      "phase": -1,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 1,
+      "phase": 0,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 1,
+      "phase": 1,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": false
+    },
+    {
+      "case": 1,
+      "phase": 2,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 1,
+      "phase": 3,
+      "x": 280,
+      "y": 160.949753,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 1,
+      "phase": 4,
+      "x": 280,
+      "y": 160.949753,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 1,
+      "phase": 5,
+      "x": 280,
+      "y": 163,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 1,
+      "phase": 6,
+      "x": 280,
+      "y": 160.878677,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 1,
+      "phase": 7,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": false
+    },
+    {
+      "case": 1,
+      "phase": 8,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": false
+    },
+    {
+      "case": 1,
+      "phase": 9,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 1,
+      "phase": 10,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 1,
+      "phase": 11,
+      "x": 320,
+      "y": 160,
+      "visible": false,
+      "open": false,
+      "text": "x 3",
+      "running": false
+    },
+    {
+      "case": 1,
+      "phase": 12,
+      "x": 320,
+      "y": 160,
+      "visible": false,
+      "open": false,
+      "text": "x 3",
+      "running": false
+    },
+    {
+      "case": 2,
+      "phase": -1,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 2,
+      "phase": 0,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 2,
+      "phase": 1,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": false
+    },
+    {
+      "case": 2,
+      "phase": 2,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 2,
+      "phase": 3,
+      "x": 280,
+      "y": 163,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 2,
+      "phase": 4,
+      "x": 280,
+      "y": 163,
+      "visible": true,
+      "open": false,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 2,
+      "phase": 5,
+      "x": 320,
+      "y": 163,
+      "visible": false,
+      "open": false,
+      "text": "x 2",
+      "running": false
+    },
+    {
+      "case": 2,
+      "phase": 6,
+      "x": 320,
+      "y": 163,
+      "visible": false,
+      "open": false,
+      "text": "x 2",
+      "running": false
+    },
+    {
+      "case": 2,
+      "phase": 7,
+      "x": 320,
+      "y": 163,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 2,
+      "phase": 8,
+      "x": 280,
+      "y": 163,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": false
+    },
+    {
+      "case": 2,
+      "phase": 9,
+      "x": 280,
+      "y": 163,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": false
+    },
+    {
+      "case": 3,
+      "phase": -1,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 3,
+      "phase": 0,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 3,
+      "phase": 1,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 3,
+      "phase": 2,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 3,
+      "phase": 3,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 4,
+      "phase": -1,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 4,
+      "phase": 0,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 1,
+      "x": 291.715729,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 2,
+      "x": 291.715729,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 3,
+      "x": 302.539642,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 4,
+      "x": 302.539642,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 5,
+      "x": 293.914093,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 6,
+      "x": 293.914093,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 7,
+      "x": 312.359619,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 8,
+      "x": 312.359619,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 9,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": false
+    },
+    {
+      "case": 4,
+      "phase": 10,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": false
+    },
+    {
+      "case": 4,
+      "phase": 11,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 12,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 13,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 14,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 4,
+      "phase": 15,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 5,
+      "phase": -1,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 5,
+      "phase": 0,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 5,
+      "phase": 1,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": false
+    },
+    {
+      "case": 5,
+      "phase": 2,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 5,
+      "phase": 3,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 5,
+      "phase": 4,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": true
+    },
+    {
+      "case": 5,
+      "phase": 5,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 3",
+      "running": false
+    },
+    {
+      "case": 6,
+      "phase": -1,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 4",
+      "running": false
+    },
+    {
+      "case": 6,
+      "phase": 0,
+      "x": 320,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 6,
+      "phase": 1,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 1",
+      "running": false
+    },
+    {
+      "case": 6,
+      "phase": 2,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 6,
+      "phase": 3,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": false,
+      "text": "x 1",
+      "running": true
+    },
+    {
+      "case": 6,
+      "phase": 4,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": true
+    },
+    {
+      "case": 6,
+      "phase": 5,
+      "x": 280,
+      "y": 160,
+      "visible": true,
+      "open": true,
+      "text": "x 2",
+      "running": false
+    }
+  ],
+  "append_attempts": [
+    {
+      "case": 1,
+      "phase": 4
+    },
+    {
+      "case": 5,
+      "phase": 4
+    },
+    {
+      "case": 6,
+      "phase": 4
+    }
+  ]
+}

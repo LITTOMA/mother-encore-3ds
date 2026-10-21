@@ -1,0 +1,15 @@
+{
+  "kind": "actual-gh-api-pinned-source-acquisition",
+  "repository": "https://github.com/godotengine/godot",
+  "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "native_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "method": "gh api with Accept:application/vnd.github.raw+json",
+  "urls": [
+    "https://api.github.com/repos/godotengine/godot/contents/scene/animation/scene_tree_tween.cpp?ref=3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "https://api.github.com/repos/godotengine/godot/contents/scene/animation/scene_tree_tween.h?ref=3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8"
+  ],
+  "outputs": {
+    "reports/dungeon-key-indicator/engine/scene_tree_tween.cpp": "c0272f420342bf8606602c31ea935d9d05b6093190a77128889ec362483693a4",
+    "reports/dungeon-key-indicator/engine/scene_tree_tween.h": "5b83aae7581d3ad61e723904ac3dba65054d6da48f66edc6a1cdb6391218a2f5"
+  }
+}

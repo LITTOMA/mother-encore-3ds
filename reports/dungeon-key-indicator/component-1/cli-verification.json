@@ -1,0 +1,14 @@
+{
+  "positive_bytes": 749,
+  "positive_sha256": "931279ecb37aafcaddda5ad916830fe1bf13445113cc60b29452953c44d21e25",
+  "equal_to_fixture": true,
+  "negative_exit": 1,
+  "negative_output_absent": true,
+  "producer_sha256": "b68a5e27cad9dd04a44dee6d2a19fbb4509882363462c1e6311bd88283798a58",
+  "scope": "Actual CLI positive and blocked foreign output;no game/graphics claim",
+  "files": {
+    "cli-positive.log": "7f53c305c4aec13d5ebae1f99c191af1f14fb3957f28592debcbc072c7652f2d",
+    "cli-negative.log": "71b394c653bf771c0b35c0d9d975d21a148b6d19bc330f88fd7565007a59aaff",
+    "cli-source.json": "da875a7f5930baaa9bd866f854933f2e44592547091e9d95a0f05883363f326e"
+  }
+}

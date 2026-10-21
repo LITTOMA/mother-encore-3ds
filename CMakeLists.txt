@@ -9,6 +9,7 @@ option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMak
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
     runtime/dungeon_key_contacts.cpp
+    runtime/dungeon_key_indicator.cpp
     runtime/dungeon_key_media.cpp
     runtime/dungeon_mechanism_bindings.cpp
     runtime/dungeon_mechanism_state.cpp
@@ -1248,6 +1249,12 @@ if(BUILD_TESTING)
     target_link_libraries(encore_dungeon_key_contacts_tests PRIVATE encore_core)
     add_test(NAME dungeon_key_contacts COMMAND encore_dungeon_key_contacts_tests ${CMAKE_BINARY_DIR}/dungeon-key-media-fixture/source.enckmp ${CMAKE_BINARY_DIR}/dungeon-key-contact-fixture/reference.tsv)
     set_tests_properties(dungeon_key_contacts PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED "dungeon_key_media_source;dungeon_key_contact_source")
+    add_test(NAME dungeon_key_indicator_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_dungeon_key_indicator.py --out ${CMAKE_BINARY_DIR}/dungeon-key-indicator-fixture)
+    set_tests_properties(dungeon_key_indicator_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_SETUP dungeon_key_indicator_source)
+    add_executable(encore_dungeon_key_indicator_tests tests/dungeon_key_indicator_tests.cpp)
+    target_link_libraries(encore_dungeon_key_indicator_tests PRIVATE encore_core)
+    add_test(NAME dungeon_key_indicator COMMAND encore_dungeon_key_indicator_tests ${CMAKE_BINARY_DIR}/dungeon-key-indicator-fixture/source.enckui ${CMAKE_BINARY_DIR}/dungeon-key-indicator-fixture/reference.tsv)
+    set_tests_properties(dungeon_key_indicator PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED dungeon_key_indicator_source)
     add_test(NAME dungeon_switches_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_dungeon_switches.py --out ${CMAKE_BINARY_DIR}/dungeon-switches-fixture)
     set_tests_properties(dungeon_switches_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_SETUP dungeon_switch_metadata)
     add_executable(encore_dungeon_switches_tests tests/dungeon_switches_tests.cpp)

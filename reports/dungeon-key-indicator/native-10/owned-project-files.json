@@ -1,0 +1,22 @@
+{
+  ".owned-key-indicator-reference": "f4ca47cdc99fe95e64051c8f2c7d9fbd280d62f245fd034c86acc645e5c79f66",
+  "data.gd": "80e10f2c279d6329b5db28553926dc0896520e4dd8a1d6190197a7ae06c66a14",
+  "global.gd": "4e4b4e3539632c13eacd7270ac6d3d94238f6293dbc641e1d3b1a4da53f54dd0",
+  "input.json": "68b1c1a028c9aa3d0b7c475f1c40fded6d8511e509c0722b9e600ed40dc70c6a",
+  "probe.gd": "4e37e2ceb1b8524371782b2b42ffb6517a55a53a9b1ad4d4b3986e8692f1e9e0",
+  "probe.tscn": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f",
+  "project.godot": "0beb2afa4b837ae7c011aefbe939c4762babddd10d644e2c85213df2db705278",
+  "source.gd": "7e022d5cb6b1ee5c709b5f413efc2237d27f5bf5e27a045fa9082b4dacfb243a",
+  "ui.gd": "34661b79b439f59f463d457329645b5d67d8a2bd409adfe4a857d02f6607b755",
+  ".import/.gdignore": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+  "user-local/Godot/resthumb-df8f781558c211d2511d1b408a0f2de3.png": "83acf8f32263e8d211e413deb5433865317a74c2080ebddc48f0f9b34f697384",
+  "user-local/Godot/resthumb-df8f781558c211d2511d1b408a0f2de3.txt": "3d0afef3170665e278615b1c25536043028ce078bcb1944c0acc6f3368187cd6",
+  "user-roaming/Godot/editor_settings-3.tres": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70",
+  "user-roaming/Godot/app_userdata/Original key indicator state/logs/godot.log": "99f02895e0c5b07388167071a474b6d6a321a0bbba451f09efaaf054a033ac9e",
+  "user-roaming/Godot/projects/filesystem_cache6": "d697b4e2130d115c5d5257bef3e86bb0e5c93f9555833661953f1d4993ede80a",
+  "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367",
+  "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f",
+  "user-roaming/Godot/projects/project_metadata.cfg": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517",
+  "user-roaming/Godot/script_templates/empty.gd": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93",
+  "user-roaming/Godot/script_templates/no_comments.gd": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+}

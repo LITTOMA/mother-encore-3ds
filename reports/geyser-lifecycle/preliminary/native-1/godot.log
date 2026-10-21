@@ -1,0 +1,20 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+
+Debugger Break, Reason: 'Invalid get index '0' (on base: 'Dictionary').'
+*Frame 0 - res://probe.gd:29 in function 'timeout'
+Enter "help" for assistance.
+debug> ERROR: The object does not have any 'meta' values with the key 'hole'.
+   at: (core/object.cpp:1074)
+ERROR: Signal "paused" from "@@2:[KinematicBody2D:1290]" is already connected to given method "pause" in "Poison Geyser:[Area2D:3024]".
+   at: (core/object.cpp:1485)
+ERROR: Signal "unpaused" from "@@2:[KinematicBody2D:1290]" is already connected to given method "unpause" in "Poison Geyser:[Area2D:3024]".
+   at: (core/object.cpp:1485)
+ERROR: Signal "paused" from "@@2:[KinematicBody2D:1290]" is already connected to given method "pause" in "@Poison Geyser@40:[Area2D:3030]".
+   at: (core/object.cpp:1485)
+ERROR: Signal "unpaused" from "@@2:[KinematicBody2D:1290]" is already connected to given method "unpause" in "@Poison Geyser@40:[Area2D:3030]".
+   at: (core/object.cpp:1485)
+ERROR: The object does not have any 'meta' values with the key 'hole'.
+   at: (core/object.cpp:1074)

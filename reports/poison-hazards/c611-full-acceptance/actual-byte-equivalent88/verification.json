@@ -1,0 +1,28 @@
+{
+  "source_commit": "6a8c6664c6b004c37e13ec3a708961bbea5655e0",
+  "actual_cold_runs": 2,
+  "checkpoints_each": 90,
+  "semantic_equal": true,
+  "position_tolerance": 0,
+  "position_differences": [
+    {
+      "run": 2,
+      "differences": []
+    }
+  ],
+  "game_sha256": "4cc750767edbd15f8f155a661416be4f5e82ac55cfbf7844b4e90402f397e1c5",
+  "source85_game_byte_identical": true,
+  "original_compared_cases": [
+    "pause_select_close",
+    "pause_cancel_close",
+    "psi_unlearned",
+    "psi_back"
+  ],
+  "actual_screenshots_viewed": [
+    "run-1/lamp_victory.png",
+    "run-2/second_field_walk.png"
+  ],
+  "required_dsp_consumption": true,
+  "cleaned_bytes": 650974718,
+  "scope": "Actual current88 officialgame opening regression only;byte-identical to old85because detached features remain unbound;not new service/Shadow GPU/Catacombs/HP/audible/hardware admission"
+}

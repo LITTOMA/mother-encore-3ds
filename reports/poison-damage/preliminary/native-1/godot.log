@@ -1,0 +1,26 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+
+Debugger Break, Reason: 'Script inherits from native type 'KinematicBody2D', so it can't be instanced in object of type: 'Node2D''
+*Frame 0 - res://player.gd:1 in function ''
+Enter "help" for assistance.
+debug> 
+Debugger Break, Reason: 'Invalid set index '_party_member' (on base: 'Node2D') with value of type 'Object (member.gd)'.'
+*Frame 0 - res://probe.gd:23 in function 'create_actor'
+Enter "help" for assistance.
+debug> 
+Debugger Break, Reason: 'Invalid set index 'run_sound' (on base: 'Nil') with value of type 'String'.'
+*Frame 0 - res://probe.gd:49 in function 'run'
+Enter "help" for assistance.
+debug> ERROR: Script inherits from native type 'KinematicBody2D', so it can't be instanced in object of type 'Node2D'.
+   at: (modules/gdscript/gdscript.cpp:327)
+ERROR: Condition "_first != nullptr" is true.
+   at: ~List (./core/self_list.h:108)
+ERROR: Condition "_first != nullptr" is true.
+   at: ~List (./core/self_list.h:108)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object.cpp:2077)
+ERROR: Resources still in use at exit (run with --verbose for details).
+   at: clear (core/resource.cpp:417)

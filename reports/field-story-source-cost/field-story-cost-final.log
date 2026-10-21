@@ -1,0 +1,20 @@
+test_cemetery_binding_order_and_unknown_calls_reject (tests.test_field_story.FieldStoryTests.test_cemetery_binding_order_and_unknown_calls_reject) ... ok
+test_cemetery_source_mapping_and_runtime_version_negatives (tests.test_field_story.FieldStoryTests.test_cemetery_source_mapping_and_runtime_version_negatives) ... ok
+test_checked_source_dialogues (tests.test_field_story.FieldStoryTests.test_checked_source_dialogues) ... ok
+test_formal_tutorial_preserves_old_room_tables_and_recipe_v4 (tests.test_field_story.FieldStoryTests.test_formal_tutorial_preserves_old_room_tables_and_recipe_v4) ... ok
+test_previous_schema_two_remains_byte_identical (tests.test_field_story.FieldStoryTests.test_previous_schema_two_remains_byte_identical) ... ok
+test_prop_source_policy_and_previous_schema_six_remain_explicit (tests.test_field_story.FieldStoryTests.test_prop_source_policy_and_previous_schema_six_remain_explicit) ... ok
+test_source_npc_selection_and_rich_controls (tests.test_field_story.FieldStoryTests.test_source_npc_selection_and_rich_controls) ... ok
+test_source_programmes_and_metadata_reproduce (tests.test_field_story.FieldStoryTests.test_source_programmes_and_metadata_reproduce) ... ok
+test_unknown_command_is_not_ignored (tests.test_field_story.FieldStoryTests.test_unknown_command_is_not_ignored) ... ok
+test_unknown_versions_fields_and_source_changes_fail_closed (tests.test_field_story.FieldStoryTests.test_unknown_versions_fields_and_source_changes_fail_closed) ... ok
+test_unread_text_and_timer_modes_are_explicit (tests.test_field_story.FieldStoryTests.test_unread_text_and_timer_modes_are_explicit) ... ok
+test_exact_text_key_and_detached_callers (tests.test_source_parse_cache.SourceParseCacheTests.test_exact_text_key_and_detached_callers) ... ok
+test_exception_cleanup_and_bounded_lifetime (tests.test_source_parse_cache.SourceParseCacheTests.test_exception_cleanup_and_bounded_lifetime) ... ok
+test_small_text_does_not_evict_large_source (tests.test_source_parse_cache.SourceParseCacheTests.test_small_text_does_not_evict_large_source) ... ok
+test_unknown_input_is_rejected_and_failure_is_not_cached (tests.test_source_parse_cache.SourceParseCacheTests.test_unknown_input_is_rejected_and_failure_is_not_cached) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 56.087s
+
+OK

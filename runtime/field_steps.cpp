@@ -3,6 +3,7 @@
 #include "encore/crc32.hpp"
 #include <cmath>
 #include <cstring>
+#include <limits>
 #include <set>
 namespace encore::upstream {namespace {
 constexpr uint32_t strides[]={1,24,56,64};constexpr uint32_t polygon_strides[]={1,24,56,72,16,8,32};constexpr char pin[]="7d9246600fffe518408f5830d4848635019005a3";
@@ -125,15 +126,28 @@ bool FieldRunLoop::area_event(uint32_t index,bool entered,bool player,std::strin
 
 bool FieldStepShadowState::initialize(FieldStepsView data,std::string&e){
  if(prepared()||!data.valid()||data.capability()!=2){e="Shadow preparation requires fresh polygon stepping metadata";return false;}
+ for(uint32_t i=0;i<data.shadow_count();++i){const double duration=1.0/double(data.shadow(i).fps);if(!std::isfinite(duration)||duration<=0||duration>std::numeric_limits<float>::max()){e="Shadow frame duration is not finitely executable";return false;}}
  const auto initial=data.find_shadow(data.text(data.policy().shadow));if(initial==kFieldNone){e="Shadow initial policy is undeclared";return false;}
- data_=data;animation_=initial;frame_=0;playing_=data.shadow_initial_playing();e.clear();return true;
+ data_=data;animation_=initial;frame_=0;playing_=data.shadow_initial_playing();timeout_=playing_?float(1.0/data_.shadow(animation_).fps):0;e.clear();return true;
 }
 bool FieldStepShadowState::set_animation(std::string_view name,std::string&e){
  if(!prepared()){e="Shadow source call has no metadata";return false;}const auto index=data_.find_shadow(name);if(index==kFieldNone){e="Unknown Shadow animation rejected";return false;}
- if(animation_!=index){animation_=index;frame_=0;}playing_=true;e.clear();return true;
+ const bool reset=animation_!=index;if(reset){animation_=index;frame_=0;}if(reset||!playing_)timeout_=float(1.0/data_.shadow(animation_).fps);playing_=true;e.clear();return true;
 }
 bool FieldStepShadowState::set_frame(uint32_t frame,std::string&e){
- if(!prepared()||frame>=data_.shadow(animation_).frames){e="Shadow checked frame range rejected";return false;}frame_=frame;e.clear();return true;
+ if(!prepared()||frame>=data_.shadow(animation_).frames){e="Shadow checked frame range rejected";return false;}if(frame_!=frame){frame_=frame;if(playing_)timeout_=float(1.0/data_.shadow(animation_).fps);}e.clear();return true;
+}
+bool FieldStepShadowState::advance_idle(double delta,bool process,std::string&e){
+ if(!prepared()||!std::isfinite(delta)||delta<0||delta>1){e="Shadow idle clock owner/delta rejected";return false;}
+ if(!playing_||!process){e.clear();return true;}
+ // Godot3.6.2 AnimatedSprite,3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8.
+ // Its original MIT copyright notice is retained in THIRD_PARTY_NOTICES and
+ // docs/licenses/Godot-3.6.2-LICENSE.txt.
+ // Editor UPDATE_VITAL_ONLY throttling is outside this ordinary game clock.
+ // Keep binary32 remaining/timeout and defer frame change until timeout<=0.
+ const auto mode=data_.shadow(animation_);float remaining=float(delta);
+ while(remaining>0){if(timeout_<=0){timeout_=float(1.0/mode.fps);if(frame_>=mode.frames-1){if(mode.loop)frame_=0;}else ++frame_;}const float amount=std::fmin(timeout_,remaining);remaining-=amount;timeout_-=amount;}
+ e.clear();return true;
 }
 bool apply_step_callback(FieldRunLoop&loop,FieldStepShadowState*shadow,uint32_t index,bool entered,FieldStepBody kind,std::string&e){
  const bool party=kind==FieldStepBody::Player||kind==FieldStepBody::Party;

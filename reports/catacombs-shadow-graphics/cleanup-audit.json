@@ -1,0 +1,3640 @@
+{
+  "owned_build": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port",
+  "targets": [
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-1\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 910,
+          "sha256": "22a599c16006daf740013b91fe7f645e45aeec47b2da6a02b936c2a8b4494f75"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3168,
+          "sha256": "412a369d065c097b9fdef79111aa1be6a0412e14387b075632ddfb5f5753470b"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 192,
+          "sha256": "7c26198f2bdd8dc98c7822a54f4698018b33d7f43dd42c8a3a352a392b1b8335"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "7523cbe90a1bca3c3d95d2fe297482747e99e632e0dfa71503af14d576323171"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-f47002f58798189edd8459720a69a653/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "94a9e05b21483c5f0fd0e2a66df086313f364e9b5e2fb22ee1a4b5a467a5bdbe"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-f47002f58798189edd8459720a69a653/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21113
+    },
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-2\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 910,
+          "sha256": "22a599c16006daf740013b91fe7f645e45aeec47b2da6a02b936c2a8b4494f75"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3168,
+          "sha256": "412a369d065c097b9fdef79111aa1be6a0412e14387b075632ddfb5f5753470b"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 192,
+          "sha256": "7c26198f2bdd8dc98c7822a54f4698018b33d7f43dd42c8a3a352a392b1b8335"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "770d0685c06214c4baceef26a25b6c4d624ca37fef53b06f567d00e72fc52ec1"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-c21bd13bd4b34accae172c22b443c70d/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "531adeed0f5da87955d98df4182a40ae8b552a72a29fe5e499895b13afb88de3"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-c21bd13bd4b34accae172c22b443c70d/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21113
+    },
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-3\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 910,
+          "sha256": "22a599c16006daf740013b91fe7f645e45aeec47b2da6a02b936c2a8b4494f75"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3168,
+          "sha256": "412a369d065c097b9fdef79111aa1be6a0412e14387b075632ddfb5f5753470b"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 192,
+          "sha256": "7c26198f2bdd8dc98c7822a54f4698018b33d7f43dd42c8a3a352a392b1b8335"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "0390cb44ca0b3d5bc3b6cac6fccf21faba5ae1345c9b7b3051661cb6ef089438"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-2c9fe8a432aa1574ed3b78c0bdd24893/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "70a46ac7072abf5fa85fd351fbf35830cccb31f556c8bd2bacba0d3a9502251c"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-2c9fe8a432aa1574ed3b78c0bdd24893/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21113
+    },
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-4\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 910,
+          "sha256": "3a3e46c39831bd048ad2736b967b4ae46f4c0eef3d4db8586554ca9e45bafda1"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3168,
+          "sha256": "412a369d065c097b9fdef79111aa1be6a0412e14387b075632ddfb5f5753470b"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 192,
+          "sha256": "7c26198f2bdd8dc98c7822a54f4698018b33d7f43dd42c8a3a352a392b1b8335"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "fcc4a2c77d2a7bc8ab715b01fee735ad44288b9288eab6ff90df0692e0f300bb"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-1f0cda7a0083464657707d72f3d21e9b/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "f5cb8eeebdc476fadfe5a921f0ca8d94f463da44301d549826872a3e2178f2f9"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-1f0cda7a0083464657707d72f3d21e9b/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21113
+    },
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-8\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 910,
+          "sha256": "3a3e46c39831bd048ad2736b967b4ae46f4c0eef3d4db8586554ca9e45bafda1"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3250,
+          "sha256": "ee3b9dcf9ae5d83e998e561fa7c5ee9140fb974dedc5ff668af22456cb023131"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 254,
+          "sha256": "ab79ecebb636f5ce507811027942bb131bc8218644df079e7e9d12b3f96a5757"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "457592b514dad64abccae95d479956a2ccc90aa3861b33eea2432dc1f05ac117"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-c10751afc84db42e93fe9ed57472bad4/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "945356cc5ab3551c3d3e36fd13ca0b3eb25b704fa07646c502069c889fa47b7b"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-c10751afc84db42e93fe9ed57472bad4/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21257
+    },
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-9\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 910,
+          "sha256": "22a599c16006daf740013b91fe7f645e45aeec47b2da6a02b936c2a8b4494f75"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3214,
+          "sha256": "f82bcc63c7b307320e4303072f629f527f907b9162b77870dfaec29af8dd0462"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 254,
+          "sha256": "630fcd5c519b43342a98c30c6dbbdf9c7adb58a4073d278f77a8645fa7f99c6d"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "c689371dc8c795df80deb2fb642913c0577ed504d63e19074b7c73bb9cda9d3c"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-8dd2daca182678d974f71ad329521e90/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "b7f4b3ae344873671e6ebf020f945ba6ab0a69cb5c8b3bcb0bbcf8c018c2ad21"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-8dd2daca182678d974f71ad329521e90/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21221
+    },
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-10\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 910,
+          "sha256": "22a599c16006daf740013b91fe7f645e45aeec47b2da6a02b936c2a8b4494f75"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3214,
+          "sha256": "f82bcc63c7b307320e4303072f629f527f907b9162b77870dfaec29af8dd0462"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 254,
+          "sha256": "630fcd5c519b43342a98c30c6dbbdf9c7adb58a4073d278f77a8645fa7f99c6d"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "367cae0546bfa330557019d2a5f602f034abf47db7499af2f174761e8392afd3"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-1bc6c831753d4698eb4475b9277a89f5/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "c253363dc4b673ea46d17ce482aad4c4b406a59f4538dfcb2644c9fd9ff1d053"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-1bc6c831753d4698eb4475b9277a89f5/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21221
+    },
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-11\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 910,
+          "sha256": "3a3e46c39831bd048ad2736b967b4ae46f4c0eef3d4db8586554ca9e45bafda1"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3214,
+          "sha256": "f82bcc63c7b307320e4303072f629f527f907b9162b77870dfaec29af8dd0462"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 254,
+          "sha256": "ab79ecebb636f5ce507811027942bb131bc8218644df079e7e9d12b3f96a5757"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "75a3536c7fd8b6619ab06bc9dc2955e1054fb23b73363ed29e9d816dd25352ce"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-991598da89bdf1ada60e2c49e61d71dd/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "bcd531b2bf012a26ada76191e9de13e5a31ecdbab6522803fb26253ee0875a20"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-991598da89bdf1ada60e2c49e61d71dd/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21221
+    },
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-12\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 910,
+          "sha256": "3a3e46c39831bd048ad2736b967b4ae46f4c0eef3d4db8586554ca9e45bafda1"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3214,
+          "sha256": "f82bcc63c7b307320e4303072f629f527f907b9162b77870dfaec29af8dd0462"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 254,
+          "sha256": "ab79ecebb636f5ce507811027942bb131bc8218644df079e7e9d12b3f96a5757"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "d13016df8559616a96544370f03ed136db9b4476f6b739fac9cc06819a5b4dab"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-ebba75b52a3e449accd20d1e7a4d3d9f/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "df3f88acb5658a4ccb962ff2067bc77d5f87b8da1d3fb30688867e8496b023f2"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-ebba75b52a3e449accd20d1e7a4d3d9f/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21221
+    },
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-13\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 909,
+          "sha256": "f932054c849c52e3481bbdbaeb69cb9b7f44a2c474bdd6255c34c98b739bc6e4"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3214,
+          "sha256": "f82bcc63c7b307320e4303072f629f527f907b9162b77870dfaec29af8dd0462"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 254,
+          "sha256": "630fcd5c519b43342a98c30c6dbbdf9c7adb58a4073d278f77a8645fa7f99c6d"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "1b29f7f9524064d5de2d2b170a30c1e5e1f73f9b3e0a800562c711f1afd7b8ca"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-42d11903481e25368753149c608f955f/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "ae5265a68f6e082b3e94224107f5bb70e889906f9c41d5f940430d1b90b3935e"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-42d11903481e25368753149c608f955f/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21220
+    },
+    {
+      "kind": "native-project",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-clock-native-14\\temporary",
+      "marker": ".owned-shadow-clock-reference",
+      "marker_value": "shadow-clock-reference-v1",
+      "files": [
+        {
+          "relative": ".owned-shadow-clock-reference",
+          "bytes": 25,
+          "sha256": "41b5f103da3b8f60b242bf622526f4d92c41ee780b26aabe13e2aa04a1d40812"
+        },
+        {
+          "relative": "actor.gd",
+          "bytes": 153,
+          "sha256": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12"
+        },
+        {
+          "relative": "input.json",
+          "bytes": 909,
+          "sha256": "f932054c849c52e3481bbdbaeb69cb9b7f44a2c474bdd6255c34c98b739bc6e4"
+        },
+        {
+          "relative": "probe.gd",
+          "bytes": 3214,
+          "sha256": "f82bcc63c7b307320e4303072f629f527f907b9162b77870dfaec29af8dd0462"
+        },
+        {
+          "relative": "probe.tscn",
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        {
+          "relative": "project.godot",
+          "bytes": 254,
+          "sha256": "630fcd5c519b43342a98c30c6dbbdf9c7adb58a4073d278f77a8645fa7f99c6d"
+        },
+        {
+          "relative": "source.tscn",
+          "bytes": 338,
+          "sha256": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de"
+        },
+        {
+          "relative": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5",
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        {
+          "relative": ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex",
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5",
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        {
+          "relative": ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex",
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5",
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        {
+          "relative": ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex",
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png",
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Magic_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png",
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Shadow.png.import",
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png",
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        {
+          "relative": "Graphics/Character Sprites/Water_Ripple.png.import",
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        {
+          "relative": "Nodes/Reusables/Shadow.tscn",
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        {
+          "relative": "Scripts/Main/Shadow.gd",
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        {
+          "relative": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "relative": "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1196,
+          "sha256": "9b2d1f4baaf04287d545a04ecb2d4c2e2de80c4d890ac455f842cb0e81102a59"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-3da7c25291f939b8dae03e145402d611/filesystem_cache6",
+          "bytes": 1613,
+          "sha256": "12f26581d2a904119759c79d4e41eb23b5ac925cdb1c3e48ceaf00bb25f50863"
+        },
+        {
+          "relative": "user-roaming/Godot/projects/temporary-3da7c25291f939b8dae03e145402d611/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "relative": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 21220
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_key_contacts.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2866920,
+      "sha256": "00c9635870ea80c44de0a7773959fe7abad39ec8e1da61ae896e700fe0f0f73c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_key_indicator.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2404176,
+      "sha256": "cebfb33174cdd669fe261396d6ec830cdb9f2d9ecb6607a3b3e0bba2b50e752d"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_key_hud_graphics.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1023384,
+      "sha256": "1c6372d5b524ad681596c00bf4444efa1190e55cbe07b5994587a960088f2ce7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_key_media.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 7786960,
+      "sha256": "16332a7c73b7d39e26bfc7e74f3485eb9dcd29bfaa45a8c128b24aba3f288c24"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_mechanism_bindings.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3203912,
+      "sha256": "7131689c504690bf00df13fadf8d9f9d94f3d594fe184db03565d8fc845cd6ce"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_mechanism_state.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 7702736,
+      "sha256": "1d9846b9fcca7559c3e0c392f0921d779d7795c6edcbf9996287115c35c2ab58"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_mechanism_presentation.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6870984,
+      "sha256": "c51c36ccacb62bf7c7d2399b7e10f1d9a50308fc14bcb881f8c06fa353b59146"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_mechanism_audio.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1087408,
+      "sha256": "247d94165323e2daedfef5be30a17c8f17e42288d8b2fc6f80d25bbdd0421494"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_mechanism_contacts.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3959200,
+      "sha256": "e3269db42fce05e4878e610c430d34ce33db99b0122b9cc9c730cfaf943599c1"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_rooms.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4570560,
+      "sha256": "28c578136360c3b8c12a7c548690d8400dd9ba29c0cc0a2f8d07c236586f0f78"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_terrain.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4878776,
+      "sha256": "73f2698705cc49e3800854aa0e426cad1260aabd284c0159ac010223e53a01f9"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_shadow_graphics.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2411968,
+      "sha256": "c7f8d0cf95c877e4fda5c0e1627f2f0d5230d8a6d109c2e0d9ba3d551eb39db4"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_swing.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2880448,
+      "sha256": "50f75ca991c8e358b36328e210385d7fe33b8ced12b28439c27fd1ac2e8baedb"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_swing_graphics.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1717360,
+      "sha256": "dc3bd4f74fb12ab2c99c614a61a384e788a4f874c9e11f9b4c652927058f1821"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_swing_action.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2878632,
+      "sha256": "ceebec35798ce2528b5fb36dd43dd6b1fb7c1aefef2252a0eba2cb0a53b52953"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_swing_entry.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4774096,
+      "sha256": "6b1c9d9320900791e32c3d9824b4f377708ffa7adcf156beee1f8b3b43ea594c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_swing_resources.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2100880,
+      "sha256": "9c66e851bcad66fb4827b4149069ca175cc9e7a679012ca4cbe11daef122d0ea"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_player_tree.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1367632,
+      "sha256": "52f115b2365c4ec7b17077b6f4c0c49ce59166d4a18d82c541c18bf0d7697a82"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_area_contacts.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 362536,
+      "sha256": "4bf692011990ceca3463befaffff3217f2ecb55feb2c8a84af30cb0e185b1684"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_objects.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4701168,
+      "sha256": "7062ff80e2881c8e32b1802e4cf38b4d13a96c85fa1c07933ceacb5d7a19d97b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_prop_clips.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1729976,
+      "sha256": "986bd4ba5cd277f7bddc8abfe4a51cc63ed3748ed9ce22f0055f2742dd1c4d5a"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_props.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6614496,
+      "sha256": "03116364058aa84e630f0875a13ca6e25b4b07d6ff11800d58e560fa725f475e"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_steps.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2725776,
+      "sha256": "d6f0ec911a373f8526cdb781754b0770fcedae5a40a8b30ae8cc68e271c4a3fc"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_keys.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1176848,
+      "sha256": "24810598c9a82e3717d50974739ffe62eb6ad5c11fbb39aabcc099a1f23b117b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_key_state.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3457472,
+      "sha256": "b3c5c81dd82fac7b8926c4f5b2a4b3be7eda3685f61e62f552d5b88734a82e68"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_key_clocks.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 10096008,
+      "sha256": "ef16734bb0e26cee4cbc5934f6e2a033e1252e933bb4ac632f50ce9c32843787"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_switches.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1506440,
+      "sha256": "094e5990721b694f0f5420890fc50a5f24c70e8e0bf05b26af74129ad827b556"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_switch_state.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3959808,
+      "sha256": "ae1b766a0d61759419d2c83d3c744c28cfdc604d41fa8889e8722bf037579446"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_wall_timeline.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1645248,
+      "sha256": "67348ddec0dd210f5890ba8fb539b83af2f73ce8e2cfca62bca519e8b0321351"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dungeon_wall_state.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2192680,
+      "sha256": "5895170fde0c2473f83e880bf63f01fdcf48c5d26f747eae88845cd6aab8000e"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_menus_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 13618616,
+      "sha256": "70fc50aa220f95cc171888753e0d8942d7742ef54e367efb1a25075c7bb6d7e9"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_menus.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 16842808,
+      "sha256": "fb1b755b89352b35af5aabd562a2625366fd24b84faaa5966d778f2e159d51e7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_music_zones.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2274592,
+      "sha256": "f8b0f4bba94d20fec4339f9b7fa546610caf53c41b23d4e910ece6baeea908cd"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_gameplay_audio.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 981496,
+      "sha256": "82e3ba7c4fa3af50589f52d79183d719e55ba346db7194d408f16ac1f8f3abfd"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1284648,
+      "sha256": "ecf57c95c0be62f9bd713d268d7b3dd3ad919eda0a9f7ed741e89d7dbeb9216a"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_world_links.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1784560,
+      "sha256": "1b6c2a608c3718c310a9c9b3c62a15ea057ccfa253f5b044a7c47d0500e357b0"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_scene.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 20931424,
+      "sha256": "75452fbb211e816975b56069f177b3766f47e59f0c2201c3f8bfa39690044263"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_scene_resources.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4363976,
+      "sha256": "49e5d11a1862dd57e3f1374f8ffce60a7e50494750bfa8a3171a694fc32c6bb1"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_story.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6411704,
+      "sha256": "00be16fda0658b8cc7520a484d9f0d1a8e623f8721d988d6903d3404440fcf57"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_present_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2160384,
+      "sha256": "73cce811e57598052b987e45612d5a928549840002820a1344490fc0483dff28"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_house_presents.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2051648,
+      "sha256": "6236537aa3f6294677c506cde285e5c02d3ca73da54dd1b0a2f32a79b35d04fc"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_mick_treats.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2227168,
+      "sha256": "45d38072e81b2a7765d7243cf328cd1ddcbd273240fefd634d17a9a464c9696c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_house_inspection_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1000504,
+      "sha256": "ea3f89c319c12890866500b0f799e42cc4702b61eab6ccaa6660d53448672362"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_equipment_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1811800,
+      "sha256": "58b2642ebd94c13e8866b32a02b828f644aa55934b78d80fc5448678f884f5e7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_field_equipment_menu.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3773928,
+      "sha256": "fa8e81eee8fd759dbf946304f2ae82a41cbf48e4da581f318acb77f756584fcc"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_storage_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1450472,
+      "sha256": "202a864b28da119d28449b24dc41c3496897680f2cba11ddc86830d356b1520b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_storage_menu.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3798512,
+      "sha256": "b28fcb5c9d5d24a8eb2f14f798aeb765b8a120cc1d5d0ed4c619a7ad8570f2a7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_item_details.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5725104,
+      "sha256": "d96928f7765d115adfccadd21ab9247c7541c9c278bfb9ed140c92a5172b1a26"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_drawer_program.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1692256,
+      "sha256": "cadc4615d729c5bf1cedf2770f3198a325c0e483d0639104b2a4305be7faae0b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_resource_catalog.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2275504,
+      "sha256": "6c0e2f2392f29c64510f2c8b5f02ddf72954b2faa71849bab5508ead4f489053"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_localization.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4009272,
+      "sha256": "0e02452dd05e42d7cee3775dba8b5e1c3b095b098d13345a9bf6652bead2ced4"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_localized_presentation.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5223200,
+      "sha256": "07a7a0bd9611414037d43b4a94847d00952e9ebd74db6cb21f028a6708564cb4"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_locale_preference.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 829552,
+      "sha256": "ebc66ecb97a577fc6a8c20022e89c536315272a54a8cb63a227997253945da03"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_source_font.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2974984,
+      "sha256": "5cf3a642f15dc561eb70269c35952b07eef5e096a0b881863bae936b928668fc"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_title_locale_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4171424,
+      "sha256": "0f0b990cb187e39459a7f32ff513404a9bbc217d66c0113a336420f8449f1bb3"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_music_programs.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6327360,
+      "sha256": "9c51f3f8bb10889f7ef0b60542a6b90e266b9056b44ff503a89a5c51d2f344b7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_music_library_bindings.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3360368,
+      "sha256": "709cd299c6f82d167fa384f0dfdff245a7380de68fa167e18cc2d52412692f12"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_music_bank_routes.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3935504,
+      "sha256": "5d42067c25ab943b69c188181d0599f9bc215c8b1ddc3b9128cde0f0addd2500"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_music_scene_graph.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4032392,
+      "sha256": "3e2a82cba82c33fe5195acb87e708e1d393ab16315e3b202fe4f9ab90fb31ab5"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_music_players.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5100104,
+      "sha256": "9ce77ca120794a8775e48ca3d6d20f49179643b7f221a72437c63aee2e758199"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_music_player_choice.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 640952,
+      "sha256": "b1555040453a2ad66797d554b55d3ee013b368cc5e87a2430395974ae90ad186"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_music_regions.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6400872,
+      "sha256": "a2f1f5f81e8a0b35940c499528c1381eb76334bb3ea1fd1f33020211341421c1"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_introduction.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 16093992,
+      "sha256": "f072be64ab162e646d83ed1a114f4e425d1f8a0d6f1cd1b248b535994e402838"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_new_game_setup.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 20904328,
+      "sha256": "7b979d6b52fc5c509fddb880d3bf6135e4c15535b33ac123523a8ab3d3a920f8"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_startup_settings.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6903472,
+      "sha256": "365d7a13360d8778f14ee7007268a5929f2d1c3ac40b618abd70a9497feb5ed5"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_house_button_prompts.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2741760,
+      "sha256": "b4fbcbdb8772dd89446e2a334734e3f4adb84ff8a2ed4b606855b789516ef644"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_loading_indicator_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 924304,
+      "sha256": "0807cbdd833ddce28e9bd0a1dfca358be47bdf308a203fd2795fb973755de029"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_continue_menu_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4157608,
+      "sha256": "24d1ebeb4b2d9647631805391c623bc0b3dd28d5bb9c188f89554908f0ec4f69"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_continue_menu.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3868696,
+      "sha256": "f923e72716e0f49af23fc8755320c597e69d836df060ba9a82c5e7fc30468a6b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_slot_preference.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1140880,
+      "sha256": "549a24c43278bcdbda55b7689514b8fefa501e67644ea3c8308a9549b6acc8a3"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_restore_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5878152,
+      "sha256": "f452a939cd668dc8ee009157f18fd0c9f09d4e58bb31e17a2ca1b8368561dda4"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_session_restore.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 8176776,
+      "sha256": "6061fb74c0144223100fb84634f7d4ce79e12bc1522c51f9dc4f4452d562327e"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_session_migration.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 12562552,
+      "sha256": "dfeab1f3e41588da17c9ea4fa6435ca1dfb3876d450f3b1ad1ffcbfb14be5039"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_load_rng.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 911088,
+      "sha256": "8d852a1e8b5c77fea865d5cabec9392dce39cd286c0da0d2d46af20bc096f1c3"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_fresh_house.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5018592,
+      "sha256": "ad478294b4c7146befe7ea5aba5004b37065ab5a33537c688bcbef822fbb699c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dialogue_choices_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4789120,
+      "sha256": "3240b806c9e31851f8ac26fea5b85efbbf63cab56a0d2aade5c440aa0ad5ebed"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dialogue_choices.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 915792,
+      "sha256": "047c29a815c129a9ceab391f2944633370d5ee82f10716b8d7bb729c5a72162c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_phone_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1203640,
+      "sha256": "1cd134064e4b7d7d9958a2caaf092107776150f3450ea7ea07fb6506eb74723e"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_phone_runtime.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 578784,
+      "sha256": "c20df3f717d2acff4a32c018af34fbba4075d502d8c559f6eb8a3f5ea84f9ac5"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_native_session.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 24004696,
+      "sha256": "3f343be479e979cf6943e5e054cee0fde17ef7a3992c472a272614007f4001cf"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_session_save.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 15949800,
+      "sha256": "d97423184a8b27916c1bb4b22b60455630ad420ddb8a3ea60cdce85c34c77f62"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_save_menu_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5995176,
+      "sha256": "d2086fa735b8c9b6822b170d826b338740cae6d4d07fd2744356a8a831f0cd9f"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_save_menu.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2486464,
+      "sha256": "ec8c99cc81dd5f26456e08cfa019366730930b448b313de41565ae96bdb13769"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_native_input.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 430768,
+      "sha256": "d2047639835dfc6c586f77f91718eb33898adb201f5733277db858c823e0efaf"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_world_effect_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 479656,
+      "sha256": "a2580addb1d8f2aab41c5ea1f14645b5f23e4de2a994e991cc5a2540dc96bc27"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_world_effect.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1066072,
+      "sha256": "2afa1653f5cbb85b7b37c58edef1ac397177059332fb06d6cccc1ac9c4722179"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_items_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1573016,
+      "sha256": "9de215adbaf3c47d27bb24132a9062effcd92b7e34475719de7e82f26586d442"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_items_menu.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1663736,
+      "sha256": "a7feea366eebc1f7ad3e23e85d5bb383cb4cec1d34164f1989170506826efd8b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_house_audio.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1183160,
+      "sha256": "57091d7f5064f1894d2b45722d9d3ea44564a8c8ef2515edb235856d8432670a"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_house_runtime.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 10524368,
+      "sha256": "ff5aa155f06bcdb5241ad2161c68a4cf52b5a7fca10a78322f018c6f51119fb2"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_house_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1501296,
+      "sha256": "fc5b586e252565a57f948c1707f30c059538429fe0d366dbcaa21a6c556864b8"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_house_presentation.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 11835528,
+      "sha256": "65365b152500f98be888b5c4e00cf0e7123a1575f877c52d2c628ae60acd2f30"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_battle_loot.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 296072,
+      "sha256": "756c2566cc887290f36705094423abdbb916a41bc5c06372d0e43d192a9fd80f"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_battle_outcome.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2459376,
+      "sha256": "2435f83aa1f3e9c5fbe9834eec93b3e9c9576da0f4afab75118faa746fde94fc"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_battle_round.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2381192,
+      "sha256": "f5eb9cfb72e3e48b8e83154239f8681b6cc139ed173f50d4cf2bae9427c8f3a9"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_battle_round_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1313848,
+      "sha256": "a15350b212b7fe3576ab4a8f920269a95e9bc0ce90ba21eda4452f67316d39db"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_battle_action_presentation.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 8692424,
+      "sha256": "614284343efe6e4007b4b1345fd2f8444e36e9c5f6a23b65eb8528b31a1bc60c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_source_random.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 98608,
+      "sha256": "645d3b00585fd002ec634bdda1bbe933abd22ab3a88fe70de5d6dcddaa1a131d"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_audio_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 940072,
+      "sha256": "074c85530c0c6481faa2d9a86c1e197f4c8bf77b5f9693b0ee2b761b30d4f6e4"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_battle_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 944248,
+      "sha256": "bad4532b4141561eba77a76f5bb12c75bcc42d1319afc86c5ac6ca01c01a2247"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_battle_entry.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 542008,
+      "sha256": "9214728fae5ccc645b7ffa3dc2f36715b1821cee35e7df2fa28595f3317f9318"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_room_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2647776,
+      "sha256": "26676f72be96a483c369e030407078ecfd859b7ace64140f942db2e71032370c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_content.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3538832,
+      "sha256": "2f5fe8a2288306d89cca2f809725df84a8f61c4ec3582042ca68cb7392ec03b7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_file_io.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 622872,
+      "sha256": "d0b9f3dd45ba5d3d9c8671efb1510bb6248b9597c6989e776f4e30aa79889886"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_story.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 232104,
+      "sha256": "046d24d2b7a1e6cc14c8ea29c9b69b8cfc454155c9cf96c196cad84a238fdc4e"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_game.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 909144,
+      "sha256": "dce2319a81d20f7126537d52bfab7b62f877fded63d79462daf942ec81601d2f"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_save.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 959240,
+      "sha256": "5c78188db6479897f83dc25a41f1e72ab6b4ab7772991adc2e0f74350875080d"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_progression.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 187352,
+      "sha256": "50aeba90ae9ec24dc2971ff490828e615f2cbfafed951dd2f44b0ed8905993f0"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_movement.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 363928,
+      "sha256": "be9292df38ee56bacfa45fc85975bf3b637d3687521788e1e825e1958b675e8c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_animation.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 239800,
+      "sha256": "03038724a5ac0e2b1389bc2f9564c87cfd290729aaaa2cb07709919bf19a5661"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_collision.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3021032,
+      "sha256": "a9c5328adbb5edbc1d773229d91af145260bdd4ca2070e1e5da982b303ca4dde"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_world_flags.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1928008,
+      "sha256": "882609917fa3c75e03ecbbc9438aaf58fbe738a63addc1c2d0d3f8c5ebc9a567"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_world.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 15330992,
+      "sha256": "48b346a672fec67b59842c560eb3c40a8abf34eb2d086157e140be5a0ca4466b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_opening_trigger.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 239440,
+      "sha256": "5d3eee79c209776fbdea32e263f92a1a25bb6af554cc461f2661759b9d80583d"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_dialogue.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 376784,
+      "sha256": "f308045ab73ee62883da059e2a2a9914c103595abde54c7c05e1b896b8aee0df"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_actor_actions.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1294888,
+      "sha256": "f7f90c80aec676191d5c772ccdecbd21951d2c733fb857e610ea84e1963a9360"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\runtime_cutscene_camera.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3737464,
+      "sha256": "2c617b5b7b0b434e54cf300986a13a923d76995c90e7bc57afa92a72f66e46eb"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-1\\libencore-shadow.a",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 477220520,
+      "sha256": "9208d57ee0f273992784d39f812b1e2f2aaa2bde8d331f7a769e50b38793f2f9"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_key_contacts.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2866920,
+      "sha256": "00c9635870ea80c44de0a7773959fe7abad39ec8e1da61ae896e700fe0f0f73c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_key_indicator.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2404176,
+      "sha256": "cebfb33174cdd669fe261396d6ec830cdb9f2d9ecb6607a3b3e0bba2b50e752d"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_key_hud_graphics.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1023384,
+      "sha256": "1c6372d5b524ad681596c00bf4444efa1190e55cbe07b5994587a960088f2ce7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_key_media.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 7786960,
+      "sha256": "16332a7c73b7d39e26bfc7e74f3485eb9dcd29bfaa45a8c128b24aba3f288c24"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_mechanism_bindings.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3203912,
+      "sha256": "7131689c504690bf00df13fadf8d9f9d94f3d594fe184db03565d8fc845cd6ce"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_mechanism_state.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 7702736,
+      "sha256": "1d9846b9fcca7559c3e0c392f0921d779d7795c6edcbf9996287115c35c2ab58"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_mechanism_presentation.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6870984,
+      "sha256": "c51c36ccacb62bf7c7d2399b7e10f1d9a50308fc14bcb881f8c06fa353b59146"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_mechanism_audio.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1087408,
+      "sha256": "247d94165323e2daedfef5be30a17c8f17e42288d8b2fc6f80d25bbdd0421494"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_mechanism_contacts.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3959200,
+      "sha256": "e3269db42fce05e4878e610c430d34ce33db99b0122b9cc9c730cfaf943599c1"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_rooms.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4570560,
+      "sha256": "28c578136360c3b8c12a7c548690d8400dd9ba29c0cc0a2f8d07c236586f0f78"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_terrain.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4878776,
+      "sha256": "73f2698705cc49e3800854aa0e426cad1260aabd284c0159ac010223e53a01f9"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_shadow_graphics.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2411824,
+      "sha256": "40fbaa8139c385f3aad23a37b114089861a013145317a960643292847736fc12"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_swing.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2880448,
+      "sha256": "50f75ca991c8e358b36328e210385d7fe33b8ced12b28439c27fd1ac2e8baedb"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_swing_graphics.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1717360,
+      "sha256": "dc3bd4f74fb12ab2c99c614a61a384e788a4f874c9e11f9b4c652927058f1821"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_swing_action.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2878632,
+      "sha256": "ceebec35798ce2528b5fb36dd43dd6b1fb7c1aefef2252a0eba2cb0a53b52953"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_swing_entry.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4774096,
+      "sha256": "6b1c9d9320900791e32c3d9824b4f377708ffa7adcf156beee1f8b3b43ea594c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_swing_resources.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2100880,
+      "sha256": "9c66e851bcad66fb4827b4149069ca175cc9e7a679012ca4cbe11daef122d0ea"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_player_tree.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1367632,
+      "sha256": "52f115b2365c4ec7b17077b6f4c0c49ce59166d4a18d82c541c18bf0d7697a82"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_area_contacts.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 362536,
+      "sha256": "4bf692011990ceca3463befaffff3217f2ecb55feb2c8a84af30cb0e185b1684"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_objects.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4701168,
+      "sha256": "7062ff80e2881c8e32b1802e4cf38b4d13a96c85fa1c07933ceacb5d7a19d97b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_prop_clips.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1729976,
+      "sha256": "986bd4ba5cd277f7bddc8abfe4a51cc63ed3748ed9ce22f0055f2742dd1c4d5a"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_props.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6614496,
+      "sha256": "03116364058aa84e630f0875a13ca6e25b4b07d6ff11800d58e560fa725f475e"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_steps.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2725096,
+      "sha256": "bea1e17f53a5e9ae14a287eb306f271745942e6ab8ef64a26e21d1c1d6cbceee"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_keys.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1176848,
+      "sha256": "24810598c9a82e3717d50974739ffe62eb6ad5c11fbb39aabcc099a1f23b117b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_key_state.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3457472,
+      "sha256": "b3c5c81dd82fac7b8926c4f5b2a4b3be7eda3685f61e62f552d5b88734a82e68"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_key_clocks.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 10096008,
+      "sha256": "ef16734bb0e26cee4cbc5934f6e2a033e1252e933bb4ac632f50ce9c32843787"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_switches.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1506440,
+      "sha256": "094e5990721b694f0f5420890fc50a5f24c70e8e0bf05b26af74129ad827b556"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_switch_state.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3959808,
+      "sha256": "ae1b766a0d61759419d2c83d3c744c28cfdc604d41fa8889e8722bf037579446"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_wall_timeline.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1645248,
+      "sha256": "67348ddec0dd210f5890ba8fb539b83af2f73ce8e2cfca62bca519e8b0321351"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dungeon_wall_state.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2192680,
+      "sha256": "5895170fde0c2473f83e880bf63f01fdcf48c5d26f747eae88845cd6aab8000e"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_menus_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 13618616,
+      "sha256": "70fc50aa220f95cc171888753e0d8942d7742ef54e367efb1a25075c7bb6d7e9"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_menus.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 16842808,
+      "sha256": "fb1b755b89352b35af5aabd562a2625366fd24b84faaa5966d778f2e159d51e7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_music_zones.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2274592,
+      "sha256": "f8b0f4bba94d20fec4339f9b7fa546610caf53c41b23d4e910ece6baeea908cd"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_gameplay_audio.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 981496,
+      "sha256": "82e3ba7c4fa3af50589f52d79183d719e55ba346db7194d408f16ac1f8f3abfd"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1284648,
+      "sha256": "ecf57c95c0be62f9bd713d268d7b3dd3ad919eda0a9f7ed741e89d7dbeb9216a"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_world_links.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1784560,
+      "sha256": "1b6c2a608c3718c310a9c9b3c62a15ea057ccfa253f5b044a7c47d0500e357b0"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_scene.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 20931416,
+      "sha256": "1da57ad3f8fe27ac3e504ea845f3dc3efe6d2ed30c4bc66232f4a27184484774"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_scene_resources.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4363976,
+      "sha256": "49e5d11a1862dd57e3f1374f8ffce60a7e50494750bfa8a3171a694fc32c6bb1"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_story.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6411704,
+      "sha256": "00be16fda0658b8cc7520a484d9f0d1a8e623f8721d988d6903d3404440fcf57"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_present_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2160384,
+      "sha256": "73cce811e57598052b987e45612d5a928549840002820a1344490fc0483dff28"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_house_presents.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2051648,
+      "sha256": "6236537aa3f6294677c506cde285e5c02d3ca73da54dd1b0a2f32a79b35d04fc"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_mick_treats.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2227168,
+      "sha256": "45d38072e81b2a7765d7243cf328cd1ddcbd273240fefd634d17a9a464c9696c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_house_inspection_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1000504,
+      "sha256": "ea3f89c319c12890866500b0f799e42cc4702b61eab6ccaa6660d53448672362"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_equipment_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1811800,
+      "sha256": "58b2642ebd94c13e8866b32a02b828f644aa55934b78d80fc5448678f884f5e7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_field_equipment_menu.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3773928,
+      "sha256": "fa8e81eee8fd759dbf946304f2ae82a41cbf48e4da581f318acb77f756584fcc"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_storage_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1450472,
+      "sha256": "202a864b28da119d28449b24dc41c3496897680f2cba11ddc86830d356b1520b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_storage_menu.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3798512,
+      "sha256": "b28fcb5c9d5d24a8eb2f14f798aeb765b8a120cc1d5d0ed4c619a7ad8570f2a7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_item_details.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5725104,
+      "sha256": "d96928f7765d115adfccadd21ab9247c7541c9c278bfb9ed140c92a5172b1a26"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_drawer_program.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1692256,
+      "sha256": "cadc4615d729c5bf1cedf2770f3198a325c0e483d0639104b2a4305be7faae0b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_resource_catalog.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2275504,
+      "sha256": "6c0e2f2392f29c64510f2c8b5f02ddf72954b2faa71849bab5508ead4f489053"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_localization.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4009272,
+      "sha256": "0e02452dd05e42d7cee3775dba8b5e1c3b095b098d13345a9bf6652bead2ced4"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_localized_presentation.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5223200,
+      "sha256": "07a7a0bd9611414037d43b4a94847d00952e9ebd74db6cb21f028a6708564cb4"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_locale_preference.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 829552,
+      "sha256": "ebc66ecb97a577fc6a8c20022e89c536315272a54a8cb63a227997253945da03"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_source_font.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2974984,
+      "sha256": "5cf3a642f15dc561eb70269c35952b07eef5e096a0b881863bae936b928668fc"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_title_locale_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4171424,
+      "sha256": "0f0b990cb187e39459a7f32ff513404a9bbc217d66c0113a336420f8449f1bb3"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_music_programs.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6327360,
+      "sha256": "9c51f3f8bb10889f7ef0b60542a6b90e266b9056b44ff503a89a5c51d2f344b7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_music_library_bindings.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3360368,
+      "sha256": "709cd299c6f82d167fa384f0dfdff245a7380de68fa167e18cc2d52412692f12"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_music_bank_routes.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3935504,
+      "sha256": "5d42067c25ab943b69c188181d0599f9bc215c8b1ddc3b9128cde0f0addd2500"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_music_scene_graph.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4032392,
+      "sha256": "3e2a82cba82c33fe5195acb87e708e1d393ab16315e3b202fe4f9ab90fb31ab5"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_music_players.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5100104,
+      "sha256": "9ce77ca120794a8775e48ca3d6d20f49179643b7f221a72437c63aee2e758199"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_music_player_choice.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 640952,
+      "sha256": "b1555040453a2ad66797d554b55d3ee013b368cc5e87a2430395974ae90ad186"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_music_regions.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6400872,
+      "sha256": "a2f1f5f81e8a0b35940c499528c1381eb76334bb3ea1fd1f33020211341421c1"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_introduction.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 16093992,
+      "sha256": "f072be64ab162e646d83ed1a114f4e425d1f8a0d6f1cd1b248b535994e402838"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_new_game_setup.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 20904328,
+      "sha256": "7b979d6b52fc5c509fddb880d3bf6135e4c15535b33ac123523a8ab3d3a920f8"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_startup_settings.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 6903472,
+      "sha256": "365d7a13360d8778f14ee7007268a5929f2d1c3ac40b618abd70a9497feb5ed5"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_house_button_prompts.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2741760,
+      "sha256": "b4fbcbdb8772dd89446e2a334734e3f4adb84ff8a2ed4b606855b789516ef644"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_loading_indicator_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 924304,
+      "sha256": "0807cbdd833ddce28e9bd0a1dfca358be47bdf308a203fd2795fb973755de029"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_continue_menu_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4157608,
+      "sha256": "24d1ebeb4b2d9647631805391c623bc0b3dd28d5bb9c188f89554908f0ec4f69"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_continue_menu.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3868696,
+      "sha256": "f923e72716e0f49af23fc8755320c597e69d836df060ba9a82c5e7fc30468a6b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_slot_preference.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1140880,
+      "sha256": "549a24c43278bcdbda55b7689514b8fefa501e67644ea3c8308a9549b6acc8a3"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_restore_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5878152,
+      "sha256": "f452a939cd668dc8ee009157f18fd0c9f09d4e58bb31e17a2ca1b8368561dda4"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_session_restore.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 8176776,
+      "sha256": "6061fb74c0144223100fb84634f7d4ce79e12bc1522c51f9dc4f4452d562327e"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_session_migration.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 12562552,
+      "sha256": "dfeab1f3e41588da17c9ea4fa6435ca1dfb3876d450f3b1ad1ffcbfb14be5039"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_load_rng.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 911088,
+      "sha256": "8d852a1e8b5c77fea865d5cabec9392dce39cd286c0da0d2d46af20bc096f1c3"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_fresh_house.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5018592,
+      "sha256": "ad478294b4c7146befe7ea5aba5004b37065ab5a33537c688bcbef822fbb699c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dialogue_choices_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 4789120,
+      "sha256": "3240b806c9e31851f8ac26fea5b85efbbf63cab56a0d2aade5c440aa0ad5ebed"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dialogue_choices.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 915792,
+      "sha256": "047c29a815c129a9ceab391f2944633370d5ee82f10716b8d7bb729c5a72162c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_phone_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1203640,
+      "sha256": "1cd134064e4b7d7d9958a2caaf092107776150f3450ea7ea07fb6506eb74723e"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_phone_runtime.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 578784,
+      "sha256": "c20df3f717d2acff4a32c018af34fbba4075d502d8c559f6eb8a3f5ea84f9ac5"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_native_session.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 24004696,
+      "sha256": "3f343be479e979cf6943e5e054cee0fde17ef7a3992c472a272614007f4001cf"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_session_save.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 15949800,
+      "sha256": "d97423184a8b27916c1bb4b22b60455630ad420ddb8a3ea60cdce85c34c77f62"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_save_menu_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 5995176,
+      "sha256": "d2086fa735b8c9b6822b170d826b338740cae6d4d07fd2744356a8a831f0cd9f"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_save_menu.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2486464,
+      "sha256": "ec8c99cc81dd5f26456e08cfa019366730930b448b313de41565ae96bdb13769"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_native_input.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 430768,
+      "sha256": "d2047639835dfc6c586f77f91718eb33898adb201f5733277db858c823e0efaf"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_world_effect_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 479656,
+      "sha256": "a2580addb1d8f2aab41c5ea1f14645b5f23e4de2a994e991cc5a2540dc96bc27"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_world_effect.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1066072,
+      "sha256": "2afa1653f5cbb85b7b37c58edef1ac397177059332fb06d6cccc1ac9c4722179"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_items_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1573016,
+      "sha256": "9de215adbaf3c47d27bb24132a9062effcd92b7e34475719de7e82f26586d442"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_items_menu.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1663736,
+      "sha256": "a7feea366eebc1f7ad3e23e85d5bb383cb4cec1d34164f1989170506826efd8b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_house_audio.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1183160,
+      "sha256": "57091d7f5064f1894d2b45722d9d3ea44564a8c8ef2515edb235856d8432670a"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_house_runtime.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 10524368,
+      "sha256": "ff5aa155f06bcdb5241ad2161c68a4cf52b5a7fca10a78322f018c6f51119fb2"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_house_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1501296,
+      "sha256": "fc5b586e252565a57f948c1707f30c059538429fe0d366dbcaa21a6c556864b8"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_house_presentation.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 11835528,
+      "sha256": "65365b152500f98be888b5c4e00cf0e7123a1575f877c52d2c628ae60acd2f30"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_battle_loot.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 296072,
+      "sha256": "756c2566cc887290f36705094423abdbb916a41bc5c06372d0e43d192a9fd80f"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_battle_outcome.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2459376,
+      "sha256": "2435f83aa1f3e9c5fbe9834eec93b3e9c9576da0f4afab75118faa746fde94fc"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_battle_round.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2381192,
+      "sha256": "f5eb9cfb72e3e48b8e83154239f8681b6cc139ed173f50d4cf2bae9427c8f3a9"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_battle_round_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1313848,
+      "sha256": "a15350b212b7fe3576ab4a8f920269a95e9bc0ce90ba21eda4452f67316d39db"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_battle_action_presentation.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 8692424,
+      "sha256": "614284343efe6e4007b4b1345fd2f8444e36e9c5f6a23b65eb8528b31a1bc60c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_source_random.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 98608,
+      "sha256": "645d3b00585fd002ec634bdda1bbe933abd22ab3a88fe70de5d6dcddaa1a131d"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_audio_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 940072,
+      "sha256": "074c85530c0c6481faa2d9a86c1e197f4c8bf77b5f9693b0ee2b761b30d4f6e4"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_battle_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 944248,
+      "sha256": "bad4532b4141561eba77a76f5bb12c75bcc42d1319afc86c5ac6ca01c01a2247"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_battle_entry.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 542008,
+      "sha256": "9214728fae5ccc645b7ffa3dc2f36715b1821cee35e7df2fa28595f3317f9318"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_room_data.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 2647776,
+      "sha256": "26676f72be96a483c369e030407078ecfd859b7ace64140f942db2e71032370c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_content.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3538832,
+      "sha256": "2f5fe8a2288306d89cca2f809725df84a8f61c4ec3582042ca68cb7392ec03b7"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_file_io.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 622872,
+      "sha256": "d0b9f3dd45ba5d3d9c8671efb1510bb6248b9597c6989e776f4e30aa79889886"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_story.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 232104,
+      "sha256": "046d24d2b7a1e6cc14c8ea29c9b69b8cfc454155c9cf96c196cad84a238fdc4e"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_game.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 909144,
+      "sha256": "dce2319a81d20f7126537d52bfab7b62f877fded63d79462daf942ec81601d2f"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_save.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 959240,
+      "sha256": "5c78188db6479897f83dc25a41f1e72ab6b4ab7772991adc2e0f74350875080d"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_progression.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 187352,
+      "sha256": "50aeba90ae9ec24dc2971ff490828e615f2cbfafed951dd2f44b0ed8905993f0"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_movement.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 363928,
+      "sha256": "be9292df38ee56bacfa45fc85975bf3b637d3687521788e1e825e1958b675e8c"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_animation.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 239800,
+      "sha256": "03038724a5ac0e2b1389bc2f9564c87cfd290729aaaa2cb07709919bf19a5661"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_collision.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3021032,
+      "sha256": "a9c5328adbb5edbc1d773229d91af145260bdd4ca2070e1e5da982b303ca4dde"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_world_flags.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1928008,
+      "sha256": "882609917fa3c75e03ecbbc9438aaf58fbe738a63addc1c2d0d3f8c5ebc9a567"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_world.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 15330992,
+      "sha256": "48b346a672fec67b59842c560eb3c40a8abf34eb2d086157e140be5a0ca4466b"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_opening_trigger.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 239440,
+      "sha256": "5d3eee79c209776fbdea32e263f92a1a25bb6af554cc461f2661759b9d80583d"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_dialogue.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 376784,
+      "sha256": "f308045ab73ee62883da059e2a2a9914c103595abde54c7c05e1b896b8aee0df"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_actor_actions.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 1294888,
+      "sha256": "f7f90c80aec676191d5c772ccdecbd21951d2c733fb857e610ea84e1963a9360"
+    },
+    {
+      "kind": "compiler-file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\runtime_cutscene_camera.cpp.o",
+      "marker": ".owned-shadow-core-host",
+      "marker_value": "shadow-core-host-v1",
+      "bytes": 3737464,
+      "sha256": "2c617b5b7b0b434e54cf300986a13a923d76995c90e7bc57afa92a72f66e46eb"
+    }
+  ],
+  "total_bytes": 1431217425,
+  "kept_archive": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\shadow-core-host-2\\libencore-shadow.a",
+  "kept_archive_sha256": "372b2782ef10b8a1dc922e53941e88224e4c3cf808272ff6b86a98c8e2157426",
+  "actual_current_host_exit": 0,
+  "object_member_equality": true,
+  "scope": "Retained actual raw observations/adapters/logs/input hashes;remove only owned temporary native projects and archive-proven duplicate or obsolete host objects/archive. Current tested archive and real game candidates remain."
+}

@@ -1,0 +1,18 @@
+test_all_binary_truncations_and_header_versions (tests.test_shadow_graphics.ShadowGraphicsTests.test_all_binary_truncations_and_header_versions) ... ok
+test_binary_owned_modes_and_flags (tests.test_shadow_graphics.ShadowGraphicsTests.test_binary_owned_modes_and_flags) ... ok
+test_disabled_render_loop_does_not_pause_game_clock (tests.test_shadow_graphics.ShadowGraphicsTests.test_disabled_render_loop_does_not_pause_game_clock) ... ok
+test_duplicate_modes_and_orphan_frames (tests.test_shadow_graphics.ShadowGraphicsTests.test_duplicate_modes_and_orphan_frames) ... ok
+test_hidden_and_parent_pause_continue_tree_pause_stops (tests.test_shadow_graphics.ShadowGraphicsTests.test_hidden_and_parent_pause_continue_tree_pause_stops) ... ok
+test_metadata_owner_and_texture_rejections (tests.test_shadow_graphics.ShadowGraphicsTests.test_metadata_owner_and_texture_rejections) ... ok
+test_mode_and_frame_rejections (tests.test_shadow_graphics.ShadowGraphicsTests.test_mode_and_frame_rejections) ... ok
+test_native_result_version_and_domain_rejections (tests.test_shadow_graphics.ShadowGraphicsTests.test_native_result_version_and_domain_rejections) ... ok
+test_native_three_profiles_repeat_semantics (tests.test_shadow_graphics.ShadowGraphicsTests.test_native_three_profiles_repeat_semantics) ... ok
+test_original_child_and_untrimmed_frame_order (tests.test_shadow_graphics.ShadowGraphicsTests.test_original_child_and_untrimmed_frame_order) ... ok
+test_producer_review_and_official_engine_pins (tests.test_shadow_graphics.ShadowGraphicsTests.test_producer_review_and_official_engine_pins) ... ok
+test_roundtrip_and_exact_resource_size (tests.test_shadow_graphics.ShadowGraphicsTests.test_roundtrip_and_exact_resource_size) ... ok
+test_source_recipe_negative_paths_and_duplicate_fields (tests.test_shadow_graphics.ShadowGraphicsTests.test_source_recipe_negative_paths_and_duplicate_fields) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 5.838s
+
+OK

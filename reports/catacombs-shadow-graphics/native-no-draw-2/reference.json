@@ -1,0 +1,4083 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "fps": 60,
+  "no_draw": true,
+  "initial": {
+    "position": [
+      0,
+      7
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "centered": true,
+    "flip_h": false,
+    "flip_v": false,
+    "visible": true,
+    "behind": true,
+    "playing": true,
+    "speed_scale": 1,
+    "frame": 0,
+    "animation": "shadow",
+    "gpu_snap": true,
+    "modulate": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "self_modulate": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "physics_fps": 60,
+    "jitter_fix": 0
+  },
+  "rows": [
+    {
+      "tick": 0,
+      "actions": [
+        [
+          "mode",
+          "ripple"
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 1,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 2,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 3,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 4,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 5,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 6,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 7,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 8,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 9,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 10,
+      "actions": [
+        [
+          "mode",
+          "ripple"
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 11,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 12,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 13,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 14,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 15,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 16,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 17,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 18,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 19,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 20,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 21,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 22,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 23,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 24,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 2,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        15,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 25,
+      "actions": [
+        [
+          "mode",
+          "magic"
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 26,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 27,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 28,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 29,
+      "actions": [
+        [
+          "frame",
+          2
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 30,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 31,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 32,
+      "actions": [
+        [
+          "frame",
+          2
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 33,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 34,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 35,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 36,
+      "actions": [
+        [
+          "visible",
+          false
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 37,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 38,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 39,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 40,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 41,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 42,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 43,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 44,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 45,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 46,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 47,
+      "actions": [
+        [
+          "visible",
+          true
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 48,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 49,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 50,
+      "actions": [
+        [
+          "player_pause",
+          true
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 51,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 52,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 53,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 54,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 55,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 56,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 57,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 58,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 59,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        128.25,
+        -40.5
+      ],
+      "shadow_global": [
+        128.25,
+        -33.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 60,
+      "actions": [
+        [
+          "position",
+          [
+            10.25,
+            -20.5
+          ]
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 61,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 62,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 63,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 64,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": true,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 65,
+      "actions": [
+        [
+          "player_pause",
+          false
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 66,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 67,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 68,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 69,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 70,
+      "actions": [
+        [
+          "tree_pause",
+          true
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": false,
+      "player_pause": false,
+      "tree_pause": true,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 71,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": false,
+      "player_pause": false,
+      "tree_pause": true,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 72,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": false,
+      "player_pause": false,
+      "tree_pause": true,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 73,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": false,
+      "player_pause": false,
+      "tree_pause": true,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 74,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": false,
+      "player_pause": false,
+      "tree_pause": true,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 75,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": false,
+      "player_pause": false,
+      "tree_pause": true,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 76,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": false,
+      "player_pause": false,
+      "tree_pause": true,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 77,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": false,
+      "player_pause": false,
+      "tree_pause": true,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 78,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": false,
+      "player_pause": false,
+      "tree_pause": true,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 79,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": false,
+      "player_pause": false,
+      "tree_pause": true,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 80,
+      "actions": [
+        [
+          "tree_pause",
+          false
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 81,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 82,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 83,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 84,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 85,
+      "actions": [
+        [
+          "mode",
+          "magic"
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 86,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 87,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 88,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 89,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 90,
+      "actions": [
+        [
+          "mode",
+          "shadow"
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "shadow",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Shadow.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 91,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "shadow",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Shadow.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 92,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "shadow",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Shadow.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 93,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "shadow",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Shadow.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 94,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "shadow",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Shadow.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 95,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "shadow",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Shadow.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 96,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "shadow",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Shadow.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 97,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "shadow",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Shadow.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 98,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "shadow",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Shadow.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 99,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "shadow",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Shadow.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 100,
+      "actions": [
+        [
+          "mode",
+          "ripple"
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 101,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 102,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 0,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 103,
+      "actions": [
+        [
+          "frame",
+          1
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 104,
+      "actions": [
+        [
+          "frame",
+          1
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 105,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 106,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 107,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 108,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 109,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 110,
+      "actions": [
+        [
+          "visible",
+          false
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 111,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "ripple",
+      "frame": 1,
+      "playing": true,
+      "behind": false,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Water_Ripple.png",
+      "region": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 112,
+      "actions": [
+        [
+          "mode",
+          "magic"
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 113,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 114,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 115,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 116,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 117,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 118,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 0,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 119,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": false,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 120,
+      "actions": [
+        [
+          "visible",
+          true
+        ]
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 121,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 122,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 123,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 124,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 125,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 126,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 1,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    },
+    {
+      "tick": 127,
+      "actions": [
+
+      ],
+      "delta_bits": 1015580809,
+      "mode": "magic",
+      "frame": 2,
+      "playing": true,
+      "behind": true,
+      "visible": true,
+      "process_enabled": true,
+      "player_pause": false,
+      "tree_pause": false,
+      "body_position": [
+        10.25,
+        -20.5
+      ],
+      "shadow_global": [
+        10.25,
+        -13.5
+      ],
+      "texture": "res://Graphics/Character Sprites/Magic_Ripple.png",
+      "region": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "drawn_frames": 0
+    }
+  ]
+}

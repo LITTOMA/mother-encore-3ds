@@ -1,0 +1,4 @@
+runtime/storage_menu.cpp: In lambda function:
+runtime/storage_menu.cpp:18:87: warning: suggest parentheses around ‘&&’ within ‘||’ [-Wparentheses]
+   18 |  auto check=[&](const ItemInstance&i,bool stored){if(!uids.insert(i.id).second||stored&&i.equipped)return false;for(uint32_t j=0;j<data_.count(StorageSection::Policies);++j){auto p=data_.policy(j);if(p.definition!=i.definition)continue;if((i.doses!=p.doses&&(!dose_admission_||!dose_admission_(i,p.doses)))||++counts[j]>p.max_count)return false;if(i.equipped){bool found=false;for(uint32_t k=0;k<data_.count(StorageSection::Equipment);++k)if(data_.equipment(k).definition==i.definition&&(inventory_->content().definition(i.definition).flags&uint32_t(ItemDefinitionFlag::Equipment)))found=true;if(!found)return false;}return true;}return false;};
+      |                                                                                 ~~~~~~^~~~~~~~~~~~

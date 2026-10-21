@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_shadow_clock_reference.py", line 109, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_shadow_clock_reference.py", line 108, in main
+    invoke(engine,project,['--video-driver','GLES2','--debug','--editor','--quit'],out/'source-settings-import.log');write_files(project,files);args=['--video-driver','GLES2','--debug','--fixed-fps',str(o.fps)]+(['--disable-render-loop']if o.no_draw else[]);invoke(engine,project,args,out/'godot.log');result=validate_result(json.loads((out/'reference.json').read_bytes()),proof);proof.update(producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),engine_sha256=hashlib.sha256(engine.read_bytes()).hexdigest(),result_sha256=hashlib.sha256((out/'reference.json').read_bytes()).hexdigest(),native_defaults_verified=True,diagnostic_only_fields=['drawn_frames']);(out/'receipt.json').write_bytes((json.dumps(proof,indent=2)+'\n').encode());print('Native source Shadow clock:',len(result['rows']),'observations;fixedfps',o.fps,';no_draw',o.no_draw,';no complete gameplay or GPU pixel claim')
+                                                                                                                                                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_shadow_clock_reference.py", line 93, in validate_result
+    require(row['delta_bits']==struct.unpack('<I',struct.pack('<f',1.0/proof['fps']))[0]and row['render_pending']==(not proof['no_draw'])and row['process_enabled']==(not row['tree_pause']),'Shadow native explicit clock/pause services differ')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Shadow native explicit clock/pause services differ

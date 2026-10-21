@@ -1,0 +1,510 @@
+{
+  "source": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "scope": "Original Player Shadow child geometry,pixel-snap/frame policy and untrimmed source pixels;bounded forward clock and checked texture service only,not full player/scene/lighting/save admission",
+    "source": {
+      "commit": "7d9246600fffe518408f5830d4848635019005a3",
+      "scope": "Original run-sound assignments and PartyObject shadow requests from three Catacombs areas;source polygons and actual shadow resources only,not full scene/physics/renderer/save admission",
+      "review_sha256": "1929928a783d2c2266fb88a3aee5ed900a8d994b05eb5c39ce3e2e3f6bf827fe",
+      "sources": {
+        "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+        "Audio/Sound effects/Footsteps/cave.mp3": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b",
+        "Audio/Sound effects/Footsteps/cave.mp3.import": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc",
+        "Audio/Sound effects/Footsteps/grass.mp3": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878",
+        "Audio/Sound effects/Footsteps/grass.mp3.import": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1",
+        "Audio/Sound effects/Footsteps/metal.mp3": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08",
+        "Audio/Sound effects/Footsteps/metal.mp3.import": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e",
+        "Audio/Sound effects/Footsteps/sand.mp3": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6",
+        "Audio/Sound effects/Footsteps/sand.mp3.import": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1",
+        "Audio/Sound effects/Footsteps/soil.mp3": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f",
+        "Audio/Sound effects/Footsteps/soil.mp3.import": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65",
+        "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41",
+        "Audio/Sound effects/Footsteps/stone.mp3.import": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7",
+        "Audio/Sound effects/Footsteps/water.mp3": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82",
+        "Audio/Sound effects/Footsteps/water.mp3.import": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7",
+        "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+        "Audio/Sound effects/Footsteps/wood.mp3.import": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Graphics/Character Sprites/Magic_Ripple.png.import": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+        "Graphics/Character Sprites/Water_Ripple.png.import": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+        "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+        "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+        "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+      },
+      "methods": {
+        "player": {
+          "_set_running": "8148793a6a2defe975058c992de188075bceb8909d96bc434802659caf033e5e",
+          "_move_state": "23a118d0c40c880a278d1b0b5f172a49e037002ab8cccf0d1e9f620a04d51130"
+        },
+        "area": {
+          "_on_Stepping_Sounds_body_entered": "7d0c96bf36f73ebb95e749272d085701a4edf3c461bd2d453f721d3fa668e2dd",
+          "_on_Stepping_Sounds_body_exited": "a2f9533d0c4cd7a46b75c27038b456744127b1cd7448aace3e6a5f7677336908",
+          "set_player_run_sound": "fddfc8690e737a4f2e58e93a63f3bcd1f8277366aea5f85a6cf6d47eb95d7d70",
+          "enable": "96afbc5b91ca1e9a0c799f6f63c0cac8cc2879ad014ad8dd3ae23d0fa526bfc9",
+          "disable": "a5fa3272396fdf5aaffbdaff0879785c92f0add52b9495f82d3bc42648f5790b"
+        },
+        "party": {
+          "set_shadow": "6fc8b4960a19de7a80f1a9c3a7d797ee0585432330cc935ccc13feba3dc500eb",
+          "get_shadow": "086626d53d2bcfbb5af86a91af3c7d07a616873afd98d3db937bf3522ea19c75"
+        },
+        "shadow": {
+          "set_anim": "48f21bf3cea4a266f00bd73f6756a2ae4c24328d167ca32fe5919559aec8c6f8",
+          "_set_behind_parent": "faaf1d3eb7418171478759b24d1667fee8b9fca31895d85d02f7ce82145b7328"
+        }
+      },
+      "source_rules": {
+        "sound": "current player AND enabled;exit also requires nonempty sound",
+        "shadow": "ANY PartyObject and nonempty effect,independent of enabled",
+        "callbacks": "Assignments only;area change does not directly restart running audio"
+      },
+      "not_implemented": [
+        "Formal contact/Shadow renderer consumer",
+        "Elapsed Shadow animation timing",
+        "Complete scene or save admission"
+      ]
+    },
+    "source_review_sha256": "2af2bd8bc9d192c3390806b250f779cf01bf24f0ce779e76ee17f0c035db5e0c",
+    "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "engine_sources": {
+      "scene/2d/animated_sprite.cpp": "8dc64e924ca6f560f0acaffd43cb86e47a500c8586a03205f026a4445fff0c2e",
+      "scene/2d/animated_sprite.h": "806a6385c16a2f0df64eaf30e96234b8552dbbdd39fffe8f8b0c85a66e930016"
+    },
+    "sources": {
+      "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+      "Audio/Sound effects/Footsteps/cave.mp3": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b",
+      "Audio/Sound effects/Footsteps/cave.mp3.import": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc",
+      "Audio/Sound effects/Footsteps/grass.mp3": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878",
+      "Audio/Sound effects/Footsteps/grass.mp3.import": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1",
+      "Audio/Sound effects/Footsteps/metal.mp3": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08",
+      "Audio/Sound effects/Footsteps/metal.mp3.import": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e",
+      "Audio/Sound effects/Footsteps/sand.mp3": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6",
+      "Audio/Sound effects/Footsteps/sand.mp3.import": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1",
+      "Audio/Sound effects/Footsteps/soil.mp3": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f",
+      "Audio/Sound effects/Footsteps/soil.mp3.import": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65",
+      "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41",
+      "Audio/Sound effects/Footsteps/stone.mp3.import": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7",
+      "Audio/Sound effects/Footsteps/water.mp3": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82",
+      "Audio/Sound effects/Footsteps/water.mp3.import": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7",
+      "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+      "Audio/Sound effects/Footsteps/wood.mp3.import": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664",
+      "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+      "Graphics/Character Sprites/Magic_Ripple.png.import": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e",
+      "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+      "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+      "Graphics/Character Sprites/Water_Ripple.png.import": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+      "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+      "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+      "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+      "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+      "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+      "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+      "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+    },
+    "packing": {
+      "columns": 4,
+      "width": 68,
+      "height": 14,
+      "cell": [
+        17,
+        7
+      ],
+      "rgba_sha256": "428f54fa68c94cf83ee2aded125e4742c8f3866e89cdd514a172963a9e032ed9"
+    },
+    "source_frames": [
+      {
+        "mode": 0,
+        "index": 0,
+        "source": "Graphics/Character Sprites/Shadow.png",
+        "source_region": [
+          0,
+          0,
+          15,
+          5
+        ],
+        "width": 15,
+        "height": 5,
+        "rgba_sha256": "2cf5073fe5ec07ec9a505a58c5c2c2ff3a8cdbea339a3630a5228ae15d12aa49"
+      },
+      {
+        "mode": 1,
+        "index": 0,
+        "source": "Graphics/Character Sprites/Water_Ripple.png",
+        "source_region": [
+          0,
+          0,
+          15,
+          5
+        ],
+        "width": 15,
+        "height": 5,
+        "rgba_sha256": "e1a51208f66f4b9b5994636f1f4a9fceae9de9074b96df134a85cd2da47b9779"
+      },
+      {
+        "mode": 1,
+        "index": 1,
+        "source": "Graphics/Character Sprites/Water_Ripple.png",
+        "source_region": [
+          30,
+          0,
+          15,
+          5
+        ],
+        "width": 15,
+        "height": 5,
+        "rgba_sha256": "3da51c7c0bd3b3e552adef8536dd155c0e01a5b69db8b17ab4dbca6cabb47144"
+      },
+      {
+        "mode": 1,
+        "index": 2,
+        "source": "Graphics/Character Sprites/Water_Ripple.png",
+        "source_region": [
+          15,
+          0,
+          15,
+          5
+        ],
+        "width": 15,
+        "height": 5,
+        "rgba_sha256": "84b36397b9e0190f4aad53a325a19e54e0369aa4ef2d8994056e0810227cc18d"
+      },
+      {
+        "mode": 2,
+        "index": 0,
+        "source": "Graphics/Character Sprites/Magic_Ripple.png",
+        "source_region": [
+          0,
+          0,
+          17,
+          7
+        ],
+        "width": 17,
+        "height": 7,
+        "rgba_sha256": "f5dbea94dd71b3658cdf8cd9b55b615fb49e44f88a83ead28216ce1f6dfdc91d"
+      },
+      {
+        "mode": 2,
+        "index": 1,
+        "source": "Graphics/Character Sprites/Magic_Ripple.png",
+        "source_region": [
+          17,
+          0,
+          17,
+          7
+        ],
+        "width": 17,
+        "height": 7,
+        "rgba_sha256": "c246941aba6ed8cdf7d310a83cab0ea32d2c70a3a2d25ec86a91d32b2d325410"
+      },
+      {
+        "mode": 2,
+        "index": 2,
+        "source": "Graphics/Character Sprites/Magic_Ripple.png",
+        "source_region": [
+          34,
+          0,
+          17,
+          7
+        ],
+        "width": 17,
+        "height": 7,
+        "rgba_sha256": "7faae6a0f2d43e89cd2e71aa8be5d6b8164a78157a5168525ab4c756cc02d270"
+      }
+    ],
+    "permission": "Pinned game-related asset permission and retained Godot MIT source/license checked;no environment fonts,tools or import caches copied into resources",
+    "native_defaults_unverified": true,
+    "not_implemented": [
+      "Formal scene/actor binding",
+      "Complete player/lighting/save admission",
+      "Actual GPU/NDSP/hardware verification"
+    ]
+  },
+  "party_methods": {
+    "set_shadow": "6fc8b4960a19de7a80f1a9c3a7d797ee0585432330cc935ccc13feba3dc500eb",
+    "get_shadow": "086626d53d2bcfbb5af86a91af3c7d07a616873afd98d3db937bf3522ea19c75"
+  },
+  "fps": 60,
+  "no_draw": false,
+  "timeline": [
+    [
+      [
+        "mode",
+        "ripple"
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "mode",
+        "ripple"
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "mode",
+        "magic"
+      ]
+    ],
+    [],
+    [],
+    [],
+    [
+      [
+        "frame",
+        2
+      ]
+    ],
+    [],
+    [],
+    [
+      [
+        "frame",
+        2
+      ]
+    ],
+    [],
+    [],
+    [],
+    [
+      [
+        "visible",
+        false
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "visible",
+        true
+      ]
+    ],
+    [],
+    [],
+    [
+      [
+        "player_pause",
+        true
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "position",
+        [
+          10.25,
+          -20.5
+        ]
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "player_pause",
+        false
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "tree_pause",
+        true
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "tree_pause",
+        false
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "mode",
+        "magic"
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "mode",
+        "shadow"
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "mode",
+        "ripple"
+      ]
+    ],
+    [],
+    [],
+    [
+      [
+        "frame",
+        1
+      ]
+    ],
+    [
+      [
+        "frame",
+        1
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "visible",
+        false
+      ]
+    ],
+    [],
+    [
+      [
+        "mode",
+        "magic"
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      [
+        "visible",
+        true
+      ]
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "generated_sha256": {
+    "project.godot": "7c26198f2bdd8dc98c7822a54f4698018b33d7f43dd42c8a3a352a392b1b8335",
+    "source.tscn": "07c482e94473c79ed545e132e4d99a14a37d131d0219f524725ad6d61156f5de",
+    "actor.gd": "a9651d1b33bf1542028a7c3348cb15cb468f8ceb435478e3b0330838b301db12",
+    "probe.gd": "412a369d065c097b9fdef79111aa1be6a0412e14387b075632ddfb5f5753470b",
+    "probe.tscn": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4",
+    "input.json": "22a599c16006daf740013b91fe7f645e45aeec47b2da6a02b936c2a8b4494f75"
+  },
+  "copied_source": {
+    "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+    "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+    "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+    "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+    "Graphics/Character Sprites/Water_Ripple.png.import": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878",
+    "Graphics/Character Sprites/Magic_Ripple.png.import": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+  },
+  "adapters": [
+    "Fixed native --fixed-fps;eachactual Node delta recorded asIEEEbinary32 bits,no wallclock-derived timestep",
+    "One unrecorded processing warmup,then the first mode change resets the timer before the recorded sequence",
+    "Verbatim original Player Shadow instance section,complete Shadow scene/script and original image imports;selected original PartyObject set/get methods only",
+    "Probe PROCESS/body STOP are explicit tree-pause services;Player paused is an injected boolean,ordinary movement/gameplay not executed",
+    "No-draw variant explicitly passes --disable-render-loop;normal variants retain native rendering",
+    "Raw native frame/texture/mode and constructor properties,not GPU pixel or complete scene equivalence"
+  ],
+  "fresh_checksum_retirement": {
+    "Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": "59fe9624ff276f42d2c56c954d25a091db76a35c9b36744639dceef8ae7674e2",
+    "Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": "350ed1697a1168b8062b94a909f7bce1057755535f91ff88d221d8cef3a481bc",
+    "Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": "6de0a9907236d19defec331b85ceff5c350e62a609d37bf92361d5bbe640ed12"
+  },
+  "producer_sha256": "d47ce06a63aecab9059cfb5f9ec3ce29c5f02be2d9245fc41bc20d4651116266",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "result_sha256": "9f194ac1225c2d8855f1582a4ee6a5a79a3441e4a392100543fb24ded2bff33e"
+}

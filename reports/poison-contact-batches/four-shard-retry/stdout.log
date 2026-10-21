@@ -1,0 +1,160 @@
+Python method partition: 4 discovered = 4 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 1/4: 1 methods; whole modules and every original assertion retained
+Python method partition: 4 discovered = 4 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 2/4: 1 methods; whole modules and every original assertion retained
+Python method partition: 4 discovered = 4 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 3/4: 1 methods; whole modules and every original assertion retained
+Python method partition: 4 discovered = 4 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 4/4: 1 methods; whole modules and every original assertion retained
+Python method partition: 2 discovered = 2 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 1/2: 1 methods; whole modules and every original assertion retained
+Python method partition: 2 discovered = 2 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 2/2: 1 methods; whole modules and every original assertion retained
+PYTHON START test_native_content pid=39404
+PYTHON END test_native_content pid=39404 status=1
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\build\worktrees\poison-batches-final\tests\python_suite.py", line 331, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\build\worktrees\poison-batches-final\tests\python_suite.py", line 295, in main
+    return worker(args.project, args.worker_plan, args.worker_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\build\worktrees\poison-batches-final\tests\python_suite.py", line 177, in worker
+    raise ValueError('Worker collection differs from admitted method IDs')
+ValueError: Worker collection differs from admitted method IDs
+
+PYTHON START test_native_content pid=21936
+PYTHON START test_native_house pid=47504
+PYTHON END test_native_content pid=21936 status=0
+test_run (tests.test_native_content.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+PYTHON END test_native_house pid=47504 status=1
+test_run (tests.test_native_house.Case.test_run) ... FAIL
+
+======================================================================
+FAIL: test_run (tests.test_native_house.Case.test_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\litto\AppData\Local\Temp\tmpznfc31x4\tests\test_native_house.py", line 3, in test_run
+    def test_run(self): self.fail("intentional worker failure")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: intentional worker failure
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
+
+PYTHON START test_native_house pid=24544
+PYTHON START test_native_content pid=59196
+PYTHON START test_native_round pid=61860
+PYTHON START test_native_restore pid=65060
+PYTHON END test_native_round pid=61860 status=0
+PYTHON END test_native_content pid=59196 status=0
+PYTHON END test_native_restore pid=65060 status=0
+test_run (tests.test_native_round.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+
+test_run (tests.test_native_restore.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+
+test_run (tests.test_native_content.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+
+PYTHON END test_native_house pid=24544 status=0
+test_run (tests.test_native_house.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+OK
+
+PYTHON START test_new_game_assets pid=68376
+PYTHON START test_mayor_scene pid=59844
+PYTHON START test_mayor_field pid=33012
+PYTHON START test_house_assets pid=65932
+PYTHON END test_mayor_field pid=33012 status=0
+PYTHON END test_house_assets pid=65932 status=0
+PYTHON END test_mayor_scene pid=59844 status=0
+test_run (tests.test_mayor_field.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+
+test_run (tests.test_mayor_scene.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+
+test_run (tests.test_house_assets.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+
+PYTHON END test_new_game_assets pid=68376 status=0
+test_run (tests.test_new_game_assets.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+OK
+
+PYTHON START test_melody_content pid=62620
+PYTHON START test_doll_postwin pid=65340
+PYTHON START test_native_session pid=67352
+PYTHON START test_phone_linker pid=44612
+PYTHON END test_phone_linker pid=44612 status=0
+PYTHON END test_native_session pid=67352 status=0
+test_run (tests.test_phone_linker.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+test_run (tests.test_native_session.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+PYTHON END test_doll_postwin pid=65340 status=0
+PYTHON END test_melody_content pid=62620 status=0
+test_run (tests.test_doll_postwin.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.014s
+
+OK
+
+test_run (tests.test_melody_content.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+OK
+

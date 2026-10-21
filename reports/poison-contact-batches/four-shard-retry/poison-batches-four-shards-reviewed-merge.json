@@ -1,0 +1,13 @@
+{
+  "ours": "276bf00166c9bc7a81d3674374ac7c9c5c944832",
+  "parent": "b8c6675a4bc8c95e848aba6f25d2fbe576080483",
+  "head": "066b9ad321996c41e68b5cae0ab58209fe927e84",
+  "code": [
+    "CMakeLists.txt",
+    "cmake/TestParallelism.cmake",
+    "tests/python_suite.py",
+    "tests/test_ci_test_parallelism.py",
+    "tests/test_python_shards.py"
+  ],
+  "scope": "Four schedule/test files byte identical PR103; CMake retains PR101 runtime/test registration and applies only the reviewed four-shard registration/timeout/label changes. STATUS preserves all paragraphs on both sides. Gameplay, resources, frozen traces unchanged; full GCC rerun required."
+}

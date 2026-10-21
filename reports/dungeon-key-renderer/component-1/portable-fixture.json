@@ -1,0 +1,8 @@
+{
+  "kind": "explicit-texture-api-double-not-gpu",
+  "source_sha256": "6f426a8ce4205831a83b6669de682c35774fb1263aaa17b39bdaa6670a44ee82",
+  "fixture_sha256": "3227404b2be4d7d855f4b8fb3f39bae16b2df0f07eddfe7bc6603ebd0bfe97c2",
+  "changed_fields": [
+    "profile texture byte length/CRC/SHA only"
+  ]
+}

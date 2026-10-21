@@ -1,0 +1,21 @@
+{
+  "unchanged_repeated_fixture": true,
+  "synthetic_only_byte_identities": true,
+  "rejected_foreign_destinations": [
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\docs\\renderer-fixture-must-not-exist",
+    "D:\\GameDev\\3DS\\renderer-fixture-must-not-exist"
+  ],
+  "files": {
+    ".owned-key-renderer-fixture": "14f2a70e9161af1e909e5229d0b3e6fc198031f66e16f4cad577f3bf5ffc79e9",
+    "fixture.json": "c22e8057a99b2452bdbe0429c6a33b57468f70ac1d3615a10e68fb4030547134",
+    "source.enckmp": "3227404b2be4d7d855f4b8fb3f39bae16b2df0f07eddfe7bc6603ebd0bfe97c2",
+    "graphics/world/catacombs/keys/door.t3x": "260c4a290c88c0e17c4298ae8727f842c07ce03aaa05747861f0cb61e64878ec",
+    "graphics/world/catacombs/keys/key.t3x": "1eedf6ffffb49c5ba4893093c2ed1803ad0d3f420cd1b55d476343cfa6004616",
+    "graphics/world/catacombs/keys/lock.t3x": "eee19dfe4984751c62fad489660fb3c51bc69c5def3f2195cab900323643e28a",
+    "original/reference.tsv": "c97bbfac1833a74c4399d85cbab4a3ad7aa30e6f8425c255c9474a76ab86c7e2",
+    "original/source.enckmp": "6f426a8ce4205831a83b6669de682c35774fb1263aaa17b39bdaa6670a44ee82",
+    "original/sound/effects/catacombs-keys-get.pcm": "22e4b635269e206e46b13a522068aa6aa5312fecb4cebafcc00c265e3f34fd7f",
+    "original/sound/effects/catacombs-keys-open.pcm": "5d8ac39a218e7c24022262a09ab057f2ffbc3669b565758b2b3c60cd9a6f23ff"
+  }
+}

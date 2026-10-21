@@ -1,0 +1,122 @@
+{
+  "scope": "Production renderer with explicit public Tex3DS/C2D doubles;genuine byte admission separate from texture decoding/GPU",
+  "checks_per_mode": 26050,
+  "modes": [
+    "portable source geometry and labelled synthetic byte payloads",
+    "original media resource and three actual tex3ds outputs"
+  ],
+  "original_geometry_cells_visited": 69,
+  "cpp_input_unchanged": true,
+  "host": "GCC9.4 ASan+UBSan;normal leak checking;fresh direct compilation",
+  "windows": "configuration/discovery only;312 CTest,1397 Python",
+  "failed_attempts": {
+    "1": "Expected initial9 minus one pickup,forgot three source Lock sprites hidden after Open",
+    "3": "All69 cells visited but test Reset animation subsequently source-queue-freed keys",
+    "4": "Diagnostic-only repeat confirmed69 visited;same source Reset completion lifecycle"
+  },
+  "intermediate_pass": {
+    "2": "19807 checks per mode,before extending visual sampling to all69 source image cells"
+  },
+  "correction": "Test driver only:source visibility/Ready animation evaluation and isolated candidate visual sampling;production renderer,source clocks and native69 oracle unchanged",
+  "cleanup": {
+    "verified_source": 5,
+    "removed_empty_scratch": [
+      {
+        "directories": [
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch\\graphics\\world\\catacombs\\keys",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch\\graphics\\world\\catacombs",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch\\graphics\\world",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch\\graphics"
+        ],
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch"
+      },
+      {
+        "directories": [
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-3\\graphics\\world\\catacombs\\keys",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-3\\graphics\\world\\catacombs",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-3\\graphics\\world",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-3\\graphics"
+        ],
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-3"
+      },
+      {
+        "directories": [
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-4\\graphics\\world\\catacombs\\keys",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-4\\graphics\\world\\catacombs",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-4\\graphics\\world",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-4\\graphics"
+        ],
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-fixture-1\\scratch-4"
+      }
+    ],
+    "latest_host_executable_retained": true,
+    "removed_executables": [
+      {
+        "kind": "superseded owned host test executable",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-host-1\\check",
+        "bytes": 14895248,
+        "sha256": "323f43147e61f5e307c92c15c1a8bdc6ec105d87862857dea9302f3e0928d36c"
+      },
+      {
+        "kind": "superseded owned host test executable",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-host-2\\check",
+        "bytes": 14896816,
+        "sha256": "de04129d16ede5016f9c0f418d285b9680e442da8e21223f5043316853951bb9"
+      },
+      {
+        "kind": "superseded owned host test executable",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-host-3\\check",
+        "bytes": 15129624,
+        "sha256": "8eed8910727d699b3361bf893c9b355359d62748c32be3b6d487e8de78802a61"
+      },
+      {
+        "kind": "superseded owned host test executable",
+        "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-renderer-host-4\\check",
+        "bytes": 15216368,
+        "sha256": "f95243f136026e5ed71c5337d2f24a1b160919e9995a6a2140c4d921ee435830"
+      }
+    ],
+    "raw_failure_logs_retained": true,
+    "removed_bytes": 60138056.0
+  },
+  "full_ci": "pending new commit",
+  "formal_scene": "not activated",
+  "gpu": "not verified",
+  "emulator": "not verified for this service",
+  "hardware": "not verified",
+  "files": {
+    "check-key-renderer-fixture.py": "0ed1ac17867c796bad738f5a8a3db5d1844444fa995c6b860b94337e7e34e6e8",
+    "cleanup-key-renderer-preflight-v0.ps1": "9ffcdc76e7f6c0533909f46413ded119c2920ddcbe71b3b16bd5eab807a0f27e",
+    "cleanup-key-renderer.ps1": "df34b6f676675cc7831325c3f9f458566665c1e5a41559e2a74657dcef09e91a",
+    "collect-key-renderer.py": "6868147909408264f15d68bc1ed4d241cedf8ac8b7772636a1d0b5138b123ba2",
+    "key-renderer-cleanup-1.json": "480b4537b418930b2595bf269d3782b440fe04bde0b9fcd554cf9404e9923ea4",
+    "key-renderer-cmake-config-1.log": "3c4cb1cd8ced20fdda77c48deaf7f8ae8e0dea745429341a9322dad7ca2d1764",
+    "key-renderer-collection-1.log": "7de8aae8b8b73b021ecbb4f189d748e479ffb6f386936026e0a9f804ee97d741",
+    "key-renderer-ctest-debug-1.json": "b628b69a176339cd93e6aab79e8e3182aff0c2143e5ecc704a87023f78129bf3",
+    "key-renderer-fixture-check-1.json": "7674dd9bf0c90db7acaf0a12a99ebe13ea34408e5c445ab7ab5760e52f943d4c",
+    "key-renderer-fixture-check-1.log": "88ec2415dc5f581a915690a08fa16e4b3717d1af4233913f48659e119130eacf",
+    "key-renderer-host-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "key-renderer-host-1.proof.json": "da9b1466c6e208aca49c9c039e7941f1fe41d33a88c234f27e1f24b26f0d7dc4",
+    "key-renderer-host-1.sh": "ebfc31c488a29d1ee4aa911e508ce1e56676f65d9e94aa846202b3823691dc45",
+    "key-renderer-host-1.stderr.log": "b23147739fd36cc30ee01b4dcbc35178b7677dc2e52692d288ee6d769f09b0b0",
+    "key-renderer-host-2.log": "1537f56993682f826884b0adcb669c53ac2a31764a423e988c9018c949b0602f",
+    "key-renderer-host-2.proof.json": "79f607341fd658fb629d0440d89acf87947d619a5c0b2fcd46f6dc6fc20f19ed",
+    "key-renderer-host-2.sh": "3df48249daf6eed608be6c6afbb5853806ebf4e4e033d02506dc33d982d66482",
+    "key-renderer-host-2.stderr.log": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "key-renderer-host-3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "key-renderer-host-3.proof.json": "9e4d09084cbe0ff77ac780e097c931fff5414770b60adc33392ae459db08218e",
+    "key-renderer-host-3.sh": "d8d41cbf7356df92194386c0191f71f25b35aa0607027a8284eee0a0d547728e",
+    "key-renderer-host-3.stderr.log": "3ec643676c79146c49ae89c922082846a98908314b2206dff3483b504f9aab8a",
+    "key-renderer-host-4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "key-renderer-host-4.proof.json": "ef98bfc8f54b6ad716d2248d76e742323ca0742043106ebd5c9ab3f813ebfc06",
+    "key-renderer-host-4.sh": "16d0d3623e04302a72e3011d1f724d5a833cc5cb0446653ac9c2a4c82a8cc999",
+    "key-renderer-host-4.stderr.log": "c6c2883acd84e4427f4081d4c95f3c871d53b0d1929a3949c14fb89db51b3e0c",
+    "key-renderer-host-5.log": "95b947fcb4c42ba90be3a60d4c731d83a57d7e1a2313ac6e405db973bae92d6a",
+    "key-renderer-host-5.proof.json": "698b7773a9fe1fc6a098808a4441b0d53622a7cad1ea42b67535b5c11ba216cb",
+    "key-renderer-host-5.sh": "a1dff0880415f3dd0b5a3b24528973a0ed8bd0bfe9cbeb91b10b89f1ef48c979",
+    "key-renderer-host-5.stderr.log": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "key-renderer-method-plan-1.json": "426b32fb95fd205f4c1db77dace4936169fe17764cea5ef49ca9f3177e2c9b45",
+    "portable-fixture.json": "c22e8057a99b2452bdbe0429c6a33b57468f70ac1d3615a10e68fb4030547134",
+    "run-key-renderer-host.py": "0421b3530355d86a91efc3740ec717311a154f98fd758c436b3fcc83f285c914"
+  }
+}

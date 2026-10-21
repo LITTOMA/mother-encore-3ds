@@ -1,0 +1,4 @@
+Actual key media audio: 2 PCM assets, 22828 bytes
+Key media fixture: 6628 bytes;69 native frame rectangles,9 shapes,6 stream lengths;2 real decoded PCM,retained T3X metadata only
+Key renderer fixture:source clocks and geometry;3 explicit synthetic payloads,not GPU files
+Renderer fixture:idempotent owned rebuild;3 foreign roots rejected;only declared texture length/CRC/SHA differ,no source clock/geometry changes

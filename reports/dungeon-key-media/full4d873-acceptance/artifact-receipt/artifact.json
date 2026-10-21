@@ -1,0 +1,20 @@
+{
+  "id": 12294884319,
+  "node_id": "MDg6QXJ0aWZhY3QxMjI5NDg4NDMxOQ==",
+  "name": "encore-3ds-4d873f9e09bdfd1ca47130aca7acea2e96d9cefb-39488422954",
+  "size_in_bytes": 377926159,
+  "url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12294884319",
+  "archive_download_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12294884319/zip",
+  "expired": false,
+  "digest": "sha256:c059aa57ebe43e561dc7150e47a178db538a618572da54225a85ed1cc0e58e3e",
+  "created_at": "2026-10-20T20:17:54Z",
+  "updated_at": "2026-10-20T20:17:54Z",
+  "expires_at": "2026-11-19T20:17:37Z",
+  "workflow_run": {
+    "id": 39488422954,
+    "repository_id": 1403329202,
+    "head_repository_id": 1403329202,
+    "head_branch": "codex/catacombs-key-bus-reference",
+    "head_sha": "4d873f9e09bdfd1ca47130aca7acea2e96d9cefb"
+  }
+}

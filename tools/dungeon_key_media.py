@@ -154,8 +154,12 @@ def validate_native(observed,file=RECIPE):
   require(center==s['center']and extent==s['extents']and [list(map(float,v))for v in row['corners']]==corners and row['role']==s['role']and row['layer']==s['layer']and row['mask']==s['mask']and row['disabled']==bool(s['bits']&1)and row['monitoring']==bool(s['bits']&2)and row['monitorable']==bool(s['bits']&4)and row['one_way']is False and row['margin']==s['one_way_margin'],'Native key shape bounds/filter differs')
  require(seen==set(shapes),'Native key shape coverage');seen=set();sounds={s['owner']:s for s in m['sounds']}
  for row in observed['sounds']:
-  require(row['owner']in sounds and row['owner']not in seen,'Native key sound owner');seen.add(row['owner']);s=sounds[row['owner']];o=owners[s['owner']];require(row['path']==s['path'][len(o['path'])+1:]and row['bus']=='Master'and float(row['gain'])==s['gain']and float(row['pitch'])==s['pitch']and row['pause']==0 and row['stream_type']in('AudioStreamMP3','AudioStreamSample')and float(row['length'])>0,'Native key sound properties')
+  require(row['owner']in sounds and row['owner']not in seen,'Native key sound owner');seen.add(row['owner']);s=sounds[row['owner']];o=owners[s['owner']];require(row['path']==s['path'][len(o['path'])+1:]and row['bus']=='SFX'and float(row['gain'])==s['gain']and float(row['pitch'])==s['pitch']and row['pause']==0 and row['stream_type']in('AudioStreamMP3','AudioStreamSample')and float(row['length'])>0,'Native key sound properties')
  require(seen==set(sounds),'Native key sound coverage')
+ review,source=read(file);layout=parse_godot(source.text(review['audio_recipe']['bus_source']))[-1].props;indices={int(k.split('/')[1])for k in layout if k.startswith('bus/')};require(indices==set(range(len(indices)))and type(observed.get('buses'))is list and len(observed['buses'])==len(indices),'Native key original audio bus coverage')
+ for index,row in enumerate(observed['buses']):
+  prefix='bus/'+str(index)+'/';name=layout.get(prefix+'name','Master'if index==0 else None);send=layout.get(prefix+'send',''if index==0 else'Master');effects=sum(k.startswith(prefix+'effect/')and k.endswith('/effect')for k in layout)
+  require(row['name']==name and row['send']==send and float(row['gain'])==real(layout.get(prefix+'volume_db',0))and row['mute']==layout.get(prefix+'mute',False)and row['solo']==layout.get(prefix+'solo',False)and row['bypass']==layout.get(prefix+'bypass_fx',False)and row['effects']==effects,'Native key audio bus source properties differ')
  for o in m['owners']:
   if cp[o['profile']]['child']:require(bool(o['bits']&8)==observed['player_turn']['y']and bool(o['bits']&16)==observed['player_turn']['x'],'Native key turn defaults differ')
  return m

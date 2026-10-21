@@ -11,7 +11,7 @@ REFERENCE=ROOT/'reports/dungeon-key-media'
 
 def build(out,reference=REFERENCE):
  out=Path(out).resolve();d.require(out.is_relative_to(ROOT/'build'),'Key media fixture stays under build');out.mkdir(parents=True,exist_ok=True)
- observed=json.loads((reference/'native-6/geometry.json').read_text('utf8'));second=json.loads((reference/'native-7/geometry.json').read_text('utf8'));d.require(observed==second,'Key media native repetitions differ');m=d.validate_native(observed);_,_,proof=d.source_model();receipt=json.loads((reference/'graphics/source.json').read_text('utf8'));d.require(receipt['review_sha256']==proof['review_sha256']and receipt['clock_sha256']==proof['clock_sha256'],'Key media retained graphics recipe differs')
+ observed=json.loads((reference/'native-8/geometry.json').read_text('utf8'));second=json.loads((reference/'native-9/geometry.json').read_text('utf8'));d.require(observed==second,'Key media native repetitions differ');m=d.validate_native(observed);_,_,proof=d.source_model();receipt=json.loads((reference/'graphics/source.json').read_text('utf8'));d.require(receipt['review_sha256']==proof['review_sha256']and receipt['clock_sha256']==proof['clock_sha256'],'Key media retained graphics recipe differs')
  atlas={p['id']:p for p in receipt['profiles']}
  for p in m['profiles']:
   r=atlas[p['id']];d.require(all(r[k]==p[k]for k in p),'Key media retained source atlas differs');p.update({k:r[k]for k in['texture_bytes','texture_crc','texture_sha256']})

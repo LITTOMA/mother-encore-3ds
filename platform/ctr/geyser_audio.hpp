@@ -41,6 +41,7 @@ public:
  }
  bool bind(uint64_t epoch,uint64_t instance,std::string&e){return channel(e)&&state_->mixer.bind(epoch,instance,e);}
  bool sync(uint64_t epoch,uint64_t instance,upstream::GeyserTimeline&timeline,upstream::Vec2 position,upstream::GeyserListener listener,std::string&e){return channel(e)&&state_->mixer.sync(epoch,instance,timeline,position,listener,e);}
+ bool sync_lifecycle(uint64_t epoch,upstream::GeyserLifecycle&life,upstream::GeyserListener listener,std::string&e){return channel(e)&&state_->mixer.sync_lifecycle(epoch,life,listener,e);}
  bool global_tree_notification(bool paused,bool can_process,std::string&e){return compatible(e)&&state_->mixer.global_tree_notification(paused,can_process,e);}
  bool update(std::string&e){
   if(!compatible(e))return false;auto&s=*state_;if(!s.mixer.user_sfx(s.player->user_sfx_db(),e))return false;if(s.channel>=region_channel_pool::capacity){e.clear();return true;}if(!channel(e)||!wave_states(e))return false;uint64_t consumed=s.mixer.consumed_frames();

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "source_sha256": {
+    "content/catacombs-geyser-lifecycle.json": "a55a43c108d7f8f74bb8cc15af515fcb6604b36ed757a47f26d63714c1aa6cc3",
+    "content/catacombs-geyser-media.json": "19737edb09af58971b130f5671628bcd409c7b4c8001c72becad3ff9552dd41b",
+    "content/catacombs-geyser-graphics.json": "11faed04d6cb6208e8e6622ffad1ff216228356f8532abab372fc41489b73a6e",
+    "compatibility/reviews/geyser-lifecycle-v0410.json": "79aeda973fcee73384db5ee418b26049e2fb1b43e01802c5165b0ed70dbfefac",
+    "compatibility/reviews/geyser-media-v0410.json": "b307f288313b6cfe726decd0462a15ab23bc30a18aaad53a59da934473ce3385",
+    "compatibility/reviews/geyser-graphics-v0410.json": "4c01a3f4d5fd7b14a2b2811b3e37010c1f3c923646979a4ad8b0938a7af196f9"
+  },
+  "mapping": [
+    "Original factory local positions and actual Ready/pause/deferred/delete lifetimes feed existing audio and graphics services. Camera/listener share the selected translation-only parent coordinate profile.",
+    "Original globally ordered commands consumed only after full source/content/owner/listener/opcode validation and candidate mixer success. Local deletion cannot stop independent named audio.",
+    "Production renderer borrows one texture and revalidates registry identity/epoch/ticket/pose before submitting. No new content,format,save schema or gameplay tuning."
+  ],
+  "verified": [
+    "Local normal-leak GCC ASan+UBSan1872115 core,3491 renderer,4052 production audio checks. Two frozen720-frame native-order profiles reused,no new native execution.",
+    "Actual T3X/PCM inputs;explicit graphics/NDSP API doubles;not GPU/audio hardware or full rebuild.",
+    "Three affected Python suites35 checks passed154.808s;Windows discovery only349CTest. Owned cleanup41855008bytes completed with original failure logs/current three programs retained."
+  ],
+  "unverified": [
+    "Full matrix/current real SDK/emulator acceptance pending at source publication;not full core rebuild.",
+    "Formal room,physics/Character contacts,Pippi and hardware remain unimplemented."
+  ]
+}

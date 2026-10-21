@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "source": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "source": {
+      "commit": "7d9246600fffe518408f5830d4848635019005a3",
+      "recipe_sha256": "7daa8eefb8cabaadd4148f0299e977824e0480e5748a2b420b6a465153b8dc2f",
+      "sources": {
+        "Nodes/Overworld/poison geyser.tscn": "d700e3bbf3aee8d3b43e498391e38d8d8ad0a80d632b95cf34b605deafd588da",
+        "Scripts/Main/Poison Geyser.gd": "2ef05cc91eb3690a6e8a14fdb83a29ef06784f7ab0b8b083d8e79a2bcfd4ab57",
+        "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+        "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+        "Graphics/Objects/Catacombs/Poison Geyser.png": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890",
+        "Graphics/Objects/Catacombs/Poison Geyser.png.import": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Audio/Sound effects/shreksplash.mp3": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58",
+        "Audio/Sound effects/shreksplash.mp3.import": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23",
+        "Audio/Sound effects/shrekblast.mp3": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089",
+        "Audio/Sound effects/shrekblast.mp3.import": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815",
+        "Audio/Sound effects/shrekrumble.mp3": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34",
+        "Audio/Sound effects/shrekrumble.mp3.import": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+      },
+      "symbols": {
+        "script": {
+          "_ready": "5125cd1058a597e045cbda5e82b2d82c0808ce486cdf2aee2fa7998471cbb3eb",
+          "_process": "5bab1310d47bb565c55fca7394474d011119aa43fc99dde95a66a3bb3af272e8",
+          "pause": "fcf1c08910674c64c6de8669082aabf3716e6d422497ffffbf3b8c1855cbaa3c",
+          "unpause": "e52e345a806b24bd813e250099717d4f4a0b9fc6de4bcaa937c4009f899f652b",
+          "_on_AnimationPlayer_animation_finished": "edd0d48fd36f3a09a9bdd6ecc59eb40d766b2bd3bd3d9ea51ce53b5301f5db67",
+          "_on_Poison_Geyser_body_entered": "7e87db7f72a9ff028b9f18376337d81dbabc35147c8d47919bdb5a6c9915efcf",
+          "_on_Poison_Geyser_body_exited": "ce5df88f78ff43b3f5d979a433f0e35f739e256d2078567030e7c0a2b95f9a0c",
+          "play_rumble": "c2fc29b2a7e32d223a7f19252b821a9b97f8a10cea380bfe9d96112ad5fa1bd8"
+        },
+        "manager": {
+          "add_sfx": "7dcfa5938a039327d950e1a344889d0d444b6054720669200008f1efa9a86b10",
+          "play_sfx": "6e44e781afc59ad6ac63503ef3b8a9a7a687884dec8769e525e7046219bd6d59",
+          "get_sfx": "24b4ac1e42e5f6cc43380d9d2059caa723ce34a259684c11ac5c9dd2e836e45a"
+        }
+      },
+      "scope": "Original Geyser source-specific animation/property/audio-command and deferred-rumble lifecycle candidate;full Character damage,status,source spatial mixing,production rendering/audio and complete scene admission remain unimplemented.",
+      "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+      "engine_sources": {
+        "scene/animation/animation_player.cpp": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+        "scene/animation/animation_player.h": "42c673e5c377480680bc3fe48c252aa8d2f054d657fd0a72c2b0d77025ec40de",
+        "scene/resources/animation.cpp": "0c49f1f325d040c645b35b0f39d0972ccd7812e0a575b6ad97ba5d9f3de0dd1b",
+        "scene/resources/animation.h": "177e75db916cb1a985627f860f06321af5065fb750939db617e80317b28f9a2d",
+        "scene/2d/audio_stream_player_2d.cpp": "7ee0ab4970818682dbc85fcb0c561e84f7045a3da518b94c5d267cf6356f8de2",
+        "scene/2d/audio_stream_player_2d.h": "4b703018e4937139bdf3a683437e779329e6c5312eaef0f252083445ad959e75",
+        "scene/audio/audio_stream_player.cpp": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+        "scene/audio/audio_stream_player.h": "1465843e77369e84bfb18cf06c9d4224aae6a72a0b5b4e88f55956cd19898b57",
+        "scene/2d/sprite.cpp": "ce678f79ba902084ad04398b3f36485543da9318835776de4480655618d9e4dd",
+        "scene/2d/sprite.h": "d8984616cdeed9b454a560a6707c59048002c1bdebc5c4f42a30ee19951115ce",
+        "scene/2d/visibility_notifier_2d.cpp": "954d01b94e3c6ad848b6718796f63b2181d37a2859a69e23ecbec7e6de4b7849",
+        "scene/2d/visibility_notifier_2d.h": "ed126b4e47eb219b7cbd10785d990aba8e2de321a46da425f1e7f47f7314d4d8"
+      }
+    },
+    "recipe_sha256": "11faed04d6cb6208e8e6622ffad1ff216228356f8532abab372fc41489b73a6e",
+    "sources": {
+      "Graphics/Objects/Catacombs/Poison Geyser.png": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890",
+      "Graphics/Objects/Catacombs/Poison Geyser.png.import": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b",
+      "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+    },
+    "engine_sources": {
+      "scene/2d/sprite.cpp": "ce678f79ba902084ad04398b3f36485543da9318835776de4480655618d9e4dd",
+      "scene/2d/sprite.h": "d8984616cdeed9b454a560a6707c59048002c1bdebc5c4f42a30ee19951115ce"
+    },
+    "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "engine_license_sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+    "source_frame_rgba_sha256": [
+      "fc19b1997119425765295aeab72d76faa6927d4f83985d328c26f20468d6cc76",
+      "e33cbf3c1eb770eb3177a2298ae9c59c2c815fdf7d23ee3f3b55bf834f663822",
+      "677fcf9b2ad45077cbb5a97fc9c68062a2ca72b7272a7214caa2223710073fd6",
+      "7d3ab85098f719a2dcd3ae398c1a3e9f797f4e376b620c49fc99598dacdf19af",
+      "c08fc5865c96d05afc2d15a340e2606e9f7fb6a45fad37fcd843b662fa87263b",
+      "ae10dfe778931e5283396d4d5e571f80ea4a2966259e5cce1d8d97dd706d3d52",
+      "1a62fed361be3ebd57d1613608bb0b770507ca5e7f29c85a881262d21b93ef9a",
+      "8dfad4ec62e36116fb4c78cc962c612de84014cf609caa31c6f980bff04c8946",
+      "3cb54a87b6d78eb6ed102dbc5509a1af994a0a6f87fa86dc8e63e75d2af4f6e7",
+      "fdd8d0e498d2400addebd2ccda2ccb8b0715f36eaba9372312e5f825c09e0b95",
+      "bedae859a4321e2af6d6e924b736aceb615329940b4b4d183f3d91fe03b7ff1a",
+      "2bf3a273c189b73bb66cca66846865b9aa91bb076cc121ebd6fd6a9715070b6d",
+      "a59c3f8de3eafa0ca969e371787148ccdaf82efc50798ded0749d47d3d25e3c9",
+      "bc8061d92c2fa0221d56821daf555d3a1af88ed5da7c68aa1e942a0dde6cd230",
+      "0fbf34fe82ff35712f8112b1dba5550ccd1d632851609ea3c543325a9c13dea4",
+      "3177d3db13293ed61afc20933c83a5301178fd186ec193a091c4d1e9668e86c5",
+      "278e7f6a80ba3d3437dd645f332ee279a69e06991ea90180c1d562e815b93801",
+      "e7b0675e0568ab26227df34386a3c5607484d3c2ef483f3468366e67eb83091b",
+      "c699c82b07f7a9757695561b1f51e2175439d825ffdaae0771262c5f4503e086",
+      "e803d95c1956ad710a8c2ae8d486e9d3476ace3fd88e96239254b3338f39830f",
+      "52a8ce0d030d306c61e17be35af7423d6075ad7660ced5d393a61b7e93155103",
+      "a9ac11e301c2334ae7a6aa91fc243d0e68f15d7bf5b683f847fd8c52e05f6e68",
+      "ca2be237c330c676e6b7cd14faff5e01086c6f4ff7822144784931801d6f9fe5",
+      "604f85c10b0aedfef047d2756e785381c5c52724e1a1faea5e1433e2cda2eed1",
+      "b2134a97b1d9f8dc27956e33e1b2ac41ea1f99225008971f4e3360633535ace4",
+      "3df2b281acbd4c1d15f0c8382adb045a102e9ed7c85e5482eccc4b9898868818",
+      "5b8d46ea90ba0aa8419fd58c71bce74699057c07637f463c52e2253d21d52acb",
+      "719204de49ba36625faa5cca0de85fc654307b056dd67ca4873ba5a2b25ce484",
+      "eabe50bb3e6164a42461e952bc08d8ab81bde5c3c58bd301678211faf11f96ac",
+      "115cfa7e7136637b6042cd5b89180b4a361c7419dcb63cea05f835a55c2ac531",
+      "d66383b4976914b07ce5d889ecfeb09dc374926f38cbcf67c10abccd3fa0962f",
+      "972e70b4689f0c9aba9f422b567bce256dfeb73572362b505ac323e37ed6d1ec"
+    ],
+    "source_rgba_sha256": "724ad4986d3c2cfffc62607e12445d04a6b6193656aa4ce42c67e2c98356c060",
+    "permission": "Pinned Team Encore LICENSE reviewed for project-related use;original notices retained;no environment fonts/binaries or unrelated art copied into releases",
+    "scope": "Original32Sprite frames,untrimmed source geometry,pixel-snap and strict production draw lifecycle candidate;formal factory/Character/physics/GPU/full scene remain unimplemented"
+  },
+  "producer_sha256": "df2b38eb6c2a281f5808259f20bde646990932b2a2d8a97fddc0cdd2978bd950",
+  "native_producer_sha256": "505c825f630d9a09dcaf6f6b97d14bac202b55503401a74345e3d886d2cf678b",
+  "results": [
+    {
+      "path": "reports/geyser-graphics/native-1",
+      "sha256": "70abdc951031c437386def461877220221c8f95b54f450b578d9bba2681f16a0"
+    },
+    {
+      "path": "reports/geyser-graphics/native-2",
+      "sha256": "70abdc951031c437386def461877220221c8f95b54f450b578d9bba2681f16a0"
+    }
+  ],
+  "mapping": [
+    "Original32 untrimmed Sprite frames and3 root positions checked in two actual official Godot3.6.2 runs",
+    "Initial observer validation expected positive zero in identity basis;actual source Node2D emits negative zero;raw observations retained,protocol accepts IEEE equivalent signed zero but rejects nonzero/NaN/incorrect transforms",
+    "ENCGFX01 f1/cap1 independently binds exact checked source timeline,image length/CRC,frame identity and local rectangles;factory root position supplied once",
+    "Production renderer prepares from one checked byte buffer and uses frame/epoch/instance/actor/transform guards;no drawing IO",
+    "Latest two GCC9.4 normal-leak sanitizer executions each3473 checks,including one actual T3X input;explicit public graphics API double,not GPU/decoder execution",
+    "Shared complete-byte timeline identity preserves strict actor ownership;relevant10000+7208+281637+2938 clock/media/audio checks rerun successfully",
+    "Initial renderer test used a discrete-key exact endpoint;existing source[ from,to )sampling means new frame is applied afterward;test adapter corrected,no clock/trace change"
+  ],
+  "unverified": [
+    "Current complete GCC/Clang and genuine SDK/current game artifact",
+    "Actual GPU and imported alpha-edge pixel identity,formal scene/physics/Character/factory and hardware"
+  ]
+}

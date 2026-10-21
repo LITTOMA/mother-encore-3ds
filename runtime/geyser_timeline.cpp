@@ -17,7 +17,8 @@ bool safe(const std::string&s){
  return true;
 }
 }
-struct GeyserTimelineData::State {GeyserPolicy policy;std::vector<GeyserClip>clips;std::vector<GeyserKey>keys;std::vector<GeyserCue>cues;std::vector<GeyserSound>sounds;};
+struct GeyserTimelineData::State {GeyserPolicy policy;std::vector<GeyserClip>clips;std::vector<GeyserKey>keys;std::vector<GeyserCue>cues;std::vector<GeyserSound>sounds;std::vector<uint8_t>encoded;};
+bool GeyserTimelineData::same_content(const GeyserTimelineData&other)const{return valid()&&other.valid()&&state_->encoded==other.state_->encoded;}
 const GeyserPolicy&GeyserTimelineData::policy()const{static const GeyserPolicy empty;return state_?state_->policy:empty;}
 const std::vector<GeyserClip>&GeyserTimelineData::clips()const{static const std::vector<GeyserClip>empty;return state_?state_->clips:empty;}
 const std::vector<GeyserKey>&GeyserTimelineData::keys()const{static const std::vector<GeyserKey>empty;return state_?state_->keys:empty;}
@@ -54,7 +55,7 @@ bool GeyserTimelineData::load(const uint8_t*p,size_t size,std::string&e){
   previous={-1,0};uint32_t tracks[3]={UINT32_MAX,UINT32_MAX,UINT32_MAX};for(uint32_t j=cue_first;j<cue_first+c.cue_count;++j){const auto&k=next->cues[j];const auto order=std::make_pair(k.time,k.track);if(k.time>c.duration||order<=previous||(tracks[k.kind]!=UINT32_MAX&&tracks[k.kind]!=k.track)||(tracks[3-k.kind]!=UINT32_MAX&&tracks[3-k.kind]==k.track))return bad(e,"Geyser cue order/time/target ownership rejected");tracks[k.kind]=k.track;previous=order;}
   first+=c.count;cue_first+=c.cue_count;next->clips.push_back(c);
  }
- if(first!=count[3]||cue_first!=count[4]||std::find(used.begin(),used.end(),uint8_t(0))!=used.end())return bad(e,"Geyser unowned keys/cues/strings rejected");state_=std::move(next);e.clear();return true;
+ if(first!=count[3]||cue_first!=count[4]||std::find(used.begin(),used.end(),uint8_t(0))!=used.end())return bad(e,"Geyser unowned keys/cues/strings rejected");next->encoded.assign(p,p+size);state_=std::move(next);e.clear();return true;
 }
 bool GeyserTimeline::owner(uint64_t epoch,uint64_t instance,std::string&e)const{return valid()&&epoch==epoch_&&instance==instance_?true:bad(e,"Geyser stale instance/epoch rejected");}
 bool GeyserTimeline::prepare(const GeyserTimelineData&data,uint64_t epoch,uint64_t instance,std::string&e){

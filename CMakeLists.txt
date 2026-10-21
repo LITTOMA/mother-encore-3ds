@@ -23,7 +23,7 @@ add_library(encore_core
     runtime/field_step_contacts.cpp
     runtime/poison_hazards.cpp
     runtime/geyser_timeline.cpp
-    runtime/geyser_media.cpp runtime/geyser_mixer.cpp
+    runtime/geyser_media.cpp runtime/geyser_mixer.cpp runtime/geyser_graphics.cpp
     runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/dungeon_keys.cpp runtime/dungeon_key_state.cpp runtime/dungeon_key_clocks.cpp runtime/dungeon_switches.cpp runtime/dungeon_switch_state.cpp runtime/dungeon_wall_timeline.cpp runtime/dungeon_wall_state.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
@@ -1521,6 +1521,16 @@ if(BUILD_TESTING AND Python3_Interpreter_FOUND)
  target_link_libraries(encore_geyser_audio_tests PRIVATE encore_core)
  add_test(NAME geyser_audio COMMAND encore_geyser_audio_tests ${CMAKE_SOURCE_DIR}/romfs/sound/banks/opening.encaudio ${CMAKE_SOURCE_DIR}/romfs ${CMAKE_BINARY_DIR}/geyser-media-fixture/media/data/world/catacombs/geyser.encgeysermedia ${CMAKE_BINARY_DIR}/geyser-media-fixture/media ${CMAKE_BINARY_DIR}/geyser-audio-scratch)
  set_tests_properties(geyser_audio PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED geyser_media_source)
+endif()
+
+if(BUILD_TESTING AND Python3_Interpreter_FOUND)
+ add_test(NAME geyser_graphics_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_geyser_graphics.py --out ${CMAKE_BINARY_DIR}/geyser-graphics-fixture)
+ set_tests_properties(geyser_graphics_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP geyser_graphics_source)
+ add_executable(encore_geyser_graphics_tests tests/geyser_graphics_tests.cpp)
+ target_include_directories(encore_geyser_graphics_tests BEFORE PRIVATE tests/dungeon_key_renderer_stubs platform/ctr)
+ target_link_libraries(encore_geyser_graphics_tests PRIVATE encore_core)
+ add_test(NAME geyser_graphics COMMAND encore_geyser_graphics_tests ${CMAKE_BINARY_DIR}/geyser-graphics-fixture/data/world/catacombs/geyser.encgeysergfx ${CMAKE_BINARY_DIR}/geyser-graphics-fixture ${CMAKE_BINARY_DIR}/geyser-graphics-fixture/native.tsv ${CMAKE_BINARY_DIR}/geyser-graphics-scratch)
+ set_tests_properties(geyser_graphics PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED geyser_graphics_source)
 endif()
 
 include(cmake/TestParallelism.cmake)

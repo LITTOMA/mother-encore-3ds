@@ -1,0 +1,21 @@
+test_actual_native_repeatability (tests.test_catacombs_poison.PoisonHazardsTests.test_actual_native_repeatability) ... ok
+test_binary_directory_and_truncation (tests.test_catacombs_poison.PoisonHazardsTests.test_binary_directory_and_truncation) ... ok
+test_binary_roundtrip (tests.test_catacombs_poison.PoisonHazardsTests.test_binary_roundtrip) ... ok
+test_binary_typed_policy_and_timer (tests.test_catacombs_poison.PoisonHazardsTests.test_binary_typed_policy_and_timer) ... ok
+test_binary_version_pin_and_reserved (tests.test_catacombs_poison.PoisonHazardsTests.test_binary_version_pin_and_reserved) ... ok
+test_degenerate_and_crossing_polygons (tests.test_catacombs_poison.PoisonHazardsTests.test_degenerate_and_crossing_polygons) ... ok
+test_fixture_idempotence_and_stale_bytes (tests.test_catacombs_poison.PoisonHazardsTests.test_fixture_idempotence_and_stale_bytes) ... ok
+test_fixture_review_producer_rejection (tests.test_catacombs_poison.PoisonHazardsTests.test_fixture_review_producer_rejection) ... ok
+test_model_bad_types_sources_and_capacity (tests.test_catacombs_poison.PoisonHazardsTests.test_model_bad_types_sources_and_capacity) ... ok
+test_native_schema_types_and_clock (tests.test_catacombs_poison.PoisonHazardsTests.test_native_schema_types_and_clock) ... ok
+test_native_spawn_geometry_and_callback_rejection (tests.test_catacombs_poison.PoisonHazardsTests.test_native_spawn_geometry_and_callback_rejection) ... ok
+test_original_source_binding (tests.test_catacombs_poison.PoisonHazardsTests.test_original_source_binding) ... ok
+test_output_and_ownership_guards (tests.test_catacombs_poison.PoisonHazardsTests.test_output_and_ownership_guards) ... ok
+test_source_review_unknown_and_changed (tests.test_catacombs_poison.PoisonHazardsTests.test_source_review_unknown_and_changed) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 32.203s
+
+OK
+Checked original poison metadata and720/99/102 TSVs;not new engine execution
+Checked original poison metadata and720/99/102 TSVs;not new engine execution

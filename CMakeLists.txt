@@ -21,6 +21,7 @@ add_library(encore_core
     runtime/dungeon_terrain.cpp
     runtime/shadow_graphics.cpp
     runtime/field_step_contacts.cpp
+    runtime/poison_hazards.cpp
     runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/dungeon_keys.cpp runtime/dungeon_key_state.cpp runtime/dungeon_key_clocks.cpp runtime/dungeon_switches.cpp runtime/dungeon_switch_state.cpp runtime/dungeon_wall_timeline.cpp runtime/dungeon_wall_state.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
@@ -1286,6 +1287,12 @@ if(BUILD_TESTING)
     target_link_libraries(encore_field_step_contacts_tests PRIVATE encore_core)
     add_test(NAME field_step_contacts COMMAND encore_field_step_contacts_tests ${CMAKE_BINARY_DIR}/catacombs-steps-fixture)
     set_tests_properties(field_step_contacts PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED catacombs_steps_source)
+    add_test(NAME poison_hazards_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_poison_hazards.py --out ${CMAKE_BINARY_DIR}/poison-fixture)
+    set_tests_properties(poison_hazards_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP poison_source)
+    add_executable(encore_poison_hazards_tests tests/poison_hazards_tests.cpp)
+    target_link_libraries(encore_poison_hazards_tests PRIVATE encore_core)
+    add_test(NAME poison_hazards COMMAND encore_poison_hazards_tests ${CMAKE_BINARY_DIR}/poison-fixture/catacombs.encpoison ${CMAKE_BINARY_DIR}/catacombs-steps-fixture/catacombs.encsteps ${CMAKE_BINARY_DIR}/poison-fixture/clocks.tsv ${CMAKE_BINARY_DIR}/poison-fixture/contacts.tsv)
+    set_tests_properties(poison_hazards PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED "catacombs_steps_source;poison_source")
     add_test(NAME step_audio_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_step_audio.py --out ${CMAKE_BINARY_DIR}/step-audio-fixture)
     set_tests_properties(step_audio_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP step_audio_source)
     add_executable(encore_field_run_bank_audio_tests tests/field_run_bank_audio_tests.cpp platform/ctr/audio_player.cpp)

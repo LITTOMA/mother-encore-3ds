@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "id": 12326644490,
+      "node_id": "MDg6QXJ0aWZhY3QxMjMyNjY0NDQ5MA==",
+      "name": "encore-3ds-c611ecf00f91977d9d6653d262ba47691c935316-39558384627",
+      "size_in_bytes": 377932431,
+      "url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12326644490",
+      "archive_download_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12326644490/zip",
+      "expired": false,
+      "digest": "sha256:6d261cfde259687f0f7dd30272ca6db9623419d38d5ccc2ff42857e67e1ab00b",
+      "created_at": "2026-10-21T07:11:21Z",
+      "updated_at": "2026-10-21T07:11:21Z",
+      "expires_at": "2026-11-20T07:11:04Z",
+      "workflow_run": {
+        "id": 39558384627,
+        "repository_id": 1403329202,
+        "head_repository_id": 1403329202,
+        "head_branch": "codex/catacombs-poison-hazards",
+        "head_sha": "c611ecf00f91977d9d6653d262ba47691c935316"
+      }
+    }
+  ]
+}

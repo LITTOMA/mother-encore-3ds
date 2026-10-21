@@ -1,0 +1,8 @@
+{
+  "include/encore/poison_hazards.hpp": "32374fc8f77fad120e823c7e7d38f5ef94d221eeeda94a951531fe7131ff298d",
+  "runtime/poison_hazards.cpp": "181a50d7c9006262f07676263bd3e8c17f08897282bd671a682f0fe9c49d910b",
+  "tests/poison_hazards_tests.cpp": "30e9874e89da132e9fd9e35060015ad25f779ce244fc9eae89e11cb79d88a5c9",
+  "build/full-port/poison-fixture-1/catacombs.encpoison": "ecbc12ea339c9ac790f48b390e422ebb734234ffb07c31e0416ace9db91b2fad",
+  "build/full-port/poison-fixture-1/clocks.tsv": "f45eb03a72b302fe3faf1a0f392d11c405c8df8852e07682c2e4c61a67746bf9",
+  "build/full-port/poison-fixture-1/contacts.tsv": "d839ba597f10bfdd8afbd5085fb1f1f9f9fb2f0a3943ec669737e8460b8408ef"
+}

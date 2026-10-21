@@ -1,0 +1,47 @@
+{
+  "scope": "Verified exact native PowerShell paths/markers/inventory/hashes/reparse/process references before deleting owned temporary files only",
+  "deleted": [
+    {
+      "bytes": 44682,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\poison-native-1\\temporary",
+      "kind": "tree"
+    },
+    {
+      "bytes": 44682,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\poison-native-2\\temporary",
+      "kind": "tree"
+    },
+    {
+      "bytes": 44932,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\poison-native-3\\temporary",
+      "kind": "tree"
+    },
+    {
+      "bytes": 44932,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\poison-native-4\\temporary",
+      "kind": "tree"
+    },
+    {
+      "bytes": 44932,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\poison-native-5\\temporary",
+      "kind": "tree"
+    },
+    {
+      "bytes": 45408,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\poison-native-6\\temporary",
+      "kind": "tree"
+    },
+    {
+      "bytes": 45408,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\poison-native-7\\temporary",
+      "kind": "tree"
+    },
+    {
+      "bytes": 5270248,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\poison-host-1\\check",
+      "kind": "file"
+    }
+  ],
+  "audit_sha256": "d1260020b2bb7894c9ac17d38ea24a81af5f3b0d692f15ddddbe41f5d3181c11",
+  "total_bytes": 5585224
+}

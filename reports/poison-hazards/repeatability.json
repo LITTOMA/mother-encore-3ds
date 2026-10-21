@@ -1,0 +1,10 @@
+{
+  "documents_equal": true,
+  "result_sha256": "fa56df37430f14388f4b1959990921a1c2320ec1806aced31541ab7869e03c06",
+  "frames": 720,
+  "contacts": 99,
+  "deferred_children": 102,
+  "geometry_shapes": 22,
+  "raw_points": 178,
+  "scope": "Actual native Timer+selected source methods,explicit player/Character/factory services,not HP/status effects,full physics,animation/audio or scene"
+}

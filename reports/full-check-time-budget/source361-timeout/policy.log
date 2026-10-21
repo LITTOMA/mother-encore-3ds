@@ -1,0 +1,10 @@
+test_downloadable_builds_enable_existing_pillow_texture_backend (tests.test_ci_workflow_policy.WorkflowPolicyTests.test_downloadable_builds_enable_existing_pillow_texture_backend) ... ok
+test_full_checks_remain_complete (tests.test_ci_workflow_policy.WorkflowPolicyTests.test_full_checks_remain_complete) ... ok
+test_main_build_and_manual_modes_are_registered (tests.test_ci_workflow_policy.WorkflowPolicyTests.test_main_build_and_manual_modes_are_registered) ... ok
+test_only_explicit_full_mode_admits_tests (tests.test_ci_workflow_policy.WorkflowPolicyTests.test_only_explicit_full_mode_admits_tests) ... ok
+test_successful_console_outputs_are_uploaded_without_canceling_other_commits (tests.test_ci_workflow_policy.WorkflowPolicyTests.test_successful_console_outputs_are_uploaded_without_canceling_other_commits) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.011s
+
+OK

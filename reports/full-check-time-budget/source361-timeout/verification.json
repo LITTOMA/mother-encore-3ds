@@ -1,0 +1,24 @@
+{
+  "source": "361c04c2054658e3c0c78b18175fb9b4638ffd9f",
+  "run": 39486326366,
+  "job": 118847566763,
+  "conclusion": "cancelled_by_120_minute_job_limit",
+  "ordinary_gcc": 310,
+  "full_sanitizer": "build99%;no completed full test result",
+  "focused_sanitizer_collision": 1,
+  "annotation": "The job has exceeded the maximum execution time of 2h0m0s",
+  "fix": "Full host job180minutes;console120 and basement30 unchanged;no test selection/per-test deadlines/compiler/leak changes",
+  "local": "Five existing workflow policy tests only;not full host/console/emulator/hardware",
+  "same_game_test_and_resource_files_as": "0761232c4819b893f281fcccd2ed2a0f3f35c8cf",
+  "changed_tracked_paths_before_docs": [
+    ".github/workflows/build.yml"
+  ],
+  "files": {
+    "annotations.json": "7d9c377e1d97dc2a6e073d4d24821732176983274eea8d9edfed457e63349dab",
+    "check.json": "96486566b82c3b9e5c0d48480c481045184332df234f173d998675ee7a85dd9f",
+    "collector-preflight-v0.py": "6e8c2ff2bfd6de3fe13b5642b7fc631cd9eb4f3bcc1cdd45e40378ab884b3ad8",
+    "gcc.log": "f9f7fc8df9577d8140dac346772b04c6c24497a7680981b5ebf389ce63f84492",
+    "policy.log": "c889c318d1103dafbbe81920519c6eb84924ab812cb5ae7a1e671cd328e1200a",
+    "status.json": "a700d577755a88028c16803baadbc68e145cda2ec7ac4de0f831765e9f4bf11e"
+  }
+}

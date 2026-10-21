@@ -1,0 +1,88 @@
+{
+  "authorization": "Human: 授权按上述顺序合并 #74–#81. Ready and standard merge in order; keep #82/#83 drafts.",
+  "source": "fa99ad0df67f4dc912bde7cb9501652ce1710c5c",
+  "full_run": 39511431071,
+  "initial_main": "29faf20f396844f3ad70c7c30b81329d3305c72e",
+  "merges": [
+    {
+      "pr": 74,
+      "head": "f45e67febbd753750b179ffe0e93bda0b82a0cb1",
+      "merge": "b2f75743ca2576dac3b865921e00b1845adcd4f3",
+      "merged_at": "2026-10-21T02:10:09Z",
+      "tree": "664a317e44abcb579d18002585aedccf1bc03020",
+      "tree_matches_approved_head": true,
+      "first_parent": "29faf20f396844f3ad70c7c30b81329d3305c72e",
+      "second_parent": "f45e67febbd753750b179ffe0e93bda0b82a0cb1"
+    },
+    {
+      "pr": 75,
+      "head": "5d43cb300ac3d1eedb798e476f90407c335f5e75",
+      "merge": "802b2744c1d92407be2026f9d8b1545129c44778",
+      "merged_at": "2026-10-21T02:10:26Z",
+      "tree": "bef5aba42aa987926ef94ba8b50d664b804ec446",
+      "tree_matches_approved_head": true,
+      "first_parent": "b2f75743ca2576dac3b865921e00b1845adcd4f3",
+      "second_parent": "5d43cb300ac3d1eedb798e476f90407c335f5e75"
+    },
+    {
+      "pr": 76,
+      "head": "ea66fcc03a36a0dbccfdcb8435a5dde6f492086e",
+      "merge": "01bb9005c66160032d5d832f7faceaa91e41e41c",
+      "merged_at": "2026-10-21T02:10:42Z",
+      "tree": "3ee45b58171fa635366cb174a40c897f8787ff9a",
+      "tree_matches_approved_head": true,
+      "first_parent": "802b2744c1d92407be2026f9d8b1545129c44778",
+      "second_parent": "ea66fcc03a36a0dbccfdcb8435a5dde6f492086e"
+    },
+    {
+      "pr": 77,
+      "head": "3660f116ad28726cc318cd8183f5442c7af74454",
+      "merge": "0f2832c7b3cba5e0cd9206577e11b20bdefe8266",
+      "merged_at": "2026-10-21T02:11:01Z",
+      "tree": "e7f02b91df735d253b32f971cd91e2100ce8dbda",
+      "tree_matches_approved_head": true,
+      "first_parent": "01bb9005c66160032d5d832f7faceaa91e41e41c",
+      "second_parent": "3660f116ad28726cc318cd8183f5442c7af74454"
+    },
+    {
+      "pr": 78,
+      "head": "93fe6c79fd164acff5372f6a8c85ac37480d8478",
+      "merge": "9423b72f13dda899d2f15bdf5b9aa260e682d238",
+      "merged_at": "2026-10-21T02:12:10Z",
+      "tree": "cc804550a140c51f56c2ea7a6111e6dbd183aa8e",
+      "tree_matches_approved_head": true,
+      "first_parent": "0f2832c7b3cba5e0cd9206577e11b20bdefe8266",
+      "second_parent": "93fe6c79fd164acff5372f6a8c85ac37480d8478"
+    },
+    {
+      "pr": 79,
+      "head": "a7915ad70887ddcc8ffa409be5f315cd07632d37",
+      "merge": "b8fc879c0fa8daa035947696e930bec2cb400ecc",
+      "merged_at": "2026-10-21T02:12:30Z",
+      "tree": "957ee0b9ba42f6c7a6016805a1fa70f618f57454",
+      "tree_matches_approved_head": true,
+      "first_parent": "9423b72f13dda899d2f15bdf5b9aa260e682d238",
+      "second_parent": "a7915ad70887ddcc8ffa409be5f315cd07632d37"
+    },
+    {
+      "pr": 80,
+      "head": "c216cc1abb2ec4140cb79095ef778be525f0996c",
+      "merge": "91162f4a315cbd4b68d1c63214d136986e2630f4",
+      "merged_at": "2026-10-21T02:12:44Z",
+      "tree": "9fa3352d3f7e370c335bdf1cdd1c0102e2eca94e",
+      "tree_matches_approved_head": true,
+      "first_parent": "b8fc879c0fa8daa035947696e930bec2cb400ecc",
+      "second_parent": "c216cc1abb2ec4140cb79095ef778be525f0996c"
+    },
+    {
+      "pr": 81,
+      "head": "8a619ee03988fe7d447bb8d59153152befa97d55",
+      "merge": "7c06c1e62b728186d48a7eda01217a4b9dac620b",
+      "merged_at": "2026-10-21T02:13:02Z",
+      "tree": "9a9dca2c1a4dcf3bf02c5d270b1b955a37c93d80",
+      "tree_matches_approved_head": true,
+      "first_parent": "91162f4a315cbd4b68d1c63214d136986e2630f4",
+      "second_parent": "8a619ee03988fe7d447bb8d59153152befa97d55"
+    }
+  ]
+}

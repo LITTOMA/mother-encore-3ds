@@ -1,0 +1,30 @@
+{
+  "source_commit": "e9607da8b47e8d3c5e8725ea3ff0b3692c7fc420",
+  "actual_cold_runs": 2,
+  "checkpoints_each": 90,
+  "semantic_projection_equal": true,
+  "position_tolerance": 0,
+  "position_differences": [
+    {
+      "run": 2,
+      "differences": []
+    }
+  ],
+  "game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "original_compared_cases": [
+    "pause_select_close",
+    "pause_cancel_close",
+    "psi_unlearned",
+    "psi_back"
+  ],
+  "actual_screenshots_viewed": [
+    "run-1/lamp_victory.png",
+    "run-2/second_field_walk.png"
+  ],
+  "required_dsp_consumption": true,
+  "parts_cleaned_bytes": 192938008,
+  "profiles_guarded_removed_bytes": 193056058,
+  "total_cleaned_bytes": 385994066,
+  "source91_game_same_bytes": true,
+  "scope": "Actual92 officialgame ordinary opening only;source91 gamebyteidentical permits reuse,not separate91 emulator run;not unbound Geyser/Shadow/physics/Character/formal Catacombs/GPU/audible/hardware admission"
+}

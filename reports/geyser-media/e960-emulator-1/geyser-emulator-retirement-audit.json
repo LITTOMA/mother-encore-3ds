@@ -1,0 +1,148 @@
+{
+  "workspace": "D:\\GameDev\\3DS\\mother-encore-3ds",
+  "targets": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts",
+      "kind": "directory",
+      "marker": ".owned-geyser-selected-parts",
+      "owner": "geyser-selected-parts-v1",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\.owned-geyser-selected-parts",
+          "bytes": 24,
+          "sha256": "2a04d7be0a595260578cbc6ea8097251844128f57dd61de526209729a47122cb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\0",
+          "bytes": 8388608,
+          "sha256": "1500387ddcd5c21a01b3c7a0ab8a24e5e8e5e2702fb5ffd58be4fb62cb082d51"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\1",
+          "bytes": 8388608,
+          "sha256": "dfca58ee257d55dabc70d44061d3e8663fbce2d618af71351b2f254c4865ddc3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\10",
+          "bytes": 8388608,
+          "sha256": "0019a6150da25cdc54cf876e2cdf0f797473292f2a87a1d9d4f27b78e324d34e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\11",
+          "bytes": 8388608,
+          "sha256": "cc7129bafecd4917bbebd786879a85d172c020c6452ef31c25abf2a18b94f434"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\12",
+          "bytes": 8388608,
+          "sha256": "7b6fb62a6e429367a0e2df5d6562891d3b55eb0e3feede6782fae19e34c0e2d7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\13",
+          "bytes": 8388608,
+          "sha256": "5991c761cf2368997a01a343b5770d77b7cc7879a4cbe1877f911c0ba830c42a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\14",
+          "bytes": 8388608,
+          "sha256": "affbcef40986615be62baa746b6bba3334fe305a0fd134c376b6ae7079d9649c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\15",
+          "bytes": 8388608,
+          "sha256": "26fe514b3aabc45d81ee27fe7c43b5912c11a447fc831fe5f6fff0ec4e751380"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\16",
+          "bytes": 8388608,
+          "sha256": "052f8d02bfb81e51f6d905282bae9554b32b0fcf907fb48d7c7f9a34de499b0a"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\17",
+          "bytes": 8388608,
+          "sha256": "c31080f86d66fb43eb88ad8e3b55237d5c107e7f9f6dc5dae2aae19eba129c76"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\18",
+          "bytes": 8388608,
+          "sha256": "b6dc58c66008b92897478d2cda0765f12c135a745b77ab197b3f57358b3316b6"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\19",
+          "bytes": 8388608,
+          "sha256": "3101c63ef9fffa4bbb0c748b993e336fc6441e54ae50dec84e86266226c73418"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\2",
+          "bytes": 8388608,
+          "sha256": "b9a2cb672cd7566c56d4615e5b1d6c61935a9d0646c5dcd0bac62c6162e65398"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\20",
+          "bytes": 8388608,
+          "sha256": "402ce32d858ae140ad5a702728f5feedd0a7999a6f087356504fcce024b449b5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\21",
+          "bytes": 8388608,
+          "sha256": "cc7958d453c6a9c6e1e1054864cb0a8887b6a6c5503e5a5fbfae49df612cf323"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\22",
+          "bytes": 8388608,
+          "sha256": "9f9e021f3c520045d9b3cffa976d9f7eb7570e4fcd8682b81cdc38e9e16b9690"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\3",
+          "bytes": 8388608,
+          "sha256": "c8226f5b85e36a202d1536933f2e466ee5bd6d1208d16adf53cba1f775a9fc54"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\4",
+          "bytes": 8388608,
+          "sha256": "8daf0f486d01320066de7436560879deca06397f31131d3ceb7b62c6ff9c2888"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\5",
+          "bytes": 8388608,
+          "sha256": "b2e5c7d32a8e2d4f1fe8fa36da8e2f8880a8478f3103bc5cf4b9e6f8dffc9b16"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\6",
+          "bytes": 8388608,
+          "sha256": "daefa75ecdc0f9897e7aaef2247454351af39d33045e3a6c8edb56f6babb8882"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\7",
+          "bytes": 8388608,
+          "sha256": "cdfa366a802160dc7d23f4ae5c65c2d32a91d444e49b5fae5ec452ae967950bb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\8",
+          "bytes": 8388608,
+          "sha256": "6112e1f4a27ba9310721617b690a6d4f8d38975705b0c61a9643334e0676c310"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-media-e960-current\\download-parts\\9",
+          "bytes": 8388608,
+          "sha256": "1066b20eae76043c8de08d7d540fde305e91ed3744f0684c1bf0da127d8e3445"
+        }
+      ]
+    }
+  ],
+  "bytes": 192938008,
+  "profiles": [
+    {
+      "run": 1,
+      "temporary_bytes": 96528029,
+      "guarded_runner_removed": true
+    },
+    {
+      "run": 2,
+      "temporary_bytes": 96528029,
+      "guarded_runner_removed": true
+    }
+  ],
+  "runner_removed_profile_bytes": 193056058,
+  "scope": "Only23owned download parts+marker;two profiles already removed by checked runner;both distinct active88/92games retained"
+}

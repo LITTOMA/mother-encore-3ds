@@ -45,4 +45,4 @@ python tests/prepare_dungeon_key_hud_graphics.py --out build/key-hud-fixture
 
 证据见`reports/dungeon-key-hud-graphics/e645-emulator-1`。没有注入存档、RNG、旗标、物品或内存；使用原有90步标准和独立Pause／PSI原版参照。临时profile共193055950字节已清理。新的实际游戏保留；原361游戏在核对创建标记、正式旧收据和新两次结果后退役264975208字节，23个下载分块也已清理（192937984字节由记录的成功区间长度重建）。首次旧游戏清理因猜测的标记文本不符而拒绝，原文件未删；随后核对原创建脚本的真实标记再执行，相关记录保留。61ea／efda基准仍保留。
 
-5ff4原完整运行的GCC／Clang主机作业仍未完成，本次不将那个交叉构建失败的运行改记为全部通过。当前源文件相同的主机结果与修复后真实构建分别记录；正式墓穴接线、HUD GPU实际显示和真机仍未完成。
+5ff4完整运行的GCC／Clang主机作业现均成功：GCC普通321项、消毒器304项，Clang普通与消毒器各304项，均保留正常泄漏检查。原始日志见 reports/dungeon-key-hud-graphics/5ff4-completed-host；旧交叉构建失败仍保留，因此不将旧完整运行改记为全部通过。5ff4到修复后e645仅改变Makefile及文档／日志，共享核心、主机测试和资源均未改变；另有33项受影响的既有检查通过、修复后真实3DSX／CIA及两次模拟器回归。正式墓穴接线、HUD GPU实际显示和真机仍未完成。

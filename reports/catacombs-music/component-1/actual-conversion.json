@@ -1,0 +1,386 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Five original loop-only non-diegetic MusicChanger areas,flag/volume/fade bindings and geometry;candidate only,no full scene/save/NDSP/hardware admission",
+  "sources": {
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "Audio/Music/A_Ghastly_Site.mp3": "e3d0b02ab7486401e22fb9b2257d4ff972f30293e69d4da9d155330def16b880",
+    "Audio/Music/A_Ghastly_Site.mp3.import": "dd1d1646e059405b8c976003327de069c237a74f8e0aebb05c03574491108f7c",
+    "Audio/Music/Underground.ogg": "2e7f8a8797533194ffe05b1f59adaac8d875f74fdc8e931ce6027539a9813b0f",
+    "Audio/Music/Underground.ogg.import": "a4fc95c103ded46af35ab6177271e5d2e338c67316d3b6bbd6f7afb718341c79",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "review_sha256": "15b7b98c3c7b0f449fc71f76b6a6719259e01da54bae198a28e7fb23b1e45a66",
+  "imports": [
+    {
+      "source": "res://Audio/Music/Underground.ogg",
+      "loop": true,
+      "offset": 3.77
+    },
+    {
+      "source": "res://Audio/Music/A_Ghastly_Site.mp3",
+      "loop": true,
+      "offset": 16.694
+    }
+  ],
+  "metadata": {
+    "silence_db": -80.0,
+    "fade_to_seconds": 1,
+    "tracks": [
+      {
+        "stable_id": 2385098865,
+        "source_path": "res://Audio/Music/Underground.ogg",
+        "source_sha256": "2e7f8a8797533194ffe05b1f59adaac8d875f74fdc8e931ce6027539a9813b0f",
+        "import_sha256": "a4fc95c103ded46af35ab6177271e5d2e338c67316d3b6bbd6f7afb718341c79",
+        "pcm_path": "sound/music/catacombs-2385098865.pcm",
+        "gain_db": 0
+      },
+      {
+        "stable_id": 2369254644,
+        "source_path": "res://Audio/Music/A_Ghastly_Site.mp3",
+        "source_sha256": "e3d0b02ab7486401e22fb9b2257d4ff972f30293e69d4da9d155330def16b880",
+        "import_sha256": "dd1d1646e059405b8c976003327de069c237a74f8e0aebb05c03574491108f7c",
+        "pcm_path": "sound/music/catacombs-2369254644.pcm",
+        "gain_db": 0
+      }
+    ],
+    "regions": [
+      {
+        "id": 3290598507,
+        "source_path": "Music/MusicArea",
+        "track_id": 2385098865,
+        "volume_db": 0,
+        "fadein_seconds": 1,
+        "fadeout_seconds": 1.5,
+        "appear_flag": "hidden_entrance_opened",
+        "disappear_flag": "",
+        "disabled": false,
+        "shape_paths": [
+          "Music/MusicArea/CollisionShape2D"
+        ]
+      },
+      {
+        "id": 3340558408,
+        "source_path": "Music/MusicArea6",
+        "track_id": 2385098865,
+        "volume_db": -10,
+        "fadein_seconds": 1,
+        "fadeout_seconds": 1.5,
+        "appear_flag": "hidden_entrance_opened",
+        "disappear_flag": "",
+        "disabled": false,
+        "shape_paths": [
+          "Music/MusicArea6/CollisionShape2D"
+        ]
+      },
+      {
+        "id": 3228640337,
+        "source_path": "Music/MusicArea2",
+        "track_id": 2369254644,
+        "volume_db": -5,
+        "fadein_seconds": 1,
+        "fadeout_seconds": 1.5,
+        "appear_flag": "",
+        "disappear_flag": "hidden_entrance_opened",
+        "disabled": false,
+        "shape_paths": [
+          "Music/MusicArea2/CollisionShape2D"
+        ]
+      },
+      {
+        "id": 3077969095,
+        "source_path": "Music/MusicArea3",
+        "track_id": 2369254644,
+        "volume_db": -10,
+        "fadein_seconds": 1,
+        "fadeout_seconds": 1.5,
+        "appear_flag": "",
+        "disappear_flag": "hidden_entrance_opened",
+        "disabled": false,
+        "shape_paths": [
+          "Music/MusicArea3/CollisionShape2D"
+        ]
+      },
+      {
+        "id": 689078628,
+        "source_path": "Music/MusicArea4",
+        "track_id": 2369254644,
+        "volume_db": -15,
+        "fadein_seconds": 1,
+        "fadeout_seconds": 1.5,
+        "appear_flag": "",
+        "disappear_flag": "hidden_entrance_opened",
+        "disabled": false,
+        "shape_paths": [
+          "Music/MusicArea4/CollisionShape2D"
+        ]
+      }
+    ]
+  },
+  "polygons": [
+    {
+      "source": "Music/MusicArea",
+      "polygons": [
+        [
+          [
+            -2792.0,
+            -1288.0
+          ],
+          [
+            448.0,
+            -1288.0
+          ],
+          [
+            448.0,
+            344.0
+          ],
+          [
+            -2792.0,
+            344.0
+          ]
+        ]
+      ]
+    },
+    {
+      "source": "Music/MusicArea6",
+      "polygons": [
+        [
+          [
+            -1632.0,
+            -1416.0
+          ],
+          [
+            -1328.0,
+            -1416.0
+          ],
+          [
+            -1328.0,
+            -1312.0
+          ],
+          [
+            -1632.0,
+            -1312.0
+          ]
+        ]
+      ]
+    },
+    {
+      "source": "Music/MusicArea2",
+      "polygons": [
+        [
+          [
+            -160.0,
+            -32.0
+          ],
+          [
+            80.0,
+            -32.0
+          ],
+          [
+            80.0,
+            256.0
+          ],
+          [
+            -160.0,
+            256.0
+          ]
+        ]
+      ]
+    },
+    {
+      "source": "Music/MusicArea3",
+      "polygons": [
+        [
+          [
+            -400.0,
+            -32.0
+          ],
+          [
+            -160.0,
+            -32.0
+          ],
+          [
+            -160.0,
+            256.0
+          ],
+          [
+            -400.0,
+            256.0
+          ]
+        ]
+      ]
+    },
+    {
+      "source": "Music/MusicArea4",
+      "polygons": [
+        [
+          [
+            -816.0,
+            72.0
+          ],
+          [
+            -464.0,
+            72.0
+          ],
+          [
+            -464.0,
+            288.0
+          ],
+          [
+            -816.0,
+            288.0
+          ]
+        ]
+      ]
+    }
+  ],
+  "player": {
+    "path": "Nodes/Reusables/Player.tscn",
+    "sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "scope": "Native KinematicBody2D default layer1; original root mask and all8 polygon vertices+local origin. Movement/pause script is an explicit service."
+  },
+  "formats": [
+    "ENCMUS01 v1",
+    "ENCZON01 v1",
+    "ENCAUD01 existing"
+  ],
+  "mapped_implementation": {
+    "binding": "runtime/music_regions.cpp",
+    "geometry": "runtime/music_zones.cpp",
+    "callbacks": "runtime/music_scene_graph.cpp"
+  },
+  "release_staged": false,
+  "audio": {
+    "schema": 1,
+    "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "recipe_sha256": "68a190ff28c3360e3f1c534dc28c99994c4dca343a8ed9a79d50aa99a0f05f8f",
+    "ffmpeg_version": "ffmpeg version 6.0-full_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers\nbuilt with gcc 12.2.0 (Rev10, Built by MSYS2 project)\nconfiguration: --enable-gpl --enable-version3 --enable-shared --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-ffnvcodec --enable-nvdec --enable-nvenc --enable-d3d11va --enable-dxva2 --enable-libvpl --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint\nlibavutil      58.  2.100 / 58.  2.100\nlibavcodec     60.  3.100 / 60.  3.100\nlibavformat    60.  3.100 / 60.  3.100\nlibavdevice    60.  1.100 / 60.  1.100\nlibavfilter     9.  3.100 /  9.  3.100\nlibswscale      7.  1.100 /  7.  1.100\nlibswresample   4. 10.100 /  4. 10.100\nlibpostproc    57.  1.100 / 57.  1.100\n",
+    "ffmpeg_sha256": "0fb10e2d3073ba643778d72c4e3766456d7849f41ca9fc9203b19b1172897c39",
+    "assets": [
+      {
+        "stable_id": 2385098865,
+        "source_sha256": "2e7f8a8797533194ffe05b1f59adaac8d875f74fdc8e931ce6027539a9813b0f",
+        "sample_rate": 44100,
+        "channels": 2,
+        "loop": true,
+        "frames": 3944448,
+        "loop_start": 166257,
+        "pcm_bytes": 15777792,
+        "pcm_crc32": 1794713865,
+        "pcm_path": "sound/music/catacombs-2385098865.pcm",
+        "source_path": "res://Audio/Music/Underground.ogg",
+        "gain_db": 0,
+        "source_sample_rate": 44100,
+        "import_sha256": "a4fc95c103ded46af35ab6177271e5d2e338c67316d3b6bbd6f7afb718341c79",
+        "loop_offset_seconds": 3.77,
+        "pcm_sha256": "d69945b292dd841f1e5b7998e179bd34b6dd7043341eeea3ca491bb105176a26",
+        "command": [
+          "C:\\Users\\litto\\AppData\\Local\\Programs\\Tools\\ffmpeg.EXE",
+          "-nostdin",
+          "-v",
+          "error",
+          "-i",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Audio\\Music\\Underground.ogg",
+          "-map",
+          "0:a:0",
+          "-vn",
+          "-sn",
+          "-dn",
+          "-c:a",
+          "pcm_s16le",
+          "-f",
+          "s16le",
+          "-bitexact",
+          "-threads",
+          "1",
+          "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-jg3zdifw\\0.pcm"
+        ]
+      },
+      {
+        "stable_id": 2369254644,
+        "source_sha256": "e3d0b02ab7486401e22fb9b2257d4ff972f30293e69d4da9d155330def16b880",
+        "sample_rate": 44100,
+        "channels": 2,
+        "loop": true,
+        "frames": 3125527,
+        "loop_start": 736205,
+        "pcm_bytes": 12502108,
+        "pcm_crc32": 1702205322,
+        "pcm_path": "sound/music/catacombs-2369254644.pcm",
+        "source_path": "res://Audio/Music/A_Ghastly_Site.mp3",
+        "gain_db": 0,
+        "source_sample_rate": 44100,
+        "import_sha256": "dd1d1646e059405b8c976003327de069c237a74f8e0aebb05c03574491108f7c",
+        "loop_offset_seconds": 16.694,
+        "pcm_sha256": "bed99c9f303eb1473dced82940542a961e4c124474166b0a9ca5a3278e3c0733",
+        "command": [
+          "C:\\Users\\litto\\AppData\\Local\\Programs\\Tools\\ffmpeg.EXE",
+          "-nostdin",
+          "-v",
+          "error",
+          "-i",
+          "D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Audio\\Music\\A_Ghastly_Site.mp3",
+          "-map",
+          "0:a:0",
+          "-vn",
+          "-sn",
+          "-dn",
+          "-c:a",
+          "pcm_s16le",
+          "-f",
+          "s16le",
+          "-bitexact",
+          "-threads",
+          "1",
+          "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-jg3zdifw\\1.pcm"
+        ]
+      }
+    ],
+    "files": [
+      {
+        "path": "sound/banks/opening.encaudio",
+        "size": 401,
+        "sha256": "442363b785805ef92da571a0bfb2fb6c9da49d21e8c5d4c38af95b22d7d55f15"
+      },
+      {
+        "path": "sound/music/catacombs-2369254644.pcm",
+        "size": 12502108,
+        "sha256": "bed99c9f303eb1473dced82940542a961e4c124474166b0a9ca5a3278e3c0733"
+      },
+      {
+        "path": "sound/music/catacombs-2385098865.pcm",
+        "size": 15777792,
+        "sha256": "d69945b292dd841f1e5b7998e179bd34b6dd7043341eeea3ca491bb105176a26"
+      }
+    ],
+    "scope": "PCM decode and stream metadata only; no DSP firmware; no hardware audibility or Godot decoder bit-exactness claim"
+  },
+  "outputs": {
+    "sound/banks/catacombs.encmusic": {
+      "bytes": 850,
+      "sha256": "7500854fbc43628222da991b5a4246ad809297c650a53ac79299098c49b228bc"
+    },
+    "sound/banks/catacombs.enczones": {
+      "bytes": 323,
+      "sha256": "2cbc7f8df63fee625feb7a5c4e204247b4d4b1ccc5456b8210fbda235a17dc27"
+    },
+    "sound/banks/catacombs.encaudio": {
+      "bytes": 401,
+      "sha256": "442363b785805ef92da571a0bfb2fb6c9da49d21e8c5d4c38af95b22d7d55f15"
+    },
+    "sound/music/catacombs-2369254644.pcm": {
+      "bytes": 12502108,
+      "sha256": "bed99c9f303eb1473dced82940542a961e4c124474166b0a9ca5a3278e3c0733"
+    },
+    "sound/music/catacombs-2385098865.pcm": {
+      "bytes": 15777792,
+      "sha256": "d69945b292dd841f1e5b7998e179bd34b6dd7043341eeea3ca491bb105176a26"
+    }
+  },
+  "producer_sha256": "1fcff22c3f63382bf32bcbae7bd31ec1ad974052f0f6e0ca8f9a3a8e49afc024"
+}

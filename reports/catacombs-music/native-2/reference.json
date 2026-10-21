@@ -1,0 +1,4763 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": {
+        "name": "catacombs_podunk_to_mayor",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea4",
+            "Music/MusicArea3",
+            "Music/MusicArea2",
+            "Music/MusicArea6",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": -1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "catacombs_rapid_podunk_mayor_podunk",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea4",
+            "Music/MusicArea3",
+            "Music/MusicArea2",
+            "Music/MusicArea6",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea4",
+            "Music/MusicArea3",
+            "Music/MusicArea2",
+            "Music/MusicArea6",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": -1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "catacombs_stopped_latest_reused_across_banks",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "settle"
+          ],
+          [
+            "stop",
+            "Music/MusicArea2",
+            0
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": false,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": false,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea4",
+            "Music/MusicArea3",
+            "Music/MusicArea2",
+            "Music/MusicArea6",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "catacombs_shared_song_and_cancelled_exit",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "exit",
+            "Music/MusicArea2"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "exit",
+            "Music/MusicArea3"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea4",
+            "Music/MusicArea3",
+            "Music/MusicArea2",
+            "Music/MusicArea6",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "catacombs_door_live_array_skip",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "door",
+            1
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea4",
+            "Music/MusicArea3",
+            "Music/MusicArea2",
+            "Music/MusicArea6",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "catacombs_global_external_latest_same_song",
+        "actions": [
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "external",
+            1,
+            true,
+            0
+          ],
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Underground.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Underground.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea4",
+            "Music/MusicArea3",
+            "Music/MusicArea2",
+            "Music/MusicArea6",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Underground.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            },
+            {
+              "id": 2,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 2,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "catacombs_global_external_latest_stopped",
+        "actions": [
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "external",
+            1,
+            false,
+            0
+          ],
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Underground.ogg",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/Underground.ogg",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea4",
+            "Music/MusicArea3",
+            "Music/MusicArea2",
+            "Music/MusicArea6",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            },
+            {
+              "id": 1,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "catacombs_ui_and_collision_callbacks",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "context",
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "context",
+            true,
+            true,
+            false,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "context",
+            true,
+            false,
+            true,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "context",
+            true,
+            false,
+            false,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "context",
+            true,
+            true,
+            false,
+            true
+          ],
+          [
+            "exit",
+            "Music/MusicArea2"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "context",
+            true,
+            false,
+            false,
+            false
+          ],
+          [
+            "exit",
+            "Music/MusicArea2"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "context",
+            true,
+            false,
+            true,
+            true
+          ],
+          [
+            "exit",
+            "Music/MusicArea2"
+          ],
+          [
+            "idle"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "catacombs_source_appear_disappear_flags",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "flag",
+            "hidden_entrance_opened",
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "enter",
+            "Music/MusicArea4"
+          ],
+          [
+            "flag",
+            "hidden_entrance_opened",
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea4"
+          ],
+          [
+            "enter",
+            "Music/MusicArea6"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Underground.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Underground.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Underground.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Underground.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/Underground.ogg",
+              "playing": true,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea",
+            "Music/MusicArea6"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "catacombs_all_source_areas_exit_before_rebind",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "enter",
+            "Music/MusicArea4"
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      "views": [
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea3"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea3",
+            "Music/MusicArea4"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2",
+            "Music/MusicArea3",
+            "Music/MusicArea4"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+            "Music/MusicArea4",
+            "Music/MusicArea3",
+            "Music/MusicArea2",
+            "Music/MusicArea6",
+            "Music/MusicArea"
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -5,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 0,
+              "stream": "res://Audio/Music/A_Ghastly_Site.mp3",
+              "playing": true,
+              "gain": -80,
+              "queued": true
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": 0,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        },
+        {
+          "voices": [
+            {
+              "id": 1,
+              "stream": "",
+              "playing": false,
+              "gain": 0,
+              "queued": false
+            }
+          ],
+          "registered": [
+            "Music/MusicArea2"
+          ],
+          "areas": [
+            {
+              "path": "Music/MusicArea",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea6",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea2",
+              "inside": true,
+              "attached": -1,
+              "registered": true
+            },
+            {
+              "path": "Music/MusicArea3",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            },
+            {
+              "path": "Music/MusicArea4",
+              "inside": false,
+              "attached": -1,
+              "registered": false
+            }
+          ],
+          "exits": [
+
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+config_version=4
+[application]
+config/name="Candidate original music-player identities"
+[logging]
+file_logging/enable_logging=false
+[rendering]
+quality/driver/driver_name="GLES2"

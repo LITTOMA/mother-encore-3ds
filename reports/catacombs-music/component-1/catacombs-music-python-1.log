@@ -1,0 +1,16 @@
+test_actual_native_repetitions_and_frozen_review (tests.test_catacombs_music.CatacombsMusicTests.test_actual_native_repetitions_and_frozen_review) ... ok
+test_area_identity_and_exact_source_coverage (tests.test_catacombs_music.CatacombsMusicTests.test_area_identity_and_exact_source_coverage) ... ok
+test_cli_output_guard_runs_before_creating_files (tests.test_catacombs_music.CatacombsMusicTests.test_cli_output_guard_runs_before_creating_files) ... ok
+test_converted_audio_metadata_rebuilds_exactly (tests.test_catacombs_music.CatacombsMusicTests.test_converted_audio_metadata_rebuilds_exactly) ... ok
+test_duplicate_and_nonfinite_json_rejected (tests.test_catacombs_music.CatacombsMusicTests.test_duplicate_and_nonfinite_json_rejected) ... ok
+test_metadata_unknown_tracks_and_geometry_rejected (tests.test_catacombs_music.CatacombsMusicTests.test_metadata_unknown_tracks_and_geometry_rejected) ... ok
+test_native_geometry_and_protocol_corruption_rejected (tests.test_catacombs_music.CatacombsMusicTests.test_native_geometry_and_protocol_corruption_rejected) ... ok
+test_original_source_metadata_and_codecs (tests.test_catacombs_music.CatacombsMusicTests.test_original_source_metadata_and_codecs) ... ok
+test_source_changes_and_missing_import_rejected (tests.test_catacombs_music.CatacombsMusicTests.test_source_changes_and_missing_import_rejected) ... ok
+test_unknown_schema_kind_pin_and_field_rejected (tests.test_catacombs_music.CatacombsMusicTests.test_unknown_schema_kind_pin_and_field_rejected) ... ok
+test_unsafe_output_and_source_paths_rejected (tests.test_catacombs_music.CatacombsMusicTests.test_unsafe_output_and_source_paths_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 4.715s
+
+OK

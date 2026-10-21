@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_catacombs_music_reference.py", line 103, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_catacombs_music_reference.py", line 94, in main
+    target=project/music.CHANGER;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(ex.data(music.CHANGER));invoke(engine,project,['--video-driver','GLES2','--debug'],out/'geometry.log');validate_geometry(json.loads((out/'geometry.json').read_bytes()),gproof)
+                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_scene_reference.py", line 44, in invoke
+    raise ValueError('Engine reference failed; inspect ' + str(log))
+ValueError: Engine reference failed; inspect D:\GameDev\3DS\mother-encore-3ds\build\full-port\catacombs-music-native-1\geometry.log

@@ -1,0 +1,2 @@
+Catacombs music:3090 checks;92 original callback observations,5 original geometry/flag/gain records,actual converted audio metadata and loop cursors;no NDSP/audible/full scene/hardware claim
+Music scene graph: 5454 checks; 10 original scene callback sequences, global ordered loop nodes, deferred exits, source flags/UI and negative ownership/epoch/capacity rollback; no physical bank/DSP integration claim

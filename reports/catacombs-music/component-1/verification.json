@@ -1,0 +1,67 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Catacombs music metadata and shared callback/geometry candidate;not full scene/save/NDSP/audible/hardware admission",
+  "native_successes": [
+    2,
+    3
+  ],
+  "native_methods_each": {
+    "cases": 10,
+    "observations": 92,
+    "geometry_records": 5
+  },
+  "native_results_byte_identical": true,
+  "original_area_count": 5,
+  "original_track_count": 2,
+  "candidate_metadata_bytes": [
+    850,
+    323,
+    401
+  ],
+  "original_loop_seconds": [
+    3.77,
+    16.694
+  ],
+  "actual_pcm_bytes": 28279900,
+  "gcc_asan_ubsan_normal_leaks": {
+    "catacombs_checks": 3090,
+    "unchanged_old_trace_checks": 5454,
+    "exit_code": 0,
+    "library": "Fresh116-source current library from terrain-core-host1,all runtime/header inputs verified unchanged;not rebuilt for this test extraction"
+  },
+  "old_comparator_body_sha256": "f13fe623087e023288838e41cb2f5dcfdf70b439e83b283eeaca2a527ed7e30f",
+  "old_comparator_and_negative_bodies_unchanged": true,
+  "python_methods": 11,
+  "windows_config_and_collection_only": {
+    "ctest": 324,
+    "python": 1440,
+    "aggregate": 1057,
+    "dedicated": 383
+  },
+  "cleanup_removed_bytes": 42153517,
+  "failed_attempts": {
+    "first_source": "Raw Document sections lack expanded Node.path;fixed via node_path(attrs),raw failure retained",
+    "native1": "Unused explicit geometry-service parameter b triggers engine diagnostic;renamed _b,no warning suppression;failed result retained",
+    "private_writer": "Initial writer failed before creating observer;native invocation reported missing file;no engine result claimed",
+    "cleanup": "First audit refused generated project/import files as source copies before deletion;corrected exact copied-file list and retained generated import diagnostics"
+  },
+  "unverified": [
+    "Full current GCC/Clang/sanitizer matrix",
+    "Real current3DSX/CIA build",
+    "Formal scene/global bank routing",
+    "Actual NDSP/perceptual audio",
+    "Current scene emulator and all hardware"
+  ],
+  "inputs_sha256": {
+    "CMakeLists.txt": "6fa20be4176bb5a53b11e2e22e27245044436dda028325f2de7209342cbfb4de",
+    "tests/music_scene_graph_tests.cpp": "76307a1f2b0d8ed0a0766c5c2abc614bbefa8c14e40e6d69295f3bb7b76111c0",
+    "tests/music_scene_graph_reference.hpp": "2219f3699b3cc0e08a5d09c67b54fd8baa48c18b84c32a98e6e2579e8d845fee",
+    "tests/catacombs_music_tests.cpp": "ab12acb8b36c3d598e725a71bf62bf8f64dff01980565ccfceea5427766bb79c",
+    "tests/prepare_catacombs_music.py": "44e0c29cf2b8fa4c30a242566b03c121a55089647ebff13282f9c873280afb19",
+    "tests/test_catacombs_music.py": "d9c4e85f08d5b779edb5d67861831c1b8876c19da78409723f84a0f9c8d09737",
+    "tools/catacombs_music.py": "1fcff22c3f63382bf32bcbae7bd31ec1ad974052f0f6e0ca8f9a3a8e49afc024",
+    "tools/run_catacombs_music_reference.py": "ac20964974f1c2d10d86aaa8ee0e69e1126ae5e3a465e45795fc953af1ae4941",
+    "content/catacombs-music.json": "15b7b98c3c7b0f449fc71f76b6a6719259e01da54bae198a28e7fb23b1e45a66",
+    "compatibility/reviews/catacombs-music-v0410.json": "6dd948eecfddd94fb1e5d0a1e5c84163b4e9524c12ae9d15abbd861720513b5a"
+  }
+}

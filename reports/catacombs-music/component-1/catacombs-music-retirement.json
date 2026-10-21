@@ -1,0 +1,44 @@
+[
+  {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-music-native-1\\geometry-project",
+    "bytes": 10045.0,
+    "known_files": 10,
+    "source_files": 1,
+    "removed": true
+  },
+  {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-music-native-2\\geometry-project",
+    "bytes": 9902.0,
+    "known_files": 10,
+    "source_files": 1,
+    "removed": true
+  },
+  {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-music-native-2\\project",
+    "bytes": 6918957.0,
+    "known_files": 13,
+    "source_files": 2,
+    "removed": true
+  },
+  {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-music-native-3\\geometry-project",
+    "bytes": 9902.0,
+    "known_files": 10,
+    "source_files": 1,
+    "removed": true
+  },
+  {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-music-native-3\\project",
+    "bytes": 6918957.0,
+    "known_files": 13,
+    "source_files": 2,
+    "removed": true
+  },
+  {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-music-candidate-1\\audio-stage",
+    "bytes": 28285754.0,
+    "known_files": 3,
+    "source_files": 0,
+    "removed": true
+  }
+]

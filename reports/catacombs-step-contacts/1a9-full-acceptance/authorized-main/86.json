@@ -1,0 +1,15 @@
+{
+  "authorization": "Human: \u6388\u6743\u5408\u5e76 #86. Keep87\u201389draft.",
+  "pr": 86,
+  "head": "b3d6eef5c9df93a2e5c0af2bdee1268badb9f711",
+  "merge": "0d172529a1f3a6c041d13b5f3412c6d6690ed03e",
+  "tree": "7ea15033f5efd6102031b6d6ed1a4758a4e397d6",
+  "tree_matches_approved_head": true,
+  "first_parent": "af93f86922411be1fec019a9cecbd9cf98ed7265",
+  "second_parent": "b3d6eef5c9df93a2e5c0af2bdee1268badb9f711",
+  "merged_at": "2026-10-21T07:34:54Z",
+  "full_run": 39545834165,
+  "source": "2863458571ec44cf3117e0987b428349111086ff",
+  "official_game_matches_actual_two_cold90": true,
+  "scope": "Standard two-parent authorized merge;no separate86 emulator/GPU/fullscene/hardware claim"
+}

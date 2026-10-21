@@ -1,0 +1,188 @@
+{
+  "id": 119083493110,
+  "run_id": 39558384627,
+  "workflow_name": "3DS artifacts and manual full verification",
+  "head_branch": "codex/catacombs-poison-hazards",
+  "run_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/runs/39558384627",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOU6Uass8AAAAbue3m9g",
+  "head_sha": "c611ecf00f91977d9d6653d262ba47691c935316",
+  "url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/jobs/119083493110",
+  "html_url": "https://github.com/LITTOMA/mother-encore-3ds/actions/runs/39558384627/job/119083493110",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-10-21T06:54:38Z",
+  "started_at": "2026-10-21T06:54:41Z",
+  "completed_at": "2026-10-21T07:11:23Z",
+  "name": "Real 3DSX and CIA (GPU 1:1:1)",
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-10-21T06:54:42Z",
+      "completed_at": "2026-10-21T06:54:42Z"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-10-21T06:54:42Z",
+      "completed_at": "2026-10-21T06:54:47Z"
+    },
+    {
+      "name": "Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-10-21T06:54:47Z",
+      "completed_at": "2026-10-21T06:54:47Z"
+    },
+    {
+      "name": "Install pinned Python data tools and host dependencies",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4,
+      "started_at": "2026-10-21T06:54:47Z",
+      "completed_at": "2026-10-21T06:55:05Z"
+    },
+    {
+      "name": "Enable the validated LibYAML safe parser after installing dependencies",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-10-21T06:55:05Z",
+      "completed_at": "2026-10-21T06:55:05Z"
+    },
+    {
+      "name": "Restore the SDK from the existing checksum-pinned official layers",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6,
+      "started_at": "2026-10-21T06:55:05Z",
+      "completed_at": "2026-10-21T06:55:17Z"
+    },
+    {
+      "name": "Restore pinned CIA packaging tools from official sources",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 7,
+      "started_at": "2026-10-21T06:55:17Z",
+      "completed_at": "2026-10-21T06:55:43Z"
+    },
+    {
+      "name": "Validate the fixed official submodule before restoring any content",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8,
+      "started_at": "2026-10-21T06:55:43Z",
+      "completed_at": "2026-10-21T06:55:52Z"
+    },
+    {
+      "name": "Check console header positive and negative cases",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-10-21T06:55:52Z",
+      "completed_at": "2026-10-21T06:55:52Z"
+    },
+    {
+      "name": "Build a genuine ARM ELF and 3DSX with checked RomFS",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 10,
+      "started_at": "2026-10-21T06:55:52Z",
+      "completed_at": "2026-10-21T07:10:16Z"
+    },
+    {
+      "name": "Package the genuine ARM ELF as CIA",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11,
+      "started_at": "2026-10-21T07:10:16Z",
+      "completed_at": "2026-10-21T07:10:34Z"
+    },
+    {
+      "name": "Extract and compare the actual packaged resources",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 12,
+      "started_at": "2026-10-21T07:10:34Z",
+      "completed_at": "2026-10-21T07:10:41Z"
+    },
+    {
+      "name": "Confirm the readonly upstream and tracked source remain unchanged",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 13,
+      "started_at": "2026-10-21T07:10:41Z",
+      "completed_at": "2026-10-21T07:10:45Z"
+    },
+    {
+      "name": "Prepare installable artifacts with notices and commit receipt",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 14,
+      "started_at": "2026-10-21T07:10:45Z",
+      "completed_at": "2026-10-21T07:11:04Z"
+    },
+    {
+      "name": "Upload genuine 3DSX and CIA installable artifacts",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 15,
+      "started_at": "2026-10-21T07:11:04Z",
+      "completed_at": "2026-10-21T07:11:21Z"
+    },
+    {
+      "name": "Link the downloadable package in the run summary",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 16,
+      "started_at": "2026-10-21T07:11:21Z",
+      "completed_at": "2026-10-21T07:11:21Z"
+    },
+    {
+      "name": "Include package diagnostics in the run log",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 17,
+      "started_at": "2026-10-21T07:11:21Z",
+      "completed_at": "2026-10-21T07:11:21Z"
+    },
+    {
+      "name": "Post Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 33,
+      "started_at": "2026-10-21T07:11:21Z",
+      "completed_at": "2026-10-21T07:11:21Z"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 34,
+      "started_at": "2026-10-21T07:11:21Z",
+      "completed_at": "2026-10-21T07:11:22Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 35,
+      "started_at": "2026-10-21T07:11:22Z",
+      "completed_at": "2026-10-21T07:11:22Z"
+    }
+  ],
+  "check_run_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/check-runs/119083493110",
+  "labels": [
+    "ubuntu-24.04"
+  ],
+  "runner_id": 1000003633,
+  "runner_name": "GitHub Actions 1000003633",
+  "runner_group_id": 0,
+  "runner_group_name": "GitHub Actions"
+}

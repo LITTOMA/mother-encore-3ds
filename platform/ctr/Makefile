@@ -27,6 +27,7 @@ SOURCES += runtime/dungeon_rooms.cpp
 SOURCES += runtime/dungeon_keys.cpp runtime/dungeon_key_state.cpp runtime/dungeon_switches.cpp runtime/dungeon_switch_state.cpp runtime/dungeon_wall_timeline.cpp runtime/dungeon_wall_state.cpp
 SOURCES += runtime/dungeon_key_clocks.cpp
 SOURCES += runtime/dungeon_key_media.cpp
+SOURCES += platform/ctr/dungeon_key_audio.cpp
 SOURCES += runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
 SOURCES += runtime/item_details.cpp runtime/field_equipment_data.cpp runtime/field_equipment_menu.cpp
 SOURCES += runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp runtime/battle_loot.cpp

@@ -1,0 +1,35 @@
+{
+  "scope": "Windows configure/discovery only",
+  "ctest": 308,
+  "test": {
+    "backtrace": 525,
+    "config": "Debug",
+    "name": "dungeon_key_ndsp",
+    "properties": [
+      {
+        "name": "DEPENDS",
+        "value": [
+          "dungeon_key_media_fixture"
+        ]
+      },
+      {
+        "name": "FIXTURES_REQUIRED",
+        "value": [
+          "dungeon_key_media_source"
+        ]
+      },
+      {
+        "name": "RUN_SERIAL",
+        "value": true
+      },
+      {
+        "name": "TIMEOUT",
+        "value": 60.0
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "D:/GameDev/3DS/mother-encore-3ds"
+      }
+    ]
+  }
+}

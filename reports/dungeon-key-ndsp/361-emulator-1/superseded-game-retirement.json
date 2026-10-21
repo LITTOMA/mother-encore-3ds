@@ -1,0 +1,17 @@
+{
+  "removed_bytes": 264975024,
+  "utc": "2026-10-20T20:21:03.7704832Z",
+  "scope": "Only superseded task-owned0f game file;old notices/receipt/raw test logs,61ea/efda baselines,SDK,DSP and protected assets retained",
+  "old": {
+    "bytes": 264975024,
+    "exclusive_read_verified": true,
+    "sha256": "723537dcc1d69289ff7e59e8459847f62a20cb16e260e999b5a98eecbdf3c508",
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\wall0f-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx"
+  },
+  "replacement": {
+    "repetitions": 2,
+    "checkpoints_each": 90,
+    "sha256": "d78b4dbe78c9a424eb1b96ea829bdf382573c46b1945f88a40e7b4388d2fb83b",
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key361-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx"
+  }
+}

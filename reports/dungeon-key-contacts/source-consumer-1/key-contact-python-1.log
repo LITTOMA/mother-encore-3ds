@@ -1,0 +1,12 @@
+test_bad_initial_coverage_and_unknown_observations_rejected (tests.test_dungeon_key_contacts.KeyContactTests.test_bad_initial_coverage_and_unknown_observations_rejected) ... ok
+test_fixture_retains_all_native_rows (tests.test_dungeon_key_contacts.KeyContactTests.test_fixture_retains_all_native_rows) ... ok
+test_independent_native_runs_and_hashes (tests.test_dungeon_key_contacts.KeyContactTests.test_independent_native_runs_and_hashes) ... ok
+test_player_exact_source_polygon_and_unknown_geometry_rejected (tests.test_dungeon_key_contacts.KeyContactTests.test_player_exact_source_polygon_and_unknown_geometry_rejected) ... ok
+test_shared_core_build_lists (tests.test_dungeon_key_contacts.KeyContactTests.test_shared_core_build_lists) ... ok
+test_source_paused_other_disabled_and_saved_outcomes (tests.test_dungeon_key_contacts.KeyContactTests.test_source_paused_other_disabled_and_saved_outcomes) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.160s
+
+OK
+Key contacts fixture:14 native cases,27 settled observations; sampled current body,explicit pause/audio services

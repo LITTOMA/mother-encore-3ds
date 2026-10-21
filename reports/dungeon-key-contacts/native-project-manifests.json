@@ -1,0 +1,374 @@
+{
+  "build/full-port/key-contact-native-1/project": {
+    "marker": "source-key-contact-reference-v1",
+    "files": {
+      ".owned-key-contact-reference": {
+        "bytes": 31,
+        "sha256": "87af82bc4689c9557f095376f62b721b317a1f5081c1fcefdb4919705a6ee870"
+      },
+      "audio.gd": {
+        "bytes": 209,
+        "sha256": "5116660253f6cc81515444298682141929fec62be92ec7677bd16c75fd4cab16"
+      },
+      "data.gd": {
+        "bytes": 506,
+        "sha256": "2d01d58e9fa2bea47ccd1c22628cf01638eddfe6b7d08bb67321cb8b9f0799e1"
+      },
+      "global.gd": {
+        "bytes": 632,
+        "sha256": "a7cf03057fb5a2038ec20911b1f1c2f92b31d4ce679a936b39107a0254cae40c"
+      },
+      "input.json": {
+        "bytes": 10916,
+        "sha256": "b39b0701f9aea5c26ab2b81b4d48e4ab6fc41ff942d58206c902e2d5d3f3fafc"
+      },
+      "probe.gd": {
+        "bytes": 5562,
+        "sha256": "2a57a8da71dc1ab92b81402ca4a0108774686358cf5227732d3683e8a0b98778"
+      },
+      "probe.tscn": {
+        "bytes": 151,
+        "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+      },
+      "project.godot": {
+        "bytes": 735,
+        "sha256": "fb3796664ab25d5f103d90deaf4c2d3f0be3aa5a558b97888343759980cb49b1"
+      },
+      "ui.gd": {
+        "bytes": 759,
+        "sha256": "7692cc7a9935556117b222900e859686b637873dfb45fd92b45171dba4ea7107"
+      },
+      ".import/.gdignore": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "Scripts/Main/FlaggableObject.gd": {
+        "bytes": 1237,
+        "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+      },
+      "Scripts/Main/Small Key.gd": {
+        "bytes": 582,
+        "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+      },
+      "user-local/Godot/resthumb-b36dfc7dfdde1c96a80bf8176ca5c64a.png": {
+        "bytes": 1161,
+        "sha256": "916938ad9f26b7da6559090a09f17706177e78f5de1ad74d5d441dd458fb13ae"
+      },
+      "user-local/Godot/resthumb-b36dfc7dfdde1c96a80bf8176ca5c64a.txt": {
+        "bytes": 49,
+        "sha256": "3b87cfddd18f7ef1ab5098e071d9478d5233a5895415ffce86aea20507f709ad"
+      },
+      "user-roaming/Godot/editor_settings-3.tres": {
+        "bytes": 7819,
+        "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+      },
+      "user-roaming/Godot/app_userdata/Original source key contacts/logs/godot.log": {
+        "bytes": 205,
+        "sha256": "7f74fde9ad164d51e3e25cd7d620c18fb03f11dfa8073b2301058638c9f62020"
+      },
+      "user-roaming/Godot/projects/filesystem_cache6": {
+        "bytes": 1479,
+        "sha256": "d7ed6e17d2886cdde53b5c2dfc3f77208f02c672333a7bd55d773336bda187e5"
+      },
+      "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg": {
+        "bytes": 49,
+        "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+      },
+      "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg": {
+        "bytes": 69,
+        "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+      },
+      "user-roaming/Godot/projects/project_metadata.cfg": {
+        "bytes": 260,
+        "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+      },
+      "user-roaming/Godot/script_templates/empty.gd": {
+        "bytes": 16,
+        "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+      },
+      "user-roaming/Godot/script_templates/no_comments.gd": {
+        "bytes": 54,
+        "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+      }
+    }
+  },
+  "build/full-port/key-contact-native-2/project": {
+    "marker": "source-key-contact-reference-v1",
+    "files": {
+      ".owned-key-contact-reference": {
+        "bytes": 31,
+        "sha256": "87af82bc4689c9557f095376f62b721b317a1f5081c1fcefdb4919705a6ee870"
+      },
+      "audio.gd": {
+        "bytes": 209,
+        "sha256": "5116660253f6cc81515444298682141929fec62be92ec7677bd16c75fd4cab16"
+      },
+      "data.gd": {
+        "bytes": 506,
+        "sha256": "2d01d58e9fa2bea47ccd1c22628cf01638eddfe6b7d08bb67321cb8b9f0799e1"
+      },
+      "global.gd": {
+        "bytes": 632,
+        "sha256": "a7cf03057fb5a2038ec20911b1f1c2f92b31d4ce679a936b39107a0254cae40c"
+      },
+      "input.json": {
+        "bytes": 10916,
+        "sha256": "b39b0701f9aea5c26ab2b81b4d48e4ab6fc41ff942d58206c902e2d5d3f3fafc"
+      },
+      "probe.gd": {
+        "bytes": 5562,
+        "sha256": "2a57a8da71dc1ab92b81402ca4a0108774686358cf5227732d3683e8a0b98778"
+      },
+      "probe.tscn": {
+        "bytes": 151,
+        "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+      },
+      "project.godot": {
+        "bytes": 735,
+        "sha256": "fb3796664ab25d5f103d90deaf4c2d3f0be3aa5a558b97888343759980cb49b1"
+      },
+      "ui.gd": {
+        "bytes": 759,
+        "sha256": "7692cc7a9935556117b222900e859686b637873dfb45fd92b45171dba4ea7107"
+      },
+      ".import/.gdignore": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "Scripts/Main/FlaggableObject.gd": {
+        "bytes": 1237,
+        "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+      },
+      "Scripts/Main/Small Key.gd": {
+        "bytes": 582,
+        "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+      },
+      "user-local/Godot/resthumb-b01841011e7fad061cba7da6f6e522ad.png": {
+        "bytes": 1161,
+        "sha256": "916938ad9f26b7da6559090a09f17706177e78f5de1ad74d5d441dd458fb13ae"
+      },
+      "user-local/Godot/resthumb-b01841011e7fad061cba7da6f6e522ad.txt": {
+        "bytes": 49,
+        "sha256": "1a05f95300632a07caa9826b19d0acb1a916288c2fc17856019273406a31dde2"
+      },
+      "user-roaming/Godot/editor_settings-3.tres": {
+        "bytes": 7819,
+        "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+      },
+      "user-roaming/Godot/app_userdata/Original source key contacts/logs/godot.log": {
+        "bytes": 205,
+        "sha256": "7f74fde9ad164d51e3e25cd7d620c18fb03f11dfa8073b2301058638c9f62020"
+      },
+      "user-roaming/Godot/projects/filesystem_cache6": {
+        "bytes": 1479,
+        "sha256": "29ce5e9a2cef36ae253bc0d43f62c4759b336791d1155b029d5a9ebdff270ea7"
+      },
+      "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg": {
+        "bytes": 49,
+        "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+      },
+      "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg": {
+        "bytes": 69,
+        "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+      },
+      "user-roaming/Godot/projects/project_metadata.cfg": {
+        "bytes": 260,
+        "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+      },
+      "user-roaming/Godot/script_templates/empty.gd": {
+        "bytes": 16,
+        "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+      },
+      "user-roaming/Godot/script_templates/no_comments.gd": {
+        "bytes": 54,
+        "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+      }
+    }
+  },
+  "build/full-port/key-contact-native-3/project": {
+    "marker": "source-key-contact-reference-v1",
+    "files": {
+      ".owned-key-contact-reference": {
+        "bytes": 31,
+        "sha256": "87af82bc4689c9557f095376f62b721b317a1f5081c1fcefdb4919705a6ee870"
+      },
+      "audio.gd": {
+        "bytes": 209,
+        "sha256": "5116660253f6cc81515444298682141929fec62be92ec7677bd16c75fd4cab16"
+      },
+      "data.gd": {
+        "bytes": 506,
+        "sha256": "2d01d58e9fa2bea47ccd1c22628cf01638eddfe6b7d08bb67321cb8b9f0799e1"
+      },
+      "global.gd": {
+        "bytes": 632,
+        "sha256": "a7cf03057fb5a2038ec20911b1f1c2f92b31d4ce679a936b39107a0254cae40c"
+      },
+      "input.json": {
+        "bytes": 10916,
+        "sha256": "b39b0701f9aea5c26ab2b81b4d48e4ab6fc41ff942d58206c902e2d5d3f3fafc"
+      },
+      "probe.gd": {
+        "bytes": 5843,
+        "sha256": "b55fb53f75497b7a07620a570b527f0f13885af1d083e52bb30d94154d666f00"
+      },
+      "probe.tscn": {
+        "bytes": 151,
+        "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+      },
+      "project.godot": {
+        "bytes": 735,
+        "sha256": "fb3796664ab25d5f103d90deaf4c2d3f0be3aa5a558b97888343759980cb49b1"
+      },
+      "ui.gd": {
+        "bytes": 759,
+        "sha256": "7692cc7a9935556117b222900e859686b637873dfb45fd92b45171dba4ea7107"
+      },
+      ".import/.gdignore": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "Scripts/Main/FlaggableObject.gd": {
+        "bytes": 1237,
+        "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+      },
+      "Scripts/Main/Small Key.gd": {
+        "bytes": 582,
+        "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+      },
+      "user-local/Godot/resthumb-06a854827db06c2925d607de25fc8657.png": {
+        "bytes": 1161,
+        "sha256": "916938ad9f26b7da6559090a09f17706177e78f5de1ad74d5d441dd458fb13ae"
+      },
+      "user-local/Godot/resthumb-06a854827db06c2925d607de25fc8657.txt": {
+        "bytes": 49,
+        "sha256": "183d46c1d8f2f494fde5f3091fd6a5f79daa6c7dc061d80e08d5b397efa0a1fe"
+      },
+      "user-roaming/Godot/editor_settings-3.tres": {
+        "bytes": 7819,
+        "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+      },
+      "user-roaming/Godot/app_userdata/Original source key contacts/logs/godot.log": {
+        "bytes": 205,
+        "sha256": "7f74fde9ad164d51e3e25cd7d620c18fb03f11dfa8073b2301058638c9f62020"
+      },
+      "user-roaming/Godot/projects/filesystem_cache6": {
+        "bytes": 1479,
+        "sha256": "53fc3d4407b4383a3f632f483f01419a471d9f074275d64bcb6748a79291e079"
+      },
+      "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg": {
+        "bytes": 49,
+        "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+      },
+      "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg": {
+        "bytes": 69,
+        "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+      },
+      "user-roaming/Godot/projects/project_metadata.cfg": {
+        "bytes": 260,
+        "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+      },
+      "user-roaming/Godot/script_templates/empty.gd": {
+        "bytes": 16,
+        "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+      },
+      "user-roaming/Godot/script_templates/no_comments.gd": {
+        "bytes": 54,
+        "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+      }
+    }
+  },
+  "build/full-port/key-contact-native-4/project": {
+    "marker": "source-key-contact-reference-v1",
+    "files": {
+      ".owned-key-contact-reference": {
+        "bytes": 31,
+        "sha256": "87af82bc4689c9557f095376f62b721b317a1f5081c1fcefdb4919705a6ee870"
+      },
+      "audio.gd": {
+        "bytes": 209,
+        "sha256": "5116660253f6cc81515444298682141929fec62be92ec7677bd16c75fd4cab16"
+      },
+      "data.gd": {
+        "bytes": 506,
+        "sha256": "2d01d58e9fa2bea47ccd1c22628cf01638eddfe6b7d08bb67321cb8b9f0799e1"
+      },
+      "global.gd": {
+        "bytes": 632,
+        "sha256": "a7cf03057fb5a2038ec20911b1f1c2f92b31d4ce679a936b39107a0254cae40c"
+      },
+      "input.json": {
+        "bytes": 10916,
+        "sha256": "b39b0701f9aea5c26ab2b81b4d48e4ab6fc41ff942d58206c902e2d5d3f3fafc"
+      },
+      "probe.gd": {
+        "bytes": 5843,
+        "sha256": "b55fb53f75497b7a07620a570b527f0f13885af1d083e52bb30d94154d666f00"
+      },
+      "probe.tscn": {
+        "bytes": 151,
+        "sha256": "7822f6113b63f56912b483243bfe758afe1886001bc4d127d6d6b916b978f61f"
+      },
+      "project.godot": {
+        "bytes": 735,
+        "sha256": "fb3796664ab25d5f103d90deaf4c2d3f0be3aa5a558b97888343759980cb49b1"
+      },
+      "ui.gd": {
+        "bytes": 759,
+        "sha256": "7692cc7a9935556117b222900e859686b637873dfb45fd92b45171dba4ea7107"
+      },
+      ".import/.gdignore": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "Scripts/Main/FlaggableObject.gd": {
+        "bytes": 1237,
+        "sha256": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+      },
+      "Scripts/Main/Small Key.gd": {
+        "bytes": 582,
+        "sha256": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4"
+      },
+      "user-local/Godot/resthumb-b68b5a815166d3e166813a52f11d02da.png": {
+        "bytes": 1161,
+        "sha256": "916938ad9f26b7da6559090a09f17706177e78f5de1ad74d5d441dd458fb13ae"
+      },
+      "user-local/Godot/resthumb-b68b5a815166d3e166813a52f11d02da.txt": {
+        "bytes": 49,
+        "sha256": "62d0a0f3a2496792a35ba2ab0f67780e2f460d64e1fac2444a381b5c556ade40"
+      },
+      "user-roaming/Godot/editor_settings-3.tres": {
+        "bytes": 7819,
+        "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+      },
+      "user-roaming/Godot/app_userdata/Original source key contacts/logs/godot.log": {
+        "bytes": 205,
+        "sha256": "7f74fde9ad164d51e3e25cd7d620c18fb03f11dfa8073b2301058638c9f62020"
+      },
+      "user-roaming/Godot/projects/filesystem_cache6": {
+        "bytes": 1479,
+        "sha256": "48fd4a275083489877d971b753c94922668e52d051240cc6970251e2dbb7198f"
+      },
+      "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg": {
+        "bytes": 49,
+        "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+      },
+      "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg": {
+        "bytes": 69,
+        "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+      },
+      "user-roaming/Godot/projects/project_metadata.cfg": {
+        "bytes": 260,
+        "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+      },
+      "user-roaming/Godot/script_templates/empty.gd": {
+        "bytes": 16,
+        "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+      },
+      "user-roaming/Godot/script_templates/no_comments.gd": {
+        "bytes": 54,
+        "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+      }
+    }
+  }
+}

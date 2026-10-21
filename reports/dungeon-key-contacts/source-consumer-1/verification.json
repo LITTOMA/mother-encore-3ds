@@ -1,0 +1,54 @@
+{
+  "parent": "91b299d3a541881dd306288648c64db5f1592333",
+  "scope": "Checked current-player pickup contact bridge,not live dungeon or physics solver",
+  "native": {
+    "runs": [
+      3,
+      4
+    ],
+    "cases": 14,
+    "rows": 27,
+    "identical": true,
+    "contacts_sha256": "7ba565347cc603d8674fd3f37d75a6a09f27b26d6dc4934297544367fc7c2d9c"
+  },
+  "old_native_attempts": {
+    "runs": [
+      1,
+      2
+    ],
+    "classification": "Unflushed previous body physics pose contaminated the declared initial scene. Retained;not current accepted observations."
+  },
+  "host": {
+    "checks": 5901,
+    "actual_exit": 0,
+    "normal_leaks": true,
+    "unchanged_inputs": true,
+    "proof_sha256": "f6f466f3f1d737d5c830a771156474d48696ea8942569215f5a8489f0da61906"
+  },
+  "python": {
+    "methods": 6,
+    "passed": true,
+    "log_sha256": "4b546adcb3761df93823e443ae6ae21f9f1ea1f9f2e03226f4a5b95c28cc7929"
+  },
+  "windows_config_only": {
+    "ctest": 310,
+    "python": 1397,
+    "aggregate": 1014,
+    "dedicated": 383
+  },
+  "sources": {
+    "runtime/dungeon_key_contacts.cpp": "4570b4cb1f069801d21a00a5ec0fcfa1769367cd236cb750af00b513cf89d853",
+    "include/encore/dungeon_key_contacts.hpp": "295bfbe69d64044c6e2beb6f07251a0dc4d986fbeb919782398ee9e7e32d0a71",
+    "tools/run_dungeon_key_contact_reference.py": "a16b6b9d5954cdf554483b36caf52396e363dc6e895ba5e21184f827cb9d7bf6",
+    "tests/prepare_dungeon_key_contacts.py": "fb837102e59b947f62e38c879ff14ac2b55907800797296dbb7aa823ee064ca8",
+    "tests/dungeon_key_contacts_tests.cpp": "c73eddabc065822906350a880adf5fbab3b5e4ef17c5c91f79ded7edd0aca18c",
+    "tests/test_dungeon_key_contacts.py": "16fc4d48f11eafdedc42ea6053299a02049728af1a932d2256aa81d4fd6a2c50",
+    "CMakeLists.txt": "d813dc76df66182bd12828880bb70878de757704c54e1b1cb26ad2d1b1641fd7",
+    "platform/ctr/Makefile": "c4517aa871a940cf26afd567ec4225a0dd4025dc278cdd50688343ffc61e49fb"
+  },
+  "pending": [
+    "full current GCC/Clang and genuine console build",
+    "formal renderer/scene/UI/save/Pippi",
+    "emulator and hardware"
+  ]
+}

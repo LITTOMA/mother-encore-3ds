@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_step_audio_reference.py", line 93, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_step_audio_reference.py", line 92, in main
+    invoke(engine,project,args+['--editor','--quit'],out/'source-settings-import.log');write_files();invoke(engine,project,args+['--script','res://probe.gd'],out/'godot.log');doc=validate_result(json.loads((out/'reference.json').read_bytes()),proof);proof.update(producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),engine_sha256=hashlib.sha256(engine.read_bytes()).hexdigest(),result_sha256=hashlib.sha256((out/'reference.json').read_bytes()).hexdigest(),native_defaults_verified=True);(out/'receipt.json').write_bytes((json.dumps(proof,indent=2)+'\n').encode());print('Native original run SFX:',len(doc['rows']),'stable node/stream observations;Dummy output,not full scene or audible/hardware claim')
+                                                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_step_audio_reference.py", line 75, in validate_result
+    require(type(row['index'])is int and row['index']==i//4 and row['phase']==phase and type(row['running'])is bool and type(row['playing'])is bool and row['running']==row['playing']==active and row['same_node']is True and type(row['children'])is int and row['children']==1,'Native named-SFX lifecycle/identity differs')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Native named-SFX lifecycle/identity differs

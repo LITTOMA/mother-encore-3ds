@@ -1,0 +1,22 @@
+test_actual_pcm_and_verbatim_converter_receipt (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_actual_pcm_and_verbatim_converter_receipt) ... ok
+test_cached_receipt_source_and_output_coverage_rejected (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_cached_receipt_source_and_output_coverage_rejected) ... ok
+test_compile_rejects_existing_and_external_output (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_compile_rejects_existing_and_external_output) ... ok
+test_existing_audio_bank_version_and_crc_fail_closed (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_existing_audio_bank_version_and_crc_fail_closed) ... ok
+test_fixture_rejects_changed_pcm (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_fixture_rejects_changed_pcm) ... ok
+test_fixture_reuses_validated_media_without_decode (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_fixture_reuses_validated_media_without_decode) ... ok
+test_fixture_review_version_and_duplicate_fields_rejected (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_fixture_review_version_and_duplicate_fields_rejected) ... ok
+test_native_version_domain_and_real_bus_negative_paths (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_native_version_domain_and_real_bus_negative_paths) ... ok
+test_original_eight_loops_in_independent_bank (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_original_eight_loops_in_independent_bank) ... ok
+test_real_native_pair_is_identical (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_real_native_pair_is_identical) ... ok
+test_recipe_duplicate_fields_and_nonfinite_numbers (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_recipe_duplicate_fields_and_nonfinite_numbers) ... ok
+test_recipe_unsafe_paths (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_recipe_unsafe_paths) ... ok
+test_recipe_version_types_and_unknown_fields (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_recipe_version_types_and_unknown_fields) ... ok
+test_source_review_and_real_node_defaults (tests.test_catacombs_step_audio.CatacombsStepAudioTests.test_source_review_and_real_node_defaults) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 21.223s
+
+OK
+Stepping audio candidate: 8 original full loops; 564480 PCM bytes;not staged/no NDSP or audible claim
+Prepared source8 loop bank and32 actual native states;not new engine/hardware execution
+Prepared source8 loop bank and32 actual native states;not new engine/hardware execution

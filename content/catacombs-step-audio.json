@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "kind": "encore.catacombs-stepping.reviewed-audio",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "steps_recipe": "content/catacombs-stepping.json",
+  "steps_recipe_sha256": "1929928a783d2c2266fb88a3aee5ed900a8d994b05eb5c39ce3e2e3f6bf827fe",
+  "bus_source": "Audio/Audio Buses/default_bus_layout.tres",
+  "bus_sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+  "manager_source": "Scripts/global/audioManager.gd",
+  "manager_sha256": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+  "bus": "SFX",
+  "gain_db": 0,
+  "pitch": 1,
+  "output": "sound/banks/catacombs-steps.encaudio",
+  "scope": "Eight original imported full run loops and selected real named-SFX manager/node properties;independent candidate bank,not full scene,movement,perceptual audio or hardware admission",
+  "license_review": "Pinned LICENSE permits game-related asset/music derivatives;keep original notices,no environment fonts,tools,import caches or DSP firmware in resources"
+}

@@ -1,0 +1,42 @@
+{
+  "authorization": "Human: 授权按顺序合并 #82–#84. Ready and standard merge exact approved heads in that order;keep85 and later drafts.",
+  "initial_main": "7c06c1e62b728186d48a7eda01217a4b9dac620b",
+  "heads": {
+    "82": "e5abde9daf32d9b4da9efa3de7d3217e0066652c",
+    "83": "327a91411208c30c0cc96ec1e89e142ab216359a",
+    "84": "d1da42b19686a944c00ecf62a919dd9613ea5319"
+  },
+  "merges": [
+    {
+      "pr": 82,
+      "head": "e5abde9daf32d9b4da9efa3de7d3217e0066652c",
+      "merge": "33da681f42e8e619893420b3aeb1fd54df1380d0",
+      "merged_at": "2026-10-21T05:17:34Z",
+      "tree": "fd218bf3bbb9ef0f2b1f8aa0221ddd5ecefde923",
+      "tree_matches_approved_head": true,
+      "first_parent": "7c06c1e62b728186d48a7eda01217a4b9dac620b",
+      "second_parent": "e5abde9daf32d9b4da9efa3de7d3217e0066652c"
+    },
+    {
+      "pr": 83,
+      "head": "327a91411208c30c0cc96ec1e89e142ab216359a",
+      "merge": "c4a623185530e146faba7a1a66174850213d49eb",
+      "merged_at": "2026-10-21T05:17:51Z",
+      "tree": "68b357c7ae1877886cf8067c190d53555b15c8b0",
+      "tree_matches_approved_head": true,
+      "first_parent": "33da681f42e8e619893420b3aeb1fd54df1380d0",
+      "second_parent": "327a91411208c30c0cc96ec1e89e142ab216359a"
+    },
+    {
+      "pr": 84,
+      "head": "d1da42b19686a944c00ecf62a919dd9613ea5319",
+      "merge": "b2c5738f182536ead51e2df9f03d22e91bab25f9",
+      "merged_at": "2026-10-21T05:18:14Z",
+      "tree": "4c5efc5620da7acd29b55fd91bde54d3922c59e2",
+      "tree_matches_approved_head": true,
+      "first_parent": "c4a623185530e146faba7a1a66174850213d49eb",
+      "second_parent": "d1da42b19686a944c00ecf62a919dd9613ea5319"
+    }
+  ],
+  "verification_scope": "82 old host5ff4 GCC/Clang success plus e645 fixed real SDK;old5ff4 whole run remains failed.83/84 whole full runs success. Approved heads docs/reports only vs verified source;82 SDK-only Makefile fix separately tested."
+}

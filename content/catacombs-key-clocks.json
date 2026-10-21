@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-key-clocks.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original seven key/door/child-lock animation clocks including continuous Vector2 key easing, deferred open/child-play methods and source audio identities. The source parent and child missing animation handlers plus child invalid emit_signal bind are explicit diagnosed completion results, never synthetic animation_ended. Existing key metadata owns six saved identities. Numeric and method services do not admit full map, debug F1 input, media playback, renderer, scene or save.",
+  "key_recipe": "content/catacombs-keys.json",
+  "key_review_sha256": "67044b811263d2924de366e4d3925d57b1641768a6bfe3168840ff7441439a3f",
+  "profiles": [
+    {
+      "id": 1,
+      "kind": "key",
+      "scene": "Nodes/Overworld/Objects/Small Key.tscn",
+      "script": "Scripts/Main/Small Key.gd",
+      "audio": "Audio/Sound effects/Key Get.mp3",
+      "texture": "Graphics/Objects/Common/Small Key.png",
+      "child": 0,
+      "diagnostics": 4,
+      "clips": [
+        {
+          "id": 1,
+          "name": "RESET"
+        },
+        {
+          "id": 2,
+          "name": "Use Key"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "door",
+      "scene": "Nodes/Overworld/Objects/Locked Door Catacombs.tscn",
+      "script": "Scripts/Main/Lock.gd",
+      "audio": null,
+      "texture": "Graphics/Objects/Catacombs/Catacombs Locked Door.png",
+      "child": 3,
+      "diagnostics": 1,
+      "clips": [
+        {
+          "id": 3,
+          "name": "Open"
+        },
+        {
+          "id": 4,
+          "name": "Opened"
+        },
+        {
+          "id": 5,
+          "name": "RESET"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "child",
+      "scene": "Nodes/Overworld/Objects/Lock.tscn",
+      "script": "Scripts/Cutscenes/CutsceneObject.gd",
+      "audio": "Audio/Sound effects/EB/dooropen1.wav",
+      "texture": "Graphics/Objects/Common/Lock.png",
+      "child": 0,
+      "diagnostics": 3,
+      "clips": [
+        {
+          "id": 6,
+          "name": "Open"
+        },
+        {
+          "id": 7,
+          "name": "RESET"
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "Audio/Sound effects/EB/dooropen1.wav": "bb79764de9e8cb104dbe56712f86c028ffb0b6746078843e60d973b485722f66",
+    "Audio/Sound effects/EB/dooropen1.wav.import": "88995bdad26e037dd72de7603c2374e728b5850c5c4daaef5db2c4cf12aea690",
+    "Audio/Sound effects/Key Get.mp3": "0392d3cdc0ecee8a1f41c051d5273c9280b250f87ed94547677fafad31f35447",
+    "Audio/Sound effects/Key Get.mp3.import": "37e412968857a899eced8edee4105f1c90d0cbad3c10d98325f0a8478e7ab6e0",
+    "Graphics/Objects/Catacombs/Catacombs Locked Door.png": "810c1671efa5781eba3689be0ccbf865a8616b5ab57a8a655812de3f333f02c8",
+    "Graphics/Objects/Common/Lock.png": "5444669b91684d53dc3db5a4d7ef60f983d785a6cbbacfa53b1d06f30a8472d6",
+    "Graphics/Objects/Common/Small Key.png": "a70b47f3a3ab2f8f0a66556a39ca264b145b87834cdf9674e1895c1ba618709c",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Overworld/Objects/Lock.tscn": "8f7028b4669e0ef2f5d1020cedaca6fe9ded747eed4c091a0d2b98104912ae0e",
+    "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": "0455c5e6b85221a05f68e7827d6d7791797a0c62343e14c50c9b0542c980c83a",
+    "Nodes/Overworld/Objects/Small Key.tscn": "b111c74715225473607948b2004404dd9dfc631046d53a6f569f0c5fb637a989",
+    "Scripts/Cutscenes/CutsceneObject.gd": "5bb7b71aeba89556d1b8216b168f9f9aaa41dcabb3bf1c9cd1545aaf417af963",
+    "Scripts/Main/Lock.gd": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc",
+    "Scripts/Main/Small Key.gd": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "symbols": {
+    "Scripts/Main/Small Key.gd": {
+      "_ready": "482a9419d744c239183ca51ddc1aa7a21b4a74a890ead07af486523de618d488",
+      "_on_Area2D_body_entered": "4702980d984114dadd0f26148275fe940ee158fd11134e7684af240d3e7221c3",
+      "_on_AudioStreamPlayer_finished": "e997472baeb9eaf18622947a229f2134c63dff561818f00603908d239a2f6cfc",
+      "_on_AnimationPlayer_animation_finished": "edd0d48fd36f3a09a9bdd6ecc59eb40d766b2bd3bd3d9ea51ce53b5301f5db67"
+    },
+    "Scripts/Main/Lock.gd": {
+      "_ready": "2222b093a91ef1adbb0e640ca8c81d5496f9491c524aa09483e97cd93c246ac8",
+      "interact": "231d07eceaf072d73065ed1e199730ae421c0131e41f3ac9e39c0016a34e53e0",
+      "open": "c858c4f9a9c4f941341e620bd14fd8c7485e5072bcf5159d6f398017cea3fffe"
+    },
+    "Scripts/Cutscenes/CutsceneObject.gd": {
+      "_ready": "d5776d60464ae3a2d0c7b8b5305830cc36916d6c1c3c788d3d2e8b3687f4c15d",
+      "play_anim": "f800e14a9ba7417a9ee39d8fa40cbe92142c1b5ef1243e141746ea85a856e32a"
+    }
+  },
+  "license": "LICENSE",
+  "warning_profile": {
+    "unused_argument": false,
+    "unused_signal": false
+  }
+}

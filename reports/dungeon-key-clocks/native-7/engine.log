@@ -1,0 +1,32 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 3.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+Async. shader compilation: OFF
+ 
+KEY_CLOCK_SOURCE_REFERENCE_COMPLETE
+ERROR: Error calling method from signal 'animation_finished': 'Sprite(Lock.gd)::_on_AnimationPlayer_animation_finished': Method not found..
+   at: emit_signal (core/object.cpp:1247)
+ERROR: Error calling method from signal 'animation_finished': 'Sprite(Lock.gd)::_on_AnimationPlayer_animation_finished': Method not found..
+   at: emit_signal (core/object.cpp:1247)
+ERROR: Error calling method from signal 'animation_finished': 'Sprite(CutsceneObject.gd)::_on_AnimationPlayer_animation_finished': Method not found..
+   at: emit_signal (core/object.cpp:1247)
+ERROR: Can't emit non-existing signal "RESET".
+   at: (core/object.cpp:1182)
+ERROR: Error calling method from signal 'animation_finished': 'Sprite(CutsceneObject.gd)::_on_AnimationPlayer_animation_finished': Method not found..
+   at: emit_signal (core/object.cpp:1247)
+ERROR: Can't emit non-existing signal "Open".
+   at: (core/object.cpp:1182)
+ERROR: Error calling method from signal 'animation_finished': 'Sprite(Lock.gd)::_on_AnimationPlayer_animation_finished': Method not found..
+   at: emit_signal (core/object.cpp:1247)
+ERROR: Error calling method from signal 'animation_finished': 'Sprite(Lock.gd)::_on_AnimationPlayer_animation_finished': Method not found..
+   at: emit_signal (core/object.cpp:1247)
+ERROR: Error calling method from signal 'animation_finished': 'Sprite(CutsceneObject.gd)::_on_AnimationPlayer_animation_finished': Method not found..
+   at: emit_signal (core/object.cpp:1247)
+ERROR: Can't emit non-existing signal "Open".
+   at: (core/object.cpp:1182)
+ERROR: Error calling method from signal 'animation_finished': 'Sprite(Lock.gd)::_on_AnimationPlayer_animation_finished': Method not found..
+   at: emit_signal (core/object.cpp:1247)
+ERROR: Error calling method from signal 'animation_finished': 'Sprite(CutsceneObject.gd)::_on_AnimationPlayer_animation_finished': Method not found..
+   at: emit_signal (core/object.cpp:1247)
+ERROR: Can't emit non-existing signal "Open".
+   at: (core/object.cpp:1182)

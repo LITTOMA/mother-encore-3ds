@@ -1,0 +1,13 @@
+test_all_truncations_rejected (test_dungeon_key_clocks.KeyClockTests.test_all_truncations_rejected) ... ok
+test_build_lists_share_core_and_keep_3ds_out (test_dungeon_key_clocks.KeyClockTests.test_build_lists_share_core_and_keep_3ds_out) ... ok
+test_frozen_native_runs_and_diagnostics (test_dungeon_key_clocks.KeyClockTests.test_frozen_native_runs_and_diagnostics) ... ok
+test_headers_directories_and_typed_records_rejected (test_dungeon_key_clocks.KeyClockTests.test_headers_directories_and_typed_records_rejected) ... ok
+test_review_fingerprint_and_fields_rejected (test_dungeon_key_clocks.KeyClockTests.test_review_fingerprint_and_fields_rejected) ... ok
+test_source_and_binary_roundtrip (test_dungeon_key_clocks.KeyClockTests.test_source_and_binary_roundtrip) ... ok
+test_unknown_semantic_values_rejected (test_dungeon_key_clocks.KeyClockTests.test_unknown_semantic_values_rejected) ... ok
+test_unknown_source_track_method_root_and_node_rejected (test_dungeon_key_clocks.KeyClockTests.test_unknown_source_track_method_root_and_node_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.291s
+
+OK

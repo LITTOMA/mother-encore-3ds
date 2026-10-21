@@ -1,0 +1,51 @@
+{
+  "source_plan_sha256": "49f4d6e51c4e8ba44c13d52ef08a33caca6211b6485b6f6e07cc903483945078",
+  "raw_result_sha256": "393e478093782069a12cc887622e0b03cb6ed78540b64a5fd350a33995e5bebc",
+  "removed_bytes": 480492,
+  "entries": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-1\\project",
+      "files": 31,
+      "bytes": 63710,
+      "verified_absent": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-2\\project",
+      "files": 32,
+      "bytes": 66916,
+      "verified_absent": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-3\\project",
+      "files": 32,
+      "bytes": 68204,
+      "verified_absent": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-4\\project",
+      "files": 32,
+      "bytes": 68204,
+      "verified_absent": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-5\\project",
+      "files": 32,
+      "bytes": 70084,
+      "verified_absent": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-6\\project",
+      "files": 32,
+      "bytes": 71687,
+      "verified_absent": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-clocks-native-7\\project",
+      "files": 32,
+      "bytes": 71687,
+      "verified_absent": true
+    }
+  ],
+  "raw_count_note": "PowerShell emitted one Count per property; the unchanged raw output is retained. Correct counts are derived from the exact checked file manifest.",
+  "scope": "Only seven completed, marked native reference project directories. Actual observations/scripts/clips/logs retained; source/SDK/game files/private DSP and protected asset directories untouched."
+}

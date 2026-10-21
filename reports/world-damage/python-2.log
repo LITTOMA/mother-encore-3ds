@@ -1,0 +1,17 @@
+test_all_truncations_checksum_trailing (tests.test_world_damage.WorldDamageTests.test_all_truncations_checksum_trailing) ... ok
+test_bad_models (tests.test_world_damage.WorldDamageTests.test_bad_models) ... ok
+test_fixture_owned_repeatable (tests.test_world_damage.WorldDamageTests.test_fixture_owned_repeatable) ... ok
+test_negative_fields_types_domains (tests.test_world_damage.WorldDamageTests.test_negative_fields_types_domains) ... ok
+test_original_source_scope_and_end_keys (tests.test_world_damage.WorldDamageTests.test_original_source_scope_and_end_keys) ... ok
+test_review_and_result_receipt_fail_closed (tests.test_world_damage.WorldDamageTests.test_review_and_result_receipt_fail_closed) ... ok
+test_roundtrip (tests.test_world_damage.WorldDamageTests.test_roundtrip) ... ok
+test_source_review_is_pinned (tests.test_world_damage.WorldDamageTests.test_source_review_is_pinned) ... ok
+test_two_real_native_results (tests.test_world_damage.WorldDamageTests.test_two_real_native_results) ... ok
+test_versions_directories_and_reserved (tests.test_world_damage.WorldDamageTests.test_versions_directories_and_reserved) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.482s
+
+OK
+Checked world damage resource and361 native observations;not new native execution
+Checked world damage resource and361 native observations;not new native execution

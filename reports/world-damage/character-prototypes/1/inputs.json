@@ -1,0 +1,21 @@
+{
+  "sources": {
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+    "Data/StatusAilments/poisoned.yaml": "30ff7359ecd9aba8ce730362bfa022b3ab50f3842877a92901ac606d10c6f37f",
+    "Data/StatusAilments/unconscious.yaml": "ab1b9cb054a3494ad557293b4cab1e0bd1abd45474e8c2cdfa61fbeeb8574bbd"
+  },
+  "generated_sha256": {
+    "project.godot": "5353e0cd8d823a14d2cdcb4dd23d9b046ecdce6f072cbfb2d08a556e1d26503d",
+    "Character.gd": "88620b8206374ff9b148fe5e47e9ea0fb4c6a028bf7d20bce650d46dbe0ed147",
+    "Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+    "Item.gd": "e100c72e42e5f54e8afc8e4e40ba6caf0b56d0ad755da630193573138d1cebb6",
+    "member.gd": "c9d1ea2ade295b77ac209bf357c049d4c3ee769e765ec09daf5f68cdd9a73ad5",
+    "globaldata.gd": "efb619516067ac694218b4112ecfe1de30709bdfafd083ea935a6879a8e13f09",
+    "ailments.json": "2920ee6d008b0757414d443e67fea008aef03c0bce96af0957ad79f58235b3b7",
+    "cases.json": "0a0dc95d0350ec8f5ec39e0f272d79d39485dc05dcfa45f3826de82cc8580867",
+    "probe.gd": "7f0aaab0039d3a749376a9d4330338fbcd76e47255a766344e2404dd88674e88",
+    "probe.tscn": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+  },
+  "scope": "Complete original Character/Status scripts and actual source YAML dictionaries;explicit party-member type adapter,no equipment/item methods/fullgame claims;one unused-parameter observer read,not source behavior changes"
+}

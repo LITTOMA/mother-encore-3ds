@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "kind": "encore.world-damage.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Selected original world damage/continuous damage,Flash/RESET and party-member poisoned/unconscious definitions;not complete Character/Player,enemy/battle/passive-healing/UI/GPU or formal Catacombs admission.",
+  "paths": {
+    "base": "Scripts/Main/party/party_object.gd",
+    "player": "Scripts/Main/party/Player.gd",
+    "character": "Scripts/global/Character.gd",
+    "status": "Scripts/Main/Status.gd",
+    "ui": "Scripts/global/uiManager.gd",
+    "global": "Scripts/global/global.gd",
+    "flying": "Scripts/UI/Battle/FlyingNumber.gd",
+    "scene": "Nodes/Reusables/Player.tscn",
+    "poison": "Data/StatusAilments/poisoned.yaml",
+    "unconscious": "Data/StatusAilments/unconscious.yaml",
+    "hurt": "Audio/Sound effects/Hurt 1.mp3",
+    "hurt_import": "Audio/Sound effects/Hurt 1.mp3.import",
+    "license": "LICENSE"
+  },
+  "sources": {
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/UI/Battle/FlyingNumber.gd": "b3dadd044c6087f4bd7354f532e7d4b0268e3021ea14ae020ac3092bec8e3c09",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Data/StatusAilments/poisoned.yaml": "30ff7359ecd9aba8ce730362bfa022b3ab50f3842877a92901ac606d10c6f37f",
+    "Data/StatusAilments/unconscious.yaml": "ab1b9cb054a3494ad557293b4cab1e0bd1abd45474e8c2cdfa61fbeeb8574bbd",
+    "Audio/Sound effects/Hurt 1.mp3": "953e74bded459e06f03a1c4c815ab98ab3e2440c7bc038bdaa4331f6106a5be3",
+    "Audio/Sound effects/Hurt 1.mp3.import": "84775975e8e7d3e8339663e56bcb73346bbd73a9363b3acffbd544c8eb09aae0",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "clips": [
+    {
+      "id": 1,
+      "name": "Flash"
+    },
+    {
+      "id": 2,
+      "name": "RESET"
+    }
+  ],
+  "targets": [
+    {
+      "id": 1,
+      "path": "Position/main:material:shader_param/flash_modifier",
+      "type": 1
+    },
+    {
+      "id": 2,
+      "path": "Position/main:material:shader_param/flash_color",
+      "type": 4
+    },
+    {
+      "id": 3,
+      "path": "SpecialAnimations:material:shader_param/flash_modifier",
+      "type": 1
+    },
+    {
+      "id": 4,
+      "path": "SpecialAnimations:material:shader_param/flash_color",
+      "type": 4
+    },
+    {
+      "id": 5,
+      "path": "Position/main:modulate",
+      "type": 4
+    },
+    {
+      "id": 6,
+      "path": "SpecialAnimations:modulate",
+      "type": 4
+    },
+    {
+      "id": 7,
+      "path": "Position/main:visible",
+      "type": 2
+    },
+    {
+      "id": 8,
+      "path": "Position/main:material:shader_param/glow_color",
+      "type": 4
+    },
+    {
+      "id": 9,
+      "path": "Position/main:material:shader_param/glow_modifier",
+      "type": 1
+    }
+  ],
+  "statuses": [
+    {
+      "id": "poisoned",
+      "path": "Data/StatusAilments/poisoned.yaml"
+    },
+    {
+      "id": "unconscious",
+      "path": "Data/StatusAilments/unconscious.yaml"
+    }
+  ],
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "engine_sources": {
+    "scene/animation/animation_player.cpp": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+    "scene/resources/animation.cpp": "0c49f1f325d040c645b35b0f39d0972ccd7812e0a575b6ad97ba5d9f3de0dd1b",
+    "core/math/math_funcs.h": "32e8a5a998235947996119bed349cbd57233a9080b556a6b57d438ac40821e13",
+    "core/math/math_defs.h": "e5a6d4d80da1503950b05a468598c8a6fa1e5a3e15e05c0b024c0206b76b6a98"
+  },
+  "license_review": "Original code and metadata retain upstream notices;no font/PCM/texture copied into releases by this candidate."
+}

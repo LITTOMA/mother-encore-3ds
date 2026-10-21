@@ -1,0 +1,53 @@
+#include "encore/world_damage.hpp"
+#include "encore/crc32.hpp"
+#include <cstring>
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <limits>
+#include <vector>
+using namespace encore::upstream;
+static size_t checks=0;static int failures=0;
+#define CHECK(v) do{++checks;if(!(v)){std::cerr<<"FAIL "<<__LINE__<<": "<<#v<<'\n';++failures;}}while(0)
+static uint32_t word(const uint8_t*p){return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24;}
+static uint32_t bits(float f){uint32_t v;std::memcpy(&v,&f,4);return v;}
+static void put(std::vector<uint8_t>&b,size_t at,uint32_t v){for(unsigned j=0;j<4;++j)b[at+j]=uint8_t(v>>(j*8));}
+static void seal(std::vector<uint8_t>&b){put(b,12,uint32_t(b.size()));put(b,16,encore::crc32(b.data()+32,b.size()-32));}
+static std::vector<uint8_t>read(const char*p){std::ifstream in(p,std::ios::binary);return{std::istreambuf_iterator<char>(in),{}};}
+static void observed(std::istream&in,const WorldDamageActor&actor,const SessionCharacter&c,SourceRandom&rng,const std::vector<WorldDamageEvent>&events){
+ int64_t hp=0,next=0;uint32_t assigned=0,playing=0,time=0,invulnerable=0;in>>hp>>assigned>>playing>>time>>invulnerable>>next;CHECK(bool(in));CHECK(c.hp==hp);CHECK(actor.pose().assigned==assigned);CHECK(actor.pose().playing==bool(playing));CHECK(bits(actor.pose().time)==time);CHECK(actor.invulnerable()==bool(invulnerable));if(next>=0)CHECK(rng.randi()==uint32_t(next));for(const auto&p:actor.pose().property)for(float v:p){uint32_t expected=0;in>>expected;CHECK(bits(v)==expected);}
+ size_t statuses=0;in>>statuses;CHECK(c.status.size()==statuses);for(size_t j=0;j<statuses;++j){std::string id;int64_t turns=0;in>>id>>turns;if(j<c.status.size()){CHECK(c.status[j].status_id==id);CHECK(c.status[j].passive_healing_turns==turns);}}
+ size_t n=0;in>>n;CHECK(events.size()==n);for(size_t j=0;j<n;++j){unsigned kind=0;in>>kind;CHECK(j>=events.size()||unsigned(events[j].kind)==kind);for(unsigned k=0;k<8;++k){double expected=0;in>>expected;if(j<events.size())CHECK(events[j].value[k]==expected);}}
+}
+int main(int argc,char**argv){CHECK(argc==3);if(argc!=3)return 2;auto bytes=read(argv[1]);CHECK(!bytes.empty());if(bytes.empty())return 2;WorldDamageData data;std::string error;CHECK(data.load(bytes.data(),bytes.size(),error));if(!data.valid())return 2;CHECK(!data.load(bytes.data(),bytes.size(),error));CHECK(!data.load_file(argv[1],error));WorldDamageData missing;CHECK(!missing.load_file("",error));CHECK(!missing.load_file(nullptr,error));CHECK(!missing.load(nullptr,bytes.size(),error));
+ std::ifstream input(argv[2]);size_t blocks=0;input>>blocks;CHECK(blocks>0);for(size_t block=0;block<blocks;++block){int64_t maxhp=0;std::string status;uint64_t seed=0;size_t count=0;SessionCharacter c;c.character_id="source-observer-member";input>>c.hp>>maxhp>>status>>seed>>count;if(status!="-")c.status.push_back({status,0});SourceRandom rng(seed);WorldDamageActor actor;const auto epoch=block+1,instance=block+2;CHECK(actor.prepare_after_reset(data,epoch,instance,c,error));CHECK(!actor.prepare_after_reset(data,epoch,instance,c,error));for(size_t j=0;j<count;++j){unsigned op=0;input>>op;std::vector<WorldDamageEvent>events;
+  if(op==1){WorldDamageRequest r;unsigned cant=0;input>>r.damage>>r.variance>>cant;r.lethality=cant?WorldDamageLethality::Nonlethal:WorldDamageLethality::Lethal;CHECK(actor.damage(epoch,instance,c,maxhp,false,{},r,rng,events,error));}
+  else if(op==2){uint32_t clip=0;input>>clip;CHECK(actor.play(epoch,instance,clip,error));}
+  else if(op==3){double delta=0;input>>delta;CHECK(actor.manual_advance(epoch,instance,delta,error));}
+  else if(op==4)CHECK(actor.pause_flash(epoch,instance,error));
+  else if(op==5)CHECK(actor.resume_flash(epoch,instance,error));
+  else if(op==6){WorldDamageRequest r;std::string id;input>>r.damage>>r.variance>>id;CHECK(actor.begin_continuous(epoch,instance,c,r,id,events,error));}
+  else if(op==7){unsigned paused=0;double delta=0;input>>paused>>delta;CHECK(actor.physics_tail(epoch,instance,c,maxhp,false,bool(paused),{},rng,events,error));CHECK(actor.advance_idle(epoch,instance,delta,true,error));}
+  else if(op==8)CHECK(actor.stop_continuous(epoch,instance,error));else CHECK(false);
+  observed(input,actor,c,rng,events);
+ }CHECK(actor.retire(epoch,instance,error));CHECK(!actor.valid());CHECK(!actor.retire(epoch,instance,error));CHECK(!actor.prepare_after_reset(data,epoch,instance,c,error));CHECK(actor.prepare_after_reset(data,epoch+100,instance,c,error));}std::string trailing;CHECK(!(input>>trailing));
+ auto rejected=[&](std::vector<uint8_t>b){WorldDamageData v;CHECK(!v.load(b.data(),b.size(),error));CHECK(!error.empty());CHECK(!v.valid());};
+ for(size_t n=0;n<bytes.size();++n){WorldDamageData v;CHECK(!v.load(bytes.data(),n,error));CHECK(!v.valid());}
+ for(size_t at:std::vector<size_t>{0,8,12,16,20,24,28,32,52,56,60}){auto b=bytes;put(b,at,word(b.data()+at)^0x40000000U);if(at>=20)seal(b);rejected(b);}
+ for(unsigned section=0;section<5;++section)for(unsigned member=0;member<4;++member){auto b=bytes;put(b,64+16*section+4*member,UINT32_MAX);seal(b);rejected(b);}
+ uint32_t off[5]{};for(unsigned j=0;j<5;++j)off[j]=word(bytes.data()+68+16*j);
+ for(unsigned at=0;at<4;++at){auto b=bytes;put(b,off[1]+8*at,UINT32_MAX);seal(b);rejected(b);}for(unsigned at=0;at<4;++at){auto b=bytes;put(b,off[1]+8*at+4,0);seal(b);rejected(b);}
+ for(unsigned at=0;at<8;++at){auto b=bytes;put(b,off[1]+32+4*at,UINT32_MAX);seal(b);rejected(b);}for(unsigned at=0;at<20;++at){auto b=bytes;put(b,off[1]+64+8*at+4,0x7ff80000U);seal(b);rejected(b);}
+ {auto b=bytes;b[off[0]]=':';seal(b);rejected(b);} {auto b=bytes;put(b,off[1]+8,word(b.data()+off[1]));seal(b);rejected(b);}
+ for(unsigned field=0;field<8;++field){auto b=bytes;put(b,off[2]+4*field,UINT32_MAX);seal(b);rejected(b);} {auto b=bytes;put(b,off[2]+32,word(b.data()+off[2]));seal(b);rejected(b);}
+ for(unsigned field=0;field<8;++field){auto b=bytes;put(b,off[3]+4*field,UINT32_MAX);seal(b);rejected(b);} {auto b=bytes;put(b,off[3]+8,0x7f800000U);seal(b);rejected(b);} {auto b=bytes;put(b,off[3]+32+8,0);seal(b);rejected(b);}
+ for(unsigned field=0;field<12;++field){if(field==5)continue;auto b=bytes;put(b,off[4]+4*field,UINT32_MAX);seal(b);rejected(b);} {auto b=bytes;put(b,off[4]+48,word(b.data()+off[4]));put(b,off[4]+52,word(b.data()+off[4]+4));seal(b);rejected(b);}
+ // Atomic failure and ownership at the shared session/RNG boundary.
+ SessionCharacter c;c.character_id="transactional-member";c.hp=10;WorldDamageActor actor;CHECK(actor.prepare_after_reset(data,1000,2,c,error));SourceRandom rng(1);WorldDamageRequest r;r.damage=1;r.lethality=WorldDamageLethality::Nonlethal;std::vector<WorldDamageEvent>events;const auto random_state=rng.state();const auto time=bits(actor.pose().time);auto failure=[&](bool result){CHECK(!result);CHECK(c.hp==10);CHECK(c.status.empty());CHECK(rng.state()==random_state);CHECK(bits(actor.pose().time)==time);CHECK(!actor.continuous());};
+ r.lethality=WorldDamageLethality::Unspecified;failure(actor.damage(1000,2,c,20,false,{},r,rng,events,error));r.lethality=WorldDamageLethality::Nonlethal;failure(actor.damage(999,2,c,20,false,{},r,rng,events,error));failure(actor.damage(1000,3,c,20,false,{},r,rng,events,error));r.variance=-1;failure(actor.damage(1000,2,c,20,false,{},r,rng,events,error));r.variance=0;r.hit={1,0};failure(actor.damage(1000,2,c,20,false,{},r,rng,events,error));r.hit={};failure(actor.damage(1000,2,c,-1,false,{},r,rng,events,error));failure(actor.begin_continuous(1000,2,c,r,"unknown-status",events,error));failure(actor.add_status(1000,2,c,"unknown-status",events,error));failure(actor.remove_status(1000,2,c,"unknown-status",events,error));
+ CHECK(!actor.manual_advance(1000,2,-0.0,error));CHECK(!actor.manual_advance(1000,2,-1,error));CHECK(!actor.manual_advance(1000,2,std::numeric_limits<double>::infinity(),error));CHECK(!actor.advance_idle(1000,2,std::numeric_limits<double>::quiet_NaN(),false,error));CHECK(!actor.play(1000,2,UINT32_MAX,error));
+ events.push_back({});failure(actor.damage(1000,2,c,20,false,{},r,rng,events,error));CHECK(events.size()==1);events.clear();auto other=c;other.character_id+="other";CHECK(!actor.damage(1000,2,other,20,false,{},r,rng,events,error));CHECK(other.hp==10&&rng.state()==random_state);other=c;other.status.push_back({"unknown-status",0});CHECK(!actor.damage(1000,2,other,20,false,{},r,rng,events,error));CHECK(other.status.size()==1&&rng.state()==random_state);
+ // Known statuses retain exact saved identity/turns and exclusivity order.
+ const auto&uncon=data.policy().unconscious;const auto poison=std::find_if(data.statuses().begin(),data.statuses().end(),[](const auto&s){return (s.flags&2)!=0;});CHECK(poison!=data.statuses().end());if(poison!=data.statuses().end()){CHECK(actor.add_status(1000,2,c,poison->id,events,error));CHECK(events.size()==1);events.clear();c.status[0].passive_healing_turns=9;CHECK(actor.add_status(1000,2,c,poison->id,events,error));CHECK(events.empty()&&c.status[0].passive_healing_turns==9);CHECK(actor.add_status(1000,2,c,uncon,events,error));CHECK(events.size()==2&&c.status.size()==1&&c.status[0].status_id==uncon);events.clear();CHECK(actor.add_status(1000,2,c,poison->id,events,error));CHECK(events.empty()&&c.status.size()==1&&c.status[0].status_id==uncon);CHECK(actor.remove_status(1000,2,c,uncon,events,error));CHECK(events.size()==1&&c.status.empty());}
+ std::cout<<checks<<" checks, "<<failures<<" failures\n";return failures?1:0;
+}

@@ -1,0 +1,20 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+ERROR: Condition "!cc" is true. Returned: nullptr
+   at: get_current_version (drivers/gles2/shader_gles2.cpp:216)
+ERROR: Condition "!version" is true. Returned: false
+   at: bind (drivers/gles2/shader_gles2.cpp:87)
+ERROR: Condition "!version" is true. Returned: -1
+   at: _get_uniform (drivers/gles2/shader_gles2.h:260)
+ERROR: Condition "!version" is true. Returned: -1
+   at: _get_uniform (drivers/gles2/shader_gles2.h:260)
+ERROR: Condition "!version" is true. Returned: -1
+   at: _get_uniform (drivers/gles2/shader_gles2.h:260)
+ERROR: Condition "!version" is true. Returned: -1
+   at: _get_uniform (drivers/gles2/shader_gles2.h:260)
+ERROR: Condition "!version" is true. Returned: -1
+   at: _get_uniform (drivers/gles2/shader_gles2.h:260)
+ERROR: Condition "!version" is true. Returned: -1
+   at: _get_uniform (drivers/gles2/shader_gles2.h:260)

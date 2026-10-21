@@ -1,0 +1,16 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+
+Debugger Break, Reason: 'Parser Error: Unexpected indentation.'
+*Frame 0 - res://probe.gd:2 in function ''
+Enter "help" for assistance.
+debug> 
+Debugger Break, Reason: 'Parser Error: Unexpected indentation.'
+*Frame 0 - res://probe.gd:2 in function ''
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Parse Error: Unexpected indentation.
+          at: GDScript::reload (res://probe.gd:2)
+SCRIPT ERROR: Parse Error: Unexpected indentation.
+          at: GDScript::reload (res://probe.gd:2)

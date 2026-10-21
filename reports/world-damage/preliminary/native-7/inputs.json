@@ -1,0 +1,101 @@
+{
+  "checked_source": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "recipe_sha256": "9b940c10c56ac3ca7d2fe41834e95b7162cf238af8dfc2e39b7a6df190c2f69b",
+    "sources": {
+      "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+      "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+      "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+      "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+      "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+      "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+      "Scripts/UI/Battle/FlyingNumber.gd": "b3dadd044c6087f4bd7354f532e7d4b0268e3021ea14ae020ac3092bec8e3c09",
+      "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+      "Data/StatusAilments/poisoned.yaml": "30ff7359ecd9aba8ce730362bfa022b3ab50f3842877a92901ac606d10c6f37f",
+      "Data/StatusAilments/unconscious.yaml": "ab1b9cb054a3494ad557293b4cab1e0bd1abd45474e8c2cdfa61fbeeb8574bbd",
+      "Audio/Sound effects/Hurt 1.mp3": "953e74bded459e06f03a1c4c815ab98ab3e2440c7bc038bdaa4331f6106a5be3",
+      "Audio/Sound effects/Hurt 1.mp3.import": "84775975e8e7d3e8339663e56bcb73346bbd73a9363b3acffbd544c8eb09aae0",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+    },
+    "symbols": {
+      "Scripts/Main/party/party_object.gd": {
+        "_is_invulnerable": "e2663c224857fd021e406d3bd9246edb4df44848daade8acff6d1686a2602216",
+        "damage": "f6747f9f327788f666065ba00a8373c77e51425b1136b78f528e0b47f35a55f5",
+        "start_continuous_damage": "254bd0245759f9035e7941982fa49ef9835cb0ed40d41152f47fd47c379ed938",
+        "stop_continuous_damage": "3cc326bcff89e85e82a1c50ae37a1bf95e8bf5affe4ef80e778385aaac38a242",
+        "play_flash_anim": "3f0c1a3219d7349c44ef8652037354040e8198530976ac55a2857f22aebd3cbc",
+        "pause_flash_anim": "70d2cdc9eb9cecdc7dd9924686ce2a6dbee3e19ace610d223c68b4eab549e299",
+        "resume_flash_anim": "339ffdbca71384e4bc2abdc0220c75e9aaa428fd90f6bcda94adbad2d578c01d"
+      },
+      "Scripts/Main/party/Player.gd": {
+        "damage": "b6e1ed5c44398ee45a67a936934189d053d130c853879fcb147d5c63d5f894fe",
+        "start_continuous_damage": "f72ab59b2d2c8185b912169696efdae571e73c3146008da467926c2c6c3f95b0"
+      },
+      "Scripts/global/Character.gd": {
+        "set_stat": "f3da97354b3d71f08fc16d9ec54dc45878871ebb91ee6c72f13358ea81f5c240",
+        "set_hp": "7e150549552a24c6e116dc5597f6d82d635f0badb3d52f83593074b076dd84cd",
+        "add_status": "b5c795700f1896ec396176ab75a9e1aa5e91a4109a20d506024910c412557340",
+        "remove_status": "895ffdd3b70168e81f5a56164efb6589b32870fc5828cf99f78d7ad83cfeeb0c",
+        "remove_all_statuses": "535f5fb910e6375b518f36ae055e56937f32ad6d4da84670f93a3a110c42cfd0",
+        "_has_exclusive_status": "e2deaaaacffb955957aab92e5af490b8c37f632177dfac6e2ceaf29f7c52369b",
+        "is_incapacitated": "ea49f47f76de64092d60614e750b8e2db4a4746b19ba96dab1dcc5926658a884"
+      },
+      "Scripts/Main/Status.gd": {
+        "_init": "bdbbe7ce5c7c7d1ea05314c08b1172691e61eff727bdf2ede161dcbaab007054",
+        "to_dict": "ae70cffd5a8d60b8628cacd5b4fcbe15e43a199e8c0c9a88d354d6e7c39fa1c3"
+      },
+      "Scripts/global/uiManager.gd": {
+        "create_flying_num": "d57b2dc532bb67d608ab6131c5c731b6e883de2e218ec7e7b5a9dd1b6a4a5ad8"
+      },
+      "Scripts/global/global.gd": {
+        "get_conscious_party": "cdd4a6a8dbae149aa46ceb86338a570a2dbff57c36ecf258964b35d8efbe5af5"
+      },
+      "Scripts/UI/Battle/FlyingNumber.gd": {
+        "run": "09b9dd8dc6742c4249a6a1ca3dea3296f0c1426462422bdbe9af3b92a0d0193c"
+      }
+    },
+    "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "engine_sources": {
+      "scene/animation/animation_player.cpp": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+      "scene/resources/animation.cpp": "0c49f1f325d040c645b35b0f39d0972ccd7812e0a575b6ad97ba5d9f3de0dd1b"
+    },
+    "scope": "Selected original world damage/continuous damage,Flash/RESET and party-member poisoned/unconscious definitions;not complete Character/Player,enemy/battle/passive-healing/UI/GPU or formal Catacombs admission."
+  },
+  "sources": {
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/UI/Battle/FlyingNumber.gd": "b3dadd044c6087f4bd7354f532e7d4b0268e3021ea14ae020ac3092bec8e3c09",
+    "Data/StatusAilments/poisoned.yaml": "30ff7359ecd9aba8ce730362bfa022b3ab50f3842877a92901ac606d10c6f37f",
+    "Data/StatusAilments/unconscious.yaml": "ab1b9cb054a3494ad557293b4cab1e0bd1abd45474e8c2cdfa61fbeeb8574bbd",
+    "Audio/Sound effects/Hurt 1.mp3": "953e74bded459e06f03a1c4c815ab98ab3e2440c7bc038bdaa4331f6106a5be3"
+  },
+  "generated_sha256": {
+    "project.godot": "a1f29b7d1a76d049f79ab3a04d5ff9f392b08543413ed7bb6569fbc44f4ffe6f",
+    "base.gd": "a4a3ffba1e8b3da9e3be5862a7a7773430b736ba208eb965569b0a7738587020",
+    "player.gd": "c8c00e9782211f9167482bdc6c84017465c8760f630590a5f04e9d1d0f181f77",
+    "actor.tscn": "d133b0be31be7c18ff7b65ba83b912ad3a0afdc92601bbcd53b60c4135d9cdee",
+    "Character.gd": "88620b8206374ff9b148fe5e47e9ea0fb4c6a028bf7d20bce650d46dbe0ed147",
+    "Status.gd": "6af9dc2f21681e22e115dde6538720fb98a35f0207fd52e8be39b8edeed9defe",
+    "Item.gd": "d5fd97407b510ac55af9524dfe45c5397e3d44a2ce15403cb47236fd65d16805",
+    "member.gd": "c9d1ea2ade295b77ac209bf357c049d4c3ee769e765ec09daf5f68cdd9a73ad5",
+    "global.gd": "6ca98f6f1b6608df2a5c921ce8acd1dbee05ada1011186ee98ca1630e45d27cc",
+    "camera.gd": "e1e709cc5fd1917a9d5fc077fcadb5847ab54281a37cc0fec9c17b600805cd27",
+    "audio.gd": "adac461ad6007c5648a3c4265d8bc846462e1cb0c63a8d5809056084dec8c9f1",
+    "ui.gd": "809f5361d0079af12a8a66de518f425f86fbf5b0002bd6eec741fe060e1f7d60",
+    "FlyingNumber.gd": "c824abb7edab0574f3082d5afcc9f595b2dfe7b91ae0c722efd7727aac685ba2",
+    "Nodes/Ui/Battle/FlyingNumber.tscn": "226c4206e46bc60e013a871285f2d45176d17a778b4bb01f15b0e9f1b63dba12",
+    "globaldata.gd": "efb619516067ac694218b4112ecfe1de30709bdfafd083ea935a6879a8e13f09",
+    "ailments.json": "2920ee6d008b0757414d443e67fea008aef03c0bce96af0957ad79f58235b3b7",
+    "cases.json": "8ae1965a63884c73839881108f1a32c8ada204c33a71a90b87124718262804fe",
+    "probe.gd": "8fb4d4291935f04bd622e088ccf97cde992fc70506c837863fc0fb2b3c33c06a",
+    "probe.tscn": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c",
+    "sprite_holder.gd": "23bf16a991b099cdf22e2243cff562f4d0d70f9424c86e227cd3d22edb50fc70",
+    "material_holder.gd": "3a63e6d94d023dec4ad0be9f06bbd7471c50f685e26aa771657c53cedbb1295c"
+  },
+  "scope": "Original damage/flash methods and clips,full Character/Status,actual FlyingNumber.run and create_flying_num.Explicit command-only camera/joy/audio/plates holders and shader-property Reference holders(no shader execution/GPU);synthetic Label holder has no font/GPU;observer-only local distance metadata captures original RNG outcome;selected player physics tail only,not movement or formal scene."
+}

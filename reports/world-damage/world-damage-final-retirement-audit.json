@@ -1,0 +1,414 @@
+{
+  "workspace": "D:\\GameDev\\3DS\\mother-encore-3ds",
+  "targets": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary",
+      "kind": "directory",
+      "marker": ".owned-world-damage",
+      "owner": "world-damage-reference-v1",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\.owned-world-damage",
+          "bytes": 25,
+          "sha256": "b4089e4b68832b8fee1f928fa00f3d5857736cad287fece3f9e4d6ee772d0659"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\actor.tscn",
+          "bytes": 6175,
+          "sha256": "d133b0be31be7c18ff7b65ba83b912ad3a0afdc92601bbcd53b60c4135d9cdee"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\ailments.json",
+          "bytes": 762,
+          "sha256": "2920ee6d008b0757414d443e67fea008aef03c0bce96af0957ad79f58235b3b7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\audio.gd",
+          "bytes": 97,
+          "sha256": "adac461ad6007c5648a3c4265d8bc846462e1cb0c63a8d5809056084dec8c9f1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\base.gd",
+          "bytes": 2085,
+          "sha256": "a4a3ffba1e8b3da9e3be5862a7a7773430b736ba208eb965569b0a7738587020"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\camera.gd",
+          "bytes": 139,
+          "sha256": "e1e709cc5fd1917a9d5fc077fcadb5847ab54281a37cc0fec9c17b600805cd27"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\cases.json",
+          "bytes": 649,
+          "sha256": "8ae1965a63884c73839881108f1a32c8ada204c33a71a90b87124718262804fe"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\Character.gd",
+          "bytes": 13551,
+          "sha256": "88620b8206374ff9b148fe5e47e9ea0fb4c6a028bf7d20bce650d46dbe0ed147"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\FlyingNumber.gd",
+          "bytes": 783,
+          "sha256": "c824abb7edab0574f3082d5afcc9f595b2dfe7b91ae0c722efd7727aac685ba2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\global.gd",
+          "bytes": 344,
+          "sha256": "6ca98f6f1b6608df2a5c921ce8acd1dbee05ada1011186ee98ca1630e45d27cc"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\globaldata.gd",
+          "bytes": 280,
+          "sha256": "efb619516067ac694218b4112ecfe1de30709bdfafd083ea935a6879a8e13f09"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\Item.gd",
+          "bytes": 91,
+          "sha256": "d5fd97407b510ac55af9524dfe45c5397e3d44a2ce15403cb47236fd65d16805"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\material_holder.gd",
+          "bytes": 469,
+          "sha256": "3a63e6d94d023dec4ad0be9f06bbd7471c50f685e26aa771657c53cedbb1295c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\member.gd",
+          "bytes": 87,
+          "sha256": "c9d1ea2ade295b77ac209bf357c049d4c3ee769e765ec09daf5f68cdd9a73ad5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\player.gd",
+          "bytes": 870,
+          "sha256": "c8c00e9782211f9167482bdc6c84017465c8760f630590a5f04e9d1d0f181f77"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\probe.gd",
+          "bytes": 5558,
+          "sha256": "6e822b3a77a6e7d9c91e516ea0976f29c03dfc528db68334e842f3f3a349fff8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\project.godot",
+          "bytes": 591,
+          "sha256": "a1f29b7d1a76d049f79ab3a04d5ff9f392b08543413ed7bb6569fbc44f4ffe6f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\sprite_holder.gd",
+          "bytes": 107,
+          "sha256": "23bf16a991b099cdf22e2243cff562f4d0d70f9424c86e227cd3d22edb50fc70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\Status.gd",
+          "bytes": 936,
+          "sha256": "6af9dc2f21681e22e115dde6538720fb98a35f0207fd52e8be39b8edeed9defe"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\ui.gd",
+          "bytes": 771,
+          "sha256": "9127a8621348aa47573e5cffd6c77825b416887af5c7a916e777adf007ba20fe"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\.import\\Hurt 1.mp3-9357fbecbce7a6a320f96fc828e85604.md5",
+          "bytes": 91,
+          "sha256": "7a72662e8e50b2673c3b24c7e8edd85a6d5b5160a29d6b57c92ad12662f011fb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\.import\\Hurt 1.mp3-9357fbecbce7a6a320f96fc828e85604.mp3str",
+          "bytes": 19091,
+          "sha256": "685f9f11918dff03cae188987d82fa2d80dc8de5303ec3748e838359d0fbe748"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\Audio\\Sound effects\\Hurt 1.mp3",
+          "bytes": 18807,
+          "sha256": "953e74bded459e06f03a1c4c815ab98ab3e2440c7bc038bdaa4331f6106a5be3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\Audio\\Sound effects\\Hurt 1.mp3.import",
+          "bytes": 295,
+          "sha256": "e77d9f196454240b55d2551b313024581c8db35777cd3c0ba0a977b308765d80"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\Nodes\\Ui\\Battle\\FlyingNumber.tscn",
+          "bytes": 297,
+          "sha256": "226c4206e46bc60e013a871285f2d45176d17a778b4bb01f15b0e9f1b63dba12"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-local\\Godot\\resthumb-94a6396d60db296be97ec207e43952e6.png",
+          "bytes": 502,
+          "sha256": "b3198748844fc23ba4e0cf6dfee5c376e2b377941a597f52a37e75fe6b26c256"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-local\\Godot\\resthumb-94a6396d60db296be97ec207e43952e6.txt",
+          "bytes": 49,
+          "sha256": "6bdc3855cb0782e51363797f704d06b0913e1949b8777462709ce9dccdf8aa0f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-roaming\\Godot\\app_userdata\\Original world damage\\logs\\godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 2252,
+          "sha256": "f8a53a7b262755534e917c91fe5a147c2f4b7e1bf2c5453d2c4b9bb57c1b1a4b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-roaming\\Godot\\projects\\Hurt 1.mp3-9357fbecbce7a6a320f96fc828e85604.mp3str-folding-704a21cd2dcdfc28e916891894a1c6ba.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-12\\temporary\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary",
+      "kind": "directory",
+      "marker": ".owned-world-damage",
+      "owner": "world-damage-reference-v1",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\.owned-world-damage",
+          "bytes": 25,
+          "sha256": "b4089e4b68832b8fee1f928fa00f3d5857736cad287fece3f9e4d6ee772d0659"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\actor.tscn",
+          "bytes": 6175,
+          "sha256": "d133b0be31be7c18ff7b65ba83b912ad3a0afdc92601bbcd53b60c4135d9cdee"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\ailments.json",
+          "bytes": 762,
+          "sha256": "2920ee6d008b0757414d443e67fea008aef03c0bce96af0957ad79f58235b3b7"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\audio.gd",
+          "bytes": 97,
+          "sha256": "adac461ad6007c5648a3c4265d8bc846462e1cb0c63a8d5809056084dec8c9f1"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\base.gd",
+          "bytes": 2085,
+          "sha256": "a4a3ffba1e8b3da9e3be5862a7a7773430b736ba208eb965569b0a7738587020"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\camera.gd",
+          "bytes": 139,
+          "sha256": "e1e709cc5fd1917a9d5fc077fcadb5847ab54281a37cc0fec9c17b600805cd27"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\cases.json",
+          "bytes": 649,
+          "sha256": "8ae1965a63884c73839881108f1a32c8ada204c33a71a90b87124718262804fe"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\Character.gd",
+          "bytes": 13551,
+          "sha256": "88620b8206374ff9b148fe5e47e9ea0fb4c6a028bf7d20bce650d46dbe0ed147"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\FlyingNumber.gd",
+          "bytes": 783,
+          "sha256": "c824abb7edab0574f3082d5afcc9f595b2dfe7b91ae0c722efd7727aac685ba2"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\global.gd",
+          "bytes": 344,
+          "sha256": "6ca98f6f1b6608df2a5c921ce8acd1dbee05ada1011186ee98ca1630e45d27cc"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\globaldata.gd",
+          "bytes": 280,
+          "sha256": "efb619516067ac694218b4112ecfe1de30709bdfafd083ea935a6879a8e13f09"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\Item.gd",
+          "bytes": 91,
+          "sha256": "d5fd97407b510ac55af9524dfe45c5397e3d44a2ce15403cb47236fd65d16805"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\material_holder.gd",
+          "bytes": 469,
+          "sha256": "3a63e6d94d023dec4ad0be9f06bbd7471c50f685e26aa771657c53cedbb1295c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\member.gd",
+          "bytes": 87,
+          "sha256": "c9d1ea2ade295b77ac209bf357c049d4c3ee769e765ec09daf5f68cdd9a73ad5"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\player.gd",
+          "bytes": 870,
+          "sha256": "c8c00e9782211f9167482bdc6c84017465c8760f630590a5f04e9d1d0f181f77"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\probe.gd",
+          "bytes": 5558,
+          "sha256": "6e822b3a77a6e7d9c91e516ea0976f29c03dfc528db68334e842f3f3a349fff8"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\project.godot",
+          "bytes": 591,
+          "sha256": "a1f29b7d1a76d049f79ab3a04d5ff9f392b08543413ed7bb6569fbc44f4ffe6f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\sprite_holder.gd",
+          "bytes": 107,
+          "sha256": "23bf16a991b099cdf22e2243cff562f4d0d70f9424c86e227cd3d22edb50fc70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\Status.gd",
+          "bytes": 936,
+          "sha256": "6af9dc2f21681e22e115dde6538720fb98a35f0207fd52e8be39b8edeed9defe"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\ui.gd",
+          "bytes": 771,
+          "sha256": "9127a8621348aa47573e5cffd6c77825b416887af5c7a916e777adf007ba20fe"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\.import\\.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\.import\\Hurt 1.mp3-9357fbecbce7a6a320f96fc828e85604.md5",
+          "bytes": 91,
+          "sha256": "7a72662e8e50b2673c3b24c7e8edd85a6d5b5160a29d6b57c92ad12662f011fb"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\.import\\Hurt 1.mp3-9357fbecbce7a6a320f96fc828e85604.mp3str",
+          "bytes": 19091,
+          "sha256": "685f9f11918dff03cae188987d82fa2d80dc8de5303ec3748e838359d0fbe748"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\Audio\\Sound effects\\Hurt 1.mp3",
+          "bytes": 18807,
+          "sha256": "953e74bded459e06f03a1c4c815ab98ab3e2440c7bc038bdaa4331f6106a5be3"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\Audio\\Sound effects\\Hurt 1.mp3.import",
+          "bytes": 295,
+          "sha256": "e77d9f196454240b55d2551b313024581c8db35777cd3c0ba0a977b308765d80"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\Nodes\\Ui\\Battle\\FlyingNumber.tscn",
+          "bytes": 297,
+          "sha256": "226c4206e46bc60e013a871285f2d45176d17a778b4bb01f15b0e9f1b63dba12"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-local\\Godot\\resthumb-3734ef10146568c67c89c3ece87db3ef.png",
+          "bytes": 502,
+          "sha256": "b3198748844fc23ba4e0cf6dfee5c376e2b377941a597f52a37e75fe6b26c256"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-local\\Godot\\resthumb-3734ef10146568c67c89c3ece87db3ef.txt",
+          "bytes": 49,
+          "sha256": "eb05e77e384b9e120b7c20135932f7ff54e2cde40506719edb8922dcdc87db19"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-roaming\\Godot\\editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-roaming\\Godot\\app_userdata\\Original world damage\\logs\\godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-roaming\\Godot\\projects\\filesystem_cache6",
+          "bytes": 2252,
+          "sha256": "d4bc50ab48dcb8c3089f959bd6d63ce4ac739c6490b4ac6886a04cf81bfc560e"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-roaming\\Godot\\projects\\Hurt 1.mp3-9357fbecbce7a6a320f96fc828e85604.mp3str-folding-704a21cd2dcdfc28e916891894a1c6ba.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-roaming\\Godot\\projects\\probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-roaming\\Godot\\projects\\probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-roaming\\Godot\\projects\\project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-roaming\\Godot\\script_templates\\empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-native-13\\temporary\\user-roaming\\Godot\\script_templates\\no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-host-2\\check",
+      "kind": "file",
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-host-2\\check",
+          "bytes": 7492144,
+          "sha256": "3ea17c8bcc75aa943de0eadf38bbec35108228ce28a952ea2c15b891fcbb5e87"
+        }
+      ]
+    }
+  ],
+  "bytes": 7660858,
+  "scope": "Final two guarded-engine reference runs have the exact same361 observations;all inputs/logs retained. Latest21309-check host3 and current1816-byte resource remain. Retire only final temporary native projects and replaced host2 executable."
+}

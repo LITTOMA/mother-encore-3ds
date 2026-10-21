@@ -1,0 +1,406 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "case": 0,
+      "index": -1,
+      "hp": 10,
+      "base_hp": 10,
+      "maxhp": 20,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 0,
+      "index": 0,
+      "hp": 20,
+      "base_hp": 20,
+      "maxhp": 20,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+        [
+          "stat",
+          "hp",
+          100,
+          20
+        ]
+      ]
+    },
+    {
+      "case": 0,
+      "index": 1,
+      "hp": 20,
+      "base_hp": 20,
+      "maxhp": 20,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 0,
+      "index": 2,
+      "hp": 0,
+      "base_hp": 0,
+      "maxhp": 20,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+        [
+          "stat",
+          "hp",
+          -5,
+          20
+        ]
+      ]
+    },
+    {
+      "case": 0,
+      "index": 3,
+      "hp": 0,
+      "base_hp": 0,
+      "maxhp": 20,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 0,
+      "index": 4,
+      "hp": 1,
+      "base_hp": 1,
+      "maxhp": 20,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+        [
+          "stat",
+          "hp",
+          1,
+          20
+        ]
+      ]
+    },
+    {
+      "case": 1,
+      "index": -1,
+      "hp": 20,
+      "base_hp": 20,
+      "maxhp": 20,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 1,
+      "index": 0,
+      "hp": 20,
+      "base_hp": 20,
+      "maxhp": 5,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+        [
+          "stat",
+          "maxhp",
+          5,
+          0
+        ]
+      ]
+    },
+    {
+      "case": 1,
+      "index": 1,
+      "hp": 20,
+      "base_hp": 20,
+      "maxhp": 5,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 1,
+      "index": 2,
+      "hp": 5,
+      "base_hp": 5,
+      "maxhp": 5,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+        [
+          "stat",
+          "hp",
+          19,
+          5
+        ]
+      ]
+    },
+    {
+      "case": 2,
+      "index": -1,
+      "hp": 10,
+      "base_hp": 10,
+      "maxhp": 20,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 2,
+      "index": 0,
+      "hp": 10,
+      "base_hp": 10,
+      "maxhp": 20,
+      "status": [
+        {
+          "status": "poisoned",
+          "passive_healing_turns": 0
+        }
+      ],
+      "incapacitated": false,
+      "scroll": 1.5,
+      "plate": "EBBAFF",
+      "world_damage": [
+
+      ],
+      "events": [
+        [
+          "status"
+        ]
+      ]
+    },
+    {
+      "case": 2,
+      "index": 1,
+      "hp": 10,
+      "base_hp": 10,
+      "maxhp": 20,
+      "status": [
+        {
+          "status": "poisoned",
+          "passive_healing_turns": 0
+        }
+      ],
+      "incapacitated": false,
+      "scroll": 1.5,
+      "plate": "EBBAFF",
+      "world_damage": [
+
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 2,
+      "index": 2,
+      "hp": 10,
+      "base_hp": 10,
+      "maxhp": 20,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+        [
+          "status"
+        ]
+      ]
+    },
+    {
+      "case": 2,
+      "index": 3,
+      "hp": 10,
+      "base_hp": 10,
+      "maxhp": 20,
+      "status": [
+        {
+          "status": "unconscious"
+        }
+      ],
+      "incapacitated": true,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+        [
+          "status"
+        ]
+      ]
+    },
+    {
+      "case": 2,
+      "index": 4,
+      "hp": 10,
+      "base_hp": 10,
+      "maxhp": 20,
+      "status": [
+        {
+          "status": "unconscious"
+        }
+      ],
+      "incapacitated": true,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 2,
+      "index": 5,
+      "hp": 10,
+      "base_hp": 10,
+      "maxhp": 20,
+      "status": [
+
+      ],
+      "incapacitated": false,
+      "scroll": 1,
+      "plate": "FFFFFF",
+      "world_damage": [
+
+      ],
+      "events": [
+        [
+          "status"
+        ]
+      ]
+    },
+    {
+      "case": 2,
+      "index": 6,
+      "hp": 10,
+      "base_hp": 10,
+      "maxhp": 20,
+      "status": [
+        {
+          "status": "poisoned",
+          "passive_healing_turns": 0
+        }
+      ],
+      "incapacitated": false,
+      "scroll": 1.5,
+      "plate": "EBBAFF",
+      "world_damage": [
+
+      ],
+      "events": [
+        [
+          "status"
+        ]
+      ]
+    }
+  ]
+}

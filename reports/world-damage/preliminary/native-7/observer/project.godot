@@ -1,0 +1,11 @@
+config_version=4
+_global_script_classes=[{"base": "Object", "class": "Character", "language": "GDScript", "path": "res://Character.gd"}, {"base": "Node", "class": "Status", "language": "GDScript", "path": "res://Status.gd"}, {"base": "Reference", "class": "Item", "language": "GDScript", "path": "res://Item.gd"}]
+_global_script_class_icons={"Character":"","Status":"","Item":""}
+[application]
+config/name="Original world damage"
+run/main_scene="res://probe.tscn"
+[autoload]
+globaldata="*res://globaldata.gd"
+global="*res://global.gd"
+uiManager="*res://ui.gd"
+audioManager="*res://audio.gd"

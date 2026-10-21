@@ -1,0 +1,53 @@
+#include "encore/field_step_contacts.hpp"
+#include <algorithm>
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+#include <limits>
+#include <sstream>
+#include <tuple>
+using namespace encore::upstream;
+namespace {unsigned checks=0;std::string error;
+#define CHECK(x) do{++checks;if(!(x)){std::fprintf(stderr,"Step contacts %d: %s (%s)\n",__LINE__,#x,error.c_str());std::exit(1);}}while(0)
+using Event=std::tuple<uint32_t,uint32_t,bool>;
+std::vector<Event>events(const FieldStepContacts&c){std::vector<Event>out;for(const auto&e:c.events())out.emplace_back(e.body,e.area,e.entered);return out;}
+}
+int main(int argc,char**argv){
+ CHECK(argc==2);const std::string root=argv[1];FieldStepsData data;CHECK(data.load_file((root+"/catacombs.encsteps").c_str(),error));const auto v=data.view();CHECK(v.capability()==2);
+ std::ifstream bodyfile(root+"/body.tsv");Vec2 local;unsigned vertices;CHECK(bool(bodyfile>>local.x>>local.y>>vertices)&&vertices==8);std::vector<Vec2>polygon(vertices);for(auto&p:polygon)CHECK(bool(bodyfile>>p.x>>p.y));
+ std::ifstream source(root+"/contacts.tsv");CHECK(source.good());std::string line;uint32_t prior=UINT32_MAX;unsigned rows=0,cases=0;FieldRunLoop loop;FieldStepShadowState player,party;FieldStepContacts contacts;std::array<std::vector<Vec2>,3>world;std::array<FieldStepContactBody,3>bodies{};
+ while(std::getline(source,line)){
+  std::istringstream row(line);unsigned ci,phase,sound_enabled,wanted,pm,pb,pp,om,ob,oplay;CHECK(bool(row>>ci>>phase>>sound_enabled>>wanted>>pm>>pb>>pp>>om>>ob>>oplay));CHECK(ci==rows/4&&phase==rows%4);
+  if(prior!=ci){prior=ci;++cases;loop={};player={};party={};contacts={};CHECK(loop.initialize(v,v.text(v.sound(v.policy().default_sound).name),error));CHECK(player.initialize(v,error)&&party.initialize(v,error));CHECK(contacts.prepare(v,17,{{201,FieldStepBody::Party,&party},{202,FieldStepBody::Party,&player},{203,FieldStepBody::Other,nullptr}},error));for(uint32_t i=0;i<v.area_count();++i)CHECK(loop.set_area_enabled(i,sound_enabled,error));}
+  if(phase==3)for(uint32_t i=0;i<v.area_count();++i)CHECK(loop.set_area_enabled(i,false,error));
+  for(size_t j=0;j<bodies.size();++j){Vec2 position;uint32_t layer,mask;CHECK(bool(row>>position.x>>position.y>>layer>>mask));world[j].clear();for(auto p:polygon)world[j].push_back({p.x+local.x+position.x,p.y+local.y+position.y});bodies[j]={uint32_t(201+j),layer,mask,true,world[j].data(),world[j].size()};}
+  std::array<std::array<bool,3>,64>expected_inside{};for(uint32_t area=0;area<v.area_count();++area)for(size_t j=0;j<bodies.size();++j){unsigned inside;CHECK(bool(row>>inside)&&inside<=1);expected_inside[area][j]=inside;}
+  unsigned count;CHECK(bool(row>>count));std::vector<Event>expected;for(unsigned i=0;i<count;++i){uint32_t area,entered,body;CHECK(bool(row>>area>>entered>>body)&&body<3&&area<v.area_count()&&entered<=1);expected.emplace_back(201+body,v.area_id(area),entered!=0);}std::string trailing;CHECK(!(row>>trailing));
+  // Compare stable native results,not an invented exact Godot callback frame.
+  // No native events are supplied to the service;it derives them from geometry.
+  std::vector<Event>actual;for(unsigned tick=0;tick<3;++tick){CHECK(contacts.begin(17,202,bodies.data(),bodies.size(),loop,error));const auto produced=events(contacts);actual.insert(actual.end(),produced.begin(),produced.end());CHECK(contacts.end(17,bodies.data(),bodies.size(),error));}
+  std::sort(expected.begin(),expected.end());std::sort(actual.begin(),actual.end());CHECK(actual==expected);
+  for(uint32_t area=0;area<v.area_count();++area)for(size_t j=0;j<bodies.size();++j)CHECK(contacts.inside(j,area)==expected_inside[area][j]);
+  CHECK(loop.wanted_sound()==wanted&&!loop.playing()&&loop.events().empty());CHECK(player.animation()==pm&&player.behind()==bool(pb)&&player.playing()==bool(pp));CHECK(party.animation()==om&&party.behind()==bool(ob)&&party.playing()==bool(oplay));CHECK(!contacts.sampling());++rows;
+ }
+ CHECK(rows==164&&cases==41);CHECK(!contacts.begin(17,203,bodies.data(),bodies.size(),loop,error));CHECK(!contacts.inside(contacts.count(),0)&&!contacts.inside(0,999));CHECK(!contacts.prepare(v,18,{},error));CHECK(!contacts.retire(18,error)&&contacts.valid());CHECK(contacts.retire(17,error)&&!contacts.valid()&&!contacts.count());CHECK(!contacts.retire(17,error));
+ FieldStepContacts c;FieldRunLoop run;FieldStepShadowState s;CHECK(run.initialize(v,v.text(v.sound(v.policy().default_sound).name),error));CHECK(s.initialize(v,error));
+ FieldStepsData rectangles;CHECK(rectangles.load_file("tests/fixtures/mayor.encsteps",error)&&rectangles.view().capability()==1);CHECK(!c.prepare(rectangles.view(),1,{{1,FieldStepBody::Party,&s}},error));CHECK(!c.prepare({},1,{{1,FieldStepBody::Party,&s}},error));CHECK(!c.prepare(v,0,{{1,FieldStepBody::Party,&s}},error));CHECK(!c.prepare(v,1,{},error));CHECK(!c.prepare(v,1,std::vector<FieldStepContactBinding>(129),error));
+ for(auto binding:std::vector<FieldStepContactBinding>{{0,FieldStepBody::Party,&s},{UINT32_MAX,FieldStepBody::Party,&s},{1,FieldStepBody(0),&s},{1,FieldStepBody::Player,&s},{1,FieldStepBody::Party,nullptr},{1,FieldStepBody::Other,&s}})CHECK(!c.prepare(v,1,{binding},error)&&!c.valid());
+ CHECK(!c.prepare(v,1,{{1,FieldStepBody::Other,nullptr}},error));CHECK(!c.prepare(v,1,{{1,FieldStepBody::Party,&s},{1,FieldStepBody::Other,nullptr}},error));CHECK(!c.prepare(v,1,{{1,FieldStepBody::Party,&s},{2,FieldStepBody::Party,&s}},error));FieldStepShadowState unprepared;CHECK(!c.prepare(v,1,{{1,FieldStepBody::Party,&unprepared}},error));
+ FieldStepsData second;CHECK(second.load_file((root+"/catacombs.encsteps").c_str(),error));FieldStepShadowState foreign;CHECK(foreign.initialize(second.view(),error));CHECK(!c.prepare(v,1,{{1,FieldStepBody::Party,&foreign}},error));
+ CHECK(c.prepare(v,1,{{1,FieldStepBody::Party,&s}},error));std::vector<Vec2>shape=polygon;FieldStepContactBody b{1,1,4353,true,shape.data(),shape.size()};CHECK(!c.begin(2,1,&b,1,run,error));CHECK(!c.begin(1,0,&b,1,run,error));CHECK(!c.begin(1,99,&b,1,run,error));CHECK(!c.begin(1,1,nullptr,1,run,error));CHECK(!c.begin(1,1,&b,0,run,error));FieldRunLoop empty;CHECK(!c.begin(1,1,&b,1,empty,error));FieldRunLoop other;CHECK(other.initialize(second.view(),second.view().text(second.view().sound(second.view().policy().default_sound).name),error));CHECK(!c.begin(1,1,&b,1,other,error));
+ const auto original=b;b.owner=2;CHECK(!c.begin(1,1,&b,1,run,error));b=original;b.layer=0x100000;CHECK(!c.begin(1,1,&b,1,run,error));b=original;b.mask=0x100000;CHECK(!c.begin(1,1,&b,1,run,error));b=original;const auto remembered=s;s=foreign;CHECK(!c.begin(1,1,&b,1,run,error)&&!c.sampling());s=remembered;CHECK(!c.end(1,&b,1,error));CHECK(c.begin(1,1,&b,1,run,error));CHECK(!c.begin(1,1,&b,1,run,error)&&c.sampling());
+ const auto before=shape;shape[0].x=std::numeric_limits<float>::quiet_NaN();CHECK(!c.end(1,&b,1,error)&&c.sampling());shape=before;b.points=shape.data();CHECK(c.end(1,&b,1,error));CHECK(!c.end(1,&b,1,error));
+ // Suppressing a queued collision enter is distinct from area.disable(sound).
+ Vec2 center{};const auto part=v.part(v.first_part(0));for(uint32_t i=0;i<part.count;++i){center.x+=v.point(part.first+i).x/part.count;center.y+=v.point(part.first+i).y/part.count;}for(size_t i=0;i<shape.size();++i)shape[i]={polygon[i].x+local.x+center.x,polygon[i].y+local.y+center.y};b.points=shape.data();
+ // Retire the previous test before a fresh outside->inside sample.
+ CHECK(c.retire(1,error));CHECK(!c.prepare(v,1,{{1,FieldStepBody::Party,&s}},error));CHECK(c.prepare(v,2,{{1,FieldStepBody::Party,&s}},error));CHECK(c.begin(2,1,&b,1,run,error));CHECK(c.end(2,&b,1,error));b.enabled=false;CHECK(c.begin(2,1,&b,1,run,error)&&c.events().empty());CHECK(run.wanted_sound()==v.policy().default_sound&&s.animation()==v.find_shadow(v.text(v.policy().shadow)));CHECK(c.end(2,&b,1,error));b.enabled=true;CHECK(c.begin(2,1,&b,1,run,error));CHECK(c.end(2,&b,1,error));CHECK(c.begin(2,1,&b,1,run,error));CHECK(c.events().size()==1&&c.events()[0].entered&&run.wanted_sound()==v.area(0).enter&&s.animation()==v.find_shadow(v.text(v.area(0).enter_shadow)));CHECK(c.end(2,&b,1,error));
+ CHECK(run.set_area_enabled(0,false,error));const auto wanted_before=run.wanted_sound();b.layer=2;b.mask=4353;CHECK(c.begin(2,1,&b,1,run,error));CHECK(c.events().size()==1&&!c.events()[0].entered&&run.wanted_sound()==wanted_before&&s.animation()==v.find_shadow(v.text(v.area(0).exit_shadow)));CHECK(c.end(2,&b,1,error));
+ // Unsupported multi-area ordering cannot partially apply the first callback.
+ CHECK(c.retire(2,error));CHECK(c.prepare(v,3,{{1,FieldStepBody::Party,&s}},error));std::array<Vec2,4>huge={Vec2{-10000,-10000},Vec2{10000,-10000},Vec2{10000,10000},Vec2{-10000,10000}};b={1,1,4353,true,huge.data(),huge.size()};CHECK(c.begin(3,1,&b,1,run,error));CHECK(c.end(3,&b,1,error));const auto mode=s.animation(),frame=s.frame();const auto timeout=s.timeout();const auto wanted=run.wanted_sound();CHECK(!c.begin(3,1,&b,1,run,error));CHECK(error=="Stepping multi-area callback order is not admitted"&&!c.sampling()&&c.events().empty()&&run.wanted_sound()==wanted&&s.animation()==mode&&s.frame()==frame&&s.timeout()==timeout);CHECK(!c.inside(0,0));CHECK(c.retire(3,error));
+ // A bad later body must roll back both an earlier sample and its callback.
+ FieldStepShadowState a_shadow,b_shadow;FieldRunLoop batch_loop;CHECK(a_shadow.initialize(v,error)&&b_shadow.initialize(v,error)&&batch_loop.initialize(v,v.text(v.sound(v.policy().default_sound).name),error));FieldStepContacts batch;CHECK(batch.prepare(v,1,{{11,FieldStepBody::Party,&a_shadow},{12,FieldStepBody::Party,&b_shadow}},error));std::array<Vec2,4>bad=huge;bad[0].x=std::numeric_limits<float>::quiet_NaN();std::array<FieldStepContactBody,2>two={FieldStepContactBody{11,1,4353,true,shape.data(),shape.size()},FieldStepContactBody{12,1,4353,true,bad.data(),bad.size()}};
+ CHECK(batch.begin(1,11,two.data(),two.size(),batch_loop,error));CHECK(!batch.end(1,two.data(),two.size(),error)&&batch.sampling()&&!batch.inside(0,0));two[1].points=huge.data();CHECK(batch.end(1,two.data(),two.size(),error));const auto a_mode=a_shadow.animation(),b_mode=b_shadow.animation();const auto batch_wanted=batch_loop.wanted_sound();CHECK(!batch.begin(1,11,two.data(),two.size(),batch_loop,error));CHECK(!batch.sampling()&&!batch.inside(0,0)&&batch.events().empty()&&a_shadow.animation()==a_mode&&b_shadow.animation()==b_mode&&batch_loop.wanted_sound()==batch_wanted);CHECK(batch.retire(1,error));
+ std::printf("Stepping contacts: %u checks;164 frozen native states from sampled geometry,41 source cases,body/class/epoch ownership and atomic lifecycle negatives;multi-area ordering fails closed;no complete physics/scene/GPU/NDSP pass\n",checks);
+}

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "source_recipe": "content/catacombs-stepping.json",
+  "source_recipe_sha256": "1929928a783d2c2266fb88a3aee5ed900a8d994b05eb5c39ce3e2e3f6bf827fe",
+  "prior_review": "compatibility/reviews/catacombs-stepping-v0410.json",
+  "prior_review_sha256": "ba645306fd7d8042b2a89d20d6fbda36fa4576a058f0721c7930f698ce15bc19",
+  "native_result_sha256": "6f39e355ee99b792da7152ac846bdd5bbaf74e9bc467ceeb3d8090f35daea5f6",
+  "native_producer_sha256": "ecf12b183997d5c30c171205f572ba3796200b14b42ac334f0ae2da95d829d81",
+  "cases": 41,
+  "stable_observations": 164,
+  "mapping": {
+    "Original callbacks": "Existing apply_step_callback;current player identity separate from PartyObject class;Other bodies have no Shadow",
+    "Actual original body polygons and area filters": "Existing ideal convex query;double-sided mask filter;explicit collision admission",
+    "Physics publication": "Existing checked FieldAreaContacts begin/end lifecycle;stable states compared,not exact Godot callback latency",
+    "Source enabled": "Sound-only flag;never used to disable physical contacts or PartyObject Shadow",
+    "Owned state changes": "Batch validation before commit;duplicate bodies/shadows and stale epochs rejected"
+  },
+  "preserved": [
+    "Original source SHA and reviewed observations",
+    "ENCSTEP1 versions/capabilities",
+    "All formal resources/catalog/save encoding",
+    "Actual FieldScene polygon admission guard"
+  ],
+  "not_admitted": [
+    "Multiple area transitions for one body in one publish batch",
+    "Complete physics server/contact margins or exact signal frame order",
+    "Complete actor registry/scene",
+    "NDSP/GPU/emulator/hardware"
+  ]
+}

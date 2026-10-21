@@ -1,0 +1,17 @@
+{
+  "owned_build": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port",
+  "files": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-contacts-host-1\\contacts",
+      "bytes": 5303592,
+      "sha256": "74f550493586a5e7de78ea4d2bf1ef4e9a58e84bfd6162342e054ba8cf36daf5"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-contacts-host-2\\contacts",
+      "bytes": 5341504,
+      "sha256": "472a94d1d3899338ec367f0308b009625666d1667fd0988ece0f4b3d3da67b34"
+    }
+  ],
+  "total_bytes": 10645096,
+  "keep_current": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-contacts-host-3\\contacts"
+}

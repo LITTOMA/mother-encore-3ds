@@ -60,6 +60,8 @@ public:
     const void* bytes_identity()const{return bytes_;}
     uint32_t scene_id()const;
     uint32_t capabilities()const;
+    // ENCTMAP1 is detached terrain; it cannot create a playable FieldScene.
+    bool terrain_only()const;
     uint32_t count(FieldMapSection)const;
     std::string_view text(FieldText)const;
     FieldAtlas atlas(uint32_t)const;

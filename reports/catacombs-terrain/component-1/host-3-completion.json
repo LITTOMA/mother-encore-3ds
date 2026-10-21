@@ -1,0 +1,1 @@
+{"exit_code": 0, "inputs_unchanged": true, "stderr_encoding": "Raw WSL bytes retained;may include a UTF16 warning", "scope": "GCC9.4 ASan+UBSan with normal leak checking;focused terrain and original area regression and actual FieldScene rejection;no full/Clang/console/GPU/hardware claim"}

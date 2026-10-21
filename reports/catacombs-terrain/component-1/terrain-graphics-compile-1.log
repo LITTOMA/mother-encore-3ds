@@ -1,0 +1,2 @@
+Narrowed producer dependency scope;both binary resources byte-identical to the ASan-tested fixture.
+Compiled detached terrain: 527412 bytes; 1 actual T3X atlas;no actor/root/navsolver/save admission

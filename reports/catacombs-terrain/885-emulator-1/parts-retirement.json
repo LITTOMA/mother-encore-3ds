@@ -1,0 +1,10 @@
+{
+  "source": "8857733284db2e6ee522f03e5522c5f755d78dc6",
+  "game_sha256": "13e4775efa88f0d6b48119ea56053fd1bc651d52535f8e3579ed01a539924baa",
+  "removed_blocks": 23,
+  "removed_bytes": 192937984.0,
+  "full_archive_downloaded": false,
+  "game_retained": true,
+  "proof_retained": true,
+  "scope": "Measured exact23 selected8MiB blocks;API archive digest is not a computed full ZIP hash"
+}

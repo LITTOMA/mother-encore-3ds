@@ -1,0 +1,3 @@
+Terrain:564274 checks;12248 original native cell lookups,missing11 retained,navigation metadata,independent terrain scope,parser/ownership/encoding negatives;no root/navsolver/GPU/emulator/hardware claim
+AreaRoom: 663 checks; source metadata, staged Ready flag, single-party boundary, fixed map location and parser negatives; no GPU/hardware claim
+Actual FieldScene rejects the valid detached terrain before room/link/actor admission;no playable/root claim

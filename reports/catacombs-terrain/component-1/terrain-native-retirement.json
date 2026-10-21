@@ -1,0 +1,16 @@
+[
+  {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\terrain-diagnostic-native-1\\project",
+    "bytes": 363371.0,
+    "checked_original_files": 11,
+    "oracle_sha256": "7a167c5bf8912678728673963f3004822f89fbc8da4314a34b6e42c4cf4fecf4",
+    "removed": true
+  },
+  {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\terrain-diagnostic-native-2\\project",
+    "bytes": 363371.0,
+    "checked_original_files": 11,
+    "oracle_sha256": "7a167c5bf8912678728673963f3004822f89fbc8da4314a34b6e42c4cf4fecf4",
+    "removed": true
+  }
+]

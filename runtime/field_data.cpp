@@ -30,6 +30,7 @@ bool pow2(uint32_t v){return v>=8&&v<=1024&&(v&(v-1))==0;}
 Vec2 field_area_map_position(const FieldArea&a,Vec2 p){return {a.map_offset.x+(a.sub_area?0:p.x/a.map_divisor),a.map_offset.y+(a.sub_area?0:p.y/a.map_divisor)};}
 uint32_t FieldMapView::scene_id()const{return bytes_?u32(bytes_+24):0;}
 uint32_t FieldMapView::capabilities()const{return bytes_?u32(bytes_+20):0;}
+bool FieldMapView::terrain_only()const{return bytes_&&std::memcmp(bytes_,"ENCTMAP1",8)==0;}
 uint32_t FieldMapView::count(FieldMapSection s)const{const auto k=uint32_t(s);return bytes_&&k>=1&&k<=u32(bytes_+52)?u32(bytes_+header_bytes+(k-1)*16+8):0;}
 const uint8_t*FieldMapView::record(FieldMapSection s,uint32_t i)const{const auto k=uint32_t(s);if(!bytes_||k<1||k>u32(bytes_+52)||i>=count(s))return nullptr;
     return bytes_+u32(bytes_+header_bytes+(k-1)*16+4)+size_t(i)*strides[k-1];}
@@ -65,7 +66,8 @@ uint32_t FieldMapView::localized_picture(uint32_t index,std::string_view locale)
 bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     auto fail=[&](const char*m){error=m;return false;};
     if(!p||n<header_bytes+kFieldMapSectionCount*16||n>max_bytes)return fail("Field map size rejected");
-    if(std::memcmp(p,"ENCMAP01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)<1||u32(p+20)>6||u32(p+28)||u32(p+52)!=(u32(p+20)>=5?kFieldAreaMapSectionCount:kFieldMapSectionCount)||u32(p+56)||u32(p+60))
+    const bool terrain=std::memcmp(p,"ENCTMAP1",8)==0;
+    if((!terrain&&std::memcmp(p,"ENCMAP01",8))||(terrain&&u32(p+20)!=1)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)<1||u32(p+20)>6||u32(p+28)||u32(p+52)!=(u32(p+20)>=5?kFieldAreaMapSectionCount:kFieldMapSectionCount)||u32(p+56)||u32(p+60))
         return fail("Field map schema/capability/reserved rejected");
     if(!u32(p+24))return fail("Field map scene identity rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Field map source pin rejected");}
@@ -102,6 +104,8 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
     if(!pool||pool>1024u*1024u||!atlases||atlases>16||!frames||frames>65536||!pictures||pictures>65536||variants>65536||!tiles||tiles>65535||
        shapes>65536||!layers||layers>256||!chunks||chunks>65536||!cells||cells>1048576||sprites>65535||!items||items>65536||!groups||groups>4096||openables>256)
         return fail("Field map capacity rejected");
+    if(terrain)for(auto s:{S::Sprites,S::Openables,S::Doors,S::Boundaries,S::Notices,S::Cameras,S::Bodies,S::Conditions,S::Area})
+        if(v.count(s))return fail("Detached terrain contains scene behavior");
     for(uint32_t i=0;i<atlases;++i){const auto a=v.atlas(i);const auto path=v.text(a.path);
         if(!text_ok(a.path,false,256)||!safe_path(path)||path.size()<5||path.substr(path.size()-4)!=".t3x"||!pow2(a.width)||!pow2(a.height)||u32(v.record(S::Atlases,i)+12))
             return fail("Field map atlas rejected");}
@@ -186,7 +190,9 @@ bool FieldMapData::load(const uint8_t*p,size_t n,std::string&error){
             if(g.kind==uint32_t(FieldGroupKind::YSort)&&kind==FieldItemKind::LayerCells)return fail("Field map sort group item rejected");
             if(kind==FieldItemKind::Player)player_sorted=true;}
         item_cursor+=g.count;}
-    if(item_cursor!=items||players!=1||!player_sorted)return fail("Field map draw program rejected");
+    if(item_cursor!=items||(terrain?(players!=0):(players!=1||!player_sorted)))return fail("Field map draw program rejected");
+    if(terrain)for(uint32_t i=0;i<items;++i)if(v.item(i).kind!=uint16_t(FieldItemKind::LayerCells)&&v.item(i).kind!=uint16_t(FieldItemKind::SortedLayerCells))
+        return fail("Detached terrain contains non-layer draw commands");
     if(u32(p+20)>=3&&actors.empty())return fail("Field actor capability has no actors");
     if(u32(p+20)==4&&!static_actor)return fail("Static actor capability has no static actors");
     if(v.capabilities()==6&&objects.empty())return fail("Field object capability has no objects");

@@ -1,0 +1,9 @@
+{
+  "tests/dungeon_terrain_tests.cpp": "92ae780f42bb6013cbb94be6a74a83edfa8b0ad0d620869b4e589523fab9976f",
+  "tests/field_area_tests.cpp": "f98232aff80b7aa13872f94fe4722225d2934608b9a5689f0510eda787137f5c",
+  "tests/terrain_admission_tests.cpp": "e115786677d1193ade15df34b553d2aa157b8e405979170d2c133a41c5e901e3",
+  "build/full-port/terrain-core-host-1/libencore-terrain.a": "1118f8957fea1a0b5ca1ba15cc423af0083f1897fdd8e2fd46c5d2a286fc0ef1",
+  "build/full-port/terrain-fixture-2/source.encterr": "0bc1692135f57284d227af83819d1ad1b4887060a27014491efa19ffb334351c",
+  "build/full-port/terrain-fixture-2/cells.tsv": "c1fe2bae303aefc8c29e512b3f00d1b4965cd663fd70a34266ac41638ea18a7a",
+  "build/full-port/terrain-fixture-2/synthetic-no-navigation.encterr": "268945e848579e31f3213d705ec1b768611660d9817342077a8b56f02aaf1bc8"
+}

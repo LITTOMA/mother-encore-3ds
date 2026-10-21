@@ -154,6 +154,7 @@ bool FieldScene::conditions(FieldSpan span)const{
 bool FieldScene::prepare(RoomView room,FieldMapView map,const WorldLinksData& links,const std::vector<bool>& story_flags,Vec2 position,Vec2 direction,Vec2 viewport,std::string& error){
     if(props_.ready()||objects_.prepared()){error="A field object owner cannot be reused for another scene; prepare a new candidate";return false;}
     auto reject=[&](std::string message){error=message;phase_=FieldPhase::Error;error_=std::move(message);return false;};
+    if(map.terrain_only())return reject("Detached terrain cannot create a playable field scene");
     if(!room.valid()||!map.valid()||!links.valid()||room.scene().stable_id!=map.scene_id())return reject("Field scene resources do not match");
     const auto scene_index=links.find_scene(map.scene_id());
     if(scene_index==WorldLinksData::kNotFound||!links.scene(scene_index).map_role||links.scene(scene_index).source!=room.string(room.scene().source_scene_string))

@@ -1,0 +1,58 @@
+{
+  "scope": "Original TileSet/textures and five verbatim serialized TileMap node blocks;isolated observer root,no game/root scripts or actor/AI/navigation execution. No map export or formal admission.",
+  "sources": {
+    "Tilesets/Catacombs.tres": {
+      "sha256": "cc992ce31ece3ccd9df662af03f681295093cdfb72e9a42e680d396dfdeaef78",
+      "bytes": 60717
+    },
+    "Tilesets/Catacombs_Poison.tres": {
+      "sha256": "c7800f09a4787df6a8858cd109c0d35cfeb826c4cd164c0d5cdff9d909340cd3",
+      "bytes": 655
+    },
+    "Graphics/Tilesets/TilCatacombsPoison4.png": {
+      "sha256": "926ff4d47eba0379a94cce6617b30d47e7e9157d5ffb4efead5b263fb73dc180",
+      "bytes": 993
+    },
+    "Graphics/Tilesets/TilCatacombsPoison3.png": {
+      "sha256": "b0b28d722f9b07ef6d2ede3d0b7fdfecbb5b440ab228c3a05532e192edc07f61",
+      "bytes": 1007
+    },
+    "Graphics/Tilesets/TilCatacombsPoison1.png": {
+      "sha256": "1b57bee261bf6f03e4aa074e0437c414595351f5d4683994e9f7549243d8e919",
+      "bytes": 891
+    },
+    "Graphics/Tilesets/TilCatacombsPoison2.png": {
+      "sha256": "1e6586cc2af70837c76b9fd76b646eec01010c129991d2e596668ff37107b26d",
+      "bytes": 994
+    },
+    "Tilesets/Catacombs_Lantern.tres": {
+      "sha256": "0b991d5ab259eae65cab23f4b12733d64c55283791e7ca8068a912071bb97564",
+      "bytes": 570
+    },
+    "Graphics/Tilesets/TilCatacombsAnim1.png": {
+      "sha256": "cf74f8a8739687f9b060066a6bffea128735dbb79008a82765f3dce917181185",
+      "bytes": 1206
+    },
+    "Graphics/Tilesets/TilCatacombsAnim3.png": {
+      "sha256": "a19519f716e80c8218dec9449021a5656540c48e0adb8b7668630236977bb4b2",
+      "bytes": 1183
+    },
+    "Graphics/Tilesets/TilCatacombsAnim2.png": {
+      "sha256": "181735291ad7b71045eeeb9bdde9a1f2da573db62667e3f19e680277e4f58fb1",
+      "bytes": 1185
+    },
+    "Graphics/Tilesets/TilCatacombs.png": {
+      "sha256": "d6001bf2561e1c9e9b9157082e0f7b698387d080f745513d0e92cfd3cec1f845",
+      "bytes": 28725
+    },
+    "Maps/podunk/Catacombs.tscn": {
+      "sha256": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+      "bytes": 286981
+    }
+  },
+  "api_reference": [
+    "https://docs.godotengine.org/en/3.6/classes/class_tileset.html",
+    "https://docs.godotengine.org/en/3.6/classes/class_script.html"
+  ],
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd"
+}

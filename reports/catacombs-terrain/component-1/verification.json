@@ -1,0 +1,73 @@
+{
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Detached Catacombs terrain ONLY;no original full root,actor,AI,navigation-solver,formal scene or save admission",
+  "native_cold_repetitions": 2,
+  "native_logical_cells_each": 12248,
+  "rendered_cells": 12247,
+  "source_definitions": 30,
+  "defined_navigation_tiles": 1,
+  "navigation_vertices": 4,
+  "navigation_indices": 4,
+  "source_missing_tile": {
+    "layer": 2,
+    "x": -42,
+    "y": 1,
+    "tile": 11,
+    "preserved": true
+  },
+  "terrain_format": "ENCTERR1 f1/cap1",
+  "graphics_format": "ENCTMAP1 f1/cap1",
+  "terrain_bytes": 527412,
+  "graphics_bytes": 132156,
+  "actual_tex3ds": {
+    "atlases": 1,
+    "dimensions": [
+      1024,
+      256
+    ],
+    "bytes": 1048597
+  },
+  "gcc_fresh_core_sources": 116,
+  "gcc_asan_ubsan_normal_leak_check": {
+    "terrain_checks": 564274,
+    "old_area_room_checks": 663,
+    "actual_FieldScene_admission_rejection": true,
+    "exit_code": 0
+  },
+  "python_methods": 9,
+  "windows_config_and_discovery_only": {
+    "ctest": 322,
+    "python": 1429,
+    "aggregate": 1046,
+    "dedicated": 383
+  },
+  "failed_attempts": {
+    "model1": "Missing shared TileSet recipe entry;fixed row-model initialization;original raw failure retained",
+    "host2": "Compiler and both check outputs succeeded,but the private Python wrapper decoded mixed WSL stderr as UTF8 and raised UnicodeDecodeError. No exit receipt claimed. Final host3 captures numeric process status before any display decoding,all three programs exit0",
+    "collection1": "Private CTest metadata mock also intercepted readonly upstream Git HEAD. No original/source was changed. Final collection2 intercepts only exact CTest query and retains real Git calls. See raw failure and method-plan2"
+  },
+  "removed_bytes": 474672238,
+  "retained": "Fresh tested static library,current test programs,candidates and all raw results;no release binary or art copied into Git",
+  "unverified": [
+    "Full current GCC/Clang tests and sanitizers",
+    "Real current 3DSX/CIA build and packaging",
+    "Actual terrain renderer/GPU and navigation solver",
+    "Catacombs root,actors,scene integration and save",
+    "Current terrain emulator and all hardware"
+  ],
+  "inputs_sha256": {
+    "CMakeLists.txt": "74c0744d087eac6b96180d272eb0fbf1086ba7fc34eca95abaf3c26d984bf1a3",
+    "platform/ctr/Makefile": "6150af237dadd6a052a6f336fb442e9384c73f32aaaa3856409c4178aa2be175",
+    "include/encore/field_data.hpp": "eb11deea2c3f10e4040d0b57e19ba2eab425c504f14999255b7404a4e3da4843",
+    "include/encore/dungeon_terrain.hpp": "068678176fab9c7f24cb06c103f14e4094a8c3e675ddf36dae9fcf6fbe29fde2",
+    "runtime/field_data.cpp": "7a93d9ad639a7f1e31e7da09c38e85b5a5beb0d8b139281a15132a013f761019",
+    "runtime/field_scene.cpp": "c8c8444bcdea6e13b7440d0de458566c2fcb3831c801b44b879a229c66e5c86b",
+    "runtime/dungeon_terrain.cpp": "f496d388ff5c2c9f2166accda4dfcc921795d1717ac14ed775a55e4c3e9f75bf",
+    "content/catacombs-terrain.json": "21744b9fe372cffebfcc6baa54ebba0606e48a9eb0bcb0a6ba2037e7cc533d73",
+    "tools/catacombs_terrain.py": "13e655658722f1828cbd8df39c7e51d859c19bff8a618d67c55cc7312e320cee",
+    "tests/prepare_dungeon_terrain.py": "38502d3cbddfdd3882e648efdbd5bd4531b1e9546774eb3a7580f6476c020355",
+    "tests/dungeon_terrain_tests.cpp": "92ae780f42bb6013cbb94be6a74a83edfa8b0ad0d620869b4e589523fab9976f",
+    "tests/terrain_admission_tests.cpp": "e115786677d1193ade15df34b553d2aa157b8e405979170d2c133a41c5e901e3",
+    "tests/test_catacombs_terrain.py": "22c528b9cf047f192886f33c58726ca0ccfe167c4092367752bf3f19acc8cf4b"
+  }
+}

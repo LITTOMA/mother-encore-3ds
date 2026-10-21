@@ -143,7 +143,7 @@ class Case(unittest.TestCase):
         source = self.root / 'CMakeLists.txt'
         source.write_text('cmake_minimum_required(VERSION 3.16)\nproject(Schedule NONE)\n'
             'enable_testing()\nset(BUILD_TESTING ON)\n'
-            'foreach(name room_data phone_presentation_bindings python_tools python_tools_part2 future_writer timing_probe)\n'
+            'foreach(name room_data phone_presentation_bindings python_tools python_tools_part2 python_tools_part3 python_tools_part4 future_writer timing_probe)\n'
             ' add_test(NAME ${name} COMMAND "' + sys.executable.replace('\\', '/') + '" -c "pass")\n'
             'endforeach()\ninclude("' + helper + '")\n', encoding='utf-8')
         for jobs in (0, 2, 3, 65, 'invalid'):
@@ -171,9 +171,10 @@ class Case(unittest.TestCase):
                     self.assertEqual(props['python_tools']['PROCESSORS'], 4)
                     self.assertIn('ENCORE_PYTHON_TEST_JOBS=4', props['python_tools']['ENVIRONMENT'])
                     self.assertTrue(props['python_tools']['RUN_SERIAL'])
-                    self.assertTrue(props['python_tools_part2']['RUN_SERIAL'])
-                    self.assertEqual(props['python_tools_part2']['PROCESSORS'], 4)
-                    self.assertIn('ENCORE_PYTHON_TEST_JOBS=4', props['python_tools_part2']['ENVIRONMENT'])
+                    for name in ('python_tools_part2','python_tools_part3','python_tools_part4'):
+                        self.assertTrue(props[name]['RUN_SERIAL'])
+                        self.assertEqual(props[name]['PROCESSORS'], 4)
+                        self.assertIn('ENCORE_PYTHON_TEST_JOBS=4', props[name]['ENVIRONMENT'])
 
 
 if __name__ == '__main__':

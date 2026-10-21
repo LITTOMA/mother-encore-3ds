@@ -1,0 +1,92 @@
+{
+  "source": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "recipe_sha256": "7daa8eefb8cabaadd4148f0299e977824e0480e5748a2b420b6a465153b8dc2f",
+    "sources": {
+      "Nodes/Overworld/poison geyser.tscn": "d700e3bbf3aee8d3b43e498391e38d8d8ad0a80d632b95cf34b605deafd588da",
+      "Scripts/Main/Poison Geyser.gd": "2ef05cc91eb3690a6e8a14fdb83a29ef06784f7ab0b8b083d8e79a2bcfd4ab57",
+      "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+      "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+      "Graphics/Objects/Catacombs/Poison Geyser.png": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890",
+      "Graphics/Objects/Catacombs/Poison Geyser.png.import": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b",
+      "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Audio/Sound effects/shreksplash.mp3": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58",
+      "Audio/Sound effects/shreksplash.mp3.import": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23",
+      "Audio/Sound effects/shrekblast.mp3": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089",
+      "Audio/Sound effects/shrekblast.mp3.import": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815",
+      "Audio/Sound effects/shrekrumble.mp3": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34",
+      "Audio/Sound effects/shrekrumble.mp3.import": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+    },
+    "symbols": {
+      "script": {
+        "_ready": "5125cd1058a597e045cbda5e82b2d82c0808ce486cdf2aee2fa7998471cbb3eb",
+        "_process": "5bab1310d47bb565c55fca7394474d011119aa43fc99dde95a66a3bb3af272e8",
+        "pause": "fcf1c08910674c64c6de8669082aabf3716e6d422497ffffbf3b8c1855cbaa3c",
+        "unpause": "e52e345a806b24bd813e250099717d4f4a0b9fc6de4bcaa937c4009f899f652b",
+        "_on_AnimationPlayer_animation_finished": "edd0d48fd36f3a09a9bdd6ecc59eb40d766b2bd3bd3d9ea51ce53b5301f5db67",
+        "_on_Poison_Geyser_body_entered": "7e87db7f72a9ff028b9f18376337d81dbabc35147c8d47919bdb5a6c9915efcf",
+        "_on_Poison_Geyser_body_exited": "ce5df88f78ff43b3f5d979a433f0e35f739e256d2078567030e7c0a2b95f9a0c",
+        "play_rumble": "c2fc29b2a7e32d223a7f19252b821a9b97f8a10cea380bfe9d96112ad5fa1bd8"
+      },
+      "manager": {
+        "add_sfx": "7dcfa5938a039327d950e1a344889d0d444b6054720669200008f1efa9a86b10",
+        "play_sfx": "6e44e781afc59ad6ac63503ef3b8a9a7a687884dec8769e525e7046219bd6d59",
+        "get_sfx": "24b4ac1e42e5f6cc43380d9d2059caa723ce34a259684c11ac5c9dd2e836e45a"
+      }
+    },
+    "scope": "Original Geyser source-specific animation/property/audio-command and deferred-rumble lifecycle candidate;full Character damage,status,source spatial mixing,production rendering/audio and complete scene admission remain unimplemented.",
+    "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "engine_sources": {
+      "scene/animation/animation_player.cpp": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+      "scene/animation/animation_player.h": "42c673e5c377480680bc3fe48c252aa8d2f054d657fd0a72c2b0d77025ec40de",
+      "scene/resources/animation.cpp": "0c49f1f325d040c645b35b0f39d0972ccd7812e0a575b6ad97ba5d9f3de0dd1b",
+      "scene/resources/animation.h": "177e75db916cb1a985627f860f06321af5065fb750939db617e80317b28f9a2d",
+      "scene/2d/audio_stream_player_2d.cpp": "7ee0ab4970818682dbc85fcb0c561e84f7045a3da518b94c5d267cf6356f8de2",
+      "scene/2d/audio_stream_player_2d.h": "4b703018e4937139bdf3a683437e779329e6c5312eaef0f252083445ad959e75",
+      "scene/audio/audio_stream_player.cpp": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+      "scene/audio/audio_stream_player.h": "1465843e77369e84bfb18cf06c9d4224aae6a72a0b5b4e88f55956cd19898b57",
+      "scene/2d/sprite.cpp": "ce678f79ba902084ad04398b3f36485543da9318835776de4480655618d9e4dd",
+      "scene/2d/sprite.h": "d8984616cdeed9b454a560a6707c59048002c1bdebc5c4f42a30ee19951115ce",
+      "scene/2d/visibility_notifier_2d.cpp": "954d01b94e3c6ad848b6718796f63b2181d37a2859a69e23ecbec7e6de4b7849",
+      "scene/2d/visibility_notifier_2d.h": "ed126b4e47eb219b7cbd10785d990aba8e2de321a46da425f1e7f47f7314d4d8"
+    }
+  },
+  "generated_sha256": {
+    "project.godot": "48fb54f519695e7a13ee665d2513ed0d3701ff317493ade005141792d974db83",
+    "party.gd": "8283d885f28b923d0ba130989cd75c2636f9a9674d4d8533dd7f9be46cbf8c50",
+    "status.gd": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1",
+    "global.gd": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696",
+    "ui.gd": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5",
+    "manager.gd": "f41ec72579645f3e6d98e0670a7e6df530607510709c6c7e66bfd5d3fc7f0b11",
+    "Scripts/Main/Poison Geyser.gd": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e",
+    "audio.gd": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520",
+    "geyser.tscn": "804bffa4bedfb12a0a7c9f9173ae56f6f7d9ef5bd8e097807e658a834948a38d",
+    "probe.gd": "332a5321272c80b9a7e5abec286a341da7cebbffcd3cf49bda34b73f468724cb",
+    "probe.tscn": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c",
+    "input.json": "53768e2074ae34a9095d37765162dee0141f1841e9f5ec0f93f5d2525ac32b00"
+  },
+  "copied_source": {
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "Graphics/Objects/Catacombs/Poison Geyser.png": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890",
+    "Graphics/Objects/Catacombs/Poison Geyser.png.import": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b",
+    "Audio/Sound effects/shreksplash.mp3": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58",
+    "Audio/Sound effects/shreksplash.mp3.import": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23",
+    "Audio/Sound effects/shrekblast.mp3": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089",
+    "Audio/Sound effects/shrekblast.mp3.import": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815",
+    "Audio/Sound effects/shrekrumble.mp3": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34",
+    "Audio/Sound effects/shrekrumble.mp3.import": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+  },
+  "adapters": [
+    "Complete original Geyser script with trailing observer-only reads of two unused parameters;original assignments/guards preserved,no diagnostic suppression",
+    "Original scene and real PNG/three MP3s/original import flags/bus;one Audio2D script records actual set_stream/play/stop calls and forwards native base methods",
+    "Original named SFX methods with one entry observer append;real named AudioStreamPlayer and stable playing/idle preconditions,not a synthetic gate result",
+    "Manual AnimationPlayer process mode only for deterministic manual advance;real deferred method queue and actual VisibilityNotifier;no automatic idle equivalence claim",
+    "Player/UI are explicit services;PartyObject callbacks are not invoked,no HP/Character/physics claim",
+    "UI changed after animation scheduling and before MessageQueue flush;queued-free actor observed before actual deferred delete",
+    "Dummy audio output;no audible/spatial-mix/natural decoder phase or hardware claim"
+  ],
+  "producer_sha256": "d36f5c547c6ba69056a13be6186e55da060d79341be8673a8319bccb4299552e",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "result_sha256": "bead4b5c2947bab5e2867dc19b65911204d2fe124f38cd7e569dfc181be08662"
+}

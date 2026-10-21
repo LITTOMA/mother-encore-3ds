@@ -1,0 +1,93 @@
+[
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/animation/animation_player.cpp",
+    "git_blob": "d635624b1cfd5319932af540baeb7bc4ee102d02",
+    "sha256": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/animation/animation_player.cpp"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/animation/animation_player.h",
+    "git_blob": "0009e2fa9260285b7b09c1baf0b9888bb78f40cb",
+    "sha256": "42c673e5c377480680bc3fe48c252aa8d2f054d657fd0a72c2b0d77025ec40de",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/animation/animation_player.h"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/resources/animation.cpp",
+    "git_blob": "4fba77ea7fae9601ffd4f458b559c2ea24962dfc",
+    "sha256": "0c49f1f325d040c645b35b0f39d0972ccd7812e0a575b6ad97ba5d9f3de0dd1b",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/resources/animation.cpp"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/resources/animation.h",
+    "git_blob": "66b3e09fc4ae6a9e69e52e21d0cfcbb2a02bb56d",
+    "sha256": "177e75db916cb1a985627f860f06321af5065fb750939db617e80317b28f9a2d",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/resources/animation.h"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/2d/audio_stream_player_2d.cpp",
+    "git_blob": "386191df4b79601e21932b84f383ed1e7b7754b4",
+    "sha256": "7ee0ab4970818682dbc85fcb0c561e84f7045a3da518b94c5d267cf6356f8de2",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/audio_stream_player_2d.cpp"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/2d/audio_stream_player_2d.h",
+    "git_blob": "c671120101b0a36ebece2ea8e97b013a7a5e88eb",
+    "sha256": "4b703018e4937139bdf3a683437e779329e6c5312eaef0f252083445ad959e75",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/audio_stream_player_2d.h"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/audio/audio_stream_player.cpp",
+    "git_blob": "b8bd52acaf1f34c80f4a71bd6c9ad51724ebc93c",
+    "sha256": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/audio/audio_stream_player.cpp"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/audio/audio_stream_player.h",
+    "git_blob": "68ecff277d8b3847f9c629dec450289d0ae27782",
+    "sha256": "1465843e77369e84bfb18cf06c9d4224aae6a72a0b5b4e88f55956cd19898b57",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/audio/audio_stream_player.h"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/2d/sprite.cpp",
+    "git_blob": "35db8bdbdd5f7967026829e3d3ba2b70e206793f",
+    "sha256": "ce678f79ba902084ad04398b3f36485543da9318835776de4480655618d9e4dd",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/sprite.cpp"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/2d/sprite.h",
+    "git_blob": "38c9a821484e171d2528f6706238eeb01a3a2b65",
+    "sha256": "d8984616cdeed9b454a560a6707c59048002c1bdebc5c4f42a30ee19951115ce",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/sprite.h"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/2d/visibility_notifier_2d.cpp",
+    "git_blob": "a6800843aa13afe0048d90413313cfaf3fb1b1c5",
+    "sha256": "954d01b94e3c6ad848b6718796f63b2181d37a2859a69e23ecbec7e6de4b7849",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/visibility_notifier_2d.cpp"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "scene/2d/visibility_notifier_2d.h",
+    "git_blob": "6ca67bfb3fa43fa7af4740ffe924b98abf51e91b",
+    "sha256": "ed126b4e47eb219b7cbd10785d990aba8e2de321a46da425f1e7f47f7314d4d8",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/visibility_notifier_2d.h"
+  },
+  {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "path": "LICENSE.txt",
+    "git_blob": "0e3ba08d6b2e8cf435241829c96f10b74e4356fe",
+    "sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/LICENSE.txt"
+  }
+]

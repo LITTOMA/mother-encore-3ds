@@ -1,0 +1,1966 @@
+{
+  "schema": 1,
+  "targets": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-native-1\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-reference",
+      "marker_value": "geyser-reference-v1",
+      "files": [
+        {
+          "path": ".owned-geyser-reference",
+          "bytes": 19,
+          "sha256": "c6045f832f6937af7cd342d2aefd7e9331885935a6566e1b874d77bfaca14d22"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 365,
+          "sha256": "6a1c243d2660fe49a63bc78b7f2541ea997d425986f41212e7a8fda8304b18f7"
+        },
+        {
+          "path": "geyser.tscn",
+          "bytes": 4471,
+          "sha256": "804bffa4bedfb12a0a7c9f9173ae56f6f7d9ef5bd8e097807e658a834948a38d"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 675,
+          "sha256": "e42e14f6f5bf333b6617a249a85650181e1b86cff95a96743a40f5fc2ebc095d"
+        },
+        {
+          "path": "party.gd",
+          "bytes": 189,
+          "sha256": "696c72c67608497e3295008bce6f5e305f26cca22cb8596e6f6a42d7b5e10525"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 2405,
+          "sha256": "b91a5e65749a884574e8e43dd8aa2b084a92112c1680144ae3dd1173fc13130c"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 528,
+          "sha256": "afbad4100b054cc19ed0078f186d02420a0a844c9af75e2507ac9618c46a59c5"
+        },
+        {
+          "path": "status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": ".import/resthumb-7607fbdd1ba32002c9b6b192e8c4346c.png-aa3746fe17891d2d676c22a2a1f9ffc4.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": ".import/resthumb-7607fbdd1ba32002c9b6b192e8c4346c.png-aa3746fe17891d2d676c22a2a1f9ffc4.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "Scripts/Main/Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "user-local/Godot/resthumb-5a1e2ba5de70fade402393dc9e4b432c.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-5a1e2ba5de70fade402393dc9e4b432c.txt",
+          "bytes": 49,
+          "sha256": "77b8186b3837bd09dffa7560aae2c18326d7279e90b616f6085954ba6f1f4d3e"
+        },
+        {
+          "path": "user-local/Godot/resthumb-7607fbdd1ba32002c9b6b192e8c4346c.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "user-local/Godot/resthumb-7607fbdd1ba32002c9b6b192e8c4346c.png.import",
+          "bytes": 802,
+          "sha256": "d19374c603cbd5594e5d9562e0bf34a9024366bf41da5ef75db1de543bfd3838"
+        },
+        {
+          "path": "user-local/Godot/resthumb-7607fbdd1ba32002c9b6b192e8c4346c.txt",
+          "bytes": 49,
+          "sha256": "8055db9a7b398c3ae82ccfa0f90ac022fa34e67ffb3576d36ba10cbdcbf552b9"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original geyser timeline observations/logs/godot.log",
+          "bytes": 331,
+          "sha256": "c48fdfafa6d91f5081ddab9cdbbfe7180fc5faf5ee003bf2e24a6ac80bfefb38"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2275,
+          "sha256": "cf9c88a0831d8eeaba65d9d4d8f98a2a6ed2dc49142e21ec6caa995f4b95c066"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-bba4925374f76c9794b764b53c34406d/filesystem_cache6",
+          "bytes": 2373,
+          "sha256": "ea9965784b393c1aa017f2744538dfdc620b9cc76289a888dc448ed6a765f5fe"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-bba4925374f76c9794b764b53c34406d/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-bba4925374f76c9794b764b53c34406d/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-bba4925374f76c9794b764b53c34406d/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-bba4925374f76c9794b764b53c34406d/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 782972
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-native-2\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-reference",
+      "marker_value": "geyser-reference-v1",
+      "files": [
+        {
+          "path": ".owned-geyser-reference",
+          "bytes": 19,
+          "sha256": "c6045f832f6937af7cd342d2aefd7e9331885935a6566e1b874d77bfaca14d22"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 365,
+          "sha256": "6a1c243d2660fe49a63bc78b7f2541ea997d425986f41212e7a8fda8304b18f7"
+        },
+        {
+          "path": "geyser.tscn",
+          "bytes": 4471,
+          "sha256": "804bffa4bedfb12a0a7c9f9173ae56f6f7d9ef5bd8e097807e658a834948a38d"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 675,
+          "sha256": "e42e14f6f5bf333b6617a249a85650181e1b86cff95a96743a40f5fc2ebc095d"
+        },
+        {
+          "path": "party.gd",
+          "bytes": 189,
+          "sha256": "696c72c67608497e3295008bce6f5e305f26cca22cb8596e6f6a42d7b5e10525"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 2458,
+          "sha256": "bd501bfe6781936e089d711d345f8c9ac53221a4760f84d4d116b2a77590d592"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 562,
+          "sha256": "76aceaf8d0aec01584001014a282e134c65ca84fc2707d40156193c45195d738"
+        },
+        {
+          "path": "status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": ".import/resthumb-8b3a34b1dc82675423d9c3843e9cbf16.png-84e668bcba74f48000b1dce337b8ca8f.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": ".import/resthumb-8b3a34b1dc82675423d9c3843e9cbf16.png-84e668bcba74f48000b1dce337b8ca8f.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "Scripts/Main/Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "user-local/Godot/resthumb-8b3a34b1dc82675423d9c3843e9cbf16.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "user-local/Godot/resthumb-8b3a34b1dc82675423d9c3843e9cbf16.png.import",
+          "bytes": 802,
+          "sha256": "d7392afbbf499ebf1002c3922a30da7afa16e7e196cdbdfe5916c80302800c5b"
+        },
+        {
+          "path": "user-local/Godot/resthumb-8b3a34b1dc82675423d9c3843e9cbf16.txt",
+          "bytes": 49,
+          "sha256": "4c5b0e7cd7742992a7b48141e258b6a1ef49cefe85251fd9974f03916224570b"
+        },
+        {
+          "path": "user-local/Godot/resthumb-9da1193de737f9e06cdbe25272b7b1db.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-9da1193de737f9e06cdbe25272b7b1db.txt",
+          "bytes": 49,
+          "sha256": "14b6469f2d243fb013eff3533c2fd1784930c1747ff11fb45c1f2fe4b8e5cb54"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original geyser timeline observations/logs/godot.log",
+          "bytes": 265,
+          "sha256": "f18afb5276022fd4832226c43ea6f8010be5e099401d993d36be6b8265f46268"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2336,
+          "sha256": "923df9aeabb4f3f86af74a61252e039e4a30b1014f92d0687f9c81bd94296ed3"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-621379945b8bc0f436942c7049bf6ca7/filesystem_cache6",
+          "bytes": 2434,
+          "sha256": "0235d000966281cdba17a2c6c9d519999e9b11ff7a334e7e6facf13b8fd7355c"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-621379945b8bc0f436942c7049bf6ca7/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-621379945b8bc0f436942c7049bf6ca7/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-621379945b8bc0f436942c7049bf6ca7/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-621379945b8bc0f436942c7049bf6ca7/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-621379945b8bc0f436942c7049bf6ca7/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 783764
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-native-3\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-reference",
+      "marker_value": "geyser-reference-v1",
+      "files": [
+        {
+          "path": ".owned-geyser-reference",
+          "bytes": 19,
+          "sha256": "c6045f832f6937af7cd342d2aefd7e9331885935a6566e1b874d77bfaca14d22"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 365,
+          "sha256": "6a1c243d2660fe49a63bc78b7f2541ea997d425986f41212e7a8fda8304b18f7"
+        },
+        {
+          "path": "geyser.tscn",
+          "bytes": 4471,
+          "sha256": "804bffa4bedfb12a0a7c9f9173ae56f6f7d9ef5bd8e097807e658a834948a38d"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 675,
+          "sha256": "e42e14f6f5bf333b6617a249a85650181e1b86cff95a96743a40f5fc2ebc095d"
+        },
+        {
+          "path": "party.gd",
+          "bytes": 283,
+          "sha256": "8283d885f28b923d0ba130989cd75c2636f9a9674d4d8533dd7f9be46cbf8c50"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 2458,
+          "sha256": "bd501bfe6781936e089d711d345f8c9ac53221a4760f84d4d116b2a77590d592"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 562,
+          "sha256": "76aceaf8d0aec01584001014a282e134c65ca84fc2707d40156193c45195d738"
+        },
+        {
+          "path": "status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": ".import/resthumb-d481c7d94d34549988af2980260cade6.png-b1ca2b0dc36d5f4b9384b9ca704fac9a.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": ".import/resthumb-d481c7d94d34549988af2980260cade6.png-b1ca2b0dc36d5f4b9384b9ca704fac9a.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "Scripts/Main/Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "user-local/Godot/resthumb-62b1ed9218b1f4970c620124de21fb97.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-62b1ed9218b1f4970c620124de21fb97.txt",
+          "bytes": 49,
+          "sha256": "5a0f9d7e999ad0ccebf2ee98e99667ed67467625db7f54f2488cdf24869eb37e"
+        },
+        {
+          "path": "user-local/Godot/resthumb-d481c7d94d34549988af2980260cade6.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "user-local/Godot/resthumb-d481c7d94d34549988af2980260cade6.png.import",
+          "bytes": 802,
+          "sha256": "75ad49f95ae9b2ce27d3e8f90636f417a66a02b96c80ba3b658457e4600247b0"
+        },
+        {
+          "path": "user-local/Godot/resthumb-d481c7d94d34549988af2980260cade6.txt",
+          "bytes": 49,
+          "sha256": "620d30da99f5016b2d8792f6efbca4072a5753734c9d05b0e13a157704a56786"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original geyser timeline observations/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2336,
+          "sha256": "66d06c3c2c62b1a24cf297a0a849510e2133302f98a00189268713d98f5760a8"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9f8d193d6eb9c64e71f151cce0f4c8e1/filesystem_cache6",
+          "bytes": 2434,
+          "sha256": "fadca4499b03086dfa4638bc99e4f1b18ee1b76e454833c605b122fcce266019"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9f8d193d6eb9c64e71f151cce0f4c8e1/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9f8d193d6eb9c64e71f151cce0f4c8e1/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9f8d193d6eb9c64e71f151cce0f4c8e1/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9f8d193d6eb9c64e71f151cce0f4c8e1/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9f8d193d6eb9c64e71f151cce0f4c8e1/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 783736
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-native-4\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-reference",
+      "marker_value": "geyser-reference-v1",
+      "files": [
+        {
+          "path": ".owned-geyser-reference",
+          "bytes": 19,
+          "sha256": "c6045f832f6937af7cd342d2aefd7e9331885935a6566e1b874d77bfaca14d22"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 406,
+          "sha256": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520"
+        },
+        {
+          "path": "geyser.tscn",
+          "bytes": 4471,
+          "sha256": "804bffa4bedfb12a0a7c9f9173ae56f6f7d9ef5bd8e097807e658a834948a38d"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        {
+          "path": "input.json",
+          "bytes": 4899,
+          "sha256": "53768e2074ae34a9095d37765162dee0141f1841e9f5ec0f93f5d2525ac32b00"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 742,
+          "sha256": "f41ec72579645f3e6d98e0670a7e6df530607510709c6c7e66bfd5d3fc7f0b11"
+        },
+        {
+          "path": "party.gd",
+          "bytes": 283,
+          "sha256": "8283d885f28b923d0ba130989cd75c2636f9a9674d4d8533dd7f9be46cbf8c50"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 4985,
+          "sha256": "f1e8b10291517173f1a6bc8ddd95eedff800dd6dea8015aae786db3826efcddc"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 549,
+          "sha256": "48fb54f519695e7a13ee665d2513ed0d3701ff317493ade005141792d974db83"
+        },
+        {
+          "path": "status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": ".import/resthumb-63d4b8dcf3a25ebf0b9e5a9ce0fcb073.png-c39517f217e47fc12a9b390bc1db278c.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": ".import/resthumb-63d4b8dcf3a25ebf0b9e5a9ce0fcb073.png-c39517f217e47fc12a9b390bc1db278c.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "Scripts/Main/Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "user-local/Godot/resthumb-32e58e5f49736575e29fbba068f05ecf.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-32e58e5f49736575e29fbba068f05ecf.txt",
+          "bytes": 49,
+          "sha256": "9ae3e3a77580292fde9df6fcb08b82a6e0360d8d5900c5a6f5cb2e40df953114"
+        },
+        {
+          "path": "user-local/Godot/resthumb-63d4b8dcf3a25ebf0b9e5a9ce0fcb073.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "user-local/Godot/resthumb-63d4b8dcf3a25ebf0b9e5a9ce0fcb073.png.import",
+          "bytes": 802,
+          "sha256": "5a8920a4af47e73118a738c30dc68812336433a525e688ffade2aeb67e680928"
+        },
+        {
+          "path": "user-local/Godot/resthumb-63d4b8dcf3a25ebf0b9e5a9ce0fcb073.txt",
+          "bytes": 49,
+          "sha256": "b7f8ede171d632209ffc5c5e324148f0838ba4964e9635a1488081c1287caa4a"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original Geyser timeline/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2323,
+          "sha256": "8a80ac0bbea0b0410ccf2923536d46a2f3125477775b3ec249b8dad0ea6767eb"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-edbaaa6cb18f080aa470f6d5e63414b7/filesystem_cache6",
+          "bytes": 2421,
+          "sha256": "8df899488e65a0c035999eb36c787e1afe55c085eab514596df4780fad2a6ae6"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-edbaaa6cb18f080aa470f6d5e63414b7/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-edbaaa6cb18f080aa470f6d5e63414b7/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-edbaaa6cb18f080aa470f6d5e63414b7/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-edbaaa6cb18f080aa470f6d5e63414b7/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-edbaaa6cb18f080aa470f6d5e63414b7/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 791231
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-native-5\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-reference",
+      "marker_value": "geyser-reference-v1",
+      "files": [
+        {
+          "path": ".owned-geyser-reference",
+          "bytes": 19,
+          "sha256": "c6045f832f6937af7cd342d2aefd7e9331885935a6566e1b874d77bfaca14d22"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 406,
+          "sha256": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520"
+        },
+        {
+          "path": "geyser.tscn",
+          "bytes": 4471,
+          "sha256": "804bffa4bedfb12a0a7c9f9173ae56f6f7d9ef5bd8e097807e658a834948a38d"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        {
+          "path": "input.json",
+          "bytes": 4899,
+          "sha256": "53768e2074ae34a9095d37765162dee0141f1841e9f5ec0f93f5d2525ac32b00"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 742,
+          "sha256": "f41ec72579645f3e6d98e0670a7e6df530607510709c6c7e66bfd5d3fc7f0b11"
+        },
+        {
+          "path": "party.gd",
+          "bytes": 283,
+          "sha256": "8283d885f28b923d0ba130989cd75c2636f9a9674d4d8533dd7f9be46cbf8c50"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 5084,
+          "sha256": "332a5321272c80b9a7e5abec286a341da7cebbffcd3cf49bda34b73f468724cb"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 549,
+          "sha256": "48fb54f519695e7a13ee665d2513ed0d3701ff317493ade005141792d974db83"
+        },
+        {
+          "path": "status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": ".import/resthumb-6ee2328f32d6705a82a692ea25bee064.png-80817f648a00784fa2870f148a541db5.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": ".import/resthumb-6ee2328f32d6705a82a692ea25bee064.png-80817f648a00784fa2870f148a541db5.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "Scripts/Main/Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "user-local/Godot/resthumb-6ee2328f32d6705a82a692ea25bee064.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "user-local/Godot/resthumb-6ee2328f32d6705a82a692ea25bee064.png.import",
+          "bytes": 802,
+          "sha256": "fc8785fcf928b741f09e914e5ceab9c020866f9194c48721f086e0d22e16567c"
+        },
+        {
+          "path": "user-local/Godot/resthumb-6ee2328f32d6705a82a692ea25bee064.txt",
+          "bytes": 49,
+          "sha256": "04374284346e8f6f01ec95af453a886c8f0453bda90dc6524455a3f8c854b490"
+        },
+        {
+          "path": "user-local/Godot/resthumb-e9e23256c56eba1b0107b0fb51c90670.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-e9e23256c56eba1b0107b0fb51c90670.txt",
+          "bytes": 49,
+          "sha256": "bb187114be80bd64d6daf26c805c0f2e8b17327f16d9be692f2637ee84c832d5"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original Geyser timeline/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2323,
+          "sha256": "c041b9013c8caddd35b8ae238ea481b3b6ad9ee157aa43b7dbfbd6de54b94b77"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-a6a5a98b1085eefa209ac958057c980b/filesystem_cache6",
+          "bytes": 2421,
+          "sha256": "bc5174937df55cfe5c730c6e7ab8337d8892804d86c8ad9fcf07c8d9d3c7f690"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-a6a5a98b1085eefa209ac958057c980b/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-a6a5a98b1085eefa209ac958057c980b/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-a6a5a98b1085eefa209ac958057c980b/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-a6a5a98b1085eefa209ac958057c980b/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-a6a5a98b1085eefa209ac958057c980b/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 791330
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-native-6\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-reference",
+      "marker_value": "geyser-reference-v1",
+      "files": [
+        {
+          "path": ".owned-geyser-reference",
+          "bytes": 19,
+          "sha256": "c6045f832f6937af7cd342d2aefd7e9331885935a6566e1b874d77bfaca14d22"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 406,
+          "sha256": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520"
+        },
+        {
+          "path": "geyser.tscn",
+          "bytes": 4471,
+          "sha256": "804bffa4bedfb12a0a7c9f9173ae56f6f7d9ef5bd8e097807e658a834948a38d"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        {
+          "path": "input.json",
+          "bytes": 4899,
+          "sha256": "53768e2074ae34a9095d37765162dee0141f1841e9f5ec0f93f5d2525ac32b00"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 742,
+          "sha256": "f41ec72579645f3e6d98e0670a7e6df530607510709c6c7e66bfd5d3fc7f0b11"
+        },
+        {
+          "path": "party.gd",
+          "bytes": 283,
+          "sha256": "8283d885f28b923d0ba130989cd75c2636f9a9674d4d8533dd7f9be46cbf8c50"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 5084,
+          "sha256": "332a5321272c80b9a7e5abec286a341da7cebbffcd3cf49bda34b73f468724cb"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 549,
+          "sha256": "48fb54f519695e7a13ee665d2513ed0d3701ff317493ade005141792d974db83"
+        },
+        {
+          "path": "status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": ".import/resthumb-9381acc0e89ca686f07e1ef274959df1.png-32c0473f29bf0bd70306df6f9e648522.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": ".import/resthumb-9381acc0e89ca686f07e1ef274959df1.png-32c0473f29bf0bd70306df6f9e648522.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "Scripts/Main/Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "user-local/Godot/resthumb-5f3937376bac7f5fd2532928b9ce4e03.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-5f3937376bac7f5fd2532928b9ce4e03.txt",
+          "bytes": 49,
+          "sha256": "5ea2593315fa1a9b3fcb2c90965872a8fb4114766e24af6953eb1ba3b725b138"
+        },
+        {
+          "path": "user-local/Godot/resthumb-9381acc0e89ca686f07e1ef274959df1.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "user-local/Godot/resthumb-9381acc0e89ca686f07e1ef274959df1.png.import",
+          "bytes": 802,
+          "sha256": "164763708c8647d07ffaef1cf750a88bb46681b8087dfe2b9174e267e5d15e20"
+        },
+        {
+          "path": "user-local/Godot/resthumb-9381acc0e89ca686f07e1ef274959df1.txt",
+          "bytes": 49,
+          "sha256": "5bf6df5abc27efb8b5b98968b1d363ce5a0732efeb24ed6bb0d8815abd70dfbb"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original Geyser timeline/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2323,
+          "sha256": "9ca1f1d6b061c09e003cd4f40f54dd9bc6e1d8af48926bd60039f0302929c4e8"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9063394617f472e1d863f20e72791632/filesystem_cache6",
+          "bytes": 2421,
+          "sha256": "32cbf2d2e27e679a62a305c01a106a3d921522ee79456bc45a7fc45d1801b7d6"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9063394617f472e1d863f20e72791632/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9063394617f472e1d863f20e72791632/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9063394617f472e1d863f20e72791632/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9063394617f472e1d863f20e72791632/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-9063394617f472e1d863f20e72791632/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 791330
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-native-7\\temporary",
+      "kind": "directory",
+      "marker": ".owned-geyser-reference",
+      "marker_value": "geyser-reference-v1",
+      "files": [
+        {
+          "path": ".owned-geyser-reference",
+          "bytes": 19,
+          "sha256": "c6045f832f6937af7cd342d2aefd7e9331885935a6566e1b874d77bfaca14d22"
+        },
+        {
+          "path": "audio.gd",
+          "bytes": 406,
+          "sha256": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520"
+        },
+        {
+          "path": "geyser.tscn",
+          "bytes": 4471,
+          "sha256": "804bffa4bedfb12a0a7c9f9173ae56f6f7d9ef5bd8e097807e658a834948a38d"
+        },
+        {
+          "path": "global.gd",
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        {
+          "path": "input.json",
+          "bytes": 4899,
+          "sha256": "53768e2074ae34a9095d37765162dee0141f1841e9f5ec0f93f5d2525ac32b00"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 742,
+          "sha256": "f41ec72579645f3e6d98e0670a7e6df530607510709c6c7e66bfd5d3fc7f0b11"
+        },
+        {
+          "path": "party.gd",
+          "bytes": 283,
+          "sha256": "8283d885f28b923d0ba130989cd75c2636f9a9674d4d8533dd7f9be46cbf8c50"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 5084,
+          "sha256": "332a5321272c80b9a7e5abec286a341da7cebbffcd3cf49bda34b73f468724cb"
+        },
+        {
+          "path": "probe.tscn",
+          "bytes": 143,
+          "sha256": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 549,
+          "sha256": "48fb54f519695e7a13ee665d2513ed0d3701ff317493ade005141792d974db83"
+        },
+        {
+          "path": "status.gd",
+          "bytes": 65,
+          "sha256": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1"
+        },
+        {
+          "path": "ui.gd",
+          "bytes": 178,
+          "sha256": "37343a3025a636c1b32a24e723ea6bc1926a3a92f5075745327c5ef74b37e4a5"
+        },
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.md5",
+          "bytes": 91,
+          "sha256": "1109ef5460581725a7f20cd196b7d96b28be98065494e192df5ba900d0d80578"
+        },
+        {
+          "path": ".import/Poison Geyser.png-c39235f416596c30f8b961ba5f208e69.stex",
+          "bytes": 3002,
+          "sha256": "629af02887e113b9e7f958c6c2a9a9473ff2c7ad3a3f271915d3f289d0a25053"
+        },
+        {
+          "path": ".import/resthumb-0a3334d21050333787b980de597ee6bb.png-d8153e644b3cc96098321d764fb54fa4.md5",
+          "bytes": 91,
+          "sha256": "78b37087158bb2644e411c7b630f88f41dbc95c6477a8f2639ac4046ce7884a3"
+        },
+        {
+          "path": ".import/resthumb-0a3334d21050333787b980de597ee6bb.png-d8153e644b3cc96098321d764fb54fa4.stex",
+          "bytes": 188,
+          "sha256": "5e295c331a81d027a874b2d8eb07d824c2bce4725dbdfa40fd1d8a97e28120a1"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.md5",
+          "bytes": 91,
+          "sha256": "a2d53d3dc5fd22e554d76c5f50da31ed5293110fe129351f3391e06a66200ee8"
+        },
+        {
+          "path": ".import/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str",
+          "bytes": 124615,
+          "sha256": "3eb7ad4962a84cfb420308d051717024f6b481ceb6342403be55eb2652801c65"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.md5",
+          "bytes": 91,
+          "sha256": "771f0223255195465663f36d0d3495d8c0cd9c3170a145653c5d069e71f8fb4d"
+        },
+        {
+          "path": ".import/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str",
+          "bytes": 124615,
+          "sha256": "6a6357bf5890856b437a42e446f59ebe5937557beb6c442f2b3b6be6397b41c7"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.md5",
+          "bytes": 91,
+          "sha256": "2ffa54614c3a6eb569a5ae8295e82e83ccec07f50f3936ffafb5443d410d971d"
+        },
+        {
+          "path": ".import/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str",
+          "bytes": 124615,
+          "sha256": "7faa112b1f48f320eddb880e7014d40e8de011589848a42ebb3432bead869023"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3",
+          "bytes": 124342,
+          "sha256": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089"
+        },
+        {
+          "path": "Audio/Sound effects/shrekblast.mp3.import",
+          "bytes": 308,
+          "sha256": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3",
+          "bytes": 124342,
+          "sha256": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34"
+        },
+        {
+          "path": "Audio/Sound effects/shrekrumble.mp3.import",
+          "bytes": 311,
+          "sha256": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3",
+          "bytes": 124342,
+          "sha256": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58"
+        },
+        {
+          "path": "Audio/Sound effects/shreksplash.mp3.import",
+          "bytes": 311,
+          "sha256": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png",
+          "bytes": 4338,
+          "sha256": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890"
+        },
+        {
+          "path": "Graphics/Objects/Catacombs/Poison Geyser.png.import",
+          "bytes": 730,
+          "sha256": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b"
+        },
+        {
+          "path": "Scripts/Main/Poison Geyser.gd",
+          "bytes": 1423,
+          "sha256": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e"
+        },
+        {
+          "path": "user-local/Godot/resthumb-0a3334d21050333787b980de597ee6bb.png",
+          "bytes": 533,
+          "sha256": "b15ce67cf576daf0f138fab7e02996795308af71cc4c4886df1c48f5224acd61"
+        },
+        {
+          "path": "user-local/Godot/resthumb-0a3334d21050333787b980de597ee6bb.png.import",
+          "bytes": 802,
+          "sha256": "aec12bd28ef2b47eb3bf9d12a64d95b98aa4b909ab04a6c6e87e2ed0951258e7"
+        },
+        {
+          "path": "user-local/Godot/resthumb-0a3334d21050333787b980de597ee6bb.txt",
+          "bytes": 49,
+          "sha256": "2fcfa0f3a2526204a8f4a8f896931aac1699309623ee1be78f83a06336b4761b"
+        },
+        {
+          "path": "user-local/Godot/resthumb-48903d427f5c8730eba4f635d20f80fa.png",
+          "bytes": 420,
+          "sha256": "b50c11d9c80fcb8c935135c37e8cc558eb741996f75dba4868d919d859d6e2d8"
+        },
+        {
+          "path": "user-local/Godot/resthumb-48903d427f5c8730eba4f635d20f80fa.txt",
+          "bytes": 49,
+          "sha256": "b1db7cd6f1c177432524395c67827e204fbba1a50079f2da80ced554deca0e2f"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7819,
+          "sha256": "8adfe1d5dbedceb1bd1ad5d110526877a6b2a473f645a71187492a96e00cbb70"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original Geyser timeline/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 2323,
+          "sha256": "da3374bd1e64dea4c79d0eb270a36f03367fe0e56b6878849f8feacad45f3f8c"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.gd-folding-82673fe3ed41e8db7e15f94eebf4b6d9.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-123fd19ac1164dc6b826e2e1c6cbff7a/filesystem_cache6",
+          "bytes": 2421,
+          "sha256": "ac710cfa217b2eb2798f1bc6de068a77f794accd668a25390791f71c16308eb3"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-123fd19ac1164dc6b826e2e1c6cbff7a/probe.tscn-folding-891f870b7f40bb6b5cce826090f95c2a.cfg",
+          "bytes": 69,
+          "sha256": "268c1f55659e2638cfa662ad12a59f7338abccda4b1cced9acf8d974f837d34f"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-123fd19ac1164dc6b826e2e1c6cbff7a/project_metadata.cfg",
+          "bytes": 260,
+          "sha256": "bf8fca82d34dd7a67c48297f6b493b2ff3b8b8971a6407b8074efb34f8ad8517"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-123fd19ac1164dc6b826e2e1c6cbff7a/shrekblast.mp3-d0abcfae2baa9e90a5c638b22f2335a0.mp3str-folding-dccd78a4f949509716fd7b454bb1864e.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-123fd19ac1164dc6b826e2e1c6cbff7a/shrekrumble.mp3-32ee17dd89055e7a73363d788e356d4d.mp3str-folding-8ebf2a59cef4945c0461138753fb1db1.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-123fd19ac1164dc6b826e2e1c6cbff7a/shreksplash.mp3-1a27cf30af79e7fa97c32b27f66e29ef.mp3str-folding-ef3edbe4bdd68b8ddf4d607d2c4c95a5.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 791330
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-host-1\\check",
+      "kind": "file",
+      "bytes": 2676488,
+      "sha256": "dedcc6e38d867acdbf89a7260132e120360d874ca2198735fff3579f41018899"
+    }
+  ],
+  "total_bytes": 8192181,
+  "reason": "Two451-observation originals and9996 normal-leak checks passed;retain all raw logs/adapters/inputs,latest executable and117-core archive"
+}

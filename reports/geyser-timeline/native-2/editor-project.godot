@@ -1,0 +1,40 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "PartyObject",
+"language": "GDScript",
+"path": "res://party.gd"
+}, {
+"base": "Node",
+"class": "Status",
+"language": "GDScript",
+"path": "res://status.gd"
+} ]
+_global_script_class_icons={
+"PartyObject": "",
+"Status": ""
+}
+
+[application]
+
+config/name="Original Geyser timeline"
+run/main_scene="res://probe.tscn"
+
+[audio]
+
+default_bus_layout="res://Audio/Audio Buses/default_bus_layout.tres"
+
+[autoload]
+
+global="*res://global.gd"
+uiManager="*res://ui.gd"
+audioManager="*res://manager.gd"

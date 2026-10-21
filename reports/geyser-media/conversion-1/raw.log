@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_geyser_media.py", line 35, in <module>
+    a=argparse.ArgumentParser(description=__doc__);a.add_argument('--out',type=Path,required=True);o=a.parse_args();compile(o.out)
+                                                                                                                    ^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_geyser_media.py", line 30, in compile
+    stage=Path(raw).resolve();require(stage.parent==out,'Geyser media temporary escaped');receipt=audio_asset.compile_assets(recipe,ROOT/'upstream/MOTHER-Encore',stage,ffmpeg=ffmpeg,ffprobe=ffprobe);expected={'sound/banks/opening.encaudio'}|{s['pcm_path']for s in recipe['assets']};require({v['path']for v in receipt['files']}==expected,'Geyser conversion exact coverage')
+                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\audio_asset.py", line 146, in compile_assets
+    relative=source_path(entry['source_path']);safe_path(entry['pcm_path'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\audio_asset.py", line 49, in source_path
+    check(type(value) is str and value.startswith('res://'),'Expected res:// audio source')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\audio_asset.py", line 38, in check
+    if not condition: raise AudioError(message)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+tools.audio_asset.AudioError: Expected res:// audio source

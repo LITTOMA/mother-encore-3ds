@@ -29,6 +29,7 @@ SOURCES += runtime/shadow_graphics.cpp platform/ctr/shadow_renderer.cpp
 SOURCES += runtime/field_step_contacts.cpp
 SOURCES += runtime/poison_hazards.cpp
 SOURCES += runtime/geyser_timeline.cpp
+SOURCES += runtime/geyser_media.cpp runtime/geyser_mixer.cpp platform/ctr/geyser_audio.cpp
 SOURCES += platform/ctr/field_run_bank_audio.cpp
 SOURCES += runtime/dungeon_keys.cpp runtime/dungeon_key_state.cpp runtime/dungeon_switches.cpp runtime/dungeon_switch_state.cpp runtime/dungeon_wall_timeline.cpp runtime/dungeon_wall_state.cpp
 SOURCES += runtime/dungeon_key_clocks.cpp

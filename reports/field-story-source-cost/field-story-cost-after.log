@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\verify-field-source-cost.py", line 4, in <module>
+    work=r/'build/worktrees/field-story-source-cost';tests.__path__.insert(0,str(work/'tests'));module=importlib.import_module('tests.test_field_story');module.ROOT=r
+                                                     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: '_NamespacePath' object has no attribute 'insert'

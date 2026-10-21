@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "kind": "encore.poison-contacts.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original11 poison trigger convex decompositions and source Player footprint,with unchanged independently versioned poison metadata;no exact engine callback-frame,ordinary movement,Geyser factory or formal room admission.",
+  "poison_recipe": "content/catacombs-poison.json",
+  "poison_sha256": "f1349f21355418075296500928a5320aac943875183777d097bd6c3cfc68619a",
+  "player_scene": "Nodes/Reusables/Player.tscn",
+  "player_sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+  "player_reader_sha256": "a16b6b9d5954cdf554483b36caf52396e363dc6e895ba5e21184f827cb9d7bf6",
+  "geometry_producer_sha256": "6a507657a86bdfcbdd8bf2b9280244acc35a9ed623e899c3a4ae06e3e20197ee",
+  "license_review": "Existing pinned upstream game-related derivative permission;metadata/source geometry only,no assets/fonts/tools/firmware added"
+}

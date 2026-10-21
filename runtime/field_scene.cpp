@@ -349,6 +349,7 @@ bool FieldScene::prop_sprite(uint32_t sprite,PropPose&out)const{
 }
 bool FieldScene::bind_steps(FieldStepsView view,const AudioBank&bank,std::string_view inherited,std::string&error){
  auto reject=[&](const char*why){error=why;return false;};
+ if(view.valid()&&view.capability()!=1)return reject("Polygon stepping requires a matched contact and Shadow consumer");
  if(phase_==FieldPhase::Error||run_audio_.prepared()||!view.valid()||view.scene_id()!=scene_id())return reject("Field stepping scene/owner binding rejected");
  if(!view.matches(bank,error))return false;FieldRunLoop candidate;if(!candidate.initialize(view,inherited,error))return false;
  run_audio_=std::move(candidate);if(!world.bind_walk_audio(run_audio_)){run_audio_=FieldRunLoop{};return reject("Field stepping MOVE sink binding rejected");}

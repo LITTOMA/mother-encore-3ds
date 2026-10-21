@@ -1,0 +1,24 @@
+test_binary_header_and_all_truncations (tests.test_catacombs_steps.CatacombsStepsTests.test_binary_header_and_all_truncations) ... ok
+test_binary_owned_spans_shadow_flags_and_coordinates (tests.test_catacombs_steps.CatacombsStepsTests.test_binary_owned_spans_shadow_flags_and_coordinates) ... ok
+test_cli_rejects_unscoped_output_before_writing (tests.test_catacombs_steps.CatacombsStepsTests.test_cli_rejects_unscoped_output_before_writing) ... ok
+test_extended_roundtrip_and_both_legacy_rejections (tests.test_catacombs_steps.CatacombsStepsTests.test_extended_roundtrip_and_both_legacy_rejections) ... ok
+test_frozen_calls_and_repeated_frame_preservation (tests.test_catacombs_steps.CatacombsStepsTests.test_frozen_calls_and_repeated_frame_preservation) ... ok
+test_frozen_contacts_and_aabb_false_positives (tests.test_catacombs_steps.CatacombsStepsTests.test_frozen_contacts_and_aabb_false_positives) ... ok
+test_metadata_identity_and_unknown_fields (tests.test_catacombs_steps.CatacombsStepsTests.test_metadata_identity_and_unknown_fields) ... ok
+test_original_geometry_modes_and_inherited_run_sound (tests.test_catacombs_steps.CatacombsStepsTests.test_original_geometry_modes_and_inherited_run_sound) ... ok
+test_polygon_and_area_source_domain (tests.test_catacombs_steps.CatacombsStepsTests.test_polygon_and_area_source_domain) ... ok
+test_reviewed_source_identity_and_json_duplicates (tests.test_catacombs_steps.CatacombsStepsTests.test_reviewed_source_identity_and_json_duplicates) ... ok
+test_semantic_review_and_native_producer_binding (tests.test_catacombs_steps.CatacombsStepsTests.test_semantic_review_and_native_producer_binding) ... ok
+test_sound_and_shadow_metadata_rejections (tests.test_catacombs_steps.CatacombsStepsTests.test_sound_and_shadow_metadata_rejections) ... ok
+test_codec_and_frozen_candidate (tests.test_field_footsteps.FootstepTests.test_codec_and_frozen_candidate) ... ok
+test_metadata_negative (tests.test_field_footsteps.FootstepTests.test_metadata_negative) ... ok
+test_output_location_guard (tests.test_field_footsteps.FootstepTests.test_output_location_guard) ... ok
+test_recipe_paths_and_source_coverage (tests.test_field_footsteps.FootstepTests.test_recipe_paths_and_source_coverage) ... ok
+test_source_rectangles_and_real_loop_imports (tests.test_field_footsteps.FootstepTests.test_source_rectangles_and_real_loop_imports) ... ok
+test_actual_result_and_negative_domain (tests.test_run_footstep_reference.RunReferenceTests.test_actual_result_and_negative_domain) ... ok
+test_exact_source_review (tests.test_run_footstep_reference.RunReferenceTests.test_exact_source_review) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 4.067s
+
+OK

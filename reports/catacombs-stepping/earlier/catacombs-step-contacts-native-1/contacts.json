@@ -1,0 +1,6451 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "geometry": [
+    {
+      "path": "Stepping Sounds/Water",
+      "layer": 2048,
+      "mask": 1,
+      "monitoring": true,
+      "monitorable": false,
+      "enter": "water",
+      "exit": "stone",
+      "enter_shadow": "ripple",
+      "exit_shadow": "shadow",
+      "shapes": [
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D",
+          "disabled": false,
+          "points": [
+            [
+              -1488,
+              -288
+            ],
+            [
+              -1456,
+              -288
+            ],
+            [
+              -1440,
+              -304
+            ],
+            [
+              -1424,
+              -304
+            ],
+            [
+              -1408,
+              -320
+            ],
+            [
+              -1392,
+              -320
+            ],
+            [
+              -1376,
+              -336
+            ],
+            [
+              -1376,
+              -224
+            ],
+            [
+              -1488,
+              -224
+            ],
+            [
+              -1504,
+              -240
+            ],
+            [
+              -1504,
+              -272
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -1392,
+                -320
+              ],
+              [
+                -1376,
+                -336
+              ],
+              [
+                -1376,
+                -224
+              ]
+            ],
+            [
+              [
+                -1408,
+                -320
+              ],
+              [
+                -1392,
+                -320
+              ],
+              [
+                -1376,
+                -224
+              ],
+              [
+                -1488,
+                -224
+              ],
+              [
+                -1424,
+                -304
+              ]
+            ],
+            [
+              [
+                -1440,
+                -304
+              ],
+              [
+                -1424,
+                -304
+              ],
+              [
+                -1488,
+                -224
+              ],
+              [
+                -1456,
+                -288
+              ]
+            ],
+            [
+              [
+                -1504,
+                -272
+              ],
+              [
+                -1488,
+                -288
+              ],
+              [
+                -1456,
+                -288
+              ],
+              [
+                -1488,
+                -224
+              ],
+              [
+                -1504,
+                -240
+              ]
+            ]
+          ]
+        },
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D2",
+          "disabled": false,
+          "points": [
+            [
+              -1520,
+              -336
+            ],
+            [
+              -1504,
+              -336
+            ],
+            [
+              -1472,
+              -368
+            ],
+            [
+              -1472,
+              -448
+            ],
+            [
+              -1488,
+              -464
+            ],
+            [
+              -1520,
+              -464
+            ],
+            [
+              -1536,
+              -448
+            ],
+            [
+              -1536,
+              -352
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -1536,
+                -352
+              ],
+              [
+                -1536,
+                -448
+              ],
+              [
+                -1520,
+                -464
+              ],
+              [
+                -1488,
+                -464
+              ],
+              [
+                -1472,
+                -448
+              ],
+              [
+                -1472,
+                -368
+              ],
+              [
+                -1504,
+                -336
+              ],
+              [
+                -1520,
+                -336
+              ]
+            ]
+          ]
+        },
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D3",
+          "disabled": false,
+          "points": [
+            [
+              -2000,
+              -400
+            ],
+            [
+              -2000,
+              -448
+            ],
+            [
+              -1984,
+              -464
+            ],
+            [
+              -1952,
+              -464
+            ],
+            [
+              -1936,
+              -448
+            ],
+            [
+              -1936,
+              -400
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -2000,
+                -400
+              ],
+              [
+                -2000,
+                -448
+              ],
+              [
+                -1984,
+                -464
+              ],
+              [
+                -1952,
+                -464
+              ],
+              [
+                -1936,
+                -448
+              ],
+              [
+                -1936,
+                -400
+              ]
+            ]
+          ]
+        },
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D4",
+          "disabled": false,
+          "points": [
+            [
+              -2160,
+              -448
+            ],
+            [
+              -2112,
+              -448
+            ],
+            [
+              -2112,
+              -464
+            ],
+            [
+              -2096,
+              -480
+            ],
+            [
+              -2064,
+              -480
+            ],
+            [
+              -2048,
+              -464
+            ],
+            [
+              -2048,
+              -400
+            ],
+            [
+              -2160,
+              -400
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -2160,
+                -400
+              ],
+              [
+                -2160,
+                -448
+              ],
+              [
+                -2112,
+                -448
+              ],
+              [
+                -2048,
+                -400
+              ]
+            ],
+            [
+              [
+                -2096,
+                -480
+              ],
+              [
+                -2064,
+                -480
+              ],
+              [
+                -2048,
+                -464
+              ],
+              [
+                -2048,
+                -400
+              ],
+              [
+                -2112,
+                -448
+              ],
+              [
+                -2112,
+                -464
+              ]
+            ]
+          ]
+        },
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D5",
+          "disabled": false,
+          "points": [
+            [
+              -1984,
+              -496
+            ],
+            [
+              -1936,
+              -496
+            ],
+            [
+              -1920,
+              -512
+            ],
+            [
+              -1920,
+              -528
+            ],
+            [
+              -2000,
+              -528
+            ],
+            [
+              -2000,
+              -512
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -2000,
+                -512
+              ],
+              [
+                -2000,
+                -528
+              ],
+              [
+                -1920,
+                -528
+              ],
+              [
+                -1920,
+                -512
+              ],
+              [
+                -1936,
+                -496
+              ],
+              [
+                -1984,
+                -496
+              ]
+            ]
+          ]
+        },
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D6",
+          "disabled": false,
+          "points": [
+            [
+              -1456,
+              -688
+            ],
+            [
+              -1440,
+              -704
+            ],
+            [
+              -1424,
+              -704
+            ],
+            [
+              -1408,
+              -688
+            ],
+            [
+              -1408,
+              -656
+            ],
+            [
+              -1456,
+              -656
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -1456,
+                -688
+              ],
+              [
+                -1440,
+                -704
+              ],
+              [
+                -1424,
+                -704
+              ],
+              [
+                -1408,
+                -688
+              ],
+              [
+                -1408,
+                -656
+              ],
+              [
+                -1456,
+                -656
+              ]
+            ]
+          ]
+        },
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D7",
+          "disabled": false,
+          "points": [
+            [
+              -1456,
+              -752
+            ],
+            [
+              -1440,
+              -736
+            ],
+            [
+              -1376,
+              -736
+            ],
+            [
+              -1376,
+              -720
+            ],
+            [
+              -1360,
+              -704
+            ],
+            [
+              -1344,
+              -720
+            ],
+            [
+              -1344,
+              -784
+            ],
+            [
+              -1456,
+              -784
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -1440,
+                -736
+              ],
+              [
+                -1456,
+                -752
+              ],
+              [
+                -1456,
+                -784
+              ],
+              [
+                -1344,
+                -784
+              ],
+              [
+                -1376,
+                -736
+              ]
+            ],
+            [
+              [
+                -1376,
+                -720
+              ],
+              [
+                -1376,
+                -736
+              ],
+              [
+                -1344,
+                -784
+              ],
+              [
+                -1344,
+                -720
+              ],
+              [
+                -1360,
+                -704
+              ]
+            ]
+          ]
+        },
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D8",
+          "disabled": false,
+          "points": [
+            [
+              -1312,
+              -656
+            ],
+            [
+              -1312,
+              -736
+            ],
+            [
+              -1296,
+              -752
+            ],
+            [
+              -1280,
+              -752
+            ],
+            [
+              -1264,
+              -736
+            ],
+            [
+              -1264,
+              -704
+            ],
+            [
+              -1088,
+              -704
+            ],
+            [
+              -1088,
+              -736
+            ],
+            [
+              -1072,
+              -752
+            ],
+            [
+              -1056,
+              -752
+            ],
+            [
+              -1040,
+              -736
+            ],
+            [
+              -1040,
+              -656
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -1312,
+                -656
+              ],
+              [
+                -1312,
+                -736
+              ],
+              [
+                -1296,
+                -752
+              ],
+              [
+                -1280,
+                -752
+              ],
+              [
+                -1264,
+                -736
+              ],
+              [
+                -1264,
+                -704
+              ]
+            ],
+            [
+              [
+                -1040,
+                -656
+              ],
+              [
+                -1312,
+                -656
+              ],
+              [
+                -1264,
+                -704
+              ],
+              [
+                -1088,
+                -704
+              ]
+            ],
+            [
+              [
+                -1040,
+                -736
+              ],
+              [
+                -1040,
+                -656
+              ],
+              [
+                -1088,
+                -704
+              ],
+              [
+                -1088,
+                -736
+              ],
+              [
+                -1072,
+                -752
+              ],
+              [
+                -1056,
+                -752
+              ]
+            ]
+          ]
+        },
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D9",
+          "disabled": false,
+          "points": [
+            [
+              -1216,
+              -752
+            ],
+            [
+              -1136,
+              -752
+            ],
+            [
+              -1120,
+              -768
+            ],
+            [
+              -1120,
+              -784
+            ],
+            [
+              -1232,
+              -784
+            ],
+            [
+              -1232,
+              -768
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -1232,
+                -768
+              ],
+              [
+                -1232,
+                -784
+              ],
+              [
+                -1120,
+                -784
+              ],
+              [
+                -1120,
+                -768
+              ],
+              [
+                -1136,
+                -752
+              ],
+              [
+                -1216,
+                -752
+              ]
+            ]
+          ]
+        },
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D10",
+          "disabled": false,
+          "points": [
+            [
+              -784,
+              -448
+            ],
+            [
+              -720,
+              -448
+            ],
+            [
+              -704,
+              -432
+            ],
+            [
+              -688,
+              -432
+            ],
+            [
+              -672,
+              -416
+            ],
+            [
+              -672,
+              -400
+            ],
+            [
+              -784,
+              -400
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -784,
+                -400
+              ],
+              [
+                -784,
+                -448
+              ],
+              [
+                -720,
+                -448
+              ],
+              [
+                -704,
+                -432
+              ]
+            ],
+            [
+              [
+                -688,
+                -432
+              ],
+              [
+                -672,
+                -416
+              ],
+              [
+                -672,
+                -400
+              ],
+              [
+                -784,
+                -400
+              ],
+              [
+                -704,
+                -432
+              ]
+            ]
+          ]
+        },
+        {
+          "path": "Stepping Sounds/Water/CollisionPolygon2D11",
+          "disabled": false,
+          "points": [
+            [
+              -608,
+              -560
+            ],
+            [
+              -592,
+              -544
+            ],
+            [
+              -592,
+              -512
+            ],
+            [
+              -512,
+              -512
+            ],
+            [
+              -512,
+              -592
+            ],
+            [
+              -544,
+              -592
+            ],
+            [
+              -544,
+              -608
+            ],
+            [
+              -560,
+              -624
+            ],
+            [
+              -576,
+              -608
+            ],
+            [
+              -576,
+              -576
+            ],
+            [
+              -592,
+              -576
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -576,
+                -576
+              ],
+              [
+                -576,
+                -608
+              ],
+              [
+                -560,
+                -624
+              ],
+              [
+                -544,
+                -608
+              ],
+              [
+                -544,
+                -592
+              ]
+            ],
+            [
+              [
+                -544,
+                -592
+              ],
+              [
+                -512,
+                -592
+              ],
+              [
+                -512,
+                -512
+              ],
+              [
+                -592,
+                -512
+              ],
+              [
+                -592,
+                -544
+              ],
+              [
+                -576,
+                -576
+              ]
+            ],
+            [
+              [
+                -592,
+                -576
+              ],
+              [
+                -576,
+                -576
+              ],
+              [
+                -592,
+                -544
+              ],
+              [
+                -608,
+                -560
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Stepping Sounds/Soil",
+      "layer": 2048,
+      "mask": 1,
+      "monitoring": true,
+      "monitorable": false,
+      "enter": "soil",
+      "exit": "stone",
+      "enter_shadow": "shadow",
+      "exit_shadow": "",
+      "shapes": [
+        {
+          "path": "Stepping Sounds/Soil/CollisionPolygon2D",
+          "disabled": false,
+          "points": [
+            [
+              -560,
+              224
+            ],
+            [
+              -576,
+              240
+            ],
+            [
+              -576,
+              256
+            ],
+            [
+              -512,
+              256
+            ],
+            [
+              -512,
+              224
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -512,
+                224
+              ],
+              [
+                -512,
+                256
+              ],
+              [
+                -576,
+                256
+              ],
+              [
+                -576,
+                240
+              ],
+              [
+                -560,
+                224
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Stepping Sounds/Stone",
+      "layer": 2048,
+      "mask": 1,
+      "monitoring": true,
+      "monitorable": false,
+      "enter": "stone",
+      "exit": "",
+      "enter_shadow": "shadow",
+      "exit_shadow": "",
+      "shapes": [
+        {
+          "path": "Stepping Sounds/Stone/CollisionShape2D",
+          "disabled": false,
+          "points": [
+            [
+              -10,
+              48
+            ],
+            [
+              24,
+              48
+            ],
+            [
+              24,
+              74
+            ],
+            [
+              -10,
+              74
+            ]
+          ],
+          "parts": [
+            [
+              [
+                -10,
+                48
+              ],
+              [
+                24,
+                48
+              ],
+              [
+                24,
+                74
+              ],
+              [
+                -10,
+                74
+              ]
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "case": 0,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 0,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 0,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 0,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 1,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 1,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 1,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 1,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 2,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 2,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 3,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 3,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 3,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 3,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 4,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 4,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 4,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 4,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 5,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 5,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 5,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 5,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 6,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 6,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 6,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 6,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 7,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 7,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 7,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 7,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 8,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 8,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 8,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 8,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 9,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 9,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 9,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 9,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 10,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 10,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 10,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 10,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 11,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 11,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 11,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 11,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 12,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 12,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 12,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 12,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 13,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 13,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 13,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 13,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 14,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 14,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 14,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 14,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 15,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 15,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 15,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 15,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 16,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 16,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 16,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 16,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 17,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 17,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 17,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 17,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 18,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 18,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 18,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 18,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 19,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 19,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 19,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 19,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 20,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 20,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 20,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 20,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 21,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 21,
+      "phase": "inside",
+      "wanted": "soil",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 1,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 21,
+      "phase": "stay",
+      "wanted": "soil",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 21,
+      "phase": "disabled_exit",
+      "wanted": "soil",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 1,
+          "entered": false,
+          "body": 1,
+          "wanted": "soil",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 22,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 22,
+      "phase": "inside",
+      "wanted": "stone",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 2,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 22,
+      "phase": "stay",
+      "wanted": "stone",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 22,
+      "phase": "disabled_exit",
+      "wanted": "stone",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 2,
+          "entered": false,
+          "body": 1,
+          "wanted": "stone",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 23,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 23,
+      "phase": "inside",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          true,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 0,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 23,
+      "phase": "stay",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          true,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 23,
+      "phase": "disabled_exit",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 0,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 24,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 24,
+      "phase": "inside",
+      "wanted": "wood",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 24,
+      "phase": "stay",
+      "wanted": "wood",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 24,
+      "phase": "disabled_exit",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 25,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 25,
+      "phase": "inside",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          true
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 2,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 25,
+      "phase": "stay",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          true
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 25,
+      "phase": "disabled_exit",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 2,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 26,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 26,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 26,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 26,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 27,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 27,
+      "phase": "inside",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 27,
+      "phase": "stay",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 27,
+      "phase": "disabled_exit",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 28,
+      "phase": "initial",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 28,
+      "phase": "inside",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 28,
+      "phase": "stay",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 28,
+      "phase": "disabled_exit",
+      "wanted": "wood",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 29,
+      "phase": "initial",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 29,
+      "phase": "inside",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 29,
+      "phase": "stay",
+      "wanted": "water",
+      "player": {
+        "mode": "ripple",
+        "behind": false,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 29,
+      "phase": "disabled_exit",
+      "wanted": "water",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 0,
+          "entered": false,
+          "body": 1,
+          "wanted": "water",
+          "player": {
+            "mode": "ripple",
+            "behind": false,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 30,
+      "phase": "initial",
+      "wanted": "soil",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 1,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 30,
+      "phase": "inside",
+      "wanted": "soil",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 30,
+      "phase": "stay",
+      "wanted": "soil",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 30,
+      "phase": "disabled_exit",
+      "wanted": "soil",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 1,
+          "entered": false,
+          "body": 1,
+          "wanted": "soil",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 31,
+      "phase": "initial",
+      "wanted": "stone",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 2,
+          "entered": true,
+          "body": 1,
+          "wanted": "wood",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    },
+    {
+      "case": 31,
+      "phase": "inside",
+      "wanted": "stone",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 31,
+      "phase": "stay",
+      "wanted": "stone",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ]
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "case": 31,
+      "phase": "disabled_exit",
+      "wanted": "stone",
+      "player": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "party": {
+        "mode": "shadow",
+        "behind": true,
+        "playing": true
+      },
+      "overlaps": [
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "events": [
+        {
+          "area": 2,
+          "entered": false,
+          "body": 1,
+          "wanted": "stone",
+          "player": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          },
+          "party": {
+            "mode": "shadow",
+            "behind": true,
+            "playing": true
+          }
+        }
+      ]
+    }
+  ]
+}

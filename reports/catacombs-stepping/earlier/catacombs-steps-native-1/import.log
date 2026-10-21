@@ -1,0 +1,20 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+ERROR: Cannot open file 'res://.import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str'.
+   at: (core/io/resource_format_binary.cpp:1007)
+ERROR: Cannot open file 'res://.import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str'.
+   at: (core/io/resource_format_binary.cpp:1007)
+ERROR: Cannot open file 'res://.import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str'.
+   at: (core/io/resource_format_binary.cpp:1007)
+ERROR: Cannot open file 'res://.import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str'.
+   at: (core/io/resource_format_binary.cpp:1007)
+ERROR: Cannot open file 'res://.import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str'.
+   at: (core/io/resource_format_binary.cpp:1007)
+ERROR: Cannot open file 'res://.import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str'.
+   at: (core/io/resource_format_binary.cpp:1007)
+ERROR: Cannot open file 'res://.import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str'.
+   at: (core/io/resource_format_binary.cpp:1007)
+ERROR: Cannot open file 'res://.import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str'.
+   at: (core/io/resource_format_binary.cpp:1007)

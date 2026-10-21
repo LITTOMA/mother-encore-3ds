@@ -1,0 +1,10 @@
+{
+  "native_projects_removed": 10,
+  "native_bytes": 829951.0,
+  "duplicate_objects_removed": 116,
+  "duplicate_object_bytes": 474412640,
+  "total_bytes_reclaimed": 475242591.0,
+  "archive_retained": true,
+  "observations_logs_adapters_retained": true,
+  "first_attempt": "Refused before deletion: Windows creator wrote CRLF owner marker; exact original creator and marker bytes verified before retry."
+}

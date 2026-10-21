@@ -1,0 +1,2452 @@
+{
+  "scope": "Only tool-created marked temporary native projects;logs/raw results/metadata frozen before removal",
+  "projects": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-steps-native-1\\temporary",
+      "marker": ".owned-catacombs-steps-reference",
+      "marker_value": "catacombs-steps-reference-v1",
+      "bytes": 114055,
+      "file_count": 62,
+      "source_copies_verified": {
+        "Audio/Sound effects/Footsteps/water.mp3": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82",
+        "Audio/Sound effects/Footsteps/soil.mp3": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f",
+        "Audio/Sound effects/Footsteps/sand.mp3": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Audio/Sound effects/Footsteps/metal.mp3": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08",
+        "Audio/Sound effects/Footsteps/cave.mp3": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Audio/Sound effects/Footsteps/grass.mp3": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+        "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+      },
+      "adapters_frozen": {
+        "project.godot": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-1/project.godot"
+      },
+      "files": {
+        ".owned-catacombs-steps-reference": {
+          "bytes": 28,
+          "sha256": "44d67fc7cd1b4c9a3b51520dc8d53527258fbebeb41cc30c947873e8d280f682"
+        },
+        "project.godot": {
+          "bytes": 174,
+          "sha256": "5de941a58d2471fec770f690a7686b24f0fbc3158bb17f7fba6616b3e8812c16"
+        },
+        ".import/.gdignore": {
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.md5": {
+          "bytes": 91,
+          "sha256": "dd47b5863f0edaf9a0666e1ab2bfe86f807154bc89a42e9cc708686629faa968"
+        },
+        ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str": {
+          "bytes": 7483,
+          "sha256": "4e7437d05f5794d1cedb3a2b24b0517a381577d3a58eda01d11c547759b85066"
+        },
+        ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.md5": {
+          "bytes": 91,
+          "sha256": "fd3f46f3cedabbb6bf16c8cc99e1b5881f23cecd1a68383c09a1b227c7b77309"
+        },
+        ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str": {
+          "bytes": 6959,
+          "sha256": "8d6b248031e664bb8cdef7a48728b5ad3b9cf9b6249dd7651bbf279081459ac7"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": {
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex": {
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.md5": {
+          "bytes": 91,
+          "sha256": "930487fe246ab6e1f36752260549c6552b0c0e132e6027987117319c9a968bcb"
+        },
+        ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str": {
+          "bytes": 5915,
+          "sha256": "1c627517719e5d8d4680edb4adf77c219d0829e988a994954e9de76b9393e78b"
+        },
+        ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.md5": {
+          "bytes": 91,
+          "sha256": "b127e1dbbae3352c424a5ff8af89e6b91c2fa31c8fbab8514314256a748c3181"
+        },
+        ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str": {
+          "bytes": 6071,
+          "sha256": "f2a3e176c1b7a514b683c52372ce937a90329eeac1a007caeff02a8d3dab0a7f"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": {
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex": {
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        ".import/soil.mp3-319950cf078de496e8bd177521202c4a.md5": {
+          "bytes": 91,
+          "sha256": "c811ed05875aac22795508ec1ac00722ec80deb2368ae6512456c38daa0ad3d1"
+        },
+        ".import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str": {
+          "bytes": 4663,
+          "sha256": "4951c5c32be1e489a86745ea062607bb36a210ed4ee36aba70a84aadc412b377"
+        },
+        ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.md5": {
+          "bytes": 91,
+          "sha256": "b862b74a1e89153466682983161abebb93bd1ff8f1235f3701bb3db30cc435d3"
+        },
+        ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str": {
+          "bytes": 4923,
+          "sha256": "b4d9e0c583eee107f7479b93868eea5059b8c96e6f11a63b43979b0ef1d731f8"
+        },
+        ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.md5": {
+          "bytes": 91,
+          "sha256": "b8deec5b832bfb748977ef92e442c7f0de7cdd335cdf2baa5b4c3b8505339fda"
+        },
+        ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str": {
+          "bytes": 7951,
+          "sha256": "b4df3eb527946da3a2cdf4d419611315e622038674b790da14d28db17d69afbf"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": {
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex": {
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.md5": {
+          "bytes": 91,
+          "sha256": "51438976d7b9431d7db66a0b5e49347f06c0a0a5a84c5ce310175dea631c16a7"
+        },
+        ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str": {
+          "bytes": 4687,
+          "sha256": "f74cd324dec60c265b9b36f1b479222416449277f3db8ee95f03da1719c36236"
+        },
+        "Audio/Sound effects/Footsteps/cave.mp3": {
+          "bytes": 7198,
+          "sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b"
+        },
+        "Audio/Sound effects/Footsteps/cave.mp3.import": {
+          "bytes": 299,
+          "sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc"
+        },
+        "Audio/Sound effects/Footsteps/grass.mp3": {
+          "bytes": 6675,
+          "sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878"
+        },
+        "Audio/Sound effects/Footsteps/grass.mp3.import": {
+          "bytes": 302,
+          "sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1"
+        },
+        "Audio/Sound effects/Footsteps/metal.mp3": {
+          "bytes": 5631,
+          "sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08"
+        },
+        "Audio/Sound effects/Footsteps/metal.mp3.import": {
+          "bytes": 302,
+          "sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e"
+        },
+        "Audio/Sound effects/Footsteps/sand.mp3": {
+          "bytes": 5787,
+          "sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6"
+        },
+        "Audio/Sound effects/Footsteps/sand.mp3.import": {
+          "bytes": 299,
+          "sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1"
+        },
+        "Audio/Sound effects/Footsteps/soil.mp3": {
+          "bytes": 4378,
+          "sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f"
+        },
+        "Audio/Sound effects/Footsteps/soil.mp3.import": {
+          "bytes": 299,
+          "sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65"
+        },
+        "Audio/Sound effects/Footsteps/stone.mp3": {
+          "bytes": 4639,
+          "sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+        },
+        "Audio/Sound effects/Footsteps/stone.mp3.import": {
+          "bytes": 302,
+          "sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7"
+        },
+        "Audio/Sound effects/Footsteps/water.mp3": {
+          "bytes": 7667,
+          "sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82"
+        },
+        "Audio/Sound effects/Footsteps/water.mp3.import": {
+          "bytes": 302,
+          "sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
+        },
+        "Audio/Sound effects/Footsteps/wood.mp3": {
+          "bytes": 4404,
+          "sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+        },
+        "Audio/Sound effects/Footsteps/wood.mp3.import": {
+          "bytes": 299,
+          "sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png": {
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png.import": {
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        "Graphics/Character Sprites/Shadow.png": {
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        "Graphics/Character Sprites/Shadow.png.import": {
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png": {
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png.import": {
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        "Nodes/Reusables/Shadow.tscn": {
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        "Scripts/Main/Shadow.gd": {
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        "user-roaming/Godot/editor_settings-3.tres": {
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        "user-roaming/Godot/projects/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/filesystem_cache6": {
+          "bytes": 2252,
+          "sha256": "bbfc2238b9d5eb95db14a7b04c48eb5cdb9bef507aa2553925fca814f7d42771"
+        },
+        "user-roaming/Godot/projects/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/projects/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/script_templates/empty.gd": {
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        "user-roaming/Godot/script_templates/no_comments.gd": {
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      }
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-steps-native-2\\temporary",
+      "marker": ".owned-catacombs-steps-reference",
+      "marker_value": "catacombs-steps-reference-v1",
+      "bytes": 131980,
+      "file_count": 74,
+      "source_copies_verified": {
+        "Audio/Sound effects/Footsteps/water.mp3": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82",
+        "Audio/Sound effects/Footsteps/soil.mp3": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f",
+        "Audio/Sound effects/Footsteps/sand.mp3": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Audio/Sound effects/Footsteps/metal.mp3": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08",
+        "Audio/Sound effects/Footsteps/cave.mp3": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Audio/Sound effects/Footsteps/grass.mp3": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+        "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+      },
+      "adapters_frozen": {
+        "project.godot": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-2/project.godot",
+        "probe.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-2/probe.gd",
+        "world.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-2/world.gd",
+        "manager.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-2/manager.gd",
+        "actor.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-2/actor.gd",
+        "input.json": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-2/input.json",
+        "party.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-2/party.gd",
+        "step.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-2/step.gd"
+      },
+      "files": {
+        ".owned-catacombs-steps-reference": {
+          "bytes": 28,
+          "sha256": "44d67fc7cd1b4c9a3b51520dc8d53527258fbebeb41cc30c947873e8d280f682"
+        },
+        "actor.gd": {
+          "bytes": 1062,
+          "sha256": "d978d7c70c64647ee1f4d632a600d08e778a0cd2bd45dbb6d6e1447b7207ec90"
+        },
+        "input.json": {
+          "bytes": 7719,
+          "sha256": "036308074c2c2033041546eae7f9ec1b3e707bf48ef78219a72860261dd65202"
+        },
+        "manager.gd": {
+          "bytes": 648,
+          "sha256": "7a7e1acd13d8be5130ce4e2eab4cbe5398eec8a6ecad51a1615df5ae01f4bdcf"
+        },
+        "party.gd": {
+          "bytes": 135,
+          "sha256": "669f2e06679d730d943b34ec9d46b2dc754f67319fd8d330d7f7b8892b3c02da"
+        },
+        "probe.gd": {
+          "bytes": 4151,
+          "sha256": "8ba4eb9892a614dcc190e2803e8261355c26ed9fcd91211d8a518dac5f2fcbe4"
+        },
+        "project.godot": {
+          "bytes": 174,
+          "sha256": "5de941a58d2471fec770f690a7686b24f0fbc3158bb17f7fba6616b3e8812c16"
+        },
+        "step.gd": {
+          "bytes": 793,
+          "sha256": "8d25ffa2eb99159d92601acc950edd8f2ef82b12ffde865e32a1f53d06f745cd"
+        },
+        "world.gd": {
+          "bytes": 80,
+          "sha256": "553d55030f115c99e1c83d438cd0ac77ba8c88b7a3c75f76a94807706553317e"
+        },
+        ".import/.gdignore": {
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.md5": {
+          "bytes": 91,
+          "sha256": "dd47b5863f0edaf9a0666e1ab2bfe86f807154bc89a42e9cc708686629faa968"
+        },
+        ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str": {
+          "bytes": 7483,
+          "sha256": "4e7437d05f5794d1cedb3a2b24b0517a381577d3a58eda01d11c547759b85066"
+        },
+        ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.md5": {
+          "bytes": 91,
+          "sha256": "fd3f46f3cedabbb6bf16c8cc99e1b5881f23cecd1a68383c09a1b227c7b77309"
+        },
+        ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str": {
+          "bytes": 6959,
+          "sha256": "8d6b248031e664bb8cdef7a48728b5ad3b9cf9b6249dd7651bbf279081459ac7"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": {
+          "bytes": 91,
+          "sha256": "59fe9624ff276f42d2c56c954d25a091db76a35c9b36744639dceef8ae7674e2"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex": {
+          "bytes": 130,
+          "sha256": "8106690466484a851b35dda1c4916e35dd54ca2ddab687fed5dde0bd30d9cffc"
+        },
+        ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.md5": {
+          "bytes": 91,
+          "sha256": "930487fe246ab6e1f36752260549c6552b0c0e132e6027987117319c9a968bcb"
+        },
+        ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str": {
+          "bytes": 5915,
+          "sha256": "1c627517719e5d8d4680edb4adf77c219d0829e988a994954e9de76b9393e78b"
+        },
+        ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.md5": {
+          "bytes": 91,
+          "sha256": "b127e1dbbae3352c424a5ff8af89e6b91c2fa31c8fbab8514314256a748c3181"
+        },
+        ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str": {
+          "bytes": 6071,
+          "sha256": "f2a3e176c1b7a514b683c52372ce937a90329eeac1a007caeff02a8d3dab0a7f"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": {
+          "bytes": 91,
+          "sha256": "350ed1697a1168b8062b94a909f7bce1057755535f91ff88d221d8cef3a481bc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex": {
+          "bytes": 80,
+          "sha256": "dce3f2e28a8ab069f13b623579ebb2bcfa09f96cbcb5aeaf2b18790b7b436e52"
+        },
+        ".import/soil.mp3-319950cf078de496e8bd177521202c4a.md5": {
+          "bytes": 91,
+          "sha256": "c811ed05875aac22795508ec1ac00722ec80deb2368ae6512456c38daa0ad3d1"
+        },
+        ".import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str": {
+          "bytes": 4663,
+          "sha256": "4951c5c32be1e489a86745ea062607bb36a210ed4ee36aba70a84aadc412b377"
+        },
+        ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.md5": {
+          "bytes": 91,
+          "sha256": "b862b74a1e89153466682983161abebb93bd1ff8f1235f3701bb3db30cc435d3"
+        },
+        ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str": {
+          "bytes": 4923,
+          "sha256": "b4d9e0c583eee107f7479b93868eea5059b8c96e6f11a63b43979b0ef1d731f8"
+        },
+        ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.md5": {
+          "bytes": 91,
+          "sha256": "b8deec5b832bfb748977ef92e442c7f0de7cdd335cdf2baa5b4c3b8505339fda"
+        },
+        ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str": {
+          "bytes": 7951,
+          "sha256": "b4df3eb527946da3a2cdf4d419611315e622038674b790da14d28db17d69afbf"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": {
+          "bytes": 91,
+          "sha256": "6de0a9907236d19defec331b85ceff5c350e62a609d37bf92361d5bbe640ed12"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex": {
+          "bytes": 96,
+          "sha256": "a6a3d1617bf625732be8d1b9d480c383a425133aa9b7e225629c7ff51264fc63"
+        },
+        ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.md5": {
+          "bytes": 91,
+          "sha256": "51438976d7b9431d7db66a0b5e49347f06c0a0a5a84c5ce310175dea631c16a7"
+        },
+        ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str": {
+          "bytes": 4687,
+          "sha256": "f74cd324dec60c265b9b36f1b479222416449277f3db8ee95f03da1719c36236"
+        },
+        "Audio/Sound effects/Footsteps/cave.mp3": {
+          "bytes": 7198,
+          "sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b"
+        },
+        "Audio/Sound effects/Footsteps/cave.mp3.import": {
+          "bytes": 299,
+          "sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc"
+        },
+        "Audio/Sound effects/Footsteps/grass.mp3": {
+          "bytes": 6675,
+          "sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878"
+        },
+        "Audio/Sound effects/Footsteps/grass.mp3.import": {
+          "bytes": 302,
+          "sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1"
+        },
+        "Audio/Sound effects/Footsteps/metal.mp3": {
+          "bytes": 5631,
+          "sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08"
+        },
+        "Audio/Sound effects/Footsteps/metal.mp3.import": {
+          "bytes": 302,
+          "sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e"
+        },
+        "Audio/Sound effects/Footsteps/sand.mp3": {
+          "bytes": 5787,
+          "sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6"
+        },
+        "Audio/Sound effects/Footsteps/sand.mp3.import": {
+          "bytes": 299,
+          "sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1"
+        },
+        "Audio/Sound effects/Footsteps/soil.mp3": {
+          "bytes": 4378,
+          "sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f"
+        },
+        "Audio/Sound effects/Footsteps/soil.mp3.import": {
+          "bytes": 299,
+          "sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65"
+        },
+        "Audio/Sound effects/Footsteps/stone.mp3": {
+          "bytes": 4639,
+          "sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+        },
+        "Audio/Sound effects/Footsteps/stone.mp3.import": {
+          "bytes": 302,
+          "sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7"
+        },
+        "Audio/Sound effects/Footsteps/water.mp3": {
+          "bytes": 7667,
+          "sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82"
+        },
+        "Audio/Sound effects/Footsteps/water.mp3.import": {
+          "bytes": 302,
+          "sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
+        },
+        "Audio/Sound effects/Footsteps/wood.mp3": {
+          "bytes": 4404,
+          "sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+        },
+        "Audio/Sound effects/Footsteps/wood.mp3.import": {
+          "bytes": 299,
+          "sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png": {
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png.import": {
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        "Graphics/Character Sprites/Shadow.png": {
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        "Graphics/Character Sprites/Shadow.png.import": {
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png": {
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png.import": {
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        "Nodes/Reusables/Shadow.tscn": {
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        "Scripts/Main/Shadow.gd": {
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        "user-local/Godot/resthumb-3b2c04482e75e996a77893fbfaa007c3.png": {
+          "bytes": 387,
+          "sha256": "f153751f3b529c41d23a0b112b59048b8ea586b4b3ee4712a76c37a41fdeb68b"
+        },
+        "user-local/Godot/resthumb-3b2c04482e75e996a77893fbfaa007c3.txt": {
+          "bytes": 49,
+          "sha256": "71f2fe911146685a046890b1eda20b576a0b66da16928c4618190990785cf304"
+        },
+        "user-roaming/Godot/editor_settings-3.tres": {
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        "user-roaming/Godot/app_userdata/Original Catacombs stepping callbacks/logs/godot.log": {
+          "bytes": 882,
+          "sha256": "43871026c93212ad11b5361f638e82bb397e06185bdd1945cf1d47f02a104921"
+        },
+        "user-roaming/Godot/projects/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/filesystem_cache6": {
+          "bytes": 1835,
+          "sha256": "6dbb5a309c247f082c45d717fe8ff4a132f9b09ab13447a56ce0fb661380b562"
+        },
+        "user-roaming/Godot/projects/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/projects/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-1a43896bc707f9be48873a1aae6c68e4/filesystem_cache6": {
+          "bytes": 2252,
+          "sha256": "0d5b681744db3dc1ddc37ac8b910d98811399ca1a30c987e9aa5e10570fa94aa"
+        },
+        "user-roaming/Godot/projects/temporary-1a43896bc707f9be48873a1aae6c68e4/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/script_templates/empty.gd": {
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        "user-roaming/Godot/script_templates/no_comments.gd": {
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      }
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-steps-native-3\\temporary",
+      "marker": ".owned-catacombs-steps-reference",
+      "marker_value": "catacombs-steps-reference-v1",
+      "bytes": 131197,
+      "file_count": 80,
+      "source_copies_verified": {
+        "Audio/Sound effects/Footsteps/water.mp3": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82",
+        "Audio/Sound effects/Footsteps/soil.mp3": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f",
+        "Audio/Sound effects/Footsteps/sand.mp3": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Audio/Sound effects/Footsteps/metal.mp3": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08",
+        "Audio/Sound effects/Footsteps/cave.mp3": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Audio/Sound effects/Footsteps/grass.mp3": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+        "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+      },
+      "adapters_frozen": {
+        "project.godot": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-3/project.godot",
+        "probe.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-3/probe.gd",
+        "world.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-3/world.gd",
+        "manager.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-3/manager.gd",
+        "actor.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-3/actor.gd",
+        "input.json": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-3/input.json",
+        "party.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-3/party.gd",
+        "step.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-3/step.gd"
+      },
+      "files": {
+        ".owned-catacombs-steps-reference": {
+          "bytes": 28,
+          "sha256": "44d67fc7cd1b4c9a3b51520dc8d53527258fbebeb41cc30c947873e8d280f682"
+        },
+        "actor.gd": {
+          "bytes": 1062,
+          "sha256": "d978d7c70c64647ee1f4d632a600d08e778a0cd2bd45dbb6d6e1447b7207ec90"
+        },
+        "input.json": {
+          "bytes": 7719,
+          "sha256": "036308074c2c2033041546eae7f9ec1b3e707bf48ef78219a72860261dd65202"
+        },
+        "manager.gd": {
+          "bytes": 648,
+          "sha256": "7a7e1acd13d8be5130ce4e2eab4cbe5398eec8a6ecad51a1615df5ae01f4bdcf"
+        },
+        "party.gd": {
+          "bytes": 135,
+          "sha256": "669f2e06679d730d943b34ec9d46b2dc754f67319fd8d330d7f7b8892b3c02da"
+        },
+        "probe.gd": {
+          "bytes": 4151,
+          "sha256": "8ba4eb9892a614dcc190e2803e8261355c26ed9fcd91211d8a518dac5f2fcbe4"
+        },
+        "project.godot": {
+          "bytes": 174,
+          "sha256": "5de941a58d2471fec770f690a7686b24f0fbc3158bb17f7fba6616b3e8812c16"
+        },
+        "step.gd": {
+          "bytes": 793,
+          "sha256": "8d25ffa2eb99159d92601acc950edd8f2ef82b12ffde865e32a1f53d06f745cd"
+        },
+        "world.gd": {
+          "bytes": 80,
+          "sha256": "553d55030f115c99e1c83d438cd0ac77ba8c88b7a3c75f76a94807706553317e"
+        },
+        ".import/.gdignore": {
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.md5": {
+          "bytes": 91,
+          "sha256": "dd47b5863f0edaf9a0666e1ab2bfe86f807154bc89a42e9cc708686629faa968"
+        },
+        ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str": {
+          "bytes": 7483,
+          "sha256": "4e7437d05f5794d1cedb3a2b24b0517a381577d3a58eda01d11c547759b85066"
+        },
+        ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.md5": {
+          "bytes": 91,
+          "sha256": "fd3f46f3cedabbb6bf16c8cc99e1b5881f23cecd1a68383c09a1b227c7b77309"
+        },
+        ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str": {
+          "bytes": 6959,
+          "sha256": "8d6b248031e664bb8cdef7a48728b5ad3b9cf9b6249dd7651bbf279081459ac7"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": {
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex": {
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.md5": {
+          "bytes": 91,
+          "sha256": "930487fe246ab6e1f36752260549c6552b0c0e132e6027987117319c9a968bcb"
+        },
+        ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str": {
+          "bytes": 5915,
+          "sha256": "1c627517719e5d8d4680edb4adf77c219d0829e988a994954e9de76b9393e78b"
+        },
+        ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.md5": {
+          "bytes": 91,
+          "sha256": "b127e1dbbae3352c424a5ff8af89e6b91c2fa31c8fbab8514314256a748c3181"
+        },
+        ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str": {
+          "bytes": 6071,
+          "sha256": "f2a3e176c1b7a514b683c52372ce937a90329eeac1a007caeff02a8d3dab0a7f"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": {
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex": {
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        ".import/soil.mp3-319950cf078de496e8bd177521202c4a.md5": {
+          "bytes": 91,
+          "sha256": "c811ed05875aac22795508ec1ac00722ec80deb2368ae6512456c38daa0ad3d1"
+        },
+        ".import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str": {
+          "bytes": 4663,
+          "sha256": "4951c5c32be1e489a86745ea062607bb36a210ed4ee36aba70a84aadc412b377"
+        },
+        ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.md5": {
+          "bytes": 91,
+          "sha256": "b862b74a1e89153466682983161abebb93bd1ff8f1235f3701bb3db30cc435d3"
+        },
+        ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str": {
+          "bytes": 4923,
+          "sha256": "b4d9e0c583eee107f7479b93868eea5059b8c96e6f11a63b43979b0ef1d731f8"
+        },
+        ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.md5": {
+          "bytes": 91,
+          "sha256": "b8deec5b832bfb748977ef92e442c7f0de7cdd335cdf2baa5b4c3b8505339fda"
+        },
+        ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str": {
+          "bytes": 7951,
+          "sha256": "b4df3eb527946da3a2cdf4d419611315e622038674b790da14d28db17d69afbf"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": {
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex": {
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.md5": {
+          "bytes": 91,
+          "sha256": "51438976d7b9431d7db66a0b5e49347f06c0a0a5a84c5ce310175dea631c16a7"
+        },
+        ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str": {
+          "bytes": 4687,
+          "sha256": "f74cd324dec60c265b9b36f1b479222416449277f3db8ee95f03da1719c36236"
+        },
+        "Audio/Sound effects/Footsteps/cave.mp3": {
+          "bytes": 7198,
+          "sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b"
+        },
+        "Audio/Sound effects/Footsteps/cave.mp3.import": {
+          "bytes": 299,
+          "sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc"
+        },
+        "Audio/Sound effects/Footsteps/grass.mp3": {
+          "bytes": 6675,
+          "sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878"
+        },
+        "Audio/Sound effects/Footsteps/grass.mp3.import": {
+          "bytes": 302,
+          "sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1"
+        },
+        "Audio/Sound effects/Footsteps/metal.mp3": {
+          "bytes": 5631,
+          "sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08"
+        },
+        "Audio/Sound effects/Footsteps/metal.mp3.import": {
+          "bytes": 302,
+          "sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e"
+        },
+        "Audio/Sound effects/Footsteps/sand.mp3": {
+          "bytes": 5787,
+          "sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6"
+        },
+        "Audio/Sound effects/Footsteps/sand.mp3.import": {
+          "bytes": 299,
+          "sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1"
+        },
+        "Audio/Sound effects/Footsteps/soil.mp3": {
+          "bytes": 4378,
+          "sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f"
+        },
+        "Audio/Sound effects/Footsteps/soil.mp3.import": {
+          "bytes": 299,
+          "sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65"
+        },
+        "Audio/Sound effects/Footsteps/stone.mp3": {
+          "bytes": 4639,
+          "sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+        },
+        "Audio/Sound effects/Footsteps/stone.mp3.import": {
+          "bytes": 302,
+          "sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7"
+        },
+        "Audio/Sound effects/Footsteps/water.mp3": {
+          "bytes": 7667,
+          "sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82"
+        },
+        "Audio/Sound effects/Footsteps/water.mp3.import": {
+          "bytes": 302,
+          "sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
+        },
+        "Audio/Sound effects/Footsteps/wood.mp3": {
+          "bytes": 4404,
+          "sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+        },
+        "Audio/Sound effects/Footsteps/wood.mp3.import": {
+          "bytes": 299,
+          "sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png": {
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png.import": {
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        "Graphics/Character Sprites/Shadow.png": {
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        "Graphics/Character Sprites/Shadow.png.import": {
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png": {
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png.import": {
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        "Nodes/Reusables/Shadow.tscn": {
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        "Scripts/Main/Shadow.gd": {
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        "user-roaming/Godot/editor_settings-3.tres": {
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        "user-roaming/Godot/app_userdata/Original Catacombs stepping callbacks/logs/godot.log": {
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        "user-roaming/Godot/projects/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/filesystem_cache6": {
+          "bytes": 1835,
+          "sha256": "fe230183986b4a16f95cc89e395304c2a1e11ea448511cbcf13cdbe2f5d80cec"
+        },
+        "user-roaming/Godot/projects/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/projects/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-95825cf5d13d9921736852c9201a0432/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-95825cf5d13d9921736852c9201a0432/filesystem_cache6": {
+          "bytes": 2252,
+          "sha256": "098b922c801947e32160b56fed12a28d93bb8505b22fe22ca04abab3fc10cf61"
+        },
+        "user-roaming/Godot/projects/temporary-95825cf5d13d9921736852c9201a0432/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-95825cf5d13d9921736852c9201a0432/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-95825cf5d13d9921736852c9201a0432/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/projects/temporary-95825cf5d13d9921736852c9201a0432/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-95825cf5d13d9921736852c9201a0432/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-95825cf5d13d9921736852c9201a0432/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-95825cf5d13d9921736852c9201a0432/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-95825cf5d13d9921736852c9201a0432/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/script_templates/empty.gd": {
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        "user-roaming/Godot/script_templates/no_comments.gd": {
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      }
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-steps-native-4\\temporary",
+      "marker": ".owned-catacombs-steps-reference",
+      "marker_value": "catacombs-steps-reference-v1",
+      "bytes": 131197,
+      "file_count": 80,
+      "source_copies_verified": {
+        "Audio/Sound effects/Footsteps/water.mp3": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82",
+        "Audio/Sound effects/Footsteps/soil.mp3": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f",
+        "Audio/Sound effects/Footsteps/sand.mp3": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Audio/Sound effects/Footsteps/metal.mp3": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08",
+        "Audio/Sound effects/Footsteps/cave.mp3": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Audio/Sound effects/Footsteps/grass.mp3": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+        "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+      },
+      "adapters_frozen": {
+        "project.godot": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-4/project.godot",
+        "probe.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-4/probe.gd",
+        "world.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-4/world.gd",
+        "manager.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-4/manager.gd",
+        "actor.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-4/actor.gd",
+        "input.json": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-4/input.json",
+        "party.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-4/party.gd",
+        "step.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-4/step.gd"
+      },
+      "files": {
+        ".owned-catacombs-steps-reference": {
+          "bytes": 28,
+          "sha256": "44d67fc7cd1b4c9a3b51520dc8d53527258fbebeb41cc30c947873e8d280f682"
+        },
+        "actor.gd": {
+          "bytes": 1062,
+          "sha256": "d978d7c70c64647ee1f4d632a600d08e778a0cd2bd45dbb6d6e1447b7207ec90"
+        },
+        "input.json": {
+          "bytes": 7719,
+          "sha256": "036308074c2c2033041546eae7f9ec1b3e707bf48ef78219a72860261dd65202"
+        },
+        "manager.gd": {
+          "bytes": 648,
+          "sha256": "7a7e1acd13d8be5130ce4e2eab4cbe5398eec8a6ecad51a1615df5ae01f4bdcf"
+        },
+        "party.gd": {
+          "bytes": 135,
+          "sha256": "669f2e06679d730d943b34ec9d46b2dc754f67319fd8d330d7f7b8892b3c02da"
+        },
+        "probe.gd": {
+          "bytes": 4151,
+          "sha256": "8ba4eb9892a614dcc190e2803e8261355c26ed9fcd91211d8a518dac5f2fcbe4"
+        },
+        "project.godot": {
+          "bytes": 174,
+          "sha256": "5de941a58d2471fec770f690a7686b24f0fbc3158bb17f7fba6616b3e8812c16"
+        },
+        "step.gd": {
+          "bytes": 793,
+          "sha256": "8d25ffa2eb99159d92601acc950edd8f2ef82b12ffde865e32a1f53d06f745cd"
+        },
+        "world.gd": {
+          "bytes": 80,
+          "sha256": "553d55030f115c99e1c83d438cd0ac77ba8c88b7a3c75f76a94807706553317e"
+        },
+        ".import/.gdignore": {
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.md5": {
+          "bytes": 91,
+          "sha256": "dd47b5863f0edaf9a0666e1ab2bfe86f807154bc89a42e9cc708686629faa968"
+        },
+        ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str": {
+          "bytes": 7483,
+          "sha256": "4e7437d05f5794d1cedb3a2b24b0517a381577d3a58eda01d11c547759b85066"
+        },
+        ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.md5": {
+          "bytes": 91,
+          "sha256": "fd3f46f3cedabbb6bf16c8cc99e1b5881f23cecd1a68383c09a1b227c7b77309"
+        },
+        ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str": {
+          "bytes": 6959,
+          "sha256": "8d6b248031e664bb8cdef7a48728b5ad3b9cf9b6249dd7651bbf279081459ac7"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": {
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex": {
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.md5": {
+          "bytes": 91,
+          "sha256": "930487fe246ab6e1f36752260549c6552b0c0e132e6027987117319c9a968bcb"
+        },
+        ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str": {
+          "bytes": 5915,
+          "sha256": "1c627517719e5d8d4680edb4adf77c219d0829e988a994954e9de76b9393e78b"
+        },
+        ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.md5": {
+          "bytes": 91,
+          "sha256": "b127e1dbbae3352c424a5ff8af89e6b91c2fa31c8fbab8514314256a748c3181"
+        },
+        ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str": {
+          "bytes": 6071,
+          "sha256": "f2a3e176c1b7a514b683c52372ce937a90329eeac1a007caeff02a8d3dab0a7f"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": {
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex": {
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        ".import/soil.mp3-319950cf078de496e8bd177521202c4a.md5": {
+          "bytes": 91,
+          "sha256": "c811ed05875aac22795508ec1ac00722ec80deb2368ae6512456c38daa0ad3d1"
+        },
+        ".import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str": {
+          "bytes": 4663,
+          "sha256": "4951c5c32be1e489a86745ea062607bb36a210ed4ee36aba70a84aadc412b377"
+        },
+        ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.md5": {
+          "bytes": 91,
+          "sha256": "b862b74a1e89153466682983161abebb93bd1ff8f1235f3701bb3db30cc435d3"
+        },
+        ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str": {
+          "bytes": 4923,
+          "sha256": "b4d9e0c583eee107f7479b93868eea5059b8c96e6f11a63b43979b0ef1d731f8"
+        },
+        ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.md5": {
+          "bytes": 91,
+          "sha256": "b8deec5b832bfb748977ef92e442c7f0de7cdd335cdf2baa5b4c3b8505339fda"
+        },
+        ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str": {
+          "bytes": 7951,
+          "sha256": "b4df3eb527946da3a2cdf4d419611315e622038674b790da14d28db17d69afbf"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": {
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex": {
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.md5": {
+          "bytes": 91,
+          "sha256": "51438976d7b9431d7db66a0b5e49347f06c0a0a5a84c5ce310175dea631c16a7"
+        },
+        ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str": {
+          "bytes": 4687,
+          "sha256": "f74cd324dec60c265b9b36f1b479222416449277f3db8ee95f03da1719c36236"
+        },
+        "Audio/Sound effects/Footsteps/cave.mp3": {
+          "bytes": 7198,
+          "sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b"
+        },
+        "Audio/Sound effects/Footsteps/cave.mp3.import": {
+          "bytes": 299,
+          "sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc"
+        },
+        "Audio/Sound effects/Footsteps/grass.mp3": {
+          "bytes": 6675,
+          "sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878"
+        },
+        "Audio/Sound effects/Footsteps/grass.mp3.import": {
+          "bytes": 302,
+          "sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1"
+        },
+        "Audio/Sound effects/Footsteps/metal.mp3": {
+          "bytes": 5631,
+          "sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08"
+        },
+        "Audio/Sound effects/Footsteps/metal.mp3.import": {
+          "bytes": 302,
+          "sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e"
+        },
+        "Audio/Sound effects/Footsteps/sand.mp3": {
+          "bytes": 5787,
+          "sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6"
+        },
+        "Audio/Sound effects/Footsteps/sand.mp3.import": {
+          "bytes": 299,
+          "sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1"
+        },
+        "Audio/Sound effects/Footsteps/soil.mp3": {
+          "bytes": 4378,
+          "sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f"
+        },
+        "Audio/Sound effects/Footsteps/soil.mp3.import": {
+          "bytes": 299,
+          "sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65"
+        },
+        "Audio/Sound effects/Footsteps/stone.mp3": {
+          "bytes": 4639,
+          "sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+        },
+        "Audio/Sound effects/Footsteps/stone.mp3.import": {
+          "bytes": 302,
+          "sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7"
+        },
+        "Audio/Sound effects/Footsteps/water.mp3": {
+          "bytes": 7667,
+          "sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82"
+        },
+        "Audio/Sound effects/Footsteps/water.mp3.import": {
+          "bytes": 302,
+          "sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
+        },
+        "Audio/Sound effects/Footsteps/wood.mp3": {
+          "bytes": 4404,
+          "sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+        },
+        "Audio/Sound effects/Footsteps/wood.mp3.import": {
+          "bytes": 299,
+          "sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png": {
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png.import": {
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        "Graphics/Character Sprites/Shadow.png": {
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        "Graphics/Character Sprites/Shadow.png.import": {
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png": {
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png.import": {
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        "Nodes/Reusables/Shadow.tscn": {
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        "Scripts/Main/Shadow.gd": {
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        "user-roaming/Godot/editor_settings-3.tres": {
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        "user-roaming/Godot/app_userdata/Original Catacombs stepping callbacks/logs/godot.log": {
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        "user-roaming/Godot/projects/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/filesystem_cache6": {
+          "bytes": 1835,
+          "sha256": "a7ef49010297710a1d1a82c477eb816bcf4c34c6bb21c096cd0084eef4937905"
+        },
+        "user-roaming/Godot/projects/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/projects/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-5356da719b1e0aa246bf8a517e99c918/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-5356da719b1e0aa246bf8a517e99c918/filesystem_cache6": {
+          "bytes": 2252,
+          "sha256": "f1f24cfc7bb5f4ae495e23cf5c194327e0520a69fc901fc1efa051d646ac51dc"
+        },
+        "user-roaming/Godot/projects/temporary-5356da719b1e0aa246bf8a517e99c918/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-5356da719b1e0aa246bf8a517e99c918/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-5356da719b1e0aa246bf8a517e99c918/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/projects/temporary-5356da719b1e0aa246bf8a517e99c918/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-5356da719b1e0aa246bf8a517e99c918/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-5356da719b1e0aa246bf8a517e99c918/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-5356da719b1e0aa246bf8a517e99c918/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-5356da719b1e0aa246bf8a517e99c918/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/script_templates/empty.gd": {
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        "user-roaming/Godot/script_templates/no_comments.gd": {
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      }
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-steps-native-5\\temporary",
+      "marker": ".owned-catacombs-steps-reference",
+      "marker_value": "catacombs-steps-reference-v1",
+      "bytes": 131197,
+      "file_count": 80,
+      "source_copies_verified": {
+        "Audio/Sound effects/Footsteps/water.mp3": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82",
+        "Audio/Sound effects/Footsteps/soil.mp3": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f",
+        "Audio/Sound effects/Footsteps/sand.mp3": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Audio/Sound effects/Footsteps/metal.mp3": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08",
+        "Audio/Sound effects/Footsteps/cave.mp3": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Audio/Sound effects/Footsteps/grass.mp3": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+        "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+      },
+      "adapters_frozen": {
+        "project.godot": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-5/project.godot",
+        "probe.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-5/probe.gd",
+        "world.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-5/world.gd",
+        "manager.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-5/manager.gd",
+        "actor.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-5/actor.gd",
+        "input.json": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-5/input.json",
+        "party.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-5/party.gd",
+        "step.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-steps-native-5/step.gd"
+      },
+      "files": {
+        ".owned-catacombs-steps-reference": {
+          "bytes": 28,
+          "sha256": "44d67fc7cd1b4c9a3b51520dc8d53527258fbebeb41cc30c947873e8d280f682"
+        },
+        "actor.gd": {
+          "bytes": 1062,
+          "sha256": "d978d7c70c64647ee1f4d632a600d08e778a0cd2bd45dbb6d6e1447b7207ec90"
+        },
+        "input.json": {
+          "bytes": 7719,
+          "sha256": "036308074c2c2033041546eae7f9ec1b3e707bf48ef78219a72860261dd65202"
+        },
+        "manager.gd": {
+          "bytes": 648,
+          "sha256": "7a7e1acd13d8be5130ce4e2eab4cbe5398eec8a6ecad51a1615df5ae01f4bdcf"
+        },
+        "party.gd": {
+          "bytes": 135,
+          "sha256": "669f2e06679d730d943b34ec9d46b2dc754f67319fd8d330d7f7b8892b3c02da"
+        },
+        "probe.gd": {
+          "bytes": 4151,
+          "sha256": "8ba4eb9892a614dcc190e2803e8261355c26ed9fcd91211d8a518dac5f2fcbe4"
+        },
+        "project.godot": {
+          "bytes": 174,
+          "sha256": "5de941a58d2471fec770f690a7686b24f0fbc3158bb17f7fba6616b3e8812c16"
+        },
+        "step.gd": {
+          "bytes": 793,
+          "sha256": "8d25ffa2eb99159d92601acc950edd8f2ef82b12ffde865e32a1f53d06f745cd"
+        },
+        "world.gd": {
+          "bytes": 80,
+          "sha256": "553d55030f115c99e1c83d438cd0ac77ba8c88b7a3c75f76a94807706553317e"
+        },
+        ".import/.gdignore": {
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.md5": {
+          "bytes": 91,
+          "sha256": "dd47b5863f0edaf9a0666e1ab2bfe86f807154bc89a42e9cc708686629faa968"
+        },
+        ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str": {
+          "bytes": 7483,
+          "sha256": "4e7437d05f5794d1cedb3a2b24b0517a381577d3a58eda01d11c547759b85066"
+        },
+        ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.md5": {
+          "bytes": 91,
+          "sha256": "fd3f46f3cedabbb6bf16c8cc99e1b5881f23cecd1a68383c09a1b227c7b77309"
+        },
+        ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str": {
+          "bytes": 6959,
+          "sha256": "8d6b248031e664bb8cdef7a48728b5ad3b9cf9b6249dd7651bbf279081459ac7"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": {
+          "bytes": 91,
+          "sha256": "3b992c09b293a1b081f642366d6958887c23e51484f3b4dd7244ae9a16efb54e"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex": {
+          "bytes": 130,
+          "sha256": "ddb6841af303d2847c02c5e1808978e7d27c0e747f0e26c806441c51aac68b84"
+        },
+        ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.md5": {
+          "bytes": 91,
+          "sha256": "930487fe246ab6e1f36752260549c6552b0c0e132e6027987117319c9a968bcb"
+        },
+        ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str": {
+          "bytes": 5915,
+          "sha256": "1c627517719e5d8d4680edb4adf77c219d0829e988a994954e9de76b9393e78b"
+        },
+        ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.md5": {
+          "bytes": 91,
+          "sha256": "b127e1dbbae3352c424a5ff8af89e6b91c2fa31c8fbab8514314256a748c3181"
+        },
+        ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str": {
+          "bytes": 6071,
+          "sha256": "f2a3e176c1b7a514b683c52372ce937a90329eeac1a007caeff02a8d3dab0a7f"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": {
+          "bytes": 91,
+          "sha256": "bd7f58e1c3944b6a5769dff80109be8160f7dc521487635e819fe0bf5d9e3717"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex": {
+          "bytes": 80,
+          "sha256": "2f7b821a87dc510fea695cdc23190344e1da384a1b61f0aa4053c9c5ffcf1e6d"
+        },
+        ".import/soil.mp3-319950cf078de496e8bd177521202c4a.md5": {
+          "bytes": 91,
+          "sha256": "c811ed05875aac22795508ec1ac00722ec80deb2368ae6512456c38daa0ad3d1"
+        },
+        ".import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str": {
+          "bytes": 4663,
+          "sha256": "4951c5c32be1e489a86745ea062607bb36a210ed4ee36aba70a84aadc412b377"
+        },
+        ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.md5": {
+          "bytes": 91,
+          "sha256": "b862b74a1e89153466682983161abebb93bd1ff8f1235f3701bb3db30cc435d3"
+        },
+        ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str": {
+          "bytes": 4923,
+          "sha256": "b4d9e0c583eee107f7479b93868eea5059b8c96e6f11a63b43979b0ef1d731f8"
+        },
+        ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.md5": {
+          "bytes": 91,
+          "sha256": "b8deec5b832bfb748977ef92e442c7f0de7cdd335cdf2baa5b4c3b8505339fda"
+        },
+        ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str": {
+          "bytes": 7951,
+          "sha256": "b4df3eb527946da3a2cdf4d419611315e622038674b790da14d28db17d69afbf"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": {
+          "bytes": 91,
+          "sha256": "4065853e32ad6c4c9ab5e05e035e860c37d7a84d2a0afd5875f77218304f9fff"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex": {
+          "bytes": 96,
+          "sha256": "b98383efdc4b0ba0107455d37a0b7ec2072c2329d02cbb4ba4cadb4a6d057605"
+        },
+        ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.md5": {
+          "bytes": 91,
+          "sha256": "51438976d7b9431d7db66a0b5e49347f06c0a0a5a84c5ce310175dea631c16a7"
+        },
+        ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str": {
+          "bytes": 4687,
+          "sha256": "f74cd324dec60c265b9b36f1b479222416449277f3db8ee95f03da1719c36236"
+        },
+        "Audio/Sound effects/Footsteps/cave.mp3": {
+          "bytes": 7198,
+          "sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b"
+        },
+        "Audio/Sound effects/Footsteps/cave.mp3.import": {
+          "bytes": 299,
+          "sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc"
+        },
+        "Audio/Sound effects/Footsteps/grass.mp3": {
+          "bytes": 6675,
+          "sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878"
+        },
+        "Audio/Sound effects/Footsteps/grass.mp3.import": {
+          "bytes": 302,
+          "sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1"
+        },
+        "Audio/Sound effects/Footsteps/metal.mp3": {
+          "bytes": 5631,
+          "sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08"
+        },
+        "Audio/Sound effects/Footsteps/metal.mp3.import": {
+          "bytes": 302,
+          "sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e"
+        },
+        "Audio/Sound effects/Footsteps/sand.mp3": {
+          "bytes": 5787,
+          "sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6"
+        },
+        "Audio/Sound effects/Footsteps/sand.mp3.import": {
+          "bytes": 299,
+          "sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1"
+        },
+        "Audio/Sound effects/Footsteps/soil.mp3": {
+          "bytes": 4378,
+          "sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f"
+        },
+        "Audio/Sound effects/Footsteps/soil.mp3.import": {
+          "bytes": 299,
+          "sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65"
+        },
+        "Audio/Sound effects/Footsteps/stone.mp3": {
+          "bytes": 4639,
+          "sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+        },
+        "Audio/Sound effects/Footsteps/stone.mp3.import": {
+          "bytes": 302,
+          "sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7"
+        },
+        "Audio/Sound effects/Footsteps/water.mp3": {
+          "bytes": 7667,
+          "sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82"
+        },
+        "Audio/Sound effects/Footsteps/water.mp3.import": {
+          "bytes": 302,
+          "sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
+        },
+        "Audio/Sound effects/Footsteps/wood.mp3": {
+          "bytes": 4404,
+          "sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+        },
+        "Audio/Sound effects/Footsteps/wood.mp3.import": {
+          "bytes": 299,
+          "sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png": {
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png.import": {
+          "bytes": 727,
+          "sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e"
+        },
+        "Graphics/Character Sprites/Shadow.png": {
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        "Graphics/Character Sprites/Shadow.png.import": {
+          "bytes": 709,
+          "sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png": {
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png.import": {
+          "bytes": 727,
+          "sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878"
+        },
+        "Nodes/Reusables/Shadow.tscn": {
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        "Scripts/Main/Shadow.gd": {
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        "user-roaming/Godot/editor_settings-3.tres": {
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        "user-roaming/Godot/app_userdata/Original Catacombs stepping callbacks/logs/godot.log": {
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        "user-roaming/Godot/projects/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/filesystem_cache6": {
+          "bytes": 1835,
+          "sha256": "d7cc57cd95953f2a690afcf234e0ad72728d549f3796cb203e41f474315f43f5"
+        },
+        "user-roaming/Godot/projects/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/projects/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-37d829b468658a23ed2f5cbf7bded2ce/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-37d829b468658a23ed2f5cbf7bded2ce/filesystem_cache6": {
+          "bytes": 2252,
+          "sha256": "adb6e48ace34710223ad9e325753080314ba07d197a9c932aeae81bcf181e574"
+        },
+        "user-roaming/Godot/projects/temporary-37d829b468658a23ed2f5cbf7bded2ce/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-37d829b468658a23ed2f5cbf7bded2ce/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-37d829b468658a23ed2f5cbf7bded2ce/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/projects/temporary-37d829b468658a23ed2f5cbf7bded2ce/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-37d829b468658a23ed2f5cbf7bded2ce/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-37d829b468658a23ed2f5cbf7bded2ce/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-37d829b468658a23ed2f5cbf7bded2ce/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/projects/temporary-37d829b468658a23ed2f5cbf7bded2ce/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg": {
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        "user-roaming/Godot/script_templates/empty.gd": {
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        "user-roaming/Godot/script_templates/no_comments.gd": {
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      }
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-step-contacts-native-1\\temporary",
+      "marker": ".owned-catacombs-step-contacts-reference",
+      "marker_value": "catacombs-step-contacts-reference-v1",
+      "bytes": 36983,
+      "file_count": 32,
+      "source_copies_verified": {
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+      },
+      "adapters_frozen": {
+        "project.godot": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-1/project.godot",
+        "probe.tscn": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-1/probe.tscn",
+        "probe.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-1/probe.gd",
+        "source.tscn": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-1/source.tscn",
+        "actor.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-1/actor.gd",
+        "input.json": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-1/input.json",
+        "party.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-1/party.gd",
+        "global.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-1/global.gd"
+      },
+      "files": {
+        ".owned-catacombs-step-contacts-reference": {
+          "bytes": 36,
+          "sha256": "39c90341d1035d6169ab471019cdd6d883d8fd8e423083004fbdce520d814fa5"
+        },
+        "actor.gd": {
+          "bytes": 46,
+          "sha256": "4aaec50dd2bb5ce1209f1d8e364cd2974ce56a17e3f874dbc6e31ffaf21a59ce"
+        },
+        "global.gd": {
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        "input.json": {
+          "bytes": 11069,
+          "sha256": "08614b73a65c7bd7f60e562c6182be9907ae9a6df582f00dec080397fb0c8e1b"
+        },
+        "party.gd": {
+          "bytes": 158,
+          "sha256": "1257ffcd91740458a86ed9dcb3e3c5abf060b29b73d9b8e5cbf8f0fa68a5f375"
+        },
+        "probe.gd": {
+          "bytes": 5806,
+          "sha256": "bb6f8070d214216627412a792c721361559f652b848a2004007135df6816fbc9"
+        },
+        "probe.tscn": {
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        "project.godot": {
+          "bytes": 359,
+          "sha256": "d74e63800cbfc884e8a0f307b1a7d00804964faec99b538bc65b99741d5d1c0e"
+        },
+        "source.tscn": {
+          "bytes": 3482,
+          "sha256": "aef9cd407e8c091fc57f2969b511f29c641177ab6ef78c2ba34e6a5df6b6049b"
+        },
+        ".import/.gdignore": {
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": {
+          "bytes": 91,
+          "sha256": "59fe9624ff276f42d2c56c954d25a091db76a35c9b36744639dceef8ae7674e2"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex": {
+          "bytes": 130,
+          "sha256": "8106690466484a851b35dda1c4916e35dd54ca2ddab687fed5dde0bd30d9cffc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": {
+          "bytes": 91,
+          "sha256": "350ed1697a1168b8062b94a909f7bce1057755535f91ff88d221d8cef3a481bc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex": {
+          "bytes": 80,
+          "sha256": "dce3f2e28a8ab069f13b623579ebb2bcfa09f96cbcb5aeaf2b18790b7b436e52"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": {
+          "bytes": 91,
+          "sha256": "6de0a9907236d19defec331b85ceff5c350e62a609d37bf92361d5bbe640ed12"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex": {
+          "bytes": 96,
+          "sha256": "a6a3d1617bf625732be8d1b9d480c383a425133aa9b7e225629c7ff51264fc63"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png": {
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png.import": {
+          "bytes": 725,
+          "sha256": "ec1c4a311d931583ec0c285a841e99fec83d8fc830c1487b66e0f83b4868c82a"
+        },
+        "Graphics/Character Sprites/Shadow.png": {
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        "Graphics/Character Sprites/Shadow.png.import": {
+          "bytes": 707,
+          "sha256": "fe626abac79d7daa6802f4d6a375dcadc589f821282039edd232a29c6dc8ffad"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png": {
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png.import": {
+          "bytes": 725,
+          "sha256": "ee6182c80aa20b40ef8292b99d9e711cf0d25cfcd4644ed76a8a3cd5bd6bb9a0"
+        },
+        "Nodes/Reusables/Shadow.tscn": {
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        "Nodes/Reusables/stepping sounds.tscn": {
+          "bytes": 412,
+          "sha256": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be"
+        },
+        "Scripts/Main/Shadow.gd": {
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        "Scripts/Main/Stepping Sounds.gd": {
+          "bytes": 1035,
+          "sha256": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85"
+        },
+        "user-roaming/Godot/editor_settings-3.tres": {
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log": {
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        "user-roaming/Godot/projects/filesystem_cache6": {
+          "bytes": 1196,
+          "sha256": "c5de60a5b94eeddb063188b8b5695a9bf24009b65750b2844e12dbcf806f10a0"
+        },
+        "user-roaming/Godot/projects/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/script_templates/empty.gd": {
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        "user-roaming/Godot/script_templates/no_comments.gd": {
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      }
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-step-contacts-native-2\\temporary",
+      "marker": ".owned-catacombs-step-contacts-reference",
+      "marker_value": "catacombs-step-contacts-reference-v1",
+      "bytes": 37971,
+      "file_count": 32,
+      "source_copies_verified": {
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+      },
+      "adapters_frozen": {
+        "project.godot": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-2/project.godot",
+        "probe.tscn": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-2/probe.tscn",
+        "probe.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-2/probe.gd",
+        "source.tscn": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-2/source.tscn",
+        "actor.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-2/actor.gd",
+        "input.json": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-2/input.json",
+        "party.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-2/party.gd",
+        "global.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-2/global.gd"
+      },
+      "files": {
+        ".owned-catacombs-step-contacts-reference": {
+          "bytes": 36,
+          "sha256": "39c90341d1035d6169ab471019cdd6d883d8fd8e423083004fbdce520d814fa5"
+        },
+        "actor.gd": {
+          "bytes": 46,
+          "sha256": "4aaec50dd2bb5ce1209f1d8e364cd2974ce56a17e3f874dbc6e31ffaf21a59ce"
+        },
+        "global.gd": {
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        "input.json": {
+          "bytes": 12057,
+          "sha256": "87f6636a7125ee213b0082ca32a884aef39edfc76ac7a58657733f96d6918e88"
+        },
+        "party.gd": {
+          "bytes": 158,
+          "sha256": "1257ffcd91740458a86ed9dcb3e3c5abf060b29b73d9b8e5cbf8f0fa68a5f375"
+        },
+        "probe.gd": {
+          "bytes": 5806,
+          "sha256": "bb6f8070d214216627412a792c721361559f652b848a2004007135df6816fbc9"
+        },
+        "probe.tscn": {
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        "project.godot": {
+          "bytes": 359,
+          "sha256": "d74e63800cbfc884e8a0f307b1a7d00804964faec99b538bc65b99741d5d1c0e"
+        },
+        "source.tscn": {
+          "bytes": 3482,
+          "sha256": "aef9cd407e8c091fc57f2969b511f29c641177ab6ef78c2ba34e6a5df6b6049b"
+        },
+        ".import/.gdignore": {
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": {
+          "bytes": 91,
+          "sha256": "59fe9624ff276f42d2c56c954d25a091db76a35c9b36744639dceef8ae7674e2"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex": {
+          "bytes": 130,
+          "sha256": "8106690466484a851b35dda1c4916e35dd54ca2ddab687fed5dde0bd30d9cffc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": {
+          "bytes": 91,
+          "sha256": "350ed1697a1168b8062b94a909f7bce1057755535f91ff88d221d8cef3a481bc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex": {
+          "bytes": 80,
+          "sha256": "dce3f2e28a8ab069f13b623579ebb2bcfa09f96cbcb5aeaf2b18790b7b436e52"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": {
+          "bytes": 91,
+          "sha256": "6de0a9907236d19defec331b85ceff5c350e62a609d37bf92361d5bbe640ed12"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex": {
+          "bytes": 96,
+          "sha256": "a6a3d1617bf625732be8d1b9d480c383a425133aa9b7e225629c7ff51264fc63"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png": {
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png.import": {
+          "bytes": 725,
+          "sha256": "ec1c4a311d931583ec0c285a841e99fec83d8fc830c1487b66e0f83b4868c82a"
+        },
+        "Graphics/Character Sprites/Shadow.png": {
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        "Graphics/Character Sprites/Shadow.png.import": {
+          "bytes": 707,
+          "sha256": "fe626abac79d7daa6802f4d6a375dcadc589f821282039edd232a29c6dc8ffad"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png": {
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png.import": {
+          "bytes": 725,
+          "sha256": "ee6182c80aa20b40ef8292b99d9e711cf0d25cfcd4644ed76a8a3cd5bd6bb9a0"
+        },
+        "Nodes/Reusables/Shadow.tscn": {
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        "Nodes/Reusables/stepping sounds.tscn": {
+          "bytes": 412,
+          "sha256": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be"
+        },
+        "Scripts/Main/Shadow.gd": {
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        "Scripts/Main/Stepping Sounds.gd": {
+          "bytes": 1035,
+          "sha256": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85"
+        },
+        "user-roaming/Godot/editor_settings-3.tres": {
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log": {
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        "user-roaming/Godot/projects/filesystem_cache6": {
+          "bytes": 1196,
+          "sha256": "b28f8c6088021d138dc1f2b23d91b3092257bf7184a32bc6d74d0a702bc1610e"
+        },
+        "user-roaming/Godot/projects/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/script_templates/empty.gd": {
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        "user-roaming/Godot/script_templates/no_comments.gd": {
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      }
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-step-contacts-native-3\\temporary",
+      "marker": ".owned-catacombs-step-contacts-reference",
+      "marker_value": "catacombs-step-contacts-reference-v1",
+      "bytes": 38457,
+      "file_count": 32,
+      "source_copies_verified": {
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+      },
+      "adapters_frozen": {
+        "project.godot": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-3/project.godot",
+        "probe.tscn": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-3/probe.tscn",
+        "probe.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-3/probe.gd",
+        "source.tscn": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-3/source.tscn",
+        "actor.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-3/actor.gd",
+        "input.json": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-3/input.json",
+        "party.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-3/party.gd",
+        "global.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-3/global.gd"
+      },
+      "files": {
+        ".owned-catacombs-step-contacts-reference": {
+          "bytes": 36,
+          "sha256": "39c90341d1035d6169ab471019cdd6d883d8fd8e423083004fbdce520d814fa5"
+        },
+        "actor.gd": {
+          "bytes": 46,
+          "sha256": "4aaec50dd2bb5ce1209f1d8e364cd2974ce56a17e3f874dbc6e31ffaf21a59ce"
+        },
+        "global.gd": {
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        "input.json": {
+          "bytes": 12359,
+          "sha256": "d464028d7a0ec72bbaafbc50a6d8d5537ba57b5f6582a43acea50118261eabab"
+        },
+        "party.gd": {
+          "bytes": 158,
+          "sha256": "1257ffcd91740458a86ed9dcb3e3c5abf060b29b73d9b8e5cbf8f0fa68a5f375"
+        },
+        "probe.gd": {
+          "bytes": 5990,
+          "sha256": "f96559fc3a9075928672bffb6429ad0ebdc98e2e20595fbe57b30ab941ca41ee"
+        },
+        "probe.tscn": {
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        "project.godot": {
+          "bytes": 359,
+          "sha256": "d74e63800cbfc884e8a0f307b1a7d00804964faec99b538bc65b99741d5d1c0e"
+        },
+        "source.tscn": {
+          "bytes": 3482,
+          "sha256": "aef9cd407e8c091fc57f2969b511f29c641177ab6ef78c2ba34e6a5df6b6049b"
+        },
+        ".import/.gdignore": {
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": {
+          "bytes": 91,
+          "sha256": "59fe9624ff276f42d2c56c954d25a091db76a35c9b36744639dceef8ae7674e2"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex": {
+          "bytes": 130,
+          "sha256": "8106690466484a851b35dda1c4916e35dd54ca2ddab687fed5dde0bd30d9cffc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": {
+          "bytes": 91,
+          "sha256": "350ed1697a1168b8062b94a909f7bce1057755535f91ff88d221d8cef3a481bc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex": {
+          "bytes": 80,
+          "sha256": "dce3f2e28a8ab069f13b623579ebb2bcfa09f96cbcb5aeaf2b18790b7b436e52"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": {
+          "bytes": 91,
+          "sha256": "6de0a9907236d19defec331b85ceff5c350e62a609d37bf92361d5bbe640ed12"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex": {
+          "bytes": 96,
+          "sha256": "a6a3d1617bf625732be8d1b9d480c383a425133aa9b7e225629c7ff51264fc63"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png": {
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png.import": {
+          "bytes": 725,
+          "sha256": "ec1c4a311d931583ec0c285a841e99fec83d8fc830c1487b66e0f83b4868c82a"
+        },
+        "Graphics/Character Sprites/Shadow.png": {
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        "Graphics/Character Sprites/Shadow.png.import": {
+          "bytes": 707,
+          "sha256": "fe626abac79d7daa6802f4d6a375dcadc589f821282039edd232a29c6dc8ffad"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png": {
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png.import": {
+          "bytes": 725,
+          "sha256": "ee6182c80aa20b40ef8292b99d9e711cf0d25cfcd4644ed76a8a3cd5bd6bb9a0"
+        },
+        "Nodes/Reusables/Shadow.tscn": {
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        "Nodes/Reusables/stepping sounds.tscn": {
+          "bytes": 412,
+          "sha256": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be"
+        },
+        "Scripts/Main/Shadow.gd": {
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        "Scripts/Main/Stepping Sounds.gd": {
+          "bytes": 1035,
+          "sha256": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85"
+        },
+        "user-roaming/Godot/editor_settings-3.tres": {
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log": {
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        "user-roaming/Godot/projects/filesystem_cache6": {
+          "bytes": 1196,
+          "sha256": "1d5bfd811d28278f95cc08cf854db9d7238155b686c073b2e8317326f846eede"
+        },
+        "user-roaming/Godot/projects/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/script_templates/empty.gd": {
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        "user-roaming/Godot/script_templates/no_comments.gd": {
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      }
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-step-contacts-native-4\\temporary",
+      "marker": ".owned-catacombs-step-contacts-reference",
+      "marker_value": "catacombs-step-contacts-reference-v1",
+      "bytes": 38457,
+      "file_count": 32,
+      "source_copies_verified": {
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+      },
+      "adapters_frozen": {
+        "project.godot": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-4/project.godot",
+        "probe.tscn": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-4/probe.tscn",
+        "probe.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-4/probe.gd",
+        "source.tscn": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-4/source.tscn",
+        "actor.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-4/actor.gd",
+        "input.json": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-4/input.json",
+        "party.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-4/party.gd",
+        "global.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-4/global.gd"
+      },
+      "files": {
+        ".owned-catacombs-step-contacts-reference": {
+          "bytes": 36,
+          "sha256": "39c90341d1035d6169ab471019cdd6d883d8fd8e423083004fbdce520d814fa5"
+        },
+        "actor.gd": {
+          "bytes": 46,
+          "sha256": "4aaec50dd2bb5ce1209f1d8e364cd2974ce56a17e3f874dbc6e31ffaf21a59ce"
+        },
+        "global.gd": {
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        "input.json": {
+          "bytes": 12359,
+          "sha256": "d464028d7a0ec72bbaafbc50a6d8d5537ba57b5f6582a43acea50118261eabab"
+        },
+        "party.gd": {
+          "bytes": 158,
+          "sha256": "1257ffcd91740458a86ed9dcb3e3c5abf060b29b73d9b8e5cbf8f0fa68a5f375"
+        },
+        "probe.gd": {
+          "bytes": 5990,
+          "sha256": "f96559fc3a9075928672bffb6429ad0ebdc98e2e20595fbe57b30ab941ca41ee"
+        },
+        "probe.tscn": {
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        "project.godot": {
+          "bytes": 359,
+          "sha256": "d74e63800cbfc884e8a0f307b1a7d00804964faec99b538bc65b99741d5d1c0e"
+        },
+        "source.tscn": {
+          "bytes": 3482,
+          "sha256": "aef9cd407e8c091fc57f2969b511f29c641177ab6ef78c2ba34e6a5df6b6049b"
+        },
+        ".import/.gdignore": {
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": {
+          "bytes": 91,
+          "sha256": "59fe9624ff276f42d2c56c954d25a091db76a35c9b36744639dceef8ae7674e2"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex": {
+          "bytes": 130,
+          "sha256": "8106690466484a851b35dda1c4916e35dd54ca2ddab687fed5dde0bd30d9cffc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": {
+          "bytes": 91,
+          "sha256": "350ed1697a1168b8062b94a909f7bce1057755535f91ff88d221d8cef3a481bc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex": {
+          "bytes": 80,
+          "sha256": "dce3f2e28a8ab069f13b623579ebb2bcfa09f96cbcb5aeaf2b18790b7b436e52"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": {
+          "bytes": 91,
+          "sha256": "6de0a9907236d19defec331b85ceff5c350e62a609d37bf92361d5bbe640ed12"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex": {
+          "bytes": 96,
+          "sha256": "a6a3d1617bf625732be8d1b9d480c383a425133aa9b7e225629c7ff51264fc63"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png": {
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png.import": {
+          "bytes": 725,
+          "sha256": "ec1c4a311d931583ec0c285a841e99fec83d8fc830c1487b66e0f83b4868c82a"
+        },
+        "Graphics/Character Sprites/Shadow.png": {
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        "Graphics/Character Sprites/Shadow.png.import": {
+          "bytes": 707,
+          "sha256": "fe626abac79d7daa6802f4d6a375dcadc589f821282039edd232a29c6dc8ffad"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png": {
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png.import": {
+          "bytes": 725,
+          "sha256": "ee6182c80aa20b40ef8292b99d9e711cf0d25cfcd4644ed76a8a3cd5bd6bb9a0"
+        },
+        "Nodes/Reusables/Shadow.tscn": {
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        "Nodes/Reusables/stepping sounds.tscn": {
+          "bytes": 412,
+          "sha256": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be"
+        },
+        "Scripts/Main/Shadow.gd": {
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        "Scripts/Main/Stepping Sounds.gd": {
+          "bytes": 1035,
+          "sha256": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85"
+        },
+        "user-roaming/Godot/editor_settings-3.tres": {
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log": {
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        "user-roaming/Godot/projects/filesystem_cache6": {
+          "bytes": 1196,
+          "sha256": "272851d6408430beb499f388d3822121900ff23b3207f5353a499218586efdf0"
+        },
+        "user-roaming/Godot/projects/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/script_templates/empty.gd": {
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        "user-roaming/Godot/script_templates/no_comments.gd": {
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      }
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-step-contacts-native-5\\temporary",
+      "marker": ".owned-catacombs-step-contacts-reference",
+      "marker_value": "catacombs-step-contacts-reference-v1",
+      "bytes": 38457,
+      "file_count": 32,
+      "source_copies_verified": {
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+        "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+        "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+      },
+      "adapters_frozen": {
+        "project.godot": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-5/project.godot",
+        "probe.tscn": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-5/probe.tscn",
+        "probe.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-5/probe.gd",
+        "source.tscn": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-5/source.tscn",
+        "actor.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-5/actor.gd",
+        "input.json": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-5/input.json",
+        "party.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-5/party.gd",
+        "global.gd": "reports/catacombs-stepping/cleanup/frozen-adapters/catacombs-step-contacts-native-5/global.gd"
+      },
+      "files": {
+        ".owned-catacombs-step-contacts-reference": {
+          "bytes": 36,
+          "sha256": "39c90341d1035d6169ab471019cdd6d883d8fd8e423083004fbdce520d814fa5"
+        },
+        "actor.gd": {
+          "bytes": 46,
+          "sha256": "4aaec50dd2bb5ce1209f1d8e364cd2974ce56a17e3f874dbc6e31ffaf21a59ce"
+        },
+        "global.gd": {
+          "bytes": 56,
+          "sha256": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696"
+        },
+        "input.json": {
+          "bytes": 12359,
+          "sha256": "d464028d7a0ec72bbaafbc50a6d8d5537ba57b5f6582a43acea50118261eabab"
+        },
+        "party.gd": {
+          "bytes": 158,
+          "sha256": "1257ffcd91740458a86ed9dcb3e3c5abf060b29b73d9b8e5cbf8f0fa68a5f375"
+        },
+        "probe.gd": {
+          "bytes": 5990,
+          "sha256": "f96559fc3a9075928672bffb6429ad0ebdc98e2e20595fbe57b30ab941ca41ee"
+        },
+        "probe.tscn": {
+          "bytes": 145,
+          "sha256": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4"
+        },
+        "project.godot": {
+          "bytes": 359,
+          "sha256": "d74e63800cbfc884e8a0f307b1a7d00804964faec99b538bc65b99741d5d1c0e"
+        },
+        "source.tscn": {
+          "bytes": 3482,
+          "sha256": "aef9cd407e8c091fc57f2969b511f29c641177ab6ef78c2ba34e6a5df6b6049b"
+        },
+        ".import/.gdignore": {
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.md5": {
+          "bytes": 91,
+          "sha256": "59fe9624ff276f42d2c56c954d25a091db76a35c9b36744639dceef8ae7674e2"
+        },
+        ".import/Magic_Ripple.png-3f3aa13ac36e7ba7ff8ab8c2ac2c9b2e.stex": {
+          "bytes": 130,
+          "sha256": "8106690466484a851b35dda1c4916e35dd54ca2ddab687fed5dde0bd30d9cffc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.md5": {
+          "bytes": 91,
+          "sha256": "350ed1697a1168b8062b94a909f7bce1057755535f91ff88d221d8cef3a481bc"
+        },
+        ".import/Shadow.png-aef31708b0d027718a327f4bdc2bc6de.stex": {
+          "bytes": 80,
+          "sha256": "dce3f2e28a8ab069f13b623579ebb2bcfa09f96cbcb5aeaf2b18790b7b436e52"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.md5": {
+          "bytes": 91,
+          "sha256": "6de0a9907236d19defec331b85ceff5c350e62a609d37bf92361d5bbe640ed12"
+        },
+        ".import/Water_Ripple.png-88bb26636720599e36e3af1c6da4f03c.stex": {
+          "bytes": 96,
+          "sha256": "a6a3d1617bf625732be8d1b9d480c383a425133aa9b7e225629c7ff51264fc63"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png": {
+          "bytes": 194,
+          "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+        },
+        "Graphics/Character Sprites/Magic_Ripple.png.import": {
+          "bytes": 725,
+          "sha256": "ec1c4a311d931583ec0c285a841e99fec83d8fc830c1487b66e0f83b4868c82a"
+        },
+        "Graphics/Character Sprites/Shadow.png": {
+          "bytes": 104,
+          "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+        },
+        "Graphics/Character Sprites/Shadow.png.import": {
+          "bytes": 707,
+          "sha256": "fe626abac79d7daa6802f4d6a375dcadc589f821282039edd232a29c6dc8ffad"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png": {
+          "bytes": 136,
+          "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+        },
+        "Graphics/Character Sprites/Water_Ripple.png.import": {
+          "bytes": 725,
+          "sha256": "ee6182c80aa20b40ef8292b99d9e711cf0d25cfcd4644ed76a8a3cd5bd6bb9a0"
+        },
+        "Nodes/Reusables/Shadow.tscn": {
+          "bytes": 1637,
+          "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+        },
+        "Nodes/Reusables/stepping sounds.tscn": {
+          "bytes": 412,
+          "sha256": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be"
+        },
+        "Scripts/Main/Shadow.gd": {
+          "bytes": 326,
+          "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+        },
+        "Scripts/Main/Stepping Sounds.gd": {
+          "bytes": 1035,
+          "sha256": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85"
+        },
+        "user-roaming/Godot/editor_settings-3.tres": {
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        "user-roaming/Godot/app_userdata/[unnamed project]/logs/godot.log": {
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        "user-roaming/Godot/projects/filesystem_cache6": {
+          "bytes": 1196,
+          "sha256": "2e053b93989910d28b408ab89d7aef7a985580d93a4cb86142d2e51f3c564e85"
+        },
+        "user-roaming/Godot/projects/project_metadata.cfg": {
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        "user-roaming/Godot/script_templates/empty.gd": {
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        "user-roaming/Godot/script_templates/no_comments.gd": {
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      }
+    }
+  ]
+}

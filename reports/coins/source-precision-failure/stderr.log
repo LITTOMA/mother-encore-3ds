@@ -1,0 +1,2 @@
+slope:15 vector actual 1.568713069 -8.655218124 expected 1.568712473 -8.655217171
+Coin actor 26 slope:15: std::abs(actual.x-expected.x)<=tolerance&&std::abs(actual.y-expected.y)<=tolerance ()

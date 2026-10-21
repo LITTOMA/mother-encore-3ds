@@ -1,0 +1,10 @@
+{
+  "runtime/coins.cpp": "fc6185ad485a4f87881e8fafdd323794610927bf13c4162727c35377b5b4d4e1",
+  "runtime/coins_data.cpp": "1cafb18743632832c3846cec5432a0b1c9f8e5bece1ae74d87d09292576896f6",
+  "runtime/circle_motion.cpp": "daaaab21321804a1ad20900b0cd4ca671d18b5169e1f53e0afa437fbcd141bd6",
+  "include/encore/coins.hpp": "cb718142a40dbf3ec5bb6277825bd2148717314799ede3fb32b8735b467ced6a",
+  "include/encore/circle_motion.hpp": "02496b242ad6d23b8341c82be9d00b6ee95680aad4e44add74d5226aad60b281",
+  "tests/coin_actor_tests.cpp": "5d73674bb45b7ce6e25851728a9b1dcfbb38178b9ec28170b124147dc30596f6",
+  "build/full-port/coin-fixture-development-2/coins.encoin": "d9a16090a99cdd75af4f4c920535a67c298579bdf45b6868133bad950fdb2b85",
+  "build/full-port/coin-fixture-development-2/native.tsv": "5f61e17c76642b030976f4138c9ca81c810ecc9ea34d083f03a01f46707dd787"
+}

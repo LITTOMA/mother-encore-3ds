@@ -8,6 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
+    runtime/coins_data.cpp runtime/coins.cpp runtime/circle_motion.cpp
     runtime/dungeon_key_contacts.cpp
     runtime/dungeon_key_indicator.cpp
     runtime/dungeon_key_hud_graphics.cpp
@@ -82,18 +83,21 @@ if(BUILD_TESTING)
     add_dependencies(encore_core_tests encore_content)
     add_test(NAME core COMMAND encore_core_tests ${CMAKE_SOURCE_DIR}/build/fixtures/sandbox.encpak)
     add_test(NAME host_smoke COMMAND encore_host --pack ${CMAKE_SOURCE_DIR}/build/fixtures/sandbox.encpak --smoke)
-    add_test(NAME python_tools COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/python_suite.py --ctest-dir ${CMAKE_BINARY_DIR} --shard-index 0 --shard-count 2)
-    add_test(NAME python_tools_part2 COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/python_suite.py --ctest-dir ${CMAKE_BINARY_DIR} --shard-index 1 --shard-count 2)
-    set_tests_properties(python_tools python_tools_part2 PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} RUN_SERIAL TRUE)
+    add_test(NAME python_tools COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/python_suite.py --ctest-dir ${CMAKE_BINARY_DIR} --shard-index 0 --shard-count 4)
+    add_test(NAME python_tools_part2 COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/python_suite.py --ctest-dir ${CMAKE_BINARY_DIR} --shard-index 1 --shard-count 4)
+    add_test(NAME python_tools_part3 COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/python_suite.py --ctest-dir ${CMAKE_BINARY_DIR} --shard-index 2 --shard-count 4)
+    add_test(NAME python_tools_part4 COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/python_suite.py --ctest-dir ${CMAKE_BINARY_DIR} --shard-index 3 --shard-count 4)
+    set_tests_properties(python_tools python_tools_part2 python_tools_part3 python_tools_part4 PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} RUN_SERIAL TRUE)
     set_tests_properties(core host_smoke python_tools PROPERTIES TIMEOUT 60)
     # The native asset/compiler and corruption suite now includes SDK doubles
     # and source-image verification, plus real temporary Git repositories.
     # Full discovery duplicated the separately registered binding suites and
     # reached 1800.02s on hosted Clang. python_suite.py partitions by exact
     # method IDs, retaining new unregistered modules and every subTest.
-    # A growing aggregate exceeded 1800.01s on GCC. Two whole-module shards
+    # A 599-method half exceeded 1800.01s on hosted GCC (run39660774189).
+    # Four whole-module shards
     # retain that limit independently and the exact discovery method multiset.
-    set_tests_properties(python_tools python_tools_part2 PROPERTIES TIMEOUT 1800)
+    set_tests_properties(python_tools python_tools_part2 python_tools_part3 python_tools_part4 PROPERTIES TIMEOUT 1800)
     add_executable(encore_progression_tests tests/progression_tests.cpp)
     target_link_libraries(encore_progression_tests PRIVATE encore_core)
     add_test(NAME upstream_progression COMMAND encore_progression_tests)
@@ -913,7 +917,7 @@ endif()
 # this label while retaining fixture preparers, source CLI and C++ consumers.
 if(BUILD_TESTING)
  set_tests_properties(
-  python_tools python_tools_part2 encounter_dependency_manifest battle_round_source_bindings
+  python_tools python_tools_part2 python_tools_part3 python_tools_part4 encounter_dependency_manifest battle_round_source_bindings
   round_recipe_source boss_presentation_bindings phone_presentation_bindings
   items_presentation_bindings world_program_bindings programme_lowering_recipe
   battle_entry_bindings ui_presentation_bindings house_source_bindings
@@ -1592,6 +1596,20 @@ if(BUILD_TESTING AND Python3_Interpreter_FOUND)
  target_link_libraries(encore_breakables_tests PRIVATE encore_core)
  add_test(NAME breakables COMMAND encore_breakables_tests ${CMAKE_BINARY_DIR}/breakables-fixture/breakables.encbrk ${CMAKE_BINARY_DIR}/breakables-fixture/native.tsv)
  set_tests_properties(breakables PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED breakables_source)
+endif()
+
+if(BUILD_TESTING AND Python3_Interpreter_FOUND)
+ add_test(NAME coins_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_coins.py --out ${CMAKE_BINARY_DIR}/coins-fixture)
+ set_tests_properties(coins_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP coins_source)
+ foreach(coin_case IN ITEMS coins coin_actor coin_factory circle_motion)
+  add_executable(encore_${coin_case}_tests tests/${coin_case}_tests.cpp)
+  target_link_libraries(encore_${coin_case}_tests PRIVATE encore_core)
+ endforeach()
+ add_test(NAME coins COMMAND encore_coins_tests ${CMAKE_BINARY_DIR}/coins-fixture/coins.encoin)
+ add_test(NAME coin_actor COMMAND encore_coin_actor_tests ${CMAKE_BINARY_DIR}/coins-fixture/coins.encoin ${CMAKE_BINARY_DIR}/coins-fixture/native.tsv)
+ add_test(NAME coin_factory COMMAND encore_coin_factory_tests ${CMAKE_BINARY_DIR}/coins-fixture/coins.encoin ${CMAKE_BINARY_DIR}/coins-fixture/factory.tsv)
+ add_test(NAME circle_motion COMMAND encore_circle_motion_tests ${CMAKE_BINARY_DIR}/coins-fixture/circle.tsv)
+ set_tests_properties(coins coin_actor coin_factory circle_motion PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED coins_source)
 endif()
 
 include(cmake/TestParallelism.cmake)

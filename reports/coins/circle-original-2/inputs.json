@@ -1,0 +1,15 @@
+{
+  "sources": {
+    "Nodes/Reusables/Coin.tscn": "9b3a720b28099b188a7408477647ef4b355e0994f6c3657f3e15897b364c6617",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29"
+  },
+  "engine_binary_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "producer_sha256": "db3969badc2124f6afbea534feb39148ab9f01e130f03e24e2c9ab6845214121",
+  "inputs": {
+    "project.godot": "5ee59874c48e7599043db5ceb2607630d14650babf98ae8a626b4be8b4acee8e",
+    "cases.json": "be5e1eae67715025aef570c083b0f8c2f1b6fdd19c22d34ed035c04076b333f8",
+    "probe.gd": "95252914e2a0d1c61ffe6e70e8d4db0cacae5d61c68f0b114fd3b67ac51835e1"
+  },
+  "scope": "Actual CircleShape2D static shape subset; explicit fixture solids/velocities; no game script, complete room, GPU or hardware claim"
+}

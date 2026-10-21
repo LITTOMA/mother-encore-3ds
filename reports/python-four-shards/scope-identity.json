@@ -1,0 +1,33 @@
+{
+  "base": "e936fe76c20b450c11676e3b8a8f2a8f00b64acf",
+  "gameplay_resources_platform_and_original_cpp_tests_unchanged": true,
+  "changed_regression_modules": {
+    "tests/test_python_shards.py": {
+      "all_original_methods_retained": true,
+      "added": [
+        [
+          "PythonShards",
+          "test_actual_four_shards_execute_each_future_writer_once"
+        ],
+        [
+          "PythonShards",
+          "test_four_shard_cli_rejects_invalid_plan_without_execution"
+        ],
+        [
+          "PythonShards",
+          "test_four_shard_registrations_reject_missing_duplicate_or_foreign_plan"
+        ],
+        [
+          "PythonShards",
+          "test_four_shards_preserve_complete_multiset_and_whole_modules"
+        ]
+      ]
+    },
+    "tests/test_ci_test_parallelism.py": {
+      "all_original_methods_retained": true,
+      "added": []
+    }
+  },
+  "raw_timeout_source": "f8c5a428b39b05b12f560da0b9ed4ced88075813",
+  "scope": "Schedule and regression additions only;not a full current matrix/SDK/hardware claim"
+}

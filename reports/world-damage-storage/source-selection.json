@@ -1,0 +1,13 @@
+{
+  "original_source_commit": "30a2e0193331f859e11fe4f4f2de92c2a2dcccdf",
+  "original_source_sha256": "64431135722eddc9bc0092f09289f2bf1cf8436d77598c025062dad897238f8f",
+  "current_source_sha256": "2bb8c162d7c4aafbfcf926888bdcdd6ece1fc58969923af50a87fe21fc61d873",
+  "current_test_sha256": "9d248a23470673ef83ad337926dc5c8a45f27f057dd9a5e4570c3861d6893b23",
+  "native_fixture_sha256": "ef2c3be0050ff236b812bd3d3758f1b7ef6ced45f214497c7be524646efa488c",
+  "scope": {
+    "host1": "Main94 implementation plus new regression;actual22failures",
+    "host2": "Fixed implementation with main94 header;actual21368pass",
+    "host3": "Same fixed implementation after95 prerequisite integration;actual21368pass"
+  },
+  "unverified": "No full rebuild/new native/emulator/GPU/audio/hardware;new full matrix still pending"
+}

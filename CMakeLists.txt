@@ -20,6 +20,7 @@ add_library(encore_core
     runtime/dungeon_rooms.cpp
     runtime/dungeon_terrain.cpp
     runtime/shadow_graphics.cpp
+    runtime/field_step_contacts.cpp
     runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/dungeon_keys.cpp runtime/dungeon_key_state.cpp runtime/dungeon_key_clocks.cpp runtime/dungeon_switches.cpp runtime/dungeon_switch_state.cpp runtime/dungeon_wall_timeline.cpp runtime/dungeon_wall_state.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
@@ -1281,6 +1282,10 @@ if(BUILD_TESTING)
     target_link_libraries(encore_catacombs_steps_tests PRIVATE encore_core)
     add_test(NAME catacombs_steps COMMAND encore_catacombs_steps_tests ${CMAKE_BINARY_DIR}/catacombs-steps-fixture)
     set_tests_properties(catacombs_steps PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED catacombs_steps_source)
+    add_executable(encore_field_step_contacts_tests tests/field_step_contacts_tests.cpp)
+    target_link_libraries(encore_field_step_contacts_tests PRIVATE encore_core)
+    add_test(NAME field_step_contacts COMMAND encore_field_step_contacts_tests ${CMAKE_BINARY_DIR}/catacombs-steps-fixture)
+    set_tests_properties(field_step_contacts PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED catacombs_steps_source)
     add_test(NAME shadow_graphics_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_shadow_graphics.py --out ${CMAKE_BINARY_DIR}/shadow-fixture)
     set_tests_properties(shadow_graphics_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_SETUP shadow_source)
     add_executable(encore_shadow_clock_tests tests/shadow_clock_tests.cpp)

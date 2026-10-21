@@ -1,0 +1,9 @@
+{
+  "actual_test_process_exit": 0,
+  "checks": 6422,
+  "wrapper_exit": 1,
+  "cause": "UnicodeEncodeError while printing retained mixed-encoding WSL stderr to GBK after actual test process and completion receipt succeeded",
+  "final_run": "step-contacts-host-3",
+  "final_checks": 6434,
+  "final_wrapper_exit": 0
+}

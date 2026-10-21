@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        ".",
+        "-B",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-contacts-cmake-discovery-1",
+        "-DENCORE_REGENERATE_NATIVE_CONTENT=OFF"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "ctest",
+        "--test-dir",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-contacts-cmake-discovery-1",
+        "-C",
+        "Debug",
+        "--show-only=json-v1"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "discovered_ctest": 330,
+  "python": {
+    "discovered": 1465,
+    "aggregate": 1082,
+    "dedicated": 383
+  },
+  "scope": "Windows configuration/discovery ONLY;captured actual -C Debug JSON used only for exact CTest metadata query;all other source/Git queries executed normally;not test execution"
+}

@@ -1,0 +1,5 @@
+{
+  "include/encore/field_step_contacts.hpp": "c7a13c94bd0a070aa984a0a7b8787f6683ec86bd33f1dfd26a30891cdec99658",
+  "runtime/field_step_contacts.cpp": "67e39e0a2fe6000654dc4865dd41ab2759dfc5a836e772f7ffa14e2d5c1fe0cd",
+  "tests/field_step_contacts_tests.cpp": "baa011d25a739f8615b757d9082a8521b8a02a7294f743dfe59c4882992b691a"
+}

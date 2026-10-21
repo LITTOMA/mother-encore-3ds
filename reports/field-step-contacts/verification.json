@@ -1,0 +1,11 @@
+{
+  "actual_host_checks": 6434,
+  "normal_leak_checks": true,
+  "new_module_compiled": true,
+  "unchanged117_core_inputs_verified": true,
+  "unchanged_core_archive_sha256": "372b2782ef10b8a1dc922e53941e88224e4c3cf808272ff6b86a98c8e2157426",
+  "native_original_reexecution": false,
+  "frozen_native_replay_of_geometry": true,
+  "native_events_supplied_to_service": false,
+  "scope": "164 stable actual native observations compared via derived contacts;not a complete physics/scene/GPU/NDSP pass"
+}

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "encore.catacombs-shadow.reviewed-graphics",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "source_recipe": "content/catacombs-stepping.json",
+  "source_recipe_sha256": "1929928a783d2c2266fb88a3aee5ed900a8d994b05eb5c39ce3e2e3f6bf827fe",
+  "player_scene": "Nodes/Reusables/Player.tscn",
+  "node": "Shadow",
+  "owner_id": 3109341951,
+  "atlas_columns": 4,
+  "output": "data/world/shared/shadow.encshadow",
+  "texture": "graphics/world/shared/shadow.t3x",
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "engine_sources": {
+    "scene/2d/animated_sprite.cpp": "8dc64e924ca6f560f0acaffd43cb86e47a500c8586a03205f026a4445fff0c2e",
+    "scene/2d/animated_sprite.h": "806a6385c16a2f0df64eaf30e96234b8552dbbdd39fffe8f8b0c85a66e930016"
+  },
+  "engine_license_sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+  "scope": "Original Player Shadow child geometry,pixel-snap/frame policy and untrimmed source pixels;bounded forward clock and checked texture service only,not full player/scene/lighting/save admission",
+  "license_review": "Pinned game-related asset permission and retained Godot MIT source/license checked;no environment fonts,tools or import caches copied into resources"
+}

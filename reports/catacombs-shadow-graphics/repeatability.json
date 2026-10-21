@@ -1,0 +1,50 @@
+{
+  "results": [
+    {
+      "profile": "60",
+      "run": 1,
+      "original_private": 9,
+      "sha256": "ddf0af50b87c8691b258a41e6cb3e5fafb0ed10f6061be934bb3927e4ee1321f",
+      "rows": 128
+    },
+    {
+      "profile": "60",
+      "run": 2,
+      "original_private": 10,
+      "sha256": "ddf0af50b87c8691b258a41e6cb3e5fafb0ed10f6061be934bb3927e4ee1321f",
+      "rows": 128
+    },
+    {
+      "profile": "10",
+      "run": 1,
+      "original_private": 11,
+      "sha256": "93eb1392c18cfc8401e84b195c8300264565c3012af3a1d153a4319aa5cf3d96",
+      "rows": 128
+    },
+    {
+      "profile": "10",
+      "run": 2,
+      "original_private": 12,
+      "sha256": "93eb1392c18cfc8401e84b195c8300264565c3012af3a1d153a4319aa5cf3d96",
+      "rows": 128
+    },
+    {
+      "profile": "no-draw",
+      "run": 1,
+      "original_private": 13,
+      "sha256": "4e29977ff8ff0a98d29eaee47a2337f1e76855cac3a36278973cee1e05b37f0d",
+      "rows": 128
+    },
+    {
+      "profile": "no-draw",
+      "run": 2,
+      "original_private": 14,
+      "sha256": "4e29977ff8ff0a98d29eaee47a2337f1e76855cac3a36278973cee1e05b37f0d",
+      "rows": 128
+    }
+  ],
+  "all_semantic_pairs_equal": true,
+  "excluded_diagnostic_fields": [
+    "drawn_frames"
+  ]
+}

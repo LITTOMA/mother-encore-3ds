@@ -47,15 +47,17 @@ private:
  FieldStepsView data_;std::vector<bool>enabled_;std::vector<FieldRunEvent>events_;
  uint32_t wanted_=kFieldNone,registered_=kFieldNone;bool running_=false,playing_=false;
 };
-// Selected source set_shadow/get_shadow and AnimatedSprite mode/frame state.
-// No elapsed animation clock or graphics service is inferred here.
+// Selected source set_shadow/get_shadow and forward AnimatedSprite clock.
+// The owning scene supplies process admission;hide/rendering do not stop time.
 class FieldStepShadowState {
 public:
  bool initialize(FieldStepsView,std::string&);bool set_animation(std::string_view,std::string&);bool set_frame(uint32_t,std::string&);
+ bool advance_idle(double delta,bool process_enabled,std::string&);
  bool prepared()const{return data_.valid();}FieldStepsView content()const{return data_;}
  uint32_t animation()const{return animation_;}uint32_t frame()const{return frame_;}
+ float timeout()const{return timeout_;}
  bool playing()const{return playing_;}bool behind()const{return prepared()&&!data_.shadow(animation_).front;}
-private:FieldStepsView data_;uint32_t animation_=kFieldNone,frame_=0;bool playing_=false;
+private:FieldStepsView data_;uint32_t animation_=kFieldNone,frame_=0;float timeout_=0;bool playing_=false;
 };
 enum class FieldStepBody:uint8_t {Player=1,Party=2,Other=3};
 // The caller owns body classification and the matching body Shadow state.

@@ -1,0 +1,13 @@
+{
+  "tests": 15,
+  "success": false,
+  "profiled_seconds": 127.48499999998603,
+  "scope": "Sparse topic-worktree tests use exact unchanged primary tool/source inputs;module ROOT explicitly primary for actual source/fixture/pack comparisons;not complete checkout or SDK",
+  "inputs": {
+    "build/worktrees/field-story-source-cost/tests/test_field_story.py": "78d041c062802ec977464a28cf0a5ec1cfe3d93d1c2752e38405f58ab450a4f6",
+    "build/worktrees/field-story-source-cost/tests/source_parse_cache.py": "de1d93f6ec5a2cc9c47f0c15ed0e3e047480c3b76e118269f82ad6a24ef18b35",
+    "build/worktrees/field-story-source-cost/tests/test_source_parse_cache.py": "7255a33df3c53d050c89286b5f50f2c5f7c9544905b2db71a9d7accd183881e0",
+    "tools/field_story.py": "431c67ccfe1b2d35f3d1e503500527d6a608ebbc447d143d9b24eb0ad4f20e98",
+    "tools/godot_text.py": "2d65e2a50b54d6f933e4ad7bee816b5d14a600c2edbbd24aa341d2db5099de67"
+  }
+}

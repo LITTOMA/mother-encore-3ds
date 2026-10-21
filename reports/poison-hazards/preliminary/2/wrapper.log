@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_poison_hazards_reference.py", line 215, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_poison_hazards_reference.py", line 214, in main
+    invoke(engine,project,['--video-driver','GLES2','--debug','--editor','--quit'],out/'import.log');invoke(engine,project,['--video-driver','GLES2','--debug','--fixed-fps','60'],out/'godot.log');doc=validate_result(json.loads((out/'reference.json').read_bytes()),proof);proof.update(producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),engine_sha256=hashlib.sha256(engine.read_bytes()).hexdigest(),result_sha256=hashlib.sha256((out/'reference.json').read_bytes()).hexdigest());(out/'receipt.json').write_text(json.dumps(proof,indent=2)+'\n');print('Actual original poison:',len(doc['rows']),'Timer frames,',len(doc['contacts']),'manual callbacks,',len(doc['spawned']),'settled source deferred children;not full hazards/scene/hardware')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_scene_reference.py", line 44, in invoke
+    raise ValueError('Engine reference failed; inspect ' + str(log))
+ValueError: Engine reference failed; inspect D:\GameDev\3DS\mother-encore-3ds\build\full-port\poison-native-2\import.log

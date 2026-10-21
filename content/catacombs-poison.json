@@ -1,0 +1,252 @@
+{
+  "schema": 1,
+  "kind": "encore.catacombs-poison.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene_id": 4,
+  "scope": "Source11 static poison areas with original raw trigger/blocker geometry and source37 hole timers/deferred spawn requests;selected original continuous-damage/contact methods. No HP/status execution,geyser animation/audio/physics,complete scene,save or hardware admission.",
+  "paths": {
+    "scene": "Maps/podunk/Catacombs.tscn",
+    "area": "Nodes/Reusables/Overlap/Poison.tscn",
+    "area_script": "Scripts/Main/Poison.gd",
+    "hole": "Nodes/Overworld/poison geyser hole.tscn",
+    "hole_script": "Scripts/Main/Poison Geyser Hole.gd",
+    "geyser": "Nodes/Overworld/poison geyser.tscn",
+    "geyser_script": "Scripts/Main/Poison Geyser.gd",
+    "party_script": "Scripts/Main/party/party_object.gd",
+    "status": "Scripts/Main/Status.gd",
+    "step_script": "Scripts/Main/Stepping Sounds.gd",
+    "license": "LICENSE"
+  },
+  "sources": {
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+    "Scripts/Main/Poison.gd": "0ca09a31436413c2593c1bbc799da977b2e6f1209f9a138cc585c8c2bbc94bd9",
+    "Nodes/Overworld/poison geyser hole.tscn": "fb8228717dc045a169206181d81597e408659713c7478fcaf648df246e1d5755",
+    "Scripts/Main/Poison Geyser Hole.gd": "9a70b4a1218285c09fb3474b14405caebeb3ed842653bb6b4b896f04087be3d7",
+    "Nodes/Overworld/poison geyser.tscn": "d700e3bbf3aee8d3b43e498391e38d8d8ad0a80d632b95cf34b605deafd588da",
+    "Scripts/Main/Poison Geyser.gd": "2ef05cc91eb3690a6e8a14fdb83a29ef06784f7ab0b8b083d8e79a2bcfd4ab57",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "symbols": {
+    "area_script": {
+      "_on_Area2D_body_entered": "5adc03c79bd185bfca1b32fecaa814404cc84a4b3f53b74340c77a613b66fdb9",
+      "_on_Poison_body_exited": "a010c016e4d0f3b1506379f52733c3565656f9c18cb511f0930d28a25a76355d"
+    },
+    "hole_script": {
+      "_ready": "a1ee7fae939424d645b6f3832628f73a6da45c56eb09bcdbc023267491355c2d",
+      "pause": "e4558252860340a69e25ba4f327cd8b1097f99cb84e822c86f575a0777422424",
+      "unpause": "ea27dbfd9a582a1b2c3728330825aa4358578034c4d132b818c724f717fb2458",
+      "_on_Timer_timeout": "ed134d361b94e9d7ebf8664a57e98c9c65eb6c86f9f496707418a24cd4f36a2e"
+    },
+    "geyser_script": {
+      "_on_Poison_Geyser_body_entered": "7e87db7f72a9ff028b9f18376337d81dbabc35147c8d47919bdb5a6c9915efcf",
+      "_on_Poison_Geyser_body_exited": "ce5df88f78ff43b3f5d979a433f0e35f739e256d2078567030e7c0a2b95f9a0c"
+    },
+    "party_script": {
+      "start_continuous_damage": "bbe46a2edb1f098cca4eb211de8c0c8db344abeef80e0035b8124fd4a5bc5a65",
+      "stop_continuous_damage": "b84eeffe253d5aed17bd13480b0c5667848f5fe09281a7628029734e341f515c"
+    }
+  },
+  "areas": [
+    {
+      "id": 1644475389,
+      "path": "Objects/Poison"
+    },
+    {
+      "id": 3652924447,
+      "path": "Objects/Poison2"
+    },
+    {
+      "id": 2931557513,
+      "path": "Objects/Poison3"
+    },
+    {
+      "id": 3738628102,
+      "path": "Objects/Poison6"
+    },
+    {
+      "id": 2849095824,
+      "path": "Objects/Poison7"
+    },
+    {
+      "id": 963566849,
+      "path": "Objects/Poison8"
+    },
+    {
+      "id": 1315564951,
+      "path": "Objects/Poison9"
+    },
+    {
+      "id": 1378302499,
+      "path": "Objects/Poison10"
+    },
+    {
+      "id": 622856885,
+      "path": "Objects/Poison11"
+    },
+    {
+      "id": 819499306,
+      "path": "Objects/Poison4"
+    },
+    {
+      "id": 1205838268,
+      "path": "Objects/Poison5"
+    }
+  ],
+  "holes": [
+    {
+      "id": 132472766,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole"
+    },
+    {
+      "id": 906741209,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole2"
+    },
+    {
+      "id": 828768704,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole6"
+    },
+    {
+      "id": 1180774742,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole7"
+    },
+    {
+      "id": 550497623,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole10"
+    },
+    {
+      "id": 3604884679,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole8"
+    },
+    {
+      "id": 2715360337,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole9"
+    },
+    {
+      "id": 1091368271,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole3"
+    },
+    {
+      "id": 1472781761,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole11"
+    },
+    {
+      "id": 3468790907,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole12"
+    },
+    {
+      "id": 3116809453,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole13"
+    },
+    {
+      "id": 2095418882,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole21"
+    },
+    {
+      "id": 3857506232,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole22"
+    },
+    {
+      "id": 2464935726,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole23"
+    },
+    {
+      "id": 362040268,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole34"
+    },
+    {
+      "id": 1653832538,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole35"
+    },
+    {
+      "id": 4221184736,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole36"
+    },
+    {
+      "id": 2359106166,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole37"
+    },
+    {
+      "id": 318345173,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole30"
+    },
+    {
+      "id": 1711193923,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole31"
+    },
+    {
+      "id": 471992295,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole38"
+    },
+    {
+      "id": 1797601137,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole39"
+    },
+    {
+      "id": 1572346130,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole40"
+    },
+    {
+      "id": 717171076,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole41"
+    },
+    {
+      "id": 4244107001,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole32"
+    },
+    {
+      "id": 2347818607,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole33"
+    },
+    {
+      "id": 210729613,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole24"
+    },
+    {
+      "id": 2072529435,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole25"
+    },
+    {
+      "id": 1352997336,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole15"
+    },
+    {
+      "id": 3383511138,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole16"
+    },
+    {
+      "id": 3198908660,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole17"
+    },
+    {
+      "id": 664938830,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole14"
+    },
+    {
+      "id": 773088613,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole18"
+    },
+    {
+      "id": 1494439411,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole19"
+    },
+    {
+      "id": 199409300,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole20"
+    },
+    {
+      "id": 3748159724,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole4"
+    },
+    {
+      "id": 2825867386,
+      "path": "Bottom2/Poison Geysers/Poison Geyser Hole5"
+    }
+  ],
+  "steps_recipe": "content/catacombs-stepping.json",
+  "steps_recipe_sha256": "1929928a783d2c2266fb88a3aee5ed900a8d994b05eb5c39ce3e2e3f6bf827fe",
+  "license_review": "Pinned upstream game-related derivative permission;source-only geometry/scalars,no fonts,media,tools or environment binaries added"
+}

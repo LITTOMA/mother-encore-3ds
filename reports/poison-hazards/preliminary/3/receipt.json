@@ -1,0 +1,52 @@
+{
+  "source": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "sources": {
+      "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+      "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+      "Scripts/Main/Poison.gd": "0ca09a31436413c2593c1bbc799da977b2e6f1209f9a138cc585c8c2bbc94bd9",
+      "Nodes/Overworld/poison geyser hole.tscn": "fb8228717dc045a169206181d81597e408659713c7478fcaf648df246e1d5755",
+      "Scripts/Main/Poison Geyser Hole.gd": "9a70b4a1218285c09fb3474b14405caebeb3ed842653bb6b4b896f04087be3d7",
+      "Nodes/Overworld/poison geyser.tscn": "d700e3bbf3aee8d3b43e498391e38d8d8ad0a80d632b95cf34b605deafd588da",
+      "Scripts/Main/Poison Geyser.gd": "2ef05cc91eb3690a6e8a14fdb83a29ef06784f7ab0b8b083d8e79a2bcfd4ab57",
+      "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+      "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+      "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+    },
+    "review_sha256": "f1349f21355418075296500928a5320aac943875183777d097bd6c3cfc68619a",
+    "producer_sha256": "618cb0be0decf855d4c395582c3bad5e80ab325579754199883e22625309f6d6",
+    "scope": "Source11 static poison areas with original raw trigger/blocker geometry and source37 hole timers/deferred spawn requests;selected original continuous-damage/contact methods. No HP/status execution,geyser animation/audio/physics,complete scene,save or hardware admission.",
+    "bytes": 6360,
+    "sha256": "ecbc12ea339c9ac790f48b390e422ebb734234ffb07c31e0416ace9db91b2fad"
+  },
+  "generated_sha256": {
+    "project.godot": "82879182b83f1caa8c62d177209140e55a4af166bc5cbf127185aa712c7df908",
+    "global.gd": "dfab9d3a810f9130bfcec57ff3b2631f8a6dd71675a806a0d49cdc20ac0c2be8",
+    "status.gd": "299fa975081f1b80f987445588703aacb6d52b1bcf7bee226b1ebf05412ee5c1",
+    "party.gd": "c6ea01f81b45302fa9eccf2fad28fafdde86f26a6b8545852cfddb2331fa5cfc",
+    "hole.gd": "eae51df029debae41d13a5b5236e414e33d0cf0fc2c72b1da64a6776bbd4788b",
+    "geyser.gd": "ed03ccbba59ba1868e63eeecbdc04ebe0bd834cd227b5be997820556ad21fc75",
+    "step.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+    "Scripts/Main/Poison.gd": "0ca09a31436413c2593c1bbc799da977b2e6f1209f9a138cc585c8c2bbc94bd9",
+    "probe.gd": "8707a25510b897db13673872fc490e4a3fa64293dfbbfebe30784dac01e298f0",
+    "probe.tscn": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c",
+    "input.json": "f8ed106df6453ec17e6851abd96f55064e254dbf79d73718fc8d72d2a1e626b2"
+  },
+  "adapters": [
+    "Verbatim selected original hole/contact methods and complete original poison Area script/prefab;not full root/player/Character implementation",
+    "Actual Timer nodes/defaults,source interval/delay,ordinary fixed60idle;explicit tree-pause and player signal services",
+    "PackedScene Node2D factory retains source deferred add_child/position;geyser animation/audio/physics not instantiated",
+    "Exact source raw polygons and flattened identity-parent origins;manual body callback delivery,not full physics contacts",
+    "PartyObject classifier retains original continuous-damage assignments;one trailing observer-only local reads the otherwise unused hit_direct argument,without modifying assignments or suppressing compiler diagnostics",
+    "Character.add_status and set_shadow are explicit request/state recorders;no HP/status effects or elapsed Shadow time;pause signals are emitted by the declared player service",
+    "Actions occur after the internal Timer phase;source-ordered timeout signals and final settled deferred children are observed separately",
+    "Hide does not disable Timer;pause player signal differs from tree pause;old wait rearm is observed rather than rescheduled by observer"
+  ],
+  "ticks": 720,
+  "contacts": 99,
+  "producer_sha256": "2fcfd3bc1d2e6867fbeccf0cc8f4626b0c67390730141cffbf9691de3d23f043",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "result_sha256": "fa56df37430f14388f4b1959990921a1c2320ec1806aced31541ab7869e03c06"
+}

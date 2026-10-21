@@ -1,0 +1,11 @@
+config_version=4
+_global_script_classes=[{"base": "KinematicBody2D", "class": "PartyObject", "language": "GDScript", "path": "res://party.gd"}, {"base": "Node", "class": "Status", "language": "GDScript", "path": "res://status.gd"}]
+_global_script_class_icons={"PartyObject":"","Status":""}
+[application]
+config/name="Original poison callbacks and Timer"
+run/main_scene="res://probe.tscn"
+[autoload]
+global="*res://global.gd"
+[physics]
+common/physics_fps=60
+common/physics_jitter_fix=0.0

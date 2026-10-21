@@ -1,0 +1,7 @@
+{
+  "stage": "Retain generated input SHA guard",
+  "file": "project.godot",
+  "expected_sha256": "82879182b83f1caa8c62d177209140e55a4af166bc5cbf127185aa712c7df908",
+  "actual_sha256": "4b4e092d8d60eb82a3ca739638e0fd69d1dac07328cbda519da3b7d802053ca2",
+  "reason": "Editor serialized temporary configuration;old result retained,not accepted as final producer/input verification"
+}

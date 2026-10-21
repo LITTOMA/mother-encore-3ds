@@ -1,0 +1,7 @@
+{
+  "source": "f802a56b3d2b3f84cedb1a412ad7afb79e1d7fbb",
+  "official_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "actual_reused_game": 92,
+  "byte_identical_to_actual_two_cold90": true,
+  "scope": "Actual100 receipt compared to both actually retained88/92 games;reuse only equal opening regression,no independent100 launch/ordinary geyser physics/complete room/GPU/NDSP/hardware"
+}

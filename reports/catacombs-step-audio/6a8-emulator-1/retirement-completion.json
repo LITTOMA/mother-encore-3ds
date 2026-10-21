@@ -1,0 +1,11 @@
+{
+  "parts_bytes": 192937984,
+  "old_game_bytes": 264980712,
+  "profiles_already_removed_bytes": 193056022.0,
+  "total_bytes_reclaimed": 650974718.0,
+  "replacement_game_retained": true,
+  "receipts_logs_preserved": true,
+  "old_source": "56664735f9bcff288c6f8ab08416e7d664542926",
+  "new_source": "6a8c6664c6b004c37e13ec3a708961bbea5655e0",
+  "scope": "Exact23parts andbyte-identical superseded85game;two current88cold90passed;receipts/rawlogs preserved"
+}

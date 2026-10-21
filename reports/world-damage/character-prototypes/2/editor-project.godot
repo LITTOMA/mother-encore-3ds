@@ -1,0 +1,41 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Object",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Character.gd"
+}, {
+"base": "Reference",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Item.gd"
+}, {
+"base": "Node",
+"class": "Status",
+"language": "GDScript",
+"path": "res://Status.gd"
+} ]
+_global_script_class_icons={
+"Character": "",
+"Item": "",
+"Status": ""
+}
+
+[application]
+
+config/name="Original Character source methods"
+run/main_scene="res://probe.tscn"
+
+[autoload]
+
+globaldata="*res://globaldata.gd"
+uiManager="*res://ui.gd"

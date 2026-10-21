@@ -1,0 +1,6 @@
+{
+  "result_sha256": "c3773ec03d38c3e779933f4e05230e2cb3fab240de4e257df7663edbdabc8a6a",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "probe_sha256": "419be4215bc95110886fb533fbd092c7e6c306f678dbf18ffdfa9ad2430d4122",
+  "scope": "Complete original Character/Status scripts and actual source YAML dictionaries;explicit party-member type adapter,no equipment/item methods/fullgame claims;unused-parameter observer read and static-local shadowing parameter rename;explicit nonbattle UI context;unexecuted Item.get_data fails closed,not source behavior changes"
+}

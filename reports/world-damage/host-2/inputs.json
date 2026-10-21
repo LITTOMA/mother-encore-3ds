@@ -1,0 +1,7 @@
+{
+  "include/encore/world_damage.hpp": "3d630eaabc092b5823e5c61a8af9a74f18b499857006bee65c2ea6ea1f39a8c9",
+  "runtime/world_damage.cpp": "b51ce8d0a0d69c0e4315d1aa03db34a24cea7083816bf23b21a47c713c9cc77b",
+  "tests/world_damage_tests.cpp": "903b64514c714790886649e5068ae841204b0c6a68c535683dfa5323e55f5e19",
+  "build/full-port/world-damage-fixture-1/world-damage.encwdm": "48b7ee28d72cf6a741317db7fc18b299ed553c16fe5de7a610dc9d50c981e87b",
+  "build/full-port/world-damage-fixture-1/native.tsv": "ef2c3be0050ff236b812bd3d3758f1b7ef6ced45f214497c7be524646efa488c"
+}

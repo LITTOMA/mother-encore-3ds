@@ -1,0 +1,15 @@
+{
+  "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "sources": {
+    "core/math/math_funcs.h": {
+      "git_blob": "557ed0564a98b3ae4d6a92142761315727ebbbea",
+      "sha256": "32e8a5a998235947996119bed349cbd57233a9080b556a6b57d438ac40821e13",
+      "bytes": 19178
+    },
+    "core/math/math_defs.h": {
+      "git_blob": "76677657ca8d9c07729b39e35ca7e4fbd11e3a71",
+      "sha256": "e5a6d4d80da1503950b05a468598c8a6fa1e5a3e15e05c0b024c0206b76b6a98",
+      "bytes": 3824
+    }
+  }
+}

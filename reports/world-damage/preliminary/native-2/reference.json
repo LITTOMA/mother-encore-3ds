@@ -1,0 +1,5930 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "label": "ordinary",
+      "hp": 6,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+        [
+          "camera",
+          1,
+          0.2,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          "vibration",
+          0,
+          0.6,
+          0.8,
+          0.1
+        ],
+        [
+          "hurt",
+          "res://Audio/Sound effects/Hurt 1.mp3",
+          "damage"
+        ],
+        [
+          "stat",
+          "hp",
+          6,
+          20
+        ],
+        [
+          "show",
+          false,
+          true
+        ],
+        [
+          "update",
+          true
+        ]
+      ],
+      "rng_next": 1039475129
+    },
+    {
+      "label": "floor",
+      "hp": 1,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+        [
+          "camera",
+          1,
+          0.2,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          "vibration",
+          0,
+          0.6,
+          0.8,
+          0.1
+        ],
+        [
+          "hurt",
+          "res://Audio/Sound effects/Hurt 1.mp3",
+          "damage"
+        ],
+        [
+          "show",
+          false,
+          true
+        ],
+        [
+          "update",
+          true
+        ]
+      ],
+      "rng_next": 2375931748
+    },
+    {
+      "label": "healing_clamp",
+      "hp": 20,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+        [
+          "camera",
+          1,
+          0.2,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          "vibration",
+          0,
+          0.6,
+          0.8,
+          0.1
+        ],
+        [
+          "hurt",
+          "res://Audio/Sound effects/Hurt 1.mp3",
+          "damage"
+        ],
+        [
+          "stat",
+          "hp",
+          24,
+          20
+        ],
+        [
+          "show",
+          false,
+          true
+        ],
+        [
+          "update",
+          true
+        ]
+      ],
+      "rng_next": 2375931748
+    },
+    {
+      "label": "incapacitated",
+      "hp": 0,
+      "status": [
+        {
+          "status": "unconscious"
+        }
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+        [
+          "camera",
+          1,
+          0.2,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          "vibration",
+          0,
+          0.6,
+          0.8,
+          0.1
+        ],
+        [
+          "hurt",
+          "res://Audio/Sound effects/Hurt 1.mp3",
+          "damage"
+        ]
+      ],
+      "rng_next": 2375931748
+    },
+    {
+      "label": "zero_maxhp",
+      "hp": 0,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+        [
+          "camera",
+          1,
+          0.2,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          "vibration",
+          0,
+          0.6,
+          0.8,
+          0.1
+        ],
+        [
+          "hurt",
+          "res://Audio/Sound effects/Hurt 1.mp3",
+          "damage"
+        ]
+      ],
+      "rng_next": 2375931748
+    },
+    {
+      "label": "lethal",
+      "hp": 0,
+      "status": [
+        {
+          "status": "unconscious"
+        }
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+        [
+          "camera",
+          1,
+          0.2,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          "vibration",
+          0,
+          0.6,
+          0.8,
+          0.1
+        ],
+        [
+          "hurt",
+          "res://Audio/Sound effects/Hurt 1.mp3",
+          "damage"
+        ],
+        [
+          "stat",
+          "hp",
+          -8,
+          20
+        ],
+        [
+          "show",
+          false,
+          true
+        ],
+        [
+          "update",
+          true
+        ],
+        [
+          "status"
+        ],
+        [
+          "game_over"
+        ]
+      ],
+      "rng_next": 1039475129
+    },
+    {
+      "label": "zero_variance",
+      "hp": 11,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+        [
+          "camera",
+          1,
+          0.2,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          "vibration",
+          0,
+          0.6,
+          0.8,
+          0.1
+        ],
+        [
+          "hurt",
+          "res://Audio/Sound effects/Hurt 1.mp3",
+          "damage"
+        ],
+        [
+          "stat",
+          "hp",
+          11,
+          20
+        ],
+        [
+          "show",
+          false,
+          true
+        ],
+        [
+          "update",
+          true
+        ]
+      ],
+      "rng_next": 1039475129
+    },
+    {
+      "label": "complete:play",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:0",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1015580809,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:1",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1023969417,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:2",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1028443342,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1040220275,
+        1040220275,
+        1040220275,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:3",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1032358025,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1040220275,
+        1040220275,
+        1040220275,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:4",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1034594987,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:5",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1036831949,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:6",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1039068911,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:7",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1040746633,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:8",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1041865114,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:9",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1042983595,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:10",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1044102076,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:11",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1045220557,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:12",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1046339038,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:13",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1047457519,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:14",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1048576000,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:15",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1049135241,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:16",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1049694482,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:17",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1050253723,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:18",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1050812964,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:19",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1051372205,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:20",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1051931446,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:21",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1052490687,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:22",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1053049928,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:23",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1053609169,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:24",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1054168410,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:25",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1054727651,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:26",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1055286892,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:27",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1055846133,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:28",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1056405374,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:29",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1056964611,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:30",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1057244231,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:31",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1057523851,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:32",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1057803471,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:33",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058083091,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:34",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058362711,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:35",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058642331,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:36",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058921951,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:37",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1059201571,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:38",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1059481191,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:39",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1059760811,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:40",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060040431,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:41",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060320051,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:42",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060599671,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:43",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060879291,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:44",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061158911,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:45",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061438531,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:46",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061718151,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:47",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061997771,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:48",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1062277391,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:49",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:50",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:51",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:52",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:53",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "complete:54",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:play",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:pause",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 0,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:resume",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 0,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:0",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1015580809,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:1",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1023969417,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:2",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1028443342,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1040220275,
+        1040220275,
+        1040220275,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:3",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1032358025,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1040220275,
+        1040220275,
+        1040220275,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:4",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1034594987,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:5",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1036831949,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:6",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1039068911,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:7",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1040746633,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:8",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1041865114,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:9",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1042983595,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:10",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1044102076,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:11",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1045220557,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:12",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1046339038,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:13",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1047457519,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:14",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1048576000,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:15",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1049135241,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:16",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1049694482,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:17",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1050253723,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:18",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1050812964,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:19",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1051372205,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:20",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1051931446,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:21",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1052490687,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:22",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1053049928,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:23",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1053609169,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:24",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1054168410,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:25",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1054727651,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:26",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1055286892,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:27",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1055846133,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:28",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1056405374,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:29",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1056964611,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:30",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1057244231,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:31",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1057523851,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:32",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1057803471,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:33",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1058083091,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:34",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1058362711,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:35",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1058642331,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:36",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1058921951,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:37",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1059201571,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:38",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1059481191,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:39",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1059760811,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:40",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1060040431,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:41",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1060320051,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:42",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1060599671,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:43",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1060879291,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:44",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1061158911,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:45",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1061438531,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:46",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1061718151,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:47",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1061997771,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:48",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062277391,
+      "invulnerable": false,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:49",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:50",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:51",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:52",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:53",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_zero:54",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:play",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:0",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1015580809,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:1",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1023969417,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:2",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1028443342,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1040220275,
+        1040220275,
+        1040220275,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:3",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1032358025,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1040220275,
+        1040220275,
+        1040220275,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:4",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1034594987,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:5",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1036831949,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:pause",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1036831949,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:manual_paused",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1045220557,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:resume",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1045220557,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:6",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1046339038,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:7",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1047457519,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:8",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1048576000,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:9",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1049135241,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:10",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1049694482,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:11",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1050253723,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:12",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1050812964,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:13",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1051372205,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:14",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1051931446,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:15",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1052490687,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:16",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1053049928,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:17",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1053609169,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:18",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1054168410,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:19",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1054727651,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:20",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1055286892,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:21",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1055846133,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:22",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1056405374,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:23",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1056964611,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:24",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1057244231,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:25",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1057523851,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:26",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1057803471,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:27",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058083091,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:28",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058362711,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:29",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058642331,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:30",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058921951,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:31",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1059201571,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:32",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1059481191,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:33",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1059760811,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:34",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060040431,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:35",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060320051,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:36",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060599671,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:37",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060879291,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:38",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061158911,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:39",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061438531,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:40",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061718151,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:41",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061997771,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:42",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1062277391,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:43",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:44",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:45",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:46",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:47",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:48",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:49",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:50",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:51",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:52",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:53",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "pause_positive:54",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:play",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 0,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:0",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1015580809,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:1",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1023969417,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:2",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1028443342,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1040220275,
+        1040220275,
+        1040220275,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:3",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1032358025,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1040220275,
+        1040220275,
+        1040220275,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:4",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1034594987,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:5",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1036831949,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:6",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1039068911,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1060484535,
+        1021370603,
+        1043378351,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:7",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1040746633,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:8",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1041865114,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:9",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1042983595,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 1065353216,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:10",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1044102076,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:11",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1045220557,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:12",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1046339038,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:13",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1047457519,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:14",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1048576000,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:15",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1049135241,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:16",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1049694482,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:17",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1050253723,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:18",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1050812964,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:19",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1051372205,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:20",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1051931446,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:replay",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1051931446,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:21",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1052490687,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:22",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1053049928,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:23",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1053609169,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:24",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1054168410,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:25",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1054727651,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:26",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1055286892,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:27",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1055846133,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:28",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1056405374,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:29",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1056964611,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:30",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1057244231,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:31",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1057523851,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:32",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1057803471,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:33",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058083091,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:34",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058362711,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:35",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058642331,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:36",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1058921951,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:37",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1059201571,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:38",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1059481191,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:39",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1059760811,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:40",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060040431,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:41",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060320051,
+      "invulnerable": true,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:42",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060599671,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:43",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1060879291,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:44",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061158911,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:45",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061438531,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:46",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061718151,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:47",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1061997771,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:48",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "Flash",
+      "assigned": "Flash",
+      "playing": true,
+      "time": 1062277391,
+      "invulnerable": true,
+      "main_alpha": 0,
+      "special_alpha": 0,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:49",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:50",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:51",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:52",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:53",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    },
+    {
+      "label": "restart:54",
+      "hp": 100,
+      "status": [
+
+      ],
+      "current": "",
+      "assigned": "Flash",
+      "playing": false,
+      "time": 1062557008,
+      "invulnerable": false,
+      "main_alpha": 1065353216,
+      "special_alpha": 1065353216,
+      "main_modifier": 0,
+      "main_color": [
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ],
+      "events": [
+
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "mismatches": [
+    {
+      "path": "project.godot",
+      "declared_before_run": "a1f29b7d1a76d049f79ab3a04d5ff9f392b08543413ed7bb6569fbc44f4ffe6f",
+      "actual_after_failure": "4d30f844e1c325c47989d580a2cbb7fc866940cf8cb4e616dd37819f061f67b6"
+    },
+    {
+      "path": "probe.gd",
+      "declared_before_run": "4ed8724f7371cd4b232ae1406ddf46195ae68c377bec7902070b115d8c16e77a",
+      "actual_after_failure": "d34ebe00ec2b1d9d77cd7d00f61571d8c0e113c4721079369a75ac325eb4ec9a"
+    }
+  ],
+  "scope": "Actual failed/editor-aborted inputs retained;not successful native evidence."
+}

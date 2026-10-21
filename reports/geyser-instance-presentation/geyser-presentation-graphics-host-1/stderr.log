@@ -1,0 +1,21 @@
+tests/geyser_graphics_tests.cpp: In function ‘void registry_graphics_case(const char*, const encore::upstream::GeyserGraphicsData&, const std::filesystem::__cxx11::path&)’:
+tests/geyser_graphics_tests.cpp:22:287: error: ‘calls’ was not declared in this scope; did you mean ‘key_graphics_test::calls’?
+   22 |  CHECK(life.flush_additions(501,error)&&painter.compose(life,id,{},true,error));const auto serial=painter.frame();auto clone=life;CHECK(!painter.draw(501,serial,id,clone,{},true,error)&&!painter.draw(500,serial,id,life,{},true,error)&&!painter.draw(501,serial,id+1,life,{},true,error));calls.clear();CHECK(painter.draw(501,serial,id,life,{},true,error)&&calls.size()==1);CHECK(!painter.draw(501,serial,id,life,{},true,error));
+      |                                                                                                                                                                                                                                                                                               ^~~~~
+      |                                                                                                                                                                                                                                                                                               key_graphics_test::calls
+In file included from platform/ctr/geyser_renderer.hpp:2,
+                 from tests/geyser_graphics_tests.cpp:2:
+tests/dungeon_key_renderer_stubs/citro2d.h:19:55: note: ‘key_graphics_test::calls’ declared here
+   19 | inline std::vector<Spec>specs;inline std::vector<Call>calls;
+      |                                                       ^~~~~
+tests/geyser_graphics_tests.cpp:24:309: error: ‘live’ was not declared in this scope; did you mean ‘key_graphics_test::live’?
+   24 |  auto voice=GeyserNamedVoice::Absent;CHECK(life.flush_methods(501,{{id,{}}},voice,error));std::vector<GeyserInstanceCommand>delivered;CHECK(life.take_commands(501,delivered,error)&&life.retire_scene(501,error));CHECK(!painter.draw(501,painter.frame(),id,life,{},true,error));CHECK(painter.retire(501,error)&&live==0);
+      |                                                                                                                                                                                                                                                                                                                     ^~~~
+tests/geyser_graphics_tests.cpp:11:35: note: in definition of macro ‘CHECK’
+   11 | #define CHECK(x) do{++checks;if(!(x)){std::fprintf(stderr,"Geyser graphics %d: %s (%s)\n",__LINE__,#x,error.c_str());std::exit(1);}}while(0)
+      |                                   ^
+In file included from platform/ctr/geyser_renderer.hpp:2,
+                 from tests/geyser_graphics_tests.cpp:2:
+tests/dungeon_key_renderer_stubs/citro2d.h:20:27: note: ‘key_graphics_test::live’ declared here
+   20 | inline unsigned imports=0,live=0,frees=0,flushes=0,binds=0,target=0,mode=0,bound=0;
+      |                           ^~~~

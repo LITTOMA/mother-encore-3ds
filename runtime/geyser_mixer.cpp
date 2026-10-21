@@ -18,13 +18,17 @@ bool GeyserMixer::owner(uint64_t epoch,std::string&e)const{return valid()&&epoch
 size_t GeyserMixer::find(uint64_t instance)const{for(size_t n=0;n<voices_.size();++n)if(voices_[n].instance==instance)return n;return SIZE_MAX;}
 size_t GeyserMixer::cache(uint32_t id)const{for(size_t n=0;n<caches_.size();++n)if(caches_[n].asset.stable_id==id)return n;return SIZE_MAX;}
 bool GeyserMixer::activate(uint64_t epoch,std::string&e){if(!valid()||!epoch||epoch_||epoch<=last_epoch_||pending_)return bad(e,"Geyser mixer fresh epoch rejected");epoch_=last_epoch_=epoch;last_instance_=0;e.clear();return true;}
-bool GeyserMixer::bind(uint64_t epoch,uint64_t instance,std::string&e){if(!owner(epoch,e))return false;if(!instance||instance<=last_instance_)return bad(e,"Geyser mixer source ticket must increase");const auto slot=std::find_if(voices_.begin(),voices_.end(),[](const Voice&v){return !v.instance;});if(slot==voices_.end())return bad(e,"Geyser mixer source instance capacity reached");*slot={};slot->instance=instance;slot->state.present=true;last_instance_=instance;e.clear();return true;}
+bool GeyserMixer::bind(uint64_t epoch,uint64_t instance,std::string&e){if(!owner(epoch,e))return false;if(lifecycle_owner_.valid())return bad(e,"Geyser mixer manual bind conflicts with registry owner");return bind_source(instance,e);}
+bool GeyserMixer::bind_source(uint64_t instance,std::string&e){if(!instance||instance<=last_instance_)return bad(e,"Geyser mixer source ticket must increase");const auto slot=std::find_if(voices_.begin(),voices_.end(),[](const Voice&v){return !v.instance;});if(slot==voices_.end())return bad(e,"Geyser mixer source instance capacity reached");*slot={};slot->instance=instance;slot->state.present=true;last_instance_=instance;e.clear();return true;}
 bool GeyserMixer::sync(uint64_t epoch,uint64_t instance,GeyserTimeline&timeline,Vec2 position,GeyserListener listener,std::string&e){
- if(!owner(epoch,e))return false;const auto at=find(instance);GeyserSnapshot pose;if(!instance||at==SIZE_MAX||!data_.timeline().same_owner(timeline.content())||!timeline.inspect(epoch,instance,pose,e))return bad(e,"Geyser mixer source instance/timeline owner differs");const auto&commands=timeline.commands();if(commands.size()>256)return bad(e,"Geyser mixer command capacity rejected");auto next=voices_[at],global=global_;uint64_t starts=0;GeyserStereoGain gain;
+ if(!owner(epoch,e))return false;GeyserSnapshot pose;if(lifecycle_owner_.valid()||!data_.timeline().same_owner(timeline.content())||!timeline.inspect(epoch,instance,pose,e))return bad(e,"Geyser mixer source instance/timeline owner differs");const auto&commands=timeline.commands();if(!apply_source(instance,pose,position,listener,commands.data(),commands.size(),e))return false;timeline.take_commands();return true;
+}
+bool GeyserMixer::apply_source(uint64_t instance,const GeyserSnapshot&pose,Vec2 position,GeyserListener listener,const GeyserCommand*commands,size_t count,std::string&e){
+ const auto at=find(instance);if(!instance||at==SIZE_MAX||count>256||(!commands&&count))return bad(e,"Geyser mixer source instance/command capacity rejected");auto next=voices_[at],global=global_;uint64_t starts=0;GeyserStereoGain gain;
  if(!geyser_spatial_gain(data_.timeline().policy(),position,listener,pose.gain,gain,e))return false;next.gain=gain;next.state.paused=pose.stream_paused;
  auto stop=[](Voice&v){v.state.playing=false;v.state.end_frame=UINT64_MAX;};
  auto play=[&](Voice&v,uint32_t id,float offset){const auto n=cache(id);uint32_t frame=0;if(n==SIZE_MAX||!music_start_frame(caches_[n].asset,offset,frame,e))return false;v.cache=n;v.state.present=true;v.state.sound=id;v.state.cursor=frame;v.state.end_frame=UINT64_MAX;v.state.playing=true;++starts;return true;};
- for(const auto&c:commands){
+ for(size_t index=0;index<count;++index){const auto&c=commands[index];
   const auto*s=data_.timeline().sound(c.sound);
   switch(c.kind){
    case GeyserCommandKind::SetStream:if(!s||s->role==3||c.offset!=0)return bad(e,"Geyser mixer unknown local stream");stop(next);next.cache=cache(c.sound);next.state.sound=c.sound;next.state.cursor=0;break;
@@ -34,7 +38,7 @@ bool GeyserMixer::sync(uint64_t epoch,uint64_t instance,GeyserTimeline&timeline,
    default:return bad(e,"Geyser mixer unknown command opcode rejected");
   }
  }
- if(starts>UINT64_MAX-plays_)return bad(e,"Geyser mixer play generation exhausted");voices_[at]=next;global_=global;plays_+=starts;timeline.take_commands();e.clear();return true;
+ if(starts>UINT64_MAX-plays_)return bad(e,"Geyser mixer play generation exhausted");voices_[at]=next;global_=global;plays_+=starts;e.clear();return true;
 }
 bool GeyserMixer::user_sfx(float db,std::string&e){if(!valid()||pending_||!std::isfinite(db)||db< -120||db>24)return bad(e,"Geyser mixer user gain rejected");user_gain_=audio_linear_gain(db);e.clear();return true;}
 bool GeyserMixer::global_tree_notification(bool paused,bool can_process,std::string&e){if(!valid()||pending_)return bad(e,"Geyser mixer needs prepared global owner");if(global_.state.present){if(!paused)global_.state.paused=false;else if(!can_process)global_.state.paused=true;}e.clear();return true;}
@@ -55,8 +59,8 @@ bool GeyserMixer::reserve_render(int16_t*out,uint32_t capacity,uint32_t&frames,s
 bool GeyserMixer::commit_render(std::string&e){if(!valid()||!pending_)return bad(e,"Geyser mixer no reserved render");voices_.swap(next_);global_=next_global_;rendered_+=pending_frames_;pending_=false;e.clear();return true;}
 bool GeyserMixer::render(int16_t*out,uint32_t capacity,uint32_t&frames,std::string&e){return reserve_render(out,capacity,frames,e)&&commit_render(e);}
 bool GeyserMixer::consumed(uint64_t frames,std::string&e){if(!valid()||pending_||frames<consumed_||frames>rendered_)return bad(e,"Geyser mixer unknown consumed generation rejected");consumed_=frames;auto finished=[&](Voice&v){if(v.state.playing&&v.state.end_frame!=UINT64_MAX&&v.state.end_frame<=consumed_)v.state.playing=false;};for(auto&v:voices_)finished(v);finished(global_);e.clear();return true;}
-bool GeyserMixer::retire_actor(uint64_t epoch,uint64_t instance,std::string&e){if(!owner(epoch,e))return false;const auto at=find(instance);if(!instance||at==SIZE_MAX)return bad(e,"Geyser mixer retiring unknown instance");voices_[at]={};e.clear();return true;}
-bool GeyserMixer::retire_scene(uint64_t epoch,std::string&e){if(!owner(epoch,e))return false;for(auto&v:voices_)v={};epoch_=0;e.clear();return true;}
+bool GeyserMixer::retire_actor(uint64_t epoch,uint64_t instance,std::string&e){if(!owner(epoch,e))return false;const auto at=find(instance);if(lifecycle_owner_.valid()||!instance||at==SIZE_MAX)return bad(e,"Geyser mixer retiring unknown/manual-conflicting instance");voices_[at]={};e.clear();return true;}
+bool GeyserMixer::retire_scene(uint64_t epoch,std::string&e){if(!owner(epoch,e))return false;for(auto&v:voices_)v={};lifecycle_owner_={};epoch_=0;e.clear();return true;}
 bool GeyserMixer::inspect(uint64_t epoch,uint64_t instance,GeyserPlayback&out,std::string&e)const{if(!owner(epoch,e))return false;const auto at=find(instance);if(!instance||at==SIZE_MAX)return bad(e,"Geyser mixer inspecting unknown instance");out=voices_[at].state;e.clear();return true;}
 GeyserNamedVoice GeyserMixer::global_voice()const{return global_.state.playing?GeyserNamedVoice::Playing:global_.state.present?GeyserNamedVoice::Idle:GeyserNamedVoice::Absent;}
 }

@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "kind": "encore.catacombs-geyser-lifecycle.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Checked original Timer factory/Objects binding with unchanged independently versioned poison and Geyser metadata;selected constructed/pending/ready/idle/deferred-retirement lifecycle only,no formal room/physics/Character/GPU/NDSP admission",
+  "poison_recipe": "content/catacombs-poison.json",
+  "poison_recipe_sha256": "f1349f21355418075296500928a5320aac943875183777d097bd6c3cfc68619a",
+  "geyser_recipe": "content/catacombs-geyser.json",
+  "geyser_recipe_sha256": "7daa8eefb8cabaadd4148f0299e977824e0480e5748a2b420b6a465153b8dc2f",
+  "hole_source": "Scripts/Main/Poison Geyser Hole.gd",
+  "hole_sha256": "9a70b4a1218285c09fb3474b14405caebeb3ed842653bb6b4b896f04087be3d7",
+  "timeout_sha256": "ed134d361b94e9d7ebf8664a57e98c9c65eb6c86f9f496707418a24cd4f36a2e",
+  "license_review": "Existing pinned upstream game-related derivative permission;metadata/source binding only,no media/fonts/tools/firmware added"
+}

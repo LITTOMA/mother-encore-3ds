@@ -1,0 +1,45 @@
+{
+  "workspace": "D:\\GameDev\\3DS\\mother-encore-3ds",
+  "targets": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-presentation-core-host-1\\check",
+      "kind": "file",
+      "marker": null,
+      "owner": null,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-presentation-core-host-1\\check",
+          "bytes": 13940528,
+          "sha256": "8f8ec8c3777add39b22896f277793e9cecf90054ed641c4eb0cf6aab7e48adbc"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-presentation-core-host-2\\check",
+      "kind": "file",
+      "marker": null,
+      "owner": null,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-presentation-core-host-2\\check",
+          "bytes": 13955952,
+          "sha256": "245ec3c8ced08bff1edca0da6299f51acdc5065dcb7eb770f7f5a8459e3f8340"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-presentation-core-host-3\\check",
+      "kind": "file",
+      "marker": null,
+      "owner": null,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-presentation-core-host-3\\check",
+          "bytes": 13958528,
+          "sha256": "74560ee91ca24d8bb59ae6efbde68d9a01d86e4cbda0df9199f01e7c39eb5aa2"
+        }
+      ]
+    }
+  ],
+  "bytes": 41855008
+}

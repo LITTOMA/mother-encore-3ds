@@ -1,0 +1,20 @@
+{
+  "records": [
+    {
+      "sha256": "a0cc90773c3edccb32b4fe3a0c509cffdadce0da7df9a5e22c79836e623e6844",
+      "gzip_sha256": "4c7ad53673c757f0255d138b8a2160f887dd3397c60ce6a64668b36411c26bc8",
+      "bytes": 10359417,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\geyser-lifecycle\\preliminary\\objects-first-initial-4-5\\native1\\reference.json",
+      "retained_gzip": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\geyser-lifecycle\\preliminary\\objects-first-initial-4-5\\native1\\reference.json.gz"
+    },
+    {
+      "sha256": "a0cc90773c3edccb32b4fe3a0c509cffdadce0da7df9a5e22c79836e623e6844",
+      "gzip_sha256": "4c7ad53673c757f0255d138b8a2160f887dd3397c60ce6a64668b36411c26bc8",
+      "bytes": 10359417,
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\geyser-lifecycle\\preliminary\\objects-first-initial-4-5\\native2\\reference.json",
+      "retained_gzip": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\geyser-lifecycle\\preliminary\\objects-first-initial-4-5\\native2\\reference.json.gz"
+    }
+  ],
+  "bytes": 20718834.0,
+  "scope": "Removed exact redundant historical raw files only after matching retained lossless gzip;original output bytes and receipts preserved"
+}

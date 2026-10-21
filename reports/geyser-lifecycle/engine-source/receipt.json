@@ -1,0 +1,31 @@
+{
+  "repository": "https://github.com/godotengine/godot",
+  "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "files": [
+    {
+      "path": "scene/main/scene_tree.cpp",
+      "git_blob": "99273ffa81c76c4b1c7adca79b331bb49b185c6b",
+      "sha256": "a1ac9f2da5a1046d1c468fd463de4907f535f124952b137d69fb39ef8b14b3b4",
+      "bytes": 74268
+    },
+    {
+      "path": "LICENSE.txt",
+      "git_blob": "0e3ba08d6b2e8cf435241829c96f10b74e4356fe",
+      "sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+      "bytes": 1149
+    },
+    {
+      "path": "scene/main/node.h",
+      "git_blob": "4ffd585ec26f21baa30ac84fd7bfbf371b125514",
+      "sha256": "9eb5f2d3b2d95792ef8cddc160d302e883422f614430a8be7ff0d049d2ea612e",
+      "bytes": 20261
+    },
+    {
+      "path": "scene/main/node.cpp",
+      "git_blob": "19ece28568fba2b1736a50b0ad41fdcf6605ba0d",
+      "sha256": "0c2e3230b37644c8496f5b1aee59f428de6a497a380c247613c489e44cd508a9",
+      "bytes": 95163
+    }
+  ],
+  "scope": "Official engine source and MIT license;actual blob hashes checked;not third-party binaries"
+}

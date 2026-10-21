@@ -1,4 +1,5 @@
 #include "encore/geyser_graphics.hpp"
+#include "encore/geyser_lifecycle.hpp"
 #include "encore/content.hpp"
 #include "encore/crc32.hpp"
 #include <algorithm>
@@ -34,6 +35,9 @@ bool GeyserGraphicsData::load(const uint8_t*p,size_t size,std::string&e){
 }
 bool GeyserGraphicsData::texture_matches(const uint8_t*p,size_t size,std::string&e)const{if(!valid()||!p||size!=config().texture_bytes||encore::crc32(p,size)!=config().texture_crc)return bad(e,"Geyser graphics texture size/checksum rejected");e.clear();return true;}
 bool GeyserGraphicsData::compose(const GeyserTimeline&actor,uint64_t epoch,uint64_t instance,Vec2 root,Vec2 camera,bool visible,GeyserSpriteDraw&out,std::string&e)const{
- GeyserSnapshot pose;if(!valid()||!matches(actor.content())||!actor.inspect(epoch,instance,pose,e)||pose.frame>=frames().size()||!finite(root.x)||!finite(root.y)||!finite(camera.x)||!finite(camera.y))return bad(e,"Geyser graphics source/actor/position owner rejected");const auto&policy=timeline().policy();const auto&frame=frames()[pose.frame];Vec2 offset=policy.offset;if(policy.centered){offset.x-=frame.width*.5f;offset.y-=frame.height*.5f;}if(config().flags&1){offset.x=std::floor(offset.x);offset.y=std::floor(offset.y);}GeyserSpriteDraw next{frame,{root.x+policy.sprite.x+offset.x-camera.x,root.y+policy.sprite.y+offset.y-camera.y},visible,bool(config().flags&2),bool(config().flags&4)};if(!finite(next.position.x)||!finite(next.position.y))return bad(e,"Geyser graphics output geometry rejected");out=next;e.clear();return true;
+ GeyserSnapshot pose;if(!valid()||!matches(actor.content())||!actor.inspect(epoch,instance,pose,e))return bad(e,"Geyser graphics source/actor owner rejected");return compose_pose(pose,root,camera,visible,out,e);
+}
+bool GeyserGraphicsData::compose_pose(const GeyserSnapshot&pose,Vec2 root,Vec2 camera,bool visible,GeyserSpriteDraw&out,std::string&e)const{
+ if(!valid()||pose.frame>=frames().size()||!finite(root.x)||!finite(root.y)||!finite(camera.x)||!finite(camera.y))return bad(e,"Geyser graphics frame/position rejected");const auto&policy=timeline().policy();const auto&frame=frames()[pose.frame];Vec2 offset=policy.offset;if(policy.centered){offset.x-=frame.width*.5f;offset.y-=frame.height*.5f;}if(config().flags&1){offset.x=std::floor(offset.x);offset.y=std::floor(offset.y);}GeyserSpriteDraw next{frame,{root.x+policy.sprite.x+offset.x-camera.x,root.y+policy.sprite.y+offset.y-camera.y},visible,bool(config().flags&2),bool(config().flags&4)};if(!finite(next.position.x)||!finite(next.position.y))return bad(e,"Geyser graphics output geometry rejected");out=next;e.clear();return true;
 }
 }

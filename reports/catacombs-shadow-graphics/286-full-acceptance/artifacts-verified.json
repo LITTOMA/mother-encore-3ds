@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "id": 12322635455,
+      "node_id": "MDg6QXJ0aWZhY3QxMjMyMjYzNTQ1NQ==",
+      "name": "encore-3ds-2863458571ec44cf3117e0987b428349111086ff-39545834165",
+      "size_in_bytes": 377931837,
+      "url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12322635455",
+      "archive_download_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12322635455/zip",
+      "expired": false,
+      "digest": "sha256:b9ecfd4d26e9f287762f06ac449eede62d5c67b4efce53313143e43c65ef158f",
+      "created_at": "2026-10-21T05:02:49Z",
+      "updated_at": "2026-10-21T05:02:49Z",
+      "expires_at": "2026-11-20T05:02:33Z",
+      "workflow_run": {
+        "id": 39545834165,
+        "repository_id": 1403329202,
+        "head_repository_id": 1403329202,
+        "head_branch": "codex/catacombs-shadow-graphics",
+        "head_sha": "2863458571ec44cf3117e0987b428349111086ff"
+      }
+    }
+  ]
+}

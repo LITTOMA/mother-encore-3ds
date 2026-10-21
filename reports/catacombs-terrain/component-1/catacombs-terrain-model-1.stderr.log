@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_terrain.py", line 94, in <module>
+    m,a,b,n,p=source_model();print(json.dumps(p,indent=2))
+              ^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_terrain.py", line 85, in source_model
+    source=field.Sources(ROOT);model=TerrainModel(p,source,native[0]);atlases=field.Atlases(model);paths=[p['texture_root']+'/atlas-'+str(i).zfill(2)+'.t3x'for i in range(len(atlases.pages))]
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_terrain.py", line 76, in __init__
+    layer=self.layer(node);kind=2 if node.props.get('cell_y_sort',False)else 1;first=len(self.items);self.items.append(self._item(kind,layer,1,order=len(self.groups)));self.groups.append({'kind':2 if kind==2 else 1,'first':first,'count':1})
+          ^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\podunk_field.py", line 844, in layer
+    require(owner_of(node, 'tile_set').ext_path(ts, 'TileSet') == self.recipe['tileset'], 'Unreviewed TileSet on ' + node.path)
+                                                                  ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'tileset'

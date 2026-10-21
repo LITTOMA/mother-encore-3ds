@@ -1,0 +1,14 @@
+test_active_or_unreviewed_script_rejected (tests.test_catacombs_terrain.TerrainTests.test_active_or_unreviewed_script_rejected) ... ok
+test_duplicate_and_nonfinite_json_rejected (tests.test_catacombs_terrain.TerrainTests.test_duplicate_and_nonfinite_json_rejected) ... ok
+test_navigation_binding_and_layer_coverage_rejected (tests.test_catacombs_terrain.TerrainTests.test_navigation_binding_and_layer_coverage_rejected) ... ok
+test_no_blanket_missing_cell_ignore (tests.test_catacombs_terrain.TerrainTests.test_no_blanket_missing_cell_ignore) ... ok
+test_no_playable_actor_program (tests.test_catacombs_terrain.TerrainTests.test_no_playable_actor_program) ... ok
+test_original_native_repeat_and_cells (tests.test_catacombs_terrain.TerrainTests.test_original_native_repeat_and_cells) ... ok
+test_review_identity_and_unknown_fields (tests.test_catacombs_terrain.TerrainTests.test_review_identity_and_unknown_fields) ... ok
+test_source_metadata_kept (tests.test_catacombs_terrain.TerrainTests.test_source_metadata_kept) ... ok
+test_source_sha_and_native_sha_rejected (tests.test_catacombs_terrain.TerrainTests.test_source_sha_and_native_sha_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 4.706s
+
+OK

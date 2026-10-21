@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_terrain.py", line 152, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--tex3ds',type=Path,required=True);p.add_argument('--tex3ds-command');a=p.parse_args();compile(a.out,a.tex3ds,shlex.split(a.tex3ds_command)if a.tex3ds_command else None)
+                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_terrain.py", line 144, in compile
+    out=Path(out).resolve();tool=Path(tool).resolve();require(out.is_relative_to(ROOT/'build')and out.suffix=='.encterr'and not out.parent.exists()and tool.is_file(),'Fresh terrain candidate under build and actual tex3ds required')
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Fresh terrain candidate under build and actual tex3ds required

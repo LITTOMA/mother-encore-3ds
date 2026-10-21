@@ -1,0 +1,1 @@
+{"compiled_sources": 116, "elapsed_seconds": 171.25109457969666, "admission_exit_code": 0, "scope": "Fresh current GCC ASan+UBSan library and actual FieldScene admission regression;not full tests or Clang/cross/hardware."}

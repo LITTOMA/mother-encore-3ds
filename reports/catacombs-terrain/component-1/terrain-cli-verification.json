@@ -1,0 +1,29 @@
+{
+  "positive_command": [
+    "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "tools/catacombs_terrain.py",
+    "--out",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\terrain-cli-1\\source.encterr",
+    "--tex3ds",
+    "build/tooling/pinned-tex3ds/tex3ds",
+    "--tex3ds-command",
+    "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe D:/GameDev/3DS/mother-encore-3ds/build/tooling/run_tex3ds_wsl.py"
+  ],
+  "positive_exit_code": 0,
+  "negative_command": [
+    "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "tools/catacombs_terrain.py",
+    "--out",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\docs\\terrain-guard-must-not-create.encterr",
+    "--tex3ds",
+    "build/tooling/pinned-tex3ds/tex3ds",
+    "--tex3ds-command",
+    "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe D:/GameDev/3DS/mother-encore-3ds/build/tooling/run_tex3ds_wsl.py"
+  ],
+  "negative_exit_code": 1,
+  "outside_build_file_absent": true,
+  "terrain_and_graphics_equal_asan_fixture": true,
+  "resource_bytes": 527412,
+  "resource_sha256": "0bc1692135f57284d227af83819d1ad1b4887060a27014491efa19ffb334351c",
+  "converter": "Actual pinned tex3ds via checked WSL wrapper;no GPU decoder/draw claim"
+}

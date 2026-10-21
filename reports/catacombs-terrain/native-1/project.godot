@@ -1,0 +1,7 @@
+config_version=4
+[application]
+config/name="Original terrain diagnostic"
+run/main_scene="res://probe.tscn"
+[display]
+window/size/width=320
+window/size/height=180

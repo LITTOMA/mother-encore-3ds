@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "kind": "encore.catacombs-terrain.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Five original Catacombs TileMaps:visuals,source collision geometry,logical source cell identity and navigation polygon metadata only. No root/actor/AI/cutscene/navigation-solver/scene or save admission. ENCTMAP1 cannot create a playable FieldScene.",
+  "scene": "Maps/podunk/Catacombs.tscn",
+  "tileset": "Tilesets/Catacombs.tres",
+  "player": "Nodes/Reusables/Player.tscn",
+  "scene_id": 4,
+  "sources": {
+    "Tilesets/Catacombs.tres": "cc992ce31ece3ccd9df662af03f681295093cdfb72e9a42e680d396dfdeaef78",
+    "Tilesets/Catacombs_Poison.tres": "c7800f09a4787df6a8858cd109c0d35cfeb826c4cd164c0d5cdff9d909340cd3",
+    "Graphics/Tilesets/TilCatacombsPoison4.png": "926ff4d47eba0379a94cce6617b30d47e7e9157d5ffb4efead5b263fb73dc180",
+    "Graphics/Tilesets/TilCatacombsPoison3.png": "b0b28d722f9b07ef6d2ede3d0b7fdfecbb5b440ab228c3a05532e192edc07f61",
+    "Graphics/Tilesets/TilCatacombsPoison1.png": "1b57bee261bf6f03e4aa074e0437c414595351f5d4683994e9f7549243d8e919",
+    "Graphics/Tilesets/TilCatacombsPoison2.png": "1e6586cc2af70837c76b9fd76b646eec01010c129991d2e596668ff37107b26d",
+    "Tilesets/Catacombs_Lantern.tres": "0b991d5ab259eae65cab23f4b12733d64c55283791e7ca8068a912071bb97564",
+    "Graphics/Tilesets/TilCatacombsAnim1.png": "cf74f8a8739687f9b060066a6bffea128735dbb79008a82765f3dce917181185",
+    "Graphics/Tilesets/TilCatacombsAnim3.png": "a19519f716e80c8218dec9449021a5656540c48e0adb8b7668630236977bb4b2",
+    "Graphics/Tilesets/TilCatacombsAnim2.png": "181735291ad7b71045eeeb9bdde9a1f2da573db62667e3f19e680277e4f58fb1",
+    "Graphics/Tilesets/TilCatacombs.png": "d6001bf2561e1c9e9b9157082e0f7b698387d080f745513d0e92cfd3cec1f845",
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "layers": [
+    {
+      "id": 1,
+      "path": "Ground"
+    },
+    {
+      "id": 2,
+      "path": "Bottom1"
+    },
+    {
+      "id": 3,
+      "path": "Bottom2"
+    },
+    {
+      "id": 4,
+      "path": "Objects"
+    },
+    {
+      "id": 5,
+      "path": "Top"
+    }
+  ],
+  "inactive_script": {
+    "subresource": 152,
+    "class": "GDScript",
+    "source_code": "",
+    "has_source": false,
+    "can_instance": false,
+    "base": "",
+    "methods": [],
+    "properties": [],
+    "signals": []
+  },
+  "navigation": [
+    {
+      "tile": 24,
+      "subresource": 169
+    }
+  ],
+  "missing_cells": [
+    {
+      "layer": 2,
+      "x": -42,
+      "y": 1,
+      "tile": 11,
+      "autotile": [
+        1,
+        2
+      ],
+      "flags": 0
+    }
+  ],
+  "locales": [
+    "en",
+    "zh_CN"
+  ],
+  "texture_root": "graphics/world/catacombs",
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "native_oracles": {
+    "reports/catacombs-terrain/native-1/terrain.json": "7a167c5bf8912678728673963f3004822f89fbc8da4314a34b6e42c4cf4fecf4",
+    "reports/catacombs-terrain/native-2/terrain.json": "7a167c5bf8912678728673963f3004822f89fbc8da4314a34b6e42c4cf4fecf4"
+  },
+  "license_review": "Pinned upstream LICENSE permits game-related forks;source art stays under original conditions. No fonts or unrelated third-party binaries added."
+}

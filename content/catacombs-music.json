@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "kind": "encore.catacombs-music.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Five original loop-only non-diegetic MusicChanger areas,flag/volume/fade bindings and geometry;candidate only,no full scene/save/NDSP/hardware admission",
+  "scene": "Maps/podunk/Catacombs.tscn",
+  "areas": [
+    {
+      "path": "Music/MusicArea",
+      "id": 3290598507
+    },
+    {
+      "path": "Music/MusicArea6",
+      "id": 3340558408
+    },
+    {
+      "path": "Music/MusicArea2",
+      "id": 3228640337
+    },
+    {
+      "path": "Music/MusicArea3",
+      "id": 3077969095
+    },
+    {
+      "path": "Music/MusicArea4",
+      "id": 689078628
+    }
+  ],
+  "sources": {
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Audio/Music/Underground.ogg": "2e7f8a8797533194ffe05b1f59adaac8d875f74fdc8e931ce6027539a9813b0f",
+    "Audio/Music/Underground.ogg.import": "a4fc95c103ded46af35ab6177271e5d2e338c67316d3b6bbd6f7afb718341c79",
+    "Audio/Music/A_Ghastly_Site.mp3": "e3d0b02ab7486401e22fb9b2257d4ff972f30293e69d4da9d155330def16b880",
+    "Audio/Music/A_Ghastly_Site.mp3.import": "dd1d1646e059405b8c976003327de069c237a74f8e0aebb05c03574491108f7c"
+  },
+  "output": {
+    "binding": "sound/banks/catacombs.encmusic",
+    "zones": "sound/banks/catacombs.enczones",
+    "audio": "sound/banks/catacombs.encaudio"
+  },
+  "pcm_prefix": "catacombs",
+  "license_review": "Original game-related asset permission checked from pinned LICENSE;no fonts,third-party binaries or unreviewed media added"
+}

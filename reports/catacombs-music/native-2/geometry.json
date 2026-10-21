@@ -1,0 +1,221 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "path": "Music/MusicArea",
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible_in_tree": false,
+      "music": "",
+      "loop": "Underground.ogg",
+      "gain": 0,
+      "fadein": 1,
+      "fadeout": 1.5,
+      "appear": "hidden_entrance_opened",
+      "disappear": "",
+      "disabled": false,
+      "diegetic": false,
+      "shapes": [
+        {
+          "path": "Music/MusicArea/CollisionShape2D",
+          "disabled": false,
+          "points": [
+            [
+              -2792,
+              -1288
+            ],
+            [
+              448,
+              -1288
+            ],
+            [
+              448,
+              344
+            ],
+            [
+              -2792,
+              344
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Music/MusicArea6",
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible_in_tree": false,
+      "music": "",
+      "loop": "Underground.ogg",
+      "gain": -10,
+      "fadein": 1,
+      "fadeout": 1.5,
+      "appear": "hidden_entrance_opened",
+      "disappear": "",
+      "disabled": false,
+      "diegetic": false,
+      "shapes": [
+        {
+          "path": "Music/MusicArea6/CollisionShape2D",
+          "disabled": false,
+          "points": [
+            [
+              -1632,
+              -1416
+            ],
+            [
+              -1328,
+              -1416
+            ],
+            [
+              -1328,
+              -1312
+            ],
+            [
+              -1632,
+              -1312
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Music/MusicArea2",
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible_in_tree": false,
+      "music": "",
+      "loop": "A_Ghastly_Site.mp3",
+      "gain": -5,
+      "fadein": 1,
+      "fadeout": 1.5,
+      "appear": "",
+      "disappear": "hidden_entrance_opened",
+      "disabled": false,
+      "diegetic": false,
+      "shapes": [
+        {
+          "path": "Music/MusicArea2/CollisionShape2D",
+          "disabled": false,
+          "points": [
+            [
+              -160,
+              -32
+            ],
+            [
+              80,
+              -32
+            ],
+            [
+              80,
+              256
+            ],
+            [
+              -160,
+              256
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Music/MusicArea3",
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible_in_tree": false,
+      "music": "",
+      "loop": "A_Ghastly_Site.mp3",
+      "gain": -10,
+      "fadein": 1,
+      "fadeout": 1.5,
+      "appear": "",
+      "disappear": "hidden_entrance_opened",
+      "disabled": false,
+      "diegetic": false,
+      "shapes": [
+        {
+          "path": "Music/MusicArea3/CollisionShape2D",
+          "disabled": false,
+          "points": [
+            [
+              -400,
+              -32
+            ],
+            [
+              -160,
+              -32
+            ],
+            [
+              -160,
+              256
+            ],
+            [
+              -400,
+              256
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Music/MusicArea4",
+      "layer": 4096,
+      "mask": 0,
+      "monitoring": true,
+      "monitorable": false,
+      "visible_in_tree": false,
+      "music": "",
+      "loop": "A_Ghastly_Site.mp3",
+      "gain": -15,
+      "fadein": 1,
+      "fadeout": 1.5,
+      "appear": "",
+      "disappear": "hidden_entrance_opened",
+      "disabled": false,
+      "diegetic": false,
+      "shapes": [
+        {
+          "path": "Music/MusicArea4/CollisionShape2D",
+          "disabled": false,
+          "points": [
+            [
+              -816,
+              72
+            ],
+            [
+              -464,
+              72
+            ],
+            [
+              -464,
+              288
+            ],
+            [
+              -816,
+              288
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

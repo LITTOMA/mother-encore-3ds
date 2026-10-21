@@ -1,0 +1,10 @@
+config_version=4
+[application]
+run/main_scene="res://probe.tscn"
+[autoload]
+global="*res://global.gd"
+uiManager="*res://ui.gd"
+audioManager="*res://audio.gd"
+globaldata="*res://flags.gd"
+[rendering]
+quality/driver/driver_name="GLES2"

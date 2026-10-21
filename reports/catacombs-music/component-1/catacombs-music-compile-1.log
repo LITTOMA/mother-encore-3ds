@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_music.py", line 72, in <module>
+    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--out',type=Path,required=True);ap.add_argument('--audio',action='store_true');ap.add_argument('--ffmpeg',default='ffmpeg');ap.add_argument('--ffprobe',default='ffprobe');a=ap.parse_args();compile(a.out,audio=a.audio,ffmpeg=a.ffmpeg,ffprobe=a.ffprobe)
+                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_music.py", line 60, in compile
+    out=Path(out).resolve();require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build'and not out.exists(),'Fresh Catacombs music candidate under build required');p,metadata,polygons,proof=source(file);binding,zones=codec.encode(metadata,polygons);out.mkdir(parents=True);(out/'.owned-catacombs-music').write_bytes(b'catacombs-music-v1');outputs={}
+                                                                                                                                                                                                ^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_music.py", line 33, in source
+    p,ex=read(file);doc=Document(p['scene'],ex.text(p['scene']));nodes={n.path:n for n in doc.nodes};root=nodes['.'];parent=nodes.get('Music')
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_music.py", line 33, in <dictcomp>
+    p,ex=read(file);doc=Document(p['scene'],ex.text(p['scene']));nodes={n.path:n for n in doc.nodes};root=nodes['.'];parent=nodes.get('Music')
+                                                                        ^^^^^^
+AttributeError: 'Section' object has no attribute 'path'

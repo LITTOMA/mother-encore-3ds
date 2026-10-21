@@ -1,0 +1,1096 @@
+{
+  "source": {
+    "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "source": {
+      "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+      "scope": "Five original loop-only non-diegetic MusicChanger areas,flag/volume/fade bindings and geometry;candidate only,no full scene/save/NDSP/hardware admission",
+      "sources": {
+        "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+        "Audio/Music/A_Ghastly_Site.mp3": "e3d0b02ab7486401e22fb9b2257d4ff972f30293e69d4da9d155330def16b880",
+        "Audio/Music/A_Ghastly_Site.mp3.import": "dd1d1646e059405b8c976003327de069c237a74f8e0aebb05c03574491108f7c",
+        "Audio/Music/Underground.ogg": "2e7f8a8797533194ffe05b1f59adaac8d875f74fdc8e931ce6027539a9813b0f",
+        "Audio/Music/Underground.ogg.import": "a4fc95c103ded46af35ab6177271e5d2e338c67316d3b6bbd6f7afb718341c79",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+        "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+        "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+        "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+        "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+      },
+      "review_sha256": "15b7b98c3c7b0f449fc71f76b6a6719259e01da54bae198a28e7fb23b1e45a66",
+      "imports": [
+        {
+          "source": "res://Audio/Music/Underground.ogg",
+          "loop": true,
+          "offset": 3.77
+        },
+        {
+          "source": "res://Audio/Music/A_Ghastly_Site.mp3",
+          "loop": true,
+          "offset": 16.694
+        }
+      ],
+      "metadata": {
+        "silence_db": -80.0,
+        "fade_to_seconds": 1,
+        "tracks": [
+          {
+            "stable_id": 2385098865,
+            "source_path": "res://Audio/Music/Underground.ogg",
+            "source_sha256": "2e7f8a8797533194ffe05b1f59adaac8d875f74fdc8e931ce6027539a9813b0f",
+            "import_sha256": "a4fc95c103ded46af35ab6177271e5d2e338c67316d3b6bbd6f7afb718341c79",
+            "pcm_path": "sound/music/catacombs-2385098865.pcm",
+            "gain_db": 0
+          },
+          {
+            "stable_id": 2369254644,
+            "source_path": "res://Audio/Music/A_Ghastly_Site.mp3",
+            "source_sha256": "e3d0b02ab7486401e22fb9b2257d4ff972f30293e69d4da9d155330def16b880",
+            "import_sha256": "dd1d1646e059405b8c976003327de069c237a74f8e0aebb05c03574491108f7c",
+            "pcm_path": "sound/music/catacombs-2369254644.pcm",
+            "gain_db": 0
+          }
+        ],
+        "regions": [
+          {
+            "id": 3290598507,
+            "source_path": "Music/MusicArea",
+            "track_id": 2385098865,
+            "volume_db": 0,
+            "fadein_seconds": 1,
+            "fadeout_seconds": 1.5,
+            "appear_flag": "hidden_entrance_opened",
+            "disappear_flag": "",
+            "disabled": false,
+            "shape_paths": [
+              "Music/MusicArea/CollisionShape2D"
+            ]
+          },
+          {
+            "id": 3340558408,
+            "source_path": "Music/MusicArea6",
+            "track_id": 2385098865,
+            "volume_db": -10,
+            "fadein_seconds": 1,
+            "fadeout_seconds": 1.5,
+            "appear_flag": "hidden_entrance_opened",
+            "disappear_flag": "",
+            "disabled": false,
+            "shape_paths": [
+              "Music/MusicArea6/CollisionShape2D"
+            ]
+          },
+          {
+            "id": 3228640337,
+            "source_path": "Music/MusicArea2",
+            "track_id": 2369254644,
+            "volume_db": -5,
+            "fadein_seconds": 1,
+            "fadeout_seconds": 1.5,
+            "appear_flag": "",
+            "disappear_flag": "hidden_entrance_opened",
+            "disabled": false,
+            "shape_paths": [
+              "Music/MusicArea2/CollisionShape2D"
+            ]
+          },
+          {
+            "id": 3077969095,
+            "source_path": "Music/MusicArea3",
+            "track_id": 2369254644,
+            "volume_db": -10,
+            "fadein_seconds": 1,
+            "fadeout_seconds": 1.5,
+            "appear_flag": "",
+            "disappear_flag": "hidden_entrance_opened",
+            "disabled": false,
+            "shape_paths": [
+              "Music/MusicArea3/CollisionShape2D"
+            ]
+          },
+          {
+            "id": 689078628,
+            "source_path": "Music/MusicArea4",
+            "track_id": 2369254644,
+            "volume_db": -15,
+            "fadein_seconds": 1,
+            "fadeout_seconds": 1.5,
+            "appear_flag": "",
+            "disappear_flag": "hidden_entrance_opened",
+            "disabled": false,
+            "shape_paths": [
+              "Music/MusicArea4/CollisionShape2D"
+            ]
+          }
+        ]
+      },
+      "polygons": [
+        {
+          "source": "Music/MusicArea",
+          "polygons": [
+            [
+              [
+                -2792.0,
+                -1288.0
+              ],
+              [
+                448.0,
+                -1288.0
+              ],
+              [
+                448.0,
+                344.0
+              ],
+              [
+                -2792.0,
+                344.0
+              ]
+            ]
+          ]
+        },
+        {
+          "source": "Music/MusicArea6",
+          "polygons": [
+            [
+              [
+                -1632.0,
+                -1416.0
+              ],
+              [
+                -1328.0,
+                -1416.0
+              ],
+              [
+                -1328.0,
+                -1312.0
+              ],
+              [
+                -1632.0,
+                -1312.0
+              ]
+            ]
+          ]
+        },
+        {
+          "source": "Music/MusicArea2",
+          "polygons": [
+            [
+              [
+                -160.0,
+                -32.0
+              ],
+              [
+                80.0,
+                -32.0
+              ],
+              [
+                80.0,
+                256.0
+              ],
+              [
+                -160.0,
+                256.0
+              ]
+            ]
+          ]
+        },
+        {
+          "source": "Music/MusicArea3",
+          "polygons": [
+            [
+              [
+                -400.0,
+                -32.0
+              ],
+              [
+                -160.0,
+                -32.0
+              ],
+              [
+                -160.0,
+                256.0
+              ],
+              [
+                -400.0,
+                256.0
+              ]
+            ]
+          ]
+        },
+        {
+          "source": "Music/MusicArea4",
+          "polygons": [
+            [
+              [
+                -816.0,
+                72.0
+              ],
+              [
+                -464.0,
+                72.0
+              ],
+              [
+                -464.0,
+                288.0
+              ],
+              [
+                -816.0,
+                288.0
+              ]
+            ]
+          ]
+        }
+      ],
+      "player": {
+        "path": "Nodes/Reusables/Player.tscn",
+        "sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+        "scope": "Native KinematicBody2D default layer1; original root mask and all8 polygon vertices+local origin. Movement/pause script is an explicit service."
+      },
+      "formats": [
+        "ENCMUS01 v1",
+        "ENCZON01 v1",
+        "ENCAUD01 existing"
+      ],
+      "mapped_implementation": {
+        "binding": "runtime/music_regions.cpp",
+        "geometry": "runtime/music_zones.cpp",
+        "callbacks": "runtime/music_scene_graph.cpp"
+      },
+      "release_staged": false
+    },
+    "upstream_method_review_sha256": "f6d6d23456ab291ce4e50275443f66914d2c58041da4ac5d8f5878ef6ed5ff86",
+    "manager_methods": {
+      "_ready": "a2d97571c1adc4aae1f6f6987009bed7053676caf1319cc72ffcae44db474ff3",
+      "_get_audio_player_count": "6d13e742193187f19d5a8b7917b923b9e1fb5eaf4a3f33c3d7c5ab2f61d3c424",
+      "add_audio_player": "60723a89167fe436a6993b038061ddaaf5f6bfd0f7d3a0ad4f79ebba1f09c7ef",
+      "get_audio_player": "ac419fd8d21fc40688d25c08b82c79cad10a82c3f2cdd6b0bd281cbf52760e89",
+      "get_audio_player_from_song": "db498b4d4854b6ecddd49895f16beca907ee88d5f4042e7e561805c1a53e6111",
+      "get_audio_player_index": "3058b90611f818ff545dc8199390410d489a76aff74e38f5c40cf054dcd6bbfc",
+      "get_audio_player_list": "1f0ec6a9f2bc42552121165d1f8e27d0aa852dabe0385b7a76b3840e745d5345",
+      "_remove_audio_player_obj": "01678b6626fd1eb9a478b80660fbbe2afb2750c7f2aec9cb03731b0dfbed0e91",
+      "_add_at_zero": "cd4aec2fc4c2733e531e054d788bdeddf7d90d3dad2c200a971434488b727910",
+      "get_latest_audio_player_index": "d0210b21c481584331075fd8b9ba311b7ab9df6fd7029c920aa8ee230a2c88bd",
+      "play_music": "be7cb1705dbf119ca48fc239932f6af7a249c65135c527e4fec9b558fa6554fe",
+      "music_fadeout": "f6ea737e5b82db8f1f610de8a451bc4b321667c16d6c03d7039e78dc69abc533",
+      "music_fadeout_obj": "b74bcf4d7ccc7b80abb5a4d788a426bda34eb0e3df2d0df74dc277f0edec712a",
+      "music_fadein": "b9e8a42d1c73c41742bfbc88c8c47b67eb65061f1d0c46164303654ebd508ff2",
+      "_music_fadein_obj": "41c791a8cb69e0402030ab33f7685d598bf34ada4032b028ace74868116a6115",
+      "music_fadeto": "292f1baa9d8d9c57b46c231f6d776eb8a40b7e81979ee5bd70932017f4bcf918",
+      "set_audio_player_volume": "e9a28febf9938677c9e46113e0e4b66a3388e671373001f9ce177c924e0b69d2",
+      "_set_audio_player_volume_obj": "65b0a1f63e9c59a2329956dfa2ea7c28d8144ba6440276a401fdc778cc5c0a7b",
+      "stop_audio_player": "f231e2f506cd2e68fea2f11b4356afff2acdd224053308d3924b4b5115d8fa92",
+      "_stop_audio_player_obj": "026ce6df6e39aaa9733b19a494ef057d967d1c2e99113e768bd46342930ec634",
+      "_remove_all_unplaying": "123aa70f4e544950616032bfa230b5534f99c763af448cbe966e088e5a55e0c3",
+      "_remove_player_after_tween": "0de15b5aa0ae5b5cfb0c268835990e60eec2e85615bbce5704a6c03ff56a26a1"
+    },
+    "flag_methods": {
+      "check_appear_disappear_flags": "11f2a2ae09e4700898b8bb2fa12d39e1ea31e29fc5d31267582f12a25510359e"
+    },
+    "parameters": {
+      "silence_db": -80.0,
+      "fade_to_seconds": 1,
+      "requested_gain_db": 6,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5
+    },
+    "imports": [
+      {
+        "source": "res://Audio/Music/Underground.ogg",
+        "loop": true,
+        "offset": 3.77
+      },
+      {
+        "source": "res://Audio/Music/A_Ghastly_Site.mp3",
+        "loop": true,
+        "offset": 16.694
+      }
+    ],
+    "scenes": [
+      [
+        {
+          "path": "Music/MusicArea",
+          "music": "",
+          "loop": "Underground.ogg",
+          "volume_db": 0,
+          "fadein_length": 1,
+          "fadeout_length": 1.5,
+          "disabled": false,
+          "appear_flag": "hidden_entrance_opened",
+          "disappear_flag": ""
+        },
+        {
+          "path": "Music/MusicArea6",
+          "music": "",
+          "loop": "Underground.ogg",
+          "volume_db": -10,
+          "fadein_length": 1,
+          "fadeout_length": 1.5,
+          "disabled": false,
+          "appear_flag": "hidden_entrance_opened",
+          "disappear_flag": ""
+        },
+        {
+          "path": "Music/MusicArea2",
+          "music": "",
+          "loop": "A_Ghastly_Site.mp3",
+          "volume_db": -5,
+          "fadein_length": 1,
+          "fadeout_length": 1.5,
+          "disabled": false,
+          "appear_flag": "",
+          "disappear_flag": "hidden_entrance_opened"
+        },
+        {
+          "path": "Music/MusicArea3",
+          "music": "",
+          "loop": "A_Ghastly_Site.mp3",
+          "volume_db": -10,
+          "fadein_length": 1,
+          "fadeout_length": 1.5,
+          "disabled": false,
+          "appear_flag": "",
+          "disappear_flag": "hidden_entrance_opened"
+        },
+        {
+          "path": "Music/MusicArea4",
+          "music": "",
+          "loop": "A_Ghastly_Site.mp3",
+          "volume_db": -15,
+          "fadein_length": 1,
+          "fadeout_length": 1.5,
+          "disabled": false,
+          "appear_flag": "",
+          "disappear_flag": "hidden_entrance_opened"
+        }
+      ],
+      [
+        {
+          "path": "Music/MusicArea",
+          "music": "",
+          "loop": "Underground.ogg",
+          "volume_db": 0,
+          "fadein_length": 1,
+          "fadeout_length": 1.5,
+          "disabled": false,
+          "appear_flag": "hidden_entrance_opened",
+          "disappear_flag": ""
+        },
+        {
+          "path": "Music/MusicArea6",
+          "music": "",
+          "loop": "Underground.ogg",
+          "volume_db": -10,
+          "fadein_length": 1,
+          "fadeout_length": 1.5,
+          "disabled": false,
+          "appear_flag": "hidden_entrance_opened",
+          "disappear_flag": ""
+        },
+        {
+          "path": "Music/MusicArea2",
+          "music": "",
+          "loop": "A_Ghastly_Site.mp3",
+          "volume_db": -5,
+          "fadein_length": 1,
+          "fadeout_length": 1.5,
+          "disabled": false,
+          "appear_flag": "",
+          "disappear_flag": "hidden_entrance_opened"
+        },
+        {
+          "path": "Music/MusicArea3",
+          "music": "",
+          "loop": "A_Ghastly_Site.mp3",
+          "volume_db": -10,
+          "fadein_length": 1,
+          "fadeout_length": 1.5,
+          "disabled": false,
+          "appear_flag": "",
+          "disappear_flag": "hidden_entrance_opened"
+        },
+        {
+          "path": "Music/MusicArea4",
+          "music": "",
+          "loop": "A_Ghastly_Site.mp3",
+          "volume_db": -15,
+          "fadein_length": 1,
+          "fadeout_length": 1.5,
+          "disabled": false,
+          "appear_flag": "",
+          "disappear_flag": "hidden_entrance_opened"
+        }
+      ]
+    ],
+    "cases": [
+      {
+        "name": "catacombs_podunk_to_mayor",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "catacombs_rapid_podunk_mayor_podunk",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      },
+      {
+        "name": "catacombs_stopped_latest_reused_across_banks",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "settle"
+          ],
+          [
+            "stop",
+            "Music/MusicArea2",
+            0
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ]
+        ]
+      },
+      {
+        "name": "catacombs_shared_song_and_cancelled_exit",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "exit",
+            "Music/MusicArea2"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "exit",
+            "Music/MusicArea3"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ]
+        ]
+      },
+      {
+        "name": "catacombs_door_live_array_skip",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "door",
+            1
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ]
+        ]
+      },
+      {
+        "name": "catacombs_global_external_latest_same_song",
+        "actions": [
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "external",
+            1,
+            true,
+            0
+          ],
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ]
+        ]
+      },
+      {
+        "name": "catacombs_global_external_latest_stopped",
+        "actions": [
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "external",
+            1,
+            false,
+            0
+          ],
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ]
+        ]
+      },
+      {
+        "name": "catacombs_ui_and_collision_callbacks",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "context",
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "context",
+            true,
+            true,
+            false,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "context",
+            true,
+            false,
+            true,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "context",
+            true,
+            false,
+            false,
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "context",
+            true,
+            true,
+            false,
+            true
+          ],
+          [
+            "exit",
+            "Music/MusicArea2"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "context",
+            true,
+            false,
+            false,
+            false
+          ],
+          [
+            "exit",
+            "Music/MusicArea2"
+          ],
+          [
+            "idle"
+          ],
+          [
+            "context",
+            true,
+            false,
+            true,
+            true
+          ],
+          [
+            "exit",
+            "Music/MusicArea2"
+          ],
+          [
+            "idle"
+          ]
+        ]
+      },
+      {
+        "name": "catacombs_source_appear_disappear_flags",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "flag",
+            "hidden_entrance_opened",
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "enter",
+            "Music/MusicArea4"
+          ],
+          [
+            "flag",
+            "hidden_entrance_opened",
+            true
+          ],
+          [
+            "enter",
+            "Music/MusicArea4"
+          ],
+          [
+            "enter",
+            "Music/MusicArea6"
+          ]
+        ]
+      },
+      {
+        "name": "catacombs_all_source_areas_exit_before_rebind",
+        "actions": [
+          [
+            "scene",
+            1
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "enter",
+            "Music/MusicArea3"
+          ],
+          [
+            "enter",
+            "Music/MusicArea4"
+          ],
+          [
+            "enter",
+            "Music/MusicArea"
+          ],
+          [
+            "scene",
+            2
+          ],
+          [
+            "enter",
+            "Music/MusicArea2"
+          ],
+          [
+            "finish"
+          ],
+          [
+            "flush"
+          ]
+        ]
+      }
+    ],
+    "generated_sha256": {
+      "manager.gd": "41214e9dc009dda8a076f372bde263de3987080579cb31577b1f2c04be625085",
+      "changer.gd": "49d10c048eb6b90db225821cb4f0d70c89d2b7c2759b29d6884c2b561920eb53",
+      "context.gd": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696",
+      "player.gd": "4c1c99440f2384798df81d6e2c16f515d83cff3799311ee4ac37a45f02293203",
+      "ui.gd": "93d2d2111bece0c349f37596b78d281069d7e9dd55314043b2ef25fb1002d04c",
+      "flags.gd": "2fa72895a28428bf568e8445a98991a739c33388bb7c2711bbbd2a360996ac2e",
+      "probe.gd": "a3a20a8052e1fc14bb4c206691424770d49003d35301a9c56c638c9f45464533",
+      "input.json": "f5eaffcf3ba1b39ff836a3c70c9a2144e325c095dd788d3b3249da00b0ceec14",
+      "project.godot": "7f99867ab2617b26547fa879c23171c2774dc8063dddcce8ce4f0520c4d1d375"
+    },
+    "scope": "Original callbacks with Catacombs bindings;explicit singleton/player/UI/flag services,manual callbacks,frozen Tween/event completion;no bank routing,NDSP,audible output or complete root"
+  },
+  "geometry": {
+    "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "scope": "Five original loop-only non-diegetic MusicChanger areas,flag/volume/fade bindings and geometry;candidate only,no full scene/save/NDSP/hardware admission",
+    "sources": {
+      "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+      "Audio/Music/A_Ghastly_Site.mp3": "e3d0b02ab7486401e22fb9b2257d4ff972f30293e69d4da9d155330def16b880",
+      "Audio/Music/A_Ghastly_Site.mp3.import": "dd1d1646e059405b8c976003327de069c237a74f8e0aebb05c03574491108f7c",
+      "Audio/Music/Underground.ogg": "2e7f8a8797533194ffe05b1f59adaac8d875f74fdc8e931ce6027539a9813b0f",
+      "Audio/Music/Underground.ogg.import": "a4fc95c103ded46af35ab6177271e5d2e338c67316d3b6bbd6f7afb718341c79",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+      "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+      "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+      "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+    },
+    "review_sha256": "15b7b98c3c7b0f449fc71f76b6a6719259e01da54bae198a28e7fb23b1e45a66",
+    "imports": [
+      {
+        "source": "res://Audio/Music/Underground.ogg",
+        "loop": true,
+        "offset": 3.77
+      },
+      {
+        "source": "res://Audio/Music/A_Ghastly_Site.mp3",
+        "loop": true,
+        "offset": 16.694
+      }
+    ],
+    "metadata": {
+      "silence_db": -80.0,
+      "fade_to_seconds": 1,
+      "tracks": [
+        {
+          "stable_id": 2385098865,
+          "source_path": "res://Audio/Music/Underground.ogg",
+          "source_sha256": "2e7f8a8797533194ffe05b1f59adaac8d875f74fdc8e931ce6027539a9813b0f",
+          "import_sha256": "a4fc95c103ded46af35ab6177271e5d2e338c67316d3b6bbd6f7afb718341c79",
+          "pcm_path": "sound/music/catacombs-2385098865.pcm",
+          "gain_db": 0
+        },
+        {
+          "stable_id": 2369254644,
+          "source_path": "res://Audio/Music/A_Ghastly_Site.mp3",
+          "source_sha256": "e3d0b02ab7486401e22fb9b2257d4ff972f30293e69d4da9d155330def16b880",
+          "import_sha256": "dd1d1646e059405b8c976003327de069c237a74f8e0aebb05c03574491108f7c",
+          "pcm_path": "sound/music/catacombs-2369254644.pcm",
+          "gain_db": 0
+        }
+      ],
+      "regions": [
+        {
+          "id": 3290598507,
+          "source_path": "Music/MusicArea",
+          "track_id": 2385098865,
+          "volume_db": 0,
+          "fadein_seconds": 1,
+          "fadeout_seconds": 1.5,
+          "appear_flag": "hidden_entrance_opened",
+          "disappear_flag": "",
+          "disabled": false,
+          "shape_paths": [
+            "Music/MusicArea/CollisionShape2D"
+          ]
+        },
+        {
+          "id": 3340558408,
+          "source_path": "Music/MusicArea6",
+          "track_id": 2385098865,
+          "volume_db": -10,
+          "fadein_seconds": 1,
+          "fadeout_seconds": 1.5,
+          "appear_flag": "hidden_entrance_opened",
+          "disappear_flag": "",
+          "disabled": false,
+          "shape_paths": [
+            "Music/MusicArea6/CollisionShape2D"
+          ]
+        },
+        {
+          "id": 3228640337,
+          "source_path": "Music/MusicArea2",
+          "track_id": 2369254644,
+          "volume_db": -5,
+          "fadein_seconds": 1,
+          "fadeout_seconds": 1.5,
+          "appear_flag": "",
+          "disappear_flag": "hidden_entrance_opened",
+          "disabled": false,
+          "shape_paths": [
+            "Music/MusicArea2/CollisionShape2D"
+          ]
+        },
+        {
+          "id": 3077969095,
+          "source_path": "Music/MusicArea3",
+          "track_id": 2369254644,
+          "volume_db": -10,
+          "fadein_seconds": 1,
+          "fadeout_seconds": 1.5,
+          "appear_flag": "",
+          "disappear_flag": "hidden_entrance_opened",
+          "disabled": false,
+          "shape_paths": [
+            "Music/MusicArea3/CollisionShape2D"
+          ]
+        },
+        {
+          "id": 689078628,
+          "source_path": "Music/MusicArea4",
+          "track_id": 2369254644,
+          "volume_db": -15,
+          "fadein_seconds": 1,
+          "fadeout_seconds": 1.5,
+          "appear_flag": "",
+          "disappear_flag": "hidden_entrance_opened",
+          "disabled": false,
+          "shape_paths": [
+            "Music/MusicArea4/CollisionShape2D"
+          ]
+        }
+      ]
+    },
+    "polygons": [
+      {
+        "source": "Music/MusicArea",
+        "polygons": [
+          [
+            [
+              -2792.0,
+              -1288.0
+            ],
+            [
+              448.0,
+              -1288.0
+            ],
+            [
+              448.0,
+              344.0
+            ],
+            [
+              -2792.0,
+              344.0
+            ]
+          ]
+        ]
+      },
+      {
+        "source": "Music/MusicArea6",
+        "polygons": [
+          [
+            [
+              -1632.0,
+              -1416.0
+            ],
+            [
+              -1328.0,
+              -1416.0
+            ],
+            [
+              -1328.0,
+              -1312.0
+            ],
+            [
+              -1632.0,
+              -1312.0
+            ]
+          ]
+        ]
+      },
+      {
+        "source": "Music/MusicArea2",
+        "polygons": [
+          [
+            [
+              -160.0,
+              -32.0
+            ],
+            [
+              80.0,
+              -32.0
+            ],
+            [
+              80.0,
+              256.0
+            ],
+            [
+              -160.0,
+              256.0
+            ]
+          ]
+        ]
+      },
+      {
+        "source": "Music/MusicArea3",
+        "polygons": [
+          [
+            [
+              -400.0,
+              -32.0
+            ],
+            [
+              -160.0,
+              -32.0
+            ],
+            [
+              -160.0,
+              256.0
+            ],
+            [
+              -400.0,
+              256.0
+            ]
+          ]
+        ]
+      },
+      {
+        "source": "Music/MusicArea4",
+        "polygons": [
+          [
+            [
+              -816.0,
+              72.0
+            ],
+            [
+              -464.0,
+              72.0
+            ],
+            [
+              -464.0,
+              288.0
+            ],
+            [
+              -816.0,
+              288.0
+            ]
+          ]
+        ]
+      }
+    ],
+    "player": {
+      "path": "Nodes/Reusables/Player.tscn",
+      "sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+      "scope": "Native KinematicBody2D default layer1; original root mask and all8 polygon vertices+local origin. Movement/pause script is an explicit service."
+    },
+    "formats": [
+      "ENCMUS01 v1",
+      "ENCZON01 v1",
+      "ENCAUD01 existing"
+    ],
+    "mapped_implementation": {
+      "binding": "runtime/music_regions.cpp",
+      "geometry": "runtime/music_zones.cpp",
+      "callbacks": "runtime/music_scene_graph.cpp"
+    },
+    "release_staged": false
+  },
+  "producer_sha256": "ac20964974f1c2d10d86aaa8ee0e69e1126ae5e3a465e45795fc953af1ae4941",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "result_sha256": "e049bfcab84ba2e19dfba437fd79b8325def45d4a84cda0ff635806bbfc575d1",
+  "geometry_sha256": "bd6eba166ff0b1e3a7ebd1c973e8394054615a1d174c759208e82783d087a293"
+}

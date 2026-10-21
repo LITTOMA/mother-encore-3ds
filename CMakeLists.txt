@@ -1448,6 +1448,15 @@ if(BUILD_TESTING)
  set_tests_properties(field_walk_plan_cli PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
 endif()
 
+if(BUILD_TESTING AND Python3_Interpreter_FOUND)
+ add_executable(encore_catacombs_music_tests tests/catacombs_music_tests.cpp)
+ target_link_libraries(encore_catacombs_music_tests PRIVATE encore_core)
+ add_test(NAME catacombs_music_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_catacombs_music.py --out ${CMAKE_BINARY_DIR}/catacombs-music-fixture)
+ add_test(NAME catacombs_music COMMAND encore_catacombs_music_tests ${CMAKE_BINARY_DIR}/catacombs-music-fixture)
+ set_tests_properties(catacombs_music_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} FIXTURES_SETUP catacombs_music_fixture TIMEOUT 120)
+ set_tests_properties(catacombs_music PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} FIXTURES_REQUIRED catacombs_music_fixture TIMEOUT 120)
+endif()
+
 include(cmake/TestParallelism.cmake)
 
 # Resource writers finish before compilation or fixture preparers read packs.

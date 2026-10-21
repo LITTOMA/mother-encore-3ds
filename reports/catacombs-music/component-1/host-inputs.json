@@ -1,0 +1,6 @@
+{
+  "tests/catacombs_music_tests.cpp": "ab12acb8b36c3d598e725a71bf62bf8f64dff01980565ccfceea5427766bb79c",
+  "tests/music_scene_graph_tests.cpp": "76307a1f2b0d8ed0a0766c5c2abc614bbefa8c14e40e6d69295f3bb7b76111c0",
+  "tests/music_scene_graph_reference.hpp": "2219f3699b3cc0e08a5d09c67b54fd8baa48c18b84c32a98e6e2579e8d845fee",
+  "build/full-port/terrain-core-host-1/libencore-terrain.a": "1118f8957fea1a0b5ca1ba15cc423af0083f1897fdd8e2fd46c5d2a286fc0ef1"
+}

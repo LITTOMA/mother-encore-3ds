@@ -1,0 +1,11 @@
+config_version=4
+_global_script_classes=[{"base":"KinematicBody2D","class":"PartyObject","language":"GDScript","path":"res://party.gd"}]
+_global_script_class_icons={"PartyObject":""}
+[application]
+run/main_scene="res://probe.tscn"
+[autoload]
+global="*res://global.gd"
+[logging]
+file_logging/enable_logging=false
+[rendering]
+quality/driver/driver_name="GLES2"

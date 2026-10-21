@@ -1,0 +1,589 @@
+{
+  "archive_sha256": "cdc3daec05b5b54e540d569bbfbee2f0a4b993c7d10e3a4868c0bc0df0772b2a",
+  "members": 116,
+  "all_runtime_headers_match": true,
+  "normal_sanitizer_tests_passed": true,
+  "objects": [
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_key_contacts.cpp.o",
+      "bytes": 2866920,
+      "sha256": "00c9635870ea80c44de0a7773959fe7abad39ec8e1da61ae896e700fe0f0f73c"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_key_indicator.cpp.o",
+      "bytes": 2404176,
+      "sha256": "cebfb33174cdd669fe261396d6ec830cdb9f2d9ecb6607a3b3e0bba2b50e752d"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_key_hud_graphics.cpp.o",
+      "bytes": 1023384,
+      "sha256": "1c6372d5b524ad681596c00bf4444efa1190e55cbe07b5994587a960088f2ce7"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_key_media.cpp.o",
+      "bytes": 7786960,
+      "sha256": "16332a7c73b7d39e26bfc7e74f3485eb9dcd29bfaa45a8c128b24aba3f288c24"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_mechanism_bindings.cpp.o",
+      "bytes": 3203912,
+      "sha256": "7131689c504690bf00df13fadf8d9f9d94f3d594fe184db03565d8fc845cd6ce"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_mechanism_state.cpp.o",
+      "bytes": 7702736,
+      "sha256": "1d9846b9fcca7559c3e0c392f0921d779d7795c6edcbf9996287115c35c2ab58"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_mechanism_presentation.cpp.o",
+      "bytes": 6870984,
+      "sha256": "c51c36ccacb62bf7c7d2399b7e10f1d9a50308fc14bcb881f8c06fa353b59146"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_mechanism_audio.cpp.o",
+      "bytes": 1087408,
+      "sha256": "247d94165323e2daedfef5be30a17c8f17e42288d8b2fc6f80d25bbdd0421494"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_mechanism_contacts.cpp.o",
+      "bytes": 3959200,
+      "sha256": "e3269db42fce05e4878e610c430d34ce33db99b0122b9cc9c730cfaf943599c1"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_rooms.cpp.o",
+      "bytes": 4570560,
+      "sha256": "28c578136360c3b8c12a7c548690d8400dd9ba29c0cc0a2f8d07c236586f0f78"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_terrain.cpp.o",
+      "bytes": 4878776,
+      "sha256": "73f2698705cc49e3800854aa0e426cad1260aabd284c0159ac010223e53a01f9"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_swing.cpp.o",
+      "bytes": 2880448,
+      "sha256": "50f75ca991c8e358b36328e210385d7fe33b8ced12b28439c27fd1ac2e8baedb"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_swing_graphics.cpp.o",
+      "bytes": 1717360,
+      "sha256": "dc3bd4f74fb12ab2c99c614a61a384e788a4f874c9e11f9b4c652927058f1821"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_swing_action.cpp.o",
+      "bytes": 2878632,
+      "sha256": "ceebec35798ce2528b5fb36dd43dd6b1fb7c1aefef2252a0eba2cb0a53b52953"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_swing_entry.cpp.o",
+      "bytes": 4774096,
+      "sha256": "6b1c9d9320900791e32c3d9824b4f377708ffa7adcf156beee1f8b3b43ea594c"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_swing_resources.cpp.o",
+      "bytes": 2100880,
+      "sha256": "9c66e851bcad66fb4827b4149069ca175cc9e7a679012ca4cbe11daef122d0ea"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_player_tree.cpp.o",
+      "bytes": 1367632,
+      "sha256": "52f115b2365c4ec7b17077b6f4c0c49ce59166d4a18d82c541c18bf0d7697a82"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_area_contacts.cpp.o",
+      "bytes": 362536,
+      "sha256": "4bf692011990ceca3463befaffff3217f2ecb55feb2c8a84af30cb0e185b1684"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_objects.cpp.o",
+      "bytes": 4701168,
+      "sha256": "7062ff80e2881c8e32b1802e4cf38b4d13a96c85fa1c07933ceacb5d7a19d97b"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_prop_clips.cpp.o",
+      "bytes": 1729976,
+      "sha256": "986bd4ba5cd277f7bddc8abfe4a51cc63ed3748ed9ce22f0055f2742dd1c4d5a"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_props.cpp.o",
+      "bytes": 6614496,
+      "sha256": "03116364058aa84e630f0875a13ca6e25b4b07d6ff11800d58e560fa725f475e"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_steps.cpp.o",
+      "bytes": 2667472,
+      "sha256": "d71e346ec4cfe47e8be7d8e88855472482f56a04c44b626f54bc1cbe88a68267"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_keys.cpp.o",
+      "bytes": 1176848,
+      "sha256": "24810598c9a82e3717d50974739ffe62eb6ad5c11fbb39aabcc099a1f23b117b"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_key_state.cpp.o",
+      "bytes": 3457472,
+      "sha256": "b3c5c81dd82fac7b8926c4f5b2a4b3be7eda3685f61e62f552d5b88734a82e68"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_key_clocks.cpp.o",
+      "bytes": 10096008,
+      "sha256": "ef16734bb0e26cee4cbc5934f6e2a033e1252e933bb4ac632f50ce9c32843787"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_switches.cpp.o",
+      "bytes": 1506440,
+      "sha256": "094e5990721b694f0f5420890fc50a5f24c70e8e0bf05b26af74129ad827b556"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_switch_state.cpp.o",
+      "bytes": 3959808,
+      "sha256": "ae1b766a0d61759419d2c83d3c744c28cfdc604d41fa8889e8722bf037579446"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_wall_timeline.cpp.o",
+      "bytes": 1645248,
+      "sha256": "67348ddec0dd210f5890ba8fb539b83af2f73ce8e2cfca62bca519e8b0321351"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dungeon_wall_state.cpp.o",
+      "bytes": 2192680,
+      "sha256": "5895170fde0c2473f83e880bf63f01fdcf48c5d26f747eae88845cd6aab8000e"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_menus_data.cpp.o",
+      "bytes": 13618616,
+      "sha256": "70fc50aa220f95cc171888753e0d8942d7742ef54e367efb1a25075c7bb6d7e9"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_menus.cpp.o",
+      "bytes": 16842808,
+      "sha256": "fb1b755b89352b35af5aabd562a2625366fd24b84faaa5966d778f2e159d51e7"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_music_zones.cpp.o",
+      "bytes": 2274592,
+      "sha256": "f8b0f4bba94d20fec4339f9b7fa546610caf53c41b23d4e910ece6baeea908cd"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_gameplay_audio.cpp.o",
+      "bytes": 981496,
+      "sha256": "82e3ba7c4fa3af50589f52d79183d719e55ba346db7194d408f16ac1f8f3abfd"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_data.cpp.o",
+      "bytes": 1284648,
+      "sha256": "ecf57c95c0be62f9bd713d268d7b3dd3ad919eda0a9f7ed741e89d7dbeb9216a"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_world_links.cpp.o",
+      "bytes": 1784560,
+      "sha256": "1b6c2a608c3718c310a9c9b3c62a15ea057ccfa253f5b044a7c47d0500e357b0"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_scene.cpp.o",
+      "bytes": 20931992,
+      "sha256": "a88707e32cf6836f0b6f911d9479d803856fc41c481d3ccd94af63d0e294fa2c"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_scene_resources.cpp.o",
+      "bytes": 4363968,
+      "sha256": "fc58d75f029c24da9cf32acb12a2c66c1228d193753dc0614d928c7544f0e31b"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_story.cpp.o",
+      "bytes": 6411704,
+      "sha256": "00be16fda0658b8cc7520a484d9f0d1a8e623f8721d988d6903d3404440fcf57"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_present_data.cpp.o",
+      "bytes": 2160384,
+      "sha256": "73cce811e57598052b987e45612d5a928549840002820a1344490fc0483dff28"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_house_presents.cpp.o",
+      "bytes": 2051648,
+      "sha256": "6236537aa3f6294677c506cde285e5c02d3ca73da54dd1b0a2f32a79b35d04fc"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_mick_treats.cpp.o",
+      "bytes": 2227168,
+      "sha256": "45d38072e81b2a7765d7243cf328cd1ddcbd273240fefd634d17a9a464c9696c"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_house_inspection_data.cpp.o",
+      "bytes": 1000504,
+      "sha256": "ea3f89c319c12890866500b0f799e42cc4702b61eab6ccaa6660d53448672362"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_equipment_data.cpp.o",
+      "bytes": 1811800,
+      "sha256": "58b2642ebd94c13e8866b32a02b828f644aa55934b78d80fc5448678f884f5e7"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_field_equipment_menu.cpp.o",
+      "bytes": 3773928,
+      "sha256": "fa8e81eee8fd759dbf946304f2ae82a41cbf48e4da581f318acb77f756584fcc"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_storage_data.cpp.o",
+      "bytes": 1450472,
+      "sha256": "202a864b28da119d28449b24dc41c3496897680f2cba11ddc86830d356b1520b"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_storage_menu.cpp.o",
+      "bytes": 3798512,
+      "sha256": "b28fcb5c9d5d24a8eb2f14f798aeb765b8a120cc1d5d0ed4c619a7ad8570f2a7"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_item_details.cpp.o",
+      "bytes": 5725104,
+      "sha256": "d96928f7765d115adfccadd21ab9247c7541c9c278bfb9ed140c92a5172b1a26"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_drawer_program.cpp.o",
+      "bytes": 1692256,
+      "sha256": "cadc4615d729c5bf1cedf2770f3198a325c0e483d0639104b2a4305be7faae0b"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_resource_catalog.cpp.o",
+      "bytes": 2275504,
+      "sha256": "6c0e2f2392f29c64510f2c8b5f02ddf72954b2faa71849bab5508ead4f489053"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_localization.cpp.o",
+      "bytes": 4009272,
+      "sha256": "0e02452dd05e42d7cee3775dba8b5e1c3b095b098d13345a9bf6652bead2ced4"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_localized_presentation.cpp.o",
+      "bytes": 5223200,
+      "sha256": "07a7a0bd9611414037d43b4a94847d00952e9ebd74db6cb21f028a6708564cb4"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_locale_preference.cpp.o",
+      "bytes": 829552,
+      "sha256": "ebc66ecb97a577fc6a8c20022e89c536315272a54a8cb63a227997253945da03"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_source_font.cpp.o",
+      "bytes": 2974984,
+      "sha256": "5cf3a642f15dc561eb70269c35952b07eef5e096a0b881863bae936b928668fc"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_title_locale_data.cpp.o",
+      "bytes": 4171424,
+      "sha256": "0f0b990cb187e39459a7f32ff513404a9bbc217d66c0113a336420f8449f1bb3"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_music_programs.cpp.o",
+      "bytes": 6327360,
+      "sha256": "9c51f3f8bb10889f7ef0b60542a6b90e266b9056b44ff503a89a5c51d2f344b7"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_music_library_bindings.cpp.o",
+      "bytes": 3360368,
+      "sha256": "709cd299c6f82d167fa384f0dfdff245a7380de68fa167e18cc2d52412692f12"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_music_bank_routes.cpp.o",
+      "bytes": 3935504,
+      "sha256": "5d42067c25ab943b69c188181d0599f9bc215c8b1ddc3b9128cde0f0addd2500"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_music_scene_graph.cpp.o",
+      "bytes": 4032392,
+      "sha256": "3e2a82cba82c33fe5195acb87e708e1d393ab16315e3b202fe4f9ab90fb31ab5"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_music_players.cpp.o",
+      "bytes": 5100104,
+      "sha256": "9ce77ca120794a8775e48ca3d6d20f49179643b7f221a72437c63aee2e758199"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_music_player_choice.cpp.o",
+      "bytes": 640952,
+      "sha256": "b1555040453a2ad66797d554b55d3ee013b368cc5e87a2430395974ae90ad186"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_music_regions.cpp.o",
+      "bytes": 6400872,
+      "sha256": "a2f1f5f81e8a0b35940c499528c1381eb76334bb3ea1fd1f33020211341421c1"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_introduction.cpp.o",
+      "bytes": 16093992,
+      "sha256": "f072be64ab162e646d83ed1a114f4e425d1f8a0d6f1cd1b248b535994e402838"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_new_game_setup.cpp.o",
+      "bytes": 20904328,
+      "sha256": "7b979d6b52fc5c509fddb880d3bf6135e4c15535b33ac123523a8ab3d3a920f8"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_startup_settings.cpp.o",
+      "bytes": 6903472,
+      "sha256": "365d7a13360d8778f14ee7007268a5929f2d1c3ac40b618abd70a9497feb5ed5"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_house_button_prompts.cpp.o",
+      "bytes": 2741760,
+      "sha256": "b4fbcbdb8772dd89446e2a334734e3f4adb84ff8a2ed4b606855b789516ef644"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_loading_indicator_data.cpp.o",
+      "bytes": 924304,
+      "sha256": "0807cbdd833ddce28e9bd0a1dfca358be47bdf308a203fd2795fb973755de029"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_continue_menu_data.cpp.o",
+      "bytes": 4157608,
+      "sha256": "24d1ebeb4b2d9647631805391c623bc0b3dd28d5bb9c188f89554908f0ec4f69"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_continue_menu.cpp.o",
+      "bytes": 3868696,
+      "sha256": "f923e72716e0f49af23fc8755320c597e69d836df060ba9a82c5e7fc30468a6b"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_slot_preference.cpp.o",
+      "bytes": 1140880,
+      "sha256": "549a24c43278bcdbda55b7689514b8fefa501e67644ea3c8308a9549b6acc8a3"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_restore_data.cpp.o",
+      "bytes": 5878152,
+      "sha256": "f452a939cd668dc8ee009157f18fd0c9f09d4e58bb31e17a2ca1b8368561dda4"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_session_restore.cpp.o",
+      "bytes": 8176776,
+      "sha256": "6061fb74c0144223100fb84634f7d4ce79e12bc1522c51f9dc4f4452d562327e"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_session_migration.cpp.o",
+      "bytes": 12562552,
+      "sha256": "dfeab1f3e41588da17c9ea4fa6435ca1dfb3876d450f3b1ad1ffcbfb14be5039"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_load_rng.cpp.o",
+      "bytes": 911088,
+      "sha256": "8d852a1e8b5c77fea865d5cabec9392dce39cd286c0da0d2d46af20bc096f1c3"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_fresh_house.cpp.o",
+      "bytes": 5018592,
+      "sha256": "ad478294b4c7146befe7ea5aba5004b37065ab5a33537c688bcbef822fbb699c"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dialogue_choices_data.cpp.o",
+      "bytes": 4789120,
+      "sha256": "3240b806c9e31851f8ac26fea5b85efbbf63cab56a0d2aade5c440aa0ad5ebed"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dialogue_choices.cpp.o",
+      "bytes": 915792,
+      "sha256": "047c29a815c129a9ceab391f2944633370d5ee82f10716b8d7bb729c5a72162c"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_phone_data.cpp.o",
+      "bytes": 1203640,
+      "sha256": "1cd134064e4b7d7d9958a2caaf092107776150f3450ea7ea07fb6506eb74723e"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_phone_runtime.cpp.o",
+      "bytes": 578784,
+      "sha256": "c20df3f717d2acff4a32c018af34fbba4075d502d8c559f6eb8a3f5ea84f9ac5"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_native_session.cpp.o",
+      "bytes": 24004696,
+      "sha256": "3f343be479e979cf6943e5e054cee0fde17ef7a3992c472a272614007f4001cf"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_session_save.cpp.o",
+      "bytes": 15949800,
+      "sha256": "d97423184a8b27916c1bb4b22b60455630ad420ddb8a3ea60cdce85c34c77f62"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_save_menu_data.cpp.o",
+      "bytes": 5995176,
+      "sha256": "d2086fa735b8c9b6822b170d826b338740cae6d4d07fd2744356a8a831f0cd9f"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_save_menu.cpp.o",
+      "bytes": 2486464,
+      "sha256": "ec8c99cc81dd5f26456e08cfa019366730930b448b313de41565ae96bdb13769"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_native_input.cpp.o",
+      "bytes": 430768,
+      "sha256": "d2047639835dfc6c586f77f91718eb33898adb201f5733277db858c823e0efaf"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_world_effect_data.cpp.o",
+      "bytes": 479656,
+      "sha256": "a2580addb1d8f2aab41c5ea1f14645b5f23e4de2a994e991cc5a2540dc96bc27"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_world_effect.cpp.o",
+      "bytes": 1066072,
+      "sha256": "2afa1653f5cbb85b7b37c58edef1ac397177059332fb06d6cccc1ac9c4722179"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_items_data.cpp.o",
+      "bytes": 1573016,
+      "sha256": "9de215adbaf3c47d27bb24132a9062effcd92b7e34475719de7e82f26586d442"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_items_menu.cpp.o",
+      "bytes": 1663736,
+      "sha256": "a7feea366eebc1f7ad3e23e85d5bb383cb4cec1d34164f1989170506826efd8b"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_house_audio.cpp.o",
+      "bytes": 1183160,
+      "sha256": "57091d7f5064f1894d2b45722d9d3ea44564a8c8ef2515edb235856d8432670a"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_house_runtime.cpp.o",
+      "bytes": 10524368,
+      "sha256": "ff5aa155f06bcdb5241ad2161c68a4cf52b5a7fca10a78322f018c6f51119fb2"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_house_data.cpp.o",
+      "bytes": 1501296,
+      "sha256": "fc5b586e252565a57f948c1707f30c059538429fe0d366dbcaa21a6c556864b8"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_house_presentation.cpp.o",
+      "bytes": 11835528,
+      "sha256": "65365b152500f98be888b5c4e00cf0e7123a1575f877c52d2c628ae60acd2f30"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_battle_loot.cpp.o",
+      "bytes": 296072,
+      "sha256": "756c2566cc887290f36705094423abdbb916a41bc5c06372d0e43d192a9fd80f"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_battle_outcome.cpp.o",
+      "bytes": 2459376,
+      "sha256": "2435f83aa1f3e9c5fbe9834eec93b3e9c9576da0f4afab75118faa746fde94fc"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_battle_round.cpp.o",
+      "bytes": 2381192,
+      "sha256": "f5eb9cfb72e3e48b8e83154239f8681b6cc139ed173f50d4cf2bae9427c8f3a9"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_battle_round_data.cpp.o",
+      "bytes": 1313848,
+      "sha256": "a15350b212b7fe3576ab4a8f920269a95e9bc0ce90ba21eda4452f67316d39db"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_battle_action_presentation.cpp.o",
+      "bytes": 8692424,
+      "sha256": "614284343efe6e4007b4b1345fd2f8444e36e9c5f6a23b65eb8528b31a1bc60c"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_source_random.cpp.o",
+      "bytes": 98608,
+      "sha256": "645d3b00585fd002ec634bdda1bbe933abd22ab3a88fe70de5d6dcddaa1a131d"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_audio_data.cpp.o",
+      "bytes": 940072,
+      "sha256": "074c85530c0c6481faa2d9a86c1e197f4c8bf77b5f9693b0ee2b761b30d4f6e4"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_battle_data.cpp.o",
+      "bytes": 944248,
+      "sha256": "bad4532b4141561eba77a76f5bb12c75bcc42d1319afc86c5ac6ca01c01a2247"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_battle_entry.cpp.o",
+      "bytes": 542008,
+      "sha256": "9214728fae5ccc645b7ffa3dc2f36715b1821cee35e7df2fa28595f3317f9318"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_room_data.cpp.o",
+      "bytes": 2647776,
+      "sha256": "26676f72be96a483c369e030407078ecfd859b7ace64140f942db2e71032370c"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_content.cpp.o",
+      "bytes": 3538832,
+      "sha256": "2f5fe8a2288306d89cca2f809725df84a8f61c4ec3582042ca68cb7392ec03b7"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_file_io.cpp.o",
+      "bytes": 622872,
+      "sha256": "d0b9f3dd45ba5d3d9c8671efb1510bb6248b9597c6989e776f4e30aa79889886"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_story.cpp.o",
+      "bytes": 232104,
+      "sha256": "046d24d2b7a1e6cc14c8ea29c9b69b8cfc454155c9cf96c196cad84a238fdc4e"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_game.cpp.o",
+      "bytes": 909144,
+      "sha256": "dce2319a81d20f7126537d52bfab7b62f877fded63d79462daf942ec81601d2f"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_save.cpp.o",
+      "bytes": 959240,
+      "sha256": "5c78188db6479897f83dc25a41f1e72ab6b4ab7772991adc2e0f74350875080d"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_progression.cpp.o",
+      "bytes": 187352,
+      "sha256": "50aeba90ae9ec24dc2971ff490828e615f2cbfafed951dd2f44b0ed8905993f0"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_movement.cpp.o",
+      "bytes": 363928,
+      "sha256": "be9292df38ee56bacfa45fc85975bf3b637d3687521788e1e825e1958b675e8c"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_animation.cpp.o",
+      "bytes": 239800,
+      "sha256": "03038724a5ac0e2b1389bc2f9564c87cfd290729aaaa2cb07709919bf19a5661"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_collision.cpp.o",
+      "bytes": 3021032,
+      "sha256": "a9c5328adbb5edbc1d773229d91af145260bdd4ca2070e1e5da982b303ca4dde"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_world_flags.cpp.o",
+      "bytes": 1928008,
+      "sha256": "882609917fa3c75e03ecbbc9438aaf58fbe738a63addc1c2d0d3f8c5ebc9a567"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_world.cpp.o",
+      "bytes": 15330992,
+      "sha256": "48b346a672fec67b59842c560eb3c40a8abf34eb2d086157e140be5a0ca4466b"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_opening_trigger.cpp.o",
+      "bytes": 239440,
+      "sha256": "5d3eee79c209776fbdea32e263f92a1a25bb6af554cc461f2661759b9d80583d"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_dialogue.cpp.o",
+      "bytes": 376784,
+      "sha256": "f308045ab73ee62883da059e2a2a9914c103595abde54c7c05e1b896b8aee0df"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_actor_actions.cpp.o",
+      "bytes": 1294888,
+      "sha256": "f7f90c80aec676191d5c772ccdecbd21951d2c733fb857e610ea84e1963a9360"
+    },
+    {
+      "path": "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catacombs-steps-core-host-1/runtime_cutscene_camera.cpp.o",
+      "bytes": 3737464,
+      "sha256": "2c617b5b7b0b434e54cf300986a13a923d76995c90e7bc57afa92a72f66e46eb"
+    }
+  ],
+  "bytes": 474412640
+}

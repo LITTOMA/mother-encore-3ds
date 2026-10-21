@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "kind": "calls",
+      "run": 4,
+      "sha256": "87d704b18a1b4f2a13073918624dfd19df5f8edbc33de74329699a214df0ab6a",
+      "bytes": 32671
+    },
+    {
+      "kind": "calls",
+      "run": 5,
+      "sha256": "87d704b18a1b4f2a13073918624dfd19df5f8edbc33de74329699a214df0ab6a",
+      "bytes": 32671
+    },
+    {
+      "kind": "contacts",
+      "run": 4,
+      "sha256": "6f39e355ee99b792da7152ac846bdd5bbaf74e9bc467ceeb3d8090f35daea5f6",
+      "bytes": 208102
+    },
+    {
+      "kind": "contacts",
+      "run": 5,
+      "sha256": "6f39e355ee99b792da7152ac846bdd5bbaf74e9bc467ceeb3d8090f35daea5f6",
+      "bytes": 208102
+    }
+  ],
+  "call_repeat_equal": true,
+  "contact_repeat_equal": true,
+  "scope": "Two fresh native projects per final protocol;actual raw observations,not pixel or audible equivalence"
+}

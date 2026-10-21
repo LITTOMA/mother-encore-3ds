@@ -1,0 +1,27 @@
+{
+  "source_commit": "56664735f9bcff288c6f8ab08416e7d664542926",
+  "game_sha256": "4cc750767edbd15f8f155a661416be4f5e82ac55cfbf7844b4e90402f397e1c5",
+  "actual_cold_runs": 2,
+  "checkpoints_each": 90,
+  "semantic_equal": true,
+  "position_tolerance": 0,
+  "position_differences": [
+    {
+      "run": 2,
+      "differences": []
+    }
+  ],
+  "compared_original_cases": [
+    "pause_select_close",
+    "pause_cancel_close",
+    "psi_unlearned",
+    "psi_back"
+  ],
+  "required_dsp_consumption": true,
+  "actual_screenshots_viewed": [
+    "run-1/lamp_victory.png",
+    "run-2/second_field_walk.png"
+  ],
+  "cleaned_bytes": 650970750,
+  "scope": "Ordinary opening/corecodec/FieldScene regression onactual85artifact;not unbound polygon stepping ornew86clock/gfx/hardware/perceptualaudio orfulloriginalplaythrough"
+}

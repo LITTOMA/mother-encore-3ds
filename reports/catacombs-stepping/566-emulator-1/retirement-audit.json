@@ -1,0 +1,124 @@
+{
+  "new_source": "56664735f9bcff288c6f8ab08416e7d664542926",
+  "new_game_sha256": "4cc750767edbd15f8f155a661416be4f5e82ac55cfbf7844b4e90402f397e1c5",
+  "two_cold_runs_passed": true,
+  "parts": {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\steps-566-current\\download-parts",
+    "files": {
+      "0": {
+        "bytes": 8388608,
+        "sha256": "1081d8de95da841a9a3f7b488ea8029206909bc71011b44174c2829f8d7b2c46"
+      },
+      "1": {
+        "bytes": 8388608,
+        "sha256": "75654f4859c304659581a66c4ef43949b3105ed22ee4e88d2a94f76e9230b8d4"
+      },
+      "10": {
+        "bytes": 8388608,
+        "sha256": "ad5b113e4a009359085e1c73c27e3d0212658cdfa1a4a409d1a2ce56b81c6cb6"
+      },
+      "11": {
+        "bytes": 8388608,
+        "sha256": "651a3ad5bc4b9ab107f4beb4412220ad7e95ca2712807d0064c9e7d555564398"
+      },
+      "12": {
+        "bytes": 8388608,
+        "sha256": "8fcdfb2fd1e9cbe53a528cc86e33970011a4d837503efee1091740eaeda2a520"
+      },
+      "13": {
+        "bytes": 8388608,
+        "sha256": "71ea337461ddb5bd0b09362a00ca8e01115ecac85571b058fd2c978cd62c0ad8"
+      },
+      "14": {
+        "bytes": 8388608,
+        "sha256": "170582a577cec1c3832ec1cd3e48c06478af5f33534edc4860db46cd9c0b1a59"
+      },
+      "15": {
+        "bytes": 8388608,
+        "sha256": "d44d0a1c6c832a89a1c776bf373c9edebab3a97470997c50218b2faa3fed9fd9"
+      },
+      "16": {
+        "bytes": 8388608,
+        "sha256": "adc074123ded5d04a8a8be84744e796d43192671f2e5a5a3668b9f475f2af37a"
+      },
+      "17": {
+        "bytes": 8388608,
+        "sha256": "ed251febb13b3ace930bd29f340df3c55d8b406aac0b68d223eaaf737be59564"
+      },
+      "18": {
+        "bytes": 8388608,
+        "sha256": "375651209247f3607f51fb5f527d89a3337bb7849f295c8dc4d39872fd95a434"
+      },
+      "19": {
+        "bytes": 8388608,
+        "sha256": "4965917751d7400a45cf870fa87c7e14e7e12c02b9f6a9863dd83283cceaec8d"
+      },
+      "2": {
+        "bytes": 8388608,
+        "sha256": "aafef6b53a424106ad8e14b2d17d6658d6a45f05dea89985f831adad50c0e579"
+      },
+      "20": {
+        "bytes": 8388608,
+        "sha256": "8a0a36e7a66bc731ab13787b77bb2c13333773b91d39f2c62d2d232d9432c2b1"
+      },
+      "21": {
+        "bytes": 8388608,
+        "sha256": "c4dd8e1eb3694ea443e5fe880b9d3d22bcf42dae1ee4fefd02f75e5527dab211"
+      },
+      "22": {
+        "bytes": 8388608,
+        "sha256": "224c10c42191a7c1cdffc8455168a071f45b0beb175303e858308ee1a7c3cf52"
+      },
+      "3": {
+        "bytes": 8388608,
+        "sha256": "97049c064c630f31ee27716c5f6c130e6afbf99964a8773664e45aa6c63cd15d"
+      },
+      "4": {
+        "bytes": 8388608,
+        "sha256": "02dc1fdfd5af1b0c4e66b040974d999919675e719399fe9fab1bdafae05bf2f6"
+      },
+      "5": {
+        "bytes": 8388608,
+        "sha256": "1314282d2440a822a0adc62c43ff7a1433207992093a2474a3d5748a3e9be82a"
+      },
+      "6": {
+        "bytes": 8388608,
+        "sha256": "0141752533c738c52cce9297dd0e59fc7570809a19bb767800d2d2d07a9e3095"
+      },
+      "7": {
+        "bytes": 8388608,
+        "sha256": "d988a5a6a90b1938b8304629b02aa5882134bba26a5c8ef2de9bb6508c9d7c9b"
+      },
+      "8": {
+        "bytes": 8388608,
+        "sha256": "5c685e77e7a77c8e5ee97bcb9a53f26eefae2a7cb61d36f651c3a9b496f53483"
+      },
+      "9": {
+        "bytes": 8388608,
+        "sha256": "b009a080de3e836be44b068dd7d67422514937135fbf830c066817e6648ccfde"
+      }
+    },
+    "bytes": 192937984
+  },
+  "old_game": {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\hud-e645-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+    "bytes": 264976804,
+    "sha256": "7ee34739a7e84fc4749cd907e31e55148b53161bae6983111d5501b5dff13833",
+    "source": "e6450ecc87592db6b1d46937795351db0e6e5019",
+    "owner_marker": ".owned-hud-build-download",
+    "owner_value": "source-hud-build-download-v1\r\n"
+  },
+  "profiles": [
+    {
+      "run": 1,
+      "temporary_bytes": 96527981,
+      "guarded_runner_removed": true
+    },
+    {
+      "run": 2,
+      "temporary_bytes": 96527981,
+      "guarded_runner_removed": true
+    }
+  ],
+  "runner_sha256": "9f3674bfb2880436b6a8ccedd79a5d242fb672ffe4a99d772b763fc9657f8baf"
+}

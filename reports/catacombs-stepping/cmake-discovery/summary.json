@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        ".",
+        "-B",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-steps-cmake-discovery-1",
+        "-DENCORE_REGENERATE_NATIVE_CONTENT=OFF"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "ctest",
+        "--test-dir",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catacombs-steps-cmake-discovery-1",
+        "-C",
+        "Debug",
+        "--show-only=json-v1"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "discovered_ctest": 326,
+  "scope": "Windows configuration/discovery ONLY,not test execution;actual GCC ASan+UBSan checks retained separately."
+}

@@ -1,0 +1,609 @@
+{
+  "source": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "scope": "Original run-sound assignments and PartyObject shadow requests from three Catacombs areas;source polygons and actual shadow resources only,not full scene/physics/renderer/save admission",
+    "review_sha256": "1929928a783d2c2266fb88a3aee5ed900a8d994b05eb5c39ce3e2e3f6bf827fe",
+    "sources": {
+      "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+      "Audio/Sound effects/Footsteps/cave.mp3": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b",
+      "Audio/Sound effects/Footsteps/cave.mp3.import": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc",
+      "Audio/Sound effects/Footsteps/grass.mp3": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878",
+      "Audio/Sound effects/Footsteps/grass.mp3.import": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1",
+      "Audio/Sound effects/Footsteps/metal.mp3": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08",
+      "Audio/Sound effects/Footsteps/metal.mp3.import": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e",
+      "Audio/Sound effects/Footsteps/sand.mp3": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6",
+      "Audio/Sound effects/Footsteps/sand.mp3.import": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1",
+      "Audio/Sound effects/Footsteps/soil.mp3": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f",
+      "Audio/Sound effects/Footsteps/soil.mp3.import": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65",
+      "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41",
+      "Audio/Sound effects/Footsteps/stone.mp3.import": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7",
+      "Audio/Sound effects/Footsteps/water.mp3": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82",
+      "Audio/Sound effects/Footsteps/water.mp3.import": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7",
+      "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+      "Audio/Sound effects/Footsteps/wood.mp3.import": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664",
+      "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+      "Graphics/Character Sprites/Magic_Ripple.png.import": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e",
+      "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+      "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+      "Graphics/Character Sprites/Water_Ripple.png.import": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+      "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+      "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+      "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+      "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+      "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+      "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+      "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+    },
+    "methods": {
+      "player": {
+        "_set_running": "8148793a6a2defe975058c992de188075bceb8909d96bc434802659caf033e5e",
+        "_move_state": "23a118d0c40c880a278d1b0b5f172a49e037002ab8cccf0d1e9f620a04d51130"
+      },
+      "area": {
+        "_on_Stepping_Sounds_body_entered": "7d0c96bf36f73ebb95e749272d085701a4edf3c461bd2d453f721d3fa668e2dd",
+        "_on_Stepping_Sounds_body_exited": "a2f9533d0c4cd7a46b75c27038b456744127b1cd7448aace3e6a5f7677336908",
+        "set_player_run_sound": "fddfc8690e737a4f2e58e93a63f3bcd1f8277366aea5f85a6cf6d47eb95d7d70",
+        "enable": "96afbc5b91ca1e9a0c799f6f63c0cac8cc2879ad014ad8dd3ae23d0fa526bfc9",
+        "disable": "a5fa3272396fdf5aaffbdaff0879785c92f0add52b9495f82d3bc42648f5790b"
+      },
+      "party": {
+        "set_shadow": "6fc8b4960a19de7a80f1a9c3a7d797ee0585432330cc935ccc13feba3dc500eb",
+        "get_shadow": "086626d53d2bcfbb5af86a91af3c7d07a616873afd98d3db937bf3522ea19c75"
+      },
+      "shadow": {
+        "set_anim": "48f21bf3cea4a266f00bd73f6756a2ae4c24328d167ca32fe5919559aec8c6f8",
+        "_set_behind_parent": "faaf1d3eb7418171478759b24d1667fee8b9fca31895d85d02f7ce82145b7328"
+      }
+    },
+    "source_rules": {
+      "sound": "current player AND enabled;exit also requires nonempty sound",
+      "shadow": "ANY PartyObject and nonempty effect,independent of enabled",
+      "callbacks": "Assignments only;area change does not directly restart running audio"
+    },
+    "not_implemented": [
+      "Extended codec",
+      "Original native geometry/callback comparison",
+      "New contact/Shadow consumer",
+      "Complete scene or save admission"
+    ]
+  },
+  "party_methods": {
+    "set_shadow": "6fc8b4960a19de7a80f1a9c3a7d797ee0585432330cc935ccc13feba3dc500eb",
+    "get_shadow": "086626d53d2bcfbb5af86a91af3c7d07a616873afd98d3db937bf3522ea19c75"
+  },
+  "player": {
+    "path": "Nodes/Reusables/Player.tscn",
+    "sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "scope": "Native KinematicBody2D default layer1; original root mask and all8 polygon vertices+local origin. Movement/pause script is an explicit service."
+  },
+  "cases": [
+    {
+      "name": "Stepping Sounds/Water/0/0",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/0/1",
+      "point": [
+        -1417.6,
+        -278.4
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/0/2",
+      "point": [
+        -1452.0,
+        -280.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/0/3",
+      "point": [
+        -1488.0,
+        -262.4
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/1/0",
+      "point": [
+        -1506.0,
+        -402.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/2/0",
+      "point": [
+        -1968.0,
+        -437.3333333333333
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/3/0",
+      "point": [
+        -2120.0,
+        -424.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/3/1",
+      "point": [
+        -2080.0,
+        -456.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/4/0",
+      "point": [
+        -1960.0,
+        -512.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/5/0",
+      "point": [
+        -1432.0,
+        -682.6666666666666
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/6/0",
+      "point": [
+        -1414.4,
+        -758.4
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/6/1",
+      "point": [
+        -1360.0,
+        -732.8
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/7/0",
+      "point": [
+        -1288.0,
+        -722.6666666666666
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/7/1",
+      "point": [
+        -1176.0,
+        -680.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/7/2",
+      "point": [
+        -1064.0,
+        -722.6666666666666
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/8/0",
+      "point": [
+        -1176.0,
+        -768.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/9/0",
+      "point": [
+        -748.0,
+        -432.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/9/1",
+      "point": [
+        -704.0,
+        -416.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/10/0",
+      "point": [
+        -560.0,
+        -601.6
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/10/1",
+      "point": [
+        -554.6666666666666,
+        -554.6666666666666
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Water/10/2",
+      "point": [
+        -592.0,
+        -564.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Soil/0/0",
+      "point": [
+        -547.2,
+        240.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "Stepping Sounds/Stone/0/0",
+      "point": [
+        7.0,
+        61.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "disabled_body_0",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 0,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": false,
+      "initial": false
+    },
+    {
+      "name": "disabled_body_1",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": false,
+      "initial": false
+    },
+    {
+      "name": "disabled_body_2",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 2,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": false,
+      "initial": false
+    },
+    {
+      "name": "filter_1_0",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 0,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "filter_2_4353",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 1,
+      "layer": 2,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "filter_0_4353",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 1,
+      "layer": 0,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "filter_2_2048",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 1,
+      "layer": 2,
+      "mask": 2048,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "filter_0_2048",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 1,
+      "layer": 0,
+      "mask": 2048,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "initial_overlap_0",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": true
+    },
+    {
+      "name": "initial_overlap_1",
+      "point": [
+        -547.2,
+        240.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": true
+    },
+    {
+      "name": "initial_overlap_2",
+      "point": [
+        7.0,
+        61.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": true
+    },
+    {
+      "name": "water_broad_bounds_-1_-1",
+      "point": [
+        -2152.0,
+        -776.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "water_broad_bounds_-1_1",
+      "point": [
+        -2152.0,
+        -232.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "water_broad_bounds_1_-1",
+      "point": [
+        -520.0,
+        -776.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "water_broad_bounds_1_1",
+      "point": [
+        -520.0,
+        -232.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "water_broad_bounds_0_0",
+      "point": [
+        -1336.0,
+        -504.0
+      ],
+      "body": 1,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "ordinary_body_0",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 0,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    },
+    {
+      "name": "ordinary_body_2",
+      "point": [
+        -1381.3333333333333,
+        -293.3333333333333
+      ],
+      "body": 2,
+      "layer": 1,
+      "mask": 4353,
+      "enabled": true,
+      "initial": false
+    }
+  ],
+  "generated_sha256": {
+    "project.godot": "d74e63800cbfc884e8a0f307b1a7d00804964faec99b538bc65b99741d5d1c0e",
+    "source.tscn": "aef9cd407e8c091fc57f2969b511f29c641177ab6ef78c2ba34e6a5df6b6049b",
+    "party.gd": "1257ffcd91740458a86ed9dcb3e3c5abf060b29b73d9b8e5cbf8f0fa68a5f375",
+    "actor.gd": "4aaec50dd2bb5ce1209f1d8e364cd2974ce56a17e3f874dbc6e31ffaf21a59ce",
+    "global.gd": "08f54a497b07c83be37257a67ef0775785a468b5353c631e01f25f2978eb1696",
+    "probe.gd": "f96559fc3a9075928672bffb6429ad0ebdc98e2e20595fbe57b30ab941ca41ee",
+    "probe.tscn": "2af992e34b7bd367fc6970355706ffa8a240875dfa2c2cf74c399d2f007229c4",
+    "input.json": "d464028d7a0ec72bbaafbc50a6d8d5537ba57b5f6582a43acea50118261eabab"
+  },
+  "copied_source": {
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+    "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+    "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+  },
+  "adapters": [
+    "Verbatim three area instances,thirteen original shape declarations,base area scene and original full callbacks",
+    "Original player eight-vertex polygon/local origin/layer/mask on injected body; movement/pause/party behavior not executed",
+    "Only PartyObject class identity and original set/get Shadow methods; full original Shadow resource/script",
+    "Four physics frames and one idle per observation; exact frame latency and animated frame phase not compared",
+    "Initial overlap explicitly constructed; observer/original signal ordering not assumed; settled final state is authoritative; no whole Catacombs root/terrain"
+  ],
+  "scope": "Original area shape decomposition and body contacts only; no complete map/player/graphics/NDSP or hardware pass",
+  "producer_sha256": "1db4d7843983dfe1e56bb67bb21863d2d687f10224cbc281438ea6776a6b01aa",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "result_sha256": "6f39e355ee99b792da7152ac846bdd5bbaf74e9bc467ceeb3d8090f35daea5f6",
+  "texture_scope": "Fresh native PNG imports in contacts project;original settings verified separately by callback companion;no pixel claim"
+}

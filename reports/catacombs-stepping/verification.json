@@ -1,0 +1,20 @@
+{
+  "core_sources_recompiled": 116,
+  "local_compiler": "GCC9.4 WSL Ubuntu-20.04",
+  "sanitizers": "ASan+UBSan;detect_leaks=1;halt_on_error=1",
+  "checks": 12743,
+  "legacy_checks": 1353,
+  "python_tests": 19,
+  "windows_ctest_discovery_only": 326,
+  "python_discovery_only": {
+    "total": 1452,
+    "aggregate": 1069,
+    "dedicated": 383
+  },
+  "native_calls_each": 60,
+  "native_contacts_each": 164,
+  "native_cold_repetitions": 2,
+  "cleaned_bytes": 475242591,
+  "scope": "Actual bounded source/native and host tests only. Full GCC/Clang matrices,real SDK3DSX/CIA,current artifact emulator,elapsed Shadow clock/formal scene/Shadow GPU/NDSP/hardware not passed by this report.",
+  "source_inputs_unchanged_since_fresh_compile": true
+}

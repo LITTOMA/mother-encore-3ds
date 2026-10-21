@@ -1,0 +1,11 @@
+{
+  "parts_bytes": 192937984,
+  "old_game_bytes": 264976804,
+  "profiles_already_removed_bytes": 193055962.0,
+  "total_bytes_reclaimed": 650970750.0,
+  "replacement_game_retained": true,
+  "receipts_logs_preserved": true,
+  "old_source": "e6450ecc87592db6b1d46937795351db0e6e5019",
+  "new_source": "56664735f9bcff288c6f8ab08416e7d664542926",
+  "initial_attempt": "Refused before deletion because PSObject property Count wasnot enumerated explicitly;exact23files then checked individually."
+}

@@ -1,0 +1,1926 @@
+{
+  "schema": 1,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "animations": [
+    {
+      "name": "magic",
+      "speed": 8,
+      "loop": true,
+      "frames": [
+        {
+          "atlas": "res://Graphics/Character Sprites/Magic_Ripple.png",
+          "region": [
+            0,
+            0,
+            17,
+            7
+          ]
+        },
+        {
+          "atlas": "res://Graphics/Character Sprites/Magic_Ripple.png",
+          "region": [
+            17,
+            0,
+            17,
+            7
+          ]
+        },
+        {
+          "atlas": "res://Graphics/Character Sprites/Magic_Ripple.png",
+          "region": [
+            34,
+            0,
+            17,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ripple",
+      "speed": 5,
+      "loop": true,
+      "frames": [
+        {
+          "atlas": "res://Graphics/Character Sprites/Water_Ripple.png",
+          "region": [
+            0,
+            0,
+            15,
+            5
+          ]
+        },
+        {
+          "atlas": "res://Graphics/Character Sprites/Water_Ripple.png",
+          "region": [
+            30,
+            0,
+            15,
+            5
+          ]
+        },
+        {
+          "atlas": "res://Graphics/Character Sprites/Water_Ripple.png",
+          "region": [
+            15,
+            0,
+            15,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "shadow",
+      "speed": 5,
+      "loop": true,
+      "frames": [
+        {
+          "atlas": "res://Graphics/Character Sprites/Shadow.png",
+          "region": [
+            0,
+            0,
+            15,
+            5
+          ]
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 4,
+      "registered": 4,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          1,
+          4
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 4,
+      "registered": 4,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "wanted": 2,
+      "registered": 4,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 2,
+      "registered": 2,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          2
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 2,
+      "registered": 2,
+      "playing": false,
+      "running": false,
+      "events": [
+        [
+          3,
+          2
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 2,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 2,
+      "playing": false,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "wanted": 1,
+      "registered": 2,
+      "playing": false,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "wanted": 1,
+      "registered": 2,
+      "playing": false,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          1
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        2,
+        1,
+        0,
+        0,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        2,
+        1,
+        1,
+        0,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "wanted": 2,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "wanted": 2,
+      "registered": 1,
+      "playing": false,
+      "running": true,
+      "events": [
+        [
+          3,
+          1
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "wanted": 2,
+      "registered": 1,
+      "playing": false,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 2,
+      "registered": 2,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          2
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 2,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 2,
+      "playing": false,
+      "running": false,
+      "events": [
+        [
+          3,
+          2
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 2,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 2,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "wanted": 6,
+      "registered": 2,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "wanted": 6,
+      "registered": 2,
+      "playing": false,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          6
+        ]
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": false,
+      "running": true,
+      "events": [
+        [
+          3,
+          6
+        ]
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          1,
+          6
+        ]
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": false,
+      "running": false,
+      "events": [
+        [
+          3,
+          6
+        ]
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        5,
+        1,
+        "shadow",
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          1,
+          6
+        ]
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        5,
+        1,
+        "ripple",
+        1
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 1,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 1,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        2,
+        0,
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 1,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        5,
+        0,
+        "magic",
+        1
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "magic",
+        "frame": 1,
+        "behind": true,
+        "playing": true,
+        "start": "magic"
+      }
+    },
+    {
+      "action": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      }
+    },
+    {
+      "action": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        0,
+        1,
+        2
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        2,
+        0,
+        1
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "wanted": 6,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "ripple",
+        "frame": 0,
+        "behind": false,
+        "playing": true,
+        "start": "ripple"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "wanted": 1,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "wanted": 2,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        5,
+        1,
+        "magic",
+        1
+      ],
+      "wanted": 2,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "magic",
+        "frame": 1,
+        "behind": true,
+        "playing": true,
+        "start": "magic"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "wanted": 1,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "magic",
+        "frame": 1,
+        "behind": true,
+        "playing": true,
+        "start": "magic"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        2,
+        1,
+        1
+      ],
+      "wanted": 1,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        2,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "wanted": 1,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "wanted": 1,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        2,
+        1,
+        1
+      ],
+      "wanted": 1,
+      "registered": 6,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          1
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "wanted": 2,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 2,
+      "registered": 2,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          2
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 2,
+      "registered": 2,
+      "playing": false,
+      "running": false,
+      "events": [
+        [
+          3,
+          2
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "wanted": 1,
+      "registered": 2,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": true,
+      "running": true,
+      "events": [
+        [
+          2,
+          1
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": false,
+      "running": true,
+      "events": [
+        [
+          3,
+          1
+        ]
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    },
+    {
+      "action": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "wanted": 1,
+      "registered": 1,
+      "playing": false,
+      "running": false,
+      "events": [
+
+      ],
+      "player": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      },
+      "party": {
+        "mode": "shadow",
+        "frame": 0,
+        "behind": true,
+        "playing": true,
+        "start": "shadow"
+      }
+    }
+  ]
+}

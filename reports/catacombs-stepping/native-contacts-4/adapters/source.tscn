@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Nodes/Reusables/stepping sounds.tscn" type="PackedScene" id=27]
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 17, 13 )
+
+[node name="SourceAreas" type="Node2D"]
+
+[node name="Stepping Sounds" type="Node2D" parent="."]
+
+[node name="Water" parent="Stepping Sounds" instance=ExtResource( 27 )]
+entering_sound = "water"
+exiting_sound = "stone"
+enter_shadow_effect = "ripple"
+exit_shadow_effect = "shadow"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -1488, -288, -1456, -288, -1440, -304, -1424, -304, -1408, -320, -1392, -320, -1376, -336, -1376, -224, -1488, -224, -1504, -240, -1504, -272 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -1520, -336, -1504, -336, -1472, -368, -1472, -448, -1488, -464, -1520, -464, -1536, -448, -1536, -352 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -2000, -400, -2000, -448, -1984, -464, -1952, -464, -1936, -448, -1936, -400 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -2160, -448, -2112, -448, -2112, -464, -2096, -480, -2064, -480, -2048, -464, -2048, -400, -2160, -400 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -1984, -496, -1936, -496, -1920, -512, -1920, -528, -2000, -528, -2000, -512 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -1456, -688, -1440, -704, -1424, -704, -1408, -688, -1408, -656, -1456, -656 )
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -1456, -752, -1440, -736, -1376, -736, -1376, -720, -1360, -704, -1344, -720, -1344, -784, -1456, -784 )
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -1312, -656, -1312, -736, -1296, -752, -1280, -752, -1264, -736, -1264, -704, -1088, -704, -1088, -736, -1072, -752, -1056, -752, -1040, -736, -1040, -656 )
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -1216, -752, -1136, -752, -1120, -768, -1120, -784, -1232, -784, -1232, -768 )
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -784, -448, -720, -448, -704, -432, -688, -432, -672, -416, -672, -400, -784, -400 )
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Stepping Sounds/Water"]
+polygon = PoolVector2Array( -608, -560, -592, -544, -592, -512, -512, -512, -512, -592, -544, -592, -544, -608, -560, -624, -576, -608, -576, -576, -592, -576 )
+
+[node name="Soil" parent="Stepping Sounds" instance=ExtResource( 27 )]
+entering_sound = "soil"
+exiting_sound = "stone"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stepping Sounds/Soil"]
+polygon = PoolVector2Array( -560, 224, -576, 240, -576, 256, -512, 256, -512, 224 )
+
+[node name="Stone" parent="Stepping Sounds" instance=ExtResource( 27 )]
+entering_sound = "stone"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stepping Sounds/Stone"]
+position = Vector2( 7, 61 )
+shape = SubResource( 30 )
+

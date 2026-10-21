@@ -1,0 +1,1 @@
+{"operations": {"24": [["player_pause", true]], "42": [["player_pause", false]], "70": [["tree_pause", true]], "95": [["tree_pause", false]], "105": [["visible", false]], "125": [["visible", true]], "130": [["ui", 1]], "150": [["ui", 2]], "165": [["ui", 3]], "180": [["ui", 0]]}}

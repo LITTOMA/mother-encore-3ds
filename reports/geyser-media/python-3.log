@@ -1,0 +1,28 @@
+test_audited_engine_bytes_and_license_are_required (tests.test_catacombs_geyser_media.GeyserMediaTests.test_audited_engine_bytes_and_license_are_required) ... ERROR
+test_cached_binding_coverage_pcm_and_tree_corruption (tests.test_catacombs_geyser_media.GeyserMediaTests.test_cached_binding_coverage_pcm_and_tree_corruption) ... ok
+test_cached_fixture_is_rechecked_without_new_decode (tests.test_catacombs_geyser_media.GeyserMediaTests.test_cached_fixture_is_rechecked_without_new_decode) ... ok
+test_fixture_ownership_and_review_changed (tests.test_catacombs_geyser_media.GeyserMediaTests.test_fixture_ownership_and_review_changed) ... ok
+test_model_join_nested_owner_and_format_negatives (tests.test_catacombs_geyser_media.GeyserMediaTests.test_model_join_nested_owner_and_format_negatives) ... ok
+test_native_protocol_negative_states_and_input_order (tests.test_catacombs_geyser_media.GeyserMediaTests.test_native_protocol_negative_states_and_input_order) ... ok
+test_original_three_actual_pcm_and_source_identity (tests.test_catacombs_geyser_media.GeyserMediaTests.test_original_three_actual_pcm_and_source_identity) ... ok
+test_recipe_version_paths_dependencies_and_duplicates (tests.test_catacombs_geyser_media.GeyserMediaTests.test_recipe_version_paths_dependencies_and_duplicates) ... ok
+test_roundtrip_and_truncations (tests.test_catacombs_geyser_media.GeyserMediaTests.test_roundtrip_and_truncations) ... ok
+test_two_actual_idle_and_named_tree_runs (tests.test_catacombs_geyser_media.GeyserMediaTests.test_two_actual_idle_and_named_tree_runs) ... ok
+test_versions_directory_reserved_and_source_pin (tests.test_catacombs_geyser_media.GeyserMediaTests.test_versions_directory_reserved_and_source_pin) ... ok
+
+======================================================================
+ERROR: test_audited_engine_bytes_and_license_are_required (tests.test_catacombs_geyser_media.GeyserMediaTests.test_audited_engine_bytes_and_license_are_required)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_catacombs_geyser_media.py", line 48, in test_audited_engine_bytes_and_license_are_required
+    for name in [next(iter(recipe['engine_sources'])),'LICENSE.txt']:
+                           ~~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: tuple indices must be integers or slices, not str
+
+----------------------------------------------------------------------
+Ran 11 tests in 37.436s
+
+FAILED (errors=1)
+Geyser actual PCM: 3 assets, 1645056 bytes; 2392 metadata;not playback/scene admission
+Checked Geyser media,224 automatic frames and8 named tree states;not new engine/NDSP execution
+Checked Geyser media,224 automatic frames and8 named tree states;not new engine/NDSP execution

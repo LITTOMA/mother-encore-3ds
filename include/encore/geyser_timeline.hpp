@@ -19,6 +19,7 @@ class GeyserTimelineData {
 public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
  bool valid()const{return bool(state_);}const GeyserPolicy&policy()const;
+ bool same_owner(const GeyserTimelineData&other)const{return valid()&&state_==other.state_;}
  const std::vector<GeyserClip>&clips()const;const std::vector<GeyserKey>&keys()const;
  const std::vector<GeyserCue>&cues()const;const std::vector<GeyserSound>&sounds()const;
  const GeyserClip*clip(uint32_t)const;const GeyserSound*sound(uint32_t)const;
@@ -40,6 +41,10 @@ public:
  bool manual_advance(uint64_t,uint64_t,double,std::string&);
  bool advance_idle(uint64_t,uint64_t,double,bool process_enabled,std::string&);
  bool player_signal(uint64_t,uint64_t,bool paused,std::string&);
+ // Native AudioStreamPlayer2D notifications are assignments,not a combined
+ // player/tree pause mask. UNPAUSED resets the stream flag even if the source
+ // Geyser animation remains inactive after a separate player pause signal.
+ bool tree_notification(uint64_t,uint64_t,bool paused,bool audio_can_process,std::string&);
  bool process_ui(uint64_t,uint64_t,GeyserContext,std::string&);
  // Resolve source deferred call against CURRENT visibility/UI/global voice.
  // A queued-free actor remains callable until its explicit deferred retirement.
@@ -49,6 +54,7 @@ public:
  const std::vector<GeyserCommand>&commands()const{return commands_;}
  std::vector<GeyserCommand>take_commands(){auto out=std::move(commands_);commands_.clear();return out;}
  bool valid()const{return data_.valid()&&epoch_&&instance_;}
+ const GeyserTimelineData&content()const{return data_;}
 private:
  bool owner(uint64_t,uint64_t,std::string&)const;
  GeyserTimelineData data_;GeyserSnapshot pose_;uint64_t epoch_=0,instance_=0,last_epoch_=0;

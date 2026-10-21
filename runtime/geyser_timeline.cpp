@@ -73,6 +73,7 @@ bool GeyserTimeline::manual_advance(uint64_t epoch,uint64_t instance,double delt
 }
 bool GeyserTimeline::advance_idle(uint64_t epoch,uint64_t instance,double delta,bool enabled,std::string&e){if(!owner(epoch,instance,e))return false;if(!std::isfinite(delta)||delta<0||std::signbit(delta)||delta>60)return bad(e,"Geyser idle delta rejected");if(!enabled||!pose_.active||!pose_.playing){e.clear();return true;}return manual_advance(epoch,instance,delta,e);}
 bool GeyserTimeline::player_signal(uint64_t epoch,uint64_t instance,bool paused,std::string&e){if(!owner(epoch,instance,e))return false;pose_.active=!paused;pose_.stream_paused=paused;e.clear();return true;}
+bool GeyserTimeline::tree_notification(uint64_t epoch,uint64_t instance,bool paused,bool can_process,std::string&e){if(!owner(epoch,instance,e))return false;if(!paused)pose_.stream_paused=false;else if(!can_process)pose_.stream_paused=true;e.clear();return true;}
 bool GeyserTimeline::process_ui(uint64_t epoch,uint64_t instance,GeyserContext c,std::string&e){if(!owner(epoch,instance,e))return false;pose_.gain=c.battle||c.cutscene||c.game_over?data_.policy().muted_gain:data_.policy().normal_gain;e.clear();return true;}
 bool GeyserTimeline::flush_deferred(uint64_t epoch,uint64_t instance,GeyserContext c,GeyserNamedVoice&voice,std::string&e){
  if(!owner(epoch,instance,e))return false;if(voice!=GeyserNamedVoice::Absent&&voice!=GeyserNamedVoice::Idle&&voice!=GeyserNamedVoice::Playing)return bad(e,"Geyser unknown named-voice state rejected");auto next=*this;auto next_voice=voice;

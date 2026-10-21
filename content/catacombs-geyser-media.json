@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "kind": "encore.geyser.reviewed-media",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "timeline_recipe": "content/catacombs-geyser.json",
+  "timeline_sha256": "7daa8eefb8cabaadd4148f0299e977824e0480e5748a2b420b6a465153b8dc2f",
+  "poison_recipe": "content/catacombs-poison.json",
+  "poison_sha256": "f1349f21355418075296500928a5320aac943875183777d097bd6c3cfc68619a",
+  "output": "data/world/catacombs/geyser.encgeysermedia",
+  "bank": "sound/banks/catacombs-geyser.encaudio",
+  "scope": "Original three MP3 PCM/cross-pack joins and explicit bounded port voice budget;production media playback and automatic clock candidate,not full scene/Character/GPU/hardware",
+  "license_review": "Retain pinned game-related source asset permission,source/import and tool conversion hashes;no environment fonts,binaries,firmware or import caches copied into candidate/releases",
+  "voice_capacity": 128
+}

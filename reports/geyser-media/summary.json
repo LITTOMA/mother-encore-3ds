@@ -1,0 +1,29 @@
+{
+  "upstream": "7d9246600fffe518408f5830d4848635019005a3",
+  "native_runs": 2,
+  "native_rows_per_run": 224,
+  "named_tree_states_per_run": 8,
+  "native_result_sha256": "c96ef392424310de479ea1952416227eba8df132e64189c2ba2f99fd542839f4",
+  "local_sanitized_checks": {
+    "idle": 7208,
+    "media_mixer": 281637,
+    "production_ndsp_double": 2938
+  },
+  "normal_leak_checks": true,
+  "python_tests": 11,
+  "python_log": "python-4.log",
+  "cmake_discovery": 340,
+  "source_modules": "New/changed modules compiled with exact unchanged117-core archive;not full rebuild",
+  "metadata_bytes": 2392,
+  "metadata_sha256": "7a8074055ccb2f1d52aabad5ffd1df7b9636507d64d2230e3213cfa609944b87",
+  "pcm_bytes": 1645056,
+  "retired_bytes": 48958016,
+  "unverified": [
+    "Current complete GCC/Clang",
+    "Genuine current 3DSX/CIA",
+    "Current artifact emulator",
+    "Actual audible/spatial output",
+    "Geyser GPU and formal scene/Character/factory",
+    "Hardware and full game"
+  ]
+}

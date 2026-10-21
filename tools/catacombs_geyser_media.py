@@ -1,0 +1,38 @@
+"""Original Geyser PCM and independent timeline/bank ownership container."""
+import argparse,hashlib,json,shutil,struct,sys,tempfile
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
+from tools import catacombs_geyser as g,catacombs_poison as poison,audio_asset,podunk_field as f
+from tools.extract_battle_entry import PIN,require
+RECIPE=ROOT/'content/catacombs-geyser-media.json';MAGIC=b'ENCGMD01';STRIDES=(32,1,1,36);LIMIT=262144
+def read(file=RECIPE):
+ p=json.loads(Path(file).read_text('utf8'),object_pairs_hook=g.unique);g.fields(p,'schema kind commit timeline_recipe timeline_sha256 poison_recipe poison_sha256 output bank voice_capacity scope license_review','geyser media recipe');require(type(p['schema'])is int and p['schema']==1 and p['kind']=='encore.geyser.reviewed-media'and p['commit']==PIN,'Geyser media review identity');g.integer(p['voice_capacity'],1,128)
+ for key,expected in [('timeline','content/catacombs-geyser.json'),('poison','content/catacombs-poison.json')]:require(p[key+'_recipe']==expected and hashlib.sha256((ROOT/expected).read_bytes()).hexdigest()==p[key+'_sha256'],'Geyser media reviewed dependency changed')
+ g.safe(p['output']);g.safe(p['bank']);require(p['output'].startswith('data/world/')and p['output'].endswith('.encgeysermedia')and p['bank'].startswith('sound/banks/')and p['bank'].endswith('.encaudio')and all(type(p[k])is str and 0<len(p[k])<=4096 for k in['scope','license_review']),'Geyser media output/scope');return p
+def source(file=RECIPE):
+ p=read(file);original,timeline,proof=g.source(ROOT/p['timeline_recipe']);_,hazards,hazard_proof=poison.source(ROOT/p['poison_recipe']);n=original['paths'];assets=[];joins=[];engine=(ROOT/'reports/geyser-timeline/official-engine-source').resolve()
+ for name,digest in original['engine_sources'].items():
+  g.safe(name);engine_file=(engine/name).resolve();require(engine_file.is_relative_to(engine)and engine_file.is_file()and not engine_file.is_symlink()and hashlib.sha256(engine_file.read_bytes()).hexdigest()==digest,'Geyser media audited engine source changed')
+ require(hashlib.sha256((engine/'LICENSE.txt').read_bytes()).hexdigest()==original['engine_license_sha256'],'Geyser media retained engine license changed')
+ for row in original['sounds']:
+  digest=original['sources'][row['source']];assets.append(dict(stable_id=row['id'],source_path='res://'+row['source'],source_sha256=digest,import_sha256=original['sources'][row['import_source']],pcm_path=row['pcm'],gain_db=0.));joins.append(dict(id=row['id'],sha256=digest))
+ recipe=dict(schema=1,upstream_commit=PIN,bus_source=n['bus'],bus_sha256=original['sources'][n['bus']],manager_source=n['manager'],manager_sha256=original['sources'][n['manager']],assets=assets)
+ return p,timeline,p['voice_capacity'],joins,recipe,dict(commit=PIN,timeline=proof,hazards=hazard_proof,review_sha256=hashlib.sha256(Path(file).read_bytes()).hexdigest(),source_holes=len(hazards['holes']),capacity_policy='Explicit bounded port voice budget;not a claim that each source hole has only one live instance',scope=p['scope'],permission=p['license_review'])
+def validate(m):
+ g.fields(m,'rate capacity timeline bank joins','geyser media model');g.integer(m['rate'],8000,48000);g.integer(m['capacity'],1,128);require(type(m['timeline'])in[bytes,bytearray]and type(m['bank'])in[bytes,bytearray]and type(m['joins'])is list,'Geyser media section types');timeline=g.parse(m['timeline']);bank=audio_asset.parse_bank(m['bank']);require(len(m['joins'])==len(timeline['sounds'])==len(bank['assets'])and len(m['joins'])<=64,'Geyser media ownership coverage');ids=set()
+ for row,sound in zip(m['joins'],timeline['sounds']):
+  g.fields(row,'id sha256','geyser media join');require(row['id']==sound['id']and type(row['sha256'])is str and len(row['sha256'])==64,'Geyser media source join');digest=bytes.fromhex(row['sha256']);require(len(digest)==32 and any(digest)and row['id']not in ids,'Geyser media digest/identity');ids.add(row['id']);matches=[a for a in bank['assets']if a['stable_id']==row['id']];require(len(matches)==1,'Geyser media missing bank asset');a=matches[0];require(a['source_path']=='res://'+sound['source']and a['source_sha256']==row['sha256']and not a['loop']and a['loop_start']==0 and a['sample_rate']==m['rate']and a['gain_db']==0,'Geyser media source identity/format/loop/gain mismatch')
+ return m
+def encode(m):
+ validate(m);policy=struct.pack('<8I',m['rate'],m['capacity'],0,0,0,0,0,0);joins=b''.join(struct.pack('<I',v['id'])+bytes.fromhex(v['sha256'])for v in m['joins']);return f.pack_container(MAGIC,0,[policy,m['timeline'],m['bank'],joins],STRIDES,LIMIT)
+def parse(blob):
+ scene,sections=f.unpack_container(blob,MAGIC,STRIDES,LIMIT,capability=1);policy,timeline,bank,joins=sections;require(scene==0 and len(policy)==32 and 160<=len(timeline)<=g.LIMIT and 64<=len(bank)<=audio_asset.MAX_META and 0<len(joins)//36<=64,'Geyser media section bounds');v=struct.unpack('<8I',policy);require(not any(v[2:]),'Geyser media reserved policy');return validate(dict(rate=v[0],capacity=v[1],timeline=bytes(timeline),bank=bytes(bank),joins=[dict(id=struct.unpack_from('<I',joins,at)[0],sha256=joins[at+4:at+36].hex())for at in range(0,len(joins),36)]))
+def compile(out,ffmpeg='ffmpeg',ffprobe='ffprobe'):
+ out=Path(out).resolve();require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build'and not out.exists(),'Fresh owned Geyser media candidate under build required');p,timeline,capacity,joins,recipe,proof=source();out.mkdir(parents=True);(out/'.owned-geyser-media').write_bytes(b'geyser-media-v1');bindings=[]
+ with tempfile.TemporaryDirectory(prefix='decode-',dir=out)as raw:
+  stage=Path(raw).resolve();require(stage.parent==out,'Geyser media temporary escaped');receipt=audio_asset.compile_assets(recipe,ROOT/'upstream/MOTHER-Encore',stage,ffmpeg=ffmpeg,ffprobe=ffprobe);expected={'sound/banks/opening.encaudio'}|{s['pcm_path']for s in recipe['assets']};require({v['path']for v in receipt['files']}==expected,'Geyser conversion exact coverage')
+  for row in receipt['files']:
+   path=p['bank']if row['path']=='sound/banks/opening.encaudio'else row['path'];source_file=stage/row['path'];data=source_file.read_bytes();require(len(data)==row['size']and hashlib.sha256(data).hexdigest()==row['sha256'],'Geyser converted bytes changed');target=out/path;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source_file,target);bindings.append(dict(conversion_path=row['path'],candidate_path=path,bytes=len(data),sha256=row['sha256']))
+ bank=(out/p['bank']).read_bytes();assets=audio_asset.parse_bank(bank)['assets'];rates={a['sample_rate']for a in assets};require(len(rates)==1,'Geyser mixed sample rates unsupported');model=dict(rate=rates.pop(),capacity=capacity,timeline=g.encode(timeline),bank=bank,joins=joins);blob=encode(model);require(parse(blob)==model,'Geyser media roundtrip');target=out/p['output'];target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(blob);proof.update(conversion=receipt,output_bindings=bindings,metadata_bytes=len(blob),metadata_sha256=hashlib.sha256(blob).hexdigest(),producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),scope='Actual original three PCM conversions and nested timeline/bank source identities;not audible/spatial/native decoder identity,NDSP,scene/GPU/hardware');(out/'source.json').write_text(json.dumps(proof,indent=2)+'\n');print('Geyser actual PCM:',len(assets),'assets,',sum(a['pcm_bytes']for a in assets),'bytes;',len(blob),'metadata;not playback/scene admission');return model
+if __name__=='__main__':
+ a=argparse.ArgumentParser(description=__doc__);a.add_argument('--out',type=Path,required=True);o=a.parse_args();compile(o.out)

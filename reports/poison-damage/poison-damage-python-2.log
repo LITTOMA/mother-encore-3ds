@@ -1,0 +1,28 @@
+test_actual_combined_original_repeatability (tests.test_poison_damage.PoisonDamageTests.test_actual_combined_original_repeatability) ... ok
+test_bad_review_and_protocol_dependency_fail_closed (tests.test_poison_damage.PoisonDamageTests.test_bad_review_and_protocol_dependency_fail_closed) ... ok
+test_binary_delta_descriptor_not_display_decimal (tests.test_poison_damage.PoisonDamageTests.test_binary_delta_descriptor_not_display_decimal) ... ok
+test_both_damage_sources_and_paused_overlap_outcomes (tests.test_poison_damage.PoisonDamageTests.test_both_damage_sources_and_paused_overlap_outcomes) ... ok
+test_changed_dependency_or_observer_rejects (tests.test_poison_damage.PoisonDamageTests.test_changed_dependency_or_observer_rejects) ... ok
+test_fresh_owned_fixture_and_corruption (tests.test_poison_damage.PoisonDamageTests.test_fresh_owned_fixture_and_corruption) ... ok
+test_old_world_fixture_bytes_unchanged (tests.test_poison_damage.PoisonDamageTests.test_old_world_fixture_bytes_unchanged) ... ok
+test_unknown_and_missing_observed_paths_reject (tests.test_poison_damage.PoisonDamageTests.test_unknown_and_missing_observed_paths_reject) ... ok
+test_all_truncations_checksum_trailing (tests.test_world_damage.WorldDamageTests.test_all_truncations_checksum_trailing) ... ok
+test_bad_models (tests.test_world_damage.WorldDamageTests.test_bad_models) ... ok
+test_fixture_owned_repeatable (tests.test_world_damage.WorldDamageTests.test_fixture_owned_repeatable) ... ok
+test_negative_fields_types_domains (tests.test_world_damage.WorldDamageTests.test_negative_fields_types_domains) ... ok
+test_original_source_scope_and_end_keys (tests.test_world_damage.WorldDamageTests.test_original_source_scope_and_end_keys) ... ok
+test_review_and_result_receipt_fail_closed (tests.test_world_damage.WorldDamageTests.test_review_and_result_receipt_fail_closed) ... ok
+test_roundtrip (tests.test_world_damage.WorldDamageTests.test_roundtrip) ... ok
+test_source_review_is_pinned (tests.test_world_damage.WorldDamageTests.test_source_review_is_pinned) ... ok
+test_two_real_native_results (tests.test_world_damage.WorldDamageTests.test_two_real_native_results) ... ok
+test_versions_directories_and_reserved (tests.test_world_damage.WorldDamageTests.test_versions_directories_and_reserved) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 44.330s
+
+OK
+Checked existing three resource formats and284 combined original observations;no new native execution
+Checked existing three resource formats and284 combined original observations;no new native execution
+Checked world damage resource and361 native observations;not new native execution
+Checked world damage resource and361 native observations;not new native execution
+Checked world damage resource and361 native observations;not new native execution

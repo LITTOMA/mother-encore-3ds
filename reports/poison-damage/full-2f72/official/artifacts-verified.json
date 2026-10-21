@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "id": 12350902299,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM1MDkwMjI5OQ==",
+      "name": "encore-3ds-2f72828525f7ff29f6e70a95149e27337c77397f-39609572047",
+      "size_in_bytes": 377933946,
+      "url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12350902299",
+      "archive_download_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12350902299/zip",
+      "expired": false,
+      "digest": "sha256:7fbf70667a56165e345a2c90594595038f2b2398ad59a41d1b7c630b59a29cc5",
+      "created_at": "2026-10-21T13:59:16Z",
+      "updated_at": "2026-10-21T13:59:16Z",
+      "expires_at": "2026-11-20T13:58:59Z",
+      "workflow_run": {
+        "id": 39609572047,
+        "repository_id": 1403329202,
+        "head_repository_id": 1403329202,
+        "head_branch": "codex/catacombs-poison-damage",
+        "head_sha": "2f72828525f7ff29f6e70a95149e27337c77397f"
+      }
+    }
+  ]
+}

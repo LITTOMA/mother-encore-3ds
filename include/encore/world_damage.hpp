@@ -34,6 +34,9 @@ class WorldDamageActor {
 public:
  bool prepare_after_reset(const WorldDamageData&,uint64_t epoch,uint64_t instance,const SessionCharacter&,std::string&);
  bool valid()const{return epoch_!=0;}bool invulnerable()const{return valid()&&pose_.playing&&pose_.assigned==data_.policy().flash;}
+ const WorldDamageData&content()const{return data_;}
+ const WorldDamageRequest&remembered_request()const{return remembered_;}
+ bool validates(uint64_t epoch,uint64_t instance,const SessionCharacter&c,std::string&e)const{return owner(epoch,instance,e)&&member(c,e);}
  const WorldDamagePose&pose()const{return pose_;}bool continuous()const{return continuous_;}DamageVector knockback()const{return knockback_;}
  bool play(uint64_t,uint64_t,uint32_t,std::string&);bool pause_flash(uint64_t,uint64_t,std::string&);bool resume_flash(uint64_t,uint64_t,std::string&);
  bool manual_advance(uint64_t,uint64_t,double,std::string&);bool advance_idle(uint64_t,uint64_t,double,bool process_enabled,std::string&);

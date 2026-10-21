@@ -8,6 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
+    runtime/coins_data.cpp runtime/coins.cpp runtime/circle_motion.cpp
     runtime/dungeon_key_contacts.cpp
     runtime/dungeon_key_indicator.cpp
     runtime/dungeon_key_hud_graphics.cpp
@@ -1595,6 +1596,20 @@ if(BUILD_TESTING AND Python3_Interpreter_FOUND)
  target_link_libraries(encore_breakables_tests PRIVATE encore_core)
  add_test(NAME breakables COMMAND encore_breakables_tests ${CMAKE_BINARY_DIR}/breakables-fixture/breakables.encbrk ${CMAKE_BINARY_DIR}/breakables-fixture/native.tsv)
  set_tests_properties(breakables PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED breakables_source)
+endif()
+
+if(BUILD_TESTING AND Python3_Interpreter_FOUND)
+ add_test(NAME coins_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_coins.py --out ${CMAKE_BINARY_DIR}/coins-fixture)
+ set_tests_properties(coins_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP coins_source)
+ foreach(coin_case IN ITEMS coins coin_actor coin_factory circle_motion)
+  add_executable(encore_${coin_case}_tests tests/${coin_case}_tests.cpp)
+  target_link_libraries(encore_${coin_case}_tests PRIVATE encore_core)
+ endforeach()
+ add_test(NAME coins COMMAND encore_coins_tests ${CMAKE_BINARY_DIR}/coins-fixture/coins.encoin)
+ add_test(NAME coin_actor COMMAND encore_coin_actor_tests ${CMAKE_BINARY_DIR}/coins-fixture/coins.encoin ${CMAKE_BINARY_DIR}/coins-fixture/native.tsv)
+ add_test(NAME coin_factory COMMAND encore_coin_factory_tests ${CMAKE_BINARY_DIR}/coins-fixture/coins.encoin ${CMAKE_BINARY_DIR}/coins-fixture/factory.tsv)
+ add_test(NAME circle_motion COMMAND encore_circle_motion_tests ${CMAKE_BINARY_DIR}/coins-fixture/circle.tsv)
+ set_tests_properties(coins coin_actor coin_factory circle_motion PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED coins_source)
 endif()
 
 include(cmake/TestParallelism.cmake)

@@ -1,0 +1,14 @@
+{
+  "runtime/coins.cpp": "07db41d14cdfd9bab9bb08b0531feb515d488003ed56bd42f8072b23b0932edd",
+  "runtime/coins_data.cpp": "6d787a44ee42e2b28350c53007723d933d1d9614c7cbfb4e384c4def45a373db",
+  "runtime/circle_motion.cpp": "6f10b08e21327e100ffaf7525a058602c8444e4ea33ea4226e4e128ce40ba484",
+  "include/encore/coins.hpp": "591521a3f6614a5384e5e14a7758289046fd90fb98190fc1139dfd159d44d17d",
+  "include/encore/circle_motion.hpp": "02496b242ad6d23b8341c82be9d00b6ee95680aad4e44add74d5226aad60b281",
+  "tests/coins_tests.cpp": "d4e3da37d48afcf5805cde8f9b888a9a36ec8182a223e4c44fd315961bbbe0e6",
+  "tests/coin_actor_tests.cpp": "b8de36dde4e5d72c02a6afb3ce4bef486a98bd53a6802dd10ae47c10611b007b",
+  "tests/coin_factory_tests.cpp": "f04690056353905b94710318f5407aa437577ee179f6d34767571fded48fdbff",
+  "tests/coin_reference_support.hpp": "439a217cb758581c2aa5bf675cfa87b13b039b15f206a46516b6926ebfeb5d6f",
+  "build/full-port/coin-fixture-development-4/coins.encoin": "7a880fc70f766f8026496cdd3de70fb2a6dc4dfe2b68ca988878bfa601b81d61",
+  "build/full-port/coin-fixture-development-4/native.tsv": "f93ae0a370902c18c5a9e6156547d4a5a99fc15fb476977acb8492595c54b5c1",
+  "build/full-port/coin-fixture-development-4/factory.tsv": "9bc53d95e24506f255ef04343540f9545e7e5f46d2ad1fe6e15a84ae428ec0ad"
+}

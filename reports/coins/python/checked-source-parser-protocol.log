@@ -1,0 +1,13 @@
+test_all_truncations_crc_and_trailing_bytes (tests.test_coins.CoinTests.test_all_truncations_crc_and_trailing_bytes) ... ok
+test_header_version_capability_directory_and_pin_reject (tests.test_coins.CoinTests.test_header_version_capability_directory_and_pin_reject) ... ok
+test_model_unknown_fields_wrong_types_and_spans (tests.test_coins.CoinTests.test_model_unknown_fields_wrong_types_and_spans) ... ok
+test_observer_inputs_and_typed_original_protocol (tests.test_coins.CoinTests.test_observer_inputs_and_typed_original_protocol) ... ok
+test_recipe_source_symbols_and_direction_proof_reject (tests.test_coins.CoinTests.test_recipe_source_symbols_and_direction_proof_reject) ... ok
+test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) ... ok
+test_source_policy_bindings_and_binary_roundtrip (tests.test_coins.CoinTests.test_source_policy_bindings_and_binary_roundtrip) ... ok
+test_unknown_protocol_version_fields_and_nonfinite_values (tests.test_coins.CoinTests.test_unknown_protocol_version_fields_and_nonfinite_values) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.248s
+
+OK

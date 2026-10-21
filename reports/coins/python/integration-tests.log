@@ -1,0 +1,273 @@
+test_all_truncations_crc_and_trailing_bytes (tests.test_coins.CoinTests.test_all_truncations_crc_and_trailing_bytes) ... ok
+test_circle_observation_grammar_rejects_unknown_or_nonfinite (tests.test_coins.CoinTests.test_circle_observation_grammar_rejects_unknown_or_nonfinite) ... ok
+test_frozen_fixture_is_idempotent_and_rejects_changed_cache (tests.test_coins.CoinTests.test_frozen_fixture_is_idempotent_and_rejects_changed_cache) ... ok
+test_frozen_review_hashes_and_run_identity_reject (tests.test_coins.CoinTests.test_frozen_review_hashes_and_run_identity_reject) ... ok
+test_header_version_capability_directory_and_pin_reject (tests.test_coins.CoinTests.test_header_version_capability_directory_and_pin_reject) ... ok
+test_model_unknown_fields_wrong_types_and_spans (tests.test_coins.CoinTests.test_model_unknown_fields_wrong_types_and_spans) ... ok
+test_observer_inputs_and_typed_original_protocol (tests.test_coins.CoinTests.test_observer_inputs_and_typed_original_protocol) ... ok
+test_recipe_source_symbols_and_direction_proof_reject (tests.test_coins.CoinTests.test_recipe_source_symbols_and_direction_proof_reject) ... ok
+test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) ... ok
+test_source_policy_bindings_and_binary_roundtrip (tests.test_coins.CoinTests.test_source_policy_bindings_and_binary_roundtrip) ... ok
+test_unknown_protocol_version_fields_and_nonfinite_values (tests.test_coins.CoinTests.test_unknown_protocol_version_fields_and_nonfinite_values) ... ok
+test_actual_area_and_run_sources_are_partitioned_once (tests.test_python_suite.Partition.test_actual_area_and_run_sources_are_partitioned_once) ... ok
+test_case_cannot_be_owned_by_two_registrations (tests.test_python_suite.Partition.test_case_cannot_be_owned_by_two_registrations) ... ok
+test_changed_module_list_rejected (tests.test_python_suite.Partition.test_changed_module_list_rejected) ... ok
+test_dedicated_case_loss_rejected (tests.test_python_suite.Partition.test_dedicated_case_loss_rejected) ... ok
+test_duplicate_discovery_case_rejected (tests.test_python_suite.Partition.test_duplicate_discovery_case_rejected) ... ok
+test_duplicate_registration_rejected (tests.test_python_suite.Partition.test_duplicate_registration_rejected) ... ok
+test_exact_partition_keeps_new_modules_in_aggregate (tests.test_python_suite.Partition.test_exact_partition_keeps_new_modules_in_aggregate) ... ok
+test_missing_registration_rejected (tests.test_python_suite.Partition.test_missing_registration_rejected) ... ok
+test_phone_source_registration_owns_every_method_once (tests.test_python_suite.Partition.test_phone_source_registration_owns_every_method_once) ... ok
+test_unknown_registration_rejected (tests.test_python_suite.Partition.test_unknown_registration_rejected) ... ok
+test_direct_script (tests.test_python_suite.Registration.test_direct_script) ... ok
+test_direct_script_arguments_are_not_silently_ignored (tests.test_python_suite.Registration.test_direct_script_arguments_are_not_silently_ignored) ... ok
+test_explicit_single_and_multiple_modules (tests.test_python_suite.Registration.test_explicit_single_and_multiple_modules) ... ok
+test_unknown_or_ambiguous_unittest_selectors (tests.test_python_suite.Registration.test_unknown_or_ambiguous_unittest_selectors) ... ok
+test_unrelated_program_is_not_a_registration (tests.test_python_suite.Registration.test_unrelated_program_is_not_a_registration) ... ok
+test_actual_four_shards_execute_each_future_writer_once (tests.test_python_shards.PythonShards.test_actual_four_shards_execute_each_future_writer_once) ... Checked two original 1573-state/33-factory runs and two 246-state circle runs; not new native execution
+Checked two original 1573-state/33-factory runs and two 246-state circle runs; not new native execution
+Python method partition: 4 discovered = 4 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 1/4: 1 methods; whole modules and every original assertion retained
+test_run (test_four_shard_alpha.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+Python method partition: 4 discovered = 4 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 2/4: 1 methods; whole modules and every original assertion retained
+test_run (test_four_shard_beta.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+Python method partition: 4 discovered = 4 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 3/4: 1 methods; whole modules and every original assertion retained
+test_run (test_four_shard_future_writer.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+Python method partition: 4 discovered = 4 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 4/4: 1 methods; whole modules and every original assertion retained
+test_run (test_four_shard_gamma.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+ok
+test_actual_two_shard_execution_includes_unreviewed_module_once (tests.test_python_shards.PythonShards.test_actual_two_shard_execution_includes_unreviewed_module_once) ... Python method partition: 2 discovered = 2 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 1/2: 1 methods; whole modules and every original assertion retained
+test_run (test_shard_demo_alpha.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+Python method partition: 2 discovered = 2 aggregate + 0 dedicated; exact ID multiset preserved
+Aggregate shard 2/2: 1 methods; whole modules and every original assertion retained
+test_run (test_shard_demo_future_writer.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+ok
+test_exact_actual_ctest_registration_and_legacy_command (tests.test_python_shards.PythonShards.test_exact_actual_ctest_registration_and_legacy_command) ... ok
+test_exact_multiset_whole_modules_order_and_determinism (tests.test_python_shards.PythonShards.test_exact_multiset_whole_modules_order_and_determinism) ... ok
+test_four_shard_cli_rejects_invalid_plan_without_execution (tests.test_python_shards.PythonShards.test_four_shard_cli_rejects_invalid_plan_without_execution) ... usage: python_suite.py [-h] [--project PROJECT] [--ctest-dir CTEST_DIR]
+                       [--jobs {1,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64}]
+                       [--worker-plan WORKER_PLAN]
+                       [--worker-result WORKER_RESULT] [--collect-only]
+                       [--report REPORT] [--shard-index SHARD_INDEX]
+                       [--shard-count {1,2,4}]
+python_suite.py: error: Aggregate shard index is outside its count
+usage: python_suite.py [-h] [--project PROJECT] [--ctest-dir CTEST_DIR]
+                       [--jobs {1,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64}]
+                       [--worker-plan WORKER_PLAN]
+                       [--worker-result WORKER_RESULT] [--collect-only]
+                       [--report REPORT] [--shard-index SHARD_INDEX]
+                       [--shard-count {1,2,4}]
+python_suite.py: error: Aggregate shard index is outside its count
+usage: python_suite.py [-h] [--project PROJECT] [--ctest-dir CTEST_DIR]
+                       [--jobs {1,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64}]
+                       [--worker-plan WORKER_PLAN]
+                       [--worker-result WORKER_RESULT] [--collect-only]
+                       [--report REPORT] [--shard-index SHARD_INDEX]
+                       [--shard-count {1,2,4}]
+python_suite.py: error: argument --shard-count: invalid choice: 3 (choose from 1, 2, 4)
+ok
+test_four_shard_registrations_reject_missing_duplicate_or_foreign_plan (tests.test_python_shards.PythonShards.test_four_shard_registrations_reject_missing_duplicate_or_foreign_plan) ... ok
+test_four_shards_preserve_complete_multiset_and_whole_modules (tests.test_python_shards.PythonShards.test_four_shards_preserve_complete_multiset_and_whole_modules) ... ok
+test_legacy_one_empty_and_invalid_counts_or_duplicate_ids (tests.test_python_shards.PythonShards.test_legacy_one_empty_and_invalid_counts_or_duplicate_ids) ... ok
+test_missing_duplicate_unknown_changed_shards_and_arguments_reject (tests.test_python_shards.PythonShards.test_missing_duplicate_unknown_changed_shards_and_arguments_reject) ... ok
+test_changed_collection_cannot_reuse_stale_success (tests.test_ci_test_parallelism.ParallelTests.test_changed_collection_cannot_reuse_stale_success) ... PYTHON START test_native_content pid=35192
+PYTHON END test_native_content pid=35192 status=1
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 331, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 295, in main
+    return worker(args.project, args.worker_plan, args.worker_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\python_suite.py", line 177, in worker
+    raise ValueError('Worker collection differs from admitted method IDs')
+ValueError: Worker collection differs from admitted method IDs
+
+ok
+test_ctest_defaults_and_four_slot_policy (tests.test_ci_test_parallelism.ParallelTests.test_ctest_defaults_and_four_slot_policy) ... ok
+test_failure_propagates_and_other_worker_still_runs (tests.test_ci_test_parallelism.ParallelTests.test_failure_propagates_and_other_worker_still_runs) ... PYTHON START test_native_house pid=45292
+PYTHON START test_native_content pid=60324
+PYTHON END test_native_content pid=60324 status=0
+test_run (tests.test_native_content.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+PYTHON END test_native_house pid=45292 status=1
+test_run (tests.test_native_house.Case.test_run) ... FAIL
+
+======================================================================
+FAIL: test_run (tests.test_native_house.Case.test_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\litto\AppData\Local\Temp\tmpafl8ea8k\tests\test_native_house.py", line 3, in test_run
+    def test_run(self): self.fail("intentional worker failure")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: intentional worker failure
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
+
+ok
+test_four_processes_overlap_and_isolate_module_mocks (tests.test_ci_test_parallelism.ParallelTests.test_four_processes_overlap_and_isolate_module_mocks) ... PYTHON START test_native_content pid=67012
+PYTHON START test_native_restore pid=66948
+PYTHON START test_native_house pid=53124
+PYTHON START test_native_round pid=67840
+PYTHON END test_native_round pid=67840 status=0
+PYTHON END test_native_restore pid=66948 status=0
+test_run (tests.test_native_round.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+test_run (tests.test_native_restore.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+PYTHON END test_native_content pid=67012 status=0
+PYTHON END test_native_house pid=53124 status=0
+test_run (tests.test_native_content.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.015s
+
+OK
+
+test_run (tests.test_native_house.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.015s
+
+OK
+
+ok
+test_invalid_job_count_and_unreviewed_modules_fail_closed (tests.test_ci_test_parallelism.ParallelTests.test_invalid_job_count_and_unreviewed_modules_fail_closed) ... ok
+test_partition_preserves_unknown_modules_and_detects_missing_methods (tests.test_ci_test_parallelism.ParallelTests.test_partition_preserves_unknown_modules_and_detects_missing_methods) ... ok
+test_source_asset_workers_overlap_and_isolate_module_mocks (tests.test_ci_test_parallelism.ParallelTests.test_source_asset_workers_overlap_and_isolate_module_mocks) ... PYTHON START test_mayor_scene pid=67384
+PYTHON START test_house_assets pid=21344
+PYTHON START test_mayor_field pid=54504
+PYTHON START test_new_game_assets pid=41212
+PYTHON END test_mayor_field pid=54504 status=0
+PYTHON END test_new_game_assets pid=41212 status=0
+PYTHON END test_house_assets pid=21344 status=0
+test_run (tests.test_mayor_field.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+test_run (tests.test_house_assets.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+OK
+
+test_run (tests.test_new_game_assets.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+PYTHON END test_mayor_scene pid=67384 status=0
+test_run (tests.test_mayor_scene.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+OK
+
+ok
+test_source_linker_workers_overlap_and_isolate_module_mocks (tests.test_ci_test_parallelism.ParallelTests.test_source_linker_workers_overlap_and_isolate_module_mocks) ... PYTHON START test_doll_postwin pid=38700
+PYTHON START test_melody_content pid=22992
+PYTHON START test_phone_linker pid=60768
+PYTHON START test_native_session pid=19180
+PYTHON END test_doll_postwin pid=38700 status=0
+PYTHON END test_native_session pid=19180 status=0
+test_run (tests.test_doll_postwin.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+test_run (tests.test_native_session.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+PYTHON END test_melody_content pid=22992 status=0
+test_run (tests.test_melody_content.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+OK
+
+PYTHON END test_phone_linker pid=60768 status=0
+test_run (tests.test_phone_linker.Case.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.024s
+
+OK
+
+ok
+test_worker_rejects_unknown_or_duplicate_plan_before_execution (tests.test_ci_test_parallelism.ParallelTests.test_worker_rejects_unknown_or_duplicate_plan_before_execution) ... ok
+test_cue_encoder_rejects_unbound_and_unsafe (tests.test_runtime_layout.RuntimeLayoutTests.test_cue_encoder_rejects_unbound_and_unsafe) ... ok
+test_invalid_mapping_rejected (tests.test_runtime_layout.RuntimeLayoutTests.test_invalid_mapping_rejected) ... ok
+test_legacy_and_wrong_category_rejected (tests.test_runtime_layout.RuntimeLayoutTests.test_legacy_and_wrong_category_rejected) ... ok
+test_projection_and_unknown (tests.test_runtime_layout.RuntimeLayoutTests.test_projection_and_unknown) ... ok
+test_texture_producer_migration_rejects_semantic_changes (tests.test_runtime_layout.RuntimeLayoutTests.test_texture_producer_migration_rejects_semantic_changes) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 18.748s
+
+OK

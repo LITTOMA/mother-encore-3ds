@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "source": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "recipe_sha256": "e683f25dc2b2a075a25c969f656c5394e4e54523e5358ba0ab624aa27121e2c2",
+    "producer_sha256": "c08f0199fb6d4c1b6ec0083427e6d5a017f3fbf1b9890d37ecea7fe6bce67a88",
+    "sources": {
+      "Audio/Sound effects/Coin Drop.mp3": "0904ae9fc57944d2d1938d12f7072134a1e4bafdc28622ac11ef0302623f7339",
+      "Audio/Sound effects/Coin Drop.mp3.import": "f3dc7a012e3b627b09c34fdf8e41b4378ca2fa2a43c12b1ce1267d41f2fc948f",
+      "Audio/Sound effects/coin.mp3": "5b26eb8db6244821dd140e42bf41283e934d4af2b395be0fae16a383cb8c5f33",
+      "Audio/Sound effects/coin.mp3.import": "4b58b5f371bfa30ca86f46f86d4275701094485c61404010056f9cc875188487",
+      "Graphics/Objects/Common/Coin1.png": "e68243e940b85168ed1bafb80f9f8a099579c847afb319d92f1d56aa237de06c",
+      "Graphics/Objects/Common/Coin1.png.import": "ee6e11d72a2d1a6021ede962065d83c7fcaa1fad434aa72b4cc4e6267ea986b4",
+      "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+      "Graphics/Objects/Common/Sparkles.png.import": "33e337c8dee8917d2a06ada23c12f713856b3066783771ab17c40adac214372a",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Nodes/Overworld/Objects/CoinSpawner.tscn": "f6ad3a3dcd0fac1cdc9f0cc8b98b3429cc11d74559edc95ee0df9d02cb9bd641",
+      "Nodes/Reusables/Coin.tscn": "9b3a720b28099b188a7408477647ef4b355e0994f6c3657f3e15897b364c6617",
+      "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "Scripts/Main/Abstract Spawner.gd": "de81e28018d486afda0ce4964e51b12cc43ffd2af89ffbe74e32b65437a6f620",
+      "Scripts/Main/Coin Spawner.gd": "47ab5253a27650816479ac5c37cecd4e0e90c251fb403e9f83dfa53861766ebf",
+      "Scripts/Main/Coin.gd": "f103d21996e1e0ff744b5223b1f5bb4c63dff2dbdcccfa9bd89b149636e45dc1",
+      "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+      "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+      "Shaders/Flash.shader": "b78fa8b1e62a15727d0ce256718f44c148844581e42478786ec268f4ffec160d",
+      "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+    },
+    "symbols": {
+      "script": {
+        "_ready": "6ca895f1c63d6e736046908c07aaf5ec4a6a438820f3adec64df8a0e256e6637",
+        "randomize_movement": "dabe4075e5593580bd99ed503b7a0345e025ae19575a0b16b72718ec42a338ff",
+        "start_jump": "8273ad75004518ed6c89006a39a5c1687d6f420ba1e4635c73d76dd2c18ea025",
+        "_set_collisions_disabled": "167f3b8961ccc6c1631e26f3809dbb3645ba4358754b840e81f03626e9737321",
+        "_physics_process": "fdfaa8c022bf88b2c9b57c95153f247855daf88f652a5c38b62bb7904f7bdb54",
+        "_collect": "dc9a0ab67256e3abb9fd4b2eb7bc2cd8afec1a2c26c55bbae67c8ca8d39f1757",
+        "_on_Area2D_body_entered": "e80f0c2a53b8f86af32b52477b294f8434a57f1f0e01c8d7fc446d0b425e63d5",
+        "_on_Area2D_area_entered": "a72e7b2186fb7bd101e238914c438733da35c868b5a70476e29e966a70113b70"
+      },
+      "spawner_script": {
+        "_physics_process": "f47a94f9fc7da5df6a4757a491f0e10cf58bb48c058e3960398c4c999a438e4b",
+        "spawn_coins": "535bd64118ae7abeb7e816695bf3ad897e6f4d72f2126a8294f9415209d0ffe4"
+      },
+      "spawner_base": {
+        "create_object": "266955d4e84d3bc23997a5bdff1cceb3303649e5aac80bec23825306cc703ee0"
+      },
+      "sparkle_script": {
+        "_ready": "e3c6b675b5de66e1344e21317b065e6b708e9e8a2be457cdb98ba6d09b956c30"
+      },
+      "ui_script": {
+        "add_cash": "3f713a772f9a16c3907a93694ed1a4ba71021eaef038b45cce215b89f9f23541",
+        "get_cash_box": "a4d48e72a004c58e6af74d53dbb69fd249c2368b713020a540505cf06c2c0bc0"
+      }
+    },
+    "scope": "Independent Coin/Sparkles/factory source candidate; ordinary local clocks/real circle/selected original cash methods and explicit audio/HUD holders. No complete room/catalog/save/GPU/NDSP/hardware admission."
+  },
+  "native_producer_sha256": "e1f626155eccd01c3bd61c385d1f0a9d7f1b01ed0e9173c81bda2934d68daf2e",
+  "circle_producer_sha256": "db3969badc2124f6afbea534feb39148ab9f01e130f03e24e2c9ab6845214121",
+  "fixture_protocol_sha256": "239402ac4e40b40a78de3a1d1d7f507c708bc8f2d1c3e8683b57ae7ab55a3838",
+  "observation_protocol_sha256": "0cd83f799c04eb4c85c4e56c07ba79eb82f7e28c1c4ca38ddaf86635dd3434b4",
+  "coin_results": [
+    {
+      "path": "reports/coins/coin-original-1",
+      "sha256": "609bbb54e8f0d5b00b6f2bde8a8a06d35ccfe205f234ea8aa82cd5d2ec4b4923"
+    },
+    {
+      "path": "reports/coins/coin-original-2",
+      "sha256": "609bbb54e8f0d5b00b6f2bde8a8a06d35ccfe205f234ea8aa82cd5d2ec4b4923"
+    }
+  ],
+  "circle_results": [
+    {
+      "path": "reports/coins/circle-original-1",
+      "sha256": "46a04836794688a482c10b1417fe469792ad01da627fe2b332c2f32eae6b2177"
+    },
+    {
+      "path": "reports/coins/circle-original-2",
+      "sha256": "46a04836794688a482c10b1417fe469792ad01da627fe2b332c2f32eae6b2177"
+    }
+  ],
+  "mapping": "Original Coin/Sparkles/full prefabs and original CoinSpawner/AbstractSpawner execute under ordinary Godot 3.6.2 clocks. Original UI add_cash/get_cash_box are observed with explicit party, cash HUD and audio request providers. The native core replays exact actual body/area signals; this is not automatic broadphase admission. Shared RNG, birth ordering, deferred shape changes, landing, animation, pickup, cash and stable lifetime are compared. Single-solid circle states are exact; four engine corner fixtures accept the original skin and same rounded position, because the original Coin discards returned velocity and rounds at landing. Tight-corner Coin states retain their raw coordinates, with only transient positions checked within the original skin and same integer rounding. No frozen trace has been rewritten.",
+  "unverified": [
+    "Complete room tree order, concrete source spawner instance/world-parent bindings and automatic pickup contact sampling.",
+    "Production coin graphics, cash HUD and PCM sinks, full-room/controller playthrough and hardware.",
+    "Generic moving or transformed collision bodies and unknown shape families are not admitted."
+  ]
+}

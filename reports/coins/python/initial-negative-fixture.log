@@ -1,0 +1,103 @@
+test_all_truncations_crc_and_trailing_bytes (tests.test_coins.CoinTests.test_all_truncations_crc_and_trailing_bytes) ... ok
+test_header_version_capability_directory_and_pin_reject (tests.test_coins.CoinTests.test_header_version_capability_directory_and_pin_reject) ... ok
+test_model_unknown_fields_wrong_types_and_spans (tests.test_coins.CoinTests.test_model_unknown_fields_wrong_types_and_spans) ... ok
+test_observer_inputs_and_typed_original_protocol (tests.test_coins.CoinTests.test_observer_inputs_and_typed_original_protocol) ... ok
+test_recipe_source_symbols_and_direction_proof_reject (tests.test_coins.CoinTests.test_recipe_source_symbols_and_direction_proof_reject) ... ok
+test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) ... 
+  test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=208) ... FAIL
+  test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=216) ... FAIL
+  test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=224) ... FAIL
+  test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=232) ... FAIL
+  test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=240) ... FAIL
+  test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=248) ... FAIL
+  test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=256) ... FAIL
+  test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=264) ... FAIL
+  test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=272) ... FAIL
+  test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=4624) ... FAIL
+test_source_policy_bindings_and_binary_roundtrip (tests.test_coins.CoinTests.test_source_policy_bindings_and_binary_roundtrip) ... ok
+test_unknown_protocol_version_fields_and_nonfinite_values (tests.test_coins.CoinTests.test_unknown_protocol_version_fields_and_nonfinite_values) ... ok
+
+======================================================================
+FAIL: test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=208)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_coins.py", line 30, in test_record_domains_and_owned_references
+    with self.subTest(at=at),self.assertRaises(ValueError):b.decode(self.changed(at,0xffffffff))
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=216)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_coins.py", line 30, in test_record_domains_and_owned_references
+    with self.subTest(at=at),self.assertRaises(ValueError):b.decode(self.changed(at,0xffffffff))
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=224)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_coins.py", line 30, in test_record_domains_and_owned_references
+    with self.subTest(at=at),self.assertRaises(ValueError):b.decode(self.changed(at,0xffffffff))
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=232)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_coins.py", line 30, in test_record_domains_and_owned_references
+    with self.subTest(at=at),self.assertRaises(ValueError):b.decode(self.changed(at,0xffffffff))
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=240)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_coins.py", line 30, in test_record_domains_and_owned_references
+    with self.subTest(at=at),self.assertRaises(ValueError):b.decode(self.changed(at,0xffffffff))
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=248)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_coins.py", line 30, in test_record_domains_and_owned_references
+    with self.subTest(at=at),self.assertRaises(ValueError):b.decode(self.changed(at,0xffffffff))
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=256)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_coins.py", line 30, in test_record_domains_and_owned_references
+    with self.subTest(at=at),self.assertRaises(ValueError):b.decode(self.changed(at,0xffffffff))
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=264)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_coins.py", line 30, in test_record_domains_and_owned_references
+    with self.subTest(at=at),self.assertRaises(ValueError):b.decode(self.changed(at,0xffffffff))
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=272)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_coins.py", line 30, in test_record_domains_and_owned_references
+    with self.subTest(at=at),self.assertRaises(ValueError):b.decode(self.changed(at,0xffffffff))
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_record_domains_and_owned_references (tests.test_coins.CoinTests.test_record_domains_and_owned_references) (at=4624)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_coins.py", line 30, in test_record_domains_and_owned_references
+    with self.subTest(at=at),self.assertRaises(ValueError):b.decode(self.changed(at,0xffffffff))
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.003s
+
+FAILED (failures=10)

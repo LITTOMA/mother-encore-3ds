@@ -20,6 +20,7 @@ SOURCES := runtime/storage_data.cpp runtime/storage_menu.cpp runtime/drawer_prog
 SOURCES += runtime/music_zones.cpp runtime/gameplay_audio.cpp
 SOURCES += runtime/dungeon_mechanism_bindings.cpp
 SOURCES += runtime/breakables_data.cpp runtime/breakables.cpp
+SOURCES += runtime/coins_data.cpp runtime/coins.cpp runtime/circle_motion.cpp
 SOURCES += runtime/dungeon_mechanism_state.cpp
 SOURCES += runtime/dungeon_mechanism_presentation.cpp
 SOURCES += runtime/dungeon_mechanism_audio.cpp

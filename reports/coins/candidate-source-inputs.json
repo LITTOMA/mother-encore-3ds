@@ -1,0 +1,20 @@
+{
+  "include/encore/coins.hpp": "591521a3f6614a5384e5e14a7758289046fd90fb98190fc1139dfd159d44d17d",
+  "include/encore/circle_motion.hpp": "02496b242ad6d23b8341c82be9d00b6ee95680aad4e44add74d5226aad60b281",
+  "runtime/coins.cpp": "07db41d14cdfd9bab9bb08b0531feb515d488003ed56bd42f8072b23b0932edd",
+  "runtime/coins_data.cpp": "6d787a44ee42e2b28350c53007723d933d1d9614c7cbfb4e384c4def45a373db",
+  "runtime/circle_motion.cpp": "6f10b08e21327e100ffaf7525a058602c8444e4ea33ea4226e4e128ce40ba484",
+  "tests/coins_tests.cpp": "d4e3da37d48afcf5805cde8f9b888a9a36ec8182a223e4c44fd315961bbbe0e6",
+  "tests/coin_actor_tests.cpp": "b8de36dde4e5d72c02a6afb3ce4bef486a98bd53a6802dd10ae47c10611b007b",
+  "tests/coin_factory_tests.cpp": "f04690056353905b94710318f5407aa437577ee179f6d34767571fded48fdbff",
+  "tests/circle_motion_tests.cpp": "e14d7ee335ea588233cb24b3580c96c703382203ccbcaeec0198a9d144f365e9",
+  "tests/coin_reference_support.hpp": "439a217cb758581c2aa5bf675cfa87b13b039b15f206a46516b6926ebfeb5d6f",
+  "tools/coins.py": "c08f0199fb6d4c1b6ec0083427e6d5a017f3fbf1b9890d37ecea7fe6bce67a88",
+  "tools/run_coin_reference.py": "e1f626155eccd01c3bd61c385d1f0a9d7f1b01ed0e9173c81bda2934d68daf2e",
+  "tools/run_circle_motion_reference.py": "db3969badc2124f6afbea534feb39148ab9f01e130f03e24e2c9ab6845214121",
+  "tools/coin_reference_protocol.py": "0cd83f799c04eb4c85c4e56c07ba79eb82f7e28c1c4ca38ddaf86635dd3434b4",
+  "tests/prepare_coins.py": "239402ac4e40b40a78de3a1d1d7f507c708bc8f2d1c3e8683b57ae7ab55a3838",
+  "tests/test_coins.py": "16265e9b26583aa595b8888d12df5ceafea6a1767e6f806855e2f4b8e8f9ae71",
+  "content/catacombs-coins.json": "e683f25dc2b2a075a25c969f656c5394e4e54523e5358ba0ab624aa27121e2c2",
+  "compatibility/reviews/catacombs-coins-v0410.json": "ecffb2b9e8aa4420e54f767b667eaa41f5a13754444f44ab1bb6d73d0ee2aa30"
+}

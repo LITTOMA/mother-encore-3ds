@@ -1,0 +1,6 @@
+{
+  "runtime/circle_motion.cpp": "6f10b08e21327e100ffaf7525a058602c8444e4ea33ea4226e4e128ce40ba484",
+  "include/encore/circle_motion.hpp": "02496b242ad6d23b8341c82be9d00b6ee95680aad4e44add74d5226aad60b281",
+  "tests/circle_motion_tests.cpp": "e14d7ee335ea588233cb24b3580c96c703382203ccbcaeec0198a9d144f365e9",
+  "build/full-port/circle-motion-fixture-1/native.tsv": "9972713278f223ec2aa4458cea761c1450d84a586bbb74010f9284d447c24a2d"
+}

@@ -1,0 +1,4 @@
+tight_corner:11 vector actual -1.433821321 -4.925255299 expected -1.433820248 -4.925251007
+tight_corner:12 vector actual -1.433847308 -4.925227642 expected -1.433847308 -4.925228596
+tight_corner:13 vector actual -1.491349459 -4.933672428 expected -1.491348863 -4.933672905
+tight_corner:14 vector actual -1.483799577 -4.933747292 expected -1.483799577 -4.933745861

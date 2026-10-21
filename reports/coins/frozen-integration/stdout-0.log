@@ -1,0 +1,12 @@
+5407 Coin resource checks passed
+71367 Coin actor source checks passed
+6094 Coin factory and child source checks passed
+corner_reversed_ConvexPolygonShape2D/position count 7 max 0.00201321
+corner_reversed_ConvexPolygonShape2D/velocity count 7 max 0.122286
+corner_reversed_RectangleShape2D/position count 6 max 0.000768661
+corner_reversed_RectangleShape2D/velocity count 6 max 0.0466388
+inside_corner_ConvexPolygonShape2D/position count 7 max 0.00183773
+inside_corner_ConvexPolygonShape2D/velocity count 7 max 0.111638
+inside_corner_RectangleShape2D/position count 5 max 0.000694275
+inside_corner_RectangleShape2D/velocity count 6 max 0.0419495
+3788 circle checks; 0 semantic mismatches

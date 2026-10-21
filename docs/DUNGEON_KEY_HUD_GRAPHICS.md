@@ -39,4 +39,10 @@ python tools/dungeon_key_hud_graphics.py --out build/key-hud/source.enckgx --tex
 python tests/prepare_dungeon_key_hud_graphics.py --out build/key-hud-fixture
 ```
 
-5ff4f9e的真实交叉构建39515177094／118945499701确实失败：新字体适配编译单元尚未声明生成的`gpu_region_shader.hpp`依赖。现将两个实际BattleRenderer使用者共同纳入GPU模式戳、region／row／mapped着色器头依赖及既有浮点设置；没有改着色器、游戏内容、生成器或测试。原始错误及修复范围见`reports/dungeon-key-hud-graphics/failed5ff4-console`。本地make图检查仍在缺少devkitPro的守卫停止，没有声称本地构建或图检查通过；新提交将由自动真实构建验证。5ff4的完整主机检查继续运行，其输入与修复提交相同，不取消或重复启动。
+5ff4f9e的真实交叉构建39515177094／118945499701确实失败：新字体适配编译单元尚未声明生成的`gpu_region_shader.hpp`依赖。现将两个实际BattleRenderer使用者共同纳入GPU模式戳、region／row／mapped着色器头依赖及既有浮点设置；没有改着色器、游戏内容、生成器或测试。原始错误及修复范围见`reports/dungeon-key-hud-graphics/failed5ff4-console`。本地make图检查仍在缺少devkitPro的守卫停止，没有声称本地构建或图检查通过；新提交将由自动真实构建验证。5ff4的完整主机检查继续运行，其共享核心／生成器／测试文件本身与修复提交相同；读取Makefile的33项既有检查已在修复版本单独通过，不取消或重复启动。
+
+修复e6450ec已通过自动真实构建39517186816／118952055888，3DSX、CIA和377项包内资源均完成，原始日志与真实构建收据已保留。真实3DSX SHA256 `7ee34739a7e84fc4749cd907e31e55148b53161bae6983111d5501b5dff13833` 通过两次Azahar普通输入冷启动，各90个检查点，关键语义及位置完全一致；标题／所列战斗DSP消费检查通过。实际检查了Lamp胜利与第二次室外步行截图，未以此声称像素一致、室外BGM听感、墓穴HUD／地图或真机通过。
+
+证据见`reports/dungeon-key-hud-graphics/e645-emulator-1`。没有注入存档、RNG、旗标、物品或内存；使用原有90步标准和独立Pause／PSI原版参照。临时profile共193055950字节已清理。新的实际游戏保留；原361游戏在核对创建标记、正式旧收据和新两次结果后退役264975208字节，23个下载分块也已清理（192937984字节由记录的成功区间长度重建）。首次旧游戏清理因猜测的标记文本不符而拒绝，原文件未删；随后核对原创建脚本的真实标记再执行，相关记录保留。61ea／efda基准仍保留。
+
+5ff4原完整运行的GCC／Clang主机作业仍未完成，本次不将那个交叉构建失败的运行改记为全部通过。当前源文件相同的主机结果与修复后真实构建分别记录；正式墓穴接线、HUD GPU实际显示和真机仍未完成。

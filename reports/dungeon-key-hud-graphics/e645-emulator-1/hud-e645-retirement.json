@@ -1,0 +1,22 @@
+{
+  "source": "e6450ecc87592db6b1d46937795351db0e6e5019",
+  "old_game": {
+    "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key361-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+    "bytes": 264975208,
+    "sha256": "d78b4dbe78c9a424eb1b96ea829bdf382573c46b1945f88a40e7b4388d2fb83b",
+    "removed": true,
+    "owner_verified_against_original_creator": true
+  },
+  "current_game": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\hud-e645-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+  "other_baselines_retained": [
+    "root61ea-current",
+    "rooms-efda-current"
+  ],
+  "first_attempt": "Download blocks were removed. Superseded-game owner text differed from guessed text,so deletion was rejected. This resumed attempt checks the actual original creator script plus the official old receipt.",
+  "download_parts": {
+    "removed": true,
+    "count": 23,
+    "bytes_from_verified_range_lengths": 192937984,
+    "basis": "Sum of23 successful full8MiB range responses recorded by the strict selected downloader. First PowerShell measured sum was not persisted after its later owner guard rejection;this aggregate is derived from the original verified response lengths."
+  }
+}

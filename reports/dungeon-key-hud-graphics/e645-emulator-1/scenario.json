@@ -1,0 +1,1219 @@
+{
+  "schema": 1,
+  "name": "Natural opening battles and Dad call, then repeated field/house graphics handoff (Simplified Chinese)",
+  "reference": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "scope": "Pinned source contracts and independently executed Godot Pause/PSI methods; START/SELECT mapping is the declared 3DS adaptation. Covers normal startup/menu safety, excludes full game and learned PSI target effects.; Normal Lamp victory inputs and physical route to locked basement door. RNG remains original clock-seeded; HP and walking coordinates are recorded with source-route intervals, not equated across runs.; natural Doll room entry, battle and learned level-2 Telepathy; no injected flags, inventory or RNG. Extended ordinary-input route: Doll melody, Carol phone ring, first Dad call, stick selection of Nothing then Record, SaveSelect open/cancel and return; no actual Record write/LOAD claim.; Physical postwin route through Doll melody, hallway/stairs, Carol and Dad; repeated normal call uses Circle Pad choice and opens/cancels SaveSelect. No emulator save write or LOAD; original postwin motion verified separately with official Godot, phone source contracts are pinned rather than a full parallel original playthrough.; Extended normal-input house/Podunk/house/Podunk route without checkpoint or injected items/flags; checks graphics admission and session control, not a complete original playthrough.; Current 3DS factory Run/Crouch binding is X in the checked FieldMenus resource. Walk back outside the trigger before running north: original ram checks on body_entered. Progression targets and all existing expected outcomes are unchanged.",
+    "sources": {
+      "Scripts/UI/PSIMenuUI.gd": "988484bff6163bd514de96cf231163939d1a35b7c6d1ebb08dd9cc5c259fac29",
+      "Scripts/UI/PSISelect.gd": "f9214e3146d03d71f1f73442e22d04d167703ef5530bbbc9f68f5a937e89aeb2",
+      "Scripts/UI/PSISkillLine.gd": "60dd6c6df7e5eedd96d221f6f8fe68d2826ccda64a92a056ab87e6f5c770476f",
+      "Scripts/UI/Pausemenu.gd": "118f19d419a89ec09916961b92322f67ce032b44aa8215f9509d31088b421ca2",
+      "Scripts/UI/NamingScreen/Naming screen.gd": "8e094a7d8db69cc90f70f11238a4c5b0231678ad7041dc537ce671e4284b570d",
+      "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401",
+      "Audio/Music/Mother Earth.mp3": "89d44b28e944108bf285f1656950cba4cf5473764097a3b5138340fcf595fc5f",
+      "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+      "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+      "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+      "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
+      "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": "50ed3ecac93141f5ddbd1c3928dc8e5a1cb9ed8c34ce294f6a94a972720f2cba",
+      "Data/Dialogue/Podunk/dollmelody.yaml": "9058f5f24fece54d7446e152830579f763773f312a2be5710c17a9d67c357fd6",
+      "Data/Dialogue/Podunk/dad_poltergeist.yaml": "a8f212b17fbd1806f223e13146b66c6d96801f98d993b166999d765d953b585b",
+      "Data/Dialogue/Reusable/dad_normal.yaml": "5789ab4368611305127dd4c1bb9424e8bc586d4d93c7014a858637eb25e0524f",
+      "Data/Dialogue/Podunk/carol_panic.yaml": "e74b73f1ab2500ab77c8be31bbd51a8c8a385302542f62d9bc750dc0612fb2f9",
+      "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
+      "Data/Dialogue/Podunk/carol_phone.yaml": "8169a99205054ce28753d181642248abda60b5ea3595045a3ae1b9dd85cd7147",
+      "Data/Dialogue/Podunk/carol_key.yaml": "912854e6b3bf17187d6efec7989b84c43eb501425354a841ec477758728bdc96",
+      "Data/Dialogue/Podunk/carol_key_again.yaml": "6a90d8de337828751562f041971f2b2e5ae5cf4b2f51a7a96f8defe5f53dccb7",
+      "Data/Dialogue/Podunk/carol_got_key.yaml": "e49a7eebcf1020a49fb80acc0f21ee8ab1794d3d065225a40d7e4defe21dabdf",
+      "Data/Dialogue/Podunk/carol_food.yaml": "eb6c465f0bd850cc3642a4dcc3dadefc6abf340d5530007e929e500534b74af5",
+      "Data/Dialogue/Podunk/carol_rested.yaml": "1085830398ff2fdd7f8a91dc4ad3bacf8b9edc22d264325bf5508f21c8ba84b1",
+      "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+      "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+      "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
+      "Data/Dialogue/Podunk/doll.yaml": "0efec152a3748a064d671e154428acb251995dac5a569f810b8e4c05e4a5ff5a",
+      "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
+    }
+  },
+  "projection": [
+    "width",
+    "height",
+    "title_phase",
+    "naming_phase",
+    "field_scene",
+    "menu_phase",
+    "paused",
+    "session_ready",
+    "battle_active",
+    "level",
+    "pp",
+    "inventory_count",
+    "key_count",
+    "psi_learned",
+    "door_unlocked_mask",
+    "experience",
+    "choice_phase",
+    "save_phase"
+  ],
+  "steps": [
+    {
+      "name": "title",
+      "wait": {
+        "title_phase": 1,
+        "width": 400,
+        "height": 240
+      },
+      "audio_progress": true,
+      "expected_music": 1202
+    },
+    {
+      "name": "choose_chinese",
+      "buttons": [
+        "R"
+      ],
+      "frames": 120,
+      "wait": {
+        "title_phase": 1
+      }
+    },
+    {
+      "name": "select_guard",
+      "buttons": [
+        "SELECT"
+      ],
+      "wait": {
+        "title_phase": 1
+      },
+      "same_as": "title"
+    },
+    {
+      "name": "naming",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 0
+      }
+    },
+    {
+      "name": "naming_cancel_guard_elapsed",
+      "buttons": [],
+      "frames": 60,
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 0
+      }
+    },
+    {
+      "name": "cancel_naming",
+      "buttons": [
+        "B"
+      ],
+      "wait": {
+        "title_phase": 1,
+        "naming_phase": 0
+      },
+      "same_as": "title"
+    },
+    {
+      "name": "new_game",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 0
+      }
+    },
+    {
+      "name": "default_key_0",
+      "buttons": [
+        "Y"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 0
+      }
+    },
+    {
+      "name": "default_name_0",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 0
+      }
+    },
+    {
+      "name": "next_field_0",
+      "buttons": [
+        "R"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 1
+      }
+    },
+    {
+      "name": "default_key_1",
+      "buttons": [
+        "Y"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 1
+      }
+    },
+    {
+      "name": "default_name_1",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 1
+      }
+    },
+    {
+      "name": "next_field_1",
+      "buttons": [
+        "R"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 2
+      }
+    },
+    {
+      "name": "default_key_2",
+      "buttons": [
+        "Y"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 2
+      }
+    },
+    {
+      "name": "default_name_2",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 2
+      }
+    },
+    {
+      "name": "next_field_2",
+      "buttons": [
+        "R"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 3
+      }
+    },
+    {
+      "name": "default_key_3",
+      "buttons": [
+        "Y"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 3
+      }
+    },
+    {
+      "name": "default_name_3",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 3
+      }
+    },
+    {
+      "name": "next_field_3",
+      "buttons": [
+        "R"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 4
+      }
+    },
+    {
+      "name": "default_key_4",
+      "buttons": [
+        "Y"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 4
+      }
+    },
+    {
+      "name": "default_name_4",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 4
+      }
+    },
+    {
+      "name": "next_field_4",
+      "buttons": [
+        "R"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 5
+      }
+    },
+    {
+      "name": "default_key_5",
+      "buttons": [
+        "Y"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 5
+      }
+    },
+    {
+      "name": "default_name_5",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "naming_phase": 1,
+        "naming_field": 5
+      }
+    },
+    {
+      "name": "next_field_5",
+      "buttons": [
+        "R"
+      ],
+      "wait": {
+        "naming_phase": 4
+      }
+    },
+    {
+      "name": "settings_row_1",
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "settings_row_2",
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "settings_row_3",
+      "buttons": [
+        "DOWN"
+      ]
+    },
+    {
+      "name": "confirmation",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "naming_phase": 6
+      }
+    },
+    {
+      "name": "introduction",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "intro_phase": 4,
+        "intro_scene": 0
+      }
+    },
+    {
+      "name": "itoi",
+      "buttons": [
+        "START"
+      ],
+      "wait": {
+        "intro_phase": 4,
+        "intro_scene": 1
+      }
+    },
+    {
+      "name": "house",
+      "buttons": [
+        "START"
+      ],
+      "wait": {
+        "title_phase": 0,
+        "naming_phase": 0,
+        "intro_phase": 0,
+        "paused": 0,
+        "world_stage": 0,
+        "field_scene": 0,
+        "battle_active": 0,
+        "menu_phase": 0,
+        "level": 1,
+        "house_error": "",
+        "menu_error": ""
+      }
+    },
+    {
+      "name": "pause",
+      "buttons": [
+        "START"
+      ],
+      "wait": {
+        "menu_phase": 2,
+        "paused": 1,
+        "menu_error": ""
+      }
+    },
+    {
+      "name": "psi_stick",
+      "circle": {
+        "x": 1,
+        "y": 0,
+        "override": true
+      },
+      "wait": {
+        "menu_phase": 2,
+        "menu_command": 1
+      }
+    },
+    {
+      "name": "psi_empty",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "menu_phase": 9,
+        "level": 1,
+        "pp": 26,
+        "psi_learned": 0
+      }
+    },
+    {
+      "name": "psi_unlearned_confirm",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "menu_phase": 9
+      },
+      "same_as": "psi_empty"
+    },
+    {
+      "name": "psi_back",
+      "buttons": [
+        "B"
+      ],
+      "wait": {
+        "menu_phase": 2,
+        "menu_command": 1
+      }
+    },
+    {
+      "name": "close_pause",
+      "buttons": [
+        "START"
+      ],
+      "wait": {
+        "menu_phase": 0,
+        "paused": 0
+      },
+      "same_as": "house"
+    },
+    {
+      "name": "house_select_guard",
+      "buttons": [
+        "SELECT"
+      ],
+      "wait": {
+        "title_phase": 0,
+        "menu_phase": 0,
+        "paused": 0
+      },
+      "same_as": "house"
+    },
+    {
+      "name": "pause_again",
+      "buttons": [
+        "START"
+      ],
+      "wait": {
+        "menu_phase": 2,
+        "paused": 1,
+        "menu_command": 0
+      }
+    },
+    {
+      "name": "cancel_pause",
+      "buttons": [
+        "B"
+      ],
+      "wait": {
+        "menu_phase": 0,
+        "paused": 0
+      },
+      "same_as": "house"
+    },
+    {
+      "name": "lamp_trigger",
+      "buttons": [
+        "LEFT"
+      ],
+      "hold_until": {
+        "world_stage": 1
+      },
+      "wait": {
+        "world_stage": 1
+      }
+    },
+    {
+      "name": "lamp_music",
+      "wait_audio": {
+        "music_playing": 1,
+        "music_asset": 21
+      },
+      "audio_progress": true,
+      "expected_music": 21
+    },
+    {
+      "name": "lamp_battle",
+      "wait": {
+        "battle_active": 1
+      },
+      "wait_audio": {
+        "music_playing": 1,
+        "music_asset": 21
+      },
+      "audio_progress": true,
+      "expected_music": 21
+    },
+    {
+      "name": "lamp_victory",
+      "buttons": [
+        "A"
+      ],
+      "frames": 120,
+      "repeat_until": {
+        "battle_active": 0,
+        "world_stage": 0
+      },
+      "max_attempts": 48,
+      "wait": {
+        "battle_active": 0,
+        "world_stage": 0,
+        "house_phase": 0,
+        "level": 1,
+        "door_unlocked_mask": 9,
+        "experience": 3
+      },
+      "capture": true
+    },
+    {
+      "name": "bedroom_exit",
+      "buttons": [
+        "LEFT"
+      ],
+      "hold_until": {
+        "player_x": 220,
+        "player_y": 385
+      },
+      "wait": {
+        "house_phase": 0
+      }
+    },
+    {
+      "name": "sister_hallway_north",
+      "buttons": [
+        "UP"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": 375,
+          "max": 379
+        }
+      },
+      "wait": {
+        "house_phase": 0
+      }
+    },
+    {
+      "name": "sister_approach_x",
+      "buttons": [
+        "LEFT"
+      ],
+      "wait": {
+        "house_phase": 0
+      },
+      "hold_until": {
+        "player_x": {
+          "min": 62,
+          "max": 66
+        }
+      }
+    },
+    {
+      "name": "sister_runup_space",
+      "buttons": [
+        "DOWN"
+      ],
+      "wait": {
+        "world_stage": 0,
+        "paused": 0
+      },
+      "hold_until": {
+        "player_y": {
+          "min": 389,
+          "max": 393
+        }
+      }
+    },
+    {
+      "name": "sister_ram",
+      "buttons": [
+        "UP",
+        "X"
+      ],
+      "wait": {
+        "world_stage": 1
+      },
+      "repeat_until": {
+        "player_x": 128,
+        "player_y": 169
+      },
+      "frames": 16,
+      "max_attempts": 32
+    },
+    {
+      "name": "doll_dialogue",
+      "wait": {
+        "world_stage": 1
+      }
+    },
+    {
+      "name": "doll_battle",
+      "buttons": [
+        "A"
+      ],
+      "frames": 120,
+      "repeat_until": {
+        "battle_active": 1
+      },
+      "max_attempts": 16,
+      "wait": {
+        "battle_active": 1
+      }
+    },
+    {
+      "name": "doll_victory",
+      "buttons": [
+        "A"
+      ],
+      "frames": 120,
+      "repeat_until": {
+        "battle_active": 0,
+        "world_stage": 0,
+        "house_phase": 0,
+        "level": 2,
+        "experience": 11
+      },
+      "max_attempts": 64,
+      "wait": {
+        "battle_active": 0,
+        "world_stage": 0,
+        "house_phase": 0,
+        "level": 2,
+        "experience": 11
+      },
+      "capture": true
+    },
+    {
+      "name": "psi_learned_pause",
+      "buttons": [
+        "START"
+      ],
+      "wait": {
+        "menu_phase": 2,
+        "level": 2,
+        "experience": 11
+      }
+    },
+    {
+      "name": "psi_learned_stick",
+      "circle": {
+        "x": 1,
+        "y": 0,
+        "override": true
+      },
+      "wait": {
+        "menu_phase": 2,
+        "menu_command": 1
+      }
+    },
+    {
+      "name": "psi_learned",
+      "buttons": [
+        "A"
+      ],
+      "wait": {
+        "menu_phase": 9,
+        "level": 2,
+        "experience": 11,
+        "psi_learned": 1
+      }
+    },
+    {
+      "name": "psi_learned_back",
+      "buttons": [
+        "B"
+      ],
+      "wait": {
+        "menu_phase": 2
+      }
+    },
+    {
+      "name": "psi_learned_close",
+      "buttons": [
+        "B"
+      ],
+      "wait": {
+        "menu_phase": 0,
+        "paused": 0,
+        "level": 2,
+        "experience": 11
+      }
+    },
+    {
+      "name": "doll_aisle_y",
+      "buttons": [
+        "UP"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": 104,
+          "max": 106
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "doll_gap_x",
+      "buttons": [
+        "LEFT"
+      ],
+      "hold_until": {
+        "player_x": {
+          "min": 68,
+          "max": 70
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "doll_side_y",
+      "buttons": [
+        "UP"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": 34,
+          "max": 46
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "doll_face_left",
+      "buttons": [
+        "LEFT"
+      ],
+      "frames": 1,
+      "wait": {
+        "direction_x": -1,
+        "direction_y": 0
+      }
+    },
+    {
+      "name": "doll_melody_started",
+      "buttons": [
+        "A"
+      ],
+      "frames": 4,
+      "wait": {
+        "house_phase": 7,
+        "world_stage": 1
+      }
+    },
+    {
+      "name": "doll_melody_finished",
+      "buttons": [
+        "A"
+      ],
+      "frames": 120,
+      "repeat_until": {
+        "paused": 0,
+        "house_phase": 0,
+        "world_stage": 0
+      },
+      "max_attempts": 64,
+      "wait": {
+        "paused": 0,
+        "house_phase": 0,
+        "world_stage": 0,
+        "level": 2,
+        "experience": 11
+      }
+    },
+    {
+      "name": "doll_leave_aisle_x",
+      "buttons": [
+        "RIGHT"
+      ],
+      "hold_until": {
+        "player_x": {
+          "min": 61,
+          "max": 72
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "doll_leave_gap",
+      "buttons": [
+        "DOWN"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": 100,
+          "max": 112
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "doll_leave_x",
+      "buttons": [
+        "RIGHT"
+      ],
+      "hold_until": {
+        "player_x": {
+          "min": 124,
+          "max": 134
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "doll_leave_room",
+      "buttons": [
+        "DOWN"
+      ],
+      "hold_until": {
+        "player_x": {
+          "min": 63,
+          "max": 65
+        },
+        "player_y": {
+          "min": 368,
+          "max": 370
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "hallway_stair_x",
+      "buttons": [
+        "RIGHT"
+      ],
+      "hold_until": {
+        "player_x": {
+          "min": 195,
+          "max": 205
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0,
+        "player_x": {
+          "min": 195,
+          "max": 210
+        },
+        "player_y": {
+          "min": 368,
+          "max": 376
+        }
+      }
+    },
+    {
+      "name": "hallway_stair_y",
+      "buttons": [
+        "DOWN"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": 405,
+          "max": 415
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0,
+        "player_x": {
+          "min": 195,
+          "max": 210
+        },
+        "player_y": {
+          "min": 408,
+          "max": 420
+        }
+      }
+    },
+    {
+      "name": "living_stair",
+      "buttons": [
+        "LEFT"
+      ],
+      "hold_until": {
+        "player_x": {
+          "min": 31,
+          "max": 33
+        },
+        "player_y": {
+          "min": 680,
+          "max": 682
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "carol_approach_y",
+      "buttons": [
+        "DOWN"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": 748,
+          "max": 758
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "carol_approach_x",
+      "buttons": [
+        "RIGHT"
+      ],
+      "hold_until": {
+        "player_x": {
+          "min": 184,
+          "max": 193
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "carol_talk_y",
+      "buttons": [
+        "UP"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": 727,
+          "max": 737
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "carol_face_up",
+      "buttons": [
+        "UP"
+      ],
+      "frames": 1,
+      "wait": {
+        "direction_x": 0,
+        "direction_y": -1
+      }
+    },
+    {
+      "name": "carol_call_started",
+      "buttons": [
+        "A"
+      ],
+      "frames": 4,
+      "wait": {
+        "house_phase": 7,
+        "world_stage": 1
+      }
+    },
+    {
+      "name": "carol_call_finished",
+      "buttons": [
+        "A"
+      ],
+      "frames": 120,
+      "repeat_until": {
+        "paused": 0,
+        "house_phase": 0,
+        "world_stage": 0
+      },
+      "max_attempts": 64,
+      "wait": {
+        "paused": 0,
+        "house_phase": 0,
+        "world_stage": 0,
+        "level": 2,
+        "experience": 11
+      }
+    },
+    {
+      "name": "phone_approach_x",
+      "buttons": [
+        "LEFT"
+      ],
+      "hold_until": {
+        "player_x": {
+          "min": 145,
+          "max": 153
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "phone_approach_y",
+      "buttons": [
+        "UP"
+      ],
+      "hold_until": {
+        "player_y": {
+          "min": 708,
+          "max": 718
+        }
+      },
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      }
+    },
+    {
+      "name": "dad_first_started",
+      "buttons": [
+        "A"
+      ],
+      "frames": 4,
+      "wait": {
+        "house_phase": 7,
+        "world_stage": 1
+      }
+    },
+    {
+      "name": "dad_first_finished",
+      "buttons": [
+        "A"
+      ],
+      "frames": 120,
+      "repeat_until": {
+        "paused": 0,
+        "house_phase": 0,
+        "world_stage": 0
+      },
+      "max_attempts": 64,
+      "wait": {
+        "paused": 0,
+        "house_phase": 0,
+        "world_stage": 0,
+        "level": 2,
+        "experience": 11
+      },
+      "capture": true
+    },
+    {
+      "name": "front_approach_y",
+      "buttons": [
+        "DOWN"
+      ],
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      },
+      "hold_until": {
+        "player_y": {
+          "min": 794,
+          "max": 802
+        }
+      }
+    },
+    {
+      "name": "front_approach_x",
+      "buttons": [
+        "LEFT"
+      ],
+      "wait": {
+        "house_phase": 0,
+        "paused": 0
+      },
+      "hold_until": {
+        "player_x": {
+          "min": 128,
+          "max": 143
+        }
+      }
+    },
+    {
+      "name": "first_field_entry",
+      "buttons": [
+        "DOWN"
+      ],
+      "wait": {
+        "field_scene": 2,
+        "field_phase": 0,
+        "paused": 0,
+        "key_count": 1
+      },
+      "hold_until": {
+        "field_scene": 2
+      }
+    },
+    {
+      "name": "first_field_walk",
+      "buttons": [
+        "DOWN"
+      ],
+      "wait": {
+        "field_scene": 2,
+        "field_phase": 0,
+        "paused": 0
+      },
+      "hold_until": {
+        "player_y": {
+          "min": -25,
+          "max": -12
+        }
+      },
+      "capture": true
+    },
+    {
+      "name": "first_field_menu",
+      "buttons": [
+        "START"
+      ],
+      "wait": {
+        "menu_phase": 2,
+        "field_scene": 2,
+        "paused": 1
+      }
+    },
+    {
+      "name": "first_field_close",
+      "buttons": [
+        "B"
+      ],
+      "wait": {
+        "menu_phase": 0,
+        "field_scene": 2,
+        "paused": 0
+      }
+    },
+    {
+      "name": "return_house",
+      "buttons": [
+        "UP"
+      ],
+      "wait": {
+        "field_scene": 0,
+        "house_phase": 0,
+        "paused": 0,
+        "key_count": 1
+      },
+      "hold_until": {
+        "field_scene": 0
+      },
+      "capture": true
+    },
+    {
+      "name": "second_field_entry",
+      "buttons": [
+        "DOWN"
+      ],
+      "wait": {
+        "field_scene": 2,
+        "field_phase": 0,
+        "paused": 0,
+        "key_count": 1
+      },
+      "hold_until": {
+        "field_scene": 2
+      }
+    },
+    {
+      "name": "second_field_walk",
+      "buttons": [
+        "DOWN"
+      ],
+      "wait": {
+        "field_scene": 2,
+        "field_phase": 0,
+        "paused": 0
+      },
+      "hold_until": {
+        "player_y": {
+          "min": -25,
+          "max": -12
+        }
+      },
+      "capture": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "command": [
+    "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\run_current_opening.py",
+    "--emulator",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\azahar-cdb\\bin\\Release\\azahar.exe",
+    "--game",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\hud-e645-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+    "--receipt",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\hud-e645-current\\verified-artifact\\build-receipt.json",
+    "--scenario",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\tests\\emulator\\opening-field-exit.json",
+    "--original-reference",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\emulator-regression\\field-menu-old-regression\\reference.json",
+    "--out",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\emulator-regression\\hud-e645-opening-1",
+    "--repetitions",
+    "2",
+    "--dsp-component",
+    "C:\\Users\\litto\\AppData\\Roaming\\Azahar\\sdmc\\3ds\\dspfirm.cdc",
+    "--require-audio"
+  ],
+  "scope": "Two ordinary cold new games;no save/RNG/flag/memory injection;existing opening90 expectations unchanged;current HUD candidate not active in formal game."
+}

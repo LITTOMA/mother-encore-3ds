@@ -8,5 +8,5 @@
   "correction": "Both actual BattleRenderer translation units share conditional generated region/row/mapped shader prerequisites,gpu-mode stamp,and the existing main -ffp-contract=off setting. No shader source,game code,resource format or tests changed.",
   "local_check": "Actual GNU make -pq stopped at the retained Missing /opt/devkitpro/devkitARM/3ds_rules guard. This is not a dependency-graph or cross-build pass. SDK is unavailable locally.",
   "new_cross_build": "Pending automatic genuine build after push.",
-  "host_full": "Existing5ff4 GCC/Clang full jobs continue;do not cancel or duplicate them. New Makefile/docs/report changes leave all their host program/generator/test input files identical."
+  "host_full": "Existing5ff4 GCC/Clang jobs continue. Shared-core,generator and test source files remain unchanged;the Makefile is itself input to five test modules,so those33 existing checks were rerun on e645 and passed20.024s. No relabeling of the failed original console job."
 }

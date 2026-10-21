@@ -1,0 +1,202 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.de.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.de.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.en.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.en.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.es.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.es.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.es_ES.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.es_ES.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.fr.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.fr.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.it.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.it.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.ja.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.ja.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.ko.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.ko.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.pl.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.pl.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.pt_BR.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.pt_BR.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.ru.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_shitpost dialogue - sheet.ru.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.de.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.de.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.en.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.en.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.es.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.es.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.es_ES.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.es_ES.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.fr.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.fr.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.it.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.it.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.ja.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.ja.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.ko.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.ko.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.pl.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.pl.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.pt_BR.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.pt_BR.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.ru.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.ru.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.uk.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.uk.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Snowman - sheet.zh_Hans_CN.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Snowman - sheet.zh_Hans_CN.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.de.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.de.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.en.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.en.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.es.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.es.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.es_ES.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.es_ES.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.fr.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.fr.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.it.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.it.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.ja.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.ja.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resouERROR: 'Narrowing conversion (float is converted to int and loses precision).'
+ERROR: 'Narrowing conversion (float is converted to int and loses precision).'
+rce_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.ko.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.ko.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.pl.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.pl.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.pt_BR.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.pt_BR.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.ru.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.ru.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.uk.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.uk.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+ERROR: Cannot open file 'res://Translations/TranslatedText/dialogue_Reindeer - sheet.zh_Hans_CN.translation'.
+   at: (core/io/resource_format_binary.cpp:961)
+ERROR: Failed loading resource: res://Translations/TranslatedText/dialogue_Reindeer - sheet.zh_Hans_CN.translation. Make sure resources have been imported by opening the project in the editor at least once.
+   at: (core/io/resource_loader.cpp:283)
+WARNING: Case mismatch opening requested file 'mushroomized.png.import', stored as 'Mushroomized.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'mushroomized.png.import', stored as 'Mushroomized.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'cold.png.import', stored as 'Cold.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'cold.png.import', stored as 'Cold.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'asthma_monospace.png.import', stored as 'Asthma_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'asthma_monospace.png.import', stored as 'Asthma_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'nausea_monospace.png.import', stored as 'Nausea_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'nausea_monospace.png.import', stored as 'Nausea_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'sunstroked_monospace.png.import', stored as 'Sunstroked_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'sunstroked_monospace.png.import', stored as 'Sunstroked_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'confused_monospace.png.import', stored as 'Confused_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'confused_monospace.png.import', stored as 'Confused_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'poisoned_monospace.png.import', stored as 'Poisoned_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'poisoned_monospace.png.import', stored as 'Poisoned_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'numb_monospace.png.import', stored as 'Numb_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'numb_monospace.png.import', stored as 'Numb_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'burned.png.import', stored as 'Burned.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'burned.png.import', stored as 'Burned.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'blinded_monospace.png.import', stored as 'Blinded_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'blinded_monospace.png.import', stored as 'Blinded_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'sleeping_monospace.png.import', stored as 'Sleeping_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.
+     at: _open (drivers/windows/file_access_windows.cpp:102)
+WARNING: Case mismatch opening requested file 'sleeping_monospace.png.import', stored as 'Sleeping_monospace.png.import' in the filesystem. This file will not open when exported to other case-sensitive platforms.ERROR: 'Narrowing conversion (float is converted to int and loses precision).'
+ERROR: 'Narrowing conversion (float is converted to int and loses precision).'
+ERROR: 'Narrowing conversion (float is converted to int and loses precision).'
+ERROR: 'Narrowing conversion (float is converted to int and loses precision).'
+OS locale code: zh_CN
+Respawn: Disclaimer (0, 0)

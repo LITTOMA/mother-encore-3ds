@@ -1,0 +1,26 @@
+{
+  "working_inputs": {
+    "CMakeLists.txt": "e0967fa793083d13f0f1d933547b0f478809b0979b76569770694df73bcf9631",
+    "include/encore/poison_contacts.hpp": "759d5e0ef4950fa7cc91b2705297c3ea17b952619b6deb1e915a8697ea83a5c3",
+    "runtime/poison_contacts.cpp": "1dec07aaa10e3e95797ee3a9d13603fbe16eea1ba0e20d12cf19e5ff19758003",
+    "tests/poison_contacts_tests.cpp": "34dc682cab279b83d10f76e6493f44c91fbc9614deb1638fc617f6b05ccbfe2a"
+  },
+  "existing_native105": "reports/poison-contacts/native1/reference.json",
+  "existing_native284": "reports/poison-damage/native1/reference.json",
+  "full_scene_context": [
+    {
+      "raw_sha256": "2b4f5106677354ab0ec95a7481b4a7ffd12d5adb6bdc932328be7539104b95ed",
+      "rows": 10,
+      "total_diagnostics": 106,
+      "observation_window_diagnostics": 0
+    },
+    {
+      "raw_sha256": "2b4f5106677354ab0ec95a7481b4a7ffd12d5adb6bdc932328be7539104b95ed",
+      "rows": 10,
+      "total_diagnostics": 106,
+      "observation_window_diagnostics": 0
+    }
+  ],
+  "scope": "Focused58371 normal-leak sanitizer checks with unchanged117-core archive;existing105 and284 original observations replayed,not new native runs. Full-scene10-state cold runs supplemental with original bootstrap/exit diagnostics,NOT clean game admission. No new resource/version/save/parser.",
+  "tested_input_eol_proof": "published-test-newlines.json"
+}

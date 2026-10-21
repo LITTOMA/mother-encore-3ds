@@ -1,0 +1,1 @@
+["ctest", "--test-dir", "build/full-port/poison-contact-batch-cmake-1", "--show-only=json-v1"]

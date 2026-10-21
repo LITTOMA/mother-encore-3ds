@@ -1,0 +1,8 @@
+{
+  "path": "tests/poison_contacts_tests.cpp",
+  "tested_raw_sha256": "46c2fcb3fa539eb9d820fc40d93dc2c8bf1f8f20e356d4191a77853f437ae53f",
+  "published_raw_sha256": "34dc682cab279b83d10f76e6493f44c91fbc9614deb1638fc617f6b05ccbfe2a",
+  "tested_normalized_sha256": "34dc682cab279b83d10f76e6493f44c91fbc9614deb1638fc617f6b05ccbfe2a",
+  "published_normalized_sha256": "34dc682cab279b83d10f76e6493f44c91fbc9614deb1638fc617f6b05ccbfe2a",
+  "scope": "Windows Python had normalized all test lines to CRLF. Restore original predominant line ending;reconstruct tested text and verify its actual recorded raw hash. Normalized tested and published bytes identical;no executable or expectation change."
+}

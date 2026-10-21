@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\godot-reference\\Godot_v3.6.2-stable_win64.exe",
+    "--path",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\full-original-oracle-1\\project",
+    "--no-window",
+    "--audio-driver",
+    "Dummy",
+    "--video-driver",
+    "GLES2"
+  ],
+  "return_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 3.7339999999967404,
+  "scope": "Diagnostic wrappers only;preserve source methods;not accepted game boot."
+}

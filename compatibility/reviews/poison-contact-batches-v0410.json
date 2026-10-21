@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "kind": "encore.poison-contact-batches.semantic-review",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Scripts/Main/Poison.gd": "0ca09a31436413c2593c1bbc799da977b2e6f1209f9a138cc585c8c2bbc94bd9",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "mapping": [
+    "Preserve source enter/exit effects in the exact supplied stream order;do not synthesize priority or aggregate overlaps.",
+    "Validate complete pending pair event set,body/epoch/stable source identities and fresh output before any externally borrowed consumer commits.",
+    "Multiple callbacks stage existing source damage/status/Run/Shadow consumers;commit only changed status storage,keep unrelated Character storage and source no-ops.",
+    "Source105 automatic contact and source284 manual callback traces retained unchanged;two adjacent callback groups replayed through ordered consumer with exact HP/status/Flash/RNG/events.",
+    "Full original Catacombs/Player cold runs2x10 retained only as supplementary context;both include106 original bootstrap/exit diagnostics and0 in observation window."
+  ],
+  "compatibility": {
+    "resource_formats": "unchanged",
+    "capabilities": "unchanged",
+    "save": "unchanged",
+    "new_parser": false
+  },
+  "unverified": [
+    "No automatic broadphase ordering,natural movement,formal scene/resource admission,new console game/emulator/GPU/NDSP or hardware validation.",
+    "Full GCC/Clang,sanitizers and genuine3DSX/CIA not yet run for this candidate."
+  ],
+  "evidence": "reports/poison-contact-batches"
+}

@@ -56,11 +56,40 @@ bool PoisonPlayerContacts::prepare(const PoisonContactsData&data,uint64_t epoch,
 bool PoisonPlayerContacts::owner(uint64_t epoch,const PoisonBodySample&body,std::string&e)const{return valid()&&epoch==epoch_&&finite(body.position)&&body.layer<=0xfffff&&body.mask<=0xfffff?true:bad(e,"Poison contacts stale owner/body sample rejected");}
 void PoisonPlayerContacts::enabled(const PoisonBodySample&body,std::array<uint8_t,128>&out)const{for(size_t n=0;n<data_.areas().size();++n){const auto&area=data_.poison().areas()[n];out[n]=uint8_t(body.enabled&&(area.bits&1)&&((area.layer&body.mask)||(area.mask&body.layer)));}}
 bool PoisonPlayerContacts::begin(uint64_t epoch,const PoisonBodySample&body,bool paused,WorldDamageActor&actor,SessionCharacter&character,FieldRunLoop&run,FieldStepShadowState*shadow,std::vector<WorldDamageEvent>&out,std::string&e){
- if(!owner(epoch,body,e))return false;if(!out.empty()||!data_.poison().matches(run.content(),e)||!actor.validates(epoch,instance_,character,e))return bad(e,"Poison contacts borrowed owner/output rejected");auto next=*this;std::array<uint8_t,128>bits{};enabled(body,bits);FieldAreaEvents contacts;if(!next.pairs_.begin(bits.data(),data_.areas().size(),contacts,e))return false;if(contacts.count>1)return bad(e,"Poison simultaneous area transitions are outside the audited profile");std::vector<WorldDamageEvent>events;next.events_.clear();
- // At most one audited callback is delivered. Allocate its pair record first,
- // then use the existing atomic damage boundary directly;unrelated Character
- // storage and source no-op branches retain their actual caller ownership.
- if(contacts.count){const auto&event=contacts.values[0];next.events_.push_back({epoch,instance_,event.owner,event.entered});if(!deliver_poison_player_damage(data_.poison(),PoisonContactKind::Area,event.owner,event.entered,body_,paused,epoch,instance_,actor,character,run,shadow,events,e))return false;}
+ return begin_impl(epoch,body,nullptr,paused,actor,character,run,shadow,out,e);
+}
+bool PoisonPlayerContacts::begin_ordered(uint64_t epoch,const PoisonBodySample&body,const std::vector<PoisonPlayerContact>&order,bool paused,WorldDamageActor&actor,SessionCharacter&character,FieldRunLoop&run,FieldStepShadowState*shadow,std::vector<WorldDamageEvent>&out,std::string&e){
+ return begin_impl(epoch,body,&order,paused,actor,character,run,shadow,out,e);
+}
+bool PoisonPlayerContacts::begin_impl(uint64_t epoch,const PoisonBodySample&body,const std::vector<PoisonPlayerContact>*order,bool paused,WorldDamageActor&actor,SessionCharacter&character,FieldRunLoop&run,FieldStepShadowState*shadow,std::vector<WorldDamageEvent>&out,std::string&e){
+ if(!owner(epoch,body,e))return false;if(!out.empty()||!data_.poison().matches(run.content(),e)||!actor.validates(epoch,instance_,character,e))return bad(e,"Poison contacts borrowed owner/output rejected");auto next=*this;std::array<uint8_t,128>bits{};enabled(body,bits);FieldAreaEvents contacts;if(!next.pairs_.begin(bits.data(),data_.areas().size(),contacts,e))return false;std::vector<WorldDamageEvent>events;next.events_.clear();
+ if(order){
+  if(order->size()!=contacts.count)return bad(e,"Poison ordered contact stream incomplete or excessive");
+  std::array<uint8_t,128>seen{};
+  for(const auto&event:*order){
+   if(event.epoch!=epoch||event.instance!=instance_)return bad(e,"Poison ordered contact stream has foreign body/epoch");
+   size_t index=0;for(;index<contacts.count;++index)if(contacts.values[index].owner==event.area&&contacts.values[index].entered==event.entered)break;
+   if(index==contacts.count||seen[index])return bad(e,"Poison ordered contact stream has unknown,duplicate or reversed event");
+   seen[index]=1;next.events_.push_back(event);
+  }
+ }else{
+  if(contacts.count>1)return bad(e,"Poison simultaneous area transitions require an authoritative ordered stream");
+  for(size_t n=0;n<contacts.count;++n){const auto&event=contacts.values[n];next.events_.push_back({epoch,instance_,event.owner,event.entered});}
+ }
+ // Keep the existing single-callback boundary. For a supplied multi-callback
+ // stream,stage every consumer before committing any externally borrowed state.
+ // Character callbacks change status only;preserve all unrelated storage,HP
+ // and the actual status allocation on source no-op branches.
+ if(next.events_.size()==1){const auto&event=next.events_[0];if(!deliver_poison_player_damage(data_.poison(),PoisonContactKind::Area,event.area,event.entered,body_,paused,epoch,instance_,actor,character,run,shadow,events,e))return false;}
+ else if(!next.events_.empty()){
+  auto staged_actor=actor;auto staged_character=character;auto staged_run=run;FieldStepShadowState staged_shadow;if(shadow)staged_shadow=*shadow;bool has_effects=false;
+  for(const auto&event:next.events_){
+   std::vector<WorldDamageEvent>batch;
+   if(!deliver_poison_player_damage(data_.poison(),PoisonContactKind::Area,event.area,event.entered,body_,paused,epoch,instance_,staged_actor,staged_character,staged_run,shadow?&staged_shadow:nullptr,batch,e))return false;
+   has_effects|=body_==FieldStepBody::Player&&(!event.entered||!paused);events.insert(events.end(),batch.begin(),batch.end());
+  }
+  if(has_effects){actor=std::move(staged_actor);if(!events.empty())character.status=std::move(staged_character.status);run=std::move(staged_run);if(shadow)*shadow=staged_shadow;}
+ }
  *this=std::move(next);out=std::move(events);e.clear();return true;
 }
 bool PoisonPlayerContacts::end(uint64_t epoch,const PoisonBodySample&body,std::string&e){

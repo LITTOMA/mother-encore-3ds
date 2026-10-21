@@ -25,6 +25,10 @@ class PoisonPlayerContacts {
 public:
  bool prepare(const PoisonContactsData&,uint64_t epoch,uint64_t instance,FieldStepBody,std::string&);
  bool begin(uint64_t,const PoisonBodySample&,bool player_paused,WorldDamageActor&,SessionCharacter&,FieldRunLoop&,FieldStepShadowState*,std::vector<WorldDamageEvent>&,std::string&);
+ // A physics owner may supply its complete ordered event stream. Every event
+ // must match the pending sampled pair set and this body/epoch exactly. This
+ // API consumes that order;it does not infer a broadphase order from geometry.
+ bool begin_ordered(uint64_t,const PoisonBodySample&,const std::vector<PoisonPlayerContact>&,bool player_paused,WorldDamageActor&,SessionCharacter&,FieldRunLoop&,FieldStepShadowState*,std::vector<WorldDamageEvent>&,std::string&);
  bool end(uint64_t,const PoisonBodySample&,std::string&);
  bool retire(uint64_t,std::string&);
  bool valid()const{return data_.valid()&&epoch_!=0;}bool sampling()const{return valid()&&pairs_.sampling();}
@@ -32,6 +36,7 @@ public:
  const std::vector<PoisonPlayerContact>&events()const{return events_;}
 private:
  bool owner(uint64_t,const PoisonBodySample&,std::string&)const;
+ bool begin_impl(uint64_t,const PoisonBodySample&,const std::vector<PoisonPlayerContact>*,bool,WorldDamageActor&,SessionCharacter&,FieldRunLoop&,FieldStepShadowState*,std::vector<WorldDamageEvent>&,std::string&);
  void enabled(const PoisonBodySample&,std::array<uint8_t,128>&)const;
  PoisonContactsData data_;FieldAreaContacts pairs_;uint64_t epoch_=0,last_epoch_=0,instance_=0;FieldStepBody body_=FieldStepBody::Other;
  std::vector<PoisonPlayerContact>events_;

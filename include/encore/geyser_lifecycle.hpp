@@ -47,6 +47,9 @@ public:
  bool retire_scene(uint64_t,std::string&);
  bool inspect(uint64_t,uint64_t instance,GeyserInstanceSnapshot&,std::string&)const;
  bool valid()const{return data_.valid()&&epoch_!=0;}
+ uint64_t epoch()const{return epoch_;}
+ const GeyserLifecycleData&content()const{return data_;}
+ const std::vector<GeyserInstanceCommand>&commands()const{return commands_;}
  std::vector<uint64_t>instances()const;
 private:
  struct Instance {PoisonSpawnRequest source;GeyserTimeline actor;};

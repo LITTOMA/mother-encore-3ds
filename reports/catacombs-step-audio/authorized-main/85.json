@@ -1,0 +1,14 @@
+{
+  "authorization": "Human: 授权将 #85 标为 ready 并合并. Keep86/87draft.",
+  "pr": 85,
+  "head": "24aacb1dd76f95f93b874a733422f2bba7d327e0",
+  "merge": "af93f86922411be1fec019a9cecbd9cf98ed7265",
+  "tree": "582787a12d95d8ef8d4eedc10a2fa2caf584c1f1",
+  "tree_matches_approved_head": true,
+  "first_parent": "b2c5738f182536ead51e2df9f03d22e91bab25f9",
+  "second_parent": "24aacb1dd76f95f93b874a733422f2bba7d327e0",
+  "merged_at": "2026-10-21T05:54:35Z",
+  "full_run": 39536787438,
+  "source": "56664735f9bcff288c6f8ab08416e7d664542926",
+  "actual_two_cold90": true
+}

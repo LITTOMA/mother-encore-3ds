@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_step_audio.py", line 37, in <module>
+    a=argparse.ArgumentParser(description=__doc__);a.add_argument('--out',type=Path,required=True);a.add_argument('--ffmpeg',default='ffmpeg');a.add_argument('--ffprobe',default='ffprobe');o=a.parse_args();compile(o.out,o.ffmpeg,o.ffprobe)
+                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_step_audio.py", line 29, in compile
+    out=Path(out).resolve();require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build'and not out.exists(),'Fresh owned stepping audio candidate under build required');p,m,recipe,_,proof=source();out.mkdir(parents=True);(out/'.owned-catacombs-step-audio').write_bytes(b'catacombs-step-audio-v1');bindings=[]
+                                                                                                                                                                                              ^^^^^^
+UnboundLocalError: cannot access local variable 'source' where it is not associated with a value

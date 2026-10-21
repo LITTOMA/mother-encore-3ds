@@ -1,0 +1,52 @@
+{
+  "scope": "Verified exact native PowerShell paths/markers/inventory/hashes/reparse/process references before deleting owned temporary files only",
+  "audit_sha256": "8d0879530d98f9b045f5ffe3bb6a16c21f2dac85e18d6dde2fed99acfae9c129",
+  "deleted": [
+    {
+      "kind": "tree",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-audio-native-1\\temporary",
+      "bytes": 115516
+    },
+    {
+      "kind": "tree",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-audio-native-2\\temporary",
+      "bytes": 118043
+    },
+    {
+      "kind": "tree",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-audio-native-3\\temporary",
+      "bytes": 118377
+    },
+    {
+      "kind": "tree",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-audio-native-4\\temporary",
+      "bytes": 118377
+    },
+    {
+      "kind": "tree",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-audio-native-5\\temporary",
+      "bytes": 118377
+    },
+    {
+      "kind": "tree",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-bank-host-1\\scratch",
+      "bytes": 564496
+    },
+    {
+      "kind": "file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-bank-host-1\\run-bank",
+      "bytes": 8014160
+    },
+    {
+      "kind": "file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-bank-host-2\\run-bank",
+      "bytes": 8144136
+    },
+    {
+      "kind": "file",
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-bank-host-3\\run-bank",
+      "bytes": 8183976
+    }
+  ],
+  "total_bytes": 25495458
+}

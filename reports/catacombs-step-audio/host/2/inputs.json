@@ -1,0 +1,7 @@
+{
+  "tests/field_run_bank_audio_tests.cpp": "210e8d3c908f8b590bc4f29b2cdecb52c6d4bcc8beb751c3e5c6e747ce8b14be",
+  "platform/ctr/field_run_bank_audio.hpp": "b6d8a0989eb239eef2bacc121f5324fe1410ab2cc457ccfd45cf131b88c44462",
+  "platform/ctr/field_run_bank_audio.cpp": "927bbfcc99f63ac549c25eb0d769f8a6e95269ec2dd06233264dbcfc1fd14387",
+  "platform/ctr/audio_player.cpp": "27f83125be9da5ccdb9c090fb4cb24d78b7b606376d6e29342281601acde4b10",
+  "runtime/field_step_contacts.cpp": "67e39e0a2fe6000654dc4865dd41ab2759dfc5a836e772f7ffa14e2d5c1fe0cd"
+}

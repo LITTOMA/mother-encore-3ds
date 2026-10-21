@@ -1,0 +1,5 @@
+config_version=4
+[application]
+config/name="Original named run SFX"
+[audio]
+default_bus_layout="res://Audio/Audio Buses/default_bus_layout.tres"

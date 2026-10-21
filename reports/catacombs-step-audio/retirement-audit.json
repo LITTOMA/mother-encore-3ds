@@ -1,0 +1,1668 @@
+{
+  "scope": "Only five owned original temporary projects,failed owned PCM copies and three superseded test executables;raw original failures/pass/adapters/input receipts retained;latest test/core/current games/candidate media preserved",
+  "targets": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-audio-native-1\\temporary",
+      "kind": "tree",
+      "marker": ".owned-step-audio-native",
+      "token": "step-audio-native-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.md5",
+          "bytes": 91,
+          "sha256": "dd47b5863f0edaf9a0666e1ab2bfe86f807154bc89a42e9cc708686629faa968"
+        },
+        {
+          "path": ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str",
+          "bytes": 7483,
+          "sha256": "4e7437d05f5794d1cedb3a2b24b0517a381577d3a58eda01d11c547759b85066"
+        },
+        {
+          "path": ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.md5",
+          "bytes": 91,
+          "sha256": "fd3f46f3cedabbb6bf16c8cc99e1b5881f23cecd1a68383c09a1b227c7b77309"
+        },
+        {
+          "path": ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str",
+          "bytes": 6959,
+          "sha256": "8d6b248031e664bb8cdef7a48728b5ad3b9cf9b6249dd7651bbf279081459ac7"
+        },
+        {
+          "path": ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.md5",
+          "bytes": 91,
+          "sha256": "930487fe246ab6e1f36752260549c6552b0c0e132e6027987117319c9a968bcb"
+        },
+        {
+          "path": ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str",
+          "bytes": 5915,
+          "sha256": "1c627517719e5d8d4680edb4adf77c219d0829e988a994954e9de76b9393e78b"
+        },
+        {
+          "path": ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.md5",
+          "bytes": 91,
+          "sha256": "b127e1dbbae3352c424a5ff8af89e6b91c2fa31c8fbab8514314256a748c3181"
+        },
+        {
+          "path": ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str",
+          "bytes": 6071,
+          "sha256": "f2a3e176c1b7a514b683c52372ce937a90329eeac1a007caeff02a8d3dab0a7f"
+        },
+        {
+          "path": ".import/soil.mp3-319950cf078de496e8bd177521202c4a.md5",
+          "bytes": 91,
+          "sha256": "c811ed05875aac22795508ec1ac00722ec80deb2368ae6512456c38daa0ad3d1"
+        },
+        {
+          "path": ".import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str",
+          "bytes": 4663,
+          "sha256": "4951c5c32be1e489a86745ea062607bb36a210ed4ee36aba70a84aadc412b377"
+        },
+        {
+          "path": ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.md5",
+          "bytes": 91,
+          "sha256": "b862b74a1e89153466682983161abebb93bd1ff8f1235f3701bb3db30cc435d3"
+        },
+        {
+          "path": ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str",
+          "bytes": 4923,
+          "sha256": "b4d9e0c583eee107f7479b93868eea5059b8c96e6f11a63b43979b0ef1d731f8"
+        },
+        {
+          "path": ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.md5",
+          "bytes": 91,
+          "sha256": "b8deec5b832bfb748977ef92e442c7f0de7cdd335cdf2baa5b4c3b8505339fda"
+        },
+        {
+          "path": ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str",
+          "bytes": 7951,
+          "sha256": "b4df3eb527946da3a2cdf4d419611315e622038674b790da14d28db17d69afbf"
+        },
+        {
+          "path": ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.md5",
+          "bytes": 91,
+          "sha256": "51438976d7b9431d7db66a0b5e49347f06c0a0a5a84c5ce310175dea631c16a7"
+        },
+        {
+          "path": ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str",
+          "bytes": 4687,
+          "sha256": "f74cd324dec60c265b9b36f1b479222416449277f3db8ee95f03da1719c36236"
+        },
+        {
+          "path": ".owned-step-audio-native",
+          "bytes": 20,
+          "sha256": "79666610a6e7e4f726fe9878be9d7e0b7fe97135a6519db507c1d1ddeec3b08f"
+        },
+        {
+          "path": "actor.gd",
+          "bytes": 681,
+          "sha256": "aebac92cac5a6e6311e9284687f01f42f49e6ba29c553803bc7f3f3c75ec893e"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/cave.mp3",
+          "bytes": 7198,
+          "sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/cave.mp3.import",
+          "bytes": 299,
+          "sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/grass.mp3",
+          "bytes": 6675,
+          "sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/grass.mp3.import",
+          "bytes": 302,
+          "sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/metal.mp3",
+          "bytes": 5631,
+          "sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/metal.mp3.import",
+          "bytes": 302,
+          "sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/sand.mp3",
+          "bytes": 5787,
+          "sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/sand.mp3.import",
+          "bytes": 299,
+          "sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/soil.mp3",
+          "bytes": 4378,
+          "sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/soil.mp3.import",
+          "bytes": 299,
+          "sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/stone.mp3",
+          "bytes": 4639,
+          "sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/stone.mp3.import",
+          "bytes": 302,
+          "sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/water.mp3",
+          "bytes": 7667,
+          "sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/water.mp3.import",
+          "bytes": 302,
+          "sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/wood.mp3",
+          "bytes": 4404,
+          "sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/wood.mp3.import",
+          "bytes": 299,
+          "sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664"
+        },
+        {
+          "path": "input.json",
+          "bytes": 2574,
+          "sha256": "fb97d81388b0c6cb0b60b06bd9c4cfbe5155df920a751148c901e3695e703231"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 605,
+          "sha256": "1f89fd42a85449d62eb6db5ffa79d5aa043a3d6c227adeae1e95bfe7b965bc0f"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 2354,
+          "sha256": "b795330e300031c200f6969e8bf44df28fea8d9ef20f3601801739ddb286842c"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 145,
+          "sha256": "a14bfbedd62493554cea082440d19e6231d430512a6a3d2f0ab9870ada451190"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "path": "user-roaming/Godot/projects/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1808,
+          "sha256": "119da6c083f46998d54b211f773a6845593005188bbafa903de6e8921b8ebbc2"
+        },
+        {
+          "path": "user-roaming/Godot/projects/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 115516
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-audio-native-2\\temporary",
+      "kind": "tree",
+      "marker": ".owned-step-audio-native",
+      "token": "step-audio-native-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.md5",
+          "bytes": 91,
+          "sha256": "dd47b5863f0edaf9a0666e1ab2bfe86f807154bc89a42e9cc708686629faa968"
+        },
+        {
+          "path": ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str",
+          "bytes": 7483,
+          "sha256": "4e7437d05f5794d1cedb3a2b24b0517a381577d3a58eda01d11c547759b85066"
+        },
+        {
+          "path": ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.md5",
+          "bytes": 91,
+          "sha256": "fd3f46f3cedabbb6bf16c8cc99e1b5881f23cecd1a68383c09a1b227c7b77309"
+        },
+        {
+          "path": ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str",
+          "bytes": 6959,
+          "sha256": "8d6b248031e664bb8cdef7a48728b5ad3b9cf9b6249dd7651bbf279081459ac7"
+        },
+        {
+          "path": ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.md5",
+          "bytes": 91,
+          "sha256": "930487fe246ab6e1f36752260549c6552b0c0e132e6027987117319c9a968bcb"
+        },
+        {
+          "path": ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str",
+          "bytes": 5915,
+          "sha256": "1c627517719e5d8d4680edb4adf77c219d0829e988a994954e9de76b9393e78b"
+        },
+        {
+          "path": ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.md5",
+          "bytes": 91,
+          "sha256": "b127e1dbbae3352c424a5ff8af89e6b91c2fa31c8fbab8514314256a748c3181"
+        },
+        {
+          "path": ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str",
+          "bytes": 6071,
+          "sha256": "f2a3e176c1b7a514b683c52372ce937a90329eeac1a007caeff02a8d3dab0a7f"
+        },
+        {
+          "path": ".import/soil.mp3-319950cf078de496e8bd177521202c4a.md5",
+          "bytes": 91,
+          "sha256": "c811ed05875aac22795508ec1ac00722ec80deb2368ae6512456c38daa0ad3d1"
+        },
+        {
+          "path": ".import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str",
+          "bytes": 4663,
+          "sha256": "4951c5c32be1e489a86745ea062607bb36a210ed4ee36aba70a84aadc412b377"
+        },
+        {
+          "path": ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.md5",
+          "bytes": 91,
+          "sha256": "b862b74a1e89153466682983161abebb93bd1ff8f1235f3701bb3db30cc435d3"
+        },
+        {
+          "path": ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str",
+          "bytes": 4923,
+          "sha256": "b4d9e0c583eee107f7479b93868eea5059b8c96e6f11a63b43979b0ef1d731f8"
+        },
+        {
+          "path": ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.md5",
+          "bytes": 91,
+          "sha256": "b8deec5b832bfb748977ef92e442c7f0de7cdd335cdf2baa5b4c3b8505339fda"
+        },
+        {
+          "path": ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str",
+          "bytes": 7951,
+          "sha256": "b4df3eb527946da3a2cdf4d419611315e622038674b790da14d28db17d69afbf"
+        },
+        {
+          "path": ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.md5",
+          "bytes": 91,
+          "sha256": "51438976d7b9431d7db66a0b5e49347f06c0a0a5a84c5ce310175dea631c16a7"
+        },
+        {
+          "path": ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str",
+          "bytes": 4687,
+          "sha256": "f74cd324dec60c265b9b36f1b479222416449277f3db8ee95f03da1719c36236"
+        },
+        {
+          "path": ".owned-step-audio-native",
+          "bytes": 20,
+          "sha256": "79666610a6e7e4f726fe9878be9d7e0b7fe97135a6519db507c1d1ddeec3b08f"
+        },
+        {
+          "path": "actor.gd",
+          "bytes": 681,
+          "sha256": "aebac92cac5a6e6311e9284687f01f42f49e6ba29c553803bc7f3f3c75ec893e"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/cave.mp3",
+          "bytes": 7198,
+          "sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/cave.mp3.import",
+          "bytes": 299,
+          "sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/grass.mp3",
+          "bytes": 6675,
+          "sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/grass.mp3.import",
+          "bytes": 302,
+          "sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/metal.mp3",
+          "bytes": 5631,
+          "sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/metal.mp3.import",
+          "bytes": 302,
+          "sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/sand.mp3",
+          "bytes": 5787,
+          "sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/sand.mp3.import",
+          "bytes": 299,
+          "sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/soil.mp3",
+          "bytes": 4378,
+          "sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/soil.mp3.import",
+          "bytes": 299,
+          "sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/stone.mp3",
+          "bytes": 4639,
+          "sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/stone.mp3.import",
+          "bytes": 302,
+          "sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/water.mp3",
+          "bytes": 7667,
+          "sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/water.mp3.import",
+          "bytes": 302,
+          "sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/wood.mp3",
+          "bytes": 4404,
+          "sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/wood.mp3.import",
+          "bytes": 299,
+          "sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664"
+        },
+        {
+          "path": "input.json",
+          "bytes": 2574,
+          "sha256": "fb97d81388b0c6cb0b60b06bd9c4cfbe5155df920a751148c901e3695e703231"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 605,
+          "sha256": "1f89fd42a85449d62eb6db5ffa79d5aa043a3d6c227adeae1e95bfe7b965bc0f"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 2354,
+          "sha256": "b795330e300031c200f6969e8bf44df28fea8d9ef20f3601801739ddb286842c"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 145,
+          "sha256": "a14bfbedd62493554cea082440d19e6231d430512a6a3d2f0ab9870ada451190"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original named run SFX/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "path": "user-roaming/Godot/projects/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1808,
+          "sha256": "7a187fffa3d6b7140342142ccab44e914b2d2dde380857fbda603995194e5a12"
+        },
+        {
+          "path": "user-roaming/Godot/projects/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-e80bab5b71f1715bc25df7e5cb71bdef/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-e80bab5b71f1715bc25df7e5cb71bdef/filesystem_cache6",
+          "bytes": 1808,
+          "sha256": "a8f78704adaaa23dab022edbc1d1f68300315011cb9e9f218e129497f63dafc8"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-e80bab5b71f1715bc25df7e5cb71bdef/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-e80bab5b71f1715bc25df7e5cb71bdef/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-e80bab5b71f1715bc25df7e5cb71bdef/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-e80bab5b71f1715bc25df7e5cb71bdef/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-e80bab5b71f1715bc25df7e5cb71bdef/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-e80bab5b71f1715bc25df7e5cb71bdef/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-e80bab5b71f1715bc25df7e5cb71bdef/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-e80bab5b71f1715bc25df7e5cb71bdef/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 118043
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-audio-native-3\\temporary",
+      "kind": "tree",
+      "marker": ".owned-step-audio-native",
+      "token": "step-audio-native-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.md5",
+          "bytes": 91,
+          "sha256": "dd47b5863f0edaf9a0666e1ab2bfe86f807154bc89a42e9cc708686629faa968"
+        },
+        {
+          "path": ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str",
+          "bytes": 7483,
+          "sha256": "4e7437d05f5794d1cedb3a2b24b0517a381577d3a58eda01d11c547759b85066"
+        },
+        {
+          "path": ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.md5",
+          "bytes": 91,
+          "sha256": "fd3f46f3cedabbb6bf16c8cc99e1b5881f23cecd1a68383c09a1b227c7b77309"
+        },
+        {
+          "path": ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str",
+          "bytes": 6959,
+          "sha256": "8d6b248031e664bb8cdef7a48728b5ad3b9cf9b6249dd7651bbf279081459ac7"
+        },
+        {
+          "path": ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.md5",
+          "bytes": 91,
+          "sha256": "930487fe246ab6e1f36752260549c6552b0c0e132e6027987117319c9a968bcb"
+        },
+        {
+          "path": ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str",
+          "bytes": 5915,
+          "sha256": "1c627517719e5d8d4680edb4adf77c219d0829e988a994954e9de76b9393e78b"
+        },
+        {
+          "path": ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.md5",
+          "bytes": 91,
+          "sha256": "b127e1dbbae3352c424a5ff8af89e6b91c2fa31c8fbab8514314256a748c3181"
+        },
+        {
+          "path": ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str",
+          "bytes": 6071,
+          "sha256": "f2a3e176c1b7a514b683c52372ce937a90329eeac1a007caeff02a8d3dab0a7f"
+        },
+        {
+          "path": ".import/soil.mp3-319950cf078de496e8bd177521202c4a.md5",
+          "bytes": 91,
+          "sha256": "c811ed05875aac22795508ec1ac00722ec80deb2368ae6512456c38daa0ad3d1"
+        },
+        {
+          "path": ".import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str",
+          "bytes": 4663,
+          "sha256": "4951c5c32be1e489a86745ea062607bb36a210ed4ee36aba70a84aadc412b377"
+        },
+        {
+          "path": ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.md5",
+          "bytes": 91,
+          "sha256": "b862b74a1e89153466682983161abebb93bd1ff8f1235f3701bb3db30cc435d3"
+        },
+        {
+          "path": ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str",
+          "bytes": 4923,
+          "sha256": "b4d9e0c583eee107f7479b93868eea5059b8c96e6f11a63b43979b0ef1d731f8"
+        },
+        {
+          "path": ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.md5",
+          "bytes": 91,
+          "sha256": "b8deec5b832bfb748977ef92e442c7f0de7cdd335cdf2baa5b4c3b8505339fda"
+        },
+        {
+          "path": ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str",
+          "bytes": 7951,
+          "sha256": "b4df3eb527946da3a2cdf4d419611315e622038674b790da14d28db17d69afbf"
+        },
+        {
+          "path": ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.md5",
+          "bytes": 91,
+          "sha256": "51438976d7b9431d7db66a0b5e49347f06c0a0a5a84c5ce310175dea631c16a7"
+        },
+        {
+          "path": ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str",
+          "bytes": 4687,
+          "sha256": "f74cd324dec60c265b9b36f1b479222416449277f3db8ee95f03da1719c36236"
+        },
+        {
+          "path": ".owned-step-audio-native",
+          "bytes": 20,
+          "sha256": "79666610a6e7e4f726fe9878be9d7e0b7fe97135a6519db507c1d1ddeec3b08f"
+        },
+        {
+          "path": "actor.gd",
+          "bytes": 681,
+          "sha256": "aebac92cac5a6e6311e9284687f01f42f49e6ba29c553803bc7f3f3c75ec893e"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/cave.mp3",
+          "bytes": 7198,
+          "sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/cave.mp3.import",
+          "bytes": 299,
+          "sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/grass.mp3",
+          "bytes": 6675,
+          "sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/grass.mp3.import",
+          "bytes": 302,
+          "sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/metal.mp3",
+          "bytes": 5631,
+          "sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/metal.mp3.import",
+          "bytes": 302,
+          "sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/sand.mp3",
+          "bytes": 5787,
+          "sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/sand.mp3.import",
+          "bytes": 299,
+          "sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/soil.mp3",
+          "bytes": 4378,
+          "sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/soil.mp3.import",
+          "bytes": 299,
+          "sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/stone.mp3",
+          "bytes": 4639,
+          "sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/stone.mp3.import",
+          "bytes": 302,
+          "sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/water.mp3",
+          "bytes": 7667,
+          "sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/water.mp3.import",
+          "bytes": 302,
+          "sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/wood.mp3",
+          "bytes": 4404,
+          "sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/wood.mp3.import",
+          "bytes": 299,
+          "sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664"
+        },
+        {
+          "path": "input.json",
+          "bytes": 2574,
+          "sha256": "fb97d81388b0c6cb0b60b06bd9c4cfbe5155df920a751148c901e3695e703231"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 605,
+          "sha256": "1f89fd42a85449d62eb6db5ffa79d5aa043a3d6c227adeae1e95bfe7b965bc0f"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 2688,
+          "sha256": "86b62f34cb4667a147f2994ea6ccb5f47dd1cf27519a7a4593d73d60c371d589"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 145,
+          "sha256": "a14bfbedd62493554cea082440d19e6231d430512a6a3d2f0ab9870ada451190"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original named run SFX/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "path": "user-roaming/Godot/projects/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1808,
+          "sha256": "12ce335dab76d62138a0fae03eaa87d9e9b70e47c4b04ffac11b5a7953a00f87"
+        },
+        {
+          "path": "user-roaming/Godot/projects/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-b53d162e6cdd902a7bc8b70f95b080d7/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-b53d162e6cdd902a7bc8b70f95b080d7/filesystem_cache6",
+          "bytes": 1808,
+          "sha256": "5d1d97d12b6d9a62b9af3b061110ad988b2c9ba3e0cd88f14da29e3906bb8ee7"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-b53d162e6cdd902a7bc8b70f95b080d7/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-b53d162e6cdd902a7bc8b70f95b080d7/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-b53d162e6cdd902a7bc8b70f95b080d7/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-b53d162e6cdd902a7bc8b70f95b080d7/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-b53d162e6cdd902a7bc8b70f95b080d7/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-b53d162e6cdd902a7bc8b70f95b080d7/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-b53d162e6cdd902a7bc8b70f95b080d7/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-b53d162e6cdd902a7bc8b70f95b080d7/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 118377
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-audio-native-4\\temporary",
+      "kind": "tree",
+      "marker": ".owned-step-audio-native",
+      "token": "step-audio-native-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.md5",
+          "bytes": 91,
+          "sha256": "dd47b5863f0edaf9a0666e1ab2bfe86f807154bc89a42e9cc708686629faa968"
+        },
+        {
+          "path": ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str",
+          "bytes": 7483,
+          "sha256": "4e7437d05f5794d1cedb3a2b24b0517a381577d3a58eda01d11c547759b85066"
+        },
+        {
+          "path": ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.md5",
+          "bytes": 91,
+          "sha256": "fd3f46f3cedabbb6bf16c8cc99e1b5881f23cecd1a68383c09a1b227c7b77309"
+        },
+        {
+          "path": ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str",
+          "bytes": 6959,
+          "sha256": "8d6b248031e664bb8cdef7a48728b5ad3b9cf9b6249dd7651bbf279081459ac7"
+        },
+        {
+          "path": ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.md5",
+          "bytes": 91,
+          "sha256": "930487fe246ab6e1f36752260549c6552b0c0e132e6027987117319c9a968bcb"
+        },
+        {
+          "path": ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str",
+          "bytes": 5915,
+          "sha256": "1c627517719e5d8d4680edb4adf77c219d0829e988a994954e9de76b9393e78b"
+        },
+        {
+          "path": ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.md5",
+          "bytes": 91,
+          "sha256": "b127e1dbbae3352c424a5ff8af89e6b91c2fa31c8fbab8514314256a748c3181"
+        },
+        {
+          "path": ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str",
+          "bytes": 6071,
+          "sha256": "f2a3e176c1b7a514b683c52372ce937a90329eeac1a007caeff02a8d3dab0a7f"
+        },
+        {
+          "path": ".import/soil.mp3-319950cf078de496e8bd177521202c4a.md5",
+          "bytes": 91,
+          "sha256": "c811ed05875aac22795508ec1ac00722ec80deb2368ae6512456c38daa0ad3d1"
+        },
+        {
+          "path": ".import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str",
+          "bytes": 4663,
+          "sha256": "4951c5c32be1e489a86745ea062607bb36a210ed4ee36aba70a84aadc412b377"
+        },
+        {
+          "path": ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.md5",
+          "bytes": 91,
+          "sha256": "b862b74a1e89153466682983161abebb93bd1ff8f1235f3701bb3db30cc435d3"
+        },
+        {
+          "path": ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str",
+          "bytes": 4923,
+          "sha256": "b4d9e0c583eee107f7479b93868eea5059b8c96e6f11a63b43979b0ef1d731f8"
+        },
+        {
+          "path": ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.md5",
+          "bytes": 91,
+          "sha256": "b8deec5b832bfb748977ef92e442c7f0de7cdd335cdf2baa5b4c3b8505339fda"
+        },
+        {
+          "path": ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str",
+          "bytes": 7951,
+          "sha256": "b4df3eb527946da3a2cdf4d419611315e622038674b790da14d28db17d69afbf"
+        },
+        {
+          "path": ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.md5",
+          "bytes": 91,
+          "sha256": "51438976d7b9431d7db66a0b5e49347f06c0a0a5a84c5ce310175dea631c16a7"
+        },
+        {
+          "path": ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str",
+          "bytes": 4687,
+          "sha256": "f74cd324dec60c265b9b36f1b479222416449277f3db8ee95f03da1719c36236"
+        },
+        {
+          "path": ".owned-step-audio-native",
+          "bytes": 20,
+          "sha256": "79666610a6e7e4f726fe9878be9d7e0b7fe97135a6519db507c1d1ddeec3b08f"
+        },
+        {
+          "path": "actor.gd",
+          "bytes": 681,
+          "sha256": "aebac92cac5a6e6311e9284687f01f42f49e6ba29c553803bc7f3f3c75ec893e"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/cave.mp3",
+          "bytes": 7198,
+          "sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/cave.mp3.import",
+          "bytes": 299,
+          "sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/grass.mp3",
+          "bytes": 6675,
+          "sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/grass.mp3.import",
+          "bytes": 302,
+          "sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/metal.mp3",
+          "bytes": 5631,
+          "sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/metal.mp3.import",
+          "bytes": 302,
+          "sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/sand.mp3",
+          "bytes": 5787,
+          "sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/sand.mp3.import",
+          "bytes": 299,
+          "sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/soil.mp3",
+          "bytes": 4378,
+          "sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/soil.mp3.import",
+          "bytes": 299,
+          "sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/stone.mp3",
+          "bytes": 4639,
+          "sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/stone.mp3.import",
+          "bytes": 302,
+          "sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/water.mp3",
+          "bytes": 7667,
+          "sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/water.mp3.import",
+          "bytes": 302,
+          "sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/wood.mp3",
+          "bytes": 4404,
+          "sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/wood.mp3.import",
+          "bytes": 299,
+          "sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664"
+        },
+        {
+          "path": "input.json",
+          "bytes": 2574,
+          "sha256": "fb97d81388b0c6cb0b60b06bd9c4cfbe5155df920a751148c901e3695e703231"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 605,
+          "sha256": "1f89fd42a85449d62eb6db5ffa79d5aa043a3d6c227adeae1e95bfe7b965bc0f"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 2688,
+          "sha256": "86b62f34cb4667a147f2994ea6ccb5f47dd1cf27519a7a4593d73d60c371d589"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 145,
+          "sha256": "a14bfbedd62493554cea082440d19e6231d430512a6a3d2f0ab9870ada451190"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original named run SFX/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "path": "user-roaming/Godot/projects/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1808,
+          "sha256": "289308844592397d1e10e391e907e996347cdf9c425bd899ca085da6cb5ee239"
+        },
+        {
+          "path": "user-roaming/Godot/projects/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-805c667211f450ef29efc9ffca2ac9de/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-805c667211f450ef29efc9ffca2ac9de/filesystem_cache6",
+          "bytes": 1808,
+          "sha256": "6534379de42d12a40052a154dac0c8885ae4e6237fef7177a1d3c5d00a99baa9"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-805c667211f450ef29efc9ffca2ac9de/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-805c667211f450ef29efc9ffca2ac9de/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-805c667211f450ef29efc9ffca2ac9de/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-805c667211f450ef29efc9ffca2ac9de/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-805c667211f450ef29efc9ffca2ac9de/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-805c667211f450ef29efc9ffca2ac9de/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-805c667211f450ef29efc9ffca2ac9de/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-805c667211f450ef29efc9ffca2ac9de/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 118377
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-audio-native-5\\temporary",
+      "kind": "tree",
+      "marker": ".owned-step-audio-native",
+      "token": "step-audio-native-v1",
+      "files": [
+        {
+          "path": ".import/.gdignore",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.md5",
+          "bytes": 91,
+          "sha256": "dd47b5863f0edaf9a0666e1ab2bfe86f807154bc89a42e9cc708686629faa968"
+        },
+        {
+          "path": ".import/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str",
+          "bytes": 7483,
+          "sha256": "4e7437d05f5794d1cedb3a2b24b0517a381577d3a58eda01d11c547759b85066"
+        },
+        {
+          "path": ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.md5",
+          "bytes": 91,
+          "sha256": "fd3f46f3cedabbb6bf16c8cc99e1b5881f23cecd1a68383c09a1b227c7b77309"
+        },
+        {
+          "path": ".import/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str",
+          "bytes": 6959,
+          "sha256": "8d6b248031e664bb8cdef7a48728b5ad3b9cf9b6249dd7651bbf279081459ac7"
+        },
+        {
+          "path": ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.md5",
+          "bytes": 91,
+          "sha256": "930487fe246ab6e1f36752260549c6552b0c0e132e6027987117319c9a968bcb"
+        },
+        {
+          "path": ".import/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str",
+          "bytes": 5915,
+          "sha256": "1c627517719e5d8d4680edb4adf77c219d0829e988a994954e9de76b9393e78b"
+        },
+        {
+          "path": ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.md5",
+          "bytes": 91,
+          "sha256": "b127e1dbbae3352c424a5ff8af89e6b91c2fa31c8fbab8514314256a748c3181"
+        },
+        {
+          "path": ".import/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str",
+          "bytes": 6071,
+          "sha256": "f2a3e176c1b7a514b683c52372ce937a90329eeac1a007caeff02a8d3dab0a7f"
+        },
+        {
+          "path": ".import/soil.mp3-319950cf078de496e8bd177521202c4a.md5",
+          "bytes": 91,
+          "sha256": "c811ed05875aac22795508ec1ac00722ec80deb2368ae6512456c38daa0ad3d1"
+        },
+        {
+          "path": ".import/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str",
+          "bytes": 4663,
+          "sha256": "4951c5c32be1e489a86745ea062607bb36a210ed4ee36aba70a84aadc412b377"
+        },
+        {
+          "path": ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.md5",
+          "bytes": 91,
+          "sha256": "b862b74a1e89153466682983161abebb93bd1ff8f1235f3701bb3db30cc435d3"
+        },
+        {
+          "path": ".import/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str",
+          "bytes": 4923,
+          "sha256": "b4d9e0c583eee107f7479b93868eea5059b8c96e6f11a63b43979b0ef1d731f8"
+        },
+        {
+          "path": ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.md5",
+          "bytes": 91,
+          "sha256": "b8deec5b832bfb748977ef92e442c7f0de7cdd335cdf2baa5b4c3b8505339fda"
+        },
+        {
+          "path": ".import/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str",
+          "bytes": 7951,
+          "sha256": "b4df3eb527946da3a2cdf4d419611315e622038674b790da14d28db17d69afbf"
+        },
+        {
+          "path": ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.md5",
+          "bytes": 91,
+          "sha256": "51438976d7b9431d7db66a0b5e49347f06c0a0a5a84c5ce310175dea631c16a7"
+        },
+        {
+          "path": ".import/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str",
+          "bytes": 4687,
+          "sha256": "f74cd324dec60c265b9b36f1b479222416449277f3db8ee95f03da1719c36236"
+        },
+        {
+          "path": ".owned-step-audio-native",
+          "bytes": 20,
+          "sha256": "79666610a6e7e4f726fe9878be9d7e0b7fe97135a6519db507c1d1ddeec3b08f"
+        },
+        {
+          "path": "actor.gd",
+          "bytes": 681,
+          "sha256": "aebac92cac5a6e6311e9284687f01f42f49e6ba29c553803bc7f3f3c75ec893e"
+        },
+        {
+          "path": "Audio/Audio Buses/default_bus_layout.tres",
+          "bytes": 867,
+          "sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/cave.mp3",
+          "bytes": 7198,
+          "sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/cave.mp3.import",
+          "bytes": 299,
+          "sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/grass.mp3",
+          "bytes": 6675,
+          "sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/grass.mp3.import",
+          "bytes": 302,
+          "sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/metal.mp3",
+          "bytes": 5631,
+          "sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/metal.mp3.import",
+          "bytes": 302,
+          "sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/sand.mp3",
+          "bytes": 5787,
+          "sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/sand.mp3.import",
+          "bytes": 299,
+          "sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/soil.mp3",
+          "bytes": 4378,
+          "sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/soil.mp3.import",
+          "bytes": 299,
+          "sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/stone.mp3",
+          "bytes": 4639,
+          "sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/stone.mp3.import",
+          "bytes": 302,
+          "sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/water.mp3",
+          "bytes": 7667,
+          "sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/water.mp3.import",
+          "bytes": 302,
+          "sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/wood.mp3",
+          "bytes": 4404,
+          "sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759"
+        },
+        {
+          "path": "Audio/Sound effects/Footsteps/wood.mp3.import",
+          "bytes": 299,
+          "sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664"
+        },
+        {
+          "path": "input.json",
+          "bytes": 2574,
+          "sha256": "fb97d81388b0c6cb0b60b06bd9c4cfbe5155df920a751148c901e3695e703231"
+        },
+        {
+          "path": "manager.gd",
+          "bytes": 605,
+          "sha256": "1f89fd42a85449d62eb6db5ffa79d5aa043a3d6c227adeae1e95bfe7b965bc0f"
+        },
+        {
+          "path": "probe.gd",
+          "bytes": 2688,
+          "sha256": "86b62f34cb4667a147f2994ea6ccb5f47dd1cf27519a7a4593d73d60c371d589"
+        },
+        {
+          "path": "project.godot",
+          "bytes": 145,
+          "sha256": "a14bfbedd62493554cea082440d19e6231d430512a6a3d2f0ab9870ada451190"
+        },
+        {
+          "path": "user-roaming/Godot/app_userdata/Original named run SFX/logs/godot.log",
+          "bytes": 143,
+          "sha256": "427b1e53bfe9d4bf8725a252ca33cc2ef144e748f3f8c4b49f6139f7c6c7201f"
+        },
+        {
+          "path": "user-roaming/Godot/editor_settings-3.tres",
+          "bytes": 7652,
+          "sha256": "29d48f483118312b16b042e06314f680eb7d373ae5a7b3aff2e39259b3d50e78"
+        },
+        {
+          "path": "user-roaming/Godot/projects/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/filesystem_cache6",
+          "bytes": 1808,
+          "sha256": "c1e7b9815680af43d045ff5937654fe744d80d4ae813a1d32eb171992b7fd7e1"
+        },
+        {
+          "path": "user-roaming/Godot/projects/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-0ea63d1d0153fe56256eaa688d1d6cb3/cave.mp3-a1b71526dfef0f631af8ed796e6f6fcf.mp3str-folding-d621305cd6d01c9e9661018ec577d0b2.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-0ea63d1d0153fe56256eaa688d1d6cb3/filesystem_cache6",
+          "bytes": 1808,
+          "sha256": "4f87d90880d248734792421a471ba322a6ace4e85186057ff16fd078497cf56d"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-0ea63d1d0153fe56256eaa688d1d6cb3/grass.mp3-05d6e71b1491ea2ae9a8de11f7160b71.mp3str-folding-96cb6864a1ef5a478b0cb7196133beed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-0ea63d1d0153fe56256eaa688d1d6cb3/metal.mp3-ebbf982019f463b7ecaa40b62bde4cdc.mp3str-folding-940561f3c269c0e980da8dc86c2e775f.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-0ea63d1d0153fe56256eaa688d1d6cb3/project_metadata.cfg",
+          "bytes": 184,
+          "sha256": "6d01039b4e3a0301ed6b7098564508165955ae35f69142f4a597534b05cb98ba"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-0ea63d1d0153fe56256eaa688d1d6cb3/sand.mp3-b9a75d8653cbe8ed93671d7af0ba8c15.mp3str-folding-55446301ce16b3710e7642a087955703.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-0ea63d1d0153fe56256eaa688d1d6cb3/soil.mp3-319950cf078de496e8bd177521202c4a.mp3str-folding-6e364f78eca3bd9ef4b34e56b907d915.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-0ea63d1d0153fe56256eaa688d1d6cb3/stone.mp3-b100d74bf8cffd4385db73311ca5c755.mp3str-folding-67d44de13486436de6fff967b13052a6.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-0ea63d1d0153fe56256eaa688d1d6cb3/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/temporary-0ea63d1d0153fe56256eaa688d1d6cb3/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/water.mp3-5d65b98c0022bdfc0ef02794dd77ff8a.mp3str-folding-a672921eba39e13bd3df566f96549a2b.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/projects/wood.mp3-e0b4bf7c3703189c1f2b4f0e887f7bbe.mp3str-folding-bc822f55a78bacf0bf3fc0ead76b18ed.cfg",
+          "bytes": 49,
+          "sha256": "3677d900212e7328a4f42a3ee1630125b37eda5748130c45051d93fc82776367"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/empty.gd",
+          "bytes": 16,
+          "sha256": "93458c857b2c6cc6d56b7c78485a2b6fbf7abe09e9513e3306b4cf8646265b93"
+        },
+        {
+          "path": "user-roaming/Godot/script_templates/no_comments.gd",
+          "bytes": 54,
+          "sha256": "31b37e4a40411ec7ea458fe4e879697958249e15f537f3214d45169ac1a7edbe"
+        }
+      ],
+      "bytes": 118377
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-bank-host-1\\scratch",
+      "kind": "tree",
+      "marker": ".owned-run-bank-test",
+      "token": "run-bank-test-v1",
+      "files": [
+        {
+          "path": ".owned-run-bank-test",
+          "bytes": 16,
+          "sha256": "7b22400bd37ed0328cea47d53e223de7db537453295b10a6a5eab9e40356bd79"
+        },
+        {
+          "path": "sound/effects/catacombs-step-cave.pcm",
+          "bytes": 70560,
+          "sha256": "a42edc06a6acff945df1debb8ada1a06248da3c941f365877fbb99ed0842564f"
+        },
+        {
+          "path": "sound/effects/catacombs-step-grass.pcm",
+          "bytes": 70560,
+          "sha256": "c76d87dcbc27e25ef8de51169e308869bd05d06d4c44646b50f37d1c86e15e1d"
+        },
+        {
+          "path": "sound/effects/catacombs-step-metal.pcm",
+          "bytes": 70560,
+          "sha256": "cd8a8cc3b3111ae9ce8dcd023b3246fcd943a8e5b7bcf6b967494890e80e9a68"
+        },
+        {
+          "path": "sound/effects/catacombs-step-sand.pcm",
+          "bytes": 70560,
+          "sha256": "61885ef0694e25ca854da24d4c1746d7a961905e4013f51496dbf3a9351be9d0"
+        },
+        {
+          "path": "sound/effects/catacombs-step-soil.pcm",
+          "bytes": 70560,
+          "sha256": "582fd76c9d0aba6a22df11ffacf1f6586871601738aa10b94e63bc73cec65bc7"
+        },
+        {
+          "path": "sound/effects/catacombs-step-stone.pcm",
+          "bytes": 70560,
+          "sha256": "1f6afb347aff38865ba6315f5b3ca89d8a560010b187e3e471070a4b6418cece"
+        },
+        {
+          "path": "sound/effects/catacombs-step-water.pcm",
+          "bytes": 70560,
+          "sha256": "a1c4591dfc0919cc27881aa7dc6d7e3ab0cbfe4056c8eba2d4fd0827060c7cc4"
+        },
+        {
+          "path": "sound/effects/catacombs-step-wood.pcm",
+          "bytes": 70560,
+          "sha256": "ae31a3f6020c85125eb9aeb30a2b7a47dfcb1071fc98dd770017c3116d2f1088"
+        }
+      ],
+      "bytes": 564496
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-bank-host-1\\run-bank",
+      "kind": "file",
+      "sha256": "937dc489796c915f1395071ced9d2fb8d0989c62957e15d71e4a0f1c981f5a2b",
+      "bytes": 8014160
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-bank-host-2\\run-bank",
+      "kind": "file",
+      "sha256": "4759974480664e1b9e9031c98a230716446014aa93be159795626402a2a8a36c",
+      "bytes": 8144136
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\step-bank-host-3\\run-bank",
+      "kind": "file",
+      "sha256": "f33586f1b93b9d667a9122052988444e7617332c3972408e4667397c1c499776",
+      "bytes": 8183976
+    }
+  ],
+  "total_bytes": 25495458
+}

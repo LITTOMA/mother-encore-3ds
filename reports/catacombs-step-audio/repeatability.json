@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "private_run": 4,
+      "sha256": "dd244192c9d266858967ea7535fcf3b142bbf4b571740de1edbf3a170c877215",
+      "rows": 32
+    },
+    {
+      "private_run": 5,
+      "sha256": "dd244192c9d266858967ea7535fcf3b142bbf4b571740de1edbf3a170c877215",
+      "rows": 32
+    }
+  ],
+  "full_documents_equal": true,
+  "scope": "Real named-SFX node/stream properties and settled states;not exact AudioServer stop timing,audibility or hardware"
+}

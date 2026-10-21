@@ -1,0 +1,7 @@
+{
+  "include/encore/field_step_contacts.hpp": "c7a13c94bd0a070aa984a0a7b8787f6683ec86bd33f1dfd26a30891cdec99658",
+  "include/encore/load_progress.hpp": "d78e2b371aeb24df8425bdafb7c91518cc0ca55169d4e438462e024f06b7ee1b",
+  "platform/ctr/audio_player.hpp": "d3b8eb40801cf62b898b8c81e14c41fb67323ef25107b1d5966512225ea970be",
+  "platform/ctr/region_channel_pool.hpp": "a473adf22ae6a3a618295936492b66b95e7c37bb8291715a4bcdecac6bd7cea1",
+  "tests/fixtures/audio_ndsp/3ds.h": "8b06bb154a2b31e7fa6d9c2afca1a2599ddec2e3b687e5e9fcf78dd135d0e73e"
+}

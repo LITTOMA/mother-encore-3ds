@@ -20,6 +20,9 @@ public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);
  bool valid()const{return bool(state_);}const GeyserPolicy&policy()const;
  bool same_owner(const GeyserTimelineData&other)const{return valid()&&state_==other.state_;}
+ // Independent checked media/graphics owners may contain the same source
+ // timeline;identity of an actor still uses its epoch/instance and owner.
+ bool same_content(const GeyserTimelineData&)const;
  const std::vector<GeyserClip>&clips()const;const std::vector<GeyserKey>&keys()const;
  const std::vector<GeyserCue>&cues()const;const std::vector<GeyserSound>&sounds()const;
  const GeyserClip*clip(uint32_t)const;const GeyserSound*sound(uint32_t)const;

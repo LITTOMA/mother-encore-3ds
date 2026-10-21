@@ -1,0 +1,24 @@
+{
+  "upstream": "7d9246600fffe518408f5830d4848635019005a3",
+  "native_runs": 2,
+  "frames_per_run": 32,
+  "positions_per_run": 3,
+  "native_result_sha256": "70abdc951031c437386def461877220221c8f95b54f450b578d9bba2681f16a0",
+  "normal_leak_checks": true,
+  "latest_graphics_checks": [
+    3473,
+    3473
+  ],
+  "old_relevant_checks": [
+    10000,
+    7208,
+    281637,
+    2938
+  ],
+  "python_tests": 11,
+  "windows_discovery_only": 342,
+  "actual_texture_bytes": 262165,
+  "metadata_bytes": 2772,
+  "retired_bytes": 44607253,
+  "scope": "Candidate source data and production renderer via explicit API doubles;no formal scene/GPU/new artifact/hardware claim"
+}

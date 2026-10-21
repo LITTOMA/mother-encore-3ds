@@ -1,0 +1,18 @@
+test_audited_sprite_source_and_license_are_required (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_audited_sprite_source_and_license_are_required) ... ok
+test_every_truncation_checksum_and_trailing_data_rejects (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_every_truncation_checksum_and_trailing_data_rejects) ... ok
+test_fixture_reproduction_ownership_and_corruption (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_fixture_reproduction_ownership_and_corruption) ... ok
+test_model_unknown_fields_paths_types_and_grid (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_model_unknown_fields_paths_types_and_grid) ... ok
+test_native_protocol_unknown_input_and_nonzero_basis_reject (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_native_protocol_unknown_input_and_nonzero_basis_reject) ... ok
+test_original_untrimmed_frame_pixels_and_independent_timeline (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_original_untrimmed_frame_pixels_and_independent_timeline) ... ok
+test_policy_nested_version_and_frame_operands (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_policy_nested_version_and_frame_operands) ... ok
+test_recipe_identity_duplicate_fields_and_dependency_change (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_recipe_identity_duplicate_fields_and_dependency_change) ... ok
+test_review_version_producer_and_duplicates_reject (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_review_version_producer_and_duplicates_reject) ... ok
+test_two_actual_original_geometry_runs_and_signed_zero (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_two_actual_original_geometry_runs_and_signed_zero) ... ok
+test_versions_capabilities_source_pin_and_directory_reject (tests.test_catacombs_geyser_graphics.GeyserGraphicsTests.test_versions_capabilities_source_pin_and_directory_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 17.547s
+
+OK
+Checked32 original Sprite frames/3positions;explicit fake image for API checks,not T3X/GPU execution
+Checked32 original Sprite frames/3positions;explicit fake image for API checks,not T3X/GPU execution

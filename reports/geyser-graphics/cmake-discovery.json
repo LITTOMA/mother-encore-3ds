@@ -1,0 +1,255 @@
+{
+  "tests": 342,
+  "configuration": "Release",
+  "scope": "Windows discovery only;not execution/SDK",
+  "tests_of_interest": [
+    {
+      "backtrace": 669,
+      "command": [
+        "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe",
+        "D:/GameDev/3DS/mother-encore-3ds/tests/prepare_geyser_timeline.py",
+        "--out",
+        "D:/GameDev/3DS/mother-encore-3ds/build/full-port/geyser-graphics-cmake-discovery-1/geyser-fixture"
+      ],
+      "config": "Release",
+      "name": "geyser_timeline_fixture",
+      "properties": [
+        {
+          "name": "FIXTURES_SETUP",
+          "value": [
+            "geyser_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    {
+      "backtrace": 671,
+      "config": "Release",
+      "name": "geyser_timeline",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "geyser_timeline_fixture"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "geyser_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    {
+      "backtrace": 673,
+      "command": [
+        "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe",
+        "D:/GameDev/3DS/mother-encore-3ds/tests/prepare_geyser_media.py",
+        "--out",
+        "D:/GameDev/3DS/mother-encore-3ds/build/full-port/geyser-graphics-cmake-discovery-1/geyser-media-fixture"
+      ],
+      "config": "Release",
+      "name": "geyser_media_fixture",
+      "properties": [
+        {
+          "name": "FIXTURES_SETUP",
+          "value": [
+            "geyser_media_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    {
+      "backtrace": 675,
+      "config": "Release",
+      "name": "geyser_idle",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "geyser_media_fixture"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "geyser_media_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    {
+      "backtrace": 677,
+      "config": "Release",
+      "name": "geyser_media",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "geyser_media_fixture"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "geyser_media_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    {
+      "backtrace": 679,
+      "config": "Release",
+      "name": "geyser_audio",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "geyser_media_fixture"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "geyser_media_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    {
+      "backtrace": 681,
+      "command": [
+        "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe",
+        "D:/GameDev/3DS/mother-encore-3ds/tests/prepare_geyser_graphics.py",
+        "--out",
+        "D:/GameDev/3DS/mother-encore-3ds/build/full-port/geyser-graphics-cmake-discovery-1/geyser-graphics-fixture"
+      ],
+      "config": "Release",
+      "name": "geyser_graphics_fixture",
+      "properties": [
+        {
+          "name": "FIXTURES_SETUP",
+          "value": [
+            "geyser_graphics_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    {
+      "backtrace": 683,
+      "config": "Release",
+      "name": "geyser_graphics",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "geyser_graphics_fixture"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "geyser_graphics_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    }
+  ]
+}

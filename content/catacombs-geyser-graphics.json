@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "kind": "encore.geyser.reviewed-graphics",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "timeline_recipe": "content/catacombs-geyser.json",
+  "timeline_sha256": "7daa8eefb8cabaadd4148f0299e977824e0480e5748a2b420b6a465153b8dc2f",
+  "output": "data/world/catacombs/geyser.encgeysergfx",
+  "texture": "graphics/world/catacombs/geyser.t3x",
+  "scope": "Original32Sprite frames,untrimmed source geometry,pixel-snap and strict production draw lifecycle candidate;formal factory/Character/physics/GPU/full scene remain unimplemented",
+  "license_review": "Pinned Team Encore LICENSE reviewed for project-related use;original notices retained;no environment fonts/binaries or unrelated art copied into releases"
+}

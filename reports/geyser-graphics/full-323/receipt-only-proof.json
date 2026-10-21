@@ -1,0 +1,9 @@
+{
+  "source": "323f5f75d1567a8e4668466b36d23abc8355b35a",
+  "official_game_sha256": "4cc750767edbd15f8f155a661416be4f5e82ac55cfbf7844b4e90402f397e1c5",
+  "current92_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "byte_identical_to_actual_two_cold90_game": false,
+  "archive_digest_from_github": "sha256:0865bd4db38d78025b7ae5e337ea95902efaf5ebb6a6e6adf7579105714fda08",
+  "full_archive_downloaded": false,
+  "scope": "Official93 small build-receipt members only;not separate93 emulator execution/GPU admission/hardware"
+}

@@ -1,0 +1,6 @@
+{
+  "sha256": "d18dd72404db5420481219585625703d15a76f4912e9b99a170e29a6d9b8645b",
+  "removed": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-graphics-host-5\\check",
+  "kept": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\geyser-graphics-host-6\\check",
+  "reason": "Same real compiled program accepts both explicit-double and actual-conversion inputs;both successful raw executions retained"
+}

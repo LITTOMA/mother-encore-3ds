@@ -1,0 +1,80 @@
+{
+  "source": "e6450ecc87592db6b1d46937795351db0e6e5019",
+  "console": {
+    "run": 39517186816,
+    "job": 118952055888,
+    "real_3dsx_cia_and_377_files": true
+  },
+  "repetitions": 2,
+  "checkpoints_each": 90,
+  "semantic_equal": true,
+  "position_differences": [],
+  "audio": "Required actual DSP consumption for declared title/battle routes;not field BGM or perceptual-audio quality",
+  "scope": "Ordinary cold newgames and declared intro skip,no save/RNG/flag/inventory/memory injection. Independent Pause/PSI reference and pinned source contracts,not a full parallel original run. Detached Catacombs/HUD services are not activated/exercised by this game route. In-progress terrain checkout code is not this artifact.",
+  "temporary_profiles_removed": true,
+  "temporary_bytes_removed": 193055950,
+  "game": {
+    "bytes": 264976804,
+    "sha256": "7ee34739a7e84fc4749cd907e31e55148b53161bae6983111d5501b5dff13833"
+  },
+  "affected_makefile_consumers": {
+    "existing_methods": 33,
+    "passed": true,
+    "time_seconds": 20.024
+  },
+  "full_host_status": "5ff4 same shared-core/generator/test source full GCC/Clang jobs still pending;original5ff4console failed and is not relabeled passed. CurrentMakefile consumers checked separately.",
+  "hardware": "Unverified",
+  "visual": "Pending actual screenshot inspection;no pixel equality claim.",
+  "evidence_sha256": {
+    "build-receipt.json": "c3aecaf92bbb010e4a1187dba87fd8258051bf270ef191827dbec202fd87c183",
+    "command.json": "71361a1e3e32c2a352e000f5450999df65b9d9545dea6129025d9e4b26fc9afe",
+    "console.log": "6ec5bcc46f69d44c4b438de57730cf55b11e4b90ee3306d3e93085a63df9af9d",
+    "make-consumers-python.log": "94757d7f20245717a5267c96e8469e4c1ac7de0adfc74baeda2d6d5cfca56e40",
+    "retained-runner.py": "ac9dad1d3c5e93f26eb9743ccd49802053c2362c32d4085a41b01d30f4e9989c",
+    "runner.log": "3a15ab2532a8b012e59813e23462f3c7cf02be399f246618e1ce79fef3fb4cf9",
+    "scenario.json": "02d282370fb6b9e36f5b2fe1121f3c2fbcc00588e5799e5e00bfbe8e4039a8fa",
+    "selected-artifact-proof.json": "00b99888297d6273b8109fefd36eea0f1216659f95ae2640be629a31f34d6b77",
+    "ordinary-input/receipt.json": "5b952c9294446c24d5d63c4f49ed3a00d4ceb1d0a715620550b1c33d21cb2a1b",
+    "ordinary-input/run-1/dad_first_finished.png": "00e6476e578663a1b2d6eebb98370a2d1742218c2e5bc623bbfbb9ff62d9a92e",
+    "ordinary-input/run-1/doll_victory.png": "3fd4d810e5fe39f91ccededf7718f6232a9a9f65784354accd5baccf30ed9c5e",
+    "ordinary-input/run-1/emulator-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ordinary-input/run-1/emulator.log": "dff5dacf4d566b75ed90e9139ea133634061d73f0916597054966d1a07f2411f",
+    "ordinary-input/run-1/first_field_walk.png": "e02cc0fd8dffa3505504d906cf4914953d8e856727667e4a571ae6eab682409f",
+    "ordinary-input/run-1/lamp_victory.png": "e4e4c08c358bb3ffc5e3540d90f6a77f52e2feeb75a338afbb71f586bc24f31b",
+    "ordinary-input/run-1/result.json": "4cd37f0dd0f0215165cf0e7ee425d6f6888eb3caee61b57cc1ad08dcf793af89",
+    "ordinary-input/run-1/return_house.png": "8c0a01df3c63484fe2e21b77c25f30a2bab9ff888fd8fdbd0760d734b9dc0f40",
+    "ordinary-input/run-1/second_field_walk.png": "181296c6889bece5d92c356eaea430978142c8d9d34c0f40b58b2fd41b151560",
+    "ordinary-input/run-2/dad_first_finished.png": "d9c1d0c0cc33f3dee2bfdabdff4b1c12f73c5a454dba2ec326a027cdc34d5221",
+    "ordinary-input/run-2/doll_victory.png": "a2f0e02c571691dc2b164b88aeea48076bd2fcbbe486cc0196a3ae63cab111f8",
+    "ordinary-input/run-2/emulator-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ordinary-input/run-2/emulator.log": "628176a79eac84374e6ff97483a9323b16de1dd93aa6c8edb180fb481e1666f8",
+    "ordinary-input/run-2/first_field_walk.png": "730bdb163e7abfae3b762a02fc097ef3a303f13908cb0c0120afae275a2faf6f",
+    "ordinary-input/run-2/lamp_victory.png": "c5d8cb3a010c7beb1dc6365988249a96f49e67438f7a2583329300ac79ff584b",
+    "ordinary-input/run-2/result.json": "e0c54e22b77c6b16da8c545a9323d6fb269668bdb5d310866357f7d20307673e",
+    "ordinary-input/run-2/return_house.png": "9189733e5ae9e3ffe0b4a69bae12ee2d798477025d3c7774e045dc2a11ebf849",
+    "ordinary-input/run-2/second_field_walk.png": "e2c54e7f3a8f38f2226b7dc3e3cdf4b444734f9f7170ca02e90e7a84ba15651b",
+    "hud-e645-retirement.json": "a3b1b4491d913eb10616e7179975fe4626c821817793a5af4fe85f4f8ccf4016"
+  },
+  "retirement": {
+    "source": "e6450ecc87592db6b1d46937795351db0e6e5019",
+    "old_game": {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key361-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+      "bytes": 264975208,
+      "sha256": "d78b4dbe78c9a424eb1b96ea829bdf382573c46b1945f88a40e7b4388d2fb83b",
+      "removed": true,
+      "owner_verified_against_original_creator": true
+    },
+    "current_game": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\hud-e645-current\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+    "other_baselines_retained": [
+      "root61ea-current",
+      "rooms-efda-current"
+    ],
+    "first_attempt": "Download blocks were removed. Superseded-game owner text differed from guessed text,so deletion was rejected. This resumed attempt checks the actual original creator script plus the official old receipt.",
+    "download_parts": {
+      "removed": true,
+      "count": 23,
+      "bytes_from_verified_range_lengths": 192937984,
+      "basis": "Sum of23 successful full8MiB range responses recorded by the strict selected downloader. First PowerShell measured sum was not persisted after its later owner guard rejection;this aggregate is derived from the original verified response lengths."
+    }
+  }
+}

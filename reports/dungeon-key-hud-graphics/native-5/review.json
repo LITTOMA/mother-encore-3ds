@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-key-hud-graphics.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original KeyCount HBox icon and ASCII numeric BottleRocket label. Borrow the existing, checked and resident SAVE font; own only the original key icon. Source default theme/container/font geometry is measured in Godot3.6.2 with the full unchanged original scene. State/tweens are separately reviewed. No formal dungeon admission, persistent counter/save or full-game claim.",
+  "sources": {
+    "Nodes/Ui/KeyCount.tscn": "5cedc188b29b381cbfbfe187ca22abc0439ffcf95519608c5d0a70e4229eb427",
+    "Scripts/UI/KeyNumber.gd": "7e022d5cb6b1ee5c709b5f413efc2237d27f5bf5e27a045fa9082b4dacfb243a",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Graphics/UI/Misc/key_icon.png": "00225160a0e692b0765f33a4a6021ed2849edd0a25566a0641ffc6d6b5072033",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1"
+  },
+  "paths": {
+    "scene": "Nodes/Ui/KeyCount.tscn",
+    "script": "Scripts/UI/KeyNumber.gd",
+    "font": "Fonts/BottleRocket.tres",
+    "icon": "Graphics/UI/Misc/key_icon.png"
+  },
+  "indicator_recipe": "content/catacombs-key-indicator.json",
+  "indicator_sha256": "0abf64757e7f14bdad93e0cffb4cf769df74881c61959d1285e0617b57015533",
+  "font_pack": "romfs/ui/opening.encsavemenu",
+  "font_pack_sha256": "b9fddce89858deb1ce2e6209c81f72b8a9c84fcfd4adf72fae2bb508cf70239c",
+  "font_recipe": "content/native-save-menu.json",
+  "font_recipe_sha256": "b218ea6d27f378d59413eebff938b8ef3cc0d9ec5e65124deb2efa210ecfa0db",
+  "engine": {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "native_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd"
+  },
+  "viewports": [
+    [
+      320,
+      180
+    ],
+    [
+      400,
+      240
+    ]
+  ],
+  "adaptation": "Keep source logical pixels and move the HUD origin by the target viewport minus the original reference viewport. This retains source right/bottom offsets, without scaling the icon or glyphs.",
+  "license_review": "Pinned LICENSE permits original game assets for game-related forks, modifications and translations only; preserve original notices and existing font notices, no MIT relicensing. Fonts are referenced from the existing SAVE asset generation, no new font binaries or atlases enter a release.",
+  "texture": "graphics/ui/dungeon/key-icon.t3x",
+  "native_layouts": {
+    "reports/dungeon-key-hud-graphics/native-5/layout.json": "398e68a85d33a2978af72f7fdbd8443d35562334705bec7457136687bf1a6b3c",
+    "reports/dungeon-key-hud-graphics/native-6/layout.json": "398e68a85d33a2978af72f7fdbd8443d35562334705bec7457136687bf1a6b3c"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "positive_command": [
+    "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "tools/dungeon_key_hud_graphics.py",
+    "--out",
+    "build/full-port/key-hud-graphics-cli-1/source.enckgx",
+    "--tex3ds",
+    "build/tooling/pinned-tex3ds/tex3ds",
+    "--tex3ds-command",
+    "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe D:/GameDev/3DS/mother-encore-3ds/build/tooling/run_tex3ds_wsl.py"
+  ],
+  "positive_exit_code": 0,
+  "same_as_tested_candidate": true,
+  "bytes": 909,
+  "sha256": "60d9f24deb0fab4969e0885d06b27f1372d787b45b75d6a9f0a6dab9011b9b71",
+  "negative": "docs/key-hud-guard-must-not-create.enckgx refused;file absent",
+  "font_atlas_files_added": 0,
+  "formal_romfs_changes": 0
+}

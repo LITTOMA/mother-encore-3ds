@@ -1,0 +1,17 @@
+{
+  "tests/dungeon_key_hud_graphics_tests.cpp": "7f1817b036b7c96c2620585484907bf9b6de80889d007d85836524b3617ef9ef",
+  "platform/ctr/dungeon_key_hud_renderer.hpp": "bffb0dc3bdc6c5d44cb5315c4c67c755bc2902e15e80ec2384714e142ca65941",
+  "include/encore/dungeon_key_hud_graphics.hpp": "a0df3b2310eeff595b846239dd1f6679d8e2dc5f0fbb3e2a43f63a39e48715f5",
+  "include/encore/dungeon_key_indicator.hpp": "906052dcfe7dca89b0f6ebafe64a6d3f6a4095841233338773092e257c12456e",
+  "include/encore/save_menu_data.hpp": "c8412d7e35ec67871dde50e697fb198b8c45bda6a6d982dde8d58d97d7157620",
+  "runtime/dungeon_key_hud_graphics.cpp": "265393e502a6094db9c1129c0f9102cfa6cbbfc5222eb793c2c3ab97b5b239b7",
+  "runtime/dungeon_key_indicator.cpp": "cdd79bfa24b3172b087d0d51d92865ee95ca5369dab2efe89aeee28cb79e5877",
+  "runtime/save_menu_data.cpp": "c96f27ae3d6f64e95ea8b96ed1e339eafcd22fd278c53e034b8ba7d50baf8cad",
+  "runtime/dungeon_keys.cpp": "c216a8603e33c492aa552597f7cea26f93caca2a03e5ca0297e3faeabc106700",
+  "runtime/content.cpp": "5a570bc7316600e9e6b7cd6d35885e3beacdb6b92f84d0205911253741f5f735",
+  "runtime/file_io.cpp": "31fb1dacf83965aad6cb00d3dbcdc147432d3948f9c6f3f85c17c41c6dcefda7",
+  "tests/dungeon_key_renderer_stubs/citro2d.h": "9ce4265ce33a16f7dea20614b8e07361ce54c9522801802de8fae94bb57302da",
+  "build/full-port/key-hud-fixture-1/source.enckgx": "7a3a627ea4b350270dcac437939065ba9d7e8d743564e80a6295389ab2d2a635",
+  "build/full-port/key-hud-graphics-candidate-1/source.enckgx": "60d9f24deb0fab4969e0885d06b27f1372d787b45b75d6a9f0a6dab9011b9b71",
+  "romfs/ui/opening.encsavemenu": "b9fddce89858deb1ce2e6209c81f72b8a9c84fcfd4adf72fae2bb508cf70239c"
+}

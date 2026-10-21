@@ -29,6 +29,7 @@ SOURCES += runtime/dungeon_key_clocks.cpp
 SOURCES += runtime/dungeon_key_media.cpp
 SOURCES += runtime/dungeon_key_contacts.cpp
 SOURCES += runtime/dungeon_key_indicator.cpp
+SOURCES += runtime/dungeon_key_hud_graphics.cpp platform/ctr/dungeon_key_hud_renderer.cpp
 SOURCES += platform/ctr/dungeon_key_audio.cpp
 SOURCES += platform/ctr/dungeon_key_renderer.cpp
 SOURCES += runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
@@ -37,6 +38,8 @@ SOURCES += runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cp
 SOURCES += runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
 SOURCES += runtime/music_player_choice.cpp runtime/music_players.cpp runtime/music_scene_graph.cpp runtime/music_programs.cpp runtime/music_library_bindings.cpp runtime/music_bank_routes.cpp platform/ctr/music_bank_transports.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
+# Both translation units include BattleRenderer and its generated GPU headers.
+BATTLE_RENDERER_OBJECTS := build/ctr/platform/ctr/main.o build/ctr/platform/ctr/dungeon_key_hud_renderer.o
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native
 # Opt-in only. Normal builds preserve the existing renderer.
@@ -61,10 +64,10 @@ gpu-background-mode-force:
 build/ctr/gpu-background-mode.stamp: gpu-background-mode-force
 	@mkdir -p $(dir $@)
 	@printf '%s\n' '$(EXPERIMENTAL_GPU_BACKGROUND):$(EXPERIMENTAL_GPU_CERTIFICATES):$(EXPERIMENTAL_GPU_TEXTURE_STRIPS)' | cmp -s - $@ || printf '%s\n' '$(EXPERIMENTAL_GPU_BACKGROUND):$(EXPERIMENTAL_GPU_CERTIFICATES):$(EXPERIMENTAL_GPU_TEXTURE_STRIPS)' > $@
-build/ctr/platform/ctr/main.o: build/ctr/gpu-background-mode.stamp
+$(BATTLE_RENDERER_OBJECTS): build/ctr/gpu-background-mode.stamp
 ifeq ($(EXPERIMENTAL_GPU_TEXTURE_STRIPS),1)
 CPPFLAGS += -DENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-build/ctr/platform/ctr/main.o: build/ctr/gpu_row_texture_shader.hpp build/ctr/gpu_mapped_texture_shader.hpp
+$(BATTLE_RENDERER_OBJECTS): build/ctr/gpu_row_texture_shader.hpp build/ctr/gpu_mapped_texture_shader.hpp
 build/ctr/gpu_mapped_texture.shbin: platform/ctr/shaders/gpu_mapped_texture.v.pica platform/ctr/shaders/gpu_mapped_texture.g.pica
 	@mkdir -p $(dir $@)
 	$(DEVKITPRO)/tools/bin/picasso -o $@ $^
@@ -82,7 +85,7 @@ CPPFLAGS += -DENCORE_EXPERIMENTAL_GPU_BACKGROUND -I$(ROOT)/build/ctr
 ifeq ($(EXPERIMENTAL_GPU_CERTIFICATES),1)
 CPPFLAGS += -DENCORE_GPU_CERTIFICATE_TABLES
 endif
-build/ctr/platform/ctr/main.o: build/ctr/gpu_region_shader.hpp
+$(BATTLE_RENDERER_OBJECTS): build/ctr/gpu_region_shader.hpp
 build/ctr/gpu_region.shbin: platform/ctr/shaders/gpu_direct_region.v.pica platform/ctr/shaders/gpu_direct_region.g.pica
 	@mkdir -p $(dir $@)
 	$(TOOLS)/picasso -o $@ $^
@@ -93,7 +96,7 @@ endif
 all: $(APP).3dsx
 stage-romfs:
 	python3 tools/stage_native_romfs.py
-build/ctr/platform/ctr/main.o: CXXFLAGS += -ffp-contract=off
+$(BATTLE_RENDERER_OBJECTS): CXXFLAGS += -ffp-contract=off
 build/ctr/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -MMD -MP -c $< -o $@

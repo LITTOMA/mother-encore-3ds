@@ -1,0 +1,43 @@
+test_missing_core_and_fixture_substitutions_reject (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_missing_core_and_fixture_substitutions_reject) ... ok
+test_playable_sources_registered_in_both_builds (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_playable_sources_registered_in_both_builds) ... ok
+test_unknown_and_duplicate_source_expressions_reject (tests.test_console_core_sources.ConsoleCoreSourcesTests.test_unknown_and_duplicate_source_expressions_reject) ... ok
+test_all_truncations_rejected (tests.test_dungeon_key_media.KeyMediaTests.test_all_truncations_rejected) ... ok
+test_binding_semantics_are_data_unknowns_rejected (tests.test_dungeon_key_media.KeyMediaTests.test_binding_semantics_are_data_unknowns_rejected) ... ok
+test_codec_and_exact_nested_clocks (tests.test_dungeon_key_media.KeyMediaTests.test_codec_and_exact_nested_clocks) ... ok
+test_corrupt_headers_directory_typed_records (tests.test_dungeon_key_media.KeyMediaTests.test_corrupt_headers_directory_typed_records) ... ok
+test_native_geometry_repetitions_and_provenance (tests.test_dungeon_key_media.KeyMediaTests.test_native_geometry_repetitions_and_provenance) ... ok
+test_native_mismatch_fails_closed (tests.test_dungeon_key_media.KeyMediaTests.test_native_mismatch_fails_closed) ... ok
+test_review_and_unreviewed_source_rejected (tests.test_dungeon_key_media.KeyMediaTests.test_review_and_unreviewed_source_rejected) ... ok
+test_shared_core_build_lists (tests.test_dungeon_key_media.KeyMediaTests.test_shared_core_build_lists) ... ok
+test_actual_native_repetitions_and_exact_provenance (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_actual_native_repetitions_and_exact_provenance) ... ok
+test_all_truncations_and_typed_binary_corruption_rejected (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_all_truncations_and_typed_binary_corruption_rejected) ... ok
+test_binary_roundtrip_independent_keys_and_source_parameters (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_binary_roundtrip_independent_keys_and_source_parameters) ... ok
+test_duplicate_nonfinite_json_and_unmapped_source_method_rejected (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_duplicate_nonfinite_json_and_unmapped_source_method_rejected) ... ok
+test_fixture_rebuild_is_identical_and_matches_current_inputs (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_fixture_rebuild_is_identical_and_matches_current_inputs) ... ok
+test_model_numeric_text_identity_and_known_signed_threshold (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_model_numeric_text_identity_and_known_signed_threshold) ... ok
+test_review_unknown_missing_changed_source_and_engine_identity_rejected (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_review_unknown_missing_changed_source_and_engine_identity_rejected) ... ok
+test_shared_core_lists_and_platform_independence (tests.test_dungeon_key_indicator.KeyIndicatorTests.test_shared_core_lists_and_platform_independence) ... ok
+test_bad_initial_coverage_and_unknown_observations_rejected (tests.test_dungeon_key_contacts.KeyContactTests.test_bad_initial_coverage_and_unknown_observations_rejected) ... ok
+test_fixture_retains_all_native_rows (tests.test_dungeon_key_contacts.KeyContactTests.test_fixture_retains_all_native_rows) ... ok
+test_independent_native_runs_and_hashes (tests.test_dungeon_key_contacts.KeyContactTests.test_independent_native_runs_and_hashes) ... ok
+test_player_exact_source_polygon_and_unknown_geometry_rejected (tests.test_dungeon_key_contacts.KeyContactTests.test_player_exact_source_polygon_and_unknown_geometry_rejected) ... ok
+test_shared_core_build_lists (tests.test_dungeon_key_contacts.KeyContactTests.test_shared_core_build_lists) ... ok
+test_source_paused_other_disabled_and_saved_outcomes (tests.test_dungeon_key_contacts.KeyContactTests.test_source_paused_other_disabled_and_saved_outcomes) ... ok
+test_all_truncations_rejected (tests.test_dungeon_key_clocks.KeyClockTests.test_all_truncations_rejected) ... ok
+test_build_lists_share_core_and_keep_3ds_out (tests.test_dungeon_key_clocks.KeyClockTests.test_build_lists_share_core_and_keep_3ds_out) ... ok
+test_frozen_native_runs_and_diagnostics (tests.test_dungeon_key_clocks.KeyClockTests.test_frozen_native_runs_and_diagnostics) ... ok
+test_headers_directories_and_typed_records_rejected (tests.test_dungeon_key_clocks.KeyClockTests.test_headers_directories_and_typed_records_rejected) ... ok
+test_review_fingerprint_and_fields_rejected (tests.test_dungeon_key_clocks.KeyClockTests.test_review_fingerprint_and_fields_rejected) ... ok
+test_source_and_binary_roundtrip (tests.test_dungeon_key_clocks.KeyClockTests.test_source_and_binary_roundtrip) ... ok
+test_unknown_semantic_values_rejected (tests.test_dungeon_key_clocks.KeyClockTests.test_unknown_semantic_values_rejected) ... ok
+test_unknown_source_track_method_root_and_node_rejected (tests.test_dungeon_key_clocks.KeyClockTests.test_unknown_source_track_method_root_and_node_rejected) ... ok
+Actual key media audio: 2 PCM assets, 22828 bytes
+Key media fixture: 6628 bytes;69 native frame rectangles,9 shapes,6 stream lengths;2 real decoded PCM,retained T3X metadata only
+Key HUD fixture: 749 bytes; 8 cases; 91 native observations;3 typed original diagnostic pairs
+Key HUD fixture: 749 bytes; 8 cases; 91 native observations;3 typed original diagnostic pairs
+Key contacts fixture:14 native cases,27 settled observations; sampled current body,explicit pause/audio services
+
+----------------------------------------------------------------------
+Ran 33 tests in 20.024s
+
+OK

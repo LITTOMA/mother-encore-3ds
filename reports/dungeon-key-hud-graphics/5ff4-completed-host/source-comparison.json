@@ -1,0 +1,15 @@
+{
+  "host_source": "5ff4f9e9f35ec64d1e5dadf637c635d8159cb189",
+  "fixed_cross_source": "e6450ecc87592db6b1d46937795351db0e6e5019",
+  "comparison": [
+    "docs/DUNGEON_KEY_HUD_GRAPHICS.md",
+    "docs/STATUS.md",
+    "platform/ctr/Makefile",
+    "reports/dungeon-key-hud-graphics/failed5ff4-console/key-hud-gpu-make-database-111.log",
+    "reports/dungeon-key-hud-graphics/failed5ff4-console/key-hud-gpu-make-database-111.stderr.log",
+    "reports/dungeon-key-hud-graphics/failed5ff4-console/key-hud-graphics-full5ff4-console-failed-job.json",
+    "reports/dungeon-key-hud-graphics/failed5ff4-console/key-hud-graphics-full5ff4-console-failed.log",
+    "reports/dungeon-key-hud-graphics/failed5ff4-console/verification.json"
+  ],
+  "meaning": "All production core/public headers, CMake host tests, resources and generators unchanged. Actual Makefile consumers fixed separately; 33 impacted existing Python tests passed. Old full run remains failure due old console job. Main merge integration adds only docs/reports."
+}

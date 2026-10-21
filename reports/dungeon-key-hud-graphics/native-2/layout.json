@@ -1,0 +1,350 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "rows": [
+    {
+      "text": "x 4",
+      "panel_position": [
+        320,
+        160
+      ],
+      "panel_size": [
+        51,
+        16
+      ],
+      "icon_position": [
+        0,
+        0
+      ],
+      "icon_size": [
+        10,
+        16
+      ],
+      "label_position": [
+        14,
+        2
+      ],
+      "label_size": [
+        19,
+        11
+      ],
+      "string_size": [
+        19,
+        11
+      ],
+      "label_minimum": [
+        19,
+        11
+      ],
+      "separation": 4,
+      "align": 1,
+      "valign": 1,
+      "font_height": 11,
+      "font_ascent": 11,
+      "text_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "shadow_color": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outline_color": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "outline_size": 1,
+      "char_spacing": -1,
+      "space_spacing": 3
+    },
+    {
+      "text": "x 0",
+      "panel_position": [
+        320,
+        160
+      ],
+      "panel_size": [
+        51,
+        16
+      ],
+      "icon_position": [
+        0,
+        0
+      ],
+      "icon_size": [
+        10,
+        16
+      ],
+      "label_position": [
+        14,
+        2
+      ],
+      "label_size": [
+        19,
+        11
+      ],
+      "string_size": [
+        19,
+        11
+      ],
+      "label_minimum": [
+        19,
+        11
+      ],
+      "separation": 4,
+      "align": 1,
+      "valign": 1,
+      "font_height": 11,
+      "font_ascent": 11,
+      "text_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "shadow_color": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outline_color": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "outline_size": 1,
+      "char_spacing": -1,
+      "space_spacing": 3
+    },
+    {
+      "text": "x 1",
+      "panel_position": [
+        320,
+        160
+      ],
+      "panel_size": [
+        51,
+        16
+      ],
+      "icon_position": [
+        0,
+        0
+      ],
+      "icon_size": [
+        10,
+        16
+      ],
+      "label_position": [
+        14,
+        2
+      ],
+      "label_size": [
+        18,
+        11
+      ],
+      "string_size": [
+        18,
+        11
+      ],
+      "label_minimum": [
+        18,
+        11
+      ],
+      "separation": 4,
+      "align": 1,
+      "valign": 1,
+      "font_height": 11,
+      "font_ascent": 11,
+      "text_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "shadow_color": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outline_color": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "outline_size": 1,
+      "char_spacing": -1,
+      "space_spacing": 3
+    },
+    {
+      "text": "x 2",
+      "panel_position": [
+        320,
+        160
+      ],
+      "panel_size": [
+        51,
+        16
+      ],
+      "icon_position": [
+        0,
+        0
+      ],
+      "icon_size": [
+        10,
+        16
+      ],
+      "label_position": [
+        14,
+        2
+      ],
+      "label_size": [
+        19,
+        11
+      ],
+      "string_size": [
+        19,
+        11
+      ],
+      "label_minimum": [
+        19,
+        11
+      ],
+      "separation": 4,
+      "align": 1,
+      "valign": 1,
+      "font_height": 11,
+      "font_ascent": 11,
+      "text_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "shadow_color": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outline_color": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "outline_size": 1,
+      "char_spacing": -1,
+      "space_spacing": 3
+    },
+    {
+      "text": "x 3",
+      "panel_position": [
+        320,
+        160
+      ],
+      "panel_size": [
+        51,
+        16
+      ],
+      "icon_position": [
+        0,
+        0
+      ],
+      "icon_size": [
+        10,
+        16
+      ],
+      "label_position": [
+        14,
+        2
+      ],
+      "label_size": [
+        19,
+        11
+      ],
+      "string_size": [
+        19,
+        11
+      ],
+      "label_minimum": [
+        19,
+        11
+      ],
+      "separation": 4,
+      "align": 1,
+      "valign": 1,
+      "font_height": 11,
+      "font_ascent": 11,
+      "text_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "shadow_color": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outline_color": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "outline_size": 1,
+      "char_spacing": -1,
+      "space_spacing": 3
+    }
+  ],
+  "advances": [
+    [
+      32,
+      5
+    ],
+    [
+      48,
+      6
+    ],
+    [
+      49,
+      5
+    ],
+    [
+      50,
+      6
+    ],
+    [
+      51,
+      6
+    ],
+    [
+      52,
+      6
+    ],
+    [
+      120,
+      7
+    ]
+  ]
+}

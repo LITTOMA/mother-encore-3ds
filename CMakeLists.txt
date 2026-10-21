@@ -10,6 +10,7 @@ option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
     runtime/dungeon_key_contacts.cpp
     runtime/dungeon_key_indicator.cpp
+    runtime/dungeon_key_hud_graphics.cpp
     runtime/dungeon_key_media.cpp
     runtime/dungeon_mechanism_bindings.cpp
     runtime/dungeon_mechanism_state.cpp
@@ -1255,6 +1256,13 @@ if(BUILD_TESTING)
     target_link_libraries(encore_dungeon_key_indicator_tests PRIVATE encore_core)
     add_test(NAME dungeon_key_indicator COMMAND encore_dungeon_key_indicator_tests ${CMAKE_BINARY_DIR}/dungeon-key-indicator-fixture/source.enckui ${CMAKE_BINARY_DIR}/dungeon-key-indicator-fixture/reference.tsv)
     set_tests_properties(dungeon_key_indicator PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED dungeon_key_indicator_source)
+    add_test(NAME dungeon_key_hud_graphics_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_dungeon_key_hud_graphics.py --out ${CMAKE_BINARY_DIR}/dungeon-key-hud-graphics-fixture)
+    set_tests_properties(dungeon_key_hud_graphics_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_SETUP dungeon_key_hud_graphics_source)
+    add_executable(encore_dungeon_key_hud_graphics_tests tests/dungeon_key_hud_graphics_tests.cpp)
+    target_include_directories(encore_dungeon_key_hud_graphics_tests BEFORE PRIVATE tests/dungeon_key_renderer_stubs platform/ctr)
+    target_link_libraries(encore_dungeon_key_hud_graphics_tests PRIVATE encore_core)
+    add_test(NAME dungeon_key_hud_graphics COMMAND encore_dungeon_key_hud_graphics_tests ${CMAKE_BINARY_DIR}/dungeon-key-hud-graphics-fixture/source.enckgx ${CMAKE_BINARY_DIR}/dungeon-key-hud-graphics-fixture ${CMAKE_BINARY_DIR}/dungeon-key-hud-graphics-fixture/scratch ${CMAKE_BINARY_DIR}/dungeon-key-hud-graphics-fixture/layout.tsv ${CMAKE_SOURCE_DIR}/romfs/ui/opening.encsavemenu)
+    set_tests_properties(dungeon_key_hud_graphics PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_REQUIRED dungeon_key_hud_graphics_source)
     add_test(NAME dungeon_switches_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_dungeon_switches.py --out ${CMAKE_BINARY_DIR}/dungeon-switches-fixture)
     set_tests_properties(dungeon_switches_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60 FIXTURES_SETUP dungeon_switch_metadata)
     add_executable(encore_dungeon_switches_tests tests/dungeon_switches_tests.cpp)

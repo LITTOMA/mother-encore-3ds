@@ -52,7 +52,7 @@ bool SaveMenuData::load(const uint8_t*p,size_t n,std::string&e){
  for(const auto&s:d.texts_)if(s.empty()||!d.supports_text(s,true))return fail("Save menu unsupported source text");
  if(!d.supports_text("0123456789",true))return fail("Save menu missing numeric glyphs");
  auto tf=d.layout(SaveMenuLayout::TimeFormat);for(float v:{tf.x,tf.y,tf.w,tf.h})if(v<=0||v!=std::floor(v))return fail("Save menu time format rejected");if(tf.w>32||tf.h>32)return fail("Save menu time digit bound rejected");
- d.valid_=true;*this=std::move(d);e.clear();return true;
+ d.blob_bytes_=uint32_t(n);d.blob_crc_=crc(p,n);d.valid_=true;*this=std::move(d);e.clear();return true;
 }
 bool SaveMenuData::load_file(const char*path,std::string&e){if(!path){e="Missing save menu path";return false;}FILE*f=std::fopen(path,"rb");if(!f){e="Could not open save menu pack";return false;}std::vector<uint8_t>b;uint8_t block[4096];while(true){size_t n=std::fread(block,1,sizeof(block),f);if(b.size()+n>max_pack_bytes){std::fclose(f);e="Save menu file exceeds bound";return false;}b.insert(b.end(),block,block+n);if(n<sizeof(block)){bool error=std::ferror(f);std::fclose(f);if(error){e="Save menu read error";return false;}break;}}return load(b.data(),b.size(),e);}
 }

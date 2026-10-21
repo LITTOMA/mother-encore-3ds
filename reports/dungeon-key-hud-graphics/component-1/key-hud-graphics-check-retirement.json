@@ -1,0 +1,23 @@
+{
+  "kind": "superseded-owned-host-check-retirement",
+  "bytes": 17727864.0,
+  "executables": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-hud-graphics-host-2\\check",
+      "bytes": 8817064,
+      "sha256_observed_before_retirement": "95137f349f83926f0cc7d581d5aa7461f50222e7713f3cf632b8251373130609",
+      "replacement_sha256": "33df7d80b67dba4524e410e0ce962a201ef55fb9081be248a39f65431b227687",
+      "execution_completed": true,
+      "removed": true
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-hud-graphics-host-3\\check",
+      "bytes": 8910800,
+      "sha256_observed_before_retirement": "5cc24d6c808cf4f1941375d7f9278a8324a0a5fad38b5a5acb5e0d1e7197c3f0",
+      "replacement_sha256": "33df7d80b67dba4524e410e0ce962a201ef55fb9081be248a39f65431b227687",
+      "execution_completed": true,
+      "removed": true
+    }
+  ],
+  "retained": "Host4 checked replacement executable;all old compiler/sanitizer logs,input fingerprints and command scripts."
+}

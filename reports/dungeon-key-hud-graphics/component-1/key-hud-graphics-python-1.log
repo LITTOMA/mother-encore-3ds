@@ -1,0 +1,13 @@
+test_bounds_and_nonfinite (tests.test_dungeon_key_hud_graphics.KeyHudGraphicsTests.test_bounds_and_nonfinite) ... ok
+test_model_ownership_and_types (tests.test_dungeon_key_hud_graphics.KeyHudGraphicsTests.test_model_ownership_and_types) ... ok
+test_nested_unknown_version (tests.test_dungeon_key_hud_graphics.KeyHudGraphicsTests.test_nested_unknown_version) ... ok
+test_review_fail_closed (tests.test_dungeon_key_hud_graphics.KeyHudGraphicsTests.test_review_fail_closed) ... ok
+test_source_font_and_layout (tests.test_dungeon_key_hud_graphics.KeyHudGraphicsTests.test_source_font_and_layout) ... ok
+test_truncation_and_crc (tests.test_dungeon_key_hud_graphics.KeyHudGraphicsTests.test_truncation_and_crc) ... ok
+test_unknown_header_paths (tests.test_dungeon_key_hud_graphics.KeyHudGraphicsTests.test_unknown_header_paths) ... ok
+test_unsafe_and_unowned_path (tests.test_dungeon_key_hud_graphics.KeyHudGraphicsTests.test_unsafe_and_unowned_path) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.347s
+
+OK

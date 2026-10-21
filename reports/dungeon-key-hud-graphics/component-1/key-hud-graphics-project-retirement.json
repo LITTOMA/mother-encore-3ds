@@ -1,0 +1,62 @@
+{
+  "kind": "owned-native-reference-project-retirement",
+  "bytes": 22921785,
+  "projects": [
+    {
+      "project": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-hud-layout-native-1\\project",
+      "bytes": 3820766.0,
+      "ownership_marker_verified": true,
+      "source_hashes_verified": true,
+      "reparse_points": false,
+      "active_reference_process": false,
+      "removed": true
+    },
+    {
+      "project": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-hud-layout-native-2\\project",
+      "bytes": 3820947.0,
+      "ownership_marker_verified": true,
+      "source_hashes_verified": true,
+      "reparse_points": false,
+      "active_reference_process": false,
+      "removed": true
+    },
+    {
+      "project": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-hud-layout-native-3\\project",
+      "bytes": 3820018.0,
+      "ownership_marker_verified": true,
+      "source_hashes_verified": true,
+      "reparse_points": false,
+      "active_reference_process": false,
+      "removed": true
+    },
+    {
+      "project": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-hud-layout-native-4\\project",
+      "bytes": 3820018.0,
+      "ownership_marker_verified": true,
+      "source_hashes_verified": true,
+      "reparse_points": false,
+      "active_reference_process": false,
+      "removed": true
+    },
+    {
+      "project": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-hud-layout-native-5\\project",
+      "bytes": 3820018.0,
+      "ownership_marker_verified": true,
+      "source_hashes_verified": true,
+      "reparse_points": false,
+      "active_reference_process": false,
+      "removed": true
+    },
+    {
+      "project": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\key-hud-layout-native-6\\project",
+      "bytes": 3820018.0,
+      "ownership_marker_verified": true,
+      "source_hashes_verified": true,
+      "reparse_points": false,
+      "active_reference_process": false,
+      "removed": true
+    }
+  ],
+  "retained": "Original logs, observations, reviewed inputs and small adapters; source fonts/icon remain only in pinned upstream and existing assets.",
+  "aggregate_correction": "Initial PowerShell Measure-Object did not read OrderedDictionary keys and emitted null;this sum uses the six retained, independently measured pre-removal byte counts. Original receipt retained."
+}

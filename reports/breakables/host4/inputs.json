@@ -1,0 +1,10 @@
+{
+  "runtime/breakables.cpp": "a6593efa155bce08f5e2f650e888aed876790aa1b1c7ebcd1f9abf4bdde4a23a",
+  "runtime/breakables_data.cpp": "70afbb3f17705e4ebfb26b7d94866614f67e86b18ac4a24b8590154be35915c6",
+  "include/encore/breakables.hpp": "6722227b368ec2d1a30a1ac2a801c73f3994ff137d943b480421c28beda4f99a",
+  "tests/breakables_tests.cpp": "971533cde37fce30c627494da33f766e94bd9d61bbadd40dd7d5381c0812eacc",
+  "include/encore/prop_clips.hpp": "26c3b3d4190f61ce78ffa8156c131a0a3b434f33a77949099001bb566e8f2985",
+  "runtime/prop_clips.cpp": "75255e0a6b779918737a700a3a0fee0c0395fa3961cdbf0370988f6cf2803495",
+  "build/full-port/breakable-fixture-development-1/breakables.encbrk": "8c35f684b34ee452eb746afb8669627d445e7faee73090b5235f6746971da588",
+  "build/full-port/breakable-fixture-development-1/native.tsv": "6840b812e5ab4ae7e2be2f917c632dfa90efec89475c8378a2ac3690a1dc5747"
+}

@@ -1,0 +1,13 @@
+config_version=4
+_global_script_classes=[{"base": "Sprite", "class": "FlaggableObject", "language": "GDScript", "path": "res://Scripts/Main/FlaggableObject.gd"}, {"base": "Node2D", "class": "CoinSpawner", "language": "GDScript", "path": "res://factory.gd"}]
+_global_script_class_icons={"FlaggableObject":"","CoinSpawner":""}
+[application]
+config/name="Breakable script providers"
+run/main_scene="res://main.tscn"
+[autoload]
+global="*res://global.gd"
+globaldata="*res://flags.gd"
+[logging]
+file_logging/enable_logging=false
+[rendering]
+quality/driver/driver_name="GLES2"

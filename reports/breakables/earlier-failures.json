@@ -1,0 +1,6 @@
+{
+  "host2": "Actual ASan heap-use-after-free at tests/breakables_tests.cpp:47:whole prepared Services replacement invalidated retained content/shape references. Fixed by staged selective commit preserving map nodes,shape handles and unrelated storage;new nodes transferred after preflight. No source expectation changes.",
+  "host1_host3_formatter": "C++ exited0,with35605/36103 checks,then private Python console display raised UnicodeDecodeError on WSL UTF-16 startup notice. Actual raw output and C++completion retained;host4 formatter decodes only display with replacement while preserving raw bytes.",
+  "native1_native2": "Original first private editor/runtime attempts rejected observer indentation/class registration and unused signal diagnostics;not accepted passes. Corrected generated provider configuration,kept original scripts/prefabs unchanged. Actual9/10 clean runs retained separately.",
+  "python_initial": "Initial seven-suite run rejected malformed model reference via KeyError rather than ValueError. Added explicit path/reference validation;later nine-suite run passed. No result changes."
+}

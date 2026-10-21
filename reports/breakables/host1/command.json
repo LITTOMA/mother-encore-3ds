@@ -1,0 +1,1 @@
+["wsl.exe", "-d", "Ubuntu-20.04", "--", "bash", "/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/breakable-host-1/run.sh"]

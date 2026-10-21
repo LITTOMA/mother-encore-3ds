@@ -1,0 +1,55 @@
+#include "encore/breakables.hpp"
+#include "encore/content.hpp"
+#include "encore/crc32.hpp"
+#include <cmath>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
+#include <limits>
+#include <sstream>
+using namespace encore::upstream;
+namespace {
+size_t checks=0;std::string error,label;
+#define CHECK(x) do{++checks;if(!(x)){std::cerr<<"Breakables "<<__LINE__<<" "<<label<<": "<<#x<<" ("<<error<<")\n";std::exit(1);}}while(0)
+template<class T>T read(std::istream&in){T v{};in>>v;CHECK(bool(in));return v;}
+uint32_t bits(float f){uint32_t v;std::memcpy(&v,&f,4);return v;}
+uint32_t word(const std::vector<uint8_t>&b,size_t at){return uint32_t(b[at])|uint32_t(b[at+1])<<8|uint32_t(b[at+2])<<16|uint32_t(b[at+3])<<24;}
+void put(std::vector<uint8_t>&b,size_t at,uint32_t v){for(size_t n=0;n<4;++n)b[at+n]=uint8_t(v>>(n*8));}
+void seal(std::vector<uint8_t>&b){put(b,16,encore::crc32(b.data()+32,b.size()-32));}
+bool flag(const BreakableServices&s,const BreakableOwner&o){const auto&m=o.object_flag?s.object_flags:s.story_flags;auto p=m.find(o.flag);return p!=m.end()&&p->second;}
+BreakableServices services(const BreakablesData&d){BreakableServices s;s.epoch=71;s.scene=d.scene();s.sounds.insert(d.policy().sound);for(const auto&o:d.owners()){s.parents.insert(o.parent);s.parents.insert(o.drop_parent);if(!o.new_parent.empty())s.parents.insert(o.new_parent);if(!o.spawner.empty())s.factories.insert(o.spawner);}uint64_t next=1;for(const auto&b:d.contents()){auto&c=s.contents[b.path];c.present=true;c.parent=b.parent;c.position={19,23};c.start={7,11};c.visible=true;c.physics=true;c.has_start=c.has_changing=c.has_interact=true;c.shapes={{next++,false},{next++,false}};}return s;}
+void point(std::istream&in,BreakablePoint p){const auto x=read<uint32_t>(in),y=read<uint32_t>(in);if(bits(p.x)!=x||bits(p.y)!=y)std::cerr<<"Actual point bits "<<bits(p.x)<<' '<<bits(p.y)<<" expected "<<x<<' '<<y<<'\n';CHECK(bits(p.x)==x&&bits(p.y)==y);}
+void observe(std::istream&in,const BreakablesData&data,const BreakableOwner&owner,const BreakableActor&a,const BreakableServices&s){
+ const auto frame=read<int>(in);label+=" frame"+std::to_string(frame);CHECK(a.root_visible()==bool(read<unsigned>(in)));CHECK(a.parent()==read<std::string>(in));point(in,a.position());CHECK(a.animation().pose().frame==read<uint32_t>(in));CHECK(a.animation().pose().visible==bool(read<unsigned>(in)));const auto assigned=read<unsigned>(in);CHECK(bool(a.animation().assigned_clip()!=UINT32_MAX)==bool(assigned));CHECK(a.animation().playing()==bool(read<unsigned>(in)));const auto time=read<uint32_t>(in);CHECK(assigned?bits(float(a.animation().position()))==time:time==UINT32_MAX);CHECK(a.body_disabled()==bool(read<unsigned>(in)));CHECK(a.body_layer()==read<uint32_t>(in));CHECK(a.hit_layer()==read<uint32_t>(in));CHECK(a.hit_mask()==read<uint32_t>(in));CHECK(flag(s,owner)==bool(read<unsigned>(in)));CHECK(s.paused==bool(read<unsigned>(in)));const auto has=read<unsigned>(in);CHECK(has==unsigned(owner.content!=UINT32_MAX));
+ if(has){const auto&c=s.contents.at(data.contents()[owner.content].path);CHECK(c.present);CHECK(c.parent==read<std::string>(in));point(in,c.position);CHECK(c.visible==bool(read<unsigned>(in)));CHECK(c.physics==bool(read<unsigned>(in)));CHECK(c.changing==bool(read<unsigned>(in)));point(in,c.start);CHECK(c.interactions==read<uint32_t>(in));for(const auto&shape:c.shapes)CHECK(shape.second==bool(read<unsigned>(in)));}
+ for(auto kind:{BreakableRequestKind::Rumble,BreakableRequestKind::Audio,BreakableRequestKind::Coins}){std::vector<BreakableRequest>actual;for(const auto&r:s.requests)if(r.kind==kind)actual.push_back(r);const auto count=read<size_t>(in);CHECK(actual.size()==count);for(const auto&r:actual){CHECK(r.owner==owner.id&&r.epoch==s.epoch);CHECK(r.frame==read<uint64_t>(in));if(kind==BreakableRequestKind::Rumble){CHECK(r.identity==read<uint32_t>(in));for(unsigned n=0;n<3;++n)CHECK(r.value[n]==read<double>(in));}else{CHECK(r.value[0]==read<double>(in));if(kind==BreakableRequestKind::Audio)CHECK(r.identity==data.policy().sound);}}}
+ if(frame==45)CHECK(a.pending()==bool(read<unsigned>(in)));
+}
+void native(const char*path,const BreakablesData&d){std::ifstream in(path);CHECK(bool(in));const auto cases=read<unsigned>(in);CHECK(cases>0&&cases<=128);for(unsigned n=0;n<cases;++n){label="case"+std::to_string(n);const auto id=read<uint32_t>(in);const auto distance=read<float>(in);const auto initial_flag=read<unsigned>(in);const auto*o=d.owner(id);CHECK(o);auto s=services(d);if(initial_flag)(o->object_flag?s.object_flags:s.story_flags)[o->flag]=true;BreakableActor a;CHECK(a.prepare(d,id,s.epoch,s,error));observe(in,d,*o,a,s);CHECK(a.hit(s.epoch,{o->position.x+distance,o->position.y},s,error));observe(in,d,*o,a,s);for(unsigned frame=1;frame<=45;++frame){label="case"+std::to_string(n);CHECK(a.advance_idle(s.epoch,1./60,s,error));observe(in,d,*o,a,s);}}std::string trailing;CHECK(!(in>>trailing));}
+void rejected(std::vector<uint8_t>b,const BreakablesData&valid){BreakablesData d=valid;CHECK(!d.load(b.data(),b.size(),error));CHECK(d.valid()&&d.owners().size()==valid.owners().size()&&d.policy().sound==valid.policy().sound);}
+void negatives(const std::vector<uint8_t>&original,const BreakablesData&d){
+ for(size_t n=0;n<original.size();++n){BreakablesData trial;CHECK(!trial.load(original.data(),n,error)&&!trial.valid());}
+ auto change=[&](size_t at,uint32_t value){auto b=original;put(b,at,value);seal(b);rejected(std::move(b),d);};
+ for(auto at:{0,8,12,20,24,28,32,52,56,60})change(at,UINT32_MAX);
+ for(unsigned i=0;i<7;++i)for(unsigned field=0;field<4;++field)change(64+16*i+4*field,UINT32_MAX);
+ const auto policy=word(original,68),family=word(original,84),owner=word(original,100),content=word(original,116),audio=word(original,132),nested=word(original,148),pool=word(original,164);
+ for(auto at:{policy+4,policy+72,policy+76,policy+80,policy+84,policy+88,policy+92,policy+96,policy+100,family,family+4,family+8,family+12,family+16,family+20,family+24,family+28,family+32,family+36,family+40,family+44,family+48,family+52,family+56,family+60,family+64,family+68,family+72,family+76,family+80,family+96,family+108,family+112,family+124,family+128,family+132,owner,owner+4,owner+8,owner+12,owner+16,owner+20,owner+24,owner+28,owner+32,owner+36,owner+40,owner+44,owner+48,owner+52,owner+56,owner+60,owner+64,owner+68,owner+72,owner+76,owner+80,content,content+20,audio,audio+4,audio+8,audio+12,audio+16,nested,pool})change(at,UINT32_MAX);
+ change(owner+88,word(original,owner));change(family+136,word(original,family));change(owner+88+8,word(original,owner+8));
+ auto b=original;b.back()=1;seal(b);rejected(b,d);b=original;b.back()^=1;rejected(b,d);b=original;b.push_back(0);rejected(b,d);
+ BreakableActor a;auto s=services(d);const auto&o=d.owners().front();CHECK(!a.prepare(d,o.id,0,s,error)&&!a.valid());CHECK(!a.prepare(d,UINT32_MAX,s.epoch,s,error));CHECK(a.prepare(d,o.id,s.epoch,s,error));CHECK(!a.hit(s.epoch+1,o.position,s,error)&&a.frame()==0);CHECK(!a.hit(s.epoch,{std::numeric_limits<float>::quiet_NaN(),0},s,error)&&a.frame()==0);CHECK(!a.advance_idle(s.epoch,-1,s,error)&&a.frame()==0);CHECK(!a.advance_idle(s.epoch,61,s,error)&&a.frame()==0);
+ CHECK(a.hit(s.epoch,o.position,s,error));CHECK(!a.hit(s.epoch,o.position,s,error));CHECK(a.advance_idle(s.epoch,0,s,error)&&a.frame()==1);CHECK(a.advance_idle(s.epoch,1./60,s,error));const auto frame=a.frame();const auto request_count=s.requests.size();s.requests.resize(4096);CHECK(!a.advance_idle(s.epoch,1./60,s,error)&&a.frame()==frame&&s.requests.size()==4096);s.requests.resize(request_count);CHECK(a.advance_idle(s.epoch,1./60,s,error));
+ // Every compiled owner can run through the same consumer. Prepared services
+ // remain explicit; this is no claim about their real AI/factory consumers.
+ for(const auto&owner_row:d.owners()){auto w=services(d);std::map<std::string,const BreakableContentState*>handles;std::map<uint64_t,const bool*>shapes;for(const auto&c:w.contents){handles[c.first]=&c.second;for(const auto&shape:c.second.shapes)shapes[shape.first]=&shape.second;}BreakableActor actor;CHECK(actor.prepare(d,owner_row.id,w.epoch,w,error));CHECK(actor.hit(w.epoch,owner_row.position,w,error));for(unsigned f=0;f<60;++f)CHECK(actor.advance_idle(w.epoch,1./60,w,error));CHECK(!actor.pending());CHECK(flag(w,owner_row)==(!owner_row.spawner.empty()&&owner_row.coins>0));CHECK(actor.leave(w.epoch,true,w,error));for(const auto&c:w.contents){CHECK(handles.at(c.first)==&c.second);for(const auto&shape:c.second.shapes)CHECK(shapes.at(shape.first)==&shape.second);}}
+ for(const auto&owner_row:d.owners()){
+  for(unsigned missing=0;missing<3;++missing){auto w=services(d);if(missing==0)w.parents.erase(owner_row.parent);if(missing==1)w.sounds.clear();if(missing==2){if(owner_row.spawner.empty())continue;w.factories.erase(owner_row.spawner);}BreakableActor actor;CHECK(!actor.prepare(d,owner_row.id,w.epoch,w,error)&&!actor.valid());CHECK(w.requests.empty());}
+  if(owner_row.drop_hidden&&!owner_row.disappear.empty()&&owner_row.content!=UINT32_MAX){auto w=services(d);w.story_flags[owner_row.disappear]=true;auto&c=w.contents.at(d.contents()[owner_row.content].path);BreakableActor actor;CHECK(actor.prepare(d,owner_row.id,w.epoch,w,error)&&actor.removed()&&!actor.root_visible());CHECK(c.position.x==owner_row.position.x&&c.position.y==owner_row.position.y);CHECK(!actor.hit(w.epoch,owner_row.position,w,error));}
+ }
+ if(o.content!=UINT32_MAX){const auto target=d.contents()[o.content].path;auto w=services(d);BreakableActor actor;CHECK(actor.prepare(d,o.id,w.epoch,w,error));CHECK(actor.hit(w.epoch,o.position,w,error));CHECK(actor.advance_idle(w.epoch,1./60,w,error));const auto frame=actor.frame();const auto before=w.contents.at(target).position;w.contents.at(target).shapes.clear();CHECK(!actor.advance_idle(w.epoch,1./60,w,error)&&actor.frame()==frame);CHECK(w.contents.at(target).position.x==before.x&&w.contents.at(target).position.y==before.y);
+  w=services(d);w.contents.at(target).parent="prepared-foreign-parent";CHECK(actor.prepare(d,o.id,w.epoch,w,error));CHECK(actor.hit(w.epoch,o.position,w,error));CHECK(actor.advance_idle(w.epoch,1./60,w,error));CHECK(w.contents.at(target).parent=="prepared-foreign-parent"&&!w.contents.at(target).changing);
+  w=services(d);auto&optional=w.contents.at(target);optional.has_start=optional.has_changing=optional.has_interact=false;CHECK(actor.prepare(d,o.id,w.epoch,w,error));CHECK(actor.hit(w.epoch,o.position,w,error));for(unsigned f=0;f<60;++f)CHECK(actor.advance_idle(w.epoch,1./60,w,error));CHECK(optional.start.x==7&&optional.start.y==11&&!optional.changing&&optional.interactions==0);
+ }
+}
+}
+int main(int argc,char**argv){CHECK(argc==3);std::vector<uint8_t>b;CHECK(encore::read_file(argv[1],b,256*1024,error));BreakablesData data;CHECK(data.load(b.data(),b.size(),error));CHECK(data.families().size()==2&&data.owners().size()==65&&data.contents().size()==16);native(argv[2],data);negatives(b,data);std::cout<<checks<<" Breakable checks passed\n";}

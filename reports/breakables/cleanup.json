@@ -1,0 +1,58 @@
+{
+  "removed": [
+    {
+      "path": "build/full-port/breakable-native-1/project",
+      "bytes": 94963.0
+    },
+    {
+      "path": "build/full-port/breakable-native-2/project",
+      "bytes": 99576.0
+    },
+    {
+      "path": "build/full-port/breakable-native-3/project",
+      "bytes": 98747.0
+    },
+    {
+      "path": "build/full-port/breakable-native-4/project",
+      "bytes": 98747.0
+    },
+    {
+      "path": "build/full-port/breakable-native-5/project",
+      "bytes": 98780.0
+    },
+    {
+      "path": "build/full-port/breakable-native-6/project",
+      "bytes": 98780.0
+    },
+    {
+      "path": "build/full-port/breakable-native-7/project",
+      "bytes": 98917.0
+    },
+    {
+      "path": "build/full-port/breakable-native-8/project",
+      "bytes": 98917.0
+    },
+    {
+      "path": "build/full-port/breakable-native-9/project",
+      "bytes": 98917.0
+    },
+    {
+      "path": "build/full-port/breakable-native-10/project",
+      "bytes": 98917.0
+    },
+    {
+      "path": "build/full-port/breakable-host-1/check",
+      "bytes": 11164648
+    },
+    {
+      "path": "build/full-port/breakable-host-2/check",
+      "bytes": 12401000
+    },
+    {
+      "path": "build/full-port/breakable-host-3/check",
+      "bytes": 12319368
+    }
+  ],
+  "bytes": 36870277.0,
+  "scope": "Only exact owned Breakable native copies1-10 and old host binaries1-3;all observers,raw results/logs/current executable/core archive and original full-project cache retained"
+}

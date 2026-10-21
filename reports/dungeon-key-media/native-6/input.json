@@ -1,0 +1,208 @@
+{
+  "root_position": [
+    0.0,
+    0.0
+  ],
+  "parents": [
+    {
+      "path": "Bottom1",
+      "position": [
+        0.0,
+        0.0
+      ],
+      "cell_size": [
+        16.0,
+        16.0
+      ],
+      "sort": false,
+      "visible": true,
+      "z": 0,
+      "z_relative": true
+    },
+    {
+      "path": "Bottom2",
+      "position": [
+        0.0,
+        0.0
+      ],
+      "cell_size": [
+        16.0,
+        16.0
+      ],
+      "sort": false,
+      "visible": true,
+      "z": 0,
+      "z_relative": true
+    }
+  ],
+  "owners": [
+    {
+      "id": 3211839847,
+      "parent": "Bottom1",
+      "name": "Locked Door3",
+      "position": [
+        -1480.0,
+        -808.0
+      ],
+      "scene": "Nodes/Overworld/Objects/Locked Door Catacombs.tscn",
+      "child": true,
+      "sprites": [
+        {
+          "profile": 2,
+          "path": "Sprite"
+        },
+        {
+          "profile": 3,
+          "path": "Lock/Sprite"
+        }
+      ],
+      "shapes": [
+        {
+          "path": "StaticBody2D/CollisionShape2D",
+          "role": 2
+        },
+        {
+          "path": "interact/CollisionShape2D2",
+          "role": 3
+        }
+      ],
+      "sound_path": "Lock/AudioStreamPlayer"
+    },
+    {
+      "id": 1367255115,
+      "parent": "Bottom1",
+      "name": "Locked Door1",
+      "position": [
+        -2024.0,
+        -280.0
+      ],
+      "scene": "Nodes/Overworld/Objects/Locked Door Catacombs.tscn",
+      "child": true,
+      "sprites": [
+        {
+          "profile": 2,
+          "path": "Sprite"
+        },
+        {
+          "profile": 3,
+          "path": "Lock/Sprite"
+        }
+      ],
+      "shapes": [
+        {
+          "path": "StaticBody2D/CollisionShape2D",
+          "role": 2
+        },
+        {
+          "path": "interact/CollisionShape2D2",
+          "role": 3
+        }
+      ],
+      "sound_path": "Lock/AudioStreamPlayer"
+    },
+    {
+      "id": 3363305969,
+      "parent": "Bottom1",
+      "name": "Locked Door2",
+      "position": [
+        -2024.0,
+        -552.0
+      ],
+      "scene": "Nodes/Overworld/Objects/Locked Door Catacombs.tscn",
+      "child": true,
+      "sprites": [
+        {
+          "profile": 2,
+          "path": "Sprite"
+        },
+        {
+          "profile": 3,
+          "path": "Lock/Sprite"
+        }
+      ],
+      "shapes": [
+        {
+          "path": "StaticBody2D/CollisionShape2D",
+          "role": 2
+        },
+        {
+          "path": "interact/CollisionShape2D2",
+          "role": 3
+        }
+      ],
+      "sound_path": "Lock/AudioStreamPlayer"
+    },
+    {
+      "id": 2496629665,
+      "parent": "Bottom2",
+      "name": "Key1",
+      "position": [
+        -1472.0,
+        304.0
+      ],
+      "scene": "Nodes/Overworld/Objects/Small Key.tscn",
+      "child": false,
+      "sprites": [
+        {
+          "profile": 1,
+          "path": "Sprite"
+        }
+      ],
+      "shapes": [
+        {
+          "path": "Area2D/CollisionShape2D",
+          "role": 1
+        }
+      ],
+      "sound_path": "AudioStreamPlayer"
+    },
+    {
+      "id": 231135771,
+      "parent": "Bottom2",
+      "name": "Key2",
+      "position": [
+        -1568.0,
+        304.0
+      ],
+      "scene": "Nodes/Overworld/Objects/Small Key.tscn",
+      "child": false,
+      "sprites": [
+        {
+          "profile": 1,
+          "path": "Sprite"
+        }
+      ],
+      "shapes": [
+        {
+          "path": "Area2D/CollisionShape2D",
+          "role": 1
+        }
+      ],
+      "sound_path": "AudioStreamPlayer"
+    },
+    {
+      "id": 2059528845,
+      "parent": "Bottom2",
+      "name": "Key3",
+      "position": [
+        -1520.0,
+        304.0
+      ],
+      "scene": "Nodes/Overworld/Objects/Small Key.tscn",
+      "child": false,
+      "sprites": [
+        {
+          "profile": 1,
+          "path": "Sprite"
+        }
+      ],
+      "shapes": [
+        {
+          "path": "Area2D/CollisionShape2D",
+          "role": 1
+        }
+      ],
+      "sound_path": "AudioStreamPlayer"
+    }
+  ]
+}

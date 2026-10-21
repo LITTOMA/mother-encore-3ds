@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_key_media_reference.py", line 130, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--godot',type=Path,required=True);a=p.parse_args();run(a.out,a.godot)
+                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\run_dungeon_key_media_reference.py", line 127, in run
+    before=Document(name,source.text(name));after=Document(name,(project/name).read_text('utf8'));d.require([(s.kind,s.attrs,s.props)for s in before.sections]==[(s.kind,s.attrs,s.props)for s in after.sections],'Key geometry import settings changed')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\godot_text.py", line 357, in __init__
+    raise GodotTextError(f'{source}: {error}') from None
+tools.godot_text.GodotTextError: Graphics/Objects/Common/Small Key.png.import: Missing gd_scene/gd_resource header

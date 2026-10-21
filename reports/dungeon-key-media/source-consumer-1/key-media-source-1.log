@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_key_media.py", line 154, in <module>
+    model,_,proof=source_model(a.recipe);a.out.mkdir(parents=True,exist_ok=True);(a.out/'source.json').write_text(json.dumps(dict(model={k:v for k,v in model.items()if k!='clocks'},source=proof),indent=2)+'\n',encoding='utf8');print('Key media source:',len(model['owners']),'owners,',len(model['shapes']),'rectangles')
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dungeon_key_media.py", line 72, in source_model
+    script=source.text(by[profile['id']]['script']);match=re.search(r'export var player_turn := (\{.*?\})',script,re.S);require(match is not None,'Key media player turn source');turn=parse_godot('[gd_resource format=2]\n[resource]\nvalue='+match[1])[1].props['value'];fields(turn,'x y');bits|=int(flag(turn['y']))<<3|int(flag(turn['x']))<<4
+                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\godot_text.py", line 320, in parse
+    current.props[key] = reader.value()
+                         ^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\godot_text.py", line 182, in value
+    key = self.value()
+          ^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\godot_text.py", line 201, in value
+    self.fail('Unreadable value')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\godot_text.py", line 83, in fail
+    raise GodotTextError(f'{message} at line {line}')
+tools.godot_text.GodotTextError: Unreadable value at line 4

@@ -1,0 +1,54 @@
+{
+  "parent": "b954fd7eb83c8b27d42955bd10b43f05f56cf557",
+  "scope": "Key media/source geometry candidate only; not live map/GPU/NDSP/audibility/hardware",
+  "native": {
+    "runs": [
+      6,
+      7
+    ],
+    "each": {
+      "sprites": 69,
+      "shapes": 9,
+      "sounds": 6
+    },
+    "identical": true,
+    "geometry_sha256": "a5fb6e97cb354a5bbd53f31760f1b9780a55eb1fa013c12b5a3eadf8f167389b"
+  },
+  "host": {
+    "kind": "direct GCC9.4 ASAN+UBSAN with normal leaks",
+    "checks": 18636,
+    "actual_t3x": 3,
+    "actual_pcm": 2,
+    "proof_sha256": "ee814b260e2fc88f0328930d659508a9a7dbcfe37b2d1bdd03bf9899e6b0c15d"
+  },
+  "python": {
+    "methods": 8,
+    "passed": true,
+    "log_sha256": "2a59784655570e8dda59fd83a9101b51494861f0a600c675967861e27717576f"
+  },
+  "windows_metadata_only": {
+    "ctest": 307,
+    "python": 1391,
+    "aggregate": 1008,
+    "dedicated": 383
+  },
+  "sources": {
+    "content/catacombs-key-media.json": "5aa6e6e648fb25ef4e275ef8a7327b014bbce89e02f7d2cc1d4937fc81974d21",
+    "tools/dungeon_key_media.py": "6cc934108f859d516dbfe9088cc033a63b0b152942aa78679c7309592c58e983",
+    "tools/run_dungeon_key_media_reference.py": "3d71398480adc51b1e2d94015326128e39d574d12a89cf436ea589996ea8c164",
+    "include/encore/dungeon_key_media.hpp": "352ec068c7670a3232c13d59f3b3ced75b57fd98bec4d0221f27530f4e0795b7",
+    "runtime/dungeon_key_media.cpp": "6098846710f439a6aa726cfb6b6010f04d4ffff7492dd79dcee559a8bf63fd09",
+    "include/encore/dungeon_key_clocks.hpp": "785652bf8a180e9b59c015770cb51e437735fdda117dc833cf2ac29eebeee469",
+    "runtime/dungeon_key_clocks.cpp": "56ca14ef1434c6bce8fa8fc7a9601596b352c445ac86a0f6102475b38d41fdf9",
+    "tests/dungeon_key_media_tests.cpp": "d059ab6876687f6f9c2a13a3a5b8550a6ca18882a305341b16cffc7bc2eac1f6",
+    "tests/test_dungeon_key_media.py": "9ab2ef45d1b2dcbe4369a7ba2f8d794fb3ee65b9ed6fe723345086e523d07423",
+    "tests/prepare_dungeon_key_media.py": "2bb6471e8a87bf3d45aa5b175eb6651db45be1f6babc3e1f9eed7fb773f165ca",
+    "CMakeLists.txt": "16e1c7f9842495522df4f8594fc8593751791d50436ab05c6df7ef419fdd737e",
+    "platform/ctr/Makefile": "1f05dac7ba1c2c1a6167abb4df28e6f023f51efd7cb64f56cfa7b265895dc6de"
+  },
+  "pending": [
+    "Full current GCC/Clang and console build",
+    "formal map/UI/contact/save/production renderer/audio",
+    "emulator and physical console"
+  ]
+}

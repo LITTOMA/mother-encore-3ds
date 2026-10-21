@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "kind": "encore.dungeon-key-media.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Three source Sprite atlases, six source-owned key/door objects and audio nodes, nine rectangular shapes. Prepared bridge into exact key clocks; no full scene, UI subtree, terrain, physical delivery, live renderer/audio or save admission.",
+  "clock_recipe": "content/catacombs-key-clocks.json",
+  "clock_review_sha256": "3f4bc6add3a52c42a948a5dd4589608ed4b394fa5dac8a45b7f2543b15dfecb8",
+  "graphics": [
+    {
+      "profile": 1,
+      "atlas_columns": 4,
+      "output": "graphics/world/catacombs/keys/key.t3x"
+    },
+    {
+      "profile": 2,
+      "atlas_columns": 5,
+      "output": "graphics/world/catacombs/keys/door.t3x"
+    },
+    {
+      "profile": 3,
+      "atlas_columns": 3,
+      "output": "graphics/world/catacombs/keys/lock.t3x"
+    }
+  ],
+  "shapes": [
+    {
+      "profile": 1,
+      "path": "Area2D/CollisionShape2D",
+      "role": "pickup"
+    },
+    {
+      "profile": 2,
+      "path": "StaticBody2D/CollisionShape2D",
+      "role": "body"
+    },
+    {
+      "profile": 2,
+      "path": "interact/CollisionShape2D2",
+      "role": "interaction"
+    }
+  ],
+  "audio_recipe": {
+    "schema": 1,
+    "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "bus_source": "Audio/Audio Buses/default_bus_layout.tres",
+    "bus_sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "manager_source": "Scripts/global/audioManager.gd",
+    "manager_sha256": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "assets": [
+      {
+        "stable_id": 2970068036,
+        "source_path": "res://Audio/Sound effects/Key Get.mp3",
+        "source_sha256": "0392d3cdc0ecee8a1f41c051d5273c9280b250f87ed94547677fafad31f35447",
+        "import_sha256": "37e412968857a899eced8edee4105f1c90d0cbad3c10d98325f0a8478e7ab6e0",
+        "pcm_path": "sound/effects/catacombs-keys-get.pcm",
+        "gain_db": 0
+      },
+      {
+        "stable_id": 3536655801,
+        "source_path": "res://Audio/Sound effects/EB/dooropen1.wav",
+        "source_sha256": "bb79764de9e8cb104dbe56712f86c028ffb0b6746078843e60d973b485722f66",
+        "import_sha256": "88995bdad26e037dd72de7603c2374e728b5850c5c4daaef5db2c4cf12aea690",
+        "pcm_path": "sound/effects/catacombs-keys-open.pcm",
+        "gain_db": 0
+      }
+    ]
+  },
+  "sources": {
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "Audio/Sound effects/EB/dooropen1.wav": "bb79764de9e8cb104dbe56712f86c028ffb0b6746078843e60d973b485722f66",
+    "Audio/Sound effects/EB/dooropen1.wav.import": "88995bdad26e037dd72de7603c2374e728b5850c5c4daaef5db2c4cf12aea690",
+    "Audio/Sound effects/Key Get.mp3": "0392d3cdc0ecee8a1f41c051d5273c9280b250f87ed94547677fafad31f35447",
+    "Audio/Sound effects/Key Get.mp3.import": "37e412968857a899eced8edee4105f1c90d0cbad3c10d98325f0a8478e7ab6e0",
+    "Graphics/Objects/Catacombs/Catacombs Locked Door.png": "810c1671efa5781eba3689be0ccbf865a8616b5ab57a8a655812de3f333f02c8",
+    "Graphics/Objects/Catacombs/Catacombs Locked Door.png.import": "50349676dbd1eac1ea52c2769b9aacf1a5941ed916fbfe8370a59cab07e001bd",
+    "Graphics/Objects/Common/Lock.png": "5444669b91684d53dc3db5a4d7ef60f983d785a6cbbacfa53b1d06f30a8472d6",
+    "Graphics/Objects/Common/Lock.png.import": "482a6a5fd90de5f09a7d5db29f32ccc56e15c503f53b172678688a2ca36e0130",
+    "Graphics/Objects/Common/Small Key.png": "a70b47f3a3ab2f8f0a66556a39ca264b145b87834cdf9674e1895c1ba618709c",
+    "Graphics/Objects/Common/Small Key.png.import": "28765e2a475b697e3c13b4170734202d802b850e318bf759525c13404a3c037d",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+    "Nodes/Overworld/Objects/Lock.tscn": "8f7028b4669e0ef2f5d1020cedaca6fe9ded747eed4c091a0d2b98104912ae0e",
+    "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": "0455c5e6b85221a05f68e7827d6d7791797a0c62343e14c50c9b0542c980c83a",
+    "Nodes/Overworld/Objects/Small Key.tscn": "b111c74715225473607948b2004404dd9dfc631046d53a6f569f0c5fb637a989",
+    "Scripts/Cutscenes/CutsceneObject.gd": "5bb7b71aeba89556d1b8216b168f9f9aaa41dcabb3bf1c9cd1545aaf417af963",
+    "Scripts/Main/Lock.gd": "678fa2a4aff0627a2a8a54795836f3496c07d3dee93ee92d402d43bfad9888fc",
+    "Scripts/Main/Small Key.gd": "4b56507605ac80f6576e8933e0cc5b4a1f58064f2a072dbfa906085f4ccebbd4",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "permission": "Pinned original LICENSE admits game-related use; no third-party tools or private firmware enter releases. Only original checked PNG/audio sources and actual converters are used."
+}

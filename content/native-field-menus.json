@@ -1,5 +1,134 @@
 {
-  "schema": 2,
+  "schema": 3,
+  "consumption": {
+    "actor": "ninten",
+    "refresh_hp": 999,
+    "sound": "Audio/Sound effects/EB/eat.wav",
+    "slot": "menu",
+    "lane": 1,
+    "statuses": [
+      "asthma",
+      "poisoned"
+    ],
+    "effects": [
+      {
+        "id": "Hamburger",
+        "hp": 50,
+        "cure": "",
+        "message_keys": [
+          "ACTION_RESULT_HP_UP",
+          "ACTION_RESULT_HP_MAX",
+          "",
+          ""
+        ],
+        "messages": [
+          {
+            "en": "{owner} recovered {value} HP!",
+            "zh": "{owner}回复了{value}点HP！"
+          },
+          {
+            "en": "{owner}'s HP was maxed out!",
+            "zh": "{owner}的HP回满了！"
+          },
+          {
+            "en": "",
+            "zh": ""
+          },
+          {
+            "en": "",
+            "zh": ""
+          }
+        ]
+      },
+      {
+        "id": "Fries",
+        "hp": 20,
+        "cure": "",
+        "message_keys": [
+          "ACTION_RESULT_HP_UP",
+          "ACTION_RESULT_HP_MAX",
+          "",
+          ""
+        ],
+        "messages": [
+          {
+            "en": "{owner} recovered {value} HP!",
+            "zh": "{owner}回复了{value}点HP！"
+          },
+          {
+            "en": "{owner}'s HP was maxed out!",
+            "zh": "{owner}的HP回满了！"
+          },
+          {
+            "en": "",
+            "zh": ""
+          },
+          {
+            "en": "",
+            "zh": ""
+          }
+        ]
+      },
+      {
+        "id": "Antidote",
+        "hp": 0,
+        "cure": "poisoned",
+        "message_keys": [
+          "",
+          "",
+          "ACTION_RESULT_HEAL_POISONED",
+          "ACTION_RESULT_HEAL_POISONED_FAIL"
+        ],
+        "messages": [
+          {
+            "en": "",
+            "zh": ""
+          },
+          {
+            "en": "",
+            "zh": ""
+          },
+          {
+            "en": "The poison was removed from {owner}'s body!",
+            "zh": "{owner}体内的毒素已经消失了！"
+          },
+          {
+            "en": "{owner} is not poisoned.",
+            "zh": "{owner}已不再中毒。"
+          }
+        ]
+      },
+      {
+        "id": "AsthmaSpray",
+        "hp": 0,
+        "cure": "asthma",
+        "message_keys": [
+          "",
+          "",
+          "ACTION_RESULT_HEAL_ASTHMA",
+          "ACTION_RESULT_HEAL_ASTHMA_FAIL"
+        ],
+        "messages": [
+          {
+            "en": "",
+            "zh": ""
+          },
+          {
+            "en": "",
+            "zh": ""
+          },
+          {
+            "en": "{owner}'s asthma attack went away!",
+            "zh": "{owner}停止哮喘了！"
+          },
+          {
+            "en": "{owner} does not have asthma.",
+            "zh": "{owner}并未患有哮喘。"
+          }
+        ]
+      }
+    ]
+  },
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "sources": {
     "Scripts/UI/Pausemenu.gd": "118f19d419a89ec09916961b92322f67ce032b44aa8215f9509d31088b421ca2",
@@ -35,6 +164,10 @@
     "Data/StatusAilments/asthma.yaml": "6f2485b55a9b01c6cd8bdaaed248683c22eebc912c9445437d3193659fa754c3",
     "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
     "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5",
+    "Data/Items/Hamburger.yaml": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
+    "Data/Items/Fries.yaml": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+    "Data/Items/Antidote.yaml": "277cc60694c95e266ce0b406c7d74992c4fcf39ffdb130d96d04fde7a00ec7eb",
+    "Data/StatusAilments/poisoned.yaml": "30ff7359ecd9aba8ce730362bfa022b3ab50f3842877a92901ac606d10c6f37f",
     "Data/Items/DogTreats.yaml": "0512818388242890d704214728e4603f90fa976571240f86361c2917c641d641",
     "Data/Items/MapPodunk.yaml": "a0a9b41e46eef76044809dc698abc1afc1dab534b4dcb7e37563ea01e54afe43",
     "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
@@ -524,6 +657,87 @@
       "result": {
         "en": "",
         "zh": ""
+      }
+    },
+    {
+      "id": "Hamburger",
+      "key": 0,
+      "drop": 1,
+      "action": 2,
+      "doses": 1,
+      "score": 1000050,
+      "equipped_score": 1000050,
+      "slot": 4294967295,
+      "definition": 4,
+      "name": {
+        "en": "Hamburger",
+        "zh": "汉堡包"
+      },
+      "description": {
+        "en": "",
+        "zh": ""
+      },
+      "sorting": {
+        "en": "Hamburger",
+        "zh": "汉堡包"
+      },
+      "result": {
+        "en": "",
+        "zh": ""
+      }
+    },
+    {
+      "id": "Fries",
+      "key": 0,
+      "drop": 1,
+      "action": 2,
+      "doses": 1,
+      "score": 1000020,
+      "equipped_score": 1000020,
+      "slot": 4294967295,
+      "definition": 5,
+      "name": {
+        "en": "Fries",
+        "zh": "炸薯条"
+      },
+      "description": {
+        "en": "",
+        "zh": ""
+      },
+      "sorting": {
+        "en": "Fries",
+        "zh": "炸薯条"
+      },
+      "result": {
+        "en": "",
+        "zh": ""
+      }
+    },
+    {
+      "id": "Antidote",
+      "key": 0,
+      "drop": 1,
+      "action": 2,
+      "doses": 1,
+      "score": 800000,
+      "equipped_score": 800000,
+      "slot": 4294967295,
+      "definition": 6,
+      "name": {
+        "en": "Antidote",
+        "zh": "解毒药"
+      },
+      "description": {
+        "en": "",
+        "zh": ""
+      },
+      "sorting": {
+        "en": "Antidote",
+        "zh": "解毒药"
+      },
+      "result": {
+        "en": "{target} is not poisoned.",
+        "zh": "{target}已不再中毒。"
       }
     },
     {

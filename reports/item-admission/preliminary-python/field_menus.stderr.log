@@ -1,0 +1,25 @@
+test_new_game_default_bytes_are_preserved (tests.test_field_menus.FieldMenuSourceTests.test_new_game_default_bytes_are_preserved) ... FAIL
+test_semantics_are_bound_to_source (tests.test_field_menus.FieldMenuSourceTests.test_semantics_are_bound_to_source) ... ok
+test_source_and_staged_bytes (tests.test_field_menus.FieldMenuSourceTests.test_source_and_staged_bytes) ... ok
+test_unknown_source_or_rule_does_not_rebind (tests.test_field_menus.FieldMenuSourceTests.test_unknown_source_or_rule_does_not_rebind) ... FAIL
+
+======================================================================
+FAIL: test_new_game_default_bytes_are_preserved (tests.test_field_menus.FieldMenuSourceTests.test_new_game_default_bytes_are_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_field_menus.py", line 37, in test_new_game_default_bytes_are_preserved
+    self.assertEqual(r['schema'],11)
+AssertionError: 12 != 11
+
+======================================================================
+FAIL: test_unknown_source_or_rule_does_not_rebind (tests.test_field_menus.FieldMenuSourceTests.test_unknown_source_or_rule_does_not_rebind)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_field_menus.py", line 33, in test_unknown_source_or_rule_does_not_rebind
+    with mock.patch.object(menus,'build',return_value=self.ir),self.assertRaises(ValueError):menus.load(root)
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 6.825s
+
+FAILED (failures=2)

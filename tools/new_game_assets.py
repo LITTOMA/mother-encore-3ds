@@ -280,11 +280,12 @@ def rebound_session_dependency(recipe,previous,current,current_sha):
  menus=(previous['schema'],current['schema'])==(8,9)
  field_extension=(previous['schema'],current['schema'])==(9,10)
  run_extension=(previous['schema'],current['schema'])==(10,11)
+ item_extension=(previous['schema'],current['schema'])==(11,12)
  require(set(previous)==set(current) or (extension and set(current)==set(previous)|{'skill_acquisitions','skill_order'}) or (menus and set(current)==set(previous)|{'field_items','description_toggle'}) or (field_extension and set(current)==set(previous)|{'field_encounters'}) or (run_extension and set(current)==set(previous)|{'run_sounds'}),'Changed naming session field set')
  for key in previous:
   if key not in ('schema','key_acquisitions','acquisitions','storage_policies','field_items','mutable_flags','camera_area_ids','dependencies','scope','sources'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
  require(all(current['sources'].get(p)==h for p,h in previous['sources'].items()),'Changed naming session source')
- require(previous['schema']==current['schema'] or (previous['schema'],current['schema']) in ((6,7),(7,8),(8,9),(9,10),(10,11)),'Unreviewed naming session schema migration')
+ require(previous['schema']==current['schema'] or (previous['schema'],current['schema']) in ((6,7),(7,8),(8,9),(9,10),(10,11),(11,12)),'Unreviewed naming session schema migration')
  if menus:
   require(current['description_toggle'] is True and len(current['field_items'])==len(current['storage_policies']),'Incomplete field menu session policies')
   require([p['item_id']for p in current['field_items']]==[p['item_id']for p in current['storage_policies']],'Changed field menu item scope')
@@ -295,6 +296,14 @@ def rebound_session_dependency(recipe,previous,current,current_sha):
    require(current[key][:len(previous[key])]==previous[key] and len(current[key])==len(previous[key])+1,'Changed initial item policy prefix')
   require(current['acquisitions'][-1]==dict(item_id='BatPlastic',doses=1,flag_id="Ninten's House/Present2",max_count=1,flag_policy=2),'Unreviewed naming item acquisition')
   require(current['storage_policies'][-1]['item_id']=='BatPlastic','Unreviewed naming storage extension')
+ elif item_extension:
+  from tools.native_session import extract
+  reviewed=extract()
+  require(json.dumps(current,sort_keys=True)==json.dumps(reviewed,sort_keys=True),'Unreviewed naming item session')
+  for key,added in [('acquisitions',7),('storage_policies',3),('field_items',3)]:
+   require(current[key][:len(previous[key])]==previous[key] and len(current[key])==len(previous[key])+added,'Changed naming initial item prefix')
+  for key in ('key_acquisitions','mutable_flags','camera_area_ids'):
+   require(current[key]==previous[key],'Changed naming item extension '+key)
  elif run_extension:
   from tools.native_session import extract
   reviewed=extract()

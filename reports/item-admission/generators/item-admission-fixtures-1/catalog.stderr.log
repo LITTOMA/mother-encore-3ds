@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_catacombs_item_catalog.py", line 106, in <module>
+    print(json.dumps(build(sys.argv[1]), indent=2))
+                     ^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_catacombs_item_catalog.py", line 91, in build
+    marker = output / '.owned-catacombs-catalog-fixture'
+             ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'

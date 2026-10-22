@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "888bfdcac2bad2218a9c442489b34a7ec0b9af6e9a994cd6ad1844dce8a43f06",
-  "producer_sha256": "522808818263b0fd0cf1e3465522ce692d531022c16ff4ec72b5b14d6b00e2bd",
+  "ir_sha256": "d3379182de0b56c9410159f5c08a757b5406356df11cb30ba4ea07e5748139b5",
+  "producer_sha256": "8cef83ce22d3bb92e66f565e4e5228dca057ad3fac8a6329bd10a45e607be6f8",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "outputs": {
     "graphics/ui/equipment/panel.t3x": {

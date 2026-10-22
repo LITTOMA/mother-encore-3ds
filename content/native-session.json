@@ -1,5 +1,5 @@
 {
-  "schema": 11,
+  "schema": 12,
   "run_sounds": [
     "wood",
     "stone"
@@ -80,6 +80,51 @@
         0,
         0
       ]
+    },
+    {
+      "item_id": "Hamburger",
+      "doses": 1,
+      "total_count": 4,
+      "required": false,
+      "boosts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "item_id": "Fries",
+      "doses": 1,
+      "total_count": 1,
+      "required": false,
+      "boosts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "item_id": "Antidote",
+      "doses": 1,
+      "total_count": 2,
+      "required": false,
+      "boosts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
     }
   ],
   "acquisitions": [
@@ -102,6 +147,55 @@
       "max_count": 1,
       "flag_id": "beat_dog_bridge",
       "flag_policy": 1
+    },
+    {
+      "item_id": "Hamburger",
+      "doses": 1,
+      "max_count": 1,
+      "flag_id": "Catacombs/Item1",
+      "flag_policy": 2
+    },
+    {
+      "item_id": "Hamburger",
+      "doses": 1,
+      "max_count": 1,
+      "flag_id": "Catacombs/Item3",
+      "flag_policy": 2
+    },
+    {
+      "item_id": "Hamburger",
+      "doses": 1,
+      "max_count": 1,
+      "flag_id": "Catacombs/Item4",
+      "flag_policy": 2
+    },
+    {
+      "item_id": "Hamburger",
+      "doses": 1,
+      "max_count": 1,
+      "flag_id": "Catacombs/Item7",
+      "flag_policy": 2
+    },
+    {
+      "item_id": "Fries",
+      "doses": 1,
+      "max_count": 1,
+      "flag_id": "Catacombs/Item2",
+      "flag_policy": 2
+    },
+    {
+      "item_id": "Antidote",
+      "doses": 1,
+      "max_count": 1,
+      "flag_id": "Catacombs/Item5",
+      "flag_policy": 2
+    },
+    {
+      "item_id": "Antidote",
+      "doses": 1,
+      "max_count": 1,
+      "flag_id": "Catacombs/Item6",
+      "flag_policy": 2
     }
   ],
   "key_acquisitions": [
@@ -170,7 +264,7 @@
   },
   "kind": "encore.native-session.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Single live party member; source normal/object/key acquisitions and story-learned skills; complete inactive startup naming roster; connected native house rooms and checked Podunk encounter rewards/flags; saves return through House authority; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot",
+  "scope": "Single live party member; source normal/object/key acquisitions and story-learned skills; distinct reviewed catacombs source flags may grant the same item identity; complete inactive startup naming roster; connected native house rooms and checked Podunk encounter rewards/flags; saves return through House authority; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot",
   "compatibility": {
     "content_family": 1162739714,
     "content_revision": 1,
@@ -2569,13 +2663,16 @@
     "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
     "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
     "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
-    "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5"
+    "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5",
+    "Data/Items/Hamburger.yaml": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
+    "Data/Items/Fries.yaml": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+    "Data/Items/Antidote.yaml": "277cc60694c95e266ce0b406c7d74992c4fcf39ffdb130d96d04fde7a00ec7eb"
   },
   "dependencies": {
     "content/native-opening.json": "72b000f959aa24c8fd5750c2e571302321849091c1dd34af59cf66aebf45b035",
     "content/native-house.json": "c224f8a53bf0496940fdfc7d932df7aff7722f5172db799286507b95ca84c92d",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
-    "content/native-items.json": "e3e432d9292f1b74f565a7aca71f41a15cd7397ccd9323700e6a919aa5219986",
+    "content/native-items.json": "47cc130d5f8f9b0e589acce8780e747810d67419283db948a9847dc1f062a691",
     "content/native-round.json": "ab87e11454c423b38d251c8ab005935415daebfe22ef7ed441c09ed3e32228ea",
     "content/doll-round.json": "f9332a1936a50ab813dc403ecae6834d569a7dd36f774c5c29112bfd6eb7e4f0",
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
@@ -2585,8 +2682,11 @@
     "content/graveyard-tutorial.json": "89323a1283ca996b6476e3f40c76652ad4909d5d85553aed32a42aac14c777ff",
     "tools/graveyard_tutorial.py": "63fd9db03a6c3ecb7188dddeff39b6acaf49aca3cbd4c4161fbaf71ea5b7335a",
     "tools/graveyard_tutorial_programme.py": "83582910fab057877b93bcbe67b9380d2052ec98868e18ff1af494009ab6d7c3",
-    "content/native-storage.json": "15c7144c455736ed3aebc6c96c16f9959a3362f93aec26e688236cc88548ab88",
+    "content/native-storage.json": "262997f7b5926d2ae58e9e1bd93f9d1f814ba360e27e3a7bc20bcc9628f2e288",
     "content/field-rewards.json": "ae5f4844457bff31732cebd05aa0c03a4cb35ef9bc7f09e4d577898c580754c3",
+    "content/catacombs-item-catalog.json": "9ab217b6a5281e18848a769f11ae8248064111a3aa6281a6275514859a35e315",
+    "compatibility/reviews/catacombs-item-catalog-v0410.json": "4f2253e48d651dcdf23fa8fbf55e28204a6e99525fec3c0297ddcd08a5885453",
+    "content/asset-receipts/graphics/items/catacombs/source.json": "0900edbf5f1c7fbc84244ae3baadd54540d045ca2f635dd34a4b68edf4690e95",
     "content/diary-story.json": "b9e93337b086ad2b951a8a6861d8020a70bd848b7ebd415d140b98d07b317409",
     "content/mayor-area.json": "21bd23e8ff3c2523459376449f57cea29ef4266bb271adfbacbca36a9c6e556f",
     "content/mayor-field.json": "a3a50edc5f475262eeac81e74a772965d415fdb865bb60820f175e9b9da0c86a",
@@ -2621,6 +2721,24 @@
       "doses": 1,
       "drop": true,
       "consume": false
+    },
+    {
+      "item_id": "Hamburger",
+      "doses": 1,
+      "drop": true,
+      "consume": true
+    },
+    {
+      "item_id": "Fries",
+      "doses": 1,
+      "drop": true,
+      "consume": true
+    },
+    {
+      "item_id": "Antidote",
+      "doses": 1,
+      "drop": true,
+      "consume": true
     }
   ],
   "description_toggle": true

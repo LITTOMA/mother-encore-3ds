@@ -1,0 +1,14 @@
+test_all_record_domains_and_stable_ownership (tests.test_breakables.BreakableTests.test_all_record_domains_and_stable_ownership) ... ok
+test_all_truncations_corruption_and_trailing (tests.test_breakables.BreakableTests.test_all_truncations_corruption_and_trailing) ... ok
+test_changed_recipe_pin_source_symbols_and_bindings (tests.test_breakables.BreakableTests.test_changed_recipe_pin_source_symbols_and_bindings) ... ok
+test_frozen_original_and_fixture (tests.test_breakables.BreakableTests.test_frozen_original_and_fixture) ... ok
+test_header_directory_versions_and_reserved (tests.test_breakables.BreakableTests.test_header_directory_versions_and_reserved) ... ok
+test_model_unknown_fields_and_types_reject (tests.test_breakables.BreakableTests.test_model_unknown_fields_and_types_reject) ... ok
+test_original_observer_scope_and_input_mapping (tests.test_breakables.BreakableTests.test_original_observer_scope_and_input_mapping) ... ok
+test_source_coverage_and_unchanged_nested_format (tests.test_breakables.BreakableTests.test_source_coverage_and_unchanged_nested_format) ... ok
+test_unknown_native_fields_and_receipts_reject (tests.test_breakables.BreakableTests.test_unknown_native_fields_and_receipts_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 14.495s
+
+OK

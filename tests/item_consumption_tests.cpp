@@ -39,7 +39,7 @@ int main(int argc,char**argv){
  for(uint32_t i=0;i<count;++i){
   CHECK(input.u()==i);auto before=session.defaults(),expected=session.defaults();input.character(before.characters[0]);input.character(expected.characters[0]);
   const auto selected=input.count(15),maxhp=input.count(INT32_MAX),maxpp=input.count(INT32_MAX),kind=input.count(4),value=input.u(),doses=input.count(65535),sound=input.count(1);
-  CHECK(kind&&maxhp);const auto message=input.text(),audio=input.text(),bus=input.text();
+  CHECK(kind&&maxhp);const auto message=input.text(),audio=input.text(),slot=input.text();
   std::vector<FieldMenuConsumeSignal>signals;auto signal_count=input.count(2);
   for(uint32_t n=0;n<signal_count;++n){auto type=input.count(2);CHECK(type);signals.push_back({FieldMenuConsumeSignalKind(type),input.q(),input.q()});}
   FieldMenusState state;state.session=before;state.stats={{int32_t(maxhp),int32_t(maxpp),0,0,0,0,0}};state.preferences=data.defaults;
@@ -48,7 +48,7 @@ int main(int argc,char**argv){
   same(after.session,expected,session.compatibility());CHECK(uint32_t(result.kind)==kind&&result.value==value&&result.retained_doses==doses&&result.eat_sound==bool(sound));
   CHECK(result.message_key==message&&!result.message.empty());CHECK(result.signals.size()==signals.size());
   for(size_t n=0;n<signals.size();++n)CHECK(result.signals[n].kind==signals[n].kind&&result.signals[n].value==signals[n].value&&result.signals[n].maximum==signals[n].maximum);
-  if(sound)CHECK(data.consume_sound==audio&&data.consume_bus==bus);else CHECK(audio.empty()&&bus.empty());
+  if(sound)CHECK(data.consume_sound==audio&&data.consume_slot==slot);else CHECK(audio.empty()&&slot.empty());
   // Native UI calls the same checked effect and applies only owned changes.
   FieldMenusState live=state;unsigned commits=0;bool reject=false;
   FieldMenusHost host;

@@ -1,0 +1,72 @@
+test_acquisition_policy_is_source_derived_and_additive (tests.test_native_session.NativeSessionTests.test_acquisition_policy_is_source_derived_and_additive) ... FAIL
+test_additive_startup_roster_and_legacy_bytes (tests.test_native_session.NativeSessionTests.test_additive_startup_roster_and_legacy_bytes) ... FAIL
+test_checked_source_and_staging (tests.test_native_session.NativeSessionTests.test_checked_source_and_staging) ... ok
+test_complete_field_programmes_admit_only_source_written_flags (tests.test_native_session.NativeSessionTests.test_complete_field_programmes_admit_only_source_written_flags) ... FAIL
+test_field_scope_is_source_derived_and_defaults_stay_frozen (tests.test_native_session.NativeSessionTests.test_field_scope_is_source_derived_and_defaults_stay_frozen) ... ok
+test_frozen_rules6_resource_encoding_is_unchanged (tests.test_native_session.NativeSessionTests.test_frozen_rules6_resource_encoding_is_unchanged) ... ok
+test_map_object_policy_is_derived_from_present (tests.test_native_session.NativeSessionTests.test_map_object_policy_is_derived_from_present) ... ok
+test_recipe_drift_fails_closed (tests.test_native_session.NativeSessionTests.test_recipe_drift_fails_closed) ... ok
+test_source_defaults_and_derived_values (tests.test_native_session.NativeSessionTests.test_source_defaults_and_derived_values) ... ok
+test_stale_or_escaping_stage_rejected (tests.test_native_session.NativeSessionTests.test_stale_or_escaping_stage_rejected) ... ok
+test_startup_clamps_are_derived_from_serialized_hp_and_equipment (tests.test_native_session.NativeSessionTests.test_startup_clamps_are_derived_from_serialized_hp_and_equipment) ... ok
+test_storage_conservation_policy_is_source_derived (tests.test_native_session.NativeSessionTests.test_storage_conservation_policy_is_source_derived) ... FAIL
+test_v10_keeps_complete_v9_menu_prefix (tests.test_native_session.NativeSessionTests.test_v10_keeps_complete_v9_menu_prefix) ... FAIL
+test_v11_run_sound_append_preserves_v10_and_defaults (tests.test_native_session.NativeSessionTests.test_v11_run_sound_append_preserves_v10_and_defaults) ... ok
+test_v12_grouped_acquisition_version_keeps_legacy_payload (tests.test_native_session.NativeSessionTests.test_v12_grouped_acquisition_version_keeps_legacy_payload) ... ok
+
+======================================================================
+FAIL: test_acquisition_policy_is_source_derived_and_additive (tests.test_native_session.NativeSessionTests.test_acquisition_policy_is_source_derived_and_additive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_native_session.py", line 133, in test_acquisition_policy_is_source_derived_and_additive
+    self.assertEqual(len(r['acquisitions']),len(drawer['templates'])+2)
+AssertionError: 10 != 3
+
+======================================================================
+FAIL: test_additive_startup_roster_and_legacy_bytes (tests.test_native_session.NativeSessionTests.test_additive_startup_roster_and_legacy_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_native_session.py", line 57, in test_additive_startup_roster_and_legacy_bytes
+    self.assertEqual((r['schema'],struct.unpack_from('<I',native.encode(r),8)[0],struct.unpack_from('<I',native.encode(r),20)[0]),(11,11,11))
+AssertionError: Tuples differ: (12, 12, 12) != (11, 11, 11)
+
+First differing element 0:
+12
+11
+
+- (12, 12, 12)
+?   ^   ^   ^
+
++ (11, 11, 11)
+?   ^   ^   ^
+
+
+======================================================================
+FAIL: test_complete_field_programmes_admit_only_source_written_flags (tests.test_native_session.NativeSessionTests.test_complete_field_programmes_admit_only_source_written_flags)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_native_session.py", line 34, in test_complete_field_programmes_admit_only_source_written_flags
+    self.assertEqual(current['defaults'],previous['defaults']);self.assertEqual(current['schema'],previous['schema'])
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 12 != 11
+
+======================================================================
+FAIL: test_storage_conservation_policy_is_source_derived (tests.test_native_session.NativeSessionTests.test_storage_conservation_policy_is_source_derived)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_native_session.py", line 161, in test_storage_conservation_policy_is_source_derived
+    self.assertEqual(r['schema'],11)
+AssertionError: 12 != 11
+
+======================================================================
+FAIL: test_v10_keeps_complete_v9_menu_prefix (tests.test_native_session.NativeSessionTests.test_v10_keeps_complete_v9_menu_prefix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_native_session.py", line 85, in test_v10_keeps_complete_v9_menu_prefix
+    self.assertEqual(len(legacy['field_items']),4)
+AssertionError: 7 != 4
+
+----------------------------------------------------------------------
+Ran 15 tests in 64.336s
+
+FAILED (failures=5)

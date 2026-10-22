@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 import tempfile
 import unittest
@@ -33,12 +34,12 @@ class ItemConsumptionTests(unittest.TestCase):
         self.assertEqual(self.model['statuses'],['asthma','poisoned'])
         self.assertEqual([row['hp']for row in self.model['effects']],[50,20,0,0])
         self.assertEqual(self.model['sound'],'Audio/Sound effects/EB/eat.wav')
-        self.assertEqual(self.model['bus'],'menu')
+        self.assertEqual(self.model['slot'],'menu')
 
     def test_model_unknown_domains_types_messages_and_ownership_reject(self):
         changes=[lambda v:v.update(extra=1),lambda v:v.update(actor=True),lambda v:v.update(refresh_hp=True),
             lambda v:v.update(refresh_hp=0),lambda v:v.update(refresh_hp=65536),lambda v:v.update(lane=True),
-            lambda v:v.update(lane=0),lambda v:v.update(lane=2),lambda v:v.update(bus='?'),
+            lambda v:v.update(lane=0),lambda v:v.update(lane=2),lambda v:v.update(slot='?'),lambda v:v.update(bus='menu'),
             lambda v:v.update(sound='/outside.wav'),lambda v:v.update(sound='../outside.wav'),
             lambda v:v.update(sound='Audio/\neat.wav'),lambda v:v.update(statuses=[]),
             lambda v:v['statuses'].append(v['statuses'][0]),lambda v:v['effects'].clear(),
@@ -76,7 +77,7 @@ class ItemConsumptionTests(unittest.TestCase):
 
     def test_reviewed_recipe_and_receipt_cannot_be_rebound(self):
         file=self.temporary()/'candidate.json'
-        changes=[lambda v:v.update(schema=True),lambda v:v.update(extra=1),lambda v:v.update(commit='0'*40),
+        changes=[lambda v:v.update(schema=True),lambda v:v.update(schema=1),lambda v:v.update(schema=3),lambda v:v.update(extra=1),lambda v:v.update(commit='0'*40),
                  lambda v:v['model'].update(refresh_hp=1),lambda v:v['model'].update(actor='other'),
                  lambda v:v['model']['effects'].reverse(),lambda v:v['source'].update(extra=1)]
         with patch.object(consume,'derive',return_value=self.recipe):
@@ -100,7 +101,11 @@ class ItemConsumptionTests(unittest.TestCase):
     def test_menu_extension_versions_are_explicit_and_legacy_bytes_stay_identical(self):
         source=catalog.read(consume.ROOT/'content/native-field-menus.json')
         self.assertEqual(field_menus.encode(source),(consume.ROOT/'romfs/ui/field.encmenus').read_bytes())
-        invalid=copy.deepcopy(source);invalid['consumption']=self.model
+        legacy=consume.ROOT/'tests/fixtures/item-admission-legacy'
+        baseline=catalog.read(legacy/'native-field-menus.json')
+        proof=catalog.read(legacy/'source.json')
+        self.assertEqual(hashlib.sha256(field_menus.encode(baseline)).hexdigest(),proof['files']['romfs/ui/field.encmenus']['sha256'])
+        invalid=copy.deepcopy(baseline);invalid['consumption']=self.model
         with self.assertRaises(ValueError):field_menus.encode(invalid)
         invalid.pop('consumption');invalid['schema']=3
         with self.assertRaises(ValueError):field_menus.encode(invalid)

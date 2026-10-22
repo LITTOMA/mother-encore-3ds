@@ -22,21 +22,16 @@ def fixture_files(reference_root):
     receipt=catalog.read(first/'receipt.json')
     if receipt['reference_sha256']!=catalog.digest(first/'reference.json') or receipt['producer_sha256']!=catalog.digest(consume.original.__file__) or receipt['source']['generated_sha256']!=proof['generated_sha256']:
         raise ValueError('Changed actual original consumption receipt')
-    base=catalog.read(ROOT/'content/native-field-menus.json')
-    menu=copy.deepcopy(base)
-    menu['schema']=3
-    menu['consumption']=model
-    catalog_data=catalog.load()
-    for row in catalog_data['entries']:
-        menu['items'].append(dict(id=row['source'],key=0,drop=1,action=2,doses=1,
-            score=0,equipped_score=0,slot=0xffffffff,definition=row['id']-1,
-            name={key:v['name']for key,v in row['labels'].items()},
-            sorting={key:v['sorting_name']for key,v in row['labels'].items()},
-            description=dict(en='',zh=''),result=dict(en='',zh='')))
+    legacy=ROOT/'tests/fixtures/item-admission-legacy'
+    legacy_proof=catalog.read(legacy/'source.json')
+    base=catalog.read(legacy/'native-field-menus.json')
+    menu=field_menus.load(ROOT)
+    if menu['schema']!=3 or menu['consumption']!=model:
+        raise ValueError('Consumption fixture requires the actual admitted production menu v3')
     files={'menu-v3.encmenus':field_menus.encode(menu),
            'menu-v2.encmenus':field_menus.encode(base)}
-    if files['menu-v2.encmenus']!=(ROOT/'romfs/ui/field.encmenus').read_bytes():
-        raise ValueError('Production legacy menu bytes changed')
+    if hashlib.sha256(files['menu-v2.encmenus']).hexdigest()!=legacy_proof['files']['romfs/ui/field.encmenus']['sha256']:
+        raise ValueError('Historical legacy menu bytes changed')
     raw=files['menu-v3.encmenus'];extension=consume.encode_extension(model)
     at=len(raw)-len(extension);locations={};effect_spans=[]
     def word(name=None):
@@ -47,7 +42,7 @@ def fixture_files(reference_root):
         nonlocal at
         if name:locations[name]=at
         size=struct.unpack_from('<I',raw,at)[0];at+=4+size
-    string('actor');word('refresh');string('sound');string('bus');word('lane');word('statuses')
+    string('actor');word('refresh');string('sound');string('slot');word('lane');word('statuses')
     for i,_ in enumerate(model['statuses']):string('status-%d'%i)
     word('effects')
     for i,row in enumerate(model['effects']):
@@ -61,7 +56,7 @@ def fixture_files(reference_root):
         bad_menus.append(label);files['bad-menu-%d.encmenus'%(len(bad_menus)-1)]=bytes(blob)
     for name,value in [('refresh',0),('refresh',65536),('lane',0),('lane',2),('statuses',0),('statuses',17),('effects',0),('effects',129),('hp-0',0),('hp-0',65536)]:
         bad_menu(name+'='+str(value),lambda b,n=name,v=value:struct.pack_into('<I',b,locations[n],v))
-    for name,value in [('actor',ord('?')),('sound',ord('/')),('bus',ord('?')),('status-0',ord('?')),('item-0',ord('?')),('cure-3',ord('?')),('key-0-0',ord('?'))]:
+    for name,value in [('actor',ord('?')),('sound',ord('/')),('slot',ord('?')),('status-0',ord('?')),('item-0',ord('?')),('cure-3',ord('?')),('key-0-0',ord('?'))]:
         bad_menu('invalid '+name,lambda b,n=name,v=value:b.__setitem__(locations[n]+4,v))
     for header,value in [(8,4),(20,2),(24,2),(28,1)]:
         bad_menu('header '+str(header),lambda b,n=header,v=value:struct.pack_into('<I',b,n,v))

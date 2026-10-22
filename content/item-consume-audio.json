@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "kind": "encore.item-consume-audio.source-binding",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "consumption_ir": "content/native-item-consumption.json",
+  "consumption_sha256": "83145b55cfadf22a0012d8ecfd17fd754d167218326500360f5477a802763b37",
+  "source_slot": "menu",
+  "source_bus": "SFX",
+  "identity": {
+    "kind": "stable",
+    "value": 1801
+  },
+  "pcm": "sound/effects/item-eat.pcm",
+  "gain_db": 0,
+  "conversion": null,
+  "license_review": "Fixed upstream LICENSE allows game-related modifications; retain Team Encore notices. Original eat.wav and its import settings remain source-owned, not MIT."
+}

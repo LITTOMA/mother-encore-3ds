@@ -27,8 +27,8 @@ def lower(ir,receipt):
     for p in ir['policies']:
         fields(p,('definition_id','source_item','doses','max_count','sort_rank_en','sort_rank_zh'),'Storage policy')
         # IR retains stable definition identity; the pack addresses the checked
-        # immutable native Items prefix (id1/id2 -> index0/index1).
-        require(p['definition_id'] in (1,2,3,4),'Storage stable Items identity')
+        # contiguous source-reviewed native Items identities (stable id -> index).
+        require(type(p['definition_id'])is int and 1<=p['definition_id']<=65535,'Storage stable Items identity')
         out['Policies'].append([p['definition_id']-1,string(p['source_item']),p['doses'],p['max_count'],p['sort_rank_en'],p['sort_rank_zh']])
     out['Parameters']=[[i+1,ir['parameters'][name]] for i,name in enumerate(PARAMETERS)]
     out['Bindings']=[[i+1,string(ir['bindings'][name])] for i,name in enumerate(BINDINGS)]
@@ -42,12 +42,15 @@ def lower(ir,receipt):
         out['Layouts'].append([l['id'],ROLES.index(l['role'])+1,NIL if l['parent'] is None else l['parent'],KINDS.index(l['kind'])+1,NIL if l['resource'] is None else l['resource'],l['frame'],l['flags'],*l['anchor'],*l['rect'],*l['color'],*l['patch']])
     for e in ir['equipment']:
         fields(e,('definition_id','boosts'),'Storage equipment');require(len(e['boosts'])==7,'Storage equipment stats')
-        require(e['definition_id'] in (1,2,3,4),'Storage equipment stable identity');out['Equipment'].append([e['definition_id']-1,*e['boosts']])
+        require(type(e['definition_id'])is int and 1<=e['definition_id']<=65535,'Storage equipment stable identity');out['Equipment'].append([e['definition_id']-1,*e['boosts']])
     out['Strings']=bytes(pool);validate(out);return out
 
-def encode(t,pin=PIN):
-    validate(t);require(pin==PIN,'Unreviewed Storage pin')
-    blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCSTG01',1,1,0,1,1,7,bytes.fromhex(pin))
+def resource_version(t):return 2 if any(p[3]>1 for p in t['Policies'])else 1
+
+def encode(t,pin=PIN,version=None):
+    if version is None:version=resource_version(t)
+    validate(t,version);require(pin==PIN,'Unreviewed Storage pin')
+    blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCSTG01',version,1,0,version,1,7,bytes.fromhex(pin))
     for i,n in enumerate(NAMES):
         while len(blob)%4:blob.append(0)
         data=t[n] if i==0 else b''.join(struct.pack(FORMATS[i],*r) for r in t[n])
@@ -57,16 +60,18 @@ def encode(t,pin=PIN):
 def parse_pack(blob):
     require(isinstance(blob,(bytes,bytearray)) and HEADER<=len(blob)<=8*1024*1024,'Storage binary size')
     magic,schema,size,crc,caps,rules,count,pin=struct.unpack_from('<8s6I20s',blob)
-    require(magic==b'ENCSTG01' and schema==caps==rules==1 and count==7 and size==len(blob) and pin.hex()==PIN and not any(blob[52:64]),'Storage header/version/pin')
+    require(magic==b'ENCSTG01' and schema in(1,2)and caps==schema and rules==1 and count==7 and size==len(blob) and pin.hex()==PIN and not any(blob[52:64]),'Storage header/version/pin')
     copy=bytearray(blob);copy[16:20]=b'\0'*4;require(zlib.crc32(copy)&NIL==crc,'Storage CRC')
     out={};end=HEADER
     for i,n in enumerate(NAMES):
         kind,start,num,stride=struct.unpack_from('<4I',blob,64+i*16)
         require(kind==i+1 and stride==STRIDES[i] and start==(end+3)//4*4 and not any(blob[end:start]) and start+num*stride<=len(blob),'Storage section directory')
         data=blob[start:start+num*stride];out[n]=bytes(data) if i==0 else [list(struct.unpack_from(FORMATS[i],data,j*stride)) for j in range(num)];end=start+num*stride
-    require(end==len(blob),'Storage trailing bytes');validate(out);return out
+    require(end==len(blob),'Storage trailing bytes');validate(out,schema);return out
 
-def validate(t):
+def validate(t,version=None):
+    if version is None:version=resource_version(t)
+    require(type(version)is int and version in(1,2),'Storage version rejected')
     fields(t,NAMES,'Storage sections');pool=t['Strings'];require(isinstance(pool,bytes) and 0<len(pool)<=1024*1024 and pool[0]==pool[-1]==0,'Storage string pool')
     starts=set();off=0
     while off<len(pool):
@@ -78,7 +83,7 @@ def validate(t):
     require(0<len(t['Policies'])<=16 and len(t['Equipment'])==len(t['Policies']) and len(t['Resources'])<=64 and len(t['Layouts'])<=128,'Storage section capacity')
     ids=set();sources=set();scores=[set(),set()]
     for p in t['Policies']:
-        require(len(p)==6 and integer(p[0],0) and p[0] not in ids and safe_path(string(p[1])) and string(p[1]) not in sources and integer(p[2],1,65535) and p[3]==1 and integer(p[4],1,2000000) and integer(p[5],1,2000000),'Storage policy')
+        require(len(p)==6 and integer(p[0],0) and p[0] not in ids and safe_path(string(p[1])) and string(p[1]) not in sources and integer(p[2],1,65535) and integer(p[3],1,1 if version==1 else 80) and integer(p[4],1,2000000) and integer(p[5],1,2000000),'Storage policy')
         ids.add(p[0]);sources.add(string(p[1]))
         for i in range(2):require(p[4+i] not in scores[i],'Storage unsupported equal-score sort');scores[i].add(p[4+i])
     params={}

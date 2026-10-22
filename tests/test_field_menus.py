@@ -26,7 +26,7 @@ class FieldMenuSourceTests(unittest.TestCase):
         self.assertEqual(self.ir['map_offset'],[98,132])
         self.assertEqual(self.ir['map_home'],[99,127])
     def test_unknown_source_or_rule_does_not_rebind(self):
-        for key,value in [('schema',3),('schema',True),('commit','0'*40),('map_divisor',8),('rows',100),('logical_buttons',[1]*8)]:
+        for key,value in [('schema',4),('schema',True),('commit','0'*40),('map_divisor',8),('rows',100),('logical_buttons',[1]*8)]:
             bad=copy.deepcopy(self.ir);bad[key]=value
             with tempfile.TemporaryDirectory() as tmp:
                 root=Path(tmp);(root/'content').mkdir();(root/'content/native-field-menus.json').write_text(json.dumps(bad),encoding='utf8')
@@ -34,7 +34,9 @@ class FieldMenuSourceTests(unittest.TestCase):
     def test_new_game_default_bytes_are_preserved(self):
         from tools import native_session as session
         r=session.read(session.IR)
-        self.assertEqual(r['schema'],11)
+        self.assertEqual(r['schema'],12)
+        legacy=session.read(session.ROOT/'tests/fixtures/item-admission-legacy/native-session.json')
+        self.assertEqual(session.encode_snapshot(r['defaults'],r['compatibility']),session.encode_snapshot(legacy['defaults'],legacy['compatibility']))
         self.assertTrue(r['description_toggle'])
         self.assertEqual({i['item_id'] for i in r['field_items']},{i['item_id'] for i in r['storage_policies']})
 

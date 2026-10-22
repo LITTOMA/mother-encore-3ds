@@ -1,0 +1,13 @@
+[
+  {
+    "step": "items-source",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "build/full-port/regenerate-catalog-items.py"
+    ],
+    "returncode": 1,
+    "seconds": 0.5620000000344589
+  }
+]

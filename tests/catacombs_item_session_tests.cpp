@@ -14,15 +14,23 @@ static std::vector<uint8_t>read(const std::string&p){std::ifstream f(p,std::ios:
 
 int main(int argc,char**argv){
  CHECK(argc==3);const std::string root=argv[1],fixture=argv[2];
- NativeSessionData data,legacy;RoomData room;HouseData house;BattleRoundData round;ItemData items,old_items;
+ NativeSessionData data,legacy,production;RoomData room;HouseData house;BattleRoundData round;ItemData items,old_items,production_items;
  CHECK(data.load_file((fixture+"/candidate.encsession").c_str(),error));
- CHECK(legacy.load_file((root+"/session/opening.encsession").c_str(),error));
+ CHECK(legacy.load_file((fixture+"/legacy11.encsession").c_str(),error));
+ CHECK(production.load_file((root+"/session/opening.encsession").c_str(),error));
  CHECK(room.load_file((root+"/world/house/opening.encroom").c_str(),error));
  CHECK(house.load_file((root+"/world/house/opening.enchouse").c_str(),error));
  CHECK(round.load_file((root+"/battle/doll/doll-entry.encround").c_str(),error));
  CHECK(items.load_file((fixture+"/candidate.encitems").c_str(),error));
- CHECK(old_items.load_file((root+"/ui/opening.encitems").c_str(),error));
- auto valid=[&](const SessionSnapshot&s){return validate_native_session_snapshot(data,room.view(),house.view(),round.view(),items.view(),s,error);};
+ CHECK(old_items.load_file((fixture+"/legacy.encitems").c_str(),error));
+ CHECK(production_items.load_file((root+"/ui/opening.encitems").c_str(),error));
+ CHECK(read(root+"/session/opening.encsession")==read(fixture+"/candidate.encsession"));
+ CHECK(read(root+"/ui/opening.encitems")==read(fixture+"/candidate.encitems"));
+ auto valid=[&](const SessionSnapshot&s){
+  const bool candidate=validate_native_session_snapshot(data,room.view(),house.view(),round.view(),items.view(),s,error);
+  CHECK(validate_native_session_snapshot(production,room.view(),house.view(),round.view(),production_items.view(),s,error)==candidate);
+  return candidate;
+ };
  CHECK(valid(data.defaults()));
  std::vector<NativeSessionAcquisition>grants;
  for(const auto&a:data.acquisitions())if(a.flag_policy==2&&a.flag_id.rfind("Catacombs/",0)==0)grants.push_back(a);
@@ -59,7 +67,7 @@ int main(int argc,char**argv){
  auto duplicate=consumed;duplicate.object_flags.push_back(duplicate.object_flags.front());CHECK(!valid(duplicate));
  // The legacy payload is byte-identical. Only the independent resource header
  // changes for a v12 resource without grouped additions.
- auto v11=read(root+"/session/opening.encsession"),v12=read(fixture+"/legacy12.encsession");CHECK(v11.size()==v12.size());CHECK(std::equal(v11.begin()+24,v11.end(),v12.begin()+24));
+ auto v11=read(fixture+"/legacy11.encsession"),v12=read(fixture+"/legacy12.encsession");CHECK(v11.size()==v12.size());CHECK(std::equal(v11.begin()+24,v11.end(),v12.begin()+24));
  NativeSessionData same;CHECK(same.load(v12.data(),v12.size(),error));CHECK(validate_native_session_snapshot(same,room.view(),house.view(),round.view(),old_items.view(),same.defaults(),error));
  auto source=read(fixture+"/candidate.encsession");
  for(size_t n=0;n<source.size();++n){CHECK(!data.load(source.data(),n,error));CHECK(data.acquisitions().size()==legacy.acquisitions().size()+grants.size());}

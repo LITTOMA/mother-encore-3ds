@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+LEGACY = ROOT / 'tests/fixtures/item-admission-legacy'
 sys.path.insert(0, str(ROOT))
 from tools import catacombs_item_catalog as catalog, native_items, native_session
 from tools.extract_battle_entry import Extractor
@@ -18,7 +19,12 @@ def build(output):
     if not output.is_relative_to(allowed) or output == allowed or output.is_symlink():
         raise ValueError('Owned catalog fixture must be below build')
     data = catalog.load()
-    original = native_session.read(native_session.IR)
+    legacy_proof=catalog.read(LEGACY/'source.json')
+    for path in ('content/native-items.json','content/native-session.json'):
+        record=legacy_proof['files'][path]
+        if catalog.digest(ROOT/record['fixture'])!=record['sha256']:
+            raise ValueError('Historical catalog baseline changed')
+    original = native_session.read(LEGACY/'native-session.json')
     if original['schema'] != 11:
         raise ValueError('Legacy source baseline changed; review the catalog fixture')
     candidate = copy.deepcopy(original)
@@ -31,12 +37,18 @@ def build(output):
                                                   total_count=len(row['grants']), required=False,
                                                   boosts=[0] * 7))
         candidate['field_items'].append(dict(item_id=row['source'], doses=1, drop=True, consume=True))
-    item_ir = catalog.append_item(Extractor(ROOT), catalog.read(ROOT / 'content/native-items.json'))
+    old_items=catalog.read(LEGACY/'native-items.json')
+    item_ir = catalog.append_item(Extractor(ROOT),old_items)
     legacy12 = copy.deepcopy(original)
     legacy12['schema'] = 12
     files = {'candidate.encitems': native_items.encode(native_items.lower(item_ir)),
              'candidate.encsession': native_session.encode(candidate),
-             'legacy12.encsession': native_session.encode(legacy12)}
+             'legacy12.encsession': native_session.encode(legacy12),
+             'legacy11.encsession': native_session.encode(original),
+             'legacy.encitems': native_items.encode(native_items.lower(old_items))}
+    for filename,path in [('legacy11.encsession','romfs/session/opening.encsession'),('legacy.encitems','romfs/ui/opening.encitems')]:
+        if hashlib.sha256(files[filename]).hexdigest()!=legacy_proof['files'][path]['sha256']:
+            raise ValueError('Historical catalog binary bytes changed')
     bad = []
 
     def reject(label, mutate):
@@ -71,7 +83,9 @@ def build(output):
                     sources={p: catalog.digest(ROOT / p) for p in
                              ['tools/native_session.py', 'tools/catacombs_item_catalog.py',
                               'tests/prepare_catacombs_item_catalog.py',
-                              'content/catacombs-item-catalog.json', 'content/native-session.json']},
+                               'content/catacombs-item-catalog.json',
+                               'tests/fixtures/item-admission-legacy/native-session.json',
+                               'tests/fixtures/item-admission-legacy/native-items.json']},
                     files={p: hashlib.sha256(v).hexdigest() for p, v in files.items()})
     files['manifest.json'] = (json.dumps(manifest, indent=2) + '\n').encode()
     marker = output / '.owned-catacombs-catalog-fixture'

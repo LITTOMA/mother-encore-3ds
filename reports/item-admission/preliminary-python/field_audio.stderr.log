@@ -1,0 +1,26 @@
+test_actual_reviewed_source_binding (tests.test_field_audio.FieldAudioBinding.test_actual_reviewed_source_binding) ... ok
+test_coverage_and_asset_container (tests.test_field_audio.FieldAudioBinding.test_coverage_and_asset_container) ... ok
+test_detached_valid_binding (tests.test_field_audio.FieldAudioBinding.test_detached_valid_binding) ... ok
+test_extension_source_admission_failure_propagates (tests.test_field_audio.FieldAudioBinding.test_extension_source_admission_failure_propagates) ... ok
+test_invalid_and_duplicate_pcm_paths (tests.test_field_audio.FieldAudioBinding.test_invalid_and_duplicate_pcm_paths) ... ok
+test_invalid_and_duplicate_stable_ids (tests.test_field_audio.FieldAudioBinding.test_invalid_and_duplicate_stable_ids) ... ok
+test_license_review_required (tests.test_field_audio.FieldAudioBinding.test_license_review_required) ... ok
+test_nonzero_nonfinite_and_unknown_gain (tests.test_field_audio.FieldAudioBinding.test_nonzero_nonfinite_and_unknown_gain) ... ok
+test_source_admission_failure_propagates (tests.test_field_audio.FieldAudioBinding.test_source_admission_failure_propagates) ... ok
+test_source_and_import_provenance_required (tests.test_field_audio.FieldAudioBinding.test_source_and_import_provenance_required) ... ok
+test_source_coverage_matches_actual_pause_bindings (tests.test_field_audio.FieldAudioBinding.test_source_coverage_matches_actual_pause_bindings) ... ok
+test_stable_identity_shape (tests.test_field_audio.FieldAudioBinding.test_stable_identity_shape) ... ok
+test_unknown_and_missing_row_fields (tests.test_field_audio.FieldAudioBinding.test_unknown_and_missing_row_fields) ... ok
+test_unknown_and_missing_top_level_fields (tests.test_field_audio.FieldAudioBinding.test_unknown_and_missing_top_level_fields) ... ok
+test_unknown_conversions (tests.test_field_audio.FieldAudioBinding.test_unknown_conversions) ... ok
+test_unknown_duplicate_and_unsafe_source (tests.test_field_audio.FieldAudioBinding.test_unknown_duplicate_and_unsafe_source) ... ok
+test_unknown_schema_kind_pin (tests.test_field_audio.FieldAudioBinding.test_unknown_schema_kind_pin) ... ok
+test_unsigned_stable_identity_boundary (tests.test_field_audio.FieldAudioBinding.test_unsigned_stable_identity_boundary) ... ok
+test_failed_extract_restores_exact_previous_bytes (tests.test_field_audio.GameplayWorldCoverage.test_failed_extract_restores_exact_previous_bytes) ... ok
+test_key_received_source_reuses_existing_audio_identity (tests.test_field_audio.GameplayWorldCoverage.test_key_received_source_reuses_existing_audio_identity) ... ok
+test_missing_duplicate_and_unbound_coverage_rejected (tests.test_field_audio.GameplayWorldCoverage.test_missing_duplicate_and_unbound_coverage_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 49.903s
+
+OK

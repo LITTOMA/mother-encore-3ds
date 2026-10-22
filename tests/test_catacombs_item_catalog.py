@@ -98,7 +98,7 @@ class CatacombsItemCatalogTests(unittest.TestCase):
                 catalog.receipt(folder)
 
     def test_append_preserves_stable_catalog_and_keeps_actions_disabled(self):
-        base = catalog.read(catalog.ROOT / 'content/native-items.json')
+        base = catalog.read(fixture.LEGACY / 'native-items.json')
         original = copy.deepcopy(base)
         candidate = catalog.append_item(None, base)
         self.assertEqual(base, original)
@@ -110,6 +110,18 @@ class CatacombsItemCatalogTests(unittest.TestCase):
         base['definitions'][0]['id'] = 4
         with self.assertRaises(ValueError):
             catalog.append_item(None, base)
+
+    def test_review_dependencies_remain_narrow_and_fingerprinted(self):
+        from tools import native_items
+        for path in ('content/native-items.json','romfs/ui/opening.encitems',catalog.REVIEW.as_posix()):
+            self.assertTrue(native_items.dependency_path(path))
+        for path in ('../content/a.json','/content/a.json','compatibility/a.json','compatibility/reviews/a.txt',
+                     'compatibility/reviews/../a.json',True,'tools/a.json'):
+            self.assertFalse(native_items.dependency_path(path))
+        current=catalog.read(catalog.ROOT/'content/native-items.json')
+        real_digest=native_items.digest;review=catalog.ROOT/catalog.REVIEW
+        with patch.object(native_items,'digest',side_effect=lambda p:'0'*64 if Path(p)==review else real_digest(p)),self.assertRaises(ValueError):
+            native_items.verify_sources(current)
 
     def test_owned_fixture_repeatability_and_unowned_corruption_reject(self):
         root = self.temporary()

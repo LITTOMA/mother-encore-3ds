@@ -1,0 +1,63 @@
+[
+  {
+    "step": "catalog",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tests/prepare_catacombs_item_catalog.py",
+      "build/full-port/catacombs-catalog-fixture-3"
+    ],
+    "returncode": 0,
+    "seconds": 2.405999999959022
+  },
+  {
+    "step": "consumption",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tests/prepare_item_consumption.py",
+      "build/full-port/item-consume-fixture-5",
+      "reports/item-consumption/original-1"
+    ],
+    "returncode": 0,
+    "seconds": 4.625
+  },
+  {
+    "step": "details",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tests/prepare_catacombs_item_details.py",
+      "build/full-port/catacombs-details-fixture-2"
+    ],
+    "returncode": 0,
+    "seconds": 2.406000000075437
+  },
+  {
+    "step": "storage",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tests/prepare_catacombs_storage.py",
+      "build/full-port/catacombs-storage-fixture-2"
+    ],
+    "returncode": 0,
+    "seconds": 6.905999999959022
+  },
+  {
+    "step": "source-stage",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/stage_native_romfs.py",
+      "--verify-only"
+    ],
+    "returncode": 0,
+    "seconds": 85.14100000006147
+  }
+]

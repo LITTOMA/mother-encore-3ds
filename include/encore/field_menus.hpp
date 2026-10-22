@@ -55,7 +55,7 @@ public:
  std::vector<double>volume_db;std::vector<uint32_t>logical_buttons;std::vector<std::string>button_names,locales,display_names;std::vector<FieldMenuLabel>locale_names;std::array<std::vector<FieldMenuLabel>,3>setting_labels;FieldMenuLabel capture_cancel;
  FieldMenuPreferences defaults;uint32_t rows=0,columns=0;float row_pitch=0,column_pitch=0,line_height=0,map_offset_x=0,map_offset_y=0,map_divisor=0,map_speed=0,map_fast=0;
  std::string map_item;bool description_toggle=false;float map_home_x=0,map_home_y=0;std::array<std::array<uint32_t,2>,2>display_sizes{};
- std::string consume_actor,consume_sound,consume_bus;uint32_t cure_refresh_hp=0,consume_lane=0;
+ std::string consume_actor,consume_sound,consume_slot;uint32_t cure_refresh_hp=0,consume_lane=0;
  std::vector<std::string>consume_statuses;std::vector<FieldMenuConsumeEffect>consume_effects;
 private:bool valid_=false,consume_effects_=false;
 };

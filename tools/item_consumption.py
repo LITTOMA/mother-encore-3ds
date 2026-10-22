@@ -29,10 +29,10 @@ def identity(value):
 
 
 def validate(model):
-    fields(model,'actor refresh_hp sound bus lane statuses effects'.split(),'model fields')
+    fields(model,'actor refresh_hp sound slot lane statuses effects'.split(),'model fields')
     require(identity(model['actor'])and type(model['refresh_hp'])is int and 0<model['refresh_hp']<=65535
-            and identity(model['bus'])and type(model['lane'])is int and model['lane']==1,
-            'Consume actor/refresh/bus/lane rejected')
+            and identity(model['slot'])and type(model['lane'])is int and model['lane']==1,
+            'Consume actor/refresh/slot/lane rejected')
     sound=model['sound']
     require(type(sound)is str and sound and not sound.startswith('/')and not sound.endswith('/')
             and '..'not in sound and '//'not in sound and ':'not in sound and '\\'not in sound
@@ -119,8 +119,8 @@ def derive():
         effects.append(dict(id=name,hp=hp,cure=cure[0]if cure else'',message_keys=keys,
                             messages=[message(key)if key else dict(en='',zh='')for key in keys]))
     model=validate(dict(actor=native['party'][0],refresh_hp=refresh,
-                        sound=sounds[0][0],bus=sounds[0][1],lane=1,statuses=statuses,effects=effects))
-    return dict(schema=1,kind='encore.native-item-consumption',commit=PIN,model=model,
+                        sound=sounds[0][0],slot=sounds[0][1],lane=1,statuses=statuses,effects=effects))
+    return dict(schema=2,kind='encore.native-item-consumption',commit=PIN,model=model,
                 source=dict(original=proof,sources=ex.sources),
                 dependencies={catalog.IR.as_posix():catalog.digest(ROOT/catalog.IR)},
                 scope='Original HP-only food and one-status antidote/spray for the admitted singleton and declared status domain. No PP/boost/reusable/transform item, UI timer, PCM or full-scene admission.')
@@ -169,7 +169,7 @@ def encode_extension(model):
     def text(value):
         raw=value.encode('utf-8');require(len(raw)<=4096 and '\0'not in value,'Consume string bound')
         number(len(raw));data.extend(raw)
-    text(model['actor']);number(model['refresh_hp']);text(model['sound']);text(model['bus']);number(model['lane'])
+    text(model['actor']);number(model['refresh_hp']);text(model['sound']);text(model['slot']);number(model['lane'])
     number(len(model['statuses']))
     for status in model['statuses']:text(status)
     number(len(model['effects']))

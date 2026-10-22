@@ -1,0 +1,14 @@
+[
+  {
+    "step": "catalog",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tests/prepare_catacombs_item_catalog.py",
+      "build/full-port/catacombs-catalog-fixture-3"
+    ],
+    "returncode": 1,
+    "seconds": 3.047000000020489
+  }
+]

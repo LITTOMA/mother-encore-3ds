@@ -1,0 +1,326 @@
+{
+  "runtime_actor_actions.cpp.o": {
+    "runtime/actor_actions.cpp": "d3ff91ef3893022c116553a7ec1d568bd5a6511f4230cf38d9581a97acb552d1",
+    "include/encore/actor_actions.hpp": "b494c139656843f359aa0123220e92554fecf063d2017b47df089c5d71599d0a",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6"
+  },
+  "runtime_animation.cpp.o": {
+    "runtime/animation.cpp": "b76eadced4b54c51a922650f24641fcd27dc13c467632049045258d632ec40c4",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6"
+  },
+  "runtime_battle_data.cpp.o": {
+    "runtime/battle_data.cpp": "c5f0ec236e53ffcccbe48aedd7dd057b82321836bb15e2f9a2e66eef0f939d8a",
+    "include/encore/battle_data.hpp": "640be91827e4d951cbe63e7896efeefafc44f810bf8478c95d9bf203f2b17cbc",
+    "include/encore/preparation_control.hpp": "de0aeb5b1179f89d70fe02cae295c2720f0baf8c6712a766aaa932783f8d1de7",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_battle_entry.cpp.o": {
+    "runtime/battle_entry.cpp": "1481fde22203174530d1d43bee2cbf62980ca67fc7224b693a9640adb5b152da",
+    "include/encore/battle_entry.hpp": "27d5ff48548abce36fa149eac56de372229a1fd1083b69328bbb65a5b967527b",
+    "include/encore/battle_data.hpp": "640be91827e4d951cbe63e7896efeefafc44f810bf8478c95d9bf203f2b17cbc",
+    "include/encore/preparation_control.hpp": "de0aeb5b1179f89d70fe02cae295c2720f0baf8c6712a766aaa932783f8d1de7",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/world.hpp": "91cd715d30dee1029be63013e4e74e4d56e8adbaef2ddc6c9979ad2918aae456",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6",
+    "include/encore/collision.hpp": "6ab513f4ca57c255517ab4c359c042466db79a862673926335f7d8c440e1fd49",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/world_flags.hpp": "a36d5f997217a8c361a94abd6fa54530d7903d3c8835664bd3d3ae8f244d7e36",
+    "include/encore/dialogue.hpp": "2405f8f332d31a3d50777f68fc38b760249a586dd0f82c4e18db168b65bb0113",
+    "include/encore/actor_actions.hpp": "b494c139656843f359aa0123220e92554fecf063d2017b47df089c5d71599d0a",
+    "include/encore/persistent_player.hpp": "8f6e71afc0d67e8aced97c59d939986a94a4773682ffb5e36802cae007c0ac2a",
+    "include/encore/cutscene_camera.hpp": "2dcf4594b59a7cf369be4e82db3216ecd97ddaea3d0299f370928ed63bfe4951",
+    "include/encore/field_player_tree.hpp": "40943ada0681892e82c43a80b6d07aeaf1e6445afc43b897f6886cac1e59a771",
+    "include/encore/field_swing_entry.hpp": "68633293700685c4e0d4e35a9e8a791cbaf327405c057808dc26cce024a8e35c",
+    "include/encore/field_swing_action.hpp": "53b4f20596f398ff2590d6bb498b1ad3acf82dc2c63fd0274e8d41cd9cc92792",
+    "include/encore/field_swing.hpp": "fc7ba8555c422a154119099e413d2457e2b56646333a279cc5266b946ee41bbc",
+    "include/encore/scene_player_transfer.hpp": "12b94fecf96b01991b48a04165d742693e5d3a11e321086f7cde7535bd6cfa1d",
+    "include/encore/source_random.hpp": "92496af2bdc87c123815aeace9e52a7e133aa03ae90193a14a627b6c075be73f",
+    "include/encore/story_object_host.hpp": "c7e7eea5b25e3af32c0d9bd517efcbb58b5a92ca3118ce466ade56db89a0a627"
+  },
+  "runtime_battle_round_data.cpp.o": {
+    "runtime/battle_round_data.cpp": "d86938cc86015faf97b165020e51e6e487109ecfeed5b89f920b841982812103",
+    "include/encore/battle_round_data.hpp": "e60ba3ea6761bf212d675192466531e15e2501058422ab34142062e8232b5102",
+    "include/encore/preparation_control.hpp": "de0aeb5b1179f89d70fe02cae295c2720f0baf8c6712a766aaa932783f8d1de7",
+    "include/encore/battle_data.hpp": "640be91827e4d951cbe63e7896efeefafc44f810bf8478c95d9bf203f2b17cbc",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_collision.cpp.o": {
+    "runtime/collision.cpp": "3e1a08d9afe216842cd88181b1eadbeb1d40d7557b6a45d29ab25446977ecf2d",
+    "include/encore/collision.hpp": "6ab513f4ca57c255517ab4c359c042466db79a862673926335f7d8c440e1fd49",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6"
+  },
+  "runtime_cutscene_camera.cpp.o": {
+    "runtime/cutscene_camera.cpp": "c2333322e470a934eeb1db54aa891c9907db5a72b584da23f517883bdd8edfa9",
+    "include/encore/cutscene_camera.hpp": "2dcf4594b59a7cf369be4e82db3216ecd97ddaea3d0299f370928ed63bfe4951",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6",
+    "include/encore/source_random.hpp": "92496af2bdc87c123815aeace9e52a7e133aa03ae90193a14a627b6c075be73f"
+  },
+  "runtime_dialogue.cpp.o": {
+    "runtime/dialogue.cpp": "7a4b96b2848e538210bd96681f0daa72a71442d6ba0ab126625d37cf3b5bb129",
+    "include/encore/dialogue.hpp": "2405f8f332d31a3d50777f68fc38b760249a586dd0f82c4e18db168b65bb0113",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6"
+  },
+  "runtime_dialogue_choices.cpp.o": {
+    "runtime/dialogue_choices.cpp": "1adc377da780c8ac8e4fb38965581a1098e25643ee77204f7d2e17dda2a12010",
+    "include/encore/dialogue_choices.hpp": "6c82f76688b5ba918d19ad429b7c86d93fcbeff80a7860494d921f656ef8b117",
+    "include/encore/dialogue_choices_data.hpp": "87043f9d621dcf75d3610096af786a7320eaefc0e7c62afe2f4b7b7d9972993d"
+  },
+  "runtime_dialogue_choices_data.cpp.o": {
+    "runtime/dialogue_choices_data.cpp": "d07aa91ff6113dcb38cd4d93c98f2d39e25b62b156c4336ae7e65bb81ec0b661",
+    "include/encore/dialogue_choices_data.hpp": "87043f9d621dcf75d3610096af786a7320eaefc0e7c62afe2f4b7b7d9972993d"
+  },
+  "runtime_field_data.cpp.o": {
+    "runtime/field_data.cpp": "7a93d9ad639a7f1e31e7da09c38e85b5a5beb0d8b139281a15132a013f761019",
+    "include/encore/field_data.hpp": "eb11deea2c3f10e4040d0b57e19ba2eab425c504f14999255b7404a4e3da4843",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_field_player_tree.cpp.o": {
+    "runtime/field_player_tree.cpp": "c9a1c5a00e3ed1ee2ddff2a8f28793b709723dfbf16dd60259bcb128c5665625",
+    "include/encore/field_player_tree.hpp": "40943ada0681892e82c43a80b6d07aeaf1e6445afc43b897f6886cac1e59a771",
+    "include/encore/field_swing_entry.hpp": "68633293700685c4e0d4e35a9e8a791cbaf327405c057808dc26cce024a8e35c",
+    "include/encore/field_swing_action.hpp": "53b4f20596f398ff2590d6bb498b1ad3acf82dc2c63fd0274e8d41cd9cc92792",
+    "include/encore/field_swing.hpp": "fc7ba8555c422a154119099e413d2457e2b56646333a279cc5266b946ee41bbc",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6"
+  },
+  "runtime_field_swing.cpp.o": {
+    "runtime/field_swing.cpp": "ea497aec16702d53ba74f61e671ec68ed87a849788c127fddbbaa9e985d95f49",
+    "include/encore/field_swing.hpp": "fc7ba8555c422a154119099e413d2457e2b56646333a279cc5266b946ee41bbc",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_field_swing_action.cpp.o": {
+    "runtime/field_swing_action.cpp": "e3cfc45e710e8f85410a5c0e6c614232df5edc78abbaeeaf0c83cae9d6b39476",
+    "include/encore/field_swing_action.hpp": "53b4f20596f398ff2590d6bb498b1ad3acf82dc2c63fd0274e8d41cd9cc92792",
+    "include/encore/field_swing.hpp": "fc7ba8555c422a154119099e413d2457e2b56646333a279cc5266b946ee41bbc",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_field_swing_entry.cpp.o": {
+    "runtime/field_swing_entry.cpp": "d9a2c7673180b181a2f570da84bbd32edc9f3a60f8535f8f059a7d6c189cc899",
+    "include/encore/field_swing_entry.hpp": "68633293700685c4e0d4e35a9e8a791cbaf327405c057808dc26cce024a8e35c",
+    "include/encore/field_swing_action.hpp": "53b4f20596f398ff2590d6bb498b1ad3acf82dc2c63fd0274e8d41cd9cc92792",
+    "include/encore/field_swing.hpp": "fc7ba8555c422a154119099e413d2457e2b56646333a279cc5266b946ee41bbc",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_field_swing_graphics.cpp.o": {
+    "runtime/field_swing_graphics.cpp": "f8d92742d6495b8dc77b5092cd3577749fe3d15a6c27aab061448ccecf1833f6",
+    "include/encore/field_swing_graphics.hpp": "1ce91afb2e26ec3c4b22f5b09edf99157757d21af59d68c0872d171006052699",
+    "include/encore/field_swing.hpp": "fc7ba8555c422a154119099e413d2457e2b56646333a279cc5266b946ee41bbc",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_field_swing_resources.cpp.o": {
+    "runtime/field_swing_resources.cpp": "fb1b470547d65f412451e1467cf3a02c84173cde2e9144dee3db35ead9a86ea5",
+    "include/encore/field_swing_resources.hpp": "3ccedccb18dad3273cc9b82b357c2d41941b0504acd39192f9de421b1c40a3f8",
+    "include/encore/field_swing_entry.hpp": "68633293700685c4e0d4e35a9e8a791cbaf327405c057808dc26cce024a8e35c",
+    "include/encore/field_swing_action.hpp": "53b4f20596f398ff2590d6bb498b1ad3acf82dc2c63fd0274e8d41cd9cc92792",
+    "include/encore/field_swing.hpp": "fc7ba8555c422a154119099e413d2457e2b56646333a279cc5266b946ee41bbc",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6",
+    "include/encore/field_swing_graphics.hpp": "1ce91afb2e26ec3c4b22f5b09edf99157757d21af59d68c0872d171006052699",
+    "include/encore/resource_catalog.hpp": "7d5c3956ff6f8f69c267be3cf72bd90ea1ea9baf0a17e77b9cdbf9b664015110"
+  },
+  "runtime_file_io.cpp.o": {
+    "runtime/file_io.cpp": "31fb1dacf83965aad6cb00d3dbcdc147432d3948f9c6f3f85c17c41c6dcefda7",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_house_data.cpp.o": {
+    "runtime/house_data.cpp": "dddfe6d330f58d95f49a7588fcb631076e3633f31d33dfdda009e389795a0afe",
+    "include/encore/house_data.hpp": "c0fb2c25e2d03b0d7ad7e9179dc6c1497982cad7f614286484d17abfc7900418",
+    "include/encore/battle_data.hpp": "640be91827e4d951cbe63e7896efeefafc44f810bf8478c95d9bf203f2b17cbc",
+    "include/encore/preparation_control.hpp": "de0aeb5b1179f89d70fe02cae295c2720f0baf8c6712a766aaa932783f8d1de7",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_house_presentation.cpp.o": {
+    "runtime/house_presentation.cpp": "42069c8ba7f5b61c17e2f12e656228d0ef671df2e0e79c964aad56696f724dcd",
+    "include/encore/house_presentation.hpp": "439ddb2c5c2c18826c648f0fd182a765912906435faffee5ba83a4e11a572ade",
+    "include/encore/house_data.hpp": "c0fb2c25e2d03b0d7ad7e9179dc6c1497982cad7f614286484d17abfc7900418",
+    "include/encore/battle_data.hpp": "640be91827e4d951cbe63e7896efeefafc44f810bf8478c95d9bf203f2b17cbc",
+    "include/encore/preparation_control.hpp": "de0aeb5b1179f89d70fe02cae295c2720f0baf8c6712a766aaa932783f8d1de7",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/source_random.hpp": "92496af2bdc87c123815aeace9e52a7e133aa03ae90193a14a627b6c075be73f",
+    "include/encore/utf8.hpp": "85c98f90447a7a950e56a258652eb0679a66cd4984effaff89875fbd74c6a2f3",
+    "include/encore/battle_entry.hpp": "27d5ff48548abce36fa149eac56de372229a1fd1083b69328bbb65a5b967527b",
+    "include/encore/world.hpp": "91cd715d30dee1029be63013e4e74e4d56e8adbaef2ddc6c9979ad2918aae456",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6",
+    "include/encore/collision.hpp": "6ab513f4ca57c255517ab4c359c042466db79a862673926335f7d8c440e1fd49",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/world_flags.hpp": "a36d5f997217a8c361a94abd6fa54530d7903d3c8835664bd3d3ae8f244d7e36",
+    "include/encore/dialogue.hpp": "2405f8f332d31a3d50777f68fc38b760249a586dd0f82c4e18db168b65bb0113",
+    "include/encore/actor_actions.hpp": "b494c139656843f359aa0123220e92554fecf063d2017b47df089c5d71599d0a",
+    "include/encore/persistent_player.hpp": "8f6e71afc0d67e8aced97c59d939986a94a4773682ffb5e36802cae007c0ac2a",
+    "include/encore/cutscene_camera.hpp": "2dcf4594b59a7cf369be4e82db3216ecd97ddaea3d0299f370928ed63bfe4951",
+    "include/encore/field_player_tree.hpp": "40943ada0681892e82c43a80b6d07aeaf1e6445afc43b897f6886cac1e59a771",
+    "include/encore/field_swing_entry.hpp": "68633293700685c4e0d4e35a9e8a791cbaf327405c057808dc26cce024a8e35c",
+    "include/encore/field_swing_action.hpp": "53b4f20596f398ff2590d6bb498b1ad3acf82dc2c63fd0274e8d41cd9cc92792",
+    "include/encore/field_swing.hpp": "fc7ba8555c422a154119099e413d2457e2b56646333a279cc5266b946ee41bbc",
+    "include/encore/scene_player_transfer.hpp": "12b94fecf96b01991b48a04165d742693e5d3a11e321086f7cde7535bd6cfa1d",
+    "include/encore/story_object_host.hpp": "c7e7eea5b25e3af32c0d9bd517efcbb58b5a92ca3118ce466ade56db89a0a627"
+  },
+  "runtime_items_data.cpp.o": {
+    "runtime/items_data.cpp": "984b347b025dfcc8daec7db7a36659f93fedd65e7ef22dc6c3f8b571a713ab6b",
+    "include/encore/items_data.hpp": "dbcc6634e9cff36466129b90b2b732532bccbfd35f5641fb9e05c078967b3805",
+    "include/encore/battle_data.hpp": "640be91827e4d951cbe63e7896efeefafc44f810bf8478c95d9bf203f2b17cbc",
+    "include/encore/preparation_control.hpp": "de0aeb5b1179f89d70fe02cae295c2720f0baf8c6712a766aaa932783f8d1de7",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_items_menu.cpp.o": {
+    "runtime/items_menu.cpp": "1fc1934a9ebcfa97b920334491574636cfb080c1d833ed1e2363e5be8043626f",
+    "include/encore/items_menu.hpp": "a5156d6f3144635aa108c11458a7be2a47834f785ab90a69f283487010444262",
+    "include/encore/items_data.hpp": "dbcc6634e9cff36466129b90b2b732532bccbfd35f5641fb9e05c078967b3805",
+    "include/encore/battle_data.hpp": "640be91827e4d951cbe63e7896efeefafc44f810bf8478c95d9bf203f2b17cbc",
+    "include/encore/preparation_control.hpp": "de0aeb5b1179f89d70fe02cae295c2720f0baf8c6712a766aaa932783f8d1de7",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/battle_entry.hpp": "27d5ff48548abce36fa149eac56de372229a1fd1083b69328bbb65a5b967527b",
+    "include/encore/world.hpp": "91cd715d30dee1029be63013e4e74e4d56e8adbaef2ddc6c9979ad2918aae456",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6",
+    "include/encore/collision.hpp": "6ab513f4ca57c255517ab4c359c042466db79a862673926335f7d8c440e1fd49",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/world_flags.hpp": "a36d5f997217a8c361a94abd6fa54530d7903d3c8835664bd3d3ae8f244d7e36",
+    "include/encore/dialogue.hpp": "2405f8f332d31a3d50777f68fc38b760249a586dd0f82c4e18db168b65bb0113",
+    "include/encore/actor_actions.hpp": "b494c139656843f359aa0123220e92554fecf063d2017b47df089c5d71599d0a",
+    "include/encore/persistent_player.hpp": "8f6e71afc0d67e8aced97c59d939986a94a4773682ffb5e36802cae007c0ac2a",
+    "include/encore/cutscene_camera.hpp": "2dcf4594b59a7cf369be4e82db3216ecd97ddaea3d0299f370928ed63bfe4951",
+    "include/encore/field_player_tree.hpp": "40943ada0681892e82c43a80b6d07aeaf1e6445afc43b897f6886cac1e59a771",
+    "include/encore/field_swing_entry.hpp": "68633293700685c4e0d4e35a9e8a791cbaf327405c057808dc26cce024a8e35c",
+    "include/encore/field_swing_action.hpp": "53b4f20596f398ff2590d6bb498b1ad3acf82dc2c63fd0274e8d41cd9cc92792",
+    "include/encore/field_swing.hpp": "fc7ba8555c422a154119099e413d2457e2b56646333a279cc5266b946ee41bbc",
+    "include/encore/scene_player_transfer.hpp": "12b94fecf96b01991b48a04165d742693e5d3a11e321086f7cde7535bd6cfa1d",
+    "include/encore/source_random.hpp": "92496af2bdc87c123815aeace9e52a7e133aa03ae90193a14a627b6c075be73f",
+    "include/encore/story_object_host.hpp": "c7e7eea5b25e3af32c0d9bd517efcbb58b5a92ca3118ce466ade56db89a0a627"
+  },
+  "runtime_localization.cpp.o": {
+    "runtime/localization.cpp": "f818f149e6d17afd73e526570614693199315f174520da92cf295195fc0a61ae",
+    "include/encore/localization.hpp": "06df2410f9500b6157a277e83c54092e0adb38b47e2f51d5fdc7b4a8f47fc29c",
+    "include/encore/utf8.hpp": "85c98f90447a7a950e56a258652eb0679a66cd4984effaff89875fbd74c6a2f3"
+  },
+  "runtime_movement.cpp.o": {
+    "runtime/movement.cpp": "515e86afd067f7787b02a10287ee7391fccf040dbdebf33b6139966a87eab0d4",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6"
+  },
+  "runtime_opening_trigger.cpp.o": {
+    "runtime/opening_trigger.cpp": "3f9992bb2c6df52dfa9068e43f46932d3141f84cec40eaf007db2b675a6d4f19",
+    "include/encore/opening_trigger.hpp": "b7cd025fda4a314b4fdec3fc29e79d137da769418ab620e10fa1e1ef4bf4f7e0",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6"
+  },
+  "runtime_progression.cpp.o": {
+    "runtime/progression.cpp": "f20b6b6394b6423f419841912a8f813cc69c69345fc31048cd585a8d16381b39",
+    "include/encore/progression.hpp": "293775e41b008198f8bd9ef9d0b22fd3ee5260515941e27318816816ac863ba7",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6"
+  },
+  "runtime_resource_catalog.cpp.o": {
+    "runtime/resource_catalog.cpp": "133a5c59e741e6eee84e338917d46fa0f892c9762bec32e1c2071554612ece95",
+    "include/encore/resource_catalog.hpp": "7d5c3956ff6f8f69c267be3cf72bd90ea1ea9baf0a17e77b9cdbf9b664015110",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_room_data.cpp.o": {
+    "runtime/room_data.cpp": "a9b3644813ebe508807c848cc084ce88624315ac86440076848166404e7ce491",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_session_save.cpp.o": {
+    "runtime/session_save.cpp": "ef5f00588bf0abbaa715b25746768bdbf7c50dcf1ff61e4a184f49f767f40faa",
+    "include/encore/session_save.hpp": "2113dce1685a11d22cd4bdbb0b8d99b57eb353e5e5b13d23bd474a9a49631550"
+  },
+  "runtime_source_random.cpp.o": {
+    "runtime/source_random.cpp": "3705d10157ef6104775471c0a5c09633e145249cf64d30145333f8bb3fd6e246",
+    "include/encore/source_random.hpp": "92496af2bdc87c123815aeace9e52a7e133aa03ae90193a14a627b6c075be73f"
+  },
+  "runtime_startup_settings.cpp.o": {
+    "runtime/startup_settings.cpp": "2e445fe07498491bb39f3ea4c0cd1381b1c2f79d473b6d2f14721a8e4e5ac4f5",
+    "include/encore/startup_settings.hpp": "470b5ff537c706d25d5c93a0e3cfebad48e09a0a4e259e606c159682fa50010f",
+    "include/encore/session_save.hpp": "2113dce1685a11d22cd4bdbb0b8d99b57eb353e5e5b13d23bd474a9a49631550"
+  },
+  "runtime_storage_menu.cpp.o": {
+    "runtime/storage_menu.cpp": "38a831ca2672f0413f3c1cc105675cbff778945d88faa0cbe5362ad2858aa096",
+    "include/encore/storage_menu.hpp": "b7a1ec0c83dddf1f0bc985e49da649c7845cd5c99002c1af201e7b1de7fe9e35",
+    "include/encore/storage_data.hpp": "c7a5f37a0b3fd4b643906d5ecf21438d1ec81d600d14424dd3aba000f1aaa147",
+    "include/encore/items_data.hpp": "dbcc6634e9cff36466129b90b2b732532bccbfd35f5641fb9e05c078967b3805",
+    "include/encore/battle_data.hpp": "640be91827e4d951cbe63e7896efeefafc44f810bf8478c95d9bf203f2b17cbc",
+    "include/encore/preparation_control.hpp": "de0aeb5b1179f89d70fe02cae295c2720f0baf8c6712a766aaa932783f8d1de7",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/items_menu.hpp": "a5156d6f3144635aa108c11458a7be2a47834f785ab90a69f283487010444262",
+    "include/encore/battle_round.hpp": "ce3e4c413954271105431d8db555533ffd67af24e9814b00da36ed16473edb67",
+    "include/encore/battle_round_data.hpp": "e60ba3ea6761bf212d675192466531e15e2501058422ab34142062e8232b5102",
+    "include/encore/source_random.hpp": "92496af2bdc87c123815aeace9e52a7e133aa03ae90193a14a627b6c075be73f"
+  },
+  "runtime_world.cpp.o": {
+    "runtime/world.cpp": "11ca8cf2d3afa2b37ecf0ec7778b7342ca2d5817edc56db70afac6ce1abd73e3",
+    "include/encore/world.hpp": "91cd715d30dee1029be63013e4e74e4d56e8adbaef2ddc6c9979ad2918aae456",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/collision.hpp": "6ab513f4ca57c255517ab4c359c042466db79a862673926335f7d8c440e1fd49",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/world_flags.hpp": "a36d5f997217a8c361a94abd6fa54530d7903d3c8835664bd3d3ae8f244d7e36",
+    "include/encore/dialogue.hpp": "2405f8f332d31a3d50777f68fc38b760249a586dd0f82c4e18db168b65bb0113",
+    "include/encore/actor_actions.hpp": "b494c139656843f359aa0123220e92554fecf063d2017b47df089c5d71599d0a",
+    "include/encore/persistent_player.hpp": "8f6e71afc0d67e8aced97c59d939986a94a4773682ffb5e36802cae007c0ac2a",
+    "include/encore/cutscene_camera.hpp": "2dcf4594b59a7cf369be4e82db3216ecd97ddaea3d0299f370928ed63bfe4951",
+    "include/encore/field_player_tree.hpp": "40943ada0681892e82c43a80b6d07aeaf1e6445afc43b897f6886cac1e59a771",
+    "include/encore/field_swing_entry.hpp": "68633293700685c4e0d4e35a9e8a791cbaf327405c057808dc26cce024a8e35c",
+    "include/encore/field_swing_action.hpp": "53b4f20596f398ff2590d6bb498b1ad3acf82dc2c63fd0274e8d41cd9cc92792",
+    "include/encore/field_swing.hpp": "fc7ba8555c422a154119099e413d2457e2b56646333a279cc5266b946ee41bbc",
+    "include/encore/scene_player_transfer.hpp": "12b94fecf96b01991b48a04165d742693e5d3a11e321086f7cde7535bd6cfa1d",
+    "include/encore/source_random.hpp": "92496af2bdc87c123815aeace9e52a7e133aa03ae90193a14a627b6c075be73f",
+    "include/encore/story_object_host.hpp": "c7e7eea5b25e3af32c0d9bd517efcbb58b5a92ca3118ce466ade56db89a0a627",
+    "include/encore/opening_trigger.hpp": "b7cd025fda4a314b4fdec3fc29e79d137da769418ab620e10fa1e1ef4bf4f7e0",
+    "include/encore/field_swing_resources.hpp": "3ccedccb18dad3273cc9b82b357c2d41941b0504acd39192f9de421b1c40a3f8",
+    "include/encore/field_swing_graphics.hpp": "1ce91afb2e26ec3c4b22f5b09edf99157757d21af59d68c0872d171006052699"
+  },
+  "runtime_world_flags.cpp.o": {
+    "runtime/world_flags.cpp": "5ef2ea44eb17a448581c14da59bc354cb522ea2a0956f04ecda53a6e1a4fa900",
+    "include/encore/world_flags.hpp": "a36d5f997217a8c361a94abd6fa54530d7903d3c8835664bd3d3ae8f244d7e36",
+    "include/encore/room_data.hpp": "39405694424688093d3e09487ad60af8a36ae74ada4b9b24eca009b2340f62ed",
+    "include/encore/room_schema.hpp": "67b9a8fe10504bf53027ac534e4c6a9e1af2ca56b608bc5745466ce1bb7187f9",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/animation.hpp": "cfbceef05555a16dc00790a409ee2237aa75ea04394a2c1674a36f661d3813d6"
+  }
+}

@@ -1,0 +1,10 @@
+test_actual_repeated_original_sorts_and_old_bytes (tests.test_catacombs_storage.CatacombsStorageTests.test_actual_repeated_original_sorts_and_old_bytes) ... ok
+test_all_original_bilingual_comparisons_match_compiled_ranks (tests.test_catacombs_storage.CatacombsStorageTests.test_all_original_bilingual_comparisons_match_compiled_ranks) ... ok
+test_observation_unknown_fields_versions_types_and_ownership_reject (tests.test_catacombs_storage.CatacombsStorageTests.test_observation_unknown_fields_versions_types_and_ownership_reject) ... ok
+test_source_quantities_types_and_ordering_reject (tests.test_catacombs_storage.CatacombsStorageTests.test_source_quantities_types_and_ordering_reject) ... ok
+test_v2_roundtrip_and_legacy_quantity_guard (tests.test_catacombs_storage.CatacombsStorageTests.test_v2_roundtrip_and_legacy_quantity_guard) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 9.329s
+
+OK

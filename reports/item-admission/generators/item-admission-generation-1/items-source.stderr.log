@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\build\full-port\regenerate-catalog-items.py", line 5, in <module>
+    from tools.romfs_layout import receipt_path
+ImportError: cannot import name 'receipt_path' from 'tools.romfs_layout' (D:\GameDev\3DS\mother-encore-3ds\tools\romfs_layout.py)

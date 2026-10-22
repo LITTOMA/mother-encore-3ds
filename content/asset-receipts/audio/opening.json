@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "recipe_sha256": "0d20df3e8885e402cde20aff5e4acbb671575420df6d76b1bebd80f0e8f2a53a",
+  "recipe_sha256": "2b087a79619447415089cc9a6ecf20af11f46c52422dc9e5d832269ecb6a7e76",
   "ffmpeg_version": "ffmpeg version 7.0-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers\nbuilt with gcc 13.2.0 (Rev5, Built by MSYS2 project)\nconfiguration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libaribcaption --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libxevd --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxeve --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libcodec2 --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint\nlibavutil      59.  8.100 / 59.  8.100\nlibavcodec     61.  3.100 / 61.  3.100\nlibavformat    61.  1.100 / 61.  1.100\nlibavdevice    61.  1.100 / 61.  1.100\nlibavfilter    10.  1.100 / 10.  1.100\nlibswscale      8.  1.100 /  8.  1.100\nlibswresample   5.  1.100 /  5.  1.100\nlibpostproc    58.  1.100 / 58.  1.100\n",
   "ffmpeg_sha256": "e8de88d0fc5993b76af6337a68f886abc8a052bbbe437b1d2c1b0fde0534582a",
   "assets": [
@@ -2348,13 +2348,52 @@
         "1",
         "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-jt8aj73v\\0.pcm"
       ]
+    },
+    {
+      "stable_id": 1801,
+      "source_sha256": "11eee267112ad052721ae96c1a4bdd7e589493c7dd57d1327164b330473aeaef",
+      "sample_rate": 44100,
+      "channels": 1,
+      "loop": false,
+      "frames": 22050,
+      "loop_start": 0,
+      "pcm_bytes": 44100,
+      "pcm_crc32": 2653762681,
+      "pcm_path": "sound/effects/item-eat.pcm",
+      "source_path": "res://Audio/Sound effects/EB/eat.wav",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "df0147fca63e74e0d110b0b47df9acb78a8752c1a643a5dd3a982b4b245f0567",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "e7dba08c5885bef7319a1d46aa750a19e71742203ca2273f0853c897878dbff5",
+      "command": [
+        "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "D:\\GameDev\\3DS\\mother-encore-3ds\\upstream\\MOTHER-Encore\\Audio\\Sound effects\\EB\\eat.wav",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "C:\\Users\\litto\\AppData\\Local\\Temp\\encore-audio-sftrsg0t\\0.pcm"
+      ]
     }
   ],
   "files": [
     {
       "path": "sound/banks/opening.encaudio",
-      "size": 10431,
-      "sha256": "8b3a469a02429ddc18dfef72c528fec423aa874203fcd3c9675d3ee81ca20181"
+      "size": 10591,
+      "sha256": "1f665a7d4a0df7f25160cec28fa1e91e425d8758473ab32226821aa7e0c0accb"
     },
     {
       "path": "sound/effects/bash.pcm",
@@ -2545,6 +2584,11 @@
       "path": "sound/effects/introduction-thunder.pcm",
       "size": 338100,
       "sha256": "46113def40102327d47df699af3fa141b4843649ab030a3418467631bfb2e072"
+    },
+    {
+      "path": "sound/effects/item-eat.pcm",
+      "size": 44100,
+      "sha256": "e7dba08c5885bef7319a1d46aa750a19e71742203ca2273f0853c897878dbff5"
     },
     {
       "path": "sound/effects/item-received.pcm",

@@ -45,13 +45,27 @@ class NamingSessionDependency(unittest.TestCase):
         skipped=copy.deepcopy(previous);skipped['schema']=8
         with self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,skipped,current,'b'*64)
     def test_source_run_extension_keeps_naming_content(self):
-        previous=copy.deepcopy(self.current);previous['schema']=10;previous.pop('run_sounds')
-        candidate=naming.rebound_session_dependency(self.recipe,previous,self.current,'b'*64);self.assertEqual(naming.encode(candidate),naming.PACK.read_bytes())
+        current=copy.deepcopy(self.current);current['schema']=11
+        previous=copy.deepcopy(current);previous['schema']=10;previous.pop('run_sounds')
+        candidate=naming.rebound_session_dependency(self.recipe,previous,current,'b'*64);self.assertEqual(naming.encode(candidate),naming.PACK.read_bytes())
         for key,value in [('run_sounds',['wood','unreviewed']),('run_sounds',['wood']),('run_sounds',['wood','wood']),('field_items',[]),('schema',12),('defaults',{})]:
-            bad=copy.deepcopy(self.current);bad[key]=value
+            bad=copy.deepcopy(current);bad[key]=value
             with self.subTest(key=key),self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,previous,bad,'b'*64)
         skipped=copy.deepcopy(previous);skipped['schema']=9
         with self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,skipped,self.current,'b'*64)
+    def test_seven_pickup_extension_preserves_new_game_and_rejects_unmapped_changes(self):
+        previous=naming.read_json(ROOT/'tests/fixtures/item-admission-legacy/native-session.json')
+        candidate=naming.rebound_session_dependency(self.recipe,previous,self.current,'c'*64)
+        self.assertEqual(naming.encode(candidate),naming.PACK.read_bytes())
+        for mutate in (lambda d:d['acquisitions'].pop(),lambda d:d['acquisitions'][-1].update(max_count=2),
+                       lambda d:d['storage_policies'].reverse(),lambda d:d['field_items'].pop(),
+                       lambda d:d['mutable_flags'].append('unreviewed'),lambda d:d['camera_area_ids'].append('unreviewed'),
+                       lambda d:d.update(schema=13),lambda d:d['defaults'].update(unknown=True),
+                       lambda d:d['sources'].update(unknown='0'*64)):
+            bad=copy.deepcopy(self.current);mutate(bad)
+            with self.subTest(mutate=mutate),self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,previous,bad,'c'*64)
+        skipped=copy.deepcopy(previous);skipped['schema']=10
+        with self.assertRaises(ValueError):naming.rebound_session_dependency(self.recipe,skipped,self.current,'c'*64)
     def test_exact_baseline_required(self):
         for sha in (None,'main','1234','g'*40):
             with self.assertRaises(ValueError):naming.reuse_session(sha)

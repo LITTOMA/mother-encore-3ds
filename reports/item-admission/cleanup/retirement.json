@@ -1,0 +1,57 @@
+{
+  "bytes_freed": 803608104.0,
+  "scope": "Ten superseded test ELFs only; all current objects, six reused executables, raw logs and source proofs retained",
+  "files": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-host-1\\item_consumption",
+      "bytes": 81158856,
+      "sha256": "2116dba5ef129a937ddf0df1355654a87e98cf47f1fa532794fab1ae57f56529"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-host-1\\field_menus",
+      "bytes": 81712768,
+      "sha256": "7b65306119e149a695c1d1d03b6e5d02fe4748333dbfca13c2f5419a87e8f291"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-host-1\\catacombs_item_session",
+      "bytes": 75912064,
+      "sha256": "92e41a7baf9a64ba259cae50f00c2f4b745c67cb6a85baa72257e670d0837143"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-host-1\\native_session",
+      "bytes": 87109000,
+      "sha256": "744af7e9332abe484355d9f287cbdf290c4c02b7d7256d8050e840214c9d8bfb"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-host-1\\item_details",
+      "bytes": 72831832,
+      "sha256": "f60c325b61983b9b701d03e6b11512d1ad42f8516c909e6350b6981b46cd8c42"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-host-1\\catacombs_item_details",
+      "bytes": 72742424,
+      "sha256": "8a61c17cf71ca2b7db7d79d97d1c44e6393783df88e63dcbfe07173ccfff8273"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-host-1\\catacombs_storage",
+      "bytes": 75934960,
+      "sha256": "85bc01cf85d483985ab4ebd4334169be7b5905f3c97aef3266929a53105d3f06"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-host-1\\storage_runtime",
+      "bytes": 81246096,
+      "sha256": "43d9ae75d2ad117f0073cc2799e6b2b63cc56592a7db0de99d112f0dde735208"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-host-2\\field_menus",
+      "bytes": 84783992,
+      "sha256": "20453ed0c21907b8dfbd48fc66dfb1ba2e6230fb91c3dcce812333274d7cb39d"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-host-2\\native_session",
+      "bytes": 90176112,
+      "sha256": "0cbeeaf2b70cc546927c0d25b9fda6b1fa14a0f7e04cc083a73d8b8ae13db599"
+    }
+  ],
+  "retired": true
+}

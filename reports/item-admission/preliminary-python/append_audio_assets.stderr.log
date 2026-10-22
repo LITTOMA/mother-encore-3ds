@@ -1,0 +1,13 @@
+test_append_boundary_and_decoder_negative (tests.test_append_audio_assets.AppendAudio.test_append_boundary_and_decoder_negative) ... ok
+test_declared_output_rate_uses_actual_decoded_rate (tests.test_append_audio_assets.AppendAudio.test_declared_output_rate_uses_actual_decoded_rate) ... ok
+test_exact_append_and_existing_identity (tests.test_append_audio_assets.AppendAudio.test_exact_append_and_existing_identity) ... ok
+test_existing_payload_is_never_overwritten_or_removed (tests.test_append_audio_assets.AppendAudio.test_existing_payload_is_never_overwritten_or_removed) ... ok
+test_partial_payload_write_is_cleaned (tests.test_append_audio_assets.AppendAudio.test_partial_payload_write_is_cleaned) ... ok
+test_prior_recipe_receipt_and_bank_negative (tests.test_append_audio_assets.AppendAudio.test_prior_recipe_receipt_and_bank_negative) ... ok
+test_prior_snapshot_paths_cannot_publish (tests.test_append_audio_assets.AppendAudio.test_prior_snapshot_paths_cannot_publish) ... ok
+test_publication_verification_failure_restores_metadata (tests.test_append_audio_assets.AppendAudio.test_publication_verification_failure_restores_metadata) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.051s
+
+OK

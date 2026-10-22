@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "build/full-port/check-storage-linked-inputs.py", line 20, in <module>
+    assert not changed,(member,changed)
+AssertionError: ('runtime_session_restore.cpp.o', ['include/encore/native_session.hpp'])

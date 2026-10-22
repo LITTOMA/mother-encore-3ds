@@ -1,0 +1,149 @@
+[
+  {
+    "step": "items-source",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "build/full-port/regenerate-catalog-items.py"
+    ],
+    "returncode": 0,
+    "seconds": 5.858999999938533
+  },
+  {
+    "step": "items-pack",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/native_items.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 3.344000000040978
+  },
+  {
+    "step": "details-source",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/item_details.py",
+      "extract"
+    ],
+    "returncode": 0,
+    "seconds": 1.0
+  },
+  {
+    "step": "details-textures",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/item_details.py",
+      "assets",
+      "--tex3ds",
+      "build/tooling/pinned-tex3ds/tex3ds",
+      "--tex3ds-wrapper",
+      "build/tooling/run_tex3ds_wsl.py"
+    ],
+    "returncode": 0,
+    "seconds": 1.9070000000065193
+  },
+  {
+    "step": "details-pack",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/item_details.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 1.0309999999590218
+  },
+  {
+    "step": "storage-source",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/storage_assets.py",
+      "extract"
+    ],
+    "returncode": 0,
+    "seconds": 1.0
+  },
+  {
+    "step": "storage-textures",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/storage_assets.py",
+      "compile",
+      "--tex3ds",
+      "build/tooling/pinned-tex3ds/tex3ds",
+      "--tex3ds-wrapper",
+      "build/tooling/run_tex3ds_wsl.py"
+    ],
+    "returncode": 0,
+    "seconds": 6.453000000095926
+  },
+  {
+    "step": "storage-pack",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/native_storage.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 1.8119999999180436
+  },
+  {
+    "step": "session",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/native_session.py",
+      "extract"
+    ],
+    "returncode": 0,
+    "seconds": 9.625
+  },
+  {
+    "step": "field-menus",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/field_menus.py",
+      "extract"
+    ],
+    "returncode": 0,
+    "seconds": 2.297000000020489
+  },
+  {
+    "step": "eat-audio",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/append_audio_assets.py",
+      "--scope",
+      "item-consume",
+      "--stage",
+      "--out",
+      "build/full-port/item-eat-audio-publication-1",
+      "--ffmpeg",
+      "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+      "--ffprobe",
+      "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffprobe.exe"
+    ],
+    "returncode": 1,
+    "seconds": 9.311999999918044
+  }
+]

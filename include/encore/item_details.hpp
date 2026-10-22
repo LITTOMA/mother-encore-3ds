@@ -4,7 +4,7 @@
 
 namespace encore::upstream {
 enum class ItemDetailsSection:uint32_t {Strings=1,Definitions,Locales,Presentations,Tokens,Resources,Parameters};
-enum class ItemDetailsTokenKind:uint32_t {Text=1,Nickname,Doses,InlineImage,Newline,ItemValue};
+enum class ItemDetailsTokenKind:uint32_t {Text=1,Nickname,Doses,InlineImage,Newline,ItemValue,LiteralPercent};
 enum class ItemDetailsParameter:uint32_t {LineHeight=1,ImageBaseline,EnNameLimit,ZhNameLimit};
 struct ItemDetailsDefinition {uint32_t definition=0,source=0,raw_description=0,max_doses=0,item_value=0;};
 struct ItemDetailsLocale {uint32_t locale=0,separator=0,total=0,left_singular=0,left_plural=0,image_measure=0,base_color=0,hint_color=0;};

@@ -1,0 +1,18 @@
+config_version=4
+_global_script_classes=[{"base": "Object", "class": "Character", "language": "GDScript", "path": "res://Character.gd"}, {"base": "Node", "class": "Status", "language": "GDScript", "path": "res://Status.gd"}, {"base": "Reference", "class": "Item", "language": "GDScript", "path": "res://Item.gd"}, {"base": "Reference", "class": "Inventory", "language": "GDScript", "path": "res://Inventory.gd"}, {"base": "Object", "class": "PartyMember", "language": "GDScript", "path": "res://Member.gd"}, {"base": "Reference", "class": "TextTools", "language": "GDScript", "path": "res://TextTools.gd"}]
+_global_script_class_icons={"Character": "", "Status": "", "Item": "", "Inventory": "", "PartyMember": "", "TextTools": ""}
+[application]
+config/name="Original inventory sorting"
+run/main_scene="res://probe.tscn"
+[autoload]
+globaldata="*res://globaldata.gd"
+global="*res://global.gd"
+uiManager="*res://ui.gd"
+audioManager="*res://audio.gd"
+[debug]
+gdscript/warnings/unused_variable=false
+gdscript/warnings/shadowed_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/standalone_expression=false
+gdscript/warnings/unused_signal=false
+gdscript/warnings/integer_division=false

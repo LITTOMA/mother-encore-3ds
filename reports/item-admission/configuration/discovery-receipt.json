@@ -1,0 +1,16 @@
+{
+  "registered_tests": 385,
+  "new_required_tests": [
+    "catacombs_item_details",
+    "catacombs_item_session",
+    "catacombs_storage",
+    "catacombs_storage_bad_reference",
+    "item_consumption",
+    "item_consumption_bad_reference",
+    "prepare_catacombs_item_catalog",
+    "prepare_catacombs_item_details",
+    "prepare_catacombs_storage",
+    "prepare_item_consumption"
+  ],
+  "scope": "Actual MSVC configuration and discovery only; no MSVC compilation or CTest execution."
+}

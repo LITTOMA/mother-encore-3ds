@@ -1,12 +1,12 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.native-item-consumption",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "model": {
     "actor": "ninten",
     "refresh_hp": 999,
     "sound": "Audio/Sound effects/EB/eat.wav",
-    "bus": "menu",
+    "slot": "menu",
     "lane": 1,
     "statuses": [
       "asthma",

@@ -1,0 +1,39 @@
+test_actual_pack_roundtrip (tests.test_item_details.ItemDetailsFormat.test_actual_pack_roundtrip) ... ok
+test_boolean_metadata (tests.test_item_details.ItemDetailsFormat.test_boolean_metadata) ... ok
+test_corruption_and_truncation (tests.test_item_details.ItemDetailsFormat.test_corruption_and_truncation) ... ok
+test_current_doses_grammar (tests.test_item_details.ItemDetailsFormat.test_current_doses_grammar) ... ok
+test_duplicate_definition (tests.test_item_details.ItemDetailsFormat.test_duplicate_definition) ... ok
+test_fractional_nickname_limit (tests.test_item_details.ItemDetailsFormat.test_fractional_nickname_limit) ... ok
+test_invalid_string_offset (tests.test_item_details.ItemDetailsFormat.test_invalid_string_offset) ... ok
+test_invalid_utf8 (tests.test_item_details.ItemDetailsFormat.test_invalid_utf8) ... ok
+test_missing_doses (tests.test_item_details.ItemDetailsFormat.test_missing_doses) ... ok
+test_missing_texture_bytes (tests.test_item_details.ItemDetailsFormat.test_missing_texture_bytes) ... ok
+test_nan_parameter (tests.test_item_details.ItemDetailsFormat.test_nan_parameter) ... ok
+test_raw_identity_unchanged (tests.test_item_details.ItemDetailsFormat.test_raw_identity_unchanged) ... ok
+test_raw_token_mismatch (tests.test_item_details.ItemDetailsFormat.test_raw_token_mismatch) ... ok
+test_reject_header_changes (tests.test_item_details.ItemDetailsFormat.test_reject_header_changes) ... ok
+test_reserved_header (tests.test_item_details.ItemDetailsFormat.test_reserved_header) ... ok
+test_reserved_token (tests.test_item_details.ItemDetailsFormat.test_reserved_token) ... ok
+test_source_ir_and_receipt (tests.test_item_details.ItemDetailsFormat.test_source_ir_and_receipt) ... ok
+test_source_pin (tests.test_item_details.ItemDetailsFormat.test_source_pin) ... ok
+test_stage_actual_resources (tests.test_item_details.ItemDetailsFormat.test_stage_actual_resources) ... ok
+test_stage_rejects_corrupt_pack (tests.test_item_details.ItemDetailsFormat.test_stage_rejects_corrupt_pack) ... ok
+test_stage_rejects_corrupt_texture (tests.test_item_details.ItemDetailsFormat.test_stage_rejects_corrupt_texture) ... ok
+test_stage_rejects_missing_texture (tests.test_item_details.ItemDetailsFormat.test_stage_rejects_missing_texture) ... ok
+test_text_color_alpha (tests.test_item_details.ItemDetailsFormat.test_text_color_alpha) ... ok
+test_unknown_color (tests.test_item_details.ItemDetailsFormat.test_unknown_color) ... ok
+test_unknown_ir_field (tests.test_item_details.ItemDetailsFormat.test_unknown_ir_field) ... ok
+test_unknown_ir_version (tests.test_item_details.ItemDetailsFormat.test_unknown_ir_version) ... ok
+test_unknown_locale (tests.test_item_details.ItemDetailsFormat.test_unknown_locale) ... ok
+test_unknown_markup (tests.test_item_details.ItemDetailsFormat.test_unknown_markup) ... ok
+test_unknown_parameter (tests.test_item_details.ItemDetailsFormat.test_unknown_parameter) ... ok
+test_unknown_section_stride_and_overlap (tests.test_item_details.ItemDetailsFormat.test_unknown_section_stride_and_overlap) ... ok
+test_unknown_token (tests.test_item_details.ItemDetailsFormat.test_unknown_token) ... ok
+test_unowned_tokens (tests.test_item_details.ItemDetailsFormat.test_unowned_tokens) ... ok
+test_wrong_dose_policy (tests.test_item_details.ItemDetailsFormat.test_wrong_dose_policy) ... ok
+test_wrong_texture_kind (tests.test_item_details.ItemDetailsFormat.test_wrong_texture_kind) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 6.821s
+
+OK

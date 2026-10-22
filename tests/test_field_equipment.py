@@ -1,6 +1,7 @@
 """Manual Pause/Equip source and ENCFIE01 parser cases; not automatic CI."""
 import copy,hashlib,json,struct,sys,unittest,zlib
 from pathlib import Path
+from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools import field_equipment as pack
@@ -18,6 +19,18 @@ class FieldEquipmentFormat(unittest.TestCase):
         row=pack.PARAMETERS.index('OwnerId')
         self.assertEqual(self.tables['Parameters'][row][1],self.ir['parameters']['OwnerId'])
         for value in (0,1.5,8193):self.rejects('Parameters',row,1,value)
+    def test_catalog_goods_cannot_enter_equipment_or_legacy_use(self):
+        file=ROOT/'content/native-items.json';native=pack.read_json(file)
+        self.assertEqual(len(native['definitions']),7)
+        self.assertEqual([row['source']for row in self.ir['equipment']],['BaseballCap','BatPlastic'])
+        actual=pack.read_json
+        changes=[lambda v:v['definitions'].append(copy.deepcopy(v['definitions'][-1])),
+                 lambda v:v['definitions'][4].update(id=99),lambda v:v['definitions'][4].update(flags=1),
+                 lambda v:v['definitions'][4].update(can_use=True),lambda v:v['definitions'][4].update(heal_hp=50)]
+        for change in changes:
+            value=copy.deepcopy(native);change(value)
+            with self.subTest(change=change),patch.object(pack,'read_json',side_effect=lambda p:value if Path(p)==file else actual(p)),self.assertRaises(ValueError):
+                pack.build(ROOT)
     def test_source_and_actual_pack(self):
         self.assertEqual(pack.build(),self.ir)
         decoded=pack.parse_pack(self.blob)

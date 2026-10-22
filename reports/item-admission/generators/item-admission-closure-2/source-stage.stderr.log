@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 142, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 65, in main
+    files.update(naming_files(source))
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\new_game_assets.py", line 361, in stage_files
+    r=read_json(IR);verify(r);files={Path('ui/opening.encnewgame'):(Path(root)/'ui/opening.encnewgame').read_bytes()};require(files[Path('ui/opening.encnewgame')]==encode(r),'Stale naming pack')
+                    ^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\new_game_assets.py", line 265, in verify
+    for p,d in r['dependencies'].items():require(sha(ROOT/p)==d,'Changed name dependency '+p)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Changed name dependency content/native-session.json

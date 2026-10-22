@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\append_audio_assets.py", line 96, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\append_audio_assets.py", line 67, in main
+    old_recipe=json.loads((prior/'native-audio.json'if prior else recipe_path).read_bytes());old_manifest=json.loads((prior/'opening.json'if prior else manifest_path).read_bytes());old_blob=(prior/'opening.encaudio'if prior else bank_path).read_bytes();new=audio(ROOT,json.loads((ROOT/'content/native-opening.json').read_bytes()));verify_audio(new,ROOT)
+                                                                                                                                                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\phone_linker_bindings.py", line 93, in audio
+    for source in c['audio']+introduction_audio(root,c)+drawer_audio(root)+storage_audio(root)+field_audio(root):
+                                                                                               ^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_audio.py", line 7, in bindings
+    root=Path(root);ir=load(root);config=read_json(root/'content/field-audio-binding.json')
+                       ^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_equipment.py", line 200, in load
+    root=Path(root);ir=read_json(root/IR);require(canonical(ir)==canonical(build(root)),'Field stale/unreviewed source IR');review=read_json(root/REVIEW)
+                                                                           ^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\field_equipment.py", line 82, in build
+    require([(d['id'],d['source']) for d in native['definitions']]==[(1,'BaseballCap'),(2,'AsthmaSpray'),(3,'BatPlastic'),(4,'FleaBag')],'Field Items identity scope changed')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Field Items identity scope changed

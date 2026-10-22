@@ -490,7 +490,7 @@
     }
   ],
   "audio_recipe": "content/native-audio.json",
-  "audio_recipe_sha256": "e9cd55bc095416b0faa579ebc7828835e0015282ed8880aafcf82a780f838ae8",
+  "audio_recipe_sha256": "d53c6367711ef45a91a5b520b62541f48eeac67d69111388f560395a1ac4073f",
   "scope": "Original65 Breakable owners,source two animation/shape families and exact script/drop/parent/flag/request policies. This source audit is not a formal scene admission. Prepared content/tween/coin/voice providers remain explicit dependencies.",
   "license_review": "Original fixed upstream LICENSE and source graphics/sound identities reviewed;no developer fonts or tool binaries copied. Shared explosion already has a checked native-audio entry;new media is not staged by this source audit."
 }

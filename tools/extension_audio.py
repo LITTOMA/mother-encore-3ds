@@ -11,4 +11,5 @@ def bindings(root):
     from tools.gameplay_audio import bindings as gameplay_audio
     from tools.footstep_audio import bindings as footstep_audio
     from tools.field_prop_audio import bindings as prop_audio
-    return present_audio(root) + gameplay_audio(root) + footstep_audio(root) + prop_audio(root)
+    from tools.item_consume_audio import bindings as consume_audio
+    return present_audio(root) + gameplay_audio(root) + footstep_audio(root) + prop_audio(root) + consume_audio(root)

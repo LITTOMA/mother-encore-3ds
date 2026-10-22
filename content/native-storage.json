@@ -2,7 +2,7 @@
   "schema": 1,
   "kind": "encore.native-storage.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Original ordinary Minnie Storage; singleton Ninten; BaseballCap and acquired AsthmaSpray; transfer/equipment prompts/persistent UID; rich description and god storage unsupported",
+  "scope": "Original ordinary Minnie Storage; singleton Ninten; checked normal item catalog and source grant totals; transfer/equipment prompts/persistent UID; independent ItemDetails presentations; no item-use action or god storage",
   "sources": {
     "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
     "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
@@ -16,10 +16,13 @@
     "Audio/Sound effects/M3/curshoriz.wav.import": "ba70d98226f7f11dc16003b0dd13b9598709ccbaa8ea697edc9fa56be85b6ba5",
     "Audio/Sound effects/M3/equip.wav": "983d985c6ebe738617baae286c4ee5d80202969df66568e8a9588cff00d772f3",
     "Audio/Sound effects/M3/equip.wav.import": "4e194a671ae807f07f59bae6b328caabe914b5b5803d0e9dcaf0881ad39100ae",
+    "Data/Items/Antidote.yaml": "277cc60694c95e266ce0b406c7d74992c4fcf39ffdb130d96d04fde7a00ec7eb",
     "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
     "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
     "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
     "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5",
+    "Data/Items/Fries.yaml": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+    "Data/Items/Hamburger.yaml": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
     "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
     "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
     "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
@@ -82,7 +85,10 @@
     "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
   },
   "dependencies": {
-    "content/native-items.json": "e3e432d9292f1b74f565a7aca71f41a15cd7397ccd9323700e6a919aa5219986"
+    "content/native-items.json": "47cc130d5f8f9b0e589acce8780e747810d67419283db948a9847dc1f062a691",
+    "content/catacombs-item-catalog.json": "9ab217b6a5281e18848a769f11ae8248064111a3aa6281a6275514859a35e315",
+    "compatibility/reviews/catacombs-item-catalog-v0410.json": "4f2253e48d651dcdf23fa8fbf55e28204a6e99525fec3c0297ddcd08a5885453",
+    "content/asset-receipts/graphics/items/catacombs/source.json": "0900edbf5f1c7fbc84244ae3baadd54540d045ca2f635dd34a4b68edf4690e95"
   },
   "parameters": {
     "StorageCapacity": 64,
@@ -148,32 +154,56 @@
       "source_item": "BaseballCap",
       "doses": 1,
       "max_count": 1,
-      "sort_rank_en": 210010,
-      "sort_rank_zh": 210010
+      "sort_rank_en": 1,
+      "sort_rank_zh": 1
     },
     {
       "definition_id": 2,
       "source_item": "AsthmaSpray",
       "doses": 3,
       "max_count": 1,
-      "sort_rank_en": 800000,
-      "sort_rank_zh": 800000
+      "sort_rank_en": 4,
+      "sort_rank_zh": 5
     },
     {
       "definition_id": 3,
       "source_item": "BatPlastic",
       "doses": 1,
       "max_count": 1,
-      "sort_rank_en": 240009,
-      "sort_rank_zh": 240009
+      "sort_rank_en": 2,
+      "sort_rank_zh": 2
     },
     {
       "definition_id": 4,
       "source_item": "FleaBag",
       "doses": 1,
       "max_count": 1,
-      "sort_rank_en": 600000,
-      "sort_rank_zh": 600000
+      "sort_rank_en": 3,
+      "sort_rank_zh": 3
+    },
+    {
+      "definition_id": 5,
+      "source_item": "Hamburger",
+      "doses": 1,
+      "max_count": 4,
+      "sort_rank_en": 7,
+      "sort_rank_zh": 7
+    },
+    {
+      "definition_id": 6,
+      "source_item": "Fries",
+      "doses": 1,
+      "max_count": 1,
+      "sort_rank_en": 6,
+      "sort_rank_zh": 6
+    },
+    {
+      "definition_id": 7,
+      "source_item": "Antidote",
+      "doses": 1,
+      "max_count": 2,
+      "sort_rank_en": 5,
+      "sort_rank_zh": 4
     }
   ],
   "equipment": [
@@ -215,6 +245,42 @@
     },
     {
       "definition_id": 4,
+      "boosts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "definition_id": 5,
+      "boosts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "definition_id": 6,
+      "boosts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "definition_id": 7,
       "boosts": [
         0,
         0,
@@ -272,6 +338,42 @@
       "zh_Hans_CN": {
         "name": "跳蚤虱子",
         "sorting_name": "跳蚤虱子",
+        "article": ",,,,这个,它,是"
+      }
+    },
+    "Hamburger": {
+      "en": {
+        "name": "Hamburger",
+        "sorting_name": "Hamburger",
+        "article": "The ,the ,A ,a ,this ,it,was"
+      },
+      "zh_Hans_CN": {
+        "name": "汉堡包",
+        "sorting_name": "汉堡包",
+        "article": ",,,,这个,它,是"
+      }
+    },
+    "Fries": {
+      "en": {
+        "name": "Fries",
+        "sorting_name": "Fries",
+        "article": "The ,the ,Some ,some ,these ,them,were"
+      },
+      "zh_Hans_CN": {
+        "name": "炸薯条",
+        "sorting_name": "炸薯条",
+        "article": ",,一些,一些,这些,它们,是"
+      }
+    },
+    "Antidote": {
+      "en": {
+        "name": "Antidote",
+        "sorting_name": "Antidote",
+        "article": "The ,the ,An ,an ,this ,it,was"
+      },
+      "zh_Hans_CN": {
+        "name": "解毒药",
+        "sorting_name": "解毒药",
         "article": ",,,,这个,它,是"
       }
     }

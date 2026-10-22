@@ -78,9 +78,9 @@ bool FieldMenusData::load(const uint8_t*p,size_t n,std::string&e){
  count=r.count(8);for(uint32_t i=0;i<count;++i)d.display_names.push_back(r.text());d.capture_cancel=r.label();if(d.display_names.size()!=2||d.capture_cancel.en.empty()||d.capture_cancel.zh.empty())return fail(e,"Field platform choices missing");
  d.map_home_x=r.real();d.map_home_y=r.real();for(auto&size:d.display_sizes){size={r.integer(),r.integer()};if(!size[0]||!size[1]||size[0]>400||size[1]>240)return fail(e,"Field display size rejected");}
  if(schema==3){
-  d.consume_actor=r.text();d.cure_refresh_hp=r.integer();d.consume_sound=r.text();d.consume_bus=r.text();d.consume_lane=r.integer();
+  d.consume_actor=r.text();d.cure_refresh_hp=r.integer();d.consume_sound=r.text();d.consume_slot=r.text();d.consume_lane=r.integer();
   const auto&sound=d.consume_sound;
-  if(!identity(d.consume_actor)||!identity(d.consume_bus)||d.consume_lane!=uint32_t(FieldMenuConsumeAudioLane::Effect)||!d.cure_refresh_hp||d.cure_refresh_hp>65535||sound.empty()||sound.front()=='/'||sound.back()=='/'||sound.find("..")!=sound.npos||sound.find("//")!=sound.npos||sound.find(':')!=sound.npos||sound.find('\\')!=sound.npos||std::any_of(sound.begin(),sound.end(),[](unsigned char c){return c<32||c==127;}))return fail(e,"Field consume actor/refresh/audio policy rejected");
+  if(!identity(d.consume_actor)||!identity(d.consume_slot)||d.consume_lane!=uint32_t(FieldMenuConsumeAudioLane::Effect)||!d.cure_refresh_hp||d.cure_refresh_hp>65535||sound.empty()||sound.front()=='/'||sound.back()=='/'||sound.find("..")!=sound.npos||sound.find("//")!=sound.npos||sound.find(':')!=sound.npos||sound.find('\\')!=sound.npos||std::any_of(sound.begin(),sound.end(),[](unsigned char c){return c<32||c==127;}))return fail(e,"Field consume actor/refresh/audio policy rejected");
   ids.clear();count=r.count(16);for(uint32_t i=0;i<count;++i){auto status=r.text();if(!identity(status)||!ids.insert(status).second)return fail(e,"Field consume status identity rejected");d.consume_statuses.push_back(std::move(status));}
   if(d.consume_statuses.empty())return fail(e,"Field consume status coverage missing");
   ids.clear();count=r.count(128);for(uint32_t i=0;i<count;++i){

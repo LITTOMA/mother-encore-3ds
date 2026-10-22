@@ -42,7 +42,7 @@ int main(int argc,char**argv){
  // Detached binary owner rejects malformed versions/UTF-8/bindings/capacities.
  CHECK(encore::read_file((root+"/ui/opening.encstorage").c_str(),bytes,8*1024*1024,error));const auto retained=pack.view();
  for(size_t n=0;n<bytes.size();++n)CHECK(!pack.load(bytes.data(),n,error));CHECK(pack.view().same_content(retained));
- for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,2},{20,2},{24,2},{28,8},{52,1},{64,8},{76,2}}){auto b=bytes;put(b,entry.first,entry.second);fix(b);CHECK(!pack.load(b.data(),b.size(),error));CHECK(pack.view().same_content(retained));}
+  for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,3},{20,3},{24,2},{28,8},{52,1},{64,8},{76,2}}){auto b=bytes;put(b,entry.first,entry.second);fix(b);CHECK(!pack.load(b.data(),b.size(),error));CHECK(pack.view().same_content(retained));}
  auto b=bytes;b[get(b,68)+1]=0xff;fix(b);CHECK(!pack.load(b.data(),b.size(),error));
  const auto policy=get(bytes,64+16+4);b=bytes;put(b,policy+8,0);fix(b);CHECK(!pack.load(b.data(),b.size(),error));
  const auto equipment=get(bytes,64+6*16+4);b=bytes;put(b,equipment,99);fix(b);CHECK(!pack.load(b.data(),b.size(),error));

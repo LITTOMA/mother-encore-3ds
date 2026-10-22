@@ -1,0 +1,10 @@
+{
+  "tools/dropped_items.py": "fa8e669a215eeb67df5c9b31ba00c552e0531527a003ca04f9e857fef715a4a8",
+  "tools/dropped_item_protocol.py": "6d114ada8563c775102d192498419001867dafe83ea833dd6021cba1b2d83d2f",
+  "tools/dropped_breakable_protocol.py": "48e3a47b6e440d102ce6afbc54a58fd5ff8fb2ff5b24241de474e062759a351d",
+  "tests/test_dropped_items.py": "fe095ba070307d1ff510fe00771f0e75b5a54f861a5008ef35af5a880aff7cda",
+  "tests/test_dropped_breakables.py": "a43059a20c2d8ba12e3fa2d1f1f33f77a3875b259f53d9f3f723f36e720be4c7",
+  "tests/dropped_reference_fixture.py": "46a85c6c2a3023a8021a31537c561c0fa1bf0cbb6a73b4510834dadac8e4160f",
+  "tests/prepare_dropped_items.py": "7ed391a185ae7daf5c3a3d47f927aca35d5fb3ef14672661f8d6728d57e2a12d",
+  "tests/prepare_dropped_breakables.py": "ef60b2dac54745ec4427552f876bc717153be55687dfef41c283e3dbea6111e3"
+}

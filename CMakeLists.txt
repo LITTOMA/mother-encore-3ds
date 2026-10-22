@@ -10,6 +10,7 @@ option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
     runtime/coins_data.cpp runtime/coins.cpp runtime/circle_motion.cpp
     runtime/coin_scene_data.cpp runtime/coin_scene.cpp
+    runtime/dropped_items_data.cpp runtime/item_holder_grant.cpp runtime/dropped_items.cpp
     runtime/dungeon_key_contacts.cpp
     runtime/dungeon_key_indicator.cpp
     runtime/dungeon_key_hud_graphics.cpp
@@ -1624,6 +1625,26 @@ if(BUILD_TESTING AND Python3_Interpreter_FOUND)
  add_test(NAME coin_scene COMMAND encore_coin_scene_tests ${CMAKE_BINARY_DIR}/coin-scene-fixture/scene.enccf ${CMAKE_BINARY_DIR}/coin-scene-fixture/coins.encoin ${CMAKE_BINARY_DIR}/coin-scene-fixture/breakables.encbrk)
  add_test(NAME coin_scene_source COMMAND encore_coin_scene_source_tests ${CMAKE_BINARY_DIR}/coin-scene-fixture/scene.enccf ${CMAKE_BINARY_DIR}/coin-scene-fixture/coins.encoin ${CMAKE_BINARY_DIR}/coin-scene-fixture/breakables.encbrk ${CMAKE_BINARY_DIR}/coin-scene-fixture/native.tsv)
  set_tests_properties(coin_scene_data coin_scene coin_scene_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED coin_scene_source)
+endif()
+
+if(BUILD_TESTING AND Python3_Interpreter_FOUND)
+ add_test(NAME dropped_items_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_dropped_items.py --out ${CMAKE_BINARY_DIR}/dropped-items-fixture)
+ set_tests_properties(dropped_items_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP dropped_items_source)
+ foreach(dropped_case IN ITEMS dropped_items_data item_holder_grant dropped_item_actor dropped_item_lifecycle dropped_item_source dropped_breakable_source)
+  add_executable(encore_${dropped_case}_tests tests/${dropped_case}_tests.cpp)
+  target_link_libraries(encore_${dropped_case}_tests PRIVATE encore_core)
+ endforeach()
+ add_test(NAME dropped_items_data COMMAND encore_dropped_items_data_tests ${CMAKE_BINARY_DIR}/dropped-items-fixture/source.encdrp ${CMAKE_BINARY_DIR}/dropped-items-fixture/partial.encdrp ${CMAKE_BINARY_DIR}/dropped-items-fixture/breakables.encbrk)
+ add_test(NAME item_holder_grant COMMAND encore_item_holder_grant_tests ${CMAKE_BINARY_DIR}/dropped-items-fixture/source.encdrp ${CMAKE_BINARY_DIR}/dropped-items-fixture/key-control.encdrp)
+ add_test(NAME dropped_item_actor COMMAND encore_dropped_item_actor_tests ${CMAKE_BINARY_DIR}/dropped-items-fixture/source.encdrp)
+ add_test(NAME dropped_item_lifecycle COMMAND encore_dropped_item_lifecycle_tests ${CMAKE_BINARY_DIR}/dropped-items-fixture/source.encdrp)
+ add_test(NAME dropped_item_source COMMAND encore_dropped_item_source_tests ${CMAKE_BINARY_DIR}/dropped-items-fixture)
+ set_tests_properties(dropped_items_data item_holder_grant dropped_item_actor dropped_item_lifecycle dropped_item_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED dropped_items_source)
+ add_test(NAME dropped_breakable_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_dropped_breakables.py --out ${CMAKE_BINARY_DIR}/dropped-breakable-fixture)
+ set_tests_properties(dropped_breakable_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP dropped_breakable_source)
+ add_test(NAME dropped_breakable_source COMMAND encore_dropped_breakable_source_tests ${CMAKE_BINARY_DIR}/dropped-breakable-fixture)
+ add_test(NAME dropped_reference_failures COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/check_dropped_reference_failures.py --executable $<TARGET_FILE:encore_dropped_breakable_source_tests> --fixture ${CMAKE_BINARY_DIR}/dropped-breakable-fixture)
+ set_tests_properties(dropped_breakable_source dropped_reference_failures PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED dropped_breakable_source)
 endif()
 
 include(cmake/TestParallelism.cmake)

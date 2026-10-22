@@ -111,7 +111,7 @@
       "sha256": "776d60e07569fd9627ddf6cfaad8c84752f3b111ea5d7f480fdcc16b68438f84",
       "source_url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/animation/easing_equations.h",
       "source_revision": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
-      "scope": "Robert Penner MIT copyright and full permission/warranty for the Godot-derived cubic-out and bounce-out equations",
+      "scope": "Robert Penner MIT copyright and full permission/warranty for the Godot-derived cubic-out, bounce-out, quart-out, quad-in and elastic-out equations",
       "verification": "Complete Penner notice extracted from the Git-blob-verified pinned Godot header; comment delimiters stripped, trailing spaces removed, CRLF line endings. Existing Godot MIT notice is retained separately."
     }
   ]

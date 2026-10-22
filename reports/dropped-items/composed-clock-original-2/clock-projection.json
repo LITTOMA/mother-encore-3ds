@@ -1,0 +1,18 @@
+{
+  "legacy_schema": 3,
+  "legacy_semantic_sha256": "96006aacf70c1a6cc760aa6887fbfe363d870a1fb5f039bedddc1bcc7437efcf",
+  "initial_idle_counts": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "scope": "Only new measured pre-capture internal process deltas. Every pre-existing game state, clock, request and opaque UID identity projects identically to the frozen schema3 runs."
+}

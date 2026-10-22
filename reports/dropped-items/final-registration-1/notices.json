@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "-v",
+    "tests.test_release_notices"
+  ],
+  "return_code": 0,
+  "elapsed_seconds": 0.7959999999729916
+}

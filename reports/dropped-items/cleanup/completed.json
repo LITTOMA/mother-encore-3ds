@@ -1,0 +1,7 @@
+{
+  "removed_files": 64,
+  "removed_bytes": 832884216,
+  "plan_sha256": "de0349d9689d3b302b8c1b26c414f67b88628cc43c3ff82aabbe10603f997166",
+  "all_targets_absent": true,
+  "scope": "Only explicit superseded test ELF/object names in completed owned folders1-10. Keep every log/source/fixture, current11 binaries/objects, baseline archive, official game/emulator and protected unrelated directories."
+}

@@ -1,0 +1,8 @@
+127612 original coffin/DroppedItem composition checks passed
+146867 original DroppedItem state checks passed
+266 Dropped lifecycle failure/ownership checks passed
+40 Dropped actor checks passed
+88 ItemHolder grant checks passed
+6046 Dropped data checks passed
+276 Coin scene factory consumer checks passed
+282774 original49-factory composition source checks passed

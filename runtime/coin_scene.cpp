@@ -8,7 +8,7 @@ bool identity(const CoinParent&p,uint64_t epoch){return p.epoch==epoch&&p.token&
 }
 bool CoinSceneFactories::context(uint64_t epoch,const BreakablesData&b,const BreakableServices&bs,const CoinServices&s,std::string&e)const{
  if(!valid_||!data_||!coins_||data_->generation()!=generation_||coins_->generation()!=coin_generation_||epoch!=epoch_||bs.epoch!=epoch||s.epoch!=epoch||bs.scene!=data_->scene()||s.session!=session_||s.random!=random_||!data_->compatible(b,*coins_,e)||factories_.size()!=data_->bindings().size()||delivered_.size()!=factories_.size()||tickets_.size()!=factories_.size()||bs.requests.size()>4096)return fail(e,"Coin scene factory source/epoch/services");
- for(const auto&request:bs.requests)if(uint32_t(request.kind)<1||uint32_t(request.kind)>6)return fail(e,"Coin scene unknown Breakable request kind");
+ for(const auto&request:bs.requests)if(uint32_t(request.kind)<1||uint32_t(request.kind)>7)return fail(e,"Coin scene unknown Breakable request kind");
  for(const auto&parent:parents_){const auto v=s.parents.find(parent.first);if(v==s.parents.end()||v->second.token!=parent.second||!identity(v->second,epoch)||!bs.parents.count(parent.first))return fail(e,"Coin scene factory parent handle/transform changed");}
  for(const auto&v:data_->bindings()){const auto f=factories_.find(v.owner);const auto ticket=tickets_.find(v.owner);if(f==factories_.end()||ticket==tickets_.end()||f->second.instance_!=ticket->second||f->second.data_.get()!=coins_.get()||!bs.factories.count(v.path)||!f->second.context(epoch,s,e)||f->second.position().x!=v.position.x||f->second.position().y!=v.position.y)return fail(e,"Coin scene concrete factory unavailable/rebound/moved");}
  return true;
@@ -27,7 +27,7 @@ bool CoinSceneFactories::consume(uint64_t epoch,const BreakablesData&b,Breakable
  if(!context(epoch,b,bs,s,e))return false;
  std::vector<BreakableRequest>remaining;remaining.reserve(bs.requests.size());auto delivered=delivered_;std::map<uint32_t,uint32_t>counts;
  for(const auto&request:bs.requests){
-  const auto kind=uint32_t(request.kind);if(kind<1||kind>6)return fail(e,"Coin scene unknown Breakable request kind");if(request.kind!=BreakableRequestKind::Coins){remaining.push_back(request);continue;}
+  const auto kind=uint32_t(request.kind);if(kind<1||kind>7)return fail(e,"Coin scene unknown Breakable request kind");if(request.kind!=BreakableRequestKind::Coins){remaining.push_back(request);continue;}
   const auto*binding=data_->owner(request.owner);const auto*owner=b.owner(request.owner);auto last=delivered.find(request.owner);const auto factory=factories_.find(request.owner);
   if(!binding||!owner||factory==factories_.end()||last==delivered.end()||request.epoch!=epoch||request.frame>s.frame||request.identity||!owner->coins||request.value[0]!=double(owner->coins)||request.value[1]!=0||request.value[2]!=0||request.value[3]!=0||(last->second.delivered&&request.frame<=last->second.frame))return fail(e,"Coin scene unmatched/repeated burst request");
   const auto&flags=owner->object_flag?bs.object_flags:bs.story_flags;const auto flag=flags.find(owner->flag);if(flag==flags.end()||!flag->second)return fail(e,"Coin scene original burst flag was not committed");

@@ -52,7 +52,7 @@ struct BreakableContentState {
  std::string parent;BreakablePoint position,start;
  std::map<uint64_t,bool>shapes;
 };
-enum class BreakableRequestKind:uint32_t {Pause=1,Rumble=2,Audio=3,Coins=4,Interact=5,FlagsUpdated=6};
+enum class BreakableRequestKind:uint32_t {Pause=1,Rumble=2,Audio=3,Coins=4,Interact=5,FlagsUpdated=6,ContentReentered=7};
 struct BreakableRequest {BreakableRequestKind kind=BreakableRequestKind::Pause;uint64_t epoch=0,frame=0;uint32_t owner=0,identity=0;std::array<double,4>value{};};
 struct BreakableServices {
  uint64_t epoch=0;uint32_t scene=0;bool paused=false;

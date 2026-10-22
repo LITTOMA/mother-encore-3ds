@@ -1,0 +1,10 @@
+{
+  "semantic_sha256": "96006aacf70c1a6cc760aa6887fbfe363d870a1fb5f039bedddc1bcc7437efcf",
+  "native_runs": [
+    4,
+    5
+  ],
+  "cases": 11,
+  "rows": 1067,
+  "scope": "Original unchanged seven coffin/drop scripts; supplied hits then interactions and prepared party/player/voice/dialogue/input providers. CPU lifecycle only; not full room/emulator/hardware."
+}

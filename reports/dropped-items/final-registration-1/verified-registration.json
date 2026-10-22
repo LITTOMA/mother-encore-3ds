@@ -1,0 +1,16 @@
+{
+  "tests": 375,
+  "new_tests": [
+    "dropped_breakable_fixture",
+    "dropped_breakable_source",
+    "dropped_item_actor",
+    "dropped_item_lifecycle",
+    "dropped_item_source",
+    "dropped_items_data",
+    "dropped_items_fixture",
+    "dropped_reference_failures",
+    "item_holder_grant"
+  ],
+  "configured_only": true,
+  "compiled_or_executed_by_cmake": false
+}

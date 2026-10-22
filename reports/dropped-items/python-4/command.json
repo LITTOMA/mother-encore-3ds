@@ -1,0 +1,1 @@
+["C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe", "-X", "utf8", "-m", "unittest", "-v", "tests.test_dropped_items", "tests.test_dropped_breakables"]

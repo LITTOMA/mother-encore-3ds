@@ -1,0 +1,328 @@
+{
+  "workspace": "D:\\GameDev\\3DS\\mother-encore-3ds",
+  "files": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-data-host-1\\check",
+      "bytes": 8328152,
+      "sha256": "b33e0a697665e140135298a2276d4e44b069bc0436b9f0bed3df1d35b61ff4fb"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-data-host-1\\dropped_items_data.o",
+      "bytes": 6455960,
+      "sha256": "eb95de0ead95e878a863dba223fb5fb7db51062729d07216d84f2a022d6de4b2"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-core-host-2\\check",
+      "bytes": 8328336,
+      "sha256": "d12e093d4465b3199d2ce22eca9888069effd5cae773534ea9496cc570a38cfa"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-core-host-2\\dropped_items_data.o",
+      "bytes": 6456152,
+      "sha256": "f1e64a325cb05d937d1f26ebfd4bdc11b0b085a3ca51aef1f78d497e6bc0e212"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-core-host-2\\grant",
+      "bytes": 13536704,
+      "sha256": "56ee45a583a2714dc88cd322600d3501dc0425d8c8501a2a34b50b05ee7de8c4"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-core-host-2\\item_holder_grant.o",
+      "bytes": 2202960,
+      "sha256": "1e80e879877037c7bee620ca891e55dd1731bb205adbb5e3ac9a84d5551d0b95"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-actor-host-3\\actor",
+      "bytes": 16390728,
+      "sha256": "07739c2672d491bec64d6be7db846c3ca93b3d434eb0b8f7f9d2b4c183854063"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-actor-host-3\\check",
+      "bytes": 8433800,
+      "sha256": "e02b800b2acbe87b637a27535ea7be9754d06a5f97d9005b09608fdb67c2c897"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-actor-host-3\\dropped_items.o",
+      "bytes": 9813608,
+      "sha256": "21fca712737f052a28bc9f3c5598e825293b7f51488561a9be7ee19d5218aff9"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-actor-host-3\\dropped_items_data.o",
+      "bytes": 6629776,
+      "sha256": "70598a5de2f4877e6901a5c29d575a5bc8fea335310c71232ca90e8ff4b6b65f"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-actor-host-3\\grant",
+      "bytes": 13643288,
+      "sha256": "49d386f3809361ae45233a1c24322f2c5367e665e43f6c98ff37c992089414d5"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-actor-host-3\\item_holder_grant.o",
+      "bytes": 2208792,
+      "sha256": "49aeee73df2773a5360ebf162c3c2d9ad51103779b8aa9c579cd107c6a03130f"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-source-host-4\\actor",
+      "bytes": 16390728,
+      "sha256": "07739c2672d491bec64d6be7db846c3ca93b3d434eb0b8f7f9d2b4c183854063"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-source-host-4\\check",
+      "bytes": 8433800,
+      "sha256": "e02b800b2acbe87b637a27535ea7be9754d06a5f97d9005b09608fdb67c2c897"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-source-host-4\\dropped_items.o",
+      "bytes": 9813608,
+      "sha256": "21fca712737f052a28bc9f3c5598e825293b7f51488561a9be7ee19d5218aff9"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-source-host-4\\dropped_items_data.o",
+      "bytes": 6629776,
+      "sha256": "70598a5de2f4877e6901a5c29d575a5bc8fea335310c71232ca90e8ff4b6b65f"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-source-host-4\\grant",
+      "bytes": 13643288,
+      "sha256": "49d386f3809361ae45233a1c24322f2c5367e665e43f6c98ff37c992089414d5"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-source-host-4\\item_holder_grant.o",
+      "bytes": 2208792,
+      "sha256": "49aeee73df2773a5360ebf162c3c2d9ad51103779b8aa9c579cd107c6a03130f"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-source-host-4\\source",
+      "bytes": 17672296,
+      "sha256": "ff662e88f854c5b8f314bc1738160d3d3b20f2f0bf501f1a7aea179292ba6024"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-lifecycle-host-5\\actor",
+      "bytes": 16410960,
+      "sha256": "a44955fbd20561cc4e1792b2192ad089d4037a087394bd3301df1b552ed1909b"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-lifecycle-host-5\\before-fix.o",
+      "bytes": 9813784,
+      "sha256": "15109934fe3a4ea74fe14b3324f488043cc9d6f5e3918807d043ae33d4485679"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-lifecycle-host-5\\check",
+      "bytes": 8433800,
+      "sha256": "e02b800b2acbe87b637a27535ea7be9754d06a5f97d9005b09608fdb67c2c897"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-lifecycle-host-5\\dropped_items.o",
+      "bytes": 9858104,
+      "sha256": "05e44904a97eb9a755dc710792d75fa0d5c96e8f32dafef3e3249adca7af207d"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-lifecycle-host-5\\dropped_items_data.o",
+      "bytes": 6629776,
+      "sha256": "70598a5de2f4877e6901a5c29d575a5bc8fea335310c71232ca90e8ff4b6b65f"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-lifecycle-host-5\\grant",
+      "bytes": 13643288,
+      "sha256": "49d386f3809361ae45233a1c24322f2c5367e665e43f6c98ff37c992089414d5"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-lifecycle-host-5\\item_holder_grant.o",
+      "bytes": 2208792,
+      "sha256": "49aeee73df2773a5360ebf162c3c2d9ad51103779b8aa9c579cd107c6a03130f"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-lifecycle-host-5\\lifecycle",
+      "bytes": 17713024,
+      "sha256": "ecdc60a3085a248ee0baea2cb526b877ea39267d8f7d5b1bd3c9127c29bcf22a"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-lifecycle-host-5\\lifecycle-before-fix",
+      "bytes": 17688800,
+      "sha256": "75dd9d020446a67d65f96f8aeb90c2c746450f117a2740a4052febbf7adb4f7f"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-lifecycle-host-5\\source",
+      "bytes": 17692824,
+      "sha256": "ba8f4f59412c385791c8cc47e593c96876545e53ab745508dfe0319871ed08a2"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-6\\actor",
+      "bytes": 16410960,
+      "sha256": "a44955fbd20561cc4e1792b2192ad089d4037a087394bd3301df1b552ed1909b"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-6\\check",
+      "bytes": 8433800,
+      "sha256": "e02b800b2acbe87b637a27535ea7be9754d06a5f97d9005b09608fdb67c2c897"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-6\\dropped_items.o",
+      "bytes": 9858104,
+      "sha256": "05e44904a97eb9a755dc710792d75fa0d5c96e8f32dafef3e3249adca7af207d"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-6\\dropped_items_data.o",
+      "bytes": 6629776,
+      "sha256": "70598a5de2f4877e6901a5c29d575a5bc8fea335310c71232ca90e8ff4b6b65f"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-6\\grant",
+      "bytes": 13643288,
+      "sha256": "49d386f3809361ae45233a1c24322f2c5367e665e43f6c98ff37c992089414d5"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-6\\item_holder_grant.o",
+      "bytes": 2208792,
+      "sha256": "49aeee73df2773a5360ebf162c3c2d9ad51103779b8aa9c579cd107c6a03130f"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-6\\lifecycle",
+      "bytes": 17713024,
+      "sha256": "ecdc60a3085a248ee0baea2cb526b877ea39267d8f7d5b1bd3c9127c29bcf22a"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-6\\source",
+      "bytes": 17692992,
+      "sha256": "23a6a6782b384fccecb9030191327c9a30c2c7d4a045dc17b0cf42490852615d"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-7\\breakables.o",
+      "bytes": 8615544,
+      "sha256": "44b2ae66c1137285189e41be3c24c25b057bedf85814bf9392e8decabdccb2cf"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-7\\composed-check",
+      "bytes": 22638192,
+      "sha256": "3ffee15caf71dd8cbc8885d6e9863356e46a94b623624f093e95f34889271f15"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-host-7\\lifecycle",
+      "bytes": 17715352,
+      "sha256": "3e04da74fc20445531f884933f664f5ec8d2e19bf22c20a6b8c35f2c72a801d3"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-debug-8\\breakables.o",
+      "bytes": 8615544,
+      "sha256": "44b2ae66c1137285189e41be3c24c25b057bedf85814bf9392e8decabdccb2cf"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-debug-8\\composed-check",
+      "bytes": 22671784,
+      "sha256": "c52f74e63534ecb73c4834119ad59135d310fb66c54e47dcbac83da8d1080e54"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-debug-8\\lifecycle",
+      "bytes": 17715352,
+      "sha256": "3e04da74fc20445531f884933f664f5ec8d2e19bf22c20a6b8c35f2c72a801d3"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-clocks-9\\breakables.o",
+      "bytes": 8615544,
+      "sha256": "44b2ae66c1137285189e41be3c24c25b057bedf85814bf9392e8decabdccb2cf"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-clocks-9\\composed-check",
+      "bytes": 22736160,
+      "sha256": "240fe8a446d9e1c2ef42e9cef9f78e6c34b9a1283613cc329c10eb3e729394a7"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-composed-clocks-9\\lifecycle",
+      "bytes": 17715352,
+      "sha256": "3e04da74fc20445531f884933f664f5ec8d2e19bf22c20a6b8c35f2c72a801d3"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\breakables.o",
+      "bytes": 8616936,
+      "sha256": "1e3d8c8659c51c4c33f9dd0790d527b9d6afc681241d72b865fb4aa89de20df5"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\breakables_data.o",
+      "bytes": 7549096,
+      "sha256": "d562da67bc505e2536f66ad6b5139c72cba32958fc8ffa2927eece1c33ffce6c"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\circle_motion.o",
+      "bytes": 3661944,
+      "sha256": "0b3f307d9a6fe69f4e07a311a9ee2cbda99c04689ddcebf502f3cf385f5cd451"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\coins.o",
+      "bytes": 4141480,
+      "sha256": "e245068744b3de824ad15f4a0d00a75e3bd4b8b5cb1dbe55777a5f3504027c68"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\coins_data.o",
+      "bytes": 3494208,
+      "sha256": "672b44085fe0ab232ef598554ad9b70c7f0f9fabb23578474439d5c2dd96d0e4"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\coin_scene",
+      "bytes": 31102640,
+      "sha256": "c376cfd82025be59f34a224adfc8c1b90863097a4c428e8f3df1459b7683c9bb"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\coin_scene.o",
+      "bytes": 5891360,
+      "sha256": "bb5298fed514df171df02d98b893dbf65732cd9967865c4e35235e28733b1d11"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\coin_scene_data.o",
+      "bytes": 4218488,
+      "sha256": "09519d4ee39fbcb544418463aa6c0da330f2695d6aaa0339613d30fe4b42958b"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\coin_scene_source",
+      "bytes": 30889824,
+      "sha256": "549042a3af2f48ec3d3f30ed94b26ee6d4820e9f0bf00b63474a05448e6a87f0"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\dropped_breakable_source",
+      "bytes": 31789000,
+      "sha256": "7ecb559141603c05e05c44bcd3d87df21f6eec0107b11582b0c8a12de0e07fff"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\dropped_items.o",
+      "bytes": 10100072,
+      "sha256": "036c8ab3dad5338c7fd118bbcab12b5990484d466d5b51073e2392d1da30ecba"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\dropped_items_data",
+      "bytes": 26287656,
+      "sha256": "da15f3807e55e0a73e8c051c88d1b05b6c586c34a332d2a929d0d9a38ca19532"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\dropped_items_data.o",
+      "bytes": 6629776,
+      "sha256": "a637eaed212b74ebab72e45a12cfa94d053e2663f874bebcc0dbd9c259f80959"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\dropped_item_actor",
+      "bytes": 28911952,
+      "sha256": "4ba18c4e2eecac23bb5ec2b5708d1505b731d7061e980eb463709184d771232d"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\dropped_item_lifecycle",
+      "bytes": 30204472,
+      "sha256": "de8945596c198c10186761943283ecd5dd8d56f46e41198aeba7556611901840"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\dropped_item_source",
+      "bytes": 30180808,
+      "sha256": "8716c0391c9b3f914fa6ea79ef63b96283a1cf4a398b1fab4ff71a24d33571f9"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\item_holder_grant",
+      "bytes": 30062384,
+      "sha256": "ceb14590c9f1dbd33ca56fcaea36c30bb2a0313ab75c8a43c1268d7272552526"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\dropped-reentry-host-10\\item_holder_grant.o",
+      "bytes": 2208864,
+      "sha256": "1188ca896eb2b83e12ef808d95693f12bcab3c0d29afc20fff786cdfc7f9069a"
+    }
+  ],
+  "total_bytes": 832884216,
+  "proof": "D:\\GameDev\\3DS\\mother-encore-3ds\\reports\\dropped-items\\core-host-11",
+  "scope": "Only explicit superseded test ELF/object names in completed owned folders1-10. Keep every log/source/fixture, current11 binaries/objects, baseline archive, official game/emulator and protected unrelated directories."
+}

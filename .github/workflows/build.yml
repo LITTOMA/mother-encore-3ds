@@ -24,22 +24,34 @@ concurrency:
 
 jobs:
   host:
-    name: Host and sanitizers (${{ matrix.compiler }})
+    name: Host ${{ matrix.phase }} (${{ matrix.compiler }})
     if: github.event_name == 'workflow_dispatch' && inputs.mode == 'full'
     runs-on: ubuntu-24.04
-    # Source361 passed all 310 ordinary GCC tests, then reached 99% of the
-    # sanitizer build before the 120-minute job limit canceled it. Keep a
-    # bounded full-run budget which includes both fresh builds and all tests.
+    # Run 39696643780 finished all 364 ordinary GCC tests, but the combined
+    # job was canceled at its 180-minute ceiling after only 38/345 sanitizer
+    # tests. Each phase gets a fresh bounded job; test commands stay intact.
     timeout-minutes: 180
     strategy:
       fail-fast: false
       matrix:
         include:
           - compiler: gcc
+            phase: ordinary
+            cc: gcc
+            cxx: g++
+            ctest_args: ''
+          - compiler: gcc
+            phase: sanitizer
             cc: gcc
             cxx: g++
             ctest_args: ''
           - compiler: clang
+            phase: ordinary
+            cc: clang
+            cxx: clang++
+            ctest_args: --label-exclude python_unit
+          - compiler: clang
+            phase: sanitizer
             cc: clang
             cxx: clang++
             ctest_args: --label-exclude python_unit
@@ -72,6 +84,7 @@ jobs:
       - name: Regenerate checked resources before focused collision validation
         run: make content
       - name: Check ordered field collision results before unrelated fixture preparation
+        if: matrix.phase == 'ordinary'
         shell: bash
         run: |
           set -o pipefail
@@ -80,13 +93,16 @@ jobs:
           cmake --build build/host --parallel 4 --target encore_field_collision_index_tests 2>&1 | tee build/collision-ci/build.log
           ctest --test-dir build/host --verbose --no-tests=error -R '^field_collision_index$' 2>&1 | tee build/collision-ci/plain.log
       - name: Check field collision with ASan UBSan and normal leak checking
+        if: matrix.phase == 'sanitizer'
         shell: bash
         run: |
           set -o pipefail
+          mkdir -p build/collision-ci
           cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug -DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON -DENCORE_SANITIZERS=ON 2>&1 | tee build/collision-ci/sanitize-configure.log
           cmake --build build/sanitize --parallel 4 --target encore_field_collision_index_tests 2>&1 | tee build/collision-ci/sanitize-build.log
           ctest --test-dir build/sanitize --verbose --no-tests=error -R '^field_collision_index$' 2>&1 | tee build/collision-ci/sanitize.log
-      - name: Regenerate checked resources and run the current shared-core tests
+      - name: Run the current shared-core tests
+        if: matrix.phase == 'ordinary'
         # The compiler-independent Python methods all run in GCC. Clang still
         # runs every C++ consumer, source CLI and fixture test.
         # Make's content prerequisite is authoritative here; do not regenerate
@@ -95,12 +111,13 @@ jobs:
         # at most four isolated module processes. Unreviewed writers stay serial.
         run: make test -o content CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 4 --no-tests=error ${{ matrix.ctest_args }}"
       - name: Retain Clang coverage for Python suites that compile renderer doubles
-        if: matrix.compiler == 'clang'
+        if: matrix.compiler == 'clang' && matrix.phase == 'ordinary'
         run: python -m unittest -v tests.test_loading_texture tests.test_loading_indicator
       - name: Run ASan and UBSan with the hosted runner's normal leak checking
+        if: matrix.phase == 'sanitizer'
         # Python tools are not instrumented by this CMake sanitizer build.
-        # Reuse content already regenerated and admitted by the successful
-        # preceding step. This job changes no source between the two builds.
+        # Reuse content regenerated and admitted in this same job. This
+        # phase does not depend on an ordinary job or share its build tree.
         run: make sanitize -o content CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 4 --no-tests=error --label-exclude python_unit"
       - name: Confirm regeneration did not change tracked source or resources
         run: git diff --exit-code
@@ -108,7 +125,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: host-diagnostics-${{ matrix.compiler }}
+          name: host-diagnostics-${{ matrix.compiler }}-${{ matrix.phase }}
           if-no-files-found: warn
           path: |
             build/collision-ci/

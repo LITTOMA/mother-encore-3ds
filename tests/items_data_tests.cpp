@@ -14,7 +14,7 @@ static void fix(std::vector<uint8_t>&b){put(b,16,0);put(b,16,encore::crc32(b.dat
 static uint32_t section(const std::vector<uint8_t>&b,ItemSection s){return get(b,64+(uint32_t(s)-1)*16+4);}
 int main(int argc,char**argv){
  const char*path=argc>1?argv[1]:"romfs/ui/opening.encitems";std::string error;std::vector<uint8_t>b;CHECK(encore::read_file(path,b,1024*1024,error));
- ItemData data;CHECK(data.load_file(path,error));auto view=data.view();CHECK(view.valid());CHECK(view.metadata().capacity==16);CHECK(view.metadata().owner==1);CHECK(view.count(ItemSection::Definitions)==4);CHECK(view.count(ItemSection::Instances)==1);
+ ItemData data;CHECK(data.load_file(path,error));auto view=data.view();CHECK(view.valid());CHECK(view.metadata().capacity==16);CHECK(view.metadata().owner==1);CHECK(view.count(ItemSection::Definitions)==7);CHECK(view.count(ItemSection::Instances)==1);
  auto def=view.definition(0);CHECK(def.flags==uint32_t(ItemDefinitionFlag::Equipment));CHECK(def.equipment_slot==3&&def.can_use==1);CHECK(view.string(def.name)=="Baseball Cap");CHECK(!view.string(def.description).empty());CHECK(view.string(def.description).find('\n')!=std::string_view::npos);
  auto initial=view.initial_instance(0);CHECK(initial.definition==0&&initial.equipped==1&&initial.doses==1);CHECK(view.parameter(ItemParameter::GridShape).x==2&&view.parameter(ItemParameter::GridShape).y==5);CHECK(view.clip_for(ItemClipRole::Open)!=item_no_index&&view.clip_for(ItemClipRole::Close)!=item_no_index&&view.clip_for(ItemClipRole::CursorIdle)!=item_no_index);CHECK(view.layout_for(ItemLayoutRole::Panel)!=item_no_index);CHECK(view.sound_for(ItemSoundEvent::Move).audio_id>0);
  for(uint32_t i=0;i<view.count(ItemSection::Layouts);++i){auto l=view.layout(i);CHECK(l.parent==item_no_index||l.parent<i);}
@@ -29,11 +29,13 @@ int main(int argc,char**argv){
  CHECK(get(b,8)==2&&get(b,24)==2&&get(b,28)==1);auto rich=view.definition(1);
  CHECK(rich.flags==uint32_t(ItemDefinitionFlag::RichDescription)&&rich.can_use==0&&rich.equipment_slot==item_no_index);
  CHECK(view.string(rich.source)=="AsthmaSpray");CHECK(view.string(rich.description).find("[Ninten]")!=std::string_view::npos);CHECK(view.string(rich.description).find("[Asthma]")!=std::string_view::npos);CHECK(view.string(rich.description).find("%s")!=std::string_view::npos);
+ const char*catalog_sources[]={"Hamburger","Fries","Antidote"};
+ for(uint32_t i=0;i<3;++i){auto item=view.definition(4+i);CHECK(item.id==5+i&&view.string(item.source)==catalog_sources[i]);CHECK(item.flags==uint32_t(ItemDefinitionFlag::RichDescription)&&!item.can_use&&item.equipment_slot==item_no_index);CHECK(!item.heal_hp&&!item.heal_pp);}
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{d+48+40,4},{d+48+40,3},{d+48+44,1},{d+48+20,0}})reject(edit.first,edit.second);
  for(auto versions:std::vector<std::pair<uint32_t,uint32_t>>{{1,1},{1,2},{2,1},{2,3},{3,2}}){auto bad=b;put(bad,8,versions.first);put(bad,24,versions.second);fix(bad);CHECK(!data.load(bad.data(),bad.size(),error));CHECK(data.view().definition(1).id==rich.id);}
  // A generic plain-only schema1 resource remains accepted. Source admission
  // independently controls real game content; this fixture tests format support.
- auto legacy=b;put(legacy,8,1);put(legacy,24,1);put(legacy,d+48+40,0);fix(legacy);ItemData old;CHECK(old.load(legacy.data(),legacy.size(),error));CHECK(old.view().definition(0).id==def.id);
+ auto legacy=b;put(legacy,8,1);put(legacy,24,1);for(uint32_t i=0;i<view.count(ItemSection::Definitions);++i)if(view.definition(i).flags==uint32_t(ItemDefinitionFlag::RichDescription))put(legacy,d+i*48+40,0);fix(legacy);ItemData old;CHECK(old.load(legacy.data(),legacy.size(),error));CHECK(old.view().definition(0).id==def.id);
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{
   {m,0},{m,65},{m+4,0},{m+8,1},{m+12,1},
   {d,0},{d+4,2},{d+8,0},{d+12,0},{d+16,999},{d+20,4},{d+24,65536},{d+40,2},{d+44,2},

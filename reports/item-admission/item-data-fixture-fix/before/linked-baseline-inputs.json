@@ -1,0 +1,16 @@
+{
+  "runtime_file_io.cpp.o": {
+    "runtime/file_io.cpp": "31fb1dacf83965aad6cb00d3dbcdc147432d3948f9c6f3f85c17c41c6dcefda7",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_items_data.cpp.o": {
+    "runtime/items_data.cpp": "984b347b025dfcc8daec7db7a36659f93fedd65e7ef22dc6c3f8b571a713ab6b",
+    "include/encore/items_data.hpp": "dbcc6634e9cff36466129b90b2b732532bccbfd35f5641fb9e05c078967b3805",
+    "include/encore/battle_data.hpp": "640be91827e4d951cbe63e7896efeefafc44f810bf8478c95d9bf203f2b17cbc",
+    "include/encore/preparation_control.hpp": "de0aeb5b1179f89d70fe02cae295c2720f0baf8c6712a766aaa932783f8d1de7",
+    "include/encore/movement.hpp": "a2aa904155f9cfc35fccf311d59587e029fe7e03b37f8eaf687350f2d5ffd83b",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  }
+}

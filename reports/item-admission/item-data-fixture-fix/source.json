@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "unchanged_production_program_and_data": true,
+  "actual_old_test_failure": "ItemsData check17 expected4 definitions; production now7",
+  "new_checks": 7137,
+  "semantics": "Keep source-derived7 stable definitions and disabled legacy food actions; generic plain-format1 fixture clears every rich flag. Original encoding and release resources unchanged.",
+  "verification": "GCC9 ASAN/UBSAN normal leaks, fresh test,2 actual archive members with all current header/source dependencies checked; complete matrix still required."
+}

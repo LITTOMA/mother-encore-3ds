@@ -1,0 +1,25 @@
+{
+  "source_commit": "070f824090c4b23906826832d486d4180472e726",
+  "run_id": 39696643780,
+  "job_id": 119555523720,
+  "ordinary_passed": 364,
+  "sanitizer_completed": 38,
+  "sanitizer_expected": 345,
+  "conclusion": "cancelled",
+  "job_budget_minutes": 180,
+  "note": "Started 23:56:57Z; completed 02:57:27Z. Cancellation coincides with the job ceiling; runner log says The operation was canceled.",
+  "files": {
+    "job.json": {
+      "bytes": 5738,
+      "sha256": "1819e967f41fd059783a42fb0c9e0a787fdcb0ab21e503229d4b4265277765c8"
+    },
+    "raw.log": {
+      "bytes": 1367169,
+      "sha256": "ad3ab05c96a944116390c3dfa3930c6a949b0d5fc8ee4b5dd58b718102693ce5"
+    },
+    "run.json": {
+      "bytes": 15082,
+      "sha256": "260ee3acffb0f1b82ea67b4071b948f7b95adfaab3496c4897d6cdf0d8ebe714"
+    }
+  }
+}

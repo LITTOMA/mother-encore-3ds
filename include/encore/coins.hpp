@@ -106,6 +106,7 @@ public:
  const std::map<uint64_t,CoinActor>&instances()const{return instances_;}
  CoinActor*actor(uint64_t id){auto found=instances_.find(id);return found==instances_.end()?nullptr:&found->second;}
 private:
+ friend class CoinSceneFactories;
  bool context(uint64_t,const CoinServices&,std::string&)const;
  std::shared_ptr<const CoinsData>data_;SessionSnapshot*session_=nullptr;SourceRandom*random_=nullptr;
  uint64_t epoch_=0,instance_=0,generation_=0,parent_=0,last_physics_=0;

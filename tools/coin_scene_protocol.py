@@ -1,0 +1,23 @@
+"""Strict grammar for the original barrel/Coin composition observations."""
+import struct
+from tools.coin_reference_protocol import fields,require,integer,boolean,vector,scalar,state,ENGINE
+
+def validate(doc,config):
+ fields(doc,'schema godot cases','Coin scene observation root');require(type(doc['schema'])is int and doc['schema']==2,'Coin scene observation version');engine=doc['godot'];require(type(engine)is dict and all(type(engine.get(k))is int for k in ['major','minor','patch'])and(engine['major'],engine['minor'],engine['patch'])==(3,6,2)and engine.get('hash')==ENGINE,'Coin scene observation engine');require(type(doc['cases'])is list and len(doc['cases'])==len(config['modes']),'Coin scene observation cases');bindings=config['bindings'];ids={v['id']for v in bindings};positions={v['id']:list(struct.unpack('<2I',struct.pack('<2f',*v['position'])))for v in bindings};amounts={v['id']:o['coins']for v,o in zip(bindings,config['owners'])}
+ for mode,case in zip(config['modes'],doc['cases']):
+  fields(case,'mode rows births rng_tail cash cash_opens collect_audio','Coin scene observation case');require(case['mode']==mode,'Coin scene observation mode');integer(case['rng_tail']);require(type(case['cash'])is int and case['cash']==config['cash']and type(case['cash_opens'])is int and case['cash_opens']==0 and case['collect_audio']==[],'Coin scene prepared no-pickup cash/audio');require(type(case['births'])is list,'Coin scene Ready sequence');expected=sum(amounts.values())-(config['owners'][0]['coins']if mode=='flagged'else 0);require(len(case['births'])==expected,'Coin scene source flag/burst coverage');counts={v:0 for v in ids};previous=(0,0)
+  for ordinal,birth in enumerate(case['births']):
+   fields(birth,'ordinal factory physics idle position speed direction air_time sparkle','Coin scene Ready record');require(type(birth['ordinal'])is int and birth['ordinal']==ordinal and type(birth['factory'])is int and birth['factory']in ids,'Coin scene Ready identity');integer(birth['physics'],config['last_frame']);integer(birth['idle'],config['last_frame']);require((birth['physics'],birth['idle'])>=previous,'Coin scene Ready clock order');previous=(birth['physics'],birth['idle']);vector(birth['position']);vector(birth['direction']);require(birth['position']==positions[birth['factory']],'Coin scene original prefab world position');require(scalar(birth['speed'])>0 and scalar(birth['air_time'])>0,'Coin scene Ready movement');integer(birth['sparkle'],config['sparkle_count']-1);counts[birth['factory']]+=1
+  for i,binding in enumerate(bindings):require(counts[binding['id']]==(0 if mode=='flagged'and i==0 else amounts[binding['id']]),'Coin scene individual source factory coverage')
+  require(type(case['rows'])is list and len(case['rows'])==config['last_frame']+2,'Coin scene observation frame count')
+  for frame,row in zip(range(-1,config['last_frame']+1),case['rows']):
+   fields(row,'frame physics idle factories born'+(' live'if frame in config['pose_frames']else''),'Coin scene observation row');require(type(row['frame'])is int and row['frame']==frame and type(row['physics'])is int and type(row['idle'])is int and row['physics']==row['idle']==max(frame,0),'Coin scene observation clock identity');integer(row['born'],len(case['births']));require(row['born']==sum(v['physics']<=row['physics']and v['idle']<=row['idle']for v in case['births']),'Coin scene Ready/snapshot prefix');require(type(row['factories'])is list and len(row['factories'])==len(bindings),'Coin scene per-frame factory coverage')
+   for binding,owner,factory in zip(bindings,config['owners'],row['factories']):
+    fields(factory,'id timer remaining spawning position parent flag body_disabled','Coin scene factory state');require(type(factory['id'])is int and factory['id']==binding['id'],'Coin scene factory order/identity');require(scalar(factory['timer'])>=0,'Coin scene factory timer');integer(factory['remaining'],1024);vector(factory['position']);require(factory['position']==positions[binding['id']]and factory['parent']in[owner['parent'],binding['reparent']],'Coin scene source parent/coordinates')
+    for key in ['spawning','flag','body_disabled']:boolean(factory[key])
+   if frame in config['pose_frames']:
+    require(type(row['live'])is list and len(row['live'])==row['born'],'Coin scene live coin coverage')
+    for ordinal,actor in enumerate(row['live']):
+     fields(actor,'ordinal state drops','Coin scene live coin');require(type(actor['ordinal'])is int and actor['ordinal']==ordinal,'Coin scene live order');state(actor['state'],config['animations']);require(type(actor['drops'])is list and len(actor['drops'])<=1,'Coin scene drop voice count')
+     for clock in actor['drops']:integer(clock,row['idle'])
+ return doc

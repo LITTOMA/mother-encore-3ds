@@ -9,6 +9,7 @@ option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMak
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
     runtime/coins_data.cpp runtime/coins.cpp runtime/circle_motion.cpp
+    runtime/coin_scene_data.cpp runtime/coin_scene.cpp
     runtime/dungeon_key_contacts.cpp
     runtime/dungeon_key_indicator.cpp
     runtime/dungeon_key_hud_graphics.cpp
@@ -1610,6 +1611,19 @@ if(BUILD_TESTING AND Python3_Interpreter_FOUND)
  add_test(NAME coin_factory COMMAND encore_coin_factory_tests ${CMAKE_BINARY_DIR}/coins-fixture/coins.encoin ${CMAKE_BINARY_DIR}/coins-fixture/factory.tsv)
  add_test(NAME circle_motion COMMAND encore_circle_motion_tests ${CMAKE_BINARY_DIR}/coins-fixture/circle.tsv)
  set_tests_properties(coins coin_actor coin_factory circle_motion PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED coins_source)
+endif()
+
+if(BUILD_TESTING AND Python3_Interpreter_FOUND)
+ add_test(NAME coin_scene_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_coin_scene.py --out ${CMAKE_BINARY_DIR}/coin-scene-fixture)
+ set_tests_properties(coin_scene_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP coin_scene_source)
+ foreach(coin_scene_case IN ITEMS coin_scene_data coin_scene coin_scene_source)
+  add_executable(encore_${coin_scene_case}_tests tests/${coin_scene_case}_tests.cpp)
+  target_link_libraries(encore_${coin_scene_case}_tests PRIVATE encore_core)
+ endforeach()
+ add_test(NAME coin_scene_data COMMAND encore_coin_scene_data_tests ${CMAKE_BINARY_DIR}/coin-scene-fixture/scene.enccf ${CMAKE_BINARY_DIR}/coin-scene-fixture/coins.encoin ${CMAKE_BINARY_DIR}/coin-scene-fixture/breakables.encbrk ${CMAKE_BINARY_DIR}/coin-scene-fixture/partial.enccf)
+ add_test(NAME coin_scene COMMAND encore_coin_scene_tests ${CMAKE_BINARY_DIR}/coin-scene-fixture/scene.enccf ${CMAKE_BINARY_DIR}/coin-scene-fixture/coins.encoin ${CMAKE_BINARY_DIR}/coin-scene-fixture/breakables.encbrk)
+ add_test(NAME coin_scene_source COMMAND encore_coin_scene_source_tests ${CMAKE_BINARY_DIR}/coin-scene-fixture/scene.enccf ${CMAKE_BINARY_DIR}/coin-scene-fixture/coins.encoin ${CMAKE_BINARY_DIR}/coin-scene-fixture/breakables.encbrk ${CMAKE_BINARY_DIR}/coin-scene-fixture/native.tsv)
+ set_tests_properties(coin_scene_data coin_scene coin_scene_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED coin_scene_source)
 endif()
 
 include(cmake/TestParallelism.cmake)

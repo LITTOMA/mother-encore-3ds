@@ -1,0 +1,130 @@
+{
+  "tests": 366,
+  "new_tests": {
+    "coin_scene_fixture": {
+      "backtrace": 725,
+      "command": [
+        "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe",
+        "D:/GameDev/3DS/mother-encore-3ds/tests/prepare_coin_scene.py",
+        "--out",
+        "D:/GameDev/3DS/mother-encore-3ds/build/full-port/coin-scene-integration-1/cmake/coin-scene-fixture"
+      ],
+      "config": "Release",
+      "name": "coin_scene_fixture",
+      "properties": [
+        {
+          "name": "FIXTURES_SETUP",
+          "value": [
+            "coin_scene_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    "coin_scene_data": {
+      "backtrace": 727,
+      "config": "Release",
+      "name": "coin_scene_data",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "coin_scene_fixture"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "coin_scene_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    "coin_scene": {
+      "backtrace": 729,
+      "config": "Release",
+      "name": "coin_scene",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "coin_scene_fixture"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "coin_scene_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    "coin_scene_source": {
+      "backtrace": 731,
+      "config": "Release",
+      "name": "coin_scene_source",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "coin_scene_fixture"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "coin_scene_source"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    }
+  },
+  "level": "Windows Release registration discovery only; no full host rebuild"
+}

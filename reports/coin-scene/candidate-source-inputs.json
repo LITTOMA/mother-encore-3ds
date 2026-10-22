@@ -1,0 +1,20 @@
+{
+  "CMakeLists.txt": "c2f536fe62efd18405ab84cf70ca5cdc72f8b730bbfadad36e2917b42e9162ec",
+  "platform/ctr/Makefile": "e3b6d5f3dac24f5923130b462e15590a7f9200fd985a491ab67a352408aaca09",
+  "content/catacombs-coin-scene.json": "3776ea8ef355dc9e979e14351b0ce3698888fefd095ae534f71f33c51925a28a",
+  "compatibility/reviews/catacombs-coin-scene-v0410.json": "264c2b2ed1801bc27db69907c0aeecc0c0297f0d5aab51d00f775db323665ec7",
+  "include/encore/coins.hpp": "8fb04b35eeda030c286f212fbde7a965caa77d4ee39e7c1996f2d72432324a58",
+  "include/encore/coin_scene.hpp": "c01403cfe5d2ca90496121f47d7659c5d4c9c1fd77eb6fe1d0e771a6ad6f17a1",
+  "runtime/coins.cpp": "dc2dc96a0ad78d11e739555b03843a0aa13e4be2e520e3c864de93f4c19474b6",
+  "runtime/coin_scene.cpp": "2d7dac8681bf613acde89cae6581889c057b106f0926fa7fe7a28a578fe27eb5",
+  "runtime/coin_scene_data.cpp": "c1b6d28ab5f2f2e123a7f63bdc4c24eeff0e0ee6df55d3211f5b6f1d11b2bdf9",
+  "tools/coin_scene.py": "e89b17fd69234db03474bf6c95f8d657303725c283bdb39acb7c9f2975ab3fad",
+  "tools/coin_scene_protocol.py": "95c300322d1c0048bf64be4349f26e0c1624631dbc943bf3bea6d805a38504fd",
+  "tools/run_coin_scene_reference.py": "88c472c79ee5b9be0b1fb2ea5082a1c2be26efa91f75dbdb4ca0e0c167220890",
+  "tests/coin_scene_tests.cpp": "cfedcecf3084a183d3a1d020f2c66b442241e8230bc7d36e48f5f85e255c5933",
+  "tests/coin_scene_data_tests.cpp": "9a4bed48598d8f9e2e83a371aa5457cce6f2d7ce2a1fece95df994dbfdafbaa5",
+  "tests/coin_scene_source_tests.cpp": "fb0820d0ad6b5786914f8598918556b7079ea32b54161038d70471b4f2d464f5",
+  "tests/coin_scene_reference_support.hpp": "c2fe77b0e91a5cf14c5a0aae566f7ea609844df9601d89439e53a71aeaab4c03",
+  "tests/prepare_coin_scene.py": "b79af7070bb86410d08a7c162a89e3e703022d6aed66fa163e2da011f1f72f16",
+  "tests/test_coin_scene.py": "0d450e5680fb5ceb97e8f83a95823b910879abc67237293155c7dd20b2eac1f9"
+}

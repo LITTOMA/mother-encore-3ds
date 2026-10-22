@@ -1,0 +1,10 @@
+test_actual_complete_unique_bindings_and_offsets (tests.test_coin_scene.CoinSceneTests.test_actual_complete_unique_bindings_and_offsets) ... ok
+test_model_unknown_transform_fields_and_bindings_fail_closed (tests.test_coin_scene.CoinSceneTests.test_model_unknown_transform_fields_and_bindings_fail_closed) ... ok
+test_record_domains_tree_order_strings_and_stable_identity (tests.test_coin_scene.CoinSceneTests.test_record_domains_tree_order_strings_and_stable_identity) ... ok
+test_reviewed_source_and_complete_owner_coverage (tests.test_coin_scene.CoinSceneTests.test_reviewed_source_and_complete_owner_coverage) ... ok
+test_truncation_crc_header_version_capability_and_directory (tests.test_coin_scene.CoinSceneTests.test_truncation_crc_header_version_capability_and_directory) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 5.218s
+
+OK

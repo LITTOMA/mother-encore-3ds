@@ -1,0 +1,6 @@
+test_unknown_observations_and_changed_receipts_reject (poison_context_candidate.PoisonContactTests.test_unknown_observations_and_changed_receipts_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 35.011s
+
+OK

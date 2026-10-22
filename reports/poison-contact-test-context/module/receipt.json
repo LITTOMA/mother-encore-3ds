@@ -1,0 +1,7 @@
+{
+  "success": true,
+  "tests": 10,
+  "seconds": 43.15599999995902,
+  "test_sha256": "9347b0c0aee4c11048b3bcf7b17a7038854bf82f600e8bc1a0fc67a112778187",
+  "scope": "All PoisonContactTests methods loaded from the isolated candidate worktree; real unchanged production adapters, upstream and existing source fixtures supplied by the root checkout. Not a full host/cross/emulator run."
+}

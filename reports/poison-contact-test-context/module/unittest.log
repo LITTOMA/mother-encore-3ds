@@ -1,0 +1,15 @@
+test_actual_two_original_runs_and_generated_observer_identity (poison_context_complete_module.PoisonContactTests.test_actual_two_original_runs_and_generated_observer_identity) ... ok
+test_all_truncations_and_checksum (poison_context_complete_module.PoisonContactTests.test_all_truncations_and_checksum) ... ok
+test_changed_source_recipe_and_dependency_reject (poison_context_complete_module.PoisonContactTests.test_changed_source_recipe_and_dependency_reject) ... ok
+test_model_types_nonconvex_foreign_vertex_and_nested_identity (poison_context_complete_module.PoisonContactTests.test_model_types_nonconvex_foreign_vertex_and_nested_identity) ... ok
+test_owned_fixture_repeatability_and_corruption_reject (poison_context_complete_module.PoisonContactTests.test_owned_fixture_repeatability_and_corruption_reject) ... ok
+test_policy_string_and_geometry_spans (poison_context_complete_module.PoisonContactTests.test_policy_string_and_geometry_spans) ... ok
+test_review_and_protocol_changes_fail_closed (poison_context_complete_module.PoisonContactTests.test_review_and_protocol_changes_fail_closed) ... ok
+test_roundtrip_source_geometry_and_unchanged_nested_format (poison_context_complete_module.PoisonContactTests.test_roundtrip_source_geometry_and_unchanged_nested_format) ... ok
+test_unknown_observations_and_changed_receipts_reject (poison_context_complete_module.PoisonContactTests.test_unknown_observations_and_changed_receipts_reject) ... ok
+test_versions_domains_and_directory_ownership (poison_context_complete_module.PoisonContactTests.test_versions_domains_and_directory_ownership) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 43.156s
+
+OK

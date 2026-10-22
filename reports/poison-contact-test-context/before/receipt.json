@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "tests": 1,
+  "seconds": 35.01599999994505,
+  "source_sha256": "4e3e68d50c6faa4756594486d8e1684d400722db9d2e7628ade79f9ed59289a4",
+  "source_preparation_calls": {
+    "native": 16,
+    "damage": 26,
+    "poison": 43,
+    "steps": 85
+  },
+  "scope": "One unchanged malformed-result/receipt method with real original-source class setup. Only source-call counters wrap the actual functions; not a full test run or source mutation."
+}

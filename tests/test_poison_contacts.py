@@ -46,13 +46,18 @@ class PoisonContactTests(unittest.TestCase):
  def test_actual_two_original_runs_and_generated_observer_identity(self):
   self.assertEqual((self.first/'reference.json').read_bytes(),(g.ROOT/'reports/poison-contacts/native2/reference.json').read_bytes());self.assertEqual(len(self.doc['rows']),105);self.assertEqual(native.validate_result(self.doc,self.receipt),self.doc);self.assertEqual(set(self.copied),{'Audio/Sound effects/Hurt 1.mp3'})
  def test_unknown_observations_and_changed_receipts_reject(self):
-  changes=[lambda v:v.update(schema=True),lambda v:v['rows'].pop(),lambda v:v['rows'][0].update(extra=1),lambda v:v['rows'][0].update(paused=1),lambda v:v['rows'][0].update(phase='unknown'),lambda v:v['rows'][0].update(continuous=1),lambda v:v['rows'][0].update(layer=0x100000),lambda v:v['rows'][0].update(contacts=[[0,True,True],[0,True,True]]),lambda v:v['rows'][0].update(overlaps=[]),lambda v:v['rows'][0].update(events=[['unknown']])]
-  for change in changes:
-   v=copy.deepcopy(self.doc);change(v)
-   with self.subTest(change=change),self.assertRaises(ValueError):native.validate_result(v,self.receipt)
-  for field in['generated_sha256','copied','scope','poison','player']:
-   v=copy.deepcopy(self.receipt);v[field]='changed'
-   with self.subTest(field=field),self.assertRaises(ValueError):native.validate_result(self.doc,v)
+  # These cases mutate only the result/receipt. Admit the actual source once,
+  # then exercise every payload check against that fixed source observation.
+  # The independent positive test still calls the complete uncached validator.
+  damage_source=native.damage.damage.source();poison_source=native.poison.source();steps_source=native.steps.source()
+  with patch.object(native,'source',return_value=(self.files,self.copied,self.native_proof)),patch.object(native.damage.damage,'source',return_value=damage_source),patch.object(native.poison,'source',return_value=poison_source),patch.object(native.steps,'source',return_value=steps_source):
+   changes=[lambda v:v.update(schema=True),lambda v:v['rows'].pop(),lambda v:v['rows'][0].update(extra=1),lambda v:v['rows'][0].update(paused=1),lambda v:v['rows'][0].update(phase='unknown'),lambda v:v['rows'][0].update(continuous=1),lambda v:v['rows'][0].update(layer=0x100000),lambda v:v['rows'][0].update(contacts=[[0,True,True],[0,True,True]]),lambda v:v['rows'][0].update(overlaps=[]),lambda v:v['rows'][0].update(events=[['unknown']])]
+   for change in changes:
+    v=copy.deepcopy(self.doc);change(v)
+    with self.subTest(change=change),self.assertRaises(ValueError):native.validate_result(v,self.receipt)
+   for field in['generated_sha256','copied','scope','poison','player']:
+    v=copy.deepcopy(self.receipt);v[field]='changed'
+    with self.subTest(field=field),self.assertRaises(ValueError):native.validate_result(self.doc,v)
  def test_owned_fixture_repeatability_and_corruption_reject(self):
   out=self.temporary()/'fixture';a=fixture.build(out);self.assertEqual(a,fixture.build(out));self.assertEqual(a['contacts.encpcn'],self.blob);(out/'native.tsv').write_text('changed')
   with self.assertRaises(ValueError):fixture.build(out)

@@ -1,0 +1,143 @@
+{
+  "candidate_base": "c59776445f1f87f419e6fd25ab89dc961cff58e7",
+  "all_imported_adapter_modules_checked": [
+    {
+      "path": "tests/prepare_poison_contacts.py",
+      "sha256": "6520500b1e33134e7286bdb8dd7609cff0c1d0c799c3af8fc664c49dfc0ec189"
+    },
+    {
+      "path": "tests/prepare_world_damage.py",
+      "sha256": "6012e6b00a46296f2d53936fe63f859cf2cf538fe955a64a68b05af8c80e738f"
+    },
+    {
+      "path": "tools/audio_asset.py",
+      "sha256": "ef6ca55f7fabe2f908dc1391ead1be1144247c36a6f67e0a56efab1eb81226ee"
+    },
+    {
+      "path": "tools/catacombs_poison.py",
+      "sha256": "b417bf4b3cb2fe033e69a6e66fd8df9d46fb4e0755c754c3bc11ad8059f804db"
+    },
+    {
+      "path": "tools/catacombs_steps.py",
+      "sha256": "867cd8953b12e13854ed6a4eabcf16e685d47333b73c99908d775d824a250513"
+    },
+    {
+      "path": "tools/content_compiler.py",
+      "sha256": "d8898c39ad89056450a2e9fb346daf45ffe199c0788b22fa37bbcb440e6cb2f7"
+    },
+    {
+      "path": "tools/dungeon_key_clocks.py",
+      "sha256": "bb03c98f9a9f075a5e8ef588e5547f50d4efc2ab9251e28e050cc73157321eb3"
+    },
+    {
+      "path": "tools/dungeon_key_indicator.py",
+      "sha256": "b68a5e27cad9dd04a44dee6d2a19fbb4509882363462c1e6311bd88283798a58"
+    },
+    {
+      "path": "tools/dungeon_key_media.py",
+      "sha256": "3a29407de0cb8458a7ca1849618e6d7c5f61f3baa0aef200ba781c367bfcd877"
+    },
+    {
+      "path": "tools/dungeon_keys.py",
+      "sha256": "4ced6beaa1c150eb3e7a018f9841b970100c21f7727d41b3275970deae623087"
+    },
+    {
+      "path": "tools/dungeon_mechanism_bindings.py",
+      "sha256": "1a91ca6edcb025667b5217bee4a7a68eb84094d29dcd32f40d4c85f5978c826d"
+    },
+    {
+      "path": "tools/dungeon_mechanism_graphics.py",
+      "sha256": "f8796460f9b6eb63aaeea4bb1b17159f7efe1496b270d3675542d48445da3f7c"
+    },
+    {
+      "path": "tools/dungeon_switch_clips.py",
+      "sha256": "df9580f594efb716ce2ad2c6c2c47070dfb1cd089a6cdb47c020ae7d0fde5022"
+    },
+    {
+      "path": "tools/dungeon_switches.py",
+      "sha256": "3359ab2fe52d537f66438b515a917eb5605f9139bab9af10e268b2e533d16c25"
+    },
+    {
+      "path": "tools/dungeon_wall_timeline.py",
+      "sha256": "451b069330527565919c87567323571af54ac1c0078562aa187cae09646418b9"
+    },
+    {
+      "path": "tools/extract_battle_entry.py",
+      "sha256": "012af6b357236aa9bf39fbe804406903696ee783001d9465a431ab442dfeec73"
+    },
+    {
+      "path": "tools/field_swing.py",
+      "sha256": "ff3c087d43ec77ad4b8fa7a3af92f2f2e1af5dbf6aa27d3d3f0e20b7844056ff"
+    },
+    {
+      "path": "tools/godot_text.py",
+      "sha256": "2d65e2a50b54d6f933e4ad7bee816b5d14a600c2edbbd24aa341d2db5099de67"
+    },
+    {
+      "path": "tools/podunk_field.py",
+      "sha256": "6a507657a86bdfcbdd8bf2b9280244acc35a9ed623e899c3a4ae06e3e20197ee"
+    },
+    {
+      "path": "tools/poison_contacts.py",
+      "sha256": "13da854099f314b666276a63bc7885f501d28afb9aee8090ae31515e5e0546d2"
+    },
+    {
+      "path": "tools/prop_clips.py",
+      "sha256": "9ba8497e8f68986e08bf8dc83aa5122644f4fa341ed7961fea8b287f7b5d2912"
+    },
+    {
+      "path": "tools/reference_movement.py",
+      "sha256": "65db7e4a5a767e751a26190bbe0aa00069c4d6b40a3c21a6bf95333694da3aba"
+    },
+    {
+      "path": "tools/run_battle_victory_reference.py",
+      "sha256": "5ac9402ba775149e03fe66bb05ab9373af18f985af1c33e97342c87a2f71da1a"
+    },
+    {
+      "path": "tools/run_dungeon_key_clocks_reference.py",
+      "sha256": "0450e1a74527972b2b7d8f09746eb8950eab7dd1bf3f23cda241f0d8b949a5b4"
+    },
+    {
+      "path": "tools/run_dungeon_key_contact_reference.py",
+      "sha256": "a16b6b9d5954cdf554483b36caf52396e363dc6e895ba5e21184f827cb9d7bf6"
+    },
+    {
+      "path": "tools/run_dungeon_keys_reference.py",
+      "sha256": "a4168b41121a6e19450d55a5bf1a904dbfbfca791204ad8de6404b2945e47c7c"
+    },
+    {
+      "path": "tools/run_poison_contact_reference.py",
+      "sha256": "a99c26d151271b00a024884310d60bc28230f469c8af92476328e57afcb88b03"
+    },
+    {
+      "path": "tools/run_poison_damage_reference.py",
+      "sha256": "7b5a7526d40d572d3cfc8a77cdad5782146edae5bcb0d028f43b55b652b60263"
+    },
+    {
+      "path": "tools/run_scene_reference.py",
+      "sha256": "b6a73f5853f6a4292db8c2dcdbc08d73c1f4c161d3ba421fa94f6430b775d64d"
+    },
+    {
+      "path": "tools/scene_data.py",
+      "sha256": "794cd7e44d04455c791bc365baa46c306656c4130e99814ee2d11facfe37497e"
+    },
+    {
+      "path": "tools/scene_reference.py",
+      "sha256": "f6baf629675eb414bfcce269af4b54c34621c91e798648b3ca5fa948fe258723"
+    },
+    {
+      "path": "tools/upstream.py",
+      "sha256": "de58abb2f289d282de4c6d5883b2399fb32d59537ee3219acd73fb3ceed86dfe"
+    },
+    {
+      "path": "tools/world_damage.py",
+      "sha256": "8e30ffd7b3c7a6d7eaff3c4a7cea1cb9cfb747b8be12989d24782faea8ce3237"
+    }
+  ],
+  "exact_source_functions": [
+    "tools.run_poison_contact_reference.source",
+    "tools.world_damage.source",
+    "tools.catacombs_poison.source",
+    "tools.catacombs_steps.source"
+  ]
+}

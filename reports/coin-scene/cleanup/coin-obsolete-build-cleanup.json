@@ -1,0 +1,131 @@
+{
+  "files": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-data-host-1\\check",
+      "bytes": 2684136,
+      "sha256": "da9f0e44d060fa8f83c2868e829a797d59f54b7a58a37d900d1e3c0b830db248"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-actor-host-1\\check",
+      "bytes": 7431560,
+      "sha256": "2684d20492f20718f0b382d5c99dca5af96042069683a3353b81a67b6a85221a"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-actor-host-2\\check",
+      "bytes": 7431584,
+      "sha256": "008d34f4099fb66ca93abcd502b8f550195b44b48b23588380c99c9392cdbb96"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-actor-host-3\\check",
+      "bytes": 9163816,
+      "sha256": "03789afc0dfa6fb9d3995168b7ae2b26154ca6d5c6241ec5749b046e3e97891d"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\circle-motion-host-1\\check",
+      "bytes": 3184920,
+      "sha256": "9f4c10aaf739aafdca6babb35e2bd23cd1d032702caba2e326f035df50d3d89a"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\circle-motion-host-2\\check",
+      "bytes": 3185944,
+      "sha256": "0dd47586b434497cb9dd8eec4b3ebe53b2a6cb003ec883ddadb875e3ac1575a0"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\circle-motion-host-3\\check",
+      "bytes": 3591448,
+      "sha256": "45dc7ba2b615310e80fabe82bb69259c513b9278e99af4959042aec3532be385"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\circle-motion-host-4\\check",
+      "bytes": 3616312,
+      "sha256": "59623111c9727e1646ce3f323abcb61548b0ff89b680d54e886ed35da98bf40c"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-composite-host-1\\check-actor",
+      "bytes": 10722792,
+      "sha256": "730d8343ea4e661af347da663ecd94eb7f5979ee416de2dba2a45ee8b2012f37"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-composite-host-1\\check-data",
+      "bytes": 2694632,
+      "sha256": "5994bfdca7aae3f79e076de5d616feedd0097022a0e893631fffa50bc24afcf6"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-composite-host-1\\check-factory",
+      "bytes": 8616248,
+      "sha256": "6ce35ef53fd0e49cd3fc4de89ec727a7a409d2c14f935d790f86b4ad12c1d731"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-composite-host-1\\circle_motion.o",
+      "bytes": 3661944,
+      "sha256": "0b3f307d9a6fe69f4e07a311a9ee2cbda99c04689ddcebf502f3cf385f5cd451"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-composite-host-1\\coins_data.o",
+      "bytes": 3494264,
+      "sha256": "97b6e5b271f80157579ffe0097b3ca245376f919c0846ab1894600d913301366"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-composite-host-1\\coins.o",
+      "bytes": 4136440,
+      "sha256": "261d8efccf9fdb411182e785ba09b8462cd1a98d217daa0f0f4c93302cd4d2c0"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-consumer-host-1\\check",
+      "bytes": 22676656,
+      "sha256": "3347d83e69f2ba5366b675edb68be69b0081c41ef1640262c5ae28659cc0319b"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-consumer-host-2\\check",
+      "bytes": 22716072,
+      "sha256": "a7bd78b29f344ba1b792057ceff89c51330e132271baa136627751017d66eb1f"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-data-host-1\\check",
+      "bytes": 8807312,
+      "sha256": "0fd51721968d7536f26c309fd02f553e44061e8523e2f1bf38fae9bec9318028"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-source-host-1\\breakables_data.o",
+      "bytes": 7548968,
+      "sha256": "2ea941f59ecd6d79d7be21bd9c2ae7b408ac0dd7695d5670471a7ddc9466df86"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-source-host-1\\breakables.o",
+      "bytes": 8615544,
+      "sha256": "44b2ae66c1137285189e41be3c24c25b057bedf85814bf9392e8decabdccb2cf"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-source-host-1\\check",
+      "bytes": 22862712,
+      "sha256": "421106ebbd4f6e695e2dbc2a054f13b40ab7abef882b0881b06e4a0f2612b3ec"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-source-host-1\\circle_motion.o",
+      "bytes": 3661944,
+      "sha256": "0b3f307d9a6fe69f4e07a311a9ee2cbda99c04689ddcebf502f3cf385f5cd451"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-source-host-1\\coin_scene_data.o",
+      "bytes": 4218232,
+      "sha256": "605bc9928879fcc3a79e2a3cd614ba0333ef7384f77bd50dbc58c404abbd6ad9"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-source-host-1\\coin_scene.o",
+      "bytes": 5601776,
+      "sha256": "07b40aae1d7f83f82336dfc5965ed21857009902075c38628d7b0e4c1065a1ea"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-source-host-1\\coins_data.o",
+      "bytes": 3494208,
+      "sha256": "672b44085fe0ab232ef598554ad9b70c7f0f9fabb23578474439d5c2dd96d0e4"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-scene-source-host-1\\coins.o",
+      "bytes": 4140112,
+      "sha256": "ef563a9b82f422efd45e26043fe0ac9b30b17aebb660ed4d36ee7b0b423c21d9"
+    }
+  ],
+  "bytes": 187959576,
+  "preserved": "All source, negative/positive logs, current checked objects/executables, 117-module archive and emulator games"
+}

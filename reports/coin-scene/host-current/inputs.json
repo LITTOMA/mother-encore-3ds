@@ -1,0 +1,19 @@
+{
+  "runtime/coin_scene.cpp": "2d7dac8681bf613acde89cae6581889c057b106f0926fa7fe7a28a578fe27eb5",
+  "runtime/coin_scene_data.cpp": "c1b6d28ab5f2f2e123a7f63bdc4c24eeff0e0ee6df55d3211f5b6f1d11b2bdf9",
+  "runtime/coins.cpp": "dc2dc96a0ad78d11e739555b03843a0aa13e4be2e520e3c864de93f4c19474b6",
+  "runtime/coins_data.cpp": "6d787a44ee42e2b28350c53007723d933d1d9614c7cbfb4e384c4def45a373db",
+  "runtime/circle_motion.cpp": "6f10b08e21327e100ffaf7525a058602c8444e4ea33ea4226e4e128ce40ba484",
+  "runtime/breakables.cpp": "a6593efa155bce08f5e2f650e888aed876790aa1b1c7ebcd1f9abf4bdde4a23a",
+  "runtime/breakables_data.cpp": "70afbb3f17705e4ebfb26b7d94866614f67e86b18ac4a24b8590154be35915c6",
+  "include/encore/coin_scene.hpp": "c01403cfe5d2ca90496121f47d7659c5d4c9c1fd77eb6fe1d0e771a6ad6f17a1",
+  "include/encore/coins.hpp": "8fb04b35eeda030c286f212fbde7a965caa77d4ee39e7c1996f2d72432324a58",
+  "include/encore/circle_motion.hpp": "02496b242ad6d23b8341c82be9d00b6ee95680aad4e44add74d5226aad60b281",
+  "include/encore/breakables.hpp": "6722227b368ec2d1a30a1ac2a801c73f3994ff137d943b480421c28beda4f99a",
+  "tests/coin_scene_source_tests.cpp": "fb0820d0ad6b5786914f8598918556b7079ea32b54161038d70471b4f2d464f5",
+  "tests/coin_reference_support.hpp": "439a217cb758581c2aa5bf675cfa87b13b039b15f206a46516b6926ebfeb5d6f",
+  "tests/coin_scene_reference_support.hpp": "c2fe77b0e91a5cf14c5a0aae566f7ea609844df9601d89439e53a71aeaab4c03",
+  "tests/coin_scene_tests.cpp": "cfedcecf3084a183d3a1d020f2c66b442241e8230bc7d36e48f5f85e255c5933",
+  "tests/coin_scene_data_tests.cpp": "9a4bed48598d8f9e2e83a371aa5457cce6f2d7ce2a1fece95df994dbfdafbaa5",
+  "tests/coin_factory_tests.cpp": "f04690056353905b94710318f5407aa437577ee179f6d34767571fded48fdbff"
+}

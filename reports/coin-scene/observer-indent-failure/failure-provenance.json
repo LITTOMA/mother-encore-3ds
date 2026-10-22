@@ -1,0 +1,7 @@
+{
+  "status": "Editor validation failed; no runtime result/receipt",
+  "pre_editor_observer_sha256": "e6a60a985f3c1afa485e911bd1c288e8d218d31888d3927db816eb08b7cf6570",
+  "editor_rewritten_observer_sha256": "ece12c0b68c802652b731ff7fb1e53dfc2b1f22cc963e168cbea6db409003709",
+  "restoration": "Expand actual editor-converted tabs to four spaces; verified against original input digest",
+  "old_producer_copy_not_claimed_exact": true
+}

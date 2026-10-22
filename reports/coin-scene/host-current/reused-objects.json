@@ -1,0 +1,18 @@
+{
+  "coins_data": {
+    "source": "6d787a44ee42e2b28350c53007723d933d1d9614c7cbfb4e384c4def45a373db",
+    "object_sha256": "672b44085fe0ab232ef598554ad9b70c7f0f9fabb23578474439d5c2dd96d0e4"
+  },
+  "circle_motion": {
+    "source": "6f10b08e21327e100ffaf7525a058602c8444e4ea33ea4226e4e128ce40ba484",
+    "object_sha256": "0b3f307d9a6fe69f4e07a311a9ee2cbda99c04689ddcebf502f3cf385f5cd451"
+  },
+  "breakables": {
+    "source": "a6593efa155bce08f5e2f650e888aed876790aa1b1c7ebcd1f9abf4bdde4a23a",
+    "object_sha256": "44b2ae66c1137285189e41be3c24c25b057bedf85814bf9392e8decabdccb2cf"
+  },
+  "breakables_data": {
+    "source": "70afbb3f17705e4ebfb26b7d94866614f67e86b18ac4a24b8590154be35915c6",
+    "object_sha256": "2ea941f59ecd6d79d7be21bd9c2ae7b408ac0dd7695d5670471a7ddc9466df86"
+  }
+}

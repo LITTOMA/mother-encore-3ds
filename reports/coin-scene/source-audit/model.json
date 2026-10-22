@@ -1,0 +1,1044 @@
+{
+  "scene": 4,
+  "source": "Maps/podunk/Catacombs.tscn",
+  "sink": "Objects",
+  "root_position": [
+    0.0,
+    0.0
+  ],
+  "sink_position": [
+    0.0,
+    0.0
+  ],
+  "bindings": [
+    {
+      "id": 1411959276,
+      "owner": 3611267201,
+      "order": 501,
+      "owner_order": 500,
+      "path": "Objects/Barrel2/CoinSpawner",
+      "parent": "Objects/Barrel2",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel2",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -592.0,
+        -264.0
+      ]
+    },
+    {
+      "id": 950130374,
+      "owner": 3644822439,
+      "order": 512,
+      "owner_order": 511,
+      "path": "Objects/Barrel4/CoinSpawner",
+      "parent": "Objects/Barrel4",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel4",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -728.0,
+        -248.0
+      ]
+    },
+    {
+      "id": 3121302576,
+      "owner": 3678377677,
+      "order": 523,
+      "owner_order": 522,
+      "path": "Objects/Barrel6/CoinSpawner",
+      "parent": "Objects/Barrel6",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel6",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -680.0,
+        -280.0
+      ]
+    },
+    {
+      "id": 3789802607,
+      "owner": 3594489582,
+      "order": 534,
+      "owner_order": 533,
+      "path": "Objects/Barrel3/CoinSpawner",
+      "parent": "Objects/Barrel3",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel3",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -560.0,
+        -280.0
+      ]
+    },
+    {
+      "id": 401345633,
+      "owner": 3628044820,
+      "order": 545,
+      "owner_order": 544,
+      "path": "Objects/Barrel5/CoinSpawner",
+      "parent": "Objects/Barrel5",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel5",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -304.0,
+        -248.0
+      ]
+    },
+    {
+      "id": 1446977701,
+      "owner": 3426713392,
+      "order": 781,
+      "owner_order": 780,
+      "path": "Objects/Barrel9/CoinSpawner",
+      "parent": "Objects/Barrel9",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel9",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -776.0,
+        -576.0
+      ]
+    },
+    {
+      "id": 141182799,
+      "owner": 403265384,
+      "order": 792,
+      "owner_order": 791,
+      "path": "Objects/Barrel10/CoinSpawner",
+      "parent": "Objects/Barrel10",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel10",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -760.0,
+        -552.0
+      ]
+    },
+    {
+      "id": 524044492,
+      "owner": 420043003,
+      "order": 803,
+      "owner_order": 802,
+      "path": "Objects/Barrel11/CoinSpawner",
+      "parent": "Objects/Barrel11",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel11",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -736.0,
+        -568.0
+      ]
+    },
+    {
+      "id": 1920350893,
+      "owner": 436820622,
+      "order": 814,
+      "owner_order": 813,
+      "path": "Objects/Barrel12/CoinSpawner",
+      "parent": "Objects/Barrel12",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel12",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -584.0,
+        -416.0
+      ]
+    },
+    {
+      "id": 3977319234,
+      "owner": 453598241,
+      "order": 825,
+      "owner_order": 824,
+      "path": "Objects/Barrel13/CoinSpawner",
+      "parent": "Objects/Barrel13",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel13",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -568.0,
+        -440.0
+      ]
+    },
+    {
+      "id": 69883811,
+      "owner": 470375860,
+      "order": 836,
+      "owner_order": 835,
+      "path": "Objects/Barrel14/CoinSpawner",
+      "parent": "Objects/Barrel14",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel14",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -552.0,
+        -696.0
+      ]
+    },
+    {
+      "id": 121325200,
+      "owner": 487153479,
+      "order": 847,
+      "owner_order": 846,
+      "path": "Objects/Barrel15/CoinSpawner",
+      "parent": "Objects/Barrel15",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel15",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -528.0,
+        -640.0
+      ]
+    },
+    {
+      "id": 1899343653,
+      "owner": 2635424186,
+      "order": 858,
+      "owner_order": 857,
+      "path": "Objects/Barrel49/CoinSpawner",
+      "parent": "Objects/Barrel49",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel49",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -560.0,
+        -632.0
+      ]
+    },
+    {
+      "id": 285695041,
+      "owner": 503931098,
+      "order": 869,
+      "owner_order": 868,
+      "path": "Objects/Barrel16/CoinSpawner",
+      "parent": "Objects/Barrel16",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel16",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -528.0,
+        -680.0
+      ]
+    },
+    {
+      "id": 1864325228,
+      "owner": 2484425615,
+      "order": 880,
+      "owner_order": 879,
+      "path": "Objects/Barrel42/CoinSpawner",
+      "parent": "Objects/Barrel42",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel42",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -536.0,
+        -1032.0
+      ]
+    },
+    {
+      "id": 4242168559,
+      "owner": 2467647996,
+      "order": 891,
+      "owner_order": 890,
+      "path": "Objects/Barrel43/CoinSpawner",
+      "parent": "Objects/Barrel43",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel43",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -504.0,
+        -1016.0
+      ]
+    },
+    {
+      "id": 1402496326,
+      "owner": 2450870377,
+      "order": 902,
+      "owner_order": 901,
+      "path": "Objects/Barrel44/CoinSpawner",
+      "parent": "Objects/Barrel44",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel44",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -528.0,
+        -1008.0
+      ]
+    },
+    {
+      "id": 853711585,
+      "owner": 2434092758,
+      "order": 913,
+      "owner_order": 912,
+      "path": "Objects/Barrel45/CoinSpawner",
+      "parent": "Objects/Barrel45",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel45",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -624.0,
+        -1080.0
+      ]
+    },
+    {
+      "id": 3573668528,
+      "owner": 2417315139,
+      "order": 924,
+      "owner_order": 923,
+      "path": "Objects/Barrel46/CoinSpawner",
+      "parent": "Objects/Barrel46",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel46",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -648.0,
+        -1096.0
+      ]
+    },
+    {
+      "id": 2061898947,
+      "owner": 2400537520,
+      "order": 935,
+      "owner_order": 934,
+      "path": "Objects/Barrel47/CoinSpawner",
+      "parent": "Objects/Barrel47",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel47",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -664.0,
+        -1080.0
+      ]
+    },
+    {
+      "id": 19991078,
+      "owner": 520708717,
+      "order": 990,
+      "owner_order": 989,
+      "path": "Objects/Barrel17/CoinSpawner",
+      "parent": "Objects/Barrel17",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel17",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -960.0,
+        -480.0
+      ]
+    },
+    {
+      "id": 2760501639,
+      "owner": 269044432,
+      "order": 1001,
+      "owner_order": 1000,
+      "path": "Objects/Barrel18/CoinSpawner",
+      "parent": "Objects/Barrel18",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel18",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1016.0,
+        -488.0
+      ]
+    },
+    {
+      "id": 1317696644,
+      "owner": 285822051,
+      "order": 1012,
+      "owner_order": 1011,
+      "path": "Objects/Barrel19/CoinSpawner",
+      "parent": "Objects/Barrel19",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel19",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1000.0,
+        -472.0
+      ]
+    },
+    {
+      "id": 3088418004,
+      "owner": 2316355235,
+      "order": 1023,
+      "owner_order": 1022,
+      "path": "Objects/Barrel20/CoinSpawner",
+      "parent": "Objects/Barrel20",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel20",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -984.0,
+        -488.0
+      ]
+    },
+    {
+      "id": 2529378775,
+      "owner": 2299577616,
+      "order": 1034,
+      "owner_order": 1033,
+      "path": "Objects/Barrel21/CoinSpawner",
+      "parent": "Objects/Barrel21",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel21",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -976.0,
+        -464.0
+      ]
+    },
+    {
+      "id": 2842295898,
+      "owner": 2652201805,
+      "order": 1045,
+      "owner_order": 1044,
+      "path": "Objects/Barrel48/CoinSpawner",
+      "parent": "Objects/Barrel48",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel48",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1048.0,
+        -208.0
+      ]
+    },
+    {
+      "id": 2232604731,
+      "owner": 2417168044,
+      "order": 1056,
+      "owner_order": 1055,
+      "path": "Objects/Barrel50/CoinSpawner",
+      "parent": "Objects/Barrel50",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel50",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1088.0,
+        -200.0
+      ]
+    },
+    {
+      "id": 940862696,
+      "owner": 2433945663,
+      "order": 1067,
+      "owner_order": 1066,
+      "path": "Objects/Barrel51/CoinSpawner",
+      "parent": "Objects/Barrel51",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel51",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1072.0,
+        -216.0
+      ]
+    },
+    {
+      "id": 963105625,
+      "owner": 2450723282,
+      "order": 1078,
+      "owner_order": 1077,
+      "path": "Objects/Barrel52/CoinSpawner",
+      "parent": "Objects/Barrel52",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel52",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1064.0,
+        -192.0
+      ]
+    },
+    {
+      "id": 3083212938,
+      "owner": 2349910473,
+      "order": 1089,
+      "owner_order": 1088,
+      "path": "Objects/Barrel22/CoinSpawner",
+      "parent": "Objects/Barrel22",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel22",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2472.0,
+        -184.0
+      ]
+    },
+    {
+      "id": 1480553877,
+      "owner": 2333132854,
+      "order": 1100,
+      "owner_order": 1099,
+      "path": "Objects/Barrel23/CoinSpawner",
+      "parent": "Objects/Barrel23",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel23",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2448.0,
+        -200.0
+      ]
+    },
+    {
+      "id": 2194343288,
+      "owner": 2383465711,
+      "order": 1111,
+      "owner_order": 1110,
+      "path": "Objects/Barrel24/CoinSpawner",
+      "parent": "Objects/Barrel24",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel24",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2448.0,
+        -176.0
+      ]
+    },
+    {
+      "id": 476109131,
+      "owner": 2366688092,
+      "order": 1122,
+      "owner_order": 1121,
+      "path": "Objects/Barrel25/CoinSpawner",
+      "parent": "Objects/Barrel25",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel25",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2424.0,
+        -192.0
+      ]
+    },
+    {
+      "id": 950186894,
+      "owner": 2417020949,
+      "order": 1133,
+      "owner_order": 1132,
+      "path": "Objects/Barrel26/CoinSpawner",
+      "parent": "Objects/Barrel26",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel26",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2568.0,
+        -504.0
+      ]
+    },
+    {
+      "id": 389624105,
+      "owner": 2400243330,
+      "order": 1144,
+      "owner_order": 1143,
+      "path": "Objects/Barrel27/CoinSpawner",
+      "parent": "Objects/Barrel27",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel27",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2536.0,
+        -512.0
+      ]
+    },
+    {
+      "id": 3369715208,
+      "owner": 521002907,
+      "order": 1155,
+      "owner_order": 1154,
+      "path": "Objects/Barrel37/CoinSpawner",
+      "parent": "Objects/Barrel37",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel37",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2504.0,
+        -520.0
+      ]
+    },
+    {
+      "id": 2457594893,
+      "owner": 470670050,
+      "order": 1166,
+      "owner_order": 1165,
+      "path": "Objects/Barrel38/CoinSpawner",
+      "parent": "Objects/Barrel38",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel38",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2448.0,
+        -520.0
+      ]
+    },
+    {
+      "id": 2549182300,
+      "owner": 2450576187,
+      "order": 1177,
+      "owner_order": 1176,
+      "path": "Objects/Barrel28/CoinSpawner",
+      "parent": "Objects/Barrel28",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel28",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2576.0,
+        -480.0
+      ]
+    },
+    {
+      "id": 1611600415,
+      "owner": 2433798568,
+      "order": 1188,
+      "owner_order": 1187,
+      "path": "Objects/Barrel29/CoinSpawner",
+      "parent": "Objects/Barrel29",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel29",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2552.0,
+        -488.0
+      ]
+    },
+    {
+      "id": 3521222373,
+      "owner": 604891002,
+      "order": 1199,
+      "owner_order": 1198,
+      "path": "Objects/Barrel30/CoinSpawner",
+      "parent": "Objects/Barrel30",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel30",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2592.0,
+        -464.0
+      ]
+    },
+    {
+      "id": 2318754586,
+      "owner": 621668621,
+      "order": 1210,
+      "owner_order": 1209,
+      "path": "Objects/Barrel31/CoinSpawner",
+      "parent": "Objects/Barrel31",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel31",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -2608.0,
+        -480.0
+      ]
+    },
+    {
+      "id": 3607609703,
+      "owner": 571335764,
+      "order": 1221,
+      "owner_order": 1220,
+      "path": "Objects/Barrel32/CoinSpawner",
+      "parent": "Objects/Barrel32",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel32",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1432.0,
+        -728.0
+      ]
+    },
+    {
+      "id": 2118546788,
+      "owner": 588113383,
+      "order": 1232,
+      "owner_order": 1231,
+      "path": "Objects/Barrel33/CoinSpawner",
+      "parent": "Objects/Barrel33",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel33",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1440.0,
+        -712.0
+      ]
+    },
+    {
+      "id": 1301618169,
+      "owner": 537780526,
+      "order": 1243,
+      "owner_order": 1242,
+      "path": "Objects/Barrel34/CoinSpawner",
+      "parent": "Objects/Barrel34",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel34",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1296.0,
+        -776.0
+      ]
+    },
+    {
+      "id": 1960717342,
+      "owner": 554558145,
+      "order": 1254,
+      "owner_order": 1253,
+      "path": "Objects/Barrel35/CoinSpawner",
+      "parent": "Objects/Barrel35",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel35",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1280.0,
+        -760.0
+      ]
+    },
+    {
+      "id": 803187291,
+      "owner": 504225288,
+      "order": 1265,
+      "owner_order": 1264,
+      "path": "Objects/Barrel36/CoinSpawner",
+      "parent": "Objects/Barrel36",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel36",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1264.0,
+        -776.0
+      ]
+    },
+    {
+      "id": 602373538,
+      "owner": 487447669,
+      "order": 1276,
+      "owner_order": 1275,
+      "path": "Objects/Barrel39/CoinSpawner",
+      "parent": "Objects/Barrel39",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel39",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1112.0,
+        -760.0
+      ]
+    },
+    {
+      "id": 386593506,
+      "owner": 2517980853,
+      "order": 1287,
+      "owner_order": 1286,
+      "path": "Objects/Barrel40/CoinSpawner",
+      "parent": "Objects/Barrel40",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel40",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1096.0,
+        -744.0
+      ]
+    },
+    {
+      "id": 2867636557,
+      "owner": 2501203234,
+      "order": 1298,
+      "owner_order": 1297,
+      "path": "Objects/Barrel41/CoinSpawner",
+      "parent": "Objects/Barrel41",
+      "source": "Nodes/Overworld/Objects/CoinSpawner.tscn",
+      "owner_path": "Objects/Barrel41",
+      "sink": "Objects",
+      "reparent": "Bottom2",
+      "default_count": 5,
+      "local": [
+        0.0,
+        8.0
+      ],
+      "position": [
+        -1088.0,
+        -768.0
+      ]
+    }
+  ]
+}

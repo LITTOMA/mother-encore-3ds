@@ -1,0 +1,14 @@
+{
+  "runtime/coin_scene.cpp": "6a52edc22bf4e69f32d1f6372cb2f2d54209236523f890e967132f440545ae7f",
+  "runtime/coin_scene_data.cpp": "c1b6d28ab5f2f2e123a7f63bdc4c24eeff0e0ee6df55d3211f5b6f1d11b2bdf9",
+  "include/encore/coin_scene.hpp": "56abe8fb54ea6ac5df9b9398d7de59b88991ed3fba29b57fd5c9e4af3cbd5d17",
+  "runtime/coins.cpp": "07db41d14cdfd9bab9bb08b0531feb515d488003ed56bd42f8072b23b0932edd",
+  "runtime/coins_data.cpp": "6d787a44ee42e2b28350c53007723d933d1d9614c7cbfb4e384c4def45a373db",
+  "include/encore/coins.hpp": "8fb04b35eeda030c286f212fbde7a965caa77d4ee39e7c1996f2d72432324a58",
+  "runtime/circle_motion.cpp": "6f10b08e21327e100ffaf7525a058602c8444e4ea33ea4226e4e128ce40ba484",
+  "include/encore/circle_motion.hpp": "02496b242ad6d23b8341c82be9d00b6ee95680aad4e44add74d5226aad60b281",
+  "runtime/breakables_data.cpp": "70afbb3f17705e4ebfb26b7d94866614f67e86b18ac4a24b8590154be35915c6",
+  "runtime/breakables.cpp": "a6593efa155bce08f5e2f650e888aed876790aa1b1c7ebcd1f9abf4bdde4a23a",
+  "include/encore/breakables.hpp": "6722227b368ec2d1a30a1ac2a801c73f3994ff137d943b480421c28beda4f99a",
+  "tests/coin_scene_tests.cpp": "33c6ab7e0a7af52a687f6c5497b228c62951b8fdcba8613c6fce2d799c1f6b72"
+}

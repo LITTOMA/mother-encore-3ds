@@ -1,0 +1,10 @@
+{
+  "previous_sha256": "2f4f76e2a7dc75234bb9e5cf16a138d2324f3bc1849fe13cf6d3a40ddfb92a0c",
+  "current_sha256": "5c2661fdef82ce58ff7dd1e96b6e3bb8d4b24abe529ce21b9f45d3a9022d4054",
+  "unchanged_game_fields": true,
+  "only_projection_fields": [
+    "schema1->schema2",
+    "added six live actor/drop snapshots"
+  ],
+  "original_records_edited": false
+}

@@ -1,0 +1,27 @@
+{
+  "source_commit": "395f209d3d8efd044c90473a32dc04faa3223ed9",
+  "working_inputs": {
+    "include/encore/geyser_contacts.hpp": "5fee69e396fb5327913b879c1878e38419f8c7d9086d67b9ceaac0bc3be1e7c1",
+    "runtime/geyser_contacts.cpp": "837b64016cd4a2dec98f4b462001203e84d0c90611014092ea6e249ee377f12b",
+    "tests/geyser_contacts_tests.cpp": "519fb5dee01ed733b4e707281dd1175951129113b5610a9770c6ea04805c4f44",
+    "tests/prepare_geyser_contacts.py": "6d4d55a8f04ed36d12ae092a81c09c47e02b345837f11f58b820ef5f46de3f8c",
+    "tests/test_geyser_contacts.py": "509033a8b6f56e7236ebb544728a2abece0def3b67d6d45a6489f3522230de7b",
+    "tools/run_geyser_contact_reference.py": "d3b3d5fc8f4010b761f00a59212f3f69a53846a41e1b13d2888307e2b0b0fb6c",
+    "compatibility/reviews/geyser-contacts-v0410.json": "9be0045299896d6568441a88978a2623a04e46199501b105acb68091be1bf6c8"
+  },
+  "actual": {
+    "final_native_runs": [
+      4,
+      5
+    ],
+    "rows_per_run": 72,
+    "raw_sha256": "21ea5db0fe493f5c265a1c24cbc197350a04df9be9f61819459c6690ef144e05",
+    "host3_checks": 9633,
+    "python1_tests": 9,
+    "python1_seconds": 148.893,
+    "cmake_discovery_only": 353,
+    "python2_tests": 10,
+    "python2_seconds": 156.598
+  },
+  "scope": "Changed contact+dependent modules linked with exact unchanged117-core archive;not full rebuild/exact callback-frame/formal room/GPU/NDSP/hardware;manual animation/teleport/removal services declared;queue state only compared for actual animation-finished lifecycle"
+}

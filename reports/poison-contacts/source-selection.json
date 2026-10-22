@@ -1,0 +1,24 @@
+{
+  "source_commit": "8ce8cd3f8d118937f0652469e5d6735cc5e2c758",
+  "working_inputs": {
+    "compatibility/reviews/poison-contacts-v0410.json": "d26b93a227fb0089b25aa44b04b5a2a276bd66eef667748a90f03a52182a09c4",
+    "content/catacombs-poison-contacts.json": "ca9d362082927c60ce7c41d00a9a32cec43783c9187a7a78ba1089a17644c853",
+    "include/encore/poison_contacts.hpp": "fac510c0c950bb308ecae20e83571c5fe7f1cdbf91cff6c24c43fb360bb71413",
+    "runtime/poison_contacts.cpp": "2b4bd7030329599d5f8189e7a0f0d6c5ecea82b75c7d065c3ed93eaf669d433a",
+    "tests/poison_contacts_tests.cpp": "0f0baf25b77106bd6c20fb23fca958c9ddbebafa994832a26c1bd0b7451d0ecc",
+    "tests/prepare_poison_contacts.py": "6520500b1e33134e7286bdb8dd7609cff0c1d0c799c3af8fc664c49dfc0ec189",
+    "tests/test_poison_contacts.py": "4e3e68d50c6faa4756594486d8e1684d400722db9d2e7628ade79f9ed59289a4",
+    "tools/poison_contacts.py": "13da854099f314b666276a63bc7885f501d28afb9aee8090ae31515e5e0546d2",
+    "tools/run_poison_contact_reference.py": "a99c26d151271b00a024884310d60bc28230f469c8af92476328e57afcb88b03"
+  },
+  "actual": {
+    "native_runs": 5,
+    "settled_states_per_run": 105,
+    "raw_sha256": "a092e9f550c220749a03695024f15c46638d8d1bef7d8efa7fe37fd03f646188",
+    "host4_checks": 24497,
+    "python2_tests": 10,
+    "python2_seconds": 75.732,
+    "cmake_discovery_only": 351
+  },
+  "scope": "Focused changed contact/damage modules with exact unchanged117-core archive;not full rebuild/exact physics callback-frame/formal room/GPU/NDSP/emulator/hardware;source review renewed after duplicate callback validator only,generated inputs/results unchanged"
+}

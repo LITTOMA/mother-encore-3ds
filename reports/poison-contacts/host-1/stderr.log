@@ -1,0 +1,1 @@
+Poison contacts 34 case 0 phase 3: member.inventory.data()==inventory&&member.inventory.size()==1&&member.inventory.front().uid==9001 ()

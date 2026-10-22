@@ -1,0 +1,867 @@
+{
+  "character": {
+    "damage": {
+      "damage": {
+        "commit": "7d9246600fffe518408f5830d4848635019005a3",
+        "recipe_sha256": "473de204e160a234bd5d7cd6028cd8e3894ca242c7284e97f18021b37b4a872a",
+        "sources": {
+          "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+          "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+          "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+          "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+          "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+          "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+          "Scripts/UI/Battle/FlyingNumber.gd": "b3dadd044c6087f4bd7354f532e7d4b0268e3021ea14ae020ac3092bec8e3c09",
+          "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+          "Data/StatusAilments/poisoned.yaml": "30ff7359ecd9aba8ce730362bfa022b3ab50f3842877a92901ac606d10c6f37f",
+          "Data/StatusAilments/unconscious.yaml": "ab1b9cb054a3494ad557293b4cab1e0bd1abd45474e8c2cdfa61fbeeb8574bbd",
+          "Audio/Sound effects/Hurt 1.mp3": "953e74bded459e06f03a1c4c815ab98ab3e2440c7bc038bdaa4331f6106a5be3",
+          "Audio/Sound effects/Hurt 1.mp3.import": "84775975e8e7d3e8339663e56bcb73346bbd73a9363b3acffbd544c8eb09aae0",
+          "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+        },
+        "symbols": {
+          "Scripts/Main/party/party_object.gd": {
+            "_is_invulnerable": "e2663c224857fd021e406d3bd9246edb4df44848daade8acff6d1686a2602216",
+            "damage": "f6747f9f327788f666065ba00a8373c77e51425b1136b78f528e0b47f35a55f5",
+            "start_continuous_damage": "254bd0245759f9035e7941982fa49ef9835cb0ed40d41152f47fd47c379ed938",
+            "stop_continuous_damage": "3cc326bcff89e85e82a1c50ae37a1bf95e8bf5affe4ef80e778385aaac38a242",
+            "play_flash_anim": "3f0c1a3219d7349c44ef8652037354040e8198530976ac55a2857f22aebd3cbc",
+            "pause_flash_anim": "70d2cdc9eb9cecdc7dd9924686ce2a6dbee3e19ace610d223c68b4eab549e299",
+            "resume_flash_anim": "339ffdbca71384e4bc2abdc0220c75e9aaa428fd90f6bcda94adbad2d578c01d"
+          },
+          "Scripts/Main/party/Player.gd": {
+            "damage": "b6e1ed5c44398ee45a67a936934189d053d130c853879fcb147d5c63d5f894fe",
+            "start_continuous_damage": "f72ab59b2d2c8185b912169696efdae571e73c3146008da467926c2c6c3f95b0"
+          },
+          "Scripts/global/Character.gd": {
+            "set_stat": "f3da97354b3d71f08fc16d9ec54dc45878871ebb91ee6c72f13358ea81f5c240",
+            "set_hp": "7e150549552a24c6e116dc5597f6d82d635f0badb3d52f83593074b076dd84cd",
+            "add_status": "b5c795700f1896ec396176ab75a9e1aa5e91a4109a20d506024910c412557340",
+            "remove_status": "895ffdd3b70168e81f5a56164efb6589b32870fc5828cf99f78d7ad83cfeeb0c",
+            "remove_all_statuses": "535f5fb910e6375b518f36ae055e56937f32ad6d4da84670f93a3a110c42cfd0",
+            "_has_exclusive_status": "e2deaaaacffb955957aab92e5af490b8c37f632177dfac6e2ceaf29f7c52369b",
+            "is_incapacitated": "ea49f47f76de64092d60614e750b8e2db4a4746b19ba96dab1dcc5926658a884"
+          },
+          "Scripts/Main/Status.gd": {
+            "_init": "bdbbe7ce5c7c7d1ea05314c08b1172691e61eff727bdf2ede161dcbaab007054",
+            "to_dict": "ae70cffd5a8d60b8628cacd5b4fcbe15e43a199e8c0c9a88d354d6e7c39fa1c3"
+          },
+          "Scripts/global/uiManager.gd": {
+            "create_flying_num": "d57b2dc532bb67d608ab6131c5c731b6e883de2e218ec7e7b5a9dd1b6a4a5ad8"
+          },
+          "Scripts/global/global.gd": {
+            "get_conscious_party": "cdd4a6a8dbae149aa46ceb86338a570a2dbff57c36ecf258964b35d8efbe5af5"
+          },
+          "Scripts/UI/Battle/FlyingNumber.gd": {
+            "run": "09b9dd8dc6742c4249a6a1ca3dea3296f0c1426462422bdbe9af3b92a0d0193c"
+          }
+        },
+        "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+        "engine_sources": {
+          "scene/animation/animation_player.cpp": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+          "scene/resources/animation.cpp": "0c49f1f325d040c645b35b0f39d0972ccd7812e0a575b6ad97ba5d9f3de0dd1b",
+          "core/math/math_funcs.h": "32e8a5a998235947996119bed349cbd57233a9080b556a6b57d438ac40821e13",
+          "core/math/math_defs.h": "e5a6d4d80da1503950b05a468598c8a6fa1e5a3e15e05c0b024c0206b76b6a98"
+        },
+        "scope": "Selected original world damage/continuous damage,Flash/RESET and party-member poisoned/unconscious definitions;not complete Character/Player,enemy/battle/passive-healing/UI/GPU or formal Catacombs admission."
+      },
+      "poison": {
+        "commit": "7d9246600fffe518408f5830d4848635019005a3",
+        "sources": {
+          "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+          "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+          "Scripts/Main/Poison.gd": "0ca09a31436413c2593c1bbc799da977b2e6f1209f9a138cc585c8c2bbc94bd9",
+          "Nodes/Overworld/poison geyser hole.tscn": "fb8228717dc045a169206181d81597e408659713c7478fcaf648df246e1d5755",
+          "Scripts/Main/Poison Geyser Hole.gd": "9a70b4a1218285c09fb3474b14405caebeb3ed842653bb6b4b896f04087be3d7",
+          "Nodes/Overworld/poison geyser.tscn": "d700e3bbf3aee8d3b43e498391e38d8d8ad0a80d632b95cf34b605deafd588da",
+          "Scripts/Main/Poison Geyser.gd": "2ef05cc91eb3690a6e8a14fdb83a29ef06784f7ab0b8b083d8e79a2bcfd4ab57",
+          "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+          "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+          "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+          "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+        },
+        "review_sha256": "f1349f21355418075296500928a5320aac943875183777d097bd6c3cfc68619a",
+        "producer_sha256": "b417bf4b3cb2fe033e69a6e66fd8df9d46fb4e0755c754c3bc11ad8059f804db",
+        "scope": "Source11 static poison areas with original raw trigger/blocker geometry and source37 hole timers/deferred spawn requests;selected original continuous-damage/contact methods. No HP/status execution,geyser animation/audio/physics,complete scene,save or hardware admission.",
+        "bytes": 6360,
+        "sha256": "ecbc12ea339c9ac790f48b390e422ebb734234ffb07c31e0416ace9db91b2fad"
+      },
+      "steps": {
+        "commit": "7d9246600fffe518408f5830d4848635019005a3",
+        "scope": "Original run-sound assignments and PartyObject shadow requests from three Catacombs areas;source polygons and actual shadow resources only,not full scene/physics/renderer/save admission",
+        "review_sha256": "1929928a783d2c2266fb88a3aee5ed900a8d994b05eb5c39ce3e2e3f6bf827fe",
+        "sources": {
+          "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+          "Audio/Sound effects/Footsteps/cave.mp3": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b",
+          "Audio/Sound effects/Footsteps/cave.mp3.import": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc",
+          "Audio/Sound effects/Footsteps/grass.mp3": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878",
+          "Audio/Sound effects/Footsteps/grass.mp3.import": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1",
+          "Audio/Sound effects/Footsteps/metal.mp3": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08",
+          "Audio/Sound effects/Footsteps/metal.mp3.import": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e",
+          "Audio/Sound effects/Footsteps/sand.mp3": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6",
+          "Audio/Sound effects/Footsteps/sand.mp3.import": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1",
+          "Audio/Sound effects/Footsteps/soil.mp3": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f",
+          "Audio/Sound effects/Footsteps/soil.mp3.import": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65",
+          "Audio/Sound effects/Footsteps/stone.mp3": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41",
+          "Audio/Sound effects/Footsteps/stone.mp3.import": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7",
+          "Audio/Sound effects/Footsteps/water.mp3": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82",
+          "Audio/Sound effects/Footsteps/water.mp3.import": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7",
+          "Audio/Sound effects/Footsteps/wood.mp3": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+          "Audio/Sound effects/Footsteps/wood.mp3.import": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664",
+          "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+          "Graphics/Character Sprites/Magic_Ripple.png.import": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e",
+          "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+          "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+          "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+          "Graphics/Character Sprites/Water_Ripple.png.import": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878",
+          "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+          "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+          "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+          "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+          "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+          "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+          "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+          "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+          "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+          "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+          "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+        },
+        "methods": {
+          "player": {
+            "_set_running": "8148793a6a2defe975058c992de188075bceb8909d96bc434802659caf033e5e",
+            "_move_state": "23a118d0c40c880a278d1b0b5f172a49e037002ab8cccf0d1e9f620a04d51130"
+          },
+          "area": {
+            "_on_Stepping_Sounds_body_entered": "7d0c96bf36f73ebb95e749272d085701a4edf3c461bd2d453f721d3fa668e2dd",
+            "_on_Stepping_Sounds_body_exited": "a2f9533d0c4cd7a46b75c27038b456744127b1cd7448aace3e6a5f7677336908",
+            "set_player_run_sound": "fddfc8690e737a4f2e58e93a63f3bcd1f8277366aea5f85a6cf6d47eb95d7d70",
+            "enable": "96afbc5b91ca1e9a0c799f6f63c0cac8cc2879ad014ad8dd3ae23d0fa526bfc9",
+            "disable": "a5fa3272396fdf5aaffbdaff0879785c92f0add52b9495f82d3bc42648f5790b"
+          },
+          "party": {
+            "set_shadow": "6fc8b4960a19de7a80f1a9c3a7d797ee0585432330cc935ccc13feba3dc500eb",
+            "get_shadow": "086626d53d2bcfbb5af86a91af3c7d07a616873afd98d3db937bf3522ea19c75"
+          },
+          "shadow": {
+            "set_anim": "48f21bf3cea4a266f00bd73f6756a2ae4c24328d167ca32fe5919559aec8c6f8",
+            "_set_behind_parent": "faaf1d3eb7418171478759b24d1667fee8b9fca31895d85d02f7ce82145b7328"
+          }
+        },
+        "source_rules": {
+          "sound": "current player AND enabled;exit also requires nonempty sound",
+          "shadow": "ANY PartyObject and nonempty effect,independent of enabled",
+          "callbacks": "Assignments only;area change does not directly restart running audio"
+        },
+        "not_implemented": [
+          "Formal contact/Shadow renderer consumer",
+          "Elapsed Shadow animation timing",
+          "Complete scene or save admission"
+        ]
+      },
+      "generated_sha256": {
+        "project.godot": "2a5af5f08163a5f578026ab0aee745c4e554bce09f3dc7f1e575627c6aa8c9b8",
+        "base.gd": "10a5179405f23e04f1769f6fcd3eb3226b34ec64fbc0b35178d0a15175999061",
+        "player.gd": "12ea3c10084570d15192d72d29bbce0decfb5af696d642d6bf904fb06c38d3c8",
+        "actor.tscn": "d2349f08b593218f3e0a359aac8f57647141ccdc7c85d850500b43610d337fcf",
+        "Character.gd": "88620b8206374ff9b148fe5e47e9ea0fb4c6a028bf7d20bce650d46dbe0ed147",
+        "Status.gd": "6af9dc2f21681e22e115dde6538720fb98a35f0207fd52e8be39b8edeed9defe",
+        "Item.gd": "d5fd97407b510ac55af9524dfe45c5397e3d44a2ce15403cb47236fd65d16805",
+        "member.gd": "c9d1ea2ade295b77ac209bf357c049d4c3ee769e765ec09daf5f68cdd9a73ad5",
+        "global.gd": "6ca98f6f1b6608df2a5c921ce8acd1dbee05ada1011186ee98ca1630e45d27cc",
+        "camera.gd": "e1e709cc5fd1917a9d5fc077fcadb5847ab54281a37cc0fec9c17b600805cd27",
+        "audio.gd": "adac461ad6007c5648a3c4265d8bc846462e1cb0c63a8d5809056084dec8c9f1",
+        "ui.gd": "9127a8621348aa47573e5cffd6c77825b416887af5c7a916e777adf007ba20fe",
+        "FlyingNumber.gd": "c824abb7edab0574f3082d5afcc9f595b2dfe7b91ae0c722efd7727aac685ba2",
+        "Nodes/Ui/Battle/FlyingNumber.tscn": "226c4206e46bc60e013a871285f2d45176d17a778b4bb01f15b0e9f1b63dba12",
+        "globaldata.gd": "efb619516067ac694218b4112ecfe1de30709bdfafd083ea935a6879a8e13f09",
+        "ailments.json": "2920ee6d008b0757414d443e67fea008aef03c0bce96af0957ad79f58235b3b7",
+        "probe.gd": "f4c6a1499d68ac52fc0f232e8c60f66bd50911f9bdeb46ffaad8b56ea4b9a529",
+        "probe.tscn": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c",
+        "sprite_holder.gd": "23bf16a991b099cdf22e2243cff562f4d0d70f9424c86e227cd3d22edb50fc70",
+        "material_holder.gd": "3a63e6d94d023dec4ad0be9f06bbd7471c50f685e26aa771657c53cedbb1295c",
+        "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+        "Scripts/Main/Poison.gd": "0ca09a31436413c2593c1bbc799da977b2e6f1209f9a138cc585c8c2bbc94bd9",
+        "step.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "geyser.gd": "d68829bc0bebec840f6cb0b8fd2cca2ba6fdd6c0e271c25eabf4896063b21b4e",
+        "input.json": "1548e2c7f900dffbdd53ea538ae9ba343c83014447a8b83e45c1a39bcc6e2990"
+      },
+      "copied": {
+        "Audio/Sound effects/Hurt 1.mp3": "953e74bded459e06f03a1c4c815ab98ab3e2440c7bc038bdaa4331f6106a5be3"
+      },
+      "scope": "Complete original Character/Status and selected original Player damage/physics/Flash plus complete Poison.gd/prefab and Stepping Sounds.gd;manual body callbacks.Explicit run-sound/Shadow state,shader/UI/audio/camera/vibration/gameover command holders;no automatic contact/elapsedShadow/GPU/factory/formal scene admission."
+    },
+    "poison": {
+      "commit": "7d9246600fffe518408f5830d4848635019005a3",
+      "sources": {
+        "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+        "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+        "Scripts/Main/Poison.gd": "0ca09a31436413c2593c1bbc799da977b2e6f1209f9a138cc585c8c2bbc94bd9",
+        "Nodes/Overworld/poison geyser hole.tscn": "fb8228717dc045a169206181d81597e408659713c7478fcaf648df246e1d5755",
+        "Scripts/Main/Poison Geyser Hole.gd": "9a70b4a1218285c09fb3474b14405caebeb3ed842653bb6b4b896f04087be3d7",
+        "Nodes/Overworld/poison geyser.tscn": "d700e3bbf3aee8d3b43e498391e38d8d8ad0a80d632b95cf34b605deafd588da",
+        "Scripts/Main/Poison Geyser.gd": "2ef05cc91eb3690a6e8a14fdb83a29ef06784f7ab0b8b083d8e79a2bcfd4ab57",
+        "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+        "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+      },
+      "review_sha256": "f1349f21355418075296500928a5320aac943875183777d097bd6c3cfc68619a",
+      "producer_sha256": "b417bf4b3cb2fe033e69a6e66fd8df9d46fb4e0755c754c3bc11ad8059f804db",
+      "scope": "Source11 static poison areas with original raw trigger/blocker geometry and source37 hole timers/deferred spawn requests;selected original continuous-damage/contact methods. No HP/status execution,geyser animation/audio/physics,complete scene,save or hardware admission.",
+      "bytes": 6360,
+      "sha256": "ecbc12ea339c9ac790f48b390e422ebb734234ffb07c31e0416ace9db91b2fad"
+    },
+    "player": {
+      "path": "Nodes/Reusables/Player.tscn",
+      "sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+      "scope": "Native KinematicBody2D default layer1; original root mask and all8 polygon vertices+local origin. Movement/pause script is an explicit service."
+    },
+    "trigger_parts": [
+      [
+        [
+          [
+            -1392.0,
+            -320.0
+          ],
+          [
+            -1376.0,
+            -336.0
+          ],
+          [
+            -1376.0,
+            -224.0
+          ]
+        ],
+        [
+          [
+            -1408.0,
+            -320.0
+          ],
+          [
+            -1392.0,
+            -320.0
+          ],
+          [
+            -1376.0,
+            -224.0
+          ],
+          [
+            -1488.0,
+            -224.0
+          ],
+          [
+            -1424.0,
+            -304.0
+          ]
+        ],
+        [
+          [
+            -1440.0,
+            -304.0
+          ],
+          [
+            -1424.0,
+            -304.0
+          ],
+          [
+            -1488.0,
+            -224.0
+          ],
+          [
+            -1456.0,
+            -288.0
+          ]
+        ],
+        [
+          [
+            -1488.0,
+            -288.0
+          ],
+          [
+            -1456.0,
+            -288.0
+          ],
+          [
+            -1488.0,
+            -224.0
+          ],
+          [
+            -1504.0,
+            -240.0
+          ],
+          [
+            -1504.0,
+            -272.0
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -1536.0,
+            -448.0
+          ],
+          [
+            -1520.0,
+            -464.0
+          ],
+          [
+            -1488.0,
+            -464.0
+          ],
+          [
+            -1472.0,
+            -448.0
+          ],
+          [
+            -1472.0,
+            -368.0
+          ],
+          [
+            -1504.0,
+            -336.0
+          ],
+          [
+            -1520.0,
+            -336.0
+          ],
+          [
+            -1536.0,
+            -352.0
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -2000.0,
+            -528.0
+          ],
+          [
+            -1920.0,
+            -528.0
+          ],
+          [
+            -1920.0,
+            -512.0
+          ],
+          [
+            -1936.0,
+            -496.0
+          ],
+          [
+            -1984.0,
+            -496.0
+          ],
+          [
+            -2000.0,
+            -512.0
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -1456.0,
+            -688.0
+          ],
+          [
+            -1440.0,
+            -704.0
+          ],
+          [
+            -1424.0,
+            -704.0
+          ],
+          [
+            -1408.0,
+            -688.0
+          ],
+          [
+            -1408.0,
+            -656.0
+          ],
+          [
+            -1456.0,
+            -656.0
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -1232.0,
+            -784.0
+          ],
+          [
+            -1120.0,
+            -784.0
+          ],
+          [
+            -1120.0,
+            -768.0
+          ],
+          [
+            -1136.0,
+            -752.0
+          ],
+          [
+            -1216.0,
+            -752.0
+          ],
+          [
+            -1232.0,
+            -768.0
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -1440.0,
+            -736.0
+          ],
+          [
+            -1456.0,
+            -752.0
+          ],
+          [
+            -1456.0,
+            -784.0
+          ],
+          [
+            -1344.0,
+            -784.0
+          ],
+          [
+            -1376.0,
+            -736.0
+          ]
+        ],
+        [
+          [
+            -1376.0,
+            -720.0
+          ],
+          [
+            -1376.0,
+            -736.0
+          ],
+          [
+            -1344.0,
+            -784.0
+          ],
+          [
+            -1344.0,
+            -720.0
+          ],
+          [
+            -1360.0,
+            -704.0
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -1312.0,
+            -656.0
+          ],
+          [
+            -1312.0,
+            -736.0
+          ],
+          [
+            -1296.0,
+            -752.0
+          ],
+          [
+            -1280.0,
+            -752.0
+          ],
+          [
+            -1264.0,
+            -736.0
+          ],
+          [
+            -1264.0,
+            -704.0
+          ]
+        ],
+        [
+          [
+            -1040.0,
+            -656.0
+          ],
+          [
+            -1312.0,
+            -656.0
+          ],
+          [
+            -1264.0,
+            -704.0
+          ],
+          [
+            -1088.0,
+            -704.0
+          ]
+        ],
+        [
+          [
+            -1040.0,
+            -736.0
+          ],
+          [
+            -1040.0,
+            -656.0
+          ],
+          [
+            -1088.0,
+            -704.0
+          ],
+          [
+            -1088.0,
+            -736.0
+          ],
+          [
+            -1072.0,
+            -752.0
+          ],
+          [
+            -1056.0,
+            -752.0
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -576.0,
+            -576.0
+          ],
+          [
+            -576.0,
+            -608.0
+          ],
+          [
+            -560.0,
+            -624.0
+          ],
+          [
+            -544.0,
+            -608.0
+          ],
+          [
+            -544.0,
+            -592.0
+          ]
+        ],
+        [
+          [
+            -544.0,
+            -592.0
+          ],
+          [
+            -512.0,
+            -592.0
+          ],
+          [
+            -512.0,
+            -512.0
+          ],
+          [
+            -592.0,
+            -512.0
+          ],
+          [
+            -592.0,
+            -544.0
+          ],
+          [
+            -576.0,
+            -576.0
+          ]
+        ],
+        [
+          [
+            -592.0,
+            -576.0
+          ],
+          [
+            -576.0,
+            -576.0
+          ],
+          [
+            -592.0,
+            -544.0
+          ],
+          [
+            -608.0,
+            -560.0
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -784.0,
+            -400.0
+          ],
+          [
+            -784.0,
+            -448.0
+          ],
+          [
+            -720.0,
+            -448.0
+          ],
+          [
+            -704.0,
+            -432.0
+          ]
+        ],
+        [
+          [
+            -688.0,
+            -432.0
+          ],
+          [
+            -672.0,
+            -416.0
+          ],
+          [
+            -672.0,
+            -400.0
+          ],
+          [
+            -784.0,
+            -400.0
+          ],
+          [
+            -704.0,
+            -432.0
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -2000.0,
+            -448.0
+          ],
+          [
+            -1984.0,
+            -464.0
+          ],
+          [
+            -1952.0,
+            -464.0
+          ],
+          [
+            -1936.0,
+            -448.0
+          ],
+          [
+            -1936.0,
+            -400.0
+          ],
+          [
+            -2000.0,
+            -400.0
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -2064.0,
+            -480.0
+          ],
+          [
+            -2048.0,
+            -464.0
+          ],
+          [
+            -2048.0,
+            -400.0
+          ],
+          [
+            -2160.0,
+            -400.0
+          ],
+          [
+            -2112.0,
+            -448.0
+          ]
+        ],
+        [
+          [
+            -2160.0,
+            -400.0
+          ],
+          [
+            -2160.0,
+            -448.0
+          ],
+          [
+            -2112.0,
+            -448.0
+          ]
+        ],
+        [
+          [
+            -2096.0,
+            -480.0
+          ],
+          [
+            -2064.0,
+            -480.0
+          ],
+          [
+            -2112.0,
+            -448.0
+          ],
+          [
+            -2112.0,
+            -464.0
+          ]
+        ]
+      ]
+    ],
+    "generated_sha256": {
+      "project.godot": "2a5af5f08163a5f578026ab0aee745c4e554bce09f3dc7f1e575627c6aa8c9b8",
+      "base.gd": "10a5179405f23e04f1769f6fcd3eb3226b34ec64fbc0b35178d0a15175999061",
+      "player.gd": "12ea3c10084570d15192d72d29bbce0decfb5af696d642d6bf904fb06c38d3c8",
+      "actor.tscn": "d2349f08b593218f3e0a359aac8f57647141ccdc7c85d850500b43610d337fcf",
+      "Character.gd": "88620b8206374ff9b148fe5e47e9ea0fb4c6a028bf7d20bce650d46dbe0ed147",
+      "Status.gd": "6af9dc2f21681e22e115dde6538720fb98a35f0207fd52e8be39b8edeed9defe",
+      "Item.gd": "d5fd97407b510ac55af9524dfe45c5397e3d44a2ce15403cb47236fd65d16805",
+      "member.gd": "c9d1ea2ade295b77ac209bf357c049d4c3ee769e765ec09daf5f68cdd9a73ad5",
+      "global.gd": "6ca98f6f1b6608df2a5c921ce8acd1dbee05ada1011186ee98ca1630e45d27cc",
+      "camera.gd": "e1e709cc5fd1917a9d5fc077fcadb5847ab54281a37cc0fec9c17b600805cd27",
+      "audio.gd": "adac461ad6007c5648a3c4265d8bc846462e1cb0c63a8d5809056084dec8c9f1",
+      "ui.gd": "9127a8621348aa47573e5cffd6c77825b416887af5c7a916e777adf007ba20fe",
+      "FlyingNumber.gd": "c824abb7edab0574f3082d5afcc9f595b2dfe7b91ae0c722efd7727aac685ba2",
+      "Nodes/Ui/Battle/FlyingNumber.tscn": "226c4206e46bc60e013a871285f2d45176d17a778b4bb01f15b0e9f1b63dba12",
+      "globaldata.gd": "efb619516067ac694218b4112ecfe1de30709bdfafd083ea935a6879a8e13f09",
+      "ailments.json": "2920ee6d008b0757414d443e67fea008aef03c0bce96af0957ad79f58235b3b7",
+      "probe.gd": "91dbd9206944e1635fd641d9ec4623b5f13a25dbc873d5b65dc97a5875eefdbf",
+      "probe.tscn": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c",
+      "sprite_holder.gd": "23bf16a991b099cdf22e2243cff562f4d0d70f9424c86e227cd3d22edb50fc70",
+      "material_holder.gd": "3a63e6d94d023dec4ad0be9f06bbd7471c50f685e26aa771657c53cedbb1295c",
+      "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+      "Scripts/Main/Poison.gd": "0ca09a31436413c2593c1bbc799da977b2e6f1209f9a138cc585c8c2bbc94bd9",
+      "step.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+      "geyser.gd": "d68829bc0bebec840f6cb0b8fd2cca2ba6fdd6c0e271c25eabf4896063b21b4e",
+      "input.json": "d118ba58a015b02c4e77cc36c2f44a0022aba35ad0d43a4813551007f4015fcb"
+    },
+    "copied": {
+      "Audio/Sound effects/Hurt 1.mp3": "953e74bded459e06f03a1c4c815ab98ab3e2440c7bc038bdaa4331f6106a5be3"
+    },
+    "scope": "Original11 poison areas/polygons,actual KinematicBody2D source8-vertex footprint and automatic Area2D callbacks,full original Character/Status and selected Player damage;explicit teleport/pause and one manual damage/Flash tick per case,run/Shadow/UI/graphics/audio holders. Stable settled contact phases only,no ordinary movement/exact callback-frame/factory/formal room/hardware admission."
+  },
+  "geyser": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "recipe_sha256": "7daa8eefb8cabaadd4148f0299e977824e0480e5748a2b420b6a465153b8dc2f",
+    "sources": {
+      "Nodes/Overworld/poison geyser.tscn": "d700e3bbf3aee8d3b43e498391e38d8d8ad0a80d632b95cf34b605deafd588da",
+      "Scripts/Main/Poison Geyser.gd": "2ef05cc91eb3690a6e8a14fdb83a29ef06784f7ab0b8b083d8e79a2bcfd4ab57",
+      "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+      "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+      "Graphics/Objects/Catacombs/Poison Geyser.png": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890",
+      "Graphics/Objects/Catacombs/Poison Geyser.png.import": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b",
+      "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Audio/Sound effects/shreksplash.mp3": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58",
+      "Audio/Sound effects/shreksplash.mp3.import": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23",
+      "Audio/Sound effects/shrekblast.mp3": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089",
+      "Audio/Sound effects/shrekblast.mp3.import": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815",
+      "Audio/Sound effects/shrekrumble.mp3": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34",
+      "Audio/Sound effects/shrekrumble.mp3.import": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+    },
+    "symbols": {
+      "script": {
+        "_ready": "5125cd1058a597e045cbda5e82b2d82c0808ce486cdf2aee2fa7998471cbb3eb",
+        "_process": "5bab1310d47bb565c55fca7394474d011119aa43fc99dde95a66a3bb3af272e8",
+        "pause": "fcf1c08910674c64c6de8669082aabf3716e6d422497ffffbf3b8c1855cbaa3c",
+        "unpause": "e52e345a806b24bd813e250099717d4f4a0b9fc6de4bcaa937c4009f899f652b",
+        "_on_AnimationPlayer_animation_finished": "edd0d48fd36f3a09a9bdd6ecc59eb40d766b2bd3bd3d9ea51ce53b5301f5db67",
+        "_on_Poison_Geyser_body_entered": "7e87db7f72a9ff028b9f18376337d81dbabc35147c8d47919bdb5a6c9915efcf",
+        "_on_Poison_Geyser_body_exited": "ce5df88f78ff43b3f5d979a433f0e35f739e256d2078567030e7c0a2b95f9a0c",
+        "play_rumble": "c2fc29b2a7e32d223a7f19252b821a9b97f8a10cea380bfe9d96112ad5fa1bd8"
+      },
+      "manager": {
+        "add_sfx": "7dcfa5938a039327d950e1a344889d0d444b6054720669200008f1efa9a86b10",
+        "play_sfx": "6e44e781afc59ad6ac63503ef3b8a9a7a687884dec8769e525e7046219bd6d59",
+        "get_sfx": "24b4ac1e42e5f6cc43380d9d2059caa723ce34a259684c11ac5c9dd2e836e45a"
+      }
+    },
+    "scope": "Original Geyser source-specific animation/property/audio-command and deferred-rumble lifecycle candidate;full Character damage,status,source spatial mixing,production rendering/audio and complete scene admission remain unimplemented.",
+    "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "engine_sources": {
+      "scene/animation/animation_player.cpp": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+      "scene/animation/animation_player.h": "42c673e5c377480680bc3fe48c252aa8d2f054d657fd0a72c2b0d77025ec40de",
+      "scene/resources/animation.cpp": "0c49f1f325d040c645b35b0f39d0972ccd7812e0a575b6ad97ba5d9f3de0dd1b",
+      "scene/resources/animation.h": "177e75db916cb1a985627f860f06321af5065fb750939db617e80317b28f9a2d",
+      "scene/2d/audio_stream_player_2d.cpp": "7ee0ab4970818682dbc85fcb0c561e84f7045a3da518b94c5d267cf6356f8de2",
+      "scene/2d/audio_stream_player_2d.h": "4b703018e4937139bdf3a683437e779329e6c5312eaef0f252083445ad959e75",
+      "scene/audio/audio_stream_player.cpp": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+      "scene/audio/audio_stream_player.h": "1465843e77369e84bfb18cf06c9d4224aae6a72a0b5b4e88f55956cd19898b57",
+      "scene/2d/sprite.cpp": "ce678f79ba902084ad04398b3f36485543da9318835776de4480655618d9e4dd",
+      "scene/2d/sprite.h": "d8984616cdeed9b454a560a6707c59048002c1bdebc5c4f42a30ee19951115ce",
+      "scene/2d/visibility_notifier_2d.cpp": "954d01b94e3c6ad848b6718796f63b2181d37a2859a69e23ecbec7e6de4b7849",
+      "scene/2d/visibility_notifier_2d.h": "ed126b4e47eb219b7cbd10785d990aba8e2de321a46da425f1e7f47f7314d4d8"
+    }
+  },
+  "generated_sha256": {
+    "project.godot": "83aa0252ee082505c05a22f2cc14d5c41fdb0d833db9b9a1405fc60abb20c785",
+    "base.gd": "58d05e2b6eda89c930d27e321b57e70cafa7e16bcf96955939599136f18efc0b",
+    "player.gd": "12ea3c10084570d15192d72d29bbce0decfb5af696d642d6bf904fb06c38d3c8",
+    "actor.tscn": "d2349f08b593218f3e0a359aac8f57647141ccdc7c85d850500b43610d337fcf",
+    "Character.gd": "88620b8206374ff9b148fe5e47e9ea0fb4c6a028bf7d20bce650d46dbe0ed147",
+    "Status.gd": "6af9dc2f21681e22e115dde6538720fb98a35f0207fd52e8be39b8edeed9defe",
+    "Item.gd": "d5fd97407b510ac55af9524dfe45c5397e3d44a2ce15403cb47236fd65d16805",
+    "member.gd": "c9d1ea2ade295b77ac209bf357c049d4c3ee769e765ec09daf5f68cdd9a73ad5",
+    "global.gd": "6ca98f6f1b6608df2a5c921ce8acd1dbee05ada1011186ee98ca1630e45d27cc",
+    "camera.gd": "e1e709cc5fd1917a9d5fc077fcadb5847ab54281a37cc0fec9c17b600805cd27",
+    "audio.gd": "adac461ad6007c5648a3c4265d8bc846462e1cb0c63a8d5809056084dec8c9f1",
+    "ui.gd": "1e94d767552ba8456485015e743e0064a945ea24d8ce3792d7f0ef48ed845cd4",
+    "FlyingNumber.gd": "c824abb7edab0574f3082d5afcc9f595b2dfe7b91ae0c722efd7727aac685ba2",
+    "Nodes/Ui/Battle/FlyingNumber.tscn": "226c4206e46bc60e013a871285f2d45176d17a778b4bb01f15b0e9f1b63dba12",
+    "globaldata.gd": "efb619516067ac694218b4112ecfe1de30709bdfafd083ea935a6879a8e13f09",
+    "ailments.json": "2920ee6d008b0757414d443e67fea008aef03c0bce96af0957ad79f58235b3b7",
+    "probe.gd": "6dc132d27c5b01567a56d7dc1255d00651fe2c7fea1f5b82ed5555a383952859",
+    "probe.tscn": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c",
+    "sprite_holder.gd": "23bf16a991b099cdf22e2243cff562f4d0d70f9424c86e227cd3d22edb50fc70",
+    "material_holder.gd": "3a63e6d94d023dec4ad0be9f06bbd7471c50f685e26aa771657c53cedbb1295c",
+    "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+    "Scripts/Main/Poison.gd": "0ca09a31436413c2593c1bbc799da977b2e6f1209f9a138cc585c8c2bbc94bd9",
+    "step.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "geyser.gd": "d68829bc0bebec840f6cb0b8fd2cca2ba6fdd6c0e271c25eabf4896063b21b4e",
+    "input.json": "a920805c2808c5456797cbe1db2ea4d4a15da228df64258a77764c5675b797b8",
+    "Scripts/Main/Poison Geyser.gd": "ba8b73d5967525a3b0e9a8f499c81f5ed8911248420cc133913b3865ab43873e",
+    "geyser.tscn": "b95b3b6ff795f33f46e2dad1d5ff51a9cf7ed9d44a266f38693c72c3175fbde3",
+    "geyser_audio.gd": "2756a6b32e3a7890fbfaa217a588416f7d50013c8b87212f3baf00142a18f520",
+    "manager.gd": "63e4e32bbed6b49a28e9746f3fc0f10fac453ca441fd17e160ff123a32d05973"
+  },
+  "copied": {
+    "Audio/Sound effects/Hurt 1.mp3": "953e74bded459e06f03a1c4c815ab98ab3e2440c7bc038bdaa4331f6106a5be3",
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "Graphics/Objects/Catacombs/Poison Geyser.png": "71bfa6e7d01815767616cc2ed571397cc3b487c5d4af711449664573380d0890",
+    "Graphics/Objects/Catacombs/Poison Geyser.png.import": "530ffe2138052cf0c89a4fa0ba8984e45653483d909b5c2521af9e5392fb7c2b",
+    "Audio/Sound effects/shreksplash.mp3": "38b7d646f73afb451ff480a03347205b4905b62637ac23a0bdce35fcc4f0bc58",
+    "Audio/Sound effects/shreksplash.mp3.import": "ce2dda2256d9466c03a6b79c26cc6f310bfc41d3fb5192ca7f0f8605b5bfcb23",
+    "Audio/Sound effects/shrekblast.mp3": "edcf382b5db83ae14205409c8d7ffbe48c0f3c001ef9b3da99e35e0f08877089",
+    "Audio/Sound effects/shrekblast.mp3.import": "821db27f4ef6b8085d65d97a15455dbc92693a9078150376950543719cd24815",
+    "Audio/Sound effects/shrekrumble.mp3": "026e010e722af9b541925059e4e4f50c0b18774e7c28480ea1485a8f318cec34",
+    "Audio/Sound effects/shrekrumble.mp3.import": "a97685d6efc34fc21de98ac6cb3df9f645407acf6ea629b18ff705df87cac211"
+  },
+  "dependencies": {
+    "tools/run_poison_contact_reference.py": "a99c26d151271b00a024884310d60bc28230f469c8af92476328e57afcb88b03",
+    "tools/run_geyser_reference.py": "2d146451f67b10f7e4848fa0b56fb766df68e39eec272eaa080257cd4302473e"
+  },
+  "scope": "Complete original Geyser script/scene,actual automatic Area2D contact/rectangle/Player footprint,complete Character/Status and selected Player damage/Flash;manual animation clock and teleport,explicit UI/pause/renderer/audio command services. Queue-free/animation retirement are actually observed,not synthesized. No exact physics-frame/factory/complete room/GPU/NDSP/hardware admission.",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "producer_sha256": "0ae8290b540e9c8c39cf23ce00cf11da86b3c0b7105eaad9ab243358a32db4f5",
+  "result_sha256": "21ea5db0fe493f5c265a1c24cbc197350a04df9be9f61819459c6690ef144e05"
+}

@@ -1,0 +1,32 @@
+{
+  "workspace": "D:\\GameDev\\3DS\\mother-encore-3ds",
+  "targets": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-storage-host-1\\check",
+      "kind": "file",
+      "marker": null,
+      "owner": null,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-storage-host-1\\check",
+          "bytes": 9453168,
+          "sha256": "f35052b8385c40c8f9dea9015230c1b66d4a33bcbd5eda070efc284a5e51db43"
+        }
+      ]
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-storage-host-2\\check",
+      "kind": "file",
+      "marker": null,
+      "owner": null,
+      "files": [
+        {
+          "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\world-damage-storage-host-2\\check",
+          "bytes": 9284536,
+          "sha256": "92eb189ae0003e652eaf39963e2f3dd96a485d544137815b424208ed7040f6cf"
+        }
+      ]
+    }
+  ],
+  "bytes": 18737704
+}

@@ -1,0 +1,10 @@
+{
+  "previous_main": "30a2e0193331f859e11fe4f4f2de92c2a2dcccdf",
+  "source95": "8072a689198e495aeac09e8ee2a258c3b90ca511",
+  "baseline_merge": "41f8babd862cbd74ee9860d12aac0e61db7e09a3",
+  "uncommitted_fix_files": {
+    "runtime/world_damage.cpp": "2bb8c162d7c4aafbfcf926888bdcdd6ece1fc58969923af50a87fe21fc61d873",
+    "tests/world_damage_tests.cpp": "9d248a23470673ef83ad337926dc5c8a45f27f057dd9a5e4570c3861d6893b23"
+  },
+  "scope": "Private topic dependency integration only;unchanged working fix;no main mutation"
+}

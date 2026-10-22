@@ -1,0 +1,9 @@
+{
+  "tests/audio_data_tests.cpp": "77725eb5dea0600e49a08b891324046fee3a736a27f4a82799fdd99ff687d611",
+  "tests/coin_scene_data_tests.cpp": "9a4bed48598d8f9e2e83a371aa5457cce6f2d7ce2a1fece95df994dbfdafbaa5",
+  "tests/coin_scene_tests.cpp": "d6f878a79f181ac3aa709cec72f819ff0469edc2e927c9d33de08c2b042fd26b",
+  "tests/coin_scene_source_tests.cpp": "fb0820d0ad6b5786914f8598918556b7079ea32b54161038d70471b4f2d464f5",
+  "tests/test_coin_scene.py": "0d450e5680fb5ceb97e8f83a95823b910879abc67237293155c7dd20b2eac1f9",
+  "tests/prepare_coin_scene.py": "b79af7070bb86410d08a7c162a89e3e703022d6aed66fa163e2da011f1f72f16",
+  "tools/coin_scene.py": "e89b17fd69234db03474bf6c95f8d657303725c283bdb39acb7c9f2975ab3fad"
+}

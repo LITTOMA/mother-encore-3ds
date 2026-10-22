@@ -1,0 +1,46 @@
+test_error_wrong_response_disconnection_and_invalid_envelope (tests.test_emulator_semantics.RpcBoundary.test_error_wrong_response_disconnection_and_invalid_envelope) ... ok
+test_event_before_result_is_preserved (tests.test_emulator_semantics.RpcBoundary.test_event_before_result_is_preserved) ... ok
+test_guest_memory_write_is_denied_locally (tests.test_emulator_semantics.RpcBoundary.test_guest_memory_write_is_denied_locally) ... ok
+test_line_and_event_budgets_fail_closed (tests.test_emulator_semantics.RpcBoundary.test_line_and_event_budgets_fail_closed) ... ok
+test_fixture_versions_identity_paths_hashes_and_resources (tests.test_emulator_semantics.SaveFixtureBoundary.test_fixture_versions_identity_paths_hashes_and_resources) ... ok
+test_menu_comparison_rejects_inventory_uid_display_and_return_drift (tests.test_emulator_semantics.SaveFixtureBoundary.test_menu_comparison_rejects_inventory_uid_display_and_return_drift) ... ok
+test_menu_fixture_has_its_own_exact_resource_contract (tests.test_emulator_semantics.SaveFixtureBoundary.test_menu_fixture_has_its_own_exact_resource_contract) ... ok
+test_present_comparison_requires_each_result_and_repeat_invariant (tests.test_emulator_semantics.SaveFixtureBoundary.test_present_comparison_requires_each_result_and_repeat_invariant) ... ok
+test_bounded_intervals_and_input_repetition (tests.test_emulator_semantics.WireBoundary.test_bounded_intervals_and_input_repetition) ... ok
+test_exact_wire_and_projection (tests.test_emulator_semantics.WireBoundary.test_exact_wire_and_projection) ... ok
+test_frame_step_recovers_only_bounded_mid_commit_samples (tests.test_emulator_semantics.WireBoundary.test_frame_step_recovers_only_bounded_mid_commit_samples) ... ok
+test_menu_appendix_preserves_legacy_offsets (tests.test_emulator_semantics.WireBoundary.test_menu_appendix_preserves_legacy_offsets) ... ok
+test_original_comparison_rejects_result_drift (tests.test_emulator_semantics.WireBoundary.test_original_comparison_rejects_result_drift) ... ok
+test_pinned_original_and_missing_changed_unknown_source (tests.test_emulator_semantics.WireBoundary.test_pinned_original_and_missing_changed_unknown_source) ... ok
+test_projection_unknown_duplicate_empty (tests.test_emulator_semantics.WireBoundary.test_projection_unknown_duplicate_empty) ... ok
+test_real_scenario_and_unknown_paths (tests.test_emulator_semantics.WireBoundary.test_real_scenario_and_unknown_paths) ... ok
+test_repetition_position_tolerance_is_explicit_and_bounded (tests.test_emulator_semantics.WireBoundary.test_repetition_position_tolerance_is_explicit_and_bounded) ... ok
+test_torn_overflow_boolean_utf8_and_nonfinite (tests.test_emulator_semantics.WireBoundary.test_torn_overflow_boolean_utf8_and_nonfinite) ... ok
+test_truncated_extra_magic_and_versions (tests.test_emulator_semantics.WireBoundary.test_truncated_extra_magic_and_versions) ... ok
+test_v8_typed_field_inventory_music_and_negative_bounds (tests.test_emulator_semantics.WireBoundary.test_v8_typed_field_inventory_music_and_negative_bounds) ... ok
+test_v9_combines_bridge_and_menu_appendices (tests.test_emulator_semantics.WireBoundary.test_v9_combines_bridge_and_menu_appendices) ... ok
+test_all_preexisting_outcomes_and_targets_remain_exact (tests.test_emulator_opening_controls.OpeningControlContract.test_all_preexisting_outcomes_and_targets_remain_exact) ... 
+  test_all_preexisting_outcomes_and_targets_remain_exact (tests.test_emulator_opening_controls.OpeningControlContract.test_all_preexisting_outcomes_and_targets_remain_exact) (name='opening-field-exit') ... FAIL
+test_ordinary_runup_precedes_source_enter_contact (tests.test_emulator_opening_controls.OpeningControlContract.test_ordinary_runup_precedes_source_enter_contact) ... ok
+test_original_contact_condition_and_reviewed_identity (tests.test_emulator_opening_controls.OpeningControlContract.test_original_contact_condition_and_reviewed_identity) ... ok
+test_scenarios_validate_and_use_checked_factory_run (tests.test_emulator_opening_controls.OpeningControlContract.test_scenarios_validate_and_use_checked_factory_run) ... ok
+
+======================================================================
+FAIL: test_all_preexisting_outcomes_and_targets_remain_exact (tests.test_emulator_opening_controls.OpeningControlContract.test_all_preexisting_outcomes_and_targets_remain_exact) (name='opening-field-exit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_emulator_opening_controls.py", line 32, in test_all_preexisting_outcomes_and_targets_remain_exact
+    self.assertEqual(after,before['steps']);self.assertEqual(route['projection'],before['projection'])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'na[6738 chars]': 0}, 'repeat_until': {'direction_x': -1, 'di[4531 chars]rue}] != [{'na[6738 chars]': 0}}, {'name': 'doll_melody_started', 'butto[4457 chars]rue}]
+
+First differing element 60:
+{'nam[96 chars]': 0}, 'repeat_until': {'direction_x': -1, 'di[29 chars]': 8}
+{'nam[96 chars]': 0}}
+
+Diff is 13139 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 25 tests in 2.766s
+
+FAILED (failures=1)

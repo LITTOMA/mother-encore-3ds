@@ -1,0 +1,13 @@
+{
+  "source": "d41c04698df543e40b5c19788faa5b0d9e2c684f",
+  "run": 39771295093,
+  "artifact": 12422724217,
+  "actual_retained_bb_game_sha256": "a51308775df4f125a0d09dfa434079a619733bf98298ce19f944cb89383a24cf",
+  "official_d41_game_sha256": "a51308775df4f125a0d09dfa434079a619733bf98298ce19f944cb89383a24cf",
+  "byte_identical": true,
+  "game_bytes": 265060576,
+  "staged_files": 383,
+  "full_archive_downloaded": false,
+  "game_downloaded_again": false,
+  "scope": "Official d41 receipt compared to actually retained and independently ZIP/CRC/source-verified BBgame. Emulator result remains the actual run only; none declared here."
+}

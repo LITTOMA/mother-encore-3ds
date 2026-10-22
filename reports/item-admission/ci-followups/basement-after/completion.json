@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "tests.test_basement_presents",
+    "-v"
+  ],
+  "returncode": 0,
+  "seconds": 3.5630000000819564,
+  "inputs_unchanged": true,
+  "sha256": {
+    "tests/test_basement_presents.py": "799185524681b0de37678aff5f20d2be50133eec52ac4aaba889915af6a8df7a",
+    "tools/new_game_assets.py": "fc9577613b19fea00b709d5b70d5c57a39631e91f03bd9f57147d072f8dcba8e",
+    "tests/fixtures/item-admission-legacy/native-session.json": "939c819a7b42b98c542d6c9e5e4a29054cc30c6915535fe33ef54a3e56d47c32"
+  }
+}

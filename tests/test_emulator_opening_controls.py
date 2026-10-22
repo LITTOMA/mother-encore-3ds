@@ -29,6 +29,13 @@ class OpeningControlContract(unittest.TestCase):
   for name,route in self.routes.items():
    before=json.loads((REPORT/'before'/f'{name}.json').read_bytes());after=copy.deepcopy(route['steps']);after=[v for v in after if v['name']!='sister_runup_space'];ram=next(v for v in after if v['name']=='sister_ram');old=next(v for v in before['steps']if v['name']=='sister_ram');ram['buttons']=old['buttons']
    with self.subTest(name=name):
+    if name=='opening-field-exit':
+     # Actual cold repetitions retained in item-admission/bb-emulator exposed
+     # an unobserved one-frame turn. Admit this bounded normal-input strategy
+     # only; the complete original observations and targets below stay exact.
+     face=next(v for v in after if v['name']=='doll_face_left')
+     self.assertEqual(face['buttons'],['LEFT']);self.assertEqual(face['frames'],1)
+     self.assertEqual(face.pop('repeat_until'),face['wait']);self.assertEqual(face.pop('max_attempts'),8)
     self.assertEqual(after,before['steps']);self.assertEqual(route['projection'],before['projection'])
     self.assertEqual(route.get('position_tolerance'),before.get('position_tolerance'))
  def test_original_contact_condition_and_reviewed_identity(self):

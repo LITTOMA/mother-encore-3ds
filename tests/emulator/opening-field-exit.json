@@ -756,7 +756,12 @@
       "wait": {
         "direction_x": -1,
         "direction_y": 0
-      }
+      },
+      "repeat_until": {
+        "direction_x": -1,
+        "direction_y": 0
+      },
+      "max_attempts": 8
     },
     {
       "name": "doll_melody_started",

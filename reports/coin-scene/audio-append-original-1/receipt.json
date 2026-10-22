@@ -1,0 +1,435 @@
+{
+  "source": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "breakables": {
+      "commit": "7d9246600fffe518408f5830d4848635019005a3",
+      "recipe_sha256": "c20f6d563ee3feee5c96f516f1478cefefb73a187799af5e7eabf6b43ba5eb00",
+      "producer_sha256": "d1eb0b63400f79c5e5fe4caac2e0247027a0e1f0f74a6fd58ada6072a49ffb47",
+      "sources": {
+        "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+        "Audio/Sound effects/Barrel Coffin Explode.mp3.import": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d",
+        "Graphics/Objects/Catacombs/Broken Barrel.png": "8149afa2f2c94714f292994b00950c6bda4aec26d529cb4a29a350ed3bd05a38",
+        "Graphics/Objects/Catacombs/Coffin.png": "c5f619a2ca17413453f01d34e447462c2ecb7dca31ad9dee9c1d229ba5c3e623",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+        "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+        "Nodes/Overworld/Enemies/Basic Enemy.tscn": "5f554fc4ad1fa00da90727bdbc1270db0cc496f1b0ab8d56726bde73593112b5",
+        "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+        "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+        "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+        "Nodes/Overworld/Objects/Barrel.tscn": "0dce64a9a381963247163ecc86e777d5d9a8d67d6d709ec4278d4a02f4a5cee4",
+        "Nodes/Overworld/Objects/Coffin.tscn": "da4f55517e682bf86c0303baea4206d08c2d129d52d4b80237f04795ad4bcd0b",
+        "Nodes/Overworld/Objects/CoinSpawner.tscn": "f6ad3a3dcd0fac1cdc9f0cc8b98b3429cc11d74559edc95ee0df9d02cb9bd641",
+        "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+        "Nodes/Overworld/Objects/Lock.tscn": "8f7028b4669e0ef2f5d1020cedaca6fe9ded747eed4c091a0d2b98104912ae0e",
+        "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": "0455c5e6b85221a05f68e7827d6d7791797a0c62343e14c50c9b0542c980c83a",
+        "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+        "Nodes/Overworld/Objects/Rat Hole.tscn": "1715cefdbff746fb4a4bcd041914d04453fe1b40246141c5e2634cbdcbecd5da",
+        "Nodes/Overworld/Objects/Small Key.tscn": "b111c74715225473607948b2004404dd9dfc631046d53a6f569f0c5fb637a989",
+        "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+        "Nodes/Overworld/poison geyser hole.tscn": "fb8228717dc045a169206181d81597e408659713c7478fcaf648df246e1d5755",
+        "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+        "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+        "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+        "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+        "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Nodes/Reusables/Effects/Weather/Vignette.tscn": "3c57caf0ba3453b89014325aff196dee2b4f46bdf542bc3d385992b8f89c54cf",
+        "Nodes/Reusables/Overlap/Hurtbox.tscn": "8a96ac2d8f50541708a8305985651d2e7dde25b8c198f820a922a7550d1d26aa",
+        "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+        "Nodes/Reusables/VendingMachine.tscn": "7916b1d5c8e6d0ec7fa47e060daf1f2ea753b796098629794912b6310c15b431",
+        "Nodes/Reusables/atm.tscn": "d25d9da76f9bce3b0fc3448338ff0b20c0da553bb322d8c11f9470d89ff3de23",
+        "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+        "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+        "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+        "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+        "Nodes/Reusables/payphone.tscn": "80f1e9f9d8a43fde707475631c747553e1827c5d7ecc8f00175b2dd6b2438450",
+        "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+        "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Nodes/Reusables/tea kettle.tscn": "f3004d3399e5a7030a95fa69abee332d06903104ca41d73bde4bffb71cfc277d",
+        "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+        "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+        "Scripts/Main/Abstract Spawner.gd": "de81e28018d486afda0ce4964e51b12cc43ffd2af89ffbe74e32b65437a6f620",
+        "Scripts/Main/Breakable.gd": "2718cb47aa05903c5c42bcd8f44894bd304ea4c67cf420b08cc8c274cfc37fe3",
+        "Scripts/Main/Coin Spawner.gd": "47ab5253a27650816479ac5c37cecd4e0e90c251fb403e9f83dfa53861766ebf",
+        "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+        "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+        "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+      },
+      "symbols": {
+        "script": {
+          "_ready": "cbefa6f5495ebf9aef548fdf8e75a21e19a930db50cb7bd9178779d0feaba229",
+          "_on_Hurtbox_area_entered": "25a9e9617de10bad1f2fca24eff00c16f989af8e54902e0fd51ff4a77daacbcb",
+          "set_item": "acb62ef2266f450e154041933adad38438e861512cf42e4077e6f1d4ed286c56",
+          "_check_flags": "f965bf1383593395b5f9f2ddb7848ff52e390f77c3275525eea0dbdb855cf245",
+          "_drop": "adc75e5ed8790f7c18f6bf565e18adc584cc6277dc7b662ba315ed918405d8cc",
+          "interact": "f329980c3edc97d2936d585806142ef49d045b960887156a9e75a325bffcc890"
+        },
+        "flag_script": {
+          "_ready": "aa411ce1a660afa7beac67a91d1a2a8032365cd2a4740b43dc98b28d752e803c",
+          "_get_flag_status": "f2ec5e580cc12b4b2cd7bde3a290466f0a19570cb36dbd4ffb488d2011fceb7c",
+          "_set_flag_status": "7c27a314411bca00ec8f50bd374c75d6a190c019ca96b1d5bd627f17a07f95b6",
+          "_on_leave_area": "c9684d5c44429c08d3c8811c20679a258362e113bb3bf6b1421e20b2bbd2e487"
+        },
+        "global_data": {
+          "check_appear_disappear_flags": "11f2a2ae09e4700898b8bb2fa12d39e1ea31e29fc5d31267582f12a25510359e",
+          "set_flag": "6ee5a0da566ab14d613d46374df5a84a12ec005de8d132bb41e32f914762570a",
+          "set_object_flag": "c1e96ba213d37431a2ca2b0383df17ec2ae7b16d86ef6571180e730c6e703b4b"
+        },
+        "global": {
+          "start_joy_vibration": "c6889b6424cb343bce24435510cfe93724a951e18e25ce95ebe31aa9f80efd8c"
+        },
+        "coin_spawner_script": {
+          "spawn_coins": "535bd64118ae7abeb7e816695bf3ad897e6f4d72f2126a8294f9415209d0ffe4"
+        }
+      },
+      "scope": "Original65 Breakable owners,source two animation/shape families and exact script/drop/parent/flag/request policies. This source audit is not a formal scene admission. Prepared content/tween/coin/voice providers remain explicit dependencies."
+    },
+    "coins": {
+      "commit": "7d9246600fffe518408f5830d4848635019005a3",
+      "recipe_sha256": "e683f25dc2b2a075a25c969f656c5394e4e54523e5358ba0ab624aa27121e2c2",
+      "producer_sha256": "c08f0199fb6d4c1b6ec0083427e6d5a017f3fbf1b9890d37ecea7fe6bce67a88",
+      "sources": {
+        "Audio/Sound effects/Coin Drop.mp3": "0904ae9fc57944d2d1938d12f7072134a1e4bafdc28622ac11ef0302623f7339",
+        "Audio/Sound effects/Coin Drop.mp3.import": "f3dc7a012e3b627b09c34fdf8e41b4378ca2fa2a43c12b1ce1267d41f2fc948f",
+        "Audio/Sound effects/coin.mp3": "5b26eb8db6244821dd140e42bf41283e934d4af2b395be0fae16a383cb8c5f33",
+        "Audio/Sound effects/coin.mp3.import": "4b58b5f371bfa30ca86f46f86d4275701094485c61404010056f9cc875188487",
+        "Graphics/Objects/Common/Coin1.png": "e68243e940b85168ed1bafb80f9f8a099579c847afb319d92f1d56aa237de06c",
+        "Graphics/Objects/Common/Coin1.png.import": "ee6e11d72a2d1a6021ede962065d83c7fcaa1fad434aa72b4cc4e6267ea986b4",
+        "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+        "Graphics/Objects/Common/Sparkles.png.import": "33e337c8dee8917d2a06ada23c12f713856b3066783771ab17c40adac214372a",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Nodes/Overworld/Objects/CoinSpawner.tscn": "f6ad3a3dcd0fac1cdc9f0cc8b98b3429cc11d74559edc95ee0df9d02cb9bd641",
+        "Nodes/Reusables/Coin.tscn": "9b3a720b28099b188a7408477647ef4b355e0994f6c3657f3e15897b364c6617",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Scripts/Main/Abstract Spawner.gd": "de81e28018d486afda0ce4964e51b12cc43ffd2af89ffbe74e32b65437a6f620",
+        "Scripts/Main/Coin Spawner.gd": "47ab5253a27650816479ac5c37cecd4e0e90c251fb403e9f83dfa53861766ebf",
+        "Scripts/Main/Coin.gd": "f103d21996e1e0ff744b5223b1f5bb4c63dff2dbdcccfa9bd89b149636e45dc1",
+        "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+        "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+        "Shaders/Flash.shader": "b78fa8b1e62a15727d0ce256718f44c148844581e42478786ec268f4ffec160d",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+      },
+      "symbols": {
+        "script": {
+          "_ready": "6ca895f1c63d6e736046908c07aaf5ec4a6a438820f3adec64df8a0e256e6637",
+          "randomize_movement": "dabe4075e5593580bd99ed503b7a0345e025ae19575a0b16b72718ec42a338ff",
+          "start_jump": "8273ad75004518ed6c89006a39a5c1687d6f420ba1e4635c73d76dd2c18ea025",
+          "_set_collisions_disabled": "167f3b8961ccc6c1631e26f3809dbb3645ba4358754b840e81f03626e9737321",
+          "_physics_process": "fdfaa8c022bf88b2c9b57c95153f247855daf88f652a5c38b62bb7904f7bdb54",
+          "_collect": "dc9a0ab67256e3abb9fd4b2eb7bc2cd8afec1a2c26c55bbae67c8ca8d39f1757",
+          "_on_Area2D_body_entered": "e80f0c2a53b8f86af32b52477b294f8434a57f1f0e01c8d7fc446d0b425e63d5",
+          "_on_Area2D_area_entered": "a72e7b2186fb7bd101e238914c438733da35c868b5a70476e29e966a70113b70"
+        },
+        "spawner_script": {
+          "_physics_process": "f47a94f9fc7da5df6a4757a491f0e10cf58bb48c058e3960398c4c999a438e4b",
+          "spawn_coins": "535bd64118ae7abeb7e816695bf3ad897e6f4d72f2126a8294f9415209d0ffe4"
+        },
+        "spawner_base": {
+          "create_object": "266955d4e84d3bc23997a5bdff1cceb3303649e5aac80bec23825306cc703ee0"
+        },
+        "sparkle_script": {
+          "_ready": "e3c6b675b5de66e1344e21317b065e6b708e9e8a2be457cdb98ba6d09b956c30"
+        },
+        "ui_script": {
+          "add_cash": "3f713a772f9a16c3907a93694ed1a4ba71021eaef038b45cce215b89f9f23541",
+          "get_cash_box": "a4d48e72a004c58e6af74d53dbb69fd249c2368b713020a540505cf06c2c0bc0"
+        }
+      },
+      "scope": "Independent Coin/Sparkles/factory source candidate; ordinary local clocks/real circle/selected original cash methods and explicit audio/HUD holders. No complete room/catalog/save/GPU/NDSP/hardware admission."
+    },
+    "sources": {
+      "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+      "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "Nodes/Overworld/Enemies/Basic Enemy.tscn": "5f554fc4ad1fa00da90727bdbc1270db0cc496f1b0ab8d56726bde73593112b5",
+      "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+      "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Nodes/Overworld/Objects/Barrel.tscn": "0dce64a9a381963247163ecc86e777d5d9a8d67d6d709ec4278d4a02f4a5cee4",
+      "Nodes/Overworld/Objects/Coffin.tscn": "da4f55517e682bf86c0303baea4206d08c2d129d52d4b80237f04795ad4bcd0b",
+      "Nodes/Overworld/Objects/CoinSpawner.tscn": "f6ad3a3dcd0fac1cdc9f0cc8b98b3429cc11d74559edc95ee0df9d02cb9bd641",
+      "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+      "Nodes/Overworld/Objects/Lock.tscn": "8f7028b4669e0ef2f5d1020cedaca6fe9ded747eed4c091a0d2b98104912ae0e",
+      "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": "0455c5e6b85221a05f68e7827d6d7791797a0c62343e14c50c9b0542c980c83a",
+      "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+      "Nodes/Overworld/Objects/Rat Hole.tscn": "1715cefdbff746fb4a4bcd041914d04453fe1b40246141c5e2634cbdcbecd5da",
+      "Nodes/Overworld/Objects/Small Key.tscn": "b111c74715225473607948b2004404dd9dfc631046d53a6f569f0c5fb637a989",
+      "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+      "Nodes/Overworld/poison geyser hole.tscn": "fb8228717dc045a169206181d81597e408659713c7478fcaf648df246e1d5755",
+      "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+      "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+      "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+      "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+      "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+      "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "Nodes/Reusables/Effects/Weather/Vignette.tscn": "3c57caf0ba3453b89014325aff196dee2b4f46bdf542bc3d385992b8f89c54cf",
+      "Nodes/Reusables/Overlap/Hurtbox.tscn": "8a96ac2d8f50541708a8305985651d2e7dde25b8c198f820a922a7550d1d26aa",
+      "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+      "Nodes/Reusables/VendingMachine.tscn": "7916b1d5c8e6d0ec7fa47e060daf1f2ea753b796098629794912b6310c15b431",
+      "Nodes/Reusables/atm.tscn": "d25d9da76f9bce3b0fc3448338ff0b20c0da553bb322d8c11f9470d89ff3de23",
+      "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+      "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+      "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+      "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+      "Nodes/Reusables/payphone.tscn": "80f1e9f9d8a43fde707475631c747553e1827c5d7ecc8f00175b2dd6b2438450",
+      "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Nodes/Reusables/tea kettle.tscn": "f3004d3399e5a7030a95fa69abee332d06903104ca41d73bde4bffb71cfc277d",
+      "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb"
+    },
+    "coordinate_scope": "Initial untranslated source scene and identity Objects sink; no dynamic tree or complete physics-order admission",
+    "recipe_sha256": "bc5a4160809bec1cfd5b30e6524875da75243da85e71e132e2874a1bf8276a1c",
+    "producer_sha256": "e89b17fd69234db03474bf6c95f8d657303725c283bdb39acb7c9f2975ab3fad",
+    "scope": "Exactly the 49 original Catacombs barrel CoinSpawner instances and original Breakable owner identities, initial preorder and translated positions. The original Objects sink and Bottom2 reparent target both have identity transforms. Positions include the original (0,8) local offset. Initial binding only; actual dynamic tree processing, production effects, automatic contacts and full room admission remain separate consumers."
+  },
+  "coin_inputs": {
+    "copied_sha256": {
+      "Audio/Sound effects/Coin Drop.mp3": "0904ae9fc57944d2d1938d12f7072134a1e4bafdc28622ac11ef0302623f7339",
+      "Audio/Sound effects/coin.mp3": "5b26eb8db6244821dd140e42bf41283e934d4af2b395be0fae16a383cb8c5f33",
+      "Graphics/Objects/Common/Coin1.png": "e68243e940b85168ed1bafb80f9f8a099579c847afb319d92f1d56aa237de06c",
+      "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Nodes/Overworld/Objects/CoinSpawner.tscn": "f6ad3a3dcd0fac1cdc9f0cc8b98b3429cc11d74559edc95ee0df9d02cb9bd641",
+      "Nodes/Reusables/Coin.tscn": "9b3a720b28099b188a7408477647ef4b355e0994f6c3657f3e15897b364c6617",
+      "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "Scripts/Main/Abstract Spawner.gd": "de81e28018d486afda0ce4964e51b12cc43ffd2af89ffbe74e32b65437a6f620",
+      "Scripts/Main/Coin Spawner.gd": "47ab5253a27650816479ac5c37cecd4e0e90c251fb403e9f83dfa53861766ebf",
+      "Scripts/Main/Coin.gd": "f103d21996e1e0ff744b5223b1f5bb4c63dff2dbdcccfa9bd89b149636e45dc1",
+      "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+      "Shaders/Flash.shader": "b78fa8b1e62a15727d0ce256718f44c148844581e42478786ec268f4ffec160d"
+    },
+    "generated_sha256": {
+      "project.godot": "d61bb489a12ef8dbb3196372fb65ff767ce81b23381699e635ee342a824c6f19",
+      "main.tscn": "ac5e92de7adf5758870594ed8b1c418ac04cfae88d5dea91068a6b90b7d2a5a5",
+      "probe.gd": "ae39a8bb03c55e96e6d047c862bd4e4d061ab020d610514ab2c8813643843639",
+      "global.gd": "a181b78ddc81696b7e81f05391b0589228258861788db07abedac8782c0987b1",
+      "flags.gd": "f93a86f43fa1c25b7d509ffc5bd32e6cf2c8e6c7e5eef993d597a3d26ffc97ad",
+      "party.gd": "36409c5c43b70a6181c8c8a05979a9f0b66f90a479444fee2ca7ad89a343751d",
+      "ui.gd": "168090427a7a4acbe0d14a74bc3107369ad8dcd6ae9740c7fe32d96d839e4cbe",
+      "cash.gd": "0721e8c2d14c3becf3501c565f0eb23963090e571f7388edf02fc5c09826b4fe",
+      "audio.gd": "3b47b6b267ebed406f6450e74da3d4f84f4a78d32123ebfe5509f701a5602b21",
+      "drop.gd": "35bd9441464f0f092ccf2938f3c7f5c4f9ba835ba48327cc98719c3a6e64e49e",
+      "input.json": "43bc637502c9b0ab1f1abb6f4372dd6842bf29e07ac60c0a08dd2476b98c5363"
+    },
+    "methods": {
+      "add_cash": "3f713a772f9a16c3907a93694ed1a4ba71021eaef038b45cce215b89f9f23541",
+      "get_cash_box": "a4d48e72a004c58e6af74d53dbb69fd249c2368b713020a540505cf06c2c0bc0"
+    },
+    "player": {
+      "path": "Nodes/Reusables/Player.tscn",
+      "sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+      "scope": "Native KinematicBody2D default layer1; original root mask and all8 polygon vertices+local origin. Movement/pause script is an explicit service."
+    },
+    "source": {
+      "commit": "7d9246600fffe518408f5830d4848635019005a3",
+      "recipe_sha256": "e683f25dc2b2a075a25c969f656c5394e4e54523e5358ba0ab624aa27121e2c2",
+      "producer_sha256": "c08f0199fb6d4c1b6ec0083427e6d5a017f3fbf1b9890d37ecea7fe6bce67a88",
+      "sources": {
+        "Audio/Sound effects/Coin Drop.mp3": "0904ae9fc57944d2d1938d12f7072134a1e4bafdc28622ac11ef0302623f7339",
+        "Audio/Sound effects/Coin Drop.mp3.import": "f3dc7a012e3b627b09c34fdf8e41b4378ca2fa2a43c12b1ce1267d41f2fc948f",
+        "Audio/Sound effects/coin.mp3": "5b26eb8db6244821dd140e42bf41283e934d4af2b395be0fae16a383cb8c5f33",
+        "Audio/Sound effects/coin.mp3.import": "4b58b5f371bfa30ca86f46f86d4275701094485c61404010056f9cc875188487",
+        "Graphics/Objects/Common/Coin1.png": "e68243e940b85168ed1bafb80f9f8a099579c847afb319d92f1d56aa237de06c",
+        "Graphics/Objects/Common/Coin1.png.import": "ee6e11d72a2d1a6021ede962065d83c7fcaa1fad434aa72b4cc4e6267ea986b4",
+        "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+        "Graphics/Objects/Common/Sparkles.png.import": "33e337c8dee8917d2a06ada23c12f713856b3066783771ab17c40adac214372a",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Nodes/Overworld/Objects/CoinSpawner.tscn": "f6ad3a3dcd0fac1cdc9f0cc8b98b3429cc11d74559edc95ee0df9d02cb9bd641",
+        "Nodes/Reusables/Coin.tscn": "9b3a720b28099b188a7408477647ef4b355e0994f6c3657f3e15897b364c6617",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Scripts/Main/Abstract Spawner.gd": "de81e28018d486afda0ce4964e51b12cc43ffd2af89ffbe74e32b65437a6f620",
+        "Scripts/Main/Coin Spawner.gd": "47ab5253a27650816479ac5c37cecd4e0e90c251fb403e9f83dfa53861766ebf",
+        "Scripts/Main/Coin.gd": "f103d21996e1e0ff744b5223b1f5bb4c63dff2dbdcccfa9bd89b149636e45dc1",
+        "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+        "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+        "Shaders/Flash.shader": "b78fa8b1e62a15727d0ce256718f44c148844581e42478786ec268f4ffec160d",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+      },
+      "symbols": {
+        "script": {
+          "_ready": "6ca895f1c63d6e736046908c07aaf5ec4a6a438820f3adec64df8a0e256e6637",
+          "randomize_movement": "dabe4075e5593580bd99ed503b7a0345e025ae19575a0b16b72718ec42a338ff",
+          "start_jump": "8273ad75004518ed6c89006a39a5c1687d6f420ba1e4635c73d76dd2c18ea025",
+          "_set_collisions_disabled": "167f3b8961ccc6c1631e26f3809dbb3645ba4358754b840e81f03626e9737321",
+          "_physics_process": "fdfaa8c022bf88b2c9b57c95153f247855daf88f652a5c38b62bb7904f7bdb54",
+          "_collect": "dc9a0ab67256e3abb9fd4b2eb7bc2cd8afec1a2c26c55bbae67c8ca8d39f1757",
+          "_on_Area2D_body_entered": "e80f0c2a53b8f86af32b52477b294f8434a57f1f0e01c8d7fc446d0b425e63d5",
+          "_on_Area2D_area_entered": "a72e7b2186fb7bd101e238914c438733da35c868b5a70476e29e966a70113b70"
+        },
+        "spawner_script": {
+          "_physics_process": "f47a94f9fc7da5df6a4757a491f0e10cf58bb48c058e3960398c4c999a438e4b",
+          "spawn_coins": "535bd64118ae7abeb7e816695bf3ad897e6f4d72f2126a8294f9415209d0ffe4"
+        },
+        "spawner_base": {
+          "create_object": "266955d4e84d3bc23997a5bdff1cceb3303649e5aac80bec23825306cc703ee0"
+        },
+        "sparkle_script": {
+          "_ready": "e3c6b675b5de66e1344e21317b065e6b708e9e8a2be457cdb98ba6d09b956c30"
+        },
+        "ui_script": {
+          "add_cash": "3f713a772f9a16c3907a93694ed1a4ba71021eaef038b45cce215b89f9f23541",
+          "get_cash_box": "a4d48e72a004c58e6af74d53dbb69fd249c2368b713020a540505cf06c2c0bc0"
+        }
+      },
+      "scope": "Independent Coin/Sparkles/factory source candidate; ordinary local clocks/real circle/selected original cash methods and explicit audio/HUD holders. No complete room/catalog/save/GPU/NDSP/hardware admission."
+    },
+    "scope": "Actual Coin/Sparkles/prefabs/ordinary clocks/real Kinematic circle and source player footprint. UIcash selected original methods,party type and audio request holders explicit. After actual original Ready validates AudioStreamPlayer2D binding,only dynamic _drop_sfx field replaced with play-recorder;not production media/wholeRoom/GPU/hardware. Sprite/audio import params excluded from gameplay/pose scope.",
+    "protocol_sha256": "0cd83f799c04eb4c85c4e56c07ba79eb82f7e28c1c4ca38ddaf86635dd3434b4"
+  },
+  "break_inputs": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "recipe_sha256": "c20f6d563ee3feee5c96f516f1478cefefb73a187799af5e7eabf6b43ba5eb00",
+    "sources": {
+      "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+      "Audio/Sound effects/Barrel Coffin Explode.mp3.import": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d",
+      "Graphics/Objects/Catacombs/Broken Barrel.png": "8149afa2f2c94714f292994b00950c6bda4aec26d529cb4a29a350ed3bd05a38",
+      "Graphics/Objects/Catacombs/Coffin.png": "c5f619a2ca17413453f01d34e447462c2ecb7dca31ad9dee9c1d229ba5c3e623",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Maps/podunk/Catacombs.tscn": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+      "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "Nodes/Overworld/Enemies/Basic Enemy.tscn": "5f554fc4ad1fa00da90727bdbc1270db0cc496f1b0ab8d56726bde73593112b5",
+      "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+      "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Nodes/Overworld/Objects/Barrel.tscn": "0dce64a9a381963247163ecc86e777d5d9a8d67d6d709ec4278d4a02f4a5cee4",
+      "Nodes/Overworld/Objects/Coffin.tscn": "da4f55517e682bf86c0303baea4206d08c2d129d52d4b80237f04795ad4bcd0b",
+      "Nodes/Overworld/Objects/CoinSpawner.tscn": "f6ad3a3dcd0fac1cdc9f0cc8b98b3429cc11d74559edc95ee0df9d02cb9bd641",
+      "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+      "Nodes/Overworld/Objects/Lock.tscn": "8f7028b4669e0ef2f5d1020cedaca6fe9ded747eed4c091a0d2b98104912ae0e",
+      "Nodes/Overworld/Objects/Locked Door Catacombs.tscn": "0455c5e6b85221a05f68e7827d6d7791797a0c62343e14c50c9b0542c980c83a",
+      "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+      "Nodes/Overworld/Objects/Rat Hole.tscn": "1715cefdbff746fb4a4bcd041914d04453fe1b40246141c5e2634cbdcbecd5da",
+      "Nodes/Overworld/Objects/Small Key.tscn": "b111c74715225473607948b2004404dd9dfc631046d53a6f569f0c5fb637a989",
+      "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+      "Nodes/Overworld/poison geyser hole.tscn": "fb8228717dc045a169206181d81597e408659713c7478fcaf648df246e1d5755",
+      "Nodes/Overworld/switches/Gate.tscn": "121a4e472ecc8b3843de6f892aa008d47c815d87036c88d5d387aa1f77ee0455",
+      "Nodes/Overworld/switches/Lever.tscn": "b63c713dbd3c2ad99ad5a27df058f9a8aef8b003d58de7fdd13ed06027b1e196",
+      "Nodes/Overworld/switches/Wall Door.tscn": "97e289e863a0e49aa93a9ec3fae4ce8d53683774af7cc1ea95c3fbed3dbaf8f3",
+      "Nodes/Overworld/switches/plate.tscn": "86510075e0c5ceb6f5b057bb1dfaf0c8d7bcbe167e6978041bd49d20fc343df2",
+      "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+      "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "Nodes/Reusables/Effects/Weather/Vignette.tscn": "3c57caf0ba3453b89014325aff196dee2b4f46bdf542bc3d385992b8f89c54cf",
+      "Nodes/Reusables/Overlap/Hurtbox.tscn": "8a96ac2d8f50541708a8305985651d2e7dde25b8c198f820a922a7550d1d26aa",
+      "Nodes/Reusables/Overlap/Poison.tscn": "c8437711f045477a691fa762800bbe7c542df0abaa62faef51fe7942a01407fe",
+      "Nodes/Reusables/VendingMachine.tscn": "7916b1d5c8e6d0ec7fa47e060daf1f2ea753b796098629794912b6310c15b431",
+      "Nodes/Reusables/atm.tscn": "d25d9da76f9bce3b0fc3448338ff0b20c0da553bb322d8c11f9470d89ff3de23",
+      "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+      "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+      "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+      "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+      "Nodes/Reusables/payphone.tscn": "80f1e9f9d8a43fde707475631c747553e1827c5d7ecc8f00175b2dd6b2438450",
+      "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Nodes/Reusables/tea kettle.tscn": "f3004d3399e5a7030a95fa69abee332d06903104ca41d73bde4bffb71cfc277d",
+      "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+      "Scripts/Main/Abstract Spawner.gd": "de81e28018d486afda0ce4964e51b12cc43ffd2af89ffbe74e32b65437a6f620",
+      "Scripts/Main/Breakable.gd": "2718cb47aa05903c5c42bcd8f44894bd304ea4c67cf420b08cc8c274cfc37fe3",
+      "Scripts/Main/Coin Spawner.gd": "47ab5253a27650816479ac5c37cecd4e0e90c251fb403e9f83dfa53861766ebf",
+      "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+      "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+      "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+    },
+    "symbols": {
+      "script": {
+        "_ready": "cbefa6f5495ebf9aef548fdf8e75a21e19a930db50cb7bd9178779d0feaba229",
+        "_on_Hurtbox_area_entered": "25a9e9617de10bad1f2fca24eff00c16f989af8e54902e0fd51ff4a77daacbcb",
+        "set_item": "acb62ef2266f450e154041933adad38438e861512cf42e4077e6f1d4ed286c56",
+        "_check_flags": "f965bf1383593395b5f9f2ddb7848ff52e390f77c3275525eea0dbdb855cf245",
+        "_drop": "adc75e5ed8790f7c18f6bf565e18adc584cc6277dc7b662ba315ed918405d8cc",
+        "interact": "f329980c3edc97d2936d585806142ef49d045b960887156a9e75a325bffcc890"
+      },
+      "flag_script": {
+        "_ready": "aa411ce1a660afa7beac67a91d1a2a8032365cd2a4740b43dc98b28d752e803c",
+        "_get_flag_status": "f2ec5e580cc12b4b2cd7bde3a290466f0a19570cb36dbd4ffb488d2011fceb7c",
+        "_set_flag_status": "7c27a314411bca00ec8f50bd374c75d6a190c019ca96b1d5bd627f17a07f95b6",
+        "_on_leave_area": "c9684d5c44429c08d3c8811c20679a258362e113bb3bf6b1421e20b2bbd2e487"
+      },
+      "global_data": {
+        "check_appear_disappear_flags": "11f2a2ae09e4700898b8bb2fa12d39e1ea31e29fc5d31267582f12a25510359e",
+        "set_flag": "6ee5a0da566ab14d613d46374df5a84a12ec005de8d132bb41e32f914762570a",
+        "set_object_flag": "c1e96ba213d37431a2ca2b0383df17ec2ae7b16d86ef6571180e730c6e703b4b"
+      },
+      "global": {
+        "start_joy_vibration": "c6889b6424cb343bce24435510cfe93724a951e18e25ce95ebe31aa9f80efd8c"
+      },
+      "coin_spawner_script": {
+        "spawn_coins": "535bd64118ae7abeb7e816695bf3ad897e6f4d72f2126a8294f9415209d0ffe4"
+      }
+    },
+    "scope": "Actual original Breakable/Flaggable scripts and two prefab AnimationPlayers. Explicit Node2D contents, pause/rumble, factory and voice-command providers;ordinary idle timers/tweens. No contents AI,coin physics,economy,whole-room,3DS/GPU/hardware admission.",
+    "content_producer_sha256": "d1eb0b63400f79c5e5fe4caac2e0247027a0e1f0f74a6fd58ada6072a49ffb47",
+    "generated_sha256": {
+      "project.godot": "757e200fd340ba8bf4c658ae00d0382cc816d827b45080412514c9fad31e9966",
+      "main.tscn": "9bda375ec1e057591ecc029cf0a7fa599f6286d32d4bc9181a32baa1b1cf49d7",
+      "scene.gd": "e3a70e1943b11ba387e60fde9626a7e699cbbff3e42afb338482efdeb0402983",
+      "probe.gd": "8049b1114d3ba91c1e56254b5897f85eff0960aa76d48ce185b91c2794a76140",
+      "global.gd": "332536e1b8795c5b2eee9eb25f359b1a40f1e3d972c3ef407f575a53bed089b2",
+      "content.gd": "0ce3e59140f461fc0336c79d739991ce72958136e009bf78f0ff1b66eab648da",
+      "voice.gd": "52c66c929ac46c428cf97bb26449a9f523301c853fc08ce49ab72e1fa8e7c3ec",
+      "factory.gd": "9a9414e973d5369912806137ba14e230e72910cf15bf1ba6b8d434faf1d4089c",
+      "flags.gd": "bd9591af2b5d65c5b4d6b37fe4bf9827441b06ee33f5d53ec8eaf35967e89f89",
+      "Nodes/Overworld/Objects/CoinSpawner.tscn": "48bee61080e8b10888446867faaabb312a66e741d77d692f8b749236c1a83a7e",
+      "input.json": "4aaef1d95853bb8fcdf517a9b7b44e3a5e5b61d7c5ba96ff2b15675dace88e32"
+    },
+    "copied_sha256": {
+      "Scripts/Main/Breakable.gd": "2718cb47aa05903c5c42bcd8f44894bd304ea4c67cf420b08cc8c274cfc37fe3",
+      "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+      "Nodes/Overworld/Objects/Coffin.tscn": "da4f55517e682bf86c0303baea4206d08c2d129d52d4b80237f04795ad4bcd0b",
+      "Nodes/Overworld/Objects/Barrel.tscn": "0dce64a9a381963247163ecc86e777d5d9a8d67d6d709ec4278d4a02f4a5cee4",
+      "Nodes/Reusables/Overlap/Hurtbox.tscn": "8a96ac2d8f50541708a8305985651d2e7dde25b8c198f820a922a7550d1d26aa",
+      "Graphics/Objects/Catacombs/Coffin.png": "c5f619a2ca17413453f01d34e447462c2ecb7dca31ad9dee9c1d229ba5c3e623",
+      "Graphics/Objects/Catacombs/Broken Barrel.png": "8149afa2f2c94714f292994b00950c6bda4aec26d529cb4a29a350ed3bd05a38",
+      "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db"
+    }
+  },
+  "copied_sha256": {
+    "Audio/Sound effects/Coin Drop.mp3": "0904ae9fc57944d2d1938d12f7072134a1e4bafdc28622ac11ef0302623f7339",
+    "Audio/Sound effects/coin.mp3": "5b26eb8db6244821dd140e42bf41283e934d4af2b395be0fae16a383cb8c5f33",
+    "Graphics/Objects/Common/Coin1.png": "e68243e940b85168ed1bafb80f9f8a099579c847afb319d92f1d56aa237de06c",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Overworld/Objects/CoinSpawner.tscn": "f6ad3a3dcd0fac1cdc9f0cc8b98b3429cc11d74559edc95ee0df9d02cb9bd641",
+    "Nodes/Reusables/Coin.tscn": "9b3a720b28099b188a7408477647ef4b355e0994f6c3657f3e15897b364c6617",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Scripts/Main/Abstract Spawner.gd": "de81e28018d486afda0ce4964e51b12cc43ffd2af89ffbe74e32b65437a6f620",
+    "Scripts/Main/Coin Spawner.gd": "47ab5253a27650816479ac5c37cecd4e0e90c251fb403e9f83dfa53861766ebf",
+    "Scripts/Main/Coin.gd": "f103d21996e1e0ff744b5223b1f5bb4c63dff2dbdcccfa9bd89b149636e45dc1",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Flash.shader": "b78fa8b1e62a15727d0ce256718f44c148844581e42478786ec268f4ffec160d",
+    "Scripts/Main/Breakable.gd": "2718cb47aa05903c5c42bcd8f44894bd304ea4c67cf420b08cc8c274cfc37fe3",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Nodes/Overworld/Objects/Coffin.tscn": "da4f55517e682bf86c0303baea4206d08c2d129d52d4b80237f04795ad4bcd0b",
+    "Nodes/Overworld/Objects/Barrel.tscn": "0dce64a9a381963247163ecc86e777d5d9a8d67d6d709ec4278d4a02f4a5cee4",
+    "Nodes/Reusables/Overlap/Hurtbox.tscn": "8a96ac2d8f50541708a8305985651d2e7dde25b8c198f820a922a7550d1d26aa",
+    "Graphics/Objects/Catacombs/Coffin.png": "c5f619a2ca17413453f01d34e447462c2ecb7dca31ad9dee9c1d229ba5c3e623",
+    "Graphics/Objects/Catacombs/Broken Barrel.png": "8149afa2f2c94714f292994b00950c6bda4aec26d529cb4a29a350ed3bd05a38",
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db"
+  },
+  "generated_sha256": {
+    "project.godot": "d75eca9a53c826a05b8d0d92cb65a285d2df04d11b3640d2782d346c104e217f",
+    "main.tscn": "ac5e92de7adf5758870594ed8b1c418ac04cfae88d5dea91068a6b90b7d2a5a5",
+    "probe.gd": "9b6d271da978c5c72e33720bac8eaba01e66e9b1993a54ce93fda947121d62f7",
+    "global.gd": "332536e1b8795c5b2eee9eb25f359b1a40f1e3d972c3ef407f575a53bed089b2",
+    "flags.gd": "38cecf8f910a7003c75fd7a3a97a1abb5f5cf733a07cc85dcb5de9c3a2ceafd2",
+    "party.gd": "36409c5c43b70a6181c8c8a05979a9f0b66f90a479444fee2ca7ad89a343751d",
+    "ui.gd": "168090427a7a4acbe0d14a74bc3107369ad8dcd6ae9740c7fe32d96d839e4cbe",
+    "cash.gd": "0721e8c2d14c3becf3501c565f0eb23963090e571f7388edf02fc5c09826b4fe",
+    "audio.gd": "3b47b6b267ebed406f6450e74da3d4f84f4a78d32123ebfe5509f701a5602b21",
+    "drop.gd": "35bd9441464f0f092ccf2938f3c7f5c4f9ba835ba48327cc98719c3a6e64e49e",
+    "input.json": "d3da704ab518009c348150fd04aefb953d08b44b1dc98d6faec9e5217ddb16f1",
+    "scene.gd": "e3a70e1943b11ba387e60fde9626a7e699cbbff3e42afb338482efdeb0402983",
+    "voice.gd": "2e15dfc394d07a239ee29af340f770e55cb3e65904dc591a562f0eda0fcc0e04"
+  },
+  "scope": "Observe all source barrel/coin factories with their real scripts/prefabs.\n\nObjects/Bottom2 identity parents, voice/HUD and input delivery are explicit\nproviders. No source TileMap terrain, other NPCs or whole room is admitted.\n",
+  "protocol_sha256": "95c300322d1c0048bf64be4349f26e0c1624631dbc943bf3bea6d805a38504fd",
+  "result_sha256": "5c2661fdef82ce58ff7dd1e96b6e3bb8d4b24abe529ce21b9f45d3a9022d4054",
+  "engine_binary_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "producer_sha256": "88c472c79ee5b9be0b1fb2ea5082a1c2be26efa91f75dbdb4ca0e0c167220890",
+  "return_code": 0,
+  "elapsed_seconds": 7.39000000001397
+}

@@ -4,7 +4,7 @@
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
     "breakables": {
       "commit": "7d9246600fffe518408f5830d4848635019005a3",
-      "recipe_sha256": "1ff3e69e67389ed49d89ae37ab6c266a8a742712a4a9d738dd3aa202ecda1f95",
+      "recipe_sha256": "c20f6d563ee3feee5c96f516f1478cefefb73a187799af5e7eabf6b43ba5eb00",
       "producer_sha256": "d1eb0b63400f79c5e5fe4caac2e0247027a0e1f0f74a6fd58ada6072a49ffb47",
       "sources": {
         "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
@@ -182,7 +182,7 @@
       "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb"
     },
     "coordinate_scope": "Initial untranslated source scene and identity Objects sink; no dynamic tree or complete physics-order admission",
-    "recipe_sha256": "3776ea8ef355dc9e979e14351b0ce3698888fefd095ae534f71f33c51925a28a",
+    "recipe_sha256": "bc5a4160809bec1cfd5b30e6524875da75243da85e71e132e2874a1bf8276a1c",
     "producer_sha256": "e89b17fd69234db03474bf6c95f8d657303725c283bdb39acb7c9f2975ab3fad",
     "scope": "Exactly the 49 original Catacombs barrel CoinSpawner instances and original Breakable owner identities, initial preorder and translated positions. The original Objects sink and Bottom2 reparent target both have identity transforms. Positions include the original (0,8) local offset. Initial binding only; actual dynamic tree processing, production effects, automatic contacts and full room admission remain separate consumers."
   },
@@ -191,11 +191,11 @@
   "observation_protocol_sha256": "95c300322d1c0048bf64be4349f26e0c1624631dbc943bf3bea6d805a38504fd",
   "results": [
     {
-      "path": "reports/coin-scene/original-1",
+      "path": "reports/coin-scene/audio-append-original-1",
       "sha256": "5c2661fdef82ce58ff7dd1e96b6e3bb8d4b24abe529ce21b9f45d3a9022d4054"
     },
     {
-      "path": "reports/coin-scene/original-2",
+      "path": "reports/coin-scene/audio-append-original-2",
       "sha256": "5c2661fdef82ce58ff7dd1e96b6e3bb8d4b24abe529ce21b9f45d3a9022d4054"
     }
   ],

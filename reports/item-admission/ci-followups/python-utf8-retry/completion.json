@@ -1,0 +1,26 @@
+{
+  "command": [
+    "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "tests.test_phone_linker.PhoneLinkerTests.test_independent_hash_seeds_reproduce_all_linked_files",
+    "-v"
+  ],
+  "environment_override": {
+    "PYTHONUTF8": "1"
+  },
+  "returncode": 0,
+  "seconds": 297.905999999959,
+  "inputs_unchanged": true,
+  "inputs": {
+    "tests/test_phone_linker.py": "263f103beda145b898e5f8c86bd5c323ce167c4fce74506d814357da26bb936d",
+    "tests/test_phone_linker_bindings.py": "d447dd997cb441c3b18b5f24846fd7a1bfd85d491344e29431d7f9e89959759a",
+    "tests/python_suite.py": "962bcfdc874053eb9cb4866d1fa1b7bb834a27e898caea2e63a40a0d04e6616c",
+    "tests/test_python_suite.py": "80864cd369f1c5eb9aec69b26faa8cc647920c135bbda142a5714688b04bfcf7",
+    "reports/phone-integration/link-review.json": "f4a7b1dcd1d1e6c854cdbf6f827d74e8a4130d0de2b55be04fd73c8f7e5ee4db",
+    "tools/link_phone_content.py": "04050c3da322104dc1534d0a2cf18b5a7019eebe33c88bec728af153dc49d690"
+  },
+  "scope": "Only the failed inherited Windows GBK child-process case rerun; previous44 passed cases retain exact same inputs. Both original hash-seed --check commands execute."
+}

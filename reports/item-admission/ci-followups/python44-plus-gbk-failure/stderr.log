@@ -1,0 +1,59 @@
+test_actual_area_and_run_sources_are_partitioned_once (tests.test_python_suite.Partition.test_actual_area_and_run_sources_are_partitioned_once) ... ok
+test_case_cannot_be_owned_by_two_registrations (tests.test_python_suite.Partition.test_case_cannot_be_owned_by_two_registrations) ... ok
+test_changed_module_list_rejected (tests.test_python_suite.Partition.test_changed_module_list_rejected) ... ok
+test_dedicated_case_loss_rejected (tests.test_python_suite.Partition.test_dedicated_case_loss_rejected) ... ok
+test_duplicate_discovery_case_rejected (tests.test_python_suite.Partition.test_duplicate_discovery_case_rejected) ... ok
+test_duplicate_registration_rejected (tests.test_python_suite.Partition.test_duplicate_registration_rejected) ... ok
+test_exact_partition_keeps_new_modules_in_aggregate (tests.test_python_suite.Partition.test_exact_partition_keeps_new_modules_in_aggregate) ... ok
+test_missing_registration_rejected (tests.test_python_suite.Partition.test_missing_registration_rejected) ... ok
+test_phone_source_registration_owns_every_method_once (tests.test_python_suite.Partition.test_phone_source_registration_owns_every_method_once) ... ok
+test_unknown_registration_rejected (tests.test_python_suite.Partition.test_unknown_registration_rejected) ... ok
+test_direct_script (tests.test_python_suite.Registration.test_direct_script) ... ok
+test_direct_script_arguments_are_not_silently_ignored (tests.test_python_suite.Registration.test_direct_script_arguments_are_not_silently_ignored) ... ok
+test_explicit_single_and_multiple_modules (tests.test_python_suite.Registration.test_explicit_single_and_multiple_modules) ... ok
+test_unknown_or_ambiguous_unittest_selectors (tests.test_python_suite.Registration.test_unknown_or_ambiguous_unittest_selectors) ... ok
+test_unrelated_program_is_not_a_registration (tests.test_python_suite.Registration.test_unrelated_program_is_not_a_registration) ... ok
+test_actual_room_append_and_commands_exact (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_actual_room_append_and_commands_exact) ... ok
+test_audio_ids_must_match_actual_room_sources (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_audio_ids_must_match_actual_room_sources) ... ok
+test_audio_ir_and_existing_binary_exact (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_audio_ir_and_existing_binary_exact) ... ok
+test_bad_actor_and_stable_identity (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_bad_actor_and_stable_identity) ... ok
+test_duplicate_and_unsafe_audio (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_duplicate_and_unsafe_audio) ... ok
+test_intro_author_rows_and_actual_linked_prefix (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_intro_author_rows_and_actual_linked_prefix) ... ok
+test_intro_cross_phone_id_pcm_and_source_conflict (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_intro_cross_phone_id_pcm_and_source_conflict) ... ok
+test_intro_duplicate_id_pcm_and_source (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_intro_duplicate_id_pcm_and_source) ... ok
+test_intro_schema_pin_unknown_hash_paths_and_gain (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_intro_schema_pin_unknown_hash_paths_and_gain) ... ok
+test_ordinary_audio_compile_gate (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_ordinary_audio_compile_gate) ... ok
+test_source_rate_and_unknown_conversion (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_source_rate_and_unknown_conversion) ... ok
+test_stale_source (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_stale_source) ... ok
+test_unknown_schema_fields_and_paths (tests.test_phone_linker_bindings.PhoneLinkerBindingTests.test_unknown_schema_fields_and_paths) ... ok
+test_all_existing_room_rows_and_strings_are_preserved (tests.test_phone_linker.PhoneLinkerTests.test_all_existing_room_rows_and_strings_are_preserved) ... ok
+test_carol_phone_reminder_preserves_inherited_npc_talker (tests.test_phone_linker.PhoneLinkerTests.test_carol_phone_reminder_preserves_inherited_npc_talker) ... ok
+test_carol_uses_shared_verified_frames_but_own_source_geometry (tests.test_phone_linker.PhoneLinkerTests.test_carol_uses_shared_verified_frames_but_own_source_geometry) ... ok
+test_dad_append_preserves_first_call_rows_strings_and_all_text_tokens (tests.test_phone_linker.PhoneLinkerTests.test_dad_append_preserves_first_call_rows_strings_and_all_text_tokens) ... ok
+test_dad_normal_links_every_source_branch_choice_and_save_callback (tests.test_phone_linker.PhoneLinkerTests.test_dad_normal_links_every_source_branch_choice_and_save_callback) ... ok
+test_deferred_flag_listener_rejects_invalid_body_flag_and_payload (tests.test_phone_linker.PhoneLinkerTests.test_deferred_flag_listener_rejects_invalid_body_flag_and_payload) ... ok
+test_entrance_listener_uses_original_descendant_body_and_flag (tests.test_phone_linker.PhoneLinkerTests.test_entrance_listener_uses_original_descendant_body_and_flag) ... ok
+test_entrance_source_listener_cannot_become_visibility_only (tests.test_phone_linker.PhoneLinkerTests.test_entrance_source_listener_cannot_become_visibility_only) ... ok
+test_house_prefix_and_optional_story_state_preserved (tests.test_phone_linker.PhoneLinkerTests.test_house_prefix_and_optional_story_state_preserved) ... ok
+test_independent_hash_seeds_reproduce_all_linked_files (tests.test_phone_linker.PhoneLinkerTests.test_independent_hash_seeds_reproduce_all_linked_files) ... FAIL
+test_invalid_linked_commands_and_old_schema_fail_closed (tests.test_phone_linker.PhoneLinkerTests.test_invalid_linked_commands_and_old_schema_fail_closed) ... ok
+test_linear_texts_have_stable_identity_and_typed_color (tests.test_phone_linker.PhoneLinkerTests.test_linear_texts_have_stable_identity_and_typed_color) ... ok
+test_movement_waits_target_turn_camera_axis_and_phase_timing (tests.test_phone_linker.PhoneLinkerTests.test_movement_waits_target_turn_camera_axis_and_phase_timing) ... ok
+test_only_reviewed_contact_boundaries_become_programs (tests.test_phone_linker.PhoneLinkerTests.test_only_reviewed_contact_boundaries_become_programs) ... ok
+test_phone_audio_identity_binding_and_old_asset_prefix (tests.test_phone_linker.PhoneLinkerTests.test_phone_audio_identity_binding_and_old_asset_prefix) ... ok
+test_room_and_house_roundtrip_with_new_schema (tests.test_phone_linker.PhoneLinkerTests.test_room_and_house_roundtrip_with_new_schema) ... ok
+test_unknown_linear_text_token_and_changed_area_geometry_reject (tests.test_phone_linker.PhoneLinkerTests.test_unknown_linear_text_token_and_changed_area_geometry_reject) ... ok
+
+======================================================================
+FAIL: test_independent_hash_seeds_reproduce_all_linked_files (tests.test_phone_linker.PhoneLinkerTests.test_independent_hash_seeds_reproduce_all_linked_files)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_phone_linker.py", line 282, in test_independent_hash_seeds_reproduce_all_linked_files
+    self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+AssertionError: 1 != 0 : PHONE LINK ERROR: 'gbk' codec can't decode byte 0x92 in position 25296: illegal multibyte sequence
+
+
+----------------------------------------------------------------------
+Ran 45 tests in 452.049s
+
+FAILED (failures=1)

@@ -1,0 +1,21 @@
+{
+  "full_source": "b8c6675a4bc8c95e848aba6f25d2fbe576080483",
+  "run": 39681688517,
+  "status": "passed",
+  "gcc_normal": 353,
+  "gcc_asan_ubsan": 334,
+  "clang_normal": 334,
+  "clang_asan_ubsan": 334,
+  "real_3dsx_cia": true,
+  "staged_files": 377,
+  "aggregate_seconds": [
+    736.82,
+    450.94,
+    246.6,
+    326.36
+  ],
+  "unchanged_each_timeout": 1800,
+  "source_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "actual_reused_game": 92,
+  "scope": "Test schedule only;all four real aggregates passed,normal leak checks. Game byte identical to retained actual92 two cold90 opening runs;no separate103 emulator/full-room/GPU/NDSP/hardware claim."
+}

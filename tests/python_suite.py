@@ -117,7 +117,7 @@ def parallel_partition(suite):
 
 def shard_partition(suite, count):
     """Keep whole modules together; preserve every method exactly once."""
-    if type(count) is not int or count not in (1, 2):
+    if type(count) is not int or count not in (1, 2, 4):
         raise ValueError('Unsupported aggregate shard count')
     original = list(cases(suite))
     full_ids = Counter(identity(c) for c in original)
@@ -141,14 +141,14 @@ def shard_partition(suite, count):
 
 def validate_shard_registrations(commands, project, directory, count):
     """An omitted, duplicate or changed CTest shard cannot silently pass."""
-    if type(count) is not int or count not in (1, 2):
+    if type(count) is not int or count not in (1, 2, 4):
         raise ValueError('Unsupported aggregate shard registration count')
     if type(commands) is not list or any(type(row) is not dict
         or set(row) != {'name', 'command'} or type(row['name']) is not str
         or type(row['command']) is not list
         or any(type(arg) is not str or not arg for arg in row['command']) for row in commands):
         raise ValueError('Malformed aggregate CTest shard registration')
-    expected = ['python_tools'] if count == 1 else ['python_tools', 'python_tools_part2']
+    expected = ['python_tools'] + ['python_tools_part' + str(i + 1) for i in range(1, count)]
     if len(commands) != count or sorted(c['name'] for c in commands) != sorted(expected):
         raise ValueError('Missing/duplicate aggregate CTest shard registration')
     for row in commands:
@@ -287,7 +287,7 @@ def main():
     parser.add_argument('--collect-only', action='store_true')
     parser.add_argument('--report', type=Path)
     parser.add_argument('--shard-index', type=int, default=0)
-    parser.add_argument('--shard-count', type=int, choices=(1, 2), default=1)
+    parser.add_argument('--shard-count', type=int, choices=(1, 2, 4), default=1)
     args = parser.parse_args()
     if args.worker_plan or args.worker_result:
         if not args.worker_plan or not args.worker_result:

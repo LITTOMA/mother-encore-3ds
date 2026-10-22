@@ -1,0 +1,10 @@
+{
+  "runtime/native_session.cpp": "abb7601576e6f9355e6e1adb729eef205eafd0e1981828b47f44a1e947e3ba6d",
+  "include/encore/native_session.hpp": "2080a787b81f38a47df75c408f294876099be33e7feec18ca5bc2f9fbe361787",
+  "tests/catacombs_item_session_tests.cpp": "ea5618611e11de99151d4e8196a2462fb47e8b3be3f5434c6cbe8753445cdde0",
+  "tests/native_session_tests.cpp": "8a1a64b800faeb287aab4b1e0339b05002b2ce40166d613d2af285dbd2614a25",
+  "tests/prepare_catacombs_item_catalog.py": "39ac86a5a1bcf0c9ddad243176d55aa3ba329598bf7bd34f331529f9ee860b93",
+  "tools/native_session.py": "0058ea301a8bc53c326c9f0c51d51f940c7f2e9bbb47668b9be44b919974448c",
+  "tools/catacombs_item_catalog.py": "6f0cb22f3927334a746f419703f5a1391a392724ec82a64ab69c565db46796eb",
+  "content/catacombs-item-catalog.json": "9ab217b6a5281e18848a769f11ae8248064111a3aa6281a6275514859a35e315"
+}

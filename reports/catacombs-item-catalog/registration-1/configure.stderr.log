@@ -1,0 +1,29 @@
+CMake Error at CMakeLists.txt:2 (project):
+  Failed to run MSBuild command:
+
+    C:/Program Files/Microsoft Visual Studio/2022/Enterprise/MSBuild/Current/Bin/amd64/MSBuild.exe
+
+  to get the value of VCTargetsPath:
+
+    閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.14.23+b0019275e
+    鐢熸垚鍚姩鏃堕棿涓?2026/10/22 14:08:48銆?
+    
+    鑺傜偣 1 涓婄殑椤圭洰鈥淒:\GameDev\3DS\mother-encore-3ds\build\full-port\catalog-registration-1\cmake\CMakeFiles\4.1.0\VCTargetsPath.vcxproj鈥?榛樿鐩爣)銆?
+    C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.WindowsSDK.props(122,5): error MSB4184: 鏃犳硶璁＄畻琛ㄨ揪寮忊€淸Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion(Windows, 10.0)鈥濄€備笉鍏佽鎵€璇锋眰鐨勬敞鍐岃〃璁块棶鏉冦€?[D:\GameDev\3DS\mother-encore-3ds\build\full-port\catalog-registration-1\cmake\CMakeFiles\4.1.0\VCTargetsPath.vcxproj]
+    宸插畬鎴愮敓鎴愰」鐩€淒:\GameDev\3DS\mother-encore-3ds\build\full-port\catalog-registration-1\cmake\CMakeFiles\4.1.0\VCTargetsPath.vcxproj鈥?榛樿鐩爣)鐨勬搷浣?- 澶辫触銆?
+    
+    鐢熸垚澶辫触銆?
+    
+    鈥淒:\GameDev\3DS\mother-encore-3ds\build\full-port\catalog-registration-1\cmake\CMakeFiles\4.1.0\VCTargetsPath.vcxproj鈥?榛樿鐩爣) (1) ->
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.WindowsSDK.props(122,5): error MSB4184: 鏃犳硶璁＄畻琛ㄨ揪寮忊€淸Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion(Windows, 10.0)鈥濄€備笉鍏佽鎵€璇锋眰鐨勬敞鍐岃〃璁块棶鏉冦€?[D:\GameDev\3DS\mother-encore-3ds\build\full-port\catalog-registration-1\cmake\CMakeFiles\4.1.0\VCTargetsPath.vcxproj]
+    
+        0 涓鍛?
+        1 涓敊璇?
+    
+    宸茬敤鏃堕棿 00:00:00.07
+    
+
+  Exit code: 1
+
+
+

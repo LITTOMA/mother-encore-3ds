@@ -319,7 +319,7 @@ def encode_snapshot(s,c):
     return raw+struct.pack('<I',zlib.crc32(raw))
 
 def encode(r):
-    require(type(r['schema'])is int and r['schema'] in (1,2,3,4,5,6,7,8,9,10,11),'Unsupported native session schema')
+    require(type(r['schema'])is int and r['schema'] in (1,2,3,4,5,6,7,8,9,10,11,12),'Unsupported native session schema')
     w=Writer();c=r['compatibility'];w.put('3I',c['content_family'],c['content_revision'],c['rules_revision']);template=encode_snapshot(r['defaults'],c);w.put('I',len(template));w.raw.extend(template)
     w.put('I',len(r['levels']))
     for level in r['levels']:w.put('3I7i',level['level'],level['minimum_exp'],level['next_exp'],*level['stats']);w.array(level['skills'],w.text)

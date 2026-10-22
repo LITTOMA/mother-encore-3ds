@@ -97,7 +97,7 @@ class NativeSessionTests(unittest.TestCase):
         for sounds in ([],['wood'],['stone','stone'],['wood',True],['wood','Stone'],['wood','bad/path'],['stone','other']):
             bad=copy.deepcopy(r);bad['run_sounds']=sounds
             with self.subTest(sounds=sounds),self.assertRaises(ValueError):native.encode(bad)
-        for schema in (True,0,12):
+        for schema in (True,0,13):
             bad=copy.deepcopy(r);bad['schema']=schema
             with self.assertRaises(ValueError):native.encode(bad)
     def test_frozen_rules6_resource_encoding_is_unchanged(self):
@@ -105,8 +105,15 @@ class NativeSessionTests(unittest.TestCase):
         legacy=native.read(frozen/'native-session.json')
         self.assertEqual(legacy['schema'],1)
         self.assertEqual(native.encode(legacy),(frozen/'opening.encsession').read_bytes())
-        bad=copy.deepcopy(self.recipe);bad['schema']=12
+        bad=copy.deepcopy(self.recipe);bad['schema']=13
         with self.assertRaises(ValueError):native.encode(bad)
+    def test_v12_grouped_acquisition_version_keeps_legacy_payload(self):
+        original=native.encode(self.recipe)
+        candidate=copy.deepcopy(self.recipe);candidate['schema']=12
+        encoded=native.encode(candidate)
+        self.assertEqual(struct.unpack_from('<I',encoded,8)[0],12)
+        self.assertEqual(struct.unpack_from('<I',encoded,20)[0],12)
+        self.assertEqual(encoded[24:],original[24:])
     def test_startup_clamps_are_derived_from_serialized_hp_and_equipment(self):
         ex=native.Extractor(native.ROOT);save=ex.yaml('Data/save_new_game.yaml');overrides=ex.yaml('Data/save_overrides.yaml')
         save['ana']['hp']=9;save['ana']['pp']=3

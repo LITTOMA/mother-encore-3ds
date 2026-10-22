@@ -1,0 +1,67 @@
+{
+  "discovered": 377,
+  "new_tests": {
+    "prepare_catacombs_item_catalog": {
+      "backtrace": 153,
+      "command": [
+        "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe",
+        "D:/GameDev/3DS/mother-encore-3ds/tests/prepare_catacombs_item_catalog.py",
+        "D:/GameDev/3DS/mother-encore-3ds/build/full-port/catalog-registration-2/cmake/catacombs-item-catalog-fixture"
+      ],
+      "config": "Release",
+      "name": "prepare_catacombs_item_catalog",
+      "properties": [
+        {
+          "name": "FIXTURES_SETUP",
+          "value": [
+            "catacombs_item_catalog_fixture"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    "catacombs_item_session": {
+      "backtrace": 155,
+      "config": "Release",
+      "name": "catacombs_item_session",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "prepare_catacombs_item_catalog"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "catacombs_item_catalog_fixture"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    }
+  },
+  "scope": "Windows configure/discovery only; no CMake build or CTest execution."
+}

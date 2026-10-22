@@ -1,0 +1,228 @@
+{
+  "schema": 1,
+  "kind": "encore.catacombs-item-catalog",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "dropped_recipe_sha256": "c71d132f4fa776f22bfe50862861b291371f1977180c08b54c56de38a486ea55",
+  "sources": {
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Data/Items/Hamburger.yaml": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
+    "Graphics/Objects/Items/Hamburger.png": "fe2a015fface4bec3ce379523b36510f8ed9d39d874d171308201ebb756aa567",
+    "Graphics/Objects/Items/Hamburger.png.import": "b34814940107169922557173f32b25963326508afee2f77215d02d1e4c394bc2",
+    "Data/Items/Fries.yaml": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+    "Graphics/Objects/Items/Fries.png": "50f96264a490157ea0e9b35277d36fbbd2080fd980f8f93dd840f16c4663a734",
+    "Graphics/Objects/Items/Fries.png.import": "8dd355fb888c040dc815aa76afd5ebbe854ead1408e486f6eaedd9eef25aa2e0",
+    "Data/Items/Antidote.yaml": "277cc60694c95e266ce0b406c7d74992c4fcf39ffdb130d96d04fde7a00ec7eb",
+    "Graphics/Objects/Items/Antidote.png": "2835c7dfec6dbd467099574215774f62e2b430a198059884faebdea1f047af49",
+    "Graphics/Objects/Items/Antidote.png.import": "f32a161924e0b1a6cd1fa20e0fd4c427755411f782aa8d1df64ea85774b7def8"
+  },
+  "entries": [
+    {
+      "id": 5,
+      "source": "Hamburger",
+      "template": 375130927,
+      "document": {
+        "name": "HAMBURGER_NAME",
+        "sorting_name": "HAMBURGER_SORT",
+        "description": "HAMBURGER_DESC",
+        "article": "HAMBURGER_ART",
+        "keyitem": false,
+        "cost": 30,
+        "value": 15,
+        "actions": [
+          {
+            "name": "HAMBURGER_ACT1",
+            "function": "consume"
+          }
+        ],
+        "is_food": true,
+        "transform": "",
+        "slot": "",
+        "HPrecover": 50,
+        "PPrecover": 0,
+        "boost": {
+          "maxhp": 0,
+          "maxpp": 0,
+          "offense": 0,
+          "defense": 0,
+          "speed": 0,
+          "iq": 0,
+          "guts": 0
+        }
+      },
+      "labels": {
+        "en": {
+          "name": "Hamburger",
+          "sorting_name": "Hamburger",
+          "description": "99% Beef.\nRestores [ItemValue] HP.",
+          "article": "The ,the ,A ,a ,this ,it,was"
+        },
+        "zh": {
+          "name": "汉堡包",
+          "sorting_name": "汉堡包",
+          "description": "含量99%的牛肉。[BR]回复[ItemValue]点HP。",
+          "article": ",,,,这个,它,是"
+        }
+      },
+      "grants": [
+        {
+          "owner": 1274564116,
+          "flag": "Catacombs/Item1",
+          "kind": "object"
+        },
+        {
+          "owner": 1308119354,
+          "flag": "Catacombs/Item3",
+          "kind": "object"
+        },
+        {
+          "owner": 1224231259,
+          "flag": "Catacombs/Item4",
+          "kind": "object"
+        },
+        {
+          "owner": 1241008878,
+          "flag": "Catacombs/Item7",
+          "kind": "object"
+        }
+      ],
+      "texture": "Graphics/Objects/Items/Hamburger.png",
+      "size": [
+        20,
+        20
+      ],
+      "output": "graphics/items/catacombs/hamburger.t3x"
+    },
+    {
+      "id": 6,
+      "source": "Fries",
+      "template": 3787316003,
+      "document": {
+        "name": "FRIES_NAME",
+        "sorting_name": "FRIES_SORT",
+        "description": "FRIES_DESC",
+        "article": "FRIES_ART",
+        "keyitem": false,
+        "cost": 20,
+        "value": 10,
+        "actions": [
+          {
+            "name": "FRIES_ACT1",
+            "function": "consume"
+          }
+        ],
+        "is_food": true,
+        "transform": "",
+        "slot": "",
+        "HPrecover": 20,
+        "PPrecover": 0,
+        "boost": {
+          "maxhp": 0,
+          "maxpp": 0,
+          "offense": 0,
+          "defense": 0,
+          "speed": 0,
+          "iq": 0,
+          "guts": 0
+        }
+      },
+      "labels": {
+        "en": {
+          "name": "Fries",
+          "sorting_name": "Fries",
+          "description": "Can be eaten with or without ketchup.\nRestores [ItemValue] HP.",
+          "article": "The ,the ,Some ,some ,these ,them,were"
+        },
+        "zh": {
+          "name": "炸薯条",
+          "sorting_name": "炸薯条",
+          "description": "可以蘸或者不蘸番茄酱使用。[BR]回复[ItemValue]点HP。",
+          "article": ",,一些,一些,这些,它们,是"
+        }
+      },
+      "grants": [
+        {
+          "owner": 1324896973,
+          "flag": "Catacombs/Item2",
+          "kind": "object"
+        }
+      ],
+      "texture": "Graphics/Objects/Items/Fries.png",
+      "size": [
+        20,
+        20
+      ],
+      "output": "graphics/items/catacombs/fries.t3x"
+    },
+    {
+      "id": 7,
+      "source": "Antidote",
+      "template": 2305353102,
+      "document": {
+        "name": "ANTIDOTE_NAME",
+        "sorting_name": "ANTIDOTE_SORT",
+        "description": "ANTIDOTE_DESC",
+        "article": "ANTIDOTE_ART",
+        "keyitem": false,
+        "cost": 20,
+        "value": 10,
+        "actions": [
+          {
+            "name": "INVENTORY_ACTION_USE",
+            "function": "consume"
+          }
+        ],
+        "transform": "",
+        "slot": "",
+        "status_heals": [
+          "poisoned"
+        ],
+        "HPrecover": 0,
+        "PPrecover": 0,
+        "boost": {
+          "maxhp": 0,
+          "maxpp": 0,
+          "offense": 0,
+          "defense": 0,
+          "speed": 0,
+          "iq": 0,
+          "guts": 0
+        }
+      },
+      "labels": {
+        "en": {
+          "name": "Antidote",
+          "sorting_name": "Antidote",
+          "description": "Cures poison ([Poisoned]).",
+          "article": "The ,the ,An ,an ,this ,it,was"
+        },
+        "zh": {
+          "name": "解毒药",
+          "sorting_name": "解毒药",
+          "description": "治愈中毒（[Poisoned]）。",
+          "article": ",,,,这个,它,是"
+        }
+      },
+      "grants": [
+        {
+          "owner": 1207453640,
+          "flag": "Catacombs/Item5",
+          "kind": "object"
+        },
+        {
+          "owner": 1257786497,
+          "flag": "Catacombs/Item6",
+          "kind": "object"
+        }
+      ],
+      "texture": "Graphics/Objects/Items/Antidote.png",
+      "size": [
+        20,
+        20
+      ],
+      "output": "graphics/items/catacombs/antidote.t3x"
+    }
+  ],
+  "scope": "Three original item definitions appended after stable IDs 1..4; seven distinct object-flag acquisitions. No new scene or save admission.",
+  "permission": "Original game art under the pinned upstream game-related derivative permission; no fonts or third-party binaries copied."
+}

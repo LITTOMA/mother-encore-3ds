@@ -1,0 +1,13 @@
+........F.
+======================================================================
+FAIL: test_unknown_observations_and_changed_receipts_reject (tests.test_poison_contacts.PoisonContactTests.test_unknown_observations_and_changed_receipts_reject) (change=<function PoisonContactTests.test_unknown_observations_and_changed_receipts_reject.<locals>.<lambda> at 0x00000132FF2D6520>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_poison_contacts.py", line 52, in test_unknown_observations_and_changed_receipts_reject
+    with self.subTest(change=change),self.assertRaises(ValueError):native.validate_result(v,self.receipt)
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 79.754s
+
+FAILED (failures=1)

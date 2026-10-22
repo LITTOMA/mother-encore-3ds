@@ -1,0 +1,17 @@
+{
+  "runtime/geyser_contacts.cpp": "08257c14abc10c4ffd652dd120df92f9c79b82ecb8c2fb86fff34eb0badbbc8f",
+  "runtime/geyser_lifecycle.cpp": "de894a4315c91b443d0bea1ac735a6ebe97a6cd65d1ae4c6134ad08dbd3a29e3",
+  "runtime/geyser_timeline.cpp": "6656ff2cb733c8ebadfd58af86eeb84fe61b57e2352f9a6c40b9fc471ee05a59",
+  "runtime/poison_hazards.cpp": "35e49e04ebec91ebde3b65baab13f143eafdbd070c09c82a5737de43a447a66b",
+  "runtime/poison_contacts.cpp": "2b4bd7030329599d5f8189e7a0f0d6c5ecea82b75c7d065c3ed93eaf669d433a",
+  "runtime/poison_damage.cpp": "77a67c055d34c5b19992b7e8408dbebabe86a20f887c0ccf88493cd23815780f",
+  "runtime/world_damage.cpp": "2bb8c162d7c4aafbfcf926888bdcdd6ece1fc58969923af50a87fe21fc61d873",
+  "include/encore/geyser_contacts.hpp": "5fee69e396fb5327913b879c1878e38419f8c7d9086d67b9ceaac0bc3be1e7c1",
+  "include/encore/poison_contacts.hpp": "fac510c0c950bb308ecae20e83571c5fe7f1cdbf91cff6c24c43fb360bb71413",
+  "include/encore/geyser_lifecycle.hpp": "5dd37160cea0965841798ae860116e0fdc900054a386e4125fbc17a6b088ad4a",
+  "include/encore/geyser_timeline.hpp": "9ee785fd5e798a59f0205b70015e8afc99b206d3e0e12e4587789d96a2eea90b",
+  "include/encore/poison_hazards.hpp": "0617c4c2d17ff1267bb951efcdbc29b46ee34f0fda160f496a0ac765aa0508ba",
+  "include/encore/poison_damage.hpp": "78a176b02bb5431abc53e82574dc3872269ce89966fc2f757501bae1bb162152",
+  "include/encore/world_damage.hpp": "6d24f651ae9b2545ca405839f7f482ed4f98df12a63f377db8e43eb1c32ea132",
+  "tests/geyser_contacts_tests.cpp": "b565e579f99c53baf35c357e46781f8ead5ed625649134a51c814e631a1ce986"
+}

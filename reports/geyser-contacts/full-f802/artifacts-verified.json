@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "id": 12369935823,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM2OTkzNTgyMw==",
+      "name": "encore-3ds-f802a56b3d2b3f84cedb1a412ad7afb79e1d7fbb-39649172951",
+      "size_in_bytes": 377945178,
+      "url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12369935823",
+      "archive_download_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12369935823/zip",
+      "expired": false,
+      "digest": "sha256:c98e0b05f6750c3742c277fa7330ccf65eba27d6eefeb53850aee12979492c0d",
+      "created_at": "2026-10-21T18:13:36Z",
+      "updated_at": "2026-10-21T18:13:36Z",
+      "expires_at": "2026-11-20T18:13:20Z",
+      "workflow_run": {
+        "id": 39649172951,
+        "repository_id": 1403329202,
+        "head_repository_id": 1403329202,
+        "head_branch": "codex/catacombs-geyser-player-contacts",
+        "head_sha": "f802a56b3d2b3f84cedb1a412ad7afb79e1d7fbb"
+      }
+    }
+  ]
+}

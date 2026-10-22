@@ -1,0 +1,15 @@
+tests/geyser_contacts_tests.cpp: In function ‘void {anonymous}::original(const char*, const encore::upstream::PoisonContactsData&, const encore::upstream::GeyserLifecycleData&, const encore::upstream::WorldDamageData&, encore::upstream::FieldStepsView)’:
+tests/geyser_contacts_tests.cpp:27:175: error: no matching function for call to ‘encore::upstream::WorldDamageActor::advance_idle(const uint64_t&, double, bool, std::string&)’
+   27 |    if(phase==4){CHECK(actor.physics_tail(epoch,2,member,maxhp,false,paused,{sample.position.x,sample.position.y},rng,events,error)&&actor.advance_idle(epoch,1./60.,true,error));}
+      |                                                                                                                                                                               ^
+tests/geyser_contacts_tests.cpp:12:35: note: in definition of macro ‘CHECK’
+   12 | #define CHECK(x) do{++checks;if(!(x)){std::cerr<<"Geyser contacts "<<__LINE__<<" "<<label<<": "<<#x<<" ("<<error<<")\n";std::exit(1);}}while(0)
+      |                                   ^
+In file included from include/encore/poison_damage.hpp:3,
+                 from include/encore/poison_contacts.hpp:2,
+                 from include/encore/geyser_contacts.hpp:3,
+                 from tests/geyser_contacts_tests.cpp:1:
+include/encore/world_damage.hpp:42:66: note: candidate: ‘bool encore::upstream::WorldDamageActor::advance_idle(uint64_t, uint64_t, double, bool, std::string&)’
+   42 |  bool manual_advance(uint64_t,uint64_t,double,std::string&);bool advance_idle(uint64_t,uint64_t,double,bool process_enabled,std::string&);
+      |                                                                  ^~~~~~~~~~~~
+include/encore/world_damage.hpp:42:66: note:   candidate expects 5 arguments, 4 provided

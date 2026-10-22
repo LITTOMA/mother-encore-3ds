@@ -1,0 +1,16 @@
+{
+  "pid": 28284,
+  "command": [
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\godot-reference\\Godot_v3.6.2-stable_win64.exe",
+    "--path",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\full-original-oracle-1\\project",
+    "--no-window",
+    "--audio-driver",
+    "Dummy",
+    "--video-driver",
+    "GLES2",
+    "--debug",
+    "--editor"
+  ],
+  "full_original_configuration": true
+}

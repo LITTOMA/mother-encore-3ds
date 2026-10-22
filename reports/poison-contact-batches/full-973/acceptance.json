@@ -1,0 +1,12 @@
+{
+  "source": "973ced796f7b9a2b11ac5f96f7b5e325cb3cf520",
+  "run": 39682965812,
+  "gcc_ordinary": 357,
+  "gcc_sanitizers": 338,
+  "clang_ordinary": 338,
+  "clang_sanitizers": 338,
+  "staged": 377,
+  "official_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "reused_actual_game": 92,
+  "scope": "Actual full hosted matrix and genuine SDK packaging; byte-identical92 opening reuse only, no new101 emulator, full room or hardware"
+}

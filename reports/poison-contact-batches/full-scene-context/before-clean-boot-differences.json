@@ -1,0 +1,112 @@
+[
+  {
+    "path": "Graphics/Objects/Items/LifeupCream.png.import",
+    "before": "d7ab5507a529e5f8d92fd8fa3063530a7f0d4d159a8383e4096e4f45d61b9bd4",
+    "after": "cec81892eb485d550d94ae0454bb57bf26e6b433e1b118bc746bedc19aedf190"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Asthma.png.import",
+    "before": "cbee4d16c4540527a3bd3a12884ce5e4640a14dd42b157cf2d9eef8a08e34064",
+    "after": "ae0ae290b70bae0dd4d671aab8f24af91c05eaf29ada7318ea65aefe99358bc5"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Asthma_monospace.png.import",
+    "before": "a08fd0c822b58404bbd488fa980b41c8fd01e64928f2cf1e67303e639e4d1da7",
+    "after": "fff07bcc6f869765aa131cb1a11b8bb654c0210fa1c4a31512766cb860ef8b28"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Blinded.png.import",
+    "before": "4e3ccffd453197d0226b7f979e84b098061cb7902e7d9930c1b27cb89bca3629",
+    "after": "3e583b3afbe995852135d55ff6d104367d502b91f71065522b43ca0e2b577335"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Blinded_monospace.png.import",
+    "before": "afc147359a6c85e89672c6bff6104e49b5b2857baf4c19505fcae2bda0989a99",
+    "after": "af6a6e29786418131aea8bb07cc4f0bd1e172c1f94f84f6efbbb0d2a265b3237"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Burned.png.import",
+    "before": "46716c3a0b55ce3f4edcec09ed003fdeb1b3bb456912a13b1d88f6a1ede3fa87",
+    "after": "9c5aba9f8920a62e36ce0c146ec5c330bc142964a2425aeaa809723f0b45c501"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Cold.png.import",
+    "before": "68abc1363b4a18753fbca4d96bb2280898c6c2d1a5e3ef18b72cc275fe8bab7f",
+    "after": "6c3c67252dfbfbef20cab8406257cd6ba322d0fd49e6512f8ee33d8a3d8455a7"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Confused.png.import",
+    "before": "eb00b6f0768e17ca8ad80e6ef3235b480359ec5c6b5d042047b3fce35937b30f",
+    "after": "0fe2d2727d7e533750b4df3773928aaff0b0f7a081624443482ea357c1fa9f36"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Confused_monospace.png.import",
+    "before": "b0515248b4e27a049e0a71cdf1ffeb12de22afc53314878c55598c4c0212cc80",
+    "after": "dee9f4ffaa2364710b2759c66bac63348378cd31f183c4f2a0e459e57443487a"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Forgetful.png.import",
+    "before": "eea155b71011c90656c4cabae2629a7e44d976bdc1535f029e215f06e1f89f5c",
+    "after": "46721503c0d2d2262a79707a2fa443cfbb89c2aeefca6e711b5d6e10304ecd43"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Forgetful_monospace.png.import",
+    "before": "c2d78011c657e428ca7dbf76698569fc1e7b7f872cd09d6679a249e1cd32bc79",
+    "after": "eac5f29ecc4f943c090a78a4f585791ea39523c64e552702428e359e9f89331e"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Mushroomized.png.import",
+    "before": "bcdae29e2f44a4d7af63a50dc811556340fc4291d1a1b4f1b7d63d9f445a0e8a",
+    "after": "84e7009240e0502c51e3d00e0b497a045c231cd28c6f38565834bd074a3db8b5"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Nausea.png.import",
+    "before": "cc5c9edcad453dde1a1ad75dd000aa99ed3548005ad3e1c520cf66a8dd06932a",
+    "after": "a1366ce2c232b19c7101c6b60bb413a6333aedccad2e2220f25769658e8eb973"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Nausea_monospace.png.import",
+    "before": "6edc608231ac35d6561a350fec9a0e974631fea979ba95cfce2c39e5159f92b5",
+    "after": "c9b042d1641c4516ffbb68d0d12a9044dcbf9437ae6eb5a8829fe55bcfedbfeb"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Numb.png.import",
+    "before": "6e5649fe115617362392258377b44d696ed60e593f3f9721c71dd3519fb33ac4",
+    "after": "151a9e166a78b5d6f054427ef3d63f03e2617f99905fedc826e08a7876aaa0c8"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Numb_monospace.png.import",
+    "before": "0fc110577fae7e597f0be022e71443c5632b2d2fb3eaa902e80a0f1cf0827e9f",
+    "after": "61d87a82d2a42a69a3baf965aa7ddd8300728f239bd657bdfaa35d175ec3f4f6"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Poisoned.png.import",
+    "before": "b96abea8636d91ba624557b79b439e219782a0bc7ebc9708233fcd969e9b91a9",
+    "after": "0d61f532925e34bbabb5d429559ec370d69de464d3dc60bf730aba0ff4e589e3"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Poisoned_monospace.png.import",
+    "before": "f63f12041f70a0a7db557daf147e0b9d544323d7be5a8e6613bb531a7e1a571b",
+    "after": "7213d87d391f8d4d27dc57216c33c546df4ebc7c714a8f30a699d42ad6f2d988"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Sleeping.png.import",
+    "before": "a1af4e0b357e897d7c134f2a85e12b44cad3110b1f1202a17a6c7b9a550116f0",
+    "after": "482b477bd28ac2bf527fe70f14bc829390a6b25df3d7dce12e27bad5713562f7"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Sleeping_monospace.png.import",
+    "before": "8b0f5e2b46692038d2c51b3046fa357fe9d75fb2953dbbb5d67f1b6d4d4bd591",
+    "after": "fe46ee3ff22fb9bbf2935eb5505fe873debb201b8a3fbaa02f8334039bfbf480"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Sunstroked.png.import",
+    "before": "35af97f273638408c6714acced67689e81ac6c6e901f3466bb7a41a8b11ac5ac",
+    "after": "0694f44a50bac08913fda24f2284dd657eb2f1c5c42c239eb61cb4a7bbb5f9e8"
+  },
+  {
+    "path": "Graphics/UI/Ailments/Sunstroked_monospace.png.import",
+    "before": "c752c61ebfe3f7f1ae5a21331220e7ae73cb28f47688f6eebb5254837e9135d0",
+    "after": "444eb5b9dfbc71ef5efa25d56d0a9604a99e7dab502d4caa6d8773ed5760e7b6"
+  }
+]

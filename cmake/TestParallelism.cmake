@@ -21,7 +21,7 @@ if(BUILD_TESTING AND ENCORE_TEST_PARALLEL)
       set_tests_properties(${encore_test} PROPERTIES RUN_SERIAL FALSE)
     endif()
   endforeach()
-  foreach(encore_aggregate python_tools python_tools_part2)
+  foreach(encore_aggregate python_tools python_tools_part2 python_tools_part3 python_tools_part4)
     if(encore_aggregate IN_LIST encore_registered_tests)
       # The aggregate contains unreviewed writers. Shards never overlap,
       # including when CTest is explicitly given more than four outer slots.

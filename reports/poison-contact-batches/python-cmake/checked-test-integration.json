@@ -1,0 +1,45 @@
+{
+  "total_discovered": 353,
+  "test": {
+    "backtrace": 701,
+    "config": "Debug",
+    "name": "poison_contacts",
+    "properties": [
+      {
+        "name": "DEPENDS",
+        "value": [
+          "poison_contacts_fixture",
+          "poison_damage_fixture"
+        ]
+      },
+      {
+        "name": "FIXTURES_REQUIRED",
+        "value": [
+          "poison_contacts_source",
+          "poison_damage_source"
+        ]
+      },
+      {
+        "name": "RUN_SERIAL",
+        "value": true
+      },
+      {
+        "name": "TIMEOUT",
+        "value": 120.0
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "D:/GameDev/3DS/mother-encore-3ds"
+      }
+    ]
+  },
+  "declared_debug_command": [
+    "D:/GameDev/3DS/mother-encore-3ds/build/full-port/poison-contact-batch-cmake-1/Debug/encore_poison_contacts_tests.exe",
+    "D:/GameDev/3DS/mother-encore-3ds/build/full-port/poison-contact-batch-cmake-1/poison-contacts-fixture/contacts.encpcn",
+    "D:/GameDev/3DS/mother-encore-3ds/build/full-port/poison-contact-batch-cmake-1/poison-contacts-fixture/damage.encwdm",
+    "D:/GameDev/3DS/mother-encore-3ds/build/full-port/poison-contact-batch-cmake-1/poison-contacts-fixture/steps.encsteps",
+    "D:/GameDev/3DS/mother-encore-3ds/build/full-port/poison-contact-batch-cmake-1/poison-contacts-fixture/native.tsv",
+    "D:/GameDev/3DS/mother-encore-3ds/build/full-port/poison-contact-batch-cmake-1/poison-damage-fixture/native.tsv"
+  ],
+  "scope": "Actual Windows Debug configure/discovery only;native executable intentionally not built. CTest JSON omits unresolved native command,so exact command checked in generated CTestTestfile.cmake. Both earlier rejected assumptions retained;no test execution claim."
+}

@@ -1,0 +1,1 @@
+{"command": ["C:/Program Files/CMake/bin/ctest.exe", "-C", "Debug", "--show-only=json-v1"], "working_directory": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\poison-contact-batch-cmake-1"}

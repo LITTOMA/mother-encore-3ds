@@ -1,0 +1,40 @@
+{
+  "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "files": [
+    {
+      "path": "servers/physics_2d/area_pair_2d_sw.cpp",
+      "sha256": "58e51a47b9a9207bcf5a19ad30bd38620ae897f6469218f749e029eabea44ab0",
+      "bytes": 5951
+    },
+    {
+      "path": "servers/physics_2d/area_2d_sw.cpp",
+      "sha256": "9da70f743cd0d0905c2baa8e0735b7922e44151bfe1b8a548d89700bc482303e",
+      "bytes": 9720
+    },
+    {
+      "path": "servers/physics_2d/space_2d_sw.cpp",
+      "sha256": "a220a6c20f9f97fe1d91816c94ac684573ae77cb6fe85e1d878e1b608973d47e",
+      "bytes": 48897
+    },
+    {
+      "path": "servers/physics_2d/step_2d_sw.cpp",
+      "sha256": "89a0007b9b6e81701f1cf96a771dab9c4936421699e677f237768750c2bd33e4",
+      "bytes": 9369
+    },
+    {
+      "path": "scene/2d/area_2d.cpp",
+      "sha256": "77ef27d2e080ceb30eeead521fd276210621a232401813fdf4c7ee1dbdb5c524",
+      "bytes": 23658
+    },
+    {
+      "path": "core/object.cpp",
+      "sha256": "7d9bb073fde7ba0c1d7b057fbefcdba292148eeb4cdd58c1c975c9e8f8f3b8c6",
+      "bytes": 57985
+    },
+    {
+      "path": "LICENSE.txt",
+      "sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+      "bytes": 1149
+    }
+  ]
+}

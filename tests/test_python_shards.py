@@ -15,9 +15,9 @@ class PythonShards(unittest.TestCase):
     def make_suite(self):
         return unittest.TestSuite(Named('tests.'+name+'.Cases.test_'+str(i))
             for name,size in [('test_native_content',7),('test_a',6),('test_future_writer',3),('test_z',2)] for i in range(size))
-    def commands(self,project=ROOT,directory=ROOT/'build'):
-        return [dict(name='python_tools'if i==0 else'python_tools_part2',
-            command=[sys.executable,str(project/'tests/python_suite.py'),'--ctest-dir',str(directory),'--shard-index',str(i),'--shard-count','2'])for i in range(2)]
+    def commands(self,project=ROOT,directory=ROOT/'build',count=2):
+        return [dict(name='python_tools'if i==0 else'python_tools_part'+str(i+1),
+            command=[sys.executable,str(project/'tests/python_suite.py'),'--ctest-dir',str(directory),'--shard-index',str(i),'--shard-count',str(count)])for i in range(count)]
     def test_exact_multiset_whole_modules_order_and_determinism(self):
         suite=self.make_suite();original=[runner.identity(c)for c in runner.cases(suite)];parts,ids=runner.shard_partition(suite,2)
         self.assertEqual(sum(map(Counter,ids),Counter()),Counter(original));self.assertEqual(sum(map(len,ids)),18)
@@ -53,6 +53,42 @@ class PythonShards(unittest.TestCase):
             with patch.object(runner,'DEDICATED',{}),patch.object(runner.unittest,'defaultTestLoader',unittest.TestLoader()),patch.object(runner.subprocess,'check_output',return_value=metadata):
                 for index in range(2):
                     with patch.object(sys,'argv',['python_suite.py','--project',str(project),'--ctest-dir',str(build),'--shard-index',str(index),'--shard-count','2']):self.assertEqual(runner.main(),0)
+            for name in names:self.assertEqual((project/(name+'.executed')).read_text().splitlines(),['executed'])
+
+    def test_four_shards_preserve_complete_multiset_and_whole_modules(self):
+        suite=self.make_suite();original=[runner.identity(c)for c in runner.cases(suite)];parts,ids=runner.shard_partition(suite,4)
+        self.assertEqual(len(parts),4);self.assertEqual(sum(map(Counter,ids),Counter()),Counter(original));owners={}
+        for index,part in enumerate(parts):
+            actual=[runner.identity(c)for c in runner.cases(part)]
+            self.assertEqual(actual,[value for value in original if value in ids[index]])
+            for value in actual:owners.setdefault(value.split('.')[0],set()).add(index)
+        self.assertTrue(all(len(value)==1 for value in owners.values()));self.assertEqual(runner.shard_partition(self.make_suite(),4)[1],ids)
+        self.assertEqual(runner.shard_partition(unittest.TestSuite(),4)[1],[[],[],[],[]])
+
+    def test_four_shard_registrations_reject_missing_duplicate_or_foreign_plan(self):
+        runner.validate_shard_registrations(self.commands(count=4),ROOT,ROOT/'build',4)
+        edits=[lambda c:c.pop(),lambda c:c.append(c[0]),lambda c:c[3].update(name='python_tools_part2'),lambda c:c[2]['command'].__setitem__(-3,'0'),lambda c:c[3]['command'].__setitem__(-1,'2')]
+        for edit in edits:
+            commands=self.commands(count=4);edit(commands)
+            with self.subTest(edit=edit),self.assertRaises(ValueError):runner.validate_shard_registrations(commands,ROOT,ROOT/'build',4)
+        with self.assertRaises(ValueError):runner.validate_shard_registrations(self.commands(),ROOT,ROOT/'build',4)
+
+    def test_four_shard_cli_rejects_invalid_plan_without_execution(self):
+        for index,count in [(-1,4),(4,4),(0,3)]:
+            with self.subTest(index=index,count=count),patch.object(runner,'plan',return_value=(self.make_suite(),{})),patch.object(runner,'run_parallel')as parallel,patch.object(runner.unittest.TextTestRunner,'run')as serial,patch.object(sys,'argv',['python_suite.py','--ctest-dir',str(ROOT/'build'),'--shard-index',str(index),'--shard-count',str(count)]):
+                with self.assertRaises(SystemExit)as error:runner.main()
+                self.assertEqual(error.exception.code,2);parallel.assert_not_called();serial.assert_not_called()
+
+    def test_actual_four_shards_execute_each_future_writer_once(self):
+        with tempfile.TemporaryDirectory()as directory:
+            project=Path(directory);tests=project/'tests';tests.mkdir();(tests/'__init__.py').write_text('');build=project/'build';build.mkdir()
+            names=['test_four_shard_alpha','test_four_shard_beta','test_four_shard_gamma','test_four_shard_future_writer']
+            for name in names:
+                (tests/(name+'.py')).write_text('from pathlib import Path\nimport unittest\nclass Case(unittest.TestCase):\n def test_run(self):\n  p=Path(__file__).resolve().parents[1]/"'+name+'.executed"\n  with p.open("a")as f:f.write("executed\\n")\n')
+            metadata=json.dumps(dict(tests=self.commands(project,build,4)))
+            with patch.object(runner,'DEDICATED',{}),patch.object(runner.unittest,'defaultTestLoader',unittest.TestLoader()),patch.object(runner.subprocess,'check_output',return_value=metadata):
+                for index in range(4):
+                    with patch.object(sys,'argv',['python_suite.py','--project',str(project),'--ctest-dir',str(build),'--shard-index',str(index),'--shard-count','4']):self.assertEqual(runner.main(),0)
             for name in names:self.assertEqual((project/(name+'.executed')).read_text().splitlines(),['executed'])
 
 if __name__=='__main__':unittest.main()

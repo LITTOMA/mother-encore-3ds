@@ -1,0 +1,143 @@
+{
+  "initial_expected_files": 2311,
+  "orphan_import_descriptors": [
+    {
+      "path": "Audio/Music/Battle Themes/Wally.mp3.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Audio/Music/Bein Friends.mp3.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Battle Sprites/swoosh.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Character Sprites/Npcs/4dir/GuardDogOV.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_Rainclouds_1.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Objects/Doors/Magicant_Door_Brown - Copy.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Objects/Red Herb.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Rooms/Magicant/Queen Mary Castle/Queen Mary Castle Foyer.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Rooms/Merrysville/Dept Store/Dept_Store_F2.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Rooms/Merrysville/Dept Store/Merrysville_DeptStore_Variety.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Rooms/Merrysville/Dept Store/Merrysville_DeptStore_Variety_Sign.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Rooms/ninten_s room.png(1).import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/UI/Battle/info_plate_digit_bg.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/UI/Battle/info_plate_digit_bg_greyed.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/UI/Inventory/characters_icons.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/UI/Options/texture.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/UI/Overworld/battlemockup.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/UI/teleport_bg.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Graphics/Weather/Snow.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedTilesets/TilMerrysvilleDeptStore_translate_es_ES.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedTilesets/TilPodunkDeptStore_translate_es_ES.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlateBasic_de.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlateBasic_fr_es.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlateBasic_it.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlateBasic_ru.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlate_NoPP_de.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlate_NoPP_fr_es.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlate_NoPP_it.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlate_NoPP_ru.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlate_de.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlate_fr_es.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlate_it.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/PartyInfoPlate_ru.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    },
+    {
+      "path": "Translations/TranslatedUI/SweetsFactory_namePlate_ja.png.import",
+      "reason": "Adjacent tracked source absent;not materializable. Required scene dependencies remain subject to clean boot rejection."
+    }
+  ],
+  "stale_or_pending_descriptors": [],
+  "scope": "Only cache preparation,not passed gameplay. Native editor regenerates stale path metadata;no needed source dependencies are waived."
+}

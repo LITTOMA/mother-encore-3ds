@@ -1,0 +1,13 @@
+{
+  "source": "973ced796f7b9a2b11ac5f96f7b5e325cb3cf520",
+  "run": 39682965812,
+  "number": 101,
+  "official_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "actual_retained_games": {
+    "88": "4cc750767edbd15f8f155a661416be4f5e82ac55cfbf7844b4e90402f397e1c5",
+    "92": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2"
+  },
+  "actual_reused_game": 92,
+  "byte_identical_to_actual_two_cold90": true,
+  "scope": "Only actual matching game may reuse its two ordinary cold90 opening runs;no independent current run/complete room/GPU/NDSP/hardware. Both retained game bytes were hashed,not inferred from other receipts."
+}

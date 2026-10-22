@@ -1,0 +1,1 @@
+["cmake", "-S", ".", "-B", "build/full-port/poison-contact-batch-cmake-1", "-DBUILD_TESTING=ON"]

@@ -1,0 +1,7 @@
+{
+  "before_sha256": "4e3e68d50c6faa4756594486d8e1684d400722db9d2e7628ade79f9ed59289a4",
+  "after_sha256": "9347b0c0aee4c11048b3bcf7b17a7038854bf82f600e8bc1a0fc67a112778187",
+  "all_other_test_method_ast_identical": true,
+  "all_original_negative_case_statements_ast_identical_and_ordered": true,
+  "new_scope": "Only this negative result/receipt method admits real source once. No production validator or source files changed."
+}

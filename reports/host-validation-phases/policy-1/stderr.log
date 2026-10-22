@@ -1,0 +1,12 @@
+test_downloadable_builds_enable_existing_pillow_texture_backend (__main__.WorkflowPolicyTests.test_downloadable_builds_enable_existing_pillow_texture_backend) ... ok
+test_each_compiler_runs_each_complete_phase_once (__main__.WorkflowPolicyTests.test_each_compiler_runs_each_complete_phase_once) ... ok
+test_full_checks_remain_complete (__main__.WorkflowPolicyTests.test_full_checks_remain_complete) ... ok
+test_independent_phases_keep_unique_failure_diagnostics (__main__.WorkflowPolicyTests.test_independent_phases_keep_unique_failure_diagnostics) ... ok
+test_main_build_and_manual_modes_are_registered (__main__.WorkflowPolicyTests.test_main_build_and_manual_modes_are_registered) ... ok
+test_only_explicit_full_mode_admits_tests (__main__.WorkflowPolicyTests.test_only_explicit_full_mode_admits_tests) ... ok
+test_successful_console_outputs_are_uploaded_without_canceling_other_commits (__main__.WorkflowPolicyTests.test_successful_console_outputs_are_uploaded_without_canceling_other_commits) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.013s
+
+OK

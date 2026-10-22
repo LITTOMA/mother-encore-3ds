@@ -1,0 +1,7 @@
+[
+  "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "-X",
+  "utf8",
+  "tests/test_ci_workflow_policy.py",
+  "-v"
+]

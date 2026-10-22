@@ -22,6 +22,7 @@ SOURCES += runtime/dungeon_mechanism_bindings.cpp
 SOURCES += runtime/breakables_data.cpp runtime/breakables.cpp
 SOURCES += runtime/coins_data.cpp runtime/coins.cpp runtime/circle_motion.cpp
 SOURCES += runtime/coin_scene_data.cpp runtime/coin_scene.cpp
+SOURCES += runtime/dropped_items_data.cpp runtime/item_holder_grant.cpp runtime/dropped_items.cpp
 SOURCES += runtime/dungeon_mechanism_state.cpp
 SOURCES += runtime/dungeon_mechanism_presentation.cpp
 SOURCES += runtime/dungeon_mechanism_audio.cpp

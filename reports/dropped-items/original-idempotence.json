@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "sources": [
+    9,
+    10
+  ],
+  "semantic_sha256": "ab5041a224b63d79b9e23074c9212b2ae0893b4b0de3ea6b5c50c8e651a1613b",
+  "normalization": "Only replace retained raw OS-random UID values with their ordered opaque allocation identities; every observed state, clock, inventory, flag and prompt retained.",
+  "cases": 19,
+  "rows_per_run": 2633,
+  "scope": "Full unchanged original DroppedItem/ItemHolder/Flaggable/Inventory/Item scripts and actual prompt/sparkles prefabs. Explicit player/party/label/dialogue providers, original analyzer settings, CPU lifecycle with native disable-render-loop. Not shader/GPU, menu action, whole-room,3DS or hardware verification."
+}

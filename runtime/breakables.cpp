@@ -66,7 +66,7 @@ bool BreakableActor::start_break(BreakableServices&s,std::string&e){
  if(!request(s,BreakableRequestKind::Rumble,policy_.device,{policy_.weak,policy_.strong,policy_.rumble_seconds,0},e)||!animation_.play(family_.break_clip,e))return false;
  hit_layer_&=~policy_.clear_hit_layer;hit_mask_&=~policy_.clear_hit_mask;body_layer_&=~policy_.clear_body_layer;body_disabled_=true;
  auto*c=content(s);
- if(c&&c->present&&c->parent==content_parent_){const BreakablePoint point{owner_.position.x+family_.drop_offset.x,owner_.position.y+family_.drop_offset.y};if(c->has_start)c->start=point;if(c->has_changing)c->changing=true;captured_shapes_.clear();for(auto&shape:c->shapes){captured_shapes_.push_back(shape.first);shape.second=true;}c->parent=owner_.drop_parent;c->position=point;if(owner_.hide_drop)c->visible=false;drop_left_=family_.drop_seconds;drop_=Drop::Timer;}
+ if(c&&c->present&&c->parent==content_parent_){const BreakablePoint point{owner_.position.x+family_.drop_offset.x,owner_.position.y+family_.drop_offset.y};if(c->has_start)c->start=point;if(c->has_changing)c->changing=true;captured_shapes_.clear();for(auto&shape:c->shapes){captured_shapes_.push_back(shape.first);shape.second=true;}c->parent=owner_.drop_parent;c->position=point;if(owner_.hide_drop)c->visible=false;drop_left_=family_.drop_seconds;drop_=Drop::Timer;if(!request(s,BreakableRequestKind::ContentReentered,owner_.content,{},e))return false;}
  const auto&flags=owner_.object_flag?s.object_flags:s.story_flags;
  if(!owner_.spawner.empty()&&owner_.coins&&!flag(flags,owner_.flag)){if(!set_flag(true,s,e)||!request(s,BreakableRequestKind::Coins,0,{double(owner_.coins),0,0,0},e))return false;}
  return true;

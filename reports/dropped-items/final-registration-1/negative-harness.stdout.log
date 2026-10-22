@@ -1,0 +1,55 @@
+{
+  "executable_sha256": "c6519af332403955e21ae764102b88c89161e865af222fe7fe8e897b1e0d338f",
+  "fixture_sha256": "c0b952b9936a7e97a9de75fc6b161e77d1793c6ca4c4a59111b9063f314fa185",
+  "results": [
+    {
+      "case": "truncated",
+      "sha256": "0d12330b5a7b6ce90cbbdfec59629531c671bf171052defde7074b69e58b20a5",
+      "return_code": 1,
+      "stdout": "",
+      "stderr": "Dropped source failure :-1 at 23\n"
+    },
+    {
+      "case": "unknown-magic",
+      "sha256": "5e064c7525e15e18fa884756802cff5c4d6425b03f7bad748610284fdb360d5f",
+      "return_code": 1,
+      "stdout": "",
+      "stderr": "Dropped source failure :-1 at 23\n"
+    },
+    {
+      "case": "unowned-tail",
+      "sha256": "4e5020d8c4d70da0699bbae4aa894217f4a7949d077e125efe713ea78f793913",
+      "return_code": 1,
+      "stdout": "",
+      "stderr": "Dropped source failure distant-hit:95 at 82\n"
+    },
+    {
+      "case": "old-version",
+      "sha256": "a7b5935925750540dc0301b89a2afe9a3cdf0cddcc50a7b9a005daded876c558",
+      "return_code": 1,
+      "stdout": "",
+      "stderr": "Dropped source failure :-1 at 23\n"
+    },
+    {
+      "case": "first_alive",
+      "sha256": "90c7fd17a9b3b7b8782af56c1c7aa7870c2295217fd766fe981c09e0b790bd7c",
+      "return_code": 1,
+      "stdout": "",
+      "stderr": "Dropped source failure Objects-Coffin3:-1 at 23\n"
+    },
+    {
+      "case": "first_cover_animation",
+      "sha256": "491f5231dbe5b93c2a2ee264564dbf81b489835c5f8cb49c8a2bb059f7b93b15",
+      "return_code": 1,
+      "stdout": "",
+      "stderr": "Dropped source failure Objects-Coffin3:-1 at 14\n"
+    },
+    {
+      "case": "first_initial_count",
+      "sha256": "d80e9ef89e7487940fd84418b2ab12c799268a8473a9619ba54db412075fda24",
+      "return_code": 1,
+      "stdout": "",
+      "stderr": "Dropped source failure Objects-Coffin3:-1 at 27\n"
+    }
+  ]
+}

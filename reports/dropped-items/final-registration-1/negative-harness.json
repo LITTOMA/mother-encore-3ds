@@ -1,0 +1,14 @@
+{
+  "command": [
+    "wsl.exe",
+    "--exec",
+    "python3",
+    "/mnt/d/GameDev/3DS/mother-encore-3ds/tests/check_dropped_reference_failures.py",
+    "--executable",
+    "/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/dropped-domain-host-11/dropped_breakable_source",
+    "--fixture",
+    "/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/dropped-registration-final-1/composed"
+  ],
+  "return_code": 0,
+  "elapsed_seconds": 1.1570000000065193
+}

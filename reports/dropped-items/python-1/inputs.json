@@ -1,0 +1,6 @@
+{
+  "tools/dropped_items.py": "5d0e9b74610088bd2fcd2fc45861956707629e4f90592e2b84a018d449c49afd",
+  "tools/dropped_item_protocol.py": "6d114ada8563c775102d192498419001867dafe83ea833dd6021cba1b2d83d2f",
+  "tools/run_dropped_item_reference.py": "b75512600aebe3b782f80b7d9d26e3019604ac22c6f65eda16ed166a631bf41c",
+  "tests/test_dropped_items.py": "f76f7bc835fefc3b1061fcf301205d07db6a6409695320059bfcb8e8e3a48d6b"
+}

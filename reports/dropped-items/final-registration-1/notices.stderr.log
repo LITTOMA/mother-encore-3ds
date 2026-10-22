@@ -1,0 +1,17 @@
+test_all_notices_are_staged_with_exact_bytes (tests.test_release_notices.ReleaseNoticeTests.test_all_notices_are_staged_with_exact_bytes) ... ok
+test_changed_official_bytes (tests.test_release_notices.ReleaseNoticeTests.test_changed_official_bytes) ... ok
+test_current_project_stages_reviewed_easing_notice (tests.test_release_notices.ReleaseNoticeTests.test_current_project_stages_reviewed_easing_notice) ... ok
+test_duplicate_and_unknown_fields_are_rejected (tests.test_release_notices.ReleaseNoticeTests.test_duplicate_and_unknown_fields_are_rejected) ... ok
+test_easing_notice_missing_or_changed_is_rejected (tests.test_release_notices.ReleaseNoticeTests.test_easing_notice_missing_or_changed_is_rejected) ... ok
+test_empty_project_notice (tests.test_release_notices.ReleaseNoticeTests.test_empty_project_notice) ... ok
+test_invalid_source_entries (tests.test_release_notices.ReleaseNoticeTests.test_invalid_source_entries) ... ok
+test_linked_notice_is_rejected (tests.test_release_notices.ReleaseNoticeTests.test_linked_notice_is_rejected) ... ok
+test_malformed_manifest (tests.test_release_notices.ReleaseNoticeTests.test_malformed_manifest) ... ok
+test_missing_or_invalid_provenance_is_rejected (tests.test_release_notices.ReleaseNoticeTests.test_missing_or_invalid_provenance_is_rejected) ... ok
+test_missing_or_unreviewed_files (tests.test_release_notices.ReleaseNoticeTests.test_missing_or_unreviewed_files) ... ok
+test_unknown_schema (tests.test_release_notices.ReleaseNoticeTests.test_unknown_schema) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.616s
+
+OK

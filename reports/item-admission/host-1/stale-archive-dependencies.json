@@ -1,0 +1,354 @@
+{
+  "checked_members": 35,
+  "stale": {
+    "runtime/session_restore.cpp": [
+      "include/encore/native_session.hpp"
+    ]
+  },
+  "dependencies": {
+    "runtime/actor_actions.cpp": [
+      "runtime/actor_actions.cpp",
+      "include/encore/actor_actions.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/animation.hpp"
+    ],
+    "runtime/animation.cpp": [
+      "runtime/animation.cpp",
+      "include/encore/animation.hpp"
+    ],
+    "runtime/battle_data.cpp": [
+      "runtime/battle_data.cpp",
+      "include/encore/battle_data.hpp",
+      "include/encore/preparation_control.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/battle_entry.cpp": [
+      "runtime/battle_entry.cpp",
+      "include/encore/battle_entry.hpp",
+      "include/encore/battle_data.hpp",
+      "include/encore/preparation_control.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/world.hpp",
+      "include/encore/animation.hpp",
+      "include/encore/collision.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/world_flags.hpp",
+      "include/encore/dialogue.hpp",
+      "include/encore/actor_actions.hpp",
+      "include/encore/persistent_player.hpp",
+      "include/encore/cutscene_camera.hpp",
+      "include/encore/field_player_tree.hpp",
+      "include/encore/field_swing_entry.hpp",
+      "include/encore/field_swing_action.hpp",
+      "include/encore/field_swing.hpp",
+      "include/encore/scene_player_transfer.hpp",
+      "include/encore/source_random.hpp",
+      "include/encore/story_object_host.hpp"
+    ],
+    "runtime/battle_round_data.cpp": [
+      "runtime/battle_round_data.cpp",
+      "include/encore/battle_round_data.hpp",
+      "include/encore/preparation_control.hpp",
+      "include/encore/battle_data.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/collision.cpp": [
+      "runtime/collision.cpp",
+      "include/encore/collision.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/animation.hpp"
+    ],
+    "runtime/cutscene_camera.cpp": [
+      "runtime/cutscene_camera.cpp",
+      "include/encore/cutscene_camera.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/animation.hpp",
+      "include/encore/source_random.hpp"
+    ],
+    "runtime/dialogue.cpp": [
+      "runtime/dialogue.cpp",
+      "include/encore/dialogue.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/animation.hpp"
+    ],
+    "runtime/dialogue_choices.cpp": [
+      "runtime/dialogue_choices.cpp",
+      "include/encore/dialogue_choices.hpp",
+      "include/encore/dialogue_choices_data.hpp"
+    ],
+    "runtime/dialogue_choices_data.cpp": [
+      "runtime/dialogue_choices_data.cpp",
+      "include/encore/dialogue_choices_data.hpp"
+    ],
+    "runtime/field_data.cpp": [
+      "runtime/field_data.cpp",
+      "include/encore/field_data.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/field_player_tree.cpp": [
+      "runtime/field_player_tree.cpp",
+      "include/encore/field_player_tree.hpp",
+      "include/encore/field_swing_entry.hpp",
+      "include/encore/field_swing_action.hpp",
+      "include/encore/field_swing.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/animation.hpp"
+    ],
+    "runtime/field_swing.cpp": [
+      "runtime/field_swing.cpp",
+      "include/encore/field_swing.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/field_swing_action.cpp": [
+      "runtime/field_swing_action.cpp",
+      "include/encore/field_swing_action.hpp",
+      "include/encore/field_swing.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/field_swing_entry.cpp": [
+      "runtime/field_swing_entry.cpp",
+      "include/encore/field_swing_entry.hpp",
+      "include/encore/field_swing_action.hpp",
+      "include/encore/field_swing.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/animation.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/field_swing_graphics.cpp": [
+      "runtime/field_swing_graphics.cpp",
+      "include/encore/field_swing_graphics.hpp",
+      "include/encore/field_swing.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/field_swing_resources.cpp": [
+      "runtime/field_swing_resources.cpp",
+      "include/encore/field_swing_resources.hpp",
+      "include/encore/field_swing_entry.hpp",
+      "include/encore/field_swing_action.hpp",
+      "include/encore/field_swing.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/animation.hpp",
+      "include/encore/field_swing_graphics.hpp",
+      "include/encore/resource_catalog.hpp"
+    ],
+    "runtime/file_io.cpp": [
+      "runtime/file_io.cpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/house_data.cpp": [
+      "runtime/house_data.cpp",
+      "include/encore/house_data.hpp",
+      "include/encore/battle_data.hpp",
+      "include/encore/preparation_control.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/house_presentation.cpp": [
+      "runtime/house_presentation.cpp",
+      "include/encore/house_presentation.hpp",
+      "include/encore/house_data.hpp",
+      "include/encore/battle_data.hpp",
+      "include/encore/preparation_control.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/source_random.hpp",
+      "include/encore/utf8.hpp",
+      "include/encore/battle_entry.hpp",
+      "include/encore/world.hpp",
+      "include/encore/animation.hpp",
+      "include/encore/collision.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/world_flags.hpp",
+      "include/encore/dialogue.hpp",
+      "include/encore/actor_actions.hpp",
+      "include/encore/persistent_player.hpp",
+      "include/encore/cutscene_camera.hpp",
+      "include/encore/field_player_tree.hpp",
+      "include/encore/field_swing_entry.hpp",
+      "include/encore/field_swing_action.hpp",
+      "include/encore/field_swing.hpp",
+      "include/encore/scene_player_transfer.hpp",
+      "include/encore/story_object_host.hpp"
+    ],
+    "runtime/items_data.cpp": [
+      "runtime/items_data.cpp",
+      "include/encore/items_data.hpp",
+      "include/encore/battle_data.hpp",
+      "include/encore/preparation_control.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/items_menu.cpp": [
+      "runtime/items_menu.cpp",
+      "include/encore/items_menu.hpp",
+      "include/encore/items_data.hpp",
+      "include/encore/battle_data.hpp",
+      "include/encore/preparation_control.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/battle_entry.hpp",
+      "include/encore/world.hpp",
+      "include/encore/animation.hpp",
+      "include/encore/collision.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/world_flags.hpp",
+      "include/encore/dialogue.hpp",
+      "include/encore/actor_actions.hpp",
+      "include/encore/persistent_player.hpp",
+      "include/encore/cutscene_camera.hpp",
+      "include/encore/field_player_tree.hpp",
+      "include/encore/field_swing_entry.hpp",
+      "include/encore/field_swing_action.hpp",
+      "include/encore/field_swing.hpp",
+      "include/encore/scene_player_transfer.hpp",
+      "include/encore/source_random.hpp",
+      "include/encore/story_object_host.hpp"
+    ],
+    "runtime/localization.cpp": [
+      "runtime/localization.cpp",
+      "include/encore/localization.hpp",
+      "include/encore/utf8.hpp"
+    ],
+    "runtime/movement.cpp": [
+      "runtime/movement.cpp",
+      "include/encore/movement.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/animation.hpp"
+    ],
+    "runtime/opening_trigger.cpp": [
+      "runtime/opening_trigger.cpp",
+      "include/encore/opening_trigger.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/animation.hpp"
+    ],
+    "runtime/progression.cpp": [
+      "runtime/progression.cpp",
+      "include/encore/progression.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/animation.hpp"
+    ],
+    "runtime/resource_catalog.cpp": [
+      "runtime/resource_catalog.cpp",
+      "include/encore/resource_catalog.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/room_data.cpp": [
+      "runtime/room_data.cpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/animation.hpp",
+      "include/encore/content.hpp",
+      "include/encore/crc32.hpp"
+    ],
+    "runtime/session_restore.cpp": [
+      "runtime/session_restore.cpp",
+      "include/encore/session_restore.hpp",
+      "include/encore/native_session.hpp",
+      "include/encore/battle_round.hpp",
+      "include/encore/battle_round_data.hpp",
+      "include/encore/preparation_control.hpp",
+      "include/encore/battle_data.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/source_random.hpp",
+      "include/encore/house_data.hpp",
+      "include/encore/items_menu.hpp",
+      "include/encore/items_data.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/animation.hpp",
+      "include/encore/session_save.hpp",
+      "include/encore/storage_menu.hpp",
+      "include/encore/storage_data.hpp"
+    ],
+    "runtime/session_save.cpp": [
+      "runtime/session_save.cpp",
+      "include/encore/session_save.hpp"
+    ],
+    "runtime/source_random.cpp": [
+      "runtime/source_random.cpp",
+      "include/encore/source_random.hpp"
+    ],
+    "runtime/startup_settings.cpp": [
+      "runtime/startup_settings.cpp",
+      "include/encore/startup_settings.hpp",
+      "include/encore/session_save.hpp"
+    ],
+    "runtime/storage_menu.cpp": [
+      "runtime/storage_menu.cpp",
+      "include/encore/storage_menu.hpp",
+      "include/encore/storage_data.hpp",
+      "include/encore/items_data.hpp",
+      "include/encore/battle_data.hpp",
+      "include/encore/preparation_control.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/items_menu.hpp",
+      "include/encore/battle_round.hpp",
+      "include/encore/battle_round_data.hpp",
+      "include/encore/source_random.hpp"
+    ],
+    "runtime/world.cpp": [
+      "runtime/world.cpp",
+      "include/encore/world.hpp",
+      "include/encore/animation.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/collision.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/world_flags.hpp",
+      "include/encore/dialogue.hpp",
+      "include/encore/actor_actions.hpp",
+      "include/encore/persistent_player.hpp",
+      "include/encore/cutscene_camera.hpp",
+      "include/encore/field_player_tree.hpp",
+      "include/encore/field_swing_entry.hpp",
+      "include/encore/field_swing_action.hpp",
+      "include/encore/field_swing.hpp",
+      "include/encore/scene_player_transfer.hpp",
+      "include/encore/source_random.hpp",
+      "include/encore/story_object_host.hpp",
+      "include/encore/opening_trigger.hpp",
+      "include/encore/field_swing_resources.hpp",
+      "include/encore/field_swing_graphics.hpp"
+    ],
+    "runtime/world_flags.cpp": [
+      "runtime/world_flags.cpp",
+      "include/encore/world_flags.hpp",
+      "include/encore/room_data.hpp",
+      "include/encore/room_schema.hpp",
+      "include/encore/movement.hpp",
+      "include/encore/animation.hpp"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_catacombs_item_catalog.py", line 92, in <module>
+    print(json.dumps(build(sys.argv[1]), indent=2))
+                     ^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_catacombs_item_catalog.py", line 37, in build
+    files = {'candidate.encitems': native_items.encode(native_items.lower(item_ir)),
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\native_items.py", line 164, in lower
+    validate(t)
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\native_items.py", line 256, in validate
+    require(not d[10]&2 or (d[10]==2 and d[11]==0 and not any(d[6:10])),'Items unsupported rich/action projection must stay disabled')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\native_items.py", line 41, in require
+    raise ContentError(message)
+tools.native_items.ContentError: Items unsupported rich/action projection must stay disabled

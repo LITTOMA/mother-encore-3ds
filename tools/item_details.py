@@ -19,11 +19,14 @@ RECEIPT = 'content/asset-receipts/graphics/ui/item-details/source.json'
 PACK = 'romfs/ui/opening.encdetails'
 ICON = 'Graphics/UI/Ailments/Asthma.png'
 OUTPUT = 'graphics/ui/item-details/asthma-status.t3x'
+POISON_ICON = 'Graphics/UI/Ailments/Poisoned.png'
+POISON_OUTPUT = 'graphics/ui/item-details/poisoned-status.t3x'
 NAMES = ('Strings', 'Definitions', 'Locales', 'Presentations', 'Tokens', 'Resources', 'Parameters')
 FORMATS = (None, '<5I', '<8I', '<4I', '<4I', '<7I32s2I', '<If')
 STRIDES = (1, 20, 32, 16, 16, 68, 8)
 HEADER = 176
-TOKEN_KINDS = {'Text': 1, 'Nickname': 2, 'Doses': 3, 'InlineImage': 4, 'Newline': 5, 'ItemValue': 6}
+TOKEN_KINDS = {'Text': 1, 'Nickname': 2, 'Doses': 3, 'InlineImage': 4, 'Newline': 5, 'ItemValue': 6,
+               'LiteralPercent': 7}
 PARAMETERS = ('LineHeight', 'ImageBaseline', 'ENNameLimit', 'ZHNameLimit')
 
 
@@ -39,18 +42,19 @@ def tokenize(raw):
     require(isinstance(raw, str) and '\0' not in raw, 'Details text type')
     raw = raw.replace('\\n', '\n').replace('[BR]', '\n')
     result = []
-    for part in re.split(r'(\[Ninten\]|\[Asthma\]|\[ItemValue\]|%s|\n)', raw):
+    for index, part in enumerate(re.split(r'(\[Ninten\]|\[Asthma\]|\[Poisoned\]|\[ItemValue\]|%s|(?<=[0-9])%(?![A-Za-z0-9%])|\n)', raw)):
         if not part:
             continue
-        kind = {'[Ninten]': 'Nickname', '[Asthma]': 'InlineImage', '[ItemValue]': 'ItemValue',
-                '%s': 'Doses', '\n': 'Newline'}.get(part, 'Text')
+        require(part != '%' or index % 2 == 1, 'Unreviewed literal percent context')
+        kind = {'[Ninten]': 'Nickname', '[Asthma]': 'InlineImage', '[Poisoned]': 'InlineImage',
+                '[ItemValue]': 'ItemValue', '%s': 'Doses', '%': 'LiteralPercent', '\n': 'Newline'}.get(part, 'Text')
         require(kind != 'Text' or not any(c in part for c in '[]%{}'), 'Unreviewed details text control')
-        result.append(dict(kind=kind, value=part if kind == 'Text' else 0, color=0))
+        result.append(dict(kind=kind, value=part if kind == 'Text' else int(part == '[Poisoned]'), color=0))
     require(result and len(result) <= 128, 'Details token capacity')
     return result
 
 
-def build(root=ROOT):
+def build(root=ROOT, native_items=None):
     root = Path(root); ex = Extractor(root)
     text = ex.text('Scripts/global/text_tools.gd')
     description = ex.text('Scripts/UI/Reusables/Description.gd')
@@ -88,14 +92,28 @@ def build(root=ROOT):
             'Details inline image font default height/ascent')
     # TextTools lowercases the status path; the pinned asset uses title case.
     # Admit the unique case-folded match explicitly for case-sensitive builds.
-    matching = [p for p in ex.inventory['files'] if p.casefold() == ICON.casefold()]
-    require(matching == [ICON], 'Ambiguous inline asthma path casing')
-    size = ex.png_size(ICON); ex.data(ICON + '.import'); ex.text('LICENSE')
+    ex.text('LICENSE')
     items = table(ex, 'Translations/TranslatedText/items - sheet.csv')
     menus = table(ex, 'Translations/TranslatedText/menus - sheet.csv')
-    native_items = read_json(root / 'content/native-items.json')
-    require([(d['id'], d['source']) for d in native_items['definitions']]
-            == [(1, 'BaseballCap'), (2, 'AsthmaSpray'), (3, 'BatPlastic'),(4,'FleaBag')], 'Unsupported details item scope')
+    if native_items is None:
+        native_items = read_json(root / 'content/native-items.json')
+    identities = [(d['id'], d['source']) for d in native_items['definitions']]
+    prefix = [(1, 'BaseballCap'), (2, 'AsthmaSpray'), (3, 'BatPlastic'), (4, 'FleaBag')]
+    extended = len(identities) > len(prefix)
+    if extended:
+        from tools.catacombs_item_catalog import load as load_catalog
+        expected = prefix + [(d['id'], d['source']) for d in load_catalog()['entries']]
+    else:
+        expected = prefix
+    require(identities == expected, 'Unsupported details item scope')
+    resources = []
+    for path, output in [(ICON, OUTPUT)] + ([(POISON_ICON, POISON_OUTPUT)] if extended else []):
+        matching = [p for p in ex.inventory['files'] if p.casefold() == path.casefold()]
+        require(matching == [path], 'Ambiguous inline ailment path casing')
+        size = ex.png_size(path); ex.data(path + '.import')
+        resources.append(dict(id=len(resources)+1, source=path, path=output, kind=1,
+                              width=size[0], height=size[1], columns=1, rows=1))
+    require(len({r['height'] for r in resources}) == 1, 'Unreviewed differing inline image baselines')
     definitions = []; presentations = []
     for definition_index, d in enumerate(native_items['definitions']):
         doc = ex.yaml('Data/Items/' + d['source'] + '.yaml')
@@ -113,6 +131,14 @@ def build(root=ROOT):
                         == ['Nickname', 'InlineImage', 'Doses'], 'Spray details controls changed')
             elif d['source']=='FleaBag':
                 require([t['kind']for t in tokens if t['kind']!='Text']==['Newline'],'Unreviewed field reward description controls')
+            elif d['source'] == 'Antidote':
+                require([t['kind'] for t in tokens if t['kind'] != 'Text'] == ['InlineImage']
+                        and next(t['value'] for t in tokens if t['kind'] == 'InlineImage') == 1,
+                        'Unreviewed poison details controls')
+            elif d['source'] in ('Hamburger', 'Fries'):
+                require([t['kind'] for t in tokens if t['kind'] != 'Text']
+                        == (['LiteralPercent', 'Newline', 'ItemValue'] if d['source'] == 'Hamburger'
+                            else ['Newline', 'ItemValue']), 'Unreviewed food details controls')
             else:
                 require([t['kind'] for t in tokens if t['kind'] != 'Text']
                         == ['Newline', 'ItemValue'], 'Cap details controls changed')
@@ -136,15 +162,15 @@ def build(root=ROOT):
     # line separation, as used by the existing admitted Items layout.
     height = native_items['parameters']['LabelSize'][1] + 1
     return dict(schema=1, kind='encore.native-item-details.source-ir', commit=PIN,
-                scope='Checked BaseballCap/AsthmaSpray/BatPlastic descriptions only; en/zh, nickname, inline asthma and actual doses; no item action',
+                scope='Checked ordinary descriptions only; en/zh, nickname, inline ailments, item values and actual doses; numeric literal percentage remains unformatted for one-dose food; no item action',
                 sources=dict(sorted(ex.sources.items())),
                 dependencies={'content/native-items.json': digest(root / 'content/native-items.json')},
                 definitions=definitions, locales=locales, presentations=presentations,
-                resources=[dict(id=1, source=ICON, path=OUTPUT, kind=1, width=size[0], height=size[1], columns=1, rows=1)],
+                resources=resources,
                 # Godot3.6.2 BitmapFont defaultheight1 minus ascent1 gives
                 # descent0. Default INLINE_ALIGN_BASELINE places image at
                 # lineHeight - (imageFontDescent + imageHeight), not at ascent.
-                parameters=dict(zip(PARAMETERS, [height, max(native_items['parameters']['LabelSize'][1],size[1])-size[1], *name_limits])))
+                parameters=dict(zip(PARAMETERS, [height, max(native_items['parameters']['LabelSize'][1],resources[0]['height'])-resources[0]['height'], *name_limits])))
 
 
 def recipe(ir):
@@ -180,15 +206,26 @@ def load(root=ROOT):
     return ir
 
 
-def compile_assets(tex3ds, root=ROOT):
-    root = Path(root); ir = load(root); tex3ds = Path(tex3ds)
+def compile_assets(tex3ds, root=ROOT, *, native_items=None, output=None, tex3ds_wrapper=None):
+    root = Path(root); tex3ds = Path(tex3ds)
+    base = root if output is None else Path(output).resolve()
+    require(output is None or base != root / 'build' and (root / 'build') in base.parents,
+            'Details candidate outputs must stay under build')
+    require(native_items is None or output is not None, 'Candidate item overrides cannot publish release resources')
+    ir = load(root) if native_items is None else build(root, native_items)
+    if output is not None:
+        write_json(base / IR, ir); write_json(base / RECIPE, recipe(ir))
     require(tex3ds.is_file(), 'Need genuine tex3ds')
-    target = root / 'romfs' / OUTPUT; target.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run([str(tex3ds), '-f', 'rgba8', '-z', 'none', '-o', str(target),
-                    str(root / 'upstream/MOTHER-Encore' / ICON)], check=True)
-    receipt = dict(schema=1, commit=PIN, ir_sha256=digest(root / IR), producer_sha256=digest(root / 'tools/item_details.py'),
-                   tex3ds_sha256=digest(tex3ds), outputs={OUTPUT: dict(bytes=target.stat().st_size, sha256=digest(target), crc32=zlib.crc32(target.read_bytes()))})
-    write_json(root / RECEIPT, receipt)
+    outputs = {}
+    command = [sys.executable, str(tex3ds_wrapper)] if tex3ds_wrapper is not None else [str(tex3ds)]
+    for resource in ir['resources']:
+        target = base / 'romfs' / resource['path']; target.parent.mkdir(parents=True, exist_ok=True)
+        subprocess.run(command + ['-f', 'rgba8', '-z', 'none', '-o', str(target),
+                        str(root / 'upstream/MOTHER-Encore' / resource['source'])], check=True)
+        outputs[resource['path']] = dict(bytes=target.stat().st_size, sha256=digest(target), crc32=zlib.crc32(target.read_bytes()))
+    receipt = dict(schema=1, commit=PIN, ir_sha256=digest(base / IR), producer_sha256=digest(root / 'tools/item_details.py'),
+                   tex3ds_sha256=digest(tex3ds), outputs=outputs)
+    write_json(base / RECEIPT, receipt)
     return receipt
 
 
@@ -198,11 +235,12 @@ def verify_receipt(ir, root=ROOT, source=None):
     require(r['schema'] == 1 and r['commit'] == PIN and r['ir_sha256'] == digest(root / IR)
             and r['producer_sha256'] == digest(root / 'tools/item_details.py')
             and re.fullmatch('[0-9a-f]{64}', r['tex3ds_sha256']) is not None, 'Details receipt provenance')
-    fields(r['outputs'], (OUTPUT,), 'Details receipt outputs')
-    out = r['outputs'][OUTPUT]; fields(out, ('bytes', 'sha256', 'crc32'), 'Details texture receipt')
-    texture = (root / 'romfs' if source is None else Path(source)) / OUTPUT
-    require(texture.stat().st_size == out['bytes'] and digest(texture) == out['sha256']
-            and zlib.crc32(texture.read_bytes()) == out['crc32'], 'Details texture receipt mismatch')
+    fields(r['outputs'], (v['path'] for v in ir['resources']), 'Details receipt outputs')
+    for resource in ir['resources']:
+        out = r['outputs'][resource['path']]; fields(out, ('bytes', 'sha256', 'crc32'), 'Details texture receipt')
+        texture = (root / 'romfs' if source is None else Path(source)) / resource['path']
+        require(texture.stat().st_size == out['bytes'] and digest(texture) == out['sha256']
+                and zlib.crc32(texture.read_bytes()) == out['crc32'], 'Details texture receipt mismatch')
     return r
 
 
@@ -246,8 +284,14 @@ def lower(ir, receipt):
     return t
 
 
-def validate(t):
+def resource_version(t):
+    return 2 if len(t['Resources']) > 1 or any(row[0] == TOKEN_KINDS['LiteralPercent'] for row in t['Tokens']) else 1
+
+
+def validate(t, version=None):
     require(set(t) == set(NAMES), 'Details sections')
+    if version is None: version = resource_version(t)
+    require(type(version) is int and version in (1, 2), 'Details version')
     pool = t['Strings']
     require(isinstance(pool, bytes) and 1 <= len(pool) <= 65536 and pool[0] == pool[-1] == 0, 'Details strings')
     decoded = pool.decode('utf-8')
@@ -257,7 +301,7 @@ def validate(t):
         value = pool[off:pool.index(0, off)].decode('utf-8')
         require(len(value.encode('utf-8')) <= 4096, 'Details string capacity')
         return value
-    limits = ((1,64), (2,2), (2,128), (1,1024), (1,1), (4,4))
+    limits = ((1,64), (2,2), (2,128), (1,1024), (1,1 if version == 1 else 16), (4,4))
     for n, f, (lo, hi) in zip(NAMES[1:], FORMATS[1:], limits):
         require(lo <= len(t[n]) <= hi, 'Details ' + n + ' capacity')
         for row in t[n]:
@@ -282,10 +326,12 @@ def validate(t):
                 and string(r[1]).endswith('.t3x') and r[2] == 1 and 0 < r[3] <= 4096
                 and 0 < r[4] <= 4096 and r[5] == r[6] == 1 and len(r[7]) == 32 and any(r[7])
                 and 0 < r[8] <= 1024*1024, 'Details resource')
-    require(len({r[0] for r in t['Resources']}) == len(t['Resources']), 'Details resource identity')
+    require(len({r[0] for r in t['Resources']}) == len(t['Resources'])
+            and len({string(r[1]) for r in t['Resources']}) == len(t['Resources']), 'Details resource identity/path')
     for token in t['Tokens']:
         kind, value, color, reserved = token
-        require(kind in TOKEN_KINDS.values() and color <= 1 and reserved == 0, 'Details token')
+        require(kind in TOKEN_KINDS.values() and (version == 2 or kind <= 6)
+                and color <= 1 and reserved == 0, 'Details token')
         if kind == 1:
             s = string(value); require(s and not any(c in s for c in '[]%{}\n'), 'Details literal controls')
         elif kind == 4: require(value < len(t['Resources']), 'Details inline image index')
@@ -299,6 +345,8 @@ def validate(t):
         max_doses = next(row[3] for row in t['Definitions'] if row[0] == d)
         require(kinds.count(TOKEN_KINDS['Nickname']) <= 1 and kinds.count(TOKEN_KINDS['Doses']) == (1 if max_doses > 1 else 0),
                 'Details duplicate/policy token binding')
+        require(TOKEN_KINDS['LiteralPercent'] not in kinds or max_doses == 1,
+                'Details literal percent conflicts with source dose formatting')
     require(cursor == len(t['Tokens']) and seen == {(d,l) for d in ids for l in (0,1)}, 'Details presentation coverage')
     for i, (ident, value) in enumerate(t['Parameters']):
         require(type(value) in (int,float) and ident == i + 1 and math.isfinite(value)
@@ -306,21 +354,22 @@ def validate(t):
         if i >= 2: require(value == int(value), 'Details nickname scalar limit')
 
 
-def encode(t):
-    validate(t); data = bytearray(HEADER)
+def encode(t, version=None):
+    if version is None: version = resource_version(t)
+    validate(t, version); data = bytearray(HEADER)
     for i, n in enumerate(NAMES):
         block = t[n] if i == 0 else b''.join(struct.pack(FORMATS[i], *r) for r in t[n])
         while len(data) % 4: data.append(0)
         struct.pack_into('<HHIII', data, 64 + i * 16, i+1, STRIDES[i], len(data), len(block)//STRIDES[i], len(block))
         data.extend(block)
-    struct.pack_into('<8s6I20s12x', data, 0, b'ENCITD01', 1, len(data), 0, 7, 1, 1, bytes.fromhex(PIN))
+    struct.pack_into('<8s6I20s12x', data, 0, b'ENCITD01', version, len(data), 0, 7, version, 1, bytes.fromhex(PIN))
     struct.pack_into('<I', data, 16, zlib.crc32(data)); return bytes(data)
 
 
 def parse_pack(blob):
     require(HEADER <= len(blob) <= 1024*1024, 'Details size')
     magic, version, size, crc, n, caps, rules, pin = struct.unpack_from('<8s6I20s', blob)
-    require((magic,version,size,n,caps,rules,pin.hex()) == (b'ENCITD01',1,len(blob),7,1,1,PIN)
+    require(version in (1,2) and (magic,size,n,caps,rules,pin.hex()) == (b'ENCITD01',len(blob),7,version,1,PIN)
             and not any(blob[52:64]), 'Details header/pin')
     copy = bytearray(blob); struct.pack_into('<I', copy, 16, 0)
     require(zlib.crc32(copy) == crc, 'Details CRC')
@@ -331,7 +380,7 @@ def parse_pack(blob):
                 and off == (end+3)//4*4 and off+amount <= len(blob) and not any(blob[end:off]), 'Details directory/span')
         block = blob[off:off+amount]; end = off+amount
         t[n] = bytes(block) if i == 0 else list(struct.iter_unpack(FORMATS[i],block))
-    require(end == len(blob), 'Details trailing bytes'); validate(t); return t
+    require(end == len(blob), 'Details trailing bytes'); validate(t, version); return t
 
 
 def glyph_request(ir):
@@ -350,7 +399,7 @@ def native_probe(godot, root=ROOT):
     root = Path(root); ir = load(root); work = root / 'build/item-details-native-probe'
     project = work / 'project'; project.mkdir(parents=True, exist_ok=True)
     for path in ir['sources']:
-        if path.startswith('Fonts/') or path in (ICON, 'Graphics/UI/Ailments/Ailments.tres'):
+        if path.startswith('Fonts/') or path in (ICON, POISON_ICON, 'Graphics/UI/Ailments/Ailments.tres'):
             target = project / path; target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(root / 'upstream/MOTHER-Encore' / path, target)
     examples = []
@@ -365,6 +414,7 @@ def native_probe(godot, root=ROOT):
                 raw = presentation['raw'].replace('\\n','\n').replace('[BR]','\n')
                 raw = raw.replace('[Ninten]',nickname[:limit]).replace('[ItemValue]',str(definition['item_value']))
                 raw = raw.replace('[Asthma]','[font=res://Graphics/UI/Ailments/Ailments.tres][img]res://' + ICON + '[/img][/font]')
+                raw = raw.replace('[Poisoned]','[font=res://Graphics/UI/Ailments/Ailments.tres][img]res://' + POISON_ICON + '[/img][/font]')
                 if definition['max_doses'] > 1: raw = raw % phrase
                 examples.append(dict(definition=definition['id'],locale=loc['code'],nickname=nickname,doses=doses,
                                      separator=loc['separator'],text=raw,width=213))
@@ -428,17 +478,19 @@ def stage_files(source):
     blob = (source / 'ui/opening.encdetails').read_bytes()
     require(blob == encode(lower(ir, receipt)), 'Staged details pack differs from reviewed source/receipt')
     parse_pack(blob)
-    return {Path('ui/opening.encdetails'): blob, Path(OUTPUT): (source / OUTPUT).read_bytes()}
+    return {Path('ui/opening.encdetails'): blob,
+            **{Path(r['path']): (source / r['path']).read_bytes() for r in ir['resources']}}
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('action', choices=['extract', 'assets', 'compile', 'verify', 'probe'])
     p.add_argument('--tex3ds', type=Path)
+    p.add_argument('--tex3ds-wrapper', type=Path)
     p.add_argument('--godot', type=Path)
     args = p.parse_args()
     if args.action == 'extract': extract()
-    elif args.action == 'assets': compile_assets(args.tex3ds)
+    elif args.action == 'assets': compile_assets(args.tex3ds, tex3ds_wrapper=args.tex3ds_wrapper)
     elif args.action == 'compile': compile_pack()
     elif args.action == 'probe': native_probe(args.godot)
     else:

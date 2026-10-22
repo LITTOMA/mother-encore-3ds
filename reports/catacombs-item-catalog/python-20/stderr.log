@@ -1,0 +1,25 @@
+test_actual_original_definitions_flags_and_genuine_art_receipt (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_actual_original_definitions_flags_and_genuine_art_receipt) ... ok
+test_missing_corrupt_and_repeated_stage (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_missing_corrupt_and_repeated_stage) ... ok
+test_review_hash_and_duplicate_json_keys_reject (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_review_hash_and_duplicate_json_keys_reject) ... ok
+test_texture_coverage_and_provenance_reject (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_texture_coverage_and_provenance_reject) ... ok
+test_unknown_malformed_and_type_coerced_recipe_reject (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_unknown_malformed_and_type_coerced_recipe_reject) ... ok
+test_acquisition_policy_is_source_derived_and_additive (tests.test_native_session.NativeSessionTests.test_acquisition_policy_is_source_derived_and_additive) ... ok
+test_additive_startup_roster_and_legacy_bytes (tests.test_native_session.NativeSessionTests.test_additive_startup_roster_and_legacy_bytes) ... ok
+test_checked_source_and_staging (tests.test_native_session.NativeSessionTests.test_checked_source_and_staging) ... ok
+test_complete_field_programmes_admit_only_source_written_flags (tests.test_native_session.NativeSessionTests.test_complete_field_programmes_admit_only_source_written_flags) ... ok
+test_field_scope_is_source_derived_and_defaults_stay_frozen (tests.test_native_session.NativeSessionTests.test_field_scope_is_source_derived_and_defaults_stay_frozen) ... ok
+test_frozen_rules6_resource_encoding_is_unchanged (tests.test_native_session.NativeSessionTests.test_frozen_rules6_resource_encoding_is_unchanged) ... ok
+test_map_object_policy_is_derived_from_present (tests.test_native_session.NativeSessionTests.test_map_object_policy_is_derived_from_present) ... ok
+test_recipe_drift_fails_closed (tests.test_native_session.NativeSessionTests.test_recipe_drift_fails_closed) ... ok
+test_source_defaults_and_derived_values (tests.test_native_session.NativeSessionTests.test_source_defaults_and_derived_values) ... ok
+test_stale_or_escaping_stage_rejected (tests.test_native_session.NativeSessionTests.test_stale_or_escaping_stage_rejected) ... ok
+test_startup_clamps_are_derived_from_serialized_hp_and_equipment (tests.test_native_session.NativeSessionTests.test_startup_clamps_are_derived_from_serialized_hp_and_equipment) ... ok
+test_storage_conservation_policy_is_source_derived (tests.test_native_session.NativeSessionTests.test_storage_conservation_policy_is_source_derived) ... ok
+test_v10_keeps_complete_v9_menu_prefix (tests.test_native_session.NativeSessionTests.test_v10_keeps_complete_v9_menu_prefix) ... ok
+test_v11_run_sound_append_preserves_v10_and_defaults (tests.test_native_session.NativeSessionTests.test_v11_run_sound_append_preserves_v10_and_defaults) ... ok
+test_v12_grouped_acquisition_version_keeps_legacy_payload (tests.test_native_session.NativeSessionTests.test_v12_grouped_acquisition_version_keeps_legacy_payload) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 57.289s
+
+OK

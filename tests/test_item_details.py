@@ -35,11 +35,11 @@ class ItemDetailsFormat(unittest.TestCase):
 
     def test_stage_actual_resources(self):
         outputs = pack.stage_files(ROOT / 'romfs')
-        self.assertEqual(set(outputs), {Path('ui/opening.encdetails'),Path(pack.OUTPUT)})
+        self.assertEqual(set(outputs), {Path('ui/opening.encdetails')}|{Path(r['path'])for r in self.ir['resources']})
         self.assertEqual(outputs[Path('ui/opening.encdetails')], self.blob)
 
     def staged_copy(self, target):
-        for path in ('ui/opening.encdetails',pack.OUTPUT):
+        for path in ['ui/opening.encdetails']+[r['path']for r in self.ir['resources']]:
             dest = target / path; dest.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(ROOT / 'romfs' / path,dest)
 
@@ -92,7 +92,7 @@ class ItemDetailsFormat(unittest.TestCase):
         with self.assertRaises(ValueError): pack.lower(ir, self.receipt)
 
     def test_reject_header_changes(self):
-        for offset, value in ((8,2),(20,8),(24,2),(28,2)):
+        for offset, value in ((8,3),(20,8),(24,3),(28,2)):
             with self.assertRaises(ValueError): pack.parse_pack(self.blob_change(offset, struct.pack('<I',value)))
 
     def test_source_pin(self):

@@ -50,14 +50,16 @@ bool FieldMenusData::supports(const FieldMenuPreferences&p)const{
  std::set<uint32_t>unique;for(auto v:p.buttons)if(std::find(logical_buttons.begin(),logical_buttons.end(),v)==logical_buttons.end()||!unique.insert(v).second)return false;return true;
 }
 uint32_t FieldMenusData::remap(uint32_t raw,const FieldMenuPreferences&p)const{if(!supports(p))return 0;uint32_t result=raw;for(auto mask:logical_buttons)result&=~mask;for(size_t i=0;i<p.buttons.size();++i)if(raw&p.buttons[i])result|=logical_buttons[i];return result;}
+const FieldMenuConsumeEffect*FieldMenusData::consume_effect(std::string_view id)const{const FieldMenuConsumeEffect*found=nullptr;for(const auto&effect:consume_effects)if(effect.item_id==id){if(found)return nullptr;found=&effect;}return found;}
 bool FieldMenusData::load(const uint8_t*p,size_t n,std::string&e){
- if(!p||n<52||n>4*1024*1024||std::memcmp(p,"ENCFMN01",8)||u32(p+8)!=2||u32(p+12)!=n||u32(p+20)!=2||u32(p+24)!=1||u32(p+28)||encore::crc32(p+32,n-32)!=u32(p+16))return fail(e,"Field menus schema/size/capabilities/rules/checksum rejected");
+ if(!p||n<52||n>4*1024*1024||std::memcmp(p,"ENCFMN01",8)||(u32(p+8)!=2&&u32(p+8)!=3)||u32(p+12)!=n||u32(p+20)!=u32(p+8)||u32(p+24)!=1||u32(p+28)||encore::crc32(p+32,n-32)!=u32(p+16))return fail(e,"Field menus schema/size/capabilities/rules/checksum rejected");
+ const auto schema=u32(p+8);
  // This port admits one reviewed upstream. This is provenance, not game data.
  constexpr char pin[]="7d9246600fffe518408f5830d4848635019005a3";
  for(unsigned i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail(e,"Field menus pin rejected");}
  FieldMenusData d;Reader r{p+52,n-52};auto count=r.count(256);for(uint32_t i=0;i<count;++i)d.labels.push_back(r.label());
  if(count!=uint32_t(FieldMenuText::Count))return fail(e,"Field menus label coverage rejected");
- std::set<std::string>ids;count=r.count(128);for(uint32_t i=0;i<count;++i){FieldMenuItem v;v.id=r.text();v.key=r.integer();v.drop=r.integer();v.action=r.integer();v.doses=r.integer();v.score=r.integer();v.equipped_score=r.integer();v.slot=r.integer();v.definition=r.integer();v.name=r.label();v.description=r.label();v.sorting=r.label();v.result=r.label();if(!identity(v.id)||!ids.insert(v.id).second||v.key>1||v.drop>1||v.action>3||!v.doses||v.doses>65535||(v.key?v.definition!=UINT32_MAX:v.definition>=64)||(v.action==1?v.slot>3:v.slot!=UINT32_MAX)||(v.key&&(v.drop||v.action==1||v.action==2))||v.name.en.empty()||v.name.zh.empty()||(v.action==2&&(v.result.en.empty()||v.result.zh.empty())))return fail(e,"Field menu item rule/action/identity rejected");std::string expanded;const std::vector<std::string>buttons(8);if(!expand_field_menu_text(v.result.en,"",buttons,expanded,e)||!expand_field_menu_text(v.result.zh,"",buttons,expanded,e))return false;d.items.push_back(std::move(v));}
+ std::set<std::string>ids;count=r.count(128);for(uint32_t i=0;i<count;++i){FieldMenuItem v;v.id=r.text();v.key=r.integer();v.drop=r.integer();v.action=r.integer();v.doses=r.integer();v.score=r.integer();v.equipped_score=r.integer();v.slot=r.integer();v.definition=r.integer();v.name=r.label();v.description=r.label();v.sorting=r.label();v.result=r.label();if(!identity(v.id)||!ids.insert(v.id).second||v.key>1||v.drop>1||v.action>3||!v.doses||v.doses>65535||(v.key?v.definition!=UINT32_MAX:v.definition>=64)||(v.action==1?v.slot>3:v.slot!=UINT32_MAX)||(v.key&&(v.drop||v.action==1||v.action==2))||v.name.en.empty()||v.name.zh.empty()||(schema==2&&v.action==2&&(v.result.en.empty()||v.result.zh.empty())))return fail(e,"Field menu item rule/action/identity rejected");std::string expanded;const std::vector<std::string>buttons(8);if(!expand_field_menu_text(v.result.en,"",buttons,expanded,e)||!expand_field_menu_text(v.result.zh,"",buttons,expanded,e))return false;d.items.push_back(std::move(v));}
  if(d.items.empty())return fail(e,"Field menu item rules missing");
  ids.clear();count=r.count(256);for(uint32_t i=0;i<count;++i){FieldMenuSkill v;v.id=r.text();v.flag=r.text();v.battle_skill=r.text();v.weapon=r.text();v.category=r.integer();v.cost=r.integer();v.name=r.label();v.description=r.label();auto weapons=r.count(64);std::set<std::string>weapon_ids;for(uint32_t w=0;w<weapons;++w){auto id=r.text();if(!identity(id)||!weapon_ids.insert(id).second)return fail(e,"Field skill weapon binding rejected");v.weapons.push_back(id);}if(v.weapon.empty()!=v.weapons.empty())return fail(e,"Field skill weapon coverage rejected");if(!identity(v.id)||(!v.flag.empty()&&!identity(v.flag))||(!v.battle_skill.empty()&&!identity(v.battle_skill))||(!v.weapon.empty()&&!identity(v.weapon))||v.category>2||v.cost>65535||v.name.en.empty()||v.name.zh.empty()||!ids.insert(std::to_string(v.category)+"/"+v.id).second)return fail(e,"Field menu skill condition/identity rejected");std::string expanded;const std::vector<std::string>buttons(8);if(!expand_field_menu_text(v.description.en,"",buttons,expanded,e)||!expand_field_menu_text(v.description.zh,"",buttons,expanded,e))return false;d.skills.push_back(std::move(v));}
  size_t image_bytes=0;count=r.count(32);for(uint32_t i=0;i<count;++i){FieldMenuImage v;v.width=r.integer();v.height=r.integer();auto bytes=r.integer();if(!v.width||v.width>1024||!v.height||v.height>1024||uint64_t(v.width)*v.height*4!=bytes||bytes>r.n||image_bytes+bytes>3*1024*1024)return fail(e,"Field map image bounds rejected");v.rgba.assign(r.p,r.p+bytes);r.p+=bytes;r.n-=bytes;image_bytes+=bytes;d.images.push_back(std::move(v));}
@@ -75,6 +77,26 @@ bool FieldMenusData::load(const uint8_t*p,size_t n,std::string&e){
  for(auto&group:d.setting_labels){count=r.count(32);for(uint32_t i=0;i<count;++i)group.push_back(r.label());if(group.empty())return fail(e,"Field setting choices missing");}
  count=r.count(8);for(uint32_t i=0;i<count;++i)d.display_names.push_back(r.text());d.capture_cancel=r.label();if(d.display_names.size()!=2||d.capture_cancel.en.empty()||d.capture_cancel.zh.empty())return fail(e,"Field platform choices missing");
  d.map_home_x=r.real();d.map_home_y=r.real();for(auto&size:d.display_sizes){size={r.integer(),r.integer()};if(!size[0]||!size[1]||size[0]>400||size[1]>240)return fail(e,"Field display size rejected");}
+ if(schema==3){
+  d.consume_actor=r.text();d.cure_refresh_hp=r.integer();d.consume_sound=r.text();d.consume_slot=r.text();d.consume_lane=r.integer();
+  const auto&sound=d.consume_sound;
+  if(!identity(d.consume_actor)||!identity(d.consume_slot)||d.consume_lane!=uint32_t(FieldMenuConsumeAudioLane::Effect)||!d.cure_refresh_hp||d.cure_refresh_hp>65535||sound.empty()||sound.front()=='/'||sound.back()=='/'||sound.find("..")!=sound.npos||sound.find("//")!=sound.npos||sound.find(':')!=sound.npos||sound.find('\\')!=sound.npos||std::any_of(sound.begin(),sound.end(),[](unsigned char c){return c<32||c==127;}))return fail(e,"Field consume actor/refresh/audio policy rejected");
+  ids.clear();count=r.count(16);for(uint32_t i=0;i<count;++i){auto status=r.text();if(!identity(status)||!ids.insert(status).second)return fail(e,"Field consume status identity rejected");d.consume_statuses.push_back(std::move(status));}
+  if(d.consume_statuses.empty())return fail(e,"Field consume status coverage missing");
+  ids.clear();count=r.count(128);for(uint32_t i=0;i<count;++i){
+   FieldMenuConsumeEffect effect;effect.item_id=r.text();effect.hp=r.integer();effect.cure_status=r.text();
+   auto item=std::find_if(d.items.begin(),d.items.end(),[&](const FieldMenuItem&v){return v.id==effect.item_id;});
+   if(item==d.items.end()||item->key||item->action!=2||!ids.insert(effect.item_id).second||effect.hp>65535||((effect.hp==0)==effect.cure_status.empty())||(!effect.cure_status.empty()&&std::find(d.consume_statuses.begin(),d.consume_statuses.end(),effect.cure_status)==d.consume_statuses.end()))return fail(e,"Field consume effect identity/domain rejected");
+   for(unsigned m=0;m<4;++m){
+    effect.message_keys[m]=r.text();effect.messages[m]=r.label();const bool used=effect.hp?m<2:m>=2;
+    if(used){std::string expanded;if(!identity(effect.message_keys[m])||effect.messages[m].en.empty()||effect.messages[m].zh.empty()||!expand_field_item_text(effect.messages[m].en,"",0,expanded,e)||!expand_field_item_text(effect.messages[m].zh,"",0,expanded,e))return fail(e,"Field consume message binding rejected");}
+    else if(!effect.message_keys[m].empty()||!effect.messages[m].en.empty()||!effect.messages[m].zh.empty())return fail(e,"Field consume unused message rejected");
+   }
+   d.consume_effects.push_back(std::move(effect));
+  }
+  if(!count||std::any_of(d.items.begin(),d.items.end(),[&](const FieldMenuItem&item){return item.action==2&&!ids.count(item.id);}))return fail(e,"Field consume effect coverage rejected");
+  d.consume_effects_=true;
+ }
  d.valid_=true;if(!r.ok||r.n||!d.supports(d.defaults))return fail(e,"Field menus truncated/trailing/defaults rejected");*this=std::move(d);e.clear();return true;
 }
 bool FieldMenusData::load_file(const char*path,std::string&e){std::vector<uint8_t>b;return encore::read_file(path,b,4*1024*1024,e)&&load(b.data(),b.size(),e);}

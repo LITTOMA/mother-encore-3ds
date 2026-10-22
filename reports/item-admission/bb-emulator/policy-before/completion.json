@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "tests.test_emulator_semantics",
+    "tests.test_emulator_opening_controls",
+    "-v"
+  ],
+  "returncode": 1,
+  "expected": 1,
+  "seconds": 3.047000000020489,
+  "inputs_unchanged": true
+}

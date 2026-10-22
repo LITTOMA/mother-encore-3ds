@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "producer_sha256": "04050c3da322104dc1534d0a2cf18b5a7019eebe33c88bec728af153dc49d690",
+  "old_sha256": "07cfce2d96cd0f67a0144a8be24bc01a2b3c6ec89edbf37ddbb295d42157c2ea",
+  "new_sha256": "f4a7b1dcd1d1e6c854cdbf6f827d74e8a4130d0de2b55be04fd73c8f7e5ee4db",
+  "changed_fields": [
+    "sources.Audio/Sound effects/EB/eat.wav",
+    "sources.Audio/Sound effects/EB/eat.wav.import",
+    "outputs.content/native-audio.json"
+  ],
+  "linked_audio_equals_production": true,
+  "phone_programs_unchanged": true,
+  "scope": "Actual original report producer. Only newly admitted audio source/import and full bank provenance added; no phone graph, command, binding, room or game resource change."
+}

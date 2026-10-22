@@ -1,0 +1,7 @@
+config_version=4
+[application]
+config/name="Original consume asset import"
+[logging]
+file_logging/enable_logging=false
+[editor_plugins]
+enabled=PoolStringArray("res://addons/source_import/plugin.cfg")

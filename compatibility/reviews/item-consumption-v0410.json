@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "83145b55cfadf22a0012d8ecfd17fd754d167218326500360f5477a802763b37",
+  "producer_sha256": "a372203a73c2d65a3a4c73158937a3cb3af833484e5b8a890789655ef2c8e7cf",
+  "original_producer_sha256": "0258244fb2b3130eb9c71014f51bd767d35608b98c1892a8eb9812fec8fba18d",
+  "scope": "Original HP-only food and one-status antidote/spray for the admitted singleton and declared status domain. No PP/boost/reusable/transform item, UI timer, PCM or full-scene admission.",
+  "references": [
+    {
+      "path": "reports/item-consumption/original-1/reference.json",
+      "sha256": "0f0ebacfee226cdbdcd90a82a3344715281515f3becb5b74218c8f3bb2af56d1"
+    },
+    {
+      "path": "reports/item-consumption/original-2/reference.json",
+      "sha256": "0f0ebacfee226cdbdcd90a82a3344715281515f3becb5b74218c8f3bb2af56d1"
+    }
+  ],
+  "implementation": {
+    "Inventory.consume_item": "runtime/field_menus.cpp:consume_field_menu_item",
+    "PartyMember.remove_status/_refresh_hp_from_status": "runtime/field_menus.cpp:consume_field_menu_item",
+    "TargetCharaSelect.consume_item selectors": "ENCFMN01 v3 effect message/audio bindings",
+    "independent resource version": "runtime/field_menus_data.cpp:FieldMenusData::load"
+  }
+}

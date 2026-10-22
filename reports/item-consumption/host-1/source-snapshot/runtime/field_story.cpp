@@ -1,0 +1,193 @@
+#include "encore/field_story.hpp"
+#include "encore/content.hpp"
+#include "encore/crc32.hpp"
+#include "encore/utf8.hpp"
+#include "encore/dialogue.hpp"
+#include "encore/world.hpp"
+#include "encore/dialogue_choices.hpp"
+#include "encore/new_game_setup.hpp"
+#include "encore/field_menus.hpp"
+#include "encore/field_props.hpp"
+#include <algorithm>
+#include <cstring>
+#include <cmath>
+#include <set>
+namespace encore::upstream {namespace {
+uint32_t u32(const uint8_t*p){return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24;}
+FieldText ref(const uint8_t*p){return {u32(p),u32(p+4)};}
+constexpr uint32_t strides[]={1,24,36,40,12,24};
+float f32(const uint8_t*p){const auto bits=u32(p);float value;std::memcpy(&value,&bits,4);return value;}
+bool path(std::string_view value){if(value.empty()||value.size()>512||value.front()=='/'||value.find(':')!=value.npos||value.find('\\')!=value.npos)return false;
+ size_t at=0;while(at<=value.size()){auto end=value.find('/',at);if(end==value.npos)end=value.size();const auto part=value.substr(at,end-at);if(part.empty()||part=="."||part=="..")return false;if(end==value.size())break;at=end+1;}return true;}
+}
+bool format_field_story_text(std::string_view input,const NewGameSetupData&names,const SessionSnapshot&snapshot,const LocaleSelection&locale,std::string&out,std::string&error){
+ auto reject=[&]{error="Unmapped field character text binding";return false;};
+ if(!names.valid()||!locale.catalog()||input.size()>16384)return reject();std::string result;size_t at=0;
+ while(at<input.size()){const auto open=input.find('[',at);if(open==input.npos){result.append(input.substr(at));break;}result.append(input.substr(at,open-at));const auto close=input.find(']',open);if(close==input.npos)return reject();
+  std::string id(input.substr(open+1,close-open-1));for(char&c:id)if(c>='A'&&c<='Z')c=char(c-'A'+'a');
+  bool known=false;for(const auto&field:names.fields)known|=field.kind==0&&field.target==id;if(!known)return reject();
+  std::string value;bool found=false;for(const auto&character:snapshot.characters)if(character.character_id==id){if(found)return reject();found=true;value=character.nickname;}
+  if(value.empty()){const auto*binding=locale.catalog()->binding("field.character/"+id);if(!binding||!locale.catalog()->bound(binding->identity,binding->expected,locale.code(),value,error))return reject();}
+  if(value.empty()||value.size()>128)return reject();result+=value;if(result.size()>65536)return reject();at=close+1;
+ }
+ out=std::move(result);error.clear();return true;
+}
+bool format_field_story_span(std::string_view input,const NewGameSetupData&names,const SessionSnapshot&snapshot,const LocaleSelection&locale,LocalizedHouseSpan&out,std::string&error,const FieldMenusData*inputs,const FieldMenuPreferences*preferences){
+ auto reject=[&](const char*why){error=why;return false;};
+ if(!names.valid()||!locale.catalog()||input.empty()||input.size()>16384)return reject("Invalid field dialogue context");
+ LocalizedHouseSpan result;result.word_separator=std::string(locale.text("WORD_SEPARATOR").text);result.bullet=std::string(locale.text("SYMBOL_BULLET_MAIN").text);
+ if(result.word_separator.empty()||result.bullet.empty())return reject("Missing field dialogue layout text");
+ LocalizedHouseSegment segment;bool color=false;auto token=[&](uint32_t kind,std::string text={}){if(kind==1&&text.empty())return;if(kind==1&&!segment.tokens.empty()&&segment.tokens.back().kind==1)segment.tokens.back().text+=text;else segment.tokens.push_back({kind,std::move(text)});};
+ auto push=[&](bool wait){segment.flags|=wait?2u:4u;result.segments.push_back(std::move(segment));segment={};};
+ size_t at=0;while(at<input.size()){const auto open=input.find('[',at),stop=open==input.npos?input.size():open;token(1,std::string(input.substr(at,stop-at)));if(open==input.npos)break;
+  const auto close=input.find(']',open);if(close==input.npos)return reject("Unclosed field dialogue token");std::string tag(input.substr(open+1,close-open-1));for(char&c:tag)if(c>='A'&&c<='Z')c=char(c-'A'+'a');
+  if(tag=="@"){if(!segment.tokens.empty())token(9);segment.flags|=1;}
+  else if(tag=="wait@"){if(color)return reject("Field hint color crosses wait");push(true);segment.flags|=1;}
+  else if(tag=="color"){if(color)return reject("Nested field hint color");const auto*b=locale.catalog()->binding("text.hint_color");if(!b)return reject("Missing field hint color");token(3,std::string(b->expected));color=true;}
+  else if(tag=="/color"){if(!color)return reject("Unmatched field hint color");token(4);color=false;}
+  else if(tag=="delay"){const auto*b=locale.catalog()->binding("text.default_delay");if(!b)return reject("Missing field source delay");token(8,std::string(b->expected));}
+  else if(tag=="ui_cancel"){
+   if(!inputs||!inputs->valid()||!preferences||!inputs->supports(*preferences))return reject("Missing checked field dialogue input binding");
+   const auto button=std::find(inputs->logical_buttons.begin(),inputs->logical_buttons.end(),preferences->buttons[1]);
+   if(button==inputs->logical_buttons.end()||size_t(button-inputs->logical_buttons.begin())>=inputs->button_names.size())return reject("Unmapped field dialogue input label");
+   token(1,inputs->button_names[size_t(button-inputs->logical_buttons.begin())]);
+  }else if(tag=="if input:gamepad"){
+   // Only the reviewed literal gamepad/key alternative is admitted. Neither
+   // branch can contain nested behavior or hidden unsupported markup.
+   const auto alternate=input.find("[else]",close+1),end=input.find("[/if]",close+1);
+   if(alternate==input.npos||end==input.npos||alternate>=end)return reject("Malformed field input conditional");
+   const auto gamepad=input.substr(close+1,alternate-close-1),keyboard=input.substr(alternate+6,end-alternate-6);
+   if(gamepad.empty()||keyboard.empty()||gamepad.find_first_of("[]")!=gamepad.npos||keyboard.find_first_of("[]")!=keyboard.npos)return reject("Unreviewed field input conditional body");
+   token(1,std::string(gamepad));at=end+5;continue;
+  }
+  else {std::string value;if(!format_field_story_text(input.substr(open,close-open+1),names,snapshot,locale,value,error))return false;token(1,std::move(value));}
+  at=close+1;
+ }
+ if(color)return reject("Unclosed field hint color");push(false);if(result.segments.size()>128)return reject("Field dialogue segment capacity");out=std::move(result);error.clear();return true;
+}
+bool prepare_field_story_choices(OpeningWorld&world,FieldStoryView story,DialogueChoices&choices,uint32_t&generation,std::string&error){
+ auto reject=[&](const char*why){error=why;return false;};
+ if(!world.healthy()||!story.valid()||story.scene_id()!=world.content().scene().stable_id||!world.story_choices_waiting()||!story.choices()||choices.phase()!=DialogueChoicesPhase::Closed)return reject("Field story choices owner is not ready");
+ const auto room=world.content();const auto programme=room.program(world.story_program_index());
+ DialogueChoices candidate;
+ if(!candidate.prepare(*story.choices(),world.pending_choice_group(),room.string(programme.source_path_string),programme.command_count,error))return false;
+ const auto*group=candidate.group();auto target=[&](uint32_t pc){return pc>=world.story_next_command_index()&&pc<programme.command_count&&(pc==0||room.command(programme.first_command+pc-1).phrase!=room.command(programme.first_command+pc).phrase);};
+ if(!group||!target(group->cancel_target_pc))return reject("Field choice cancel is not a forward phrase entry");
+ for(const auto&option:group->options)if(!target(option.target_pc))return reject("Field choice target is not a forward phrase entry");
+ choices=std::move(candidate);generation=world.story_generation();error.clear();return true;
+}
+bool select_field_story_choice(OpeningWorld&world,FieldStoryView story,HousePresentation&box,DialogueChoices&choices,uint32_t pc,uint32_t generation,std::string&error){
+ auto reject=[&](const char*why){error=why;return false;};
+ if(!world.healthy()||!story.valid()||story.scene_id()!=world.content().scene().stable_id||!world.story_choices_waiting()||!box.dialogue_finished()||box.dialogue_closing()||!story.choices()||choices.data()!=story.choices()||choices.phase()!=DialogueChoicesPhase::Resolved||generation!=world.story_generation())return reject("Stale field story choice owner");
+ const auto*group=choices.group();bool found=group&&group->cancel_target_pc==pc;if(group)for(const auto&o:group->options)found|=o.target_pc==pc;
+ if(!found)return reject("Field story choice target is not admitted");
+ box.clear_story_text();choices.close();
+ if(!world.choose_story_option(pc,generation))return reject("Field story choice continuation rejected");
+ error.clear();return true;
+}
+uint32_t FieldStoryView::count(uint32_t s)const{return bytes_&&s>=1&&s<=u32(bytes_+52)?u32(bytes_+64+(s-1)*16+8):0;}
+const uint8_t*FieldStoryView::record(uint32_t s,uint32_t i)const{return i<count(s)?bytes_+u32(bytes_+64+(s-1)*16+4)+i*u32(bytes_+64+(s-1)*16+12):nullptr;}
+uint32_t FieldStoryView::scene_id()const{return bytes_?u32(bytes_+24):0;}
+uint32_t FieldStoryView::interaction_count()const{return count(6);}
+FieldInteraction FieldStoryView::interaction(uint32_t i)const{const auto*p=record(6,i);return p?FieldInteraction{u32(p),u32(p+4),ref(p+8),u32(p+16),u32(p+20),u32(bytes_+20)>=3?ref(p+24):FieldText{}}:FieldInteraction{};}
+uint32_t FieldStoryView::programme_count()const{return count(2);}uint32_t FieldStoryView::text_count()const{return count(3);}uint32_t FieldStoryView::encounter_count()const{return count(4);}uint32_t FieldStoryView::override_count()const{return count(5);}
+std::string_view FieldStoryView::text(FieldText t)const{return bytes_&&t.length&&t.offset<=count(1)&&t.length<=count(1)-t.offset?std::string_view(reinterpret_cast<const char*>(record(1,0)+t.offset),t.length):std::string_view{};}
+FieldStoryProgramme FieldStoryView::programme(uint32_t i)const{const auto*p=record(2,i);return p?FieldStoryProgramme{u32(p),ref(p+4),ref(p+12),u32(p+20)}:FieldStoryProgramme{};}
+FieldStoryText FieldStoryView::text_record(uint32_t i)const{const auto*p=record(3,i);return p?FieldStoryText{u32(p),ref(p+4),ref(p+12),ref(p+20),ref(p+28)}:FieldStoryText{};}
+FieldStoryText FieldStoryView::dialogue(uint32_t id,std::string_view locale)const{for(uint32_t i=0;i<count(3);++i){const auto*p=record(3,i);if(u32(p)==id&&text(ref(p+4))==locale)return {id,ref(p+4),ref(p+12),ref(p+20),ref(p+28)};}return {};}
+FieldStoryEncounter FieldStoryView::encounter(uint32_t id)const{for(uint32_t i=0;i<count(4);++i){const auto*p=record(4,i);if(u32(p)==id)return {id,u32(p+4),ref(p+8),ref(p+16),u32(p+24),u32(p+28),f32(p+32),u32(p+36)};}return {};}
+FieldStoryEncounter FieldStoryView::encounter_for_programme(uint32_t programme)const{for(uint32_t i=0;i<count(4);++i){const auto row=encounter(u32(record(4,i)));if(row.programme==programme)return row;}return {};}
+FieldBasicOverride FieldStoryView::basic_override(uint32_t id)const{for(uint32_t i=0;i<count(5);++i){const auto*p=record(5,i);if(u32(p)==id)return {id,ref(p+4)};}return {};}
+FieldStoryPropDialogue FieldStoryView::prop_dialogue()const{const auto*p=record(8,0);return p?FieldStoryPropDialogue{ref(p),u32(p+8),u32(p+12),{f32(p+16),f32(p+20)},f32(p+24),u32(p+28),u32(p+32),u32(p+36),u32(p+40),u32(p+44),u32(p+48)}:FieldStoryPropDialogue{};}
+bool FieldStoryView::bind_props(const FieldPropsData&props,std::string&error)const{
+ if(!count(8)){error.clear();return true;}const auto p=prop_dialogue();const auto&policy=props.policy();
+ if(!props.contact_bound()||props.encoded_bytes()!=p.props_bytes||props.encoded_crc()!=p.props_crc||policy.bat_flag>=props.flags().size()||props.flags()[policy.bat_flag]!=text(p.flag)){error="Field prop dialogue companion/flag differs";return false;}
+ for(const auto branch:{false,true}){const auto id=branch?p.when_true:p.when_false;bool found=false;for(uint32_t i=0;i<programme_count();++i){const auto row=programme(i);found|=row.flags==2&&row.programme==id&&text(row.source)==(branch?policy.easy:policy.hard);}if(!found){error="Field prop reusable source programme differs";return false;}}
+ error.clear();return true;
+}
+FieldStoryView FieldStoryData::view()const{FieldStoryView v;if(!bytes_.empty()){v.bytes_=bytes_.data();v.size_=bytes_.size();v.choices_=choices_.valid()?&choices_:nullptr;}return v;}
+bool FieldStoryData::load_file(const char*file,std::string&error){std::vector<uint8_t>b;return encore::read_file(file,b,128*1024,error)&&load(b.data(),b.size(),error);}
+bool FieldStoryData::load(const uint8_t*p,size_t n,std::string&error){
+ auto fail=[&](const char*why){error=why;return false;};
+ if(!p||n<144||n>128*1024)return fail("Field story size rejected");
+ if(std::memcmp(p,"ENCFST01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)<1||u32(p+20)>5)||!u32(p+24)||u32(p+28)||u32(p+52)!=(u32(p+20)==1?5u:(u32(p+20)==2?6u:(u32(p+20)==5?8u:7u)))||u32(p+56)||u32(p+60))return fail("Field story schema/capability/reserved rejected");
+ const char*pin="7d9246600fffe518408f5830d4848635019005a3";
+ for(unsigned i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Field story source pin rejected");}
+ if(encore::crc32(p+32,n-32)!=u32(p+16))return fail("Field story checksum rejected");
+ const auto sections=u32(p+52);size_t cursor=64+sections*16;if(n<cursor)return fail("Field story truncated directory");
+ for(uint32_t s=1;s<=sections;++s){const auto*d=p+64+(s-1)*16;const auto offset=u32(d+4),count=u32(d+8),stride=u32(d+12);
+  if(u32(d)!=s||stride!=(s==8?52u:(s==7?1u:(s==6&&u32(p+20)>=3?32u:strides[s-1]))))return fail("Field story directory rejected");
+  if(!count){if(offset)return fail("Field story empty section rejected");continue;}
+  if(offset%4||offset<cursor||offset>n||count>(n-offset)/stride)return fail("Field story span rejected");
+  for(size_t i=cursor;i<offset;++i)if(p[i])return fail("Field story padding rejected");cursor=offset+count*stride;
+ }
+ if(cursor!=n)return fail("Field story trailing bytes rejected");
+ FieldStoryView v;v.bytes_=p;v.size_=n;
+ const bool choices_schema=u32(p+20)>=3;
+ const bool invalid_mode=u32(p+20)==3?(v.count(4)||v.count(5)):!v.count(4);
+ if(!v.count(1)||v.count(1)>64*1024||!v.count(2)||v.count(2)>64||!v.count(3)||v.count(3)>256||invalid_mode||(choices_schema&&(!v.count(6)||!v.count(7)||v.count(7)>16384))||v.count(4)>32||v.count(5)>64||v.count(6)>256)return fail("Field story capacity rejected");
+ auto valid_text=[&](FieldText t,bool empty,size_t maximum){if(!t.length)return empty&&!t.offset;if(t.offset>v.count(1)||t.length>v.count(1)-t.offset||t.length>maximum)return false;const auto value=v.text(t);size_t count=0;return value.find('\0')==value.npos&&encore::utf8_count(value,count);};
+ std::set<uint32_t>programmes,battles,overrides;std::set<std::string_view>boundaries,sources;std::set<std::pair<uint32_t,std::string_view>>texts;
+ std::set<std::string_view>locales;std::set<uint32_t>text_ids;
+ for(uint32_t i=0;i<v.count(2);++i){const auto row=v.programme(i);if(row.programme>=1024||row.flags>(u32(p+20)==5?2u:1u)||(u32(p+20)==1&&row.flags)||!programmes.insert(row.programme).second||!valid_text(row.boundary,row.flags!=0,512)||!valid_text(row.source,false,512)||(row.flags?row.boundary.length!=0:(!path(v.text(row.boundary))||!boundaries.insert(v.text(row.boundary)).second))||!path(v.text(row.source))||!sources.insert(v.text(row.source)).second)return fail("Field story programme rejected");}
+ for(uint32_t i=0;i<v.count(3);++i){const auto*r=v.record(3,i);const auto id=u32(r);const auto locale=ref(r+4),speaker=ref(r+12),body=ref(r+20),voice=ref(r+28);
+  if(!id||!valid_text(locale,false,32)||!valid_text(speaker,true,256)||!valid_text(body,false,8192)||!valid_text(voice,true,512)||(!v.text(voice).empty()&&!path(v.text(voice)))||!texts.insert({id,v.text(locale)}).second)return fail("Field story dialogue rejected");
+  for(char c:v.text(locale))if(!((c>='A'&&c<='Z')||(c>='a'&&c<='z')||(c>='0'&&c<='9')||c=='_'||c=='-'))return fail("Field story locale rejected");
+  locales.insert(v.text(locale));text_ids.insert(id);
+ }
+ for(auto id:text_ids)for(auto locale:locales)if(!texts.count({id,locale}))return fail("Field story locale coverage rejected");
+ for(uint32_t i=0;i<v.count(4);++i){const auto row=v.encounter(u32(v.record(4,i)));if(!row.battle||!battles.insert(row.battle).second||row.actor==0||row.actor>=64||row.basic_slot>=16||!programmes.count(row.programme)||!std::isfinite(row.return_music_seconds)||row.return_music_seconds<=0||row.return_music_seconds>60||row.return_music_curve<1||row.return_music_curve>3||!valid_text(row.basic,false,512)||!valid_text(row.music,false,512)||!path(v.text(row.basic))||!path(v.text(row.music)))return fail("Field story encounter rejected");}
+ for(uint32_t i=0;i<v.count(5);++i){const auto*r=v.record(5,i);const auto id=u32(r);const auto value=ref(r+4);if(!id||!overrides.insert(id).second||!valid_text(value,false,512)||!path(v.text(value)))return fail("Field basic action override rejected");}
+ std::set<std::pair<uint32_t,std::string_view>>rules;std::set<uint32_t>interaction_programmes,owners;
+ for(uint32_t i=0;i<v.count(6);++i){const auto r=v.interaction(i);bool found=false;for(uint32_t j=0;j<v.programme_count();++j){const auto program=v.programme(j);found|=program.programme==r.programme&&program.flags==1;}
+  if(r.actor==0||r.actor>=64||r.turns>3||r.status>(choices_schema?1u:0u)||!valid_text(r.flag,true,128)||!rules.insert({r.actor,v.text(r.flag)}).second)return fail("Field story interaction rejected");
+  if(choices_schema){
+   if(!valid_text(r.source,false,512)||!path(v.text(r.source)))return fail("Field interaction source rejected");
+   if(r.status){if(r.programme!=UINT32_MAX)return fail("Unavailable interaction has an executable programme");}
+   else{bool matching=false;for(uint32_t j=0;j<v.programme_count();++j){const auto program=v.programme(j);matching|=program.programme==r.programme&&v.text(program.source)==v.text(r.source);}if(!found||!matching)return fail("Field interaction source programme differs");}
+  }else if(!found)return fail("Field interaction programme missing");
+  if(!owners.count(r.actor)){if(r.flag.length)return fail("Field interaction lacks unconditional source dialogue");owners.insert(r.actor);}
+  interaction_programmes.insert(r.programme);
+ }
+ std::set<uint32_t>prop_programmes;
+ if(u32(p+20)==5){const auto r=v.prop_dialogue();if(v.count(8)!=1||!valid_text(r.flag,false,128)||r.when_false==r.when_true||!std::isfinite(r.ray_origin.x)||!std::isfinite(r.ray_origin.y)||std::abs(r.ray_origin.x)>4096||std::abs(r.ray_origin.y)>4096||!std::isfinite(r.ray_length)||r.ray_length<=0||r.ray_length>256||!r.ray_mask||r.ray_mask>=(1u<<20)||!r.area_layer||r.area_layer>=(1u<<20)||!(r.area_layer&r.ray_mask)||r.area_flags!=2||r.props_bytes<64||r.props_bytes>128*1024||r.stop_running>1)return fail("Field prop dialogue policy rejected");
+  for(const auto id:{r.when_false,r.when_true}){bool found=false;for(uint32_t i=0;i<v.programme_count();++i){const auto row=v.programme(i);found|=row.flags==2&&row.programme==id;}if(!found)return fail("Field prop dialogue programme missing");prop_programmes.insert(id);}
+ }
+ for(uint32_t i=0;i<v.programme_count();++i){const auto r=v.programme(i);if((r.flags==1&&!interaction_programmes.count(r.programme))||(r.flags==2&&!prop_programmes.count(r.programme)))return fail("Field interaction programme is unbound");}
+ DialogueChoicesData choices;
+ if(choices_schema&&!choices.load(v.record(7,0),v.count(7),error))return false;
+ std::vector<uint8_t>owned(p,p+n);bytes_=std::move(owned);choices_=std::move(choices);error.clear();return true;
+}
+bool FieldStoryView::bind(RoomView room,FieldMapView map,ItemView items,std::string&error)const{
+ auto fail=[&](const char*why){error=why;return false;};
+ if(!valid()||!room.valid()||!map.valid()||!items.valid()||scene_id()!=room.scene().stable_id||scene_id()!=map.scene_id())return fail("Field story scene/item binding rejected");
+ for(uint32_t i=0;i<programme_count();++i){const auto row=programme(i);if(row.programme>=room.program_count()||room.string(room.program(row.programme).source_path_string)!=text(row.source))return fail("Field story room programme differs");
+  unsigned found=0;for(uint32_t b=0;b<map.count(FieldMapSection::Boundaries);++b){const auto boundary=map.boundary(b);if(map.text(boundary.path)==text(row.boundary)){if(boundary.kind!=2)return fail("Field story boundary is not a source cutscene");++found;}}
+  if(!row.flags&&found!=1)return fail("Field story source boundary is missing/ambiguous");
+  const auto program=room.program(row.programme);
+  if(row.flags==2)for(uint32_t k=0;k<program.command_count;++k){const auto command=room.command(program.first_command+k);if(command.actor_index!=kRoomNoActor)return fail("Field prop reusable programme binds an actor");
+   using K=DialogueActionKind;switch(K(command.opcode)){case K::BeginCutscene:case K::ShowDialogue:case K::AwaitDialogue:case K::HideDialogue:case K::SetTalker:case K::CutsceneEnded:case K::DialogueDone:break;default:return fail("Field prop reusable programme has unsupported side effects");}}
+  for(uint32_t k=0;k<program.command_count;++k){const auto command=room.command(program.first_command+k);if(command.opcode==uint16_t(DialogueActionKind::ShowDialogue)){
+    bool present=false;for(uint32_t t=0;t<text_count();++t)present|=u32(record(3,t))==command.target_index;if(!present)return fail("Field story programme has an unbound dialogue");}
+   if(command.opcode==uint16_t(DialogueActionKind::AwaitChoices)&&(!choices_||!choices_->validate_program(command.target_index,room.string(program.source_path_string),program.command_count,error)))return fail("Field story choices are not bound to this programme");}
+ }
+ if(count(8)){const auto policy=prop_dialogue();unsigned found=0;for(uint32_t i=0;i<room.flag_count();++i)found+=room.string(room.flag(i).name_string)==text(policy.flag);if(found!=1)return fail("Field prop dialogue flag missing/ambiguous");}
+ if(choices_)for(uint32_t g=0;g<choices_->groups().size();++g){bool found=false;for(uint32_t i=0;i<programme_count();++i){const auto row=programme(i);const auto program=room.program(row.programme);for(uint32_t k=0;k<program.command_count;++k){const auto command=room.command(program.first_command+k);found|=command.opcode==uint16_t(DialogueActionKind::AwaitChoices)&&command.target_index==g;}}if(!found)return fail("Unused field story choice group");}
+ for(uint32_t i=0;i<interaction_count();++i){const auto rule=interaction(i);if(rule.actor>=room.actor_instance_count())return fail("Field interaction actor missing");
+  unsigned found=0;for(uint32_t j=0;j<map.count(FieldMapSection::Items);++j){const auto item=map.item(j);found+=item.kind==uint16_t(FieldItemKind::Actor)&&item.first==rule.actor;}if(found!=1)return fail("Field interaction NPC owner missing/ambiguous");
+  if(rule.flag.length){found=0;for(uint32_t j=0;j<room.flag_count();++j)found+=room.string(room.flag(j).name_string)==text(rule.flag);if(found!=1)return fail("Field interaction flag missing/ambiguous");}
+ }
+ for(uint32_t i=0;i<encounter_count();++i){const auto row=encounter(u32(record(4,i)));unsigned found=0;
+  for(uint32_t j=0;j<room.battle_count();++j){const auto battle=room.battle(j);if(battle.stable_id==row.battle){if(battle.actor_instance_index!=row.actor)return fail("Field story encounter actor differs");++found;}}
+  if(found!=1)return fail("Field story room encounter missing/ambiguous");
+  bool queued=false,requested=false;const auto program=room.program(row.programme);
+  for(uint32_t k=0;k<program.command_count;++k){const auto command=room.command(program.first_command+k);if(command.opcode!=uint16_t(DialogueActionKind::QueueBattle)&&command.opcode!=uint16_t(DialogueActionKind::RequestBattle))continue;
+   if(command.target_index>=room.battle_count()||room.battle(command.target_index).stable_id!=row.battle||command.actor_index!=row.actor)return fail("Field story battle command differs");
+   if(command.opcode==uint16_t(DialogueActionKind::QueueBattle))queued=true;else requested=true;
+  }
+  if(!queued||!requested)return fail("Field encounter programme lacks its queue/request lifecycle");
+ }
+ for(uint32_t i=0;i<override_count();++i){const auto row=basic_override(u32(record(5,i)));bool found=false;for(uint32_t j=0;j<items.count(ItemSection::Definitions);++j){const auto definition=items.definition(j);if(definition.id!=row.definition)continue;if(!(definition.flags&uint32_t(ItemDefinitionFlag::Equipment))||!definition.can_use)return fail("Field basic override is not admitted equipment");for(uint32_t b=0;b<encounter_count();++b)if(definition.equipment_slot!=encounter(u32(record(4,b))).basic_slot)return fail("Field basic slot differs from item binding");found=true;}if(!found)return fail("Field basic override definition is absent");}
+ error.clear();return true;
+}
+}

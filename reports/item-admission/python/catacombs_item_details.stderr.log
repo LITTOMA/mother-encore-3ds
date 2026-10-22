@@ -1,0 +1,13 @@
+test_historical_v1_exact_bytes (tests.test_catacombs_item_details.ExtendedItemDetails.test_historical_v1_exact_bytes) ... ok
+test_multidose_source_format_cannot_contain_literal_percent (tests.test_catacombs_item_details.ExtendedItemDetails.test_multidose_source_format_cannot_contain_literal_percent) ... ok
+test_new_opcode_operand_and_version_domains (tests.test_catacombs_item_details.ExtendedItemDetails.test_new_opcode_operand_and_version_domains) ... ok
+test_new_opcode_selects_v2_and_v1_rejects (tests.test_catacombs_item_details.ExtendedItemDetails.test_new_opcode_selects_v2_and_v1_rejects) ... ok
+test_source_numeric_percentage_and_poison_selector (tests.test_catacombs_item_details.ExtendedItemDetails.test_source_numeric_percentage_and_poison_selector) ... ok
+test_text_literals_still_reject_unparsed_control_characters (tests.test_catacombs_item_details.ExtendedItemDetails.test_text_literals_still_reject_unparsed_control_characters) ... ok
+test_unknown_percent_and_status_controls (tests.test_catacombs_item_details.ExtendedItemDetails.test_unknown_percent_and_status_controls) ... ok
+test_v2_header_cannot_claim_legacy_or_unknown_capability (tests.test_catacombs_item_details.ExtendedItemDetails.test_v2_header_cannot_claim_legacy_or_unknown_capability) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.007s
+
+OK

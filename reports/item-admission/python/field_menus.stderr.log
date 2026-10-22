@@ -1,0 +1,9 @@
+test_new_game_default_bytes_are_preserved (tests.test_field_menus.FieldMenuSourceTests.test_new_game_default_bytes_are_preserved) ... ok
+test_semantics_are_bound_to_source (tests.test_field_menus.FieldMenuSourceTests.test_semantics_are_bound_to_source) ... ok
+test_source_and_staged_bytes (tests.test_field_menus.FieldMenuSourceTests.test_source_and_staged_bytes) ... ok
+test_unknown_source_or_rule_does_not_rebind (tests.test_field_menus.FieldMenuSourceTests.test_unknown_source_or_rule_does_not_rebind) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 6.984s
+
+OK

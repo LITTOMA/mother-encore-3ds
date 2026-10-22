@@ -1,0 +1,37 @@
+{
+  "retired": [
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-ci-followups-1\\audio",
+      "bytes": 1109688,
+      "sha256": "738b164653186c59b5b5b9ee9ca4ea151cb2886aeadfa9e94d6c130c43cd2b81"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-ci-followups-1\\coin_scene_data",
+      "bytes": 18294960,
+      "sha256": "3a90e44035a088ecb4017d13a9121e5a31e3232619c7845d897956fa57ee3160"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-ci-followups-1\\coin_scene",
+      "bytes": 23240736,
+      "sha256": "4a4ef34f738a2de182eb92f16c5fba6c7bfda66af51e00fd1b4e429050afbce6"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-ci-followups-1\\coin_scene_source",
+      "bytes": 22995160,
+      "sha256": "c75401c33b3bcdf348d21d3d7deefad98c72506b1d2d0d3968ee54655eed41b1"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-audio-original-1\\project",
+      "bytes": 133025.0,
+      "scope": "Copied original observer project after successful engine exit and frozen input/result verification; receipts, producer, raw observations and logs retained"
+    },
+    {
+      "path": "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\coin-audio-original-2\\project",
+      "bytes": 133025.0,
+      "scope": "Copied original observer project after successful engine exit and frozen input/result verification; receipts, producer, raw observations and logs retained"
+    }
+  ],
+  "total_file_bytes": 65906594.0,
+  "baseline_archive_preserved": true,
+  "tested_game_preserved": true
+}

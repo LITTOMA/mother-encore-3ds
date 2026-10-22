@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "9ab217b6a5281e18848a769f11ae8248064111a3aa6281a6275514859a35e315",
+  "producer_sha256": "6f0cb22f3927334a746f419703f5a1391a392724ec82a64ab69c565db46796eb",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "outputs": {
+    "graphics/items/catacombs/hamburger.t3x": {
+      "bytes": 4117,
+      "sha256": "e6f4e6874992bcac7e7a3b6c84e9b14c87c466e23adf69a813e8a3af4d218859"
+    },
+    "graphics/items/catacombs/fries.t3x": {
+      "bytes": 4117,
+      "sha256": "582dc546bb5783a74dcb388122c0509f28ea6f11b7c68d276444be4b26404eb6"
+    },
+    "graphics/items/catacombs/antidote.t3x": {
+      "bytes": 4117,
+      "sha256": "afe8b0443200cc10e0b439ab1da81d0904fc8cab3bcbabbcb729d7d4342df8ec"
+    }
+  }
+}

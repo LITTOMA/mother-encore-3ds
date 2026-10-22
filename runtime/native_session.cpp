@@ -55,7 +55,15 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
    bool dose_ok=item.doses==p.doses;for(const auto&rule:data.field_items())if(rule.item_id==item.item_id&&rule.consume)dose_ok=item.doses>=1&&item.doses<=rule.doses;
    if(definition==item_no_index||!dose_ok||++counts[at]>p.total_count||(stored&&item.equipped))return fail(e,"Native session storage doses/count/equipment rejected");
    if(item.equipped&&(!(items.definition(definition).flags&uint32_t(ItemDefinitionFlag::Equipment))||std::all_of(p.boosts.begin(),p.boosts.end(),[](int32_t n){return n==0;})))return fail(e,"Native session unsupported storage equipment");
-   if(!p.required){auto a=std::find_if(data.acquisitions().begin(),data.acquisitions().end(),[&](const NativeSessionAcquisition&a){return a.item_id==item.item_id;});if(a==data.acquisitions().end())return fail(e,"Native session storage acquisition binding missing");bool flag=false;for(auto&f:(a->flag_policy==2?s.object_flags:s.flags))if(f.id==a->flag_id)flag=f.value;if(!flag)return fail(e,"Native session storage acquisition flag rejected");}
+   if(!p.required){
+    uint32_t available=0;bool bound=false;
+    for(const auto&a:data.acquisitions())if(a.item_id==item.item_id){
+     bound=true;bool flag=false;for(const auto&f:(a.flag_policy==2?s.object_flags:s.flags))if(f.id==a.flag_id)flag=f.value;
+     if(flag)available+=a.max_count;
+    }
+    if(!bound)return fail(e,"Native session storage acquisition binding missing");
+    if(counts[at]>available)return fail(e,"Native session storage acquisition flag/count rejected");
+   }
    return true;
   };
   for(auto&i:s.characters[0].inventory)if(!check(i,false))return false;
@@ -84,7 +92,7 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
 bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>session_save_max_bytes)return fail(e,"Native session pack size rejected");
  const auto schema=integer(p+8),capability=integer(p+20);
- if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>11||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
+ if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>12||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
  if(crc(p+24,n-24)!=integer(p+16))return fail(e,"Native session CRC mismatch");
  NativeSessionData d;Reader r{p+24,n-24};d.compatibility_={r.u32(),r.u32(),r.u32()};
  const auto template_size=r.count(uint32_t(session_save_max_bytes));
@@ -122,7 +130,9 @@ bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
    bool initial_false=false;for(const auto&flag:d.defaults_.flags)if(flag.id==policy.flag_id&&!flag.value)initial_false=true;
    if(policy.flag_policy==2){const auto slash=policy.flag_id.find('/');initial_false=slash>0&&slash!=policy.flag_id.npos&&slash+1<policy.flag_id.size()&&policy.flag_id.find('/',slash+1)==policy.flag_id.npos&&policy.flag_id.find("..") == policy.flag_id.npos&&policy.flag_id.find(':')==policy.flag_id.npos&&policy.flag_id.find('\\')==policy.flag_id.npos;
     for(const auto&f:d.defaults_.flags)if(f.id==policy.flag_id)initial_false=false;}
-   if(policy.item_id.empty()||policy.flag_id.empty()||!items.insert(policy.item_id).second||!flags.insert(policy.flag_id).second||!policy.doses||policy.doses>65535||policy.max_count!=1||initial_item||!initial_false||(policy.flag_policy!=1&&policy.flag_policy!=2)||(policy.flag_policy==1&&!contains(d.mutable_flags_,policy.flag_id)))return fail(e,"Native session acquired item policy rejected");
+   const bool duplicate_item=!items.insert(policy.item_id).second;
+   const bool changed_doses=std::any_of(d.acquisitions_.begin(),d.acquisitions_.end(),[&](const NativeSessionAcquisition&a){return a.item_id==policy.item_id&&a.doses!=policy.doses;});
+   if(policy.item_id.empty()||policy.flag_id.empty()||(schema<12&&duplicate_item)||changed_doses||!flags.insert(policy.flag_id).second||!policy.doses||policy.doses>65535||policy.max_count!=1||initial_item||!initial_false||(policy.flag_policy!=1&&policy.flag_policy!=2)||(policy.flag_policy==1&&!contains(d.mutable_flags_,policy.flag_id)))return fail(e,"Native session acquired item policy rejected");
    d.acquisitions_.push_back(std::move(policy));
   }
  }
@@ -130,10 +140,14 @@ bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
   d.storage_capacity_=r.u32();const auto n=r.count(16);std::set<std::string>unique;
   if(!d.storage_capacity_||d.storage_capacity_>4096||!n)return fail(e,"Native session storage policy capacity rejected");
   for(uint32_t i=0;i<n;++i){NativeSessionStoragePolicy p;p.item_id=r.text();p.doses=r.u32();p.total_count=r.u32();const auto required=r.u32();p.required=required!=0;for(auto&b:p.boosts){auto x=r.u32();if(x>65535)return fail(e,"Native session storage boost rejected");b=int32_t(x);}
-   if(p.item_id.empty()||!unique.insert(p.item_id).second||!p.doses||p.doses>65535||p.total_count!=1||required>1)return fail(e,"Native session storage item policy rejected");
+   if(p.item_id.empty()||!unique.insert(p.item_id).second||!p.doses||p.doses>65535||!p.total_count||p.total_count>16||((schema<12||required)&&p.total_count!=1)||required>1)return fail(e,"Native session storage item policy rejected");
    const auto&initial=d.defaults_.characters[0].inventory;auto item=std::find_if(initial.begin(),initial.end(),[&](const SessionItem&i){return i.item_id==p.item_id;});
    if(p.required){if(item==initial.end()||item->doses!=p.doses)return fail(e,"Native session required storage item binding rejected");}
-   else{if(item!=initial.end()||(schema<8&&std::any_of(p.boosts.begin(),p.boosts.end(),[](int32_t n){return n!=0;})))return fail(e,"Native session acquired storage equipment rejected");auto a=std::find_if(d.acquisitions_.begin(),d.acquisitions_.end(),[&](const NativeSessionAcquisition&a){return a.item_id==p.item_id;});if(a==d.acquisitions_.end()||a->doses!=p.doses||a->max_count!=p.total_count)return fail(e,"Native session storage acquired item binding rejected");}
+   else{
+    if(item!=initial.end()||(schema<8&&std::any_of(p.boosts.begin(),p.boosts.end(),[](int32_t n){return n!=0;})))return fail(e,"Native session acquired storage equipment rejected");
+    uint32_t total=0;for(const auto&a:d.acquisitions_)if(a.item_id==p.item_id){if(a.doses!=p.doses)return fail(e,"Native session storage acquired doses rejected");total+=a.max_count;}
+    if(!total||total!=p.total_count)return fail(e,"Native session storage acquired item binding rejected");
+   }
    d.storage_policies_.push_back(std::move(p));
   }
   for(auto&i:d.defaults_.characters[0].inventory)if(!unique.count(i.item_id))return fail(e,"Native session storage missing initial item");

@@ -29,3 +29,5 @@
 原始失败、成功及本地检查记录在 `reports/python-suite-shards/source-failure-1b`。分组属于测试组织，程序、游戏资源、规则和存档格式均不变。
 
 完整检查 `39440740886` 已在 `6fe2ab2e2645a563e5c501dbd6244c70d89f55e4` 全部通过：GCC 普通 276 项／ASan+UBSan 259 项，Clang 普通与 ASan+UBSan 各 259 项；真实 3DSX／CIA 及 377 项包内资源核对通过。完整原始日志见 `reports/python-suite-shards/full6fe-acceptance`。此前 Windows 元数据不包含 CI 的额外 GCC 专用检查，不能与完整运行计数混同。本次只追加验收记录；测试、构建与游戏文件和该已验证提交相同，未据此宣称模拟器或真机通过。
+
+同步已合并#98–#100的最新主线c5977644时，仅STATUS文档发生冲突，现已保留双方记录。实际索引对比确认：除文档／报告外，本整合树与完整通过运行39729365985的d273eeee仅差独立#106的工作流和对应策略测试，程序、资源及其余测试完全相同；这不称为本#103整合提交独立运行完整矩阵。源码对比记录见 `reports/python-four-shards/main100-union.json`。

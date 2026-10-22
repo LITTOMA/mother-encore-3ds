@@ -322,15 +322,60 @@
       "max_pp_boost": 0,
       "name": "Flea Bag",
       "source": "FleaBag"
+    },
+    {
+      "can_use": 0,
+      "description": "99% Beef.\nRestores [ItemValue] HP.",
+      "equipment_slot": 4294967295,
+      "flags": 2,
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "icon": 15,
+      "id": 5,
+      "max_hp_boost": 0,
+      "max_pp_boost": 0,
+      "name": "Hamburger",
+      "source": "Hamburger"
+    },
+    {
+      "can_use": 0,
+      "description": "Can be eaten with or without ketchup.\nRestores [ItemValue] HP.",
+      "equipment_slot": 4294967295,
+      "flags": 2,
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "icon": 16,
+      "id": 6,
+      "max_hp_boost": 0,
+      "max_pp_boost": 0,
+      "name": "Fries",
+      "source": "Fries"
+    },
+    {
+      "can_use": 0,
+      "description": "Cures poison ([Poisoned]).",
+      "equipment_slot": 4294967295,
+      "flags": 2,
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "icon": 17,
+      "id": 7,
+      "max_hp_boost": 0,
+      "max_pp_boost": 0,
+      "name": "Antidote",
+      "source": "Antidote"
     }
   ],
   "dependencies": {
+    "compatibility/reviews/catacombs-item-catalog-v0410.json": "4f2253e48d651dcdf23fa8fbf55e28204a6e99525fec3c0297ddcd08a5885453",
     "content/asset-receipts/graphics/basement/source.json": "42b194994aa279276d0cafdf82903d44fae08493f9465e9fa757aa2968a95dd8",
     "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
     "content/asset-receipts/graphics/battle/round/source.json": "343a2c612a7207427f52fbb41b140f55cc3bcbbd438303337a7d5213b9b0d30c",
+    "content/asset-receipts/graphics/items/catacombs/source.json": "0900edbf5f1c7fbc84244ae3baadd54540d045ca2f635dd34a4b68edf4690e95",
     "content/asset-receipts/graphics/items/source.json": "c7af22c95eb8b5d9ef194c980239911ce4c03384fc33d040ab590fc9cd4b7244",
     "content/asset-receipts/graphics/ui/field-rewards/source.json": "51114d79b3756070708ab4580430fb1a9a7fc3d7dda903843e283127a93b8b3d",
     "content/basement-items.json": "4ec9797e11054b3f20c73e0e4642c18c1ca01d4a9eabcbe37c0334747e11de57",
+    "content/catacombs-item-catalog.json": "9ab217b6a5281e18848a769f11ae8248064111a3aa6281a6275514859a35e315",
     "content/drawer-item-assets.json": "3d70e219f6b17725756a6c2d804ec3c3d1165341932ca9d67670ee0192432866",
     "content/field-rewards.json": "ae5f4844457bff31732cebd05aa0c03a4cb35ef9bc7f09e4d577898c580754c3",
     "content/native-drawer-item.json": "d869a977ad306af4d939f928665e004792361408236d1209763d3cc2544fc949"
@@ -1687,10 +1732,40 @@
       "rows": 1,
       "sha256": "18b94aecbc7f89bef3791e1526191f891bd616b5de0e631bfc94b714d3786a6f",
       "width": 20
+    },
+    {
+      "columns": 1,
+      "height": 20,
+      "id": 16,
+      "kind": 1,
+      "path": "graphics/items/catacombs/hamburger.t3x",
+      "rows": 1,
+      "sha256": "e6f4e6874992bcac7e7a3b6c84e9b14c87c466e23adf69a813e8a3af4d218859",
+      "width": 20
+    },
+    {
+      "columns": 1,
+      "height": 20,
+      "id": 17,
+      "kind": 1,
+      "path": "graphics/items/catacombs/fries.t3x",
+      "rows": 1,
+      "sha256": "582dc546bb5783a74dcb388122c0509f28ea6f11b7c68d276444be4b26404eb6",
+      "width": 20
+    },
+    {
+      "columns": 1,
+      "height": 20,
+      "id": 18,
+      "kind": 1,
+      "path": "graphics/items/catacombs/antidote.t3x",
+      "rows": 1,
+      "sha256": "afe8b0443200cc10e0b439ab1da81d0904fc8cab3bcbabbcb729d7d4342df8ec",
+      "width": 20
     }
   ],
   "schema": 1,
-  "scope": "Bounded initial single-owner inventory: equipped Baseball Cap, source list/info/cancel/restricted feedback only; no consumable action, random UID creation, saving, or additional inventory source. Pixel geometry retains320x180 with centered-top/bottom anchoring at400x240. Owner/item/instance IDs are deterministic adapter identities. Native L maps original ui_scope left trigger.; checked AsthmaSpray acquired definition/icon; raw rich description and consume action explicitly gated; original unequipped plastic bat acquisition, weapon slot and icon; ordinary bridge loot carrying and descriptions; source battle use remains disabled",
+  "scope": "Bounded initial single-owner inventory: equipped Baseball Cap, source list/info/cancel/restricted feedback only; no consumable action, random UID creation, saving, or additional inventory source. Pixel geometry retains320x180 with centered-top/bottom anchoring at400x240. Owner/item/instance IDs are deterministic adapter identities. Native L maps original ui_scope left trigger.; checked AsthmaSpray acquired definition/icon; raw rich description and consume action explicitly gated; original unequipped plastic bat acquisition, weapon slot and icon; ordinary bridge loot carrying and descriptions; source battle use remains disabled; reviewed catacombs item identities/art; effects and session acquisition require independent admission",
   "sounds": [
     {
       "audio_id": 1102,

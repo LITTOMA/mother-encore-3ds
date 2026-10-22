@@ -1,0 +1,25 @@
+[
+  {
+    "step": "items-source",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "build/full-port/regenerate-catalog-items.py"
+    ],
+    "returncode": 0,
+    "seconds": 6.422000000020489
+  },
+  {
+    "step": "items-pack",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/native_items.py",
+      "compile"
+    ],
+    "returncode": 1,
+    "seconds": 0.1720000000204891
+  }
+]

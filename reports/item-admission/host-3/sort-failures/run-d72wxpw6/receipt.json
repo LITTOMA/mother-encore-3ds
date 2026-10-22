@@ -1,0 +1,49 @@
+[
+  {
+    "command": [
+      "build/full-port/item-admission-host-2/catacombs_storage",
+      "build/full-port/catacombs-storage-fixture-2"
+    ],
+    "returncode": 0
+  },
+  {
+    "command": [
+      "build/full-port/item-admission-host-2/catacombs_storage",
+      "build/full-port/catacombs-storage-fixture-2",
+      "build/full-port/catacombs-storage-fixture-2/bad-observation-0.txt"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-admission-host-2/catacombs_storage",
+      "build/full-port/catacombs-storage-fixture-2",
+      "build/full-port/catacombs-storage-fixture-2/bad-observation-1.txt"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-admission-host-2/catacombs_storage",
+      "build/full-port/catacombs-storage-fixture-2",
+      "build/full-port/catacombs-storage-fixture-2/bad-observation-2.txt"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-admission-host-2/catacombs_storage",
+      "build/full-port/catacombs-storage-fixture-2",
+      "build/full-port/catacombs-storage-fixture-2/bad-observation-3.txt"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-admission-host-2/catacombs_storage",
+      "build/full-port/catacombs-storage-fixture-2",
+      "build/full-port/catacombs-storage-fixture-2/bad-observation-4.txt"
+    ],
+    "returncode": 1
+  }
+]

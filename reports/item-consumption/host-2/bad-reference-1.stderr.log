@@ -1,0 +1,1 @@
+Item consume check 37: std::memcmp(source.data(),"ENCCNSR1",8)==0; 

@@ -1,0 +1,1483 @@
+﻿2026-10-22T10:48:56.1653327Z Current runner version: '2.338.0'
+2026-10-22T10:48:56.1669863Z ##[group]Runner Image Provisioner
+2026-10-22T10:48:56.1670408Z Hosted Compute Agent
+2026-10-22T10:48:56.1670838Z Version: 20261021.618
+2026-10-22T10:48:56.1671304Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-22T10:48:56.1671771Z Build Date: 2026-10-21T00:45:21Z
+2026-10-22T10:48:56.1672211Z Worker ID: {abcbbcbb-f799-4bd6-aa66-1036701bf9b7}
+2026-10-22T10:48:56.1672861Z Region: centralus
+2026-10-22T10:48:56.1673260Z Cloud: Azure
+2026-10-22T10:48:56.1673632Z ##[endgroup]
+2026-10-22T10:48:56.1674410Z ##[group]Operating System
+2026-10-22T10:48:56.1674841Z Ubuntu
+2026-10-22T10:48:56.1675171Z 24.04.5
+2026-10-22T10:48:56.1675519Z LTS
+2026-10-22T10:48:56.1675928Z ##[endgroup]
+2026-10-22T10:48:56.1676256Z ##[group]Runner Image
+2026-10-22T10:48:56.1676666Z Image: ubuntu-24.04
+2026-10-22T10:48:56.1677021Z Version: 20261021.345.10
+2026-10-22T10:48:56.1678108Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261021.345/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-22T10:48:56.1679008Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261021.345
+2026-10-22T10:48:56.1679630Z ##[endgroup]
+2026-10-22T10:48:56.1680292Z ##[group]GITHUB_TOKEN Permissions
+2026-10-22T10:48:56.1681701Z Contents: read
+2026-10-22T10:48:56.1682066Z Metadata: read
+2026-10-22T10:48:56.1682483Z ##[endgroup]
+2026-10-22T10:48:56.1684050Z Secret source: Actions
+2026-10-22T10:48:56.1684683Z Cache mode: write
+2026-10-22T10:48:56.1685386Z Prepare workflow directory
+2026-10-22T10:48:56.2005314Z Prepare all required actions
+2026-10-22T10:48:56.2037046Z Getting action download info
+2026-10-22T10:48:56.4138476Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-22T10:48:57.6127797Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-22T10:48:57.8019823Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-22T10:48:58.1164098Z Complete job name: Host sanitizer (clang)
+2026-10-22T10:48:58.1649504Z ##[group]Run actions/checkout@v4
+2026-10-22T10:48:58.1649816Z with:
+2026-10-22T10:48:58.1649975Z   persist-credentials: false
+2026-10-22T10:48:58.1650147Z   submodules: false
+2026-10-22T10:48:58.1650309Z   repository: LITTOMA/mother-encore-3ds
+2026-10-22T10:48:58.1651920Z   token: ***
+2026-10-22T10:48:58.1652064Z   ssh-strict: true
+2026-10-22T10:48:58.1652209Z   ssh-user: git
+2026-10-22T10:48:58.1652348Z   clean: true
+2026-10-22T10:48:58.1652506Z   sparse-checkout-cone-mode: true
+2026-10-22T10:48:58.1652909Z   fetch-depth: 1
+2026-10-22T10:48:58.1653061Z   fetch-tags: false
+2026-10-22T10:48:58.1653221Z   show-progress: true
+2026-10-22T10:48:58.1653368Z   lfs: false
+2026-10-22T10:48:58.1653510Z   set-safe-directory: true
+2026-10-22T10:48:58.1653690Z   allow-unsafe-pr-checkout: false
+2026-10-22T10:48:58.1653951Z env:
+2026-10-22T10:48:58.1654082Z   CC: clang
+2026-10-22T10:48:58.1654218Z   CXX: clang++
+2026-10-22T10:48:58.1654371Z   BUILD_JOBS: 4
+2026-10-22T10:48:58.1654544Z   GIT_OPTIONAL_LOCKS: 0
+2026-10-22T10:48:58.1654701Z ##[endgroup]
+2026-10-22T10:48:58.2382850Z Syncing repository: LITTOMA/mother-encore-3ds
+2026-10-22T10:48:58.2384155Z ##[group]Getting Git version info
+2026-10-22T10:48:58.2384596Z Working directory is '/home/runner/work/mother-encore-3ds/mother-encore-3ds'
+2026-10-22T10:48:58.2435080Z [command]/usr/bin/git version
+2026-10-22T10:48:58.5660910Z git version 2.55.0
+2026-10-22T10:48:58.5674838Z ##[endgroup]
+2026-10-22T10:48:58.5685424Z Temporarily overriding HOME='/home/runner/work/_temp/99517d0a-5d32-4867-844f-53fc0ec8d6a6' before making global git config changes
+2026-10-22T10:48:58.5686158Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T10:48:58.5690236Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/mother-encore-3ds/mother-encore-3ds
+2026-10-22T10:48:58.6304797Z Deleting the contents of '/home/runner/work/mother-encore-3ds/mother-encore-3ds'
+2026-10-22T10:48:58.6307604Z ##[group]Initializing the repository
+2026-10-22T10:48:58.6310469Z [command]/usr/bin/git init /home/runner/work/mother-encore-3ds/mother-encore-3ds
+2026-10-22T10:48:58.7315353Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-22T10:48:58.7316251Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-22T10:48:58.7317175Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-22T10:48:58.7317752Z hint: call:
+2026-10-22T10:48:58.7317967Z hint:
+2026-10-22T10:48:58.7318294Z hint: 	git config --global init.defaultBranch <name>
+2026-10-22T10:48:58.7318618Z hint:
+2026-10-22T10:48:58.7318923Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-22T10:48:58.7319413Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-22T10:48:58.7319791Z hint:
+2026-10-22T10:48:58.7320009Z hint: 	git branch -m <name>
+2026-10-22T10:48:58.7320283Z hint:
+2026-10-22T10:48:58.7320625Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-22T10:48:58.7321119Z Initialized empty Git repository in /home/runner/work/mother-encore-3ds/mother-encore-3ds/.git/
+2026-10-22T10:48:58.7331225Z [command]/usr/bin/git remote add origin https://github.com/LITTOMA/mother-encore-3ds
+2026-10-22T10:48:58.7925282Z ##[endgroup]
+2026-10-22T10:48:58.7926829Z ##[group]Disabling automatic garbage collection
+2026-10-22T10:48:58.7928726Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-22T10:48:58.7967427Z ##[endgroup]
+2026-10-22T10:48:58.7967812Z ##[group]Setting up auth
+2026-10-22T10:48:58.7973071Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T10:48:58.8006539Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T10:48:59.3061105Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T10:48:59.3097626Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T10:48:59.3297641Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T10:48:59.3336746Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T10:48:59.3531672Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-22T10:48:59.3573536Z ##[endgroup]
+2026-10-22T10:48:59.3574010Z ##[group]Fetching the repository
+2026-10-22T10:48:59.3580800Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +bb743a4fee0c60ca9ffe2e794e46f2b94ed331e0:refs/remotes/origin/codex/catacombs-item-catalog
+2026-10-22T10:49:03.7683262Z From https://github.com/LITTOMA/mother-encore-3ds
+2026-10-22T10:49:03.7683850Z  * [new ref]         bb743a4fee0c60ca9ffe2e794e46f2b94ed331e0 -> origin/codex/catacombs-item-catalog
+2026-10-22T10:49:03.7687820Z ##[endgroup]
+2026-10-22T10:49:03.7688234Z ##[group]Determining the checkout info
+2026-10-22T10:49:03.7690184Z ##[endgroup]
+2026-10-22T10:49:03.7695112Z [command]/usr/bin/git sparse-checkout disable
+2026-10-22T10:49:03.8104123Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-22T10:49:03.8487690Z ##[group]Checking out the ref
+2026-10-22T10:49:03.8528652Z [command]/usr/bin/git checkout --progress --force -B codex/catacombs-item-catalog refs/remotes/origin/codex/catacombs-item-catalog
+2026-10-22T10:49:04.8688211Z Updating files:  92% (11431/12406)
+2026-10-22T10:49:04.8761772Z Updating files:  93% (11538/12406)
+2026-10-22T10:49:04.8829075Z Updating files:  94% (11662/12406)
+2026-10-22T10:49:04.8887126Z Updating files:  95% (11786/12406)
+2026-10-22T10:49:04.8959333Z Updating files:  96% (11910/12406)
+2026-10-22T10:49:04.9032330Z Updating files:  97% (12034/12406)
+2026-10-22T10:49:04.9180918Z Updating files:  98% (12158/12406)
+2026-10-22T10:49:04.9268593Z Updating files:  99% (12282/12406)
+2026-10-22T10:49:04.9268866Z Updating files: 100% (12406/12406)
+2026-10-22T10:49:04.9269110Z Updating files: 100% (12406/12406), done.
+2026-10-22T10:49:04.9557229Z Switched to a new branch 'codex/catacombs-item-catalog'
+2026-10-22T10:49:04.9675300Z branch 'codex/catacombs-item-catalog' set up to track 'origin/codex/catacombs-item-catalog'.
+2026-10-22T10:49:04.9774732Z ##[endgroup]
+2026-10-22T10:49:04.9823382Z [command]/usr/bin/git log -1 --format=%H
+2026-10-22T10:49:04.9855577Z bb743a4fee0c60ca9ffe2e794e46f2b94ed331e0
+2026-10-22T10:49:04.9864930Z ##[group]Removing auth
+2026-10-22T10:49:04.9871764Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T10:49:04.9906621Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T10:49:05.0124342Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T10:49:05.0155340Z http.https://github.com/.extraheader
+2026-10-22T10:49:05.0161795Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-22T10:49:05.0266489Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T10:49:05.0541803Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T10:49:05.0543396Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T10:49:05.0729183Z ##[endgroup]
+2026-10-22T10:49:05.1079328Z ##[group]Run actions/setup-python@v5
+2026-10-22T10:49:05.1079506Z with:
+2026-10-22T10:49:05.1079628Z   python-version: 3.12
+2026-10-22T10:49:05.1079768Z   check-latest: false
+2026-10-22T10:49:05.1081256Z   token: ***
+2026-10-22T10:49:05.1081386Z   update-environment: true
+2026-10-22T10:49:05.1081531Z   allow-prereleases: false
+2026-10-22T10:49:05.1081668Z   freethreaded: false
+2026-10-22T10:49:05.1081794Z env:
+2026-10-22T10:49:05.1081906Z   CC: clang
+2026-10-22T10:49:05.1082020Z   CXX: clang++
+2026-10-22T10:49:05.1082132Z   BUILD_JOBS: 4
+2026-10-22T10:49:05.1082251Z   GIT_OPTIONAL_LOCKS: 0
+2026-10-22T10:49:05.1082382Z ##[endgroup]
+2026-10-22T10:49:05.2063284Z ##[group]Installed versions
+2026-10-22T10:49:05.3506579Z (node:2147) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T10:49:05.3507233Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T10:49:05.3507717Z Successfully set up CPython (3.12.15)
+2026-10-22T10:49:05.3508391Z ##[endgroup]
+2026-10-22T10:49:05.4240802Z ##[group]Run python -m pip install Pillow==12.3.0 PyYAML==6.0.3 cmake==3.31.10
+2026-10-22T10:49:05.4241177Z [36;1mpython -m pip install Pillow==12.3.0 PyYAML==6.0.3 cmake==3.31.10[0m
+2026-10-22T10:49:05.5996267Z shell: /usr/bin/bash -e {0}
+2026-10-22T10:49:05.5996441Z env:
+2026-10-22T10:49:05.5996553Z   CC: clang
+2026-10-22T10:49:05.5996665Z   CXX: clang++
+2026-10-22T10:49:05.5996780Z   BUILD_JOBS: 4
+2026-10-22T10:49:05.5996897Z   GIT_OPTIONAL_LOCKS: 0
+2026-10-22T10:49:05.5997072Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:05.5997327Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T10:49:05.5997567Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:05.5997784Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:05.5997999Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:05.5998446Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T10:49:05.5998632Z ##[endgroup]
+2026-10-22T10:49:11.2825610Z Collecting Pillow==12.3.0
+2026-10-22T10:49:11.3674545Z   Downloading pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+2026-10-22T10:49:11.7097239Z Collecting PyYAML==6.0.3
+2026-10-22T10:49:11.7247187Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-10-22T10:49:11.7886045Z Collecting cmake==3.31.10
+2026-10-22T10:49:11.8045335Z   Downloading cmake-3.31.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.3 kB)
+2026-10-22T10:49:11.8247949Z Downloading pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.9 MB)
+2026-10-22T10:49:11.9887952Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 53.4 MB/s  0:00:00
+2026-10-22T10:49:12.0039678Z Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+2026-10-22T10:49:12.0149330Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 68.9 MB/s  0:00:00
+2026-10-22T10:49:12.0346856Z Downloading cmake-3.31.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (27.8 MB)
+2026-10-22T10:49:12.3798223Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 27.8/27.8 MB 80.3 MB/s  0:00:00
+2026-10-22T10:49:12.7631795Z Installing collected packages: PyYAML, Pillow, cmake
+2026-10-22T10:49:13.4845920Z 
+2026-10-22T10:49:13.4854096Z Successfully installed Pillow-12.3.0 PyYAML-6.0.3 cmake-3.31.10
+2026-10-22T10:49:13.5329805Z ##[group]Run sudo apt-get update
+2026-10-22T10:49:13.5330030Z [36;1msudo apt-get update[0m
+2026-10-22T10:49:13.5330229Z [36;1msudo apt-get install --no-install-recommends --yes ffmpeg[0m
+2026-10-22T10:49:13.5330436Z [36;1mffmpeg -version[0m
+2026-10-22T10:49:13.5330568Z [36;1mffprobe -version[0m
+2026-10-22T10:49:13.5373915Z shell: /usr/bin/bash -e {0}
+2026-10-22T10:49:13.5374076Z env:
+2026-10-22T10:49:13.5374183Z   CC: clang
+2026-10-22T10:49:13.5374317Z   CXX: clang++
+2026-10-22T10:49:13.5374424Z   BUILD_JOBS: 4
+2026-10-22T10:49:13.5374540Z   GIT_OPTIONAL_LOCKS: 0
+2026-10-22T10:49:13.5374711Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:13.5374955Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T10:49:13.5375197Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:13.5375413Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:13.5375657Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:13.5375876Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T10:49:13.5376058Z ##[endgroup]
+2026-10-22T10:49:13.6945325Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-22T10:49:13.7119452Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-22T10:49:13.7764644Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-22T10:49:13.7773239Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-22T10:49:13.7946559Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-22T10:49:13.8089449Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-22T10:49:13.9397991Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [630 kB]
+2026-10-22T10:49:13.9705178Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [567 kB]
+2026-10-22T10:49:14.0652880Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1400 kB]
+2026-10-22T10:49:14.0715618Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1706 kB]
+2026-10-22T10:49:27.8016987Z Fetched 4685 kB in 1s (7386 kB/s)
+2026-10-22T10:49:28.4236279Z Reading package lists...
+2026-10-22T10:49:28.4560195Z Reading package lists...
+2026-10-22T10:49:28.6180548Z Building dependency tree...
+2026-10-22T10:49:28.6185874Z Reading state information...
+2026-10-22T10:49:28.7366289Z The following additional packages will be installed:
+2026-10-22T10:49:28.7366718Z   libass9 libasyncns0 libavc1394-0 libavcodec60 libavdevice60 libavfilter9
+2026-10-22T10:49:28.7373835Z   libavformat60 libavutil58 libblas3 libbluray2 libbs2b0 libcaca0
+2026-10-22T10:49:28.7374523Z   libcdio-cdda2t64 libcdio-paranoia2t64 libcdio19t64 libchromaprint1 libcjson1
+2026-10-22T10:49:28.7374993Z   libcodec2-1.2 libdav1d7 libdc1394-25 libdecor-0-0 libflac12t64 libflite1
+2026-10-22T10:49:28.7375465Z   libgme0 libgsm1 libhwy1t64 libiec61883-0 libjack-jackd2-0 libjxl0.7
+2026-10-22T10:49:28.7375855Z   liblapack3 liblilv-0-0 libmbedcrypto7t64 libmp3lame0 libmpg123-0t64
+2026-10-22T10:49:28.7376153Z   libmysofa1 libopenal-data libopenal1 libopenmpt0t64 libopus0 libplacebo338
+2026-10-22T10:49:28.7376457Z   libpocketsphinx3 libpostproc57 libpulse0 librav1e0 libraw1394-11 librist4
+2026-10-22T10:49:28.7376769Z   librsvg2-2 librubberband2 libsamplerate0 libsdl2-2.0-0 libserd-0-0 libshine3
+2026-10-22T10:49:28.7377081Z   libsndfile1 libsndio7.0 libsord-0-0 libsoxr0 libspeex1 libsphinxbase3t64
+2026-10-22T10:49:28.7377369Z   libsratom-0-0 libsrt1.5-gnutls libssh-gcrypt-4 libsvtav1enc1d1
+2026-10-22T10:49:28.7377697Z   libswresample4 libswscale7 libtheora0 libtwolame0 libudfread0 libunibreak5
+2026-10-22T10:49:28.7378101Z   libva-drm2 libva-x11-2 libva2 libvdpau1 libvidstab1.1 libvorbisenc2 libvpl2
+2026-10-22T10:49:28.7378397Z   libvpx9 libx264-164 libx265-199 libxcb-shape0 libxv1 libxvidcore4 libzimg2
+2026-10-22T10:49:28.7379135Z   libzix-0-0 libzvbi-common libzvbi0t64 ocl-icd-libopencl1
+2026-10-22T10:49:28.7379351Z Suggested packages:
+2026-10-22T10:49:28.7379548Z   ffmpeg-doc libcuda1 libnvcuvid1 libnvidia-encode1 libbluray-bdj jackd2
+2026-10-22T10:49:28.7379851Z   libportaudio2 opus-tools pulseaudio libraw1394-doc librsvg2-bin serdi sndiod
+2026-10-22T10:49:28.7380103Z   sordi speex opencl-icd
+2026-10-22T10:49:28.7380245Z Recommended packages:
+2026-10-22T10:49:28.7380474Z   libaacs0 default-libdecor-0-plugin-1 | libdecor-0-plugin-1
+2026-10-22T10:49:28.7380797Z   pocketsphinx-en-us librsvg2-common va-driver-all | va-driver
+2026-10-22T10:49:28.7381310Z   vdpau-driver-all | vdpau-driver
+2026-10-22T10:49:28.8263293Z The following NEW packages will be installed:
+2026-10-22T10:49:28.8263768Z   ffmpeg libass9 libasyncns0 libavc1394-0 libavcodec60 libavdevice60
+2026-10-22T10:49:28.8264289Z   libavfilter9 libavformat60 libavutil58 libblas3 libbluray2 libbs2b0 libcaca0
+2026-10-22T10:49:28.8264901Z   libcdio-cdda2t64 libcdio-paranoia2t64 libcdio19t64 libchromaprint1 libcjson1
+2026-10-22T10:49:28.8265441Z   libcodec2-1.2 libdav1d7 libdc1394-25 libdecor-0-0 libflac12t64 libflite1
+2026-10-22T10:49:28.8265937Z   libgme0 libgsm1 libhwy1t64 libiec61883-0 libjack-jackd2-0 libjxl0.7
+2026-10-22T10:49:28.8266432Z   liblapack3 liblilv-0-0 libmbedcrypto7t64 libmp3lame0 libmpg123-0t64
+2026-10-22T10:49:28.8266970Z   libmysofa1 libopenal-data libopenal1 libopenmpt0t64 libopus0 libplacebo338
+2026-10-22T10:49:28.8273280Z   libpocketsphinx3 libpostproc57 libpulse0 librav1e0 libraw1394-11 librist4
+2026-10-22T10:49:28.8273748Z   librsvg2-2 librubberband2 libsamplerate0 libsdl2-2.0-0 libserd-0-0 libshine3
+2026-10-22T10:49:28.8274087Z   libsndfile1 libsndio7.0 libsord-0-0 libsoxr0 libspeex1 libsphinxbase3t64
+2026-10-22T10:49:28.8274347Z   libsratom-0-0 libsrt1.5-gnutls libssh-gcrypt-4 libsvtav1enc1d1
+2026-10-22T10:49:28.8274603Z   libswresample4 libswscale7 libtheora0 libtwolame0 libudfread0 libunibreak5
+2026-10-22T10:49:28.8274893Z   libva-drm2 libva-x11-2 libva2 libvdpau1 libvidstab1.1 libvorbisenc2 libvpl2
+2026-10-22T10:49:28.8275158Z   libvpx9 libx264-164 libx265-199 libxcb-shape0 libxv1 libxvidcore4 libzimg2
+2026-10-22T10:49:28.8275399Z   libzix-0-0 libzvbi-common libzvbi0t64 ocl-icd-libopencl1
+2026-10-22T10:49:28.8449833Z 0 upgraded, 87 newly installed, 0 to remove and 1 not upgraded.
+2026-10-22T10:49:28.8450460Z Need to get 62.8 MB of archives.
+2026-10-22T10:49:28.8450662Z After this operation, 173 MB of additional disk space will be used.
+2026-10-22T10:49:28.8450887Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-22T10:49:28.8966665Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libva2 amd64 2.20.0-2ubuntu0.2 [66.4 kB]
+2026-10-22T10:49:28.9262113Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libva-drm2 amd64 2.20.0-2ubuntu0.2 [7124 B]
+2026-10-22T10:49:28.9535750Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libva-x11-2 amd64 2.20.0-2ubuntu0.2 [12.0 kB]
+2026-10-22T10:49:28.9810274Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libvdpau1 amd64 1.5-2build1 [27.8 kB]
+2026-10-22T10:49:29.0085340Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libvpl2 amd64 2023.3.0-1build1 [99.8 kB]
+2026-10-22T10:49:29.0367675Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 ocl-icd-libopencl1 amd64 2.3.2-1build1 [38.5 kB]
+2026-10-22T10:49:29.0643482Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libavutil58 amd64 7:6.1.1-3ubuntu5 [401 kB]
+2026-10-22T10:49:29.0951833Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libcodec2-1.2 amd64 1.2.0-2build1 [8998 kB]
+2026-10-22T10:49:29.2240965Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libdav1d7 amd64 1.4.1-1build1 [604 kB]
+2026-10-22T10:49:29.2635645Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libgsm1 amd64 1.0.22-1build1 [27.8 kB]
+2026-10-22T10:49:29.2983883Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libhwy1t64 amd64 1.0.7-8.1build1 [584 kB]
+2026-10-22T10:49:29.3375824Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libjxl0.7 amd64 0.7.0-10.2ubuntu6.1 [1001 kB]
+2026-10-22T10:49:29.3787036Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libmp3lame0 amd64 3.100-6build1 [142 kB]
+2026-10-22T10:49:29.4099718Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libopus0 amd64 1.4-1build1 [208 kB]
+2026-10-22T10:49:29.4387822Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 librav1e0 amd64 0.7.1-2 [1022 kB]
+2026-10-22T10:49:29.4748843Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 librsvg2-2 amd64 2.58.0+dfsg-1ubuntu0.1 [2141 kB]
+2026-10-22T10:49:29.5206378Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libshine3 amd64 3.1.1-2build1 [23.2 kB]
+2026-10-22T10:49:29.5484554Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libspeex1 amd64 1.2.1-2ubuntu2.24.04.1 [59.6 kB]
+2026-10-22T10:49:29.6325215Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libsvtav1enc1d1 amd64 1.7.0+dfsg-2build1 [2425 kB]
+2026-10-22T10:49:29.6877873Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libsoxr0 amd64 0.1.3-4build3 [80.0 kB]
+2026-10-22T10:49:29.7560544Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libswresample4 amd64 7:6.1.1-3ubuntu5 [63.8 kB]
+2026-10-22T10:49:29.7909109Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libtheora0 amd64 1.1.1+dfsg.1-16.1build3 [211 kB]
+2026-10-22T10:49:29.8268860Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libtwolame0 amd64 0.4.0-2build3 [52.3 kB]
+2026-10-22T10:49:29.8623013Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libvorbisenc2 amd64 1.3.7-1build3 [80.8 kB]
+2026-10-22T10:49:29.8975042Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libvpx9 amd64 1.14.0-1ubuntu2.3 [1143 kB]
+2026-10-22T10:49:29.9395886Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libx264-164 amd64 2:0.164.3108+git31e19f9-1 [604 kB]
+2026-10-22T10:49:29.9814080Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libx265-199 amd64 3.5-2build1 [1226 kB]
+2026-10-22T10:49:30.0241434Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libxvidcore4 amd64 2:1.3.7-1build1 [219 kB]
+2026-10-22T10:49:30.0599022Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libzvbi-common all 0.2.42-2 [42.4 kB]
+2026-10-22T10:49:30.1010346Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libzvbi0t64 amd64 0.2.42-2 [261 kB]
+2026-10-22T10:49:30.1369195Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libavcodec60 amd64 7:6.1.1-3ubuntu5 [5851 kB]
+2026-10-22T10:49:30.2323626Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libraw1394-11 amd64 2.1.2-2build3 [26.2 kB]
+2026-10-22T10:49:30.2733569Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libavc1394-0 amd64 0.5.4-5build3 [15.4 kB]
+2026-10-22T10:49:30.3142973Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libunibreak5 amd64 5.1-2build1 [25.0 kB]
+2026-10-22T10:49:30.3568607Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libass9 amd64 1:0.17.1-2build1 [104 kB]
+2026-10-22T10:49:30.3982149Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libudfread0 amd64 1.1.2-1build1 [19.0 kB]
+2026-10-22T10:49:30.4393085Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libbluray2 amd64 1:1.3.4-1build1 [159 kB]
+2026-10-22T10:49:30.5248236Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libchromaprint1 amd64 1.5.1-5 [30.5 kB]
+2026-10-22T10:49:30.5661169Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libgme0 amd64 0.6.3-7build1 [134 kB]
+2026-10-22T10:49:30.6076540Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libmpg123-0t64 amd64 1.32.5-1ubuntu1.1 [169 kB]
+2026-10-22T10:49:30.6501048Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libopenmpt0t64 amd64 0.7.3-1.1build3 [647 kB]
+2026-10-22T10:49:30.6939494Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libcjson1 amd64 1.7.17-1 [24.8 kB]
+2026-10-22T10:49:30.7360849Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libmbedcrypto7t64 amd64 2.28.8-1 [209 kB]
+2026-10-22T10:49:30.7757579Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 librist4 amd64 0.2.10+dfsg-2 [74.9 kB]
+2026-10-22T10:49:30.8151484Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libsrt1.5-gnutls amd64 1.5.3-1build2 [316 kB]
+2026-10-22T10:49:30.8553827Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libssh-gcrypt-4 amd64 0.10.6-2ubuntu0.5 [226 kB]
+2026-10-22T10:49:30.8951116Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libavformat60 amd64 7:6.1.1-3ubuntu5 [1153 kB]
+2026-10-22T10:49:30.9385115Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libbs2b0 amd64 3.1.0+dfsg-7build1 [10.6 kB]
+2026-10-22T10:49:30.9732976Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libflite1 amd64 2.2-6build3 [13.6 MB]
+2026-10-22T10:49:31.1629750Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libserd-0-0 amd64 0.32.2-1 [43.6 kB]
+2026-10-22T10:49:31.2041199Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libzix-0-0 amd64 0.4.2-2build1 [23.6 kB]
+2026-10-22T10:49:31.2453103Z Get:53 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libsord-0-0 amd64 0.16.16-2build1 [15.8 kB]
+2026-10-22T10:49:31.2862906Z Get:54 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libsratom-0-0 amd64 0.6.16-1build1 [17.3 kB]
+2026-10-22T10:49:31.3274268Z Get:55 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 liblilv-0-0 amd64 0.24.22-1build1 [41.0 kB]
+2026-10-22T10:49:31.3688236Z Get:56 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libmysofa1 amd64 1.3.2+dfsg-2ubuntu2 [1158 kB]
+2026-10-22T10:49:31.4147923Z Get:57 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libplacebo338 amd64 6.338.2-2build1 [2654 kB]
+2026-10-22T10:49:31.4683317Z Get:58 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libblas3 amd64 3.12.0-3build1.1 [238 kB]
+2026-10-22T10:49:31.5104346Z Get:59 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 liblapack3 amd64 3.12.0-3build1.1 [2646 kB]
+2026-10-22T10:49:31.5635701Z Get:60 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libasyncns0 amd64 0.8-6build4 [11.3 kB]
+2026-10-22T10:49:31.6045767Z Get:61 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libflac12t64 amd64 1.4.3+ds-2.1ubuntu2 [197 kB]
+2026-10-22T10:49:31.6461645Z Get:62 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libsndfile1 amd64 1.2.2-1ubuntu5.24.04.1 [209 kB]
+2026-10-22T10:49:31.6886278Z Get:63 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libpulse0 amd64 1:16.1+dfsg1-2ubuntu10.1 [292 kB]
+2026-10-22T10:49:31.7307502Z Get:64 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libsphinxbase3t64 amd64 0.8+5prealpha+1-17build2 [126 kB]
+2026-10-22T10:49:31.7722133Z Get:65 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libpocketsphinx3 amd64 0.8.0+real5prealpha+1-15ubuntu5 [133 kB]
+2026-10-22T10:49:31.8005078Z Get:66 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libpostproc57 amd64 7:6.1.1-3ubuntu5 [49.9 kB]
+2026-10-22T10:49:31.8284128Z Get:67 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libsamplerate0 amd64 0.2.2-4build1 [1344 kB]
+2026-10-22T10:49:31.8675375Z Get:68 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 librubberband2 amd64 3.3.0+dfsg-2build1 [130 kB]
+2026-10-22T10:49:31.8960098Z Get:69 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libswscale7 amd64 7:6.1.1-3ubuntu5 [193 kB]
+2026-10-22T10:49:31.9249482Z Get:70 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libvidstab1.1 amd64 1.1.0-2build1 [38.5 kB]
+2026-10-22T10:49:31.9532207Z Get:71 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libzimg2 amd64 3.0.5+ds1-1build1 [254 kB]
+2026-10-22T10:49:31.9823504Z Get:72 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libavfilter9 amd64 7:6.1.1-3ubuntu5 [4235 kB]
+2026-10-22T10:49:32.0467904Z Get:73 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libcaca0 amd64 0.99.beta20-4ubuntu0.2 [209 kB]
+2026-10-22T10:49:32.0803097Z Get:74 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libcdio19t64 amd64 2.1.0-4.1ubuntu1.2 [62.4 kB]
+2026-10-22T10:49:32.1083292Z Get:75 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libcdio-cdda2t64 amd64 10.2+2.0.1-1.1build2 [16.5 kB]
+2026-10-22T10:49:32.1877053Z Get:76 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libcdio-paranoia2t64 amd64 10.2+2.0.1-1.1build2 [16.6 kB]
+2026-10-22T10:49:32.2196275Z Get:77 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libdc1394-25 amd64 2.2.6-4build1 [90.1 kB]
+2026-10-22T10:49:32.2521275Z Get:78 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libiec61883-0 amd64 1.2.0-6build1 [24.5 kB]
+2026-10-22T10:49:32.2841410Z Get:79 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjack-jackd2-0 amd64 1.9.21~dfsg-3ubuntu3 [289 kB]
+2026-10-22T10:49:32.3188056Z Get:80 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libopenal-data all 1:1.23.1-4build1 [161 kB]
+2026-10-22T10:49:32.3515452Z Get:81 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libsndio7.0 amd64 1.9.0-0.3build3 [29.6 kB]
+2026-10-22T10:49:32.3838850Z Get:82 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libopenal1 amd64 1:1.23.1-4build1 [540 kB]
+2026-10-22T10:49:32.4202765Z Get:83 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libdecor-0-0 amd64 0.2.2-1build2 [16.5 kB]
+2026-10-22T10:49:32.4522969Z Get:84 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libsdl2-2.0-0 amd64 2.30.0+dfsg-1ubuntu3.1 [686 kB]
+2026-10-22T10:49:32.4936238Z Get:85 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxcb-shape0 amd64 1.15-1ubuntu2 [6100 B]
+2026-10-22T10:49:32.5281545Z Get:86 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxv1 amd64 2:1.0.11-1.1build1 [10.7 kB]
+2026-10-22T10:49:32.5627586Z Get:87 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libavdevice60 amd64 7:6.1.1-3ubuntu5 [82.3 kB]
+2026-10-22T10:49:32.5977007Z Get:88 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 ffmpeg amd64 7:6.1.1-3ubuntu5 [1879 kB]
+2026-10-22T10:49:32.9230477Z Fetched 62.8 MB in 4s (16.6 MB/s)
+2026-10-22T10:49:33.0404753Z Selecting previously unselected package libva2:amd64.
+2026-10-22T10:49:33.1000189Z (Reading database ... 
+2026-10-22T10:49:33.1000446Z (Reading database ... 5%
+2026-10-22T10:49:33.1000622Z (Reading database ... 10%
+2026-10-22T10:49:33.1000758Z (Reading database ... 15%
+2026-10-22T10:49:33.1001175Z (Reading database ... 20%
+2026-10-22T10:49:33.1001312Z (Reading database ... 25%
+2026-10-22T10:49:33.1001467Z (Reading database ... 30%
+2026-10-22T10:49:33.1001592Z (Reading database ... 35%
+2026-10-22T10:49:33.1001716Z (Reading database ... 40%
+2026-10-22T10:49:33.1001840Z (Reading database ... 45%
+2026-10-22T10:49:33.1001963Z (Reading database ... 50%
+2026-10-22T10:49:33.1669062Z (Reading database ... 55%
+2026-10-22T10:49:33.9641721Z (Reading database ... 60%
+2026-10-22T10:49:34.5690121Z (Reading database ... 65%
+2026-10-22T10:49:34.9089373Z (Reading database ... 70%
+2026-10-22T10:49:35.7345614Z (Reading database ... 75%
+2026-10-22T10:49:37.1822426Z (Reading database ... 80%
+2026-10-22T10:49:38.6404437Z (Reading database ... 85%
+2026-10-22T10:49:40.2665865Z (Reading database ... 90%
+2026-10-22T10:49:41.9627642Z (Reading database ... 95%
+2026-10-22T10:49:41.9627941Z (Reading database ... 100%
+2026-10-22T10:49:41.9628250Z (Reading database ... 215505 files and directories currently installed.)
+2026-10-22T10:49:41.9669150Z Preparing to unpack .../00-libva2_2.20.0-2ubuntu0.2_amd64.deb ...
+2026-10-22T10:49:41.9905125Z Unpacking libva2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-22T10:49:42.0235415Z Selecting previously unselected package libva-drm2:amd64.
+2026-10-22T10:49:42.0343065Z Preparing to unpack .../01-libva-drm2_2.20.0-2ubuntu0.2_amd64.deb ...
+2026-10-22T10:49:42.0350625Z Unpacking libva-drm2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-22T10:49:42.0559303Z Selecting previously unselected package libva-x11-2:amd64.
+2026-10-22T10:49:42.0667098Z Preparing to unpack .../02-libva-x11-2_2.20.0-2ubuntu0.2_amd64.deb ...
+2026-10-22T10:49:42.0675226Z Unpacking libva-x11-2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-22T10:49:42.1036713Z Selecting previously unselected package libvdpau1:amd64.
+2026-10-22T10:49:42.1145073Z Preparing to unpack .../03-libvdpau1_1.5-2build1_amd64.deb ...
+2026-10-22T10:49:42.1152550Z Unpacking libvdpau1:amd64 (1.5-2build1) ...
+2026-10-22T10:49:42.1479680Z Selecting previously unselected package libvpl2.
+2026-10-22T10:49:42.1589695Z Preparing to unpack .../04-libvpl2_2023.3.0-1build1_amd64.deb ...
+2026-10-22T10:49:42.1596785Z Unpacking libvpl2 (2023.3.0-1build1) ...
+2026-10-22T10:49:42.1814409Z Selecting previously unselected package ocl-icd-libopencl1:amd64.
+2026-10-22T10:49:42.1922383Z Preparing to unpack .../05-ocl-icd-libopencl1_2.3.2-1build1_amd64.deb ...
+2026-10-22T10:49:42.1930534Z Unpacking ocl-icd-libopencl1:amd64 (2.3.2-1build1) ...
+2026-10-22T10:49:42.2608836Z Selecting previously unselected package libavutil58:amd64.
+2026-10-22T10:49:42.2717925Z Preparing to unpack .../06-libavutil58_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-22T10:49:42.2726992Z Unpacking libavutil58:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:42.2961932Z Selecting previously unselected package libcodec2-1.2:amd64.
+2026-10-22T10:49:42.3069718Z Preparing to unpack .../07-libcodec2-1.2_1.2.0-2build1_amd64.deb ...
+2026-10-22T10:49:42.3076234Z Unpacking libcodec2-1.2:amd64 (1.2.0-2build1) ...
+2026-10-22T10:49:42.4432247Z Selecting previously unselected package libdav1d7:amd64.
+2026-10-22T10:49:42.4544894Z Preparing to unpack .../08-libdav1d7_1.4.1-1build1_amd64.deb ...
+2026-10-22T10:49:42.4553324Z Unpacking libdav1d7:amd64 (1.4.1-1build1) ...
+2026-10-22T10:49:42.4861020Z Selecting previously unselected package libgsm1:amd64.
+2026-10-22T10:49:42.4972922Z Preparing to unpack .../09-libgsm1_1.0.22-1build1_amd64.deb ...
+2026-10-22T10:49:42.4979717Z Unpacking libgsm1:amd64 (1.0.22-1build1) ...
+2026-10-22T10:49:42.5192015Z Selecting previously unselected package libhwy1t64:amd64.
+2026-10-22T10:49:42.5337791Z Preparing to unpack .../10-libhwy1t64_1.0.7-8.1build1_amd64.deb ...
+2026-10-22T10:49:42.5366395Z Unpacking libhwy1t64:amd64 (1.0.7-8.1build1) ...
+2026-10-22T10:49:42.5725022Z Selecting previously unselected package libjxl0.7:amd64.
+2026-10-22T10:49:42.5836145Z Preparing to unpack .../11-libjxl0.7_0.7.0-10.2ubuntu6.1_amd64.deb ...
+2026-10-22T10:49:42.5845076Z Unpacking libjxl0.7:amd64 (0.7.0-10.2ubuntu6.1) ...
+2026-10-22T10:49:42.6291582Z Selecting previously unselected package libmp3lame0:amd64.
+2026-10-22T10:49:42.6403024Z Preparing to unpack .../12-libmp3lame0_3.100-6build1_amd64.deb ...
+2026-10-22T10:49:42.6410012Z Unpacking libmp3lame0:amd64 (3.100-6build1) ...
+2026-10-22T10:49:42.6628888Z Selecting previously unselected package libopus0:amd64.
+2026-10-22T10:49:42.6737785Z Preparing to unpack .../13-libopus0_1.4-1build1_amd64.deb ...
+2026-10-22T10:49:42.6746076Z Unpacking libopus0:amd64 (1.4-1build1) ...
+2026-10-22T10:49:42.6985743Z Selecting previously unselected package librav1e0:amd64.
+2026-10-22T10:49:42.7100526Z Preparing to unpack .../14-librav1e0_0.7.1-2_amd64.deb ...
+2026-10-22T10:49:42.7113297Z Unpacking librav1e0:amd64 (0.7.1-2) ...
+2026-10-22T10:49:42.7478066Z Selecting previously unselected package librsvg2-2:amd64.
+2026-10-22T10:49:42.7588992Z Preparing to unpack .../15-librsvg2-2_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+2026-10-22T10:49:42.7595326Z Unpacking librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+2026-10-22T10:49:42.8278032Z Selecting previously unselected package libshine3:amd64.
+2026-10-22T10:49:42.8391799Z Preparing to unpack .../16-libshine3_3.1.1-2build1_amd64.deb ...
+2026-10-22T10:49:42.8401443Z Unpacking libshine3:amd64 (3.1.1-2build1) ...
+2026-10-22T10:49:42.8608229Z Selecting previously unselected package libspeex1:amd64.
+2026-10-22T10:49:42.8723585Z Preparing to unpack .../17-libspeex1_1.2.1-2ubuntu2.24.04.1_amd64.deb ...
+2026-10-22T10:49:42.8729376Z Unpacking libspeex1:amd64 (1.2.1-2ubuntu2.24.04.1) ...
+2026-10-22T10:49:42.8936316Z Selecting previously unselected package libsvtav1enc1d1:amd64.
+2026-10-22T10:49:42.9050294Z Preparing to unpack .../18-libsvtav1enc1d1_1.7.0+dfsg-2build1_amd64.deb ...
+2026-10-22T10:49:42.9057419Z Unpacking libsvtav1enc1d1:amd64 (1.7.0+dfsg-2build1) ...
+2026-10-22T10:49:42.9777703Z Selecting previously unselected package libsoxr0:amd64.
+2026-10-22T10:49:42.9891789Z Preparing to unpack .../19-libsoxr0_0.1.3-4build3_amd64.deb ...
+2026-10-22T10:49:42.9906577Z Unpacking libsoxr0:amd64 (0.1.3-4build3) ...
+2026-10-22T10:49:43.0139904Z Selecting previously unselected package libswresample4:amd64.
+2026-10-22T10:49:43.0254800Z Preparing to unpack .../20-libswresample4_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-22T10:49:43.0260750Z Unpacking libswresample4:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:43.0478303Z Selecting previously unselected package libtheora0:amd64.
+2026-10-22T10:49:43.0592513Z Preparing to unpack .../21-libtheora0_1.1.1+dfsg.1-16.1build3_amd64.deb ...
+2026-10-22T10:49:43.0598670Z Unpacking libtheora0:amd64 (1.1.1+dfsg.1-16.1build3) ...
+2026-10-22T10:49:43.0834591Z Selecting previously unselected package libtwolame0:amd64.
+2026-10-22T10:49:43.0949082Z Preparing to unpack .../22-libtwolame0_0.4.0-2build3_amd64.deb ...
+2026-10-22T10:49:43.0956306Z Unpacking libtwolame0:amd64 (0.4.0-2build3) ...
+2026-10-22T10:49:43.1168328Z Selecting previously unselected package libvorbisenc2:amd64.
+2026-10-22T10:49:43.1282043Z Preparing to unpack .../23-libvorbisenc2_1.3.7-1build3_amd64.deb ...
+2026-10-22T10:49:43.1287972Z Unpacking libvorbisenc2:amd64 (1.3.7-1build3) ...
+2026-10-22T10:49:43.1511875Z Selecting previously unselected package libvpx9:amd64.
+2026-10-22T10:49:43.1625767Z Preparing to unpack .../24-libvpx9_1.14.0-1ubuntu2.3_amd64.deb ...
+2026-10-22T10:49:43.1642158Z Unpacking libvpx9:amd64 (1.14.0-1ubuntu2.3) ...
+2026-10-22T10:49:43.1996990Z Selecting previously unselected package libx264-164:amd64.
+2026-10-22T10:49:43.2112150Z Preparing to unpack .../25-libx264-164_2%3a0.164.3108+git31e19f9-1_amd64.deb ...
+2026-10-22T10:49:43.2118259Z Unpacking libx264-164:amd64 (2:0.164.3108+git31e19f9-1) ...
+2026-10-22T10:49:43.2452831Z Selecting previously unselected package libx265-199:amd64.
+2026-10-22T10:49:43.2569521Z Preparing to unpack .../26-libx265-199_3.5-2build1_amd64.deb ...
+2026-10-22T10:49:43.2575258Z Unpacking libx265-199:amd64 (3.5-2build1) ...
+2026-10-22T10:49:43.3764661Z Selecting previously unselected package libxvidcore4:amd64.
+2026-10-22T10:49:43.3879137Z Preparing to unpack .../27-libxvidcore4_2%3a1.3.7-1build1_amd64.deb ...
+2026-10-22T10:49:43.3887024Z Unpacking libxvidcore4:amd64 (2:1.3.7-1build1) ...
+2026-10-22T10:49:43.4106014Z Selecting previously unselected package libzvbi-common.
+2026-10-22T10:49:43.4219614Z Preparing to unpack .../28-libzvbi-common_0.2.42-2_all.deb ...
+2026-10-22T10:49:43.4226383Z Unpacking libzvbi-common (0.2.42-2) ...
+2026-10-22T10:49:43.5138275Z Selecting previously unselected package libzvbi0t64:amd64.
+2026-10-22T10:49:43.5252902Z Preparing to unpack .../29-libzvbi0t64_0.2.42-2_amd64.deb ...
+2026-10-22T10:49:43.5260072Z Unpacking libzvbi0t64:amd64 (0.2.42-2) ...
+2026-10-22T10:49:43.5496467Z Selecting previously unselected package libavcodec60:amd64.
+2026-10-22T10:49:43.5619674Z Preparing to unpack .../30-libavcodec60_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-22T10:49:43.5626365Z Unpacking libavcodec60:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:43.7054133Z Selecting previously unselected package libraw1394-11:amd64.
+2026-10-22T10:49:43.7169070Z Preparing to unpack .../31-libraw1394-11_2.1.2-2build3_amd64.deb ...
+2026-10-22T10:49:43.7175737Z Unpacking libraw1394-11:amd64 (2.1.2-2build3) ...
+2026-10-22T10:49:43.7386152Z Selecting previously unselected package libavc1394-0:amd64.
+2026-10-22T10:49:43.7499960Z Preparing to unpack .../32-libavc1394-0_0.5.4-5build3_amd64.deb ...
+2026-10-22T10:49:43.7507187Z Unpacking libavc1394-0:amd64 (0.5.4-5build3) ...
+2026-10-22T10:49:43.7716642Z Selecting previously unselected package libunibreak5:amd64.
+2026-10-22T10:49:43.7830910Z Preparing to unpack .../33-libunibreak5_5.1-2build1_amd64.deb ...
+2026-10-22T10:49:43.7837166Z Unpacking libunibreak5:amd64 (5.1-2build1) ...
+2026-10-22T10:49:43.8048553Z Selecting previously unselected package libass9:amd64.
+2026-10-22T10:49:43.8161198Z Preparing to unpack .../34-libass9_1%3a0.17.1-2build1_amd64.deb ...
+2026-10-22T10:49:43.8167780Z Unpacking libass9:amd64 (1:0.17.1-2build1) ...
+2026-10-22T10:49:43.8382166Z Selecting previously unselected package libudfread0:amd64.
+2026-10-22T10:49:43.8493461Z Preparing to unpack .../35-libudfread0_1.1.2-1build1_amd64.deb ...
+2026-10-22T10:49:43.8499969Z Unpacking libudfread0:amd64 (1.1.2-1build1) ...
+2026-10-22T10:49:43.8705167Z Selecting previously unselected package libbluray2:amd64.
+2026-10-22T10:49:43.8818184Z Preparing to unpack .../36-libbluray2_1%3a1.3.4-1build1_amd64.deb ...
+2026-10-22T10:49:43.8824500Z Unpacking libbluray2:amd64 (1:1.3.4-1build1) ...
+2026-10-22T10:49:43.9039439Z Selecting previously unselected package libchromaprint1:amd64.
+2026-10-22T10:49:43.9150926Z Preparing to unpack .../37-libchromaprint1_1.5.1-5_amd64.deb ...
+2026-10-22T10:49:43.9158211Z Unpacking libchromaprint1:amd64 (1.5.1-5) ...
+2026-10-22T10:49:43.9366998Z Selecting previously unselected package libgme0:amd64.
+2026-10-22T10:49:43.9478112Z Preparing to unpack .../38-libgme0_0.6.3-7build1_amd64.deb ...
+2026-10-22T10:49:43.9485112Z Unpacking libgme0:amd64 (0.6.3-7build1) ...
+2026-10-22T10:49:43.9700852Z Selecting previously unselected package libmpg123-0t64:amd64.
+2026-10-22T10:49:43.9817087Z Preparing to unpack .../39-libmpg123-0t64_1.32.5-1ubuntu1.1_amd64.deb ...
+2026-10-22T10:49:43.9824077Z Unpacking libmpg123-0t64:amd64 (1.32.5-1ubuntu1.1) ...
+2026-10-22T10:49:44.0047189Z Selecting previously unselected package libopenmpt0t64:amd64.
+2026-10-22T10:49:44.0161306Z Preparing to unpack .../40-libopenmpt0t64_0.7.3-1.1build3_amd64.deb ...
+2026-10-22T10:49:44.0167836Z Unpacking libopenmpt0t64:amd64 (0.7.3-1.1build3) ...
+2026-10-22T10:49:44.0423297Z Selecting previously unselected package libcjson1:amd64.
+2026-10-22T10:49:44.0534961Z Preparing to unpack .../41-libcjson1_1.7.17-1_amd64.deb ...
+2026-10-22T10:49:44.0540738Z Unpacking libcjson1:amd64 (1.7.17-1) ...
+2026-10-22T10:49:44.0749169Z Selecting previously unselected package libmbedcrypto7t64:amd64.
+2026-10-22T10:49:44.0860509Z Preparing to unpack .../42-libmbedcrypto7t64_2.28.8-1_amd64.deb ...
+2026-10-22T10:49:44.0868244Z Unpacking libmbedcrypto7t64:amd64 (2.28.8-1) ...
+2026-10-22T10:49:44.1087340Z Selecting previously unselected package librist4:amd64.
+2026-10-22T10:49:44.1197891Z Preparing to unpack .../43-librist4_0.2.10+dfsg-2_amd64.deb ...
+2026-10-22T10:49:44.1204709Z Unpacking librist4:amd64 (0.2.10+dfsg-2) ...
+2026-10-22T10:49:44.1415770Z Selecting previously unselected package libsrt1.5-gnutls:amd64.
+2026-10-22T10:49:44.1539013Z Preparing to unpack .../44-libsrt1.5-gnutls_1.5.3-1build2_amd64.deb ...
+2026-10-22T10:49:44.1545474Z Unpacking libsrt1.5-gnutls:amd64 (1.5.3-1build2) ...
+2026-10-22T10:49:44.1774868Z Selecting previously unselected package libssh-gcrypt-4:amd64.
+2026-10-22T10:49:44.1884833Z Preparing to unpack .../45-libssh-gcrypt-4_0.10.6-2ubuntu0.5_amd64.deb ...
+2026-10-22T10:49:44.1891160Z Unpacking libssh-gcrypt-4:amd64 (0.10.6-2ubuntu0.5) ...
+2026-10-22T10:49:44.2114733Z Selecting previously unselected package libavformat60:amd64.
+2026-10-22T10:49:44.2226591Z Preparing to unpack .../46-libavformat60_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-22T10:49:44.2232593Z Unpacking libavformat60:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:44.2579542Z Selecting previously unselected package libbs2b0:amd64.
+2026-10-22T10:49:44.2692104Z Preparing to unpack .../47-libbs2b0_3.1.0+dfsg-7build1_amd64.deb ...
+2026-10-22T10:49:44.2698070Z Unpacking libbs2b0:amd64 (3.1.0+dfsg-7build1) ...
+2026-10-22T10:49:44.2922514Z Selecting previously unselected package libflite1:amd64.
+2026-10-22T10:49:44.3031455Z Preparing to unpack .../48-libflite1_2.2-6build3_amd64.deb ...
+2026-10-22T10:49:44.3037879Z Unpacking libflite1:amd64 (2.2-6build3) ...
+2026-10-22T10:49:44.4628492Z Selecting previously unselected package libserd-0-0:amd64.
+2026-10-22T10:49:44.4743195Z Preparing to unpack .../49-libserd-0-0_0.32.2-1_amd64.deb ...
+2026-10-22T10:49:44.4748915Z Unpacking libserd-0-0:amd64 (0.32.2-1) ...
+2026-10-22T10:49:44.4958053Z Selecting previously unselected package libzix-0-0:amd64.
+2026-10-22T10:49:44.5071066Z Preparing to unpack .../50-libzix-0-0_0.4.2-2build1_amd64.deb ...
+2026-10-22T10:49:44.5076932Z Unpacking libzix-0-0:amd64 (0.4.2-2build1) ...
+2026-10-22T10:49:44.5283191Z Selecting previously unselected package libsord-0-0:amd64.
+2026-10-22T10:49:44.5395930Z Preparing to unpack .../51-libsord-0-0_0.16.16-2build1_amd64.deb ...
+2026-10-22T10:49:44.5402550Z Unpacking libsord-0-0:amd64 (0.16.16-2build1) ...
+2026-10-22T10:49:44.5610308Z Selecting previously unselected package libsratom-0-0:amd64.
+2026-10-22T10:49:44.5722878Z Preparing to unpack .../52-libsratom-0-0_0.6.16-1build1_amd64.deb ...
+2026-10-22T10:49:44.5729061Z Unpacking libsratom-0-0:amd64 (0.6.16-1build1) ...
+2026-10-22T10:49:44.5936229Z Selecting previously unselected package liblilv-0-0:amd64.
+2026-10-22T10:49:44.6047925Z Preparing to unpack .../53-liblilv-0-0_0.24.22-1build1_amd64.deb ...
+2026-10-22T10:49:44.6054847Z Unpacking liblilv-0-0:amd64 (0.24.22-1build1) ...
+2026-10-22T10:49:44.6261357Z Selecting previously unselected package libmysofa1:amd64.
+2026-10-22T10:49:44.6373476Z Preparing to unpack .../54-libmysofa1_1.3.2+dfsg-2ubuntu2_amd64.deb ...
+2026-10-22T10:49:44.6379892Z Unpacking libmysofa1:amd64 (1.3.2+dfsg-2ubuntu2) ...
+2026-10-22T10:49:44.6614566Z Selecting previously unselected package libplacebo338:amd64.
+2026-10-22T10:49:44.6725004Z Preparing to unpack .../55-libplacebo338_6.338.2-2build1_amd64.deb ...
+2026-10-22T10:49:44.6731386Z Unpacking libplacebo338:amd64 (6.338.2-2build1) ...
+2026-10-22T10:49:44.7569964Z Selecting previously unselected package libblas3:amd64.
+2026-10-22T10:49:44.7681898Z Preparing to unpack .../56-libblas3_3.12.0-3build1.1_amd64.deb ...
+2026-10-22T10:49:44.7717965Z Unpacking libblas3:amd64 (3.12.0-3build1.1) ...
+2026-10-22T10:49:44.7944841Z Selecting previously unselected package liblapack3:amd64.
+2026-10-22T10:49:44.8057454Z Preparing to unpack .../57-liblapack3_3.12.0-3build1.1_amd64.deb ...
+2026-10-22T10:49:44.8093423Z Unpacking liblapack3:amd64 (3.12.0-3build1.1) ...
+2026-10-22T10:49:44.8759077Z Selecting previously unselected package libasyncns0:amd64.
+2026-10-22T10:49:44.8872531Z Preparing to unpack .../58-libasyncns0_0.8-6build4_amd64.deb ...
+2026-10-22T10:49:44.8878240Z Unpacking libasyncns0:amd64 (0.8-6build4) ...
+2026-10-22T10:49:44.9079357Z Selecting previously unselected package libflac12t64:amd64.
+2026-10-22T10:49:44.9189947Z Preparing to unpack .../59-libflac12t64_1.4.3+ds-2.1ubuntu2_amd64.deb ...
+2026-10-22T10:49:44.9195535Z Unpacking libflac12t64:amd64 (1.4.3+ds-2.1ubuntu2) ...
+2026-10-22T10:49:44.9411179Z Selecting previously unselected package libsndfile1:amd64.
+2026-10-22T10:49:44.9523118Z Preparing to unpack .../60-libsndfile1_1.2.2-1ubuntu5.24.04.1_amd64.deb ...
+2026-10-22T10:49:44.9529353Z Unpacking libsndfile1:amd64 (1.2.2-1ubuntu5.24.04.1) ...
+2026-10-22T10:49:44.9760997Z Selecting previously unselected package libpulse0:amd64.
+2026-10-22T10:49:44.9872536Z Preparing to unpack .../61-libpulse0_1%3a16.1+dfsg1-2ubuntu10.1_amd64.deb ...
+2026-10-22T10:49:45.0066984Z Unpacking libpulse0:amd64 (1:16.1+dfsg1-2ubuntu10.1) ...
+2026-10-22T10:49:45.0296932Z Selecting previously unselected package libsphinxbase3t64:amd64.
+2026-10-22T10:49:45.0408981Z Preparing to unpack .../62-libsphinxbase3t64_0.8+5prealpha+1-17build2_amd64.deb ...
+2026-10-22T10:49:45.0415403Z Unpacking libsphinxbase3t64:amd64 (0.8+5prealpha+1-17build2) ...
+2026-10-22T10:49:45.0629095Z Selecting previously unselected package libpocketsphinx3:amd64.
+2026-10-22T10:49:45.0741371Z Preparing to unpack .../63-libpocketsphinx3_0.8.0+real5prealpha+1-15ubuntu5_amd64.deb ...
+2026-10-22T10:49:45.0747221Z Unpacking libpocketsphinx3:amd64 (0.8.0+real5prealpha+1-15ubuntu5) ...
+2026-10-22T10:49:45.0957753Z Selecting previously unselected package libpostproc57:amd64.
+2026-10-22T10:49:45.1070385Z Preparing to unpack .../64-libpostproc57_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-22T10:49:45.1076264Z Unpacking libpostproc57:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:45.1287392Z Selecting previously unselected package libsamplerate0:amd64.
+2026-10-22T10:49:45.1399053Z Preparing to unpack .../65-libsamplerate0_0.2.2-4build1_amd64.deb ...
+2026-10-22T10:49:45.1404786Z Unpacking libsamplerate0:amd64 (0.2.2-4build1) ...
+2026-10-22T10:49:45.1649628Z Selecting previously unselected package librubberband2:amd64.
+2026-10-22T10:49:45.1760877Z Preparing to unpack .../66-librubberband2_3.3.0+dfsg-2build1_amd64.deb ...
+2026-10-22T10:49:45.1767723Z Unpacking librubberband2:amd64 (3.3.0+dfsg-2build1) ...
+2026-10-22T10:49:45.1981222Z Selecting previously unselected package libswscale7:amd64.
+2026-10-22T10:49:45.2089815Z Preparing to unpack .../67-libswscale7_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-22T10:49:45.2096038Z Unpacking libswscale7:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:45.2312016Z Selecting previously unselected package libvidstab1.1:amd64.
+2026-10-22T10:49:45.2418709Z Preparing to unpack .../68-libvidstab1.1_1.1.0-2build1_amd64.deb ...
+2026-10-22T10:49:45.2425286Z Unpacking libvidstab1.1:amd64 (1.1.0-2build1) ...
+2026-10-22T10:49:45.2629110Z Selecting previously unselected package libzimg2:amd64.
+2026-10-22T10:49:45.2735164Z Preparing to unpack .../69-libzimg2_3.0.5+ds1-1build1_amd64.deb ...
+2026-10-22T10:49:45.2744118Z Unpacking libzimg2:amd64 (3.0.5+ds1-1build1) ...
+2026-10-22T10:49:45.2968227Z Selecting previously unselected package libavfilter9:amd64.
+2026-10-22T10:49:45.3075598Z Preparing to unpack .../70-libavfilter9_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-22T10:49:45.3082100Z Unpacking libavfilter9:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:45.4245437Z Selecting previously unselected package libcaca0:amd64.
+2026-10-22T10:49:45.4359118Z Preparing to unpack .../71-libcaca0_0.99.beta20-4ubuntu0.2_amd64.deb ...
+2026-10-22T10:49:45.4365478Z Unpacking libcaca0:amd64 (0.99.beta20-4ubuntu0.2) ...
+2026-10-22T10:49:45.4606223Z Selecting previously unselected package libcdio19t64:amd64.
+2026-10-22T10:49:45.4718126Z Preparing to unpack .../72-libcdio19t64_2.1.0-4.1ubuntu1.2_amd64.deb ...
+2026-10-22T10:49:45.4724933Z Unpacking libcdio19t64:amd64 (2.1.0-4.1ubuntu1.2) ...
+2026-10-22T10:49:45.4936525Z Selecting previously unselected package libcdio-cdda2t64:amd64.
+2026-10-22T10:49:45.5047436Z Preparing to unpack .../73-libcdio-cdda2t64_10.2+2.0.1-1.1build2_amd64.deb ...
+2026-10-22T10:49:45.5053711Z Unpacking libcdio-cdda2t64:amd64 (10.2+2.0.1-1.1build2) ...
+2026-10-22T10:49:45.5265832Z Selecting previously unselected package libcdio-paranoia2t64:amd64.
+2026-10-22T10:49:45.5375561Z Preparing to unpack .../74-libcdio-paranoia2t64_10.2+2.0.1-1.1build2_amd64.deb ...
+2026-10-22T10:49:45.5382067Z Unpacking libcdio-paranoia2t64:amd64 (10.2+2.0.1-1.1build2) ...
+2026-10-22T10:49:45.5618336Z Selecting previously unselected package libdc1394-25:amd64.
+2026-10-22T10:49:45.5727917Z Preparing to unpack .../75-libdc1394-25_2.2.6-4build1_amd64.deb ...
+2026-10-22T10:49:45.5736353Z Unpacking libdc1394-25:amd64 (2.2.6-4build1) ...
+2026-10-22T10:49:45.5953681Z Selecting previously unselected package libiec61883-0:amd64.
+2026-10-22T10:49:45.6061076Z Preparing to unpack .../76-libiec61883-0_1.2.0-6build1_amd64.deb ...
+2026-10-22T10:49:45.6070294Z Unpacking libiec61883-0:amd64 (1.2.0-6build1) ...
+2026-10-22T10:49:45.6281079Z Selecting previously unselected package libjack-jackd2-0:amd64.
+2026-10-22T10:49:45.6392744Z Preparing to unpack .../77-libjack-jackd2-0_1.9.21~dfsg-3ubuntu3_amd64.deb ...
+2026-10-22T10:49:45.6403580Z Unpacking libjack-jackd2-0:amd64 (1.9.21~dfsg-3ubuntu3) ...
+2026-10-22T10:49:45.6631556Z Selecting previously unselected package libopenal-data.
+2026-10-22T10:49:45.6740384Z Preparing to unpack .../78-libopenal-data_1%3a1.23.1-4build1_all.deb ...
+2026-10-22T10:49:45.6746638Z Unpacking libopenal-data (1:1.23.1-4build1) ...
+2026-10-22T10:49:45.6972739Z Selecting previously unselected package libsndio7.0:amd64.
+2026-10-22T10:49:45.7083984Z Preparing to unpack .../79-libsndio7.0_1.9.0-0.3build3_amd64.deb ...
+2026-10-22T10:49:45.7090116Z Unpacking libsndio7.0:amd64 (1.9.0-0.3build3) ...
+2026-10-22T10:49:45.7404036Z Selecting previously unselected package libopenal1:amd64.
+2026-10-22T10:49:45.7514212Z Preparing to unpack .../80-libopenal1_1%3a1.23.1-4build1_amd64.deb ...
+2026-10-22T10:49:45.7520077Z Unpacking libopenal1:amd64 (1:1.23.1-4build1) ...
+2026-10-22T10:49:45.7755818Z Selecting previously unselected package libdecor-0-0:amd64.
+2026-10-22T10:49:45.7862580Z Preparing to unpack .../81-libdecor-0-0_0.2.2-1build2_amd64.deb ...
+2026-10-22T10:49:45.7869505Z Unpacking libdecor-0-0:amd64 (0.2.2-1build2) ...
+2026-10-22T10:49:45.8075099Z Selecting previously unselected package libsdl2-2.0-0:amd64.
+2026-10-22T10:49:45.8184375Z Preparing to unpack .../82-libsdl2-2.0-0_2.30.0+dfsg-1ubuntu3.1_amd64.deb ...
+2026-10-22T10:49:45.8190790Z Unpacking libsdl2-2.0-0:amd64 (2.30.0+dfsg-1ubuntu3.1) ...
+2026-10-22T10:49:45.9142378Z Selecting previously unselected package libxcb-shape0:amd64.
+2026-10-22T10:49:45.9254912Z Preparing to unpack .../83-libxcb-shape0_1.15-1ubuntu2_amd64.deb ...
+2026-10-22T10:49:45.9260759Z Unpacking libxcb-shape0:amd64 (1.15-1ubuntu2) ...
+2026-10-22T10:49:45.9460867Z Selecting previously unselected package libxv1:amd64.
+2026-10-22T10:49:45.9577372Z Preparing to unpack .../84-libxv1_2%3a1.0.11-1.1build1_amd64.deb ...
+2026-10-22T10:49:45.9828537Z Unpacking libxv1:amd64 (2:1.0.11-1.1build1) ...
+2026-10-22T10:49:46.0039350Z Selecting previously unselected package libavdevice60:amd64.
+2026-10-22T10:49:46.0148760Z Preparing to unpack .../85-libavdevice60_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-22T10:49:46.0154802Z Unpacking libavdevice60:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.0356062Z Selecting previously unselected package ffmpeg.
+2026-10-22T10:49:46.0465788Z Preparing to unpack .../86-ffmpeg_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-22T10:49:46.0471499Z Unpacking ffmpeg (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.1700665Z Setting up libgme0:amd64 (0.6.3-7build1) ...
+2026-10-22T10:49:46.1724249Z Setting up libchromaprint1:amd64 (1.5.1-5) ...
+2026-10-22T10:49:46.1738385Z Setting up libssh-gcrypt-4:amd64 (0.10.6-2ubuntu0.5) ...
+2026-10-22T10:49:46.1752215Z Setting up libhwy1t64:amd64 (1.0.7-8.1build1) ...
+2026-10-22T10:49:46.1766256Z Setting up libudfread0:amd64 (1.1.2-1build1) ...
+2026-10-22T10:49:46.1780464Z Setting up libraw1394-11:amd64 (2.1.2-2build3) ...
+2026-10-22T10:49:46.1795475Z Setting up libspeex1:amd64 (1.2.1-2ubuntu2.24.04.1) ...
+2026-10-22T10:49:46.1809697Z Setting up libshine3:amd64 (3.1.1-2build1) ...
+2026-10-22T10:49:46.1824586Z Setting up libcaca0:amd64 (0.99.beta20-4ubuntu0.2) ...
+2026-10-22T10:49:46.1839947Z Setting up libvpl2 (2023.3.0-1build1) ...
+2026-10-22T10:49:46.1854701Z Setting up libx264-164:amd64 (2:0.164.3108+git31e19f9-1) ...
+2026-10-22T10:49:46.1868306Z Setting up libtwolame0:amd64 (0.4.0-2build3) ...
+2026-10-22T10:49:46.1882575Z Setting up libmbedcrypto7t64:amd64 (2.28.8-1) ...
+2026-10-22T10:49:46.1896734Z Setting up libgsm1:amd64 (1.0.22-1build1) ...
+2026-10-22T10:49:46.1910782Z Setting up libsoxr0:amd64 (0.1.3-4build3) ...
+2026-10-22T10:49:46.1924705Z Setting up libzix-0-0:amd64 (0.4.2-2build1) ...
+2026-10-22T10:49:46.1939412Z Setting up libcodec2-1.2:amd64 (1.2.0-2build1) ...
+2026-10-22T10:49:46.1954412Z Setting up libmysofa1:amd64 (1.3.2+dfsg-2ubuntu2) ...
+2026-10-22T10:49:46.1969542Z Setting up libxcb-shape0:amd64 (1.15-1ubuntu2) ...
+2026-10-22T10:49:46.1985425Z Setting up libcdio19t64:amd64 (2.1.0-4.1ubuntu1.2) ...
+2026-10-22T10:49:46.1999796Z Setting up libsvtav1enc1d1:amd64 (1.7.0+dfsg-2build1) ...
+2026-10-22T10:49:46.2016973Z Setting up libmpg123-0t64:amd64 (1.32.5-1ubuntu1.1) ...
+2026-10-22T10:49:46.2031229Z Setting up libcjson1:amd64 (1.7.17-1) ...
+2026-10-22T10:49:46.2046517Z Setting up libxvidcore4:amd64 (2:1.3.7-1build1) ...
+2026-10-22T10:49:46.2061477Z Setting up librav1e0:amd64 (0.7.1-2) ...
+2026-10-22T10:49:46.2075785Z Setting up libcdio-cdda2t64:amd64 (10.2+2.0.1-1.1build2) ...
+2026-10-22T10:49:46.2089999Z Setting up librist4:amd64 (0.2.10+dfsg-2) ...
+2026-10-22T10:49:46.2104239Z Setting up librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+2026-10-22T10:49:46.2119775Z Setting up libblas3:amd64 (3.12.0-3build1.1) ...
+2026-10-22T10:49:46.2165596Z update-alternatives: using /usr/lib/x86_64-linux-gnu/blas/libblas.so.3 to provide /usr/lib/x86_64-linux-gnu/libblas.so.3 (libblas.so.3-x86_64-linux-gnu) in auto mode
+2026-10-22T10:49:46.2179203Z Setting up libplacebo338:amd64 (6.338.2-2build1) ...
+2026-10-22T10:49:46.2194652Z Setting up libva2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-22T10:49:46.2208313Z Setting up libopus0:amd64 (1.4-1build1) ...
+2026-10-22T10:49:46.2222808Z Setting up libcdio-paranoia2t64:amd64 (10.2+2.0.1-1.1build2) ...
+2026-10-22T10:49:46.2236687Z Setting up libdc1394-25:amd64 (2.2.6-4build1) ...
+2026-10-22T10:49:46.2250869Z Setting up libxv1:amd64 (2:1.0.11-1.1build1) ...
+2026-10-22T10:49:46.2266075Z Setting up libunibreak5:amd64 (5.1-2build1) ...
+2026-10-22T10:49:46.2280516Z Setting up libjxl0.7:amd64 (0.7.0-10.2ubuntu6.1) ...
+2026-10-22T10:49:46.2295437Z Setting up libx265-199:amd64 (3.5-2build1) ...
+2026-10-22T10:49:46.2309844Z Setting up libsndio7.0:amd64 (1.9.0-0.3build3) ...
+2026-10-22T10:49:46.2323927Z Setting up libvidstab1.1:amd64 (1.1.0-2build1) ...
+2026-10-22T10:49:46.2337486Z Setting up libvpx9:amd64 (1.14.0-1ubuntu2.3) ...
+2026-10-22T10:49:46.2351316Z Setting up libsrt1.5-gnutls:amd64 (1.5.3-1build2) ...
+2026-10-22T10:49:46.2365931Z Setting up libflite1:amd64 (2.2-6build3) ...
+2026-10-22T10:49:46.2379340Z Setting up libdav1d7:amd64 (1.4.1-1build1) ...
+2026-10-22T10:49:46.2392358Z Setting up libva-drm2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-22T10:49:46.2407026Z Setting up ocl-icd-libopencl1:amd64 (2.3.2-1build1) ...
+2026-10-22T10:49:46.2421918Z Setting up libasyncns0:amd64 (0.8-6build4) ...
+2026-10-22T10:49:46.2435999Z Setting up libvdpau1:amd64 (1.5-2build1) ...
+2026-10-22T10:49:46.2455718Z Setting up libbs2b0:amd64 (3.1.0+dfsg-7build1) ...
+2026-10-22T10:49:46.2469224Z Setting up libtheora0:amd64 (1.1.1+dfsg.1-16.1build3) ...
+2026-10-22T10:49:46.2482739Z Setting up libdecor-0-0:amd64 (0.2.2-1build2) ...
+2026-10-22T10:49:46.2496145Z Setting up libzimg2:amd64 (3.0.5+ds1-1build1) ...
+2026-10-22T10:49:46.2510126Z Setting up libopenal-data (1:1.23.1-4build1) ...
+2026-10-22T10:49:46.2530655Z Setting up libflac12t64:amd64 (1.4.3+ds-2.1ubuntu2) ...
+2026-10-22T10:49:46.2544504Z Setting up libbluray2:amd64 (1:1.3.4-1build1) ...
+2026-10-22T10:49:46.2559474Z Setting up libsamplerate0:amd64 (0.2.2-4build1) ...
+2026-10-22T10:49:46.2574324Z Setting up libva-x11-2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-22T10:49:46.2588148Z Setting up libopenmpt0t64:amd64 (0.7.3-1.1build3) ...
+2026-10-22T10:49:46.2602212Z Setting up libzvbi-common (0.2.42-2) ...
+2026-10-22T10:49:46.2617402Z Setting up libmp3lame0:amd64 (3.100-6build1) ...
+2026-10-22T10:49:46.2632321Z Setting up libvorbisenc2:amd64 (1.3.7-1build3) ...
+2026-10-22T10:49:46.2646790Z Setting up libiec61883-0:amd64 (1.2.0-6build1) ...
+2026-10-22T10:49:46.2661365Z Setting up libserd-0-0:amd64 (0.32.2-1) ...
+2026-10-22T10:49:46.2675787Z Setting up libavc1394-0:amd64 (0.5.4-5build3) ...
+2026-10-22T10:49:46.2690592Z Setting up liblapack3:amd64 (3.12.0-3build1.1) ...
+2026-10-22T10:49:46.2735248Z update-alternatives: using /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3 to provide /usr/lib/x86_64-linux-gnu/liblapack.so.3 (liblapack.so.3-x86_64-linux-gnu) in auto mode
+2026-10-22T10:49:46.2748673Z Setting up libzvbi0t64:amd64 (0.2.42-2) ...
+2026-10-22T10:49:46.2764358Z Setting up libavutil58:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.2778926Z Setting up libopenal1:amd64 (1:1.23.1-4build1) ...
+2026-10-22T10:49:46.2793970Z Setting up libass9:amd64 (1:0.17.1-2build1) ...
+2026-10-22T10:49:46.2808220Z Setting up libswresample4:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.2823206Z Setting up libavcodec60:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.2837688Z Setting up librubberband2:amd64 (3.3.0+dfsg-2build1) ...
+2026-10-22T10:49:46.2852466Z Setting up libjack-jackd2-0:amd64 (1.9.21~dfsg-3ubuntu3) ...
+2026-10-22T10:49:46.2868420Z Setting up libsord-0-0:amd64 (0.16.16-2build1) ...
+2026-10-22T10:49:46.2883220Z Setting up libpostproc57:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.2897680Z Setting up libsratom-0-0:amd64 (0.6.16-1build1) ...
+2026-10-22T10:49:46.2912539Z Setting up libsndfile1:amd64 (1.2.2-1ubuntu5.24.04.1) ...
+2026-10-22T10:49:46.2926995Z Setting up liblilv-0-0:amd64 (0.24.22-1build1) ...
+2026-10-22T10:49:46.2940780Z Setting up libswscale7:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.2956083Z Setting up libpulse0:amd64 (1:16.1+dfsg1-2ubuntu10.1) ...
+2026-10-22T10:49:46.3014766Z Setting up libavformat60:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.3030253Z Setting up libsphinxbase3t64:amd64 (0.8+5prealpha+1-17build2) ...
+2026-10-22T10:49:46.3046173Z Setting up libsdl2-2.0-0:amd64 (2.30.0+dfsg-1ubuntu3.1) ...
+2026-10-22T10:49:46.3395352Z Setting up libpocketsphinx3:amd64 (0.8.0+real5prealpha+1-15ubuntu5) ...
+2026-10-22T10:49:46.3409637Z Setting up libavfilter9:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.3423788Z Setting up libavdevice60:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.3437228Z Setting up ffmpeg (7:6.1.1-3ubuntu5) ...
+2026-10-22T10:49:46.3453811Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-22T10:49:46.3572585Z Not building database; man-db/auto-update is not 'true'.
+2026-10-22T10:49:46.3581874Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-22T10:49:52.3543822Z 
+2026-10-22T10:49:52.3544326Z Running kernel seems to be up-to-date.
+2026-10-22T10:49:52.3544563Z 
+2026-10-22T10:49:52.3544655Z No services need to be restarted.
+2026-10-22T10:49:52.3544810Z 
+2026-10-22T10:49:52.3544903Z No containers need to be restarted.
+2026-10-22T10:49:52.3545054Z 
+2026-10-22T10:49:52.3545179Z No user sessions are running outdated binaries.
+2026-10-22T10:49:52.3545358Z 
+2026-10-22T10:49:52.3545904Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-22T10:49:53.2338675Z ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+2026-10-22T10:49:53.2338967Z built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+2026-10-22T10:49:53.2342038Z configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+2026-10-22T10:49:53.2345018Z libavutil      58. 29.100 / 58. 29.100
+2026-10-22T10:49:53.2345169Z libavcodec     60. 31.102 / 60. 31.102
+2026-10-22T10:49:53.2345313Z libavformat    60. 16.100 / 60. 16.100
+2026-10-22T10:49:53.2345453Z libavdevice    60.  3.100 / 60.  3.100
+2026-10-22T10:49:53.2345590Z libavfilter     9. 12.100 /  9. 12.100
+2026-10-22T10:49:53.2345759Z libswscale      7.  5.100 /  7.  5.100
+2026-10-22T10:49:53.2345898Z libswresample   4. 12.100 /  4. 12.100
+2026-10-22T10:49:53.2346038Z libpostproc    57.  3.100 / 57.  3.100
+2026-10-22T10:49:53.3033036Z ffprobe version 6.1.1-3ubuntu5 Copyright (c) 2007-2023 the FFmpeg developers
+2026-10-22T10:49:53.3033418Z built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+2026-10-22T10:49:53.3036776Z configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+2026-10-22T10:49:53.3040544Z libavutil      58. 29.100 / 58. 29.100
+2026-10-22T10:49:53.3040697Z libavcodec     60. 31.102 / 60. 31.102
+2026-10-22T10:49:53.3040845Z libavformat    60. 16.100 / 60. 16.100
+2026-10-22T10:49:53.3040986Z libavdevice    60.  3.100 / 60.  3.100
+2026-10-22T10:49:53.3041559Z libavfilter     9. 12.100 /  9. 12.100
+2026-10-22T10:49:53.3041769Z libswscale      7.  5.100 /  7.  5.100
+2026-10-22T10:49:53.3041982Z libswresample   4. 12.100 /  4. 12.100
+2026-10-22T10:49:53.3042199Z libpostproc    57.  3.100 / 57.  3.100
+2026-10-22T10:49:53.3087227Z ##[group]Run echo "PYTHONPATH=$GITHUB_WORKSPACE/tools/ci_python" >> "$GITHUB_ENV"
+2026-10-22T10:49:53.3087553Z [36;1mecho "PYTHONPATH=$GITHUB_WORKSPACE/tools/ci_python" >> "$GITHUB_ENV"[0m
+2026-10-22T10:49:53.3130339Z shell: /usr/bin/bash -e {0}
+2026-10-22T10:49:53.3130474Z env:
+2026-10-22T10:49:53.3130576Z   CC: clang
+2026-10-22T10:49:53.3130687Z   CXX: clang++
+2026-10-22T10:49:53.3130793Z   BUILD_JOBS: 4
+2026-10-22T10:49:53.3130905Z   GIT_OPTIONAL_LOCKS: 0
+2026-10-22T10:49:53.3131068Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:53.3131309Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T10:49:53.3131545Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:53.3131767Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:53.3131975Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:53.3132205Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T10:49:53.3132388Z ##[endgroup]
+2026-10-22T10:49:53.3207501Z ##[group]Run python tools/ci_bootstrap.py
+2026-10-22T10:49:53.3207679Z [36;1mpython tools/ci_bootstrap.py[0m
+2026-10-22T10:49:53.3243999Z shell: /usr/bin/bash -e {0}
+2026-10-22T10:49:53.3244133Z env:
+2026-10-22T10:49:53.3244234Z   CC: clang
+2026-10-22T10:49:53.3244336Z   CXX: clang++
+2026-10-22T10:49:53.3244442Z   BUILD_JOBS: 4
+2026-10-22T10:49:53.3244553Z   GIT_OPTIONAL_LOCKS: 0
+2026-10-22T10:49:53.3244720Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:53.3244956Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T10:49:53.3245190Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:53.3245406Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:53.3245612Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:49:53.3245822Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T10:49:53.3246101Z   PYTHONPATH: /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/ci_python
+2026-10-22T10:49:53.3246329Z ##[endgroup]
+2026-10-22T10:50:00.0673219Z {
+2026-10-22T10:50:00.0673576Z   "commit": "7d9246600fffe518408f5830d4848635019005a3",
+2026-10-22T10:50:00.0673928Z   "tree": "dab3bb25b417d2273a35679a3edfbc45a597dcf9",
+2026-10-22T10:50:00.0674196Z   "files": 5839,
+2026-10-22T10:50:00.0674378Z   "bytes": 267289095,
+2026-10-22T10:50:00.0674579Z   "inventory_matches": true,
+2026-10-22T10:50:00.0674810Z   "project_lock_modified": false
+2026-10-22T10:50:00.0675018Z }
+2026-10-22T10:50:00.0790032Z ##[group]Run make content
+2026-10-22T10:50:00.0790203Z [36;1mmake content[0m
+2026-10-22T10:50:00.0833432Z shell: /usr/bin/bash -e {0}
+2026-10-22T10:50:00.0833574Z env:
+2026-10-22T10:50:00.0833682Z   CC: clang
+2026-10-22T10:50:00.0833788Z   CXX: clang++
+2026-10-22T10:50:00.0833897Z   BUILD_JOBS: 4
+2026-10-22T10:50:00.0834009Z   GIT_OPTIONAL_LOCKS: 0
+2026-10-22T10:50:00.0834179Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:50:00.0834421Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T10:50:00.0834656Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:50:00.0834872Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:50:00.0835084Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:50:00.0835300Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T10:50:00.0835591Z   PYTHONPATH: /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/ci_python
+2026-10-22T10:50:00.0835824Z ##[endgroup]
+2026-10-22T10:50:00.1418498Z make --no-print-directory -f make/native-content.mk -j4 PYTHON="python3" native-content
+2026-10-22T10:50:00.1671557Z CONTENT RUN 2cf095d7a0e3406cb2be3a6f45857610
+2026-10-22T10:50:00.1675036Z "python3" tools/run_content_task.py audio -- "python3" tools/restore_audio.py
+2026-10-22T10:50:00.1676997Z "python3" tools/run_content_task.py gameplay-audio -- "python3" tools/gameplay_audio.py
+2026-10-22T10:50:00.1713195Z "python3" tools/run_content_task.py music-zones -- "python3" tools/music_zones.py
+2026-10-22T10:50:00.1753118Z "python3" tools/run_content_task.py bars -- "python3" tools/blackbars_assets.py compile
+2026-10-22T10:50:00.2143305Z CONTENT START bars pid=3505 at=2026-10-22T10:50:00.213122+00:00
+2026-10-22T10:50:00.2143753Z CONTENT START music-zones pid=3504 at=2026-10-22T10:50:00.213124+00:00
+2026-10-22T10:50:00.2233455Z CONTENT START gameplay-audio pid=3506 at=2026-10-22T10:50:00.218904+00:00
+2026-10-22T10:50:00.2363523Z CONTENT START audio pid=3507 at=2026-10-22T10:50:00.233913+00:00
+2026-10-22T10:50:00.3524293Z Blackbar compile: source-owned animation and layer verified
+2026-10-22T10:50:00.3543444Z CONTENT END bars pid=3505 status=0 seconds=0.139
+2026-10-22T10:50:00.3603541Z "python3" tools/run_content_task.py input -- "python3" tools/native_input.py compile
+2026-10-22T10:50:00.4013736Z CONTENT START input pid=3539 at=2026-10-22T10:50:00.399798+00:00
+2026-10-22T10:50:00.4533719Z Native input tuning: 88 checked bytes
+2026-10-22T10:50:00.4563143Z CONTENT END input pid=3539 status=0 seconds=0.050
+2026-10-22T10:50:00.4596917Z "python3" tools/run_content_task.py phone -- "python3" tools/native_phone.py compile
+2026-10-22T10:50:00.5073329Z CONTENT START phone pid=3573 at=2026-10-22T10:50:00.503429+00:00
+2026-10-22T10:50:00.9063514Z Native phone compile complete: 864 bytes
+2026-10-22T10:50:00.9072958Z CONTENT END phone pid=3573 status=0 seconds=0.400
+2026-10-22T10:50:00.9218188Z "python3" tools/run_content_task.py effects -- "python3" tools/world_effect_assets.py compile
+2026-10-22T10:50:00.9684266Z CONTENT START effects pid=3693 at=2026-10-22T10:50:00.965963+00:00
+2026-10-22T10:50:01.0573588Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/romfs/story/melody.encfx: 532 checked bytes
+2026-10-22T10:50:01.0603178Z CONTENT END effects pid=3693 status=0 seconds=0.089
+2026-10-22T10:50:01.0633800Z "python3" tools/run_content_task.py doll-entry -- "python3" tools/doll_entry_asset.py compile
+2026-10-22T10:50:01.1133687Z CONTENT START doll-entry pid=3696 at=2026-10-22T10:50:01.107563+00:00
+2026-10-22T10:50:01.6483826Z Doll entry compile: 12516 bytes; no combat or fabricated palette period
+2026-10-22T10:50:01.6503362Z CONTENT END doll-entry pid=3696 status=0 seconds=0.540
+2026-10-22T10:50:01.6573150Z "python3" tools/run_content_task.py pillow-entry -- "python3" tools/pillow_entry_asset.py compile
+2026-10-22T10:50:01.7023436Z CONTENT START pillow-entry pid=3727 at=2026-10-22T10:50:01.697473+00:00
+2026-10-22T10:50:02.0196345Z Compiled music region geometry: 1755 bytes
+2026-10-22T10:50:02.0223599Z CONTENT END music-zones pid=3504 status=0 seconds=1.806
+2026-10-22T10:50:02.0294714Z "python3" tools/run_content_task.py round -- "python3" tools/native_round.py compile
+2026-10-22T10:50:02.0790674Z CONTENT START round pid=3787 at=2026-10-22T10:50:02.078468+00:00
+2026-10-22T10:50:02.2643581Z Pillow entry compile: 12444 bytes
+2026-10-22T10:50:02.2693433Z CONTENT END pillow-entry pid=3727 status=0 seconds=0.562
+2026-10-22T10:50:02.2732030Z "python3" tools/run_content_task.py doll-round -- "python3" tools/doll_round.py compile
+2026-10-22T10:50:02.3183542Z CONTENT START doll-round pid=3803 at=2026-10-22T10:50:02.315319+00:00
+2026-10-22T10:50:02.4093666Z Battle round content: 17764 bytes; checked independent ENCRND01
+2026-10-22T10:50:02.4123005Z CONTENT END round pid=3787 status=0 seconds=0.328
+2026-10-22T10:50:02.4243292Z "python3" tools/run_content_task.py pillow-round -- "python3" tools/pillow_round.py compile
+2026-10-22T10:50:02.4663845Z CONTENT START pillow-round pid=3821 at=2026-10-22T10:50:02.464836+00:00
+2026-10-22T10:50:02.7783750Z Doll round: 19932 bytes; checked source ENCRND01 v5
+2026-10-22T10:50:02.7843302Z CONTENT END doll-round pid=3803 status=0 seconds=0.459
+2026-10-22T10:50:02.7873347Z "python3" tools/run_content_task.py house -- "python3" tools/native_house.py compile
+2026-10-22T10:50:02.7933200Z Pillow round: 18764 bytes; checked ENCRND01 v5
+2026-10-22T10:50:02.7963108Z CONTENT END pillow-round pid=3821 status=0 seconds=0.327
+2026-10-22T10:50:02.8014447Z "python3" tools/run_content_task.py mick-treats -- "python3" tools/mick_treats.py compile
+2026-10-22T10:50:02.8293765Z CONTENT START house pid=3858 at=2026-10-22T10:50:02.827608+00:00
+2026-10-22T10:50:02.8473609Z CONTENT START mick-treats pid=3859 at=2026-10-22T10:50:02.846167+00:00
+2026-10-22T10:50:04.3923926Z Mick treats pack written without textures; console tex3ds compile is required before staging
+2026-10-22T10:50:04.3933106Z Mick treats pack: 15444 bytes; checked ENCMIK01
+2026-10-22T10:50:04.3973006Z CONTENT END mick-treats pid=3859 status=0 seconds=1.545
+2026-10-22T10:50:04.4013070Z "python3" tools/run_content_task.py items-check -- "python3" tools/items_assets.py verify
+2026-10-22T10:50:04.4463934Z CONTENT START items-check pid=4202 at=2026-10-22T10:50:04.445002+00:00
+2026-10-22T10:50:06.2735233Z Verified source-pinned Items art, IR dependencies and native layout provenance
+2026-10-22T10:50:06.2763497Z CONTENT END items-check pid=4202 status=0 seconds=1.825
+2026-10-22T10:50:06.2838877Z "python3" tools/run_content_task.py bridge-entry -- "python3" tools/bridge_entry.py compile
+2026-10-22T10:50:06.3304039Z CONTENT START bridge-entry pid=4928 at=2026-10-22T10:50:06.328127+00:00
+2026-10-22T10:50:09.4353808Z Compiled gameplay sound cues: 24
+2026-10-22T10:50:09.4373364Z CONTENT END gameplay-audio pid=3506 status=0 seconds=9.213
+2026-10-22T10:50:09.4417774Z "python3" tools/run_content_task.py field-npcs -- "python3" tools/field_npcs.py compile
+2026-10-22T10:50:09.4835113Z CONTENT START field-npcs pid=5994 at=2026-10-22T10:50:09.482860+00:00
+2026-10-22T10:50:09.8399695Z Bridge entrance compile 12452 bytes; battle/loot execution remains independent
+2026-10-22T10:50:09.8400508Z CONTENT END bridge-entry pid=4928 status=0 seconds=3.511
+2026-10-22T10:50:09.8536933Z "python3" tools/run_content_task.py migration -- "python3" tools/session_migration.py compile
+2026-10-22T10:50:09.9054109Z CONTENT START migration pid=6128 at=2026-10-22T10:50:09.902110+00:00
+2026-10-22T10:50:09.9843989Z Session migration: 98666 bytes; frozen rules6 validation; unchanged snapshot payload
+2026-10-22T10:50:09.9873281Z CONTENT END migration pid=6128 status=0 seconds=0.082
+2026-10-22T10:50:09.9963453Z "python3" tools/run_content_task.py continue -- "python3" tools/continue_assets.py compile
+2026-10-22T10:50:10.0443760Z CONTENT START continue pid=6153 at=2026-10-22T10:50:10.038117+00:00
+2026-10-22T10:50:10.9123905Z CONTENT END continue pid=6153 status=0 seconds=0.872
+2026-10-22T10:50:10.9224114Z "python3" tools/run_content_task.py loading -- "python3" tools/loading_indicator_assets.py compile
+2026-10-22T10:50:10.9683850Z CONTENT START loading pid=6549 at=2026-10-22T10:50:10.967314+00:00
+2026-10-22T10:50:11.1121683Z Verified loading indicator source, texture and checked data
+2026-10-22T10:50:11.1122592Z CONTENT END loading pid=6549 status=0 seconds=0.144
+2026-10-22T10:50:11.1203424Z "python3" tools/run_content_task.py naming -- "python3" tools/new_game_assets.py compile
+2026-10-22T10:50:11.1653573Z CONTENT START naming pid=6586 at=2026-10-22T10:50:11.162782+00:00
+2026-10-22T10:50:11.9724187Z Checked startup naming pack: 18660 bytes
+2026-10-22T10:50:11.9753238Z CONTENT END naming pid=6586 status=0 seconds=0.807
+2026-10-22T10:50:11.9792559Z "python3" tools/run_content_task.py settings -- "python3" tools/startup_settings_assets.py compile
+2026-10-22T10:50:12.0324108Z CONTENT START settings pid=6859 at=2026-10-22T10:50:12.031751+00:00
+2026-10-22T10:50:12.2863872Z Field NPC motion: 5 checked owners; legacy motion and explicitly admitted interaction policies
+2026-10-22T10:50:12.2864390Z CONTENT END field-npcs pid=5994 status=0 seconds=2.800
+2026-10-22T10:50:12.2926711Z "python3" tools/run_content_task.py prompts -- "python3" tools/house_button_prompt_assets.py verify
+2026-10-22T10:50:12.3403717Z CONTENT START prompts pid=6958 at=2026-10-22T10:50:12.338978+00:00
+2026-10-22T10:50:12.6213796Z Settings UI pack compiled 2597 bytes
+2026-10-22T10:50:12.6214558Z CONTENT END settings pid=6859 status=0 seconds=0.587
+2026-10-22T10:50:12.6291353Z "python3" tools/run_content_task.py settings-check -- "python3" tools/startup_settings_assets.py verify
+2026-10-22T10:50:12.6813867Z CONTENT START settings-check pid=7083 at=2026-10-22T10:50:12.680707+00:00
+2026-10-22T10:50:12.7579514Z House prompts: 1452 bytes
+2026-10-22T10:50:12.7580044Z CONTENT END prompts pid=6958 status=0 seconds=0.418
+2026-10-22T10:50:12.7667706Z "python3" tools/run_content_task.py bridge-round -- "python3" tools/bridge_round.py compile
+2026-10-22T10:50:12.8153686Z CONTENT START bridge-round pid=7151 at=2026-10-22T10:50:12.812511+00:00
+2026-10-22T10:50:13.2599028Z Settings source/pack/assets verified
+2026-10-22T10:50:13.2623475Z CONTENT END settings-check pid=7083 status=0 seconds=0.579
+2026-10-22T10:50:13.2691508Z "python3" tools/run_content_task.py field-player -- "python3" tools/field_player_assets.py compile
+2026-10-22T10:50:13.3204415Z CONTENT START field-player pid=7341 at=2026-10-22T10:50:13.318784+00:00
+2026-10-22T10:50:13.3245286Z {
+2026-10-22T10:50:13.3263018Z   "status": "restored",
+2026-10-22T10:50:13.3293053Z   "assets": 67,
+2026-10-22T10:50:13.3333337Z   "restored": 67,
+2026-10-22T10:50:13.3333854Z   "converted_bytes": 210928490
+2026-10-22T10:50:13.3337098Z }
+2026-10-22T10:50:13.3337525Z CONTENT END audio pid=3507 status=0 seconds=13.090
+2026-10-22T10:50:13.3344363Z "python3" tools/run_content_task.py room -- "python3" tools/native_content.py compile
+2026-10-22T10:50:13.3833866Z CONTENT START room pid=7357 at=2026-10-22T10:50:13.382356+00:00
+2026-10-22T10:50:14.5459724Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/field_swing_graphics.py:28: SyntaxWarning: invalid escape sequence '\.'
+2026-10-22T10:50:14.5461595Z   require(type(row)is dict and set(row)=={'role','node','source_key','output'}and type(row['role'])is int and row['role']in(1,2)and row['source_key']in('texture','bat_texture')and type(row['node'])is str and row['node']and all(re.fullmatch('[A-Za-z_][A-Za-z0-9_]*',x)for x in row['node'].split('/'))and type(row['output'])is str and re.fullmatch('[a-z][a-z0-9_-]*\.t3x',row['output']),'Swing graphics layer fields')
+2026-10-22T10:50:14.5463663Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/field_player_audio.py:25: SyntaxWarning: invalid escape sequence '\.'
+2026-10-22T10:50:14.5474628Z   require(type(p['output'])is str and re.fullmatch('world/[a-z0-9_/-]+\.encaction',p['output'])and '..'not in p['output']and '//'not in p['output'],'Player audio output binding')
+2026-10-22T10:50:14.5476078Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/field_swing_action.py:20: SyntaxWarning: invalid escape sequence '\.'
+2026-10-22T10:50:14.5477139Z   require(type(p['output'])is str and re.fullmatch('world/[a-z0-9_/-]+\.encaction',p['output'])and '..'not in p['output']and '//'not in p['output'],'Swing action output identity')
+2026-10-22T10:50:14.5478201Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/field_swing_entry.py:31: SyntaxWarning: invalid escape sequence '\.'
+2026-10-22T10:50:14.5479241Z   require(type(p['output'])is str and re.fullmatch('world/[a-z0-9_/-]+\.encentry',p['output'])and '..'not in p['output']and '//'not in p['output'],'Swing entry output identity')
+2026-10-22T10:50:14.5480174Z Player resources: 6 checked files; 2106624 bytes; compile ; input/GPU integration verified separately
+2026-10-22T10:50:14.5480791Z CONTENT END field-player pid=7341 status=0 seconds=1.227
+2026-10-22T10:50:14.5576323Z "python3" tools/run_content_task.py items -- "python3" tools/native_items.py compile
+2026-10-22T10:50:14.6063636Z CONTENT START items pid=7973 at=2026-10-22T10:50:14.604283+00:00
+2026-10-22T10:50:16.3984031Z Items resource: 6904 bytes; 7 definitions; 1 initial instances
+2026-10-22T10:50:16.4023333Z CONTENT END items pid=7973 status=0 seconds=1.793
+2026-10-22T10:50:16.4085687Z "python3" tools/run_content_task.py introduction -- "python3" tools/native_introduction.py compile
+2026-10-22T10:50:16.4304020Z Original bridge round compile 21244 bytes; v6 source admission only, integration requires live inventory/world consumers
+2026-10-22T10:50:16.4307642Z CONTENT END bridge-round pid=7151 status=0 seconds=3.616
+2026-10-22T10:50:16.4446147Z "python3" tools/run_content_task.py item-details -- "python3" tools/item_details.py compile
+2026-10-22T10:50:16.4557228Z CONTENT START introduction pid=8848 at=2026-10-22T10:50:16.450457+00:00
+2026-10-22T10:50:16.4983981Z CONTENT START item-details pid=8875 at=2026-10-22T10:50:16.493097+00:00
+2026-10-22T10:50:16.9453789Z Original two-scene Introduction: 11409 checked bytes
+2026-10-22T10:50:16.9484805Z CONTENT END introduction pid=8848 status=0 seconds=0.492
+2026-10-22T10:50:16.9574121Z "python3" tools/run_content_task.py storage -- "python3" tools/native_storage.py compile
+2026-10-22T10:50:17.0345343Z CONTENT START storage pid=9191 at=2026-10-22T10:50:17.031931+00:00
+2026-10-22T10:50:17.1193840Z Item details compile: 3048 checked bytes; independent ENCITD01, descriptions only
+2026-10-22T10:50:17.1223535Z CONTENT END item-details pid=8875 status=0 seconds=0.622
+2026-10-22T10:50:17.1320567Z "python3" tools/run_content_task.py field-story -- "python3" tools/field_story.py compile
+2026-10-22T10:50:17.1863928Z CONTENT START field-story pid=9288 at=2026-10-22T10:50:17.180808+00:00
+2026-10-22T10:50:18.0873906Z Storage binary: 5784 bytes; UID transfer and equipment data
+2026-10-22T10:50:18.0889953Z CONTENT END storage pid=9191 status=0 seconds=1.054
+2026-10-22T10:50:18.0983432Z "python3" tools/run_content_task.py field-equipment -- "python3" tools/field_equipment.py compile
+2026-10-22T10:50:18.1403504Z CONTENT START field-equipment pid=9821 at=2026-10-22T10:50:18.139740+00:00
+2026-10-22T10:50:18.8803891Z Field equipment compile: 8000 checked bytes; six known commands / Equip and field PSI
+2026-10-22T10:50:18.8853322Z CONTENT END field-equipment pid=9821 status=0 seconds=0.738
+2026-10-22T10:50:20.5244112Z House content: 24400 bytes; checked independent ENCHSE01
+2026-10-22T10:50:20.5246318Z CONTENT END house pid=3858 status=0 seconds=17.696
+2026-10-22T10:50:20.5335371Z "python3" tools/run_content_task.py house-presents -- "python3" tools/house_presents.py compile
+2026-10-22T10:50:20.5339833Z "python3" tools/run_content_task.py drawer -- "python3" tools/drawer_program.py compile
+2026-10-22T10:50:20.5790305Z CONTENT START drawer pid=11074 at=2026-10-22T10:50:20.578087+00:00
+2026-10-22T10:50:20.5813532Z CONTENT START house-presents pid=11075 at=2026-10-22T10:50:20.579005+00:00
+2026-10-22T10:50:20.6851771Z Drawer programme: 720 bytes; checked ENCDRP01
+2026-10-22T10:50:20.6873437Z CONTENT END drawer pid=11074 status=0 seconds=0.107
+2026-10-22T10:50:20.6954042Z "python3" tools/run_content_task.py inspections -- "python3" tools/house_inspection.py compile
+2026-10-22T10:50:20.7396600Z CONTENT START inspections pid=11131 at=2026-10-22T10:50:20.737878+00:00
+2026-10-22T10:50:20.7864774Z House presents pack written without textures; console tex3ds compile is required before staging
+2026-10-22T10:50:20.7888037Z House presents pack: 2980 bytes; checked ENCPRS01
+2026-10-22T10:50:20.7913266Z CONTENT END house-presents pid=11075 status=0 seconds=0.205
+2026-10-22T10:50:20.7954508Z "python3" tools/run_content_task.py locale -- "python3" tools/localization_assets.py compile
+2026-10-22T10:50:20.8463772Z CONTENT START locale pid=11198 at=2026-10-22T10:50:20.843144+00:00
+2026-10-22T10:50:20.9099083Z House inspections: 1748 bytes; checked ENCHIN01
+2026-10-22T10:50:20.9113051Z CONTENT END inspections pid=11131 status=0 seconds=0.170
+2026-10-22T10:50:23.3957947Z Locale catalog: 13 locales; 3997 keys; 497 bindings; 3341414 bytes
+2026-10-22T10:50:23.3958404Z CONTENT END locale pid=11198 status=0 seconds=2.552
+2026-10-22T10:50:25.0323556Z Native data: 69096 bytes, 28 sections; no C++ generation or compilation
+2026-10-22T10:50:25.0324258Z CONTENT END room pid=7357 status=0 seconds=11.649
+2026-10-22T10:50:25.0393761Z "python3" tools/run_content_task.py battle -- "python3" tools/native_battle.py compile
+2026-10-22T10:50:25.0397296Z "python3" tools/run_content_task.py mayor-scene -- "python3" tools/mayor_scene.py compile
+2026-10-22T10:50:25.0418153Z "python3" tools/run_content_task.py restore -- "python3" tools/native_restore.py compile
+2026-10-22T10:50:25.0866071Z CONTENT START battle pid=12740 at=2026-10-22T10:50:25.084636+00:00
+2026-10-22T10:50:25.0867962Z CONTENT START restore pid=12741 at=2026-10-22T10:50:25.085644+00:00
+2026-10-22T10:50:25.0876355Z CONTENT START mayor-scene pid=12742 at=2026-10-22T10:50:25.086751+00:00
+2026-10-22T10:50:25.2325634Z Restore content: 1433 bytes; source NPC event order, music areas, inventory allocation metadata
+2026-10-22T10:50:25.2343496Z CONTENT END restore pid=12741 status=0 seconds=0.146
+2026-10-22T10:50:25.5144918Z Battle content: 12296 bytes; external data only
+2026-10-22T10:50:25.5163603Z CONTENT END battle pid=12740 status=0 seconds=0.429
+2026-10-22T10:50:27.6866274Z Mayor initial scene: 21 checked files; later rescue/zoo interactions remain explicit boundaries
+2026-10-22T10:50:27.6866781Z CONTENT END mayor-scene pid=12742 status=0 seconds=2.599
+2026-10-22T10:50:31.5470830Z Field story: compile 9912 bytes; checked source programmes and text only
+2026-10-22T10:50:31.5471178Z CONTENT END field-story pid=9288 status=0 seconds=14.366
+2026-10-22T10:50:31.5540280Z "python3" tools/run_content_task.py field-room -- "python3" tools/podunk_field.py compile
+2026-10-22T10:50:31.5858869Z CONTENT START field-room pid=13708 at=2026-10-22T10:50:31.585468+00:00
+2026-10-22T10:50:42.2189775Z Podunk field: 44 layers, 169977 cells, 1 atlas pages, world/podunk/podunk.encmap 1619644 bytes, world/podunk/podunk.encroom 35704 bytes, world/world.enclinks 1188 bytes
+2026-10-22T10:50:42.2190239Z CONTENT END field-room pid=13708 status=0 seconds=10.633
+2026-10-22T10:50:42.2252051Z "python3" tools/run_content_task.py session -- "python3" tools/native_session.py compile
+2026-10-22T10:50:42.2255115Z "python3" tools/run_content_task.py field-props -- "python3" tools/field_props.py compile
+2026-10-22T10:50:42.2257416Z "python3" tools/run_content_task.py field-objects -- "python3" tools/field_objects_assets.py compile
+2026-10-22T10:50:42.2573891Z CONTENT START session pid=13990 at=2026-10-22T10:50:42.256690+00:00
+2026-10-22T10:50:42.2720372Z CONTENT START field-props pid=13992 at=2026-10-22T10:50:42.271247+00:00
+2026-10-22T10:50:42.2720858Z CONTENT START field-objects pid=13991 at=2026-10-22T10:50:42.271251+00:00
+2026-10-22T10:50:43.9953944Z Field props: 13 source objects, 3152 bytes; action compile
+2026-10-22T10:50:43.9954642Z CONTENT END field-props pid=13992 status=0 seconds=1.723
+2026-10-22T10:50:44.3992500Z Source objects: 1 rows; 672 metadata bytes; 4117 actual texture bytes; compile
+2026-10-22T10:50:44.3993145Z CONTENT END field-objects pid=13991 status=0 seconds=2.127
+2026-10-22T10:50:48.3887418Z Native session: 10787 bytes; checked source/defaults/stat rows; save-only bridge
+2026-10-22T10:50:48.3887840Z CONTENT END session pid=13990 status=0 seconds=6.132
+2026-10-22T10:50:48.3948410Z "python3" tools/run_content_task.py field-menus -- "python3" tools/field_menus.py compile
+2026-10-22T10:50:48.4256075Z CONTENT START field-menus pid=14438 at=2026-10-22T10:50:48.425239+00:00
+2026-10-22T10:50:49.1179983Z Field menus: checked pinned source and 818651 bytes
+2026-10-22T10:50:49.1180280Z CONTENT END field-menus pid=14438 status=0 seconds=0.692
+2026-10-22T10:50:49.1239873Z "python3" tools/run_content_task.py catalog -- "python3" tools/resource_catalog.py compile
+2026-10-22T10:50:49.1242892Z "python3" tools/run_content_task.py encounters -- "python3" tools/encounter_dependencies.py compile
+2026-10-22T10:50:49.1556707Z CONTENT START encounters pid=14586 at=2026-10-22T10:50:49.155110+00:00
+2026-10-22T10:50:49.1557157Z CONTENT START catalog pid=14587 at=2026-10-22T10:50:49.155117+00:00
+2026-10-22T10:50:49.2471941Z Native resource catalog: 3295 checked bytes, 68 typed bindings
+2026-10-22T10:50:49.2472392Z CONTENT END catalog pid=14587 status=0 seconds=0.092
+2026-10-22T10:50:50.6145124Z {"bytes": 1184080, "checked_pairs": 4, "enemy_profiles": 45, "formations": 20, "manifest": "/home/runner/work/mother-encore-3ds/mother-encore-3ds/content/encounter-dependencies.json", "multi_enemy_formations": 1, "reinforcement_tables": 6, "rng_samples_consumed": 0, "scenes": 13, "sha256": "0d3ce568504996dded1c8f2647ea55089b7eeddc59590145c3c61d4830ee2689", "source_candidates": 196, "spawners": 192}
+2026-10-22T10:50:50.6145991Z CONTENT END encounters pid=14586 status=0 seconds=1.459
+2026-10-22T10:50:50.6210387Z CONTENT RUN 2cf095d7a0e3406cb2be3a6f45857610 complete
+2026-10-22T10:50:50.6215155Z python3 tools/content_compiler.py
+2026-10-22T10:50:50.6530091Z Content: 1512 bytes; 2 maps; 5 programs; 5b110c265d9d934e122aed0ac123e4a6f6f0f4530fbc2a101ebeb01602895d90
+2026-10-22T10:50:50.6603935Z ##[group]Run set -o pipefail
+2026-10-22T10:50:50.6604125Z [36;1mset -o pipefail[0m
+2026-10-22T10:50:50.6604274Z [36;1mmkdir -p build/collision-ci[0m
+2026-10-22T10:50:50.6604717Z [36;1mcmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug -DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON -DENCORE_SANITIZERS=ON 2>&1 | tee build/collision-ci/sanitize-configure.log[0m
+2026-10-22T10:50:50.6605329Z [36;1mcmake --build build/sanitize --parallel 4 --target encore_field_collision_index_tests 2>&1 | tee build/collision-ci/sanitize-build.log[0m
+2026-10-22T10:50:50.6605814Z [36;1mctest --test-dir build/sanitize --verbose --no-tests=error -R '^field_collision_index$' 2>&1 | tee build/collision-ci/sanitize.log[0m
+2026-10-22T10:50:50.6649412Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-22T10:50:50.6649598Z env:
+2026-10-22T10:50:50.6649702Z   CC: clang
+2026-10-22T10:50:50.6649809Z   CXX: clang++
+2026-10-22T10:50:50.6649913Z   BUILD_JOBS: 4
+2026-10-22T10:50:50.6650053Z   GIT_OPTIONAL_LOCKS: 0
+2026-10-22T10:50:50.6650217Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:50:50.6650456Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T10:50:50.6650691Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:50:50.6650902Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:50:50.6651112Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:50:50.6651328Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T10:50:50.6651589Z   PYTHONPATH: /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/ci_python
+2026-10-22T10:50:50.6651818Z ##[endgroup]
+2026-10-22T10:51:01.3278168Z -- The CXX compiler identification is Clang 18.1.3
+2026-10-22T10:51:01.3341384Z -- Detecting CXX compiler ABI info
+2026-10-22T10:51:01.4451285Z -- Detecting CXX compiler ABI info - done
+2026-10-22T10:51:01.4537802Z -- Check for working CXX compiler: /usr/bin/clang++ - skipped
+2026-10-22T10:51:01.4540167Z -- Detecting CXX compile features
+2026-10-22T10:51:01.4544793Z -- Detecting CXX compile features - done
+2026-10-22T10:51:01.6639107Z -- Found Python3: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python3.12 (found suitable version "3.12.15", minimum required is "3.9") found components: Interpreter
+2026-10-22T10:51:01.6706825Z -- Performing Test ENCORE_LIBC_HAS_FREAD_CHK
+2026-10-22T10:51:02.2443601Z -- Performing Test ENCORE_LIBC_HAS_FREAD_CHK - Success
+2026-10-22T10:51:02.2454281Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-10-22T10:51:02.6953677Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-10-22T10:51:02.6960019Z -- Found Threads: TRUE
+2026-10-22T10:51:02.7034085Z -- Configuring done (11.9s)
+2026-10-22T10:51:02.9906721Z -- Generating done (0.3s)
+2026-10-22T10:51:02.9912071Z -- Build files have been written to: /home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize
+2026-10-22T10:51:03.1521387Z [  0%] Building CXX object CMakeFiles/encore_core.dir/runtime/coins_data.cpp.o
+2026-10-22T10:51:03.1522229Z [  0%] Building CXX object CMakeFiles/encore_core.dir/runtime/coins.cpp.o
+2026-10-22T10:51:03.1522848Z [  0%] Building CXX object CMakeFiles/encore_core.dir/runtime/circle_motion.cpp.o
+2026-10-22T10:51:03.1528068Z [  0%] Building CXX object CMakeFiles/encore_core.dir/runtime/coin_scene_data.cpp.o
+2026-10-22T10:51:06.1934395Z [  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/coin_scene.cpp.o
+2026-10-22T10:51:06.1935111Z [  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/dropped_items_data.cpp.o
+2026-10-22T10:51:06.2133987Z [  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/item_holder_grant.cpp.o
+2026-10-22T10:51:06.2163654Z [  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/dropped_items.cpp.o
+2026-10-22T10:51:06.7045147Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dropped_items_data.cpp:20:3: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+2026-10-22T10:51:06.7063557Z    20 |  }return true;
+2026-10-22T10:51:06.7064028Z       |   ^
+2026-10-22T10:51:06.7172767Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dropped_items_data.cpp:18:17: note: previous statement is here
+2026-10-22T10:51:06.7203607Z    18 |  size_t begin=0;for(size_t n=0;n<=s.size();++n)if(n==s.size()||s[n]=='/'){
+2026-10-22T10:51:06.7233106Z       |                 ^
+2026-10-22T10:51:07.0934100Z [  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_key_contacts.cpp.o
+2026-10-22T10:51:07.3594290Z 1 warning generated.
+2026-10-22T10:51:07.3744029Z [  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_key_indicator.cpp.o
+2026-10-22T10:51:07.4199133Z [  5%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_key_hud_graphics.cpp.o
+2026-10-22T10:51:07.6574964Z [ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_key_media.cpp.o
+2026-10-22T10:51:07.8394125Z [ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_mechanism_bindings.cpp.o
+2026-10-22T10:51:07.9293994Z [ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_mechanism_state.cpp.o
+2026-10-22T10:51:08.0682393Z [ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_mechanism_presentation.cpp.o
+2026-10-22T10:51:08.5036700Z [ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_mechanism_audio.cpp.o
+2026-10-22T10:51:08.5116159Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_mechanism_presentation.cpp:122:3: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+2026-10-22T10:51:08.5125223Z   122 |  }return bad(e,"Mechanism draw owner missing");
+2026-10-22T10:51:08.5153043Z       |   ^
+2026-10-22T10:51:08.5163379Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_mechanism_presentation.cpp:117:2: note: previous statement is here
+2026-10-22T10:51:08.5203482Z   117 |  for(const auto&o:owners())if(o.owner==owner){const auto*s=sprite(o.profile);if(!s||frame>=s->frames)return bad(e,"Mechanism draw frame/profile rejected");
+2026-10-22T10:51:08.5213061Z       |  ^
+2026-10-22T10:51:08.8095994Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_mechanism_audio.cpp:14:3: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+2026-10-22T10:51:08.8135372Z    14 |  }return bad(e,"Mechanism sound source owner missing");
+2026-10-22T10:51:08.8143321Z       |   ^
+2026-10-22T10:51:08.8173761Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/dungeon_mechanism_audio.cpp:7:35: note: previous statement is here
+2026-10-22T10:51:08.8203402Z     7 |  const auto&sounds=data_.sounds();for(size_t i=0;i<sounds.size();++i)if(sounds[i].owner==owner){const auto&s=sounds[i];
+2026-10-22T10:51:08.8204123Z       |                                   ^
+2026-10-22T10:51:08.9343823Z 1 warning generated.
+2026-10-22T10:51:08.9463813Z [ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_mechanism_contacts.cpp.o
+2026-10-22T10:51:09.0904146Z [ 10%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_rooms.cpp.o
+2026-10-22T10:51:09.1263975Z [ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_terrain.cpp.o
+2026-10-22T10:51:09.3393618Z 1 warning generated.
+2026-10-22T10:51:09.3513751Z [ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/shadow_graphics.cpp.o
+2026-10-22T10:51:09.8573905Z [ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_step_contacts.cpp.o
+2026-10-22T10:51:10.0376391Z [ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/poison_hazards.cpp.o
+2026-10-22T10:51:10.0878825Z [ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/geyser_timeline.cpp.o
+2026-10-22T10:51:10.4024024Z [ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/geyser_media.cpp.o
+2026-10-22T10:51:10.4827723Z [ 15%] Building CXX object CMakeFiles/encore_core.dir/runtime/geyser_mixer.cpp.o
+2026-10-22T10:51:11.0104348Z [ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/geyser_graphics.cpp.o
+2026-10-22T10:51:11.0943951Z [ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/world_damage.cpp.o
+2026-10-22T10:51:11.2371693Z [ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/poison_damage.cpp.o
+2026-10-22T10:51:11.2399023Z [ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/geyser_lifecycle.cpp.o
+2026-10-22T10:51:11.5833896Z [ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/geyser_instance_presentation.cpp.o
+2026-10-22T10:51:11.8423997Z [ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/poison_contacts.cpp.o
+2026-10-22T10:51:12.1413995Z [ 20%] Building CXX object CMakeFiles/encore_core.dir/runtime/geyser_contacts.cpp.o
+2026-10-22T10:51:12.2603794Z [ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/breakables_data.cpp.o
+2026-10-22T10:51:12.3464176Z [ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/breakables.cpp.o
+2026-10-22T10:51:12.8514386Z [ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing.cpp.o
+2026-10-22T10:51:13.1963788Z [ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing_graphics.cpp.o
+2026-10-22T10:51:13.2904040Z [ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing_action.cpp.o
+2026-10-22T10:51:13.7665241Z [ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing_entry.cpp.o
+2026-10-22T10:51:13.8333859Z [ 25%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_swing_resources.cpp.o
+2026-10-22T10:51:13.8583995Z [ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_player_tree.cpp.o
+2026-10-22T10:51:14.1521159Z [ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_area_contacts.cpp.o
+2026-10-22T10:51:14.2464693Z [ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_objects.cpp.o
+2026-10-22T10:51:14.3573978Z [ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/prop_clips.cpp.o
+2026-10-22T10:51:14.4264543Z [ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_props.cpp.o
+2026-10-22T10:51:14.9063993Z [ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_steps.cpp.o
+2026-10-22T10:51:15.0253968Z [ 30%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_keys.cpp.o
+2026-10-22T10:51:15.2613822Z [ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_key_state.cpp.o
+2026-10-22T10:51:15.5194453Z [ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_key_clocks.cpp.o
+2026-10-22T10:51:15.5993814Z [ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_switches.cpp.o
+2026-10-22T10:51:15.7120361Z [ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_switch_state.cpp.o
+2026-10-22T10:51:15.8254040Z [ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_wall_timeline.cpp.o
+2026-10-22T10:51:16.2733901Z [ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/dungeon_wall_state.cpp.o
+2026-10-22T10:51:16.5224518Z [ 35%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_menus_data.cpp.o
+2026-10-22T10:51:16.6184126Z [ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_menus.cpp.o
+2026-10-22T10:51:16.9963419Z [ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_zones.cpp.o
+2026-10-22T10:51:17.0768283Z [ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/gameplay_audio.cpp.o
+2026-10-22T10:51:17.3944067Z [ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_data.cpp.o
+2026-10-22T10:51:17.5904137Z [ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/world_links.cpp.o
+2026-10-22T10:51:18.0135317Z [ 40%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_scene.cpp.o
+2026-10-22T10:51:18.1574120Z [ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_scene_resources.cpp.o
+2026-10-22T10:51:18.2234080Z [ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_story.cpp.o
+2026-10-22T10:51:18.3067848Z [ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/present_data.cpp.o
+2026-10-22T10:51:18.5519941Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:304:6: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+2026-10-22T10:51:18.5521419Z   304 |     }return true;
+2026-10-22T10:51:18.5521809Z       |      ^
+2026-10-22T10:51:18.5522373Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/field_scene.cpp:301:5: note: previous statement is here
+2026-10-22T10:51:18.5523267Z   301 |     for(uint32_t i=0;i<prop_area_pending_.size();++i)if(prop_area_pending_[i]){
+2026-10-22T10:51:18.5523753Z       |     ^
+2026-10-22T10:51:18.9773257Z [ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_presents.cpp.o
+2026-10-22T10:51:19.1143970Z [ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/mick_treats.cpp.o
+2026-10-22T10:51:19.5504059Z [ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_inspection_data.cpp.o
+2026-10-22T10:51:19.7224059Z [ 45%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_equipment_data.cpp.o
+2026-10-22T10:51:19.8074306Z [ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/field_equipment_menu.cpp.o
+2026-10-22T10:51:20.1073979Z [ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/storage_data.cpp.o
+2026-10-22T10:51:20.5057008Z [ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/storage_menu.cpp.o
+2026-10-22T10:51:20.5653628Z 1 warning generated.
+2026-10-22T10:51:20.5864137Z [ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/item_details.cpp.o
+2026-10-22T10:51:20.7489041Z [ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/drawer_program.cpp.o
+2026-10-22T10:51:20.8314006Z [ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/resource_catalog.cpp.o
+2026-10-22T10:51:20.8764372Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_menu.cpp:18:87: warning: '&&' within '||' [-Wlogical-op-parentheses]
+2026-10-22T10:51:20.8795404Z    18 |  auto check=[&](const ItemInstance&i,bool stored){if(!uids.insert(i.id).second||stored&&i.equipped)return false;for(uint32_t j=0;j<data_.count(StorageSection::Policies);++j){auto p=data_.policy(j);if(p.definition!=i.definition)continue;if((i.doses!=p.doses&&(!dose_admission_||!dose_admission_(i,p.doses)))||++counts[j]>p.max_count)return false;if(i.equipped){bool found=false;for(uint32_t k=0;k<data_.count(StorageSection::Equipment);++k)if(data_.equipment(k).definition==i.definition&&(inventory_->content().definition(i.definition).flags&uint32_t(ItemDefinitionFlag::Equipment)))found=true;if(!found)return false;}return true;}return false;};
+2026-10-22T10:51:20.8801191Z       |                                                                               ~~~~~~~~^~~~~~~~~~~~
+2026-10-22T10:51:20.8908116Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/storage_menu.cpp:18:87: note: place parentheses around the '&&' expression to silence this warning
+2026-10-22T10:51:20.8935238Z    18 |  auto check=[&](const ItemInstance&i,bool stored){if(!uids.insert(i.id).second||stored&&i.equipped)return false;for(uint32_t j=0;j<data_.count(StorageSection::Policies);++j){auto p=data_.policy(j);if(p.definition!=i.definition)continue;if((i.doses!=p.doses&&(!dose_admission_||!dose_admission_(i,p.doses)))||++counts[j]>p.max_count)return false;if(i.equipped){bool found=false;for(uint32_t k=0;k<data_.count(StorageSection::Equipment);++k)if(data_.equipment(k).definition==i.definition&&(inventory_->content().definition(i.definition).flags&uint32_t(ItemDefinitionFlag::Equipment)))found=true;if(!found)return false;}return true;}return false;};
+2026-10-22T10:51:20.8963073Z       |                                                                                       ^           
+2026-10-22T10:51:20.8993070Z       |                                                                                 (                 )
+2026-10-22T10:51:21.3114707Z [ 50%] Building CXX object CMakeFiles/encore_core.dir/runtime/localization.cpp.o
+2026-10-22T10:51:21.3514082Z [ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/localized_presentation.cpp.o
+2026-10-22T10:51:21.3863658Z 1 warning generated.
+2026-10-22T10:51:21.4013634Z [ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/locale_preference.cpp.o
+2026-10-22T10:51:21.6748368Z [ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/source_font.cpp.o
+2026-10-22T10:51:21.7013965Z [ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/title_locale_data.cpp.o
+2026-10-22T10:51:21.9864514Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/title_locale_data.cpp:50:4: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+2026-10-22T10:51:21.9893519Z    50 |   }if(found!=options.size())return fail("Title locale incomplete option coverage");
+2026-10-22T10:51:21.9913362Z       |    ^
+2026-10-22T10:51:21.9943463Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/title_locale_data.cpp:46:49: note: previous statement is here
+2026-10-22T10:51:21.9944240Z    46 |  if(selection.code()!=fallback_){size_t found=0;for(const auto&r:remaps_)if(r.locale==selection.code()){
+2026-10-22T10:51:21.9944709Z       |                                                 ^
+2026-10-22T10:51:22.0093430Z [ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_programs.cpp.o
+2026-10-22T10:51:22.2174321Z [ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_library_bindings.cpp.o
+2026-10-22T10:51:22.3474553Z [ 55%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_bank_routes.cpp.o
+2026-10-22T10:51:22.3923823Z 1 warning generated.
+2026-10-22T10:51:22.4053781Z [ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_scene_graph.cpp.o
+2026-10-22T10:51:22.7936721Z [ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_players.cpp.o
+2026-10-22T10:51:23.1864210Z [ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_player_choice.cpp.o
+2026-10-22T10:51:23.2543729Z [ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/music_regions.cpp.o
+2026-10-22T10:51:23.2973940Z [ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/introduction.cpp.o
+2026-10-22T10:51:23.6174296Z [ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/new_game_setup.cpp.o
+2026-10-22T10:51:23.6263871Z [ 60%] Building CXX object CMakeFiles/encore_core.dir/runtime/startup_settings.cpp.o
+2026-10-22T10:51:24.3903813Z [ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_button_prompts.cpp.o
+2026-10-22T10:51:24.5743236Z [ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/loading_indicator_data.cpp.o
+2026-10-22T10:51:24.9224091Z [ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/continue_menu_data.cpp.o
+2026-10-22T10:51:24.9913898Z [ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/continue_menu.cpp.o
+2026-10-22T10:51:25.1164135Z [ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/slot_preference.cpp.o
+2026-10-22T10:51:25.5835083Z [ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/restore_data.cpp.o
+2026-10-22T10:51:25.7264117Z [ 65%] Building CXX object CMakeFiles/encore_core.dir/runtime/session_restore.cpp.o
+2026-10-22T10:51:25.7803802Z [ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/session_migration.cpp.o
+2026-10-22T10:51:25.7923805Z [ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/load_rng.cpp.o
+2026-10-22T10:51:26.2323996Z [ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/fresh_house.cpp.o
+2026-10-22T10:51:26.5194050Z [ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/dialogue_choices_data.cpp.o
+2026-10-22T10:51:26.8256079Z [ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/dialogue_choices.cpp.o
+2026-10-22T10:51:27.1473840Z [ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/phone_data.cpp.o
+2026-10-22T10:51:27.2173752Z [ 70%] Building CXX object CMakeFiles/encore_core.dir/runtime/phone_runtime.cpp.o
+2026-10-22T10:51:27.2684372Z [ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/native_session.cpp.o
+2026-10-22T10:51:27.3747225Z [ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/session_save.cpp.o
+2026-10-22T10:51:27.6373986Z [ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/save_menu_data.cpp.o
+2026-10-22T10:51:27.7743963Z [ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/save_menu.cpp.o
+2026-10-22T10:51:28.4343945Z [ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/native_input.cpp.o
+2026-10-22T10:51:28.5233985Z [ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/world_effect_data.cpp.o
+2026-10-22T10:51:28.6717583Z [ 75%] Building CXX object CMakeFiles/encore_core.dir/runtime/world_effect.cpp.o
+2026-10-22T10:51:28.7763963Z [ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/items_data.cpp.o
+2026-10-22T10:51:28.9224039Z [ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/items_menu.cpp.o
+2026-10-22T10:51:29.1454240Z [ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_audio.cpp.o
+2026-10-22T10:51:29.4683753Z [ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_runtime.cpp.o
+2026-10-22T10:51:29.4833963Z [ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_data.cpp.o
+2026-10-22T10:51:29.4953937Z [ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/house_presentation.cpp.o
+2026-10-22T10:51:29.6203997Z [ 80%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_loot.cpp.o
+2026-10-22T10:51:29.8573893Z [ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_outcome.cpp.o
+2026-10-22T10:51:29.9333148Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:285:3: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+2026-10-22T10:51:29.9363231Z   285 |  }return true;
+2026-10-22T10:51:29.9373341Z       |   ^
+2026-10-22T10:51:29.9423336Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:275:2: note: previous statement is here
+2026-10-22T10:51:29.9433360Z   275 |  for(uint32_t i=0;i<story_process_.size();++i)if(story_process_[i]&&idle_frame_>story_ready_idle_[i]){
+2026-10-22T10:51:29.9452990Z       |  ^
+2026-10-22T10:51:29.9575104Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:517:47: warning: unused variable 'player' [-Wunused-variable]
+2026-10-22T10:51:29.9593316Z   517 |  const auto room=world_->content();const auto player=room.actor_instance(room.scene().player_instance_index);
+2026-10-22T10:51:29.9623222Z       |                                               ^~~~~~
+2026-10-22T10:51:29.9643510Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/house_runtime.cpp:542:91: warning: unused variable 'player' [-Wunused-variable]
+2026-10-22T10:51:29.9653369Z   542 |  const auto text=content_.dialogue(selected);const auto room=world_->content();const auto player=room.actor_instance(room.scene().player_instance_index);
+2026-10-22T10:51:29.9683084Z       |                                                                                           ^~~~~~
+2026-10-22T10:51:30.2053875Z [ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_round.cpp.o
+2026-10-22T10:51:30.5066881Z [ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_round_data.cpp.o
+2026-10-22T10:51:30.8083931Z [ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_action_presentation.cpp.o
+2026-10-22T10:51:30.8433845Z [ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/source_random.cpp.o
+2026-10-22T10:51:30.9514226Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/battle_round_data.cpp:9:20: warning: unused variable 'section_count' [-Wunused-const-variable]
+2026-10-22T10:51:30.9543342Z     9 | constexpr uint32_t section_count=20,header_bytes=288,max_bytes=2*1024*1024;
+2026-10-22T10:51:30.9553047Z       |                    ^~~~~~~~~~~~~
+2026-10-22T10:51:31.0064359Z [ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/audio_data.cpp.o
+2026-10-22T10:51:31.1653909Z 1 warning generated.
+2026-10-22T10:51:31.1803746Z [ 85%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_data.cpp.o
+2026-10-22T10:51:31.1863399Z 3 warnings generated.
+2026-10-22T10:51:31.2009428Z [ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/battle_entry.cpp.o
+2026-10-22T10:51:31.4774059Z [ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/room_data.cpp.o
+2026-10-22T10:51:31.7163861Z [ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/content.cpp.o
+2026-10-22T10:51:31.7193541Z [ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/file_io.cpp.o
+2026-10-22T10:51:31.8003924Z [ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/story.cpp.o
+2026-10-22T10:51:32.0057149Z [ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/game.cpp.o
+2026-10-22T10:51:32.0463846Z [ 90%] Building CXX object CMakeFiles/encore_core.dir/runtime/save.cpp.o
+2026-10-22T10:51:32.3194403Z [ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/progression.cpp.o
+2026-10-22T10:51:32.3978083Z [ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/movement.cpp.o
+2026-10-22T10:51:32.4383767Z [ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/animation.cpp.o
+2026-10-22T10:51:32.4763947Z [ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/collision.cpp.o
+2026-10-22T10:51:32.5546990Z [ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/world_flags.cpp.o
+2026-10-22T10:51:32.6674186Z [ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/world.cpp.o
+2026-10-22T10:51:32.7834138Z [ 95%] Building CXX object CMakeFiles/encore_core.dir/runtime/opening_trigger.cpp.o
+2026-10-22T10:51:33.0632461Z [100%] Building CXX object CMakeFiles/encore_core.dir/runtime/dialogue.cpp.o
+2026-10-22T10:51:33.1224236Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:378:6: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+2026-10-22T10:51:33.1225107Z   378 |     }return true;
+2026-10-22T10:51:33.1263097Z       |      ^
+2026-10-22T10:51:33.1313490Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/runtime/world.cpp:373:5: note: previous statement is here
+2026-10-22T10:51:33.1333515Z   373 |     for(auto&bound:flagged_bodies_)if(bound.state.in_tree&&bound.state.queued_for_deletion){
+2026-10-22T10:51:33.1383231Z       |     ^
+2026-10-22T10:51:33.1393334Z [100%] Building CXX object CMakeFiles/encore_core.dir/runtime/actor_actions.cpp.o
+2026-10-22T10:51:33.1787363Z [100%] Building CXX object CMakeFiles/encore_core.dir/runtime/cutscene_camera.cpp.o
+2026-10-22T10:51:34.3105967Z 1 warning generated.
+2026-10-22T10:51:34.3299322Z [100%] Linking CXX static library libencore_core.a
+2026-10-22T10:51:49.6608238Z [100%] Built target encore_core
+2026-10-22T10:51:49.6670577Z [100%] Building CXX object CMakeFiles/encore_field_collision_index_tests.dir/tests/field_collision_index_tests.cpp.o
+2026-10-22T10:51:50.1894359Z [100%] Linking CXX executable encore_field_collision_index_tests
+2026-10-22T10:51:51.2392589Z [100%] Built target encore_field_collision_index_tests
+2026-10-22T10:51:51.3366220Z Internal ctest changing into directory: /home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize
+2026-10-22T10:51:51.3366749Z UpdateCTestConfiguration  from :/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize/DartConfiguration.tcl
+2026-10-22T10:51:51.3367450Z Parse Config file:/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize/DartConfiguration.tcl
+2026-10-22T10:51:51.3368127Z UpdateCTestConfiguration  from :/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize/DartConfiguration.tcl
+2026-10-22T10:51:51.3368793Z Parse Config file:/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize/DartConfiguration.tcl
+2026-10-22T10:51:51.3369177Z Test project /home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize
+2026-10-22T10:51:51.3369409Z Constructing a list of tests
+2026-10-22T10:51:51.3420488Z Done constructing a list of tests
+2026-10-22T10:51:51.3420700Z Updating test list for fixtures
+2026-10-22T10:51:51.3420861Z Added 0 tests to meet fixture requirements
+2026-10-22T10:51:51.3424638Z Checking test dependency graph...
+2026-10-22T10:51:51.3424889Z Checking test dependency graph end
+2026-10-22T10:51:51.3425091Z test 123
+2026-10-22T10:51:51.3425230Z     Start 123: field_collision_index
+2026-10-22T10:51:51.3425342Z 
+2026-10-22T10:51:51.3425728Z 123: Test command: /home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize/encore_field_collision_index_tests "/home/runner/work/mother-encore-3ds/mother-encore-3ds/romfs/world/podunk/podunk.encmap"
+2026-10-22T10:51:51.3426287Z 123: Working Directory: /home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize
+2026-10-22T10:51:51.3426541Z 123: Test timeout computed to be: 1500
+2026-10-22T10:51:52.4415123Z 123: Collision cache PASS: 220251 checks; reference decorative/collision cell visits 924204; source order, geometry, conditions, actor and budget preserved
+2026-10-22T10:51:52.4449121Z 1/1 Test #123: field_collision_index ............   Passed    1.10 sec
+2026-10-22T10:51:52.4452332Z 
+2026-10-22T10:51:52.4452512Z The following tests passed:
+2026-10-22T10:51:52.4452905Z 	field_collision_index
+2026-10-22T10:51:52.4453025Z 
+2026-10-22T10:51:52.4453127Z 100% tests passed, 0 tests failed out of 1
+2026-10-22T10:51:52.4453298Z 
+2026-10-22T10:51:52.4453382Z Total Test time (real) =   1.11 sec
+2026-10-22T10:51:52.4509393Z ##[group]Run make sanitize -o content CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 4 --no-tests=error --label-exclude python_unit"
+2026-10-22T10:51:52.4510090Z [36;1mmake sanitize -o content CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 4 --no-tests=error --label-exclude python_unit"[0m
+2026-10-22T10:51:52.4553084Z shell: /usr/bin/bash -e {0}
+2026-10-22T10:51:52.4553225Z env:
+2026-10-22T10:51:52.4553332Z   CC: clang
+2026-10-22T10:51:52.4553439Z   CXX: clang++
+2026-10-22T10:51:52.4553555Z   BUILD_JOBS: 4
+2026-10-22T10:51:52.4553669Z   GIT_OPTIONAL_LOCKS: 0
+2026-10-22T10:51:52.4553838Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:51:52.4554079Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T10:51:52.4554311Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:51:52.4554558Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:51:52.4554766Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:51:52.4554977Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T10:51:52.4555241Z   PYTHONPATH: /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/ci_python
+2026-10-22T10:51:52.4555469Z ##[endgroup]
+2026-10-22T10:51:52.4626089Z cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug -DENCORE_SANITIZERS=ON -DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON -DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON
+2026-10-22T10:51:52.7517857Z -- Configuring done (0.2s)
+2026-10-22T10:51:53.1907717Z -- Generating done (0.4s)
+2026-10-22T10:51:53.1911085Z -- Build files have been written to: /home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize
+2026-10-22T10:51:53.1980038Z cmake --build build/sanitize --parallel 4
+2026-10-22T10:51:53.3141787Z gmake[1]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3274956Z gmake[2]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3293443Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3294226Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3294943Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3303503Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3315187Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3330001Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3331397Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3351246Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3351883Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3376475Z [  1%] Built target encore_content
+2026-10-22T10:51:53.3377103Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3423465Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3424296Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.3453230Z [  1%] Building CXX object CMakeFiles/transition_mask_host.dir/tests/transition_mask_host.cpp.o
+2026-10-22T10:51:53.4049024Z Prepared checked source speed fixtures
+2026-10-22T10:51:53.4111233Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.4137972Z [  1%] Built target encore_settings_speed_fixtures
+2026-10-22T10:51:53.4151596Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.4176149Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.4187130Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.4207528Z [  1%] Building CXX object CMakeFiles/blackbars_tests.dir/tests/blackbars_tests.cpp.o
+2026-10-22T10:51:53.4380648Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.4636923Z [ 21%] Built target encore_core
+2026-10-22T10:51:53.4654419Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.4698359Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.4744255Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.6243491Z Settings preview compiler/source negatives and fixtures passed
+2026-10-22T10:51:53.6353755Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.6379498Z [ 21%] Built target encore_settings_preview_fixtures
+2026-10-22T10:51:53.6393116Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.6418547Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.6429020Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.6448479Z [ 21%] Building CXX object CMakeFiles/encore_locale_grammar_tests.dir/tests/locale_grammar_tests.cpp.o
+2026-10-22T10:51:53.8219260Z [ 22%] Linking CXX executable transition_mask_host
+2026-10-22T10:51:53.8873139Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.8898427Z [ 22%] Built target transition_mask_host
+2026-10-22T10:51:53.8911629Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.8935466Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.8945640Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:53.9830794Z [ 22%] Linking CXX executable blackbars_tests
+2026-10-22T10:51:54.0370347Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.0395754Z [ 22%] Built target blackbars_tests
+2026-10-22T10:51:54.0409261Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.0436170Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.0446205Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.1238771Z [ 22%] Linking CXX executable encore_locale_grammar_tests
+2026-10-22T10:51:54.4486172Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.4521290Z [ 22%] Built target encore_locale_grammar_tests
+2026-10-22T10:51:54.4563816Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.4604284Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.4616666Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.7464413Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/build/phone-presentation-fixtures/regenerated.encphone
+2026-10-22T10:51:54.7686933Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.7734519Z [ 22%] Built target encore_phone_binding_fixtures
+2026-10-22T10:51:54.7756308Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.7823213Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:54.7824348Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:55.2315034Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:55.2383495Z [ 22%] Built target encore_round_recipe_fixtures
+2026-10-22T10:51:55.2413370Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:55.2460218Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:55.2467640Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:55.2646192Z Prepared six checked source Doll consumer fixtures under build
+2026-10-22T10:51:55.2830491Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:55.2873298Z [ 22%] Built target encore_boss_consumer_fixtures
+2026-10-22T10:51:55.2913462Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:55.2968905Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:55.2973706Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:56.4594000Z Original-entry compiler fixtures; only plate BG left margin differs by one
+2026-10-22T10:51:56.4746972Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:56.4815436Z [ 22%] Built target encore_entry_binding_fixtures
+2026-10-22T10:51:56.4843448Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:56.4866411Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:56.4880227Z gmake[3]: Entering directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:56.4907249Z [ 23%] Building CXX object CMakeFiles/encore_playable_opening_tests.dir/tests/playable_opening_tests.cpp.o
+2026-10-22T10:51:56.5356481Z Traceback (most recent call last):
+2026-10-22T10:51:56.5389772Z   File "/home/runner/work/mother-encore-3ds/mother-encore-3ds/tests/items_binding_fixtures.py", line 55, in <module>
+2026-10-22T10:51:56.5413402Z     if __name__=='__main__':main()
+2026-10-22T10:51:56.5443480Z                             ^^^^^^
+2026-10-22T10:51:56.5483711Z   File "/home/runner/work/mother-encore-3ds/mother-encore-3ds/tests/items_binding_fixtures.py", line 51, in main
+2026-10-22T10:51:56.5503089Z     for name,blob in fixtures(output).items():
+2026-10-22T10:51:56.5533016Z                      ^^^^^^^^^^^^^^^^
+2026-10-22T10:51:56.5533715Z   File "/home/runner/work/mother-encore-3ds/mother-encore-3ds/tests/items_binding_fixtures.py", line 39, in fixtures
+2026-10-22T10:51:56.5563343Z     changed=assets.export_ir(ex,definitions,raw,reference,base_resources(baseline),baseline['dependencies'],write=False)
+2026-10-22T10:51:56.5563960Z                                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-22T10:51:56.5564597Z   File "/home/runner/work/mother-encore-3ds/mother-encore-3ds/tests/items_binding_fixtures.py", line 21, in base_resources
+2026-10-22T10:51:56.5593236Z     if len(resources)!=count+2+len(rewards['items']):raise ValueError('Unexpected Items resource extension count')
+2026-10-22T10:51:56.5594285Z                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-22T10:51:56.5594671Z ValueError: Unexpected Items resource extension count
+2026-10-22T10:51:56.5794329Z gmake[3]: *** [CMakeFiles/encore_items_binding_fixtures.dir/build.make:70: CMakeFiles/encore_items_binding_fixtures] Error 1
+2026-10-22T10:51:56.5795105Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:56.5796139Z gmake[2]: *** [CMakeFiles/Makefile2:6207: CMakeFiles/encore_items_binding_fixtures.dir/all] Error 2
+2026-10-22T10:51:56.5796783Z gmake[2]: *** Waiting for unfinished jobs....
+2026-10-22T10:51:56.6780997Z /home/runner/work/mother-encore-3ds/mother-encore-3ds/build/naming-bindings-fixtures
+2026-10-22T10:51:56.6985131Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:56.7010793Z [ 23%] Built target encore_naming_binding_fixtures
+2026-10-22T10:51:58.8528757Z [ 23%] Linking CXX executable encore_playable_opening_tests
+2026-10-22T10:51:59.5427050Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:51:59.5457586Z [ 23%] Built target encore_playable_opening_tests
+2026-10-22T10:52:28.7399069Z Prepared source House binding fixtures
+2026-10-22T10:52:28.7599621Z gmake[3]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:52:28.7626949Z [ 23%] Built target encore_house_binding_fixtures
+2026-10-22T10:52:28.7630902Z gmake[2]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:52:28.7633329Z gmake[1]: *** [Makefile:101: all] Error 2
+2026-10-22T10:52:28.7633931Z gmake[1]: Leaving directory '/home/runner/work/mother-encore-3ds/mother-encore-3ds/build/sanitize'
+2026-10-22T10:52:28.7642323Z make: *** [Makefile:59: sanitize] Error 2
+2026-10-22T10:52:28.7657446Z ##[error]Process completed with exit code 2.
+2026-10-22T10:52:28.7724534Z ##[group]Run actions/upload-artifact@v4
+2026-10-22T10:52:28.7724688Z with:
+2026-10-22T10:52:28.7724813Z   name: host-diagnostics-clang-sanitizer
+2026-10-22T10:52:28.7724971Z   if-no-files-found: warn
+2026-10-22T10:52:28.7725705Z   path: build/collision-ci/
+build/host/Testing/Temporary/LastTest.log
+build/host/Testing/Temporary/LastTestsFailed.log
+build/host/CMakeFiles/CMakeConfigureLog.yaml
+build/host/python-workers/
+build/content-jobs/
+build/sanitize/Testing/Temporary/LastTest.log
+build/sanitize/Testing/Temporary/LastTestsFailed.log
+build/sanitize/CMakeFiles/CMakeConfigureLog.yaml
+
+2026-10-22T10:52:28.7726458Z   compression-level: 6
+2026-10-22T10:52:28.7726580Z   overwrite: false
+2026-10-22T10:52:28.7726702Z   include-hidden-files: false
+2026-10-22T10:52:28.7726832Z env:
+2026-10-22T10:52:28.7726931Z   CC: clang
+2026-10-22T10:52:28.7727032Z   CXX: clang++
+2026-10-22T10:52:28.7727136Z   BUILD_JOBS: 4
+2026-10-22T10:52:28.7727246Z   GIT_OPTIONAL_LOCKS: 0
+2026-10-22T10:52:28.7727429Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:52:28.7727662Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T10:52:28.7727893Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:52:28.7728102Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:52:28.7728311Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T10:52:28.7728520Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T10:52:28.7728781Z   PYTHONPATH: /home/runner/work/mother-encore-3ds/mother-encore-3ds/tools/ci_python
+2026-10-22T10:52:28.7729010Z ##[endgroup]
+2026-10-22T10:52:28.8929406Z (node:26535) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T10:52:28.8930006Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T10:52:28.9079679Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-22T10:52:28.9082213Z The least common ancestor is /home/runner/work/mother-encore-3ds/mother-encore-3ds/build. This will be the root directory of the artifact
+2026-10-22T10:52:28.9082946Z With the provided path, there will be 99 files uploaded
+2026-10-22T10:52:28.9086231Z Artifact name is valid!
+2026-10-22T10:52:28.9086473Z Root directory input is valid!
+2026-10-22T10:52:29.1897614Z Beginning upload of artifact content to blob storage
+2026-10-22T10:52:29.2483163Z (node:26535) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-22T10:52:29.4099804Z Uploaded bytes 34676
+2026-10-22T10:52:29.4479426Z Finished uploading artifact content to blob storage!
+2026-10-22T10:52:29.4480360Z SHA256 digest of uploaded artifact zip is 35152195f17d2a7ce76b28406d63879aee166847e103279c2718f3fe2c25176b
+2026-10-22T10:52:29.4481433Z Finalizing artifact upload
+2026-10-22T10:52:29.9264863Z Artifact host-diagnostics-clang-sanitizer.zip successfully finalized. Artifact ID 12419853509
+2026-10-22T10:52:29.9265380Z Artifact host-diagnostics-clang-sanitizer has been successfully uploaded! Final size is 34676 bytes. Artifact ID is 12419853509
+2026-10-22T10:52:29.9270491Z Artifact download URL: https://github.com/LITTOMA/mother-encore-3ds/actions/runs/39765898067/artifacts/12419853509
+2026-10-22T10:52:29.9452530Z Post job cleanup.
+2026-10-22T10:52:30.0040295Z [command]/usr/bin/git version
+2026-10-22T10:52:30.0073966Z git version 2.55.0
+2026-10-22T10:52:30.0098668Z Temporarily overriding HOME='/home/runner/work/_temp/3a052bbd-9c3c-461b-972d-806efca8c503' before making global git config changes
+2026-10-22T10:52:30.0099402Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T10:52:30.0100622Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/mother-encore-3ds/mother-encore-3ds
+2026-10-22T10:52:30.0132262Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T10:52:30.0174199Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T10:52:30.0393420Z Entering 'upstream/MOTHER-Encore'
+2026-10-22T10:52:30.0453843Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T10:52:30.0489035Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T10:52:30.0704342Z Entering 'upstream/MOTHER-Encore'
+2026-10-22T10:52:30.0764923Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T10:52:30.0802249Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T10:52:30.0998646Z Entering 'upstream/MOTHER-Encore'
+2026-10-22T10:52:30.1015349Z file:/home/runner/work/mother-encore-3ds/mother-encore-3ds/.git/modules/upstream/MOTHER-Encore/config	remote.origin.url
+2026-10-22T10:52:30.1049790Z [command]/usr/bin/git config --file /home/runner/work/mother-encore-3ds/mother-encore-3ds/.git/modules/upstream/MOTHER-Encore/config --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T10:52:30.1208544Z Cleaning up orphan processes
+2026-10-22T10:52:30.1422211Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

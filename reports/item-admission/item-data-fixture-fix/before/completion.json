@@ -1,0 +1,7 @@
+{
+  "returncode": 1,
+  "expected_returncode": 1,
+  "seconds": 2.765999999945052,
+  "inputs_unchanged": true,
+  "source_sha256": "bb2b7e61d81dcbf69771b122f7899709c4b4cff9c86efe0666fb871e9913de4a"
+}

@@ -1,0 +1,23 @@
+{
+  "base": "181b4e1a1f16f4bd1cf699b0f5e34d5c9e396ab1",
+  "current_source_sha256": {
+    "CMakeLists.txt": "1db0321a8a8bc1b989ad39a54f534d44c2f5e1bb8cfb5ca628f97b07a97569fe",
+    "tools/native_session.py": "0058ea301a8bc53c326c9f0c51d51f940c7f2e9bbb47668b9be44b919974448c",
+    "tools/catacombs_item_catalog.py": "6f0cb22f3927334a746f419703f5a1391a392724ec82a64ab69c565db46796eb",
+    "runtime/native_session.cpp": "abb7601576e6f9355e6e1adb729eef205eafd0e1981828b47f44a1e947e3ba6d",
+    "include/encore/native_session.hpp": "2080a787b81f38a47df75c408f294876099be33e7feec18ca5bc2f9fbe361787",
+    "tests/test_native_session.py": "d3ac083a003af9f4829d5312f65a6a1c1c1851c6f4783aef735ff8504b419435",
+    "tests/test_catacombs_item_catalog.py": "b04f881496e3490790d72f8356c1bc247b259d2b17c6cbf88ea5a7ab7f9f65ee",
+    "tests/prepare_catacombs_item_catalog.py": "39ac86a5a1bcf0c9ddad243176d55aa3ba329598bf7bd34f331529f9ee860b93",
+    "tests/catacombs_item_session_tests.cpp": "ea5618611e11de99151d4e8196a2462fb47e8b3be3f5434c6cbe8753445cdde0"
+  },
+  "production_session_v11_unchanged_sha256": "2befd11854ae5a496cfe46fcc65be9e48a2d07915dcd0e03af09456e32ebd3d2",
+  "source_pin": "7d9246600fffe518408f5830d4848635019005a3",
+  "catalog_checks": 26525,
+  "legacy_session_checks": 20808,
+  "legacy_save_roundtrips": 280,
+  "python_tests": 22,
+  "ctest_discovered_only": 377,
+  "verification": "Fresh GCC ASan/UBSan module and two programs with normal leak checks; exact baseline archive reused. Not full matrix/cross/emulator/hardware.",
+  "limitation": "No production catalog/session/menu/room admission. New v12 grouped data is exercised only in owned fixtures; production v11 and game-save v1 bytes stay unchanged."
+}

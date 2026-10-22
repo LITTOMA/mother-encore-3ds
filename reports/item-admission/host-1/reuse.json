@@ -1,0 +1,12 @@
+{
+  "archive_sha256": "372b2782ef10b8a1dc922e53941e88224e4c3cf808272ff6b86a98c8e2157426",
+  "fresh_modules": [
+    "native_session",
+    "field_menus",
+    "field_menus_data",
+    "field_story",
+    "item_details",
+    "storage_data"
+  ],
+  "scope": "Targeted GCC9 ASAN/UBSAN rebuild, not a complete host rebuild. Every archive member actually linked must pass current source and project-header dependency hashes."
+}

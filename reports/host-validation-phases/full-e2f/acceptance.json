@@ -1,0 +1,11 @@
+{
+  "source": "e2f6f10c5288018d0fa4201bd7b1c746003ae971",
+  "run": 39717763810,
+  "gcc_ordinary": 353,
+  "gcc_asan_ubsan": 334,
+  "clang_ordinary": 334,
+  "clang_asan_ubsan": 334,
+  "real_3dsx_and_cia": true,
+  "hardware": false,
+  "current_main_union": "Pending new full execution; source run above predates already merged PRs 98-100."
+}

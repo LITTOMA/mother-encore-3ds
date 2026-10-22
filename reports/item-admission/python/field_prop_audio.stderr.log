@@ -1,0 +1,12 @@
+test_actual_source_singleton_identity_and_exact_companion (tests.test_field_prop_audio.PropAudioSource.test_actual_source_singleton_identity_and_exact_companion) ... ok
+test_old_unbound_metadata_and_source_digest_mismatch_reject (tests.test_field_prop_audio.PropAudioSource.test_old_unbound_metadata_and_source_digest_mismatch_reject) ... ok
+test_unknown_append_scope_rejected_before_any_conversion (tests.test_field_prop_audio.PropAudioSource.test_unknown_append_scope_rejected_before_any_conversion) ... usage: append [-h] [--stage] [--scope {run-loop,prop-nodes,item-consume}]
+              [--base BASE] --out OUT [--ffmpeg FFMPEG] [--ffprobe FFPROBE]
+append: error: argument --scope: invalid choice: 'unknown' (choose from 'run-loop', 'prop-nodes', 'item-consume')
+ok
+test_unknown_schema_fields_paths_identity_gain_and_permission_reject (tests.test_field_prop_audio.PropAudioSource.test_unknown_schema_fields_paths_identity_gain_and_permission_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 5.599s
+
+OK

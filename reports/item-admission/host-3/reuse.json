@@ -1,0 +1,26 @@
+{
+  "reused_exact_files": {
+    "build/full-port/item-admission-host-1/native_session.o": "ad965cd9b8634403a1083be6b7f81c48af9b2c88b48d75b282285ba1ed94020a",
+    "build/full-port/item-admission-host-1/field_menus.o": "658f0e8733275db00457942fab7f3fce84a9a190af9385f27b2355f8d58f8fca",
+    "build/full-port/item-admission-host-1/field_menus_data.o": "f14392083ca828c820d9e63dc48c651d80de54cc957a51e876fd9ca6feef73af",
+    "build/full-port/item-admission-host-1/field_story.o": "efd8483408c2cb2cdffe12b57247dfae3f28357e3dd94e93b64b522bed905adb",
+    "build/full-port/item-admission-host-1/item_details.o": "16d2f7633183508a05c49ae4b9a90a3200fde1c6a15e10c5dd77c2bf0487c61c",
+    "build/full-port/item-admission-host-1/storage_data.o": "7d24dfc16e5ec97d2d76958c0f97cc94d3525c7db3abaa5f2bb343d585f24438",
+    "build/full-port/item-admission-host-2/session_restore.o": "03f13667ca1c16d6d275140f8e7e6982ed381fdd2591b6aef6cc5142eb2bc161",
+    "build/full-port/item-admission-host-2/item_consumption": "85fbc526e8d76513a059099f4219ea11248a333105da6fcd489a17bb5aaa126d",
+    "build/full-port/item-admission-host-2/catacombs_item_session": "22aa21dd5aa6b39ccc4afe09c609dca249f4219a31b215233b9cdbd4b61e919b",
+    "build/full-port/item-admission-host-2/item_details": "27168e3682349e33d18b87a1f84df54fcfe1e95e81a9e339e4931759253596d2",
+    "build/full-port/item-admission-host-2/catacombs_item_details": "2ba6631a04a64a6351fe7c08c0f8ad357030738a1d5489379e17890061863bf8",
+    "build/full-port/item-admission-host-2/catacombs_storage": "019916cc78508ac34189a212eea939a72a907b48c1023aba73fbfec0b0f99609",
+    "build/full-port/item-admission-host-2/storage_runtime": "1cc21307ff7bf4aa38738cebfe432af1f4032d08db1050fd1a6b944ab01b215b"
+  },
+  "changed_inputs": [
+    "tests/field_menus_tests.cpp",
+    "tests/native_session_tests.cpp"
+  ],
+  "fresh_test_programs": [
+    "field_menus",
+    "native_session"
+  ],
+  "scope": "Seven current core modules were freshly compiled in attempts1/2; only the two changed test programs need rebuilding. The other six exact executable and every source/header hash are checked. Not a complete host build."
+}

@@ -1,0 +1,11 @@
+{
+  "modules": 18,
+  "failed": [
+    "catacombs_item_catalog",
+    "field_menus",
+    "breakables",
+    "native_items",
+    "native_session"
+  ],
+  "inputs_unchanged": true
+}

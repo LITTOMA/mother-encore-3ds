@@ -1,0 +1,1 @@
+["wsl", "-d", "Ubuntu-20.04", "--", "bash", "/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/item-consume-host-1/run.sh"]

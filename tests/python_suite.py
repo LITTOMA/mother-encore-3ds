@@ -37,7 +37,7 @@ DEDICATED = {
     'family_followup_source': ('test_family_followup',),
     'drawer_program_source': ('test_drawer_program',),
     'storage_source': ('test_native_storage', 'test_storage_dialogue'),
-    'item_details_source': ('test_item_details',),
+    'item_details_source': ('test_item_details', 'test_catacombs_item_details'),
     'field_equipment_source': ('test_field_equipment',),
     'field_audio_source': ('test_field_audio',),
     'field_menus_source': ('test_field_menus',),

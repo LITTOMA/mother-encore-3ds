@@ -1,0 +1,20 @@
+{
+  "source": "bb743a4fee0c60ca9ffe2e794e46f2b94ed331e0",
+  "run": 39765881260,
+  "artifact_id": 12420709292,
+  "official_game_sha256": "a51308775df4f125a0d09dfa434079a619733bf98298ce19f944cb89383a24cf",
+  "game_bytes": 265060576,
+  "staged_files": 383,
+  "embedded_source_resources": {
+    "romfs/ui/opening.encitems": "463693ae8ce00fa9037f6b034a259bb0bf30c78a51c4b5bd4a8969337510e175",
+    "romfs/ui/opening.encdetails": "66d9c91352c4cc19162c0c9c7aa6a5775635ae3b399bb16b31c2eb5314be4c47",
+    "romfs/ui/opening.encstorage": "87f8f9e90d711ccec223f392c01f2a39b6662ee09b48e6ed3382e8ad3f5e96bb",
+    "romfs/session/opening.encsession": "c40c2647777a5b4ad89f1d02e5da63bf08bcb7ddd460c3a0a641542f9e8ec4ae",
+    "romfs/ui/field.encmenus": "a1fb2579c52af741fff62c9a8fb4299da9f1425dd44d664571cf896f8465b0d8",
+    "romfs/sound/banks/opening.encaudio": "1f665a7d4a0df7f25160cec28fa1e91e425d8758473ab32226821aa7e0c0accb"
+  },
+  "full_archive_downloaded": false,
+  "cia_downloaded": false,
+  "compressed_parts_removed_bytes": 192937984,
+  "scope": "Actual successful SDK artifact, selected game ZIP CRC and source receipt SHA verified. No emulator or hardware result yet."
+}

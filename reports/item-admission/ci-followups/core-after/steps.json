@@ -1,0 +1,29 @@
+[
+  {
+    "label": "coin-python",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_coin_scene",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 59.07799999997951
+  },
+  {
+    "label": "gcc-sanitizer",
+    "command": [
+      "wsl",
+      "-d",
+      "Ubuntu-20.04",
+      "--",
+      "bash",
+      "/mnt/d/GameDev/3DS/mother-encore-3ds/build/full-port/item-admission-ci-followups-1/run.sh"
+    ],
+    "returncode": 0,
+    "seconds": 173.51600000006147
+  }
+]

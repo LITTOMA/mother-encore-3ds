@@ -97,7 +97,7 @@
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
   },
   "dependencies": {
-    "content/native-items.json": "e3e432d9292f1b74f565a7aca71f41a15cd7397ccd9323700e6a919aa5219986",
+    "content/native-items.json": "47cc130d5f8f9b0e589acce8780e747810d67419283db948a9847dc1f062a691",
     "content/items-presentation-bindings.json": "3d532b1934f5c1c8cf08bf7ccc5199c65b801b8e608a4aa7d2f9b5bb2f5bca59"
   },
   "parameters": {

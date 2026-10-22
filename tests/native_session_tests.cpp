@@ -13,6 +13,7 @@ static void put(std::vector<uint8_t>&b,size_t at,uint32_t v){for(unsigned i=0;i<
 static void fix(std::vector<uint8_t>&b){put(b,12,uint32_t(b.size()));put(b,16,encore::crc32(b.data()+24,b.size()-24));}
 int main(int argc,char**argv){
  const std::string root=argc>1?argv[1]:"romfs";std::string error;
+ CHECK(argc==3);
  NativeSessionData data;RoomData room;HouseData house;BattleRoundData round;ItemData items;InventoryState inventory;
  CHECK(data.load_file((root+"/session/opening.encsession").c_str(),error));CHECK(room.load_file((root+"/world/house/opening.encroom").c_str(),error));CHECK(house.load_file((root+"/world/house/opening.enchouse").c_str(),error));CHECK(round.load_file((root+"/battle/doll/doll-entry.encround").c_str(),error));CHECK(items.load_file((root+"/ui/opening.encitems").c_str(),error));CHECK(inventory.initialize(items.view()));
  auto validate=[&](const SessionSnapshot&s){return validate_native_session_snapshot(data,room.view(),house.view(),round.view(),items.view(),s,error);};
@@ -77,32 +78,33 @@ int main(int argc,char**argv){
  for(size_t n=0;n<bytes.size();++n)CHECK(!data.load(bytes.data(),n,error));
  CHECK(data.valid()&&data.leader_id()=="ninten");
  for(size_t i=0;i<bytes.size();++i){auto mutation=bytes;mutation[i]^=1;CHECK(!data.load(mutation.data(),mutation.size(),error));}
- for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,12},{20,12},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,13},{20,13},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  CHECK(data.field_encounters()==std::vector<std::string>{"straydog"});
  // v11 keeps its run-sound append and the old v10 reader. The cemetery
  // content now adds one mutable flag; defaults/save encoding remain frozen.
  CHECK(data.run_sounds()==std::vector<std::string>({"wood","stone"}));CHECK(data.supports_run_sound("wood")&&data.supports_run_sound("stone")&&!data.supports_run_sound("unknown"));
  {auto stone=data.defaults();stone.run_sound="stone";CHECK(validate(stone));std::vector<uint8_t>saved;CHECK(encode_session_save(stone,data.compatibility(),saved,error));SessionSnapshot decoded;CHECK(decode_session_save(saved.data(),saved.size(),data.compatibility(),decoded,error));CHECK(decoded.run_sound=="stone"&&validate(decoded));}
- std::vector<uint8_t>v10_bytes;CHECK(encore::read_file("tests/fixtures/session-v10.encsession",v10_bytes,1024*1024,error));const size_t run_at=bytes.size()-21;CHECK(run_at>v10_bytes.size());
- auto current_v10=bytes;current_v10.resize(run_at);put(current_v10,8,10);put(current_v10,20,10);fix(current_v10);NativeSessionData current_v10_data;
+ std::vector<uint8_t>v10_bytes,legacy11;CHECK(encore::read_file("tests/fixtures/session-v10.encsession",v10_bytes,1024*1024,error));CHECK(encore::read_file(argv[2],legacy11,1024*1024,error));const size_t run_at=legacy11.size()-21;CHECK(run_at>v10_bytes.size());
+ NativeSessionData frozen11;CHECK(frozen11.load(legacy11.data(),legacy11.size(),error));CHECK(frozen11.acquisitions().size()==3);
+ auto current_v10=legacy11;current_v10.resize(run_at);put(current_v10,8,10);put(current_v10,20,10);fix(current_v10);NativeSessionData current_v10_data;
  CHECK(current_v10_data.load(current_v10.data(),current_v10.size(),error));CHECK(current_v10_data.mutable_flags()==data.mutable_flags());
  CHECK(validate_native_session_snapshot(current_v10_data,room.view(),house.view(),round.view(),items.view(),cemetery,error));
  std::vector<uint8_t>prior_defaults,cemetery_current_defaults;NativeSessionData baseline_v10;CHECK(baseline_v10.load(v10_bytes.data(),v10_bytes.size(),error));
  CHECK(encode_session_save(baseline_v10.defaults(),baseline_v10.compatibility(),prior_defaults,error));CHECK(encode_session_save(data.defaults(),data.compatibility(),cemetery_current_defaults,error));CHECK(prior_defaults==cemetery_current_defaults);
  CHECK(!validate_native_session_snapshot(baseline_v10,room.view(),house.view(),round.view(),items.view(),cemetery,error));
  NativeSessionData v10;CHECK(v10.load(v10_bytes.data(),v10_bytes.size(),error));CHECK(v10.run_sounds()==std::vector<std::string>{v10.defaults().run_sound});CHECK(!v10.supports_run_sound("stone"));{auto stone=v10.defaults();stone.run_sound="stone";CHECK(!validate_native_session_snapshot(v10,room.view(),house.view(),round.view(),items.view(),stone,error));}
- for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{run_at,0},{run_at,1},{run_at,17},{run_at+4,0},{run_at+4,33},{8,10},{20,10}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));CHECK(data.supports_run_sound("stone"));}
+ for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{run_at,0},{run_at,1},{run_at,17},{run_at+4,0},{run_at+4,33},{8,10},{20,10}}){auto mutation=legacy11;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));CHECK(data.supports_run_sound("stone"));}
  {auto downgrade=bytes;put(downgrade,8,10);put(downgrade,20,10);fix(downgrade);CHECK(!data.load(downgrade.data(),downgrade.size(),error));}
  {auto missing=v10_bytes;put(missing,8,11);put(missing,20,11);fix(missing);CHECK(!data.load(missing.data(),missing.size(),error));}
- {auto missing_default=bytes;missing_default[run_at+8]='g';fix(missing_default);CHECK(!data.load(missing_default.data(),missing_default.size(),error));}
- for(char c:{'W','/','!'}){auto mutation=bytes;mutation[run_at+8]=uint8_t(c);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
- {auto mutation=bytes;mutation.resize(run_at);const auto append=[&](uint32_t n){size_t at=mutation.size();mutation.resize(at+4);put(mutation,at,n);};append(2);append(4);mutation.insert(mutation.end(),{'w','o','o','d'});append(4);mutation.insert(mutation.end(),{'w','o','o','d'});fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto missing_default=legacy11;missing_default[run_at+8]='g';fix(missing_default);CHECK(!data.load(missing_default.data(),missing_default.size(),error));}
+ for(char c:{'W','/','!'}){auto mutation=legacy11;mutation[run_at+8]=uint8_t(c);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto mutation=legacy11;mutation.resize(run_at);const auto append=[&](uint32_t n){size_t at=mutation.size();mutation.resize(at+4);put(mutation,at,n);};append(2);append(4);mutation.insert(mutation.end(),{'w','o','o','d'});append(4);mutation.insert(mutation.end(),{'w','o','o','d'});fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  // v10 appends encounter admission after the complete mainline v9 prefix.
- {auto legacy=v10_bytes;legacy.resize(legacy.size()-16);put(legacy,8,9);put(legacy,20,9);fix(legacy);NativeSessionData v9;CHECK(v9.load(legacy.data(),legacy.size(),error));CHECK(v9.field_encounters().empty());CHECK(v9.field_items().size()==data.field_items().size());CHECK(v9.supports_settings(data.defaults().settings));}
- const size_t frozen_field_count=v10_bytes.size()-16;CHECK(std::string(v10_bytes.begin()+frozen_field_count+8,v10_bytes.end())=="straydog");const size_t field_count=run_at-16;CHECK(std::string(bytes.begin()+field_count+8,bytes.begin()+run_at)=="straydog");
- for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{field_count,0},{field_count,65},{field_count+4,0},{field_count+4,65}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
- {auto mutation=bytes;mutation[field_count+8]='/';fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
- {auto mutation=bytes;const std::vector<uint8_t>duplicate(mutation.begin()+field_count+4,mutation.begin()+run_at);mutation.insert(mutation.begin()+run_at,duplicate.begin(),duplicate.end());put(mutation,field_count,2);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto legacy=v10_bytes;legacy.resize(legacy.size()-16);put(legacy,8,9);put(legacy,20,9);fix(legacy);NativeSessionData v9;CHECK(v9.load(legacy.data(),legacy.size(),error));CHECK(v9.field_encounters().empty());CHECK(v9.field_items().size()==frozen11.field_items().size());CHECK(v9.supports_settings(data.defaults().settings));}
+ const size_t frozen_field_count=v10_bytes.size()-16;CHECK(std::string(v10_bytes.begin()+frozen_field_count+8,v10_bytes.end())=="straydog");const size_t field_count=run_at-16;CHECK(std::string(legacy11.begin()+field_count+8,legacy11.begin()+run_at)=="straydog");
+ for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{field_count,0},{field_count,65},{field_count+4,0},{field_count+4,65}}){auto mutation=legacy11;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto mutation=legacy11;mutation[field_count+8]='/';fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ {auto mutation=legacy11;const std::vector<uint8_t>duplicate(mutation.begin()+field_count+4,mutation.begin()+run_at);mutation.insert(mutation.begin()+run_at,duplicate.begin(),duplicate.end());put(mutation,field_count,2);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  {auto mutation=bytes;put(mutation,8,9);put(mutation,20,9);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  {auto snapshot=good;snapshot.encountered.push_back({"straydog",true});CHECK(validate(snapshot));snapshot.encountered.push_back({"invented_enemy",true});CHECK(!validate(snapshot));}
  auto trailing=bytes;trailing.push_back(0);fix(trailing);CHECK(!data.load(trailing.data(),trailing.size(),error));CHECK(data.load(bytes.data(),bytes.size(),error));CHECK(validate(good));
@@ -133,7 +135,7 @@ int main(int argc,char**argv){
  NativeSessionData legacy;CHECK(legacy.load(legacy_resource.data(),legacy_resource.size(),error));CHECK(legacy.startup_characters().size()==1);CHECK(legacy.defaults().characters.size()==1);
  std::vector<uint8_t>current_defaults,legacy_defaults;CHECK(encode_session_save(historical.defaults(),historical.compatibility(),current_defaults,error));CHECK(encode_session_save(legacy.defaults(),legacy.compatibility(),legacy_defaults,error));CHECK(current_defaults==legacy_defaults);
  CHECK(validate_native_session_snapshot(legacy,room.view(),house.view(),round.view(),items.view(),good,error));CHECK(!validate_native_session_snapshot(legacy,room.view(),house.view(),round.view(),items.view(),startup,error));
- CHECK(data.acquisitions().size()==3);const auto&policy=data.acquisitions()[0];CHECK(policy.max_count==1);
+ CHECK(data.acquisitions().size()==10);const auto&policy=data.acquisitions()[0];CHECK(policy.max_count==1);
  CHECK(data.key_acquisitions().size()==5);const auto&key_policy=data.key_acquisitions()[0];CHECK(key_policy.item_id=="DogTreats"&&key_policy.flag_id=="got_dog_treats"&&key_policy.consumed_flag_id=="gave_treats"&&key_policy.doses==1);
  auto acquired=good;uint32_t uid=UINT32_MAX;auto used=[&](uint32_t value){for(const auto&c:acquired.characters)for(const auto&item:c.inventory)if(item.uid==value)return true;for(const auto&item:acquired.key_items)if(item.uid==value)return true;return false;};while(used(uid))--uid;
  {auto held=good;uint32_t key_uid=uid-1;while(used(key_uid))--key_uid;held.key_items.push_back({key_policy.item_id,false,key_policy.doses,key_uid});for(auto&f:held.flags)if(f.id==key_policy.flag_id)f.value=true;CHECK(validate(held));

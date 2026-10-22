@@ -1,0 +1,17 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+CONSUME_COMPARISON {"input":{"index":0,"item":"Hamburger","maxhp":30,"hp":0,"maxpp":26,"pp":5,"status":[],"doses":1},"direct":{"hp":30,"pp":5,"status":[],"inventory":[{"item_name":"BaseballCap","equipped":true,"doses":1,"uid":1000},{"item_name":"Fries","equipped":false,"doses":1,"uid":3000}],"selected_doses":1,"selected_equipped":false},"target":{"hp":30,"pp":5,"status":[],"inventory":[{"item_name":"BaseballCap","equipped":true,"doses":1,"uid":1000},{"item_name":"Fries","equipped":false,"doses":1,"uid":3000}],"selected_doses":1,"selected_equipped":false},"direct_signals":[["stat","hp",50,30]],"target_signals":[["stat","hp",50,30]]}
+
+Debugger Break, Reason: 'Assertion failed.'
+*Frame 0 - res://probe.gd:67 in function 'run'
+Enter "help" for assistance.
+debug> ERROR: Condition "_first != nullptr" is true.
+   at: ~List (./core/self_list.h:108)
+ERROR: Condition "_first != nullptr" is true.
+   at: ~List (./core/self_list.h:108)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object.cpp:2077)
+ERROR: Resources still in use at exit (run with --verbose for details).
+   at: clear (core/resource.cpp:417)

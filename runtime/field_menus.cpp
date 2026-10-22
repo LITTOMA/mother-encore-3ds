@@ -8,6 +8,55 @@ using Phase=FieldMenusPhase;using Text=FieldMenuText;
 bool fail(std::string&e,const char*s){e=s;return false;}
 bool flag(const SessionSnapshot&s,std::string_view id){for(const auto&f:s.flags)if(f.id==id)return f.value;return false;}
 uint32_t wrap(uint32_t at,int delta,uint32_t n){return n?uint32_t((int64_t(at)+delta+int64_t(n)*2)%n):0;}
+bool same_status(const std::vector<SessionStatus>&a,const std::vector<SessionStatus>&b){if(a.size()!=b.size())return false;for(size_t i=0;i<a.size();++i)if(a[i].status_id!=b[i].status_id||a[i].passive_healing_turns!=b[i].passive_healing_turns)return false;return true;}
+bool same_boosts(const std::vector<SessionIntegerValue>&a,const std::vector<SessionIntegerValue>&b){if(a.size()!=b.size())return false;for(size_t i=0;i<a.size();++i)if(a[i].id!=b[i].id||a[i].value!=b[i].value)return false;return true;}
+}
+bool expand_field_item_text(std::string_view input,std::string_view owner,uint32_t value,std::string&out,std::string&e){
+ std::string intermediate;
+ for(size_t i=0;i<input.size();){
+  if(input[i]=='{'){
+   if(input.substr(i,7)=="{owner}"){intermediate+="{owner}";i+=7;}
+   else if(input.substr(i,7)=="{value}"){intermediate+=std::to_string(value);i+=7;}
+   else return fail(e,"Unknown field item message token");
+  }else{if(input[i]=='}')return fail(e,"Unbalanced field item message token");intermediate+=input[i++];}
+ }
+ return expand_field_menu_text(intermediate,owner,std::vector<std::string>(8),out,e);
+}
+bool consume_field_menu_item(const FieldMenusData&data,const FieldMenusState&before,uint32_t at,FieldMenusState&out,FieldMenuConsumeResult&result,std::string&e){
+ if(!data.valid()||!data.has_consume_effects()||data.consume_lane!=uint32_t(FieldMenuConsumeAudioLane::Effect)||!validate_session_snapshot(before.session,e)||before.session.party.size()!=1||before.session.characters.empty()||before.session.characters[0].character_id!=data.consume_actor||before.session.party[0]!=data.consume_actor||before.stats[0]<=0||before.stats[1]<0)return fail(e,"Field consume context/resource rejected");
+ const auto&prior=before.session.characters[0];
+ if(prior.hp<0||prior.hp>before.stats[0]||prior.pp<0||prior.pp>before.stats[1]||at>=prior.inventory.size())return fail(e,"Field consume health/selection rejected");
+ for(const auto&s:prior.status)if(std::find(data.consume_statuses.begin(),data.consume_statuses.end(),s.status_id)==data.consume_statuses.end())return fail(e,"Field consume status behavior is unsupported");
+ const auto&item=prior.inventory[at];const auto*rule=data.item(item.item_id);const auto*effect=data.consume_effect(item.item_id);
+ if(!rule||rule->action!=2||rule->key||!effect||item.equipped||item.doses<=0||item.doses>rule->doses)return fail(e,"Field consume item identity/doses/effect rejected");
+ if((effect->hp==0)==effect->cure_status.empty()||effect->hp>65535||!data.cure_refresh_hp||data.cure_refresh_hp>65535)return fail(e,"Field consume effect domain rejected");
+ auto next=before;auto&character=next.session.characters[0];FieldMenuConsumeResult applied;unsigned message=0;
+ if(effect->hp){
+  const auto requested=character.hp+effect->hp;character.hp=std::min<int64_t>(requested,before.stats[0]);
+  applied.signals.push_back({FieldMenuConsumeSignalKind::HP,requested,before.stats[0]});
+  const bool maximum=character.hp>=before.stats[0];message=maximum?1:0;
+  applied.kind=maximum?FieldMenuConsumeKind::HPMax:FieldMenuConsumeKind::HPUp;
+  applied.value=maximum?1:effect->hp;applied.eat_sound=true;
+ }else{
+  if(std::find(data.consume_statuses.begin(),data.consume_statuses.end(),effect->cure_status)==data.consume_statuses.end())return fail(e,"Field consume cure status is unbound");
+  auto status=std::find_if(character.status.begin(),character.status.end(),[&](const SessionStatus&s){return s.status_id==effect->cure_status;});
+  const bool healed=status!=character.status.end();message=healed?2:3;
+  applied.kind=healed?FieldMenuConsumeKind::Healed:FieldMenuConsumeKind::HealFailed;
+  if(healed){
+   character.status.erase(status);applied.signals.push_back({FieldMenuConsumeSignalKind::Status,0,0});
+   if(character.hp==0){character.hp=std::min<int64_t>(data.cure_refresh_hp,before.stats[0]);applied.signals.push_back({FieldMenuConsumeSignalKind::HP,data.cure_refresh_hp,before.stats[0]});}
+  }
+  applied.eat_sound=healed;
+ }
+ applied.message_key=effect->message_keys[message];
+ if(applied.message_key.empty()||!expand_field_item_text(effect->messages[message].get(before.chinese),prior.nickname,applied.value,applied.message,e))return fail(e,"Field consume message rejected");
+ // Source drop_item removes the instance without changing its remaining
+ // doses. reduce_or_drop_item decrements only an instance which stays held.
+ applied.retained_doses=uint32_t(item.doses);
+ if(item.doses>1){--character.inventory[at].doses;--applied.retained_doses;}
+ else character.inventory.erase(character.inventory.begin()+at);
+ if(!validate_session_snapshot(next.session,e))return false;
+ out=std::move(next);result=std::move(applied);e.clear();return true;
 }
 std::string FieldMenus::text(Text id)const{return data_->text(id,state_.chinese);}
 bool FieldMenus::refresh(std::string&e){FieldMenusState s;if(!host_.read(s,e))return false;if(!std::isfinite(s.world_x)||!std::isfinite(s.world_y)||(s.area_map&&(!std::isfinite(s.area_map_position[0])||!std::isfinite(s.area_map_position[1])||s.area_map_item.empty())))return fail(e,"Field menu world position rejected");if(!validate_session_snapshot(s.session,e))return false;if(s.stats[0]<=0||std::any_of(s.stats.begin(),s.stats.end(),[](int32_t n){return n<0;}))return fail(e,"Field menu derived stats rejected");if(s.session.party.size()!=1||s.session.characters.empty()||s.session.characters[0].character_id!=s.session.party[0]||!data_->supports(s.preferences)||!settings_->supports(s.session.settings))return fail(e,"Field menus live session/preferences rejected");const auto&c=s.session.characters[0];if(c.hp>s.stats[0]||c.pp>s.stats[1])return fail(e,"Field menu HP/PP rejected");for(const auto&skill:c.learned_skills)if(std::none_of(data_->skills.begin(),data_->skills.end(),[&](const FieldMenuSkill&s){return s.category!=0&&s.id==skill;}))return fail(e,"Field menu learned skill rejected");for(const auto&i:s.session.characters[0].inventory)if(!data_->item(i.item_id)||data_->item(i.item_id)->key||i.doses<1||i.doses>data_->item(i.item_id)->doses)return fail(e,"Field menus unmapped ordinary item");for(const auto&i:s.session.key_items)if(!data_->item(i.item_id)||!data_->item(i.item_id)->key||i.doses!=data_->item(i.item_id)->doses)return fail(e,"Field menus unmapped key item");state_=std::move(s);return true;}
@@ -22,9 +71,15 @@ bool merge_field_menu_session(const FieldMenusState&before,const FieldMenusChang
  const auto&prior=before.session;if(prior.party.size()!=1||current.party!=prior.party||prior.characters.empty()||current.characters.empty()||prior.characters[0].character_id!=current.characters[0].character_id||current.characters[0].character_id!=current.party[0]||current.scene_id!=prior.scene_id||current.scene_label!=prior.scene_label)return fail(e,"Field menu context changed");
  auto same=[](const std::vector<SessionItem>&a,const std::vector<SessionItem>&b){if(a.size()!=b.size())return false;for(size_t i=0;i<a.size();++i)if(a[i].item_id!=b[i].item_id||a[i].uid!=b[i].uid||a[i].doses!=b[i].doses||a[i].equipped!=b[i].equipped)return false;return true;};
  const auto&a=prior.settings;const auto&b=current.settings;if(!same(prior.characters[0].inventory,current.characters[0].inventory)||!same(prior.key_items,current.key_items)||a.text_speed!=b.text_speed||a.menu_flavor!=b.menu_flavor||a.button_prompts!=b.button_prompts||a.description!=b.description)return fail(e,"Field menu inventory/settings changed since observation");
- auto next=current;next.settings=changes.settings;next.characters[0].inventory=changes.inventory;next.key_items=changes.keys;if(!validate_session_snapshot(next,e))return false;out=std::move(next);e.clear();return true;
+ const auto&observed=prior.characters[0];const auto&live=current.characters[0];
+ if(changes.health_observed&&(observed.hp!=live.hp||observed.pp!=live.pp||observed.level!=live.level||!same_status(observed.status,live.status)||!same_boosts(observed.permanent_boosts,live.permanent_boosts)))return fail(e,"Field consume health/status changed since observation");
+ if((changes.hp||changes.status)&&!changes.health_observed)return fail(e,"Field consume writes require an observed health context");
+ auto next=current;next.settings=changes.settings;next.characters[0].inventory=changes.inventory;next.key_items=changes.keys;
+ if(changes.hp)next.characters[0].hp=*changes.hp;
+ if(changes.status)next.characters[0].status=*changes.status;
+ if(!validate_session_snapshot(next,e))return false;out=std::move(next);e.clear();return true;
 }
-bool FieldMenus::commit(FieldMenusState next,std::string&e){FieldMenusChanges changes{next.session.characters[0].inventory,next.session.key_items,next.session.settings,next.preferences};if(!host_.commit(state_,changes,e))return false;changed_=true;return refresh(e);}
+bool FieldMenus::commit(FieldMenusState next,std::string&e,bool health){FieldMenusChanges changes{next.session.characters[0].inventory,next.session.key_items,next.session.settings,next.preferences};changes.health_observed=health;if(next.session.characters[0].hp!=state_.session.characters[0].hp)changes.hp=next.session.characters[0].hp;if(!same_status(next.session.characters[0].status,state_.session.characters[0].status))changes.status=next.session.characters[0].status;if(!host_.commit(state_,changes,e))return false;changed_=true;return refresh(e);}
 void FieldMenus::back(){sounds_.push_back(10);selection_=0;switch(phase_){
  case Phase::Goods:case Phase::Status:case Phase::Options:phase_=Phase::Closed;exit_=FieldMenusExit::Pause;sounds_.push_back(4);break;
  case Phase::Actions:case Phase::SortTarget:phase_=Phase::Goods;selection_=item_selection_;break;
@@ -89,7 +144,16 @@ bool FieldMenus::input(int x,int y,bool confirm,bool cancel,bool scope,int tab,u
  }
  if(phase_==Phase::Sort){if(selection_==0){sort_source_=item_selection_;selection_=item_selection_;phase_=Phase::SortTarget;}else{auto next=state_;auto&v=goods(next);std::stable_sort(v.begin(),v.end(),[&](const SessionItem&a,const SessionItem&b){const auto*pa=data_->item(a.item_id),*pb=data_->item(b.item_id);const auto sa=a.equipped?pa->equipped_score:pa->score,sb=b.equipped?pb->equipped_score:pb->score;return sa!=sb?sa>sb:pa->sorting.get(state_.chinese)<pb->sorting.get(state_.chinese);});if(!commit(std::move(next),e))return false;phase_=Phase::Goods;selection_=item_selection_=0;}return true;}
  if(phase_==Phase::Drop){if(selection_){back();return true;}const auto*i=selected_item();if(!i||!i->drop||i->key)return fail(e,"Field protected item drop rejected");auto next=state_;auto&v=goods(next);v.erase(v.begin()+item_selection_);const auto selected=v.empty()?0:std::min(item_selection_,uint32_t(v.size()-1));if(!commit(std::move(next),e))return false;phase_=Phase::Goods;selection_=item_selection_=selected;return true;}
- if(phase_==Phase::Target){const auto*i=selected_item();if(!i||i->action!=2||i->key||!state_.session.characters[0].status.empty())return fail(e,"Field consumable effect/status is unsupported");std::string result;if(!expand_field_menu_text(i->result.get(state_.chinese),state_.session.characters[0].nickname,std::vector<std::string>(8),result,e))return false;auto next=state_;auto&v=goods(next);if(v[item_selection_].doses<=0||v[item_selection_].doses>i->doses)return fail(e,"Field consumable doses rejected");if(--v[item_selection_].doses==0)v.erase(v.begin()+item_selection_);if(!commit(std::move(next),e))return false;message_=result;phase_=Phase::Message;selection_=0;item_selection_=goods().empty()?0:std::min(item_selection_,uint32_t(goods().size()-1));return true;}
+ if(phase_==Phase::Target){
+  if(data_->has_consume_effects()){
+   FieldMenusState next;FieldMenuConsumeResult result;
+   if(key_||!consume_field_menu_item(*data_,state_,item_selection_,next,result,e)||!commit(std::move(next),e,true))return false;
+   message_=std::move(result.message);if(result.eat_sound)sounds_.push_back(11);
+  }else{
+   const auto*i=selected_item();if(!i||i->action!=2||i->key||!state_.session.characters[0].status.empty())return fail(e,"Field consumable effect/status is unsupported");std::string result;if(!expand_field_menu_text(i->result.get(state_.chinese),state_.session.characters[0].nickname,std::vector<std::string>(8),result,e))return false;auto next=state_;auto&v=goods(next);if(v[item_selection_].doses<=0||v[item_selection_].doses>i->doses)return fail(e,"Field consumable doses rejected");if(--v[item_selection_].doses==0)v.erase(v.begin()+item_selection_);if(!commit(std::move(next),e))return false;message_=result;
+  }
+  phase_=Phase::Message;selection_=0;item_selection_=goods().empty()?0:std::min(item_selection_,uint32_t(goods().size()-1));return true;
+ }
  if(phase_==Phase::Options){if(selection_<2){phase_=selection_?Phase::General:Phase::File;selection_=0;}else{choice_kind_=selection_;choice_previous_=selection_;parent_=Phase::Options;phase_=Phase::Confirm;selection_=1;}return true;}
  if(phase_==Phase::File){parent_=phase_;choice_kind_=selection_;choice_previous_=selection_;choice_=selection_==0?uint32_t(settings_->speed_index(state_.session.settings.text_speed)):selection_==1?uint32_t(settings_->flavor_index(state_.session.settings.menu_flavor)):uint32_t(settings_->prompt_index(state_.session.settings.button_prompts));phase_=Phase::Choice;return true;}
  if(phase_==Phase::General){if(selection_==3){parent_=phase_;choice_previous_=selection_;choice_kind_=3;choice_=state_.chinese?1:0;phase_=Phase::Choice;}else{phase_=selection_==0?Phase::Audio:selection_==1?Phase::Video:Phase::Controls;selection_=0;}return true;}

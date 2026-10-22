@@ -1,0 +1,6 @@
+test_independent_hash_seeds_reproduce_all_linked_files (tests.test_phone_linker.PhoneLinkerTests.test_independent_hash_seeds_reproduce_all_linked_files) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 297.248s
+
+OK

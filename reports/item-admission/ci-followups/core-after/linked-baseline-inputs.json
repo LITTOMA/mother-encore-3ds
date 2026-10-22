@@ -1,0 +1,23 @@
+{
+  "runtime_audio_data.cpp.o": {
+    "runtime/audio_data.cpp": "12ff6f8615bd97a08418bfef2101f59d088b60f7fa234f58a8decc68f888639a",
+    "include/encore/audio_data.hpp": "f53006787f478b462941e3d1529f4ed4d866f81436351fb10ff49c855b5e9951",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241",
+    "include/encore/load_progress.hpp": "d78e2b371aeb24df8425bdafb7c91518cc0ca55169d4e438462e024f06b7ee1b"
+  },
+  "runtime_file_io.cpp.o": {
+    "runtime/file_io.cpp": "31fb1dacf83965aad6cb00d3dbcdc147432d3948f9c6f3f85c17c41c6dcefda7",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_prop_clips.cpp.o": {
+    "runtime/prop_clips.cpp": "75255e0a6b779918737a700a3a0fee0c0395fa3961cdbf0370988f6cf2803495",
+    "include/encore/prop_clips.hpp": "26c3b3d4190f61ce78ffa8156c131a0a3b434f33a77949099001bb566e8f2985",
+    "include/encore/content.hpp": "77f046928745dcd89319b3ed6afbe63104aa47b0cb0d2150800e72064828d9fb",
+    "include/encore/crc32.hpp": "fb4d9843dd5a22c3eaa9e6b23d291262096c3cbf3c49730993c9e5c43ae2c241"
+  },
+  "runtime_source_random.cpp.o": {
+    "runtime/source_random.cpp": "3705d10157ef6104775471c0a5c09633e145249cf64d30145333f8bb3fd6e246",
+    "include/encore/source_random.hpp": "92496af2bdc87c123815aeace9e52a7e133aa03ae90193a14a627b6c075be73f"
+  }
+}

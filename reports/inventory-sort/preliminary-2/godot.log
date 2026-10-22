@@ -1,0 +1,11 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+SORT_LOCALE {"requested":"en","actual":"en"}
+SORT_LOCALE {"requested":"zh_CN","actual":"zh_Hans_CN"}
+
+Debugger Break, Reason: 'Assertion failed.'
+*Frame 0 - res://probe.gd:15 in function 'run'
+Enter "help" for assistance.
+debug> 

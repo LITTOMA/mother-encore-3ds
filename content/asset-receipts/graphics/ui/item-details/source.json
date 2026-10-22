@@ -1,14 +1,19 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "0de217ac2d25af34bd8353b91ff57e79d49b5aa42f65f9f52722ddb914817fd5",
-  "producer_sha256": "1e5b37f106396edbf7c2dd63c9add775cbccc1f3ef1b14310912e43d93658ab8",
+  "ir_sha256": "a8ecf9d811983181a1478adeef2f687424461577d1a2da3a49b24dcb05fc5e7a",
+  "producer_sha256": "f9887960044d5180e8dd423462ff28fa598bd8e7a4dfcfe19ff21cac03681fe2",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "outputs": {
     "graphics/ui/item-details/asthma-status.t3x": {
       "bytes": 1045,
       "sha256": "08e919bb8aa5876a9dce6dd1a29addb8a043bcf3e1063ce6770854c42ba0c664",
       "crc32": 1724363259
+    },
+    "graphics/ui/item-details/poisoned-status.t3x": {
+      "bytes": 1045,
+      "sha256": "7e3f0684a1a56183557a881331036548e968cae1dbfde42acd2bca384d52affe",
+      "crc32": 1727301349
     }
   }
 }

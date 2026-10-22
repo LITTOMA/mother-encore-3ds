@@ -1,0 +1,24 @@
+{
+  "reference_sha256": "0f0ebacfee226cdbdcd90a82a3344715281515f3becb5b74218c8f3bb2af56d1",
+  "cases": 240,
+  "native_offsets": {
+    "index": 16,
+    "selection": 209,
+    "kind": 221
+  },
+  "scope": "Only original method outcomes; no real gameplay save, UI timing, PCM, emulator or hardware claim.",
+  "files": {
+    "menu-v3.encmenus": "8b36bc98a73f321c8b25eef1f42e6f51f5a3f20be15ada43b3eb59384829011b",
+    "menu-v2.encmenus": "15de6a154c38b0075337d1843a6bbe7a4a94d6efdb67b7db27e530b4b6436870",
+    "original.bin": "32733ccb380750f0a048804a19ac85435904bd00db84f13b3caf49667489a7fd",
+    "bad-reference-0.bin": "44954d1387fb3a4442542167f9d3e15e376f65ce6100322f649a0e2e68d2ff1c",
+    "bad-reference-1.bin": "78169611ffb1bc32e49f3f58ab94dd4331b24a6f4275c474dbac8b9a16513ad8",
+    "bad-reference-2.bin": "68ca606899194aca400f3e2fc861e4fe2fec6b0ae97484803b345b0977c32044",
+    "bad-reference-3.bin": "398b372eeaa87894d58053eb232294432157772e2a0c7cadc85d67fb6197acc1",
+    "bad-reference-4.bin": "3ec60c377912394448df949ec704a46f1dd52b3d5ce2150e56dd4610045144ee",
+    "bad-reference-5.bin": "5df027db8b330fbdcfbe4df2ce0e049d0b7bbe7dd8206f1f422dabca9fe62ccc",
+    "bad-reference-6.bin": "d76789abd3dcc45084a33923a6fa93b0ea66e6e6abafc6fbde7d4857a4caaa8a",
+    "bad-reference-7.bin": "2cb25025a8f3b5a25f1da27ae27b670efe29e72bed078559b824db30426edd5c",
+    "negative-reference-count.txt": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3"
+  }
+}

@@ -1,0 +1,25 @@
+test_actual_original_definitions_flags_and_genuine_art_receipt (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_actual_original_definitions_flags_and_genuine_art_receipt) ... ok
+test_append_preserves_stable_catalog_and_keeps_actions_disabled (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_append_preserves_stable_catalog_and_keeps_actions_disabled) ... ok
+test_missing_corrupt_and_repeated_stage (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_missing_corrupt_and_repeated_stage) ... ok
+test_owned_fixture_repeatability_and_unowned_corruption_reject (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_owned_fixture_repeatability_and_unowned_corruption_reject) ... ERROR
+test_review_dependencies_remain_narrow_and_fingerprinted (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_review_dependencies_remain_narrow_and_fingerprinted) ... ok
+test_review_hash_and_duplicate_json_keys_reject (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_review_hash_and_duplicate_json_keys_reject) ... ok
+test_texture_coverage_and_provenance_reject (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_texture_coverage_and_provenance_reject) ... ok
+test_unknown_malformed_and_type_coerced_recipe_reject (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_unknown_malformed_and_type_coerced_recipe_reject) ... ok
+
+======================================================================
+ERROR: test_owned_fixture_repeatability_and_unowned_corruption_reject (tests.test_catacombs_item_catalog.CatacombsItemCatalogTests.test_owned_fixture_repeatability_and_unowned_corruption_reject)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_catacombs_item_catalog.py", line 129, in test_owned_fixture_repeatability_and_unowned_corruption_reject
+    first = fixture.build(path)
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_catacombs_item_catalog.py", line 91, in build
+    marker = output / '.owned-catacombs-catalog-fixture'
+             ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+
+----------------------------------------------------------------------
+Ran 8 tests in 9.908s
+
+FAILED (errors=1)

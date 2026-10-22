@@ -1,0 +1,22 @@
+test_actual_staged_resources (tests.test_field_equipment.FieldEquipmentFormat.test_actual_staged_resources) ... ok
+test_bad_texture_and_layout_bounds (tests.test_field_equipment.FieldEquipmentFormat.test_bad_texture_and_layout_bounds) ... ok
+test_catalog_goods_cannot_enter_equipment_or_legacy_use (tests.test_field_equipment.FieldEquipmentFormat.test_catalog_goods_cannot_enter_equipment_or_legacy_use) ... ok
+test_corrupt_pin_reserved_crc_and_truncation (tests.test_field_equipment.FieldEquipmentFormat.test_corrupt_pin_reserved_crc_and_truncation) ... ok
+test_duplicate_identity_and_middle_string (tests.test_field_equipment.FieldEquipmentFormat.test_duplicate_identity_and_middle_string) ... ok
+test_expanded_backgrounds_and_title (tests.test_field_equipment.FieldEquipmentFormat.test_expanded_backgrounds_and_title) ... ok
+test_field_psi_source_and_negative_policy (tests.test_field_equipment.FieldEquipmentFormat.test_field_psi_source_and_negative_policy) ... ok
+test_overlap_bad_stride_and_unknown_directory (tests.test_field_equipment.FieldEquipmentFormat.test_overlap_bad_stride_and_unknown_directory) ... ok
+test_owner_id_contract (tests.test_field_equipment.FieldEquipmentFormat.test_owner_id_contract) ... ok
+test_six_known_commands_equipment_and_field_psi (tests.test_field_equipment.FieldEquipmentFormat.test_six_known_commands_equipment_and_field_psi) ... ok
+test_source_and_actual_pack (tests.test_field_equipment.FieldEquipmentFormat.test_source_and_actual_pack) ... ok
+test_source_slots_and_equipment (tests.test_field_equipment.FieldEquipmentFormat.test_source_slots_and_equipment) ... ok
+test_title_backdrop_required_and_typed (tests.test_field_equipment.FieldEquipmentFormat.test_title_backdrop_required_and_typed) ... ok
+test_unchanged_asset_reuse_guards (tests.test_field_equipment.FieldEquipmentFormat.test_unchanged_asset_reuse_guards) ... ok
+test_unknown_input_and_animation (tests.test_field_equipment.FieldEquipmentFormat.test_unknown_input_and_animation) ... ok
+test_unknown_style_operations_rejected (tests.test_field_equipment.FieldEquipmentFormat.test_unknown_style_operations_rejected) ... ok
+test_unknown_versions_and_capabilities (tests.test_field_equipment.FieldEquipmentFormat.test_unknown_versions_and_capabilities) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 9.447s
+
+OK

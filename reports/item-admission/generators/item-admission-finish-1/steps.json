@@ -1,0 +1,84 @@
+[
+  {
+    "step": "equipment-source",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/field_equipment.py",
+      "extract"
+    ],
+    "returncode": 0,
+    "seconds": 1.5939999999245629
+  },
+  {
+    "step": "equipment-texture-proof",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/field_equipment.py",
+      "reuse-assets",
+      "--base",
+      "0b63d7c0f46d7f620415de718537e5864ef36540"
+    ],
+    "returncode": 0,
+    "seconds": 1.687000000034459
+  },
+  {
+    "step": "equipment-pack",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/field_equipment.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 1.4849999999860302
+  },
+  {
+    "step": "session",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/native_session.py",
+      "extract"
+    ],
+    "returncode": 0,
+    "seconds": 10.14000000001397
+  },
+  {
+    "step": "field-menus",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/field_menus.py",
+      "extract"
+    ],
+    "returncode": 0,
+    "seconds": 2.390999999945052
+  },
+  {
+    "step": "eat-audio",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/append_audio_assets.py",
+      "--scope",
+      "item-consume",
+      "--stage",
+      "--out",
+      "build/full-port/item-eat-audio-publication-2",
+      "--ffmpeg",
+      "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+      "--ffprobe",
+      "C:/Users/litto/AppData/Local/Microsoft/WinGet/Links/ffprobe.exe"
+    ],
+    "returncode": 0,
+    "seconds": 52.79700000002049
+  }
+]

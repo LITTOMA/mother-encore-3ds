@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "9ab217b6a5281e18848a769f11ae8248064111a3aa6281a6275514859a35e315",
+  "producer_sha256": "6f0cb22f3927334a746f419703f5a1391a392724ec82a64ab69c565db46796eb",
+  "sources": {
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Data/Items/Hamburger.yaml": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
+    "Graphics/Objects/Items/Hamburger.png": "fe2a015fface4bec3ce379523b36510f8ed9d39d874d171308201ebb756aa567",
+    "Graphics/Objects/Items/Hamburger.png.import": "b34814940107169922557173f32b25963326508afee2f77215d02d1e4c394bc2",
+    "Data/Items/Fries.yaml": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+    "Graphics/Objects/Items/Fries.png": "50f96264a490157ea0e9b35277d36fbbd2080fd980f8f93dd840f16c4663a734",
+    "Graphics/Objects/Items/Fries.png.import": "8dd355fb888c040dc815aa76afd5ebbe854ead1408e486f6eaedd9eef25aa2e0",
+    "Data/Items/Antidote.yaml": "277cc60694c95e266ce0b406c7d74992c4fcf39ffdb130d96d04fde7a00ec7eb",
+    "Graphics/Objects/Items/Antidote.png": "2835c7dfec6dbd467099574215774f62e2b430a198059884faebdea1f047af49",
+    "Graphics/Objects/Items/Antidote.png.import": "f32a161924e0b1a6cd1fa20e0fd4c427755411f782aa8d1df64ea85774b7def8"
+  },
+  "scope": "Three original item definitions appended after stable IDs 1..4; seven distinct object-flag acquisitions. No new scene or save admission.",
+  "permission": "Original game art under the pinned upstream game-related derivative permission; no fonts or third-party binaries copied."
+}

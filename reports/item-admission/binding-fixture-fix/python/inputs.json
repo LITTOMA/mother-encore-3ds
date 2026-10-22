@@ -1,0 +1,5 @@
+{
+  "tests/items_binding_fixtures.py": "a782ddcbc8f78b2aa596ea12cb39ef9be7aff44a9ded01a1953156031284275e",
+  "tests/test_items_fixture_resources.py": "5a56d216426e6c023ea430960d4c62e15a45081d260e34dbb432cdf5f0036aa5",
+  "tests/test_items_presentation_bindings.py": "e027820a68d8f46cf342210492cef69770c9708770eaf24f87b8770b3cf9e9a3"
+}

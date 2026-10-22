@@ -1,0 +1,9 @@
+{
+  "build/full-port/item-admission-host-1/native_session.o": "ad965cd9b8634403a1083be6b7f81c48af9b2c88b48d75b282285ba1ed94020a",
+  "build/full-port/item-admission-host-1/field_menus.o": "658f0e8733275db00457942fab7f3fce84a9a190af9385f27b2355f8d58f8fca",
+  "build/full-port/item-admission-host-1/field_menus_data.o": "f14392083ca828c820d9e63dc48c651d80de54cc957a51e876fd9ca6feef73af",
+  "build/full-port/item-admission-host-1/field_story.o": "efd8483408c2cb2cdffe12b57247dfae3f28357e3dd94e93b64b522bed905adb",
+  "build/full-port/item-admission-host-1/item_details.o": "16d2f7633183508a05c49ae4b9a90a3200fde1c6a15e10c5dd77c2bf0487c61c",
+  "build/full-port/item-admission-host-1/storage_data.o": "7d24dfc16e5ec97d2d76958c0f97cc94d3525c7db3abaa5f2bb343d585f24438",
+  "build/full-port/item-admission-host-2/session_restore.o": "03f13667ca1c16d6d275140f8e7e6982ed381fdd2591b6aef6cc5142eb2bc161"
+}

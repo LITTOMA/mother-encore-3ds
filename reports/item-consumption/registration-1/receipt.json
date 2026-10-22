@@ -1,0 +1,108 @@
+{
+  "discovered": 380,
+  "selected": {
+    "prepare_item_consumption": {
+      "backtrace": 157,
+      "command": [
+        "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe",
+        "D:/GameDev/3DS/mother-encore-3ds/tests/prepare_item_consumption.py",
+        "D:/GameDev/3DS/mother-encore-3ds/build/full-port/item-consume-registration-1/cmake/item-consumption-fixture",
+        "D:/GameDev/3DS/mother-encore-3ds/reports/item-consumption/original-1"
+      ],
+      "config": "Release",
+      "name": "prepare_item_consumption",
+      "properties": [
+        {
+          "name": "FIXTURES_SETUP",
+          "value": [
+            "item_consumption_fixture"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    "item_consumption": {
+      "backtrace": 159,
+      "config": "Release",
+      "name": "item_consumption",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "prepare_item_consumption"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "item_consumption_fixture"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    },
+    "item_consumption_bad_reference": {
+      "backtrace": 161,
+      "command": [
+        "C:/Users/litto/AppData/Local/Programs/Python/Python311/python.exe",
+        "D:/GameDev/3DS/mother-encore-3ds/tests/check_item_consumption_failures.py",
+        "D:/GameDev/3DS/mother-encore-3ds/build/full-port/item-consume-registration-1/cmake/Release/encore_item_consumption_tests.exe",
+        "D:/GameDev/3DS/mother-encore-3ds/romfs",
+        "D:/GameDev/3DS/mother-encore-3ds/build/full-port/item-consume-registration-1/cmake/item-consumption-fixture",
+        "D:/GameDev/3DS/mother-encore-3ds/build/full-port/item-consume-registration-1/cmake/item-consumption-failures"
+      ],
+      "config": "Release",
+      "name": "item_consumption_bad_reference",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "prepare_item_consumption"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "item_consumption_fixture"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 120.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "D:/GameDev/3DS/mother-encore-3ds"
+        }
+      ]
+    }
+  },
+  "cmake_sha256": "08992e7e8809104309691906eecddbb01ed8f47d444c305f563291251c0a599d",
+  "scope": "Windows configure/discovery only; no CMake build or CTest execution."
+}

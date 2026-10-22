@@ -69,6 +69,12 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def dependency_path(path):
+    # Offline review receipts are checked dependencies, never console paths.
+    return safe_path(path) and (path.startswith(('content/', 'romfs/'))
+                               or path.startswith('compatibility/reviews/') and path.endswith('.json'))
+
+
 def verify_sources(ir, root=ROOT):
     require(ir.get('schema') == 1 and ir.get('kind') == 'encore.native-items.source-ir'
             and ir.get('commit') == PIN, 'Unreviewed Items schema/pin')
@@ -85,7 +91,7 @@ def verify_sources(ir, root=ROOT):
                 'Changed Items source ' + str(path))
     require(isinstance(ir['dependencies'], dict), 'Items dependencies')
     for path, sha in ir['dependencies'].items():
-        require(safe_path(path) and path.startswith(('content/', 'romfs/'))
+        require(dependency_path(path)
                 and digest(root / path) == sha, 'Changed Items dependency ' + str(path))
 
     from tools.items_presentation_bindings import check_round

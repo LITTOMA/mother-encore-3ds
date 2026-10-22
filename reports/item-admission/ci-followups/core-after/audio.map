@@ -1,0 +1,789 @@
+Archive member included to satisfy reference by file (symbol)
+
+build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                              /tmp/ccU3hfYW.o (encore::upstream::audio_crc32(unsigned char const*, unsigned long))
+/usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+                              /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o (__libc_csu_init)
+
+Merging program properties
+
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/crtbegin.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/9/crtbegin.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+ .group         0x0000000000000000        0xc /tmp/ccU3hfYW.o
+ .group         0x0000000000000000        0xc /tmp/ccU3hfYW.o
+ .group         0x0000000000000000        0xc /tmp/ccU3hfYW.o
+ .group         0x0000000000000000        0xc /tmp/ccU3hfYW.o
+ .group         0x0000000000000000        0xc /tmp/ccU3hfYW.o
+ .group         0x0000000000000000        0xc /tmp/ccU3hfYW.o
+ .group         0x0000000000000000        0xc /tmp/ccU3hfYW.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /tmp/ccU3hfYW.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /tmp/ccU3hfYW.o
+ .group         0x0000000000000000        0xc build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .group         0x0000000000000000        0xc build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .group         0x0000000000000000        0xc build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .group         0x0000000000000000        0x8 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .group         0x0000000000000000        0x8 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .group         0x0000000000000000        0x8 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .group         0x0000000000000000        0x8 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .note.gnu.property
+                0x0000000000000000       0x20 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/crtbegin.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/libasan.so
+LOAD /tmp/ccU3hfYW.o
+LOAD build/full-port/shadow-core-host-2/libencore-shadow.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/libstdc++.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/libm.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libm.so.6
+LOAD /lib/x86_64-linux-gnu/libmvec.so.1
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/libubsan.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/libgcc_s.so.1
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/libc.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libc.so.6
+LOAD /usr/lib/x86_64-linux-gnu/libc_nonshared.a
+LOAD /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/libgcc_s.so.1
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x400000))
+                0x0000000000400350                . = (SEGMENT_START ("text-segment", 0x400000) + SIZEOF_HEADERS)
+
+.interp         0x0000000000400350       0x1c
+ *(.interp)
+ .interp        0x0000000000400350       0x1c /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.note.gnu.property
+                0x0000000000400370       0x20
+ .note.gnu.property
+                0x0000000000400370       0x20 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.note.gnu.build-id
+                0x0000000000400390       0x24
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x0000000000400390       0x24 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.note.ABI-tag   0x00000000004003b4       0x20
+ .note.ABI-tag  0x00000000004003b4       0x20 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.hash
+ *(.hash)
+
+.gnu.hash       0x00000000004003d8       0x44
+ *(.gnu.hash)
+ .gnu.hash      0x00000000004003d8       0x44 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.dynsym         0x0000000000400420      0x888
+ *(.dynsym)
+ .dynsym        0x0000000000400420      0x888 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.dynstr         0x0000000000400ca8      0xb57
+ *(.dynstr)
+ .dynstr        0x0000000000400ca8      0xb57 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.gnu.version    0x0000000000401800       0xb6
+ *(.gnu.version)
+ .gnu.version   0x0000000000401800       0xb6 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.gnu.version_d  0x00000000004018b8        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x00000000004018b8        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.gnu.version_r  0x00000000004018b8       0xc0
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x00000000004018b8       0xc0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.rela.dyn       0x0000000000401978       0x90
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ .rela.text     0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .rela.text._ZNKSt17basic_string_viewIcSt11char_traitsIcEE7compareES2_
+                0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .rela.text._ZNSt6vectorIhSaIhEEC2ERKS1_
+                0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .rela.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag
+                0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .rela.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_St20forward_iterator_tag
+                0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .rela.text._ZN9__gnu_cxx12__to_xstringINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEcEET_PFiPT0_mPKS8_P13__va_list_tagEmSB_z
+                0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .rela.text._ZNSt6vectorIhSaIhEE17_M_realloc_insertIJcEEEvN9__gnu_cxx17__normal_iteratorIPhS1_EEDpOT_
+                0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .rela.text._ZN6encore20report_load_progressENS_9LoadPhaseEmm
+                0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .rela.text._ZStneIcSt11char_traitsIcEEbSt17basic_string_viewIT_T0_ENSt11common_typeIJS5_EE4typeE
+                0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .rela.text._ZNKSt17basic_string_viewIcSt11char_traitsIcEE6substrEmm
+                0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.ro
+                0x0000000000401978        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x0000000000401978       0x30 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ .rela.bss      0x00000000004019a8       0x48 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ *(.rela.ldata .rela.ldata.* .rela.gnu.linkonce.l.*)
+ *(.rela.lbss .rela.lbss.* .rela.gnu.linkonce.lb.*)
+ *(.rela.lrodata .rela.lrodata.* .rela.gnu.linkonce.lr.*)
+ *(.rela.ifunc)
+ .rela.preinit_array
+                0x00000000004019f0       0x18 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.rela.plt       0x0000000000401a08      0x7c8
+ *(.rela.plt)
+ .rela.plt      0x0000000000401a08      0x7c8 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                [!provide]                        PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+ .rela.iplt     0x00000000004021d0        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                [!provide]                        PROVIDE (__rela_iplt_end = .)
+                0x0000000000403000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+
+.init           0x0000000000403000       0x1b
+ *(SORT_NONE(.init))
+ .init          0x0000000000403000       0x16 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o
+                0x0000000000403000                _init
+ .init          0x0000000000403016        0x5 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+
+.plt            0x0000000000403020      0x540
+ *(.plt)
+ .plt           0x0000000000403020      0x540 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ *(.iplt)
+ .iplt          0x0000000000403560        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.plt.got        0x0000000000403560        0x0
+ *(.plt.got)
+ .plt.got       0x0000000000403560        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.plt.sec        0x0000000000403560      0x530
+ *(.plt.sec)
+ .plt.sec       0x0000000000403560      0x530 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                0x0000000000403560                __asan_report_store4
+                0x0000000000403570                strlen
+                0x0000000000403580                __asan_register_globals
+                0x0000000000403590                __asan_stack_malloc_8
+                0x00000000004035a0                std::filesystem::__cxx11::path::operator/=(std::filesystem::__cxx11::path const&)@@GLIBCXX_3.4.26
+                0x00000000004035b0                memmove
+                0x00000000004035c0                std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::insert(unsigned long, char const*)@@GLIBCXX_3.4.21
+                0x00000000004035d0                std::basic_ifstream<char, std::char_traits<char> >::~basic_ifstream()@@GLIBCXX_3.4
+                0x00000000004035e0                std::filesystem::__cxx11::path::_List::_Impl_deleter::operator()(std::filesystem::__cxx11::path::_List::_Impl*) const@@GLIBCXX_3.4.26
+                0x00000000004035f0                std::filesystem::__cxx11::path::_List::_List()@@GLIBCXX_3.4.26
+                0x0000000000403600                __asan_report_load_n
+                0x0000000000403610                std::filesystem::temp_directory_path[abi:cxx11]()@@GLIBCXX_3.4.26
+                0x0000000000403620                __asan_stack_malloc_0
+                0x0000000000403630                std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long)@@GLIBCXX_3.4.21
+                0x0000000000403640                __asan_poison_stack_memory
+                0x0000000000403650                std::__throw_bad_alloc()@@GLIBCXX_3.4
+                0x0000000000403660                __asan_stack_free_8
+                0x0000000000403670                __asan_report_store16
+                0x0000000000403680                std::__throw_length_error(char const*)@@GLIBCXX_3.4
+                0x0000000000403690                __asan_stack_malloc_1
+                0x00000000004036a0                operator new(unsigned long)
+                0x00000000004036b0                __asan_report_load4
+                0x00000000004036c0                std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&)@@GLIBCXX_3.4.21
+                0x00000000004036d0                operator delete(void*)
+                0x00000000004036e0                __ubsan_handle_load_invalid_value
+                0x00000000004036f0                fread
+                0x0000000000403700                std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long)@@GLIBCXX_3.4.9
+                0x0000000000403710                __ubsan_handle_pointer_overflow
+                0x0000000000403720                std::__throw_logic_error(char const*)@@GLIBCXX_3.4
+                0x0000000000403730                std::filesystem::__cxx11::path::_M_split_cmpts()@@GLIBCXX_3.4.26
+                0x0000000000403740                std::filesystem::remove(std::filesystem::__cxx11::path const&)@@GLIBCXX_3.4.26
+                0x0000000000403750                memset
+                0x0000000000403760                __ubsan_handle_mul_overflow
+                0x0000000000403770                fopen
+                0x0000000000403780                __ubsan_handle_shift_out_of_bounds
+                0x0000000000403790                memchr
+                0x00000000004037a0                std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)@@GLIBCXX_3.4
+                0x00000000004037b0                memcmp
+                0x00000000004037c0                __asan_report_store8
+                0x00000000004037d0                __asan_report_load2
+                0x00000000004037e0                __asan_unregister_globals
+                0x00000000004037f0                std::basic_ofstream<char, std::char_traits<char> >::basic_ofstream(char const*, std::_Ios_Openmode)@@GLIBCXX_3.4
+                0x0000000000403800                fseek@@GLIBC_2.2.5
+                0x0000000000403810                __stack_chk_fail@@GLIBC_2.4
+                0x0000000000403820                __asan_handle_no_return
+                0x0000000000403830                __asan_init
+                0x0000000000403840                std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@@GLIBCXX_3.4.9
+                0x0000000000403850                __asan_stack_malloc_4
+                0x0000000000403860                exit@@GLIBC_2.2.5
+                0x0000000000403870                __cxa_atexit
+                0x0000000000403880                __asan_report_load1
+                0x0000000000403890                __asan_alloca_poison
+                0x00000000004038a0                __asan_report_load16
+                0x00000000004038b0                __asan_report_store1
+                0x00000000004038c0                memcpy
+                0x00000000004038d0                std::ostream::write(char const*, long)@@GLIBCXX_3.4
+                0x00000000004038e0                __asan_after_dynamic_init
+                0x00000000004038f0                std::chrono::_V2::steady_clock::now()@@GLIBCXX_3.4.19
+                0x0000000000403900                std::basic_ofstream<char, std::char_traits<char> >::~basic_ofstream()@@GLIBCXX_3.4
+                0x0000000000403910                __asan_report_load8
+                0x0000000000403920                __asan_report_store2
+                0x0000000000403930                std::__throw_out_of_range_fmt(char const*, ...)@@GLIBCXX_3.4.20
+                0x0000000000403940                __asan_unpoison_stack_memory
+                0x0000000000403950                std::ios_base::Init::Init()@@GLIBCXX_3.4
+                0x0000000000403960                std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long)@@GLIBCXX_3.4.21
+                0x0000000000403970                vsnprintf
+                0x0000000000403980                fclose
+                0x0000000000403990                __asan_stack_malloc_2
+                0x00000000004039a0                __ubsan_handle_type_mismatch_v1
+                0x00000000004039b0                __asan_version_mismatch_check_v8
+                0x00000000004039c0                __ubsan_handle_nonnull_arg
+                0x00000000004039d0                pow@@GLIBC_2.29
+                0x00000000004039e0                std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned long&, unsigned long)@@GLIBCXX_3.4.21
+                0x00000000004039f0                __asan_report_store_n
+                0x0000000000403a00                std::basic_ifstream<char, std::char_traits<char> >::basic_ifstream(char const*, std::_Ios_Openmode)@@GLIBCXX_3.4
+                0x0000000000403a10                __asan_before_dynamic_init
+                0x0000000000403a20                __asan_stack_malloc_3
+                0x0000000000403a30                ferror@@GLIBC_2.2.5
+                0x0000000000403a40                __asan_allocas_unpoison
+                0x0000000000403a50                std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::append(char const*)@@GLIBCXX_3.4.21
+                0x0000000000403a60                std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::assign(char const*)@@GLIBCXX_3.4.21
+                0x0000000000403a70                std::filesystem::__cxx11::path::_List::_List(std::filesystem::__cxx11::path::_List const&)@@GLIBCXX_3.4.26
+                0x0000000000403a80                std::ios_base::Init::~Init()@@GLIBCXX_3.4
+
+.text           0x0000000000403a90    0x1cbf5
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000403a90       0x35 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                0x0000000000403a90                _start
+                0x0000000000403ac0                _dl_relocate_static_pie
+ .text          0x0000000000403ac5        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o
+ *fill*         0x0000000000403ac5        0xb 
+ .text          0x0000000000403ad0       0xa6 /usr/lib/gcc/x86_64-linux-gnu/9/crtbegin.o
+ .text          0x0000000000403b76        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+ .text          0x0000000000403b76     0xb1bc /tmp/ccU3hfYW.o
+                0x00000000004041be                main
+ .text._ZNSt10filesystem7__cxx114pathD2Ev
+                0x000000000040ed32      0x7ae /tmp/ccU3hfYW.o
+                0x000000000040ed32                std::filesystem::__cxx11::path::~path()
+                0x000000000040ed32                std::filesystem::__cxx11::path::~path()
+ .text._ZNKSt17basic_string_viewIcSt11char_traitsIcEE7compareES2_
+                0x000000000040f4e0      0x356 /tmp/ccU3hfYW.o
+                0x000000000040f4e0                std::basic_string_view<char, std::char_traits<char> >::compare(std::basic_string_view<char, std::char_traits<char> >) const
+ .text._ZNSt6vectorIhSaIhEEC2ERKS1_
+                0x000000000040f836      0xc5f /tmp/ccU3hfYW.o
+                0x000000000040f836                std::vector<unsigned char, std::allocator<unsigned char> >::vector(std::vector<unsigned char, std::allocator<unsigned char> > const&)
+                0x000000000040f836                std::vector<unsigned char, std::allocator<unsigned char> >::vector(std::vector<unsigned char, std::allocator<unsigned char> > const&)
+ *fill*         0x0000000000410495        0x1 
+ .text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag
+                0x0000000000410496      0x6a8 /tmp/ccU3hfYW.o
+                0x0000000000410496                void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+ .text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_St20forward_iterator_tag
+                0x0000000000410b3e      0x6a8 /tmp/ccU3hfYW.o
+                0x0000000000410b3e                void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag)
+ .text._ZN9__gnu_cxx12__to_xstringINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEcEET_PFiPT0_mPKS8_P13__va_list_tagEmSB_z
+                0x00000000004111e6      0x487 /tmp/ccU3hfYW.o
+                0x00000000004111e6                std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...)
+ *fill*         0x000000000041166d        0x1 
+ .text._ZNSt6vectorIhSaIhEE17_M_realloc_insertIJcEEEvN9__gnu_cxx17__normal_iteratorIPhS1_EEDpOT_
+                0x000000000041166e     0x1567 /tmp/ccU3hfYW.o
+                0x000000000041166e                void std::vector<unsigned char, std::allocator<unsigned char> >::_M_realloc_insert<char>(__gnu_cxx::__normal_iterator<unsigned char*, std::vector<unsigned char, std::allocator<unsigned char> > >, char&&)
+ *fill*         0x0000000000412bd5        0x1 
+ .text          0x0000000000412bd6     0xd1af build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                0x000000000041394f                encore::upstream::audio_crc32(unsigned char const*, unsigned long)
+                0x0000000000413bb8                encore::upstream::AudioBank::count() const
+                0x000000000041413a                encore::upstream::AudioBank::master_db() const
+                0x00000000004146d6                encore::upstream::AudioBank::silence_db() const
+                0x0000000000414c72                encore::upstream::AudioBank::asset(unsigned int) const
+                0x0000000000415830                encore::upstream::AudioBank::find(unsigned int, encore::upstream::AudioAsset&) const
+                0x0000000000415cf0                encore::upstream::AudioBank::find_source(std::basic_string_view<char, std::char_traits<char> >, std::array<unsigned char, 32ul> const&, encore::upstream::AudioAsset&) const
+                0x00000000004163f0                encore::upstream::AudioBank::load(unsigned char const*, unsigned long, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+                0x0000000000419262                encore::upstream::AudioBank::load_file(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+                0x000000000041a0b0                encore::upstream::AudioFrameCursor::reset(unsigned int, unsigned int, bool)
+                0x000000000041a29a                encore::upstream::AudioFrameCursor::seek(unsigned int)
+                0x000000000041a3a7                encore::upstream::music_start_frame(encore::upstream::AudioAsset const&, double, unsigned int&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+                0x000000000041b709                encore::upstream::music_position_frame(encore::upstream::AudioAsset const&, unsigned int, unsigned int, unsigned int&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+                0x000000000041c1b0                encore::upstream::AudioFrameCursor::take(unsigned int, unsigned int&)
+                0x000000000041c6fa                encore::upstream::AudioPcmStream::close()
+                0x000000000041c7a0                encore::upstream::AudioPcmStream::open(encore::upstream::AudioAsset const&, char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+                0x000000000041e138                encore::upstream::AudioPcmStream::rewind()
+                0x000000000041e330                encore::upstream::AudioPcmStream::read(short*, unsigned int, unsigned int&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+                0x000000000041f158                encore::upstream::AudioFade::start(float, double, bool)
+                0x000000000041f55a                encore::upstream::AudioFade::advance(double)
+                0x000000000041fd02                encore::upstream::audio_linear_gain(float)
+ .text._ZN6encore20report_load_progressENS_9LoadPhaseEmm
+                0x000000000041fd85      0x24d build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                0x000000000041fd85                encore::report_load_progress(encore::LoadPhase, unsigned long, unsigned long)
+ .text._ZStneIcSt11char_traitsIcEEbSt17basic_string_viewIT_T0_ENSt11common_typeIJS5_EE4typeE
+                0x000000000041ffd2      0x27f build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                0x000000000041ffd2                bool std::operator!=<char, std::char_traits<char> >(std::basic_string_view<char, std::char_traits<char> >, std::common_type<std::basic_string_view<char, std::char_traits<char> > >::type)
+ *fill*         0x0000000000420251        0x1 
+ .text._ZNKSt17basic_string_viewIcSt11char_traitsIcEE6substrEmm
+                0x0000000000420252      0x3bc build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                0x0000000000420252                std::basic_string_view<char, std::char_traits<char> >::substr(unsigned long, unsigned long) const
+ *fill*         0x000000000042060e        0x2 
+ .text          0x0000000000420610       0x75 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+                0x0000000000420610                __libc_csu_init
+                0x0000000000420680                __libc_csu_fini
+ .text          0x0000000000420685        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o
+ .text          0x0000000000420685        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+ *(.gnu.warning)
+
+.fini           0x0000000000420688        0xd
+ *(SORT_NONE(.fini))
+ .fini          0x0000000000420688        0x8 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o
+                0x0000000000420688                _fini
+ .fini          0x0000000000420690        0x5 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+                0x0000000000421000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+                0x0000000000421000                . = SEGMENT_START ("rodata-segment", (ALIGN (CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 0x1))))
+
+.rodata         0x0000000000421000     0x9448
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.cst4   0x0000000000421000        0x4 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                0x0000000000421000                _IO_stdin_used
+ *fill*         0x0000000000421004       0x1c 
+ .rodata        0x0000000000421020     0x2900 /tmp/ccU3hfYW.o
+ .rodata._ZNKSt17basic_string_viewIcSt11char_traitsIcEE7compareES2_.str1.1
+                0x0000000000423920       0x14 /tmp/ccU3hfYW.o
+ *fill*         0x0000000000423934        0x4 
+ .rodata._ZNSt6vectorIhSaIhEEC2ERKS1_.str1.8
+                0x0000000000423938       0x7b /tmp/ccU3hfYW.o
+ .rodata.str1.1
+                0x00000000004239b3     0x2652 /tmp/ccU3hfYW.o
+ *fill*         0x0000000000426005        0x3 
+ .rodata._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag.str1.8
+                0x0000000000426008       0x26 /tmp/ccU3hfYW.o
+ *fill*         0x000000000042602e        0x2 
+ .rodata._ZN9__gnu_cxx12__to_xstringINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEcEET_PFiPT0_mPKS8_P13__va_list_tagEmSB_z.str1.8
+                0x0000000000426030       0x27 /tmp/ccU3hfYW.o
+ *fill*         0x0000000000426057        0x1 
+ .rodata._ZNSt6vectorIhSaIhEE17_M_realloc_insertIJcEEEvN9__gnu_cxx17__normal_iteratorIPhS1_EEDpOT_.str1.8
+                0x0000000000426058       0xf3 /tmp/ccU3hfYW.o
+ *fill*         0x000000000042614b        0x5 
+ .rodata.str1.8
+                0x0000000000426150      0xc67 /tmp/ccU3hfYW.o
+ *fill*         0x0000000000426db7        0x1 
+ .rodata.cst4   0x0000000000426db8       0x14 /tmp/ccU3hfYW.o
+ *fill*         0x0000000000426dcc        0x4 
+ .rodata.cst16  0x0000000000426dd0       0x20 /tmp/ccU3hfYW.o
+ .rodata.cst8   0x0000000000426df0       0x50 /tmp/ccU3hfYW.o
+ .rodata.str1.8
+                0x0000000000426e40      0x62c build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ *fill*         0x000000000042746c       0x14 
+ .rodata        0x0000000000427480      0xe40 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .rodata._ZN6encore20report_load_progressENS_9LoadPhaseEmm.str1.1
+                0x00000000004282c0       0x14 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ *fill*         0x00000000004282d4        0x4 
+ .rodata._ZStneIcSt11char_traitsIcEEbSt17basic_string_viewIT_T0_ENSt11common_typeIJS5_EE4typeE.str1.8
+                0x00000000004282d8       0x34 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ *fill*         0x000000000042830c        0x4 
+ .rodata._ZNKSt17basic_string_viewIcSt11char_traitsIcEE6substrEmm.str1.8
+                0x0000000000428310       0x34 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .rodata.str1.1
+                0x0000000000428344     0x1cc7 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                                       0x2b48 (size before relaxing)
+ *fill*         0x000000000042a00b       0x15 
+ .rodata._ZN6encore12crc32_detail5tableE
+                0x000000000042a020      0x400 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                0x000000000042a020                encore::crc32_detail::table
+ .rodata.cst16  0x000000000042a420       0x20 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .rodata.cst4   0x000000000042a420        0x8 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                                          0xc (size before relaxing)
+ .rodata.cst8   0x000000000042a428       0x20 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                                         0x30 (size before relaxing)
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x000000000042a448      0x19c
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x000000000042a448      0x19c /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                0x000000000042a448                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x000000000042a5e8      0x878
+ *(.eh_frame)
+ .eh_frame      0x000000000042a5e8       0x40 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                                         0x5c (size before relaxing)
+ *fill*         0x000000000042a628        0x0 
+ .eh_frame      0x000000000042a628       0x28 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x000000000042a650        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .eh_frame      0x000000000042a650       0x18 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                                         0x30 (size before relaxing)
+ .eh_frame      0x000000000042a668      0x280 /tmp/ccU3hfYW.o
+                                        0x298 (size before relaxing)
+ .eh_frame      0x000000000042a8e8      0x518 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                                        0x530 (size before relaxing)
+ .eh_frame      0x000000000042ae00       0x5c /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+                                         0x78 (size before relaxing)
+ .eh_frame      0x000000000042ae5c        0x4 /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x000000000042cd70                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x000000000042cd70        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss           0x000000000042cd70       0x20
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ .tbss._ZN6encore20load_progress_detail17activity_revisionE
+                0x000000000042cd70        0x8 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                0x000000000042cd70                encore::load_progress_detail::activity_revision
+ .tbss._ZN6encore20load_progress_detail9reportingE
+                0x000000000042cd78        0x1 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                0x000000000042cd78                encore::load_progress_detail::reporting
+ *fill*         0x000000000042cd79        0x7 
+ .tbss._ZN6encore20load_progress_detail8observerE
+                0x000000000042cd80       0x10 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                0x000000000042cd80                encore::load_progress_detail::observer
+ *(.tcommon)
+
+.preinit_array  0x000000000042cd70        0x8
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+ .preinit_array
+                0x000000000042cd70        0x8 /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+                0x000000000042cd70                __local_asan_preinit
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x000000000042cd78       0x20
+                0x000000000042cd78                PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ .init_array.00099
+                0x000000000042cd78        0x8 /tmp/ccU3hfYW.o
+ .init_array.00099
+                0x000000000042cd80        0x8 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x000000000042cd88        0x8 /usr/lib/gcc/x86_64-linux-gnu/9/crtbegin.o
+ .init_array    0x000000000042cd90        0x8 /tmp/ccU3hfYW.o
+                0x000000000042cd98                PROVIDE (__init_array_end = .)
+
+.fini_array     0x000000000042cd98       0x18
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ .fini_array.00099
+                0x000000000042cd98        0x8 /tmp/ccU3hfYW.o
+ .fini_array.00099
+                0x000000000042cda0        0x8 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x000000000042cda8        0x8 /usr/lib/gcc/x86_64-linux-gnu/9/crtbegin.o
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x000000000042cdb0        0x0
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x000000000042cdb0        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.dynamic        0x000000000042cdb0      0x240
+ *(.dynamic)
+ .dynamic       0x000000000042cdb0      0x240 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                0x000000000042cdb0                _DYNAMIC
+
+.got            0x000000000042cff0       0x10
+ *(.got)
+ .got           0x000000000042cff0       0x10 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ *(.igot)
+                0x000000000042dfe8                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0x18)?0x18:0x0)
+
+.got.plt        0x000000000042d000      0x2b0
+ *(.got.plt)
+ .got.plt       0x000000000042d000      0x2b0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                0x000000000042d000                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+ .igot.plt      0x000000000042d2b0        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+
+.data           0x000000000042d2c0    0x26c40
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x000000000042d2c0        0x4 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                0x000000000042d2c0                data_start
+                0x000000000042d2c0                __data_start
+ .data          0x000000000042d2c4        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o
+ *fill*         0x000000000042d2c4        0x4 
+ .data          0x000000000042d2c8        0x8 /usr/lib/gcc/x86_64-linux-gnu/9/crtbegin.o
+                0x000000000042d2c8                __dso_handle
+ .data          0x000000000042d2d0        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+ *fill*         0x000000000042d2d0       0x10 
+ .data          0x000000000042d2e0    0x12580 /tmp/ccU3hfYW.o
+ .data          0x000000000043f860    0x146a0 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .data          0x0000000000453f00        0x0 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+ .data          0x0000000000453f00        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o
+ .data          0x0000000000453f00        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+
+.tm_clone_table
+                0x0000000000453f00        0x0
+ .tm_clone_table
+                0x0000000000453f00        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/crtbegin.o
+ .tm_clone_table
+                0x0000000000453f00        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o
+
+.data1
+ *(.data1)
+                0x0000000000453f00                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000453f00                . = .
+                0x0000000000453f00                __bss_start = .
+
+.bss            0x0000000000453f00      0x2e0
+ *(.dynbss)
+ .dynbss        0x0000000000453f00      0x250 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                0x0000000000453f00                std::cout@@GLIBCXX_3.4
+                0x0000000000454020                __asan_option_detect_stack_use_after_return
+                0x0000000000454040                std::cerr@@GLIBCXX_3.4
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000454150        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+ .bss           0x0000000000454150        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o
+ .bss           0x0000000000454150        0x1 /usr/lib/gcc/x86_64-linux-gnu/9/crtbegin.o
+ .bss           0x0000000000454151        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+ *fill*         0x0000000000454151        0xf 
+ .bss           0x0000000000454160       0x80 /tmp/ccU3hfYW.o
+ .bss           0x00000000004541e0        0x0 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .bss           0x00000000004541e0        0x0 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+ .bss           0x00000000004541e0        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o
+ .bss           0x00000000004541e0        0x0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+ *(COMMON)
+                0x00000000004541e0                . = ALIGN ((. != 0x0)?0x8:0x1)
+
+.lbss
+ *(.dynlbss)
+ *(.lbss .lbss.* .gnu.linkonce.lb.*)
+ *(LARGE_COMMON)
+                0x00000000004541e0                . = ALIGN (0x8)
+                0x00000000004541e0                . = SEGMENT_START ("ldata-segment", .)
+
+.lrodata
+ *(.lrodata .lrodata.* .gnu.linkonce.lr.*)
+
+.ldata          0x00000000004561e0        0x0
+ *(.ldata .ldata.* .gnu.linkonce.l.*)
+                0x00000000004561e0                . = ALIGN ((. != 0x0)?0x8:0x1)
+                0x00000000004561e0                . = ALIGN (0x8)
+                0x00000000004541e0                _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x00000000004561e0                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x2b
+ *(.comment)
+ .comment       0x0000000000000000       0x2b /usr/lib/gcc/x86_64-linux-gnu/9/crtbegin.o
+                                         0x2c (size before relaxing)
+ .comment       0x000000000000002b       0x2c /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+ .comment       0x000000000000002b       0x2c /tmp/ccU3hfYW.o
+ .comment       0x000000000000002b       0x2c build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+ .comment       0x000000000000002b       0x2c /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x120
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+ .debug_aranges
+                0x0000000000000020       0xa0 /tmp/ccU3hfYW.o
+ .debug_aranges
+                0x00000000000000c0       0x60 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000    0x50826
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000      0xd78 /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+ .debug_info    0x0000000000000d78    0x3157a /tmp/ccU3hfYW.o
+ .debug_info    0x00000000000322f2    0x1e534 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+
+.debug_abbrev   0x0000000000000000     0x2668
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x26d /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+ .debug_abbrev  0x000000000000026d     0x1429 /tmp/ccU3hfYW.o
+ .debug_abbrev  0x0000000000001696      0xfd2 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+
+.debug_line     0x0000000000000000     0xbd35
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000      0x161 /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+ .debug_line    0x0000000000000161     0x68dd /tmp/ccU3hfYW.o
+ .debug_line    0x0000000000006a3e     0x52f7 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000    0x2e11d
+ *(.debug_str)
+ .debug_str     0x0000000000000000     0x12b9 /usr/lib/gcc/x86_64-linux-gnu/9/libasan_preinit.o
+                                       0x1345 (size before relaxing)
+ .debug_str     0x00000000000012b9    0x2b3b4 /tmp/ccU3hfYW.o
+                                      0x2c04b (size before relaxing)
+ .debug_str     0x000000000002c66d     0x1ab0 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+                                      0x160a7 (size before relaxing)
+
+.debug_loc      0x0000000000000000    0x22098
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000    0x13549 /tmp/ccU3hfYW.o
+ .debug_loc     0x0000000000013549     0xeb4f build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x0000000000000000     0x9910
+ *(.debug_ranges)
+ .debug_ranges  0x0000000000000000     0x5c10 /tmp/ccU3hfYW.o
+ .debug_ranges  0x0000000000005c10     0x3d00 build/full-port/shadow-core-host-2/libencore-shadow.a(runtime_audio_data.cpp.o)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/full-port/item-admission-ci-followups-1/audio elf64-x86-64)

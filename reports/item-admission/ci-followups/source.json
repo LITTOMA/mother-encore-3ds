@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "failed_source": "d41c04698df543e40b5c19788faa5b0d9e2c684f",
+  "failed_full_run": 39771295093,
+  "actual_failures": {
+    "gcc_ordinary": {
+      "selected": 387,
+      "failed": 9,
+      "not_run": 3
+    },
+    "gcc_sanitizer": {
+      "selected": 368,
+      "failed": 3,
+      "not_run": 3
+    },
+    "clang_ordinary": {
+      "selected": 368,
+      "failed": 3,
+      "not_run": 3
+    },
+    "clang_sanitizer": {
+      "selected": 368,
+      "failed": 3,
+      "not_run": 3
+    }
+  },
+  "reasons": [
+    "Audio consumer still expected60 records",
+    "Historical naming test relabeled current12 as8",
+    "Coin source recipe/review still pinned old breakable provenance",
+    "Dedicated test registration omitted new details module",
+    "Phone binding test expected60 records",
+    "Phone link report omitted item-eat provenance"
+  ],
+  "after": {
+    "gcc_normal_leak_sanitizer": {
+      "audio_data": 31983,
+      "coin_scene_data": 11443,
+      "coin_scene": 276,
+      "coin_scene_source": 282774
+    },
+    "coin_python": 9,
+    "basement_python": 10,
+    "phone_and_partition_units": "44 passed unchanged-input cases plus actual UTF8 retry of1 failed Windows child-process case; both hash seeds run",
+    "method_accounting": {
+      "discovered": 1667,
+      "aggregate": 1275,
+      "dedicated": 392,
+      "shards": [
+        319,
+        319,
+        319,
+        318
+      ]
+    }
+  },
+  "original_coin_runs": "reports/coin-scene/audio-append-original-1 and2:each3 modes x42 snapshots, equal to both historical runs",
+  "simulator": "reports/item-admission/bb-emulator:actual two cold90-checkpoint runs with exact positions; four original menu cases only",
+  "sdk_scope": "Manual full D41 artifact12422724217 matches actually tested BBgame. Automatic D41 artifact12424100129 differs in package bytes and is not claimed as the tested executable.",
+  "pending": [
+    "Fresh complete host matrix for follow-up head",
+    "New head SDK/game correspondence",
+    "Formal Catacombs ordinary input,party,production GPU/audio",
+    "Hardware"
+  ]
+}

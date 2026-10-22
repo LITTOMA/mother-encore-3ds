@@ -59,7 +59,7 @@ def publish(metadata,payloads,validate):
         raise
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--stage',action='store_true');ap.add_argument('--scope',choices=('run-loop','prop-nodes'),default='run-loop');ap.add_argument('--base',type=Path,help='Read-only prior generated inputs under build; candidate-only reproduction');ap.add_argument('--out',type=Path,required=True);ap.add_argument('--ffmpeg',default='ffmpeg');ap.add_argument('--ffprobe',default='ffprobe');o=ap.parse_args();out=o.out.resolve();require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Audio append candidate must stay under build');out.mkdir(parents=True,exist_ok=True)
+    ap=argparse.ArgumentParser();ap.add_argument('--stage',action='store_true');ap.add_argument('--scope',choices=('run-loop','prop-nodes','item-consume'),default='run-loop');ap.add_argument('--base',type=Path,help='Read-only prior generated inputs under build; candidate-only reproduction');ap.add_argument('--out',type=Path,required=True);ap.add_argument('--ffmpeg',default='ffmpeg');ap.add_argument('--ffprobe',default='ffprobe');o=ap.parse_args();out=o.out.resolve();require(out.is_relative_to(ROOT/'build')and out!=ROOT/'build','Audio append candidate must stay under build');out.mkdir(parents=True,exist_ok=True)
     from tools.phone_linker_bindings import audio,verify_audio
     from tools.footstep_audio import bindings
     recipe_path=ROOT/'content/native-audio.json';manifest_path=ROOT/'content/asset-receipts/audio/opening.json';bank_path=ROOT/'romfs/sound/banks/opening.encaudio';prior=o.base.resolve()if o.base else None
@@ -71,6 +71,8 @@ def main():
     base=checked_previous(old_recipe,old_manifest,old_blob,'sound/banks/opening.encaudio');tail=copy.deepcopy(new);tail['assets']=new['assets'][len(old_recipe['assets']):]
     if o.scope=='prop-nodes':
         from tools.field_prop_audio import bindings
+    elif o.scope=='item-consume':
+        from tools.item_consume_audio import bindings
     expected=bindings(ROOT);require([v['stable_id']for v in tail['assets']]==[v['identity']['value']for v in expected],'Audio append scope must be exactly reviewed '+o.scope+' bindings')
     from tools.restore_audio import safe_target
     for record in old_manifest['files']:

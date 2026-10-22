@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "changed_recipe_fields": [
+    "breakable_recipe_sha256"
+  ],
+  "old_recipe_sha256": "3776ea8ef355dc9e979e14351b0ce3698888fefd095ae534f71f33c51925a28a",
+  "new_recipe_sha256": "bc5a4160809bec1cfd5b30e6524875da75243da85e71e132e2874a1bf8276a1c",
+  "old_breakable_recipe_sha256": "1ff3e69e67389ed49d89ae37ab6c266a8a742712a4a9d738dd3aa202ecda1f95",
+  "new_breakable_recipe_sha256": "c20f6d563ee3feee5c96f516f1478cefefb73a187799af5e7eabf6b43ba5eb00",
+  "model_equal": true,
+  "resource_equal": true,
+  "resource_sha256": "1072b58d6d20b21b1f34be9c4c2714aad2cb472bd4bae5194a80d09ac028d9cd",
+  "factory_count": 49,
+  "native_generated_files_equal": true,
+  "native_copied_original_files_equal": true,
+  "scope": "Re-extracted original 49 concrete factories. Only transitive reviewed audio recipe provenance changed; exact generated observer inputs and resource bytes unchanged. Fresh original runs required before updating review.",
+  "producer_sha256": "d086edc6ea0175e507f57dc5bd18b2b9d4e6e474a390ae8ce8975b5c193ed4f9"
+}

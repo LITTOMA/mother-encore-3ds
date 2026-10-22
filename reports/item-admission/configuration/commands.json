@@ -1,0 +1,27 @@
+[
+  {
+    "command": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-configure-3",
+      "-DBUILD_TESTING=ON",
+      "-DENCORE_REGENERATE_NATIVE_CONTENT=OFF"
+    ],
+    "returncode": 0,
+    "seconds": 8.39000000001397
+  },
+  {
+    "command": [
+      "ctest",
+      "--test-dir",
+      "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-configure-3",
+      "-C",
+      "Release",
+      "--show-only=json-v1"
+    ],
+    "returncode": 0,
+    "seconds": 0.2029999999795109
+  }
+]

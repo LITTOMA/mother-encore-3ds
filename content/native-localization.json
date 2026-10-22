@@ -3815,6 +3815,66 @@
       }
     },
     {
+      "key": "@native.item.description/4",
+      "source": "Data/Items/Hamburger.yaml#HAMBURGER_DESC",
+      "line": 5,
+      "values": {
+        "en": "99% Beef.\nRestores [ItemValue] HP.",
+        "fr": "De la restauration rapide pour restaurer rapidement vos PV. Rend [ItemValue] PV.",
+        "it": "Carne al 99%.\nRipristina [ItemValue] PS.",
+        "ja": "ビーフ９９%　チーズいり。\nたべると　ＨＰを[ItemValue]かいふく。",
+        "ko": "99% 한우를 사용했다.\nHP를 [ItemValue]만큼 회복한다.",
+        "es": "99% carne de res.\nRestaura [ItemValue] PV.",
+        "es_ES": "99% carne de vacuno.\nRecupera [ItemValue] PV.",
+        "pt_BR": "Feito no capricho.\nRecupera [ItemValue] HP.",
+        "pl": "99% wołowiny.\nPrzywraca [ItemValue] HP.",
+        "de": "99% Rind.\nStellt [ItemValue] KP wieder her.",
+        "ru": "99% говядины.\nВосстанавливает [ItemValue] ОЗ.",
+        "uk": "99% яловичини.\nВідновлює [ItemValue] оч[ItemValArt3] здоров'я.",
+        "zh_Hans_CN": "含量99%的牛肉。\n回复[ItemValue]点HP。"
+      }
+    },
+    {
+      "key": "@native.item.description/5",
+      "source": "Data/Items/Fries.yaml#FRIES_DESC",
+      "line": 6,
+      "values": {
+        "en": "Can be eaten with or without ketchup.\nRestores [ItemValue] HP.",
+        "fr": "À consommer avec ou sans ketchup.\nRend [ItemValue] PV.",
+        "it": "Si possono mangiare con o senza ketchup.\nRipristinano [ItemValue] PS.",
+        "ja": "あげたて　サクサクのジャンクフード。\nたべると　ＨＰを[ItemValue]かいふく。",
+        "ko": "케첩과 먹어야 하지만 지금은 없으니까...\nHP를 [ItemValue]만큼 회복한다.",
+        "es": "Puedes comerlas con o sin ketchup.\nRestaura [ItemValue] PV.",
+        "es_ES": "Se pueden comer con o sin kétchup.\nRecupera [ItemValue] PV.",
+        "pt_BR": "Pode comer com ou sem ketchup.\nRecupera [ItemValue] HP.",
+        "pl": "Można je zjeść z ketchupem lub bez.\nPrzywracają [ItemValue] HP.",
+        "de": "Können mit oder ohne Ketchup gegessen werden.\nStellt [ItemValue] KP wieder her.",
+        "ru": "Можно съесть с кетчупом или без.\nВосстанавливает [ItemValue] ОЗ.",
+        "uk": "Можна з'їсти з кетчупом або без нього.\nВідновлює [ItemValue] оч[ItemValArt3] здоров'я.",
+        "zh_Hans_CN": "可以蘸或者不蘸番茄酱使用。\n回复[ItemValue]点HP。"
+      }
+    },
+    {
+      "key": "@native.item.description/6",
+      "source": "Data/Items/Antidote.yaml#ANTIDOTE_DESC",
+      "line": 7,
+      "values": {
+        "en": "Cures poison ([Poisoned]).",
+        "fr": "Guérit l'empoisonnement ([Poisoned]).",
+        "it": "Guarisce l'avvelenamento ([Poisoned]).",
+        "ja": "[Poisoned]どくを　すばやく　けしさります。",
+        "ko": "중독([Poisoned])을 치료한다.",
+        "es": "Cura el envenenamiento ([Poisoned]).",
+        "es_ES": "Cura el envenenamiento ([Poisoned]).",
+        "pt_BR": "Cura envenenamento ([Poisoned]).",
+        "pl": "Leczy zatrucie ([Poisoned]).",
+        "de": "Heilt Vergiftung ([Poisoned]).",
+        "ru": "Лечит от отравления ([Poisoned]).",
+        "uk": "Лікує отруєння ([Poisoned]).",
+        "zh_Hans_CN": "治愈中毒（[Poisoned]）。"
+      }
+    },
+    {
       "key": "@native.key-door/73",
       "source": "Data/Dialogue/Reusable/locklocked.yaml#DIALOGUE_REUSABLE_LOCKLOCKED_0@KeyBasement",
       "line": 73,
@@ -82230,6 +82290,24 @@
       "origin": "Data/Items/FleaBag.yaml:description:FLEABAG_DESC"
     },
     {
+      "identity": "item.description/4",
+      "key": "@native.item.description/4",
+      "expected": "99% Beef.\nRestores [ItemValue] HP.",
+      "origin": "Data/Items/Hamburger.yaml:description:HAMBURGER_DESC"
+    },
+    {
+      "identity": "item.description/5",
+      "key": "@native.item.description/5",
+      "expected": "Can be eaten with or without ketchup.\nRestores [ItemValue] HP.",
+      "origin": "Data/Items/Fries.yaml:description:FRIES_DESC"
+    },
+    {
+      "identity": "item.description/6",
+      "key": "@native.item.description/6",
+      "expected": "Cures poison ([Poisoned]).",
+      "origin": "Data/Items/Antidote.yaml:description:ANTIDOTE_DESC"
+    },
+    {
       "identity": "item.name/0",
       "key": "BASEBALLCAP_NAME",
       "expected": "Baseball Cap",
@@ -82252,6 +82330,24 @@
       "key": "FLEABAG_NAME",
       "expected": "Flea Bag",
       "origin": "Data/Items/FleaBag.yaml:name"
+    },
+    {
+      "identity": "item.name/4",
+      "key": "HAMBURGER_NAME",
+      "expected": "Hamburger",
+      "origin": "Data/Items/Hamburger.yaml:name"
+    },
+    {
+      "identity": "item.name/5",
+      "key": "FRIES_NAME",
+      "expected": "Fries",
+      "origin": "Data/Items/Fries.yaml:name"
+    },
+    {
+      "identity": "item.name/6",
+      "key": "ANTIDOTE_NAME",
+      "expected": "Antidote",
+      "origin": "Data/Items/Antidote.yaml:name"
     },
     {
       "identity": "naming.command/1",
@@ -82768,6 +82864,9 @@
     "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5",
     "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
     "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/Items/Hamburger.yaml": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
+    "Data/Items/Fries.yaml": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+    "Data/Items/Antidote.yaml": "277cc60694c95e266ce0b406c7d74992c4fcf39ffdb130d96d04fde7a00ec7eb",
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
     "Translations/TranslatedText/skills - sheet.de.translation": "845711393be04b34eb754a8886301e6777d691f3303b11535fdd62d03772c2f6",
     "Translations/TranslatedText/skills - sheet.en.translation": "faae6476b34ae826f001095ca605876d96f380ee6fc549087de69286bf5663cf",

@@ -1,0 +1,8 @@
+test_actual_source_slot_and_bus_are_distinct (tests.test_item_consume_audio.ItemConsumeAudioTests.test_actual_source_slot_and_bus_are_distinct) ... ok
+test_changed_consumption_binding_rejects (tests.test_item_consume_audio.ItemConsumeAudioTests.test_changed_consumption_binding_rejects) ... ok
+test_source_fields_versions_types_and_effect_lane_reject (tests.test_item_consume_audio.ItemConsumeAudioTests.test_source_fields_versions_types_and_effect_lane_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 6.220s
+
+OK

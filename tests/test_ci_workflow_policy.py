@@ -5,12 +5,12 @@ from types import SimpleNamespace
 import yaml
 
 
-def matches(condition, event, action='', mode='', label=''):
+def matches(condition, event, action='', mode='', label='', matrix=None):
     github = SimpleNamespace(event_name=event, event=SimpleNamespace(action=action, label=SimpleNamespace(name=label)))
     inputs = SimpleNamespace(mode=mode)
     # The reviewed conditions use this deliberately small expression subset.
     code = ' '.join(condition.replace('&&', ' and ').replace('||', ' or ').split())
-    return bool(eval(code, {'__builtins__': {}}, {'github': github, 'inputs': inputs}))
+    return bool(eval(code, {'__builtins__': {}}, {'github': github, 'inputs': inputs, 'matrix': SimpleNamespace(**(matrix or {}))}))
 
 
 class WorkflowPolicyTests(unittest.TestCase):
@@ -76,6 +76,59 @@ class WorkflowPolicyTests(unittest.TestCase):
         self.assertIn('make 3dsx', console_runs)
         self.assertIn('make cia', console_runs)
         self.assertIn('ci_console_check.py', console_runs)
+
+
+    def test_each_compiler_runs_each_complete_phase_once(self):
+        host = self.workflow['jobs']['host']
+        rows = host['strategy']['matrix']['include']
+        self.assertEqual(len(rows), 4)
+        self.assertEqual({(r['compiler'], r['phase']) for r in rows},
+                         {(c, p) for c in ('gcc', 'clang') for p in ('ordinary', 'sanitizer')})
+        self.assertFalse(host['strategy']['fail-fast'])
+        self.assertEqual(host['timeout-minutes'], 180)
+        for row in rows:
+            with self.subTest(row=row):
+                active = [s for s in host['steps'] if 'run' in s and
+                          ('if' not in s or matches(s['if'], 'workflow_dispatch', mode='full', matrix=row))]
+                runs = [s['run'] for s in active]
+                self.assertEqual(runs.count('make content'), 1)
+                self.assertEqual(runs.count('python tools/ci_bootstrap.py'), 1)
+                ordinary = [v for v in runs if v.startswith('make test ')]
+                sanitizer = [v for v in runs if v.startswith('make sanitize ')]
+                expected = row['phase'] == 'ordinary'
+                self.assertEqual(len(ordinary), int(expected))
+                self.assertEqual(len(sanitizer), int(not expected))
+                selected = (ordinary or sanitizer)[0]
+                self.assertIn('--parallel 4 --no-tests=error', selected)
+                self.assertIn('-DENCORE_TEST_PARALLEL=ON', selected)
+                self.assertIn('-DENCORE_REGENERATE_NATIVE_CONTENT=OFF', selected)
+                self.assertEqual(row['ctest_args'], '' if row['compiler'] == 'gcc' else '--label-exclude python_unit')
+                if expected:
+                    self.assertIn('${{ matrix.ctest_args }}', selected)
+                    self.assertIn('build/host', '\n'.join(runs))
+                    self.assertNotIn('build/sanitize', '\n'.join(runs))
+                else:
+                    self.assertIn('--label-exclude python_unit', selected)
+                    self.assertIn('-DENCORE_SANITIZERS=ON', '\n'.join(runs))
+                    self.assertNotIn('build/host', '\n'.join(runs))
+                extra = 'python -m unittest -v tests.test_loading_texture tests.test_loading_indicator'
+                self.assertEqual(runs.count(extra), int(expected and row['compiler'] == 'clang'))
+                self.assertIn('git diff --exit-code', runs)
+        self.assertNotIn('ASAN_OPTIONS', host['env'])
+        self.assertNotIn('UBSAN_OPTIONS', host['env'])
+
+    def test_independent_phases_keep_unique_failure_diagnostics(self):
+        host = self.workflow['jobs']['host']
+        self.assertNotIn('needs', host)
+        upload = next(s for s in host['steps'] if s.get('uses') == 'actions/upload-artifact@v4')
+        self.assertEqual(upload['if'], 'always()')
+        template = upload['with']['name']
+        names = [template.replace('${{ matrix.compiler }}', r['compiler']).replace('${{ matrix.phase }}', r['phase'])
+                 for r in host['strategy']['matrix']['include']]
+        self.assertEqual(len(set(names)), 4)
+        for path in ('build/collision-ci/', 'build/host/Testing/Temporary/LastTest.log',
+                     'build/sanitize/Testing/Temporary/LastTest.log', 'build/host/python-workers/'):
+            self.assertIn(path, upload['with']['path'])
 
 
 if __name__ == '__main__':

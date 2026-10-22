@@ -1,0 +1,6 @@
+{
+  "tests/test_emulator_opening_controls.py": "2f2eec8999a99f020410f8ebdd7a271a2a681f8f8ea777010686c3520e6310eb",
+  "tests/test_emulator_semantics.py": "bae319a47d6c5f781fb926b7aa5b3ce1d0d2b8721972938bcec4b642f659d851",
+  "tests/emulator/opening-field-exit.json": "cfa8349385fddbb1afb61ec55098ac21b9f4902b8262ffd415decd0f3fbdb32c",
+  "tools/run_emulator_semantics.py": "9f3674bfb2880436b6a8ccedd79a5d242fb672ffe4a99d772b763fc9657f8baf"
+}

@@ -193,9 +193,20 @@ def extract():
     for row in reward_policy['items']:
         require(row['storage']==0,'Unreviewed field reward storage policy')
         acquisitions.append(dict(item_id=row['source'],doses=1,max_count=1,flag_id=row['winflag'],flag_policy=1))
+    from tools.catacombs_item_catalog import load as load_catalog,IR as catalog_ir,REVIEW as catalog_review,RECEIPT as catalog_receipt
+    catalog=load_catalog()
+    for row in catalog['entries']:
+        require(any(d['source']==row['source']and d['id']==row['id']for d in items['definitions']),
+                'Session catalog identity absent from checked Items')
+        for grant in row['grants']:
+            acquisitions.append(dict(item_id=row['source'],doses=row['document'].get('doses',1),max_count=1,
+                                     flag_id=grant['flag'],flag_policy=2))
+    required.extend([str(p).replace('\\','/')for p in (catalog_ir,catalog_review,catalog_receipt)])
     for policy in storage['policies']:
         require(policy['source_item'] in source_initial or any(x['item_id']==policy['source_item'] for x in acquisitions),'Unknown session storage policy')
         storage_policies.append(dict(item_id=policy['source_item'],doses=policy['doses'],total_count=policy['max_count'],required=policy['source_item'] in source_initial,boosts=equipment.get(policy['definition_id'],[0]*7)))
+    require({p['item_id']for p in storage_policies}==source_initial|{p['item_id']for p in acquisitions},
+            'Session storage coverage differs from acquired items')
     leader=save['party'][0];require(save['party']==[battle['party']['id']],'Unsupported party/owner')
     character=dict(save[leader]);character.update(overrides[leader])
     require(character['status']==[] and 'permanent_boosts'not in character,'Unreviewed initial modifiers')
@@ -283,7 +294,7 @@ def extract():
     required.extend(['content/mayor-footsteps.json','tools/field_footsteps.py'])
     require(defaults['run_sound']==steps['default'],'Session/source Player initial run sound differs')
     run_sounds=list(dict.fromkeys([defaults['run_sound']]+[sound['name']for sound in steps['sounds']]))
-    result=dict(schema=11,run_sounds=run_sounds,field_encounters=[b['enemy']for b in field_story['encounters']],skill_acquisitions=skill_acquisitions,skill_order=skill_order,storage_capacity=storage['parameters']['StorageCapacity'],storage_policies=storage_policies,acquisitions=acquisitions,key_acquisitions=key_acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; source normal/object/key acquisitions and story-learned skills; complete inactive startup naming roster; connected native house rooms and checked Podunk encounter rewards/flags; saves return through House authority; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
+    result=dict(schema=12,run_sounds=run_sounds,field_encounters=[b['enemy']for b in field_story['encounters']],skill_acquisitions=skill_acquisitions,skill_order=skill_order,storage_capacity=storage['parameters']['StorageCapacity'],storage_policies=storage_policies,acquisitions=acquisitions,key_acquisitions=key_acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; source normal/object/key acquisitions and story-learned skills; distinct reviewed catacombs source flags may grant the same item identity; complete inactive startup naming roster; connected native house rooms and checked Podunk encounter rewards/flags; saves return through House authority; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
 
     field_items=[]
     inventory_source=ex.text('Scripts/global/Inventory.gd')
@@ -319,7 +330,7 @@ def encode_snapshot(s,c):
     return raw+struct.pack('<I',zlib.crc32(raw))
 
 def encode(r):
-    require(type(r['schema'])is int and r['schema'] in (1,2,3,4,5,6,7,8,9,10,11),'Unsupported native session schema')
+    require(type(r['schema'])is int and r['schema'] in (1,2,3,4,5,6,7,8,9,10,11,12),'Unsupported native session schema')
     w=Writer();c=r['compatibility'];w.put('3I',c['content_family'],c['content_revision'],c['rules_revision']);template=encode_snapshot(r['defaults'],c);w.put('I',len(template));w.raw.extend(template)
     w.put('I',len(r['levels']))
     for level in r['levels']:w.put('3I7i',level['level'],level['minimum_exp'],level['next_exp'],*level['stats']);w.array(level['skills'],w.text)

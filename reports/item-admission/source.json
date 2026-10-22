@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "baseline_main": "eba2840b0dac830c55f24c712036e9996ff62817",
+  "scope": "Seven production item definitions, descriptions, storage, Session12, Menus3 and source eat PCM; catacombs scene is not wired.",
+  "original_consumption_cases": 240,
+  "original_sort_comparisons": 98,
+  "original_sort_inventories": 584,
+  "original_breakable_reruns": 2,
+  "original_breakable_observations_each": 282,
+  "cpp_checks": {
+    "item_consumption": 852867,
+    "field_menus": 414,
+    "catacombs_item_session": 29855,
+    "native_session": 21864,
+    "item_details": 6223,
+    "catacombs_item_details": 6204,
+    "catacombs_storage": 102901,
+    "storage_runtime": 5876
+  },
+  "total_cpp_checks": 1026204,
+  "python_tests": {
+    "append_audio_assets.stderr.log": 8,
+    "breakables.stderr.log": 9,
+    "catacombs_item_catalog.stderr.log": 8,
+    "catacombs_item_details.stderr.log": 8,
+    "catacombs_storage.stderr.log": 5,
+    "dropped_breakables.stderr.log": 6,
+    "field_audio.stderr.log": 21,
+    "field_equipment.stderr.log": 17,
+    "field_menus.stderr.log": 4,
+    "field_prop_audio.stderr.log": 4,
+    "item_consume_audio.stderr.log": 3,
+    "item_consumption.stderr.log": 6,
+    "item_details.stderr.log": 34,
+    "native_items.stderr.log": 12,
+    "native_session.stderr.log": 15,
+    "native_storage.stderr.log": 42,
+    "new_game_assets.stderr.log": 7,
+    "storage_dialogue.stderr.log": 4
+  },
+  "total_python_tests": 213,
+  "targeted_core_modules": 7,
+  "reused_archive_members": 34,
+  "consumption_bad_observations": 11,
+  "sort_bad_observations": 5,
+  "configuration": {
+    "registered_tests": 385,
+    "new_required_tests": [
+      "catacombs_item_details",
+      "catacombs_item_session",
+      "catacombs_storage",
+      "catacombs_storage_bad_reference",
+      "item_consumption",
+      "item_consumption_bad_reference",
+      "prepare_catacombs_item_catalog",
+      "prepare_catacombs_item_details",
+      "prepare_catacombs_storage",
+      "prepare_item_consumption"
+    ],
+    "scope": "Actual MSVC configuration and discovery only; no MSVC compilation or CTest execution."
+  },
+  "source_stage": {
+    "step": "source-stage",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/stage_native_romfs.py",
+      "--verify-only"
+    ],
+    "returncode": 0,
+    "seconds": 85.14100000006147
+  },
+  "protected_unrelated_assets_unchanged": true,
+  "resource_files": {
+    "romfs/ui/opening.encitems": {
+      "bytes": 6904,
+      "sha256": "463693ae8ce00fa9037f6b034a259bb0bf30c78a51c4b5bd4a8969337510e175"
+    },
+    "romfs/ui/opening.encdetails": {
+      "bytes": 3048,
+      "sha256": "66d9c91352c4cc19162c0c9c7aa6a5775635ae3b399bb16b31c2eb5314be4c47"
+    },
+    "romfs/ui/opening.encstorage": {
+      "bytes": 5784,
+      "sha256": "87f8f9e90d711ccec223f392c01f2a39b6662ee09b48e6ed3382e8ad3f5e96bb"
+    },
+    "romfs/session/opening.encsession": {
+      "bytes": 10787,
+      "sha256": "c40c2647777a5b4ad89f1d02e5da63bf08bcb7ddd460c3a0a641542f9e8ec4ae"
+    },
+    "romfs/ui/field.encmenus": {
+      "bytes": 818651,
+      "sha256": "a1fb2579c52af741fff62c9a8fb4299da9f1425dd44d664571cf896f8465b0d8"
+    },
+    "romfs/sound/banks/opening.encaudio": {
+      "bytes": 10591,
+      "sha256": "1f665a7d4a0df7f25160cec28fa1e91e425d8758473ab32226821aa7e0c0accb"
+    },
+    "romfs/localization/localization.enclocale": {
+      "bytes": 3341414,
+      "sha256": "5148967766a676d14082654512523be493027f0ced2f373f1f725b30e30059c4"
+    },
+    "romfs/system/native.encresources": {
+      "bytes": 3295,
+      "sha256": "a7a2ad0f67afa623eaa59bac8ffb4146d3f8e535e11b04ec6b89e1f6e89e6dd7"
+    },
+    "romfs/graphics/ui/item-details/poisoned-status.t3x": {
+      "bytes": 1045,
+      "sha256": "7e3f0684a1a56183557a881331036548e968cae1dbfde42acd2bca384d52affe"
+    }
+  },
+  "unverified": [
+    "Complete make test / GCC+Clang / sanitizer matrix",
+    "Current genuine 3DSX/CIA",
+    "Current emulator game",
+    "Ordinary catacombs scene, pickup and party flow",
+    "GPU and PCM audibility",
+    "Old/New 3DS hardware"
+  ]
+}

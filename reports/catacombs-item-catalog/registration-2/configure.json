@@ -1,0 +1,14 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "D:\\GameDev\\3DS\\mother-encore-3ds",
+    "-B",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\catalog-registration-2\\cmake",
+    "-DENCORE_REGENERATE_NATIVE_CONTENT=OFF",
+    "-DBUILD_TESTING=ON",
+    "-DPython3_EXECUTABLE=C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"
+  ],
+  "returncode": 0,
+  "seconds": 8.375
+}

@@ -48,7 +48,7 @@ def rect(props):
     x,y=props.get('margin_left',0),props.get('margin_top',0)
     return [x,y,props.get('margin_right',0)-x,props.get('margin_bottom',0)-y]
 
-def build(root=ROOT):
+def build(root=ROOT,native_items=None):
     ex=Extractor(root);script=ex.text(SCRIPT);scene=ex.text(SCENE)
     inventory=ex.text('Scripts/global/Inventory.gd');itemscript=ex.text('Scripts/global/Item.gd')
     listscript=ex.text('Scripts/UI/Reusables/ItemListMenu.gd')
@@ -78,8 +78,16 @@ def build(root=ROOT):
     require('const LINES_PER_PAGE = 6' in listscript and 'if loop_around:' in listscript,'Storage list page contract changed')
     require('get_item_or_skill_articles(item_or_skill)' in text and 'article_str.split(",")' in text,'Storage item/article interpolation changed')
     menus=table(ex,'Translations/TranslatedText/menus - sheet.csv');items=table(ex,'Translations/TranslatedText/items - sheet.csv')
-    native_items=read_json(Path(root)/'content/native-items.json');defs=native_items['definitions']
-    require([(d['id'],d['source']) for d in defs]==[(1,'BaseballCap'),(2,'AsthmaSpray'),(3,'BatPlastic'),(4,'FleaBag')],'Storage unsupported item definitions')
+    if native_items is None:native_items=read_json(Path(root)/'content/native-items.json')
+    defs=native_items['definitions']
+    prefix=[(1,'BaseballCap'),(2,'AsthmaSpray'),(3,'BatPlastic'),(4,'FleaBag')]
+    extended=len(defs)>len(prefix);limits={}
+    if extended:
+        from tools.catacombs_item_catalog import load as load_catalog
+        catalog=load_catalog();expected=prefix+[(d['id'],d['source'])for d in catalog['entries']]
+        limits={d['source']:len(d['grants'])for d in catalog['entries']}
+    else:expected=prefix
+    require([(d['id'],d['source'])for d in defs]==expected,'Storage unsupported item definitions')
     policies=[];equipment=[];translations={};articles=[]
     for d in defs:
         doc=ex.yaml('Data/Items/'+d['source']+'.yaml')
@@ -97,12 +105,27 @@ def build(root=ROOT):
         elif doc['actions']==[{'function':'equip'}]:
             require((doc['can_use'],doc['slot']) in ((['ninten'],'other'),(['ninten','pippi'],'weapon')),'Storage equipment ownership/slot changed')
             score=200000+10000*({'other':1,'weapon':4}[doc['slot']])+total
+        elif doc.get('HPrecover',0)>0:
+            require(doc.get('PPrecover',0)==0 and not any(boosts)
+                    and len(doc['actions'])==1 and doc['actions'][0]['function']=='consume'
+                    and 'score += SCORE_CAT_HP_RECOVER'in inventory and 'score += item_data["HPrecover"]'in inventory,
+                    'Unreviewed Storage food sorting category')
+            score=1000000+doc['HPrecover']
         else:raise ValueError('Unreviewed Storage sorting category')
-        policies.append(dict(definition_id=d['id'],source_item=d['source'],doses=doc.get('doses',1),max_count=1,sort_rank_en=score,sort_rank_zh=score))
+        policies.append(dict(definition_id=d['id'],source_item=d['source'],doses=doc.get('doses',1),max_count=limits.get(d['source'],1),sort_rank_en=score,sort_rank_zh=score))
         equipment.append(dict(definition_id=d['id'],boosts=boosts))
         translations[d['source']]={lang:{k:items[doc[k]][col] for k in ('name','sorting_name','article')} for lang,col in [('en','en'),('zh_Hans_CN','zh_CN')]}
         articles.append({lang:translations[d['source']][lang]['article'].split(',')[1] for lang in ('en','zh_Hans_CN')})
-    require(articles[0]==articles[1],'Storage prompts require per-item article expansion')
+    require(all(a==articles[0]for a in articles),'Storage prompts require per-item article expansion')
+    if extended:
+        # Storage holds unequipped items. Collapse the exact source comparator
+        # (descending category/value, ascending translated sorting_name) into
+        # unique per-locale ranks; no translated names enter native code.
+        for locale,key in [('en','sort_rank_en'),('zh_Hans_CN','sort_rank_zh')]:
+            values=[(-p[key],translations[p['source_item']][locale]['sorting_name'])for p in policies]
+            require(len(set(values))==len(values),'Unreviewed equal-name Storage sort tie')
+            order=sorted(range(len(policies)),key=lambda i:values[i])
+            for index,position in enumerate(order):policies[position][key]=len(order)-index
     binding={}
     pairs=[('Title','MENU_TITLE_STORAGE'),('Unequip','TRANSACTION_ASK_UNEQUIP'),('Equip','SHOP_ASK_EQUIP'),('StorageFull','TRANSACTION_STORAGE_FULL'),('InventoryFull','TRANSACTION_FULL'),('Yes','MENU_YES'),('No','MENU_NO')]
     for prefix,key in pairs:
@@ -168,7 +191,11 @@ def build(root=ROOT):
             # Parent provides checked pane ownership. Rectangles remain absolute
             # source viewport coordinates; renderer must not add the parent rect.
             l['parent']=1 if l['rect'][0]<160 else 2
-    return dict(schema=1,kind='encore.native-storage.source-ir',commit=PIN,scope='Original ordinary Minnie Storage; singleton Ninten; BaseballCap and acquired AsthmaSpray; transfer/equipment prompts/persistent UID; rich description and god storage unsupported',sources=dict(sorted(ex.sources.items())),dependencies={'content/native-items.json':digest(Path(root)/'content/native-items.json')},parameters=params,bindings=binding,policies=policies,equipment=equipment,translations=translations,resources=resources,layouts=layouts)
+    dependencies={'content/native-items.json':digest(Path(root)/'content/native-items.json')}
+    if extended:
+        from tools.catacombs_item_catalog import IR as catalog_ir,REVIEW as catalog_review,RECEIPT as catalog_receipt
+        dependencies.update({str(path).replace('\\','/'):digest(Path(root)/path)for path in(catalog_ir,catalog_review,catalog_receipt)})
+    return dict(schema=1,kind='encore.native-storage.source-ir',commit=PIN,scope='Original ordinary Minnie Storage; singleton Ninten; checked normal item catalog and source grant totals; transfer/equipment prompts/persistent UID; independent ItemDetails presentations; no item-use action or god storage',sources=dict(sorted(ex.sources.items())),dependencies=dependencies,parameters=params,bindings=binding,policies=policies,equipment=equipment,translations=translations,resources=resources,layouts=layouts)
 
 def recipe(ir):
     return dict(schema=1,kind='encore.storage.asset-recipe',commit=PIN,sources=ir['sources'],resources=ir['resources'],licence_review='Pinned upstream LICENSE permits game-related forks/modifications; original art remains under upstream terms, not MIT.')
@@ -185,13 +212,14 @@ def load(root=ROOT):
     require(review['schema']==1 and review['commit']==PIN and review['ir_sha256']==digest(Path(root)/IR) and review['sources']==ir['sources'] and review['scope']==ir['scope'],'Storage review mismatch')
     require(read_json(Path(root)/RECIPE)==recipe(ir),'Unreviewed Storage texture recipe');return ir
 
-def compile_assets(root,tex3ds):
+def compile_assets(root,tex3ds,tex3ds_wrapper=None):
     from PIL import Image
     root=Path(root);ir=load(root);outputs={};tmp=root/'build/storage-assets';tmp.mkdir(parents=True,exist_ok=True)
     require(Path(tex3ds).is_file(),'Need genuine tex3ds')
+    command=[sys.executable,str(tex3ds_wrapper)]if tex3ds_wrapper is not None else[str(tex3ds)]
     for row in ir['resources']:
         source=root/'upstream/MOTHER-Encore'/row['source'];target=root/'romfs'/row['output'];target.parent.mkdir(parents=True,exist_ok=True)
-        args=[str(tex3ds),'-f','rgba8','-z','none','-o',str(target)]
+        args=command+['-f','rgba8','-z','none','-o',str(target)]
         size=row['size']
         if row['crop']:
             x,y,w,h=row['crop'];require(x>=0 and y>=0 and w>0 and h>0 and x+w<=size[0] and y+h<=size[1],'Storage crop')
@@ -214,10 +242,10 @@ def verify_receipt(root=ROOT):
     return r
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['extract','compile','verify']);p.add_argument('--tex3ds',type=Path);args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['extract','compile','verify']);p.add_argument('--tex3ds',type=Path);p.add_argument('--tex3ds-wrapper',type=Path);args=p.parse_args()
     try:
         if args.action=='extract':extract()
-        elif args.action=='compile':compile_assets(ROOT,args.tex3ds)
+        elif args.action=='compile':compile_assets(ROOT,args.tex3ds,args.tex3ds_wrapper)
         else:verify_receipt()
         print('Storage source/assets '+args.action+': admitted')
     except (ValueError,KeyError,TypeError,OSError) as error:

@@ -1,0 +1,40 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 142, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\stage_native_romfs.py", line 41, in main
+    files.update(item_details_files(source))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\item_details.py", line 477, in stage_files
+    source = Path(source); ir = load(ROOT); receipt = verify_receipt(ir, ROOT, source)
+                                ^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\item_details.py", line 200, in load
+    require(canonical(ir) == canonical(build(root)), 'Stale/unreviewed item details IR')
+                                       ^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\item_details.py", line 105, in build
+    expected = prefix + [(d['id'], d['source']) for d in load_catalog()['entries']]
+                                                         ^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_item_catalog.py", line 118, in load
+    require(canonical(candidate) == canonical(derive()), 'Unreviewed catalog data or source binding')
+                                              ^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_item_catalog.py", line 53, in derive
+    recipe, model, proof = dropped.source()
+                           ^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dropped_items.py", line 244, in source
+    model, proof = build_model()
+                   ^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dropped_items.py", line 158, in build_model
+    model, proof = derive()
+                   ^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\dropped_items.py", line 87, in derive
+    recipe, breaks, break_proof = b.source()
+                                  ^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_breakables.py", line 93, in source
+    p,s=read(file);nodes=instantiate(s.doc,p['paths']['scene']);by={n.path:n for n in nodes};definitions=[family(v,p,s)for v in p['families']];families={v['source']:v['id']for v in definitions};require(len(families)==2 and len({v['id']for v in definitions})==2,'Breakable duplicate source families');rules=policy(p,s);actual=[n for n in nodes if n.script==p['paths']['script']];require([n.path for n in actual]==[v['path']for v in p['owners']],'Breakable exact source owner order');owners=[];ids=set();targets=[];target_ids=set();parents=set()
+        ^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\catacombs_breakables.py", line 42, in read
+    require(p['audio_recipe']=='content/native-audio.json'and hashlib.sha256((ROOT/p['audio_recipe']).read_bytes()).hexdigest()==p['audio_recipe_sha256'],'Breakable shared audio source changed')
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Breakable shared audio source changed

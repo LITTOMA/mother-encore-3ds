@@ -1,0 +1,54 @@
+{
+  "scope": "Historical generated source IR and exact binary fingerprints for legacy reader tests; not current release authority",
+  "source": "0b63d7c0f46d7f620415de718537e5864ef36540",
+  "files": {
+    "content/native-items.json": {
+      "fixture": "tests/fixtures/item-admission-legacy/native-items.json",
+      "sha256": "e3e432d9292f1b74f565a7aca71f41a15cd7397ccd9323700e6a919aa5219986"
+    },
+    "content/native-item-details.json": {
+      "fixture": "tests/fixtures/item-admission-legacy/native-item-details.json",
+      "sha256": "0de217ac2d25af34bd8353b91ff57e79d49b5aa42f65f9f52722ddb914817fd5"
+    },
+    "content/asset-receipts/graphics/ui/item-details/source.json": {
+      "fixture": "tests/fixtures/item-admission-legacy/details-texture-receipt.json",
+      "sha256": "ce2ce023ec3c8399abdd2a8b5e7c7f330ee0d85e183d496e5fb0b5620763fc3c"
+    },
+    "content/native-session.json": {
+      "fixture": "tests/fixtures/item-admission-legacy/native-session.json",
+      "sha256": "939c819a7b42b98c542d6c9e5e4a29054cc30c6915535fe33ef54a3e56d47c32"
+    },
+    "content/native-storage.json": {
+      "fixture": "tests/fixtures/item-admission-legacy/native-storage.json",
+      "sha256": "15c7144c455736ed3aebc6c96c16f9959a3362f93aec26e688236cc88548ab88"
+    },
+    "content/asset-receipts/graphics/ui/storage/source.json": {
+      "fixture": "tests/fixtures/item-admission-legacy/storage-texture-receipt.json",
+      "sha256": "41a71b0c3c8bbde08d0ae5092189eeb4badd88553151bdae77e2a8a14963932f"
+    },
+    "content/native-field-menus.json": {
+      "fixture": "tests/fixtures/item-admission-legacy/native-field-menus.json",
+      "sha256": "b4a30fb197fc0e95e3aac7ba24513c0a12f866462c92d8ac9459a570c417783c"
+    },
+    "romfs/ui/opening.encitems": {
+      "bytes": 6316,
+      "sha256": "0223a8296dd74b3ed0b245996611b78e52d414e1d5d6cafd16e96dc71ae0afe0"
+    },
+    "romfs/ui/opening.encdetails": {
+      "bytes": 1968,
+      "sha256": "87738bef6ba499ca23dc051129cbe43f60c835021125e3edc096b6fb6d422e3a"
+    },
+    "romfs/session/opening.encsession": {
+      "bytes": 10261,
+      "sha256": "2befd11854ae5a496cfe46fcc65be9e48a2d07915dcd0e03af09456e32ebd3d2"
+    },
+    "romfs/ui/opening.encstorage": {
+      "bytes": 5592,
+      "sha256": "1a698c7545390a203217599830133df4498a0dcc4f8ea4ea99ff37eed80ead5f"
+    },
+    "romfs/ui/field.encmenus": {
+      "bytes": 817237,
+      "sha256": "15de6a154c38b0075337d1843a6bbe7a4a94d6efdb67b7db27e530b4b6436870"
+    }
+  }
+}

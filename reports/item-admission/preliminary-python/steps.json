@@ -1,0 +1,254 @@
+[
+  {
+    "module": "item_consumption",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_item_consumption",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 3.922000000020489
+  },
+  {
+    "module": "catacombs_item_details",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_catacombs_item_details",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 0.28100000007543713
+  },
+  {
+    "module": "item_consume_audio",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_item_consume_audio",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 6.672000000020489
+  },
+  {
+    "module": "catacombs_item_catalog",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_catacombs_item_catalog",
+      "-v"
+    ],
+    "returncode": 1,
+    "seconds": 10.405999999959022
+  },
+  {
+    "module": "item_details",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_item_details",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 7.296999999904074
+  },
+  {
+    "module": "native_storage",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_native_storage",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 3.2660000000614673
+  },
+  {
+    "module": "catacombs_storage",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_catacombs_storage",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 9.640999999945052
+  },
+  {
+    "module": "storage_dialogue",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_storage_dialogue",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 7.89000000001397
+  },
+  {
+    "module": "field_menus",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_field_menus",
+      "-v"
+    ],
+    "returncode": 1,
+    "seconds": 7.233999999938533
+  },
+  {
+    "module": "field_equipment",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_field_equipment",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 9.625
+  },
+  {
+    "module": "append_audio_assets",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_append_audio_assets",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 0.43700000003445894
+  },
+  {
+    "module": "field_prop_audio",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_field_prop_audio",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 5.938000000081956
+  },
+  {
+    "module": "breakables",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_breakables",
+      "-v"
+    ],
+    "returncode": 1,
+    "seconds": 11.108999999938533
+  },
+  {
+    "module": "dropped_breakables",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_dropped_breakables",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 8.65700000000652
+  },
+  {
+    "module": "native_items",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_native_items",
+      "-v"
+    ],
+    "returncode": 1,
+    "seconds": 4.125
+  },
+  {
+    "module": "field_audio",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_field_audio",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 50.313000000081956
+  },
+  {
+    "module": "native_session",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_native_session",
+      "-v"
+    ],
+    "returncode": 1,
+    "seconds": 64.76500000001397
+  },
+  {
+    "module": "new_game_assets",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_new_game_assets",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 178.21900000004098
+  }
+]

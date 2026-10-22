@@ -1,0 +1,257 @@
+{
+  "schema": 1,
+  "kind": "encore.catacombs-coin-scene.reviewed-source",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": 4,
+  "source_sha256": "0407019b22d3a9b6d4503e9aa78c39e20fd7b2d62bbb9a41153d86445a88cb3c",
+  "breakable_recipe_sha256": "1ff3e69e67389ed49d89ae37ab6c266a8a742712a4a9d738dd3aa202ecda1f95",
+  "coin_recipe_sha256": "e683f25dc2b2a075a25c969f656c5394e4e54523e5358ba0ab624aa27121e2c2",
+  "instances": [
+    {
+      "id": 1411959276,
+      "owner": 3611267201,
+      "path": "Objects/Barrel2/CoinSpawner"
+    },
+    {
+      "id": 950130374,
+      "owner": 3644822439,
+      "path": "Objects/Barrel4/CoinSpawner"
+    },
+    {
+      "id": 3121302576,
+      "owner": 3678377677,
+      "path": "Objects/Barrel6/CoinSpawner"
+    },
+    {
+      "id": 3789802607,
+      "owner": 3594489582,
+      "path": "Objects/Barrel3/CoinSpawner"
+    },
+    {
+      "id": 401345633,
+      "owner": 3628044820,
+      "path": "Objects/Barrel5/CoinSpawner"
+    },
+    {
+      "id": 1446977701,
+      "owner": 3426713392,
+      "path": "Objects/Barrel9/CoinSpawner"
+    },
+    {
+      "id": 141182799,
+      "owner": 403265384,
+      "path": "Objects/Barrel10/CoinSpawner"
+    },
+    {
+      "id": 524044492,
+      "owner": 420043003,
+      "path": "Objects/Barrel11/CoinSpawner"
+    },
+    {
+      "id": 1920350893,
+      "owner": 436820622,
+      "path": "Objects/Barrel12/CoinSpawner"
+    },
+    {
+      "id": 3977319234,
+      "owner": 453598241,
+      "path": "Objects/Barrel13/CoinSpawner"
+    },
+    {
+      "id": 69883811,
+      "owner": 470375860,
+      "path": "Objects/Barrel14/CoinSpawner"
+    },
+    {
+      "id": 121325200,
+      "owner": 487153479,
+      "path": "Objects/Barrel15/CoinSpawner"
+    },
+    {
+      "id": 1899343653,
+      "owner": 2635424186,
+      "path": "Objects/Barrel49/CoinSpawner"
+    },
+    {
+      "id": 285695041,
+      "owner": 503931098,
+      "path": "Objects/Barrel16/CoinSpawner"
+    },
+    {
+      "id": 1864325228,
+      "owner": 2484425615,
+      "path": "Objects/Barrel42/CoinSpawner"
+    },
+    {
+      "id": 4242168559,
+      "owner": 2467647996,
+      "path": "Objects/Barrel43/CoinSpawner"
+    },
+    {
+      "id": 1402496326,
+      "owner": 2450870377,
+      "path": "Objects/Barrel44/CoinSpawner"
+    },
+    {
+      "id": 853711585,
+      "owner": 2434092758,
+      "path": "Objects/Barrel45/CoinSpawner"
+    },
+    {
+      "id": 3573668528,
+      "owner": 2417315139,
+      "path": "Objects/Barrel46/CoinSpawner"
+    },
+    {
+      "id": 2061898947,
+      "owner": 2400537520,
+      "path": "Objects/Barrel47/CoinSpawner"
+    },
+    {
+      "id": 19991078,
+      "owner": 520708717,
+      "path": "Objects/Barrel17/CoinSpawner"
+    },
+    {
+      "id": 2760501639,
+      "owner": 269044432,
+      "path": "Objects/Barrel18/CoinSpawner"
+    },
+    {
+      "id": 1317696644,
+      "owner": 285822051,
+      "path": "Objects/Barrel19/CoinSpawner"
+    },
+    {
+      "id": 3088418004,
+      "owner": 2316355235,
+      "path": "Objects/Barrel20/CoinSpawner"
+    },
+    {
+      "id": 2529378775,
+      "owner": 2299577616,
+      "path": "Objects/Barrel21/CoinSpawner"
+    },
+    {
+      "id": 2842295898,
+      "owner": 2652201805,
+      "path": "Objects/Barrel48/CoinSpawner"
+    },
+    {
+      "id": 2232604731,
+      "owner": 2417168044,
+      "path": "Objects/Barrel50/CoinSpawner"
+    },
+    {
+      "id": 940862696,
+      "owner": 2433945663,
+      "path": "Objects/Barrel51/CoinSpawner"
+    },
+    {
+      "id": 963105625,
+      "owner": 2450723282,
+      "path": "Objects/Barrel52/CoinSpawner"
+    },
+    {
+      "id": 3083212938,
+      "owner": 2349910473,
+      "path": "Objects/Barrel22/CoinSpawner"
+    },
+    {
+      "id": 1480553877,
+      "owner": 2333132854,
+      "path": "Objects/Barrel23/CoinSpawner"
+    },
+    {
+      "id": 2194343288,
+      "owner": 2383465711,
+      "path": "Objects/Barrel24/CoinSpawner"
+    },
+    {
+      "id": 476109131,
+      "owner": 2366688092,
+      "path": "Objects/Barrel25/CoinSpawner"
+    },
+    {
+      "id": 950186894,
+      "owner": 2417020949,
+      "path": "Objects/Barrel26/CoinSpawner"
+    },
+    {
+      "id": 389624105,
+      "owner": 2400243330,
+      "path": "Objects/Barrel27/CoinSpawner"
+    },
+    {
+      "id": 3369715208,
+      "owner": 521002907,
+      "path": "Objects/Barrel37/CoinSpawner"
+    },
+    {
+      "id": 2457594893,
+      "owner": 470670050,
+      "path": "Objects/Barrel38/CoinSpawner"
+    },
+    {
+      "id": 2549182300,
+      "owner": 2450576187,
+      "path": "Objects/Barrel28/CoinSpawner"
+    },
+    {
+      "id": 1611600415,
+      "owner": 2433798568,
+      "path": "Objects/Barrel29/CoinSpawner"
+    },
+    {
+      "id": 3521222373,
+      "owner": 604891002,
+      "path": "Objects/Barrel30/CoinSpawner"
+    },
+    {
+      "id": 2318754586,
+      "owner": 621668621,
+      "path": "Objects/Barrel31/CoinSpawner"
+    },
+    {
+      "id": 3607609703,
+      "owner": 571335764,
+      "path": "Objects/Barrel32/CoinSpawner"
+    },
+    {
+      "id": 2118546788,
+      "owner": 588113383,
+      "path": "Objects/Barrel33/CoinSpawner"
+    },
+    {
+      "id": 1301618169,
+      "owner": 537780526,
+      "path": "Objects/Barrel34/CoinSpawner"
+    },
+    {
+      "id": 1960717342,
+      "owner": 554558145,
+      "path": "Objects/Barrel35/CoinSpawner"
+    },
+    {
+      "id": 803187291,
+      "owner": 504225288,
+      "path": "Objects/Barrel36/CoinSpawner"
+    },
+    {
+      "id": 602373538,
+      "owner": 487447669,
+      "path": "Objects/Barrel39/CoinSpawner"
+    },
+    {
+      "id": 386593506,
+      "owner": 2517980853,
+      "path": "Objects/Barrel40/CoinSpawner"
+    },
+    {
+      "id": 2867636557,
+      "owner": 2501203234,
+      "path": "Objects/Barrel41/CoinSpawner"
+    }
+  ],
+  "scope": "Exactly the 49 original Catacombs barrel CoinSpawner instances and original Breakable owner identities, initial preorder and translated positions. The original Objects sink and Bottom2 reparent target both have identity transforms. Positions include the original (0,8) local offset. Initial binding only; actual dynamic tree processing, production effects, automatic contacts and full room admission remain separate consumers."
+}

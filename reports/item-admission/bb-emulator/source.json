@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "source_game": "bb743a4fee0c60ca9ffe2e794e46f2b94ed331e0",
+  "game_sha256": "a51308775df4f125a0d09dfa434079a619733bf98298ce19f944cb89383a24cf",
+  "actual_preliminary": "Run1 passed90,run2 failed61 at one-frame doll_face_left. Failure preserved; sampler cause is an inference, not proven.",
+  "input_only_change": "Bound at most8 existing1-frame ordinary LEFT pulses with4-frame releases until the unchanged direction condition is observed.",
+  "observation_expectations_unchanged": true,
+  "reference_unchanged": true,
+  "projection_unchanged": true,
+  "position_tolerance_unchanged": true,
+  "actual_accepted_repetitions": 2,
+  "checkpoints_each": 90,
+  "position_tolerance": 0,
+  "position_differences": [
+    {
+      "run": 2,
+      "differences": []
+    }
+  ],
+  "original_cases": [
+    "pause_select_close",
+    "pause_cancel_close",
+    "psi_unlearned",
+    "psi_back"
+  ],
+  "profiles_removed_after_owned_process_stopped": true,
+  "game_program_or_data_changed": false,
+  "scope": "Actual ordinary inputs with no injected save/flags/RNG/inventory. Existing opening and specified DSP checks only; not new catacombs gameplay, perceptual audio or hardware."
+}

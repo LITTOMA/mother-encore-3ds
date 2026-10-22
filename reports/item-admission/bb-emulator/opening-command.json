@@ -1,0 +1,26 @@
+{
+  "command": [
+    "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\run_current_opening.py",
+    "--emulator",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\azahar-cdb\\bin\\Release\\azahar.exe",
+    "--game",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-bb-official\\verified-artifact\\3ds\\encore-native\\encore-native.3dsx",
+    "--receipt",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-admission-bb-official\\verified-artifact\\build-receipt.json",
+    "--scenario",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\tests\\emulator\\opening-field-exit.json",
+    "--original-reference",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\emulator-regression\\field-menu-old-regression\\reference.json",
+    "--out",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\emulator-regression\\item-admission-bb-opening-1",
+    "--repetitions",
+    "2",
+    "--dsp-component",
+    "C:/Users/litto/AppData/Roaming/Azahar/sdmc/3ds/dspfirm.cdc",
+    "--require-audio"
+  ],
+  "scope": "Two ordinary fresh cold new games, original90 expectations unchanged. No save, memory, RNG, flag or inventory injection. Current new-menu resources checked; formal catacombs, GPU, perceptual audio and hardware remain unverified."
+}

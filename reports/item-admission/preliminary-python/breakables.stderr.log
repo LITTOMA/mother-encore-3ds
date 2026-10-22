@@ -1,0 +1,29 @@
+test_all_record_domains_and_stable_ownership (tests.test_breakables.BreakableTests.test_all_record_domains_and_stable_ownership) ... ok
+test_all_truncations_corruption_and_trailing (tests.test_breakables.BreakableTests.test_all_truncations_corruption_and_trailing) ... ok
+test_changed_recipe_pin_source_symbols_and_bindings (tests.test_breakables.BreakableTests.test_changed_recipe_pin_source_symbols_and_bindings) ... ok
+test_frozen_original_and_fixture (tests.test_breakables.BreakableTests.test_frozen_original_and_fixture) ... ERROR
+test_header_directory_versions_and_reserved (tests.test_breakables.BreakableTests.test_header_directory_versions_and_reserved) ... ok
+test_model_unknown_fields_and_types_reject (tests.test_breakables.BreakableTests.test_model_unknown_fields_and_types_reject) ... ok
+test_original_observer_scope_and_input_mapping (tests.test_breakables.BreakableTests.test_original_observer_scope_and_input_mapping) ... ok
+test_source_coverage_and_unchanged_nested_format (tests.test_breakables.BreakableTests.test_source_coverage_and_unchanged_nested_format) ... ok
+test_unknown_native_fields_and_receipts_reject (tests.test_breakables.BreakableTests.test_unknown_native_fields_and_receipts_reject) ... ok
+
+======================================================================
+ERROR: test_frozen_original_and_fixture (tests.test_breakables.BreakableTests.test_frozen_original_and_fixture)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\test_breakables.py", line 51, in test_frozen_original_and_fixture
+    review=json.loads(fixture.REVIEW.read_bytes());runs=[b.ROOT/v['path']for v in review['results']];self.assertEqual((runs[0]/'reference.json').read_bytes(),(runs[1]/'reference.json').read_bytes());doc=json.loads((runs[0]/'reference.json').read_bytes());self.assertEqual(len(doc['rows']),282);self.assertEqual(fixture.validate(doc,json.loads(self.files['input.json'])),doc);out=self.temporary()/'fixture';self.assertEqual(fixture.build(out),fixture.build(out));(out/'native.tsv').write_text('changed')
+                                                                                                                                                                                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_breakables.py", line 50, in build
+    review=json.loads(REVIEW.read_bytes(),object_pairs_hook=b.unique);b.fields(review,'schema source producer_sha256 native_producer_sha256 fixture_protocol_sha256 results mapping unverified','Breakable review');_,model,source=b.source();files,copied,expected=native.source();b.require(type(review['schema'])is int and review['schema']==1 and review['source']==source and review['producer_sha256']==hashlib.sha256(Path(b.__file__).read_bytes()).hexdigest()and review['native_producer_sha256']==hashlib.sha256(Path(native.__file__).read_bytes()).hexdigest()and review['fixture_protocol_sha256']==hashlib.sha256(Path(__file__).read_bytes()).hexdigest()and type(review['results'])is list and len(review['results'])==2,'Breakable reviewed source/producers');docs=[]
+                                                                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Breakable reviewed source/producers
+
+----------------------------------------------------------------------
+Ran 9 tests in 10.707s
+
+FAILED (errors=1)

@@ -1,0 +1,51 @@
+[
+  {
+    "step": "localization",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/localization_assets.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 3.8429999999934807
+  },
+  {
+    "step": "font-coverage",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/source_font_reuse.py",
+      "--base",
+      "0b63d7c0f46d7f620415de718537e5864ef36540"
+    ],
+    "returncode": 0,
+    "seconds": 1.4070000000065193
+  },
+  {
+    "step": "resource-catalog",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/resource_catalog.py",
+      "compile"
+    ],
+    "returncode": 0,
+    "seconds": 0.5620000000344589
+  },
+  {
+    "step": "source-stage",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/stage_native_romfs.py",
+      "--verify-only"
+    ],
+    "returncode": 1,
+    "seconds": 13.687999999965541
+  }
+]

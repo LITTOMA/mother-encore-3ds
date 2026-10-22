@@ -1,0 +1,1 @@
+Catalog storage failed at 67: !(input>>trailing)&&input.eof() ()

@@ -1,0 +1,14 @@
+[
+  {
+    "step": "source-stage",
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/stage_native_romfs.py",
+      "--verify-only"
+    ],
+    "returncode": 1,
+    "seconds": 35.53099999995902
+  }
+]

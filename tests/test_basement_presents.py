@@ -91,8 +91,11 @@ class BasementSourceTests(unittest.TestCase):
     def test_naming_dependency_extension_keeps_defaults_and_rejects_mutation(self):
         from tools import new_game_assets as n
         # Keep this historical 7 -> 8 -> 9 -> 10 admission case explicit;
-        # the independently reviewed run-sound append is tested separately.
-        field_target=copy.deepcopy(self.session);field_target['schema']=10;field_target.pop('run_sounds')
+        # Later run-sound and Catacombs item appends are tested separately.
+        # Use the frozen v11 prefix rather than relabeling current v12 data.
+        legacy=native_session.read(ROOT/'tests/fixtures/item-admission-legacy/native-session.json')
+        self.assertEqual(legacy['schema'],11)
+        field_target=copy.deepcopy(legacy);field_target['schema']=10;field_target.pop('run_sounds')
         current=copy.deepcopy(field_target)
         current['schema']=8;current.pop('field_encounters')
         current['acquisitions']=[x for x in current['acquisitions']if x['item_id']!='FleaBag']

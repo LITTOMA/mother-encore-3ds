@@ -1,0 +1,15 @@
+test_bat_capacity_warning_queues_original_animation_completion (tests.test_basement_presents.BasementSourceTests.test_bat_capacity_warning_queues_original_animation_completion) ... ok
+test_current_house_capacity_keeps_behavioral_rule_seven (tests.test_basement_presents.BasementSourceTests.test_current_house_capacity_keeps_behavioral_rule_seven) ... ok
+test_frozen_legacy_resource_fingerprints (tests.test_basement_presents.BasementSourceTests.test_frozen_legacy_resource_fingerprints) ... ok
+test_healing_skill_payloads_and_versions_fail_closed (tests.test_basement_presents.BasementSourceTests.test_healing_skill_payloads_and_versions_fail_closed) ... ok
+test_naming_dependency_extension_keeps_defaults_and_rejects_mutation (tests.test_basement_presents.BasementSourceTests.test_naming_dependency_extension_keeps_defaults_and_rejects_mutation) ... ok
+test_new_room_operands_fail_closed_and_old_prefix_is_unchanged (tests.test_basement_presents.BasementSourceTests.test_new_room_operands_fail_closed_and_old_prefix_is_unchanged) ... ok
+test_original_graph_learning_and_identity (tests.test_basement_presents.BasementSourceTests.test_original_graph_learning_and_identity) ... ok
+test_source_frame_mapping_and_original_menu_prompt (tests.test_basement_presents.BasementSourceTests.test_source_frame_mapping_and_original_menu_prompt) ... ok
+test_texture_reuse_rejects_recipe_converter_and_receipt_changes (tests.test_basement_presents.BasementSourceTests.test_texture_reuse_rejects_recipe_converter_and_receipt_changes) ... ok
+test_unknown_diary_keys_edges_actors_and_skills_fail_closed (tests.test_basement_presents.BasementSourceTests.test_unknown_diary_keys_edges_actors_and_skills_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.304s
+
+OK

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "negative_cases": [
+    "duplicate source flag",
+    "inconsistent doses for same identity",
+    "grant count beyond one source pickup",
+    "missing grouped storage policy",
+    "storage total below sum of source flags",
+    "storage total above sum of source flags",
+    "unsupported flag domain",
+    "malformed object flag path",
+    "legacy version rejects duplicate item identities",
+    "required policy cannot aggregate acquisitions",
+    "duplicate storage policy",
+    "missing field item policy",
+    "unknown next version",
+    "v12 mismatched capability"
+  ],
+  "sources": {
+    "tools/native_session.py": "dbdc62f053c21844330f0789263596236ae7555cf04bfb347586d69eca0ca590",
+    "tools/catacombs_item_catalog.py": "6f0cb22f3927334a746f419703f5a1391a392724ec82a64ab69c565db46796eb",
+    "tests/prepare_catacombs_item_catalog.py": "cd7d51545be4b34e3d21518249ad3f94a7186d3da0f0b21d3074783504d5c83b",
+    "content/catacombs-item-catalog.json": "9ab217b6a5281e18848a769f11ae8248064111a3aa6281a6275514859a35e315",
+    "tests/fixtures/item-admission-legacy/native-session.json": "939c819a7b42b98c542d6c9e5e4a29054cc30c6915535fe33ef54a3e56d47c32",
+    "tests/fixtures/item-admission-legacy/native-items.json": "e3e432d9292f1b74f565a7aca71f41a15cd7397ccd9323700e6a919aa5219986"
+  },
+  "files": {
+    "candidate.encitems": "463693ae8ce00fa9037f6b034a259bb0bf30c78a51c4b5bd4a8969337510e175",
+    "candidate.encsession": "c40c2647777a5b4ad89f1d02e5da63bf08bcb7ddd460c3a0a641542f9e8ec4ae",
+    "legacy12.encsession": "517d33ccf4b7c547c64c69148b87ab14c0321c80b6c2ccc41f4e30079c8e521c",
+    "legacy11.encsession": "2befd11854ae5a496cfe46fcc65be9e48a2d07915dcd0e03af09456e32ebd3d2",
+    "legacy.encitems": "0223a8296dd74b3ed0b245996611b78e52d414e1d5d6cafd16e96dc71ae0afe0",
+    "bad-0.encsession": "fdd58effe4691d916284ede3f04858db94182d0f0dc9a579e4926c3a1bb4087f",
+    "bad-1.encsession": "9b7416277dfc380147729f6e11dde0b77c45d10ac91ee61165fc1bd514c1f5f3",
+    "bad-2.encsession": "6e815cd2cb8b489c7caeefb92e39d696f10cb065c577a02b244c9869a2b6b78f",
+    "bad-3.encsession": "efb058459d6ba9ecbc505455b2a6b59ea8ebec3fddc5ada06aa5bfdd77177f9e",
+    "bad-4.encsession": "fc393a199884cc049a6fc35a3c481add11b65fcd83dd7c3dd21428eb6a263e7e",
+    "bad-5.encsession": "15020c116f4aa142903b6a58ef9d06e9bc5eecb2c991f46dd7fe91432579d910",
+    "bad-6.encsession": "86edef059a34975a87ad166bd5d667c359e6f00a56f8e8d8d65a6cc126d2c25f",
+    "bad-7.encsession": "98ae6ba4b60a318ee0a59e6e282e4c0bb1958131e6252ae952155ee41a8885b1",
+    "bad-8.encsession": "935a04569ca6e64c0c4fb9e047c59fd9e020be7a6afa035bb8a6dfc9dd911ef1",
+    "bad-9.encsession": "c40c28f71c961e04a73fddd26e170b01081dc045962ef5c9bbc9ed39ed1d3172",
+    "bad-10.encsession": "4aee96132bd800e6d82e49833b20f58549e16d11fe7018e142403a8c6ad95b1c",
+    "bad-11.encsession": "3e754ee546d543db42116f8706e25b50dbdcfd300cfee5007562eb75a62d5211",
+    "bad-12.encsession": "2e51772ae0b4101db8e85a5a6ef1bfbe4caa3d09b1405e98599f84af7a049cf1",
+    "bad-13.encsession": "ec201db5fed725aecffe640ca42fa82dca4e65e4f2271dee5463db86a12924cc",
+    "negative-count.txt": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61"
+  }
+}

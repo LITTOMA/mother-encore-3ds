@@ -1,0 +1,11 @@
+test_actual_original_outcomes_and_idempotence (tests.test_dropped_breakables.DroppedBreakableTests.test_actual_original_outcomes_and_idempotence) ... ok
+test_fixture_cache_rejects_unowned_paths_and_partial_changes (tests.test_dropped_breakables.DroppedBreakableTests.test_fixture_cache_rejects_unowned_paths_and_partial_changes) ... ok
+test_fixture_writer_rejects_mistyped_fields_without_partial_output (tests.test_dropped_breakables.DroppedBreakableTests.test_fixture_writer_rejects_mistyped_fields_without_partial_output) ... ok
+test_frozen_producers_and_source_fixtures_are_checked (tests.test_dropped_breakables.DroppedBreakableTests.test_frozen_producers_and_source_fixtures_are_checked) ... ok
+test_measured_initial_clocks_preserve_every_existing_state (tests.test_dropped_breakables.DroppedBreakableTests.test_measured_initial_clocks_preserve_every_existing_state) ... ok
+test_unknown_versions_fields_and_cover_states_rejected (tests.test_dropped_breakables.DroppedBreakableTests.test_unknown_versions_fields_and_cover_states_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 8.317s
+
+OK

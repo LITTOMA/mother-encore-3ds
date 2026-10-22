@@ -64,6 +64,9 @@ def build(root=ROOT):
     session=json.loads((root/'content/native-session.json').read_text(encoding='utf8'))
     identities=list(dict.fromkeys([i['item_id'] for i in session['defaults']['characters'][0]['inventory']+session['defaults']['key_items']]+[i['item_id']for i in session['acquisitions']+session['key_acquisitions']]))
     item_definitions={d['source']:d['id']-1 for d in json.loads((root/'content/native-items.json').read_text(encoding='utf8'))['definitions']}
+    from tools.item_consumption import load as consume_rules
+    consumption=consume_rules()
+    effects={row['id']:row for row in consumption['effects']}
     items=[]
     for identity in identities:
         item=ex.yaml('Data/Items/'+identity+'.yaml');actions=item.get('actions',[])
@@ -73,8 +76,13 @@ def build(root=ROOT):
         require(action is not None and (action!=3 or item.get('map_for')=='Podunk'),'Unreviewed field item action')
         result=dict(en='',zh='')
         if action==2:
-            require(item.get('status_heals')==['asthma'] and not item['HPrecover'] and not item['PPrecover'] and not any(item['boost'].values()),'Unreviewed field consumable')
-            status=ex.yaml('Data/StatusAilments/asthma.yaml');result=label(status['messages']['heal_overworld_fail'])
+            require(identity in effects,'Missing reviewed original consumption effect')
+            effect=effects[identity]
+            require(item.get('status_heals',[])==([effect['cure']]if effect['cure']else[])
+                    and item['HPrecover']==effect['hp']and not item['PPrecover']and not any(item['boost'].values()),
+                    'Unreviewed field consumable')
+            if effect['cure']:
+                status=ex.yaml('Data/StatusAilments/'+effect['cure']+'.yaml');result=label(status['messages']['heal_overworld_fail'])
         base=100000;equipped=base
         if not item['keyitem']:
             if item.get('battle_action',{}).get('skill'):
@@ -86,6 +94,9 @@ def build(root=ROOT):
                 slot=4-('weapon','body','arms','other').index(item['slot']);weights=(2,2,3,2,1,1,1)
                 boost=sum(item['boost'][name]*weight for name,weight in zip(('maxhp','maxpp','offense','defense','speed','iq','guts'),weights))
                 base=200000+slot*10000+boost;equipped=100000+slot*10000+boost
+            elif item.get('HPrecover',0)>0:
+                require(action==2 and not item['PPrecover']and not any(item['boost'].values()),'Unreviewed field food sort')
+                base=1000000+item['HPrecover'];equipped=base
             else:raise ValueError('Unreviewed source sort category')
         require(item['keyitem'] or identity in item_definitions,'Missing checked ordinary item description binding')
         items.append(dict(id=identity,key=int(item['keyitem']),drop=int(not item['keyitem'] and item['value']!=0),action=action,doses=item.get('doses',1),score=base,equipped_score=equipped,slot=('weapon','body','arms','other').index(item['slot']) if item.get('slot') else 0xffffffff,definition=0xffffffff if item['keyitem'] else item_definitions[identity],name=label(item['name']),description=label(item['description']) if item['keyitem'] else dict(en='',zh=''),sorting=label(item['sorting_name']),result=result))
@@ -128,7 +139,8 @@ def build(root=ROOT):
     def map_offset(scene):
         values=re.findall(r'^_player_map_offset = Vector2\( ([\d.-]+), ([\d.-]+) \)',scene,re.M);require(len(values)==1,'Ambiguous source map player offset');return [float(v)for v in values[0]]
     # Platform adaptation is explicit data, separate from source game rules.
-    return dict(schema=2,commit=PIN,sources=ex.sources,labels=labels,items=items,skills=skills,images=images,markers=markers,setting_labels=setting_labels,
+    require({row['id']for row in items if row['action']==2}==set(effects),'Field consumption effect coverage differs from admitted items')
+    return dict(schema=3,consumption=consumption,commit=PIN,sources=ex.sources,labels=labels,items=items,skills=skills,images=images,markers=markers,setting_labels=setting_labels,
       geometry=[[20,0,280,180],[32,6,256,16],[40,31,240,98],[32,133,256,29],[32,165,256,12],[32,32,8,8]],rows=7,columns=2,row_pitch=14,column_pitch=123,line_height=14,
       volume_db=[40*math.log((v+1)/11) for v in range(11)],logical_buttons=[1,2,8,2048,1024,512,256,4],button_names=['A','B','START','Y','X','L','R','SELECT'],default_volume=[10,10,10],display=0,
       locales=['en','zh_Hans_CN'],locale_names=[label('OPTIONS_LANGUAGE_EN'),label('OPTIONS_LANGUAGE_ZH_HANS_CN')],map_item='MapPodunk',map_offset=map_offset(field_scene),map_home=map_offset(home_scene),map_divisor=16,map_speed=60,map_fast=2,description_toggle=True,display_sizes=[[400,240],[320,180]],display_names=['400x240','320x180'],capture_cancel=dict(en='Assigned buttons swap bindings. D-pad Left: Back.',zh='已占用按键会交换绑定。方向键左：返回'))
@@ -137,6 +149,8 @@ def dump(path,value):path.parent.mkdir(parents=True,exist_ok=True);path.write_by
 
 def encode(ir,root=ROOT):
     from PIL import Image
+    require(type(ir['schema'])is int and ir['schema']in(2,3),'Unsupported field menu resource version')
+    require((ir['schema']==3)==('consumption'in ir),'Missing/unowned field menu consumption extension')
     p=bytearray(bytes.fromhex(PIN))
     def put(fmt,*v):p.extend(struct.pack('<'+fmt,*v))
     def text(v):b=v.encode('utf8');require(len(b)<=4096 and '\0'not in v,'Field text bound');put('I',len(b));p.extend(b)
@@ -158,7 +172,11 @@ def encode(ir,root=ROOT):
     put('4I',*ir['default_volume'],ir['display']);array(ir['locales'],text);array(ir['locale_names'],label);text(ir['map_item']);put('5fI',*ir['map_offset'],ir['map_divisor'],ir['map_speed'],ir['map_fast'],ir['description_toggle'])
     for group in ir['setting_labels']:array(group,label)
     array(ir['display_names'],text);label(ir['capture_cancel']);put('2f',*ir['map_home']);put('4I',*ir['display_sizes'][0],*ir['display_sizes'][1])
-    return struct.pack('<8s6I',b'ENCFMN01',2,32+len(p),zlib.crc32(p),2,1,0)+p
+    if ir['schema']==3:
+        from tools.item_consumption import encode_extension
+        require('consumption'in ir,'Field menu consume policy missing')
+        p.extend(encode_extension(ir['consumption']))
+    return struct.pack('<8s6I',b'ENCFMN01',ir['schema'],32+len(p),zlib.crc32(p),ir['schema'],1,0)+p
 
 def load(root=ROOT):
     ir=json.loads((Path(root)/'content/native-field-menus.json').read_text(encoding='utf8'));require(canonical(ir)==canonical(build(root)),'Field menus IR differs from reviewed source/adapter');return ir

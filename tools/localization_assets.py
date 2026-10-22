@@ -123,7 +123,13 @@ def extract():
  for i,item in enumerate(items['definitions']):
   path='Data/Items/'+item['source']+'.yaml';definition=yaml.safe_load(source(path));bind('item.name/'+str(i),definition['name'],item['name'],path+':name')
   item_value=next((value for value in definition['boost'].values()if value>0),0)
-  key='@native.item.description/'+str(i);values={l:tr(definition['description'],l).replace('[ItemValue]',str(item_value)).replace('[BR]','\n')for l in locales};records[key]=dict(key=key,source=path+'#'+definition['description'],line=i+1,values=values);bind('item.description/'+str(i),key,item['description'],path+':description:'+definition['description'])
+  def description(locale):
+   value=tr(definition['description'],locale)
+   # Rich descriptions bind their original controls. Independent ItemDetails
+   # supplies HP/item values, status images and doses at composition time.
+   if not item['flags']&2:value=value.replace('[ItemValue]',str(item_value))
+   return value.replace('[BR]','\n')
+  key='@native.item.description/'+str(i);values={l:description(l)for l in locales};records[key]=dict(key=key,source=path+'#'+definition['description'],line=i+1,values=values);bind('item.description/'+str(i),key,item['description'],path+':description:'+definition['description'])
  # Source list is authoritative; compiled resources not referenced by project
  # are inventoried as unused, never merged under ambiguous duplicate keys.
  project=source('project.godot');legacy=[]

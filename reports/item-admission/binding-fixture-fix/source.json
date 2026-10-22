@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "failed_source": "bb743a4fee0c60ca9ffe2e794e46f2b94ed331e0",
+  "failed_run": 39765898067,
+  "failed_job": 119781141838,
+  "failure": "Clang sanitizer full build failed before CTest: items_binding_fixtures.base_resources still expected15 resources; production catalog now18.",
+  "fix": "Only original4 or reviewed7 stable definitions; reconstruct all extensions and compare each exact record before returning12 UI resources.",
+  "python_tests": 12,
+  "consumer_checks": 84,
+  "reused_archive_members": 10,
+  "normal_asan_ubsan_leak_check": true,
+  "fixture_reproduced_readonly": true,
+  "production_program_and_data_unchanged": true,
+  "full_matrix_rerun": "required",
+  "emulator": "not yet run for new game",
+  "hardware": "unverified",
+  "test_inputs": {
+    "tests/items_binding_fixtures.py": "a782ddcbc8f78b2aa596ea12cb39ef9be7aff44a9ded01a1953156031284275e",
+    "tests/test_items_fixture_resources.py": "5a56d216426e6c023ea430960d4c62e15a45081d260e34dbb432cdf5f0036aa5"
+  }
+}

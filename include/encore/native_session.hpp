@@ -16,6 +16,9 @@ struct NativeSessionLevel {
     std::vector<std::string> skills;
 };
 struct NativeSessionAcquisition {
+    // Resource v12 permits separate source flags for the same stable item.
+    // Each row still grants one instance; storage limits sum the active rows.
+    // This changes the resource admission contract, never the save encoding.
     std::string item_id,flag_id;
     uint32_t doses=0,max_count=0,flag_policy=1;
 };

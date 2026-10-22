@@ -1,0 +1,13 @@
+{
+  "checked_source_inputs_unchanged": true,
+  "reused_fresh_objects": {
+    "native_session": "ad965cd9b8634403a1083be6b7f81c48af9b2c88b48d75b282285ba1ed94020a",
+    "field_menus": "658f0e8733275db00457942fab7f3fce84a9a190af9385f27b2355f8d58f8fca",
+    "field_menus_data": "f14392083ca828c820d9e63dc48c651d80de54cc957a51e876fd9ca6feef73af",
+    "field_story": "efd8483408c2cb2cdffe12b57247dfae3f28357e3dd94e93b64b522bed905adb",
+    "item_details": "16d2f7633183508a05c49ae4b9a90a3200fde1c6a15e10c5dd77c2bf0487c61c",
+    "storage_data": "7d24dfc16e5ec97d2d76958c0f97cc94d3525c7db3abaa5f2bb343d585f24438"
+  },
+  "fresh_module": "runtime/session_restore.cpp",
+  "reason": "Actual linker-map dependency check rejected archived session_restore after NativeSession header change. No tests ran before that rejection. Rebuild the seventh affected module; all remaining linked archived module dependencies must still match."
+}

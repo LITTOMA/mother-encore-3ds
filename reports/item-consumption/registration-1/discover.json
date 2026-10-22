@@ -1,0 +1,12 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\full-port\\item-consume-registration-1\\cmake",
+    "-C",
+    "Release",
+    "--show-only=json-v1"
+  ],
+  "returncode": 0,
+  "seconds": 0.2190000000409782
+}

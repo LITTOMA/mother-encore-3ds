@@ -1,0 +1,8 @@
+{
+  "scope": "Two actual independent full Inventory/Item method observations; no scene or save injection",
+  "reference_sha256": "2f0c3753cb7e99b1d683d6e299303db1d7fd2d3a15e0b15eb102806ac0d92d68",
+  "comparisons": 98,
+  "inventories": 584,
+  "all_observed_repeated_sorts_idempotent": true,
+  "preliminary": "Godot canonicalizes zh_CN to zh_Hans_CN. Both failed input-locale assertions retained; final canonical locale still checks all actual translations."
+}

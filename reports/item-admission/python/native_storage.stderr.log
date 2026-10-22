@@ -1,0 +1,47 @@
+test_bad_resource_grid (tests.test_native_storage.StorageFormat.test_bad_resource_grid) ... ok
+test_bad_resource_kind (tests.test_native_storage.StorageFormat.test_bad_resource_kind) ... ok
+test_bad_string_reference (tests.test_native_storage.StorageFormat.test_bad_string_reference) ... ok
+test_corrupt_crc (tests.test_native_storage.StorageFormat.test_corrupt_crc) ... ok
+test_cycle_parent (tests.test_native_storage.StorageFormat.test_cycle_parent) ... ok
+test_duplicate_binding (tests.test_native_storage.StorageFormat.test_duplicate_binding) ... ok
+test_duplicate_equipment (tests.test_native_storage.StorageFormat.test_duplicate_equipment) ... ok
+test_duplicate_policy (tests.test_native_storage.StorageFormat.test_duplicate_policy) ... ok
+test_empty_texture_hash (tests.test_native_storage.StorageFormat.test_empty_texture_hash) ... ok
+test_equipment_range (tests.test_native_storage.StorageFormat.test_equipment_range) ... ok
+test_infinite_parameter (tests.test_native_storage.StorageFormat.test_infinite_parameter) ... ok
+test_invalid_color (tests.test_native_storage.StorageFormat.test_invalid_color) ... ok
+test_invalid_texture_index (tests.test_native_storage.StorageFormat.test_invalid_texture_index) ... ok
+test_invalid_utf8 (tests.test_native_storage.StorageFormat.test_invalid_utf8) ... ok
+test_missing_pane_owner (tests.test_native_storage.StorageFormat.test_missing_pane_owner) ... ok
+test_nan_parameter (tests.test_native_storage.StorageFormat.test_nan_parameter) ... ok
+test_negative_rectangle (tests.test_native_storage.StorageFormat.test_negative_rectangle) ... ok
+test_ninepatch_overflow (tests.test_native_storage.StorageFormat.test_ninepatch_overflow) ... ok
+test_overlapping_directory (tests.test_native_storage.StorageFormat.test_overlapping_directory) ... ok
+test_pinned_source_ir (tests.test_native_storage.StorageFormat.test_pinned_source_ir) ... ok
+test_positive_round_trip (tests.test_native_storage.StorageFormat.test_positive_round_trip) ... ok
+test_reserved_header (tests.test_native_storage.StorageFormat.test_reserved_header) ... ok
+test_source_unknown_field (tests.test_native_storage.StorageFormat.test_source_unknown_field) ... ok
+test_trailing_bytes (tests.test_native_storage.StorageFormat.test_trailing_bytes) ... ok
+test_truncated (tests.test_native_storage.StorageFormat.test_truncated) ... ok
+test_unknown_binding (tests.test_native_storage.StorageFormat.test_unknown_binding) ... ok
+test_unknown_capability (tests.test_native_storage.StorageFormat.test_unknown_capability) ... ok
+test_unknown_conservation_count (tests.test_native_storage.StorageFormat.test_unknown_conservation_count) ... ok
+test_unknown_draw_kind (tests.test_native_storage.StorageFormat.test_unknown_draw_kind) ... ok
+test_unknown_equipment (tests.test_native_storage.StorageFormat.test_unknown_equipment) ... ok
+test_unknown_layout_flags (tests.test_native_storage.StorageFormat.test_unknown_layout_flags) ... ok
+test_unknown_layout_role (tests.test_native_storage.StorageFormat.test_unknown_layout_role) ... ok
+test_unknown_parameter (tests.test_native_storage.StorageFormat.test_unknown_parameter) ... ok
+test_unknown_rules (tests.test_native_storage.StorageFormat.test_unknown_rules) ... ok
+test_unknown_schema (tests.test_native_storage.StorageFormat.test_unknown_schema) ... ok
+test_unknown_section (tests.test_native_storage.StorageFormat.test_unknown_section) ... ok
+test_unknown_sort_tie (tests.test_native_storage.StorageFormat.test_unknown_sort_tie) ... ok
+test_wrong_source_pin (tests.test_native_storage.StorageFormat.test_wrong_source_pin) ... ok
+test_wrong_stride (tests.test_native_storage.StorageFormat.test_wrong_stride) ... ok
+test_zero_doses (tests.test_native_storage.StorageFormat.test_zero_doses) ... ok
+test_zero_resource_size (tests.test_native_storage.StorageFormat.test_zero_resource_size) ... ok
+test_zero_storage_capacity (tests.test_native_storage.StorageFormat.test_zero_storage_capacity) ... ok
+
+----------------------------------------------------------------------
+Ran 42 tests in 3.039s
+
+OK

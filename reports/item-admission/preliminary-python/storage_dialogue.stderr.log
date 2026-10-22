@@ -1,0 +1,9 @@
+test_audio_unknown_conversion_and_duplicate_identity_rejected (tests.test_storage_dialogue.StorageDialogueTests.test_audio_unknown_conversion_and_duplicate_identity_rejected) ... ok
+test_choice_close_and_dormant_phrase_are_preserved (tests.test_storage_dialogue.StorageDialogueTests.test_choice_close_and_dormant_phrase_are_preserved) ... ok
+test_opcode_requires_explicit_capability_and_immediate_gate (tests.test_storage_dialogue.StorageDialogueTests.test_opcode_requires_explicit_capability_and_immediate_gate) ... ok
+test_source_ir_wrong_types_unknown_command_and_targets_rejected (tests.test_storage_dialogue.StorageDialogueTests.test_source_ir_wrong_types_unknown_command_and_targets_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 7.492s
+
+OK

@@ -1,0 +1,30 @@
+[
+  {
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/run_breakable_reference.py",
+      "--engine",
+      "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\godot-reference\\Godot_v3.6.2-stable_win64.exe",
+      "--out",
+      "build/full-port/breakable-audio-original-1"
+    ],
+    "returncode": 0,
+    "seconds": 10.687999999965541
+  },
+  {
+    "command": [
+      "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "tools/run_breakable_reference.py",
+      "--engine",
+      "D:\\GameDev\\3DS\\mother-encore-3ds\\build\\godot-reference\\Godot_v3.6.2-stable_win64.exe",
+      "--out",
+      "build/full-port/breakable-audio-original-2"
+    ],
+    "returncode": 0,
+    "seconds": 11.156000000075437
+  }
+]

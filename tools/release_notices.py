@@ -7,7 +7,7 @@ from pathlib import Path
 OFFICIAL_FILES = frozenset((
     'COPYING.NEWLIB', 'COPYING.RUNTIME', 'COPYING3',
     'Godot-3.6.2-LICENSE.txt', 'MOTHER-Encore-0.4.1.0-LICENSE.txt',
-    'PCG-APACHE-2.0.txt', 'PCG-NOTICE.txt',
+    'PCG-APACHE-2.0.txt', 'PCG-NOTICE.txt', 'Penner-easing-MIT.txt',
     'citro2d-1.7.0-LICENSE.txt', 'citro3d-1.7.1-LICENSE.txt',
     'libctru-2.7.0-README.txt', 'Fusion-Pixel-LICENSE-OFL.txt',
     'Galmuri-LICENSE-OFL.md',

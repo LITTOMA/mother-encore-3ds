@@ -1,0 +1,11 @@
+config_version=4
+[application]
+config/name="Breakable script providers"
+run/main_scene="res://main.tscn"
+[autoload]
+global="*res://global.gd"
+globaldata="*res://flags.gd"
+[logging]
+file_logging/enable_logging=false
+[rendering]
+quality/driver/driver_name="GLES2"

@@ -1,0 +1,23 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+ERROR: 'The signal 'area_left' is declared but never emitted.'
+
+Debugger Break, Reason: 'Parser Error: Unknown class: "FlaggableObject"'
+*Frame 0 - res://Scripts/Main/Breakable.gd:1 in function ''
+Enter "help" for assistance.
+debug> 
+Debugger Break, Reason: 'Invalid set index 'is_object_flag' (on base: 'Sprite') with value of type 'bool'.'
+*Frame 0 - res://probe.gd:74 in function 'run'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Parse Error: Unknown class: "FlaggableObject"
+          at: GDScript::reload (res://Scripts/Main/Breakable.gd:1)
+ERROR: Condition "_first != nullptr" is true.
+   at: ~List (./core/self_list.h:108)
+ERROR: Condition "_first != nullptr" is true.
+   at: ~List (./core/self_list.h:108)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object.cpp:2077)
+ERROR: Resources still in use at exit (run with --verbose for details).
+   at: clear (core/resource.cpp:417)

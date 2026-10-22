@@ -35,6 +35,29 @@ class ReleaseNoticeTests(unittest.TestCase):
         for name in OFFICIAL_FILES:
             self.assertEqual(files[Path('licenses') / name], b'fixture notice\n')
 
+    def test_current_project_stages_reviewed_easing_notice(self):
+        root = Path(__file__).resolve().parents[1]
+        files = stage_files(root)
+        name = 'Penner-easing-MIT.txt'
+        self.assertEqual(files[Path('licenses') / name],
+                         (root / 'docs/licenses' / name).read_bytes())
+        manifest = json.loads(files[Path('licenses/license-sources.json')])
+        entries = [entry for entry in manifest['files'] if entry['file'] == name]
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]['source_revision'],
+                         '3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8')
+        self.assertTrue(entries[0]['source_url'].endswith(
+            '/scene/animation/easing_equations.h'))
+
+    def test_easing_notice_missing_or_changed_is_rejected(self):
+        file = self.notices / 'Penner-easing-MIT.txt'
+        file.write_bytes(b'changed easing notice\n')
+        with self.assertRaises(ValueError):
+            stage_files(self.root)
+        file.unlink()
+        with self.assertRaises(ValueError):
+            stage_files(self.root)
+
     def test_unknown_schema(self):
         self.manifest['schema'] = 2
         self.write_manifest()

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checked_on": "2026-10-03",
+  "checked_on": "2026-10-22",
   "files": [
     {
       "file": "COPYING.NEWLIB",
@@ -105,6 +105,14 @@
       "source_revision": "v3.31.10",
       "scope": "CMake 3.31.10: BSD-3-Clause license archive",
       "verification": "official download on 2026-10-03, unchanged bytes"
+    },
+    {
+      "file": "Penner-easing-MIT.txt",
+      "sha256": "776d60e07569fd9627ddf6cfaad8c84752f3b111ea5d7f480fdcc16b68438f84",
+      "source_url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/animation/easing_equations.h",
+      "source_revision": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+      "scope": "Robert Penner MIT copyright and full permission/warranty for the Godot-derived cubic-out and bounce-out equations",
+      "verification": "Complete Penner notice extracted from the Git-blob-verified pinned Godot header; comment delimiters stripped, trailing spaces removed, CRLF line endings. Existing Godot MIT notice is retained separately."
     }
   ]
 }

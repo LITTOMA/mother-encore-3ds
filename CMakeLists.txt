@@ -23,7 +23,7 @@ add_library(encore_core
     runtime/field_step_contacts.cpp
     runtime/poison_hazards.cpp
     runtime/geyser_timeline.cpp
-    runtime/geyser_media.cpp runtime/geyser_mixer.cpp runtime/geyser_graphics.cpp runtime/world_damage.cpp runtime/poison_damage.cpp runtime/geyser_lifecycle.cpp runtime/geyser_instance_presentation.cpp runtime/poison_contacts.cpp runtime/geyser_contacts.cpp
+    runtime/geyser_media.cpp runtime/geyser_mixer.cpp runtime/geyser_graphics.cpp runtime/world_damage.cpp runtime/poison_damage.cpp runtime/geyser_lifecycle.cpp runtime/geyser_instance_presentation.cpp runtime/poison_contacts.cpp runtime/geyser_contacts.cpp runtime/breakables_data.cpp runtime/breakables.cpp
     runtime/field_swing.cpp runtime/field_swing_graphics.cpp runtime/field_swing_action.cpp runtime/field_swing_entry.cpp runtime/field_swing_resources.cpp runtime/field_player_tree.cpp runtime/field_area_contacts.cpp runtime/field_objects.cpp runtime/prop_clips.cpp runtime/field_props.cpp runtime/field_steps.cpp runtime/dungeon_keys.cpp runtime/dungeon_key_state.cpp runtime/dungeon_key_clocks.cpp runtime/dungeon_switches.cpp runtime/dungeon_switch_state.cpp runtime/dungeon_wall_timeline.cpp runtime/dungeon_wall_state.cpp runtime/field_menus_data.cpp runtime/field_menus.cpp
     runtime/music_zones.cpp runtime/gameplay_audio.cpp runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp runtime/field_scene_resources.cpp runtime/field_story.cpp
     runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
@@ -1586,6 +1586,15 @@ if(BUILD_TESTING AND Python3_Interpreter_FOUND)
  target_link_libraries(encore_geyser_contacts_tests PRIVATE encore_core)
  add_test(NAME geyser_contacts COMMAND encore_geyser_contacts_tests ${CMAKE_BINARY_DIR}/geyser-contacts-fixture/body.encpcn ${CMAKE_BINARY_DIR}/geyser-contacts-fixture/family.encglf ${CMAKE_BINARY_DIR}/geyser-contacts-fixture/damage.encwdm ${CMAKE_BINARY_DIR}/geyser-contacts-fixture/steps.encsteps ${CMAKE_BINARY_DIR}/geyser-contacts-fixture/native.tsv)
  set_tests_properties(geyser_contacts PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED geyser_contacts_source)
+endif()
+
+if(BUILD_TESTING AND Python3_Interpreter_FOUND)
+ add_test(NAME breakables_fixture COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/prepare_breakables.py --out ${CMAKE_BINARY_DIR}/breakables-fixture)
+ set_tests_properties(breakables_fixture PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_SETUP breakables_source)
+ add_executable(encore_breakables_tests tests/breakables_tests.cpp)
+ target_link_libraries(encore_breakables_tests PRIVATE encore_core)
+ add_test(NAME breakables COMMAND encore_breakables_tests ${CMAKE_BINARY_DIR}/breakables-fixture/breakables.encbrk ${CMAKE_BINARY_DIR}/breakables-fixture/native.tsv)
+ set_tests_properties(breakables PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120 FIXTURES_REQUIRED breakables_source)
 endif()
 
 include(cmake/TestParallelism.cmake)

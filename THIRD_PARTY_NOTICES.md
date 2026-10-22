@@ -24,7 +24,7 @@ EBMain 字体资源包含 Latin、日本语、韩语和简体中文字形。五�
 
 ## 运行库与开发工具
 
-Godot 3.6.2 的派生碰撞与行为机制保留 [Godot MIT](docs/licenses/Godot-3.6.2-LICENSE.txt) 版权。源兼容 PCG 随机机制来自 Godot 随附的 PCG32，Copyright (c) 2014 M. E. O'Neill，按 Apache 2.0 保留 [notice](docs/licenses/PCG-NOTICE.txt) 和 [完整许可](docs/licenses/PCG-APACHE-2.0.txt)。
+Godot 3.6.2 的派生碰撞与行为机制保留 [Godot MIT](docs/licenses/Godot-3.6.2-LICENSE.txt) 版权。破坏物掉落使用其中的 cubic-out / bounce-out 数学子集，另保留 [Robert Penner MIT](docs/licenses/Penner-easing-MIT.txt) 版权。源兼容 PCG 随机机制来自 Godot 随附的 PCG32，Copyright (c) 2014 M. E. O'Neill，按 Apache 2.0 保留 [notice](docs/licenses/PCG-NOTICE.txt) 和 [完整许可](docs/licenses/PCG-APACHE-2.0.txt)。
 
 控制台构建使用 devkitARM、libctru、Citro2D、Citro3D 及 newlib / GCC 运行库。许可目录保存 libctru 2.7.0、Citro2D 1.7.0、Citro3D 1.7.1 的 zlib 条款，GCC 16.1.0 的 GPLv3 与 Runtime Library Exception 3.1，以及 newlib 版权汇编。newlib 汇编与具体所链接对象的完整对应仍需核对；更新 SDK 时需检查相应版本的许可。
 

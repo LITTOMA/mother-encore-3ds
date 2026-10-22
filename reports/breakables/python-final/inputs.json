@@ -1,0 +1,8 @@
+{
+  "tools/catacombs_breakables.py": "d1eb0b63400f79c5e5fe4caac2e0247027a0e1f0f74a6fd58ada6072a49ffb47",
+  "tools/run_breakable_reference.py": "3586a2dc8eacc4cca15defe38622086ff32dfff634fa1e28efad8be12cb03b04",
+  "tests/prepare_breakables.py": "17a0de171902aac42b4b352208a09cbf3fd734766e1d144732cae6ad4e6a5d2e",
+  "tests/test_breakables.py": "732aef9f60ca55be164d129f40708597a49c5a5e63dcc9d080e15c45897e5b08",
+  "content/catacombs-breakables.json": "1ff3e69e67389ed49d89ae37ab6c266a8a742712a4a9d738dd3aa202ecda1f95",
+  "compatibility/reviews/catacombs-breakables-v0410.json": "6e056a8a9ed095cabfbe6fea63fe78e78798ed870b118df29051aeb3d90fbf2c"
+}

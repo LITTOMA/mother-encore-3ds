@@ -1,0 +1,46 @@
+{
+  "project.godot": {
+    "sha256": "05dbe095b30f0a37f2958481a98c5aef50bf25a525efbebdf5b1be84e1f8eb76",
+    "equal_to_pre_editor_input": false
+  },
+  "main.tscn": {
+    "sha256": "9bda375ec1e057591ecc029cf0a7fa599f6286d32d4bc9181a32baa1b1cf49d7",
+    "equal_to_pre_editor_input": true
+  },
+  "scene.gd": {
+    "sha256": "2d65535ae049e6e7ebe0db72e34011fecefc28f1044f7c958c3844e2d80ce24f",
+    "equal_to_pre_editor_input": true
+  },
+  "probe.gd": {
+    "sha256": "c1aaa9d322224d7d300b9ac36d8f547a5d34b040f2ce64af39c0538700510cad",
+    "equal_to_pre_editor_input": true
+  },
+  "global.gd": {
+    "sha256": "cb6042549b703b5bdbd69134fa417f20807087018b29a3e686d3199367556dad",
+    "equal_to_pre_editor_input": true
+  },
+  "content.gd": {
+    "sha256": "0ce3e59140f461fc0336c79d739991ce72958136e009bf78f0ff1b66eab648da",
+    "equal_to_pre_editor_input": true
+  },
+  "voice.gd": {
+    "sha256": "52c66c929ac46c428cf97bb26449a9f523301c853fc08ce49ab72e1fa8e7c3ec",
+    "equal_to_pre_editor_input": true
+  },
+  "factory.gd": {
+    "sha256": "9a9414e973d5369912806137ba14e230e72910cf15bf1ba6b8d434faf1d4089c",
+    "equal_to_pre_editor_input": true
+  },
+  "flags.gd": {
+    "sha256": "bd9591af2b5d65c5b4d6b37fe4bf9827441b06ee33f5d53ec8eaf35967e89f89",
+    "equal_to_pre_editor_input": true
+  },
+  "Nodes/Overworld/Objects/CoinSpawner.tscn": {
+    "sha256": "48bee61080e8b10888446867faaabb312a66e741d77d692f8b749236c1a83a7e",
+    "equal_to_pre_editor_input": true
+  },
+  "input.json": {
+    "sha256": "98cb0989a58b4fc5ecf0de68558bfb912e70edf7f5765fa8e77b6f4e36a158ec",
+    "equal_to_pre_editor_input": true
+  }
+}

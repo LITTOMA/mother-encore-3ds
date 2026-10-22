@@ -1,0 +1,6 @@
+{
+  "tools/release_notices.py": "4fcb7358c61f62675ad37b19acf669785156ec9b1c1b3d605bd2ac4f2e066cbb",
+  "tests/test_release_notices.py": "906a13ad12e9093b2e659d2d66a7240ed2c2b5c1fa47064bce3c9da5e239fd27",
+  "docs/licenses/license-sources.json": "99179c7d4d18691e588ddf699e194b23760e0eccf3755eff567ffb98fd163903",
+  "docs/licenses/Penner-easing-MIT.txt": "776d60e07569fd9627ddf6cfaad8c84752f3b111ea5d7f480fdcc16b68438f84"
+}

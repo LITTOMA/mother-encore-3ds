@@ -1,0 +1,8 @@
+{
+  "source": "d273eeee3cf519637b70aa1b00ec3b36a078b700",
+  "run": 39729365985,
+  "official106_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "actually_tested92_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "byte_identical": true,
+  "scope": "Small authentic SDK receipt only. Reuse existing two cold90 opening runs only when actual game SHA matches; no separate106/full room/hardware run."
+}

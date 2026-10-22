@@ -1,0 +1,14 @@
+{
+  "source": "d273eeee3cf519637b70aa1b00ec3b36a078b700",
+  "run": 39729365985,
+  "gcc_ordinary": 357,
+  "gcc_asan_ubsan": 338,
+  "clang_ordinary": 338,
+  "clang_asan_ubsan": 338,
+  "real_3dsx_and_cia": true,
+  "staged_files": 377,
+  "dependency_103": "854f253780ac02929862c1c057964985ba1ff9d2",
+  "source_diff_after_parent_union": [],
+  "official_game_sha256": "208e4da740b0e028d8e8c78ca1378b4a0e9b2f094a395dbe91ddc09b2ccd06b2",
+  "emulator_scope": "Only reuse the identical genuine 92 game opening regression; no independent 106 emulator or formal room/hardware run."
+}

@@ -1,0 +1,10 @@
+{
+  "main": "c59776445f1f87f419e6fd25ab89dc961cff58e7",
+  "compared_to_verified": "d273eeee3cf519637b70aa1b00ec3b36a078b700",
+  "full_run": 39729365985,
+  "differences_outside_docs_reports": [
+    ".github/workflows/build.yml",
+    "tests/test_ci_workflow_policy.py"
+  ],
+  "scope": "Actual main-100 union. Program, data and all other tests equal the fully validated 106 union. Only the separate 106 phase workflow/policy differs. No independent full run claimed for this 103 merge."
+}

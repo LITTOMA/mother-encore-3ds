@@ -1,0 +1,17 @@
+test_each_catalog_icon_and_definition_is_owned (tests.test_items_fixture_resources.ItemFixtureResources.test_each_catalog_icon_and_definition_is_owned) ... ok
+test_exact_checked_prefix_and_independent_copy (tests.test_items_fixture_resources.ItemFixtureResources.test_exact_checked_prefix_and_independent_copy) ... ok
+test_legacy_four_definition_prefix_remains_checked (tests.test_items_fixture_resources.ItemFixtureResources.test_legacy_four_definition_prefix_remains_checked) ... ok
+test_no_unknown_or_duplicate_extension_discarded (tests.test_items_fixture_resources.ItemFixtureResources.test_no_unknown_or_duplicate_extension_discarded) ... ok
+test_asset_source_crop_reuse_and_identity_bindings (tests.test_items_presentation_bindings.ItemsPresentationBindingsTests.test_asset_source_crop_reuse_and_identity_bindings) ... ok
+test_checked_adapter_data_changes_without_new_code (tests.test_items_presentation_bindings.ItemsPresentationBindingsTests.test_checked_adapter_data_changes_without_new_code) ... ok
+test_default_art_ir_and_checked_pack_are_identical (tests.test_items_presentation_bindings.ItemsPresentationBindingsTests.test_default_art_ir_and_checked_pack_are_identical) ... ok
+test_nodes_source_expressions_tweens_input_fonts_and_sound_id (tests.test_items_presentation_bindings.ItemsPresentationBindingsTests.test_nodes_source_expressions_tweens_input_fonts_and_sound_id) ... ok
+test_ordinary_compiler_checks_content_not_only_source_fingerprints (tests.test_items_presentation_bindings.ItemsPresentationBindingsTests.test_ordinary_compiler_checks_content_not_only_source_fingerprints) ... ok
+test_rehashed_source_semantics_still_reject (tests.test_items_presentation_bindings.ItemsPresentationBindingsTests.test_rehashed_source_semantics_still_reject) ... ok
+test_resource_extensions_are_closed_and_checked (tests.test_items_presentation_bindings.ItemsPresentationBindingsTests.test_resource_extensions_are_closed_and_checked) ... ok
+test_versions_pin_unknown_missing_and_duplicate_fields (tests.test_items_presentation_bindings.ItemsPresentationBindingsTests.test_versions_pin_unknown_missing_and_duplicate_fields) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 80.770s
+
+OK

@@ -6,28 +6,36 @@ from pathlib import Path
 from unittest.mock import patch
 ROOT=Path(os.environ.get('ENCORE_SOURCE_ROOT',Path(__file__).resolve().parents[1])).resolve()
 sys.dont_write_bytecode=True;sys.path.insert(0,str(ROOT))
-from tools import items_assets as assets,items_presentation_bindings as bindings,native_items as native,drawer_item,basement_items,field_rewards
+from tools import items_assets as assets,items_presentation_bindings as bindings,native_items as native,drawer_item,basement_items,field_rewards,catacombs_item_catalog as catalog
 
 def candidate():
  recipe=bindings.read(bindings.IR);recipe['layouts']['info']['anchor']=[.75,1];recipe['platform']['hint_offset']=[-2,-1]
  return recipe
 
 def base_resources(baseline):
- # export_ir appends checked Drawer, basement and field reward extensions. Pass
+ # export_ir appends checked Drawer, basement, reward and catalog extensions. Pass
  # the original twelve-resource UI prefix, not the already extended output.
  recipe=bindings.read(bindings.IR);count=len(recipe['assets'])
  resources=baseline['resources']
+ identities=[d['id']for d in baseline['definitions']]
+ if any(type(d)is not int for d in identities):raise ValueError('Invalid Items definition identity type')
+ if identities==list(range(1,5)):extensions=[]
+ elif identities==list(range(1,8)):
+  extensions=catalog.load()['entries']
+  if [(d['id'],d['source'])for d in baseline['definitions'][-3:]]!=[(d['id'],d['source'])for d in extensions]:raise ValueError('Unexpected Items catalog definition scope')
+ else:raise ValueError('Unexpected Items definition scope')
  rewards,_=field_rewards.load()
- if len(resources)!=count+2+len(rewards['items']):raise ValueError('Unexpected Items resource extension count')
+ if len(resources)!=count+2+len(rewards['items'])+len(extensions):raise ValueError('Unexpected Items resource extension count')
  prefix=resources[:count]
  if [r['path']for r in prefix]!=[r['output']for r in recipe['assets']]:raise ValueError('Items resource prefix changed')
  expected=copy.deepcopy(drawer_item.verify_receipt(ROOT)['resource'])
  expected['id']=max(r['id']for r in prefix)+1
  before_bat=copy.deepcopy(baseline);before_bat['resources']=copy.deepcopy(prefix)+[expected]
- before_bat['definitions']=before_bat['definitions'][:-1-len(rewards['items'])]
+ before_bat['definitions']=before_bat['definitions'][:-1-len(rewards['items'])-len(extensions)]
  after_bat=basement_items.append_item(SimpleNamespace(root=ROOT),before_bat)
- checked=field_rewards.append_item(SimpleNamespace(root=ROOT),after_bat)['resources']
- if resources!=checked:raise ValueError('Unexpected or stale Items extension resource')
+ checked=field_rewards.append_item(SimpleNamespace(root=ROOT),after_bat)
+ if extensions:checked=catalog.append_item(SimpleNamespace(root=ROOT),checked)
+ if resources!=checked['resources']:raise ValueError('Unexpected or stale Items extension resource')
  return copy.deepcopy(prefix)
 
 def fixtures(output):

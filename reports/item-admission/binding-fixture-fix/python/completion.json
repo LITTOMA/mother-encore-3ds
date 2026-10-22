@@ -1,0 +1,31 @@
+{
+  "inputs_unchanged": true,
+  "steps": [
+    {
+      "command": [
+        "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "tests.test_items_fixture_resources",
+        "tests.test_items_presentation_bindings",
+        "-v"
+      ],
+      "returncode": 0,
+      "seconds": 81.29700000002049
+    },
+    {
+      "command": [
+        "C:\\Users\\litto\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "tests/items_binding_fixtures.py",
+        "--output",
+        "build/full-port/item-admission-binding-fixtures-1"
+      ],
+      "returncode": 0,
+      "seconds": 11.890999999945052
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "runtime/poison_contacts.cpp": "2b4bd7030329599d5f8189e7a0f0d6c5ecea82b75c7d065c3ed93eaf669d433a",
+  "runtime/poison_damage.cpp": "77a67c055d34c5b19992b7e8408dbebabe86a20f887c0ccf88493cd23815780f",
+  "runtime/poison_hazards.cpp": "35e49e04ebec91ebde3b65baab13f143eafdbd070c09c82a5737de43a447a66b",
+  "runtime/world_damage.cpp": "64431135722eddc9bc0092f09289f2bf1cf8436d77598c025062dad897238f8f",
+  "include/encore/poison_contacts.hpp": "fac510c0c950bb308ecae20e83571c5fe7f1cdbf91cff6c24c43fb360bb71413",
+  "tests/poison_contacts_tests.cpp": "9aab7928b0ceb7ffe2323513d6fbd0b6ec50480784fe9f0918307897fa445d7d",
+  "build/full-port/poison-contact-fixture-1/contacts.encpcn": "61e143ed7f0e4e74f48601779632ae5cb95b5a06030c3627fe7cc83dcdded93d",
+  "build/full-port/poison-contact-fixture-1/damage.encwdm": "ed48be42895b9f58753782aa452b2581b8be033cd94b10308a8b552f99294a27",
+  "build/full-port/poison-contact-fixture-1/native.tsv": "aaa25f7da93e66b865ad9d2013a3545be7270262c0be9087b41dcff001228123",
+  "build/full-port/poison-contact-fixture-1/steps.encsteps": "86dc4ab96906298b61c42b3698d50b89f570852ce697e121c8e218a96141da78"
+}

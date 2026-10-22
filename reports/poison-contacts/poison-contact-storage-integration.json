@@ -1,0 +1,8 @@
+{
+  "ours": "4d0683e9d2277b01765ea3a01b2a4c0e1ced65f7",
+  "parent": "ad03c1148e3472840cbbd0769ced56d23b8a7508",
+  "base": "30a2e0193331f859e11fe4f4f2de92c2a2dcccdf",
+  "head": "8ce8cd3f8d118937f0652469e5d6735cc5e2c758",
+  "resolution": "Ordered paragraph insertion union;all base paragraphs preserved verbatim in content,no deletes/replacements",
+  "scope": "Normal history-preserving dependency merge;STATUS additive text only;no gameplay or trace expectation changes."
+}

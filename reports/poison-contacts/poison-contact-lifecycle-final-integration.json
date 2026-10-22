@@ -1,0 +1,7 @@
+{
+  "ours": "8ce8cd3f8d118937f0652469e5d6735cc5e2c758",
+  "parent": "740d7a6f59503db7ab44666721a825d0daeffa0b",
+  "base": "d3068a38d152515d1e0667b7f0ca5eb1120e7b3c",
+  "head": "5afb6f44ee4ed02465f0b3d99af771a341c432f0",
+  "resolution": "Reviewed paragraph relocation of prior95 status is not deletion. Preserve complete current order;prepend sole new96 final acceptance;all three inputs paragraphs retained exactly in normalized content;no source/test changes."
+}

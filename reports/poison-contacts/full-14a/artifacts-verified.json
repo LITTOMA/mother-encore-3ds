@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "id": 12364318919,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM2NDMxODkxOQ==",
+      "name": "encore-3ds-14a572c11164db43aefa909c51938521028ae2e9-39640197545",
+      "size_in_bytes": 377934907,
+      "url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12364318919",
+      "archive_download_url": "https://api.github.com/repos/LITTOMA/mother-encore-3ds/actions/artifacts/12364318919/zip",
+      "expired": false,
+      "digest": "sha256:8d0c85da9a8ae1c79ee717b2f9e852529263de2d0f3f4c83e075334d3a5e7d56",
+      "created_at": "2026-10-21T17:18:42Z",
+      "updated_at": "2026-10-21T17:18:42Z",
+      "expires_at": "2026-11-20T17:18:31Z",
+      "workflow_run": {
+        "id": 39640197545,
+        "repository_id": 1403329202,
+        "head_repository_id": 1403329202,
+        "head_branch": "codex/catacombs-player-hazard-contacts",
+        "head_sha": "14a572c11164db43aefa909c51938521028ae2e9"
+      }
+    }
+  ]
+}

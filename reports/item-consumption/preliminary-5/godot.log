@@ -1,0 +1,20 @@
+
+Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+
+Debugger Break, Reason: 'Parser Error: Expected an indented block after "if".'
+*Frame 0 - res://Member.gd:34 in function ''
+Enter "help" for assistance.
+debug> 
+Debugger Break, Reason: 'Parser Error: The class "PartyMember" couldn't be fully loaded (script error or cyclic dependency).'
+*Frame 0 - res://Target.gd:4 in function ''
+Enter "help" for assistance.
+debug> 
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'new' in base 'GDScript'.'
+*Frame 0 - res://probe.gd:49 in function 'run'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Parse Error: Expected an indented block after "if".
+          at: GDScript::reload (res://Member.gd:34)
+SCRIPT ERROR: Parse Error: The class "PartyMember" couldn't be fully loaded (script error or cyclic dependency).
+          at: GDScript::reload (res://Target.gd:4)

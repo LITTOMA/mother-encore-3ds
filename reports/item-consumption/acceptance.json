@@ -1,0 +1,30 @@
+{
+  "original_cases_each": 240,
+  "actual_independent_originals": 2,
+  "original_sha256": "0f0ebacfee226cdbdcd90a82a3344715281515f3becb5b74218c8f3bb2af56d1",
+  "gcc_asan_ubsan_checks": 852816,
+  "legacy_menu_checks": 414,
+  "grouped_acquisition_checks": 26525,
+  "legacy_session_checks": 20808,
+  "reference_corruptions_rejected": 11,
+  "normal_leak_checks": true,
+  "fresh_core_modules": 4,
+  "python_tests": 10,
+  "ctest_discovered_only": 380,
+  "current_source_sha256": {
+    "CMakeLists.txt": "08992e7e8809104309691906eecddbb01ed8f47d444c305f563291251c0a599d",
+    "include/encore/field_menus.hpp": "5896e9ff571a55c28ed4910767b1c0ce81761014fe372f90682b4debe65a1ad6",
+    "runtime/field_menus.cpp": "b7585f749abc21ee07bfe19e167d42d8e0bbe1bfd47fb23ebe5f8660205676f1",
+    "runtime/field_menus_data.cpp": "79b6252c00119356422205691ef940c719de894c055202b7f47d2a1ce28cebb6",
+    "platform/ctr/main.cpp": "33774472d9b4dcaf5a65e54fc64c59c7dd47e868ae3da7ea5d945a72d57f0342",
+    "tools/field_menus.py": "d95d33fd87fefe7965902a669ec0133bb8f0f1efe73a13af9014a766bd9465e2",
+    "tools/item_consumption.py": "bed5a91c08a7546c858d465b48a8c42a64a227adc244853a1c965cc9e9e6f18b",
+    "tools/run_item_consume_reference.py": "0258244fb2b3130eb9c71014f51bd767d35608b98c1892a8eb9812fec8fba18d",
+    "tests/prepare_item_consumption.py": "062f4754a30315f5eb79b1382a8b3c2d0ee9ea872cb69296fa28fc18cdcb2c7e",
+    "tests/item_consumption_tests.cpp": "ce431831233180d47f076ecc480f81ce04934e894b55b6b23ab67aeaa17deea1",
+    "tests/test_item_consumption.py": "25179ea2f9fe97bf013ce50790dd65f557bb73baaaa823ae6b654823a754639a",
+    "tests/check_item_consumption_failures.py": "32617780b5c454e32bdcc90b16fd7b85b1feac1c5fa8baf45c6e13d87cc58cc4"
+  },
+  "scope": "Targeted archive-backed host execution, actual original method traces and configuration discovery. Not a full host matrix, real SDK, emulator, complete widget timing, PCM output or formal room admission.",
+  "production_resources": "Current console menu remains v2 and session v11; new v3 data is exercised only in owned fixtures."
+}

@@ -1,0 +1,11 @@
+test_menu_extension_versions_are_explicit_and_legacy_bytes_stay_identical (tests.test_item_consumption.ItemConsumptionTests.test_menu_extension_versions_are_explicit_and_legacy_bytes_stay_identical) ... ok
+test_model_unknown_domains_types_messages_and_ownership_reject (tests.test_item_consumption.ItemConsumptionTests.test_model_unknown_domains_types_messages_and_ownership_reject) ... ok
+test_result_unknown_version_fields_types_and_events_reject (tests.test_item_consumption.ItemConsumptionTests.test_result_unknown_version_fields_types_and_events_reject) ... ok
+test_reviewed_recipe_and_receipt_cannot_be_rebound (tests.test_item_consumption.ItemConsumptionTests.test_reviewed_recipe_and_receipt_cannot_be_rebound) ... ok
+test_source_function_boundaries_preserve_column_zero_comments (tests.test_item_consumption.ItemConsumptionTests.test_source_function_boundaries_preserve_column_zero_comments) ... ok
+test_two_actual_originals_and_source_mapping (tests.test_item_consumption.ItemConsumptionTests.test_two_actual_originals_and_source_mapping) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 2.731s
+
+OK

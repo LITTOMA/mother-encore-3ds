@@ -1,0 +1,49 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Nodes/Ui/Inventory/TargetCharaSelect.gd": "09c958e188afc50247b8ed755465768e68728ef624fe43dc0afae83eac98d6c3",
+    "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/StatusAilments/asthma.yaml": "6f2485b55a9b01c6cd8bdaaed248683c22eebc912c9445437d3193659fa754c3",
+    "Data/StatusAilments/poisoned.yaml": "30ff7359ecd9aba8ce730362bfa022b3ab50f3842877a92901ac606d10c6f37f",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Audio/Sound effects/EB/eat.wav": "11eee267112ad052721ae96c1a4bdd7e589493c7dd57d1327164b330473aeaef",
+    "Audio/Sound effects/EB/eat.wav.import": "df0147fca63e74e0d110b0b47df9acb78a8752c1a643a5dd3a982b4b245f0567",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "target_method_sha256": "04827429c5756f1b2e01044121928c2323664eb1eb028f475583b7294adbd7ae",
+  "generated_sha256": {
+    "Character.gd": "88620b8206374ff9b148fe5e47e9ea0fb4c6a028bf7d20bce650d46dbe0ed147",
+    "Status.gd": "6af9dc2f21681e22e115dde6538720fb98a35f0207fd52e8be39b8edeed9defe",
+    "Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Member.gd": "da76a055369f1a8dc387d3de518769ccf231cc51526eb751c5cc24fa603fb69f",
+    "Target.gd": "715f18a729136e937869aa0c55c21414d3c5294419179416fd3c59e0511829de",
+    "probe.gd": "ce77566b581c70252c48392398c73b7cf9e8e29f43039780567fc8fb59a81e7a",
+    "input.json": "5f99fcad6d159c342b8490653d120addfe901dc2c755273eb13776138978768b",
+    "globaldata.gd": "e4bb348f60f5eba41b5bf7cc786ce691ed260820bd795ec29c3be21b4196fded",
+    "global.gd": "1c9372945db0c1559735fbbb0047440b394d4187b1f491b65d2a0d18020807b5",
+    "ui.gd": "cb396ebb24b0cfd4695f8978dab1746580d0f1629d34bd6ac16c07ab51759401",
+    "audio.gd": "4834dc37a6d9aaf05192a2b08a312b5022364864f6723a224b5e22cada0b1cc8",
+    "TextTools.gd": "8a875ea26def55c7b7b5c7d797793ca84aa11aab3278752c844c48f09859aaa0",
+    "project.godot": "a279ac0a55bae075eefb58466e03ac95d3a45baecd04d867acf1a86be77f2040",
+    "probe.tscn": "e0c95a2b258b55e98b3c5f8ff7b82b4d58dd5d128a1e167fb75ff5dd9437e57c"
+  },
+  "copied_sha256": {
+    "Audio/Sound effects/EB/eat.wav": "11eee267112ad052721ae96c1a4bdd7e589493c7dd57d1327164b330473aeaef",
+    "Audio/Sound effects/EB/eat.wav.import": "df0147fca63e74e0d110b0b47df9acb78a8752c1a643a5dd3a982b4b245f0567"
+  },
+  "cases": 240,
+  "scope": "Observe original item consumption and target message/audio selectors.\n\nThe original complete Inventory/Item/Character/Status scripts execute. A member\nholder supplies stats/inventory and exact PartyMember zero-boost/status methods;\nthe selected original target method uses explicit UI/audio command collectors.\nNo rendering, PCM output, target-widget timing or full-game claim.\n",
+  "member_methods": {
+    "get_inventory": "30571049beb98f5abb74367599d8d95610facb3fe5841579c01b360d73d7aff6",
+    "remove_status": "021643995ad42c7ac6a6257097014559906a49db8143f60fb3e3f54ee38454f5",
+    "_refresh_hp_from_status": "4487523bb1c746d2ea61d5d63e3438b4c1d00a9b9ee8b327e9e39e23968f18ed",
+    "apply_boosts": "0a600851017c7f843341d7149c73dd2ba8b9a5249fcf139e4b88cccf080bde10"
+  }
+}

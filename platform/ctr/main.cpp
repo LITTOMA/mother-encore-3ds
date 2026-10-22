@@ -1092,7 +1092,7 @@ bool initialize_field_menus(std::string&error){
         }
         InventoryState inventory;if(!inventory.restore(items,instances,e))return false;
         std::array<int32_t,7>derived{};if(!native_session_derived_stats(native_session_data,items,character,derived,e))return false;
-        auto stats=session_rewards;stats.maxhp=derived[0];stats.maxpp=derived[1];stats.offense=derived[2];stats.defense=derived[3];stats.speed=derived[4];stats.iq=derived[5];stats.guts=derived[6];stats.hp=std::min(stats.hp,stats.maxhp);stats.pp=std::min(stats.pp,stats.maxpp);
+        auto stats=session_rewards;stats.maxhp=derived[0];stats.maxpp=derived[1];stats.offense=derived[2];stats.defense=derived[3];stats.speed=derived[4];stats.iq=derived[5];stats.guts=derived[6];stats.hp=int32_t(std::min<int64_t>(character.hp,stats.maxhp));stats.pp=int32_t(std::min<int64_t>(character.pp,stats.maxpp));
         NativeSnapshotInput input;input.state=std::move(candidate);input.stats=&stats;input.inventory=&inventory;input.storage=&session_storage;
         SessionSnapshot checked;if(!build_native_session_snapshot(native_session_data,opening_data.view(),house_data.view(),round_data.view(),items,input,checked,e))return false;
         const bool prefs=next.preferences.volume!=field_preferences.volume||next.preferences.display!=field_preferences.display||next.preferences.buttons!=field_preferences.buttons;
@@ -2373,7 +2373,15 @@ int main(int argc,char** argv){
             if(field_menus.phase()==upstream::FieldMenusPhase::Map&&!field_map_renderer.ready()){
                 LoadingScope loading("Preparing map",1);if(!loading.step([&]{return field_map_renderer.load(field_menus_data,error);},"field-map-upload")||!loading.finish()){field_equipment_status=error;field_menus.abort_map();}
             }
-            for(auto event:field_menus.take_sounds()){const auto binding=upstream::FieldBinding(uint32_t(upstream::FieldBinding::PauseOpenSound)+event-1);if(!play_source_audio(std::string(field_view.binding(binding))))field_equipment_status=audio_status;}
+            for(auto event:field_menus.take_sounds()){
+                if(event==11){
+                    if(!field_menus_data.has_consume_effects()||field_menus_data.consume_lane!=uint32_t(upstream::FieldMenuConsumeAudioLane::Effect))field_equipment_status="Field item audio route is unsupported";
+                    else if(!play_source_audio(field_menus_data.consume_sound,ctr::AudioLane::Effect,0,1))field_equipment_status=audio_status;
+                }else{
+                    const auto binding=upstream::FieldBinding(uint32_t(upstream::FieldBinding::PauseOpenSound)+event-1);
+                    if(!play_source_audio(std::string(field_view.binding(binding))))field_equipment_status=audio_status;
+                }
+            }
             const auto exit=field_menus.take_exit();
             if(exit==upstream::FieldMenusExit::Pause){if(!field_equipment_menu.resume_submenu())field_equipment_status=field_equipment_menu.error();}
             else if(exit==upstream::FieldMenusExit::Quit){field_quit_requested=true;}

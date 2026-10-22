@@ -1,0 +1,16 @@
+{
+  "runtime/field_menus_data.cpp": "79b6252c00119356422205691ef940c719de894c055202b7f47d2a1ce28cebb6",
+  "runtime/field_menus.cpp": "b7585f749abc21ee07bfe19e167d42d8e0bbe1bfd47fb23ebe5f8660205676f1",
+  "runtime/native_session.cpp": "abb7601576e6f9355e6e1adb729eef205eafd0e1981828b47f44a1e947e3ba6d",
+  "include/encore/field_menus.hpp": "8b981eca00ea348fc4832d8ba07fd6bb10e35880b19a89e33e1898d9f30feb1e",
+  "include/encore/native_session.hpp": "2080a787b81f38a47df75c408f294876099be33e7feec18ca5bc2f9fbe361787",
+  "runtime/field_story.cpp": "52c56351bc9226abfa67c1629333720c9d89d09ab7258febf3063f9d4c9972ec",
+  "tests/item_consumption_tests.cpp": "020864510e9d6e4356dc4371b4db1e95b496ee30ef3d23fdff63466743da0e36",
+  "tests/field_menus_tests.cpp": "199817191394672b994e247d05ab1c7b434b3d5e92e634a8dfe6b209062e7970",
+  "tests/catacombs_item_session_tests.cpp": "ea5618611e11de99151d4e8196a2462fb47e8b3be3f5434c6cbe8753445cdde0",
+  "tests/native_session_tests.cpp": "8a1a64b800faeb287aab4b1e0339b05002b2ce40166d613d2af285dbd2614a25",
+  "tools/item_consumption.py": "bed5a91c08a7546c858d465b48a8c42a64a227adc244853a1c965cc9e9e6f18b",
+  "tools/run_item_consume_reference.py": "0258244fb2b3130eb9c71014f51bd767d35608b98c1892a8eb9812fec8fba18d",
+  "tests/prepare_item_consumption.py": "062f4754a30315f5eb79b1382a8b3c2d0ee9ea872cb69296fa28fc18cdcb2c7e",
+  "tools/field_menus.py": "d95d33fd87fefe7965902a669ec0133bb8f0f1efe73a13af9014a766bd9465e2"
+}

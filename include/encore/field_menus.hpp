@@ -3,6 +3,7 @@
 #include "encore/startup_settings.hpp"
 #include "encore/item_details.hpp"
 #include <functional>
+#include <optional>
 
 namespace encore::upstream {
 // UI schema identities. Labels, ordering, geometry, bindings and game rules
@@ -14,6 +15,14 @@ struct FieldMenuItem {
  uint32_t key=0,drop=0,action=0,doses=0,score=0,equipped_score=0,slot=UINT32_MAX;
  uint32_t definition=UINT32_MAX;
 };
+// ENCFMN01 v3 execution schema. Values and source message bindings are data.
+struct FieldMenuConsumeEffect {
+ std::string item_id,cure_status;uint32_t hp=0;
+ // HP increase, HP maximum, status healed, status absent.
+ std::array<std::string,4>message_keys;
+ std::array<FieldMenuLabel,4>messages;
+};
+enum class FieldMenuConsumeAudioLane:uint32_t {Effect=1};
 struct FieldMenuSkill {
  std::string id,flag,battle_skill,weapon;FieldMenuLabel name,description;
  uint32_t category=0,cost=0; // 0 field, 1 battle, 2 PSI
@@ -37,6 +46,8 @@ public:
  bool bind_items(ItemView,ItemDetailsView,std::string&)const;
  bool supports(const FieldMenuPreferences&)const;
  uint32_t remap(uint32_t raw,const FieldMenuPreferences&)const;
+ bool has_consume_effects()const{return consume_effects_;}
+ const FieldMenuConsumeEffect*consume_effect(std::string_view)const;
  std::vector<FieldMenuLabel>labels;std::vector<FieldMenuItem>items;std::vector<FieldMenuSkill>skills;
  std::vector<FieldMenuImage>images;std::vector<FieldMenuMarker>markers;
  // panel, header, body, description, footer, cursor; adapted from source UI.
@@ -44,7 +55,9 @@ public:
  std::vector<double>volume_db;std::vector<uint32_t>logical_buttons;std::vector<std::string>button_names,locales,display_names;std::vector<FieldMenuLabel>locale_names;std::array<std::vector<FieldMenuLabel>,3>setting_labels;FieldMenuLabel capture_cancel;
  FieldMenuPreferences defaults;uint32_t rows=0,columns=0;float row_pitch=0,column_pitch=0,line_height=0,map_offset_x=0,map_offset_y=0,map_divisor=0,map_speed=0,map_fast=0;
  std::string map_item;bool description_toggle=false;float map_home_x=0,map_home_y=0;std::array<std::array<uint32_t,2>,2>display_sizes{};
-private:bool valid_=false;
+ std::string consume_actor,consume_sound,consume_bus;uint32_t cure_refresh_hp=0,consume_lane=0;
+ std::vector<std::string>consume_statuses;std::vector<FieldMenuConsumeEffect>consume_effects;
+private:bool valid_=false,consume_effects_=false;
 };
 enum class FieldPreferenceRead {Loaded,Missing,Error};
 bool encode_field_preferences(const FieldMenusData&,const FieldMenuPreferences&,std::vector<uint8_t>&,std::string&);
@@ -56,7 +69,21 @@ bool write_field_preferences(const FieldMenusData&,const char*,const FieldMenuPr
 // coordinates are transient context, never an unsupported field-save migration.
 struct FieldMenusState {SessionSnapshot session;std::array<int32_t,7>stats{};uint32_t next_exp=0;FieldMenuPreferences preferences;bool chinese=false,in_field=false;float world_x=0,world_y=0;bool area_map=false;std::string area_map_item;std::array<float,2>area_map_position{};};
 std::array<float,2>field_menu_map_position(const FieldMenusData&,const FieldMenusState&);
-struct FieldMenusChanges {std::vector<SessionItem>inventory,keys;SessionSettings settings;FieldMenuPreferences preferences;};
+struct FieldMenusChanges {
+ std::vector<SessionItem>inventory,keys;SessionSettings settings;FieldMenuPreferences preferences;
+ std::optional<int64_t>hp{};std::optional<std::vector<SessionStatus>>status{};
+ bool health_observed=false;
+};
+enum class FieldMenuConsumeKind:uint32_t {HPUp=1,HPMax,Healed,HealFailed};
+enum class FieldMenuConsumeSignalKind:uint32_t {HP=1,Status};
+struct FieldMenuConsumeSignal {FieldMenuConsumeSignalKind kind=FieldMenuConsumeSignalKind::HP;int64_t value=0,maximum=0;};
+struct FieldMenuConsumeResult {
+ FieldMenuConsumeKind kind=FieldMenuConsumeKind::HealFailed;
+ std::string message_key,message;uint32_t value=0,retained_doses=0;bool eat_sound=false;
+ std::vector<FieldMenuConsumeSignal>signals;
+};
+bool expand_field_item_text(std::string_view,std::string_view,uint32_t,std::string&,std::string&);
+bool consume_field_menu_item(const FieldMenusData&,const FieldMenusState&,uint32_t,FieldMenusState&,FieldMenuConsumeResult&,std::string&);
 bool merge_field_menu_session(const FieldMenusState&,const FieldMenusChanges&,const SessionSnapshot&,SessionSnapshot&,std::string&);
 // Every write stages the entire candidate and commits only after the host has
 // validated the live session, resource scope and persistent settings.
@@ -88,10 +115,10 @@ public:
  bool map_missing()const{return missing_map_;}bool markers_visible()const{return markers_;}
  float map_x()const{return map_x_;}float map_y()const{return map_y_;}
  bool take_changed(){bool v=changed_;changed_=false;return v;}
- // Sound IDs use the already checked FieldEquipmentSound schema.
+ // IDs 1..10 use FieldEquipmentSound. v3 event 11 uses consume_sound.
  std::vector<uint32_t>take_sounds(){std::vector<uint32_t>v;v.swap(sounds_);return v;}
 private:
- bool refresh(std::string&);bool commit(FieldMenusState,std::string&);bool apply_choice(std::string&);void back();
+ bool refresh(std::string&);bool commit(FieldMenusState,std::string&,bool health=false);bool apply_choice(std::string&);void back();
  const std::vector<SessionItem>&goods()const;std::vector<SessionItem>&goods(FieldMenusState&)const;
  const FieldMenuItem*selected_item()const;std::vector<uint32_t>actions()const;std::vector<const FieldMenuSkill*>skills()const;
  std::string text(FieldMenuText)const;bool open_map(bool force,std::string&);void clamp_map();

@@ -1,0 +1,10 @@
+runtime/field_menus.cpp: In member function ‘bool encore::upstream::FieldMenus::commit(encore::upstream::FieldMenusState, std::string&, bool)’:
+runtime/field_menus.cpp:82:197: warning: missing initializer for member ‘encore::upstream::FieldMenusChanges::hp’ [-Wmissing-field-initializers]
+   82 | bool FieldMenus::commit(FieldMenusState next,std::string&e,bool health){FieldMenusChanges changes{next.session.characters[0].inventory,next.session.key_items,next.session.settings,next.preferences};changes.health_observed=health;if(next.session.characters[0].hp!=state_.session.characters[0].hp)changes.hp=next.session.characters[0].hp;if(!same_status(next.session.characters[0].status,state_.session.characters[0].status))changes.status=next.session.characters[0].status;if(!host_.commit(state_,changes,e))return false;changed_=true;return refresh(e);}
+      |                                                                                                                                                                                                     ^
+runtime/field_menus.cpp:82:197: warning: missing initializer for member ‘encore::upstream::FieldMenusChanges::status’ [-Wmissing-field-initializers]
+tests/field_menus_tests.cpp: In function ‘int main(int, char**)’:
+tests/field_menus_tests.cpp:52:127: warning: missing initializer for member ‘encore::upstream::FieldMenusChanges::hp’ [-Wmissing-field-initializers]
+   52 |  FieldMenusChanges proposed{live.session.characters[0].inventory,live.session.key_items,live.session.settings,live.preferences};auto ticking=live.session;ticking.playtime_seconds+=30;ticking.bank+=1;SessionSnapshot merged;
+      |                                                                                                                               ^
+tests/field_menus_tests.cpp:52:127: warning: missing initializer for member ‘encore::upstream::FieldMenusChanges::status’ [-Wmissing-field-initializers]

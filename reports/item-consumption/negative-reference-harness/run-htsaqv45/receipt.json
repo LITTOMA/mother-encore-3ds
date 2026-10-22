@@ -1,0 +1,109 @@
+[
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4"
+    ],
+    "returncode": 0
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-0.bin"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-1.bin"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-2.bin"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-3.bin"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-4.bin"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-5.bin"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-6.bin"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-7.bin"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-8.bin"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-9.bin"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "build/full-port/item-consume-host-2/item_consumption",
+      "romfs",
+      "build/full-port/item-consume-fixture-4",
+      "build/full-port/item-consume-fixture-4/bad-reference-10.bin"
+    ],
+    "returncode": 1
+  }
+]

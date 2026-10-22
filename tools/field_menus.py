@@ -137,6 +137,8 @@ def dump(path,value):path.parent.mkdir(parents=True,exist_ok=True);path.write_by
 
 def encode(ir,root=ROOT):
     from PIL import Image
+    require(type(ir['schema'])is int and ir['schema']in(2,3),'Unsupported field menu resource version')
+    require((ir['schema']==3)==('consumption'in ir),'Missing/unowned field menu consumption extension')
     p=bytearray(bytes.fromhex(PIN))
     def put(fmt,*v):p.extend(struct.pack('<'+fmt,*v))
     def text(v):b=v.encode('utf8');require(len(b)<=4096 and '\0'not in v,'Field text bound');put('I',len(b));p.extend(b)
@@ -158,7 +160,11 @@ def encode(ir,root=ROOT):
     put('4I',*ir['default_volume'],ir['display']);array(ir['locales'],text);array(ir['locale_names'],label);text(ir['map_item']);put('5fI',*ir['map_offset'],ir['map_divisor'],ir['map_speed'],ir['map_fast'],ir['description_toggle'])
     for group in ir['setting_labels']:array(group,label)
     array(ir['display_names'],text);label(ir['capture_cancel']);put('2f',*ir['map_home']);put('4I',*ir['display_sizes'][0],*ir['display_sizes'][1])
-    return struct.pack('<8s6I',b'ENCFMN01',2,32+len(p),zlib.crc32(p),2,1,0)+p
+    if ir['schema']==3:
+        from tools.item_consumption import encode_extension
+        require('consumption'in ir,'Field menu consume policy missing')
+        p.extend(encode_extension(ir['consumption']))
+    return struct.pack('<8s6I',b'ENCFMN01',ir['schema'],32+len(p),zlib.crc32(p),ir['schema'],1,0)+p
 
 def load(root=ROOT):
     ir=json.loads((Path(root)/'content/native-field-menus.json').read_text(encoding='utf8'));require(canonical(ir)==canonical(build(root)),'Field menus IR differs from reviewed source/adapter');return ir

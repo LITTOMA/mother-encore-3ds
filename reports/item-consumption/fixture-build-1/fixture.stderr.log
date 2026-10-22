@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_item_consumption.py", line 106, in <module>
+    print(json.dumps(build(sys.argv[1],sys.argv[2]),indent=2))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_item_consumption.py", line 91, in build
+    files,proof=fixture_files(reference_root)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_item_consumption.py", line 57, in fixture_files
+    snapshot(row['before']);snapshot(row['after'])
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tests\prepare_item_consumption.py", line 53, in snapshot
+    raw=native_session.encode_snapshot(candidate,compatibility)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\native_session.py", line 314, in encode_snapshot
+    w=Writer();w.text(s['scene_id']);w.text(s['scene_label']);w.put('4d',*[s[k]for k in ['position_x','position_y','direction_x','direction_y']]);w.text(s['run_sound']);w.text(s['shadow_effect']);w.put('2d',s['playtime_seconds'],s['settings']['text_speed']);w.text(s['settings']['menu_flavor']);w.text(s['settings']['button_prompts']);w.put('B',s['settings']['description']);w.text(s['player_name']);w.text(s['favorite_food']);w.put('3q',s['cash'],s['bank'],s['earned_cash']);w.array(s['characters'],w.character);w.array(s['party'],w.text);w.array(s['key_items'],w.item);w.array(s['storage'],w.item)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\native_session.py", line 304, in array
+    def array(self,a,fn):self.put('I',len(a));[fn(v)for v in a]
+                                              ^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\native_session.py", line 304, in <listcomp>
+    def array(self,a,fn):self.put('I',len(a));[fn(v)for v in a]
+                                               ^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\native_session.py", line 311, in character
+    require(not v['status'],'Only empty initial status is supported');self.put('I',0);self.array(v['inventory'],self.item)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GameDev\3DS\mother-encore-3ds\tools\extract_battle_entry.py", line 33, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Only empty initial status is supported
